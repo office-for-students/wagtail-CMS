@@ -1,21 +1,38 @@
 {% extends "base.html" %}
 {% load static %}
+{% load wagtailcore_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block extra_css %}
 
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
 {% endblock extra_css %}
 
 {% block content %}
-
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-{% include 'home/welcome_page.html' %}
+<div class="container home">
+  <div class="header">
+    {{ page.header_title|richtext }}
+    {{ page.header_subtitle|richtext }}
+  </div>
+  <div class="info-section">
+    <div class="info-text">
+      <h2>Name</h2>
+      {{ page.info_headline|richtext }}
+    </div>
+    {{ page.info_points|richtext }}
+  </div>
+  <div class="cta-container">
+    <div class="help">
+      {{ page.help_title|richtext }}
+      {{ page.help_text|richtext }}
+      <i class="arrow fas fa-long-arrow-alt-left"></i>
+    </div>
+    <div class="find">
+      {{ page.find_title|richtext }}
+      {{ page.find_text|richtext }}
+      <i class="arrow fas fa-long-arrow-alt-right"></i>
+    </div>
+  </div>
+</div>
 
 {% endblock content %}
