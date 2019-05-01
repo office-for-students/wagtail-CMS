@@ -9,15 +9,21 @@
 {% endblock extra_css %}
 
 {% block content %}
-<div class="searchtool-section what-to-study">
+<div class="searchtool-section how-to-study">
   <div class="searchtool-header">
     {{ page.header|richtext }}
   </div>
   <div class="inputs">
-    <input type="text" placeholder="{{page.placeholder}}" />
-    <button role="button">{{page.button}}</button>
+    <form>
+      {% for block in page.options %}
+      <div class="checkbox">
+        <input id="{{block}}"type="checkbox" placeholder="{{page.placeholder}}" />
+        <label for="{{block}}">{% include_block block %}</label>
+      </div>
+      {% endfor %}
+    </form>
   </div>
-  <button role="button" class="dont-know">{{page.button_two}}</button>
+  <button role="button">{{page.button}}</button>
   <div class="help-decide">
     <button role="button">
       Help me to decide

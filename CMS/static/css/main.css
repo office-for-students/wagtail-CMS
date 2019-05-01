@@ -289,6 +289,94 @@ nav {
   align-self: end;
 }
 
+.how-to-study {
+  display: grid;
+  grid-template-rows: 123px 220px 100px auto;
+}
+
+.how-to-study .searchtool-header {
+  padding: 0 28px;
+}
+
+.how-to-study form {
+  text-align: left;
+  padding: 0 40px;
+  color: #fff;
+  font-size: 24px;
+}
+
+.how-to-study input {
+  margin: 20px;
+}
+
+.checkbox {
+  position: relative;
+}
+
+.checkbox [type=checkbox] + label::before {
+  content: "";
+  border: 2px solid;
+  background: #49577c;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 11px;
+  left: 11px;
+  border-radius: 5px;
+}
+
+.checkbox [type=checkbox] + label::after {
+  content: "";
+  border: solid;
+  border-width: 0 0 3px 3px;
+  background: transparent;
+  border-top-color: transparent;
+  width: 12px;
+  height: 5px;
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  zoom: 1;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.checkbox input:checked + label::after {
+  zoom: 1;
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.checkbox input:checked + label::before {
+  background: #ff6600;
+  border: none;
+  width: 27px;
+  height: 27px;
+}
+
+.checkbox [type=checkbox]:focus + label::before {
+  -webkit-box-shadow: 0 0 0 3px #ff6600;
+  -moz-box-shadow: 0 0 0 3px #ff6600;
+  box-shadow: 0 0 0 3px #ff6600;
+}
+
+.how-to-study button {
+  height: 55px;
+  align-self: center;
+  border-width: 0px;
+  background-color: #169bd5;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}
+
 .help-decide button {
   text-decoration: underline;
   font-size: 16px;

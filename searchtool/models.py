@@ -45,3 +45,16 @@ class WhatToStudy(Page):
         FieldPanel('button', classname="full"),
         FieldPanel('button_two', classname="full"),
     ]
+
+class HowToStudy(Page):
+    header = RichTextField(blank=True)
+    options = StreamField([
+        ('option', blocks.TextBlock(blank=True))
+    ])
+    button = TextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('header', classname="full"),
+        StreamFieldPanel('options', classname="full"),
+        FieldPanel('button', classname="full")
+    ]
