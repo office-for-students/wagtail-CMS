@@ -32,3 +32,16 @@ class ChooseAUni(Page):
         FieldPanel('placeholder', classname="full"),
         FieldPanel('button', classname="full")
     ]
+
+class WhatToStudy(Page):
+    header = RichTextField(blank=True)
+    placeholder = TextField(blank=True)
+    button = TextField(blank=True)
+    button_two = TextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('header', classname="full"),
+        FieldPanel('placeholder', classname="full"),
+        FieldPanel('button', classname="full"),
+        FieldPanel('button_two', classname="full"),
+    ]

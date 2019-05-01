@@ -215,15 +215,6 @@ nav {
   height: 63px;
 }
 
-.help-decide button {
-  text-decoration: underline;
-  font-size: 16px;
-  color: #fff;
-  padding-top: 45px;
-  background-color: transparent;
-  border: none;
-}
-
 .choose-a-uni {
   display: grid;
   grid-template-rows: 218px 150px;
@@ -254,4 +245,54 @@ nav {
   font-weight: 700;
   font-size: 18px;
   color: #fff;
+}
+
+.what-to-study {
+  display: grid;
+  grid-template-rows: 180px 150px 100px auto;
+}
+
+.what-to-study .searchtool-header {
+  padding: 0 80px;
+}
+
+.what-to-study .inputs {
+  display: grid;
+}
+
+.what-to-study input {
+  font-size: 14px;
+  height: 55px;
+  padding: 0 20px;
+  align-self: center;
+}
+
+.what-to-study input::placeholder {
+  color: #a1a1a1;
+}
+
+.what-to-study button {
+  height: 55px;
+  align-self: center;
+  border-width: 0px;
+  background-color: #169bd5;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}
+
+.what-to-study .dont-know {
+  background-color: #fff;
+  color: #49577C;
+  align-self: end;
+}
+
+.help-decide button {
+  text-decoration: underline;
+  font-size: 16px;
+  color: #fff;
+  background-color: transparent;
+  border: none;
 }

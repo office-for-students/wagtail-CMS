@@ -1,0 +1,28 @@
+{% extends "search.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-wheretostudy{% endblock %}
+
+{% block extra_css %}
+
+{% endblock extra_css %}
+
+{% block content %}
+<div class="searchtool-section what-to-study">
+  <div class="searchtool-header">
+    {{ page.header|richtext }}
+  </div>
+  <div class="inputs">
+    <input type="text" placeholder="{{page.placeholder}}" />
+    <button role="button">{{page.button}}</button>
+  </div>
+  <button class="dont-know" role="button">{{page.button_two}}</button>
+  <div class="help-decide">
+    <button role="button">
+      Help me to decide
+    </button>
+  </div>
+</div>
+
+{% endblock content %}
