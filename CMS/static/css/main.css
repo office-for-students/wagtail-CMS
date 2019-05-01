@@ -1,10 +1,15 @@
-/* Global */
+/*#########################
+########## Global ##########
+#########################*/
 
 body {
   margin: 0;
   font-family: sans-serif, serif;
 }
-/* Nav */
+
+/*#########################
+########## Nav ###########
+#########################*/
 
 nav {
   position: absolute;
@@ -79,7 +84,9 @@ nav {
   }
 }
 
-/* Homepage */
+/*#########################
+######## Homepage ########
+#########################*/
 
 .home {
   text-align: center;
@@ -165,7 +172,9 @@ nav {
   font-size: 70px;
 }
 
-/* Search */
+/*#########################
+########## Search ########
+#########################*/
 
 .searchtool-container {
   height: 100vh;
@@ -198,6 +207,14 @@ nav {
   font-size: 33px;
   color: #FFFFFF;
 }
+
+/* Where to study */
+
+.where-to-study .help-decide {
+  margin-top: 50px;
+}
+
+/* Choose a uni */
 
 .options {
   display: grid;
@@ -247,6 +264,8 @@ nav {
   color: #fff;
 }
 
+/* What to study */
+
 .what-to-study {
   display: grid;
   grid-template-rows: 180px 150px 100px auto;
@@ -288,6 +307,8 @@ nav {
   color: #49577C;
   align-self: end;
 }
+
+/* How to study */
 
 .how-to-study {
   display: grid;
