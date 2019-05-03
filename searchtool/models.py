@@ -58,3 +58,28 @@ class HowToStudy(Page):
         StreamFieldPanel('options', classname="full"),
         FieldPanel('button', classname="full")
     ]
+
+class ChooseALocation(Page):
+    header = RichTextField(blank=True)
+    tab_headings = StreamField([
+        ('heading', blocks.TextBlock())
+    ])
+    country_options = StreamField([
+        ('option', blocks.TextBlock(blank=True))
+    ])
+    tab_two_header = RichTextField(blank=True)
+    tab_two_placeholder = TextField(blank=True)
+    tab_three_header = RichTextField(blank=True)
+    tab_three_placeholder = TextField(blank=True)
+    button = TextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('header', classname="full"),
+        StreamFieldPanel('tab_headings', classname="full"),
+        StreamFieldPanel('country_options', classname="full"),
+        FieldPanel('tab_two_header', classname="full"),
+        FieldPanel('tab_two_placeholder', classname="full"),
+        FieldPanel('tab_three_header', classname="full"),
+        FieldPanel('tab_three_placeholder', classname="full"),
+        FieldPanel('button', classname="full")
+    ]

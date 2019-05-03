@@ -398,6 +398,99 @@ nav {
   color: #fff;
 }
 
+/* Choose a location */
+
+.choose-a-location {
+  display: grid;
+  grid-template-rows: 100px 268px 100px auto;
+}
+
+.choose-a-location .searchtool-header {
+  padding: 0;
+}
+
+.tab-container {
+  display: grid;
+  grid-template-rows: 52px auto;
+}
+
+.tab-container ul {
+  display: grid;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.tab-headings {
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.tab-headings li {
+  padding: 17px 0;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 700;
+  background-color: #323c54;
+}
+
+.tab-headings .selected {
+  background-color: #ff6600;
+}
+
+.tab-container .country-options {
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.country-options li {
+  padding: 15px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #e4e4e4;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.tab-container .text-input {
+  background-color: #fff;
+  color: #49577c;
+  font-size: 24px;
+}
+
+.tab-container .text-input input {
+  margin: 0 21px 21px 21px;
+  border: 1px solid #797979;
+  height: 53px;
+  padding-left: 21px;
+  font-size: 16px;
+}
+
+.tab-container .text-input input::placeholder {
+  color: #a1a1a1;
+}
+
+.place {
+  display: none;
+  grid-template-rows: 136px auto;
+}
+
+.postcode {
+  display: none;
+  grid-template-rows: 136px auto;
+}
+
+.choose-a-location button {
+  height: 55px;
+  align-self: center;
+  border-width: 0px;
+  background-color: #169bd5;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}
+
 .help-decide button {
   text-decoration: underline;
   font-size: 16px;
