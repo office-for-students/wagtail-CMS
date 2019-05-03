@@ -1,0 +1,52 @@
+{% extends "search.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% block body_class %}template-choosealocation{% endblock %}
+
+{% block extra_css %}
+
+{% endblock extra_css %}
+
+{% block content %}
+<div class="searchtool-section choose-a-location">
+  <div class="searchtool-header">
+    {{ page.header|richtext }}
+  </div>
+  <div class="tab-container">
+    <ul class="tab-headings">
+      {% for block in page.tab_headings %}
+        {% if forloop.first %}
+          <li tabindex="0" role="button" class="selected">{{block}}</li>
+          {% else %}
+          <li tabindex="0" role="button">{{block}}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <ul id="Country" class="country-options">
+      {% for block in page.country_options %}
+        {% if forloop.last %}
+          <li tabindex="0" role="button" id="NorthernIreland">{{block}}</li>
+        {% else %}
+          <li tabindex="0" role="button" id="{{block}}">{{block}}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <div id="Place" class="place tab-two text-input">
+      <h3>{{page.tab_two_header|richtext}}</h3>
+      <input type="text" placeholder="{{page.tab_two_placeholder}}" />
+    </div>
+    <div id="Postcode" class="postcode tab-three text-input">
+      <h3>{{page.tab_three_header|richtext}}</h3>
+      <input type="text" placeholder="{{page.tab_three_placeholder}}" />
+    </div>
+  </div>
+
+  <button role="button">{{page.button}}</button>
+  <div class="help-decide">
+    <button role="button">
+      Help me to decide
+    </button>
+  </div>
+</div>
+
+{% endblock content %}

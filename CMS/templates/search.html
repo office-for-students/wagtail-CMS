@@ -30,30 +30,12 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        <nav>
-          <h1 class="brand">uniSimple</h1>
-          <i id="burger-menu" class="burger-menu fas fa-bars"></i>
-          <i id="close-menu" class="close-menu fas fa-times"></i>
-          <ul class='desktop-nav'>
-            <li>
-              Help
-            </li>
-            <li>
-              Find
-            </li>
-          </ul>
-          <ul class='mobile-nav'>
-            <li>
-              Help
-            </li>
-            <li>
-              Find
-            </li>
-          </ul>
-        </nav>
         {% wagtailuserbar %}
+        <div class="searchtool-container">
+          <button class="back-button" role="button">< Back</button>
+          {% block content %}{% endblock %}
+        </div>
 
-        {% block content %}{% endblock %}
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/main.js' %}"></script>

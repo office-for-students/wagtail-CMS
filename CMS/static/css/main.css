@@ -1,0 +1,508 @@
+/*#########################
+########## Global ##########
+#########################*/
+
+body {
+  margin: 0;
+  font-family: sans-serif, serif;
+}
+
+/*#########################
+########## Nav ###########
+#########################*/
+
+nav {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(153, 153, 153, 1);
+  color: #fff;
+}
+
+.desktop-nav {
+  display: inline-block;
+}
+
+.mobile-nav {
+  display: none;
+  grid-column: span 2;
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  align-self: center;
+}
+
+.mobile-nav li {
+  padding-bottom: 15px;
+  font-size: 18px;
+}
+
+.brand {
+  margin: 0;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  padding-left: 15px;
+}
+
+.burger-menu {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  text-align: right;
+  padding-right: 15px;
+  font-size: 28px;
+}
+
+.close-menu {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  text-align: right;
+  padding-right: 15px;
+  font-size: 28px;
+  display: none;
+}
+
+@media only screen and (max-width: 769px) {
+  nav {
+    height: 60px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 60px auto;
+  }
+
+  .desktop-nav {
+    display: none
+  }
+}
+
+@media only screen and (min-width: 770px) {
+  .mobile-nav {
+    display: none
+  }
+}
+
+/*#########################
+######## Homepage ########
+#########################*/
+
+.home {
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
+  padding-top: 60px;
+}
+
+.header {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  padding: 56px 30px;
+  background-color: #555555;
+  color: #fff;
+}
+
+.header h2 {
+  font-size: 46px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.header p {
+  font-size: 23px;
+  text-align: left;
+}
+
+.header ul {
+  list-style: none;
+  text-align: left;
+  padding: 0 30px;
+}
+
+.header li {
+  padding-bottom: 24px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.header li::before {
+  font-family: FontAwesome;
+  content: '\f00c';
+  display: inline-block;
+  margin-left: -1.3em;
+  width: 1.3em;
+}
+
+.cta-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.cta-container .help, .cta-container .find {
+  padding: 40px 30px;
+  display: grid;
+  grid-template-rows: 75% 25%;
+  color: #fff;
+}
+
+.cta-container .help:hover, .cta-container .find:hover {
+  cursor: pointer;
+}
+
+.help {
+  background-color: rgba(139, 182, 185, 1);
+}
+
+.find {
+  background-color: rgba(73, 87, 124, 1);
+}
+
+.cta-container h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.cta-container p {
+  font-size: 18px;
+}
+
+.arrow {
+  font-size: 70px;
+}
+
+/*#########################
+########## Search ########
+#########################*/
+
+.searchtool-container {
+  height: 100vh;
+  background-color: #49577c;
+  display: grid;
+  grid-template-rows: 10% 90%;
+  text-align: center;
+}
+
+.back-button {
+  font-size: 16px;
+  text-align: left;
+  padding-left: 20px;
+  color: #fff;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+}
+
+.searchtool-section {
+  padding: 0 22px;
+}
+
+.searchtool-header {
+  padding: 0 30px;
+}
+
+.searchtool-header h2 {
+  font-weight: 700;
+  font-size: 33px;
+  color: #FFFFFF;
+}
+
+/* Where to study */
+
+.where-to-study .help-decide {
+  margin-top: 50px;
+}
+
+/* Choose a uni */
+
+.options {
+  display: grid;
+  grid-row-gap: 15px;
+  padding-top: 50px;
+}
+
+.options button {
+  font-size: 24px;
+  font-weight: 700;
+  color: #49577C;
+  background-color: #fff;
+  border: 1px solid rgba(107, 107, 107, 1);
+  border-radius: 5px;
+  height: 63px;
+}
+
+.choose-a-uni {
+  display: grid;
+  grid-template-rows: 218px 150px;
+}
+
+.choose-a-uni .inputs {
+  display: grid;
+}
+
+.choose-a-uni input {
+  font-size: 14px;
+  height: 55px;
+  padding: 0 20px;
+  align-self: center;
+}
+
+.choose-a-uni input::placeholder {
+  color: #a1a1a1;
+}
+
+.choose-a-uni button {
+  height: 55px;
+  align-self: center;
+  border-width: 0px;
+  background-color: #169bd5;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}
+
+/* What to study */
+
+.what-to-study {
+  display: grid;
+  grid-template-rows: 180px 150px 100px auto;
+}
+
+.what-to-study .searchtool-header {
+  padding: 0 80px;
+}
+
+.what-to-study .inputs {
+  display: grid;
+}
+
+.what-to-study input {
+  font-size: 14px;
+  height: 55px;
+  padding: 0 20px;
+  align-self: center;
+}
+
+.what-to-study input::placeholder {
+  color: #a1a1a1;
+}
+
+.what-to-study button {
+  height: 55px;
+  align-self: center;
+  border-width: 0px;
+  background-color: #169bd5;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}
+
+.what-to-study .dont-know {
+  background-color: #fff;
+  color: #49577C;
+  align-self: end;
+}
+
+/* How to study */
+
+.how-to-study {
+  display: grid;
+  grid-template-rows: 123px 220px 100px auto;
+}
+
+.how-to-study .searchtool-header {
+  padding: 0 28px;
+}
+
+.how-to-study form {
+  text-align: left;
+  padding: 0 40px;
+  color: #fff;
+  font-size: 24px;
+}
+
+.how-to-study input {
+  margin: 20px;
+}
+
+.checkbox {
+  position: relative;
+}
+
+.checkbox [type=checkbox] + label::before {
+  content: "";
+  border: 2px solid;
+  background: #49577c;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 11px;
+  left: 11px;
+  border-radius: 5px;
+}
+
+.checkbox [type=checkbox] + label::after {
+  content: "";
+  border: solid;
+  border-width: 0 0 3px 3px;
+  background: transparent;
+  border-top-color: transparent;
+  width: 12px;
+  height: 5px;
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  zoom: 1;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.checkbox input:checked + label::after {
+  zoom: 1;
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+.checkbox input:checked + label::before {
+  background: #ff6600;
+  border: none;
+  width: 27px;
+  height: 27px;
+}
+
+.checkbox [type=checkbox]:focus + label::before {
+  -webkit-box-shadow: 0 0 0 3px #ff6600;
+  -moz-box-shadow: 0 0 0 3px #ff6600;
+  box-shadow: 0 0 0 3px #ff6600;
+}
+
+.how-to-study button {
+  height: 55px;
+  align-self: center;
+  border-width: 0px;
+  background-color: #169bd5;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}
+
+/* Choose a location */
+
+.choose-a-location {
+  display: grid;
+  grid-template-rows: 100px 268px 100px auto;
+}
+
+.choose-a-location .searchtool-header {
+  padding: 0;
+}
+
+.tab-container {
+  display: grid;
+  grid-template-rows: 52px auto;
+}
+
+.tab-container ul {
+  display: grid;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.tab-headings {
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.tab-headings li {
+  padding: 17px 0;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 700;
+  background-color: #323c54;
+}
+
+.tab-headings .selected {
+  background-color: #ff6600;
+}
+
+.tab-headings li:focus {
+  outline: none;
+}
+
+.tab-container .country-options {
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.country-options li {
+  padding: 15px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #e4e4e4;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.country-options li:focus {
+  outline: none;
+}
+
+.tab-container .text-input {
+  background-color: #fff;
+  color: #49577c;
+  font-size: 24px;
+}
+
+.tab-container .text-input input {
+  margin: 0 21px 21px 21px;
+  border: 1px solid #797979;
+  height: 53px;
+  padding-left: 21px;
+  font-size: 16px;
+}
+
+.tab-container .text-input input::placeholder {
+  color: #a1a1a1;
+}
+
+.place {
+  display: none;
+  grid-template-rows: 136px auto;
+}
+
+.postcode {
+  display: none;
+  grid-template-rows: 136px auto;
+}
+
+.choose-a-location button {
+  height: 55px;
+  align-self: center;
+  border-width: 0px;
+  background-color: #169bd5;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}
+
+.help-decide button {
+  text-decoration: underline;
+  font-size: 16px;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+}
