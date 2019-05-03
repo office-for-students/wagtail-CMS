@@ -31,7 +31,7 @@ $('#close-menu').click(() => {
 
 // Search Tool
 
-$('.tab-headings>li').click((e) => {
+handleTabClick = (e) => {
   let headings = $('.tab-headings>li')
   let tabs = ["Country", "Place", "Postcode"]
   for (i = 0; i < headings.length; i++) {
@@ -44,11 +44,19 @@ $('.tab-headings>li').click((e) => {
     $(`#${tabs[i]}`).css('display', 'none')
   }
   $(`#${e.target.innerHTML}`).css('display', 'grid')
+}
+
+$('.tab-headings>li').click((e) => {
+  handleTabClick(e);
 })
 
-let countryOptions = {}
+$('.tab-headings>li').keydown((e) => {
+  if(e.which === 13 || e.which === 32) {
+    handleTabClick(e)
+  }
+})
 
-$('.country-options>li').click((e) => {
+handleCountryClick = (e) => {
   if(countryOptions[e.target.id] === true) {
     countryOptions[e.target.id] = false
   } else {
@@ -58,5 +66,17 @@ $('.country-options>li').click((e) => {
     $(`#${e.target.id}`).css('background-color', '#f2f2f2')
   } else {
     $(`#${e.target.id}`).css('background-color', '#fff')
+  }
+}
+
+let countryOptions = {}
+
+$('.country-options>li').click((e) => {
+  handleCountryClick(e)
+})
+
+$('.country-options>li').keydown((e) => {
+  if(e.which === 13 || e.which === 32) {
+    handleCountryClick(e)
   }
 })

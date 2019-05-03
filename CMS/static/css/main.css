@@ -438,6 +438,10 @@ nav {
   background-color: #ff6600;
 }
 
+.tab-headings li:focus {
+  outline: none;
+}
+
 .tab-container .country-options {
   grid-template-rows: 1fr 1fr 1fr 1fr;
 }
@@ -449,6 +453,10 @@ nav {
   color: #333333;
   font-size: 16px;
   font-weight: 700;
+}
+
+.country-options li:focus {
+  outline: none;
 }
 
 .tab-container .text-input {

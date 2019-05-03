@@ -16,18 +16,18 @@
     <ul class="tab-headings">
       {% for block in page.tab_headings %}
         {% if forloop.first %}
-          <li class="selected">{{block}}</li>
+          <li tabindex="0" role="button" class="selected">{{block}}</li>
           {% else %}
-          <li>{{block}}</li>
+          <li tabindex="0" role="button">{{block}}</li>
         {% endif %}
       {% endfor %}
     </ul>
     <ul id="Country" class="country-options">
       {% for block in page.country_options %}
         {% if forloop.last %}
-          <li id="NorthernIreland">{{block}}</li>
+          <li tabindex="0" role="button" id="NorthernIreland">{{block}}</li>
         {% else %}
-          <li id="{{block}}">{{block}}</li>
+          <li tabindex="0" role="button" id="{{block}}">{{block}}</li>
         {% endif %}
       {% endfor %}
     </ul>
