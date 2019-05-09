@@ -27,6 +27,8 @@ This application is based on the Wagtail CMS.
 
 ### Running the site
 
+As a prerequisite to running the site you need to have Python (3.6.8) and PIP installed. There are multiple ways to install Python, either download from the official [Python site](https://www.python.org/downloads/) or use the package manager [Homebrew](https://brew.sh/). PIP comes installed with Python 3.4(or greater) by default
+
 You have two options to run the development server:
 
 **1.** In a virtual environment of your choice run the following from the root directory of the project:
@@ -38,6 +40,8 @@ pip install -r requirements.txt
 ```
 
 **2.** from the root directory run:
+
+This options requires you to have [Docker](https://docs.docker.com/v17.12/docker-for-mac/install/) installed in order to run the site in a Docker container 
 
 ```
 docker build -t wagtailcms .
