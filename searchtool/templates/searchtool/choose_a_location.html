@@ -24,11 +24,7 @@
     </ul>
     <ul id="Country" class="country-options">
       {% for block in page.country_options %}
-        {% if forloop.last %}
-          <li tabindex="0" role="button" id="NorthernIreland">{{block}}</li>
-        {% else %}
-          <li tabindex="0" role="button" id="{{block}}">{{block}}</li>
-        {% endif %}
+        <li tabindex="0" role="button" id="{{block|cut:" "}}">{{block}}</li>
       {% endfor %}
     </ul>
     <div id="Place" class="place tab-two text-input">
@@ -44,7 +40,7 @@
   <button role="button">{{page.button}}</button>
   <div class="help-decide">
     <button role="button">
-      Help me to decide
+      {{ page.help_decide}}
     </button>
   </div>
 </div>

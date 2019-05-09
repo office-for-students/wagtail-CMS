@@ -1,17 +1,4 @@
 
-// handleClick = (e) => {
-//   for(i = 0; i < tabs.length; i++) {
-//     document.getElementById(tabs[i]).style.display = "none"
-//   }
-//   document.getElementById(e.target.innerHTML).style.display = "grid"
-// }
-//
-// let list = document.getElementsByTagName('li')
-// let tabs = ["Country", "Place", "Postcode"]
-// for (i = 0; i < list.length; i++) {
-//   list[i].addEventListener('click', handleClick)
-// }
-
 // Mobile Nav
 $('#burger-menu').click(() => {
   $('.mobile-nav').toggle()

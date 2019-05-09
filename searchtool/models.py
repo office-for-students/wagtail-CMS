@@ -16,10 +16,12 @@ class WhereToStudy(Page):
     options = StreamField([
         ('option', blocks.TextBlock())
     ])
+    help_decide = TextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('header', classname="full"),
-        StreamFieldPanel('options', classname="full")
+        StreamFieldPanel('options', classname="full"),
+        FieldPanel('help_decide', classname="full")
     ]
 
 class ChooseAUni(Page):
@@ -38,12 +40,14 @@ class WhatToStudy(Page):
     placeholder = TextField(blank=True)
     button = TextField(blank=True)
     button_two = TextField(blank=True)
+    help_decide = TextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('header', classname="full"),
         FieldPanel('placeholder', classname="full"),
         FieldPanel('button', classname="full"),
         FieldPanel('button_two', classname="full"),
+        FieldPanel('help_decide', classname="full")
     ]
 
 class HowToStudy(Page):
@@ -52,11 +56,13 @@ class HowToStudy(Page):
         ('option', blocks.TextBlock(blank=True))
     ])
     button = TextField(blank=True)
+    help_decide = TextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('header', classname="full"),
         StreamFieldPanel('options', classname="full"),
-        FieldPanel('button', classname="full")
+        FieldPanel('button', classname="full"),
+        FieldPanel('help_decide', classname="full")
     ]
 
 class ChooseALocation(Page):
@@ -72,6 +78,7 @@ class ChooseALocation(Page):
     tab_three_header = RichTextField(blank=True)
     tab_three_placeholder = TextField(blank=True)
     button = TextField(blank=True)
+    help_decide = TextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('header', classname="full"),
@@ -81,5 +88,6 @@ class ChooseALocation(Page):
         FieldPanel('tab_two_placeholder', classname="full"),
         FieldPanel('tab_three_header', classname="full"),
         FieldPanel('tab_three_placeholder', classname="full"),
-        FieldPanel('button', classname="full")
+        FieldPanel('button', classname="full"),
+        FieldPanel('help_decide', classname="full")
     ]

@@ -2,7 +2,7 @@
 {% load static %}
 {% load wagtailcore_tags %}
 
-{% block body_class %}template-wheretostudy{% endblock %}
+{% block body_class %}template-whattostudy{% endblock %}
 
 {% block extra_css %}
 
@@ -20,7 +20,7 @@
   <button role="button" class="dont-know">{{page.button_two}}</button>
   <div class="help-decide">
     <button role="button">
-      Help me to decide
+      {{ page.help_decide}}
     </button>
   </div>
 </div>
