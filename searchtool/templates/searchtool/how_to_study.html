@@ -1,0 +1,34 @@
+{% extends "search.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-howtostudy{% endblock %}
+
+{% block extra_css %}
+
+{% endblock extra_css %}
+
+{% block content %}
+<div class="searchtool-section how-to-study">
+  <div class="searchtool-header">
+    {{ page.header|richtext }}
+  </div>
+  <div class="inputs">
+    <form>
+      {% for block in page.options %}
+      <div class="checkbox">
+        <input id="{{block}}"type="checkbox" placeholder="{{page.placeholder}}" />
+        <label for="{{block}}">{% include_block block %}</label>
+      </div>
+      {% endfor %}
+    </form>
+  </div>
+  <button role="button">{{page.button}}</button>
+  <div class="help-decide">
+    <button role="button">
+      {{ page.help_decide}}
+    </button>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends "search.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-choosealocation{% endblock %}
+
+{% block extra_css %}
+
+{% endblock extra_css %}
+
+{% block content %}
+<div class="searchtool-section choose-a-uni">
+  <div class="searchtool-header">
+    {{ page.header|richtext }}
+  </div>
+  <div class="inputs">
+    <input type="text" placeholder="{{page.placeholder}}" />
+    <button type="button">{{page.button}}</button>
+  </div>
+</div>
+
+{% endblock content %}
