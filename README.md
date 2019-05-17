@@ -34,6 +34,7 @@ You have two options to run the development server:
 **1.** In a virtual environment of your choice run the following from the root directory of the project:
 
 ```
+source ./env.sh
 pip install -r requirements.txt
 ./manage.py runserver
 
@@ -41,7 +42,7 @@ pip install -r requirements.txt
 
 **2.** from the root directory run:
 
-This options requires you to have [Docker](https://docs.docker.com/v17.12/docker-for-mac/install/) installed in order to run the site in a Docker container 
+This options requires you to have [Docker](https://docs.docker.com/v17.12/docker-for-mac/install/) installed in order to run the site in a Docker container
 
 ```
 docker build -t wagtailcms .
@@ -81,6 +82,17 @@ Start server again
 docker run -p 8000:8000 wagtailcms
 
 ```
+
+## Environment variables
+
+| Variable        | Default       | Description                       |
+| --------------- | :-----------: | --------------------------        |    
+| DBHOST         | unistatsdb.postgres.database.azure.com            | DB host url/string                |
+| DBPORT         | 5432          | DB connection port                |
+| DBNAME         | unistatsdevdb        | db name to use                    |
+| DBUSER         | unistatsmanager@unistatsdb           | DB user                           |
+| DBPASSWORD     | 8f555f62-6009-4a77-a1aa-75658ac2bc1a              | DB password                       |
+
 
 ### Contributing
 
