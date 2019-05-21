@@ -1,5 +1,0 @@
-export DBHOST="unistatsdb.postgres.database.azure.com"
-export DBUSER="unistatsmanager@unistatsdb"
-export DBNAME="unistatsdevdb"
-export DBPORT="5432"
-export DBPASSWORD="8f555f62-6009-4a77-a1aa-75658ac2bc1a"

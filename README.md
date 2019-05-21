@@ -27,14 +27,28 @@ This application is based on the Wagtail CMS.
 
 ### Running the site
 
-As a prerequisite to running the site you need to have Python (3.6.8) and PIP installed. There are multiple ways to install Python, either download from the official [Python site](https://www.python.org/downloads/) or use the package manager [Homebrew](https://brew.sh/). PIP comes installed with Python 3.4(or greater) by default
+As a prerequisite to running the site you need to have Python (3.6.8), PIP and PostgreSQL installed. There are multiple ways to install Python, either download from the official [Python site](https://www.python.org/downloads/) or use the package manager [Homebrew](https://brew.sh/) ```brew install python3```. PIP comes installed with Python 3.4(or greater) by default.
+
+To install Postgres you can also use [Homebrew](https://brew.sh/)
+
+```
+brew update
+brew doctor
+brew install postgresql
+
+```
+To start Postgres:
+
+```
+pg_ctl -D /usr/local/var/postgres start && brew services start postgresql
+
+```
 
 You have two options to run the development server:
 
 **1.** In a virtual environment of your choice run the following from the root directory of the project:
 
 ```
-source ./env.sh
 pip install -r requirements.txt
 ./manage.py runserver
 
@@ -87,11 +101,11 @@ docker run -p 8000:8000 wagtailcms
 
 | Variable        | Default       | Description                       |
 | --------------- | :-----------: | --------------------------        |    
-| DBHOST         | unistatsdb.postgres.database.azure.com            | DB host url/string                |
+| DBHOST         | 127.0.0.1            | DB host url/string                |
 | DBPORT         | 5432          | DB connection port                |
-| DBNAME         | unistatsdevdb        | db name to use                    |
-| DBUSER         | unistatsmanager@unistatsdb           | DB user                           |
-| DBPASSWORD     | 8f555f62-6009-4a77-a1aa-75658ac2bc1a              | DB password                       |
+| DBNAME         | <database name>       | DB name to use                    |
+| DBUSER         | <username>        | DB user                           |
+| DBPASSWORD     | <password>              | DB password                       |
 
 
 ### Contributing
