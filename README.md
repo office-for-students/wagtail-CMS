@@ -35,13 +35,12 @@ To install Postgres you can also use [Homebrew](https://brew.sh/)
 brew update
 brew doctor
 brew install postgresql
-
 ```
+
 To start Postgres:
 
 ```
 pg_ctl -D /usr/local/var/postgres start && brew services start postgresql
-
 ```
 
 Create a local database
@@ -52,24 +51,28 @@ CREATE USER manager WITH PASSWORD 'supersecretpassword';
 GRANT ALL PRIVILEGES ON DATABASE sample TO manager;
 ```
 
-You have two options to run the development server:
+You have three options to run the development server:
 
 **1.** In a virtual environment of your choice run the following from the root directory of the project:
 
 ```
 pip install -r requirements.txt
 ./manage.py runserver
-
 ```
 
 **2.** from the root directory run:
 
-This options requires you to have [Docker](https://docs.docker.com/v17.12/docker-for-mac/install/) installed in order to run the site in a Docker container
+```
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+**3.** Using Docker containers, which requires you to have [Docker](https://docs.docker.com/v17.12/docker-for-mac/install/) installed in order to run the site in a Docker container
 
 ```
 docker-compose build
 docker-compose up
-
 ```
 
 The first command builds the docker image.
@@ -93,25 +96,24 @@ docker-compose down
 Rebuild Docker image
 
 ```
-docker-compose build web
+docker-compose build
 ```
 
 Start server again
 
 ```
 docker-compose up
-
 ```
 
 ## Environment variables
 
-| Variable        | Default       | Description                       |
-| --------------- | :-----------: | --------------------------        |    
-| DBHOST         | db           | DB host url/string                |
-| DBPORT         | 5432          | DB connection port                |
-| DBNAME         | <database name>       | DB name to use                    |
-| DBUSER         | <username>        | DB user                           |
-| DBPASSWORD     | <password>              | DB password                       |
+| Variable        | Default              | Description                       |
+| --------------- | -------------------- | --------------------------------- |
+| DBHOST          | host.docker.internal | DB host url/string                |
+| DBPORT          | 5432                 | DB connection port                |
+| DBNAME          | unisimple            | DB name to use                    |
+| DBUSER          | <username>           | DB user                           |
+| DBPASSWORD      | <password>           | DB password                       |
 
 
 ### Contributing
