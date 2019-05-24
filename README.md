@@ -44,6 +44,14 @@ pg_ctl -D /usr/local/var/postgres start && brew services start postgresql
 
 ```
 
+Create a local database
+
+```
+CREATE DATABASE sampledb;
+CREATE USER manager WITH PASSWORD 'supersecretpassword';
+GRANT ALL PRIVILEGES ON DATABASE sample TO manager;
+```
+
 You have two options to run the development server:
 
 **1.** In a virtual environment of your choice run the following from the root directory of the project:
@@ -59,12 +67,10 @@ pip install -r requirements.txt
 This options requires you to have [Docker](https://docs.docker.com/v17.12/docker-for-mac/install/) installed in order to run the site in a Docker container
 
 ```
-docker build -t wagtailcms .
-docker run -p 8000:8000 wagtailcms
+docker-compose build
+docker-compose up
 
 ```
-
-For either option:
 
 The first command builds the docker image.
 The second command starts the docker container, running on port 8000.
@@ -81,19 +87,19 @@ pip freeze > requirements.txt
 Stop docker container
 
 ```
-docker stop [CONTAINER]
+docker-compose down
 ```
 
 Rebuild Docker image
 
 ```
-docker build -t wagtailcms .
+docker-compose build web
 ```
 
 Start server again
 
 ```
-docker run -p 8000:8000 wagtailcms
+docker-compose up
 
 ```
 
@@ -101,7 +107,7 @@ docker run -p 8000:8000 wagtailcms
 
 | Variable        | Default       | Description                       |
 | --------------- | :-----------: | --------------------------        |    
-| DBHOST         | 127.0.0.1            | DB host url/string                |
+| DBHOST         | db           | DB host url/string                |
 | DBPORT         | 5432          | DB connection port                |
 | DBNAME         | <database name>       | DB name to use                    |
 | DBUSER         | <username>        | DB user                           |

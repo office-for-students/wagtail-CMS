@@ -92,11 +92,11 @@ WSGI_APPLICATION = 'CMS.wsgi.application'
 DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ['DBNAME'],
-        'HOST': os.environ['DBHOST'],
-        'USER': os.environ['DBUSER'],
-        'PORT': os.environ['DBPORT'],
-        'PASSWORD': os.environ['DBPASSWORD']
+        'NAME': os.environ.get('DBNAME'),
+        'HOST': os.environ.get('DBHOST'),
+        'USER': os.environ.get('DBUSER'),
+        'PORT': os.environ.get('DBPORT'),
+        'PASSWORD': os.environ.get('DBPASSWORD')
     }
 }
 
