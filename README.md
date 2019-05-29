@@ -27,29 +27,53 @@ This application is based on the Wagtail CMS.
 
 ### Running the site
 
-As a prerequisite to running the site you need to have Python (3.6.8) and PIP installed. There are multiple ways to install Python, either download from the official [Python site](https://www.python.org/downloads/) or use the package manager [Homebrew](https://brew.sh/). PIP comes installed with Python 3.4(or greater) by default
+As a prerequisite to running the site you need to have Python (3.6.8), PIP and PostgreSQL installed. There are multiple ways to install Python, either download from the official [Python site](https://www.python.org/downloads/) or use the package manager [Homebrew](https://brew.sh/) ```brew install python3```. PIP comes installed with Python 3.4(or greater) by default.
 
-You have two options to run the development server:
+To install Postgres you can also use [Homebrew](https://brew.sh/)
+
+```
+brew update
+brew doctor
+brew install postgresql
+```
+
+To start Postgres:
+
+```
+pg_ctl -D /usr/local/var/postgres start && brew services start postgresql
+```
+
+Create a local database
+
+```
+CREATE DATABASE sampledb;
+CREATE USER manager WITH PASSWORD 'supersecretpassword';
+GRANT ALL PRIVILEGES ON DATABASE sample TO manager;
+```
+
+You have three options to run the development server:
 
 **1.** In a virtual environment of your choice run the following from the root directory of the project:
 
 ```
 pip install -r requirements.txt
 ./manage.py runserver
-
 ```
 
 **2.** from the root directory run:
 
-This options requires you to have [Docker](https://docs.docker.com/v17.12/docker-for-mac/install/) installed in order to run the site in a Docker container 
-
 ```
-docker build -t wagtailcms .
-docker run -p 8000:8000 wagtailcms
-
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
 ```
 
-For either option:
+**3.** Using Docker containers, which requires you to have [Docker](https://docs.docker.com/v17.12/docker-for-mac/install/) installed in order to run the site in a Docker container
+
+```
+docker-compose build
+docker-compose up
+```
 
 The first command builds the docker image.
 The second command starts the docker container, running on port 8000.
@@ -66,21 +90,31 @@ pip freeze > requirements.txt
 Stop docker container
 
 ```
-docker stop [CONTAINER]
+docker-compose down
 ```
 
 Rebuild Docker image
 
 ```
-docker build -t wagtailcms .
+docker-compose build
 ```
 
 Start server again
 
 ```
-docker run -p 8000:8000 wagtailcms
-
+docker-compose up
 ```
+
+## Environment variables
+
+| Variable        | Default              | Description                       |
+| --------------- | -------------------- | --------------------------------- |
+| DBHOST          | host.docker.internal | DB host url/string                |
+| DBPORT          | 5432                 | DB connection port                |
+| DBNAME          | unisimple            | DB name to use                    |
+| DBUSER          | <username>           | DB user                           |
+| DBPASSWORD      | <password>           | DB password                       |
+
 
 ### Contributing
 

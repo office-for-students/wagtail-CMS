@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  web:
+    environment:
+      DBNAME: "${DBNAME}"
+      DBHOST: "${DBHOST}"
+      DBUSER: "${DBUSER}"
+      DBPORT: "${DBPORT}"
+      DBPASSWORD: "${DBPASSWORD}"
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
