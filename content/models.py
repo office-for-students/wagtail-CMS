@@ -9,7 +9,7 @@ from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 # Create your models here.
 class ContentLandingPage(Page):
     options = StreamField([
-        ('option', blocks.TextBlock())
+        ('sections', blocks.PageChooserBlock())
     ])
 
     content_panels = Page.content_panels + [
