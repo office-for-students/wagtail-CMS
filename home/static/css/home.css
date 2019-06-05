@@ -122,6 +122,7 @@ a {
   .links-container {
     position: absolute;
     top: 345px;
+    width: 100%;
     -ms-grid-rows: 210px 210px 210px;
     grid-template-rows: 210px 210px 210px;
     padding-top: 0;
