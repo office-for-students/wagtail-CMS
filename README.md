@@ -51,24 +51,19 @@ CREATE USER manager WITH PASSWORD 'supersecretpassword';
 GRANT ALL PRIVILEGES ON DATABASE sample TO manager;
 ```
 
-You have three options to run the development server:
+You have two options to run the development server:
 
-**1.** In a virtual environment of your choice run the following from the root directory of the project:
-
-```
-pip install -r requirements.txt
-./manage.py runserver
-```
-
-**2.** from the root directory run:
+**1.** Create a Python 3.6.8 virtual environment and run the following commands from the root directory of the project:
 
 ```
 pip install -r requirements.txt
 python manage.py migrate
+python manage.py createsuperuser
 python manage.py runserver
 ```
 
-**3.** Using Docker containers, which requires you to have [Docker](https://docs.docker.com/v17.12/docker-for-mac/install/) installed in order to run the site in a Docker container
+
+**2.** Using Docker containers, which requires you to have [Docker](https://docs.docker.com/v17.12/docker-for-mac/install/) installed in order to run the site in a Docker container
 
 ```
 docker-compose build
@@ -77,6 +72,22 @@ docker-compose up
 
 The first command builds the docker image.
 The second command starts the docker container, running on port 8000.
+
+After the docker image is running for the first time, connect to it and create an admin login as follows:
+
+1. Connect to the Docker image
+```
+docker exec -it <containerid> /bin/bash
+```
+
+2. Run the Django createsuperuser command
+```
+python manage.py createsuperuser
+```
+
+
+
+
 
 
 ### Adding new dependencies
