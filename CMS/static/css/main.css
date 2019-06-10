@@ -115,7 +115,9 @@ nav {
 .searchtool-container {
   height: 100vh;
   background-color: #49577c;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-rows: 10% 90%;
   grid-template-rows: 10% 90%;
   text-align: center;
 }
@@ -153,6 +155,7 @@ nav {
 /* Choose a uni */
 
 .options {
+  display: -ms-grid;
   display: grid;
   grid-row-gap: 15px;
   padding-top: 50px;
@@ -169,11 +172,14 @@ nav {
 }
 
 .choose-a-uni {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-rows: 218px 150px;
   grid-template-rows: 218px 150px;
 }
 
 .choose-a-uni .inputs {
+  display: -ms-grid;
   display: grid;
 }
 
@@ -181,7 +187,21 @@ nav {
   font-size: 14px;
   height: 55px;
   padding: 0 20px;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
+}
+
+.choose-a-uni input::-webkit-input-placeholder {
+  color: #a1a1a1;
+}
+
+.choose-a-uni input:-ms-input-placeholder {
+  color: #a1a1a1;
+}
+
+.choose-a-uni input::-ms-input-placeholder {
+  color: #a1a1a1;
 }
 
 .choose-a-uni input::placeholder {
@@ -190,6 +210,8 @@ nav {
 
 .choose-a-uni button {
   height: 55px;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
   border-width: 0px;
   background-color: #169bd5;
@@ -203,7 +225,9 @@ nav {
 /* What to study */
 
 .what-to-study {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-rows: 180px 150px 100px auto;
   grid-template-rows: 180px 150px 100px auto;
 }
 
@@ -212,6 +236,7 @@ nav {
 }
 
 .what-to-study .inputs {
+  display: -ms-grid;
   display: grid;
 }
 
@@ -219,7 +244,21 @@ nav {
   font-size: 14px;
   height: 55px;
   padding: 0 20px;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
+}
+
+.what-to-study input::-webkit-input-placeholder {
+  color: #a1a1a1;
+}
+
+.what-to-study input:-ms-input-placeholder {
+  color: #a1a1a1;
+}
+
+.what-to-study input::-ms-input-placeholder {
+  color: #a1a1a1;
 }
 
 .what-to-study input::placeholder {
@@ -228,6 +267,8 @@ nav {
 
 .what-to-study button {
   height: 55px;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
   border-width: 0px;
   background-color: #169bd5;
@@ -241,13 +282,17 @@ nav {
 .what-to-study .dont-know {
   background-color: #fff;
   color: #49577C;
+  -ms-flex-item-align: end;
+  -ms-grid-row-align: end;
   align-self: end;
 }
 
 /* How to study */
 
 .how-to-study {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-rows: 123px 220px 100px auto;
   grid-template-rows: 123px 220px 100px auto;
 }
 
@@ -293,8 +338,6 @@ nav {
   position: absolute;
   top: 18px;
   left: 18px;
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
@@ -318,12 +361,13 @@ nav {
 
 .checkbox [type=checkbox]:focus + label::before {
   -webkit-box-shadow: 0 0 0 3px #ff6600;
-  -moz-box-shadow: 0 0 0 3px #ff6600;
   box-shadow: 0 0 0 3px #ff6600;
 }
 
 .how-to-study button {
   height: 55px;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
   border-width: 0px;
   background-color: #169bd5;
@@ -337,7 +381,9 @@ nav {
 /* Choose a location */
 
 .choose-a-location {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-rows: 100px 268px 100px auto;
   grid-template-rows: 100px 268px 100px auto;
 }
 
@@ -346,11 +392,14 @@ nav {
 }
 
 .tab-container {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-rows: 52px auto;
   grid-template-rows: 52px auto;
 }
 
 .tab-container ul {
+  display: -ms-grid;
   display: grid;
   list-style: none;
   padding-left: 0;
@@ -358,8 +407,25 @@ nav {
 }
 
 .tab-headings {
+  -ms-grid-rows: 1fr;
   grid-template-rows: 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.tab-headings > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+.tab-headings > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+}
+
+.tab-headings > *:nth-child(3) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
 }
 
 .tab-headings li {
@@ -379,6 +445,7 @@ nav {
 }
 
 .tab-container .country-options {
+  -ms-grid-rows: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
@@ -409,22 +476,38 @@ nav {
   font-size: 16px;
 }
 
+.tab-container .text-input input::-webkit-input-placeholder {
+  color: #a1a1a1;
+}
+
+.tab-container .text-input input:-ms-input-placeholder {
+  color: #a1a1a1;
+}
+
+.tab-container .text-input input::-ms-input-placeholder {
+  color: #a1a1a1;
+}
+
 .tab-container .text-input input::placeholder {
   color: #a1a1a1;
 }
 
 .place {
   display: none;
+  -ms-grid-rows: 136px auto;
   grid-template-rows: 136px auto;
 }
 
 .postcode {
   display: none;
+  -ms-grid-rows: 136px auto;
   grid-template-rows: 136px auto;
 }
 
 .choose-a-location button {
   height: 55px;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
   border-width: 0px;
   background-color: #169bd5;
@@ -441,4 +524,16 @@ nav {
   color: #fff;
   background-color: transparent;
   border: none;
+}
+
+footer {
+  height: 220px;
+  background: #29293D;
+  margin-top: 90px;
+}
+
+@media only screen and (max-width: 769px) {
+  footer {
+    margin-top: 45px;
+  }
 }

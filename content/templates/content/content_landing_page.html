@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/content.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="content-landing-page">
+  <div class="content-header">
+    <h1>{{ page.title }}</h1>
+  </div>
+  <div class="back">
+    <button type="button" name="button"><a href="{% pageurl page.get_parent %}"><svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.34339 11L6 10.3251L1.31364 5.50038L6 0.676626L5.34339 -0.000191689L0.000418186 5.50038L5.34339 11Z" fill="#8F8F8F"/></svg> Back</a></button>
+  </div>
+  <div class="options-container">
+    {% for block in page.options %}
+    <div>
+      <h2>{{block}}</h2>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}
