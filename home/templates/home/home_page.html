@@ -5,23 +5,26 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block extra_css %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 {% endblock extra_css %}
 
 {% block content %}
-<div class="container home">
+<div class="home">
   <div class="header">
-    {{ page.header|richtext }}
+    <div class="header-content">
+      {{ page.header|richtext }}
+      {{page.subtitle|richtext}}
+    </div>
   </div>
-  <div class="cta-container">
-    <div class="help">
-      {{ page.left_CTA|richtext }}
-      <i class="arrow fas fa-long-arrow-alt-left"></i>
-    </div>
-    <div class="find">
-      {{ page.right_CTA|richtext }}
-      <i class="arrow fas fa-long-arrow-alt-right"></i>
-    </div>
+  <div class="links-container">
+    {% for block in page.page_links %}
+      <a href={{ block.value.page.url }}>
+        <div class="link">
+          <h2>{{ block.value.title }}</h2>
+          <p>{{ block.value.subtitle }}</p>
+        </div>
+      </a>
+    {% endfor %}
   </div>
 </div>
 

@@ -1,0 +1,149 @@
+/*#########################
+######## Homepage ########
+#########################*/
+
+.home {
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 270px;
+  grid-template-rows: 270px;
+}
+
+.header {
+  display: -ms-grid;
+  display: grid;
+  text-align: left;
+  background-color: #4C4D6C;
+  color: #fff;
+  height: 100%;
+}
+
+.header-content {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  margin: 0 0 0 60px;
+}
+
+.header-content h1 {
+  margin: 0;
+  font-size: 54px;
+  line-height: 66px;
+}
+
+.header-content p {
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.links-container {
+  padding-top: 60px;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-grid-columns: 84%;
+  grid-template-columns: 84%;
+  -ms-grid-rows: 150px 45px 150px 45px 150px;
+  grid-template-rows: 150px 150px 150px;
+  grid-row-gap: 45px;
+}
+
+.links-container > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+.links-container > *:nth-child(2) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+}
+
+.links-container > *:nth-child(3) {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+}
+
+a {
+  text-decoration: none;
+  text-align: left;
+  color: #4C4D6C;
+  display: -ms-grid;
+  display: grid;
+  background-color: #F0F7FF;
+  border: 1px solid #4C4D6C;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+
+.link {
+  padding-left: 45px;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+}
+
+.link h2 {
+  font-size: 33px;
+  line-height: 40px;
+  margin: 0;
+}
+
+.link p {
+  font-size: 19px;
+  line-height: 22px;
+  margin: 0;
+}
+
+@media only screen and (max-width: 770px) {
+
+  .home {
+    -ms-grid-rows: 315px;
+    grid-template-rows: 315px;
+  }
+
+  .header-content {
+    margin: 0 0 0 30px;
+  }
+
+  .header-content h1 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .header-content p {
+    font-size: 19px;
+    line-height: 110%;
+  }
+
+  .links-container {
+    position: absolute;
+    top: 345px;
+    width: 100%;
+    -ms-grid-rows: 210px 210px 210px;
+    grid-template-rows: 210px 210px 210px;
+    padding-top: 0;
+  }
+
+  .link {
+    padding-left: 30px;
+    -ms-flex-item-align: end;
+    -ms-grid-row-align: end;
+    align-self: end;
+    padding-bottom: 30px;
+  }
+
+  .link h2 {
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 15px;
+  }
+
+  .link p {
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
