@@ -7,6 +7,126 @@ body {
   font-family: sans-serif, serif;
 }
 
+h1 {
+  font-size: 54px;
+  line-height: 54px;
+}
+
+h2 {
+  font-size: 33px;
+  line-height: 33px;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 24px;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 16px;
+}
+
+p {
+  font-size: 19px;
+  line-height: 22px
+}
+
+form {
+  font-size: 24px;
+}
+
+form input[type="text"] {
+  width: 100%;
+  border-radius: 6px;
+  height: 50px;
+  border: none;
+  padding-left: 15px;
+  font-size: 19px;
+  box-sizing: border-box;
+}
+
+form input[type="text"]:focus {
+  outline: -webkit-focus-ring-color auto 5px
+}
+
+form input[type="text"]::placeholder {
+  color: #8F8F8F;
+  font-size: 19px;
+}
+
+form input[type="submit"] {
+  width: 100%;
+  border-radius: 6px;
+  height: 50px;
+  border: none;
+  font-size: 24px;
+  line-height: 29px;
+  background-color: #71A4D3;
+  border-radius: 40px;
+  color: #fff;
+}
+
+form input[type="submit"]:hover {
+  color: #71A4D3;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.grid-1 {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-grid-columns: 84%;
+  grid-template-columns: 84%;
+}
+
+@media only screen and (max-width: 770px) {
+  h1 {
+    font-size: 33px;
+    line-height: 33px;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  h3 {
+    font-size: 19px;
+    line-height: 19px;
+  }
+
+  h4 {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  form {
+    font-size: 16px;
+  }
+
+  form input[type="text"] {
+    font-size: 16px;
+  }
+
+  form input[type="text"]::placeholder {
+    font-size: 16px;
+  }
+
+  form input[type="submit"] {
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
+
 /*#########################
 ########## Nav ###########
 #########################*/
@@ -529,11 +649,4 @@ nav {
 footer {
   height: 220px;
   background: #29293D;
-  margin-top: 90px;
-}
-
-@media only screen and (max-width: 769px) {
-  footer {
-    margin-top: 45px;
-  }
 }
