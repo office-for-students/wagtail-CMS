@@ -13,18 +13,30 @@
   <div class="header">
     <div class="header-content">
       {{ page.header|richtext }}
-      {{page.subtitle|richtext}}
+    </div>
+    <div class="blue-block">
+    </div>
+    <div class="slope">
     </div>
   </div>
-  <div class="links-container">
+  <div class="links-container grid-1">
     {% for block in page.page_links %}
       <a href={{ block.value.page.url }}>
         <div class="link">
           <h2>{{ block.value.title }}</h2>
-          <p>{{ block.value.subtitle }}</p>
         </div>
       </a>
     {% endfor %}
+  </div>
+  <div class="search-form grid-1">
+    {{page.search_header|richtext}}
+    <form action="{% url 'results' %}" method="get">
+        {{page.course_field_label}} <br>
+        <input id="courseName" type="text" name="courseQuery" {% if course_query %} value="{{ course_query }}"{% endif %} placeholder="Course Name" required ><br>
+        {{page.institution_field_label}} <br>
+        <input id="instituionName" type="text" name="institutionQuery" {% if institution_query %} value="{{ institution_query }}"{% endif %} placeholder="Institution"><br>
+        <input type="submit" value="Search" class="button">
+    </form>
   </div>
 </div>
 
