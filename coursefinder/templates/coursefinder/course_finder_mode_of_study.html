@@ -1,0 +1,22 @@
+{% extends "coursefinder/course_finder_base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+
+
+{% block question %}
+<h3>{{page.question}}</h3>
+<form>
+  <div  class="checkbox">
+    <input id="fullTime" type="checkbox" name="" value="fulltime"> <label for="fullTime">Full-time</label><br>
+  </div>
+  <div  class="checkbox">
+    <input id="partTime" type="checkbox" name="" value="parttime"> <label for="partTime">Part-time</label><br>
+  </div>
+  <div  class="checkbox">
+    <input id="distanceLearning" type="checkbox" name="" value="distancelearning"> <label for="distanceLearning">Distance learning</label><br>
+  </div>
+</form>
+<div class="helper-text">
+  {{ page.helper_text|richtext }}
+</div>
+{% endblock %}

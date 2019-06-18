@@ -1,0 +1,11 @@
+{% extends "coursefinder/course_finder_base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% block body_class %}template-course-finder-town-city{% endblock %}
+
+{% block question %}
+<h3>{{page.question}}</h3>
+<form>
+  <input type="text" name="" value="">
+</form>
+{% endblock %}

@@ -103,4 +103,10 @@ $(document).ready(function() {
            wrapAll('<div class="subsection-text" />');
      });
 
+  // Course finder
+
+  $('.template-course-finder-choose-subject form div:nth-of-type(2) input').on('input', () => {
+    $('.template-course-finder-choose-subject div:nth-of-type(3)').css('display', 'block')
+  })
+
 });
