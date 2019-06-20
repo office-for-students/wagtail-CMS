@@ -1,0 +1,22 @@
+{% extends "coursefinder/course_finder_base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% block body_class %}template-course-finder-narrow-search{% endblock %}
+
+{% block question %}
+<h3>{{page.question}}</h3>
+<form>
+  <div class="radio">
+    <input id="uni" type="radio" name="radio-group" value=""> <label for="uni">to a specific uni?</label>
+  </div>
+  <div class="radio">
+    <input id="city" type="radio" name="radio-group" value="" disabled> <label for="city"> to a specific town/city?</label>
+  </div>
+  <div class="radio">
+    <input id="home" type="radio" name="radio-group" value="" disabled> <label for="home">to near your home?</label>
+  </div>
+  <div class="radio">
+    <input id="all" type="radio" name="radio-group" value=""> <label for="all">Show all</label>
+  </div>
+</form>
+{% endblock %}
