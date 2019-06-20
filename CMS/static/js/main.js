@@ -16,58 +16,6 @@ $(document).ready(function() {
     $('nav').css('grid-template-rows', "1fr")
   })
 
-  // Search Tool
-
-  handleTabClick = (e) => {
-    let headings = $('.tab-headings>li')
-    let tabs = ["Country", "Place", "Postcode"]
-    for (i = 0; i < headings.length; i++) {
-      headings[i].classList = ''
-    }
-    if(e.target.classList[0] === undefined) {
-      e.target.classList = 'selected'
-    }
-    for(i = 0; i < tabs.length; i++) {
-      $(`#${tabs[i]}`).css('display', 'none')
-    }
-    $(`#${e.target.innerHTML}`).css('display', 'grid')
-  }
-
-  $('.tab-headings>li').click((e) => {
-    handleTabClick(e);
-  })
-
-  $('.tab-headings>li').keydown((e) => {
-    if(e.which === 13 || e.which === 32) {
-      handleTabClick(e)
-    }
-  })
-
-  handleCountryClick = (e) => {
-    if(countryOptions[e.target.id] === true) {
-      countryOptions[e.target.id] = false
-    } else {
-      countryOptions[e.target.id] = true
-    }
-    if(countryOptions[e.target.id] === true) {
-      $(`#${e.target.id}`).css('background-color', '#f2f2f2')
-    } else {
-      $(`#${e.target.id}`).css('background-color', '#fff')
-    }
-  }
-
-  let countryOptions = {}
-
-  $('.country-options>li').click((e) => {
-    handleCountryClick(e)
-  })
-
-  $('.country-options>li').keydown((e) => {
-    if(e.which === 13 || e.which === 32) {
-      handleCountryClick(e)
-    }
-  })
-
   // Content subsections
 
   handleSubsectionClick = (e) => {
@@ -109,4 +57,52 @@ $(document).ready(function() {
     $('.template-course-finder-choose-subject div:nth-of-type(3)').css('display', 'block')
   })
 
+  let countries = sessionStorage.getItem("countries")
+  let modes = sessionStorage.getItem("modes")
+  let subjects = sessionStorage.getItem("subject")
+  let uni = sessionStorage.getItem("uni")
+
+  $('#countries').text(countries)
+  $('#modes').text(modes)
+  $('#subjects').text(subjects)
+  $('#narrow').text(uni)
+
 });
+
+handleStartAgain = () => {
+  sessionStorage.clear()
+}
+
+handleFormSubmit = () => {
+  $('form').submit()
+}
+
+handleCountrySelection = (data) => {
+  let countries = []
+  for(i=0; i < data.country.length; i++) {
+    if(data.country[i].checked) {
+      countries.push(data.country[i].value)
+    }
+   }
+  sessionStorage.setItem("countries", countries);
+}
+
+handleModeSelection = (data) => {
+  let modes = []
+  for(i=0; i < data.mode.length; i++) {
+    if(data.mode[i].checked) {
+      modes.push(data.mode[i].value)
+    }
+  }
+  sessionStorage.setItem("modes", modes);
+}
+
+handleSubjectSelection = (data) => {
+  let subject = data.subject.value
+  sessionStorage.setItem("subject", subject)
+}
+
+handleUniSelection = (data) => {
+  let uni = data.uni.value
+  sessionStorage.setItem("uni", uni)
+}

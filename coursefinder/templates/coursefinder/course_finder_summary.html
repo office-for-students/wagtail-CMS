@@ -1,0 +1,16 @@
+{% extends "coursefinder/course_finder_base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% block body_class %}template-course-finder-summary{% endblock %}
+
+{% block question %}
+<h3>{{page.header}}</h3>
+<p>{{page.country_section_title}}</p>
+<p id="countries"></p>
+<p>{{page.mode_of_study_section_title}}</p>
+<p id="modes"></p>
+<p>{{page.subjects_section_title}}</p>
+<p id="subjects"></p>
+<p>{{page.narrow_by_section_title}}</p>
+<p id="narrow"></p>
+{% endblock %}

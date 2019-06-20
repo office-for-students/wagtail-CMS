@@ -16,8 +16,10 @@
   </div>
 </div>
 <div class="start grid-1">
-  <input type="submit" value="Start" class="button">
+  {% for child in page.get_children.specific %}
+    {% if child.page_order == 1 %}
+      <a href={% pageurl child %}><input type="submit" value="Start" class="button"></a>
+    {% endif %}
+  {% endfor %}
 </div>
-
-
 {% endblock content %}

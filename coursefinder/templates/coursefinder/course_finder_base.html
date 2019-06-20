@@ -12,16 +12,54 @@
     <h2>Course Finder</h2>
   </div>
   <ul class="navigation">
-      <li class="helper-text back">Back</li>
-      <li class="helper-text start-again">Start again</li>
-      <li class="helper-text skip">Skip</li>
+    {% if page.page_order == 1 %}
+      <a href={% pageurl page.get_parent %}><li class="helper-text back">Back</li></a>
+    {% elif page.page_order == 5 or page.page_order == 6 or page.page_order == 7 %}
+    {% for sibling in page.get_siblings.specific %}
+      {% if sibling.page_order == 4 %}
+        <a href={% pageurl sibling %}><li class="helper-text back">Back</li></a>
+      {% endif %}
+    {% endfor %}
+    {% else %}
+      {% for sibling in page.get_siblings.specific %}
+        {% if sibling.page_order == page.page_order|add:"-1" %}
+          <a href={% pageurl sibling %}><li class="helper-text back">Back</li></a>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    <a href={% pageurl page.get_parent %} onclick="handleStartAgain()"><li class="helper-text start-again">Start again</li></a>
+    {% if page.page_order == 4 or page.page_order == 5 or page.page_order == 6 or page.page_order == 7 %}
+      <a href={% url 'results' %}><li class="helper-text skip">Skip</li></a>
+    {% else %}
+      {% for sibling in page.get_siblings.specific %}
+        {% if sibling.page_order == page.page_order|add:"1" %}
+          <a href={% pageurl sibling %}><li class="helper-text skip">Skip</li></a>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   </ul>
   <div class="course-finder-content grid-2">
     <div class="question">
       {% block question %}{% endblock %}
     </div>
     <div class="next">
-      <input type="submit" value="Next" class="button">
+      {% if page.page_order == 4 %}
+        <input type="submit" value="Next" class="button" onclick="handleFormSubmit()">
+      {% elif page.page_order == 5 or page.page_order == 6 or page.page_order == 7 %}
+        {% for sibling in page.get_siblings.specific %}
+          {% if sibling.page_order == 8 %}
+            <a href={% pageurl sibling %}><input type="submit" value="Next" class="button" onclick="handleFormSubmit()"></a>
+          {% endif %}
+        {% endfor %}
+      {% elif page.page_order == 8 %}
+        <input type="submit" value="See courses" onclick="handleResultsRequest()" class="button">
+      {% else %}
+        {% for sibling in page.get_siblings.specific %}
+          {% if sibling.page_order == page.page_order|add:"1" %}
+            <a href={% pageurl sibling %}><input type="submit" value="Next" class="button" onclick="handleFormSubmit()"></a>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
 </div>

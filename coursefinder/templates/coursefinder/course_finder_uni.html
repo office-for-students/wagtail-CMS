@@ -1,0 +1,11 @@
+{% extends "coursefinder/course_finder_base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% block body_class %}template-course-finder-uni{% endblock %}
+
+{% block question %}
+<h3>{{page.question}}</h3>
+<form action="javascript:;" onsubmit="handleUniSelection(this)">
+  <input type="text" name="uni">
+</form>
+{% endblock %}

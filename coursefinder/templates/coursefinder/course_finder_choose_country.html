@@ -5,18 +5,18 @@
 
 {% block question %}
 <h3>{{page.question}}</h3>
-<form>
+<form action="javascript:;" onsubmit="handleCountrySelection(this)">
   <div  class="checkbox">
-    <input id="northernireland" type="checkbox" name="" value="northernireland"> <label for="northernireland">Northern Ireland</label><br>
+    <input id="northernireland" type="checkbox" name="country" value="northern_ireland"> <label for="northernireland">Northern Ireland</label><br>
   </div>
   <div  class="checkbox">
-    <input id="scotland" type="checkbox" name="" value="scotland"> <label for="scotland">Scotland</label><br>
+    <input id="scotland" type="checkbox" name="country" value="Scotland"> <label for="scotland">Scotland</label><br>
   </div>
   <div  class="checkbox">
-    <input id="england" type="checkbox" name="" value="england"> <label for="england">England</label><br>
+    <input id="england" type="checkbox" name="country" value="England"> <label for="england">England</label><br>
   </div>
   <div  class="checkbox">
-    <input id="wales" type="checkbox" name="" value="wales"><label for="wales">Wales</label><br>
+    <input id="wales" type="checkbox" name="country" value="Wales"><label for="wales">Wales</label><br>
   </div>
 </form>
 {% endblock %}

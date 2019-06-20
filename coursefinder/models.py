@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.fields import TextField
+from django.db.models.fields import TextField, IntegerField
 
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField, RichTextField
@@ -18,13 +18,19 @@ class CourseFinderLandingPage(Page):
     ]
 
 class CourseFinderChooseCountry(Page):
+    page_order = 1
     question = TextField(blank=True)
+    next_section = StreamField([
+        ('section', blocks.PageChooserBlock())
+    ])
 
     content_panels = Page.content_panels + [
-        FieldPanel('question', classname="full")
+        FieldPanel('question', classname="full"),
+        StreamFieldPanel('next_section', classname="full")
     ]
 
 class CourseFinderModeOfStudy(Page):
+    page_order = 2
     question = TextField(blank=True)
     helper_text = RichTextField(blank=True)
 
@@ -34,6 +40,7 @@ class CourseFinderModeOfStudy(Page):
     ]
 
 class CourseFinderChooseSubject(Page):
+    page_order = 3
     question = TextField(blank=True)
     helper_text = RichTextField(blank=True)
 
@@ -43,6 +50,7 @@ class CourseFinderChooseSubject(Page):
     ]
 
 class CourseFinderNarrowSearch(Page):
+    page_order = 4
     question = TextField(blank=True)
 
     content_panels = Page.content_panels + [
@@ -50,6 +58,7 @@ class CourseFinderNarrowSearch(Page):
     ]
 
 class CourseFinderTownCity(Page):
+    page_order = 5
     question = TextField(blank=True)
 
     content_panels = Page.content_panels + [
@@ -57,6 +66,7 @@ class CourseFinderTownCity(Page):
     ]
 
 class CourseFinderUni(Page):
+    page_order = 6
     question = TextField(blank=True)
 
     content_panels = Page.content_panels + [
@@ -64,8 +74,25 @@ class CourseFinderUni(Page):
     ]
 
 class CourseFinderPostcode(Page):
+    page_order = 7
     question = TextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('question', classname="full")
+    ]
+
+class CourseFinderSummary(Page):
+    page_order = 8
+    header = TextField(blank=True)
+    country_section_title = TextField(blank=True)
+    mode_of_study_section_title = TextField(blank=True)
+    subjects_section_title = TextField(blank=True)
+    narrow_by_section_title = TextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('header', classname="full"),
+        FieldPanel('country_section_title', classname="full"),
+        FieldPanel('mode_of_study_section_title', classname="full"),
+        FieldPanel('subjects_section_title', classname="full"),
+        FieldPanel('narrow_by_section_title', classname="full")
     ]

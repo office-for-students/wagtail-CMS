@@ -5,18 +5,19 @@
 
 {% block question %}
 <h3>{{page.question}}</h3>
-<form>
+<form action="{% url 'narrow_search' %}" method="post">
+  {% csrf_token %}
   <div class="radio">
-    <input id="uni" type="radio" name="radio-group" value=""> <label for="uni">to a specific uni?</label>
+    <input id="uni" type="radio" name="radioGroup" value="uni"> <label for="uni">to a specific uni?</label>
   </div>
   <div class="radio">
-    <input id="city" type="radio" name="radio-group" value=""> <label for="city"> to a specific town/city?</label>
+    <input id="city" type="radio" name="radioGroup" value="city"> <label for="city"> to a specific town/city?</label>
   </div>
   <div class="radio">
-    <input id="home" type="radio" name="radio-group" value=""> <label for="home">to near your home?</label>
+    <input id="home" type="radio" name="radioGroup" value="home"> <label for="home">to near your home?</label>
   </div>
   <div class="radio">
-    <input id="all" type="radio" name="radio-group" value=""> <label for="all">Show all</label>
+    <input id="all" type="radio" name="radioGroup" value="all"> <label for="all">Show all</label>
   </div>
 </form>
 {% endblock %}

@@ -30,9 +30,11 @@
   -ms-grid-columns: 285px;
   grid-template-columns: 285px;
 }
+.start a {
+  align-self: end;
+}
 
 .start input[type="submit"] {
-  align-self: end;
   margin-bottom: 70px;
   background-color: #fff;
   color: #5F607C;
@@ -94,6 +96,10 @@
   height: 100%;
   background-color: #5F607C;
   border-bottom: 1px solid #5F607C;
+}
+
+.course-finder-base .navigation a {
+  text-decoration: none;
 }
 
 .course-finder-base .navigation li {
@@ -301,12 +307,74 @@
 
 /* Narrow Search */
 
-.template-course-finder-town-city .question {
+.template-course-finder-town-city .question, .template-course-finder-uni .question {
   display: grid;
 }
 
-.template-course-finder-town-city h3 {
+.template-course-finder-town-city h3, .template-course-finder-uni h3  {
   margin-bottom: 45px;
   align-self: end;
+  margin-top: 0;
+}
+
+.template-course-finder-postcode .question {
+  padding: 0 160px;
+}
+
+.template-course-finder-postcode  h3 {
+  margin-top: 45px;
+  margin-bottom: 15px;
+}
+
+.template-course-finder-postcode .radio, .template-course-finder-postcode p {
+  text-align: center;
+}
+
+.template-course-finder-postcode .radio {
+  padding-top: 1px;
+  padding-bottom: 6px;
+}
+
+.template-course-finder-postcode input[type="text"] {
+  text-align: center;
+  padding-left: 0;
+}
+
+.template-course-finder-postcode .radio input[type="radio"] + label::before {
+  left: 90px;
+}
+
+.template-course-finder-postcode .radio input[type="radio"] + label::after {
+  left: 96px;
+}
+
+@media only screen and (max-width: 770px) {
+
+  .template-course-finder-postcode .question {
+    padding: 0 79px;
+  }
+
+  .template-course-finder-postcode .radio input[type="radio"] + label::before {
+    left: 27px;
+  }
+
+  .template-course-finder-postcode .radio input[type="radio"] + label::after {
+    left: 33px;
+  }
+
+}
+
+/* Summary */
+
+.template-course-finder-summary p {
+  text-align: left
+}
+
+.template-course-finder-summary p:nth-child(odd) {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.template-course-finder-summary p:nth-child(even) {
   margin-top: 0;
 }

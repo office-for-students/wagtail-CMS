@@ -7,7 +7,7 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
-from searchtool import views as searchtool_views
+from coursefinder import views as coursefinder_views
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
@@ -16,7 +16,8 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
-    url(r'^results/$', searchtool_views.results, name='results'),
+    url(r'^results/$', coursefinder_views.results, name='results'),
+    url(r'^narrow-search/$', coursefinder_views.narrow_search, name='narrow_search'),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
