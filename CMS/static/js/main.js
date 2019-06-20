@@ -57,6 +57,7 @@ $(document).ready(function() {
     $('.template-course-finder-choose-subject div:nth-of-type(3)').css('display', 'block')
   })
 
+
   let countries = sessionStorage.getItem("countries")
   let modes = sessionStorage.getItem("modes")
   let subjects = sessionStorage.getItem("subject")
@@ -66,6 +67,27 @@ $(document).ready(function() {
   $('#modes').text(modes)
   $('#subjects').text(subjects)
   $('#narrow').text(uni)
+
+  handleResultClick = (e) => {
+    if(e.currentTarget.classList.contains('open-result')) {
+      e.currentTarget.classList.remove('open-result')
+      e.currentTarget.children[0].style.borderBottom=""
+    } else {
+      e.currentTarget.classList.add('open-result')
+      e.currentTarget.children[0].style.borderBottom="1px solid #4C4D6C"
+    }
+  }
+
+  $('.result').click((e) => {
+    handleResultClick(e)
+  })
+
+  $('.result').keydown((e) => {
+    if(e.which === 13 || e.which === 32) {
+      handleResultClick(e)
+    }
+  })
+
 
 });
 

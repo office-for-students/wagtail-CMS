@@ -17,7 +17,9 @@ urlpatterns = [
 
     url(r'^search/$', search_views.search, name='search'),
     url(r'^results/$', coursefinder_views.results, name='results'),
+
     url(r'^narrow-search/$', coursefinder_views.narrow_search, name='narrow_search'),
+    url(r'^course-finder/results/$', coursefinder_views.course_finder_results, name='course_finder_results'),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in

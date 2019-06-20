@@ -19,6 +19,7 @@ def results(request):
         'total_institutions': total_institutions
     })
 
+
 def narrow_search(request):
     selection = request.POST.get('radioGroup', None)
     if selection == "uni":
@@ -29,3 +30,18 @@ def narrow_search(request):
         return HttpResponseRedirect("/course-finder/postcode")
     else:
         return render(request, 'coursefinder/results.html')
+
+def course_finder_results(request):
+    # course_query = request.GET.get('courseQuery', None)
+    # institution_query = request.GET.get('institutionQuery', None)
+    r = requests.get(url="http://host.docker.internal:10100/search/institution-courses?q=Psychology")
+    data = r.json()
+    total_courses = data['total_number_of_courses']
+    total_institutions = data['total_results']
+    results = data['items']
+
+    return render(request, 'coursefinder/course_finder_results.html', {
+        'results': results,
+        'total_courses': total_courses,
+        'total_institutions': total_institutions
+    })

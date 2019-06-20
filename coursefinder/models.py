@@ -81,6 +81,7 @@ class CourseFinderPostcode(Page):
         FieldPanel('question', classname="full")
     ]
 
+
 class CourseFinderSummary(Page):
     page_order = 8
     header = TextField(blank=True)
@@ -95,4 +96,17 @@ class CourseFinderSummary(Page):
         FieldPanel('mode_of_study_section_title', classname="full"),
         FieldPanel('subjects_section_title', classname="full"),
         FieldPanel('narrow_by_section_title', classname="full")
+
+class CourseFinderResults(Page):
+    page_order = 9
+    header = TextField(blank=True)
+    related_links_title = TextField(blank=True)
+    related_links = StreamField([
+        ('links', blocks.PageChooserBlock()),
+    ])
+
+    content_panels = Page.content_panels + [
+        FieldPanel('header', classname="full"),
+        FieldPanel('related_links_title'),
+        StreamFieldPanel('related_links', classname="full"),
     ]
