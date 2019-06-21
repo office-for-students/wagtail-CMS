@@ -22,10 +22,10 @@ def results(request):
 def narrow_search(request):
     selection = request.POST.get('radioGroup', None)
     if selection == "uni":
-        return HttpResponseRedirect("/course-finder/uni")
+        return HttpResponseRedirect("/course-finder-page/uni")
     elif selection == "city":
-        return HttpResponseRedirect("/course-finder/towncity")
+        return HttpResponseRedirect("/course-finder-page/towncity")
     elif selection == "home":
-        return HttpResponseRedirect("/course-finder/postcode")
+        return HttpResponseRedirect("/course-finder-page/postcode")
     else:
         return render(request, 'coursefinder/results.html')
