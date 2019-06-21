@@ -1,13 +1,13 @@
 <div class="results-container grid-2 ">
   <div class="results-header">
     <h3>{{page.header}}</h3>
-    <p>There are <strong>{{total_courses}}</strong> courses from <strong>{{total_institutions}}</strong> providers</p>
+    <p>There are <strong>{{total_courses}}</strong> course(s) from <strong>{{total_institutions}}</strong> provider(s)</p>
   </div>
   {% for item in results %}
     <div tabindex="0" role="button" aria-label="Show result" class="result">
       <div class="result-title">
         <h4>{{ item.public_ukprn_name }}</h4>
-        <p class="helper-text">{{ item.number_of_courses }} courses</p>
+        <p class="helper-text">{{ item.number_of_courses }} course(s)</p>
       </div>
       {% for course in item.courses %}
         <div class="course">

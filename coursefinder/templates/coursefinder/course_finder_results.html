@@ -13,8 +13,8 @@
   </div>
   <ul class="navigation">
       <li class="helper-text back">Back</li>
-      <li class="helper-text start-again">Start again</li>
-      <li class="helper-text skip">Skip</li>
+      <a href={% pageurl page.get_parent %} onclick="handleStartAgain()"><li class="helper-text start-again">Start again</li></a>
+      <li class="helper-text filter">Filter</li>
   </ul>
   <div class="course-finder-content">
      {% include "results_base.html" %}

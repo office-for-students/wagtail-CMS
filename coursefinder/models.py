@@ -96,6 +96,7 @@ class CourseFinderSummary(Page):
         FieldPanel('mode_of_study_section_title', classname="full"),
         FieldPanel('subjects_section_title', classname="full"),
         FieldPanel('narrow_by_section_title', classname="full")
+    ]
 
 class CourseFinderResults(Page):
     page_order = 9

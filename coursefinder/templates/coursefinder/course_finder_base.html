@@ -52,7 +52,13 @@
           {% endif %}
         {% endfor %}
       {% elif page.page_order == 8 %}
-        <input type="submit" value="See courses" onclick="handleResultsRequest()" class="button">
+        <form id="courseFinderResultsForm"  action="{% url 'course_finder_results' %}" method="get">
+          <input type="text" name="course_query" value="">
+          <input type="text" name="institution_query" value="">
+          <input type="text" name="mode_query" value="">
+          <input type="text" name="countries_query" value="">
+          <input type="submit" value="See courses" onclick="handleResultsRequest()" class="button">
+        </form>
       {% else %}
         {% for sibling in page.get_siblings.specific %}
           {% if sibling.page_order == page.page_order|add:"1" %}
