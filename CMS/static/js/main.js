@@ -64,16 +64,24 @@ $(document).ready(function() {
     $('.template-course-finder-choose-subject div:nth-of-type(3)').css('display', 'block')
   })
 
+  if (sessionStorage.getItem("countries") != null) {
+    let countries = sessionStorage.getItem("countries")
+    $('#countries').text(countries.split(",").join(", "))
+  }
+  if (sessionStorage.getItem("modes") != null) {
+    let modes = sessionStorage.getItem("modes")
+    $('#modes').text(modes.split(",").join(", "))
+  }
 
-  let countries = sessionStorage.getItem("countries")
-  let modes = sessionStorage.getItem("modes")
-  let subjects = sessionStorage.getItem("subject")
-  let uni = sessionStorage.getItem("uni")
+  if (sessionStorage.getItem("subject") != null) {
+    let subjects = sessionStorage.getItem("subject")
+    $('#subjects').text(subjects.split(",").join(", "))
+  }
 
-  $('#countries').text(countries.split(",").join(", "))
-  $('#modes').text(modes.split(",").join(", "))
-  $('#subjects').text(subjects.split(",").join(", "))
-  $('#narrow').text(uni.split(",").join(", "))
+  if (sessionStorage.getItem("uni") != null) {
+    let uni = sessionStorage.getItem("uni")
+    $('#narrow').text(uni.split(",").join(", "))
+  }
 
   handleResultClick = (e) => {
     if(e.currentTarget.classList.contains('open-result')) {
