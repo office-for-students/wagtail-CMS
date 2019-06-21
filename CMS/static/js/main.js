@@ -16,6 +16,13 @@ $(document).ready(function() {
     $('nav').css('grid-template-rows', "1fr")
   })
 
+  // Homepage form
+
+  let $inputs = $('input[name=courseQuery],input[name=institutionQuery]');
+  $inputs.on('input', function () {
+      $inputs.not(this).prop('required', !$(this).val().length);
+  });
+
   // Content subsections
 
   handleSubsectionClick = (e) => {
@@ -63,10 +70,10 @@ $(document).ready(function() {
   let subjects = sessionStorage.getItem("subject")
   let uni = sessionStorage.getItem("uni")
 
-  $('#countries').text(countries)
-  $('#modes').text(modes)
-  $('#subjects').text(subjects)
-  $('#narrow').text(uni)
+  $('#countries').text(countries.split(",").join(", "))
+  $('#modes').text(modes.split(",").join(", "))
+  $('#subjects').text(subjects.split(",").join(", "))
+  $('#narrow').text(uni.split(",").join(", "))
 
   handleResultClick = (e) => {
     if(e.currentTarget.classList.contains('open-result')) {
@@ -138,5 +145,4 @@ handleResultsRequest = () => {
   $("input[name='institution_query']").val(institution_query)
   $("input[name='mode_query']").val(mode_query)
   $("input[name='countries_query']").val(countries_query)
-  debugger
 }

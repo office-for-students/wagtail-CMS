@@ -29,7 +29,13 @@
     {% endif %}
     <a href={% pageurl page.get_parent %} onclick="handleStartAgain()"><li class="helper-text start-again">Start again</li></a>
     {% if page.page_order == 4 or page.page_order == 5 or page.page_order == 6 or page.page_order == 7 %}
-      <a href={% url 'results' %}><li class="helper-text skip">Skip</li></a>
+      <form id="courseFinderResultsForm"  action="{% url 'course_finder_results' %}" method="get">
+        <input type="text" name="course_query" value="">
+        <input type="text" name="institution_query" value="">
+        <input type="text" name="mode_query" value="">
+        <input type="text" name="countries_query" value="">
+        <input class="skip" type="submit" value="Skip" onclick="handleResultsRequest()" class="button">
+      </form>
     {% else %}
       {% for sibling in page.get_siblings.specific %}
         {% if sibling.page_order == page.page_order|add:"1" %}

@@ -12,11 +12,15 @@
       {% for course in item.courses %}
         <div class="course">
           <a href="#" class="course-name">{{ course.english_title }}</a>
-          <p class="course-info">{{ course.length_of_course }}-year course</p>
+          {% if course.length_of_course == "" %}
+            <p class="course-info">Length of course is not available</p>
+          {% else %}
+            <p class="course-info">{{ course.length_of_course }}-year course</p>
+          {% endif %}
           <p class="course-info">{{ course.mode }}</p>
           <p class="course-info">Sandwich year ({{ course.sandwich_year }})</p>
           <p class="course-info">Year abroad ({{ course.year_abroad }})</p>
-          <p class="course-info"></p>
+          <p class="course-info">Location: {{ course.location.english_name }}</p>
           <input type="button" name="" value="+ compare course">
         </div>
       {% endfor %}

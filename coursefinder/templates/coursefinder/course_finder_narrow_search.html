@@ -5,7 +5,7 @@
 
 {% block question %}
 <h3>{{page.question}}</h3>
-<form action="{% url 'narrow_search' %}" method="post">
+<form action="{% url 'narrow_search' %}" method="post" onsubmit="handleResultsRequest()">
   {% csrf_token %}
   <div class="radio">
     <input id="uni" type="radio" name="radioGroup" value="uni"> <label for="uni">to a specific uni?</label>
@@ -19,5 +19,8 @@
   <div class="radio">
     <input id="all" type="radio" name="radioGroup" value="all"> <label for="all">Show all</label>
   </div>
+  <input type="text" name="countries_query" value="">
+  <input type="text" name="mode_query" value="">
+  <input type="text" name="course_query" value="">
 </form>
 {% endblock %}
