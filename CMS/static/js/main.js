@@ -60,9 +60,109 @@ $(document).ready(function() {
 
   // Course finder
 
-  $('.template-course-finder-choose-subject form div:nth-of-type(2) input').on('input', () => {
-    $('.template-course-finder-choose-subject div:nth-of-type(3)').css('display', 'block')
+  if (sessionStorage.getItem("subjectJSON") === null) {
+    $.getJSON("/static/jsonfiles/subject-codes.json", (result) => {
+      result.sort(function(a, b){
+          if(a.englishname < b.englishname) { return -1; }
+          if(a.englishname > b.englishname) { return 1; }
+          return 0;
+      })
+      sessionStorage.setItem("subjectJSON", JSON.stringify(result));
+    })
+  }
+
+  $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
+    if(item.level === "1") {
+      $('#subjectArea').append(`<option value='${item.code}'>${item.englishname}</option>`)
+    }
+    if(item.level === "2") {
+      $('#subject').append(`<option value='${item.code}'>${item.englishname}</option>`)
+    }
+    if(item.level === "3") {
+      $('#subjectCode').append(`<option value='${item.code}'>${item.englishname}</option>`)
+    }
   })
+
+  handleSubjectAreaSelect = (value) => {
+    $('#subject').empty()
+    $('#subjectCode').empty()
+    $('#subject').append('<option value="disabled" disabled selected>Subject</option>')
+    $('#subjectCode').append('<option value selected>Show all</option>')
+    $('.template-course-finder-choose-subject div:nth-of-type(3)').css('display', 'none')
+    $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
+      if(item.level === "2" && item.code.includes(value)) {
+        $('#subject').append(`<option value='${item.code}'>${item.englishname}</option>`)
+      }
+    })
+
+  }
+
+  handleSubjectSelect = (value) => {
+    $('#subjectCode').empty()
+    $('.template-course-finder-choose-subject div:nth-of-type(3)').css('display', 'block')
+    let all = ""
+    $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
+      if(item.level === "3" && item.code.includes(value)) {
+        $('#subjectCode').append(`<option value='${item.code}'>${item.englishname}</option>`)
+        all += item.code + ","
+      }
+    })
+    $('#subjectCode').prepend(`<option value=${all} selected>Show all</option>`)
+  }
+
+  handleStartAgain = () => {
+    sessionStorage.clear()
+  }
+
+  handleFormSubmit = () => {
+    $('form').submit()
+  }
+
+  handleCountrySelection = (data) => {
+    let countries = []
+    for(i=0; i < data.country.length; i++) {
+      if(data.country[i].checked) {
+        countries.push(data.country[i].value)
+      }
+     }
+    sessionStorage.setItem("countries", countries);
+  }
+
+  handleModeSelection = (data) => {
+    let modes = []
+    for(i=0; i < data.mode.length; i++) {
+      if(data.mode[i].checked) {
+        modes.push(data.mode[i].value)
+      }
+    }
+    sessionStorage.setItem("modes", modes);
+  }
+
+  handleSubjectSubmit = (data) => {
+    let subject = ""
+    let subjectCodes = ""
+    if (data.subject.value != "disabled") {
+      subject = data.subjectCode.value
+    } else {
+      subject = data.subjectArea.value
+    }
+    if (data.subjectArea.value != "disabled" && data.subject.value === "disabled") {
+      $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
+        if(item.level === "3" && item.code.includes(data.subjectArea.value)) {
+          subjectCodes += item.code + ","
+        }
+      })
+    } else {
+      subjectCodes = data.subjectCode.value
+    }
+    sessionStorage.setItem("subject", subject)
+    sessionStorage.setItem("subjectCodes", subjectCodes)
+  }
+
+  handleUniSelection = (data) => {
+    let uni = data.uni.value
+    sessionStorage.setItem("uni", uni)
+  }
 
   if (sessionStorage.getItem("countries") != null) {
     let countries = sessionStorage.getItem("countries")
@@ -75,12 +175,33 @@ $(document).ready(function() {
 
   if (sessionStorage.getItem("subject") != null) {
     let subjects = sessionStorage.getItem("subject")
-    $('#subjects').text(subjects.split(",").join(", "))
+    let subjectNames = []
+    subjectsArray = subjects.split(",")
+    $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, a) {
+      $.each(subjectsArray, function(index, b) {
+        if(a.code === b) {
+          subjectNames.push(a.englishname)
+          $('#subjects').text(subjectNames)
+        }
+      })
+    })
   }
 
   if (sessionStorage.getItem("uni") != null) {
     let uni = sessionStorage.getItem("uni")
     $('#narrow').text(uni.split(",").join(", "))
+  }
+
+  handleResultsRequest = () => {
+    let course_query = sessionStorage.getItem('subjectCodes')
+    let institution_query = sessionStorage.getItem('uni')
+    let mode_query = sessionStorage.getItem('modes')
+    let countries_query = sessionStorage.getItem('countries')
+
+    $("input[name='course_query']").val(course_query)
+    $("input[name='institution_query']").val(institution_query)
+    $("input[name='mode_query']").val(mode_query)
+    $("input[name='countries_query']").val(countries_query)
   }
 
   handleResultClick = (e) => {
@@ -104,53 +225,3 @@ $(document).ready(function() {
   })
 
 });
-
-handleStartAgain = () => {
-  sessionStorage.clear()
-}
-
-handleFormSubmit = () => {
-  $('form').submit()
-}
-
-handleCountrySelection = (data) => {
-  let countries = []
-  for(i=0; i < data.country.length; i++) {
-    if(data.country[i].checked) {
-      countries.push(data.country[i].value)
-    }
-   }
-  sessionStorage.setItem("countries", countries);
-}
-
-handleModeSelection = (data) => {
-  let modes = []
-  for(i=0; i < data.mode.length; i++) {
-    if(data.mode[i].checked) {
-      modes.push(data.mode[i].value)
-    }
-  }
-  sessionStorage.setItem("modes", modes);
-}
-
-handleSubjectSelection = (data) => {
-  let subject = data.subject.value
-  sessionStorage.setItem("subject", subject)
-}
-
-handleUniSelection = (data) => {
-  let uni = data.uni.value
-  sessionStorage.setItem("uni", uni)
-}
-
-handleResultsRequest = () => {
-  let course_query = sessionStorage.getItem('subject')
-  let institution_query = sessionStorage.getItem('uni')
-  let mode_query = sessionStorage.getItem('modes')
-  let countries_query = sessionStorage.getItem('countries')
-
-  $("input[name='course_query']").val(course_query)
-  $("input[name='institution_query']").val(institution_query)
-  $("input[name='mode_query']").val(mode_query)
-  $("input[name='countries_query']").val(countries_query)
-}

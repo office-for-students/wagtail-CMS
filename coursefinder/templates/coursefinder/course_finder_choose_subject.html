@@ -5,17 +5,23 @@
 
 {% block question %}
 <h3>{{page.question}}</h3>
-<form ction="javascript:;" onsubmit="handleSubjectSelection(this)">
+<form action="javascript:;" onsubmit="handleSubjectSubmit(this)">
   <div>
-    <input id="subjectArea" type="text" name="subjectArea" placeholder="Subject area" size="20">
+    <select id="subjectArea" name="subjectArea" onchange="handleSubjectAreaSelect(this.value)">
+      <option value="disabled" disabled selected>Subject area</option>
+    </select>
     <span><img src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
   </div>
   <div>
-    <input id="subject" type="text" name="subject" placeholder="Subject">
+    <select id="subject" name="subject" onchange="handleSubjectSelect(this.value)">
+      <option value="disabled" disabled selected>Subject</option>
+    </select>
     <span><img src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
   </div>
   <div>
-    <input id="showall" type="text" placeholder="Show all">
+    <select id="subjectCode" name="subjectCode">
+      <option selected>Show all</option>
+    </select>
     <span><img src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
   </div>
 </form>

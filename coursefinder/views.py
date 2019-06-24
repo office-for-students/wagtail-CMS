@@ -31,7 +31,7 @@ def narrow_search(request):
     mode_query = request.POST.get('mode_query', None)
     countries_query = request.POST.get('countries_query', None)
     print(mode_query)
-    url = "%s/search/institution-courses?q=%s" % (settings.SEARCHAPIHOST, course_query)
+    url = "%s/search/institution-courses?subjects=%s" % (settings.SEARCHAPIHOST, course_query)
     if 'Full-time,Part-time' not in mode_query and mode_query != '':
         url = url + "&filters=%s" % (mode_query.lower().replace('-', '_').replace(' ', '_'))
     if countries_query != '':
@@ -63,7 +63,7 @@ def course_finder_results(request):
     institution_query = request.GET.get('institution_query', None)
     mode_query = request.GET.get('mode_query', None)
     countries_query = request.GET.get('countries_query', None)
-    url = "%s/search/institution-courses?q=%s" % (settings.SEARCHAPIHOST, course_query)
+    url = "%s/search/institution-courses?subjects=%s" % (settings.SEARCHAPIHOST, course_query)
     if institution_query != '':
         url = url + "&institutions=%s" % (institution_query)
     if 'Full-time,Part-time' not in mode_query and mode_query != '':
