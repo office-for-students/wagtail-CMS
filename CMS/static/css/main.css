@@ -310,13 +310,25 @@ nav {
 }
 
 .brand {
-  font-size: 30px;
-  font-weight: lighter;
-  margin: 0;
+  text-decoration: none;
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
   align-self: center;
+}
+
+.brand {
+  color: #fff;
+  background: none;
+  border: none;
+}
+
+.brand h1 {
+  font-size: 30px;
+  font-weight: lighter;
+  margin: 0;
+
   padding-left: 30px;
+  color: #fff;
 }
 
 .burger-menu {
@@ -351,7 +363,7 @@ nav {
     display: none
   }
 
-  .brand {
+  .brand h1 {
     font-size: 21px;
     padding-left: 20px;
   }

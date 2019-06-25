@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% block body_class %}template-course-finder-results{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/coursefinder.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="course-finder-base">
+  <div class="header">
+    <h2>Course Finder</h2>
+  </div>
+  <ul class="navigation">
+      <li class="helper-text back">Back</li>
+      <a href={% pageurl page.get_parent %} onclick="handleStartAgain()"><li class="helper-text start-again">Start again</li></a>
+      <li class="helper-text filter">Filter</li>
+  </ul>
+  <div class="course-finder-content">
+     {% include "search_results_list.html" %}
+  </div>
+</div>
+{% endblock content %}

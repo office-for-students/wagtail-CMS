@@ -16,6 +16,13 @@ $(document).ready(function() {
     $('nav').css('grid-template-rows', "1fr")
   })
 
+  // Homepage form
+
+  let $inputs = $('input[name=courseQuery],input[name=institutionQuery]');
+  $inputs.on('input', function () {
+      $inputs.not(this).prop('required', !$(this).val().length);
+  });
+
   // Content subsections
 
   handleSubsectionClick = (e) => {
@@ -57,15 +64,44 @@ $(document).ready(function() {
     $('.template-course-finder-choose-subject div:nth-of-type(3)').css('display', 'block')
   })
 
-  let countries = sessionStorage.getItem("countries")
-  let modes = sessionStorage.getItem("modes")
-  let subjects = sessionStorage.getItem("subject")
-  let uni = sessionStorage.getItem("uni")
+  if (sessionStorage.getItem("countries") != null) {
+    let countries = sessionStorage.getItem("countries")
+    $('#countries').text(countries.split(",").join(", "))
+  }
+  if (sessionStorage.getItem("modes") != null) {
+    let modes = sessionStorage.getItem("modes")
+    $('#modes').text(modes.split(",").join(", "))
+  }
 
-  $('#countries').text(countries)
-  $('#modes').text(modes)
-  $('#subjects').text(subjects)
-  $('#narrow').text(uni)
+  if (sessionStorage.getItem("subject") != null) {
+    let subjects = sessionStorage.getItem("subject")
+    $('#subjects').text(subjects.split(",").join(", "))
+  }
+
+  if (sessionStorage.getItem("uni") != null) {
+    let uni = sessionStorage.getItem("uni")
+    $('#narrow').text(uni.split(",").join(", "))
+  }
+
+  handleResultClick = (e) => {
+    if(e.currentTarget.classList.contains('open-result')) {
+      e.currentTarget.classList.remove('open-result')
+      e.currentTarget.children[0].style.borderBottom=""
+    } else {
+      e.currentTarget.classList.add('open-result')
+      e.currentTarget.children[0].style.borderBottom="1px solid #4C4D6C"
+    }
+  }
+
+  $('.result').click((e) => {
+    handleResultClick(e)
+  })
+
+  $('.result').keydown((e) => {
+    if(e.which === 13 || e.which === 32) {
+      handleResultClick(e)
+    }
+  })
 
 });
 
@@ -105,4 +141,16 @@ handleSubjectSelection = (data) => {
 handleUniSelection = (data) => {
   let uni = data.uni.value
   sessionStorage.setItem("uni", uni)
+}
+
+handleResultsRequest = () => {
+  let course_query = sessionStorage.getItem('subject')
+  let institution_query = sessionStorage.getItem('uni')
+  let mode_query = sessionStorage.getItem('modes')
+  let countries_query = sessionStorage.getItem('countries')
+
+  $("input[name='course_query']").val(course_query)
+  $("input[name='institution_query']").val(institution_query)
+  $("input[name='mode_query']").val(mode_query)
+  $("input[name='countries_query']").val(countries_query)
 }
