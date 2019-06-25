@@ -30,7 +30,7 @@
     <a href={% pageurl page.get_parent %} onclick="handleStartAgain()"><li class="helper-text start-again">Start again</li></a>
     {% if page.page_order == 4 or page.page_order == 5 or page.page_order == 6 or page.page_order == 7 %}
       <form id="courseFinderResultsForm"  action="{% url 'course_finder_results' %}" method="get">
-        <input type="text" name="course_query" value="">
+        <input type="text" name="subject_query" value="">
         <input type="text" name="institution_query" value="">
         <input type="text" name="mode_query" value="">
         <input type="text" name="countries_query" value="">
@@ -59,7 +59,7 @@
         {% endfor %}
       {% elif page.page_order == 8 %}
         <form id="courseFinderResultsForm"  action="{% url 'course_finder_results' %}" method="get">
-          <input type="text" name="course_query" value="">
+          <input type="text" name="subject_query" value="">
           <input type="text" name="institution_query" value="">
           <input type="text" name="mode_query" value="">
           <input type="text" name="countries_query" value="">

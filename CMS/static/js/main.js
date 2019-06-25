@@ -193,12 +193,12 @@ $(document).ready(function() {
   }
 
   handleResultsRequest = () => {
-    let course_query = sessionStorage.getItem('subjectCodes')
+    let subject_query = sessionStorage.getItem('subjectCodes')
     let institution_query = sessionStorage.getItem('uni')
     let mode_query = sessionStorage.getItem('modes')
     let countries_query = sessionStorage.getItem('countries')
 
-    $("input[name='course_query']").val(course_query)
+    $("input[name='subject_query']").val(subject_query)
     $("input[name='institution_query']").val(institution_query)
     $("input[name='mode_query']").val(mode_query)
     $("input[name='countries_query']").val(countries_query)
