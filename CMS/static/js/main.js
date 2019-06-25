@@ -143,6 +143,8 @@ $(document).ready(function() {
     let subjectCodes = ""
     if (data.subject.value != "disabled") {
       subject = data.subjectCode.value
+    } else if (data.subjectArea.value === "disabled" && data.subject.value === "disabled") {
+      subject = ""
     } else {
       subject = data.subjectArea.value
     }
@@ -152,6 +154,8 @@ $(document).ready(function() {
           subjectCodes += item.code + ","
         }
       })
+    } else if (data.subjectArea.value === "disabled" && data.subject.value === "disabled") {
+      subjectCodes = ""
     } else {
       subjectCodes = data.subjectCode.value
     }

@@ -30,8 +30,9 @@ def narrow_search(request):
     subject_query = request.POST.get('subject_query', None)
     mode_query = request.POST.get('mode_query', None)
     countries_query = request.POST.get('countries_query', None)
-    print(mode_query)
-    url = "%s/search/institution-courses?subjects=%s" % (settings.SEARCHAPIHOST, subject_query)
+    url = "%s/search/institution-courses?" % (settings.SEARCHAPIHOST)
+    if subject_query != '':
+        url = url + "subjects=%s" % (subject_query)
     if 'Full-time,Part-time' not in mode_query and mode_query != '':
         url = url + "&filters=%s" % (mode_query.lower().replace('-', '_').replace(' ', '_'))
     if countries_query != '':
