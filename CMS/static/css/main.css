@@ -37,6 +37,23 @@ form {
   font-size: 24px;
 }
 
+select {
+  width: 100%;
+  border-radius: 6px;
+  height: 50px;
+  padding-left: 15px;
+  font-size: 19px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  background-color: #fff;
+  border: 1px solid #5f607c;
+  color: #5f607c;
+}
+
+select:disabled {
+  color: red;
+}
+
 input[type="text"] {
   width: 100%;
   border-radius: 6px;
@@ -215,6 +232,11 @@ input[type="checkbox"]:disabled + label::before {
 
   form {
     font-size: 16px;
+  }
+
+  select {
+    font-size: 13px;
+    padding-left: 12px;
   }
 
   input[type="submit"] {
