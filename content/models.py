@@ -18,21 +18,24 @@ class ContentLandingPage(Page):
 
 class Section(Page):
     subsections = StreamField([
-        ('subsection', blocks.RichTextBlock(features=['h4', 'h5', 'h6', 'bold', 'italic', 'ol', 'ul', 'hr', 'link', 'document-link', 'image', 'embed']))
+        ('subsection', blocks.StructBlock([
+            ('subsection_title', blocks.TextBlock()),
+            ('subsection_content', blocks.RichTextBlock())
+        ]))
     ])
     related_links_title = TextField(blank=True)
     related_links = StreamField([
-        ('links', blocks.PageChooserBlock()),
-    ])
+        ('links', blocks.PageChooserBlock(required=False)),
+    ], blank=True)
     lateral_link_title = TextField(blank=True)
     lateral_links = StreamField([
-        ('links', blocks.PageChooserBlock()),
-    ])
+        ('links', blocks.PageChooserBlock(required=False)),
+    ], blank=True)
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel('subsections', classname="full"),
-        FieldPanel('related_links_title', classname="full"),
-        StreamFieldPanel('related_links', classname="full"),
-        FieldPanel('lateral_link_title', classname="full"),
-        StreamFieldPanel('lateral_links', classname="full")
+        StreamFieldPanel('subsections'),
+        FieldPanel('related_links_title'),
+        StreamFieldPanel('related_links'),
+        FieldPanel('lateral_link_title'),
+        StreamFieldPanel('lateral_links')
     ]
