@@ -6,6 +6,11 @@
 {% block question %}
 <h3>{{page.question}}</h3>
 <form action="javascript:;" onsubmit="handleUniSelection(this)">
-  <input type="text" name="uni">
+  <div>
+    <select id="uni" name="uni">
+      <option selected>Show all</option>
+    </select>
+    <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
+  </div>
 </form>
 {% endblock %}
