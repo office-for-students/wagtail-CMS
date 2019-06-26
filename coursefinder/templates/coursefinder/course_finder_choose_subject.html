@@ -10,19 +10,19 @@
     <select id="subjectArea" name="subjectArea" onchange="handleSubjectAreaSelect(this.value)">
       <option value="disabled" disabled selected>Subject area</option>
     </select>
-    <span><img src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
+    <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
   </div>
   <div>
     <select id="subject" name="subject" onchange="handleSubjectSelect(this.value)">
       <option value="disabled" disabled selected>Subject</option>
     </select>
-    <span><img src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
+    <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
   </div>
   <div>
     <select id="subjectCode" name="subjectCode">
       <option selected>Show all</option>
     </select>
-    <span><img src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
+    <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
   </div>
 </form>
 <div class="helper-text">

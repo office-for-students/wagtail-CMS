@@ -18,9 +18,9 @@ $(document).ready(function() {
 
   // Homepage form
 
-  let $inputs = $('input[name=courseQuery],input[name=institutionQuery]');
-  $inputs.on('input', function () {
-      $inputs.not(this).prop('required', !$(this).val().length);
+  let inputs = $('input[name=courseQuery],select[name=institutionQuery]');
+  inputs.on('input', function () {
+      inputs.not(this).prop('required', !$(this).val().length);
   });
 
   // Content subsections
@@ -109,6 +109,21 @@ $(document).ready(function() {
     })
     $('#subjectCode').prepend(`<option value=${all} selected>Show all</option>`)
   }
+
+  if (sessionStorage.getItem("uniJSON") === null) {
+    $.getJSON("/static/jsonfiles/institutions.json", (result) => {
+      result.sort(function(a, b){
+          if(a.order_by_name < b.order_by_name) { return -1; }
+          if(a.order_by_name > b.order_by_name) { return 1; }
+          return 0;
+      })
+      sessionStorage.setItem("uniJSON", JSON.stringify(result));
+    })
+  }
+
+  $.each(JSON.parse(sessionStorage.getItem("uniJSON")), function(index, item) {
+      $('#uni').append(`<option value='${item.name}'>${item.name}</option>`)
+  })
 
   handleStartAgain = () => {
     sessionStorage.clear()

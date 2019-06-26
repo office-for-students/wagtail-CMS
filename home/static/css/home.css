@@ -123,8 +123,23 @@ a {
   margin-bottom: 22.5px;
 }
 
+.search-form form select {
+  margin-bottom: 0;
+  margin-top: 15px;
+  border: none;
+}
+
+.search-form div span {
+  top: 15px;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  height: 50px;
+}
+
 .search-form form input[type="submit"] {
   margin-top: 30px;
+  height: 50px;
 }
 
 @media only screen and (max-width: 770px) {

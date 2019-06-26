@@ -292,27 +292,6 @@
   display: none;
 }
 
-.template-course-finder-choose-subject form div {
-  position: relative;
-}
-
-.template-course-finder-choose-subject  form div span {
-  position: absolute;
-  height: 48px;
-  width: 45px;
-  top: 0;
-  right: 0;
-  justify-content: center;
-  border: 1px solid #5F607C;
-  display: grid;
-  border-radius: 0 6px 6px 0;
-  background-color: #fff;
-}
-
-.template-course-finder-choose-subject form div span img {
-  align-self: center;
-}
-
 .template-course-finder-choose-subject  input[type="text"] {
   border: 1px solid #5F607C;
   box-sizing: border-box;

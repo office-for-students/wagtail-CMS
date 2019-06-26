@@ -28,13 +28,19 @@
       </a>
     {% endfor %}
   </div>
-  <div class="search-form grid-1">
+  <div class="search-form grid-2">
     {{page.search_header|richtext}}
     <form action="{% url 'results' %}" method="get">
-        {{page.course_field_label}} <br>
+        <label>{{page.course_field_label}} </label><br>
         <input id="courseName" type="text" name="courseQuery" {% if course_query %} value="{{ course_query }}"{% endif %} placeholder="Course Name" required><br>
-        {{page.institution_field_label}} <br>
-        <input id="instituionName" type="text" name="institutionQuery" {% if institution_query %} value="{{ institution_query }}"{% endif %} placeholder="Institution" required><br>
+        <label>{{page.institution_field_label}}</label>
+        <div>
+          <select id="uni" name="institutionQuery">
+            <option disabled selected>Institution</option>
+            <option value="">Show all</option>
+          </select>
+          <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
+        </div>
         <input type="submit" value="Search" class="button">
     </form>
   </div>

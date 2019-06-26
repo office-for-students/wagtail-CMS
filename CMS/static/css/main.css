@@ -50,10 +50,6 @@ select {
   color: #5f607c;
 }
 
-select:disabled {
-  color: red;
-}
-
 input[type="text"] {
   width: 100%;
   border-radius: 6px;
@@ -93,6 +89,27 @@ input[type="submit"]:hover {
 
 input[type="checkbox"]:disabled + label::before {
   background: #ababab;
+}
+
+form div {
+  position: relative;
+}
+
+form div span {
+  position: absolute;
+  height: 48px;
+  width: 45px;
+  top: 0;
+  right: 0;
+  justify-content: center;
+  border: 1px solid #5F607C;
+  display: grid;
+  border-radius: 0 6px 6px 0;
+  background-color: #fff;
+}
+
+.dropdown-arrow {
+  align-self: center;
 }
 
 .radio, .checkbox {
