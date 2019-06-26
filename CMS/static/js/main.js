@@ -53,6 +53,17 @@ $(document).ready(function() {
           return 0;
       })
       sessionStorage.setItem("subjectJSON", JSON.stringify(result));
+      $.each(result, function(index, item) {
+        if(item.level === "1") {
+          $('#subjectArea').append(`<option value='${item.code}'>${item.englishname}</option>`)
+        }
+        if(item.level === "2") {
+          $('#subject').append(`<option value='${item.code}'>${item.englishname}</option>`)
+        }
+        if(item.level === "3") {
+          $('#subjectCode').append(`<option value='${item.code}'>${item.englishname}</option>`)
+        }
+      })
     })
   }
 
@@ -103,7 +114,11 @@ $(document).ready(function() {
           return 0;
       })
       sessionStorage.setItem("uniJSON", JSON.stringify(result));
+      $.each(result, function(index, item) {
+          $('#uni').append(`<option value='${item.name}'>${item.name}</option>`)
+      })
     })
+
   }
 
   $.each(JSON.parse(sessionStorage.getItem("uniJSON")), function(index, item) {
