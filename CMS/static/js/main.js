@@ -28,10 +28,8 @@ $(document).ready(function() {
   handleSubsectionClick = (e) => {
     if(e.currentTarget.classList.contains('open-subsection')) {
       e.currentTarget.classList.remove('open-subsection')
-      e.currentTarget.children[0].children[0].style.borderBottom=""
     } else {
       e.currentTarget.classList.add('open-subsection')
-      e.currentTarget.children[0].children[0].style.borderBottom="1px solid #4C4D6C"
     }
   }
 
@@ -44,19 +42,6 @@ $(document).ready(function() {
       handleSubsectionClick(e)
     }
   })
-
-  $('.subsection>.rich-text').each(function(){
-     $(':not(h4)', this).wrapAll("<div class='subsection-content'></div>");
-  });
-
-
-  $(':not(p) + p, * > p:first-of-type').
-     each(function() {
-       $(this).
-           nextUntil(':not(p)').
-           addBack().
-           wrapAll('<div class="subsection-text" />');
-     });
 
   // Course finder
 

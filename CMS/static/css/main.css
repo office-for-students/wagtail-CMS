@@ -28,7 +28,7 @@ h4 {
   line-height: 16px;
 }
 
-p {
+p, li {
   font-size: 19px;
   line-height: 22px
 }
@@ -198,6 +198,16 @@ input[type="checkbox"]:disabled + label::before {
   grid-template-columns: 630px;
 }
 
+.grid-3 {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-grid-columns: 900px;
+  grid-template-columns: 900px;
+}
+
 .helper-text {
   font-size: 17px;
   line-height: 16px;
@@ -225,7 +235,7 @@ input[type="checkbox"]:disabled + label::before {
     line-height: 16px;
   }
 
-  p {
+  p, li {
     font-size: 16px;
     line-height: 16px;
   }
@@ -281,6 +291,11 @@ input[type="checkbox"]:disabled + label::before {
     justify-content: center;
     -ms-grid-columns: 315px;
     grid-template-columns: 315px;
+  }
+
+  .grid-3 {
+    -ms-grid-columns: 84%;
+    grid-template-columns: 84%;
   }
 
   .helper-text {
