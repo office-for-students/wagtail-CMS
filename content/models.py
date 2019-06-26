@@ -25,12 +25,12 @@ class Section(Page):
     ])
     related_links_title = TextField(blank=True)
     related_links = StreamField([
-        ('links', blocks.PageChooserBlock()),
-    ])
+        ('links', blocks.PageChooserBlock(required=False)),
+    ], blank=True)
     lateral_link_title = TextField(blank=True)
     lateral_links = StreamField([
-        ('links', blocks.PageChooserBlock()),
-    ])
+        ('links', blocks.PageChooserBlock(required=False)),
+    ], blank=True)
 
     content_panels = Page.content_panels + [
         StreamFieldPanel('subsections'),

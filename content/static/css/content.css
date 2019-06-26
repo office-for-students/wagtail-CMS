@@ -182,6 +182,7 @@
 .subsections-container {
   grid-column-gap: 30px;
   grid-row-gap: 30px;
+  padding-bottom: 45px;
 }
 
 .subsection {

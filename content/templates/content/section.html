@@ -43,22 +43,26 @@
     </div>
     {% endfor %}
   </div>
-  <div class="related-links grid-3">
-    <h2>{{ page.related_links_title }}</h2>
-    {% for block in page.related_links %}
-      <div class="link">
-        <h3>{{block}}</h3>
-      </div>
-    {% endfor %}
-  </div>
-  <div class="lateral-links grid-3">
-    <h2>{{ page.lateral_link_title }}</h2>
-    {% for block in page.lateral_links %}
-      <div class="link">
-        <h3>{{block}}</h3>
-      </div>
-    {% endfor %}
-  </div>
+  {% if page.related_links_title or page.related_links  %}
+    <div class="related-links grid-3">
+      <h2>{{ page.related_links_title }}</h2>
+      {% for block in page.related_links %}
+        <div class="link">
+          <h3>{{block}}</h3>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if page.lateral_links_title or page.lateral_links  %}
+    <div class="lateral-links grid-3">
+      <h2>{{ page.lateral_link_title }}</h2>
+      {% for block in page.lateral_links %}
+        <div class="link">
+          <h3>{{block}}</h3>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
 </div>
 
 {% endblock content %}
