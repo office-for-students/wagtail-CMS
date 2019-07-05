@@ -1,7 +1,11 @@
-from django.test import SimpleTestCase
+from django.conf import settings
+from django.test import TestCase
 
 
-class UniSimpleTestCase(SimpleTestCase):
+class UniSimpleTestCase(TestCase):
+
+    def setUp(self):
+        settings.LOCAL = True
 
     def assertIsTrue(self, value):
         self.assertIs(value, True)
