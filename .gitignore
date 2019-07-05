@@ -12,5 +12,17 @@ db.sqlite3
 .env
 env.sh
 
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
 # Jetbrains stuff
 .idea
