@@ -1,4 +1,3 @@
-from django.db import models
 from django.db.models.fields import TextField
 
 from wagtail.core.models import Page
@@ -6,10 +5,10 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
-# Create your models here.
 
 class SearchTool(Page):
     pass
+
 
 class WhereToStudy(Page):
     header = RichTextField(blank=True)
@@ -24,6 +23,7 @@ class WhereToStudy(Page):
         FieldPanel('help_decide', classname="full")
     ]
 
+
 class ChooseAUni(Page):
     header = RichTextField(blank=True)
     placeholder = TextField(blank=True)
@@ -34,6 +34,7 @@ class ChooseAUni(Page):
         FieldPanel('placeholder', classname="full"),
         FieldPanel('button', classname="full")
     ]
+
 
 class WhatToStudy(Page):
     header = RichTextField(blank=True)
@@ -50,6 +51,7 @@ class WhatToStudy(Page):
         FieldPanel('help_decide', classname="full")
     ]
 
+
 class HowToStudy(Page):
     header = RichTextField(blank=True)
     options = StreamField([
@@ -64,6 +66,7 @@ class HowToStudy(Page):
         FieldPanel('button', classname="full"),
         FieldPanel('help_decide', classname="full")
     ]
+
 
 class ChooseALocation(Page):
     header = RichTextField(blank=True)

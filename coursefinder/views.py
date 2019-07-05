@@ -1,16 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from wagtail.core.models import Page
 from coursefinder.models import CourseFinderResults
 from django.conf import settings
 import requests
 
-# Create your views here.
 
 def results(request):
     course_query = request.GET.get('courseQuery', "")
     institution_query = request.GET.get('institutionQuery', "")
-    r = requests.get(url="%s/search/institution-courses?q=%s&institutions=%s" % (settings.SEARCHAPIHOST, course_query, institution_query))
+    r = requests.get(url="%s/search/institution-courses?q=%s&institutions=%s" %
+                         (settings.SEARCHAPIHOST, course_query, institution_query))
     data = r.json()
     total_courses = data['total_number_of_courses']
     total_institutions = data['total_results']

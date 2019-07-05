@@ -1,12 +1,10 @@
-from django.db import models
-from django.db.models.fields import TextField, IntegerField
+from django.db.models.fields import TextField
 
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
-# Create your models here.
 
 class CourseFinderLandingPage(Page):
     header = TextField(blank=True)
@@ -16,6 +14,7 @@ class CourseFinderLandingPage(Page):
         FieldPanel('header', classname="full"),
         FieldPanel('subheader', classname="full")
     ]
+
 
 class CourseFinderChooseCountry(Page):
     page_order = 1
@@ -29,6 +28,7 @@ class CourseFinderChooseCountry(Page):
         StreamFieldPanel('next_section', classname="full")
     ]
 
+
 class CourseFinderModeOfStudy(Page):
     page_order = 2
     question = TextField(blank=True)
@@ -38,6 +38,7 @@ class CourseFinderModeOfStudy(Page):
         FieldPanel('question', classname="full"),
         FieldPanel('helper_text', classname="full")
     ]
+
 
 class CourseFinderChooseSubject(Page):
     page_order = 3
@@ -49,6 +50,7 @@ class CourseFinderChooseSubject(Page):
         FieldPanel('helper_text', classname="full")
     ]
 
+
 class CourseFinderNarrowSearch(Page):
     page_order = 4
     question = TextField(blank=True)
@@ -56,6 +58,7 @@ class CourseFinderNarrowSearch(Page):
     content_panels = Page.content_panels + [
         FieldPanel('question', classname="full")
     ]
+
 
 class CourseFinderTownCity(Page):
     page_order = 5
@@ -65,6 +68,7 @@ class CourseFinderTownCity(Page):
         FieldPanel('question', classname="full")
     ]
 
+
 class CourseFinderUni(Page):
     page_order = 6
     question = TextField(blank=True)
@@ -72,6 +76,7 @@ class CourseFinderUni(Page):
     content_panels = Page.content_panels + [
         FieldPanel('question', classname="full")
     ]
+
 
 class CourseFinderPostcode(Page):
     page_order = 7
@@ -97,6 +102,7 @@ class CourseFinderSummary(Page):
         FieldPanel('subjects_section_title', classname="full"),
         FieldPanel('narrow_by_section_title', classname="full")
     ]
+
 
 class CourseFinderResults(Page):
     page_order = 9
