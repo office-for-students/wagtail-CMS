@@ -11,3 +11,6 @@ db.sqlite3
 # Env stuff
 .env
 env.sh
+
+# Jetbrains stuff
+.idea
