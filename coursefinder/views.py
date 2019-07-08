@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
-from content.models import CourseSearch
+from coursefinder.models import CourseSearch
 from coursefinder.models import CourseFinderResults
 from django.conf import settings
 import requests

@@ -4,8 +4,6 @@ from wagtail.core.fields import StreamField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
-from content import request_handler
-
 
 class ContentLandingPage(Page):
     options = StreamField([
@@ -40,25 +38,3 @@ class Section(Page):
         FieldPanel('lateral_link_title'),
         StreamFieldPanel('lateral_links')
     ]
-
-
-class CourseSearch:
-
-    def __init__(self, course_query, institution_query):
-        self.course_query = course_query
-        self.institution_query = institution_query
-        self.total_courses = None
-        self.total_institutions = None
-        self.results = None
-
-    def execute(self):
-        response = request_handler.query_course_and_institution(self.course_query, self.institution_query)
-
-        if response.ok:
-            data = response.json()
-            self.total_courses = data.get('total_number_of_courses')
-            self.total_institutions = data.get('total_results')
-            self.results = data.get('items')
-        else:
-            # handle error
-            pass

@@ -5,6 +5,8 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
+from coursefinder import request_handler
+
 
 class CourseFinderLandingPage(Page):
     header = TextField(blank=True)
@@ -117,3 +119,24 @@ class CourseFinderResults(Page):
         FieldPanel('related_links_title'),
         StreamFieldPanel('related_links', classname="full"),
     ]
+
+class CourseSearch:
+
+    def __init__(self, course_query, institution_query):
+        self.course_query = course_query
+        self.institution_query = institution_query
+        self.total_courses = None
+        self.total_institutions = None
+        self.results = None
+
+    def execute(self):
+        response = request_handler.query_course_and_institution(self.course_query, self.institution_query)
+
+        if response.ok:
+            data = response.json()
+            self.total_courses = data.get('total_number_of_courses')
+            self.total_institutions = data.get('total_results')
+            self.results = data.get('items')
+        else:
+            # handle error
+            pass
