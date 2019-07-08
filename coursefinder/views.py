@@ -1,28 +1,26 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from wagtail.core.models import Page
+
+from coursefinder.models import CourseSearch
 from coursefinder.models import CourseFinderResults
 from django.conf import settings
 import requests
 
-# Create your views here.
 
 def results(request):
-    course_query = request.GET.get('courseQuery', "")
-    institution_query = request.GET.get('institutionQuery', "")
-    r = requests.get(url="%s/search/institution-courses?q=%s&institutions=%s" % (settings.SEARCHAPIHOST, course_query, institution_query))
-    data = r.json()
-    total_courses = data['total_number_of_courses']
-    total_institutions = data['total_results']
-    results = data['items']
+    course_search = CourseSearch(request.GET.get('courseQuery', ""), request.GET.get('institutionQuery', ""))
+    course_search.execute()
+
     page = CourseFinderResults.objects.get()
 
-    return render(request, 'coursefinder/course_finder_results.html', {
+    context = {
         'page': page,
-        'results': results,
-        'total_courses': total_courses,
-        'total_institutions': total_institutions
-    })
+        'results': course_search.results,
+        'total_courses': course_search.total_courses,
+        'total_institutions': course_search.total_institutions
+    }
+
+    return render(request, 'coursefinder/course_finder_results.html', context)
 
 
 def narrow_search(request):

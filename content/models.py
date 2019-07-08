@@ -1,12 +1,10 @@
-from django.db import models
 from django.db.models.fields import TextField
 from wagtail.core.models import Page
-from wagtail.core.fields import StreamField, RichTextField
+from wagtail.core.fields import StreamField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
 
-# Create your models here.
 class ContentLandingPage(Page):
     options = StreamField([
         ('sections', blocks.PageChooserBlock())
@@ -15,6 +13,7 @@ class ContentLandingPage(Page):
     content_panels = Page.content_panels + [
         StreamFieldPanel('options', classname="full")
     ]
+
 
 class Section(Page):
     subsections = StreamField([

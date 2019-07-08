@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'search',
     'content',
     'coursefinder',
+    'errors',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -91,7 +92,7 @@ WSGI_APPLICATION = 'CMS.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-        'default': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('DBNAME'),
         'HOST': os.environ.get('DBHOST'),
