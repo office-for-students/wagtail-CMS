@@ -25,7 +25,7 @@ steps:
       from os import path
       # Python >= 3.5
       cms = next(iglob(path.join('**', 'CMS'), recursive=True), None)
-      if not medexCms:
+      if not cms:
           raise SystemExit('Could not find the Django project')
       project_location = path.dirname(path.abspath(cms))
       print('Found Django project in', project_location)
