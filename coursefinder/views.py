@@ -13,12 +13,14 @@ def results(request):
 
     page = CourseFinderResults.objects.get()
 
-    return render(request, 'coursefinder/course_finder_results.html', {
+    context = {
         'page': page,
         'results': course_search.results,
         'total_courses': course_search.total_courses,
         'total_institutions': course_search.total_institutions
-    })
+    }
+
+    return render(request, 'coursefinder/course_finder_results.html', context)
 
 
 def narrow_search(request):
