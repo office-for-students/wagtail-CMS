@@ -5,8 +5,9 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
+from CMS.test.mocks import StatusMocks
 from coursefinder import request_handler
-from errors.models import ApiError
+from errors.models import ApiError, InternalError
 
 
 class CourseFinderLandingPage(Page):
@@ -17,6 +18,28 @@ class CourseFinderLandingPage(Page):
         FieldPanel('header', classname="full"),
         FieldPanel('subheader', classname="full")
     ]
+
+    @property
+    def country_finder_page(self):
+        def is_country_finder(page):
+            if type(page) == CourseFinderChooseCountry:
+                return True
+            else:
+                return False
+
+        country_finder_page = list(filter(is_country_finder, self.get_children().specific()))
+
+        if len(country_finder_page) == 0:
+            InternalError(StatusMocks.HTTP_500_INTERNAL_SERVER_ERROR, 'Bad configuration - No country chooser pages')
+            return None
+
+        if len(country_finder_page) > 1:
+            InternalError(StatusMocks.HTTP_500_INTERNAL_SERVER_ERROR,
+                          'Bad configuration - Found multiple country chooser pages')
+        return country_finder_page[0]
+
+    def has_country_finder_page(self):
+        return self.country_finder_page is not None
 
 
 class CourseFinderChooseCountry(Page):
