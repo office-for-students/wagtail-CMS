@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'search',
     'content',
     'coursefinder',
+    'errors',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
