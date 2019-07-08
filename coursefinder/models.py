@@ -6,6 +6,7 @@ from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
 from coursefinder import request_handler
+from errors.models import ApiError
 
 
 class CourseFinderLandingPage(Page):
@@ -120,6 +121,7 @@ class CourseFinderResults(Page):
         StreamFieldPanel('related_links', classname="full"),
     ]
 
+
 class CourseSearch:
 
     def __init__(self, course_query, institution_query):
@@ -131,6 +133,7 @@ class CourseSearch:
 
     def execute(self):
         response = request_handler.query_course_and_institution(self.course_query, self.institution_query)
+        error = None
 
         if response.ok:
             data = response.json()
@@ -138,5 +141,7 @@ class CourseSearch:
             self.total_institutions = data.get('total_results')
             self.results = data.get('items')
         else:
-            # handle error
-            pass
+            error = ApiError(response.status_code, 'searching courses for %s %s' %
+                             (self.institution_query, self.course_query))
+
+        return error
