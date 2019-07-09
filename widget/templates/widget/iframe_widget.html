@@ -1,13 +1,10 @@
 {% load staticfiles %}
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="{% static 'js/widget.js' %}"></script>
-
-<link rel="stylesheet" type="text/css" href="{% static 'css/widget.css' %}">
-
 <div class="kis-widget"
      data-institution="{{ uk_prn }}"
      data-course="{{ kis_course_id }}"
      data-kismode="{{ kis_mode }}"
      data-orientation="{{ orientation }}"
-     data-language="{{ language }}"></div>
+    data-language="{{ language }}"></div>
+
+<script id='unistats-widget-script' src="{% static 'js/widget.js' %}"></script>
