@@ -54,6 +54,10 @@ class CourseFinderChooseCountry(Page):
         StreamFieldPanel('next_section', classname="full")
     ]
 
+    @property
+    def back_page(self):
+        return self.get_parent
+
 
 class CourseFinderModeOfStudy(Page):
     page_order = 2
@@ -64,6 +68,25 @@ class CourseFinderModeOfStudy(Page):
         FieldPanel('question', classname="full"),
         FieldPanel('helper_text', classname="full")
     ]
+
+    @property
+    def back_page(self):
+        def is_choose_subject(page):
+            if type(page) == CourseFinderChooseSubject:
+                return True
+            else:
+                return False
+
+        choose_subject_page = list(filter(is_choose_subject, self.get_siblings().specific()))
+
+        if len(choose_subject_page) == 0:
+            InternalError(StatusMocks.HTTP_500_INTERNAL_SERVER_ERROR, 'Bad configuration - No subject chooser pages')
+            return None
+
+        if len(choose_subject_page) > 1:
+            InternalError(StatusMocks.HTTP_500_INTERNAL_SERVER_ERROR,
+                          'Bad configuration - Found multiple subject chooser pages')
+        return choose_subject_page[0]
 
 
 class CourseFinderChooseSubject(Page):
