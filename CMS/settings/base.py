@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'content.apps.ContentConfig',
     'coursefinder.apps.CoursefinderConfig',
     'errors.apps.ErrorsConfig',
+    'widget',
 ]
 
 MIDDLEWARE = [
