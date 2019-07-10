@@ -198,15 +198,15 @@ class CourseFinderResults(Page):
 
 class CourseSearch:
 
-    def __init__(self, course_query, institution_query):
-        self.course_query = course_query
-        self.institution_query = institution_query
+    def __init__(self, course, institution):
+        self.course = course
+        self.institution = institution
         self.total_courses = None
         self.total_institutions = None
         self.results = None
 
     def execute(self):
-        response = request_handler.query_course_and_institution(self.course_query, self.institution_query)
+        response = request_handler.query_course_and_institution(self.course, self.institution)
         error = None
 
         if response.ok:
@@ -216,6 +216,33 @@ class CourseSearch:
             self.results = data.get('items')
         else:
             error = ApiError(response.status_code, 'searching courses for %s %s' %
-                             (self.institution_query, self.course_query))
+                             (self.institution, self.course))
+
+        return error
+
+
+class CourseFinderSearch:
+
+    def __init__(self, subject, institution, mode, countries):
+        self.subject = subject
+        self.institution = institution
+        self.mode = mode
+        self.countries = countries
+        self.total_courses = None
+        self.total_institutions = None
+        self.results = None
+
+    def execute(self):
+        response = request_handler.course_finder_query(self.subject, self.institution, self.mode, self.countries)
+        error = None
+
+        if response.ok:
+            data = response.json()
+            self.total_courses = data.get('total_number_of_courses')
+            self.total_institutions = data.get('total_results')
+            self.results = data.get('items')
+        else:
+            error = ApiError(response.status_code, 'searching courses for %s, %s, %s, %s' %
+                             (self.subject, self.institution, self.mode, self.countries))
 
         return error
