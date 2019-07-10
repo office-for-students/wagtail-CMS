@@ -4,19 +4,24 @@
 
 
 {% block question %}
-<h3>{{page.question}}</h3>
-<form action="javascript:;" onsubmit="handleCountrySelection(this)">
-  <div  class="checkbox">
-    <input id="england" type="checkbox" name="country" value="England"> <label for="england">England</label><br>
-  </div>
-  <div  class="checkbox">
-    <input id="northernireland" type="checkbox" name="country" value="Northern Ireland"> <label for="northernireland">Northern Ireland</label><br>
-  </div>
-  <div  class="checkbox">
-    <input id="scotland" type="checkbox" name="country" value="Scotland"> <label for="scotland">Scotland</label><br>
-  </div>
-  <div  class="checkbox">
-    <input id="wales" type="checkbox" name="country" value="Wales"><label for="wales">Wales</label><br>
-  </div>
-</form>
+    <h3>{{page.question}}</h3>
+
+    <form action="javascript:;" onsubmit="handleCountrySelection(this)">
+        <div  class="checkbox">
+            <input id="england" type="checkbox" name="country" value="England"> <label for="england">England</label><br>
+        </div>
+        <div  class="checkbox">
+            <input id="northernireland" type="checkbox" name="country" value="Northern Ireland"> <label for="northernireland">Northern Ireland</label><br>
+        </div>
+        <div  class="checkbox">
+            <input id="scotland" type="checkbox" name="country" value="Scotland"> <label for="scotland">Scotland</label><br>
+        </div>
+        <div  class="checkbox">
+            <input id="wales" type="checkbox" name="country" value="Wales"><label for="wales">Wales</label><br>
+        </div>
+    </form>
+{% endblock %}
+
+{% block next_nav %}
+    <a href={% pageurl page.next_page %}><input type="submit" value="Next" class="button" onclick="handleFormSubmit()"></a>
 {% endblock %}
