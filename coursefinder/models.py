@@ -47,7 +47,7 @@ class CourseFinderChooseCountry(Page):
 
     @property
     def back_page(self):
-        return self.get_parent
+        return self.get_parent()
 
 
 class CourseFinderModeOfStudy(Page):

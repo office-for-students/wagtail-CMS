@@ -4,7 +4,8 @@ from CMS.test.factories import PageFactory
 from CMS.test.mocks import SearchMocks
 from CMS.test.utils import UniSimpleTestCase
 from coursefinder.models import CourseSearch, CourseFinderChooseCountry, CourseFinderModeOfStudy, \
-    CourseFinderChooseSubject, CourseFinderNarrowSearch, CourseFinderPostcode, CourseFinderSummary, CourseFinderResults
+    CourseFinderChooseSubject, CourseFinderNarrowSearch, CourseFinderPostcode, CourseFinderSummary, CourseFinderResults, \
+    CourseFinderLandingPage
 from coursefinder.templates.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
     choose_subject_sibling_finder, narrow_search_sibling_finder, postcode_sibling_finder, summary_sibling_finder, \
     results_sibling_finder
@@ -74,6 +75,118 @@ class CourseFinderModelsTests(UniSimpleTestCase):
         self.assertIsNone(course_search.results)
         self.assertIsNotNone(error)
         self.assertEquals(type(error), ApiError)
+
+    def test_course_finder_choose_country_next_page_returns_mode_of_study_sibling(self):
+        country_finder = PageFactory.create_country_finder_page(title='Country Finder')
+        PageFactory.create_mode_of_study_finder_page(title='Mode of Study Finder', path='11111112',
+                                                     parent_page=country_finder.get_parent())
+
+        self.assertIsNotNone(country_finder.next_page)
+        self.assertEquals(type(country_finder.next_page), CourseFinderModeOfStudy)
+
+    def test_course_finder_choose_country_back_page_returns_parent_page(self):
+        course_finder_page = PageFactory.create_course_finder_landing_page('Course Finder')
+        country_finder = PageFactory.create_country_finder_page(title='Country Finder', parent_page=course_finder_page)
+
+        self.assertIsNotNone(country_finder.back_page)
+        self.assertEquals(type(country_finder.back_page), CourseFinderLandingPage)
+
+    def test_course_finder_mode_of_study_next_page_returns_choose_subject_sibling(self):
+        mode_of_study = PageFactory.create_mode_of_study_finder_page(title='Mode of Study Finder')
+        PageFactory.create_choose_subject_page(title='Subject Chooser', path='11111112',
+                                               parent_page=mode_of_study.get_parent())
+
+        self.assertIsNotNone(mode_of_study.next_page)
+        self.assertEquals(type(mode_of_study.next_page), CourseFinderChooseSubject)
+
+    def test_course_finder_mode_of_study_back_page_returns_choose_country_sibling(self):
+        mode_of_study = PageFactory.create_mode_of_study_finder_page(title='Mode of Study Finder')
+        PageFactory.create_country_finder_page(title='Country Finder', parent_page=mode_of_study.get_parent())
+
+        self.assertIsNotNone(mode_of_study.back_page)
+        self.assertEquals(type(mode_of_study.back_page), CourseFinderChooseCountry)
+
+    def test_course_finder_choose_subject_next_page_returns_narrow_search_sibling(self):
+        choose_subject = PageFactory.create_choose_subject_page(title='Subject Chooser')
+        PageFactory.create_narrow_search_page(title='Narrow Search', path='11111112',
+                                              parent_page=choose_subject.get_parent())
+
+        self.assertIsNotNone(choose_subject.next_page)
+        self.assertEquals(type(choose_subject.next_page), CourseFinderNarrowSearch)
+
+    def test_course_finder_choose_subject_back_page_returns_mode_of_study_sibling(self):
+        choose_subject = PageFactory.create_choose_subject_page(title='Subject Chooser')
+        PageFactory.create_mode_of_study_finder_page(title='Mode of Study Finder', path='11111112',
+                                                     parent_page=choose_subject.get_parent())
+
+        self.assertIsNotNone(choose_subject.back_page)
+        self.assertEquals(type(choose_subject.back_page), CourseFinderModeOfStudy)
+
+    def test_course_finder_narrow_search_back_page_returns_choose_subject_sibling(self):
+        narrow_search = PageFactory.create_narrow_search_page(title='Narrow Search')
+        PageFactory.create_choose_subject_page(title='Subject Chooser', path='11111112',
+                                               parent_page=narrow_search.get_parent())
+
+        self.assertIsNotNone(narrow_search.back_page)
+        self.assertEquals(type(narrow_search.back_page), CourseFinderChooseSubject)
+
+    def test_course_finder_town_city_next_page_returns_summary_sibling(self):
+        town_city = PageFactory.create_town_city_page(title='Town City')
+        PageFactory.create_summary_page(title='Summary', path='11111112',
+                                        parent_page=town_city.get_parent())
+
+        self.assertIsNotNone(town_city.next_page)
+        self.assertEquals(type(town_city.next_page), CourseFinderSummary)
+
+    def test_course_finder_town_city_back_page_returns_narrow_search_sibling(self):
+        town_city = PageFactory.create_town_city_page(title='Town City')
+        PageFactory.create_narrow_search_page(title='Narrow Search', path='11111112',
+                                              parent_page=town_city.get_parent())
+
+        self.assertIsNotNone(town_city.back_page)
+        self.assertEquals(type(town_city.back_page), CourseFinderNarrowSearch)
+
+    def test_course_finder_uni_next_page_returns_summary_sibling(self):
+        uni = PageFactory.create_uni_page(title='Uni')
+        PageFactory.create_summary_page(title='Summary', path='11111112', parent_page=uni.get_parent())
+
+        self.assertIsNotNone(uni.next_page)
+        self.assertEquals(type(uni.next_page), CourseFinderSummary)
+
+    def test_course_finder_uni_back_page_returns_narrow_search_sibling(self):
+        uni = PageFactory.create_uni_page(title='Uni')
+        PageFactory.create_narrow_search_page(title='Narrow Search', path='11111112', parent_page=uni.get_parent())
+
+        self.assertIsNotNone(uni.back_page)
+        self.assertEquals(type(uni.back_page), CourseFinderNarrowSearch)
+
+    def test_course_finder_postcode_next_page_returns_summary_sibling(self):
+        postcode = PageFactory.create_postcode_page(title='Postcode')
+        PageFactory.create_summary_page(title='Summary', path='11111112', parent_page=postcode.get_parent())
+
+        self.assertIsNotNone(postcode.next_page)
+        self.assertEquals(type(postcode.next_page), CourseFinderSummary)
+
+    def test_course_finder_postcode_back_page_returns_narrow_search_sibling(self):
+        postcode = PageFactory.create_postcode_page(title='Postcode')
+        PageFactory.create_narrow_search_page(title='Narrow Search', path='11111112', parent_page=postcode.get_parent())
+
+        self.assertIsNotNone(postcode.back_page)
+        self.assertEquals(type(postcode.back_page), CourseFinderNarrowSearch)
+
+    def test_course_finder_summary_next_page_returns_results_sibling(self):
+        summary = PageFactory.create_summary_page(title='Summary')
+        PageFactory.create_results_page(title='Results', path='11111112', parent_page=summary.get_parent())
+
+        self.assertIsNotNone(summary.next_page)
+        self.assertEquals(type(summary.next_page), CourseFinderResults)
+
+    def test_course_finder_summary_back_page_returns_postcode_sibling(self):
+        summary = PageFactory.create_summary_page(title='Summary')
+        PageFactory.create_postcode_page(title='Postcode', path='11111112', parent_page=summary.get_parent())
+
+        self.assertIsNotNone(summary.back_page)
+        self.assertEquals(type(summary.back_page), CourseFinderPostcode)
 
 
 class CourseFinderUtilsTests(UniSimpleTestCase):
