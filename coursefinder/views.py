@@ -62,7 +62,9 @@ def course_finder_results(request):
     course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
                                               query_params.get('institution_query', None),
                                               query_params.get('mode_query', None),
-                                              query_params.get('countries_query', None))
+                                              query_params.get('countries_query', None),
+                                              query_params.get('page', 1),
+                                              query_params.get('count', 20))
     course_finder_search.execute()
 
     page = CourseFinderResults.objects.get()
