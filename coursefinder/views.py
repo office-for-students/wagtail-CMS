@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
-from coursefinder.models import CourseSearch
+from coursefinder.models import CourseSearch, CourseFinderSearch
 from coursefinder.models import CourseFinderResults
 from django.conf import settings
 import requests
@@ -58,27 +58,20 @@ def narrow_search(request):
 
 
 def course_finder_results(request):
-    subject_query = request.GET.get('subject_query', None)
-    institution_query = request.GET.get('institution_query', None)
-    mode_query = request.GET.get('mode_query', None)
-    countries_query = request.GET.get('countries_query', None)
-    url = "%s/search/institution-courses?subjects=%s" % (settings.SEARCHAPIHOST, subject_query)
-    if institution_query != '':
-        url = url + "&institutions=%s" % institution_query
-    if 'Full-time,Part-time' not in mode_query and mode_query != '':
-        url = url + "&filters=%s" % (mode_query.lower().replace('-', '_').replace(' ', '_'))
-    if countries_query != '':
-        url = url + "&countries=%s" % (countries_query.lower().replace(' ', '_'))
-    r = requests.get(url=url)
-    data = r.json()
-    total_courses = data['total_number_of_courses']
-    total_institutions = data['total_results']
-    results = data['items']
+    query_params = request.GET
+    course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
+                                              query_params.get('institution_query', None),
+                                              query_params.get('mode_query', None),
+                                              query_params.get('countries_query', None))
+    course_finder_search.execute()
+
     page = CourseFinderResults.objects.get()
 
-    return render(request, 'coursefinder/course_finder_results.html', {
+    context = {
         'page': page,
-        'results': results,
-        'total_courses': total_courses,
-        'total_institutions': total_institutions
-    })
+        'results': course_finder_search.results,
+        'total_courses': course_finder_search.total_courses,
+        'total_institutions': course_finder_search.total_institutions
+    }
+
+    return render(request, 'coursefinder/course_finder_results.html', context)
