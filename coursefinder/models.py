@@ -223,17 +223,21 @@ class CourseSearch:
 
 class CourseFinderSearch:
 
-    def __init__(self, subject, institution, mode, countries):
+    def __init__(self, subject, institution, mode, countries, page, count):
         self.subject = subject
         self.institution = institution
         self.mode = mode
         self.countries = countries
+        self.page = page
+        self.count = count
+        self.offset = self.count * (self.page - 1)
         self.total_courses = None
         self.total_institutions = None
         self.results = None
 
     def execute(self):
-        response = request_handler.course_finder_query(self.subject, self.institution, self.mode, self.countries)
+        response = request_handler.course_finder_query(self.subject, self.institution, self.mode, self.countries,
+                                                       self.count, self.offset)
         error = None
 
         if response.ok:
