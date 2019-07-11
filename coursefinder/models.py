@@ -210,7 +210,7 @@ class BaseSearch:
 
     @property
     def show_previous_icon(self):
-        return False if len(self.pages_to_left) == 0 else True
+        return True if self.pages_to_left else False
 
     @property
     def previous_page(self):
@@ -240,7 +240,7 @@ class BaseSearch:
 
     @property
     def show_next_icon(self):
-        return False if len(self.pages_to_right) == 0 else True
+        return True if self.pages_to_right else False
 
     @property
     def total_page_count(self):
