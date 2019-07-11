@@ -446,3 +446,41 @@ footer {
   height: 220px;
   background: #29293D;
 }
+
+.pagination {
+    background-color: transparent;
+    display: initial;
+    margin-top: 44px;
+}
+
+.pagination__item-list {
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+}
+
+.pagination__item {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 45px;
+    width: 45px;
+    border: 1px solid #5F607C;
+    box-sizing: border-box;
+}
+
+.pagination__item--active {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 45px;
+    width: 45px;
+    background-color: #5F607C;
+}
+
+.pagination__item-link {
+    color: #71A4D3;
+    text-decoration: none;
+}
