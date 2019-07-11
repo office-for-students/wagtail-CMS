@@ -8,7 +8,9 @@ import requests
 
 
 def results(request):
-    course_search = CourseSearch(request.GET.get('courseQuery', ""), request.GET.get('institutionQuery', ""))
+    query_params = request.GET
+    course_search = CourseSearch(query_params.get('courseQuery', ""), query_params.get('institutionQuery', ""),
+                                 query_params.get('page', 1), query_params.get('count', 20))
     course_search.execute()
 
     page = CourseFinderResults.objects.get()

@@ -247,9 +247,10 @@ class BaseSearch:
         return math.ceil(self.total_institutions / self.count)
 
 
-class CourseSearch:
+class CourseSearch(BaseSearch):
 
-    def __init__(self, course, institution):
+    def __init__(self, course, institution, page, count):
+        super().__init__(page, count)
         self.course = course
         self.institution = institution
         self.total_courses = None
@@ -257,7 +258,7 @@ class CourseSearch:
         self.results = None
 
     def execute(self):
-        response = request_handler.query_course_and_institution(self.course, self.institution)
+        response = request_handler.query_course_and_institution(self.course, self.institution, self.count, self.offset)
         error = None
 
         if response.ok:
