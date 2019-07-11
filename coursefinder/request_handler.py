@@ -18,12 +18,12 @@ def course_finder_query(subject, institution, mode, countries, limit, offset):
     else:
         url = "%s/search/institution-courses?limit=%s&offset=%s" % (settings.SEARCHAPIHOST, limit, offset)
         if subject != '':
-            url = url + "&subjects=%s" % subject
+            url = f"{url}&subjects={subject}"
         if institution != '':
-            url = url + "&institutions=%s" % institution
+            url = f"{url}&institutions={institution}"
         if 'Full-time,Part-time' not in mode and mode != '':
-            url = url + "&filters=%s" % (mode.lower().replace('-', '_').replace(' ', '_'))
+            url = f"{url}&filters={mode.lower().replace('-', '_').replace(' ', '_')}"
         if countries != '':
-            url = url + "&countries=%s" % (countries.lower().replace(' ', '_'))
+            url = f"{url}&countries={countries.lower().replace(' ', '_')}"
 
         return requests.get(url=url)
