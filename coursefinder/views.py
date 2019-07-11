@@ -25,24 +25,9 @@ def results(request):
 
 
 def narrow_search(request):
-    selection = request.POST.get('radioGroup', None)
-    subject_query = request.POST.get('subject_query', None)
-    mode_query = request.POST.get('mode_query', None)
-    countries_query = request.POST.get('countries_query', None)
-    url = "%s/search/institution-courses?" % settings.SEARCHAPIHOST
-    if subject_query != '':
-        url = url + "subjects=%s" % subject_query
-    if 'Full-time,Part-time' not in mode_query and mode_query != '':
-        url = url + "&filters=%s" % (mode_query.lower().replace('-', '_').replace(' ', '_'))
-    if countries_query != '':
-        url = url + "&countries=%s" % (countries_query.lower().replace(' ', '_'))
-    r = requests.get(url=url)
-    data = r.json()
-    total_courses = data['total_number_of_courses']
-    total_institutions = data['total_results']
-    results = data['items']
-    page = CourseFinderResults.objects.get()
-
+    institution_query = None
+    post_body = request.POST
+    selection = post_body.get('radioGroup', None)
     if selection == "uni":
         return HttpResponseRedirect("/course-finder/uni")
     elif selection == "city":
@@ -50,12 +35,24 @@ def narrow_search(request):
     elif selection == "home":
         return HttpResponseRedirect("/course-finder/postcode")
     else:
-        return render(request, 'coursefinder/course_finder_results.html', {
+        course_finder_search = CourseFinderSearch(post_body.get('subject_query', None),
+                                                  institution_query,
+                                                  post_body.get('mode_query', None),
+                                                  post_body.get('countries_query', None),
+                                                  post_body.get('page', 1),
+                                                  post_body.get('count', 20))
+
+        course_finder_search.execute()
+
+        page = CourseFinderResults.objects.get()
+
+        context = {
             'page': page,
-            'results': results,
-            'total_courses': total_courses,
-            'total_institutions': total_institutions
-        })
+            'search': course_finder_search,
+            'pagination_url': 'narrow_search'
+        }
+
+        return render(request, 'coursefinder/course_finder_results.html', context)
 
 
 def course_finder_results(request):

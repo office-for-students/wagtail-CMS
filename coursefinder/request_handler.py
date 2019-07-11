@@ -16,8 +16,9 @@ def course_finder_query(subject, institution, mode, countries, limit, offset):
     if settings.LOCAL:
         return SearchMocks.get_successful_search_response()
     else:
-        url = "%s/search/institution-courses?limit=%s&offset=%s&subjects=%s" % (settings.SEARCHAPIHOST, limit, offset,
-                                                                                subject)
+        url = "%s/search/institution-courses?limit=%s&offset=%s" % (settings.SEARCHAPIHOST, limit, offset)
+        if subject != '':
+            url = url + "&subjects=%s" % subject
         if institution != '':
             url = url + "&institutions=%s" % institution
         if 'Full-time,Part-time' not in mode and mode != '':
