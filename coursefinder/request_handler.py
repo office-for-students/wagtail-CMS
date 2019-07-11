@@ -8,7 +8,7 @@ def query_course_and_institution(course, institution, limit, offset):
     if settings.LOCAL:
         return SearchMocks.get_successful_search_response()
     else:
-        base_url = "%s/search/institution-courses?limit=%s&offset=%sq=%s&institutions=%s"
+        base_url = "%s/search/institution-courses?limit=%s&offset=%s&q=%s&institutions=%s"
         return requests.get(url=base_url % (settings.SEARCHAPIHOST, limit, offset, course, institution))
 
 
