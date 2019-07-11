@@ -15,9 +15,8 @@ def results(request):
 
     context = {
         'page': page,
-        'results': course_search.results,
-        'total_courses': course_search.total_courses,
-        'total_institutions': course_search.total_institutions
+        'search': course_search,
+        'pagination_url': 'results'
     }
 
     return render(request, 'coursefinder/course_finder_results.html', context)
@@ -71,9 +70,8 @@ def course_finder_results(request):
 
     context = {
         'page': page,
-        'results': course_finder_search.results,
-        'total_courses': course_finder_search.total_courses,
-        'total_institutions': course_finder_search.total_institutions
+        'search': course_finder_search,
+        'pagination_url': 'course_finder_results'
     }
 
     return render(request, 'coursefinder/course_finder_results.html', context)
