@@ -3,8 +3,6 @@ from django.http import HttpResponseRedirect
 
 from coursefinder.models import CourseSearch, CourseFinderSearch
 from coursefinder.models import CourseFinderResults
-from django.conf import settings
-import requests
 
 
 def results(request):
