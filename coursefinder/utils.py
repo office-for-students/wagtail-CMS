@@ -13,7 +13,7 @@ def choose_country_sibling_finder(pages_list):
 
     choose_country_page = list(filter(is_choose_country, pages_list))
 
-    if len(choose_country_page) == 0:
+    if not choose_country_page:
         InternalError(HTTPStatus.INTERNAL_SERVER_ERROR, 'Bad configuration - No country chooser page')
         return None
 
@@ -33,7 +33,7 @@ def mode_of_study_sibling_finder(page):
 
     mode_of_study_page = list(filter(is_mode_of_study, page.get_siblings().specific()))
 
-    if len(mode_of_study_page) == 0:
+    if not mode_of_study_page:
         InternalError(HTTPStatus.INTERNAL_SERVER_ERROR, 'Bad configuration - No mode of study pages')
         return None
 
@@ -53,7 +53,7 @@ def choose_subject_sibling_finder(page):
 
     choose_subject_page = list(filter(is_choose_subject, page.get_siblings().specific()))
 
-    if len(choose_subject_page) == 0:
+    if not choose_subject_page:
         InternalError(HTTPStatus.INTERNAL_SERVER_ERROR, 'Bad configuration - No choose subject page')
         return None
 
@@ -73,7 +73,7 @@ def narrow_search_sibling_finder(page):
 
     narrow_search_page = list(filter(is_narrow_search, page.get_siblings().specific()))
 
-    if len(narrow_search_page) == 0:
+    if not narrow_search_page:
         InternalError(HTTPStatus.INTERNAL_SERVER_ERROR, 'Bad configuration - No narrow search page')
         return None
 
@@ -93,7 +93,7 @@ def postcode_sibling_finder(page):
 
     postcode_page = list(filter(is_postcode, page.get_siblings().specific()))
 
-    if len(postcode_page) == 0:
+    if not postcode_page:
         InternalError(HTTPStatus.INTERNAL_SERVER_ERROR, 'Bad configuration - No postcode page')
         return None
 
@@ -113,7 +113,7 @@ def summary_sibling_finder(page):
 
     summary_page = list(filter(is_summary, page.get_siblings().specific()))
 
-    if len(summary_page) == 0:
+    if not summary_page:
         InternalError(HTTPStatus.INTERNAL_SERVER_ERROR, 'Bad configuration - No summary page')
         return None
 
@@ -133,7 +133,7 @@ def results_sibling_finder(page):
 
     results_page = list(filter(is_results, page.get_siblings().specific()))
 
-    if len(results_page) == 0:
+    if not results_page:
         InternalError(HTTPStatus.INTERNAL_SERVER_ERROR, 'Bad configuration - No results page')
         return None
 
