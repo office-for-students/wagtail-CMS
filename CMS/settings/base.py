@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'home',
     'search',
     'content',
-    'coursefinder',
+    'coursefinder.apps.CoursefinderConfig',
     'errors',
 ]
 
