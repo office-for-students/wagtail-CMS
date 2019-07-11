@@ -6,7 +6,7 @@ from CMS.test.utils import UniSimpleTestCase
 from coursefinder.models import CourseSearch, CourseFinderChooseCountry, CourseFinderModeOfStudy, \
     CourseFinderChooseSubject, CourseFinderNarrowSearch, CourseFinderPostcode, CourseFinderSummary, CourseFinderResults, \
     CourseFinderLandingPage
-from coursefinder.templates.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
+from coursefinder.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
     choose_subject_sibling_finder, narrow_search_sibling_finder, postcode_sibling_finder, summary_sibling_finder, \
     results_sibling_finder
 from errors.models import ApiError

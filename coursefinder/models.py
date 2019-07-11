@@ -6,7 +6,7 @@ from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
 from coursefinder import request_handler
-from coursefinder.templates.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
+from coursefinder.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
     choose_subject_sibling_finder, narrow_search_sibling_finder, postcode_sibling_finder, summary_sibling_finder, \
     results_sibling_finder
 from errors.models import ApiError
