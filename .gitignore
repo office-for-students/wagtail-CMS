@@ -26,3 +26,6 @@ coverage.xml
 
 # Jetbrains stuff
 .idea
+
+# Compiled SASS files
+static/scss/*.css*
