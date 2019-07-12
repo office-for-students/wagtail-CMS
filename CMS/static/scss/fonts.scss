@@ -1,0 +1,122 @@
+@import 'variables';
+
+.xl-heading {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $xl-heading-font-size;
+    line-height: $xl-heading-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+.xl-heading--bold {
+    @extend .xl-heading;
+    font-weight: bold;
+}
+
+.l-heading {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $l-heading-font-size;
+    line-height: $l-heading-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+.l-heading--bold {
+    @extend .l-heading;
+    font-weight: bold;
+}
+
+.m-heading {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $m-heading-font-size;
+    line-height: $m-heading-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+
+.m-heading--bold {
+    @extend .m-heading;
+    font-weight: bold;
+}
+
+.s-heading {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $s-heading-font-size;
+    line-height: $s-heading-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+.s-heading--bold {
+    @extend .s-heading;
+    font-weight: bold;
+}
+
+.xs-heading {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $xs-heading-font-size;
+    line-height: $xs-heading-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+.xs-heading--bold {
+    @extend .xs-heading;
+    font-weight: bold;
+}
+
+.desktop-body-font {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $desktop-body-font-size;
+    line-height: $desktop-body-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+.desktop-body-font--bold {
+    @extend .desktop-body-font;
+    font-weight: bold;
+}
+
+.mobile-body-font {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $mobile-body-font-size;
+    line-height: $mobile-body-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+.mobile-body-font--bold {
+    @extend .mobile-body-font;
+    font-weight: bold;
+}
+
+.small-font {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $small-font-size;
+    line-height: $small-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+.small-font--bold {
+    @extend .small-font;
+    font-weight: bold;
+}
