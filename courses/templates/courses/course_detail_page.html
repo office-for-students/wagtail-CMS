@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/course_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'courses/course_detail_content.html' with course_details=course %}
+{% endblock %}
