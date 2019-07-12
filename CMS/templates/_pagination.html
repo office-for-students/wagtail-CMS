@@ -7,7 +7,7 @@
             {% if search.show_previous_icon != 0 %}
                 <a class="pagination__link" aria-label="Previous page" href="
                     {% url pagination_url %}{% queryparams subject_query=search.subject institution_query=search.institution mode_query=search.mode countries_query=search.countries page=search.previous_page count=search.count %}">
-                    <img class="banner" src="{% static 'images/left_chevron.svg' %}" alt="previous-page">
+                    <img src="{% static 'images/left_chevron.svg' %}" alt="previous-page">
                 </a>
             {% endif %}
         </div>
@@ -40,7 +40,7 @@
             {% if search.show_next_icon %}
                 <a class="pagination__link" aria-label="Next page" href="
                     {% url pagination_url %}{% queryparams subject_query=search.subject institution_query=search.institution mode_query=search.mode countries_query=search.countries page=search.next_page count=search.count %}">
-                    <img class="banner" src="{% static 'images/right_chevron.svg' %}" alt="previous-page">
+                    <img src="{% static 'images/right_chevron.svg' %}" alt="previous-page">
                 </a>
             {% endif %}
         </div>
