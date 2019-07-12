@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load sass_tags %}
 
 {% block extra_css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/course_detail.css' %}">
+    <link href="{% sass_src 'scss/course_detail.scss' %}" rel="stylesheet" type="text/css" >
 {% endblock %}
 
 {% block content %}
