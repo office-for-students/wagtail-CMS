@@ -9,7 +9,10 @@ def results(request):
     query_params = request.GET
     course_search = CourseSearch(query_params.get('courseQuery', ""), query_params.get('institutionQuery', ""),
                                  query_params.get('page', 1), query_params.get('count', 20))
-    course_search.execute()
+    error = course_search.execute()
+
+    if error:
+        return render(request, '500.html')
 
     page = CourseFinderResults.objects.get()
 
@@ -40,7 +43,10 @@ def narrow_search(request):
                                                   post_body.get('page', 1),
                                                   post_body.get('count', 20))
 
-        course_finder_search.execute()
+        error = course_finder_search.execute()
+
+        if error:
+            return render(request, '500.html')
 
         page = CourseFinderResults.objects.get()
 
@@ -61,7 +67,10 @@ def course_finder_results(request):
                                               query_params.get('countries_query', None),
                                               query_params.get('page', 1),
                                               query_params.get('count', 20))
-    course_finder_search.execute()
+    error = course_finder_search.execute()
+
+    if error:
+        return render(request, '500.html')
 
     page = CourseFinderResults.objects.get()
 
