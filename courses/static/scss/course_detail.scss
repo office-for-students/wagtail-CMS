@@ -1,3 +1,7 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/grid';
+@import '../../../CMS/static/scss/variables';
+
 .course-detail {
     margin-top: 27px;
 
@@ -6,6 +10,72 @@
 
         .course-detail__icon {
             height: 48px;
+        }
+
+        .course-detail__course-name {
+            @extend .desktop-body-font--bold;
+
+            margin-top: 13px;
+            margin-bottom: 17px;
+        }
+
+        .course-detail__compare-btn {
+            @extend .small-font;
+
+            padding: 5px 10px;
+            margin-bottom: 26px;
+
+            border: 1px solid $black;
+            border-radius: 16px;
+
+            background-color: $white;
+        }
+
+        .course-detail__institution-info {
+            padding: 26px 30px 28px;
+
+            background-color: $background-grey;
+
+            .course-detail__institution-name {
+                @extend .mobile-body-font;
+
+
+                color: $link-blue;
+            }
+
+            .course-detail__institution-locations {
+                @extend .small-font;
+
+                margin: 8px 0 0;
+            }
+        }
+
+        .course-detail__course-overview {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            padding: 20px 15px 35px;
+
+            .course-detail__overview-item {
+                @extend .mobile-body-font;
+
+                width: 48%;
+
+                margin-bottom: 14px;
+
+                background-color: $background-grey;
+
+                .course-detail__overview-item-heading {
+                    margin-top: 13px;
+                }
+
+                .course-detail__overview-item-value {
+                    margin-bottom: 13px;
+
+                    color: $darker-grey;
+                }
+            }
         }
     }
 }

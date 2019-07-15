@@ -1,0 +1,60 @@
+{% load staticfiles %}
+
+<div class="course-detail">
+    <div class="course-detail__lead">
+        <img class="course-detail__icon" src="{% static 'images/certificate.svg' %}" alt="">
+
+        <h1 class="course-detail__course-name">
+            Course Name
+        </h1>
+
+        <button class="course-detail__compare-btn">
+            + Compare course
+        </button>
+
+        <div class="course-detail__institution-info">
+            <a class="course-detail__institution-name" href="#">University Name</a>
+
+            <p class="course-detail__institution-locations">
+                2 Locations: xxxxxxx, xxxxxx
+            </p>
+        </div>
+
+        <div class="course-detail__course-overview">
+            <div class="course-detail__overview-item">
+                <p class="course-detail__overview-item-heading">Length</p>
+                <p class="course-detail__overview-item-value">3 year course</p>
+            </div>
+
+            <div class="course-detail__overview-item">
+                <p class="course-detail__overview-item-heading">Study mode</p>
+                <p class="course-detail__overview-item-value">Full time</p>
+            </div>
+
+            <div class="course-detail__overview-item">
+                <p class="course-detail__overview-item-heading">Distance learning</p>
+                <p class="course-detail__overview-item-value">Optional</p>
+            </div>
+
+            <div class="course-detail__overview-item">
+                <p class="course-detail__overview-item-heading">Placement year</p>
+                <p class="course-detail__overview-item-value">Optional</p>
+            </div>
+
+            <div class="course-detail__overview-item">
+                <p class="course-detail__overview-item-heading">Year abroad</p>
+                <p class="course-detail__overview-item-value">Optional</p>
+            </div>
+
+            <div class="course-detail__overview-item">
+                <p class="course-detail__overview-item-heading">Foundation year</p>
+                <p class="course-detail__overview-item-value">Optional</p>
+            </div>
+        </div>
+    </div>
+
+
+    {{ page.accordions }}
+
+    {{ page.uni_site_links_header }}
+</div>
