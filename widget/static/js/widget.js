@@ -36,7 +36,7 @@ DiscoverUniWidget.prototype = {
         var xhttp = new XMLHttpRequest();
         xhttp.addEventListener("load", function() {
             console.log(this.status)
-            if (this.status !== 200) {
+            if (this.status === 200) {
                 that.renderDataWidget();
             } else {
                 that.renderWidget();
