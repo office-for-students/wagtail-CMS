@@ -100,4 +100,38 @@
             }
         }
     }
+
+    .course-detail__uni-site-links {
+        padding: 24px;
+
+        background-color: $background-grey;
+
+        .course-detail__uni-site-links-heading {
+            @extend .mobile-body-font;
+
+            margin: 0px;
+            margin-bottom: 15px;
+        }
+
+        .course-detail__uni-site-links-list {
+            display: flex;
+            flex-wrap: wrap;
+
+            padding: 0px;
+            margin: 0px;
+
+            .course-detail__uni-site-links-list-item {
+                width: 48%;
+                display: block;
+
+
+                .course-detail__uni-site-link {
+                    @extend .small-font;
+
+                    line-height: 25px;
+                    color: $link-blue;
+                }
+            }
+        }
+    }
 }
