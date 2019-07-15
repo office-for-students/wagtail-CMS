@@ -7,7 +7,7 @@ from coursefinder.models import CourseFinderResults
 
 def results(request):
     query_params = request.GET
-    course_search = CourseSearch(query_params.get('courseQuery', ""), query_params.get('institutionQuery', ""),
+    course_search = CourseSearch(query_params.get('subject_query', ""), query_params.get('institution_query', ""),
                                  query_params.get('page', 1), query_params.get('count', 20))
     error = course_search.execute()
 

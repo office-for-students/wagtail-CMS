@@ -247,16 +247,16 @@ class BaseSearch:
 
 class CourseSearch(BaseSearch):
 
-    def __init__(self, course, institution, page, count):
+    def __init__(self, subject, institution, page, count):
         super().__init__(page, count)
-        self.course = course
+        self.subject = subject
         self.institution = institution
         self.total_courses = None
         self.total_institutions = None
         self.results = None
 
     def execute(self):
-        response = request_handler.query_course_and_institution(self.course, self.institution, self.count, self.offset)
+        response = request_handler.query_course_and_institution(self.subject, self.institution, self.count, self.offset)
         error = None
 
         if response.ok:
@@ -266,7 +266,7 @@ class CourseSearch(BaseSearch):
             self.results = data.get('items')
         else:
             error = ApiError(response.status_code, 'searching courses for %s %s' %
-                             (self.institution, self.course))
+                             (self.institution, self.subject))
 
         return error
 

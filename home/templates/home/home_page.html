@@ -32,15 +32,21 @@
     {{page.search_header|richtext}}
     <form action="{% url 'results' %}" method="get">
         <label>{{page.course_field_label}} </label><br>
-        <input id="courseName" type="text" name="courseQuery" {% if course_query %} value="{{ course_query }}"{% endif %} placeholder="Course Name" required><br>
+
+        <input id="courseName" type="text" name="subject_query" {% if course_query %} value="{{ course_query }}"{% endif %} placeholder="Course Name" required><br>
+
         <label>{{page.institution_field_label}}</label>
+
         <div>
-          <select id="uni" name="institutionQuery">
+          <select id="uni" name="institution_query">
             <option disabled selected>Institution</option>
+
             <option value="">Show all</option>
           </select>
+
           <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
         </div>
+
         <input type="submit" value="Search" class="button">
     </form>
   </div>
