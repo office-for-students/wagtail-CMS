@@ -95,7 +95,8 @@
                 color: $white;
 
                 .course-detail__accordion-heading-chevron {
-                    position: relative;
+                    position: absolute;
+                    right: 30px;
                 }
             }
         }
@@ -132,6 +133,26 @@
                     color: $link-blue;
                 }
             }
+        }
+    }
+
+    .course-detail__further-info-block {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-bottom: 45px;
+        text-align: center;
+
+        .course-detail__other-courses-link {
+            @extend .mobile-body-font;
+
+            display: block;
+            padding: 27px 35px 27px 35px;
+            margin-bottom: 15px;
+
+            border-radius: 5px;
+            background-color: $darker-grey;
+            color: $white;
+            text-decoration: none;
         }
     }
 }
