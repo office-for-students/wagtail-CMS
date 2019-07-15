@@ -4,13 +4,21 @@
 {% block body_class %}template-course-finder-uni{% endblock %}
 
 {% block question %}
-<h3>{{page.question}}</h3>
-<form action="javascript:;" onsubmit="handleUniSelection(this)">
-  <div>
-    <select id="uni" name="uni">
-      <option selected>Show all</option>
-    </select>
-    <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
-  </div>
-</form>
+    <h3>
+        {{page.question}}
+    </h3>
+
+    <form action="javascript:;" onsubmit="handleUniSelection(this)">
+        <div>
+            <select id="uni" name="uni">
+                <option selected>Show all</option>
+            </select>
+
+            <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
+        </div>
+    </form>
+{% endblock %}
+
+{% block next_nav %}
+    <a href={% pageurl page.next_page %}><input type="submit" value="Next" class="button" onclick="handleFormSubmit()"></a>
 {% endblock %}

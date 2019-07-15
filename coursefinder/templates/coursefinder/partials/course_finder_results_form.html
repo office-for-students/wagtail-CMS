@@ -1,0 +1,11 @@
+<form id="courseFinderResultsForm"  action="{% url 'course_finder_results' %}" method="get">
+    <input type="text" name="subject_query" value="">
+
+    <input type="text" name="institution_query" value="">
+
+    <input type="text" name="mode_query" value="">
+
+    <input type="text" name="countries_query" value="">
+
+    <input type="submit" value="{{button_value}}" onclick="handleResultsRequest()" class="{{button_class}}" >
+</form>

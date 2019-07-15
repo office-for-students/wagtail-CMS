@@ -4,19 +4,27 @@
 
 
 {% block question %}
-<h3>{{page.question}}</h3>
-<form action="javascript:;" onsubmit="handleModeSelection(this)">
-  <div  class="checkbox">
-    <input id="fullTime" type="checkbox" name="mode" value="Full-time"> <label for="fullTime">Full-time</label><br>
-  </div>
-  <div  class="checkbox">
-    <input id="partTime" type="checkbox" name="mode" value="Part-time"> <label for="partTime">Part-time</label><br>
-  </div>
-  <div  class="checkbox">
-    <input id="distanceLearning" type="checkbox" name="mode" value="Distance learning"> <label for="distanceLearning">Distance learning</label><br>
-  </div>
-</form>
-<div class="helper-text">
-  {{ page.helper_text|richtext }}
-</div>
+    <h3>{{page.question}}</h3>
+
+    <form action="javascript:;" onsubmit="handleModeSelection(this)">
+        <div  class="checkbox">
+            <input id="fullTime" type="checkbox" name="mode" value="Full-time"> <label for="fullTime">Full-time</label><br>
+        </div>
+
+        <div  class="checkbox">
+            <input id="partTime" type="checkbox" name="mode" value="Part-time"> <label for="partTime">Part-time</label><br>
+        </div>
+
+        <div  class="checkbox">
+            <input id="distanceLearning" type="checkbox" name="mode" value="Distance learning"> <label for="distanceLearning">Distance learning</label><br>
+        </div>
+    </form>
+
+    <div class="helper-text">
+        {{ page.helper_text|richtext }}
+    </div>
+{% endblock %}
+
+{% block next_nav %}
+    <a href={% pageurl page.next_page %}><input type="submit" value="Next" class="button" onclick="handleFormSubmit()"></a>
 {% endblock %}

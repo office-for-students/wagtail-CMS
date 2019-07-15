@@ -5,9 +5,11 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
-from CMS.test.mocks import StatusMocks
 from coursefinder import request_handler
-from errors.models import ApiError, InternalError
+from coursefinder.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
+    choose_subject_sibling_finder, narrow_search_sibling_finder, postcode_sibling_finder, summary_sibling_finder, \
+    results_sibling_finder
+from errors.models import ApiError
 
 
 class CourseFinderLandingPage(Page):
@@ -21,22 +23,7 @@ class CourseFinderLandingPage(Page):
 
     @property
     def country_finder_page(self):
-        def is_country_finder(page):
-            if type(page) == CourseFinderChooseCountry:
-                return True
-            else:
-                return False
-
-        country_finder_page = list(filter(is_country_finder, self.get_children().specific()))
-
-        if len(country_finder_page) == 0:
-            InternalError(StatusMocks.HTTP_500_INTERNAL_SERVER_ERROR, 'Bad configuration - No country chooser pages')
-            return None
-
-        if len(country_finder_page) > 1:
-            InternalError(StatusMocks.HTTP_500_INTERNAL_SERVER_ERROR,
-                          'Bad configuration - Found multiple country chooser pages')
-        return country_finder_page[0]
+        return choose_country_sibling_finder(self.get_children().specific())
 
     def has_country_finder_page(self):
         return self.country_finder_page is not None
@@ -54,6 +41,14 @@ class CourseFinderChooseCountry(Page):
         StreamFieldPanel('next_section', classname="full")
     ]
 
+    @property
+    def next_page(self):
+        return mode_of_study_sibling_finder(self)
+
+    @property
+    def back_page(self):
+        return self.get_parent()
+
 
 class CourseFinderModeOfStudy(Page):
     page_order = 2
@@ -64,6 +59,14 @@ class CourseFinderModeOfStudy(Page):
         FieldPanel('question', classname="full"),
         FieldPanel('helper_text', classname="full")
     ]
+
+    @property
+    def next_page(self):
+        return choose_subject_sibling_finder(self)
+
+    @property
+    def back_page(self):
+        return choose_country_sibling_finder(self.get_siblings().specific())
 
 
 class CourseFinderChooseSubject(Page):
@@ -76,41 +79,81 @@ class CourseFinderChooseSubject(Page):
         FieldPanel('helper_text', classname="full")
     ]
 
+    @property
+    def next_page(self):
+        return narrow_search_sibling_finder(self)
+
+    @property
+    def back_page(self):
+        return mode_of_study_sibling_finder(self)
+
 
 class CourseFinderNarrowSearch(Page):
     page_order = 4
+    use_skip_form = True
     question = TextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('question', classname="full")
     ]
+
+    @property
+    def back_page(self):
+        return choose_subject_sibling_finder(self)
 
 
 class CourseFinderTownCity(Page):
     page_order = 5
+    use_skip_form = True
     question = TextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('question', classname="full")
     ]
+
+    @property
+    def next_page(self):
+        return summary_sibling_finder(self)
+
+    @property
+    def back_page(self):
+        return narrow_search_sibling_finder(self)
 
 
 class CourseFinderUni(Page):
     page_order = 6
+    use_skip_form = True
     question = TextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('question', classname="full")
     ]
+
+    @property
+    def next_page(self):
+        return summary_sibling_finder(self)
+
+    @property
+    def back_page(self):
+        return narrow_search_sibling_finder(self)
 
 
 class CourseFinderPostcode(Page):
     page_order = 7
+    use_skip_form = True
     question = TextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('question', classname="full")
     ]
+
+    @property
+    def next_page(self):
+        return summary_sibling_finder(self)
+
+    @property
+    def back_page(self):
+        return narrow_search_sibling_finder(self)
 
 
 class CourseFinderSummary(Page):
@@ -128,6 +171,14 @@ class CourseFinderSummary(Page):
         FieldPanel('subjects_section_title', classname="full"),
         FieldPanel('narrow_by_section_title', classname="full")
     ]
+
+    @property
+    def next_page(self):
+        return results_sibling_finder(self)
+
+    @property
+    def back_page(self):
+        return postcode_sibling_finder(self)
 
 
 class CourseFinderResults(Page):
