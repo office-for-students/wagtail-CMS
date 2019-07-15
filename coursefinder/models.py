@@ -210,7 +210,7 @@ class BaseSearch:
 
     @property
     def show_previous_icon(self):
-        return True if self.pages_to_left else False
+        return bool(self.pages_to_left)
 
     @property
     def previous_page(self):
@@ -220,19 +220,17 @@ class BaseSearch:
     def pages_to_left(self):
         if self.page == 1:
             return []
-        elif self.page == self.total_page_count and self.total_page_count != 2:
+        if self.page == self.total_page_count and self.total_page_count != 2:
             return [self.page - 2, self.previous_page]
-        else:
-            return [self.previous_page]
+        return [self.previous_page]
 
     @property
     def pages_to_right(self):
         if self.page == self.total_page_count:
             return []
-        elif self.page == 1 and self.total_page_count != 2:
+        if self.page == 1 and self.total_page_count != 2:
             return [self.next_page, self.page + 2]
-        else:
-            return [self.next_page]
+        return [self.next_page]
 
     @property
     def next_page(self):
@@ -240,7 +238,7 @@ class BaseSearch:
 
     @property
     def show_next_icon(self):
-        return True if self.pages_to_right else False
+        return bool(self.pages_to_right)
 
     @property
     def total_page_count(self):
