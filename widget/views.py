@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.http import HttpResponse, HttpResponseNotFound
 from django.views.decorators.clickjacking import xframe_options_exempt
 
 
@@ -14,3 +14,22 @@ def widget_iframe(request, uk_prn, kis_course_id, orientation, language, kis_mod
     }
 
     return render(request, 'widget/iframe_widget.html', context)
+
+
+def widget_embed(request):
+    with open('./widget/static/css/widget.css', 'r') as styling:
+        css = styling.read()
+
+    if not css:
+        return HttpResponseNotFound('File not found')
+
+    compressed_css = css.replace('\n', '')
+
+    with open('./widget/static/js/widget.js', 'r') as file:
+        script = file.read()
+
+    if not script:
+        return HttpResponseNotFound('File not found')
+
+    final_script = script.replace('{% styles %}', compressed_css)
+    return HttpResponse(final_script)
