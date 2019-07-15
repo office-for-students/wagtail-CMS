@@ -23,7 +23,7 @@
         <div class="course-detail__course-overview">
             <div class="course-detail__overview-item">
                 <p class="course-detail__overview-item-heading">Length</p>
-                <p class="course-detail__overview-item-value">3 year course</p>
+                <p class="course-detail__overview-item-value">x year course</p>
             </div>
 
             <div class="course-detail__overview-item">
@@ -53,8 +53,19 @@
         </div>
     </div>
 
+    <div class="course-detail__accordion-block">
+        {% for accordion in page.accordions %}
+            <div class="course-detail__accordion">
+                <h2 class="course-detail__accordion-heading">
+                    {{ accordion.value.heading }}
 
-    {{ page.accordions }}
+                    <span class="course-detail__accordion-heading-chevron">
+                        <img class="course-detail__icon" src="{% static 'images/down-chevron.svg' %}" alt="">
+                    </span>
+                </h2>
+            </div>
+        {% endfor %}
+    </div>
 
     {{ page.uni_site_links_header }}
 </div>
