@@ -1,3 +1,50 @@
+var CONTENT = {
+    'intro': {
+        'en-GB': 'of students were satisfied with their course.',
+        'cy-GB': ''
+    },
+    'ctaLead1': {
+        'en-GB': 'For ',
+        'cy-GB': ''
+    },
+    'ctaLead2': {
+        'en-GB': 'more',
+        'cy-GB': ''
+    },
+    'ctaLead3': {
+        'en-GB': ' official course information visit.',
+        'cy-GB': ''
+    },
+    'logo': {
+        'en-GB': 'Discover Uni',
+        'cy-GB': ''
+    },
+    'cta': {
+        'en-GB': 'See course data',
+        'cy-GB': ''
+    },
+    'noDataIntro': {
+        'en-GB': 'To see official information about this course and others visit Discover Uni.',
+        'cy-GB': ''
+    },
+    'noDataCtaLead1': {
+        'en-GB': 'Make an ',
+        'cy-GB': ''
+    },
+    'noDataCtaLead2': {
+        'en-GB': 'informed',
+        'cy-GB': ''
+    },
+    'noDataCtaLead3': {
+        'en-GB': ' choice.',
+        'cy-GB': ''
+    },
+    'noDataCta': {
+        'en-GB': 'See Discover Uni',
+        'cy-GB': ''
+    }
+}
+
 var  DiscoverUniWidget = function(targetDiv) {
     this.targetDiv = targetDiv;
     this.setup();
@@ -10,6 +57,7 @@ DiscoverUniWidget.prototype = {
         this.kismode = this.targetDiv.dataset.kismode;
         this.orientation = this.targetDiv.dataset.orientation;
         this.language = this.targetDiv.dataset.language;
+        this.size = this.targetDiv.dataset.size;
 
         this.targetDiv.classList.add(this.orientation);
 
@@ -62,11 +110,12 @@ DiscoverUniWidget.prototype = {
 
         var introNode = document.createElement("p");
         introNode.classList.add('intro');
-        var intro = document.createTextNode('of students were satisfied with their course.');
+        var intro = document.createTextNode(CONTENT.intro[this.language]);
         introNode.appendChild(intro);
 
         var courseNode = document.createElement("p");
         courseNode.classList.add('course');
+        // TODO replace with data from api
         var course = document.createTextNode('BA (Hons) History, 3-year course, Full time, optional foundation year.');
         courseNode.appendChild(course);
 
@@ -83,13 +132,13 @@ DiscoverUniWidget.prototype = {
 
         var leadNode1 = document.createElement("span");
         leadNode1.classList.add('cta-lead');
-        var lead1 = document.createTextNode('For ');
+        var lead1 = document.createTextNode(CONTENT.ctaLead1[this.language]);
         var leadNode2 = document.createElement("strong");
         leadNode2.classList.add('cta-lead');
-        var lead2 = document.createTextNode('more');
+        var lead2 = document.createTextNode(CONTENT.ctaLead2[this.language]);
         var leadNode3 = document.createElement("span");
         leadNode3.classList.add('cta-lead');
-        var lead3 = document.createTextNode(' official course information visit.');
+        var lead3 = document.createTextNode(CONTENT.ctaLead3[this.language]);
         leadNode1.appendChild(lead1);
         leadNode2.appendChild(lead2);
         leadNode3.appendChild(lead3);
@@ -99,14 +148,14 @@ DiscoverUniWidget.prototype = {
 
         var logoNode = document.createElement('p');
         logoNode.classList.add('logo');
-        var logo = document.createTextNode('Discover Uni');
+        var logo = document.createTextNode(CONTENT.logo[this.language]);
         logoNode.appendChild(logo);
         ctaBlockNode.appendChild(logoNode);
 
         var ctaWrapperNode = document.createElement('div');
         ctaWrapperNode.classList.add('cta');
         var ctaNode = document.createElement('a');
-        var cta = document.createTextNode('See course data');
+        var cta = document.createTextNode(CONTENT.cta[this.language]);
         ctaWrapperNode.appendChild(ctaNode);
         ctaNode.appendChild(cta);
         ctaBlockNode.appendChild(ctaWrapperNode);
@@ -125,7 +174,7 @@ DiscoverUniWidget.prototype = {
         leadNode.classList.add('widget-lead');
         var introNode = document.createElement("p");
         introNode.classList.add('intro');
-        var intro = document.createTextNode('To see official information about this course and others visit Discover Uni.');
+        var intro = document.createTextNode(CONTENT.noDataIntro[this.language]);
         introNode.appendChild(intro);
         leadNode.appendChild(introNode);
         this.targetDiv.appendChild(leadNode);
@@ -137,13 +186,13 @@ DiscoverUniWidget.prototype = {
 
         var leadNode1 = document.createElement("span");
         leadNode1.classList.add('cta-lead');
-        var lead1 = document.createTextNode('Make an ');
+        var lead1 = document.createTextNode(CONTENT.noDataCtaLead1[this.language]);
         var leadNode2 = document.createElement("strong");
         leadNode2.classList.add('cta-lead');
-        var lead2 = document.createTextNode('informed');
+        var lead2 = document.createTextNode(CONTENT.noDataCtaLead2[this.language]);
         var leadNode3 = document.createElement("span");
         leadNode3.classList.add('cta-lead');
-        var lead3 = document.createTextNode(' choice.');
+        var lead3 = document.createTextNode(CONTENT.noDataCtaLead3[this.language]);
         leadNode1.appendChild(lead1);
         leadNode2.appendChild(lead2);
         leadNode3.appendChild(lead3);
@@ -153,14 +202,14 @@ DiscoverUniWidget.prototype = {
 
         var logoNode = document.createElement('p');
         logoNode.classList.add('logo');
-        var logo = document.createTextNode('Discover Uni');
+        var logo = document.createTextNode(CONTENT.logo[this.language]);
         logoNode.appendChild(logo);
         ctaBlockNode.appendChild(logoNode);
 
         var ctaWrapperNode = document.createElement('div');
         ctaWrapperNode.classList.add('cta');
         var ctaNode = document.createElement('a');
-        var cta = document.createTextNode('See Discover Uni');
+        var cta = document.createTextNode(CONTENT.noDataCta[this.language]);
         ctaWrapperNode.appendChild(ctaNode);
         ctaNode.appendChild(cta);
         ctaBlockNode.appendChild(ctaWrapperNode);
