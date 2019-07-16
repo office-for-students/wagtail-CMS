@@ -13,6 +13,10 @@
     margin: 0px;
 }
 
+.kis-widget .widget-cta-block {
+    padding: 15px 15px 21px 15px;
+}
+
 .kis-widget .widget-cta-block .cta-lead {
     font-size: 13px;
     line-height: 16px;
@@ -62,13 +66,12 @@
     width: 615px;
 }
 
-.kis-widget.vertical .widget-lead {
+.kis-widget .widget-lead {
     padding: 20px 20px 220px 15px;
-    position: relative;
 }
 
-.kis-widget.vertical.no-data .widget-lead {
-    position: initial;
+.kis-widget.vertical .widget-lead {
+    position: relative;
 }
 
 .kis-widget.horizontal .widget-lead {
@@ -88,6 +91,7 @@
 .kis-widget.vertical .widget-cta-block {
     padding: 15px 15px 21px 15px;
 }
+
 .kis-widget.horizontal.no-data .widget-cta-block {
     width: 160px;
     float: right;
