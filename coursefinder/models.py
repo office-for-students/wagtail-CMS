@@ -218,7 +218,7 @@ class BaseSearch:
 
     @property
     def pages_to_left(self):
-        if self.page == 1:
+        if self.page == 1 or self.total_page_count == 0:
             return []
         if self.page == self.total_page_count and self.total_page_count != 2:
             return [self.page - 2, self.previous_page]
@@ -226,7 +226,7 @@ class BaseSearch:
 
     @property
     def pages_to_right(self):
-        if self.page == self.total_page_count:
+        if self.page == self.total_page_count or self.total_page_count == 0:
             return []
         if self.page == 1 and self.total_page_count != 2:
             return [self.next_page, self.page + 2]
