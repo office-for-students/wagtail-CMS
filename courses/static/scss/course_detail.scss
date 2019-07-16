@@ -104,6 +104,7 @@
 
     .course-detail__uni-site-links {
         padding: 24px;
+        margin-bottom: 30px;
 
         background-color: $background-grey;
 
@@ -153,6 +154,10 @@
             background-color: $darker-grey;
             color: $white;
             text-decoration: none;
+
+            .course-detail__other-courses-link-icon {
+                margin-right: 9px;
+            }
         }
     }
 }
