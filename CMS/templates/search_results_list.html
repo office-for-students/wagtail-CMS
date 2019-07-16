@@ -23,7 +23,7 @@
 
             {% for course in item.courses %}
                 <div class="course">
-                    <a href="/course-details" class="course-name">
+                    <a href="/course-details/{{item.public_ukprn}}/{{course.kis_course_id}}/{{course.mode}}" class="course-name">
                         {{ course.english_title }}
                     </a>
 
