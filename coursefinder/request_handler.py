@@ -17,13 +17,13 @@ def course_finder_query(subject, institution, mode, countries, limit, offset):
         return SearchMocks.get_successful_search_response()
     else:
         url = "%s/search/institution-courses?limit=%s&offset=%s" % (settings.SEARCHAPIHOST, limit, offset)
-        if subject != '':
+        if subject and subject != '':
             url = f"{url}&subjects={subject}"
-        if institution != '':
+        if institution and institution != '':
             url = f"{url}&institutions={institution}"
-        if 'Full-time,Part-time' not in mode and mode != '':
+        if mode and 'Full-time,Part-time' not in mode and mode != '':
             url = f"{url}&filters={mode.lower().replace('-', '_').replace(' ', '_')}"
-        if countries != '':
+        if countries and countries != '':
             url = f"{url}&countries={countries.lower().replace(' ', '_')}"
 
         return requests.get(url=url)
