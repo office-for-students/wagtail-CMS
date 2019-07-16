@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'courses',
     'errors.apps.ErrorsConfig',
     'widget.apps.WidgetConfig',
+    'institutions.apps.InstitutionsConfig',
 
     'sass_processor',
 ]
