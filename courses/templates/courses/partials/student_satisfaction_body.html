@@ -1,2 +1,10 @@
 Content about the course - {{ accordion.value.heading }}.
-{% include 'courses/partials/doughnut_chart.html' %}
+<div class="student-satisfaction__charts">
+    <div class="student-satisfaction__chart discover-uni-chart doughnut" data-value="80">
+        {% include 'courses/partials/doughnut_chart.html' %}
+    </div>
+
+    <div class="student-satisfaction__chart discover-uni-chart doughnut" data-value="12">
+        {% include 'courses/partials/doughnut_chart.html' %}
+    </div>
+</div>
