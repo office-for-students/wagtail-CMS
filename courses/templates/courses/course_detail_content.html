@@ -63,6 +63,10 @@
                         <img class="course-detail__icon" src="{% static 'images/down-chevron.svg' %}" alt="">
                     </span>
                 </h2>
+
+                <div class="course-detail__accordion-body">
+                    {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course %}
+                </div>
             </div>
         {% endfor %}
     </div>
