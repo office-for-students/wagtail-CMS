@@ -55,7 +55,7 @@
 
     <div class="course-detail__accordion-block">
         {% for accordion in page.accordions %}
-            <div class="course-detail__accordion">
+            <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
                 <h2 class="course-detail__accordion-heading">
                     {{ accordion.value.heading }}
 

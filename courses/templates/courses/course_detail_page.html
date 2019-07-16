@@ -9,3 +9,7 @@
 {% block content %}
     {% include 'courses/course_detail_content.html' with course_details=course %}
 {% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}"></script>
+{% endblock %}
