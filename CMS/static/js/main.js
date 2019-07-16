@@ -18,7 +18,7 @@ $(document).ready(function() {
 
   // Homepage form
 
-  let inputs = $('input[name=courseQuery],select[name=institutionQuery]');
+  let inputs = $('input[name=subject_query],select[name=institution_query]');
   inputs.on('input', function () {
       inputs.not(this).prop('required', !$(this).val().length);
   });

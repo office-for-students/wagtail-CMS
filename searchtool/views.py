@@ -3,8 +3,8 @@ import requests
 
 
 def results(request):
-    course_query = request.GET.get('courseQuery', None)
-    institution_query = request.GET.get('institutionQuery', None)
+    course_query = request.GET.get('subject_query', None)
+    institution_query = request.GET.get('institution_query', None)
     r = requests.get(url="http://host.docker.internal:10100/search/institution-courses?q=%s&institutions=%s" %
                          (course_query, institution_query))
     data = r.json()

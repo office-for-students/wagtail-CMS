@@ -4,8 +4,8 @@ from CMS.test.factories import PageFactory
 from CMS.test.mocks import SearchMocks
 from CMS.test.utils import UniSimpleTestCase
 from coursefinder.models import CourseSearch, CourseFinderChooseCountry, CourseFinderModeOfStudy, \
-    CourseFinderChooseSubject, CourseFinderNarrowSearch, CourseFinderPostcode, CourseFinderSummary, CourseFinderResults, \
-    CourseFinderLandingPage
+    CourseFinderChooseSubject, CourseFinderNarrowSearch, CourseFinderPostcode, CourseFinderSummary, \
+    CourseFinderResults, CourseFinderLandingPage, CourseFinderSearch, BaseSearch
 from coursefinder.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
     choose_subject_sibling_finder, narrow_search_sibling_finder, postcode_sibling_finder, summary_sibling_finder, \
     results_sibling_finder
@@ -55,9 +55,9 @@ class CourseFinderModelsTests(UniSimpleTestCase):
         course_finder_page = PageFactory.create_course_finder_landing_page('Course Finder')
         self.assertIsFalse(course_finder_page.has_country_finder_page())
 
-    def test_course_finder_results_execute_function_appends_counts_and_list_of_courses_to_model_on_success(self):
+    def test_course_search_execute_function_appends_counts_and_list_of_courses_to_model_on_success(self):
         mock_data = SearchMocks.get_search_response_content()
-        course_search = CourseSearch("", "")
+        course_search = CourseSearch("Computing", None, 1, 20)
         error = course_search.execute()
         self.assertIsNone(error)
         self.assertEquals(course_search.total_courses, mock_data.get('total_number_of_courses'))
@@ -67,8 +67,8 @@ class CourseFinderModelsTests(UniSimpleTestCase):
 
     @patch('coursefinder.request_handler.query_course_and_institution',
            return_value=SearchMocks.get_unsuccessful_search_response())
-    def test_course_finder_results_execute_function_returns_error_on_failure(self, mock_search):
-        course_search = CourseSearch("", "")
+    def test_course_search_execute_function_returns_error_on_failure(self, mock_search):
+        course_search = CourseSearch("Computing", None, 1, 20)
         error = course_search.execute()
         self.assertIsNone(course_search.total_courses)
         self.assertIsNone(course_search.total_institutions)
@@ -187,6 +187,142 @@ class CourseFinderModelsTests(UniSimpleTestCase):
 
         self.assertIsNotNone(summary.back_page)
         self.assertEquals(type(summary.back_page), CourseFinderPostcode)
+
+
+    def test_course_finder_search_execute_function_appends_counts_and_list_of_courses_to_model_on_success(self):
+        mock_data = SearchMocks.get_search_response_content()
+        course_finder_search = CourseFinderSearch("Computing", None, None, None, 1, 20)
+        error = course_finder_search.execute()
+        self.assertIsNone(error)
+        self.assertEquals(course_finder_search.total_courses, mock_data.get('total_number_of_courses'))
+        self.assertEquals(course_finder_search.total_institutions, mock_data.get('total_results'))
+        self.assertEquals(type(course_finder_search.results), list)
+        self.assertEquals(len(course_finder_search.results), len(mock_data.get('items')))
+
+
+    @patch('coursefinder.request_handler.course_finder_query',
+           return_value=SearchMocks.get_unsuccessful_search_response())
+    def test_course_finder_search_execute_function_returns_error_on_failure(self, mock_search):
+        course_finder_search = CourseFinderSearch("Computing", None, None, None, 1, 20)
+        error = course_finder_search.execute()
+        self.assertIsNone(course_finder_search.total_courses)
+        self.assertIsNone(course_finder_search.total_institutions)
+        self.assertIsNone(course_finder_search.results)
+        self.assertIsNotNone(error)
+        self.assertEquals(type(error), ApiError)
+
+
+    def test_base_search_total_page_count_correctly_calculates(self):
+        base_search = BaseSearch(1, 20)
+        base_search.total_institutions = 77
+        actual = base_search.total_page_count
+
+        expected = 4
+        self.assertEquals(actual, expected)
+
+
+    def test_base_search_pages_to_left_returns_empty_list_on_page_one(self):
+        base_search = BaseSearch(1, 20)
+        base_search.total_institutions = 77
+        actual = base_search.pages_to_left
+
+        expected = []
+        self.assertEquals(actual, expected)
+
+
+    def test_base_search_pages_to_left_returns_two_element_list_on_last_page_when_more_than_two_pages(self):
+        base_search = BaseSearch(4, 20)
+        base_search.total_institutions = 77
+        actual = base_search.pages_to_left
+
+        expected = [2, 3]
+        self.assertEquals(actual, expected)
+
+
+    def test_base_search_pages_to_left_returns_one_element_list_on_last_page_when_only_two_pages(self):
+        base_search = BaseSearch(2, 20)
+        base_search.total_institutions = 40
+        actual = base_search.pages_to_left
+
+        expected = [1]
+        self.assertEquals(actual, expected)
+
+
+    def test_base_search_pages_to_left_returns_one_element_list_on_page_in_middle_of_range(self):
+        base_search = BaseSearch(4, 20)
+        base_search.total_institutions = 200
+        actual = base_search.pages_to_left
+
+        expected = [3]
+        self.assertEquals(actual, expected)
+
+
+    def test_base_search_pages_to_right_returns_empty_list_on__last_page(self):
+        base_search = BaseSearch(4, 20)
+        base_search.total_institutions = 77
+        actual = base_search.pages_to_right
+
+        expected = []
+        self.assertEquals(actual, expected)
+
+
+    def test_base_search_pages_to_right_returns_two_element_list_on_page_one_when_more_than_two_pages(self):
+        base_search = BaseSearch(1, 20)
+        base_search.total_institutions = 77
+        actual = base_search.pages_to_right
+
+        expected = [2, 3]
+        self.assertEquals(actual, expected)
+
+
+    def test_base_search_pages_to_right_returns_one_element_list_on_page_one_when_only_two_pages(self):
+        base_search = BaseSearch(1, 20)
+        base_search.total_institutions = 40
+        actual = base_search.pages_to_right
+
+        expected = [2]
+        self.assertEquals(actual, expected)
+
+
+    def test_base_search_pages_to_right_returns_one_element_list_on_page_in_middle_of_range(self):
+        base_search = BaseSearch(4, 20)
+        base_search.total_institutions = 200
+        actual = base_search.pages_to_right
+
+        expected = [5]
+        self.assertEquals(actual, expected)
+
+
+    def test_base_search_show_previous_icon_returns_true_when_there_are_pages_to_the_left(self):
+        base_search = BaseSearch(4, 20)
+        base_search.total_institutions = 200
+        actual = base_search.show_previous_icon
+
+        self.assertIsTrue(actual)
+
+
+    def test_base_search_show_previous_icon_returns_true_when_there_are_no_pages_to_the_left(self):
+        base_search = BaseSearch(1, 20)
+        base_search.total_institutions = 200
+        actual = base_search.show_previous_icon
+
+        self.assertIsFalse(actual)
+
+
+    def test_base_search_show_next_icon_returns_true_when_there_are_pages_to_the_rigth(self):
+        base_search = BaseSearch(4, 20)
+        base_search.total_institutions = 200
+        actual = base_search.show_next_icon
+
+        self.assertIsTrue(actual)
+
+
+    def test_base_search_show_next_icon_returns_true_when_there_are_no_pages_to_the_rigth(self):
+        base_search = BaseSearch(10, 20)
+        base_search.total_institutions = 200
+        actual = base_search.show_next_icon
+
+        self.assertIsFalse(actual)
 
 
 class CourseFinderUtilsTests(UniSimpleTestCase):
@@ -477,3 +613,4 @@ class CourseFinderUtilsTests(UniSimpleTestCase):
         country_finder = PageFactory.create_country_finder_page(title='Country Finder')
         output = results_sibling_finder(country_finder)
         self.assertIsNone(output)
+

@@ -1,3 +1,5 @@
+import math
+
 from django.db.models.fields import TextField
 
 from wagtail.core.models import Page
@@ -196,17 +198,65 @@ class CourseFinderResults(Page):
     ]
 
 
-class CourseSearch:
+class BaseSearch:
 
-    def __init__(self, course_query, institution_query):
-        self.course_query = course_query
-        self.institution_query = institution_query
+    def __init__(self, page, count):
+        self.page = int(page)
+        self.count = int(count)
+        self.offset = self.count * (self.page - 1)
+        self.total_courses = None
+        self.total_institutions = None
+        self.results = None
+
+    @property
+    def show_previous_icon(self):
+        return bool(self.pages_to_left)
+
+    @property
+    def previous_page(self):
+        return self.page - 1
+
+    @property
+    def pages_to_left(self):
+        if self.page == 1 or self.total_page_count == 0:
+            return []
+        if self.page == self.total_page_count and self.total_page_count != 2:
+            return [self.page - 2, self.previous_page]
+        return [self.previous_page]
+
+    @property
+    def pages_to_right(self):
+        if self.page == self.total_page_count or self.total_page_count == 0:
+            return []
+        if self.page == 1 and self.total_page_count != 2:
+            return [self.next_page, self.page + 2]
+        return [self.next_page]
+
+    @property
+    def next_page(self):
+        return self.page + 1
+
+    @property
+    def show_next_icon(self):
+        return bool(self.pages_to_right)
+
+    @property
+    def total_page_count(self):
+        return math.ceil(self.total_institutions / self.count)
+
+
+class CourseSearch(BaseSearch):
+
+    def __init__(self, subject, institution, page, count):
+        super().__init__(page, count)
+        self.subject = subject
+        self.institution = institution
         self.total_courses = None
         self.total_institutions = None
         self.results = None
 
     def execute(self):
-        response = request_handler.query_course_and_institution(self.course_query, self.institution_query)
+        response = request_handler.query_course_and_institution(self.subject, self.institution, self.count, self.offset)
         error = None
 
         if response.ok:
@@ -216,6 +266,32 @@ class CourseSearch:
             self.results = data.get('items')
         else:
             error = ApiError(response.status_code, 'searching courses for %s %s' %
-                             (self.institution_query, self.course_query))
+                             (self.institution, self.subject))
+
+        return error
+
+
+class CourseFinderSearch(BaseSearch):
+
+    def __init__(self, subject, institution, mode, countries, page, count):
+        super().__init__(page, count)
+        self.subject = subject
+        self.institution = institution
+        self.mode = mode
+        self.countries = countries
+
+    def execute(self):
+        response = request_handler.course_finder_query(self.subject, self.institution, self.mode, self.countries,
+                                                       self.count, self.offset)
+        error = None
+
+        if response.ok:
+            data = response.json()
+            self.total_courses = data.get('total_number_of_courses')
+            self.total_institutions = data.get('total_results')
+            self.results = data.get('items')
+        else:
+            error = ApiError(response.status_code, 'searching courses for %s, %s, %s, %s' %
+                             (self.subject, self.institution, self.mode, self.countries))
 
         return error

@@ -48,11 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'home',
-    'search',
-    'content',
-    'coursefinder',
-    'errors',
+    'home.apps.HomeConfig',
+    'search.apps.SearchConfig',
+    'content.apps.ContentConfig',
+    'coursefinder.apps.CoursefinderConfig',
+    'errors.apps.ErrorsConfig',
 ]
 
 MIDDLEWARE = [

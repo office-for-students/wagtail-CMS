@@ -1,0 +1,48 @@
+{% load staticfiles %}
+{% load discover_uni_tags %}
+
+<nav role="navigation" aria-label="Pagination" class="pagination">
+    <ul class="pagination__item-list">
+        <div class="pagination__previous">
+            {% if search.show_previous_icon != 0 %}
+                <a class="pagination__link" aria-label="Previous page" href="
+                    {% url pagination_url %}{% queryparams subject_query=search.subject institution_query=search.institution mode_query=search.mode countries_query=search.countries page=search.previous_page count=search.count %}">
+                    <img src="{% static 'images/left_chevron.svg' %}" alt="previous-page">
+                </a>
+            {% endif %}
+        </div>
+
+        {% for option in search.pages_to_left %}
+            <li class="pagination__item">
+                <a class="pagination__item-link"
+                   href="{% url pagination_url %}{% queryparams subject_query=search.subject institution_query=search.institution mode_query=search.mode countries_query=search.countries page=option count=search.count %}"
+                   aria-label="Page {{ option }}">
+                    {% if option < 10 %}0{% endif %}{{ option }}
+                </a>
+            </li>
+        {% endfor %}
+
+        <li class="pagination__item--active">
+            {% if search.page < 10 %}0{% endif %}{{ search.page }}
+        </li>
+
+        {% for option in search.pages_to_right %}
+            <li class="pagination__item">
+                <a class="pagination__item-link"
+                   href="{% url pagination_url %}{% queryparams subject_query=search.subject institution_query=search.institution mode_query=search.mode countries_query=search.countries page=option count=search.count %}"
+                   aria-label="Page {{ option }}">
+                    {% if option < 10 %}0{% endif %}{{ option }}
+                </a>
+            </li>
+        {% endfor %}
+
+        <div class="pagination__next">
+            {% if search.show_next_icon %}
+                <a class="pagination__link" aria-label="Next page" href="
+                    {% url pagination_url %}{% queryparams subject_query=search.subject institution_query=search.institution mode_query=search.mode countries_query=search.countries page=search.next_page count=search.count %}">
+                    <img src="{% static 'images/right_chevron.svg' %}" alt="previous-page">
+                </a>
+            {% endif %}
+        </div>
+    </ul>
+</nav>
