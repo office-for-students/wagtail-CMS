@@ -1,3 +1,5 @@
+import statistics
+
 from django.db.models.fields import TextField
 
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
@@ -66,6 +68,9 @@ class Course:
             self.year_abroad = CourseYearAbroad(course_details.get('year_abroad'))
             self.entry_stats = EntryStatistics(course_details.get('statistics').get('entry')[0])
             self.continuation_stats = ContinuationStatistics(course_details.get('statistics').get('continuation')[0])
+            self.employment_stats = EmploymentStatistics(course_details.get('statistics').get('employment')[0])
+            self.job_type_stats = JobTypeStatistics(course_details.get('statistics').get('job_type')[0])
+            self.salary_stats = SalaryStatistics(course_details.get('statistics').get('salary')[0])
 
     @property
     def number_of_locations(self):
@@ -207,3 +212,67 @@ class ContinuationStatistics:
     @property
     def continuing_or_complete(self):
         return self.continuing + self.gained
+
+
+class EmploymentStatistics:
+
+    def __init__(self, data_obj):
+        self.aggregation_level = data_obj.get('aggregation_level')
+        self.unemployed = data_obj.get('assumed_to_be_unemployed')
+        self.in_study = data_obj.get('in_study')
+        self.in_work = data_obj.get('in_work')
+        self.in_work_and_study = data_obj.get('in_work_and_study')
+        self.in_work_or_study = data_obj.get('in_work_or_study')
+        self.not_available_for_work_or_study = data_obj.get('not_available_for_work_or_study')
+        self.number_of_students = data_obj.get('number_of_students')
+        self.response_rate = data_obj.get('response_rate')
+        self.subject_code = data_obj.get('subject').get('code')
+        self.subject_english_name = data_obj.get('subject').get('english_label')
+        self.subject_welsh_name = data_obj.get('subject').get('welsh_label')
+        unavailable_data = data_obj.get('unavailable')
+        if unavailable_data:
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = unavailable_data.get('reason')
+
+    @property
+    def work_and_or_study(self):
+        return self.in_work_and_study + self.in_work_or_study
+
+
+class JobTypeStatistics:
+
+    def __init__(self, data_obj):
+        self.aggregation_level = data_obj.get('aggregation_level')
+        self.non_professional_or_managerial_jobs = data_obj.get('non_professional_or_managerial_jobs')
+        self.professional_or_managerial_jobs = data_obj.get('professional_or_managerial_jobs')
+        self.unknown_professions = data_obj.get('unknown_professions')
+        self.number_of_students = data_obj.get('number_of_students')
+        self.response_rate = data_obj.get('resp_rate')
+        self.subject_code = data_obj.get('subject').get('code')
+        self.subject_english_name = data_obj.get('subject').get('english_label')
+        self.subject_welsh_name = data_obj.get('subject').get('welsh_label')
+        unavailable_data = data_obj.get('unavailable')
+        if unavailable_data:
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = unavailable_data.get('reason')
+
+
+class SalaryStatistics:
+
+    def __init__(self, data_obj):
+        self.aggregation_level = data_obj.get('aggregation_level')
+        self.higher_quartile = data_obj.get('higher_quartile')
+        self.lower_quartile = data_obj.get('lower_quartile')
+        self.number_of_students = data_obj.get('number_of_graduates')
+        self.response_rate = data_obj.get('response_rate')
+        self.subject_code = data_obj.get('subject').get('code')
+        self.subject_english_name = data_obj.get('subject').get('english_label')
+        self.subject_welsh_name = data_obj.get('subject').get('welsh_label')
+        unavailable_data = data_obj.get('unavailable')
+        if unavailable_data:
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = unavailable_data.get('reason')
+
+    @property
+    def mean(self):
+        return round(statistics.mean([self.higher_quartile, self.lower_quartile]))

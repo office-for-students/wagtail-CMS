@@ -1,0 +1,114 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.after-course__block {
+    padding: 34px 30px 49px 30px;
+
+    .after-course__stats-heading {
+        @extend .s-heading;
+
+        margin: 0;
+        margin-bottom: 21px;
+
+        color: $darker-grey;
+    }
+
+    .after-course__data-point {
+        margin-bottom: 38px;
+
+        .after-course__figure {
+            @extend .m-heading;
+
+            margin-bottom: 0px;
+
+            line-height: 44px;
+        }
+
+        .after-course__figure-explanation {
+            margin-bottom: 19px;
+        }
+
+        .after-course__figure-salary-range {
+            @extend .mobile-body-font--bold;
+        }
+
+        .after-course__chart-block {
+            .after-course__chart {
+                margin-bottom: 37px;
+
+                &:last-of-type {
+                    margin-bottom: 13px;
+                }
+
+                .after-course__chart-label {
+                    @extend .small-font;
+
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+
+    p {
+        margin: 0px;
+    }
+}
+
+.after-course__lead {
+    @extend .mobile-body-font;
+
+    margin-top: 55px;
+    padding: 23px 30px 25px 30px;
+
+    background-color: $background-grey;
+    line-height: 20px;
+
+    p {
+        margin: 0px;
+    }
+
+    .after-course__lead-title {
+        @extend .s-heading;
+
+        color: $darker-grey;
+        line-height: 32px;
+        margin-bottom: 27px;
+    }
+
+    .after-course__lead-heading {
+        @extend .mobile-body-font--bold;
+
+        margin: 0;
+        margin-top: 20px;
+    }
+}
+
+.after-course__lead-block {
+    @extend .after-course__block;
+
+    padding-bottom: 30px;
+
+    .after-course__data-point {
+        margin-bottom: 0;
+    }
+}
+
+.after-course__data-point-overview {
+    @extend .desktop-body-font;
+
+    padding: 7px 30px 32px 30px;
+    text-align: center;
+
+    background-color: $background-grey;
+
+    p {
+        margin: 0px;
+    }
+
+    .after-course__data-point-overview-lead {
+        @extend .l-heading;
+
+        color: $slate;
+        line-height: 59px;
+    }
+}
