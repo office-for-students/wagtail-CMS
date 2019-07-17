@@ -5,7 +5,7 @@
         <img class="course-detail__icon" src="{% static 'images/certificate.svg' %}" alt="">
 
         <h1 class="course-detail__course-name">
-            Course Name
+            {{course.english_title}}
         </h1>
 
         <button class="course-detail__compare-btn">
@@ -13,42 +13,42 @@
         </button>
 
         <div class="course-detail__institution-info">
-            <a class="course-detail__institution-name" href="#">University Name</a>
+            <a class="course-detail__institution-name" href="#">{{course.institution.pub_ukprn_name}}</a>
 
             <p class="course-detail__institution-locations">
-                2 Locations: xxxxxxx, xxxxxx
+                {{ course.number_of_locations }} Locations: {{ course.locations_list }}
             </p>
         </div>
 
         <div class="course-detail__course-overview">
             <div class="course-detail__overview-item">
                 <p class="course-detail__overview-item-heading">Length</p>
-                <p class="course-detail__overview-item-value">x year course</p>
+                <p class="course-detail__overview-item-value">{{ course.length.code }} year course</p>
             </div>
 
             <div class="course-detail__overview-item">
                 <p class="course-detail__overview-item-heading">Study mode</p>
-                <p class="course-detail__overview-item-value">Full time</p>
+                <p class="course-detail__overview-item-value">{{ course.mode.label }}</p>
             </div>
 
             <div class="course-detail__overview-item">
                 <p class="course-detail__overview-item-heading">Distance learning</p>
-                <p class="course-detail__overview-item-value">Optional</p>
+                <p class="course-detail__overview-item-value">{{ course.distance_learning.label }}</p>
             </div>
 
             <div class="course-detail__overview-item">
                 <p class="course-detail__overview-item-heading">Placement year</p>
-                <p class="course-detail__overview-item-value">Optional</p>
+                <p class="course-detail__overview-item-value">{{ course.sandwich_year.label }}</p>
             </div>
 
             <div class="course-detail__overview-item">
                 <p class="course-detail__overview-item-heading">Year abroad</p>
-                <p class="course-detail__overview-item-value">Optional</p>
+                <p class="course-detail__overview-item-value">{{ course.year_abroad.label }}</p>
             </div>
 
             <div class="course-detail__overview-item">
                 <p class="course-detail__overview-item-heading">Foundation year</p>
-                <p class="course-detail__overview-item-value">Optional</p>
+                <p class="course-detail__overview-item-value">{{ course.foundation_year.label }}</p>
             </div>
         </div>
     </div>
