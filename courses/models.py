@@ -64,6 +64,7 @@ class Course:
             self.welsh_title = course_details.get('title').get('welsh')
             self.ucas_programme_id = course_details.get('ucas_programme_id')
             self.year_abroad = CourseYearAbroad(course_details.get('year_abroad'))
+            self.entry_stats = EntryStatistics(course_details.get('statistics').get('entry')[0])
 
     @property
     def number_of_locations(self):
@@ -160,3 +161,25 @@ class CourseYearAbroad:
         self.code = data_obj.get('code')
         self.label = data_obj.get('label')
 
+
+class EntryStatistics:
+
+    def __init__(self, data_obj):
+        self.a_level = data_obj.get('a-level')
+        self.access = data_obj.get('access')
+        self.aggregation_level = data_obj.get('aggregation_level')
+        self.another_higher_education_qualifications = data_obj.get('another_higher_education_qualifications')
+        self.baccalaureate = data_obj.get('baccalaureate')
+        self.degree = data_obj.get('degree')
+        self.foundation = data_obj.get('foundation')
+        self.none = data_obj.get('none')
+        self.number_of_students = data_obj.get('number_of_students')
+        self.other_qualifications = data_obj.get('other_qualifications')
+        self.other_qualifications = data_obj.get('other_qualifications')
+        self.subject_code = data_obj.get('subject').get('code')
+        self.subject_english_name = data_obj.get('subject').get('english_label')
+        self.subject_welsh_name = data_obj.get('subject').get('welsh_label')
+        unavailable_data = data_obj.get('unavailable')
+        if unavailable_data:
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = unavailable_data.get('reason')
