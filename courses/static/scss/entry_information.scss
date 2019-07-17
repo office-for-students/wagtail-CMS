@@ -1,0 +1,37 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.entry-information__block {
+    padding: 34px 30px 49px 30px;
+
+    .entry-information__heading {
+        @extend .s-heading;
+
+        margin: 0;
+
+        color: $darker-grey;
+    }
+
+    .entry-information__lead {
+        @extend .small-font;
+
+        margin-top: 5px;
+        margin-bottom: 34px;
+    }
+
+    .entry-information__qualification-charts {
+        .entry-information__chart {
+            margin-bottom: 37px;
+
+            &:last-of-type {
+                margin-bottom: 13px;
+            }
+
+            .entry-information__chart-label {
+                @extend .small-font;
+
+                margin-top: 5px;
+            }
+        }
+    }
+}

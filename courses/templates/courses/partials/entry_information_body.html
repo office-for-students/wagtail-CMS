@@ -1,1 +1,130 @@
-Content about the course - {{ accordion.value.heading }}.
+{% load staticfiles %}
+
+<div class="entry-information__block">
+    <h3 class="entry-information__heading">Qualification types</h3>
+
+    <p class="entry-information__lead">
+        Students enrolling on this course had these qualifications:
+    </p>
+
+    <div class="entry-information__qualification-charts">
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.degree}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">Degree</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.another_higher_education_qualifications}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">Different higher education qualification</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.a_level}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">A-levels, Advanced Highers or similar</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.baccalaureate}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">Baccalaureate</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.access}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">Completed Access course</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.foundation}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">Foundation course</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.none}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">No / unknown prior qualifications</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.other_qualifications}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">Other</label>
+        </div>
+
+        <div class="chart-explanation">
+            <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
+            <p class="information-link">Chart labels explained</p>
+        </div>
+
+        <p class="explanation-text">
+            Data from <strong>{{course_details.entry_stats.number_of_students}}</strong> students. Source: Data for individual students collected directly from universities and colleges.
+            <a href="/dummy-link">Find out more</a>
+        </p>
+
+    </div>
+</div>
+
+{% if course_details.entry_stats.unavailable_reason %}
+    <div class="not-enough-data-disclaimer">
+        {{ course_details.entry_stats.unavailable_reason }}
+    </div>
+{% endif %}
+
+<div class="entry-information__block">
+    <h3 class="entry-information__heading">UCAS Tariff Points</h3>
+
+    <p class="entry-information__lead">
+        Tariff points for students starting the course from 2016 – 2018:
+    </p>
+
+    <div class="entry-information__qualification-charts">
+        <h5><i>STATS still to come</i></h5>
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.degree}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">Degree</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.another_higher_education_qualifications}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">Different higher education qualification</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.a_level}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">A-levels, Advanced Highers or similar</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.baccalaureate}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">Baccalaureate</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.access}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">Completed Access course</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.foundation}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">Foundation course</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.none}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">No / unknown prior qualifications</label>
+        </div>
+
+        <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.other_qualifications}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="entry-information-block__chart-label">Other</label>
+        </div>
+
+        <div class="chart-explanation">
+            <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
+            <p class="information-link">Chart labels explained</p>
+        </div>
+
+        <p class="explanation-text">
+            Data from <strong>{{course_details.entry_stats.number_of_students}}</strong> students. Source: Data for individual students collected directly from universities and colleges.
+            <a href="/dummy-link">Find out more</a>
+        </p>
+
+    </div>
+</div>

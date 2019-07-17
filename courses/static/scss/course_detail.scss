@@ -3,6 +3,7 @@
 @import '../../../CMS/static/scss/variables';
 
 @import 'student_satisfaction';
+@import 'entry_information';
 
 .course-detail {
     margin-top: 27px;
@@ -168,5 +169,21 @@
 
     .highcharts-credits {
         display: none;
+    }
+
+    .explanation-text {
+        @extend .small-font;
+
+        margin-top: 21px;
+        margin-bottom: 6px;
+    }
+
+    .not-enough-data-disclaimer {
+        @extend .small-font;
+
+        padding: 25px 30px 25px 30px;
+
+        background-color: $ux-interrupt;
+        color: $darker-grey;
     }
 }
