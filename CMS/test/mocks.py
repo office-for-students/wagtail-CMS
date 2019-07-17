@@ -6,7 +6,7 @@ from http import HTTPStatus
 class CourseMocks:
 
     @classmethod
-    def get_successful_course_load_response(cls):
+    def get_successful_course_load_content(cls):
         return {
             "id": "7948bc0c-a7c2-11e9-a181-186590d5a74b",
             "created_at": "2019-07-16T12:08:51.181524",
@@ -206,6 +206,13 @@ class CourseMocks:
                 }
             }
         }
+
+    @classmethod
+    def get_successful_course_load_response(cls):
+        response = Response()
+        response.status_code = StatusMocks.HTTP_200_OK
+        response._content = json.dumps(cls.get_successful_course_load_content()).encode('utf-8')
+        return response
 
 
 class SearchMocks:
