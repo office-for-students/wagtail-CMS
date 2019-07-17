@@ -484,3 +484,20 @@ footer {
     color: #71A4D3;
     text-decoration: none;
 }
+
+.chart-explanation {
+    display: flex;
+    align-items: center;
+}
+
+.chart-explanation .information-link {
+    font-size: 16px;
+    color: #005EA5;
+    text-decoration: underline;
+}
+
+.information-icon {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
