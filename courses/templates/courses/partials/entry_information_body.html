@@ -53,19 +53,12 @@
             <p class="information-link">Chart labels explained</p>
         </div>
 
-        <p class="explanation-text">
-            Data from <strong>{{course_details.entry_stats.number_of_students}}</strong> students. Source: Data for individual students collected directly from universities and colleges.
-            <a href="/dummy-link">Find out more</a>
-        </p>
+        {% include 'courses/partials/explanation_text.html' with number_of_students=course_details.entry_stats.number_of_students %}
 
     </div>
 </div>
 
-{% if course_details.entry_stats.unavailable_reason %}
-    <div class="not-enough-data-disclaimer">
-        {{ course_details.entry_stats.unavailable_reason }}
-    </div>
-{% endif %}
+{% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.entry_stats.unavailable_reason %}
 
 <div class="entry-information__block">
     <h3 class="entry-information__heading">UCAS Tariff Points</h3>
@@ -121,10 +114,8 @@
             <p class="information-link">Chart labels explained</p>
         </div>
 
-        <p class="explanation-text">
-            Data from <strong>{{course_details.entry_stats.number_of_students}}</strong> students. Source: Data for individual students collected directly from universities and colleges.
-            <a href="/dummy-link">Find out more</a>
-        </p>
-
+        {% include 'courses/partials/explanation_text.html' with number_of_students=course_details.entry_stats.number_of_students %}
     </div>
 </div>
+
+{% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.entry_stats.unavailable_reason %}
