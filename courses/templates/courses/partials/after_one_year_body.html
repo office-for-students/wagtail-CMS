@@ -1,1 +1,57 @@
-Content about the course - {{ accordion.value.heading }}.
+{% load staticfiles %}
+
+<div class="one-year__lead-block">
+    <h3 class="one-year__heading">After 1 year of study</h3>
+
+    <p class="one-year__lead">
+        This is what students are doing one year after starting the course:
+    </p>
+</div>
+
+<div class="one-year__overview">
+    <p class="one-year__overview-lead">
+        {{ course_details.continuation_stats.continuing_or_complete }}%
+    </p>
+
+    <p>
+        of students are still on the course or have completed it
+    </p>
+</div>
+
+<div class="one-year__block">
+    <div class="one-year__qualification-charts">
+        <div class="one-year__chart discover-uni-chart bar" data-value="{{course_details.continuation_stats.continuing}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="one-year-block__chart-label">Are still on the course</label>
+        </div>
+
+        <div class="one-year__chart discover-uni-chart bar" data-value="{{course_details.continuation_stats.gained}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="one-year-block__chart-label">Have completed the course (started in the final year due to prior study)</label>
+        </div>
+
+        <div class="one-year__chart discover-uni-chart bar" data-value="{{course_details.continuation_stats.dormant}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="one-year-block__chart-label">Are taking a break from their studies</label>
+        </div>
+
+        <div class="one-year__chart discover-uni-chart bar" data-value="{{course_details.continuation_stats.lower}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="one-year-block__chart-label">Have left with a lower qualification</label>
+        </div>
+
+        <div class="one-year__chart discover-uni-chart bar" data-value="{{course_details.continuation_stats.left}}">
+            {% include 'courses/partials/bar_chart.html' %}
+            <label class="one-year-block__chart-label">Have left without a qualification</label>
+        </div>
+
+        <div class="chart-explanation">
+            <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
+            <p class="information-link">Chart labels explained</p>
+        </div>
+
+        {% include 'courses/partials/explanation_text.html' with number_of_students=course_details.continuation_stats.number_of_students %}
+    </div>
+</div>
+
+{% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.continuation_stats.unavailable_reason %}

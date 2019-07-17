@@ -1,0 +1,60 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.one-year__block, .one-year__lead-block {
+    padding: 34px 30px 49px 30px;
+
+    .one-year__heading {
+        @extend .s-heading;
+
+        margin: 0;
+
+        color: $darker-grey;
+    }
+
+    .one-year__lead {
+        @extend .small-font;
+
+        margin-top: 5px;
+    }
+
+    .one-year__qualification-charts {
+        .one-year__chart {
+            margin-bottom: 37px;
+
+            &:last-of-type {
+                margin-bottom: 13px;
+            }
+
+            .one-year__chart-label {
+                @extend .small-font;
+
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+.one-year__lead-block {
+    padding-bottom: 40px;
+}
+
+.one-year__overview {
+    @extend .desktop-body-font;
+
+    padding: 7px 30px 32px 30px;
+    text-align: center;
+
+    background-color: $background-grey;
+
+    p {
+        margin: 0px;
+    }
+
+    .one-year__overview-lead {
+        @extend .l-heading;
+
+        color: $slate;
+        line-height: 59px;
+    }
+}

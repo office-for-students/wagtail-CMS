@@ -65,6 +65,7 @@ class Course:
             self.ucas_programme_id = course_details.get('ucas_programme_id')
             self.year_abroad = CourseYearAbroad(course_details.get('year_abroad'))
             self.entry_stats = EntryStatistics(course_details.get('statistics').get('entry')[0])
+            self.continuation_stats = ContinuationStatistics(course_details.get('statistics').get('continuation')[0])
 
     @property
     def number_of_locations(self):
@@ -183,3 +184,26 @@ class EntryStatistics:
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
             self.unavailable_reason = unavailable_data.get('reason')
+
+
+class ContinuationStatistics:
+
+    def __init__(self, data_obj):
+        self.aggregation_level = data_obj.get('aggregation_level')
+        self.continuing = data_obj.get('continuing_with_provider')
+        self.dormant = data_obj.get('dormant')
+        self.gained = data_obj.get('gained')
+        self.left = data_obj.get('left')
+        self.lower = data_obj.get('lower')
+        self.number_of_students = data_obj.get('number_of_students')
+        self.subject_code = data_obj.get('subject').get('code')
+        self.subject_english_name = data_obj.get('subject').get('english_label')
+        self.subject_welsh_name = data_obj.get('subject').get('welsh_label')
+        unavailable_data = data_obj.get('unavailable')
+        if unavailable_data:
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = unavailable_data.get('reason')
+
+    @property
+    def continuing_or_complete(self):
+        return self.continuing + self.gained
