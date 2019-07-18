@@ -46,8 +46,8 @@ var CONTENT = {
 }
 
 var MODES = {
-    'full-time': 1,
-    'part-time': 2,
+    'fulltime': 1,
+    'parttime': 2,
 }
 
 var LANGUAGE_KEYS = {
