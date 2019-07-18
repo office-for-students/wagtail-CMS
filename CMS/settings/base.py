@@ -183,3 +183,5 @@ BASE_URL = 'http://example.com'
 # Search API settings
 
 SEARCHAPIHOST = os.environ.get('SEARCHAPIHOST')
+DATASETAPIHOST = os.environ.get('DATASETAPIHOST')
+

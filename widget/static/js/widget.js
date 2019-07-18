@@ -45,6 +45,16 @@ var CONTENT = {
     }
 }
 
+var MODES = {
+    'full-time': 1,
+    'part-time': 2,
+}
+
+var LANGUAGE_KEYS = {
+    'en-GB': 'english',
+    'cy-GB': 'welsh'
+}
+
 var  DiscoverUniWidget = function(targetDiv) {
     this.targetDiv = targetDiv;
     this.setup();
@@ -57,6 +67,7 @@ DiscoverUniWidget.prototype = {
         this.kismode = this.targetDiv.dataset.kismode;
         this.orientation = this.targetDiv.dataset.orientation;
         this.language = this.targetDiv.dataset.language;
+        this.languageKey = LANGUAGE_KEYS[this.language];
         this.size = this.targetDiv.dataset.size;
 
         this.targetDiv.classList.add(this.orientation);
@@ -83,29 +94,35 @@ DiscoverUniWidget.prototype = {
         var that = this;
         var xhttp = new XMLHttpRequest();
         xhttp.addEventListener("load", function() {
-            console.log(this.status)
             if (this.status === 200) {
-                that.renderDataWidget();
+                that.renderDataWidget(JSON.parse(this.response).course);
             } else {
                 that.renderWidget();
             }
         });
-        xhttp.open("GET", "/dummy-link", true);
+        base_url = "{{api_domain}}/dataset/institutions/{{uni_id}}/courses/{{course_id}}/modes/{{mode}}";
+        url = base_url.replace('{{uni_id}}', this.institution);
+        url = url.replace('{{course_id}}', this.course);
+        url = url.replace('{{mode}}', MODES[this.kismode.toLowerCase()]);
+
+        xhttp.open("GET", url, true);
+        xhttp.setRequestHeader('Ocp-Apim-Subscription-Key', '55707b5bfae64269a3205716eaa4e05b');
         xhttp.send();
     },
 
-    renderDataWidget: function() {
-        this.renderDataLead();
-        this.renderCTABlock();
+    renderDataWidget: function(courseData) {
+        this.renderDataLead(courseData);
+        this.renderCTABlock(courseData);
     },
 
-    renderDataLead: function() {
+    renderDataLead: function(courseData) {
         var leadNode = document.createElement('div');
         leadNode.classList.add('widget-lead');
         var titleNode = document.createElement('h1');
         titleNode.classList.add('title');
-        // TODO replace with actual data from the api
-        var title = document.createTextNode('XX%');
+
+        var percentage = courseData.statistics.nss[0].question_27.agree_or_strongly_agree + '%';
+        var title = document.createTextNode(percentage);
         titleNode.appendChild(title);
 
         var introNode = document.createElement("p");
@@ -115,8 +132,7 @@ DiscoverUniWidget.prototype = {
 
         var courseNode = document.createElement("p");
         courseNode.classList.add('course');
-        // TODO replace with data from api
-        var course = document.createTextNode('BA (Hons) History, 3-year course, Full time, optional foundation year.');
+        var course = document.createTextNode(courseData.title[this.languageKey]);
         courseNode.appendChild(course);
 
         leadNode.appendChild(titleNode);
@@ -154,8 +170,16 @@ DiscoverUniWidget.prototype = {
 
         var ctaWrapperNode = document.createElement('div');
         ctaWrapperNode.classList.add('cta');
+        coursePageBase = '{{domain_name}}/course-details/{{uni_id}}/{{course_id}}/{{mode}}/';
+        coursePage = coursePageBase.replace('{{domain_name}}', 'http://localhost:8000');
+        coursePage = coursePage.replace('{{uni_id}}', this.institution);
+        coursePage = coursePage.replace('{{course_id}}', this.course);
+        coursePage = coursePage.replace('{{mode}}', this.kismode);
+
         var ctaNode = document.createElement('a');
+        ctaNode.href = coursePage;
         var cta = document.createTextNode(CONTENT.cta[this.language]);
+
         ctaWrapperNode.appendChild(ctaNode);
         ctaNode.appendChild(cta);
         ctaBlockNode.appendChild(ctaWrapperNode);
@@ -209,9 +233,17 @@ DiscoverUniWidget.prototype = {
         var ctaWrapperNode = document.createElement('div');
         ctaWrapperNode.classList.add('cta');
         var ctaNode = document.createElement('a');
+
+        coursePageBase = '{{domain_name}}/course-details/{{uni_id}}/{{course_id}}/{{mode}}/';
+        coursePage = coursePageBase.replace('{{domain_name}}', 'http://localhost:8000');
+        coursePage = coursePage.replace('{{uni_id}}', this.institution);
+        coursePage = coursePage.replace('{{course_id}}', this.course);
+        coursePage = coursePage.replace('{{mode}}', this.kismode);
+        ctaNode.href = coursePage;
+
         var cta = document.createTextNode(CONTENT.noDataCta[this.language]);
-        ctaWrapperNode.appendChild(ctaNode);
         ctaNode.appendChild(cta);
+        ctaWrapperNode.appendChild(ctaNode);
         ctaBlockNode.appendChild(ctaWrapperNode);
 
         this.targetDiv.appendChild(ctaBlockNode);

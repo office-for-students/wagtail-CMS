@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.conf import settings
 from django.http import HttpResponse, HttpResponseNotFound
+from django.shortcuts import render
 from django.views.decorators.clickjacking import xframe_options_exempt
 
 
@@ -33,4 +34,5 @@ def widget_embed(request):
         return HttpResponseNotFound('File not found')
 
     final_script = script.replace('{% styles %}', compressed_css)
+    final_script = final_script.replace('{{api_domain}}', settings.DATASETAPIHOST)
     return HttpResponse(final_script)

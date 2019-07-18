@@ -44,6 +44,11 @@
     padding-bottom: 9px;
 }
 
+.kis-widget .widget-cta-block .cta a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
 .kis-widget .widget-lead .title {
     font-size: 48px;
     font-weight: normal;
