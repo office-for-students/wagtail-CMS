@@ -210,7 +210,7 @@ class CourseMocks:
     @classmethod
     def get_successful_course_load_response(cls):
         response = Response()
-        response.status_code = StatusMocks.HTTP_200_OK
+        response.status_code = HTTPStatus.OK
         response._content = json.dumps(cls.get_successful_course_load_content()).encode('utf-8')
         return response
 

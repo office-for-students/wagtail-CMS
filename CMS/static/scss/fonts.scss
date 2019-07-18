@@ -1,6 +1,6 @@
 @import 'variables';
 
-.xl-heading {
+@mixin xl-heading-mixin() {
     font-family: $default-font;
     font-weight: normal;
     font-size: $xl-heading-font-size;
@@ -10,12 +10,12 @@
     color: $default-font-color;
 }
 
-.xl-heading--bold {
-    @extend .xl-heading;
+@mixin xl-heading--bold-mixin() {
+    @include xl-heading-mixin();
     font-weight: bold;
 }
 
-.l-heading {
+@mixin l-heading-mixin() {
     font-family: $default-font;
     font-weight: normal;
     font-size: $l-heading-font-size;
@@ -25,12 +25,12 @@
     color: $default-font-color;
 }
 
-.l-heading--bold {
-    @extend .l-heading;
+@mixin l-heading--bold-mixin() {
+    @include l-heading-mixin();
     font-weight: bold;
 }
 
-.m-heading {
+@mixin m-heading-mixin() {
     font-family: $default-font;
     font-weight: normal;
     font-size: $m-heading-font-size;
@@ -41,12 +41,12 @@
 }
 
 
-.m-heading--bold {
-    @extend .m-heading;
+@mixin m-heading--bold-mixin() {
+    @include m-heading-mixin();
     font-weight: bold;
 }
 
-.s-heading {
+@mixin s-heading-mixin() {
     font-family: $default-font;
     font-weight: normal;
     font-size: $s-heading-font-size;
@@ -56,12 +56,12 @@
     color: $default-font-color;
 }
 
-.s-heading--bold {
-    @extend .s-heading;
+@mixin s-heading--bold-mixin() {
+    @include s-heading-mixin();
     font-weight: bold;
 }
 
-.xs-heading {
+@mixin xs-heading-mixin() {
     font-family: $default-font;
     font-weight: normal;
     font-size: $xs-heading-font-size;
@@ -71,12 +71,12 @@
     color: $default-font-color;
 }
 
-.xs-heading--bold {
-    @extend .xs-heading;
+@mixin xs-heading--bold-mixin() {
+    @include xs-heading-mixin();
     font-weight: bold;
 }
 
-.desktop-body-font {
+@mixin desktop-body-font-mixin() {
     font-family: $default-font;
     font-weight: normal;
     font-size: $desktop-body-font-size;
@@ -86,12 +86,12 @@
     color: $default-font-color;
 }
 
-.desktop-body-font--bold {
-    @extend .desktop-body-font;
+@mixin desktop-body-font--bold-mixin() {
+    @include desktop-body-font-mixin();
     font-weight: bold;
 }
 
-.mobile-body-font {
+@mixin mobile-body-font-mixin() {
     font-family: $default-font;
     font-weight: normal;
     font-size: $mobile-body-font-size;
@@ -101,12 +101,12 @@
     color: $default-font-color;
 }
 
-.mobile-body-font--bold {
-    @extend .mobile-body-font;
+@mixin mobile-body-font--bold-mixin() {
+    @include mobile-body-font-mixin();
     font-weight: bold;
 }
 
-.small-font {
+@mixin small-font-mixin() {
     font-family: $default-font;
     font-weight: normal;
     font-size: $small-font-size;
@@ -116,7 +116,7 @@
     color: $default-font-color;
 }
 
-.small-font--bold {
-    @extend .small-font;
+@mixin small-font--bold-mixin() {
+    @include small-font-mixin();
     font-weight: bold;
 }

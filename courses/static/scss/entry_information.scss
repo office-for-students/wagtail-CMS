@@ -5,7 +5,7 @@
     padding: 34px 30px 49px 30px;
 
     .entry-information__heading {
-        @extend .s-heading;
+        @include s-heading-mixin();
 
         margin: 0;
 
@@ -13,7 +13,7 @@
     }
 
     .entry-information__lead {
-        @extend .small-font;
+        @include small-font-mixin();
 
         margin-top: 5px;
         margin-bottom: 34px;
@@ -28,7 +28,7 @@
             }
 
             .entry-information__chart-label {
-                @extend .small-font;
+                @include small-font-mixin();
 
                 margin-top: 5px;
             }

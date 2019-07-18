@@ -5,7 +5,7 @@
     padding: 34px 30px 49px 30px;
 
     .one-year__heading {
-        @extend .s-heading;
+        @include s-heading-mixin();
 
         margin: 0;
 
@@ -13,7 +13,7 @@
     }
 
     .one-year__lead {
-        @extend .small-font;
+        @include small-font-mixin();
 
         margin-top: 5px;
     }
@@ -27,7 +27,7 @@
             }
 
             .one-year__chart-label {
-                @extend .small-font;
+                @include small-font-mixin();
 
                 margin-top: 5px;
             }
@@ -40,7 +40,7 @@
 }
 
 .one-year__overview {
-    @extend .desktop-body-font;
+    @include desktop-body-font-mixin();
 
     padding: 7px 30px 32px 30px;
     text-align: center;
@@ -52,7 +52,7 @@
     }
 
     .one-year__overview-lead {
-        @extend .l-heading;
+        @include l-heading-mixin();
 
         color: $slate;
         line-height: 59px;

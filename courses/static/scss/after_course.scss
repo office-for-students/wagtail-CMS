@@ -5,7 +5,7 @@
     padding: 34px 30px 49px 30px;
 
     .after-course__stats-heading {
-        @extend .s-heading;
+        @include s-heading-mixin();
 
         margin: 0;
         margin-bottom: 21px;
@@ -17,7 +17,7 @@
         margin-bottom: 38px;
 
         .after-course__figure {
-            @extend .m-heading;
+            @include m-heading-mixin();
 
             margin-bottom: 0px;
 
@@ -29,7 +29,7 @@
         }
 
         .after-course__figure-salary-range {
-            @extend .mobile-body-font--bold;
+            @include mobile-body-font--bold-mixin();
         }
 
         .after-course__chart-block {
@@ -41,7 +41,7 @@
                 }
 
                 .after-course__chart-label {
-                    @extend .small-font;
+                    @include small-font-mixin();
 
                     margin-top: 5px;
                 }
@@ -55,7 +55,7 @@
 }
 
 .after-course__lead {
-    @extend .mobile-body-font;
+    @include mobile-body-font-mixin();
 
     margin-top: 55px;
     padding: 23px 30px 25px 30px;
@@ -68,7 +68,7 @@
     }
 
     .after-course__lead-title {
-        @extend .s-heading;
+        @include s-heading-mixin();
 
         color: $darker-grey;
         line-height: 32px;
@@ -76,7 +76,7 @@
     }
 
     .after-course__lead-heading {
-        @extend .mobile-body-font--bold;
+        @include mobile-body-font--bold-mixin();
 
         margin: 0;
         margin-top: 20px;
@@ -94,7 +94,7 @@
 }
 
 .after-course__data-point-overview {
-    @extend .desktop-body-font;
+    @include desktop-body-font-mixin();
 
     padding: 7px 30px 32px 30px;
     text-align: center;
@@ -106,7 +106,7 @@
     }
 
     .after-course__data-point-overview-lead {
-        @extend .l-heading;
+        @include l-heading-mixin();
 
         color: $slate;
         line-height: 59px;
