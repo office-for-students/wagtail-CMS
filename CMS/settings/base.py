@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'content.apps.ContentConfig',
     'coursefinder.apps.CoursefinderConfig',
     'errors.apps.ErrorsConfig',
+    'widget.apps.WidgetConfig',
 ]
 
 MIDDLEWARE = [
@@ -182,3 +183,5 @@ BASE_URL = 'http://example.com'
 # Search API settings
 
 SEARCHAPIHOST = os.environ.get('SEARCHAPIHOST')
+DATASETAPIHOST = os.environ.get('DATASETAPIHOST')
+WIDGETAPIKEY = os.environ.get('WIDGETAPIKEY')
