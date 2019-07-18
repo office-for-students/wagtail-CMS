@@ -35,4 +35,5 @@ def widget_embed(request):
 
     final_script = script.replace('{% styles %}', compressed_css)
     final_script = final_script.replace('{{api_domain}}', settings.DATASETAPIHOST)
+    final_script = final_script.replace('{{api_key}}', settings.WIDGETAPIKEY)
     return HttpResponse(final_script)

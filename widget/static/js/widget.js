@@ -106,7 +106,7 @@ DiscoverUniWidget.prototype = {
         url = url.replace('{{mode}}', MODES[this.kismode.toLowerCase()]);
 
         xhttp.open("GET", url, true);
-        xhttp.setRequestHeader('Ocp-Apim-Subscription-Key', '55707b5bfae64269a3205716eaa4e05b');
+        xhttp.setRequestHeader('Ocp-Apim-Subscription-Key', '{{api_key}}');
         xhttp.send();
     },
 
