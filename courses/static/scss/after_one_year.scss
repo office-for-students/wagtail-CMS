@@ -58,3 +58,39 @@
         line-height: 59px;
     }
 }
+
+@media only screen and (min-width: 770px) {
+    .one-year__block, .one-year__lead-block {
+        padding: 34px 30px 49px 30px;
+
+        .one-year__heading {
+            @include m-heading-mixin();
+
+            margin: 0;
+
+            color: $darker-grey;
+        }
+
+        .one-year__lead {
+            @include desktop-body-font-mixin();
+
+            margin-top: 5px;
+        }
+
+        .one-year__qualification-charts {
+            .one-year__chart {
+                margin-bottom: 37px;
+
+                &:last-of-type {
+                    margin-bottom: 13px;
+                }
+
+                .one-year__chart-label {
+                    @include small-font-mixin();
+
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}

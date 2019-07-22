@@ -35,3 +35,40 @@
         }
     }
 }
+
+@media only screen and (min-width: 770px) {
+    .entry-information__block {
+        padding: 34px 30px 49px 30px;
+
+        .entry-information__heading {
+            @include m-heading-mixin();
+
+            margin: 0;
+
+            color: $darker-grey;
+        }
+
+        .entry-information__lead {
+            @include desktop-body-font-mixin();
+
+            margin-top: 5px;
+            margin-bottom: 34px;
+        }
+
+        .entry-information__qualification-charts {
+            .entry-information__chart {
+                margin-bottom: 40px;
+
+                &:last-of-type {
+                    margin-bottom: 13px;
+                }
+
+                .entry-information__chart-label {
+                    @include small-font-mixin();
+
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}

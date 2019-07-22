@@ -112,3 +112,85 @@
         line-height: 59px;
     }
 }
+
+@media only screen and (min-width: 770px) {
+    .after-course__block {
+        padding: 34px 30px 49px 30px;
+
+        .after-course__stats-heading {
+            @include m-heading-mixin();
+
+            margin: 0;
+            margin-bottom: 21px;
+
+            color: $darker-grey;
+        }
+
+        .after-course__data-point {
+            margin-bottom: 38px;
+            @include mobile-body-font-mixin();
+
+            .after-course__figure {
+                @include m-heading-mixin();
+
+                margin-bottom: 0px;
+
+                line-height: 44px;
+            }
+
+            .after-course__figure-explanation {
+                margin-bottom: 19px;
+            }
+
+            .after-course__figure-salary-range {
+                @include mobile-body-font--bold-mixin();
+            }
+
+            .after-course__chart-block {
+                .after-course__chart {
+                    margin-bottom: 37px;
+
+                    &:last-of-type {
+                        margin-bottom: 13px;
+                    }
+
+                    .after-course__chart-label {
+                        @include small-font-mixin();
+
+                        margin-top: 5px;
+                    }
+                }
+            }
+        }
+    }
+
+    .after-course__lead {
+        @include desktop-body-font-mixin();
+
+        margin-top: 55px;
+        padding: 50px 40px 30px;
+
+        background-color: $background-grey;
+        line-height: 20px;
+
+        p {
+            margin: 0px;
+        }
+
+        .after-course__lead-title {
+            @include m-heading-mixin();
+
+            color: $darker-grey;
+            line-height: 32px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .after-course__lead-heading {
+            @include desktop-body-font--bold-mixin();
+
+            margin: 0;
+            margin-top: 20px;
+        }
+    }
+}
