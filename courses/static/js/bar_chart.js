@@ -51,7 +51,7 @@ $(function () {
                 },
                 plotOptions: {
                     series: {
-                        stacking: 'percentage'
+                        stacking: 'percentage',
                     }
                 },
                 series: [{
@@ -66,7 +66,10 @@ $(function () {
                         y: this.value,
                         pointWidth: '40',
                     }]
-                }]
+                }],
+                tooltip: {
+                    enabled: false,
+                },
             });
         }
     }

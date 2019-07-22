@@ -6,6 +6,7 @@
 @import 'entry_information';
 @import 'after_one_year';
 @import 'after_course';
+@import 'highcharts';
 
 .course-detail {
     margin-top: 27px;
@@ -82,6 +83,7 @@
 
 
                     margin-bottom: 14px;
+                    padding: 13px 15px 14px;
 
                     background-color: $background-grey;
 
@@ -90,10 +92,15 @@
                     }
 
                     .course-detail__overview-item-value {
+                        margin-top: 4px;
                         margin-bottom: 13px;
 
                         color: $darker-grey;
                     }
+                }
+
+                p {
+                    margin: 0px;
                 }
             }
         }

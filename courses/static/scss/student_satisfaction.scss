@@ -1,8 +1,219 @@
-.student-satisfaction__charts {
-    display: flex;
-    flex-wrap: wrap;
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
 
-    .student-satisfaction__chart {
-        width: 50%;
+.student-satisfaction__overview {
+    @include desktop-body-font-mixin();
+
+    padding: 7px 30px 32px 30px;
+    margin-top: 30px;
+    text-align: center;
+
+    background-color: $background-grey;
+
+    .student-satisfaction__overview-lead {
+        @include l-heading-mixin();
+
+        color: $slate;
+        line-height: 59px;
+    }
+
+    p {
+        margin: 0px;
+    }
+}
+
+.student-satisfaction__block {
+    padding: 26px 15px 60px;
+
+    .student-satisfaction__intro {
+        @include small-font-mixin();
+
+        text-align: center;
+
+        color: $darker-grey;
+
+        p {
+            margin: 0;
+        }
+
+        .student-satisfaction__nss_logo {
+            margin-top: 5px;
+        }
+    }
+
+    .student-satisfaction__data-group {
+        margin-top: 34px;
+        margin-bottom: 23px;
+
+        .student-satisfaction__data-group-heading {
+            @include mobile-body-font-mixin();
+
+            display: flex;
+            align-items: center;
+            margin-top: 0px;
+            margin-bottom: 26px;
+
+            background-color: $darker-grey;
+            border-radius: 2px;
+            color: $white;
+
+            .student-satisfaction__data-group-heading-icon {
+                padding: 15px 15px 10px 13px;
+
+                border-right: 2px solid $white;
+            }
+
+            .student-satisfaction__data-group-heading-title {
+                padding-left: 23px;
+            }
+        }
+
+        .student-satisfaction__charts {
+            display: flex;
+            flex-wrap: wrap;
+
+            .student-satisfaction__chart-wrapper {
+                width: 50%;
+
+                &:nth-child(odd) {
+                    .student-satisfaction__chart {
+                        padding-right: 13px;
+                    }
+                }
+
+                &:nth-child(even) {
+                    .student-satisfaction__chart {
+                        padding-left: 13px;
+                    }
+                }
+
+                .student-satisfaction__chart {
+                    margin-bottom: 38px;
+
+                    .student-satisfaction__chart-title {
+                        @include small-font--bold-mixin();
+
+                        text-align: center;
+                        margin-bottom: 0;
+                        margin-top: 18px;
+
+                        color: $darker-grey;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .student-satisfaction__overview {
+        @include s-heading-mixin();
+
+        padding: 40px 150px 40px;
+        margin-top: 70px;
+        text-align: center;
+
+        background-color: $background-grey;
+
+        .student-satisfaction__overview-lead {
+            @include xl-heading-mixin();
+
+            margin-bottom: 16px;
+
+            color: $slate;
+            line-height: 59px;
+        }
+
+        p {
+            margin: 0px;
+        }
+    }
+
+    .student-satisfaction__block {
+        padding: 50px 15px 60px;
+
+        .student-satisfaction__intro {
+            @include small-font-mixin();
+
+            text-align: center;
+            padding-left: 150px;
+            padding-right: 150px;
+
+            color: $darker-grey;
+
+            p {
+                margin: 0;
+            }
+
+            .student-satisfaction__nss_logo {
+                margin-top: 5px;
+            }
+        }
+
+        .student-satisfaction__data-group {
+            margin-top: 34px;
+            margin-bottom: 59px;
+
+            .student-satisfaction__data-group-heading {
+                @include desktop-body-font-mixin();
+
+                display: flex;
+                align-items: center;
+                margin-top: 0px;
+                margin-bottom: 36px;
+
+                background-color: $darker-grey;
+                border-radius: 2px;
+                color: $white;
+
+                .student-satisfaction__data-group-heading-icon {
+                    padding: 18px 19px 20px;
+
+                    border-right: 2px solid $white;
+                }
+
+                .student-satisfaction__data-group-heading-title {
+                    padding-left: 23px;
+                }
+            }
+
+            .student-satisfaction__charts {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+
+                .student-satisfaction__chart-wrapper {
+                    width: 25%;
+
+                    &:nth-child(1), &:nth-child(4n + 1) {
+                        .student-satisfaction__chart {
+                            padding-left: 0px;
+                        }
+                    }
+
+                    &:nth-child(4n) {
+                        .student-satisfaction__chart {
+                            padding-right: 0px;
+                        }
+                    }
+
+                    .student-satisfaction__chart {
+                        margin-bottom: 38px;
+                        padding-right: 10px;
+                        padding-left: 10px;
+
+                        .student-satisfaction__chart-title {
+                            @include small-font--bold-mixin();
+
+                            text-align: center;
+                            margin-bottom: 0;
+                            margin-top: 18px;
+
+                            color: $darker-grey;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

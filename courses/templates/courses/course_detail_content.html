@@ -13,7 +13,7 @@
         </button>
 
         <div class="course-detail__institution-info">
-            <a class="course-detail__institution-name" href="#">{{course.institution.pub_ukprn_name}}</a>
+            <a class="course-detail__institution-name" href="#">{% autoescape off %}{{course.institution.pub_ukprn_name | safe}}{% endautoescape %}</a>
 
             <p class="course-detail__institution-locations">
                 {{ course.number_of_locations }} Locations: {{ course.locations_list }}

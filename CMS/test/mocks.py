@@ -8,13 +8,14 @@ class CourseMocks:
     @classmethod
     def get_successful_course_load_content(cls):
         return {
-            "id": "7948bc0c-a7c2-11e9-a181-186590d5a74b",
-            "created_at": "2019-07-16T12:08:51.181524",
+            "id": "4fe3a37a-ac62-11e9-aa9f-186590d5a74b",
+            "created_at": "2019-07-22T09:23:05.860230",
             "version": 1,
             "course": {
+                "application_provider": "10004930",
                 "country": {
-                    "code": "XH",
-                    "name": "Scotland"
+                    "code": "XF",
+                    "name": "England"
                 },
                 "distance_learning": {
                     "code": "0",
@@ -24,59 +25,49 @@ class CourseMocks:
                     "code": "0",
                     "label": "Not available"
                 },
-                "honours_award_provision": "1",
+                "honours_award_provision": "0",
                 "institution": {
-                    "pub_ukprn_name": "UNIVERSITY OF ABERDEEN",
-                    "pub_ukprn": "10007783",
-                    "ukprn_name": "UNIVERSITY OF ABERDEEN",
-                    "ukprn": "10007783"
+                    "pub_ukprn_name": "ABINGDON AND WITNEY COLLEGE",
+                    "pub_ukprn": "10000055",
+                    "ukprn_name": "ABINGDON AND WITNEY COLLEGE",
+                    "ukprn": "10000055"
                 },
-                "kis_course_id": "C451",
+                "kis_course_id": "AB20",
                 "length_of_course": {
-                    "code": "5",
-                    "label": "5 stages"
+                    "code": "2",
+                    "label": "2 stages"
                 },
                 "links": {
                     "accommodation": [
                         {
-                            "english": "http://www.abdn.ac.uk/accommodation"
-                        },
-                        {
-                            "english": "http://www.abdn.ac.uk/accommodation"
+                            "english": "http://www.brookes.ac.uk/studying-at-brookes/accommodation/halls-in-detail/"
                         }
                     ],
                     "assessment_method": {
-                        "english": "http://www.abdn.ac.uk/prospectus/ugrad/study/C451"
+                        "english": "http://www.abingdon-witney.ac.uk/course/?code=EHWE103P&year=A18/19&title=Animal+Behaviour+and+Welfare%2C+Foundation+Degree+"
                     },
                     "course_page": {
-                        "english": "http://www.abdn.ac.uk/prospectus/ugrad/study/C451"
+                        "english": "http://www.abingdon-witney.ac.uk/course/?code=EHWE103P&year=A18/19&title=Animal+Behaviour+and+Welfare%2C+Foundation+Degree+"
                     },
                     "employment_details": {
-                        "english": "http://www.abdn.ac.uk/prospectus/ugrad/study/C451"
+                        "english": "http://www.abingdon-witney.ac.uk/course/?code=EHWE103P&year=A18/19&title=Animal+Behaviour+and+Welfare%2C+Foundation+Degree+"
                     },
                     "financial_support_details": {
-                        "english": "http://www.abdn.ac.uk/undergraduate/finance.php"
+                        "english": "http://www.brookes.ac.uk/studying-at-brookes/finance/undergraduate-finance---uk-and-eu-students/financial-support/financial-support-uk-eu-2018-19/"
                     },
                     "learning_and_teaching_methods": {
-                        "english": "http://www.abdn.ac.uk/prospectus/ugrad/study/C451"
+                        "english": "http://www.abingdon-witney.ac.uk/course/?code=EHWE103P&year=A18/19&title=Animal+Behaviour+and+Welfare%2C+Foundation+Degree+"
                     },
                     "student_union": {
-                        "english": "http://www.ausa.org.uk/"
+                        "english": "http://www.nus.org.uk/en/students-unions/abingdon-and-witney-college-students-union/"
                     }
                 },
                 "locations": [
                     {
-                        "latitude": "57.156576",
-                        "longitude": "-2.135668",
+                        "latitude": "51.8202",
+                        "longitude": "-1.477227",
                         "name": {
-                            "english": "Foresterhill"
-                        }
-                    },
-                    {
-                        "latitude": "57.165019",
-                        "longitude": "-2.099122",
-                        "name": {
-                            "english": "Old Aberdeen"
+                            "english": "Abingdon &amp; Witney College (Common Leys Campus)"
                         }
                     }
                 ],
@@ -85,17 +76,16 @@ class CourseMocks:
                     "label": "Full-time"
                 },
                 "qualification": {
-                    "code": "077",
-                    "label": "MSci"
+                    "code": "036",
+                    "label": "FdSc"
                 },
                 "sandwich_year": {
-                    "code": "2",
-                    "label": "Compulsory"
+                    "code": "0",
+                    "label": "Not available"
                 },
                 "title": {
-                    "english": "Genetics (Immunology) with Industrial Placement"
+                    "english": "Animal Behaviour and Welfare"
                 },
-                "ucas_programme_id": "A33-F68",
                 "year_abroad": {
                     "code": "0",
                     "label": "Not available"
@@ -103,67 +93,40 @@ class CourseMocks:
                 "statistics": {
                     "continuation": [
                         {
-                            "aggregation_level": 13,
-                            "continuing_with_provider": 75,
+                            "aggregation_level": 14,
+                            "continuing_with_provider": 100,
                             "dormant": 0,
-                            "gained": 20,
+                            "gained": 0,
                             "left": 0,
-                            "lower": 5,
-                            "number_of_students": 20,
-                            "subject": {
-                                "code": "CAH03-01-07",
-                                "english_label": "Genetics",
-                                "welsh_label": "Geneteg"
-                            },
-                            "unavailable": {
-                                "code": "0",
-                                "reason": "There was not enough data to publish information specifically for this course. This is either because the course size is small or not enough students responded to a survey. For this reason, the data displayed is for all students in Genetics."
-                            }
+                            "lower": 0,
+                            "number_of_students": 15
                         }
                     ],
                     "employment": [
                         {
-                            "aggregation_level": 23,
-                            "assumed_to_be_unemployed": 0,
-                            "in_study": 45,
-                            "in_work": 55,
-                            "in_work_and_study": 0,
-                            "in_work_or_study": 100,
+                            "aggregation_level": 14,
+                            "assumed_to_be_unemployed": 5,
+                            "in_study": 80,
+                            "in_work": 5,
+                            "in_work_and_study": 5,
+                            "in_work_or_study": 95,
                             "not_available_for_work_or_study": 0,
                             "number_of_students": 15,
-                            "response_rate": 80,
-                            "subject": {
-                                "code": "CAH03-01-07",
-                                "english_label": "Genetics",
-                                "welsh_label": "Geneteg"
-                            },
-                            "unavailable": {
-                                "code": "0",
-                                "reason": "There was not enough data to publish information specifically for this course. This is either because the course size is small or not enough students responded to a survey. For this reason, the data displayed is for all students in Genetics."
-                            }
+                            "response_rate": 100
                         }
                     ],
                     "entry": [
                         {
-                            "a-level": 30,
+                            "a-level": 65,
                             "access": 0,
-                            "aggregation_level": 13,
-                            "another_higher_education_qualifications": 0,
+                            "aggregation_level": 14,
+                            "another_higher_education_qualifications": 15,
                             "baccalaureate": 5,
-                            "degree": 0,
+                            "degree": 5,
                             "foundation": 0,
-                            "none": 0,
-                            "number_of_students": 30,
-                            "other_qualifications": 65,
-                            "subject": {
-                                "code": "CAH03-01-07",
-                                "english_label": "Genetics",
-                                "welsh_label": "Geneteg"
-                            },
-                            "unavailable": {
-                                "code": "0",
-                                "reason": "There was not enough data to publish information specifically for this course. This is either because the course size is small or not enough students responded to a survey. For this reason, the data displayed is for all students in Genetics."
-                            }
+                            "none": 5,
+                            "number_of_students": 20,
+                            "other_qualifications": 0
                         }
                     ],
                     "job_type": [
@@ -173,11 +136,6 @@ class CourseMocks:
                             "number_of_students": 25,
                             "professional_or_managerial_jobs": 65,
                             "resp_rate": 80,
-                            "subject": {
-                                "code": "CAH03-01",
-                                "english_label": "Biosciences",
-                                "welsh_label": "Biowyddorau"
-                            },
                             "unavailable": {
                                 "code": "0",
                                 "reason": "There was not enough data to publish information specifically for this course. This is either because the course size is small or not enough students responded to a survey. For this reason, the data displayed is for all students in Biosciences."
@@ -185,22 +143,213 @@ class CourseMocks:
                             "unknown_professions": 0
                         }
                     ],
-                    "salary": [
+                    "nss": [
                         {
-                            "aggregation_level": 12,
-                            "higher_quartile": 22000,
-                            "lower_quartile": 16000,
-                            "number_of_graduates": 15,
-                            "response_rate": 80,
-                            "subject": {
-                                "code": "CAH03-01",
-                                "english_label": "Biosciences",
-                                "welsh_label": "Biowyddorau"
+                            "aggregation_level": 14,
+                            "number_of_students": 13,
+                            "question_1": {
+                                "description": "Staff are good at explaining things",
+                                "agree_or_strongly_agree": 92
                             },
-                            "unavailable": {
-                                "code": "0",
-                                "reason": "There was not enough data to publish information specifically for this course. This is either because the course size is small or not enough students responded to a survey. For this reason, the data displayed is for all students in Biosciences."
-                            }
+                            "question_2": {
+                                "description": "Staff have made the subject interesting",
+                                "agree_or_strongly_agree": 100
+                            },
+                            "question_3": {
+                                "description": "The course is intellectually stimulating",
+                                "agree_or_strongly_agree": 69
+                            },
+                            "question_4": {
+                                "description": "My course has challenged me to achieve my best work",
+                                "agree_or_strongly_agree": 92
+                            },
+                            "question_5": {
+                                "description": "My course has provided me with opportunities to explore ideas or concepts in depth",
+                                "agree_or_strongly_agree": 85
+                            },
+                            "question_6": {
+                                "description": "My course has provided me with opportunities to bring information and ideas together from different topics",
+                                "agree_or_strongly_agree": 92
+                            },
+                            "question_7": {
+                                "description": "My course has provided me with opportunities to apply what I have learnt",
+                                "agree_or_strongly_agree": 77
+                            },
+                            "question_8": {
+                                "description": "The criteria used in marking have been clear in advance",
+                                "agree_or_strongly_agree": 77
+                            },
+                            "question_9": {
+                                "description": "Marking and assessment has been fair",
+                                "agree_or_strongly_agree": 62
+                            },
+                            "question_10": {
+                                "description": "Feedback on my work has been timely",
+                                "agree_or_strongly_agree": 69
+                            },
+                            "question_11": {
+                                "description": "I have received helpful comments on my work",
+                                "agree_or_strongly_agree": 85
+                            },
+                            "question_12": {
+                                "description": "I have been able to contact staff when I needed to",
+                                "agree_or_strongly_agree": 62
+                            },
+                            "question_13": {
+                                "description": "I have received sufficient advice and guidance in relation to my course",
+                                "agree_or_strongly_agree": 77
+                            },
+                            "question_14": {
+                                "description": "Good advice was available when I needed to make study choices on my course",
+                                "agree_or_strongly_agree": 77
+                            },
+                            "question_15": {
+                                "description": "The course is well organised and running smoothly",
+                                "agree_or_strongly_agree": 54
+                            },
+                            "question_16": {
+                                "description": "The timetable works efficiently for me",
+                                "agree_or_strongly_agree": 85
+                            },
+                            "question_17": {
+                                "description": "Any changes in the course or teaching have been communicated effectively",
+                                "agree_or_strongly_agree": 77
+                            },
+                            "question_18": {
+                                "description": "The IT resources and facilities provided have supported my learning well",
+                                "agree_or_strongly_agree": 42
+                            },
+                            "question_19": {
+                                "description": "The library resources (e.g. books, online services and learning spaces) have supported my learning well",
+                                "agree_or_strongly_agree": 85
+                            },
+                            "question_20": {
+                                "description": "I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to",
+                                "agree_or_strongly_agree": 77
+                            },
+                            "question_21": {
+                                "description": "I feel part of a community of staff and students",
+                                "agree_or_strongly_agree": 69
+                            },
+                            "question_22": {
+                                "description": "I have had the right opportunities to work with other students as part of my course",
+                                "agree_or_strongly_agree": 85
+                            },
+                            "question_23": {
+                                "description": "I have had the right opportunities to provide feedback on my course",
+                                "agree_or_strongly_agree": 77
+                            },
+                            "question_24": {
+                                "description": "Staff value students' views and opinions about the course",
+                                "agree_or_strongly_agree": 85
+                            },
+                            "question_25": {
+                                "description": "It is clear how students' feedback on the course has been acted on",
+                                "agree_or_strongly_agree": 69
+                            },
+                            "question_26": {
+                                "description": "The students' union (association or guild) effectively represents students' academic interests",
+                                "agree_or_strongly_agree": 0
+                            },
+                            "question_27": {
+                                "description": "Overall, I am satisfied with the quality of the course",
+                                "agree_or_strongly_agree": 85
+                            },
+                            "resp_rate": 93
+                        }
+                    ],
+                    "salary": [{
+                        "aggregation_level": 12,
+                        "higher_quartile": 22000,
+                        "lower_quartile": 16000,
+                        "number_of_graduates": 15,
+                        "response_rate": 80,
+                        "subject": {
+                            "code": "CAH03-01",
+                            "english_label": "Biosciences",
+                            "welsh_label": "Biowyddorau"
+                        },
+                        "unavailable": {
+                            "code": "0",
+                            "reason": "There was not enough data to publish information specifically for this course. This is either because the course size is small or not enough students responded to a survey. For this reason, the data displayed is for all students in Biosciences."
+                        }
+                    }],
+                    "tariff": [
+                        {
+                            "aggregation": "14",
+                            "number_of_students": "10",
+                            "tariffs": [
+                                {
+                                    "code": "T001",
+                                    "description": "less than 48 tariff points",
+                                    "entrants": "20"
+                                },
+                                {
+                                    "code": "T048",
+                                    "description": "between 48 and 63 tariff points",
+                                    "entrants": "0"
+                                },
+                                {
+                                    "code": "T064",
+                                    "description": "between 64 and 79 tariff points",
+                                    "entrants": "20"
+                                },
+                                {
+                                    "code": "T080",
+                                    "description": "between 80 and 95 tariff points",
+                                    "entrants": "30"
+                                },
+                                {
+                                    "code": "T096",
+                                    "description": "between 96 and 111 tariff points",
+                                    "entrants": "0"
+                                },
+                                {
+                                    "code": "T112",
+                                    "description": "between 112 and 127 tariff points",
+                                    "entrants": "0"
+                                },
+                                {
+                                    "code": "T128",
+                                    "description": "between 128 and 143 tariff points",
+                                    "entrants": "10"
+                                },
+                                {
+                                    "code": "T144",
+                                    "description": "between 144 and 159 tariff points",
+                                    "entrants": "0"
+                                },
+                                {
+                                    "code": "T160",
+                                    "description": "between 160 and 175 tariff points",
+                                    "entrants": "10"
+                                },
+                                {
+                                    "code": "T176",
+                                    "description": "between 176 and 191 tariff points",
+                                    "entrants": "0"
+                                },
+                                {
+                                    "code": "T192",
+                                    "description": "between 192 and 207 tariff points",
+                                    "entrants": "0"
+                                },
+                                {
+                                    "code": "T208",
+                                    "description": "between 208 and 223 tariff points",
+                                    "entrants": "10"
+                                },
+                                {
+                                    "code": "T224",
+                                    "description": "between 224 and 239 tariff points",
+                                    "entrants": "0"
+                                },
+                                {
+                                    "code": "T240",
+                                    "description": "240 or more tariff points",
+                                    "entrants": "0"
+                                }
+                            ]
                         }
                     ]
                 }

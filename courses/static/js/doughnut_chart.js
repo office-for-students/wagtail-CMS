@@ -18,7 +18,7 @@ $(function () {
                 chart: {
                     type: 'solidgauge',
                     height: '100%',
-
+                    margin: [0, 0, 0, 0]
                 },
 
                 title: {
@@ -41,9 +41,8 @@ $(function () {
                     startAngle: 0,
                     endAngle: 360,
                     background: [{
-                        outerRadius: '112%',
-                        innerRadius: '88%',
-                        backgroundColor: '#DFDFDF',
+                        borderWidth: '15px',
+                        backgroundColor: 'transparent',
                         borderWidth: 0
                     }]
                 },
@@ -59,16 +58,31 @@ $(function () {
                     }
                 },
 
-                series: [{
-                    name: '',
-                    borderColor: '#B1C5D4',
-                    data: [{
-                        color: '#B1C5D4',
-                        radius: '100%',
-                        innerRadius: '100%',
-                        y: this.value
-                    }]
-                }]
+                series: [
+                    {
+                        name: '',
+                        borderColor: '#DFDFDF',
+                        data: [{
+                            color: '#DFDFDF',
+                            radius: '100%',
+                            innerRadius: '100%',
+                            y: 100
+                        }]
+                    },
+                    {
+                        name: '',
+                        borderColor: '#B1C5D4',
+                        data: [{
+                            color: '#B1C5D4',
+                            radius: '100%',
+                            innerRadius: '100%',
+                            y: this.value
+                        }]
+                    }
+                ],
+                tooltip: {
+                    enabled: false,
+                },
             })
         }
     }
