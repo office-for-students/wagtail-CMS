@@ -67,19 +67,21 @@
 
     <div class="course-detail__accordion-block">
         {% for accordion in page.accordions %}
-            <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
-                <h2 class="course-detail__accordion-heading">
-                    {{ accordion.value.heading }}
+            {% if accordion.value.data_set != 'professional_accreditation' or course.accreditaion_stats %}
+                <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
+                    <h2 class="course-detail__accordion-heading">
+                        {{ accordion.value.heading }}
 
-                    <span class="course-detail__accordion-heading-chevron">
-                        <img class="course-detail__icon" src="{% static 'images/down-chevron.svg' %}" alt="">
-                    </span>
-                </h2>
+                        <span class="course-detail__accordion-heading-chevron">
+                            <img class="course-detail__icon" src="{% static 'images/down-chevron.svg' %}" alt="">
+                        </span>
+                    </h2>
 
-                <div class="course-detail__accordion-body">
-                    {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course %}
+                    <div class="course-detail__accordion-body">
+                        {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         {% endfor %}
     </div>
 
@@ -89,29 +91,11 @@
         </h2>
 
         <ul class="course-detail__uni-site-links-list">
-            <li class="course-detail__uni-site-links-list-item">
-                <a class="course-detail__uni-site-link" href="/dummy-link">Uni link 1</a>
-            </li>
-
-            <li class="course-detail__uni-site-links-list-item">
-                <a class="course-detail__uni-site-link" href="/dummy-link">Uni link 2</a>
-            </li>
-
-            <li class="course-detail__uni-site-links-list-item">
-                <a class="course-detail__uni-site-link" href="/dummy-link">Uni link 3</a>
-            </li>
-
-            <li class="course-detail__uni-site-links-list-item">
-                <a class="course-detail__uni-site-link" href="/dummy-link">Uni link 4</a>
-            </li>
-
-            <li class="course-detail__uni-site-links-list-item">
-                <a class="course-detail__uni-site-link" href="/dummy-link">Uni link 5</a>
-            </li>
-
-            <li class="course-detail__uni-site-links-list-item">
-                <a class="course-detail__uni-site-link" href="/dummy-link">Uni link 6</a>
-            </li>
+            {% for link in course.course_links %}
+                <li class="course-detail__uni-site-links-list-item">
+                    <a class="course-detail__uni-site-link" href="{{link.link}}">{{link.label}}</a>
+                </li>
+            {% endfor %}
         </ul>
     </div>
 

@@ -55,7 +55,9 @@ class Course:
             self.institution = Institution(course_details.get('institution'))
             self.kis_course_id = course_details.get('kis_course_id')
             self.length = CourseLength(course_details.get('length_of_course'))
-            self.course_links = course_details.get('links')
+            self.course_links = []
+            for name, link in course_details.get('links').items():
+                self.course_links.append(CourseLink(name, link))
             self.locations = []
             for location in course_details.get('locations'):
                 self.locations.append(CourseLocation(location))
@@ -131,6 +133,13 @@ class CourseLength:
     def __init__(self, data_obj):
         self.code = data_obj.get('code')
         self.label = data_obj.get('label')
+
+
+class CourseLink:
+
+    def __init__(self, name, link_obj):
+        self.label = name.replace('_', ' ').capitalize()
+        self.link = link_obj.get('english')
 
 
 class CourseLocation:

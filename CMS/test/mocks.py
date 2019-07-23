@@ -38,11 +38,6 @@ class CourseMocks:
                     "label": "2 stages"
                 },
                 "links": {
-                    "accommodation": [
-                        {
-                            "english": "http://www.brookes.ac.uk/studying-at-brookes/accommodation/halls-in-detail/"
-                        }
-                    ],
                     "assessment_method": {
                         "english": "http://www.abingdon-witney.ac.uk/course/?code=EHWE103P&year=A18/19&title=Animal+Behaviour+and+Welfare%2C+Foundation+Degree+"
                     },
@@ -58,9 +53,7 @@ class CourseMocks:
                     "learning_and_teaching_methods": {
                         "english": "http://www.abingdon-witney.ac.uk/course/?code=EHWE103P&year=A18/19&title=Animal+Behaviour+and+Welfare%2C+Foundation+Degree+"
                     },
-                    "student_union": {
-                        "english": "http://www.nus.org.uk/en/students-unions/abingdon-and-witney-college-students-union/"
-                    }
+
                 },
                 "locations": [
                     {
@@ -68,6 +61,14 @@ class CourseMocks:
                         "longitude": "-1.477227",
                         "name": {
                             "english": "Abingdon &amp; Witney College (Common Leys Campus)"
+                        },
+                        'links': {
+                            "accommodation": {
+                                "english": "http://www.brookes.ac.uk/studying-at-brookes/accommodation/halls-in-detail/"
+                            },
+                            "student_union": {
+                                "english": "http://www.nus.org.uk/en/students-unions/abingdon-and-witney-college-students-union/"
+                            }
                         }
                     }
                 ],
