@@ -171,12 +171,13 @@
         padding-left: 15px;
         padding-right: 15px;
         margin-bottom: 45px;
-        text-align: center;
 
         .course-detail__other-courses-link {
             @include mobile-body-font-mixin();
 
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 27px 35px 27px 35px;
             margin-bottom: 15px;
 
@@ -442,11 +443,12 @@
             .course-detail__other-courses-link {
                 @include mobile-body-font-mixin();
 
-                display: block;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 padding: 27px 35px 27px 35px;
                 margin-bottom: 15px;
                 width: 35%;
-                text-align: center;
 
                 border-radius: 5px;
                 background-color: $darker-grey;
