@@ -2,61 +2,55 @@
 
 <div class="course-detail">
     <div class="course-detail__lead">
-        <img class="course-detail__icon" src="{% static 'images/certificate.svg' %}" alt="">
+        <div class="discover-uni-container">
+            <img class="course-detail__icon" src="{% static 'images/certificate.svg' %}" alt="">
 
-        <h1 class="course-detail__course-name">
-            {{course.english_title}}
-        </h1>
+            <h1 class="course-detail__course-name">
+                {{course.english_title}}
+            </h1>
 
-        <button class="course-detail__compare-btn">
-            + Compare course
-        </button>
-
-        <div class="course-detail__institution-info">
-            <a class="course-detail__institution-name" href="#">{% autoescape off %}{{course.institution.pub_ukprn_name | safe}}{% endautoescape %}</a>
-
-            <p class="course-detail__institution-locations">
-                {{ course.number_of_locations }} Locations: {{ course.locations_list }}
-            </p>
+            <button class="course-detail__compare-btn">
+                + Compare course
+            </button>
         </div>
 
-        <div class="course-detail__course-overview">
-            <div class="course-detail__overview-item-wrapper">
+        <div class="course-detail__institution-info">
+            <div class="discover-uni-container">
+                <a class="course-detail__institution-name" href="#">{% autoescape off %}{{course.institution.pub_ukprn_name | safe}}{% endautoescape %}</a>
+
+                <p class="course-detail__institution-locations">
+                    {{ course.number_of_locations }} Locations: {{ course.locations_list }}
+                </p>
+            </div>
+        </div>
+
+        <div class="discover-uni-container">
+            <div class="course-detail__course-overview">
                 <div class="course-detail__overview-item">
                     <p class="course-detail__overview-item-heading">Length</p>
                     <p class="course-detail__overview-item-value">{{ course.length.code }} year course</p>
                 </div>
-            </div>
 
-            <div class="course-detail__overview-item-wrapper">
                 <div class="course-detail__overview-item">
                     <p class="course-detail__overview-item-heading">Study mode</p>
                     <p class="course-detail__overview-item-value">{{ course.mode.label }}</p>
                 </div>
-            </div>
 
-            <div class="course-detail__overview-item-wrapper">
                 <div class="course-detail__overview-item">
                     <p class="course-detail__overview-item-heading">Distance learning</p>
                     <p class="course-detail__overview-item-value">{{ course.distance_learning.label }}</p>
                 </div>
-            </div>
 
-            <div class="course-detail__overview-item-wrapper">
                 <div class="course-detail__overview-item">
                     <p class="course-detail__overview-item-heading">Placement year</p>
                     <p class="course-detail__overview-item-value">{{ course.sandwich_year.label }}</p>
                 </div>
-            </div>
 
-            <div class="course-detail__overview-item-wrapper">
                 <div class="course-detail__overview-item">
                     <p class="course-detail__overview-item-heading">Year abroad</p>
                     <p class="course-detail__overview-item-value">{{ course.year_abroad.label }}</p>
                 </div>
-            </div>
 
-            <div class="course-detail__overview-item-wrapper">
                 <div class="course-detail__overview-item">
                     <p class="course-detail__overview-item-heading">Foundation year</p>
                     <p class="course-detail__overview-item-value">{{ course.foundation_year.label }}</p>
@@ -69,13 +63,16 @@
         {% for accordion in page.accordions %}
             {% if accordion.value.data_set != 'professional_accreditation' or course.accreditaion_stats %}
                 <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
-                    <h2 class="course-detail__accordion-heading">
-                        {{ accordion.value.heading }}
+                    <div class="discover-uni-container">
+                        <h2 class="course-detail__accordion-heading">
+                            {{ accordion.value.heading }}
 
-                        <span class="course-detail__accordion-heading-chevron">
-                            <img class="course-detail__icon" src="{% static 'images/down-chevron.svg' %}" alt="">
-                        </span>
-                    </h2>
+                            <span class="course-detail__accordion-heading-chevron">
+                                <img class="course-detail__icon plus" src="{% static 'images/plus_icon.svg' %}" alt="">
+                                <img class="course-detail__icon minus" src="{% static 'images/minus_icon.svg' %}" alt="">
+                            </span>
+                        </h2>
+                    </div>
 
                     <div class="course-detail__accordion-body">
                         {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course %}
@@ -86,17 +83,19 @@
     </div>
 
     <div class="course-detail__uni-site-links">
-        <h2 class="course-detail__uni-site-links-heading">
-            {{ page.uni_site_links_header }}
-        </h2>
+        <div class="discover-uni-container">
+            <h2 class="course-detail__uni-site-links-heading">
+                {{ page.uni_site_links_header }}
+            </h2>
 
-        <ul class="course-detail__uni-site-links-list">
-            {% for link in course.course_links %}
-                <li class="course-detail__uni-site-links-list-item">
-                    <a class="course-detail__uni-site-link" href="{{link.link}}">{{link.label}}</a>
-                </li>
-            {% endfor %}
-        </ul>
+            <ul class="course-detail__uni-site-links-list">
+                {% for link in course.course_links %}
+                    <li class="course-detail__uni-site-links-list-item">
+                        <a class="course-detail__uni-site-link" href="{{link.link}}">{{link.label}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 
     <div class="course-detail__further-info-block">

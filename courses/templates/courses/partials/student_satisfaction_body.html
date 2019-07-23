@@ -1,329 +1,333 @@
 {% load staticfiles %}
 
 <div class="student-satisfaction__overview">
-    <p class="student-satisfaction__overview-lead">
-        {{ course_details.satisfaction_stats.question_27.agree_or_strongly_agree }}%
-    </p>
-
-    <p>
-        of students that responded agreed with the statement "Overall, I am satisfied with the quality of the course"
-    </p>
-</div>
-
-<div class="student-satisfaction__block">
-    <div class="student-satisfaction__intro">
-        <p>
-            All final year students are asked to complete the survey. Data on the page is from 20 students (58% of those who were asked). Source: NSS.
-            <a href="/dummy-link">What is the NSS?</a>
+    <div class="discover-uni-container">
+        <p class="student-satisfaction__overview-lead">
+            {{ course_details.satisfaction_stats.question_27.agree_or_strongly_agree }}%
         </p>
 
-        <img class="student-satisfaction__nss_logo" src="{% static 'images/nss_logo_english.svg' %}" alt="NSS logo">
+        <p>
+            of students that responded agreed with the statement "Overall, I am satisfied with the quality of the course"
+        </p>
     </div>
+</div>
+
+<div class="discover-uni-container">
+    <div class="student-satisfaction__block">
+        <div class="student-satisfaction__intro">
+            <p>
+                All final year students are asked to complete the survey. Data on the page is from 20 students (58% of those who were asked). Source: NSS.
+                <a href="/dummy-link">What is the NSS?</a>
+            </p>
+
+            <img class="student-satisfaction__nss_logo" src="{% static 'images/nss_logo_english.svg' %}" alt="NSS logo">
+        </div>
 
 
-    <div class="student-satisfaction__data-group">
+        <div class="student-satisfaction__data-group">
 
-        <h2 class="student-satisfaction__data-group-heading">
-            <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/teaching_icon.svg' %}" alt="">
+            <h2 class="student-satisfaction__data-group-heading">
+                <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/teaching_icon.svg' %}" alt="">
 
-            <span class="student-satisfaction__data-group-heading-title">
-                The teaching on my course
-            </span>
-        </h2>
+                <span class="student-satisfaction__data-group-heading-title">
+                    The teaching on my course
+                </span>
+            </h2>
 
-        <div class="student-satisfaction__charts">
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_1.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
+            <div class="student-satisfaction__charts">
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_1.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_1.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_1.description}}</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_2.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_2.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_2.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_2.description}}</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_3.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_3.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_3.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_3.description}}</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_4.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_4.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_4.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_4.description}}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="student-satisfaction__data-group">
+        <div class="student-satisfaction__data-group">
 
-        <h2 class="student-satisfaction__data-group-heading">
-            <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/learning_icon.svg' %}" alt="">
+            <h2 class="student-satisfaction__data-group-heading">
+                <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/learning_icon.svg' %}" alt="">
 
-            <span class="student-satisfaction__data-group-heading-title">
-                Learning opportunities
-            </span>
-        </h2>
+                <span class="student-satisfaction__data-group-heading-title">
+                    Learning opportunities
+                </span>
+            </h2>
 
-        <div class="student-satisfaction__charts">
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_5.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
+            <div class="student-satisfaction__charts">
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_5.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_5.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_5.description}}</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_6.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_6.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_6.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_6.description}}</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_7.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_7.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_7.description}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="student-satisfaction__data-group">
-
-        <h2 class="student-satisfaction__data-group-heading">
-            <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/assessment_icon.svg' %}" alt="">
-
-            <span class="student-satisfaction__data-group-heading-title">
-                Assessment and feedback
-            </span>
-        </h2>
-
-        <div class="student-satisfaction__charts">
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_8.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
-
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_8.description}}</p>
-                </div>
-            </div>
-
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_9.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
-
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_9.description}}</p>
-                </div>
-            </div>
-
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_10.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
-
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_10.description}}</p>
-                </div>
-            </div>
-
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_11.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
-
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_11.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_7.description}}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="student-satisfaction__data-group">
+        <div class="student-satisfaction__data-group">
 
-        <h2 class="student-satisfaction__data-group-heading">
-            <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/management_icon.svg' %}" alt="">
+            <h2 class="student-satisfaction__data-group-heading">
+                <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/assessment_icon.svg' %}" alt="">
 
-            <span class="student-satisfaction__data-group-heading-title">
-                Organisation and management
-            </span>
-        </h2>
+                <span class="student-satisfaction__data-group-heading-title">
+                    Assessment and feedback
+                </span>
+            </h2>
 
-        <div class="student-satisfaction__charts">
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_12.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
+            <div class="student-satisfaction__charts">
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_8.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_12.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_8.description}}</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_13.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_9.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_13.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_9.description}}</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_14.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_10.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_14.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_10.description}}</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_11.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-        <h2 class="student-satisfaction__data-group-heading">
-            <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/resources_icon.svg' %}" alt="">
-
-            <span class="student-satisfaction__data-group-heading-title">
-                Learning resources
-            </span>
-        </h2>
-
-        <div class="student-satisfaction__charts">
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_18.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
-
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_18.description}}</p>
-                </div>
-            </div>
-
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_19.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
-
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_19.description}}</p>
-                </div>
-            </div>
-
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_20.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
-
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_20.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_11.description}}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="student-satisfaction__data-group">
+        <div class="student-satisfaction__data-group">
 
-        <h2 class="student-satisfaction__data-group-heading">
-            <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/community_icon.svg' %}" alt="">
+            <h2 class="student-satisfaction__data-group-heading">
+                <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/management_icon.svg' %}" alt="">
 
-            <span class="student-satisfaction__data-group-heading-title">
-                Learning community
-            </span>
-        </h2>
+                <span class="student-satisfaction__data-group-heading-title">
+                    Organisation and management
+                </span>
+            </h2>
 
-        <div class="student-satisfaction__charts">
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_21.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
+            <div class="student-satisfaction__charts">
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_12.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_21.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_12.description}}</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_22.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_13.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_22.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_13.description}}</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_14.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
 
-        <h2 class="student-satisfaction__data-group-heading">
-            <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/voice_icon.svg' %}" alt="">
-
-            <span class="student-satisfaction__data-group-heading-title">
-                Student voice
-            </span>
-        </h2>
-
-        <div class="student-satisfaction__charts">
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_23.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
-
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_23.description}}</p>
-                </div>
-            </div>
-
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_24.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
-
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_24.description}}</p>
-                </div>
-            </div>
-
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_25.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
-
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_25.description}}</p>
-                </div>
-            </div>
-
-            <div class="student-satisfaction__chart-wrapper">
-                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                     data-value="{{course_details.satisfaction_stats.question_26.agree_or_strongly_agree}}">
-                    {% include 'courses/partials/doughnut_chart.html' %}
-
-                    <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_26.description}}</p>
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_14.description}}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <p class="explanation-text">
-        All final year students are asked to complete the survey.
-        Data on the page is from <strong>{{course_details.satisfaction_stats.number_of_students}}</strong> students
-        ({{course_details.satisfaction_stats.response_rate}}% of those who were asked).
-        Source: NSS.
-        <a href="/dummy-link">What is the NSS?</a>
-    </p>
+        <div class="student-satisfaction__data-group">
+
+            <h2 class="student-satisfaction__data-group-heading">
+                <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/resources_icon.svg' %}" alt="">
+
+                <span class="student-satisfaction__data-group-heading-title">
+                    Learning resources
+                </span>
+            </h2>
+
+            <div class="student-satisfaction__charts">
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_18.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
+
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_18.description}}</p>
+                    </div>
+                </div>
+
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_19.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
+
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_19.description}}</p>
+                    </div>
+                </div>
+
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_20.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
+
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_20.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="student-satisfaction__data-group">
+
+            <h2 class="student-satisfaction__data-group-heading">
+                <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/community_icon.svg' %}" alt="">
+
+                <span class="student-satisfaction__data-group-heading-title">
+                    Learning community
+                </span>
+            </h2>
+
+            <div class="student-satisfaction__charts">
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_21.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
+
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_21.description}}</p>
+                    </div>
+                </div>
+
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_22.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
+
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_22.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="student-satisfaction__data-group">
+
+            <h2 class="student-satisfaction__data-group-heading">
+                <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/voice_icon.svg' %}" alt="">
+
+                <span class="student-satisfaction__data-group-heading-title">
+                    Student voice
+                </span>
+            </h2>
+
+            <div class="student-satisfaction__charts">
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_23.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
+
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_23.description}}</p>
+                    </div>
+                </div>
+
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_24.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
+
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_24.description}}</p>
+                    </div>
+                </div>
+
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_25.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
+
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_25.description}}</p>
+                    </div>
+                </div>
+
+                <div class="student-satisfaction__chart-wrapper">
+                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                         data-value="{{course_details.satisfaction_stats.question_26.agree_or_strongly_agree}}">
+                        {% include 'courses/partials/doughnut_chart.html' %}
+
+                        <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_26.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="explanation-text">
+            All final year students are asked to complete the survey.
+            Data on the page is from <strong>{{course_details.satisfaction_stats.number_of_students}}</strong> students
+            ({{course_details.satisfaction_stats.response_rate}}% of those who were asked).
+            Source: NSS.
+            <a href="/dummy-link">What is the NSS?</a>
+        </p>
+    </div>
 </div>

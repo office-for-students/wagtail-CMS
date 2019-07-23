@@ -48,7 +48,9 @@
             this.id = this.wrapper[0].id;
             this.header = this.wrapper.find('.course-detail__accordion-heading');
             this.body  = this.wrapper.find('.course-detail__accordion-body');
-            this.open = false;
+            this.plusIcon = this.wrapper.find('.plus');
+            this.minusIcon = this.wrapper.find('.minus');
+            this.isOpen = false;
 
             this.setInitialView();
             this.startWatcher();
@@ -56,6 +58,7 @@
 
         setInitialView: function() {
             this.body.hide();
+            this.plusIcon.show();
         },
 
         startWatcher: function() {
@@ -64,18 +67,26 @@
         },
 
         handleClick: function() {
-            if (this.open) {
+            if (this.isOpen) {
                 this.collapse();
-                this.closeCallback();
+//                this.closeCallback();
             } else {
-                this.open = !this.open;
-                this.body.show();
-                this.openCallback(this);
+                this.open();
+//                this.openCallback(this);
             }
         },
 
+        open: function() {
+            this.isOpen = !this.isOpen;
+            this.plusIcon.hide();
+            this.minusIcon.show();
+            this.body.show();
+        },
+
         collapse: function() {
-            this.open = !this.open;
+            this.isOpen = !this.isOpen;
+            this.plusIcon.show();
+            this.minusIcon.hide();
             this.body.hide();
         }
     }

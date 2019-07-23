@@ -107,9 +107,7 @@
 
 @media only screen and (min-width: 770px) {
     .student-satisfaction__overview {
-        @include s-heading-mixin();
-
-        padding: 40px 150px 40px;
+        padding: 68px 150px 72px;
         margin-top: 70px;
         text-align: center;
 
@@ -125,6 +123,8 @@
         }
 
         p {
+            @include s-heading-mixin();
+
             margin: 0px;
         }
     }
@@ -142,6 +142,8 @@
             color: $darker-grey;
 
             p {
+                @include small-font-mixin();
+
                 margin: 0;
             }
 

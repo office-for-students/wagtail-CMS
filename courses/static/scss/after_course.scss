@@ -193,4 +193,26 @@
             margin-top: 20px;
         }
     }
+
+    .after-course__data-point-overview {
+
+        padding: 68px 150px 72px;
+        text-align: center;
+
+        background-color: $background-grey;
+
+        p {
+            margin: 0px;
+        }
+
+        .after-course__data-point-overview-lead {
+            @include xl-heading-mixin();
+
+            color: $slate;
+        }
+
+        p {
+            @include s-heading-mixin();
+        }
+    }
 }

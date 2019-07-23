@@ -9,10 +9,11 @@
 }
 
 .chart-explanation {
+    position: relative;
+
     .chart-explanation__link {
         display: flex;
         align-items: center;
-        position: relative;
 
         cursor: pointer;
 

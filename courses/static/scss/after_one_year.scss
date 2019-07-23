@@ -93,4 +93,18 @@
             }
         }
     }
+
+    .one-year__overview {
+        padding: 68px 150px 72px;
+
+        .one-year__overview-lead {
+            @include xl-heading-mixin();
+
+            color: $slate;
+        }
+
+        p {
+            @include s-heading-mixin();
+        }
+    }
 }
