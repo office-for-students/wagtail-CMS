@@ -32,12 +32,15 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
+        <nav class="discover-uni-main-nav">
+            <div class="discover-uni-nav-container">
+                <a class="brand" href="/"><h1><strong>Discover</strong> Uni</h1></a>
+                <i id="burger-menu" class="burger-menu fas fa-bars"></i>
+                <i id="close-menu" class="close-menu fas fa-times"></i>
+            </div>
+        </nav>
+
         <div class="discover-uni-container">
-            <nav class="discover-uni-main-nav">
-              <a class="brand" href="/"><h1><strong>Discover</strong> Uni</h1></a>
-              <i id="burger-menu" class="burger-menu fas fa-bars"></i>
-              <i id="close-menu" class="close-menu fas fa-times"></i>
-            </nav>
 
             {% wagtailuserbar %}
 

@@ -100,7 +100,11 @@
 }
 
 @media only screen and (min-width: 770px) {
-    .discover-uni-main-nav {
+
+    .discover-uni-nav-container {
+        max-width: 1020px;
+        margin-right: auto;
+        margin-left: auto;
         height: 90px;
         display: -ms-grid;
         display: grid;
