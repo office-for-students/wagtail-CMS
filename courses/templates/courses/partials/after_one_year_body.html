@@ -46,8 +46,51 @@
         </div>
 
         <div class="chart-explanation">
-            <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
-            <p class="information-link">Chart labels explained</p>
+            <div class="chart-explanation__link">
+                <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
+                <p class="information-link">Chart labels explained</p>
+            </div>
+
+            <div class="chart-label-explanation">
+                <h4 class="chart-label-explanation__heading">
+                    Chart labels explained
+                    <span class="chart-label-explanation__close">X</span>
+                </h4>
+
+                <div class="chart-label-explanation__body">
+                    <h5 class="chart-label-explanation__sub-heading">
+                        Continue at the university or college
+                    </h5>
+
+                    <p>
+                        Students who continue to study after the first year of their course, either on the same course or changing to another course at the same university or college.
+                    </p>
+
+                    <h5 class="chart-label-explanation__sub-heading">
+                        Complete the course they enrolled on
+                    </h5>
+
+                    <p>
+                        Students awarded the qualification they signed up for after one year of study such as those who entered the third year of the degree.
+                    </p>
+
+                    <h5 class="chart-label-explanation__sub-heading">
+                        Complete a different award from the one they enrolled on
+                    </h5>
+
+                    <p>
+                        Students awarded a qualification other than that which they orignally signed up for (such as a University Certificate having enrolled for an honours degree) after the first year of their course.
+                    </p>
+
+                    <h5 class="chart-label-explanation__sub-heading">
+                        Are taking a break from their studies
+                    </h5>
+
+                    <p>
+                        Students who are not actively studying but have not left the course (such as students taking a year out due to ill health).
+                    </p>
+                </div>
+            </div>
         </div>
 
         {% include 'courses/partials/explanation_text.html' with number_of_students=course_details.continuation_stats.number_of_students %}

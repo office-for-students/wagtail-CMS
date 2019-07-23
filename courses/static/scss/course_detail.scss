@@ -200,6 +200,8 @@
 
         margin-top: 21px;
         margin-bottom: 6px;
+
+        color: $darker-grey;
     }
 
     .not-enough-data-disclaimer {
@@ -209,6 +211,53 @@
 
         background-color: $ux-interrupt;
         color: $darker-grey;
+    }
+
+    .find-out-more-link {
+        @include small-font-mixin();
+
+        margin-top: 23px;
+        margin-bottom: 0px;
+    }
+
+    .chart-label-explanation {
+        padding: 25px 30px;
+
+        background-color: $darker-grey;
+
+        .chart-label-explanation__heading {
+            @include xs-heading--bold-mixin();
+
+            position: relative;
+            margin-top: 0px;
+            margin-bottom: 20px;
+
+            color: $white;
+
+            .chart-label-explanation__close {
+                position: absolute;
+                right: 0;
+            }
+        }
+
+        .chart-label-explanation__body {
+            @include mobile-body-font-mixin();
+
+            color: $white;
+
+            p {
+                margin-top: 0px;
+                margin-bottom: 15px;
+            }
+
+            .chart-label-explanation__sub-heading {
+                @include mobile-body-font--bold-mixin();
+
+                margin: 0px;
+
+                color: $white;
+            }
+        }
     }
 }
 
@@ -403,6 +452,8 @@
 
             margin-top: 21px;
             margin-bottom: 6px;
+
+            color: $darker-grey;
         }
 
         .not-enough-data-disclaimer {
@@ -412,6 +463,14 @@
 
             background-color: $ux-interrupt;
             color: $darker-grey;
+        }
+
+        .find-out-more-link {
+            @include mobile-body-font-mixin();
+        }
+
+        .chart-label-explanation {
+            width: 50%;
         }
     }
 }

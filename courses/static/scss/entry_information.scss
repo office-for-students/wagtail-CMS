@@ -38,7 +38,7 @@
 
 @media only screen and (min-width: 770px) {
     .entry-information__block {
-        padding: 34px 30px 49px 30px;
+        padding: 40px 30px 49px 30px;
 
         .entry-information__heading {
             @include m-heading-mixin();
@@ -52,7 +52,7 @@
             @include desktop-body-font-mixin();
 
             margin-top: 5px;
-            margin-bottom: 34px;
+            margin-bottom: 40px;
         }
 
         .entry-information__qualification-charts {
@@ -64,7 +64,7 @@
                 }
 
                 .entry-information__chart-label {
-                    @include small-font-mixin();
+                    @include xs-heading-mixin();
 
                     margin-top: 5px;
                 }

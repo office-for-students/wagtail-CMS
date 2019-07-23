@@ -9,14 +9,16 @@
 }
 
 .chart-explanation {
-    display: flex;
-    align-items: center;
-}
+    .chart-explanation__link {
+        display: flex;
+        align-items: center;
 
-.chart-explanation .information-link {
-    font-size: 16px;
-    color: #005EA5;
-    text-decoration: underline;
+        .information-link {
+            font-size: 16px;
+            color: #005EA5;
+            text-decoration: underline;
+        }
+    }
 }
 
 .information-icon {
