@@ -7,5 +7,3 @@ RUN pip install -r requirements.txt
 COPY . /code/
 
 RUN chmod +x ./deploy_files/docker-entrypoint.sh
-
-#ENTRYPOINT ["./deploy_files/docker-entrypoint.sh"]
