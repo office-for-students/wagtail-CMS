@@ -396,12 +396,12 @@
 
         .course-detail__uni-site-links {
             padding: 24px;
-            margin-bottom: 30px;
+            margin-bottom: 70px;
 
             background-color: $background-grey;
 
             .course-detail__uni-site-links-heading {
-                @include mobile-body-font-mixin();
+                @include xs-heading-mixin();
 
                 margin: 0px;
                 margin-bottom: 15px;
@@ -415,12 +415,14 @@
                 margin: 0px;
 
                 .course-detail__uni-site-links-list-item {
-                    width: 48%;
+                    width: 33%;
                     display: block;
 
 
                     .course-detail__uni-site-link {
-                        @include small-font-mixin();
+                        @include desktop-body-font-mixin();
+
+                        margin-bottom: 1em;
 
                         line-height: 25px;
                         color: $link-blue;
@@ -432,8 +434,10 @@
         .course-detail__further-info-block {
             padding-left: 15px;
             padding-right: 15px;
-            margin-bottom: 45px;
-            text-align: center;
+            margin-bottom: 70px;
+            display: flex;
+            justify-content: space-around;
+
 
             .course-detail__other-courses-link {
                 @include mobile-body-font-mixin();
@@ -441,6 +445,8 @@
                 display: block;
                 padding: 27px 35px 27px 35px;
                 margin-bottom: 15px;
+                width: 35%;
+                text-align: center;
 
                 border-radius: 5px;
                 background-color: $darker-grey;
