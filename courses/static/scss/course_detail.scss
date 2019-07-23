@@ -221,6 +221,10 @@
     }
 
     .chart-label-explanation {
+        position: absolute;
+        left: 0;
+        z-index: 100;
+        margin-top: 10px;
         padding: 25px 30px;
 
         background-color: $darker-grey;
@@ -237,6 +241,8 @@
             .chart-label-explanation__close {
                 position: absolute;
                 right: 0;
+
+                cursor: pointer;
             }
         }
 
@@ -471,6 +477,7 @@
 
         .chart-label-explanation {
             width: 50%;
+            left: initial;
         }
     }
 }
