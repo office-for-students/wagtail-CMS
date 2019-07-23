@@ -57,7 +57,8 @@ class Course:
             self.length = CourseLength(course_details.get('length_of_course'))
             self.course_links = []
             for name, link in course_details.get('links').items():
-                self.course_links.append(CourseLink(name, link))
+                if type(link) != list:
+                    self.course_links.append(CourseLink(name, link))
             self.locations = []
             for location in course_details.get('locations'):
                 self.locations.append(CourseLocation(location))
@@ -92,7 +93,7 @@ class Course:
         course = None
         error = None
 
-        response = request_handler.load_course_data(institution_id, course_id, mode)
+        response = request_handler.load_course_data(institution_id, course_id, cls.get_mode_code(mode))
 
         if response.ok:
             course = cls(response.json())

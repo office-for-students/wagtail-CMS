@@ -193,3 +193,4 @@ BASE_URL = 'http://example.com'
 SEARCHAPIHOST = os.environ.get('SEARCHAPIHOST')
 DATASETAPIHOST = os.environ.get('DATASETAPIHOST')
 WIDGETAPIKEY = os.environ.get('WIDGETAPIKEY')
+DATASETAPIKEY = os.environ.get('DATASETAPIKEY')
