@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'search.apps.SearchConfig',
     'content.apps.ContentConfig',
     'coursefinder.apps.CoursefinderConfig',
-    'courses',
+    'courses.apps.CoursesConfig',
     'errors.apps.ErrorsConfig',
     'widget.apps.WidgetConfig',
     'institutions.apps.InstitutionsConfig',

@@ -7,7 +7,7 @@
 
     LabelExplanationGroup.prototype = {
         setup: function() {
-            this.link = this.wrapper.find('.chart-explanation__link');
+            this.link = this.wrapper.find('.explanation__link');
             this.popup = new LabelExplanationPopUp(this.wrapper.find('.chart-label-explanation'));
 
             this.setInitialView();
@@ -55,7 +55,7 @@
     }
 
     function init() {
-        var explanationBlocks = $('.chart-explanation');
+        var explanationBlocks = $('.explanation');
         for (var i = 0; i < explanationBlocks.length; i++) {
             new LabelExplanationGroup(explanationBlocks[i]);
         }
