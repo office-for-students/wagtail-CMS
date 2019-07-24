@@ -84,6 +84,15 @@
     .institution-details__tef {
         margin-top: 70px;
         border-top: 3px solid $ux-grey-1;
+
+        .institution-details__tef-outcome {
+            margin-bottom: 10px;
+
+            img {
+                width: 105px;
+                height: auto;
+            }
+        }
     }
 
     .institution-details__apr {
@@ -137,6 +146,11 @@
 
                 margin-top: 0px;
                 margin-bottom: 15px;
+            }
+
+            img {
+                width: 105px;
+                height: auto;
             }
         }
     }

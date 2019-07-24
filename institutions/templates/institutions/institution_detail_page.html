@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% load sass_tags %}
+{% load wagtailcore_tags %}
 
 {% block extra_css %}
     <link href="{% sass_src 'scss/institution_details.scss' %}" rel="stylesheet" type="text/css" >
@@ -47,7 +48,7 @@
                 </h2>
 
                 <div class="institution-details__qa-body">
-                    {{page.qa_body | safe}}
+                    {{page.qa_body | richtext}}
                 </div>
 
                 {% if institution.is_irish %}
@@ -73,7 +74,7 @@
                     </h2>
 
                     <div class="institution-details__apr-body">
-                        {{page.apr_body | safe}}
+                        {{page.apr_body | richtext}}
                     </div>
 
                     <div class="explanation">
@@ -93,7 +94,7 @@
                 </h2>
 
                 <div class="institution-details__tef-outcome">
-                    {{institution.tef_outcome}}
+                    <img src="{% static 'images/tef_'|add:institution.tef_outcome|add:'_en.jpg' %}" alt="TEF {{institution.tef_outcome}} logo">
                 </div>
 
                 <a class="institution-details__tef-report-link" href="/dummy-link">

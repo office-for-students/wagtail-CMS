@@ -67,7 +67,7 @@ class Institution:
         self.pub_ukprn_name = institution_data.get("pub_ukprn_name")
         self.pub_ukprn = institution_data.get("pub_ukprn")
         self.website = institution_data.get('links').get('institution_homepage')
-        self.tef_outcome = institution_data.get("tef_outcome")
+        self.tef_outcome = institution_data.get("tef_outcome").lower()
         self.total_number_of_courses = institution_data.get("total_number_of_courses")
         self.ukprn_country = institution_data.get("ukprn_country")
         self.ukprn_name = institution_data.get("ukprn_name")

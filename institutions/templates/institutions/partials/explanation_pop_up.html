@@ -1,3 +1,5 @@
+{% load wagtailcore_tags %}
+
 <div class="institution-explanation">
     <h2 class="institution-explanation__heading">
         {{heading}}
@@ -5,6 +7,6 @@
     </h2>
 
     <div class="institution-explanation__body">
-        {{body | safe}}
+        {{body | richtext}}
     </div>
 </div>
