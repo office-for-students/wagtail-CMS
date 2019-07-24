@@ -43,7 +43,7 @@ class InstitutionDetailPage(Page):
     ]
 
 
-class Institution:
+class InstitutionOverview:
 
     def __init__(self, data_obj):
         self.pub_ukprn_name = data_obj.get('pub_ukprn_name').title()
