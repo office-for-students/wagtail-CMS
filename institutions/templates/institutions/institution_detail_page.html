@@ -13,28 +13,30 @@
                 <img class="institution-details__icon" src="{% static 'images/institution_icon.svg' %}" alt="">
 
                 <h1 class="institution-details__name">
-                    {{institution.english_title}} University of Kent
+                    {{institution.ukprn_name}}
                 </h1>
 
                 <div class="institution-details__overview">
                     <div class="institution-details__overview-item">
                         <p class="institution-details__overview-item-heading">Address</p>
-                        <p class="institution-details__overview-item-value">{{ course.length.code }}</p>
+                        <p class="institution-details__overview-item-value">{{ institution.contact_details.address }}</p>
                     </div>
 
                     <div class="institution-details__overview-item">
                         <p class="institution-details__overview-item-heading">Website</p>
-                        <p class="institution-details__overview-item-value">{{ course.mode.label }}</p>
+                        <p class="institution-details__overview-item-value">{{ institution.website }}</p>
                     </div>
 
                     <div class="institution-details__overview-item">
                         <p class="institution-details__overview-item-heading">Telephone</p>
-                        <p class="institution-details__overview-item-value">{{ course.distance_learning.label }}</p>
+                        <p class="institution-details__overview-item-value">{{ institution.contact_details.phone_number }}</p>
                     </div>
 
                     <div class="institution-details__overview-item">
                         <p class="institution-details__overview-item-heading">Student Unions</p>
-                        <p class="institution-details__overview-item-value">{{ course.sandwich_year.label }}</p>
+                        {% for union in institution.student_unions %}
+                            <p class="institution-details__overview-item-value">{{ union.english_website }}</p>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -48,9 +50,11 @@
                     {{page.qa_body | safe}}
                 </div>
 
-                <a class="institution-details__qa-report-link" href="/dummy-link">
-                    {{page.qa_report_link}}
-                </a>
+                {% if institution.is_irish %}
+                    <a class="institution-details__qa-report-link" href="/dummy-link">
+                        {{page.qa_report_link}}
+                    </a>
+                {% endif %}
 
                 <div class="explanation">
                     <div class="explanation__link">
@@ -60,27 +64,33 @@
                 </div>
             </div>
 
-            <div class="institution-details__apr">
-                <h2 class="institution-details__apr-heading">
-                    {{page.apr_heading}} {{institution.apr_result}}
-                </h2>
+            {% if institution.is_irish %}
+                <div class="institution-details__apr">
+                    <h2 class="institution-details__apr-heading">
+                        {{page.apr_heading}} {{institution.apr_outcome}}
+                    </h2>
 
-                <div class="institution-details__apr-body">
-                    {{page.apr_body | safe}}
-                </div>
+                    <div class="institution-details__apr-body">
+                        {{page.apr_body | safe}}
+                    </div>
 
-                <div class="explanation">
-                    <div class="explanation__link">
-                        <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
-                        <p class="information-link">{{page.apr_explanation_link}}</p>
+                    <div class="explanation">
+                        <div class="explanation__link">
+                            <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
+                            <p class="information-link">{{page.apr_explanation_link}}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endif  %}
 
             <div class="institution-details__tef">
                 <h2 class="institution-details__tef-heading">
                     {{page.tef_heading}}
                 </h2>
+
+                <div class="institution-details__tef-outcome">
+                    {{institution.tef_outcome}}
+                </div>
 
                 <a class="institution-details__tef-report-link" href="/dummy-link">
                     {{page.tef_report_link}}

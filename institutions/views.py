@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from institutions.models import InstitutionDetailPage
+from institutions.models import InstitutionDetailPage, Institution
 
 
 def institution_detail(request, institution_id):
@@ -11,10 +11,13 @@ def institution_detail(request, institution_id):
 
     page = InstitutionDetailPage.objects.get()
 
+    page.tef_report_link = page.tef_report_link.replace('{{institution_name}}', institution.pub_ukprn_name)
+    print(page.tef_report_link.replace('{{institution_name}}', institution.pub_ukprn_name))
+
     context = {
         'page': page,
         'institution': institution,
     }
 
-    return render(request, 'courses/course_detail_page.html', context)
+    return render(request, 'institutions/institution_detail_page.html', context)
 
