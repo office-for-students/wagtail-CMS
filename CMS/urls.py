@@ -7,6 +7,7 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from courses import urls as courses_urls
+from institutions import urls as institution_urls
 
 from search import views as search_views
 from coursefinder import views as coursefinder_views
@@ -25,6 +26,7 @@ urlpatterns = [
 
     url(r'^widget/', include('widget.urls')),
     url(r'^course-details/', include(courses_urls)),
+    url(r'^institution-details/', include(institution_urls)),
 
 
     # For anything not caught by a more specific rule above, hand over to
