@@ -29,3 +29,6 @@ coverage.xml
 
 # Compiled SASS files
 static/scss/*.css*
+
+# Media files
+media/*
