@@ -101,4 +101,43 @@
             }
         }
     }
+
+    .institution-explanation {
+        position: absolute;
+        left: 0;
+        z-index: 100;
+        margin-top: 10px;
+        width: 100%;
+
+        background-color: $white;
+        -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+        box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+
+        .institution-explanation__heading {
+            @include s-heading--bold-mixin();
+
+            position: relative;
+            padding: 25px 30px 20px;
+            margin: 0px;
+
+            .institution-explanation__close {
+                position: absolute;
+                right: 30px;
+
+                cursor: pointer;
+            }
+        }
+
+        .institution-explanation__body {
+            padding: 0px 30px 25px;
+
+            p {
+                @include mobile-body-font-mixin();
+
+                margin-top: 0px;
+                margin-bottom: 15px;
+            }
+        }
+    }
 }
