@@ -3,37 +3,38 @@
 {% load wagtailcore_tags %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/content.css' %}">
+    <link rel="stylesheet" href="{% static 'css/content.css' %}">
 {% endblock extra_css %}
 
 {% block content %}
-<div class="content-page content-landing-page">
-  <div class="content-header">
-    <h1>{{ page.title }}</h1>
-  </div>
-  <div class="breadcrumb-container grid-1">
-    {% if self.get_ancestors|length > 1 %}
-      <ul class="breadcrumb">
-        {% for page in self.get_ancestors %}
-          {% if page.is_root == False %}
-            {% if page.title == "Home" %}
-              <li><a href={% pageurl page %}><i class="fas fa-home"></i></a></li>
-            {% else %}
-             <li><a href={% pageurl page %}>/{{ page.title }}</a></li>
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-        <li class="active"> / {{ page.title }}</li>
-      </ul>
-    {% endif %}
-  </div>
-  <div class="options-container">
-    {% for block in page.options %}
-    <div>
-      <h2>{{block}}</h2>
-    </div>
-    {% endfor %}
-  </div>
-</div>
+    <div class="content-page content-landing-page">
+        <div class="content-header">
+            <h1>{{ page.title }}</h1>
+        </div>
 
+        <div class="breadcrumb-container grid-1">
+            {% if self.get_ancestors|length > 1 %}
+                <ul class="breadcrumb">
+                    {% for page in self.get_ancestors %}
+                        {% if page.is_root == False %}
+                            {% if page.title == "Home" %}
+                                <li><a href={% pageurl page %}><i class="fas fa-home"></i></a></li>
+                            {% else %}
+                                <li><a href={% pageurl page %}>/{{ page.title }}</a></li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    <li class="active"> / {{ page.title }}</li>
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="options-container">
+            {% for block in page.options %}
+                <div>
+                    <h2>{{block}}</h2>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock content %}

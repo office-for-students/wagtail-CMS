@@ -1,0 +1,266 @@
+{% load staticfiles %}
+
+<div class="discover-uni-container">
+    <div class="after-course__lead">
+        <h3 class="after-course__lead-title">
+            What you need to know about earnings data
+        </h3>
+
+        <h4 class="after-course__lead-heading">
+            Labour markets change
+        </h4>
+
+        <p>
+            Earnings data from past graduates can only give an indication of what the labour market and earnings might be like when you graduate.
+        </p>
+
+        <h4 class="after-course__lead-heading">
+            Salaries vary across regions in the UK
+        </h4>
+
+        <p>
+            For example a job in London may be paid more highly than a similar job elsewhere. If a lot of graduates from a course go on to work in a higher pay region, the salary from that institution may be higher – this doesn’t necessarily reflect on the course they studied.
+        </p>
+
+        <h4 class="after-course__lead-heading">
+            There are lots of factors that affect graduates’ earnings
+        </h4>
+
+        <p>
+            Not just the course or institution.
+        </p>
+    </div>
+
+    <div class="after-course__block">
+        <div class="after-course__data-point">
+            <h3 class="after-course__stats-heading">
+                Earnings 6 months after the course
+            </h3>
+
+            <p class="after-course__figure">
+                £{{ course_details.salary_stats.median }}
+            </p>
+
+            <p class="after-course__figure-explanation">
+                is the average earnings for all courses in
+                {{ course_details.salary_stats.subject_english_label }}
+                after 6 months from the
+                <strong>{{course_details.institution.pub_ukprn_name}}</strong>
+            </p>
+
+            <p>
+                The typical salary range is:
+            </p>
+
+            <p class="after-course__figure-salary-range">
+                £{{course_details.salary_stats.lower_quartile}} - £{{course_details.salary_stats.higher_quartile}}
+            </p>
+
+            <p class="after-course__figure--sector">
+                £{{ course_details.salary_stats.sector_median }}
+            </p>
+
+            <p class="after-course__figure-explanation">
+                is the average earnings for all courses in
+                {{ course_details.salary_stats.subject_english_label }}
+                after 6 months from the
+                <strong>across the UK</strong>
+            </p>
+
+            <p>
+                The typical salary range is:
+            </p>
+
+            <p class="after-course__figure-salary-range">
+                £{{course_details.salary_stats.sector_lower_quartile}} - £{{course_details.salary_stats.sector_higher_quartile}}
+            </p>
+        </div>
+
+        <p class="explanation-text">
+            Data from <strong>{{course_details.salary_stats.number_of_students}}</strong> students.
+            <strong>{{course_details.salary_stats.response_rate}}</strong>% of those surveyed responded. Source: Destinations of leavers from
+            <a href="/dummy-link">HE record</a>
+        </p>
+    </div>
+
+    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.salary_stats.unavailable_reason %}
+
+    <div class="after-course__block">
+        <div class="after-course__data-point">
+            <h3 class="after-course__stats-heading">
+                Earnings 3 years after the course
+            </h3>
+
+            {% if course_details.show_leo %}
+                <p class="after-course__figure">
+                    £{{ course_details.leo_stats.median }}
+                </p>
+
+                <p class="after-course__figure-explanation">
+                    is the average earnings for all courses in
+                    {{ course_details.salary_stats.subject_english_label }}
+                    after 3 years from the
+                    <strong>{{course_details.institution.pub_ukprn_name}}</strong>
+                </p>
+
+                <p>
+                    The typical salary range is:
+                </p>
+
+                <p class="after-course__figure-salary-range">
+                    £{{course_details.leo_stats.lower_quartile}} - £{{course_details.leo_stats.higher_quartile}}
+                </p>
+            {% endif %}
+        </div>
+
+        {% if course_details.show_leo %}
+            <p class="explanation-text">
+                Data from <strong>{{course_details.leo_stats.number_of_students}}</strong> students.
+                Source: <a href="/dummy-link">Experimental statistics</a> from the <a href="/dummy-link">Longitudinal Education Outcomes data set</a>
+            </p>
+        {% endif %}
+    </div>
+
+    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.leo_stats.unavailable_reason %}
+
+    <div class="after-course__lead-block">
+        <div class="after-course__data-point">
+            <h3 class="after-course__stats-heading">
+                Employment 6 months after the course
+            </h3>
+
+            <p class="after-course__stats-intro">
+                This is what students are doing 6 months after finishing the course:
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="after-course__data-point-overview">
+    <p class="after-course__data-point-overview-lead">
+        {{course_details.employment_stats.work_and_or_study}}%
+    </p>
+
+    <p>
+        go on to work and / or study
+    </p>
+</div>
+
+<div class="discover-uni-container">
+    <div class="after-course__block">
+        <div class="after-course__data-point">
+            <div class="after-course__chart-block">
+                <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.employment_stats.in_work}}">
+                    {% include 'courses/partials/bar_chart.html' %}
+                    <label class="after-course__chart-label">Now working</label>
+                </div>
+
+                <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.employment_stats.in_study}}">
+                    {% include 'courses/partials/bar_chart.html' %}
+                    <label class="after-course__chart-label">Doing further study</label>
+                </div>
+
+                <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.employment_stats.in_work_and_study}}">
+                    {% include 'courses/partials/bar_chart.html' %}
+                    <label class="after-course__chart-label">Studying and working</label>
+                </div>
+
+                <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.employment_stats.unemployed}}">
+                    {% include 'courses/partials/bar_chart.html' %}
+                    <label class="after-course__chart-label">Unemployed</label>
+                </div>
+
+                <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.employment_stats.not_available_for_work_or_study}}">
+                    {% include 'courses/partials/bar_chart.html' %}
+                    <label class="after-course__chart-label">Other</label>
+                </div>
+            </div>
+        </div>
+
+
+        <p class="explanation-text">
+            All students who finished their course were asked to complete the survey. Data on the page is from <strong>{{course_details.employment_stats.number_of_students}}</strong> students
+            (<strong>{{course_details.employment_stats.response_rate}}</strong>% of those who were asked).
+        </p>
+
+        <p class="find-out-more-link">Find out about preparation for future employment for this uni <a href="/dummy-link">here</a></p>
+    </div>
+
+    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.employment_stats.unavailable_reason %}
+
+    <div class="after-course__block">
+        <div class="after-course__data-point">
+            <h3 class="after-course__stats-heading">
+                Employment 6 months after the course
+            </h3>
+
+            <p class="after-course__stats-intro">
+                This is what students are doing 6 months after finishing the course:
+            </p>
+
+            <div class="after-course__chart-block">
+                <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.job_type_stats.professional_or_managerial_jobs}}">
+                    {% include 'courses/partials/bar_chart.html' %}
+                    <label class="after-course__chart-label">In a professional or managerial job</label>
+                </div>
+
+                <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.job_type_stats.non_professional_or_managerial_jobs}}">
+                    {% include 'courses/partials/bar_chart.html' %}
+                    <label class="after-course__chart-label">Not in a professional or managerial job</label>
+                </div>
+
+                <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.job_type_stats.unknown_professions}}">
+                    {% include 'courses/partials/bar_chart.html' %}
+                    <label class="after-course__chart-label">In an unknown job type</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-explanation">
+            <div class="chart-explanation__link">
+                <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
+                <p class="information-link">Chart labels explained</p>
+            </div>
+
+            <div class="chart-label-explanation">
+                <h4 class="chart-label-explanation__heading">
+                    Chart labels explained
+                    <span class="chart-label-explanation__close">X</span>
+                </h4>
+
+                <div class="chart-label-explanation__body">
+                    <h5 class="chart-label-explanation__sub-heading">
+                        In a professional or managerial job
+                    </h5>
+
+                    <p>
+                        Percentage of those employed who are in a professional or managerial job after finishing the course.
+                    </p>
+
+                    <h5 class="chart-label-explanation__sub-heading">
+                        Not in a professional or managerial job
+                    </h5>
+
+                    <p>
+                        Percentage of those employed who are not in a professional or managerial job after finishing the course.
+                    </p>
+
+                    <h5 class="chart-label-explanation__sub-heading">
+                        In an unknown job type
+                    </h5>
+
+                    <p>
+                        Percentage of those employed after finishing the course but employment type is not known.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <p class="explanation-text">
+            Data from <strong>{{course_details.employment_stats.number_of_students}}</strong> students.
+            <strong>{{course_details.employment_stats.response_rate}}</strong>% of those surveyed responded. Source: Destinations of leavers from HE record
+        </p>
+    </div>
+
+    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.employment_stats.unavailable_reason %}
+</div>

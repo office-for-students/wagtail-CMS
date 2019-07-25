@@ -1,0 +1,114 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.entry-information__block {
+    padding: 34px 30px 49px 30px;
+
+    .entry-information__heading {
+        @include s-heading-mixin();
+
+        margin: 0;
+
+        color: $ux-grey-2;
+    }
+
+    .entry-information__lead {
+        @include small-font-mixin();
+
+        margin-top: 5px;
+        margin-bottom: 34px;
+    }
+
+    .entry-information__qualification-charts {
+        .entry-information__chart {
+            margin-bottom: 37px;
+
+            &:last-of-type {
+                margin-bottom: 13px;
+            }
+
+            .entry-information__chart-label {
+                @include small-font-mixin();
+
+                margin-top: 5px;
+            }
+        }
+    }
+
+    .entry-information__tariff-charts {
+        .entry-information__chart {
+            display: flex;
+            margin-bottom: 37px;
+
+            &:last-of-type {
+                margin-bottom: 13px;
+            }
+
+            .entry-information__chart-label {
+                @include small-font-mixin();
+
+                white-space: nowrap;
+                margin-top: 5px;
+                height: 38px;
+                width: 85px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 5px;
+
+                border: 1px solid $black;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .entry-information__block {
+        padding: 40px 30px 49px 30px;
+
+        .entry-information__heading {
+            @include m-heading-mixin();
+
+            margin: 0;
+
+            color: $ux-grey-2;
+        }
+
+        .entry-information__lead {
+            @include desktop-body-font-mixin();
+
+            margin-top: 5px;
+            margin-bottom: 40px;
+        }
+
+        .entry-information__qualification-charts {
+            .entry-information__chart {
+                margin-bottom: 40px;
+
+                &:last-of-type {
+                    margin-bottom: 13px;
+                }
+
+                .entry-information__chart-label {
+                    @include xs-heading-mixin();
+
+                    margin-top: 5px;
+                }
+            }
+        }
+
+        .entry-information__tariff-charts {
+            .entry-information__chart {
+                margin-bottom: 40px;
+
+                .entry-information__chart-label {
+                    @include desktop-body-font-mixin();
+
+
+                    width: 125px;
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+}

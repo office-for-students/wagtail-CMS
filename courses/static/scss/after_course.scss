@@ -1,0 +1,224 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.after-course__block {
+    padding: 34px 30px 49px 30px;
+
+    .after-course__stats-heading {
+        @include s-heading-mixin();
+
+        margin: 0;
+        margin-bottom: 21px;
+
+        color: $ux-grey-2;
+    }
+
+    .after-course__data-point {
+        margin-bottom: 38px;
+
+        .after-course__figure, .after-course__figure--sector {
+            @include m-heading-mixin();
+
+            margin-bottom: 0px;
+
+            line-height: 44px;
+        }
+
+        .after-course__figure--sector {
+            margin-top: 20px;
+        }
+
+        .after-course__figure-explanation {
+            margin-bottom: 19px;
+        }
+
+        .after-course__figure-salary-range {
+            @include mobile-body-font--bold-mixin();
+
+            margin-top: 5px;
+        }
+
+        .after-course__chart-block {
+            .after-course__chart {
+                margin-bottom: 37px;
+
+                &:last-of-type {
+                    margin-bottom: 13px;
+                }
+
+                .after-course__chart-label {
+                    @include small-font-mixin();
+
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+
+    p {
+        margin: 0px;
+    }
+}
+
+.after-course__lead {
+    @include mobile-body-font-mixin();
+
+    margin-top: 55px;
+    padding: 23px 30px 25px 30px;
+
+    background-color: $background-grey;
+    line-height: 20px;
+
+    p {
+        margin: 0px;
+    }
+
+    .after-course__lead-title {
+        @include s-heading-mixin();
+
+        color: $ux-grey-2;
+        line-height: 32px;
+        margin-bottom: 27px;
+    }
+
+    .after-course__lead-heading {
+        @include mobile-body-font--bold-mixin();
+
+        margin: 0;
+        margin-top: 20px;
+    }
+}
+
+.after-course__lead-block {
+    @extend .after-course__block;
+
+    padding-bottom: 30px;
+
+    .after-course__data-point {
+        margin-bottom: 0;
+    }
+}
+
+.after-course__data-point-overview {
+    @include desktop-body-font-mixin();
+
+    padding: 7px 30px 32px 30px;
+    text-align: center;
+
+    background-color: $background-grey;
+
+    p {
+        margin: 0px;
+    }
+
+    .after-course__data-point-overview-lead {
+        @include l-heading-mixin();
+
+        color: $slate;
+        line-height: 59px;
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .after-course__block {
+        padding: 34px 30px 49px 30px;
+
+        .after-course__stats-heading {
+            @include m-heading-mixin();
+
+            margin: 0;
+            margin-bottom: 21px;
+
+            color: $ux-grey-2;
+        }
+
+        .after-course__data-point {
+            margin-bottom: 38px;
+            @include mobile-body-font-mixin();
+
+            .after-course__figure {
+                @include m-heading-mixin();
+
+                margin-bottom: 0px;
+
+                line-height: 44px;
+            }
+
+            .after-course__figure-explanation {
+                margin-bottom: 19px;
+            }
+
+            .after-course__figure-salary-range {
+                @include mobile-body-font--bold-mixin();
+            }
+
+            .after-course__chart-block {
+                .after-course__chart {
+                    margin-bottom: 37px;
+
+                    &:last-of-type {
+                        margin-bottom: 13px;
+                    }
+
+                    .after-course__chart-label {
+                        @include small-font-mixin();
+
+                        margin-top: 5px;
+                    }
+                }
+            }
+        }
+    }
+
+    .after-course__lead {
+        @include desktop-body-font-mixin();
+
+        margin-top: 55px;
+        padding: 50px 40px 30px;
+
+        background-color: $background-grey;
+        line-height: 20px;
+
+        p {
+            margin: 0px;
+        }
+
+        .after-course__lead-title {
+            @include m-heading-mixin();
+
+            color: $ux-grey-2;
+            line-height: 32px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .after-course__lead-heading {
+            @include desktop-body-font--bold-mixin();
+
+            margin: 0;
+            margin-top: 20px;
+        }
+    }
+
+    .after-course__data-point-overview {
+
+        padding: 68px 150px 72px;
+        text-align: center;
+
+        background-color: $background-grey;
+
+        p {
+            margin: 0px;
+        }
+
+        .after-course__data-point-overview-lead {
+            @include xl-heading-mixin();
+
+            color: $slate;
+        }
+
+        p {
+            @include s-heading-mixin();
+        }
+    }
+}

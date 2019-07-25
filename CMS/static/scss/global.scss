@@ -1,0 +1,36 @@
+@import './partials/nav';
+
+@media only screen and (min-width: 770px) {
+    .discover-uni-container {
+        max-width: 1020px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.chart-explanation {
+    position: relative;
+
+    .chart-explanation__link {
+        display: flex;
+        align-items: center;
+
+        cursor: pointer;
+
+        .information-link {
+            font-size: 16px;
+            color: #005EA5;
+            text-decoration: underline;
+        }
+    }
+}
+
+.information-icon {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+a {
+    color: #005EA5;
+}

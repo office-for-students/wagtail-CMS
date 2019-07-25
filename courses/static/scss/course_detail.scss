@@ -1,0 +1,434 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/grid';
+@import '../../../CMS/static/scss/variables';
+
+@import 'student_satisfaction';
+@import 'entry_information';
+@import 'after_one_year';
+@import 'after_course';
+@import 'accreditation';
+@import 'highcharts';
+
+.course-detail {
+    margin-top: 27px;
+
+    .course-detail__lead {
+        text-align: center;
+
+        .course-detail__icon {
+            height: 48px;
+        }
+
+        .course-detail__course-name {
+            @include desktop-body-font--bold-mixin();
+
+            margin-top: 13px;
+            margin-bottom: 17px;
+        }
+
+        .course-detail__compare-btn {
+            @include small-font-mixin();
+
+            padding: 5px 10px;
+            margin-bottom: 26px;
+
+            border: 1px solid $black;
+            border-radius: 16px;
+
+            background-color: $white;
+        }
+
+        .course-detail__institution-info {
+            padding: 26px 30px 28px;
+
+            background-color: $ux-grey-1;
+
+            .course-detail__institution-name {
+                @include mobile-body-font-mixin();
+
+
+                color: $link-blue;
+            }
+
+            .course-detail__institution-locations {
+                @include small-font-mixin();
+
+                margin: 8px 0 0;
+            }
+        }
+
+        .course-detail__course-overview {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+
+            margin: 20px 0px 35px;
+
+            .course-detail__overview-item {
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 110px;
+                height: 100px;
+                padding: 20px 15px;
+                margin-bottom: 14px;
+
+                background-color: $ux-grey-1;
+
+                .course-detail__overview-item-heading {
+                    @include mobile-body-font-mixin();
+                    margin: 0px;
+                    margin-bottom: 5px;
+                }
+
+                .course-detail__overview-item-value {
+                    @include small-font-mixin();
+                    margin: 0px;
+
+                    color: $ux-grey-2;
+                }
+            }
+        }
+    }
+
+    .course-detail__accordion-block {
+        margin-bottom: 45px;
+
+        .course-detail__accordion {
+            margin-bottom: 7px;
+
+            .course-detail__accordion-heading {
+                @include xs-heading-mixin();
+
+                display: flex;
+                align-items: center;
+                margin: 0;
+                padding: 32px 30px 32px 51px;
+                position: relative;
+
+                background-color: $ux-grey-1;
+                color: $ux-grey-2;
+
+                .course-detail__accordion-heading-chevron {
+                    display: flex;
+                    position: absolute;
+                    right: 30px;
+                }
+
+                .course-detail__icon {
+                    display: none;
+                }
+            }
+
+            .course-detail__accordion-body {
+            }
+        }
+    }
+
+    .course-detail__uni-site-links {
+        padding: 24px;
+        margin-bottom: 30px;
+
+        background-color: $background-grey;
+
+        .course-detail__uni-site-links-heading {
+            @include mobile-body-font-mixin();
+
+            margin: 0px;
+            margin-bottom: 15px;
+        }
+
+        .course-detail__uni-site-links-list {
+            display: flex;
+            flex-wrap: wrap;
+
+            padding: 0px;
+            margin: 0px;
+
+            .course-detail__uni-site-links-list-item {
+                width: 48%;
+                display: block;
+
+
+                .course-detail__uni-site-link {
+                    @include small-font-mixin();
+
+                    line-height: 25px;
+                    color: $link-blue;
+                }
+            }
+        }
+    }
+
+    .course-detail__further-info-block {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-bottom: 45px;
+
+        .course-detail__other-courses-link {
+            @include mobile-body-font-mixin();
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 27px 35px 27px 35px;
+            margin-bottom: 15px;
+
+            border-radius: 5px;
+            background-color: $ux-grey-2;
+            color: $white;
+            text-decoration: none;
+
+            .course-detail__other-courses-link-icon {
+                margin-right: 9px;
+            }
+        }
+    }
+
+    .highcharts-credits {
+        display: none;
+    }
+
+    .explanation-text {
+        @include small-font-mixin();
+
+        margin-top: 21px;
+        margin-bottom: 6px;
+
+        color: $ux-grey-2;
+    }
+
+    .not-enough-data-disclaimer {
+        @include small-font-mixin();
+
+        padding: 25px 30px 25px 30px;
+
+        background-color: $ux-interrupt;
+        color: $ux-grey-2;
+    }
+
+    .find-out-more-link {
+        @include small-font-mixin();
+
+        margin-top: 23px;
+        margin-bottom: 0px;
+    }
+
+    .chart-label-explanation {
+        position: absolute;
+        left: 0;
+        z-index: 100;
+        margin-top: 10px;
+        width: 100%;
+
+        background-color: $ux-grey-2;
+
+        .chart-label-explanation__heading {
+            @include xs-heading--bold-mixin();
+
+            position: relative;
+            padding: 25px 30px 20px;
+            margin: 0px;
+
+            color: $white;
+
+            .chart-label-explanation__close {
+                position: absolute;
+                right: 30px;
+
+                cursor: pointer;
+            }
+        }
+
+        .chart-label-explanation__body {
+            padding: 0px 30px 25px;
+
+            p {
+                @include mobile-body-font-mixin();
+
+                margin-top: 0px;
+                margin-bottom: 15px;
+
+                color: $white;
+            }
+
+            .chart-label-explanation__sub-heading {
+                @include mobile-body-font--bold-mixin();
+
+                margin: 0px;
+                margin-bottom: 5px;
+
+                color: $white;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .course-detail {
+        margin-top: 35px;
+
+        .course-detail__lead {
+            text-align: center;
+
+            .course-detail__icon {
+                height: 68px;
+            }
+
+            .course-detail__course-name {
+                @include m-heading--bold-mixin();
+
+                margin-top: 15px;
+                margin-bottom: 20px;
+            }
+
+            .course-detail__compare-btn {
+                @include mobile-body-font-mixin();
+
+                padding: 5px 10px;
+                margin-bottom: 26px;
+
+                border: 1px solid $black;
+                border-radius: 16px;
+
+                background-color: $white;
+            }
+
+            .course-detail__institution-info {
+                padding: 55px 300px 46px;
+
+                background-color: $ux-grey-1;
+
+                .course-detail__institution-name {
+                    @include s-heading-mixin();
+
+                    color: $link-blue;
+                }
+
+                .course-detail__institution-locations {
+                    @include desktop-body-font-mixin();
+
+                    margin: 11px 0 0;
+                }
+            }
+
+            .course-detail__course-overview {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                margin: 61px 0px 44px;
+            }
+        }
+
+        .course-detail__uni-site-links {
+            padding-top: 51px;
+            padding-bottom: 40px;
+            margin-bottom: 70px;
+
+            background-color: $background-grey;
+
+            .course-detail__uni-site-links-heading {
+                @include xs-heading-mixin();
+
+                margin: 0px;
+                margin-bottom: 20px;
+
+                color: $ux-grey-2;
+            }
+
+            .course-detail__uni-site-links-list {
+                display: flex;
+                flex-wrap: wrap;
+
+                padding: 0px;
+                margin: 0px;
+
+                .course-detail__uni-site-links-list-item {
+                    width: 33%;
+                    display: block;
+                    margin-bottom: 15px;
+
+
+                    .course-detail__uni-site-link {
+                        @include desktop-body-font-mixin();
+
+                        line-height: 25px;
+                        color: $link-blue;
+                    }
+                }
+            }
+        }
+
+        .course-detail__further-info-block {
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-bottom: 70px;
+            display: flex;
+            justify-content: space-around;
+
+
+            .course-detail__other-courses-link {
+                @include mobile-body-font-mixin();
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 27px 35px 27px 35px;
+                margin-bottom: 15px;
+                width: 35%;
+
+                border-radius: 5px;
+                background-color: $ux-grey-2;
+                color: $white;
+                text-decoration: none;
+
+                .course-detail__other-courses-link-icon {
+                    margin-right: 9px;
+                }
+            }
+        }
+
+        .explanation-text {
+            @include desktop-body-font-mixin();
+
+            margin-top: 21px;
+            margin-bottom: 6px;
+
+            color: $ux-grey-2;
+        }
+
+        .not-enough-data-disclaimer {
+            @include desktop-body-font-mixin();
+
+            padding: 50px 40px;
+
+            background-color: $ux-interrupt;
+            color: $ux-grey-2;
+        }
+
+        .find-out-more-link {
+            @include mobile-body-font-mixin();
+        }
+
+        .chart-label-explanation {
+            left: initial;
+
+            .chart-label-explanation__body {
+                width: 66%;
+
+                p, li {
+                    @include desktop-body-font-mixin();
+
+                    color: $white;
+                }
+
+                .chart-label-explanation__sub-heading {
+                    @include desktop-body-font--bold-mixin();
+
+                    color: $white;
+                }
+            }
+        }
+    }
+}

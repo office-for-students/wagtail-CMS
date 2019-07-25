@@ -1,4 +1,5 @@
 {% load static wagtailuserbar %}
+{% load sass_tags %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -27,46 +28,29 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <link href="{% sass_src 'scss/global.scss' %}" rel="stylesheet" type="text/css" >
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        <nav>
-          <a class="brand" href="/"><h1><strong>Discover</strong> Uni</h1></a>
-          <i id="burger-menu" class="burger-menu fas fa-bars"></i>
-          <i id="close-menu" class="close-menu fas fa-times"></i>
-<!--          <ul class='desktop-nav'>
-            <li>
-              Section
-            </li>
-            <li>
-              Section
-            </li>
-            <li>
-              Section
-            </li>
-          </ul>
-          <ul class='mobile-nav'>
-            <li>
-              Section
-            </li>
-            <li>
-              Section
-            </li>
-            <li>
-              Section
-            </li>
-          </ul>
--->
+        <nav class="discover-uni-main-nav">
+            <div class="discover-uni-nav-container">
+                <a class="brand" href="/"><h1><strong>Discover</strong> Uni</h1></a>
+                <i id="burger-menu" class="burger-menu fas fa-bars"></i>
+                <i id="close-menu" class="close-menu fas fa-times"></i>
+            </div>
         </nav>
 
         {% wagtailuserbar %}
 
         {% block content %}{% endblock %}
+
         <footer>
 
         </footer>
+
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}

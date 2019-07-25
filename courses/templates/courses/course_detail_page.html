@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load sass_tags %}
+
+{% block extra_css %}
+    <link href="{% sass_src 'scss/course_detail.scss' %}" rel="stylesheet" type="text/css" >
+{% endblock %}
+
+{% block content %}
+    {% include 'courses/course_detail_content.html' with course_details=course %}
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+    <script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bar_chart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}"></script>
+{% endblock %}

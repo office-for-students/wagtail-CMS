@@ -1,0 +1,126 @@
+@import '../variables';
+
+.discover-uni-main-nav {
+    width: 100%;
+    background-color: $black;
+    color: #fff;
+}
+
+.desktop-nav {
+    display: inline-block;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    text-align: right;
+    padding-right: 30px;
+
+    li {
+        display: inline;
+        font-size: 19px;
+        line-height: 23px;
+        padding-left: 31px;
+    }
+}
+
+.mobile-nav {
+    display: none;
+    -ms-grid-column-span: 2;
+    grid-column: span 2;
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+
+    li {
+      padding-bottom: 15px;
+      font-size: 18px;
+    }
+}
+
+.brand {
+    text-decoration: none;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+
+    color: #fff;
+    background: none;
+    border: none;
+
+    h1 {
+        font-size: 30px;
+        font-weight: lighter;
+        margin: 0;
+
+        color: #fff;
+    }
+}
+
+.burger-menu {
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    text-align: right;
+    padding-right: 12px;
+    font-size: 28px;
+}
+
+.close-menu {
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    text-align: right;
+    padding-right: 15px;
+    font-size: 28px;
+    display: none;
+}
+
+@media only screen and (max-width: 769px) {
+    .discover-uni-nav-container {
+        height: 60px;
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        -ms-grid-rows: 60px auto;
+        grid-template-rows: 60px auto;
+    }
+
+    .desktop-nav {
+        display: none
+    }
+
+    .brand h1 {
+        font-size: 21px;
+        padding-left: 20px;
+    }
+}
+
+@media only screen and (min-width: 770px) {
+
+    .discover-uni-nav-container {
+        max-width: 1020px;
+        margin-right: auto;
+        margin-left: auto;
+        height: 90px;
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .mobile-nav {
+        display: none
+    }
+
+    .burger-menu {
+        display: none;
+    }
+}
+
+footer {
+    height: 220px;
+    background: #29293D;
+}

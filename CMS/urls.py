@@ -6,6 +6,8 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from courses import urls as courses_urls
+
 from search import views as search_views
 from coursefinder import views as coursefinder_views
 
@@ -22,6 +24,8 @@ urlpatterns = [
     url(r'^course-finder/results/$', coursefinder_views.course_finder_results, name='course_finder_results'),
 
     url(r'^widget/', include('widget.urls')),
+    url(r'^course-details/', include(courses_urls)),
+
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
