@@ -77,6 +77,8 @@ class Course:
             self.job_type_stats = JobTypeStatistics(stats.get('job_type')[0])
             self.salary_stats = SalaryStatistics(stats.get('salary')[0])
             self.satisfaction_stats = SatisfactionStatistics(stats.get('nss')[0])
+            if stats.get('nhs_nss')[0]:
+                self.nhs_satisfaction_stats = SatisfactionStatistics(stats.get('nhs_nss')[0])
             self.tariff_stats = TariffStatistics(stats.get('tariff')[0])
             self.leo_stats = LEOStatistics(stats.get('leo')[0])
 
@@ -307,7 +309,7 @@ class SatisfactionStatistics:
     def __init__(self, data_obj):
         self.aggregation_level = data_obj.get('aggregation_level')
         self.number_of_students = data_obj.get('number_of_students')
-        self.response_rate = data_obj.get('resp_rate')
+        self.response_rate = data_obj.get('response_rate')
         self.question_1 = SatisfactionQuestion(data_obj.get('question_1'))
         self.question_2 = SatisfactionQuestion(data_obj.get('question_2'))
         self.question_3 = SatisfactionQuestion(data_obj.get('question_3'))
@@ -340,8 +342,9 @@ class SatisfactionStatistics:
 class SatisfactionQuestion:
 
     def __init__(self, question_data):
-        self.description = question_data.get('description')
-        self.agree_or_strongly_agree = question_data.get('agree_or_strongly_agree')
+        if question_data:
+            self.description = question_data.get('description')
+            self.agree_or_strongly_agree = question_data.get('agree_or_strongly_agree')
 
 
 class TariffStatistics:

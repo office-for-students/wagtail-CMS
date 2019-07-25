@@ -144,6 +144,37 @@ class CourseMocks:
                             "unknown_professions": 0
                         }
                     ],
+                    "nhs_nss": [
+                        {
+                            "aggregation_level": 14,
+                            "number_of_students": 65,
+                            "question_1": {
+                                "description": "I received sufficient preparatory information prior to my placement(s)",
+                                "agree_or_strongly_agree": 92
+                            },
+                            "question_2": {
+                                "description": "I was allocated placement(s) suitable for my course",
+                                "agree_or_strongly_agree": 97
+                            },
+                            "question_3": {
+                                "description": "I received appropriate supervision on placement(s)",
+                                "agree_or_strongly_agree": 89
+                            },
+                            "question_4": {
+                                "description": "I was given opportunities to meet my required practice learning outcomes/competences",
+                                "agree_or_strongly_agree": 94
+                            },
+                            "question_5": {
+                                "description": "My contribution during placement(s) as part of a clinical team was valued",
+                                "agree_or_strongly_agree": 94
+                            },
+                            "question_6": {
+                                "description": "My practice supervisor(s) understood how my placement(s) related to the broader requirements of my course",
+                                "agree_or_strongly_agree": 94
+                            },
+                            "response_rate": 97
+                        }
+                    ],
                     "nss": [
                         {
                             "aggregation_level": 14,
@@ -256,7 +287,7 @@ class CourseMocks:
                                 "description": "Overall, I am satisfied with the quality of the course",
                                 "agree_or_strongly_agree": 85
                             },
-                            "resp_rate": 93
+                            "response_rate": 93
                         }
                     ],
                     "salary": [
