@@ -71,8 +71,9 @@ class Course:
             self.year_abroad = CourseYearAbroad(course_details.get('year_abroad'))
             self.accreditations = []
             accreditations = course_details.get('accreditations')
-            for accreditation in accreditations:
-                self.accreditations.append(CourseAccreditation(accreditation))
+            if accreditations:
+                for accreditation in accreditations:
+                    self.accreditations.append(CourseAccreditation(accreditation))
             stats = course_details.get('statistics')
             self.entry_stats = EntryStatistics(stats.get('entry')[0])
             self.continuation_stats = ContinuationStatistics(stats.get('continuation')[0])
