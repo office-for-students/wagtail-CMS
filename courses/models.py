@@ -69,8 +69,11 @@ class Course:
             self.welsh_title = course_details.get('title').get('welsh')
             self.ucas_programme_id = course_details.get('ucas_programme_id')
             self.year_abroad = CourseYearAbroad(course_details.get('year_abroad'))
+            self.accreditations = []
+            accreditations = course_details.get('accreditations')
+            for accreditation in accreditations:
+                self.accreditations.append(CourseAccreditation(accreditation))
             stats = course_details.get('statistics')
-
             self.entry_stats = EntryStatistics(stats.get('entry')[0])
             self.continuation_stats = ContinuationStatistics(stats.get('continuation')[0])
             self.employment_stats = EmploymentStatistics(stats.get('employment')[0])
@@ -383,3 +386,15 @@ class Tariff:
     @property
     def label(self):
         return self.LABELS[self.code]
+
+
+class CourseAccreditation:
+
+    def __init__(self, data_obj):
+        self.type = data_obj.get("type")
+        self.accreditor_url = data_obj.get('accreditor_url')
+        self.text_english = data_obj.get('text').get('english')
+        self.text_welsh = data_obj.get('text').get('welsh')
+        self.url_english = data_obj.get('url').get('english')
+        self.dependent_on_code = data_obj.get('dependent_on').get('code')
+        self.dependent_on_label = data_obj.get('dependent_on').get('label')

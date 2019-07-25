@@ -12,6 +12,38 @@ class CourseMocks:
             "created_at": "2019-07-22T09:23:05.860230",
             "version": 1,
             "course": {
+                "accreditations": [
+                    {
+                        "type": "09904",
+                        "accreditor_url": "http://www.engc.org.uk/informationfor/students-apprentices-and-graduates/",
+                        "text": {
+                            "english": "Accredited by the Institution of Mechanical Engineers (IMechE) on behalf of the Engineering Council for the purposes of fully meeting the academic requirements for registration as an Engineering Technician and partially meeting the academic requirement for registration as an Incorporated Engineer.",
+                            "welsh": "Hachredu gan Sefydliad y Peirianwyr Mecanyddol (IMechE) ar ran y Cyngor Peirianneg at ddibenion llawn cwrdd â'r gofynion academaidd ar gyfer cofrestru fel Technegydd Peirianneg a rhannol gwrdd â'r gofynion academaidd ar gyfer cofrestru fel Peiriannydd Corfforedig."
+                        },
+                        "url": {
+                            "english": "http://www.engc.org.uk/informationfor/students-apprentices-and-graduates/"
+                        },
+                        "dependent_on": {
+                            "code": "1",
+                            "label": "Accreditation is dependent on student choice"
+                        }
+                    },
+                    {
+                        "type": "09404",
+                        "accreditor_url": "http://www.engc.org.uk/informationfor/students-apprentices-and-graduates/",
+                        "text": {
+                            "english": "Accredited by the Institution of Engineering and Technology (IET) on behalf of the Engineering Council for the purposes of fully meeting the academic requirements for registration as an Engineering Technician and partially meeting the academic requirement for registration as an Incorporated Engineer.",
+                            "welsh": "Achrededig ganSefydliad Peirianneg a Thechnoleg (IET) ar ran y Cyngor Peirianneg at bwrpasau cwrdd yn rhannol â'r gofyniad academaidd ar gyfer cofrestru fel Peiriannydd Corfforedig"
+                        },
+                        "url": {
+                            "english": "http://www.engc.org.uk/informationfor/students-apprentices-and-graduates/"
+                        },
+                        "dependent_on": {
+                            "code": "1",
+                            "label": "Accreditation is dependent on student choice"
+                        }
+                    }
+                ],
                 "application_provider": "10004930",
                 "country": {
                     "code": "XF",

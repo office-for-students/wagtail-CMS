@@ -1,1 +1,19 @@
-Content about the course - {{ accordion.value.heading }}.
+<div class="discover-uni-container">
+    <div class="accreditation__block">
+        <h3 class="accreditation__heading">
+            This course is officially accredited by:
+        </h3>
+
+        {% for accreditation in course_details.accreditations %}
+            <p class="accreditation__body">
+                {{accreditation.text_english}}
+            </p>
+
+            <p class="accreditation__explanation">
+                {{accreditation.dependent_on_label}}
+
+                <a href="{{accreditation.url_english}}">Find out more</a>
+            </p>
+        {% endfor %}
+    </div>
+</div>

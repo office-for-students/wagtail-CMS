@@ -10,7 +10,7 @@
         margin: 0;
         margin-bottom: 21px;
 
-        color: $darker-grey;
+        color: $ux-grey-2;
     }
 
     .after-course__data-point {
@@ -76,7 +76,7 @@
     .after-course__lead-title {
         @include s-heading-mixin();
 
-        color: $darker-grey;
+        color: $ux-grey-2;
         line-height: 32px;
         margin-bottom: 27px;
     }
@@ -129,7 +129,7 @@
             margin: 0;
             margin-bottom: 21px;
 
-            color: $darker-grey;
+            color: $ux-grey-2;
         }
 
         .after-course__data-point {
@@ -186,7 +186,7 @@
         .after-course__lead-title {
             @include m-heading-mixin();
 
-            color: $darker-grey;
+            color: $ux-grey-2;
             line-height: 32px;
             margin-top: 0;
             margin-bottom: 20px;
