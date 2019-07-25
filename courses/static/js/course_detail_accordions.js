@@ -69,10 +69,8 @@
         handleClick: function() {
             if (this.isOpen) {
                 this.collapse();
-//                this.closeCallback();
             } else {
                 this.open();
-//                this.openCallback(this);
             }
         },
 
