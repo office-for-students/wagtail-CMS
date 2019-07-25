@@ -70,12 +70,14 @@ class Course:
             self.ucas_programme_id = course_details.get('ucas_programme_id')
             self.year_abroad = CourseYearAbroad(course_details.get('year_abroad'))
             stats = course_details.get('statistics')
+
             self.entry_stats = EntryStatistics(stats.get('entry')[0])
             self.continuation_stats = ContinuationStatistics(stats.get('continuation')[0])
             self.employment_stats = EmploymentStatistics(stats.get('employment')[0])
             self.job_type_stats = JobTypeStatistics(stats.get('job_type')[0])
             self.salary_stats = SalaryStatistics(stats.get('salary')[0])
             self.satisfaction_stats = SatisfactionStatistics(stats.get('nss')[0])
+            self.tariff_stats = TariffStatistics(stats.get('tariff')[0])
 
     @property
     def number_of_locations(self):
@@ -315,3 +317,41 @@ class SatisfactionQuestion:
     def __init__(self, question_data):
         self.description = question_data.get('description')
         self.agree_or_strongly_agree = question_data.get('agree_or_strongly_agree')
+
+
+class TariffStatistics:
+
+    def __init__(self, tariff_data):
+        self.aggregation = tariff_data.get('aggregation')
+        self.number_of_students = tariff_data.get('number_of_students')
+        self.tariffs = []
+        for tariff in tariff_data.get('tariffs'):
+            self.tariffs.append(Tariff(tariff))
+
+
+class Tariff:
+    LABELS = {
+        "T001": "< 48",
+        "T048": "48 - 63",
+        "T064": "64 - 79",
+        "T080": "80 - 95",
+        "T096": "96 - 111",
+        "T112": "112 - 127",
+        "T128": "128 - 143",
+        "T144": "144 - 159",
+        "T160": "160 - 175",
+        "T176": "176 - 191",
+        "T192": "192 - 207",
+        "T208": "208 - 223",
+        "T224": "224 - 239",
+        "T240": "240 <",
+    }
+
+    def __init__(self, tariff):
+        self.code = tariff.get('code')
+        self.description = tariff.get('description')
+        self.entrants = tariff.get('entrants')
+
+    @property
+    def label(self):
+        return self.LABELS[self.code]

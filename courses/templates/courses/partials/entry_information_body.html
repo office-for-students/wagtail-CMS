@@ -11,42 +11,42 @@
         <div class="entry-information__qualification-charts">
             <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.degree}}">
                 {% include 'courses/partials/bar_chart.html' %}
-                <label class="entry-information-block__chart-label">Degree</label>
+                <label class="entry-information__chart-label">Degree</label>
             </div>
 
             <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.another_higher_education_qualifications}}">
                 {% include 'courses/partials/bar_chart.html' %}
-                <label class="entry-information-block__chart-label">Different higher education qualification</label>
+                <label class="entry-information__chart-label">Different higher education qualification</label>
             </div>
 
             <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.a_level}}">
                 {% include 'courses/partials/bar_chart.html' %}
-                <label class="entry-information-block__chart-label">A-levels, Advanced Highers or similar</label>
+                <label class="entry-information__chart-label">A-levels, Advanced Highers or similar</label>
             </div>
 
             <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.baccalaureate}}">
                 {% include 'courses/partials/bar_chart.html' %}
-                <label class="entry-information-block__chart-label">Baccalaureate</label>
+                <label class="entry-information__chart-label">Baccalaureate</label>
             </div>
 
             <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.access}}">
                 {% include 'courses/partials/bar_chart.html' %}
-                <label class="entry-information-block__chart-label">Completed Access course</label>
+                <label class="entry-information__chart-label">Completed Access course</label>
             </div>
 
             <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.foundation}}">
                 {% include 'courses/partials/bar_chart.html' %}
-                <label class="entry-information-block__chart-label">Foundation course</label>
+                <label class="entry-information__chart-label">Foundation course</label>
             </div>
 
             <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.none}}">
                 {% include 'courses/partials/bar_chart.html' %}
-                <label class="entry-information-block__chart-label">No / unknown prior qualifications</label>
+                <label class="entry-information__chart-label">No / unknown prior qualifications</label>
             </div>
 
             <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.other_qualifications}}">
                 {% include 'courses/partials/bar_chart.html' %}
-                <label class="entry-information-block__chart-label">Other</label>
+                <label class="entry-information__chart-label">Other</label>
             </div>
 
             <div class="chart-explanation">
@@ -110,4 +110,24 @@
     </div>
 
     {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.entry_stats.unavailable_reason %}
+
+    <div class="entry-information__block">
+        <h3 class="entry-information__heading">UCAS Tariff points</h3>
+
+        <p class="entry-information__lead">
+            Tariff points for students starting the course from 2016 – 2018:
+        </p>
+
+        <div class="entry-information__tariff-charts">
+            {% for tariff in course_details.tariff_stats.tariffs %}
+                <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}">
+                    <label class="entry-information__chart-label"><span>{{tariff.label}}</span></label>
+
+                    {% include 'courses/partials/bar_chart.html' %}
+                </div>
+            {% endfor %}
+
+            {% include 'courses/partials/explanation_text.html' with number_of_students=course_details.entry_stats.number_of_students %}
+        </div>
+    </div>
 </div>
