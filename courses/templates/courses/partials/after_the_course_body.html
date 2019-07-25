@@ -38,16 +38,12 @@
             </h3>
 
             <p class="after-course__figure">
-                £{{ course_details.salary_stats.mean }}
+                £{{ course_details.salary_stats.median }}
             </p>
 
             <p class="after-course__figure-explanation">
                 is the average earnings for all courses in
-                {% if course_details.salary_stats.unavailable_reason %}
-                    {{ course_details.salary_stats.subject_english_name }}
-                {% else %}
-                    {{ course_details.english_title }}
-                {% endif %}
+                {{ course_details.salary_stats.subject_english_label }}
                 after 6 months from the
                 <strong>{{course_details.institution.pub_ukprn_name}}</strong>
             </p>
@@ -59,6 +55,25 @@
             <p class="after-course__figure-salary-range">
                 £{{course_details.salary_stats.lower_quartile}} - £{{course_details.salary_stats.higher_quartile}}
             </p>
+
+            <p class="after-course__figure--sector">
+                £{{ course_details.salary_stats.sector_median }}
+            </p>
+
+            <p class="after-course__figure-explanation">
+                is the average earnings for all courses in
+                {{ course_details.salary_stats.subject_english_label }}
+                after 6 months from the
+                <strong>across the UK</strong>
+            </p>
+
+            <p>
+                The typical salary range is:
+            </p>
+
+            <p class="after-course__figure-salary-range">
+                £{{course_details.salary_stats.sector_lower_quartile}} - £{{course_details.salary_stats.sector_higher_quartile}}
+            </p>
         </div>
 
         <p class="explanation-text">
@@ -69,6 +84,40 @@
     </div>
 
     {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.salary_stats.unavailable_reason %}
+
+    <div class="after-course__block">
+        <div class="after-course__data-point">
+            <h3 class="after-course__stats-heading">
+                Earnings 3 years after the course
+            </h3>
+
+            <p class="after-course__figure">
+                £{{ course_details.leo_stats.median }}
+            </p>
+
+            <p class="after-course__figure-explanation">
+                is the average earnings for all courses in
+                {{ course_details.salary_stats.subject_english_label }}
+                after 3 years from the
+                <strong>{{course_details.institution.pub_ukprn_name}}</strong>
+            </p>
+
+            <p>
+                The typical salary range is:
+            </p>
+
+            <p class="after-course__figure-salary-range">
+                £{{course_details.leo_stats.lower_quartile}} - £{{course_details.leo_stats.higher_quartile}}
+            </p>
+        </div>
+
+        <p class="explanation-text">
+            Data from <strong>{{course_details.leo_stats.number_of_students}}</strong> students.
+            Source: <a href="/dummy-link">Experimental statistics</a> from the <a href="/dummy-link">Longitudinal Education Outcomes data set</a>
+        </p>
+    </div>
+
+    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.leo_stats.unavailable_reason %}
 
     <div class="after-course__lead-block">
         <div class="after-course__data-point">

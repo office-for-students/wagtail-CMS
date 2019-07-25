@@ -78,6 +78,7 @@ class Course:
             self.salary_stats = SalaryStatistics(stats.get('salary')[0])
             self.satisfaction_stats = SatisfactionStatistics(stats.get('nss')[0])
             self.tariff_stats = TariffStatistics(stats.get('tariff')[0])
+            self.leo_stats = LEOStatistics(stats.get('leo')[0])
 
     @property
     def number_of_locations(self):
@@ -265,16 +266,40 @@ class SalaryStatistics:
         self.aggregation_level = data_obj.get('aggregation_level')
         self.higher_quartile = data_obj.get('higher_quartile')
         self.lower_quartile = data_obj.get('lower_quartile')
+        self.median = data_obj.get('median')
+        self.sector_higher_quartile = data_obj.get('sector_higher_quartile')
+        self.sector_lower_quartile = data_obj.get('sector_lower_quartile')
+        self.sector_median = data_obj.get('sector_median')
         self.number_of_students = data_obj.get('number_of_graduates')
         self.response_rate = data_obj.get('response_rate')
+        subject = data_obj.get('subject')
+        if subject:
+            self.subject_code = subject.get('code')
+            self.subject_english_label = subject.get("english_label")
+            self.subject_welsh_label = subject.get("welsh_label")
         unavailable_data = data_obj.get('unavailable')
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
             self.unavailable_reason = unavailable_data.get('reason')
 
-    @property
-    def mean(self):
-        return round(statistics.mean([self.higher_quartile, self.lower_quartile]))
+
+class LEOStatistics:
+
+    def __init__(self, data_obj):
+        self.aggregation_level = data_obj.get("aggregation_level")
+        self.higher_quartile = data_obj.get("higher_quartile")
+        self.lower_quartile = data_obj.get("lower_quartile")
+        self.median = data_obj.get("median")
+        self.number_of_graduates = data_obj.get("number_of_graduates")
+        subject = data_obj.get('subject')
+        if subject:
+            self.subject_code = subject.get('code')
+            self.subject_english_label = subject.get("english_label")
+            self.subject_welsh_label = subject.get("welsh_label")
+        unavailable_data = data_obj.get('unavailable')
+        if unavailable_data:
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = unavailable_data.get('reason')
 
 
 class SatisfactionStatistics:

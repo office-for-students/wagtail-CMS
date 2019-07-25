@@ -259,22 +259,28 @@ class CourseMocks:
                             "resp_rate": 93
                         }
                     ],
-                    "salary": [{
-                        "aggregation_level": 12,
-                        "higher_quartile": 22000,
-                        "lower_quartile": 16000,
-                        "number_of_graduates": 15,
-                        "response_rate": 80,
-                        "subject": {
-                            "code": "CAH03-01",
-                            "english_label": "Biosciences",
-                            "welsh_label": "Biowyddorau"
-                        },
-                        "unavailable": {
-                            "code": "0",
-                            "reason": "There was not enough data to publish information specifically for this course. This is either because the course size is small or not enough students responded to a survey. For this reason, the data displayed is for all students in Biosciences."
+                    "salary": [
+                        {
+                            "aggregation_level": 13,
+                            "higher_quartile": 19000,
+                            "lower_quartile": 16000,
+                            "median": 18000,
+                            "number_of_graduates": 15,
+                            "response_rate": 60,
+                            "sector_higher_quartile": 21000,
+                            "sector_lower_quartile": 16000,
+                            "sector_median": 18000,
+                            "subject": {
+                                "code": "CAH18-01-05",
+                                "english_label": "Media studies",
+                                "welsh_label": "Astudiaethau cyfryngau"
+                            },
+                            "unavailable": {
+                                "code": 0,
+                                "reason": "There was not enough data to publish information specifically for this course. This is either because the course size is small or not enough students responded to a survey. For this reason, the data displayed is for all students in Media studies."
+                            }
                         }
-                    }],
+                    ],
                     "tariff": [
                         {
                             "aggregation": "14",
@@ -352,7 +358,21 @@ class CourseMocks:
                                 }
                             ]
                         }
-                    ]
+                    ],
+                    "leo": [
+                        {
+                            "aggregation_level": 23,
+                            "higher_quartile": 21500,
+                            "lower_quartile": 12000,
+                            "median": 16000,
+                            "number_of_graduates": 125,
+                            "subject": {
+                                "code": "CAH18-01-05",
+                                "english_label": "Media studies",
+                                "welsh_label": "Astudiaethau cyfryngau"
+                            }
+                        }
+                    ],
                 }
             }
         }

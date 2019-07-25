@@ -16,12 +16,16 @@
     .after-course__data-point {
         margin-bottom: 38px;
 
-        .after-course__figure {
+        .after-course__figure, .after-course__figure--sector {
             @include m-heading-mixin();
 
             margin-bottom: 0px;
 
             line-height: 44px;
+        }
+
+        .after-course__figure--sector {
+            margin-top: 20px;
         }
 
         .after-course__figure-explanation {
@@ -30,6 +34,8 @@
 
         .after-course__figure-salary-range {
             @include mobile-body-font--bold-mixin();
+
+            margin-top: 5px;
         }
 
         .after-course__chart-block {
