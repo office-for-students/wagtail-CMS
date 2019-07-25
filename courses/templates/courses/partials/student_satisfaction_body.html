@@ -331,7 +331,7 @@
                 </span>
             </h2>
 
-            {% if course_details.nhs_satisfaction_stats.unavailable_reason %}
+            {% if not course_details.nhs_satisfaction_stats.unavailable_reason %}
                 <div class="student-satisfaction__charts">
                     <div class="student-satisfaction__chart-wrapper">
                         <div class="student-satisfaction__chart discover-uni-chart doughnut"
@@ -390,7 +390,7 @@
             {% endif %}
         </div>
 
-        {% if course_details.nhs_satisfaction_stats.unavailable_reason %}
+        {% if not course_details.nhs_satisfaction_stats.unavailable_reason %}
             <p class="explanation-text">
                 All final year students are asked to complete the survey.
                 Data on the page is from <strong>{{course_details.nhs_satisfaction_stats.number_of_students}}</strong> students
