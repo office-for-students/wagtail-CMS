@@ -73,7 +73,7 @@ class Institution:
         self.ukprn_name = institution_data.get("ukprn_name")
         self.ukprn = institution_data.get("ukprn")
         self.student_unions = []
-        for union in institution_data.get('links').get('student_union'):
+        for union in institution_data.get('student_unions'):
             self.student_unions.append(InstitutionStudentUnions(union))
 
     @property
@@ -119,5 +119,7 @@ class InstitutionContactDetails:
 class InstitutionStudentUnions:
 
     def __init__(self, su_data):
-        self.english_website = su_data.get('english')
-        self.welsh_website = su_data.get('welsh')
+        self.english_website = su_data.get('link').get('english')
+        self.welsh_website = su_data.get('link').get('welsh')
+        self.english_name = su_data.get('name').get('english')
+        self.welsh_name = su_data.get('name').get('welsh')

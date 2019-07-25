@@ -49,7 +49,11 @@
                     @include small-font-mixin();
                     margin: 0px;
 
-                    color: $darker-grey;
+                    color: $ux-grey-2;
+                }
+
+                a.institution-details__overview-item-value {
+                    color: $link-blue;
                 }
             }
         }
@@ -65,7 +69,7 @@
             margin-top: 0px;
             margin-bottom: 10px;
 
-            color: $darker-grey;
+            color: $ux-grey-2;
         }
 
         .institution-details__qa-body, .institution-details__tef-body {
@@ -190,7 +194,7 @@
                     .institution-details__overview-item-value {
                         @include mobile-body-font-mixin();
 
-                        color: $darker-grey;
+                        color: $ux-grey-2;
                     }
                 }
             }
@@ -200,7 +204,7 @@
             .institution-details__qa-heading, .institution-details__tef-heading {
                 @include m-heading-mixin();
 
-                color: $darker-grey;
+                color: $ux-grey-2;
             }
         }
 

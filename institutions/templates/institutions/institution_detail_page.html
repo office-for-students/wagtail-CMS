@@ -25,7 +25,7 @@
 
                     <div class="institution-details__overview-item">
                         <p class="institution-details__overview-item-heading">Website</p>
-                        <p class="institution-details__overview-item-value">{{ institution.website }}</p>
+                        <a class="institution-details__overview-item-value" href="{{ institution.website }}">{{institution.ukprn_name}}</a>
                     </div>
 
                     <div class="institution-details__overview-item">
@@ -36,7 +36,7 @@
                     <div class="institution-details__overview-item">
                         <p class="institution-details__overview-item-heading">Student Unions</p>
                         {% for union in institution.student_unions %}
-                            <p class="institution-details__overview-item-value">{{ union.english_website }}</p>
+                            <a class="institution-details__overview-item-value" href="{{ union.english_website }}">{{ union.english_name }}</a>
                         {% endfor %}
                     </div>
                 </div>

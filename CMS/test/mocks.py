@@ -547,13 +547,29 @@ class InstitutionMocks:
                 "links": {
                     "institution_homepage": "http://www.gold.ac.uk",
                     "self": "",
-                    "student_union": [
-                        {
+                },
+                "student_unions": [
+                    {
+                        "link": {
                             "english": "http://www.goldsmithssu.org/",
                             "welsh": ""
+                        },
+                        "name": {
+                            "english": "Goldsmiths College",
+                            "welsh": ""
                         }
-                    ]
-                },
+                    },
+                    {
+                        "link": {
+                            "english": "http://www.goldsmithssu.org/",
+                            "welsh": ""
+                        },
+                        "name": {
+                            "english": "GoldSmiths Test College",
+                            "welsh": ""
+                        }
+                    }
+                ],
                 "pub_ukprn_country": "England",
                 "pub_ukprn_name": "Goldsmiths, University of London",
                 "pub_ukprn": 10002718,
