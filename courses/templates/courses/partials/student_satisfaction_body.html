@@ -331,8 +331,8 @@
                 </span>
             </h2>
 
-            <div class="student-satisfaction__charts">
-                {% if course_details.nhs_satisfaction_stats.question_1.agree_or_strongly_agree %}
+            {% if course_details.nhs_satisfaction_stats.unavailable_reason %}
+                <div class="student-satisfaction__charts">
                     <div class="student-satisfaction__chart-wrapper">
                         <div class="student-satisfaction__chart discover-uni-chart doughnut"
                              data-value="{{course_details.nhs_satisfaction_stats.question_1.agree_or_strongly_agree}}">
@@ -341,9 +341,7 @@
                             <p class="student-satisfaction__chart-title">{{course_details.nhs_satisfaction_stats.question_1.description}}</p>
                         </div>
                     </div>
-                {% endif %}
 
-                {% if course_details.nhs_satisfaction_stats.question_2.agree_or_strongly_agree %}
                     <div class="student-satisfaction__chart-wrapper">
                         <div class="student-satisfaction__chart discover-uni-chart doughnut"
                              data-value="{{course_details.nhs_satisfaction_stats.question_2.agree_or_strongly_agree}}">
@@ -352,9 +350,7 @@
                             <p class="student-satisfaction__chart-title">{{course_details.nhs_satisfaction_stats.question_2.description}}</p>
                         </div>
                     </div>
-                {% endif %}
 
-                {% if course_details.nhs_satisfaction_stats.question_3.agree_or_strongly_agree %}
                     <div class="student-satisfaction__chart-wrapper">
                         <div class="student-satisfaction__chart discover-uni-chart doughnut"
                              data-value="{{course_details.nhs_satisfaction_stats.question_3.agree_or_strongly_agree}}">
@@ -363,9 +359,7 @@
                             <p class="student-satisfaction__chart-title">{{course_details.nhs_satisfaction_stats.question_3.description}}</p>
                         </div>
                     </div>
-                {% endif %}
 
-                {% if course_details.nhs_satisfaction_stats.question_4.agree_or_strongly_agree %}
                     <div class="student-satisfaction__chart-wrapper">
                         <div class="student-satisfaction__chart discover-uni-chart doughnut"
                              data-value="{{course_details.nhs_satisfaction_stats.question_4.agree_or_strongly_agree}}">
@@ -374,9 +368,7 @@
                             <p class="student-satisfaction__chart-title">{{course_details.nhs_satisfaction_stats.question_4.description}}</p>
                         </div>
                     </div>
-                {% endif %}
 
-                {% if course_details.nhs_satisfaction_stats.question_5.agree_or_strongly_agree %}
                     <div class="student-satisfaction__chart-wrapper">
                         <div class="student-satisfaction__chart discover-uni-chart doughnut"
                              data-value="{{course_details.nhs_satisfaction_stats.question_5.agree_or_strongly_agree}}">
@@ -385,9 +377,7 @@
                             <p class="student-satisfaction__chart-title">{{course_details.nhs_satisfaction_stats.question_5.description}}</p>
                         </div>
                     </div>
-                {% endif %}
 
-                {% if course_details.nhs_satisfaction_stats.question_6.agree_or_strongly_agree %}
                     <div class="student-satisfaction__chart-wrapper">
                         <div class="student-satisfaction__chart discover-uni-chart doughnut"
                              data-value="{{course_details.nhs_satisfaction_stats.question_6.agree_or_strongly_agree}}">
@@ -396,16 +386,20 @@
                             <p class="student-satisfaction__chart-title">{{course_details.nhs_satisfaction_stats.question_6.description}}</p>
                         </div>
                     </div>
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
         </div>
 
-        <p class="explanation-text">
-            All final year students are asked to complete the survey.
-            Data on the page is from <strong>{{course_details.satisfaction_stats.number_of_students}}</strong> students
-            ({{course_details.satisfaction_stats.response_rate}}% of those who were asked).
-            Source: NSS.
-            <a href="/dummy-link">What is the NSS?</a>
-        </p>
+        {% if course_details.nhs_satisfaction_stats.unavailable_reason %}
+            <p class="explanation-text">
+                All final year students are asked to complete the survey.
+                Data on the page is from <strong>{{course_details.nhs_satisfaction_stats.number_of_students}}</strong> students
+                ({{course_details.nhs_satisfaction_stats.response_rate}}% of those who were asked).
+                Source: NSS.
+                <a href="/dummy-link">What is the NSS?</a>
+            </p>
+        {% endif %}
+
+        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.nhs_satisfaction_stats.unavailable_reason %}
     </div>
 </div>
