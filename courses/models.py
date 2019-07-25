@@ -97,6 +97,10 @@ class Course:
             location_names.append(location.english_name)
         return ', '.join(location_names)
 
+    @property
+    def show_leo(self):
+        return self.country.name == 'England'
+
     @classmethod
     def find(cls, institution_id, course_id, mode):
         course = None
