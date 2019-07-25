@@ -345,6 +345,10 @@ class SatisfactionStatistics:
         self.question_25 = SatisfactionQuestion(data_obj.get('question_25'))
         self.question_26 = SatisfactionQuestion(data_obj.get('question_26'))
         self.question_27 = SatisfactionQuestion(data_obj.get('question_27'))
+        unavailable_data = data_obj.get('unavailable')
+        if unavailable_data:
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = unavailable_data.get('reason')
 
 
 class SatisfactionQuestion:
