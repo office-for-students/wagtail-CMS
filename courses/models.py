@@ -9,7 +9,7 @@ from wagtail.core import blocks
 
 from courses import request_handler
 from errors.models import ApiError
-from institutions.models import Institution
+from institutions.models import InstitutionOverview
 
 DATA_SET_KEYS = (
     ('student_satisfaction', 'Student satisfaction'),
@@ -52,7 +52,7 @@ class Course:
             self.distance_learning = CourseDistanceLearning(course_details.get('distance_learning'))
             self.foundation_year = CourseFoundationYear(course_details.get('foundation_year_availability'))
             self.honours_award_provision = course_details.get('honours_award_provision')
-            self.institution = Institution(course_details.get('institution'))
+            self.institution = InstitutionOverview(course_details.get('institution'))
             self.kis_course_id = course_details.get('kis_course_id')
             self.length = CourseLength(course_details.get('length_of_course'))
             self.course_links = []

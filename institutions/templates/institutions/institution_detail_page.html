@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load sass_tags %}
+{% load wagtailcore_tags %}
+
+{% block extra_css %}
+    <link href="{% sass_src 'scss/institution_details.scss' %}" rel="stylesheet" type="text/css" >
+{% endblock %}
+
+{% block content %}
+    <div class="discover-uni-container">
+        <div class="institution-details">
+            <div class="institution-details__lead">
+                <img class="institution-details__icon" src="{% static 'images/institution_icon.svg' %}" alt="">
+
+                <h1 class="institution-details__name">
+                    {{institution.ukprn_name}}
+                </h1>
+
+                <div class="institution-details__overview">
+                    <div class="institution-details__overview-item">
+                        <p class="institution-details__overview-item-heading">Address</p>
+                        <p class="institution-details__overview-item-value">{{ institution.contact_details.address }}</p>
+                    </div>
+
+                    <div class="institution-details__overview-item">
+                        <p class="institution-details__overview-item-heading">Website</p>
+                        <a class="institution-details__overview-item-value" href="{{ institution.website }}">{{institution.ukprn_name}}</a>
+                    </div>
+
+                    <div class="institution-details__overview-item">
+                        <p class="institution-details__overview-item-heading">Telephone</p>
+                        <p class="institution-details__overview-item-value">{{ institution.contact_details.phone_number }}</p>
+                    </div>
+
+                    <div class="institution-details__overview-item">
+                        <p class="institution-details__overview-item-heading">Student Unions</p>
+                        {% for union in institution.student_unions %}
+                            <a class="institution-details__overview-item-value" href="{{ union.english_website }}">{{ union.english_name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="institution-details__qa">
+                <h2 class="institution-details__qa-heading">
+                    {{page.qa_heading}}
+                </h2>
+
+                <div class="institution-details__qa-body">
+                    {{page.qa_body | richtext}}
+                </div>
+
+                {% if institution.is_irish %}
+                    <a class="institution-details__qa-report-link" href="/dummy-link">
+                        {{page.qa_report_link}}
+                    </a>
+                {% endif %}
+
+                <div class="explanation">
+                    <div class="explanation__link">
+                        <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
+                        <p class="information-link">{{page.qa_explanation_link}}</p>
+                    </div>
+
+                    {% include 'institutions/partials/explanation_pop_up.html' with heading=page.qa_explanation_heading body=page.qa_explanation_body %}
+                </div>
+            </div>
+
+            {% if institution.is_irish %}
+                <div class="institution-details__apr">
+                    <h2 class="institution-details__apr-heading">
+                        {{page.apr_heading}} {{institution.apr_outcome}}
+                    </h2>
+
+                    <div class="institution-details__apr-body">
+                        {{page.apr_body | richtext}}
+                    </div>
+
+                    <div class="explanation">
+                        <div class="explanation__link">
+                            <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
+                            <p class="information-link">{{page.apr_explanation_link}}</p>
+                        </div>
+
+                        {% include 'institutions/partials/explanation_pop_up.html' with heading=page.apr_explanation_heading body=page.apr_explanation_body %}
+                    </div>
+                </div>
+            {% endif  %}
+
+            <div class="institution-details__tef">
+                <h2 class="institution-details__tef-heading">
+                    {{page.tef_heading}}
+                </h2>
+
+                <div class="institution-details__tef-outcome">
+                    <img src="{% static 'images/tef_'|add:institution.tef_outcome|add:'_en.jpg' %}" alt="TEF {{institution.tef_outcome}} logo">
+                </div>
+
+                <a class="institution-details__tef-report-link" href="/dummy-link">
+                    {{page.tef_report_link}}
+                </a>
+
+                <div class="explanation">
+                    <div class="explanation__link">
+                        <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
+                        <p class="information-link">{{page.tef_explanation_link}}</p>
+                    </div>
+
+                    {% include 'institutions/partials/explanation_pop_up.html' with heading=page.tef_explanation_heading body=page.tef_explanation_body %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/institution_explanation_pop_ups.js' %}"></script>
+{% endblock %}

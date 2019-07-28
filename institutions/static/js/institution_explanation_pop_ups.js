@@ -1,14 +1,14 @@
 (function ($) {
 
-    var LabelExplanationGroup = function(wrapper) {
+    var InstitutionExplanationGroup = function(wrapper) {
         this.wrapper = $(wrapper);
         this.setup();
     }
 
-    LabelExplanationGroup.prototype = {
+    InstitutionExplanationGroup.prototype = {
         setup: function() {
             this.link = this.wrapper.find('.explanation__link');
-            this.popup = new LabelExplanationPopUp(this.wrapper.find('.chart-label-explanation'));
+            this.popup = new InstitutionExplanationPopUp(this.wrapper.find('.institution-explanation'));
 
             this.setInitialView();
             this.startWatcher();
@@ -26,14 +26,14 @@
         }
     }
 
-    LabelExplanationPopUp = function(popup){
+    InstitutionExplanationPopUp = function(popup){
         this.popup = popup;
         this.setup();
     }
 
-    LabelExplanationPopUp.prototype = {
+    InstitutionExplanationPopUp.prototype = {
         setup: function() {
-            this.closeBtn = this.popup.find('.chart-label-explanation__close');
+            this.closeBtn = this.popup.find('.institution-explanation__close');
 
             this.startWatcher();
         },
@@ -57,7 +57,7 @@
     function init() {
         var explanationBlocks = $('.explanation');
         for (var i = 0; i < explanationBlocks.length; i++) {
-            new LabelExplanationGroup(explanationBlocks[i]);
+            new InstitutionExplanationGroup(explanationBlocks[i]);
         }
     }
 
