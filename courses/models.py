@@ -65,8 +65,10 @@ class Course:
             self.mode = CourseMode(course_details.get('mode'))
             self.qualification = CourseQualification(course_details.get('qualification'))
             self.sandwich_year = CourseSandwichYear(course_details.get('sandwich_year'))
-            self.english_title = course_details.get('title').get('english')
-            self.welsh_title = course_details.get('title').get('welsh')
+            title = course_details.get('title')
+            if title:
+                self.english_title = title.get('english')
+                self.welsh_title = title.get('welsh')
             self.ucas_programme_id = course_details.get('ucas_programme_id')
             self.year_abroad = CourseYearAbroad(course_details.get('year_abroad'))
             self.accreditations = []
@@ -161,8 +163,10 @@ class CourseLocation:
     def __init__(self, data_obj):
         self.latitude = data_obj.get('latitude')
         self.longitude = data_obj.get('longitude')
-        self.english_name = data_obj.get('name').get('english')
-        self.welsh_name = data_obj.get('name').get('welsh')
+        name = data_obj.get('name')
+        if name:
+            self.english_name = name.get('english')
+            self.welsh_name = name.get('welsh')
 
 
 class CourseMode:
@@ -217,9 +221,9 @@ class ContinuationStatistics:
 
     def __init__(self, data_obj):
         self.aggregation_level = data_obj.get('aggregation_level')
-        self.continuing = data_obj.get('continuing_with_provider')
         self.dormant = data_obj.get('dormant')
-        self.gained = data_obj.get('gained')
+        self.continuing = data_obj.get('continuing_with_provider') if data_obj.get('continuing_with_provider') else 0
+        self.gained = data_obj.get('gained') if data_obj.get('gained') else 0
         self.left = data_obj.get('left')
         self.lower = data_obj.get('lower')
         self.number_of_students = data_obj.get('number_of_students')
@@ -240,8 +244,8 @@ class EmploymentStatistics:
         self.unemployed = data_obj.get('assumed_to_be_unemployed')
         self.in_study = data_obj.get('in_study')
         self.in_work = data_obj.get('in_work')
-        self.in_work_and_study = data_obj.get('in_work_and_study')
-        self.in_work_or_study = data_obj.get('in_work_or_study')
+        self.in_work_and_study = data_obj.get('in_work_and_study') if data_obj.get('in_work_and_study') else 0
+        self.in_work_or_study = data_obj.get('in_work_or_study') if data_obj.get('in_work_or_study') else 0
         self.not_available_for_work_or_study = data_obj.get('not_available_for_work_or_study')
         self.number_of_students = data_obj.get('number_of_students')
         self.response_rate = data_obj.get('response_rate')
@@ -402,8 +406,14 @@ class CourseAccreditation:
     def __init__(self, data_obj):
         self.type = data_obj.get("type")
         self.accreditor_url = data_obj.get('accreditor_url')
-        self.text_english = data_obj.get('text').get('english')
-        self.text_welsh = data_obj.get('text').get('welsh')
-        self.url_english = data_obj.get('url').get('english')
-        self.dependent_on_code = data_obj.get('dependent_on').get('code')
-        self.dependent_on_label = data_obj.get('dependent_on').get('label')
+        text = data_obj.get('text')
+        if text:
+            self.text_english = text.get('english')
+            self.text_welsh = text.get('welsh')
+        url = data_obj.get('url')
+        if url:
+            self.url_english = url.get('english')
+        dependent = data_obj.get('dependent_on')
+        if dependent:
+            self.dependent_on_code = dependent.get('code')
+            self.dependent_on_label = dependent.get('label')
