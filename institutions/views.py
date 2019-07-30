@@ -20,4 +20,3 @@ def institution_detail(request, institution_id):
     }
 
     return render(request, 'institutions/institution_detail_page.html', context)
-

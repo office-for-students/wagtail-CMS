@@ -17,4 +17,3 @@ def courses_detail(request, institution_id, course_id, kis_mode):
     }
 
     return render(request, 'courses/course_detail_page.html', context)
-

@@ -1,5 +1,3 @@
-import statistics
-
 from django.db.models.fields import TextField
 
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
@@ -174,7 +172,7 @@ class CourseMode:
     def __init__(self, data_obj):
         self.code = data_obj.get('code')
         self.label = data_obj.get('label')
-        
+
 
 class CourseQualification:
 
