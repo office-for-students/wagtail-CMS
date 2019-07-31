@@ -4,11 +4,12 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 
+from core.models import DiscoverUniBasePage
 from errors.models import ApiError
 from institutions import request_handler
 
 
-class InstitutionDetailPage(Page):
+class InstitutionDetailPage(DiscoverUniBasePage):
     qa_heading = TextField(blank=True)
     qa_body = RichTextField(blank=True)
     qa_report_link = TextField(blank=True)

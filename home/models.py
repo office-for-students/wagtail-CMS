@@ -4,8 +4,11 @@ from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from django.db.models.fields import TextField
 
+from core.models import DiscoverUniBasePage
 
-class HomePage(Page):
+
+class HomePage(DiscoverUniBasePage):
+
     header = RichTextField(blank=True, features=['h1'])
     page_links = StreamField([
         ('link', blocks.StructBlock([

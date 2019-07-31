@@ -5,12 +5,14 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
+from core.models import DiscoverUniBasePage
 
-class SearchTool(Page):
+
+class SearchTool(DiscoverUniBasePage):
     pass
 
 
-class WhereToStudy(Page):
+class WhereToStudy(DiscoverUniBasePage):
     header = RichTextField(blank=True)
     options = StreamField([
         ('option', blocks.TextBlock())
@@ -24,7 +26,7 @@ class WhereToStudy(Page):
     ]
 
 
-class ChooseAUni(Page):
+class ChooseAUni(DiscoverUniBasePage):
     header = RichTextField(blank=True)
     placeholder = TextField(blank=True)
     button = TextField(blank=True)
@@ -36,7 +38,7 @@ class ChooseAUni(Page):
     ]
 
 
-class WhatToStudy(Page):
+class WhatToStudy(DiscoverUniBasePage):
     header = RichTextField(blank=True)
     placeholder = TextField(blank=True)
     button = TextField(blank=True)
@@ -52,7 +54,7 @@ class WhatToStudy(Page):
     ]
 
 
-class HowToStudy(Page):
+class HowToStudy(DiscoverUniBasePage):
     header = RichTextField(blank=True)
     options = StreamField([
         ('option', blocks.TextBlock(blank=True))
@@ -68,7 +70,7 @@ class HowToStudy(Page):
     ]
 
 
-class ChooseALocation(Page):
+class ChooseALocation(DiscoverUniBasePage):
     header = RichTextField(blank=True)
     tab_headings = StreamField([
         ('heading', blocks.TextBlock())

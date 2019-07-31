@@ -4,8 +4,10 @@ from wagtail.core.fields import StreamField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
+from core.models import DiscoverUniBasePage
 
-class ContentLandingPage(Page):
+
+class ContentLandingPage(DiscoverUniBasePage):
     options = StreamField([
         ('sections', blocks.PageChooserBlock())
     ])
@@ -15,7 +17,7 @@ class ContentLandingPage(Page):
     ]
 
 
-class Section(Page):
+class Section(DiscoverUniBasePage):
     subsections = StreamField([
         ('subsection', blocks.StructBlock([
             ('subsection_title', blocks.TextBlock()),

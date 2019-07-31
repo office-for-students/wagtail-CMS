@@ -5,6 +5,7 @@ from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.core import blocks
 
+from core.models import DiscoverUniBasePage
 from courses import request_handler
 from errors.models import ApiError
 from institutions.models import InstitutionOverview
@@ -24,7 +25,7 @@ class AccordionPanel(blocks.StructBlock):
                                   default='standard')
 
 
-class CourseDetailPage(Page):
+class CourseDetailPage(DiscoverUniBasePage):
     accordions = StreamField([
         ('accordion_panel', AccordionPanel(required=True, icon='collapse-down'))
     ])
