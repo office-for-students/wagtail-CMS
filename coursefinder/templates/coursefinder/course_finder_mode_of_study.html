@@ -1,6 +1,7 @@
 {% extends "coursefinder/course_finder_base.html" %}
 {% load static %}
 {% load wagtailcore_tags %}
+{% load discover_uni_tags %}
 
 
 {% block question %}
@@ -8,15 +9,21 @@
 
     <form action="javascript:;" onsubmit="handleModeSelection(this)">
         <div  class="checkbox">
-            <input id="fullTime" type="checkbox" name="mode" value="Full-time"> <label for="fullTime">Full-time</label><br>
+            <input id="fullTime" type="checkbox" name="mode" value="Full-time">
+
+            <label for="fullTime">{% get_translation key='full_time' language=page.get_language %}</label>
         </div>
 
         <div  class="checkbox">
-            <input id="partTime" type="checkbox" name="mode" value="Part-time"> <label for="partTime">Part-time</label><br>
+            <input id="partTime" type="checkbox" name="mode" value="Part-time">
+
+            <label for="partTime">{% get_translation key='part_time' language=page.get_language %}</label>
         </div>
 
         <div  class="checkbox">
-            <input id="distanceLearning" type="checkbox" name="mode" value="Distance learning"> <label for="distanceLearning">Distance learning</label><br>
+            <input id="distanceLearning" type="checkbox" name="mode" value="Distance learning">
+
+            <label for="distanceLearning">{% get_translation key='distance_learning' language=page.get_language %}</label>
         </div>
     </form>
 
@@ -26,5 +33,7 @@
 {% endblock %}
 
 {% block next_nav %}
-    <a href={% pageurl page.next_page %}><input type="submit" value="Next" class="button" onclick="handleFormSubmit()"></a>
+    <a href={% pageurl page.next_page %}>
+        <input type="submit" value="{% get_translation key='next' language=page.get_language %}" class="button" onclick="handleFormSubmit()">
+    </a>
 {% endblock %}

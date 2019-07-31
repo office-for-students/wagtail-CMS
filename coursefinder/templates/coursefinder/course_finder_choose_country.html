@@ -1,6 +1,7 @@
 {% extends "coursefinder/course_finder_base.html" %}
 {% load static %}
 {% load wagtailcore_tags %}
+{% load discover_uni_tags %}
 
 
 {% block question %}
@@ -8,20 +9,27 @@
 
     <form action="javascript:;" onsubmit="handleCountrySelection(this)">
         <div  class="checkbox">
-            <input id="england" type="checkbox" name="country" value="England"> <label for="england">England</label><br>
+            <input id="england" type="checkbox" name="country" value="England">
+
+            <label for="england">{% get_translation key='england' language=page.get_language %}</label>
         </div>
         <div  class="checkbox">
-            <input id="northernireland" type="checkbox" name="country" value="Northern Ireland"> <label for="northernireland">Northern Ireland</label><br>
+            <input id="northernireland" type="checkbox" name="country" value="Northern Ireland">
+            <label for="northernireland">{% get_translation key='northern_ireland' language=page.get_language %}</label>
         </div>
         <div  class="checkbox">
-            <input id="scotland" type="checkbox" name="country" value="Scotland"> <label for="scotland">Scotland</label><br>
+            <input id="scotland" type="checkbox" name="country" value="Scotland">
+            <label for="scotland">{% get_translation key='scotland' language=page.get_language %}</label>
         </div>
         <div  class="checkbox">
-            <input id="wales" type="checkbox" name="country" value="Wales"><label for="wales">Wales</label><br>
+            <input id="wales" type="checkbox" name="country" value="Wales">
+            <label for="wales">{% get_translation key='wales' language=page.get_language %}</label>
         </div>
     </form>
 {% endblock %}
 
 {% block next_nav %}
-    <a href={% pageurl page.next_page %}><input type="submit" value="Next" class="button" onclick="handleFormSubmit()"></a>
+    <a href={% pageurl page.next_page %}>
+        <input type="submit" value="{% get_translation key='next' language=page.get_language %}" class="button" onclick="handleFormSubmit()">
+    </a>
 {% endblock %}

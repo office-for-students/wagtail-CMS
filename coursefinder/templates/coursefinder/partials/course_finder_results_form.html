@@ -1,3 +1,5 @@
+{% load discover_uni_tags %}
+
 <form id="courseFinderResultsForm"  action="{% url 'course_finder_results' %}" method="get">
     <input type="text" name="subject_query" value="">
 
@@ -7,5 +9,5 @@
 
     <input type="text" name="countries_query" value="">
 
-    <input type="submit" value="{{button_value}}" onclick="handleResultsRequest()" class="{{button_class}}" >
+    <input type="submit" value="{% get_translation key=button_value_key language=page.get_language %}" onclick="handleResultsRequest()" class="{{button_class}}" >
 </form>

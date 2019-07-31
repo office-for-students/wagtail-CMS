@@ -2,6 +2,7 @@
 {% load static %}
 {% load wagtailcore_tags %}
 {% load staticfiles %}
+{% load discover_uni_tags %}
 
 {% block body_class %}template-course-finder-landing-page{% endblock %}
 
@@ -24,7 +25,9 @@
 
     <div class="start grid-1">
         {% if page.has_country_finder_page %}
-            <a href={% pageurl page.country_finder_page %}><input type="submit" value="Start" class="button"></a>
+            <a href={% pageurl page.country_finder_page %}>
+                <input type="submit" value="{% get_translation key='start' language=page.get_language %}" class="button">
+            </a>
         {% endif %}
     </div>
 {% endblock content %}

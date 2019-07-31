@@ -1,6 +1,9 @@
 {% extends "coursefinder/course_finder_base.html" %}
 {% load static %}
 {% load wagtailcore_tags %}
+{% load discover_uni_tags %}
+
+
 {% block body_class %}template-course-finder-town-city{% endblock %}
 
 {% block question %}
@@ -14,5 +17,7 @@
 {% endblock %}
 
 {% block next_nav %}
-    <a href={% pageurl page.next_page %}><input type="submit" value="Next" class="button" onclick="handleFormSubmit()"></a>
+    <a href={% pageurl page.next_page %}>
+        <input type="submit" value="{% get_translation key='next' language=page.get_language %}" class="button" onclick="handleFormSubmit()">
+    </a>
 {% endblock %}

@@ -2,6 +2,7 @@
 {% load static %}
 {% load wagtailcore_tags %}
 {% block body_class %}template-course-finder-choose-subject{% endblock %}
+{% load discover_uni_tags %}
 
 {% block question %}
     <h3>{{page.question}}</h3>
@@ -9,7 +10,9 @@
     <form action="javascript:;" onsubmit="handleSubjectSubmit(this)">
         <div>
             <select id="subjectArea" name="subjectArea" onchange="handleSubjectAreaSelect(this.value)">
-                <option value="disabled" disabled selected>Subject area</option>
+                <option value="disabled" disabled selected>
+                    {% get_translation key='subject_area' language=page.get_language %}
+                </option>
             </select>
 
             <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
@@ -17,7 +20,9 @@
 
         <div>
             <select id="subject" name="subject" onchange="handleSubjectSelect(this.value)">
-                <option value="disabled" disabled selected>Subject</option>
+                <option value="disabled" disabled selected>
+                    {% get_translation key='subject' language=page.get_language %}
+                </option>
             </select>
 
             <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
@@ -25,7 +30,9 @@
 
         <div>
             <select id="subjectCode" name="subjectCode">
-                <option selected>Show all</option>
+                <option selected>
+                    {% get_translation key='show_all' language=page.get_language %}
+                </option>
             </select>
 
             <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
@@ -38,5 +45,7 @@
 {% endblock %}
 
 {% block next_nav %}
-    <a href={% pageurl page.next_page %}><input type="submit" value="Next" class="button" onclick="handleFormSubmit()"></a>
+    <a href={% pageurl page.next_page %}>
+        <input type="submit" value="{% get_translation key='next' language=page.get_language %}" class="button" onclick="handleFormSubmit()">
+    </a>
 {% endblock %}

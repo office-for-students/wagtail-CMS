@@ -1,6 +1,9 @@
 {% extends "coursefinder/course_finder_base.html" %}
 {% load static %}
 {% load wagtailcore_tags %}
+{% load discover_uni_tags %}
+
+
 {% block body_class %}template-course-finder-summary{% endblock %}
 
 {% block question %}
@@ -27,5 +30,5 @@
 
 
 {% block next_nav %}
-    {% include 'coursefinder/partials/course_finder_results_form.html' with button_value='See courses' button_class='button' %}
+    {% include 'coursefinder/partials/course_finder_results_form.html' with button_value_key='see_courses' button_class='button' %}
 {% endblock %}

@@ -475,13 +475,13 @@
   top: 0;
 }
 
-.result .down-arrow svg {
+.result .down-arrow img {
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
   align-self: center;
 }
 
-.open-result .down-arrow svg {
+.open-result .down-arrow img {
   transform: rotate(180deg);
 }
 
@@ -602,7 +602,7 @@
     width: 90px;
   }
 
-  .result .down-arrow svg {
+  .result .down-arrow img {
     width: 23.6px;
     height: 13.04px;
   }

@@ -19,4 +19,13 @@ def queryparams(*_, **kwargs):
 def get_translation(*_, **kwargs):
     key = kwargs.get('key')
     language = kwargs.get('language')
-    return DICT.get(key).get(language) if key in DICT else ''
+    string = DICT.get(key).get(language) if key in DICT else ''
+
+    if 'substitutions' in kwargs:
+        string = string % kwargs.get('substitutions')
+    return string
+
+
+@register.simple_tag
+def create_list(*args):
+    return args
