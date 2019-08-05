@@ -18,27 +18,32 @@ class AccordionPanel(blocks.StructBlock):
 
 
 class SatisfactionDataSet(blocks.StructValue):
-    def data_set(self):
+    @staticmethod
+    def data_set():
         return 'student_satisfaction'
 
 
 class EntryInfoDataSet(blocks.StructValue):
-    def data_set(self):
+    @staticmethod
+    def data_set():
         return 'entry_information'
 
 
 class AfterOneYearDataSet(blocks.StructValue):
-    def data_set(self):
+    @staticmethod
+    def data_set():
         return 'after_one_year'
 
 
 class AfterCourseDataSet(blocks.StructValue):
-    def data_set(self):
+    @staticmethod
+    def data_set():
         return 'after_the_course'
 
 
 class AccreditationDataSet(blocks.StructValue):
-    def data_set(self):
+    @staticmethod
+    def data_set():
         return 'professional_accreditation'
 
 
