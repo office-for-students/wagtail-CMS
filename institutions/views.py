@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from CMS.enums import enums
-from CMS.utils import get_page_for_language
+from core.utils import get_page_for_language
 from institutions.models import InstitutionDetailPage, Institution
 
 

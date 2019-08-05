@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 from CMS.enums import enums
-from CMS.utils import get_page_for_language
+from core.utils import get_page_for_language
 from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderTownCity, \
     CourseFinderPostcode
 from coursefinder.models import CourseFinderResults
