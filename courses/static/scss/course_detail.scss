@@ -210,10 +210,12 @@
     }
 
     .find-out-more-link {
-        @include small-font-mixin();
+        p {
+            @include small-font-mixin();
 
-        margin-top: 23px;
-        margin-bottom: 0px;
+            margin-top: 23px;
+            margin-bottom: 0px;
+        }
     }
 
     .chart-label-explanation {
@@ -245,22 +247,37 @@
         .chart-label-explanation__body {
             padding: 0px 30px 25px;
 
-            p {
+            p, li, h4 {
                 @include mobile-body-font-mixin();
 
                 margin-top: 0px;
-                margin-bottom: 15px;
 
                 color: $white;
+
+                b {
+                    @include mobile-body-font--bold-mixin();
+                    margin: 0px;
+                    margin-bottom: 5px;
+
+                    color: $white;
+                }
             }
 
-            .chart-label-explanation__sub-heading {
-                @include mobile-body-font--bold-mixin();
-
-                margin: 0px;
+            h4 {
                 margin-bottom: 5px;
+            }
 
-                color: $white;
+            p {
+                margin-bottom: 15px;
+            }
+
+            ul {
+                padding-left: 20px;
+                margin-top: 0px;
+
+                li {
+                    margin-bottom: 0px;
+                }
             }
         }
     }
@@ -408,7 +425,9 @@
         }
 
         .find-out-more-link {
-            @include mobile-body-font-mixin();
+            p {
+                @include mobile-body-font-mixin();
+            }
         }
 
         .chart-label-explanation {
@@ -417,16 +436,16 @@
             .chart-label-explanation__body {
                 width: 66%;
 
-                p, li {
+                p, li, h4 {
                     @include desktop-body-font-mixin();
 
                     color: $white;
-                }
 
-                .chart-label-explanation__sub-heading {
-                    @include desktop-body-font--bold-mixin();
+                    b {
+                        @include desktop-body-font--bold-mixin();
 
-                    color: $white;
+                        color: $white;
+                    }
                 }
             }
         }

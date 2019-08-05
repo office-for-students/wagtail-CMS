@@ -1,33 +1,136 @@
 from django.db.models.fields import TextField
 
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.core.fields import StreamField
+from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core.models import Page
 from wagtail.core import blocks
+
+from CMS.enums import enums
 
 from core.models import DiscoverUniBasePage
 from courses import request_handler
 from errors.models import ApiError
 from institutions.models import InstitutionOverview
 
-DATA_SET_KEYS = (
-    ('student_satisfaction', 'Student satisfaction'),
-    ('entry_information', 'Entry information'),
-    ('after_one_year', 'After 1 year of study'),
-    ('after_the_course', 'After the course'),
-    ('professional_accreditation', 'Professional accreditation'),
-)
-
 
 class AccordionPanel(blocks.StructBlock):
     heading = blocks.CharBlock(required=False)
-    data_set = blocks.ChoiceBlock(choices=DATA_SET_KEYS,
-                                  default='standard')
+
+
+class SatisfactionDataSet(blocks.StructValue):
+    def data_set(self):
+        return 'student_satisfaction'
+
+
+class EntryInfoDataSet(blocks.StructValue):
+    def data_set(self):
+        return 'entry_information'
+
+
+class AfterOneYearDataSet(blocks.StructValue):
+    def data_set(self):
+        return 'after_one_year'
+
+
+class AfterCourseDataSet(blocks.StructValue):
+    def data_set(self):
+        return 'after_the_course'
+
+
+class AccreditationDataSet(blocks.StructValue):
+    def data_set(self):
+        return 'professional_accreditation'
+
+
+class SatisfactionBlock(AccordionPanel):
+    lead_text = blocks.CharBlock(required=False)
+    intro_body = blocks.RichTextBlock(blank=True)
+    teaching_stats_header = blocks.CharBlock(required=False)
+    learning_opportunities_stats_header = blocks.CharBlock(required=False)
+    assessment_stats_header = blocks.CharBlock(required=False)
+    organisation_stats_header = blocks.CharBlock(required=False)
+    learning_resources_stats_header = blocks.CharBlock(required=False)
+    learning_community_stats_header = blocks.CharBlock(required=False)
+    student_voice_stats_header = blocks.CharBlock(required=False)
+    nhs_placement_stats_header = blocks.CharBlock(required=False)
+    data_source = blocks.RichTextBlock(blank=True)
+
+    class Meta:
+        value_class = SatisfactionDataSet
+
+
+class EntryInformationBlock(AccordionPanel):
+    qualification_heading = blocks.CharBlock(required=False)
+    qualification_intro = blocks.CharBlock(required=False)
+    qualification_label_explanation_heading = blocks.CharBlock(required=False)
+    qualification_label_explanation_body = blocks.RichTextBlock(blank=True)
+    qualification_data_source = blocks.RichTextBlock(blank=True)
+
+    tariffs_heading = blocks.CharBlock(required=False)
+    tariffs_intro = blocks.CharBlock(required=False)
+    tariffs_data_source = blocks.RichTextBlock(blank=True)
+
+    class Meta:
+        value_class = EntryInfoDataSet
+
+
+class AfterOneYearBlock(AccordionPanel):
+    section_heading = blocks.CharBlock(required=False)
+    intro = blocks.CharBlock(required=False)
+    lead = blocks.CharBlock(required=False)
+    label_explanation_heading = blocks.CharBlock(required=False)
+    label_explanation_body = blocks.RichTextBlock(blank=True)
+    data_source = blocks.RichTextBlock(blank=True)
+
+    class Meta:
+        value_class = AfterOneYearDataSet
+
+
+class AfterCourseBlock(AccordionPanel):
+    section_heading = blocks.CharBlock(required=False)
+    intro = blocks.RichTextBlock(blank=True)
+
+    six_month_earnings_heading = blocks.CharBlock(required=False)
+    six_month_earnings_explanation = blocks.RichTextBlock(blank=True)
+    six_month_earnings_salary_range_heading = blocks.CharBlock(required=False)
+    six_month_earnings_data_source = blocks.RichTextBlock(blank=True)
+
+    three_years_earnings_heading = blocks.CharBlock(required=False)
+    three_years_earnings_explanation = blocks.RichTextBlock(blank=True)
+    three_years_earnings_salary_range_heading = blocks.CharBlock(required=False)
+    three_years_earnings_data_source = blocks.RichTextBlock(blank=True)
+
+    six_month_employment_heading = blocks.CharBlock(required=False)
+    six_month_employment_intro = blocks.CharBlock(required=False)
+    six_month_employment_lead = blocks.CharBlock(required=False)
+    six_month_employment_data_source = blocks.RichTextBlock(blank=True)
+    six_month_employment_find_out_more = blocks.RichTextBlock(required=False)
+
+    six_month_employment_roles_heading = blocks.CharBlock(required=False)
+    six_month_employment_roles_intro = blocks.CharBlock(required=False)
+    six_month_employment_roles_label_explanation_heading = blocks.CharBlock(required=False)
+    six_month_employment_roles_label_explanation_body = blocks.RichTextBlock(blank=True)
+    six_month_employment_roles_data_source = blocks.RichTextBlock(blank=True)
+    six_month_employment_roles_find_out_more = blocks.RichTextBlock(blank=True)
+
+    class Meta:
+        value_class = AfterCourseDataSet
+
+
+class AccreditationBlock(AccordionPanel):
+    section_heading = blocks.CharBlock(required=False)
+
+    class Meta:
+        value_class = AccreditationDataSet
 
 
 class CourseDetailPage(DiscoverUniBasePage):
     accordions = StreamField([
-        ('accordion_panel', AccordionPanel(required=True, icon='collapse-down'))
+        ('satisfaction_panel', SatisfactionBlock(required=True, icon='collapse-down')),
+        ('entry_information_panel', EntryInformationBlock(required=True, icon='collapse-down')),
+        ('after_one_year_panel', AfterOneYearBlock(required=True, icon='collapse-down')),
+        ('after_course_panel', AfterCourseBlock(required=True, icon='collapse-down')),
+        ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down'))
     ])
     uni_site_links_header = TextField(blank=True)
 
@@ -43,8 +146,9 @@ class Course:
         'Part-time': 2
     }
 
-    def __init__(self, data_obj):
+    def __init__(self, data_obj, language):
         self.id = data_obj.get('id')
+        self.display_language = language
         course_details = data_obj.get('course')
         if course_details:
             self.country = CourseCountry(course_details.get('country'))
@@ -60,7 +164,7 @@ class Course:
                     self.course_links.append(CourseLink(name, link))
             self.locations = []
             for location in course_details.get('locations'):
-                self.locations.append(CourseLocation(location))
+                self.locations.append(CourseLocation(location, self.display_language))
             self.mode = CourseMode(course_details.get('mode'))
             self.qualification = CourseQualification(course_details.get('qualification'))
             self.sandwich_year = CourseSandwichYear(course_details.get('sandwich_year'))
@@ -74,18 +178,18 @@ class Course:
             accreditations = course_details.get('accreditations')
             if accreditations:
                 for accreditation in accreditations:
-                    self.accreditations.append(CourseAccreditation(accreditation))
+                    self.accreditations.append(CourseAccreditation(accreditation, self.display_language))
             stats = course_details.get('statistics')
             self.entry_stats = EntryStatistics(stats.get('entry')[0])
             self.continuation_stats = ContinuationStatistics(stats.get('continuation')[0])
             self.employment_stats = EmploymentStatistics(stats.get('employment')[0])
             self.job_type_stats = JobTypeStatistics(stats.get('job_type')[0])
-            self.salary_stats = SalaryStatistics(stats.get('salary')[0])
+            self.salary_stats = SalaryStatistics(stats.get('salary')[0], self.display_language)
             self.satisfaction_stats = SatisfactionStatistics(stats.get('nss')[0])
             if stats.get('nhs_nss')[0]:
                 self.nhs_satisfaction_stats = SatisfactionStatistics(stats.get('nhs_nss')[0])
             self.tariff_stats = TariffStatistics(stats.get('tariff')[0])
-            self.leo_stats = LEOStatistics(stats.get('leo')[0])
+            self.leo_stats = LEOStatistics(stats.get('leo')[0], self.display_language)
 
     @property
     def number_of_locations(self):
@@ -102,15 +206,20 @@ class Course:
     def show_leo(self):
         return self.country.name == 'England'
 
+    def display_title(self):
+        if self.display_language == enums.languages.ENGLISH:
+            return self.english_title if self.english_title else self.welsh_title
+        return self.welsh_title if self.welsh_title else self.english_title
+
     @classmethod
-    def find(cls, institution_id, course_id, mode):
+    def find(cls, institution_id, course_id, mode, language):
         course = None
         error = None
 
         response = request_handler.load_course_data(institution_id, course_id, cls.get_mode_code(mode))
 
         if response.ok:
-            course = cls(response.json())
+            course = cls(response.json(), language)
         else:
             error = ApiError(response.status_code, 'Loading details for course %s %s at %s' %
                              (course_id, mode, institution_id))
@@ -159,13 +268,17 @@ class CourseLink:
 
 class CourseLocation:
 
-    def __init__(self, data_obj):
+    def __init__(self, data_obj, language):
+        self.display_language = language
         self.latitude = data_obj.get('latitude')
         self.longitude = data_obj.get('longitude')
         name = data_obj.get('name')
         if name:
             self.english_name = name.get('english')
             self.welsh_name = name.get('welsh')
+
+    def display_name(self):
+        return self.english_name if self.display_language == enums.languages.ENGLISH else self.welsh_name
 
 
 class CourseMode:
@@ -247,7 +360,7 @@ class EmploymentStatistics:
         self.in_work_or_study = data_obj.get('in_work_or_study') if data_obj.get('in_work_or_study') else 0
         self.not_available_for_work_or_study = data_obj.get('not_available_for_work_or_study')
         self.number_of_students = data_obj.get('number_of_students')
-        self.response_rate = data_obj.get('response_rate')
+        self.response_rate = str(data_obj.get('response_rate')) + '%'
         unavailable_data = data_obj.get('unavailable')
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
@@ -266,7 +379,7 @@ class JobTypeStatistics:
         self.professional_or_managerial_jobs = data_obj.get('professional_or_managerial_jobs')
         self.unknown_professions = data_obj.get('unknown_professions')
         self.number_of_students = data_obj.get('number_of_students')
-        self.response_rate = data_obj.get('resp_rate')
+        self.response_rate = str(data_obj.get('response_rate')) + '%'
         unavailable_data = data_obj.get('unavailable')
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
@@ -275,7 +388,8 @@ class JobTypeStatistics:
 
 class SalaryStatistics:
 
-    def __init__(self, data_obj):
+    def __init__(self, data_obj, language):
+        self.display_language = language
         self.aggregation_level = data_obj.get('aggregation_level')
         self.higher_quartile = data_obj.get('higher_quartile')
         self.lower_quartile = data_obj.get('lower_quartile')
@@ -284,7 +398,7 @@ class SalaryStatistics:
         self.sector_lower_quartile = data_obj.get('sector_lower_quartile')
         self.sector_median = data_obj.get('sector_median')
         self.number_of_students = data_obj.get('number_of_graduates')
-        self.response_rate = data_obj.get('response_rate')
+        self.response_rate = str(data_obj.get('response_rate')) + '%'
         subject = data_obj.get('subject')
         if subject:
             self.subject_code = subject.get('code')
@@ -295,10 +409,15 @@ class SalaryStatistics:
             self.unavailable_code = unavailable_data.get('code')
             self.unavailable_reason = unavailable_data.get('reason')
 
+    def display_subject_label(self):
+        return self.subject_english_label if self.display_language == enums.languages.ENGLISH else\
+            self.subject_welsh_label
+
 
 class LEOStatistics:
 
-    def __init__(self, data_obj):
+    def __init__(self, data_obj, language):
+        self.display_language = language
         self.aggregation_level = data_obj.get("aggregation_level")
         self.higher_quartile = data_obj.get("higher_quartile")
         self.lower_quartile = data_obj.get("lower_quartile")
@@ -314,13 +433,17 @@ class LEOStatistics:
             self.unavailable_code = unavailable_data.get('code')
             self.unavailable_reason = unavailable_data.get('reason')
 
+    def display_subject_label(self):
+        return self.subject_english_label if self.display_language == enums.languages.ENGLISH else\
+            self.subject_welsh_label
+
 
 class SatisfactionStatistics:
 
     def __init__(self, data_obj):
         self.aggregation_level = data_obj.get('aggregation_level')
         self.number_of_students = data_obj.get('number_of_students')
-        self.response_rate = data_obj.get('response_rate')
+        self.response_rate = str(data_obj.get('response_rate')) + '%'
         self.question_1 = SatisfactionQuestion(data_obj.get('question_1'))
         self.question_2 = SatisfactionQuestion(data_obj.get('question_2'))
         self.question_3 = SatisfactionQuestion(data_obj.get('question_3'))
@@ -402,7 +525,8 @@ class Tariff:
 
 class CourseAccreditation:
 
-    def __init__(self, data_obj):
+    def __init__(self, data_obj, language):
+        self.display_language = language
         self.type = data_obj.get("type")
         self.accreditor_url = data_obj.get('accreditor_url')
         text = data_obj.get('text')
@@ -416,3 +540,9 @@ class CourseAccreditation:
         if dependent:
             self.dependent_on_code = dependent.get('code')
             self.dependent_on_label = dependent.get('label')
+
+    def display_text(self):
+        return self.text_english if self.display_language == enums.languages.ENGLISH else self.text_welsh
+
+    def language_url(self):
+        return self.url_english

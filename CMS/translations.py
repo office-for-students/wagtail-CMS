@@ -1,10 +1,38 @@
 DICT = {
+    'a_level_similar': {
+        'en': 'A-levels, Advanced Highers or similar',
+        'cy': ''
+    },
+    'access_course': {
+        'en': 'Completed Access course',
+        'cy': ''
+    },
+    'across_uk': {
+        'en': 'across the UK',
+        'cy': ''
+    },
+    'baccalaureate': {
+        'en': 'Baccalaureate',
+        'cy': ''
+    },
     'back': {
         'en': 'Back',
         'cy': ''
     },
+    'break_from_studies': {
+        'en': 'Are taking a break from their studies',
+        'cy': ''
+    },
+    'chart_label_explained': {
+        'en': 'Chart labels explained',
+        'cy': ''
+    },
     'compare_course': {
-        'en': 'compare course',
+        'en': 'Compare course',
+        'cy': ''
+    },
+    'completed_course': {
+        'en': 'Have completed the course (started in the final year due to prior study)',
         'cy': ''
     },
     'course_finder': {
@@ -19,8 +47,16 @@ DICT = {
         'en': 'course(s)',
         'cy': ''
     },
+    'degree': {
+        'en': 'Degree',
+        'cy': ''
+    },
     'distance_learning': {
         'en': 'Distance learning',
+        'cy': ''
+    },
+    'doing_further_study': {
+        'en': 'Doing further study',
         'cy': ''
     },
     'england': {
@@ -31,12 +67,40 @@ DICT = {
         'en': 'Filter',
         'cy': ''
     },
+    'find_out_more': {
+        'en': 'Find out more',
+        'cy': ''
+    },
+    'foundation_course': {
+        'en': 'Foundation course',
+        'cy': ''
+    },
+    'foundation_year': {
+        'en': 'Foundation year',
+        'cy': ''
+    },
     'full_time': {
         'en': 'Full-time',
         'cy': ''
     },
+    'left_lower_qualification': {
+        'en': 'Have left with a lower qualification',
+        'cy': ''
+    },
+    'left_no_qualification': {
+        'en': 'Have left without a qualification',
+        'cy': ''
+    },
+    'length': {
+        'en': 'Length',
+        'cy': ''
+    },
     'location': {
         'en': 'Location',
+        'cy': ''
+    },
+    'locations': {
+        'en': 'Locations',
         'cy': ''
     },
     'miles': {
@@ -55,19 +119,48 @@ DICT = {
         'en': 'Next page',
         'cy': ''
     },
+    'no_qualifications': {
+        'en': 'No / unknown prior qualifications',
+        'cy': ''
+    },
+    'not_professional_or_managerial': {
+        'en': 'Not in a professional or managerial job',
+        'cy': ''
+    },
     'northern_ireland': {
         'en': 'Northern Ireland',
         'cy': ''
     },
+    'now_working': {
+        'en': 'Now working',
+        'cy': ''
+    },
     'number_of_results': {
-        'en': 'There are <strong>%s</strong> course(s) from <strong>%s</strong> provider(s)'
+        'en': 'There are <strong>%s</strong> course(s) from <strong>%s</strong> provider(s)',
+        'cy': ''
+    },
+    'other': {
+        'en': 'Other',
+        'cy': ''
+    },
+    'other_higher_qualifications': {
+        'en': 'Different higher education qualification',
+        'cy': ''
     },
     'part_time': {
         'en': 'Part-time',
         'cy': ''
     },
+    'placement_year': {
+        'en': 'Placement year',
+        'cy': ''
+    },
     'previous_page': {
         'en': 'Previous page',
+        'cy': ''
+    },
+    'professional_or_managerial': {
+        'en': 'In a professional or managerial job',
         'cy': ''
     },
     'results': {
@@ -94,6 +187,14 @@ DICT = {
         'en': 'Show all',
         'cy': ''
     },
+    'similar_courses_elsewhere': {
+        'en': 'View similar courses at <strong>other</strong> unis',
+        'cy': ''
+    },
+    'similar_courses_here': {
+        'en': 'View similar courses at <strong>this</strong> uni',
+        'cy': ''
+    },
     'skip': {
         'en': 'Skip',
         'cy': ''
@@ -114,12 +215,32 @@ DICT = {
         'en': 'Start again',
         'cy': ''
     },
+    'still_on_course': {
+        'en': 'Are still on the course',
+        'cy': ''
+    },
+    'study_and_working': {
+        'en': 'Studying and working',
+        'cy': ''
+    },
+    'study_mode': {
+        'en': 'Study mode',
+        'cy': ''
+    },
     'subject': {
         'en': 'Subject',
         'cy': ''
     },
     'subject_area': {
         'en': 'Subject area',
+        'cy': ''
+    },
+    'unemployed': {
+        'en': 'Unemployed',
+        'cy': ''
+    },
+    'unknown_job_type': {
+        'en': 'In an unknown job type',
         'cy': ''
     },
     'wales': {

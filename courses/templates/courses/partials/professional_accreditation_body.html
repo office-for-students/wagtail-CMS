@@ -1,18 +1,20 @@
+{% load discover_uni_tags %}
+
 <div class="discover-uni-container">
     <div class="accreditation__block">
         <h3 class="accreditation__heading">
-            This course is officially accredited by:
+            {{ block.value.section_heading }}
         </h3>
 
         {% for accreditation in course_details.accreditations %}
             <p class="accreditation__body">
-                {{accreditation.text_english}}
+                {{accreditation.display_text}}
             </p>
 
             <p class="accreditation__explanation">
                 {{accreditation.dependent_on_label}}
 
-                <a href="{{accreditation.url_english}}">Find out more</a>
+                <a href="{{accreditation.language_url}}">{% get_translation key='find_out_more' language=page.get_language %}</a>
             </p>
         {% endfor %}
     </div>
