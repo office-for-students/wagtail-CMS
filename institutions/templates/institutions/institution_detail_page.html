@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles %}
-{% load sass_tags %}
-{% load wagtailcore_tags %}
+{% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
 
 {% block extra_css %}
     <link href="{% sass_src 'scss/institution_details.scss' %}" rel="stylesheet" type="text/css" >
@@ -19,24 +17,24 @@
 
                 <div class="institution-details__overview">
                     <div class="institution-details__overview-item">
-                        <p class="institution-details__overview-item-heading">Address</p>
+                        <p class="institution-details__overview-item-heading">{% get_translation key='address' language=page.get_language %}</p>
                         <p class="institution-details__overview-item-value">{{ institution.contact_details.address }}</p>
                     </div>
 
                     <div class="institution-details__overview-item">
-                        <p class="institution-details__overview-item-heading">Website</p>
+                        <p class="institution-details__overview-item-heading">{% get_translation key='website' language=page.get_language %}</p>
                         <a class="institution-details__overview-item-value" href="{{ institution.website }}">{{institution.ukprn_name}}</a>
                     </div>
 
                     <div class="institution-details__overview-item">
-                        <p class="institution-details__overview-item-heading">Telephone</p>
+                        <p class="institution-details__overview-item-heading">{% get_translation key='telephone' language=page.get_language %}</p>
                         <p class="institution-details__overview-item-value">{{ institution.contact_details.phone_number }}</p>
                     </div>
 
                     <div class="institution-details__overview-item">
-                        <p class="institution-details__overview-item-heading">Student Unions</p>
+                        <p class="institution-details__overview-item-heading">{% get_translation key='student_unions' language=page.get_language %}</p>
                         {% for union in institution.student_unions %}
-                            <a class="institution-details__overview-item-value" href="{{ union.english_website }}">{{ union.english_name }}</a>
+                            <a class="institution-details__overview-item-value" href="{{ union.display_website }}">{{ union.display_name }}</a>
                         {% endfor %}
                     </div>
                 </div>

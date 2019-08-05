@@ -11,6 +11,10 @@ DICT = {
         'en': 'across the UK',
         'cy': ''
     },
+    'address': {
+        'en': 'Address',
+        'cy': ''
+    },
     'baccalaureate': {
         'en': 'Baccalaureate',
         'cy': ''
@@ -41,6 +45,10 @@ DICT = {
     },
     'course_length_not_available': {
         'en': 'Length of course is not available',
+        'cy': ''
+    },
+    'course_name': {
+        'en': 'Course name',
         'cy': ''
     },
     'courses': {
@@ -83,6 +91,10 @@ DICT = {
         'en': 'Full-time',
         'cy': ''
     },
+    'institution': {
+        'en': 'Institution',
+        'cy': ''
+    },
     'left_lower_qualification': {
         'en': 'Have left with a lower qualification',
         'cy': ''
@@ -121,6 +133,10 @@ DICT = {
     },
     'no_qualifications': {
         'en': 'No / unknown prior qualifications',
+        'cy': ''
+    },
+    'no_results_found': {
+        'en': 'No results found',
         'cy': ''
     },
     'not_professional_or_managerial': {
@@ -175,6 +191,10 @@ DICT = {
         'en': 'Scotland',
         'cy': ''
     },
+    'search': {
+        'en': 'Search',
+        'cy': ''
+    },
     'search_within': {
         'en': 'Search within',
         'cy': ''
@@ -219,6 +239,10 @@ DICT = {
         'en': 'Are still on the course',
         'cy': ''
     },
+    'student_unions': {
+        'en': 'Student Unions',
+        'cy': ''
+    },
     'study_and_working': {
         'en': 'Studying and working',
         'cy': ''
@@ -235,6 +259,10 @@ DICT = {
         'en': 'Subject area',
         'cy': ''
     },
+    'telephone': {
+        'en': 'Telephone',
+        'cy': ''
+    },
     'unemployed': {
         'en': 'Unemployed',
         'cy': ''
@@ -245,6 +273,10 @@ DICT = {
     },
     'wales': {
         'en': 'Wales',
+        'cy': ''
+    },
+    'website': {
+        'en': 'Website',
         'cy': ''
     },
     'year_abroad': {

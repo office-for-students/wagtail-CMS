@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
-from coursefinder.models import CourseSearch, CourseFinderSearch
+from CMS.enums import enums
+from CMS.utils import get_page_for_language
+from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderTownCity, \
+    CourseFinderPostcode
 from coursefinder.models import CourseFinderResults
 
 
-def results(request):
+def results(request, language=enums.languages.ENGLISH):
     query_params = request.GET
     course_search = CourseSearch(query_params.get('subject_query', ""), query_params.get('institution_query', ""),
                                  query_params.get('page', 1), query_params.get('count', 20))
@@ -14,7 +17,10 @@ def results(request):
     if error:
         return render(request, '500.html')
 
-    page = CourseFinderResults.objects.get()
+    page = get_page_for_language(language, CourseFinderResults.objects.all())
+
+    if not page:
+        return render(request, '404.html')
 
     context = {
         'page': page,
@@ -25,17 +31,18 @@ def results(request):
     return render(request, 'coursefinder/course_finder_results.html', context)
 
 
-def narrow_search(request):
+def narrow_search(request, language=enums.languages.ENGLISH):
     institution_query = None
     post_body = request.POST
+    page = None
     selection = post_body.get('radioGroup', None)
     if selection == "uni":
-        return HttpResponseRedirect("/course-finder/uni")
+        page = get_page_for_language(language, CourseFinderUni.objects.all())
     elif selection == "city":
-        return HttpResponseRedirect("/course-finder/towncity")
+        page = get_page_for_language(language, CourseFinderTownCity.objects.all())
     elif selection == "home":
-        return HttpResponseRedirect("/course-finder/postcode")
-    else:
+        page = get_page_for_language(language, CourseFinderPostcode.objects.all())
+    elif selection == 'all':
         course_finder_search = CourseFinderSearch(post_body.get('subject_query', None),
                                                   institution_query,
                                                   post_body.get('mode_query', None),
@@ -48,18 +55,23 @@ def narrow_search(request):
         if error:
             return render(request, '500.html')
 
-        page = CourseFinderResults.objects.get()
+        page = get_page_for_language(language, CourseFinderResults.objects.all())
 
-        context = {
-            'page': page,
-            'search': course_finder_search,
-            'pagination_url': 'narrow_search'
-        }
+        if page:
+            context = {
+                'page': page,
+                'search': course_finder_search,
+                'pagination_url': 'narrow_search'
+            }
 
-        return render(request, 'coursefinder/course_finder_results.html', context)
+            return render(request, 'coursefinder/course_finder_results.html', context)
+
+    if page:
+        return HttpResponseRedirect(page.url)
+    return render(request, '404.html')
 
 
-def course_finder_results(request):
+def course_finder_results(request, language=enums.languages.ENGLISH):
     query_params = request.GET
     course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
                                               query_params.get('institution_query', None),
@@ -72,7 +84,10 @@ def course_finder_results(request):
     if error:
         return render(request, '500.html')
 
-    page = CourseFinderResults.objects.get()
+    page = get_page_for_language(language, CourseFinderResults.objects.all())
+
+    if not page:
+        return render(request, '404.html')
 
     context = {
         'page': page,
