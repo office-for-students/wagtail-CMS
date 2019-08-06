@@ -1,6 +1,9 @@
 {% extends "coursefinder/course_finder_base.html" %}
 {% load static %}
 {% load wagtailcore_tags %}
+{% load discover_uni_tags %}
+
+
 {% block body_class %}template-course-finder-narrow-search{% endblock %}
 
 {% block question %}
@@ -8,19 +11,27 @@
     <form action="{% url 'narrow_search' %}" method="post" onsubmit="handleResultsRequest()">
         {% csrf_token %}
         <div class="radio">
-            <input id="uni" type="radio" name="radioGroup" value="uni"> <label for="uni">to a specific uni?</label>
+            <input id="uni" type="radio" name="radioGroup" value="uni">
+
+            <label for="uni">{% get_translation key='specific_uni' language=page.get_language %}?</label>
         </div>
 
         <div class="radio">
-            <input id="city" type="radio" name="radioGroup" value="city"> <label for="city"> to a specific town/city?</label>
+            <input id="city" type="radio" name="radioGroup" value="city">
+
+            <label for="city">{% get_translation key='specific_town_city' language=page.get_language %}?</label>
         </div>
 
         <div class="radio">
-            <input id="home" type="radio" name="radioGroup" value="home"> <label for="home">to near your home?</label>
+            <input id="home" type="radio" name="radioGroup" value="home">
+
+            <label for="home">{% get_translation key='near_your_home' language=page.get_language %}?</label>
         </div>
 
         <div class="radio">
-            <input id="all" type="radio" name="radioGroup" value="all"> <label for="all">Show all</label>
+            <input id="all" type="radio" name="radioGroup" value="all">
+
+            <label for="all">{% get_translation key='show_all' language=page.get_language %}</label>
         </div>
 
         <input type="text" name="countries_query" value="">
@@ -32,5 +43,5 @@
 {% endblock %}
 
 {% block next_nav %}
-    <input type="submit" value="Next" class="button" onclick="handleFormSubmit()">
+    <input type="submit" value="{% get_translation key='next' language=page.get_language %}" class="button" onclick="handleFormSubmit()">
 {% endblock %}

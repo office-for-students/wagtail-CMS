@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load wagtailcore_tags %}
+{% load discover_uni_tags %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/coursefinder.css' %}">
@@ -9,20 +10,26 @@
 {% block content %}
     <div class="course-finder-base">
         <div class="header">
-            <h2>Course Finder</h2>
+            <h2>
+                {% get_translation key='course_finder' language=page.get_language %}
+            </h2>
         </div>
 
         <ul class="navigation">
             {% if page.back_page %}
-                <a href={% pageurl page.back_page %}><li class="helper-text back">Back</li></a>
+                <a href={% pageurl page.back_page %}><li class="helper-text back">{% get_translation key='back' language=page.get_language %}</li></a>
             {% endif %}
 
-            <a href={% pageurl page.get_parent %} onclick="handleStartAgain()"><li class="helper-text start-again">Start again</li></a>
+            <a href={% pageurl page.get_parent %} onclick="handleStartAgain()">
+                <li class="helper-text start-again">{% get_translation key='start_again' language=page.get_language %}</li>
+            </a>
 
             {% if page.use_skip_form %}
-                {% include 'coursefinder/partials/course_finder_results_form.html' with button_value='Skip' button_class='skip' %}
+                {% include 'coursefinder/partials/course_finder_results_form.html' with button_value_key='skip' button_class='skip' %}
             {% else %}
-                <a href={% pageurl page.next_page %}><li class="helper-text skip">Skip</li></a>
+                <a href={% pageurl page.next_page %}>
+                    <li class="helper-text skip">{% get_translation key='skip' language=page.get_language %}</li>
+                </a>
             {% endif %}
         </ul>
 

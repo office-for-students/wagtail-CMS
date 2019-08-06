@@ -1,4 +1,7 @@
 {% load staticfiles %}
+{% load wagtailcore_tags %}
+{% load discover_uni_tags %}
+
 
 <div class="student-satisfaction__overview">
     <div class="discover-uni-container">
@@ -7,7 +10,7 @@
         </p>
 
         <p>
-            of students that responded agreed with the statement "Overall, I am satisfied with the quality of the course"
+            {{ block.value.lead_text }}
         </p>
     </div>
 </div>
@@ -15,12 +18,7 @@
 <div class="discover-uni-container">
     <div class="student-satisfaction__block">
         <div class="student-satisfaction__intro">
-            <p>
-                All final year students are asked to complete the survey. Data on the page is from 20 students (58% of those who were asked). Source: NSS.
-                <a href="/dummy-link">What is the NSS?</a>
-            </p>
-
-            <img class="student-satisfaction__nss_logo" src="{% static 'images/nss_logo_english.svg' %}" alt="NSS logo">
+            {{ block.value.intro_body | richtext }}
         </div>
 
 
@@ -30,7 +28,7 @@
                 <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/teaching_icon.svg' %}" alt="">
 
                 <span class="student-satisfaction__data-group-heading-title">
-                    The teaching on my course
+                    {{block.value.teaching_stats_header }}
                 </span>
             </h2>
 
@@ -79,7 +77,7 @@
                 <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/learning_icon.svg' %}" alt="">
 
                 <span class="student-satisfaction__data-group-heading-title">
-                    Learning opportunities
+                    {{block.value.learning_opportunities_stats_header }}
                 </span>
             </h2>
 
@@ -119,7 +117,7 @@
                 <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/assessment_icon.svg' %}" alt="">
 
                 <span class="student-satisfaction__data-group-heading-title">
-                    Assessment and feedback
+                    {{block.value.assessment_stats_header }}
                 </span>
             </h2>
 
@@ -168,7 +166,7 @@
                 <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/management_icon.svg' %}" alt="">
 
                 <span class="student-satisfaction__data-group-heading-title">
-                    Organisation and management
+                    {{block.value.organisation_stats_header }}
                 </span>
             </h2>
 
@@ -208,7 +206,7 @@
                 <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/resources_icon.svg' %}" alt="">
 
                 <span class="student-satisfaction__data-group-heading-title">
-                    Learning resources
+                    {{block.value.learning_resources_stats_header }}
                 </span>
             </h2>
 
@@ -248,7 +246,7 @@
                 <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/community_icon.svg' %}" alt="">
 
                 <span class="student-satisfaction__data-group-heading-title">
-                    Learning community
+                    {{block.value.learning_community_stats_header }}
                 </span>
             </h2>
 
@@ -279,7 +277,7 @@
                 <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/voice_icon.svg' %}" alt="">
 
                 <span class="student-satisfaction__data-group-heading-title">
-                    Student voice
+                    {{block.value.student_voice_stats_header }}
                 </span>
             </h2>
 
@@ -327,7 +325,7 @@
                 <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/nhs_icon.svg' %}" alt="">
 
                 <span class="student-satisfaction__data-group-heading-title">
-                    NHS work placement
+                    {{block.value.nhs_placement_stats_header }}
                 </span>
             </h2>
 
@@ -391,13 +389,11 @@
         </div>
 
         {% if not course_details.nhs_satisfaction_stats.unavailable_reason %}
-            <p class="explanation-text">
-                All final year students are asked to complete the survey.
-                Data on the page is from <strong>{{course_details.nhs_satisfaction_stats.number_of_students}}</strong> students
-                ({{course_details.nhs_satisfaction_stats.response_rate}}% of those who were asked).
-                Source: NSS.
-                <a href="/dummy-link">What is the NSS?</a>
-            </p>
+            <div class="explanation-text">
+                {% create_list course_details.nhs_satisfaction_stats.number_of_students course_details.nhs_satisfaction_stats.response_rate as substitutions %}
+                {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
+                {{ subbed_text | richtext }}
+            </div>
         {% endif %}
 
         {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.nhs_satisfaction_stats.unavailable_reason %}

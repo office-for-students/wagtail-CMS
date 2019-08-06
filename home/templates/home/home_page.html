@@ -1,55 +1,61 @@
 {% extends "base.html" %}
-{% load static %}
-{% load wagtailcore_tags %}
+{% load static wagtailcore_tags discover_uni_tags %}
+
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 {% endblock extra_css %}
 
 {% block content %}
-<div class="home">
-  <div class="header">
-    <div class="header-content">
-      {{ page.header|richtext }}
-    </div>
-    <div class="blue-block">
-    </div>
-    <div class="slope">
-    </div>
-  </div>
-  <div class="links-container grid-1">
-    {% for block in page.page_links %}
-      <a href={{ block.value.page.url }}>
-        <div class="link">
-          <h2>{{ block.value.title }}</h2>
-        </div>
-      </a>
-    {% endfor %}
-  </div>
-  <div class="search-form grid-2">
-    {{page.search_header|richtext}}
-    <form action="{% url 'results' %}" method="get">
-        <label>{{page.course_field_label}} </label><br>
+    <div class="home">
+        <div class="header">
+            <div class="header-content">
+                {{ page.header|richtext }}
+            </div>
 
-        <input id="courseName" type="text" name="subject_query" {% if course_query %} value="{{ course_query }}"{% endif %} placeholder="Course Name" required><br>
+            <div class="blue-block">
+            </div>
 
-        <label>{{page.institution_field_label}}</label>
-
-        <div>
-          <select id="uni" name="institution_query">
-            <option disabled selected>Institution</option>
-
-            <option value="">Show all</option>
-          </select>
-
-          <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
+            <div class="slope">
+            </div>
         </div>
 
-        <input type="submit" value="Search" class="button">
-    </form>
-  </div>
-</div>
+        <div class="links-container grid-1">
+            {% for block in page.page_links %}
+                <a href='{{ block.value.page.url }}'>
+                    <div class="link">
+                        <h2>{{ block.value.title }}</h2>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
 
+        <div class="search-form grid-2">
+            {{page.search_header|richtext}}
+
+            <form action="{% url 'results' %}" method="get">
+                <label>{{page.course_field_label}} </label>
+
+                <input id="courseName" type="text" name="subject_query"
+                       {% if course_query %} value="{{ course_query }}"{% endif %}
+                       placeholder="{% get_translation key='course_name' language=page.get_language %}" required><br>
+
+                <label>{{page.institution_field_label}}</label>
+
+                <div>
+                    <select id="uni" name="institution_query">
+                        <option disabled selected>{% get_translation key='institution' language=page.get_language %}</option>
+
+                        <option value="">{% get_translation key='show_all' language=page.get_language %}</option>
+                    </select>
+
+                    <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
+                </div>
+
+                <input type="submit" value="{% get_translation key='search' language=page.get_language %}" class="button">
+            </form>
+        </div>
+    </div>
 {% endblock content %}

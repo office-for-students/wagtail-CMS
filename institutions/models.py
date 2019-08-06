@@ -4,11 +4,13 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 
+from CMS.enums import enums
+from core.models import DiscoverUniBasePage
 from errors.models import ApiError
 from institutions import request_handler
 
 
-class InstitutionDetailPage(Page):
+class InstitutionDetailPage(DiscoverUniBasePage):
     qa_heading = TextField(blank=True)
     qa_body = RichTextField(blank=True)
     qa_report_link = TextField(blank=True)
@@ -57,7 +59,8 @@ class InstitutionOverview:
 
 class Institution:
 
-    def __init__(self, data_obj):
+    def __init__(self, data_obj, language):
+        self.display_language = language
         self.id = data_obj.get('_id')
         self.created_at = data_obj.get('created_at')
         institution_data = data_obj.get('institution')
@@ -74,21 +77,21 @@ class Institution:
         self.ukprn = institution_data.get("ukprn")
         self.student_unions = []
         for union in institution_data.get('student_unions'):
-            self.student_unions.append(InstitutionStudentUnions(union))
+            self.student_unions.append(InstitutionStudentUnions(union, self.display_language))
 
     @property
     def is_irish(self):
         return self.pub_ukprn_country == 'Ireland'
 
     @classmethod
-    def find(cls, institution_id):
+    def find(cls, institution_id, language):
         institution = None
         error = None
 
         response = request_handler.load_institution_data(institution_id)
 
         if response.ok:
-            institution = cls(response.json())
+            institution = cls(response.json(), language)
         else:
             error = ApiError(response.status_code, 'Loading details for institution %s ' % institution_id)
 
@@ -118,8 +121,15 @@ class InstitutionContactDetails:
 
 class InstitutionStudentUnions:
 
-    def __init__(self, su_data):
+    def __init__(self, su_data, language):
+        self.display_language = language
         self.english_website = su_data.get('link').get('english')
         self.welsh_website = su_data.get('link').get('welsh')
         self.english_name = su_data.get('name').get('english')
         self.welsh_name = su_data.get('name').get('welsh')
+
+    def display_name(self):
+        return self.english_name if self.display_language == enums.languages.ENGLISH else self.welsh_name
+
+    def display_url(self):
+        return self.english_website if self.display_language == enums.languages.ENGLISH else self.welsh_website

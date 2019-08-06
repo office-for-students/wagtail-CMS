@@ -6,6 +6,8 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from . import welsh_urls
+
 from courses import urls as courses_urls
 from institutions import urls as institution_urls
 
@@ -28,6 +30,7 @@ urlpatterns = [
     url(r'^course-details/', include(courses_urls)),
     url(r'^institution-details/', include(institution_urls)),
 
+    url(r'(?P<language>[\w\-]+)/', include(welsh_urls)),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in

@@ -81,7 +81,7 @@
         margin-bottom: 27px;
     }
 
-    .after-course__lead-heading {
+    h3 {
         @include mobile-body-font--bold-mixin();
 
         margin: 0;
@@ -192,7 +192,7 @@
             margin-bottom: 20px;
         }
 
-        .after-course__lead-heading {
+        h3 {
             @include desktop-body-font--bold-mixin();
 
             margin: 0;

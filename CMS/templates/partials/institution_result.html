@@ -1,0 +1,23 @@
+{% load staticfiles %}
+{% load discover_uni_tags %}
+
+
+<div tabindex="0" role="button" aria-label="Show result" class="result">
+    <div class="result-title">
+        <h4>
+            {{ institution.public_ukprn_name }}
+        </h4>
+
+        <p class="helper-text">
+            {{ institution.number_of_courses }} {% get_translation key='courses' language=page.get_language %}
+        </p>
+    </div>
+
+    {% for course in institution.courses %}
+        {% include 'partials/course_result.html' with course=course institution_id=institution.public_ukprn %}
+    {% endfor %}
+
+    <div class="down-arrow">
+        <img src="{% static 'images/down_chevron_black.svg' %}" alt="">
+    </div>
+</div>

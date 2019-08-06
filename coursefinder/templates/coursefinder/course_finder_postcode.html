@@ -1,6 +1,9 @@
 {% extends "coursefinder/course_finder_base.html" %}
 {% load static %}
 {% load wagtailcore_tags %}
+{% load discover_uni_tags %}
+
+
 {% block body_class %}template-course-finder-postcode{% endblock %}
 
 {% block question %}
@@ -10,23 +13,31 @@
         <input type="text" name="" value="">
 
         <p>
-            Search within:
+            {% get_translation key='search_within' language=page.get_language %}:
         </p>
 
         <div class="radio">
-            <input id="one" type="radio" name="postcode" value=""><label for="one">10 miles</label>
+            <input id="one" type="radio" name="postcode" value="">
+
+            <label for="one">10 {% get_translation key='miles' language=page.get_language %}</label>
         </div>
 
         <div class="radio">
-            <input id="two" type="radio" name="postcode" value=""><label for="two">25 miles</label>
+            <input id="two" type="radio" name="postcode" value="">
+
+            <label for="two">25 {% get_translation key='miles' language=page.get_language %}</label>
         </div>
 
         <div class="radio">
-            <input id="three" type="radio" name="postcode" value=""><label for="three">50 miles</label>
+            <input id="three" type="radio" name="postcode" value="">
+
+            <label for="three">50 {% get_translation key='miles' language=page.get_language %}</label>
         </div>
     </form>
 {% endblock %}
 
 {% block next_nav %}
-    <a href={% pageurl page.next_page %}><input type="submit" value="Next" class="button" onclick="handleFormSubmit()"></a>
+    <a href={% pageurl page.next_page %}>
+        <input type="submit" value="{% get_translation key='next' language=page.get_language %}" class="button" onclick="handleFormSubmit()">
+    </a>
 {% endblock %}

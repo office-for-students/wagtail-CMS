@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'core.apps.CoreConfig',
     'home.apps.HomeConfig',
     'search.apps.SearchConfig',
     'content.apps.ContentConfig',

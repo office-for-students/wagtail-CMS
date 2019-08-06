@@ -1,0 +1,36 @@
+{% load discover_uni_tags %}
+
+
+<div class="course">
+    <a href="/course-details/{{institution_id}}/{{course.kis_course_id}}/{{course.mode}}" class="course-name">
+        {{ course.english_title }}
+    </a>
+
+    {% if course.length_of_course == "" %}
+        <p class="course-info">
+            {% get_translation key='course_length_not_available' language=page.get_language %}
+        </p>
+    {% else %}
+        <p class="course-info">
+            {{ course.length_of_course }}-{% get_translation key='year_course' language=page.get_language %}
+        </p>
+    {% endif %}
+
+    <p class="course-info">
+        {{ course.mode }}
+    </p>
+
+    <p class="course-info">
+        {% get_translation key='sandwich_year' language=page.get_language %} ({{ course.sandwich_year }})
+    </p>
+
+    <p class="course-info">
+        {% get_translation key='year_abroad' language=page.get_language %} ({{ course.year_abroad }})
+    </p>
+
+    <p class="course-info">
+        {% get_translation key='location' language=page.get_language %}: {{ course.location.english_name }}
+    </p>
+
+    <input type="button" name="" value="+ {% get_translation key='compare_course' language=page.get_language %}">
+</div>

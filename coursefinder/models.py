@@ -7,6 +7,7 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
+from core.models import DiscoverUniBasePage
 from coursefinder import request_handler
 from coursefinder.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
     choose_subject_sibling_finder, narrow_search_sibling_finder, postcode_sibling_finder, summary_sibling_finder, \
@@ -14,7 +15,7 @@ from coursefinder.utils import choose_country_sibling_finder, mode_of_study_sibl
 from errors.models import ApiError
 
 
-class CourseFinderLandingPage(Page):
+class CourseFinderLandingPage(DiscoverUniBasePage):
     header = TextField(blank=True)
     subheader = TextField(blank=True)
 
@@ -31,7 +32,7 @@ class CourseFinderLandingPage(Page):
         return self.country_finder_page is not None
 
 
-class CourseFinderChooseCountry(Page):
+class CourseFinderChooseCountry(DiscoverUniBasePage):
     page_order = 1
     question = TextField(blank=True)
     next_section = StreamField([
@@ -52,7 +53,7 @@ class CourseFinderChooseCountry(Page):
         return self.get_parent()
 
 
-class CourseFinderModeOfStudy(Page):
+class CourseFinderModeOfStudy(DiscoverUniBasePage):
     page_order = 2
     question = TextField(blank=True)
     helper_text = RichTextField(blank=True)
@@ -71,7 +72,7 @@ class CourseFinderModeOfStudy(Page):
         return choose_country_sibling_finder(self.get_siblings().specific())
 
 
-class CourseFinderChooseSubject(Page):
+class CourseFinderChooseSubject(DiscoverUniBasePage):
     page_order = 3
     question = TextField(blank=True)
     helper_text = RichTextField(blank=True)
@@ -90,7 +91,7 @@ class CourseFinderChooseSubject(Page):
         return mode_of_study_sibling_finder(self)
 
 
-class CourseFinderNarrowSearch(Page):
+class CourseFinderNarrowSearch(DiscoverUniBasePage):
     page_order = 4
     use_skip_form = True
     question = TextField(blank=True)
@@ -104,7 +105,7 @@ class CourseFinderNarrowSearch(Page):
         return choose_subject_sibling_finder(self)
 
 
-class CourseFinderTownCity(Page):
+class CourseFinderTownCity(DiscoverUniBasePage):
     page_order = 5
     use_skip_form = True
     question = TextField(blank=True)
@@ -122,7 +123,7 @@ class CourseFinderTownCity(Page):
         return narrow_search_sibling_finder(self)
 
 
-class CourseFinderUni(Page):
+class CourseFinderUni(DiscoverUniBasePage):
     page_order = 6
     use_skip_form = True
     question = TextField(blank=True)
@@ -140,7 +141,7 @@ class CourseFinderUni(Page):
         return narrow_search_sibling_finder(self)
 
 
-class CourseFinderPostcode(Page):
+class CourseFinderPostcode(DiscoverUniBasePage):
     page_order = 7
     use_skip_form = True
     question = TextField(blank=True)
@@ -158,7 +159,7 @@ class CourseFinderPostcode(Page):
         return narrow_search_sibling_finder(self)
 
 
-class CourseFinderSummary(Page):
+class CourseFinderSummary(DiscoverUniBasePage):
     page_order = 8
     header = TextField(blank=True)
     country_section_title = TextField(blank=True)
@@ -183,7 +184,7 @@ class CourseFinderSummary(Page):
         return postcode_sibling_finder(self)
 
 
-class CourseFinderResults(Page):
+class CourseFinderResults(DiscoverUniBasePage):
     page_order = 9
     header = TextField(blank=True)
     related_links_title = TextField(blank=True)

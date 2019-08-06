@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load discover_uni_tags %}
 
 <div class="course-detail">
     <div class="course-detail__lead">
@@ -6,11 +7,11 @@
             <img class="course-detail__icon" src="{% static 'images/certificate.svg' %}" alt="">
 
             <h1 class="course-detail__course-name">
-                {{course.english_title}}
+                {{course.display_title}}
             </h1>
 
             <button class="course-detail__compare-btn">
-                + Compare course
+                + {% get_translation key='compare_course' language=page.get_language %}
             </button>
         </div>
 
@@ -21,7 +22,7 @@
                 </a>
 
                 <p class="course-detail__institution-locations">
-                    {{ course.number_of_locations }} Locations: {{ course.locations_list }}
+                    {{ course.number_of_locations }} {% get_translation key='locations' language=page.get_language %}: {{ course.locations_list }}
                 </p>
             </div>
         </div>
@@ -29,32 +30,32 @@
         <div class="discover-uni-container">
             <div class="course-detail__course-overview">
                 <div class="course-detail__overview-item">
-                    <p class="course-detail__overview-item-heading">Length</p>
-                    <p class="course-detail__overview-item-value">{{ course.length.code }} year course</p>
+                    <p class="course-detail__overview-item-heading">{% get_translation key='length' language=page.get_language %}</p>
+                    <p class="course-detail__overview-item-value">{{ course.length.code }} {% get_translation key='year_course' language=page.get_language %}</p>
                 </div>
 
                 <div class="course-detail__overview-item">
-                    <p class="course-detail__overview-item-heading">Study mode</p>
+                    <p class="course-detail__overview-item-heading">{% get_translation key='study_mode' language=page.get_language %}</p>
                     <p class="course-detail__overview-item-value">{{ course.mode.label }}</p>
                 </div>
 
                 <div class="course-detail__overview-item">
-                    <p class="course-detail__overview-item-heading">Distance learning</p>
+                    <p class="course-detail__overview-item-heading">{% get_translation key='distance_learning' language=page.get_language %}</p>
                     <p class="course-detail__overview-item-value">{{ course.distance_learning.label }}</p>
                 </div>
 
                 <div class="course-detail__overview-item">
-                    <p class="course-detail__overview-item-heading">Placement year</p>
+                    <p class="course-detail__overview-item-heading">{% get_translation key='placement_year' language=page.get_language %}</p>
                     <p class="course-detail__overview-item-value">{{ course.sandwich_year.label }}</p>
                 </div>
 
                 <div class="course-detail__overview-item">
-                    <p class="course-detail__overview-item-heading">Year abroad</p>
+                    <p class="course-detail__overview-item-heading">{% get_translation key='year_abroad' language=page.get_language %}</p>
                     <p class="course-detail__overview-item-value">{{ course.year_abroad.label }}</p>
                 </div>
 
                 <div class="course-detail__overview-item">
-                    <p class="course-detail__overview-item-heading">Foundation year</p>
+                    <p class="course-detail__overview-item-heading">{% get_translation key='foundation_year' language=page.get_language %}</p>
                     <p class="course-detail__overview-item-value">{{ course.foundation_year.label }}</p>
                 </div>
             </div>
@@ -77,7 +78,7 @@
                     </div>
 
                     <div class="course-detail__accordion-body">
-                        {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course %}
+                        {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course block=accordion %}
                     </div>
                 </div>
             {% endif %}
@@ -86,9 +87,9 @@
 
     <div class="course-detail__uni-site-links">
         <div class="discover-uni-container">
-            <h2 class="course-detail__uni-site-links-heading">
+            <p class="course-detail__uni-site-links-heading">
                 {{ page.uni_site_links_header }}
-            </h2>
+            </p>
 
             <ul class="course-detail__uni-site-links-list">
                 {% for link in course.course_links %}
@@ -103,12 +104,12 @@
     <div class="course-detail__further-info-block">
         <a href="/dummy-link" class="course-detail__other-courses-link">
             <img class="course-detail__other-courses-link-icon" src="{% static 'images/location_paddle.svg' %}" alt="">
-            <span>View similar courses at <strong>this</strong> uni</span>
+            <span>{% autoescape off %}{% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
         </a>
 
         <a href="/dummy-link" class="course-detail__other-courses-link">
             <img class="course-detail__other-courses-link-icon" src="{% static 'images/curved_arrow_right.svg' %}" alt="">
-            <span>View similar courses at <strong>other</strong> unis</span>
+            <span>{% autoescape off %}{% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
         </a>
     </div>
 </div>

@@ -1,13 +1,14 @@
 {% load staticfiles %}
 {% load discover_uni_tags %}
 
+
 <nav role="navigation" aria-label="Pagination" class="pagination">
     <ul class="pagination__item-list">
         <div class="pagination__previous">
             {% if search.show_previous_icon != 0 %}
-                <a class="pagination__link" aria-label="Previous page" href="
+                <a class="pagination__link" aria-label="{% get_translation key='previous_page' language=page.get_language %}" href="
                     {% url pagination_url %}{% queryparams subject_query=search.subject institution_query=search.institution mode_query=search.mode countries_query=search.countries page=search.previous_page count=search.count %}">
-                    <img src="{% static 'images/left_chevron.svg' %}" alt="previous-page">
+                    <img src="{% static 'images/left_chevron.svg' %}" alt="{% get_translation key='previous_page' language=page.get_language %}">
                 </a>
             {% endif %}
         </div>
@@ -38,9 +39,9 @@
 
         <div class="pagination__next">
             {% if search.show_next_icon %}
-                <a class="pagination__link" aria-label="Next page" href="
+                <a class="pagination__link" aria-label="{% get_translation key='next_page' language=page.get_language %}" href="
                     {% url pagination_url %}{% queryparams subject_query=search.subject institution_query=search.institution mode_query=search.mode countries_query=search.countries page=search.next_page count=search.count %}">
-                    <img src="{% static 'images/right_chevron.svg' %}" alt="previous-page">
+                    <img src="{% static 'images/right_chevron.svg' %}" alt="{% get_translation key='next_page' language=page.get_language %}">
                 </a>
             {% endif %}
         </div>
