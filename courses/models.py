@@ -110,14 +110,12 @@ class AfterCourseBlock(AccordionPanel):
     six_month_employment_intro = blocks.CharBlock(required=False)
     six_month_employment_lead = blocks.CharBlock(required=False)
     six_month_employment_data_source = blocks.RichTextBlock(blank=True)
-    six_month_employment_find_out_more = blocks.RichTextBlock(required=False)
 
     six_month_employment_roles_heading = blocks.CharBlock(required=False)
     six_month_employment_roles_intro = blocks.CharBlock(required=False)
     six_month_employment_roles_label_explanation_heading = blocks.CharBlock(required=False)
     six_month_employment_roles_label_explanation_body = blocks.RichTextBlock(blank=True)
     six_month_employment_roles_data_source = blocks.RichTextBlock(blank=True)
-    six_month_employment_roles_find_out_more = blocks.RichTextBlock(blank=True)
 
     class Meta:
         value_class = AfterCourseDataSet
