@@ -171,8 +171,7 @@ DiscoverUniWidget.prototype = {
         var ctaWrapperNode = document.createElement('div');
         ctaWrapperNode.classList.add('cta');
         coursePageBase = '{{domain_name}}/course-details/{{uni_id}}/{{course_id}}/{{mode}}/';
-        coursePage = coursePageBase.replace('{{domain_name}}', 'http://localhost:8000');
-        coursePage = coursePage.replace('{{uni_id}}', this.institution);
+        coursePage = coursePageBase.replace('{{uni_id}}', this.institution);
         coursePage = coursePage.replace('{{course_id}}', this.course);
         coursePage = coursePage.replace('{{mode}}', this.kismode);
 
@@ -235,8 +234,7 @@ DiscoverUniWidget.prototype = {
         var ctaNode = document.createElement('a');
 
         coursePageBase = '{{domain_name}}/course-details/{{uni_id}}/{{course_id}}/{{mode}}/';
-        coursePage = coursePageBase.replace('{{domain_name}}', 'http://localhost:8000');
-        coursePage = coursePage.replace('{{uni_id}}', this.institution);
+        coursePage = coursePageBase.replace('{{uni_id}}', this.institution);
         coursePage = coursePage.replace('{{course_id}}', this.course);
         coursePage = coursePage.replace('{{mode}}', this.kismode);
         ctaNode.href = coursePage;
