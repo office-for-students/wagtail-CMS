@@ -197,22 +197,28 @@ class Course:
         link_objs = []
         if enums.uni_link_keys.COURSE in links:
             link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.COURSE).get(language),
-                                        links.get(enums.uni_link_keys.COURSE).get('english')))
+                                        links.get(enums.uni_link_keys.COURSE),
+                                        enums.languages_map.get(language)))
         if enums.uni_link_keys.TEACHING_METHODS in links:
             link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.TEACHING_METHODS).get(language),
-                                        links.get(enums.uni_link_keys.TEACHING_METHODS).get('english')))
+                                        links.get(enums.uni_link_keys.TEACHING_METHODS),
+                                        enums.languages_map.get(language)))
         if enums.uni_link_keys.ASSESSMENT in links:
             link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.ASSESSMENT).get(language),
-                                        links.get(enums.uni_link_keys.ASSESSMENT).get('english')))
+                                        links.get(enums.uni_link_keys.ASSESSMENT),
+                                        enums.languages_map.get(language)))
         if enums.uni_link_keys.COSTS in links:
             link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.COSTS).get(language),
-                                        links.get(enums.uni_link_keys.COSTS).get('english')))
+                                        links.get(enums.uni_link_keys.COSTS),
+                                        enums.languages_map.get(language)))
         if enums.uni_link_keys.ACCOMMODATION in self.locations[0].links:
             link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.ACCOMMODATION).get(language),
-                                        self.locations[0].links.get(enums.uni_link_keys.ACCOMMODATION).get('english')))
+                                        self.locations[0].links.get(enums.uni_link_keys.ACCOMMODATION),
+                                        enums.languages_map.get(language)))
         if enums.uni_link_keys.FINANCIAL_SUPPORT in links:
             link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.FINANCIAL_SUPPORT).get(language),
-                                        links.get(enums.uni_link_keys.FINANCIAL_SUPPORT).get('english')))
+                                        links.get(enums.uni_link_keys.FINANCIAL_SUPPORT),
+                                        enums.languages_map.get(language)))
         return link_objs
 
     @property
@@ -289,9 +295,12 @@ class CourseLength:
 
 class CourseLink:
 
-    def __init__(self, name, link_obj):
+    def __init__(self, name, link_obj, language_key):
         self.label = name
-        self.link = link_obj
+        if language_key in link_obj:
+            self.link = link_obj.get(language_key)
+        else:
+            self.link = link_obj.get(enums.languages_full.ENGLISH)
 
 
 class CourseLocation:

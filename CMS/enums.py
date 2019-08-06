@@ -3,6 +3,11 @@ class Languages:
     WELSH = "cy"
 
 
+class LanguagesFull:
+    ENGLISH = "english"
+    WELSH = "welsh"
+
+
 class UniLinkKeys:
     ASSESSMENT = 'assessment_method'
     COURSE = 'course_page'
@@ -14,6 +19,11 @@ class UniLinkKeys:
 
 class Enums:
     languages = Languages()
+    languages_full = LanguagesFull()
+    languages_map = {
+        Languages.ENGLISH: LanguagesFull.ENGLISH,
+        Languages.WELSH: LanguagesFull.WELSH
+    }
     uni_link_keys = UniLinkKeys()
 
 
