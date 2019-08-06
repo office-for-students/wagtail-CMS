@@ -1,0 +1,65 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+@import '../../../CMS/static/scss/buttons';
+
+.home {
+    padding: 139px 0px 243px;
+    background-image: url('/static/images/background.png');
+    background-size: cover;
+
+    .header {
+        margin: 0px;
+        margin-bottom: 34px;
+
+        color: $ux-grey-3;
+        font-size: 70px;
+        line-height:95px;
+    }
+
+    .intro-text {
+        p {
+            @include s-heading-mixin();
+            line-height: 37px;
+            margin-top: 0px;
+            margin-bottom: 14px;
+        }
+
+        ul {
+            padding-left: 25px;
+
+            li {
+                @include xs-heading-mixin();
+
+                list-style-image: url('/static/images/bullet-check.svg');
+                padding-left: 5px;
+
+                line-height: 29px;
+            }
+        }
+    }
+
+    .link {
+        margin-top: 40px;
+
+        a {
+            @include green-cta-mixin();
+
+            text-decoration: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 770px) {
+
+    .home {
+        .link {
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 30px;
+
+            h2 {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
