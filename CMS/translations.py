@@ -63,6 +63,20 @@ DICT = {
         'en': 'Distance learning',
         'cy': ''
     },
+    'distance_learning_values': {
+        '0': {
+            'en': 'Not Available',
+            'cy': ''
+        },
+        '1': {
+            'en': 'Yes',
+            'cy': ''
+        },
+        '2': {
+            'en': 'Optional',
+            'cy': ''
+        }
+    },
     'doing_further_study': {
         'en': 'Doing further study',
         'cy': ''

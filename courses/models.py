@@ -5,6 +5,7 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core.models import Page
 from wagtail.core import blocks
 
+from CMS.translations import DICT
 from CMS.enums import enums
 
 from core.models import DiscoverUniBasePage
@@ -157,7 +158,8 @@ class Course:
         course_details = data_obj.get('course')
         if course_details:
             self.country = CourseCountry(course_details.get('country'))
-            self.distance_learning = CourseDistanceLearning(course_details.get('distance_learning'))
+            self.distance_learning = CourseDistanceLearning(course_details.get('distance_learning'),
+                                                            self.display_language)
             self.foundation_year = CourseFoundationYear(course_details.get('foundation_year_availability'))
             self.honours_award_provision = course_details.get('honours_award_provision')
             self.institution = InstitutionOverview(course_details.get('institution'))
@@ -245,9 +247,13 @@ class CourseCountry:
 
 class CourseDistanceLearning:
 
-    def __init__(self, data_obj):
+    def __init__(self, data_obj, language):
+        self.display_language = language
         self.code = data_obj.get('code')
         self.label = data_obj.get('label')
+
+    def display_label(self):
+        return DICT.get('distance_learning_values').get(self.code).get(self.display_language)
 
 
 class CourseFoundationYear:
