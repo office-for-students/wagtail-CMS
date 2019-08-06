@@ -504,6 +504,7 @@ class TariffStatistics:
         self.tariffs = []
         for tariff in tariff_data.get('tariffs'):
             self.tariffs.append(Tariff(tariff))
+        self.tariffs.reverse()
 
 
 class Tariff:
