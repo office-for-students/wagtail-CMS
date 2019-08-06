@@ -204,6 +204,9 @@ class Course:
         if enums.uni_link_keys.ASSESSMENT in links:
             link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.ASSESSMENT).get(language),
                                         links.get(enums.uni_link_keys.ASSESSMENT).get('english')))
+        if enums.uni_link_keys.COSTS in links:
+            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.COSTS).get(language),
+                                        links.get(enums.uni_link_keys.COSTS).get('english')))
         if enums.uni_link_keys.ACCOMMODATION in self.locations[0].links:
             link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.ACCOMMODATION).get(language),
                                         self.locations[0].links.get(enums.uni_link_keys.ACCOMMODATION).get('english')))

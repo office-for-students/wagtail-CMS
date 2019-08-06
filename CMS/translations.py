@@ -47,6 +47,10 @@ DICT = {
         'en': 'Have completed the course (started in the final year due to prior study)',
         'cy': ''
     },
+    'costs': {
+        'en': 'Course costs',
+        'cy': ''
+    },
     'course_finder': {
         'en': 'Course Finder',
         'cy': ''

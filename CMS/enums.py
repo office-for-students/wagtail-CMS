@@ -9,6 +9,7 @@ class UniLinkKeys:
     FINANCIAL_SUPPORT = 'financial_support_details'
     TEACHING_METHODS = 'learning_and_teaching_methods'
     ACCOMMODATION = 'accommodation'
+    COSTS = 'costs'
 
 
 class Enums:
