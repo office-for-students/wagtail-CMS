@@ -163,10 +163,6 @@ class Course:
             self.institution = InstitutionOverview(course_details.get('institution'))
             self.kis_course_id = course_details.get('kis_course_id')
             self.length = CourseLength(course_details.get('length_of_course'))
-            self.course_links = []
-            for name, link in course_details.get('links').items():
-                if type(link) != list:
-                    self.course_links.append(CourseLink(name, link))
             self.locations = []
             for location in course_details.get('locations'):
                 self.locations.append(CourseLocation(location, self.display_language))
@@ -195,6 +191,26 @@ class Course:
                 self.nhs_satisfaction_stats = SatisfactionStatistics(stats.get('nhs_nss')[0])
             self.tariff_stats = TariffStatistics(stats.get('tariff')[0])
             self.leo_stats = LEOStatistics(stats.get('leo')[0], self.display_language)
+            self.course_links = self.set_course_links(course_details.get('links'), self.display_language)
+
+    def set_course_links(self, links, language):
+        link_objs = []
+        if enums.uni_link_keys.COURSE in links:
+            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.COURSE).get(language),
+                                        links.get(enums.uni_link_keys.COURSE).get('english')))
+        if enums.uni_link_keys.TEACHING_METHODS in links:
+            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.TEACHING_METHODS).get(language),
+                                        links.get(enums.uni_link_keys.TEACHING_METHODS).get('english')))
+        if enums.uni_link_keys.ASSESSMENT in links:
+            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.ASSESSMENT).get(language),
+                                        links.get(enums.uni_link_keys.ASSESSMENT).get('english')))
+        if enums.uni_link_keys.ACCOMMODATION in self.locations[0].links:
+            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.ACCOMMODATION).get(language),
+                                        self.locations[0].links.get(enums.uni_link_keys.ACCOMMODATION).get('english')))
+        if enums.uni_link_keys.FINANCIAL_SUPPORT in links:
+            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.FINANCIAL_SUPPORT).get(language),
+                                        links.get(enums.uni_link_keys.FINANCIAL_SUPPORT).get('english')))
+        return link_objs
 
     @property
     def number_of_locations(self):
@@ -271,8 +287,8 @@ class CourseLength:
 class CourseLink:
 
     def __init__(self, name, link_obj):
-        self.label = name.replace('_', ' ').capitalize()
-        self.link = link_obj.get('english')
+        self.label = name
+        self.link = link_obj
 
 
 class CourseLocation:
@@ -285,6 +301,7 @@ class CourseLocation:
         if name:
             self.english_name = name.get('english')
             self.welsh_name = name.get('welsh')
+        self.links = data_obj.get('links')
 
     def display_name(self):
         return self.english_name if self.display_language == enums.languages.ENGLISH else self.welsh_name

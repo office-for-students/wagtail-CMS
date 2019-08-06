@@ -7,12 +7,20 @@ DICT = {
         'en': 'Completed Access course',
         'cy': ''
     },
+    'accommodation': {
+        'en': 'Accommodation costs',
+        'cy': ''
+    },
     'across_uk': {
         'en': 'across the UK',
         'cy': ''
     },
     'address': {
         'en': 'Address',
+        'cy': ''
+    },
+    'assessment_method': {
+        'en': 'How course is assessed',
         'cy': ''
     },
     'baccalaureate': {
@@ -49,6 +57,10 @@ DICT = {
     },
     'course_name': {
         'en': 'Course name',
+        'cy': ''
+    },
+    'course_page': {
+        'en': 'View details at uni website ',
         'cy': ''
     },
     'courses': {
@@ -89,6 +101,10 @@ DICT = {
         'en': 'Filter',
         'cy': ''
     },
+    'financial_support_details': {
+        'en': 'Financial support',
+        'cy': ''
+    },
     'find_out_more': {
         'en': 'Find out more',
         'cy': ''
@@ -107,6 +123,10 @@ DICT = {
     },
     'institution': {
         'en': 'Institution',
+        'cy': ''
+    },
+    'learning_and_teaching_methods': {
+        'en': 'How course is taught',
         'cy': ''
     },
     'left_lower_qualification': {
