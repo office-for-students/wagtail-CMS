@@ -1,0 +1,15 @@
+@import 'variables';
+@import 'fonts';
+
+@mixin green-cta-mixin() {
+    @include green-gradient-mixin();
+    @include xs-heading-mixin();
+
+    -webkit-box-sizing: border-box;
+    box-shadow: 6px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 80px;
+    padding: 12px 58px;
+
+    line-height: 24px;
+    color: #FFFFFF;
+}

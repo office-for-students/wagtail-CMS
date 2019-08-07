@@ -1,17 +1,19 @@
 $black: #000000;
 $white: #FFFFFF;
 $link-blue: #005EA5;
+$header-blue: #1F283A;
 $background-grey: #F2F2F2;
 $ux-grey-1: #F5F5F5;
 $ux-grey-2: #676D70;
+$ux-grey-3: #6E6E6E;
 $ux-interrupt: #FEF7BC;
 $slate: #425563;
 
-$default-font: Helvetica Neue;
+$default-font: Nunito Sans;
 $default-font-color: $black;
 
-$xl-heading-font-size: 80px;
-$xl-heading-line-height: 80px;
+$xl-heading-font-size: 70px;
+$xl-heading-line-height: 70px;
 $l-heading-font-size: 48px;
 $l-heading-line-height: 48px;
 $m-heading-font-size: 36px;
@@ -27,3 +29,8 @@ $mobile-body-font-size: 16px;
 $mobile-body-line-height: 16px;
 $small-font-size: 14px;
 $small-line-height: 14px;
+
+
+@mixin green-gradient-mixin() {
+    background: linear-gradient(145.9deg, #4EA27D 13.02%, #308282 85.42%);
+}
