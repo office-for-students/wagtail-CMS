@@ -2,9 +2,6 @@
 @import '../../../CMS/static/scss/variables';
 
 .content-landing-page {
-    background-image: url('/static/images/user-nav-background.png');
-    background-position: right bottom;
-
     &__link {
         a {
             @include green-gradient-mixin()
