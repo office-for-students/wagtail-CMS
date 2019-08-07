@@ -1,9 +1,8 @@
 {% extends "base.html" %}
-{% load static %}
-{% load wagtailcore_tags %}
+{% load static wagtailcore_tags sass_tags %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/content.css' %}">
+    <link href="{% sass_src 'scss/content.scss' %}" rel="stylesheet" type="text/css" >
 {% endblock extra_css %}
 
 {% block content %}
