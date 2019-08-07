@@ -111,6 +111,9 @@
 
                     margin-top: 18px;
                     padding: 11px 40px;
+                    &:hover {
+                        border: 2px solid #4EA27D;
+                    }
 
                     border-radius: 80px;
                     color: $white;
