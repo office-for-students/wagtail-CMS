@@ -14,6 +14,7 @@ class ContentLandingPage(DiscoverUniBasePage):
     ])
 
     content_panels = Page.content_panels + [
+        FieldPanel('intro'),
         StreamFieldPanel('options', classname="full")
     ]
 

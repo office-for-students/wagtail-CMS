@@ -1,0 +1,23 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.content-landing-page {
+    background-image: url('/static/images/user-nav-background.png');
+    background-position: right bottom;
+
+    &__link {
+        a {
+            @include green-gradient-mixin()
+            @include mobile-body-font--bold-mixin();
+
+            display: block;
+            padding: 17px 23px 16px;
+            margin-top: 20px;
+
+            text-decoration: none;
+            color: $white;
+            border-radius: 80px;
+            line-height: 22px;
+        }
+    }
+}
