@@ -185,7 +185,7 @@ class Course:
             self.continuation_stats = ContinuationStatistics(stats.get('continuation')[0])
             self.employment_stats = EmploymentStatistics(stats.get('employment')[0])
             self.job_type_stats = JobTypeStatistics(stats.get('job_type')[0])
-            self.salary_stats = SalaryStatistics(stats.get('salary')[0], self.display_language)
+            self.salary_stats = SalaryStatistics(stats.get('salary')[0], self.display_language, title)
             self.satisfaction_stats = SatisfactionStatistics(stats.get('nss')[0])
             if stats.get('nhs_nss')[0]:
                 self.nhs_satisfaction_stats = SatisfactionStatistics(stats.get('nhs_nss')[0])
@@ -426,7 +426,7 @@ class JobTypeStatistics:
 
 class SalaryStatistics:
 
-    def __init__(self, data_obj, language):
+    def __init__(self, data_obj, language, course_title):
         self.display_language = language
         self.aggregation_level = data_obj.get('aggregation_level')
         self.higher_quartile = data_obj.get('higher_quartile')
@@ -442,6 +442,12 @@ class SalaryStatistics:
             self.subject_code = subject.get('code')
             self.subject_english_label = subject.get("english_label")
             self.subject_welsh_label = subject.get("welsh_label")
+        elif course_title:
+            self.subject_english_label = subject.get("english")
+            self.subject_welsh_label = subject.get("welsh")
+        else:
+            self.subject_english_label = ''
+            self.subject_welsh_label = ''
         unavailable_data = data_obj.get('unavailable')
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
