@@ -25,3 +25,25 @@
         }
     }
 }
+
+@media only screen and (min-width: 770px) {
+    .content-page {
+        padding: 75px 0px 132px;
+
+        &__header {
+            @include l-heading--bold-mixin();
+
+            margin: 0;
+
+            line-height: 65px;
+            color: $ux-grey-3;
+        }
+
+        &__intro {
+            @include desktop-body-font-mixin();
+
+            margin-bottom: 30px;
+            line-height: 26px;
+        }
+    }
+}
