@@ -9,6 +9,9 @@ $ux-grey-3: #6E6E6E;
 $ux-interrupt: #FEF7BC;
 $slate: #425563;
 
+$gradient-light-green: #4EA27D;
+$gradient-dark-green: #308282;
+
 $default-font: Nunito Sans;
 $default-font-color: $black;
 
@@ -32,13 +35,13 @@ $small-line-height: 14px;
 
 
 @mixin green-gradient-mixin() {
-    background: linear-gradient(145.9deg, #4EA27D 13.02%, #308282 85.42%);
+    background: linear-gradient(145.9deg, $gradient-light-green 13.02%, $gradient-dark-green 85.42%);
     color: $white;
+    border: 2px solid $gradient-light-green;
 
     &:hover {
         background: $white;
-        color: #4EA27D;
-        border: 2px solid #4EA27D;
+        color: $gradient-light-green;
     }
 }
 
