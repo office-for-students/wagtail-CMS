@@ -9,13 +9,13 @@
 {% endblock extra_css %}
 
 {% block content %}
-    <div class="user-nav-page">
+    <div class="user-nav-page cols-{% length_of_list page.nav_panels %}">
         <div class="discover-uni-container">
             <h1 class="header">
                 {{ page.header }}
             </h1>
 
-            <div class="nav-cards {% length_of_list page.nav_panels %}-cols">
+            <div class="nav-cards cols-{% length_of_list page.nav_panels %}">
                 {% for card in page.nav_panels %}
                     <a href='{{ card.value.link.url }}' class="nav-card">
                         <img class="nav-card__icon" src="{% static 'images/'|add:card.value.icon|add:'_icon.svg' %}" alt="">
