@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load staticfiles wagtailcore_tags discover_uni_tags sass_tags %}
+
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+    <link href="{% sass_src 'scss/user-nav.scss' %}" rel="stylesheet" type="text/css" >
+{% endblock extra_css %}
+
+{% block content %}
+    <div class="user-nav-page">
+        <div class="discover-uni-container">
+            <h1 class="header">
+                {{ page.header }}
+            </h1>
+
+            <div class="nav-cards">
+                {% for card in page.nav_panels %}
+                    <a href='{{ card.value.link.url }}' class="nav-card">
+                            <img class="nav-card__icon" src="{% static 'images/'|add:card.value.icon|add:'_icon.svg' %}" alt="">
+
+                            <span class="nav-card__label">
+                                {{ card.value.label | richtext }}
+                            </span>
+
+                            {% if card.value.button_text %}
+                                <button class="nav-card__button">
+                                    {{ card.value.button_text }}
+                                </button>
+                            {% endif %}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

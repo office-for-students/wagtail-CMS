@@ -1,0 +1,94 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.user-nav-page {
+    padding: 60px 45px 85px;
+    text-align: center;
+
+    background-image: url('/static/images/user-nav-background.png');
+    background-size: cover;
+    background-position: right bottom;
+
+    .header {
+        @include m-heading-mixin();
+
+        margin-bottom: 40px;
+
+        line-height: 45px;
+        color: $ux-grey-3;
+    }
+
+    .nav-cards {
+        display: flex;
+        flex-wrap: wrap;
+
+        .nav-card {
+            @include default-box-shadowing()
+
+            margin-bottom: 30px;
+            padding: 35px 19px;
+
+            background: $white;
+            border-radius: 34.8653px;
+            text-decoration: none;
+
+            &:last-child {
+                margin-bottom: 0px;
+            }
+
+            &__icon {
+                height: 95px;
+                margin-bottom: 29px;
+            }
+
+            &__label {
+                p {
+                    @include small-font-mixin();
+
+                    margin: 0px;
+
+                    color: $ux-grey-3;
+                    line-height: 19px;
+                 }
+            }
+
+            &__button {
+                @include green-gradient-mixin();
+                @include small-font--bold-mixin();
+
+                margin-top: 10px;
+                padding: 8px 60px;
+
+                border-radius: 61.5609px;
+                color: $white;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .user-nav-page {
+        padding: 92px 0px 108px;
+        text-align: center;
+
+        .header {
+            @include m-heading-mixin();
+
+            margin-bottom: 71px;
+
+            line-height: 45px;
+            color: $ux-grey-3;
+        }
+
+        .nav-cards {
+            display: flex;
+
+            .nav-card {
+                @include default-box-shadowing()
+
+                background: $white;
+                border-radius: 34.8653px;
+            }
+        }
+    }
+}
