@@ -17,6 +17,7 @@ NAV_ICON_OPTIONS = (
 
 
 class NavPanel(blocks.StructBlock):
+    link = blocks.PageChooserBlock()
     icon = blocks.ChoiceBlock(choices=NAV_ICON_OPTIONS,
                               default='standard',
                               label="Variant",
