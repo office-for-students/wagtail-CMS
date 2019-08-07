@@ -1,6 +1,6 @@
 from django.db.models.fields import TextField
 from wagtail.core.models import Page
-from wagtail.core.fields import StreamField
+from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
@@ -8,6 +8,7 @@ from core.models import DiscoverUniBasePage
 
 
 class ContentLandingPage(DiscoverUniBasePage):
+    intro = RichTextField(blank=True)
     options = StreamField([
         ('sections', blocks.PageChooserBlock())
     ])
