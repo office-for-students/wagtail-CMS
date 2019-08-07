@@ -12,6 +12,7 @@
     .header {
         @include m-heading-mixin();
 
+        margin-top: 0px;
         margin-bottom: 40px;
 
         line-height: 45px;
@@ -23,7 +24,7 @@
         flex-wrap: wrap;
 
         .nav-card {
-            @include default-box-shadowing()
+            @include default-box-shadowing();
 
             margin-bottom: 30px;
             padding: 35px 19px;
@@ -69,25 +70,51 @@
 @media only screen and (min-width: 770px) {
     .user-nav-page {
         padding: 92px 0px 108px;
-        text-align: center;
 
         .header {
-            @include m-heading-mixin();
+            @include l-heading-mixin();
 
             margin-bottom: 71px;
 
-            line-height: 45px;
+            line-height: 74px;
             color: $ux-grey-3;
         }
 
         .nav-cards {
-            display: flex;
+            flex-wrap: nowrap;
 
             .nav-card {
-                @include default-box-shadowing()
+                padding: 50px 32px 39px;
+                margin-bottom: 0px;
 
-                background: $white;
-                border-radius: 34.8653px;
+                &.2-cols {
+                    margin-left: 40px;
+                    margin-right: 40px;
+                }
+
+                &__icon {
+                    height: 124px;
+                    margin-bottom: 32px;
+                }
+
+                &__label {
+                    p {
+                        @include mobile-body-font-mixin();
+
+                        color: $ux-grey-3;
+                        line-height: 22px;
+                     }
+                }
+
+                &__button {
+                    @include xs-heading--bold-mixin();
+
+                    margin-top: 18px;
+                    padding: 11px 40px;
+
+                    border-radius: 80px;
+                    color: $white;
+                }
             }
         }
     }

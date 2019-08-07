@@ -39,3 +39,8 @@ def create_list(*args):
 def insert_values_to_rich_text(*_, **kwargs):
     list(kwargs.get('substitutions'))
     return kwargs.get('content').source % (kwargs.get('substitutions'))
+
+
+@register.simple_tag
+def length_of_list(view_list):
+    return len(view_list)
