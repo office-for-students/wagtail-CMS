@@ -4,7 +4,7 @@
 
 .home {
     padding: 69px 0px 62px;
-    background-image: url('/static/images/background.png');
+    background-image: url('/static/images/home-background.png');
     background-size: cover;
     background-position: center bottom;
 
@@ -58,8 +58,6 @@
 @media only screen and (min-width: 770px) {
     .home {
         padding: 139px 0px 243px;
-        background-image: url('/static/images/background.png');
-        background-size: cover;
         background-position: initial;
 
         .discover-uni-container {
@@ -78,19 +76,13 @@
         .intro-text {
             p {
                 @include s-heading-mixin();
+
                 line-height: 37px;
-                margin-top: 0px;
-                margin-bottom: 14px;
             }
 
             ul {
-                padding-left: 25px;
-
                 li {
                     @include xs-heading-mixin();
-
-                    list-style-image: url('/static/images/bullet-check.svg');
-                    padding-left: 5px;
 
                     line-height: 29px;
                 }
@@ -99,12 +91,6 @@
 
         .link {
             margin-top: 40px;
-
-            a {
-                @include green-cta-mixin();
-
-                text-decoration: none;
-            }
         }
     }
 }
