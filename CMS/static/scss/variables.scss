@@ -33,4 +33,15 @@ $small-line-height: 14px;
 
 @mixin green-gradient-mixin() {
     background: linear-gradient(145.9deg, #4EA27D 13.02%, #308282 85.42%);
+    color: $white;
+
+    &:hover {
+        background: $white;
+        color: #4EA27D;
+        border: 2px solid #4EA27D;
+    }
+}
+
+@mixin default-box-shadowing() {
+    box-shadow: 6px 5px 30px rgba(0, 0, 0, 0.08);
 }

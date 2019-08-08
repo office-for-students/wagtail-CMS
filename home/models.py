@@ -7,6 +7,25 @@ from django.db.models.fields import TextField
 from core.models import DiscoverUniBasePage
 
 
+NAV_ICON_OPTIONS = (
+    ('magnify_glass', 'Magnify glass'),
+    ('info', "Info 'i'"),
+    ('institution', 'Institution'),
+    ('payment', 'Payment'),
+    ('clipboard', 'Clipboard'),
+)
+
+
+class NavPanel(blocks.StructBlock):
+    link = blocks.PageChooserBlock()
+    icon = blocks.ChoiceBlock(choices=NAV_ICON_OPTIONS,
+                              default='standard',
+                              label="Variant",
+                              classname='dct-meta-field')
+    label = blocks.RichTextBlock()
+    button_text = blocks.CharBlock(required=False)
+
+
 class HomePage(DiscoverUniBasePage):
 
     header = TextField(blank=True)
@@ -22,4 +41,17 @@ class HomePage(DiscoverUniBasePage):
         FieldPanel('header', classname="full"),
         FieldPanel('intro', classname="full"),
         StreamFieldPanel('page_links', classname="full"),
+    ]
+
+
+class UserNavPage(DiscoverUniBasePage):
+
+    header = TextField()
+    nav_panels = StreamField([
+        ('nav_panel', NavPanel(required=True, icon='link')),
+    ])
+
+    content_panels = Page.content_panels + [
+        FieldPanel('header', classname="full"),
+        StreamFieldPanel('nav_panels', classname="full"),
     ]

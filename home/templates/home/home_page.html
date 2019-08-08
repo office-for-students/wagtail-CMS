@@ -19,14 +19,13 @@
                 {{ page.intro  | richtext }}
             </div>
 
-            <div class="link">
-                {% for block in page.page_links %}
+            {% for block in page.page_links %}
+                <div class="link">
                     <a href='{{ block.value.page.url }}'>
                         {{ block.value.title }}
-
                     </a>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock content %}
