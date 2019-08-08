@@ -12,11 +12,12 @@
                 {{ page.title }}
             </h1>
 
-            {% if page.intro %}
-                <div class="content-page__intro">
+
+            <div class="content-page__intro">
+                {% if page.intro %}
                     {{ page.intro | richtext }}
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
 
             <div class="content-landing-page__links">
                 {% for link in page.options %}

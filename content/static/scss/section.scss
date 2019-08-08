@@ -2,10 +2,6 @@
 @import '../../../CMS/static/scss/variables';
 
 .section-page {
-    &__accordions {
-
-    }
-
     &__accordion {
         margin-bottom: 10px;
 
@@ -14,6 +10,7 @@
             padding: 30px  22px 30px 25px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
 
             .minus {
                 display: none;
@@ -59,53 +56,37 @@
     }
 }
 
-@media only screen and (max-width: 769px) {
-    .subsection {
-        -ms-grid-rows: 75px;
-        grid-template-rows: 75px;
+@media only screen and (min-width: 770px) {
+    .section-page {
+        &__accordion {
+            margin-bottom: 7px;
 
-        h4 {
-            font-size: 16px;
-            line-height: 20px;
-            padding-top: 27.5px;
-            padding-bottom: 27.5px;
-        }
-
-        .down-arrow {
-            height: 75px;
-            width: 75px;
-
-            svg {
-                width: 23.6px;
-                height: 13.04px;
+            &-header {
+                padding: 30px  30px 30px 32px;
             }
-        }
-    }
 
-    .subsection-content {
-        padding: 30px;
-    }
+            &-title {
+                @include xs-heading--bold-mixin();
 
-    .related-links {
-        margin-top: 45px;
-    }
+                color: $ux-grey-3;
+                line-height: 29px;
+            }
 
-    .related-links, .lateral-links {
-        padding-bottom: 45px;
+            &-body {
+                &-content {
+                    @include xs-heading-mixin();
 
-        .link {
-            height: 105px;
-        }
+                    width: 66%;
 
-        h2 {
-            padding-top: 45px;
-            font-size: 24px;
-            line-height: 29px;
-        }
+                    padding: 60px 80px 70px;
 
-        h3 a {
-            font-size: 19px;
-            line-height: 110%;
+                    p {
+                        margin-top: 0px;
+
+                        line-height: 29px;
+                    }
+                }
+            }
         }
     }
 }
