@@ -105,24 +105,6 @@ class CourseFinderNarrowSearch(DiscoverUniBasePage):
         return choose_subject_sibling_finder(self)
 
 
-class CourseFinderTownCity(DiscoverUniBasePage):
-    page_order = 5
-    use_skip_form = True
-    question = TextField(blank=True)
-
-    content_panels = Page.content_panels + [
-        FieldPanel('question', classname="full")
-    ]
-
-    @property
-    def next_page(self):
-        return summary_sibling_finder(self)
-
-    @property
-    def back_page(self):
-        return narrow_search_sibling_finder(self)
-
-
 class CourseFinderUni(DiscoverUniBasePage):
     page_order = 6
     use_skip_form = True

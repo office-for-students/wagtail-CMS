@@ -2,7 +2,7 @@ from wagtail.core.models import Site
 
 from coursefinder.models import CourseFinderResults, CourseFinderLandingPage, CourseFinderChooseCountry, \
     CourseFinderModeOfStudy, CourseFinderChooseSubject, CourseFinderNarrowSearch, CourseFinderPostcode, \
-    CourseFinderSummary, CourseFinderTownCity, CourseFinderUni
+    CourseFinderSummary, CourseFinderUni
 from home.models import HomePage
 
 
@@ -86,19 +86,6 @@ class PageFactory:
         narrow_search_page.save()
 
         return narrow_search_page
-
-    @classmethod
-    def create_town_city_page(cls, title='Test page', path="11111111", depth=1, parent_page=None):
-        if not parent_page:
-            parent_page = cls.create_course_finder_landing_page('Course Finder')
-        town_city_page = CourseFinderTownCity(title=title, path=path, depth=depth)
-
-        parent_page.add_child(instance=town_city_page)
-
-        town_city_page.save_revision().publish()
-        town_city_page.save()
-
-        return town_city_page
 
     @classmethod
     def create_uni_page(cls, title='Test page', path="11111111", depth=1, parent_page=None):
