@@ -22,7 +22,7 @@
                 that.mobileCloseButton.show();
             });
 
-           this.mobileCloseButton.click(function() {
+            this.mobileCloseButton.click(function() {
                 that.mobileMenuBody.hide();
                 that.mobileCloseButton.hide();
                 that.mobileBurgerButton.show();

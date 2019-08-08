@@ -51,6 +51,49 @@
         font-size: 28px;
         display: none;
     }
+
+    &__mobile {
+        &-links {
+            display: none;
+            min-height: 402px;
+            position: absolute;
+            z-index: 100;
+            width: 100%;
+            background-color: inherit;
+        }
+
+        &-accordion {
+            border-bottom: 1px solid $white;
+
+            &:first-child {
+                border-top: 1px solid $white;
+            }
+
+            &-header {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                padding: 27px 24px 30px;
+
+                &:click {
+                    @include green-gradient-background-mixin();
+                }
+
+                .collapse {
+                    display: none;
+                }
+            }
+
+            &-title {
+                @include desktop-body-font--bold-mixin();
+
+                margin: 0;
+                margin-right: 9px;
+
+                color: $white;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 769px) {
