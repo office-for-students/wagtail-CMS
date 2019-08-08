@@ -253,6 +253,10 @@ DICT = {
         'en': 'View similar courses at <strong>this</strong> uni',
         'cy': ''
     },
+    'site_logo': {
+        'en': '<strong>Discover</strong> Uni',
+        'cy': ''
+    },
     'skip': {
         'en': 'Skip',
         'cy': ''
