@@ -443,8 +443,8 @@ class SalaryStatistics:
             self.subject_english_label = subject.get("english_label")
             self.subject_welsh_label = subject.get("welsh_label")
         elif course_title:
-            self.subject_english_label = subject.get("english")
-            self.subject_welsh_label = subject.get("welsh")
+            self.subject_english_label = course_title.get("english")
+            self.subject_welsh_label = course_title.get("welsh")
         else:
             self.subject_english_label = ''
             self.subject_welsh_label = ''
