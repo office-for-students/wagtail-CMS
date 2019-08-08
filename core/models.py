@@ -6,6 +6,8 @@ from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.snippets.models import register_snippet
 
+from CMS.enums import enums
+from core.utils import parse_menu_item
 
 
 class DiscoverUniBasePage(Page):
@@ -14,6 +16,18 @@ class DiscoverUniBasePage(Page):
         if '/cy/' in self.get_full_url():
             return 'cy'
         return 'en'
+
+    @property
+    def menu(self):
+        menu_name = enums.languages_map.get(self.get_language()).capitalize()
+        menu_data = Menu.objects.filter(name=menu_name).first()
+        if not menu_data:
+            menu_name = enums.languages_map.get(enums.languages.ENGLISH).capitalize()
+            menu_data = Menu.objects.filter(name=menu_name).first()
+        menu = []
+        for item in menu_data.menu_items:
+            menu.append(parse_menu_item(item))
+        return menu
 
     class Meta:
         abstract = True

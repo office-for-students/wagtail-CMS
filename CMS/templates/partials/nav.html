@@ -13,37 +13,34 @@
         </a>
 
         <div class="discover-uni-nav__desktop-links">
-            <div class="discover-uni-nav__desktop-dropdown">
-                <p class="discover-uni-nav__desktop-dropdown-toggle">
-                    {% get_translation key='info_advice' language=page.get_language %}
+            {% for item in page.menu %}
+                {% if item.sub_items %}
+                    <div class="discover-uni-nav__desktop-dropdown">
+                        <p class="discover-uni-nav__desktop-dropdown-toggle">
+                            {{ item.label }}
 
-                    <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
-                </p>
+                            <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
+                        </p>
 
-                <div class="discover-uni-nav__desktop-dropdown-body">
-                    <a class="discover-uni-nav__desktop-dropdown-link" href="#">
-                        For teachers and advisers
+                        <div class="discover-uni-nav__desktop-dropdown-body">
+                            {% for sub_item in item.sub_items %}
+                                <a class="discover-uni-nav__desktop-dropdown-link" href="{{ sub_item.url }}">
+                                    {{ sub_item.label }}
+                                </a>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                {% else %}
+                    <a class="discover-uni-nav__desktop-link" href="{{ item.url }}">
+                        {{ item.label }}
+
+                        {% if item.label == 'Course search' %}
+                            <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
+                        {% endif %}
                     </a>
-                </div>
-            </div>
-
-            <div class="discover-uni-nav__desktop-dropdown">
-                <p class="discover-uni-nav__desktop-dropdown-toggle">
-                    {% get_translation key='about' language=page.get_language %}
-
-                    <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
-                </p>
-
-                <div class="discover-uni-nav__desktop-dropdown-body">
-                    <a class="discover-uni-nav__desktop-dropdown-link" href="#">
-                        {% get_translation key='about' language=page.get_language %}
-                    </a>
-                </div>
-            </div>
-
-            <a class="discover-uni-nav__desktop-link" href="#">
-                {% get_translation key='course_search' language=page.get_language %}<img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
-            </a>
+                {% endif %}
+            {% endfor %}
         </div>
 
         <i id="burger-menu" class="discover-uni-nav__burger-menu fas fa-bars"></i>
@@ -51,52 +48,40 @@
     </div>
 
     <div class="discover-uni-nav__mobile-links">
-        <div class="discover-uni-nav__mobile-accordion">
-            <div class="discover-uni-nav__mobile-accordion-header">
-                <p class="discover-uni-nav__mobile-accordion-title">{% get_translation key='info_advice' language=page.get_language %}</p>
+        {% for item in page.menu %}
+            {% if item.sub_items %}
+                <div class="discover-uni-nav__mobile-accordion">
+                    <div class="discover-uni-nav__mobile-accordion-header">
+                        <p class="discover-uni-nav__mobile-accordion-title">
+                            {{ item.label }}
+                        </p>
 
-                <div class="expand">
-                    <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
+                        <div class="expand">
+                            <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
+                        </div>
+
+                        <div class="collapse">
+                            <img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}" alt="collapse">
+                        </div>
+                    </div>
+
+                    <div class="discover-uni-nav__mobile-accordion-body">
+                        {% for sub_item in item.sub_items %}
+                            <a class="discover-uni-nav__mobile-accordion-body-link" href="{{ sub_item.url }}">
+                                {{ sub_item.label }}
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
+            {% else %}
+                <a class="discover-uni-nav__mobile-link" href="{{ item.url }}">
+                    {{ item.label }}
 
-                <div class="collapse">
-                    <img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}" alt="collapse">
-                </div>
-            </div>
-
-            <div class="discover-uni-nav__mobile-accordion-body">
-                <a class="discover-uni-nav__mobile-accordion-body-link" href="#">
-                    Nav option
+                    {% if item.label == 'Course search' %}
+                        <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
+                    {% endif %}
                 </a>
-
-                <a class="discover-uni-nav__mobile-accordion-body-link" href="#">
-                    Nav option
-                </a>
-            </div>
-        </div>
-
-        <div class="discover-uni-nav__mobile-accordion">
-            <div class="discover-uni-nav__mobile-accordion-header">
-                <p class="discover-uni-nav__mobile-accordion-title">{% get_translation key='about' language=page.get_language %}</p>
-
-                <div class="expand">
-                    <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
-                </div>
-
-                <div class="collapse">
-                    <img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}" alt="collapse">
-                </div>
-            </div>
-
-            <div class="discover-uni-nav__mobile-accordion-body">
-                <a class="discover-uni-nav__mobile-accordion-body-link" href="#">
-                    Nav option
-                </a>
-            </div>
-        </div>
-
-        <a class="discover-uni-nav__mobile-link" href="#">
-            {% get_translation key='course_search' language=page.get_language %}<img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
-        </a>
+            {% endif %}
+        {% endfor %}
     </div>
 </nav>
