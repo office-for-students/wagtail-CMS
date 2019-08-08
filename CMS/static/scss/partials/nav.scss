@@ -1,80 +1,56 @@
 @import '../variables';
+@import '../fonts';
 
-.discover-uni-main-nav {
+
+.discover-uni-nav {
     width: 100%;
+
+    &__container {
+        padding: 22px 20px 22px 18px;
+        display: flex;
+        justify-content: space-between;
+    }
+
     background-color: $header-blue;
-    color: #fff;
-}
+    color: $white;
 
-.desktop-nav {
-    display: inline-block;
-    -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
-    align-self: center;
-    text-align: right;
-    padding-right: 30px;
+    &__home-link {
+        text-decoration: none;
+        align-self: center;
 
-    li {
-        display: inline;
-        font-size: 19px;
-        line-height: 23px;
-        padding-left: 31px;
+        background: none;
+        border: none;
     }
-}
 
-.mobile-nav {
-    display: none;
-    -ms-grid-column-span: 2;
-    grid-column: span 2;
-    list-style: none;
-    text-align: center;
-    padding: 0;
-    -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
-    align-self: center;
-
-    li {
-      padding-bottom: 15px;
-      font-size: 18px;
-    }
-}
-
-.brand {
-    text-decoration: none;
-    -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
-    align-self: center;
-
-    color: #fff;
-    background: none;
-    border: none;
-
-    h1 {
-        font-size: 30px;
-        font-weight: lighter;
+    &__brand {
         margin: 0;
 
-        color: #fff;
+        font-family: Montserrat;
+        font-size: 19px;
+        font-weight: normal;
+        line-height: 24px;
+        letter-spacing: 0.04em;
+        color: $white;
+
+        &-icon {
+            height: 1em;
+            margin-left: 10px;
+        }
     }
-}
 
-.burger-menu {
-    -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
-    align-self: center;
-    text-align: right;
-    padding-right: 12px;
-    font-size: 28px;
-}
+    &__burger-menu {
+        text-align: right;
+        padding-right: 12px;
+        font-size: 28px;
+    }
 
-.close-menu {
-    -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
-    align-self: center;
-    text-align: right;
-    padding-right: 15px;
-    font-size: 28px;
-    display: none;
+    &__close-menu {
+        align-self: center;
+        text-align: right;
+        padding-right: 15px;
+        font-size: 28px;
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 769px) {

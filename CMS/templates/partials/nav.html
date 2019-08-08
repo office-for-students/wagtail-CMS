@@ -1,0 +1,17 @@
+{% load staticfiles discover_uni_tags %}
+
+<nav class="discover-uni-nav">
+    <div class="discover-uni-nav__container">
+        <a class="discover-uni-nav__home-link" href="/">
+            <h1 class="discover-uni-nav__brand">
+                {% autoescape off %}
+                    {% get_translation key='site_logo' language=page.get_language %}
+                {% endautoescape %}
+
+                <img class="discover-uni-nav__brand-icon" src="{% static 'images/brand_logo.svg' %}" alt="">
+            </h1>
+        </a>
+        <i id="burger-menu" class="discover-uni-nav__burger-menu fas fa-bars"></i>
+        <i id="close-menu" class="discover-uni-nav__close-menu fas fa-times"></i>
+    </div>
+</nav>
