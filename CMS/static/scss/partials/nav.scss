@@ -18,14 +18,14 @@
 .discover-uni-nav {
     width: 100%;
 
+    background-color: $header-blue;
+    color: $white;
+
     &__container {
         padding: 22px 20px 22px 18px;
         display: flex;
         justify-content: space-between;
     }
-
-    background-color: $header-blue;
-    color: $white;
 
     &__home-link {
         text-decoration: none;
@@ -133,33 +133,49 @@
             }
         }
     }
+
+    &__desktop-links {
+        display: none;
+    }
+
+    &__link-icon {
+        height: 13px;
+    }
 }
 
 @media only screen and (min-width: 770px) {
+    .discover-uni-nav {
+        &__container {
+            padding: 18px 0px 22px;
+        }
 
-    .discover-uni-nav-container {
-        max-width: 1020px;
-        margin-right: auto;
-        margin-left: auto;
-        height: 90px;
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
+        &__burger-menu {
+            display: none;
+        }
+
+        &__brand {
+            font-size: 25px;
+            line-height: 30px;
+        }
+
+        &__desktop {
+            &-links {
+                display: flex;
+                align-items: center;
+            }
+
+            &-link {
+                @include mobile-body-font-mixin();
+
+                margin-left: 30px;
+
+                color: $white;
+                text-decoration: none;
+
+                img {
+                    margin-left: 6px;
+                }
+            }
+        }
     }
-
-    .mobile-nav {
-        display: none
-    }
-
-    .burger-menu {
-        display: none;
-    }
-}
-
-.footer {
-    height: 220px;
-
-    background-color: $ux-grey-1;
-    color: $black;
 }
