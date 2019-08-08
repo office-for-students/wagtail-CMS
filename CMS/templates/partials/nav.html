@@ -13,17 +13,33 @@
         </a>
 
         <div class="discover-uni-nav__desktop-links">
-            <a class="discover-uni-nav__desktop-link" href="#">
-                {% get_translation key='info_advice' language=page.get_language %}
+            <div class="discover-uni-nav__desktop-dropdown">
+                <p class="discover-uni-nav__desktop-dropdown-toggle">
+                    {% get_translation key='info_advice' language=page.get_language %}
 
-                <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
-            </a>
+                    <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
+                </p>
 
-            <a class="discover-uni-nav__desktop-link" href="#">
-                {% get_translation key='about' language=page.get_language %}
+                <div class="discover-uni-nav__desktop-dropdown-body">
+                    <a class="discover-uni-nav__desktop-dropdown-link" href="#">
+                        For teachers and advisers
+                    </a>
+                </div>
+            </div>
 
-                <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
-            </a>
+            <div class="discover-uni-nav__desktop-dropdown">
+                <p class="discover-uni-nav__desktop-dropdown-toggle">
+                    {% get_translation key='about' language=page.get_language %}
+
+                    <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
+                </p>
+
+                <div class="discover-uni-nav__desktop-dropdown-body">
+                    <a class="discover-uni-nav__desktop-dropdown-link" href="#">
+                        {% get_translation key='about' language=page.get_language %}
+                    </a>
+                </div>
+            </div>
 
             <a class="discover-uni-nav__desktop-link" href="#">
                 {% get_translation key='course_search' language=page.get_language %}<img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
