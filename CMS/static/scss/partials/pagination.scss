@@ -1,0 +1,37 @@
+.pagination {
+    background-color: transparent;
+    display: initial;
+    margin-top: 44px;
+
+    &__item-list {
+        padding: 0;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        list-style: none;
+    }
+
+    &__item {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 45px;
+        width: 45px;
+        border: 1px solid #5F607C;
+        box-sizing: border-box;
+
+        &--active {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 45px;
+            width: 45px;
+            background-color: #5F607C;
+        }
+
+        &-link {
+            color: #71A4D3;
+            text-decoration: none;
+        }
+    }
+}
