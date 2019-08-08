@@ -9,8 +9,8 @@
         setup: function() {
             this.header = this.wrapper.find('[class$=accordion-header]');
             this.body  = this.wrapper.find('[class$=accordion-body]');
-            this.plusIcon = this.wrapper.find('.plus');
-            this.minusIcon = this.wrapper.find('.minus');
+            this.expandIcon = this.wrapper.find('.expand');
+            this.collapseIcon = this.wrapper.find('.collapse');
 
             this.setInitialView()
             this.startWatchers();
@@ -18,7 +18,7 @@
 
         setInitialView: function() {
             this.body.hide();
-            this.plusIcon.show();
+            this.expandIcon.show();
         },
 
         startWatchers: function() {
@@ -35,14 +35,14 @@
         handleAccordionToggle: function() {
             if (this.header.hasClass('open')) {
                 this.body.hide();
-                this.plusIcon.show();
-                this.minusIcon.hide();
+                this.expandIcon.show();
+                this.collapseIcon.hide();
                 this.header.removeClass('open');
             }
             else {
                 this.body.show();
-                this.plusIcon.hide();
-                this.minusIcon.show();
+                this.expandIcon.hide();
+                this.collapseIcon.show();
                 this.header.addClass('open');
             }
         }
