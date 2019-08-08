@@ -443,8 +443,8 @@ class SalaryStatistics:
             self.subject_english_label = subject.get("english_label")
             self.subject_welsh_label = subject.get("welsh_label")
         elif course_title:
-            self.subject_english_label = subject.get("english")
-            self.subject_welsh_label = subject.get("welsh")
+            self.subject_english_label = course_title.get("english")
+            self.subject_welsh_label = course_title.get("welsh")
         else:
             self.subject_english_label = ''
             self.subject_welsh_label = ''
@@ -579,8 +579,7 @@ class CourseAccreditation:
             self.text_english = text.get('english')
             self.text_welsh = text.get('welsh')
         url = data_obj.get('url')
-        if url:
-            self.url_english = url.get('english')
+        self.url_english = url.get('english') if url else None
         dependent = data_obj.get('dependent_on')
         if dependent:
             self.dependent_on_code = dependent.get('code')
@@ -590,4 +589,4 @@ class CourseAccreditation:
         return self.text_english if self.display_language == enums.languages.ENGLISH else self.text_welsh
 
     def language_url(self):
-        return self.url_english
+        return self.url_english if self.url_english else self.accreditor_url
