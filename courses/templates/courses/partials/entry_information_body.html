@@ -80,27 +80,29 @@
 
     {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.entry_stats.unavailable_reason %}
 
-    <div class="entry-information__block">
-        <h2 class="entry-information__heading">{{block.value.tariffs_heading}}</h2>
+    {% if course_details.tariff_stats.tariffs %}
+        <div class="entry-information__block">
+            <h2 class="entry-information__heading">{{block.value.tariffs_heading}}</h2>
 
-        <p class="entry-information__lead">
-            {{block.value.tariffs_intro}}
-        </p>
+            <p class="entry-information__lead">
+                {{block.value.tariffs_intro}}
+            </p>
 
-        <div class="entry-information__tariff-charts">
-            {% for tariff in course_details.tariff_stats.tariffs %}
-                <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}">
-                    <label class="entry-information__chart-label"><span>{{tariff.label}}</span></label>
+            <div class="entry-information__tariff-charts">
+                {% for tariff in course_details.tariff_stats.tariffs %}
+                    <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}">
+                        <label class="entry-information__chart-label"><span>{{tariff.label}}</span></label>
 
-                    {% include 'courses/partials/bar_chart.html' %}
+                        {% include 'courses/partials/bar_chart.html' %}
+                    </div>
+                {% endfor %}
+
+                <div class="explanation-text">
+                    {% create_list course_details.entry_stats.number_of_students as substitutions %}
+                    {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
+                    {{ subbed_text | richtext }}
                 </div>
-            {% endfor %}
-
-            <div class="explanation-text">
-                {% create_list course_details.entry_stats.number_of_students as substitutions %}
-                {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
-                {{ subbed_text | richtext }}
             </div>
         </div>
-    </div>
+    {% endif %}
 </div>

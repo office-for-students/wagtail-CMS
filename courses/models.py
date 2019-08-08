@@ -164,8 +164,9 @@ class Course:
             self.kis_course_id = course_details.get('kis_course_id')
             self.length = CourseLength(course_details.get('length_of_course'))
             self.locations = []
-            for location in course_details.get('locations'):
-                self.locations.append(CourseLocation(location, self.display_language))
+            if course_details.get('locations'):
+                for location in course_details.get('locations'):
+                    self.locations.append(CourseLocation(location, self.display_language))
             self.mode = CourseMode(course_details.get('mode'))
             self.qualification = CourseQualification(course_details.get('qualification'))
             self.sandwich_year = CourseSandwichYear(course_details.get('sandwich_year'))
@@ -535,8 +536,9 @@ class TariffStatistics:
         self.aggregation = tariff_data.get('aggregation')
         self.number_of_students = tariff_data.get('number_of_students')
         self.tariffs = []
-        for tariff in tariff_data.get('tariffs'):
-            self.tariffs.append(Tariff(tariff))
+        if tariff_data.get('tariffs'):
+            for tariff in tariff_data.get('tariffs'):
+                self.tariffs.append(Tariff(tariff))
         self.tariffs.reverse()
 
 
