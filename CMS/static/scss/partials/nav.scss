@@ -120,7 +120,9 @@
     }
 }
 
-footer {
+.footer {
     height: 220px;
-    background: $white;
+
+    background-color: $ux-grey-1;
+    color: $black;
 }

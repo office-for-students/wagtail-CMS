@@ -5,6 +5,7 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core.models import Page
 from wagtail.core import blocks
 
+from CMS.translations import DICT
 from CMS.enums import enums
 
 from core.models import DiscoverUniBasePage
@@ -109,14 +110,12 @@ class AfterCourseBlock(AccordionPanel):
     six_month_employment_intro = blocks.CharBlock(required=False)
     six_month_employment_lead = blocks.CharBlock(required=False)
     six_month_employment_data_source = blocks.RichTextBlock(blank=True)
-    six_month_employment_find_out_more = blocks.RichTextBlock(required=False)
 
     six_month_employment_roles_heading = blocks.CharBlock(required=False)
     six_month_employment_roles_intro = blocks.CharBlock(required=False)
     six_month_employment_roles_label_explanation_heading = blocks.CharBlock(required=False)
     six_month_employment_roles_label_explanation_body = blocks.RichTextBlock(blank=True)
     six_month_employment_roles_data_source = blocks.RichTextBlock(blank=True)
-    six_month_employment_roles_find_out_more = blocks.RichTextBlock(blank=True)
 
     class Meta:
         value_class = AfterCourseDataSet
@@ -157,16 +156,13 @@ class Course:
         course_details = data_obj.get('course')
         if course_details:
             self.country = CourseCountry(course_details.get('country'))
-            self.distance_learning = CourseDistanceLearning(course_details.get('distance_learning'))
+            self.distance_learning = CourseDistanceLearning(course_details.get('distance_learning'),
+                                                            self.display_language)
             self.foundation_year = CourseFoundationYear(course_details.get('foundation_year_availability'))
             self.honours_award_provision = course_details.get('honours_award_provision')
             self.institution = InstitutionOverview(course_details.get('institution'))
             self.kis_course_id = course_details.get('kis_course_id')
             self.length = CourseLength(course_details.get('length_of_course'))
-            self.course_links = []
-            for name, link in course_details.get('links').items():
-                if type(link) != list:
-                    self.course_links.append(CourseLink(name, link))
             self.locations = []
             for location in course_details.get('locations'):
                 self.locations.append(CourseLocation(location, self.display_language))
@@ -189,12 +185,41 @@ class Course:
             self.continuation_stats = ContinuationStatistics(stats.get('continuation')[0])
             self.employment_stats = EmploymentStatistics(stats.get('employment')[0])
             self.job_type_stats = JobTypeStatistics(stats.get('job_type')[0])
-            self.salary_stats = SalaryStatistics(stats.get('salary')[0], self.display_language)
+            self.salary_stats = SalaryStatistics(stats.get('salary')[0], self.display_language, title)
             self.satisfaction_stats = SatisfactionStatistics(stats.get('nss')[0])
             if stats.get('nhs_nss')[0]:
                 self.nhs_satisfaction_stats = SatisfactionStatistics(stats.get('nhs_nss')[0])
             self.tariff_stats = TariffStatistics(stats.get('tariff')[0])
             self.leo_stats = LEOStatistics(stats.get('leo')[0], self.display_language)
+            self.course_links = self.set_course_links(course_details.get('links'), self.display_language)
+
+    def set_course_links(self, links, language):
+        link_objs = []
+        if enums.uni_link_keys.COURSE in links:
+            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.COURSE).get(language),
+                                        links.get(enums.uni_link_keys.COURSE),
+                                        enums.languages_map.get(language)))
+        if enums.uni_link_keys.TEACHING_METHODS in links:
+            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.TEACHING_METHODS).get(language),
+                                        links.get(enums.uni_link_keys.TEACHING_METHODS),
+                                        enums.languages_map.get(language)))
+        if enums.uni_link_keys.ASSESSMENT in links:
+            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.ASSESSMENT).get(language),
+                                        links.get(enums.uni_link_keys.ASSESSMENT),
+                                        enums.languages_map.get(language)))
+        if enums.uni_link_keys.COSTS in links:
+            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.COSTS).get(language),
+                                        links.get(enums.uni_link_keys.COSTS),
+                                        enums.languages_map.get(language)))
+        if enums.uni_link_keys.ACCOMMODATION in self.locations[0].links:
+            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.ACCOMMODATION).get(language),
+                                        self.locations[0].links.get(enums.uni_link_keys.ACCOMMODATION),
+                                        enums.languages_map.get(language)))
+        if enums.uni_link_keys.FINANCIAL_SUPPORT in links:
+            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.FINANCIAL_SUPPORT).get(language),
+                                        links.get(enums.uni_link_keys.FINANCIAL_SUPPORT),
+                                        enums.languages_map.get(language)))
+        return link_objs
 
     @property
     def number_of_locations(self):
@@ -245,9 +270,13 @@ class CourseCountry:
 
 class CourseDistanceLearning:
 
-    def __init__(self, data_obj):
+    def __init__(self, data_obj, language):
+        self.display_language = language
         self.code = data_obj.get('code')
         self.label = data_obj.get('label')
+
+    def display_label(self):
+        return DICT.get('distance_learning_values').get(self.code).get(self.display_language)
 
 
 class CourseFoundationYear:
@@ -266,9 +295,12 @@ class CourseLength:
 
 class CourseLink:
 
-    def __init__(self, name, link_obj):
-        self.label = name.replace('_', ' ').capitalize()
-        self.link = link_obj.get('english')
+    def __init__(self, name, link_obj, language_key):
+        self.label = name
+        if language_key in link_obj:
+            self.link = link_obj.get(language_key)
+        else:
+            self.link = link_obj.get(enums.languages_full.ENGLISH)
 
 
 class CourseLocation:
@@ -281,6 +313,7 @@ class CourseLocation:
         if name:
             self.english_name = name.get('english')
             self.welsh_name = name.get('welsh')
+        self.links = data_obj.get('links')
 
     def display_name(self):
         return self.english_name if self.display_language == enums.languages.ENGLISH else self.welsh_name
@@ -393,7 +426,7 @@ class JobTypeStatistics:
 
 class SalaryStatistics:
 
-    def __init__(self, data_obj, language):
+    def __init__(self, data_obj, language, course_title):
         self.display_language = language
         self.aggregation_level = data_obj.get('aggregation_level')
         self.higher_quartile = data_obj.get('higher_quartile')
@@ -409,6 +442,12 @@ class SalaryStatistics:
             self.subject_code = subject.get('code')
             self.subject_english_label = subject.get("english_label")
             self.subject_welsh_label = subject.get("welsh_label")
+        elif course_title:
+            self.subject_english_label = subject.get("english")
+            self.subject_welsh_label = subject.get("welsh")
+        else:
+            self.subject_english_label = ''
+            self.subject_welsh_label = ''
         unavailable_data = data_obj.get('unavailable')
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
@@ -498,6 +537,7 @@ class TariffStatistics:
         self.tariffs = []
         for tariff in tariff_data.get('tariffs'):
             self.tariffs.append(Tariff(tariff))
+        self.tariffs.reverse()
 
 
 class Tariff:

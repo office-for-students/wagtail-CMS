@@ -7,12 +7,20 @@ DICT = {
         'en': 'Completed Access course',
         'cy': ''
     },
+    'accommodation': {
+        'en': 'Accommodation costs',
+        'cy': ''
+    },
     'across_uk': {
         'en': 'across the UK',
         'cy': ''
     },
     'address': {
         'en': 'Address',
+        'cy': ''
+    },
+    'assessment_method': {
+        'en': 'How course is assessed',
         'cy': ''
     },
     'baccalaureate': {
@@ -39,6 +47,10 @@ DICT = {
         'en': 'Have completed the course (started in the final year due to prior study)',
         'cy': ''
     },
+    'costs': {
+        'en': 'Course costs',
+        'cy': ''
+    },
     'course_finder': {
         'en': 'Course Finder',
         'cy': ''
@@ -49,6 +61,10 @@ DICT = {
     },
     'course_name': {
         'en': 'Course name',
+        'cy': ''
+    },
+    'course_page': {
+        'en': 'View details at uni website ',
         'cy': ''
     },
     'courses': {
@@ -63,6 +79,20 @@ DICT = {
         'en': 'Distance learning',
         'cy': ''
     },
+    'distance_learning_values': {
+        '0': {
+            'en': 'Not Available',
+            'cy': ''
+        },
+        '1': {
+            'en': 'Yes',
+            'cy': ''
+        },
+        '2': {
+            'en': 'Optional',
+            'cy': ''
+        }
+    },
     'doing_further_study': {
         'en': 'Doing further study',
         'cy': ''
@@ -73,6 +103,10 @@ DICT = {
     },
     'filter': {
         'en': 'Filter',
+        'cy': ''
+    },
+    'financial_support_details': {
+        'en': 'Financial support',
         'cy': ''
     },
     'find_out_more': {
@@ -93,6 +127,10 @@ DICT = {
     },
     'institution': {
         'en': 'Institution',
+        'cy': ''
+    },
+    'learning_and_teaching_methods': {
+        'en': 'How course is taught',
         'cy': ''
     },
     'left_lower_qualification': {

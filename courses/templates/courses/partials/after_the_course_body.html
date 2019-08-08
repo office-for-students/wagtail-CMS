@@ -162,8 +162,6 @@
             {% insert_values_to_rich_text content=block.value.six_month_employment_data_source substitutions=substitutions as subbed_text %}
             {{ subbed_text | richtext }}
         </div>
-
-        <div class="find-out-more-link">{{ block.value.six_month_employment_find_out_more | richtext }}</div>
     </div>
 
     {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.employment_stats.unavailable_reason %}
@@ -220,8 +218,6 @@
             {% insert_values_to_rich_text content=block.value.six_month_employment_roles_data_source substitutions=substitutions as subbed_text %}
             {{ subbed_text | richtext }}
         </div>
-
-        <div class="find-out-more-link">{{ block.value.six_month_employment_find_out_more | richtext }}</div>
     </div>
 
     {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.employment_stats.unavailable_reason %}
