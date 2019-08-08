@@ -1,6 +1,15 @@
 @import '../variables';
 @import '../fonts';
 
+@mixin top-level-mobile-item() {
+    @include desktop-body-font--bold-mixin();
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 27px 24px 20px;
+}
+
 
 .discover-uni-nav {
     width: 100%;
@@ -64,18 +73,16 @@
 
         &-accordion {
             border-bottom: 1px solid $white;
+            padding-bottom: 10px;
 
             &:first-child {
                 border-top: 1px solid $white;
             }
 
             &-header {
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                padding: 27px 24px 30px;
+                @include top-level-mobile-item();
 
-                &:click {
+                &:hover {
                     @include green-gradient-background-mixin();
                 }
 
@@ -85,35 +92,37 @@
             }
 
             &-title {
-                @include desktop-body-font--bold-mixin();
-
                 margin: 0;
                 margin-right: 9px;
 
                 color: $white;
             }
+
+            &-body {
+                text-align: right;
+                padding: 20px 24px;
+
+                &-link {
+                    @include small-font--bold-mixin();
+
+                    padding-top: 20px;
+
+                    color: $white;
+                    text-decoration: none;
+                }
+            }
         }
-    }
-}
 
-@media only screen and (max-width: 769px) {
-    .discover-uni-nav-container {
-        height: 60px;
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
-        -ms-grid-rows: 60px auto;
-        grid-template-rows: 60px auto;
-    }
+        &-link {
+            @include top-level-mobile-item();
 
-    .desktop-nav {
-        display: none
-    }
+            color: $white;
+            text-decoration: none;
 
-    .brand h1 {
-        font-size: 21px;
-        padding-left: 20px;
+            img {
+                margin-left: 7px;
+            }
+        }
     }
 }
 

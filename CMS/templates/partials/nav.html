@@ -18,7 +18,7 @@
     <div class="discover-uni-nav__mobile-links">
         <div class="discover-uni-nav__mobile-accordion">
             <div class="discover-uni-nav__mobile-accordion-header">
-                <p class="discover-uni-nav__mobile-accordion-title">First Nav section</p>
+                <p class="discover-uni-nav__mobile-accordion-title">{% get_translation key='info_advice' language=page.get_language %}</p>
 
                 <div class="expand">
                     <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
@@ -30,10 +30,34 @@
             </div>
 
             <div class="discover-uni-nav__mobile-accordion-body">
-                <a class="sdiscover-uni-nav__mobile-accordion-body-link" href="#">
+                <a class="discover-uni-nav__mobile-accordion-body-link" href="#">
                     Nav option
                 </a>
             </div>
         </div>
+
+        <div class="discover-uni-nav__mobile-accordion">
+            <div class="discover-uni-nav__mobile-accordion-header">
+                <p class="discover-uni-nav__mobile-accordion-title">{% get_translation key='about' language=page.get_language %}</p>
+
+                <div class="expand">
+                    <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
+                </div>
+
+                <div class="collapse">
+                    <img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}" alt="collapse">
+                </div>
+            </div>
+
+            <div class="discover-uni-nav__mobile-accordion-body">
+                <a class="discover-uni-nav__mobile-accordion-body-link" href="#">
+                    Nav option
+                </a>
+            </div>
+        </div>
+
+        <a class="discover-uni-nav__mobile-link" href="#">
+            {% get_translation key='course_search' language=page.get_language %}<img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
+        </a>
     </div>
 </nav>

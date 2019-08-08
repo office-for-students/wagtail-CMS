@@ -3,6 +3,10 @@ DICT = {
         'en': 'A-levels, Advanced Highers or similar',
         'cy': ''
     },
+    'about': {
+        'en': 'About',
+        'cy': ''
+    },
     'access_course': {
         'en': 'Completed Access course',
         'cy': ''
@@ -67,6 +71,10 @@ DICT = {
         'en': 'View details at uni website ',
         'cy': ''
     },
+    'course_search': {
+        'en': 'Course search',
+        'cy': ''
+    },
     'courses': {
         'en': 'course(s)',
         'cy': ''
@@ -123,6 +131,10 @@ DICT = {
     },
     'full_time': {
         'en': 'Full-time',
+        'cy': ''
+    },
+    'info_advice': {
+        'en': 'Info and advice',
         'cy': ''
     },
     'institution': {
