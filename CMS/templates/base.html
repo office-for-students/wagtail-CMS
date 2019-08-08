@@ -28,18 +28,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
         <link href="{% sass_src 'scss/global.scss' %}" rel="stylesheet" type="text/css" >
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        <nav class="discover-uni-main-nav">
-            <div class="discover-uni-nav-container">
-                <a class="brand" href="/"><h1><strong>Discover</strong> Uni</h1></a>
-                <i id="burger-menu" class="burger-menu fas fa-bars"></i>
-                <i id="close-menu" class="close-menu fas fa-times"></i>
-            </div>
-        </nav>
+        {% include 'partials/nav.html' %}
 
         {% wagtailuserbar %}
 
