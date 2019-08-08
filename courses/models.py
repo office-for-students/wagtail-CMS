@@ -535,8 +535,9 @@ class TariffStatistics:
         self.aggregation = tariff_data.get('aggregation')
         self.number_of_students = tariff_data.get('number_of_students')
         self.tariffs = []
-        for tariff in tariff_data.get('tariffs'):
-            self.tariffs.append(Tariff(tariff))
+        if tariff_data.get('tariffs'):
+            for tariff in tariff_data.get('tariffs'):
+                self.tariffs.append(Tariff(tariff))
         self.tariffs.reverse()
 
 
