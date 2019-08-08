@@ -8,6 +8,10 @@
     justify-content: flex-end;
     align-items: center;
     padding: 27px 24px 20px;
+
+    &:hover {
+        @include green-gradient-background-mixin();
+    }
 }
 
 
@@ -82,10 +86,6 @@
             &-header {
                 @include top-level-mobile-item();
 
-                &:hover {
-                    @include green-gradient-background-mixin();
-                }
-
                 .collapse {
                     display: none;
                 }
@@ -100,15 +100,24 @@
 
             &-body {
                 text-align: right;
-                padding: 20px 24px;
+                padding-bottom: 20px;
 
                 &-link {
                     @include small-font--bold-mixin();
 
-                    padding-top: 20px;
+                    display: block;
+                    padding: 10px 24px 10px;
 
                     color: $white;
                     text-decoration: none;
+
+                    &:first-child {
+                        margin-top: 10px;
+                    }
+
+                    &:hover {
+                        @include green-gradient-background-mixin();
+                    }
                 }
             }
         }
