@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load staticfiles wagtailcore_tags discover_uni_tags sass_tags %}
+
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+    <link href="{% sass_src 'scss/search_landing.scss' %}" rel="stylesheet" type="text/css" >
+{% endblock extra_css %}
+
+{% block content %}
+    <div class="search-landing-page">
+        <div class="discover-uni-container">
+            <h1 class="search-landing-page__heading">
+                {{ page.heading }}
+            </h1>
+
+            <div class="search-landing-page__nav-cards">
+                <div class="search-landing-page__nav-card">
+
+                    <p class="search-landing-page__nav-card-label">
+                        {{ page.search_heading }}
+                    </p>
+
+                    <form class="search-landing-page__search" action="{{ search_url }}">
+                        <div class="search-landing-page__search-fields">
+                            <div class="search-landing-page__search-input">
+                                <label class="search-landing-page__search-label" for="course">
+                                    {% get_translation key='course_name' language=page.get_language %}
+                                </label>
+
+                                <input name="course" type="text" id="course">
+                            </div>
+
+                            <div class="search-landing-page__search-input">
+                                <label class="search-landing-page__search-label" for="course">
+                                    {% get_translation key='uni_or_college' language=page.get_language %}
+                                </label>
+
+                                {% include 'partials/search-dropdown.html' with placeholder='' %}
+                            </div>
+                        </div>
+
+                        <button class="search-landing-page__nav-card-button">
+                            {% get_translation key='search' language=page.get_language %}
+                        </button>
+
+                    </form>
+                </div>
+
+                <a href='{{ course_finder_url }}' class="search-landing-page__nav-card">
+                    <p class="search-landing-page__nav-card-label">
+                        {{ page.course_finder_heading }}
+                    </p>
+
+                    <img class="search-landing-page__nav-card-icon" src="{% static 'images/check_box_icon.svg' %}" alt="">
+
+
+                    <button class="search-landing-page__nav-card-button">
+                        {% get_translation key='search' language=page.get_language %}
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

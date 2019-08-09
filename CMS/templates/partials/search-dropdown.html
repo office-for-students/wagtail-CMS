@@ -1,0 +1,11 @@
+<div class="search-dropdown">
+    <input id="trust" class='selection-field' type="text" name="trust" value="{{form.trust}}">
+
+    <div class='search-field{% if form.trust_error %} error{% endif %}'>
+        <input type="text" class="search-field-input" name="trust_name" placeholder="{{placeholder}}">
+    </div>
+
+    <div class="options-list">
+        <p class="placeholder options-list--placeholder">Please enter at least 3 characters to search</p>
+    </div>
+</div>

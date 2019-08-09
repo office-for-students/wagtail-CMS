@@ -1,52 +1,52 @@
 .search-dropdown {
     width: 100%;
+    position: relative;
 
     .selection-field {
         display: none;
     }
 
     .search-field {
-        border: 1.5px solid $black;
         width: 100%;
 
-        &.error {
-            //border: 1.5px solid $error-border;
-        }
-
         input {
-            //font-size: $default-font-size;
-            //line-height: $default-line-height;
-            //padding: medex-spacing(2) medex-spacing(3);
-            border: 0;
-            width: 100% !important;
+            width: 100%;
             box-sizing: border-box;
+
+            border: 2px solid $ux-grey-3;
+            border-radius: 5px;
         }
     }
 
     .options-list {
-        width: 100%;
-        border: 1.5px solid $black;
-        border-top: 0;
         display: none;
+        width: 100%;
         position: absolute;
         z-index: 10;
-        background-color: $white;
-        //min-height: $default-line-height;
+        background-color: $ux-grey-1;
+        max-height: 292px;
+        overflow-y: scroll;
 
         &--placeholder {
-            //font-size: $nhs-body-s-size;
-            //color: $nhs-light-grey;
-            //padding: medex-spacing(2) medex-spacing(3);
+            @include small-font-mixin();
+
+            padding: 28px 30px;
             margin: 0;
+
+            color: $helper-grey;
         }
 
         option {
-            //padding: medex-spacing(2) medex-spacing(3);
+            @include small-font-mixin();
+
             display: none;
+            padding: 28px 30px;
+            margin: 0;
+
+            color: $helper-grey;
 
             &:hover {
-                //background-color: $nhs-blue;
-                color: $white;
+                @include green-gradient-background-mixin();
             }
         }
     }

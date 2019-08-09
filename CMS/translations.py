@@ -321,6 +321,10 @@ DICT = {
         'en': 'Unemployed',
         'cy': ''
     },
+    'uni_or_college': {
+        'en': 'University or college',
+        'cy': ''
+    },
     'unknown_job_type': {
         'en': 'In an unknown job type',
         'cy': ''
