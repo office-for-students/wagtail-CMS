@@ -1,0 +1,49 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+@import 'content_landing_page';
+@import 'section';
+
+.content-page {
+    padding: 50px 20px 65px;
+
+    &__header {
+        @include m-heading--bold-mixin();
+
+        margin: 0;
+        margin-bottom: 28px;
+
+        color: $ux-grey-3;
+    }
+
+    &__intro {
+        @include mobile-body-font-mixin();
+
+        margin-bottom: 30px;
+
+        p {
+            margin: 0px
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .content-page {
+        padding: 75px 0px 132px;
+
+        &__header {
+            @include l-heading--bold-mixin();
+
+            margin: 0;
+
+            line-height: 65px;
+            color: $ux-grey-3;
+        }
+
+        &__intro {
+            @include desktop-body-font-mixin();
+
+            margin-bottom: 30px;
+            line-height: 26px;
+        }
+    }
+}

@@ -1,40 +1,30 @@
 {% extends "base.html" %}
-{% load static %}
-{% load wagtailcore_tags %}
+{% load static wagtailcore_tags sass_tags %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/content.css' %}">
+    <link href="{% sass_src 'scss/content.scss' %}" rel="stylesheet" type="text/css" >
 {% endblock extra_css %}
 
 {% block content %}
     <div class="content-page content-landing-page">
-        <div class="content-header">
-            <h1>{{ page.title }}</h1>
-        </div>
+        <div class="discover-uni-container">
+            <h1 class="content-page__header">
+                {{ page.title }}
+            </h1>
 
-        <div class="breadcrumb-container grid-1">
-            {% if self.get_ancestors|length > 1 %}
-                <ul class="breadcrumb">
-                    {% for page in self.get_ancestors %}
-                        {% if page.is_root == False %}
-                            {% if page.title == "Home" %}
-                                <li><a href={% pageurl page %}><i class="fas fa-home"></i></a></li>
-                            {% else %}
-                                <li><a href={% pageurl page %}>/{{ page.title }}</a></li>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                    <li class="active"> / {{ page.title }}</li>
-                </ul>
-            {% endif %}
-        </div>
-
-        <div class="options-container">
-            {% for block in page.options %}
-                <div>
-                    <h2>{{block}}</h2>
+            {% if page.intro %}
+                <div class="content-page__intro">
+                    {{ page.intro | richtext }}
                 </div>
-            {% endfor %}
+            {% endif %}
+
+            <div class="content-landing-page__links">
+                {% for link in page.options %}
+                    <div class="content-landing-page__link">
+                        {{ link }}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock content %}
