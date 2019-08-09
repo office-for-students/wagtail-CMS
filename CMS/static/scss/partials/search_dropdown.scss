@@ -1,0 +1,53 @@
+.search-dropdown {
+    width: 100%;
+
+    .selection-field {
+        display: none;
+    }
+
+    .search-field {
+        border: 1.5px solid $black;
+        width: 100%;
+
+        &.error {
+            //border: 1.5px solid $error-border;
+        }
+
+        input {
+            //font-size: $default-font-size;
+            //line-height: $default-line-height;
+            //padding: medex-spacing(2) medex-spacing(3);
+            border: 0;
+            width: 100% !important;
+            box-sizing: border-box;
+        }
+    }
+
+    .options-list {
+        width: 100%;
+        border: 1.5px solid $black;
+        border-top: 0;
+        display: none;
+        position: absolute;
+        z-index: 10;
+        background-color: $white;
+        //min-height: $default-line-height;
+
+        &--placeholder {
+            //font-size: $nhs-body-s-size;
+            //color: $nhs-light-grey;
+            //padding: medex-spacing(2) medex-spacing(3);
+            margin: 0;
+        }
+
+        option {
+            //padding: medex-spacing(2) medex-spacing(3);
+            display: none;
+
+            &:hover {
+                //background-color: $nhs-blue;
+                color: $white;
+            }
+        }
+    }
+}
