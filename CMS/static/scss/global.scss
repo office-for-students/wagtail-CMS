@@ -1,4 +1,13 @@
 @import './partials/nav';
+@import './partials/footer';
+@import './partials/pagination';
+@import './partials/forms';
+
+body {
+  margin: 0;
+  font-family: sans-serif, serif;
+  color: #5F607C;
+}
 
 @media only screen and (min-width: 770px) {
     .discover-uni-container {
@@ -33,4 +42,8 @@
 
 a {
     color: #005EA5;
+}
+
+.dropdown-arrow {
+  align-self: center;
 }

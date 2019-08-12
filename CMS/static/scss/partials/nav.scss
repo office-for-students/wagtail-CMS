@@ -1,128 +1,232 @@
 @import '../variables';
+@import '../fonts';
 
-.discover-uni-main-nav {
+@mixin top-level-mobile-item() {
+    @include desktop-body-font--bold-mixin();
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 27px 24px 20px;
+
+    &:hover {
+        @include green-gradient-background-mixin();
+    }
+}
+
+@mixin top-level-desktop-item() {
+    @include mobile-body-font-mixin();
+
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    color: $white;
+
+    &:hover {
+        @include green-gradient-background-mixin();
+    }
+
+    img {
+        margin-left: 6px;
+    }
+}
+
+
+.discover-uni-nav {
     width: 100%;
+
     background-color: $header-blue;
-    color: #fff;
-}
+    color: $white;
 
-.desktop-nav {
-    display: inline-block;
-    -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
-    align-self: center;
-    text-align: right;
-    padding-right: 30px;
-
-    li {
-        display: inline;
-        font-size: 19px;
-        line-height: 23px;
-        padding-left: 31px;
+    &__container {
+        padding: 22px 20px 22px 18px;
+        display: flex;
+        justify-content: space-between;
     }
-}
 
-.mobile-nav {
-    display: none;
-    -ms-grid-column-span: 2;
-    grid-column: span 2;
-    list-style: none;
-    text-align: center;
-    padding: 0;
-    -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
-    align-self: center;
+    &__home-link {
+        text-decoration: none;
+        align-self: center;
 
-    li {
-      padding-bottom: 15px;
-      font-size: 18px;
+        background: none;
+        border: none;
     }
-}
 
-.brand {
-    text-decoration: none;
-    -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
-    align-self: center;
-
-    color: #fff;
-    background: none;
-    border: none;
-
-    h1 {
-        font-size: 30px;
-        font-weight: lighter;
+    &__brand {
         margin: 0;
 
-        color: #fff;
-    }
-}
+        font-family: Montserrat;
+        font-size: 19px;
+        font-weight: normal;
+        line-height: 24px;
+        letter-spacing: 0.04em;
+        color: $white;
 
-.burger-menu {
-    -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
-    align-self: center;
-    text-align: right;
-    padding-right: 12px;
-    font-size: 28px;
-}
-
-.close-menu {
-    -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
-    align-self: center;
-    text-align: right;
-    padding-right: 15px;
-    font-size: 28px;
-    display: none;
-}
-
-@media only screen and (max-width: 769px) {
-    .discover-uni-nav-container {
-        height: 60px;
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
-        -ms-grid-rows: 60px auto;
-        grid-template-rows: 60px auto;
+        &-icon {
+            height: 1em;
+            margin-left: 10px;
+        }
     }
 
-    .desktop-nav {
-        display: none
+    &__burger-menu {
+        text-align: right;
+        padding-right: 12px;
+        font-size: 28px;
     }
 
-    .brand h1 {
-        font-size: 21px;
-        padding-left: 20px;
+    &__close-menu {
+        align-self: center;
+        text-align: right;
+        padding-right: 15px;
+        font-size: 28px;
+        display: none;
+    }
+
+    &__mobile {
+        &-links {
+            display: none;
+            min-height: 402px;
+            position: absolute;
+            z-index: 100;
+            width: 100%;
+            background-color: inherit;
+        }
+
+        &-accordion {
+            border-bottom: 1px solid $white;
+            padding-bottom: 10px;
+
+            &:first-child {
+                border-top: 1px solid $white;
+            }
+
+            &-header {
+                @include top-level-mobile-item();
+
+                .collapse {
+                    display: none;
+                }
+            }
+
+            &-title {
+                margin: 0;
+                margin-right: 9px;
+
+                color: $white;
+            }
+
+            &-body {
+                text-align: right;
+                padding-bottom: 20px;
+
+                &-link {
+                    @include small-font--bold-mixin();
+
+                    display: block;
+                    padding: 10px 24px 10px;
+
+                    color: $white;
+                    text-decoration: none;
+
+                    &:first-child {
+                        margin-top: 10px;
+                    }
+
+                    &:hover {
+                        @include green-gradient-background-mixin();
+                    }
+                }
+            }
+        }
+
+        &-link {
+            @include top-level-mobile-item();
+
+            color: $white;
+            text-decoration: none;
+
+            img {
+                margin-left: 7px;
+            }
+        }
+    }
+
+    &__desktop-links {
+        display: none;
+    }
+
+    &__link-icon {
+        height: 13px;
     }
 }
 
 @media only screen and (min-width: 770px) {
+    .discover-uni-nav {
+        &__container {
+            padding: 18px 0px 22px;
+        }
 
-    .discover-uni-nav-container {
-        max-width: 1020px;
-        margin-right: auto;
-        margin-left: auto;
-        height: 90px;
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
+        &__burger-menu {
+            display: none;
+        }
+
+        &__brand {
+            font-size: 25px;
+            line-height: 30px;
+        }
+
+        &__desktop {
+            &-links {
+                display: flex;
+                margin: -18px 0px -22px;
+            }
+
+            &-dropdown {
+                &:hover {
+                    .discover-uni-nav__desktop-dropdown-body {
+                        display: block;
+                    }
+                }
+
+                &-toggle {
+                    @include top-level-desktop-item();
+
+                    margin: 0px;
+                    height: 100%;
+                }
+
+                &-body {
+                    display: none;
+                    position: absolute;
+                    z-index: 100;
+
+                    background-color: $header-blue;
+                }
+
+                &-link {
+                    @include mobile-body-font-mixin();
+
+                    display: block;
+                    padding: 25px 15px;
+                    min-width: 179px;
+                    line-height: 19px;
+
+                    color: $white;
+                    text-decoration: none;
+
+                    &:hover {
+                        @include green-gradient-background-mixin();
+                    }
+                }
+            }
+
+            &-link {
+                @include top-level-desktop-item();
+
+                text-decoration: none;
+            }
+        }
     }
-
-    .mobile-nav {
-        display: none
-    }
-
-    .burger-menu {
-        display: none;
-    }
-}
-
-.footer {
-    height: 220px;
-
-    background-color: $ux-grey-1;
-    color: $black;
 }

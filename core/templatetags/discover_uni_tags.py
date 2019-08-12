@@ -4,6 +4,7 @@ from django import template
 
 from CMS.enums import enums
 from CMS.translations import DICT
+from content.models import Section
 
 register = template.Library()
 
@@ -44,3 +45,8 @@ def insert_values_to_rich_text(*_, **kwargs):
 @register.simple_tag
 def length_of_list(view_list):
     return len(view_list)
+
+
+@register.simple_tag
+def menu_content_pages_for_language(language):
+    Section.get_all_for_language
