@@ -1,8 +1,8 @@
 <div class="search-dropdown">
-    <input id="trust" class='selection-field' type="text" name="trust" value="{{form.trust}}">
+    <input id="{{field_name}}" class='selection-field' type="text" name="{{field_name}}">
 
-    <div class='search-field{% if form.trust_error %} error{% endif %}'>
-        <input type="text" class="search-field-input" name="trust_name" placeholder="{{placeholder}}">
+    <div class='search-field'>
+        <input type="text" class="search-field-input" name="{{field_name}}_search" placeholder="{{placeholder}}">
     </div>
 
     <div class="options-list">

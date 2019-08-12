@@ -22,14 +22,14 @@
                         {{ page.search_heading }}
                     </p>
 
-                    <form class="search-landing-page__search" action="{{ search_url }}">
+                    <form class="search-landing-page__search" action="{{ search_url }}" method="get">
                         <div class="search-landing-page__search-fields">
                             <div class="search-landing-page__search-input">
                                 <label class="search-landing-page__search-label" for="course">
                                     {% get_translation key='course_name' language=page.get_language %}
                                 </label>
 
-                                <input name="course" type="text" id="course">
+                                <input name="subject_query" type="text" id="course">
                             </div>
 
                             <div class="search-landing-page__search-input">
@@ -37,7 +37,7 @@
                                     {% get_translation key='uni_or_college' language=page.get_language %}
                                 </label>
 
-                                {% include 'partials/search-dropdown.html' with placeholder='' %}
+                                {% include 'partials/search-dropdown.html' with placeholder='' field_name='institution_query' %}
                             </div>
                         </div>
 
