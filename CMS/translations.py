@@ -35,6 +35,10 @@ DICT = {
         'en': 'Back',
         'cy': ''
     },
+    'begin': {
+        'en': 'Begin',
+        'cy': ''
+    },
     'break_from_studies': {
         'en': 'Are taking a break from their studies',
         'cy': ''
@@ -319,6 +323,10 @@ DICT = {
     },
     'unemployed': {
         'en': 'Unemployed',
+        'cy': ''
+    },
+    'uni_or_college': {
+        'en': 'University or college',
         'cy': ''
     },
     'unknown_job_type': {

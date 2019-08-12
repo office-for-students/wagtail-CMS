@@ -50,14 +50,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'core.apps.CoreConfig',
-    'home.apps.HomeConfig',
-    'search.apps.SearchConfig',
     'content.apps.ContentConfig',
     'coursefinder.apps.CoursefinderConfig',
     'courses.apps.CoursesConfig',
     'errors.apps.ErrorsConfig',
-    'widget.apps.WidgetConfig',
+    'home.apps.HomeConfig',
     'institutions.apps.InstitutionsConfig',
+    'search.apps.SearchConfig',
+    'site_search.apps.SiteSearchConfig',
+    'widget.apps.WidgetConfig',
 
     'sass_processor',
 ]
