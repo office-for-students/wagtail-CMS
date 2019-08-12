@@ -1,0 +1,114 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+
+.course-finder {
+    &-base {
+        padding: 0px 19px 48px;
+
+        &__nav {
+            display: flex;
+            padding: 19px 0px;
+            justify-content: space-between;
+            margin: 0;
+            height: 100%;
+            list-style: none;
+
+
+            &-control {
+                @include mobile-body-font--bold-mixin();
+
+                text-decoration: none;
+                color: $gradient-light-green;
+            }
+
+            .filter {
+                background-image: url('/static/assets/filter.svg');
+                background-size: 13px;
+                background-repeat: no-repeat;
+                background-position: 56% 50%;
+            }
+
+            input[type="submit"] {
+                align-self: center;
+                background-color: #F5FAFF;
+                margin: 0 1px;
+                padding: 22px 0;
+                border-radius: 0;
+                font-size: 17px;
+                line-height: 16px;
+                color: #5F607C;
+                height: 100%;
+
+                &:hover {
+                    background-color: #F5FAFF;
+                    color: #5F607C;
+                }
+            }
+        }
+    }
+
+    &-content {
+        padding-top: 44px;
+
+        &__question {
+            &-block {
+                position: relative;
+            }
+
+            @include m-heading--bold-mixin();
+
+            margin-top: 0px;
+            margin-bottom: 35px;
+            width: 80%;
+
+            line-height: 45px;
+            color: $ux-grey-3;
+
+            &-label {
+                @include xs-heading-mixin();
+
+                display: block;
+                padding: 8px 0px 5px 20px;
+            }
+
+            &-helper {
+                @include small-font-mixin();
+
+                margin-top: 8px;
+
+                color: $helper-grey;
+
+                p {
+                    margin: 0px;
+                }
+            }
+        }
+
+        &__next {
+            margin-top: 50px;
+
+            &-link {
+                text-decoration: none
+            }
+
+            &-button {
+                @include green-gradient-mixin();
+                @include mobile-body-font-mixin();
+
+                display: flex;
+                align-items: center;
+                padding: 8px 50px;
+
+                border-radius: 70.6272px;
+                line-height: 25px;
+                color: $white;
+            }
+
+            &-icon {
+                height: 14px;
+                margin-left: 6px;
+            }
+        }
+    }
+}

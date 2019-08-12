@@ -19,13 +19,11 @@ from errors.models import ApiError
 class CourseFinderChooseCountry(DiscoverUniBasePage):
     page_order = 1
     question = TextField(blank=True)
-    next_section = StreamField([
-        ('section', blocks.PageChooserBlock())
-    ])
+    helper_text = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('question', classname="full"),
-        StreamFieldPanel('next_section', classname="full")
+        FieldPanel('helper_text', classname="full")
     ]
 
     @property
