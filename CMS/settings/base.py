@@ -27,6 +27,7 @@ LOCAL = os.environ.get('LOCAL', False)
 
 INSTALLED_APPS = [
     'wagtail.contrib.forms',
+    'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
     'wagtail.sites',
