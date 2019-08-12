@@ -130,22 +130,6 @@ class CourseFinderModelsTests(UniSimpleTestCase):
         self.assertIsNotNone(narrow_search.back_page)
         self.assertEquals(type(narrow_search.back_page), CourseFinderChooseSubject)
 
-    def test_course_finder_town_city_next_page_returns_summary_sibling(self):
-        town_city = PageFactory.create_town_city_page(title='Town City')
-        PageFactory.create_summary_page(title='Summary', path='11111112',
-                                        parent_page=town_city.get_parent())
-
-        self.assertIsNotNone(town_city.next_page)
-        self.assertEquals(type(town_city.next_page), CourseFinderSummary)
-
-    def test_course_finder_town_city_back_page_returns_narrow_search_sibling(self):
-        town_city = PageFactory.create_town_city_page(title='Town City')
-        PageFactory.create_narrow_search_page(title='Narrow Search', path='11111112',
-                                              parent_page=town_city.get_parent())
-
-        self.assertIsNotNone(town_city.back_page)
-        self.assertEquals(type(town_city.back_page), CourseFinderNarrowSearch)
-
     def test_course_finder_uni_next_page_returns_summary_sibling(self):
         uni = PageFactory.create_uni_page(title='Uni')
         PageFactory.create_summary_page(title='Summary', path='11111112', parent_page=uni.get_parent())

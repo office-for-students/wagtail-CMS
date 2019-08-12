@@ -3,8 +3,7 @@ from django.http import HttpResponseRedirect
 
 from CMS.enums import enums
 from core.utils import get_page_for_language
-from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderTownCity, \
-    CourseFinderPostcode
+from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderPostcode
 from coursefinder.models import CourseFinderResults
 
 
@@ -38,8 +37,6 @@ def narrow_search(request, language=enums.languages.ENGLISH):
     selection = post_body.get('radioGroup', None)
     if selection == "uni":
         page = get_page_for_language(language, CourseFinderUni.objects.all())
-    elif selection == "city":
-        page = get_page_for_language(language, CourseFinderTownCity.objects.all())
     elif selection == "home":
         page = get_page_for_language(language, CourseFinderPostcode.objects.all())
     elif selection == 'all':
