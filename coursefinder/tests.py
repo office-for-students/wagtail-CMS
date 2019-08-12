@@ -5,55 +5,15 @@ from CMS.test.mocks import SearchMocks
 from CMS.test.utils import UniSimpleTestCase
 from coursefinder.models import CourseSearch, CourseFinderChooseCountry, CourseFinderModeOfStudy, \
     CourseFinderChooseSubject, CourseFinderNarrowSearch, CourseFinderPostcode, CourseFinderSummary, \
-    CourseFinderResults, CourseFinderLandingPage, CourseFinderSearch, BaseSearch
+    CourseFinderResults, CourseFinderSearch, BaseSearch
 from coursefinder.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
     choose_subject_sibling_finder, narrow_search_sibling_finder, postcode_sibling_finder, summary_sibling_finder, \
     results_sibling_finder
 from errors.models import ApiError
+from site_search.models import SearchLandingPage
 
 
 class CourseFinderModelsTests(UniSimpleTestCase):
-
-    def test_course_finder_landing_page_country_finder_page_returns_child_if_country_finder_child_exists(self):
-        course_finder_page = PageFactory.create_course_finder_landing_page('Course Finder')
-        PageFactory.create_country_finder_page(title='Country Finder', parent_page=course_finder_page)
-        self.assertIsNotNone(course_finder_page.country_finder_page)
-
-    def test_course_finder_landing_page_country_finder_page_returns_first_child_if_multiple_country_finder_child_exists(
-            self):
-        course_finder_page = PageFactory.create_course_finder_landing_page('Course Finder')
-        country_finder_1 = PageFactory.create_country_finder_page(title='Country Finder',
-                                                                  parent_page=course_finder_page)
-        country_finder_2 = PageFactory.create_country_finder_page(title='Country Finder 2', path='11111112',
-                                                                  parent_page=course_finder_page)
-        self.assertIsNotNone(course_finder_page.country_finder_page)
-        self.assertNotEquals(country_finder_1.title, country_finder_2.title)
-        self.assertEquals(course_finder_page.country_finder_page.title, country_finder_1.title)
-
-    def test_course_finder_landing_page_country_finder_page_returns_country_finder_child_if_multiple_child_types_exists(
-            self):
-        course_finder_page = PageFactory.create_course_finder_landing_page('Course Finder')
-        country_finder = PageFactory.create_country_finder_page(title='Country Finder',
-                                                                parent_page=course_finder_page)
-        mode_of_study_finder = PageFactory.create_mode_of_study_finder_page(title='Mode of Study Finder',
-                                                                            path='11111112',
-                                                                            parent_page=course_finder_page)
-        self.assertIsNotNone(course_finder_page.country_finder_page)
-        self.assertNotEquals(country_finder.title, mode_of_study_finder.title)
-        self.assertEquals(course_finder_page.country_finder_page.title, country_finder.title)
-
-    def test_course_finder_landing_page_country_finder_page_returns_none_if_no_country_finder_child_exists(self):
-        course_finder_page = PageFactory.create_course_finder_landing_page('Course Finder')
-        self.assertIsNone(course_finder_page.country_finder_page)
-
-    def test_course_finder_landing_page_has_country_finder_page_returns_true_if_country_finder_child_exists(self):
-        course_finder_page = PageFactory.create_course_finder_landing_page('Course Finder')
-        PageFactory.create_country_finder_page(title='Country Finder', parent_page=course_finder_page)
-        self.assertIsTrue(course_finder_page.has_country_finder_page())
-
-    def test_course_finder_landing_page_has_country_finder_page_returns_false_if_no_country_finder_child_exists(self):
-        course_finder_page = PageFactory.create_course_finder_landing_page('Course Finder')
-        self.assertIsFalse(course_finder_page.has_country_finder_page())
 
     def test_course_search_execute_function_appends_counts_and_list_of_courses_to_model_on_success(self):
         mock_data = SearchMocks.get_search_response_content()
@@ -85,11 +45,11 @@ class CourseFinderModelsTests(UniSimpleTestCase):
         self.assertEquals(type(country_finder.next_page), CourseFinderModeOfStudy)
 
     def test_course_finder_choose_country_back_page_returns_parent_page(self):
-        course_finder_page = PageFactory.create_course_finder_landing_page('Course Finder')
+        course_finder_page = PageFactory.create_search_landing_page('Course Finder')
         country_finder = PageFactory.create_country_finder_page(title='Country Finder', parent_page=course_finder_page)
 
         self.assertIsNotNone(country_finder.back_page)
-        self.assertEquals(type(country_finder.back_page), CourseFinderLandingPage)
+        self.assertEquals(type(country_finder.back_page), SearchLandingPage)
 
     def test_course_finder_mode_of_study_next_page_returns_choose_subject_sibling(self):
         mode_of_study = PageFactory.create_mode_of_study_finder_page(title='Mode of Study Finder')
@@ -296,7 +256,7 @@ class CourseFinderModelsTests(UniSimpleTestCase):
 
 class CourseFinderUtilsTests(UniSimpleTestCase):
     def test_choose_country_sibling_finder_returns_country_finder_if_in_list(self):
-        course_finder_page = PageFactory.create_course_finder_landing_page('Course Finder')
+        course_finder_page = PageFactory.create_search_landing_page('Course Finder')
         PageFactory.create_country_finder_page(title='Country Finder', parent_page=course_finder_page)
 
         output = choose_country_sibling_finder(course_finder_page.get_children().specific())
@@ -304,7 +264,7 @@ class CourseFinderUtilsTests(UniSimpleTestCase):
         self.assertEquals(type(output), CourseFinderChooseCountry)
 
     def test_choose_country_sibling_finder_returns_first_entry_if_multiple_country_finders_in_list(self):
-        course_finder_page = PageFactory.create_course_finder_landing_page('Course Finder')
+        course_finder_page = PageFactory.create_search_landing_page('Course Finder')
         country_finder_1 = PageFactory.create_country_finder_page(title='Country Finder',
                                                                   parent_page=course_finder_page)
         country_finder_2 = PageFactory.create_country_finder_page(title='Country Finder 2', path='11111112',
@@ -317,7 +277,7 @@ class CourseFinderUtilsTests(UniSimpleTestCase):
         self.assertEquals(output.title, country_finder_1.title)
 
     def test_choose_country_sibling_finder_returns_country_finder_if_multiple_page_types_exists(self):
-        course_finder_page = PageFactory.create_course_finder_landing_page('Course Finder')
+        course_finder_page = PageFactory.create_search_landing_page('Course Finder')
         country_finder = PageFactory.create_country_finder_page(title='Country Finder',
                                                                 parent_page=course_finder_page)
         mode_of_study_finder = PageFactory.create_mode_of_study_finder_page(title='Mode of Study Finder',
@@ -331,7 +291,7 @@ class CourseFinderUtilsTests(UniSimpleTestCase):
         self.assertEquals(output.title, country_finder.title)
 
     def test_choose_country_sibling_finder_returns_none_if_no_country_finder_page_exists(self):
-        course_finder_page = PageFactory.create_course_finder_landing_page('Course Finder')
+        course_finder_page = PageFactory.create_search_landing_page('Course Finder')
         output = choose_country_sibling_finder(course_finder_page.get_children().specific())
         self.assertIsNone(output)
 

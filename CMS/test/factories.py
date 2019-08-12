@@ -1,9 +1,10 @@
 from wagtail.core.models import Site
 
-from coursefinder.models import CourseFinderResults, CourseFinderLandingPage, CourseFinderChooseCountry, \
+from coursefinder.models import CourseFinderResults, CourseFinderChooseCountry, \
     CourseFinderModeOfStudy, CourseFinderChooseSubject, CourseFinderNarrowSearch, CourseFinderPostcode, \
     CourseFinderSummary, CourseFinderUni
 from home.models import HomePage
+from site_search.models import SearchLandingPage
 
 
 class PageFactory:
@@ -25,20 +26,21 @@ class PageFactory:
         return course_finder_results
 
     @classmethod
-    def create_course_finder_landing_page(cls, title='Test page', path="1111", depth=0):
+    def create_search_landing_page(cls, title='Test page', path="1111", depth=0):
         root_page = cls.get_root_page()
-        course_finder_landing = CourseFinderLandingPage(title=title, path=path, depth=depth, live=True)
-        root_page.add_child(instance=course_finder_landing)
+        search_landing = SearchLandingPage(title=title, path=path, depth=depth, live=True, heading='Page Heading',
+                                           search_heading='SearchHeading', course_finder_heading='CourseFinder Heading')
+        root_page.add_child(instance=search_landing)
 
-        course_finder_landing.save_revision().publish()
-        course_finder_landing.save()
+        search_landing.save_revision().publish()
+        search_landing.save()
 
-        return course_finder_landing
+        return search_landing
 
     @classmethod
     def create_country_finder_page(cls, title='Test page', path="11111111", depth=1, parent_page=None):
         if not parent_page:
-            parent_page = cls.create_course_finder_landing_page('Course Finder')
+            parent_page = cls.create_search_landing_page('Course Finder')
         country_finder_page = CourseFinderChooseCountry(title=title, path=path, depth=depth)
 
         parent_page.add_child(instance=country_finder_page)
@@ -51,7 +53,7 @@ class PageFactory:
     @classmethod
     def create_mode_of_study_finder_page(cls, title='Test page', path="11111111", depth=1, parent_page=None):
         if not parent_page:
-            parent_page = cls.create_course_finder_landing_page('Course Finder')
+            parent_page = cls.create_search_landing_page('Course Finder')
         mode_of_study_finder_page = CourseFinderModeOfStudy(title=title, path=path, depth=depth)
 
         parent_page.add_child(instance=mode_of_study_finder_page)
@@ -64,7 +66,7 @@ class PageFactory:
     @classmethod
     def create_choose_subject_page(cls, title='Test page', path="11111111", depth=1, parent_page=None):
         if not parent_page:
-            parent_page = cls.create_course_finder_landing_page('Course Finder')
+            parent_page = cls.create_search_landing_page('Course Finder')
         choose_subject_page = CourseFinderChooseSubject(title=title, path=path, depth=depth)
 
         parent_page.add_child(instance=choose_subject_page)
@@ -77,7 +79,7 @@ class PageFactory:
     @classmethod
     def create_narrow_search_page(cls, title='Test page', path="11111111", depth=1, parent_page=None):
         if not parent_page:
-            parent_page = cls.create_course_finder_landing_page('Course Finder')
+            parent_page = cls.create_search_landing_page('Course Finder')
         narrow_search_page = CourseFinderNarrowSearch(title=title, path=path, depth=depth)
 
         parent_page.add_child(instance=narrow_search_page)
@@ -88,9 +90,22 @@ class PageFactory:
         return narrow_search_page
 
     @classmethod
+    def create_town_city_page(cls, title='Test page', path="11111111", depth=1, parent_page=None):
+        if not parent_page:
+            parent_page = cls.create_search_landing_page('Course Finder')
+        town_city_page = CourseFinderTownCity(title=title, path=path, depth=depth)
+
+        parent_page.add_child(instance=town_city_page)
+
+        town_city_page.save_revision().publish()
+        town_city_page.save()
+
+        return town_city_page
+
+    @classmethod
     def create_uni_page(cls, title='Test page', path="11111111", depth=1, parent_page=None):
         if not parent_page:
-            parent_page = cls.create_course_finder_landing_page('Course Finder')
+            parent_page = cls.create_search_landing_page('Course Finder')
         uni_page = CourseFinderUni(title=title, path=path, depth=depth)
 
         parent_page.add_child(instance=uni_page)
@@ -103,7 +118,7 @@ class PageFactory:
     @classmethod
     def create_postcode_page(cls, title='Test page', path="11111111", depth=1, parent_page=None):
         if not parent_page:
-            parent_page = cls.create_course_finder_landing_page('Course Finder')
+            parent_page = cls.create_search_landing_page('Course Finder')
         postcode_page = CourseFinderPostcode(title=title, path=path, depth=depth)
 
         parent_page.add_child(instance=postcode_page)
@@ -116,7 +131,7 @@ class PageFactory:
     @classmethod
     def create_summary_page(cls, title='Test page', path="11111111", depth=1, parent_page=None):
         if not parent_page:
-            parent_page = cls.create_course_finder_landing_page('Course Finder')
+            parent_page = cls.create_search_landing_page('Course Finder')
         summary_page = CourseFinderSummary(title=title, path=path, depth=depth)
 
         parent_page.add_child(instance=summary_page)
@@ -129,7 +144,7 @@ class PageFactory:
     @classmethod
     def create_results_page(cls, title='Test page', path="11111111", depth=1, parent_page=None):
         if not parent_page:
-            parent_page = cls.create_course_finder_landing_page('Course Finder')
+            parent_page = cls.create_search_landing_page('Course Finder')
         results_page = CourseFinderResults(title=title, path=path, depth=depth)
 
         parent_page.add_child(instance=results_page)

@@ -8,28 +8,12 @@ from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
 from core.models import DiscoverUniBasePage
+from core.utils import get_page_for_language
 from coursefinder import request_handler
 from coursefinder.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
     choose_subject_sibling_finder, narrow_search_sibling_finder, postcode_sibling_finder, summary_sibling_finder, \
     results_sibling_finder
 from errors.models import ApiError
-
-
-class CourseFinderLandingPage(DiscoverUniBasePage):
-    header = TextField(blank=True)
-    subheader = TextField(blank=True)
-
-    content_panels = Page.content_panels + [
-        FieldPanel('header', classname="full"),
-        FieldPanel('subheader', classname="full")
-    ]
-
-    @property
-    def country_finder_page(self):
-        return choose_country_sibling_finder(self.get_children().specific())
-
-    def has_country_finder_page(self):
-        return self.country_finder_page is not None
 
 
 class CourseFinderChooseCountry(DiscoverUniBasePage):
@@ -50,7 +34,8 @@ class CourseFinderChooseCountry(DiscoverUniBasePage):
 
     @property
     def back_page(self):
-        return self.get_parent()
+        from site_search.models import SearchLandingPage
+        return get_page_for_language(self.get_language(), SearchLandingPage.objects.all())
 
 
 class CourseFinderModeOfStudy(DiscoverUniBasePage):
