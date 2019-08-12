@@ -103,3 +103,67 @@
         }
     }
 }
+
+@media only screen and (min-width: 770px) {
+    .search-landing-page {
+        padding: 80px 0px 97px;
+
+        &__heading {
+            @include l-heading-mixin();
+
+            margin-bottom: 50px;
+
+            line-height: 60px;
+            color: $ux-grey-3;
+        }
+
+        &__nav {
+            &-cards {
+                flex-wrap: nowrap;
+                padding-left: 25px;
+                padding-right: 25px;
+                align-items: stretch;
+            }
+
+            &-card {
+                flex: 1 1 0;
+                padding: 35px 65px 40px;
+                margin-left: 25px;
+                margin-right: 25px;
+                margin-bottom: 0px;
+
+                &-label {
+                    @include xs-heading-mixin();
+
+                    color: $ux-grey-3;
+                    line-height: 27px;
+                }
+
+                &-button {
+                    @include xs-heading--bold-mixin();
+
+                    margin-top: 10px;
+                    padding: 13px 60px;
+                    width: 100%;
+
+                    line-height: 24px;
+                    color: $white;
+                }
+
+                &-icon {
+                    height: 124px;
+                    margin-top: 50px;
+                    margin-bottom: 47px;
+                }
+            }
+        }
+
+        &__search {
+            margin-top: 35px;
+
+            .search-landing-page__nav-card-button {
+                margin-top: 30px;
+            }
+        }
+    }
+}
