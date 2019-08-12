@@ -33,10 +33,14 @@ $mobile-body-line-height: 16px;
 $small-font-size: 14px;
 $small-line-height: 14px;
 
-
-@mixin green-gradient-mixin() {
+@mixin green-gradient-background-mixin() {
     background: linear-gradient(145.9deg, $gradient-light-green 13.02%, $gradient-dark-green 85.42%);
     color: $white;
+}
+
+
+@mixin green-gradient-mixin() {
+    @include green-gradient-background-mixin();
     border: 2px solid $gradient-light-green;
 
     &:hover {

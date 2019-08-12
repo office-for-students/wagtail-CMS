@@ -1,76 +1,74 @@
 {% extends "base.html" %}
-{% load static %}
-{% load wagtailcore_tags %}
+{% load static wagtailcore_tags sass_tags %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/content.css' %}">
+    <link href="{% sass_src 'scss/content.scss' %}" rel="stylesheet" type="text/css" >
 {% endblock extra_css %}
 
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>
+{% endblock extra_js %}
+
 {% block content %}
-<div class="content-page section-page">
-    <div class="content-header">
-        <h1>{{ page.title }}</h1>
-    </div>
+    <div class="content-page section-page">
+        <div class="discover-uni-container">
+            <h1 class="content-page__header">
+                {{ page.title }}
+            </h1>
 
-    <div class="breadcrumb-container grid-3">
-        {% if self.get_ancestors|length > 1 %}
-            <ul class="breadcrumb">
-                {% for page in self.get_ancestors %}
-                    {% if page.is_root == False %}
-                        {% if page.title == "Home" %}
-                            <li><a href={% pageurl page %}><i class="fas fa-home"></i></a></li>
-                        {% else %}
-                            <li><a href={% pageurl page %}> / {{ page.title }}</a></li>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-
-                <li class="active"> / {{ page.title }}</li>
-            </ul>
-        {% endif %}
-    </div>
-
-    <div class="subsections-container grid-3">
-        {% for block in page.subsections %}
-            <div tabindex="0" role="button" aria-label="Show content"  class="subsection">
-                <div class="subsection-header">
-                    <h4>{{ block.value.subsection_title }}</h4>
-
-                    <div class="down-arrow">
-                        <svg width="31" height="18" viewBox="0 0 31 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6599 16.5546L30.3515 2.85548C31.0048 2.2019 31.0045 1.14336 30.3509 0.490172C29.6973 -0.163014 28.6388 -0.162767 27.9856 0.490817L15.4712 13.012L2.85049 0.493069C2.19527 -0.156896 1.1351 -0.153346 0.485179 0.501882C0.161831 0.828673 0.000210088 1.25507 0.000325867 1.67977C0.000442981 2.10937 0.165546 2.5406 0.495608 2.86719L14.2993 16.5588C14.9529 17.2088 16.0081 17.2069 16.6597 16.5549L16.6599 16.5546Z" fill="#4C4D6C"/></svg>
-                    </div>
-                </div>
-
-                <div class="subsection-content">
-                    {{block.value.subsection_content}}
-                </div>
+            <div class="content-page__intro">
+                {% if page.intro %}
+                    {{ page.intro | richtext }}
+                {% endif %}
             </div>
-        {% endfor %}
+
+            <div class="section-page__accordions">
+                {% for block in page.subsections %}
+                    <div  class="section-page__accordion">
+                        <div tabindex="0" role="button" aria-label="Show content" class="section-page__accordion-header">
+                            <h2 class="section-page__accordion-title">{{ block.value.subsection_title }}</h2>
+
+                            <div class="plus">
+                                <img class="nav-card__icon" src="{% static 'images/plus_icon.svg' %}" alt="expand">
+                            </div>
+
+                            <div class="minus">
+                                <img class="nav-card__icon" src="{% static 'images/minus_icon.svg' %}" alt="collapse">
+                            </div>
+                        </div>
+
+                        <div class="section-page__accordion-body">
+                            <div class="section-page__accordion-body-content">
+                                {{block.value.subsection_content}}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if page.related_links_title or page.related_links  %}
+                <div class="related-links grid-3">
+                <h2>{{ page.related_links_title }}</h2>
+
+                {% for block in page.related_links %}
+                <div class="link">
+                    <h3>{{block}}</h3>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if page.lateral_links_title or page.lateral_links  %}
+                <div class="lateral-links grid-3">
+                <h2>{{ page.lateral_link_title }}</h2>
+
+                {% for block in page.lateral_links %}
+                <div class="link">
+                    <h3>{{block}}</h3>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
     </div>
-
-    {% if page.related_links_title or page.related_links  %}
-        <div class="related-links grid-3">
-            <h2>{{ page.related_links_title }}</h2>
-
-            {% for block in page.related_links %}
-                <div class="link">
-                    <h3>{{block}}</h3>
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
-
-    {% if page.lateral_links_title or page.lateral_links  %}
-        <div class="lateral-links grid-3">
-            <h2>{{ page.lateral_link_title }}</h2>
-
-            {% for block in page.lateral_links %}
-                <div class="link">
-                    <h3>{{block}}</h3>
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
-</div>
-
 {% endblock content %}

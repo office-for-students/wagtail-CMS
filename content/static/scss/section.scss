@@ -1,237 +1,92 @@
-.subsections-container {
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
-    padding-bottom: 45px;
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
 
-    .subsection {
-        display: -ms-grid;
-        display: grid;
-        -ms-grid-rows: 90px;
-        grid-template-rows: 90px;
-        background: #F0F7FF;
-        border: 1px solid #4C4D6C;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        border-radius: 6px;
-        position: relative;
+.section-page {
+    &__accordion {
+        margin-bottom: 10px;
 
-        &:hover {
-            cursor: pointer;
+        &-header {
+            background-color: $ux-grey-1;
+            padding: 30px  22px 30px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .minus {
+                display: none;
+            }
+
+            .plus {
+                display: none;
+            }
+
+            &.open {
+                @include green-gradient-background-mixin();
+
+                .section-page__accordion-title {
+                    color: white;
+                }
+            }
         }
 
-        .subsection-content {
-            display: none;
+        &-title {
+            @include small-font--bold-mixin();
+
+            margin: 0px;
+
+            color: $ux-grey-3;
+            line-height: 19px;
         }
 
-        .down-arrow {
-            position: absolute;
-            right: 0;
-            top: 0;
-            display: -ms-grid;
-            display: grid;
-            width: 90px;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            height: 90px;
-            border-left: 1px solid #4C4D6C;
+        &-body {
+            background-color: $ux-grey-1;
+
+            &-content {
+                @include small-font-mixin();
+
+                padding: 30px;
+
+                p {
+                    margin-top: 0px;
+
+                    line-height: 19px;
+                }
+            }
         }
     }
+}
 
-    .open-subsection {
-        -ms-grid-rows: 1fr !important;
-        grid-template-rows: 1fr !important;
+@media only screen and (min-width: 770px) {
+    .section-page {
+        &__accordion {
+            margin-bottom: 7px;
 
-        .subsection-content {
-            display: block;
+            &-header {
+                padding: 30px  30px 30px 32px;
+            }
 
-        }
+            &-title {
+                @include xs-heading--bold-mixin();
 
-        .subsection-header {
-            border-bottom: 1px solid #4C4D6C;
-
-            h4 {
-                padding-top: 30.5px;
-                padding-bottom: 30.5px;
-                font-size: 24px;
+                color: $ux-grey-3;
                 line-height: 29px;
-                color: #5F607C;
-                padding-left: 46px;
-                margin: 0;
             }
-        }
-    }
 
-    .subsection-content {
-        padding: 60px;
+            &-body {
+                &-content {
+                    @include xs-heading-mixin();
 
-        .rich-text {
-            padding: 60px;
-            background: #fff;
-            border: 1px solid #8D8D8D;
-        }
+                    width: 66%;
 
-        p {
-            line-height: 22px;
-            color: #626377;
-        }
+                    padding: 60px 80px 70px;
 
-        li {
-            color: #626377;
-            line-height: 22px;
-        }
+                    p {
+                        margin-top: 0px;
 
-        a {
-            text-decoration: none;
-            color: #71A4D3;
-        }
-    }
-}
-
-
-.subsection .down-arrow svg {
-    -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
-    align-self: center;
-}
-
-.open-subsection .down-arrow svg {
-    transform: rotate(180deg);
-}
-
-.subsection-content .full-width {
-    width: 100%;
-}
-
-.subsection iframe {
-    width: 100%;
-    height: 480px;
-}
-
-.responsive-object {
-    padding-bottom: 0 !important;
-}
-
-.related-links {
-    grid-row-gap: 30px;
-    text-align: center;
-    background-color: #F3F9FF;
-    color: #4C4D6C;
-    margin-top: 90px;
-    padding-bottom: 105px;
-
-    h2 {
-        margin: 0;
-        padding: 60px 0 30px 0;
-        font-size: 33px;
-        line-height: 40px;
-    }
-
-    .link {
-        display: grid;
-        display: -ms-grid;
-        height: 150px;
-        background-color: #fff;
-        border: 1px solid #4C4D6C;
-        box-sizing: border-box;
-        border-radius: 6px;
-
-        h3 {
-            align-self: center;
-
-            a {
-                color: #4C4D6C;
-                font-size: 24px;
-                line-height: 29px;
-                text-decoration: none;
+                        line-height: 29px;
+                    }
+                }
             }
-        }
-    }
-}
-
-.lateral-links {
-    grid-row-gap: 30px;
-    text-align: center;
-    color: #4C4D6C;
-    padding-bottom: 90px;
-
-    h2 {
-        margin: 0;
-        padding: 75px 0 17px 0;
-        font-size: 33px;
-        line-height: 40px;
-    }
-
-    .link {
-        display: grid;
-        display: -ms-grid;
-        height: 150px;
-        margin: 0 0 15px 0;
-        background-color: #F3F9FF;
-        border: 1px solid #4C4D6C;
-        box-sizing: border-box;
-        border-radius: 6px;
-
-        h3 {
-            align-self: center;
-
-            a {
-                color: #4C4D6C;
-                font-size: 24px;
-                line-height: 29px;
-                text-decoration: none;
-            }
-        }
-    }
-}
-
-@media only screen and (max-width: 769px) {
-    .subsection {
-        -ms-grid-rows: 75px;
-        grid-template-rows: 75px;
-
-        h4 {
-            font-size: 16px;
-            line-height: 20px;
-            padding-top: 27.5px;
-            padding-bottom: 27.5px;
-        }
-
-        .down-arrow {
-            height: 75px;
-            width: 75px;
-
-            svg {
-                width: 23.6px;
-                height: 13.04px;
-            }
-        }
-    }
-
-    .subsection-content {
-        padding: 30px;
-    }
-
-    .related-links {
-        margin-top: 45px;
-    }
-
-    .related-links, .lateral-links {
-        padding-bottom: 45px;
-
-        .link {
-            height: 105px;
-        }
-
-        h2 {
-            padding-top: 45px;
-            font-size: 24px;
-            line-height: 29px;
-        }
-
-        h3 a {
-            font-size: 19px;
-            line-height: 110%;
         }
     }
 }

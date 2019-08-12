@@ -23,26 +23,6 @@ $(document).ready(function() {
       inputs.not(this).prop('required', !$(this).val().length);
   });
 
-  // Content subsections
-
-  handleSubsectionClick = (e) => {
-    if(e.currentTarget.classList.contains('open-subsection')) {
-      e.currentTarget.classList.remove('open-subsection')
-    } else {
-      e.currentTarget.classList.add('open-subsection')
-    }
-  }
-
-  $('.subsection').click((e) => {
-    handleSubsectionClick(e)
-  })
-
-  $('.subsection').keydown((e) => {
-    if(e.which === 13 || e.which === 32) {
-      handleSubsectionClick(e)
-    }
-  })
-
   // Course finder
 
   if (sessionStorage.getItem("subjectJSON") === null) {
