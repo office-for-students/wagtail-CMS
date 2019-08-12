@@ -71,7 +71,7 @@
             &-helper {
                 @include small-font-mixin();
 
-                margin-top: 8px;
+                margin-top: 15px;
 
                 color: $helper-grey;
 
@@ -128,6 +128,12 @@
                         display: none;
                     }
                 }
+            }
+        }
+
+        &.mode-chooser {
+            .course-finder-content__next {
+                margin-top: 147px;
             }
         }
     }
