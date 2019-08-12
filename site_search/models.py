@@ -2,6 +2,7 @@ from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from django.db.models.fields import TextField
 
+from CMS.enums import enums
 from core.models import DiscoverUniBasePage
 from core.utils import get_page_for_language
 from coursefinder.models import CourseFinderChooseCountry
@@ -21,7 +22,12 @@ class SearchLandingPage(DiscoverUniBasePage):
 
     def get_context(self, request):
         context = super(SearchLandingPage, self).get_context(request)
-        context['search_url'] = '/search-results'
+        context['search_url'] = self.get_search_url()
         context['course_finder_url'] = get_page_for_language(self.get_language(),
                                                              CourseFinderChooseCountry.objects.all()).url
         return context
+
+    def get_search_url(self):
+        if self.get_language() == enums.languages.WELSH:
+            return "%s/results" % self.get_language()
+        return '/results'
