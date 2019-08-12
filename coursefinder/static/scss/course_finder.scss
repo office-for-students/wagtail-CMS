@@ -201,6 +201,12 @@
                     margin-left: 4px;
                 }
             }
+
+            &.mode-chooser {
+                .course-finder-content__next {
+                    margin-top: 45px;
+                }
+            }
         }
     }
 }
