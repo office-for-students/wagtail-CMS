@@ -8,8 +8,8 @@
 
         &__nav {
             display: flex;
-            padding: 19px 0px;
             justify-content: space-between;
+            padding: 19px 0px;
             margin: 0;
             height: 100%;
             list-style: none;
@@ -52,10 +52,6 @@
         padding-top: 44px;
 
         &__question {
-            &-block {
-                position: relative;
-            }
-
             @include m-heading--bold-mixin();
 
             margin-top: 0px;
@@ -103,11 +99,101 @@
                 border-radius: 70.6272px;
                 line-height: 25px;
                 color: $white;
+
+                &:hover {
+                    .green {
+                        display: initial;
+                    }
+
+                    .white {
+                        display: none;
+                    }
+                }
             }
 
             &-icon {
                 height: 14px;
                 margin-left: 6px;
+
+                &.green {
+                    display: none;
+                }
+
+                &:hover {
+                    &.green {
+                        display: initial;
+                    }
+
+                    &.white {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .course-finder {
+        &-base {
+            padding: 0px 0px 107px;
+
+            &__nav {
+                padding: 24px 0px;
+
+                &-control {
+                    @include xs-heading-mixin();
+
+                    color: $gradient-light-green;
+
+                    img {
+                        height: 16px;
+                    }
+                }
+            }
+        }
+
+        &-content {
+            padding-top: 55px;
+
+            &__question {
+                @include l-heading--bold-mixin();
+
+                margin-bottom: 30px;
+                width: 50%;
+
+                line-height: 60px;
+                color: $ux-grey-3;
+
+                &-label {
+                    @include s-heading-mixin();
+                }
+
+                &-helper {
+                    @include desktop-body-font-mixin();
+
+                    margin-top: 20px;
+
+                color: $helper-grey;
+                }
+            }
+
+            &__next {
+                margin-top: 45px;
+
+                &-button {
+                    @include s-heading-mixin();
+
+                    padding: 19px 106px 18px;
+
+                    line-height: 31px;
+                    color: $white;
+                }
+
+                &-icon {
+                    height: 19px;
+                    margin-left: 4px;
+                }
             }
         }
     }

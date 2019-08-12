@@ -59,7 +59,8 @@
         <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
             {% get_translation key='next' language=page.get_language %}
 
-            <img class="course-finder-content__next-icon" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
+            <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
+            <img class="course-finder-content__next-icon green" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
         </button>
     </a>
 {% endblock %}

@@ -7,39 +7,42 @@
 
 {% block content %}
     <div class="course-finder-base">
-        <ul class="course-finder-base__nav">
-            {% if page.back_page %}
+        <div class="discover-uni-container">
+            <ul class="course-finder-base__nav">
+                {% if page.back_page %}
                 <a href={% pageurl page.back_page %} class="course-finder-base__nav-control">
                     <li class="course-finder-base__nav-control-back">
                         <img class="course-finder-base__nav-control-icon" src="{% static 'images/chevrons/green_left_chevron.svg' %}" alt="">
                         {% get_translation key='back' language=page.get_language %}
                     </li>
                 </a>
-            {% endif %}
+                {% endif %}
 
-            <!--<a href={% pageurl page.get_parent %} onclick="handleStartAgain()">-->
+                <!--<a href={% pageurl page.get_parent %} onclick="handleStartAgain()">-->
                 <!--<li class="helper-text start-again">{% get_translation key='start_again' language=page.get_language %}</li>-->
-            <!--</a>-->
+                <!--</a>-->
 
-            {% if page.use_skip_form %}
+                {% if page.use_skip_form %}
                 {% include 'coursefinder/partials/course_finder_results_form.html' with button_value_key='skip' button_class='skip' %}
-            {% else %}
+                {% else %}
                 <a href={% pageurl page.next_page %} class="course-finder-base__nav-control">
                     <li class="course-finder-base__nav-control-skip">
                         {% get_translation key='skip' language=page.get_language %}
+
                         <img class="course-finder-base__nav-control-icon" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
                     </li>
                 </a>
-            {% endif %}
-        </ul>
+                {% endif %}
+            </ul>
 
-        <div class="course-finder-content">
-            <div class="course-finder-content__question-block">
-                {% block question %}{% endblock %}
-            </div>
+            <div class="course-finder-content">
+                <div class="course-finder-content__question-block">
+                    {% block question %}{% endblock %}
+                </div>
 
-            <div class="course-finder-content__next">
-                {% block next_nav %}{% endblock %}
+                <div class="course-finder-content__next">
+                    {% block next_nav %}{% endblock %}
+                </div>
             </div>
         </div>
     </div>

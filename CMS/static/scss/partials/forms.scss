@@ -71,3 +71,21 @@
         }
     }
 }
+
+@media only screen and (min-width: 770px) {
+    .checkbox {
+        margin-bottom: 20px;
+
+        .checkmark {
+            height: 40px;
+            width: 40px;
+
+            &:after {
+                left: 14px;
+                top: 7px;
+                width: 8px;
+                height: 17px;
+            }
+        }
+    }
+}
