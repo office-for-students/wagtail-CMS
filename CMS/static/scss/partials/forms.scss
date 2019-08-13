@@ -4,7 +4,6 @@
     padding-left: 35px;
     margin-bottom: 12px;
     cursor: pointer;
-    font-size: 22px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -78,7 +77,6 @@
     padding-left: 35px;
     margin-bottom: 12px;
     cursor: pointer;
-    font-size: 22px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -145,6 +143,30 @@
                 top: 7px;
                 width: 8px;
                 height: 17px;
+            }
+        }
+    }
+
+    .radio {
+        input {
+            &:checked ~ .radiobox {
+                @include green-gradient-background-mixin();
+                border: 0;
+                height: 40px;
+                width: 40px;
+            }
+        }
+
+        .radiobox {
+            top: 2px;
+            height: 36px;
+            width: 36px;
+
+            &:after {
+                top: 11px;
+                left: 11px;
+                width: 18px;
+                height: 18px;
             }
         }
     }

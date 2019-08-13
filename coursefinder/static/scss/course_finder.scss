@@ -191,7 +191,7 @@
         }
 
         &-content {
-            padding-top: 55px;
+            padding-top: 73px;
 
             &__question {
                 @include l-heading--bold-mixin();
@@ -244,14 +244,10 @@
                 }
             }
 
-            &.mode-chooser, &.subject-chooser {
+            &.mode-chooser, &.subject-chooser, &.narrow-search {
                 .course-finder-content__next {
                     margin-top: 45px;
                 }
-            }
-
-            &.subject-chooser {
-                padding-top: 73px;
             }
         }
     }
