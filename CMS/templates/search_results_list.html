@@ -17,19 +17,3 @@
 </div>
 
 {% include '_pagination.html' %}
-
-<div class="related-links-container">
-    <div class="related-links grid-1">
-        <h2>
-            {{ page.related_links_title }}
-        </h2>
-
-        {% for block in page.related_links %}
-            <div class="link">
-                <h3>
-                    {{block}}
-                </h3>
-            </div>
-        {% endfor %}
-    </div>
-</div>

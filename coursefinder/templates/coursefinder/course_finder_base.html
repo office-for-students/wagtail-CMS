@@ -18,10 +18,6 @@
                     </a>
                 {% endif %}
 
-                <!--<a href={% pageurl page.get_parent %} onclick="handleStartAgain()">-->
-                <!--<li class="helper-text start-again">{% get_translation key='start_again' language=page.get_language %}</li>-->
-                <!--</a>-->
-
                 {% if page.use_skip_form %}
                     {% include 'coursefinder/partials/course_finder_results_form.html' with button_value_key='skip' button_class='course-finder-base__nav-control' icon_class='course-finder-base__nav-control-icon' %}
                 {% else %}

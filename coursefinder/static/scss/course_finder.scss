@@ -242,6 +242,7 @@
         &__result {
             &-list {
                 margin-top: 20px;
+                margin-bottom: 111px;
             }
 
             &-accordion {
@@ -294,7 +295,6 @@
                         padding: 40px 42px 43px;
 
                         border-bottom: 2px solid $divider-grey;
-
                     }
 
                     &-course-name {
@@ -424,6 +424,84 @@
                 .course-finder-content__next {
                     margin-top: 35px;
                     margin-bottom: 162px;
+                }
+            }
+        }
+
+        &-results {
+            padding-top: 65px;
+
+            &__heading {
+                @include l-heading--bold-mixin();
+
+                margin-bottom: 32px;
+
+                line-height: 60px;
+                color: $ux-grey-3;
+            }
+
+            &__overview {
+                @include desktop-body-font-mixin();
+            }
+
+            &__result {
+                &-list {
+                    margin-top: 18px;
+                    margin-bottom: 82px;
+                }
+
+                &-accordion {
+                    &-header {
+                        padding: 32px;
+
+                        .collapse, .expand {
+                            img {
+                                width: 20px;
+                            }
+                        }
+                    }
+
+                    &-heading {
+                        flex-grow: 1;
+                        display: flex;
+                        justify-content: space-between;
+                        padding-right: 76px;
+                    }
+
+                    &-title {
+                        @include xs-heading--bold-mixin();
+
+                        margin: 0px;
+
+                        color: $ux-grey-3;
+                    }
+
+                    &-overview {
+                        @include desktop-body-font--bold-mixin();
+
+                        color: $ux-grey-3;
+                    }
+
+                    &-body {
+                        background-color: $ux-grey-1;
+
+                        &-content {
+                            padding: 50px 80px;
+                        }
+
+                        &-course-name {
+                            @include s-heading-mixin();
+
+                            color: $link-blue;
+                            line-height: 31px;
+                        }
+
+                        &-course-info {
+                            @include xs-heading-mixin();
+
+                            line-height: 27px;
+                        }
+                    }
                 }
             }
         }
