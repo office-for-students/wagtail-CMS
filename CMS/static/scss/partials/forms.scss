@@ -74,7 +74,6 @@
 
 @mixin custom-selector() {
     position: relative;
-    font-family: Arial;
 
     .select-selected {
         background-color: $form-grey;
@@ -124,6 +123,34 @@
 
     .select-hide {
         display: none;
+    }
+
+    @media only screen and (min-width: 770px) {
+        .select-selected {
+
+            &:after {
+                top: 34px;
+                right: 30px;
+                border: 10px solid transparent;
+                border-color: $ux-grey-3 transparent transparent transparent;
+            }
+
+            &.select-arrow-active:after {
+                top: 23px;
+            }
+        }
+
+        .select-items {
+            max-height: 308px;
+        }
+
+        .select-items .option, .select-selected {
+            @include xs-heading-mixin();
+
+            padding: 28px;
+
+            color: $ux-grey-3;
+        }
     }
 }
 
