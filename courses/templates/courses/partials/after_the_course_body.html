@@ -71,7 +71,7 @@
                 {{block.value.three_years_earnings_heading}}
             </h2>
 
-            {% if course_details.show_leo %}
+            {% if not course_details.show_leo %}
                 <p class="after-course__figure">
                     £{{ course_details.leo_stats.median }}
                 </p>
@@ -94,7 +94,7 @@
 
         {% if course_details.show_leo %}
             <div class="explanation-text">
-                {% create_list course_details.leo_stats.number_of_students as substitutions %}
+                {% create_list course_details.leo_stats.number_of_graduates as substitutions %}
                 {% insert_values_to_rich_text content=block.value.three_years_earnings_data_source substitutions=substitutions as subbed_text %}
                 {{ subbed_text | richtext }}
             </div>

@@ -98,7 +98,7 @@
                 {% endfor %}
 
                 <div class="explanation-text">
-                    {% create_list course_details.entry_stats.number_of_students as substitutions %}
+                    {% create_list course_details.tariff_stats.number_of_students as substitutions %}
                     {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
                     {{ subbed_text | richtext }}
                 </div>
