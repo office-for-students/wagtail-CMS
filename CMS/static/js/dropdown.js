@@ -114,6 +114,7 @@
                     for (var j = 0; j < this.options.length; j++) {
                         this.options[j].unselect();
                     }
+                    selection.markSelected();
                 }
             }
         }
