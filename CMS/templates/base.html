@@ -20,20 +20,25 @@
 
 
 
-        {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
-        {% endblock %}
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:regular,bold&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,bold&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link href="{% sass_src 'scss/global.scss' %}" rel="stylesheet" type="text/css" >
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/dropdown.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/search-dropdown.js' %}"></script>
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
 
-        {# Global stylesheets #}
-        <link href="{% sass_src 'scss/global.scss' %}" rel="stylesheet" type="text/css" >
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
@@ -46,14 +51,6 @@
         <footer class="footer">
 
         </footer>
-
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-
-        {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
-        {% endblock %}
     </body>
 
-<script type="text/javascript" src="{% static 'js/dropdown.js' %}"></script>
 </html>

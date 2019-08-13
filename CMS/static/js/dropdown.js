@@ -58,6 +58,7 @@
             this.uiSelect = this.wrapper.find('.select-selected');
             this.startWatcher();
             this.createOptionList();
+            this.baseSelect.hide();
         },
 
         createOptionList: function() {
@@ -71,6 +72,11 @@
             this.optionList = this.wrapper.find('.select-items');
         },
 
+        resetOptionList: function() {
+            this.optionList.remove();
+            this.createOptionList();
+        },
+
         startWatcher: function() {
             var that = this;
 
@@ -82,6 +88,10 @@
                 }
                 that.closeCallback(activeSelector);
             });
+
+            this.baseSelect.on('loadeddata', function() {
+                that.resetOptionList();
+            })
         },
 
         openOptionList: function() {
@@ -98,6 +108,7 @@
             for (var i = 0; i < this.baseSelect[0].length; i++) {
                 if (this.baseSelect[0][i].innerHTML == selection.baseOption[0].innerHTML) {
                     this.baseSelect[0].selectedIndex = i;
+                    this.baseSelect.trigger('change');
                     this.uiSelect[0].innerHTML = selection.baseOption[0].innerHTML;
                     for (var j = 0; j < this.options.length; j++) {
                         this.options[j].unselect();
