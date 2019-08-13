@@ -109,6 +109,10 @@ DICT = {
         'en': 'Doing further study',
         'cy': ''
     },
+    'dont_narrow': {
+        'en': "don't narrow search",
+        'cy': ''
+    },
     'england': {
         'en': 'England',
         'cy': ''

@@ -10,6 +10,7 @@
         &__nav {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding: 19px 0px;
             margin: 0;
             height: 100%;
@@ -19,8 +20,16 @@
             &-control {
                 @include mobile-body-font--bold-mixin();
 
+                padding: 0px;
+
                 text-decoration: none;
                 color: $gradient-light-green;
+                border: none;
+                background-color: $white;
+            }
+
+            &-input {
+                display: none;
             }
 
             .filter {
@@ -90,6 +99,10 @@
                 &:nth-of-type(3) {
                     display: none;
                 }
+            }
+
+            &-previous-selections {
+                display: none;
             }
         }
 
