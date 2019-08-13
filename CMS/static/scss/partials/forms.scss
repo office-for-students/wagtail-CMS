@@ -130,6 +130,13 @@
     }
 }
 
+.textbox {
+    background: $form-grey;
+    border: 2px solid $ux-grey-3;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
 @media only screen and (min-width: 770px) {
     .checkbox {
         margin-bottom: 20px;
