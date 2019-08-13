@@ -184,7 +184,7 @@
                 @include l-heading--bold-mixin();
 
                 margin-bottom: 30px;
-                width: 50%;
+                width: 80%;
 
                 line-height: 60px;
                 color: $ux-grey-3;
@@ -199,6 +199,11 @@
                     margin-top: 20px;
 
                 color: $helper-grey;
+                }
+
+                &-selector {
+                    width: 50%;
+                    margin-bottom: 30px;
                 }
             }
 
@@ -220,10 +225,20 @@
                 }
             }
 
-            &.mode-chooser {
+            &.country-chooser {
+                .course-finder-content__question {
+                    width: 60%;
+                }
+            }
+
+            &.mode-chooser, &.subject-chooser {
                 .course-finder-content__next {
                     margin-top: 45px;
                 }
+            }
+
+            &.subject-chooser {
+                padding-top: 73px;
             }
         }
     }
