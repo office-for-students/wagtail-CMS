@@ -65,6 +65,7 @@
 
     {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.salary_stats.unavailable_reason %}
 
+    
     <div class="after-course__block">
         <div class="after-course__data-point">
             <h2 class="after-course__stats-heading">
@@ -94,7 +95,7 @@
 
         {% if course_details.show_leo %}
             <div class="explanation-text">
-                {% create_list course_details.leo_stats.number_of_students as substitutions %}
+                {% create_list course_details.leo_stats.number_of_graduates as substitutions %}
                 {% insert_values_to_rich_text content=block.value.three_years_earnings_data_source substitutions=substitutions as subbed_text %}
                 {{ subbed_text | richtext }}
             </div>

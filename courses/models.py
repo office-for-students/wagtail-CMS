@@ -235,12 +235,17 @@ class Course:
 
     @property
     def show_leo(self):
-        return self.country.name == 'England'
+        return self.country.name == 'England' and self.leo_stats.unavailable_reason
 
     def display_title(self):
+        if self.honours_award_provision == "1":
+            honours = self.qualification.label + " "
+            english_title = honours + self.english_title
+            welsh_title = honours + self.welsh_title
+
         if self.display_language == enums.languages.ENGLISH:
-            return self.english_title if self.english_title else self.welsh_title
-        return self.welsh_title if self.welsh_title else self.english_title
+            return english_title if self.english_title else welsh_title
+        return welsh_title if self.welsh_title else english_title
 
     @classmethod
     def find(cls, institution_id, course_id, mode, language):
@@ -407,7 +412,7 @@ class EmploymentStatistics:
 
     @property
     def work_and_or_study(self):
-        return self.in_work_and_study + self.in_work_or_study
+        return self.in_work_or_study
 
 
 class JobTypeStatistics:
