@@ -23,7 +23,7 @@
                 <!--</a>-->
 
                 {% if page.use_skip_form %}
-                    {% include 'coursefinder/partials/course_finder_results_form.html' with button_value_key='skip' button_class='skip' %}
+                    {% include 'coursefinder/partials/course_finder_results_form.html' with button_value_key='skip' button_class='course-finder-base__nav-control' icon_class='course-finder-base__nav-control-icon' %}
                 {% else %}
                 <a href={% pageurl page.next_page %} class="course-finder-base__nav-control">
                     <li class="course-finder-base__nav-control-skip">

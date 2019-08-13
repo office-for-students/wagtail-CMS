@@ -7,28 +7,28 @@
 {% block body_class %}template-course-finder-summary{% endblock %}
 
 {% block question %}
-    <h3>
-        {{page.header}}
-    </h3>
+    <h1 class="course-finder-content__heading">{{page.header}}</h1>
 
-    <p>{{page.country_section_title}}</p>
+    <div class="course-finder-content__summary">
+        <h2 class="course-finder-content__summary-heading">{{page.country_section_title}}</h2>
 
-    <p id="countries"></p>
+        <p id="countries" class="course-finder-content__summary-value"></p>
 
-    <p>{{page.mode_of_study_section_title}}</p>
+        <h2 class="course-finder-content__summary-heading">{{page.mode_of_study_section_title}}</h2>
 
-    <p id="modes"></p>
+        <p id="modes" class="course-finder-content__summary-value"></p>
 
-    <p>{{page.subjects_section_title}}</p>
+        <h2 class="course-finder-content__summary-heading">{{page.subjects_section_title}}</h2>
 
-    <p id="subjects"></p>
+        <p id="subjects" class="course-finder-content__summary-value"></p>
 
-    <p>{{page.narrow_by_section_title}}</p>
+        <h2 class="course-finder-content__summary-heading">{{page.narrow_by_section_title}}</h2>
 
-    <p id="narrow"></p>
+        <p id="narrow" class="course-finder-content__summary-value"></p>
+    </div>
 {% endblock %}
 
 
 {% block next_nav %}
-    {% include 'coursefinder/partials/course_finder_results_form.html' with button_value_key='see_courses' button_class='button' %}
+    {% include 'coursefinder/partials/course_finder_results_form.html' with button_value_key='next' button_class='course-finder-content__next-button' icon_class='course-finder-content__next-icon' %}
 {% endblock %}

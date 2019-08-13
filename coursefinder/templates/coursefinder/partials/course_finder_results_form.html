@@ -9,9 +9,10 @@
 
     <input class="course-finder-base__nav-input" type="text" name="countries_query" value="">
 
-    <button class="course-finder-base__nav-control" onclick="handleResultsRequest()">
+    <button class="{{ button_class }}" onclick="handleResultsRequest()">
         {% get_translation key=button_value_key language=page.get_language %}
 
-        <img class="course-finder-base__nav-control-icon" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
+        <img class="{{ icon_class }} green" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
+        <img class="{{ icon_class }} white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
     </button>
 </form>

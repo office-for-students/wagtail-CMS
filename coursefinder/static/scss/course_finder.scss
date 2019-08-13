@@ -6,6 +6,9 @@
 .course-finder {
     &-base {
         padding: 0px 19px 48px;
+        background-image: url('/static/images/home-background.png');
+        background-size: cover;
+        background-position: center bottom;
 
         &__nav {
             display: flex;
@@ -26,6 +29,12 @@
                 color: $gradient-light-green;
                 border: none;
                 background-color: $white;
+
+                &-icon {
+                    &.white {
+                        display: none;
+                    }
+                }
             }
 
             &-input {
@@ -44,7 +53,7 @@
     &-content {
         padding-top: 44px;
 
-        &__question {
+        &__question, &__heading {
             @include m-heading--bold-mixin();
 
             margin-top: 0px;
@@ -158,6 +167,27 @@
             }
         }
 
+        &__summary {
+            margin-bottom: 70px;
+
+            &-heading {
+                @include desktop-body-font--bold-mixin();
+
+                margin: 0px;
+
+                line-height: 26px;
+            }
+
+            &-value {
+                @include desktop-body-font-mixin();
+
+                margin: 0px;
+                margin-bottom: 30px;
+
+                line-height: 26px;
+            }
+        }
+
         &.mode-chooser {
             .course-finder-content__next {
                 margin-top: 147px;
@@ -192,6 +222,7 @@
     .course-finder {
         &-base {
             padding: 0px 0px 107px;
+            background-position: initial;
 
             &__nav {
                 padding: 24px 0px;
@@ -211,7 +242,7 @@
         &-content {
             padding-top: 73px;
 
-            &__question {
+            &__question, &__heading {
                 @include l-heading--bold-mixin();
 
                 margin-bottom: 30px;
@@ -253,6 +284,24 @@
                 &-icon {
                     height: 19px;
                     margin-left: 4px;
+                }
+            }
+
+            &__summary {
+                margin-bottom: 50px;
+
+                &-heading {
+                    @include s-heading--bold-mixin();
+
+                    line-height: 37px;
+                }
+
+                &-value {
+                    @include s-heading-mixin();
+
+                    margin-bottom: 20px;
+
+                    line-height: 37px;
                 }
             }
 
