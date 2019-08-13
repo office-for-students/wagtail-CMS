@@ -31,6 +31,7 @@
         <script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/search-dropdown.js' %}"></script>
+
         {# Global stylesheets #}
         <link href="{% sass_src 'scss/global.scss' %}" rel="stylesheet" type="text/css" >
     </head>
@@ -53,4 +54,6 @@
             {# Override this in templates to add extra javascript #}
         {% endblock %}
     </body>
+
+<script type="text/javascript" src="{% static 'js/dropdown.js' %}"></script>
 </html>

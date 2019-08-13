@@ -72,6 +72,63 @@
     }
 }
 
+@mixin custom-selector() {
+    position: relative;
+    font-family: Arial;
+
+    select {
+        display: none;
+    }
+
+    .select-selected {
+        background-color: $form-grey;
+
+        &:after {
+            position: absolute;
+            content: "";
+            top: 25px;
+            right: 25px;
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+            border-color: $ux-grey-3 transparent transparent transparent;
+        }
+
+        &.select-arrow-active:after {
+            border-color: transparent transparent $ux-grey-3 transparent;
+            top: 17px;
+        }
+    }
+
+    .select-items {
+        position: absolute;
+        background-color: $form-grey;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        max-height: 232px;
+        overflow-y: scroll;
+    }
+
+    .select-items .option, .select-selected {
+        @include mobile-body-font-mixin();
+
+        padding: 21px;
+
+        color: $ux-grey-3;
+        cursor: pointer;
+    }
+
+    .select-items option:hover, .same-as-selected {
+        @include green-gradient-background-mixin();
+    }
+
+    .select-hide {
+        display: none;
+    }
+}
+
 @media only screen and (min-width: 770px) {
     .checkbox {
         margin-bottom: 20px;
