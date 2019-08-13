@@ -43,11 +43,12 @@ $small-line-height: 14px;
 
 @mixin green-gradient-mixin() {
     @include green-gradient-background-mixin();
-    border: 2px solid $gradient-light-green;
+    border: 2px solid transparent;
 
     &:hover {
         background: $white;
         color: $gradient-light-green;
+        border: 2px solid $gradient-light-green;
     }
 }
 
