@@ -75,6 +75,7 @@
         resetOptionList: function() {
             this.optionList.remove();
             this.createOptionList();
+            this.uiSelect[0].innerHTML = this.options[0].baseOption[0].innerHTML;
         },
 
         startWatcher: function() {
