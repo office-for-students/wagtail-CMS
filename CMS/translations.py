@@ -257,6 +257,10 @@ DICT = {
         'en': 'Search',
         'cy': ''
     },
+    'search_again': {
+        'en': 'Search again',
+        'cy': ''
+    },
     'search_within': {
         'en': 'Search within',
         'cy': ''
@@ -296,10 +300,6 @@ DICT = {
     'start': {
         'en': 'Start',
         'cy': 'Dechrau'
-    },
-    'start_again': {
-        'en': 'Start again',
-        'cy': ''
     },
     'still_on_course': {
         'en': 'Are still on the course',

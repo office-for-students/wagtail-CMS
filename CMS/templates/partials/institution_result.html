@@ -1,23 +1,28 @@
 {% load staticfiles %}
 {% load discover_uni_tags %}
 
+<div  class="course-finder-results__result-accordion">
+    <div tabindex="0" role="button" aria-label="Show content" class="course-finder-results__result-accordion-header">
+        <div>
+            <h2 class="course-finder-results__result-accordion-title">{{ institution.public_ukprn_name }}</h2>
 
-<div tabindex="0" role="button" aria-label="Show result" class="result">
-    <div class="result-title">
-        <h4>
-            {{ institution.public_ukprn_name }}
-        </h4>
+            <p class="course-finder-results__result-accordion-overview">
+                {{ institution.number_of_courses }} {% get_translation key='courses' language=page.get_language %}
+            </p>
+        </div>
 
-        <p class="helper-text">
-            {{ institution.number_of_courses }} {% get_translation key='courses' language=page.get_language %}
-        </p>
+        <div class="expand">
+            <img class="nav-card__icon" src="{% static 'images/plus_icon.svg' %}" alt="expand">
+        </div>
+
+        <div class="collapse">
+            <img class="nav-card__icon" src="{% static 'images/minus_icon.svg' %}" alt="collapse">
+        </div>
     </div>
 
-    {% for course in institution.courses %}
-        {% include 'partials/course_result.html' with course=course institution_id=institution.public_ukprn %}
-    {% endfor %}
-
-    <div class="down-arrow">
-        <img src="{% static 'images/down_chevron_black.svg' %}" alt="">
+    <div class="course-finder-results__result-accordion-body">
+        {% for course in institution.courses %}
+            {% include 'partials/course_result.html' with course=course institution_id=institution.public_ukprn %}
+        {% endfor %}
     </div>
 </div>

@@ -25,5 +25,4 @@ def course_finder_query(subject, institution, mode, countries, limit, offset):
             url = f"{url}&filters={mode.lower().replace('-', '_').replace(' ', '_')}"
         if countries and countries != '':
             url = f"{url}&countries={countries.lower().replace(' ', '_')}"
-
         return requests.get(url=url)
