@@ -65,13 +65,14 @@
 
     {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.salary_stats.unavailable_reason %}
 
+    
     <div class="after-course__block">
         <div class="after-course__data-point">
             <h2 class="after-course__stats-heading">
                 {{block.value.three_years_earnings_heading}}
             </h2>
 
-            {% if not course_details.show_leo %}
+            {% if course_details.show_leo %}
                 <p class="after-course__figure">
                     £{{ course_details.leo_stats.median }}
                 </p>
