@@ -117,6 +117,10 @@ DICT = {
         'en': 'England',
         'cy': ''
     },
+    'enter_3_characters': {
+        'en': 'Please enter at least 3 characters to search',
+        'cy': ''
+    },
     'filter': {
         'en': 'Filter',
         'cy': ''

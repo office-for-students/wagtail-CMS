@@ -65,6 +65,12 @@
                     width: 219px;
                     padding: 14px 10px;
                 }
+
+                .search-field-input {
+                    @include xs-heading-mixin();
+
+                    padding: 14px 10px;
+                }
             }
 
             &-label {
@@ -164,6 +170,12 @@
             }
         }
 
+        &.uni-picker {
+            .course-finder-content__next {
+                margin-top: 260px;
+            }
+        }
+
         &.postcode-search {
             .course-finder-content__question {
                 margin-bottom: 25px;
@@ -253,6 +265,13 @@
             &.mode-chooser, &.subject-chooser, &.narrow-search {
                 .course-finder-content__next {
                     margin-top: 45px;
+                }
+            }
+
+            &.uni-picker {
+                .course-finder-content__next {
+                    margin-top: 35px;
+                    margin-bottom: 162px;
                 }
             }
         }
