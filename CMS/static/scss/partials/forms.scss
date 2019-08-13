@@ -105,6 +105,12 @@
         z-index: 99;
         max-height: 232px;
         overflow-y: scroll;
+
+        .option {
+            &:hover, &.same-as-selected {
+                @include green-gradient-background-mixin();
+            }
+        }
     }
 
     .select-items .option, .select-selected {
@@ -114,10 +120,6 @@
 
         color: $ux-grey-3;
         cursor: pointer;
-    }
-
-    .select-items option:hover, .same-as-selected {
-        @include green-gradient-background-mixin();
     }
 
     .select-hide {
