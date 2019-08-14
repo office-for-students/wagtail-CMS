@@ -186,7 +186,7 @@ DICT = {
         'cy': ''
     },
     'more_pages_after': {
-        'en': 'More pages available ater',
+        'en': 'More pages available after',
         'cy': ''
     },
     'near_your_home': {
