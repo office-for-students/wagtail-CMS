@@ -1,3 +1,5 @@
+@import './forms';
+
 .search-dropdown {
     width: 100%;
     position: relative;
@@ -10,11 +12,8 @@
         width: 100%;
 
         input {
+            @extend .textbox;
             width: 100%;
-            box-sizing: border-box;
-
-            border: 2px solid $ux-grey-3;
-            border-radius: 5px;
         }
     }
 

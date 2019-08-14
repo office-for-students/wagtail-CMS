@@ -3,37 +3,58 @@
 {% load wagtailcore_tags %}
 {% load discover_uni_tags %}
 
+{% block content_class %}mode-chooser{% endblock %}
 
 {% block question %}
-    <h3>{{page.question}}</h3>
+    <h1 class="course-finder-content__question">{{page.question}}</h1>
 
-    <form action="javascript:;" onsubmit="handleModeSelection(this)">
-        <div  class="checkbox">
-            <input id="fullTime" type="checkbox" name="mode" value="Full-time">
+    <form action="javascript:;" onsubmit="handleModeSelection(this)" class="course-finder-content__question-form">
+        <label class="course-finder-content__question-option checkbox" for="fullTime">
+            <span class="course-finder-content__question-label">
+                {% get_translation key='full_time' language=page.get_language %}
+            </span>
 
-            <label for="fullTime">{% get_translation key='full_time' language=page.get_language %}</label>
-        </div>
+            <input class="course-finder-content__question-input" id="fullTime"
+                   type="checkbox" name="mode" value="Full-time">
 
-        <div  class="checkbox">
-            <input id="partTime" type="checkbox" name="mode" value="Part-time">
+            <span class="checkmark"></span>
+        </label>
 
-            <label for="partTime">{% get_translation key='part_time' language=page.get_language %}</label>
-        </div>
+        <label class="course-finder-content__question-option checkbox" for="partTime">
+            <span class="course-finder-content__question-label">
+                {% get_translation key='part_time' language=page.get_language %}
+            </span>
 
-        <div  class="checkbox">
-            <input id="distanceLearning" type="checkbox" name="mode" value="Distance learning">
+            <input class="course-finder-content__question-input" id="partTime"
+                   type="checkbox" name="mode" value="Part-time">
 
-            <label for="distanceLearning">{% get_translation key='distance_learning' language=page.get_language %}</label>
-        </div>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="course-finder-content__question-option checkbox" for="distanceLearning">
+            <span class="course-finder-content__question-label">
+                {% get_translation key='distance_learning' language=page.get_language %}
+            </span>
+
+            <input class="course-finder-content__question-input" id="distanceLearning"
+                   type="checkbox" name="mode" value="Distance learning">
+
+            <span class="checkmark"></span>
+        </label>
     </form>
 
-    <div class="helper-text">
+    <div class="course-finder-content__question-helper">
         {{ page.helper_text|richtext }}
     </div>
 {% endblock %}
 
 {% block next_nav %}
-    <a href={% pageurl page.next_page %}>
-        <input type="submit" value="{% get_translation key='next' language=page.get_language %}" class="button" onclick="handleFormSubmit()">
+    <a href={% pageurl page.next_page %} class="course-finder-content__next-link">
+        <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
+            {% get_translation key='next' language=page.get_language %}
+
+            <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
+            <img class="course-finder-content__next-icon green" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
+        </button>
     </a>
 {% endblock %}

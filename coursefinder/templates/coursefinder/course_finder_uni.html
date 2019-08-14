@@ -1,25 +1,26 @@
 {% extends "coursefinder/course_finder_base.html" %}
-{% load static %}
-{% load wagtailcore_tags %}
-{% load discover_uni_tags %}
+{% load static wagtailcore_tags discover_uni_tags %}
+
 {% block body_class %}template-course-finder-uni{% endblock %}
+{% block content_class %}uni-picker{% endblock %}
 
 {% block question %}
-    <h3>
-        {{page.question}}
-    </h3>
+    <h1 class="course-finder-content__question">{{page.question}}</h1>
 
-    <form action="javascript:;" onsubmit="handleUniSelection(this)">
+    <form action="javascript:;" onsubmit="handleUniSelection(this)" class="course-finder-content__question-form">
         <div>
-            {% include 'partials/search-dropdown.html' with placeholder='Search for an institution' field_name='institution_query' %}
-
-            <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
+            {% include 'partials/search-dropdown.html' with field_name='uni' %}
         </div>
     </form>
 {% endblock %}
 
 {% block next_nav %}
-    <a href={% pageurl page.next_page %}>
-        <input type="submit" value="{% get_translation key='next' language=page.get_language %}" class="button" onclick="handleFormSubmit()">
+    <a href={% pageurl page.next_page %} class="course-finder-content__next-link">
+        <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
+            {% get_translation key='next' language=page.get_language %}
+
+            <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
+            <img class="course-finder-content__next-icon green" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
+        </button>
     </a>
 {% endblock %}

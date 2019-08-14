@@ -109,8 +109,16 @@ DICT = {
         'en': 'Doing further study',
         'cy': ''
     },
+    'dont_narrow': {
+        'en': "don't narrow search",
+        'cy': ''
+    },
     'england': {
         'en': 'England',
+        'cy': ''
+    },
+    'enter_3_characters': {
+        'en': 'Please enter at least 3 characters to search',
         'cy': ''
     },
     'filter': {

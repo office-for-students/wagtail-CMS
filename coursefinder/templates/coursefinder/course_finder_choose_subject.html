@@ -1,51 +1,51 @@
 {% extends "coursefinder/course_finder_base.html" %}
-{% load static %}
-{% load wagtailcore_tags %}
+
+{% load static wagtailcore_tags discover_uni_tags %}
+
 {% block body_class %}template-course-finder-choose-subject{% endblock %}
-{% load discover_uni_tags %}
+{% block content_class %}subject-chooser{% endblock %}
 
 {% block question %}
-    <h3>{{page.question}}</h3>
+    <h1 class="course-finder-content__question">{{page.question}}</h1>
 
-    <form action="javascript:;" onsubmit="handleSubjectSubmit(this)">
-        <div>
+    <form action="javascript:;" onsubmit="handleSubjectSubmit(this)" class="course-finder-content__question-form">
+        <div class="course-finder-content__question-selector">
             <select id="subjectArea" name="subjectArea" onchange="handleSubjectAreaSelect(this.value)">
                 <option value="disabled" disabled selected>
                     {% get_translation key='subject_area' language=page.get_language %}
                 </option>
             </select>
-
-            <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
         </div>
 
-        <div>
+        <div class="course-finder-content__question-selector">
             <select id="subject" name="subject" onchange="handleSubjectSelect(this.value)">
                 <option value="disabled" disabled selected>
                     {% get_translation key='subject' language=page.get_language %}
                 </option>
             </select>
-
-            <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
         </div>
 
-        <div>
+        <div class="course-finder-content__question-selector">
             <select id="subjectCode" name="subjectCode">
                 <option selected>
                     {% get_translation key='show_all' language=page.get_language %}
                 </option>
             </select>
-
-            <span><img class="dropdown-arrow" src="{% static 'assets/down-arrow.svg' %}" alt=""></span>
         </div>
     </form>
 
-    <div class="helper-text">
+    <div class="course-finder-content__question-helper">
         {{ page.helper_text|richtext }}
     </div>
 {% endblock %}
 
 {% block next_nav %}
-    <a href={% pageurl page.next_page %}>
-        <input type="submit" value="{% get_translation key='next' language=page.get_language %}" class="button" onclick="handleFormSubmit()">
+    <a href={% pageurl page.next_page %} class="course-finder-content__next-link">
+        <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
+            {% get_translation key='next' language=page.get_language %}
+
+            <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
+            <img class="course-finder-content__next-icon green" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
+        </button>
     </a>
 {% endblock %}

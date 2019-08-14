@@ -1,43 +1,63 @@
 {% extends "coursefinder/course_finder_base.html" %}
-{% load static %}
-{% load wagtailcore_tags %}
-{% load discover_uni_tags %}
+{% load static wagtailcore_tags discover_uni_tags %}
 
 
 {% block body_class %}template-course-finder-postcode{% endblock %}
 
+{% block content_class %}postcode-search{% endblock %}
+
 {% block question %}
-    <h3>{{page.question}}</h3>
+    <h1 class="course-finder-content__question">{{page.question}}</h1>
 
-    <form>
-        <input type="text" name="" value="">
+    <form class="course-finder-content__question-form">
+        <input class="textbox" type="text" name="" value="">
 
-        <p>
+        <p class="course-finder-content__question-sub-heading">
             {% get_translation key='search_within' language=page.get_language %}:
         </p>
 
-        <div class="radio">
-            <input id="one" type="radio" name="postcode" value="">
+        <label class="course-finder-content__question-option radio" for="one">
+            <span class="course-finder-content__question-label">
+                10 {% get_translation key='miles' language=page.get_language %}
+            </span>
 
-            <label for="one">10 {% get_translation key='miles' language=page.get_language %}</label>
-        </div>
+            <input class="course-finder-content__question-input"
+                    id="one" type="radio" name="postcode" value="">
 
-        <div class="radio">
-            <input id="two" type="radio" name="postcode" value="">
+            <span class="radiobox"></span>
+        </label>
 
-            <label for="two">25 {% get_translation key='miles' language=page.get_language %}</label>
-        </div>
+        <label class="course-finder-content__question-option radio" for="two">
+            <span class="course-finder-content__question-label">
+                25 {% get_translation key='miles' language=page.get_language %}
+            </span>
 
-        <div class="radio">
-            <input id="three" type="radio" name="postcode" value="">
+            <input class="course-finder-content__question-input"
+                    id="two" type="radio" name="postcode" value="">
 
-            <label for="three">50 {% get_translation key='miles' language=page.get_language %}</label>
-        </div>
+            <span class="radiobox"></span>
+        </label>
+
+        <label class="course-finder-content__question-option radio" for="three">
+            <span class="course-finder-content__question-label">
+                50 {% get_translation key='miles' language=page.get_language %}
+            </span>
+
+            <input class="course-finder-content__question-input"
+                    id="three" type="radio" name="postcode" value="">
+
+            <span class="radiobox"></span>
+        </label>
     </form>
 {% endblock %}
 
 {% block next_nav %}
-    <a href={% pageurl page.next_page %}>
-        <input type="submit" value="{% get_translation key='next' language=page.get_language %}" class="button" onclick="handleFormSubmit()">
+    <a href={% pageurl page.next_page %} class="course-finder-content__next-link">
+        <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
+            {% get_translation key='next' language=page.get_language %}
+
+            <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
+            <img class="course-finder-content__next-icon green" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
+        </button>
     </a>
 {% endblock %}

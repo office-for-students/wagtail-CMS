@@ -1,35 +1,66 @@
 {% extends "coursefinder/course_finder_base.html" %}
-{% load static %}
-{% load wagtailcore_tags %}
-{% load discover_uni_tags %}
+{% load static wagtailcore_tags discover_uni_tags %}
+
+{% block content_class %}country-chooser{% endblock %}
 
 
 {% block question %}
-    <h3>{{page.question}}</h3>
+    <h1 class="course-finder-content__question">{{page.question}}</h1>
 
-    <form action="javascript:;" onsubmit="handleCountrySelection(this)">
-        <div  class="checkbox">
-            <input id="england" type="checkbox" name="country" value="England">
+    <form action="javascript:;" onsubmit="handleCountrySelection(this)" class="course-finder-content__question-form">
+        <label class="course-finder-content__question-option checkbox" for="england">
+            <span class="course-finder-content__question-label">
+                {% get_translation key='england' language=page.get_language %}
+            </span>
 
-            <label for="england">{% get_translation key='england' language=page.get_language %}</label>
-        </div>
-        <div  class="checkbox">
-            <input id="northernireland" type="checkbox" name="country" value="Northern Ireland">
-            <label for="northernireland">{% get_translation key='northern_ireland' language=page.get_language %}</label>
-        </div>
-        <div  class="checkbox">
-            <input id="scotland" type="checkbox" name="country" value="Scotland">
-            <label for="scotland">{% get_translation key='scotland' language=page.get_language %}</label>
-        </div>
-        <div  class="checkbox">
-            <input id="wales" type="checkbox" name="country" value="Wales">
-            <label for="wales">{% get_translation key='wales' language=page.get_language %}</label>
-        </div>
+            <input class="course-finder-content__question-input" id="england"
+                   type="checkbox" name="country" value="England">
+
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="course-finder-content__question-option checkbox" for="northernireland">
+            <span class="course-finder-content__question-label">
+                {% get_translation key='northern_ireland' language=page.get_language %}
+            </span>
+
+            <input class="course-finder-content__question-input" id="northernireland"
+                   type="checkbox" name="country" value="Northern Ireland">
+
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="course-finder-content__question-option checkbox" for="scotland">
+            <span class="course-finder-content__question-label">
+                {% get_translation key='scotland' language=page.get_language %}
+            </span>
+
+            <input class="course-finder-content__question-input" id="scotland"
+                   type="checkbox" name="country" value="Scotland">
+
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="course-finder-content__question-option checkbox" for="wales">
+            <span class="course-finder-content__question-label">
+                {% get_translation key='wales' language=page.get_language %}
+            </span>
+
+            <input class="course-finder-content__question-input" id="wales"
+                   type="checkbox" name="country" value="Wales">
+
+            <span class="checkmark"></span>
+        </label>
     </form>
 {% endblock %}
 
 {% block next_nav %}
-    <a href={% pageurl page.next_page %}>
-        <input type="submit" value="{% get_translation key='next' language=page.get_language %}" class="button" onclick="handleFormSubmit()">
+    <a href={% pageurl page.next_page %} class="course-finder-content__next-link">
+        <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
+            {% get_translation key='next' language=page.get_language %}
+
+            <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
+            <img class="course-finder-content__next-icon green" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
+        </button>
     </a>
 {% endblock %}

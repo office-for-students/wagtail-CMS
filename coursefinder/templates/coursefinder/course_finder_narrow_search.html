@@ -1,41 +1,64 @@
 {% extends "coursefinder/course_finder_base.html" %}
-{% load static %}
-{% load wagtailcore_tags %}
-{% load discover_uni_tags %}
-
+{% load static wagtailcore_tags discover_uni_tags %}
 
 {% block body_class %}template-course-finder-narrow-search{% endblock %}
 
+{% block content_class %}narrow-search{% endblock %}
+
 {% block question %}
-    <h3>{{page.question}}</h3>
-    <form action="{% url 'narrow_search' %}" method="post" onsubmit="handleResultsRequest()">
+    <h1 class="course-finder-content__question">{{page.question}}</h1>
+
+    <form action="{% url 'narrow_search' %}" method="post" onsubmit="handleResultsRequest()" class="course-finder-content__question-form">
         {% csrf_token %}
-        <div class="radio">
-            <input id="uni" type="radio" name="radioGroup" value="uni">
 
-            <label for="uni">{% get_translation key='specific_uni' language=page.get_language %}?</label>
+        <label class="course-finder-content__question-option radio" for="uni">
+            <span class="course-finder-content__question-label">
+                {% get_translation key='specific_uni' language=page.get_language %}?
+            </span>
+
+            <input class="course-finder-content__question-input"
+                   id="uni" type="radio" name="radioGroup" value="uni">
+
+            <span class="radiobox"></span>
+        </label>
+
+        <label class="course-finder-content__question-option radio" for="home">
+            <span class="course-finder-content__question-label">
+                {% get_translation key='near_your_home' language=page.get_language %}?
+            </span>
+
+            <input class="course-finder-content__question-input"
+                   id="home" type="radio" name="radioGroup" value="home">
+
+            <span class="radiobox"></span>
+        </label>
+
+        <label class="course-finder-content__question-option radio" for="all">
+            <span class="course-finder-content__question-label">
+                {% get_translation key='dont_narrow' language=page.get_language %}
+            </span>
+
+            <input class="course-finder-content__question-input"
+                   id="all" type="radio" name="radioGroup" value="all">
+
+            <span class="radiobox"></span>
+        </label>
+
+        <div class="course-finder-content__question-previous-selections">
+            <input type="text" name="countries_query" value="">
+
+            <input type="text" name="mode_query" value="">
+
+            <input type="text" name="subject_query" value="">
         </div>
-
-        <div class="radio">
-            <input id="home" type="radio" name="radioGroup" value="home">
-
-            <label for="home">{% get_translation key='near_your_home' language=page.get_language %}?</label>
-        </div>
-
-        <div class="radio">
-            <input id="all" type="radio" name="radioGroup" value="all">
-
-            <label for="all">{% get_translation key='show_all' language=page.get_language %}</label>
-        </div>
-
-        <input type="text" name="countries_query" value="">
-
-        <input type="text" name="mode_query" value="">
-
-        <input type="text" name="subject_query" value="">
     </form>
 {% endblock %}
 
 {% block next_nav %}
-    <input type="submit" value="{% get_translation key='next' language=page.get_language %}" class="button" onclick="handleFormSubmit()">
+    <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
+        {% get_translation key='next' language=page.get_language %}
+
+        <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
+        <img class="course-finder-content__next-icon green" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
+    </button>
 {% endblock %}
