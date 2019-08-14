@@ -238,10 +238,12 @@ class Course:
         return self.country.name == 'England' and self.leo_stats.unavailable_reason
 
     def display_title(self):
-        if self.honours_award_provision == "1":
+        honours = ""
+        if int(self.honours_award_provision) == 1:
             honours = self.qualification.label + " "
-            english_title = honours + self.english_title
-            welsh_title = honours + self.welsh_title
+
+        english_title = honours + self.english_title
+        welsh_title = honours + self.welsh_title
 
         if self.display_language == enums.languages.ENGLISH:
             return english_title if self.english_title else welsh_title

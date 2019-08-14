@@ -1,11 +1,11 @@
 $black: #000000;
 $white: #FFFFFF;
-$link-blue: #005EA5;
 $header-blue: #1F283A;
 $background-grey: #EDEDED;
 $ux-grey-1: #F5F5F5;
 $ux-grey-2: #676D70;
 $ux-grey-3: #6E6E6E;
+$divider-grey: #D6D6D6;
 $ux-interrupt: #FEF7BC;
 $form-grey: #EDEDED;
 $slate: #425563;
@@ -13,6 +13,7 @@ $helper-grey: #71797C;
 
 $gradient-light-green: #4EA27D;
 $gradient-dark-green: #308282;
+$link-blue: $gradient-light-green;
 
 $default-font: Nunito Sans;
 $default-font-color: $black;

@@ -181,6 +181,14 @@ DICT = {
         'en': 'miles',
         'cy': ''
     },
+    'more_pages_before': {
+        'en': 'More pages available before',
+        'cy': ''
+    },
+    'more_pages_after': {
+        'en': 'More pages available after',
+        'cy': ''
+    },
     'near_your_home': {
         'en': 'to near your home',
         'cy': ''
@@ -257,6 +265,10 @@ DICT = {
         'en': 'Search',
         'cy': ''
     },
+    'search_again': {
+        'en': 'Search again',
+        'cy': ''
+    },
     'search_within': {
         'en': 'Search within',
         'cy': ''
@@ -296,10 +308,6 @@ DICT = {
     'start': {
         'en': 'Start',
         'cy': 'Dechrau'
-    },
-    'start_again': {
-        'en': 'Start again',
-        'cy': ''
     },
     'still_on_course': {
         'en': 'Are still on the course',

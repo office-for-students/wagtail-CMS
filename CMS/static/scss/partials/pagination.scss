@@ -1,3 +1,38 @@
+@import '../variables';
+@import '../fonts';
+
+@mixin pagination-item-base() {
+    @include xs-heading--bold-mixin();
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 45px;
+    width: 45px;
+    margin-right: 12px;
+    margin-left: 12px;
+
+    background-color: $form-grey;
+    border: 1px solid $ux-grey-2;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    @media only screen and (min-width: 770px) {
+        @include s-heading--bold-mixin();
+    }
+}
+
+@mixin pagination-item-hover() {
+    &:hover {
+        border: 2px solid $gradient-light-green;
+        color: $gradient-light-green;
+
+        a {
+            color: $gradient-light-green;
+        }
+    }
+}
+
 .pagination {
     background-color: transparent;
     display: initial;
@@ -6,32 +41,85 @@
     &__item-list {
         padding: 0;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
+
         list-style: none;
     }
 
     &__item {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        height: 45px;
-        width: 45px;
-        border: 1px solid #5F607C;
-        box-sizing: border-box;
+        @include pagination-item-base();
+        @include pagination-item-hover();
+
+        display: none;
 
         &--active {
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            height: 45px;
-            width: 45px;
-            background-color: #5F607C;
+            @include pagination-item-base();
+            @include green-gradient-background-mixin();
+
+            border: none;
         }
 
         &-link {
-            color: #71A4D3;
+            color: $black;
             text-decoration: none;
+        }
+    }
+
+    &__link {
+        @include pagination-item-base();
+        @include pagination-item-hover();
+
+        &--disabled {
+            @include pagination-item-base();
+
+            .green {
+                display: none;
+            }
+        }
+
+        img {
+            width: 9px;
+        }
+
+        .green {
+            display: none;
+        }
+
+        &:hover {
+            .green {
+                display: initial;
+            }
+
+            .black {
+                display: none;
+            }
+        }
+    }
+
+    &__ellipsis {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .pagination {
+        &__item {
+            display: flex;
+
+            &--active {
+                color: $white;
+            }
+        }
+
+        &__link {
+            img {
+                width: 12px;
+            }
+        }
+
+        &__ellipsis {
+            @include pagination-item-base();
         }
     }
 }

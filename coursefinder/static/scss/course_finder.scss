@@ -28,9 +28,11 @@
                 text-decoration: none;
                 color: $gradient-light-green;
                 border: none;
-                background-color: $white;
+                background-color: transparent;
 
                 &-icon {
+                    height: 12px;
+
                     &.white {
                         display: none;
                     }
@@ -53,7 +55,7 @@
     &-content {
         padding-top: 44px;
 
-        &__question, &__heading {
+        &__question {
             @include m-heading--bold-mixin();
 
             margin-top: 0px;
@@ -216,6 +218,107 @@
             }
         }
     }
+
+    &-results {
+        padding-top: 65px;
+
+        &__heading {
+            @include m-heading--bold-mixin();
+
+            margin-top: 0px;
+            margin-bottom: 47px;
+            width: 80%;
+
+            line-height: 45px;
+            color: $ux-grey-3;
+        }
+
+        &__overview {
+            @include mobile-body-font-mixin();
+
+            margin: 0px;
+        }
+
+        &__result {
+            &-list {
+                margin-top: 20px;
+                margin-bottom: 111px;
+            }
+
+            &-accordion {
+                &-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 29px 40px 29px 29px;
+
+                    background-color: $form-grey;
+
+                    .collapse, .expand {
+                        display: none;
+
+                        img {
+                            width: 30px;
+                        }
+                    }
+
+                    &.open {
+                        @include green-gradient-background-mixin();
+
+                        .course-finder-results__result-accordion-title, .course-finder-results__result-accordion-overview {
+                            color: white;
+                        }
+                    }
+                }
+
+                &-title {
+                    @include mobile-body-font--bold-mixin();
+
+                    margin: 0px;
+                    margin-bottom: 10px;
+
+                    color: $ux-grey-3;
+                }
+
+                &-overview {
+                    @include small-font--bold-mixin();
+
+                    margin: 0px;
+
+                    color: $ux-grey-3;
+                }
+
+                &-body {
+                    background-color: $ux-grey-1;
+
+                    &-content {
+                        padding: 40px 42px 43px;
+
+                        border-bottom: 2px solid $divider-grey;
+                    }
+
+                    &-course-name {
+                        @include desktop-body-font-mixin();
+
+                        display: block;
+                        margin: 0px;
+                        margin-bottom: 20px;
+
+                        color: $link-blue;
+                        line-height: 22px;
+                    }
+
+                    &-course-info {
+                        @include mobile-body-font-mixin();
+
+                        margin: 0px;
+
+                        line-height: 26px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media only screen and (min-width: 770px) {
@@ -232,7 +335,7 @@
 
                     color: $gradient-light-green;
 
-                    img {
+                    &-icon {
                         height: 16px;
                     }
                 }
@@ -321,6 +424,84 @@
                 .course-finder-content__next {
                     margin-top: 35px;
                     margin-bottom: 162px;
+                }
+            }
+        }
+
+        &-results {
+            padding-top: 65px;
+
+            &__heading {
+                @include l-heading--bold-mixin();
+
+                margin-bottom: 32px;
+
+                line-height: 60px;
+                color: $ux-grey-3;
+            }
+
+            &__overview {
+                @include desktop-body-font-mixin();
+            }
+
+            &__result {
+                &-list {
+                    margin-top: 18px;
+                    margin-bottom: 82px;
+                }
+
+                &-accordion {
+                    &-header {
+                        padding: 32px;
+
+                        .collapse, .expand {
+                            img {
+                                width: 20px;
+                            }
+                        }
+                    }
+
+                    &-heading {
+                        flex-grow: 1;
+                        display: flex;
+                        justify-content: space-between;
+                        padding-right: 76px;
+                    }
+
+                    &-title {
+                        @include xs-heading--bold-mixin();
+
+                        margin: 0px;
+
+                        color: $ux-grey-3;
+                    }
+
+                    &-overview {
+                        @include desktop-body-font--bold-mixin();
+
+                        color: $ux-grey-3;
+                    }
+
+                    &-body {
+                        background-color: $ux-grey-1;
+
+                        &-content {
+                            padding: 50px 80px;
+                        }
+
+                        &-course-name {
+                            @include s-heading-mixin();
+
+                            color: $link-blue;
+                            line-height: 31px;
+                        }
+
+                        &-course-info {
+                            @include xs-heading-mixin();
+
+                            line-height: 27px;
+                        }
+                    }
                 }
             }
         }
