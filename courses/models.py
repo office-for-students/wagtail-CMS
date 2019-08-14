@@ -15,6 +15,13 @@ from errors.models import ApiError
 from institutions.models import InstitutionOverview
 
 
+STUDENT_SATISFACTION_KEY = 'student_satisfaction'
+ENTRY_INFO_KEY = 'entry_information'
+AFTER_ONE_YEAR_KEY = 'after_one_year'
+AFTER_COURSE_KEY = 'after_the_course'
+ACCREDITATION_KEY = 'professional_accreditation'
+
+
 class AccordionPanel(blocks.StructBlock):
     heading = blocks.CharBlock(required=False)
 
@@ -22,31 +29,31 @@ class AccordionPanel(blocks.StructBlock):
 class SatisfactionDataSet(blocks.StructValue):
     @staticmethod
     def data_set():
-        return 'student_satisfaction'
+        return STUDENT_SATISFACTION_KEY
 
 
 class EntryInfoDataSet(blocks.StructValue):
     @staticmethod
     def data_set():
-        return 'entry_information'
+        return ENTRY_INFO_KEY
 
 
 class AfterOneYearDataSet(blocks.StructValue):
     @staticmethod
     def data_set():
-        return 'after_one_year'
+        return AFTER_ONE_YEAR_KEY
 
 
 class AfterCourseDataSet(blocks.StructValue):
     @staticmethod
     def data_set():
-        return 'after_the_course'
+        return AFTER_COURSE_KEY
 
 
 class AccreditationDataSet(blocks.StructValue):
     @staticmethod
     def data_set():
-        return 'professional_accreditation'
+        return ACCREDITATION_KEY
 
 
 class SatisfactionBlock(AccordionPanel):
@@ -233,6 +240,10 @@ class Course:
         for location in self.locations:
             location_names.append(location.english_name)
         return ', '.join(location_names)
+
+    @property
+    def show_satisfaction_stats(self):
+        return self.satisfaction_stats.show_satisfaction_stats() or self.nhs_satisfaction_stats.show_nhs_stats()
 
     @property
     def show_leo(self):
@@ -538,11 +549,50 @@ class SatisfactionStatistics:
             self.unavailable_code = unavailable_data.get('code')
             self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
 
+    def show_teaching_stats(self):
+        return self.question_1.show_data_point or self.question_2.show_data_point or \
+               self.question_3.show_data_point or self.question_4.show_data_point
+
+    def show_learning_opps_stats(self):
+        return self.question_5.show_data_point or self.question_6.show_data_point or \
+               self.question_7.show_data_point
+
+    def show_assessment_stats(self):
+        return self.question_8.show_data_point or self.question_9.show_data_point or \
+               self.question_10.show_data_point or self.question_11.show_data_point
+
+    def show_organisation_stats(self):
+        return self.question_12.show_data_point or self.question_13.show_data_point or \
+               self.question_14.show_data_point
+
+    def show_learning_resources_stats(self):
+        return self.question_18.show_data_point or self.question_19.show_data_point or \
+               self.question_20.show_data_point
+
+    def show_learning_community_stats(self):
+        return self.question_21.show_data_point or self.question_22.show_data_point
+
+    def show_voice_stats(self):
+        return self.question_23.show_data_point or self.question_24.show_data_point or \
+               self.question_25.show_data_point or self.question_26.show_data_point
+
+    def show_satisfaction_stats(self):
+        return self.show_teaching_stats() or self.show_learning_opps_stats() or self.show_assessment_stats() or \
+               self.show_organisation_stats() or self.show_learning_resources_stats() or \
+               self.show_learning_community_stats() or self.show_voice_stats()
+
+    def show_nhs_stats(self):
+        return self.question_1.show_data_point or self.question_2.show_data_point or \
+               self.question_3.show_data_point or self.question_4.show_data_point or \
+               self.question_5.show_data_point or self.question_6.show_data_point
+
 
 class SatisfactionQuestion:
 
     def __init__(self, question_data):
+        self.show_data_point = False
         if question_data:
+            self.show_data_point = 'agree_or_strongly_agree' in question_data
             self.description = fallback_to(question_data.get('description'), '')
             self.agree_or_strongly_agree = fallback_to(question_data.get('agree_or_strongly_agree'), 0)
 

@@ -64,7 +64,8 @@
 
     <div class="course-detail__accordion-block">
         {% for accordion in page.accordions %}
-            {% if accordion.value.data_set != 'professional_accreditation' or course.accreditations %}
+            {% should_show_accordion course accordion.value.data_set as show_accordion %}
+            {% if show_accordion %}
                 <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
                     <div class="discover-uni-container">
                         <h2 class="course-detail__accordion-heading">
