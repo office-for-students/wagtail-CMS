@@ -110,6 +110,10 @@
                 background-color: $ux-grey-1;
                 color: $ux-grey-2;
 
+                &.open {
+                    @include green-gradient-background-mixin();
+                }
+
                 .course-detail__accordion-heading-chevron {
                     display: flex;
                     position: absolute;
