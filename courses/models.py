@@ -9,6 +9,7 @@ from CMS.translations import DICT
 from CMS.enums import enums
 
 from core.models import DiscoverUniBasePage
+from core.utils import fallback_to
 from courses import request_handler
 from errors.models import ApiError
 from institutions.models import InstitutionOverview
@@ -172,8 +173,8 @@ class Course:
             self.sandwich_year = CourseSandwichYear(course_details.get('sandwich_year'))
             title = course_details.get('title')
             if title:
-                self.english_title = title.get('english')
-                self.welsh_title = title.get('welsh')
+                self.english_title = fallback_to(title.get('english'), '')
+                self.welsh_title = fallback_to(title.get('welsh'), '')
             self.ucas_programme_id = course_details.get('ucas_programme_id')
             self.year_abroad = CourseYearAbroad(course_details.get('year_abroad'))
             self.accreditations = []
@@ -272,7 +273,7 @@ class Course:
 class CourseCountry:
 
     def __init__(self, data_obj):
-        self.name = data_obj.get('name')
+        self.name = fallback_to(data_obj.get('name'), '')
         self.code = data_obj.get('code')
 
 
@@ -281,24 +282,26 @@ class CourseDistanceLearning:
     def __init__(self, data_obj, language):
         self.display_language = language
         self.code = data_obj.get('code')
-        self.label = data_obj.get('label')
+        self.label = fallback_to(data_obj.get('label'), '')
 
     def display_label(self):
-        return DICT.get('distance_learning_values').get(self.code).get(self.display_language)
+        if self.code:
+            return DICT.get('distance_learning_values').get(self.code).get(self.display_language)
+        return DICT.get('unknown').get(self.display_language)
 
 
 class CourseFoundationYear:
 
     def __init__(self, data_obj):
         self.code = data_obj.get('code')
-        self.label = data_obj.get('label')
+        self.label = fallback_to(data_obj.get('label'), '')
 
 
 class CourseLength:
 
     def __init__(self, data_obj):
         self.code = data_obj.get('code')
-        self.label = data_obj.get('label')
+        self.label = fallback_to(data_obj.get('label'), '')
 
 
 class CourseLink:
@@ -308,7 +311,7 @@ class CourseLink:
         if language_key in link_obj:
             self.link = link_obj.get(language_key)
         else:
-            self.link = link_obj.get(enums.languages_full.ENGLISH)
+            self.link = fallback_to(link_obj.get(enums.languages_full.ENGLISH), '')
 
 
 class CourseLocation:
@@ -319,76 +322,80 @@ class CourseLocation:
         self.longitude = data_obj.get('longitude')
         name = data_obj.get('name')
         if name:
-            self.english_name = name.get('english')
-            self.welsh_name = name.get('welsh')
+            self.english_name = fallback_to(name.get('english'), '')
+            self.welsh_name = fallback_to(name.get('welsh'), '')
         self.links = data_obj.get('links')
 
     def display_name(self):
-        return self.english_name if self.display_language == enums.languages.ENGLISH else self.welsh_name
+        if self.display_language == enums.languages.ENGLISH:
+            return self.english_name if self.english_name else self.welsh_name
+        else:
+            return self.welsh_name if self.welsh_name else self.english_name
 
 
 class CourseMode:
 
     def __init__(self, data_obj):
         self.code = data_obj.get('code')
-        self.label = data_obj.get('label')
+        self.label = fallback_to(data_obj.get('label'), '')
 
 
 class CourseQualification:
 
     def __init__(self, data_obj):
         self.code = data_obj.get('code')
-        self.label = data_obj.get('label')
+        self.label = fallback_to(data_obj.get('label'), '')
 
 
 class CourseSandwichYear:
 
     def __init__(self, data_obj):
         self.code = data_obj.get('code')
-        self.label = data_obj.get('label')
+        self.label = fallback_to(data_obj.get('label'), '')
 
 
 class CourseYearAbroad:
 
     def __init__(self, data_obj):
         self.code = data_obj.get('code')
-        self.label = data_obj.get('label')
+        self.label = fallback_to(data_obj.get('label'), '')
 
 
 class EntryStatistics:
 
     def __init__(self, data_obj):
-        self.a_level = data_obj.get('a-level')
-        self.access = data_obj.get('access')
-        self.aggregation_level = data_obj.get('aggregation_level')
-        self.another_higher_education_qualifications = data_obj.get('another_higher_education_qualifications')
-        self.baccalaureate = data_obj.get('baccalaureate')
-        self.degree = data_obj.get('degree')
-        self.foundation = data_obj.get('foundation')
-        self.none = data_obj.get('none')
-        self.number_of_students = data_obj.get('number_of_students')
-        self.other_qualifications = data_obj.get('other_qualifications')
-        self.other_qualifications = data_obj.get('other_qualifications')
+        self.a_level = fallback_to(data_obj.get('a-level'), 0)
+        self.access = fallback_to(data_obj.get('access'), 0)
+        self.aggregation_level = fallback_to(data_obj.get('aggregation_level'), 0)
+        self.another_higher_education_qualifications = fallback_to(
+            data_obj.get('another_higher_education_qualifications'), 0)
+        self.baccalaureate = fallback_to(data_obj.get('baccalaureate'), 0)
+        self.degree = fallback_to(data_obj.get('degree'), 0)
+        self.foundation = fallback_to(data_obj.get('foundation'),0)
+        self.none = fallback_to(data_obj.get('none'), 0)
+        self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
+        self.other_qualifications = fallback_to(data_obj.get('other_qualifications'), 0)
+        self.other_qualifications = fallback_to(data_obj.get('other_qualifications'), 0)
         unavailable_data = data_obj.get('unavailable')
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
-            self.unavailable_reason = unavailable_data.get('reason')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
 
 
 class ContinuationStatistics:
 
     def __init__(self, data_obj):
         self.aggregation_level = data_obj.get('aggregation_level')
-        self.dormant = data_obj.get('dormant')
-        self.continuing = data_obj.get('continuing_with_provider') if data_obj.get('continuing_with_provider') else 0
-        self.gained = data_obj.get('gained') if data_obj.get('gained') else 0
-        self.left = data_obj.get('left')
-        self.lower = data_obj.get('lower')
-        self.number_of_students = data_obj.get('number_of_students')
+        self.dormant = fallback_to(data_obj.get('dormant'), 0)
+        self.continuing = fallback_to(data_obj.get('continuing_with_provider'), 0)
+        self.gained = fallback_to(data_obj.get('gained'), 0)
+        self.left = fallback_to(data_obj.get('left'), 0)
+        self.lower = fallback_to(data_obj.get('lower'), 0)
+        self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
         unavailable_data = data_obj.get('unavailable')
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
-            self.unavailable_reason = unavailable_data.get('reason')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
 
     @property
     def continuing_or_complete(self):
@@ -399,18 +406,18 @@ class EmploymentStatistics:
 
     def __init__(self, data_obj):
         self.aggregation_level = data_obj.get('aggregation_level')
-        self.unemployed = data_obj.get('assumed_to_be_unemployed')
-        self.in_study = data_obj.get('in_study')
-        self.in_work = data_obj.get('in_work')
-        self.in_work_and_study = data_obj.get('in_work_and_study') if data_obj.get('in_work_and_study') else 0
-        self.in_work_or_study = data_obj.get('in_work_or_study') if data_obj.get('in_work_or_study') else 0
-        self.not_available_for_work_or_study = data_obj.get('not_available_for_work_or_study')
-        self.number_of_students = data_obj.get('number_of_students')
-        self.response_rate = str(data_obj.get('response_rate')) + '%'
+        self.unemployed = fallback_to(data_obj.get('assumed_to_be_unemployed'), 0)
+        self.in_study = fallback_to(data_obj.get('in_study'), 0)
+        self.in_work = fallback_to(data_obj.get('in_work'), 0)
+        self.in_work_and_study = fallback_to(data_obj.get('in_work_and_study'), 0)
+        self.in_work_or_study = fallback_to(data_obj.get('in_work_or_study'), 0)
+        self.not_available_for_work_or_study = fallback_to(data_obj.get('not_available_for_work_or_study'), 0)
+        self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
+        self.response_rate = str(fallback_to(data_obj.get('response_rate'), 0)) + '%'
         unavailable_data = data_obj.get('unavailable')
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
-            self.unavailable_reason = unavailable_data.get('reason')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
 
     @property
     def work_and_or_study(self):
@@ -421,15 +428,15 @@ class JobTypeStatistics:
 
     def __init__(self, data_obj):
         self.aggregation_level = data_obj.get('aggregation_level')
-        self.non_professional_or_managerial_jobs = data_obj.get('non_professional_or_managerial_jobs')
-        self.professional_or_managerial_jobs = data_obj.get('professional_or_managerial_jobs')
-        self.unknown_professions = data_obj.get('unknown_professions')
-        self.number_of_students = data_obj.get('number_of_students')
-        self.response_rate = str(data_obj.get('response_rate')) + '%'
+        self.non_professional_or_managerial_jobs = fallback_to(data_obj.get('non_professional_or_managerial_jobs'), 0)
+        self.professional_or_managerial_jobs = fallback_to(data_obj.get('professional_or_managerial_jobs'), 0)
+        self.unknown_professions = fallback_to(data_obj.get('unknown_professions'), 0)
+        self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
+        self.response_rate = str(fallback_to(data_obj.get('response_rate'), 0)) + '%'
         unavailable_data = data_obj.get('unavailable')
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
-            self.unavailable_reason = unavailable_data.get('reason')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
 
 
 class SalaryStatistics:
@@ -437,33 +444,34 @@ class SalaryStatistics:
     def __init__(self, data_obj, language, course_title):
         self.display_language = language
         self.aggregation_level = data_obj.get('aggregation_level')
-        self.higher_quartile = data_obj.get('higher_quartile')
-        self.lower_quartile = data_obj.get('lower_quartile')
-        self.median = data_obj.get('median')
-        self.sector_higher_quartile = data_obj.get('sector_higher_quartile')
-        self.sector_lower_quartile = data_obj.get('sector_lower_quartile')
-        self.sector_median = data_obj.get('sector_median')
-        self.number_of_students = data_obj.get('number_of_graduates')
-        self.response_rate = str(data_obj.get('response_rate')) + '%'
+        self.higher_quartile = fallback_to(data_obj.get('higher_quartile'), 0)
+        self.lower_quartile = fallback_to(data_obj.get('lower_quartile'), 0)
+        self.median = fallback_to(data_obj.get('median'), 0)
+        self.sector_higher_quartile = fallback_to(data_obj.get('sector_higher_quartile'), 0)
+        self.sector_lower_quartile = fallback_to(data_obj.get('sector_lower_quartile'), 0)
+        self.sector_median = fallback_to(data_obj.get('sector_median'), 0)
+        self.number_of_students = fallback_to(data_obj.get('number_of_graduates'), 0)
+        self.response_rate = str(fallback_to(data_obj.get('response_rate'), 0)) + '%'
         subject = data_obj.get('subject')
         if subject:
             self.subject_code = subject.get('code')
-            self.subject_english_label = subject.get("english_label")
-            self.subject_welsh_label = subject.get("welsh_label")
+            self.subject_english_label = fallback_to(subject.get("english_label"), '')
+            self.subject_welsh_label = fallback_to(subject.get("welsh_label"), '')
         elif course_title:
-            self.subject_english_label = course_title.get("english")
-            self.subject_welsh_label = course_title.get("welsh")
+            self.subject_english_label = fallback_to(course_title.get("english"), '')
+            self.subject_welsh_label = fallback_to(course_title.get("welsh"), '')
         else:
             self.subject_english_label = ''
             self.subject_welsh_label = ''
         unavailable_data = data_obj.get('unavailable')
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
-            self.unavailable_reason = unavailable_data.get('reason')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
 
     def display_subject_label(self):
-        return self.subject_english_label if self.display_language == enums.languages.ENGLISH else\
-            self.subject_welsh_label
+        if self.display_language == enums.languages.ENGLISH:
+            return self.subject_english_label if self.subject_english_label else self.subject_welsh_label
+        return self.subject_welsh_label if self.subject_welsh_label else self.subject_english_label
 
 
 class LEOStatistics:
@@ -471,31 +479,33 @@ class LEOStatistics:
     def __init__(self, data_obj, language):
         self.display_language = language
         self.aggregation_level = data_obj.get("aggregation_level")
-        self.higher_quartile = data_obj.get("higher_quartile")
-        self.lower_quartile = data_obj.get("lower_quartile")
-        self.median = data_obj.get("median")
-        self.number_of_graduates = data_obj.get("number_of_graduates")
+        self.higher_quartile = fallback_to(data_obj.get("higher_quartile"), 0)
+        self.lower_quartile = fallback_to(data_obj.get("lower_quartile"), 0)
+        self.median = fallback_to(data_obj.get("median"), 0)
+        self.number_of_graduates = fallback_to(data_obj.get("number_of_graduates"), 0)
         subject = data_obj.get('subject')
         if subject:
             self.subject_code = subject.get('code')
-            self.subject_english_label = subject.get("english_label")
-            self.subject_welsh_label = subject.get("welsh_label")
+            self.subject_english_label = fallback_to(subject.get("english_label"), '')
+            self.subject_welsh_label = fallback_to(subject.get("welsh_label"), '')
         unavailable_data = data_obj.get('unavailable')
+        self.unavailable_reason = None
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
-            self.unavailable_reason = unavailable_data.get('reason')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
 
     def display_subject_label(self):
-        return self.subject_english_label if self.display_language == enums.languages.ENGLISH else\
-            self.subject_welsh_label
+        if self.display_language == enums.languages.ENGLISH:
+            return self.subject_english_label if self.subject_english_label else self.subject_welsh_label
+        return self.subject_welsh_label if self.subject_welsh_label else self.subject_english_label
 
 
 class SatisfactionStatistics:
 
     def __init__(self, data_obj):
         self.aggregation_level = data_obj.get('aggregation_level')
-        self.number_of_students = data_obj.get('number_of_students')
-        self.response_rate = str(data_obj.get('response_rate')) + '%'
+        self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
+        self.response_rate = str(fallback_to(data_obj.get('response_rate'), 0)) + '%'
         self.question_1 = SatisfactionQuestion(data_obj.get('question_1'))
         self.question_2 = SatisfactionQuestion(data_obj.get('question_2'))
         self.question_3 = SatisfactionQuestion(data_obj.get('question_3'))
@@ -526,22 +536,22 @@ class SatisfactionStatistics:
         unavailable_data = data_obj.get('unavailable')
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
-            self.unavailable_reason = unavailable_data.get('reason')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
 
 
 class SatisfactionQuestion:
 
     def __init__(self, question_data):
         if question_data:
-            self.description = question_data.get('description')
-            self.agree_or_strongly_agree = question_data.get('agree_or_strongly_agree')
+            self.description = fallback_to(question_data.get('description'), '')
+            self.agree_or_strongly_agree = fallback_to(question_data.get('agree_or_strongly_agree'), 0)
 
 
 class TariffStatistics:
 
     def __init__(self, tariff_data):
         self.aggregation = tariff_data.get('aggregation')
-        self.number_of_students = tariff_data.get('number_of_students')
+        self.number_of_students = fallback_to(tariff_data.get('number_of_students'), 0)
         self.tariffs = []
         if tariff_data.get('tariffs'):
             for tariff in tariff_data.get('tariffs'):
@@ -569,33 +579,37 @@ class Tariff:
 
     def __init__(self, tariff):
         self.code = tariff.get('code')
-        self.description = tariff.get('description')
-        self.entrants = tariff.get('entrants')
+        self.description = fallback_to(tariff.get('description'), '')
+        self.entrants = fallback_to(tariff.get('entrants'), 0)
 
     @property
     def label(self):
-        return self.LABELS[self.code]
+        if self.code:
+            return self.LABELS[self.code]
+        return ''
 
 
 class CourseAccreditation:
 
     def __init__(self, data_obj, language):
         self.display_language = language
-        self.type = data_obj.get("type")
-        self.accreditor_url = data_obj.get('accreditor_url')
+        self.type = fallback_to(data_obj.get("type"), '')
+        self.accreditor_url = fallback_to(data_obj.get('accreditor_url'), '')
         text = data_obj.get('text')
         if text:
-            self.text_english = text.get('english')
-            self.text_welsh = text.get('welsh')
+            self.text_english = fallback_to(text.get('english'), '')
+            self.text_welsh = fallback_to(text.get('welsh'), '')
         url = data_obj.get('url')
-        self.url_english = url.get('english') if url else None
+        self.url_english = fallback_to(url.get('english'), '') if url else ''
         dependent = data_obj.get('dependent_on')
         if dependent:
             self.dependent_on_code = dependent.get('code')
-            self.dependent_on_label = dependent.get('label')
+            self.dependent_on_label = fallback_to(dependent.get('label'), '')
 
     def display_text(self):
-        return self.text_english if self.display_language == enums.languages.ENGLISH else self.text_welsh
+        if self.display_language == enums.languages.ENGLISH:
+            return self.text_english if self.text_english else self.text_welsh
+        return self.text_welsh if self.text_welsh else self.text_english
 
     def language_url(self):
         return self.url_english if self.url_english else self.accreditor_url
