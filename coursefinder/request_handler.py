@@ -8,14 +8,21 @@ def query_course_and_institution(course, institution, limit, offset):
     if settings.LOCAL:
         return SearchMocks.get_successful_search_response()
     else:
+        headers = {
+            'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
+        }
         base_url = "%s/search/institution-courses?limit=%s&offset=%s&q=%s&institutions=%s"
-        return requests.get(url=base_url % (settings.SEARCHAPIHOST, limit, offset, course, institution))
+        return requests.get(url=base_url % (settings.SEARCHAPIHOST, limit, offset, course, institution),
+                            headers=headers)
 
 
 def course_finder_query(subject, institution, mode, countries, limit, offset):
     if settings.LOCAL:
         return SearchMocks.get_successful_search_response()
     else:
+        headers = {
+            'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
+        }
         url = "%s/search/institution-courses?limit=%s&offset=%s" % (settings.SEARCHAPIHOST, limit, offset)
         if subject and subject != '':
             url = f"{url}&subjects={subject}"
@@ -25,4 +32,4 @@ def course_finder_query(subject, institution, mode, countries, limit, offset):
             url = f"{url}&filters={mode.lower().replace('-', '_').replace(' ', '_')}"
         if countries and countries != '':
             url = f"{url}&countries={countries.lower().replace(' ', '_')}"
-        return requests.get(url=url)
+        return requests.get(url=url, headers=headers)
