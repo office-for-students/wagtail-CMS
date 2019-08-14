@@ -19,6 +19,13 @@
             {% endif %}
         </div>
 
+        {% if search.show_ellipsis_on_left %}
+            <p class="pagination__ellipsis" aria-label="{% get_translation key='more_pages_before' language=page.get_language %}">
+                …
+            </p>
+        {% endif %}
+
+
         {% for option in search.pages_to_left %}
             <li class="pagination__item">
                 <a class="pagination__item-link"
@@ -42,6 +49,12 @@
                 </a>
             </li>
         {% endfor %}
+
+        {% if search.show_ellipsis_on_right %}
+            <p class="pagination__ellipsis" aria-label="{% get_translation key='more_pages_after' language=page.get_language %}">
+                …
+            </p>
+        {% endif %}
 
         <div class="pagination__next">
             {% if search.show_next_icon %}

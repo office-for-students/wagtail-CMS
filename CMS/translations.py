@@ -181,6 +181,14 @@ DICT = {
         'en': 'miles',
         'cy': ''
     },
+    'more_pages_before': {
+        'en': 'More pages available before',
+        'cy': ''
+    },
+    'more_pages_after': {
+        'en': 'More pages available ater',
+        'cy': ''
+    },
     'near_your_home': {
         'en': 'to near your home',
         'cy': ''

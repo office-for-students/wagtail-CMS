@@ -16,6 +16,10 @@
     border: 1px solid $ux-grey-2;
     box-sizing: border-box;
     border-radius: 8px;
+
+    @media only screen and (min-width: 770px) {
+        @include s-heading--bold-mixin();
+    }
 }
 
 @mixin pagination-item-hover() {
@@ -75,7 +79,7 @@
         }
 
         img {
-            width: 12px;
+            width: 9px;
         }
 
         .green {
@@ -92,12 +96,30 @@
             }
         }
     }
+
+    &__ellipsis {
+        display: none;
+    }
 }
 
 @media only screen and (min-width: 770px) {
     .pagination {
         &__item {
             display: flex;
+
+            &--active {
+                color: $white;
+            }
+        }
+
+        &__link {
+            img {
+                width: 12px;
+            }
+        }
+
+        &__ellipsis {
+            @include pagination-item-base();
         }
     }
 }

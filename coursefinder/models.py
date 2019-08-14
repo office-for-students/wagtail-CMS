@@ -181,6 +181,10 @@ class BaseSearch:
         return self.page - 1
 
     @property
+    def show_ellipsis_on_left(self):
+        return self.previous_page > 1
+
+    @property
     def pages_to_left(self):
         if self.page == 1 or self.total_page_count == 0:
             return []
@@ -195,6 +199,10 @@ class BaseSearch:
         if self.page == 1 and self.total_page_count != 2:
             return [self.next_page, self.page + 2]
         return [self.next_page]
+
+    @property
+    def show_ellipsis_on_right(self):
+        return self.pages_to_right and self.pages_to_right[-1] != self.total_page_count
 
     @property
     def next_page(self):
