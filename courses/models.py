@@ -239,7 +239,7 @@ class Course:
 
     def display_title(self):
         honours = ""
-        if self.honours_award_provision == "1":
+        if int(self.honours_award_provision) == 1:
             honours = self.qualification.label + " "
 
         english_title = honours + self.english_title
