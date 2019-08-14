@@ -24,11 +24,12 @@ $(function () {
                     verticalAlign: 'middle',
                     align: 'left',
                     x: 15,
-                    y: 10,
+                    y: 20,
                     style: {
                         color: '#000000',
                         fontSize: '19px',
-                        fontFamily: 'Helvetica Neue',
+                        fontFamily: 'Nunito Sans',
+                        fontWeight: 'bold',
                         marginLeft: '15px'
                     },
                 },
@@ -62,7 +63,7 @@ $(function () {
                     }]
                 }, {
                     data: [{
-                        color: '#B1C5D4',
+                        color: '#4EA27D',
                         y: this.value,
                         pointWidth: '40',
                     }]
