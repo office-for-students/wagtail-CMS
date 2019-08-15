@@ -203,31 +203,35 @@ class Course:
             self.course_links = self.set_course_links(course_details.get('links'), self.display_language)
 
     def set_course_links(self, links, language):
-        link_objs = []
+        link_objs = {'course_details': [], 'costs_support': []}
         if enums.uni_link_keys.COURSE in links:
-            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.COURSE).get(language),
-                                        links.get(enums.uni_link_keys.COURSE),
-                                        enums.languages_map.get(language)))
+            link_objs.get('course_details').append(CourseLink(DICT.get(enums.uni_link_keys.COURSE).get(language),
+                                                   links.get(enums.uni_link_keys.COURSE),
+                                                   enums.languages_map.get(language)))
         if enums.uni_link_keys.TEACHING_METHODS in links:
-            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.TEACHING_METHODS).get(language),
+            link_objs.get('course_details').append(CourseLink(DICT.get(enums.uni_link_keys.TEACHING_METHODS).get(language),
                                         links.get(enums.uni_link_keys.TEACHING_METHODS),
                                         enums.languages_map.get(language)))
         if enums.uni_link_keys.ASSESSMENT in links:
-            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.ASSESSMENT).get(language),
-                                        links.get(enums.uni_link_keys.ASSESSMENT),
-                                        enums.languages_map.get(language)))
+            link_objs.get('course_details').append(CourseLink(DICT.get(enums.uni_link_keys.ASSESSMENT).get(language),
+                                                   links.get(enums.uni_link_keys.ASSESSMENT),
+                                                   enums.languages_map.get(language)))
+        if enums.uni_link_keys.EMPLOYMENT in links:
+            link_objs.get('course_details').append(CourseLink(DICT.get(enums.uni_link_keys.EMPLOYMENT).get(language),
+                                                   links.get(enums.uni_link_keys.EMPLOYMENT),
+                                                   enums.languages_map.get(language)))
         if enums.uni_link_keys.COSTS in links:
-            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.COSTS).get(language),
-                                        links.get(enums.uni_link_keys.COSTS),
-                                        enums.languages_map.get(language)))
+            link_objs.get('costs_support').append(CourseLink(DICT.get(enums.uni_link_keys.COSTS).get(language),
+                                                  links.get(enums.uni_link_keys.COSTS),
+                                                  enums.languages_map.get(language)))
         if enums.uni_link_keys.ACCOMMODATION in self.locations[0].links:
-            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.ACCOMMODATION).get(language),
-                                        self.locations[0].links.get(enums.uni_link_keys.ACCOMMODATION),
-                                        enums.languages_map.get(language)))
+            link_objs.get('costs_support').append(CourseLink(DICT.get(enums.uni_link_keys.ACCOMMODATION).get(language),
+                                                  self.locations[0].links.get(enums.uni_link_keys.ACCOMMODATION),
+                                                  enums.languages_map.get(language)))
         if enums.uni_link_keys.FINANCIAL_SUPPORT in links:
-            link_objs.append(CourseLink(DICT.get(enums.uni_link_keys.FINANCIAL_SUPPORT).get(language),
-                                        links.get(enums.uni_link_keys.FINANCIAL_SUPPORT),
-                                        enums.languages_map.get(language)))
+            link_objs.get('costs_support').append(CourseLink(DICT.get(enums.uni_link_keys.FINANCIAL_SUPPORT).get(language),
+                                                  links.get(enums.uni_link_keys.FINANCIAL_SUPPORT),
+                                                  enums.languages_map.get(language)))
         return link_objs
 
     @property
