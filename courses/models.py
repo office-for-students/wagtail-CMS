@@ -301,7 +301,6 @@ class CourseDistanceLearning:
         self.label = fallback_to(data_obj.get('label'), '')
 
     def display_label(self):
-        print(self.code)
         if self.code:
             return DICT.get('distance_learning_values').get(str(self.code)).get(self.display_language)
         return DICT.get('unknown').get(self.display_language)
