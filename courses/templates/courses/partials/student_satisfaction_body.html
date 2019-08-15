@@ -507,13 +507,14 @@
                 </div>
             </div>
 
-            <div class="explanation-text">
-                {% create_list course_details.nhs_satisfaction_stats.number_of_students course_details.nhs_satisfaction_stats.response_rate as substitutions %}
-                {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
-                {{ subbed_text | richtext }}
-            </div>
-
             {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.nhs_satisfaction_stats.unavailable_reason %}
         {%  endif %}
+
+
+        <div class="explanation-text">
+            {% create_list course_details.satisfaction_stats.number_of_students course_details.satisfaction_stats.response_rate as substitutions %}
+            {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
+            {{ subbed_text | richtext }}
+        </div>
     </div>
 </div>
