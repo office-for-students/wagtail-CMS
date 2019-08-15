@@ -103,6 +103,10 @@ DICT = {
         '2': {
             'en': 'Optional',
             'cy': ''
+        },
+        'Course is availble other than by distance learning': {
+            'en': 'Not Available',
+            'cy': ''
         }
     },
     'doing_further_study': {
@@ -355,6 +359,10 @@ DICT = {
     },
     'website': {
         'en': 'Website',
+        'cy': ''
+    },
+    'work_placement_year': {
+        'en': 'Work placement year',
         'cy': ''
     },
     'year_abroad': {

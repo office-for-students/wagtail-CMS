@@ -124,17 +124,14 @@ $(document).ready(function() {
     }
 
     if (data.subjectArea.value != "disabled" && data.subject.value === "disabled") {
-      debugger
       $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
         if(item.level === "3" && item.code.includes(data.subjectArea.value)) {
           subjectCodes += '"' + item.englishname + '",'
         }
       })
     } else if (data.subjectArea.value === "disabled" && data.subject.value === "disabled") {
-        debugger
       subjectCodes = ""
     } else {
-        debugger
       subjectCodes = data.subjectCode.value
     }
     sessionStorage.setItem("subject", subject)

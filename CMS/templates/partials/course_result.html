@@ -4,38 +4,43 @@
 <div class="course-finder-results__result-accordion-body-content">
     <a href="/course-details/{{institution_id}}/{{course.kis_course_id}}/{{course.mode}}"
        class="course-finder-results__result-accordion-body-course-name">
-        {{ course.english_title }}
+        {{ course.title.english }}
         {% if course.qualification %}
-            ({{ course.qualification.label }})
-            <!--For when we switch to the new api-->
-            <!--({{ course.qualification }})-->
+            ({{ course.qualification }})
         {% endif %}
     </a>
 
-    {% if course.length_of_course == "" %}
+    {% if course.length_of_course == "" or course.length_of_course == None %}
         <p class="course-finder-results__result-accordion-body-course-info">
             {% get_translation key='course_length_not_available' language=page.get_language %}
         </p>
     {% else %}
         <p class="course-finder-results__result-accordion-body-course-info">
-            {{ course.length_of_course }}-{% get_translation key='year_course' language=page.get_language %}
+            {{ course.length_of_course|slice:1 }}-{% get_translation key='year_course' language=page.get_language %}
         </p>
     {% endif %}
 
     <p class="course-finder-results__result-accordion-body-course-info">
-        {{ course.mode }}
+        Study mode: {{ course.mode }}
     </p>
 
     <p class="course-finder-results__result-accordion-body-course-info">
-        {% get_translation key='sandwich_year' language=page.get_language %} ({{ course.sandwich_year }})
+        {% get_translation key='distance_learning' language=page.get_language %}: {% map_distance_learning_values course.distance_learning page.get_language %}
     </p>
 
     <p class="course-finder-results__result-accordion-body-course-info">
-        {% get_translation key='year_abroad' language=page.get_language %} ({{ course.year_abroad }})
+        {% get_translation key='work_placement_year' language=page.get_language %}: {{ course.sandwich_year }}
     </p>
 
     <p class="course-finder-results__result-accordion-body-course-info">
-        {% get_translation key='location' language=page.get_language %}: {{ course.location.english_name }}
+        {% get_translation key='year_abroad' language=page.get_language %}: {{ course.year_abroad }}
+    </p>
+
+    <p class="course-finder-results__result-accordion-body-course-info">
+        {% get_translation key='location' language=page.get_language %}:
+        {% for location in course.locations %}
+            {{ location.english }},
+        {% endfor %}
     </p>
 
     <!--<input type="button" name="" value="+ {% get_translation key='compare_course' language=page.get_language %}">-->
