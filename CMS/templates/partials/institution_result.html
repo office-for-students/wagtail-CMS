@@ -22,7 +22,7 @@
 
     <div class="course-finder-results__result-accordion-body">
         {% for course in institution.courses %}
-            {% include 'partials/course_result.html' with course=course institution_id=institution.public_ukprn %}
+            {% include 'partials/course_result.html' with course=course institution_id=institution.pub_ukprn %}
         {% endfor %}
     </div>
 </div>
