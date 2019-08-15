@@ -6,7 +6,13 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from . import welsh_urls
+
+from courses import urls as courses_urls
+from institutions import urls as institution_urls
+
 from search import views as search_views
+from coursefinder import views as coursefinder_views
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
@@ -15,6 +21,16 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
+    url(r'^results/$', coursefinder_views.results, name='results'),
+
+    url(r'^narrow-search/$', coursefinder_views.narrow_search, name='narrow_search'),
+    url(r'^course-finder/results/$', coursefinder_views.course_finder_results, name='course_finder_results'),
+
+    url(r'^widget/', include('widget.urls')),
+    url(r'^course-details/', include(courses_urls)),
+    url(r'^institution-details/', include(institution_urls)),
+
+    url(r'(?P<language>[\w\-]+)/', include(welsh_urls)),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in

@@ -1,0 +1,62 @@
+# Build Docker image for this app using Azure Pipelines
+# http://docs.microsoft.com/azure/devops/pipelines/languages/docker?view=vsts
+trigger:
+- release/*
+
+pr: none
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+variables:
+  imageName: 'discover-uni:$(Build.BuildId)'
+  dockerId: preproddiscoverunicontainerregistry
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: 3.7
+    architecture: 'x64'
+
+- task: PythonScript@0
+  displayName: 'Export project path'
+  inputs:
+    scriptSource: 'inline'
+    script: |
+      """Search all subdirectories for `CMS` module."""
+      from glob import iglob
+      from os import path
+      # Python >= 3.5
+      cms = next(iglob(path.join('**', 'CMS'), recursive=True), None)
+      if not cms:
+          raise SystemExit('Could not find the Django project')
+      project_location = path.dirname(path.abspath(cms))
+      print('Found Django project in', project_location)
+      print('##vso[task.setvariable variable=projectRoot]{}'.format(project_location))
+
+- script: |
+    python -m pip install --upgrade pip setuptools wheel django
+    pip install -r $(projectRoot)/requirements.txt
+    pip install unittest-xml-reporting
+  displayName: 'Install prerequisites'
+
+- script: |
+    pushd '$(projectRoot)'
+    python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
+  condition: succeededOrFailed()
+  displayName: 'Run tests'
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testResultsFiles: "**/TEST-*.xml"
+    testRunTitle: 'Python $(PYTHON_VERSION)'
+
+- script: |
+    pushd '$(projectRoot)'
+    docker build -f ./deploy_files/Dockerfile -t $(dockerId).azurecr.io/$(imageName) .
+    docker login -u $(dockerId) -p $pswd $(dockerId).azurecr.io
+    docker push $(dockerId).azurecr.io/$(imageName)
+  env:
+    pswd: $(dockerPassword)
+  displayName: 'Build and push Docker image to Dev'

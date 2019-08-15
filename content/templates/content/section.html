@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags sass_tags %}
+
+{% block extra_css %}
+    <link href="{% sass_src 'scss/content.scss' %}" rel="stylesheet" type="text/css" >
+{% endblock extra_css %}
+
+{% block content %}
+    <div class="content-page section-page">
+        <div class="discover-uni-container">
+            <h1 class="content-page__header">
+                {{ page.title }}
+            </h1>
+
+            <div class="content-page__intro">
+                {% if page.intro %}
+                    {{ page.intro | richtext }}
+                {% endif %}
+            </div>
+
+            <div class="section-page__accordions">
+                {% for block in page.subsections %}
+                    <div  class="section-page__accordion">
+                        <div tabindex="0" role="button" aria-label="Show content" class="section-page__accordion-header">
+                            <h2 class="section-page__accordion-title">{{ block.value.subsection_title }}</h2>
+
+                            <div class="expand">
+                                <img class="nav-card__icon" src="{% static 'images/plus_icon.svg' %}" alt="expand">
+                            </div>
+
+                            <div class="collapse">
+                                <img class="nav-card__icon" src="{% static 'images/minus_icon.svg' %}" alt="collapse">
+                            </div>
+                        </div>
+
+                        <div class="section-page__accordion-body">
+                            <div class="section-page__accordion-body-content">
+                                {{block.value.subsection_content}}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if page.related_links_title or page.related_links  %}
+                <div class="related-links grid-3">
+                <h2>{{ page.related_links_title }}</h2>
+
+                {% for block in page.related_links %}
+                <div class="link">
+                    <h3>{{block}}</h3>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if page.lateral_links_title or page.lateral_links  %}
+                <div class="lateral-links grid-3">
+                <h2>{{ page.lateral_link_title }}</h2>
+
+                {% for block in page.lateral_links %}
+                <div class="link">
+                    <h3>{{block}}</h3>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

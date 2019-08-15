@@ -1,0 +1,92 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.section-page {
+    &__accordion {
+        margin-bottom: 10px;
+
+        &-header {
+            background-color: $ux-grey-1;
+            padding: 30px  22px 30px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .collapse {
+                display: none;
+            }
+
+            .expand {
+                display: none;
+            }
+
+            &.open {
+                @include green-gradient-background-mixin();
+
+                .section-page__accordion-title {
+                    color: white;
+                }
+            }
+        }
+
+        &-title {
+            @include small-font--bold-mixin();
+
+            margin: 0px;
+
+            color: $ux-grey-3;
+            line-height: 19px;
+        }
+
+        &-body {
+            background-color: $ux-grey-1;
+
+            &-content {
+                @include small-font-mixin();
+
+                padding: 30px;
+
+                p {
+                    margin-top: 0px;
+
+                    line-height: 19px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .section-page {
+        &__accordion {
+            margin-bottom: 7px;
+
+            &-header {
+                padding: 30px  30px 30px 32px;
+            }
+
+            &-title {
+                @include xs-heading--bold-mixin();
+
+                color: $ux-grey-3;
+                line-height: 29px;
+            }
+
+            &-body {
+                &-content {
+                    @include xs-heading-mixin();
+
+                    width: 66%;
+
+                    padding: 60px 80px 70px;
+
+                    p {
+                        margin-top: 0px;
+
+                        line-height: 29px;
+                    }
+                }
+            }
+        }
+    }
+}

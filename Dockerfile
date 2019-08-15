@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.7
+FROM python:3.6
 LABEL maintainer="hello@wagtail.io"
 
 # Set environment varibles
@@ -16,8 +16,6 @@ RUN pip install gunicorn
 COPY . /code/
 # Set the working directory to /code/
 WORKDIR /code/
-
-RUN python manage.py migrate
 
 RUN useradd wagtail
 RUN chown -R wagtail /code

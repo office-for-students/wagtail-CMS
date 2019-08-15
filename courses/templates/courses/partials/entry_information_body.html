@@ -1,0 +1,108 @@
+{% load staticfiles %}
+{% load wagtailcore_tags %}
+{% load discover_uni_tags %}
+
+<div class="discover-uni-container">
+    <div class="entry-information__block">
+        <h2 class="entry-information__heading">{{block.value.qualification_heading}}</h2>
+
+        <p class="entry-information__lead">
+            {{block.value.qualification_intro}}
+        </p>
+
+        <div class="entry-information__qualification-charts">
+            <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.degree}}">
+                {% include 'courses/partials/bar_chart.html' %}
+                <label class="entry-information__chart-label">{% get_translation key='degree' language=page.get_language %}</label>
+            </div>
+
+            <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.another_higher_education_qualifications}}">
+                {% include 'courses/partials/bar_chart.html' %}
+                <label class="entry-information__chart-label">{% get_translation key='other_higher_qualifications' language=page.get_language %}</label>
+            </div>
+
+            <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.a_level}}">
+                {% include 'courses/partials/bar_chart.html' %}
+                <label class="entry-information__chart-label">{% get_translation key='a_level_similar' language=page.get_language %}</label>
+            </div>
+
+            <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.baccalaureate}}">
+                {% include 'courses/partials/bar_chart.html' %}
+                <label class="entry-information__chart-label">{% get_translation key='baccalaureate' language=page.get_language %}</label>
+            </div>
+
+            <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.access}}">
+                {% include 'courses/partials/bar_chart.html' %}
+                <label class="entry-information__chart-label">{% get_translation key='access_course' language=page.get_language %}</label>
+            </div>
+
+            <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.foundation}}">
+                {% include 'courses/partials/bar_chart.html' %}
+                <label class="entry-information__chart-label">{% get_translation key='foundation_course' language=page.get_language %}</label>
+            </div>
+
+            <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.none}}">
+                {% include 'courses/partials/bar_chart.html' %}
+                <label class="entry-information__chart-label">{% get_translation key='no_qualifications' language=page.get_language %}</label>
+            </div>
+
+            <div class="entry-information__chart discover-uni-chart bar" data-value="{{course_details.entry_stats.other_qualifications}}">
+                {% include 'courses/partials/bar_chart.html' %}
+                <label class="entry-information__chart-label">{% get_translation key='other' language=page.get_language %}</label>
+            </div>
+
+            <div class="explanation">
+                <div class="explanation__link">
+                    <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
+                    <p class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</p>
+                </div>
+
+                <div class="chart-label-explanation">
+                    <h3 class="chart-label-explanation__heading">
+                        {{block.value.qualification_label_explanation_heading}}
+
+                        <span class="chart-label-explanation__close">X</span>
+                    </h3>
+
+                    <div class="chart-label-explanation__body">
+                        {{block.value.qualification_label_explanation_body}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="explanation-text">
+                {% create_list course_details.entry_stats.number_of_students as substitutions %}
+                {% insert_values_to_rich_text content=block.value.qualification_data_source substitutions=substitutions as subbed_text %}
+                {{ subbed_text | richtext }}
+            </div>
+        </div>
+    </div>
+
+    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.entry_stats.unavailable_reason %}
+
+    {% if course_details.tariff_stats.tariffs %}
+        <div class="entry-information__block">
+            <h2 class="entry-information__heading">{{block.value.tariffs_heading}}</h2>
+
+            <p class="entry-information__lead">
+                {{block.value.tariffs_intro}}
+            </p>
+
+            <div class="entry-information__tariff-charts">
+                {% for tariff in course_details.tariff_stats.tariffs %}
+                    <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}">
+                        <label class="entry-information__chart-label"><span>{{tariff.label}}</span></label>
+
+                        {% include 'courses/partials/bar_chart.html' %}
+                    </div>
+                {% endfor %}
+
+                <div class="explanation-text">
+                    {% create_list course_details.tariff_stats.number_of_students as substitutions %}
+                    {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
+                    {{ subbed_text | richtext }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>

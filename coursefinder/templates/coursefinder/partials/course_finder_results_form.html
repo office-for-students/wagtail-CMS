@@ -1,0 +1,18 @@
+{% load static discover_uni_tags %}
+
+<form id="courseFinderResultsForm"  action="{% url 'course_finder_results' %}" method="get" class="course-finder-base__nav-form">
+    <input class="course-finder-base__nav-input" type="text" name="subject_query" value="">
+
+    <input class="course-finder-base__nav-input" type="text" name="institution_query" value="">
+
+    <input class="course-finder-base__nav-input" type="text" name="mode_query" value="">
+
+    <input class="course-finder-base__nav-input" type="text" name="countries_query" value="">
+
+    <button class="{{ button_class }}" onclick="handleResultsRequest()">
+        {% get_translation key=button_value_key language=page.get_language %}
+
+        <img class="{{ icon_class }} green" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
+        <img class="{{ icon_class }} white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
+    </button>
+</form>

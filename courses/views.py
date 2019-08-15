@@ -1,0 +1,25 @@
+from django.shortcuts import render
+
+from CMS.enums import enums
+from core.utils import get_page_for_language
+
+from courses.models import CourseDetailPage, Course
+
+
+def courses_detail(request, institution_id, course_id, kis_mode, language=enums.languages.ENGLISH):
+    course, error = Course.find(institution_id, course_id, kis_mode, language)
+
+    if error:
+        return render(request, '500.html')
+
+    page = get_page_for_language(language, CourseDetailPage.objects.all())
+
+    if not page:
+        return render(request, '404.html')
+
+    context = {
+        'page': page,
+        'course': course,
+    }
+
+    return render(request, 'courses/course_detail_page.html', context)

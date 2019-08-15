@@ -1,0 +1,86 @@
+{% load staticfiles discover_uni_tags %}
+
+<nav class="discover-uni-nav">
+    <div class="discover-uni-nav__container discover-uni-container">
+        <a class="discover-uni-nav__home-link" href="/">
+            <h1 class="discover-uni-nav__brand">
+                {% autoescape off %}
+                    {% get_translation key='site_logo' language=page.get_language %}
+                {% endautoescape %}
+
+                <img class="discover-uni-nav__brand-icon" src="{% static 'images/brand_logo.svg' %}" alt="">
+            </h1>
+        </a>
+
+        <div class="discover-uni-nav__desktop-links">
+            {% for item in page.menu %}
+                {% if item.sub_items %}
+                    <div class="discover-uni-nav__desktop-dropdown">
+                        <p class="discover-uni-nav__desktop-dropdown-toggle">
+                            {{ item.label }}
+
+                            <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
+                        </p>
+
+                        <div class="discover-uni-nav__desktop-dropdown-body">
+                            {% for sub_item in item.sub_items %}
+                                <a class="discover-uni-nav__desktop-dropdown-link" href="{{ sub_item.url }}">
+                                    {{ sub_item.label }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <a class="discover-uni-nav__desktop-link" href="{{ item.url }}">
+                        {{ item.label }}
+
+                        {% if item.label == 'Course search' %}
+                            <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
+                        {% endif %}
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <i id="burger-menu" class="discover-uni-nav__burger-menu fas fa-bars"></i>
+        <i id="close-menu" class="discover-uni-nav__close-menu fas fa-times"></i>
+    </div>
+
+    <div class="discover-uni-nav__mobile-links">
+        {% for item in page.menu %}
+            {% if item.sub_items %}
+                <div class="discover-uni-nav__mobile-accordion">
+                    <div class="discover-uni-nav__mobile-accordion-header">
+                        <p class="discover-uni-nav__mobile-accordion-title">
+                            {{ item.label }}
+                        </p>
+
+                        <div class="expand">
+                            <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
+                        </div>
+
+                        <div class="collapse">
+                            <img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}" alt="collapse">
+                        </div>
+                    </div>
+
+                    <div class="discover-uni-nav__mobile-accordion-body">
+                        {% for sub_item in item.sub_items %}
+                            <a class="discover-uni-nav__mobile-accordion-body-link" href="{{ sub_item.url }}">
+                                {{ sub_item.label }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <a class="discover-uni-nav__mobile-link" href="{{ item.url }}">
+                    {{ item.label }}
+
+                    {% if item.label == 'Course search' %}
+                        <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
+                    {% endif %}
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</nav>

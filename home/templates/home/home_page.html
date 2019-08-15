@@ -1,21 +1,31 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static wagtailcore_tags discover_uni_tags sass_tags %}
+
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block extra_css %}
-
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
+    <link href="{% sass_src 'scss/home.scss' %}" rel="stylesheet" type="text/css" >
 {% endblock extra_css %}
 
 {% block content %}
+    <div class="home">
+        <div class="discover-uni-container">
+            <h1 class="header">
+                {{ page.header }}
+            </h1>
 
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-{% include 'home/welcome_page.html' %}
+            <div class="intro-text">
+                {{ page.intro  | richtext }}
+            </div>
 
+            {% for block in page.page_links %}
+                <div class="link">
+                    <a href='{{ block.value.page.url }}'>
+                        {{ block.value.title }}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock content %}

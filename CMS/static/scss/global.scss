@@ -1,0 +1,50 @@
+@import './partials/nav';
+@import './partials/footer';
+@import './partials/pagination';
+@import './partials/forms';
+@import './partials/search_dropdown';
+
+body {
+  margin: 0;
+  font-family: sans-serif, serif;
+  color: #5F607C;
+}
+
+@media only screen and (min-width: 770px) {
+    .discover-uni-container {
+        max-width: 1020px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.explanation {
+    position: relative;
+
+    .explanation__link {
+        display: flex;
+        align-items: center;
+
+        cursor: pointer;
+
+        .information-link {
+            font-size: 16px;
+            color: $link-blue;
+            text-decoration: underline;
+        }
+    }
+}
+
+.information-icon {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+a {
+    color: $link-blue;
+}
+
+.dropdown-arrow {
+    align-self: center;
+}

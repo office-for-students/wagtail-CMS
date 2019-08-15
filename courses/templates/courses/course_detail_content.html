@@ -1,0 +1,115 @@
+{% load staticfiles %}
+{% load discover_uni_tags %}
+
+<div class="course-detail">
+    <div class="course-detail__lead">
+        <div class="discover-uni-container">
+            <img class="course-detail__icon" src="{% static 'images/certificate.svg' %}" alt="">
+
+            <h1 class="course-detail__course-name">
+                {{course.display_title}}
+            </h1>
+
+            <!--<button class="course-detail__compare-btn">-->
+                <!--+ {% get_translation key='compare_course' language=page.get_language %}-->
+            <!--</button>-->
+        </div>
+
+        <div class="course-detail__institution-info">
+            <div class="discover-uni-container">
+                <a class="course-detail__institution-name" href="/institution-details/{{course.institution.pub_ukprn}}/">
+                    {% autoescape off %}{{course.institution.pub_ukprn_name | safe}}{% endautoescape %}
+                </a>
+
+                <p class="course-detail__institution-locations">
+                    {{ course.number_of_locations }} {% get_translation key='locations' language=page.get_language %}: {{ course.locations_list }}
+                </p>
+            </div>
+        </div>
+
+        <div class="discover-uni-container">
+            <div class="course-detail__course-overview overview-group">
+                <div class="course-detail__overview-item overview-block">
+                    <p class="course-detail__overview-item-heading">{% get_translation key='length' language=page.get_language %}</p>
+                    <p class="course-detail__overview-item-value">{{ course.length.code }} {% get_translation key='year_course' language=page.get_language %}</p>
+                </div>
+
+                <div class="course-detail__overview-item overview-block">
+                    <p class="course-detail__overview-item-heading">{% get_translation key='study_mode' language=page.get_language %}</p>
+                    <p class="course-detail__overview-item-value">{{ course.mode.label }}</p>
+                </div>
+
+                <div class="course-detail__overview-item overview-block">
+                    <p class="course-detail__overview-item-heading">{% get_translation key='distance_learning' language=page.get_language %}</p>
+                    <p class="course-detail__overview-item-value">{{ course.distance_learning.display_label }}</p>
+                </div>
+
+                <div class="course-detail__overview-item overview-block">
+                    <p class="course-detail__overview-item-heading">{% get_translation key='placement_year' language=page.get_language %}</p>
+                    <p class="course-detail__overview-item-value">{{ course.sandwich_year.label }}</p>
+                </div>
+
+                <div class="course-detail__overview-item overview-block">
+                    <p class="course-detail__overview-item-heading">{% get_translation key='year_abroad' language=page.get_language %}</p>
+                    <p class="course-detail__overview-item-value">{{ course.year_abroad.label }}</p>
+                </div>
+
+                <div class="course-detail__overview-item overview-block">
+                    <p class="course-detail__overview-item-heading">{% get_translation key='foundation_year' language=page.get_language %}</p>
+                    <p class="course-detail__overview-item-value">{{ course.foundation_year.label }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="course-detail__accordion-block">
+        {% for accordion in page.accordions %}
+            {% if accordion.value.data_set != 'professional_accreditation' or course.accreditations %}
+                <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
+                    <div class="discover-uni-container">
+                        <h2 class="course-detail__accordion-heading">
+                            {{ accordion.value.heading }}
+
+                            <span class="course-detail__accordion-heading-chevron">
+                                <img class="course-detail__icon plus" src="{% static 'images/plus_icon.svg' %}" alt="">
+                                <img class="course-detail__icon minus" src="{% static 'images/minus_icon.svg' %}" alt="">
+                            </span>
+                        </h2>
+                    </div>
+
+                    <div class="course-detail__accordion-body">
+                        {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course block=accordion %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="course-detail__uni-site-links">
+        <div class="discover-uni-container">
+            <p class="course-detail__uni-site-links-heading">
+                {{ page.uni_site_links_header }}
+            </p>
+
+            <ul class="course-detail__uni-site-links-list">
+                {% for link in course.course_links %}
+                    <li class="course-detail__uni-site-links-list-item">
+                        <a class="course-detail__uni-site-link" href="{{link.link}}">{{link.label}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="course-detail__further-info-block">
+        <a href="/dummy-link" class="course-detail__other-courses-link">
+            <img class="course-detail__other-courses-link-icon" src="{% static 'images/location_paddle.svg' %}" alt="">
+            <span>{% autoescape off %}{% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
+        </a>
+
+        <a href="/dummy-link" class="course-detail__other-courses-link">
+            <img class="course-detail__other-courses-link-icon" src="{% static 'images/curved_arrow_right.svg' %}" alt="">
+            <span>{% autoescape off %}{% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
+        </a>
+    </div>
+</div>

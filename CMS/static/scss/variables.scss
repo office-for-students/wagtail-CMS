@@ -1,0 +1,58 @@
+$black: #000000;
+$white: #FFFFFF;
+$header-blue: #1F283A;
+$background-grey: #EDEDED;
+$ux-grey-1: #F5F5F5;
+$ux-grey-2: #676D70;
+$ux-grey-3: #6E6E6E;
+$divider-grey: #D6D6D6;
+$ux-interrupt: #FEF7BC;
+$form-grey: #EDEDED;
+$slate: #425563;
+$helper-grey: #71797C;
+
+$gradient-light-green: #4EA27D;
+$gradient-dark-green: #308282;
+$link-blue: $gradient-light-green;
+
+$default-font: Nunito Sans;
+$default-font-color: $black;
+
+$xl-heading-font-size: 70px;
+$xl-heading-line-height: 70px;
+$l-heading-font-size: 48px;
+$l-heading-line-height: 48px;
+$m-heading-font-size: 36px;
+$m-heading-line-height: 36px;
+$s-heading-font-size: 27px;
+$s-heading-line-height: 27px;
+$xs-heading-font-size: 21px;
+$xs-heading-line-height: 21px;
+
+$desktop-body-font-size: 19px;
+$desktop-body-line-height: 19px;
+$mobile-body-font-size: 16px;
+$mobile-body-line-height: 16px;
+$small-font-size: 14px;
+$small-line-height: 14px;
+
+@mixin green-gradient-background-mixin() {
+    background: linear-gradient(145.9deg, $gradient-light-green 13.02%, $gradient-dark-green 85.42%);
+    color: $white;
+}
+
+
+@mixin green-gradient-mixin() {
+    @include green-gradient-background-mixin();
+    border: 2px solid transparent;
+
+    &:hover {
+        background: $white;
+        color: $gradient-light-green;
+        border: 2px solid $gradient-light-green;
+    }
+}
+
+@mixin default-box-shadowing() {
+    box-shadow: 6px 5px 30px rgba(0, 0, 0, 0.08);
+}

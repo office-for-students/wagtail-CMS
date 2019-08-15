@@ -1,0 +1,63 @@
+{% extends "coursefinder/course_finder_base.html" %}
+{% load static wagtailcore_tags discover_uni_tags %}
+
+
+{% block body_class %}template-course-finder-postcode{% endblock %}
+
+{% block content_class %}postcode-search{% endblock %}
+
+{% block question %}
+    <h1 class="course-finder-content__question">{{page.question}}</h1>
+
+    <form class="course-finder-content__question-form">
+        <input class="textbox" type="text" name="" value="">
+
+        <p class="course-finder-content__question-sub-heading">
+            {% get_translation key='search_within' language=page.get_language %}:
+        </p>
+
+        <label class="course-finder-content__question-option radio" for="one">
+            <span class="course-finder-content__question-label">
+                10 {% get_translation key='miles' language=page.get_language %}
+            </span>
+
+            <input class="course-finder-content__question-input"
+                    id="one" type="radio" name="postcode" value="">
+
+            <span class="radiobox"></span>
+        </label>
+
+        <label class="course-finder-content__question-option radio" for="two">
+            <span class="course-finder-content__question-label">
+                25 {% get_translation key='miles' language=page.get_language %}
+            </span>
+
+            <input class="course-finder-content__question-input"
+                    id="two" type="radio" name="postcode" value="">
+
+            <span class="radiobox"></span>
+        </label>
+
+        <label class="course-finder-content__question-option radio" for="three">
+            <span class="course-finder-content__question-label">
+                50 {% get_translation key='miles' language=page.get_language %}
+            </span>
+
+            <input class="course-finder-content__question-input"
+                    id="three" type="radio" name="postcode" value="">
+
+            <span class="radiobox"></span>
+        </label>
+    </form>
+{% endblock %}
+
+{% block next_nav %}
+    <a href={% pageurl page.next_page %} class="course-finder-content__next-link">
+        <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
+            {% get_translation key='next' language=page.get_language %}
+
+            <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
+            <img class="course-finder-content__next-icon green" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
+        </button>
+    </a>
+{% endblock %}
