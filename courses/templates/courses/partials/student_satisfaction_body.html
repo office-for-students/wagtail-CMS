@@ -188,14 +188,14 @@
         </div>
         {% endif %}
 
-        {% if course_details.satisfaction_stats.show_organisation_stats %}
+        {% if course_details.satisfaction_stats.show_support_stats %}
             <div class="student-satisfaction__data-group">
 
                 <h2 class="student-satisfaction__data-group-heading">
-                    <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/management_icon.svg' %}" alt="">
+                    <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/support_icon.svg' %}" alt="">
 
                     <span class="student-satisfaction__data-group-heading-title">
-                        {{block.value.organisation_stats_header }}
+                        {{block.value.support_stats_header }}
                     </span>
                 </h2>
 
@@ -229,6 +229,54 @@
                                 {% include 'courses/partials/doughnut_chart.html' %}
 
                                 <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_14.description}}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if course_details.satisfaction_stats.show_organisation_stats %}
+            <div class="student-satisfaction__data-group">
+
+                <h2 class="student-satisfaction__data-group-heading">
+                    <img class="student-satisfaction__data-group-heading-icon" src="{% static 'images/management_icon.svg' %}" alt="">
+
+                    <span class="student-satisfaction__data-group-heading-title">
+                        {{block.value.organisation_stats_header }}
+                    </span>
+                </h2>
+
+                <div class="student-satisfaction__charts">
+                    {%  if course_details.satisfaction_stats.question_15.show_data_point %}
+                        <div class="student-satisfaction__chart-wrapper">
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                 data-value="{{course_details.satisfaction_stats.question_15.agree_or_strongly_agree}}">
+                                {% include 'courses/partials/doughnut_chart.html' %}
+
+                                <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_15.description}}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {%  if course_details.satisfaction_stats.question_16.show_data_point %}
+                        <div class="student-satisfaction__chart-wrapper">
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                 data-value="{{course_details.satisfaction_stats.question_16.agree_or_strongly_agree}}">
+                                {% include 'courses/partials/doughnut_chart.html' %}
+
+                                <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_16.description}}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {%  if course_details.satisfaction_stats.question_17.show_data_point %}
+                        <div class="student-satisfaction__chart-wrapper">
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                 data-value="{{course_details.satisfaction_stats.question_17.agree_or_strongly_agree}}">
+                                {% include 'courses/partials/doughnut_chart.html' %}
+
+                                <p class="student-satisfaction__chart-title">{{course_details.satisfaction_stats.question_17.description}}</p>
                             </div>
                         </div>
                     {% endif %}

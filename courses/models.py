@@ -62,6 +62,7 @@ class SatisfactionBlock(AccordionPanel):
     teaching_stats_header = blocks.CharBlock(required=False)
     learning_opportunities_stats_header = blocks.CharBlock(required=False)
     assessment_stats_header = blocks.CharBlock(required=False)
+    support_stats_header = blocks.CharBlock(required=False)
     organisation_stats_header = blocks.CharBlock(required=False)
     learning_resources_stats_header = blocks.CharBlock(required=False)
     learning_community_stats_header = blocks.CharBlock(required=False)
@@ -565,9 +566,13 @@ class SatisfactionStatistics:
         return self.question_8.show_data_point or self.question_9.show_data_point or \
                self.question_10.show_data_point or self.question_11.show_data_point
 
-    def show_organisation_stats(self):
+    def show_support_stats(self):
         return self.question_12.show_data_point or self.question_13.show_data_point or \
                self.question_14.show_data_point
+
+    def show_organisation_stats(self):
+        return self.question_15.show_data_point or self.question_16.show_data_point or \
+               self.question_17.show_data_point
 
     def show_learning_resources_stats(self):
         return self.question_18.show_data_point or self.question_19.show_data_point or \
