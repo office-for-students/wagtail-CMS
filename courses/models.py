@@ -171,7 +171,7 @@ class Course:
             self.honours_award_provision = course_details.get('honours_award_provision')
             self.institution = InstitutionOverview(course_details.get('institution'))
             self.kis_course_id = course_details.get('kis_course_id')
-            self.length = CourseLength(course_details.get('length_of_course'))
+            self.length = CourseLength(course_details.get('length_of_course'), language)
             self.locations = []
             if course_details.get('locations'):
                 for location in course_details.get('locations'):
@@ -225,7 +225,7 @@ class Course:
             link_objs.get('costs_support').append(CourseLink(DICT.get(enums.uni_link_keys.COSTS).get(language),
                                                   links.get(enums.uni_link_keys.COSTS),
                                                   enums.languages_map.get(language)))
-        if enums.uni_link_keys.ACCOMMODATION in self.locations[0].links:
+        if self.locations and enums.uni_link_keys.ACCOMMODATION in self.locations[0].links:
             link_objs.get('costs_support').append(CourseLink(DICT.get(enums.uni_link_keys.ACCOMMODATION).get(language),
                                                   self.locations[0].links.get(enums.uni_link_keys.ACCOMMODATION),
                                                   enums.languages_map.get(language)))
@@ -301,8 +301,9 @@ class CourseDistanceLearning:
         self.label = fallback_to(data_obj.get('label'), '')
 
     def display_label(self):
+        print(self.code)
         if self.code:
-            return DICT.get('distance_learning_values').get(self.code).get(self.display_language)
+            return DICT.get('distance_learning_values').get(str(self.code)).get(self.display_language)
         return DICT.get('unknown').get(self.display_language)
 
 
@@ -315,9 +316,11 @@ class CourseFoundationYear:
 
 class CourseLength:
 
-    def __init__(self, data_obj):
-        self.code = data_obj.get('code')
-        self.label = fallback_to(data_obj.get('label'), '')
+    def __init__(self, data_obj, language):
+        self.label = DICT.get('unknown').get(language)
+        if data_obj:
+            self.code = data_obj.get('code')
+            self.label = fallback_to(data_obj.get('label'), '')
 
 
 class CourseLink:
