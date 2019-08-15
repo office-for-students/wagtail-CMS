@@ -184,8 +184,6 @@
     }
 
     .course-detail__further-info-block {
-        padding-left: 15px;
-        padding-right: 15px;
         margin-bottom: 45px;
 
         .course-detail__other-courses-link {
@@ -413,11 +411,9 @@
         }
 
         .course-detail__further-info-block {
-            padding-left: 15px;
-            padding-right: 15px;
             margin-bottom: 70px;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
 
 
             .course-detail__other-courses-link {

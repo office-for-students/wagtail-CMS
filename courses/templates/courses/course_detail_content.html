@@ -126,15 +126,17 @@
         </div>
     </div>
 
-    <div class="course-detail__further-info-block">
-        <a href="/dummy-link" class="course-detail__other-courses-link">
-            <img class="course-detail__other-courses-link-icon" src="{% static 'images/location_paddle.svg' %}" alt="">
-            <span>{% autoescape off %}{% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
-        </a>
+    <div class="discover-uni-container">
+        <div class="course-detail__further-info-block">
+            <a href="/dummy-link" class="course-detail__other-courses-link">
+                <img class="course-detail__other-courses-link-icon" src="{% static 'images/location_paddle.svg' %}" alt="">
+                <span>{% autoescape off %}{% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
+            </a>
 
-        <a href="/dummy-link" class="course-detail__other-courses-link">
-            <img class="course-detail__other-courses-link-icon" src="{% static 'images/curved_arrow_right.svg' %}" alt="">
-            <span>{% autoescape off %}{% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
-        </a>
+            <a href="/dummy-link" class="course-detail__other-courses-link">
+                <img class="course-detail__other-courses-link-icon" src="{% static 'images/curved_arrow_right.svg' %}" alt="">
+                <span>{% autoescape off %}{% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
+            </a>
+        </div>
     </div>
 </div>
