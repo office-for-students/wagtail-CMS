@@ -48,5 +48,7 @@ def length_of_list(view_list):
 
 
 @register.simple_tag
-def menu_content_pages_for_language(language):
-    Section.get_all_for_language
+def map_distance_learning_values(key, language):
+    if key in DICT.get('distance_learning_values'):
+        return DICT.get('distance_learning_values').get(key).get(language)
+    return key
