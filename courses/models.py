@@ -165,42 +165,50 @@ class Course:
         course_details = data_obj.get('course')
         if course_details:
             self.country = CourseCountry(course_details.get('country'))
-            self.distance_learning = CourseDistanceLearning(course_details.get('distance_learning'),
-                                                            self.display_language)
-            self.foundation_year = CourseFoundationYear(course_details.get('foundation_year_availability'))
-            self.honours_award_provision = course_details.get('honours_award_provision')
-            self.institution = InstitutionOverview(course_details.get('institution'))
             self.kis_course_id = course_details.get('kis_course_id')
-            self.length = CourseLength(course_details.get('length_of_course'), language)
-            self.locations = []
-            if course_details.get('locations'):
-                for location in course_details.get('locations'):
-                    self.locations.append(CourseLocation(location, self.display_language))
-            self.mode = CourseMode(course_details.get('mode'))
+            self.ucas_programme_id = course_details.get('ucas_programme_id')
             self.qualification = CourseQualification(course_details.get('qualification'))
-            self.sandwich_year = CourseSandwichYear(course_details.get('sandwich_year'))
+
             title = course_details.get('title')
             if title:
                 self.english_title = fallback_to(title.get('english'), '')
                 self.welsh_title = fallback_to(title.get('welsh'), '')
-            self.ucas_programme_id = course_details.get('ucas_programme_id')
+            self.honours_award_provision = course_details.get('honours_award_provision')
+
+            self.institution = InstitutionOverview(course_details.get('institution'))
+            self.locations = []
+            if course_details.get('locations'):
+                for location in course_details.get('locations'):
+                    self.locations.append(CourseLocation(location, self.display_language))
+
+            self.length = CourseLength(course_details.get('length_of_course'), language)
+            self.mode = CourseMode(course_details.get('mode'))
+            self.distance_learning = CourseDistanceLearning(course_details.get('distance_learning'),
+                                                            self.display_language)
+            self.sandwich_year = CourseSandwichYear(course_details.get('sandwich_year'))
             self.year_abroad = CourseYearAbroad(course_details.get('year_abroad'))
+            self.foundation_year = CourseFoundationYear(course_details.get('foundation_year_availability'),
+                                                        self.display_language)
+
+            stats = course_details.get('statistics')
+            if stats:
+                self.entry_stats = EntryStatistics(stats.get('entry')[0])
+                self.continuation_stats = ContinuationStatistics(stats.get('continuation')[0])
+                self.employment_stats = EmploymentStatistics(stats.get('employment')[0])
+                self.job_type_stats = JobTypeStatistics(stats.get('job_type')[0])
+                self.salary_stats = SalaryStatistics(stats.get('salary')[0], self.display_language, title)
+                self.satisfaction_stats = SatisfactionStatistics(stats.get('nss')[0])
+                if stats.get('nhs_nss')[0]:
+                    self.nhs_satisfaction_stats = SatisfactionStatistics(stats.get('nhs_nss')[0])
+                self.tariff_stats = TariffStatistics(stats.get('tariff')[0])
+                self.leo_stats = LEOStatistics(stats.get('leo')[0], self.display_language)
+
             self.accreditations = []
             accreditations = course_details.get('accreditations')
             if accreditations:
                 for accreditation in accreditations:
                     self.accreditations.append(CourseAccreditation(accreditation, self.display_language))
-            stats = course_details.get('statistics')
-            self.entry_stats = EntryStatistics(stats.get('entry')[0])
-            self.continuation_stats = ContinuationStatistics(stats.get('continuation')[0])
-            self.employment_stats = EmploymentStatistics(stats.get('employment')[0])
-            self.job_type_stats = JobTypeStatistics(stats.get('job_type')[0])
-            self.salary_stats = SalaryStatistics(stats.get('salary')[0], self.display_language, title)
-            self.satisfaction_stats = SatisfactionStatistics(stats.get('nss')[0])
-            if stats.get('nhs_nss')[0]:
-                self.nhs_satisfaction_stats = SatisfactionStatistics(stats.get('nhs_nss')[0])
-            self.tariff_stats = TariffStatistics(stats.get('tariff')[0])
-            self.leo_stats = LEOStatistics(stats.get('leo')[0], self.display_language)
+
             self.course_links = self.set_course_links(course_details.get('links'), self.display_language)
 
     def set_course_links(self, links, language):
@@ -289,34 +297,38 @@ class Course:
 class CourseCountry:
 
     def __init__(self, data_obj):
-        self.name = fallback_to(data_obj.get('name'), '')
-        self.code = data_obj.get('code')
+        if data_obj:
+            self.name = fallback_to(data_obj.get('name'), '')
+            self.code = data_obj.get('code')
 
 
 class CourseDistanceLearning:
 
     def __init__(self, data_obj, language):
         self.display_language = language
-        self.code = data_obj.get('code')
-        self.label = fallback_to(data_obj.get('label'), '')
+        if data_obj:
+            self.code = data_obj.get('code')
+            self.label = fallback_to(data_obj.get('label'), '')
 
     def display_label(self):
-        if self.code:
+        if self.code and str(self.code) in DICT.get('distance_learning_values'):
             return DICT.get('distance_learning_values').get(str(self.code)).get(self.display_language)
         return DICT.get('unknown').get(self.display_language)
 
 
 class CourseFoundationYear:
 
-    def __init__(self, data_obj):
-        self.code = data_obj.get('code')
-        self.label = fallback_to(data_obj.get('label'), '')
+    def __init__(self, data_obj, language):
+        self.label = DICT.get('unknown').get(language)
+        if data_obj:
+            self.code = data_obj.get('code')
+            self.label = fallback_to(data_obj.get('label'), '')
 
 
 class CourseLength:
 
     def __init__(self, data_obj, language):
-        self.label = DICT.get('unknown').get(language)
+        self.label = 0
         if data_obj:
             self.code = data_obj.get('code')
             self.label = fallback_to(data_obj.get('label'), '')
