@@ -11,7 +11,7 @@ def query_course_and_institution(course, institution, limit, offset):
         headers = {
             'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
         }
-        base_url = "%s/search/institution-courses?limit=%s&offset=%s&q=%s&institutions=%s"
+        base_url = "%s/institution-courses?limit=%s&offset=%s&q=%s&institutions=%s"
         return requests.get(url=base_url % (settings.SEARCHAPIHOST, limit, offset, course, institution),
                             headers=headers)
 
@@ -23,7 +23,7 @@ def course_finder_query(subject, institution, mode, countries, limit, offset):
         headers = {
             'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
         }
-        url = "%s/search/institution-courses?limit=%s&offset=%s" % (settings.SEARCHAPIHOST, limit, offset)
+        url = "%s/institution-courses?limit=%s&offset=%s" % (settings.SEARCHAPIHOST, limit, offset)
         if subject and subject != '':
             url = f"{url}&subjects={subject}"
         if institution and institution != '':

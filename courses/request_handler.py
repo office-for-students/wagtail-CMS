@@ -12,6 +12,6 @@ def load_course_data(institution_id, course_id, mode):
         headers = {
             'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
         }
-        base_url = "%s/dataset/institutions/%s/courses/%s/modes/%s"
+        base_url = "%s/institutions/%s/courses/%s/modes/%s"
 
         return requests.get(url=base_url % (settings.DATASETAPIHOST, institution_id, course_id, mode), headers=headers)
