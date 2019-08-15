@@ -56,8 +56,8 @@ $(document).ready(function() {
     let all = ""
     $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
       if(item.level === "3" && item.code.includes(value)) {
-        $('#subjectCode').append(`<option value='${item.code}'>${item.englishname}</option>`)
-        all += item.code + ","
+        $('#subjectCode').append(`<option value='"${item.englishname}"'>${item.englishname}</option>`)
+        all += '"' + item.englishname + '",'
       }
     })
     $('#subjectCode').prepend(`<option value=${all} selected>Show all</option>`)
@@ -114,6 +114,7 @@ $(document).ready(function() {
   handleSubjectSubmit = (data) => {
     let subject = ""
     let subjectCodes = ""
+
     if (data.subject.value != "disabled") {
       subject = data.subjectCode.value
     } else if (data.subjectArea.value === "disabled" && data.subject.value === "disabled") {
@@ -121,15 +122,19 @@ $(document).ready(function() {
     } else {
       subject = data.subjectArea.value
     }
+
     if (data.subjectArea.value != "disabled" && data.subject.value === "disabled") {
+      debugger
       $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
         if(item.level === "3" && item.code.includes(data.subjectArea.value)) {
-          subjectCodes += item.code + ","
+          subjectCodes += '"' + item.englishname + '",'
         }
       })
     } else if (data.subjectArea.value === "disabled" && data.subject.value === "disabled") {
+        debugger
       subjectCodes = ""
     } else {
+        debugger
       subjectCodes = data.subjectCode.value
     }
     sessionStorage.setItem("subject", subject)
