@@ -5,6 +5,8 @@ from django import template
 from CMS.enums import enums
 from CMS.translations import DICT
 from content.models import Section
+from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, AFTER_COURSE_KEY, \
+    ACCREDITATION_KEY
 
 register = template.Library()
 
@@ -52,3 +54,18 @@ def map_distance_learning_values(key, language):
     if key in DICT.get('distance_learning_values'):
         return DICT.get('distance_learning_values').get(key).get(language)
     return key
+
+
+@register.simple_tag
+def should_show_accordion(course, accordion_type):
+    if accordion_type == STUDENT_SATISFACTION_KEY:
+        return course.show_satisfaction_stats
+    elif accordion_type == ACCREDITATION_KEY:
+        return course.accreditations
+    elif accordion_type == ENTRY_INFO_KEY:
+        return course.show_entry_information_stats
+    elif accordion_type == AFTER_ONE_YEAR_KEY:
+        return course.show_after_one_year_stats
+    elif accordion_type == AFTER_COURSE_KEY:
+        return course.show_after_course_stats
+    return False

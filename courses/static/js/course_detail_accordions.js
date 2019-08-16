@@ -76,6 +76,7 @@
 
         open: function() {
             this.isOpen = !this.isOpen;
+            this.header.addClass('open');
             this.plusIcon.hide();
             this.minusIcon.show();
             this.body.show();
@@ -83,6 +84,7 @@
 
         collapse: function() {
             this.isOpen = !this.isOpen;
+            this.header.removeClass('open');
             this.plusIcon.show();
             this.minusIcon.hide();
             this.body.hide();
