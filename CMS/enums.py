@@ -15,6 +15,7 @@ class UniLinkKeys:
     TEACHING_METHODS = 'learning_and_teaching_methods'
     ACCOMMODATION = 'accommodation'
     COSTS = 'costs'
+    EMPLOYMENT = 'employment_details'
 
 
 class Enums:

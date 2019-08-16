@@ -25,6 +25,7 @@ $(function () {
                     text: this.value + '%',
                     verticalAlign: 'middle',
                     style: {
+                        fontFamily: 'Nunito Sans',
                         color: '#8D8D8D',
                         fontSize: '26px',
                     },
@@ -71,9 +72,9 @@ $(function () {
                     },
                     {
                         name: '',
-                        borderColor: '#B1C5D4',
+                        borderColor: '#4EA27D',
                         data: [{
-                            color: '#B1C5D4',
+                            color: '#4EA27D',
                             radius: '100%',
                             innerRadius: '100%',
                             y: this.value

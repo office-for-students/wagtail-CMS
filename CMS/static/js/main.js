@@ -138,6 +138,14 @@ $(document).ready(function() {
     sessionStorage.setItem("subjectCodes", subjectCodes)
   }
 
+  handlePostcodeSubmit = (data) => {
+    let postcode = data.postcode.value.replace(' ', '');
+    let distance = data.distance.value;
+    let  queryValue = [postcode,  distance].join(',');
+
+    sessionStorage.setItem("postcode", queryValue);
+  }
+
   handleUniSelection = (data) => {
     let uni = data.uni.value
     sessionStorage.setItem("uni", uni)
@@ -171,16 +179,23 @@ $(document).ready(function() {
     $('#narrow').text(uni.split(",").join(", "))
   }
 
+  if (sessionStorage.getItem("postcode") != null) {
+    let postcode = sessionStorage.getItem("postcode")
+    $('#narrow').text(postcode.split(",").join(", "))
+  }
+
   handleResultsRequest = () => {
     let subject_query = sessionStorage.getItem('subjectCodes')
     let institution_query = sessionStorage.getItem('uni')
     let mode_query = sessionStorage.getItem('modes')
     let countries_query = sessionStorage.getItem('countries')
+    let postcode_query = sessionStorage.getItem('postcode')
 
     $("input[name='subject_query']").val(subject_query)
     $("input[name='institution_query']").val(institution_query)
     $("input[name='mode_query']").val(mode_query)
     $("input[name='countries_query']").val(countries_query)
+    $("input[name='postcode_query']").val(postcode_query)
   }
 
   handleResultClick = (e) => {

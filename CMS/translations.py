@@ -12,7 +12,7 @@ DICT = {
         'cy': ''
     },
     'accommodation': {
-        'en': 'Accommodation costs',
+        'en': 'Accommodation costs and information',
         'cy': ''
     },
     'across_uk': {
@@ -24,7 +24,7 @@ DICT = {
         'cy': ''
     },
     'assessment_method': {
-        'en': 'How course is assessed',
+        'en': 'How the course is assessed',
         'cy': ''
     },
     'baccalaureate': {
@@ -59,6 +59,14 @@ DICT = {
         'en': 'Course costs',
         'cy': ''
     },
+    'costs_and_support': {
+        'en': 'Costs and support',
+        'cy': ''
+    },
+    'course_details': {
+        'en': 'Course details',
+        'cy': ''
+    },
     'course_finder': {
         'en': 'Course Finder',
         'cy': ''
@@ -72,7 +80,7 @@ DICT = {
         'cy': ''
     },
     'course_page': {
-        'en': 'View details at uni website ',
+        'en': 'Course page',
         'cy': ''
     },
     'course_search': {
@@ -117,6 +125,10 @@ DICT = {
         'en': "don't narrow search",
         'cy': ''
     },
+    'employment_details': {
+        'en': "Employment information",
+        'cy': ''
+    },
     'england': {
         'en': 'England',
         'cy': ''
@@ -158,7 +170,7 @@ DICT = {
         'cy': ''
     },
     'learning_and_teaching_methods': {
-        'en': 'How course is taught',
+        'en': 'How the course is taught',
         'cy': ''
     },
     'left_lower_qualification': {
@@ -347,6 +359,10 @@ DICT = {
     },
     'uni_or_college': {
         'en': 'University or college',
+        'cy': ''
+    },
+    'unknown': {
+        'en': 'Unknown',
         'cy': ''
     },
     'unknown_job_type': {

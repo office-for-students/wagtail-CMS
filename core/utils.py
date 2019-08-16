@@ -45,3 +45,7 @@ def parse_menu_item(menu_item):
         item_dict['url'] = menu_item.value.get('link_page').url
 
     return item_dict
+
+
+def fallback_to(value, default_value):
+    return value if value is not None else default_value
