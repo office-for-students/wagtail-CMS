@@ -259,6 +259,10 @@ class Course:
         return self.satisfaction_stats.show_satisfaction_stats() or self.nhs_satisfaction_stats.show_nhs_stats()
 
     @property
+    def show_entry_information_stats(self):
+        return self.entry_stats.display_stats or self.tariff_stats.show_stats()
+
+    @property
     def show_leo(self):
         return self.country.name == 'England' and self.leo_stats.unavailable_reason
 
@@ -394,22 +398,42 @@ class CourseYearAbroad:
 class EntryStatistics:
 
     def __init__(self, data_obj):
-        self.a_level = fallback_to(data_obj.get('a-level'), 0)
-        self.access = fallback_to(data_obj.get('access'), 0)
-        self.aggregation_level = fallback_to(data_obj.get('aggregation_level'), 0)
-        self.another_higher_education_qualifications = fallback_to(
-            data_obj.get('another_higher_education_qualifications'), 0)
-        self.baccalaureate = fallback_to(data_obj.get('baccalaureate'), 0)
-        self.degree = fallback_to(data_obj.get('degree'), 0)
-        self.foundation = fallback_to(data_obj.get('foundation'),0)
-        self.none = fallback_to(data_obj.get('none'), 0)
-        self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
-        self.other_qualifications = fallback_to(data_obj.get('other_qualifications'), 0)
-        self.other_qualifications = fallback_to(data_obj.get('other_qualifications'), 0)
-        unavailable_data = data_obj.get('unavailable')
-        if unavailable_data:
-            self.unavailable_code = unavailable_data.get('code')
-            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+        self.display_stats = False
+        self.aggregation_level = 0
+        self.number_of_students = 0
+        self.a_level = 0
+        self.access = 0
+        self.another_higher_education_qualifications = 0
+        self.baccalaureate = 0
+        self.degree = 0
+        self.foundation = 0
+        self.none = 0
+        self.other_qualifications = 0
+        self.unavailable_code = ''
+        self.unavailable_reason = ''
+
+        if data_obj:
+            self.display_stats = any(key in data_obj for key in ['access', 'another_higher_education_qualifications',
+                                                                 'baccalaureate', 'degree', 'foundation', 'none',
+                                                                 'other_qualifications'])
+
+            self.aggregation_level = fallback_to(data_obj.get('aggregation_level'), 0)
+            self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
+
+            self.a_level = fallback_to(data_obj.get('a-level'), 0)
+            self.access = fallback_to(data_obj.get('access'), 0)
+            self.another_higher_education_qualifications = fallback_to(
+                data_obj.get('another_higher_education_qualifications'), 0)
+            self.baccalaureate = fallback_to(data_obj.get('baccalaureate'), 0)
+            self.degree = fallback_to(data_obj.get('degree'), 0)
+            self.foundation = fallback_to(data_obj.get('foundation'),0)
+            self.none = fallback_to(data_obj.get('none'), 0)
+            self.other_qualifications = fallback_to(data_obj.get('other_qualifications'), 0)
+
+            unavailable_data = data_obj.get('unavailable')
+            if unavailable_data:
+                self.unavailable_code = unavailable_data.get('code')
+                self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
 
 
 class ContinuationStatistics:
@@ -623,13 +647,18 @@ class SatisfactionQuestion:
 class TariffStatistics:
 
     def __init__(self, tariff_data):
-        self.aggregation = tariff_data.get('aggregation')
-        self.number_of_students = fallback_to(tariff_data.get('number_of_students'), 0)
         self.tariffs = []
-        if tariff_data.get('tariffs'):
-            for tariff in tariff_data.get('tariffs'):
-                self.tariffs.append(Tariff(tariff))
-        self.tariffs.reverse()
+
+        if tariff_data:
+            self.aggregation = tariff_data.get('aggregation')
+            self.number_of_students = fallback_to(tariff_data.get('number_of_students'), 0)
+            if tariff_data.get('tariffs'):
+                for tariff in tariff_data.get('tariffs'):
+                    self.tariffs.append(Tariff(tariff))
+            self.tariffs.reverse()
+
+    def show_stats(self):
+        return self.tariffs
 
 
 class Tariff:

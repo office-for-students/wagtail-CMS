@@ -62,5 +62,7 @@ def should_show_accordion(course, accordion_type):
         return course.show_satisfaction_stats
     elif accordion_type == ACCREDITATION_KEY:
         return course.accreditations
+    elif accordion_type == ENTRY_INFO_KEY:
+        return course.show_entry_information_stats
     # TODO implement specific checks for other accordions
     return True
