@@ -134,7 +134,7 @@ class CourseFinderModelsTests(UniSimpleTestCase):
 
     def test_course_finder_search_execute_function_appends_counts_and_list_of_courses_to_model_on_success(self):
         mock_data = SearchMocks.get_search_response_content()
-        course_finder_search = CourseFinderSearch("Computing", None, None, None, 1, 20)
+        course_finder_search = CourseFinderSearch("Computing", None, None, None, None, 1, 20)
         error = course_finder_search.execute()
         self.assertIsNone(error)
         self.assertEquals(course_finder_search.total_courses, mock_data.get('total_number_of_courses'))
@@ -145,7 +145,7 @@ class CourseFinderModelsTests(UniSimpleTestCase):
     @patch('coursefinder.request_handler.course_finder_query',
            return_value=SearchMocks.get_unsuccessful_search_response())
     def test_course_finder_search_execute_function_returns_error_on_failure(self, mock_search):
-        course_finder_search = CourseFinderSearch("Computing", None, None, None, 1, 20)
+        course_finder_search = CourseFinderSearch("Computing", None, None, None, None, 1, 20)
         error = course_finder_search.execute()
         self.assertIsNone(course_finder_search.total_courses)
         self.assertIsNone(course_finder_search.total_institutions)
