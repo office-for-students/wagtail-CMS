@@ -263,6 +263,10 @@ class Course:
         return self.entry_stats.display_stats or self.tariff_stats.show_stats()
 
     @property
+    def show_after_one_year_stats(self):
+        return self.continuation_stats.display_stats
+
+    @property
     def show_leo(self):
         return self.country.name == 'England' and self.leo_stats.unavailable_reason
 
@@ -439,17 +443,30 @@ class EntryStatistics:
 class ContinuationStatistics:
 
     def __init__(self, data_obj):
-        self.aggregation_level = data_obj.get('aggregation_level')
-        self.dormant = fallback_to(data_obj.get('dormant'), 0)
-        self.continuing = fallback_to(data_obj.get('continuing_with_provider'), 0)
-        self.gained = fallback_to(data_obj.get('gained'), 0)
-        self.left = fallback_to(data_obj.get('left'), 0)
-        self.lower = fallback_to(data_obj.get('lower'), 0)
-        self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
-        unavailable_data = data_obj.get('unavailable')
-        if unavailable_data:
-            self.unavailable_code = unavailable_data.get('code')
-            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+        self.display_stats = False
+        self.dormant = 0
+        self.continuing = 0
+        self.gained = 0
+        self.left = 0
+        self.lower = 0
+        self.number_of_students = 0
+
+        if data_obj:
+            self.display_stats = any(key in data_obj for key in ['aggregation_level', 'dormant',
+                                                                 'continuing_with_provider', 'gained', 'left', 'lower',
+                                                                 'number_of_students'])
+
+            self.aggregation_level = data_obj.get('aggregation_level')
+            self.dormant = fallback_to(data_obj.get('dormant'), 0)
+            self.continuing = fallback_to(data_obj.get('continuing_with_provider'), 0)
+            self.gained = fallback_to(data_obj.get('gained'), 0)
+            self.left = fallback_to(data_obj.get('left'), 0)
+            self.lower = fallback_to(data_obj.get('lower'), 0)
+            self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
+            unavailable_data = data_obj.get('unavailable')
+            if unavailable_data:
+                self.unavailable_code = unavailable_data.get('code')
+                self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
 
     @property
     def continuing_or_complete(self):
