@@ -245,16 +245,17 @@ class CourseSearch(BaseSearch):
 
 class CourseFinderSearch(BaseSearch):
 
-    def __init__(self, subject, institution, mode, countries, page, count):
+    def __init__(self, subject, institution, mode, countries, postcode, page, count):
         super().__init__(page, count)
         self.subject = subject
         self.institution = institution
         self.mode = mode
         self.countries = countries
+        self.postcode = postcode
 
     def execute(self):
         response = request_handler.course_finder_query(self.subject, self.institution, self.mode, self.countries,
-                                                       self.count, self.offset)
+                                                       self.postcode, self.count, self.offset)
         error = None
 
         if response.ok:

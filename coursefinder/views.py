@@ -32,6 +32,7 @@ def results(request, language=enums.languages.ENGLISH):
 
 def narrow_search(request, language=enums.languages.ENGLISH):
     institution_query = None
+    postcode_query = None
     post_body = request.POST
     page = None
     selection = post_body.get('radioGroup', None)
@@ -44,6 +45,7 @@ def narrow_search(request, language=enums.languages.ENGLISH):
                                                   institution_query,
                                                   post_body.get('mode_query', None),
                                                   post_body.get('countries_query', None),
+                                                  postcode_query,
                                                   post_body.get('page', 1),
                                                   post_body.get('count', 20))
 
@@ -74,6 +76,7 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
                                               query_params.get('institution_query', None),
                                               query_params.get('mode_query', None),
                                               query_params.get('countries_query', None),
+                                              query_params.get('postcode_query', None),
                                               query_params.get('page', 1),
                                               query_params.get('count', 20))
     error = course_finder_search.execute()
