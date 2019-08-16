@@ -66,5 +66,6 @@ def should_show_accordion(course, accordion_type):
         return course.show_entry_information_stats
     elif accordion_type == AFTER_ONE_YEAR_KEY:
         return course.show_after_one_year_stats
-    # TODO implement specific checks for other accordions
-    return True
+    elif accordion_type == AFTER_COURSE_KEY:
+        return course.show_after_course_stats
+    return False
