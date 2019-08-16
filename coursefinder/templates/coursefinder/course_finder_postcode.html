@@ -9,8 +9,8 @@
 {% block question %}
     <h1 class="course-finder-content__question">{{page.question}}</h1>
 
-    <form class="course-finder-content__question-form">
-        <input class="textbox" type="text" name="" value="">
+    <form class="course-finder-content__question-form" action="javascript:;" onsubmit="handlePostcodeSubmit(this)">
+        <input class="textbox" type="text" name="postcode" value="">
 
         <p class="course-finder-content__question-sub-heading">
             {% get_translation key='search_within' language=page.get_language %}:
@@ -22,7 +22,7 @@
             </span>
 
             <input class="course-finder-content__question-input"
-                    id="one" type="radio" name="postcode" value="">
+                    id="one" type="radio" name="distance" value="10">
 
             <span class="radiobox"></span>
         </label>
@@ -33,7 +33,7 @@
             </span>
 
             <input class="course-finder-content__question-input"
-                    id="two" type="radio" name="postcode" value="">
+                    id="two" type="radio" name="distance" value="25">
 
             <span class="radiobox"></span>
         </label>
@@ -44,7 +44,7 @@
             </span>
 
             <input class="course-finder-content__question-input"
-                    id="three" type="radio" name="postcode" value="">
+                    id="three" type="radio" name="distance" value="50">
 
             <span class="radiobox"></span>
         </label>
