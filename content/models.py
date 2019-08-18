@@ -20,6 +20,7 @@ class ContentLandingPage(DiscoverUniBasePage):
 
 
 class Section(DiscoverUniBasePage):
+    intro = RichTextField(blank=True)
     subsections = StreamField([
         ('subsection', blocks.StructBlock([
             ('subsection_title', blocks.TextBlock()),
@@ -36,6 +37,7 @@ class Section(DiscoverUniBasePage):
     ], blank=True)
 
     content_panels = Page.content_panels + [
+        FieldPanel('intro'),
         StreamFieldPanel('subsections'),
         FieldPanel('related_links_title'),
         StreamFieldPanel('related_links'),
