@@ -1,10 +1,10 @@
 from urllib.parse import urlencode
 
 from django import template
+from django.conf import settings
 
 from CMS.enums import enums
 from CMS.translations import DICT
-from content.models import Section
 from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, AFTER_COURSE_KEY, \
     ACCREDITATION_KEY
 
@@ -69,3 +69,7 @@ def should_show_accordion(course, accordion_type):
     elif accordion_type == AFTER_COURSE_KEY:
         return course.show_after_course_stats
     return False
+
+@register.simple_tag
+def get_feedback_api_host():
+    return settings.FEEDBACK_API_HOST
