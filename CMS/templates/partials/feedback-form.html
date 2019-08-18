@@ -1,0 +1,56 @@
+{% load discover_uni_tags %}
+
+<div class="feedback-form__wrapper">
+    <form class="feedback-form__form" action="javascript:;" data-api="{% get_feedback_api_host %}">
+        <div class="feedback-form__heading">
+            <div class="discover-uni-container">
+                <div class="feedback-form__container">
+                    <p class="feedback-form__message">
+                        {% get_translation key='feedback_form' language=page.get_language %}
+
+                        <label for="yes" class="feedback-form__heading-control yes">
+                            {% get_translation key='yes' language=page.get_language %}
+                        </label>
+
+                        <input id="yes" type="radio" name="helpful" value="yes" hidden />
+
+                        <label for="no" class="feedback-form__heading-control no">
+                            {% get_translation key='no' language=page.get_language %}
+                        </label>
+
+                        <input id="no" type="radio" name="helpful" value="no" hidden />
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="discover-uni-container">
+            <div class="feedback-form__body">
+                <p class="feedback-form__error-message">
+                    {% get_translation key='feedback_error' language=page.get_language %}
+                </p>
+
+                <div class="feedback-form__details">
+                    <span id="close" class="feedback-form__details-close">{% get_translation key='close' language=page.get_language %}</span>
+                    <div id='useful'>
+                        <label class="feedback-form__label">
+                            {% get_translation key='how_useful' language=page.get_language %}
+                        </label>
+
+                        <textarea name="useful" class="feedback-form__text-area useful"></textarea>
+                    </div>
+
+                    <div id="improvement">
+                        <label class="feedback-form__label">
+                            {% get_translation key='how_improve' language=page.get_language %}
+                        </label>
+
+                        <textarea name="improvement" class="feedback-form__text-area improvement"></textarea>
+                    </div>
+
+                    <input type="submit" class="feedback-form__submit-button" value="{% get_translation key='send_message' language=page.get_language %}" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
