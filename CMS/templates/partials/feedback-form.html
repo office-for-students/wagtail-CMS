@@ -37,7 +37,7 @@
                             {% get_translation key='how_useful' language=page.get_language %}
                         </label>
 
-                        <textarea name="useful" class="feedback-form__text-area useful"></textarea>
+                        <textarea name="how_was_this_useful" class="feedback-form__text-area useful"></textarea>
                     </div>
 
                     <div id="improvement">
@@ -45,7 +45,7 @@
                             {% get_translation key='how_improve' language=page.get_language %}
                         </label>
 
-                        <textarea name="improvement" class="feedback-form__text-area improvement"></textarea>
+                        <textarea name="how_could_we_improve" class="feedback-form__text-area improvement"></textarea>
                     </div>
 
                     <input type="submit" class="feedback-form__submit-button" value="{% get_translation key='send_message' language=page.get_language %}" />

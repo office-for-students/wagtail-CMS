@@ -41,9 +41,21 @@
 
             this.submitBtn.click(function() {
                 var formData = that.form.serializeArray();
-                data = {};
+                data = {
+                    "page": window.location,
+                    "questions": []
+                }
+                
                 for (var i = 0; i < formData.length; i++) {
-                    data[formData[i].name] = formData[i].value;
+                    if (formData[i].name === 'helpful') {
+                        data['is_useful'] = formData[i].value === 'yes';
+                    }
+                    else {
+                        data.questions.push({
+                            'title': formData[i].name,
+                            'feedback': formData[i].value
+                        });
+                    }
                 }
 
                 $.post(that.form[0].dataset.api, JSON.stringify(data), function() {
