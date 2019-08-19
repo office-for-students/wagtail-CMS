@@ -1,0 +1,137 @@
+@import '../variables';
+
+.feedback-form {
+    &__heading {
+        border-bottom: 10px solid $header-blue;
+        background-color: transparent;
+
+        .discover-uni-container {
+            position: relative;
+        }
+    }
+
+    &__container {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+    }
+
+    &__message {
+        @include small-font-mixin();
+
+        margin: 0px 20px;
+        padding: 9px 12px 0px;
+
+        color: $white;
+        background-color: $header-blue;
+    }
+
+    &__error-message {
+        display: none;
+    }
+
+    &__heading-control {
+        margin-left: 10px;
+
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    &__body  {
+        display: none;
+        padding: 30px 26px 50px 20px;
+
+        border-top: 10px solid $header-blue;
+
+        &-close {
+            display: none;
+        }
+    }
+
+    &__label {
+        @include desktop-body-font-mixin();
+
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    &__text-area {
+        @include mobile-body-font-mixin();
+
+        display: block;
+        width: 100%;
+        height: 5em;
+
+        border: 3px solid $gradient-light-green;
+        border-radius: 10px;
+        background-color: $form-grey;
+        line-height: 24px;
+    }
+
+    &__submit-button {
+        @include desktop-body-font-mixin();
+        @include green-gradient-mixin();
+
+        margin-top: 25px;
+        padding: 10px 26px;
+
+        border-radius: 70.6272px;
+    }
+
+    &__error-message {
+        @include mobile-body-font-mixin();
+
+        padding: 20px 15px 15px;
+
+        border: 5px solid $error-red;
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .feedback-form {
+        &__message {
+            @include mobile-body-font-mixin();
+
+            margin: 0px;
+
+            color: $white;
+        }
+
+        &__details {
+            position: relative;
+
+            &-close {
+                @include desktop-body-font-mixin();
+
+                display: initial;
+                position: absolute;
+                right: 0;
+
+                color: $gradient-light-green;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+
+        &__label {
+            @include xs-heading-mixin();
+        }
+
+        &__text-area {
+            width: 66%;
+        }
+
+        &__submit-button {
+            @include xs-heading-mixin();
+
+            margin-top: 30px;
+            padding: 15px 38px;
+
+            color: $white;
+        }
+
+        &__error-message {
+            @include desktop-body-font-mixin();
+        }
+    }
+}
