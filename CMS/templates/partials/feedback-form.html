@@ -1,7 +1,9 @@
 {% load discover_uni_tags %}
 
 <div class="feedback-form__wrapper">
-    <form class="feedback-form__form" action="javascript:;" data-api="{% get_feedback_api_host %}">
+    <form class="feedback-form__form" action="javascript:;">
+        {% csrf_token %}
+
         <div class="feedback-form__heading">
             <div class="discover-uni-container">
                 <div class="feedback-form__container">
@@ -12,13 +14,13 @@
                             {% get_translation key='yes' language=page.get_language %}
                         </label>
 
-                        <input id="yes" type="radio" name="helpful" value="yes" hidden />
+                        <input id="yes" type="radio" name="is_useful" value="yes" hidden />
 
                         <label for="no" class="feedback-form__heading-control no">
                             {% get_translation key='no' language=page.get_language %}
                         </label>
 
-                        <input id="no" type="radio" name="helpful" value="no" hidden />
+                        <input id="no" type="radio" name="is_useful" value="no" hidden />
                     </p>
                 </div>
             </div>

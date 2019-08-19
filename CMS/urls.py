@@ -11,6 +11,7 @@ from . import welsh_urls
 from courses import urls as courses_urls
 from institutions import urls as institution_urls
 
+from core import views as core_views
 from search import views as search_views
 from coursefinder import views as coursefinder_views
 
@@ -22,6 +23,7 @@ urlpatterns = [
 
     url(r'^search/$', search_views.search, name='search'),
     url(r'^results/$', coursefinder_views.results, name='results'),
+    url(r'^feedback',  core_views.submit_feedback, name='submit_feedback'),
 
     url(r'^narrow-search/$', coursefinder_views.narrow_search, name='narrow_search'),
     url(r'^course-finder/results/$', coursefinder_views.course_finder_results, name='course_finder_results'),
