@@ -42,37 +42,29 @@
             this.submitBtn.click(function() {
                 var formData = that.form.serializeArray();
                 data = {
-                    "page": window.location,
-                    "questions": []
+                    "page": window.location.href,
                 }
                 
                 for (var i = 0; i < formData.length; i++) {
-                    if (formData[i].name === 'helpful') {
-                        data['is_useful'] = formData[i].value === 'yes';
-                    }
-                    else {
-                        data.questions.push({
-                            'title': formData[i].name,
-                            'feedback': formData[i].value
-                        });
-                    }
+                    data[formData[i].name] = formData[i].value;
                 }
 
-                $.post(that.form[0].dataset.api, JSON.stringify(data), function() {
+                var url = window.location.origin + '/feedback';
+                $.post(url, data, function(data,status,xhr) {
                     that.handleSubmissionSuccess();
-                })
-                .fail(function() {
+                }, 'json')
+                .fail(function(data,status,xhr) {
                     that.handleSubmissionError();
                 });
             })
         },
 
         handleFormClose: function() {
-            that.formHeading.show();
-            that.usefulField.show();
-            that.improvementField.show();
-            that.formBody.hide();
-            that.form[0].reset();
+            this.formHeading.show();
+            this.usefulField.show();
+            this.improvementField.show();
+            this.formBody.hide();
+            this.form[0].reset();
         },
 
         handleSubmissionSuccess: function() {
