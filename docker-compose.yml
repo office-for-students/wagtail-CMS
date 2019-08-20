@@ -14,9 +14,9 @@ services:
       DATASETAPIKEY: "${DATASETAPIKEY}"
       FEEDBACK_API_HOST: "${FEEDBACK_API_HOST}"
     build: .
-#    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
-    command: bash -c "sh ./deploy_files/docker-entrypoint.sh"
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+#    command: bash -c "sh ./deploy_files/docker-entrypoint.sh"
     volumes:
       - .:/code
     ports:
-      - "8000:80"
+      - "8000:8000"
