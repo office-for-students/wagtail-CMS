@@ -47,6 +47,10 @@ DICT = {
         'en': 'Chart labels explained',
         'cy': ''
     },
+    'close': {
+        'en': 'Close',
+        'cy': ''
+    },
     'compare_course': {
         'en': 'Compare course',
         'cy': ''
@@ -137,6 +141,14 @@ DICT = {
         'en': 'Please enter at least 3 characters to search',
         'cy': ''
     },
+    'feedback_error': {
+        'en': 'Sorry something went wrong submitting your feedback, please try again later.',
+        'cy': ''
+    },
+    'feedback_form': {
+        'en': 'Feedback: is this page useful to you?',
+        'cy': ''
+    },
     'filter': {
         'en': 'Filter',
         'cy': ''
@@ -159,6 +171,14 @@ DICT = {
     },
     'full_time': {
         'en': 'Full-time',
+        'cy': ''
+    },
+    'how_improve': {
+        'en': 'How should we improve this page?',
+        'cy': ''
+    },
+    'how_useful': {
+        'en': 'How was this page useful to you?',
         'cy': ''
     },
     'info_advice': {
@@ -215,6 +235,10 @@ DICT = {
     },
     'next_page': {
         'en': 'Next page',
+        'cy': ''
+    },
+    'no': {
+        'en': 'No',
         'cy': ''
     },
     'no_qualifications': {
@@ -291,6 +315,10 @@ DICT = {
     },
     'see_courses': {
         'en': 'See courses',
+        'cy': ''
+    },
+    'send_message': {
+        'en': 'Send message',
         'cy': ''
     },
     'show_all': {
@@ -387,6 +415,10 @@ DICT = {
     },
     'year_course': {
         'en': 'year course',
+        'cy': ''
+    },
+    'yes': {
+        'en': 'Yes',
         'cy': ''
     }
 }

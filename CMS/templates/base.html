@@ -35,6 +35,7 @@
         <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/dropdown.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/search-dropdown.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/feedback-form.js' %}"></script>
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
@@ -48,6 +49,7 @@
 
         {% block content %}{% endblock %}
 
+        {% include 'partials/feedback-form.html' %}
         <footer class="footer">
 
         </footer>

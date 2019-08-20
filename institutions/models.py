@@ -64,20 +64,25 @@ class Institution:
         self.id = data_obj.get('_id')
         self.created_at = data_obj.get('created_at')
         institution_data = data_obj.get('institution')
-        self.apr_outcome = institution_data.get('apr_outcome')
-        self.contact_details = InstitutionContactDetails(institution_data.get('contact_details'))
-        self.pub_ukprn_country = institution_data.get("pub_ukprn_country")
-        self.pub_ukprn_name = institution_data.get("pub_ukprn_name")
-        self.pub_ukprn = institution_data.get("pub_ukprn")
-        self.website = institution_data.get('links').get('institution_homepage')
-        self.tef_outcome = institution_data.get("tef_outcome").lower()
-        self.total_number_of_courses = institution_data.get("total_number_of_courses")
-        self.ukprn_country = institution_data.get("ukprn_country")
-        self.ukprn_name = institution_data.get("ukprn_name")
-        self.ukprn = institution_data.get("ukprn")
-        self.student_unions = []
-        for union in institution_data.get('student_unions'):
-            self.student_unions.append(InstitutionStudentUnions(union, self.display_language))
+        if institution_data:
+            self.apr_outcome = institution_data.get('apr_outcome')
+            self.pub_ukprn_country = institution_data.get("pub_ukprn_country")
+            self.pub_ukprn_name = institution_data.get("pub_ukprn_name")
+            self.pub_ukprn = institution_data.get("pub_ukprn")
+            self.website = institution_data.get('links').get('institution_homepage')
+            self.tef_outcome = institution_data.get("tef_outcome").lower()
+            self.total_number_of_courses = institution_data.get("total_number_of_courses")
+            self.ukprn_country = institution_data.get("ukprn_country")
+            self.ukprn_name = institution_data.get("ukprn_name")
+            self.ukprn = institution_data.get("ukprn")
+
+            if 'contact_details' in institution_data:
+                self.contact_details = InstitutionContactDetails(institution_data.get('contact_details'))
+
+            self.student_unions = []
+            if 'student_unions' in institution_data:
+                for union in institution_data.get('student_unions'):
+                    self.student_unions.append(InstitutionStudentUnions(union, self.display_language))
 
     @property
     def is_irish(self):
