@@ -23,11 +23,3 @@ Before running the script, set the following environment variables.
 ```
 pip install -r requirements.txt
 ```
-
-### Contributing
-
-See [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-### License
-
-See [LICENSE](LICENSE.md) for details.
