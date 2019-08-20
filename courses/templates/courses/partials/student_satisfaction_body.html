@@ -19,7 +19,9 @@
 <div class="discover-uni-container">
     <div class="student-satisfaction__block">
         <div class="student-satisfaction__intro">
-            {{ block.value.intro_body | richtext }}
+            {% create_list course_details.satisfaction_stats.number_of_students course_details.satisfaction_stats.response_rate as substitutions %}
+            {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+            {{ subbed_text | richtext }}
         </div>
 
         {% if course_details.satisfaction_stats.show_teaching_stats %}
