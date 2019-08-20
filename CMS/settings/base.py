@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'widget.apps.WidgetConfig',
 
     'sass_processor',
+    'storages',
 ]
 
 MIDDLEWARE = [
