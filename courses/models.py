@@ -278,10 +278,10 @@ class Course:
     def display_title(self):
         honours = ""
         if int(self.honours_award_provision) == 1:
-            honours = self.qualification.label + " "
+            honours = "(Hons) "
 
-        english_title = honours + self.english_title
-        welsh_title = honours + self.welsh_title
+        english_title = self.qualification.label + " " + honours + self.english_title
+        welsh_title = self.qualification.label + " " + honours + self.welsh_title
 
         if self.display_language == enums.languages.ENGLISH:
             return english_title if self.english_title else welsh_title
