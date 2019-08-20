@@ -1,25 +1,22 @@
-# Use an official Python runtime as a parent image
 FROM python:3.6
-LABEL maintainer="hello@wagtail.io"
 
-# Set environment varibles
 ENV PYTHONUNBUFFERED 1
 ENV DJANGO_ENV dev
 
-COPY ./requirements.txt /code/requirements.txt
+WORKDIR /code
+COPY ./requirements.txt /code/
 RUN pip install --upgrade pip
-# Install any needed packages specified in requirements.txt
-RUN pip install -r /code/requirements.txt
-RUN pip install gunicorn
+RUN pip install -r requirements.txt
 
-# Copy the current directory contents into the container at /code/
 COPY . /code/
-# Set the working directory to /code/
-WORKDIR /code/
 
 RUN useradd wagtail
 RUN chown -R wagtail /code
 USER wagtail
+RUN chmod +x ./deploy_files/docker-entrypoint.sh
 
-EXPOSE 8000
-CMD exec gunicorn CMS.wsgi:application --bind 0.0.0.0:8000 --workers 3
+RUN python manage.py compilescss
+RUN python manage.py  collectstatic --ignore=*.scss
+
+#CMD exec gunicorn CMS.wsgi:application --bind 0.0.0.0:8000 --workers 3
+#CMD exec gunicorn CMS.wsgi:application --name discover-uni-cms --bind 0.0.0.0:8000 --workers 3 --log-level=info --log-file=- --access-logfile=- --error-logfile=- --timeout 60
