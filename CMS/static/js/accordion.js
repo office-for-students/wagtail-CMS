@@ -7,6 +7,7 @@
 
     Accordion.prototype = {
         setup: function() {
+            this.anchor = '#' + this.wrapper[0].id;
             this.header = this.wrapper.find('[class$=accordion-header]');
             this.body  = this.wrapper.find('[class$=accordion-body]');
             this.expandIcon = this.wrapper.find('.expand');
@@ -17,8 +18,13 @@
         },
 
         setInitialView: function() {
-            this.body.hide();
-            this.expandIcon.show();
+            if (this.anchor === window.location.hash) {
+                this.collapseIcon.show();
+                this.header.addClass('open');
+            } else {
+                this.body.hide();
+                this.expandIcon.show();
+            }
         },
 
         startWatchers: function() {
