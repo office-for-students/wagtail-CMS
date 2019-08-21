@@ -100,7 +100,8 @@
                     <img src="{% static 'images/tef_'|add:institution.tef_outcome|add:'_en.jpg' %}" alt="TEF {{institution.tef_outcome}} logo">
                 </div>
 
-                <a class="institution-details__tef-report-link" href="/dummy-link">
+                <a class="institution-details__tef-report-link"
+                   href="https://www.officeforstudents.org.uk/advice-and-guidance/teaching/tef-outcomes/#/tefoutcomes/provider/{{institution.pub_ukprn}}">
                     {{page.tef_report_link}}
                 </a>
 
