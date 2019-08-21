@@ -54,8 +54,9 @@
                     {{page.qa_body | richtext}}
                 </div>
 
-                {% if institution.is_irish %}
-                    <a class="institution-details__qa-report-link" href="/dummy-link">
+                {% if not institution.is_irish %}
+                    <a class="institution-details__qa-report-link"
+                       href="https://www.qaa.ac.uk/reviewing-higher-education/quality-assurance-reports/provider?UKPRN={{institution.pub_ukprn}}">
                         {{page.qa_report_link}}
                     </a>
                 {% endif %}
