@@ -22,6 +22,15 @@ class APRValues:
     NOT_MET = 'Does not meet requirements'
 
 
+class TEFValues:
+    GOLD = 'Gold'
+    SILVER = 'Silver'
+    BRONZE = 'Bronze'
+    PROVISIONAL = 'Provisional'
+    NOT_PARTICIPATE = 'Did not participate'
+    WITHDRAWN = 'Withdrawn'
+
+
 class UniLinkKeys:
     ASSESSMENT = 'assessment_method'
     COURSE = 'course_page'
@@ -41,6 +50,7 @@ class Enums:
     }
     countries = Countries()
     apr_values = APRValues()
+    tef_values = TEFValues()
     uni_link_keys = UniLinkKeys()
 
 

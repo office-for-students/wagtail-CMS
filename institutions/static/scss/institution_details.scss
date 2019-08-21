@@ -90,6 +90,7 @@
 
         .institution-details__tef-outcome {
             margin-bottom: 10px;
+            @include xs-heading--bold-mixin();
 
             img {
                 width: 105px;
