@@ -1,4 +1,9 @@
+from django.utils.html import escape
+
 from wagtail.contrib.modeladmin.options import (ModelAdmin, modeladmin_register)
+from wagtail.core import hooks
+from wagtail.core.rich_text import LinkHandler
+
 from .models import Menu
 
 
@@ -16,3 +21,17 @@ class MenuAdmin(ModelAdmin):
 
 
 modeladmin_register(MenuAdmin)
+
+
+class NewWindowExternalLinkHandler(LinkHandler):
+    identifier = 'external'
+
+    @classmethod
+    def expand_db_attributes(cls, attrs):
+        href = attrs["href"]
+        return '<a href="%s" target="_blank" rel="noopener noreferrer">' % escape(href)
+
+
+@hooks.register('register_rich_text_features')
+def register_external_link(features):
+    features.register_link_type(NewWindowExternalLinkHandler)
