@@ -49,3 +49,19 @@ a {
 .dropdown-arrow {
     align-self: center;
 }
+
+//Required to prevent wagtail adding huge padding to bottom of embeds
+
+.rich-text {
+    .responsive-object {
+        position: relative;
+
+        iframe, object {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
