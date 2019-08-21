@@ -39,7 +39,7 @@
                     <div class="institution-details__overview-item overview-block">
                         <p class="institution-details__overview-item-heading">{% get_translation key='student_unions' language=page.get_language %}</p>
                         {% for union in institution.student_unions %}
-                            <a class="institution-details__overview-item-value" href="{{ union.display_website }}">{{ union.display_name }}</a>
+                            <a class="institution-details__overview-item-value" target="_blank" href="{{ union.display_url }}">{{ union.display_name }}</a>
                         {% endfor %}
                     </div>
                 </div>
