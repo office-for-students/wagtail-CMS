@@ -1,0 +1,74 @@
+#!/bin/bash
+
+#Exit on error
+set -oe pipefail
+
+#set main repo branch
+main_branch="develop"
+
+if [[ -n $(git status --porcelain) ]]; then
+    echo "Repo is dirty" && \
+    echo "Please stash or commit your changes before releasing" && \
+    exit 1;
+fi
+
+# current Git branch
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+
+function switch_to() {
+    echo "Switching to $1"
+    git checkout --quiet "$1"
+}
+
+function update() {
+    echo "Pulling latest $1"
+    git pull --rebase --quiet
+}
+
+# major|minor|patch
+[ -z "$1" ] && echo "Please speficy version (major|minor|patch)" && exit 1
+
+# establish branch and tag name variables
+
+#Fetch remote trackers for releasing
+echo "Fetching remote branches (git fetch)"
+git fetch --quiet
+
+switch_to $main_branch
+current_commit="$(git rev-parse HEAD)"
+
+
+function clean () {
+    echo "Encountered error on line $LINENO, reverting changes"
+    git reset --hard "$current_commit"
+    git checkout . # Remove unstaged tracked files
+    git clean -f   # Remove unstaged untracked files
+    switch_to "$branch"
+}
+
+trap 'clean $LINENO' ERR
+
+update main_branch
+
+#Bump version up
+#version=$(npm version --prefix frontend/hay-ui  "$1" --no-git-tag-version)
+current_path="$PWD"
+bump_script_path="$current_path/bump_version.py"
+version=$(python ./bump_version.py $1)
+echo "Bumped version to $version"
+
+# commit version number increment
+git commit -am "$version"
+
+# create branch for new version
+release_branch="release/v$version"
+git branch $release_branch
+
+
+#Atomic ensures nothing is pushed if any of the repos fails to push
+git push --atomic origin "$main_branch" "$release_branch"
+
+#switch back to branch you started
+switch_to "$branch"
+

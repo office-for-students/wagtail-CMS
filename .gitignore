@@ -28,7 +28,9 @@ coverage.xml
 .idea
 
 # Compiled SASS files
-static/scss/*.css*
+**/*.css*
 
 # Media files
 media/*
+
+static/**

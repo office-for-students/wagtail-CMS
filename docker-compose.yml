@@ -13,8 +13,12 @@ services:
       WIDGETAPIKEY: "${WIDGETAPIKEY}"
       DATASETAPIKEY: "${DATASETAPIKEY}"
       FEEDBACK_API_HOST: "${FEEDBACK_API_HOST}"
+      AZURE_ACCOUNT_NAME:  "${AZURE_ACCOUNT_NAME}"
+      AZURE_ACCOUNT_KEY:  "${AZURE_ACCOUNT_KEY}"
+      AZURE_CONTAINER:  "${AZURE_CONTAINER}"
     build: .
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+#    command: bash -c "sh ./deploy_files/docker-entrypoint.sh"
     volumes:
       - .:/code
     ports:

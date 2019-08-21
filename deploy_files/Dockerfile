@@ -6,4 +6,7 @@ COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code/
 
+RUN python manage.py compilescss
+RUN python manage.py  collectstatic --ignore=*.scss
+
 RUN chmod +x ./deploy_files/docker-entrypoint.sh

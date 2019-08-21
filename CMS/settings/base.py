@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -61,6 +62,7 @@ INSTALLED_APPS = [
     'widget.apps.WidgetConfig',
 
     'sass_processor',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +76,7 @@ MIDDLEWARE = [
 
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'CMS.urls'
@@ -157,7 +160,7 @@ USE_TZ = True
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated
 # Javascript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
 # See https://docs.djangoproject.com/en/2.1/ref/contrib/staticfiles/#manifeststaticfilesstorage
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
@@ -168,7 +171,7 @@ MEDIA_URL = '/media/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-SASS_PROCESSOR_ROOT = STATIC_ROOT
+SASS_PROCESSOR_ROOT = os.path.join(PROJECT_DIR, 'static/css')
 
 SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.scss$'
 
@@ -198,3 +201,8 @@ DATASETAPIHOST = os.environ.get('DATASETAPIHOST')
 WIDGETAPIKEY = os.environ.get('WIDGETAPIKEY')
 DATASETAPIKEY = os.environ.get('DATASETAPIKEY')
 FEEDBACK_API_HOST = os.environ.get('FEEDBACK_API_HOST')
+
+DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')    # eg. 'campaignstorage'
+AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')      # eg. '<secret key>'
+AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')          # eg. 'campaign-resource-centre'
