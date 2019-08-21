@@ -9,7 +9,6 @@ def load_course_data(institution_id, course_id, mode):
     if settings.LOCAL:
         return CourseMocks.get_successful_course_load_response()
     else:
-        return CourseMocks.get_successful_course_load_response()
         headers = {
             'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
         }
