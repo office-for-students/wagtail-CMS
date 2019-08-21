@@ -3,6 +3,11 @@ from .base import *
 DEBUG = False
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
+ALLOWED_HOSTS = [
+    'pre-prod-discover-uni.azurewebsites.net',
+    'prod-discover-uni.azurewebsites.net'
+]
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
