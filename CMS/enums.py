@@ -15,6 +15,13 @@ class Countries:
     IRELAND = 'XG'
 
 
+class APRValues:
+    MET = 'Meets requirements'
+    ACTION_PLAN = 'Meets requirements with an action plan'
+    PENDING = 'Pending'
+    NOT_MET = 'Does not meet requirements'
+
+
 class UniLinkKeys:
     ASSESSMENT = 'assessment_method'
     COURSE = 'course_page'
@@ -33,6 +40,7 @@ class Enums:
         Languages.WELSH: LanguagesFull.WELSH
     }
     countries = Countries()
+    apr_values = APRValues()
     uni_link_keys = UniLinkKeys()
 
 

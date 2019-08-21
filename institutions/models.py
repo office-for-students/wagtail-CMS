@@ -23,7 +23,10 @@ class InstitutionDetailPage(DiscoverUniBasePage):
     tef_explanation_heading = TextField(blank=True)
     tef_explanation_body = RichTextField(blank=True)
     apr_heading = TextField(blank=True)
-    apr_body = RichTextField(blank=True)
+    apr_met_body = RichTextField(blank=True)
+    apr_action_plan_body = RichTextField(blank=True)
+    apr_pending_body = RichTextField(blank=True)
+    apr_not_met_body = RichTextField(blank=True)
     apr_explanation_link = TextField(blank=True)
     apr_explanation_heading = TextField(blank=True)
     apr_explanation_body = RichTextField(blank=True)
@@ -41,7 +44,10 @@ class InstitutionDetailPage(DiscoverUniBasePage):
         FieldPanel('tef_explanation_heading'),
         FieldPanel('tef_explanation_body'),
         FieldPanel('apr_heading'),
-        FieldPanel('apr_body'),
+        FieldPanel('apr_met_body'),
+        FieldPanel('apr_action_plan_body'),
+        FieldPanel('apr_pending_body'),
+        FieldPanel('apr_not_met_body'),
         FieldPanel('apr_explanation_link'),
         FieldPanel('apr_explanation_heading'),
         FieldPanel('apr_explanation_body'),
@@ -103,6 +109,22 @@ class Institution:
 
     def show_qa_report_link(self):
         return self.is_scottish or self.is_welsh
+
+    @property
+    def apr_is_met(self):
+        return self.apr_outcome and self.apr_outcome == enums.apr_values.MET
+
+    @property
+    def apr_is_action_plan(self):
+        return self.apr_outcome and self.apr_outcome == enums.apr_values.ACTION_PLAN
+
+    @property
+    def apr_is_pending(self):
+        return self.apr_outcome and self.apr_outcome == enums.apr_values.PENDING
+
+    @property
+    def apr_is_not_met(self):
+        return self.apr_outcome and self.apr_outcome == enums.apr_values.NOT_MET
 
     @classmethod
     def find(cls, institution_id, language):

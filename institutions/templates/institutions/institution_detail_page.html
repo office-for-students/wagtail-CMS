@@ -78,7 +78,15 @@
                     </h2>
 
                     <div class="institution-details__apr-body">
-                        {{page.apr_body | richtext}}
+                        {% if institution.apr_is_met %}
+                            {{page.apr_met_body | richtext}}
+                        {% elif institution.apr_is_action_plan %}
+                            {{page.apr_action_plan_body | richtext}}
+                        {% elif institution.apr_is_pending %}
+                            {{page.apr_pending_body | richtext}}
+                        {% elif institution.apr_is_not_met %}
+                            {{page.apr_not_met_body | richtext}}
+                        {% endif %}
                     </div>
 
                     <div class="explanation">
