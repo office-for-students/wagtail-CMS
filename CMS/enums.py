@@ -8,6 +8,13 @@ class LanguagesFull:
     WELSH = "welsh"
 
 
+class Countries:
+    ENGLAND = 'XF'
+    WALES = 'XI'
+    SCOTLAND = 'XH'
+    IRELAND = 'XG'
+
+
 class UniLinkKeys:
     ASSESSMENT = 'assessment_method'
     COURSE = 'course_page'
@@ -25,6 +32,7 @@ class Enums:
         Languages.ENGLISH: LanguagesFull.ENGLISH,
         Languages.WELSH: LanguagesFull.WELSH
     }
+    countries = Countries()
     uni_link_keys = UniLinkKeys()
 
 

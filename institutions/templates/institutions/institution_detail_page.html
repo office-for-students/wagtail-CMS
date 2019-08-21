@@ -54,7 +54,7 @@
                     {{page.qa_body | richtext}}
                 </div>
 
-                {% if not institution.is_irish %}
+                {% if institution.show_qa_report_link %}
                     <a class="institution-details__qa-report-link"
                        href="https://www.qaa.ac.uk/reviewing-higher-education/quality-assurance-reports/provider?UKPRN={{institution.pub_ukprn}}">
                         {{page.qa_report_link}}

@@ -66,7 +66,8 @@ class Institution:
         institution_data = data_obj.get('institution')
         if institution_data:
             self.apr_outcome = institution_data.get('apr_outcome')
-            self.pub_ukprn_country = institution_data.get("pub_ukprn_country")
+            self.pub_ukprn_country_code = institution_data.get("pub_ukprn_country").get('code')
+            self.pub_ukprn_country_name = institution_data.get("pub_ukprn_country").get('name')
             self.pub_ukprn_name = institution_data.get("pub_ukprn_name")
             self.pub_ukprn = institution_data.get("pub_ukprn")
             self.website = institution_data.get('links').get('institution_homepage')
@@ -86,7 +87,22 @@ class Institution:
 
     @property
     def is_irish(self):
-        return self.pub_ukprn_country == 'Ireland'
+        return self.pub_ukprn_country_code == enums.countries.IRELAND
+
+    @property
+    def is_english(self):
+        return self.pub_ukprn_country_code == enums.countries.ENGLAND
+
+    @property
+    def is_scottish(self):
+        return self.pub_ukprn_country_code == enums.countries.SCOTLAND
+
+    @property
+    def is_welsh(self):
+        return self.pub_ukprn_country_code == enums.countries.WALES
+
+    def show_qa_report_link(self):
+        return self.is_scottish or self.is_welsh
 
     @classmethod
     def find(cls, institution_id, language):
