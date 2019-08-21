@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags sass_tags %}
+{% load static wagtailcore_tags sass_tags discover_uni_tags %}
 
 {% block extra_css %}
     <link href="{% sass_src 'scss/content.scss' %}" rel="stylesheet" type="text/css" >
@@ -20,7 +20,7 @@
 
             <div class="section-page__accordions">
                 {% for block in page.subsections %}
-                    <div  class="section-page__accordion">
+                    <div id="{% title_to_id block.value.subsection_title %}" class="section-page__accordion">
                         <div tabindex="0" role="button" aria-label="Show content" class="section-page__accordion-header">
                             <h2 class="section-page__accordion-title">{{ block.value.subsection_title }}</h2>
 
