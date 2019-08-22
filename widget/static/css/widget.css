@@ -9,8 +9,8 @@
 }
 
 .kis-widget .widget-lead .intro {
-    font-size: 19px;
-    line-height: 23px;
+    font-size: 15px;
+    line-height: 20px;
     margin: 0px;
 }
 
@@ -86,14 +86,26 @@
 .kis-widget.horizontal .widget-lead {
     width: 380px;
     flex: 1 1 0;
-    padding: 8px 22px 43px 20px;
+    padding: 27px 17px 17px;
+    position: relative;
 }
 
 .kis-widget.horizontal.no-data .widget-lead {
     padding: 18px 25px 80px 20px;
 }
 
+.kis-widget.horizontal .widget-lead .stat {
+    display: flex;
+    align-items: flex-end;
+}
+
+.kis-widget.horizontal .widget-lead .course-details {
+    position: absolute;
+    bottom: 17px;
+}
+
 .kis-widget.horizontal .widget-lead .intro {
+    margin-left: 10px;
     margin-bottom: 6px;
 }
 
@@ -113,8 +125,25 @@
     padding: 15px 15px 20px 15px;
 }
 
-.kis-widget.vertical .widget-lead .course {
+.kis-widget.vertical .widget-lead .course-details {
     position: absolute;
     bottom: 18px;
     padding-right: 15px;
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 3s;
+  animation-name: fade;
+  animation-duration: 3s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .2}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .2}
+  to {opacity: 1}
 }
