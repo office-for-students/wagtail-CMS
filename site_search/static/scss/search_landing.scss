@@ -1,0 +1,169 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.search-landing-page {
+    padding: 53px 45px 60px;
+    text-align: center;
+
+    background-image: url('/static/images/user-nav-background.png');
+    background-position: right bottom;
+
+    &__heading {
+        @include m-heading-mixin();
+
+        margin-top: 0px;
+        margin-bottom: 40px;
+
+        line-height: 45px;
+        color: $ux-grey-3;
+    }
+
+    &__nav {
+        &-cards {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        &-card {
+            @include default-box-shadowing();
+
+            margin-bottom: 30px;
+            padding: 35px 30px 35px 38px;
+
+            background: $white;
+            border-radius: 34.8653px;
+            text-decoration: none;
+
+            &:last-child {
+                margin-bottom: 0px;
+            }
+
+            &-icon {
+                height: 98px;
+                margin-top: 44px;
+                margin-bottom: 49px;
+            }
+
+            &-label {
+                @include mobile-body-font-mixin();
+
+                margin: 0px;
+
+                color: $ux-grey-3;
+                line-height: 22px;
+            }
+
+            &-button {
+                @include green-gradient-mixin();
+                @include small-font--bold-mixin();
+
+                margin-top: 10px;
+                padding: 8px 60px;
+
+                border-radius: 61.5609px;
+                line-height: 19px;
+                color: $white;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__search {
+        margin-top: 25px;
+
+        &-fields {
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        &-label {
+            @include small-font-mixin();
+
+            margin-bottom: 7px;
+            display: block;
+
+            color: $helper-grey;
+        }
+
+        &-input {
+            margin-bottom: 20px;
+
+            input {
+                @include desktop-body-font-mixin();
+
+                width: 100%;
+                box-sizing: border-box;
+
+                border: 2px solid $ux-grey-3;
+                border-radius: 5px;
+                background: $background-grey;
+                line-height: 34px;
+
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .search-landing-page {
+        padding: 80px 0px 97px;
+
+        &__heading {
+            @include l-heading-mixin();
+
+            margin-bottom: 50px;
+
+            line-height: 60px;
+            color: $ux-grey-3;
+        }
+
+        &__nav {
+            &-cards {
+                flex-wrap: nowrap;
+                padding-left: 25px;
+                padding-right: 25px;
+                align-items: stretch;
+            }
+
+            &-card {
+                flex: 1 1 0;
+                padding: 35px 65px 40px;
+                margin-left: 25px;
+                margin-right: 25px;
+                margin-bottom: 0px;
+
+                &-label {
+                    @include xs-heading-mixin();
+
+                    color: $ux-grey-3;
+                    line-height: 27px;
+                }
+
+                &-button {
+                    @include xs-heading--bold-mixin();
+
+                    margin-top: 10px;
+                    padding: 13px 60px;
+                    width: 100%;
+
+                    line-height: 24px;
+                    color: $white;
+                }
+
+                &-icon {
+                    height: 124px;
+                    margin-top: 50px;
+                    margin-bottom: 47px;
+                }
+            }
+        }
+
+        &__search {
+            margin-top: 35px;
+
+            .search-landing-page__nav-card-button {
+                margin-top: 30px;
+            }
+        }
+    }
+}

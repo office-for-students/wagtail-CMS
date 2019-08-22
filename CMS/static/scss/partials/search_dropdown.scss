@@ -1,0 +1,52 @@
+@import './forms';
+
+.search-dropdown {
+    width: 100%;
+    position: relative;
+
+    .selection-field {
+        display: none;
+    }
+
+    .search-field {
+        width: 100%;
+
+        input {
+            @extend .textbox;
+            width: 100%;
+        }
+    }
+
+    .options-list {
+        display: none;
+        width: 100%;
+        position: absolute;
+        z-index: 10;
+        background-color: $ux-grey-1;
+        max-height: 292px;
+        overflow-y: scroll;
+
+        &--placeholder {
+            @include small-font-mixin();
+
+            padding: 28px 30px;
+            margin: 0;
+
+            color: $helper-grey;
+        }
+
+        option {
+            @include small-font-mixin();
+
+            display: none;
+            padding: 28px 30px;
+            margin: 0;
+
+            color: $helper-grey;
+
+            &:hover {
+                @include green-gradient-background-mixin();
+            }
+        }
+    }
+}

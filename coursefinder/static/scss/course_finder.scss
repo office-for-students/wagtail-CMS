@@ -1,0 +1,509 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+@import '../../../CMS/static/scss/partials/forms';
+
+
+.course-finder {
+    &-base {
+        padding: 0px 19px 48px;
+        background-image: url('/static/images/home-background.png');
+        background-size: cover;
+        background-position: center bottom;
+
+        &__nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 19px 0px;
+            margin: 0;
+            height: 100%;
+            list-style: none;
+
+
+            &-control {
+                @include mobile-body-font--bold-mixin();
+
+                padding: 0px;
+
+                text-decoration: none;
+                color: $gradient-light-green;
+                border: none;
+                background-color: transparent;
+
+                &-icon {
+                    height: 12px;
+
+                    &.white {
+                        display: none;
+                    }
+                }
+            }
+
+            &-input {
+                display: none;
+            }
+
+            .filter {
+                background-image: url('/static/assets/filter.svg');
+                background-size: 13px;
+                background-repeat: no-repeat;
+                background-position: 56% 50%;
+            }
+        }
+    }
+
+    &-content {
+        padding-top: 44px;
+
+        &__question {
+            @include m-heading--bold-mixin();
+
+            margin-top: 0px;
+            margin-bottom: 35px;
+            width: 80%;
+
+            line-height: 45px;
+            color: $ux-grey-3;
+
+            &-sub-heading {
+                @include xs-heading-mixin();
+            }
+
+            &-form {
+                .textbox {
+                    @include xs-heading-mixin();
+
+                    width: 219px;
+                    padding: 14px 10px;
+                }
+
+                .search-field-input {
+                    @include xs-heading-mixin();
+
+                    padding: 14px 10px;
+                }
+            }
+
+            &-label {
+                @include xs-heading-mixin();
+
+                display: block;
+                padding: 8px 0px 5px 20px;
+            }
+
+            &-helper {
+                @include small-font-mixin();
+
+                margin-top: 15px;
+
+                color: $helper-grey;
+
+                p {
+                    margin: 0px;
+                }
+            }
+
+            &-selector {
+                @include custom-selector();
+
+                width: 100%;
+                margin-bottom: 20px;
+
+                &:nth-of-type(3) {
+                    display: none;
+                }
+            }
+
+            &-previous-selections {
+                display: none;
+            }
+        }
+
+        &__next {
+            margin-top: 50px;
+
+            &-link {
+                text-decoration: none
+            }
+
+            &-button {
+                @include green-gradient-mixin();
+                @include mobile-body-font-mixin();
+
+                display: flex;
+                align-items: center;
+                padding: 8px 50px;
+
+                border-radius: 70.6272px;
+                line-height: 25px;
+                color: $white;
+
+                &:hover {
+                    .green {
+                        display: initial;
+                    }
+
+                    .white {
+                        display: none;
+                    }
+                }
+            }
+
+            &-icon {
+                height: 14px;
+                margin-left: 6px;
+
+                &.green {
+                    display: none;
+                }
+
+                &:hover {
+                    &.green {
+                        display: initial;
+                    }
+
+                    &.white {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        &__summary {
+            margin-bottom: 70px;
+
+            &-heading {
+                @include desktop-body-font--bold-mixin();
+
+                margin: 0px;
+
+                line-height: 26px;
+            }
+
+            &-value {
+                @include desktop-body-font-mixin();
+
+                margin: 0px;
+                margin-bottom: 30px;
+
+                line-height: 26px;
+            }
+        }
+
+        &.mode-chooser {
+            .course-finder-content__next {
+                margin-top: 147px;
+            }
+        }
+
+        &.subject-chooser {
+            .course-finder-content__next {
+                margin-top: 196px;
+            }
+        }
+
+        &.uni-picker {
+            .course-finder-content__next {
+                margin-top: 260px;
+            }
+        }
+
+        &.postcode-search {
+            .course-finder-content__question {
+                margin-bottom: 25px;
+            }
+
+            .course-finder-content__next {
+                margin-top: 75px;
+            }
+        }
+    }
+
+    &-results {
+        padding-top: 65px;
+
+        &__heading {
+            @include m-heading--bold-mixin();
+
+            margin-top: 0px;
+            margin-bottom: 47px;
+            width: 80%;
+
+            line-height: 45px;
+            color: $ux-grey-3;
+        }
+
+        &__overview {
+            @include mobile-body-font-mixin();
+
+            margin: 0px;
+        }
+
+        &__result {
+            &-list {
+                margin-top: 20px;
+                margin-bottom: 111px;
+            }
+
+            &-accordion {
+                &-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 29px 40px 29px 29px;
+
+                    background-color: $form-grey;
+
+                    .collapse, .expand {
+                        display: none;
+
+                        img {
+                            width: 30px;
+                        }
+                    }
+
+                    &.open {
+                        @include green-gradient-background-mixin();
+
+                        .course-finder-results__result-accordion-title, .course-finder-results__result-accordion-overview {
+                            color: white;
+                        }
+                    }
+                }
+
+                &-title {
+                    @include mobile-body-font--bold-mixin();
+
+                    margin: 0px;
+                    margin-bottom: 10px;
+
+                    color: $ux-grey-3;
+                }
+
+                &-overview {
+                    @include small-font--bold-mixin();
+
+                    margin: 0px;
+
+                    color: $ux-grey-3;
+                }
+
+                &-body {
+                    background-color: $ux-grey-1;
+
+                    &-content {
+                        padding: 40px 42px 43px;
+
+                        border-bottom: 2px solid $divider-grey;
+                    }
+
+                    &-course-name {
+                        @include desktop-body-font-mixin();
+
+                        display: block;
+                        margin: 0px;
+                        margin-bottom: 20px;
+
+                        color: $link-blue;
+                        line-height: 22px;
+                    }
+
+                    &-course-info {
+                        @include mobile-body-font-mixin();
+
+                        margin: 0px;
+
+                        line-height: 26px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .course-finder {
+        &-base {
+            padding: 0px 0px 107px;
+            background-position: initial;
+
+            &__nav {
+                padding: 24px 0px;
+
+                &-control {
+                    @include xs-heading-mixin();
+
+                    color: $gradient-light-green;
+
+                    &-icon {
+                        height: 16px;
+                    }
+                }
+            }
+        }
+
+        &-content {
+            padding-top: 73px;
+
+            &__question, &__heading {
+                @include l-heading--bold-mixin();
+
+                margin-bottom: 30px;
+                width: 80%;
+
+                line-height: 60px;
+                color: $ux-grey-3;
+
+                &-label {
+                    @include s-heading-mixin();
+                }
+
+                &-helper {
+                    @include desktop-body-font-mixin();
+
+                    margin-top: 20px;
+
+                color: $helper-grey;
+                }
+
+                &-selector {
+                    width: 50%;
+                    margin-bottom: 30px;
+                }
+            }
+
+            &__next {
+                margin-top: 45px;
+
+                &-button {
+                    @include s-heading-mixin();
+
+                    padding: 19px 106px 18px;
+
+                    line-height: 31px;
+                    color: $white;
+                }
+
+                &-icon {
+                    height: 19px;
+                    margin-left: 4px;
+                }
+            }
+
+            &__summary {
+                margin-bottom: 50px;
+
+                &-heading {
+                    @include s-heading--bold-mixin();
+
+                    line-height: 37px;
+                }
+
+                &-value {
+                    @include s-heading-mixin();
+
+                    margin-bottom: 20px;
+
+                    line-height: 37px;
+                }
+            }
+
+            &.country-chooser {
+                .course-finder-content__question {
+                    width: 60%;
+                }
+            }
+
+            &.mode-chooser, &.subject-chooser, &.narrow-search {
+                .course-finder-content__next {
+                    margin-top: 45px;
+                }
+            }
+
+            &.uni-picker {
+                .course-finder-content__next {
+                    margin-top: 35px;
+                    margin-bottom: 162px;
+                }
+            }
+        }
+
+        &-results {
+            padding-top: 65px;
+
+            &__heading {
+                @include l-heading--bold-mixin();
+
+                margin-bottom: 32px;
+
+                line-height: 60px;
+                color: $ux-grey-3;
+            }
+
+            &__overview {
+                @include desktop-body-font-mixin();
+            }
+
+            &__result {
+                &-list {
+                    margin-top: 18px;
+                    margin-bottom: 82px;
+                }
+
+                &-accordion {
+                    &-header {
+                        padding: 32px;
+
+                        .collapse, .expand {
+                            img {
+                                width: 20px;
+                            }
+                        }
+                    }
+
+                    &-heading {
+                        flex-grow: 1;
+                        display: flex;
+                        justify-content: space-between;
+                        padding-right: 76px;
+                    }
+
+                    &-title {
+                        @include xs-heading--bold-mixin();
+
+                        margin: 0px;
+
+                        color: $ux-grey-3;
+                    }
+
+                    &-overview {
+                        @include desktop-body-font--bold-mixin();
+
+                        color: $ux-grey-3;
+                    }
+
+                    &-body {
+                        background-color: $ux-grey-1;
+
+                        &-content {
+                            padding: 50px 80px;
+                        }
+
+                        &-course-name {
+                            @include s-heading-mixin();
+
+                            color: $link-blue;
+                            line-height: 31px;
+                        }
+
+                        &-course-info {
+                            @include xs-heading-mixin();
+
+                            line-height: 27px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

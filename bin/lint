@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker exec -ti wagtail-cms_web_1 bash -c "flake8 /code/"

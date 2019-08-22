@@ -1,0 +1,110 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.one-year__block, .one-year__lead-block {
+    padding: 34px 30px 49px 30px;
+
+    .one-year__heading {
+        @include s-heading-mixin();
+
+        margin: 0;
+
+        color: $ux-grey-2;
+    }
+
+    .one-year__lead {
+        @include small-font-mixin();
+
+        margin-top: 5px;
+    }
+
+    .one-year__qualification-charts {
+        .one-year__chart {
+            margin-bottom: 37px;
+
+            &:last-of-type {
+                margin-bottom: 13px;
+            }
+
+            .one-year__chart-label {
+                @include small-font-mixin();
+
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+.one-year__lead-block {
+    padding-bottom: 40px;
+}
+
+.one-year__overview {
+    @include desktop-body-font-mixin();
+
+    padding: 7px 30px 32px 30px;
+    text-align: center;
+
+    background-color: $background-grey;
+
+    p {
+        margin: 0px;
+    }
+
+    .one-year__overview-lead {
+        @include l-heading-mixin();
+
+        color: $slate;
+        line-height: 59px;
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .one-year__block, .one-year__lead-block {
+        padding: 40px 30px 49px 30px;
+
+        .one-year__heading {
+            @include m-heading-mixin();
+
+            margin: 0;
+
+            color: $ux-grey-2;
+        }
+
+        .one-year__lead {
+            @include desktop-body-font-mixin();
+
+            margin-top: 5px;
+        }
+
+        .one-year__qualification-charts {
+            .one-year__chart {
+                margin-bottom: 37px;
+
+                &:last-of-type {
+                    margin-bottom: 13px;
+                }
+
+                .one-year__chart-label {
+                    @include small-font-mixin();
+
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+
+    .one-year__overview {
+        padding: 68px 150px 72px;
+
+        .one-year__overview-lead {
+            @include xl-heading-mixin();
+
+            color: $slate;
+        }
+
+        p {
+            @include s-heading-mixin();
+        }
+    }
+}

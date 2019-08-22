@@ -1,0 +1,122 @@
+@import 'variables';
+
+@mixin xl-heading-mixin() {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $xl-heading-font-size;
+    line-height: $xl-heading-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+@mixin xl-heading--bold-mixin() {
+    @include xl-heading-mixin();
+    font-weight: bold;
+}
+
+@mixin l-heading-mixin() {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $l-heading-font-size;
+    line-height: $l-heading-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+@mixin l-heading--bold-mixin() {
+    @include l-heading-mixin();
+    font-weight: bold;
+}
+
+@mixin m-heading-mixin() {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $m-heading-font-size;
+    line-height: $m-heading-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+
+@mixin m-heading--bold-mixin() {
+    @include m-heading-mixin();
+    font-weight: bold;
+}
+
+@mixin s-heading-mixin() {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $s-heading-font-size;
+    line-height: $s-heading-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+@mixin s-heading--bold-mixin() {
+    @include s-heading-mixin();
+    font-weight: bold;
+}
+
+@mixin xs-heading-mixin() {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $xs-heading-font-size;
+    line-height: $xs-heading-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+@mixin xs-heading--bold-mixin() {
+    @include xs-heading-mixin();
+    font-weight: bold;
+}
+
+@mixin desktop-body-font-mixin() {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $desktop-body-font-size;
+    line-height: $desktop-body-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+@mixin desktop-body-font--bold-mixin() {
+    @include desktop-body-font-mixin();
+    font-weight: bold;
+}
+
+@mixin mobile-body-font-mixin() {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $mobile-body-font-size;
+    line-height: $mobile-body-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+@mixin mobile-body-font--bold-mixin() {
+    @include mobile-body-font-mixin();
+    font-weight: bold;
+}
+
+@mixin small-font-mixin() {
+    font-family: $default-font;
+    font-weight: normal;
+    font-size: $small-font-size;
+    line-height: $small-line-height;
+    line-height: 100%;
+
+    color: $default-font-color;
+}
+
+@mixin small-font--bold-mixin() {
+    @include small-font-mixin();
+    font-weight: bold;
+}

@@ -1,0 +1,262 @@
+.checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:last-child {
+        margin-bottom: 0px;
+    }
+
+    /* On mouse-over, add a grey background color */
+    &:hover input ~ .checkmark {
+        border: 2px solid $gradient-light-green;
+    }
+
+    /* Hide the browser's default checkbox */
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        /* When the checkbox is checked, add a blue background */
+        &:checked ~ .checkmark {
+            @include green-gradient-background-mixin();
+            border: 0;
+
+            /* Show the checkmark when checked */
+            &:after {
+                display: block;
+            }
+        }
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 34px;
+        width: 34px;
+        background-color: $white;
+        border: 2px solid $ux-grey-3;
+        box-sizing: border-box;
+        border-radius: 5px;
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        &:after {
+            content: "";
+            position: absolute;
+            display: none;
+
+        /* Style the checkmark/indicator */
+
+            left: 12px;
+            top: 5px;
+            width: 7px;
+            height: 15px;
+            border: solid $white;
+            border-width: 0 4px 4px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.radio {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:hover input ~ .radiobox {
+        border: 2px solid $gradient-light-green;
+    }
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        &:checked ~ .radiobox {
+            @include green-gradient-background-mixin();
+            border: 0;
+            height: 30px;
+            width: 30px;
+
+            &:after {
+                display: block;
+            }
+        }
+    }
+
+    .radiobox {
+        position: absolute;
+        top: 2px;
+        left: 0;
+        height: 26px;
+        width: 26px;
+        background-color: $white;
+        border: 2px solid $ux-grey-3;
+        border-radius: 50%;
+
+        &:after {
+            content: "";
+            position: absolute;
+            display: none;
+
+            top: 8px;
+            left: 8px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: white;
+        }
+    }
+}
+
+.textbox {
+    background: $form-grey;
+    border: 2px solid $ux-grey-3;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+@media only screen and (min-width: 770px) {
+    .checkbox {
+        margin-bottom: 20px;
+
+        .checkmark {
+            height: 40px;
+            width: 40px;
+
+            &:after {
+                left: 14px;
+                top: 7px;
+                width: 8px;
+                height: 17px;
+            }
+        }
+    }
+
+    .radio {
+        input {
+            &:checked ~ .radiobox {
+                @include green-gradient-background-mixin();
+                border: 0;
+                height: 40px;
+                width: 40px;
+            }
+        }
+
+        .radiobox {
+            top: 2px;
+            height: 36px;
+            width: 36px;
+
+            &:after {
+                top: 11px;
+                left: 11px;
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+}
+
+@mixin custom-selector() {
+    position: relative;
+
+    .select-selected {
+        background-color: $form-grey;
+
+        &:after {
+            position: absolute;
+            content: "";
+            top: 25px;
+            right: 25px;
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+            border-color: $ux-grey-3 transparent transparent transparent;
+        }
+
+        &.select-arrow-active:after {
+            border-color: transparent transparent $ux-grey-3 transparent;
+            top: 17px;
+        }
+    }
+
+    .select-items {
+        position: absolute;
+        background-color: $form-grey;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        max-height: 232px;
+        overflow-y: scroll;
+
+        .option {
+            &:hover, &.same-as-selected {
+                @include green-gradient-background-mixin();
+            }
+        }
+    }
+
+    .select-items .option, .select-selected {
+        @include mobile-body-font-mixin();
+
+        padding: 21px;
+
+        color: $ux-grey-3;
+        cursor: pointer;
+    }
+
+    .select-hide {
+        display: none;
+    }
+
+    @media only screen and (min-width: 770px) {
+        .select-selected {
+
+            &:after {
+                top: 34px;
+                right: 30px;
+                border: 10px solid transparent;
+                border-color: $ux-grey-3 transparent transparent transparent;
+            }
+
+            &.select-arrow-active:after {
+                top: 23px;
+            }
+        }
+
+        .select-items {
+            max-height: 308px;
+        }
+
+        .select-items .option, .select-selected {
+            @include xs-heading-mixin();
+
+            padding: 28px;
+
+            color: $ux-grey-3;
+        }
+    }
+}
