@@ -18,12 +18,21 @@ class InstitutionDetailPage(DiscoverUniBasePage):
     qa_explanation_heading = TextField(blank=True)
     qa_explanation_body = RichTextField(blank=True)
     tef_heading = TextField(blank=True)
+    tef_gold_body = RichTextField(blank=True)
+    tef_silver_body = RichTextField(blank=True)
+    tef_bronze_body = RichTextField(blank=True)
+    tef_provisional_body = RichTextField(blank=True)
+    tef_not_participated_body = RichTextField(blank=True)
+    tef_withdrawn_body = RichTextField(blank=True)
     tef_report_link = TextField(blank=True)
     tef_explanation_link = TextField(blank=True)
     tef_explanation_heading = TextField(blank=True)
     tef_explanation_body = RichTextField(blank=True)
     apr_heading = TextField(blank=True)
-    apr_body = RichTextField(blank=True)
+    apr_met_body = RichTextField(blank=True)
+    apr_action_plan_body = RichTextField(blank=True)
+    apr_pending_body = RichTextField(blank=True)
+    apr_not_met_body = RichTextField(blank=True)
     apr_explanation_link = TextField(blank=True)
     apr_explanation_heading = TextField(blank=True)
     apr_explanation_body = RichTextField(blank=True)
@@ -36,12 +45,21 @@ class InstitutionDetailPage(DiscoverUniBasePage):
         FieldPanel('qa_explanation_heading'),
         FieldPanel('qa_explanation_body'),
         FieldPanel('tef_heading'),
+        FieldPanel('tef_gold_body'),
+        FieldPanel('tef_silver_body'),
+        FieldPanel('tef_bronze_body'),
+        FieldPanel('tef_provisional_body'),
+        FieldPanel('tef_not_participated_body'),
+        FieldPanel('tef_withdrawn_body'),
         FieldPanel('tef_report_link'),
         FieldPanel('tef_explanation_link'),
         FieldPanel('tef_explanation_heading'),
         FieldPanel('tef_explanation_body'),
         FieldPanel('apr_heading'),
-        FieldPanel('apr_body'),
+        FieldPanel('apr_met_body'),
+        FieldPanel('apr_action_plan_body'),
+        FieldPanel('apr_pending_body'),
+        FieldPanel('apr_not_met_body'),
         FieldPanel('apr_explanation_link'),
         FieldPanel('apr_explanation_heading'),
         FieldPanel('apr_explanation_body'),
@@ -66,11 +84,12 @@ class Institution:
         institution_data = data_obj.get('institution')
         if institution_data:
             self.apr_outcome = institution_data.get('apr_outcome')
-            self.pub_ukprn_country = institution_data.get("pub_ukprn_country")
+            self.pub_ukprn_country_code = institution_data.get("pub_ukprn_country").get('code')
+            self.pub_ukprn_country_name = institution_data.get("pub_ukprn_country").get('name')
             self.pub_ukprn_name = institution_data.get("pub_ukprn_name")
             self.pub_ukprn = institution_data.get("pub_ukprn")
             self.website = institution_data.get('links').get('institution_homepage')
-            self.tef_outcome = institution_data.get("tef_outcome").lower()
+            self.tef_outcome = institution_data.get("tef_outcome")
             self.total_number_of_courses = institution_data.get("total_number_of_courses")
             self.ukprn_country = institution_data.get("ukprn_country")
             self.ukprn_name = institution_data.get("ukprn_name")
@@ -86,7 +105,65 @@ class Institution:
 
     @property
     def is_irish(self):
-        return self.pub_ukprn_country == 'Ireland'
+        return self.pub_ukprn_country_code == enums.countries.IRELAND
+
+    @property
+    def is_english(self):
+        return self.pub_ukprn_country_code == enums.countries.ENGLAND
+
+    @property
+    def is_scottish(self):
+        return self.pub_ukprn_country_code == enums.countries.SCOTLAND
+
+    @property
+    def is_welsh(self):
+        return self.pub_ukprn_country_code == enums.countries.WALES
+
+    def show_qa_report_link(self):
+        return self.is_scottish or self.is_welsh
+
+    @property
+    def apr_is_met(self):
+        return self.apr_outcome and self.apr_outcome == enums.apr_values.MET
+
+    @property
+    def apr_is_action_plan(self):
+        return self.apr_outcome and self.apr_outcome == enums.apr_values.ACTION_PLAN
+
+    @property
+    def apr_is_pending(self):
+        return self.apr_outcome and self.apr_outcome == enums.apr_values.PENDING
+
+    @property
+    def apr_is_not_met(self):
+        return self.apr_outcome and self.apr_outcome == enums.apr_values.NOT_MET
+
+    @property
+    def tef_is_gold(self):
+        return self.tef_outcome and self.tef_outcome == enums.tef_values.GOLD
+
+    @property
+    def tef_is_silver(self):
+        return self.tef_outcome and self.tef_outcome == enums.tef_values.SILVER
+
+    @property
+    def tef_is_bronze(self):
+        return self.tef_outcome and self.tef_outcome == enums.tef_values.BRONZE
+
+    @property
+    def tef_is_provisional(self):
+        return self.tef_outcome and self.tef_outcome == enums.tef_values.PROVISIONAL
+
+    @property
+    def tef_is_not_participate(self):
+        return self.tef_outcome and self.tef_outcome == enums.tef_values.NOT_PARTICIPATE
+
+    @property
+    def tef_is_withdrawn(self):
+        return self.tef_outcome and self.tef_outcome == enums.tef_values.WITHDRAWN
+
+    def show_tef_logo(self):
+        return self.tef_is_gold or self.tef_is_silver or self.tef_is_bronze
 
     @classmethod
     def find(cls, institution_id, language):

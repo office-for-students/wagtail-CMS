@@ -70,6 +70,7 @@ def should_show_accordion(course, accordion_type):
         return course.show_after_course_stats
     return False
 
+
 @register.simple_tag
-def get_feedback_api_host():
-    return settings.FEEDBACK_API_HOST
+def title_to_id(title):
+    return title.replace(' ', '_').lower()

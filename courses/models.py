@@ -324,7 +324,7 @@ class CourseDistanceLearning:
             self.label = fallback_to(data_obj.get('label'), '')
 
     def display_label(self):
-        if self.code and str(self.code) in DICT.get('distance_learning_values'):
+        if self.code is not None and str(self.code) in DICT.get('distance_learning_values'):
             return DICT.get('distance_learning_values').get(str(self.code)).get(self.display_language)
         return DICT.get('unknown').get(self.display_language)
 
@@ -793,8 +793,14 @@ class CourseAccreditation:
         if text:
             self.text_english = fallback_to(text.get('english'), '')
             self.text_welsh = fallback_to(text.get('welsh'), '')
+
         url = data_obj.get('url')
-        self.url_english = fallback_to(url.get('english'), '') if url else ''
+        self.url_english = ''
+        self.url_welsh = ''
+        if url:
+            self.url_english = fallback_to(url.get('english'), '')
+            self.url_welsh = fallback_to(url.get('welsh'), '')
+
         dependent = data_obj.get('dependent_on')
         if dependent:
             self.dependent_on_code = dependent.get('code')
@@ -806,4 +812,9 @@ class CourseAccreditation:
         return self.text_welsh if self.text_welsh else self.text_english
 
     def language_url(self):
-        return self.url_english if self.url_english else self.accreditor_url
+        if self.display_language == enums.languages.ENGLISH:
+            return self.url_english if self.url_english else self.url_welsh
+        return self.url_welsh if self.url_welsh else self.url_english
+
+    def show_dependency(self):
+        return self.dependent_on_code == '1'

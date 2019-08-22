@@ -8,6 +8,29 @@ class LanguagesFull:
     WELSH = "welsh"
 
 
+class Countries:
+    ENGLAND = 'XF'
+    WALES = 'XI'
+    SCOTLAND = 'XH'
+    IRELAND = 'XG'
+
+
+class APRValues:
+    MET = 'Meets requirements'
+    ACTION_PLAN = 'Meets requirements with an action plan'
+    PENDING = 'Pending'
+    NOT_MET = 'Does not meet requirements'
+
+
+class TEFValues:
+    GOLD = 'Gold'
+    SILVER = 'Silver'
+    BRONZE = 'Bronze'
+    PROVISIONAL = 'Provisional'
+    NOT_PARTICIPATE = 'Did not participate'
+    WITHDRAWN = 'Withdrawn'
+
+
 class UniLinkKeys:
     ASSESSMENT = 'assessment_method'
     COURSE = 'course_page'
@@ -25,6 +48,9 @@ class Enums:
         Languages.ENGLISH: LanguagesFull.ENGLISH,
         Languages.WELSH: LanguagesFull.WELSH
     }
+    countries = Countries()
+    apr_values = APRValues()
+    tef_values = TEFValues()
     uni_link_keys = UniLinkKeys()
 
 
