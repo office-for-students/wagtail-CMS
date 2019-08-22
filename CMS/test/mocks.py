@@ -577,7 +577,7 @@ class InstitutionMocks:
                         }
                     }
                 ],
-                "pub_ukprn_country": "England",
+                "pub_ukprn_country": {'code': 'XF', 'name': "England"},
                 "pub_ukprn_name": "Goldsmiths, University of London",
                 "pub_ukprn": 10002718,
                 "tef_outcome": "Bronze",
