@@ -40,7 +40,7 @@ var CONTENT = {
         'cy-GB': ''
     },
     'noDataCta': {
-        'en-GB': 'See Discover Uni',
+        'en-GB': 'See course info',
         'cy-GB': ''
     }
 }
@@ -78,7 +78,7 @@ DiscoverUniWidget.prototype = {
 
     addCss: function() {
         var fontNode = document.createElement('link');
-        fontNode.href = "http://fonts.googleapis.com/css?family=Montserrat";
+        fontNode.href = "http://fonts.googleapis.com/css?family=Montserrat:regular,bold&display=swap";
         fontNode.rel = "stylesheet";
         fontNode.type = "text/css";
         styling = "{% styles %}";
@@ -100,7 +100,7 @@ DiscoverUniWidget.prototype = {
                 that.renderWidget();
             }
         });
-        base_url = "{{api_domain}}/dataset/institutions/{{uni_id}}/courses/{{course_id}}/modes/{{mode}}";
+        base_url = "{{api_domain}}/institutions/{{uni_id}}/courses/{{course_id}}/modes/{{mode}}";
         url = base_url.replace('{{uni_id}}', this.institution);
         url = url.replace('{{course_id}}', this.course);
         url = url.replace('{{mode}}', MODES[this.kismode.toLowerCase()]);

@@ -1,10 +1,11 @@
 .kis-widget {
     font-family: Helvetica Neue;
+    border: 2px solid #4EA27D;
 }
 
 .kis-widget .widget-lead {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: #4EA27D;
 }
 
 .kis-widget .widget-lead .intro {
@@ -15,11 +16,13 @@
 
 .kis-widget .widget-cta-block {
     padding: 15px 15px 21px 15px;
+    background: linear-gradient(145.9deg, #4EA27D 13.02%, #308282 85.42%);
 }
 
 .kis-widget .widget-cta-block .cta-lead {
     font-size: 13px;
     line-height: 16px;
+    color: white;
 }
 
 .kis-widget .widget-cta-block .logo {
@@ -27,15 +30,15 @@
     margin-bottom:38px;
     font-family: Montserrat;
     font-weight: bold;
-    font-size: 18px;
-    line-height: 22px;
-    color: #8D8D8D;
+    font-size: 13px;
+    line-height: 16px;
+    color: white;
 }
 
 .kis-widget .widget-cta-block .cta {
-    background-color: #000000;
-    border-radius: 5px;
-    color: #FFFFFF;
+    background-color: white;
+    border-radius: 60px;
+    color: #4EA27D;
     font-size: 14px;
     line-height: 17px;
     text-align: center;
@@ -45,7 +48,7 @@
 }
 
 .kis-widget .widget-cta-block .cta a {
-    color: #FFFFFF;
+    color: #4EA27D;
     text-decoration: none;
 }
 
@@ -69,6 +72,7 @@
 
 .kis-widget.horizontal {
     width: 615px;
+    display: flex;
 }
 
 .kis-widget .widget-lead {
@@ -81,8 +85,8 @@
 
 .kis-widget.horizontal .widget-lead {
     width: 380px;
+    flex: 1 1 0;
     padding: 8px 22px 43px 20px;
-    float: left;
 }
 
 .kis-widget.horizontal.no-data .widget-lead {
@@ -99,7 +103,7 @@
 
 .kis-widget.horizontal.no-data .widget-cta-block {
     width: 160px;
-    float: right;
+    flex: 1 1 0;
     padding: 15px 11px 20px 19px;
 }
 
