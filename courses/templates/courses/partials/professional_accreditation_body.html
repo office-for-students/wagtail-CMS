@@ -9,13 +9,16 @@
         {% for accreditation in course_details.accreditations %}
             <p class="accreditation__body">
                 {{accreditation.display_text}}
+                <a href="{{accreditation.accreditor_url}}">{% get_translation key='find_out_more' language=page.get_language %}</a>
             </p>
 
-            <p class="accreditation__explanation">
-                {{accreditation.dependent_on_label}}
+            {% if accreditation.show_dependency %}
+                <p class="accreditation__explanation">
+                    {{accreditation.dependent_on_label}}
 
-                <a href="{{accreditation.language_url}}">{% get_translation key='find_out_more' language=page.get_language %}</a>
-            </p>
+                    <a href="{{accreditation.language_url}}">{% get_translation key='find_out_more' language=page.get_language %}</a>
+                </p>
+            {% endif %}
         {% endfor %}
     </div>
 </div>
