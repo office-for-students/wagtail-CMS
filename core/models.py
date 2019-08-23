@@ -25,8 +25,9 @@ class DiscoverUniBasePage(Page):
             menu_name = enums.languages_map.get(enums.languages.ENGLISH).capitalize()
             menu_data = Menu.objects.filter(name=menu_name).first()
         menu = []
-        for item in menu_data.menu_items:
-            menu.append(parse_menu_item(item))
+        if menu_data:
+            for item in menu_data.menu_items:
+                menu.append(parse_menu_item(item))
         return menu
 
     class Meta:
