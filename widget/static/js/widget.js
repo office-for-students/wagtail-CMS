@@ -122,7 +122,7 @@ DiscoverUniWidget.prototype = {
 
     addCss: function() {
         var fontNode = document.createElement('link');
-        fontNode.href = "http://fonts.googleapis.com/css?family=Montserrat:regular,bold&display=swap";
+        fontNode.href = "https://fonts.googleapis.com/css?family=Montserrat:regular,bold&display=swap";
         fontNode.rel = "stylesheet";
         fontNode.type = "text/css";
         styling = "{% styles %}";
