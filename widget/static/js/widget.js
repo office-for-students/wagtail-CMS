@@ -260,7 +260,7 @@ DataWidget.prototype = {
 
         var slideNode = document.createElement('div');
         slideNode.classList.add('lead-slide', 'fade');
-        slideNode.id = 'satisfaction';
+        slideNode.id = 'explanation';
 
         var statNode = document.createElement('div');
         statNode.classList.add('stat');
@@ -291,7 +291,7 @@ DataWidget.prototype = {
 
         var slideNode = document.createElement('div');
         slideNode.classList.add('lead-slide', 'fade');
-        slideNode.id = 'satisfaction';
+        slideNode.id = 'work';
 
         var statNode = document.createElement('div');
         statNode.classList.add('stat');
