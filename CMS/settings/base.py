@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
-    'corsheaders'
+    'corsheaders',
 
     'django.contrib.admin',
     'django.contrib.auth',
