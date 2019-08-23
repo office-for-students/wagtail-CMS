@@ -138,7 +138,7 @@ DiscoverUniWidget.prototype = {
         var that = this;
         var xhttp = new XMLHttpRequest();
         xhttp.addEventListener("load", function() {
-            that.renderWidget(this.status, JSON.parse(this.response).course);
+            that.renderWidget(this.status, this.response);
         });
         base_url = "{{api_domain}}/institutions/{{uni_id}}/courses/{{course_id}}/modes/{{mode}}";
         url = base_url.replace('{{uni_id}}', this.institution);
@@ -151,10 +151,17 @@ DiscoverUniWidget.prototype = {
     },
 
 
-    renderWidget: function(status, courseData) {
-        if (status === 200 && this.hasRequiredStats(courseData) && !this.isMultiSubject(courseData)) {
-            new DataWidget(this.targetDiv, courseData, this.language, this.languageKey, this.kismode,
-                            this.generateLink.bind(this));
+    renderWidget: function(status, response) {
+        if (status === 200) {
+            var courseData = JSON.parse(response).course;
+
+            if (this.hasRequiredStats(courseData) && !this.isMultiSubject(courseData)) {
+                new DataWidget(this.targetDiv, courseData, this.language, this.languageKey, this.kismode,
+                                this.generateLink.bind(this));
+            } else {
+                new NoDataWidget(this.targetDiv, this.language, this.languageKey, this.kismode,
+                                    this.generateLink.bind(this));
+            }
         } else {
             new NoDataWidget(this.targetDiv, this.language, this.languageKey, this.kismode,
                                 this.generateLink.bind(this));
