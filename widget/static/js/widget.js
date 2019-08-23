@@ -121,17 +121,22 @@ DiscoverUniWidget.prototype = {
     },
 
     addCss: function() {
-        var fontNode = document.createElement('link');
-        fontNode.href = "https://fonts.googleapis.com/css?family=Montserrat:regular,bold&display=swap";
-        fontNode.rel = "stylesheet";
-        fontNode.type = "text/css";
+        var logoFontNode = document.createElement('link');
+        logoFontNode.href = "https://fonts.googleapis.com/css?family=Montserrat:regular,bold&display=swap";
+        logoFontNode.rel = "stylesheet";
+        logoFontNode.type = "text/css";
+        var generalFontNode = document.createElement('link');
+        generalFontNode.href = "https://fonts.googleapis.com/css?family=Nunito+Sans:regular,bold&display=swap";
+        generalFontNode.rel = "stylesheet";
+        generalFontNode.type = "text/css";
         styling = "{% styles %}";
         var stylingNode = document.createElement('style');
         var stylingTextNode = document.createTextNode(styling);
         stylingNode.appendChild(stylingTextNode);
         var widgetScript = document.getElementById('unistats-widget-script');
         widgetScript.parentNode.insertBefore(stylingNode, widgetScript);
-        widgetScript.parentNode.insertBefore(fontNode, widgetScript);
+        widgetScript.parentNode.insertBefore(logoFontNode, widgetScript);
+        widgetScript.parentNode.insertBefore(generalFontNode, widgetScript);
     },
 
     loadCourseData: function() {
