@@ -71,7 +71,7 @@ var CONTENT = {
         'en-GB': 'Year abroad',
         'cy-GB': ''
     },
-    'placementOptional': {
+    'abroadOptional': {
         'en-GB': 'Year abroad optional',
         'cy-GB': ''
     },
