@@ -162,6 +162,7 @@ DiscoverUniWidget.prototype = {
 
             if (this.hasRequiredStats(courseData) && !this.isMultiSubject(courseData)) {
                 new DataWidget(this.targetDiv, courseData, this.language, this.languageKey, this.kismode,
+                                this.hasOverallSatisfactionStats, this.hasTeachingSatisfactionStats, this.hasWorkStats,
                                 this.generateLink.bind(this));
             } else {
                 new NoDataWidget(this.targetDiv, this.language, this.languageKey, this.kismode,
@@ -177,17 +178,24 @@ DiscoverUniWidget.prototype = {
         return Boolean(courseData.statistics.nss.length > 1 || courseData.statistics.employment.length > 1);
     },
 
-    hasNSSStats: function(nssStats) {
-        return Boolean(nssStats && nssStats[0] && nssStats[0].question_1 && nssStats[0].question_27);
+    setOverallSatisfactionStats: function(nssStats) {
+        this.hasOverallSatisfactionStats = Boolean(nssStats && nssStats[0] && nssStats[0].question_1);
     },
 
-    hasWorkStats: function(workStats) {
-        return Boolean(workStats && workStats[0] && workStats[0].in_work_or_study);
+    setTeachingSatisfactionStats: function(nssStats) {
+        this.hasTeachingSatisfactionStats = Boolean(nssStats && nssStats[0] && nssStats[0].question_27);
+    },
+
+    setWorkStats: function(workStats) {
+        this.hasWorkStats = Boolean(workStats && workStats[0] && workStats[0].in_work_or_study);
     },
 
     hasRequiredStats: function(courseData) {
-        return Boolean(courseData && courseData.statistics && this.hasNSSStats(courseData.statistics.nss) &&
-            this.hasWorkStats(courseData.statistics.employment));
+        this.setOverallSatisfactionStats(courseData.statistics.nss)
+        this.setTeachingSatisfactionStats(courseData.statistics.nss)
+        this.setWorkStats(courseData.statistics.employment)
+        return Boolean(courseData && courseData.statistics &&
+            Boolean(this.hasOverallSatisfactionStats || this.hasTeachingSatisfactionStats || this.hasWorkStats));
     },
 
     generateLink: function() {
@@ -199,12 +207,16 @@ DiscoverUniWidget.prototype = {
     }
 }
 
-var DataWidget = function(targetDiv, courseData, language, languageKey, kismode, generateLink) {
+var DataWidget = function(targetDiv, courseData, language, languageKey, kismode, hasOverall, hasTeaching, hasWork,
+                            generateLink) {
     this.targetDiv = targetDiv;
     this.courseData = courseData
     this.language = language;
     this.languageKey= languageKey;
     this.kismode =  kismode;
+    this.hasOverall = hasOverall;
+    this.hasTeaching = hasTeaching;
+    this.hasWork = hasWork;
     this.generateLink = generateLink;
     this.setup();
 }
@@ -219,42 +231,67 @@ DataWidget.prototype = {
     renderDataLead: function() {
         var leadNode = document.createElement('div');
         leadNode.classList.add('widget-lead');
-
-        leadNode.appendChild(this.renderSatisfactionSlide());
-        leadNode.appendChild(this.renderExplanationSlide());
-        leadNode.appendChild(this.renderWorkSlide());
+        if (this.hasOverall) {
+            leadNode.appendChild(this.renderSatisfactionSlide());
+        }
+        if (this.hasTeaching) {
+            leadNode.appendChild(this.renderExplanationSlide());
+        }
+        if (this.hasWork) {
+            leadNode.appendChild(this.renderWorkSlide());
+        }
 
         this.targetDiv.appendChild(leadNode);
         this.carousel();
+    },
+
+    createSlideNode: function(idName, statNode, isNotAggregated) {
+        var slideNode = document.createElement('div');
+        slideNode.classList.add('lead-slide', 'fade');
+        slideNode.id = idName;
+
+        slideNode.appendChild(statNode);
+        slideNode.appendChild(this.renderCourseDetails(isNotAggregated));
+
+        return slideNode;
+    },
+
+    createStatNode: function(titleNode, introNode) {
+        var statNode = document.createElement('div');
+        statNode.classList.add('stat');
+
+        statNode.appendChild(titleNode);
+        statNode.appendChild(introNode);
+
+        return statNode;
+    },
+
+    createTitleNode: function(titleText) {
+        var titleNode = document.createElement('h1');
+        titleNode.classList.add('title');
+        var title = document.createTextNode(titleText);
+        titleNode.appendChild(title);
+        return titleNode;
+    },
+
+    createIntroNode: function(introText) {
+        var introNode = document.createElement("p");
+        introNode.classList.add('intro');
+        var intro = document.createTextNode(introText);
+        introNode.appendChild(intro);
+        return introNode;
     },
 
     renderSatisfactionSlide: function() {
         var isNotAggregated = this.courseData.statistics.nss[0].aggregation_level === 14 ||
                                 this.courseData.statistics.nss[0].aggregation_level === 24
 
-        var slideNode = document.createElement('div');
-        slideNode.classList.add('lead-slide', 'fade');
-        slideNode.id = 'satisfaction';
-
-        var statNode = document.createElement('div');
-        statNode.classList.add('stat');
-
-        var titleNode = document.createElement('h1');
-        titleNode.classList.add('title');
         var percentage = this.courseData.statistics.nss[0].question_27.agree_or_strongly_agree + '%';
-        var title = document.createTextNode(percentage);
-        titleNode.appendChild(title);
+        var introText = CONTENT.satisfactionIntro[this.language];
 
-        var introNode = document.createElement("p");
-        introNode.classList.add('intro');
-        var intro = document.createTextNode(CONTENT.satisfactionIntro[this.language]);
-        introNode.appendChild(intro);
+        var statNode = this.createStatNode(this.createTitleNode(percentage), this.createIntroNode(introText));
 
-        statNode.appendChild(titleNode);
-        statNode.appendChild(introNode);
-
-        slideNode.appendChild(statNode);
-        slideNode.appendChild(this.renderCourseDetails(isNotAggregated));
+        var slideNode = this.createSlideNode('satisfaction', statNode, isNotAggregated);
 
         return slideNode;
     },
@@ -263,29 +300,12 @@ DataWidget.prototype = {
         var isNotAggregated = this.courseData.statistics.nss[0].aggregation_level === 14 ||
                                 this.courseData.statistics.nss[0].aggregation_level === 24
 
-        var slideNode = document.createElement('div');
-        slideNode.classList.add('lead-slide', 'fade');
-        slideNode.id = 'explanation';
-
-        var statNode = document.createElement('div');
-        statNode.classList.add('stat');
-
-        var titleNode = document.createElement('h1');
-        titleNode.classList.add('title');
         var percentage = this.courseData.statistics.nss[0].question_1.agree_or_strongly_agree + '%';
-        var title = document.createTextNode(percentage);
-        titleNode.appendChild(title);
+        var introText = CONTENT.explanationIntro[this.language];
 
-        var introNode = document.createElement("p");
-        introNode.classList.add('intro');
-        var intro = document.createTextNode(CONTENT.explanationIntro[this.language]);
-        introNode.appendChild(intro);
+        var statNode = this.createStatNode(this.createTitleNode(percentage), this.createIntroNode(introText));
 
-        statNode.appendChild(titleNode);
-        statNode.appendChild(introNode);
-
-        slideNode.appendChild(statNode);
-        slideNode.appendChild(this.renderCourseDetails(isNotAggregated));
+        var slideNode = this.createSlideNode('explanation', statNode, isNotAggregated);
 
         return slideNode;
     },
@@ -294,29 +314,12 @@ DataWidget.prototype = {
         var isNotAggregated = this.courseData.statistics.employment[0].aggregation_level === 14 ||
                                 this.courseData.statistics.employment[0].aggregation_level === 24
 
-        var slideNode = document.createElement('div');
-        slideNode.classList.add('lead-slide', 'fade');
-        slideNode.id = 'work';
-
-        var statNode = document.createElement('div');
-        statNode.classList.add('stat');
-
-        var titleNode = document.createElement('h1');
-        titleNode.classList.add('title');
         var percentage = this.courseData.statistics.employment[0].in_work_or_study + '%';
-        var title = document.createTextNode(percentage);
-        titleNode.appendChild(title);
+        var introText = CONTENT.workIntro[this.language];
 
-        var introNode = document.createElement("p");
-        introNode.classList.add('intro');
-        var intro = document.createTextNode(CONTENT.workIntro[this.language]);
-        introNode.appendChild(intro);
+        var statNode = this.createStatNode(this.createTitleNode(percentage), this.createIntroNode(introText));
 
-        statNode.appendChild(titleNode);
-        statNode.appendChild(introNode);
-
-        slideNode.appendChild(statNode);
-        slideNode.appendChild(this.renderCourseDetails(isNotAggregated));
+        var slideNode = this.createSlideNode('work', statNode, isNotAggregated);
 
         return slideNode;
     },
@@ -418,7 +421,7 @@ DataWidget.prototype = {
         if (this.slideIndex > slides.length) {this.slideIndex = 1}
 
         slides[this.slideIndex-1].style.display = "block";
-        setTimeout(this.carousel.bind(this), 5000); // Change image every 2 seconds
+        setTimeout(this.carousel.bind(this), 5000); // Change image every 5 seconds
     }
 }
 
