@@ -1,4 +1,4 @@
-{% load discover_uni_tags %}
+{% load staticfiles discover_uni_tags %}
 
 
 <h1 class="course-finder-results__heading">{{page.header}}</h1>
@@ -8,6 +8,11 @@
     {% autoescape off %}
         {% get_translation key='number_of_results' language=page.get_language substitutions=substitutions %}
     {% endautoescape %}
+
+    <span class="course-finder-results__overview-filter-toggle">
+        <img class="course-finder-results__overview-filter-icon" src="{% static 'images/filter_icon.svg' %}" alt="">
+        Filter
+    </span>
 </p>
 
 <div class="course-finder-results__result-list">

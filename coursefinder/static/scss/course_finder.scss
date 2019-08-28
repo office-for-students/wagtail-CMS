@@ -237,6 +237,21 @@
             @include mobile-body-font-mixin();
 
             margin: 0px;
+            position: relative;
+
+            &-filter {
+                &-toggle {
+                    position: absolute;
+                    right: 0px;
+
+                    color: $gradient-light-green;
+                    cursor: pointer;
+                }
+
+                &-icon {
+                    width: 15px;
+                }
+            }
         }
 
         &__result {
