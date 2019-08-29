@@ -1,7 +1,9 @@
+import string
+import json
+
 from urllib.parse import urlencode
 
 from django import template
-from django.conf import settings
 
 from CMS.enums import enums
 from CMS.translations import DICT
@@ -74,3 +76,8 @@ def should_show_accordion(course, accordion_type):
 @register.simple_tag
 def title_to_id(title):
     return title.replace(' ', '_').lower()
+
+
+@register.simple_tag
+def get_alphabet():
+    return list(string.ascii_lowercase)

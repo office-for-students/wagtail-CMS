@@ -7,7 +7,6 @@
 
     SubjectSelector.prototype = {
         setup: function() {
-            console.log(0)
             this.subjectAreaSelector = this.wrapper.find('#subjectArea');
             this.subjectSelector = this.wrapper.find('#subject');
             this.subjectCodeSelector = this.wrapper.find('#subjectCode');
@@ -17,7 +16,6 @@
         },
 
         loadSubjectData: function() {
-            console.log(5)
             var that = this;
             if (sessionStorage.getItem("subjectJSON") === null) {
                 $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
@@ -38,7 +36,6 @@
         },
 
         initialiseSelectors: function() {
-            console.log(10)
             for (var i = 0; i < this.subjectData.length; i++) {
                 var item = this.subjectData[i];
 
@@ -98,9 +95,7 @@
     }
 
     function init() {
-        console.log('init')
         var selectorsWrapper = $('.subject-picker');
-        console.log(selectorsWrapper)
         for (var i = 0; i < selectorsWrapper.length; i++) {
             new SubjectSelector(selectorsWrapper[0]);
         }
