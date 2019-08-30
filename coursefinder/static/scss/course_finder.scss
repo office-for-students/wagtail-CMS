@@ -236,12 +236,16 @@
             position: relative;
 
             &-filter {
-                &-toggle {
+                &-toggle, &-open {
                     position: absolute;
                     right: 0px;
 
                     color: $gradient-light-green;
                     cursor: pointer;
+                }
+
+                &-toggle {
+                    display: none;
                 }
 
                 &-icon {

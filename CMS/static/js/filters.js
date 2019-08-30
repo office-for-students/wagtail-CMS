@@ -1,8 +1,9 @@
 (function ($) {
 
-    var Filters = function(wrapper, toggle) {
+    var Filters = function(wrapper, toggle, openBtn) {
         this.wrapper = $(wrapper);
         this.toggle = $(toggle);
+        this.openBtn = $(openBtn);
         this.setup();
     }
 
@@ -10,6 +11,7 @@
         setup: function() {
             this.closeBtn = this.wrapper.find('.filters-block__cancel-button');
             this.uniFilter = new UniFilter(this.wrapper.find('#uniFilter'));
+            this.submitBlock = this.wrapper.find('.filters-block__submit-block');
             this.submitBtn = this.wrapper.find('.filters-block__submit-btn');
 
             this.form = this.wrapper.find('form');
@@ -34,8 +36,14 @@
                 that.wrapper.toggle();
             });
 
+            this.openBtn.click(function() {
+                that.wrapper.animate({ "left": 0 }, "slow");
+                that.submitBlock.animate({ "left": 0 }, "slow");
+            });
+
             this.closeBtn.click(function() {
-                that.wrapper.hide();
+                that.wrapper.animate({ "left": '-100%' }, "slow");
+                that.submitBlock.animate({ "left": '-100%' }, "slow");
             });
 
             this.submitBtn.click(function(evt) {
@@ -337,7 +345,9 @@
     function init() {
         var filters = $('.filters-wrapper');
         var toggle = $('.course-finder-results__overview-filter-toggle');
-        new Filters(filters[0], toggle[0]);
+        var openBtn = $('.course-finder-results__overview-filter-open');
+        console.log(openBtn)
+        new Filters(filters[0], toggle[0], openBtn[0]);
     }
 
     $(document).on('page:load', init);
