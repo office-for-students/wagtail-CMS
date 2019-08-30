@@ -317,8 +317,31 @@
             line-height: 19px;
 
             &.disabled {
-
+                background: $white;
+                border: 2px solid $ux-grey-3;
+                color: $ux-grey-3;
             }
+
+            &:hover {
+                background: $white;
+                border: 2px solid $gradient-light-green;
+                color: $gradient-light-green;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .filters-wrapper {
+        position: initial;
+        display: none;
+
+        background-color: $white;
+    }
+
+    .filters-block {
+        &__cancel-button {
+            display: none;
         }
     }
 }

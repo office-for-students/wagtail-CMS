@@ -457,6 +457,16 @@
 
             &__overview {
                 @include desktop-body-font-mixin();
+
+                &-filter {
+                    &-toggle {
+                        display: initial;
+                    }
+
+                    &-open {
+                        display: none;
+                    }
+                }
             }
 
             &__result {

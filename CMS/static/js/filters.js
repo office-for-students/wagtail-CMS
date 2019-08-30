@@ -13,6 +13,7 @@
             this.uniFilter = new UniFilter(this.wrapper.find('#uniFilter'));
             this.submitBlock = this.wrapper.find('.filters-block__submit-block');
             this.submitBtn = this.wrapper.find('.filters-block__submit-btn');
+            this.inputs = this.wrapper.find('input');
 
             this.form = this.wrapper.find('form');
 
@@ -53,6 +54,12 @@
                 that.prepInstitutionQuery();
                 that.form.submit();
             });
+
+            for (var i = 0; i < this.inputs.length; i++) {
+                $(this.inputs[i]).change(function() {
+                    that.submitBtn.removeClass('disabled');
+                })
+            }
         },
 
         prepSubjectQuery: function() {
@@ -346,7 +353,6 @@
         var filters = $('.filters-wrapper');
         var toggle = $('.course-finder-results__overview-filter-toggle');
         var openBtn = $('.course-finder-results__overview-filter-open');
-        console.log(openBtn)
         new Filters(filters[0], toggle[0], openBtn[0]);
     }
 
