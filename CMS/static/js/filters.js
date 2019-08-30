@@ -10,6 +10,20 @@
         setup: function() {
             this.closeBtn = this.wrapper.find('.filters-block__cancel-button');
             this.uniFilter = new UniFilter(this.wrapper.find('#uniFilter'));
+            this.submitBtn = this.wrapper.find('.filters-block__submit-btn');
+
+            this.form = this.wrapper.find('form');
+
+            this.subjectAreaSelector = this.wrapper.find('#subjectArea');
+            this.subjectSelector = this.wrapper.find('#subject');
+            this.subjectCodeSelector = this.wrapper.find('#subjectCode');
+            this.subjectQuery = this.wrapper.find('#subject_query');
+
+            this.postcodeInput = this.wrapper.find('.filters-block__filter-postcode');
+            this.distanceInputs = this.wrapper.find('input[name=distance]');
+            this.postcodeQuery = this.wrapper.find('#postcode_query');
+
+            this.uniQuery = this.wrapper.find('#institution_query');
 
             this.startWatcher();
         },
@@ -22,7 +36,53 @@
 
             this.closeBtn.click(function() {
                 that.wrapper.hide();
-            })
+            });
+
+            this.submitBtn.click(function(evt) {
+                evt.preventDefault();
+                that.prepSubjectQuery();
+                that.prepPostcodeQuery();
+                that.prepInstitutionQuery();
+                that.form.submit();
+            });
+        },
+
+        prepSubjectQuery: function() {
+            var subjectCodes = ""
+            if (this.subjectAreaSelector.val() === "disabled" && this.subjectSelector.val() === "disabled") {
+                subjectCodes = "";
+            } else if (this.subjectAreaSelector.val() != "disabled" && this.subjectSelector.val() === "disabled") {
+                subjectJson = JSON.parse(sessionStorage.getItem("subjectJSON"));
+                for (var i = 0; i < subjectJson.length; i++) {
+                    var item = subjectJson[i];
+                    if (item.level === "3" && item.code.includes(this.subjectAreaSelector.val())) {
+                        subjectCodes += '"' + item.englishname + '",';
+                    }
+                }
+            } else {
+                subjectCodes = this.subjectCodeSelector[0].value;
+            }
+            if (subjectCodes !== 'Show all') {
+                this.subjectQuery.val(subjectCodes);
+            }
+        },
+
+        prepPostcodeQuery: function() {
+            var postcode = this.postcodeInput.val().replace(' ', '');
+            var distance = this.distanceInputs.filter(':checked').val();
+            var queryValue = [postcode,  distance].join(',');
+
+            if (postcode && distance) {
+                this.postcodeQuery.val(queryValue);
+            }
+        },
+
+        prepInstitutionQuery: function() {
+            var selectedUnis = this.uniFilter.getSelectedUnis();
+
+            if (selectedUnis) {
+                this.uniQuery.val(selectedUnis);
+            }
         }
     }
 
@@ -100,6 +160,10 @@
                 var current = parseInt(this.selectedCountSpace[0].innerText);
                 this.selectedCountSpace[0].innerText = current + change;
             }
+        },
+
+        getSelectedUnis: function() {
+            return this.uniList.getSelectedUnis();
         }
     }
 
@@ -172,6 +236,17 @@
                 uni.clear();
             }
             this.selectedSetter(0);
+        },
+
+        getSelectedUnis: function() {
+            var selectedUnis = []
+            for (var i = 0; i < this.unis.length; i++) {
+                var uni = this.unis[i];
+                if (uni.isSelected()) {
+                    selectedUnis.push(uni.uni.name);
+                }
+            }
+            return selectedUnis.join(',');
         }
     }
 
@@ -209,7 +284,7 @@
             inputFieldNode.classList.add('filters-block__filter-uni-item-input');
             inputFieldNode.setAttribute('id', this.uni.order_by_name);
             inputFieldNode.setAttribute('type', 'checkbox');
-            inputFieldNode.setAttribute('name', 'unis');
+//            inputFieldNode.setAttribute('name', 'unis');
             inputFieldNode.setAttribute('value', this.uni.name);
 
             var checkboxNode = document.createElement('span');
@@ -252,6 +327,10 @@
 
         clear: function() {
             this.uniInput[0].checked = false;
+        },
+
+        isSelected: function() {
+            return this.uniInput[0].checked;
         }
     }
 

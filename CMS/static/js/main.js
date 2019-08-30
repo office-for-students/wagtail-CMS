@@ -49,7 +49,6 @@ $(document).ready(function() {
   }
 
   handleSubjectSubmit = (data) => {
-    console.log(10)
     let subject = ""
     let subjectCodes = ""
 

@@ -265,6 +265,10 @@ DICT = {
         'en': 'More pages available after',
         'cy': ''
     },
+    'narrow_location': {
+        'en': 'Narrow location',
+        'cy': ''
+    },
     'near_your_home': {
         'en': 'to near your home',
         'cy': ''
@@ -302,7 +306,7 @@ DICT = {
         'cy': ''
     },
     'number_of_results': {
-        'en': 'There are <strong>%s</strong> course(s) from <strong>%s</strong> provider(s)',
+        'en': '<strong>%s</strong> course(s) from <strong>%s</strong> provider(s)',
         'cy': ''
     },
     'other': {

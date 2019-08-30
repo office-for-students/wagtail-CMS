@@ -4,7 +4,7 @@
     <div class="filters-block">
         <p class="filters-block__cancel-button"><span class="filters-block__cancel-button-icon">X</span> Cancel</p>
 
-        <form method="get" action="/filter-results">
+        <form method="get" action="/course-finder/results/">
             <div class="filters-block__filter">
                 <h2 class="filters-block__filter-heading">
                     {% get_translation key='countries' language=page.get_language %}
@@ -12,7 +12,7 @@
 
                 <div class="filters-block__filter-options">
                     <div class="filters-block__filter-option--two-col">
-                        <input id="countries-england" class="filters-block__filter-checkbox-input" type="checkbox" name="country" value="england" />
+                        <input id="countries-england" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="England" />
 
                         <label class="filters-block__filter-checkbox-label" for="countries-england">
                             {% get_translation key='england' language=page.get_language %}
@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="filters-block__filter-option--two-col">
-                        <input id="countries-ireland" class="filters-block__filter-checkbox-input" type="checkbox" name="country" value="ireland" />
+                        <input id="countries-ireland" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Northern Ireland" />
 
                         <label class="filters-block__filter-checkbox-label" for="countries-ireland">
                             {% get_translation key='northern_ireland' language=page.get_language %}
@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="filters-block__filter-option--two-col">
-                        <input id="countries-scotland" class="filters-block__filter-checkbox-input" type="checkbox" name="country" value="scotland" />
+                        <input id="countries-scotland" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Scotland" />
 
                         <label class="filters-block__filter-checkbox-label" for="countries-scotland">
                             {% get_translation key='scotland' language=page.get_language %}
@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="filters-block__filter-option--two-col">
-                        <input id="countries-wales" class="filters-block__filter-checkbox-input" type="checkbox" name="country" value="wales" />
+                        <input id="countries-wales" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Wales" />
 
                         <label class="filters-block__filter-checkbox-label" for="countries-wales">
                             {% get_translation key='wales' language=page.get_language %}
@@ -52,7 +52,7 @@
 
                 <div class="filters-block__filter-options">
                     <div class="filters-block__filter-option--three-col">
-                        <input id="mode-full-time" class="filters-block__filter-checkbox-input" type="checkbox" name="mode" value="full-time" />
+                        <input id="mode-full-time" class="filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Full-time" />
 
                         <label class="filters-block__filter-checkbox-label" for="mode-full-time">
                             {% get_translation key='full_time' language=page.get_language %}
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="filters-block__filter-option--three-col">
-                        <input id="mode-part-time" class="filters-block__filter-checkbox-input" type="checkbox" name="mode" value="part-time" />
+                        <input id="mode-part-time" class="filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Part-time" />
 
                         <label class="filters-block__filter-checkbox-label" for="mode-part-time">
                             {% get_translation key='part_time' language=page.get_language %}
@@ -68,7 +68,7 @@
                     </div>
 
                     <div class="filters-block__filter-option--three-col">
-                        <input id="mode-distance" class="filters-block__filter-checkbox-input" type="checkbox" name="mode" value="distance" />
+                        <input id="mode-distance" class="filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Distance learning" />
 
                         <label class="filters-block__filter-checkbox-label" for="mode-distance">
                             {% get_translation key='distance_learning' language=page.get_language %}
@@ -180,12 +180,14 @@
 
                 {% include 'partials/subject_selector.html' %}
 
+                <input hidden id="subject_query" name="subject_query" type="text" value="" />
+
                 {{ page.subject_helper_text|richtext }}
             </div>
 
             <div class="filters-block__filter">
                 <h2 class="filters-block__filter-heading">
-                    {% get_translation key='subject' language=page.get_language %}
+                    {% get_translation key='narrow_location' language=page.get_language %}
                 </h2>
 
                 <div class="filters-block__filter-fields">
@@ -194,7 +196,7 @@
                             {% get_translation key='enter_postcode' language=page.get_language %}
                         </label>
 
-                        <input class="filters-block__filter-postcode textbox" type="text" name="postcode" value="">
+                        <input class="filters-block__filter-postcode textbox" type="text" value="">
                     </div>
 
                     <div class="filters-block__filter-field">
@@ -236,95 +238,98 @@
                         </label>
                     </div>
                 </div>
+
+                <input hidden id="postcode_query" name="postcode_query" type="text" value="" />
             </div>
 
-            <div class="filters-block__filter">
-                <h2 class="filters-block__filter-heading">
-                    {% get_translation key='qualification_type' language=page.get_language %}
-                </h2>
+            {# qualification type filter not yet supported on the API #}
+            <!--<div class="filters-block__filter">-->
+                <!--<h2 class="filters-block__filter-heading">-->
+                    <!--{% get_translation key='qualification_type' language=page.get_language %}-->
+                <!--</h2>-->
 
-                <div class="filters-block__filter-options">
-                    <div class="filters-block__filter-option">
-                        <label class="filters-block__filter-qualification checkbox" for="enhanced_degree">
-                            <span class="filters-block__filter-qualification-label">
-                                {% get_translation key='enhanced_degree' language=page.get_language %}
-                            </span>
+                <!--<div class="filters-block__filter-options">-->
+                    <!--<div class="filters-block__filter-option">-->
+                        <!--<label class="filters-block__filter-qualification checkbox" for="enhanced_degree">-->
+                            <!--<span class="filters-block__filter-qualification-label">-->
+                                <!--{% get_translation key='enhanced_degree' language=page.get_language %}-->
+                            <!--</span>-->
 
-                            <input class="course-finder-content__question-input" id="enhanced_degree"
-                                   type="checkbox" name="qualification" value="enhanced_degree">
+                            <!--<input class="course-finder-content__question-input" id="enhanced_degree"-->
+                                   <!--type="checkbox" name="qualification" value="enhanced_degree">-->
 
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
+                            <!--<span class="checkmark"></span>-->
+                        <!--</label>-->
+                    <!--</div>-->
 
-                    <div class="filters-block__filter-option">
-                        <label class="filters-block__filter-qualification checkbox" for="first_degree">
-                            <span class="filters-block__filter-qualification-label">
-                                {% get_translation key='first_degree' language=page.get_language %}
-                            </span>
+                    <!--<div class="filters-block__filter-option">-->
+                        <!--<label class="filters-block__filter-qualification checkbox" for="first_degree">-->
+                            <!--<span class="filters-block__filter-qualification-label">-->
+                                <!--{% get_translation key='first_degree' language=page.get_language %}-->
+                            <!--</span>-->
 
-                            <input class="course-finder-content__question-input" id="first_degree"
-                                   type="checkbox" name="qualification" value="first_degree">
+                            <!--<input class="course-finder-content__question-input" id="first_degree"-->
+                                   <!--type="checkbox" name="qualification" value="first_degree">-->
 
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
+                            <!--<span class="checkmark"></span>-->
+                        <!--</label>-->
+                    <!--</div>-->
 
-                    <div class="filters-block__filter-option">
-                        <label class="filters-block__filter-qualification checkbox" for="foundation_degree">
-                            <span class="filters-block__filter-qualification-label">
-                                {% get_translation key='foundation_degree' language=page.get_language %}
-                            </span>
+                    <!--<div class="filters-block__filter-option">-->
+                        <!--<label class="filters-block__filter-qualification checkbox" for="foundation_degree">-->
+                            <!--<span class="filters-block__filter-qualification-label">-->
+                                <!--{% get_translation key='foundation_degree' language=page.get_language %}-->
+                            <!--</span>-->
 
-                            <input class="course-finder-content__question-input" id="foundation_degree"
-                                   type="checkbox" name="qualification" value="foundation_degree">
+                            <!--<input class="course-finder-content__question-input" id="foundation_degree"-->
+                                   <!--type="checkbox" name="qualification" value="foundation_degree">-->
 
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
+                            <!--<span class="checkmark"></span>-->
+                        <!--</label>-->
+                    <!--</div>-->
 
-                    <div class="filters-block__filter-option">
-                        <label class="filters-block__filter-qualification checkbox" for="hnd">
-                            <span class="filters-block__filter-qualification-label">
-                                {% get_translation key='hnd' language=page.get_language %}
-                            </span>
+                    <!--<div class="filters-block__filter-option">-->
+                        <!--<label class="filters-block__filter-qualification checkbox" for="hnd">-->
+                            <!--<span class="filters-block__filter-qualification-label">-->
+                                <!--{% get_translation key='hnd' language=page.get_language %}-->
+                            <!--</span>-->
 
-                            <input class="course-finder-content__question-input" id="hnd"
-                                   type="checkbox" name="qualification" value="hnd">
+                            <!--<input class="course-finder-content__question-input" id="hnd"-->
+                                   <!--type="checkbox" name="qualification" value="hnd">-->
 
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
+                            <!--<span class="checkmark"></span>-->
+                        <!--</label>-->
+                    <!--</div>-->
 
-                    <div class="filters-block__filter-option">
-                        <label class="filters-block__filter-qualification checkbox" for="hnc">
-                            <span class="filters-block__filter-qualification-label">
-                                {% get_translation key='hnc' language=page.get_language %}
-                            </span>
+                    <!--<div class="filters-block__filter-option">-->
+                        <!--<label class="filters-block__filter-qualification checkbox" for="hnc">-->
+                            <!--<span class="filters-block__filter-qualification-label">-->
+                                <!--{% get_translation key='hnc' language=page.get_language %}-->
+                            <!--</span>-->
 
-                            <input class="course-finder-content__question-input" id="hnc"
-                                   type="checkbox" name="qualification" value="hnc">
+                            <!--<input class="course-finder-content__question-input" id="hnc"-->
+                                   <!--type="checkbox" name="qualification" value="hnc">-->
 
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
+                            <!--<span class="checkmark"></span>-->
+                        <!--</label>-->
+                    <!--</div>-->
 
-                    <div class="filters-block__filter-option">
-                        <label class="filters-block__filter-qualification checkbox" for="other_undergraduate">
-                            <span class="filters-block__filter-qualification-label">
-                                {% get_translation key='other_undergraduate' language=page.get_language %}
-                            </span>
+                    <!--<div class="filters-block__filter-option">-->
+                        <!--<label class="filters-block__filter-qualification checkbox" for="other_undergraduate">-->
+                            <!--<span class="filters-block__filter-qualification-label">-->
+                                <!--{% get_translation key='other_undergraduate' language=page.get_language %}-->
+                            <!--</span>-->
 
-                            <input class="course-finder-content__question-input" id="other_undergraduate"
-                                   type="checkbox" name="qualification" value="other_undergraduate">
+                            <!--<input class="course-finder-content__question-input" id="other_undergraduate"-->
+                                   <!--type="checkbox" name="qualification" value="other_undergraduate">-->
 
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
+                            <!--<span class="checkmark"></span>-->
+                        <!--</label>-->
+                    <!--</div>-->
 
-                    {{ page.qualification_helper_text|richtext }}
-                </div>
-            </div>
+                    <!--{{ page.qualification_helper_text|richtext }}-->
+                <!--</div>-->
+            <!--</div>-->
 
             <div id="uniFilter" class="filters-block__filter">
                 <h2 class="filters-block__filter-heading">
@@ -363,6 +368,8 @@
                 <div class="filters-block__filter-uni-list">
 
                 </div>
+
+                <input hidden id="institution_query" name="institution_query" type="text" value="" />
             </div>
 
             <div class="filters-block__submit-block">

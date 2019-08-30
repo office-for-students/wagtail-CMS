@@ -245,17 +245,17 @@ class CourseSearch(BaseSearch):
 
 class CourseFinderSearch(BaseSearch):
 
-    def __init__(self, subject, institution, mode, countries, postcode, page, count):
+    def __init__(self, subject, institution, countries, postcode, filters, page, count):
         super().__init__(page, count)
         self.subject = subject
         self.institution = institution
-        self.mode = mode
         self.countries = countries
         self.postcode = postcode
+        self.filters = filters
 
     def execute(self):
-        response = request_handler.course_finder_query(self.subject, self.institution, self.mode, self.countries,
-                                                       self.postcode, self.count, self.offset)
+        response = request_handler.course_finder_query(self.subject, self.institution, self.countries,
+                                                       self.postcode, self.filters, self.count, self.offset)
         error = None
 
         if response.ok:
@@ -264,7 +264,7 @@ class CourseFinderSearch(BaseSearch):
             self.total_institutions = data.get('total_results')
             self.results = data.get('items')
         else:
-            error = ApiError(response.status_code, 'searching courses for %s, %s, %s, %s' %
-                             (self.subject, self.institution, self.mode, self.countries))
+            error = ApiError(response.status_code, 'searching courses for %s, %s, %s' %
+                             (self.subject, self.institution, self.countries))
 
         return error
