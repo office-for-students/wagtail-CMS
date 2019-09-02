@@ -5,7 +5,7 @@
         <div class="filters-block">
             <p class="filters-block__cancel-button"><span class="filters-block__cancel-button-icon">X</span> Cancel</p>
 
-            <form method="get" action="/course-finder/results/">
+            <form method="get" action="/course-finder/results/" class="filters-block__form">
                 <div class="filters-block__filter">
                     <h2 class="filters-block__filter-heading">
                         {% get_translation key='countries' language=page.get_language %}
@@ -79,97 +79,17 @@
                 </div>
 
                 <div class="filters-block__filter">
-                    <h2 class="filters-block__filter-heading">
-                        {% get_translation key='work_placement_year' language=page.get_language %}
-                    </h2>
-
-                    <div class="filters-block__filter-options">
-                        <div class="filters-block__filter-option">
-                            <input id="placement-yes" class="filters-block__filter-radio-input" type="radio" name="placement" value="yes" />
-
-                            <label class="filters-block__filter-radio-label" for="placement-yes">
-                                {% get_translation key='with_placement' language=page.get_language %}
-                            </label>
+                    <div class="filters-block__filter-years-group">
+                        <div class="filters-block__filter-year">
+                            {% include 'coursefinder/partials/placement_filters.html' %}
                         </div>
 
-                        <div class="filters-block__filter-option">
-                            <input id="placement-no" class="filters-block__filter-radio-input" type="radio" name="placement" value="no" />
-
-                            <label class="filters-block__filter-radio-label" for="placement-no">
-                                {% get_translation key='without_placement' language=page.get_language %}
-                            </label>
+                        <div class="filters-block__filter-year">
+                            {% include 'coursefinder/partials/foundation_filters.html' %}
                         </div>
 
-                        <div class="filters-block__filter-option">
-                            <input id="placement-either" class="filters-block__filter-radio-input" type="radio" name="placement" value="na" />
-
-                            <label class="filters-block__filter-radio-label" for="placement-either">
-                                {% get_translation key='dont_mind' language=page.get_language %}
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="filters-block__filter">
-                    <h2 class="filters-block__filter-heading">
-                        {% get_translation key='foundation_year' language=page.get_language %}
-                    </h2>
-
-                    <div class="filters-block__filter-options">
-                        <div class="filters-block__filter-option">
-                            <input id="foundation-yes" class="filters-block__filter-radio-input" type="radio" name="foundation" value="yes" />
-
-                            <label class="filters-block__filter-radio-label" for="foundation-yes">
-                                {% get_translation key='with_foundation' language=page.get_language %}
-                            </label>
-                        </div>
-
-                        <div class="filters-block__filter-option">
-                            <input id="foundation-no" class="filters-block__filter-radio-input" type="radio" name="foundation" value="no" />
-
-                            <label class="filters-block__filter-radio-label" for="foundation-no">
-                                {% get_translation key='without_foundation' language=page.get_language %}
-                            </label>
-                        </div>
-
-                        <div class="filters-block__filter-option">
-                            <input id="foundation-either" class="filters-block__filter-radio-input" type="radio" name="foundation" value="na" />
-
-                            <label class="filters-block__filter-radio-label" for="foundation-either">
-                                {% get_translation key='dont_mind' language=page.get_language %}
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="filters-block__filter">
-                    <h2 class="filters-block__filter-heading">
-                        {% get_translation key='study_abroad_year' language=page.get_language %}
-                    </h2>
-
-                    <div class="filters-block__filter-options">
-                        <div class="filters-block__filter-option">
-                            <input id="abroad-yes" class="filters-block__filter-radio-input" type="radio" name="abroad" value="yes" />
-
-                            <label class="filters-block__filter-radio-label" for="abroad-yes">
-                                {% get_translation key='with_abroad' language=page.get_language %}
-                            </label>
-                        </div>
-
-                        <div class="filters-block__filter-option">
-                            <input id="abroad-no" class="filters-block__filter-radio-input" type="radio" name="abroad" value="no" />
-
-                            <label class="filters-block__filter-radio-label" for="abroad-no">
-                                {% get_translation key='without_abroad' language=page.get_language %}
-                            </label>
-                        </div>
-
-                        <div class="filters-block__filter-option">
-                            <input id="abroad-either" class="filters-block__filter-radio-input" type="radio" name="abroad" value="na" />
-
-                            <label class="filters-block__filter-radio-label" for="abroad-either">
-                                {% get_translation key='dont_mind' language=page.get_language %}
-                            </label>
+                        <div class="filters-block__filter-year">
+                            {% include 'coursefinder/partials/abroad_filters.html' %}
                         </div>
                     </div>
                 </div>
@@ -205,38 +125,40 @@
                                 {% get_translation key='search_within' language=page.get_language %}:
                             </p>
 
-                            <label class="filters-block__filter-postcode radio" for="one">
-                                <span class="filters-block__filter-postcode-label">
-                                    10 {% get_translation key='miles' language=page.get_language %}
-                                </span>
+                            <div class="filters-block__filter-field-radios">
+                                <label class="filters-block__filter-postcode radio" for="one">
+                                    <span class="filters-block__filter-postcode-label">
+                                        10 {% get_translation key='miles' language=page.get_language %}
+                                    </span>
 
-                                <input class="course-finder-content__question-input"
-                                        id="one" type="radio" name="distance" value="10">
+                                    <input class="course-finder-content__question-input"
+                                            id="one" type="radio" name="distance" value="10">
 
-                                <span class="radiobox"></span>
-                            </label>
+                                    <span class="radiobox"></span>
+                                </label>
 
-                            <label class="filters-block__filter-postcode radio" for="two">
-                                <span class="filters-block__filter-postcode-label">
-                                    25 {% get_translation key='miles' language=page.get_language %}
-                                </span>
+                                <label class="filters-block__filter-postcode radio" for="two">
+                                    <span class="filters-block__filter-postcode-label">
+                                        25 {% get_translation key='miles' language=page.get_language %}
+                                    </span>
 
-                                <input class="course-finder-content__question-input"
-                                        id="two" type="radio" name="distance" value="25">
+                                    <input class="course-finder-content__question-input"
+                                            id="two" type="radio" name="distance" value="25">
 
-                                <span class="radiobox"></span>
-                            </label>
+                                    <span class="radiobox"></span>
+                                </label>
 
-                            <label class="filters-block__filter-postcode radio" for="three">
-                                <span class="filters-block__filter-postcode-label">
-                                    50 {% get_translation key='miles' language=page.get_language %}
-                                </span>
+                                <label class="filters-block__filter-postcode radio" for="three">
+                                    <span class="filters-block__filter-postcode-label">
+                                        50 {% get_translation key='miles' language=page.get_language %}
+                                    </span>
 
-                                <input class="course-finder-content__question-input"
-                                        id="three" type="radio" name="distance" value="50">
+                                    <input class="course-finder-content__question-input"
+                                            id="three" type="radio" name="distance" value="50">
 
-                                <span class="radiobox"></span>
-                            </label>
+                                    <span class="radiobox"></span>
+                                </label>
+                            </div>
                         </div>
                     </div>
 
