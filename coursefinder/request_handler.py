@@ -20,7 +20,6 @@ def course_finder_query(subject, institution, countries, postcode, filters, limi
     if settings.LOCAL:
         return SearchMocks.get_successful_search_response()
     else:
-        return SearchMocks.get_successful_search_response()
         headers = {
             'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
         }
