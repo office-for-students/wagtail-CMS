@@ -36,6 +36,9 @@
 
             <p class="after-course__figure-salary-range">
                 £{{course_details.salary_stats.lower_quartile}} - £{{course_details.salary_stats.higher_quartile}}
+                {% if course_details.salary_stats.unavailable_reason %}
+                    *
+                {% endif %}
             </p>
 
             <p class="after-course__figure--sector">
@@ -210,7 +213,7 @@
                 <h3 class="chart-label-explanation__heading">
                     {{block.value.six_month_employment_roles_label_explanation_heading}}
 
-                    <span class="chart-label-explanation__close">X</span>
+                    <span class="chart-label-explanation__close"><img src="{% static 'images/close-grey.svg' %}" alt=""></span>
                 </h3>
 
                 <div class="chart-label-explanation__body">

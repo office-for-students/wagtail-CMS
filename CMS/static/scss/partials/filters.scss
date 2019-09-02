@@ -29,7 +29,7 @@
         padding: 50px 33px;
 
         &:nth-child(even) {
-            background-color: $ux-interrupt;
+            background-color: $divider-grey;
         }
 
         &-years-group {
@@ -40,7 +40,7 @@
             padding: 50px 33px;
 
             &:nth-child(even) {
-                background-color: $ux-interrupt;
+                background-color: $divider-grey;
             }
 
             &:first-child {
