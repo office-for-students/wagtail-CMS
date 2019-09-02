@@ -92,9 +92,9 @@
         <div class="entry-information__tariff-charts">
             {% for tariff in course_details.tariff_stats.tariffs %}
                 <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}">
-                    <label class="entry-information__chart-label"><span>{{tariff.label}}</span></label>
-
                     {% include 'courses/partials/bar_chart.html' %}
+
+                    <label class="entry-information__chart-label"><span>{{tariff.label}}</span></label>
                 </div>
             {% endfor %}
 

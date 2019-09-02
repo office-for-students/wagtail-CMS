@@ -1,3 +1,43 @@
+@import 'https://code.highcharts.com/css/highcharts.css';
+
+@imprt '../../CMS/static/scss/variables';
+
+
 .highcharts-series {
     opacity: 1 !important;
 }
+
+.bar-chart {
+    .highcharts-title {
+        fill: $ux-grey-3;
+    }
+
+    .highcharts-point {
+        stroke: $gradient-dark-green;
+        stroke-width: 2px;
+
+        &.highcharts-color-1 {
+            fill: url(#gradient-bar);
+        }
+
+        &.highcharts-color-0 {
+            fill: $white;
+        }
+    }
+
+    .highcharts-xaxis .highcharts-axis-line {
+        stroke: $gradient-light-green;
+    }
+
+    .highcharts-grid-line {
+        stroke: none;
+    }
+
+    #gradient-bar stop[offset="0"] {
+        stop-color: $gradient-dark-green;
+    }
+    #gradient-bar stop[offset="1"] {
+        stop-color: $gradient-light-green;
+    }
+}
+
