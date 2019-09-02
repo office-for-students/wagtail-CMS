@@ -16,7 +16,7 @@ def query_course_and_institution(course, institution, limit, offset):
                             headers=headers)
 
 
-def course_finder_query(subject, institution, mode, countries, postcode, limit, offset):
+def course_finder_query(subject, institution, countries, postcode, filters, limit, offset):
     if settings.LOCAL:
         return SearchMocks.get_successful_search_response()
     else:
@@ -28,10 +28,10 @@ def course_finder_query(subject, institution, mode, countries, postcode, limit, 
             url = f"{url}&qc={subject}"
         if institution and institution != '':
             url = f"{url}&institutions={institution}"
-        if mode and 'Full-time,Part-time' not in mode and mode != '':
-            url = f"{url}&filters={mode.lower().replace('-', '_').replace(' ', '_')}"
         if countries and countries != '':
             url = f"{url}&countries={countries.lower().replace(' ', '_')}"
         if postcode and postcode != '':
             url = f"{url}&postcode={postcode}"
+        if filters and filters != '':
+            url = f"{url}&filters={filters}"
         return requests.get(url=url, headers=headers)

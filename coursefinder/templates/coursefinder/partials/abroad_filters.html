@@ -1,0 +1,31 @@
+{% load discover_uni_tags %}
+
+<h2 class="filters-block__filter-heading">
+    {% get_translation key='study_abroad_year' language=page.get_language %}
+</h2>
+
+<div class="filters-block__filter-options">
+    <div class="filters-block__filter-option">
+        <input id="abroad-yes" class="filters-block__filter-radio-input" type="radio" name="abroad" value="yes" />
+
+        <label class="filters-block__filter-radio-label" for="abroad-yes">
+            {% get_translation key='with_abroad' language=page.get_language %}
+        </label>
+    </div>
+
+    <div class="filters-block__filter-option">
+        <input id="abroad-no" class="filters-block__filter-radio-input" type="radio" name="abroad" value="no" />
+
+        <label class="filters-block__filter-radio-label" for="abroad-no">
+            {% get_translation key='without_abroad' language=page.get_language %}
+        </label>
+    </div>
+
+    <div class="filters-block__filter-option">
+        <input id="abroad-either" class="filters-block__filter-radio-input" type="radio" name="abroad" value="na" />
+
+        <label class="filters-block__filter-radio-label" for="abroad-either">
+            {% get_translation key='dont_mind' language=page.get_language %}
+        </label>
+    </div>
+</div>

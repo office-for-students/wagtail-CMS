@@ -23,6 +23,10 @@ DICT = {
         'en': 'Address',
         'cy': ''
     },
+    'apply_filters': {
+        'en': 'Apply filters',
+        'cy': ''
+    },
     'assessment_method': {
         'en': 'How the course is assessed',
         'cy': ''
@@ -47,6 +51,10 @@ DICT = {
         'en': 'Chart labels explained',
         'cy': ''
     },
+    'clear_all': {
+        'en': 'Clear all',
+        'cy': ''
+    },
     'close': {
         'en': 'Close',
         'cy': ''
@@ -65,6 +73,10 @@ DICT = {
     },
     'costs_and_support': {
         'en': 'Costs and support',
+        'cy': ''
+    },
+    'countries': {
+        'en': 'Countries',
         'cy': ''
     },
     'course_details': {
@@ -125,6 +137,10 @@ DICT = {
         'en': 'Doing further study',
         'cy': ''
     },
+    'dont_mind': {
+        'en': "I don't mind",
+        'cy': ''
+    },
     'dont_narrow': {
         'en': "don't narrow search",
         'cy': ''
@@ -137,8 +153,16 @@ DICT = {
         'en': 'England',
         'cy': ''
     },
+    'enhanced_degree': {
+        'en': 'Enhanced first degree (e.g. MEng)',
+        'cy': ''
+    },
     'enter_3_characters': {
         'en': 'Please enter at least 3 characters to search',
+        'cy': ''
+    },
+    'enter_postcode': {
+        'en': 'Enter postcode',
         'cy': ''
     },
     'feedback_error': {
@@ -161,8 +185,16 @@ DICT = {
         'en': 'Find out more',
         'cy': ''
     },
+    'first_degree': {
+        'en': 'First degree (e.g. BA, BSc)',
+        'cy': ''
+    },
     'foundation_course': {
         'en': 'Foundation course',
+        'cy': ''
+    },
+    'foundation_degree': {
+        'en': 'Foundation degree (e.g. FD, FDEd)',
         'cy': ''
     },
     'foundation_year': {
@@ -170,7 +202,15 @@ DICT = {
         'cy': ''
     },
     'full_time': {
-        'en': 'Full-time',
+        'en': 'Full time',
+        'cy': ''
+    },
+    'hnc': {
+        'en': 'Higher National Certificate (HNC)',
+        'cy': ''
+    },
+    'hnd': {
+        'en': 'Higher National Diploma (HND)',
         'cy': ''
     },
     'how_improve': {
@@ -225,6 +265,10 @@ DICT = {
         'en': 'More pages available after',
         'cy': ''
     },
+    'narrow_location': {
+        'en': 'Narrow location',
+        'cy': ''
+    },
     'near_your_home': {
         'en': 'to near your home',
         'cy': ''
@@ -262,7 +306,7 @@ DICT = {
         'cy': ''
     },
     'number_of_results': {
-        'en': 'There are <strong>%s</strong> course(s) from <strong>%s</strong> provider(s)',
+        'en': '<strong>%s</strong> course(s) from <strong>%s</strong> provider(s)',
         'cy': ''
     },
     'other': {
@@ -273,8 +317,12 @@ DICT = {
         'en': 'Different higher education qualification',
         'cy': ''
     },
+    'other_undergraduate': {
+        'en': 'Other undergraduate (e.g. CertHE, DipHE)',
+        'cy': ''
+    },
     'part_time': {
-        'en': 'Part-time',
+        'en': 'Part time',
         'cy': ''
     },
     'placement_year': {
@@ -287,6 +335,10 @@ DICT = {
     },
     'professional_or_managerial': {
         'en': 'In a professional or managerial job',
+        'cy': ''
+    },
+    'qualification_type': {
+        'en': 'Qualification type',
         'cy': ''
     },
     'results': {
@@ -315,6 +367,14 @@ DICT = {
     },
     'see_courses': {
         'en': 'See courses',
+        'cy': ''
+    },
+    'select_all': {
+        'en': 'Select all',
+        'cy': ''
+    },
+    'selected_of': {
+        'en': 'selected of',
         'cy': ''
     },
     'send_message': {
@@ -361,6 +421,10 @@ DICT = {
         'en': 'Student Unions',
         'cy': ''
     },
+    'study_abroad_year': {
+        'en': 'Study abroad year',
+        'cy': ''
+    },
     'study_and_working': {
         'en': 'Studying and working',
         'cy': ''
@@ -389,6 +453,10 @@ DICT = {
         'en': 'University or college',
         'cy': ''
     },
+    'uni_college': {
+        'en': 'Universities / colleges',
+        'cy': ''
+    },
     'unknown': {
         'en': 'Unknown',
         'cy': ''
@@ -403,6 +471,30 @@ DICT = {
     },
     'website': {
         'en': 'Website',
+        'cy': ''
+    },
+    'with_placement': {
+        'en': 'With placement year',
+        'cy': ''
+    },
+    'without_placement': {
+        'en': 'Without placement year',
+        'cy': ''
+    },
+    'with_foundation': {
+        'en': 'With foundation year',
+        'cy': ''
+    },
+    'without_foundation': {
+        'en': 'Without foundation year',
+        'cy': ''
+    },
+    'with_abroad': {
+        'en': 'With year abroad',
+        'cy': ''
+    },
+    'without_abroad': {
+        'en': 'Without year abroad',
         'cy': ''
     },
     'work_placement_year': {

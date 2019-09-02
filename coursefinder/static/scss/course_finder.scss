@@ -108,10 +108,6 @@
 
                 width: 100%;
                 margin-bottom: 20px;
-
-                &:nth-of-type(3) {
-                    display: none;
-                }
             }
 
             &-previous-selections {
@@ -237,6 +233,25 @@
             @include mobile-body-font-mixin();
 
             margin: 0px;
+            position: relative;
+
+            &-filter {
+                &-toggle, &-open {
+                    position: absolute;
+                    right: 0px;
+
+                    color: $gradient-light-green;
+                    cursor: pointer;
+                }
+
+                &-toggle {
+                    display: none;
+                }
+
+                &-icon {
+                    height: 15px;
+                }
+            }
         }
 
         &__result {
@@ -442,6 +457,16 @@
 
             &__overview {
                 @include desktop-body-font-mixin();
+
+                &-filter {
+                    &-toggle {
+                        display: initial;
+                    }
+
+                    &-open {
+                        display: none;
+                    }
+                }
             }
 
             &__result {
