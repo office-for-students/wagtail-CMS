@@ -299,7 +299,6 @@
             inputFieldNode.classList.add('filters-block__filter-uni-item-input');
             inputFieldNode.setAttribute('id', this.uni.order_by_name);
             inputFieldNode.setAttribute('type', 'checkbox');
-//            inputFieldNode.setAttribute('name', 'unis');
             inputFieldNode.setAttribute('value', this.uni.name);
 
             var checkboxNode = document.createElement('span');
