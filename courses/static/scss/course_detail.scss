@@ -159,7 +159,7 @@
                 @include mobile-body-font-mixin();
 
                 margin: 0px;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
 
                 color: $ux-grey-2;
             }
@@ -243,20 +243,26 @@
         margin-top: 10px;
         width: 100%;
 
-        background-color: $ux-grey-2;
+
+        background-color: $white;
+        border: 1px solid #D7D7D7;
+        border-radius: 10px;
+        box-shadow: 6px 5px 30px rgba(0, 0, 0, 0.28);
 
         .chart-label-explanation__heading {
             @include xs-heading--bold-mixin();
 
             position: relative;
-            padding: 25px 30px 20px;
+            padding: 38px 30px 20px;
             margin: 0px;
 
-            color: $white;
+            color: $gradient-light-green;
 
             .chart-label-explanation__close {
                 position: absolute;
-                right: 30px;
+                right: 12px;
+                top: 12px;
+                width: 14px;
 
                 cursor: pointer;
             }
@@ -270,14 +276,14 @@
 
                 margin-top: 0px;
 
-                color: $white;
+                color: $ux-grey-3;
 
                 b {
                     @include mobile-body-font--bold-mixin();
                     margin: 0px;
                     margin-bottom: 5px;
 
-                    color: $white;
+                    color: $ux-grey-3;
                 }
             }
 
@@ -385,9 +391,6 @@
                     .course-detail__uni-site-links-heading {
                         @include xs-heading-mixin();
 
-                        margin: 0px;
-                        margin-bottom: 20px;
-
                         color: $ux-grey-2;
                     }
 
@@ -462,20 +465,29 @@
         }
 
         .chart-label-explanation {
+            width: 50%;
             left: initial;
 
-            .chart-label-explanation__body {
-                width: 66%;
+            .chart-label-explanation__heading {
+                @include s-heading--bold-mixin();
 
+                color: $gradient-light-green;
+
+                .chart-label-explanation__close {
+                    width: 16px;
+                }
+            }
+
+            .chart-label-explanation__body {
                 p, li, h4 {
                     @include desktop-body-font-mixin();
 
-                    color: $white;
+                    color: $ux-grey-3;
 
                     b {
                         @include desktop-body-font--bold-mixin();
 
-                        color: $white;
+                        color: $ux-grey-3;
                     }
                 }
             }
