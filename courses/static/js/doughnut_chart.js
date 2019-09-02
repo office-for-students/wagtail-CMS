@@ -62,9 +62,9 @@ $(function () {
                 series: [
                     {
                         name: '',
-                        borderColor: '#DFDFDF',
+                        borderColor: '#EDEDED',
                         data: [{
-                            color: '#DFDFDF',
+                            color: '#EDEDED',
                             radius: '100%',
                             innerRadius: '100%',
                             y: 100
