@@ -199,8 +199,13 @@ DiscoverUniWidget.prototype = {
     },
 
     generateLink: function() {
-        coursePageBase = '{{domain_name}}/course-details/{{uni_id}}/{{course_id}}/{{mode}}/';
-        coursePage = coursePageBase.replace('{{uni_id}}', this.institution);
+        var base_domain = '{{domain_name}}';
+        if (this.languageKey === 'welsh') {
+            base_domain +=  '/cy';
+        }
+        coursePageBase = '{{base_domain}}/course-details/{{uni_id}}/{{course_id}}/{{mode}}/';
+        coursePage = coursePageBase.replace('{{base_domain}}', base_domain);
+        coursePage = coursePage.replace('{{uni_id}}', this.institution);
         coursePage = coursePage.replace('{{course_id}}', this.course);
         coursePage = coursePage.replace('{{mode}}', this.kismode);
         return coursePage;
