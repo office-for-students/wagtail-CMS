@@ -1,24 +1,22 @@
 {% load discover_uni_tags %}
 
-<div class="discover-uni-container">
-    <div class="accreditation__block">
-        <h3 class="accreditation__heading">
-            {{ block.value.section_heading }}
-        </h3>
+<div class="accreditation__block">
+    <h3 class="accreditation__heading">
+        {{ block.value.section_heading }}
+    </h3>
 
-        {% for accreditation in course_details.accreditations %}
-            <p class="accreditation__body">
-                {{accreditation.display_text}}
-                <a href="{{accreditation.accreditor_url}}">{% get_translation key='find_out_more' language=page.get_language %}</a>
+    {% for accreditation in course_details.accreditations %}
+        <p class="accreditation__body">
+            {{accreditation.display_text}}
+            <a href="{{accreditation.accreditor_url}}">{% get_translation key='find_out_more' language=page.get_language %}</a>
+        </p>
+
+        {% if accreditation.show_dependency %}
+            <p class="accreditation__explanation">
+                {{accreditation.dependent_on_label}}
+
+                <a href="{{accreditation.language_url}}">{% get_translation key='find_out_more' language=page.get_language %}</a>
             </p>
-
-            {% if accreditation.show_dependency %}
-                <p class="accreditation__explanation">
-                    {{accreditation.dependent_on_label}}
-
-                    <a href="{{accreditation.language_url}}">{% get_translation key='find_out_more' language=page.get_language %}</a>
-                </p>
-            {% endif %}
-        {% endfor %}
-    </div>
+        {% endif %}
+    {% endfor %}
 </div>
