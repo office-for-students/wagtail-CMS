@@ -212,7 +212,9 @@ class Course:
                 self.leo_stats = []
                 for data_set in stats.get('leo'):
                     self.leo_stats.append(LEOStatistics(data_set, self.display_language))
-                self.employment_stats = EmploymentStatistics(stats.get('employment')[0])
+                self.employment_stats = []
+                for data_set in stats.get('employment'):
+                    self.employment_stats.append(EmploymentStatistics(data_set, self.display_language))
                 self.job_type_stats = JobTypeStatistics(stats.get('job_type')[0])
 
             self.accreditations = []
@@ -296,8 +298,8 @@ class Course:
     @property
     def show_after_course_stats(self):
         show_salary_stats = self.salary_stats and self.salary_stats[0].display_stats
-        return self.employment_stats.display_stats or self.job_type_stats.display_stats or \
-            show_salary_stats or self.show_leo
+        show_employment_stats = self.employment_stats and self.employment_stats[0].display_stats
+        return show_employment_stats or self.job_type_stats.display_stats or show_salary_stats or self.show_leo
 
     @property
     def show_salary_lead(self):
@@ -311,6 +313,10 @@ class Course:
     @property
     def has_multiple_leo_stats(self):
         return len(self.leo_stats) > 1
+
+    @property
+    def has_multiple_employment_stats(self):
+        return len(self.employment_stats) > 1
 
     @property
     def show_leo(self):
@@ -551,7 +557,8 @@ class ContinuationStatistics:
 
 class EmploymentStatistics:
 
-    def __init__(self, data_obj):
+    def __init__(self, data_obj, language):
+        self.display_language = language
         self.display_stats = False
         self.aggregation_level = 0
         self.unemployed = 0
@@ -578,6 +585,13 @@ class EmploymentStatistics:
             self.not_available_for_work_or_study = fallback_to(data_obj.get('not_available_for_work_or_study'), 0)
             self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
             self.response_rate = str(fallback_to(data_obj.get('response_rate'), 0)) + '%'
+
+            subject_data = data_obj.get('subject')
+            if subject_data:
+                self.subject_code = subject_data.get('code')
+                self.subject_english = subject_data.get('english_label')
+                self.subject_welsh = subject_data.get('welsh_label')
+
             unavailable_data = data_obj.get('unavailable')
             if unavailable_data:
                 self.unavailable_code = unavailable_data.get('code')
@@ -586,6 +600,11 @@ class EmploymentStatistics:
     @property
     def work_and_or_study(self):
         return self.in_work_or_study
+
+    def display_subject_name(self):
+        if self.display_language == enums.languages.ENGLISH:
+            return self.subject_english if self.subject_english else self.subject_welsh
+        return self.subject_welsh if self.subject_welsh else self.subject_english
 
 
 class JobTypeStatistics:
