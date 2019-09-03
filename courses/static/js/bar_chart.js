@@ -20,23 +20,6 @@ $(function () {
                     spacing: [0,70,0,1],
                     styledMode: true
                 },
-                defs: {
-                    gradientBar: {
-                        tagName: 'linearGradient',
-                        id: 'gradient-bar',
-                        x1: 0,
-                        y1: 0,
-                        x2: 0,
-                        y2: 1,
-                        children: [{
-                            tagName: 'stop',
-                            offset: 0
-                        }, {
-                            tagName: 'stop',
-                            offset: 1
-                        }]
-                    }
-                },
                 title: {
                     text: this.value + '%',
                     verticalAlign: 'middle',

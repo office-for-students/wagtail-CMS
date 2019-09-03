@@ -18,7 +18,8 @@ $(function () {
                 chart: {
                     type: 'solidgauge',
                     height: '100%',
-                    margin: [0, 0, 0, 0]
+                    margin: [0, 0, 0, 0],
+                    styledMode: true
                 },
 
                 title: {
