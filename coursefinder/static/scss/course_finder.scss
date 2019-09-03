@@ -50,6 +50,16 @@
                 background-position: 56% 50%;
             }
         }
+
+        &__validation-error {
+            @include mobile-body-font-mixin();
+
+            display: none;
+            padding: 20px 15px 15px;
+
+            border: 5px solid $error-red;
+            color: $error-red;
+        }
     }
 
     &-content {

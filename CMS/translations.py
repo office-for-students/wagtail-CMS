@@ -377,6 +377,10 @@ DICT = {
         'en': 'Select all',
         'cy': ''
     },
+    'select_one': {
+        'en': 'Select an option',
+        'cy': ''
+    },
     'selected_of': {
         'en': 'selected of',
         'cy': ''
