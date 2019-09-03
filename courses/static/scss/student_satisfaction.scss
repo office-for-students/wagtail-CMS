@@ -1,6 +1,20 @@
 @import '../../../CMS/static/scss/fonts';
 @import '../../../CMS/static/scss/variables';
 
+
+.satisfaction_subject_name {
+    @include m-heading--bold-mixin();
+
+    margin-top: 70px;
+    margin-bottom: 0px;
+
+    color: $ux-grey-3;
+
+    &+ .student-satisfaction__overview {
+        margin-top: 30px;
+    }
+}
+
 .student-satisfaction__overview {
     @include desktop-body-font-mixin();
 

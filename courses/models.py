@@ -194,9 +194,12 @@ class Course:
 
             stats = course_details.get('statistics')
             if stats:
-                self.satisfaction_stats = SatisfactionStatistics(stats.get('nss')[0])
-                if stats.get('nhs_nss')[0]:
-                    self.nhs_satisfaction_stats = SatisfactionStatistics(stats.get('nhs_nss')[0])
+                self.satisfaction_stats = []
+                for satisfaction_stats in stats.get('nss'):
+                    self.satisfaction_stats.append(SatisfactionStatistics(satisfaction_stats, self.display_language))
+                self.nhs_satisfaction_stats = []
+                for data_set in stats.get('nhs_nss'):
+                    self.nhs_satisfaction_stats.append(SatisfactionStatistics(data_set, self.display_language))
                 self.entry_stats = []
                 for data_set in stats.get('entry'):
                     self.entry_stats.append(EntryStatistics(data_set, self.display_language))
@@ -226,6 +229,7 @@ class Course:
                     self.accreditations.append(CourseAccreditation(accreditation, self.display_language))
 
             self.course_links = self.set_course_links(course_details.get('links'), self.display_language)
+            self.overall_satisfaction = self.sync_satisfaction_stats()
 
     def set_course_links(self, links, language):
         link_objs = {'course_details': [], 'costs_support': []}
@@ -272,7 +276,14 @@ class Course:
 
     @property
     def show_satisfaction_stats(self):
-        return self.satisfaction_stats.show_satisfaction_stats() or self.nhs_satisfaction_stats.show_nhs_stats()
+        show_satisfaction_stats = self.satisfaction_stats and self.satisfaction_stats[0].show_satisfaction_stats()
+        show_nhs_stats = self.nhs_satisfaction_stats and self.nhs_satisfaction_stats[0].show_nhs_stats()
+        return show_satisfaction_stats or show_nhs_stats
+
+    @property
+    def has_multiple_satisfaction_stats(self):
+        print(len(self.overall_satisfaction) > 1)
+        return len(self.overall_satisfaction) > 1
 
     @property
     def show_entry_information_stats(self):
@@ -363,6 +374,16 @@ class Course:
     @staticmethod
     def get_mode_code(mode):
         return Course.MODES.get(mode)
+
+    def sync_satisfaction_stats(self):
+        overall_satisfaction = []
+        for satisfaction_stats in self.satisfaction_stats:
+            satisfaction_pair = {'satisfaction_stats': satisfaction_stats, 'nhs_satisfaction_stats': None}
+            for nhs_stats in self.nhs_satisfaction_stats:
+                if nhs_stats.subject_code == satisfaction_stats.subject_code:
+                    satisfaction_pair['nhs_satisfaction_stats'] = nhs_stats
+            overall_satisfaction.append(satisfaction_pair)
+        return overall_satisfaction
 
 
 class CourseCountry:
@@ -755,7 +776,8 @@ class LEOStatistics:
 
 class SatisfactionStatistics:
 
-    def __init__(self, data_obj):
+    def __init__(self, data_obj, language):
+        self.display_language = language
         self.aggregation_level = data_obj.get('aggregation_level')
         self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
         self.response_rate = str(fallback_to(data_obj.get('response_rate'), 0)) + '%'
@@ -786,6 +808,13 @@ class SatisfactionStatistics:
         self.question_25 = SatisfactionQuestion(data_obj.get('question_25'))
         self.question_26 = SatisfactionQuestion(data_obj.get('question_26'))
         self.question_27 = SatisfactionQuestion(data_obj.get('question_27'))
+
+        subject_data = data_obj.get('subject')
+        if subject_data:
+            self.subject_code = subject_data.get('code')
+            self.subject_english = subject_data.get('english_label')
+            self.subject_welsh = subject_data.get('welsh_label')
+
         unavailable_data = data_obj.get('unavailable')
         if unavailable_data:
             self.unavailable_code = unavailable_data.get('code')
@@ -831,6 +860,11 @@ class SatisfactionStatistics:
         return self.question_1.show_data_point or self.question_2.show_data_point or \
                self.question_3.show_data_point or self.question_4.show_data_point or \
                self.question_5.show_data_point or self.question_6.show_data_point
+
+    def display_subject_name(self):
+        if self.display_language == enums.languages.ENGLISH:
+            return self.subject_english if self.subject_english else self.subject_welsh
+        return self.subject_welsh if self.subject_welsh else self.subject_english
 
 
 class SatisfactionQuestion:
