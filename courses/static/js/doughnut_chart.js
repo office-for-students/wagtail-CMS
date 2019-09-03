@@ -18,7 +18,8 @@ $(function () {
                 chart: {
                     type: 'solidgauge',
                     height: '100%',
-                    margin: [0, 0, 0, 0]
+                    margin: [0, 0, 0, 0],
+                    styledMode: true
                 },
 
                 title: {
@@ -62,9 +63,9 @@ $(function () {
                 series: [
                     {
                         name: '',
-                        borderColor: '#DFDFDF',
+                        borderColor: '#EDEDED',
                         data: [{
-                            color: '#DFDFDF',
+                            color: '#EDEDED',
                             radius: '100%',
                             innerRadius: '100%',
                             y: 100

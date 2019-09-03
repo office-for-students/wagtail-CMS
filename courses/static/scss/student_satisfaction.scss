@@ -8,12 +8,13 @@
     margin-top: 30px;
     text-align: center;
 
-    background-color: $background-grey;
+    border: 1px solid $ux-grey-3;
+    border-radius: 10px;
 
     .student-satisfaction__overview-lead {
         @include l-heading-mixin();
 
-        color: $slate;
+        color: $gradient-light-green;
         line-height: 59px;
     }
 
@@ -46,26 +47,15 @@
         margin-bottom: 23px;
 
         .student-satisfaction__data-group-heading {
-            @include mobile-body-font-mixin();
+            @include xs-heading-mixin();
 
-            display: flex;
-            align-items: center;
             margin-top: 0px;
             margin-bottom: 26px;
+            padding: 30px 0px;
+            text-align: center;
 
-            background-color: $ux-grey-2;
-            border-radius: 2px;
-            color: $white;
-
-            .student-satisfaction__data-group-heading-icon {
-                padding: 15px 15px 10px 13px;
-
-                border-right: 2px solid $white;
-            }
-
-            .student-satisfaction__data-group-heading-title {
-                padding-left: 23px;
-            }
+            background-color: $divider-grey;
+            color: $ux-grey-3;
         }
 
         .student-satisfaction__charts {
@@ -111,14 +101,12 @@
         margin-top: 70px;
         text-align: center;
 
-        background-color: $background-grey;
-
         .student-satisfaction__overview-lead {
             @include xl-heading-mixin();
 
             margin-bottom: 16px;
 
-            color: $slate;
+            color: $gradient-light-green;
             line-height: 59px;
         }
 
@@ -157,26 +145,13 @@
             margin-bottom: 59px;
 
             .student-satisfaction__data-group-heading {
-                @include desktop-body-font-mixin();
+                @include s-heading-mixin();
 
-                display: flex;
-                align-items: center;
                 margin-top: 0px;
                 margin-bottom: 36px;
 
-                background-color: $ux-grey-2;
-                border-radius: 2px;
-                color: $white;
-
-                .student-satisfaction__data-group-heading-icon {
-                    padding: 18px 19px 20px;
-
-                    border-right: 2px solid $white;
-                }
-
-                .student-satisfaction__data-group-heading-title {
-                    padding-left: 23px;
-                }
+                background-color: $divider-grey;
+                color: $ux-grey-3;
             }
 
             .student-satisfaction__charts {
