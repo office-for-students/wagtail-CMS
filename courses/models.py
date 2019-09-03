@@ -206,8 +206,10 @@ class Course:
                 self.continuation_stats = []
                 for data_set in stats.get('continuation'):
                     self.continuation_stats.append(ContinuationStatistics(data_set, self.display_language))
+                self.salary_stats = []
+                for data_set in stats.get('salary'):
+                    self.salary_stats.append(SalaryStatistics(data_set, self.display_language, title))
                 self.employment_stats = EmploymentStatistics(stats.get('employment')[0])
-                self.salary_stats = SalaryStatistics(stats.get('salary')[0], self.display_language, title)
                 self.leo_stats = LEOStatistics(stats.get('leo')[0], self.display_language)
                 self.job_type_stats = JobTypeStatistics(stats.get('job_type')[0])
 
@@ -291,8 +293,18 @@ class Course:
 
     @property
     def show_after_course_stats(self):
-        return self.employment_stats.display_stats or self.job_type_stats.display_stats or\
-               self.salary_stats.display_stats or self.show_leo
+        show_salary_stats = self.salary_stats and self.salary_stats[0].display_stats
+        return self.employment_stats.display_stats or self.job_type_stats.display_stats or \
+            show_salary_stats or self.show_leo
+
+    @property
+    def show_salary_lead(self):
+        show_salary_stats = self.salary_stats and self.salary_stats[0].display_stats
+        return show_salary_stats or self.show_leo
+
+    @property
+    def has_multiple_salary_stats(self):
+        return len(self.salary_stats) > 1
 
     @property
     def show_leo(self):

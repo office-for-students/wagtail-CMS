@@ -3,7 +3,7 @@
 {% load discover_uni_tags %}
 
 
-{% if course_details.show_leo or course_details.salary_stats.display_stats %}
+{% if course_details.show_salary_lead %}
     <div class="after-course__lead">
         <h2 class="after-course__lead-title">
             {{block.value.section_heading}}
@@ -13,63 +13,66 @@
     </div>
 {% endif %}
 
-{% if course_details.salary_stats.display_stats %}
-    <div class="after-course__block">
-        <div class="after-course__data-point">
-            <h2 class="after-course__stats-heading">
-                {{block.value.six_month_earnings_heading}}
-            </h2>
+{% for salary_stats in  course_details.salary_stats %}
+    {% if salary_stats.display_stats %}
+        <div class="after-course__block">
+            <div class="after-course__data-point">
+                <h2 class="after-course__stats-heading">
+                    {{block.value.six_month_earnings_heading}}{% if course_details.has_multiple_salary_stats %}:
+                    {{salary_stats.display_subject_label}}{% endif %}
+                </h2>
 
-            <p class="after-course__figure">
-                £{{ course_details.salary_stats.median }}
-            </p>
+                <p class="after-course__figure">
+                    £{{ salary_stats.median }}
+                </p>
 
-            <div class="after-course__figure-explanation">
-                {% create_list course_details.salary_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
-                {% insert_values_to_rich_text content=block.value.six_month_earnings_explanation substitutions=substitutions as subbed_text %}
-                {{ subbed_text | richtext }}
+                <div class="after-course__figure-explanation">
+                    {% create_list salary_stats.display_subject_label institution.pub_ukprn_name as substitutions %}
+                    {% insert_values_to_rich_text content=block.value.six_month_earnings_explanation substitutions=substitutions as subbed_text %}
+                    {{ subbed_text | richtext }}
+                </div>
+
+                <p>
+                    {{block.value.six_month_earnings_salary_range_heading}}
+                </p>
+
+                <p class="after-course__figure-salary-range">
+                    £{{salary_stats.lower_quartile}} - £{{salary_stats.higher_quartile}}
+                    {% if salary_stats.unavailable_reason %}
+                        *
+                    {% endif %}
+                </p>
+
+                <p class="after-course__figure--sector">
+                    £{{ salary_stats.sector_median }}
+                </p>
+
+                <div class="after-course__figure-explanation">
+                    {% get_translation key='across_uk' language=page.get_language as location %}
+                    {% create_list salary_stats.display_subject_label location as substitutions %}
+                    {% insert_values_to_rich_text content=block.value.six_month_earnings_explanation substitutions=substitutions as subbed_text %}
+                    {{ subbed_text | richtext }}
+                </div>
+
+                <p>
+                    {{block.value.six_month_earnings_salary_range_heading}}
+                </p>
+
+                <p class="after-course__figure-salary-range">
+                    £{{salary_stats.sector_lower_quartile}} - £{{salary_stats.sector_higher_quartile}}
+                </p>
             </div>
 
-            <p>
-                {{block.value.six_month_earnings_salary_range_heading}}
-            </p>
-
-            <p class="after-course__figure-salary-range">
-                £{{course_details.salary_stats.lower_quartile}} - £{{course_details.salary_stats.higher_quartile}}
-                {% if course_details.salary_stats.unavailable_reason %}
-                    *
-                {% endif %}
-            </p>
-
-            <p class="after-course__figure--sector">
-                £{{ course_details.salary_stats.sector_median }}
-            </p>
-
-            <div class="after-course__figure-explanation">
-                {% get_translation key='across_uk' language=page.get_language as location %}
-                {% create_list course_details.salary_stats.display_subject_label location as substitutions %}
-                {% insert_values_to_rich_text content=block.value.six_month_earnings_explanation substitutions=substitutions as subbed_text %}
+            <div class="explanation-text">
+                {% create_list salary_stats.number_of_students salary_stats.response_rate as substitutions %}
+                {% insert_values_to_rich_text content=block.value.six_month_earnings_data_source substitutions=substitutions as subbed_text %}
                 {{ subbed_text | richtext }}
             </div>
-
-            <p>
-                {{block.value.six_month_earnings_salary_range_heading}}
-            </p>
-
-            <p class="after-course__figure-salary-range">
-                £{{course_details.salary_stats.sector_lower_quartile}} - £{{course_details.salary_stats.sector_higher_quartile}}
-            </p>
         </div>
 
-        <div class="explanation-text">
-            {% create_list course_details.salary_stats.number_of_students course_details.salary_stats.response_rate as substitutions %}
-            {% insert_values_to_rich_text content=block.value.six_month_earnings_data_source substitutions=substitutions as subbed_text %}
-            {{ subbed_text | richtext }}
-        </div>
-    </div>
-
-    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.salary_stats.unavailable_reason %}
-{% endif %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with reason=salary_stats.unavailable_reason %}
+    {% endif %}
+{% endfor %}
 
 {% if course_details.show_leo %}
     <div class="after-course__block">
