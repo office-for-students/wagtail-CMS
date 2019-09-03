@@ -809,11 +809,10 @@ class SatisfactionStatistics:
         self.question_26 = SatisfactionQuestion(data_obj.get('question_26'))
         self.question_27 = SatisfactionQuestion(data_obj.get('question_27'))
 
-        subject_data = data_obj.get('subject')
-        if subject_data:
-            self.subject_code = subject_data.get('code')
-            self.subject_english = subject_data.get('english_label')
-            self.subject_welsh = subject_data.get('welsh_label')
+        subject_data = fallback_to(data_obj.get('subject'), {})
+        self.subject_code = subject_data.get('code', '')
+        self.subject_english = subject_data.get('english_label', '')
+        self.subject_welsh = subject_data.get('welsh_label', '')
 
         unavailable_data = data_obj.get('unavailable')
         if unavailable_data:
