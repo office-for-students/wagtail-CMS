@@ -41,11 +41,12 @@ def narrow_search(request, language=enums.languages.ENGLISH):
     elif selection == "home":
         page = get_page_for_language(language, CourseFinderPostcode.objects.all())
     elif selection == 'all':
+        filters = build_filters(post_body)
         course_finder_search = CourseFinderSearch(post_body.get('subject_query', None),
                                                   institution_query,
-                                                  post_body.get('mode_query', None),
                                                   post_body.get('countries_query', None),
                                                   postcode_query,
+                                                  filters,
                                                   post_body.get('page', 1),
                                                   post_body.get('count', 20))
 
