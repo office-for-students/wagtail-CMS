@@ -194,7 +194,9 @@ class Course:
 
             stats = course_details.get('statistics')
             if stats:
-                self.entry_stats = EntryStatistics(stats.get('entry')[0])
+                self.entry_stats = []
+                for data_set in stats.get('entry'):
+                    self.entry_stats.append(EntryStatistics(data_set, self.display_language))
                 self.continuation_stats = ContinuationStatistics(stats.get('continuation')[0])
                 self.employment_stats = EmploymentStatistics(stats.get('employment')[0])
                 self.job_type_stats = JobTypeStatistics(stats.get('job_type')[0])
@@ -262,7 +264,14 @@ class Course:
 
     @property
     def show_entry_information_stats(self):
-        return self.entry_stats.display_stats or self.tariff_stats.show_stats()
+        show_entry_stats = self.entry_stats and self.entry_stats[0].display_stats
+        show_tariff_stats = self.tariff_stats.show_stats()
+
+        return show_entry_stats or show_tariff_stats
+
+    @property
+    def has_multiple_entry_stats(self):
+        return len(self.entry_stats) > 1
 
     @property
     def show_after_one_year_stats(self):
@@ -408,7 +417,8 @@ class CourseYearAbroad:
 
 class EntryStatistics:
 
-    def __init__(self, data_obj):
+    def __init__(self, data_obj, display_language):
+        self.display_language = display_language
         self.display_stats = False
         self.aggregation_level = 0
         self.number_of_students = 0
@@ -442,10 +452,21 @@ class EntryStatistics:
             self.none = fallback_to(data_obj.get('none'), 0)
             self.other_qualifications = fallback_to(data_obj.get('other_qualifications'), 0)
 
+            subject_data = data_obj.get('subject')
+            if subject_data:
+                self.subject_code = subject_data.get('code')
+                self.subject_english = subject_data.get('english_label')
+                self.subject_welsh = subject_data.get('welsh_label')
+
             unavailable_data = data_obj.get('unavailable')
             if unavailable_data:
                 self.unavailable_code = unavailable_data.get('code')
                 self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+
+    def display_subject_name(self):
+        if self.display_language == enums.languages.ENGLISH:
+            return self.subject_english if self.subject_english else self.subject_welsh
+        return self.subject_welsh if self.subject_welsh else self.subject_english
 
 
 class ContinuationStatistics:
