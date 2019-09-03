@@ -72,11 +72,13 @@ def narrow_search(request, language=enums.languages.ENGLISH):
 
 def course_finder_results(request, language=enums.languages.ENGLISH):
     query_params = request.GET
+
+    filters = build_filters(query_params)
     course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
                                               query_params.get('institution_query', None),
-                                              query_params.get('mode_query', None),
                                               query_params.get('countries_query', None),
                                               query_params.get('postcode_query', None),
+                                              filters,
                                               query_params.get('page', 1),
                                               query_params.get('count', 20))
     error = course_finder_search.execute()
@@ -96,3 +98,29 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     }
 
     return render(request, 'coursefinder/course_finder_results.html', context)
+
+
+def build_filters(params):
+    filters = []
+
+    if 'mode_query' in params:
+        mode_query = ','.join(params.getlist('mode_query'))
+        if 'Full-time,Part-time' not in mode_query:
+            filters.append(params.get('mode_query').lower().replace('-', '_').replace(' ', '_'))
+    if 'placement' in params:
+        if params.get('placement') == 'yes':
+            filters.append('sandwich_year')
+        elif params.get('placement') == 'no':
+            filters.append('-sandwich_year')
+    if 'foundation' in params:
+        if params.get('foundation') == 'yes':
+            filters.append('foundation_year')
+        elif params.get('foundation') == 'no':
+            filters.append('-foundation_year')
+    if 'abroad' in params:
+        if params.get('abroad') == 'yes':
+            filters.append('year_abroad')
+        elif params.get('abroad') == 'no':
+            filters.append('-year_abroad')
+
+    return ','.join(filters)

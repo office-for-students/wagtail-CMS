@@ -156,7 +156,9 @@ class CourseDetailPage(DiscoverUniBasePage):
 class Course:
     MODES = {
         'Full-time': 1,
-        'Part-time': 2
+        'Part-time': 2,
+        'FullTime': 1,
+        'PartTime': 2
     }
 
     def __init__(self, data_obj, language):

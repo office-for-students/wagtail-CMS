@@ -1,69 +1,6 @@
 $(document).ready(function() {
   // Course finder
 
-  if (sessionStorage.getItem("subjectJSON") === null) {
-    $.getJSON("/static/jsonfiles/subject-codes.json", (result) => {
-      result.sort(function(a, b){
-          if(a.englishname < b.englishname) { return -1; }
-          if(a.englishname > b.englishname) { return 1; }
-          return 0;
-      })
-      sessionStorage.setItem("subjectJSON", JSON.stringify(result));
-      $.each(result, function(index, item) {
-        if(item.level === "1") {
-          $('#subjectArea').append(`<option value='${item.code}'>${item.englishname}</option>`)
-        }
-        if(item.level === "2") {
-          $('#subject').append(`<option value='${item.code}'>${item.englishname}</option>`)
-        }
-        if(item.level === "3") {
-          $('#subjectCode').append(`<option value='${item.code}'>${item.englishname}</option>`)
-        }
-      })
-    })
-  }
-
-  $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
-    if(item.level === "1") {
-      $('#subjectArea').append(`<option value='${item.code}'>${item.englishname}</option>`)
-    }
-    if(item.level === "2") {
-      $('#subject').append(`<option value='${item.code}'>${item.englishname}</option>`)
-    }
-    if(item.level === "3") {
-      $('#subjectCode').append(`<option value='${item.code}'>${item.englishname}</option>`)
-    }
-  })
-
-  handleSubjectAreaSelect = (value) => {
-    $('#subject').empty()
-    $('#subjectCode').empty()
-    $('#subject').append('<option value="disabled" disabled selected>Subject</option>')
-    $('#subjectCode').append('<option value selected>Show all</option>')
-    $('.template-course-finder-choose-subject .course-finder-content__question-selector:nth-of-type(3)').css('display', 'none')
-    $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
-      if(item.level === "2" && item.code.includes(value)) {
-        $('#subject').append(`<option value='${item.code}'>${item.englishname}</option>`)
-      }
-    })
-    $('#subject').trigger('loadeddata')
-
-  }
-
-  handleSubjectSelect = (value) => {
-    $('#subjectCode').empty()
-    $('.template-course-finder-choose-subject .course-finder-content__question-selector:nth-of-type(3)').css('display', 'block')
-    let all = ""
-    $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
-      if(item.level === "3" && item.code.includes(value)) {
-        $('#subjectCode').append(`<option value='"${item.englishname}"'>${item.englishname}</option>`)
-        all += '"' + item.englishname + '",'
-      }
-    })
-    $('#subjectCode').prepend(`<option value=${all} selected>Show all</option>`)
-    $('#subjectCode').trigger('loadeddata')
-  }
-
   if (sessionStorage.getItem("uniJSON") === null) {
     $.getJSON("/static/jsonfiles/institutions.json", (result) => {
       result.sort(function(a, b){

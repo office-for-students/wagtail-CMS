@@ -202,6 +202,14 @@
         }
     }
 
+    select.visible ~ .select-selected {
+        display: block;
+    }
+
+    select.hidden ~ .select-selected {
+        display: none;
+    }
+
     .select-items {
         position: absolute;
         background-color: $form-grey;
