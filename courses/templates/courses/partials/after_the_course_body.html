@@ -13,7 +13,7 @@
     </div>
 {% endif %}
 
-{% for salary_stats in  course_details.salary_stats %}
+{% for salary_stats in course_details.salary_stats %}
     {% if salary_stats.display_stats %}
         <div class="after-course__block">
             <div class="after-course__data-point">
@@ -74,41 +74,44 @@
     {% endif %}
 {% endfor %}
 
-{% if course_details.show_leo %}
-    <div class="after-course__block">
-        <div class="after-course__data-point">
-            <h2 class="after-course__stats-heading">
-                {{block.value.three_years_earnings_heading}}
-            </h2>
+{% for leo_stats in course_details.leo_stats %}
+    {% if course_details.is_in_england and leo_stats.display_stats %}
+        <div class="after-course__block">
+            <div class="after-course__data-point">
+                <h2 class="after-course__stats-heading">
+                    {{block.value.three_years_earnings_heading}}{% if course_details.has_multiple_leo_stats %}:
+                    {{leo_stats.display_subject_label}}{% endif %}
+                </h2>
 
-            <p class="after-course__figure">
-                £{{ course_details.leo_stats.median }}
-            </p>
+                <p class="after-course__figure">
+                    £{{ leo_stats.median }}
+                </p>
 
-            <div class="after-course__figure-explanation">
-                {% create_list course_details.salary_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
-                {% insert_values_to_rich_text content=block.value.three_years_earnings_explanation substitutions=substitutions as subbed_text %}
-                {{ subbed_text | richtext }}
+                <div class="after-course__figure-explanation">
+                    {% create_list salary_stats.display_subject_label institution.pub_ukprn_name as substitutions %}
+                    {% insert_values_to_rich_text content=block.value.three_years_earnings_explanation substitutions=substitutions as subbed_text %}
+                    {{ subbed_text | richtext }}
+                </div>
+
+                <p>
+                    {{block.value.three_years_earnings_salary_range_heading}}
+                </p>
+
+                <p class="after-course__figure-salary-range">
+                    £{{leo_stats.lower_quartile}} - £{{leo_stats.higher_quartile}}
+                </p>
             </div>
 
-            <p>
-                {{block.value.three_years_earnings_salary_range_heading}}
-            </p>
-
-            <p class="after-course__figure-salary-range">
-                £{{course_details.leo_stats.lower_quartile}} - £{{course_details.leo_stats.higher_quartile}}
-            </p>
+            <div class="explanation-text">
+                {% create_list leo_stats.number_of_graduates as substitutions %}
+                {% insert_values_to_rich_text content=block.value.three_years_earnings_data_source substitutions=substitutions as subbed_text %}
+                {{ subbed_text | richtext }}
+            </div>
         </div>
 
-        <div class="explanation-text">
-            {% create_list course_details.leo_stats.number_of_graduates as substitutions %}
-            {% insert_values_to_rich_text content=block.value.three_years_earnings_data_source substitutions=substitutions as subbed_text %}
-            {{ subbed_text | richtext }}
-        </div>
-    </div>
-
-    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.leo_stats.unavailable_reason %}
-{% endif %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with reason=leo_stats.unavailable_reason %}
+    {% endif %}
+{% endfor %}
 
 {% if course_details.employment_stats.display_stats %}
     <div class="after-course__lead-block">

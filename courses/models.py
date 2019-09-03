@@ -209,8 +209,10 @@ class Course:
                 self.salary_stats = []
                 for data_set in stats.get('salary'):
                     self.salary_stats.append(SalaryStatistics(data_set, self.display_language, title))
+                self.leo_stats = []
+                for data_set in stats.get('leo'):
+                    self.leo_stats.append(LEOStatistics(data_set, self.display_language))
                 self.employment_stats = EmploymentStatistics(stats.get('employment')[0])
-                self.leo_stats = LEOStatistics(stats.get('leo')[0], self.display_language)
                 self.job_type_stats = JobTypeStatistics(stats.get('job_type')[0])
 
             self.accreditations = []
@@ -307,8 +309,16 @@ class Course:
         return len(self.salary_stats) > 1
 
     @property
+    def has_multiple_leo_stats(self):
+        return len(self.leo_stats) > 1
+
+    @property
     def show_leo(self):
-        return self.country.name == 'England' and self.leo_stats.display_stats
+        return self.is_in_england and self.leo_stats and self.leo_stats[0].display_stats
+
+    @property
+    def is_in_england(self):
+        return self.country.name == 'England'
 
     def display_title(self):
         honours = ""
