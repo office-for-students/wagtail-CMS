@@ -204,7 +204,9 @@ class Course:
                 self.satisfaction_stats = SatisfactionStatistics(stats.get('nss')[0])
                 if stats.get('nhs_nss')[0]:
                     self.nhs_satisfaction_stats = SatisfactionStatistics(stats.get('nhs_nss')[0])
-                self.tariff_stats = TariffStatistics(stats.get('tariff')[0])
+                self.tariff_stats = []
+                for data_set in stats.get('tariff'):
+                    self.tariff_stats.append(TariffStatistics(data_set, self.display_language))
                 self.leo_stats = LEOStatistics(stats.get('leo')[0], self.display_language)
 
             self.accreditations = []
@@ -265,13 +267,17 @@ class Course:
     @property
     def show_entry_information_stats(self):
         show_entry_stats = self.entry_stats and self.entry_stats[0].display_stats
-        show_tariff_stats = self.tariff_stats.show_stats()
+        show_tariff_stats = self.tariff_stats and self.tariff_stats[0].show_stats()
 
         return show_entry_stats or show_tariff_stats
 
     @property
     def has_multiple_entry_stats(self):
         return len(self.entry_stats) > 1
+
+    @property
+    def has_multiple_tariff_stats(self):
+        return len(self.tariff_stats) > 1
 
     @property
     def show_after_one_year_stats(self):
@@ -761,7 +767,8 @@ class SatisfactionQuestion:
 
 class TariffStatistics:
 
-    def __init__(self, tariff_data):
+    def __init__(self, tariff_data, display_language):
+        self.display_language = display_language
         self.tariffs = []
 
         if tariff_data:
@@ -772,8 +779,19 @@ class TariffStatistics:
                     self.tariffs.append(Tariff(tariff))
             self.tariffs.reverse()
 
+            subject_data = tariff_data.get('subject')
+            if subject_data:
+                self.subject_code = subject_data.get('code')
+                self.subject_english = subject_data.get('english_label')
+                self.subject_welsh = subject_data.get('welsh_label')
+
     def show_stats(self):
         return self.tariffs
+
+    def display_subject_name(self):
+        if self.display_language == enums.languages.ENGLISH:
+            return self.subject_english if self.subject_english else self.subject_welsh
+        return self.subject_welsh if self.subject_welsh else self.subject_english
 
 
 class Tariff:
