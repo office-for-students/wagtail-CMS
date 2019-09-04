@@ -153,6 +153,22 @@ class CourseDetailPage(DiscoverUniBasePage):
     ]
 
 
+class CourseComparisonPage(DiscoverUniBasePage):
+    heading = TextField(blank=True)
+    lead = TextField(blank=True)
+    remove_text = RichTextField(blank=True)
+    save_text = RichTextField(blank=True)
+    compare_heading = TextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('heading'),
+        FieldPanel('lead'),
+        FieldPanel('remove_text'),
+        FieldPanel('save_text'),
+        FieldPanel('compare_heading'),
+    ]
+
+
 class Course:
     MODES = {
         'Full-time': 1,
@@ -282,7 +298,6 @@ class Course:
 
     @property
     def has_multiple_satisfaction_stats(self):
-        print(len(self.overall_satisfaction) > 1)
         return len(self.overall_satisfaction) > 1
 
     @property

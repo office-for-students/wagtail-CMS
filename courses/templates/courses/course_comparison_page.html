@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load staticfiles sass_tags wagtailcore_tags %}
+
+
+{% block extra_css %}
+    <link href="{% sass_src 'scss/course_comparison.scss' %}" rel="stylesheet" type="text/css" >
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/course_comparison.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="comparison discover-uni-container">
+        <div class="comparison__overview">
+            <h1 class="comparison__course-count">
+                <span class="count"></span> {{page.heading}}
+            </h1>
+
+            <p class="comparison__lead">
+                {{page.lead}}
+            </p>
+        </div>
+
+        <div class="comparison__nav-box">
+            {{page.remove_text | richtext}}
+
+            {{page.save_text | richtext}}
+        </div>
+
+        <h2 class="comparison__heading">
+            {{page.compare_heading}}
+        </h2>
+
+        <div class="comparison__courses">
+            <div class="comparison__course-column">
+                <div class="comparison__course">
+                    <div class="comparison__course-selector">
+                        <select>
+                            <option value="na" disabled selected>Select a course</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison__course-column">
+                <div class="comparison__course">
+                    <div class="comparison__course-selector">
+                        <select>
+                            <option value="na" disabled selected>Select a course</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
