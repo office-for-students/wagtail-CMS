@@ -6,6 +6,7 @@ DEBUG = False
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = [
+    'discoveruni.gov.uk',
     'pre-prod-discover-uni.azurewebsites.net',
     'prod-discover-uni.azurewebsites.net'
 ]
