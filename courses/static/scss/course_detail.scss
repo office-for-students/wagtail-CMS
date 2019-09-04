@@ -31,15 +31,20 @@
         }
 
         .course-detail__compare-btn {
-            @include small-font-mixin();
+            @include small-font--bold-mixin();
 
             padding: 5px 10px;
             margin-bottom: 26px;
 
-            border: 1px solid $black;
+            border: 1.5px solid $ux-grey-3;
+            color: $ux-grey-3;
             border-radius: 16px;
-
+            cursor: pointer;
             background-color: $white;
+
+            &.selected {
+
+            }
         }
 
         .course-detail__institution-info {
@@ -331,14 +336,13 @@
             }
 
             .course-detail__compare-btn {
-                @include mobile-body-font-mixin();
+                @include small-font--bold-mixin();
 
-                padding: 5px 10px;
+                padding: 9px 10px 10px;
                 margin-bottom: 26px;
 
-                border: 1px solid $black;
                 border-radius: 16px;
-
+                color: $ux-grey-3;
                 background-color: $white;
             }
 
