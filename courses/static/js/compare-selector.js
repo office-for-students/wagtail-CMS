@@ -50,8 +50,15 @@
         },
 
         startWatcher: function() {
+            var that = this;
             this.button.click(function() {
-                console.log('adding to basket');
+                if (that.button.hasClass('selected')) {
+                    console.log('removing from basket');
+                    that.button.removeClass('selected');
+                } else {
+                    console.log('adding to basket');
+                    that.button.addClass('selected');
+                }
             })
         }
     }

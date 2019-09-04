@@ -42,8 +42,22 @@
             cursor: pointer;
             background-color: $white;
 
-            &.selected {
+            .remove {
+                display: none;
+            }
 
+            &.selected {
+                @include green-gradient-background-mixin();
+
+                border: 1.5px solid $gradient-light-green;
+
+                .add {
+                    display: none;
+                }
+
+                .remove {
+                    display: initial;
+                }
             }
         }
 
