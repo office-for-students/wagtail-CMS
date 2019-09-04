@@ -42,7 +42,17 @@
         }
     }
 
-    &__add, &__remove, &__not-enough, &__enough {
+    &__add, &__remove, &__too-many, &__not-enough, &__enough {
         display: none;
+    }
+
+    &__max {
+        color: $gradient-light-green;
+    }
+
+    &__remove {
+        &-link {
+            text-transform: lowercase;
+        }
     }
 }

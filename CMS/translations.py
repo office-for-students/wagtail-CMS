@@ -115,6 +115,10 @@ DICT = {
         'en': 'Course search',
         'cy': ''
     },
+    'course_too_many': {
+        'en': 'is the maximum number of courses that can be compared.',
+        'cy': ''
+    },
     'courses': {
         'en': 'course(s)',
         'cy': ''
@@ -270,7 +274,7 @@ DICT = {
         'cy': ''
     },
     'manage_list': {
-        'en': 'manage course list',
+        'en': 'Manage course list',
         'cy': ''
     },
     'miles': {

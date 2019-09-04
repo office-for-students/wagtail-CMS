@@ -27,6 +27,7 @@
             this.compareNotEnough = this.compareBar.find('.compare-popup__not-enough');
             this.compareEnough = this.compareBar.find('.compare-popup__enough');
             this.compareRemove = this.compareBar.find('.compare-popup__remove');
+            this.compareTooMany = this.compareBar.find('.compare-popup__too-many');
 
             this.loadSelectedCourses();
             this.setInitialView();
@@ -91,24 +92,32 @@
             this.courseSelected = false;
             this.compareAdd.hide();
             this.compareRemove.show();
+            this.compareTooMany.hide();
             this.compareBar.slideDown("slow");
         },
 
         handleCourseAddition: function() {
-            this.button.addClass('selected');
-            this.selectedCourses.push({'uniId': this.uniId, 'courseId': this.courseId, 'mode': this.mode});
-            localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
-            this.courseSelected = true;
-            this.compareCount.text(this.selectedCourses.length);
-            if (this.selectedCourses.length < 2) {
-                this.compareNotEnough.show();
-                this.compareEnough.hide();
+            if (this.selectedCourses.length === 10) {
+                this.compareAdd.hide();
+                this.compareRemove.hide();
+                this.compareTooMany.show();
             } else {
-                this.compareNotEnough.hide();
-                this.compareEnough.show();
+                this.button.addClass('selected');
+                this.selectedCourses.push({'uniId': this.uniId, 'courseId': this.courseId, 'mode': this.mode});
+                localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
+                this.courseSelected = true;
+                this.compareCount.text(this.selectedCourses.length);
+                if (this.selectedCourses.length < 2) {
+                    this.compareNotEnough.show();
+                    this.compareEnough.hide();
+                } else {
+                    this.compareNotEnough.hide();
+                    this.compareEnough.show();
+                }
+                this.compareAdd.show();
+                this.compareRemove.hide();
+                this.compareTooMany.hide();
             }
-            this.compareAdd.show();
-            this.compareRemove.hide();
             this.compareBar.slideDown("slow");
         }
     }
