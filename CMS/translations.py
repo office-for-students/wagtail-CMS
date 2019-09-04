@@ -107,6 +107,10 @@ DICT = {
         'en': 'Course page',
         'cy': ''
     },
+    'course_removed': {
+        'en': 'Course removed from course list.',
+        'cy': ''
+    },
     'course_search': {
         'en': 'Course search',
         'cy': ''
@@ -265,6 +269,10 @@ DICT = {
         'en': 'Locations',
         'cy': ''
     },
+    'manage_list': {
+        'en': 'manage course list',
+        'cy': ''
+    },
     'miles': {
         'en': 'miles',
         'cy': ''
@@ -355,6 +363,10 @@ DICT = {
     },
     'qualification_type': {
         'en': 'Qualification type',
+        'cy': ''
+    },
+    'remove_others': {
+        'en': 'To remove others',
         'cy': ''
     },
     'results': {
