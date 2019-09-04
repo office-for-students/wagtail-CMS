@@ -343,7 +343,7 @@ DataWidget.prototype = {
             var dataFor = CONTENT.dataFor[this.language];
             var course = document.createTextNode(dataFor + courseName);
         } else {
-            var courseName = this.courseData.statistics.employment.subject[this.languageKey + '_label'];
+            var courseName = this.courseData.statistics.employment[0].subject[this.languageKey + '_label'];
             var dataFor = CONTENT.dataForAggregated[this.language];
             var at = CONTENT.at[this.language];
             var institution = this.courseData.institution.pub_ukprn_name;
