@@ -107,6 +107,10 @@ DICT = {
         'en': 'course(s)',
         'cy': ''
     },
+    'data_for': {
+        'en': 'Data for',
+        'cy': ''
+    },
     'degree': {
         'en': 'Degree',
         'cy': ''

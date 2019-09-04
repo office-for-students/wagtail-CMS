@@ -3,12 +3,13 @@
 
 .discover-uni-container {
     .accreditation__block {
-        padding: 0px 30px;
+        padding: 0px 30px 30px;;
 
         .accreditation__heading {
             @include s-heading-mixin();
 
             margin-top: 55px;
+            margin-bottom: 25px;
 
             color: $ux-grey-2;
         }
@@ -35,6 +36,8 @@
 
             .accreditation__body {
                 @include desktop-body-font-mixin();
+
+                width: 66%;
             }
         }
     }

@@ -19,7 +19,7 @@
         margin-bottom: 34px;
     }
 
-    .entry-information__qualification-charts {
+    .entry-information__qualification-charts, .entry-information__tariff-charts {
         .entry-information__chart {
             margin-bottom: 37px;
 
@@ -30,33 +30,10 @@
             .entry-information__chart-label {
                 @include small-font-mixin();
 
-                margin-top: 5px;
-            }
-        }
-    }
+                display: block;
+                margin-top: 7px;
 
-    .entry-information__tariff-charts {
-        .entry-information__chart {
-            display: flex;
-            margin-bottom: 37px;
-
-            &:last-of-type {
-                margin-bottom: 13px;
-            }
-
-            .entry-information__chart-label {
-                @include small-font-mixin();
-
-                white-space: nowrap;
-                margin-top: 5px;
-                height: 38px;
-                width: 85px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-right: 5px;
-
-                border: 1px solid $black;
+                color: $ux-grey-3;
             }
         }
     }
@@ -81,7 +58,7 @@
             margin-bottom: 40px;
         }
 
-        .entry-information__qualification-charts {
+        .entry-information__qualification-charts, .entry-information__tariff-charts {
             .entry-information__chart {
                 margin-bottom: 40px;
 
@@ -90,23 +67,9 @@
                 }
 
                 .entry-information__chart-label {
-                    @include xs-heading-mixin();
-
-                    margin-top: 5px;
-                }
-            }
-        }
-
-        .entry-information__tariff-charts {
-            .entry-information__chart {
-                margin-bottom: 40px;
-
-                .entry-information__chart-label {
                     @include desktop-body-font-mixin();
 
-
-                    width: 125px;
-                    margin-right: 20px;
+                    color: $ux-grey-3;
                 }
             }
         }

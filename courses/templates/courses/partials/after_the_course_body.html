@@ -3,30 +3,31 @@
 {% load discover_uni_tags %}
 
 
-<div class="discover-uni-container">
-    {% if course_details.show_leo or course_details.salary_stats.display_stats %}
-        <div class="after-course__lead">
-            <h2 class="after-course__lead-title">
-                {{block.value.section_heading}}
-            </h2>
+{% if course_details.show_salary_lead %}
+    <div class="after-course__lead">
+        <h2 class="after-course__lead-title">
+            {{block.value.section_heading}}
+        </h2>
 
-            {{block.value.intro | richtext}}
-        </div>
-    {% endif %}
+        {{block.value.intro | richtext}}
+    </div>
+{% endif %}
 
-    {% if course_details.salary_stats.display_stats %}
+{% for salary_stats in course_details.salary_stats %}
+    {% if salary_stats.display_stats %}
         <div class="after-course__block">
             <div class="after-course__data-point">
                 <h2 class="after-course__stats-heading">
-                    {{block.value.six_month_earnings_heading}}
+                    {{block.value.six_month_earnings_heading}}{% if course_details.has_multiple_salary_stats %}:
+                    {{salary_stats.display_subject_label}}{% endif %}
                 </h2>
 
                 <p class="after-course__figure">
-                    £{{ course_details.salary_stats.median }}
+                    £{{ salary_stats.median }}
                 </p>
 
                 <div class="after-course__figure-explanation">
-                    {% create_list course_details.salary_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
+                    {% create_list salary_stats.display_subject_label institution.pub_ukprn_name as substitutions %}
                     {% insert_values_to_rich_text content=block.value.six_month_earnings_explanation substitutions=substitutions as subbed_text %}
                     {{ subbed_text | richtext }}
                 </div>
@@ -36,16 +37,19 @@
                 </p>
 
                 <p class="after-course__figure-salary-range">
-                    £{{course_details.salary_stats.lower_quartile}} - £{{course_details.salary_stats.higher_quartile}}
+                    £{{salary_stats.lower_quartile}} - £{{salary_stats.higher_quartile}}
+                    {% if salary_stats.unavailable_reason %}
+                        *
+                    {% endif %}
                 </p>
 
                 <p class="after-course__figure--sector">
-                    £{{ course_details.salary_stats.sector_median }}
+                    £{{ salary_stats.sector_median }}
                 </p>
 
                 <div class="after-course__figure-explanation">
                     {% get_translation key='across_uk' language=page.get_language as location %}
-                    {% create_list course_details.salary_stats.display_subject_label location as substitutions %}
+                    {% create_list salary_stats.display_subject_label location as substitutions %}
                     {% insert_values_to_rich_text content=block.value.six_month_earnings_explanation substitutions=substitutions as subbed_text %}
                     {{ subbed_text | richtext }}
                 </div>
@@ -55,33 +59,36 @@
                 </p>
 
                 <p class="after-course__figure-salary-range">
-                    £{{course_details.salary_stats.sector_lower_quartile}} - £{{course_details.salary_stats.sector_higher_quartile}}
+                    £{{salary_stats.sector_lower_quartile}} - £{{salary_stats.sector_higher_quartile}}
                 </p>
             </div>
 
             <div class="explanation-text">
-                {% create_list course_details.salary_stats.number_of_students course_details.salary_stats.response_rate as substitutions %}
+                {% create_list salary_stats.number_of_students salary_stats.response_rate as substitutions %}
                 {% insert_values_to_rich_text content=block.value.six_month_earnings_data_source substitutions=substitutions as subbed_text %}
                 {{ subbed_text | richtext }}
             </div>
         </div>
 
-        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.salary_stats.unavailable_reason %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with reason=salary_stats.unavailable_reason %}
     {% endif %}
-    
-    {% if course_details.show_leo %}
+{% endfor %}
+
+{% for leo_stats in course_details.leo_stats %}
+    {% if course_details.is_in_england and leo_stats.display_stats %}
         <div class="after-course__block">
             <div class="after-course__data-point">
                 <h2 class="after-course__stats-heading">
-                    {{block.value.three_years_earnings_heading}}
+                    {{block.value.three_years_earnings_heading}}{% if course_details.has_multiple_leo_stats %}:
+                    {{leo_stats.display_subject_label}}{% endif %}
                 </h2>
 
                 <p class="after-course__figure">
-                    £{{ course_details.leo_stats.median }}
+                    £{{ leo_stats.median }}
                 </p>
 
                 <div class="after-course__figure-explanation">
-                    {% create_list course_details.salary_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
+                    {% create_list salary_stats.display_subject_label institution.pub_ukprn_name as substitutions %}
                     {% insert_values_to_rich_text content=block.value.three_years_earnings_explanation substitutions=substitutions as subbed_text %}
                     {{ subbed_text | richtext }}
                 </div>
@@ -91,25 +98,28 @@
                 </p>
 
                 <p class="after-course__figure-salary-range">
-                    £{{course_details.leo_stats.lower_quartile}} - £{{course_details.leo_stats.higher_quartile}}
+                    £{{leo_stats.lower_quartile}} - £{{leo_stats.higher_quartile}}
                 </p>
             </div>
 
             <div class="explanation-text">
-                {% create_list course_details.leo_stats.number_of_graduates as substitutions %}
+                {% create_list leo_stats.number_of_graduates as substitutions %}
                 {% insert_values_to_rich_text content=block.value.three_years_earnings_data_source substitutions=substitutions as subbed_text %}
                 {{ subbed_text | richtext }}
             </div>
         </div>
 
-        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.leo_stats.unavailable_reason %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with reason=leo_stats.unavailable_reason %}
     {% endif %}
+{% endfor %}
 
-    {% if course_details.employment_stats.display_stats %}
+{% for employment_stats in course_details.employment_stats %}
+    {% if employment_stats.display_stats %}
         <div class="after-course__lead-block">
             <div class="after-course__data-point">
                 <h2 class="after-course__stats-heading">
-                    {{block.value.six_month_employment_heading}}
+                    {{block.value.six_month_employment_heading}}{% if course_details.has_multiple_employment_stats %}:
+                    {{employment_stats.display_subject_name}}{% endif %}
                 </h2>
 
                 <p class="after-course__stats-intro">
@@ -117,47 +127,41 @@
                 </p>
             </div>
         </div>
-    {% endif %}
-</div>
 
-{% if course_details.employment_stats.display_stats %}
-    <div class="after-course__data-point-overview">
-        <p class="after-course__data-point-overview-lead">
-            {{course_details.employment_stats.work_and_or_study}}%
-        </p>
+        <div class="after-course__data-point-overview">
+            <p class="after-course__data-point-overview-lead">
+                {{employment_stats.work_and_or_study}}%
+            </p>
 
-        <p>
-            {{block.value.six_month_employment_lead}}
-        </p>
-    </div>
-{% endif %}
+            <p>
+                {{block.value.six_month_employment_lead}}
+            </p>
+        </div>
 
-<div class="discover-uni-container">
-    {% if course_details.employment_stats.display_stats %}
         <div class="after-course__block">
             <div class="after-course__data-point">
                 <div class="after-course__chart-block">
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.employment_stats.in_work}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.in_work}}">
                         {% include 'courses/partials/bar_chart.html' %}
                         <label class="after-course__chart-label">{% get_translation key='now_working' language=page.get_language %}</label>
                     </div>
 
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.employment_stats.in_study}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.in_study}}">
                         {% include 'courses/partials/bar_chart.html' %}
                         <label class="after-course__chart-label">{% get_translation key='doing_further_study' language=page.get_language %}</label>
                     </div>
 
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.employment_stats.in_work_and_study}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.in_work_and_study}}">
                         {% include 'courses/partials/bar_chart.html' %}
                         <label class="after-course__chart-label">{% get_translation key='study_and_working' language=page.get_language %}</label>
                     </div>
 
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.employment_stats.unemployed}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.unemployed}}">
                         {% include 'courses/partials/bar_chart.html' %}
                         <label class="after-course__chart-label">{% get_translation key='unemployed' language=page.get_language %}</label>
                     </div>
 
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.employment_stats.not_available_for_work_or_study}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.not_available_for_work_or_study}}">
                         {% include 'courses/partials/bar_chart.html' %}
                         <label class="after-course__chart-label">{% get_translation key='other' language=page.get_language %}</label>
                     </div>
@@ -165,20 +169,23 @@
             </div>
 
             <div class="explanation-text">
-                {% create_list course_details.employment_stats.number_of_students course_details.employment_stats.response_rate as substitutions %}
+                {% create_list employment_stats.number_of_students employment_stats.response_rate as substitutions %}
                 {% insert_values_to_rich_text content=block.value.six_month_employment_data_source substitutions=substitutions as subbed_text %}
                 {{ subbed_text | richtext }}
             </div>
         </div>
 
-        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.employment_stats.unavailable_reason %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with reason=employment_stats.unavailable_reason %}
     {% endif %}
+{% endfor %}
 
-    {% if course_details.job_type_stats.display_stats %}
+{% for job_type_stats in course_details.job_type_stats %}
+    {% if job_type_stats.display_stats %}
         <div class="after-course__block">
             <div class="after-course__data-point">
                 <h2 class="after-course__stats-heading">
-                    {{block.value.six_month_employment_roles_heading}}
+                    {{block.value.six_month_employment_roles_heading}}{% if course_details.has_multiple_job_type_stats %}:
+                    {{job_type_stats.display_subject_name}}{% endif %}
                 </h2>
 
                 <p class="after-course__stats-intro">
@@ -186,17 +193,17 @@
                 </p>
 
                 <div class="after-course__chart-block">
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.job_type_stats.professional_or_managerial_jobs}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{job_type_stats.professional_or_managerial_jobs}}">
                         {% include 'courses/partials/bar_chart.html' %}
                         <label class="after-course__chart-label">{% get_translation key='professional_or_managerial' language=page.get_language %}</label>
                     </div>
 
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.job_type_stats.non_professional_or_managerial_jobs}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{job_type_stats.non_professional_or_managerial_jobs}}">
                         {% include 'courses/partials/bar_chart.html' %}
                         <label class="after-course__chart-label">{% get_translation key='not_professional_or_managerial' language=page.get_language %}</label>
                     </div>
 
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{course_details.job_type_stats.unknown_professions}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{job_type_stats.unknown_professions}}">
                         {% include 'courses/partials/bar_chart.html' %}
                         <label class="after-course__chart-label">{% get_translation key='unknown_job_type' language=page.get_language %}</label>
                     </div>
@@ -213,7 +220,7 @@
                     <h3 class="chart-label-explanation__heading">
                         {{block.value.six_month_employment_roles_label_explanation_heading}}
 
-                        <span class="chart-label-explanation__close">X</span>
+                        <span class="chart-label-explanation__close"><img src="{% static 'images/close-grey.svg' %}" alt=""></span>
                     </h3>
 
                     <div class="chart-label-explanation__body">
@@ -223,12 +230,12 @@
             </div>
 
             <div class="explanation-text">
-                {% create_list course_details.employment_stats.number_of_students course_details.employment_stats.response_rate as substitutions %}
+                {% create_list employment_stats.number_of_students employment_stats.response_rate as substitutions %}
                 {% insert_values_to_rich_text content=block.value.six_month_employment_roles_data_source substitutions=substitutions as subbed_text %}
                 {{ subbed_text | richtext }}
             </div>
         </div>
 
-        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course_details.job_type_stats.unavailable_reason %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with reason=job_type_stats.unavailable_reason %}
     {% endif %}
-</div>
+{% endfor %}
