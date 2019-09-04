@@ -1,7 +1,7 @@
 {% load staticfiles %}
 {% load discover_uni_tags %}
 
-<div class="course-detail">
+<div class="course-detail comparison-course-area" data-coursename="{{course.display_title}}" data-uniname="{{course.institution.pub_ukprn_name}}">
     {% include 'courses/partials/base_gradient.html' %}
     <div class="course-detail__lead">
         <div class="discover-uni-container">

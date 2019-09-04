@@ -1,14 +1,17 @@
 (function ($) {
 
-    var CompareSelector = function(button, compareBar) {
-        this.button = $(button);
+    var CompareSelector = function(wrapper, compareBar) {
+        this.wrapper = $(wrapper);
         this.compareBar = $(compareBar);
         this.setup();
     }
 
     CompareSelector.prototype = {
         setup: function() {
+            this.button = this.wrapper.find('[class$=compare-btn]');
             this.courseSelected = false;
+            this.courseName = this.wrapper.data().coursename;
+            this.uniName = this.wrapper.data().uniname;
 
             var url = location.pathname.split('/');
             if (url[1] === 'cy') {
@@ -103,7 +106,8 @@
                 this.compareTooMany.show();
             } else {
                 this.button.addClass('selected');
-                this.selectedCourses.push({'uniId': this.uniId, 'courseId': this.courseId, 'mode': this.mode});
+                this.selectedCourses.push({'uniId': this.uniId, 'courseId': this.courseId, 'mode': this.mode,
+                                            'courseName': this.courseName, 'uniName': this.uniName});
                 localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
                 this.courseSelected = true;
                 this.compareCount.text(this.selectedCourses.length);
@@ -123,7 +127,7 @@
     }
 
     function init() {
-        var compareBtns = $('.course-detail__compare-btn');
+        var compareBtns = $('.comparison-course-area');
         var compareBars = $('.compare-popup');
         for (var i = 0; i < compareBtns.length; i++) {
             new CompareSelector(compareBtns[i], compareBars[0]);
