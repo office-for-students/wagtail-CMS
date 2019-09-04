@@ -37,10 +37,14 @@
         setCourseSelected: function() {
             for (var i = 0; i < this.selectedCourses.length; i++) {
                 var course = this.selectedCourses[i];
-                if (course.uniId === this.uniId && course.courseId === this.courseId && course.mode === this.mode) {
+                if (this.isCourse(course)) {
                     this.courseSelected = true;
                 }
             }
+        },
+
+        isCourse: function(course) {
+            return course.uniId === this.uniId && course.courseId === this.courseId && course.mode === this.mode;
         },
 
         setInitialView: function() {
@@ -53,11 +57,20 @@
             var that = this;
             this.button.click(function() {
                 if (that.button.hasClass('selected')) {
-                    console.log('removing from basket');
                     that.button.removeClass('selected');
+                    for (var i = 0; i < that.selectedCourses.length; i++) {
+                        var course = that.selectedCourses[i];
+                        if (that.isCourse(course)) {
+                            that.selectedCourses.splice(i, 1);
+                        }
+                    }
+                    localStorage.setItem('comparisonCourses', JSON.stringify(that.selectedCourses));
+                    that.courseSelected = false;
                 } else {
-                    console.log('adding to basket');
                     that.button.addClass('selected');
+                    that.selectedCourses.push({'uniId': that.uniId, 'courseId': that.courseId, 'mode': that.mode});
+                    localStorage.setItem('comparisonCourses', JSON.stringify(that.selectedCourses));
+                    that.courseSelected = true;
                 }
             })
         }
