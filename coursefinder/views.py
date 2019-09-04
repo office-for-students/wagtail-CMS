@@ -40,7 +40,7 @@ def narrow_search(request, language=enums.languages.ENGLISH):
         page = get_page_for_language(language, CourseFinderUni.objects.all())
     elif selection == "home":
         page = get_page_for_language(language, CourseFinderPostcode.objects.all())
-    elif selection == 'all':
+    else:
         filters = build_filters(post_body)
         course_finder_search = CourseFinderSearch(post_body.get('subject_query', None),
                                                   institution_query,
