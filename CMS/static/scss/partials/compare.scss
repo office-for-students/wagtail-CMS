@@ -1,0 +1,55 @@
+@import '../variables';
+@import '../fonts';
+
+
+.compare-popup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+
+
+
+    background-color: $divider-grey;
+
+    .content, &__enough {
+        width: 50%;
+        flex: 1 1 0;
+    }
+
+    .content {
+        &.full-width {
+            width: 100%;
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        padding: 29px 31px;
+        position: relative;
+    }
+
+    &__close {
+        position: absolute;
+        top: 7px;
+        right: 7px;
+
+        img {
+            width: 9px;
+            height: 9px;
+        }
+    }
+
+    &__count, &__not-enough {
+        @include mobile-body-font-mixin();
+
+        .count {
+            color: $gradient-light-green;
+        }
+    }
+
+    &__not-enough, &__enough {
+        display: none;
+    }
+}

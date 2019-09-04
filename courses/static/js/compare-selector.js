@@ -1,7 +1,8 @@
 (function ($) {
 
-    var CompareSelector = function(button) {
+    var CompareSelector = function(button, compareBar) {
         this.button = $(button);
+        this.compareBar = $(compareBar);
         this.setup();
     }
 
@@ -19,6 +20,12 @@
                 this.courseId = url[3];
                 this.mode = url[4];
             }
+
+            this.compareClose = this.compareBar.find('.compare-popup__close');
+            this.compareContent = this.compareBar.find('.content');
+            this.compareCount = this.compareBar.find('.compare-popup__count .count');
+            this.compareNotEnough = this.compareBar.find('.compare-popup__not-enough');
+            this.compareEnough = this.compareBar.find('.compare-popup__enough');
 
             this.loadSelectedCourses();
             this.setInitialView();
@@ -51,35 +58,59 @@
             if (this.courseSelected) {
                 this.button.addClass('selected');
             }
+            this.compareBar.slideUp('slow');
         },
 
         startWatcher: function() {
             var that = this;
             this.button.click(function() {
+                that.loadSelectedCourses();
+                that.compareBar.slideUp("slow");
                 if (that.button.hasClass('selected')) {
-                    that.button.removeClass('selected');
-                    for (var i = 0; i < that.selectedCourses.length; i++) {
-                        var course = that.selectedCourses[i];
-                        if (that.isCourse(course)) {
-                            that.selectedCourses.splice(i, 1);
-                        }
-                    }
-                    localStorage.setItem('comparisonCourses', JSON.stringify(that.selectedCourses));
-                    that.courseSelected = false;
+                    that.handleCourseRemoval();
                 } else {
-                    that.button.addClass('selected');
-                    that.selectedCourses.push({'uniId': that.uniId, 'courseId': that.courseId, 'mode': that.mode});
-                    localStorage.setItem('comparisonCourses', JSON.stringify(that.selectedCourses));
-                    that.courseSelected = true;
+                    that.handleCourseAddition();
                 }
             })
+        },
+
+        handleCourseRemoval: function() {
+            this.button.removeClass('selected');
+            for (var i = 0; i < this.selectedCourses.length; i++) {
+                var course = this.selectedCourses[i];
+                if (this.isCourse(course)) {
+                    this.selectedCourses.splice(i, 1);
+                }
+            }
+            localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
+            this.courseSelected = false;
+        },
+
+        handleCourseAddition: function() {
+            this.button.addClass('selected');
+            this.selectedCourses.push({'uniId': this.uniId, 'courseId': this.courseId, 'mode': this.mode});
+            localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
+            this.courseSelected = true;
+            this.compareCount.text(this.selectedCourses.length);
+            if (this.selectedCourses.length < 2) {
+                this.compareContent.addClass('full-width');
+                this.compareNotEnough.show();
+                this.compareEnough.hide();
+            } else {
+                this.compareContent.removeClass('full-width');
+                this.compareNotEnough.hide();
+                this.compareEnough.show();
+            }
+            this.compareContent
+            this.compareBar.slideDown("slow");
         }
     }
 
     function init() {
         var compareBtns = $('.course-detail__compare-btn');
+        var compareBars = $('.compare-popup');
         for (var i = 0; i < compareBtns.length; i++) {
-            new CompareSelector(compareBtns[i]);
+            new CompareSelector(compareBtns[i], compareBars[0]);
         }
     }
 

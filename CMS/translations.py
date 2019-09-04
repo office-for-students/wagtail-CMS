@@ -63,6 +63,10 @@ DICT = {
         'en': 'Compare course',
         'cy': ''
     },
+    'compare_courses': {
+        'en': 'Compare courses',
+        'cy': ''
+    },
     'completed_course': {
         'en': 'Have completed the course (started in the final year due to prior study)',
         'cy': ''
@@ -77,6 +81,10 @@ DICT = {
     },
     'countries': {
         'en': 'Countries',
+        'cy': ''
+    },
+    'course_added': {
+        'en': 'course added to course comparison.',
         'cy': ''
     },
     'course_details': {
@@ -295,6 +303,10 @@ DICT = {
     },
     'no_results_found': {
         'en': 'No results found',
+        'cy': ''
+    },
+    'not_enough': {
+        'en': 'Add another to compare courses.',
         'cy': ''
     },
     'not_professional_or_managerial': {
