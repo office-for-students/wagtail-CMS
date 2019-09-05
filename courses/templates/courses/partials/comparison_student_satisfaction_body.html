@@ -1,950 +1,41 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags %}
 
-<div class="comparison__course-columns">
-    <div class="comparison__course-column">
-        <div class="comparison__course">
-            {% if course1.overall_satisfaction.0.satisfaction_stats.question_27.show_data_point %}
-                <div class="student-satisfaction__overview">
-                    <div class="discover-uni-container">
-                        <p class="student-satisfaction__overview-lead">
-                            {{ course1.overall_satisfaction.0.satisfaction_stats.question_27.agree_or_strongly_agree }}%
-                        </p>
-
-                        <p>
-                            {{ block.value.lead_text }}
-                        </p>
-                    </div>
-                </div>
-            {% endif %}
-
-            <div class="student-satisfaction__intro">
-                {% create_list course1.overall_satisfaction.0.satisfaction_stats.number_of_students course1.overall_satisfaction.0.satisfaction_stats.response_rate as substitutions %}
-                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
-                {{ subbed_text | richtext }}
-            </div>
-        </div>
-    </div>
-
-    <div class="comparison__course-column">
-        <div class="comparison__course">
-            {% if course2.overall_satisfaction.0.satisfaction_stats.question_27.show_data_point %}
-                <div class="student-satisfaction__overview">
-                    <div class="discover-uni-container">
-                        <p class="student-satisfaction__overview-lead">
-                            {{ course2.overall_satisfaction.0.satisfaction_stats.question_27.agree_or_strongly_agree }}%
-                        </p>
-
-                        <p>
-                            {{ block.value.lead_text }}
-                        </p>
-                    </div>
-                </div>
-            {% endif %}
-
-            <div class="student-satisfaction__intro">
-                {% create_list course2.overall_satisfaction.0.satisfaction_stats.number_of_students course2.overall_satisfaction.0.satisfaction_stats.response_rate as substitutions %}
-                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
-                {{ subbed_text | richtext }}
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="student-satisfaction__block">
-    {% if course1.overall_satisfaction.0.satisfaction_stats.show_teaching_stats or course2.overall_satisfaction.0.satisfaction_stats.show_teaching_stats %}
-        <div class="student-satisfaction__data-group">
-            <h2 class="student-satisfaction__data-group-heading">
-                {{block.value.teaching_stats_header }}
-            </h2>
-
-            <div class="student-satisfaction__charts">
-                <div class="comparison__course-columns">
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_1.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_1.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_1.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_2.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_2.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_2.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_3.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_3.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_3.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_4.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_4.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_4.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_1.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_1.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_1.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_2.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_2.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_2.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_3.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_3.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_3.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_4.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_4.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_4.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-
-    {% if course1.overall_satisfaction.0.satisfaction_stats.show_learning_opps_stats  or course2.overall_satisfaction.0.satisfaction_stats.show_learning_opps_stats %}
-        <div class="student-satisfaction__data-group">
-            <h2 class="student-satisfaction__data-group-heading">
-                {{block.value.learning_opportunities_stats_header }}
-            </h2>
-
-            <div class="student-satisfaction__charts">
-                <div class="comparison__course-columns">
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_5.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_5.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_5.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_6.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_6.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_6.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_7.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_7.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_7.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_5.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_5.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_5.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_6.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_6.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_6.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_7.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_7.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_7.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-
-    {% if course1.overall_satisfaction.0.satisfaction_stats.show_assessment_stats or course2.overall_satisfaction.0.satisfaction_stats.show_assessment_stats %}
-        <div class="student-satisfaction__data-group">
-            <h2 class="student-satisfaction__data-group-heading">
-                {{block.value.assessment_stats_header }}
-            </h2>
-
-            <div class="student-satisfaction__charts">
-                <div class="comparison__course-columns">
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_8.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_8.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_8.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_9.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_9.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_9.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_10.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_10.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_10.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_11.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_11.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_11.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_8.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_8.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_8.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_9.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_9.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_9.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_10.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_10.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_10.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_11.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_11.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_11.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-
-    {% if course1.overall_satisfaction.0.satisfaction_stats.show_support_stats or course2.overall_satisfaction.0.satisfaction_stats.show_support_stats %}
-        <div class="student-satisfaction__data-group">
-            <h2 class="student-satisfaction__data-group-heading">
-                {{block.value.support_stats_header }}
-            </h2>
-
-            <div class="student-satisfaction__charts">
-                <div class="comparison__course-columns">
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_12.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_12.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_12.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_13.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_13.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_13.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_14.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_14.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_14.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_12.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_12.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_12.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_13.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_13.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_13.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_14.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_14.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_14.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-
-    {% if course1.overall_satisfaction.0.satisfaction_stats.show_organisation_stats or course2.overall_satisfaction.0.satisfaction_stats.show_organisation_stats %}
-        <div class="student-satisfaction__data-group">
-            <h2 class="student-satisfaction__data-group-heading">
-                {{block.value.organisation_stats_header }}
-            </h2>
-
-            <div class="student-satisfaction__charts">
-                <div class="comparison__course-columns">
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_15.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_15.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_15.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_16.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_16.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_16.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_17.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_17.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_17.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_15.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_15.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_15.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_16.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_16.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_16.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_17.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_17.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_17.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-
-    {% if course1.overall_satisfaction.0.satisfaction_stats.show_learning_resources_stats or course1.overall_satisfaction.0.satisfaction_stats.show_learning_resources_stats %}
-        <div class="student-satisfaction__data-group">
-            <h2 class="student-satisfaction__data-group-heading">
-                {{block.value.learning_resources_stats_header }}
-            </h2>
-
-            <div class="student-satisfaction__charts">
-                <div class="comparison__course-columns">
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_18.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_18.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_18.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_19.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_19.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_19.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_20.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_20.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_20.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_18.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_18.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_18.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_19.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_19.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_19.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_20.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_20.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_20.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-
-    {% if course1.overall_satisfaction.0.satisfaction_stats.show_learning_community_stats or course2.overall_satisfaction.0.satisfaction_stats.show_learning_community_stats %}
-        <div class="student-satisfaction__data-group">
-            <h2 class="student-satisfaction__data-group-heading">
-                {{block.value.learning_community_stats_header }}
-            </h2>
-
-            <div class="student-satisfaction__charts">
-                <div class="comparison__course-columns">
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_21.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_21.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_21.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_22.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_22.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_22.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_21.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_21.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_21.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_22.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_22.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_22.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-
-    {% if course1.overall_satisfaction.0.satisfaction_stats.show_voice_stats or course2.overall_satisfaction.0.satisfaction_stats.show_voice_stats %}
-        <div class="student-satisfaction__data-group">
-            <h2 class="student-satisfaction__data-group-heading">
-                {{block.value.student_voice_stats_header }}
-            </h2>
-
-            <div class="student-satisfaction__charts">
-                <div class="comparison__course-columns">
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_23.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_23.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_23.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_24.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_24.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_24.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_25.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_25.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_25.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.satisfaction_stats.question_26.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.satisfaction_stats.question_26.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.satisfaction_stats.question_26.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_23.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_23.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_23.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_24.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_24.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_24.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_25.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_25.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_25.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.satisfaction_stats.question_26.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.satisfaction_stats.question_26.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.satisfaction_stats.question_26.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-
-    {% if course1.overall_satisfaction.0.nhs_satisfaction_stats.show_nhs_stats or course2.overall_satisfaction.0.nhs_satisfaction_stats.show_nhs_stats %}
-        <div class="student-satisfaction__data-group">
-            <h2 class="student-satisfaction__data-group-heading">
-                {{block.value.nhs_placement_stats_header }}
-            </h2>
-
-            <div class="student-satisfaction__charts">
-                <div class="comparison__course-columns">
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course1.overall_satisfaction.0.nhs_satisfaction_stats.question_1.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.nhs_satisfaction_stats.question_1.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.nhs_satisfaction_stats.question_1.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.nhs_satisfaction_stats.question_2.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.nhs_satisfaction_stats.question_2.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.nhs_satisfaction_stats.question_2.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.nhs_satisfaction_stats.question_3.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.nhs_satisfaction_stats.question_3.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.nhs_satisfaction_stats.question_3.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.nhs_satisfaction_stats.question_4.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.nhs_satisfaction_stats.question_4.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.nhs_satisfaction_stats.question_4.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.nhs_satisfaction_stats.question_5.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.nhs_satisfaction_stats.question_5.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.nhs_satisfaction_stats.question_5.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course1.overall_satisfaction.0.nhs_satisfaction_stats.question_6.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course1.overall_satisfaction.0.nhs_satisfaction_stats.question_6.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course1.overall_satisfaction.0.nhs_satisfaction_stats.question_6.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1.overall_satisfaction.0.nhs_satisfaction_stats.unavailable_reason %}
-                        </div>
-                    </div>
-
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {%  if course2.overall_satisfaction.0.nhs_satisfaction_stats.question_1.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.nhs_satisfaction_stats.question_1.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.nhs_satisfaction_stats.question_1.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.nhs_satisfaction_stats.question_2.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.nhs_satisfaction_stats.question_2.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.nhs_satisfaction_stats.question_2.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.nhs_satisfaction_stats.question_3.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.nhs_satisfaction_stats.question_3.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.nhs_satisfaction_stats.question_3.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.nhs_satisfaction_stats.question_4.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.nhs_satisfaction_stats.question_4.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.nhs_satisfaction_stats.question_4.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.nhs_satisfaction_stats.question_5.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.nhs_satisfaction_stats.question_5.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.nhs_satisfaction_stats.question_5.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {%  if course2.overall_satisfaction.0.nhs_satisfaction_stats.question_6.show_data_point %}
-                                <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                         data-value="{{course2.overall_satisfaction.0.nhs_satisfaction_stats.question_6.agree_or_strongly_agree}}">
-                                        {% include 'courses/partials/doughnut_chart.html' %}
-
-                                        <p class="student-satisfaction__chart-title">{{course2.overall_satisfaction.0.nhs_satisfaction_stats.question_6.description}}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1.overall_satisfaction.0.nhs_satisfaction_stats.unavailable_reason %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
+{% comment %}
+{% get_max_length course1.overall_satisfaction course2.overall_satisfaction as max_overall_satisfaction_length %}
+
+{% for i in max_overall_satisfaction_length|times %}
+{% endcomment %}
+    {% get_index 0 course1.overall_satisfaction as course1_overall_satisfaction %}
+    {% get_index 0 course2.overall_satisfaction as course2_overall_satisfaction %}
 
     <div class="comparison__course-columns">
         <div class="comparison__course-column">
             <div class="comparison__course">
-                <div class="explanation-text">
-                    {% create_list course1.overall_satisfaction.0.nhs_satisfaction_stats.number_of_students course1.overall_satisfaction.0.nhs_satisfaction_stats.response_rate as substitutions %}
-                    {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
+                {% comment %}
+                {% if course1.has_multiple_satisfaction_stats %}
+                    <h2 class="satisfaction_subject_name">
+                        {% get_translation key='data_for' language=page.get_language %}: {{course1_overall_satisfaction.satisfaction_stats.display_subject_name}}
+                    </h2>
+                {% endif %}
+                {% endcomment %}
+
+                {% if course1_overall_satisfaction.satisfaction_stats.question_27.show_data_point %}
+                    <div class="student-satisfaction__overview">
+                        <div class="discover-uni-container">
+                            <p class="student-satisfaction__overview-lead">
+                                {{ course1_overall_satisfaction.satisfaction_stats.question_27.agree_or_strongly_agree }}%
+                            </p>
+
+                            <p>
+                                {{ block.value.lead_text }}
+                            </p>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="student-satisfaction__intro">
+                    {% create_list course1_overall_satisfaction.satisfaction_stats.number_of_students course1_overall_satisfaction.satisfaction_stats.response_rate as substitutions %}
+                    {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
                     {{ subbed_text | richtext }}
                 </div>
             </div>
@@ -952,12 +43,948 @@
 
         <div class="comparison__course-column">
             <div class="comparison__course">
-                <div class="explanation-text">
-                    {% create_list course2.overall_satisfaction.0.nhs_satisfaction_stats.number_of_students course2.overall_satisfaction.0.nhs_satisfaction_stats.response_rate as substitutions %}
-                    {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
+                {% comment %}
+                {% if course2.has_multiple_satisfaction_stats %}
+                    <h2 class="satisfaction_subject_name">
+                        {% get_translation key='data_for' language=page.get_language %}: {{course2_overall_satisfaction.satisfaction_stats.display_subject_name}}
+                    </h2>
+                {% endif %}
+                {% endcomment %}
+
+                {% if course2_overall_satisfaction.satisfaction_stats.question_27.show_data_point %}
+                    <div class="student-satisfaction__overview">
+                        <div class="discover-uni-container">
+                            <p class="student-satisfaction__overview-lead">
+                                {{ course2_overall_satisfaction.satisfaction_stats.question_27.agree_or_strongly_agree }}%
+                            </p>
+
+                            <p>
+                                {{ block.value.lead_text }}
+                            </p>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="student-satisfaction__intro">
+                    {% create_list course2_overall_satisfaction.satisfaction_stats.number_of_students course2_overall_satisfaction.satisfaction_stats.response_rate as substitutions %}
+                    {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
                     {{ subbed_text | richtext }}
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="student-satisfaction__block">
+        {% if course1_overall_satisfaction.satisfaction_stats.show_teaching_stats or course2_overall_satisfaction.satisfaction_stats.show_teaching_stats %}
+            <div class="student-satisfaction__data-group">
+                <h2 class="student-satisfaction__data-group-heading">
+                    {{block.value.teaching_stats_header }}
+                </h2>
+
+                <div class="student-satisfaction__charts">
+                    <div class="comparison__course-columns">
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_1.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_1.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_1.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_2.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_2.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_2.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_3.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_3.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_3.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_4.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_4.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_4.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_1.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_1.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_1.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_2.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_2.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_2.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_3.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_3.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_3.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_4.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_4.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_4.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if course1_overall_satisfaction.satisfaction_stats.show_learning_opps_stats  or course2_overall_satisfaction.satisfaction_stats.show_learning_opps_stats %}
+            <div class="student-satisfaction__data-group">
+                <h2 class="student-satisfaction__data-group-heading">
+                    {{block.value.learning_opportunities_stats_header }}
+                </h2>
+
+                <div class="student-satisfaction__charts">
+                    <div class="comparison__course-columns">
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_5.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_5.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_5.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_6.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_6.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_6.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_7.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_7.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_7.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_5.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_5.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_5.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_6.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_6.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_6.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_7.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_7.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_7.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if course1_overall_satisfaction.satisfaction_stats.show_assessment_stats or course2_overall_satisfaction.satisfaction_stats.show_assessment_stats %}
+            <div class="student-satisfaction__data-group">
+                <h2 class="student-satisfaction__data-group-heading">
+                    {{block.value.assessment_stats_header }}
+                </h2>
+
+                <div class="student-satisfaction__charts">
+                    <div class="comparison__course-columns">
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_8.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_8.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_8.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_9.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_9.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_9.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_10.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_10.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_10.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_11.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_11.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_11.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_8.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_8.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_8.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_9.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_9.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_9.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_10.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_10.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_10.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_11.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_11.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_11.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if course1_overall_satisfaction.satisfaction_stats.show_support_stats or course2_overall_satisfaction.satisfaction_stats.show_support_stats %}
+            <div class="student-satisfaction__data-group">
+                <h2 class="student-satisfaction__data-group-heading">
+                    {{block.value.support_stats_header }}
+                </h2>
+
+                <div class="student-satisfaction__charts">
+                    <div class="comparison__course-columns">
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_12.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_12.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_12.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_13.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_13.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_13.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_14.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_14.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_14.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_12.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_12.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_12.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_13.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_13.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_13.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_14.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_14.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_14.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if course1_overall_satisfaction.satisfaction_stats.show_organisation_stats or course2_overall_satisfaction.satisfaction_stats.show_organisation_stats %}
+            <div class="student-satisfaction__data-group">
+                <h2 class="student-satisfaction__data-group-heading">
+                    {{block.value.organisation_stats_header }}
+                </h2>
+
+                <div class="student-satisfaction__charts">
+                    <div class="comparison__course-columns">
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_15.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_15.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_15.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_16.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_16.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_16.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_17.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_17.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_17.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_15.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_15.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_15.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_16.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_16.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_16.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_17.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_17.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_17.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if course1_overall_satisfaction.satisfaction_stats.show_learning_resources_stats or course1_overall_satisfaction.satisfaction_stats.show_learning_resources_stats %}
+            <div class="student-satisfaction__data-group">
+                <h2 class="student-satisfaction__data-group-heading">
+                    {{block.value.learning_resources_stats_header }}
+                </h2>
+
+                <div class="student-satisfaction__charts">
+                    <div class="comparison__course-columns">
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_18.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_18.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_18.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_19.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_19.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_19.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_20.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_20.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_20.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_18.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_18.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_18.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_19.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_19.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_19.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_20.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_20.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_20.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if course1_overall_satisfaction.satisfaction_stats.show_learning_community_stats or course2_overall_satisfaction.satisfaction_stats.show_learning_community_stats %}
+            <div class="student-satisfaction__data-group">
+                <h2 class="student-satisfaction__data-group-heading">
+                    {{block.value.learning_community_stats_header }}
+                </h2>
+
+                <div class="student-satisfaction__charts">
+                    <div class="comparison__course-columns">
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_21.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_21.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_21.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_22.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_22.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_22.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_21.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_21.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_21.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_22.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_22.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_22.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if course1_overall_satisfaction.satisfaction_stats.show_voice_stats or course2_overall_satisfaction.satisfaction_stats.show_voice_stats %}
+            <div class="student-satisfaction__data-group">
+                <h2 class="student-satisfaction__data-group-heading">
+                    {{block.value.student_voice_stats_header }}
+                </h2>
+
+                <div class="student-satisfaction__charts">
+                    <div class="comparison__course-columns">
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_23.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_23.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_23.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_24.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_24.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_24.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_25.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_25.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_25.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.satisfaction_stats.question_26.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.satisfaction_stats.question_26.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.satisfaction_stats.question_26.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_23.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_23.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_23.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_24.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_24.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_24.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_25.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_25.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_25.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.satisfaction_stats.question_26.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.satisfaction_stats.question_26.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.satisfaction_stats.question_26.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if course1_overall_satisfaction.nhs_satisfaction_stats.show_nhs_stats or course2_overall_satisfaction.nhs_satisfaction_stats.show_nhs_stats %}
+            <div class="student-satisfaction__data-group">
+                <h2 class="student-satisfaction__data-group-heading">
+                    {{block.value.nhs_placement_stats_header }}
+                </h2>
+
+                <div class="student-satisfaction__charts">
+                    <div class="comparison__course-columns">
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course1_overall_satisfaction.nhs_satisfaction_stats.question_1.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.nhs_satisfaction_stats.question_1.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.nhs_satisfaction_stats.question_1.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.nhs_satisfaction_stats.question_2.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.nhs_satisfaction_stats.question_2.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.nhs_satisfaction_stats.question_2.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.nhs_satisfaction_stats.question_3.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.nhs_satisfaction_stats.question_3.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.nhs_satisfaction_stats.question_3.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.nhs_satisfaction_stats.question_4.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.nhs_satisfaction_stats.question_4.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.nhs_satisfaction_stats.question_4.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.nhs_satisfaction_stats.question_5.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.nhs_satisfaction_stats.question_5.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.nhs_satisfaction_stats.question_5.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course1_overall_satisfaction.nhs_satisfaction_stats.question_6.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course1_overall_satisfaction.nhs_satisfaction_stats.question_6.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course1_overall_satisfaction.nhs_satisfaction_stats.question_6.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_overall_satisfaction.nhs_satisfaction_stats.unavailable_reason %}
+                            </div>
+                        </div>
+
+                        <div class="comparison__course-column">
+                            <div class="comparison__course">
+                                {%  if course2_overall_satisfaction.nhs_satisfaction_stats.question_1.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.nhs_satisfaction_stats.question_1.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.nhs_satisfaction_stats.question_1.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.nhs_satisfaction_stats.question_2.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.nhs_satisfaction_stats.question_2.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.nhs_satisfaction_stats.question_2.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.nhs_satisfaction_stats.question_3.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.nhs_satisfaction_stats.question_3.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.nhs_satisfaction_stats.question_3.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.nhs_satisfaction_stats.question_4.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.nhs_satisfaction_stats.question_4.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.nhs_satisfaction_stats.question_4.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.nhs_satisfaction_stats.question_5.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.nhs_satisfaction_stats.question_5.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.nhs_satisfaction_stats.question_5.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {%  if course2_overall_satisfaction.nhs_satisfaction_stats.question_6.show_data_point %}
+                                    <div class="student-satisfaction__chart-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                             data-value="{{course2_overall_satisfaction.nhs_satisfaction_stats.question_6.agree_or_strongly_agree}}">
+                                            {% include 'courses/partials/doughnut_chart.html' %}
+
+                                            <p class="student-satisfaction__chart-title">{{course2_overall_satisfaction.nhs_satisfaction_stats.question_6.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_overall_satisfaction.nhs_satisfaction_stats.unavailable_reason %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="comparison__course-columns">
+            <div class="comparison__course-column">
+                <div class="comparison__course">
+                    <div class="explanation-text">
+                        {% create_list course1_overall_satisfaction.nhs_satisfaction_stats.number_of_students course1_overall_satisfaction.nhs_satisfaction_stats.response_rate as substitutions %}
+                        {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
+                        {{ subbed_text | richtext }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison__course-column">
+                <div class="comparison__course">
+                    <div class="explanation-text">
+                        {% create_list course2_overall_satisfaction.nhs_satisfaction_stats.number_of_students course2_overall_satisfaction.nhs_satisfaction_stats.response_rate as substitutions %}
+                        {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
+                        {{ subbed_text | richtext }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% comment %}
+{% endfor %}
+{% endcomment %}

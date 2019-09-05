@@ -1,10 +1,12 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags %}
 
+{% comment %}
 {% get_max_length course1.entry_stats course2.entry_stats as max_entry_stats_length %}
 
 {% for i in max_entry_stats_length|times %}
-    {% get_index i course1.entry_stats as course1_entry_stats %}
-    {% get_index i course2.entry_stats as course2_entry_stats %}
+{% endcomment %}
+    {% get_index 0 course1.entry_stats as course1_entry_stats %}
+    {% get_index 0 course2.entry_stats as course2_entry_stats %}
 
     {% if course1_entry_stats.display_stats or course2_entry_stats.display_stats %}
         <div class="entry-information__block">
@@ -164,14 +166,17 @@
             </div>
         </div>
     {% endif %}
+{% comment %}
 {% endfor %}
+{% endcomment %}
 
-
+{% comment %}
 {% get_max_length course1.entry_stats course2.entry_stats as max_tariff_stats_length %}
 
 {% for i in max_tariff_stats_length|times %}
-    {% get_index i course1.tariff_stats as course1_tariff_stats %}
-    {% get_index i course2.tariff_stats as course2_tariff_stats %}
+{% endcomment %}
+    {% get_index 0 course1.tariff_stats as course1_tariff_stats %}
+    {% get_index 0 course2.tariff_stats as course2_tariff_stats %}
 
     {% if course1_tariff_stats.show_stats or course2_tariff_stats.show_stats %}
         <div class="entry-information__block">
@@ -224,4 +229,6 @@
             </div>
         </div>
     {% endif %}
+{% comment %}
 {% endfor %}
+{% endcomment %}
