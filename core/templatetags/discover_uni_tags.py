@@ -111,3 +111,21 @@ def title_to_id(title):
 @register.simple_tag
 def get_alphabet():
     return list(string.ascii_lowercase)
+
+
+@register.simple_tag
+def get_max_length(list1, list2):
+    return len(list1) if len(list1) > len(list2) else len(list2)
+
+
+@register.filter(name='times')
+def times(number):
+    return range(number)
+
+
+@register.simple_tag
+def get_index(index, view_list):
+    print(index, view_list, len(view_list))
+    if len(view_list) > index:
+        return view_list[index]
+    return None
