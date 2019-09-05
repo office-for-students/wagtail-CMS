@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^course-finder/results/$', coursefinder_views.course_finder_results, name='course_finder_results'),
 
     url(r'^widget/', include('widget.urls')),
+    url(r'^Widget/', include('widget.urls')),
     url(r'^course-details/', include(courses_urls)),
     url(r'^institution-details/', include(institution_urls)),
 
