@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles sass_tags wagtailcore_tags %}
+{% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
 
 
 {% block extra_css %}
@@ -41,35 +41,62 @@
             {{page.compare_heading}}
         </h2>
 
-        <div class="comparison__courses">
-            <div class="comparison__course-column">
-                <div class="comparison__course">
-                    <div id="course1" class="comparison__course-selector">
-                        <select>
-                            <option value="na" disabled selected>Select a course</option>
-                        </select>
-                    </div>
+        <div class="comparison__courses course-detail">
+            <div class="comparison__course-columns">
+                <div class="comparison__course-column">
+                    <div class="comparison__course">
+                        <div id="course1" class="comparison__course-selector">
+                            <select>
+                                <option value="na" disabled selected>Select a course</option>
+                            </select>
+                        </div>
 
-                    <div class="course-detail">
                         {% if course1 %}
                             {% include 'courses/partials/course_overview.html' with course=course1 %}
                         {% endif %}
                     </div>
                 </div>
-            </div>
 
-            <div class="comparison__course-column">
-                <div class="comparison__course">
-                    <div id="course2" class="comparison__course-selector">
-                        <select>
-                            <option value="na" disabled selected>Select a course</option>
-                        </select>
-                    </div>
+                <div class="comparison__course-column">
+                    <div class="comparison__course">
+                        <div id="course2" class="comparison__course-selector">
+                            <select>
+                                <option value="na" disabled selected>Select a course</option>
+                            </select>
+                        </div>
 
-                    <div class="course-detail">
                         {% if course2 %}
                             {% include 'courses/partials/course_overview.html' with course=course2 %}
                         {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-detail__body">
+                <div class="discover-uni-container">
+                    <div class="course-detail__accordion-block">
+                        {% for accordion in page.accordions %}
+                            {% create_list course1 course2 as courses %}
+                            {% should_show_accordion courses accordion.value.data_set as show_accordion %}
+                            {% if show_accordion %}
+                                <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
+                                    <div class="discover-uni-container">
+                                        <h2 class="course-detail__accordion-heading">
+                                            {{ accordion.value.heading }}
+
+                                            <span class="course-detail__accordion-heading-chevron">
+                                                    <img class="course-detail__icon plus" src="{% static 'images/plus_icon.svg' %}" alt="">
+                                                    <img class="course-detail__icon minus" src="{% static 'images/minus_icon.svg' %}" alt="">
+                                                </span>
+                                        </h2>
+                                    </div>
+
+                                    <div class="course-detail__accordion-body">
+                                        {% include 'courses/partials/comparison_'|add:accordion.value.data_set|add:'_body.html' with block=accordion %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
