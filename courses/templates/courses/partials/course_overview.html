@@ -1,0 +1,61 @@
+{% load staticfiles discover_uni_tags %}
+
+<div class="course-detail__lead">
+    <div class="discover-uni-container">
+        <img class="course-detail__icon" src="{% static 'images/certificate.svg' %}" alt="">
+
+        <h1 class="course-detail__course-name">
+            {{course.display_title}}
+        </h1>
+
+        <button class="course-detail__compare-btn">
+            <span  class="add">+</span><span  class="remove">-</span> {% get_translation key='compare_course' language=page.get_language %}
+        </button>
+    </div>
+
+    <div class="course-detail__institution-info">
+        <div class="discover-uni-container">
+            <a class="course-detail__institution-name" href="/institution-details/{{course.institution.pub_ukprn}}/">
+                {% autoescape off %}{{course.institution.pub_ukprn_name | safe}}{% endautoescape %}
+            </a>
+
+            <p class="course-detail__institution-locations">
+                {{ course.number_of_locations }} {% get_translation key='locations' language=page.get_language %}: {{ course.locations_list }}
+            </p>
+        </div>
+    </div>
+
+    <div class="discover-uni-container">
+        <div class="course-detail__course-overview overview-group">
+            <div class="course-detail__overview-item overview-block">
+                <p class="course-detail__overview-item-heading">{% get_translation key='length' language=page.get_language %}</p>
+                <p class="course-detail__overview-item-value">{{ course.length.label | slice:1 }} {% get_translation key='year_course' language=page.get_language %}</p>
+            </div>
+
+            <div class="course-detail__overview-item overview-block">
+                <p class="course-detail__overview-item-heading">{% get_translation key='study_mode' language=page.get_language %}</p>
+                <p class="course-detail__overview-item-value">{{ course.mode.label }}</p>
+            </div>
+
+            <div class="course-detail__overview-item overview-block">
+                <p class="course-detail__overview-item-heading">{% get_translation key='distance_learning' language=page.get_language %}</p>
+                <p class="course-detail__overview-item-value">{{ course.distance_learning.display_label }}</p>
+            </div>
+
+            <div class="course-detail__overview-item overview-block">
+                <p class="course-detail__overview-item-heading">{% get_translation key='placement_year' language=page.get_language %}</p>
+                <p class="course-detail__overview-item-value">{{ course.sandwich_year.label }}</p>
+            </div>
+
+            <div class="course-detail__overview-item overview-block">
+                <p class="course-detail__overview-item-heading">{% get_translation key='year_abroad' language=page.get_language %}</p>
+                <p class="course-detail__overview-item-value">{{ course.year_abroad.label }}</p>
+            </div>
+
+            <div class="course-detail__overview-item overview-block">
+                <p class="course-detail__overview-item-heading">{% get_translation key='foundation_year' language=page.get_language %}</p>
+                <p class="course-detail__overview-item-value">{{ course.foundation_year.label }}</p>
+            </div>
+        </div>
+    </div>
+</div>
