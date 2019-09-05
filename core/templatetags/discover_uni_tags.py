@@ -59,17 +59,47 @@ def map_distance_learning_values(key, language):
 
 
 @register.simple_tag
-def should_show_accordion(course, accordion_type):
+def should_show_accordion(courses, accordion_type):
     if accordion_type == STUDENT_SATISFACTION_KEY:
-        return course.show_satisfaction_stats
+        if type(courses) == tuple:
+            show = False
+            for course in courses:
+                if course.show_satisfaction_stats:
+                    show = True
+            return show
+        return courses.show_satisfaction_stats
     elif accordion_type == ACCREDITATION_KEY:
-        return course.accreditations
+        if type(courses) == tuple:
+            show = False
+            for course in courses:
+                if course.accreditations:
+                    show = True
+            return show
+        return courses.accreditations
     elif accordion_type == ENTRY_INFO_KEY:
-        return course.show_entry_information_stats
+        if type(courses) == tuple:
+            show = False
+            for course in courses:
+                if course.show_entry_information_stats:
+                    show = True
+            return show
+        return courses.show_entry_information_stats
     elif accordion_type == AFTER_ONE_YEAR_KEY:
-        return course.show_after_one_year_stats
+        if type(courses) == tuple:
+            show = False
+            for course in courses:
+                if course.show_after_one_year_stats:
+                    show = True
+            return show
+        return courses.show_after_one_year_stats
     elif accordion_type == AFTER_COURSE_KEY:
-        return course.show_after_course_stats
+        if type(courses) == tuple:
+            show = False
+            for course in courses:
+                if course.show_after_course_stats:
+                    show = True
+            return show
+        return courses.show_after_course_stats
     return False
 
 
