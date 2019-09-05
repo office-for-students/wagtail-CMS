@@ -103,6 +103,16 @@
                     }
                 }
             }
+
+            .select-items {
+                width: calc(100vw - 60px);
+            }
+
+            &#course2 {
+                .select-items {
+                    left: initial;
+                }
+            }
         }
     }
 }
