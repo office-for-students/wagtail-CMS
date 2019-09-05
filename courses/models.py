@@ -159,6 +159,13 @@ class CourseComparisonPage(DiscoverUniBasePage):
     remove_text = RichTextField(blank=True)
     save_text = RichTextField(blank=True)
     compare_heading = TextField(blank=True)
+    accordions = StreamField([
+        ('satisfaction_panel', SatisfactionBlock(required=True, icon='collapse-down')),
+        ('entry_information_panel', EntryInformationBlock(required=True, icon='collapse-down')),
+        ('after_one_year_panel', AfterOneYearBlock(required=True, icon='collapse-down')),
+        ('after_course_panel', AfterCourseBlock(required=True, icon='collapse-down')),
+        ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down'))
+    ])
 
     content_panels = Page.content_panels + [
         FieldPanel('heading'),
@@ -166,6 +173,7 @@ class CourseComparisonPage(DiscoverUniBasePage):
         FieldPanel('remove_text'),
         FieldPanel('save_text'),
         FieldPanel('compare_heading'),
+        StreamFieldPanel('accordions'),
     ]
 
 
