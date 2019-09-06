@@ -125,7 +125,35 @@ def times(number):
 
 @register.simple_tag
 def get_index(index, view_list):
-    print(index, view_list, len(view_list))
     if len(view_list) > index:
         return view_list[index]
     return None
+
+
+@register.simple_tag
+def get_course_name(course, is_english):
+    name = ''
+    if course.get('qualification'):
+        name += course.get('qualification') + ' '
+    if course.get('honours_award') and course.get('honours_award') == 1:
+        name += '(Hons) '
+    title = course.get('title')
+    if title and is_english:
+        name += title.get('english') if title.get('english') else title.get('welsh')
+    else:
+        name += title.get('welsh') if title.get('welsh') else title.get('english')
+    return name
+
+
+@register.simple_tag
+def get_course_locations_list(locations, is_english):
+    locations_list = []
+    if is_english:
+        for location in locations:
+            location_name = location.get('english') if location.get('english') else location.get('welsh')
+            locations_list.append(location_name)
+    else:
+        for location in locations:
+            location_name = location.get('welsh') if location.get('welsh') else location.get('english')
+            locations_list.append(location_name)
+    return ','.join(locations_list)

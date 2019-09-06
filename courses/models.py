@@ -183,6 +183,7 @@ class CourseManagePage(DiscoverUniBasePage):
     save_text = RichTextField(blank=True)
     compare_text = RichTextField(blank=True)
     none_selected_text = RichTextField(blank=True)
+    one_selected_text = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('heading'),
@@ -190,6 +191,7 @@ class CourseManagePage(DiscoverUniBasePage):
         FieldPanel('save_text'),
         FieldPanel('compare_text'),
         FieldPanel('none_selected_text'),
+        FieldPanel('one_selected_text'),
     ]
 
 

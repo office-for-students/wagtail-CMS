@@ -1,6 +1,10 @@
 {% load staticfiles discover_uni_tags %}
 
-<div class="course-detail comparison-course-area" data-coursename="{{course.display_title}}" data-uniname="{{course.institution.pub_ukprn_name}}">
+<div class="course-detail comparison-course-area"
+     data-coursename="{{course.display_title}}" data-uniname="{{course.institution.pub_ukprn_name}}" data-uniid="{{course.institution.pub_ukprn}}"
+     data-courseid="{{course.kis_course_id}}" data-mode="{{course.mode.label}}" data-length="{{course.length.label | slice:1}}"
+     data-distance="{{course.distance_learning.display_label}}" data-sandwich="{{course.sandwich_year.label}}" data-abroad="{{course.year_abroad.label}}"
+     data-loctaions="{{course.locations_list}}">
     {% include 'courses/partials/base_gradient.html' %}
     {% include 'courses/partials/course_overview.html' %}
 

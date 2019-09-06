@@ -12,17 +12,14 @@
             this.courseSelected = false;
             this.courseName = this.wrapper.data().coursename;
             this.uniName = this.wrapper.data().uniname;
-
-            var url = location.pathname.split('/');
-            if (url[1] === 'cy') {
-                this.uniId = url[3];
-                this.courseId = url[4];
-                this.mode = url[5];
-            } else {
-                this.uniId = url[2];
-                this.courseId = url[3];
-                this.mode = url[4];
-            }
+            this.uniId = this.wrapper.data().uniid;
+            this.courseId = this.wrapper.data().courseid;
+            this.mode = this.wrapper.data().mode;
+            this.length = this.wrapper.data().length;
+            this.distance = this.wrapper.data().distance;
+            this.sandwich = this.wrapper.data().sandwich;
+            this.abroad = this.wrapper.data().abroad;
+            this.locations = this.wrapper.data().locations;
 
             this.compareClose = this.compareBar.find('.compare-popup__close');
             this.compareAdd = this.compareBar.find('.compare-popup__add');
@@ -107,7 +104,9 @@
             } else {
                 this.button.addClass('selected');
                 this.selectedCourses.push({'uniId': this.uniId, 'courseId': this.courseId, 'mode': this.mode,
-                                            'courseName': this.courseName, 'uniName': this.uniName});
+                                            'courseName': this.courseName, 'uniName': this.uniName,
+                                            'length': this.length, 'distance': this.distance, 'sandwich': this.sandwich,
+                                            'abroad': this.abroad, 'locations': this.locations});
                 localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
                 this.courseSelected = true;
                 this.compareCount.text(this.selectedCourses.length);

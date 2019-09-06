@@ -1,18 +1,16 @@
 {% load staticfiles discover_uni_tags %}
 
-
-<div class="course-finder-results__result-accordion-body-content comparison-course-area">
+{% get_course_name course page.is_english as course_name %}
+{% map_distance_learning_values course.distance_learning page.get_language as distance_learning_display %}
+{% get_course_locations_list course.locations page.is_english as locations %}
+<div class="course-finder-results__result-accordion-body-content comparison-course-area"
+     data-coursename="{{course_name}}" data-uniname="{{ institution.pub_ukprn_name | title }}" data-uniid="{{institution_id}}"
+     data-courseid="{{course.kis_course_id}}" data-mode="{{course.mode}}" data-length="{{ course.length_of_course|slice:1 }}"
+     data-distance="{{distance_learning_display}}" data-sandwich="{{course.sandwich_year}}" data-abroad="{{course.year_abroad}}"
+     data-locations="{{locations}}">
     <a href="/course-details/{{institution_id}}/{{course.kis_course_id}}/{{course.mode}}"
        class="course-finder-results__result-accordion-body-course-name">
-        {% if course.qualification %}
-            {{ course.qualification }}
-        {% endif %}
-
-        {% if course.honours_award == 1 %}
-            (Hons)
-        {% endif %}
-
-        {{ course.title.english }}
+        {{ course_name }}
     </a>
 
     {% if course.length_of_course == "" or course.length_of_course == None %}
@@ -30,7 +28,7 @@
     </p>
 
     <p class="course-finder-results__result-accordion-body-course-info">
-        {% get_translation key='distance_learning' language=page.get_language %}: {% map_distance_learning_values course.distance_learning page.get_language %}
+        {% get_translation key='distance_learning' language=page.get_language %}: {{distance_learning_display}}
     </p>
 
     <p class="course-finder-results__result-accordion-body-course-info">
@@ -42,10 +40,7 @@
     </p>
 
     <p class="course-finder-results__result-accordion-body-course-info">
-        {% get_translation key='location' language=page.get_language %}:
-        {% for location in course.locations %}
-            {{ location.english }},
-        {% endfor %}
+        {% get_translation key='location' language=page.get_language %}: {{locations}}
     </p>
 
     <button class="course-detail__compare-btn">

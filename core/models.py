@@ -17,6 +17,9 @@ class DiscoverUniBasePage(Page):
             return 'cy'
         return 'en'
 
+    def is_english(self):
+        return self.get_language() == 'en'
+
     @property
     def menu(self):
         menu_name = enums.languages_map.get(self.get_language()).capitalize()

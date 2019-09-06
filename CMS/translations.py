@@ -377,6 +377,10 @@ DICT = {
         'en': 'Qualification type',
         'cy': ''
     },
+    'remove_course': {
+        'en': 'Remove course',
+        'cy': ''
+    },
     'remove_others': {
         'en': 'To remove courses go to',
         'cy': ''

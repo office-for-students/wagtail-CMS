@@ -44,5 +44,47 @@
                 </button>
             </div>
         </div>
+
+        <div class="bookmark__one-selected">
+            {{page.one_selected_text | richtext}}
+        </div>
+
+        <div class="bookmark__courses">
+            {% for i in 10|times %}
+                <div id="course-{{i}}" class="bookmark__course">
+                    <a href="" class="bookmark__course-name">
+                    </a>
+
+                    <p class="bookmark__course-info length">
+                        <span class="unknown">{% get_translation key='course_length_not_available' language=page.get_language %}</span>
+                        <span class="known"><span class="length"></span>-{% get_translation key='year_course' language=page.get_language %}</span>
+                    </p>
+
+                    <p class="bookmark__course-info mode">
+                        {% get_translation key='study_mode' language=page.get_language %}: <span class="mode"></span>
+                    </p>
+
+                    <p class="bookmark__course-info distance">
+                        {% get_translation key='distance_learning' language=page.get_language %}: <span class="distance"></span>
+                    </p>
+
+                    <p class="bookmark__course-info sandwich">
+                        {% get_translation key='work_placement_year' language=page.get_language %}: <span class="sandwich"></span>
+                    </p>
+
+                    <p class="bookmark__course-info abroad">
+                        {% get_translation key='year_abroad' language=page.get_language %}: <span class="abroad"></span>
+                    </p>
+
+                    <p class="bookmark__course-info location">
+                        {% get_translation key='location' language=page.get_language %}: <span class="location"></span>
+                    </p>
+
+                    <button class="bookmark__course-remove">
+                        <img class="bookmark__course-remove-icon" src="{% static 'images/bin.svg' %}" alt=""> {% get_translation key='remove_course' language=page.get_language %}
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
