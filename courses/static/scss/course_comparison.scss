@@ -129,6 +129,12 @@
         }
     }
 
+    &__subject-heading {
+        @include xs-heading--bold-mixin();
+
+        color: $ux-grey-3;
+    }
+
     .course-detail {
 
         &__compare-btn {
@@ -225,6 +231,12 @@
 
         &__heading {
             @include l-heading--bold-mixin();
+
+            color: $ux-grey-3;
+        }
+
+        &__subject-heading {
+            @include s-heading--bold-mixin();
 
             color: $ux-grey-3;
         }

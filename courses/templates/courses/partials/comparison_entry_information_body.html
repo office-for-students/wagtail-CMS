@@ -1,12 +1,10 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags %}
 
-{% comment %}
 {% get_max_length course1.entry_stats course2.entry_stats as max_entry_stats_length %}
 
 {% for i in max_entry_stats_length|times %}
-{% endcomment %}
-    {% get_index 0 course1.entry_stats as course1_entry_stats %}
-    {% get_index 0 course2.entry_stats as course2_entry_stats %}
+    {% get_index i course1.entry_stats as course1_entry_stats %}
+    {% get_index i course2.entry_stats as course2_entry_stats %}
 
     {% if course1_entry_stats.display_stats or course2_entry_stats.display_stats %}
         <div class="entry-information__block">
@@ -23,6 +21,12 @@
                     <div class="comparison__course">
                         <div class="entry-information__qualification-charts">
                             {% if course1_entry_stats %}
+                                {% if course1.has_multiple_entry_stats %}
+                                    <h3 class="comparison__subject-heading">
+                                        {{course1_entry_stats.display_subject_name}}
+                                    </h3>
+                                {% endif %}
+
                                 <div class="entry-information__chart discover-uni-chart bar" data-value="{{course1_entry_stats.degree}}">
                                     {% include 'courses/partials/bar_chart.html' %}
                                     <label class="entry-information__chart-label">{% get_translation key='degree' language=page.get_language %}</label>
@@ -71,6 +75,11 @@
                     <div class="comparison__course">
                         <div class="entry-information__qualification-charts">
                             {% if course2_entry_stats %}
+                                {% if course2.has_multiple_entry_stats %}
+                                    <h3 class="comparison__subject-heading">
+                                        {{course2_entry_stats.display_subject_name}}
+                                    </h3>
+                                {% endif %}
                                 <div class="entry-information__chart discover-uni-chart bar" data-value="{{course2_entry_stats.degree}}">
                                     {% include 'courses/partials/bar_chart.html' %}
                                     <label class="entry-information__chart-label">{% get_translation key='degree' language=page.get_language %}</label>
@@ -166,17 +175,13 @@
             </div>
         </div>
     {% endif %}
-{% comment %}
 {% endfor %}
-{% endcomment %}
 
-{% comment %}
 {% get_max_length course1.entry_stats course2.entry_stats as max_tariff_stats_length %}
 
 {% for i in max_tariff_stats_length|times %}
-{% endcomment %}
-    {% get_index 0 course1.tariff_stats as course1_tariff_stats %}
-    {% get_index 0 course2.tariff_stats as course2_tariff_stats %}
+    {% get_index i course1.tariff_stats as course1_tariff_stats %}
+    {% get_index i course2.tariff_stats as course2_tariff_stats %}
 
     {% if course1_tariff_stats.show_stats or course2_tariff_stats.show_stats %}
         <div class="entry-information__block">
@@ -190,19 +195,27 @@
                 <div class="comparison__course-column">
                     <div class="comparison__course">
                         <div class="entry-information__tariff-charts">
-                            {% for tariff in course1_tariff_stats.tariffs %}
-                                <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}">
-                                    {% include 'courses/partials/bar_chart.html' %}
+                            {% if course1_tariff_stats %}
+                                {% if course1.has_multiple_tariff_stats %}
+                                    <h3 class="comparison__subject-heading">
+                                        {{course1_tariff_stats.display_subject_name}}
+                                    </h3>
+                                {% endif %}
 
-                                    <label class="entry-information__chart-label"><span>{{tariff.label}}</span></label>
+                                {% for tariff in course1_tariff_stats.tariffs %}
+                                    <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}">
+                                        {% include 'courses/partials/bar_chart.html' %}
+
+                                        <label class="entry-information__chart-label"><span>{{tariff.label}}</span></label>
+                                    </div>
+                                {% endfor %}
+
+                                <div class="explanation-text">
+                                    {% create_list course1_tariff_stats.number_of_students as substitutions %}
+                                    {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
+                                    {{ subbed_text | richtext }}
                                 </div>
-                            {% endfor %}
-
-                            <div class="explanation-text">
-                                {% create_list course1_tariff_stats.number_of_students as substitutions %}
-                                {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
-                                {{ subbed_text | richtext }}
-                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -210,25 +223,31 @@
                 <div class="comparison__course-column">
                     <div class="comparison__course">
                         <div class="entry-information__tariff-charts">
-                            {% for tariff in course2_tariff_stats.tariffs %}
-                                <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}">
-                                    {% include 'courses/partials/bar_chart.html' %}
+                            {% if course2_tariff_stats %}
+                                {% if course2.has_multiple_tariff_stats %}
+                                    <h3 class="comparison__subject-heading">
+                                        {{course2_tariff_stats.display_subject_name}}
+                                    </h3>
+                                {% endif %}
 
-                                    <label class="entry-information__chart-label"><span>{{tariff.label}}</span></label>
+                                {% for tariff in course2_tariff_stats.tariffs %}
+                                    <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}">
+                                        {% include 'courses/partials/bar_chart.html' %}
+
+                                        <label class="entry-information__chart-label"><span>{{tariff.label}}</span></label>
+                                    </div>
+                                {% endfor %}
+
+                                <div class="explanation-text">
+                                    {% create_list course2_tariff_stats.number_of_students as substitutions %}
+                                    {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
+                                    {{ subbed_text | richtext }}
                                 </div>
-                            {% endfor %}
-
-                            <div class="explanation-text">
-                                {% create_list course2_tariff_stats.number_of_students as substitutions %}
-                                {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
-                                {{ subbed_text | richtext }}
-                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     {% endif %}
-{% comment %}
 {% endfor %}
-{% endcomment %}

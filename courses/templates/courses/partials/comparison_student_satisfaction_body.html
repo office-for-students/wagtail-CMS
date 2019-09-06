@@ -1,23 +1,19 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags %}
 
-{% comment %}
 {% get_max_length course1.overall_satisfaction course2.overall_satisfaction as max_overall_satisfaction_length %}
 
 {% for i in max_overall_satisfaction_length|times %}
-{% endcomment %}
-    {% get_index 0 course1.overall_satisfaction as course1_overall_satisfaction %}
-    {% get_index 0 course2.overall_satisfaction as course2_overall_satisfaction %}
+    {% get_index i course1.overall_satisfaction as course1_overall_satisfaction %}
+    {% get_index i course2.overall_satisfaction as course2_overall_satisfaction %}
 
     <div class="comparison__course-columns">
         <div class="comparison__course-column">
             <div class="comparison__course">
-                {% comment %}
                 {% if course1.has_multiple_satisfaction_stats %}
                     <h2 class="satisfaction_subject_name">
                         {% get_translation key='data_for' language=page.get_language %}: {{course1_overall_satisfaction.satisfaction_stats.display_subject_name}}
                     </h2>
                 {% endif %}
-                {% endcomment %}
 
                 {% if course1_overall_satisfaction.satisfaction_stats.question_27.show_data_point %}
                     <div class="student-satisfaction__overview">
@@ -43,13 +39,11 @@
 
         <div class="comparison__course-column">
             <div class="comparison__course">
-                {% comment %}
                 {% if course2.has_multiple_satisfaction_stats %}
                     <h2 class="satisfaction_subject_name">
                         {% get_translation key='data_for' language=page.get_language %}: {{course2_overall_satisfaction.satisfaction_stats.display_subject_name}}
                     </h2>
                 {% endif %}
-                {% endcomment %}
 
                 {% if course2_overall_satisfaction.satisfaction_stats.question_27.show_data_point %}
                     <div class="student-satisfaction__overview">
@@ -985,6 +979,4 @@
             </div>
         </div>
     </div>
-{% comment %}
 {% endfor %}
-{% endcomment %}
