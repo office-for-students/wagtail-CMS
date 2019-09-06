@@ -386,7 +386,7 @@ class Course:
         return len(self.job_type_stats) > 1
 
     @property
-    def has_multiple_job_lists_stats(self):
+    def has_multiple_job_lists(self):
         return len(self.job_lists) > 1
 
     @property
