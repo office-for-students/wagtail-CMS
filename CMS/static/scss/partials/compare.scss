@@ -1,6 +1,36 @@
 @import '../variables';
 @import '../fonts';
 
+.course-detail__compare-btn {
+    @include small-font--bold-mixin();
+
+    padding: 5px 10px;
+    margin-bottom: 26px;
+
+    border: 1.5px solid $ux-grey-3;
+    color: $ux-grey-3;
+    border-radius: 16px;
+    cursor: pointer;
+    background-color: transparent;
+
+    .remove {
+        display: none;
+    }
+
+    &.selected {
+        @include green-gradient-background-mixin();
+
+        border: 1.5px solid $gradient-light-green;
+
+        .add {
+            display: none;
+        }
+
+        .remove {
+            display: initial;
+        }
+    }
+}
 
 .compare-popup {
     position: fixed;

@@ -30,37 +30,6 @@
             margin-bottom: 17px;
         }
 
-        .course-detail__compare-btn {
-            @include small-font--bold-mixin();
-
-            padding: 5px 10px;
-            margin-bottom: 26px;
-
-            border: 1.5px solid $ux-grey-3;
-            color: $ux-grey-3;
-            border-radius: 16px;
-            cursor: pointer;
-            background-color: $white;
-
-            .remove {
-                display: none;
-            }
-
-            &.selected {
-                @include green-gradient-background-mixin();
-
-                border: 1.5px solid $gradient-light-green;
-
-                .add {
-                    display: none;
-                }
-
-                .remove {
-                    display: initial;
-                }
-            }
-        }
-
         .course-detail__institution-info {
             padding: 26px 30px 28px;
 

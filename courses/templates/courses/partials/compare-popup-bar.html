@@ -1,0 +1,28 @@
+{% load staticfiles discover_uni_tags %}
+
+
+<div class="compare-popup">
+    <div class="compare-popup__wrapper">
+        <span class="compare-popup__close"><img src="{% static 'images/close-grey.svg' %}" alt=""></span>
+
+        <div class="compare-popup__add">
+            <p class="compare-popup__count"><span class="count"></span> {% get_translation key='course_added' language=page.get_language %}</p>
+
+            <p class="compare-popup__not-enough">{% get_translation key='not_enough' language=page.get_language %}</p>
+
+            <a href="{{comparison_link}}" class="compare-popup__enough">{% get_translation key='compare_courses' language=page.get_language %}</a>
+        </div>
+
+        <div class="compare-popup__remove">
+            <p>{% get_translation key='course_removed' language=page.get_language %}</p>
+            <p>{% get_translation key='remove_others' language=page.get_language %} <a href="#" class="compare-popup__remove-link">{% get_translation key='manage_list' language=page.get_language %}</a></p>
+        </div>
+
+        <div class="compare-popup__too-many">
+            <p>
+                <span class="compare-popup__max">10</span> {% get_translation key='course_too_many' language=page.get_language %}
+                <a href="#">{% get_translation key='manage_list' language=page.get_language %}</a>
+            </p>
+        </div>
+    </div>
+</div>

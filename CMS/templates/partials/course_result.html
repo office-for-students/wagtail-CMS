@@ -1,7 +1,7 @@
 {% load discover_uni_tags %}
 
 
-<div class="course-finder-results__result-accordion-body-content">
+<div class="course-finder-results__result-accordion-body-content comparison-course-area">
     <a href="/course-details/{{institution_id}}/{{course.kis_course_id}}/{{course.mode}}"
        class="course-finder-results__result-accordion-body-course-name">
         {% if course.qualification %}
@@ -48,5 +48,7 @@
         {% endfor %}
     </p>
 
-    <!--<input type="button" name="" value="+ {% get_translation key='compare_course' language=page.get_language %}">-->
+    <button class="course-detail__compare-btn">
+        <span  class="add">+</span><span  class="remove">-</span> {% get_translation key='compare_course' language=page.get_language %}
+    </button>
 </div>
