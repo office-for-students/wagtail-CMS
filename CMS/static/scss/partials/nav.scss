@@ -27,10 +27,6 @@
     &:hover {
         @include green-gradient-background-mixin();
     }
-
-    img {
-        margin-left: 6px;
-    }
 }
 
 
@@ -146,10 +142,6 @@
 
             color: $white;
             text-decoration: none;
-
-            img {
-                margin-left: 7px;
-            }
         }
     }
 
@@ -159,6 +151,35 @@
 
     &__link-icon {
         height: 13px;
+        margin-left: 7px;
+    }
+
+    &__bookmark-icon {
+        height: 22px;
+        margin-right: 20px;
+
+        cursor: pointer;
+    }
+
+    .nav-section__icon {
+        margin-left: 7px;
+    }
+
+    .nav-bookmark {
+        position: relative;
+
+        &__count {
+            position: absolute;
+            padding: 2px 4.5px;
+            right: 16px;
+            top: -6px;
+
+            background-color: $delete-red;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: bold;
+            color: $white;
+        }
     }
 }
 
@@ -168,7 +189,7 @@
             padding: 18px 0px 22px;
         }
 
-        &__burger-menu {
+        &__mobile-nav {
             display: none;
         }
 
@@ -226,6 +247,24 @@
                 @include top-level-desktop-item();
 
                 text-decoration: none;
+            }
+        }
+
+        &__link-icon {
+            margin-left: 7px;
+        }
+
+        &__bookmark-icon {
+            margin-right: 0px;
+        }
+
+        .nav-bookmark {
+            &__count {
+                padding: 0px 5.3px;
+                right: 4px;
+                top: 27px;
+
+                border-radius: 20px;
             }
         }
     }

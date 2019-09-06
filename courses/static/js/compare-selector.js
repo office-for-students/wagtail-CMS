@@ -8,6 +8,7 @@
 
     CompareSelector.prototype = {
         setup: function() {
+            this.navBar = $('.discover-uni-nav');
             this.button = this.wrapper.find('[class$=compare-btn]');
             this.courseSelected = false;
             this.courseName = this.wrapper.data().coursename;
@@ -89,6 +90,7 @@
                 }
             }
             localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
+            this.navBar.trigger('loadeddata');
             this.courseSelected = false;
             this.compareAdd.hide();
             this.compareRemove.show();
@@ -108,8 +110,10 @@
                                             'length': this.length, 'distance': this.distance, 'sandwich': this.sandwich,
                                             'abroad': this.abroad, 'locations': this.locations});
                 localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
+                this.navBar.trigger('loadeddata');
                 this.courseSelected = true;
                 this.compareCount.text(this.selectedCourses.length);
+
                 if (this.selectedCourses.length < 2) {
                     this.compareNotEnough.show();
                     this.compareEnough.hide();
