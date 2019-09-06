@@ -183,6 +183,12 @@
                         .after-course__block, .accreditation__block, .after-course__lead-block {
                             padding: 0;
                         }
+
+                        .bar-chart {
+                            .highcharts-root {
+                                width: 85%;
+                            }
+                        }
                     }
                 }
             }
