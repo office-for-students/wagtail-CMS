@@ -145,7 +145,7 @@
 {% endcomment %}
     {% get_index 0 course1.leo_stats as course1_leo_stats %}
     {% get_index 0 course2.leo_stats as course2_leo_stats %}
-    {% if (course1.is_in_england and course1_leo_stats.display_stats) or (course2.is_in_england and course2_leo_stats.display_stats) %}
+    {% if course1.is_in_england and course1_leo_stats.display_stats or course2.is_in_england and course2_leo_stats.display_stats %}
         <div class="after-course__block">
             <div class="after-course__data-point">
                 <h2 class="after-course__stats-heading">

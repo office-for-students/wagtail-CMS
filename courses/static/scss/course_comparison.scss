@@ -134,6 +134,10 @@
             display: none;
         }
 
+        .course-detail__lead {
+            margin-top: 27px;
+        }
+
         .course-detail__body {
             padding: 0px;
 
@@ -176,7 +180,7 @@
                             }
                         }
 
-                        .after-course__block {
+                        .after-course__block, .accreditation__block, .after-course__lead-block {
                             padding: 0;
                         }
                     }
