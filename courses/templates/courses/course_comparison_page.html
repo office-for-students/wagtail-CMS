@@ -80,16 +80,14 @@
                             {% should_show_accordion courses accordion.value.data_set as show_accordion %}
                             {% if show_accordion %}
                                 <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
-                                    <div class="discover-uni-container">
-                                        <h2 class="course-detail__accordion-heading">
-                                            {{ accordion.value.heading }}
+                                    <h2 class="course-detail__accordion-heading">
+                                        {{ accordion.value.heading }}
 
-                                            <span class="course-detail__accordion-heading-chevron">
-                                                    <img class="course-detail__icon plus" src="{% static 'images/plus_icon.svg' %}" alt="">
-                                                    <img class="course-detail__icon minus" src="{% static 'images/minus_icon.svg' %}" alt="">
-                                                </span>
-                                        </h2>
-                                    </div>
+                                        <span class="course-detail__accordion-heading-chevron">
+                                                <img class="course-detail__icon plus" src="{% static 'images/plus_icon.svg' %}" alt="">
+                                                <img class="course-detail__icon minus" src="{% static 'images/minus_icon.svg' %}" alt="">
+                                            </span>
+                                    </h2>
 
                                     <div class="course-detail__accordion-body">
                                         {% include 'courses/partials/comparison_'|add:accordion.value.data_set|add:'_body.html' with block=accordion %}

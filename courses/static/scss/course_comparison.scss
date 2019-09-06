@@ -73,6 +73,7 @@
 
         &-columns {
             display: flex;
+            width: 100%;
         }
 
         &-column {
@@ -187,6 +188,130 @@
                         .bar-chart {
                             .highcharts-root {
                                 width: 85%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .comparison {
+        &__course {
+            margin: 0px 20px;
+
+            &-count {
+                @include l-heading--bold-mixin();
+
+                color: $gradient-light-green;
+            }
+        }
+
+        &__lead {
+            @include s-heading-mixin();
+
+            color: $ux-grey-3;
+        }
+
+        &__nav-box {
+            .rich-text {
+                p {
+                    @include desktop-body-font-mixin();
+                }
+            }
+        }
+
+        &__heading {
+            @include l-heading--bold-mixin();
+
+            color: $ux-grey-3;
+        }
+
+        .course-detail  {
+            .course-detail__lead {
+                .course-detail__institution-info {
+                    padding: 26px 30px 28px;
+
+                    background-color: $ux-grey-1;
+
+                    .course-detail__institution-name {
+                        @include mobile-body-font-mixin();
+
+
+                        color: $link-blue;
+                    }
+
+                    .course-detail__institution-locations {
+                        @include small-font-mixin();
+
+                        margin: 8px 0 0;
+                    }
+                }
+
+                .course-detail__course-overview {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-evenly;
+
+                    margin: 20px 0px 35px;
+
+                    .course-detail__overview-item {
+
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        width: 114px;
+                        padding: 20px 13px;
+                        margin-bottom: 14px;
+
+                        background-color: $white;
+                        border: 1px solid $ux-grey-3;
+                        border-radius: 10px;
+
+                        .course-detail__overview-item-heading {
+                            @include small-font--bold-mixin();
+                            margin: 0px;
+                            margin-bottom: 5px;
+                        }
+
+                        .course-detail__overview-item-value {
+                            @include small-font--bold-mixin();
+                            margin: 0px;
+
+                            color: $helper-grey;
+                        }
+                    }
+                }
+            }
+
+            .course-detail__body {
+                width: 100%;
+
+                .course-detail__accordion-block {
+                    .course-detail__accordion {
+                        width: 100%;
+                        margin-left: 0px;
+                        margin-right: 0px;
+
+                        .course-detail__accordion-body {
+                            .student-satisfaction__block {
+                                padding: 0px;
+
+                                .comparison__course {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                }
+
+                                .student-satisfaction__data-group {
+                                    .student-satisfaction__charts {
+                                        .student-satisfaction__chart-wrapper {
+                                            width: 50%;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
