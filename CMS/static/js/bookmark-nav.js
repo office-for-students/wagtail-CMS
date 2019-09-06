@@ -12,7 +12,6 @@
         },
 
         loadSelectedCourses: function() {
-            console.log(10)
             if (JSON.parse(localStorage.getItem('comparisonCourses'))) {
                 this.selectedCourses = JSON.parse(localStorage.getItem('comparisonCourses'));
             } else {
