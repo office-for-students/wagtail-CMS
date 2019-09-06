@@ -177,6 +177,20 @@ class CourseComparisonPage(DiscoverUniBasePage):
     ]
 
 
+class CourseManagePage(DiscoverUniBasePage):
+    heading = TextField(blank=True)
+    lead = TextField(blank=True)
+    save_text = RichTextField(blank=True)
+    compare_text = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('heading'),
+        FieldPanel('lead'),
+        FieldPanel('save_text'),
+        FieldPanel('compare_text'),
+    ]
+
+
 class Course:
     MODES = {
         'Full-time': 1,
