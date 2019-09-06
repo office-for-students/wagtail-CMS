@@ -12,6 +12,7 @@
     border-radius: 16px;
     cursor: pointer;
     background-color: transparent;
+    text-transform: lowercase;
 
     .remove {
         display: none;
@@ -84,5 +85,18 @@
         &-link {
             text-transform: lowercase;
         }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .course-detail__compare-btn {
+        @include small-font--bold-mixin();
+
+        padding: 9px 10px 10px;
+        margin-bottom: 26px;
+
+        border-radius: 16px;
+        color: $ux-grey-3;
+        background-color: transparent;
     }
 }

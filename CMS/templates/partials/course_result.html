@@ -1,4 +1,4 @@
-{% load discover_uni_tags %}
+{% load staticfiles discover_uni_tags %}
 
 
 <div class="course-finder-results__result-accordion-body-content comparison-course-area">
@@ -49,6 +49,8 @@
     </p>
 
     <button class="course-detail__compare-btn">
-        <span  class="add">+</span><span  class="remove">-</span> {% get_translation key='compare_course' language=page.get_language %}
+        <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
+        <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
+         {% get_translation key='bookmark_course' language=page.get_language %}
     </button>
 </div>

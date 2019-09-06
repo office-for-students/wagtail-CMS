@@ -318,17 +318,6 @@
                 margin-bottom: 20px;
             }
 
-            .course-detail__compare-btn {
-                @include small-font--bold-mixin();
-
-                padding: 9px 10px 10px;
-                margin-bottom: 26px;
-
-                border-radius: 16px;
-                color: $ux-grey-3;
-                background-color: $white;
-            }
-
             .course-detail__institution-info {
                 padding: 55px 300px 46px;
 

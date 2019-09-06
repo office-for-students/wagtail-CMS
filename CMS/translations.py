@@ -43,6 +43,14 @@ DICT = {
         'en': 'Begin',
         'cy': ''
     },
+    'bookmark_course': {
+        'en': 'Bookmark course',
+        'cy': ''
+    },
+    'bookmarked_courses': {
+        'en': 'bookmarked courses',
+        'cy': ''
+    },
     'break_from_studies': {
         'en': 'Are taking a break from their studies',
         'cy': ''
@@ -64,7 +72,7 @@ DICT = {
         'cy': ''
     },
     'compare_courses': {
-        'en': 'Compare courses',
+        'en': 'compare courses',
         'cy': ''
     },
     'completed_course': {
@@ -84,7 +92,7 @@ DICT = {
         'cy': ''
     },
     'course_added': {
-        'en': 'course added to course comparison.',
+        'en': 'course added to ',
         'cy': ''
     },
     'course_details': {
@@ -108,7 +116,7 @@ DICT = {
         'cy': ''
     },
     'course_removed': {
-        'en': 'Course removed from course list.',
+        'en': 'Course removed from ',
         'cy': ''
     },
     'course_search': {
@@ -116,7 +124,7 @@ DICT = {
         'cy': ''
     },
     'course_too_many': {
-        'en': 'is the maximum number of courses that can be compared.',
+        'en': 'is the maximum number of bookmarks.',
         'cy': ''
     },
     'courses': {
@@ -370,7 +378,7 @@ DICT = {
         'cy': ''
     },
     'remove_others': {
-        'en': 'To remove others',
+        'en': 'To remove courses go to',
         'cy': ''
     },
     'results': {
@@ -543,6 +551,10 @@ DICT = {
     },
     'yes': {
         'en': 'Yes',
+        'cy': ''
+    },
+    'you_can': {
+        'en': 'You can',
         'cy': ''
     }
 }
