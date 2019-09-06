@@ -3,7 +3,7 @@ from django.shortcuts import render
 from CMS.enums import enums
 from core.utils import get_page_for_language
 
-from courses.models import CourseDetailPage, Course, CourseComparisonPage
+from courses.models import CourseDetailPage, Course, CourseComparisonPage, CourseManagePage
 
 
 def courses_detail(request, institution_id, course_id, kis_mode, language=enums.languages.ENGLISH):
@@ -15,6 +15,7 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
     page = get_page_for_language(language, CourseDetailPage.objects.all())
 
     comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
+    bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
 
     if not page:
         return render(request, '404.html')
@@ -22,7 +23,9 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
     context = {
         'page': page,
         'course': course,
-        'comparison_link': comparison_page.url if comparison_page else '#'
+        'comparison_link': comparison_page.url if comparison_page else '#',
+        'manage_link': bookmark_page.url if bookmark_page else '#'
+
     }
 
     return render(request, 'courses/course_detail_page.html', context)
@@ -54,7 +57,7 @@ def compare_courses(request, language=enums.languages.ENGLISH):
     context = {
         'page': page,
         'course1': course1,
-        'course2': course2,
+        'course2': course2
     }
 
     return render(request, 'courses/course_comparison_page.html', context)

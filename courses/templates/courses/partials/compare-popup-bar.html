@@ -7,7 +7,7 @@
 
         <div class="compare-popup__add">
             <p class="compare-popup__count"><span class="count"></span> {% get_translation key='course_added' language=page.get_language %}
-                <a href="#">{% get_translation key='bookmarked_courses' language=page.get_language %}</a></p>
+                <a href="{{manage_link}}">{% get_translation key='bookmarked_courses' language=page.get_language %}</a></p>
 
             <p class="compare-popup__not-enough">{% get_translation key='not_enough' language=page.get_language %}</p>
 
@@ -19,7 +19,7 @@
 
         <div class="compare-popup__remove">
             <p>{% get_translation key='course_removed' language=page.get_language %}
-            <a href="#">{% get_translation key='bookmarked_courses' language=page.get_language %}</a></p>
+            <a href="{{manage_link}}">{% get_translation key='bookmarked_courses' language=page.get_language %}</a></p>
         </div>
 
         <div class="compare-popup__too-many">
@@ -28,7 +28,7 @@
             </p>
             <p>
                 {% get_translation key='remove_others' language=page.get_language %}
-                <a href="#">{% get_translation key='bookmarked_courses' language=page.get_language %}</a>
+                <a href="{{manage_link}}">{% get_translation key='bookmarked_courses' language=page.get_language %}</a>
             </p>
         </div>
     </div>
