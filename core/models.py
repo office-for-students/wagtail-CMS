@@ -20,6 +20,14 @@ class DiscoverUniBasePage(Page):
     def is_english(self):
         return self.get_language() == 'en'
 
+    def get_english_url(self):
+        return self.url.replace('/cy/','/')
+
+    def get_welsh_url(self):
+        if self.is_english():
+            return '/cy' + self.url
+        return self.url
+
     @property
     def menu(self):
         menu_name = enums.languages_map.get(self.get_language()).capitalize()
@@ -40,6 +48,13 @@ class DiscoverUniBasePage(Page):
         from courses.models import CourseManagePage
         bookmark_page = get_page_for_language(self.get_language, CourseManagePage.objects.all())
         return bookmark_page.url
+
+    def get_context(self,request):
+        context = super().get_context(request)
+
+        context['english_url'] = self.get_english_url()
+        context['welsh_url'] = self.get_welsh_url()
+        return context
 
 
 class SimpleMenuItem(blocks.StructBlock):
