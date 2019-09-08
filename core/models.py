@@ -41,6 +41,19 @@ class DiscoverUniBasePage(Page):
                 menu.append(parse_menu_item(item))
         return menu
 
+    @property
+    def footer(self):
+        footer_name = enums.languages_map.get(self.get_language()).capitalize()
+        footer_data = Menu.objects.filter(name=footer_name).first()
+        if not footer_data:
+            footer_name = enums.languages_map.get(enums.languages.ENGLISH).capitalize()
+            footer_data = Menu.objects.filter(name=footer_name).first()
+        footer = []
+        if footer_data:
+            for item in footer_data.menu_items:
+                footer.append(parse_menu_item(item))
+        return footer
+
     class Meta:
         abstract = True
 
@@ -83,6 +96,22 @@ class Menu(models.Model):
     panels = [
         FieldPanel('name'),
         StreamFieldPanel('menu_items')
+    ]
+
+    def __str__(self):
+        return self.name
+
+
+@register_snippet
+class Footer(models.Model):
+    name = models.CharField(max_length=255)
+    footer_items = StreamField([
+        ('footer_item', SimpleMenuItem()),
+    ])
+
+    panels = [
+        FieldPanel('name'),
+        StreamFieldPanel('footer_items')
     ]
 
     def __str__(self):
