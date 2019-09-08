@@ -67,6 +67,7 @@ class DiscoverUniBasePage(Page):
 
         context['english_url'] = self.get_english_url()
         context['welsh_url'] = self.get_welsh_url()
+        context['cookies_accepted'] = request.COOKIES['discoverUniCookies']
         return context
 
 
