@@ -1,0 +1,17 @@
+{% load discover_uni_tags %}
+
+<div class="cookie-banner">
+    <div class="cookie-banner__wrapper discover-uni-container">
+        <p class="cookie-banner__message">
+            {% get_translation key='cookie_message' language=page.get_language %}
+        </p>
+
+        <button class="cookie-banner__find-out-more">
+            {% get_translation key='cookie_more' language=page.get_language %}
+        </button>
+
+        <button class="cookie-banner__ok">
+            {% get_translation key='cookie_ok' language=page.get_language %}
+        </button>
+    </div>
+</div>
