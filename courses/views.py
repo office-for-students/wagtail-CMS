@@ -31,7 +31,7 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         'manage_link': bookmark_page.url if bookmark_page else '#',
         'english_url': english_url,
         'welsh_url': welsh_url,
-        'cookies_accepted': request.COOKIES['discoverUniCookies']
+        'cookies_accepted': request.COOKIES.get('discoverUniCookies')
     }
 
     return render(request, 'courses/course_detail_page.html', context)
@@ -70,7 +70,7 @@ def compare_courses(request, language=enums.languages.ENGLISH):
         'course2': course2,
         'english_url': english_url,
         'welsh_url': welsh_url,
-        'cookies_accepted': request.COOKIES['discoverUniCookies']
+        'cookies_accepted': request.COOKIES.get('discoverUniCookies')
     }
 
     return render(request, 'courses/course_comparison_page.html', context)

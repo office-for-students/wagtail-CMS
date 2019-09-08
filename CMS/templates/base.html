@@ -55,7 +55,7 @@
 
         {% include 'partials/footer.html' %}
 
-        {% if cookies_accepted %}
+        {% if not cookies_accepted %}
             {% include 'partials/cookie-banner.html' %}
         {% endif %}
     </body>
