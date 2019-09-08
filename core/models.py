@@ -44,13 +44,13 @@ class DiscoverUniBasePage(Page):
     @property
     def footer(self):
         footer_name = enums.languages_map.get(self.get_language()).capitalize()
-        footer_data = Menu.objects.filter(name=footer_name).first()
+        footer_data = Footer.objects.filter(name=footer_name).first()
         if not footer_data:
             footer_name = enums.languages_map.get(enums.languages.ENGLISH).capitalize()
-            footer_data = Menu.objects.filter(name=footer_name).first()
+            footer_data = Footer.objects.filter(name=footer_name).first()
         footer = []
         if footer_data:
-            for item in footer_data.menu_items:
+            for item in footer_data.footer_items:
                 footer.append(parse_menu_item(item))
         return footer
 
