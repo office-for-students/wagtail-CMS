@@ -79,6 +79,10 @@ DICT = {
         'en': 'Have completed the course (started in the final year due to prior study)',
         'cy': ''
     },
+    'copyright': {
+        'en': '2019 Copyright. All rights reserved.',
+        'cy': ''
+    },
     'costs': {
         'en': 'Course costs',
         'cy': ''

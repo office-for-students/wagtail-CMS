@@ -2,8 +2,61 @@
 @import '../fonts';
 
 .footer {
-    height: 220px;
+    padding: 66px 31px 39px;
 
     background-color: $ux-grey-1;
-    color: $black;
+
+    &__items {
+        display: flex;
+    }
+
+    &__group {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__link {
+        @include mobile-body-font--bold-mixin();
+
+        margin-bottom: 30px;
+    }
+
+    &__copyright {
+        @include mobile-body-font--bold-mixin();
+
+        margin-top: 24px;
+
+        color: $copyright-grey;
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .footer {
+        padding: 100px 0px 65px;
+
+        &__items {
+            flex-direction: column;
+        }
+
+        &__group {
+            width: 100%;
+            flex-direction: row;
+        }
+
+        &__link {
+            @include desktop-body-font-mixin();
+
+            width: 25%;
+            margin-bottom: 46px;
+        }
+
+        &__copyright {
+            @include desktop-body-font--bold-mixin();
+
+            margin-top: 9px;
+
+            color: $copyright-grey;
+        }
+    }
 }
