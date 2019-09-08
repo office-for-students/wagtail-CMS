@@ -133,3 +133,8 @@ def get_course_locations_list(locations, is_english):
             location_name = location.get('welsh') if location.get('welsh') else location.get('english')
             locations_list.append(location_name)
     return ','.join(locations_list)
+
+
+@register.simple_tag
+def is_multiple_of(number, base):
+    return number % base == 0
