@@ -14,8 +14,11 @@
         },
 
         startWatchers: function() {
+            var that = this;
+            
             this.acceptBtn.click(function() {
                 document.cookie = "discoverUniCookies=accepted; expires=Thu, 31 Dec 2050 23:59:59 UTC";
+                that.wrapper.hide();
             });
 
             this.findOutMoreBtn.click(function() {
