@@ -37,7 +37,6 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
 
 
 def compare_courses(request, language=enums.languages.ENGLISH):
-    print(request.environ.get('QUERY_STRING'))
     get_params = request.GET
     error1 = None
     error2 = None
