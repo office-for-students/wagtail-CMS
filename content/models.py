@@ -44,3 +44,11 @@ class Section(DiscoverUniBasePage):
         FieldPanel('lateral_link_title'),
         StreamFieldPanel('lateral_links')
     ]
+
+
+class FlatContent(DiscoverUniBasePage):
+    content_body = RichTextField(blank=True, features=['h1', 'h2', 'h3', 'bold', 'italic', 'embed', 'link',
+                                                       'document-link', 'image', 'ol', 'ul', 'hr'])
+    content_panels = Page.content_panels + [
+        FieldPanel('content_body'),
+    ]

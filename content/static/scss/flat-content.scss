@@ -1,0 +1,94 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.flat-content-page {
+    &__body {
+        h1 {
+            @include m-heading--bold-mixin();
+
+            margin-top: 0px;
+            margin-bottom: 15px;
+
+            color: $ux-grey-3;
+        }
+
+        h2 {
+            @include s-heading--bold-mixin();
+
+            margin-top: 0px;
+            margin-bottom: 15px;
+
+            color: $ux-grey-3;
+        }
+
+        h3 {
+            @include xs-heading--bold-mixin();
+
+            margin-top: 0px;
+            margin-bottom: 15px;
+
+            color: $ux-grey-3;
+        }
+
+        p {
+            @include mobile-body-font-mixin();
+
+            margin-top: 0px;
+            margin-bottom: 1.5em;
+        }
+
+        ul {
+            @include mobile-body-font-mixin();
+
+            color: $gradient-light-green;
+
+            li {
+                margin-top: 0px;
+                margin-bottom: 1.5em;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .flat-content-page {
+        &__body {
+            h1 {
+                @include l-heading--bold-mixin();
+
+                margin-top: 0px;
+                margin-bottom: 15px;
+
+                color: $ux-grey-3;
+            }
+
+            h2 {
+                @include m-heading--bold-mixin();
+
+                margin-top: 0px;
+                margin-bottom: 15px;
+
+                color: $ux-grey-3;
+            }
+
+            h3 {
+                @include s-heading--bold-mixin();
+
+                margin-top: 0px;
+                margin-bottom: 15px;
+
+                color: $ux-grey-3;
+            }
+
+            p {
+                @include desktop-body-font-mixin();
+            }
+
+            ul {
+                @include desktop-body-font-mixin();
+
+                color: $gradient-light-green;
+            }
+        }
+    }
+}
