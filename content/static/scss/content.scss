@@ -25,7 +25,12 @@
         margin-bottom: 30px;
 
         p {
-            margin: 0px
+            margin: 0px;
+            margin-bottom: 1em;
+
+            &:last-child {
+               margin-bottom: 0px;
+            }
         }
     }
 }
