@@ -46,6 +46,14 @@
 
                 padding: 30px;
 
+                h3 {
+                    @include xs-heading--bold-mixin();
+                }
+
+                h4 {
+                    @include desktop-body-font--bold-mixin();
+                }
+
                 p {
                     margin-top: 0px;
 
@@ -85,6 +93,14 @@
                     width: 66%;
 
                     padding: 60px 80px 70px;
+
+                    h3 {
+                        @include s-heading--bold-mixin();
+                    }
+
+                    h4 {
+                        @include xs-heading--bold-mixin();
+                    }
 
                     p {
                         margin-top: 0px;
