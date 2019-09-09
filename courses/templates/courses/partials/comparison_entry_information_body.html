@@ -216,6 +216,8 @@
                                     {{ subbed_text | richtext }}
                                 </div>
                             {% endif %}
+
+                            {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_tariff_stats.unavailable_reason %}
                         </div>
                     </div>
                 </div>
@@ -244,6 +246,8 @@
                                     {{ subbed_text | richtext }}
                                 </div>
                             {% endif %}
+
+                            {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_tariff_stats.unavailable_reason %}
                         </div>
                     </div>
                 </div>
