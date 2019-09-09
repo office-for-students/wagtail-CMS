@@ -1,6 +1,8 @@
 {% load static discover_uni_tags %}
 
-<form id="courseFinderResultsForm"  action="{% url 'course_finder_results' %}" method="get" class="course-finder-base__nav-form">
+<form id="courseFinderResultsForm"  action="{% url 'course_finder_results' %}" method="post" class="course-finder-base__nav-form">
+    {% csrf_token %}
+
     <input class="course-finder-base__nav-input" type="text" name="subject_query" value="">
 
     <input class="course-finder-base__nav-input" type="text" name="institution_query" value="">

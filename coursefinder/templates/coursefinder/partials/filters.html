@@ -5,7 +5,9 @@
         <div class="filters-block">
             <p class="filters-block__cancel-button"><span class="filters-block__cancel-button-icon">X</span> Cancel</p>
 
-            <form method="get" action="/course-finder/results/" class="filters-block__form">
+            <form method="post" action="/course-finder/results/" class="filters-block__form">
+                {% csrf_token %}
+                
                 <div class="filters-block__filter">
                     <h2 class="filters-block__filter-heading">
                         {% get_translation key='countries' language=page.get_language %}

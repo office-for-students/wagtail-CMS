@@ -7,8 +7,8 @@ class FilterForm:
         self.placement = form_data.get('placement')
         self.foundation = form_data.get('foundation')
         self.abroad = form_data.get('abroad')
-        self.institutions = form_data.get('institution_query')
-        self.courses = form_data.get('subject_query')
+        self.institutions = form_data.get('institution_query', '')
+        self.courses = form_data.get('subject_query', '')
         postcode_query = form_data.get('postcode_query')
         if postcode_query:
             self.postcode = postcode_query.split(',')[0]

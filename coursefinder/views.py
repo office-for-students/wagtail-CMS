@@ -63,7 +63,7 @@ def narrow_search(request, language=enums.languages.ENGLISH):
 
 
 def course_finder_results(request, language=enums.languages.ENGLISH):
-    query_params = request.GET
+    query_params = request.POST
     filter_form = FilterForm(query_params)
     filters = build_filters(query_params)
     course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
