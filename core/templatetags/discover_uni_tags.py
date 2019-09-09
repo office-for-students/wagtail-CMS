@@ -12,6 +12,14 @@ from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_Y
 
 register = template.Library()
 
+SHOW_STATS_LOOKUP = {
+    STUDENT_SATISFACTION_KEY: 'show_satisfaction_stats',
+    ACCREDITATION_KEY: 'accreditations',
+    ENTRY_INFO_KEY: 'show_entry_information_stats',
+    AFTER_ONE_YEAR_KEY: 'show_after_one_year_stats',
+    AFTER_COURSE_KEY: 'show_after_course_stats'
+}
+
 
 @register.simple_tag
 def queryparams(*_, **kwargs):
@@ -60,46 +68,14 @@ def map_distance_learning_values(key, language):
 
 @register.simple_tag
 def should_show_accordion(courses, accordion_type):
-    if accordion_type == STUDENT_SATISFACTION_KEY:
+    if accordion_type in SHOW_STATS_LOOKUP:
         if type(courses) == tuple:
             show = False
             for course in courses:
-                if course.show_satisfaction_stats:
+                if getattr(course, SHOW_STATS_LOOKUP.get(accordion_type)):
                     show = True
             return show
-        return courses.show_satisfaction_stats
-    elif accordion_type == ACCREDITATION_KEY:
-        if type(courses) == tuple:
-            show = False
-            for course in courses:
-                if course.accreditations:
-                    show = True
-            return show
-        return courses.accreditations
-    elif accordion_type == ENTRY_INFO_KEY:
-        if type(courses) == tuple:
-            show = False
-            for course in courses:
-                if course.show_entry_information_stats:
-                    show = True
-            return show
-        return courses.show_entry_information_stats
-    elif accordion_type == AFTER_ONE_YEAR_KEY:
-        if type(courses) == tuple:
-            show = False
-            for course in courses:
-                if course.show_after_one_year_stats:
-                    show = True
-            return show
-        return courses.show_after_one_year_stats
-    elif accordion_type == AFTER_COURSE_KEY:
-        if type(courses) == tuple:
-            show = False
-            for course in courses:
-                if course.show_after_course_stats:
-                    show = True
-            return show
-        return courses.show_after_course_stats
+        return getattr(courses, SHOW_STATS_LOOKUP.get(accordion_type))
     return False
 
 
