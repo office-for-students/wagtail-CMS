@@ -3,16 +3,16 @@
 {% load discover_uni_tags %}
 
 {% for entry_stats in course_details.entry_stats %}
-    {% if entry_stats.display_stats %}
-        <div class="entry-information__block">
-            <h2 class="entry-information__heading">{{block.value.qualification_heading}}{% if course_details.has_multiple_entry_stats %}:
-                {{entry_stats.display_subject_name}}{% endif %}
-            </h2>
+    <div class="entry-information__block">
+        <h2 class="entry-information__heading">{{block.value.qualification_heading}}{% if course_details.has_multiple_entry_stats %}:
+            {{entry_stats.display_subject_name}}{% endif %}
+        </h2>
 
-            <p class="entry-information__lead">
-                {{block.value.qualification_intro}}
-            </p>
+        <p class="entry-information__lead">
+            {{block.value.qualification_intro}}
+        </p>
 
+        {% if entry_stats.display_stats %}
             <div class="entry-information__qualification-charts">
                 <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.degree}}">
                     {% include 'courses/partials/bar_chart.html' %}
@@ -79,22 +79,22 @@
                     {{ subbed_text | richtext }}
                 </div>
             </div>
-        </div>
+        {% endif %}
+    </div>
 
-        {% include 'courses/partials/unavailable_disclaimer.html' with reason=entry_stats.unavailable_reason %}
-    {% endif %}
+    {% include 'courses/partials/unavailable_disclaimer.html' with reason=entry_stats.unavailable_reason %}
 {% endfor %}
 
 {% for tariff_stats in  course_details.tariff_stats %}
-    {% if tariff_stats.show_stats %}
-        <div class="entry-information__block">
-            <h2 class="entry-information__heading">{{block.value.tariffs_heading}}{% if course_details.has_multiple_tariff_stats %}:
-                {{tariff_stats.display_subject_name}}{% endif %}</h2>
+    <div class="entry-information__block">
+        <h2 class="entry-information__heading">{{block.value.tariffs_heading}}{% if course_details.has_multiple_tariff_stats %}:
+            {{tariff_stats.display_subject_name}}{% endif %}</h2>
 
-            <p class="entry-information__lead">
-                {{block.value.tariffs_intro}}
-            </p>
+        <p class="entry-information__lead">
+            {{block.value.tariffs_intro}}
+        </p>
 
+        {% if tariff_stats.show_stats %}
             <div class="entry-information__tariff-charts">
                 {% for tariff in tariff_stats.tariffs %}
                     <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}">
@@ -110,8 +110,8 @@
                     {{ subbed_text | richtext }}
                 </div>
             </div>
+        {% endif %}
+    </div>
 
-            {% include 'courses/partials/unavailable_disclaimer.html' with reason=tariff_stats.unavailable_reason %}
-        </div>
-    {% endif %}
+    {% include 'courses/partials/unavailable_disclaimer.html' with reason=tariff_stats.unavailable_reason %}
 {% endfor %}
