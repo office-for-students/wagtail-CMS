@@ -70,7 +70,7 @@ $(document).ready(function() {
     if (data.subjectArea.value != "disabled" && data.subject.value === "disabled") {
       $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
         if(item.level === "3" && item.code.includes(data.subjectArea.value)) {
-          subjectCodes += '"' + item.englishname + '",'
+          subjectCodes += item.code + ","
         }
       })
     } else if (data.subjectArea.value === "disabled" && data.subject.value === "disabled") {
