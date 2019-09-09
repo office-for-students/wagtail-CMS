@@ -5,6 +5,7 @@
     @include small-font--bold-mixin();
 
     padding: 5px 10px;
+    margin-top: 15px;
     margin-bottom: 26px;
 
     border: 1.5px solid $ux-grey-3;
@@ -30,6 +31,12 @@
         .remove {
             display: initial;
         }
+    }
+
+
+    img {
+        height: 11px;
+        margin-right: 6px;
     }
 }
 
@@ -92,7 +99,7 @@
     .course-detail__compare-btn {
         @include small-font--bold-mixin();
 
-        padding: 9px 10px 10px;
+        padding: 9px 16px 10px 19px;
         margin-bottom: 26px;
 
         border-radius: 16px;

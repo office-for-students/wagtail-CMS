@@ -15,7 +15,7 @@
 
     /* On mouse-over, add a grey background color */
     &:hover input ~ .checkmark {
-        border: 2px solid $gradient-light-green;
+        border: 3px solid $gradient-light-green;
     }
 
     /* Hide the browser's default checkbox */
@@ -83,7 +83,7 @@
     user-select: none;
 
     &:hover input ~ .radiobox {
-        border: 2px solid $gradient-light-green;
+        border: 3px solid $gradient-light-green;
     }
 
     input {
