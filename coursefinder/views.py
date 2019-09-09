@@ -12,6 +12,7 @@ from courses.models import CourseComparisonPage, CourseManagePage
 
 def results(request, language=enums.languages.ENGLISH):
     query_params = request.GET
+    filter_form = FilterForm(query_params)
     course_search = CourseSearch(query_params.get('subject_query', ""), query_params.get('institution_query', ""),
                                  query_params.get('page', 1), query_params.get('count', 20))
     error = course_search.execute()
@@ -39,7 +40,8 @@ def results(request, language=enums.languages.ENGLISH):
         'manage_link': bookmark_page.url if bookmark_page else '#',
         'english_url': english_url,
         'welsh_url': welsh_url,
-        'cookies_accepted': request.COOKIES.get('discoverUniCookies')
+        'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
+        'filter_form': filter_form
     }
 
     return render(request, 'coursefinder/course_finder_results.html', context)
