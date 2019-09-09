@@ -746,6 +746,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_overall_satisfaction.satisfaction_stats.unavailable_reason %}
                             </div>
                         </div>
 
@@ -794,6 +796,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_overall_satisfaction.satisfaction_stats.unavailable_reason %}
                             </div>
                         </div>
                     </div>

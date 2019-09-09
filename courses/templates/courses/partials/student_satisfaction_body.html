@@ -401,6 +401,8 @@
                     {% endif %}
                 </div>
             </div>
+
+            {% include 'courses/partials/unavailable_disclaimer.html' with reason=overall_stats.satisfaction_stats.unavailable_reason %}
         {% endif %}
 
         {% if overall_stats.nhs_satisfaction_stats.show_nhs_stats %}
