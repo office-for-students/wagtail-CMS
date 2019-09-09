@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 
 from CMS.enums import enums
 from core.utils import get_page_for_language
+from coursefinder.forms import FilterForm
 from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderPostcode, \
     CourseFinderSummary
 from coursefinder.models import CourseFinderResults
@@ -61,7 +62,7 @@ def narrow_search(request, language=enums.languages.ENGLISH):
 
 def course_finder_results(request, language=enums.languages.ENGLISH):
     query_params = request.GET
-
+    filter_form = FilterForm(query_params)
     filters = build_filters(query_params)
     course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
                                               query_params.get('institution_query', None),
@@ -95,7 +96,8 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         'manage_link': bookmark_page.url if bookmark_page else '#',
         'english_url': english_url,
         'welsh_url': welsh_url,
-        'cookies_accepted': request.COOKIES.get('discoverUniCookies')
+        'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
+        'filter_form': filter_form
     }
 
     return render(request, 'coursefinder/course_finder_results.html', context)
