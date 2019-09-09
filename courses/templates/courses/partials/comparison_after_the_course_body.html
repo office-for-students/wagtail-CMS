@@ -38,7 +38,7 @@
                                 </p>
 
                                 <div class="after-course__figure-explanation">
-                                    {% create_list course1_salary_stats.display_subject_label institution.pub_ukprn_name as substitutions %}
+                                    {% create_list course1_salary_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
                                     {% insert_values_to_rich_text content=block.value.six_month_earnings_explanation substitutions=substitutions as subbed_text %}
                                     {{ subbed_text | richtext }}
                                 </div>
@@ -98,7 +98,7 @@
                                 </p>
 
                                 <div class="after-course__figure-explanation">
-                                    {% create_list course2_salary_stats.display_subject_label institution.pub_ukprn_name as substitutions %}
+                                    {% create_list course2_salary_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
                                     {% insert_values_to_rich_text content=block.value.six_month_earnings_explanation substitutions=substitutions as subbed_text %}
                                     {{ subbed_text | richtext }}
                                 </div>
@@ -169,14 +169,14 @@
                                 {{course1_leo_stats.display_subject_name}}
                             </h3>
                         {% endif %}
-
+                        
                         {% if course1_leo_stats %}
                             <p class="after-course__figure">
                                 £{{ course1_leo_stats.median }}
                             </p>
 
                             <div class="after-course__figure-explanation">
-                                {% create_list course1_leo_stats.display_subject_label institution.pub_ukprn_name as substitutions %}
+                                {% create_list course1_leo_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
                                 {% insert_values_to_rich_text content=block.value.three_years_earnings_explanation substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </div>
@@ -208,10 +208,18 @@
                             </h3>
                         {% endif %}
 
+<<<<<<< HEAD
                         {% if course2_leo_stats %}
                             <p class="after-course__figure">
                                 £{{ course2_leo_stats.median }}
                             </p>
+=======
+                                <div class="after-course__figure-explanation">
+                                    {% create_list course2_leo_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
+                                    {% insert_values_to_rich_text content=block.value.three_years_earnings_explanation substitutions=substitutions as subbed_text %}
+                                    {{ subbed_text | richtext }}
+                                </div>
+>>>>>>> fix reference error for institution name
 
                             <div class="after-course__figure-explanation">
                                 {% create_list course2_leo_stats.display_subject_label institution.pub_ukprn_name as substitutions %}

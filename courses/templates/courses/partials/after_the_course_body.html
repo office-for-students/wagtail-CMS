@@ -27,7 +27,7 @@
                 </p>
 
                 <div class="after-course__figure-explanation">
-                    {% create_list salary_stats.display_subject_label institution.pub_ukprn_name as substitutions %}
+                    {% create_list salary_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
                     {% insert_values_to_rich_text content=block.value.six_month_earnings_explanation substitutions=substitutions as subbed_text %}
                     {{ subbed_text | richtext }}
                 </div>
@@ -88,7 +88,7 @@
                 </p>
 
                 <div class="after-course__figure-explanation">
-                    {% create_list salary_stats.display_subject_label institution.pub_ukprn_name as substitutions %}
+                    {% create_list salary_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
                     {% insert_values_to_rich_text content=block.value.three_years_earnings_explanation substitutions=substitutions as subbed_text %}
                     {{ subbed_text | richtext }}
                 </div>
