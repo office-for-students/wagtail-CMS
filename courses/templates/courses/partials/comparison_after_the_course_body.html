@@ -155,93 +155,91 @@
 {% for i in max_leo_stats_length|times %}
     {% get_index i course1.leo_stats as course1_leo_stats %}
     {% get_index i course2.leo_stats as course2_leo_stats %}
-    {% if course1.is_in_england and course1_leo_stats.display_stats or course2.is_in_england and course2_leo_stats.display_stats %}
-        <div class="after-course__block">
-            <div class="after-course__data-point">
-                <h2 class="after-course__stats-heading">
-                    {{block.value.three_years_earnings_heading}}
-                </h2>
+    <div class="after-course__block">
+        <div class="after-course__data-point">
+            <h2 class="after-course__stats-heading">
+                {{block.value.three_years_earnings_heading}}
+            </h2>
 
-                <div class="comparison__course-columns">
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {% if course1_leo_stats %}
-                                {% if course1.has_multiple_leo_stats %}
-                                    <h3 class="comparison__subject-heading">
-                                        {{course1_leo_stats.display_subject_name}}
-                                    </h3>
-                                {% endif %}
+            <div class="comparison__course-columns">
+                <div class="comparison__course-column">
+                    <div class="comparison__course">
+                        {% if course1.has_multiple_leo_stats %}
+                            <h3 class="comparison__subject-heading">
+                                {{course1_leo_stats.display_subject_name}}
+                            </h3>
+                        {% endif %}
 
-                                <p class="after-course__figure">
-                                    £{{ course1_leo_stats.median }}
-                                </p>
+                        {% if course1_leo_stats %}
+                            <p class="after-course__figure">
+                                £{{ course1_leo_stats.median }}
+                            </p>
 
-                                <div class="after-course__figure-explanation">
-                                    {% create_list course1_leo_stats.display_subject_label institution.pub_ukprn_name as substitutions %}
-                                    {% insert_values_to_rich_text content=block.value.three_years_earnings_explanation substitutions=substitutions as subbed_text %}
-                                    {{ subbed_text | richtext }}
-                                </div>
+                            <div class="after-course__figure-explanation">
+                                {% create_list course1_leo_stats.display_subject_label institution.pub_ukprn_name as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.three_years_earnings_explanation substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </div>
 
-                                <p>
-                                    {{block.value.three_years_earnings_salary_range_heading}}
-                                </p>
+                            <p>
+                                {{block.value.three_years_earnings_salary_range_heading}}
+                            </p>
 
-                                <p class="after-course__figure-salary-range">
-                                    £{{course1_leo_stats.lower_quartile}} - £{{course1_leo_stats.higher_quartile}}
-                                </p>
+                            <p class="after-course__figure-salary-range">
+                                £{{course1_leo_stats.lower_quartile}} - £{{course1_leo_stats.higher_quartile}}
+                            </p>
 
-                                <div class="explanation-text">
-                                    {% create_list course1_leo_stats.number_of_graduates as substitutions %}
-                                    {% insert_values_to_rich_text content=block.value.three_years_earnings_data_source substitutions=substitutions as subbed_text %}
-                                    {{ subbed_text | richtext }}
-                                </div>
-
-                                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_leo_stats.unavailable_reason %}
-                            {% endif %}
-                        </div>
+                            <div class="explanation-text">
+                                {% create_list course1_leo_stats.number_of_graduates as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.three_years_earnings_data_source substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </div>
+                        {% else %}
+                            {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_leo_stats.unavailable_reason %}
+                        {% endif %}
                     </div>
+                </div>
 
-                    <div class="comparison__course-column">
-                        <div class="comparison__course">
-                            {% if course2_leo_stats %}
-                                {% if course2.has_multiple_leo_stats %}
-                                    <h3 class="comparison__subject-heading">
-                                        {{course2_leo_stats.display_subject_name}}
-                                    </h3>
-                                {% endif %}
+                <div class="comparison__course-column">
+                    <div class="comparison__course">
+                        {% if course2.has_multiple_leo_stats %}
+                            <h3 class="comparison__subject-heading">
+                                {{course2_leo_stats.display_subject_name}}
+                            </h3>
+                        {% endif %}
 
-                                <p class="after-course__figure">
-                                    £{{ course2_leo_stats.median }}
-                                </p>
+                        {% if course2_leo_stats %}
+                            <p class="after-course__figure">
+                                £{{ course2_leo_stats.median }}
+                            </p>
 
-                                <div class="after-course__figure-explanation">
-                                    {% create_list course2_leo_stats.display_subject_label institution.pub_ukprn_name as substitutions %}
-                                    {% insert_values_to_rich_text content=block.value.three_years_earnings_explanation substitutions=substitutions as subbed_text %}
-                                    {{ subbed_text | richtext }}
-                                </div>
+                            <div class="after-course__figure-explanation">
+                                {% create_list course2_leo_stats.display_subject_label institution.pub_ukprn_name as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.three_years_earnings_explanation substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </div>
 
-                                <p>
-                                    {{block.value.three_years_earnings_salary_range_heading}}
-                                </p>
+                            <p>
+                                {{block.value.three_years_earnings_salary_range_heading}}
+                            </p>
 
-                                <p class="after-course__figure-salary-range">
-                                    £{{course2_leo_stats.lower_quartile}} - £{{course2_leo_stats.higher_quartile}}
-                                </p>
+                            <p class="after-course__figure-salary-range">
+                                £{{course2_leo_stats.lower_quartile}} - £{{course2_leo_stats.higher_quartile}}
+                            </p>
 
-                                <div class="explanation-text">
-                                    {% create_list course2_leo_stats.number_of_graduates as substitutions %}
-                                    {% insert_values_to_rich_text content=block.value.three_years_earnings_data_source substitutions=substitutions as subbed_text %}
-                                    {{ subbed_text | richtext }}
-                                </div>
-
-                                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_leo_stats.unavailable_reason %}
-                            {% endif %}
-                        </div>
+                            <div class="explanation-text">
+                                {% create_list course2_leo_stats.number_of_graduates as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.three_years_earnings_data_source substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </div>
+                        {% else %}
+                            {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_leo_stats.unavailable_reason %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
-    {% endif %}
+    </div>
 {% endfor %}
 
 

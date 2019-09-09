@@ -68,15 +68,15 @@ def map_distance_learning_values(key, language):
 
 @register.simple_tag
 def should_show_accordion(courses, accordion_type):
-    if accordion_type in SHOW_STATS_LOOKUP:
+    if accordion_type == ACCREDITATION_KEY:
         if type(courses) == tuple:
             show = False
             for course in courses:
-                if getattr(course, SHOW_STATS_LOOKUP.get(accordion_type)):
+                if course and course.accreditations:
                     show = True
             return show
-        return getattr(courses, SHOW_STATS_LOOKUP.get(accordion_type))
-    return False
+        return courses.accreditations
+    return True
 
 
 @register.simple_tag
