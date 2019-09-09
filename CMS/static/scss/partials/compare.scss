@@ -1,0 +1,102 @@
+@import '../variables';
+@import '../fonts';
+
+.course-detail__compare-btn {
+    @include small-font--bold-mixin();
+
+    padding: 5px 10px;
+    margin-bottom: 26px;
+
+    border: 1.5px solid $ux-grey-3;
+    color: $ux-grey-3;
+    border-radius: 16px;
+    cursor: pointer;
+    background-color: transparent;
+    text-transform: lowercase;
+
+    .remove {
+        display: none;
+    }
+
+    &.selected {
+        @include green-gradient-background-mixin();
+
+        border: 1.5px solid $gradient-light-green;
+
+        .add {
+            display: none;
+        }
+
+        .remove {
+            display: initial;
+        }
+    }
+}
+
+.compare-popup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+
+
+
+    background-color: $divider-grey;
+
+    &__wrapper {
+        @include mobile-body-font-mixin();
+
+        padding: 29px 31px;
+        position: relative;
+        text-align: center;
+
+        p {
+            margin: 5px;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: 7px;
+        right: 7px;
+
+        img {
+            width: 9px;
+            height: 9px;
+        }
+    }
+
+    &__count {
+        .count {
+            color: $gradient-light-green;
+        }
+    }
+
+    &__add, &__remove, &__too-many, &__not-enough, &__enough {
+        display: none;
+    }
+
+    &__max {
+        color: $gradient-light-green;
+    }
+
+    &__remove {
+        &-link {
+            text-transform: lowercase;
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .course-detail__compare-btn {
+        @include small-font--bold-mixin();
+
+        padding: 9px 10px 10px;
+        margin-bottom: 26px;
+
+        border-radius: 16px;
+        color: $ux-grey-3;
+        background-color: transparent;
+    }
+}

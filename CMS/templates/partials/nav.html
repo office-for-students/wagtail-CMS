@@ -40,10 +40,22 @@
                     </a>
                 {% endif %}
             {% endfor %}
+
+            <a href="{{page.manage_link}}" class="discover-uni-nav__desktop-link nav-bookmark">
+                <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="">
+                <span class="nav-bookmark__count"></span>
+            </a>
         </div>
 
-        <i id="burger-menu" class="discover-uni-nav__burger-menu fas fa-bars"></i>
-        <i id="close-menu" class="discover-uni-nav__close-menu fas fa-times"></i>
+        <div class="discover-uni-nav__mobile-nav">
+            <a href="{{page.manage_link}}" class="nav-bookmark">
+                <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="">
+                <span class="nav-bookmark__count"></span>
+            </a>
+
+            <i id="burger-menu" class="discover-uni-nav__burger-menu fas fa-bars"></i>
+            <i id="close-menu" class="discover-uni-nav__close-menu fas fa-times"></i>
+        </div>
     </div>
 
     <div class="discover-uni-nav__mobile-links">

@@ -153,6 +153,48 @@ class CourseDetailPage(DiscoverUniBasePage):
     ]
 
 
+class CourseComparisonPage(DiscoverUniBasePage):
+    heading = TextField(blank=True)
+    lead = TextField(blank=True)
+    remove_text = RichTextField(blank=True)
+    save_text = RichTextField(blank=True)
+    compare_heading = TextField(blank=True)
+    accordions = StreamField([
+        ('satisfaction_panel', SatisfactionBlock(required=True, icon='collapse-down')),
+        ('entry_information_panel', EntryInformationBlock(required=True, icon='collapse-down')),
+        ('after_one_year_panel', AfterOneYearBlock(required=True, icon='collapse-down')),
+        ('after_course_panel', AfterCourseBlock(required=True, icon='collapse-down')),
+        ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down'))
+    ])
+
+    content_panels = Page.content_panels + [
+        FieldPanel('heading'),
+        FieldPanel('lead'),
+        FieldPanel('remove_text'),
+        FieldPanel('save_text'),
+        FieldPanel('compare_heading'),
+        StreamFieldPanel('accordions'),
+    ]
+
+
+class CourseManagePage(DiscoverUniBasePage):
+    heading = TextField(blank=True)
+    lead = TextField(blank=True)
+    save_text = RichTextField(blank=True)
+    compare_text = RichTextField(blank=True)
+    none_selected_text = RichTextField(blank=True)
+    one_selected_text = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('heading'),
+        FieldPanel('lead'),
+        FieldPanel('save_text'),
+        FieldPanel('compare_text'),
+        FieldPanel('none_selected_text'),
+        FieldPanel('one_selected_text'),
+    ]
+
+
 class Course:
     MODES = {
         'Full-time': 1,
@@ -282,7 +324,6 @@ class Course:
 
     @property
     def has_multiple_satisfaction_stats(self):
-        print(len(self.overall_satisfaction) > 1)
         return len(self.overall_satisfaction) > 1
 
     @property

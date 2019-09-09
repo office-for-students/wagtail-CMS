@@ -7,7 +7,7 @@ from wagtail.core.models import Page
 from wagtail.snippets.models import register_snippet
 
 from CMS.enums import enums
-from core.utils import parse_menu_item
+from core.utils import parse_menu_item, get_page_for_language
 
 
 class DiscoverUniBasePage(Page):
@@ -16,6 +16,9 @@ class DiscoverUniBasePage(Page):
         if '/cy/' in self.get_full_url():
             return 'cy'
         return 'en'
+
+    def is_english(self):
+        return self.get_language() == 'en'
 
     @property
     def menu(self):
@@ -32,6 +35,11 @@ class DiscoverUniBasePage(Page):
 
     class Meta:
         abstract = True
+
+    def manage_link(self):
+        from courses.models import CourseManagePage
+        bookmark_page = get_page_for_language(self.get_language, CourseManagePage.objects.all())
+        return bookmark_page.url
 
 
 class SimpleMenuItem(blocks.StructBlock):

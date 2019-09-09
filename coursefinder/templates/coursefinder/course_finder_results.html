@@ -10,6 +10,7 @@
 
 {% block extra_js %}
     <script type="text/javascript" src="{% static 'js/filters.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/compare-selector.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -36,5 +37,6 @@
                 {% include "search_results_list.html" %}
             </div>
         </div>
+        {% include 'courses/partials/compare-popup-bar.html' %}
     </div>
 {% endblock content %}

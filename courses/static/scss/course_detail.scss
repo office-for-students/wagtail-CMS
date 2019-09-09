@@ -30,18 +30,6 @@
             margin-bottom: 17px;
         }
 
-        .course-detail__compare-btn {
-            @include small-font-mixin();
-
-            padding: 5px 10px;
-            margin-bottom: 26px;
-
-            border: 1px solid $black;
-            border-radius: 16px;
-
-            background-color: $white;
-        }
-
         .course-detail__institution-info {
             padding: 26px 30px 28px;
 
@@ -328,18 +316,6 @@
 
                 margin-top: 15px;
                 margin-bottom: 20px;
-            }
-
-            .course-detail__compare-btn {
-                @include mobile-body-font-mixin();
-
-                padding: 5px 10px;
-                margin-bottom: 26px;
-
-                border: 1px solid $black;
-                border-radius: 16px;
-
-                background-color: $white;
             }
 
             .course-detail__institution-info {

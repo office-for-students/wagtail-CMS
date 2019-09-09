@@ -5,6 +5,7 @@ from CMS.enums import enums
 from core.utils import get_page_for_language
 from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderPostcode
 from coursefinder.models import CourseFinderResults
+from courses.models import CourseComparisonPage, CourseManagePage
 
 
 def results(request, language=enums.languages.ENGLISH):
@@ -18,13 +19,18 @@ def results(request, language=enums.languages.ENGLISH):
 
     page = get_page_for_language(language, CourseFinderResults.objects.all())
 
+    comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
+    bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
+
     if not page:
         return render(request, '404.html')
 
     context = {
         'page': page,
         'search': course_search,
-        'pagination_url': 'results'
+        'pagination_url': 'results',
+        'comparison_link': comparison_page.url if comparison_page else '#',
+        'manage_link': bookmark_page.url if bookmark_page else '#'
     }
 
     return render(request, 'coursefinder/course_finder_results.html', context)
@@ -57,11 +63,16 @@ def narrow_search(request, language=enums.languages.ENGLISH):
 
         page = get_page_for_language(language, CourseFinderResults.objects.all())
 
+        comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
+        bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
+
         if page:
             context = {
                 'page': page,
                 'search': course_finder_search,
-                'pagination_url': 'narrow_search'
+                'pagination_url': 'narrow_search',
+                'comparison_link': comparison_page.url if comparison_page else '#',
+                'manage_link': bookmark_page.url if bookmark_page else '#'
             }
 
             return render(request, 'coursefinder/course_finder_results.html', context)
@@ -89,13 +100,18 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
 
     page = get_page_for_language(language, CourseFinderResults.objects.all())
 
+    comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
+    bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
+
     if not page:
         return render(request, '404.html')
 
     context = {
         'page': page,
         'search': course_finder_search,
-        'pagination_url': 'course_finder_results'
+        'pagination_url': 'course_finder_results',
+        'comparison_link': comparison_page.url if comparison_page else '#',
+        'manage_link': bookmark_page.url if bookmark_page else '#'
     }
 
     return render(request, 'coursefinder/course_finder_results.html', context)

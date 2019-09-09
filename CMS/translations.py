@@ -43,6 +43,14 @@ DICT = {
         'en': 'Begin',
         'cy': ''
     },
+    'bookmark_course': {
+        'en': 'Bookmark course',
+        'cy': ''
+    },
+    'bookmarked_courses': {
+        'en': 'bookmarked courses',
+        'cy': ''
+    },
     'break_from_studies': {
         'en': 'Are taking a break from their studies',
         'cy': ''
@@ -63,6 +71,10 @@ DICT = {
         'en': 'Compare course',
         'cy': ''
     },
+    'compare_courses': {
+        'en': 'compare courses',
+        'cy': ''
+    },
     'completed_course': {
         'en': 'Have completed the course (started in the final year due to prior study)',
         'cy': ''
@@ -77,6 +89,10 @@ DICT = {
     },
     'countries': {
         'en': 'Countries',
+        'cy': ''
+    },
+    'course_added': {
+        'en': 'course added to ',
         'cy': ''
     },
     'course_details': {
@@ -99,8 +115,16 @@ DICT = {
         'en': 'Course page',
         'cy': ''
     },
+    'course_removed': {
+        'en': 'Course removed from ',
+        'cy': ''
+    },
     'course_search': {
         'en': 'Course search',
+        'cy': ''
+    },
+    'course_too_many': {
+        'en': 'is the maximum number of bookmarks.',
         'cy': ''
     },
     'courses': {
@@ -257,6 +281,10 @@ DICT = {
         'en': 'Locations',
         'cy': ''
     },
+    'manage_list': {
+        'en': 'Manage course list',
+        'cy': ''
+    },
     'miles': {
         'en': 'miles',
         'cy': ''
@@ -295,6 +323,10 @@ DICT = {
     },
     'no_results_found': {
         'en': 'No results found',
+        'cy': ''
+    },
+    'not_enough': {
+        'en': 'Add another to compare courses.',
         'cy': ''
     },
     'not_professional_or_managerial': {
@@ -343,6 +375,14 @@ DICT = {
     },
     'qualification_type': {
         'en': 'Qualification type',
+        'cy': ''
+    },
+    'remove_course': {
+        'en': 'Remove course',
+        'cy': ''
+    },
+    'remove_others': {
+        'en': 'To remove courses go to',
         'cy': ''
     },
     'results': {
@@ -515,6 +555,10 @@ DICT = {
     },
     'yes': {
         'en': 'Yes',
+        'cy': ''
+    },
+    'you_can': {
+        'en': 'You can',
         'cy': ''
     }
 }
