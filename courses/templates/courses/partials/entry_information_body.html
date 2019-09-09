@@ -110,6 +110,8 @@
                     {{ subbed_text | richtext }}
                 </div>
             </div>
+
+            {% include 'courses/partials/unavailable_disclaimer.html' with reason=tariff_stats.unavailable_reason %}
         </div>
     {% endif %}
 {% endfor %}

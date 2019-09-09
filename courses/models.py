@@ -949,6 +949,11 @@ class TariffStatistics:
                 self.subject_english = subject_data.get('english_label')
                 self.subject_welsh = subject_data.get('welsh_label')
 
+            unavailable_data = tariff_data.get('unavailable')
+            if unavailable_data:
+                self.unavailable_code = unavailable_data.get('code')
+                self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+
     def show_stats(self):
         return self.tariffs
 
