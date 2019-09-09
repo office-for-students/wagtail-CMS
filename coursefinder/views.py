@@ -3,7 +3,8 @@ from django.http import HttpResponseRedirect
 
 from CMS.enums import enums
 from core.utils import get_page_for_language
-from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderPostcode
+from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderPostcode, \
+    CourseFinderSummary
 from coursefinder.models import CourseFinderResults
 from courses.models import CourseComparisonPage, CourseManagePage
 
@@ -44,52 +45,14 @@ def results(request, language=enums.languages.ENGLISH):
 
 
 def narrow_search(request, language=enums.languages.ENGLISH):
-    institution_query = None
-    postcode_query = None
     post_body = request.POST
-    page = None
     selection = post_body.get('radioGroup', None)
     if selection == "uni":
         page = get_page_for_language(language, CourseFinderUni.objects.all())
     elif selection == "home":
         page = get_page_for_language(language, CourseFinderPostcode.objects.all())
     else:
-        filters = build_filters(post_body)
-        course_finder_search = CourseFinderSearch(post_body.get('subject_query', None),
-                                                  institution_query,
-                                                  post_body.get('countries_query', None),
-                                                  postcode_query,
-                                                  filters,
-                                                  post_body.get('page', 1),
-                                                  post_body.get('count', 20))
-
-        error = course_finder_search.execute()
-
-        if error:
-            return render(request, '500.html')
-
-        page = get_page_for_language(language, CourseFinderResults.objects.all())
-
-        comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
-        bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
-
-        full_path = '%s?%s' % (request.path, request.environ.get('QUERY_STRING'))
-        welsh_url = '/cy' + full_path if language == enums.languages.ENGLISH else full_path
-        english_url = full_path.replace('/cy/', '/')
-
-        if page:
-            context = {
-                'page': page,
-                'search': course_finder_search,
-                'pagination_url': 'narrow_search',
-                'comparison_link': comparison_page.url if comparison_page else '#',
-                'manage_link': bookmark_page.url if bookmark_page else '#',
-                'english_url': english_url,
-                'welsh_url': welsh_url,
-                'cookies_accepted': request.COOKIES.get('discoverUniCookies')
-            }
-
-            return render(request, 'coursefinder/course_finder_results.html', context)
+        page = get_page_for_language(language, CourseFinderSummary.objects.all())
 
     if page:
         return HttpResponseRedirect(page.url)
