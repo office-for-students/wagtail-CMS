@@ -284,6 +284,140 @@ class CourseMocks:
                             }
                         }
                     ],
+                    "job_list": [
+                        {
+                            "aggregation_level": 13,
+                            "list": [
+                                {
+                                    "job": "Elementary occupations",
+                                    "percentage_of_students": "20",
+                                    "order": "1"
+                                },
+                                {
+                                    "job": "Business and public service associate professionals",
+                                    "percentage_of_students": "15",
+                                    "order": "2"
+                                },
+                                {
+                                    "job": "Managers, directors and senior officials",
+                                    "percentage_of_students": "10",
+                                    "order": "3"
+                                },
+                                {
+                                    "job": "Business, research and administrative professionals",
+                                    "percentage_of_students": "10",
+                                    "order": "4"
+                                },
+                                {
+                                    "job": "Teaching and educational professionals",
+                                    "percentage_of_students": "5",
+                                    "order": "5"
+                                },
+                                {
+                                    "job": "Information technology and telecommunications professionals",
+                                    "percentage_of_students": "5",
+                                    "order": "6"
+                                },
+                                {
+                                    "job": "Architects, town planners and surveyors",
+                                    "percentage_of_students": "5",
+                                    "order": "7"
+                                },
+                                {
+                                    "job": "Librarians and related professionals",
+                                    "percentage_of_students": "5",
+                                    "order": "8"
+                                },
+                                {
+                                    "job": "Sports and fitness occupations",
+                                    "percentage_of_students": "5",
+                                    "order": "9"
+                                },
+                                {
+                                    "job": "Administrative occupations",
+                                    "percentage_of_students": "5",
+                                    "order": "10"
+                                }
+                            ],
+                            "number_of_students": 20,
+                            "response_rate": 85,
+                            "subject": {
+                                "code": "CAH09-01-01",
+                                "english_label": "Mathematics",
+                                "welsh_label": "Mathemateg"
+                            },
+                            "unavailable": {
+                                "code": 0,
+                                "reason": "There was not enough data to publish information specifically for this course. This is either because the course size is small or not enough students responded to a survey. For this reason, the data displayed is for all students in Mathematics."
+                            }
+                        },
+                        {
+                            "aggregation_level": 13,
+                            "list": [
+                                {
+                                    "job": "Elementary occupations",
+                                    "percentage_of_students": "20",
+                                    "order": "1"
+                                },
+                                {
+                                    "job": "Business and public service associate professionals",
+                                    "percentage_of_students": "15",
+                                    "order": "2"
+                                },
+                                {
+                                    "job": "Managers, directors and senior officials",
+                                    "percentage_of_students": "10",
+                                    "order": "3"
+                                },
+                                {
+                                    "job": "Business, research and administrative professionals",
+                                    "percentage_of_students": "10",
+                                    "order": "4"
+                                },
+                                {
+                                    "job": "Teaching and educational professionals",
+                                    "percentage_of_students": "5",
+                                    "order": "5"
+                                },
+                                {
+                                    "job": "Information technology and telecommunications professionals",
+                                    "percentage_of_students": "5",
+                                    "order": "6"
+                                },
+                                {
+                                    "job": "Architects, town planners and surveyors",
+                                    "percentage_of_students": "5",
+                                    "order": "7"
+                                },
+                                {
+                                    "job": "Librarians and related professionals",
+                                    "percentage_of_students": "5",
+                                    "order": "8"
+                                },
+                                {
+                                    "job": "Sports and fitness occupations",
+                                    "percentage_of_students": "5",
+                                    "order": "9"
+                                },
+                                {
+                                    "job": "Administrative occupations",
+                                    "percentage_of_students": "5",
+                                    "order": "10"
+                                }
+                            ],
+                            "number_of_students": 20,
+                            "response_rate": 85,
+                            "subject": {
+                                "code": "CAH09-01-01",
+                                "english_label": "Mathematics",
+                                "welsh_label": "Mathemateg"
+                            },
+                            "unavailable": {
+                                "code": 0,
+                                "reason": "There was not enough data to publish information specifically for this course. This is either because the course size is small or not enough students responded to a survey. For this reason, the data displayed is for all students in Mathematics."
+                            }
+                        }
+                    ],
                     "nhs_nss": [
                         {
                             "aggregation_level": 13,

@@ -520,3 +520,84 @@
         </div>
     {% endif %}
 {% endfor %}
+
+{% get_max_length course1.job_lists course2.job_lists as max_job_lists_length %}
+
+{% for i in max_job_lists_length|times %}
+    {% get_index i course1.job_lists as course1_job_lists %}
+    {% get_index i course2.job_lists as course2_job_lists %}
+
+    {% if course1_job_lists.show_stats or course2_job_lists.show_stats %}
+        <div class="after-course__block">
+            <div class="after-course__data-point">
+                <h2 class="after-course__stats-heading">
+                    {{block.value.common_jobs_heading}}
+                </h2>
+
+                <p class="after-course__stats-intro">
+                    {{block.value.common_jobs_intro}}
+                </p>
+
+                <div class="comparison__course-columns">
+                    <div class="comparison__course-column">
+                        <div class="comparison__course">
+                            {% if course1_job_lists %}
+                                <div class="after-course__chart-block">
+                                    {% if course1.has_multiple_job_lists %}
+                                        <h3 class="comparison__subject-heading">
+                                            {{course1_job_lists.display_subject_name}}
+                                        </h3>
+                                    {% endif %}
+
+                                    {% for job in course1_job_lists.jobs %}
+                                        <div class="after-course__chart discover-uni-chart bar" data-value="{{job.percentage}}">
+                                            {% include 'courses/partials/bar_chart.html' %}
+                                            <label class="after-course__chart-label">{{job.job}}</label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="explanation-text">
+                                    {% create_list course1_job_lists.number_of_students course1_job_lists.response_rate as substitutions %}
+                                    {% insert_values_to_rich_text content=block.value.common_jobs_data_source substitutions=substitutions as subbed_text %}
+                                    {{ subbed_text | richtext }}
+                                </div>
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_job_lists.unavailable_reason %}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="comparison__course-column">
+                        <div class="comparison__course">
+                            {% if course2_job_lists %}
+                                <div class="after-course__chart-block">
+                                    {% if course2.has_multiple_job_lists %}
+                                        <h3 class="comparison__subject-heading">
+                                            {{course2_job_lists.display_subject_name}}
+                                        </h3>
+                                    {% endif %}
+
+                                    {% for job in course2_job_lists.jobs %}
+                                        <div class="after-course__chart discover-uni-chart bar" data-value="{{job.percentage}}">
+                                            {% include 'courses/partials/bar_chart.html' %}
+                                            <label class="after-course__chart-label">{{job.job}}</label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="explanation-text">
+                                    {% create_list course2_job_lists.number_of_students course2_job_lists.response_rate as substitutions %}
+                                    {% insert_values_to_rich_text content=block.value.common_jobs_data_source substitutions=substitutions as subbed_text %}
+                                    {{ subbed_text | richtext }}
+                                </div>
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_job_lists.unavailable_reason %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

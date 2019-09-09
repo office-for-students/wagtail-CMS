@@ -30,13 +30,13 @@
     <div class="discover-uni-container">
         <div class="course-detail__course-overview overview-group">
             <div class="course-detail__overview-item overview-block">
-                <p class="course-detail__overview-item-heading">{% get_translation key='length' language=page.get_language %}</p>
-                <p class="course-detail__overview-item-value">{{ course.length.label | slice:1 }} {% get_translation key='year_course' language=page.get_language %}</p>
+                <p class="course-detail__overview-item-heading">{% get_translation key='study_mode' language=page.get_language %}</p>
+                <p class="course-detail__overview-item-value">{{ course.mode.label }}</p>
             </div>
 
             <div class="course-detail__overview-item overview-block">
-                <p class="course-detail__overview-item-heading">{% get_translation key='study_mode' language=page.get_language %}</p>
-                <p class="course-detail__overview-item-value">{{ course.mode.label }}</p>
+                <p class="course-detail__overview-item-heading">{% get_translation key='length' language=page.get_language %}</p>
+                <p class="course-detail__overview-item-value">{{ course.length.label | slice:1 }} {% get_translation key='year_course' language=page.get_language %}</p>
             </div>
 
             <div class="course-detail__overview-item overview-block">
