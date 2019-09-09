@@ -91,7 +91,7 @@ def get_alphabet():
 
 @register.simple_tag
 def get_max_length(list1, list2):
-    return len(list1) if len(list1) > len(list2) else len(list2)
+    return max(len(list1), len(list2))
 
 
 @register.filter(name='times')
