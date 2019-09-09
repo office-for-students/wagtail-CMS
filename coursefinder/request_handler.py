@@ -25,7 +25,7 @@ def course_finder_query(subject, institution, countries, postcode, filters, limi
         }
         url = "%s?limit=%s&offset=%s" % (settings.SEARCHAPIHOST, limit, offset)
         if subject and subject != '':
-            url = f"{url}&qc={subject}"
+            url = f"{url}&subjects={subject}"
         if institution and institution != '':
             url = f"{url}&institutions={institution}"
         if countries and countries != '':
