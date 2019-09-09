@@ -26,7 +26,8 @@ def institution_detail(request, institution_id, language=enums.languages.ENGLISH
         'page': page,
         'institution': institution,
         'english_url': english_url,
-        'welsh_url': welsh_url
+        'welsh_url': welsh_url,
+        'cookies_accepted': request.COOKIES.get('discoverUniCookies')
     }
 
     return render(request, 'institutions/institution_detail_page.html', context)

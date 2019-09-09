@@ -79,6 +79,18 @@ DICT = {
         'en': 'Have completed the course (started in the final year due to prior study)',
         'cy': ''
     },
+    'cookie_message': {
+        'en': 'This website uses cookies to store information on your computer.',
+        'cy': ''
+    },
+    'cookie_more': {
+        'en': 'I’d like to find out more',
+        'cy': ''
+    },
+    'cookie_ok': {
+        'en': 'I’m happy with cookies',
+        'cy': ''
+    },
     'copyright': {
         'en': '2019 Copyright. All rights reserved.',
         'cy': ''

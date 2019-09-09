@@ -1,5 +1,4 @@
-{% load static wagtailuserbar %}
-{% load sass_tags %}
+{% load static wagtailuserbar sass_tags %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -31,6 +30,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/cookie-banner.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/subject_chooser.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>
@@ -54,6 +54,10 @@
         {% include 'partials/feedback-form.html' %}
 
         {% include 'partials/footer.html' %}
+
+        {% if not cookies_accepted %}
+            {% include 'partials/cookie-banner.html' %}
+        {% endif %}
     </body>
 
 </html>

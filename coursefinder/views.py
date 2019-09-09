@@ -36,7 +36,8 @@ def results(request, language=enums.languages.ENGLISH):
         'comparison_link': comparison_page.url if comparison_page else '#',
         'manage_link': bookmark_page.url if bookmark_page else '#',
         'english_url': english_url,
-        'welsh_url': welsh_url
+        'welsh_url': welsh_url,
+        'cookies_accepted': request.COOKIES.get('discoverUniCookies')
     }
 
     return render(request, 'coursefinder/course_finder_results.html', context)
@@ -84,7 +85,8 @@ def narrow_search(request, language=enums.languages.ENGLISH):
                 'comparison_link': comparison_page.url if comparison_page else '#',
                 'manage_link': bookmark_page.url if bookmark_page else '#',
                 'english_url': english_url,
-                'welsh_url': welsh_url
+                'welsh_url': welsh_url,
+                'cookies_accepted': request.COOKIES.get('discoverUniCookies')
             }
 
             return render(request, 'coursefinder/course_finder_results.html', context)
@@ -129,7 +131,8 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         'comparison_link': comparison_page.url if comparison_page else '#',
         'manage_link': bookmark_page.url if bookmark_page else '#',
         'english_url': english_url,
-        'welsh_url': welsh_url
+        'welsh_url': welsh_url,
+        'cookies_accepted': request.COOKIES.get('discoverUniCookies')
     }
 
     return render(request, 'coursefinder/course_finder_results.html', context)
