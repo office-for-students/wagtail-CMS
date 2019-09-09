@@ -91,7 +91,7 @@ def get_alphabet():
 
 @register.simple_tag
 def get_max_length(list1, list2):
-    return len(list1) if len(list1) > len(list2) else len(list2)
+    return max(len(list1), len(list2))
 
 
 @register.filter(name='times')
@@ -133,3 +133,8 @@ def get_course_locations_list(locations, is_english):
             location_name = location.get('welsh') if location.get('welsh') else location.get('english')
             locations_list.append(location_name)
     return ','.join(locations_list)
+
+
+@register.simple_tag
+def is_multiple_of(number, base):
+    return number % base == 0
