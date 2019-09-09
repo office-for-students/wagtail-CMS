@@ -142,6 +142,21 @@
 
             color: $white;
             text-decoration: none;
+            border-bottom: 1px solid $white;
+        }
+
+        &-language-toggles {
+            display: flex;
+            border-top: 1px solid $white;
+
+            .discover-uni-nav__mobile-link {
+                width: 50%;
+                justify-content: center;
+
+                &.active {
+                    @include green-gradient-background-mixin();
+                }
+            }
         }
     }
 

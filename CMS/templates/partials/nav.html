@@ -41,6 +41,16 @@
                 {% endif %}
             {% endfor %}
 
+            {% if page.is_english %}
+                <a href="{{welsh_url}}" class="discover-uni-nav__desktop-link nav-bookmark">
+                    Cymraeg
+                </a>
+            {% else %}
+                <a href="{{english_url}}" class="discover-uni-nav__desktop-link nav-bookmark">
+                    English
+                </a>
+            {% endif %}
+
             <a href="{{page.manage_link}}" class="discover-uni-nav__desktop-link nav-bookmark">
                 <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="">
                 <span class="nav-bookmark__count"></span>
@@ -59,6 +69,15 @@
     </div>
 
     <div class="discover-uni-nav__mobile-links">
+        <div class="discover-uni-nav__mobile-language-toggles">
+            <a class="discover-uni-nav__mobile-link{% if page.is_english %} active{% endif %}" href="{{english_url}}">
+                English
+            </a>
+
+            <a class="discover-uni-nav__mobile-link{% if not page.is_english %} active{% endif %}" href="{{welsh_url}}">
+                Cymraeg
+            </a>
+        </div>
         {% for item in page.menu %}
             {% if item.sub_items %}
                 <div class="discover-uni-nav__mobile-accordion">
