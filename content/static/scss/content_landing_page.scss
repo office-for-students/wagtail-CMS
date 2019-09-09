@@ -4,7 +4,6 @@
 .content-landing-page {
     &__link {
         a {
-            @include green-gradient-mixin()
             @include mobile-body-font--bold-mixin();
 
             display: block;
@@ -12,8 +11,10 @@
             margin-top: 20px;
 
             text-decoration: none;
-            color: $white;
-            border-radius: 80px;
+            color: $gradient-light-green;
+            box-shadow: 2px 1px 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid transparent;
+            border-radius: 10px;
             line-height: 22px;
         }
     }
@@ -30,17 +31,20 @@
             width: 50%;
 
             a {
-                @include green-gradient-mixin()
                 @include xs-heading--bold-mixin();
 
                 display: block;
                 padding: 26px 37px 25px;
                 margin-top: 30px;
-
+                color: $gradient-light-green;
                 text-decoration: none;
-                color: $white;
-                border-radius: 80px;
+
+                border-radius: 10px;
                 line-height: 29px;
+
+                &:hover {
+                    border: 3px solid $gradient-light-green;
+                }
             }
 
             &:nth-child(odd) {
