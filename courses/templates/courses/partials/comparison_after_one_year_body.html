@@ -19,13 +19,13 @@
     <div class="comparison__course-columns">
         <div class="comparison__course-column">
             <div class="comparison__course">
-                {% if course1_continuation_stats %}
-                    {% if course1.has_multiple_one_year_stats %}
-                        <h3 class="comparison__subject-heading">
-                            {{course1_continuation_stats.display_subject_name}}
-                        </h3>
-                    {% endif %}
+                {% if course1.has_multiple_one_year_stats %}
+                    <h3 class="comparison__subject-heading">
+                        {{course1_continuation_stats.display_subject_name}}
+                    </h3>
+                {% endif %}
 
+                {% if course1_continuation_stats and course1_continuation_stats.display_stats %}
                     <div class="one-year__overview">
                         <p class="one-year__overview-lead">
                             {{ course1_continuation_stats.continuing_or_complete }}%
@@ -41,13 +41,13 @@
 
         <div class="comparison__course-column">
             <div class="comparison__course">
-                {% if course2_continuation_stats %}
-                    {% if course2.has_multiple_one_year_stats %}
-                        <h3 class="comparison__subject-heading">
-                            {{course2_continuation_stats.display_subject_name}}
-                        </h3>
-                    {% endif %}
+                {% if course2.has_multiple_one_year_stats %}
+                    <h3 class="comparison__subject-heading">
+                        {{course2_continuation_stats.display_subject_name}}
+                    </h3>
+                {% endif %}
 
+                {% if course2_continuation_stats and course2_continuation_stats.display_stats %}
                     <div class="one-year__overview">
                         <p class="one-year__overview-lead">
                             {{ course2_continuation_stats.continuing_or_complete }}%
@@ -67,7 +67,7 @@
             <div class="comparison__course-column">
                 <div class="comparison__course">
                     <div class="one-year__qualification-charts">
-                        {% if course1_continuation_stats %}
+                        {% if course1_continuation_stats and course1_continuation_stats.display_stats %}
                             <div class="one-year__chart discover-uni-chart bar" data-value="{{course1_continuation_stats.continuing}}">
                                 {% include 'courses/partials/bar_chart.html' %}
                                 <label class="one-year-block__chart-label">{% get_translation key='still_on_course' language=page.get_language %}</label>
@@ -100,7 +100,7 @@
             <div class="comparison__course-column">
                 <div class="comparison__course">
                     <div class="one-year__qualification-charts">
-                        {% if course2_continuation_stats %}
+                        {% if course2_continuation_stats and course2_continuation_stats.display_stats %}
                             <div class="one-year__chart discover-uni-chart bar" data-value="{{course2_continuation_stats.continuing}}">
                                 {% include 'courses/partials/bar_chart.html' %}
                                 <label class="one-year-block__chart-label">{% get_translation key='still_on_course' language=page.get_language %}</label>
@@ -131,50 +131,52 @@
             </div>
         </div>
 
-        <div class="explanation">
-            <div class="explanation__link">
-                <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
-                <p class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</p>
-            </div>
+        {% course1_continuation_stats.display_stats or course2_continuation_stats.display_stats %}
+            <div class="explanation">
+                <div class="explanation__link">
+                    <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
+                    <p class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</p>
+                </div>
 
-            <div class="chart-label-explanation">
-                <h3 class="chart-label-explanation__heading">
-                    {{block.value.label_explanation_heading}}
-                    <span class="chart-label-explanation__close"><img src="{% static 'images/close-grey.svg' %}" alt=""></span>
-                </h3>
+                <div class="chart-label-explanation">
+                    <h3 class="chart-label-explanation__heading">
+                        {{block.value.label_explanation_heading}}
+                        <span class="chart-label-explanation__close"><img src="{% static 'images/close-grey.svg' %}" alt=""></span>
+                    </h3>
 
-                <div class="chart-label-explanation__body">
-                    {{block.value.label_explanation_body}}
+                    <div class="chart-label-explanation__body">
+                        {{block.value.label_explanation_body}}
+                    </div>
                 </div>
             </div>
-        </div>
+        {% endif %}
 
         <div class="comparison__course-columns">
             <div class="comparison__course-column">
                 <div class="comparison__course">
-                    {% if course1_continuation_stats %}
+                    {% if course1_continuation_stats and course1_continuation_stats.display_stats %}
                         <div class="explanation-text">
                             {% create_list course1_continuation_stats.number_of_students as substitutions %}
                             {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </div>
-
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_continuation_stats.unavailable_reason %}
                     {% endif %}
+
+                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_continuation_stats.unavailable_reason %}
                 </div>
             </div>
 
             <div class="comparison__course-column">
                 <div class="comparison__course">
-                    {% if course2_continuation_stats %}
+                    {% if course2_continuation_stats and course2_continuation_stats.display_stats %}
                         <div class="explanation-text">
                             {% create_list course2_continuation_stats.number_of_students as substitutions %}
                             {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </div>
-
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_continuation_stats.unavailable_reason %}
                     {% endif %}
+
+                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_continuation_stats.unavailable_reason %}
                 </div>
             </div>
         </div>
