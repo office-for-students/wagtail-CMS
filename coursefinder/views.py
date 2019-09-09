@@ -64,11 +64,13 @@ def narrow_search(request, language=enums.languages.ENGLISH):
 
 def course_finder_results(request, language=enums.languages.ENGLISH):
     query_params = request.POST
+    countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
+    print(countries_query)
     filter_form = FilterForm(query_params)
     filters = build_filters(query_params)
     course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
                                               query_params.get('institution_query', None),
-                                              query_params.get('countries_query', None),
+                                              countries_query,
                                               query_params.get('postcode_query', None),
                                               filters,
                                               query_params.get('page', 1),

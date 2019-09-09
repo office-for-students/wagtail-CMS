@@ -7,7 +7,7 @@
 
             <form method="post" action="/course-finder/results/" class="filters-block__form">
                 {% csrf_token %}
-                
+
                 <div class="filters-block__filter">
                     <h2 class="filters-block__filter-heading">
                         {% get_translation key='countries' language=page.get_language %}
@@ -16,7 +16,7 @@
                     <div class="filters-block__filter-options">
                         <div class="filters-block__filter-option--two-col">
                             <input id="countries-england" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="England"
-                                {% if filter_form.countries_query == 'England' %}checked{% endif %} />
+                                {% if 'England' in filter_form.countries_query %}checked{% endif %} />
 
                             <label class="filters-block__filter-checkbox-label" for="countries-england">
                                 {% get_translation key='england' language=page.get_language %}
@@ -25,7 +25,7 @@
 
                         <div class="filters-block__filter-option--two-col">
                             <input id="countries-ireland" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Northern Ireland"
-                                {% if filter_form.countries_query == 'Northern Ireland' %}checked{% endif %}/>
+                                {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %} />
 
                             <label class="filters-block__filter-checkbox-label" for="countries-ireland">
                                 {% get_translation key='northern_ireland' language=page.get_language %}
@@ -34,7 +34,7 @@
 
                         <div class="filters-block__filter-option--two-col">
                             <input id="countries-scotland" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Scotland"
-                                {% if filter_form.countries_query == 'Scotland' %}checked{% endif %}/>
+                                {% if 'Scotland' in filter_form.countries_query %}checked{% endif %} />
 
                             <label class="filters-block__filter-checkbox-label" for="countries-scotland">
                                 {% get_translation key='scotland' language=page.get_language %}
@@ -43,7 +43,7 @@
 
                         <div class="filters-block__filter-option--two-col">
                             <input id="countries-wales" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Wales"
-                                {% if filter_form.countries_query == 'Wales' %}checked{% endif %}/>
+                                {% if 'Wales' in filter_form.countries_query %}checked{% endif %} />
 
                             <label class="filters-block__filter-checkbox-label" for="countries-wales">
                                 {% get_translation key='wales' language=page.get_language %}
@@ -60,7 +60,7 @@
                     <div class="filters-block__filter-options">
                         <div class="filters-block__filter-option--three-col">
                             <input id="mode-full-time" class="filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Full-time"
-                                {% if filter_form.mode_query == 'Full-time' %}checked{% endif %}/>
+                                {% if 'Full-time' in filter_form.mode_query %}checked{% endif %}/>
 
                             <label class="filters-block__filter-checkbox-label" for="mode-full-time">
                                 {% get_translation key='full_time' language=page.get_language %}
@@ -69,7 +69,7 @@
 
                         <div class="filters-block__filter-option--three-col">
                             <input id="mode-part-time" class="filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Part-time"
-                                {% if filter_form.mode_query == 'Part-time' %}checked{% endif %}/>
+                                {% if 'Part-time' in filter_form.mode_query %}checked{% endif %}/>
 
                             <label class="filters-block__filter-checkbox-label" for="mode-part-time">
                                 {% get_translation key='part_time' language=page.get_language %}
@@ -78,7 +78,7 @@
 
                         <div class="filters-block__filter-option--three-col">
                             <input id="mode-distance" class="filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Distance learning"
-                                {% if filter_form.mode_query == 'Distance learning' %}checked{% endif %}/>
+                                {% if 'Distance learning' in filter_form.mode_query %}checked{% endif %}/>
 
                             <label class="filters-block__filter-checkbox-label" for="mode-distance">
                                 {% get_translation key='distance_learning' language=page.get_language %}
