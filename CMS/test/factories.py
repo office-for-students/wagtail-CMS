@@ -29,7 +29,9 @@ class PageFactory:
     def create_search_landing_page(cls, title='Test page', path="1111", depth=0):
         root_page = cls.get_root_page()
         search_landing = SearchLandingPage(title=title, path=path, depth=depth, live=True, heading='Page Heading',
-                                           search_heading='SearchHeading', course_finder_heading='CourseFinder Heading')
+                                           search_heading='SearchHeading', search_button_description='SearchHeading',
+                                           course_finder_heading='CourseFinder Heading',
+                                           course_finder_button_description='CourseFinder Heading')
         root_page.add_child(instance=search_landing)
 
         search_landing.save_revision().publish()
