@@ -6,36 +6,44 @@ $(document).ready(function() {
         return (results !== null) ? results[1] || 0 : false;
     }
 
-  // Course finder
+    // Course finder
 
-  if (sessionStorage.getItem("uniJSON") === null) {
-    $.getJSON("/static/jsonfiles/institutions.json", (result) => {
-      result.sort(function(a, b){
-          if(a.order_by_name < b.order_by_name) { return -1; }
-          if(a.order_by_name > b.order_by_name) { return 1; }
-          return 0;
-      })
-      sessionStorage.setItem("uniJSON", JSON.stringify(result));
-      $.each(result, function(index, item) {
-          $('#uni').append(`<option value='${item.name}'>${item.name}</option>`)
-      })
+    if (sessionStorage.getItem("uniJSON") === null) {
+        $.getJSON("/static/jsonfiles/institutions.json", function(result) {
+            result.sort(function(a, b){
+                if(a.order_by_name < b.order_by_name) { return -1; }
+                if(a.order_by_name > b.order_by_name) { return 1; }
+                return 0;
+            });
+
+            sessionStorage.setItem("uniJSON", JSON.stringify(result));
+
+            $.each(result, function(index, item) {
+                var option = document.createElement("option");
+                option.setAttribute("value", item.name);
+                option.innerHTML = item.name;
+                $('#uni').append(option);
+            })
+        })
+
+    }
+
+    $.each(JSON.parse(sessionStorage.getItem("uniJSON")), function(index, item) {
+        var option = document.createElement("option");
+        option.setAttribute("value", item.name);
+        option.innerHTML = item.name;
+        $('#uni').append(option);
     })
 
-  }
-
-  $.each(JSON.parse(sessionStorage.getItem("uniJSON")), function(index, item) {
-      $('#uni').append(`<option value='${item.name}'>${item.name}</option>`)
-  })
-
-  handleStartAgain = () => {
+  function handleStartAgain() {
     sessionStorage.clear()
   }
 
-  handleFormSubmit = () => {
+  function handleFormSubmit() {
     $('form').submit()
   }
 
-  handleCountrySelection = (data) => {
+  function handleCountrySelection(data) {
     let countries = []
     for(i=0; i < data.country.length; i++) {
       if(data.country[i].checked) {
@@ -45,7 +53,7 @@ $(document).ready(function() {
     sessionStorage.setItem("countries", countries);
   }
 
-  handleModeSelection = (data) => {
+  function handleModeSelection(data) {
     let modes = []
     for(i=0; i < data.mode.length; i++) {
       if(data.mode[i].checked) {
@@ -55,7 +63,7 @@ $(document).ready(function() {
     sessionStorage.setItem("modes", modes);
   }
 
-  handleSubjectSubmit = (data) => {
+  function handleSubjectSubmit(data) {
     let subject = ""
     let subjectCodes = ""
 
@@ -82,7 +90,7 @@ $(document).ready(function() {
     sessionStorage.setItem("subjectCodes", subjectCodes)
   }
 
-  handlePostcodeSubmit = (data) => {
+  function handlePostcodeSubmit(data) {
     let postcode = data.postcode.value.replace(' ', '');
     let distance = data.distance.value;
     let  queryValue = [postcode,  distance].join(',');
@@ -90,7 +98,7 @@ $(document).ready(function() {
     sessionStorage.setItem("postcode", queryValue);
   }
 
-  handleUniSelection = (data) => {
+  function handleUniSelection(data) {
     let uni = data.uni.value
     sessionStorage.setItem("uni", uni)
   }
@@ -128,7 +136,7 @@ $(document).ready(function() {
     $('#narrow').text(postcode.split(",").join(", "))
   }
 
-  handleResultsRequest = () => {
+  function handleResultsRequest() {
     let subject_query = sessionStorage.getItem('subjectCodes')
     let institution_query = sessionStorage.getItem('uni')
     let mode_query = sessionStorage.getItem('modes')
@@ -142,7 +150,7 @@ $(document).ready(function() {
     $("input[name='postcode_query']").val(postcode_query)
   }
 
-  handleResultClick = (e) => {
+  function handleResultClick(e) {
     if(e.currentTarget.classList.contains('open-result')) {
       e.currentTarget.classList.remove('open-result')
       e.currentTarget.children[0].style.borderBottom=""
@@ -152,11 +160,11 @@ $(document).ready(function() {
     }
   }
 
-  $('.result').click((e) => {
+  $('.result').click(function(e) {
     handleResultClick(e)
   })
 
-  $('.result').keydown((e) => {
+  $('.result').keydown(function(e) {
     if(e.which === 13 || e.which === 32) {
       handleResultClick(e)
     }
