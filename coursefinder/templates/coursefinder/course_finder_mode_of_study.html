@@ -5,10 +5,14 @@
 
 {% block content_class %}mode-chooser{% endblock %}
 
+{% block page_js %}
+    <script type="text/javascript" src="{% static 'js/mode-picker.js' %}"></script>
+{% endblock page_js %}
+
 {% block question %}
     <h1 class="course-finder-content__question">{{page.question}}</h1>
 
-    <form action="javascript:;" onsubmit="handleModeSelection(this)" class="course-finder-content__question-form">
+    <form action="javascript:;" class="course-finder-content__question-form">
         <label class="course-finder-content__question-option checkbox" for="fullTime">
             <span class="course-finder-content__question-label">
                 {% get_translation key='full_time' language=page.get_language %}
@@ -50,7 +54,7 @@
 
 {% block next_nav %}
     <a href={% pageurl page.next_page %} class="course-finder-content__next-link">
-        <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
+        <button class="course-finder-content__next-button">
             {% get_translation key='next' language=page.get_language %}
 
             <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">

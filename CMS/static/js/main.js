@@ -43,16 +43,6 @@ $(document).ready(function() {
     $('form').submit()
   }
 
-  function handleModeSelection(data) {
-    let modes = []
-    for(i=0; i < data.mode.length; i++) {
-      if(data.mode[i].checked) {
-        modes.push(data.mode[i].value)
-      }
-    }
-    sessionStorage.setItem("modes", modes);
-  }
-
   function handleSubjectSubmit(data) {
     let subject = ""
     let subjectCodes = ""
@@ -139,25 +129,4 @@ $(document).ready(function() {
     $("input[name='countries_query']").val(countries_query)
     $("input[name='postcode_query']").val(postcode_query)
   }
-
-  function handleResultClick(e) {
-    if(e.currentTarget.classList.contains('open-result')) {
-      e.currentTarget.classList.remove('open-result')
-      e.currentTarget.children[0].style.borderBottom=""
-    } else {
-      e.currentTarget.classList.add('open-result')
-      e.currentTarget.children[0].style.borderBottom="1px solid #4C4D6C"
-    }
-  }
-
-  $('.result').click(function(e) {
-    handleResultClick(e)
-  })
-
-  $('.result').keydown(function(e) {
-    if(e.which === 13 || e.which === 32) {
-      handleResultClick(e)
-    }
-  })
-
 });
