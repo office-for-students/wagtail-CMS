@@ -37,7 +37,7 @@
     color: $white;
 
     &__container {
-        padding: 22px 20px 22px 18px;
+        padding: 15px 30px;
         display: flex;
         justify-content: space-between;
     }
@@ -69,6 +69,11 @@
     }
 
     &__mobile {
+        &-nav {
+            display: flex;
+            align-items: center;
+        }
+
         &-links {
             display: none;
             min-height: 402px;
@@ -174,8 +179,8 @@
         &__count {
             position: absolute;
             padding: 2px 4.5px;
-            right: 16px;
-            top: -6px;
+            right: 10px;
+            top: 2px;
 
             background-color: $delete-red;
             border-radius: 20px;
@@ -189,7 +194,7 @@
 @media only screen and (min-width: 770px) {
     .discover-uni-nav {
         &__container {
-            padding: 18px 0px 22px;
+            padding: 20px 0px;
         }
 
         &__mobile-nav {
