@@ -24,6 +24,7 @@ class NavPanel(blocks.StructBlock):
                               classname='dct-meta-field')
     label = blocks.RichTextBlock()
     button_text = blocks.CharBlock(required=False)
+    button_description = blocks.CharBlock(required=False)
 
 
 class HomePage(DiscoverUniBasePage):
