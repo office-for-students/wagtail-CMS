@@ -32,11 +32,13 @@ class DiscoverUniBasePage(Page):
         return self.get_language() == 'en'
 
     def get_english_url(self):
-        return self.url.replace('/cy/','/')
+        if self.is_english():
+            return self.url
+        return self.translated_page.url
 
     def get_welsh_url(self):
         if self.is_english():
-            return '/cy' + self.url
+            return self.translated_page.url
         return self.url
 
     @property
