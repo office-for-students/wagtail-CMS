@@ -8,6 +8,7 @@ from wagtail.snippets.models import register_snippet
 
 from CMS.enums import enums
 from core.utils import parse_menu_item, get_page_for_language
+from home.models import HomePage
 
 
 class DiscoverUniBasePage(Page):
@@ -34,11 +35,13 @@ class DiscoverUniBasePage(Page):
     def get_english_url(self):
         if self.is_english():
             return self.url
-        return self.translated_page.url
+        return self.translated_page.url if self.translated_page \
+            else get_page_for_language(enums.languages.ENGLISH, HomePage.objects.all())
 
     def get_welsh_url(self):
         if self.is_english():
-            return self.translated_page.url
+            return self.translated_page.url if self.translated_page \
+                else get_page_for_language(enums.languages.WELSH, HomePage.objects.all())
         return self.url
 
     @property
