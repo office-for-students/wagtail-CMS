@@ -40,12 +40,14 @@
 
         handleAccordionToggle: function() {
             if (this.header.hasClass('open')) {
+                this.header.attr('aria-expanded', false)
                 this.body.hide();
                 this.expandIcon.show();
                 this.collapseIcon.hide();
                 this.header.removeClass('open');
             }
             else {
+                this.header.attr('aria-expanded', true)
                 this.body.show();
                 this.expandIcon.hide();
                 this.collapseIcon.show();
