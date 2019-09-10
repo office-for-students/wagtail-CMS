@@ -48,7 +48,7 @@
 
                             <p class="after-course__figure-salary-range">
                                 £{{course1_salary_stats.lower_quartile}} - £{{course1_salary_stats.higher_quartile}}
-                                {% if course1_salary_stats.unavailable_reason %}
+                                {% if course1_salary_stats.display_unavailable_reason %}
                                     *
                                 {% endif %}
                             </p>
@@ -79,7 +79,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_salary_stats.unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_salary_stats.display_unavailable_reason %}
                     </div>
                 </div>
 
@@ -108,7 +108,7 @@
 
                             <p class="after-course__figure-salary-range">
                                 £{{course2_salary_stats.lower_quartile}} - £{{course2_salary_stats.higher_quartile}}
-                                {% if course2_salary_stats.unavailable_reason %}
+                                {% if course2_salary_stats.display_unavailable_reason %}
                                     *
                                 {% endif %}
                             </p>
@@ -139,7 +139,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_salary_stats.unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_salary_stats.display_unavailable_reason %}
                     </div>
                 </div>
             </div>
@@ -194,7 +194,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_leo_stats.unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_leo_stats.display_unavailable_reason %}
                     </div>
                 </div>
 
@@ -232,7 +232,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_leo_stats.unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_leo_stats.display_unavailable_reason %}
                     </div>
                 </div>
             </div>
@@ -317,7 +317,7 @@
                     </div>
                 {% endif %}
 
-                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_employment_stats.unavailable_reason %}
+                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_employment_stats.display_unavailable_reason %}
             </div>
         </div>
 
@@ -378,7 +378,7 @@
                     </div>
                 {% endif %}
 
-                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_employment_stats.unavailable_reason %}
+                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_employment_stats.display_unavailable_reason %}
             </div>
         </div>
     </div>
@@ -494,7 +494,7 @@
                         </div>
                     {% endif %}
 
-                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_job_type_stats.unavailable_reason %}
+                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_job_type_stats.display_unavailable_reason %}
                 </div>
             </div>
 
@@ -508,7 +508,7 @@
                         </div>
                     {% endif %}
 
-                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_job_type_stats.unavailable_reason %}
+                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_job_type_stats.display_unavailable_reason %}
                 </div>
             </div>
         </div>
@@ -559,7 +559,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_job_lists.unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_job_lists.display_unavailable_reason %}
                     </div>
                 </div>
 
@@ -590,7 +590,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_job_lists.unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_job_lists.display_unavailable_reason %}
                     </div>
                 </div>
             </div>
