@@ -36,13 +36,13 @@ class DiscoverUniBasePage(Page):
         if self.is_english():
             return self.url
         return self.translated_page.url if self.translated_page \
-            else get_page_for_language(enums.languages.ENGLISH, HomePage.objects.all())
+            else get_page_for_language(enums.languages.ENGLISH, HomePage.objects.all()).url
 
     def get_welsh_url(self):
         from home.models import HomePage
         if self.is_english():
             return self.translated_page.url if self.translated_page \
-                else get_page_for_language(enums.languages.WELSH, HomePage.objects.all())
+                else get_page_for_language(enums.languages.WELSH, HomePage.objects.all()).url
         return self.url
 
     @property
