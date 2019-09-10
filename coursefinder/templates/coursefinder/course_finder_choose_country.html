@@ -3,6 +3,10 @@
 
 {% block content_class %}country-chooser{% endblock %}
 
+{% block page_js %}
+    <script type="text/javascript" src="{% static 'js/country-picker.js' %}"></script>
+{% endblock page_js %}
+
 
 {% block question %}
     <h1 class="course-finder-content__question">{{page.question}}</h1>

@@ -43,16 +43,6 @@ $(document).ready(function() {
     $('form').submit()
   }
 
-  function handleCountrySelection(data) {
-    let countries = []
-    for(i=0; i < data.country.length; i++) {
-      if(data.country[i].checked) {
-        countries.push(data.country[i].value)
-      }
-     }
-    sessionStorage.setItem("countries", countries);
-  }
-
   function handleModeSelection(data) {
     let modes = []
     for(i=0; i < data.mode.length; i++) {

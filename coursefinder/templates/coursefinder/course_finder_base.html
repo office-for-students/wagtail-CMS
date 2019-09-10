@@ -5,6 +5,11 @@
     <link href="{% sass_src 'scss/course_finder.scss' %}" rel="stylesheet" type="text/css" >
 {% endblock extra_css %}
 
+{% block extra_js %}
+    {% block page_js %}
+    {% endblock page_js %}
+{% endblock extra_js %}
+
 {% block content %}
     <div class="course-finder-base">
         <div class="discover-uni-container">
