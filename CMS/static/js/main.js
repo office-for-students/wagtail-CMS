@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     // Course finder
 
-    if (sessionStorage.getItem("uniJSON") === null) {
+    if (localStorage.getItem("uniJSON") === null) {
         $.getJSON("/static/jsonfiles/institutions.json", function(result) {
             result.sort(function(a, b){
                 if(a.order_by_name < b.order_by_name) { return -1; }
@@ -16,41 +16,19 @@ $(document).ready(function() {
                 return 0;
             });
 
-            sessionStorage.setItem("uniJSON", JSON.stringify(result));
+            localStorage.setItem("uniJSON", JSON.stringify(result));
         })
-
     }
 
-  if (sessionStorage.getItem("countries") != null) {
-    let countries = sessionStorage.getItem("countries")
-    $('#countries').text(countries.split(",").join(", "))
-  }
-  if (sessionStorage.getItem("modes") != null) {
-    let modes = sessionStorage.getItem("modes")
-    $('#modes').text(modes.split(",").join(", "))
-  }
+    if (localStorage.getItem("subjectJSON") === null) {
+        $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
+            result.sort(function(a, b){
+                if (a.englishname < b.englishname) { return -1; }
+                if (a.englishname > b.englishname) { return 1; }
+                return 0;
+            });
 
-  if (sessionStorage.getItem("subject") != null) {
-    let subjects = sessionStorage.getItem("subject")
-    let subjectNames = []
-    subjectsArray = subjects.split(",")
-    $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, a) {
-      $.each(subjectsArray, function(index, b) {
-        if(a.code === b) {
-          subjectNames.push(a.englishname)
-          $('#subjects').text(subjectNames)
-        }
-      })
-    })
-  }
-
-  if (sessionStorage.getItem("uni") != null) {
-    let uni = sessionStorage.getItem("uni")
-    $('#narrow').text(uni.split(",").join(", "))
-  }
-
-  if (sessionStorage.getItem("postcode") != null) {
-    let postcode = sessionStorage.getItem("postcode")
-    $('#narrow').text(postcode.split(",").join(", "))
-  }
+            localStorage.setItem("subjectJSON", JSON.stringify(result));
+        })
+    }
 });

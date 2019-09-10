@@ -23,7 +23,7 @@
 
         loadSubjectData: function() {
             var that = this;
-            if (sessionStorage.getItem("subjectJSON") === null) {
+            if (localStorage.getItem("subjectJSON") === null) {
                 $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
                     result.sort(function(a, b){
                         if (a.englishname < b.englishname) { return -1; }
@@ -31,12 +31,12 @@
                         return 0;
                     });
 
-                    sessionStorage.setItem("subjectJSON", JSON.stringify(result));
+                    localStorage.setItem("subjectJSON", JSON.stringify(result));
 
                     that.subjectData = result;
                 })
             } else {
-                this.subjectData = JSON.parse(sessionStorage.getItem("subjectJSON"));
+                this.subjectData = JSON.parse(localStorage.getItem("subjectJSON"));
             }
             this.initialiseSelectors();
         },

@@ -20,7 +20,7 @@
 
         initialiseSelect: function() {
             var that = this;
-            $.each(JSON.parse(sessionStorage.getItem("uniJSON")), function(index, item) {
+            $.each(JSON.parse(localStorage.getItem("uniJSON")), function(index, item) {
                 var optionId = that.fieldName + '-' + index;
                 var optionValue = '"' + item.name + '"';
 
