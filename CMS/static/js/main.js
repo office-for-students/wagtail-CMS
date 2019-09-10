@@ -43,33 +43,6 @@ $(document).ready(function() {
     $('form').submit()
   }
 
-  function handleSubjectSubmit(data) {
-    let subject = ""
-    let subjectCodes = ""
-
-    if (data.subject.value != "disabled") {
-      subject = data.subjectCode.value
-    } else if (data.subjectArea.value === "disabled" && data.subject.value === "disabled") {
-      subject = ""
-    } else {
-      subject = data.subjectArea.value
-    }
-
-    if (data.subjectArea.value != "disabled" && data.subject.value === "disabled") {
-      $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
-        if(item.level === "3" && item.code.includes(data.subjectArea.value)) {
-          subjectCodes += item.code + ","
-        }
-      })
-    } else if (data.subjectArea.value === "disabled" && data.subject.value === "disabled") {
-      subjectCodes = ""
-    } else {
-      subjectCodes = data.subjectCode.value
-    }
-    sessionStorage.setItem("subject", subject)
-    sessionStorage.setItem("subjectCodes", subjectCodes)
-  }
-
   function handlePostcodeSubmit(data) {
     let postcode = data.postcode.value.replace(' ', '');
     let distance = data.distance.value;
