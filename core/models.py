@@ -24,7 +24,7 @@ class DiscoverUniBasePage(Page):
     ]
 
     def get_language(self):
-        if '/cy/' in self.get_full_url():
+        if self.url and '/cy/' in self.url:
             return 'cy'
         return 'en'
 
