@@ -24,8 +24,8 @@ var CONTENT = {
         'cy-gb': ''
     },
     'logo': {
-        'en-gb': 'Discover Uni',
-        'cy-gb': ''
+        'en-gb': '{{domain_name}}/static/images/logos/widget_logo_english.svg',
+        'cy-gb': '{{domain_name}}/static/images/logos/widget_logo_welsh.svg'
     },
     'cta': {
         'en-gb': 'See course data',
@@ -395,10 +395,9 @@ DataWidget.prototype = {
         ctaBlockNode.appendChild(leadNode2);
         ctaBlockNode.appendChild(leadNode3);
 
-        var logoNode = document.createElement('p');
+        var logoNode = document.createElement('img');
         logoNode.classList.add('logo');
-        var logo = document.createTextNode(CONTENT.logo[this.language]);
-        logoNode.appendChild(logo);
+        logoNode.setAttribute('src', CONTENT.logo[this.language]);
         ctaBlockNode.appendChild(logoNode);
 
         var ctaWrapperNode = document.createElement('div');
@@ -477,10 +476,9 @@ NoDataWidget.prototype = {
         ctaBlockNode.appendChild(leadNode2);
         ctaBlockNode.appendChild(leadNode3);
 
-        var logoNode = document.createElement('p');
+        var logoNode = document.createElement('img');
         logoNode.classList.add('logo');
-        var logo = document.createTextNode(CONTENT.logo[this.language]);
-        logoNode.appendChild(logo);
+        logoNode.setAttribute('src', CONTENT.logo[this.language]);
         ctaBlockNode.appendChild(logoNode);
 
         var ctaWrapperNode = document.createElement('div');
