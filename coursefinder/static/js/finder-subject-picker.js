@@ -22,25 +22,26 @@
             this.form.submit(function() {
                 var subject = ""
                 var subjectCodes = ""
+                var data = this;
 
-                if (this.subject.value != "disabled") {
-                  subject = this.subjectCode.value
-                } else if (this.subjectArea.value === "disabled" && this.subject.value === "disabled") {
+                if (data.subject.value != "disabled") {
+                  subject = data.subjectCode.value
+                } else if (data.subjectArea.value === "disabled" && data.subject.value === "disabled") {
                   subject = ""
                 } else {
-                  subject = this.subjectArea.value
+                  subject = data.subjectArea.value
                 }
 
-                if (this.subjectArea.value != "disabled" && this.subject.value === "disabled") {
+                if (data.subjectArea.value != "disabled" && data.subject.value === "disabled") {
                   $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
-                    if(item.level === "3" && item.code.includes(this.subjectArea.value)) {
+                    if(item.level === "3" && item.code.includes(data.subjectArea.value)) {
                       subjectCodes += item.code + ","
                     }
                   })
-                } else if (this.subjectArea.value === "disabled" && this.subject.value === "disabled") {
+                } else if (data.subjectArea.value === "disabled" && data.subject.value === "disabled") {
                   subjectCodes = ""
                 } else {
-                  subjectCodes = this.subjectCode.value
+                  subjectCodes = data.subjectCode.value
                 }
                 sessionStorage.setItem("subject", subject)
                 sessionStorage.setItem("subjectCodes", subjectCodes)
