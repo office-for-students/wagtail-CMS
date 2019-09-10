@@ -16,42 +16,46 @@
     <form class="course-finder-content__question-form" action="javascript:;">
         <input class="textbox" type="text" name="postcode" value="">
 
-        <p class="course-finder-content__question-sub-heading">
-            {% get_translation key='search_within' language=page.get_language %}:
-        </p>
+        <fieldset>
+            <legend>
+                <p class="course-finder-content__question-sub-heading">
+                    {% get_translation key='search_within' language=page.get_language %}:
+                </p>
+            </legend>
 
-        <label class="course-finder-content__question-option radio" for="one">
-            <span class="course-finder-content__question-label">
-                10 {% get_translation key='miles' language=page.get_language %}
-            </span>
+            <label class="course-finder-content__question-option radio" for="one">
+                <span class="course-finder-content__question-label">
+                    10 {% get_translation key='miles' language=page.get_language %}
+                </span>
 
-            <input class="course-finder-content__question-input"
-                    id="one" type="radio" name="distance" value="10">
+                <input class="course-finder-content__question-input"
+                        id="one" type="radio" name="distance" value="10">
 
-            <span class="radiobox"></span>
-        </label>
+                <span class="radiobox"></span>
+            </label>
 
-        <label class="course-finder-content__question-option radio" for="two">
-            <span class="course-finder-content__question-label">
-                25 {% get_translation key='miles' language=page.get_language %}
-            </span>
+            <label class="course-finder-content__question-option radio" for="two">
+                <span class="course-finder-content__question-label">
+                    25 {% get_translation key='miles' language=page.get_language %}
+                </span>
 
-            <input class="course-finder-content__question-input"
-                    id="two" type="radio" name="distance" value="25">
+                <input class="course-finder-content__question-input"
+                        id="two" type="radio" name="distance" value="25">
 
-            <span class="radiobox"></span>
-        </label>
+                <span class="radiobox"></span>
+            </label>
 
-        <label class="course-finder-content__question-option radio" for="three">
-            <span class="course-finder-content__question-label">
-                50 {% get_translation key='miles' language=page.get_language %}
-            </span>
+            <label class="course-finder-content__question-option radio" for="three">
+                <span class="course-finder-content__question-label">
+                    50 {% get_translation key='miles' language=page.get_language %}
+                </span>
 
-            <input class="course-finder-content__question-input"
-                    id="three" type="radio" name="distance" value="50">
+                <input class="course-finder-content__question-input"
+                        id="three" type="radio" name="distance" value="50">
 
-            <span class="radiobox"></span>
-        </label>
+                <span class="radiobox"></span>
+            </label>
+        </fieldset>
     </form>
 {% endblock %}
 
