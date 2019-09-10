@@ -1,11 +1,11 @@
 (function ($) {
 
-    var CountryPicker = function(wrapper) {
+    var ModePicker = function(wrapper) {
         this.wrapper = $(wrapper);
         this.setup();
     }
 
-    CountryPicker.prototype = {
+    ModePicker.prototype = {
         setup: function() {
             this.btn = this.wrapper.find('.course-finder-content__next-button');
             this.form = this.wrapper.find('.course-finder-content__question-form');
@@ -20,20 +20,20 @@
             });
 
             this.form.submit(function() {
-                var countries = [];
-                for (var i = 0; i < this.country.length; i++) {
-                    if (this.country[i].checked) {
-                        countries.push(this.country[i].value)
-                    }
+                var modes = []
+                for (var i = 0; i < this.mode.length; i++) {
+                  if (this.mode[i].checked) {
+                    modes.push(this.mode[i].value)
+                  }
                 }
-                sessionStorage.setItem("countries", countries);
-            })
+                sessionStorage.setItem("modes", modes);
+            });
         }
     }
 
     function init() {
-        var countryPickers = $('.country-chooser');
-        new CountryPicker(countryPickers[0]);
+        var modePickers = $('.mode-chooser');
+        new ModePicker(modePickers[0]);
     }
 
     $(document).on('page:load', init);
