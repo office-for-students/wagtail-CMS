@@ -81,7 +81,8 @@
                                 {% should_show_accordion courses accordion.value.data_set as show_accordion %}
                                 {% if show_accordion %}
                                     <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
-                                        <h2 class="course-detail__accordion-heading">
+                                        <h2 class="course-detail__accordion-heading"
+                                            aria-label="Show content" aria-expanded="false">
                                             {{ accordion.value.heading }}
 
                                             <span class="course-detail__accordion-heading-chevron">

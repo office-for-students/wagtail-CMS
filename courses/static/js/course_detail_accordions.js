@@ -80,6 +80,7 @@
             this.plusIcon.hide();
             this.minusIcon.show();
             this.body.show();
+            this.header.attr('aria-expanded', true);
         },
 
         collapse: function() {
@@ -88,6 +89,7 @@
             this.plusIcon.show();
             this.minusIcon.hide();
             this.body.hide();
+            this.header.attr('aria-expanded', false);
         }
     }
 
