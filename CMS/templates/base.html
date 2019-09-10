@@ -48,11 +48,14 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
+        <a href="#main-content" class="screen-reader">skip to main content</a>
         {% include 'partials/nav.html' %}
 
         {% wagtailuserbar %}
 
-        {% block content %}{% endblock %}
+        <div id="main-content" tabindex="-1">
+            {% block content %}{% endblock %}
+        </div>
 
         {% include 'partials/feedback-form.html' %}
 
