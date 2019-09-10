@@ -6,7 +6,8 @@
 
 <div class="filters-block__filter-options">
     <div class="filters-block__filter-option">
-        <input id="foundation-yes" class="filters-block__filter-radio-input" type="radio" name="foundation" value="yes" />
+        <input id="foundation-yes" class="filters-block__filter-radio-input" type="radio" name="foundation" value="yes"
+            {% if filter_form.foundation == 'yes' %}checked{% endif %} />
 
         <label class="filters-block__filter-radio-label" for="foundation-yes">
             {% get_translation key='with_foundation' language=page.get_language %}
@@ -14,7 +15,8 @@
     </div>
 
     <div class="filters-block__filter-option">
-        <input id="foundation-no" class="filters-block__filter-radio-input" type="radio" name="foundation" value="no" />
+        <input id="foundation-no" class="filters-block__filter-radio-input" type="radio" name="foundation" value="no"
+            {% if filter_form.foundation == 'no' %}checked{% endif %} />
 
         <label class="filters-block__filter-radio-label" for="foundation-no">
             {% get_translation key='without_foundation' language=page.get_language %}
@@ -22,7 +24,8 @@
     </div>
 
     <div class="filters-block__filter-option">
-        <input id="foundation-either" class="filters-block__filter-radio-input" type="radio" name="foundation" value="na" />
+        <input id="foundation-either" class="filters-block__filter-radio-input" type="radio" name="foundation" value="na"
+            {% if filter_form.foundation == 'na' %}checked{% endif %} />
 
         <label class="filters-block__filter-radio-label" for="foundation-either">
             {% get_translation key='dont_mind' language=page.get_language %}

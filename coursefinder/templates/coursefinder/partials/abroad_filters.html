@@ -6,7 +6,8 @@
 
 <div class="filters-block__filter-options">
     <div class="filters-block__filter-option">
-        <input id="abroad-yes" class="filters-block__filter-radio-input" type="radio" name="abroad" value="yes" />
+        <input id="abroad-yes" class="filters-block__filter-radio-input" type="radio" name="abroad" value="yes"
+            {% if filter_form.abroad == 'yes' %}checked{% endif %} />
 
         <label class="filters-block__filter-radio-label" for="abroad-yes">
             {% get_translation key='with_abroad' language=page.get_language %}
@@ -14,7 +15,8 @@
     </div>
 
     <div class="filters-block__filter-option">
-        <input id="abroad-no" class="filters-block__filter-radio-input" type="radio" name="abroad" value="no" />
+        <input id="abroad-no" class="filters-block__filter-radio-input" type="radio" name="abroad" value="no"
+            {% if filter_form.abroad == 'no' %}checked{% endif %} />
 
         <label class="filters-block__filter-radio-label" for="abroad-no">
             {% get_translation key='without_abroad' language=page.get_language %}
@@ -22,7 +24,8 @@
     </div>
 
     <div class="filters-block__filter-option">
-        <input id="abroad-either" class="filters-block__filter-radio-input" type="radio" name="abroad" value="na" />
+        <input id="abroad-either" class="filters-block__filter-radio-input" type="radio" name="abroad" value="na"
+            {% if filter_form.abroad == 'na' %}checked{% endif %} />
 
         <label class="filters-block__filter-radio-label" for="abroad-either">
             {% get_translation key='dont_mind' language=page.get_language %}

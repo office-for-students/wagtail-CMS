@@ -1,91 +1,91 @@
 var CONTENT = {
     'satisfactionIntro': {
-        'en-GB': 'of students were satisfied overall with their course.',
-        'cy-GB': ''
+        'en-gb': 'of students were satisfied overall with their course.',
+        'cy-gb': ''
     },
     'explanationIntro': {
-        'en-GB': 'of students agreed staff were good at explaining things.',
-        'cy-GB': ''
+        'en-gb': 'of students agreed staff were good at explaining things.',
+        'cy-gb': ''
     },
     'workIntro': {
-        'en-GB': 'in work or doing further study six months after finishing.',
-        'cy-GB': ''
+        'en-gb': 'in work or doing further study six months after finishing.',
+        'cy-gb': ''
     },
     'ctaLead1': {
-        'en-GB': 'For ',
-        'cy-GB': ''
+        'en-gb': 'For ',
+        'cy-gb': ''
     },
     'ctaLead2': {
-        'en-GB': 'more',
-        'cy-GB': ''
+        'en-gb': 'more',
+        'cy-gb': ''
     },
     'ctaLead3': {
-        'en-GB': ' official course information visit.',
-        'cy-GB': ''
+        'en-gb': ' official course information visit.',
+        'cy-gb': ''
     },
     'logo': {
-        'en-GB': 'Discover Uni',
-        'cy-GB': ''
+        'en-gb': 'Discover Uni',
+        'cy-gb': ''
     },
     'cta': {
-        'en-GB': 'See course data',
-        'cy-GB': ''
+        'en-gb': 'See course data',
+        'cy-gb': ''
     },
     'noDataIntro': {
-        'en-GB': 'To see official information about this course and others visit Discover Uni.',
-        'cy-GB': ''
+        'en-gb': 'To see official information about this course and others visit Discover Uni.',
+        'cy-gb': ''
     },
     'noDataCtaLead1': {
-        'en-GB': 'Make an ',
-        'cy-GB': ''
+        'en-gb': 'Make an ',
+        'cy-gb': ''
     },
     'noDataCtaLead2': {
-        'en-GB': 'informed',
-        'cy-GB': ''
+        'en-gb': 'informed',
+        'cy-gb': ''
     },
     'noDataCtaLead3': {
-        'en-GB': ' choice.',
-        'cy-GB': ''
+        'en-gb': ' choice.',
+        'cy-gb': ''
     },
     'noDataCta': {
-        'en-GB': 'See course info',
-        'cy-GB': ''
+        'en-gb': 'See course info',
+        'cy-gb': ''
     },
     'placement': {
-        'en-GB': 'Placement year',
-        'cy-GB': ''
+        'en-gb': 'Placement year',
+        'cy-gb': ''
     },
     'placementOptional': {
-        'en-GB': 'Placement year optional',
-        'cy-GB': ''
+        'en-gb': 'Placement year optional',
+        'cy-gb': ''
     },
     'foundation': {
-        'en-GB': 'Foundation year',
-        'cy-GB': ''
+        'en-gb': 'Foundation year',
+        'cy-gb': ''
     },
     'foundationOptional': {
-        'en-GB': 'Foundation year optional',
-        'cy-GB': ''
+        'en-gb': 'Foundation year optional',
+        'cy-gb': ''
     },
     'abroad': {
-        'en-GB': 'Year abroad',
-        'cy-GB': ''
+        'en-gb': 'Year abroad',
+        'cy-gb': ''
     },
     'abroadOptional': {
-        'en-GB': 'Year abroad optional',
-        'cy-GB': ''
+        'en-gb': 'Year abroad optional',
+        'cy-gb': ''
     },
     'dataFor': {
-        'en-GB': 'Data for: ',
-        'cy-GB': ''
+        'en-gb': 'Data for: ',
+        'cy-gb': ''
     },
     'dataForAggregated': {
-        'en-GB': 'Data for courses in ',
-        'cy-GB': ''
+        'en-gb': 'Data for courses in ',
+        'cy-gb': ''
     },
     'at': {
-        'en-GB': ' at ',
-        'cy-GB': ''
+        'en-gb': ' at ',
+        'cy-gb': ''
     }
 }
 
@@ -95,8 +95,8 @@ var MODES = {
 }
 
 var LANGUAGE_KEYS = {
-    'en-GB': 'english',
-    'cy-GB': 'welsh'
+    'en-gb': 'english',
+    'cy-gb': 'welsh'
 }
 
 var  DiscoverUniWidget = function(targetDiv) {
@@ -110,7 +110,7 @@ DiscoverUniWidget.prototype = {
         this.course = this.targetDiv.dataset.course;
         this.kismode = this.targetDiv.dataset.kismode;
         this.orientation = this.targetDiv.dataset.orientation;
-        this.language = this.targetDiv.dataset.language;
+        this.language = this.targetDiv.dataset.language.toLowerCase();
         this.languageKey = LANGUAGE_KEYS[this.language];
         this.size = this.targetDiv.dataset.size;
 

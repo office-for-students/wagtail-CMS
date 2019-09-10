@@ -64,9 +64,9 @@
 
         prepSubjectQuery: function() {
             var subjectCodes = ""
-            if (this.subjectAreaSelector.val() === "disabled" && this.subjectSelector.val() === "disabled") {
+            if (this.subjectAreaSelector.val() === null && this.subjectSelector.val() === null) {
                 subjectCodes = "";
-            } else if (this.subjectAreaSelector.val() != "disabled" && this.subjectSelector.val() === "disabled") {
+            } else if (this.subjectAreaSelector.val() != null && this.subjectSelector.val() === null) {
                 subjectJson = JSON.parse(sessionStorage.getItem("subjectJSON"));
                 for (var i = 0; i < subjectJson.length; i++) {
                     var item = subjectJson[i];
@@ -215,15 +215,17 @@
 
     UniList.prototype = {
         setup: function() {
+            this.initialSelection = this.listWrapper.data().selectedunis.split(',').filter(Boolean);
             this.renderUnis();
         },
 
         renderUnis: function() {
             this.unis = [];
             for (var i = 0; i < this.uniData.length; i++) {
-                this.unis.push(new Uni(this.uniData[i], this.listWrapper, i, this.selectedSetter));
+                this.unis.push(new Uni(this.uniData[i], this.listWrapper, i, this.selectedSetter, this.initialSelection));
             }
             this.totalSetter(this.unis.length);
+            this.selectedSetter(this.initialSelection.length);
         },
 
         updateList: function(filterLetter) {
@@ -265,11 +267,12 @@
         }
     }
 
-    var Uni = function(uniData, parent, index, selectedSetter) {
+    var Uni = function(uniData, parent, index, selectedSetter, initialSelection) {
         this.uni = uniData;
         this.parent = parent;
         this.index = index;
         this.selectedSetter = selectedSetter;
+        this.initialSelection = initialSelection;
         this.setup();
     }
 
@@ -277,6 +280,7 @@
         setup: function() {
             this.letter = this.uni.alphabet;
             this.id = 'uni-' + this.index;
+            this.isPreSelected = $.inArray(this.uni.name, this.initialSelection) !== -1;
             this.createUni();
         },
 
@@ -300,6 +304,10 @@
             inputFieldNode.setAttribute('id', this.uni.order_by_name);
             inputFieldNode.setAttribute('type', 'checkbox');
             inputFieldNode.setAttribute('value', this.uni.name);
+            if (this.isPreSelected) {
+                inputFieldNode.setAttribute('checked', true);
+            }
+
 
             var checkboxNode = document.createElement('span');
             checkboxNode.classList.add('checkmark');
