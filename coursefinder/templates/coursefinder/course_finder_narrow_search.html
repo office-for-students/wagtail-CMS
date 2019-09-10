@@ -10,43 +10,45 @@
 {% endblock page_js %}
 
 {% block question %}
-    <h1 class="course-finder-content__question">{{page.question}}</h1>
-
     <form action="{% url 'narrow_search' %}" method="post" class="course-finder-content__question-form">
         {% csrf_token %}
 
-        <label class="course-finder-content__question-option radio" for="uni">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='specific_uni' language=page.get_language %}?
-            </span>
+        <fieldset>
+            <legend><h1 class="course-finder-content__question">{{page.question}}</h1></legend>
+            
+            <label class="course-finder-content__question-option radio" for="uni">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='specific_uni' language=page.get_language %}?
+                </span>
 
-            <input class="course-finder-content__question-input"
-                   id="uni" type="radio" name="radioGroup" value="uni">
+                <input class="course-finder-content__question-input"
+                       id="uni" type="radio" name="radioGroup" value="uni">
 
-            <span class="radiobox"></span>
-        </label>
+                <span class="radiobox"></span>
+            </label>
 
-        <label class="course-finder-content__question-option radio" for="home">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='near_your_home' language=page.get_language %}?
-            </span>
+            <label class="course-finder-content__question-option radio" for="home">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='near_your_home' language=page.get_language %}?
+                </span>
 
-            <input class="course-finder-content__question-input"
-                   id="home" type="radio" name="radioGroup" value="home">
+                <input class="course-finder-content__question-input"
+                       id="home" type="radio" name="radioGroup" value="home">
 
-            <span class="radiobox"></span>
-        </label>
+                <span class="radiobox"></span>
+            </label>
 
-        <label class="course-finder-content__question-option radio" for="all">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='dont_narrow' language=page.get_language %}
-            </span>
+            <label class="course-finder-content__question-option radio" for="all">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='dont_narrow' language=page.get_language %}
+                </span>
 
-            <input class="course-finder-content__question-input"
-                   id="all" type="radio" name="radioGroup" value="all">
+                <input class="course-finder-content__question-input"
+                       id="all" type="radio" name="radioGroup" value="all">
 
-            <span class="radiobox"></span>
-        </label>
+                <span class="radiobox"></span>
+            </label>
+        </fieldset>
 
         <div class="course-finder-content__question-previous-selections">
             <input type="text" name="countries_query" value="">
