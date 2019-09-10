@@ -6,11 +6,17 @@
         margin-bottom: 10px;
 
         &-header {
-            background-color: $ux-grey-1;
             padding: 30px  22px 30px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            border: 3px solid transparent;
+            background-color: $ux-grey-1;
+
+            &:hover {
+                border: 3px solid $gradient-light-green;
+            }
 
             .collapse {
                 display: none;
