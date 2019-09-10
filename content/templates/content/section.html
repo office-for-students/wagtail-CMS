@@ -22,7 +22,7 @@
                 {% for block in page.subsections %}
                     <div id="{% title_to_id block.value.subsection_title %}" class="section-page__accordion">
                         <div tabindex="0" role="button" class="section-page__accordion-header"
-                             aria-label="Show content" aria-expanded="false">
+                             aria-label="Show {{ block.value.subsection_title }} content" aria-expanded="false">
                             <h2 class="section-page__accordion-title">{{ block.value.subsection_title }}</h2>
 
                             <div class="expand">
