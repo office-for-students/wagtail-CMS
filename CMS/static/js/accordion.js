@@ -21,6 +21,7 @@
             if (this.anchor === window.location.hash) {
                 this.collapseIcon.show();
                 this.header.addClass('open');
+                this.header.attr('aria-expanded', true);
             } else {
                 this.body.hide();
                 this.expandIcon.show();
@@ -40,14 +41,14 @@
 
         handleAccordionToggle: function() {
             if (this.header.hasClass('open')) {
-                this.header.attr('aria-expanded', false)
+                this.header.attr('aria-expanded', false);
                 this.body.hide();
                 this.expandIcon.show();
                 this.collapseIcon.hide();
                 this.header.removeClass('open');
             }
             else {
-                this.header.attr('aria-expanded', true)
+                this.header.attr('aria-expanded', true);
                 this.body.show();
                 this.expandIcon.hide();
                 this.collapseIcon.show();
