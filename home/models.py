@@ -37,7 +37,7 @@ class HomePage(DiscoverUniBasePage):
         ]))
     ])
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
         FieldPanel('intro', classname="full"),
         StreamFieldPanel('page_links', classname="full"),
@@ -51,7 +51,7 @@ class UserNavPage(DiscoverUniBasePage):
         ('nav_panel', NavPanel(required=True, icon='link')),
     ])
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
         StreamFieldPanel('nav_panels', classname="full"),
     ]

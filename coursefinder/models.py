@@ -20,7 +20,7 @@ class CourseFinderChooseCountry(DiscoverUniBasePage):
     page_order = 1
     question = TextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('question', classname="full"),
     ]
 
@@ -39,7 +39,7 @@ class CourseFinderModeOfStudy(DiscoverUniBasePage):
     question = TextField(blank=True)
     helper_text = RichTextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('question', classname="full"),
         FieldPanel('helper_text', classname="full")
     ]
@@ -58,7 +58,7 @@ class CourseFinderChooseSubject(DiscoverUniBasePage):
     question = TextField(blank=True)
     helper_text = RichTextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('question', classname="full"),
         FieldPanel('helper_text', classname="full")
     ]
@@ -77,7 +77,7 @@ class CourseFinderNarrowSearch(DiscoverUniBasePage):
     use_skip_form = True
     question = TextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('question', classname="full")
     ]
 
@@ -91,7 +91,7 @@ class CourseFinderUni(DiscoverUniBasePage):
     use_skip_form = True
     question = TextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('question', classname="full")
     ]
 
@@ -109,7 +109,7 @@ class CourseFinderPostcode(DiscoverUniBasePage):
     use_skip_form = True
     question = TextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('question', classname="full")
     ]
 
@@ -130,7 +130,7 @@ class CourseFinderSummary(DiscoverUniBasePage):
     subjects_section_title = TextField(blank=True)
     narrow_by_section_title = TextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
         FieldPanel('country_section_title', classname="full"),
         FieldPanel('mode_of_study_section_title', classname="full"),
@@ -155,7 +155,7 @@ class CourseFinderResults(DiscoverUniBasePage):
         ('links', blocks.PageChooserBlock()),
     ])
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
         FieldPanel('related_links_title'),
         StreamFieldPanel('related_links', classname="full"),

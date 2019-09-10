@@ -151,7 +151,7 @@ class CourseDetailPage(DiscoverUniBasePage):
     ])
     uni_site_links_header = TextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         StreamFieldPanel('accordions'),
         FieldPanel('uni_site_links_header'),
     ]
@@ -171,7 +171,7 @@ class CourseComparisonPage(DiscoverUniBasePage):
         ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down'))
     ])
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('heading'),
         FieldPanel('lead'),
         FieldPanel('remove_text'),
@@ -189,7 +189,7 @@ class CourseManagePage(DiscoverUniBasePage):
     none_selected_text = RichTextField(blank=True)
     one_selected_text = RichTextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('heading'),
         FieldPanel('lead'),
         FieldPanel('save_text'),
