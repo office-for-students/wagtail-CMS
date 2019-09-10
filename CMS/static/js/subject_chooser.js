@@ -67,6 +67,9 @@
 
             this.subjectOptions = this.subjectSelector.find('option');
             this.subjectCodeOptions = this.subjectCodeSelector.find('option');
+            this.subjectAreaSelector.trigger('loadeddata');
+            this.subjectSelector.trigger('loadeddata');
+            this.subjectCodeSelector.trigger('loadeddata');
         },
 
         createOption: function(value, text, selected, data) {
