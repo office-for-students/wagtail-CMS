@@ -66,7 +66,8 @@
             var optionList = document.createElement("div");
             optionList.setAttribute("class", "select-items select-hide");
             for (var i = 0; i < baseSelect.length; i++) {
-                this.options.push(new DropdownOption(baseSelect[i], i, optionList, this.handleSelection.bind(this)));
+                var optionId = baseSelect.id + '-' + i;
+                this.options.push(new DropdownOption(baseSelect[i], optionId, optionList, this.handleSelection.bind(this)));
             }
             this.wrapper.append(optionList)
             this.optionList = this.wrapper.find('.select-items');
