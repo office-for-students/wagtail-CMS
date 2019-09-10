@@ -454,7 +454,7 @@ DICT = {
         'cy': ''
     },
     'site_logo': {
-        'en': '<strong>Discover</strong> Uni',
+        'en': 'Discover Uni',
         'cy': ''
     },
     'skip': {

@@ -4,9 +4,11 @@
     <div class="discover-uni-nav__container discover-uni-container">
         <a class="discover-uni-nav__home-link" href="/">
             {% if page.is_english %}
-                <img class="discover-uni-nav__brand-icon" src="{% static 'images/logos/nav_logo_english.svg' %}" alt="">
+                <img class="discover-uni-nav__brand-icon" src="{% static 'images/logos/nav_logo_english.svg' %}"
+                     alt="{% get_translation key='site_logo' language=page.get_language %}">
             {% else %}
-                <img class="discover-uni-nav__brand-icon" src="{% static 'images/logos/nav_logo_welsh.svg' %}" alt="">
+                <img class="discover-uni-nav__brand-icon" src="{% static 'images/logos/nav_logo_welsh.svg' %}"
+                     alt="{% get_translation key='site_logo' language=page.get_language %}">
             {% endif %}
         </a>
 
