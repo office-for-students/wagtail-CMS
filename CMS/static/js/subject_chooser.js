@@ -34,11 +34,12 @@
                     localStorage.setItem("subjectJSON", JSON.stringify(result));
 
                     that.subjectData = result;
+                    that.initialiseSelectors();
                 })
             } else {
                 this.subjectData = JSON.parse(localStorage.getItem("subjectJSON"));
+                this.initialiseSelectors();
             }
-            this.initialiseSelectors();
         },
 
         initialiseSelectors: function() {
