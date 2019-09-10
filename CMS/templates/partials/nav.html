@@ -3,13 +3,11 @@
 <nav class="discover-uni-nav">
     <div class="discover-uni-nav__container discover-uni-container">
         <a class="discover-uni-nav__home-link" href="/">
-            <h1 class="discover-uni-nav__brand">
-                {% autoescape off %}
-                    {% get_translation key='site_logo' language=page.get_language %}
-                {% endautoescape %}
-
-                <img class="discover-uni-nav__brand-icon" src="{% static 'images/brand_logo.svg' %}" alt="">
-            </h1>
+            {% if page.is_english %}
+                <img class="discover-uni-nav__brand-icon" src="{% static 'images/logos/nav_logo_english.svg' %}" alt="">
+            {% else %}
+                <img class="discover-uni-nav__brand-icon" src="{% static 'images/logos/nav_logo_welsh.svg' %}" alt="">
+            {% endif %}
         </a>
 
         <div class="discover-uni-nav__desktop-links">
