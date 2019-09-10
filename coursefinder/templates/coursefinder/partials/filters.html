@@ -298,12 +298,12 @@
                         </p>
                     </div>
 
-                    <div class="filters-block__filter-uni-alphabet">
-                        <fieldset>
-                            <legend hidden>
-                                Letter selectors
-                            </legend>
+                    <fieldset>
+                        <legend hidden>
+                            Letter selectors
+                        </legend>
 
+                        <div class="filters-block__filter-uni-alphabet">
                             {% get_alphabet as alphabet %}
                             {% for letter in alphabet %}
                                 <div class="filters-block__filter-uni-alphabet-letter">
@@ -314,8 +314,8 @@
                                     </label>
                                 </div>
                             {% endfor %}
-                        </fieldset>
-                    </div>
+                        </div>
+                    </fieldset>
 
                     <div class="filters-block__filter-uni-list" data-selectedunis="{{filter_form.institutions}}">
 
