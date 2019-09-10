@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
+
+
+{% block extra_css %}
+    <link href="{% sass_src 'scss/course_comparison.scss' %}" rel="stylesheet" type="text/css" >
+    <link href="{% sass_src 'scss/course_detail.scss' %}" rel="stylesheet" type="text/css" >
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/course_comparison.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+    <script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bar_chart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="comparison discover-uni-container">
+        <div class="comparison__overview">
+            <h1 class="comparison__course-count">
+                <span class="count"></span> {{page.heading}}
+            </h1>
+
+            <p class="comparison__lead">
+                {{page.lead}}
+            </p>
+        </div>
+
+        <div class="comparison__nav-box">
+            {{page.remove_text | richtext}}
+
+            <!--{{page.save_text | richtext}}-->
+        </div>
+
+        <h2 class="comparison__heading">
+            {{page.compare_heading}}
+        </h2>
+
+        <div class="comparison__courses course-detail">
+            <div class="comparison__course-columns">
+                <div class="comparison__course-column">
+                    <div class="comparison__course">
+                        <div id="course1" class="comparison__course-selector">
+                            <select>
+                                <option value="na" disabled selected>Select a course</option>
+                            </select>
+                        </div>
+
+                        {% if course1 %}
+                            {% include 'courses/partials/course_overview.html' with course=course1 %}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="comparison__course-column">
+                    <div class="comparison__course">
+                        <div id="course2" class="comparison__course-selector">
+                            <select>
+                                <option value="na" disabled selected>Select a course</option>
+                            </select>
+                        </div>
+
+                        {% if course2 %}
+                            {% include 'courses/partials/course_overview.html' with course=course2 %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-detail__body">
+                <div class="discover-uni-container">
+                    <div class="course-detail__accordion-block">
+                        {% for accordion in page.accordions %}
+                            {% create_list course1 course2 as courses %}
+                            {% should_show_accordion courses accordion.value.data_set as show_accordion %}
+                            {% if show_accordion %}
+                                <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
+                                    <h2 class="course-detail__accordion-heading">
+                                        {{ accordion.value.heading }}
+
+                                        <span class="course-detail__accordion-heading-chevron">
+                                                <img class="course-detail__icon plus" src="{% static 'images/plus_icon.svg' %}" alt="">
+                                                <img class="course-detail__icon minus" src="{% static 'images/minus_icon.svg' %}" alt="">
+                                            </span>
+                                    </h2>
+
+                                    <div class="course-detail__accordion-body">
+                                        {% include 'courses/partials/comparison_'|add:accordion.value.data_set|add:'_body.html' with block=accordion %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

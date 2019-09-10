@@ -1,0 +1,27 @@
+{% load discover_uni_tags %}
+
+
+<footer class="footer">
+    <div class="discover-uni-container">
+        <div class="footer__items">
+            <div class="footer__group">
+                {% for item in page.footer %}
+                    <a class="footer__link" href="{{ item.url }}">
+                        {{ item.label }}
+                    </a>
+
+                    {% is_multiple_of forloop.counter 4 as end_group %}
+
+                    {% if end_group %}
+                        </div>
+                        <div class="footer__group">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <p class="footer__copyright">
+            © {% get_translation key='copyright' language=page.get_language %}
+        </p>
+    </div>
+</footer>

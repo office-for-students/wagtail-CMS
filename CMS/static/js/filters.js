@@ -71,7 +71,7 @@
                 for (var i = 0; i < subjectJson.length; i++) {
                     var item = subjectJson[i];
                     if (item.level === "3" && item.code.includes(this.subjectAreaSelector.val())) {
-                        subjectCodes += '"' + item.englishname + '",';
+                        subjectCodes += item.code + ","
                     }
                 }
             } else {

@@ -24,7 +24,8 @@ class Section(DiscoverUniBasePage):
     subsections = StreamField([
         ('subsection', blocks.StructBlock([
             ('subsection_title', blocks.TextBlock()),
-            ('subsection_content', blocks.RichTextBlock())
+            ('subsection_content', blocks.RichTextBlock(features=['h3', 'h4', 'bold', 'italic', 'embed', 'link',
+                                                        'document-link', 'image', 'ol', 'ul', 'hr', 'blockquote']))
         ]))
     ])
     related_links_title = TextField(blank=True)
@@ -43,4 +44,12 @@ class Section(DiscoverUniBasePage):
         StreamFieldPanel('related_links'),
         FieldPanel('lateral_link_title'),
         StreamFieldPanel('lateral_links')
+    ]
+
+
+class FlatContent(DiscoverUniBasePage):
+    content_body = RichTextField(blank=True, features=['h1', 'h2', 'h3', 'bold', 'italic', 'embed', 'link',
+                                                       'document-link', 'image', 'ol', 'ul', 'hr'])
+    content_panels = Page.content_panels + [
+        FieldPanel('content_body'),
     ]

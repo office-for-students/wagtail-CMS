@@ -14,6 +14,7 @@ from institutions import urls as institution_urls
 from core import views as core_views
 from search import views as search_views
 from coursefinder import views as coursefinder_views
+from courses import views as course_views
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
@@ -32,6 +33,7 @@ urlpatterns = [
     url(r'^Widget/', include('widget.urls')),
     url(r'^course-details/', include(courses_urls)),
     url(r'^institution-details/', include(institution_urls)),
+    url(r'^course-comparison/', course_views.compare_courses),
 
     url(r'(?P<language>[\w\-]+?)/', include(welsh_urls)),
 

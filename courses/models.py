@@ -126,6 +126,10 @@ class AfterCourseBlock(AccordionPanel):
     six_month_employment_roles_label_explanation_body = blocks.RichTextBlock(blank=True)
     six_month_employment_roles_data_source = blocks.RichTextBlock(blank=True)
 
+    common_jobs_heading = blocks.CharBlock(required=False)
+    common_jobs_intro = blocks.CharBlock(required=False)
+    common_jobs_data_source = blocks.RichTextBlock(blank=True)
+
     class Meta:
         value_class = AfterCourseDataSet
 
@@ -150,6 +154,48 @@ class CourseDetailPage(DiscoverUniBasePage):
     content_panels = Page.content_panels + [
         StreamFieldPanel('accordions'),
         FieldPanel('uni_site_links_header'),
+    ]
+
+
+class CourseComparisonPage(DiscoverUniBasePage):
+    heading = TextField(blank=True)
+    lead = TextField(blank=True)
+    remove_text = RichTextField(blank=True)
+    save_text = RichTextField(blank=True)
+    compare_heading = TextField(blank=True)
+    accordions = StreamField([
+        ('satisfaction_panel', SatisfactionBlock(required=True, icon='collapse-down')),
+        ('entry_information_panel', EntryInformationBlock(required=True, icon='collapse-down')),
+        ('after_one_year_panel', AfterOneYearBlock(required=True, icon='collapse-down')),
+        ('after_course_panel', AfterCourseBlock(required=True, icon='collapse-down')),
+        ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down'))
+    ])
+
+    content_panels = Page.content_panels + [
+        FieldPanel('heading'),
+        FieldPanel('lead'),
+        FieldPanel('remove_text'),
+        FieldPanel('save_text'),
+        FieldPanel('compare_heading'),
+        StreamFieldPanel('accordions'),
+    ]
+
+
+class CourseManagePage(DiscoverUniBasePage):
+    heading = TextField(blank=True)
+    lead = TextField(blank=True)
+    save_text = RichTextField(blank=True)
+    compare_text = RichTextField(blank=True)
+    none_selected_text = RichTextField(blank=True)
+    one_selected_text = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('heading'),
+        FieldPanel('lead'),
+        FieldPanel('save_text'),
+        FieldPanel('compare_text'),
+        FieldPanel('none_selected_text'),
+        FieldPanel('one_selected_text'),
     ]
 
 
@@ -221,6 +267,9 @@ class Course:
                 self.job_type_stats = []
                 for data_set in stats.get('job_type'):
                     self.job_type_stats.append(JobTypeStatistics(data_set, self.display_language))
+                self.job_lists = []
+                for data_set in stats.get('job_list'):
+                    self.job_lists.append(JobList(data_set, self.display_language))
 
             self.accreditations = []
             accreditations = course_details.get('accreditations')
@@ -282,7 +331,6 @@ class Course:
 
     @property
     def has_multiple_satisfaction_stats(self):
-        print(len(self.overall_satisfaction) > 1)
         return len(self.overall_satisfaction) > 1
 
     @property
@@ -313,7 +361,8 @@ class Course:
         show_salary_stats = self.salary_stats and self.salary_stats[0].display_stats
         show_employment_stats = self.employment_stats and self.employment_stats[0].display_stats
         show_job_type_stats = self.job_type_stats and self.job_type_stats[0].display_stats
-        return show_employment_stats or show_job_type_stats or show_salary_stats or self.show_leo
+        show_job_lists = self.job_lists and self.job_lists[0].show_stats
+        return show_employment_stats or show_job_type_stats or show_salary_stats or self.show_leo or show_job_lists
 
     @property
     def show_salary_lead(self):
@@ -335,6 +384,10 @@ class Course:
     @property
     def has_multiple_job_type_stats(self):
         return len(self.job_type_stats) > 1
+
+    @property
+    def has_multiple_job_lists(self):
+        return len(self.job_lists) > 1
 
     @property
     def show_leo(self):
@@ -896,6 +949,11 @@ class TariffStatistics:
                 self.subject_english = subject_data.get('english_label')
                 self.subject_welsh = subject_data.get('welsh_label')
 
+            unavailable_data = tariff_data.get('unavailable')
+            if unavailable_data:
+                self.unavailable_code = unavailable_data.get('code')
+                self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+
     def show_stats(self):
         return self.tariffs
 
@@ -970,3 +1028,47 @@ class CourseAccreditation:
 
     def show_dependency(self):
         return self.dependent_on_code == '1'
+
+
+class JobList:
+
+    def __init__(self, jobs_data, display_language):
+        self.display_language = display_language
+        self.jobs = []
+
+        if jobs_data:
+            self.aggregation = jobs_data.get('aggregation')
+            self.number_of_students = fallback_to(jobs_data.get('number_of_students'), 0)
+            self.response_rate = str(fallback_to(jobs_data.get('response_rate'), 0)) + '%'
+
+            subject_data = fallback_to(jobs_data.get('subject'), {})
+            self.subject_code = subject_data.get('code', '')
+            self.subject_english = subject_data.get('english_label', '')
+            self.subject_welsh = subject_data.get('welsh_label', '')
+
+            unavailable_data = jobs_data.get('unavailable')
+            if unavailable_data:
+                self.unavailable_code = unavailable_data.get('code')
+                self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+
+            if jobs_data.get('list'):
+                for job in jobs_data.get('list'):
+                    self.jobs.append(Job(job, self.display_language))
+
+    def show_stats(self):
+        return self.jobs
+
+    def display_subject_name(self):
+        if self.display_language == enums.languages.ENGLISH:
+            return self.subject_english if self.subject_english else self.subject_welsh
+        return self.subject_welsh if self.subject_welsh else self.subject_english
+
+
+class Job:
+
+    def __init__(self, job_data, display_language):
+        self.display_language = display_language
+        if job_data:
+            self.job = fallback_to(job_data.get('job'), '')
+            self.percentage = fallback_to(job_data.get('percentage_of_students'),0)
+            self.order = job_data.get('order')

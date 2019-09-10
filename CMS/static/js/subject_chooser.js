@@ -48,7 +48,7 @@
                 }
 
                 if(item.level === "3") {
-                    this.subjectCodeSelector.append(`<option data-code='${item.code}' value='${item.englishname}'>${item.englishname}</option>`)
+                    this.subjectCodeSelector.append(`<option data-code='${item.code}' value='${item.code}'>${item.englishname}</option>`)
                 }
             }
 

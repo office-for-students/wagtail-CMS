@@ -1,4 +1,11 @@
 $(document).ready(function() {
+    $.urlParam = function (name) {
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                          .exec(window.location.search);
+
+        return (results !== null) ? results[1] || 0 : false;
+    }
+
   // Course finder
 
   if (sessionStorage.getItem("uniJSON") === null) {
@@ -63,7 +70,7 @@ $(document).ready(function() {
     if (data.subjectArea.value != "disabled" && data.subject.value === "disabled") {
       $.each(JSON.parse(sessionStorage.getItem("subjectJSON")), function(index, item) {
         if(item.level === "3" && item.code.includes(data.subjectArea.value)) {
-          subjectCodes += '"' + item.englishname + '",'
+          subjectCodes += item.code + ","
         }
       })
     } else if (data.subjectArea.value === "disabled" && data.subject.value === "disabled") {

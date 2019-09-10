@@ -15,68 +15,70 @@
     </div>
 
 
-    <div class="one-year__overview">
-        <p class="one-year__overview-lead">
-            {{ continuation_stats.continuing_or_complete }}%
-        </p>
+    {% if continuation_stats.display_stats %}
+        <div class="one-year__overview">
+            <p class="one-year__overview-lead">
+                {{ continuation_stats.continuing_or_complete }}%
+            </p>
 
-        <p>
-            {{block.value.lead}}
-        </p>
-    </div>
+            <p>
+                {{block.value.lead}}
+            </p>
+        </div>
 
-    <div class="one-year__block">
-        <div class="one-year__qualification-charts">
-            <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.continuing}}">
-                {% include 'courses/partials/bar_chart.html' %}
-                <label class="one-year-block__chart-label">{% get_translation key='still_on_course' language=page.get_language %}</label>
-            </div>
-
-            <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.gained}}">
-                {% include 'courses/partials/bar_chart.html' %}
-                <label class="one-year-block__chart-label">{% get_translation key='completed_course' language=page.get_language %}</label>
-            </div>
-
-            <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.dormant}}">
-                {% include 'courses/partials/bar_chart.html' %}
-                <label class="one-year-block__chart-label">{% get_translation key='break_from_studies' language=page.get_language %}</label>
-            </div>
-
-            <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.lower}}">
-                {% include 'courses/partials/bar_chart.html' %}
-                <label class="one-year-block__chart-label">{% get_translation key='left_lower_qualification' language=page.get_language %}</label>
-            </div>
-
-            <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.left}}">
-                {% include 'courses/partials/bar_chart.html' %}
-                <label class="one-year-block__chart-label">{% get_translation key='left_no_qualification' language=page.get_language %}</label>
-            </div>
-
-            <div class="explanation">
-                <div class="explanation__link">
-                    <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
-                    <p class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</p>
+        <div class="one-year__block">
+            <div class="one-year__qualification-charts">
+                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.continuing}}">
+                    {% include 'courses/partials/bar_chart.html' %}
+                    <label class="one-year-block__chart-label">{% get_translation key='still_on_course' language=page.get_language %}</label>
                 </div>
 
-                <div class="chart-label-explanation">
-                    <h3 class="chart-label-explanation__heading">
-                        {{block.value.label_explanation_heading}}
-                        <span class="chart-label-explanation__close"><img src="{% static 'images/close-grey.svg' %}" alt=""></span>
-                    </h3>
+                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.gained}}">
+                    {% include 'courses/partials/bar_chart.html' %}
+                    <label class="one-year-block__chart-label">{% get_translation key='completed_course' language=page.get_language %}</label>
+                </div>
 
-                    <div class="chart-label-explanation__body">
-                        {{block.value.label_explanation_body}}
+                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.dormant}}">
+                    {% include 'courses/partials/bar_chart.html' %}
+                    <label class="one-year-block__chart-label">{% get_translation key='break_from_studies' language=page.get_language %}</label>
+                </div>
+
+                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.lower}}">
+                    {% include 'courses/partials/bar_chart.html' %}
+                    <label class="one-year-block__chart-label">{% get_translation key='left_lower_qualification' language=page.get_language %}</label>
+                </div>
+
+                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.left}}">
+                    {% include 'courses/partials/bar_chart.html' %}
+                    <label class="one-year-block__chart-label">{% get_translation key='left_no_qualification' language=page.get_language %}</label>
+                </div>
+
+                <div class="explanation">
+                    <div class="explanation__link">
+                        <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
+                        <p class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</p>
+                    </div>
+
+                    <div class="chart-label-explanation">
+                        <h3 class="chart-label-explanation__heading">
+                            {{block.value.label_explanation_heading}}
+                            <span class="chart-label-explanation__close"><img src="{% static 'images/close-grey.svg' %}" alt=""></span>
+                        </h3>
+
+                        <div class="chart-label-explanation__body">
+                            {{block.value.label_explanation_body}}
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="explanation-text">
-                {% create_list continuation_stats.number_of_students as substitutions %}
-                {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
-                {{ subbed_text | richtext }}
+                <div class="explanation-text">
+                    {% create_list continuation_stats.number_of_students as substitutions %}
+                    {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
+                    {{ subbed_text | richtext }}
+                </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 
     {% include 'courses/partials/unavailable_disclaimer.html' with reason=continuation_stats.unavailable_reason %}
 {% endfor %}
