@@ -10,6 +10,12 @@
             this.subjectAreaSelector = this.wrapper.find('#subjectArea');
             this.subjectSelector = this.wrapper.find('#subject');
             this.subjectCodeSelector = this.wrapper.find('#subjectCode');
+            this.subjectQuery = $('#subject_query');
+            if (this.subjectQuery.length > 0) {
+                this.initialSelection = this.subjectQuery.val().split(',');
+            } else {
+                this.initialSelection = null;
+            }
 
             this.loadSubjectData();
             this.startWatchers();
@@ -39,16 +45,30 @@
             for (var i = 0; i < this.subjectData.length; i++) {
                 var item = this.subjectData[i];
 
-                if(item.level === "1") {
-                    this.subjectAreaSelector.append(`<option value='${item.code}'>${item.englishname}</option>`)
+                if (item.level === "1") {
+                    if (this.initialSelection && this.initialSelection[0].indexOf(item.code) !== -1) {
+                        this.subjectAreaSelector.append(`<option value='${item.code}' selected>${item.englishname}</option>`);
+                    } else {
+                        this.subjectAreaSelector.append(`<option value='${item.code}'>${item.englishname}</option>`);
+                    }
                 }
 
-                if(item.level === "2") {
-                    this.subjectSelector.append(`<option value='${item.code}'>${item.englishname}</option>`)
+                if (item.level === "2") {
+                    if (this.initialSelection && this.initialSelection[0].indexOf(item.code) !== -1) {
+                        this.subjectSelector.append(`<option value='${item.code}' selected>${item.englishname}</option>`);
+                        this.toggleCodeSelector();
+                    } else {
+                        this.subjectSelector.append(`<option value='${item.code}'>${item.englishname}</option>`);
+                    }
                 }
 
-                if(item.level === "3") {
-                    this.subjectCodeSelector.append(`<option data-code='${item.code}' value='${item.code}'>${item.englishname}</option>`)
+                if (item.level === "3") {
+                    if (this.initialSelection && this.initialSelection.length === 1 && this.initialSelection[0] === item.code) {
+                        this.subjectCodeSelector.append(`<option data-code='${item.code}' value='${item.code}' selected>${item.englishname}</option>`);
+                        this.toggleCodeSelector();
+                    } else {
+                        this.subjectCodeSelector.append(`<option data-code='${item.code}' value='${item.code}'>${item.englishname}</option>`);
+                    }
                 }
             }
 
@@ -87,10 +107,14 @@
             }
             this.subjectCodeOptions[0].value = all;
 
-            this.subjectCodeSelector.removeClass('hidden');
-            this.subjectCodeSelector.addClass('visible');
+            this.toggleCodeSelector();
 
             this.subjectCodeSelector.trigger('loadeddata');
+        },
+
+        toggleCodeSelector: function() {
+            this.subjectCodeSelector.removeClass('hidden');
+            this.subjectCodeSelector.addClass('visible');
         }
     }
 

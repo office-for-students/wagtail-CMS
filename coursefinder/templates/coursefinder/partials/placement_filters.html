@@ -6,7 +6,8 @@
 
 <div class="filters-block__filter-options">
     <div class="filters-block__filter-option">
-        <input id="placement-yes" class="filters-block__filter-radio-input" type="radio" name="placement" value="yes" />
+        <input id="placement-yes" class="filters-block__filter-radio-input" type="radio" name="placement" value="yes"
+            {% if filter_form.placement == 'yes' %}checked{% endif %} />
 
         <label class="filters-block__filter-radio-label" for="placement-yes">
             {% get_translation key='with_placement' language=page.get_language %}
@@ -14,7 +15,8 @@
     </div>
 
     <div class="filters-block__filter-option">
-        <input id="placement-no" class="filters-block__filter-radio-input" type="radio" name="placement" value="no" />
+        <input id="placement-no" class="filters-block__filter-radio-input" type="radio" name="placement" value="no"
+            {% if filter_form.placement == 'no' %}checked{% endif %} />
 
         <label class="filters-block__filter-radio-label" for="placement-no">
             {% get_translation key='without_placement' language=page.get_language %}
@@ -22,7 +24,8 @@
     </div>
 
     <div class="filters-block__filter-option">
-        <input id="placement-either" class="filters-block__filter-radio-input" type="radio" name="placement" value="na" />
+        <input id="placement-either" class="filters-block__filter-radio-input" type="radio" name="placement" value="na"
+            {% if filter_form.placement == 'na' %}checked{% endif %} />
 
         <label class="filters-block__filter-radio-label" for="placement-either">
             {% get_translation key='dont_mind' language=page.get_language %}
