@@ -1,93 +1,94 @@
 var CONTENT = {
     'satisfactionIntro': {
-        'en-gb': 'of students were satisfied overall with their course.',
-        'cy-gb': ''
+        'en-GB': 'of students were satisfied overall with their course.',
+        'cy-GB':"Roedd_________ o fyfyrwyr yn fodlon â'u cwrs ar y cyfan"
     },
     'explanationIntro': {
-        'en-gb': 'of students agreed staff were good at explaining things.',
-        'cy-gb': ''
+        'en-GB': 'of students agreed staff were good at explaining things.',
+        'cy-GB': 'Roedd_________ o fyfyrwyr yn cytuno bod staff yn dda am esbonio pethau.'
     },
     'workIntro': {
-        'en-gb': 'in work or doing further study six months after finishing.',
-        'cy-gb': ''
+        'en-GB': 'in work or doing further study six months after finishing.',
+        'cy-GB':"mewn gwaith neu'n astudio ymhellach o fewn chwe mis ar ôl gorffen. "
     },
     'ctaLead1': {
-        'en-gb': 'For ',
-        'cy-gb': ''
+        'en-GB': 'For ',
+        'cy-GB': 'Am'
     },
     'ctaLead2': {
-        'en-gb': 'more',
-        'cy-gb': ''
+        'en-GB': 'more',
+        'cy-GB': 'fwy'
     },
     'ctaLead3': {
-        'en-gb': ' official course information visit.',
-        'cy-gb': ''
+        'en-GB': ' official course information visit.',
+        'cy-GB': 'o wybodaeth swyddogol am y cwrs, ewch i'
     },
     'logo': {
         'en-gb': '{{domain_name}}/static/images/logos/widget_logo_english.svg',
         'cy-gb': '{{domain_name}}/static/images/logos/widget_logo_welsh.svg'
     },
     'cta': {
-        'en-gb': 'See course data',
-        'cy-gb': ''
+        'en-GB': 'See course data',
+        'cy-GB':"Gweld data'r cwrs"
     },
     'noDataIntro': {
-        'en-gb': 'To see official information about this course and others visit Discover Uni.',
-        'cy-gb': ''
+        'en-GB': 'To see official information about this course and others visit Discover Uni.',
+        'cy-GB': 'I weld gwybodaeth swyddogol am y cwrs hwn a chyrsiau eraill, ewch i Darganfod y Brifysgol.'
     },
     'noDataCtaLead1': {
-        'en-gb': 'Make an ',
-        'cy-gb': ''
+        'en-GB': 'Make an ',
+        'cy-GB': 'Dewis '
     },
     'noDataCtaLead2': {
-        'en-gb': 'informed',
-        'cy-gb': ''
+        'en-GB': 'informed',
+        'cy-GB': 'yn'
     },
     'noDataCtaLead3': {
-        'en-gb': ' choice.',
-        'cy-gb': ''
+        'en-GB': ' choice.',
+        'cy-GB': 'ddeallus.'
     },
     'noDataCta': {
-        'en-gb': 'See course info',
-        'cy-gb': ''
+        'en-GB': 'See course info',
+        'cy-GB': 'Gweld gwybodaeth y cwrs'
     },
     'placement': {
-        'en-gb': 'Placement year',
-        'cy-gb': ''
+        'en-GB': 'Placement year',
+        'cy-GB': 'Blwyddyn ar leoliad'
     },
     'placementOptional': {
-        'en-gb': 'Placement year optional',
-        'cy-gb': ''
+        'en-GB': 'Placement year optional',
+        'cy-GB': 'Blwyddyn ar leoliad yn ddewisol'
     },
     'foundation': {
-        'en-gb': 'Foundation year',
-        'cy-gb': ''
+        'en-GB': 'Foundation year',
+        'cy-GB': 'Blwyddyn sylfaen'
     },
     'foundationOptional': {
-        'en-gb': 'Foundation year optional',
-        'cy-gb': ''
+        'en-GB': 'Foundation year optional',
+        'cy-GB': 'Blwyddyn sylfaen yn ddewisol'
     },
     'abroad': {
-        'en-gb': 'Year abroad',
-        'cy-gb': ''
+        'en-GB': 'Year abroad',
+        'cy-GB': 'Blwyddyn dramor'
     },
     'abroadOptional': {
-        'en-gb': 'Year abroad optional',
-        'cy-gb': ''
+        'en-GB': 'Year abroad optional',
+        'cy-GB': 'Blwyddyn dramor yn ddewisol'
     },
     'dataFor': {
-        'en-gb': 'Data for: ',
-        'cy-gb': ''
+        'en-GB': 'Data for: ',
+        'cy-GB': 'Data ar gyfer:'
     },
     'dataForAggregated': {
-        'en-gb': 'Data for courses in ',
-        'cy-gb': ''
+        'en-GB': 'Data for courses in ',
+        'cy-GB': 'Data ar gyfer cyrsiau'
     },
     'at': {
-        'en-gb': ' at ',
-        'cy-gb': ''
+        'en-GB': ' at ',
+        'cy-GB': 'yn'
     }
 }
+
 
 var MODES = {
     'fulltime': 1,
