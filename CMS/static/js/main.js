@@ -25,10 +25,6 @@ $(document).ready(function() {
     sessionStorage.clear()
   }
 
-  function handleFormSubmit() {
-    $('form').submit()
-  }
-
   if (sessionStorage.getItem("countries") != null) {
     let countries = sessionStorage.getItem("countries")
     $('#countries').text(countries.split(",").join(", "))
@@ -62,17 +58,17 @@ $(document).ready(function() {
     $('#narrow').text(postcode.split(",").join(", "))
   }
 
-  function handleResultsRequest() {
-    let subject_query = sessionStorage.getItem('subjectCodes')
-    let institution_query = sessionStorage.getItem('uni')
-    let mode_query = sessionStorage.getItem('modes')
-    let countries_query = sessionStorage.getItem('countries')
-    let postcode_query = sessionStorage.getItem('postcode')
-
-    $("input[name='subject_query']").val(subject_query)
-    $("input[name='institution_query']").val(institution_query)
-    $("input[name='mode_query']").val(mode_query)
-    $("input[name='countries_query']").val(countries_query)
-    $("input[name='postcode_query']").val(postcode_query)
-  }
+//  function handleResultsRequest() {
+//    let subject_query = sessionStorage.getItem('subjectCodes')
+//    let institution_query = sessionStorage.getItem('uni')
+//    let mode_query = sessionStorage.getItem('modes')
+//    let countries_query = sessionStorage.getItem('countries')
+//    let postcode_query = sessionStorage.getItem('postcode')
+//
+//    $("input[name='subject_query']").val(subject_query)
+//    $("input[name='institution_query']").val(institution_query)
+//    $("input[name='mode_query']").val(mode_query)
+//    $("input[name='countries_query']").val(countries_query)
+//    $("input[name='postcode_query']").val(postcode_query)
+//  }
 });
