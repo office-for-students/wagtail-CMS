@@ -1,27 +1,27 @@
 DICT = {
     'a_level_similar': {
         'en': 'A-levels, Advanced Highers or similar',
-        'cy': ''
+        'cy': 'Safonau Uwch, Cymwysterau Advanced Higher neu debyg'
     },
     'about': {
         'en': 'About',
-        'cy': ''
+        'cy': 'Ynghylch'
     },
     'access_course': {
         'en': 'Completed Access course',
-        'cy': ''
+        'cy': 'Wedi cwblhau cwrs mynediad'
     },
     'accommodation': {
         'en': 'Accommodation costs and information',
-        'cy': ''
+        'cy': 'Costau a gwybodaeth am lety'
     },
     'across_uk': {
         'en': 'across the UK',
-        'cy': ''
+        'cy': 'ar draws y DU'
     },
     'address': {
         'en': 'Address',
-        'cy': ''
+        'cy': 'Cyfeiriad'
     },
     'apply_filters': {
         'en': 'Apply filters',
@@ -29,19 +29,19 @@ DICT = {
     },
     'assessment_method': {
         'en': 'How the course is assessed',
-        'cy': ''
+        'cy': "Dull asesu'r cwrs"
     },
     'baccalaureate': {
         'en': 'Baccalaureate',
-        'cy': ''
+        'cy': 'Bagloriaeth'
     },
     'back': {
         'en': 'Back',
-        'cy': ''
+        'cy': 'Yn ôl'
     },
     'begin': {
         'en': 'Begin',
-        'cy': ''
+        'cy': 'Dechrau'
     },
     'bookmark_course': {
         'en': 'Bookmark course',
@@ -53,11 +53,11 @@ DICT = {
     },
     'break_from_studies': {
         'en': 'Are taking a break from their studies',
-        'cy': ''
+        'cy': 'Yn cymryd egwyl o astudio'
     },
     'chart_label_explained': {
         'en': 'Chart labels explained',
-        'cy': ''
+        'cy': "Esboniad ynghylch labeli'r siart"
     },
     'clear_all': {
         'en': 'Clear all',
@@ -65,11 +65,11 @@ DICT = {
     },
     'close': {
         'en': 'Close',
-        'cy': ''
+        'cy': 'Cau'
     },
     'compare_course': {
         'en': 'Compare course',
-        'cy': ''
+        'cy': "Cymharu'r cwrs"
     },
     'compare_courses': {
         'en': 'compare courses',
@@ -77,7 +77,7 @@ DICT = {
     },
     'completed_course': {
         'en': 'Have completed the course (started in the final year due to prior study)',
-        'cy': ''
+        'cy': "Wedi cwblhau'r cwrs (wedi dechrau yn y flwyddyn olaf yn dilyn astudiaethau blaenorol)"
     },
     'cookie_message': {
         'en': 'This website uses cookies to store information on your computer.',
@@ -97,11 +97,11 @@ DICT = {
     },
     'costs': {
         'en': 'Course costs',
-        'cy': ''
+        'cy': "Costau'r cwrs"
     },
     'costs_and_support': {
         'en': 'Costs and support',
-        'cy': ''
+        'cy': 'Costau a chymorth'
     },
     'countries': {
         'en': 'Countries',
@@ -113,23 +113,23 @@ DICT = {
     },
     'course_details': {
         'en': 'Course details',
-        'cy': ''
+        'cy': 'Manylion y cwrs'
     },
     'course_finder': {
         'en': 'Course Finder',
-        'cy': ''
+        'cy': 'Cael Hyd i Gwrs'
     },
     'course_length_not_available': {
         'en': 'Length of course is not available',
-        'cy': ''
+        'cy': 'Nid yw hyd y cwrs ar gael'
     },
     'course_name': {
         'en': 'Course name',
-        'cy': ''
+        'cy': "Enw'r cwrs"
     },
     'course_page': {
         'en': 'Course page',
-        'cy': ''
+        'cy': 'Tudalen y cwrs'
     },
     'course_removed': {
         'en': 'Course removed from ',
@@ -137,7 +137,7 @@ DICT = {
     },
     'course_search': {
         'en': 'Course search',
-        'cy': ''
+        'cy': 'Chwilio am Gwrs '
     },
     'course_too_many': {
         'en': 'is the maximum number of bookmarks.',
@@ -145,7 +145,7 @@ DICT = {
     },
     'courses': {
         'en': 'course(s)',
-        'cy': ''
+        'cy': 'cwrs/cyrsiau'
     },
     'data_for': {
         'en': 'Data for',
@@ -153,33 +153,33 @@ DICT = {
     },
     'degree': {
         'en': 'Degree',
-        'cy': ''
+        'cy': 'Gradd'
     },
     'distance_learning': {
         'en': 'Distance learning',
-        'cy': ''
+        'cy': 'Dysgu o bell'
     },
     'distance_learning_values': {
         '0': {
             'en': 'Not Available',
-            'cy': ''
+            'cy': 'Ddim ar gael'
         },
         '1': {
             'en': 'Yes',
-            'cy': ''
+            'cy': 'Ydy'
         },
         '2': {
             'en': 'Optional',
-            'cy': ''
+            'cy': 'Dewisol'
         },
         'Course is availble other than by distance learning': {
             'en': 'Not Available',
-            'cy': ''
+            'cy': 'Ddim ar gael'
         }
     },
     'doing_further_study': {
         'en': 'Doing further study',
-        'cy': ''
+        'cy': 'Yn astudio ymhellach'
     },
     'dont_mind': {
         'en': "I don't mind",
@@ -187,15 +187,15 @@ DICT = {
     },
     'dont_narrow': {
         'en': "don't narrow search",
-        'cy': ''
+        'cy': "peidio cyfyngu'r chwiliad"
     },
     'employment_details': {
-        'en': "Employment information",
-        'cy': ''
+        'en': 'Employment information',
+        'cy': 'Gwybodaeth am gyflogaeth'
     },
     'england': {
         'en': 'England',
-        'cy': ''
+        'cy': 'Lloegr'
     },
     'enhanced_degree': {
         'en': 'Enhanced first degree (e.g. MEng)',
@@ -203,7 +203,7 @@ DICT = {
     },
     'enter_3_characters': {
         'en': 'Please enter at least 3 characters to search',
-        'cy': ''
+        'cy': 'Rhowch 3 nod o leiaf er mwyn chwilio'
     },
     'enter_postcode': {
         'en': 'Enter postcode',
@@ -211,23 +211,23 @@ DICT = {
     },
     'feedback_error': {
         'en': 'Sorry something went wrong submitting your feedback, please try again later.',
-        'cy': ''
+        'cy': "Mae'n ddrwg gennym, aeth rhywbeth o'i le wrth ichi roi adborth. Rhowch gynnig arall ymhen ychydig."
     },
     'feedback_form': {
         'en': 'Feedback: is this page useful to you?',
-        'cy': ''
+        'cy': "Adborth: a yw'r dudalen hon yn ddefnyddiol i chi?"
     },
     'filter': {
         'en': 'Filter',
-        'cy': ''
+        'cy': 'Hidlo'
     },
     'financial_support_details': {
         'en': 'Financial support',
-        'cy': ''
+        'cy': 'Cymorth ariannol'
     },
     'find_out_more': {
         'en': 'Find out more',
-        'cy': ''
+        'cy': 'Mwy o wybodaeth'
     },
     'first_degree': {
         'en': 'First degree (e.g. BA, BSc)',
@@ -235,7 +235,7 @@ DICT = {
     },
     'foundation_course': {
         'en': 'Foundation course',
-        'cy': ''
+        'cy': 'Cwrs sylfaen'
     },
     'foundation_degree': {
         'en': 'Foundation degree (e.g. FD, FDEd)',
@@ -243,11 +243,11 @@ DICT = {
     },
     'foundation_year': {
         'en': 'Foundation year',
-        'cy': ''
+        'cy': 'Blwyddyn sylfaen'
     },
     'full_time': {
         'en': 'Full time',
-        'cy': ''
+        'cy': 'Llawnamser'
     },
     'hnc': {
         'en': 'Higher National Certificate (HNC)',
@@ -259,43 +259,43 @@ DICT = {
     },
     'how_improve': {
         'en': 'How should we improve this page?',
-        'cy': ''
+        'cy': "Sut y dylem wella'r dudalen hon?"
     },
     'how_useful': {
         'en': 'How was this page useful to you?',
-        'cy': ''
+        'cy': 'A oedd y dudalen hon yn ddefnyddiol i chi?'
     },
     'info_advice': {
         'en': 'Info and advice',
-        'cy': ''
+        'cy': 'Gwybodaeth a chyngor'
     },
     'institution': {
         'en': 'Institution',
-        'cy': ''
+        'cy': 'Sefydliad'
     },
     'learning_and_teaching_methods': {
         'en': 'How the course is taught',
-        'cy': ''
+        'cy': "Dull addysgu'r cwrs"
     },
     'left_lower_qualification': {
         'en': 'Have left with a lower qualification',
-        'cy': ''
+        'cy': 'Wedi gadael gyda chymhwyster is'
     },
     'left_no_qualification': {
         'en': 'Have left without a qualification',
-        'cy': ''
+        'cy': 'Wedi gadael heb gymhwyster'
     },
     'length': {
         'en': 'Length',
-        'cy': ''
+        'cy': 'Hyd'
     },
     'location': {
         'en': 'Location',
-        'cy': ''
+        'cy': 'Lleoliad'
     },
     'locations': {
         'en': 'Locations',
-        'cy': ''
+        'cy': 'Lleoliadau'
     },
     'manage_list': {
         'en': 'Manage course list',
@@ -303,15 +303,15 @@ DICT = {
     },
     'miles': {
         'en': 'miles',
-        'cy': ''
+        'cy': 'milltiroedd'
     },
     'more_pages_before': {
         'en': 'More pages available before',
-        'cy': ''
+        'cy': 'Mwy o dudalennau ar gael cyn '
     },
     'more_pages_after': {
         'en': 'More pages available after',
-        'cy': ''
+        'cy': 'Mwy o dudalennau ar gael ar ôl'
     },
     'narrow_location': {
         'en': 'Narrow location',
@@ -319,15 +319,15 @@ DICT = {
     },
     'near_your_home': {
         'en': 'to near your home',
-        'cy': ''
+        'cy': 'agos at adref'
     },
     'next': {
         'en': 'Next',
-        'cy': ''
+        'cy': 'Nesaf'
     },
     'next_page': {
         'en': 'Next page',
-        'cy': ''
+        'cy': 'Y dudalen nesaf'
     },
     'no': {
         'en': 'No',
@@ -335,11 +335,11 @@ DICT = {
     },
     'no_qualifications': {
         'en': 'No / unknown prior qualifications',
-        'cy': ''
+        'cy': 'Dim cymwysterau blaenorol/cymwysterau anhysbys'
     },
     'no_results_found': {
         'en': 'No results found',
-        'cy': ''
+        'cy': 'Ni chafwyd canlyniad.'
     },
     'not_enough': {
         'en': 'Add another to compare courses.',
@@ -347,27 +347,27 @@ DICT = {
     },
     'not_professional_or_managerial': {
         'en': 'Not in a professional or managerial job',
-        'cy': ''
+        'cy': 'Ddim mewn swydd broffesiynol neu reoli'
     },
     'northern_ireland': {
         'en': 'Northern Ireland',
-        'cy': ''
+        'cy': 'Gogledd Iwerddon'
     },
     'now_working': {
         'en': 'Now working',
-        'cy': ''
+        'cy': 'Yn gweithio bellach'
     },
     'number_of_results': {
         'en': '<strong>%s</strong> course(s) from <strong>%s</strong> provider(s)',
-        'cy': ''
+        'cy': 'Ceir <strong>%s</strong> cwrs gan <strong>%s</strong> darparydd'
     },
     'other': {
         'en': 'Other',
-        'cy': ''
+        'cy': 'Arall '
     },
     'other_higher_qualifications': {
         'en': 'Different higher education qualification',
-        'cy': ''
+        'cy': 'Cymhwyster addysg uwch gwahanol'
     },
     'other_undergraduate': {
         'en': 'Other undergraduate (e.g. CertHE, DipHE)',
@@ -375,19 +375,19 @@ DICT = {
     },
     'part_time': {
         'en': 'Part time',
-        'cy': ''
+        'cy': 'Rhan-amser'
     },
     'placement_year': {
         'en': 'Placement year',
-        'cy': ''
+        'cy': 'Blwyddyn ar leoliad'
     },
     'previous_page': {
         'en': 'Previous page',
-        'cy': ''
+        'cy': 'Y dudalen flaenorol'
     },
     'professional_or_managerial': {
         'en': 'In a professional or managerial job',
-        'cy': ''
+        'cy': 'Mewn swydd broffesiynol neu reoli'
     },
     'qualification_type': {
         'en': 'Qualification type',
@@ -403,31 +403,31 @@ DICT = {
     },
     'results': {
         'en': 'Results',
-        'cy': ''
+        'cy': 'Canlyniadau'
     },
     'sandwich_year': {
         'en': 'Sandwich year',
-        'cy': ''
+        'cy': 'Blwyddyn ryngosod'
     },
     'scotland': {
         'en': 'Scotland',
-        'cy': ''
+        'cy': 'Yr Alban'
     },
     'search': {
         'en': 'Search',
-        'cy': ''
+        'cy': 'Chwilio'
     },
     'search_again': {
         'en': 'Search again',
-        'cy': ''
+        'cy': 'Chwilio eto'
     },
     'search_within': {
         'en': 'Search within',
-        'cy': ''
+        'cy': 'Chwilio yn '
     },
     'see_courses': {
         'en': 'See courses',
-        'cy': ''
+        'cy': 'Gweld y cyrsiau'
     },
     'select_all': {
         'en': 'Select all',
@@ -439,35 +439,35 @@ DICT = {
     },
     'send_message': {
         'en': 'Send message',
-        'cy': ''
+        'cy': 'Anfon neges'
     },
     'show_all': {
         'en': 'Show all',
-        'cy': ''
+        'cy': 'Dangos popeth'
     },
     'similar_courses_elsewhere': {
         'en': 'View similar courses at <strong>other</strong> unis',
-        'cy': ''
+        'cy': 'Gweld cyrsiau tebyg mewn prifysgolion  <strong>eraill</strong> '
     },
     'similar_courses_here': {
         'en': 'View similar courses at <strong>this</strong> uni',
-        'cy': ''
+        'cy': 'Gweld cyrsiau tebyg yn y brifysgol <strong>hon</strong> '
     },
     'site_logo': {
-        'en': 'Discover Uni',
-        'cy': ''
+        'en': '<strong>Discover</strong> Uni',
+        'cy': '<strong>Darganfod</strong> y Brifysgol'
     },
     'skip': {
         'en': 'Skip',
-        'cy': ''
+        'cy': 'anwybyddu'
     },
     'specific_town_city': {
         'en': 'to a specific town/city',
-        'cy': ''
+        'cy': 'i dref/ddinas benodol'
     },
     'specific_uni': {
         'en': 'to a specific uni',
-        'cy': ''
+        'cy': 'i brifysgol benodol'
     },
     'start': {
         'en': 'Start',
@@ -475,11 +475,11 @@ DICT = {
     },
     'still_on_course': {
         'en': 'Are still on the course',
-        'cy': ''
+        'cy': 'Yn dal ar y cwrs '
     },
     'student_unions': {
         'en': 'Student Unions',
-        'cy': ''
+        'cy': 'Undebau Myfyrwyr'
     },
     'study_abroad_year': {
         'en': 'Study abroad year',
@@ -487,31 +487,31 @@ DICT = {
     },
     'study_and_working': {
         'en': 'Studying and working',
-        'cy': ''
+        'cy': 'Astudio a gweithio '
     },
     'study_mode': {
         'en': 'Study mode',
-        'cy': ''
+        'cy': 'Modd astudio'
     },
     'subject': {
         'en': 'Subject',
-        'cy': ''
+        'cy': 'Pwnc '
     },
     'subject_area': {
         'en': 'Subject area',
-        'cy': ''
+        'cy': 'Maes pwnc'
     },
     'telephone': {
         'en': 'Telephone',
-        'cy': ''
+        'cy': 'Ffôn'
     },
     'unemployed': {
         'en': 'Unemployed',
-        'cy': ''
+        'cy': 'Di-waith'
     },
     'uni_or_college': {
         'en': 'University or college',
-        'cy': ''
+        'cy': 'Prifysgol neu goleg'
     },
     'uni_college': {
         'en': 'Universities / colleges',
@@ -519,19 +519,19 @@ DICT = {
     },
     'unknown': {
         'en': 'Unknown',
-        'cy': ''
+        'cy': 'Anhysbys'
     },
     'unknown_job_type': {
         'en': 'In an unknown job type',
-        'cy': ''
+        'cy': 'Mewn swydd anhysbys'
     },
     'wales': {
         'en': 'Wales',
-        'cy': ''
+        'cy': 'Cymru'
     },
     'website': {
         'en': 'Website',
-        'cy': ''
+        'cy': 'Gwefan'
     },
     'with_placement': {
         'en': 'With placement year',
@@ -559,23 +559,22 @@ DICT = {
     },
     'work_placement_year': {
         'en': 'Work placement year',
-        'cy': ''
+        'cy': 'Blwyddyn lleoliad gwaith'
     },
     'year_abroad': {
         'en': 'Year abroad',
-        'cy': ''
+        'cy': 'Blwyddyn dramor'
     },
     'year_course': {
         'en': 'year course',
-        'cy': ''
+        'cy': 'Cwrs blwyddyn'
     },
     'yes': {
         'en': 'Yes',
-        'cy': ''
+        'cy': 'Ydy'
     },
     'you_can': {
         'en': 'You can',
         'cy': ''
     }
 }
-
