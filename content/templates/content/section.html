@@ -21,7 +21,9 @@
             <div class="section-page__accordions">
                 {% for block in page.subsections %}
                     <div id="{% title_to_id block.value.subsection_title %}" class="section-page__accordion">
-                        <div tabindex="0" role="button" class="section-page__accordion-header"
+                        <div id="section-page__accordion-header-{{forloop.counter}}"
+                             tabindex="0" role="button" class="section-page__accordion-header"
+                             aria-controls="section-page__accordion-body-{{forloop.counter}}"
                              aria-label="Show {{ block.value.subsection_title }} content" aria-expanded="false">
                             <h2 class="section-page__accordion-title">{{ block.value.subsection_title }}</h2>
 
@@ -34,7 +36,8 @@
                             </div>
                         </div>
 
-                        <div class="section-page__accordion-body">
+                        <div id="section-page__accordion-body-{{forloop.counter}}" class="section-page__accordion-body"
+                                aria-labelledby="section-page__accordion-header-{{forloop.counter}}">
                             <div class="section-page__accordion-body-content">
                                 {{block.value.subsection_content}}
                             </div>
