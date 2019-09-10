@@ -260,7 +260,7 @@
             for (var i = 0; i < this.unis.length; i++) {
                 var uni = this.unis[i];
                 if (uni.isSelected()) {
-                    selectedUnis.push(uni.uni.name);
+                    selectedUnis.push('"' + uni.uni.name + '"');
                 }
             }
             return selectedUnis.join(',');
