@@ -20,7 +20,7 @@
         initialiseOptions: function() {
         var that = this;
             $.each(JSON.parse(sessionStorage.getItem("uniJSON")), function(index, item) {
-              that.optionList.append(`<option value='${item.name}'>${item.name}</option>`)
+              that.optionList.append(`<option value="${item.name}">${item.name}</option>`)
             });
 
             this.options = []
