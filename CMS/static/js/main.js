@@ -29,14 +29,6 @@ $(document).ready(function() {
     $('form').submit()
   }
 
-  function handlePostcodeSubmit(data) {
-    let postcode = data.postcode.value.replace(' ', '');
-    let distance = data.distance.value;
-    let  queryValue = [postcode,  distance].join(',');
-
-    sessionStorage.setItem("postcode", queryValue);
-  }
-
   if (sessionStorage.getItem("countries") != null) {
     let countries = sessionStorage.getItem("countries")
     $('#countries').text(countries.split(",").join(", "))
