@@ -8,26 +8,36 @@
 
     SearchDropdown.prototype = {
         setup: function() {
-            this.selectionField = this.container.find('.selection-field')[0];
+            this.selectionField = this.container.find('.selection-field');
+            this.fieldName = this.selectionField[0].name;
             this.searchField = $(this.container.find('.search-field-input')[0]);
             this.optionList = $(this.container.find('.options-list'));
             this.placeholder = $(this.optionList.find('.placeholder'));
-            this.initialiseOptions();
+            this.initialiseSelect();
             this.watchForFocus();
             this.watchForSearchTerm();
         },
 
-        initialiseOptions: function() {
-        var that = this;
+        initialiseSelect: function() {
+            var that = this;
             $.each(JSON.parse(sessionStorage.getItem("uniJSON")), function(index, item) {
+                var optionId = that.fieldName + '-' + index;
                 var optionValue = '"' + item.name + '"';
-                that.optionList.append(`<option value='${optionValue}'>${item.name}</option>`)
-            });
 
+                var option = document.createElement("option");
+                option.setAttribute("id", optionId);
+                option.setAttribute("value", optionValue);
+                option.innerHTML = item.name;
+                that.selectionField.append(option);
+            });
+            this.selectOptions = this.selectionField.find('option');
+            this.initialiseOptions();
+        },
+
+        initialiseOptions: function() {
             this.options = []
-            var options = this.optionList.find('option');
-            for (var i = 0; i < options.length; i++) {
-                this.options.push(new SearchOption(options[i], this.handleSelection.bind(this)));
+            for (var i = 0; i < this.selectOptions.length; i++) {
+                this.options.push(new SearchOption(this.selectOptions[i], this.optionList, this.handleSelection.bind(this)));
             }
         },
 
@@ -77,42 +87,59 @@
 
         handleSelection: function(option) {
             this.clearSearch();
-            this.selectionField.value = option.idValue;
             this.searchField[0].value = option.textValue;
             this.optionList.hide();
         }
     }
 
-    var SearchOption = function(option, handleSelectionCallback) {
+    var SearchOption = function(option, wrapper, handleSelectionCallback) {
         this.option = option;
-        this.textValue = option.innerText;
-        this.idValue = option.value;
+        this.wrapper = wrapper;
+
         this.handleSelection = handleSelectionCallback;
         this.setup();
     }
 
     SearchOption.prototype = {
-        setup: function(){
+        setup: function() {
+            this.textValue = this.option.innerText;
+            this.id = this.option.id;
+            this.idValue = this.option.value;
+
+            this.createUIOption();
             this.watchForSelection();
+        },
+
+        createUIOption: function() {
+            var uiOption = document.createElement("div");
+            uiOption.setAttribute("id", this.id);
+            uiOption.setAttribute("class", 'option');
+            uiOption.innerHTML = this.textValue;
+            this.wrapper.append(uiOption);
+            this.uiOption = this.wrapper.find('#' + this.id);
+            if (this.option.disabled) {
+                this.uiOption.hide();
+            }
         },
 
         watchForSelection: function() {
             var that = this;
-            $(this.option).click(function(e) {
+            $(this.uiOption).click(function(e) {
+                that.option.selected = true;
                 that.handleSelection(that);
             })
         },
 
         filterForSearch: function(searchTerm, selectedOptions) {
             if (this.textValue.toLowerCase().indexOf(searchTerm) > -1) {
-                $(this.option).show();
+                $(this.uiOption).show();
             } else {
-                $(this.option).hide();
+                $(this.uiOption).hide();
             }
         },
 
         hideOption: function() {
-            $(this.option).hide();
+            $(this.uiOption).hide();
         }
     }
 
