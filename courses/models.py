@@ -591,6 +591,7 @@ class EntryStatistics:
             return self.subject_english if self.subject_english else self.subject_welsh
         return self.subject_welsh if self.subject_welsh else self.subject_english
 
+    # TODO refactor all these same functions to a shared one
     def display_unavailable_reason(self):
         if self.unavailable_reason:
             return self.unavailable_reason
