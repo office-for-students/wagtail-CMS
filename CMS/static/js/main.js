@@ -17,23 +17,9 @@ $(document).ready(function() {
             });
 
             sessionStorage.setItem("uniJSON", JSON.stringify(result));
-
-            $.each(result, function(index, item) {
-                var option = document.createElement("option");
-                option.setAttribute("value", item.name);
-                option.innerHTML = item.name;
-                $('#uni').append(option);
-            })
         })
 
     }
-
-    $.each(JSON.parse(sessionStorage.getItem("uniJSON")), function(index, item) {
-        var option = document.createElement("option");
-        option.setAttribute("value", item.name);
-        option.innerHTML = item.name;
-        $('#uni').append(option);
-    })
 
   function handleStartAgain() {
     sessionStorage.clear()
@@ -49,11 +35,6 @@ $(document).ready(function() {
     let  queryValue = [postcode,  distance].join(',');
 
     sessionStorage.setItem("postcode", queryValue);
-  }
-
-  function handleUniSelection(data) {
-    let uni = data.uni.value
-    sessionStorage.setItem("uni", uni)
   }
 
   if (sessionStorage.getItem("countries") != null) {

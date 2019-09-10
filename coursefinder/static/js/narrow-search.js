@@ -1,11 +1,11 @@
 (function ($) {
 
-    var SubjectPicker = function(wrapper) {
+    var NarrowSearch = function(wrapper) {
         this.wrapper = $(wrapper);
         this.setup();
     }
 
-    SubjectPicker.prototype = {
+    NarrowSearch.prototype = {
         setup: function() {
             this.btn = this.wrapper.find('.course-finder-content__next-button');
             this.form = this.wrapper.find('.course-finder-content__question-form');
@@ -37,8 +37,8 @@
     }
 
     function init() {
-        var subjectPickers = $('.narrow-search');
-        new SubjectPicker(subjectPickers[0]);
+        var narrowSearch = $('.narrow-search');
+        new NarrowSearch(narrowSearch[0]);
     }
 
     $(document).on('page:load', init);
