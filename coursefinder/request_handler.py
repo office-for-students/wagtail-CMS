@@ -9,7 +9,6 @@ def query_course_and_institution(course, institution, limit, offset):
     if settings.LOCAL:
         return SearchMocks.get_successful_search_response()
     else:
-        print(institution)
         headers = {
             'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
         }
