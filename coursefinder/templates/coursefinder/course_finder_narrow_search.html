@@ -5,10 +5,14 @@
 
 {% block content_class %}narrow-search{% endblock %}
 
+{% block page_js %}
+    <script type="text/javascript" src="{% static 'js/narrow-search.js' %}"></script>
+{% endblock page_js %}
+
 {% block question %}
     <h1 class="course-finder-content__question">{{page.question}}</h1>
 
-    <form action="{% url 'narrow_search' %}" method="post" onsubmit="handleResultsRequest()" class="course-finder-content__question-form">
+    <form action="{% url 'narrow_search' %}" method="post" class="course-finder-content__question-form">
         {% csrf_token %}
 
         <label class="course-finder-content__question-option radio" for="uni">
@@ -55,7 +59,7 @@
 {% endblock %}
 
 {% block next_nav %}
-    <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
+    <button class="course-finder-content__next-button">
         {% get_translation key='next' language=page.get_language %}
 
         <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
