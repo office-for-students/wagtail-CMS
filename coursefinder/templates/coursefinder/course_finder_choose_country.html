@@ -9,52 +9,54 @@
 
 
 {% block question %}
-    <h1 class="course-finder-content__question">{{page.question}}</h1>
-
     <form action="javascript:;" class="course-finder-content__question-form">
-        <label class="course-finder-content__question-option checkbox" for="england">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='england' language=page.get_language %}
-            </span>
+        <fieldset>
+            <legend><h1 class="course-finder-content__question">{{page.question}}</h1></legend>
 
-            <input class="course-finder-content__question-input" id="england"
-                   type="checkbox" name="country" value="England">
+            <label class="course-finder-content__question-option checkbox" for="england">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='england' language=page.get_language %}
+                </span>
 
-            <span class="checkmark"></span>
-        </label>
+                <input class="course-finder-content__question-input" id="england"
+                       type="checkbox" name="country" value="England">
 
-        <label class="course-finder-content__question-option checkbox" for="northernireland">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='northern_ireland' language=page.get_language %}
-            </span>
+                <span class="checkmark"></span>
+            </label>
 
-            <input class="course-finder-content__question-input" id="northernireland"
-                   type="checkbox" name="country" value="Northern Ireland">
+            <label class="course-finder-content__question-option checkbox" for="northernireland">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='northern_ireland' language=page.get_language %}
+                </span>
 
-            <span class="checkmark"></span>
-        </label>
+                <input class="course-finder-content__question-input" id="northernireland"
+                       type="checkbox" name="country" value="Northern Ireland">
 
-        <label class="course-finder-content__question-option checkbox" for="scotland">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='scotland' language=page.get_language %}
-            </span>
+                <span class="checkmark"></span>
+            </label>
 
-            <input class="course-finder-content__question-input" id="scotland"
-                   type="checkbox" name="country" value="Scotland">
+            <label class="course-finder-content__question-option checkbox" for="scotland">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='scotland' language=page.get_language %}
+                </span>
 
-            <span class="checkmark"></span>
-        </label>
+                <input class="course-finder-content__question-input" id="scotland"
+                       type="checkbox" name="country" value="Scotland">
 
-        <label class="course-finder-content__question-option checkbox" for="wales">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='wales' language=page.get_language %}
-            </span>
+                <span class="checkmark"></span>
+            </label>
 
-            <input class="course-finder-content__question-input" id="wales"
-                   type="checkbox" name="country" value="Wales">
+            <label class="course-finder-content__question-option checkbox" for="wales">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='wales' language=page.get_language %}
+                </span>
 
-            <span class="checkmark"></span>
-        </label>
+                <input class="course-finder-content__question-input" id="wales"
+                       type="checkbox" name="country" value="Wales">
+
+                <span class="checkmark"></span>
+            </label>
+        </fieldset>
     </form>
 {% endblock %}
 
