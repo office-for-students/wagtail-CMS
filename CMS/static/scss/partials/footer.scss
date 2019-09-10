@@ -2,7 +2,7 @@
 @import '../fonts';
 
 .footer {
-    padding: 66px 31px 39px;
+    padding: 50px 31px 39px;
 
     background-color: $ux-grey-1;
 
@@ -29,11 +29,16 @@
 
         color: $copyright-grey;
     }
+
+    &__brand-logo {
+        height: 72px;
+        margin-bottom: 35px;
+    }
 }
 
 @media only screen and (min-width: 770px) {
     .footer {
-        padding: 100px 0px 65px;
+        padding: 75px 0px 65px;
 
         &__items {
             flex-direction: column;
@@ -57,6 +62,11 @@
             margin-top: 9px;
 
             color: $copyright-grey;
+        }
+
+        &__brand-logo {
+            height: 94px;
+            margin-bottom: 45px;
         }
     }
 }
