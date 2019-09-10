@@ -16,7 +16,7 @@ def query_course_and_institution(course, institution, limit, offset):
                             headers=headers)
 
 
-def course_finder_query(subject, institution, countries, postcode, filters, limit, offset):
+def course_finder_query(subject, institution, countries, postcode, filters, course_query, limit, offset):
     if settings.LOCAL:
         return SearchMocks.get_successful_search_response()
     else:
@@ -26,6 +26,8 @@ def course_finder_query(subject, institution, countries, postcode, filters, limi
         url = "%s?limit=%s&offset=%s" % (settings.SEARCHAPIHOST, limit, offset)
         if subject and subject != '':
             url = f"{url}&subjects={subject}"
+        if course_query and course_query != '':
+            url = f"{url}&qc={course_query}"
         if institution and institution != '':
             url = f"{url}&institutions={institution}"
         if countries and countries != '':

@@ -8,6 +8,8 @@
             <form method="post" action="/course-finder/results/" class="filters-block__form">
                 {% csrf_token %}
 
+                <input name="course_query" type="text" value="{{filter_form.course_query}}" hidden />
+
                 <div class="filters-block__filter">
                     <h2 class="filters-block__filter-heading">
                         {% get_translation key='countries' language=page.get_language %}
