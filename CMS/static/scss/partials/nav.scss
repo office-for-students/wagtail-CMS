@@ -50,20 +50,8 @@
         border: none;
     }
 
-    &__brand {
-        margin: 0;
-
-        font-family: Montserrat;
-        font-size: 19px;
-        font-weight: normal;
-        line-height: 24px;
-        letter-spacing: 0.04em;
-        color: $white;
-
-        &-icon {
-            height: 1em;
-            margin-left: 10px;
-        }
+    &__brand-logo {
+        height: 40px;
     }
 
     &__burger-menu {
@@ -208,9 +196,9 @@
             display: none;
         }
 
-        &__brand {
-            font-size: 25px;
-            line-height: 30px;
+
+        &__brand-logo {
+            height: 57px;
         }
 
         &__desktop {
