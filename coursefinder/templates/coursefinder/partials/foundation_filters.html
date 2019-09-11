@@ -1,34 +1,38 @@
 {% load discover_uni_tags %}
 
-<h2 class="filters-block__filter-heading">
-    {% get_translation key='foundation_year' language=page.get_language %}
-</h2>
+<fieldset>
+    <legend>
+        <h2 class="filters-block__filter-heading">
+            {% get_translation key='foundation_year' language=page.get_language %}
+        </h2>
+    </legend>
 
-<div class="filters-block__filter-options">
-    <div class="filters-block__filter-option">
-        <input id="foundation-yes" class="filters-block__filter-radio-input" type="radio" name="foundation" value="yes"
-            {% if filter_form.foundation == 'yes' %}checked{% endif %} />
+    <div class="filters-block__filter-options">
+        <div class="filters-block__filter-option">
+            <input id="foundation-yes" class="filters-block__filter-radio-input" type="radio" name="foundation" value="yes"
+                {% if filter_form.foundation == 'yes' %}checked{% endif %} />
 
-        <label class="filters-block__filter-radio-label" for="foundation-yes">
-            {% get_translation key='with_foundation' language=page.get_language %}
-        </label>
+            <label class="filters-block__filter-radio-label" for="foundation-yes">
+                {% get_translation key='with_foundation' language=page.get_language %}
+            </label>
+        </div>
+
+        <div class="filters-block__filter-option">
+            <input id="foundation-no" class="filters-block__filter-radio-input" type="radio" name="foundation" value="no"
+                {% if filter_form.foundation == 'no' %}checked{% endif %} />
+
+            <label class="filters-block__filter-radio-label" for="foundation-no">
+                {% get_translation key='without_foundation' language=page.get_language %}
+            </label>
+        </div>
+
+        <div class="filters-block__filter-option">
+            <input id="foundation-either" class="filters-block__filter-radio-input" type="radio" name="foundation" value="na"
+                {% if filter_form.foundation == 'na' %}checked{% endif %} />
+
+            <label class="filters-block__filter-radio-label" for="foundation-either">
+                {% get_translation key='dont_mind' language=page.get_language %}
+            </label>
+        </div>
     </div>
-
-    <div class="filters-block__filter-option">
-        <input id="foundation-no" class="filters-block__filter-radio-input" type="radio" name="foundation" value="no"
-            {% if filter_form.foundation == 'no' %}checked{% endif %} />
-
-        <label class="filters-block__filter-radio-label" for="foundation-no">
-            {% get_translation key='without_foundation' language=page.get_language %}
-        </label>
-    </div>
-
-    <div class="filters-block__filter-option">
-        <input id="foundation-either" class="filters-block__filter-radio-input" type="radio" name="foundation" value="na"
-            {% if filter_form.foundation == 'na' %}checked{% endif %} />
-
-        <label class="filters-block__filter-radio-label" for="foundation-either">
-            {% get_translation key='dont_mind' language=page.get_language %}
-        </label>
-    </div>
-</div>
+</fieldset>

@@ -10,41 +10,43 @@
 {% endblock page_js %}
 
 {% block question %}
-    <h1 class="course-finder-content__question">{{page.question}}</h1>
-
     <form action="javascript:;" class="course-finder-content__question-form">
-        <label class="course-finder-content__question-option checkbox" for="fullTime">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='full_time' language=page.get_language %}
-            </span>
+        <fieldset>
+            <legend><h1 class="course-finder-content__question">{{page.question}}</h1></legend>
 
-            <input class="course-finder-content__question-input" id="fullTime"
-                   type="checkbox" name="mode" value="Full-time">
+            <label class="course-finder-content__question-option checkbox" for="fullTime">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='full_time' language=page.get_language %}
+                </span>
 
-            <span class="checkmark"></span>
-        </label>
+                <input class="course-finder-content__question-input" id="fullTime"
+                       type="checkbox" name="mode" value="Full-time">
 
-        <label class="course-finder-content__question-option checkbox" for="partTime">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='part_time' language=page.get_language %}
-            </span>
+                <span class="checkmark"></span>
+            </label>
 
-            <input class="course-finder-content__question-input" id="partTime"
-                   type="checkbox" name="mode" value="Part-time">
+            <label class="course-finder-content__question-option checkbox" for="partTime">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='part_time' language=page.get_language %}
+                </span>
 
-            <span class="checkmark"></span>
-        </label>
+                <input class="course-finder-content__question-input" id="partTime"
+                       type="checkbox" name="mode" value="Part-time">
 
-        <label class="course-finder-content__question-option checkbox" for="distanceLearning">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='distance_learning' language=page.get_language %}
-            </span>
+                <span class="checkmark"></span>
+            </label>
 
-            <input class="course-finder-content__question-input" id="distanceLearning"
-                   type="checkbox" name="mode" value="Distance learning">
+            <label class="course-finder-content__question-option checkbox" for="distanceLearning">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='distance_learning' language=page.get_language %}
+                </span>
 
-            <span class="checkmark"></span>
-        </label>
+                <input class="course-finder-content__question-input" id="distanceLearning"
+                       type="checkbox" name="mode" value="Distance learning">
+
+                <span class="checkmark"></span>
+            </label>
+        </fieldset>
     </form>
 
     <div class="course-finder-content__question-helper">

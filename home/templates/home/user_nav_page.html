@@ -25,7 +25,7 @@
                         </span>
 
                         {% if card.value.button_text %}
-                            <button class="nav-card__button">
+                            <button class="nav-card__button" aria-label="{{card.value.button_description}}">
                                 {{ card.value.button_text }}
                             </button>
                         {% endif %}
