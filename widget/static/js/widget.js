@@ -1,11 +1,11 @@
 var CONTENT = {
     'satisfactionIntro': {
         'en-GB': 'of students were satisfied overall with their course.',
-        'cy-GB':"Roedd_________ o fyfyrwyr yn fodlon â'u cwrs ar y cyfan"
+        'cy-GB':"cyfran y myfyrwyr a oedd yn fodlon â'u cwrs ar y cyfan."
     },
     'explanationIntro': {
         'en-GB': 'of students agreed staff were good at explaining things.',
-        'cy-GB': 'Roedd_________ o fyfyrwyr yn cytuno bod staff yn dda am esbonio pethau.'
+        'cy-GB': 'cyfran y myfyrwyr sydd yn cytuno bod staff yn dda am esbonio pethau.'
     },
     'workIntro': {
         'en-GB': 'in work or doing further study six months after finishing.',
