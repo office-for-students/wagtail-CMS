@@ -430,10 +430,10 @@ DataWidget.prototype = {
         ctaBlockNode.appendChild(leadNode2);
         ctaBlockNode.appendChild(leadNode3);
 
-        var logoNode = document.createElement('img');
-        logoNode.classList.add('logo');
-        logoNode.setAttribute('src', CONTENT.logo[this.language]);
-        ctaBlockNode.appendChild(logoNode);
+//        var logoNode = document.createElement('img');
+//        logoNode.classList.add('logo');
+//        logoNode.setAttribute('src', CONTENT.logo[this.language]);
+//        ctaBlockNode.appendChild(logoNode);
 
         var ctaWrapperNode = document.createElement('div');
         ctaWrapperNode.classList.add('cta');
@@ -512,10 +512,10 @@ NoDataWidget.prototype = {
         ctaBlockNode.appendChild(leadNode2);
         ctaBlockNode.appendChild(leadNode3);
 
-        var logoNode = document.createElement('img');
-        logoNode.classList.add('logo');
-        logoNode.setAttribute('src', CONTENT.logo[this.language]);
-        ctaBlockNode.appendChild(logoNode);
+//        var logoNode = document.createElement('img');
+//        logoNode.classList.add('logo');
+//        logoNode.setAttribute('src', CONTENT.logo[this.language]);
+//        ctaBlockNode.appendChild(logoNode);
 
         var ctaWrapperNode = document.createElement('div');
         ctaWrapperNode.classList.add('cta');
