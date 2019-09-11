@@ -37,6 +37,10 @@
                         display: none;
                     }
                 }
+
+                &-start-again {
+                    margin-left: auto;
+                }
             }
 
             &-input {
@@ -261,6 +265,8 @@
             }
 
             &-accordion {
+                margin-bottom: 10px;
+
                 &-header {
                     display: flex;
                     justify-content: space-between;
@@ -268,6 +274,11 @@
                     padding: 29px 40px 29px 29px;
 
                     background-color: $form-grey;
+                    border: 3px solid transparent;
+
+                    &:hover {
+                        border: 3px solid $gradient-light-green;
+                    }
 
                     .collapse, .expand {
                         display: none;

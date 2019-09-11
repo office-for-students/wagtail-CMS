@@ -144,7 +144,7 @@ class CourseFinderSummary(DiscoverUniBasePage):
 
     @property
     def back_page(self):
-        return postcode_sibling_finder(self)
+        return narrow_search_sibling_finder(self)
 
 
 class CourseFinderResults(DiscoverUniBasePage):

@@ -18,13 +18,6 @@
     <div class="course-finder-base course-finder-results">
         <div class="discover-uni-container">
             <ul class="course-finder-base__nav">
-                <li class="course-finder-base__nav-control-back">
-                    <a href={% pageurl page.get_parent %} class="course-finder-base__nav-control">    
-                        <img class="course-finder-base__nav-control-icon" src="{% static 'images/chevrons/green_left_chevron.svg' %}" alt="">
-                        {% get_translation key='back' language=page.get_language %}
-                    </a>
-                </li>
-
                 <li class="course-finder-base__nav-control-start-again">
                     <a href={% pageurl page.get_parent %} class="course-finder-base__nav-control start-again">
                         <img class="course-finder-base__nav-control-icon" src="{% static 'images/restart_icon.svg' %}" alt="">
