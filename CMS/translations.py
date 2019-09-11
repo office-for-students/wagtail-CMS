@@ -76,8 +76,8 @@ DICT = {
         'cy': ''
     },
     'completed_course': {
-        'en': 'Have completed the course (started in the final year due to prior study)',
-        'cy': "Wedi cwblhau'r cwrs (wedi dechrau yn y flwyddyn olaf yn dilyn astudiaethau blaenorol)"
+        'en': 'Have completed the course',
+        'cy': "Wedi cwblhau'r cwrs"
     },
     'cookie_message': {
         'en': 'This website uses cookies to store information on your computer.',
