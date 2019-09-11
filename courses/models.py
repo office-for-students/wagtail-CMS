@@ -244,8 +244,9 @@ class Course:
                 for satisfaction_stats in stats.get('nss'):
                     self.satisfaction_stats.append(SatisfactionStatistics(satisfaction_stats, self.display_language))
                 self.nhs_satisfaction_stats = []
-                for data_set in stats.get('nhs_nss'):
-                    self.nhs_satisfaction_stats.append(SatisfactionStatistics(data_set, self.display_language))
+                if stats.get('nhs_nss'):
+                    for data_set in stats.get('nhs_nss'):
+                        self.nhs_satisfaction_stats.append(SatisfactionStatistics(data_set, self.display_language))
                 self.entry_stats = []
                 for data_set in stats.get('entry'):
                     self.entry_stats.append(EntryStatistics(data_set, self.display_language))
