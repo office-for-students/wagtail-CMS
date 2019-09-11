@@ -75,6 +75,17 @@ a {
     }
 }
 
+.breadcrumbs {
+    @include small-font-mixin();
+
+    position: absolute;
+    top: 121px;
+
+    &__divider {
+        margin: 0px 4px 0px 6px;
+    }
+}
+
 //Required to prevent wagtail adding huge padding to bottom of embeds
 
 .rich-text {
