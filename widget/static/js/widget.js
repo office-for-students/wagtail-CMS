@@ -94,6 +94,11 @@ var MODES = {
     'parttime': 2,
 }
 
+var MODE_KEYS = {
+    'fulltime': 'FullTime',
+    'parttime': 'PartTime',
+}
+
 var LANGUAGE_KEYS = {
     'en-gb': 'english',
     'cy-gb': 'welsh'
@@ -108,9 +113,9 @@ DiscoverUniWidget.prototype = {
     setup: function() {
         this.institution = this.targetDiv.dataset.institution;
         this.course = this.targetDiv.dataset.course;
-        this.kismode = this.targetDiv.dataset.kismode;
-        this.orientation = this.targetDiv.dataset.orientation;
-        this.language = this.targetDiv.dataset.language.toLowerCase();
+        this.kismode = this.targetDiv.dataset.kismode ? MODE_KEYS[this.targetDiv.dataset.kismode.toLowerCase()] : 'FullTime';
+        this.orientation = this.targetDiv.dataset.orientation ? this.targetDiv.dataset.orientation.toLowerCase() : 'vertical';
+        this.language = this.targetDiv.dataset.language ? this.targetDiv.dataset.language.toLowerCase() : 'en-gb';
         this.languageKey = LANGUAGE_KEYS[this.language];
         this.size = this.targetDiv.dataset.size;
 
@@ -405,6 +410,7 @@ DataWidget.prototype = {
 
         var ctaNode = document.createElement('a');
         ctaNode.href = this.generateLink();
+        ctaNode.setAttribute('target', '_blank');
         var cta = document.createTextNode(CONTENT.cta[this.language]);
 
         ctaWrapperNode.appendChild(ctaNode);
