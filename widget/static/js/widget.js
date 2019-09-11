@@ -410,6 +410,7 @@ DataWidget.prototype = {
 
         var ctaNode = document.createElement('a');
         ctaNode.href = this.generateLink();
+        ctaNode.setAttribute('target', '_blank');
         var cta = document.createTextNode(CONTENT.cta[this.language]);
 
         ctaWrapperNode.appendChild(ctaNode);
