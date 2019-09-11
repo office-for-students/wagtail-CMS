@@ -8,6 +8,8 @@
 {% block content %}
     <div class="flat-content-page content-page">
         <div class="discover-uni-container">
+            {% include 'partials/breadcrumbs.html' %}
+            
             <div class="flat-content-page__body">
                 {{ page.content_body | richtext }}
             </div>
