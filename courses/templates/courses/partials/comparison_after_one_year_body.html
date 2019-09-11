@@ -131,7 +131,7 @@
             </div>
         </div>
 
-        {% course1_continuation_stats.display_stats or course2_continuation_stats.display_stats %}
+        {% if course1_continuation_stats.display_stats or course2_continuation_stats.display_stats %}
             <div class="explanation">
                 <div class="explanation__link">
                     <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
@@ -162,7 +162,7 @@
                         </div>
                     {% endif %}
 
-                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_continuation_stats.unavailable_reason %}
+                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_continuation_stats.display_unavailable_reason %}
                 </div>
             </div>
 
@@ -176,7 +176,7 @@
                         </div>
                     {% endif %}
 
-                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_continuation_stats.unavailable_reason %}
+                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_continuation_stats.display_unavailable_reason %}
                 </div>
             </div>
         </div>

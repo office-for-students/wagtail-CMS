@@ -5,42 +5,48 @@
 
 {% block content_class %}mode-chooser{% endblock %}
 
+{% block page_js %}
+    <script type="text/javascript" src="{% static 'js/mode-picker.js' %}"></script>
+{% endblock page_js %}
+
 {% block question %}
-    <h1 class="course-finder-content__question">{{page.question}}</h1>
+    <form action="javascript:;" class="course-finder-content__question-form">
+        <fieldset>
+            <legend><h1 class="course-finder-content__question">{{page.question}}</h1></legend>
 
-    <form action="javascript:;" onsubmit="handleModeSelection(this)" class="course-finder-content__question-form">
-        <label class="course-finder-content__question-option checkbox" for="fullTime">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='full_time' language=page.get_language %}
-            </span>
+            <label class="course-finder-content__question-option checkbox" for="fullTime">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='full_time' language=page.get_language %}
+                </span>
 
-            <input class="course-finder-content__question-input" id="fullTime"
-                   type="checkbox" name="mode" value="Full-time">
+                <input class="course-finder-content__question-input" id="fullTime"
+                       type="checkbox" name="mode" value="Full-time">
 
-            <span class="checkmark"></span>
-        </label>
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="course-finder-content__question-option checkbox" for="partTime">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='part_time' language=page.get_language %}
-            </span>
+            <label class="course-finder-content__question-option checkbox" for="partTime">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='part_time' language=page.get_language %}
+                </span>
 
-            <input class="course-finder-content__question-input" id="partTime"
-                   type="checkbox" name="mode" value="Part-time">
+                <input class="course-finder-content__question-input" id="partTime"
+                       type="checkbox" name="mode" value="Part-time">
 
-            <span class="checkmark"></span>
-        </label>
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="course-finder-content__question-option checkbox" for="distanceLearning">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='distance_learning' language=page.get_language %}
-            </span>
+            <label class="course-finder-content__question-option checkbox" for="distanceLearning">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='distance_learning' language=page.get_language %}
+                </span>
 
-            <input class="course-finder-content__question-input" id="distanceLearning"
-                   type="checkbox" name="mode" value="Distance learning">
+                <input class="course-finder-content__question-input" id="distanceLearning"
+                       type="checkbox" name="mode" value="Distance learning">
 
-            <span class="checkmark"></span>
-        </label>
+                <span class="checkmark"></span>
+            </label>
+        </fieldset>
     </form>
 
     <div class="course-finder-content__question-helper">
@@ -50,7 +56,7 @@
 
 {% block next_nav %}
     <a href={% pageurl page.next_page %} class="course-finder-content__next-link">
-        <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
+        <button class="course-finder-content__next-button">
             {% get_translation key='next' language=page.get_language %}
 
             <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">

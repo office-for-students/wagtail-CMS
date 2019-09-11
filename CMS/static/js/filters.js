@@ -67,7 +67,7 @@
             if (this.subjectAreaSelector.val() === null && this.subjectSelector.val() === null) {
                 subjectCodes = "";
             } else if (this.subjectAreaSelector.val() != null && this.subjectSelector.val() === null) {
-                subjectJson = JSON.parse(sessionStorage.getItem("subjectJSON"));
+                subjectJson = JSON.parse(localStorage.getItem("subjectJSON"));
                 for (var i = 0; i < subjectJson.length; i++) {
                     var item = subjectJson[i];
                     if (item.level === "3" && item.code.includes(this.subjectAreaSelector.val())) {
@@ -133,7 +133,7 @@
         },
 
         loadUnis: function() {
-            if (sessionStorage.getItem("uniJSON") === null) {
+            if (localStorage.getItem("uniJSON") === null) {
                 $.getJSON("/static/jsonfiles/institutions.json", function(result) {
                     result.sort(function(a, b) {
                         if(a.order_by_name < b.order_by_name) { return -1; }
@@ -142,10 +142,10 @@
                     });
                 })
 
-                sessionStorage.setItem("uniJSON", JSON.stringify(result));
+                localStorage.setItem("uniJSON", JSON.stringify(result));
                 this.uniData = result;
             } else {
-                this.uniData = JSON.parse(sessionStorage.getItem("uniJSON"))
+                this.uniData = JSON.parse(localStorage.getItem("uniJSON"))
             }
 
             this.uniList = new UniList(this.unisListWrapper, this.uniData, this.setTotalCount.bind(this),
@@ -260,7 +260,7 @@
             for (var i = 0; i < this.unis.length; i++) {
                 var uni = this.unis[i];
                 if (uni.isSelected()) {
-                    selectedUnis.push(uni.uni.name);
+                    selectedUnis.push('"' + uni.uni.name + '"');
                 }
             }
             return selectedUnis.join(',');

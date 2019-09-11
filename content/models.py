@@ -13,7 +13,7 @@ class ContentLandingPage(DiscoverUniBasePage):
         ('sections', blocks.PageChooserBlock())
     ])
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('intro'),
         StreamFieldPanel('options', classname="full")
     ]
@@ -37,7 +37,7 @@ class Section(DiscoverUniBasePage):
         ('links', blocks.PageChooserBlock(required=False)),
     ], blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('intro'),
         StreamFieldPanel('subsections'),
         FieldPanel('related_links_title'),
@@ -50,6 +50,6 @@ class Section(DiscoverUniBasePage):
 class FlatContent(DiscoverUniBasePage):
     content_body = RichTextField(blank=True, features=['h1', 'h2', 'h3', 'bold', 'italic', 'embed', 'link',
                                                        'document-link', 'image', 'ol', 'ul', 'hr'])
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('content_body'),
     ]

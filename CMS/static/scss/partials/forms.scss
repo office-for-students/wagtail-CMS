@@ -1,3 +1,9 @@
+fieldset {
+    border: none;
+    padding: 0px;
+    margin: 0px;
+}
+
 .checkbox {
     display: block;
     position: relative;
@@ -14,7 +20,7 @@
     }
 
     /* On mouse-over, add a grey background color */
-    &:hover input ~ .checkmark {
+    &:hover input ~ .checkmark, input:focus ~ .checkmark {
         border: 3px solid $gradient-light-green;
     }
 
@@ -82,7 +88,7 @@
     -ms-user-select: none;
     user-select: none;
 
-    &:hover input ~ .radiobox {
+    &:hover input ~ .radiobox, input:focus ~ .radiobox {
         border: 3px solid $gradient-light-green;
     }
 

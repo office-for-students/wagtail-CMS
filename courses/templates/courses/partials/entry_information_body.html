@@ -82,7 +82,7 @@
         {% endif %}
     </div>
 
-    {% include 'courses/partials/unavailable_disclaimer.html' with reason=entry_stats.unavailable_reason %}
+    {% include 'courses/partials/unavailable_disclaimer.html' with reason=entry_stats.display_unavailable_reason %}
 {% endfor %}
 
 {% for tariff_stats in  course_details.tariff_stats %}
@@ -113,5 +113,5 @@
         {% endif %}
     </div>
 
-    {% include 'courses/partials/unavailable_disclaimer.html' with reason=tariff_stats.unavailable_reason %}
+    {% include 'courses/partials/unavailable_disclaimer.html' with reason=tariff_stats.display_unavailable_reason %}
 {% endfor %}

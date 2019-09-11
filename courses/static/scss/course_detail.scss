@@ -101,8 +101,13 @@
                 padding: 32px 30px 32px 51px;
                 position: relative;
 
+                border: 3px solid transparent;
                 background-color: $ux-grey-1;
                 color: $ux-grey-2;
+
+                &:hover {
+                    border: 3px solid $gradient-light-green;
+                }
 
                 &.open {
                     @include green-gradient-background-mixin();

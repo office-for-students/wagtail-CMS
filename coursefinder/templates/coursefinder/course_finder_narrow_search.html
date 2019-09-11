@@ -5,44 +5,50 @@
 
 {% block content_class %}narrow-search{% endblock %}
 
-{% block question %}
-    <h1 class="course-finder-content__question">{{page.question}}</h1>
+{% block page_js %}
+    <script type="text/javascript" src="{% static 'js/narrow-search.js' %}"></script>
+{% endblock page_js %}
 
-    <form action="{% url 'narrow_search' %}" method="post" onsubmit="handleResultsRequest()" class="course-finder-content__question-form">
+{% block question %}
+    <form action="{% url 'narrow_search' %}" method="post" class="course-finder-content__question-form">
         {% csrf_token %}
 
-        <label class="course-finder-content__question-option radio" for="uni">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='specific_uni' language=page.get_language %}?
-            </span>
+        <fieldset>
+            <legend><h1 class="course-finder-content__question">{{page.question}}</h1></legend>
 
-            <input class="course-finder-content__question-input"
-                   id="uni" type="radio" name="radioGroup" value="uni">
+            <label class="course-finder-content__question-option radio" for="uni">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='specific_uni' language=page.get_language %}?
+                </span>
 
-            <span class="radiobox"></span>
-        </label>
+                <input class="course-finder-content__question-input"
+                       id="uni" type="radio" name="radioGroup" value="uni">
 
-        <label class="course-finder-content__question-option radio" for="home">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='near_your_home' language=page.get_language %}?
-            </span>
+                <span class="radiobox"></span>
+            </label>
 
-            <input class="course-finder-content__question-input"
-                   id="home" type="radio" name="radioGroup" value="home">
+            <label class="course-finder-content__question-option radio" for="home">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='near_your_home' language=page.get_language %}?
+                </span>
 
-            <span class="radiobox"></span>
-        </label>
+                <input class="course-finder-content__question-input"
+                       id="home" type="radio" name="radioGroup" value="home">
 
-        <label class="course-finder-content__question-option radio" for="all">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='dont_narrow' language=page.get_language %}
-            </span>
+                <span class="radiobox"></span>
+            </label>
 
-            <input class="course-finder-content__question-input"
-                   id="all" type="radio" name="radioGroup" value="all">
+            <label class="course-finder-content__question-option radio" for="all">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='dont_narrow' language=page.get_language %}
+                </span>
 
-            <span class="radiobox"></span>
-        </label>
+                <input class="course-finder-content__question-input"
+                       id="all" type="radio" name="radioGroup" value="all">
+
+                <span class="radiobox"></span>
+            </label>
+        </fieldset>
 
         <div class="course-finder-content__question-previous-selections">
             <input type="text" name="countries_query" value="">
@@ -55,7 +61,7 @@
 {% endblock %}
 
 {% block next_nav %}
-    <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
+    <button class="course-finder-content__next-button">
         {% get_translation key='next' language=page.get_language %}
 
         <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">

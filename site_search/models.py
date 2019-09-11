@@ -12,12 +12,16 @@ class SearchLandingPage(DiscoverUniBasePage):
 
     heading = TextField(blank=False)
     search_heading = TextField(blank=False)
+    search_button_description = TextField(blank=False)
     course_finder_heading = TextField(blank=False)
+    course_finder_button_description = TextField(blank=False)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('heading', classname="full"),
         FieldPanel('search_heading', classname="full"),
+        FieldPanel('search_button_description', classname="full"),
         FieldPanel('course_finder_heading', classname="full"),
+        FieldPanel('course_finder_button_description', classname="full"),
     ]
 
     def get_context(self, request):

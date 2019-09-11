@@ -1,6 +1,6 @@
 from django.db import models
 
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, PageChooserPanel
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
@@ -11,9 +11,20 @@ from core.utils import parse_menu_item, get_page_for_language
 
 
 class DiscoverUniBasePage(Page):
+    translated_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
+
+    content_panels = Page.content_panels + [
+        PageChooserPanel('translated_page'),
+    ]
 
     def get_language(self):
-        if '/cy/' in self.get_full_url():
+        if self.url and '/cy/' in self.url:
             return 'cy'
         return 'en'
 
@@ -21,11 +32,17 @@ class DiscoverUniBasePage(Page):
         return self.get_language() == 'en'
 
     def get_english_url(self):
-        return self.url.replace('/cy/','/')
+        from home.models import HomePage
+        if self.is_english():
+            return self.url
+        return self.translated_page.url if self.translated_page \
+            else get_page_for_language(enums.languages.ENGLISH, HomePage.objects.all()).url
 
     def get_welsh_url(self):
+        from home.models import HomePage
         if self.is_english():
-            return '/cy' + self.url
+            return self.translated_page.url if self.translated_page \
+                else get_page_for_language(enums.languages.WELSH, HomePage.objects.all()).url
         return self.url
 
     @property
@@ -64,7 +81,7 @@ class DiscoverUniBasePage(Page):
 
     def get_context(self,request):
         context = super().get_context(request)
-
+        context['page'] = self
         context['english_url'] = self.get_english_url()
         context['welsh_url'] = self.get_welsh_url()
         context['cookies_accepted'] = request.COOKIES.get('discoverUniCookies')

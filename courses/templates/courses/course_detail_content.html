@@ -16,7 +16,9 @@
                     {% if show_accordion %}
                         <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
                             <div class="discover-uni-container">
-                                <h2 class="course-detail__accordion-heading">
+                                <h2 id="course-detail__accordion-heading-{{forloop.counter}}" class="course-detail__accordion-heading"
+                                    aria-controls="course-detail__accordion-body-{{forloop.counter}}"
+                                    aria-label="Show {{ accordion.value.heading }} content" aria-expanded="false">
                                     {{ accordion.value.heading }}
 
                                     <span class="course-detail__accordion-heading-chevron">
@@ -26,7 +28,8 @@
                                 </h2>
                             </div>
 
-                            <div class="course-detail__accordion-body">
+                            <div id="course-detail__accordion-body-{{forloop.counter}}" class="course-detail__accordion-body"
+                                aria-labelledby="course-detail__accordion-heading-{{forloop.counter}}">
                                 {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course block=accordion %}
                             </div>
                         </div>

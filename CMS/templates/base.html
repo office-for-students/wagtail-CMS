@@ -6,10 +6,10 @@
         <meta charset="utf-8" />
         <title>
             {% block title %}
-                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+                {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
             {% endblock %}
             {% block title_suffix %}
-                {% with self.get_site.site_name as site_name %}
+                {% with page.get_site.site_name as site_name %}
                     {% if site_name %}- {{ site_name }}{% endif %}
                 {% endwith %}
             {% endblock %}
@@ -42,14 +42,20 @@
             {# Override this in templates to add extra javascript #}
         {% endblock %}
 
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147556197-1"></script>
+        <script type="text/javascript" src="{% static 'js/google-analytics-tracking.js' %}"></script>
+
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
+        <a href="#main-content" class="screen-reader">skip to main content</a>
         {% include 'partials/nav.html' %}
 
         {% wagtailuserbar %}
 
-        {% block content %}{% endblock %}
+        <div id="main-content" tabindex="-1">
+            {% block content %}{% endblock %}
+        </div>
 
         {% include 'partials/feedback-form.html' %}
 

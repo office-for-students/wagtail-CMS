@@ -1,3 +1,7 @@
+.widget-body {
+    margin: 0px;
+}
+
 .kis-widget {
     font-family: Nunito Sans;
     border: 2px solid #4EA27D;
@@ -26,13 +30,14 @@
 }
 
 .kis-widget .widget-cta-block .logo {
-    margin:0px;
-    margin-bottom:38px;
-    font-family: Montserrat;
-    font-weight: bold;
-    font-size: 13px;
-    line-height: 16px;
-    color: white;
+    margin-top: 9px;
+    margin-bottom: 38px;
+    height: 30px;
+}
+
+.kis-widget.horizontal .widget-cta-block .logo {
+    display: block;
+    margin-bottom: 10px;
 }
 
 .kis-widget .widget-cta-block .cta {
@@ -67,16 +72,18 @@
 
 
 .kis-widget.vertical {
-    width: 190px
+    width: 186px;
+    height: 496px;
 }
 
 .kis-widget.horizontal {
-    width: 615px;
+    width: 611px;
+    height: 146px;
     display: flex;
 }
 
 .kis-widget .widget-lead {
-    padding: 15px 20px 220px 15px;
+    padding: 15px 20px 184px 15px;
 }
 
 .kis-widget.vertical .widget-lead {

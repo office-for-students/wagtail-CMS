@@ -406,7 +406,7 @@
             {% endif %}
         {% endif %}
 
-        {% include 'courses/partials/unavailable_disclaimer.html' with reason=overall_stats.satisfaction_stats.unavailable_reason %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with reason=overall_stats.satisfaction_stats.display_unavailable_reason %}
 
         {% if overall_stats.nhs_satisfaction_stats %}
             <div class="student-satisfaction__data-group">
@@ -493,7 +493,7 @@
                 </div>
             {%  endif %}
 
-            {% include 'courses/partials/unavailable_disclaimer.html' with reason=overall_stats.nhs_satisfaction_stats.unavailable_reason %}
+            {% include 'courses/partials/unavailable_disclaimer.html' with reason=overall_stats.nhs_satisfaction_stats.display_unavailable_reason %}
         {% endif %}
     </div>
 {% endfor %}
