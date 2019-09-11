@@ -1,8 +1,15 @@
-{% load discover_uni_tags %}
+{% load staticfiles discover_uni_tags %}
 
 
 <footer class="footer">
     <div class="discover-uni-container">
+        {% if page.is_english %}
+            <img class="footer__brand-logo" src="{% static 'images/logos/footer_logo_english.svg' %}"
+                 alt="{% get_translation key='site_logo' language=page.get_language %}">
+        {% else %}
+            <img class="footer__brand-logo" src="{% static 'images/logos/footer_logo_welsh.svg' %}"
+                 alt="{% get_translation key='site_logo' language=page.get_language %}">
+        {% endif %}
         <div class="footer__items">
             <div class="footer__group">
                 {% for item in page.footer %}
