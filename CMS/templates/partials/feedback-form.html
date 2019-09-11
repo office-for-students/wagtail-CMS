@@ -10,17 +10,7 @@
                     <p class="feedback-form__message">
                         {% get_translation key='feedback_form' language=page.get_language %}
 
-                        <label for="yes" class="feedback-form__heading-control yes">
-                            {% get_translation key='yes' language=page.get_language %}
-                        </label>
-
-                        <input id="yes" type="radio" name="is_useful" value="yes" hidden />
-
-                        <label for="no" class="feedback-form__heading-control no">
-                            {% get_translation key='no' language=page.get_language %}
-                        </label>
-
-                        <input id="no" type="radio" name="is_useful" value="no" hidden />
+                        <button class="feedback-form__toggle">{% get_translation key='feedback_button' language=page.get_language %}</button>
                     </p>
                 </div>
             </div>
@@ -33,21 +23,12 @@
                 </p>
 
                 <div class="feedback-form__details">
-                    <span id="close" class="feedback-form__details-close">{% get_translation key='close' language=page.get_language %}</span>
-                    <div id='useful'>
-                        <label class="feedback-form__label" for="was-useful-feedback-form">
-                            {% get_translation key='how_useful' language=page.get_language %}
-                        </label>
-
-                        <textarea id="was-useful-feedback-form" name="how_was_this_useful" class="feedback-form__text-area useful"></textarea>
-                    </div>
-
-                    <div id="improvement">
-                        <label class="feedback-form__label" for="could-improve-feedback-form">
+                    <div>
+                        <label class="feedback-form__label" for="beta-feedback-form">
                             {% get_translation key='how_improve' language=page.get_language %}
                         </label>
 
-                        <textarea id="could-improve-feedback-form" name="how_could_we_improve" class="feedback-form__text-area improvement"></textarea>
+                        <textarea id="beta-feedback-form" name="user_feedback" class="feedback-form__text-area improvement"></textarea>
                     </div>
 
                     <input type="submit" class="feedback-form__submit-button" value="{% get_translation key='send_message' language=page.get_language %}" />

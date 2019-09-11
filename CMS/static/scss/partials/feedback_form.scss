@@ -42,8 +42,6 @@
         display: none;
         padding: 30px 26px 50px 20px;
 
-        border-top: 10px solid $header-blue;
-
         &-close {
             display: none;
         }
@@ -86,11 +84,22 @@
 
         border: 5px solid $error-red;
     }
+
+    &__toggle {
+        @include small-font-mixin();
+
+        padding: 0px;
+
+        border: none;
+        background-color: transparent;
+        color: $white;
+        text-decoration: underline;
+    }
 }
 
 @media only screen and (min-width: 770px) {
     .feedback-form {
-        &__message {
+        &__message, &__toggle {
             @include mobile-body-font-mixin();
 
             margin: 0px;

@@ -277,13 +277,21 @@ DICT = {
         'en': 'Enter postcode',
         'cy': ''
     },
+    'feedback_button': {
+        'en': 'feedback',
+        'cy': ''
+    },
     'feedback_error': {
         'en': 'Sorry something went wrong submitting your feedback, please try again later.',
         'cy': "Mae'n ddrwg gennym, aeth rhywbeth o'i le wrth ichi roi adborth. Rhowch gynnig arall ymhen ychydig."
     },
     'feedback_form': {
-        'en': 'Feedback: is this page useful to you?',
-        'cy': "Adborth: a yw'r dudalen hon yn ddefnyddiol i chi?"
+        'en': 'This site is in beta. We welcome your ',
+        'cy': ''
+    },
+    'feedback_thanks': {
+        'en': 'Thanks for your feedback.',
+        'cy': ''
     },
     'filter': {
         'en': 'Filter',
@@ -346,8 +354,8 @@ DICT = {
         'cy': ''
     },
     'how_improve': {
-        'en': 'How should we improve this page?',
-        'cy': "Sut y dylem wella'r dudalen hon?"
+        'en': 'Please tell us about your experience',
+        'cy': ''
     },
     'how_useful': {
         'en': 'How was this page useful to you?',
