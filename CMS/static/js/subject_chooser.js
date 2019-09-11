@@ -34,11 +34,12 @@
                     localStorage.setItem("subjectJSON", JSON.stringify(result));
 
                     that.subjectData = result;
+                    that.initialiseSelectors();
                 })
             } else {
                 this.subjectData = JSON.parse(localStorage.getItem("subjectJSON"));
+                this.initialiseSelectors();
             }
-            this.initialiseSelectors();
         },
 
         initialiseSelectors: function() {
@@ -66,6 +67,9 @@
 
             this.subjectOptions = this.subjectSelector.find('option');
             this.subjectCodeOptions = this.subjectCodeSelector.find('option');
+            this.subjectAreaSelector.trigger('loadeddata');
+            this.subjectSelector.trigger('loadeddata');
+            this.subjectCodeSelector.trigger('loadeddata');
         },
 
         createOption: function(value, text, selected, data) {

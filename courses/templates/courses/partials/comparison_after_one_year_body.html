@@ -131,7 +131,7 @@
             </div>
         </div>
 
-        {% course1_continuation_stats.display_stats or course2_continuation_stats.display_stats %}
+        {% if course1_continuation_stats.display_stats or course2_continuation_stats.display_stats %}
             <div class="explanation">
                 <div class="explanation__link">
                     <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
