@@ -10,24 +10,26 @@
         <div class="discover-uni-container">
             <ul class="course-finder-base__nav">
                 {% if page.back_page %}
-                    <a href={% pageurl page.back_page %} class="course-finder-base__nav-control">
-                        <li class="course-finder-base__nav-control-back">
+                    <li class="course-finder-base__nav-control-back">
+                        <a href={% pageurl page.back_page %} class="course-finder-base__nav-control">
+                        
                             <img class="course-finder-base__nav-control-icon" src="{% static 'images/chevrons/green_left_chevron.svg' %}" alt="">
                             {% get_translation key='back' language=page.get_language %}
-                        </li>
-                    </a>
+                        </a>
+                    </li>
                 {% endif %}
 
                 {% if page.use_skip_form %}
                     {% include 'coursefinder/partials/course_finder_results_form.html' with button_value_key='skip' button_class='course-finder-base__nav-control' icon_class='course-finder-base__nav-control-icon' %}
                 {% else %}
-                    <a href={% pageurl page.next_page %} class="course-finder-base__nav-control">
-                        <li class="course-finder-base__nav-control-skip">
+                    <li class="course-finder-base__nav-control-skip">
+                        <a href={% pageurl page.next_page %} class="course-finder-base__nav-control">
+                        
                             {% get_translation key='skip' language=page.get_language %}
 
                             <img class="course-finder-base__nav-control-icon" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
-                        </li>
-                    </a>
+                        </a>
+                    </li>
                 {% endif %}
             </ul>
 
