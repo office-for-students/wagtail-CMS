@@ -22,10 +22,12 @@
 
             this.form.submit(function() {
                 var postcode = this.postcode.value.replace(' ', '');
-                var distance = this.distance.value;
-                var queryValue = [postcode,  distance].join(',');
+                var distance = this.distance.value ? this.distance.value : 10;
+                if (postcode) {
+                    var queryValue = [postcode,  distance].join(',');
 
-                sessionStorage.setItem("postcode", queryValue);
+                    sessionStorage.setItem("postcode", queryValue);
+                }
             });
         }
     }
