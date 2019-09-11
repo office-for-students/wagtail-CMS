@@ -125,12 +125,12 @@ class CourseFinderModelsTests(UniSimpleTestCase):
         self.assertIsNotNone(summary.next_page)
         self.assertEquals(type(summary.next_page), CourseFinderResults)
 
-    def test_course_finder_summary_back_page_returns_postcode_sibling(self):
+    def test_course_finder_summary_back_page_returns_narrow_search_sibling(self):
         summary = PageFactory.create_summary_page(title='Summary')
-        PageFactory.create_postcode_page(title='Postcode', path='11111112', parent_page=summary.get_parent())
+        PageFactory.create_narrow_search_page(title='Postcode', path='11111112', parent_page=summary.get_parent())
 
         self.assertIsNotNone(summary.back_page)
-        self.assertEquals(type(summary.back_page), CourseFinderPostcode)
+        self.assertEquals(type(summary.back_page), CourseFinderNarrowSearch)
 
     def test_course_finder_search_execute_function_appends_counts_and_list_of_courses_to_model_on_success(self):
         mock_data = SearchMocks.get_search_response_content()
