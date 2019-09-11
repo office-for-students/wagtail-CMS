@@ -9,6 +9,8 @@ def holding_page(request, language='en'):
     page = get_page_for_language(language, HomePage.objects.all())
     context = {
         'page': page,
+        'english_url': page.get_english_url,
+        'welsh_url': page.get_welsh_url,
     }
 
     if '/cy/' in request.path:

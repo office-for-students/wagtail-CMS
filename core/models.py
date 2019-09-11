@@ -35,18 +35,20 @@ class DiscoverUniBasePage(Page):
         return self.get_language() == 'cy'
 
     def get_english_url(self):
-        from home.models import HomePage
-        if self.is_english():
-            return self.url
-        return self.translated_page.url if self.translated_page \
-            else get_page_for_language(enums.languages.ENGLISH, HomePage.objects.all()).url
+        return '/'
+        # from home.models import HomePage
+        # if self.is_english():
+        #     return self.url
+        # return self.translated_page.url if self.translated_page \
+        #     else get_page_for_language(enums.languages.ENGLISH, HomePage.objects.all()).url
 
     def get_welsh_url(self):
-        from home.models import HomePage
-        if self.is_english():
-            return self.translated_page.url if self.translated_page \
-                else get_page_for_language(enums.languages.WELSH, HomePage.objects.all()).url
-        return self.url
+        return '/cy/'
+        # from home.models import HomePage
+        # if self.is_english():
+        #     return self.translated_page.url if self.translated_page \
+        #         else get_page_for_language(enums.languages.WELSH, HomePage.objects.all()).url
+        # return self.url
 
     @property
     def menu(self):
