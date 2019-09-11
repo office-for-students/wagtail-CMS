@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags discover_uni_tags sass_tags %}
+
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+    <link href="{% sass_src 'scss/home.scss' %}" rel="stylesheet" type="text/css" >
+{% endblock extra_css %}
+
+{% block content %}
+    <div class="home">
+        <div class="discover-uni-container">
+            <h1 class="header">
+                Yn dod yn fuan …
+            </h1>
+
+            <div class="intro-text">
+                <p><strong>Bydd Darganfod y Brifysgol yn cael ei lansio ar 12 Medi</strong></p>
+
+                <p>Gwefan newydd yw Darganfod Prifysgol gan Adran yr Economi yng Ngogledd Iwerddon, Cyngor Cyllido Addysg Uwch Cymru, Y Swyddfa Fyfyrwyr yn Lloegr a Chyngor Cyllido’r Alban.</p>
+
+                <p>Mae’r wefan wedi’i dylunio i fod yn syml i’w defnyddio. Gall eich helpu i:</p>
+                <ul>
+                    <li>benderfynu ai Prifysgol yw’r dewis iawn i chi</li>
+
+                    <li>dewis beth i’w astudio, ac ymhle</li>
+
+                    <li>canfod a chymharu cyrsiau</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}

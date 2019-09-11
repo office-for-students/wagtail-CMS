@@ -11,37 +11,37 @@
                      alt="{% get_translation key='site_logo' language=page.get_language %}">
             {% endif %}
         </a>
-
+        
         <ul class="discover-uni-nav__desktop-links">
-            {% for item in page.menu %}
-                {% if item.sub_items %}
-                    <li class="discover-uni-nav__desktop-dropdown">
-                        <a class="discover-uni-nav__desktop-dropdown-toggle" href="#">
-                            {{ item.label }}
-                        </a>
+            <!--{% for item in page.menu %}-->
+                <!--{% if item.sub_items %}-->
+                    <!--<li class="discover-uni-nav__desktop-dropdown">-->
+                        <!--<a class="discover-uni-nav__desktop-dropdown-toggle" href="#">-->
+                            <!--{{ item.label }}-->
+                        <!--</a>-->
 
-                        <ul class="discover-uni-nav__desktop-dropdown-body">
-                            {% for sub_item in item.sub_items %}
-                                <li>
-                                    <a class="discover-uni-nav__desktop-dropdown-link" href="{{ sub_item.url }}">
-                                        {{ sub_item.label }}
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                {% else %}
-                    <li class="discover-uni-nav__desktop-link">
-                        <a href="{{ item.url }}">
-                            {{ item.label }}
+                        <!--<ul class="discover-uni-nav__desktop-dropdown-body">-->
+                            <!--{% for sub_item in item.sub_items %}-->
+                                <!--<li>-->
+                                    <!--<a class="discover-uni-nav__desktop-dropdown-link" href="{{ sub_item.url }}">-->
+                                        <!--{{ sub_item.label }}-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                            <!--{% endfor %}-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                <!--{% else %}-->
+                    <!--<li class="discover-uni-nav__desktop-link">-->
+                        <!--<a href="{{ item.url }}">-->
+                            <!--{{ item.label }}-->
 
-                            {% if item.label == 'Course search' %}
-                                <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
-                            {% endif %}
-                        </a>
-                    </li>
-                {% endif %}
-            {% endfor %}
+                            <!--{% if item.label == 'Course search' %}-->
+                                <!--<img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">-->
+                            <!--{% endif %}-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--{% endif %}-->
+            <!--{% endfor %}-->
 
             {% if page.is_english %}
                 <li class="discover-uni-nav__desktop-link">
@@ -57,19 +57,19 @@
                 </li>
             {% endif %}
 
-            <li class="discover-uni-nav__desktop-link">
-                <a href="{{page.manage_link}}" class="nav-bookmark">
-                    <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="">
-                    <span class="nav-bookmark__count"></span>
-                </a>
-            </li>
+            <!--<li class="discover-uni-nav__desktop-link">-->
+                <!--<a href="{{page.manage_link}}" class="nav-bookmark">-->
+                    <!--<img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="">-->
+                    <!--<span class="nav-bookmark__count"></span>-->
+                <!--</a>-->
+            <!--</li>-->
         </ul>
 
         <div class="discover-uni-nav__mobile-nav">
-            <a href="{{page.manage_link}}" class="nav-bookmark">
-                <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="">
-                <span class="nav-bookmark__count"></span>
-            </a>
+            <!--<a href="{{page.manage_link}}" class="nav-bookmark">-->
+                <!--<img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="">-->
+                <!--<span class="nav-bookmark__count"></span>-->
+            <!--</a>-->
 
             <i id="burger-menu" class="discover-uni-nav__burger-menu fas fa-bars"></i>
             <i id="close-menu" class="discover-uni-nav__close-menu fas fa-times"></i>
@@ -86,40 +86,37 @@
                 Cymraeg
             </a>
         </div>
-        {% for item in page.menu %}
-            {% if item.sub_items %}
-                <div class="discover-uni-nav__mobile-accordion">
-                    <div class="discover-uni-nav__mobile-accordion-header">
-                        <p class="discover-uni-nav__mobile-accordion-title">
-                            {{ item.label }}
-                        </p>
 
-                        <div class="expand">
-                            <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand {{ item.label }} drop down menu">
-                        </div>
+        <!--{% for item in page.menu %}-->
+            <!--{% if item.sub_items %}-->
+                <!--<div class="discover-uni-nav__mobile-accordion">-->
+                    <!--<div class="discover-uni-nav__mobile-accordion-header">-->
+                        <!--<p class="discover-uni-nav__mobile-accordion-title">-->
+                            <!--{{ item.label }}-->
+                        <!--</p>-->
 
-                        <div class="collapse">
-                            <img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}" alt="collapse {{ item.label }} drop down menu">
-                        </div>
-                    </div>
+                        <!--<div class="expand">-->
+                            <!--<img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand {{ item.label }} drop down menu">-->
+                        <!--</div>-->
 
-                    <div class="discover-uni-nav__mobile-accordion-body">
-                        {% for sub_item in item.sub_items %}
-                            <a class="discover-uni-nav__mobile-accordion-body-link" href="{{ sub_item.url }}">
-                                {{ sub_item.label }}
-                            </a>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% else %}
-                <a class="discover-uni-nav__mobile-link" href="{{ item.url }}">
-                    {{ item.label }}
+                        <!--<div class="collapse">-->
+                            <!--<img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}" alt="collapse {{ item.label }} drop down menu">-->
+                        <!--</div>-->
+                    <!--</div>-->
 
-                    {% if item.label == 'Course search' %}
-                        <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
-                    {% endif %}
-                </a>
-            {% endif %}
-        {% endfor %}
+                    <!--<div class="discover-uni-nav__mobile-accordion-body">-->
+                        <!--{% for sub_item in item.sub_items %}-->
+                            <!--<a class="discover-uni-nav__mobile-accordion-body-link" href="{{ sub_item.url }}">-->
+                                <!--{{ sub_item.label }}-->
+                            <!--</a>-->
+                        <!--{% endfor %}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--{% else %}-->
+                <!--<a class="discover-uni-nav__mobile-link" href="{{ item.url }}">-->
+                    <!--{{ item.label }}-->
+                <!--</a>-->
+            <!--{% endif %}-->
+        <!--{% endfor %}-->
     </div>
 </nav>

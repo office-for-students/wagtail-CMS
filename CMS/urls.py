@@ -9,6 +9,7 @@ from wagtail.documents import urls as wagtaildocs_urls
 from . import welsh_urls
 
 from courses import urls as courses_urls
+from home import views as home_views
 from institutions import urls as institution_urls
 
 from core import views as core_views
@@ -17,9 +18,15 @@ from coursefinder import views as coursefinder_views
 from courses import views as course_views
 
 urlpatterns = [
+    url(r'^widget/', include('widget.urls')),
+    url(r'^Widget/', include('widget.urls')),
+    url(r'^admin/', include(wagtailadmin_urls)),
+    url(r'^static/(?P<path>.*)$', home_views.statics),
+    url(r'cy/', include(welsh_urls)),
+    url(r'^.*/$', home_views.holding_page),
+    url(r'^$', home_views.holding_page),
     url(r'^django-admin/', admin.site.urls),
 
-    url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
@@ -29,13 +36,10 @@ urlpatterns = [
     url(r'^narrow-search/$', coursefinder_views.narrow_search, name='narrow_search'),
     url(r'^course-finder/results/$', coursefinder_views.course_finder_results, name='course_finder_results'),
 
-    url(r'^widget/', include('widget.urls')),
-    url(r'^Widget/', include('widget.urls')),
     url(r'^course-details/', include(courses_urls)),
     url(r'^institution-details/', include(institution_urls)),
     url(r'^course-comparison/', course_views.compare_courses),
 
-    url(r'(?P<language>[\w\-]+?)/', include(welsh_urls)),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags discover_uni_tags sass_tags %}
+
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+    <link href="{% sass_src 'scss/home.scss' %}" rel="stylesheet" type="text/css" >
+{% endblock extra_css %}
+
+{% block content %}
+    <div class="home">
+        <div class="discover-uni-container">
+            <h1 class="header">
+                Coming soon …
+            </h1>
+
+            <div class="intro-text">
+                <p><strong>Discover Uni will launch on 12 September</strong></p>
+
+                <p>It’s a new website from the Department for the Economy in NI, the Higher Education Funding Council for Wales, the Office for Students in England, and the Scottish Funding Council.</p>
+
+                <p>Discover Uni is designed to be simple. It can help you:</p>
+                <ul>
+                    <li>Decide if uni is right for you</li>
+
+                    <li>Choose what and where to study</li>
+
+                    <li>Find and compare courses</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}
