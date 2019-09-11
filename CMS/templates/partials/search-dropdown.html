@@ -1,7 +1,9 @@
 {% load discover_uni_tags %}
 
 <div class="search-dropdown">
-    <input id="{{field_name}}" class='selection-field' type="text" name="{{field_name}}">
+    <select id="{{field_name}}" class="selection-field" name="{{field_name}}">
+        <option id="{{field_name}}-na" value=""></option>
+    </select>
 
     <div class='search-field'>
         <input type="text" class="search-field-input" name="{{field_name}}_search" placeholder="{{placeholder}}" autocomplete="off">

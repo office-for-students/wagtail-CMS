@@ -23,7 +23,7 @@
 
         loadSubjectData: function() {
             var that = this;
-            if (sessionStorage.getItem("subjectJSON") === null) {
+            if (localStorage.getItem("subjectJSON") === null) {
                 $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
                     result.sort(function(a, b){
                         if (a.englishname < b.englishname) { return -1; }
@@ -31,12 +31,12 @@
                         return 0;
                     });
 
-                    sessionStorage.setItem("subjectJSON", JSON.stringify(result));
+                    localStorage.setItem("subjectJSON", JSON.stringify(result));
 
                     that.subjectData = result;
                 })
             } else {
-                this.subjectData = JSON.parse(sessionStorage.getItem("subjectJSON"));
+                this.subjectData = JSON.parse(localStorage.getItem("subjectJSON"));
             }
             this.initialiseSelectors();
         },
@@ -46,34 +46,39 @@
                 var item = this.subjectData[i];
 
                 if (item.level === "1") {
-                    if (this.initialSelection && this.initialSelection[0].indexOf(item.code) !== -1) {
-                        this.subjectAreaSelector.append(`<option value='${item.code}' selected>${item.englishname}</option>`);
-                    } else {
-                        this.subjectAreaSelector.append(`<option value='${item.code}'>${item.englishname}</option>`);
-                    }
+                    var selected = this.initialSelection && this.initialSelection[0].indexOf(item.code) !== -1;
+                    this.subjectAreaSelector.append(this.createOption(item.code, item.englishname, selected));
                 }
 
                 if (item.level === "2") {
-                    if (this.initialSelection && this.initialSelection[0].indexOf(item.code) !== -1) {
-                        this.subjectSelector.append(`<option value='${item.code}' selected>${item.englishname}</option>`);
+                    var selected = this.initialSelection && this.initialSelection[0].indexOf(item.code) !== -1;
+                    this.subjectSelector.append(this.createOption(item.code, item.englishname, selected));
+                    if (selected) {
                         this.toggleCodeSelector();
-                    } else {
-                        this.subjectSelector.append(`<option value='${item.code}'>${item.englishname}</option>`);
                     }
                 }
 
                 if (item.level === "3") {
-                    if (this.initialSelection && this.initialSelection.length === 1 && this.initialSelection[0] === item.code) {
-                        this.subjectCodeSelector.append(`<option data-code='${item.code}' value='${item.code}' selected>${item.englishname}</option>`);
-                        this.toggleCodeSelector();
-                    } else {
-                        this.subjectCodeSelector.append(`<option data-code='${item.code}' value='${item.code}'>${item.englishname}</option>`);
-                    }
+                    var selected = this.initialSelection && this.initialSelection.length === 1 && this.initialSelection[0] === item.code;
+                    this.subjectCodeSelector.append(this.createOption(item.code, item.englishname, selected, item.code));
                 }
             }
 
             this.subjectOptions = this.subjectSelector.find('option');
             this.subjectCodeOptions = this.subjectCodeSelector.find('option');
+        },
+
+        createOption: function(value, text, selected, data) {
+            var option = document.createElement("option");
+            option.setAttribute("value", value);
+            option.innerHTML = text;
+            if (data) {
+                option.setAttribute('data-code', data);
+            }
+            if (selected) {
+                option.setAttribute('selected', true);
+            }
+            return option;
         },
 
         startWatchers: function() {
