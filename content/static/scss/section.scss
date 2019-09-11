@@ -123,10 +123,24 @@
 
                     h3 {
                         @include s-heading--bold-mixin();
+
+                        margin-bottom: 5px;
+                        margin-top: 2em;
+
+                        &:first-child {
+                            margin-top: 0px;
+                        }
                     }
 
                     h4 {
                         @include xs-heading--bold-mixin();
+
+                        margin-bottom: 5px;
+                        margin-top: 2em;
+
+                        &:first-child {
+                            margin-top: 0px;
+                        }
                     }
 
                     p {
