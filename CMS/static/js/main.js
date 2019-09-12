@@ -1,39 +1,5 @@
-$(document).ready(function() {
-    $.urlParam = function (name) {
-        var results = new RegExp('[\?&]' + name + '=([^&#]*)')
-                          .exec(window.location.search);
-
-        return (results !== null) ? results[1] || 0 : false;
-    }
-
-    // Course finder
-
-    if (localStorage.getItem("uniJSON") === null) {
-        $.getJSON("/static/jsonfiles/institutions.json", function(result) {
-            result.sort(function(a, b){
-                if(a.order_by_name < b.order_by_name) { return -1; }
-                if(a.order_by_name > b.order_by_name) { return 1; }
-                return 0;
-            });
-
-            localStorage.setItem("uniJSON", JSON.stringify(result));
-        })
-    }
-
-    if (localStorage.getItem("subjectJSON") === null) {
-        $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
-            result.sort(function(a, b){
-                if (a.englishname < b.englishname) { return -1; }
-                if (a.englishname > b.englishname) { return 1; }
-                return 0;
-            });
-
-            localStorage.setItem("subjectJSON", JSON.stringify(result));
-
-
-// ACCORDION
 (function ($) {
-
+    // ACCORDION
     var Accordion = function(wrapper) {
         this.wrapper = $(wrapper);
         this.setup();
@@ -91,24 +57,12 @@ $(document).ready(function() {
         }
     }
 
-    function init() {
-        var accordions = $('[class$=accordion]');
-        for (var i = 0; i < accordions.length; i++) {
-            new Accordion(accordions[i]);
-        }
-    }
 
-    $(document).on('page:load', init);
-    $(init)
-}(jQuery))
-
-
-// BOOKMARK NAV
-(function ($) {
+    // BOOKMARK NAV
     var NavBookMarkBtn = function(btn) {
-        this.btn = $(btn);
-        this.setup();
-    }
+    this.btn = $(btn);
+    this.setup();
+}
 
     NavBookMarkBtn.prototype = {
         setup: function() {
@@ -134,21 +88,8 @@ $(document).ready(function() {
         }
     }
 
-    function init() {
-        var bookmarkBtns = $('.nav-bookmark__count');
-        for (var i = 0; i < bookmarkBtns.length; i++) {
-            new NavBookMarkBtn(bookmarkBtns[i]);
-        }
-    }
 
-    $(document).on('page:load', init);
-    $(init)
-}(jQuery))
-
-
-// COOKIE BANNER
-(function ($) {
-
+    // COOKIE BANNER
     var CookieBanner = function(wrapper) {
         this.wrapper = $(wrapper);
         this.setup();
@@ -180,21 +121,8 @@ $(document).ready(function() {
         }
     }
 
-    function init() {
-        var cookieBanner = $('.cookie-banner');
-        for (var i = 0; i < cookieBanner.length; i++) {
-            new CookieBanner(cookieBanner[i]);
-        }
-    }
 
-    $(document).on('page:load', init);
-    $(init)
-}(jQuery))
-
-
-// DROPDOWN
-(function($){
-
+    // DROPDOWN
     var PageDropdowns = function(dropdowns) {
         this.dropdownsList = $(dropdowns);
         this.setup()
@@ -359,19 +287,8 @@ $(document).ready(function() {
         }
     }
 
-    function init(){
-        var dropdowns = $('[class$=selector]');
-        new PageDropdowns(dropdowns);
-    }
 
-    $(document).on('page:load', init);
-    $(init)
-}(jQuery))
-
-
-//FEEDBACK FORM
-(function ($) {
-
+    //FEEDBACK FORM
     var FeedbackForm = function(wrapper) {
         this.wrapper = $(wrapper);
         this.setup();
@@ -449,21 +366,8 @@ $(document).ready(function() {
         }
     }
 
-    function init() {
-        var feedbackForm = $('.feedback-form__wrapper');
-        for (var i = 0; i < feedbackForm.length; i++) {
-            new FeedbackForm(feedbackForm[i]);
-        }
-    }
 
-    $(document).on('page:load', init);
-    $(init)
-}(jQuery))
-
-
-//NAV BAR
-(function ($) {
-
+    //NAV BAR
     var NavBar = function(wrapper) {
         this.wrapper = $(wrapper);
         this.setup();
@@ -494,21 +398,8 @@ $(document).ready(function() {
         }
     }
 
-    function init() {
-        var navBar = $('.discover-uni-nav');
-        for (var i = 0; i < navBar.length; i++) {
-            new NavBar(navBar[i]);
-        }
-    }
 
-    $(document).on('page:load', init);
-    $(init)
-}(jQuery))
-
-
-// SEARCH DROPDOWN
-(function($){
-
+    // SEARCH DROPDOWN
     var SearchDropdown = function(container) {
         this.container = $(container);
         this.minSearchTermLength = 3;
@@ -652,21 +543,8 @@ $(document).ready(function() {
         }
     }
 
-    function init(){
-        var searchDropdowns = $('.search-dropdown');
-        for (var i = 0; i < searchDropdowns.length; i++) {
-            new SearchDropdown(searchDropdowns[i]);
-        }
-    }
 
-    $(document).on('page:load', init);
-    $(init)
-}(jQuery))
-
-
-// SUBJECT CHOOSER
-(function($){
-
+    // SUBJECT CHOOSER
     var SubjectSelector = function(wrapper) {
         this.wrapper = $(wrapper);
         this.setup()
@@ -795,22 +673,85 @@ $(document).ready(function() {
     }
 
     function init() {
+        $.urlParam = function (name) {
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                              .exec(window.location.search);
+
+            return (results !== null) ? results[1] || 0 : false;
+        }
+
+        // Course finder
+
+        if (localStorage.getItem("uniJSON") === null) {
+            $.getJSON("/static/jsonfiles/institutions.json", function(result) {
+                result.sort(function(a, b){
+                    if(a.order_by_name < b.order_by_name) { return -1; }
+                    if(a.order_by_name > b.order_by_name) { return 1; }
+                    return 0;
+                });
+
+                localStorage.setItem("uniJSON", JSON.stringify(result));
+            })
+        }
+
+        if (localStorage.getItem("subjectJSON") === null) {
+            $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
+                result.sort(function(a, b){
+                    if (a.englishname < b.englishname) { return -1; }
+                    if (a.englishname > b.englishname) { return 1; }
+                    return 0;
+                });
+
+                localStorage.setItem("subjectJSON", JSON.stringify(result));
+            })
+        }
+
+        var accordions = $('[class$=accordion]');
+        for (var i = 0; i < accordions.length; i++) {
+            new Accordion(accordions[i]);
+        }
+
+        var bookmarkBtns = $('.nav-bookmark__count');
+        for (var i = 0; i < bookmarkBtns.length; i++) {
+            new NavBookMarkBtn(bookmarkBtns[i]);
+        }
+
+        var cookieBanner = $('.cookie-banner');
+        for (var i = 0; i < cookieBanner.length; i++) {
+            new CookieBanner(cookieBanner[i]);
+        }
+
+        var dropdowns = $('[class$=selector]');
+        new PageDropdowns(dropdowns);
+
+        var feedbackForm = $('.feedback-form__wrapper');
+        for (var i = 0; i < feedbackForm.length; i++) {
+            new FeedbackForm(feedbackForm[i]);
+        }
+
+        var navBar = $('.discover-uni-nav');
+        for (var i = 0; i < navBar.length; i++) {
+            new NavBar(navBar[i]);
+        }
+
+        var searchDropdowns = $('.search-dropdown');
+        for (var i = 0; i < searchDropdowns.length; i++) {
+            new SearchDropdown(searchDropdowns[i]);
+        }
+
         var selectorsWrapper = $('.subject-picker');
         for (var i = 0; i < selectorsWrapper.length; i++) {
             new SubjectSelector(selectorsWrapper[0]);
         }
+
+        // GOOGLE  ANALYTICS
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-147556197-1');
     }
 
     $(document).on('page:load', init);
     $(init)
 }(jQuery))
-
-
-
-// GOOGLE  ANALYTICS
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'UA-147556197-1');
-
