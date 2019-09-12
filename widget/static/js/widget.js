@@ -1,27 +1,27 @@
 var CONTENT = {
     'satisfactionIntro': {
         'en-gb': 'of students were satisfied overall with their course.',
-        'cy-gb': ''
+        'cy-gb':"cyfran y myfyrwyr a oedd yn fodlon â'u cwrs ar y cyfan."
     },
     'explanationIntro': {
         'en-gb': 'of students agreed staff were good at explaining things.',
-        'cy-gb': ''
+        'cy-gb': 'cyfran y myfyrwyr sydd yn cytuno bod staff yn dda am esbonio pethau.'
     },
     'workIntro': {
         'en-gb': 'in work or doing further study six months after finishing.',
-        'cy-gb': ''
+        'cy-gb':"mewn gwaith neu'n astudio ymhellach o fewn chwe mis ar ôl gorffen. "
     },
     'ctaLead1': {
         'en-gb': 'For ',
-        'cy-gb': ''
+        'cy-gb': 'Am'
     },
     'ctaLead2': {
         'en-gb': 'more',
-        'cy-gb': ''
+        'cy-gb': 'fwy'
     },
     'ctaLead3': {
         'en-gb': ' official course information visit.',
-        'cy-gb': ''
+        'cy-gb': 'o wybodaeth swyddogol am y cwrs, ewch i'
     },
     'logo': {
         'en-gb': '{{domain_name}}/static/images/logos/widget_logo_english.svg',
@@ -29,65 +29,66 @@ var CONTENT = {
     },
     'cta': {
         'en-gb': 'See course data',
-        'cy-gb': ''
+        'cy-gb':"Gweld data'r cwrs"
     },
     'noDataIntro': {
         'en-gb': 'To see official information about this course and others visit Discover Uni.',
-        'cy-gb': ''
+        'cy-gb': 'I weld gwybodaeth swyddogol am y cwrs hwn a chyrsiau eraill, ewch i Darganfod y Brifysgol.'
     },
     'noDataCtaLead1': {
         'en-gb': 'Make an ',
-        'cy-gb': ''
+        'cy-gb': 'Dewis '
     },
     'noDataCtaLead2': {
         'en-gb': 'informed',
-        'cy-gb': ''
+        'cy-gb': 'yn'
     },
     'noDataCtaLead3': {
         'en-gb': ' choice.',
-        'cy-gb': ''
+        'cy-gb': 'ddeallus.'
     },
     'noDataCta': {
         'en-gb': 'See course info',
-        'cy-gb': ''
+        'cy-gb': 'Gweld gwybodaeth y cwrs'
     },
     'placement': {
         'en-gb': 'Placement year',
-        'cy-gb': ''
+        'cy-gb': 'Blwyddyn ar leoliad'
     },
     'placementOptional': {
         'en-gb': 'Placement year optional',
-        'cy-gb': ''
+        'cy-gb': 'Blwyddyn ar leoliad yn ddewisol'
     },
     'foundation': {
         'en-gb': 'Foundation year',
-        'cy-gb': ''
+        'cy-gb': 'Blwyddyn sylfaen'
     },
     'foundationOptional': {
         'en-gb': 'Foundation year optional',
-        'cy-gb': ''
+        'cy-gb': 'Blwyddyn sylfaen yn ddewisol'
     },
     'abroad': {
         'en-gb': 'Year abroad',
-        'cy-gb': ''
+        'cy-gb': 'Blwyddyn dramor'
     },
     'abroadOptional': {
         'en-gb': 'Year abroad optional',
-        'cy-gb': ''
+        'cy-gb': 'Blwyddyn dramor yn ddewisol'
     },
     'dataFor': {
         'en-gb': 'Data for: ',
-        'cy-gb': ''
+        'cy-gb': 'Data ar gyfer:'
     },
     'dataForAggregated': {
         'en-gb': 'Data for courses in ',
-        'cy-gb': ''
+        'cy-gb': 'Data ar gyfer cyrsiau'
     },
     'at': {
         'en-gb': ' at ',
-        'cy-gb': ''
+        'cy-gb': 'yn'
     }
 }
+
 
 var MODES = {
     'fulltime': 1,

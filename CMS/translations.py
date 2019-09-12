@@ -1,47 +1,75 @@
 DICT = {
     'a_level_similar': {
         'en': 'A-levels, Advanced Highers or similar',
-        'cy': ''
+        'cy': 'Safonau Uwch, Cymwysterau Advanced Higher neu debyg'
     },
     'about': {
         'en': 'About',
-        'cy': ''
+        'cy': 'Ynghylch'
     },
     'access_course': {
         'en': 'Completed Access course',
-        'cy': ''
+        'cy': 'Wedi cwblhau cwrs mynediad'
     },
     'accommodation': {
         'en': 'Accommodation costs and information',
-        'cy': ''
+        'cy': 'Costau a gwybodaeth am lety'
     },
     'across_uk': {
         'en': 'across the UK',
-        'cy': ''
+        'cy': 'ar draws y DU'
     },
     'address': {
         'en': 'Address',
-        'cy': ''
+        'cy': 'Cyfeiriad'
+    },
+    'Administrative occupations: Communications': {
+        'en': 'Administrative occupations: Communications',
+        'cy': 'Galwedigaethau gweinyddol: Cyfathrebu'
+    },
+    'Administrative occupations: Finance': {
+        'en': 'Administrative occupations: Finance',
+        'cy': 'Galwedigaethau gweinyddol: Cyllid'
+    },
+    'Administrative occupations: General': {
+        'en': 'Administrative occupations: General',
+        'cy': 'Galwedigaethau gweinyddol: Cyffredinol'
+    },
+    'Administrative occupations: Government and related organisations': {
+        'en': 'Administrative occupations: Government and related organisations',
+        'cy': 'Galwedigaethau gweinyddol: Llywodraeth a sefydliadau cysylltiedig'
+    },
+    'Administrative occupations: Records': {
+        'en': 'Administrative occupations: Records',
+        'cy': 'Galwedigaethau gweinyddol: Cofnodion'
     },
     'apply_filters': {
         'en': 'Apply filters',
         'cy': ''
     },
+    'Architects, town planners, surveyors': {
+        'en': 'Architects, town planners, surveyors',
+        'cy': 'Penseiri, cynllunwyr tref, syrfewyr'
+    },
+    'Artistic and literary occupations': {
+        'en': 'Artistic and literary occupations',
+        'cy': 'Galwedigaethau artistig a llenyddol'
+    },
     'assessment_method': {
         'en': 'How the course is assessed',
-        'cy': ''
+        'cy': "Dull asesu'r cwrs"
     },
     'baccalaureate': {
         'en': 'Baccalaureate',
-        'cy': ''
+        'cy': 'Bagloriaeth'
     },
     'back': {
         'en': 'Back',
-        'cy': ''
+        'cy': 'Yn ôl'
     },
     'begin': {
         'en': 'Begin',
-        'cy': ''
+        'cy': 'Dechrau'
     },
     'bookmark_course': {
         'en': 'Bookmark course',
@@ -53,11 +81,23 @@ DICT = {
     },
     'break_from_studies': {
         'en': 'Are taking a break from their studies',
-        'cy': ''
+        'cy': 'Yn cymryd egwyl o astudio'
+    },
+    'Business and finance associate professionals': {
+        'en': 'Business and finance associate professionals',
+        'cy': 'Gweithwyr proffesiynol ym maes busnes a chyllid cysylltiol'
+    },
+    'Business and statistical professionals': {
+        'en': 'Business and statistical professionals',
+        'cy': 'Gweithwyr proffesiynol busnes ac ystadegol'
+    },
+    'Caring personal service occupations': {
+        'en': 'Caring personal service occupations',
+        'cy': 'Galwedigaethau gofal a gwasanaeth personol'
     },
     'chart_label_explained': {
         'en': 'Chart labels explained',
-        'cy': ''
+        'cy': "Esboniad ynghylch labeli'r siart"
     },
     'clear_all': {
         'en': 'Clear all',
@@ -65,19 +105,23 @@ DICT = {
     },
     'close': {
         'en': 'Close',
-        'cy': ''
+        'cy': 'Cau'
     },
     'compare_course': {
         'en': 'Compare course',
-        'cy': ''
+        'cy': "Cymharu'r cwrs"
     },
     'compare_courses': {
         'en': 'compare courses',
         'cy': ''
     },
     'completed_course': {
-        'en': 'Have completed the course (started in the final year due to prior study)',
-        'cy': ''
+        'en': 'Have completed the course',
+        'cy': "Wedi cwblhau'r cwrs"
+    },
+    'Conservation associate professionals': {
+        'en': 'Conservation associate professionals',
+        'cy': 'Gweithwyr proffesiynol ym maes cadwraeth'
     },
     'cookie_message': {
         'en': 'This website uses cookies to store information on your computer.',
@@ -95,13 +139,17 @@ DICT = {
         'en': '2019 Copyright. All rights reserved.',
         'cy': ''
     },
+    'Corporate managers and senior officials': {
+        'en': 'Corporate managers and senior officials',
+        'cy': 'Rheolwyr corfforaethol ac uwch swyddogion'
+    },
     'costs': {
         'en': 'Course costs',
-        'cy': ''
+        'cy': "Costau'r cwrs"
     },
     'costs_and_support': {
         'en': 'Costs and support',
-        'cy': ''
+        'cy': 'Costau a chymorth'
     },
     'countries': {
         'en': 'Countries',
@@ -113,23 +161,23 @@ DICT = {
     },
     'course_details': {
         'en': 'Course details',
-        'cy': ''
+        'cy': 'Manylion y cwrs'
     },
     'course_finder': {
         'en': 'Course Finder',
-        'cy': ''
+        'cy': 'Cael Hyd i Gwrs'
     },
     'course_length_not_available': {
         'en': 'Length of course is not available',
-        'cy': ''
+        'cy': 'Nid yw hyd y cwrs ar gael'
     },
     'course_name': {
         'en': 'Course name',
-        'cy': ''
+        'cy': "Enw'r cwrs"
     },
     'course_page': {
         'en': 'Course page',
-        'cy': ''
+        'cy': 'Tudalen y cwrs'
     },
     'course_removed': {
         'en': 'Course removed from ',
@@ -137,7 +185,7 @@ DICT = {
     },
     'course_search': {
         'en': 'Course search',
-        'cy': ''
+        'cy': 'Chwilio am Gwrs '
     },
     'course_too_many': {
         'en': 'is the maximum number of bookmarks.',
@@ -145,7 +193,11 @@ DICT = {
     },
     'courses': {
         'en': 'course(s)',
-        'cy': ''
+        'cy': 'cwrs/cyrsiau'
+    },
+    'Customer service occupations': {
+        'en': 'Customer service occupations',
+        'cy': 'Galwedigaethau gwasanaeth cwsmeriaid'
     },
     'data_for': {
         'en': 'Data for',
@@ -153,33 +205,37 @@ DICT = {
     },
     'degree': {
         'en': 'Degree',
-        'cy': ''
+        'cy': 'Gradd'
+    },
+    'Design associate professionals': {
+        'en': 'Design associate professionals',
+        'cy': 'Gweithwyr proffesiynol ym maes Dylunio'
     },
     'distance_learning': {
         'en': 'Distance learning',
-        'cy': ''
+        'cy': 'Dysgu o bell'
     },
     'distance_learning_values': {
         '0': {
             'en': 'Not Available',
-            'cy': ''
+            'cy': 'Ddim ar gael'
         },
         '1': {
             'en': 'Yes',
-            'cy': ''
+            'cy': 'Ydy'
         },
         '2': {
             'en': 'Optional',
-            'cy': ''
+            'cy': 'Dewisol'
         },
         'Course is availble other than by distance learning': {
             'en': 'Not Available',
-            'cy': ''
+            'cy': 'Ddim ar gael'
         }
     },
     'doing_further_study': {
         'en': 'Doing further study',
-        'cy': ''
+        'cy': 'Yn astudio ymhellach'
     },
     'dont_mind': {
         'en': "I don't mind",
@@ -187,15 +243,27 @@ DICT = {
     },
     'dont_narrow': {
         'en': "don't narrow search",
-        'cy': ''
+        'cy': "peidio cyfyngu'r chwiliad"
+    },
+    'Draughtspersons and building inspectors': {
+        'en': 'Draughtspersons and building inspectors',
+        'cy': 'Drafftsmyn ac arolygwyr adeiladu'
+    },
+    'Elementary occupations': {
+        'en': 'Elementary occupations',
+        'cy': 'Galwedigaethau elfennol'
     },
     'employment_details': {
-        'en': "Employment information",
-        'cy': ''
+        'en': 'Employment information',
+        'cy': 'Gwybodaeth am gyflogaeth'
     },
     'england': {
         'en': 'England',
-        'cy': ''
+        'cy': 'Lloegr'
+    },
+    'Engineering professionals': {
+        'en': 'Engineering professionals',
+        'cy': 'Gweithwyr proffesiynol ym maes Peirianneg'
     },
     'enhanced_degree': {
         'en': 'Enhanced first degree (e.g. MEng)',
@@ -203,7 +271,7 @@ DICT = {
     },
     'enter_3_characters': {
         'en': 'Please enter at least 3 characters to search',
-        'cy': ''
+        'cy': 'Rhowch 3 nod o leiaf er mwyn chwilio'
     },
     'enter_postcode': {
         'en': 'Enter postcode',
@@ -211,23 +279,27 @@ DICT = {
     },
     'feedback_error': {
         'en': 'Sorry something went wrong submitting your feedback, please try again later.',
-        'cy': ''
+        'cy': "Mae'n ddrwg gennym, aeth rhywbeth o'i le wrth ichi roi adborth. Rhowch gynnig arall ymhen ychydig."
     },
     'feedback_form': {
         'en': 'Feedback: is this page useful to you?',
-        'cy': ''
+        'cy': "Adborth: a yw'r dudalen hon yn ddefnyddiol i chi?"
     },
     'filter': {
         'en': 'Filter',
-        'cy': ''
+        'cy': 'Hidlo'
     },
     'financial_support_details': {
         'en': 'Financial support',
-        'cy': ''
+        'cy': 'Cymorth ariannol'
+    },
+    'Financial institution and office managers': {
+        'en': 'Financial institution and office managers',
+        'cy': 'Rheolwyr sefydliad ariannol a swyddfa'
     },
     'find_out_more': {
         'en': 'Find out more',
-        'cy': ''
+        'cy': 'Mwy o wybodaeth'
     },
     'first_degree': {
         'en': 'First degree (e.g. BA, BSc)',
@@ -235,7 +307,7 @@ DICT = {
     },
     'foundation_course': {
         'en': 'Foundation course',
-        'cy': ''
+        'cy': 'Cwrs sylfaen'
     },
     'foundation_degree': {
         'en': 'Foundation degree (e.g. FD, FDEd)',
@@ -243,11 +315,27 @@ DICT = {
     },
     'foundation_year': {
         'en': 'Foundation year',
-        'cy': ''
+        'cy': 'Blwyddyn sylfaen'
     },
     'full_time': {
         'en': 'Full time',
-        'cy': ''
+        'cy': 'Llawnamser'
+    },
+    'Functional managers': {
+        'en': 'Functional managers',
+        'cy': 'Rheolwyr gweithredol'
+    },
+    'Health and social services managers': {
+        'en': 'Health and social services managers',
+        'cy': 'Rheolwyr Iechyd a gwasanaethau cymdeithasol'
+    },
+    'Health associate professionals': {
+        'en': 'Health associate professionals',
+        'cy': 'Gweithwyr iechyd proffesiynol cysylltiol'
+    },
+    'Health professionals': {
+        'en': 'Health professionals',
+        'cy': 'Gweithwyr iechyd proffesiynol'
     },
     'hnc': {
         'en': 'Higher National Certificate (HNC)',
@@ -259,59 +347,95 @@ DICT = {
     },
     'how_improve': {
         'en': 'How should we improve this page?',
-        'cy': ''
+        'cy': "Sut y dylem wella'r dudalen hon?"
     },
     'how_useful': {
         'en': 'How was this page useful to you?',
-        'cy': ''
+        'cy': 'A oedd y dudalen hon yn ddefnyddiol i chi?'
     },
     'info_advice': {
         'en': 'Info and advice',
-        'cy': ''
+        'cy': 'Gwybodaeth a chyngor'
+    },
+    'Information and communication technology professionals': {
+        'en': 'Information and communication technology professionals',
+        'cy': 'Gweithwyr proffesiynol ym maes technoleg gwybodaeth a chyfathrebu'
     },
     'institution': {
         'en': 'Institution',
-        'cy': ''
+        'cy': 'Sefydliad'
+    },
+    'IT service delivery occupations': {
+        'en': 'IT service delivery occupations',
+        'cy': 'Galwedigaethau darparu gwasanaethau TG'
     },
     'learning_and_teaching_methods': {
         'en': 'How the course is taught',
-        'cy': ''
+        'cy': "Dull addysgu'r cwrs"
+    },
+    'Legal associate professionals': {
+        'en': 'Legal associate professionals',
+        'cy': 'Gweithwyr proffesiynol cysylltiol Cyfreithiol'
+    },
+    'Legal professionals': {
+        'en': 'Legal professionals',
+        'cy': 'Gweithwyr cyfreithiol proffesiynol'
     },
     'left_lower_qualification': {
         'en': 'Have left with a lower qualification',
-        'cy': ''
+        'cy': 'Wedi gadael gyda chymhwyster is'
     },
     'left_no_qualification': {
         'en': 'Have left without a qualification',
-        'cy': ''
+        'cy': 'Wedi gadael heb gymhwyster'
+    },
+    'Leisure and other personal service occupations': {
+        'en': 'Leisure and other personal service occupations',
+        'cy': 'Galwedigaethau hamdden a gwasanaethau personol eraill'
     },
     'length': {
         'en': 'Length',
-        'cy': ''
+        'cy': 'Hyd'
+    },
+    'Librarians and related professionals': {
+        'en': 'Librarians and related professionals',
+        'cy': 'Llyfrgellwyr a gweithwyr proffesiynol cysylltiedig'
     },
     'location': {
         'en': 'Location',
-        'cy': ''
+        'cy': 'Lleoliad'
     },
     'locations': {
         'en': 'Locations',
-        'cy': ''
+        'cy': 'Lleoliadau'
     },
     'manage_list': {
         'en': 'Manage course list',
         'cy': ''
     },
+    'Managers and proprieters in agriculture and services': {
+        'en': 'Managers and proprieters in agriculture and services',
+        'cy': 'Rheolwyr a pherchnogion mewn amaethyddiaeth a gwasanaethau amaethyddol'
+    },
+    'Managers in distribution, storage and retailing': {
+        'en': 'Managers in distribution, storage and retailing',
+        'cy': 'Rheolwyr mewn dosbarthu, storio a manwerthu'
+    },
     'miles': {
         'en': 'miles',
-        'cy': ''
+        'cy': 'milltiroedd'
+    },
+    'Media associate professionals': {
+        'en': 'Media associate professionals',
+        'cy': 'Gweithwyr proffesiynol ym maes Cyfryngau'
     },
     'more_pages_before': {
         'en': 'More pages available before',
-        'cy': ''
+        'cy': 'Mwy o dudalennau ar gael cyn '
     },
     'more_pages_after': {
         'en': 'More pages available after',
-        'cy': ''
+        'cy': 'Mwy o dudalennau ar gael ar ôl'
     },
     'narrow_location': {
         'en': 'Narrow location',
@@ -319,15 +443,15 @@ DICT = {
     },
     'near_your_home': {
         'en': 'to near your home',
-        'cy': ''
+        'cy': 'agos at adref'
     },
     'next': {
         'en': 'Next',
-        'cy': ''
+        'cy': 'Nesaf'
     },
     'next_page': {
         'en': 'Next page',
-        'cy': ''
+        'cy': 'Y dudalen nesaf'
     },
     'no': {
         'en': 'No',
@@ -335,11 +459,11 @@ DICT = {
     },
     'no_qualifications': {
         'en': 'No / unknown prior qualifications',
-        'cy': ''
+        'cy': 'Dim cymwysterau blaenorol/cymwysterau anhysbys'
     },
     'no_results_found': {
         'en': 'No results found',
-        'cy': ''
+        'cy': 'Ni chafwyd canlyniad.'
     },
     'not_enough': {
         'en': 'Add another to compare courses.',
@@ -347,27 +471,27 @@ DICT = {
     },
     'not_professional_or_managerial': {
         'en': 'Not in a professional or managerial job',
-        'cy': ''
+        'cy': 'Ddim mewn swydd broffesiynol neu reoli'
     },
     'northern_ireland': {
         'en': 'Northern Ireland',
-        'cy': ''
+        'cy': 'Gogledd Iwerddon'
     },
     'now_working': {
         'en': 'Now working',
-        'cy': ''
+        'cy': 'Yn gweithio bellach'
     },
     'number_of_results': {
         'en': '<strong>%s</strong> course(s) from <strong>%s</strong> provider(s)',
-        'cy': ''
+        'cy': 'Ceir <strong>%s</strong> cwrs gan <strong>%s</strong> darparydd'
     },
     'other': {
         'en': 'Other',
-        'cy': ''
+        'cy': 'Arall '
     },
     'other_higher_qualifications': {
         'en': 'Different higher education qualification',
-        'cy': ''
+        'cy': 'Cymhwyster addysg uwch gwahanol'
     },
     'other_undergraduate': {
         'en': 'Other undergraduate (e.g. CertHE, DipHE)',
@@ -375,23 +499,51 @@ DICT = {
     },
     'part_time': {
         'en': 'Part time',
-        'cy': ''
+        'cy': 'Rhan-amser'
     },
     'placement_year': {
         'en': 'Placement year',
-        'cy': ''
+        'cy': 'Blwyddyn ar leoliad'
     },
     'previous_page': {
         'en': 'Previous page',
-        'cy': ''
+        'cy': 'Y dudalen flaenorol'
+    },
+    'Process, plant and machine operatives': {
+        'en': 'Process, plant and machine operatives',
+        'cy': 'Gweithredwyr prosesau, offer a pheiriannau'
+    },
+    'Production managers': {
+        'en': 'Production managers',
+        'cy': 'Rheolwyr cynhyrchu'
     },
     'professional_or_managerial': {
         'en': 'In a professional or managerial job',
-        'cy': ''
+        'cy': 'Mewn swydd broffesiynol neu reoli'
+    },
+    'Protective service occupations': {
+        'en': 'Protective service occupations',
+        'cy': 'Galwedigaethau gwasanaeth amddiffynnol'
+    },
+    'Protective service officers': {
+        'en': 'Protective service officers',
+        'cy': 'Swyddogion y gwasanaeth amddiffynnol'
+    },
+    'Public service and other associate professionals': {
+        'en': 'Public service and other associate professionals',
+        'cy': 'Gwasanaethau cyhoeddus a gweithwyr proffesiynol cysylltiol eraill'
+    },
+    'Public service professionals': {
+        'en': 'Public service professionals',
+        'cy': 'Gweithwyr proffesiynol ym maes gwasanaeth cyhoeddus'
     },
     'qualification_type': {
         'en': 'Qualification type',
         'cy': ''
+    },
+    'Quality and customer care managers': {
+        'en': 'Quality and customer care managers',
+        'cy': 'Rheolwyr ansawdd a gofal cwsmeriaid'
     },
     'remove_course': {
         'en': 'Remove course',
@@ -401,33 +553,61 @@ DICT = {
         'en': 'To remove courses go to',
         'cy': ''
     },
+    'Research professionals': {
+        'en': 'Research professionals',
+        'cy': 'Gweithwyr proffesiynol ym maes Ymchwil'
+    },
     'results': {
         'en': 'Results',
-        'cy': ''
+        'cy': 'Canlyniadau'
+    },
+    'Sales and related associate professionals': {
+        'en': 'Sales and related associate professionals',
+        'cy': 'Gweithwyr proffesiynol sy''n gysylltiedig â Gwerthu'
+    },
+    'Sales assistants and retail cashiers': {
+        'en': 'Sales assistants and retail cashiers',
+        'cy': 'Cynorthwywyr gwerthu ac arianwyr manwerthu'
+    },
+    'Sales related occupations': {
+        'en': 'Sales related occupations',
+        'cy': 'Galwedigaethau Gwerthu cysylltiedig'
     },
     'sandwich_year': {
         'en': 'Sandwich year',
-        'cy': ''
+        'cy': 'Blwyddyn ryngosod'
+    },
+    'Science and engineering technicians': {
+        'en': 'Science and engineering technicians',
+        'cy': 'Technegwyr gwyddoniaeth a pheirianneg'
+    },
+    'Science professionals': {
+        'en': 'Science professionals',
+        'cy': 'Gweithwyr proffesiynol gwyddoniaeth'
     },
     'scotland': {
         'en': 'Scotland',
-        'cy': ''
+        'cy': 'Yr Alban'
     },
     'search': {
         'en': 'Search',
-        'cy': ''
+        'cy': 'Chwilio'
     },
     'search_again': {
         'en': 'Search again',
-        'cy': ''
+        'cy': 'Chwilio eto'
     },
     'search_within': {
         'en': 'Search within',
-        'cy': ''
+        'cy': 'Chwilio yn '
+    },
+    'Secretarial and related occupations': {
+        'en': 'Secretarial and related occupations',
+        'cy': 'Galwedigaethau ysgrifenyddol a chysylltiedig'
     },
     'see_courses': {
         'en': 'See courses',
-        'cy': ''
+        'cy': 'Gweld y cyrsiau'
     },
     'select_all': {
         'en': 'Select all',
@@ -439,35 +619,47 @@ DICT = {
     },
     'send_message': {
         'en': 'Send message',
-        'cy': ''
+        'cy': 'Anfon neges'
     },
     'show_all': {
         'en': 'Show all',
-        'cy': ''
+        'cy': 'Dangos popeth'
     },
     'similar_courses_elsewhere': {
         'en': 'View similar courses at <strong>other</strong> unis',
-        'cy': ''
+        'cy': 'Gweld cyrsiau tebyg mewn prifysgolion  <strong>eraill</strong> '
     },
     'similar_courses_here': {
         'en': 'View similar courses at <strong>this</strong> uni',
-        'cy': ''
+        'cy': 'Gweld cyrsiau tebyg yn y brifysgol <strong>hon</strong> '
     },
     'site_logo': {
-        'en': 'Discover Uni',
-        'cy': ''
+        'en': '<strong>Discover</strong> Uni',
+        'cy': '<strong>Darganfod</strong> y Brifysgol'
+    },
+    'Skilled trades occupations': {
+        'en': 'Skilled trades occupations',
+        'cy': 'Galwedigaethau crefftau medrus'
     },
     'skip': {
         'en': 'Skip',
-        'cy': ''
+        'cy': 'anwybyddu'
+    },
+    'Social welfare associate professionals': {
+        'en': 'Social welfare associate professionals',
+        'cy': 'Gweithwyr proffesiynol ym maes lles cymdeithasol'
     },
     'specific_town_city': {
         'en': 'to a specific town/city',
-        'cy': ''
+        'cy': 'i dref/ddinas benodol'
     },
     'specific_uni': {
         'en': 'to a specific uni',
-        'cy': ''
+        'cy': 'i brifysgol benodol'
+    },
+    'Sports and fitness occupations': {
+        'en': 'Sports and fitness occupations',
+        'cy': 'Chwaraeon a galwedigaethau ffitrwydd'
     },
     'start': {
         'en': 'Start',
@@ -475,11 +667,11 @@ DICT = {
     },
     'still_on_course': {
         'en': 'Are still on the course',
-        'cy': ''
+        'cy': 'Yn dal ar y cwrs '
     },
     'student_unions': {
         'en': 'Student Unions',
-        'cy': ''
+        'cy': 'Undebau Myfyrwyr'
     },
     'study_abroad_year': {
         'en': 'Study abroad year',
@@ -487,31 +679,43 @@ DICT = {
     },
     'study_and_working': {
         'en': 'Studying and working',
-        'cy': ''
+        'cy': 'Astudio a gweithio '
     },
     'study_mode': {
         'en': 'Study mode',
-        'cy': ''
+        'cy': 'Modd astudio'
     },
     'subject': {
         'en': 'Subject',
-        'cy': ''
+        'cy': 'Pwnc '
     },
     'subject_area': {
         'en': 'Subject area',
-        'cy': ''
+        'cy': 'Maes pwnc'
+    },
+    'Teaching professionals': {
+        'en': 'Teaching professionals',
+        'cy': 'Gweithwyr proffesiynol ym maes dysgu'
     },
     'telephone': {
         'en': 'Telephone',
-        'cy': ''
+        'cy': 'Ffôn'
+    },
+    'Therapists': {
+        'en': 'Therapists',
+        'cy': 'Therapyddion'
+    },
+    'Transport associate professionals': {
+        'en': 'Transport associate professionals',
+        'cy': 'Gweithwyr proffesiynol  ym maes Cludiant'
     },
     'unemployed': {
         'en': 'Unemployed',
-        'cy': ''
+        'cy': 'Di-waith'
     },
     'uni_or_college': {
         'en': 'University or college',
-        'cy': ''
+        'cy': 'Prifysgol neu goleg'
     },
     'uni_college': {
         'en': 'Universities / colleges',
@@ -519,19 +723,19 @@ DICT = {
     },
     'unknown': {
         'en': 'Unknown',
-        'cy': ''
+        'cy': 'Anhysbys'
     },
     'unknown_job_type': {
         'en': 'In an unknown job type',
-        'cy': ''
+        'cy': 'Mewn swydd anhysbys'
     },
     'wales': {
         'en': 'Wales',
-        'cy': ''
+        'cy': 'Cymru'
     },
     'website': {
         'en': 'Website',
-        'cy': ''
+        'cy': 'Gwefan'
     },
     'with_placement': {
         'en': 'With placement year',
@@ -559,23 +763,154 @@ DICT = {
     },
     'work_placement_year': {
         'en': 'Work placement year',
-        'cy': ''
+        'cy': 'Blwyddyn lleoliad gwaith'
     },
     'year_abroad': {
         'en': 'Year abroad',
-        'cy': ''
+        'cy': 'Blwyddyn dramor'
     },
     'year_course': {
         'en': 'year course',
-        'cy': ''
+        'cy': 'Cwrs blwyddyn'
     },
     'yes': {
         'en': 'Yes',
-        'cy': ''
+        'cy': 'Ydy'
     },
     'you_can': {
         'en': 'You can',
         'cy': ''
+    },
+    'I received sufficient preparatory information prior to my placement(s)': {
+        'en': 'I received sufficient preparatory information prior to my placement(s)',
+        'cy': 'Fe dderbyniais wybodaeth ddigonol i fy mharatoi ar gyfer lleoliad(au) gwaith'
+    },
+    'I was allocated placement(s) suitable for my course': {
+        'en': 'I was allocated placement(s) suitable for my course',
+        'cy': 'Pennwyd lleoliad(au) gwaith addas ar gyfer fy nghwrs'
+    },
+    'I received appropriate supervision on placement(s)': {
+        'en': 'I received appropriate supervision on placement(s)',
+        'cy': 'Fe dderbyniais oruchwyliaeth briodol yn ystod fy lleoliad gwaith'
+    },
+    'I was given opportunities to meet my required practice learning outcomes/competences': {
+        'en': 'I was given opportunities to meet my required practice learning outcomes/competences',
+        'cy': "Cefais gyfleoedd i ddiwallu fy nghanlyniadau / medrau dysgu tra 'roeddwn ar leoliad gwaith"
+    },
+    'My contribution during placement(s) as part of a clinical team was valued': {
+        'en': 'My contribution during placement(s) as part of a clinical team was valued',
+        'cy': "Gosodwyd gwerth ar fy nghyfraniad fel rhan o'r tîm clinigol yn ystod fy lleoliad(au) gwaith"
+    },
+    'My practice supervisor(s) understood how my placement(s) related to the broader requirements of my course': {
+        'en': 'My practice supervisor(s) understood how my placement(s) related to the broader requirements of my course',
+        'cy': "Roedd fy ngoruchwyliwr yn ystod fy nghyfnod ymarfer yn deall sut 'roedd fy lleoliad(au) gwaith yn perthyn i ofynion ehangach fy nghwrs"
+    },
+    'Staff are good at explaining things': {
+        'en': 'Staff are good at explaining things',
+        'cy': "Mae'r staff yn dda am esbonio pethau"
+    },
+    'Staff have made the subject interesting': {
+        'en': 'Staff have made the subject interesting',
+        'cy': "Mae'r staff wedi gwneud y pwnc yn ddiddorol"
+    },
+    'The course is intellectually stimulating': {
+        'en': 'The course is intellectually stimulating',
+        'cy': "Mae'r cwrs yn symbylu'r deallusrwydd"
+    },
+    'My course has challenged me to achieve my best work': {
+        'en': 'My course has challenged me to achieve my best work',
+        'cy': 'Mae fy nghwrs wedi fy herio i i wneud fy ngwaith gorau'
+    },
+    'My course has provided me with opportunities to explore ideas or concepts in depth': {
+        'en': 'My course has provided me with opportunities to explore ideas or concepts in depth',
+        'cy': "Mae fy nghwrs wedi rhoi cyfleoedd i mi i archwilio syniadau neu gysyniadau’n fanwl"
+    },
+    'My course has provided me with opportunities to bring information and ideas together from different topics': {
+        'en': 'My course has provided me with opportunities to bring information and ideas together from different topics',
+        'cy': 'Mae fy nghwrs wedi rhoi cyfleoedd i mi i ddod â gwybodaeth a syniadau at ei gilydd o wahanol bynciau'
+    },
+    'My course has provided me with opportunities to apply what I have learnt': {
+        'en': 'My course has provided me with opportunities to apply what I have learnt',
+        'cy': "Mae fy nghwrs wedi rhoi cyfleoedd i mi i ddefnyddio’r hyn rydw i wedi’i ddysgu"
+    },
+    'The criteria used in marking have been clear in advance': {
+        'en': 'The criteria used in marking have been clear in advance',
+        'cy': "Mae'r meini prawf a ddefnyddir ar gyfer marcio wedi cael eu gwneud yn eglur ymlaen llaw"
+    },
+    'Marking and assessment has been fair': {
+        'en': 'Marking and assessment has been fair',
+        'cy': 'Mae’r marcio a’r asesu wedi bod yn deg'
+    },
+    'Feedback on my work has been timely': {
+        'en': 'Feedback on my work has been timely',
+        'cy': 'Mae’r adborth ar fy ngwaith i wedi bod yn amserol'
+    },
+    'I have received helpful comments on my work': {
+        'en': 'I have received helpful comments on my work',
+        'cy': 'Rydw i wedi cael sylwadau defnyddiol ar fy ngwaith'
+    },
+    'I have been able to contact staff when I needed to': {
+        'en': 'I have been able to contact staff when I needed to',
+        'cy': 'Rydw i wedi gallu cysylltu â staff pan oeddwn i angen gwneud hynny'
+    },
+    'I have received sufficient advice and guidance in relation to my course': {
+        'en': 'I have received sufficient advice and guidance in relation to my course',
+        'cy': 'Rydw i wedi cael digon o gyngor ac arweiniad mewn perthynas â fy nghwrs'
+    },
+    'Good advice was available when I needed to make study choices on my course': {
+        'en': 'Good advice was available when I needed to make study choices on my course',
+        'cy': 'Roedd cyngor da ar gael i mi pan oeddwn i eisiau gwneud dewisiadau astudio ar fy nghwrs'
+    },
+    'The course is well organised and running smoothly': {
+        'en': 'The course is well organised and running smoothly',
+        'cy': "Mae'r cwrs wedi’i drefnu'n dda ac mae'n rhedeg yn hwylus"
+    },
+    'The timetable works efficiently for me': {
+        'en': 'The timetable works efficiently for me',
+        'cy': 'Mae’r amserlen yn gweithio’n effeithlon i mi'
+    },
+    'Any changes in the course or teaching have been communicated effectively': {
+        'en': 'Any changes in the course or teaching have been communicated effectively',
+        'cy': "Mae unrhyw newidiadau o ran y cwrs neu'r addysgu wedi cael eu cyfathrebu'n effeithiol"
+    },
+    'The IT resources and facilities provided have supported my learning well': {
+        'en': 'The IT resources and facilities provided have supported my learning well',
+        'cy': 'Mae’r adnoddau a’r cyfleusterau TG sydd wedi’u darparu wedi cefnogi fy nysgu i’n dda'
+    },
+    'The library resources (e.g. books, online services and learning spaces) have supported my learning well': {
+        'en': 'The library resources (e.g. books, online services and learning spaces) have supported my learning well',
+        'cy': 'Mae’r adnoddau llyfrgell (e.e. llyfrau, gwasanaethau ar-lein a gofod dysgu) wedi cefnogi fy nysgu i’n dda'
+    },
+    'I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to': {
+        'en': 'I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to',
+        'cy': 'Rydw i wedi gallu cael mynediad at adnoddau penodol i gwrs (e.e. offer, cyfleusterau, meddalwedd, casgliadau) pan oedd angen i mi wneud hynny'
+    },
+    'I feel part of a community of staff and students' : {
+        'en': 'I feel part of a community of staff and students',
+        'cy': 'Rydw i’n teimlo’n rhan o gymuned o staff a myfyrwyr'
+    },
+    'I have had the right opportunities to work with other students as part of my course': {
+        'en': 'I have had the right opportunities to work with other students as part of my course',
+        'cy': 'Rydw i wedi cael cyfleoedd priodol i weithio gyda myfyrwyr eraill fel rhan o fy nghwrs'
+    },
+    'I have had the right opportunities to provide feedback on my course': {
+        'en': 'I have had the right opportunities to provide feedback on my course',
+        'cy': 'Rydw i wedi cael cyfleoedd priodol i roi adborth ar fy nghwrs'
+    },
+    "Staff value students' views and opinions about the course": {
+        'en': "Staff value students' views and opinions about the course",
+        'cy': 'Mae’r staff yn gwerthfawrogi barn a safbwynt y myfyrwyr am y cwrs'
+    },
+    "It is clear how students' feedback on the course has been acted on": {
+        'en': "It is clear how students' feedback on the course has been acted on",
+        'cy': 'Mae’n glir sut gweithredwyd fel ymateb i adborth y myfyrwyr ar y cwrs'
+    },
+    "The students' union (association or guild) effectively represents students' academic interests": {
+        'en': "The students' union (association or guild) effectively represents students' academic interests",
+        'cy': 'Mae undeb y myfyrwyr (cymdeithas neu urdd) yn cynrychioli buddiannau academaidd y myfyrwyr yn effeithiol'
+    },
+    'Overall, I am satisfied with the quality of the course': {
+        'en': 'Overall, I am satisfied with the quality of the course',
+        'cy': 'Ar y cyfan, rydw i’n fodlon gydag ansawdd y cwrs'
     }
 }
-
