@@ -213,6 +213,12 @@
 
                 color: $gradient-light-green;
             }
+
+            &-selector {
+                .select-items {
+                    width: calc(100vw - 60px);
+                }
+            }
         }
 
         &__lead {

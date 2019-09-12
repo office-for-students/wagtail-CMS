@@ -244,8 +244,9 @@ class Course:
                 for satisfaction_stats in stats.get('nss'):
                     self.satisfaction_stats.append(SatisfactionStatistics(satisfaction_stats, self.display_language))
                 self.nhs_satisfaction_stats = []
-                for data_set in stats.get('nhs_nss'):
-                    self.nhs_satisfaction_stats.append(SatisfactionStatistics(data_set, self.display_language))
+                if stats.get('nhs_nss'):
+                    for data_set in stats.get('nhs_nss'):
+                        self.nhs_satisfaction_stats.append(SatisfactionStatistics(data_set, self.display_language))
                 self.entry_stats = []
                 for data_set in stats.get('entry'):
                     self.entry_stats.append(EntryStatistics(data_set, self.display_language))
@@ -579,12 +580,11 @@ class EntryStatistics:
                 self.subject_english = subject_data.get('english_label')
                 self.subject_welsh = subject_data.get('welsh_label')
 
-            unavailable_data = data_obj.get('unavailable')
-            if unavailable_data:
-                self.unavailable_code = unavailable_data.get('code')
-                self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
-                self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
-                self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            unavailable_data = fallback_to(data_obj.get('unavailable'), {})
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+            self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
+            self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
 
     def display_subject_name(self):
         if self.display_language == enums.languages.ENGLISH:
@@ -633,12 +633,11 @@ class ContinuationStatistics:
                 self.subject_english = subject_data.get('english_label')
                 self.subject_welsh = subject_data.get('welsh_label')
 
-            unavailable_data = data_obj.get('unavailable')
-            if unavailable_data:
-                self.unavailable_code = unavailable_data.get('code')
-                self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
-                self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
-                self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            unavailable_data = fallback_to(data_obj.get('unavailable'), {})
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+            self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
+            self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
 
     @property
     def continuing_or_complete(self):
@@ -696,12 +695,11 @@ class EmploymentStatistics:
                 self.subject_english = subject_data.get('english_label')
                 self.subject_welsh = subject_data.get('welsh_label')
 
-            unavailable_data = data_obj.get('unavailable')
-            if unavailable_data:
-                self.unavailable_code = unavailable_data.get('code')
-                self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
-                self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
-                self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            unavailable_data = fallback_to(data_obj.get('unavailable'), {})
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+            self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
+            self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
 
     @property
     def work_and_or_study(self):
@@ -753,12 +751,11 @@ class JobTypeStatistics:
                 self.subject_english = subject_data.get('english_label')
                 self.subject_welsh = subject_data.get('welsh_label')
 
-            unavailable_data = data_obj.get('unavailable')
-            if unavailable_data:
-                self.unavailable_code = unavailable_data.get('code')
-                self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
-                self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
-                self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            unavailable_data = fallback_to(data_obj.get('unavailable'), {})
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+            self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
+            self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
 
     def display_subject_name(self):
         if self.display_language == enums.languages.ENGLISH:
@@ -820,12 +817,11 @@ class SalaryStatistics:
                 self.subject_english_label = ''
                 self.subject_welsh_label = ''
 
-            unavailable_data = data_obj.get('unavailable')
-            if unavailable_data:
-                self.unavailable_code = unavailable_data.get('code')
-                self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
-                self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
-                self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            unavailable_data = fallback_to(data_obj.get('unavailable'), {})
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+            self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
+            self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
 
     def display_subject_label(self):
         if self.display_language == enums.languages.ENGLISH:
@@ -871,13 +867,11 @@ class LEOStatistics:
                 self.subject_english_label = fallback_to(subject.get("english_label"), '')
                 self.subject_welsh_label = fallback_to(subject.get("welsh_label"), '')
 
-            self.unavailable_reason = None
-            unavailable_data = data_obj.get('unavailable')
-            if unavailable_data:
-                self.unavailable_code = unavailable_data.get('code')
-                self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
-                self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
-                self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            unavailable_data = fallback_to(data_obj.get('unavailable'), {})
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+            self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
+            self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
 
     def display_subject_label(self):
         if self.display_language == enums.languages.ENGLISH:
@@ -934,12 +928,11 @@ class SatisfactionStatistics:
         self.subject_english = subject_data.get('english_label', '')
         self.subject_welsh = subject_data.get('welsh_label', '')
 
-        unavailable_data = data_obj.get('unavailable')
-        if unavailable_data:
-            self.unavailable_code = unavailable_data.get('code')
-            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
-            self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
-            self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+        unavailable_data = fallback_to(data_obj.get('unavailable'), {})
+        self.unavailable_code = unavailable_data.get('code')
+        self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+        self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
+        self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
 
     def show_teaching_stats(self):
         return self.question_1.show_data_point or self.question_2.show_data_point or \
@@ -1027,12 +1020,11 @@ class TariffStatistics:
                 self.subject_english = subject_data.get('english_label')
                 self.subject_welsh = subject_data.get('welsh_label')
 
-            unavailable_data = tariff_data.get('unavailable')
-            if unavailable_data:
-                self.unavailable_code = unavailable_data.get('code')
-                self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
-                self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
-                self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            unavailable_data = fallback_to(tariff_data.get('unavailable'), {})
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+            self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
+            self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
 
     def show_stats(self):
         return self.tariffs
@@ -1135,12 +1127,11 @@ class JobList:
             self.subject_english = subject_data.get('english_label', '')
             self.subject_welsh = subject_data.get('welsh_label', '')
 
-            unavailable_data = jobs_data.get('unavailable')
-            if unavailable_data:
-                self.unavailable_code = unavailable_data.get('code')
-                self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
-                self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
-                self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            unavailable_data = fallback_to(jobs_data.get('unavailable'), {})
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+            self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
+            self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
 
             if jobs_data.get('list'):
                 for job in jobs_data.get('list'):

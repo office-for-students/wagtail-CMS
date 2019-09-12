@@ -1,5 +1,4 @@
 from django.db.models.fields import TextField
-from wagtail.core.models import Page
 from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
@@ -17,6 +16,9 @@ class ContentLandingPage(DiscoverUniBasePage):
         FieldPanel('intro'),
         StreamFieldPanel('options', classname="full")
     ]
+
+    def get_breadcrumbs(self):
+        return self.get_ancestors().live()[1:]
 
 
 class Section(DiscoverUniBasePage):
@@ -46,6 +48,9 @@ class Section(DiscoverUniBasePage):
         StreamFieldPanel('lateral_links')
     ]
 
+    def get_breadcrumbs(self):
+        return self.get_ancestors().live()[1:]
+
 
 class FlatContent(DiscoverUniBasePage):
     content_body = RichTextField(blank=True, features=['h1', 'h2', 'h3', 'bold', 'italic', 'embed', 'link',
@@ -53,3 +58,6 @@ class FlatContent(DiscoverUniBasePage):
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('content_body'),
     ]
+
+    def get_breadcrumbs(self):
+        return self.get_ancestors().live()[1:]
