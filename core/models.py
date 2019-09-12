@@ -31,6 +31,9 @@ class DiscoverUniBasePage(Page):
     def is_english(self):
         return self.get_language() == 'en'
 
+    def is_welsh(self):
+        return self.get_language() == 'cy'
+
     def get_english_url(self):
         from home.models import HomePage
         if self.is_english():

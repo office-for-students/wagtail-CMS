@@ -28,9 +28,9 @@ def results(request, language=enums.languages.ENGLISH):
     comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
     bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
 
-    full_path = '%s?%s' % (request.path, request.environ.get('QUERY_STRING'))
-    welsh_url = '/cy' + full_path if language == enums.languages.ENGLISH else full_path
-    english_url = full_path.replace('/cy/', '/')
+    query_string = request.environ.get('QUERY_STRING')
+    welsh_url = page.get_welsh_url + query_string
+    english_url = page.get_english_url + query_string
 
     context = {
         'page': page,
@@ -85,9 +85,8 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
     bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
 
-    full_path = '%s?%s' % (request.path, request.environ.get('QUERY_STRING'))
-    welsh_url = '/cy' + full_path if language == enums.languages.ENGLISH else full_path
-    english_url = full_path.replace('/cy/', '/')
+    welsh_url = page.get_welsh_url
+    english_url = page.get_english_url
 
     if not page:
         return render(request, '404.html')

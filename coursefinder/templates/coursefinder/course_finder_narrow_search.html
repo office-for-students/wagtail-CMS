@@ -10,7 +10,7 @@
 {% endblock page_js %}
 
 {% block question %}
-    <form action="{% url 'narrow_search' %}" method="post" class="course-finder-content__question-form">
+    <form action="{% if page.is_welsh %}/cy{% url 'narrow_search' %}" method="post" class="course-finder-content__question-form">
         {% csrf_token %}
 
         <fieldset>
