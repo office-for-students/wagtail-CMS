@@ -119,7 +119,8 @@
                     this.compareEnough.hide();
                 } else {
                     this.compareNotEnough.hide();
-                    this.compareEnough.show();
+//                    TODO Re-enable once compare works
+//                    this.compareEnough.show();
                 }
                 this.compareAdd.show();
                 this.compareRemove.hide();

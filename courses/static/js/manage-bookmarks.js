@@ -73,7 +73,6 @@
 
     CourseBlock.prototype = {
         setup: function() {
-            console.log('initialising course',  this.course);
             this.courseNameSpan = this.wrapper.find('.bookmark__course-name');
             this.lengthBlock = this.wrapper.find('.bookmark__course-info.length');
             this.lengthUnknown = this.lengthBlock.find('.unknown');

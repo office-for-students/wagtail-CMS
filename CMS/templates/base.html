@@ -28,23 +28,22 @@
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/cookie-banner.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/subject_chooser.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/bookmark-nav.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/dropdown.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/search-dropdown.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/feedback-form.js' %}"></script>
-        {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
-        {% endblock %}
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+         <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+         <!--<script type="text/javascript" src="{% static 'js/cookie-banner.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/subject_chooser.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/nav.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/bookmark-nav.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/dropdown.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/search-dropdown.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/feedback-form.js' %}"></script>-->
+         {% block extra_js %}
+             {# Override this in templates to add extra javascript #}
+         {% endblock %}
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147556197-1"></script>
-        <script type="text/javascript" src="{% static 'js/google-analytics-tracking.js' %}"></script>
-
+         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147556197-1"></script>
+         <!--<script type="text/javascript" src="{% static 'js/google-analytics-tracking.js' %}"></script>-->
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
