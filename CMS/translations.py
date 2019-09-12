@@ -780,7 +780,7 @@ DICT = {
     'you_can': {
         'en': 'You can',
         'cy': ''
-    }
+    },
     'I received sufficient preparatory information prior to my placement(s)': {
         'en': 'I received sufficient preparatory information prior to my placement(s)',
         'cy': 'Fe dderbyniais wybodaeth ddigonol i fy mharatoi ar gyfer lleoliad(au) gwaith'
@@ -796,7 +796,7 @@ DICT = {
     'I was given opportunities to meet my required practice learning outcomes/competences': {
         'en': 'I was given opportunities to meet my required practice learning outcomes/competences',
         'cy': "Cefais gyfleoedd i ddiwallu fy nghanlyniadau / medrau dysgu tra 'roeddwn ar leoliad gwaith"
-    }
+    },
     'My contribution during placement(s) as part of a clinical team was valued': {
         'en': 'My contribution during placement(s) as part of a clinical team was valued',
         'cy': "Gosodwyd gwerth ar fy nghyfraniad fel rhan o'r tîm clinigol yn ystod fy lleoliad(au) gwaith"
