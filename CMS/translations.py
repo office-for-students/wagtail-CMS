@@ -39,10 +39,6 @@ DICT = {
         'en': 'Administrative occupations: Government and related organisations',
         'cy': 'Galwedigaethau gweinyddol: Llywodraeth a sefydliadau cysylltiedig'
     },
-    'Administrative occupations: Government and related organisations': {
-        'en': 'Administrative occupations: Government and related organisations',
-        'cy': 'Galwedigaethau gweinyddol: Llywodraeth a sefydliadau cysylltiedig'
-    },
     'Administrative occupations: Records': {
         'en': 'Administrative occupations: Records',
         'cy': 'Galwedigaethau gweinyddol: Cofnodion'
