@@ -129,10 +129,12 @@
                     {% endif %}
                 </div>
 
-                <a class="institution-details__tef-report-link"
-                   href="https://www.officeforstudents.org.uk/advice-and-guidance/teaching/tef-outcomes/#/tefoutcomes/provider/{{institution.pub_ukprn}}">
-                    {{page.tef_report_link}}
-                </a>
+                {% if not institution.tef_is_not_participate %}
+                    <a class="institution-details__tef-report-link"
+                       href="https://www.officeforstudents.org.uk/advice-and-guidance/teaching/tef-outcomes/#/tefoutcomes/provider/{{institution.pub_ukprn}}">
+                        {{page.tef_report_link}}
+                    </a>
+                {% endif %}
 
                 <div class="explanation">
                     <div class="explanation__link">
