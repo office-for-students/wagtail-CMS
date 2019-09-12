@@ -143,7 +143,7 @@ DICT = {
         'en': 'Corporate managers and senior officials',
         'cy': 'Rheolwyr corfforaethol ac uwch swyddogion'
     },
-    'costs': {
+    'course_cost': {
         'en': 'Course costs',
         'cy': "Costau'r cwrs"
     },
