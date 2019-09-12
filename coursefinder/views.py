@@ -29,8 +29,8 @@ def results(request, language=enums.languages.ENGLISH):
     bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
 
     query_string = request.environ.get('QUERY_STRING')
-    welsh_url = page.get_welsh_url + query_string
-    english_url = page.get_english_url + query_string
+    welsh_url = page.get_welsh_url() + query_string
+    english_url = page.get_english_url() + query_string
 
     context = {
         'page': page,
@@ -85,8 +85,8 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
     bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
 
-    welsh_url = page.get_welsh_url
-    english_url = page.get_english_url
+    welsh_url = page.get_welsh_url()
+    english_url = page.get_english_url()
 
     if not page:
         return render(request, '404.html')
