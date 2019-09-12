@@ -708,7 +708,7 @@ DICT = {
     'Transport associate professionals': {
         'en': 'Transport associate professionals',
         'cy': 'Gweithwyr proffesiynol  ym maes Cludiant'
-    },'
+    },
     'unemployed': {
         'en': 'Unemployed',
         'cy': 'Di-waith'
