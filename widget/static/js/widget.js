@@ -1,91 +1,91 @@
 var CONTENT = {
     'satisfactionIntro': {
-        'en-GB': 'of students were satisfied overall with their course.',
-        'cy-GB':"cyfran y myfyrwyr a oedd yn fodlon â'u cwrs ar y cyfan."
+        'en-gb': 'of students were satisfied overall with their course.',
+        'cy-gb':"cyfran y myfyrwyr a oedd yn fodlon â'u cwrs ar y cyfan."
     },
     'explanationIntro': {
-        'en-GB': 'of students agreed staff were good at explaining things.',
-        'cy-GB': 'cyfran y myfyrwyr sydd yn cytuno bod staff yn dda am esbonio pethau.'
+        'en-gb': 'of students agreed staff were good at explaining things.',
+        'cy-gb': 'cyfran y myfyrwyr sydd yn cytuno bod staff yn dda am esbonio pethau.'
     },
     'workIntro': {
-        'en-GB': 'in work or doing further study six months after finishing.',
-        'cy-GB':"mewn gwaith neu'n astudio ymhellach o fewn chwe mis ar ôl gorffen. "
+        'en-gb': 'in work or doing further study six months after finishing.',
+        'cy-gb':"mewn gwaith neu'n astudio ymhellach o fewn chwe mis ar ôl gorffen. "
     },
     'ctaLead1': {
-        'en-GB': 'For ',
-        'cy-GB': 'Am'
+        'en-gb': 'For ',
+        'cy-gb': 'Am'
     },
     'ctaLead2': {
-        'en-GB': 'more',
-        'cy-GB': 'fwy'
+        'en-gb': 'more',
+        'cy-gb': 'fwy'
     },
     'ctaLead3': {
-        'en-GB': ' official course information visit.',
-        'cy-GB': 'o wybodaeth swyddogol am y cwrs, ewch i'
+        'en-gb': ' official course information visit.',
+        'cy-gb': 'o wybodaeth swyddogol am y cwrs, ewch i'
     },
     'logo': {
         'en-gb': '{{domain_name}}/static/images/logos/widget_logo_english.svg',
         'cy-gb': '{{domain_name}}/static/images/logos/widget_logo_welsh.svg'
     },
     'cta': {
-        'en-GB': 'See course data',
-        'cy-GB':"Gweld data'r cwrs"
+        'en-gb': 'See course data',
+        'cy-gb':"Gweld data'r cwrs"
     },
     'noDataIntro': {
-        'en-GB': 'To see official information about this course and others visit Discover Uni.',
-        'cy-GB': 'I weld gwybodaeth swyddogol am y cwrs hwn a chyrsiau eraill, ewch i Darganfod y Brifysgol.'
+        'en-gb': 'To see official information about this course and others visit Discover Uni.',
+        'cy-gb': 'I weld gwybodaeth swyddogol am y cwrs hwn a chyrsiau eraill, ewch i Darganfod y Brifysgol.'
     },
     'noDataCtaLead1': {
-        'en-GB': 'Make an ',
-        'cy-GB': 'Dewis '
+        'en-gb': 'Make an ',
+        'cy-gb': 'Dewis '
     },
     'noDataCtaLead2': {
-        'en-GB': 'informed',
-        'cy-GB': 'yn'
+        'en-gb': 'informed',
+        'cy-gb': 'yn'
     },
     'noDataCtaLead3': {
-        'en-GB': ' choice.',
-        'cy-GB': 'ddeallus.'
+        'en-gb': ' choice.',
+        'cy-gb': 'ddeallus.'
     },
     'noDataCta': {
-        'en-GB': 'See course info',
-        'cy-GB': 'Gweld gwybodaeth y cwrs'
+        'en-gb': 'See course info',
+        'cy-gb': 'Gweld gwybodaeth y cwrs'
     },
     'placement': {
-        'en-GB': 'Placement year',
-        'cy-GB': 'Blwyddyn ar leoliad'
+        'en-gb': 'Placement year',
+        'cy-gb': 'Blwyddyn ar leoliad'
     },
     'placementOptional': {
-        'en-GB': 'Placement year optional',
-        'cy-GB': 'Blwyddyn ar leoliad yn ddewisol'
+        'en-gb': 'Placement year optional',
+        'cy-gb': 'Blwyddyn ar leoliad yn ddewisol'
     },
     'foundation': {
-        'en-GB': 'Foundation year',
-        'cy-GB': 'Blwyddyn sylfaen'
+        'en-gb': 'Foundation year',
+        'cy-gb': 'Blwyddyn sylfaen'
     },
     'foundationOptional': {
-        'en-GB': 'Foundation year optional',
-        'cy-GB': 'Blwyddyn sylfaen yn ddewisol'
+        'en-gb': 'Foundation year optional',
+        'cy-gb': 'Blwyddyn sylfaen yn ddewisol'
     },
     'abroad': {
-        'en-GB': 'Year abroad',
-        'cy-GB': 'Blwyddyn dramor'
+        'en-gb': 'Year abroad',
+        'cy-gb': 'Blwyddyn dramor'
     },
     'abroadOptional': {
-        'en-GB': 'Year abroad optional',
-        'cy-GB': 'Blwyddyn dramor yn ddewisol'
+        'en-gb': 'Year abroad optional',
+        'cy-gb': 'Blwyddyn dramor yn ddewisol'
     },
     'dataFor': {
-        'en-GB': 'Data for: ',
-        'cy-GB': 'Data ar gyfer:'
+        'en-gb': 'Data for: ',
+        'cy-gb': 'Data ar gyfer:'
     },
     'dataForAggregated': {
-        'en-GB': 'Data for courses in ',
-        'cy-GB': 'Data ar gyfer cyrsiau'
+        'en-gb': 'Data for courses in ',
+        'cy-gb': 'Data ar gyfer cyrsiau'
     },
     'at': {
-        'en-GB': ' at ',
-        'cy-GB': 'yn'
+        'en-gb': ' at ',
+        'cy-gb': 'yn'
     }
 }
 
