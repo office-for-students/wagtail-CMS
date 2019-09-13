@@ -1,0 +1,2080 @@
+{
+    "version": 1,
+    "institutions": [
+        {
+            "alphabet": "a",
+            "name": "ABINGDON AND WITNEY COLLEGE",
+            "order_by_name": "abingdon and witney college"
+        },
+        {
+            "alphabet": "a",
+            "name": "AECC University College",
+            "order_by_name": "aecc university college"
+        },
+        {
+            "alphabet": "a",
+            "name": "All Nations Christian College",
+            "order_by_name": "all nations christian college"
+        },
+        {
+            "alphabet": "a",
+            "name": "Academy of Live and Recorded Arts",
+            "order_by_name": "academy of live and recorded arts"
+        },
+        {
+            "alphabet": "a",
+            "name": "ANGLIA RUSKIN UNIVERSITY HIGHER EDUCATION CORPORATION",
+            "order_by_name": "anglia ruskin university higher education corporation"
+        },
+        {
+            "alphabet": "a",
+            "name": "Arts Educational Schools",
+            "order_by_name": "arts educational schools"
+        },
+        {
+            "alphabet": "t",
+            "name": "The Arts University Bournemouth",
+            "order_by_name": "the arts university bournemouth"
+        },
+        {
+            "alphabet": "a",
+            "name": "ASKHAM BRYAN COLLEGE",
+            "order_by_name": "askham bryan college"
+        },
+        {
+            "alphabet": "b",
+            "name": "Buckinghamshire College Group",
+            "order_by_name": "buckinghamshire college group"
+        },
+        {
+            "alphabet": "b",
+            "name": "BARNET & SOUTHGATE COLLEGE",
+            "order_by_name": "barnet & southgate college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BARNSLEY COLLEGE",
+            "order_by_name": "barnsley college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BATH SPA UNIVERSITY",
+            "order_by_name": "bath spa university"
+        },
+        {
+            "alphabet": "b",
+            "name": "BEDFORD COLLEGE",
+            "order_by_name": "bedford college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BCA",
+            "order_by_name": "bca"
+        },
+        {
+            "alphabet": "b",
+            "name": "BEXHILL COLLEGE",
+            "order_by_name": "bexhill college"
+        },
+        {
+            "alphabet": "u",
+            "name": "UNIVERSITY COLLEGE BIRMINGHAM",
+            "order_by_name": "university college birmingham"
+        },
+        {
+            "alphabet": "b",
+            "name": "BISHOP AUCKLAND COLLEGE",
+            "order_by_name": "bishop auckland college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BISHOP BURTON COLLEGE",
+            "order_by_name": "bishop burton college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BLACKBURN COLLEGE",
+            "order_by_name": "blackburn college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BLACKPOOL AND THE FYLDE COLLEGE",
+            "order_by_name": "blackpool and the fylde college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BOSTON COLLEGE",
+            "order_by_name": "boston college"
+        },
+        {
+            "alphabet": "t",
+            "name": "The Bournemouth and Poole College",
+            "order_by_name": "the bournemouth and poole college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BOURNEMOUTH UNIVERSITY",
+            "order_by_name": "bournemouth university"
+        },
+        {
+            "alphabet": "b",
+            "name": "BRADFORD COLLEGE",
+            "order_by_name": "bradford college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BRIDGWATER AND TAUNTON COLLEGE",
+            "order_by_name": "bridgwater and taunton college"
+        },
+        {
+            "alphabet": "b",
+            "name": "UNIVERSITY OF BRIGHTON",
+            "order_by_name": "brighton"
+        },
+        {
+            "alphabet": "b",
+            "name": "BRISTOL BAPTIST COLLEGE",
+            "order_by_name": "bristol baptist college"
+        },
+        {
+            "alphabet": "b",
+            "name": "British College Of Osteopathic Medicine",
+            "order_by_name": "british college of osteopathic medicine"
+        },
+        {
+            "alphabet": "u",
+            "name": "UNIVERSITY COLLEGE OF OSTEOPATHY (THE)",
+            "order_by_name": "university college of osteopathy (the)"
+        },
+        {
+            "alphabet": "b",
+            "name": "BROCKENHURST COLLEGE",
+            "order_by_name": "brockenhurst college"
+        },
+        {
+            "alphabet": "l",
+            "name": "London South East Colleges",
+            "order_by_name": "london south east colleges"
+        },
+        {
+            "alphabet": "b",
+            "name": "BROOKLANDS COLLEGE",
+            "order_by_name": "brooklands college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BROOKSBY MELTON COLLEGE",
+            "order_by_name": "brooksby melton college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BRUNEL UNIVERSITY LONDON",
+            "order_by_name": "brunel university london"
+        },
+        {
+            "alphabet": "b",
+            "name": "BUCKINGHAMSHIRE NEW UNIVERSITY",
+            "order_by_name": "buckinghamshire new university"
+        },
+        {
+            "alphabet": "b",
+            "name": "BURNLEY COLLEGE",
+            "order_by_name": "burnley college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BURTON AND SOUTH DERBYSHIRE COLLEGE",
+            "order_by_name": "burton and south derbyshire college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BURY COLLEGE",
+            "order_by_name": "bury college"
+        },
+        {
+            "alphabet": "c",
+            "name": "CALDERDALE COLLEGE",
+            "order_by_name": "calderdale college"
+        },
+        {
+            "alphabet": "c",
+            "name": "CANTERBURY CHRIST CHURCH UNIVERSITY",
+            "order_by_name": "canterbury christ church university"
+        },
+        {
+            "alphabet": "c",
+            "name": "CAPEL MANOR COLLEGE",
+            "order_by_name": "capel manor college"
+        },
+        {
+            "alphabet": "c",
+            "name": "CARDINAL NEWMAN COLLEGE",
+            "order_by_name": "cardinal newman college"
+        },
+        {
+            "alphabet": "n",
+            "name": "UNIVERSITY OF NORTHUMBRIA AT NEWCASTLE",
+            "order_by_name": "northumbria at newcastle"
+        },
+        {
+            "alphabet": "c",
+            "name": "CHESTERFIELD COLLEGE",
+            "order_by_name": "chesterfield college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BATH COLLEGE",
+            "order_by_name": "bath college"
+        },
+        {
+            "alphabet": "c",
+            "name": "CITY OF BRISTOL COLLEGE",
+            "order_by_name": "city of bristol college"
+        },
+        {
+            "alphabet": "s",
+            "name": "SUNDERLAND COLLEGE",
+            "order_by_name": "sunderland college"
+        },
+        {
+            "alphabet": "u",
+            "name": "UNITED COLLEGES GROUP",
+            "order_by_name": "united colleges group"
+        },
+        {
+            "alphabet": "c",
+            "name": "CITY, UNIVERSITY OF LONDON",
+            "order_by_name": "city university of london"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE NORTHERN SCHOOL OF ART",
+            "order_by_name": "the northern school of art"
+        },
+        {
+            "alphabet": "c",
+            "name": "COLCHESTER INSTITUTE",
+            "order_by_name": "colchester institute"
+        },
+        {
+            "alphabet": "c",
+            "name": "College of Integrated Chinese Medicine",
+            "order_by_name": "college of integrated chinese medicine"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE CONSERVATOIRE FOR DANCE AND DRAMA",
+            "order_by_name": "the conservatoire for dance and drama"
+        },
+        {
+            "alphabet": "c",
+            "name": "CORNWALL COLLEGE",
+            "order_by_name": "cornwall college"
+        },
+        {
+            "alphabet": "c",
+            "name": "COVENTRY UNIVERSITY",
+            "order_by_name": "coventry university"
+        },
+        {
+            "alphabet": "c",
+            "name": "CRAVEN COLLEGE",
+            "order_by_name": "craven college"
+        },
+        {
+            "alphabet": "d",
+            "name": "DARLINGTON COLLEGE",
+            "order_by_name": "darlington college"
+        },
+        {
+            "alphabet": "d",
+            "name": "DE MONTFORT UNIVERSITY",
+            "order_by_name": "de montfort university"
+        },
+        {
+            "alphabet": "d",
+            "name": "Derby College Group",
+            "order_by_name": "derby college group"
+        },
+        {
+            "alphabet": "d",
+            "name": "DOREEN BIRD COLLEGE OF PERFORMING ARTS LTD.",
+            "order_by_name": "doreen bird college of performing arts ltd."
+        },
+        {
+            "alphabet": "c",
+            "name": "CENTRAL BEDFORDSHIRE COLLEGE",
+            "order_by_name": "central bedfordshire college"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE WINDSOR FOREST COLLEGES GROUP",
+            "order_by_name": "the windsor forest colleges group"
+        },
+        {
+            "alphabet": "e",
+            "name": "EAST RIDING COLLEGE",
+            "order_by_name": "east riding college"
+        },
+        {
+            "alphabet": "j",
+            "name": "John Ruskin College",
+            "order_by_name": "john ruskin college"
+        },
+        {
+            "alphabet": "e",
+            "name": "European School of Osteopathy",
+            "order_by_name": "european school of osteopathy"
+        },
+        {
+            "alphabet": "e",
+            "name": "EXETER COLLEGE",
+            "order_by_name": "exeter college"
+        },
+        {
+            "alphabet": "f",
+            "name": "FARNBOROUGH COLLEGE OF TECHNOLOGY",
+            "order_by_name": "farnborough college of technology"
+        },
+        {
+            "alphabet": "f",
+            "name": "FURNESS COLLEGE",
+            "order_by_name": "furness college"
+        },
+        {
+            "alphabet": "g",
+            "name": "GATESHEAD COLLEGE",
+            "order_by_name": "gateshead college"
+        },
+        {
+            "alphabet": "g",
+            "name": "GLASGOW SCHOOL OF ART.",
+            "order_by_name": "glasgow school of art."
+        },
+        {
+            "alphabet": "g",
+            "name": "GLOUCESTERSHIRE COLLEGE",
+            "order_by_name": "gloucestershire college"
+        },
+        {
+            "alphabet": "g",
+            "name": "Goldsmiths, University of London",
+            "order_by_name": "goldsmiths university of london"
+        },
+        {
+            "alphabet": "g",
+            "name": "GRANTHAM COLLEGE",
+            "order_by_name": "grantham college"
+        },
+        {
+            "alphabet": "g",
+            "name": "Greenbank College",
+            "order_by_name": "greenbank college"
+        },
+        {
+            "alphabet": "h",
+            "name": "HADLOW COLLEGE",
+            "order_by_name": "hadlow college"
+        },
+        {
+            "alphabet": "h",
+            "name": "HALESOWEN COLLEGE",
+            "order_by_name": "halesowen college"
+        },
+        {
+            "alphabet": "r",
+            "name": "Riverside College Halton",
+            "order_by_name": "riverside college halton"
+        },
+        {
+            "alphabet": "h",
+            "name": "HARLOW COLLEGE",
+            "order_by_name": "harlow college"
+        },
+        {
+            "alphabet": "h",
+            "name": "HARTLEPOOL COLLEGE OF FURTHER EDUCATION",
+            "order_by_name": "hartlepool college of further education"
+        },
+        {
+            "alphabet": "e",
+            "name": "EAST SUSSEX COLLEGE GROUP",
+            "order_by_name": "east sussex college group"
+        },
+        {
+            "alphabet": "h",
+            "name": "HEREFORD COLLEGE OF ARTS",
+            "order_by_name": "hereford college of arts"
+        },
+        {
+            "alphabet": "h",
+            "name": "HEREFORDSHIRE, LUDLOW, AND NORTH SHROPSHIRE COLLEGE",
+            "order_by_name": "herefordshire ludlow and north shropshire college"
+        },
+        {
+            "alphabet": "h",
+            "name": "HERTFORD REGIONAL COLLEGE",
+            "order_by_name": "hertford regional college"
+        },
+        {
+            "alphabet": "h",
+            "name": "HOPWOOD HALL COLLEGE",
+            "order_by_name": "hopwood hall college"
+        },
+        {
+            "alphabet": "h",
+            "name": "HUGH BAIRD COLLEGE",
+            "order_by_name": "hugh baird college"
+        },
+        {
+            "alphabet": "h",
+            "name": "Hull College Group",
+            "order_by_name": "hull college group"
+        },
+        {
+            "alphabet": "h",
+            "name": "Hult",
+            "order_by_name": "hult"
+        },
+        {
+            "alphabet": "i",
+            "name": "Imperial College London",
+            "order_by_name": "imperial college london"
+        },
+        {
+            "alphabet": "r",
+            "name": "REGENT'S UNIVERSITY LONDON",
+            "order_by_name": "regent's university london"
+        },
+        {
+            "alphabet": "t",
+            "name": "The Chartered Institute of Payroll Professionals",
+            "order_by_name": "the chartered institute of payroll professionals"
+        },
+        {
+            "alphabet": "k",
+            "name": "KENDAL COLLEGE",
+            "order_by_name": "kendal college"
+        },
+        {
+            "alphabet": "w",
+            "name": "UNIVERSITY OF WINCHESTER",
+            "order_by_name": "winchester"
+        },
+        {
+            "alphabet": "k",
+            "name": "KING'S COLLEGE LONDON",
+            "order_by_name": "king's college london"
+        },
+        {
+            "alphabet": "s",
+            "name": "SOUTH THAMES COLLEGES GROUP",
+            "order_by_name": "south thames colleges group"
+        },
+        {
+            "alphabet": "k",
+            "name": "KINGSTON MAURWARD COLLEGE",
+            "order_by_name": "kingston maurward college"
+        },
+        {
+            "alphabet": "k",
+            "name": "KINGSTON UNIVERSITY",
+            "order_by_name": "kingston university"
+        },
+        {
+            "alphabet": "l",
+            "name": "LAKES COLLEGE WEST CUMBRIA",
+            "order_by_name": "lakes college west cumbria"
+        },
+        {
+            "alphabet": "l",
+            "name": "London Academy of Music and Dramatic Arts",
+            "order_by_name": "london academy of music and dramatic arts"
+        },
+        {
+            "alphabet": "l",
+            "name": "LE CORDON BLEU LIMITED",
+            "order_by_name": "le cordon bleu limited"
+        },
+        {
+            "alphabet": "l",
+            "name": "LEEDS ARTS UNIVERSITY",
+            "order_by_name": "leeds arts university"
+        },
+        {
+            "alphabet": "l",
+            "name": "LEEDS COLLEGE OF BUILDING",
+            "order_by_name": "leeds college of building"
+        },
+        {
+            "alphabet": "l",
+            "name": "LEEDS BECKETT UNIVERSITY",
+            "order_by_name": "leeds beckett university"
+        },
+        {
+            "alphabet": "l",
+            "name": "LEEDS TRINITY UNIVERSITY",
+            "order_by_name": "leeds trinity university"
+        },
+        {
+            "alphabet": "l",
+            "name": "LEICESTER COLLEGE",
+            "order_by_name": "leicester college"
+        },
+        {
+            "alphabet": "l",
+            "name": "LINCOLN COLLEGE",
+            "order_by_name": "lincoln college"
+        },
+        {
+            "alphabet": "l",
+            "name": "LIPA",
+            "order_by_name": "lipa"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE CITY OF LIVERPOOL COLLEGE",
+            "order_by_name": "the city of liverpool college"
+        },
+        {
+            "alphabet": "l",
+            "name": "LIVERPOOL HOPE UNIVERSITY",
+            "order_by_name": "liverpool hope university"
+        },
+        {
+            "alphabet": "l",
+            "name": "LIVERPOOL JOHN MOORES UNIVERSITY",
+            "order_by_name": "liverpool john moores university"
+        },
+        {
+            "alphabet": "l",
+            "name": "LONDON METROPOLITAN UNIVERSITY",
+            "order_by_name": "london metropolitan university"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE LONDON SCHOOL OF ECONOMICS AND POLITICAL SCIENCE",
+            "order_by_name": "the london school of economics and political science"
+        },
+        {
+            "alphabet": "l",
+            "name": "LONDON SCHOOL OF THEOLOGY",
+            "order_by_name": "london school of theology"
+        },
+        {
+            "alphabet": "l",
+            "name": "LONDON SOUTH BANK UNIVERSITY",
+            "order_by_name": "london south bank university"
+        },
+        {
+            "alphabet": "l",
+            "name": "London Studio Centre",
+            "order_by_name": "london studio centre"
+        },
+        {
+            "alphabet": "l",
+            "name": "LOUGHBOROUGH COLLEGE",
+            "order_by_name": "loughborough college"
+        },
+        {
+            "alphabet": "l",
+            "name": "LOUGHBOROUGH UNIVERSITY",
+            "order_by_name": "loughborough university"
+        },
+        {
+            "alphabet": "e",
+            "name": "EAST COAST COLLEGE",
+            "order_by_name": "east coast college"
+        },
+        {
+            "alphabet": "m",
+            "name": "MACCLESFIELD COLLEGE",
+            "order_by_name": "macclesfield college"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE GROWTH COMPANY LIMITED",
+            "order_by_name": "the growth company limited"
+        },
+        {
+            "alphabet": "m",
+            "name": "MANCHESTER METROPOLITAN UNIVERSITY",
+            "order_by_name": "manchester metropolitan university"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE METANOIA INSTITUTE",
+            "order_by_name": "the metanoia institute"
+        },
+        {
+            "alphabet": "m",
+            "name": "MidKent College",
+            "order_by_name": "midkent college"
+        },
+        {
+            "alphabet": "n",
+            "name": "Northern Skills Group",
+            "order_by_name": "northern skills group"
+        },
+        {
+            "alphabet": "m",
+            "name": "MIDDLESEX UNIVERSITY",
+            "order_by_name": "middlesex university"
+        },
+        {
+            "alphabet": "m",
+            "name": "MILTON KEYNES COLLEGE",
+            "order_by_name": "milton keynes college"
+        },
+        {
+            "alphabet": "m",
+            "name": "Morley College",
+            "order_by_name": "morley college"
+        },
+        {
+            "alphabet": "m",
+            "name": "MOULTON COLLEGE",
+            "order_by_name": "moulton college"
+        },
+        {
+            "alphabet": "m",
+            "name": "Mountview Academy of Theatre Arts",
+            "order_by_name": "mountview academy of theatre arts"
+        },
+        {
+            "alphabet": "m",
+            "name": "MYERSCOUGH COLLEGE",
+            "order_by_name": "myerscough college"
+        },
+        {
+            "alphabet": "n",
+            "name": "NAZARENE THEOLOGICAL COLLEGE",
+            "order_by_name": "nazarene theological college"
+        },
+        {
+            "alphabet": "n",
+            "name": "NELSON AND COLNE COLLEGE",
+            "order_by_name": "nelson and colne college"
+        },
+        {
+            "alphabet": "n",
+            "name": "NEW COLLEGE DURHAM",
+            "order_by_name": "new college durham"
+        },
+        {
+            "alphabet": "n",
+            "name": "NOTTINGHAM COLLEGE",
+            "order_by_name": "nottingham college"
+        },
+        {
+            "alphabet": "n",
+            "name": "NEW COLLEGE SWINDON",
+            "order_by_name": "new college swindon"
+        },
+        {
+            "alphabet": "n",
+            "name": "NEWBURY COLLEGE",
+            "order_by_name": "newbury college"
+        },
+        {
+            "alphabet": "n",
+            "name": "Newcastle College",
+            "order_by_name": "newcastle college"
+        },
+        {
+            "alphabet": "n",
+            "name": "Newcastle and Stafford Colleges Group (NSCG) / Axia Solutions Limited",
+            "order_by_name": "newcastle and stafford colleges group (nscg) / axia solutions limited"
+        },
+        {
+            "alphabet": "n",
+            "name": "NEWHAM TRAINING AND EDUCATION CENTRE",
+            "order_by_name": "newham training and education centre"
+        },
+        {
+            "alphabet": "p",
+            "name": "PETROC",
+            "order_by_name": "petroc"
+        },
+        {
+            "alphabet": "n",
+            "name": "NORTH EAST SURREY COLLEGE OF TECHNOLOGY (NESCOT)",
+            "order_by_name": "north east surrey college of technology (nescot)"
+        },
+        {
+            "alphabet": "n",
+            "name": "NORTH HERTFORDSHIRE COLLEGE",
+            "order_by_name": "north hertfordshire college"
+        },
+        {
+            "alphabet": "n",
+            "name": "North Lindsey College",
+            "order_by_name": "north lindsey college"
+        },
+        {
+            "alphabet": "n",
+            "name": "NORTH WARWICKSHIRE AND SOUTH LEICESTERSHIRE COLLEGE",
+            "order_by_name": "north warwickshire and south leicestershire college"
+        },
+        {
+            "alphabet": "g",
+            "name": "GREATER BRIGHTON METROPOLITAN COLLEGE",
+            "order_by_name": "greater brighton metropolitan college"
+        },
+        {
+            "alphabet": "n",
+            "name": "NORTHERN COLLEGE OF ACUPUNCTURE",
+            "order_by_name": "northern college of acupuncture"
+        },
+        {
+            "alphabet": "c",
+            "name": "CITY COLLEGE NORWICH",
+            "order_by_name": "city college norwich"
+        },
+        {
+            "alphabet": "n",
+            "name": "NORWICH UNIVERSITY OF THE ARTS",
+            "order_by_name": "norwich university of the arts"
+        },
+        {
+            "alphabet": "n",
+            "name": "NOTTINGHAM TRENT UNIVERSITY",
+            "order_by_name": "nottingham trent university"
+        },
+        {
+            "alphabet": "o",
+            "name": "OAKLANDS COLLEGE",
+            "order_by_name": "oaklands college"
+        },
+        {
+            "alphabet": "a",
+            "name": "ACTIVATE LEARNING",
+            "order_by_name": "activate learning"
+        },
+        {
+            "alphabet": "o",
+            "name": "OXFORD BROOKES UNIVERSITY",
+            "order_by_name": "oxford brookes university"
+        },
+        {
+            "alphabet": "s",
+            "name": "SALFORD CITY COLLEGE",
+            "order_by_name": "salford city college"
+        },
+        {
+            "alphabet": "p",
+            "name": "PETER SYMONDS COLLEGE",
+            "order_by_name": "peter symonds college"
+        },
+        {
+            "alphabet": "p",
+            "name": "PETERBOROUGH REGIONAL COLLEGE",
+            "order_by_name": "peterborough regional college"
+        },
+        {
+            "alphabet": "p",
+            "name": "PLUMPTON COLLEGE",
+            "order_by_name": "plumpton college"
+        },
+        {
+            "alphabet": "p",
+            "name": "PLYMOUTH COLLEGE OF ART",
+            "order_by_name": "plymouth college of art"
+        },
+        {
+            "alphabet": "c",
+            "name": "CITY COLLEGE PLYMOUTH",
+            "order_by_name": "city college plymouth"
+        },
+        {
+            "alphabet": "p",
+            "name": "Preston's College",
+            "order_by_name": "preston's college"
+        },
+        {
+            "alphabet": "q",
+            "name": "QUEEN MARGARET UNIVERSITY, EDINBURGH",
+            "order_by_name": "queen margaret university edinburgh"
+        },
+        {
+            "alphabet": "q",
+            "name": "Queen's University Belfast",
+            "order_by_name": "queen's university belfast"
+        },
+        {
+            "alphabet": "r",
+            "name": "RAVENSBOURNE UNIVERSITY LONDON",
+            "order_by_name": "ravensbourne university london"
+        },
+        {
+            "alphabet": "r",
+            "name": "REASEHEATH COLLEGE",
+            "order_by_name": "reaseheath college"
+        },
+        {
+            "alphabet": "a",
+            "name": "Arden University",
+            "order_by_name": "arden university"
+        },
+        {
+            "alphabet": "r",
+            "name": "REVETT",
+            "order_by_name": "revett"
+        },
+        {
+            "alphabet": "r",
+            "name": "RICHMOND UPON THAMES COLLEGE",
+            "order_by_name": "richmond upon thames college"
+        },
+        {
+            "alphabet": "r",
+            "name": "Richmond, The American International University in London",
+            "order_by_name": "richmond the american international university in london"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE ROBERT GORDON UNIVERSITY",
+            "order_by_name": "the robert gordon university"
+        },
+        {
+            "alphabet": "r",
+            "name": "ROSE BRUFORD COLLEGE OF THEATRE AND PERFORMANCE",
+            "order_by_name": "rose bruford college of theatre and performance"
+        },
+        {
+            "alphabet": "r",
+            "name": "RNN GROUP",
+            "order_by_name": "rnn group"
+        },
+        {
+            "alphabet": "r",
+            "name": "ROYAL ACADEMY OF DANCE",
+            "order_by_name": "royal academy of dance"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE ROYAL AGRICULTURAL UNIVERSITY",
+            "order_by_name": "the royal agricultural university"
+        },
+        {
+            "alphabet": "r",
+            "name": "Royal Holloway, University of London",
+            "order_by_name": "royal holloway university of london"
+        },
+        {
+            "alphabet": "r",
+            "name": "ROYAL CONSERVATOIRE OF SCOTLAND",
+            "order_by_name": "royal conservatoire of scotland"
+        },
+        {
+            "alphabet": "r",
+            "name": "Ruskin College Oxford",
+            "order_by_name": "ruskin college oxford"
+        },
+        {
+            "alphabet": "s",
+            "name": "SANDWELL COLLEGE",
+            "order_by_name": "sandwell college"
+        },
+        {
+            "alphabet": "s",
+            "name": "Scotland's Rural College",
+            "order_by_name": "scotland's rural college"
+        },
+        {
+            "alphabet": "u",
+            "name": "UNIFIED SEEVIC PALMER'S COLLEGE",
+            "order_by_name": "unified seevic palmer's college"
+        },
+        {
+            "alphabet": "s",
+            "name": "SELBY COLLEGE",
+            "order_by_name": "selby college"
+        },
+        {
+            "alphabet": "s",
+            "name": "SHEFFIELD COLLEGE, THE",
+            "order_by_name": "sheffield college the"
+        },
+        {
+            "alphabet": "s",
+            "name": "SHEFFIELD HALLAM UNIVERSITY",
+            "order_by_name": "sheffield hallam university"
+        },
+        {
+            "alphabet": "s",
+            "name": "SHREWSBURY COLLEGES GROUP",
+            "order_by_name": "shrewsbury colleges group"
+        },
+        {
+            "alphabet": "s",
+            "name": "SOLIHULL COLLEGE AND UNIVERSITY CENTRE",
+            "order_by_name": "solihull college and university centre"
+        },
+        {
+            "alphabet": "s",
+            "name": "SOUTH & CITY COLLEGE BIRMINGHAM",
+            "order_by_name": "south & city college birmingham"
+        },
+        {
+            "alphabet": "c",
+            "name": "CHESHIRE COLLEGE SOUTH AND WEST",
+            "order_by_name": "cheshire college south and west"
+        },
+        {
+            "alphabet": "u",
+            "name": "University Centre South Devon",
+            "order_by_name": "university centre south devon"
+        },
+        {
+            "alphabet": "h",
+            "name": "HAVANT AND SOUTH DOWNS COLLEGE",
+            "order_by_name": "havant and south downs college"
+        },
+        {
+            "alphabet": "s",
+            "name": "SOUTH ESSEX COLLEGE",
+            "order_by_name": "south essex college"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE TRAFFORD COLLEGE GROUP",
+            "order_by_name": "the trafford college group"
+        },
+        {
+            "alphabet": "t",
+            "name": "TYNE COAST COLLEGE",
+            "order_by_name": "tyne coast college"
+        },
+        {
+            "alphabet": "s",
+            "name": "SOUTHAMPTON CITY COLLEGE",
+            "order_by_name": "southampton city college"
+        },
+        {
+            "alphabet": "s",
+            "name": "SOLENT UNIVERSITY",
+            "order_by_name": "solent university"
+        },
+        {
+            "alphabet": "s",
+            "name": "SOUTHPORT COLLEGE",
+            "order_by_name": "southport college"
+        },
+        {
+            "alphabet": "s",
+            "name": "SPARSHOLT COLLEGE",
+            "order_by_name": "sparsholt college"
+        },
+        {
+            "alphabet": "s",
+            "name": "ST HELENS COLLEGE",
+            "order_by_name": "st helens college"
+        },
+        {
+            "alphabet": "s",
+            "name": "ST MARY'S COLLEGE",
+            "order_by_name": "st mary's college"
+        },
+        {
+            "alphabet": "s",
+            "name": "STAFFORDSHIRE UNIVERSITY",
+            "order_by_name": "staffordshire university"
+        },
+        {
+            "alphabet": "n",
+            "name": "NEW COLLEGE STAMFORD",
+            "order_by_name": "new college stamford"
+        },
+        {
+            "alphabet": "s",
+            "name": "STEPHENSON COLLEGE",
+            "order_by_name": "stephenson college"
+        },
+        {
+            "alphabet": "s",
+            "name": "STOCKTON RIVERSIDE COLLEGE",
+            "order_by_name": "stockton riverside college"
+        },
+        {
+            "alphabet": "s",
+            "name": "STOKE ON TRENT COLLEGE",
+            "order_by_name": "stoke on trent college"
+        },
+        {
+            "alphabet": "s",
+            "name": "STRODE COLLEGE",
+            "order_by_name": "strode college"
+        },
+        {
+            "alphabet": "s",
+            "name": "SUFFOLK NEW COLLEGE",
+            "order_by_name": "suffolk new college"
+        },
+        {
+            "alphabet": "u",
+            "name": "UNIVERSITY FOR THE CREATIVE ARTS",
+            "order_by_name": "university for the creative arts"
+        },
+        {
+            "alphabet": "b",
+            "name": "BIRMINGHAM METROPOLITAN COLLEGE",
+            "order_by_name": "birmingham metropolitan college"
+        },
+        {
+            "alphabet": "s",
+            "name": "SWINDON COLLEGE",
+            "order_by_name": "swindon college"
+        },
+        {
+            "alphabet": "t",
+            "name": "TAMESIDE COLLEGE",
+            "order_by_name": "tameside college"
+        },
+        {
+            "alphabet": "t",
+            "name": "TELFORD COLLEGE",
+            "order_by_name": "telford college"
+        },
+        {
+            "alphabet": "w",
+            "name": "THE UNIVERSITY OF WEST LONDON",
+            "order_by_name": "west london"
+        },
+        {
+            "alphabet": "e",
+            "name": "EKC GROUP",
+            "order_by_name": "ekc group"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE OLDHAM COLLEGE",
+            "order_by_name": "the oldham college"
+        },
+        {
+            "alphabet": "b",
+            "name": "University of Birmingham",
+            "order_by_name": "birmingham"
+        },
+        {
+            "alphabet": "b",
+            "name": "THE UNIVERSITY OF BOLTON",
+            "order_by_name": "bolton"
+        },
+        {
+            "alphabet": "l",
+            "name": "THE UNIVERSITY OF LIVERPOOL",
+            "order_by_name": "liverpool"
+        },
+        {
+            "alphabet": "n",
+            "name": "NEW CITY COLLEGE",
+            "order_by_name": "new city college"
+        },
+        {
+            "alphabet": "t",
+            "name": "TRURO AND PENWITH COLLEGE",
+            "order_by_name": "truro and penwith college"
+        },
+        {
+            "alphabet": "t",
+            "name": "UNIVERSITY OF THE HIGHLANDS AND ISLANDS",
+            "order_by_name": "the highlands and islands"
+        },
+        {
+            "alphabet": "c",
+            "name": "University of Chichester",
+            "order_by_name": "chichester"
+        },
+        {
+            "alphabet": "n",
+            "name": "The University of Northampton",
+            "order_by_name": "northampton"
+        },
+        {
+            "alphabet": "w",
+            "name": "UNIVERSITY OF WORCESTER",
+            "order_by_name": "worcester"
+        },
+        {
+            "alphabet": "b",
+            "name": "BIRMINGHAM CITY UNIVERSITY",
+            "order_by_name": "birmingham city university"
+        },
+        {
+            "alphabet": "c",
+            "name": "UNIVERSITY OF CENTRAL LANCASHIRE",
+            "order_by_name": "central lancashire"
+        },
+        {
+            "alphabet": "d",
+            "name": "Durham University",
+            "order_by_name": "durham university"
+        },
+        {
+            "alphabet": "e",
+            "name": "The University of East London",
+            "order_by_name": "east london"
+        },
+        {
+            "alphabet": "g",
+            "name": "UNIVERSITY OF GLOUCESTERSHIRE",
+            "order_by_name": "gloucestershire"
+        },
+        {
+            "alphabet": "g",
+            "name": "UNIVERSITY OF GREENWICH",
+            "order_by_name": "greenwich"
+        },
+        {
+            "alphabet": "h",
+            "name": "University of Hertfordshire",
+            "order_by_name": "hertfordshire"
+        },
+        {
+            "alphabet": "h",
+            "name": "University of Huddersfield",
+            "order_by_name": "huddersfield"
+        },
+        {
+            "alphabet": "h",
+            "name": "University of Hull",
+            "order_by_name": "hull"
+        },
+        {
+            "alphabet": "k",
+            "name": "THE UNIVERSITY OF KENT",
+            "order_by_name": "kent"
+        },
+        {
+            "alphabet": "l",
+            "name": "UNIVERSITY OF LINCOLN",
+            "order_by_name": "lincoln"
+        },
+        {
+            "alphabet": "b",
+            "name": "UNIVERSITY OF BEDFORDSHIRE",
+            "order_by_name": "bedfordshire"
+        },
+        {
+            "alphabet": "n",
+            "name": "UNIVERSITY OF NOTTINGHAM, THE",
+            "order_by_name": "nottingham the"
+        },
+        {
+            "alphabet": "p",
+            "name": "UNIVERSITY OF PORTSMOUTH",
+            "order_by_name": "portsmouth"
+        },
+        {
+            "alphabet": "s",
+            "name": "The University of Salford",
+            "order_by_name": "salford"
+        },
+        {
+            "alphabet": "s",
+            "name": "University of Sheffield",
+            "order_by_name": "sheffield"
+        },
+        {
+            "alphabet": "s",
+            "name": "UNIVERSITY OF SOUTHAMPTON",
+            "order_by_name": "southampton"
+        },
+        {
+            "alphabet": "s",
+            "name": "UNIVERSITY OF SUNDERLAND",
+            "order_by_name": "sunderland"
+        },
+        {
+            "alphabet": "s",
+            "name": "THE UNIVERSITY OF SURREY",
+            "order_by_name": "surrey"
+        },
+        {
+            "alphabet": "t",
+            "name": "TEESSIDE UNIVERSITY",
+            "order_by_name": "teesside university"
+        },
+        {
+            "alphabet": "t",
+            "name": "UNIVERSITY OF THE ARTS, LONDON",
+            "order_by_name": "the arts london"
+        },
+        {
+            "alphabet": "w",
+            "name": "University of Warwick",
+            "order_by_name": "warwick"
+        },
+        {
+            "alphabet": "u",
+            "name": "UWE",
+            "order_by_name": "uwe"
+        },
+        {
+            "alphabet": "w",
+            "name": "THE UNIVERSITY OF WESTMINSTER",
+            "order_by_name": "westminster"
+        },
+        {
+            "alphabet": "w",
+            "name": "University of Wolverhampton",
+            "order_by_name": "wolverhampton"
+        },
+        {
+            "alphabet": "y",
+            "name": "UNIVERSITY OF YORK",
+            "order_by_name": "york"
+        },
+        {
+            "alphabet": "w",
+            "name": "WAKEFIELD COLLEGE",
+            "order_by_name": "wakefield college"
+        },
+        {
+            "alphabet": "w",
+            "name": "Waverley Abbey College",
+            "order_by_name": "waverley abbey college"
+        },
+        {
+            "alphabet": "w",
+            "name": "WEST HERTS COLLEGE",
+            "order_by_name": "west herts college"
+        },
+        {
+            "alphabet": "w",
+            "name": "WEST KENT AND ASHFORD COLLEGE",
+            "order_by_name": "west kent and ashford college"
+        },
+        {
+            "alphabet": "v",
+            "name": "Vision West Nottinghamshire College",
+            "order_by_name": "vision west nottinghamshire college"
+        },
+        {
+            "alphabet": "w",
+            "name": "WEST SUFFOLK COLLEGE",
+            "order_by_name": "west suffolk college"
+        },
+        {
+            "alphabet": "c",
+            "name": "Capital City College Group",
+            "order_by_name": "capital city college group"
+        },
+        {
+            "alphabet": "u",
+            "name": "University Centre Weston",
+            "order_by_name": "university centre weston"
+        },
+        {
+            "alphabet": "w",
+            "name": "WIGAN AND LEIGH COLLEGE",
+            "order_by_name": "wigan and leigh college"
+        },
+        {
+            "alphabet": "w",
+            "name": "WILTSHIRE COLLEGE AND UNIVERSITY CENTRE",
+            "order_by_name": "wiltshire college and university centre"
+        },
+        {
+            "alphabet": "w",
+            "name": "WIRRAL METROPOLITAN COLLEGE",
+            "order_by_name": "wirral metropolitan college"
+        },
+        {
+            "alphabet": "c",
+            "name": "CITY OF WOLVERHAMPTON COLLEGE",
+            "order_by_name": "city of wolverhampton college"
+        },
+        {
+            "alphabet": "w",
+            "name": "WRITTLE UNIVERSITY COLLEGE",
+            "order_by_name": "writtle university college"
+        },
+        {
+            "alphabet": "y",
+            "name": "YEOVIL COLLEGE",
+            "order_by_name": "yeovil college"
+        },
+        {
+            "alphabet": "y",
+            "name": "YORK COLLEGE",
+            "order_by_name": "york college"
+        },
+        {
+            "alphabet": "y",
+            "name": "YORK ST JOHN UNIVERSITY",
+            "order_by_name": "york st john university"
+        },
+        {
+            "alphabet": "a",
+            "name": "ASTON UNIVERSITY",
+            "order_by_name": "aston university"
+        },
+        {
+            "alphabet": "b",
+            "name": "Birkbeck, University of London",
+            "order_by_name": "birkbeck university of london"
+        },
+        {
+            "alphabet": "c",
+            "name": "COURTAULD INSTITUTE OF ART",
+            "order_by_name": "courtauld institute of art"
+        },
+        {
+            "alphabet": "g",
+            "name": "GLASGOW CALEDONIAN UNIVERSITY",
+            "order_by_name": "glasgow caledonian university"
+        },
+        {
+            "alphabet": "h",
+            "name": "HERIOT-WATT UNIVERSITY",
+            "order_by_name": "heriot-watt university"
+        },
+        {
+            "alphabet": "k",
+            "name": "Keele University",
+            "order_by_name": "keele university"
+        },
+        {
+            "alphabet": "l",
+            "name": "Lancaster University",
+            "order_by_name": "lancaster university"
+        },
+        {
+            "alphabet": "e",
+            "name": "EDINBURGH NAPIER UNIVERSITY",
+            "order_by_name": "edinburgh napier university"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE OPEN UNIVERSITY",
+            "order_by_name": "the open university"
+        },
+        {
+            "alphabet": "o",
+            "name": "Oxford University",
+            "order_by_name": "oxford university"
+        },
+        {
+            "alphabet": "q",
+            "name": "QUEEN MARY UNIVERSITY OF LONDON",
+            "order_by_name": "queen mary university of london"
+        },
+        {
+            "alphabet": "r",
+            "name": "ROEHAMPTON UNIVERSITY",
+            "order_by_name": "roehampton university"
+        },
+        {
+            "alphabet": "r",
+            "name": "ROYAL COLLEGE OF MUSIC",
+            "order_by_name": "royal college of music"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE ROYAL VETERINARY COLLEGE",
+            "order_by_name": "the royal veterinary college"
+        },
+        {
+            "alphabet": "s",
+            "name": "School of Oriental and African Studies",
+            "order_by_name": "school of oriental and african studies"
+        },
+        {
+            "alphabet": "s",
+            "name": "St. George's, University of London",
+            "order_by_name": "st. george's university of london"
+        },
+        {
+            "alphabet": "a",
+            "name": "UNIVERSITY OF ABERDEEN",
+            "order_by_name": "aberdeen"
+        },
+        {
+            "alphabet": "u",
+            "name": "UCL",
+            "order_by_name": "ucl"
+        },
+        {
+            "alphabet": "b",
+            "name": "THE UNIVERSITY OF BRADFORD",
+            "order_by_name": "bradford"
+        },
+        {
+            "alphabet": "b",
+            "name": "UNIVERSITY OF BRISTOL",
+            "order_by_name": "bristol"
+        },
+        {
+            "alphabet": "b",
+            "name": "University of Buckingham",
+            "order_by_name": "buckingham"
+        },
+        {
+            "alphabet": "c",
+            "name": "UNIVERSITY OF CAMBRIDGE",
+            "order_by_name": "cambridge"
+        },
+        {
+            "alphabet": "e",
+            "name": "University of East Anglia",
+            "order_by_name": "east anglia"
+        },
+        {
+            "alphabet": "e",
+            "name": "UNIVERSITY OF EDINBURGH",
+            "order_by_name": "edinburgh"
+        },
+        {
+            "alphabet": "e",
+            "name": "THE UNIVERSITY OF ESSEX",
+            "order_by_name": "essex"
+        },
+        {
+            "alphabet": "e",
+            "name": "UNIVERSITY OF EXETER",
+            "order_by_name": "exeter"
+        },
+        {
+            "alphabet": "s",
+            "name": "UNIVERSITY OF SOUTH WALES/PRIFYSGOL DE CYMRU",
+            "order_by_name": "south wales/prifysgol de cymru"
+        },
+        {
+            "alphabet": "g",
+            "name": "UNIVERSITY OF GLASGOW",
+            "order_by_name": "glasgow"
+        },
+        {
+            "alphabet": "l",
+            "name": "University of Leeds",
+            "order_by_name": "leeds"
+        },
+        {
+            "alphabet": "l",
+            "name": "University of Leicester",
+            "order_by_name": "leicester"
+        },
+        {
+            "alphabet": "m",
+            "name": "University of Manchester",
+            "order_by_name": "manchester"
+        },
+        {
+            "alphabet": "n",
+            "name": "Newcastle University",
+            "order_by_name": "newcastle university"
+        },
+        {
+            "alphabet": "t",
+            "name": "UNIVERSITY OF THE WEST OF SCOTLAND",
+            "order_by_name": "the west of scotland"
+        },
+        {
+            "alphabet": "p",
+            "name": "UNIVERSITY OF PLYMOUTH",
+            "order_by_name": "plymouth"
+        },
+        {
+            "alphabet": "r",
+            "name": "University of Reading",
+            "order_by_name": "reading"
+        },
+        {
+            "alphabet": "s",
+            "name": "UNIVERSITY OF ST ANDREWS",
+            "order_by_name": "st andrews"
+        },
+        {
+            "alphabet": "s",
+            "name": "UNIVERSITY OF STIRLING",
+            "order_by_name": "stirling"
+        },
+        {
+            "alphabet": "s",
+            "name": "UNIVERSITY OF STRATHCLYDE",
+            "order_by_name": "strathclyde"
+        },
+        {
+            "alphabet": "s",
+            "name": "UNIVERSITY OF SUSSEX",
+            "order_by_name": "sussex"
+        },
+        {
+            "alphabet": "u",
+            "name": "Ulster University",
+            "order_by_name": "ulster university"
+        },
+        {
+            "alphabet": "b",
+            "name": "BISHOP GROSSETESTE UNIVERSITY",
+            "order_by_name": "bishop grosseteste university"
+        },
+        {
+            "alphabet": "l",
+            "name": "UNIVERSITY OF LONDON INSTITUTE IN PARIS",
+            "order_by_name": "london institute in paris"
+        },
+        {
+            "alphabet": "c",
+            "name": "CARDIFF UNIVERSITY",
+            "order_by_name": "cardiff university"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE ROYAL CENTRAL SCHOOL OF SPEECH AND DRAMA",
+            "order_by_name": "the royal central school of speech and drama"
+        },
+        {
+            "alphabet": "c",
+            "name": "CHICHESTER COLLEGE GROUP",
+            "order_by_name": "chichester college group"
+        },
+        {
+            "alphabet": "c",
+            "name": "Coleg Llandrillo",
+            "order_by_name": "coleg llandrillo"
+        },
+        {
+            "alphabet": "e",
+            "name": "EDGE HILL UNIVERSITY",
+            "order_by_name": "edge hill university"
+        },
+        {
+            "alphabet": "g",
+            "name": "GUILDHALL SCHOOL OF MUSIC & DRAMA",
+            "order_by_name": "guildhall school of music & drama"
+        },
+        {
+            "alphabet": "n",
+            "name": "NEWMAN UNIVERSITY",
+            "order_by_name": "newman university"
+        },
+        {
+            "alphabet": "g",
+            "name": "GLYNDWR UNIVERSITY",
+            "order_by_name": "glyndwr university"
+        },
+        {
+            "alphabet": "p",
+            "name": "PEMBROKESHIRE COLLEGE",
+            "order_by_name": "pembrokeshire college"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE ROYAL ACADEMY OF MUSIC",
+            "order_by_name": "the royal academy of music"
+        },
+        {
+            "alphabet": "r",
+            "name": "ROYAL NORTHERN COLLEGE OF MUSIC",
+            "order_by_name": "royal northern college of music"
+        },
+        {
+            "alphabet": "r",
+            "name": "ROYAL WELSH COLLEGE OF MUSIC AND DRAMA LIMITED",
+            "order_by_name": "royal welsh college of music and drama limited"
+        },
+        {
+            "alphabet": "s",
+            "name": "SAE Institute Ltd",
+            "order_by_name": "sae institute ltd"
+        },
+        {
+            "alphabet": "c",
+            "name": "THE UNIVERSITY OF CUMBRIA",
+            "order_by_name": "cumbria"
+        },
+        {
+            "alphabet": "s",
+            "name": "St Mary's University, Twickenham, London",
+            "order_by_name": "st mary's university twickenham london"
+        },
+        {
+            "alphabet": "c",
+            "name": "UNIVERSITY OF CHESTER",
+            "order_by_name": "chester"
+        },
+        {
+            "alphabet": "a",
+            "name": "ABERTAY UNIVERSITY",
+            "order_by_name": "abertay university"
+        },
+        {
+            "alphabet": "b",
+            "name": "University of Bath",
+            "order_by_name": "bath"
+        },
+        {
+            "alphabet": "d",
+            "name": "UNIVERSITY OF DERBY",
+            "order_by_name": "derby"
+        },
+        {
+            "alphabet": "d",
+            "name": "UNIVERSITY OF DUNDEE",
+            "order_by_name": "dundee"
+        },
+        {
+            "alphabet": "c",
+            "name": "CARDIFF METROPOLITAN UNIVERSITY",
+            "order_by_name": "cardiff metropolitan university"
+        },
+        {
+            "alphabet": "s",
+            "name": "SWANSEA UNIVERSITY",
+            "order_by_name": "swansea university"
+        },
+        {
+            "alphabet": "a",
+            "name": "Aberystwyth University",
+            "order_by_name": "aberystwyth university"
+        },
+        {
+            "alphabet": "b",
+            "name": "BANGOR UNIVERSITY",
+            "order_by_name": "bangor university"
+        },
+        {
+            "alphabet": "w",
+            "name": "UNIVERSITY OF WALES: TRINITY SAINT DAVID",
+            "order_by_name": "wales: trinity saint david"
+        },
+        {
+            "alphabet": "w",
+            "name": "WARWICKSHIRE COLLEGE",
+            "order_by_name": "warwickshire college"
+        },
+        {
+            "alphabet": "c",
+            "name": "CLIFF COLLEGE",
+            "order_by_name": "cliff college"
+        },
+        {
+            "alphabet": "d",
+            "name": "DUDLEY COLLEGE OF TECHNOLOGY",
+            "order_by_name": "dudley college of technology"
+        },
+        {
+            "alphabet": "f",
+            "name": "FAREHAM COLLEGE",
+            "order_by_name": "fareham college"
+        },
+        {
+            "alphabet": "g",
+            "name": "GRIMSBY INSTITUTE OF FURTHER AND HIGHER EDUCATION",
+            "order_by_name": "grimsby institute of further and higher education"
+        },
+        {
+            "alphabet": "h",
+            "name": "HEART OF WORCESTERSHIRE COLLEGE",
+            "order_by_name": "heart of worcestershire college"
+        },
+        {
+            "alphabet": "s",
+            "name": "STRANMILLIS UNIVERSITY COLLEGE",
+            "order_by_name": "stranmillis university college"
+        },
+        {
+            "alphabet": "t",
+            "name": "TRINITY LABAN CONSERVATOIRE OF MUSIC AND DANCE",
+            "order_by_name": "trinity laban conservatoire of music and dance"
+        },
+        {
+            "alphabet": "s",
+            "name": "ST MARY'S UNIVERSITY COLLEGE",
+            "order_by_name": "st mary's university college"
+        },
+        {
+            "alphabet": "a",
+            "name": "AA School of Architecture",
+            "order_by_name": "aa school of architecture"
+        },
+        {
+            "alphabet": "u",
+            "name": "UNIVERSITY COLLEGE OF ESTATE MANAGEMENT",
+            "order_by_name": "university college of estate management"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE LONDON INSTITUTE OF BANKING & FINANCE",
+            "order_by_name": "the london institute of banking & finance"
+        },
+        {
+            "alphabet": "k",
+            "name": "KLC School of Design",
+            "order_by_name": "klc school of design"
+        },
+        {
+            "alphabet": "n",
+            "name": "Norland College",
+            "order_by_name": "norland college"
+        },
+        {
+            "alphabet": "p",
+            "name": "PLATFORM ONE (IOW) LIMITED",
+            "order_by_name": "platform one (iow) limited"
+        },
+        {
+            "alphabet": "r",
+            "name": "RTC EDUCATION LTD",
+            "order_by_name": "rtc education ltd"
+        },
+        {
+            "alphabet": "f",
+            "name": "FALMOUTH UNIVERSITY",
+            "order_by_name": "falmouth university"
+        },
+        {
+            "alphabet": "c",
+            "name": "COLEG Y CYMOEDD",
+            "order_by_name": "coleg y cymoedd"
+        },
+        {
+            "alphabet": "f",
+            "name": "FASHION RETAIL ACADEMY",
+            "order_by_name": "fashion retail academy"
+        },
+        {
+            "alphabet": "r",
+            "name": "ROYAL ACADEMY OF DRAMATIC ART",
+            "order_by_name": "royal academy of dramatic art"
+        },
+        {
+            "alphabet": "i",
+            "name": "ISTITUTO MARANGONI LIMITED",
+            "order_by_name": "istituto marangoni limited"
+        },
+        {
+            "alphabet": "l",
+            "name": "LUTHER KING HOUSE EDUCATIONAL TRUST",
+            "order_by_name": "luther king house educational trust"
+        },
+        {
+            "alphabet": "g",
+            "name": "Grwp NPTC Group",
+            "order_by_name": "grwp nptc group"
+        },
+        {
+            "alphabet": "m",
+            "name": "MERTHYR TYDFIL COLLEGE LIMITED",
+            "order_by_name": "merthyr tydfil college limited"
+        },
+        {
+            "alphabet": "o",
+            "name": "Oak Hill College",
+            "order_by_name": "oak hill college"
+        },
+        {
+            "alphabet": "c",
+            "name": "Cambridge School of Visual and Performing Arts",
+            "order_by_name": "cambridge school of visual and performing arts"
+        },
+        {
+            "alphabet": "l",
+            "name": "London Bridge Business Academy",
+            "order_by_name": "london bridge business academy"
+        },
+        {
+            "alphabet": "s",
+            "name": "University of Suffolk",
+            "order_by_name": "suffolk"
+        },
+        {
+            "alphabet": "t",
+            "name": "The London College",
+            "order_by_name": "the london college"
+        },
+        {
+            "alphabet": "p",
+            "name": "Point Blank Music School",
+            "order_by_name": "point blank music school"
+        },
+        {
+            "alphabet": "m",
+            "name": "Mattersey Hall",
+            "order_by_name": "mattersey hall"
+        },
+        {
+            "alphabet": "e",
+            "name": "EASTWOOD PARK LIMITED",
+            "order_by_name": "eastwood park limited"
+        },
+        {
+            "alphabet": "r",
+            "name": "Regents Theological College",
+            "order_by_name": "regents theological college"
+        },
+        {
+            "alphabet": "k",
+            "name": "KAPLAN OPEN LEARNING (ESSEX) LIMITED",
+            "order_by_name": "kaplan open learning (essex) limited"
+        },
+        {
+            "alphabet": "e",
+            "name": "EMPIRE COLLEGE LONDON LIMITED",
+            "order_by_name": "empire college london limited"
+        },
+        {
+            "alphabet": "f",
+            "name": "Futureworks",
+            "order_by_name": "futureworks"
+        },
+        {
+            "alphabet": "l",
+            "name": "London School of Management Education",
+            "order_by_name": "london school of management education"
+        },
+        {
+            "alphabet": "t",
+            "name": "The Manchester College",
+            "order_by_name": "the manchester college"
+        },
+        {
+            "alphabet": "l",
+            "name": "LONDON SCHOOL OF COMMERCE & IT LIMITED",
+            "order_by_name": "london school of commerce & it limited"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE MARKFIELD INSTITUTE OF HIGHER EDUCATION",
+            "order_by_name": "the markfield institute of higher education"
+        },
+        {
+            "alphabet": "m",
+            "name": "MATRIX COLLEGE OF COUNSELLING AND PSYCHOTHERAPY LTD",
+            "order_by_name": "matrix college of counselling and psychotherapy ltd"
+        },
+        {
+            "alphabet": "m",
+            "name": "MOORLANDS COLLEGE",
+            "order_by_name": "moorlands college"
+        },
+        {
+            "alphabet": "t",
+            "name": "The Sherwood Institute",
+            "order_by_name": "the sherwood institute"
+        },
+        {
+            "alphabet": "t",
+            "name": "Trinity College Bristol",
+            "order_by_name": "trinity college bristol"
+        },
+        {
+            "alphabet": "s",
+            "name": "SOUTH STAFFORDSHIRE COLLEGE",
+            "order_by_name": "south staffordshire college"
+        },
+        {
+            "alphabet": "m",
+            "name": "MONT ROSE COLLEGE OF MANAGEMENT AND SCIENCES LIMITED",
+            "order_by_name": "mont rose college of management and sciences limited"
+        },
+        {
+            "alphabet": "l",
+            "name": "LEEDS CITY COLLEGE",
+            "order_by_name": "leeds city college"
+        },
+        {
+            "alphabet": "c",
+            "name": "CHRIST THE REDEEMER COLLEGE",
+            "order_by_name": "christ the redeemer college"
+        },
+        {
+            "alphabet": "b",
+            "name": "Brit College",
+            "order_by_name": "brit college"
+        },
+        {
+            "alphabet": "n",
+            "name": "NELSON COLLEGE LONDON LIMITED",
+            "order_by_name": "nelson college london limited"
+        },
+        {
+            "alphabet": "g",
+            "name": "GOWER COLLEGE SWANSEA",
+            "order_by_name": "gower college swansea"
+        },
+        {
+            "alphabet": "s",
+            "name": "St Mellitus College",
+            "order_by_name": "st mellitus college"
+        },
+        {
+            "alphabet": "w",
+            "name": "WESTMINSTER THEOLOGICAL CENTRE",
+            "order_by_name": "westminster theological centre"
+        },
+        {
+            "alphabet": "l",
+            "name": "LIVERPOOL MEDIA ACADEMY LIMITED",
+            "order_by_name": "liverpool media academy limited"
+        },
+        {
+            "alphabet": "b",
+            "name": "BPP University",
+            "order_by_name": "bpp university"
+        },
+        {
+            "alphabet": "a",
+            "name": "AMITY GLOBAL EDUCATION LTD",
+            "order_by_name": "amity global education ltd"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE CAMBRIDGE THEOLOGICAL FEDERATION",
+            "order_by_name": "the cambridge theological federation"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE QUEEN'S FOUNDATION FOR ECUMENICAL THEOLOGICAL EDUCATION",
+            "order_by_name": "the queen's foundation for ecumenical theological education"
+        },
+        {
+            "alphabet": "w",
+            "name": "West Dean College",
+            "order_by_name": "west dean college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BODMIN COLLEGE",
+            "order_by_name": "bodmin college"
+        },
+        {
+            "alphabet": "l",
+            "name": "LEEDS COLLEGE OF MUSIC",
+            "order_by_name": "leeds college of music"
+        },
+        {
+            "alphabet": "c",
+            "name": "CARDIFF AND VALE COLLEGE",
+            "order_by_name": "cardiff and vale college"
+        },
+        {
+            "alphabet": "i",
+            "name": "Institute of Contemporary Music Performance",
+            "order_by_name": "institute of contemporary music performance"
+        },
+        {
+            "alphabet": "s",
+            "name": "SOUTH GLOUCESTERSHIRE AND STROUD COLLEGE",
+            "order_by_name": "south gloucestershire and stroud college"
+        },
+        {
+            "alphabet": "b",
+            "name": "BACKSTAGE ACADEMY (TRAINING) LTD",
+            "order_by_name": "backstage academy (training) ltd"
+        },
+        {
+            "alphabet": "e",
+            "name": "EASTON AND OTLEY COLLEGE",
+            "order_by_name": "easton and otley college"
+        },
+        {
+            "alphabet": "s",
+            "name": "University of St Mark & St John",
+            "order_by_name": "st mark & st john"
+        },
+        {
+            "alphabet": "b",
+            "name": "BIMM LIMITED",
+            "order_by_name": "bimm limited"
+        },
+        {
+            "alphabet": "t",
+            "name": "THE ADDICT DANCE ACADEMY LTD",
+            "order_by_name": "the addict dance academy ltd"
+        },
+        {
+            "alphabet": "c",
+            "name": "City and Guilds of London Art School",
+            "order_by_name": "city and guilds of london art school"
+        },
+        {
+            "alphabet": "l",
+            "name": "The University of Law",
+            "order_by_name": "law"
+        },
+        {
+            "alphabet": "b",
+            "name": "Birmingham Community NHS Trust",
+            "order_by_name": "birmingham community nhs trust"
+        },
+        {
+            "alphabet": "h",
+            "name": "HARPER ADAMS UNIVERSITY",
+            "order_by_name": "harper adams university"
+        },
+        {
+            "alphabet": "s",
+            "name": "Shockout Arts",
+            "order_by_name": "shockout arts"
+        },
+        {
+            "alphabet": "h",
+            "name": "HY EDUCATION LIMITED",
+            "order_by_name": "hy education limited"
+        },
+        {
+            "alphabet": "g",
+            "name": "GLOBAL BANKING SCHOOL LIMITED",
+            "order_by_name": "global banking school limited"
+        },
+        {
+            "alphabet": "p",
+            "name": "Pearson College London",
+            "order_by_name": "pearson college london"
+        },
+        {
+            "alphabet": "u",
+            "name": "UCFB COLLEGE OF FOOTBALL BUSINESS LIMITED",
+            "order_by_name": "ucfb college of football business limited"
+        },
+        {
+            "alphabet": "m",
+            "name": "Montessori Centre International",
+            "order_by_name": "montessori centre international"
+        },
+        {
+            "alphabet": "m",
+            "name": "MET FILM SCHOOL LIMITED",
+            "order_by_name": "met film school limited"
+        },
+        {
+            "alphabet": "d",
+            "name": "DIME ONLINE",
+            "order_by_name": "dime online"
+        },
+        {
+            "alphabet": "n",
+            "name": "New College of the Humanities",
+            "order_by_name": "new college of the humanities"
+        },
+        {
+            "alphabet": "a",
+            "name": "ACM",
+            "order_by_name": "acm"
+        },
+        {
+            "alphabet": "h",
+            "name": "Hartpury University",
+            "order_by_name": "hartpury university"
+        },
+        {
+            "alphabet": "m",
+            "name": "Medway School of Pharmacy",
+            "order_by_name": "medway school of pharmacy"
+        },
+        {
+            "alphabet": "h",
+            "name": "Hull York Medical School",
+            "order_by_name": "hull york medical school"
+        },
+        {
+            "alphabet": "b",
+            "name": "Brighton and Sussex Medical School",
+            "order_by_name": "brighton and sussex medical school"
+        }
+    ]
+}
