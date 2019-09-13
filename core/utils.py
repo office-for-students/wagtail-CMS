@@ -42,6 +42,7 @@ def parse_menu_item(menu_item):
             sub_items.append(parse_menu_item(item))
         item_dict['sub_items'] = sub_items
     else:
+        item_dict['sub_items'] = None
         item_dict['url'] = menu_item.value.get('link_page').url
 
     return item_dict
