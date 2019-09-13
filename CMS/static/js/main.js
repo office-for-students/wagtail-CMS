@@ -379,7 +379,16 @@
             this.mobileCloseButton = this.wrapper.find('#close-menu');
             this.mobileMenuBody = this.wrapper.find('.discover-uni-nav__mobile-links');
 
+            this.initialiseDropdowns();
             this.startWatchers();
+        },
+
+        initialiseDropdowns: function() {
+            this.dropdowns = []
+            var dropdowns = this.wrapper.find('.discover-uni-nav__desktop-dropdown');
+            for (var i = 0; i < dropdowns.length; i++) {
+                this.dropdowns.push(new NavDropdown(dropdowns[i]));
+            }
         },
 
         startWatchers: function() {
@@ -394,6 +403,27 @@
                 that.mobileMenuBody.hide();
                 that.mobileCloseButton.hide();
                 that.mobileBurgerButton.show();
+            });
+        }
+    }
+
+    var NavDropdown =  function(wrapper) {
+        this.wrapper = $(wrapper);
+        this.setup();
+    }
+
+    NavDropdown.prototype = {
+        setup: function() {
+            this.toggle = this.wrapper.find('.discover-uni-nav__desktop-dropdown-toggle');
+            this.body = this.wrapper.find('.discover-uni-nav__desktop-dropdown-body');
+
+            this.startWatcher();
+        },
+
+        startWatcher: function() {
+            var that = this;
+            this.toggle.click(function() {
+                that.body.toggle();
             });
         }
     }

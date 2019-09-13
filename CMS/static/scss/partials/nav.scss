@@ -19,10 +19,17 @@
 
     display: flex;
     align-items: center;
-    padding-left: 15px;
-    padding-right: 15px;
 
-    color: $white;
+    a {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        color: $white;
+        text-decoration: none;
+    }
 
     &:hover {
         @include green-gradient-background-mixin();
@@ -210,28 +217,48 @@
             &-links {
                 display: flex;
                 margin: -20px 0px -20px;
+
+                list-style: none;
+                padding-left: 0px;
             }
 
             &-dropdown {
-                &:hover {
+                height: 100%;
+
+                border: none;
+                background-color: transparent;
+                text-decoration: none;
+
+                &:hover, &:focus {
                     .discover-uni-nav__desktop-dropdown-body {
                         display: block;
                     }
                 }
 
                 &-toggle {
-                    @include top-level-desktop-item();
-
-                    margin: 0px;
                     height: 100%;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    margin: 0px;
+
+                    color: $white;
+                    text-decoration: none;
+
+                    &:hover {
+                        @include green-gradient-background-mixin();
+                    }
                 }
 
                 &-body {
                     display: none;
                     position: absolute;
                     z-index: 100;
+                    padding-left: 0px;
 
                     background-color: $header-blue;
+                    list-style: none;
                 }
 
                 &-link {
@@ -253,8 +280,6 @@
 
             &-link {
                 @include top-level-desktop-item();
-
-                text-decoration: none;
             }
         }
 
@@ -269,8 +294,8 @@
         .nav-bookmark {
             &__count {
                 padding: 0px 5.3px;
-                right: 4px;
-                top: 42px;
+                right: 5px;
+                top: 38px;
 
                 border-radius: 20px;
             }
