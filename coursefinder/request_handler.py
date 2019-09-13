@@ -41,4 +41,5 @@ def course_finder_query(subject, institution, countries, postcode, filters, cour
             url = f"{url}&postcode={postcode}"
         if filters and filters != '':
             url = f"{url}&filters={filters}"
+        print(url)
         return requests.get(url=url, headers=headers)
