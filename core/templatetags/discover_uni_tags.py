@@ -33,7 +33,7 @@ def queryparams(*_, **kwargs):
 def get_translation(*_, **kwargs):
     key = kwargs.get('key')
     language = kwargs.get('language')
-    string = DICT.get(key).get(language) if key in DICT else ''
+    string = DICT.get(key).get(language) if key in DICT else key
 
     if not string:
         string = DICT.get(key).get(enums.languages.ENGLISH) if key in DICT else ''

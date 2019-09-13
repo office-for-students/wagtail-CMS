@@ -48,6 +48,10 @@ class Section(DiscoverUniBasePage):
         StreamFieldPanel('lateral_links')
     ]
 
+    @property
+    def has_lateral_links(self):
+        return self.lateral_links or self.lateral_link_title
+
     def get_breadcrumbs(self):
         return self.get_ancestors().live()[1:]
 
