@@ -656,7 +656,7 @@
                 $(option).attr("disabled", "disabled");
                 if (option.dataset.code.includes(this.subjectSelector[0].value)) {
                     $(option).removeAttr("disabled");
-                    all += '"' + option.value + '",';
+                    all += option.value + ',';
                 }
             }
             this.subjectCodeOptions[0].value = all;
