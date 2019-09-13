@@ -14,6 +14,9 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
 
     page = get_page_for_language(language, CourseDetailPage.objects.all())
 
+    page.uni_site_links_header = page.uni_site_links_header.replace('{{institution_name}}',
+                                                                    course.institution.pub_ukprn_name)
+
     comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
     bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
 
