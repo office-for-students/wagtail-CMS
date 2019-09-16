@@ -491,6 +491,7 @@ NoDataWidget.prototype = {
         var ctaWrapperNode = document.createElement('div');
         ctaWrapperNode.classList.add('cta');
         var ctaNode = document.createElement('a');
+        ctaNode.setAttribute('target', '_blank');
         ctaNode.href = this.generateLink();
 
         var cta = document.createTextNode(CONTENT.noDataCta[this.language]);
