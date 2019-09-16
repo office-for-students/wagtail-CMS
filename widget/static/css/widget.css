@@ -34,10 +34,10 @@
     margin-top: 9px;
     margin-bottom: 38px;
     height: 30px;
+    display: block;
 }
 
 .kis-widget.horizontal .widget-cta-block .logo {
-    display: block;
     margin-bottom: 10px;
 }
 
@@ -81,6 +81,16 @@
 .kis-widget.horizontal {
     width: 611px;
     height: 146px;
+}
+
+.kis-widget.vertical.responsive, .kis-widget.horizontal.responsive {
+    height: calc(100% - 4px);
+    width: calc(100% - 4px);
+    max-height: 500px;
+}
+
+.kis-widget.horizontal.responsive .widget-lead .stat {
+    align-items: flex-start;
 }
 
 .kis-widget .widget-lead {

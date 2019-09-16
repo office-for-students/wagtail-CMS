@@ -13,7 +13,7 @@ def widget_iframe(request, uk_prn, kis_course_id, optional_1=None, optional_2=No
 
     for param in optional_params:
         if param:
-            if param.lower() == 'horizontal' or param.lower() == 'vertical':
+            if param.lower() == 'horizontal' or param.lower() == 'vertical' or param.lower() == 'responsive':
                 orientation = param
             if param.lower() == 'en-gb' or param.lower() == 'cy-gb':
                 language = param
