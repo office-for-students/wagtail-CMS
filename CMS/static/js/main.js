@@ -248,10 +248,8 @@
         },
 
         handleSelection: function(selection) {
-            console.log(selection)
             for (var i = 0; i < this.baseSelect[0].length; i++) {
                 if (this.baseSelect[0][i].innerHTML == selection.baseOption[0].innerHTML) {
-                    console.log(10)
                     this.baseSelect[0].selectedIndex = i;
                     this.baseSelect.trigger('change');
                     this.uiSelect[0].innerHTML = selection.baseOption[0].innerHTML;
