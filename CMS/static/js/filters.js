@@ -14,6 +14,9 @@
             this.submitBlock = this.wrapper.find('.filters-block__submit-block');
             this.submitBtn = this.wrapper.find('.filters-block__submit-btn');
             this.inputs = this.wrapper.find('input');
+            this.pageInput = this.wrapper.find('#page_input');
+            this.countInput = this.wrapper.find('#count_input');
+            this.paginationInputs = $('.pagination a');
 
             this.form = this.wrapper.find('form');
 
@@ -59,6 +62,15 @@
                 $(this.inputs[i]).change(function() {
                     that.submitBtn.removeClass('disabled');
                 })
+            };
+
+            for (var i = 0; i < this.paginationInputs.length; i++) {
+                $(this.paginationInputs[i]).click(function(evt) {
+                    evt.preventDefault();
+                    that.pageInput.val(this.dataset.page);
+                    that.countInput.val(this.dataset.count);
+                    that.form.submit();
+                });
             }
         },
 
