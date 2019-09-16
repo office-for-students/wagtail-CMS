@@ -140,6 +140,11 @@
             position: absolute;
             top: 25px;
             right: 25px;
+            padding: 0px;
+
+            img {
+                width: 20px;
+            }
         }
 
         .institution-explanation__body {
