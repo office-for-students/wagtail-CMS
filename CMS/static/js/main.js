@@ -176,6 +176,7 @@
             var baseSelect = this.baseSelect[0];
             var uiSelect = document.createElement("div");
             uiSelect.setAttribute("class", "select-selected");
+            uiSelect.setAttribute('tabindex', 0)
             uiSelect.innerHTML = baseSelect.options[baseSelect.selectedIndex].innerHTML;
             this.wrapper.append(uiSelect);
             this.uiSelect = this.wrapper.find('.select-selected');
@@ -214,6 +215,23 @@
                 that.closeCallback(activeSelector);
             });
 
+            this.uiSelect.keydown(function(evt) {
+                if (event.which === 13) {
+                    evt.stopPropagation();
+                    activeSelector = that;
+                    if (that.uiSelect.hasClass('select-arrow-active')) {
+                        var activeSelector = null;
+                    }
+                    that.closeCallback(activeSelector);
+                }
+            });
+
+            this.wrapper.keydown(function(evt) {
+                if (event.which === 27) {
+                    that.closeCallback(null);
+                }
+            });
+
             this.baseSelect.on('loadeddata', function() {
                 that.resetOptionList();
             })
@@ -230,8 +248,10 @@
         },
 
         handleSelection: function(selection) {
+            console.log(selection)
             for (var i = 0; i < this.baseSelect[0].length; i++) {
                 if (this.baseSelect[0][i].innerHTML == selection.baseOption[0].innerHTML) {
+                    console.log(10)
                     this.baseSelect[0].selectedIndex = i;
                     this.baseSelect.trigger('change');
                     this.uiSelect[0].innerHTML = selection.baseOption[0].innerHTML;
@@ -263,6 +283,7 @@
             var uiOption = document.createElement("div");
             uiOption.setAttribute("id", this.index);
             uiOption.setAttribute("class", 'option');
+            uiOption.setAttribute('tabindex', 0)
             uiOption.innerHTML = this.baseOption[0].innerHTML;
             if (this.baseOption[0].disabled) {
                 uiOption.setAttribute("class", 'select-hide');
@@ -275,7 +296,13 @@
             var that = this;
             this.uiOption.click(function() {
                 that.selectionCallback(that);
-            })
+            });
+
+            this.uiOption.keydown(function() {
+                if (event.which === 13) {
+                    that.selectionCallback(that);
+                }
+            });
         },
 
         unselect: function() {
