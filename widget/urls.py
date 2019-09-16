@@ -12,5 +12,6 @@ urlpatterns = [
             url(r'^(?P<optional_1>[\w\-]+?)/small/(?P<optional_2>[\w\-]+?)/(?P<optional_3>[\w\-]+?)/$(?i)',
                 widget_iframe, name='widget_iframe'),
         ])),
+    url(r'^embed-script$(?i)', widget_embed, name='widget_embed'),
     url(r'^embed-script/$(?i)', widget_embed, name='widget_embed'),
 ]
