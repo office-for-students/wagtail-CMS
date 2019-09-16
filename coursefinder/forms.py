@@ -2,7 +2,7 @@
 class SearchForm:
 
     def __init__(self, form_data):
-        self.institutions = form_data.get('institution_query', '')
+        self.institutions = form_data.get('institution_query', '').replace('"', '')
         self.course_query = form_data.get('subject_query', '')
 
 
