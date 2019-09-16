@@ -64,10 +64,10 @@
                 <div class="explanation">
                     <div class="explanation__link">
                         <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
-                        <p class="information-link">{{page.qa_explanation_link}}</p>
+                        <button class="information-link">{{page.qa_explanation_link}}</button>
                     </div>
 
-                    {% include 'institutions/partials/explanation_pop_up.html' with heading=page.qa_explanation_heading body=page.qa_explanation_body %}
+                    {% include 'institutions/partials/explanation_pop_up.html' with heading=page.qa_explanation_heading body=page.qa_explanation_body close_color='black' %}
                 </div>
             </div>
 
@@ -92,10 +92,10 @@
                     <div class="explanation">
                         <div class="explanation__link">
                             <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
-                            <p class="information-link">{{page.apr_explanation_link}}</p>
+                            <button class="information-link">{{page.apr_explanation_link}}</button>
                         </div>
 
-                        {% include 'institutions/partials/explanation_pop_up.html' with heading=page.apr_explanation_heading body=page.apr_explanation_body %}
+                        {% include 'institutions/partials/explanation_pop_up.html' with heading=page.apr_explanation_heading body=page.apr_explanation_body close_color='black' %}
                     </div>
                 </div>
             {% endif  %}
@@ -139,10 +139,10 @@
                 <div class="explanation">
                     <div class="explanation__link">
                         <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
-                        <p class="information-link">{{page.tef_explanation_link}}</p>
+                        <button class="information-link">{{page.tef_explanation_link}}</button>
                     </div>
 
-                    {% include 'institutions/partials/explanation_pop_up.html' with heading=page.tef_explanation_heading body=page.tef_explanation_body %}
+                    {% include 'institutions/partials/explanation_pop_up.html' with heading=page.tef_explanation_heading body=page.tef_explanation_body close_color='black' %}
                 </div>
             </div>
         </div>

@@ -176,6 +176,7 @@
             var baseSelect = this.baseSelect[0];
             var uiSelect = document.createElement("div");
             uiSelect.setAttribute("class", "select-selected");
+            uiSelect.setAttribute('tabindex', 0)
             uiSelect.innerHTML = baseSelect.options[baseSelect.selectedIndex].innerHTML;
             this.wrapper.append(uiSelect);
             this.uiSelect = this.wrapper.find('.select-selected');
@@ -212,6 +213,23 @@
                     var activeSelector = null;
                 }
                 that.closeCallback(activeSelector);
+            });
+
+            this.uiSelect.keydown(function(evt) {
+                if (event.which === 13) {
+                    evt.stopPropagation();
+                    activeSelector = that;
+                    if (that.uiSelect.hasClass('select-arrow-active')) {
+                        var activeSelector = null;
+                    }
+                    that.closeCallback(activeSelector);
+                }
+            });
+
+            this.wrapper.keydown(function(evt) {
+                if (event.which === 27) {
+                    that.closeCallback(null);
+                }
             });
 
             this.baseSelect.on('loadeddata', function() {
@@ -263,6 +281,7 @@
             var uiOption = document.createElement("div");
             uiOption.setAttribute("id", this.index);
             uiOption.setAttribute("class", 'option');
+            uiOption.setAttribute('tabindex', 0)
             uiOption.innerHTML = this.baseOption[0].innerHTML;
             if (this.baseOption[0].disabled) {
                 uiOption.setAttribute("class", 'select-hide');
@@ -275,7 +294,13 @@
             var that = this;
             this.uiOption.click(function() {
                 that.selectionCallback(that);
-            })
+            });
+
+            this.uiOption.keydown(function() {
+                if (event.which === 13) {
+                    that.selectionCallback(that);
+                }
+            });
         },
 
         unselect: function() {
@@ -379,7 +404,16 @@
             this.mobileCloseButton = this.wrapper.find('#close-menu');
             this.mobileMenuBody = this.wrapper.find('.discover-uni-nav__mobile-links');
 
+            this.initialiseDropdowns();
             this.startWatchers();
+        },
+
+        initialiseDropdowns: function() {
+            this.dropdowns = []
+            var dropdowns = this.wrapper.find('.discover-uni-nav__desktop-dropdown');
+            for (var i = 0; i < dropdowns.length; i++) {
+                this.dropdowns.push(new NavDropdown(dropdowns[i]));
+            }
         },
 
         startWatchers: function() {
@@ -394,6 +428,27 @@
                 that.mobileMenuBody.hide();
                 that.mobileCloseButton.hide();
                 that.mobileBurgerButton.show();
+            });
+        }
+    }
+
+    var NavDropdown =  function(wrapper) {
+        this.wrapper = $(wrapper);
+        this.setup();
+    }
+
+    NavDropdown.prototype = {
+        setup: function() {
+            this.toggle = this.wrapper.find('.discover-uni-nav__desktop-dropdown-toggle');
+            this.body = this.wrapper.find('.discover-uni-nav__desktop-dropdown-body');
+
+            this.startWatcher();
+        },
+
+        startWatcher: function() {
+            var that = this;
+            this.toggle.click(function() {
+                that.body.toggle();
             });
         }
     }

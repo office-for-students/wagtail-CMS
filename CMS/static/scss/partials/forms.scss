@@ -29,8 +29,10 @@ fieldset {
         position: absolute;
         opacity: 0;
         cursor: pointer;
-        height: 0;
-        width: 0;
+        height: 2px;
+        width: 2px;
+        top: 0px;
+        left: 0px;
 
         /* When the checkbox is checked, add a blue background */
         &:checked ~ .checkmark {
@@ -96,8 +98,10 @@ fieldset {
         position: absolute;
         opacity: 0;
         cursor: pointer;
-        height: 0;
-        width: 0;
+        height: 2px;
+        width: 2px;
+        top: 0px;
+        left: 0px;
 
         &:checked ~ .radiobox {
             @include green-gradient-background-mixin();
