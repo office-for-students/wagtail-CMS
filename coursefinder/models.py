@@ -165,8 +165,8 @@ class CourseFinderResults(DiscoverUniBasePage):
 class BaseSearch:
 
     def __init__(self, page, count):
-        self.page = int(page)
-        self.count = int(count)
+        self.page = int(page) if page else 1
+        self.count = int(count) if page else 20
         self.offset = self.count * (self.page - 1)
         self.total_courses = None
         self.total_institutions = None
