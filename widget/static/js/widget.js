@@ -132,7 +132,6 @@ DiscoverUniWidget.prototype = {
     },
 
     handleResponsive: function() {
-//        var iframe = document.getElementById('unistats-widget-frame');
         if (this.inIframe()) {
             if (window.innerWidth > window.innerHeight) {
                 this.targetDiv.classList.add('horizontal');
