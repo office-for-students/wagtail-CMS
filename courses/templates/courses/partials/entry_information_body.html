@@ -60,7 +60,7 @@
                         <button class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</button>
                     </div>
 
-                    <div class="chart-label-explanation">
+                    <div tabindex="-1" class="chart-label-explanation" role="dialog">
                         <h3 class="chart-label-explanation__heading">
                             {{block.value.qualification_label_explanation_heading}}
                         </h3>
