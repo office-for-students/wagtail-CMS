@@ -64,7 +64,6 @@ def narrow_search(request, language=enums.languages.ENGLISH):
 
 def course_finder_results(request, language=enums.languages.ENGLISH):
     query_params = request.POST
-    print(query_params)
     countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
     filter_form = FilterForm(query_params)
     filters = build_filters(query_params)

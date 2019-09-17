@@ -56,14 +56,15 @@
                 <div class="explanation">
                     <div class="explanation__link">
                         <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
-                        <p class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</p>
+                        <button class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</button>
                     </div>
 
                     <div class="chart-label-explanation">
                         <h3 class="chart-label-explanation__heading">
                             {{block.value.label_explanation_heading}}
-                            <span class="chart-label-explanation__close"><img src="{% static 'images/close-grey.svg' %}" alt=""></span>
                         </h3>
+
+                        <button class="chart-label-explanation__close"><img src="{% static 'images/close-grey.svg' %}" alt="Close  pop up"></button>
 
                         <div class="chart-label-explanation__body">
                             {{block.value.label_explanation_body}}

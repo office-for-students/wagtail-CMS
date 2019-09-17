@@ -1,10 +1,11 @@
-{% load wagtailcore_tags %}
+{% load staticfiles wagtailcore_tags %}
 
 <div class="institution-explanation">
     <h2 class="institution-explanation__heading">
         {{heading}}
-        <span class="institution-explanation__close">X</span>
     </h2>
+
+    <button class="institution-explanation__close"><img src="{% static 'images/close-'|add:close_color|add:'.svg' %}" alt="Close pop up"></button>
 
     <div class="institution-explanation__body">
         {{body | richtext}}

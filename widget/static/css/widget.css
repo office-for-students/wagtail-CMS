@@ -5,6 +5,7 @@
 .kis-widget {
     font-family: Nunito Sans;
     border: 2px solid #4EA27D;
+    display: flex;
 }
 
 .kis-widget .widget-lead {
@@ -33,10 +34,10 @@
     margin-top: 9px;
     margin-bottom: 38px;
     height: 30px;
+    display: block;
 }
 
 .kis-widget.horizontal .widget-cta-block .logo {
-    display: block;
     margin-bottom: 10px;
 }
 
@@ -74,12 +75,22 @@
 .kis-widget.vertical {
     width: 186px;
     height: 496px;
+    flex-direction: column;
 }
 
 .kis-widget.horizontal {
     width: 611px;
     height: 146px;
-    display: flex;
+}
+
+.kis-widget.vertical.responsive, .kis-widget.horizontal.responsive {
+    height: calc(100% - 4px);
+    width: calc(100% - 4px);
+    max-height: 500px;
+}
+
+.kis-widget.horizontal.responsive .widget-lead .stat {
+    align-items: flex-start;
 }
 
 .kis-widget .widget-lead {
@@ -88,6 +99,7 @@
 
 .kis-widget.vertical .widget-lead {
     position: relative;
+    flex: 1;
 }
 
 .kis-widget.horizontal .widget-lead {

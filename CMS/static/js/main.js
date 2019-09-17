@@ -107,16 +107,8 @@
             var that = this;
 
             this.acceptBtn.click(function() {
-                document.cookie = "discoverUniCookies=accepted; expires=Thu, 31 Dec 2050 23:59:59 UTC";
+                document.cookie = "discoverUniCookies=accepted;";
                 that.wrapper.hide();
-            });
-
-            this.findOutMoreBtn.click(function() {
-                if (location.pathname.indexOf('/cy/') === -1) {
-                    location.pathname = '/cookies/';
-                } else {
-                    location.pathname = '/cy/cookies/';
-                }
             });
         }
     }
@@ -176,6 +168,7 @@
             var baseSelect = this.baseSelect[0];
             var uiSelect = document.createElement("div");
             uiSelect.setAttribute("class", "select-selected");
+            uiSelect.setAttribute('tabindex', 0)
             uiSelect.innerHTML = baseSelect.options[baseSelect.selectedIndex].innerHTML;
             this.wrapper.append(uiSelect);
             this.uiSelect = this.wrapper.find('.select-selected');
@@ -212,6 +205,23 @@
                     var activeSelector = null;
                 }
                 that.closeCallback(activeSelector);
+            });
+
+            this.uiSelect.keydown(function(evt) {
+                if (event.which === 13) {
+                    evt.stopPropagation();
+                    activeSelector = that;
+                    if (that.uiSelect.hasClass('select-arrow-active')) {
+                        var activeSelector = null;
+                    }
+                    that.closeCallback(activeSelector);
+                }
+            });
+
+            this.wrapper.keydown(function(evt) {
+                if (event.which === 27) {
+                    that.closeCallback(null);
+                }
             });
 
             this.baseSelect.on('loadeddata', function() {
@@ -263,6 +273,7 @@
             var uiOption = document.createElement("div");
             uiOption.setAttribute("id", this.index);
             uiOption.setAttribute("class", 'option');
+            uiOption.setAttribute('tabindex', 0)
             uiOption.innerHTML = this.baseOption[0].innerHTML;
             if (this.baseOption[0].disabled) {
                 uiOption.setAttribute("class", 'select-hide');
@@ -275,7 +286,13 @@
             var that = this;
             this.uiOption.click(function() {
                 that.selectionCallback(that);
-            })
+            });
+
+            this.uiOption.keydown(function() {
+                if (event.which === 13) {
+                    that.selectionCallback(that);
+                }
+            });
         },
 
         unselect: function() {
@@ -379,7 +396,16 @@
             this.mobileCloseButton = this.wrapper.find('#close-menu');
             this.mobileMenuBody = this.wrapper.find('.discover-uni-nav__mobile-links');
 
+            this.initialiseDropdowns();
             this.startWatchers();
+        },
+
+        initialiseDropdowns: function() {
+            this.dropdowns = []
+            var dropdowns = this.wrapper.find('.discover-uni-nav__desktop-dropdown');
+            for (var i = 0; i < dropdowns.length; i++) {
+                this.dropdowns.push(new NavDropdown(dropdowns[i]));
+            }
         },
 
         startWatchers: function() {
@@ -394,6 +420,27 @@
                 that.mobileMenuBody.hide();
                 that.mobileCloseButton.hide();
                 that.mobileBurgerButton.show();
+            });
+        }
+    }
+
+    var NavDropdown =  function(wrapper) {
+        this.wrapper = $(wrapper);
+        this.setup();
+    }
+
+    NavDropdown.prototype = {
+        setup: function() {
+            this.toggle = this.wrapper.find('.discover-uni-nav__desktop-dropdown-toggle');
+            this.body = this.wrapper.find('.discover-uni-nav__desktop-dropdown-body');
+
+            this.startWatcher();
+        },
+
+        startWatcher: function() {
+            var that = this;
+            this.toggle.click(function() {
+                that.body.toggle();
             });
         }
     }
@@ -682,17 +729,21 @@
 
         // Course finder
 
-        if (localStorage.getItem("uniJSON") === null) {
-            $.getJSON("/static/jsonfiles/institutions.json", function(result) {
-                result.sort(function(a, b){
+        $.getJSON("/static/jsonfiles/institutions.json", function(result) {
+            var version = result.version;
+            var institutions = result.institutions;
+
+            if (version !== localStorage.getItem("uniJSONVersion") || localStorage.getItem("uniJSON") === null) {
+                institutions.sort(function(a, b){
                     if(a.order_by_name < b.order_by_name) { return -1; }
                     if(a.order_by_name > b.order_by_name) { return 1; }
                     return 0;
                 });
 
-                localStorage.setItem("uniJSON", JSON.stringify(result));
-            })
-        }
+                localStorage.setItem("uniJSON", JSON.stringify(institutions));
+                localStorage.setItem("uniJSONVersion", version);
+            }
+        })
 
         if (localStorage.getItem("subjectJSON") === null) {
             $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
