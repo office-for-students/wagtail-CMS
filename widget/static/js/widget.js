@@ -105,6 +105,8 @@ var LANGUAGE_KEYS = {
     'cy-gb': 'welsh'
 }
 
+var MINIMUM_RESPONSIVE_HORIZONTAL_WIDTH = 400;
+
 var  DiscoverUniWidget = function(targetDiv) {
     this.targetDiv = targetDiv;
     this.setup();
@@ -121,9 +123,36 @@ DiscoverUniWidget.prototype = {
         this.size = this.targetDiv.dataset.size;
 
         this.targetDiv.classList.add(this.orientation);
+        if (this.orientation === 'responsive') {
+            this.handleResponsive();
+        }
 
         this.addCss();
         this.loadCourseData();
+    },
+
+    handleResponsive: function() {
+        if (this.inIframe()) {
+            if (window.innerWidth > window.innerHeight) {
+                this.targetDiv.classList.add('horizontal');
+            } else {
+                this.targetDiv.classList.add('vertical');
+            }
+        } else {
+            if (this.targetDiv.clientWidth > MINIMUM_RESPONSIVE_HORIZONTAL_WIDTH) {
+                this.targetDiv.classList.add('horizontal');
+            } else {
+                this.targetDiv.classList.add('vertical');
+            }
+        }
+    },
+
+    inIframe: function() {
+        try {
+            return window.location !== window.parent.location;
+        } catch (e) {
+            return true;
+        }
     },
 
     addCss: function() {
@@ -491,6 +520,7 @@ NoDataWidget.prototype = {
         var ctaWrapperNode = document.createElement('div');
         ctaWrapperNode.classList.add('cta');
         var ctaNode = document.createElement('a');
+        ctaNode.setAttribute('target', '_blank');
         ctaNode.href = this.generateLink();
 
         var cta = document.createTextNode(CONTENT.noDataCta[this.language]);
