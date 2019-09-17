@@ -107,16 +107,8 @@
             var that = this;
 
             this.acceptBtn.click(function() {
-                document.cookie = "discoverUniCookies=accepted; expires=Thu, 31 Dec 2050 23:59:59 UTC";
+                document.cookie = "discoverUniCookies=accepted;";
                 that.wrapper.hide();
-            });
-
-            this.findOutMoreBtn.click(function() {
-                if (location.pathname.indexOf('/cy/') === -1) {
-                    location.pathname = '/cookies/';
-                } else {
-                    location.pathname = '/cy/cookies/';
-                }
             });
         }
     }
