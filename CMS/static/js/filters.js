@@ -145,20 +145,25 @@
         },
 
         loadUnis: function() {
-            if (localStorage.getItem("uniJSON") === null) {
-                $.getJSON("/static/jsonfiles/institutions.json", function(result) {
-                    result.sort(function(a, b) {
+            $.getJSON("/static/jsonfiles/institutions.json", function(result) {
+                var version = result.version;
+                var institutions = result.institutions;
+
+                if (version !== localStorage.getItem("uniJSONVersion") || localStorage.getItem("uniJSON") === null) {
+                    institutions.sort(function(a, b) {
                         if(a.order_by_name < b.order_by_name) { return -1; }
                         if(a.order_by_name > b.order_by_name) { return 1; }
                         return 0;
                     });
-                })
 
-                localStorage.setItem("uniJSON", JSON.stringify(result));
-                this.uniData = result;
-            } else {
-                this.uniData = JSON.parse(localStorage.getItem("uniJSON"))
-            }
+                    localStorage.setItem("uniJSON", JSON.stringify(institutions));
+                    localStorage.setItem("uniJSONVersion", version);
+
+                    this.uniData = result;
+                } else {
+                    this.uniData = JSON.parse(localStorage.getItem("uniJSON"))
+                }
+            });
 
             this.uniList = new UniList(this.unisListWrapper, this.uniData, this.setTotalCount.bind(this),
                                         this.setSelectedCount.bind(this));
