@@ -315,7 +315,7 @@
         setup: function() {
             this.toggleBtn = this.wrapper.find('.feedback-form__toggle');
             this.formHeading = this.wrapper.find('.feedback-form__message');
-            this.feedbackThankYou = this.wrapper.find('.feed-form__thank-you');
+            this.feedbackThankYou = this.wrapper.find('.feedback-form__thank-you');
             this.formBody = this.wrapper.find('.feedback-form__body');
             this.errorMessage = this.wrapper.find('.feedback-form__error-message');
             this.form = this.wrapper.find('.feedback-form__form');
@@ -358,6 +358,8 @@
         handleSubmissionSuccess: function() {
             this.errorMessage.hide();
             this.handleFormClose();
+            this.formHeading.hide();
+            this.feedbackThankYou.show();
         },
 
         handleSubmissionError: function() {
