@@ -153,15 +153,15 @@ DICT = {
     },
     'cookie_message': {
         'en': 'This website uses cookies to store information on your computer.',
-        'cy': ''
+        'cy': 'Mae’r wefan hon yn defnyddio cwcis i storio gwybodaeth ar eich cyfrifiadur.'
     },
     'cookie_more': {
         'en': 'I’d like to find out more',
-        'cy': ''
+        'cy': 'Hoffwn wybod mwy'
     },
     'cookie_ok': {
         'en': 'I’m happy with cookies',
-        'cy': ''
+        'cy': 'Rwy’n fodlon â’r cwcis'
     },
     'copyright': {
         'en': '2019 Copyright. All rights reserved.',
