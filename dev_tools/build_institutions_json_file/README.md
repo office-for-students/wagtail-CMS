@@ -9,7 +9,6 @@ Before running the script, set the following environment variables.
 | Variable                            | Default                | Description                                              |
 | ----------------------------------- | ---------------------- | -------------------------------------------------------- |
 | AzureCosmosDbDatabaseId | retrieve from portal | The id of a CosmosDB instance that holds the latest ukrlp data in a container called urkrlp.|
-| AzureCosmosDbUkRlpCollectionId | ukrlp | the container name holding the ukrlp data |
 | AzureCosmosDbInstitutionsCollectionId | ukrlp | the container name holding the institution data |
 | AzureCosmosDbUri | retrieve from portal | the uri to CosmosDB |
 | AzureCosmosDbKey | retrieve from portal | the key to authenticate to CosmosDB |
