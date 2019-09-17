@@ -34,10 +34,12 @@
                 <p class="course-detail__overview-item-value">{{ course.mode.label }}</p>
             </div>
 
-            <div class="course-detail__overview-item overview-block">
-                <p class="course-detail__overview-item-heading">{% get_translation key='length' language=page.get_language %}</p>
-                <p class="course-detail__overview-item-value">{{ course.length.label | slice:1 }} {% get_translation key='year_course' language=page.get_language %}</p>
-            </div>
+            {% if course.mode.label != 'Part-time' %}
+                <div class="course-detail__overview-item overview-block">
+                    <p class="course-detail__overview-item-heading">{% get_translation key='length' language=page.get_language %}</p>
+                    <p class="course-detail__overview-item-value">{{ course.length.label | slice:1 }} {% get_translation key='year_course' language=page.get_language %}</p>
+                </div>
+            {% endif %}
 
             <div class="course-detail__overview-item overview-block">
                 <p class="course-detail__overview-item-heading">{% get_translation key='distance_learning' language=page.get_language %}</p>
