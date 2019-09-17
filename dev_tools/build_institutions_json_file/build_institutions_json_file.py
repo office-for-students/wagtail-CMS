@@ -29,24 +29,41 @@ def get_cosmos_client():
 
 
 def build_institutions_json_file():
+    version = os.environ["Version"]
+
+    if version == "":
+        print("set environment variable: version")
+        exit()
+
     cosmos_db_client = get_cosmos_client()
     collection_link = get_collection_link(
-        "AzureCosmosDbDatabaseId", "AzureCosmosDbUkRlpCollectionId"
+        "AzureCosmosDbDatabaseId", "AzureCosmosDbInstitutionCollectionId"
     )
 
     query = "SELECT * from c "
 
     options = {"enableCrossPartitionQuery": True}
 
-    ukrlp_list = list(cosmos_db_client.QueryItems(collection_link, query, options))
+    institution_list = list(cosmos_db_client.QueryItems(collection_link, query, options))
 
     list_of_institutions = []
-    for val in ukrlp_list:
-        inst_entry = get_inst_entry(val["ukprn_name"])
-        list_of_institutions.append(inst_entry)
+    count = 0
+    for val in institution_list:
+        institution = val["institution"]
+        if isinstance(institution["pub_ukprn_name"], str):
+            inst_entry = get_inst_entry(institution["pub_ukprn_name"])
+            list_of_institutions.append(inst_entry)
+            count += 1
+
+    print(count)
+
+    institutions = {
+        "version": int(version),
+        "institutions": list_of_institutions
+    }
 
     with open("institutions.json", "w") as fp:
-        json.dump(list_of_institutions, fp, indent=4)
+        json.dump(institutions, fp, indent=4)
 
 
 def get_inst_entry(name):
