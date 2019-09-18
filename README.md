@@ -1,4 +1,4 @@
-# uniSimple
+# DiscoverUni
 
 <!-- vim-markdown-toc GitLab -->
 
@@ -14,7 +14,7 @@
 ## Purpose of this app
 
 
-The purpose of this app is to provide a user interface for admin users to maintain the 'uniSimple' site.
+The purpose of this app is to provide a user interface for admin users to maintain the 'DiscoverUni' site content.
 
 
 ## About this application
