@@ -43,6 +43,10 @@ DICT = {
         'en': 'Administrative occupations: Records',
         'cy': 'Galwedigaethau gweinyddol: Cofnodion'
     },
+    'Animal care and control services': {
+        'en': 'Animal care and control services',
+        'cy': 'Gwasanaethau Gofal a Rheoli Anifeiliaid'
+    },
     'apply_filters': {
         'en': 'Apply filters',
         'cy': ''
@@ -54,6 +58,10 @@ DICT = {
     'Artistic and literary occupations': {
         'en': 'Artistic and literary occupations',
         'cy': 'Galwedigaethau artistig a llenyddol'
+    },
+    'Artistic, literary and media occupations': {
+        'en': 'Artistic, literary and media occupations',
+        'cy': "Galwedigaethau Artistig, Llenyddol a'r Cyfryngau"
     },
     'assessment_method': {
         'en': 'How the course is assessed',
@@ -87,6 +95,10 @@ DICT = {
         'en': 'Business and finance associate professionals',
         'cy': 'Gweithwyr proffesiynol ym maes busnes a chyllid cysylltiol'
     },
+    'Business and Public Service Associate Professionals': {
+        'en': 'Business and Public Service Associate Professionals',
+        'cy': 'Gweithwyr Proffesiynol Cysylltiol Busnes a Gwasanaethau Cyhoeddus'
+    },
     'Business and statistical professionals': {
         'en': 'Business and statistical professionals',
         'cy': 'Gweithwyr proffesiynol busnes ac ystadegol'
@@ -95,9 +107,21 @@ DICT = {
         'en': 'Caring personal service occupations',
         'cy': 'Galwedigaethau gofal a gwasanaeth personol'
     },
+    'Business, research and administrative professionals': {
+        'en': 'Business, research and administrative professionals',
+        'cy': 'Gweithwyr Proffesiynol Busnes, Ymchwil a Gweinyddu'
+    },
+    'Caring Personal Services': {
+        'en': 'Caring Personal Services',
+        'cy': "Gwasanaethau Gofalu Personol"
+    },
     'chart_label_explained': {
         'en': 'Chart labels explained',
         'cy': "Esboniad ynghylch labeli'r siart"
+    },
+    'Childcare and Related Personal Services': {
+        'en': 'Childcare and Related Personal Services',
+        'cy': 'Gwasanaethau Personol Gofal Plant a Gwasanaethau Cysylltiedig'
     },
     'clear_all': {
         'en': 'Clear all',
@@ -123,17 +147,21 @@ DICT = {
         'en': 'Conservation associate professionals',
         'cy': 'Gweithwyr proffesiynol ym maes cadwraeth'
     },
+    'Conservation and environment professionals': {
+        'en': 'Conservation and environment professionals',
+        'cy': "Gweithwyr Proffesiynol Cadwraeth a'r Amgylchedd"
+    },
     'cookie_message': {
         'en': 'This website uses cookies to store information on your computer.',
-        'cy': ''
+        'cy': 'Mae’r wefan hon yn defnyddio cwcis i storio gwybodaeth ar eich cyfrifiadur.'
     },
     'cookie_more': {
         'en': 'I’d like to find out more',
-        'cy': ''
+        'cy': 'Hoffwn wybod mwy'
     },
     'cookie_ok': {
         'en': 'I’m happy with cookies',
-        'cy': ''
+        'cy': 'Rwy’n fodlon â’r cwcis'
     },
     'copyright': {
         'en': '2019 Copyright. All rights reserved.',
@@ -211,6 +239,10 @@ DICT = {
         'en': 'Design associate professionals',
         'cy': 'Gweithwyr proffesiynol ym maes Dylunio'
     },
+    'Design occupations': {
+        'en': 'Design occupations',
+        'cy': 'Galwedigaethau Dylunio'
+    },
     'distance_learning': {
         'en': 'Distance learning',
         'cy': 'Dysgu o bell'
@@ -277,13 +309,21 @@ DICT = {
         'en': 'Enter postcode',
         'cy': ''
     },
+    'feedback_button': {
+        'en': 'feedback',
+        'cy': 'adborth'
+    },
     'feedback_error': {
         'en': 'Sorry something went wrong submitting your feedback, please try again later.',
         'cy': "Mae'n ddrwg gennym, aeth rhywbeth o'i le wrth ichi roi adborth. Rhowch gynnig arall ymhen ychydig."
     },
     'feedback_form': {
-        'en': 'Feedback: is this page useful to you?',
-        'cy': "Adborth: a yw'r dudalen hon yn ddefnyddiol i chi?"
+        'en': 'This site is in beta. We welcome your ',
+        'cy': 'Fersiwn beta yw’r wefan hon. Rydym yn croesawu eich '
+    },
+    'feedback_thanks': {
+        'en': 'Thanks for your feedback.',
+        'cy': 'Diolch am eich adborth'
     },
     'filter': {
         'en': 'Filter',
@@ -346,8 +386,8 @@ DICT = {
         'cy': ''
     },
     'how_improve': {
-        'en': 'How should we improve this page?',
-        'cy': "Sut y dylem wella'r dudalen hon?"
+        'en': 'Please tell us about your experience',
+        'cy': 'Dywedwch wrthym am eich profiad'
     },
     'how_useful': {
         'en': 'How was this page useful to you?',
@@ -364,6 +404,10 @@ DICT = {
     'institution': {
         'en': 'Institution',
         'cy': 'Sefydliad'
+    },
+    'Information Technology and Telecommunications Professionals': {
+        'en': 'Information Technology and Telecommunications Professionals',
+        'cy': 'Gweithwyr Proffesiynol Technoleg Gwybodaeth a Thelathrebu'
     },
     'IT service delivery occupations': {
         'en': 'IT service delivery occupations',
@@ -401,6 +445,10 @@ DICT = {
         'en': 'Librarians and related professionals',
         'cy': 'Llyfrgellwyr a gweithwyr proffesiynol cysylltiedig'
     },
+    'Leisure, travel and related personal service occupations': {
+        'en': 'Leisure, travel and related personal service occupations',
+        'cy': 'Galwedigaethau Hamdden, Teithio a Gwasanaethau Personol Cysylltiedig'
+    },
     'location': {
         'en': 'Location',
         'cy': 'Lleoliad'
@@ -417,6 +465,10 @@ DICT = {
         'en': 'Managers and proprieters in agriculture and services',
         'cy': 'Rheolwyr a pherchnogion mewn amaethyddiaeth a gwasanaethau amaethyddol'
     },
+    'Managers, directors and senior officials': {
+        'en': 'Managers, directors and senior officials',
+        'cy': 'Rheolwyr, Cyfarwyddwyr ac Uwch Swyddogion'
+    },
     'Managers in distribution, storage and retailing': {
         'en': 'Managers in distribution, storage and retailing',
         'cy': 'Rheolwyr mewn dosbarthu, storio a manwerthu'
@@ -429,6 +481,10 @@ DICT = {
         'en': 'Media associate professionals',
         'cy': 'Gweithwyr proffesiynol ym maes Cyfryngau'
     },
+    'Media Professionals': {
+        'en': 'Media Professionals',
+        'cy': 'Gweithwyr Proffesiynol y Cyfryngau'
+    },
     'more_pages_before': {
         'en': 'More pages available before',
         'cy': 'Mwy o dudalennau ar gael cyn '
@@ -440,6 +496,10 @@ DICT = {
     'narrow_location': {
         'en': 'Narrow location',
         'cy': ''
+    },
+    'Natural and Social Science Professionals': {
+        'en': 'Natural and Social Science Professionals',
+        'cy': 'Gweithwyr Proffesiynol Gwyddoniaeth Naturiol a Chymdeithasol'
     },
     'near_your_home': {
         'en': 'to near your home',
@@ -484,6 +544,10 @@ DICT = {
     'number_of_results': {
         'en': '<strong>%s</strong> course(s) from <strong>%s</strong> provider(s)',
         'cy': 'Ceir <strong>%s</strong> cwrs gan <strong>%s</strong> darparydd'
+    },
+    'Nursing and Midwifery Professionals': {
+        'en': 'Nursing and Midwifery Professionals',
+        'cy': 'Gweithwyr Proffesiynol Nyrsio a Bydwreigiaeth'
     },
     'other': {
         'en': 'Other',
@@ -541,6 +605,10 @@ DICT = {
         'en': 'Qualification type',
         'cy': ''
     },
+    'Quality and regulatory professionals': {
+        'en': 'Quality and regulatory professionals',
+        'cy': 'Gweithwyr Proffesiynol Ansawdd a Rheoleiddio'
+    },
     'Quality and customer care managers': {
         'en': 'Quality and customer care managers',
         'cy': 'Rheolwyr ansawdd a gofal cwsmeriaid'
@@ -552,6 +620,10 @@ DICT = {
     'remove_others': {
         'en': 'To remove courses go to',
         'cy': ''
+    },
+    'Research and development managers': {
+        'en': 'Research and development managers',
+        'cy': 'Rheolwyr Ymchwil a Datblygu'
     },
     'Research professionals': {
         'en': 'Research professionals',
@@ -569,6 +641,10 @@ DICT = {
         'en': 'Sales assistants and retail cashiers',
         'cy': 'Cynorthwywyr gwerthu ac arianwyr manwerthu'
     },
+    'Sales occupations': {
+        'en': 'Sales occupations',
+        'cy': 'Galwedigaethau Gwerthu'
+    },
     'Sales related occupations': {
         'en': 'Sales related occupations',
         'cy': 'Galwedigaethau Gwerthu cysylltiedig'
@@ -576,6 +652,10 @@ DICT = {
     'sandwich_year': {
         'en': 'Sandwich year',
         'cy': 'Blwyddyn ryngosod'
+    },
+    'Science, Engineering and Technology Associate Professionals': {
+        'en': 'Science, Engineering and Technology Associate Professionals',
+        'cy': 'Gweithwyr Proffesiynol Cysylltiol Gwyddoniaeth, Peirianneg a Thechnoleg '
     },
     'Science and engineering technicians': {
         'en': 'Science and engineering technicians',
@@ -693,6 +773,10 @@ DICT = {
         'en': 'Subject area',
         'cy': 'Maes pwnc'
     },
+    'Teaching and Educational Professionals': {
+        'en': 'Teaching and Educational Professionals',
+        'cy': 'Gweithwyr Proffesiynol Addysgu ac Addysgol '
+    },
     'Teaching professionals': {
         'en': 'Teaching professionals',
         'cy': 'Gweithwyr proffesiynol ym maes dysgu'
@@ -704,6 +788,10 @@ DICT = {
     'Therapists': {
         'en': 'Therapists',
         'cy': 'Therapyddion'
+    },
+    'Therapy Professionals': {
+        'en': 'Therapy Professionals',
+        'cy': 'Gweithwyr Proffesiynol Therapi'
     },
     'Transport associate professionals': {
         'en': 'Transport associate professionals',
@@ -736,6 +824,14 @@ DICT = {
     'website': {
         'en': 'Website',
         'cy': 'Gwefan'
+    },
+    'Welfare and Housing Associate Professionals': {
+        'en': 'Welfare and Housing Associate Professionals',
+        'cy': 'Gweithwyr Proffesiynol Cysylltiol Lles a Thai'
+    },
+    'Welfare Professionals': {
+        'en': 'Welfare Professionals',
+        'cy': 'Gweithwyr Proffesiynol Lles'
     },
     'with_placement': {
         'en': 'With placement year',

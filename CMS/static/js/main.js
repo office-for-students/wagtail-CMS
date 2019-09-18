@@ -313,15 +313,12 @@
 
     FeedbackForm.prototype = {
         setup: function() {
-            this.yesButton = this.wrapper.find('#yes');
-            this.noButton = this.wrapper.find('#no');
-            this.formHeading = this.wrapper.find('.feedback-form__heading');
+            this.toggleBtn = this.wrapper.find('.feedback-form__toggle');
+            this.formHeading = this.wrapper.find('.feedback-form__message');
+            this.feedbackThankYou = this.wrapper.find('.feedback-form__thank-you');
             this.formBody = this.wrapper.find('.feedback-form__body');
             this.errorMessage = this.wrapper.find('.feedback-form__error-message');
             this.form = this.wrapper.find('.feedback-form__form');
-            this.usefulField = this.wrapper.find('#useful');
-            this.improvementField = this.wrapper.find('#improvement');
-            this.closeBtn = this.wrapper.find('#close');
             this.submitBtn = this.wrapper.find('.feedback-form__submit-button');
 
             this.startWatchers();
@@ -329,21 +326,9 @@
 
         startWatchers: function() {
             var that = this;
-            this.yesButton.click(function() {
-                that.formHeading.hide();
+            this.toggleBtn.click(function() {
                 that.formBody.show();
-                that.improvementField.hide();
             });
-
-            this.noButton.click(function() {
-                that.formHeading.hide();
-                that.formBody.show();
-                that.usefulField.hide();
-            });
-
-            this.closeBtn.click(function() {
-                that.handleFormClose();
-            })
 
             this.submitBtn.click(function() {
                 var formData = that.form.serializeArray();
@@ -366,9 +351,6 @@
         },
 
         handleFormClose: function() {
-            this.formHeading.show();
-            this.usefulField.show();
-            this.improvementField.show();
             this.formBody.hide();
             this.form[0].reset();
         },
@@ -376,6 +358,8 @@
         handleSubmissionSuccess: function() {
             this.errorMessage.hide();
             this.handleFormClose();
+            this.formHeading.hide();
+            this.feedbackThankYou.show();
         },
 
         handleSubmissionError: function() {
@@ -733,7 +717,7 @@
             var version = result.version;
             var institutions = result.institutions;
 
-            if (version !== localStorage.getItem("uniJSONVersion") || localStorage.getItem("uniJSON") === null) {
+            if (version + "" !== localStorage.getItem("uniJSONVersion") || localStorage.getItem("uniJSON") === null) {
                 institutions.sort(function(a, b){
                     if(a.order_by_name < b.order_by_name) { return -1; }
                     if(a.order_by_name > b.order_by_name) { return 1; }

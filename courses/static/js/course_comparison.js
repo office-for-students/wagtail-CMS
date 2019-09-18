@@ -76,13 +76,19 @@
         initialiseOptions: function() {
             for (var i = 0; i < this.courses.length; i++) {
                 var course = this.courses[i];
-                if (this.otherCourse && this.otherCourse === `${course.uniId},${course.courseId},${course.mode}`) {
-                    console.log(10)
-                    this.selector.append(`<option value='${course.uniId},${course.courseId},${course.mode}' disabled>${course.courseName} - ${course.uniName}</option>`)
-                } else {
-                    console.log(20)
-                    this.selector.append(`<option value='${course.uniId},${course.courseId},${course.mode}'>${course.courseName} - ${course.uniName}</option>`)
+
+                var courseValue = course.uniId + ',' + course.courseId + ',' + course.mode;
+                var courseLabel = course.courseName + ' - ' + course.uniName;
+
+                var option = document.createElement("option");
+                option.setAttribute("value", courseValue);
+                option.innerHTML = courseLabel
+
+                if (this.otherCourse && this.otherCourse === courseValue) {
+                    option.setAttribute('disabled', true);
                 }
+
+                this.selector.append(option);
             }
             this.selector.trigger('loadeddata');
             this.options = this.selector.find('option');
