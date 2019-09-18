@@ -68,6 +68,26 @@ GRANT ALL PRIVILEGES ON DATABASE sample TO manager;
 ```
 
 You have two options to run the development server:
+### Environment variables
+
+| Variable          | Default              | Description                                 |
+| ----------------- | -------------------- | ------------------------------------------- |
+| DBHOST            | host.docker.internal | DB host url/string                          |
+| DBPORT            | 5432                 | DB connection port                          |
+| DBNAME            | discoveruni          | DB name to use                              |
+| DBUSER            | <username>           | DB user                                     |
+| DBPASSWORD        | <password>           | DB password                                 |
+| SEARCHAPIHOST     | <searchapihost>      | The url endpoint for the search api         |
+| DATASETAPIHOST    | <datasetapihost>     | The url endpoint for the dataset api        |
+| WIDGETAPIKEY      | <widgetaccesskey>    | The access key for the api for the widget   |
+| DATASETAPIKEY     | <datasetaccesskey>   | The access key for the api for the site     |
+| FEEDBACK_API_HOST | <feedbackapihost>    | The url endpoint for the feedback api       |
+| AZURE_ACCOUNT_NAME| <azureaccountname>   | The name of the account for image storage   |
+| AZURE_ACCOUNT_KEY | <azureaccountkey>    | The access key to account for image storage |
+| AZURE_ACCOUNT     | <azureaccount>       | The account for image storage               |
+| LOCAL             | False                | Tells the site to use external API or mocks |
+
+
 
 **1.** Create a Python 3.6.8 virtual environment and run the following commands from the root directory of the project:
 
@@ -131,17 +151,6 @@ Start server again
 ```
 docker-compose up
 ```
-
-## Environment variables
-
-| Variable        | Default              | Description                       |
-| --------------- | -------------------- | --------------------------------- |
-| DBHOST          | host.docker.internal | DB host url/string                |
-| DBPORT          | 5432                 | DB connection port                |
-| DBNAME          | unisimple            | DB name to use                    |
-| DBUSER          | <username>           | DB user                           |
-| DBPASSWORD      | <password>           | DB password                       |
-
 
 ### Contributing
 
