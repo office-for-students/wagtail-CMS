@@ -33,7 +33,7 @@
 
                         {% if course1_salary_stats %}
                             <p class="after-course__figure">
-                                £{{ course1_salary_stats.median }}
+                                £{{ course1_salary_stats.median|intcomma }}
                             </p>
 
                             <div class="after-course__figure-explanation">
@@ -47,14 +47,14 @@
                             </p>
 
                             <p class="after-course__figure-salary-range">
-                                £{{course1_salary_stats.lower_quartile}} - £{{course1_salary_stats.higher_quartile}}
+                                £{{course1_salary_stats.lower_quartile|intcomma}} - £{{course1_salary_stats.higher_quartile|intcomma}}
                                 {% if course1_salary_stats.display_unavailable_reason %}
                                     *
                                 {% endif %}
                             </p>
 
                             <p class="after-course__figure--sector">
-                                £{{ course1_salary_stats.sector_median }}
+                                £{{ course1_salary_stats.sector_median|intcomma }}
                             </p>
 
                             <div class="after-course__figure-explanation">
@@ -69,7 +69,7 @@
                             </p>
 
                             <p class="after-course__figure-salary-range">
-                                £{{course1_salary_stats.sector_lower_quartile}} - £{{course1_salary_stats.sector_higher_quartile}}
+                                £{{course1_salary_stats.sector_lower_quartile|intcomma}} - £{{course1_salary_stats.sector_higher_quartile|intcomma}}
                             </p>
 
                             <div class="explanation-text">
@@ -93,7 +93,7 @@
 
                         {% if course2_salary_stats %}
                             <p class="after-course__figure">
-                                £{{ course2_salary_stats.median }}
+                                £{{ course2_salary_stats.median|intcomma }}
                             </p>
 
                             <div class="after-course__figure-explanation">
@@ -107,14 +107,14 @@
                             </p>
 
                             <p class="after-course__figure-salary-range">
-                                £{{course2_salary_stats.lower_quartile}} - £{{course2_salary_stats.higher_quartile}}
+                                £{{course2_salary_stats.lower_quartile|intcomma}} - £{{course2_salary_stats.higher_quartile|intcomma}}
                                 {% if course2_salary_stats.display_unavailable_reason %}
                                     *
                                 {% endif %}
                             </p>
 
                             <p class="after-course__figure--sector">
-                                £{{ course2_salary_stats.sector_median }}
+                                £{{ course2_salary_stats.sector_median|intcomma }}
                             </p>
 
                             <div class="after-course__figure-explanation">
@@ -129,7 +129,7 @@
                             </p>
 
                             <p class="after-course__figure-salary-range">
-                                £{{course2_salary_stats.sector_lower_quartile}} - £{{course2_salary_stats.sector_higher_quartile}}
+                                £{{course2_salary_stats.sector_lower_quartile|intcomma}} - £{{course2_salary_stats.sector_higher_quartile|intcomma}}
                             </p>
 
                             <div class="explanation-text">
@@ -170,7 +170,7 @@
 
                         {% if course1_leo_stats %}
                             <p class="after-course__figure">
-                                £{{ course1_leo_stats.median }}
+                                £{{ course1_leo_stats.median|intcomma }}
                             </p>
 
                             <div class="after-course__figure-explanation">
@@ -184,7 +184,7 @@
                             </p>
 
                             <p class="after-course__figure-salary-range">
-                                £{{course1_leo_stats.lower_quartile}} - £{{course1_leo_stats.higher_quartile}}
+                                £{{course1_leo_stats.lower_quartile|intcomma}} - £{{course1_leo_stats.higher_quartile|intcomma}}
                             </p>
 
                             <div class="explanation-text">
@@ -208,7 +208,7 @@
 
                         {% if course2_leo_stats %}
                             <p class="after-course__figure">
-                                £{{ course2_leo_stats.median }}
+                                £{{ course2_leo_stats.median|intcomma }}
                             </p>
 
                             <div class="after-course__figure-explanation">
@@ -222,7 +222,7 @@
                             </p>
 
                             <p class="after-course__figure-salary-range">
-                                £{{course2_leo_stats.lower_quartile}} - £{{course2_leo_stats.higher_quartile}}
+                                £{{course2_leo_stats.lower_quartile|intcomma}} - £{{course2_leo_stats.higher_quartile|intcomma}}
                             </p>
 
                             <div class="explanation-text">

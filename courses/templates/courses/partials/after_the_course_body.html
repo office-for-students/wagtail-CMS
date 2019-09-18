@@ -1,6 +1,4 @@
-{% load staticfiles %}
-{% load wagtailcore_tags %}
-{% load discover_uni_tags %}
+{% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
 
 
 {% if course_details.show_salary_lead %}
@@ -23,7 +21,7 @@
 
             {% if salary_stats.display_stats %}
                 <p class="after-course__figure">
-                    £{{ salary_stats.median }}
+                    £{{ salary_stats.median|intcomma }}
                 </p>
 
                 <div class="after-course__figure-explanation">
@@ -37,14 +35,14 @@
                 </p>
 
                 <p class="after-course__figure-salary-range">
-                    £{{salary_stats.lower_quartile}} - £{{salary_stats.higher_quartile}}
+                    £{{salary_stats.lower_quartile|intcomma}} - £{{salary_stats.higher_quartile|intcomma}}
                     {% if salary_stats.display_unavailable_reason %}
                         *
                     {% endif %}
                 </p>
 
                 <p class="after-course__figure--sector">
-                    £{{ salary_stats.sector_median }}
+                    £{{ salary_stats.sector_median|intcomma }}
                 </p>
 
                 <div class="after-course__figure-explanation">
@@ -59,7 +57,7 @@
                 </p>
 
                 <p class="after-course__figure-salary-range">
-                    £{{salary_stats.sector_lower_quartile}} - £{{salary_stats.sector_higher_quartile}}
+                    £{{salary_stats.sector_lower_quartile|intcomma}} - £{{salary_stats.sector_higher_quartile|intcomma}}
                 </p>
             {% endif %}
         </div>
@@ -86,7 +84,7 @@
 
             {% if course_details.is_in_england and leo_stats.display_stats %}
                 <p class="after-course__figure">
-                    £{{ leo_stats.median }}
+                    £{{ leo_stats.median|intcomma }}
                 </p>
 
                 <div class="after-course__figure-explanation">
@@ -100,7 +98,7 @@
                 </p>
 
                 <p class="after-course__figure-salary-range">
-                    £{{leo_stats.lower_quartile}} - £{{leo_stats.higher_quartile}}
+                    £{{leo_stats.lower_quartile|intcomma}} - £{{leo_stats.higher_quartile|intcomma}}
                 </p>
             {% endif %}
         </div>
