@@ -51,6 +51,8 @@ brew doctor
 brew install postgresql
 ```
 
+### Running the database
+
 To start Postgres:
 
 ```
