@@ -67,7 +67,6 @@ CREATE USER manager WITH PASSWORD 'supersecretpassword';
 GRANT ALL PRIVILEGES ON DATABASE sample TO manager;
 ```
 
-You have two options to run the development server:
 ### Environment variables
 
 | Variable          | Default              | Description                                 |
@@ -88,8 +87,11 @@ You have two options to run the development server:
 | LOCAL             | False                | Tells the site to use external API or mocks |
 
 
+### Running the site
 
-**1.** Create a Python 3.6.8 virtual environment and run the following commands from the root directory of the project:
+#### Without Docker
+
+Create a Python 3.6.8 virtual environment and run the following commands from the root directory of the project:
 
 ```
 pip install -r requirements.txt
@@ -99,7 +101,7 @@ python manage.py runserver
 ```
 
 
-**2.** Using Docker containers, which requires you to have [Docker](https://docs.docker.com/v17.12/docker-for-mac/install/) installed in order to run the site in a Docker container
+#### With Docker
 
 ```
 docker-compose build
@@ -111,28 +113,16 @@ The second command starts the docker container, running on port 8000.
 
 After the docker image is running for the first time, connect to it and create an admin login as follows:
 
-1. Connect to the Docker image
+(From the route directory)
 ```
-docker exec -it <containerid> /bin/bash
-```
-
-2. Run the Django createsuperuser command
-```
-python manage.py createsuperuser
+./bin/manage createsuperuser
 ```
 
 
 
+##### Adding new dependencies
 
-
-
-### Adding new dependencies
-
-Adding a new dependency requires rebuilding docker image for Django app if you are working with Docker. After installing dependency with `pip install <dependency>` run following to update requirements.txt
-
-```
-pip freeze > requirements.txt
-```
+Adding a new dependency requires rebuilding docker image for Django app.
 
 Stop docker container
 
