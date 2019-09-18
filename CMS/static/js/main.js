@@ -717,7 +717,7 @@
             var version = result.version;
             var institutions = result.institutions;
 
-            if (version !== localStorage.getItem("uniJSONVersion") || localStorage.getItem("uniJSON") === null) {
+            if (version + "" !== localStorage.getItem("uniJSONVersion") || localStorage.getItem("uniJSON") === null) {
                 institutions.sort(function(a, b){
                     if(a.order_by_name < b.order_by_name) { return -1; }
                     if(a.order_by_name > b.order_by_name) { return 1; }
