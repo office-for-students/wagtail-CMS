@@ -24,10 +24,24 @@ This application is based on the Wagtail CMS.
 
 ## Getting Started
 
+### Prerequisites
 
-### Running the site
+#### Without Docker
 
-As a prerequisite to running the site you need to have Python (3.6.8), PIP and PostgreSQL installed. There are multiple ways to install Python, either download from the official [Python site](https://www.python.org/downloads/) or use the package manager [Homebrew](https://brew.sh/) ```brew install python3```. PIP comes installed with Python 3.4(or greater) by default.
+You need to have Python (3.6.8), PIP and PostgreSQL installed. There are multiple ways to install Python, either download from the official [Python site](https://www.python.org/downloads/) or use the package manager [Homebrew](https://brew.sh/) ```brew install python3```. PIP comes installed with Python 3.4(or greater) by default.
+
+To install Postgres you can also use [Homebrew](https://brew.sh/)
+
+```
+brew update
+brew doctor
+brew install postgresql
+```
+
+
+#### With Docker
+
+You need to have Docker and PostgreSQL installed. Docker installation guidance can be found in the [Docker Docs](https://docs.docker.com/install/).
 
 To install Postgres you can also use [Homebrew](https://brew.sh/)
 
