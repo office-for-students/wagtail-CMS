@@ -673,7 +673,7 @@
             for (var i = 0; i < this.subjectOptions.length; i++) {
                 var option = this.subjectOptions[i];
                 $(option).removeAttr("disabled");
-                if (!option.value.includes(this.subjectAreaSelector[0].value)) {
+                if (option.value.indexOf(this.subjectAreaSelector[0].value) === -1) {
                     $(option).attr("disabled", "disabled");
                 }
             }
