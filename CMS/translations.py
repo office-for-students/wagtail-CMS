@@ -311,7 +311,7 @@ DICT = {
     },
     'feedback_button': {
         'en': 'feedback',
-        'cy': ''
+        'cy': 'adborth'
     },
     'feedback_error': {
         'en': 'Sorry something went wrong submitting your feedback, please try again later.',
@@ -319,11 +319,11 @@ DICT = {
     },
     'feedback_form': {
         'en': 'This site is in beta. We welcome your ',
-        'cy': ''
+        'cy': 'Fersiwn beta yw’r wefan hon. Rydym yn croesawu eich '
     },
     'feedback_thanks': {
         'en': 'Thanks for your feedback.',
-        'cy': ''
+        'cy': 'Diolch am eich adborth'
     },
     'filter': {
         'en': 'Filter',
@@ -387,7 +387,7 @@ DICT = {
     },
     'how_improve': {
         'en': 'Please tell us about your experience',
-        'cy': ''
+        'cy': 'Dywedwch wrthym am eich profiad'
     },
     'how_useful': {
         'en': 'How was this page useful to you?',
