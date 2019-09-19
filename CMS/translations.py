@@ -23,6 +23,10 @@ DICT = {
         'en': 'Address',
         'cy': 'Cyfeiriad'
     },
+    'Administrative occupations': {
+        'en': 'Administrative occupations',
+        'cy': 'Galwedigaethau gweinyddol'
+    },
     'Administrative occupations: Communications': {
         'en': 'Administrative occupations: Communications',
         'cy': 'Galwedigaethau gweinyddol: Cyfathrebu'
@@ -43,6 +47,10 @@ DICT = {
         'en': 'Administrative occupations: Records',
         'cy': 'Galwedigaethau gweinyddol: Cofnodion'
     },
+    'Animal Care and Control Services': {
+        'en': 'Animal care and control services',
+        'cy': 'Gwasanaethau Gofal a Rheoli Anifeiliaid'
+    },
     'Animal care and control services': {
         'en': 'Animal care and control services',
         'cy': 'Gwasanaethau Gofal a Rheoli Anifeiliaid'
@@ -51,6 +59,10 @@ DICT = {
         'en': 'Apply filters',
         'cy': ''
     },
+    'Architects, Town Planners, Surveyors': {
+        'en': 'Architects, town planners, surveyors',
+        'cy': 'Penseiri, cynllunwyr tref, syrfewyr'
+    },
     'Architects, town planners, surveyors': {
         'en': 'Architects, town planners, surveyors',
         'cy': 'Penseiri, cynllunwyr tref, syrfewyr'
@@ -58,6 +70,10 @@ DICT = {
     'Artistic and literary occupations': {
         'en': 'Artistic and literary occupations',
         'cy': 'Galwedigaethau artistig a llenyddol'
+    },
+    'Artistic, Literary and Media Occupations': {
+        'en': 'Artistic, literary and media occupations',
+        'cy': "Galwedigaethau Artistig, Llenyddol a'r Cyfryngau"
     },
     'Artistic, literary and media occupations': {
         'en': 'Artistic, literary and media occupations',
@@ -95,32 +111,48 @@ DICT = {
         'en': 'Business and finance associate professionals',
         'cy': 'Gweithwyr proffesiynol ym maes busnes a chyllid cysylltiol'
     },
+    'Business and public service associate professionals': {
+        'en': 'Business and public service associate professionals',
+        'cy': 'Gweithwyr Proffesiynol Cysylltiol Busnes a Gwasanaethau Cyhoeddus'
+    },
     'Business and Public Service Associate Professionals': {
-        'en': 'Business and Public Service Associate Professionals',
+        'en': 'Business and public service associate professionals',
         'cy': 'Gweithwyr Proffesiynol Cysylltiol Busnes a Gwasanaethau Cyhoeddus'
     },
     'Business and statistical professionals': {
         'en': 'Business and statistical professionals',
         'cy': 'Gweithwyr proffesiynol busnes ac ystadegol'
     },
-    'Caring personal service occupations': {
-        'en': 'Caring personal service occupations',
-        'cy': 'Galwedigaethau gofal a gwasanaeth personol'
+    'Business, Research and Administrative Professionals': {
+        'en': 'Business, research and administrative professionals',
+        'cy': 'Gweithwyr Proffesiynol Busnes, Ymchwil a Gweinyddu'
     },
     'Business, research and administrative professionals': {
         'en': 'Business, research and administrative professionals',
         'cy': 'Gweithwyr Proffesiynol Busnes, Ymchwil a Gweinyddu'
     },
+    'Caring personal service occupations': {
+        'en': 'Caring personal service occupations',
+        'cy': 'Galwedigaethau gofal a gwasanaeth personol'
+    },
+    'Caring personal services': {
+        'en': 'Caring personal services',
+        'cy': "Gwasanaethau Gofalu Personol"
+    },
     'Caring Personal Services': {
-        'en': 'Caring Personal Services',
+        'en': 'Caring personal services',
         'cy': "Gwasanaethau Gofalu Personol"
     },
     'chart_label_explained': {
         'en': 'Chart labels explained',
         'cy': "Esboniad ynghylch labeli'r siart"
     },
+    'Childcare and related personal services': {
+        'en': 'Childcare and related personal services',
+        'cy': 'Gwasanaethau Personol Gofal Plant a Gwasanaethau Cysylltiedig'
+    },
     'Childcare and Related Personal Services': {
-        'en': 'Childcare and Related Personal Services',
+        'en': 'Childcare and related personal services',
         'cy': 'Gwasanaethau Personol Gofal Plant a Gwasanaethau Cysylltiedig'
     },
     'clear_all': {
@@ -146,6 +178,10 @@ DICT = {
     'Conservation associate professionals': {
         'en': 'Conservation associate professionals',
         'cy': 'Gweithwyr proffesiynol ym maes cadwraeth'
+    },
+    'Conservation and Environment Professionals': {
+        'en': 'Conservation and environment professionals',
+        'cy': "Gweithwyr Proffesiynol Cadwraeth a'r Amgylchedd"
     },
     'Conservation and environment professionals': {
         'en': 'Conservation and environment professionals',
@@ -223,6 +259,10 @@ DICT = {
         'en': 'course(s)',
         'cy': 'cwrs/cyrsiau'
     },
+    'Customer Service Occupations': {
+        'en': 'Customer service occupations',
+        'cy': 'Galwedigaethau gwasanaeth cwsmeriaid'
+    },
     'Customer service occupations': {
         'en': 'Customer service occupations',
         'cy': 'Galwedigaethau gwasanaeth cwsmeriaid'
@@ -238,6 +278,10 @@ DICT = {
     'Design associate professionals': {
         'en': 'Design associate professionals',
         'cy': 'Gweithwyr proffesiynol ym maes Dylunio'
+    },
+    'Design Occupations': {
+        'en': 'Design occupations',
+        'cy': 'Galwedigaethau Dylunio'
     },
     'Design occupations': {
         'en': 'Design occupations',
@@ -281,6 +325,10 @@ DICT = {
         'en': 'Draughtspersons and building inspectors',
         'cy': 'Drafftsmyn ac arolygwyr adeiladu'
     },
+    'Elementary Occupations': {
+        'en': 'Elementary occupations',
+        'cy': 'Galwedigaethau elfennol'
+    },
     'Elementary occupations': {
         'en': 'Elementary occupations',
         'cy': 'Galwedigaethau elfennol'
@@ -292,6 +340,10 @@ DICT = {
     'england': {
         'en': 'England',
         'cy': 'Lloegr'
+    },
+    'Engineering Professionals': {
+        'en': 'Engineering professionals',
+        'cy': 'Gweithwyr proffesiynol ym maes Peirianneg'
     },
     'Engineering professionals': {
         'en': 'Engineering professionals',
@@ -369,9 +421,17 @@ DICT = {
         'en': 'Health and social services managers',
         'cy': 'Rheolwyr Iechyd a gwasanaethau cymdeithasol'
     },
+    'Health Associate Professionals': {
+        'en': 'Health associate professionals',
+        'cy': 'Gweithwyr iechyd proffesiynol cysylltiol'
+    },
     'Health associate professionals': {
         'en': 'Health associate professionals',
         'cy': 'Gweithwyr iechyd proffesiynol cysylltiol'
+    },
+    'Health Professionals': {
+        'en': 'Health professionals',
+        'cy': 'Gweithwyr iechyd proffesiynol'
     },
     'Health professionals': {
         'en': 'Health professionals',
@@ -405,8 +465,12 @@ DICT = {
         'en': 'Institution',
         'cy': 'Sefydliad'
     },
+    'Information technology and telecommunications professionals': {
+        'en': 'Information technology and telecommunications professionals',
+        'cy': 'Gweithwyr Proffesiynol Technoleg Gwybodaeth a Thelathrebu'
+    },
     'Information Technology and Telecommunications Professionals': {
-        'en': 'Information Technology and Telecommunications Professionals',
+        'en': 'Information technology and telecommunications professionals',
         'cy': 'Gweithwyr Proffesiynol Technoleg Gwybodaeth a Thelathrebu'
     },
     'IT service delivery occupations': {
@@ -420,6 +484,10 @@ DICT = {
     'Legal associate professionals': {
         'en': 'Legal associate professionals',
         'cy': 'Gweithwyr proffesiynol cysylltiol Cyfreithiol'
+    },
+    'Legal Professionals': {
+        'en': 'Legal professionals',
+        'cy': 'Gweithwyr cyfreithiol proffesiynol'
     },
     'Legal professionals': {
         'en': 'Legal professionals',
@@ -441,9 +509,17 @@ DICT = {
         'en': 'Length',
         'cy': 'Hyd'
     },
+    'Librarians and Related Professionals': {
+        'en': 'Librarians and related professionals',
+        'cy': 'Llyfrgellwyr a gweithwyr proffesiynol cysylltiedig'
+    },
     'Librarians and related professionals': {
         'en': 'Librarians and related professionals',
         'cy': 'Llyfrgellwyr a gweithwyr proffesiynol cysylltiedig'
+    },
+    'Leisure, Travel and Related Personal Service Occupations': {
+        'en': 'Leisure, travel and related personal service occupations',
+        'cy': 'Galwedigaethau Hamdden, Teithio a Gwasanaethau Personol Cysylltiedig'
     },
     'Leisure, travel and related personal service occupations': {
         'en': 'Leisure, travel and related personal service occupations',
@@ -465,6 +541,10 @@ DICT = {
         'en': 'Managers and proprieters in agriculture and services',
         'cy': 'Rheolwyr a pherchnogion mewn amaethyddiaeth a gwasanaethau amaethyddol'
     },
+    'Managers, Directors and Senior Officials': {
+        'en': 'Managers, directors and senior officials',
+        'cy': 'Rheolwyr, Cyfarwyddwyr ac Uwch Swyddogion'
+    },
     'Managers, directors and senior officials': {
         'en': 'Managers, directors and senior officials',
         'cy': 'Rheolwyr, Cyfarwyddwyr ac Uwch Swyddogion'
@@ -480,6 +560,10 @@ DICT = {
     'Media associate professionals': {
         'en': 'Media associate professionals',
         'cy': 'Gweithwyr proffesiynol ym maes Cyfryngau'
+    },
+    'Media professionals': {
+        'en': 'Media Professionals',
+        'cy': 'Gweithwyr Proffesiynol y Cyfryngau'
     },
     'Media Professionals': {
         'en': 'Media Professionals',
@@ -497,8 +581,12 @@ DICT = {
         'en': 'Narrow location',
         'cy': ''
     },
+    'Natural and social science professionals': {
+        'en': 'Natural and social science professionals',
+        'cy': 'Gweithwyr Proffesiynol Gwyddoniaeth Naturiol a Chymdeithasol'
+    },
     'Natural and Social Science Professionals': {
-        'en': 'Natural and Social Science Professionals',
+        'en': 'Natural and social science professionals',
         'cy': 'Gweithwyr Proffesiynol Gwyddoniaeth Naturiol a Chymdeithasol'
     },
     'near_your_home': {
@@ -545,8 +633,12 @@ DICT = {
         'en': '<strong>%s</strong> course(s) from <strong>%s</strong> provider(s)',
         'cy': 'Ceir <strong>%s</strong> cwrs gan <strong>%s</strong> darparydd'
     },
+    'Nursing and midwifery professionals': {
+        'en': 'Nursing and midwifery professionals',
+        'cy': 'Gweithwyr Proffesiynol Nyrsio a Bydwreigiaeth'
+    },
     'Nursing and Midwifery Professionals': {
-        'en': 'Nursing and Midwifery Professionals',
+        'en': 'Nursing and midwifery professionals',
         'cy': 'Gweithwyr Proffesiynol Nyrsio a Bydwreigiaeth'
     },
     'other': {
@@ -573,6 +665,10 @@ DICT = {
         'en': 'Previous page',
         'cy': 'Y dudalen flaenorol'
     },
+    'Process, Plant and Machine Operatives': {
+        'en': 'Process, plant and machine operatives',
+        'cy': 'Gweithredwyr prosesau, offer a pheiriannau'
+    },
     'Process, plant and machine operatives': {
         'en': 'Process, plant and machine operatives',
         'cy': 'Gweithredwyr prosesau, offer a pheiriannau'
@@ -584,6 +680,10 @@ DICT = {
     'professional_or_managerial': {
         'en': 'In a professional or managerial job',
         'cy': 'Mewn swydd broffesiynol neu reoli'
+    },
+    'Protective Service Occupations': {
+        'en': 'Protective service occupations',
+        'cy': 'Galwedigaethau gwasanaeth amddiffynnol'
     },
     'Protective service occupations': {
         'en': 'Protective service occupations',
@@ -605,6 +705,10 @@ DICT = {
         'en': 'Qualification type',
         'cy': ''
     },
+    'Quality and Regulatory Professionals': {
+        'en': 'Quality and regulatory professionals',
+        'cy': 'Gweithwyr Proffesiynol Ansawdd a Rheoleiddio'
+    },
     'Quality and regulatory professionals': {
         'en': 'Quality and regulatory professionals',
         'cy': 'Gweithwyr Proffesiynol Ansawdd a Rheoleiddio'
@@ -620,6 +724,10 @@ DICT = {
     'remove_others': {
         'en': 'To remove courses go to',
         'cy': ''
+    },
+    'Research and Development Managers': {
+        'en': 'Research and development managers',
+        'cy': 'Rheolwyr Ymchwil a Datblygu'
     },
     'Research and development managers': {
         'en': 'Research and development managers',
@@ -641,6 +749,10 @@ DICT = {
         'en': 'Sales assistants and retail cashiers',
         'cy': 'Cynorthwywyr gwerthu ac arianwyr manwerthu'
     },
+    'Sales Occupations': {
+        'en': 'Sales occupations',
+        'cy': 'Galwedigaethau Gwerthu'
+    },
     'Sales occupations': {
         'en': 'Sales occupations',
         'cy': 'Galwedigaethau Gwerthu'
@@ -653,8 +765,12 @@ DICT = {
         'en': 'Sandwich year',
         'cy': 'Blwyddyn ryngosod'
     },
+    'Science, engineering and technology associate professionals': {
+        'en': 'Science, engineering and technology associate professionals',
+        'cy': 'Gweithwyr Proffesiynol Cysylltiol Gwyddoniaeth, Peirianneg a Thechnoleg '
+    },
     'Science, Engineering and Technology Associate Professionals': {
-        'en': 'Science, Engineering and Technology Associate Professionals',
+        'en': 'Science, engineering and technology associate professionals',
         'cy': 'Gweithwyr Proffesiynol Cysylltiol Gwyddoniaeth, Peirianneg a Thechnoleg '
     },
     'Science and engineering technicians': {
@@ -680,6 +796,10 @@ DICT = {
     'search_within': {
         'en': 'Search within',
         'cy': 'Chwilio yn '
+    },
+    'Secretarial and Related Occupations': {
+        'en': 'Secretarial and related occupations',
+        'cy': 'Galwedigaethau ysgrifenyddol a chysylltiedig'
     },
     'Secretarial and related occupations': {
         'en': 'Secretarial and related occupations',
@@ -717,6 +837,10 @@ DICT = {
         'en': '<strong>Discover</strong> Uni',
         'cy': '<strong>Darganfod</strong> y Brifysgol'
     },
+    'Skilled Trades Occupations': {
+        'en': 'Skilled trades occupations',
+        'cy': 'Galwedigaethau crefftau medrus'
+    },
     'Skilled trades occupations': {
         'en': 'Skilled trades occupations',
         'cy': 'Galwedigaethau crefftau medrus'
@@ -736,6 +860,10 @@ DICT = {
     'specific_uni': {
         'en': 'to a specific uni',
         'cy': 'i brifysgol benodol'
+    },
+    'Sports and Fitness Occupations': {
+        'en': 'Sports and fitness occupations',
+        'cy': 'Chwaraeon a galwedigaethau ffitrwydd'
     },
     'Sports and fitness occupations': {
         'en': 'Sports and fitness occupations',
@@ -773,8 +901,12 @@ DICT = {
         'en': 'Subject area',
         'cy': 'Maes pwnc'
     },
+    'Teaching and educational professionals': {
+        'en': 'Teaching and educational professionals',
+        'cy': 'Gweithwyr Proffesiynol Addysgu ac Addysgol '
+    },
     'Teaching and Educational Professionals': {
-        'en': 'Teaching and Educational Professionals',
+        'en': 'Teaching and educational professionals',
         'cy': 'Gweithwyr Proffesiynol Addysgu ac Addysgol '
     },
     'Teaching professionals': {
@@ -789,8 +921,12 @@ DICT = {
         'en': 'Therapists',
         'cy': 'Therapyddion'
     },
+    'Therapy professionals': {
+        'en': 'Therapy professionals',
+        'cy': 'Gweithwyr Proffesiynol Therapi'
+    },
     'Therapy Professionals': {
-        'en': 'Therapy Professionals',
+        'en': 'Therapy professionals',
         'cy': 'Gweithwyr Proffesiynol Therapi'
     },
     'Transport associate professionals': {
@@ -825,12 +961,20 @@ DICT = {
         'en': 'Website',
         'cy': 'Gwefan'
     },
-    'Welfare and Housing Associate Professionals': {
-        'en': 'Welfare and Housing Associate Professionals',
+    'Welfare and housing associate professionals': {
+        'en': 'Welfare and housing associate professionals',
         'cy': 'Gweithwyr Proffesiynol Cysylltiol Lles a Thai'
     },
+    'Welfare and Housing Associate Professionals': {
+        'en': 'Welfare and housing associate professionals',
+        'cy': 'Gweithwyr Proffesiynol Cysylltiol Lles a Thai'
+    },
+    'Welfare professionals': {
+        'en': 'Welfare professionals',
+        'cy': 'Gweithwyr Proffesiynol Lles'
+    },
     'Welfare Professionals': {
-        'en': 'Welfare Professionals',
+        'en': 'Welfare professionals',
         'cy': 'Gweithwyr Proffesiynol Lles'
     },
     'with_placement': {
