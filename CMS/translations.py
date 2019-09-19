@@ -57,7 +57,7 @@ DICT = {
     },
     'apply_filters': {
         'en': 'Apply filters',
-        'cy': ''
+        'cy': 'Gweithredu hidlyddion'
     },
     'Architects, Town Planners, Surveyors': {
         'en': 'Architects, town planners, surveyors',
@@ -161,7 +161,7 @@ DICT = {
     },
     'clear_all': {
         'en': 'Clear all',
-        'cy': ''
+        'cy': 'Clirio popeth'
     },
     'close': {
         'en': 'Close',
@@ -205,7 +205,7 @@ DICT = {
     },
     'copyright': {
         'en': '2019 Copyright. All rights reserved.',
-        'cy': ''
+        'cy': 'Hawlfraint 2019. Cedwir Pob Hawl'
     },
     'Corporate managers and senior officials': {
         'en': 'Corporate managers and senior officials',
@@ -221,7 +221,7 @@ DICT = {
     },
     'countries': {
         'en': 'Countries',
-        'cy': ''
+        'cy': 'Gwledydd'
     },
     'course_added': {
         'en': 'course added to ',
@@ -273,7 +273,7 @@ DICT = {
     },
     'data_for': {
         'en': 'Data for',
-        'cy': ''
+        'cy': 'Data ar gyfer'
     },
     'degree': {
         'en': 'Degree',
@@ -319,7 +319,7 @@ DICT = {
     },
     'dont_mind': {
         'en': "I don't mind",
-        'cy': ''
+        'cy': 'Does dim ots gen i'
     },
     'dont_narrow': {
         'en': "don't narrow search",
@@ -807,7 +807,7 @@ DICT = {
     },
     'select_all': {
         'en': 'Select all',
-        'cy': ''
+        'cy': "Dewis popeth sy'n berthnasol"
     },
     'select_course': {
         'en': 'Select a course',
@@ -943,7 +943,7 @@ DICT = {
     },
     'uni_college': {
         'en': 'Universities / colleges',
-        'cy': ''
+        'cy': 'Brifysgolion / cholegau'
     },
     'unknown': {
         'en': 'Unknown',
@@ -987,7 +987,7 @@ DICT = {
     },
     'with_foundation': {
         'en': 'With foundation year',
-        'cy': ''
+        'cy': "Gyda'r flwyddyn sylfaen"
     },
     'without_foundation': {
         'en': 'Without foundation year',
@@ -995,7 +995,7 @@ DICT = {
     },
     'with_abroad': {
         'en': 'With year abroad',
-        'cy': ''
+        'cy': 'Gyda blwyddyn dramor'
     },
     'without_abroad': {
         'en': 'Without year abroad',
