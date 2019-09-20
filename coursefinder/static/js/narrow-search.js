@@ -10,7 +10,7 @@
             this.btn = this.wrapper.find('.course-finder-content__next-button');
             this.form = this.wrapper.find('.course-finder-content__question-form');
             sessionStorage.setItem('uni', '')
-            sessionStorage.getItem('postcode', '')
+            sessionStorage.setItem('postcode', '')
 
             var subject_query = sessionStorage.getItem('subjectCodes');
             var mode_query = sessionStorage.getItem('modes');
