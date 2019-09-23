@@ -7,8 +7,8 @@
     &-base {
         padding: 0px 19px 48px;
         background-image: url('/static/images/home-background.png');
-        background-size: cover;
-        background-position: center bottom;
+        background-repeat: repeat-y;
+        background-position: right top;
 
         &__nav {
             display: flex;
@@ -351,8 +351,7 @@
     .course-finder {
         &-base {
             padding: 0px 0px 107px;
-            background-position: initial;
-
+            
             &__nav {
                 padding: 24px 0px;
 
