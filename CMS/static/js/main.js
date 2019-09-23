@@ -169,7 +169,6 @@
             var uiSelect = document.createElement("div");
             uiSelect.setAttribute("class", "select-selected");
             uiSelect.setAttribute('tabindex', 0)
-            uiSelect.innerHTML = baseSelect.options[baseSelect.selectedIndex].innerHTML;
             this.wrapper.append(uiSelect);
             this.uiSelect = this.wrapper.find('.select-selected');
             this.startWatcher();
