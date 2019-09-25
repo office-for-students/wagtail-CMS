@@ -137,15 +137,17 @@
                 border-radius: 70.6272px;
                 line-height: 25px;
                 color: $white;
+                
+                @media (hover) {
+                  &:hover {
+                      .green {
+                          display: initial;
+                      }
 
-                &:hover {
-                    .green {
-                        display: initial;
-                    }
-
-                    .white {
-                        display: none;
-                    }
+                      .white {
+                          display: none;
+                      }
+                  }
                 }
             }
 
