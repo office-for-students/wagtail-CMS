@@ -77,7 +77,10 @@
             } else {
                 this.selectedCourses = [];
             }
-            this.btn.text(this.selectedCourses.length);
+
+            if (this.selectedCourses.length) {
+              this.btn.text(this.selectedCourses.length);
+            }
         },
 
         startWatcher: function() {
