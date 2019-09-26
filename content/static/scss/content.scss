@@ -6,9 +6,9 @@
 
 .content-page {
     padding: 50px 20px 65px;
-
+    
     background-image: url('/static/images/user-nav-background.png');
-    background-position: right center;
+    background-position: right top;
 
     &__header {
         @include m-heading--bold-mixin();
