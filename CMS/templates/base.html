@@ -54,6 +54,12 @@
 
         <div id="main-content" tabindex="-1">
             {% block content %}{% endblock %}
+            
+            <a class="scroll-to-top" href="#">
+                <div class="scroll-to-top__bkg">
+                    Back<br />to top
+                </div>
+            </a>
         </div>
 
         {% include 'partials/feedback-form.html' %}
@@ -63,6 +69,7 @@
         {% if not cookies_accepted %}
             {% include 'partials/cookie-banner.html' %}
         {% endif %}
+        
     </body>
 
 </html>
