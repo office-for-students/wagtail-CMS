@@ -1,0 +1,27 @@
+{% load discover_uni_tags %}
+
+<div class="subject-picker">
+    <div class="course-finder-content__question-selector">
+        <select id="subjectArea">
+            <option value="disabled" disabled selected>
+                {% get_translation key='subject_area' language=page.get_language %}
+            </option>
+        </select>
+    </div>
+
+    <div class="course-finder-content__question-selector">
+        <select id="subject">
+            <option value="disabled" disabled selected>
+                {% get_translation key='subject' language=page.get_language %}
+            </option>
+        </select>
+    </div>
+
+    <div class="course-finder-content__question-selector">
+        <select id="subjectCode" class="hidden">
+            <option data-code="" selected>
+                {% get_translation key='show_all' language=page.get_language %}
+            </option>
+        </select>
+    </div>
+</div>

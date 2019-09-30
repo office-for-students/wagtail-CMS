@@ -19,7 +19,6 @@
             for (var i = 0; i < this.blocks.length; i++) {
                 this.blocks.css('height', height);
             }
-            console.log('setting up view')
         },
 
         getMaxHeight: function() {

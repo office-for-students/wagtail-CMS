@@ -8,29 +8,28 @@
     <link href="{% sass_src 'scss/course_finder.scss' %}" rel="stylesheet" type="text/css" >
 {% endblock extra_css %}
 
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/filters.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/compare-selector.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/finder-results.js' %}"></script>
+{% endblock %}
+
 {% block content %}
-    <div class="course-finder-base">
+    <div class="course-finder-base course-finder-results">
         <div class="discover-uni-container">
             <ul class="course-finder-base__nav">
-                <a href={% pageurl page.get_parent %} class="course-finder-base__nav-control">
-                    <li class="course-finder-base__nav-control-back">
-                        <img class="course-finder-base__nav-control-icon" src="{% static 'images/chevrons/green_left_chevron.svg' %}" alt="">
-                        {% get_translation key='back' language=page.get_language %}
-                    </li>
-                </a>
-
-                <a href={% pageurl page.get_parent %} onclick="handleStartAgain()" class="course-finder-base__nav-control">
-                    <li class="course-finder-base__nav-control-start-again">
+                <li class="course-finder-base__nav-control-start-again">
+                    <a href={% pageurl page.get_parent %} class="course-finder-base__nav-control start-again">
                         <img class="course-finder-base__nav-control-icon" src="{% static 'images/restart_icon.svg' %}" alt="">
-
                         {% get_translation key='search_again' language=page.get_language %}
-                    </li>
-                </a>
+                    </a>
+                </li>
             </ul>
 
             <div class="course-finder-results">
                 {% include "search_results_list.html" %}
             </div>
         </div>
+        {% include 'courses/partials/compare-popup-bar.html' %}
     </div>
 {% endblock content %}

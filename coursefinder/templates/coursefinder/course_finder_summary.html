@@ -6,6 +6,11 @@
 
 {% block body_class %}template-course-finder-summary{% endblock %}
 
+{% block page_js %}
+    <script type="text/javascript" src="{% static 'js/finder-summary.js' %}"></script>
+{% endblock page_js %}
+
+
 {% block question %}
     <h1 class="course-finder-content__heading">{{page.header}}</h1>
 

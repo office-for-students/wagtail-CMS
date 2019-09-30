@@ -3,60 +3,66 @@
 
 {% block content_class %}country-chooser{% endblock %}
 
+{% block page_js %}
+    <script type="text/javascript" src="{% static 'js/country-picker.js' %}"></script>
+{% endblock page_js %}
+
 
 {% block question %}
-    <h1 class="course-finder-content__question">{{page.question}}</h1>
+    <form action="javascript:;" class="course-finder-content__question-form">
+        <fieldset>
+            <legend><h1 class="course-finder-content__question">{{page.question}}</h1></legend>
 
-    <form action="javascript:;" onsubmit="handleCountrySelection(this)" class="course-finder-content__question-form">
-        <label class="course-finder-content__question-option checkbox" for="england">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='england' language=page.get_language %}
-            </span>
+            <label class="course-finder-content__question-option checkbox" for="england">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='england' language=page.get_language %}
+                </span>
 
-            <input class="course-finder-content__question-input" id="england"
-                   type="checkbox" name="country" value="England">
+                <input class="course-finder-content__question-input" id="england"
+                       type="checkbox" name="country" value="England">
 
-            <span class="checkmark"></span>
-        </label>
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="course-finder-content__question-option checkbox" for="northernireland">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='northern_ireland' language=page.get_language %}
-            </span>
+            <label class="course-finder-content__question-option checkbox" for="northernireland">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='northern_ireland' language=page.get_language %}
+                </span>
 
-            <input class="course-finder-content__question-input" id="northernireland"
-                   type="checkbox" name="country" value="Northern Ireland">
+                <input class="course-finder-content__question-input" id="northernireland"
+                       type="checkbox" name="country" value="Northern Ireland">
 
-            <span class="checkmark"></span>
-        </label>
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="course-finder-content__question-option checkbox" for="scotland">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='scotland' language=page.get_language %}
-            </span>
+            <label class="course-finder-content__question-option checkbox" for="scotland">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='scotland' language=page.get_language %}
+                </span>
 
-            <input class="course-finder-content__question-input" id="scotland"
-                   type="checkbox" name="country" value="Scotland">
+                <input class="course-finder-content__question-input" id="scotland"
+                       type="checkbox" name="country" value="Scotland">
 
-            <span class="checkmark"></span>
-        </label>
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="course-finder-content__question-option checkbox" for="wales">
-            <span class="course-finder-content__question-label">
-                {% get_translation key='wales' language=page.get_language %}
-            </span>
+            <label class="course-finder-content__question-option checkbox" for="wales">
+                <span class="course-finder-content__question-label">
+                    {% get_translation key='wales' language=page.get_language %}
+                </span>
 
-            <input class="course-finder-content__question-input" id="wales"
-                   type="checkbox" name="country" value="Wales">
+                <input class="course-finder-content__question-input" id="wales"
+                       type="checkbox" name="country" value="Wales">
 
-            <span class="checkmark"></span>
-        </label>
+                <span class="checkmark"></span>
+            </label>
+        </fieldset>
     </form>
 {% endblock %}
 
 {% block next_nav %}
     <a href={% pageurl page.next_page %} class="course-finder-content__next-link">
-        <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
+        <button class="course-finder-content__next-button">
             {% get_translation key='next' language=page.get_language %}
 
             <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">

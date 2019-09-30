@@ -22,18 +22,18 @@
                         {{ page.search_heading }}
                     </p>
 
-                    <form class="search-landing-page__search" action="{{ search_url }}" method="get">
+                    <form class="search-landing-page__search" action="{{ search_url }}" method="get" autocomplete="off">
                         <div class="search-landing-page__search-fields">
                             <div class="search-landing-page__search-input">
                                 <label class="search-landing-page__search-label" for="course">
                                     {% get_translation key='course_name' language=page.get_language %}
                                 </label>
 
-                                <input name="subject_query" type="text" id="course">
+                                <input name="subject_query" type="text" id="course" autocomplete="off">
                             </div>
 
                             <div class="search-landing-page__search-input">
-                                <label class="search-landing-page__search-label" for="course">
+                                <label class="search-landing-page__search-label" for="institution_query">
                                     {% get_translation key='uni_or_college' language=page.get_language %}
                                 </label>
 
@@ -41,7 +41,8 @@
                             </div>
                         </div>
 
-                        <button class="search-landing-page__nav-card-button">
+                        <button class="search-landing-page__nav-card-button"
+                             aria-label="{{card.value.search_button_description}}">
                             {% get_translation key='search' language=page.get_language %}
                         </button>
 
@@ -56,7 +57,8 @@
                     <img class="search-landing-page__nav-card-icon" src="{% static 'images/check_box_icon.svg' %}" alt="">
 
 
-                    <button class="search-landing-page__nav-card-button">
+                    <button class="search-landing-page__nav-card-button"
+                            aria-label="{{card.value.course_finder_button_description}}">
                         {% get_translation key='begin' language=page.get_language %}
                     </button>
                 </a>

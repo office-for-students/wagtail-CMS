@@ -134,11 +134,16 @@
             padding: 25px 30px 20px;
             margin: 0px;
 
-            .institution-explanation__close {
-                position: absolute;
-                right: 30px;
+        }
 
-                cursor: pointer;
+        .institution-explanation__close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            padding: 0px;
+
+            img {
+                width: 20px;
             }
         }
 
@@ -216,6 +221,10 @@
                     height: auto;
                 }
             }
+        }
+
+        .institution-explanation {
+            width: 75%;
         }
     }
 }

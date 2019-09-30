@@ -1,0 +1,9 @@
+<div class="breadcrumbs">
+    {% for ancestor in page.get_breadcrumbs %}
+        <a href="{{ancestor.url}}">{{ancestor.title}}</a>
+
+        <span class="breadcrumbs__divider">></span>
+    {% endfor %}
+
+    {{page.title}}
+</div>

@@ -37,7 +37,7 @@ class InstitutionDetailPage(DiscoverUniBasePage):
     apr_explanation_heading = TextField(blank=True)
     apr_explanation_body = RichTextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('qa_heading'),
         FieldPanel('qa_body'),
         FieldPanel('qa_report_link'),
@@ -69,7 +69,7 @@ class InstitutionDetailPage(DiscoverUniBasePage):
 class InstitutionOverview:
 
     def __init__(self, data_obj):
-        self.pub_ukprn_name = data_obj.get('pub_ukprn_name').title()
+        self.pub_ukprn_name = data_obj.get('pub_ukprn_name')
         self.pub_ukprn = data_obj.get('pub_ukprn')
         self.ukprn_name = data_obj.get('ukprn_name')
         self.ukprn = data_obj.get('ukprn')

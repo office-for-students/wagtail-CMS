@@ -1,5 +1,4 @@
-{% load static wagtailuserbar %}
-{% load sass_tags %}
+{% load static wagtailuserbar sass_tags %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -7,10 +6,10 @@
         <meta charset="utf-8" />
         <title>
             {% block title %}
-                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+                {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
             {% endblock %}
             {% block title_suffix %}
-                {% with self.get_site.site_name as site_name %}
+                {% with page.get_site.site_name as site_name %}
                     {% if site_name %}- {{ site_name }}{% endif %}
                 {% endwith %}
             {% endblock %}
@@ -29,30 +28,41 @@
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/dropdown.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/search-dropdown.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/feedback-form.js' %}"></script>
-        {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
-        {% endblock %}
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+         <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+         <!--<script type="text/javascript" src="{% static 'js/cookie-banner.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/subject_chooser.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/nav.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/bookmark-nav.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/dropdown.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/search-dropdown.js' %}"></script>-->
+         <!--<script type="text/javascript" src="{% static 'js/feedback-form.js' %}"></script>-->
+         {% block extra_js %}
+             {# Override this in templates to add extra javascript #}
+         {% endblock %}
 
+         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147556197-1"></script>
+         <!--<script type="text/javascript" src="{% static 'js/google-analytics-tracking.js' %}"></script>-->
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
+        <a href="#main-content" class="screen-reader">skip to main content</a>
         {% include 'partials/nav.html' %}
 
         {% wagtailuserbar %}
 
-        {% block content %}{% endblock %}
+        <div id="main-content" tabindex="-1">
+            {% block content %}{% endblock %}
+        </div>
 
         {% include 'partials/feedback-form.html' %}
-        <footer class="footer">
 
-        </footer>
+        {% include 'partials/footer.html' %}
+
+        {% if not cookies_accepted %}
+            {% include 'partials/cookie-banner.html' %}
+        {% endif %}
     </body>
 
 </html>

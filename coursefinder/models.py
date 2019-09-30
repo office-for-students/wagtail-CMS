@@ -20,7 +20,7 @@ class CourseFinderChooseCountry(DiscoverUniBasePage):
     page_order = 1
     question = TextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('question', classname="full"),
     ]
 
@@ -39,7 +39,7 @@ class CourseFinderModeOfStudy(DiscoverUniBasePage):
     question = TextField(blank=True)
     helper_text = RichTextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('question', classname="full"),
         FieldPanel('helper_text', classname="full")
     ]
@@ -58,7 +58,7 @@ class CourseFinderChooseSubject(DiscoverUniBasePage):
     question = TextField(blank=True)
     helper_text = RichTextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('question', classname="full"),
         FieldPanel('helper_text', classname="full")
     ]
@@ -77,7 +77,7 @@ class CourseFinderNarrowSearch(DiscoverUniBasePage):
     use_skip_form = True
     question = TextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('question', classname="full")
     ]
 
@@ -91,7 +91,7 @@ class CourseFinderUni(DiscoverUniBasePage):
     use_skip_form = True
     question = TextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('question', classname="full")
     ]
 
@@ -109,7 +109,7 @@ class CourseFinderPostcode(DiscoverUniBasePage):
     use_skip_form = True
     question = TextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('question', classname="full")
     ]
 
@@ -130,7 +130,7 @@ class CourseFinderSummary(DiscoverUniBasePage):
     subjects_section_title = TextField(blank=True)
     narrow_by_section_title = TextField(blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
         FieldPanel('country_section_title', classname="full"),
         FieldPanel('mode_of_study_section_title', classname="full"),
@@ -144,7 +144,7 @@ class CourseFinderSummary(DiscoverUniBasePage):
 
     @property
     def back_page(self):
-        return postcode_sibling_finder(self)
+        return narrow_search_sibling_finder(self)
 
 
 class CourseFinderResults(DiscoverUniBasePage):
@@ -155,7 +155,7 @@ class CourseFinderResults(DiscoverUniBasePage):
         ('links', blocks.PageChooserBlock()),
     ])
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
         FieldPanel('related_links_title'),
         StreamFieldPanel('related_links', classname="full"),
@@ -165,8 +165,8 @@ class CourseFinderResults(DiscoverUniBasePage):
 class BaseSearch:
 
     def __init__(self, page, count):
-        self.page = int(page)
-        self.count = int(count)
+        self.page = int(page) if page else 1
+        self.count = int(count) if page else 20
         self.offset = self.count * (self.page - 1)
         self.total_courses = None
         self.total_institutions = None
@@ -245,17 +245,18 @@ class CourseSearch(BaseSearch):
 
 class CourseFinderSearch(BaseSearch):
 
-    def __init__(self, subject, institution, mode, countries, postcode, page, count):
+    def __init__(self, subject, institution, countries, postcode, filters, course, page, count):
         super().__init__(page, count)
         self.subject = subject
         self.institution = institution
-        self.mode = mode
         self.countries = countries
         self.postcode = postcode
+        self.filters = filters
+        self.course = course
 
     def execute(self):
-        response = request_handler.course_finder_query(self.subject, self.institution, self.mode, self.countries,
-                                                       self.postcode, self.count, self.offset)
+        response = request_handler.course_finder_query(self.subject, self.institution, self.countries, self.postcode,
+                                                       self.filters, self.course, self.count, self.offset)
         error = None
 
         if response.ok:
@@ -264,7 +265,7 @@ class CourseFinderSearch(BaseSearch):
             self.total_institutions = data.get('total_results')
             self.results = data.get('items')
         else:
-            error = ApiError(response.status_code, 'searching courses for %s, %s, %s, %s' %
-                             (self.subject, self.institution, self.mode, self.countries))
+            error = ApiError(response.status_code, 'searching courses for %s, %s, %s' %
+                             (self.subject, self.institution, self.countries))
 
         return error

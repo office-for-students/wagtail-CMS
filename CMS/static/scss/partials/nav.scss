@@ -19,17 +19,20 @@
 
     display: flex;
     align-items: center;
-    padding-left: 15px;
-    padding-right: 15px;
 
-    color: $white;
+    a {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        color: $white;
+        text-decoration: none;
+    }
 
     &:hover {
         @include green-gradient-background-mixin();
-    }
-
-    img {
-        margin-left: 6px;
     }
 }
 
@@ -41,7 +44,7 @@
     color: $white;
 
     &__container {
-        padding: 22px 20px 22px 18px;
+        padding: 15px 30px;
         display: flex;
         justify-content: space-between;
     }
@@ -54,20 +57,8 @@
         border: none;
     }
 
-    &__brand {
-        margin: 0;
-
-        font-family: Montserrat;
-        font-size: 19px;
-        font-weight: normal;
-        line-height: 24px;
-        letter-spacing: 0.04em;
-        color: $white;
-
-        &-icon {
-            height: 1em;
-            margin-left: 10px;
-        }
+    &__brand-logo {
+        height: 40px;
     }
 
     &__burger-menu {
@@ -85,6 +76,11 @@
     }
 
     &__mobile {
+        &-nav {
+            display: flex;
+            align-items: center;
+        }
+
         &-links {
             display: none;
             min-height: 402px;
@@ -146,9 +142,20 @@
 
             color: $white;
             text-decoration: none;
+            border-bottom: 1px solid $white;
+        }
 
-            img {
-                margin-left: 7px;
+        &-language-toggles {
+            display: flex;
+            border-top: 1px solid $white;
+
+            .discover-uni-nav__mobile-link {
+                width: 50%;
+                justify-content: center;
+
+                &.active {
+                    @include green-gradient-background-mixin();
+                }
             }
         }
     }
@@ -159,50 +166,99 @@
 
     &__link-icon {
         height: 13px;
+        margin-left: 7px;
+    }
+
+    &__bookmark-icon {
+        height: 22px;
+        margin-right: 20px;
+
+        cursor: pointer;
+    }
+
+    .nav-section__icon {
+        margin-left: 7px;
+    }
+
+    .nav-bookmark {
+        position: relative;
+
+        &__count {
+            position: absolute;
+            padding: 2px 4.5px;
+            right: 10px;
+            top: 2px;
+
+            background-color: $delete-red;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: bold;
+            color: $white;
+        }
     }
 }
 
 @media only screen and (min-width: 770px) {
     .discover-uni-nav {
         &__container {
-            padding: 18px 0px 22px;
+            padding: 20px 0px;
         }
 
-        &__burger-menu {
+        &__mobile-nav {
             display: none;
         }
 
-        &__brand {
-            font-size: 25px;
-            line-height: 30px;
+
+        &__brand-logo {
+            height: 57px;
         }
 
         &__desktop {
             &-links {
                 display: flex;
-                margin: -18px 0px -22px;
+                margin: -20px 0px -20px;
+
+                list-style: none;
+                padding-left: 0px;
             }
 
             &-dropdown {
-                &:hover {
+                height: 100%;
+
+                border: none;
+                background-color: transparent;
+                text-decoration: none;
+
+                &:hover, &:focus {
                     .discover-uni-nav__desktop-dropdown-body {
                         display: block;
                     }
                 }
 
                 &-toggle {
-                    @include top-level-desktop-item();
-
-                    margin: 0px;
                     height: 100%;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    margin: 0px;
+
+                    color: $white;
+                    text-decoration: none;
+
+                    &:hover {
+                        @include green-gradient-background-mixin();
+                    }
                 }
 
                 &-body {
                     display: none;
                     position: absolute;
                     z-index: 100;
+                    padding-left: 0px;
 
                     background-color: $header-blue;
+                    list-style: none;
                 }
 
                 &-link {
@@ -224,8 +280,24 @@
 
             &-link {
                 @include top-level-desktop-item();
+            }
+        }
 
-                text-decoration: none;
+        &__link-icon {
+            margin-left: 7px;
+        }
+
+        &__bookmark-icon {
+            margin-right: 0px;
+        }
+
+        .nav-bookmark {
+            &__count {
+                padding: 0px 5.3px;
+                right: 5px;
+                top: 38px;
+
+                border-radius: 20px;
             }
         }
     }

@@ -5,33 +5,16 @@
 {% block body_class %}template-course-finder-choose-subject{% endblock %}
 {% block content_class %}subject-chooser{% endblock %}
 
+{% block page_js %}
+    <script type="text/javascript" src="{% static 'js/finder-subject-picker.js' %}"></script>
+{% endblock page_js %}
+
+
 {% block question %}
     <h1 class="course-finder-content__question">{{page.question}}</h1>
 
-    <form action="javascript:;" onsubmit="handleSubjectSubmit(this)" class="course-finder-content__question-form">
-        <div class="course-finder-content__question-selector">
-            <select id="subjectArea" name="subjectArea" onchange="handleSubjectAreaSelect(this.value)">
-                <option value="disabled" disabled selected>
-                    {% get_translation key='subject_area' language=page.get_language %}
-                </option>
-            </select>
-        </div>
-
-        <div class="course-finder-content__question-selector">
-            <select id="subject" name="subject" onchange="handleSubjectSelect(this.value)">
-                <option value="disabled" disabled selected>
-                    {% get_translation key='subject' language=page.get_language %}
-                </option>
-            </select>
-        </div>
-
-        <div class="course-finder-content__question-selector">
-            <select id="subjectCode" name="subjectCode">
-                <option selected>
-                    {% get_translation key='show_all' language=page.get_language %}
-                </option>
-            </select>
-        </div>
+    <form action="javascript:;" class="course-finder-content__question-form">
+        {% include 'partials/subject_selector.html' %}
     </form>
 
     <div class="course-finder-content__question-helper">
@@ -41,7 +24,7 @@
 
 {% block next_nav %}
     <a href={% pageurl page.next_page %} class="course-finder-content__next-link">
-        <button class="course-finder-content__next-button" onclick="handleFormSubmit()">
+        <button class="course-finder-content__next-button">
             {% get_translation key='next' language=page.get_language %}
 
             <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">

@@ -1,5 +1,4 @@
 from django.db.models.fields import TextField
-from wagtail.core.models import Page
 from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
@@ -13,10 +12,13 @@ class ContentLandingPage(DiscoverUniBasePage):
         ('sections', blocks.PageChooserBlock())
     ])
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('intro'),
         StreamFieldPanel('options', classname="full")
     ]
+
+    def get_breadcrumbs(self):
+        return self.get_ancestors().live()[1:]
 
 
 class Section(DiscoverUniBasePage):
@@ -24,7 +26,8 @@ class Section(DiscoverUniBasePage):
     subsections = StreamField([
         ('subsection', blocks.StructBlock([
             ('subsection_title', blocks.TextBlock()),
-            ('subsection_content', blocks.RichTextBlock())
+            ('subsection_content', blocks.RichTextBlock(features=['h3', 'h4', 'bold', 'italic', 'embed', 'link',
+                                                        'document-link', 'image', 'ol', 'ul', 'hr', 'blockquote']))
         ]))
     ])
     related_links_title = TextField(blank=True)
@@ -36,7 +39,7 @@ class Section(DiscoverUniBasePage):
         ('links', blocks.PageChooserBlock(required=False)),
     ], blank=True)
 
-    content_panels = Page.content_panels + [
+    content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('intro'),
         StreamFieldPanel('subsections'),
         FieldPanel('related_links_title'),
@@ -44,3 +47,21 @@ class Section(DiscoverUniBasePage):
         FieldPanel('lateral_link_title'),
         StreamFieldPanel('lateral_links')
     ]
+
+    @property
+    def has_lateral_links(self):
+        return self.lateral_links or self.lateral_link_title
+
+    def get_breadcrumbs(self):
+        return self.get_ancestors().live()[1:]
+
+
+class FlatContent(DiscoverUniBasePage):
+    content_body = RichTextField(blank=True, features=['h1', 'h2', 'h3', 'bold', 'italic', 'embed', 'link',
+                                                       'document-link', 'image', 'ol', 'ul', 'hr'])
+    content_panels = DiscoverUniBasePage.content_panels + [
+        FieldPanel('content_body'),
+    ]
+
+    def get_breadcrumbs(self):
+        return self.get_ancestors().live()[1:]

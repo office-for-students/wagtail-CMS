@@ -4,6 +4,9 @@
 @import './partials/forms';
 @import './partials/search_dropdown';
 @import './partials/feedback_form';
+@import './partials/filters';
+@import './partials/compare';
+@import './partials/cookie_banner';
 
 body {
   margin: 0;
@@ -48,6 +51,46 @@ a {
 
 .dropdown-arrow {
     align-self: center;
+}
+
+.screen-reader {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+
+    &:active, &:focus {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        white-space: normal;
+        width: auto;
+    }
+}
+
+.breadcrumbs {
+    display: none;
+}
+
+@media only screen and (min-width: 770px) {
+    .breadcrumbs {
+        @include small-font-mixin();
+
+        display: block;
+        position: absolute;
+        top: 121px;
+
+        &__divider {
+            margin: 0px 4px 0px 6px;
+        }
+    }
 }
 
 //Required to prevent wagtail adding huge padding to bottom of embeds

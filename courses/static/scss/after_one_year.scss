@@ -45,7 +45,8 @@
     padding: 7px 30px 32px 30px;
     text-align: center;
 
-    background-color: $background-grey;
+    border: 1px solid $ux-grey-3;
+    border-radius: 10px;
 
     p {
         margin: 0px;
@@ -54,7 +55,7 @@
     .one-year__overview-lead {
         @include l-heading-mixin();
 
-        color: $slate;
+        color: $gradient-light-green;
         line-height: 59px;
     }
 }
@@ -100,7 +101,7 @@
         .one-year__overview-lead {
             @include xl-heading-mixin();
 
-            color: $slate;
+            color: $gradient-light-green;
         }
 
         p {

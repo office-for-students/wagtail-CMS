@@ -1,3 +1,99 @@
+@import '../../CMS/static/scss/variables';
+
+
 .highcharts-series {
     opacity: 1 !important;
+}
+
+.base_gradient {
+    height: 0;
+}
+
+.bar-chart {
+    .highcharts-background {
+        fill: none;
+    }
+
+    .highcharts-title {
+        fill: $ux-grey-3;
+    }
+
+    #gradient-bar stop[offset="0"] {
+        stop-color: $gradient-dark-green;
+    }
+    #gradient-bar stop[offset="1"] {
+        stop-color: $gradient-light-green;
+    }
+
+    .highcharts-point {
+        stroke: $gradient-dark-green;
+        stroke-width: 2px;
+
+        &.highcharts-color-1 {
+            fill: url(#gradient-bar);
+            fill: $gradient-light-green;
+        }
+
+        &.highcharts-color-0 {
+            fill: $white;
+        }
+    }
+
+    .highcharts-xaxis .highcharts-axis-line {
+        stroke: $gradient-light-green;
+    }
+
+    .highcharts-grid-line {
+        stroke: none;
+    }
+}
+
+.doughnut-chart {
+    .highcharts-plot-border {
+        fill: $white;
+        stroke: none;
+    }
+
+    .highcharts-series {
+
+        &.highcharts-color-1 {
+            stroke: $gradient-light-green;
+            stroke-width: 20px;
+        }
+
+        &.highcharts-color-0 {
+            stroke: $form-grey;
+            stroke-width: 20px;
+        }
+    }
+
+    .highcharts-axis-line{
+        fill: none;
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .doughnut-chart {
+        .highcharts-plot-border {
+            fill: $white;
+            stroke: none;
+        }
+
+        .highcharts-series {
+
+            &.highcharts-color-1 {
+                stroke: $gradient-light-green;
+                stroke-width: 20px;
+            }
+
+            &.highcharts-color-0 {
+                stroke: $form-grey;
+                stroke-width: 20px;
+            }
+        }
+
+        .highcharts-axis-line{
+            fill: none;
+        }
+    }
 }

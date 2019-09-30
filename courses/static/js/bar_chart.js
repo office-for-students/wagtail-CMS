@@ -16,17 +16,18 @@ $(function () {
             Highcharts.chart(this.target[0], {
                 chart: {
                     type: 'bar',
-                    height: '50px',
-                    spacing: [0,0,0,0]
+                    height: '40px',
+                    spacing: [0,70,0,1],
+                    styledMode: true
                 },
                 title: {
                     text: this.value + '%',
                     verticalAlign: 'middle',
-                    align: 'left',
-                    x: 15,
+                    align: 'right',
+                    x: 70,
                     y: 20,
                     style: {
-                        color: '#000000',
+                        color: '#6E6E6E',
                         fontSize: '19px',
                         fontFamily: 'Nunito Sans',
                         fontWeight: 'bold',
@@ -35,7 +36,7 @@ $(function () {
                 },
                 xAxis: {
                     categories: [''],
-                    lineWidth: 0,
+                    lineWidth: 1,
                 },
                 yAxis: {
                     min: 0,
@@ -53,17 +54,25 @@ $(function () {
                 plotOptions: {
                     series: {
                         stacking: 'percentage',
+                        borderWidth: 2,
+                        borderColor: '#308282'
                     }
                 },
                 series: [{
                     data: [{
-                        color: '#DFDFDF',
+                        color: '#FFFFFF',
                         y: (100 - this.value),
                         pointWidth: '40',
                     }]
                 }, {
                     data: [{
-                        color: '#4EA27D',
+                        color: {
+                            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+                            stops: [
+                                [0, '#308282'],
+                                [1, '#4EA27D']
+                            ]
+                        },
                         y: this.value,
                         pointWidth: '40',
                     }]

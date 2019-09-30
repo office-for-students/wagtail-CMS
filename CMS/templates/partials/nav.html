@@ -3,50 +3,89 @@
 <nav class="discover-uni-nav">
     <div class="discover-uni-nav__container discover-uni-container">
         <a class="discover-uni-nav__home-link" href="/">
-            <h1 class="discover-uni-nav__brand">
-                {% autoescape off %}
-                    {% get_translation key='site_logo' language=page.get_language %}
-                {% endautoescape %}
-
-                <img class="discover-uni-nav__brand-icon" src="{% static 'images/brand_logo.svg' %}" alt="">
-            </h1>
+            {% if page.is_english %}
+                <img class="discover-uni-nav__brand-logo" src="{% static 'images/logos/nav_logo_english.svg' %}"
+                     alt="{% get_translation key='site_logo' language=page.get_language %}">
+            {% else %}
+                <img class="discover-uni-nav__brand-logo" src="{% static 'images/logos/nav_logo_welsh.svg' %}"
+                     alt="{% get_translation key='site_logo' language=page.get_language %}">
+            {% endif %}
         </a>
 
-        <div class="discover-uni-nav__desktop-links">
+        <ul class="discover-uni-nav__desktop-links">
             {% for item in page.menu %}
                 {% if item.sub_items %}
-                    <div class="discover-uni-nav__desktop-dropdown">
-                        <p class="discover-uni-nav__desktop-dropdown-toggle">
+                    <li class="discover-uni-nav__desktop-dropdown">
+                        <a class="discover-uni-nav__desktop-dropdown-toggle" href="#">
+                            {{ item.label }}
+                        </a>
+
+                        <ul class="discover-uni-nav__desktop-dropdown-body">
+                            {% for sub_item in item.sub_items %}
+                                <li>
+                                    <a class="discover-uni-nav__desktop-dropdown-link" href="{{ sub_item.url }}">
+                                        {{ sub_item.label }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="discover-uni-nav__desktop-link">
+                        <a href="{{ item.url }}">
                             {{ item.label }}
 
-                            <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
-                        </p>
-
-                        <div class="discover-uni-nav__desktop-dropdown-body">
-                            {% for sub_item in item.sub_items %}
-                                <a class="discover-uni-nav__desktop-dropdown-link" href="{{ sub_item.url }}">
-                                    {{ sub_item.label }}
-                                </a>
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% else %}
-                    <a class="discover-uni-nav__desktop-link" href="{{ item.url }}">
-                        {{ item.label }}
-
-                        {% if item.label == 'Course search' %}
-                            <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
-                        {% endif %}
-                    </a>
+                            {% if item.label == 'Course search' %}
+                                <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
+                            {% endif %}
+                        </a>
+                    </li>
                 {% endif %}
             {% endfor %}
-        </div>
 
-        <i id="burger-menu" class="discover-uni-nav__burger-menu fas fa-bars"></i>
-        <i id="close-menu" class="discover-uni-nav__close-menu fas fa-times"></i>
+            {% if page.is_english %}
+                <li class="discover-uni-nav__desktop-link">
+                    <a href="{{welsh_url}}" class="nav-bookmark">
+                        Cymraeg
+                    </a>
+                </li>
+            {% else %}
+                <li class="discover-uni-nav__desktop-link">
+                    <a href="{{english_url}}" class="nav-bookmark">
+                        English
+                    </a>
+                </li>
+            {% endif %}
+
+            <li class="discover-uni-nav__desktop-link">
+                <a href="{{page.manage_link}}" class="nav-bookmark">
+                    <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="">
+                    <span class="nav-bookmark__count"></span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="discover-uni-nav__mobile-nav">
+            <a href="{{page.manage_link}}" class="nav-bookmark">
+                <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="">
+                <span class="nav-bookmark__count"></span>
+            </a>
+
+            <i id="burger-menu" class="discover-uni-nav__burger-menu fas fa-bars"></i>
+            <i id="close-menu" class="discover-uni-nav__close-menu fas fa-times"></i>
+        </div>
     </div>
 
     <div class="discover-uni-nav__mobile-links">
+        <div class="discover-uni-nav__mobile-language-toggles">
+            <a class="discover-uni-nav__mobile-link{% if page.is_english %} active{% endif %}" href="{{english_url}}">
+                English
+            </a>
+
+            <a class="discover-uni-nav__mobile-link{% if not page.is_english %} active{% endif %}" href="{{welsh_url}}">
+                Cymraeg
+            </a>
+        </div>
         {% for item in page.menu %}
             {% if item.sub_items %}
                 <div class="discover-uni-nav__mobile-accordion">
@@ -56,11 +95,11 @@
                         </p>
 
                         <div class="expand">
-                            <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand">
+                            <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand {{ item.label }} drop down menu">
                         </div>
 
                         <div class="collapse">
-                            <img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}" alt="collapse">
+                            <img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}" alt="collapse {{ item.label }} drop down menu">
                         </div>
                     </div>
 

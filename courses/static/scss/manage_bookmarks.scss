@@ -1,0 +1,162 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+
+.bookmark {
+    padding: 35px 30px 55px;
+
+    &__overview {
+        padding: 30px 50px;
+        text-align: center;
+
+        border: 1px solid #707070;
+        border-radius: 10px;
+    }
+
+    &__course-count {
+        @include m-heading--bold-mixin();
+
+        margin: 0px 0px 15px;
+
+
+        color: $gradient-light-green;
+    }
+
+    &__lead {
+        @include xs-heading-mixin();
+
+        margin: 0px;
+
+        color: $ux-grey-3;
+    }
+
+    &__nav-box {
+        margin-top: 20px;
+        padding: 30px 26px;
+        text-align: center;
+
+        border: 1px solid #707070;
+        border-radius: 10px;
+
+        .rich-text {
+            p {
+                @include small-font-mixin();
+
+                margin: 10px 0px 0px;
+            }
+
+            &:first-child {
+                p {
+                    margin-top: 0px;
+                }
+            }
+        }
+    }
+
+    &__none-selected {
+        @include small-font-mixin();
+
+        display: none;
+        padding: 100px 30px 0px;
+        text-align: center;
+
+        &-example {
+            margin-top: 45px;
+            padding-bottom: 70px;
+
+            .course-detail__compare-btn {
+                margin-bottom: 18px;
+            }
+            .down-arrow {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 18px;
+            }
+        }
+    }
+
+    &__one-selected {
+        @include small-font-mixin();
+
+        display: none;
+        padding: 40px 30px 0px;
+        text-align: center;
+    }
+
+    &__courses {
+        margin-top: 33px;
+    }
+
+    &__course {
+        margin-bottom: 4px;
+        display: none;
+        padding: 40px 40px 30px;
+
+        background-color: $divider-grey;
+
+        &-name {
+            @include desktop-body-font--bold-mixin();
+
+            margin-bottom:20px;
+            display: block;
+
+            color: $gradient-light-green;
+        }
+
+        &-info {
+            @include mobile-body-font-mixin();
+
+            margin: 0px;
+
+            line-height: 22px;
+        }
+
+        &-remove {
+            @include small-font-mixin();
+
+            margin-top: 15px;
+            padding: 12px;
+
+            color: $white;
+            background-color: $delete-red;
+            border-radius: 3px;
+            border: none;
+
+            &-icon {
+                height: 12px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .bookmark {
+        &__course {
+
+            &-count {
+                @include l-heading--bold-mixin();
+
+                color: $gradient-light-green;
+            }
+        }
+
+        &__lead {
+            @include s-heading-mixin();
+
+            color: $ux-grey-3;
+        }
+
+        &__nav-box {
+            .rich-text {
+                p {
+                    @include desktop-body-font-mixin();
+                }
+            }
+        }
+
+        &__none-selected {
+            @include desktop-body-font-mixin();
+        }
+    }
+}

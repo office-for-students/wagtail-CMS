@@ -1,0 +1,34 @@
+{% load staticfiles discover_uni_tags %}
+
+
+<footer class="footer">
+    <div class="discover-uni-container">
+        {% if page.is_english %}
+            <img class="footer__brand-logo" src="{% static 'images/logos/footer_logo_english.svg' %}"
+                 alt="{% get_translation key='site_logo' language=page.get_language %}">
+        {% else %}
+            <img class="footer__brand-logo" src="{% static 'images/logos/footer_logo_welsh.svg' %}"
+                 alt="{% get_translation key='site_logo' language=page.get_language %}">
+        {% endif %}
+        <div class="footer__items">
+            <div class="footer__group">
+                {% for item in page.footer %}
+                    <a class="footer__link" href="{{ item.url }}">
+                        {{ item.label }}
+                    </a>
+
+                    {% is_multiple_of forloop.counter 4 as end_group %}
+
+                    {% if end_group %}
+                        </div>
+                        <div class="footer__group">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <p class="footer__copyright">
+            © {% get_translation key='copyright' language=page.get_language %}
+        </p>
+    </div>
+</footer>

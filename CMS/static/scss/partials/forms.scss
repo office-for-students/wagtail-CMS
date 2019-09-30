@@ -1,3 +1,9 @@
+fieldset {
+    border: none;
+    padding: 0px;
+    margin: 0px;
+}
+
 .checkbox {
     display: block;
     position: relative;
@@ -14,8 +20,8 @@
     }
 
     /* On mouse-over, add a grey background color */
-    &:hover input ~ .checkmark {
-        border: 2px solid $gradient-light-green;
+    &:hover input ~ .checkmark, input:focus ~ .checkmark {
+        border: 3px solid $gradient-light-green;
     }
 
     /* Hide the browser's default checkbox */
@@ -23,8 +29,10 @@
         position: absolute;
         opacity: 0;
         cursor: pointer;
-        height: 0;
-        width: 0;
+        height: 2px;
+        width: 2px;
+        top: 0px;
+        left: 0px;
 
         /* When the checkbox is checked, add a blue background */
         &:checked ~ .checkmark {
@@ -82,16 +90,18 @@
     -ms-user-select: none;
     user-select: none;
 
-    &:hover input ~ .radiobox {
-        border: 2px solid $gradient-light-green;
+    &:hover input ~ .radiobox, input:focus ~ .radiobox {
+        border: 3px solid $gradient-light-green;
     }
 
     input {
         position: absolute;
         opacity: 0;
         cursor: pointer;
-        height: 0;
-        width: 0;
+        height: 2px;
+        width: 2px;
+        top: 0px;
+        left: 0px;
 
         &:checked ~ .radiobox {
             @include green-gradient-background-mixin();
@@ -200,6 +210,14 @@
             border-color: transparent transparent $ux-grey-3 transparent;
             top: 17px;
         }
+    }
+
+    select.visible ~ .select-selected {
+        display: block;
+    }
+
+    select.hidden ~ .select-selected {
+        display: none;
     }
 
     .select-items {
