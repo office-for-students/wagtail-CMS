@@ -1,6 +1,6 @@
 build_institutions_json_file
 =================
-Script to create an institutions.json file from the ukprn_name, which is read from the ukrlp CosmosDB container.
+Script to create an institutions.json file from the ukprn_name, which is read from the institutions CosmosDB container.
 
 ### Configuration Settings
 
@@ -12,6 +12,7 @@ Before running the script, set the following environment variables.
 | AzureCosmosDbInstitutionsCollectionId | ukrlp | the container name holding the institution data |
 | AzureCosmosDbUri | retrieve from portal | the uri to CosmosDB |
 | AzureCosmosDbKey | retrieve from portal | the key to authenticate to CosmosDB |
+| Version          | Check latest version of institutions.json file | The version number, bumped from the existing institution list |
 
 
 ### Setup
