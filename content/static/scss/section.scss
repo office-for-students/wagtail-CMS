@@ -95,6 +95,47 @@
             }
         }
     }
+
+    .additional-links {
+        margin-top: 80px;
+
+        &__header {
+            @include m-heading--bold-mixin();
+
+            text-align: center;
+        }
+
+        &__link {
+            &-wrapper {
+                width: 50%;
+
+                &:nth-child(odd) {
+                    margin-right: 10px;
+                }
+
+                &:nth-child(even) {
+                    margin-left: 10px;
+                }
+
+                a {
+                    @include xs-heading--bold-mixin();
+
+                    padding: 37px;
+                    display: block;
+
+                    background: #FFFFFF;
+                    box-shadow: 2px 1px 15px rgba(0, 0, 0, 0.1);
+                    border-radius: 10px;
+                    text-decoration: none;
+                    color: $gradient-light-green;
+                }
+            }
+
+            &-list {
+                display: flex;
+            }
+        }
+    }
 }
 
 @media only screen and (min-width: 770px) {
