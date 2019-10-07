@@ -667,7 +667,7 @@
                     var selected = this.initialSelection && this.initialSelection[0].indexOf(item.code) !== -1;
                     this.subjectSelector.append(this.createOption(item.code, item.englishname, selected));
                     if (selected) {
-                        this.toggleCodeSelector();
+                        this.showCodeSelector();
                     }
                 }
 
@@ -677,6 +677,7 @@
                 }
             }
 
+            this.subjectAreaOptions = this.subjectAreaSelector.find('option');
             this.subjectOptions = this.subjectSelector.find('option');
             this.subjectCodeOptions = this.subjectCodeSelector.find('option');
             this.subjectAreaSelector.trigger('loadeddata');
@@ -703,39 +704,94 @@
             this.subjectAreaSelector.change(this.handleAreaSelection.bind(this));
 
             this.subjectSelector.change(this.handleSubjectSelection.bind(this));
+
+            this.subjectCodeSelector.change(this.handleSubjectCodeSelection.bind(this));
         },
 
         handleAreaSelection: function() {
-            for (var i = 0; i < this.subjectOptions.length; i++) {
-                var option = this.subjectOptions[i];
+            if (this.subjectAreaSelector[0].value === 'disabled') {
+                this.resetSubjectSelector();
+            } else {
+                for (var i = 0; i < this.subjectOptions.length; i++) {
+                    var option = this.subjectOptions[i];
+                    $(option).removeAttr("disabled");
+                    if (option.value.indexOf(this.subjectAreaSelector[0].value) === -1) {
+                        $(option).attr("disabled", "disabled");
+                    }
+                }
+            }
+
+            for (var i = 0; i < this.subjectAreaOptions.length; i++) {
+                var option = this.subjectAreaOptions[i];
                 $(option).removeAttr("disabled");
-                if (option.value.indexOf(this.subjectAreaSelector[0].value) === -1) {
+                if (option.value === this.subjectAreaSelector[0].value) {
                     $(option).attr("disabled", "disabled");
                 }
             }
+
+            this.subjectAreaSelector.trigger('loadeddata');
             this.subjectSelector.trigger('loadeddata');
+            this.hideCodeSelector();
         },
 
         handleSubjectSelection: function() {
-            var all = ''
-            for (var i = 0; i < this.subjectCodeOptions.length; i++) {
-                var option = this.subjectCodeOptions[i];
-                $(option).attr("disabled", "disabled");
-                if (option.dataset.code.includes(this.subjectSelector[0].value)) {
-                    $(option).removeAttr("disabled");
-                    all += option.value + ',';
+            if (this.subjectSelector[0].value === 'disabled') {
+                this.hideCodeSelector();
+            } else {
+                var all = ''
+                for (var i = 0; i < this.subjectCodeOptions.length; i++) {
+                    var option = this.subjectCodeOptions[i];
+                    $(option).attr("disabled", "disabled");
+                    if (option.dataset.code.includes(this.subjectSelector[0].value)) {
+                        $(option).removeAttr("disabled");
+                        all += option.value + ',';
+                    }
+                }
+                this.subjectCodeOptions[0].value = all;
+                this.showCodeSelector();
+            }
+
+            for (var i = 0; i < this.subjectOptions.length; i++) {
+                var option = this.subjectOptions[i];
+                $(option).removeAttr("disabled");
+                if (option.value === this.subjectSelector[0].value) {
+                    $(option).attr("disabled", "disabled");
                 }
             }
-            this.subjectCodeOptions[0].value = all;
 
-            this.toggleCodeSelector();
-
+            this.subjectSelector.trigger('loadeddata');
             this.subjectCodeSelector.trigger('loadeddata');
         },
 
-        toggleCodeSelector: function() {
+        handleSubjectCodeSelection: function() {
+            for (var i = 0; i < this.subjectCodeOptions.length; i++) {
+                var option = this.subjectCodeOptions[i];
+                $(option).removeAttr("disabled");
+                if (option.value === this.subjectCodeSelector[0].value) {
+                    $(option).attr("disabled", "disabled");
+                }
+            }
+            this.subjectCodeSelector.trigger('loadeddata');
+        },
+
+        resetSubjectSelector: function() {
+            for (var i = 0; i < this.subjectOptions.length; i++) {
+                var option = this.subjectOptions[i];
+                $(option).removeAttr("disabled");
+                if (option.value === 'disabled') {
+                    $(option).attr("disabled", "disabled");
+                }
+            }
+        },
+
+        showCodeSelector: function() {
             this.subjectCodeSelector.removeClass('hidden');
             this.subjectCodeSelector.addClass('visible');
+        },
+
+        hideCodeSelector: function() {
+            this.subjectCodeSelector.removeClass('visible');
+            this.subjectCodeSelector.addClass('hidden');
         }
     }
 
