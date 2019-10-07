@@ -216,7 +216,7 @@
 
             &-selector {
                 .select-items {
-                    width: calc(100vw - 60px);
+                    max-width: 1020px;
                 }
             }
         }
