@@ -42,6 +42,18 @@ LOGGING = {
     },
 }
 
+# Security settings
+
+SECURE_HSTS_SECONDS = os.environ.get('SECURE_HSTS_SECONDS', 0)
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+SECURE_BROWSER_XSS_FILTER = True
+
+SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_SECURE = True
+
 try:
     from .local import *
 except ImportError:

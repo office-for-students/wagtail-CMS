@@ -216,3 +216,5 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'ocp-apim-subscription-key',
 ]
+
+X_FRAME_OPTIONS = 'DENY'
