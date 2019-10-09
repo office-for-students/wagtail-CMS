@@ -49,3 +49,14 @@ class NewWindowExternalLinkHandler(LinkHandler):
 @hooks.register('register_rich_text_features')
 def register_external_link(features):
     features.register_link_type(NewWindowExternalLinkHandler)
+
+
+@hooks.register('register_rich_text_features')
+def unregister_document_feature(features):
+    features.default_features.remove('document-link')
+    print(features.default_features)
+
+
+# Removing documents from the menu. Had to specify the index because searching for it breaks the urls
+# TODO improve the way the  documents are removed
+hooks._hooks['register_admin_menu_item'].pop(2)
