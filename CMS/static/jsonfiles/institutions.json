@@ -1,5 +1,5 @@
 {
-    "version": 3,
+    "version": 4,
     "institutions": [
         {
             "alphabet": "a",
@@ -1218,8 +1218,8 @@
         },
         {
             "alphabet": "u",
-            "name": "UWE",
-            "order_by_name": "uwe"
+            "name": "Uwe Bristol",
+            "order_by_name": "uwe bristol"
         },
         {
             "alphabet": "w",
@@ -1275,6 +1275,11 @@
             "alphabet": "u",
             "name": "University Centre Weston",
             "order_by_name": "university centre weston"
+        },
+        {
+            "alphabet": "w",
+            "name": "Weymouth College",
+            "order_by_name": "weymouth college"
         },
         {
             "alphabet": "w",
