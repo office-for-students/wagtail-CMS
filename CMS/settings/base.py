@@ -238,3 +238,6 @@ AXES_COOLOFF_TIME = 1  # Locks user out for 1 hour
 AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP = True
 # If True, prevent login from IP under a particular username if the attempt limit has been exceeded,
 # otherwise lock out based on IP.
+
+# Anti  Virus
+CLAMAV_ACTIVE = True

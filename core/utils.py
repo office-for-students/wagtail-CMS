@@ -1,6 +1,11 @@
+import pyclamd
+
+from django.conf import settings
+
 from http import HTTPStatus
 
 from CMS.enums import enums
+from core.exceptions import VirusException
 from errors.models import InternalError
 
 
@@ -50,3 +55,48 @@ def parse_menu_item(menu_item):
 
 def fallback_to(value, default_value):
     return value if value is not None else default_value
+
+
+def check_for_virus(instance):
+    if instance.file.closed:
+        with open(instance.file.path, 'rb') as file:
+            file_content = file.read()
+    else:
+        file_content = instance.file.read()
+
+    has_virus, name = is_infected(file_content)
+
+    if has_virus:
+        raise VirusException(_('Virus "{}" was detected').format(name))
+
+    return instance
+
+
+def is_infected(stream):
+    clam = get_clam()
+    if not settings.CLAMAV_ACTIVE or clam is None:
+        return None, ''
+
+    result = clam.scan_stream(stream)
+    if result:
+        return True, result['stream'][1]
+
+    return False, ''
+
+
+def get_clam():
+    try:
+        clam = pyclamd.ClamdUnixSocket()
+
+        # test if server is reachable
+        clam.ping()
+
+        return clam
+    except pyclamd.ConnectionError:
+        # if failed, test for network socket
+        try:
+            cd = pyclamd.ClamdNetworkSocket()
+            cd.ping()
+            return cd
+        except pyclamd.ConnectionError:
+            raise ValueError('could not connect to clamd server either by unix or network socket')
