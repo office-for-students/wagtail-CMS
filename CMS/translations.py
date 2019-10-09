@@ -57,7 +57,7 @@ DICT = {
     },
     'apply_filters': {
         'en': 'Apply filters',
-        'cy': ''
+        'cy': 'Gweithredu hidlyddion'
     },
     'Architects, Town Planners, Surveyors': {
         'en': 'Architects, town planners, surveyors',
@@ -97,11 +97,11 @@ DICT = {
     },
     'bookmark_course': {
         'en': 'Bookmark course',
-        'cy': ''
+        'cy': 'Nodi cwrs'
     },
     'bookmarked_courses': {
         'en': 'bookmarked courses',
-        'cy': ''
+        'cy': 'cyrsiau a nodwyd'
     },
     'break_from_studies': {
         'en': 'Are taking a break from their studies',
@@ -131,6 +131,10 @@ DICT = {
         'en': 'Business, research and administrative professionals',
         'cy': 'Gweithwyr Proffesiynol Busnes, Ymchwil a Gweinyddu'
     },
+    'can_compare_courses': {
+        'en': 'compare courses',
+        'cy': 'gymharu cyrsiau'
+    },
     'Caring personal service occupations': {
         'en': 'Caring personal service occupations',
         'cy': 'Galwedigaethau gofal a gwasanaeth personol'
@@ -157,7 +161,7 @@ DICT = {
     },
     'clear_all': {
         'en': 'Clear all',
-        'cy': ''
+        'cy': 'Clirio popeth'
     },
     'close': {
         'en': 'Close',
@@ -169,7 +173,7 @@ DICT = {
     },
     'compare_courses': {
         'en': 'compare courses',
-        'cy': ''
+        'cy': 'cymharu cyrsiau'
     },
     'completed_course': {
         'en': 'Have completed the course',
@@ -201,7 +205,7 @@ DICT = {
     },
     'copyright': {
         'en': '2019 Copyright. All rights reserved.',
-        'cy': ''
+        'cy': 'Hawlfraint 2019. Cedwir Pob Hawl'
     },
     'Corporate managers and senior officials': {
         'en': 'Corporate managers and senior officials',
@@ -217,11 +221,11 @@ DICT = {
     },
     'countries': {
         'en': 'Countries',
-        'cy': ''
+        'cy': 'Gwledydd'
     },
     'course_added': {
         'en': 'course added to ',
-        'cy': ''
+        'cy': '… cwrs wedi’i ychwanegu at y '
     },
     'course_details': {
         'en': 'Course details',
@@ -245,7 +249,7 @@ DICT = {
     },
     'course_removed': {
         'en': 'Course removed from ',
-        'cy': ''
+        'cy': "Cwrs wedi’i ddileu o'r "
     },
     'course_search': {
         'en': 'Course search',
@@ -253,7 +257,7 @@ DICT = {
     },
     'course_too_many': {
         'en': 'is the maximum number of bookmarks.',
-        'cy': ''
+        'cy': "yw'r nifer uchaf o nodau tudalen y gallwch eu hychwanegu"
     },
     'courses': {
         'en': 'course(s)',
@@ -269,7 +273,7 @@ DICT = {
     },
     'data_for': {
         'en': 'Data for',
-        'cy': ''
+        'cy': 'Data ar gyfer'
     },
     'degree': {
         'en': 'Degree',
@@ -315,7 +319,7 @@ DICT = {
     },
     'dont_mind': {
         'en': "I don't mind",
-        'cy': ''
+        'cy': 'Does dim ots gen i'
     },
     'dont_narrow': {
         'en': "don't narrow search",
@@ -533,10 +537,6 @@ DICT = {
         'en': 'Locations',
         'cy': 'Lleoliadau'
     },
-    'manage_list': {
-        'en': 'Manage course list',
-        'cy': ''
-    },
     'Managers and proprieters in agriculture and services': {
         'en': 'Managers and proprieters in agriculture and services',
         'cy': 'Rheolwyr a pherchnogion mewn amaethyddiaeth a gwasanaethau amaethyddol'
@@ -601,10 +601,6 @@ DICT = {
         'en': 'Next page',
         'cy': 'Y dudalen nesaf'
     },
-    'no': {
-        'en': 'No',
-        'cy': ''
-    },
     'no_qualifications': {
         'en': 'No / unknown prior qualifications',
         'cy': 'Dim cymwysterau blaenorol/cymwysterau anhysbys'
@@ -615,7 +611,7 @@ DICT = {
     },
     'not_enough': {
         'en': 'Add another to compare courses.',
-        'cy': ''
+        'cy': 'Ychwanegwch un arall er mwyn cymharu cyrsiau'
     },
     'not_professional_or_managerial': {
         'en': 'Not in a professional or managerial job',
@@ -719,11 +715,11 @@ DICT = {
     },
     'remove_course': {
         'en': 'Remove course',
-        'cy': ''
+        'cy': 'Dileu cwrs'
     },
     'remove_others': {
         'en': 'To remove courses go to',
-        'cy': ''
+        'cy': "I ddileu cyrsiau, ewch i'r "
     },
     'Research and Development Managers': {
         'en': 'Research and development managers',
@@ -811,7 +807,11 @@ DICT = {
     },
     'select_all': {
         'en': 'Select all',
-        'cy': ''
+        'cy': "Dewis popeth sy'n berthnasol"
+    },
+    'select_course': {
+        'en': 'Select a course',
+        'cy': 'Dewis cwrs'
     },
     'selected_of': {
         'en': 'selected of',
@@ -943,7 +943,7 @@ DICT = {
     },
     'uni_college': {
         'en': 'Universities / colleges',
-        'cy': ''
+        'cy': 'Brifysgolion / cholegau'
     },
     'unknown': {
         'en': 'Unknown',
@@ -987,7 +987,7 @@ DICT = {
     },
     'with_foundation': {
         'en': 'With foundation year',
-        'cy': ''
+        'cy': "Gyda'r flwyddyn sylfaen"
     },
     'without_foundation': {
         'en': 'Without foundation year',
@@ -995,7 +995,7 @@ DICT = {
     },
     'with_abroad': {
         'en': 'With year abroad',
-        'cy': ''
+        'cy': 'Gyda blwyddyn dramor'
     },
     'without_abroad': {
         'en': 'Without year abroad',
@@ -1019,7 +1019,7 @@ DICT = {
     },
     'you_can': {
         'en': 'You can',
-        'cy': ''
+        'cy': 'Gallwch '
     },
     'I received sufficient preparatory information prior to my placement(s)': {
         'en': 'I received sufficient preparatory information prior to my placement(s)',

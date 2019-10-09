@@ -1,4 +1,20 @@
 (function ($) {
+    
+    // ie polyfill for Includes
+    if (!String.prototype.includes) {
+      String.prototype.includes = function(search, start) {
+        if (typeof start !== 'number') {
+          start = 0;
+        }
+
+        if (start + search.length > this.length) {
+          return false;
+        } else {
+          return this.indexOf(search, start) !== -1;
+        }
+      };
+    }
+    
     // ACCORDION
     var Accordion = function(wrapper) {
         this.wrapper = $(wrapper);
@@ -77,7 +93,10 @@
             } else {
                 this.selectedCourses = [];
             }
-            this.btn.text(this.selectedCourses.length);
+
+            if (this.selectedCourses.length) {
+              this.btn.text(this.selectedCourses.length);
+            }
         },
 
         startWatcher: function() {
@@ -112,8 +131,26 @@
             });
         }
     }
+    
+    // SCROLL TO TOP BUTTON
+    var ScrollToTop = function(scrollBtn) {
+        this.scrollBtn = $(scrollBtn);
+        this.setup();
+    }
+    
+    ScrollToTop.prototype = {
+      setup: function() {
+        this.startWatcher();
+      },
 
-
+      startWatcher: function() {
+          this.scrollBtn.click(function(e) {
+              e.preventDefault();
+              $('html, body').animate({scrollTop:0}, '300');
+          });
+      }
+    }
+    
     // DROPDOWN
     var PageDropdowns = function(dropdowns) {
         this.dropdownsList = $(dropdowns);
@@ -169,7 +206,6 @@
             var uiSelect = document.createElement("div");
             uiSelect.setAttribute("class", "select-selected");
             uiSelect.setAttribute('tabindex', 0)
-            uiSelect.innerHTML = baseSelect.options[baseSelect.selectedIndex].innerHTML;
             this.wrapper.append(uiSelect);
             this.uiSelect = this.wrapper.find('.select-selected');
             this.startWatcher();
@@ -758,6 +794,12 @@
 
         var dropdowns = $('[class$=selector]');
         new PageDropdowns(dropdowns);
+        
+        var scrollToTop = $('.scroll-to-top');
+        for (var i = 0; i < scrollToTop.length; i++) {
+            console.log('scrollToTop length', scrollToTop.length)
+            new ScrollToTop(scrollToTop[i]);
+        }
 
         var feedbackForm = $('.feedback-form__wrapper');
         for (var i = 0; i < feedbackForm.length; i++) {
@@ -778,7 +820,15 @@
         for (var i = 0; i < selectorsWrapper.length; i++) {
             new SubjectSelector(selectorsWrapper[0]);
         }
-
+          
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > ($(window).height()*3)) {
+              scrollToTop.addClass('show');
+            } else {
+              scrollToTop.removeClass('show');
+            }
+        });  
+            
         // GOOGLE  ANALYTICS
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}

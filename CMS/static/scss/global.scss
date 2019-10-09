@@ -79,6 +79,39 @@ a {
     display: none;
 }
 
+.scroll-to-top {
+    position: fixed;
+    bottom: 100px;
+    right: 0; 
+    z-index: 1;
+
+    display: none;
+  
+    text-decoration: none;
+  
+    &.show {
+        display: block;
+    }
+}
+
+.scroll-to-top__bkg {
+    background: url('/static/images/chevrons/green_up_chevron.png') no-repeat;
+    background-position: center 18px;
+    background-color: #F7F8FA;
+    
+    border: 1px solid #979797;
+    border-right: 0;
+    border-radius: 5px 0 0 5px;
+    
+    padding: 43px 20px 15px;
+    
+    text-align: center;
+    line-height: 121.1%;
+    
+    font-family: $default-font;
+    color: #595959;
+}
+
 @media only screen and (min-width: 770px) {
     .breadcrumbs {
         @include small-font-mixin();
