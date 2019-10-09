@@ -1,3 +1,5 @@
+from axes.models import AccessAttempt
+
 from django.utils.html import escape
 
 from wagtail.contrib.modeladmin.options import (ModelAdmin, modeladmin_register)
@@ -33,8 +35,17 @@ class FooterAdmin(ModelAdmin):
     search_fields = ('name',)
 
 
+class AccessAttemptAdmin(ModelAdmin):
+    model = AccessAttempt
+    menu_label = 'Access'
+    menu_icon = 'code'
+    menu_order = 5
+    add_to_settings_menu = True
+
+
 modeladmin_register(MenuAdmin)
 modeladmin_register(FooterAdmin)
+modeladmin_register(AccessAttemptAdmin)
 
 
 class NewWindowExternalLinkHandler(LinkHandler):
