@@ -45,8 +45,6 @@ INSTALLED_APPS = [
     'taggit',
     'corsheaders',
     'axes',
-    'password_policies',
-    'wagtailenforcer',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -83,7 +81,6 @@ MIDDLEWARE = [
 
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-    'wagtailenforcer.middleware.WagtailenforcerMiddleware'
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
@@ -240,4 +237,3 @@ AXES_COOLOFF_TIME = 1  # Locks user out for 1 hour
 AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP = True
 # If True, prevent login from IP under a particular username if the attempt limit has been exceeded,
 # otherwise lock out based on IP.
-AXES_LOCKOUT_TEMPLATE = 'wagtailenforcer/lockout.html'

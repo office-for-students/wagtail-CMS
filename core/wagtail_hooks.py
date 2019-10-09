@@ -54,7 +54,6 @@ def register_external_link(features):
 @hooks.register('register_rich_text_features')
 def unregister_document_feature(features):
     features.default_features.remove('document-link')
-    print(features.default_features)
 
 
 # Removing documents from the menu. Had to specify the index because searching for it breaks the urls
