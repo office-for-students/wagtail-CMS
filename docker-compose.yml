@@ -16,6 +16,7 @@ services:
       AZURE_ACCOUNT_NAME:  "${AZURE_ACCOUNT_NAME}"
       AZURE_ACCOUNT_KEY:  "${AZURE_ACCOUNT_KEY}"
       AZURE_CONTAINER:  "${AZURE_CONTAINER}"
+      READ_ONLY:  "${READ_ONLY}"
     build: .
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
 #    command: bash -c "sh ./deploy_files/docker-entrypoint.sh"

@@ -19,6 +19,7 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 LOCAL = os.environ.get('LOCAL', False)
+READ_ONLY = os.environ.get('READ_ONLY', False)
 
 
 # Quick-start development settings - unsuitable for production
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'corsheaders',
+    'axes',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -218,3 +220,24 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
 ]
 
 X_FRAME_OPTIONS = 'DENY'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    },
+    'axes_cache': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
+# Django Axes settings
+AXES_CACHE = 'axes_cache'
+AXES_LOGIN_FAILURE_LIMIT = 5
+AXES_LOCK_OUT_AT_FAILURE = True
+AXES_COOLOFF_TIME = 1  # Locks user out for 1 hour
+AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP = True
+# If True, prevent login from IP under a particular username if the attempt limit has been exceeded,
+# otherwise lock out based on IP.
+
+# Anti  Virus
+CLAMAV_ACTIVE = True
