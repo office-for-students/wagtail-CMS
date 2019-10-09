@@ -30,6 +30,7 @@ def get_cosmos_client():
 
 def build_institutions_json_file():
     version = os.environ["Version"]
+    institution_version = os.environ["InstitutionVersion"]
 
     if version == "":
         print("set environment variable: version")
@@ -40,7 +41,7 @@ def build_institutions_json_file():
         "AzureCosmosDbDatabaseId", "AzureCosmosDbInstitutionCollectionId"
     )
 
-    query = "SELECT * from c "
+    query = f"SELECT * from c where c.version = {institution_version}"
 
     options = {"enableCrossPartitionQuery": True}
 
