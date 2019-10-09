@@ -19,6 +19,7 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 LOCAL = os.environ.get('LOCAL', False)
+READ_ONLY = os.environ.get('READ_ONLY', False)
 
 
 # Quick-start development settings - unsuitable for production
