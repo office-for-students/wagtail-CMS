@@ -809,20 +809,6 @@
             </div>
         {% endif %}
 
-        <div class="comparison__course-columns">
-            <div class="comparison__course-column">
-                <div class="comparison__course">
-                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_overall_satisfaction.satisfaction_stats.display_unavailable_reason %}
-                </div>
-            </div>
-
-            <div class="comparison__course-column">
-                <div class="comparison__course">
-                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_overall_satisfaction.satisfaction_stats.display_unavailable_reason %}
-                </div>
-            </div>
-        </div>
-
         {% if course1_overall_satisfaction.nhs_satisfaction_stats or course2_overall_satisfaction.nhs_satisfaction_stats %}
             <div class="student-satisfaction__data-group">
                 <h2 class="student-satisfaction__data-group-heading">
