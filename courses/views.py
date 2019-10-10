@@ -63,12 +63,16 @@ def compare_courses(request, language=enums.languages.ENGLISH):
     if not page:
         return render(request, '404.html')
 
+    query_string = request.environ.get('QUERY_STRING')
+    english_url = page.get_english_url() + query_string
+    welsh_url = page.get_welsh_url() + query_string
+
     context = {
         'page': page,
         'course1': course1,
         'course2': course2,
-        'english_url': page.get_english_url(),
-        'welsh_url': page.get_welsh_url(),
+        'english_url': english_url,
+        'welsh_url': welsh_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies')
     }
 
