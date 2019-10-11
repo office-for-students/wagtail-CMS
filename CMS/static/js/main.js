@@ -483,25 +483,10 @@
             this.searchField = $(this.container.find('.search-field-input')[0]);
             this.optionList = $(this.container.find('.options-list'));
             this.placeholder = $(this.optionList.find('.placeholder'));
-            this.initialiseSelect();
-            this.watchForFocus();
-            this.watchForSearchTerm();
-        },
-
-        initialiseSelect: function() {
-            var that = this;
-            $.each(JSON.parse(localStorage.getItem("uniJSON")), function(index, item) {
-                var optionId = that.fieldName + '-' + index;
-                var optionValue = '"' + item.name + '"';
-
-                var option = document.createElement("option");
-                option.setAttribute("id", optionId);
-                option.setAttribute("value", optionValue);
-                option.innerHTML = item.name;
-                that.selectionField.append(option);
-            });
             this.selectOptions = this.selectionField.find('option');
             this.initialiseOptions();
+            this.watchForFocus();
+            this.watchForSearchTerm();
         },
 
         initialiseOptions: function() {
@@ -807,22 +792,6 @@
         }
 
         // Course finder
-
-        $.getJSON("/static/jsonfiles/institutions.json", function(result) {
-            var version = result.version;
-            var institutions = result.institutions;
-
-            if (version + "" !== localStorage.getItem("uniJSONVersion") || localStorage.getItem("uniJSON") === null) {
-                institutions.sort(function(a, b){
-                    if(a.order_by_name < b.order_by_name) { return -1; }
-                    if(a.order_by_name > b.order_by_name) { return 1; }
-                    return 0;
-                });
-
-                localStorage.setItem("uniJSON", JSON.stringify(institutions));
-                localStorage.setItem("uniJSONVersion", version);
-            }
-        })
 
         if (localStorage.getItem("subjectJSON") === null) {
             $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
