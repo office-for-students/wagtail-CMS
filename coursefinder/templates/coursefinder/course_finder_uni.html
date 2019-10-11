@@ -13,7 +13,7 @@
 
     <form action="javascript:;" class="course-finder-content__question-form">
         <div>
-            {% include 'partials/search-dropdown.html' with field_name='uni' %}
+            {% include 'partials/search-dropdown.html' with field_name='uni' options=institutions_list %}
         </div>
     </form>
 {% endblock %}
