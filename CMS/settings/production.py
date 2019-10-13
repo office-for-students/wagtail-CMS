@@ -42,6 +42,15 @@ LOGGING = {
     },
 }
 
+WAGTAILFRONTENDCACHE = {
+    'cloudflare': {
+        'BACKEND': 'wagtail.contrib.frontend_cache.backends.CloudflareBackend',
+        'EMAIL': os.environ.get('CLOUDFLARE_EMAIL'),
+        'TOKEN': os.environ.get('CLOUDFLARE_TOKEN'),
+        'ZONEID': os.environ.get('CLOUDFLARE_ZONEID'),
+    },
+}
+
 # Security settings
 
 SECURE_HSTS_SECONDS = os.environ.get('SECURE_HSTS_SECONDS', 0)
