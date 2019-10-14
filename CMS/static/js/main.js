@@ -567,7 +567,7 @@
 
         createUIOption: function() {
             var uiOption = document.createElement("div");
-            uiOption.setAttribute("id", this.id);
+            uiOption.setAttribute("id", this.id + '-ui');
             uiOption.setAttribute("class", 'option');
             uiOption.innerHTML = this.textValue;
             this.wrapper.append(uiOption);

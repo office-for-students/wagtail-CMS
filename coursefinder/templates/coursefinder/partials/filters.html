@@ -135,11 +135,11 @@
 
                     <div class="filters-block__filter-fields">
                         <div class="filters-block__filter-field">
-                            <label class="filters-block__filter-postcode-heading-label">
+                            <label for="postcode_field" class="filters-block__filter-postcode-heading-label">
                                 {% get_translation key='enter_postcode' language=page.get_language %}
                             </label>
 
-                            <input class="filters-block__filter-postcode textbox" type="text" value="{{filter_form.postcode}}">
+                            <input id="postcode_field" class="filters-block__filter-postcode textbox" type="text" value="{{filter_form.postcode}}">
                         </div>
 
                         <div class="filters-block__filter-field">
