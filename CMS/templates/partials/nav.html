@@ -1,6 +1,8 @@
 {% load staticfiles discover_uni_tags %}
 
 <nav class="discover-uni-nav">
+    <a href="#main-content" class="screen-reader">skip to main content</a>
+
     <div class="discover-uni-nav__container discover-uni-container">
         <a class="discover-uni-nav__home-link" href="/">
             {% if page.is_english %}
@@ -59,7 +61,7 @@
 
             <li class="discover-uni-nav__desktop-link">
                 <a href="{{page.manage_link}}" class="nav-bookmark">
-                    <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="">
+                    <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="Bookmarked courses">
                     <span class="nav-bookmark__count"></span>
                 </a>
             </li>
