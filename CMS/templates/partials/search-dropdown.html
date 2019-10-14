@@ -3,6 +3,11 @@
 <div class="search-dropdown">
     <select id="{{field_name}}" class="selection-field" name="{{field_name}}">
         <option id="{{field_name}}-na" value=""></option>
+        {% for option in options %}
+            <option id="{{field_name}}-{{forloop.counter}}" value='"{{option.name}}"'>
+                {{option.name}}
+            </option>
+        {% endfor %}
     </select>
 
     <div class='search-field'>

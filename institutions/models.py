@@ -2,12 +2,16 @@ from django.db.models.fields import TextField
 
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
-from wagtail.core.models import Page
 
 from CMS.enums import enums
 from core.models import DiscoverUniBasePage
 from errors.models import ApiError
 from institutions import request_handler
+from institutions.utils import load_institution_json
+
+
+class InstitutionList:
+    options = load_institution_json()
 
 
 class InstitutionDetailPage(DiscoverUniBasePage):

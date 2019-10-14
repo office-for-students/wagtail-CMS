@@ -1,4 +1,3 @@
-from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from django.db.models.fields import TextField
 
@@ -6,6 +5,7 @@ from CMS.enums import enums
 from core.models import DiscoverUniBasePage
 from core.utils import get_page_for_language
 from coursefinder.models import CourseFinderChooseCountry
+from institutions.models import InstitutionList
 
 
 class SearchLandingPage(DiscoverUniBasePage):
@@ -35,3 +35,8 @@ class SearchLandingPage(DiscoverUniBasePage):
         if self.get_language() == enums.languages.WELSH:
             return "/%s/results" % self.get_language()
         return '/results'
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['institutions_list'] = InstitutionList.options
+        return context
