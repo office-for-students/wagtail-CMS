@@ -29,14 +29,10 @@ class SearchLandingPage(DiscoverUniBasePage):
         context['search_url'] = self.get_search_url()
         context['course_finder_url'] = get_page_for_language(self.get_language(),
                                                              CourseFinderChooseCountry.objects.all()).url
+        context['institutions_list'] = InstitutionList.options
         return context
 
     def get_search_url(self):
         if self.get_language() == enums.languages.WELSH:
             return "/%s/results" % self.get_language()
         return '/results'
-
-    def get_context(self, request):
-        context = super().get_context(request)
-        context['institutions_list'] = InstitutionList.options
-        return context
