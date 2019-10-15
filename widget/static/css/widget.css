@@ -10,7 +10,7 @@
 
 .kis-widget .widget-lead {
     background-color: white;
-    color: #4EA27D;
+    color: #308282;
 }
 
 .kis-widget .widget-lead .intro {
@@ -44,8 +44,8 @@
 .kis-widget .widget-cta-block .cta {
     background-color: white;
     border-radius: 60px;
-    color: #4EA27D;
-    font-size: 14px;
+    color: #308282;
+    font-size: 15px;
     line-height: 17px;
     text-align: center;
     width: 100%;
@@ -54,8 +54,13 @@
 }
 
 .kis-widget .widget-cta-block .cta a {
-    color: #4EA27D;
+    color: #308282;
     text-decoration: none;
+}
+
+.kis-widget .widget-cta-block h1 {
+    font-weight: normal;
+    margin: 0px;
 }
 
 .kis-widget .widget-lead .title {

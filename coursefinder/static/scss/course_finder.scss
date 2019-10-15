@@ -317,12 +317,12 @@
                 }
 
                 &-body {
-                    background-color: $ux-grey-1;
+                    background-color: $divider-grey;
 
                     &-content {
                         padding: 40px 42px 43px;
 
-                        border-bottom: 2px solid $divider-grey;
+                        border-bottom: 2px solid $ux-grey-1;
                     }
 
                     &-course-name {
@@ -332,7 +332,7 @@
                         margin: 0px;
                         margin-bottom: 20px;
 
-                        color: $link-blue;
+                        color: $gradient-dark-green;
                         line-height: 22px;
                     }
 
@@ -520,7 +520,7 @@
                     }
 
                     &-body {
-                        background-color: $ux-grey-1;
+                        background-color: $divider-grey;
 
                         &-content {
                             padding: 50px 80px;
@@ -529,7 +529,7 @@
                         &-course-name {
                             @include s-heading-mixin();
 
-                            color: $link-blue;
+                            color: $gradient-dark-green;
                             line-height: 31px;
                         }
 

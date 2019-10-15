@@ -36,16 +36,16 @@
                 padding: 20px 15px;
                 margin-bottom: 14px;
 
-                background-color: $ux-grey-1;
+                background-color: $divider-grey;
 
                 .institution-details__overview-item-heading {
-                    @include mobile-body-font-mixin();
+                    @include xs-heading-mixin();
                     margin: 0px;
                     margin-bottom: 5px;
                 }
 
                 .institution-details__overview-item-value {
-                    @include small-font-mixin();
+                    @include desktop-body-font--bold-mixin();
                     margin: 0px;
 
                     color: $ux-grey-2;
@@ -190,13 +190,13 @@
                     margin-bottom: 0px;
 
                     .institution-details__overview-item-heading {
-                        @include desktop-body-font-mixin();
+                        @include xs-heading-mixin();
 
                         margin-bottom: 10px;
                     }
 
                     .institution-details__overview-item-value {
-                        @include mobile-body-font-mixin();
+                        @include desktop-body-font--bold-mixin();
 
                         color: $ux-grey-2;
                     }
