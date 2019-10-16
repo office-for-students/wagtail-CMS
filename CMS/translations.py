@@ -417,6 +417,10 @@ DICT = {
         'en': 'Full time',
         'cy': 'Llawnamser'
     },
+    'Full-time': {
+        'en': 'Full time',
+        'cy': 'Llawnamser'
+    },
     'Functional managers': {
         'en': 'Functional managers',
         'cy': 'Rheolwyr gweithredol'
@@ -650,6 +654,10 @@ DICT = {
         'cy': ''
     },
     'part_time': {
+        'en': 'Part time',
+        'cy': 'Rhan-amser'
+    },
+    'Part-time': {
         'en': 'Part time',
         'cy': 'Rhan-amser'
     },
@@ -1011,7 +1019,7 @@ DICT = {
     },
     'year_course': {
         'en': 'year course',
-        'cy': 'Cwrs blwyddyn'
+        'cy': 'blwyddyn'
     },
     'yes': {
         'en': 'Yes',
@@ -1152,5 +1160,17 @@ DICT = {
     'Overall, I am satisfied with the quality of the course': {
         'en': 'Overall, I am satisfied with the quality of the course',
         'cy': 'Ar y cyfan, rydw i’n fodlon gydag ansawdd y cwrs'
+    },
+    'Not available': {
+        'en': 'Not Available',
+        'cy': 'Ddim ar gael'
+    },
+    'Optional': {
+        'en': 'Optional',
+        'cy': 'Dewisol'
+    },
+    'Compulsory': {
+        'en': 'Compulsory',
+        'cy': ''
     }
 }
