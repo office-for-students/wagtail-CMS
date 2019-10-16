@@ -825,7 +825,6 @@
         
         var scrollToTop = $('.scroll-to-top');
         for (var i = 0; i < scrollToTop.length; i++) {
-            console.log('scrollToTop length', scrollToTop.length)
             new ScrollToTop(scrollToTop[i]);
         }
 
