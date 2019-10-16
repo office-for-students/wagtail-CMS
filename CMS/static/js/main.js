@@ -571,7 +571,7 @@
             uiOption.setAttribute("class", 'option');
             uiOption.innerHTML = this.textValue;
             this.wrapper.append(uiOption);
-            this.uiOption = this.wrapper.find('#' + this.id);
+            this.uiOption = this.wrapper.find('#' + this.id + '-ui');
             if (this.option.disabled) {
                 this.uiOption.hide();
             }
