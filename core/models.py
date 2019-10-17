@@ -79,10 +79,10 @@ class DiscoverUniBasePage(Page):
 
     def manage_link(self):
         from courses.models import CourseManagePage
-        bookmark_page = get_page_for_language(self.get_language, CourseManagePage.objects.all())
+        bookmark_page = get_page_for_language(self.get_language(), CourseManagePage.objects.all())
         return bookmark_page.url
 
-    def get_context(self,request):
+    def get_context(self, request):
         context = super().get_context(request)
         context['page'] = self
         context['english_url'] = self.get_english_url()
