@@ -24,7 +24,7 @@
     {% endif %}
 
     <p class="course-finder-results__result-accordion-body-course-info">
-        Study mode:
+        {% get_translation key='study_mode' language=page.get_language %}:
         {% if course.mode.label == 'Both' %}
             {% get_translation key='full_time' language=page.get_language %}
             {% get_translation key='part_time' language=page.get_language %}
