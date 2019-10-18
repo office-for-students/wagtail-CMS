@@ -9,6 +9,9 @@ $(function () {
         setup: function() {
             this.target = this.wrapper.find('.bar-chart');
             this.value = this.wrapper.data('value');
+            this.label = this.wrapper.data('label');
+            this.title = this.wrapper.data('title');
+            this.desc = this.wrapper.data('desc');
             this.renderChart();
         },
 
@@ -81,6 +84,25 @@ $(function () {
                     enabled: false,
                 },
             });
+
+            var chart = this.target.find('svg');
+            chart.attr('role', 'img');
+
+            var titleNode = document.createElement('title');
+            var titleId = this.label + '-title';
+            titleNode.setAttribute('id', titleId);
+            var title = document.createTextNode(this.title);
+            titleNode.appendChild(title);
+
+            var descNode = document.createElement('desc');
+            var descId = this.label + '-desc';
+            descNode.setAttribute('id', descId);
+            var desc = document.createTextNode(this.value + '%' + this.desc);
+            descNode.appendChild(desc);
+
+            chart.prepend(descNode);
+            chart.prepend(titleNode);
+            chart.attr('aria-labelledby', titleId + ' ' + descId);
         }
     }
 

@@ -47,6 +47,22 @@ DICT = {
         'en': 'Administrative occupations: Records',
         'cy': 'Galwedigaethau gweinyddol: Cofnodion'
     },
+    'after_course_graph_desc': {
+        'en': ' of students after the course who are',
+        'cy': ''
+    },
+    'after_course_graph_title': {
+        'en': 'Graph showing number of students after the course who are',
+        'cy': ''
+    },
+    'after_one_year_graph_desc': {
+        'en': ' of students one year after the course who',
+        'cy': ''
+    },
+    'after_one_year_graph_title': {
+        'en': 'Graph showing number of students one year after the course who',
+        'cy': ''
+    },
     'Animal Care and Control Services': {
         'en': 'Animal care and control services',
         'cy': 'Gwasanaethau Gofal a Rheoli Anifeiliaid'
@@ -363,6 +379,14 @@ DICT = {
     },
     'enter_postcode': {
         'en': 'Enter postcode',
+        'cy': ''
+    },
+    'entry_graph_desc': {
+        'en': ' of students entered the course with',
+        'cy': ''
+    },
+    'entry_graph_title': {
+        'en': 'Graph showing number of students entering the course with',
         'cy': ''
     },
     'feedback_button': {
@@ -908,6 +932,14 @@ DICT = {
     'subject_area': {
         'en': 'Subject area',
         'cy': 'Maes pwnc'
+    },
+    'tariff_graph_desc': {
+        'en': ' of students entered the course with tariff points in range',
+        'cy': ''
+    },
+    'tariff_graph_title': {
+        'en': 'Graph showing number of students entering the course with tariff points in range',
+        'cy': ''
     },
     'Teaching and educational professionals': {
         'en': 'Teaching and educational professionals',

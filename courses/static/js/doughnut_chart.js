@@ -115,8 +115,8 @@ $(function () {
             var desc = document.createTextNode(this.value + '%' + DICT.desc[this.language] + this.field);
             descNode.appendChild(desc);
 
-            chart[0].appendChild(titleNode);
-            chart[0].appendChild(descNode);
+            chart.prepend(descNode);
+            chart.prepend(titleNode);
             chart.attr('aria-labelledby', titleId + ' ' + descId);
         }
     }
