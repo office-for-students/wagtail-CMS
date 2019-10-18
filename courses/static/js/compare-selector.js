@@ -15,12 +15,16 @@
             this.uniName = this.wrapper.data().uniname;
             this.uniId = this.wrapper.data().uniid;
             this.courseId = this.wrapper.data().courseid;
-            this.mode = this.wrapper.data().mode;
             this.length = this.wrapper.data().length;
-            this.distance = this.wrapper.data().distance;
-            this.sandwich = this.wrapper.data().sandwich;
-            this.abroad = this.wrapper.data().abroad;
             this.locations = this.wrapper.data().locations;
+            this.modeEn = this.wrapper.data().modeEn;
+            this.distanceEn = this.wrapper.data().distanceEn;
+            this.sandwichEn = this.wrapper.data().sandwichEn;
+            this.abroadEn = this.wrapper.data().abroadEn;
+            this.modeCy = this.wrapper.data().modeCy;
+            this.distanceCy = this.wrapper.data().distanceCy;
+            this.sandwichCy = this.wrapper.data().sandwichCy;
+            this.abroadCy = this.wrapper.data().abroadCy;
 
             this.compareClose = this.compareBar.find('.compare-popup__close');
             this.compareAdd = this.compareBar.find('.compare-popup__add');
@@ -105,10 +109,26 @@
                 this.compareTooMany.show();
             } else {
                 this.button.addClass('selected');
-                this.selectedCourses.push({'uniId': this.uniId, 'courseId': this.courseId, 'mode': this.mode,
+                this.selectedCourses.push({'uniId': this.uniId, 'courseId': this.courseId,
                                             'courseName': this.courseName, 'uniName': this.uniName,
-                                            'length': this.length, 'distance': this.distance, 'sandwich': this.sandwich,
-                                            'abroad': this.abroad, 'locations': this.locations});
+                                            'length': this.length, 'locations': this.locations,
+                                            'distance': {
+                                                'en': this.distanceEn,
+                                                'cy': this.distanceCy
+                                            },
+                                            'sandwich': {
+                                                'en': this.sandwichEn,
+                                                'cy': this.sandwichCy
+                                            },
+                                            'abroad': {
+                                                'en': this.abroadEn,
+                                                'cy': this.abroadCy,
+                                            },
+                                            'mode': {
+                                                'en': this.modeEn,
+                                                'cy': this.modeCy,
+                                            }
+                                          });
                 localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
                 this.navBar.trigger('loadeddata');
                 this.courseSelected = true;

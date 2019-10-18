@@ -1,10 +1,14 @@
 {% load staticfiles discover_uni_tags %}
 
 <div class="course-detail comparison-course-area"
-     data-coursename="{{course.display_title}}" data-uniname="{{course.institution.pub_ukprn_name}}" data-uniid="{{course.institution.pub_ukprn}}"
-     data-courseid="{{course.kis_course_id}}" data-mode="{{course.mode.label}}" data-length="{{course.length.label | slice:1}}"
-     data-distance="{{course.distance_learning.display_label}}" data-sandwich="{{course.sandwich_year.label}}" data-abroad="{{course.year_abroad.label}}"
-     data-loctaions="{{course.locations_list}}">
+     data-coursename="{{course.display_title}}" data-courseid="{{course.kis_course_id}}"
+     data-uniname="{{course.institution.pub_ukprn_name}}" data-uniid="{{course.institution.pub_ukprn}}"
+     data-length="{{course.length.label | slice:1}}" data-locations="{{course.locations_list}}"
+     data-mode-en="{% get_translation key=course.mode.label language='en' %}" data-mode-cy="{% get_translation key=course.mode.label language='cy' %}"
+     data-distance-en="{% map_distance_learning_values course.distance_learning.code 'en' %}" data-distance-cy="{% map_distance_learning_values course.distance_learning.code 'cy' %}"
+     data-sandwich-en="{% get_translation key=course.sandwich_year.label language='en' %}" data-sandwich-cy="{% get_translation key=course.sandwich_year.label language='cy' %}"
+     data-abroad-en="{% get_translation key=course.year_abroad.label language='en' %}" data-abroad-cy="{% get_translation key=course.year_abroad.label language='cy' %}">
+
     {% include 'courses/partials/base_gradient.html' %}
     {% include 'courses/partials/course_overview.html' %}
 
