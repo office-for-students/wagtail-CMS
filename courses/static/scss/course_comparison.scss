@@ -80,6 +80,8 @@
             width: 50%;
 
             &:first-child {
+                border-right: 1px solid $gradient-dark-green;
+
                 .comparison__course  {
                     margin-left: 0px;
                 }
