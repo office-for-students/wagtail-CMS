@@ -2,11 +2,11 @@ $(function () {
     var DICT = {
         title: {
             'en': 'Graph showing percentage of students who thought ',
-            'cy': ''
+            'cy': 'Graph showing percentage of students who thought '
         },
         desc: {
             'en': ' of students said ',
-            'cy': ''
+            'cy': ' of students said '
         }
     }
 
