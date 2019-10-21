@@ -648,12 +648,12 @@
 
                 if (item.level === "1") {
                     var selected = this.initialSelection && this.initialSelection[0].indexOf(item.code) !== -1;
-                    this.subjectAreaSelector.append(this.createOption(item.code, item.englishname, selected));
+                    this.subjectAreaSelector.append(this.createOption(item.code, this.getOptionName(item), selected));
                 }
 
                 if (item.level === "2") {
                     var selected = this.initialSelection && this.initialSelection[0].indexOf(item.code) !== -1;
-                    this.subjectSelector.append(this.createOption(item.code, item.englishname, selected));
+                    this.subjectSelector.append(this.createOption(item.code, this.getOptionName(item), selected));
                     if (selected) {
                         this.showCodeSelector();
                     }
@@ -661,7 +661,7 @@
 
                 if (item.level === "3") {
                     var selected = this.initialSelection && this.initialSelection.length === 1 && this.initialSelection[0] === item.code;
-                    this.subjectCodeSelector.append(this.createOption(item.code, item.englishname, selected, item.code));
+                    this.subjectCodeSelector.append(this.createOption(item.code, this.getOptionName(item), selected, item.code));
                 }
             }
 
@@ -671,6 +671,14 @@
             this.subjectAreaSelector.trigger('loadeddata');
             this.subjectSelector.trigger('loadeddata');
             this.subjectCodeSelector.trigger('loadeddata');
+        },
+
+        getOptionName: function(item) {
+            if (location.href.indexOf('/cy/') === -1) {
+                return item.englishname;
+            } else {
+                return item.welsh_name;
+            }
         },
 
         createOption: function(value, text, selected, data) {

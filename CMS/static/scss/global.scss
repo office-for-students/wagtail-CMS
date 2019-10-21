@@ -143,3 +143,15 @@ a {
         }
     }
 }
+
+a[target=_blank] {
+    &:after {
+        content: '';
+        background: url('/static/images/new_tab_icon.png') no-repeat;
+        position: absolute;
+        height: 1em;
+        width: 1em;
+        background-size: 1em;
+        margin-left: 10px;
+    }
+}

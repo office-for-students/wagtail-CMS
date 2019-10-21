@@ -13,8 +13,7 @@
                 </a>
             {% else %}
                 <p class="pagination__link--disabled" aria-label="{% get_translation key='previous_page' language=page.get_language %}">
-                    <img src="{% static 'images/chevrons/black_left_chevron.svg' %}" alt="{% get_translation key='previous_page' language=page.get_language %}" class="black">
-                    <img src="{% static 'images/chevrons/green_left_chevron.svg' %}" alt="{% get_translation key='previous_page' language=page.get_language %}" class="green">
+                    <img src="{% static 'images/chevrons/grey_left_chevron.svg' %}" alt="{% get_translation key='previous_page' language=page.get_language %}" class="black">
                 </p>
             {% endif %}
         </li>
@@ -63,8 +62,7 @@
                 </a>
             {% else %}
                 <p class="pagination__link--disabled" aria-label="{% get_translation key='next_page' language=page.get_language %}">
-                    <img src="{% static 'images/chevrons/black_right_chevron.svg' %}" alt="{% get_translation key='next_page' language=page.get_language %}" class="black">
-                    <img src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="{% get_translation key='next_page' language=page.get_language %}" class="green">
+                    <img src="{% static 'images/chevrons/grey_right_chevron.svg' %}" alt="{% get_translation key='next_page' language=page.get_language %}" class="black">
                 </p>
             {% endif %}
         </li>

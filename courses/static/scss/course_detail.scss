@@ -99,6 +99,7 @@
 
                 border: 0px;
                 background-color: $form-grey;
+                cursor: pointer;
 
                 &.open {
                     @include green-gradient-background-mixin();
