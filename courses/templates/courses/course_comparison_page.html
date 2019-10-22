@@ -88,16 +88,17 @@
                                                 {{ accordion.value.heading }}
 
                                                 <span class="course-detail__accordion-heading-chevron">
-                                                        <img class="course-detail__icon plus" src="{% static 'images/plus_icon.svg' %}" alt="">
-                                                        <img class="course-detail__icon minus" src="{% static 'images/minus_icon.svg' %}" alt="">
-                                                    </span>
+                                                    <img class="course-detail__icon plus" src="{% static 'images/plus_icon.svg' %}" alt="">
+                                                    <img class="course-detail__icon minus" src="{% static 'images/minus_icon.svg' %}" alt="">
+                                                </span>
                                             </h2>
                                         </button>
 
                                         <div class="course-detail__accordion-body">
-                                        <div id="course-detail__accordion-body-{{forloop.counter}}" class="course-detail__accordion-body"
-                                            aria-labelledby="course-detail__accordion-heading-{{forloop.counter}}">
-                                            {% include 'courses/partials/comparison_'|add:accordion.value.data_set|add:'_body.html' with block=accordion %}
+                                            <div id="course-detail__accordion-body-{{forloop.counter}}" class="course-detail__accordion-body"
+                                                aria-labelledby="course-detail__accordion-heading-{{forloop.counter}}">
+                                                {% include 'courses/partials/comparison_'|add:accordion.value.data_set|add:'_body.html' with block=accordion %}
+                                            </div>
                                         </div>
                                     </div>
                                 {% endif %}
