@@ -26,8 +26,8 @@
             if (localStorage.getItem("subjectJSON") === null) {
                 $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
                     result.sort(function(a, b){
-                        if (a.englishname < b.englishname) { return -1; }
-                        if (a.englishname > b.englishname) { return 1; }
+                        if (a.english_name < b.english_name) { return -1; }
+                        if (a.english_name > b.english_name) { return 1; }
                         return 0;
                     });
 
@@ -48,12 +48,12 @@
 
                 if (item.level === "1") {
                     var selected = this.initialSelection && this.initialSelection[0].indexOf(item.code) !== -1;
-                    this.subjectAreaSelector.append(this.createOption(item.code, item.englishname, selected));
+                    this.subjectAreaSelector.append(this.createOption(item.code, item.english_name, selected));
                 }
 
                 if (item.level === "2") {
                     var selected = this.initialSelection && this.initialSelection[0].indexOf(item.code) !== -1;
-                    this.subjectSelector.append(this.createOption(item.code, item.englishname, selected));
+                    this.subjectSelector.append(this.createOption(item.code, item.english_name, selected));
                     if (selected) {
                         this.toggleCodeSelector();
                     }
@@ -61,7 +61,7 @@
 
                 if (item.level === "3") {
                     var selected = this.initialSelection && this.initialSelection.length === 1 && this.initialSelection[0] === item.code;
-                    this.subjectCodeSelector.append(this.createOption(item.code, item.englishname, selected, item.code));
+                    this.subjectCodeSelector.append(this.createOption(item.code, item.english_name, selected, item.code));
                 }
             }
 

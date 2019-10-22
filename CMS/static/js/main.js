@@ -626,8 +626,8 @@
             if (localStorage.getItem("subjectJSON") === null) {
                 $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
                     result.sort(function(a, b){
-                        if (a.englishname < b.englishname) { return -1; }
-                        if (a.englishname > b.englishname) { return 1; }
+                        if (a.english_name < b.english_name) { return -1; }
+                        if (a.english_name > b.english_name) { return 1; }
                         return 0;
                     });
 
@@ -675,7 +675,7 @@
 
         getOptionName: function(item) {
             if (location.href.indexOf('/cy/') === -1) {
-                return item.englishname;
+                return item.english_name;
             } else {
                 return item.welsh_name;
             }
@@ -804,8 +804,8 @@
         if (localStorage.getItem("subjectJSON") === null) {
             $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
                 result.sort(function(a, b){
-                    if (a.englishname < b.englishname) { return -1; }
-                    if (a.englishname > b.englishname) { return 1; }
+                    if (a.english_name < b.english_name) { return -1; }
+                    if (a.english_name > b.english_name) { return 1; }
                     return 0;
                 });
 

@@ -59,7 +59,7 @@
 
         getSubjectName: function(item) {
             if (location.href.indexOf('/cy/') === -1) {
-                return item.englishname;
+                return item.english_name;
             } else {
                 return item.welsh_name;
             }
