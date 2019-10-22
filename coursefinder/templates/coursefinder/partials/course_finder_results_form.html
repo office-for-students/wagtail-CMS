@@ -1,24 +1,22 @@
 {% load static discover_uni_tags %}
 
-<li>
-    <form id="courseFinderResultsForm"  action="{% if page.is_welsh %}/cy{% endif %}{% url 'course_finder_results' %}" method="post" class="course-finder-base__nav-form">
-        {% csrf_token %}
+<form id="courseFinderResultsForm"  action="{% if page.is_welsh %}/cy{% endif %}{% url 'course_finder_results' %}" method="post" class="course-finder-base__nav-form">
+    {% csrf_token %}
 
-        <input class="course-finder-base__nav-input" type="text" name="subject_query" value="">
+    <input class="course-finder-base__nav-input" type="text" name="subject_query" value="">
 
-        <input class="course-finder-base__nav-input" type="text" name="institution_query" value="">
+    <input class="course-finder-base__nav-input" type="text" name="institution_query" value="">
 
-        <input class="course-finder-base__nav-input" type="text" name="mode_query" value="">
+    <input class="course-finder-base__nav-input" type="text" name="mode_query" value="">
 
-        <input class="course-finder-base__nav-input" type="text" name="countries_query" value="">
+    <input class="course-finder-base__nav-input" type="text" name="countries_query" value="">
 
-        <input class="course-finder-base__nav-input" type="text" name="postcode_query" value="">
+    <input class="course-finder-base__nav-input" type="text" name="postcode_query" value="">
 
-        <button class="{{ button_class }}">
-            {% get_translation key=button_value_key language=page.get_language %}
+    <button class="{{ button_class }}">
+        {% get_translation key=button_value_key language=page.get_language %}
 
-            <img class="{{ icon_class }} green" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
-            <img class="{{ icon_class }} white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
-        </button>
-    </form>
-</li>
+        <img class="{{ icon_class }} green" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
+        <img class="{{ icon_class }} white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
+    </button>
+</form>
