@@ -791,6 +791,21 @@
         }
     }
 
+    var NewTabLinks = function(link) {
+        this.link = link;
+        this.setup();
+    }
+
+    NewTabLinks.prototype = {
+        setup: function() {
+            var imgNode = document.createElement('img');
+            imgNode.classList.add('logo');
+            imgNode.setAttribute('src', "/static/images/new_tab_icon.png");
+            imgNode.setAttribute('alt', "Link opens in new tab");
+            this.link.appendChild(imgNode);
+        }
+    }
+
     function init() {
         $.urlParam = function (name) {
             var results = new RegExp('[\?&]' + name + '=([^&#]*)')
@@ -854,6 +869,11 @@
         var selectorsWrapper = $('.subject-picker');
         for (var i = 0; i < selectorsWrapper.length; i++) {
             new SubjectSelector(selectorsWrapper[0]);
+        }
+
+        var newTabLinks = $('a[target=_blank]');
+        for (var i = 0; i < newTabLinks.length; i++) {
+            new NewTabLinks(newTabLinks[i]);
         }
           
         $(window).scroll(function() {
