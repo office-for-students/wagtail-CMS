@@ -2,11 +2,11 @@ $(function () {
     var DICT = {
         title: {
             'en': 'Graph showing percentage of students who thought ',
-            'cy': 'Graph showing percentage of students who thought '
+            'cy': 'Graff yn dangos canran y myfyrwyr a oedd yn meddwl '
         },
         desc: {
             'en': ' of students said ',
-            'cy': ' of students said '
+            'cy': ' Canran y myfyfrwyr a ddywedodd '
         }
     }
 
