@@ -49,19 +49,19 @@ DICT = {
     },
     'after_course_graph_desc': {
         'en': ' of students after the course who are',
-        'cy': ''
+        'cy': ' o fyfyrwyr ar ôl y cwrs sydd yn'
     },
     'after_course_graph_title': {
         'en': 'Graph showing number of students after the course who are',
-        'cy': ''
+        'cy': 'Graff yn dangos nifer y myfyrwyr ar ôl y cwrs sydd'
     },
     'after_one_year_graph_desc': {
         'en': ' of students one year after the course who',
-        'cy': ''
+        'cy': ' o fyfyrwyr flwyddyn ar ôl y cwrs sydd'
     },
     'after_one_year_graph_title': {
         'en': 'Graph showing number of students one year after the course who',
-        'cy': ''
+        'cy': 'Graff yn dangos nifer y myfyrwyr sydd, flwyddyn ar ôl y cwrs, yn'
     },
     'Animal Care and Control Services': {
         'en': 'Animal care and control services',
@@ -383,11 +383,11 @@ DICT = {
     },
     'entry_graph_desc': {
         'en': ' of students entered the course with',
-        'cy': ''
+        'cy': ' Nifer y myfyrwyr a ddechreuodd y cwrs gyda'
     },
     'entry_graph_title': {
         'en': 'Graph showing number of students entering the course with',
-        'cy': ''
+        'cy': 'Graff yn dangos nifer y myfyrwyr sy’n dechrau’r cwrs gyda '
     },
     'feedback_button': {
         'en': 'feedback',
@@ -935,11 +935,11 @@ DICT = {
     },
     'tariff_graph_desc': {
         'en': ' of students entered the course with tariff points in range',
-        'cy': ''
+        'cy': ' Nifer y myfyrwyr a ddechreuodd y cwrs gyda phwyntiau tariff yn yr ystod'
     },
     'tariff_graph_title': {
         'en': 'Graph showing number of students entering the course with tariff points in range',
-        'cy': ''
+        'cy': 'Graff yn dangos nifer y myfyrwyr yn dechrau’r cwrs gyda phwyntiau tariff yn yr ystod'
     },
     'Teaching and educational professionals': {
         'en': 'Teaching and educational professionals',
