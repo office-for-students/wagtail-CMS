@@ -54,8 +54,7 @@ class NewWindowExternalLinkHandler(LinkHandler):
     @classmethod
     def expand_db_attributes(cls, attrs):
         href = attrs["href"]
-        return '<a href="%s" target="_blank" rel="noopener noreferrer" aria-label="%s, in new tab">' % \
-               (escape(href), escape(href))
+        return '<a href="%s" target="_blank" rel="noopener noreferrer">' % escape(href)
 
 
 @hooks.register('register_rich_text_features')
