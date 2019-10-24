@@ -803,6 +803,7 @@
             imgNode.setAttribute('src', "/static/images/new_tab_icon.png");
             imgNode.setAttribute('alt', "Link opens in new tab");
             this.link.appendChild(imgNode);
+            this.link.setAttribute('aria-label', this.link.innerText + ', opens in new tab');
         }
     }
 
