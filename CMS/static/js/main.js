@@ -801,7 +801,7 @@
             var imgNode = document.createElement('img');
             imgNode.classList.add('logo');
             imgNode.setAttribute('src', "/static/images/new_tab_icon.png");
-            imgNode.setAttribute('alt', "Link opens in new tab");
+            imgNode.setAttribute('alt', "");
             this.link.appendChild(imgNode);
             this.link.setAttribute('aria-label', this.link.innerText + ', opens in new tab');
         }
