@@ -63,9 +63,9 @@ def compare_courses(request, language=enums.languages.ENGLISH):
     if not page:
         return render(request, '404.html')
 
-    full_path = '%s?%s' % (request.path, request.environ.get('QUERY_STRING'))
-    welsh_url = '/cy' + full_path if language == enums.languages.ENGLISH else full_path
-    english_url = full_path.replace('/cy/', '/')
+    query_string = request.environ.get('QUERY_STRING')
+    english_url = page.get_english_url() + query_string
+    welsh_url = page.get_welsh_url() + query_string
 
     context = {
         'page': page,

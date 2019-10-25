@@ -27,6 +27,10 @@ var CONTENT = {
         'en-gb': '{{domain_name}}/static/images/logos/widget_logo_english.svg',
         'cy-gb': '{{domain_name}}/static/images/logos/widget_logo_welsh.svg'
     },
+    'logoAlt': {
+        'en-gb': 'DiscoverUni',
+        'cy-gb': 'Darganfod Prifysgol'
+    },
     'cta': {
         'en-gb': 'See course data',
         'cy-gb':"Gweld data'r cwrs"
@@ -414,6 +418,7 @@ DataWidget.prototype = {
         var ctaBlockNode = document.createElement('div');
         ctaBlockNode.classList.add('widget-cta-block');
 
+        var headingNode = document.createElement('h1');
         var leadNode1 = document.createElement("span");
         leadNode1.classList.add('cta-lead');
         var lead1 = document.createTextNode(CONTENT.ctaLead1[this.language]);
@@ -426,13 +431,16 @@ DataWidget.prototype = {
         leadNode1.appendChild(lead1);
         leadNode2.appendChild(lead2);
         leadNode3.appendChild(lead3);
-        ctaBlockNode.appendChild(leadNode1);
-        ctaBlockNode.appendChild(leadNode2);
-        ctaBlockNode.appendChild(leadNode3);
+        headingNode.appendChild(leadNode1);
+        headingNode.appendChild(leadNode2);
+        headingNode.appendChild(leadNode3);
+
+        ctaBlockNode.appendChild(headingNode);
 
         var logoNode = document.createElement('img');
         logoNode.classList.add('logo');
         logoNode.setAttribute('src', CONTENT.logo[this.language]);
+        logoNode.setAttribute('alt', CONTENT.logoAlt[this.language]);
         ctaBlockNode.appendChild(logoNode);
 
         var ctaWrapperNode = document.createElement('div');
@@ -496,6 +504,7 @@ NoDataWidget.prototype = {
         var ctaBlockNode = document.createElement('div');
         ctaBlockNode.classList.add('widget-cta-block');
 
+        var headingNode = document.createElement('h1');
         var leadNode1 = document.createElement("span");
         leadNode1.classList.add('cta-lead');
         var lead1 = document.createTextNode(CONTENT.noDataCtaLead1[this.language]);
@@ -508,13 +517,16 @@ NoDataWidget.prototype = {
         leadNode1.appendChild(lead1);
         leadNode2.appendChild(lead2);
         leadNode3.appendChild(lead3);
-        ctaBlockNode.appendChild(leadNode1);
-        ctaBlockNode.appendChild(leadNode2);
-        ctaBlockNode.appendChild(leadNode3);
+        headingNode.appendChild(leadNode1);
+        headingNode.appendChild(leadNode2);
+        headingNode.appendChild(leadNode3);
+
+        ctaBlockNode.appendChild(headingNode);
 
         var logoNode = document.createElement('img');
         logoNode.classList.add('logo');
         logoNode.setAttribute('src', CONTENT.logo[this.language]);
+        logoNode.setAttribute('alt', CONTENT.logoAlt[this.language]);
         ctaBlockNode.appendChild(logoNode);
 
         var ctaWrapperNode = document.createElement('div');

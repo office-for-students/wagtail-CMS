@@ -22,7 +22,11 @@
             </a>
 
             <p class="course-detail__institution-locations">
-                {{ course.number_of_locations }} {% get_translation key='locations' language=page.get_language %}: {{ course.locations_list }}
+                {% if course.number_of_locations == 1 %}
+                    {{ course.number_of_locations }} {% get_translation key='location' language=page.get_language %}: {{ course.locations_list }}
+                {% else %}
+                    {{ course.number_of_locations }} {% get_translation key='locations' language=page.get_language %}: {{ course.locations_list }}
+                {% endif %}
             </p>
         </div>
     </div>
@@ -31,7 +35,14 @@
         <div class="course-detail__course-overview overview-group">
             <div class="course-detail__overview-item overview-block">
                 <p class="course-detail__overview-item-heading">{% get_translation key='study_mode' language=page.get_language %}</p>
-                <p class="course-detail__overview-item-value">{{ course.mode.label }}</p>
+                <p class="course-detail__overview-item-value">
+                    {% if course.mode.label == 'Both' %}
+                        {% get_translation key='full_time' language=page.get_language %}
+                        {% get_translation key='part_time' language=page.get_language %}
+                    {% else %}
+                        {% get_translation key=course.mode.label language=page.get_language %}
+                    {% endif %}
+                </p>
             </div>
 
             {% if course.mode.label != 'Part-time' %}
@@ -48,17 +59,17 @@
 
             <div class="course-detail__overview-item overview-block">
                 <p class="course-detail__overview-item-heading">{% get_translation key='placement_year' language=page.get_language %}</p>
-                <p class="course-detail__overview-item-value">{{ course.sandwich_year.label }}</p>
+                <p class="course-detail__overview-item-value">{% get_translation key=course.sandwich_year.label language=page.get_language %}</p>
             </div>
 
             <div class="course-detail__overview-item overview-block">
                 <p class="course-detail__overview-item-heading">{% get_translation key='year_abroad' language=page.get_language %}</p>
-                <p class="course-detail__overview-item-value">{{ course.year_abroad.label }}</p>
+                <p class="course-detail__overview-item-value">{% get_translation key=course.year_abroad.label language=page.get_language %}</p>
             </div>
 
             <div class="course-detail__overview-item overview-block">
                 <p class="course-detail__overview-item-heading">{% get_translation key='foundation_year' language=page.get_language %}</p>
-                <p class="course-detail__overview-item-value">{{ course.foundation_year.label }}</p>
+                <p class="course-detail__overview-item-value">{% get_translation key=course.foundation_year.label language=page.get_language %}</p>
             </div>
         </div>
     </div>

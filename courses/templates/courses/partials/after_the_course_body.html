@@ -143,29 +143,44 @@
         <div class="after-course__block">
             <div class="after-course__data-point">
                 <div class="after-course__chart-block">
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.in_work}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.in_work}}"
+                            data-label="after-course-now_working"
+                            data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='now_working' language=page.get_language %}"
+                            data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='now_working' language=page.get_language %}">
                         {% include 'courses/partials/bar_chart.html' %}
-                        <label class="after-course__chart-label">{% get_translation key='now_working' language=page.get_language %}</label>
+                        <label class="after-course__chart-label" aria-hidden="true"  key='now_working' language=page.get_language %}</label>
                     </div>
 
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.in_study}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.in_study}}"
+                            data-label="after-course-doing_further_study"
+                            data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='doing_further_study' language=page.get_language %}"
+                            data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='doing_further_study' language=page.get_language %}">
                         {% include 'courses/partials/bar_chart.html' %}
-                        <label class="after-course__chart-label">{% get_translation key='doing_further_study' language=page.get_language %}</label>
+                        <label class="after-course__chart-label" aria-hidden="true"  key='doing_further_study' language=page.get_language %}</label>
                     </div>
 
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.in_work_and_study}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.in_work_and_study}}"
+                            data-label="after-course-study_and_working"
+                            data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='study_and_working' language=page.get_language %}"
+                            data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='study_and_working' language=page.get_language %}">
                         {% include 'courses/partials/bar_chart.html' %}
-                        <label class="after-course__chart-label">{% get_translation key='study_and_working' language=page.get_language %}</label>
+                        <label class="after-course__chart-label" aria-hidden="true"  key='study_and_working' language=page.get_language %}</label>
                     </div>
 
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.unemployed}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.unemployed}}"
+                            data-label="after-course-unemployed"
+                            data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='unemployed' language=page.get_language %}"
+                            data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='unemployed' language=page.get_language %}">
                         {% include 'courses/partials/bar_chart.html' %}
-                        <label class="after-course__chart-label">{% get_translation key='unemployed' language=page.get_language %}</label>
+                        <label class="after-course__chart-label" aria-hidden="true"  key='unemployed' language=page.get_language %}</label>
                     </div>
 
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.not_available_for_work_or_study}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{employment_stats.not_available_for_work_or_study}}"
+                            data-label="after-course-other"
+                            data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='other' language=page.get_language %}"
+                            data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='other' language=page.get_language %}">
                         {% include 'courses/partials/bar_chart.html' %}
-                        <label class="after-course__chart-label">{% get_translation key='other' language=page.get_language %}</label>
+                        <label class="after-course__chart-label" aria-hidden="true"  key='other' language=page.get_language %}</label>
                     </div>
                 </div>
             </div>
@@ -195,19 +210,28 @@
 
             {% if job_type_stats.display_stats %}
                 <div class="after-course__chart-block">
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{job_type_stats.professional_or_managerial_jobs}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{job_type_stats.professional_or_managerial_jobs}}"
+                            data-label="after-course-role-type-professional_or_managerial"
+                            data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='professional_or_managerial' language=page.get_language %}"
+                            data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='professional_or_managerial' language=page.get_language %}">
                         {% include 'courses/partials/bar_chart.html' %}
-                        <label class="after-course__chart-label">{% get_translation key='professional_or_managerial' language=page.get_language %}</label>
+                        <label class="after-course__chart-label" aria-hidden="true"  key='professional_or_managerial' language=page.get_language %}</label>
                     </div>
 
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{job_type_stats.non_professional_or_managerial_jobs}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{job_type_stats.non_professional_or_managerial_jobs}}"
+                            data-label="after-course-role-type-not_professional_or_managerial"
+                            data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='not_professional_or_managerial' language=page.get_language %}"
+                            data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='not_professional_or_managerial' language=page.get_language %}">
                         {% include 'courses/partials/bar_chart.html' %}
-                        <label class="after-course__chart-label">{% get_translation key='not_professional_or_managerial' language=page.get_language %}</label>
+                        <label class="after-course__chart-label" aria-hidden="true"  key='not_professional_or_managerial' language=page.get_language %}</label>
                     </div>
 
-                    <div class="after-course__chart discover-uni-chart bar" data-value="{{job_type_stats.unknown_professions}}">
+                    <div class="after-course__chart discover-uni-chart bar" data-value="{{job_type_stats.unknown_professions}}"
+                            data-label="after-course-role-type-unknown_job_type"
+                            data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='unknown_job_type' language=page.get_language %}"
+                            data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='unknown_job_type' language=page.get_language %}">
                         {% include 'courses/partials/bar_chart.html' %}
-                        <label class="after-course__chart-label">{% get_translation key='unknown_job_type' language=page.get_language %}</label>
+                        <label class="after-course__chart-label" aria-hidden="true"  key='unknown_job_type' language=page.get_language %}</label>
                     </div>
                 </div>
             {% endif %}
@@ -259,9 +283,12 @@
             {% if job_lists.show_stats %}
                 <div class="after-course__chart-block">
                     {% for job in job_lists.jobs %}
-                        <div class="after-course__chart discover-uni-chart bar" data-value="{{job.percentage}}">
+                        <div class="after-course__chart discover-uni-chart bar" data-value="{{job.percentage}}"
+                                data-label="after-course-jobs-{{forloop.counter}}"
+                                data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key=job.job language=page.get_language %}"
+                                data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key=job.job language=page.get_language %}">
                             {% include 'courses/partials/bar_chart.html' %}
-                            <label class="after-course__chart-label">{% get_translation key=job.job language=page.get_language %}</label>
+                            <label class="after-course__chart-label" aria-hidden="true"  key=job.job language=page.get_language %}</label>
                         </div>
                     {% endfor %}
                 </div>

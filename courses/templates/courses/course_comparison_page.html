@@ -13,6 +13,7 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bar_chart.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}"></script>
@@ -46,7 +47,7 @@
                 <div class="comparison__course-column">
                     <div class="comparison__course">
                         <div id="course1" class="comparison__course-selector">
-                            <select>
+                            <select id="course1-select">
                                 <option value="na" disabled selected>{% get_translation key='select_course' language=page.get_language %}</option>
                             </select>
                         </div>
@@ -60,7 +61,7 @@
                 <div class="comparison__course-column">
                     <div class="comparison__course">
                         <div id="course2" class="comparison__course-selector">
-                            <select>
+                            <select id="course2-select">
                                 <option value="na" disabled selected>{% get_translation key='select_course' language=page.get_language %}</option>
                             </select>
                         </div>
@@ -88,16 +89,17 @@
                                                 {{ accordion.value.heading }}
 
                                                 <span class="course-detail__accordion-heading-chevron">
-                                                        <img class="course-detail__icon plus" src="{% static 'images/plus_icon.svg' %}" alt="">
-                                                        <img class="course-detail__icon minus" src="{% static 'images/minus_icon.svg' %}" alt="">
-                                                    </span>
+                                                    <img class="course-detail__icon plus" src="{% static 'images/plus_icon.svg' %}" alt="">
+                                                    <img class="course-detail__icon minus" src="{% static 'images/minus_icon.svg' %}" alt="">
+                                                </span>
                                             </h2>
                                         </button>
 
                                         <div class="course-detail__accordion-body">
-                                        <div id="course-detail__accordion-body-{{forloop.counter}}" class="course-detail__accordion-body"
-                                            aria-labelledby="course-detail__accordion-heading-{{forloop.counter}}">
-                                            {% include 'courses/partials/comparison_'|add:accordion.value.data_set|add:'_body.html' with block=accordion %}
+                                            <div id="course-detail__accordion-body-{{forloop.counter}}" class="course-detail__accordion-body"
+                                                aria-labelledby="course-detail__accordion-heading-{{forloop.counter}}">
+                                                {% include 'courses/partials/comparison_'|add:accordion.value.data_set|add:'_body.html' with block=accordion %}
+                                            </div>
                                         </div>
                                     </div>
                                 {% endif %}

@@ -1,7 +1,7 @@
 {% load static wagtailuserbar sass_tags %}
 
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="{{page.get_language}}">
     <head>
         <meta charset="utf-8" />
         <title>
@@ -47,29 +47,29 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        <a href="#main-content" class="screen-reader">skip to main content</a>
         {% include 'partials/nav.html' %}
 
         {% wagtailuserbar %}
 
-        <div id="main-content" tabindex="-1">
-            {% block content %}{% endblock %}
-            
-            <a class="scroll-to-top" href="#">
-                <div class="scroll-to-top__bkg">
-                    Back<br />to top
-                </div>
-            </a>
-        </div>
+        <main>
+            <div id="main-content" tabindex="-1">
+                {% block content %}{% endblock %}
 
-        {% include 'partials/feedback-form.html' %}
+                <a class="scroll-to-top" href="#">
+                    <div class="scroll-to-top__bkg">
+                        Back<br />to top
+                    </div>
+                </a>
+            </div>
+
+            {% include 'partials/feedback-form.html' %}
+
+            {% if not cookies_accepted %}
+                {% include 'partials/cookie-banner.html' %}
+            {% endif %}
+        </main>
 
         {% include 'partials/footer.html' %}
-
-        {% if not cookies_accepted %}
-            {% include 'partials/cookie-banner.html' %}
-        {% endif %}
-        
     </body>
 
 </html>

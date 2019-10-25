@@ -47,6 +47,22 @@ DICT = {
         'en': 'Administrative occupations: Records',
         'cy': 'Galwedigaethau gweinyddol: Cofnodion'
     },
+    'after_course_graph_desc': {
+        'en': ' of students after the course who are',
+        'cy': ' o fyfyrwyr ar ôl y cwrs sydd yn'
+    },
+    'after_course_graph_title': {
+        'en': 'Graph showing number of students after the course who are',
+        'cy': 'Graff yn dangos nifer y myfyrwyr ar ôl y cwrs sydd'
+    },
+    'after_one_year_graph_desc': {
+        'en': ' of students one year after the course who',
+        'cy': ' o fyfyrwyr flwyddyn ar ôl y cwrs sydd'
+    },
+    'after_one_year_graph_title': {
+        'en': 'Graph showing number of students one year after the course who',
+        'cy': 'Graff yn dangos nifer y myfyrwyr sydd, flwyddyn ar ôl y cwrs, yn'
+    },
     'Animal Care and Control Services': {
         'en': 'Animal care and control services',
         'cy': 'Gwasanaethau Gofal a Rheoli Anifeiliaid'
@@ -365,6 +381,14 @@ DICT = {
         'en': 'Enter postcode',
         'cy': ''
     },
+    'entry_graph_desc': {
+        'en': ' of students entered the course with',
+        'cy': ' Nifer y myfyrwyr a ddechreuodd y cwrs gyda'
+    },
+    'entry_graph_title': {
+        'en': 'Graph showing number of students entering the course with',
+        'cy': 'Graff yn dangos nifer y myfyrwyr sy’n dechrau’r cwrs gyda '
+    },
     'feedback_button': {
         'en': 'feedback',
         'cy': 'adborth'
@@ -414,6 +438,10 @@ DICT = {
         'cy': 'Blwyddyn sylfaen'
     },
     'full_time': {
+        'en': 'Full time',
+        'cy': 'Llawnamser'
+    },
+    'Full-time': {
         'en': 'Full time',
         'cy': 'Llawnamser'
     },
@@ -650,6 +678,10 @@ DICT = {
         'cy': ''
     },
     'part_time': {
+        'en': 'Part time',
+        'cy': 'Rhan-amser'
+    },
+    'Part-time': {
         'en': 'Part time',
         'cy': 'Rhan-amser'
     },
@@ -901,6 +933,14 @@ DICT = {
         'en': 'Subject area',
         'cy': 'Maes pwnc'
     },
+    'tariff_graph_desc': {
+        'en': ' of students entered the course with tariff points in range',
+        'cy': ' Nifer y myfyrwyr a ddechreuodd y cwrs gyda phwyntiau tariff yn yr ystod'
+    },
+    'tariff_graph_title': {
+        'en': 'Graph showing number of students entering the course with tariff points in range',
+        'cy': 'Graff yn dangos nifer y myfyrwyr yn dechrau’r cwrs gyda phwyntiau tariff yn yr ystod'
+    },
     'Teaching and educational professionals': {
         'en': 'Teaching and educational professionals',
         'cy': 'Gweithwyr Proffesiynol Addysgu ac Addysgol '
@@ -1011,7 +1051,7 @@ DICT = {
     },
     'year_course': {
         'en': 'year course',
-        'cy': 'Cwrs blwyddyn'
+        'cy': 'blwyddyn'
     },
     'yes': {
         'en': 'Yes',
@@ -1152,5 +1192,17 @@ DICT = {
     'Overall, I am satisfied with the quality of the course': {
         'en': 'Overall, I am satisfied with the quality of the course',
         'cy': 'Ar y cyfan, rydw i’n fodlon gydag ansawdd y cwrs'
+    },
+    'Not available': {
+        'en': 'Not Available',
+        'cy': 'Ddim ar gael'
+    },
+    'Optional': {
+        'en': 'Optional',
+        'cy': 'Dewisol'
+    },
+    'Compulsory': {
+        'en': 'Compulsory',
+        'cy': 'Gorfodol'
     }
 }

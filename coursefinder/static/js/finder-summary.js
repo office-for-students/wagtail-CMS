@@ -15,6 +15,8 @@
         },
 
         initialiseView: function() {
+            var that = this;
+
             if (sessionStorage.getItem("countries") != null) {
                 var countries = sessionStorage.getItem("countries")
                 $('#countries').text(countries.split(",").join(", "))
@@ -37,7 +39,7 @@
                 $.each(JSON.parse(localStorage.getItem("subjectJSON")), function(index, a) {
                     $.each(subjectsArray, function(index, b) {
                         if(a.code === b) {
-                            subjectNames.push(a.englishname);
+                            subjectNames.push(that.getSubjectName(a));
                         }
                     })
                 })
@@ -52,6 +54,14 @@
             if (sessionStorage.getItem("postcode") != null) {
                 var postcode = sessionStorage.getItem("postcode")
                 $('#narrow').text(postcode.split(",").join(", "))
+            }
+        },
+
+        getSubjectName: function(item) {
+            if (location.href.indexOf('/cy/') === -1) {
+                return item.english_name;
+            } else {
+                return item.welsh_name;
             }
         },
 

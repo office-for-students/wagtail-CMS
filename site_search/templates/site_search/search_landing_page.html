@@ -22,15 +22,16 @@
                         {{ page.search_heading }}
                     </p>
 
-                    <form class="search-landing-page__search" action="{{ search_url }}" method="get" autocomplete="off">
+                    <form class="search-landing-page__search" action="{{search_url}}" method="get" autocomplete="off">
                         <div class="search-landing-page__search-fields">
                             <div class="search-landing-page__search-input">
-                                <input name="subject_query" type="text" id="course" placeholder = "{% get_translation key='course_name' language=page.get_language %}" autocomplete="off">
+                                <input name="subject_query" type="text" id="course" aria-label="{% get_translation key='course_name' language=page.get_language %}"
+                                       placeholder="{% get_translation key='course_name' language=page.get_language %}" autocomplete="off">
                             </div>
 
                             <div class="search-landing-page__search-input">
                                 {%  get_translation key='uni_or_college' language=page.get_language as placeholder %}
-                                {% include 'partials/search-dropdown.html' with placeholder=placeholder field_name='institution_query'  %}
+                                {% include 'partials/search-dropdown.html' with placeholder=placeholder field_name='institution_query' options=institutions_list %}
                             </div>
                         </div>
 
@@ -42,7 +43,7 @@
                     </form>
                 </div>
 
-                <a href='{{ course_finder_url }}' class="search-landing-page__nav-card">
+                <a href='{{course_finder_url}}' class="search-landing-page__nav-card">
                     <p class="search-landing-page__nav-card-label">
                         {{ page.course_finder_heading }}
                     </p>

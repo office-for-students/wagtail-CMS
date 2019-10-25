@@ -33,7 +33,7 @@
         .course-detail__institution-info {
             padding: 26px 30px 28px;
 
-            background-color: $ux-grey-1;
+            background-color: $divider-grey;
 
             .course-detail__institution-name {
                 @include mobile-body-font-mixin();
@@ -98,7 +98,8 @@
                 padding: 0px;
 
                 border: 0px;
-                background-color: $ux-grey-1;
+                background-color: $form-grey;
+                cursor: pointer;
 
                 &.open {
                     @include green-gradient-background-mixin();
@@ -118,7 +119,7 @@
                     position: relative;
 
                     border: 3px solid transparent;
-                    color: $ux-grey-2;
+                    color: $helper-grey;
 
                     &:hover {
                         border: 3px solid $gradient-light-green;
@@ -336,7 +337,7 @@
             .course-detail__institution-info {
                 padding: 55px 300px 46px;
 
-                background-color: $ux-grey-1;
+                background-color: $divider-grey;
 
                 .course-detail__institution-name {
                     @include s-heading-mixin();

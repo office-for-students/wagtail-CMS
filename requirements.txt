@@ -12,3 +12,5 @@ libsass==0.18.0
 django-storages==1.6.5
 azure==1.0.0
 django-cors-headers
+django-axes==4.3.1
+pyClamd
