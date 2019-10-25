@@ -15,7 +15,8 @@ ALLOWED_HOSTS = [
     'production-discover-uni.azurewebsites.net',
     'discoveruni.gov.uk',
     'www.discoveruni.gov.uk',
-    'prod-discover-uni.azurewebsites.net'
+    'prod-discover-uni.azurewebsites.net',
+    'prod-discover-uni-write.azurewebsites.net',
 ]
 
 LOGGING = {
