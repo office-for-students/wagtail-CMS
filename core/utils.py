@@ -1,3 +1,5 @@
+import os
+
 import pyclamd
 
 from django.conf import settings
@@ -100,3 +102,8 @@ def get_clam():
             return cd
         except pyclamd.ConnectionError:
             raise ValueError('could not connect to clamd server either by unix or network socket')
+
+
+def get_version_number():
+    with open(os.path.join(settings.BASE_DIR, 'version.txt'), 'r') as file:
+        return file.read().replace('\n', '')
