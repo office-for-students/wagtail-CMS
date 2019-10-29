@@ -197,7 +197,7 @@ DiscoverUniWidget.prototype = {
 
     renderWidget: function(status, response) {
         if (status === 200) {
-            var courseData = JSON.parse(response).course;
+            var courseData = JSON.parse(response);
 
             if (this.hasRequiredStats(courseData) && !this.isMultiSubject(courseData)) {
                 new DataWidget(this.targetDiv, courseData, this.language, this.languageKey, this.kismode,
@@ -376,16 +376,16 @@ DataWidget.prototype = {
         courseNode.classList.add('course');
 
         if (isNotAggregated) {
-            var courseName = this.courseData.qualification.label;
+            var courseName = this.courseData.course_name[this.languageKey];
             courseName += this.courseData.honours_award_provision === 1 ? ' (Hons) ' : ' ';
             courseName += this.courseData.title[this.languageKey]
             var dataFor = CONTENT.dataFor[this.language];
             var course = document.createTextNode(dataFor + courseName);
         } else {
-            var courseName = this.courseData.statistics.employment[0].subject[this.languageKey + '_label'];
+            var courseName = this.courseData.course_name[this.languageKey];
             var dataFor = CONTENT.dataForAggregated[this.language];
             var at = CONTENT.at[this.language];
-            var institution = this.courseData.institution.pub_ukprn_name;
+            var institution = this.courseData.institution_name;
             var course = document.createTextNode(dataFor + courseName + at + institution);
         }
         courseNode.appendChild(course);
