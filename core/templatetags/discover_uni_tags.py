@@ -50,8 +50,7 @@ def create_list(*args):
 
 @register.simple_tag
 def insert_values_to_rich_text(*_, **kwargs):
-    list(kwargs.get('substitutions'))
-    return kwargs.get('content').source % (kwargs.get('substitutions'))
+    return kwargs.get('content').source.format(*kwargs.get('substitutions'))
 
 
 @register.simple_tag
