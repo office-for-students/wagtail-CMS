@@ -27,6 +27,10 @@ var CONTENT = {
         'en-gb': '{{domain_name}}/static/images/logos/widget_logo_english.svg',
         'cy-gb': '{{domain_name}}/static/images/logos/widget_logo_welsh.svg'
     },
+    'logoAlt': {
+        'en-gb': 'DiscoverUni',
+        'cy-gb': 'Darganfod Prifysgol'
+    },
     'cta': {
         'en-gb': 'See course data',
         'cy-gb':"Gweld data'r cwrs"
@@ -193,7 +197,7 @@ DiscoverUniWidget.prototype = {
 
     renderWidget: function(status, response) {
         if (status === 200) {
-            var courseData = JSON.parse(response).course;
+            var courseData = JSON.parse(response);
 
             if (this.hasRequiredStats(courseData) && !this.isMultiSubject(courseData)) {
                 new DataWidget(this.targetDiv, courseData, this.language, this.languageKey, this.kismode,
@@ -372,16 +376,16 @@ DataWidget.prototype = {
         courseNode.classList.add('course');
 
         if (isNotAggregated) {
-            var courseName = this.courseData.qualification.label;
+            var courseName = this.courseData.course_name[this.languageKey];
             courseName += this.courseData.honours_award_provision === 1 ? ' (Hons) ' : ' ';
             courseName += this.courseData.title[this.languageKey]
             var dataFor = CONTENT.dataFor[this.language];
             var course = document.createTextNode(dataFor + courseName);
         } else {
-            var courseName = this.courseData.statistics.employment[0].subject[this.languageKey + '_label'];
+            var courseName = this.courseData.course_name[this.languageKey];
             var dataFor = CONTENT.dataForAggregated[this.language];
             var at = CONTENT.at[this.language];
-            var institution = this.courseData.institution.pub_ukprn_name;
+            var institution = this.courseData.institution_name;
             var course = document.createTextNode(dataFor + courseName + at + institution);
         }
         courseNode.appendChild(course);
@@ -414,6 +418,7 @@ DataWidget.prototype = {
         var ctaBlockNode = document.createElement('div');
         ctaBlockNode.classList.add('widget-cta-block');
 
+        var headingNode = document.createElement('h1');
         var leadNode1 = document.createElement("span");
         leadNode1.classList.add('cta-lead');
         var lead1 = document.createTextNode(CONTENT.ctaLead1[this.language]);
@@ -426,13 +431,16 @@ DataWidget.prototype = {
         leadNode1.appendChild(lead1);
         leadNode2.appendChild(lead2);
         leadNode3.appendChild(lead3);
-        ctaBlockNode.appendChild(leadNode1);
-        ctaBlockNode.appendChild(leadNode2);
-        ctaBlockNode.appendChild(leadNode3);
+        headingNode.appendChild(leadNode1);
+        headingNode.appendChild(leadNode2);
+        headingNode.appendChild(leadNode3);
+
+        ctaBlockNode.appendChild(headingNode);
 
         var logoNode = document.createElement('img');
         logoNode.classList.add('logo');
         logoNode.setAttribute('src', CONTENT.logo[this.language]);
+        logoNode.setAttribute('alt', CONTENT.logoAlt[this.language]);
         ctaBlockNode.appendChild(logoNode);
 
         var ctaWrapperNode = document.createElement('div');
@@ -496,6 +504,7 @@ NoDataWidget.prototype = {
         var ctaBlockNode = document.createElement('div');
         ctaBlockNode.classList.add('widget-cta-block');
 
+        var headingNode = document.createElement('h1');
         var leadNode1 = document.createElement("span");
         leadNode1.classList.add('cta-lead');
         var lead1 = document.createTextNode(CONTENT.noDataCtaLead1[this.language]);
@@ -508,13 +517,16 @@ NoDataWidget.prototype = {
         leadNode1.appendChild(lead1);
         leadNode2.appendChild(lead2);
         leadNode3.appendChild(lead3);
-        ctaBlockNode.appendChild(leadNode1);
-        ctaBlockNode.appendChild(leadNode2);
-        ctaBlockNode.appendChild(leadNode3);
+        headingNode.appendChild(leadNode1);
+        headingNode.appendChild(leadNode2);
+        headingNode.appendChild(leadNode3);
+
+        ctaBlockNode.appendChild(headingNode);
 
         var logoNode = document.createElement('img');
         logoNode.classList.add('logo');
         logoNode.setAttribute('src', CONTENT.logo[this.language]);
+        logoNode.setAttribute('alt', CONTENT.logoAlt[this.language]);
         ctaBlockNode.appendChild(logoNode);
 
         var ctaWrapperNode = document.createElement('div');

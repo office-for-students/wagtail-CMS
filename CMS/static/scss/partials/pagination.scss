@@ -73,9 +73,9 @@
         &--disabled {
             @include pagination-item-base();
 
-            .green {
-                display: none;
-            }
+            background-color: $divider-grey;
+            border-color: $form-grey;
+            cursor: not-allowed;
         }
 
         img {
@@ -98,6 +98,8 @@
     }
 
     &__ellipsis {
+        @include pagination-item-base();
+
         display: none;
     }
 }
@@ -119,7 +121,12 @@
         }
 
         &__ellipsis {
-            @include pagination-item-base();
+            display: flex;
+
+            color: $copyright-grey;
+            border-color: $form-grey;
+            background-color: $divider-grey;
+            cursor: not-allowed;
         }
     }
 }

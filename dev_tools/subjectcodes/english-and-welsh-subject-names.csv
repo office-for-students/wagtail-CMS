@@ -1,0 +1,227 @@
+﻿code,english_label,level,welsh_label
+CAH01,Medicine and dentistry,1,Meddygaeth a deintyddiaeth
+CAH01-01,Medicine and dentistry,2,Meddygaeth a deintyddiaeth
+CAH01-01-01,Medical sciences (non-specific),3,Gwyddorau meddygol (amhenodol)
+CAH01-01-02,Medicine (non-specific),3,Meddygaeth (amhenodol)
+CAH01-01-03,Medicine by specialism,3,Meddygaeth yn ôl arbenigedd
+CAH01-01-04,Dentistry,3,Deintyddiaeth
+CAH02,Subjects allied to medicine,1,Pynciau’n gysylltiedig â meddygaeth
+CAH02-01,Nursing and midwifery,2,Nyrsio a bydwreigiaeth
+CAH02-01-01,Nursing (non-specific),3,Nyrsio (amhenodol)
+CAH02-01-02,Adult nursing,3,Nyrsio oedolion
+CAH02-01-03,Community nursing,3,Nyrsio cymunedol
+CAH02-01-04,Midwifery,3,Bydwreigiaeth
+CAH02-01-05,Childrens nursing,3,Nyrsio plant
+CAH02-01-06,Dental nursing,3,Nyrsio deintyddol
+CAH02-01-07,Mental health nursing,3,Nyrsio iechyd meddwl
+CAH02-01-08,Learning disabilities nursing,3,Nyrsio anableddau dysgu
+CAH02-01-09,Nursing (other),3,Nyrsio (arall)
+CAH02-02,"Pharmacology, toxicology and pharmacy",2,"Ffarmacoleg,  tocsicoleg a fferylliaeth "
+CAH02-02-01,Pharmacology,3,Ffarmacoleg
+CAH02-02-02,Toxicology,3,Tocsicoleg
+CAH02-02-03,Pharmacy,3,Fferylliaeth
+CAH02-03,Subjects allied to medicine not otherwise specified,2,Pynciau’n gysylltiedig â meddygaeth heb eu nodi fel arall
+CAH02-03-01,Health sciences (non-specific),3,Gwyddorau iechyd (amhenodol)
+CAH02-03-02,Nutrition and dietetics,3,Maeth a deieteteg
+CAH02-03-03,Ophthalmics,3,Offthalmoleg
+CAH02-03-04,Environmental and public health,3,Iechyd amgylcheddol a chyhoeddus
+CAH02-03-05,Physiotherapy,3,Ffisiotherapi
+CAH02-03-06,Complementary and alternative medicine,3,Meddygaeth ategol ac amgen
+CAH02-03-07,Medical technology,3,Technoleg feddygol
+CAH02-03-08,"Counselling, psychotherapy and occupational therapy",3,"Cwnsela, seicotherapi a therapi galwedigaethol      "
+CAH02-03-09,Healthcare science (non-specific),3,Gwyddorau gofal iechyd (amhenodol)
+CAH02-03-10,Biomedical sciences (non-specific),3,Gwyddorau biofeddygol (amhenodol)
+CAH02-03-11,"Anatomy, physiology and pathology",3,"Anatomeg, ffisioleg a phatholeg  "
+CAH02-03-12,Subjects allied to medicine (other),3,Pynciau’n gysylltiedig â meddygaeth (arall)
+CAH02-03-13,Subjects allied to medicine (other),3,Pynciau’n gysylltiedig â meddygaeth (arall)
+CAH03,Biological and sport sciences,1,Gwyddorau biolegol a chwaraeon
+CAH03-01,Biosciences,2,Biowyddorau
+CAH03-01-01,Biosciences (non-specific),3,Biowyddorau (amhenodol)
+CAH03-01-02,Biology (non-specific),3,Bioleg (amhenodol)
+CAH03-01-03,Ecology and environmental biology,3,Ecoleg a bioleg amgylcheddol
+CAH03-01-04,Microbiology and cell science,3,Microbioleg a gwyddoniaeth celloedd
+CAH03-01-05,Plant sciences,3,Gwyddorau planhigion
+CAH03-01-06,Zoology,3,Sŵoleg
+CAH03-01-07,Genetics,3,Geneteg
+CAH03-01-08,"Molecular biology, biophysics and biochemistry",3,"Bioleg folecylaidd, bioffiseg a biocemeg       "
+CAH03-01-09,Hair and beauty sciences,3,Gwyddorau gwallt a harddwch
+CAH03-01-10,Biosciences (other),3,Biowyddorau (arall)
+CAH03-02,Sport and exercise sciences,2,Chwaraeon a gwyddorau ymarfer
+CAH03-02-01,Sport and exercise sciences,3,Chwaraeon a gwyddorau ymarfer
+CAH04,Psychology,1,Seicoleg
+CAH04-01,Psychology,2,Seicoleg
+CAH04-01-01,Psychology (non-specific),3,Seicoleg (amhenodol)
+CAH04-01-02,Applied psychology,3,Seicoleg gymhwysol
+CAH04-01-03,Developmental psychology,3,Seicoleg ddatblygiadol
+CAH04-01-04,Psychology and health,3,Seicoleg ac iechyd
+CAH04-01-05,Psychology (other),3,Seicoleg (arall)
+CAH05,Veterinary sciences,1,Gwyddorau milfeddygol
+CAH05-01,Veterinary sciences,2,Gwyddorau milfeddygol
+CAH05-01-01,Veterinary medicine and dentistry,3,Meddygaeth filfeddygol a deintyddiaeth
+CAH05-01-02,Veterinary sciences (other),3,Gwyddorau milfeddygol (arall)
+CAH06,"Agriculture, food and related studies",1,"Amaethyddiaeth, bwyd ac astudiaethau cysylltiedig "
+CAH06-01,"Agriculture, food and related studies",2,"Amaethyddiaeth, bwyd ac astudiaethau cysylltiedig "
+CAH06-01-01,Animal science,3,Gwyddorau anifeiliaid
+CAH06-01-02,Agricultural sciences,3,Gwyddorau amaethyddol
+CAH06-01-03,Agriculture,3,Amaethyddiaeth
+CAH06-01-04,Rural estate management,3,Rheoli stadau gwledig
+CAH06-01-05,Forestry and arboriculture,3,Coedwigaeth a choedyddiaeth
+CAH06-01-06,Food and beverage studies (non-specific),3,Astudiaethau bwyd a diod (amhenodol)
+CAH06-01-07,Food sciences,3,Gwyddorau bwyd
+CAH06-01-08,Food and beverage production,3,Cynhyrchu bwyd a diod
+CAH07,Physical sciences,1,Gwyddorau ffisegol
+CAH07-01,Physics and astronomy,2,Ffiseg ac astronomeg
+CAH07-01-01,Physics,3,Ffiseg
+CAH07-01-02,Astronomy,3,Astronomeg
+CAH07-02,Chemistry,2,Cemeg
+CAH07-02-01,Chemistry,3,Cemeg
+CAH07-03,"Physical, material and forensic sciences",2,"Gwyddorau ffisegol, deunydd a fforensig "
+CAH07-03-01,Physical sciences (non-specific),3,Gwyddorau ffisegol (amhenodol)
+CAH07-03-02,Earth sciences,3,Gwyddorau daear
+CAH07-03-03,Materials science,3,Gwyddoniaeth deunyddiau
+CAH07-03-04,Forensic and archaeological sciences,3,Gwyddorau fforensig ac archaeolegol
+CAH08,General and others in sciences,1,Cyffredinol ac eraill mewn gwyddorau
+CAH08-01,General and others in sciences,2,Cyffredinol ac eraill mewn gwyddorau
+CAH08-01-01,Sciences (non-specific),3,Gwyddorau (amhenodol)
+CAH08-01-02,Natural sciences (non-specific),3,Gwyddorau naturiol (amhenodol)
+CAH09,Mathematical sciences,1,Gwyddorau mathemategol
+CAH09-01,Mathematical sciences,2,Gwyddorau mathemategol
+CAH09-01-01,Mathematics,3,Mathemateg
+CAH09-01-02,Operational research,3,Ymchwil gweithredol
+CAH09-01-03,Statistics,3,Ystadegau
+CAH10,Engineering and technology,1,Peirianneg a thechnoleg
+CAH10-01,Engineering,2,Peirianneg
+CAH10-01-01,Engineering (non-specific),3,Peirianneg (amhenodol)
+CAH10-01-02,Mechanical engineering,3,Peirianneg fecanyddol
+CAH10-01-03,Production and manufacturing engineering,3,Peirianneg cynhyrchu a gweithgynhyrchu
+CAH10-01-04,Aeronautical and aerospace engineering,3,Peirianneg awyrenegol ac awyrofod
+CAH10-01-05,Naval architecture,3,Pensaernïaeth forol
+CAH10-01-06,"Bioengineering, medical and biomedical engineering",3,"Biobeirianneg, peirianneg feddygol a biofeddygol    "
+CAH10-01-07,Civil engineering,3,Peirianneg sifil
+CAH10-01-08,Electrical and electronic engineering,3,Peirianneg drydanol ac electronig
+CAH10-01-09,"Chemical, process and energy engineering",3,"Peirianneg gemegol, proses ac ynni                  "
+CAH10-01-10,Engineering (other),3,Peirianneg (arall)
+CAH10-02,Technology,2,Technoleg
+CAH10-02-01,Minerals technology,3,Technoleg mwynau
+CAH10-02-02,Materials technology,3,Technoleg deunyddiau
+CAH10-02-03,Polymers and textiles,3,Polymerau a thecstilau
+CAH10-02-04,Maritime technology,3,Technoleg forol
+CAH10-02-05,Biotechnology,3,Biodechnoleg
+CAH10-02-06,Technology (other),3,Technoleg (arall)
+CAH11,Computing,1,Cyfrifiadura
+CAH11-01,Computing,2,Cyfrifiadura
+CAH11-01-01,Computer science,3,Gwyddoniaeth gyfrifiadurol
+CAH11-01-02,Information technology,3,Technoleg gwybodaeth
+CAH11-01-03,Information systems,3,Systemau gwybodaeth
+CAH11-01-04,Software engineering,3,Peirianneg meddalwedd
+CAH11-01-05,Artificial intelligence,3,Deallusrwydd artiffisial
+CAH11-01-06,Computer games and animation,3,Gemau cyfrifiadurol ac animeiddio
+CAH11-01-07,Business computing,3,Cyfrifiadura busnes
+CAH11-01-08,Computing (other),3,Cyfrifiadura (arall)
+CAH12,Geographical and environmental studies,1,Astudiaethau daearyddol ac amgylcheddol
+CAH12-01,Geographical and environmental studies,2,Astudiaethau daearyddol ac amgylcheddol
+CAH12-01-01,Geography (non-specific),3,Daearyddiaeth (amhenodol)
+CAH12-01-02,Physical geographical sciences,3,Gwyddorau daearyddol ffisegol
+CAH12-01-03,Human geography,3,Daearyddiaeth ddynol
+CAH12-01-04,Environmental sciences,3,Gwyddorau amgylcheddol
+CAH12-01-05,Geographical studies (other),3,Astudiaethau daearyddol (arall)
+CAH13,"Architecture, building and planning",1,"Pensaernïaeth, adeiladu a chynllunio "
+CAH13-01,"Architecture, building and planning",2,"Pensaernïaeth, adeiladu a chynllunio "
+CAH13-01-01,Architecture,3,Pensaernïaeth
+CAH13-01-02,Building,3,Adeiladu
+CAH13-01-03,Landscape design,3,Cynllunio tirwedd
+CAH13-01-04,"Planning (urban, rural and regional)",3,"Cynllunio (trefol, gwledig a rhanbarthol) "
+CAH14,Humanities and liberal arts (non-specific),1,Dyniaethau a’r celfyddydau rhyddfrydol (amhenodol)
+CAH14-01,Humanities and liberal arts (non-specific),2,Dyniaethau a’r celfyddydau rhyddfrydol (amhenodol)
+CAH14-01-01,Humanities (non-specific),3,Dyniaethau (amhenodol)
+CAH14-01-02,Liberal arts (non-specific),3,Celfyddydau rhyddfrydol (amhenodol)
+CAH15,Social sciences,1,Gwyddorau cymdeithasol
+CAH15-01,"Sociology, social policy and anthropology",2,"Cymdeithaseg, polisi cymdeithasol ac anthropoleg"
+CAH15-01-01,Social sciences (non-specific),3,Gwyddorau cymdeithasol (amhenodol)
+CAH15-01-02,Sociology,3,Cymdeithaseg
+CAH15-01-03,Social policy,3,Polisi cymdeithasol
+CAH15-01-04,Anthropology,3,Anthropoleg
+CAH15-01-05,Development studies,3,Astudiaethau datblygiad
+CAH15-01-06,Cultural studies,3,Astudiaethau diwylliannol
+CAH15-02,Economics,2,Economeg
+CAH15-02-01,Economics,3,Economeg
+CAH15-03,Politics,2,Gwleidyddiaeth
+CAH15-03-01,Politics,3,Gwleidyddiaeth
+CAH15-04,Health and social care,2,Iechyd a gofal cymdeithasol
+CAH15-04-01,Social work,3,Gwaith cymdeithasol
+CAH15-04-02,Childhood and youth studies,3,Astudiaethau plentyndod ac ieuenctid
+CAH15-04-03,Health studies,3,Astudiaethau iechyd
+CAH16,Law,1,Y gyfraith
+CAH16-01,Law,2,Y gyfraith
+CAH16-01-01,Law,3,Y gyfraith
+CAH17,Business and management,1,Busnes a rheolaeth
+CAH17-01,Business and management,2,Busnes a rheolaeth
+CAH17-01-01,Business and management (non-specific),3,Busnes a rheolaeth (amhenodol)
+CAH17-01-02,Business studies,3,Astudiaethau busnes
+CAH17-01-03,Marketing,3,Marchnata
+CAH17-01-04,Management studies,3,Astudiaethau rheoli
+CAH17-01-05,Human resource management,3,Rheoli adnoddau dynol
+CAH17-01-06,"Tourism, transport and travel",3,"Twristiaeth, trafnidiaeth a theithio "
+CAH17-01-07,Finance,3,Cyllid
+CAH17-01-08,Accounting,3,Cyfrifeg
+CAH17-01-09,Business and management (other),3,Busnes a rheolaeth (arall)
+CAH18,Communications and media,1,Cyfathrebu a’r cyfryngau
+CAH18-01,"Communications, journalism and media",2,"Cyfathrebu, newyddiaduraeth a’r cyfryngau "
+CAH18-01-01,Information services,3,Gwasanaethau gwybodaeth
+CAH18-01-02,Publicity studies,3,Astudiaethau cyhoeddusrwydd
+CAH18-01-03,Publishing,3,Cyhoeddi
+CAH18-01-04,Journalism,3,Newyddiaduraeth
+CAH18-01-05,Media studies,3,Astudiaethau cyfryngau
+CAH19,Language and area studies,1,Astudiaethau iaith ac ardal
+CAH19-01,English studies,2,Astudiaethau Saesneg
+CAH19-01-01,English studies (non-specific),3,Astudiaethau Saesneg (amhenodol)
+CAH19-01-02,English language,3,Iaith Saesneg
+CAH19-01-03,Literature in English,3,Llenyddiaeth yn Saesneg
+CAH19-01-04,Studies of specific authors,3,Astudiaethau o awduron penodol
+CAH19-01-05,Creative writing,3,Ysgrifennu creadigol
+CAH19-01-06,English studies (other),3,Astudiaethau Saesneg (arall)
+CAH19-02,Celtic studies,2,Astudiaethau Celtaidd
+CAH19-02-01,Celtic studies (non-specific),3,Astudiaethau Celtaidd (amhenodol)
+CAH19-02-02,Gaelic studies,3,Astudiaethau Gaeleg
+CAH19-02-03,Welsh studies,3,Astudiaethau Cymraeg
+CAH19-02-04,Celtic studies (other),3,Astudiaethau Gaeleg (arall)
+CAH19-03,"Languages, linguistics and classics",2,"Iaith, ieithyddiaeth a’r clasuron "
+CAH19-03-01,French studies,3,Astudiaethau Ffrangeg
+CAH19-03-02,German and Scandinavian studies,3,Astudiaethau Almaeneg a Llychlynnaidd
+CAH19-03-03,Italian studies,3,Astudiaethau Eidaleg
+CAH19-03-04,Iberian studies,3,Astudiaethau Iberaidd
+CAH19-03-05,Slavic studies,3,Astudiaethau Slafig
+CAH19-03-06,Asian studies,3,Astudiaethau Asiaidd
+CAH19-03-07,African and modern Middle Eastern studies,3,Astudiaethau Affricanaidd a Dwyrain Canol modern
+CAH19-03-08,American and Australasian studies,3,Astudiaethau Americanaidd ac Awstralasiaidd
+CAH19-03-09,Classics,3,Clasuron
+CAH19-03-10,Linguistics,3,Ieithyddiaeth
+CAH19-03-11,Language and area studies (other),3,Astudiaethau iaith ac ardal (arall)
+CAH20,"Historical, philosophical and religious studies",1,"Astudiaethau hanesyddol, athronyddol a chrefyddol               "
+CAH20-01,History and archaeology,2,Hanes ac archaeoleg
+CAH20-01-01,History,3,Hanes
+CAH20-01-02,"History of art, architecture and design",3,"Hanes celf, pensaernïaeth a dylunio "
+CAH20-01-03,Archaeology,3,Archaeoleg
+CAH20-01-04,Heritage studies,3,Astudiaethau treftadaeth
+CAH20-02,Philosophy and religious studies,2,Athroniaeth ac astudiaethau crefyddol
+CAH20-02-01,Philosophy,3,Athroniaeth
+CAH20-02-02,Theology and religious studies,3,Diwinyddiaeth ac astudiaethau crefyddol
+CAH21,Creative arts and design,1,Celfyddydau creadigol a dylunio
+CAH21-01,"Performing arts, creative arts and design",2,"Celfyddydau perfformio, celfyddydau creadigol a dylunio "
+CAH21-01-01,Creative arts and design (non-specific),3,Celfyddydau creadigol a dylunio (amhenodol)
+CAH21-01-02,Art,3,Celf
+CAH21-01-03,Design studies,3,Astudiaethau dylunio
+CAH21-01-04,Performing arts (non-specific),3,Celfyddydau perfformio (amhenodol)
+CAH21-01-05,Music,3,Cerddoriaeth
+CAH21-01-06,Drama,3,Drama
+CAH21-01-07,Dance,3,Dawns
+CAH21-01-08,Cinematics and photography,3,Sinemateg a ffotograffiaeth
+CAH21-01-09,Creative arts and design (other),3,Celfyddydau creadigol a dylunio (arall)
+CAH22,Education and teaching,1,Addysg ac addysgu
+CAH22-01,Education and teaching,2,Addysg ac addysgu
+CAH22-01-01,Education,3,Addysg
+CAH22-01-02,Teacher training,3,Hyfforddi athrawon
+CAH23,Combined and general studies,1,Astudiaethau cyfun a chyffredinol
+CAH23-01,Combined and general studies,2,Astudiaethau cyfun a chyffredinol
+CAH23-01-01,"Combined, general or negotiated studies",3,"Astudiaethau cyfun, cyffredinol neu wedi’u trefnu "
+CAH23-01-02,Personal development,3,Datblygiad personol

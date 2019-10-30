@@ -7,8 +7,8 @@
     &-base {
         padding: 0px 19px 48px;
         background-image: url('/static/images/home-background.png');
-        background-size: cover;
-        background-position: center bottom;
+        background-repeat: repeat-y;
+        background-position: right top;
 
         &__nav {
             display: flex;
@@ -137,15 +137,17 @@
                 border-radius: 70.6272px;
                 line-height: 25px;
                 color: $white;
+                
+                @media (hover) {
+                  &:hover {
+                      .green {
+                          display: initial;
+                      }
 
-                &:hover {
-                    .green {
-                        display: initial;
-                    }
-
-                    .white {
-                        display: none;
-                    }
+                      .white {
+                          display: none;
+                      }
+                  }
                 }
             }
 
@@ -275,6 +277,7 @@
 
                     background-color: $form-grey;
                     border: 3px solid transparent;
+                    cursor: pointer;
 
                     &:hover {
                         border: 3px solid $gradient-light-green;
@@ -315,12 +318,12 @@
                 }
 
                 &-body {
-                    background-color: $ux-grey-1;
+                    background-color: $divider-grey;
 
                     &-content {
                         padding: 40px 42px 43px;
 
-                        border-bottom: 2px solid $divider-grey;
+                        border-bottom: 2px solid $ux-grey-1;
                     }
 
                     &-course-name {
@@ -330,7 +333,7 @@
                         margin: 0px;
                         margin-bottom: 20px;
 
-                        color: $link-blue;
+                        color: $gradient-dark-green;
                         line-height: 22px;
                     }
 
@@ -351,8 +354,7 @@
     .course-finder {
         &-base {
             padding: 0px 0px 107px;
-            background-position: initial;
-
+            
             &__nav {
                 padding: 24px 0px;
 
@@ -519,7 +521,7 @@
                     }
 
                     &-body {
-                        background-color: $ux-grey-1;
+                        background-color: $divider-grey;
 
                         &-content {
                             padding: 50px 80px;
@@ -528,7 +530,7 @@
                         &-course-name {
                             @include s-heading-mixin();
 
-                            color: $link-blue;
+                            color: $gradient-dark-green;
                             line-height: 31px;
                         }
 

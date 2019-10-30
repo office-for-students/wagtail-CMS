@@ -1,4 +1,20 @@
 (function ($) {
+    
+    // ie polyfill for Includes
+    if (!String.prototype.includes) {
+      String.prototype.includes = function(search, start) {
+        if (typeof start !== 'number') {
+          start = 0;
+        }
+
+        if (start + search.length > this.length) {
+          return false;
+        } else {
+          return this.indexOf(search, start) !== -1;
+        }
+      };
+    }
+    
     // ACCORDION
     var Accordion = function(wrapper) {
         this.wrapper = $(wrapper);
@@ -77,7 +93,13 @@
             } else {
                 this.selectedCourses = [];
             }
-            this.btn.text(this.selectedCourses.length);
+
+            if (this.selectedCourses.length) {
+                this.btn.show();
+                this.btn.text(this.selectedCourses.length);
+            } else if (this.selectedCourses.length === 0) {
+                this.btn.hide();
+            }
         },
 
         startWatcher: function() {
@@ -112,8 +134,26 @@
             });
         }
     }
+    
+    // SCROLL TO TOP BUTTON
+    var ScrollToTop = function(scrollBtn) {
+        this.scrollBtn = $(scrollBtn);
+        this.setup();
+    }
+    
+    ScrollToTop.prototype = {
+      setup: function() {
+        this.startWatcher();
+      },
 
-
+      startWatcher: function() {
+          this.scrollBtn.click(function(e) {
+              e.preventDefault();
+              $('html, body').animate({scrollTop:0}, '300');
+          });
+      }
+    }
+    
     // DROPDOWN
     var PageDropdowns = function(dropdowns) {
         this.dropdownsList = $(dropdowns);
@@ -169,7 +209,6 @@
             var uiSelect = document.createElement("div");
             uiSelect.setAttribute("class", "select-selected");
             uiSelect.setAttribute('tabindex', 0)
-            uiSelect.innerHTML = baseSelect.options[baseSelect.selectedIndex].innerHTML;
             this.wrapper.append(uiSelect);
             this.uiSelect = this.wrapper.find('.select-selected');
             this.startWatcher();
@@ -444,25 +483,10 @@
             this.searchField = $(this.container.find('.search-field-input')[0]);
             this.optionList = $(this.container.find('.options-list'));
             this.placeholder = $(this.optionList.find('.placeholder'));
-            this.initialiseSelect();
-            this.watchForFocus();
-            this.watchForSearchTerm();
-        },
-
-        initialiseSelect: function() {
-            var that = this;
-            $.each(JSON.parse(localStorage.getItem("uniJSON")), function(index, item) {
-                var optionId = that.fieldName + '-' + index;
-                var optionValue = '"' + item.name + '"';
-
-                var option = document.createElement("option");
-                option.setAttribute("id", optionId);
-                option.setAttribute("value", optionValue);
-                option.innerHTML = item.name;
-                that.selectionField.append(option);
-            });
             this.selectOptions = this.selectionField.find('option');
             this.initialiseOptions();
+            this.watchForFocus();
+            this.watchForSearchTerm();
         },
 
         initialiseOptions: function() {
@@ -543,11 +567,11 @@
 
         createUIOption: function() {
             var uiOption = document.createElement("div");
-            uiOption.setAttribute("id", this.id);
+            uiOption.setAttribute("id", this.id + '-ui');
             uiOption.setAttribute("class", 'option');
             uiOption.innerHTML = this.textValue;
             this.wrapper.append(uiOption);
-            this.uiOption = this.wrapper.find('#' + this.id);
+            this.uiOption = this.wrapper.find('#' + this.id + '-ui');
             if (this.option.disabled) {
                 this.uiOption.hide();
             }
@@ -599,11 +623,14 @@
 
         loadSubjectData: function() {
             var that = this;
-            if (localStorage.getItem("subjectJSON") === null) {
+            var currentVersion = $('meta[name=codeversion]')[0].content;
+            var isCurrentVersionStored = localStorage.getItem("version") === currentVersion;
+
+            if (!isCurrentVersionStored || localStorage.getItem("subjectJSON") === null) {
                 $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
                     result.sort(function(a, b){
-                        if (a.englishname < b.englishname) { return -1; }
-                        if (a.englishname > b.englishname) { return 1; }
+                        if (a.english_name < b.english_name) { return -1; }
+                        if (a.english_name > b.english_name) { return 1; }
                         return 0;
                     });
 
@@ -624,28 +651,37 @@
 
                 if (item.level === "1") {
                     var selected = this.initialSelection && this.initialSelection[0].indexOf(item.code) !== -1;
-                    this.subjectAreaSelector.append(this.createOption(item.code, item.englishname, selected));
+                    this.subjectAreaSelector.append(this.createOption(item.code, this.getOptionName(item), selected));
                 }
 
                 if (item.level === "2") {
                     var selected = this.initialSelection && this.initialSelection[0].indexOf(item.code) !== -1;
-                    this.subjectSelector.append(this.createOption(item.code, item.englishname, selected));
+                    this.subjectSelector.append(this.createOption(item.code, this.getOptionName(item), selected));
                     if (selected) {
-                        this.toggleCodeSelector();
+                        this.showCodeSelector();
                     }
                 }
 
                 if (item.level === "3") {
                     var selected = this.initialSelection && this.initialSelection.length === 1 && this.initialSelection[0] === item.code;
-                    this.subjectCodeSelector.append(this.createOption(item.code, item.englishname, selected, item.code));
+                    this.subjectCodeSelector.append(this.createOption(item.code, this.getOptionName(item), selected, item.code));
                 }
             }
 
+            this.subjectAreaOptions = this.subjectAreaSelector.find('option');
             this.subjectOptions = this.subjectSelector.find('option');
             this.subjectCodeOptions = this.subjectCodeSelector.find('option');
             this.subjectAreaSelector.trigger('loadeddata');
             this.subjectSelector.trigger('loadeddata');
             this.subjectCodeSelector.trigger('loadeddata');
+        },
+
+        getOptionName: function(item) {
+            if (location.href.indexOf('/cy/') === -1) {
+                return item.english_name;
+            } else {
+                return item.welsh_name;
+            }
         },
 
         createOption: function(value, text, selected, data) {
@@ -667,39 +703,110 @@
             this.subjectAreaSelector.change(this.handleAreaSelection.bind(this));
 
             this.subjectSelector.change(this.handleSubjectSelection.bind(this));
+
+            this.subjectCodeSelector.change(this.handleSubjectCodeSelection.bind(this));
         },
 
         handleAreaSelection: function() {
-            for (var i = 0; i < this.subjectOptions.length; i++) {
-                var option = this.subjectOptions[i];
+            if (this.subjectAreaSelector[0].value === 'disabled') {
+                this.resetSubjectSelector();
+            } else {
+                for (var i = 0; i < this.subjectOptions.length; i++) {
+                    var option = this.subjectOptions[i];
+                    $(option).removeAttr("disabled");
+                    if (option.value.indexOf(this.subjectAreaSelector[0].value) === -1) {
+                        $(option).attr("disabled", "disabled");
+                    }
+                }
+            }
+
+            for (var i = 0; i < this.subjectAreaOptions.length; i++) {
+                var option = this.subjectAreaOptions[i];
                 $(option).removeAttr("disabled");
-                if (option.value.indexOf(this.subjectAreaSelector[0].value) === -1) {
+                if (option.value === this.subjectAreaSelector[0].value) {
                     $(option).attr("disabled", "disabled");
                 }
             }
+
+            this.subjectAreaSelector.trigger('loadeddata');
             this.subjectSelector.trigger('loadeddata');
+            this.hideCodeSelector();
         },
 
         handleSubjectSelection: function() {
-            var all = ''
-            for (var i = 0; i < this.subjectCodeOptions.length; i++) {
-                var option = this.subjectCodeOptions[i];
-                $(option).attr("disabled", "disabled");
-                if (option.dataset.code.includes(this.subjectSelector[0].value)) {
-                    $(option).removeAttr("disabled");
-                    all += option.value + ',';
+            if (this.subjectSelector[0].value === 'disabled') {
+                this.hideCodeSelector();
+            } else {
+                var all = ''
+                for (var i = 0; i < this.subjectCodeOptions.length; i++) {
+                    var option = this.subjectCodeOptions[i];
+                    $(option).attr("disabled", "disabled");
+                    if (option.dataset.code.includes(this.subjectSelector[0].value)) {
+                        $(option).removeAttr("disabled");
+                        all += option.value + ',';
+                    }
+                }
+                this.subjectCodeOptions[0].value = all;
+                this.showCodeSelector();
+            }
+
+            for (var i = 0; i < this.subjectOptions.length; i++) {
+                var option = this.subjectOptions[i];
+                $(option).removeAttr("disabled");
+                if (option.value === this.subjectSelector[0].value) {
+                    $(option).attr("disabled", "disabled");
                 }
             }
-            this.subjectCodeOptions[0].value = all;
 
-            this.toggleCodeSelector();
-
+            this.subjectSelector.trigger('loadeddata');
             this.subjectCodeSelector.trigger('loadeddata');
         },
 
-        toggleCodeSelector: function() {
+        handleSubjectCodeSelection: function() {
+            for (var i = 0; i < this.subjectCodeOptions.length; i++) {
+                var option = this.subjectCodeOptions[i];
+                $(option).removeAttr("disabled");
+                if (option.value === this.subjectCodeSelector[0].value) {
+                    $(option).attr("disabled", "disabled");
+                }
+            }
+            this.subjectCodeSelector.trigger('loadeddata');
+        },
+
+        resetSubjectSelector: function() {
+            for (var i = 0; i < this.subjectOptions.length; i++) {
+                var option = this.subjectOptions[i];
+                $(option).removeAttr("disabled");
+                if (option.value === 'disabled') {
+                    $(option).attr("disabled", "disabled");
+                }
+            }
+        },
+
+        showCodeSelector: function() {
             this.subjectCodeSelector.removeClass('hidden');
             this.subjectCodeSelector.addClass('visible');
+        },
+
+        hideCodeSelector: function() {
+            this.subjectCodeSelector.removeClass('visible');
+            this.subjectCodeSelector.addClass('hidden');
+        }
+    }
+
+    var NewTabLinks = function(link) {
+        this.link = link;
+        this.setup();
+    }
+
+    NewTabLinks.prototype = {
+        setup: function() {
+            var imgNode = document.createElement('img');
+            imgNode.classList.add('logo');
+            imgNode.setAttribute('src', "/static/images/new_tab_icon.png");
+            imgNode.setAttribute('alt', "");
+            this.link.appendChild(imgNode);
+            this.link.setAttribute('aria-label', this.link.innerText + ', opens in new tab');
         }
     }
 
@@ -712,32 +819,19 @@
         }
 
         // Course finder
+        var currentVersion = $('meta[name=codeversion]')[0].content;
+        var isCurrentVersionStored = localStorage.getItem("version") === currentVersion;
 
-        $.getJSON("/static/jsonfiles/institutions.json", function(result) {
-            var version = result.version;
-            var institutions = result.institutions;
-
-            if (version + "" !== localStorage.getItem("uniJSONVersion") || localStorage.getItem("uniJSON") === null) {
-                institutions.sort(function(a, b){
-                    if(a.order_by_name < b.order_by_name) { return -1; }
-                    if(a.order_by_name > b.order_by_name) { return 1; }
-                    return 0;
-                });
-
-                localStorage.setItem("uniJSON", JSON.stringify(institutions));
-                localStorage.setItem("uniJSONVersion", version);
-            }
-        })
-
-        if (localStorage.getItem("subjectJSON") === null) {
+        if (!isCurrentVersionStored || localStorage.getItem("subjectJSON") === null) {
             $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
                 result.sort(function(a, b){
-                    if (a.englishname < b.englishname) { return -1; }
-                    if (a.englishname > b.englishname) { return 1; }
+                    if (a.english_name < b.english_name) { return -1; }
+                    if (a.english_name > b.english_name) { return 1; }
                     return 0;
                 });
 
                 localStorage.setItem("subjectJSON", JSON.stringify(result));
+                localStorage.setItem("version", currentVersion);
             })
         }
 
@@ -758,6 +852,11 @@
 
         var dropdowns = $('[class$=selector]');
         new PageDropdowns(dropdowns);
+        
+        var scrollToTop = $('.scroll-to-top');
+        for (var i = 0; i < scrollToTop.length; i++) {
+            new ScrollToTop(scrollToTop[i]);
+        }
 
         var feedbackForm = $('.feedback-form__wrapper');
         for (var i = 0; i < feedbackForm.length; i++) {
@@ -779,12 +878,25 @@
             new SubjectSelector(selectorsWrapper[0]);
         }
 
+        var newTabLinks = $('a[target=_blank]');
+        for (var i = 0; i < newTabLinks.length; i++) {
+            new NewTabLinks(newTabLinks[i]);
+        }
+          
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > ($(window).height()*3)) {
+              scrollToTop.addClass('show');
+            } else {
+              scrollToTop.removeClass('show');
+            }
+        });  
+            
         // GOOGLE  ANALYTICS
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'UA-147556197-1');
+        gtag('config', 'UA-147556197-1', {'anonymize_ip': true});
     }
 
     $(document).on('page:load', init);

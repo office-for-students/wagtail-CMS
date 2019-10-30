@@ -80,6 +80,8 @@
             width: 50%;
 
             &:first-child {
+                border-right: 1px solid $gradient-dark-green;
+
                 .comparison__course  {
                     margin-left: 0px;
                 }
@@ -143,6 +145,14 @@
 
         .course-detail__lead {
             margin-top: 27px;
+
+            .course-detail__institution-info {
+                .course-detail__institution-name {
+                    @include desktop-body-font--bold-mixin();
+
+                    color: $link-blue;
+                }
+            }
         }
 
         .course-detail__body {
@@ -216,7 +226,7 @@
 
             &-selector {
                 .select-items {
-                    width: calc(100vw - 60px);
+                    max-width: 1020px;
                 }
             }
         }
@@ -252,10 +262,10 @@
                 .course-detail__institution-info {
                     padding: 26px 30px 28px;
 
-                    background-color: $ux-grey-1;
+                    background-color: $divider-grey;
 
                     .course-detail__institution-name {
-                        @include mobile-body-font-mixin();
+                        @include s-heading-mixin();
 
 
                         color: $link-blue;

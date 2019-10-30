@@ -47,7 +47,7 @@ def widget_embed(request):
         return HttpResponseNotFound('File not found')
 
     final_script = script.replace('{% styles %}', compressed_css)
-    final_script = final_script.replace('{{api_domain}}', settings.DATASETAPIHOST)
+    final_script = final_script.replace('{{api_domain}}', settings.WIDGETAPIHOST)
     final_script = final_script.replace('{{api_key}}', settings.WIDGETAPIKEY)
     final_script = final_script.replace('{{domain_name}}', request.site.root_url)
 

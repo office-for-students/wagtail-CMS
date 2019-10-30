@@ -92,11 +92,18 @@
         setInitialView: function() {
             this.courseNameSpan.text(this.course.courseName);
             this.courseLengthSpan.text(this.course.length);
-            this.courseModeSpan.text(this.course.mode);
-            this.courseDistanceSpan.text(this.course.distance);
-            this.courseSandwichSpan.text(this.course.sandwich);
-            this.courseAbroadSpan.text(this.course.abroad);
             this.courseLocationSpan.text(this.course.locations);
+            if (this.isEnglish) {
+                this.courseModeSpan.text(this.course.mode.en);
+                this.courseDistanceSpan.text(this.course.distance.en);
+                this.courseSandwichSpan.text(this.course.sandwich.en);
+                this.courseAbroadSpan.text(this.course.abroad.en);
+            } else {
+                this.courseModeSpan.text(this.course.mode.cy);
+                this.courseDistanceSpan.text(this.course.distance.cy);
+                this.courseSandwichSpan.text(this.course.sandwich.cy);
+                this.courseAbroadSpan.text(this.course.abroad.cy);
+            }
 
             if (this.isEnglish) {
                 this.courseNameSpan.attr('href', '/course-details/' + this.course.uniId + '/' + this.course.courseId + '/' + this.course.mode + '/');

@@ -7,6 +7,7 @@ from django import template
 
 from CMS.enums import enums
 from CMS.translations import DICT
+from core.models import Version
 from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, AFTER_COURSE_KEY, \
     ACCREDITATION_KEY
 
@@ -19,6 +20,11 @@ SHOW_STATS_LOOKUP = {
     AFTER_ONE_YEAR_KEY: 'show_after_one_year_stats',
     AFTER_COURSE_KEY: 'show_after_course_stats'
 }
+
+
+@register.simple_tag
+def code_version():
+    return Version.number
 
 
 @register.simple_tag
@@ -50,8 +56,7 @@ def create_list(*args):
 
 @register.simple_tag
 def insert_values_to_rich_text(*_, **kwargs):
-    list(kwargs.get('substitutions'))
-    return kwargs.get('content').source % (kwargs.get('substitutions'))
+    return kwargs.get('content').source.format(*kwargs.get('substitutions'))
 
 
 @register.simple_tag

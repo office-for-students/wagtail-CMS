@@ -28,29 +28,44 @@
 
         <div class="one-year__block">
             <div class="one-year__qualification-charts">
-                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.continuing}}">
+                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.continuing}}"
+                        data-label="after-one-year-still_on_course"
+                        data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='still_on_course' language=page.get_language %}"
+                        data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='still_on_course' language=page.get_language %}">
                     {% include 'courses/partials/bar_chart.html' %}
-                    <label class="one-year-block__chart-label">{% get_translation key='still_on_course' language=page.get_language %}</label>
+                    <label class="one-year-block__chart-label" aria-hidden="true"  key='still_on_course' language=page.get_language %}</label>
                 </div>
 
-                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.gained}}">
+                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.gained}}"
+                        data-label="after-one-year-completed_course"
+                        data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='completed_course' language=page.get_language %}"
+                        data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='completed_course' language=page.get_language %}">
                     {% include 'courses/partials/bar_chart.html' %}
-                    <label class="one-year-block__chart-label">{% get_translation key='completed_course' language=page.get_language %}</label>
+                    <label class="one-year-block__chart-label" aria-hidden="true"  key='completed_course' language=page.get_language %}</label>
                 </div>
 
-                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.dormant}}">
+                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.dormant}}"
+                        data-label="after-one-year-break_from_studies"
+                        data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='break_from_studies' language=page.get_language %}"
+                        data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='break_from_studies' language=page.get_language %}">
                     {% include 'courses/partials/bar_chart.html' %}
-                    <label class="one-year-block__chart-label">{% get_translation key='break_from_studies' language=page.get_language %}</label>
+                    <label class="one-year-block__chart-label" aria-hidden="true"  key='break_from_studies' language=page.get_language %}</label>
                 </div>
 
-                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.lower}}">
+                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.lower}}"
+                        data-label="after-one-year-left_lower_qualification"
+                        data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='left_lower_qualification' language=page.get_language %}"
+                        data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='left_lower_qualification' language=page.get_language %}">
                     {% include 'courses/partials/bar_chart.html' %}
-                    <label class="one-year-block__chart-label">{% get_translation key='left_lower_qualification' language=page.get_language %}</label>
+                    <label class="one-year-block__chart-label" aria-hidden="true"  key='left_lower_qualification' language=page.get_language %}</label>
                 </div>
 
-                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.left}}">
+                <div class="one-year__chart discover-uni-chart bar" data-value="{{continuation_stats.left}}"
+                        data-label="after-one-year-left_no_qualification"
+                        data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='left_no_qualification' language=page.get_language %}"
+                        data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='left_no_qualification' language=page.get_language %}">
                     {% include 'courses/partials/bar_chart.html' %}
-                    <label class="one-year-block__chart-label">{% get_translation key='left_no_qualification' language=page.get_language %}</label>
+                    <label class="one-year-block__chart-label" aria-hidden="true"  key='left_no_qualification' language=page.get_language %}</label>
                 </div>
 
                 <div class="explanation">

@@ -1,4 +1,14 @@
 $(function () {
+    var DICT = {
+        title: {
+            'en': 'Graph showing percentage of students who thought ',
+            'cy': 'Graff yn dangos canran y myfyrwyr a oedd yn meddwl '
+        },
+        desc: {
+            'en': ' of students said ',
+            'cy': ' Canran y myfyfrwyr a ddywedodd '
+        }
+    }
 
     var DoughnutChart = function(wrapper) {
         this.wrapper = $(wrapper);
@@ -9,6 +19,9 @@ $(function () {
         setup: function() {
             this.target = this.wrapper.find('.doughnut-chart');
             this.value = this.wrapper.data('value');
+            this.field = this.wrapper.data('field');
+            this.question = this.wrapper.data('question');
+            this.language = this.wrapper.data('language');
             this.renderChart();
         },
 
@@ -85,7 +98,26 @@ $(function () {
                 tooltip: {
                     enabled: false,
                 },
-            })
+            });
+
+            var chart = this.target.find('svg');
+            chart.attr('role', 'img');
+
+            var titleNode = document.createElement('title');
+            var titleId = this.question + '-title';
+            titleNode.setAttribute('id', titleId);
+            var title = document.createTextNode(DICT.title[this.language] + this.field);
+            titleNode.appendChild(title);
+
+            var descNode = document.createElement('desc');
+            var descId = this.question + '-desc';
+            descNode.setAttribute('id', descId);
+            var desc = document.createTextNode(this.value + '%' + DICT.desc[this.language] + this.field);
+            descNode.appendChild(desc);
+
+            chart.prepend(descNode);
+            chart.prepend(titleNode);
+            chart.attr('aria-labelledby', titleId + ' ' + descId);
         }
     }
 

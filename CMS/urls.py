@@ -4,7 +4,6 @@ from django.contrib import admin
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
-from wagtail.documents import urls as wagtaildocs_urls
 
 from . import welsh_urls
 
@@ -17,11 +16,6 @@ from coursefinder import views as coursefinder_views
 from courses import views as course_views
 
 urlpatterns = [
-    url(r'^django-admin/', admin.site.urls),
-
-    url(r'^admin/', include(wagtailadmin_urls)),
-    url(r'^documents/', include(wagtaildocs_urls)),
-
     url(r'^search/$', search_views.search, name='search'),
     url(r'^results/$', coursefinder_views.results, name='results'),
     url(r'^feedback',  core_views.submit_feedback, name='submit_feedback'),
@@ -37,15 +31,12 @@ urlpatterns = [
 
     url(r'(?P<language>[\w\-]+?)/', include(welsh_urls)),
 
-    # For anything not caught by a more specific rule above, hand over to
-    # Wagtail's page serving mechanism. This should be the last pattern in
-    # the list:
     url(r'', include(wagtail_urls)),
-
-    # Alternatively, if you want Wagtail pages to be served from a subpath
-    # of your site, rather than the site root:
-    #    url(r'^pages/', include(wagtail_urls)),
 ]
+
+if not settings.READ_ONLY:
+    urlpatterns.insert(0, url(r'^admin/', include(wagtailadmin_urls)))
+    urlpatterns.insert(0, url(r'^django-admin/', admin.site.urls))
 
 
 if settings.DEBUG:

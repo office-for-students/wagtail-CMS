@@ -4,7 +4,7 @@
 
 <nav role="navigation" aria-label="Pagination" class="pagination">
     <ul class="pagination__item-list">
-        <div class="pagination__previous">
+        <li class="pagination__previous">
             {% if search.show_previous_icon != 0 %}
                 <a class="pagination__link" aria-label="{% get_translation key='previous_page' language=page.get_language %}" href="#"
                         data-page="{{search.previous_page}}" data-count="{{search.count }}">
@@ -13,16 +13,15 @@
                 </a>
             {% else %}
                 <p class="pagination__link--disabled" aria-label="{% get_translation key='previous_page' language=page.get_language %}">
-                    <img src="{% static 'images/chevrons/black_left_chevron.svg' %}" alt="{% get_translation key='previous_page' language=page.get_language %}" class="black">
-                    <img src="{% static 'images/chevrons/green_left_chevron.svg' %}" alt="{% get_translation key='previous_page' language=page.get_language %}" class="green">
+                    <img src="{% static 'images/chevrons/grey_left_chevron.svg' %}" alt="{% get_translation key='previous_page' language=page.get_language %}" class="black">
                 </p>
             {% endif %}
-        </div>
+        </li>
 
         {% if search.show_ellipsis_on_left %}
-            <p class="pagination__ellipsis" aria-label="{% get_translation key='more_pages_before' language=page.get_language %}">
+            <li class="pagination__ellipsis" aria-label="{% get_translation key='more_pages_before' language=page.get_language %}">
                 …
-            </p>
+            </li>
         {% endif %}
 
 
@@ -49,12 +48,12 @@
         {% endfor %}
 
         {% if search.show_ellipsis_on_right %}
-            <p class="pagination__ellipsis" aria-label="{% get_translation key='more_pages_after' language=page.get_language %}">
+            <li class="pagination__ellipsis" aria-label="{% get_translation key='more_pages_after' language=page.get_language %}">
                 …
-            </p>
+            </li>
         {% endif %}
 
-        <div class="pagination__next">
+        <li class="pagination__next">
             {% if search.show_next_icon %}
                 <a class="pagination__link" aria-label="{% get_translation key='next_page' language=page.get_language %}" href="#"
                         data-page="{{search.next_page}}" data-count="{{search.count }}">
@@ -63,10 +62,9 @@
                 </a>
             {% else %}
                 <p class="pagination__link--disabled" aria-label="{% get_translation key='next_page' language=page.get_language %}">
-                    <img src="{% static 'images/chevrons/black_right_chevron.svg' %}" alt="{% get_translation key='next_page' language=page.get_language %}" class="black">
-                    <img src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="{% get_translation key='next_page' language=page.get_language %}" class="green">
+                    <img src="{% static 'images/chevrons/grey_right_chevron.svg' %}" alt="{% get_translation key='next_page' language=page.get_language %}" class="black">
                 </p>
             {% endif %}
-        </div>
+        </li>
     </ul>
 </nav>

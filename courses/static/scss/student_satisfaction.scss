@@ -78,19 +78,19 @@
 
             .student-satisfaction__chart-wrapper {
                 width: 50%;
-
+  
                 &:nth-child(odd) {
-                    .student-satisfaction__chart {
+                    .student-satisfaction__chart  {
                         padding-right: 13px;
                     }
                 }
 
                 &:nth-child(even) {
-                    .student-satisfaction__chart {
+                    .student-satisfaction__chart  {
                         padding-left: 13px;
                     }
                 }
-
+          
                 .student-satisfaction__chart {
                     margin-bottom: 38px;
 
@@ -175,19 +175,19 @@
 
                 .student-satisfaction__chart-wrapper {
                     width: 25%;
-
-                    &:nth-child(1), &:nth-child(4n + 1) {
-                        .student-satisfaction__chart {
-                            padding-left: 0px;
+                    
+                    &:nth-child(odd) {
+                        .student-satisfaction__chart  {
+                            padding-right: 10px;
                         }
                     }
 
-                    &:nth-child(4n) {
-                        .student-satisfaction__chart {
-                            padding-right: 0px;
+                    &:nth-child(even) {
+                        .student-satisfaction__chart  {
+                            padding-left: 10px;
                         }
                     }
-
+                    
                     .student-satisfaction__chart {
                         margin-bottom: 38px;
                         padding-right: 10px;

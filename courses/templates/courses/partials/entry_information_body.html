@@ -14,44 +14,68 @@
 
         {% if entry_stats.display_stats %}
             <div class="entry-information__qualification-charts">
-                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.degree}}">
+                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.degree}}"
+                        data-label="entry-degree"
+                        data-title="{% get_translation key='entry_graph_title' language=page.get_language %} {% get_translation key='degree' language=page.get_language %}"
+                        data-desc="{% get_translation key='entry_graph_desc' language=page.get_language %} {% get_translation key='degree' language=page.get_language %}">
                     {% include 'courses/partials/bar_chart.html' %}
-                    <label class="entry-information__chart-label">{% get_translation key='degree' language=page.get_language %}</label>
+                    <label class="entry-information__chart-label" aria-hidden="true"  key='degree' language=page.get_language %}</label>
                 </div>
 
-                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.another_higher_education_qualifications}}">
+                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.another_higher_education_qualifications}}"
+                        data-label="entry-other_higher_qualifications"
+                        data-title="{% get_translation key='entry_graph_title' language=page.get_language %} {% get_translation key='other_higher_qualifications' language=page.get_language %}"
+                        data-desc="{% get_translation key='entry_graph_desc' language=page.get_language %} {% get_translation key='other_higher_qualifications' language=page.get_language %}">
                     {% include 'courses/partials/bar_chart.html' %}
-                    <label class="entry-information__chart-label">{% get_translation key='other_higher_qualifications' language=page.get_language %}</label>
+                    <label class="entry-information__chart-label" aria-hidden="true"  key='other_higher_qualifications' language=page.get_language %}</label>
                 </div>
 
-                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.a_level}}">
+                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.a_level}}"
+                        data-label="entry-a_level"
+                        data-title="{% get_translation key='entry_graph_title' language=page.get_language %} {% get_translation key='a_level' language=page.get_language %}"
+                        data-desc="{% get_translation key='entry_graph_desc' language=page.get_language %} {% get_translation key='a_level' language=page.get_language %}">
                     {% include 'courses/partials/bar_chart.html' %}
-                    <label class="entry-information__chart-label">{% get_translation key='a_level_similar' language=page.get_language %}</label>
+                    <label class="entry-information__chart-label" aria-hidden="true"  key='a_level_similar' language=page.get_language %}</label>
                 </div>
 
-                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.baccalaureate}}">
+                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.baccalaureate}}"
+                        data-label="entry-baccalaureate"
+                        data-title="{% get_translation key='entry_graph_title' language=page.get_language %} {% get_translation key='baccalaureate' language=page.get_language %}"
+                        data-desc="{% get_translation key='entry_graph_desc' language=page.get_language %} {% get_translation key='baccalaureate' language=page.get_language %}">
                     {% include 'courses/partials/bar_chart.html' %}
-                    <label class="entry-information__chart-label">{% get_translation key='baccalaureate' language=page.get_language %}</label>
+                    <label class="entry-information__chart-label" aria-hidden="true"  key='baccalaureate' language=page.get_language %}</label>
                 </div>
 
-                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.access}}">
+                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.access}}"
+                        data-label="entry-access_course"
+                        data-title="{% get_translation key='entry_graph_title' language=page.get_language %} {% get_translation key='access_course' language=page.get_language %}"
+                        data-desc="{% get_translation key='entry_graph_desc' language=page.get_language %} {% get_translation key='access_course' language=page.get_language %}">
                     {% include 'courses/partials/bar_chart.html' %}
-                    <label class="entry-information__chart-label">{% get_translation key='access_course' language=page.get_language %}</label>
+                    <label class="entry-information__chart-label" aria-hidden="true"  key='access_course' language=page.get_language %}</label>
                 </div>
 
-                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.foundation}}">
+                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.foundation}}"
+                        data-label="entry-foundation_course"
+                        data-title="{% get_translation key='entry_graph_title' language=page.get_language %} {% get_translation key='foundation_course' language=page.get_language %}"
+                        data-desc="{% get_translation key='entry_graph_desc' language=page.get_language %} {% get_translation key='foundation_course' language=page.get_language %}">
                     {% include 'courses/partials/bar_chart.html' %}
-                    <label class="entry-information__chart-label">{% get_translation key='foundation_course' language=page.get_language %}</label>
+                    <label class="entry-information__chart-label" aria-hidden="true"  key='foundation_course' language=page.get_language %}</label>
                 </div>
 
-                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.none}}">
+                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.none}}"
+                        data-label="entry-no_qualifications"
+                        data-title="{% get_translation key='entry_graph_title' language=page.get_language %} {% get_translation key='no_qualifications' language=page.get_language %}"
+                        data-desc="{% get_translation key='entry_graph_desc' language=page.get_language %} {% get_translation key='no_qualifications' language=page.get_language %}">
                     {% include 'courses/partials/bar_chart.html' %}
-                    <label class="entry-information__chart-label">{% get_translation key='no_qualifications' language=page.get_language %}</label>
+                    <label class="entry-information__chart-label" aria-hidden="true"  key='no_qualifications' language=page.get_language %}</label>
                 </div>
 
-                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.other_qualifications}}">
+                <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.other_qualifications}}"
+                        data-label="entry-other"
+                        data-title="{% get_translation key='entry_graph_title' language=page.get_language %} {% get_translation key='other' language=page.get_language %}"
+                        data-desc="{% get_translation key='entry_graph_desc' language=page.get_language %} {% get_translation key='other' language=page.get_language %}">
                     {% include 'courses/partials/bar_chart.html' %}
-                    <label class="entry-information__chart-label">{% get_translation key='other' language=page.get_language %}</label>
+                    <label class="entry-information__chart-label" aria-hidden="true"  key='other' language=page.get_language %}</label>
                 </div>
 
                 <div class="explanation">
@@ -97,10 +121,13 @@
         {% if tariff_stats.show_stats %}
             <div class="entry-information__tariff-charts">
                 {% for tariff in tariff_stats.tariffs %}
-                    <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}">
+                    <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}"
+                        data-label="entry-tariff-{{forloop.counter}}"
+                        data-title="{% get_translation key='tariff_graph_title' language=page.get_language %} {{tariff.label}}"
+                        data-desc="{% get_translation key='tariff_graph_desc' language=page.get_language %} {{tariff.label}}">
                         {% include 'courses/partials/bar_chart.html' %}
 
-                        <label class="entry-information__chart-label"><span>{{tariff.label}}</span></label>
+                        <label class="entry-information__chart-label" aria-hidden="true"><span>{{tariff.label}}</span></label>
                     </div>
                 {% endfor %}
 

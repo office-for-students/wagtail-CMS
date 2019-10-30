@@ -6,8 +6,8 @@ DEBUG = False
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = [
-    'testdiscoveruni.com',
-    'www.testdiscoveruni.com',
+    'devdiscoveruni.com',
+    'www.devdiscoveruni.com',
     'pre-prod-discover-uni.azurewebsites.net',
     'pre-prod-discover-uni-write.azurewebsites.net',
     'discoveruni.org.uk',
@@ -15,7 +15,8 @@ ALLOWED_HOSTS = [
     'production-discover-uni.azurewebsites.net',
     'discoveruni.gov.uk',
     'www.discoveruni.gov.uk',
-    'prod-discover-uni.azurewebsites.net'
+    'prod-discover-uni.azurewebsites.net',
+    'prod-discover-uni-write.azurewebsites.net',
 ]
 
 LOGGING = {
@@ -41,6 +42,29 @@ LOGGING = {
         },
     },
 }
+
+WAGTAILFRONTENDCACHE = {
+    'cloudflare': {
+        'BACKEND': 'wagtail.contrib.frontend_cache.backends.CloudflareBackend',
+        'EMAIL': os.environ.get('CLOUDFLARE_EMAIL'),
+        'TOKEN': os.environ.get('CLOUDFLARE_TOKEN'),
+        'ZONEID': os.environ.get('CLOUDFLARE_ZONEID'),
+    },
+}
+
+# Security settings
+
+SECURE_HSTS_SECONDS = os.environ.get('SECURE_HSTS_SECONDS', 0)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+SECURE_BROWSER_XSS_FILTER = True
+
+SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_SECURE = True
 
 try:
     from .local import *

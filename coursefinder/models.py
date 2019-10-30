@@ -11,9 +11,10 @@ from core.models import DiscoverUniBasePage
 from core.utils import get_page_for_language
 from coursefinder import request_handler
 from coursefinder.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
-    choose_subject_sibling_finder, narrow_search_sibling_finder, postcode_sibling_finder, summary_sibling_finder, \
+    choose_subject_sibling_finder, narrow_search_sibling_finder, summary_sibling_finder, \
     results_sibling_finder
 from errors.models import ApiError
+from institutions.models import InstitutionList
 
 
 class CourseFinderChooseCountry(DiscoverUniBasePage):
@@ -102,6 +103,11 @@ class CourseFinderUni(DiscoverUniBasePage):
     @property
     def back_page(self):
         return narrow_search_sibling_finder(self)
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['institutions_list'] = InstitutionList.options
+        return context
 
 
 class CourseFinderPostcode(DiscoverUniBasePage):
