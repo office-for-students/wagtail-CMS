@@ -23,6 +23,11 @@
 
         loadSubjectData: function() {
             var that = this;
+
+            var currentVersion = $('meta[name=codeversion]')[0].content;
+            var isCurrentVersionStored = localStorage.getItem("version") === currentVersion;
+
+            if (!isCurrentVersionStored || localStorage.getItem("subjectJSON") === null) {
             if (localStorage.getItem("subjectJSON") === null) {
                 $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
                     result.sort(function(a, b){

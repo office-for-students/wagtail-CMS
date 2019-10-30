@@ -623,7 +623,10 @@
 
         loadSubjectData: function() {
             var that = this;
-            if (localStorage.getItem("subjectJSON") === null) {
+            var currentVersion = $('meta[name=codeversion]')[0].content;
+            var isCurrentVersionStored = localStorage.getItem("version") === currentVersion;
+
+            if (!isCurrentVersionStored || localStorage.getItem("subjectJSON") === null) {
                 $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
                     result.sort(function(a, b){
                         if (a.english_name < b.english_name) { return -1; }
@@ -816,8 +819,10 @@
         }
 
         // Course finder
+        var currentVersion = $('meta[name=codeversion]')[0].content;
+        var isCurrentVersionStored = localStorage.getItem("version") === currentVersion;
 
-        if (localStorage.getItem("subjectJSON") === null) {
+        if (!isCurrentVersionStored || localStorage.getItem("subjectJSON") === null) {
             $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
                 result.sort(function(a, b){
                     if (a.english_name < b.english_name) { return -1; }
@@ -826,6 +831,7 @@
                 });
 
                 localStorage.setItem("subjectJSON", JSON.stringify(result));
+                localStorage.setItem("version", currentVersion);
             })
         }
 
