@@ -10,7 +10,8 @@ exec gunicorn CMS.wsgi:application \
   --log-file=- \
   --access-logfile=- \
   --error-logfile=- \
-  --timeout 60
+  --timeout 60 \
+  --max-requests 1000
 
 
 # EXECUTE DOCKER COMMAND NOW
