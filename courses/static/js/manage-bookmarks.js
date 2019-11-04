@@ -108,7 +108,7 @@
             if (this.isEnglish) {
                 this.courseNameSpan.attr('href', '/course-details/' + this.course.uniId + '/' + this.course.courseId + '/' + this.course.mode.en + '/');
             } else {
-                this.courseNameSpan.attr('href', '/cy/course-details/' + this.course.uniId + '/' + this.course.courseId + '/' + this.course.mode.cy + '/');
+                this.courseNameSpan.attr('href', '/cy/course-details/' + this.course.uniId + '/' + this.course.courseId + '/' + this.course.mode.en + '/');
             }
             if (this.course.length === '' || this.course === 'None') {
                 this.lengthKnown.hide();
