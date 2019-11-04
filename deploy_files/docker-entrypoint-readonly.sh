@@ -1,12 +1,6 @@
 #!/bin/bash
 set -e
 
-until python3 manage.py migrate
-do
-  echo "Waiting for database to be migrated"
-  sleep 5
-done
-
 #Run Gunicorn
 exec gunicorn CMS.wsgi:application \
   --name discover-uni-cms \
