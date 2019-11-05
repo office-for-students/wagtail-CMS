@@ -17,7 +17,7 @@ def widget_iframe(request, uk_prn, kis_course_id, optional_1=None, optional_2=No
                 orientation = param
             if param.lower() == 'en-gb' or param.lower() == 'cy-gb':
                 language = param
-            if param.lower() == 'FullTime' or param.lower() == 'PartTime':
+            if param.lower() == 'fulltime' or param.lower() == 'parttime':
                 kis_mode = param
     context = {
         'uk_prn': uk_prn,
