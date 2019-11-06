@@ -11,8 +11,6 @@ done
 exec gunicorn CMS.wsgi:application \
   --name discover-uni-cms \
   --bind 0.0.0.0:80 \
-  --worker-class=gevent \
-  --worker-connections=1000 \
   --workers 3 \
   --log-level=info \
   --log-file=- \

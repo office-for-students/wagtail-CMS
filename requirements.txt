@@ -14,4 +14,3 @@ azure==1.0.0
 django-cors-headers
 django-axes==4.3.1
 pyClamd
-gevent
