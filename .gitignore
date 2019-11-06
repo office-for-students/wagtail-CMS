@@ -6,6 +6,7 @@ __pycache__/
 # Django stuff:
 *.log
 local_settings.py
+local.py
 db.sqlite3
 
 # Env stuff
