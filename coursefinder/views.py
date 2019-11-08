@@ -13,8 +13,11 @@ from courses.models import CourseComparisonPage, CourseManagePage
 def results(request, language=enums.languages.ENGLISH):
     query_params = request.GET
     search_form = SearchForm(query_params)
-    course_search = CourseSearch(query_params.get('subject_query', ""), query_params.get('institution_query', ""),
-                                 query_params.get('page', 1), query_params.get('count', 20))
+    course_search = CourseSearch(query_params.get('subject_query', ""),
+                                 query_params.get('institution_query', ""),
+                                 query_params.get('page', 1),
+                                 query_params.get('count', 20),
+                                 language)
     error = course_search.execute()
 
     if error:
@@ -74,7 +77,8 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
                                               filters,
                                               query_params.get('course_query', None),
                                               query_params.get('page', 1),
-                                              query_params.get('count', 20))
+                                              query_params.get('count', 20),
+                                              language)
     error = course_finder_search.execute()
 
     if error:

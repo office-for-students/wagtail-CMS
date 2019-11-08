@@ -7,6 +7,7 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
+from CMS.enums import enums
 from core.models import DiscoverUniBasePage
 from core.utils import get_page_for_language
 from coursefinder import request_handler
@@ -225,16 +226,17 @@ class BaseSearch:
 
 class CourseSearch(BaseSearch):
 
-    def __init__(self, subject, institution, page, count):
+    def __init__(self, subject, institution, page, count, language=enums.languages.ENGLISH):
         super().__init__(page, count)
         self.subject = subject
         self.institution = institution
         self.total_courses = None
         self.total_institutions = None
         self.results = None
+        self.language = language
 
     def execute(self):
-        response = request_handler.query_course_and_institution(self.subject, self.institution, self.count, self.offset)
+        response = request_handler.query_course_and_institution(self.subject, self.institution, self.count, self.offset, self.language)
         error = None
 
         if response.ok:
@@ -251,7 +253,7 @@ class CourseSearch(BaseSearch):
 
 class CourseFinderSearch(BaseSearch):
 
-    def __init__(self, subject, institution, countries, postcode, filters, course, page, count):
+    def __init__(self, subject, institution, countries, postcode, filters, course, page, count, language=enums.languages.ENGLISH):
         super().__init__(page, count)
         self.subject = subject
         self.institution = institution
@@ -259,10 +261,11 @@ class CourseFinderSearch(BaseSearch):
         self.postcode = postcode
         self.filters = filters
         self.course = course
+        self.language = language
 
     def execute(self):
         response = request_handler.course_finder_query(self.subject, self.institution, self.countries, self.postcode,
-                                                       self.filters, self.course, self.count, self.offset)
+                                                       self.filters, self.course, self.count, self.offset, self.language)
         error = None
 
         if response.ok:
