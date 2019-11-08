@@ -261,7 +261,7 @@ class CourseFinderSearch(BaseSearch):
         self.postcode = postcode
         self.filters = filters
         self.course = course
-        self.langauge = language
+        self.language = language
 
     def execute(self):
         response = request_handler.course_finder_query(self.subject, self.institution, self.countries, self.postcode,
