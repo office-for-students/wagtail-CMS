@@ -204,7 +204,9 @@ class Course:
         'Full-time': 1,
         'Part-time': 2,
         'FullTime': 1,
-        'PartTime': 2
+        'PartTime': 2,
+        'Full time': 1,
+        'Part time': 2
     }
 
     def __init__(self, data_obj, language):
