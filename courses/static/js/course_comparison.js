@@ -77,7 +77,8 @@
             for (var i = 0; i < this.courses.length; i++) {
                 var course = this.courses[i];
 
-                var courseValue = course.uniId + ',' + course.courseId + ',' + course.mode.en;
+                var courseMode = course.mode.en ? course.mode.en : course.mode;
+                var courseValue = course.uniId + ',' + course.courseId + ',' + courseMode;
                 var courseLabel = course.courseName + ' - ' + course.uniName;
 
                 var option = document.createElement("option");
