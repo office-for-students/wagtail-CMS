@@ -193,7 +193,7 @@
                         </div>
                     {% endif %}
 
-                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_continuation_stats.display_unavailable_reason %}
+                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_continuation_stats.display_unavailable_info %}
                 </div>
             </div>
 
@@ -207,7 +207,7 @@
                         </div>
                     {% endif %}
 
-                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_continuation_stats.display_unavailable_reason %}
+                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_continuation_stats.display_unavailable_info %}
                 </div>
             </div>
         </div>

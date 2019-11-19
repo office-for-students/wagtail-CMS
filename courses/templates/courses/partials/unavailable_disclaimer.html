@@ -1,5 +1,9 @@
-{% if reason %}
+{% if unavailable.reason %}
     <div class="not-enough-data-disclaimer">
-        {{ reason|safe }}
+        {{ unavailable.reason|safe }}
+
+        {% if find_out_more %}
+            <a href="{{ unavailable.url }}">{{ unavailable.find_out_more|safe }}</a>
+        {% endif %}
     </div>
 {% endif %}
