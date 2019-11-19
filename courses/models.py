@@ -204,7 +204,9 @@ class Course:
         'Full-time': 1,
         'Part-time': 2,
         'FullTime': 1,
-        'PartTime': 2
+        'PartTime': 2,
+        'Full time': 1,
+        'Part time': 2
     }
 
     def __init__(self, data_obj, language):
@@ -303,7 +305,7 @@ class Course:
             link_objs.get('costs_support').append(CourseLink(DICT.get(enums.uni_link_keys.COSTS).get(language),
                                                   links.get(enums.uni_link_keys.COSTS),
                                                   enums.languages_map.get(language)))
-        if self.locations and enums.uni_link_keys.ACCOMMODATION in self.locations[0].links:
+        if self.locations and self.locations[0].links and enums.uni_link_keys.ACCOMMODATION in self.locations[0].links:
             link_objs.get('costs_support').append(CourseLink(DICT.get(enums.uni_link_keys.ACCOMMODATION).get(language),
                                                   self.locations[0].links.get(enums.uni_link_keys.ACCOMMODATION),
                                                   enums.languages_map.get(language)))
