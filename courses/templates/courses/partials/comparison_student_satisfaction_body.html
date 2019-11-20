@@ -895,7 +895,7 @@
                                     </div>
                                 {% endif %}
 
-                                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_overall_satisfaction.satisfaction_stats.display_unavailable_reason %}
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
 
@@ -957,7 +957,7 @@
                                     </div>
                                 {% endif %}
 
-                                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_overall_satisfaction.satisfaction_stats.display_unavailable_reason %}
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
                     </div>
@@ -1169,13 +1169,13 @@
             <div class="comparison__course-columns">
                 <div class="comparison__course-column">
                     <div class="comparison__course">
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_overall_satisfaction.nhs_satisfaction_stats.display_unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_overall_satisfaction.nhs_satisfaction_stats.display_unavailable_info %}
                     </div>
                 </div>
 
                 <div class="comparison__course-column">
                     <div class="comparison__course">
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_overall_satisfaction.nhs_satisfaction_stats.display_unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_overall_satisfaction.nhs_satisfaction_stats.display_unavailable_info %}
                     </div>
                 </div>
             </div>
