@@ -2,7 +2,7 @@
     <div class="not-enough-data-disclaimer">
         {{ unavailable.reason|safe }}
 
-        {% if find_out_more %}
+        {% if unavailable.find_out_more %}
             <a href="{{ unavailable.url }}">{{ unavailable.find_out_more|safe }}</a>
         {% endif %}
     </div>
