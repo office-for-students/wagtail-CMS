@@ -205,7 +205,7 @@
                         </div>
                     {% endif %}
 
-                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_entry_stats.display_unavailable_reason %}
+                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_entry_stats.display_unavailable_info %}
                 </div>
             </div>
 
@@ -219,7 +219,7 @@
                         </div>
                     {% endif %}
 
-                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_entry_stats.display_unavailable_reason %}
+                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_entry_stats.display_unavailable_info %}
                 </div>
             </div>
         </div>
@@ -268,7 +268,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_tariff_stats.display_unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_tariff_stats.display_unavailable_info %}
                     </div>
                 </div>
             </div>
@@ -301,7 +301,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_tariff_stats.display_unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_tariff_stats.display_unavailable_info %}
                     </div>
                 </div>
             </div>

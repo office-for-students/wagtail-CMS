@@ -96,5 +96,5 @@
         </div>
     {% endif %}
 
-    {% include 'courses/partials/unavailable_disclaimer.html' with reason=continuation_stats.display_unavailable_reason %}
+    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=continuation_stats.display_unavailable_info %}
 {% endfor %}
