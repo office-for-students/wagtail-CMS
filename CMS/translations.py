@@ -241,7 +241,11 @@ DICT = {
     },
     'course_added': {
         'en': 'course added to ',
-        'cy': '… cwrs wedi’i ychwanegu at y '
+        'cy': 'cwrs wedi’i ychwanegu at y '
+    },
+    'courses_added': {
+        'en': 'courses added to ',
+        'cy': 'cyrsiau wedi’u hychwanegu at y '
     },
     'course_details': {
         'en': 'Course details',
