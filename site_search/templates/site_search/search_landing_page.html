@@ -51,6 +51,12 @@
                     <img class="search-landing-page__nav-card-icon" src="{% static 'images/clipboard2_icon.svg' %}" alt="clipboard">
                 </a>
             </div>
+
+            {% if disclaimer %}
+                <div class="search-landing-page__disclaimer">
+                    {{ disclaimer }}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock content %}

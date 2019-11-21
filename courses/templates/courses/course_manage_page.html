@@ -20,13 +20,11 @@
                 {{page.lead}}
             </p>
         </div>
+        <div class="bookmark__nav-box">
+            <!--{{page.save_text | richtext}}-->
 
-        {# TODO Re-enable once compare works #}
-        <!--<div class="bookmark__nav-box">-->
-            <!--&lt;!&ndash;{{page.save_text | richtext}}&ndash;&gt;-->
-
-            <!--{{page.compare_text | richtext}}-->
-        <!--</div>-->
+            {{page.compare_text | richtext}}
+        </div>
 
         <div class="bookmark__none-selected">
             {{page.none_selected_text | richtext}}

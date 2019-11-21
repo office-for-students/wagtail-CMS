@@ -105,6 +105,18 @@
             }
         }
     }
+
+    &__disclaimer {
+        @include desktop-body-font-mixin();
+
+        padding: 20px;
+        margin-top: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+
+        background-color: $ux-interrupt;
+        color: $ux-grey-2;
+    }
 }
 
 @media only screen and (min-width: 770px) {
@@ -168,5 +180,17 @@
                 margin-top: 30px;
             }
         }
+    }
+
+    &__disclaimer {
+        @include small-font-mixin();
+
+        padding: 15px;
+        margin-top: 15px;
+        margin-left: 35px;
+        margin-right: 35px;
+        
+        background-color: $ux-interrupt;
+        color: $ux-grey-2;
     }
 }
