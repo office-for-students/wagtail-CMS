@@ -14,4 +14,6 @@ urlpatterns = [
         ])),
     url(r'^embed-script$(?i)', widget_embed, name='widget_embed'),
     url(r'^embed-script/$(?i)', widget_embed, name='widget_embed'),
+    url(r'^embed-script.js$(?i)', widget_embed, name='widget_embed'),
+    url(r'^embed-script.js/$(?i)', widget_embed, name='widget_embed'),
 ]

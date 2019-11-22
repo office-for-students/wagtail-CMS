@@ -6,7 +6,9 @@
         <button class="compare-popup__close"><img src="{% static 'images/close-grey.svg' %}" alt="Close  pop up"></button>
 
         <div class="compare-popup__add">
-            <p class="compare-popup__count"><span class="count"></span> {% get_translation key='course_added' language=page.get_language %}
+            <p class="compare-popup__count"><span class="count"></span> 
+                <span class="course_added">{% get_translation key='course_added' language=page.get_language %}</span>
+                <span class="courses_added">{% get_translation key='courses_added' language=page.get_language %}</span>
                 <a href="{{manage_link}}">{% get_translation key='bookmarked_courses' language=page.get_language %}</a></p>
 
             <p class="compare-popup__not-enough">{% get_translation key='not_enough' language=page.get_language %}</p>

@@ -204,7 +204,9 @@ class Course:
         'Full-time': 1,
         'Part-time': 2,
         'FullTime': 1,
-        'PartTime': 2
+        'PartTime': 2,
+        'Full time': 1,
+        'Part time': 2
     }
 
     def __init__(self, data_obj, language):
@@ -303,7 +305,7 @@ class Course:
             link_objs.get('costs_support').append(CourseLink(DICT.get(enums.uni_link_keys.COSTS).get(language),
                                                   links.get(enums.uni_link_keys.COSTS),
                                                   enums.languages_map.get(language)))
-        if self.locations and enums.uni_link_keys.ACCOMMODATION in self.locations[0].links:
+        if self.locations and self.locations[0].links and enums.uni_link_keys.ACCOMMODATION in self.locations[0].links:
             link_objs.get('costs_support').append(CourseLink(DICT.get(enums.uni_link_keys.ACCOMMODATION).get(language),
                                                   self.locations[0].links.get(enums.uni_link_keys.ACCOMMODATION),
                                                   enums.languages_map.get(language)))
@@ -585,6 +587,10 @@ class EntryStatistics:
             self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
             self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
             self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            self.unavailable_find_out_more_english = fallback_to(unavailable_data.get('find_out_more_english'), '')
+            self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
+            self.unavailable_url_english = fallback_to(unavailable_data.get('url_english'), '')
+            self.unavailable_url_welsh = fallback_to(unavailable_data.get('url_welsh'), '')
 
     def display_subject_name(self):
         if self.display_language == enums.languages.ENGLISH:
@@ -592,14 +598,31 @@ class EntryStatistics:
         return self.subject_welsh if self.subject_welsh else self.subject_english
 
     # TODO refactor all these same functions to a shared one
-    def display_unavailable_reason(self):
+    def display_unavailable_info(self):
+        unavailable = {}
+
         if self.unavailable_reason:
-            return self.unavailable_reason
+            unavailable["reason"] = self.unavailable_reason
         else:
             if self.display_language == enums.languages.ENGLISH:
-                return self.unavailable_reason_english if self.unavailable_reason_english \
+                unavailable["reason"] = self.unavailable_reason_english if self.unavailable_reason_english \
                     else self.unavailable_reason_welsh
-            return self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+            else:
+                unavailable["reason"] = self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_english if self.unavailable_find_out_more_english \
+                else self.unavailable_find_out_more_welsh
+        else:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
+                else self.unavailable_url_welsh
+        else:
+            unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        return unavailable
 
 
 class ContinuationStatistics:
@@ -638,6 +661,10 @@ class ContinuationStatistics:
             self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
             self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
             self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            self.unavailable_find_out_more_english = fallback_to(unavailable_data.get('find_out_more_english'), '')
+            self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
+            self.unavailable_url_english = fallback_to(unavailable_data.get('url_english'), '')
+            self.unavailable_url_welsh = fallback_to(unavailable_data.get('url_welsh'), '')
 
     @property
     def continuing_or_complete(self):
@@ -648,14 +675,31 @@ class ContinuationStatistics:
             return self.subject_english if self.subject_english else self.subject_welsh
         return self.subject_welsh if self.subject_welsh else self.subject_english
 
-    def display_unavailable_reason(self):
+    def display_unavailable_info(self):
+        unavailable = {}
+
         if self.unavailable_reason:
-            return self.unavailable_reason
+            unavailable["reason"] = self.unavailable_reason
         else:
             if self.display_language == enums.languages.ENGLISH:
-                return self.unavailable_reason_english if self.unavailable_reason_english \
+                unavailable["reason"] = self.unavailable_reason_english if self.unavailable_reason_english \
                     else self.unavailable_reason_welsh
-            return self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+            else:
+                unavailable["reason"] = self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_english if self.unavailable_find_out_more_english \
+                else self.unavailable_find_out_more_welsh
+        else:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
+                else self.unavailable_url_welsh
+        else:
+            unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        return unavailable
 
 
 class EmploymentStatistics:
@@ -700,6 +744,10 @@ class EmploymentStatistics:
             self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
             self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
             self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            self.unavailable_find_out_more_english = fallback_to(unavailable_data.get('find_out_more_english'), '')
+            self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
+            self.unavailable_url_english = fallback_to(unavailable_data.get('url_english'), '')
+            self.unavailable_url_welsh = fallback_to(unavailable_data.get('url_welsh'), '')
 
     @property
     def work_and_or_study(self):
@@ -710,14 +758,31 @@ class EmploymentStatistics:
             return self.subject_english if self.subject_english else self.subject_welsh
         return self.subject_welsh if self.subject_welsh else self.subject_english
 
-    def display_unavailable_reason(self):
+    def display_unavailable_info(self):
+        unavailable = {}
+
         if self.unavailable_reason:
-            return self.unavailable_reason
+            unavailable["reason"] = self.unavailable_reason
         else:
             if self.display_language == enums.languages.ENGLISH:
-                return self.unavailable_reason_english if self.unavailable_reason_english \
+                unavailable["reason"] = self.unavailable_reason_english if self.unavailable_reason_english \
                     else self.unavailable_reason_welsh
-            return self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+            else:
+                unavailable["reason"] = self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_english if self.unavailable_find_out_more_english \
+                else self.unavailable_find_out_more_welsh
+        else:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
+                else self.unavailable_url_welsh
+        else:
+            unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        return unavailable
 
 
 class JobTypeStatistics:
@@ -756,20 +821,41 @@ class JobTypeStatistics:
             self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
             self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
             self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            self.unavailable_find_out_more_english = fallback_to(unavailable_data.get('find_out_more_english'), '')
+            self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
+            self.unavailable_url_english = fallback_to(unavailable_data.get('url_english'), '')
+            self.unavailable_url_welsh = fallback_to(unavailable_data.get('url_welsh'), '')
 
     def display_subject_name(self):
         if self.display_language == enums.languages.ENGLISH:
             return self.subject_english if self.subject_english else self.subject_welsh
         return self.subject_welsh if self.subject_welsh else self.subject_english
 
-    def display_unavailable_reason(self):
+    def display_unavailable_info(self):
+        unavailable = {}
+
         if self.unavailable_reason:
-            return self.unavailable_reason
+            unavailable["reason"] = self.unavailable_reason
         else:
             if self.display_language == enums.languages.ENGLISH:
-                return self.unavailable_reason_english if self.unavailable_reason_english \
+                unavailable["reason"] = self.unavailable_reason_english if self.unavailable_reason_english \
                     else self.unavailable_reason_welsh
-            return self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+            else:
+                unavailable["reason"] = self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_english if self.unavailable_find_out_more_english \
+                else self.unavailable_find_out_more_welsh
+        else:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
+                else self.unavailable_url_welsh
+        else:
+            unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        return unavailable
 
 
 class SalaryStatistics:
@@ -822,20 +908,41 @@ class SalaryStatistics:
             self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
             self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
             self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            self.unavailable_find_out_more_english = fallback_to(unavailable_data.get('find_out_more_english'), '')
+            self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
+            self.unavailable_url_english = fallback_to(unavailable_data.get('url_english'), '')
+            self.unavailable_url_welsh = fallback_to(unavailable_data.get('url_welsh'), '')
 
     def display_subject_label(self):
         if self.display_language == enums.languages.ENGLISH:
             return self.subject_english_label if self.subject_english_label else self.subject_welsh_label
         return self.subject_welsh_label if self.subject_welsh_label else self.subject_english_label
 
-    def display_unavailable_reason(self):
+    def display_unavailable_info(self):
+        unavailable = {}
+
         if self.unavailable_reason:
-            return self.unavailable_reason
+            unavailable["reason"] = self.unavailable_reason
         else:
             if self.display_language == enums.languages.ENGLISH:
-                return self.unavailable_reason_english if self.unavailable_reason_english \
+                unavailable["reason"] = self.unavailable_reason_english if self.unavailable_reason_english \
                     else self.unavailable_reason_welsh
-            return self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+            else:
+                unavailable["reason"] = self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_english if self.unavailable_find_out_more_english \
+                else self.unavailable_find_out_more_welsh
+        else:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
+                else self.unavailable_url_welsh
+        else:
+            unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        return unavailable
 
 
 class LEOStatistics:
@@ -872,20 +979,41 @@ class LEOStatistics:
             self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
             self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
             self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            self.unavailable_find_out_more_english = fallback_to(unavailable_data.get('find_out_more_english'), '')
+            self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
+            self.unavailable_url_english = fallback_to(unavailable_data.get('url_english'), '')
+            self.unavailable_url_welsh = fallback_to(unavailable_data.get('url_welsh'), '')
 
     def display_subject_label(self):
         if self.display_language == enums.languages.ENGLISH:
             return self.subject_english_label if self.subject_english_label else self.subject_welsh_label
         return self.subject_welsh_label if self.subject_welsh_label else self.subject_english_label
 
-    def display_unavailable_reason(self):
+    def display_unavailable_info(self):
+        unavailable = {}
+
         if self.unavailable_reason:
-            return self.unavailable_reason
+            unavailable["reason"] = self.unavailable_reason
         else:
             if self.display_language == enums.languages.ENGLISH:
-                return self.unavailable_reason_english if self.unavailable_reason_english \
+                unavailable["reason"] = self.unavailable_reason_english if self.unavailable_reason_english \
                     else self.unavailable_reason_welsh
-            return self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+            else:
+                unavailable["reason"] = self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_english if self.unavailable_find_out_more_english \
+                else self.unavailable_find_out_more_welsh
+        else:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
+                else self.unavailable_url_welsh
+        else:
+            unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        return unavailable
 
 
 class SatisfactionStatistics:
@@ -933,6 +1061,10 @@ class SatisfactionStatistics:
         self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
         self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
         self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+        self.unavailable_find_out_more_english = fallback_to(unavailable_data.get('find_out_more_english'), '')
+        self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
+        self.unavailable_url_english = fallback_to(unavailable_data.get('url_english'), '')
+        self.unavailable_url_welsh = fallback_to(unavailable_data.get('url_welsh'), '')
 
     def show_teaching_stats(self):
         return self.question_1.show_data_point or self.question_2.show_data_point or \
@@ -980,14 +1112,31 @@ class SatisfactionStatistics:
             return self.subject_english if self.subject_english else self.subject_welsh
         return self.subject_welsh if self.subject_welsh else self.subject_english
 
-    def display_unavailable_reason(self):
+    def display_unavailable_info(self):
+        unavailable = {}
+
         if self.unavailable_reason:
-            return self.unavailable_reason
+            unavailable["reason"] = self.unavailable_reason
         else:
             if self.display_language == enums.languages.ENGLISH:
-                return self.unavailable_reason_english if self.unavailable_reason_english \
+                unavailable["reason"] = self.unavailable_reason_english if self.unavailable_reason_english \
                     else self.unavailable_reason_welsh
-            return self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+            else:
+                unavailable["reason"] = self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_english if self.unavailable_find_out_more_english \
+                else self.unavailable_find_out_more_welsh
+        else:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
+                else self.unavailable_url_welsh
+        else:
+            unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        return unavailable
 
 
 class SatisfactionQuestion:
@@ -1025,6 +1174,10 @@ class TariffStatistics:
             self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
             self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
             self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            self.unavailable_find_out_more_english = fallback_to(unavailable_data.get('find_out_more_english'), '')
+            self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
+            self.unavailable_url_english = fallback_to(unavailable_data.get('url_english'), '')
+            self.unavailable_url_welsh = fallback_to(unavailable_data.get('url_welsh'), '')
 
     def show_stats(self):
         return self.tariffs
@@ -1034,14 +1187,31 @@ class TariffStatistics:
             return self.subject_english if self.subject_english else self.subject_welsh
         return self.subject_welsh if self.subject_welsh else self.subject_english
 
-    def display_unavailable_reason(self):
+    def display_unavailable_info(self):
+        unavailable = {}
+
         if self.unavailable_reason:
-            return self.unavailable_reason
+            unavailable["reason"] = self.unavailable_reason
         else:
             if self.display_language == enums.languages.ENGLISH:
-                return self.unavailable_reason_english if self.unavailable_reason_english \
+                unavailable["reason"] = self.unavailable_reason_english if self.unavailable_reason_english \
                     else self.unavailable_reason_welsh
-            return self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+            else:
+                unavailable["reason"] = self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_english if self.unavailable_find_out_more_english \
+                else self.unavailable_find_out_more_welsh
+        else:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
+                else self.unavailable_url_welsh
+        else:
+            unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        return unavailable
 
 
 class Tariff:
@@ -1132,6 +1302,10 @@ class JobList:
             self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
             self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
             self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            self.unavailable_find_out_more_english = fallback_to(unavailable_data.get('find_out_more_english'), '')
+            self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
+            self.unavailable_url_english = fallback_to(unavailable_data.get('url_english'), '')
+            self.unavailable_url_welsh = fallback_to(unavailable_data.get('url_welsh'), '')
 
             if jobs_data.get('list'):
                 for job in jobs_data.get('list'):
@@ -1145,14 +1319,31 @@ class JobList:
             return self.subject_english if self.subject_english else self.subject_welsh
         return self.subject_welsh if self.subject_welsh else self.subject_english
 
-    def display_unavailable_reason(self):
+    def display_unavailable_info(self):
+        unavailable = {}
+
         if self.unavailable_reason:
-            return self.unavailable_reason
+            unavailable["reason"] = self.unavailable_reason
         else:
             if self.display_language == enums.languages.ENGLISH:
-                return self.unavailable_reason_english if self.unavailable_reason_english \
+                unavailable["reason"] = self.unavailable_reason_english if self.unavailable_reason_english \
                     else self.unavailable_reason_welsh
-            return self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+            else:
+                unavailable["reason"] = self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_english if self.unavailable_find_out_more_english \
+                else self.unavailable_find_out_more_welsh
+        else:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
+                else self.unavailable_url_welsh
+        else:
+            unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        return unavailable
 
 
 class Job:

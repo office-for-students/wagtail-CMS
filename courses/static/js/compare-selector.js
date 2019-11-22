@@ -29,6 +29,8 @@
             this.compareClose = this.compareBar.find('.compare-popup__close');
             this.compareAdd = this.compareBar.find('.compare-popup__add');
             this.compareCount = this.compareBar.find('.compare-popup__count .count');
+            this.courseAdded = this.compareBar.find('.compare-popup__count .course_added');
+            this.coursesAdded = this.compareBar.find('.compare-popup__count .courses_added');
             this.compareNotEnough = this.compareBar.find('.compare-popup__not-enough');
             this.compareEnough = this.compareBar.find('.compare-popup__enough');
             this.compareRemove = this.compareBar.find('.compare-popup__remove');
@@ -133,6 +135,14 @@
                 this.navBar.trigger('loadeddata');
                 this.courseSelected = true;
                 this.compareCount.text(this.selectedCourses.length);
+
+                if (this.selectedCourses.length > 1) {
+                    this.courseAdded.hide();
+                    this.coursesAdded.show();
+                } else {
+                    this.courseAdded.show();
+                    this.coursesAdded.hide();
+                }
 
                 if (this.selectedCourses.length < 2) {
                     this.compareNotEnough.show();

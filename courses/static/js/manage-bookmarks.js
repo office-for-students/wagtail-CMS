@@ -105,10 +105,18 @@
                 this.courseAbroadSpan.text(this.course.abroad.cy);
             }
 
-            if (this.isEnglish) {
-                this.courseNameSpan.attr('href', '/course-details/' + this.course.uniId + '/' + this.course.courseId + '/' + this.course.mode + '/');
+            var mode;
+
+            if (this.course.mode.en === 'Full time') {
+                mode = 'FullTime';
             } else {
-                this.courseNameSpan.attr('href', '/cy/course-details/' + this.course.uniId + '/' + this.course.courseId + '/' + this.course.mode + '/');
+                mode = 'PartTime';
+            }
+
+            if (this.isEnglish) {
+                this.courseNameSpan.attr('href', '/course-details/' + this.course.uniId + '/' + this.course.courseId + '/' + mode + '/');
+            } else {
+                this.courseNameSpan.attr('href', '/cy/course-details/' + this.course.uniId + '/' + this.course.courseId + '/' + mode + '/');
             }
             if (this.course.length === '' || this.course === 'None') {
                 this.lengthKnown.hide();

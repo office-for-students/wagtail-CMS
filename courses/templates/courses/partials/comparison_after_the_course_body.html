@@ -37,7 +37,7 @@
                             </p>
 
                             <div class="after-course__figure-explanation">
-                                {% create_list course1_salary_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
+                                {% create_list course1_salary_stats.display_subject_label course1.institution.pub_ukprn_name as substitutions %}
                                 {% insert_values_to_rich_text content=block.value.six_month_earnings_explanation substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </div>
@@ -48,7 +48,7 @@
 
                             <p class="after-course__figure-salary-range">
                                 £{{course1_salary_stats.lower_quartile|intcomma}} - £{{course1_salary_stats.higher_quartile|intcomma}}
-                                {% if course1_salary_stats.display_unavailable_reason %}
+                                {% if course1_salary_stats.display_unavailable_info %}
                                     *
                                 {% endif %}
                             </p>
@@ -79,7 +79,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_salary_stats.display_unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_salary_stats.display_unavailable_info %}
                     </div>
                 </div>
 
@@ -97,7 +97,7 @@
                             </p>
 
                             <div class="after-course__figure-explanation">
-                                {% create_list course2_salary_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
+                                {% create_list course2_salary_stats.display_subject_label course2.institution.pub_ukprn_name as substitutions %}
                                 {% insert_values_to_rich_text content=block.value.six_month_earnings_explanation substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </div>
@@ -108,7 +108,7 @@
 
                             <p class="after-course__figure-salary-range">
                                 £{{course2_salary_stats.lower_quartile|intcomma}} - £{{course2_salary_stats.higher_quartile|intcomma}}
-                                {% if course2_salary_stats.display_unavailable_reason %}
+                                {% if course2_salary_stats.display_unavailable_info %}
                                     *
                                 {% endif %}
                             </p>
@@ -139,7 +139,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_salary_stats.display_unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_salary_stats.display_unavailable_info %}
                     </div>
                 </div>
             </div>
@@ -168,13 +168,13 @@
                             </h3>
                         {% endif %}
 
-                        {% if course1_leo_stats %}
+                        {% if course1_leo_stats and course1.is_in_england %}
                             <p class="after-course__figure">
                                 £{{ course1_leo_stats.median|intcomma }}
                             </p>
 
                             <div class="after-course__figure-explanation">
-                                {% create_list course1_leo_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
+                                {% create_list course1_leo_stats.display_subject_label course1.institution.pub_ukprn_name as substitutions %}
                                 {% insert_values_to_rich_text content=block.value.three_years_earnings_explanation substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </div>
@@ -194,7 +194,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_leo_stats.display_unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_leo_stats.display_unavailable_info %}
                     </div>
                 </div>
 
@@ -206,13 +206,13 @@
                             </h3>
                         {% endif %}
 
-                        {% if course2_leo_stats %}
+                        {% if course2_leo_stats and course2.is_in_england %}
                             <p class="after-course__figure">
                                 £{{ course2_leo_stats.median|intcomma }}
                             </p>
 
                             <div class="after-course__figure-explanation">
-                                {% create_list course2_leo_stats.display_subject_label course_details.institution.pub_ukprn_name as substitutions %}
+                                {% create_list course2_leo_stats.display_subject_label course2.institution.pub_ukprn_name as substitutions %}
                                 {% insert_values_to_rich_text content=block.value.three_years_earnings_explanation substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </div>
@@ -232,7 +232,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_leo_stats.display_unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_leo_stats.display_unavailable_info %}
                     </div>
                 </div>
             </div>
@@ -287,7 +287,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='now_working' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='now_working' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='now_working' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='now_working' language=page.get_language %}</label>
                                 </div>
 
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course1_employment_stats.in_study}}"
@@ -295,7 +295,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='doing_further_study' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='doing_further_study' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='doing_further_study' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='doing_further_study' language=page.get_language %}</label>
                                 </div>
 
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course1_employment_stats.in_work_and_study}}"
@@ -303,7 +303,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='study_and_working' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='study_and_working' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='study_and_working' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='study_and_working' language=page.get_language %}</label>
                                 </div>
 
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course1_employment_stats.unemployed}}"
@@ -311,7 +311,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='unemployed' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='unemployed' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='unemployed' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='unemployed' language=page.get_language %}</label>
                                 </div>
 
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course1_employment_stats.not_available_for_work_or_study}}"
@@ -319,7 +319,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='other' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='other' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='other' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='other' language=page.get_language %}</label>
                                 </div>
                             </div>
                         </div>
@@ -332,7 +332,7 @@
                     </div>
                 {% endif %}
 
-                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_employment_stats.display_unavailable_reason %}
+                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_employment_stats.display_unavailable_info %}
             </div>
         </div>
 
@@ -363,7 +363,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='now_working' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='now_working' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='now_working' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='now_working' language=page.get_language %}</label>
                                 </div>
 
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course2_employment_stats.in_study}}"
@@ -371,7 +371,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='doing_further_study' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='doing_further_study' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='doing_further_study' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='doing_further_study' language=page.get_language %}</label>
                                 </div>
 
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course2_employment_stats.in_work_and_study}}"
@@ -379,7 +379,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='study_and_working' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='study_and_working' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='study_and_working' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='study_and_working' language=page.get_language %}</label>
                                 </div>
 
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course2_employment_stats.unemployed}}"
@@ -387,7 +387,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='unemployed' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='unemployed' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='unemployed' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='unemployed' language=page.get_language %}</label>
                                 </div>
 
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course2_employment_stats.not_available_for_work_or_study}}"
@@ -395,7 +395,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='other' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='other' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='other' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='other' language=page.get_language %}</label>
                                 </div>
                             </div>
                         </div>
@@ -408,7 +408,7 @@
                     </div>
                 {% endif %}
 
-                {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_employment_stats.display_unavailable_reason %}
+                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_employment_stats.display_unavailable_info %}
             </div>
         </div>
     </div>
@@ -447,7 +447,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='professional_or_managerial' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='professional_or_managerial' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='professional_or_managerial' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='professional_or_managerial' language=page.get_language %}</label>
                                 </div>
 
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course1_job_type_stats.non_professional_or_managerial_jobs}}"
@@ -455,7 +455,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='not_professional_or_managerial' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='not_professional_or_managerial' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='not_professional_or_managerial' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='not_professional_or_managerial' language=page.get_language %}</label>
                                 </div>
 
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course1_job_type_stats.unknown_professions}}"
@@ -463,7 +463,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='unknown_job_type' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='unknown_job_type' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='unknown_job_type' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='unknown_job_type' language=page.get_language %}</label>
                                 </div>
                             </div>
                         {% endif %}
@@ -485,7 +485,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='professional_or_managerial' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='professional_or_managerial' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='professional_or_managerial' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='professional_or_managerial' language=page.get_language %}</label>
                                 </div>
 
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course2_job_type_stats.non_professional_or_managerial_jobs}}"
@@ -493,7 +493,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='not_professional_or_managerial' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='not_professional_or_managerial' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='not_professional_or_managerial' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='not_professional_or_managerial' language=page.get_language %}</label>
                                 </div>
 
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course2_job_type_stats.unknown_professions}}"
@@ -501,7 +501,7 @@
                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='unknown_job_type' language=page.get_language %}"
                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='unknown_job_type' language=page.get_language %}">
                                     {% include 'courses/partials/bar_chart.html' %}
-                                    <label class="after-course__chart-label" aria-hidden="true"  key='unknown_job_type' language=page.get_language %}</label>
+                                    <label class="after-course__chart-label" aria-hidden="true">{% get_translation key='unknown_job_type' language=page.get_language %}</label>
                                 </div>
                             </div>
                         {% endif %}
@@ -542,7 +542,7 @@
                         </div>
                     {% endif %}
 
-                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_job_type_stats.display_unavailable_reason %}
+                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_job_type_stats.display_unavailable_info %}
                 </div>
             </div>
 
@@ -556,7 +556,7 @@
                         </div>
                     {% endif %}
 
-                    {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_job_type_stats.display_unavailable_reason %}
+                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_job_type_stats.display_unavailable_info %}
                 </div>
             </div>
         </div>
@@ -596,7 +596,7 @@
                                             data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key=job.job language=page.get_language %}"
                                             data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key=job.job language=page.get_language %}">
                                         {% include 'courses/partials/bar_chart.html' %}
-                                        <label class="after-course__chart-label" aria-hidden="true"  key=job.job language=page.get_language %}</label>
+                                        <label class="after-course__chart-label" aria-hidden="true">{% get_translation key=job.job language=page.get_language %}</label>
                                     </div>
                                 {% endfor %}
                             {% endif %}
@@ -610,7 +610,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course1_job_lists.display_unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_job_lists.display_unavailable_info %}
                     </div>
                 </div>
 
@@ -630,7 +630,7 @@
                                             data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key=job.job language=page.get_language %}"
                                             data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key=job.job language=page.get_language %}">
                                         {% include 'courses/partials/bar_chart.html' %}
-                                        <label class="after-course__chart-label" aria-hidden="true"  key=job.job language=page.get_language %}</label>
+                                        <label class="after-course__chart-label" aria-hidden="true">{% get_translation key=job.job language=page.get_language %}</label>
                                     </div>
                                 {% endfor %}
                             {% endif %}
@@ -644,7 +644,7 @@
                             </div>
                         {% endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with reason=course2_job_lists.display_unavailable_reason %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_job_lists.display_unavailable_info %}
                     </div>
                 </div>
             </div>

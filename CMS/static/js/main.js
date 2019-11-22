@@ -121,6 +121,10 @@
         setup: function() {
             this.acceptBtn = this.wrapper.find('.cookie-banner__ok');
             this.findOutMoreBtn = this.wrapper.find('.cookie-banner__find-out-more');
+            if (localStorage.discoverUniCookies === 'accepted') {
+                document.cookie = "discoverUniCookies=accepted;";
+                this.wrapper.hide();
+            }
 
             this.startWatchers();
         },
@@ -130,6 +134,7 @@
 
             this.acceptBtn.click(function() {
                 document.cookie = "discoverUniCookies=accepted;";
+                localStorage.discoverUniCookies = 'accepted';
                 that.wrapper.hide();
             });
         }

@@ -17,7 +17,7 @@ def widget_iframe(request, uk_prn, kis_course_id, optional_1=None, optional_2=No
                 orientation = param
             if param.lower() == 'en-gb' or param.lower() == 'cy-gb':
                 language = param
-            if param.lower() == 'FullTime' or param.lower() == 'PartTime':
+            if param.lower() == 'fulltime' or param.lower() == 'parttime':
                 kis_mode = param
     context = {
         'uk_prn': uk_prn,
@@ -49,6 +49,6 @@ def widget_embed(request):
     final_script = script.replace('{% styles %}', compressed_css)
     final_script = final_script.replace('{{api_domain}}', settings.WIDGETAPIHOST)
     final_script = final_script.replace('{{api_key}}', settings.WIDGETAPIKEY)
-    final_script = final_script.replace('{{domain_name}}', request.site.root_url)
+    final_script = final_script.replace('{{domain_name}}', settings.ROOT_DOMAIN)
 
     return HttpResponse(final_script, content_type='application/javascript')

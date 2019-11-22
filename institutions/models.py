@@ -209,13 +209,28 @@ class InstitutionStudentUnions:
 
     def __init__(self, su_data, language):
         self.display_language = language
-        self.english_website = su_data.get('link').get('english')
-        self.welsh_website = su_data.get('link').get('welsh')
-        self.english_name = su_data.get('name').get('english')
-        self.welsh_name = su_data.get('name').get('welsh')
+        self.english_name = ''
+        self.welsh_name = ''
+        self.english_website = ''
+        self.welsh_website = ''
+
+        name_data = su_data.get('name')
+        link_data = su_data.get('link')
+
+        if name_data:
+            self.english_name = name_data.get('english','')
+            self.welsh_name = name_data.get('welsh', '')
+
+        if link_data:
+            self.english_website = link_data.get('english', '')
+            self.welsh_website = link_data.get('welsh', '')
 
     def display_name(self):
-        return self.english_name if self.display_language == enums.languages.ENGLISH else self.welsh_name
+        if self.display_language == enums.languages.ENGLISH:
+            return self.english_name if self.english_name else self.welsh_name
+        return self.welsh_name if self.welsh_name else self.english_name
 
     def display_url(self):
-        return self.english_website if self.display_language == enums.languages.ENGLISH else self.welsh_website
+        if self.display_language == enums.languages.ENGLISH:
+            return self.english_website if self.english_website else self.welsh_website
+        return self.welsh_website if self.welsh_website else self.english_website
