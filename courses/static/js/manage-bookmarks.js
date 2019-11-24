@@ -90,7 +90,7 @@
         },
 
         setInitialView: function() {
-            this.courseNameSpan.text(this.course.courseName);
+            this.courseNameSpan.text(this.course.courseName + ' - ' + this.course.uniName);
             this.courseLengthSpan.text(this.course.length);
             this.courseLocationSpan.text(this.course.locations);
             if (this.isEnglish) {
