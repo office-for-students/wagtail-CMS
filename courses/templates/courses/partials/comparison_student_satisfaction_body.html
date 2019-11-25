@@ -36,6 +36,8 @@
                         {{ subbed_text | richtext }}
                     </div>
                 {% endif %}
+
+                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
             </div>
         </div>
 
@@ -68,6 +70,8 @@
                         {{ subbed_text | richtext }}
                     </div>
                 {% endif %}
+                
+                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
             </div>
         </div>
     </div>
@@ -138,6 +142,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
 
@@ -198,6 +204,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+                                
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
                     </div>
@@ -256,6 +264,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
 
@@ -302,6 +312,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+                                
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
                     </div>
@@ -374,6 +386,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
 
@@ -434,6 +448,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+                                
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
                     </div>
@@ -492,6 +508,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
 
@@ -538,6 +556,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+                                
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
                     </div>
@@ -596,6 +616,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
 
@@ -642,6 +664,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+                                
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
                     </div>
@@ -700,6 +724,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
 
@@ -746,6 +772,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
                     </div>
@@ -790,6 +818,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
 
@@ -822,6 +852,8 @@
                                         </div>
                                     </div>
                                 {% endif %}
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
                             </div>
                         </div>
                     </div>
@@ -1060,6 +1092,8 @@
                                         </div>
                                     {% endif %}
 
+                                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
+
                                     <div class="explanation-text">
                                         {% create_list course1_overall_satisfaction.nhs_satisfaction_stats.number_of_students course1_overall_satisfaction.nhs_satisfaction_stats.response_rate as substitutions %}
                                         {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
@@ -1153,7 +1187,9 @@
                                             </div>
                                         </div>
                                     {% endif %}
-
+                                    
+                                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_overall_satisfaction.satisfaction_stats.display_unavailable_info %}
+                                    
                                     <div class="explanation-text">
                                         {% create_list course2_overall_satisfaction.nhs_satisfaction_stats.number_of_students course2_overall_satisfaction.nhs_satisfaction_stats.response_rate as substitutions %}
                                         {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
