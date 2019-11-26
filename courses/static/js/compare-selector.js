@@ -60,7 +60,7 @@
         },
 
         isCourse: function(course) {
-            return course.uniId === this.uniId && course.courseId === this.courseId && course.mode === this.mode;
+            return course.uniId === this.uniId && course.courseId === this.courseId && course.mode.en === this.modeEn;
         },
 
         setInitialView: function() {
@@ -149,8 +149,7 @@
                     this.compareEnough.hide();
                 } else {
                     this.compareNotEnough.hide();
-//                    TODO Re-enable once compare works
-//                    this.compareEnough.show();
+                    this.compareEnough.show();
                 }
                 this.compareAdd.show();
                 this.compareRemove.hide();
