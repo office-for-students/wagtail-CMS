@@ -105,11 +105,11 @@
                 this.courseAbroadSpan.text(this.course.abroad.cy);
             }
 
-            var mode;
+            var mode = 'FullTime';
 
             if (this.course.mode.en === 'Full time') {
                 mode = 'FullTime';
-            } else {
+            } else if (this.course.mode.en === 'Part time') {
                 mode = 'PartTime';
             }
 
