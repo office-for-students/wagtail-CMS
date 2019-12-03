@@ -681,6 +681,11 @@ DICT = {
         'en': 'Other undergraduate (e.g. CertHE, DipHE)',
         'cy': ''
     },
+    'page_not_found':
+    {
+        'en': 'This course or page is not available',
+        'cy': 'Placeholder Welsh Text'
+    },
     'part_time': {
         'en': 'Part time',
         'cy': 'Rhan-amser'
