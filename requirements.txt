@@ -1,4 +1,4 @@
-Django>=2.2.2
+Django<2.3,>=2.2.2
 wagtail==2.6
 psycopg2-binary
 flake8==3.7.7
