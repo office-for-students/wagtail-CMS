@@ -1,0 +1,12 @@
+{% load staticfiles discover_uni_tags %}
+
+
+<div class="load-error-popup">
+    <div class="load-error-popup__wrapper">
+        <button class="load-error-popup__close"><img src="{% static 'images/close-grey.svg' %}" alt="Close  pop up"></button>
+
+        <p class="load-error-popup__not-found">
+            {% get_translation key='page_not_found' language=page.get_language %}
+        </p>
+    </div>
+</div>
