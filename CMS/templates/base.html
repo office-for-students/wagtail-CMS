@@ -71,7 +71,7 @@
             {% endif %}
 
             {% if load_error %}
-                {% include 'partials/load-error-popup-bar.html' %}
+                {% include 'partials/load-error-popup-bar.html' with error_type=error_type %}
             {% endif %}
         </main>
 

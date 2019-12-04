@@ -10,13 +10,23 @@
 
             this.loadErrorClose = this.loadErrorBar.find('.load-error-popup__close');
             this.loadErrorNotFound = this.loadErrorBar.find('.load-error-popup__not-found');
+            this.loadErrorInternalError = this.loadErrorBar.find('.load-error-popup__internal-error');
+            this.loadErrorCode = this.loadErrorBar.data('error')
 
             this.setInitialView();
             this.startWatcher();
         },
 
         setInitialView: function() {
-            this.loadErrorNotFound.show()
+            if (this.loadErrorCode == 0) {
+                this.loadErrorNotFound.show()
+                this.loadErrorInternalError.hide()
+            }
+
+            if (this.loadErrorCode == 1) {
+                this.loadErrorNotFound.hide()
+                this.loadErrorInternalError.show()
+            }
         },
 
         startWatcher: function() {
