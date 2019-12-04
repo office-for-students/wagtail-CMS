@@ -8,6 +8,7 @@ from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUn
     CourseFinderSummary
 from coursefinder.models import CourseFinderResults
 from courses.models import CourseComparisonPage, CourseManagePage
+from site_search.models import SearchLandingPage
 
 
 def results(request, language=enums.languages.ENGLISH):
