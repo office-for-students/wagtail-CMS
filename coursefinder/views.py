@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 
 from CMS.enums import enums
@@ -21,7 +21,8 @@ def results(request, language=enums.languages.ENGLISH):
     error = course_search.execute()
 
     if error:
-        return render(request, '500.html')
+        redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        return redirect(redirect_page + '?load_error=true&error_type=1')
 
     page = get_page_for_language(language, CourseFinderResults.objects.all())
 
@@ -82,7 +83,8 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     error = course_finder_search.execute()
 
     if error:
-        return render(request, '500.html')
+        redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        return redirect(redirect_page + '?load_error=true&error_type=1')
 
     page = get_page_for_language(language, CourseFinderResults.objects.all())
 

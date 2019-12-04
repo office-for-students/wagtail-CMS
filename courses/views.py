@@ -12,7 +12,7 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
 
     if error:
         redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
-        return redirect(redirect_page + '?load_error=true')
+        return redirect(redirect_page + '?load_error=true&error_type=0')
 
     page = get_page_for_language(language, CourseDetailPage.objects.all())
 
@@ -61,7 +61,7 @@ def compare_courses(request, language=enums.languages.ENGLISH):
 
     if error1 or error2:
         redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
-        return redirect(redirect_page + '?load_error=true')
+        return redirect(redirect_page + '?load_error=true&error_type=0')
 
     if not page:
         return render(request, '404.html')
