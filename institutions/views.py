@@ -1,15 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from CMS.enums import enums
 from core.utils import get_page_for_language
 from institutions.models import InstitutionDetailPage, Institution
+from site_search.models import SearchLandingPage
 
 
 def institution_detail(request, institution_id, language=enums.languages.ENGLISH):
     institution, error = Institution.find(institution_id, language)
 
     if error:
-        return render(request, '500.html')
+        redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        return redirect(redirect_page + '?load_error=true&error_type=0')
 
     page = get_page_for_language(language, InstitutionDetailPage.objects.all())
 

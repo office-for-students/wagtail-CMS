@@ -25,7 +25,7 @@
                             </h3>
                         {% endif %}
 
-                        {% if course1_entry_stats %}
+                        {% if course1_entry_stats.display_stats %}
                             <div class="entry-information__chart discover-uni-chart bar" data-value="{{course1_entry_stats.degree}}"
                                     data-label="course-1-entry-degree"
                                     data-title="{% get_translation key='entry_graph_title' language=page.get_language %} {% get_translation key='degree' language=page.get_language %}"
@@ -103,7 +103,7 @@
                             </h3>
                         {% endif %}
 
-                        {% if course2_entry_stats %}
+                        {% if course2_entry_stats.display_stats %}
                             <div class="entry-information__chart discover-uni-chart bar" data-value="{{course2_entry_stats.degree}}"
                                     data-label="course-2-entry-degree"
                                     data-title="{% get_translation key='entry_graph_title' language=page.get_language %} {% get_translation key='degree' language=page.get_language %}"
@@ -197,7 +197,7 @@
         <div class="comparison__course-columns">
             <div class="comparison__course-column">
                 <div class="comparison__course">
-                    {% if course1_entry_stats %}
+                    {% if course1_entry_stats.display_stats %}
                         <div class="explanation-text">
                             {% create_list course1_entry_stats.number_of_students as substitutions %}
                             {% insert_values_to_rich_text content=block.value.qualification_data_source substitutions=substitutions as subbed_text %}
@@ -211,7 +211,7 @@
 
             <div class="comparison__course-column">
                 <div class="comparison__course">
-                    {% if course1_entry_stats %}
+                    {% if course2_entry_stats.display_stats %}
                         <div class="explanation-text">
                             {% create_list course2_entry_stats.number_of_students as substitutions %}
                             {% insert_values_to_rich_text content=block.value.qualification_data_source substitutions=substitutions as subbed_text %}
@@ -243,7 +243,7 @@
             <div class="comparison__course-column">
                 <div class="comparison__course">
                     <div class="entry-information__tariff-charts">
-                        {% if course1_tariff_stats %}
+                        {% if course1_tariff_stats.show_stats %}
                             {% if course1.has_multiple_tariff_stats %}
                                 <h3 class="comparison__subject-heading">
                                     {{course1_tariff_stats.display_subject_name}}
@@ -276,7 +276,7 @@
             <div class="comparison__course-column">
                 <div class="comparison__course">
                     <div class="entry-information__tariff-charts">
-                        {% if course2_tariff_stats %}
+                        {% if course2_tariff_stats.show_stats %}
                             {% if course2.has_multiple_tariff_stats %}
                                 <h3 class="comparison__subject-heading">
                                     {{course2_tariff_stats.display_subject_name}}
