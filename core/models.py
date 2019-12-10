@@ -93,6 +93,7 @@ class DiscoverUniBasePage(Page):
         context['welsh_url'] = self.get_welsh_url()
         context['cookies_accepted'] = request.COOKIES.get('discoverUniCookies')
         context['load_error'] = request.GET.get('load_error')
+        context['error_type'] = request.GET.get('error_type')
         return context
 
 
