@@ -1,16 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from CMS.enums import enums
 from core.utils import get_page_for_language
 
 from courses.models import CourseDetailPage, Course, CourseComparisonPage, CourseManagePage
+from site_search.models import SearchLandingPage
 
 
 def courses_detail(request, institution_id, course_id, kis_mode, language=enums.languages.ENGLISH):
     course, error = Course.find(institution_id, course_id, kis_mode, language)
 
     if error:
-        return render(request, '500.html')
+        redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        return redirect(redirect_page + '?load_error=true&error_type=0')
 
     page = get_page_for_language(language, CourseDetailPage.objects.all())
 
@@ -58,7 +60,8 @@ def compare_courses(request, language=enums.languages.ENGLISH):
         course2, error2 = Course.find(course2_params[0], course2_params[1], course2_params[2], language)
 
     if error1 or error2:
-        return render(request, '500.html')
+        redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        return redirect(redirect_page + '?load_error=true&error_type=0')
 
     if not page:
         return render(request, '404.html')

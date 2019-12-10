@@ -509,6 +509,10 @@ DICT = {
         'en': 'Information technology and telecommunications professionals',
         'cy': 'Gweithwyr Proffesiynol Technoleg Gwybodaeth a Thelathrebu'
     },
+    'internal_error': {
+        'en': 'There was an error loding the page',
+        'cy': 'Roedd gwall wrth lwytho’r dudalen'
+    },
     'IT service delivery occupations': {
         'en': 'IT service delivery occupations',
         'cy': 'Galwedigaethau darparu gwasanaethau TG'
@@ -680,6 +684,11 @@ DICT = {
     'other_undergraduate': {
         'en': 'Other undergraduate (e.g. CertHE, DipHE)',
         'cy': ''
+    },
+    'page_not_found':
+    {
+        'en': 'This course or page is not available',
+        'cy': 'Nid yw’r cwrs hwn neu’r dudalen hon ar gael'
     },
     'part_time': {
         'en': 'Part time',

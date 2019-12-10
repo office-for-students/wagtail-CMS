@@ -31,7 +31,7 @@
                             </h3>
                         {% endif %}
 
-                        {% if course1_salary_stats %}
+                        {% if course1_salary_stats.display_stats %}
                             <p class="after-course__figure">
                                 £{{ course1_salary_stats.median|intcomma }}
                             </p>
@@ -91,7 +91,7 @@
                             </h3>
                         {% endif %}
 
-                        {% if course2_salary_stats %}
+                        {% if course2_salary_stats.display_stats %}
                             <p class="after-course__figure">
                                 £{{ course2_salary_stats.median|intcomma }}
                             </p>
@@ -168,7 +168,7 @@
                             </h3>
                         {% endif %}
 
-                        {% if course1_leo_stats and course1.is_in_england %}
+                        {% if course1_leo_stats and course1.is_in_england and course1_leo_stats.display_stats %}
                             <p class="after-course__figure">
                                 £{{ course1_leo_stats.median|intcomma }}
                             </p>
@@ -206,7 +206,7 @@
                             </h3>
                         {% endif %}
 
-                        {% if course2_leo_stats and course2.is_in_england %}
+                        {% if course2_leo_stats and course2.is_in_england and course2_leo_stats.display_stats %}
                             <p class="after-course__figure">
                                 £{{ course2_leo_stats.median|intcomma }}
                             </p>
@@ -268,7 +268,7 @@
                     </h3>
                 {% endif %}
 
-                {% if course1_employment_stats %}
+                {% if course1_employment_stats.display_stats %}
                     <div class="after-course__data-point-overview">
                         <p class="after-course__data-point-overview-lead">
                             {{course1_employment_stats.work_and_or_study}}%
@@ -344,7 +344,7 @@
                     </h3>
                 {% endif %}
 
-                {% if course2_employment_stats %}
+                {% if course2_employment_stats.display_stats %}
                     <div class="after-course__data-point-overview">
                         <p class="after-course__data-point-overview-lead">
                             {{course2_employment_stats.work_and_or_study}}%
@@ -440,7 +440,7 @@
                             </h3>
                         {% endif %}
 
-                        {% if course1_job_type_stats %}
+                        {% if course1_job_type_stats.display_stats %}
                             <div class="after-course__chart-block">
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course1_job_type_stats.professional_or_managerial_jobs}}"
                                         data-label="course-1-after-course-role-type-professional_or_managerial"
@@ -478,7 +478,7 @@
                             </h3>
                         {% endif %}
 
-                        {% if course2_job_type_stats %}
+                        {% if course2_job_type_stats.display_stats %}
                             <div class="after-course__chart-block">
                                 <div class="after-course__chart discover-uni-chart bar" data-value="{{course2_job_type_stats.professional_or_managerial_jobs}}"
                                         data-label="course-2-after-course-role-type-professional_or_managerial"
@@ -534,7 +534,7 @@
         <div class="comparison__course-columns">
             <div class="comparison__course-column">
                 <div class="comparison__course">
-                    {% if course1_job_type_stats %}
+                    {% if course1_job_type_stats.display_stats %}
                         <div class="explanation-text">
                             {% create_list course1_job_type_stats.number_of_students course1_job_type_stats.response_rate as substitutions %}
                             {% insert_values_to_rich_text content=block.value.six_month_employment_roles_data_source substitutions=substitutions as subbed_text %}
@@ -548,7 +548,7 @@
 
             <div class="comparison__course-column">
                 <div class="comparison__course">
-                    {% if course2_job_type_stats %}
+                    {% if course2_job_type_stats.display_stats %}
                         <div class="explanation-text">
                             {% create_list course2_job_type_stats.number_of_students course2_job_type_stats.response_rate as substitutions %}
                             {% insert_values_to_rich_text content=block.value.six_month_employment_roles_data_source substitutions=substitutions as subbed_text %}
@@ -589,7 +589,7 @@
                                 </h3>
                             {% endif %}
 
-                            {% if course1_job_lists %}
+                            {% if course1_job_lists.display_stats %}
                                 {% for job in course1_job_lists.jobs %}
                                     <div class="after-course__chart discover-uni-chart bar" data-value="{{job.percentage}}"
                                             data-label="course-1-after-course-jobs-{{forloop.counter}}"
@@ -602,7 +602,7 @@
                             {% endif %}
                         </div>
 
-                        {% if course1_job_lists %}
+                        {% if course1_job_lists.display_stats %}
                             <div class="explanation-text">
                                 {% create_list course1_job_lists.number_of_students course1_job_lists.response_rate as substitutions %}
                                 {% insert_values_to_rich_text content=block.value.common_jobs_data_source substitutions=substitutions as subbed_text %}
@@ -623,7 +623,7 @@
                                 </h3>
                             {% endif %}
 
-                            {% if course2_job_lists %}
+                            {% if course2_job_lists.display_stats %}
                                 {% for job in course2_job_lists.jobs %}
                                     <div class="after-course__chart discover-uni-chart bar" data-value="{{job.percentage}}"
                                             data-label="course-2-after-course-jobs-{{forloop.counter}}"
@@ -636,7 +636,7 @@
                             {% endif %}
                         </div>
 
-                        {% if course2_job_lists %}
+                        {% if course2_job_lists.display_stats %}
                             <div class="explanation-text">
                                 {% create_list course2_job_lists.number_of_students course2_job_lists.response_rate as substitutions %}
                                 {% insert_values_to_rich_text content=block.value.common_jobs_data_source substitutions=substitutions as subbed_text %}

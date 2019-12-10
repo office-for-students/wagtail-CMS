@@ -90,7 +90,7 @@
         },
 
         setInitialView: function() {
-            this.courseNameSpan.text(this.course.courseName);
+            this.courseNameSpan.text(this.course.courseName + ' - ' + this.course.uniName);
             this.courseLengthSpan.text(this.course.length);
             this.courseLocationSpan.text(this.course.locations);
             if (this.isEnglish) {
@@ -105,11 +105,11 @@
                 this.courseAbroadSpan.text(this.course.abroad.cy);
             }
 
-            var mode;
+            var mode = 'FullTime';
 
             if (this.course.mode.en === 'Full time') {
                 mode = 'FullTime';
-            } else {
+            } else if (this.course.mode.en === 'Part time') {
                 mode = 'PartTime';
             }
 

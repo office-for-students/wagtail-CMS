@@ -114,6 +114,45 @@ a {
     color: #595959;
 }
 
+.load-error-popup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+
+
+
+    background-color: $divider-grey;
+
+    &__wrapper {
+        @include mobile-body-font-mixin();
+
+        padding: 29px 31px;
+        position: relative;
+        text-align: center;
+
+        p {
+            margin: 5px;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: 7px;
+        right: 7px;
+
+        img {
+            width: 9px;
+            height: 9px;
+        }
+    }
+
+    &__not-found, &__remove, &__too-many, &__not-enough, &__enough {
+        display: none;
+    }
+}
+
 @media only screen and (min-width: 770px) {
     .breadcrumbs {
         @include small-font-mixin();
