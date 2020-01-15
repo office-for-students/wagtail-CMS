@@ -12,7 +12,7 @@
      data-distance-en="{% map_distance_learning_values course.distance_learning 'en' %}" data-distance-cy="{% map_distance_learning_values course.distance_learning 'cy' %}"
      data-abroad-en="{% get_translation key=course.year_abroad language='en' %}" data-abroad-cy="{% get_translation key=course.year_abroad language='cy' %}">
     <a href="{% if page.is_welsh %}/cy{% endif %}/course-details/{{institution_id}}/{{course.kis_course_id}}/{{course.mode}}"
-       class="course-finder-results__result-accordion-body-course-name">
+       class="course-finder-results__result-accordion-body-course-name" onclick="saveUrl()">
         {{ course_name }}
     </a>
 

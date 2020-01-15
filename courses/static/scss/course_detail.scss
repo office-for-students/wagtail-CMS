@@ -9,6 +9,7 @@
 @import 'accreditation';
 @import 'highcharts';
 
+
 .course-detail {
     margin-top: 27px;
 
@@ -18,6 +19,32 @@
 
     .course-detail__lead {
         text-align: center;
+
+        .course-detail__nav {
+            display: flex;
+            padding: 19px 5px;
+            margin: 0;
+            height: 100%;
+            list-style: none;
+
+            .course-detail__nav-control {
+                @include mobile-body-font--bold-mixin();
+                padding: 0px;
+                color: $gradient-light-green;
+                border: none;
+                background-color: transparent;
+
+                .course-detail__nav-control-icon {
+                    height: 11px;
+                    padding: 0 3px;
+                }
+
+                .course-detail__nav-control-back {
+                    margin-left: auto;
+                    text-decoration: none;
+                }
+            }
+        }
 
         .course-detail__icon {
             height: 48px;
@@ -322,6 +349,19 @@
 
         .course-detail__lead {
             text-align: center;
+
+            .course-detail__nav {
+                padding: 24px 0px;
+
+                .course-detail__nav-control {
+                    @include xs-heading-mixin();
+                    color: $gradient-light-green;
+
+                    .course-detail__nav-control-icon {
+                        height: 15px;
+                    }
+                }
+            }
 
             .course-detail__icon {
                 height: 68px;

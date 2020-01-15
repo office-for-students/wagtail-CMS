@@ -2,6 +2,14 @@
 
 <div class="course-detail__lead">
     <div class="discover-uni-container">
+        <ul class="course-detail__nav">
+            <li class="course-detail__nav-control">
+                <a href="#" id='back-btn' class="course-detail__nav-control-back">
+                    <img class="course-detail__nav-control-icon" src="{% static 'assets/left-arrow.svg' %}" alt="">
+                    {% get_translation key='back_to_results' language=page.get_language %}
+                </a>
+            </li>
+        </ul>
         <img class="course-detail__icon" src="{% static 'images/certificate.svg' %}" alt="">
 
         <h1 class="course-detail__course-name">
