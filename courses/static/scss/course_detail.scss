@@ -21,6 +21,7 @@
         text-align: center;
 
         .course-detail__nav {
+            visibility: hidden;
             display: flex;
             padding: 19px 5px;
             margin: 0;
@@ -351,6 +352,7 @@
             text-align: center;
 
             .course-detail__nav {
+                visibility: hidden;
                 padding: 24px 0px;
 
                 .course-detail__nav-control {
