@@ -23,6 +23,8 @@
         .course-detail__nav {
             visibility: hidden;
             display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 19px 5px;
             margin: 0;
             height: 100%;
@@ -36,13 +38,12 @@
                 background-color: transparent;
 
                 .course-detail__nav-control-icon {
-                    height: 11px;
-                    padding: 0 3px;
+                    height: 12px;
                 }
 
-                .course-detail__nav-control-back {
-                    margin-left: auto;
-                    text-decoration: none;
+                #course-detail__nav-control-back {
+                    cursor: pointer;
+                    margin-left: auto; 
                 }
             }
         }
@@ -360,7 +361,7 @@
                     color: $gradient-light-green;
 
                     .course-detail__nav-control-icon {
-                        height: 15px;
+                        height: 16px;
                     }
                 }
             }
