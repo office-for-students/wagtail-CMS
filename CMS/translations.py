@@ -831,8 +831,12 @@ DICT = {
         'cy': 'Chwilio'
     },
     'search_again': {
-        'en': 'Search again',
+        'en': 'Search again', 
         'cy': 'Chwilio eto'
+    },
+    'back_to_results': {
+        'en': 'Back to results',
+        'cy': "Yn ôl i'r canlyniadau"
     },
     'search_within': {
         'en': 'Search within',
