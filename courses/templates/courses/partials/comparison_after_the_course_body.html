@@ -589,7 +589,7 @@
                                 </h3>
                             {% endif %}
 
-                            {% if course1_job_lists.display_stats %}
+                            {% if course1_job_lists.show_stats %}
                                 {% for job in course1_job_lists.jobs %}
                                     <div class="after-course__chart discover-uni-chart bar" data-value="{{job.percentage}}"
                                             data-label="course-1-after-course-jobs-{{forloop.counter}}"
@@ -602,7 +602,7 @@
                             {% endif %}
                         </div>
 
-                        {% if course1_job_lists.display_stats %}
+                        {% if course1_job_lists.show_stats %}
                             <div class="explanation-text">
                                 {% create_list course1_job_lists.number_of_students course1_job_lists.response_rate as substitutions %}
                                 {% insert_values_to_rich_text content=block.value.common_jobs_data_source substitutions=substitutions as subbed_text %}
@@ -623,7 +623,7 @@
                                 </h3>
                             {% endif %}
 
-                            {% if course2_job_lists.display_stats %}
+                            {% if course2_job_lists.show_stats %}
                                 {% for job in course2_job_lists.jobs %}
                                     <div class="after-course__chart discover-uni-chart bar" data-value="{{job.percentage}}"
                                             data-label="course-2-after-course-jobs-{{forloop.counter}}"
@@ -636,7 +636,7 @@
                             {% endif %}
                         </div>
 
-                        {% if course2_job_lists.display_stats %}
+                        {% if course2_job_lists.show_stats %}
                             <div class="explanation-text">
                                 {% create_list course2_job_lists.number_of_students course2_job_lists.response_rate as substitutions %}
                                 {% insert_values_to_rich_text content=block.value.common_jobs_data_source substitutions=substitutions as subbed_text %}
