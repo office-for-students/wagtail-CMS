@@ -8,7 +8,7 @@
      data-distance-en="{% map_distance_learning_values course.distance_learning.code 'en' %}" data-distance-cy="{% map_distance_learning_values course.distance_learning.code 'cy' %}"
      data-sandwich-en="{% get_translation key=course.sandwich_year.label language='en' %}" data-sandwich-cy="{% get_translation key=course.sandwich_year.label language='cy' %}"
      data-abroad-en="{% get_translation key=course.year_abroad.label language='en' %}" data-abroad-cy="{% get_translation key=course.year_abroad.label language='cy' %}">
-
+    
     {% include 'courses/partials/base_gradient.html' %}
     {% include 'courses/partials/course_overview.html' %}
 
