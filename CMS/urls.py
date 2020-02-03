@@ -19,6 +19,8 @@ urlpatterns = [
     url(r'^search/$', search_views.search, name='search'),
     url(r'^results/$', coursefinder_views.results, name='results'),
     url(r'^feedback',  core_views.submit_feedback, name='submit_feedback'),
+    url(r'^jsonfiles/subjects',  core_views.get_subjects_json, name='jsonfiles_subjects'),
+    url(r'^jsonfiles/institutions',  core_views.get_institutions_json, name='jsonfiles_institutions'),
 
     url(r'^narrow-search/$', coursefinder_views.narrow_search, name='narrow_search'),
     url(r'^course-finder/results/$', coursefinder_views.course_finder_results, name='course_finder_results'),
