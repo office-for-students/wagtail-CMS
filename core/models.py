@@ -7,11 +7,7 @@ from wagtail.core.models import Page
 from wagtail.snippets.models import register_snippet
 
 from CMS.enums import enums
-from core.utils import parse_menu_item, get_page_for_language, get_version_number
-
-
-class Version:
-    number = get_version_number()
+from core.utils import parse_menu_item, get_page_for_language, get_current_version
 
 
 class DiscoverUniBasePage(Page):
