@@ -11,7 +11,9 @@ from institutions.utils import load_institution_json
 
 
 class InstitutionList:
-    options = load_institution_json()
+
+    def __init__(self):
+        self.options = load_institution_json()
 
 
 class InstitutionDetailPage(DiscoverUniBasePage):

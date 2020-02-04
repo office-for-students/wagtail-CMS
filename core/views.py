@@ -40,8 +40,8 @@ def get_subjects_json(request):
     return JsonResponse(response_body, status=response.status_code, safe=False)
 
 
-def get_institutions_json(request):
-    response = get_json_file("institutions.json")
+def get_institutions_json(request, language):
+    response = get_json_file("institutions_" + language + ".json")
 
     if response.ok:
         response_body = response.json()

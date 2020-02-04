@@ -868,7 +868,7 @@ DICT = {
     },
     'select_a_university': {
         'en': 'Please select a university',
-        'cy': 'Dewiswch brifysgol'
+        'cy': 'PLACEHOLDER WELSH TEXT'
     },
     'send_message': {
         'en': 'Send message',
@@ -1000,7 +1000,7 @@ DICT = {
     },
     'uni_and_college': {
         'en': 'All universities and collages',
-        'cy': 'Pob prifysgol a gludwaith'
+        'cy': 'PLACEHOLDER WELSH TEXT'
     },
     'uni_college': {
         'en': 'Universities / colleges',
