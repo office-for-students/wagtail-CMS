@@ -13,7 +13,7 @@ def send_feedback(feedback_data):
 
 def get_json_file(json_file):
 
-    if settings.LOCAL:
+    if settings.LOCAL or settings.JSONFILES_STORAGE_CONTAINER == "":
         print("Loading local jsonfile")
         with open(os.path.join(settings.BASE_DIR, 'CMS/static/jsonfiles/' + json_file)) as json_file:
             data = json_file.read()
