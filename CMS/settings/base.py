@@ -18,7 +18,7 @@ from corsheaders.defaults import default_headers
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-LOCAL = os.environ.get('LOCAL', False)
+LOCAL = True if os.environ.get('LOCAL', "") == "True" else False
 READ_ONLY = os.environ.get('READ_ONLY', False)
 
 ROOT_DOMAIN = os.environ.get('ROOT_DOMAIN', 'http://localhost:3000')
