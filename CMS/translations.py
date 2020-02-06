@@ -510,7 +510,7 @@ DICT = {
         'cy': 'Gweithwyr Proffesiynol Technoleg Gwybodaeth a Thelathrebu'
     },
     'internal_error': {
-        'en': 'There was an error loding the page',
+        'en': 'There was an error loading the page',
         'cy': 'Roedd gwall wrth lwytho’r dudalen'
     },
     'IT service delivery occupations': {
