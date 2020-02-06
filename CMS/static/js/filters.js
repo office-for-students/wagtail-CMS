@@ -336,6 +336,9 @@
             this.parent.append(uniWrapperNode);
             this.uniWrapper = this.parent.find('#' + this.id);
             this.uniInput = this.uniWrapper.find('input');
+            if (this.isPreSelected) {
+                this.uniInput[0].checked = true;
+            }
             this.startWatcher();
         },
 
