@@ -210,6 +210,7 @@ WIDGETAPIKEY = os.environ.get('WIDGETAPIKEY')
 WIDGETAPIHOST = os.environ.get('WIDGETAPIHOST')
 DATASETAPIKEY = os.environ.get('DATASETAPIKEY')
 FEEDBACK_API_HOST = os.environ.get('FEEDBACK_API_HOST')
+JSONFILES_STORAGE_CONTAINER = os.environ.get('JSONFILES_STORAGE_CONTAINER', "")
 
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')    # eg. 'campaignstorage'

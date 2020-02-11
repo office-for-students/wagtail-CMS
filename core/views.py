@@ -2,7 +2,7 @@ import json
 
 from django.http import JsonResponse
 
-from core.request_handler import send_feedback
+from core.request_handler import send_feedback, get_json_file
 
 
 def submit_feedback(request):
@@ -27,3 +27,25 @@ def submit_feedback(request):
     else:
         response_body = response.json()
     return JsonResponse(response_body, status=response.status_code)
+
+
+def get_subjects_json(request):
+    response = get_json_file("subjects.json")
+
+    if response.ok:
+        response_body = response.json()
+    else:
+        response_body = {}
+        
+    return JsonResponse(response_body, status=response.status_code, safe=False)
+
+
+def get_institutions_json(request):
+    response = get_json_file("institutions.json")
+
+    if response.ok:
+        response_body = response.json()
+    else:
+        response_body = {}
+        
+    return JsonResponse(response_body, status=response.status_code, safe=False)
