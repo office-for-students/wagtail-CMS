@@ -4,16 +4,18 @@
     <a href="#main-content" class="screen-reader">skip to main content</a>
 
     <div class="discover-uni-nav__container discover-uni-container">
-        <a class="discover-uni-nav__home-link" href="/">
-            {% if page.is_english %}
+        {% if page.is_english %}
+            <a class="discover-uni-nav__home-link" href="/">
                 <img class="discover-uni-nav__brand-logo" src="{% static 'images/logos/nav_logo_english.svg' %}"
-                     alt="{% get_translation key='site_logo' language=page.get_language %}">
-            {% else %}
+                    alt="{% get_translation key='site_logo' language=page.get_language %}">
+            </a>
+        {% else %}
+            <a class="discover-uni-nav__home-link" href="/cy">
                 <img class="discover-uni-nav__brand-logo" src="{% static 'images/logos/nav_logo_welsh.svg' %}"
-                     alt="{% get_translation key='site_logo' language=page.get_language %}">
-            {% endif %}
-        </a>
-
+                    alt="{% get_translation key='site_logo' language=page.get_language %}">
+            </a>
+        {% endif %}
+      
         <ul class="discover-uni-nav__desktop-links">
             {% for item in page.menu %}
                 {% if item.sub_items %}
