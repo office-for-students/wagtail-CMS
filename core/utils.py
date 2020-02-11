@@ -9,28 +9,6 @@ from http import HTTPStatus
 from CMS.enums import enums
 from core.exceptions import VirusException
 from errors.models import InternalError
-from core.request_handler import send_feedback, get_json_file
-
-
-def get_collection_link(db_id, collection_id):
-    """Create and return collection link based on values passed in"""
-
-    cosmosdb_database_id = os.environ[db_id]
-    cosmosdb_collection_id = os.environ[collection_id]
-
-    # Return a link to the relevant CosmosDB Container/Document Collection
-    return "dbs/" + cosmosdb_database_id + "/colls/" + cosmosdb_collection_id
-
-
-def get_cosmos_client():
-    cosmosdb_uri = os.environ["AzureCosmosDbUri"]
-    cosmosdb_key = os.environ["AzureCosmosDbKey"]
-
-    master_key = "masterKey"
-
-    return cosmos_client.CosmosClient(
-        url_connection=cosmosdb_uri, auth={master_key: cosmosdb_key}
-    )
 
 
 def get_page_for_language(language, pages):
@@ -126,12 +104,6 @@ def get_clam():
             raise ValueError('could not connect to clamd server either by unix or network socket')
 
 
-def get_current_version():
-    response = get_json_file("version.json")
-
-    if response.ok:
-        version_number = response.json()["version"]
-    else:
-        version_number = ""
-        
-    return version_number
+def get_version_number():
+    with open(os.path.join(settings.BASE_DIR, 'version.txt'), 'r') as file:
+        return file.read().replace('\n', '')
