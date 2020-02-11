@@ -510,7 +510,7 @@ DICT = {
         'cy': 'Gweithwyr Proffesiynol Technoleg Gwybodaeth a Thelathrebu'
     },
     'internal_error': {
-        'en': 'There was an error loading the page',
+        'en': 'There was an error loding the page',
         'cy': 'Roedd gwall wrth lwytho’r dudalen'
     },
     'IT service delivery occupations': {
@@ -866,10 +866,6 @@ DICT = {
         'en': 'selected of',
         'cy': ''
     },
-    'select_a_university': {
-        'en': 'Please select a university',
-        'cy': 'Dewiswch brifysgol'
-    },
     'send_message': {
         'en': 'Send message',
         'cy': 'Anfon neges'
@@ -998,9 +994,9 @@ DICT = {
         'en': 'Unemployed',
         'cy': 'Di-waith'
     },
-    'uni_and_college': {
-        'en': 'All universities and collages',
-        'cy': 'Pob prifysgol a gludwaith'
+    'uni_or_college': {
+        'en': 'University or college',
+        'cy': 'Prifysgol neu goleg'
     },
     'uni_college': {
         'en': 'Universities / colleges',

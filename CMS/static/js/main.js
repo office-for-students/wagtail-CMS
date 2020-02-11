@@ -1,16 +1,3 @@
-(function($) {
-    $.fn.invisible = function() {
-        return this.each(function() {
-            $(this).css("visibility", "hidden");
-        });
-    };
-    $.fn.visible = function() {
-        return this.each(function() {
-            $(this).css("visibility", "visible");
-        });
-    };
-}(jQuery));
-
 (function ($) {
     
     // ie polyfill for Includes
@@ -497,19 +484,14 @@
     SearchDropdown.prototype = {
         setup: function() {
             this.selectionField = this.container.find('.selection-field');
-            this.selectionFieldError = this.container.find('.search-dropdown-error')
             this.fieldName = this.selectionField[0].name;
             this.searchField = $(this.container.find('.search-field-input')[0]);
             this.optionList = $(this.container.find('.options-list'));
             this.placeholder = $(this.optionList.find('.placeholder'));
             this.selectOptions = this.selectionField.find('option');
-            this.form = $('.search-landing-page__search');
-            this.valid_selection = true;
-            this.selectionFieldError.invisible();
             this.initialiseOptions();
             this.watchForFocus();
             this.watchForSearchTerm();
-            this.watchForSearch();
         },
 
         initialiseOptions: function() {
@@ -527,11 +509,7 @@
 
             $(document).click(function(e) {
                 if (!that.container[0].contains(e.target)) {
-                    that.optionList.hide();
-
-                    if (!that.valid_selection) {
-                        that.selectionFieldError.visible();
-                    }
+                  that.optionList.hide();
                 }
             });
         },
@@ -539,29 +517,12 @@
         watchForSearchTerm: function() {
             var that = this;
             this.searchField.keyup(function(e) {
-                that.valid_selection = false;
-
                 if (e.target.value.length >= that.minSearchTermLength) {
                     that.placeholder.hide();
                     that.filterOptionsList(e.target.value);
                 } else {
-                    if (e.target.value.length == 0) {
-                        that.valid_selection = true;
-                        that.selectionFieldError.invisible();
-                    }
-
                     that.placeholder.show();
                     that.clearFilter();
-                }
-            });
-        },
-
-        watchForSearch: function() {
-            var that = this;
-
-            this.form.submit(function(evt) {
-                if (!that.valid_selection) {
-                    evt.preventDefault();
                 }
             });
         },
@@ -588,7 +549,6 @@
             this.clearSearch();
             this.searchField[0].value = option.textValue;
             this.optionList.hide();
-            this.valid_selection = true;
         }
     }
 
@@ -668,19 +628,24 @@
 
         loadSubjectData: function() {
             var that = this;
-            var currentVersion = $('meta[name=currentversion]')[0].content;
-            var isCurrentVersionStored = localStorage.getItem("subjectsJSONVersion") === currentVersion;
+            var currentVersion = $('meta[name=codeversion]')[0].content;
+            var isCurrentVersionStored = localStorage.getItem("version") === currentVersion;
 
-            if (!isCurrentVersionStored || localStorage.getItem("subjectsJSON") === null) {
-                $.getJSON("/jsonfiles/subjects", function(result) {
-                    localStorage.setItem("subjectsJSON", JSON.stringify(result));
-                    localStorage.setItem("subjectsJSONVersion", currentVersion)
+            if (!isCurrentVersionStored || localStorage.getItem("subjectJSON") === null) {
+                $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
+                    result.sort(function(a, b){
+                        if (a.english_name < b.english_name) { return -1; }
+                        if (a.english_name > b.english_name) { return 1; }
+                        return 0;
+                    });
+
+                    localStorage.setItem("subjectJSON", JSON.stringify(result));
 
                     that.subjectData = result;
                     that.initialiseSelectors();
                 })
             } else {
-                this.subjectData = JSON.parse(localStorage.getItem("subjectsJSON"));
+                this.subjectData = JSON.parse(localStorage.getItem("subjectJSON"));
                 this.initialiseSelectors();
             }
         },
@@ -859,13 +824,19 @@
         }
 
         // Course finder
-        var currentVersion = $('meta[name=currentversion]')[0].content;
-        var isCurrentVersionStored = localStorage.getItem("subjectsJSONVersion") === currentVersion;
+        var currentVersion = $('meta[name=codeversion]')[0].content;
+        var isCurrentVersionStored = localStorage.getItem("version") === currentVersion;
 
-        if (!isCurrentVersionStored || localStorage.getItem("subjectsJSON") === null) {
-            $.getJSON("/jsonfiles/subjects", function(result) {
-                localStorage.setItem("subjectsJSON", JSON.stringify(result));
-                localStorage.setItem("subjectsJSONVersion", currentVersion);
+        if (!isCurrentVersionStored || localStorage.getItem("subjectJSON") === null) {
+            $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
+                result.sort(function(a, b){
+                    if (a.english_name < b.english_name) { return -1; }
+                    if (a.english_name > b.english_name) { return 1; }
+                    return 0;
+                });
+
+                localStorage.setItem("subjectJSON", JSON.stringify(result));
+                localStorage.setItem("version", currentVersion);
             })
         }
 
