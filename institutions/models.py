@@ -72,10 +72,10 @@ class InstitutionDetailPage(DiscoverUniBasePage):
 
 class InstitutionOverview:
 
-    def __init__(self, data_obj):
-        self.pub_ukprn_name = data_obj.get('pub_ukprn_name')
+    def __init__(self, data_obj, language):
+        self.pub_ukprn_name = data_obj.get('pub_ukprn_name') if language == enums.languages.ENGLISH else data_obj.get('pub_ukprn_welsh_name')
+        self.ukprn_name = data_obj.get('ukprn_name') if language == enums.languages.ENGLISH else data_obj.get('ukprn_welsh_name')
         self.pub_ukprn = data_obj.get('pub_ukprn')
-        self.ukprn_name = data_obj.get('ukprn_name')
         self.ukprn = data_obj.get('ukprn')
 
 
@@ -90,13 +90,13 @@ class Institution:
             self.apr_outcome = institution_data.get('apr_outcome')
             self.pub_ukprn_country_code = institution_data.get("pub_ukprn_country").get('code')
             self.pub_ukprn_country_name = institution_data.get("pub_ukprn_country").get('name')
-            self.pub_ukprn_name = institution_data.get("pub_ukprn_name")
+            self.pub_ukprn_name = institution_data.get("pub_ukprn_name") if language == enums.lanugages.ENGLISH else institution_data.get("pub_ukprn_welsh_name")
             self.pub_ukprn = institution_data.get("pub_ukprn")
             self.website = institution_data.get('links').get('institution_homepage')
             self.tef_outcome = institution_data.get("tef_outcome")
             self.total_number_of_courses = institution_data.get("total_number_of_courses")
             self.ukprn_country = institution_data.get("ukprn_country")
-            self.ukprn_name = institution_data.get("ukprn_name")
+            self.ukprn_name = institution_data.get("ukprn_name") if language == enums.lanugages.ENGLISH else institution_data.get("ukprn_welsh_name")
             self.ukprn = institution_data.get("ukprn")
 
             if 'contact_details' in institution_data:
