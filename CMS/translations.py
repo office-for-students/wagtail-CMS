@@ -328,7 +328,7 @@ DICT = {
             'en': 'Optional',
             'cy': 'Dewisol'
         },
-        'Course is availble other than by distance learning': {
+        'Course is available other than by distance learning': {
             'en': 'Not Available',
             'cy': 'Ddim ar gael'
         }
