@@ -19,3 +19,4 @@ def load_institution_json():
         institution_json[language] = response_body
         
     return institution_json
+  
