@@ -29,7 +29,7 @@ class SearchLandingPage(DiscoverUniBasePage):
         context['search_url'] = self.get_search_url()
         context['course_finder_url'] = get_page_for_language(self.get_language(),
                                                              CourseFinderChooseCountry.objects.all()).url
-        context['institutions_list'] = InstitutionList.options
+        context['institutions_list'] = InstitutionList.options[self.get_language()]
 
         if self.get_language() == "cy":
             context['disclaimer'] = "Mae enwau'r Prifysgolion fel y'u darperir gan Gofrestr y DU o Ddarparwyr Dysgu. Os nad yw'r enw Cymraeg yn bresennol, chwiliwch amdano gan ddefnyddio'i enw Saesneg."
