@@ -147,19 +147,20 @@
         loadUnis: function() {
             var that = this;
 
+            var language = $('meta[name=pagelanguage]')[0].content;
             var currentVersion = $('meta[name=currentversion]')[0].content;
-            var isCurrentVersionStored = localStorage.getItem("uniJSONVersion") === currentVersion;
+            var isCurrentVersionStored = localStorage.getItem("uniJSONVersion_" + language) === currentVersion;
 
-            if (!isCurrentVersionStored || localStorage.getItem("uniJSON") === null) {
-                $.getJSON("/jsonfiles/institutions", function(result) {
-                    localStorage.setItem("uniJSON", JSON.stringify(result));
-                    localStorage.setItem("uniJSONVersion", version);
+            if (!isCurrentVersionStored || localStorage.getItem("uniJSON_" + language) === null) {
+                $.getJSON("/jsonfiles/institutions/" + language + "/", function(result) {
+                    localStorage.setItem("uniJSON_" + language, JSON.stringify(result));
+                    localStorage.setItem("uniJSONVersion_" + language, currentVersion);
 
                     that.uniData = result;
                 });
             }
             else {
-                that.uniData = JSON.parse(localStorage.getItem("uniJSON"))
+                that.uniData = JSON.parse(localStorage.getItem("uniJSON_" + language))
             }
 
             that.uniList = new UniList(that.unisListWrapper, that.uniData, that.setTotalCount.bind(that),
