@@ -328,7 +328,7 @@ DICT = {
             'en': 'Optional',
             'cy': 'Dewisol'
         },
-        'Course is availble other than by distance learning': {
+        'Course is available other than by distance learning': {
             'en': 'Not Available',
             'cy': 'Ddim ar gael'
         }
@@ -510,7 +510,7 @@ DICT = {
         'cy': 'Gweithwyr Proffesiynol Technoleg Gwybodaeth a Thelathrebu'
     },
     'internal_error': {
-        'en': 'There was an error loding the page',
+        'en': 'There was an error loading the page',
         'cy': 'Roedd gwall wrth lwytho’r dudalen'
     },
     'IT service delivery occupations': {
@@ -994,7 +994,7 @@ DICT = {
         'en': 'Unemployed',
         'cy': 'Di-waith'
     },
-    'uni_or_college': {
+    'uni_and_college': {
         'en': 'University or college',
         'cy': 'Prifysgol neu goleg'
     },

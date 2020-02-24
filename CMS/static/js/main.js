@@ -1,3 +1,16 @@
+(function($) {
+    $.fn.invisible = function() {
+        return this.each(function() {
+            $(this).css("visibility", "hidden");
+        });
+    };
+    $.fn.visible = function() {
+        return this.each(function() {
+            $(this).css("visibility", "visible");
+        });
+    };
+}(jQuery));
+
 (function ($) {
     
     // ie polyfill for Includes
@@ -509,7 +522,7 @@
 
             $(document).click(function(e) {
                 if (!that.container[0].contains(e.target)) {
-                  that.optionList.hide();
+                    that.optionList.hide();
                 }
             });
         },
@@ -517,6 +530,7 @@
         watchForSearchTerm: function() {
             var that = this;
             this.searchField.keyup(function(e) {
+
                 if (e.target.value.length >= that.minSearchTermLength) {
                     that.placeholder.hide();
                     that.filterOptionsList(e.target.value);
@@ -628,24 +642,19 @@
 
         loadSubjectData: function() {
             var that = this;
-            var currentVersion = $('meta[name=codeversion]')[0].content;
-            var isCurrentVersionStored = localStorage.getItem("version") === currentVersion;
+            var currentVersion = $('meta[name=currentversion]')[0].content;
+            var isCurrentVersionStored = localStorage.getItem("subjectsJSONVersion") === currentVersion;
 
-            if (!isCurrentVersionStored || localStorage.getItem("subjectJSON") === null) {
-                $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
-                    result.sort(function(a, b){
-                        if (a.english_name < b.english_name) { return -1; }
-                        if (a.english_name > b.english_name) { return 1; }
-                        return 0;
-                    });
-
-                    localStorage.setItem("subjectJSON", JSON.stringify(result));
+            if (!isCurrentVersionStored || localStorage.getItem("subjectsJSON") === null) {
+                $.getJSON("/jsonfiles/subjects", function(result) {
+                    localStorage.setItem("subjectsJSON", JSON.stringify(result));
+                    localStorage.setItem("subjectsJSONVersion", currentVersion)
 
                     that.subjectData = result;
                     that.initialiseSelectors();
                 })
             } else {
-                this.subjectData = JSON.parse(localStorage.getItem("subjectJSON"));
+                this.subjectData = JSON.parse(localStorage.getItem("subjectsJSON"));
                 this.initialiseSelectors();
             }
         },
@@ -824,19 +833,13 @@
         }
 
         // Course finder
-        var currentVersion = $('meta[name=codeversion]')[0].content;
-        var isCurrentVersionStored = localStorage.getItem("version") === currentVersion;
+        var currentVersion = $('meta[name=currentversion]')[0].content;
+        var isCurrentVersionStored = localStorage.getItem("subjectsJSONVersion") === currentVersion;
 
-        if (!isCurrentVersionStored || localStorage.getItem("subjectJSON") === null) {
-            $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
-                result.sort(function(a, b){
-                    if (a.english_name < b.english_name) { return -1; }
-                    if (a.english_name > b.english_name) { return 1; }
-                    return 0;
-                });
-
-                localStorage.setItem("subjectJSON", JSON.stringify(result));
-                localStorage.setItem("version", currentVersion);
+        if (!isCurrentVersionStored || localStorage.getItem("subjectsJSON") === null) {
+            $.getJSON("/jsonfiles/subjects", function(result) {
+                localStorage.setItem("subjectsJSON", JSON.stringify(result));
+                localStorage.setItem("subjectsJSONVersion", currentVersion);
             })
         }
 

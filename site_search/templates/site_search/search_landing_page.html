@@ -30,7 +30,7 @@
                             </div>
 
                             <div class="search-landing-page__search-input">
-                                {%  get_translation key='uni_or_college' language=page.get_language as placeholder %}
+                                {%  get_translation key='uni_and_college' language=page.get_language as placeholder %}
                                 {% include 'partials/search-dropdown.html' with placeholder=placeholder field_name='institution_query' options=institutions_list %}
                             </div>
                         </div>

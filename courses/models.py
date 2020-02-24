@@ -225,7 +225,7 @@ class Course:
                 self.welsh_title = fallback_to(title.get('welsh'), '')
             self.honours_award_provision = course_details.get('honours_award_provision')
 
-            self.institution = InstitutionOverview(course_details.get('institution'))
+            self.institution = InstitutionOverview(course_details.get('institution'), language)
             self.locations = []
             if course_details.get('locations'):
                 for location in course_details.get('locations'):

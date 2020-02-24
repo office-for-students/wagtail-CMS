@@ -38,7 +38,7 @@
 
 
         {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+        <script type="text/javascript" src="{% get_static_prefix %}js/main.js?{% code_version %}"></script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
