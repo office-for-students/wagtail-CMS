@@ -994,7 +994,7 @@ DICT = {
         'en': 'Unemployed',
         'cy': 'Di-waith'
     },
-    'uni_or_college': {
+    'uni_and_college': {
         'en': 'University or college',
         'cy': 'Prifysgol neu goleg'
     },

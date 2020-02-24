@@ -146,28 +146,25 @@
 
         loadUnis: function() {
             var that = this;
-            $.getJSON("/static/jsonfiles/institutions.json", function(result) {
-                var version = result.version;
-                var institutions = result.institutions;
 
-                if (version + "" !== localStorage.getItem("uniJSONVersion") || localStorage.getItem("uniJSON") === null) {
-                    institutions.sort(function(a, b) {
-                        if(a.order_by_name < b.order_by_name) { return -1; }
-                        if(a.order_by_name > b.order_by_name) { return 1; }
-                        return 0;
-                    });
+            var language = $('meta[name=pagelanguage]')[0].content;
+            var currentVersion = $('meta[name=currentversion]')[0].content;
+            var isCurrentVersionStored = localStorage.getItem("uniJSONVersion_" + language) === currentVersion;
 
-                    localStorage.setItem("uniJSON", JSON.stringify(institutions));
-                    localStorage.setItem("uniJSONVersion", version);
+            if (!isCurrentVersionStored || localStorage.getItem("uniJSON_" + language) === null) {
+                $.getJSON("/jsonfiles/institutions/" + language + "/", function(result) {
+                    localStorage.setItem("uniJSON_" + language, JSON.stringify(result));
+                    localStorage.setItem("uniJSONVersion_" + language, currentVersion);
 
-                    that.uniData = institutions;
-                } else {
-                    that.uniData = JSON.parse(localStorage.getItem("uniJSON"))
-                }
+                    that.uniData = result;
+                });
+            }
+            else {
+                that.uniData = JSON.parse(localStorage.getItem("uniJSON_" + language))
+            }
 
-                that.uniList = new UniList(that.unisListWrapper, that.uniData, that.setTotalCount.bind(that),
-                                            that.setSelectedCount.bind(that));
-            });
+            that.uniList = new UniList(that.unisListWrapper, that.uniData, that.setTotalCount.bind(that),
+                                    that.setSelectedCount.bind(that));
         },
 
         handleLetterChange: function(filterLetter) {
@@ -338,7 +335,7 @@
 
             this.parent.append(uniWrapperNode);
             this.uniWrapper = this.parent.find('#' + this.id);
-            this.uniInput = this.uniWrapper.find('input');            
+            this.uniInput = this.uniWrapper.find('input');
             if (this.isPreSelected) {
                 this.uniInput[0].checked = true;
             }
