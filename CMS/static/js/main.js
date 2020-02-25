@@ -497,14 +497,20 @@
     SearchDropdown.prototype = {
         setup: function() {
             this.selectionField = this.container.find('.selection-field');
+            this.selectionFieldError = this.container.find('.search-dropdown-error')
             this.fieldName = this.selectionField[0].name;
             this.searchField = $(this.container.find('.search-field-input')[0]);
             this.optionList = $(this.container.find('.options-list'));
             this.placeholder = $(this.optionList.find('.placeholder'));
             this.selectOptions = this.selectionField.find('option');
+            this.form = $('.search-landing-page__search');
+            this.searchButton = $(".search-landing-page__nav-card-button");
+            this.valid_selection = true;
+            this.selectionFieldError.invisible();
             this.initialiseOptions();
             this.watchForFocus();
             this.watchForSearchTerm();
+            this.watchForSearch();
         },
 
         initialiseOptions: function() {
@@ -523,6 +529,11 @@
             $(document).click(function(e) {
                 if (!that.container[0].contains(e.target)) {
                     that.optionList.hide();
+
+                    if (!that.valid_selection) {
+                        that.selectionFieldError.visible();
+                        that.searchButton.prop("disabled", true)
+                    }
                 }
             });
         },
@@ -530,13 +541,32 @@
         watchForSearchTerm: function() {
             var that = this;
             this.searchField.keyup(function(e) {
+                that.valid_selection = false;
 
                 if (e.target.value.length >= that.minSearchTermLength) {
                     that.placeholder.hide();
                     that.filterOptionsList(e.target.value);
                 } else {
+                    if (e.target.value.length == 0) {
+                        that.valid_selection = true;
+                        that.searchButton.prop("disabled", false)
+                        that.selectionFieldError.invisible();
+                    }
+
                     that.placeholder.show();
                     that.clearFilter();
+                }
+            });
+        },
+
+        watchForSearch: function() {
+            var that = this;
+
+            this.form.submit(function(evt) {
+                if (!that.valid_selection) {
+                    evt.preventDefault();
+                    that.selectionFieldError.visible();
+                    that.searchButton.prop("disabled", true)
                 }
             });
         },
@@ -563,6 +593,8 @@
             this.clearSearch();
             this.searchField[0].value = option.textValue;
             this.optionList.hide();
+            this.valid_selection = true;
+            this.searchButton.prop("disabled", false)
         }
     }
 
