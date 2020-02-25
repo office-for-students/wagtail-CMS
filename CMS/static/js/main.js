@@ -706,7 +706,7 @@
 
                     that.subjectData = result;
                     that.initialiseSelectors();
-                })
+                });
             } else {
                 this.subjectData = JSON.parse(localStorage.getItem("subjectsJSON"));
                 this.initialiseSelectors();
@@ -894,7 +894,7 @@
             $.getJSON("/jsonfiles/subjects", function(result) {
                 localStorage.setItem("subjectsJSON", JSON.stringify(result));
                 localStorage.setItem("subjectsJSONVersion", currentVersion);
-            })
+            });
         }
 
         var accordions = $('[class$=accordion]');
