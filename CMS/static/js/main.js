@@ -490,34 +490,35 @@
     // SEARCH DROPDOWN
     var SearchDropdown = function(container) {
         this.container = $(container);
-        this.minSearchTermLength = 3;
+        this.minSearchTermLength = 1;
         this.setup()
     }
 
     SearchDropdown.prototype = {
         setup: function() {
             this.selectionField = this.container.find('.selection-field');
-            this.selectionFieldError = this.container.find('.search-dropdown-error')
             this.fieldName = this.selectionField[0].name;
             this.searchField = $(this.container.find('.search-field-input')[0]);
             this.optionList = $(this.container.find('.options-list'));
-            this.placeholder = $(this.optionList.find('.placeholder'));
             this.selectOptions = this.selectionField.find('option');
             this.form = $('.search-landing-page__search');
-            this.searchButton = $(".search-landing-page__nav-card-button");
+            this.dropdownButton = $(".search-field-dropdown-button");
             this.valid_selection = true;
-            this.selectionFieldError.invisible();
             this.initialiseOptions();
             this.watchForFocus();
             this.watchForSearchTerm();
             this.watchForSearch();
+            this.watchForDropdown();
         },
 
         initialiseOptions: function() {
             this.options = []
+            this.options.push()
             for (var i = 0; i < this.selectOptions.length; i++) {
                 this.options.push(new SearchOption(this.selectOptions[i], this.optionList, this.handleSelection.bind(this)));
             }
+
+            this.setDefaultValue();
         },
 
         watchForFocus: function() {
@@ -531,8 +532,7 @@
                     that.optionList.hide();
 
                     if (!that.valid_selection) {
-                        that.selectionFieldError.visible();
-                        that.searchButton.prop("disabled", true)
+                        that.setDefaultValue();
                     }
                 }
             });
@@ -544,17 +544,12 @@
                 that.valid_selection = false;
 
                 if (e.target.value.length >= that.minSearchTermLength) {
-                    that.placeholder.hide();
                     that.filterOptionsList(e.target.value);
                 } else {
                     if (e.target.value.length == 0) {
-                        that.valid_selection = true;
-                        that.searchButton.prop("disabled", false)
-                        that.selectionFieldError.invisible();
+                        that.resetFilter();
+                        that.setDefaultValue()
                     }
-
-                    that.placeholder.show();
-                    that.clearFilter();
                 }
             });
         },
@@ -565,36 +560,59 @@
             this.form.submit(function(evt) {
                 if (!that.valid_selection) {
                     evt.preventDefault();
-                    that.selectionFieldError.visible();
-                    that.searchButton.prop("disabled", true)
+                } else {
+                    if (that.options[0].option.selected) {
+                        that.searchField[0].value = '';
+                    }
                 }
             });
         },
 
-        clearFilter: function() {
-            for (var i = 0; i < this.options.length; i++) {
-                this.options[i].hideOption();
-            }
+        watchForDropdown: function() {
+            var that = this;
+
+            this.dropdownButton.click(function(evt) {
+                evt.preventDefault();
+
+                if (!that.optionList.is(":visible")) {
+                    that.optionList.show()
+                } else {
+                    that.optionList.hide()
+                }
+            });
+        },
+
+        setDefaultValue: function() {
+            this.options[0].option.selected = true;
+            this.options[0].handleSelection(this.options[0]);
+            this.valid_selection = true;
         },
 
         clearSearch: function() {
             this.searchField[0].value = '';
-            this.clearFilter();
+        },
+
+        resetFilter: function() {
+            this.optionList.scrollTop(0);
+
+            for (var i = 1; i < this.options.length; i++) {
+                this.options[i].showOption();
+            }
         },
 
         filterOptionsList: function(searchTerm) {
             var searchTerm = searchTerm.toLowerCase();
-            for (var i = 0; i < this.options.length; i++) {
-                this.options[i].filterForSearch(searchTerm, this.selectionField.value);
+            for (var i = 1; i < this.options.length; i++) {
+                this.options[i].filterForSearch(searchTerm);
             }
         },
 
         handleSelection: function(option) {
             this.clearSearch();
-            this.searchField[0].value = option.textValue;
+            this.resetFilter();
+            this.searchField[0].value = $.trim(option.textValue);
             this.optionList.hide();
             this.valid_selection = true;
-            this.searchButton.prop("disabled", false)
         }
     }
 
@@ -636,12 +654,16 @@
             })
         },
 
-        filterForSearch: function(searchTerm, selectedOptions) {
+        filterForSearch: function(searchTerm) {
             if (this.textValue.toLowerCase().indexOf(searchTerm) > -1) {
                 $(this.uiOption).show();
             } else {
                 $(this.uiOption).hide();
             }
+        },
+
+        showOption: function() {
+            $(this.uiOption).show();
         },
 
         hideOption: function() {
