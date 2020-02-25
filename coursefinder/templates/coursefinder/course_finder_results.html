@@ -9,10 +9,10 @@
 {% endblock extra_css %}
 
 {% block extra_js %}
-    <script type="text/javascript" src="{% static 'js/filters.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/compare-selector.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/finder-results.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/button-visibility.js' %}"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}js/filters.js?{% code_version %}"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}js/compare-selector.js?{% code_version %}"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}js/finder-results.js?{% code_version %}"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}js/button-visibility.js?{% code_version %}"></script>
 {% endblock %}
 
 {% block content %}

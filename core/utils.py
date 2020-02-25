@@ -135,3 +135,8 @@ def get_current_version():
         version_number = ""
         
     return version_number
+
+
+def get_code_version():
+        with open(os.path.join(settings.BASE_DIR, 'version.txt'), 'r') as file:
+            return file.read().replace('\n', '')

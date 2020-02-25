@@ -7,7 +7,7 @@ from django import template
 
 from CMS.enums import enums
 from CMS.translations import DICT
-from core.utils import get_current_version
+from core.utils import get_current_version, get_code_version
 from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, AFTER_COURSE_KEY, \
     ACCREDITATION_KEY
 
@@ -25,6 +25,11 @@ SHOW_STATS_LOOKUP = {
 @register.simple_tag
 def current_version():
     return get_current_version()
+
+
+@register.simple_tag
+def code_version():
+    return get_code_version()
 
 
 @register.simple_tag
