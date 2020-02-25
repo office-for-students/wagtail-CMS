@@ -2,7 +2,7 @@
 
 <div class="search-dropdown">
     <select id="{{field_name}}" class="selection-field" name="{{field_name}}">
-        <option id="{{field_name}}-na" value=""></option>
+        <option id="{{field_name}}-na" value="">{{placeholder}}</option>
         {% for option in options %}
             <option id="{{field_name}}-{{forloop.counter}}" value='"{{option.name}}"'>
                 {{option.name}}
@@ -11,7 +11,7 @@
     </select>
 
     <div class='search-field'>
-        <input id="{{field_name}}-search" type="text" class="search-field-input" aria-label="{{placeholder}}"
+        <input onClick="this.setSelectionRange(0, this.value.length)" id="{{field_name}}-search" type="text" class="search-field-input" aria-label="{{placeholder}}"
                name="{{field_name}}_search" placeholder="{{placeholder}}" autocomplete="off"
         ><button class="search-field-dropdown-button">
                    <i class="down"></i>
@@ -19,13 +19,5 @@
     </div>
 
     <div class="options-list">
-        <p class="placeholder options-list--placeholder">
-            {% get_translation key='enter_3_characters' language=page.get_language %}
-        </p>
-    </div>
-    <div class="search-dropdown-error">
-        <p class="search-dropdown-error-message">
-            {% get_translation key='select_a_university' language=page.get_language %}
-        </p>
     </div>
 </div>

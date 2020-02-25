@@ -10,6 +10,7 @@
 
     .search-field {
         width: 100%;
+        position: relative;
 
         input {
             @extend .textbox;
@@ -19,6 +20,7 @@
         }
 
         &-dropdown-button {
+            position: absolute;
             display: inline-block;
             border: 2px solid #6E6E6E;
             border-radius: 0px 5px 5px 0px;
@@ -61,7 +63,7 @@
         .option {
             @include small-font-mixin();
 
-            display: none;
+            display: block;
             padding: 28px 30px;
             margin: 0;
 
@@ -71,17 +73,5 @@
                 @include green-gradient-background-mixin();
             }
         }
-    }
-
-    .search-dropdown-error {
-        font-family: Nunito Sans;
-        font-weight: normal;
-        font-size: 16px;
-        line-height: 5px;
-        color: #000000;
-        padding: 5px 10px;
-        margin-top: 10px;
-        background-color: #FEF7BC;
-        color: #676D70;
     }
 }

@@ -866,10 +866,6 @@ DICT = {
         'en': 'selected of',
         'cy': ''
     },
-    'select_a_university': {
-        'en': 'Please select a university',
-        'cy': 'PLACEHOLDER WELSH TEXT'
-    },
     'send_message': {
         'en': 'Send message',
         'cy': 'Anfon neges'
@@ -999,7 +995,7 @@ DICT = {
         'cy': 'Di-waith'
     },
     'uni_and_college': {
-        'en': 'All universities and collages',
+        'en': 'All universities and colleges',
         'cy': 'PLACEHOLDER WELSH TEXT'
     },
     'uni_college': {
