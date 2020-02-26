@@ -996,7 +996,7 @@ DICT = {
     },
     'uni_and_college': {
         'en': 'All universities and colleges',
-        'cy': 'PLACEHOLDER WELSH TEXT'
+        'cy': 'Pob prifysgol a choleg'
     },
     'uni_college': {
         'en': 'Universities / colleges',
