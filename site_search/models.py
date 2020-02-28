@@ -33,6 +33,8 @@ class SearchLandingPage(DiscoverUniBasePage):
 
         if self.get_language() == "cy":
             context['disclaimer'] = "Mae enwau'r Prifysgolion fel y'u darperir gan Gofrestr y DU o Ddarparwyr Dysgu. Os nad yw'r enw Cymraeg yn bresennol, chwiliwch amdano gan ddefnyddio'i enw Saesneg."
+        else: 
+            context['disclaimer'] = ""
 
         return context
 
