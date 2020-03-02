@@ -31,11 +31,6 @@ class SearchLandingPage(DiscoverUniBasePage):
                                                              CourseFinderChooseCountry.objects.all()).url
         context['institutions_list'] = InstitutionList.options[self.get_language()]
 
-        if self.get_language() == "cy":
-            context['disclaimer'] = "Mae enwau'r Prifysgolion fel y'u darperir gan Gofrestr y DU o Ddarparwyr Dysgu. Os nad yw'r enw Cymraeg yn bresennol, chwiliwch amdano gan ddefnyddio'i enw Saesneg."
-        else: 
-            context['disclaimer'] = ""
-
         return context
 
     def get_search_url(self):
