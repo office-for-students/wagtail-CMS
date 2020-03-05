@@ -220,8 +220,8 @@ DICT = {
         'cy': 'Rwy’n fodlon â’r cwcis'
     },
     'copyright': {
-        'en': '2019 Copyright. All rights reserved.',
-        'cy': 'Hawlfraint 2019. Cedwir Pob Hawl'
+        'en': '2020 Copyright. All rights reserved.',
+        'cy': 'Hawlfraint 2020. Cedwir Pob Hawl'
     },
     'Corporate managers and senior officials': {
         'en': 'Corporate managers and senior officials',
