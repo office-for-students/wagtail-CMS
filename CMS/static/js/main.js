@@ -512,8 +512,8 @@
         },
 
         initialiseOptions: function() {
-            this.options = []
-            this.options.push()
+            this.options = [];
+            this.options.push();
             for (var i = 0; i < this.selectOptions.length; i++) {
                 this.options.push(new SearchOption(this.selectOptions[i], this.optionList, this.handleSelection.bind(this)));
             }
@@ -542,15 +542,8 @@
             var that = this;
             this.searchField.keyup(function(e) {
                 that.valid_selection = false;
-
-                if (e.target.value.length >= that.minSearchTermLength) {
-                    that.filterOptionsList(e.target.value);
-                } else {
-                    if (e.target.value.length == 0) {
-                        that.resetFilter();
-                        that.setDefaultValue()
-                    }
-                }
+                that.filterOptionsList(e.target.value);
+                
             });
         },
 
@@ -575,9 +568,16 @@
                 evt.preventDefault();
 
                 if (!that.optionList.is(":visible")) {
-                    that.optionList.show()
+                    that.searchField[0].value = '';
+                    that.searchField[0].focus();
+                    that.valid_selection = false;
+                    that.optionList.show();
                 } else {
-                    that.optionList.hide()
+                    that.optionList.hide();
+
+                    if (!that.valid_selection) {
+                        that.setDefaultValue();
+                    }
                 }
             });
         },
