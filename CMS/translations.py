@@ -311,6 +311,10 @@ DICT = {
         'en': 'Design occupations',
         'cy': 'Galwedigaethau Dylunio'
     },
+    'disclaimer': {
+        'en': '',
+        'cy': "Mae enwau'r Prifysgolion fel y'u darperir gan Gofrestr y DU o Ddarparwyr Dysgu. Os nad yw'r enw Cymraeg yn bresennol, chwiliwch amdano gan ddefnyddio'i enw Saesneg."
+    },
     'distance_learning': {
         'en': 'Distance learning',
         'cy': 'Dysgu o bell'
@@ -383,7 +387,7 @@ DICT = {
     },
     'enter_postcode': {
         'en': 'Enter postcode',
-        'cy': ''
+        'cy': 'Nodwch y cod post'
     },
     'entry_graph_desc': {
         'en': ' of students entered the course with',
@@ -615,7 +619,7 @@ DICT = {
     },
     'narrow_location': {
         'en': 'Narrow location',
-        'cy': ''
+        'cy': 'Hidlo yn ôl lleoliad'
     },
     'Natural and social science professionals': {
         'en': 'Natural and social science professionals',
@@ -862,9 +866,13 @@ DICT = {
         'en': 'Select a course',
         'cy': 'Dewis cwrs'
     },
-    'selected_of': {
+    'selected_1': {
+        'en': '',
+        'cy': 'Dewiswyd'
+    },
+    'selected_2': {
         'en': 'selected of',
-        'cy': ''
+        'cy': 'o'
     },
     'send_message': {
         'en': 'Send message',
@@ -932,7 +940,7 @@ DICT = {
     },
     'study_abroad_year': {
         'en': 'Study abroad year',
-        'cy': ''
+        'cy': 'Blwyddyn dramor'
     },
     'study_and_working': {
         'en': 'Studying and working',
@@ -1036,11 +1044,11 @@ DICT = {
     },
     'with_placement': {
         'en': 'With placement year',
-        'cy': ''
+        'cy': 'Gyda blwyddyn leoliad'
     },
     'without_placement': {
         'en': 'Without placement year',
-        'cy': ''
+        'cy': 'Heb flwyddyn leoliad'
     },
     'with_foundation': {
         'en': 'With foundation year',
@@ -1048,7 +1056,7 @@ DICT = {
     },
     'without_foundation': {
         'en': 'Without foundation year',
-        'cy': ''
+        'cy': 'Heb flwyddyn sylfaen'
     },
     'with_abroad': {
         'en': 'With year abroad',
@@ -1056,7 +1064,7 @@ DICT = {
     },
     'without_abroad': {
         'en': 'Without year abroad',
-        'cy': ''
+        'cy': 'Heb flwyddyn dramor'
     },
     'work_placement_year': {
         'en': 'Work placement year',
