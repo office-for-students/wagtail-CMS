@@ -940,7 +940,7 @@ DICT = {
     },
     'study_abroad_year': {
         'en': 'Study abroad year',
-        'cy': ''
+        'cy': 'Blwyddyn dramor'
     },
     'study_and_working': {
         'en': 'Studying and working',
