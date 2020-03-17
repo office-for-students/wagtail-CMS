@@ -363,7 +363,7 @@
 
 @media only screen and (min-width: 770px) {
     .filters-wrapper {
-        position: initial;
+        position: static;
         display: none;
         max-height: 620px;
         overflow-y: scroll;
@@ -386,7 +386,7 @@
 
         &__submit {
             &-block {
-                position: sticky;
+                position: relative;
                 left: 0;
                 bottom: 0;
             }
@@ -451,6 +451,9 @@
 
                 .filters-block__filter-heading {
                     text-align: center;
+                    height: 2em;
+                    width: 239px;
+                    max-width: 239px;
                 }
             }
 

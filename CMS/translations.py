@@ -220,8 +220,8 @@ DICT = {
         'cy': 'Rwy’n fodlon â’r cwcis'
     },
     'copyright': {
-        'en': '2019 Copyright. All rights reserved.',
-        'cy': 'Hawlfraint 2019. Cedwir Pob Hawl'
+        'en': '2020 Copyright. All rights reserved.',
+        'cy': 'Hawlfraint 2020. Cedwir Pob Hawl'
     },
     'Corporate managers and senior officials': {
         'en': 'Corporate managers and senior officials',
@@ -311,6 +311,10 @@ DICT = {
         'en': 'Design occupations',
         'cy': 'Galwedigaethau Dylunio'
     },
+    'disclaimer': {
+        'en': '',
+        'cy': "Mae enwau'r Prifysgolion fel y'u darperir gan Gofrestr y DU o Ddarparwyr Dysgu. Os nad yw'r enw Cymraeg yn bresennol, chwiliwch amdano gan ddefnyddio'i enw Saesneg."
+    },
     'distance_learning': {
         'en': 'Distance learning',
         'cy': 'Dysgu o bell'
@@ -383,7 +387,7 @@ DICT = {
     },
     'enter_postcode': {
         'en': 'Enter postcode',
-        'cy': ''
+        'cy': 'Nodwch y cod post'
     },
     'entry_graph_desc': {
         'en': ' of students entered the course with',
@@ -615,7 +619,7 @@ DICT = {
     },
     'narrow_location': {
         'en': 'Narrow location',
-        'cy': ''
+        'cy': 'Hidlo yn ôl lleoliad'
     },
     'Natural and social science professionals': {
         'en': 'Natural and social science professionals',
@@ -862,13 +866,13 @@ DICT = {
         'en': 'Select a course',
         'cy': 'Dewis cwrs'
     },
-    'selected_of': {
-        'en': 'selected of',
-        'cy': ''
+    'selected_1': {
+        'en': '',
+        'cy': 'Dewiswyd'
     },
-    'select_a_university': {
-        'en': 'Please select a university',
-        'cy': 'PLACEHOLDER WELSH TEXT'
+    'selected_2': {
+        'en': 'selected of',
+        'cy': 'o'
     },
     'send_message': {
         'en': 'Send message',
@@ -936,7 +940,7 @@ DICT = {
     },
     'study_abroad_year': {
         'en': 'Study abroad year',
-        'cy': ''
+        'cy': 'Blwyddyn dramor'
     },
     'study_and_working': {
         'en': 'Studying and working',
@@ -999,8 +1003,8 @@ DICT = {
         'cy': 'Di-waith'
     },
     'uni_and_college': {
-        'en': 'All universities and collages',
-        'cy': 'PLACEHOLDER WELSH TEXT'
+        'en': 'All universities and colleges',
+        'cy': 'Pob prifysgol a choleg'
     },
     'uni_college': {
         'en': 'Universities / colleges',
@@ -1040,11 +1044,11 @@ DICT = {
     },
     'with_placement': {
         'en': 'With placement year',
-        'cy': ''
+        'cy': 'Gyda blwyddyn leoliad'
     },
     'without_placement': {
         'en': 'Without placement year',
-        'cy': ''
+        'cy': 'Heb flwyddyn leoliad'
     },
     'with_foundation': {
         'en': 'With foundation year',
@@ -1052,7 +1056,7 @@ DICT = {
     },
     'without_foundation': {
         'en': 'Without foundation year',
-        'cy': ''
+        'cy': 'Heb flwyddyn sylfaen'
     },
     'with_abroad': {
         'en': 'With year abroad',
@@ -1060,7 +1064,7 @@ DICT = {
     },
     'without_abroad': {
         'en': 'Without year abroad',
-        'cy': ''
+        'cy': 'Heb flwyddyn dramor'
     },
     'work_placement_year': {
         'en': 'Work placement year',
@@ -1225,5 +1229,5 @@ DICT = {
     'Compulsory': {
         'en': 'Compulsory',
         'cy': 'Gorfodol'
-    }
+    },
 }

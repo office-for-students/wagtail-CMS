@@ -30,13 +30,12 @@
                             </div>
 
                             <div class="search-landing-page__search-input">
-                                {%  get_translation key='uni_and_college' language=page.get_language as placeholder %}
+                                {% get_translation key='uni_and_college' language=page.get_language as placeholder %}
                                 {% include 'partials/search-dropdown.html' with placeholder=placeholder field_name='institution_query' options=institutions_list %}
                             </div>
                         </div>
 
-                        <button class="search-landing-page__nav-card-button"
-                             aria-label="{{card.value.search_button_description}}">
+                        <button class="search-landing-page__nav-card-button">
                             {% get_translation key='search' language=page.get_language %}
                         </button>
 
@@ -52,9 +51,9 @@
                 </a>
             </div>
 
-            {% if disclaimer %}
+            {% if page.is_welsh %}
                 <div class="search-landing-page__disclaimer">
-                    {{ disclaimer }}
+                    {% get_translation key='disclaimer' language=page.get_language %}
                 </div>
             {% endif %}
         </div>
