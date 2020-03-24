@@ -490,7 +490,7 @@
     // SEARCH DROPDOWN
     var SearchDropdown = function(container) {
         this.container = $(container);
-        this.minSearchTermLength = 3;
+        this.minSearchTermLength = 1;
         this.setup()
     }
 
@@ -500,18 +500,25 @@
             this.fieldName = this.selectionField[0].name;
             this.searchField = $(this.container.find('.search-field-input')[0]);
             this.optionList = $(this.container.find('.options-list'));
-            this.placeholder = $(this.optionList.find('.placeholder'));
             this.selectOptions = this.selectionField.find('option');
+            this.form = $('.search-landing-page__search');
+            this.dropdownButton = $(".search-field-dropdown-button");
+            this.valid_selection = true;
             this.initialiseOptions();
             this.watchForFocus();
             this.watchForSearchTerm();
+            this.watchForSearch();
+            this.watchForDropdown();
         },
 
         initialiseOptions: function() {
-            this.options = []
+            this.options = [];
+            this.options.push();
             for (var i = 0; i < this.selectOptions.length; i++) {
                 this.options.push(new SearchOption(this.selectOptions[i], this.optionList, this.handleSelection.bind(this)));
             }
+
+            this.setDefaultValue();
         },
 
         watchForFocus: function() {
@@ -523,6 +530,10 @@
             $(document).click(function(e) {
                 if (!that.container[0].contains(e.target)) {
                     that.optionList.hide();
+
+                    if (!that.valid_selection) {
+                        that.setDefaultValue();
+                    }
                 }
             });
         },
@@ -530,39 +541,78 @@
         watchForSearchTerm: function() {
             var that = this;
             this.searchField.keyup(function(e) {
+                that.valid_selection = false;
+                that.filterOptionsList(e.target.value);
+                
+            });
+        },
 
-                if (e.target.value.length >= that.minSearchTermLength) {
-                    that.placeholder.hide();
-                    that.filterOptionsList(e.target.value);
+        watchForSearch: function() {
+            var that = this;
+
+            this.form.submit(function(evt) {
+                if (!that.valid_selection) {
+                    evt.preventDefault();
                 } else {
-                    that.placeholder.show();
-                    that.clearFilter();
+                    if (that.options[0].option.selected) {
+                        that.searchField[0].value = '';
+                    }
                 }
             });
         },
 
-        clearFilter: function() {
-            for (var i = 0; i < this.options.length; i++) {
-                this.options[i].hideOption();
-            }
+        watchForDropdown: function() {
+            var that = this;
+
+            this.dropdownButton.click(function(evt) {
+                evt.preventDefault();
+
+                if (!that.optionList.is(":visible")) {
+                    that.searchField[0].value = '';
+                    that.searchField[0].focus();
+                    that.valid_selection = false;
+                    that.optionList.show();
+                } else {
+                    that.optionList.hide();
+
+                    if (!that.valid_selection) {
+                        that.setDefaultValue();
+                    }
+                }
+            });
+        },
+
+        setDefaultValue: function() {
+            this.options[0].option.selected = true;
+            this.options[0].handleSelection(this.options[0]);
+            this.valid_selection = true;
         },
 
         clearSearch: function() {
             this.searchField[0].value = '';
-            this.clearFilter();
+        },
+
+        resetFilter: function() {
+            this.optionList.scrollTop(0);
+
+            for (var i = 1; i < this.options.length; i++) {
+                this.options[i].showOption();
+            }
         },
 
         filterOptionsList: function(searchTerm) {
             var searchTerm = searchTerm.toLowerCase();
-            for (var i = 0; i < this.options.length; i++) {
-                this.options[i].filterForSearch(searchTerm, this.selectionField.value);
+            for (var i = 1; i < this.options.length; i++) {
+                this.options[i].filterForSearch(searchTerm);
             }
         },
 
         handleSelection: function(option) {
             this.clearSearch();
-            this.searchField[0].value = option.textValue;
+            this.resetFilter();
+            this.searchField[0].value = $.trim(option.textValue);
             this.optionList.hide();
+            this.valid_selection = true;
         }
     }
 
@@ -604,12 +654,16 @@
             })
         },
 
-        filterForSearch: function(searchTerm, selectedOptions) {
+        filterForSearch: function(searchTerm) {
             if (this.textValue.toLowerCase().indexOf(searchTerm) > -1) {
                 $(this.uiOption).show();
             } else {
                 $(this.uiOption).hide();
             }
+        },
+
+        showOption: function() {
+            $(this.uiOption).show();
         },
 
         hideOption: function() {
@@ -768,7 +822,7 @@
             for (var i = 0; i < this.subjectOptions.length; i++) {
                 var option = this.subjectOptions[i];
                 $(option).removeAttr("disabled");
-                if (option.value === this.subjectSelector[0].value) {
+                if (option.value.indexOf(this.subjectAreaSelector[0].value) === -1) {
                     $(option).attr("disabled", "disabled");
                 }
             }
@@ -781,7 +835,7 @@
             for (var i = 0; i < this.subjectCodeOptions.length; i++) {
                 var option = this.subjectCodeOptions[i];
                 $(option).removeAttr("disabled");
-                if (option.value === this.subjectCodeSelector[0].value) {
+                if (option.value === this.subjectCodeSelector[0].value || !option.dataset.code.includes(this.subjectSelector[0].value)) {
                     $(option).attr("disabled", "disabled");
                 }
             }
