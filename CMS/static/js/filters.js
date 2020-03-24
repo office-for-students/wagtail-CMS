@@ -162,7 +162,7 @@
             else {
                 that.uniData = JSON.parse(localStorage.getItem("uniJSON_" + language))
                 that.finishInit();
-            }            
+            }
         },
 
         finishInit: function() {
