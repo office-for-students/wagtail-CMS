@@ -31,8 +31,32 @@
     }
 
     &__brand-logo {
-        height: 72px;
+        height: 42px;
         margin-bottom: 35px;
+    }
+
+    &__ofs-logo {
+        height: 42px;
+        margin-bottom: 40px;
+        margin-left: 4px;
+    }
+
+    &__hefcw-logo {
+        height: 40px;
+        margin-bottom: 40px;
+        margin-left: 4px;
+    }
+
+    &__dfeni-logo {
+        height: 42px;
+        margin-bottom: 49px;
+        margin-left: 4px;
+    }
+
+    &__sfc-logo {
+        height: 48px;
+        margin-bottom: 54px;
+        margin-left: 4px;
     }
 }
 
@@ -65,8 +89,35 @@
         }
 
         &__brand-logo {
-            height: 94px;
+            height: 57px;
             margin-bottom: 45px;
+            padding-right: 5px;
+            border-right-width: 1px;
+            border-right-style: solid;
+        }
+
+        &__ofs-logo {
+            height: 48px;
+            margin-bottom: 56px;
+            margin-left: 7px;
+        }
+
+        &__hefcw-logo {
+            height: 48px;
+            margin-bottom: 49px;
+            margin-left: 7px;
+        }
+
+        &__dfeni-logo {
+            height: 48px;
+            margin-bottom: 49px;
+            margin-left: 7px;
+        }
+
+        &__sfc-logo {
+            height: 55px;
+            margin-bottom: 48px;
+            margin-left: 7px;
         }
     }
 }
