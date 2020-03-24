@@ -291,8 +291,9 @@
                         </p>
 
                         <p class="filters-block__filter-uni-controls-count">
+                            {% if page.is_welsh %}{% get_translation key='selected_1' language=page.get_language %}{% endif%}
                             <span class="selected">0</span>
-                            {% get_translation key='selected_of' language=page.get_language %}
+                            {% get_translation key='selected_2' language=page.get_language %}
                             <span class="total"></span>
                         </p>
 

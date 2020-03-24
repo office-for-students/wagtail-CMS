@@ -52,9 +52,9 @@
                 </a>
             </div>
 
-            {% if disclaimer %}
+            {% if page.is_welsh %}
                 <div class="search-landing-page__disclaimer">
-                    {{ disclaimer }}
+                    {% get_translation key='disclaimer' language=page.get_language %}
                 </div>
             {% endif %}
         </div>

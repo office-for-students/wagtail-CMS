@@ -8,6 +8,14 @@
     background-size: cover;
     background-position: center bottom;
 
+          
+    .coronavirus {
+        margin-left: 62%;
+        position: relative;
+        margin-bottom: 20px;
+        margin-top:20px; 
+    }
+
     .discover-uni-container {
         padding-right: 25px;
         padding-left: 25px;
@@ -57,7 +65,7 @@
 
 @media only screen and (min-width: 770px) {
     .home {
-        padding: 139px 0px 243px;
+        padding: 15px 0px 243px;
         background-position: initial;
 
         .discover-uni-container {

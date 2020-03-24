@@ -637,7 +637,6 @@
             }
 
             this.loadSubjectData();
-            this.startWatchers();
         },
 
         loadSubjectData: function() {
@@ -652,10 +651,12 @@
 
                     that.subjectData = result;
                     that.initialiseSelectors();
-                })
+                    that.startWatchers();
+                });
             } else {
                 this.subjectData = JSON.parse(localStorage.getItem("subjectsJSON"));
                 this.initialiseSelectors();
+                this.startWatchers();
             }
         },
 
@@ -840,7 +841,7 @@
             $.getJSON("/jsonfiles/subjects", function(result) {
                 localStorage.setItem("subjectsJSON", JSON.stringify(result));
                 localStorage.setItem("subjectsJSONVersion", currentVersion);
-            })
+            });
         }
 
         var accordions = $('[class$=accordion]');

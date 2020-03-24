@@ -79,7 +79,7 @@
             if (this.subjectAreaSelector.val() === null && this.subjectSelector.val() === null) {
                 subjectCodes = "";
             } else if (this.subjectAreaSelector.val() != null && this.subjectSelector.val() === null) {
-                subjectJson = JSON.parse(localStorage.getItem("subjectJSON"));
+                subjectJson = JSON.parse(localStorage.getItem("subjectsJSON"));
                 for (var i = 0; i < subjectJson.length; i++) {
                     var item = subjectJson[i];
                     if (item.level === "3" && item.code.includes(this.subjectAreaSelector.val())) {
@@ -128,7 +128,6 @@
 
             this.initialiseAlphabetToggles();
             this.loadUnis();
-            this.startWatchers();
         },
 
         startWatchers: function() {
@@ -157,14 +156,20 @@
                     localStorage.setItem("uniJSONVersion_" + language, currentVersion);
 
                     that.uniData = result;
+                    that.finishInit();
                 });
             }
             else {
                 that.uniData = JSON.parse(localStorage.getItem("uniJSON_" + language))
+                that.finishInit();
             }
+        },
 
-            that.uniList = new UniList(that.unisListWrapper, that.uniData, that.setTotalCount.bind(that),
-                                    that.setSelectedCount.bind(that));
+        finishInit: function() {
+            this.uniList = new UniList(this.unisListWrapper, this.uniData, this.setTotalCount.bind(this),
+            this.setSelectedCount.bind(this));
+            
+            this.startWatchers();
         },
 
         handleLetterChange: function(filterLetter) {
