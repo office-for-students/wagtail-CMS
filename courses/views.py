@@ -29,8 +29,7 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
     welsh_url = '/cy' + full_path if language == enums.languages.ENGLISH else full_path
     english_url = full_path.replace('/cy/', '/')
 
-    context = page.get_context(request)
-    context.update({
+    context = {
         'page': page,
         'course': course,
         'comparison_link': comparison_page.url if comparison_page else '#',
@@ -38,7 +37,7 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         'english_url': english_url,
         'welsh_url': welsh_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies')
-    })
+    }
 
     return render(request, 'courses/course_detail_page.html', context)
 
@@ -71,14 +70,13 @@ def compare_courses(request, language=enums.languages.ENGLISH):
     english_url = page.get_english_url() + query_string
     welsh_url = page.get_welsh_url() + query_string
 
-    context = page.get_context(request)
-    context.update({
+    context = {
         'page': page,
         'course1': course1,
         'course2': course2,
         'english_url': english_url,
         'welsh_url': welsh_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies')
-    })
+    }
 
     return render(request, 'courses/course_comparison_page.html', context)

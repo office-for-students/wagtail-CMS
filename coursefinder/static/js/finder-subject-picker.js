@@ -33,7 +33,7 @@
                 }
 
                 if (data.subjectArea.value != "disabled" && data.subject.value === "disabled") {
-                  $.each(JSON.parse(localStorage.getItem("subjectsJSON")), function(index, item) {
+                  $.each(JSON.parse(localStorage.getItem("subjectJSON")), function(index, item) {
                     if(item.level === "3" && item.code.includes(data.subjectArea.value)) {
                       subjectCodes += item.code + ","
                     }

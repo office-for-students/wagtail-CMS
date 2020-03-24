@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 
 from CMS.enums import enums
 from core.utils import get_page_for_language
-from coursefinder.forms import FilterForm
+from coursefinder.forms import FilterForm, SearchForm
 from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderPostcode, \
     CourseFinderSummary
 from coursefinder.models import CourseFinderResults
@@ -13,7 +13,7 @@ from site_search.models import SearchLandingPage
 
 def results(request, language=enums.languages.ENGLISH):
     query_params = request.GET
-    search_form = FilterForm(query_params)
+    search_form = SearchForm(query_params)
     course_search = CourseSearch(query_params.get('subject_query', ""),
                                  query_params.get('institution_query', ""),
                                  query_params.get('page', 1),
@@ -37,8 +37,7 @@ def results(request, language=enums.languages.ENGLISH):
     welsh_url = '/cy' + full_path if language == enums.languages.ENGLISH else full_path
     english_url = full_path.replace('/cy/', '/')
 
-    context = page.get_context(request)
-    context.update({
+    context = {
         'page': page,
         'search': course_search,
         'pagination_url': 'results',
@@ -48,7 +47,7 @@ def results(request, language=enums.languages.ENGLISH):
         'welsh_url': welsh_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
         'filter_form': search_form
-    })
+    }
 
     return render(request, 'coursefinder/course_finder_results.html', context)
 
@@ -99,8 +98,7 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     if not page:
         return render(request, '404.html')
 
-    context = page.get_context(request)
-    context.update({
+    context = {
         'page': page,
         'search': course_finder_search,
         'pagination_url': 'course_finder_results',
@@ -110,7 +108,7 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         'welsh_url': welsh_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
         'filter_form': filter_form
-    })
+    }
 
     return render(request, 'coursefinder/course_finder_results.html', context)
 

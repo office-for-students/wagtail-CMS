@@ -32,7 +32,7 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
         <div class="searchtool-container">
-          <button class="back-button" role="button">{% get_translation key='back' language=page.get_language %}</button>
+          <button class="back-button" role="button">< {% get_translation key='back' language=page.get_language %}</button>
           {% block content %}{% endblock %}
         </div>
 

@@ -28,7 +28,12 @@
 
     <p class="course-finder-results__result-accordion-body-course-info">
         {% get_translation key='study_mode' language=page.get_language %}:
-        {% get_translation key=course.mode language=page.get_language %}
+        {% if course.mode.label == 'Both' %}
+            {% get_translation key='full_time' language=page.get_language %}
+            {% get_translation key='part_time' language=page.get_language %}
+        {% else %}
+            {% get_translation key=course.mode language=page.get_language %}
+        {% endif %}
     </p>
 
     <p class="course-finder-results__result-accordion-body-course-info">

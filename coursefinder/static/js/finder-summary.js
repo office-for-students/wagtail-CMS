@@ -36,7 +36,7 @@
                     subjectsArray[index] = subject.replace(/"/g, '');
                 })
 
-                $.each(JSON.parse(localStorage.getItem("subjectsJSON")), function(index, a) {
+                $.each(JSON.parse(localStorage.getItem("subjectJSON")), function(index, a) {
                     $.each(subjectsArray, function(index, b) {
                         if(a.code === b) {
                             subjectNames.push(that.getSubjectName(a));

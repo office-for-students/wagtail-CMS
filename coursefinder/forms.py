@@ -1,4 +1,11 @@
 
+class SearchForm:
+
+    def __init__(self, form_data):
+        self.institutions = form_data.get('institution_query', '').replace('"', '')
+        self.course_query = form_data.get('subject_query', '')
+
+
 class FilterForm:
 
     def __init__(self, form_data):
@@ -15,6 +22,3 @@ class FilterForm:
         if postcode_query:
             self.postcode = postcode_query.split(',')[0]
             self.distance = postcode_query.split(',')[1]
-        else:
-            self.postcode = ''
-            self.distance = ''
