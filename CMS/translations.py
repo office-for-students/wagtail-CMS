@@ -1003,8 +1003,8 @@ DICT = {
         'cy': 'Di-waith'
     },
     'uni_and_college': {
-        'en': 'University or college',
-        'cy': 'Prifysgol neu goleg'
+        'en': 'All universities and colleges',
+        'cy': 'Pob prifysgol a choleg'
     },
     'uni_college': {
         'en': 'Universities / colleges',
@@ -1229,5 +1229,5 @@ DICT = {
     'Compulsory': {
         'en': 'Compulsory',
         'cy': 'Gorfodol'
-    }
+    },
 }
