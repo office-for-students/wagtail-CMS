@@ -39,7 +39,7 @@
                         <a href="{{ item.url }}">
                             {{ item.label }}
 
-                            {% if item.label == 'Course search' %}
+                            {% if item.label == 'Course search' or item.label == 'Chwilio am Gwrs'  %}
                                 <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
                             {% endif %}
                         </a>
