@@ -111,8 +111,9 @@
                 this.compareTooMany.show();
             } else {
                 this.button.addClass('selected');
+                var exists = false;
                 for (var i = 0; i < this.selectedCourses.length; i++) {
-                    if (this.courseId == this.selectedCourses[i].courseId) var exists = true;
+                    if (this.courseId == this.selectedCourses[i].courseId) exists = true;
                 }
                 if (!exists) {
                     this.selectedCourses.push({'uniId': this.uniId, 'courseId': this.courseId,
