@@ -111,27 +111,32 @@
                 this.compareTooMany.show();
             } else {
                 this.button.addClass('selected');
-                this.selectedCourses.push({'uniId': this.uniId, 'courseId': this.courseId,
-                                            'courseName': this.courseName, 'uniName': this.uniName,
-                                            'length': this.length, 'locations': this.locations,
-                                            'distance': {
-                                                'en': this.distanceEn,
-                                                'cy': this.distanceCy
-                                            },
-                                            'sandwich': {
-                                                'en': this.sandwichEn,
-                                                'cy': this.sandwichCy
-                                            },
-                                            'abroad': {
-                                                'en': this.abroadEn,
-                                                'cy': this.abroadCy,
-                                            },
-                                            'mode': {
-                                                'en': this.modeEn,
-                                                'cy': this.modeCy,
-                                            }
-                                          });
-                localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
+                for (var i = 0; i < this.selectedCourses.length; i++) {
+                    if (this.courseId == this.selectedCourses[i].courseId) var exists = true;
+                }
+                if (!exists) {
+                    this.selectedCourses.push({'uniId': this.uniId, 'courseId': this.courseId,
+                                                'courseName': this.courseName, 'uniName': this.uniName,
+                                                'length': this.length, 'locations': this.locations,
+                                                'distance': {
+                                                    'en': this.distanceEn,
+                                                    'cy': this.distanceCy
+                                                },
+                                                'sandwich': {
+                                                    'en': this.sandwichEn,
+                                                    'cy': this.sandwichCy
+                                                },
+                                                'abroad': {
+                                                    'en': this.abroadEn,
+                                                    'cy': this.abroadCy,
+                                                },
+                                                'mode': {
+                                                    'en': this.modeEn,
+                                                    'cy': this.modeCy,
+                                                }
+                                            });
+                    localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
+                }
                 this.navBar.trigger('loadeddata');
                 this.courseSelected = true;
                 this.compareCount.text(this.selectedCourses.length);
