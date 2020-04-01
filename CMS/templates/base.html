@@ -54,6 +54,12 @@
 
         {% wagtailuserbar %}
 
+        <div>
+            <a class="covid-19-banner" href="{% if page.is_english %}/corona-covid-19-information/{% else %}/cy/cynnwys-corona-covid-19/{% endif %}">
+                {% get_translation key='covid_19_info' language=page.get_language %}
+            </a>
+        </div>
+
         <main>
             <div id="main-content" tabindex="-1">
                 {% block content %}{% endblock %}
