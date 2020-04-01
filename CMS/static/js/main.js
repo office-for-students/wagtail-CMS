@@ -768,7 +768,7 @@
             for (var i = 0; i < this.subjectOptions.length; i++) {
                 var option = this.subjectOptions[i];
                 $(option).removeAttr("disabled");
-                if (option.value === this.subjectSelector[0].value) {
+                if (option.value.indexOf(this.subjectAreaSelector[0].value) === -1) {
                     $(option).attr("disabled", "disabled");
                 }
             }
@@ -781,7 +781,7 @@
             for (var i = 0; i < this.subjectCodeOptions.length; i++) {
                 var option = this.subjectCodeOptions[i];
                 $(option).removeAttr("disabled");
-                if (option.value === this.subjectCodeSelector[0].value) {
+                if (option.value === this.subjectCodeSelector[0].value || !option.dataset.code.includes(this.subjectSelector[0].value)) {
                     $(option).attr("disabled", "disabled");
                 }
             }
