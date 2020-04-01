@@ -38,7 +38,7 @@
         .option {
             @include small-font-mixin();
 
-            display: none;
+            display: block;
             padding: 28px 30px;
             margin: 0;
 

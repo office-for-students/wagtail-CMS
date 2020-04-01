@@ -1229,5 +1229,5 @@ DICT = {
     'Compulsory': {
         'en': 'Compulsory',
         'cy': 'Gorfodol'
-    }
+    },
 }
