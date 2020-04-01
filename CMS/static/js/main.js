@@ -516,9 +516,6 @@
 
         watchForFocus: function() {
             var that = this;
-            this.searchField.focus(function() {
-                that.optionList.show();
-            });
 
             $(document).click(function(e) {
                 if (!that.container[0].contains(e.target)) {
