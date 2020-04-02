@@ -26,13 +26,13 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}?{% code_version %}">
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
         <div class="searchtool-container">
-          <button class="back-button" role="button">< {% get_translation key='back' language=page.get_language %}</button>
+          <button class="back-button" role="button">{% get_translation key='back' language=page.get_language %}</button>
           {% block content %}{% endblock %}
         </div>
 

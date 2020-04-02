@@ -283,6 +283,10 @@ DICT = {
         'en': 'course(s)',
         'cy': 'cwrs/cyrsiau'
     },
+    'covid_19_info': {
+        'en': 'Coronavirus (COVID-19) latest information',
+        'cy': 'Gwybodaeth diweddaraf Coronafeirws (COVID-19)'
+    },
     'Customer Service Occupations': {
         'en': 'Customer service occupations',
         'cy': 'Galwedigaethau gwasanaeth cwsmeriaid'
@@ -1229,5 +1233,5 @@ DICT = {
     'Compulsory': {
         'en': 'Compulsory',
         'cy': 'Gorfodol'
-    }
+    },
 }
