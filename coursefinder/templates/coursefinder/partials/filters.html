@@ -5,7 +5,7 @@
         <div class="filters-block">
             <p class="filters-block__cancel-button"><span class="filters-block__cancel-button-icon">X</span> Cancel</p>
 
-            <form method="post" action="/course-finder/results/" class="filters-block__form">
+            <form method="post" {% if page.is_welsh %} action="/cy/course-finder/results/" {% else %} action="course-finder/results/" {% endif %} class="filters-block__form">
                 {% csrf_token %}
 
                 <input id="page_input" name="page" type="text" value="{{search.page}}" hidden />
@@ -289,7 +289,7 @@
                         </p>
 
                         <p class="filters-block__filter-uni-controls-count">
-                            {% if page.is_welsh %}{% get_translation key='selected_1' language=page.get_language %}{% endif%}
+                            {% if page.is_welsh %}{% get_translation key='selected_1' language=page.get_language %}{% endif %}
                             <span class="selected">0</span>
                             {% get_translation key='selected_2' language=page.get_language %}
                             <span class="total"></span>
