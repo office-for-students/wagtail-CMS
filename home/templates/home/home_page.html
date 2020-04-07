@@ -10,15 +10,6 @@
 
 {% block content %}
     <div class="home">
-        {% if page.is_english %}
-            <a class="coronavirus" href="/corona-covid-19-information/" style="top: 20px;">
-                <img src="/static/images/home-coronavirus.png" width="15%" style="min-width: 135px">
-            </a>
-        {% else %}         
-            <a class="coronavirus" href="/cy/cynnwys-corona-covid-19/" style="top: 20px;">
-                <img src="/static/images/home-coronavirus.png" width="15%" style="min-width: 135px">
-            </a>
-        {% endif %}
         <div class="discover-uni-container">
             <h1 class="header">
                 {{ page.header }}
