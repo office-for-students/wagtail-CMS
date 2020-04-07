@@ -10,7 +10,9 @@
             <img class="footer__brand-logo" src="{% static 'images/logos/footer_logo_color_welsh.svg' %}"
                  alt="{% get_translation key='site_logo' language=page.get_language %}">
         {% endif %}
-            <a href="https://www.officeforstudents.org.uk/" style="margin-bottom: 45px;">
+
+        <div class="footer__logo-container">
+            <a href="https://www.officeforstudents.org.uk/">
                 <img class="footer__ofs-logo" src="{% static 'images/logos/footer_ofs_logo.svg' %}"
                     alt="Office for Students" >
             </a>
@@ -19,7 +21,9 @@
                 <img class="footer__hefcw-logo" src="{% static 'images/logos/footer_hefcw_logo.png' %}"
                     alt="HEFCW" >
             </a>
+        </div>
 
+        <div class="footer__logo-container">
             <a href="https://www.economy-ni.gov.uk/">
                 <img class="footer__dfeni-logo" src="{% static 'images/logos/footer_dfeni_logo.png' %}"
                     alt="DfENI" >
@@ -29,6 +33,8 @@
                 <img class="footer__sfc-logo" src="{% static 'images/logos/footer_sfc_logo.png' %}"
                     alt="SFC" >
             </a>
+        </div>
+
         <div class="footer__items">
             <div class="footer__group">
                 {% for item in page.footer %}
