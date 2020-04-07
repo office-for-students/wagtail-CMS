@@ -13,7 +13,11 @@ from site_search.models import SearchLandingPage
 
 def results(request, language=enums.languages.ENGLISH):
     query_params = request.GET
-    search_form = FilterForm(query_params)
+    search_form = FilterForm({
+        "course_query" : query_params.get('subject_query', ""),
+        "institution_query": query_params.get('institution_query', ""),
+    })
+
     course_search = CourseSearch(query_params.get('subject_query', ""),
                                  query_params.get('institution_query', ""),
                                  query_params.get('page', 1),
