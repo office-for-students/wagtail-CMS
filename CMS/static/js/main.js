@@ -835,7 +835,9 @@
             for (var i = 0; i < this.subjectCodeOptions.length; i++) {
                 var option = this.subjectCodeOptions[i];
                 $(option).removeAttr("disabled");
-                if (option.value === this.subjectCodeSelector[0].value || !option.dataset.code.includes(this.subjectSelector[0].value)) {
+                if (option.value === this.subjectCodeSelector[0].value
+                  || (!option.dataset.code.includes(this.subjectSelector[0].value)
+                  && !option.dataset.code.includes("default"))) {
                     $(option).attr("disabled", "disabled");
                 }
             }
