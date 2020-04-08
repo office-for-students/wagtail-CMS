@@ -29,6 +29,10 @@
                                        placeholder="{% get_translation key='course_name' language=page.get_language %}" autocomplete="off">
                             </div>
 
+                            <p class="search-landing-page__search-text">
+                                {% get_translation key='at:' language=page.get_language %}
+                            </p>
+
                             <div class="search-landing-page__search-input">
                                 {% get_translation key='uni_and_college' language=page.get_language as placeholder %}
                                 {% include 'partials/search-dropdown.html' with placeholder=placeholder field_name='institution_query' options=institutions_list %}
