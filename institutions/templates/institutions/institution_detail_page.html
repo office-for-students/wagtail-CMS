@@ -6,8 +6,8 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script type="text/javascript" src="{% static 'js/institution_explanation_pop_ups.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/institution_explanation_pop_ups.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
 {% endblock %}
 
 {% block content %}
