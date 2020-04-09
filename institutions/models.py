@@ -5,12 +5,37 @@ from wagtail.core.fields import RichTextField
 
 from CMS.enums import enums
 from core.models import DiscoverUniBasePage
+from core.request_handler import get_json_file
 from errors.models import ApiError
 from institutions import request_handler
 from institutions.utils import load_institution_json
 
 
 class InstitutionList:
+
+    def get_latest_version():
+        response = get_json_file("version.json")
+
+        if response.ok:
+            return response.json()["version"]
+        else:
+            return ""
+
+    @staticmethod
+    def get_options():
+        response = get_json_file("version.json")
+
+        if response.ok:
+            version = response.json()["version"]
+        else:
+            version = ""
+
+        if version != InstitutionList.version:
+            InstitutionList.options = load_institution_json()
+            
+        return InstitutionList.options
+    
+    version = get_latest_version()
     options = load_institution_json()
 
 
