@@ -99,6 +99,10 @@ DICT = {
         'en': 'How the course is assessed',
         'cy': "Dull asesu'r cwrs"
     },
+    'at:':{
+        'en': 'at:',
+        'cy': 'yn:'
+    },
     'baccalaureate': {
         'en': 'Baccalaureate',
         'cy': 'Bagloriaeth'

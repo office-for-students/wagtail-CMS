@@ -6,7 +6,7 @@
 {% block content_class %}mode-chooser{% endblock %}
 
 {% block page_js %}
-    <script type="text/javascript" src="{% static 'js/mode-picker.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mode-picker.js' %}?{% code_version %}"></script>
 {% endblock page_js %}
 
 {% block question %}

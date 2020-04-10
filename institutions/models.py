@@ -5,12 +5,37 @@ from wagtail.core.fields import RichTextField
 
 from CMS.enums import enums
 from core.models import DiscoverUniBasePage
+from core.request_handler import get_json_file
 from errors.models import ApiError
 from institutions import request_handler
 from institutions.utils import load_institution_json
 
 
 class InstitutionList:
+
+    def get_latest_version():
+        response = get_json_file("version.json")
+
+        if response.ok:
+            return response.json()["version"]
+        else:
+            return ""
+
+    @staticmethod
+    def get_options():
+        response = get_json_file("version.json")
+
+        if response.ok:
+            version = response.json()["version"]
+        else:
+            version = ""
+
+        if version != InstitutionList.version:
+            InstitutionList.options = load_institution_json()
+            
+        return InstitutionList.options
+    
+    version = get_latest_version()
     options = load_institution_json()
 
 
@@ -92,7 +117,7 @@ class Institution:
             self.pub_ukprn_country_name = institution_data.get("pub_ukprn_country").get('name')
             self.pub_ukprn_name = institution_data.get("pub_ukprn_name") if language == enums.languages.ENGLISH else institution_data.get("pub_ukprn_welsh_name")
             self.pub_ukprn = institution_data.get("pub_ukprn")
-            self.website = institution_data.get('links').get('institution_homepage')
+            self.website = institution_data.get('links').get('institution_homepage') if institution_data.get('links') else None
             self.tef_outcome = institution_data.get("tef_outcome")
             self.total_number_of_courses = institution_data.get("total_number_of_courses")
             self.ukprn_country = institution_data.get("ukprn_country")

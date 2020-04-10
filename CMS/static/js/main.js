@@ -523,10 +523,7 @@
 
         watchForFocus: function() {
             var that = this;
-            this.searchField.focus(function() {
-                that.optionList.show();
-            });
-
+        
             $(document).click(function(e) {
                 if (!that.container[0].contains(e.target)) {
                     that.optionList.hide();
@@ -536,6 +533,14 @@
                     }
                 }
             });
+
+            this.searchField.focus(function() {
+                if (!that.optionList.is(":visible")) {
+                    that.searchField[0].value = '';
+                    that.valid_selection = false;
+                    that.optionList.show();
+                }
+            });
         },
 
         watchForSearchTerm: function() {
@@ -543,7 +548,6 @@
             this.searchField.keyup(function(e) {
                 that.valid_selection = false;
                 that.filterOptionsList(e.target.value);
-                
             });
         },
 
