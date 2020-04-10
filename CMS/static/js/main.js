@@ -250,6 +250,15 @@
             this.optionList.remove();
             this.createOptionList();
             this.uiSelect[0].innerHTML = this.options[0].baseOption[0].innerHTML;
+
+            for (var i = 0; i < this.options.length; i++) {
+                if (this.options[i].baseOption[0].selected) {
+                    this.uiSelect[0].innerHTML = this.options[i].baseOption[0].innerHTML;
+                    set_default = false;
+                    break;
+                }
+            }
+
         },
 
         startWatcher: function() {
@@ -337,6 +346,10 @@
             }
             this.listContainer.append(uiOption);
             this.uiOption = this.listContainer.find('#' + this.index);
+
+            if (this.baseOption[0].selected) {
+                this.uiOption.addClass("same-as-selected");
+            }
         },
 
         startWatcher: function() {
@@ -688,7 +701,7 @@
             this.subjectSelector = this.wrapper.find('#subject');
             this.subjectCodeSelector = this.wrapper.find('#subjectCode');
             this.subjectQuery = $('#subject_query');
-            if (this.subjectQuery.length > 0) {
+            if (this.subjectQuery.val().length > 0) {
                 this.initialSelection = this.subjectQuery.val().split(',');
             } else {
                 this.initialSelection = null;
@@ -747,6 +760,10 @@
             this.subjectAreaSelector.trigger('loadeddata');
             this.subjectSelector.trigger('loadeddata');
             this.subjectCodeSelector.trigger('loadeddata');
+
+            this.handleAreaSelection(this);
+            this.handleSubjectSelection(this);
+            this.handleSubjectCodeSelection(this);
         },
 
         getOptionName: function(item) {
