@@ -69,11 +69,8 @@
             for (var i = 0; i < this.languageChgBtnList.length; i++) {
                 $(this.languageChgBtnList[i]).click(function(evt) {
                     evt.preventDefault();
-                    //var addressValue = $(this).attr("href");
-                    //that.form.action = addressValue;
-                    //that.pageInput.val(this.dataset.page);
-                    //that.countInput.val(this.dataset.count);
-                    thas.form.submit();
+                    that.form.attr('action', $(this).attr("href"));
+                    that.form.submit();
                 });
             }
 
