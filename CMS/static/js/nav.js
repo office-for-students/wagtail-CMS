@@ -10,7 +10,6 @@
             this.mobileBurgerButton = this.wrapper.find('#burger-menu');
             this.mobileCloseButton = this.wrapper.find('#close-menu');
             this.mobileMenuBody = this.wrapper.find('.discover-uni-nav__mobile-links');
-
             this.startWatchers();
         },
 

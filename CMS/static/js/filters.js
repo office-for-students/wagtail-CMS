@@ -17,6 +17,7 @@
             this.pageInput = this.wrapper.find('#page_input');
             this.countInput = this.wrapper.find('#count_input');
             this.paginationInputs = $('.pagination a');
+            this.languageChgBtnList = $('#language_select');
 
             this.form = this.wrapper.find('form');
 
@@ -40,6 +41,7 @@
                 that.wrapper.toggle();
             });
 
+            
             this.openBtn.click(function() {
                 that.wrapper.animate({ "left": 0 }, "slow");
                 that.submitBlock.animate({ "left": 0 }, "slow");
@@ -63,6 +65,17 @@
                     that.submitBtn.removeClass('disabled');
                 })
             };
+
+            for (var i = 0; i < this.languageChgBtnList.length; i++) {
+                $(this.languageChgBtnList[i]).click(function(evt) {
+                    evt.preventDefault();
+                    //var addressValue = $(this).attr("href");
+                    //that.form.action = addressValue;
+                    //that.pageInput.val(this.dataset.page);
+                    //that.countInput.val(this.dataset.count);
+                    thas.form.submit();
+                });
+            }
 
             for (var i = 0; i < this.paginationInputs.length; i++) {
                 $(this.paginationInputs[i]).click(function(evt) {
