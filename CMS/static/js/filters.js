@@ -79,6 +79,7 @@
                     evt.preventDefault();
                     that.pageInput.val(this.dataset.page);
                     that.countInput.val(this.dataset.count);
+                    that.form.attr('action', $(this).attr("href"));
                     that.form.submit();
                 });
             }
