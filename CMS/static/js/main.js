@@ -701,7 +701,7 @@
             this.subjectSelector = this.wrapper.find('#subject');
             this.subjectCodeSelector = this.wrapper.find('#subjectCode');
             this.subjectQuery = $('#subject_query');
-            if (this.subjectQuery.val().length > 0) {
+            if (this.subjectQuery.length > 0) {
                 this.initialSelection = this.subjectQuery.val().split(',');
             } else {
                 this.initialSelection = null;
