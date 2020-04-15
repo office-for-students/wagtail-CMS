@@ -30,6 +30,8 @@ ROOT_DOMAIN = os.environ.get('ROOT_DOMAIN', 'http://localhost:3000')
 # Application definition
 
 INSTALLED_APPS = [
+    'customadmin',
+    
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
