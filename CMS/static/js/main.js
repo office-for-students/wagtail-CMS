@@ -562,6 +562,13 @@
                 that.valid_selection = false;
                 that.filterOptionsList(e.target.value);
             });
+            this.searchField.keydown(function(evt) {
+                if (evt.which === 40) {
+                    evt.preventDefault();
+                    
+                }
+            
+            });
         },
 
         watchForSearch: function() {
