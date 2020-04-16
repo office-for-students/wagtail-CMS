@@ -517,9 +517,12 @@
             this.form = $('.search-landing-page__search');
             this.dropdownButton = $(".search-field-dropdown-button");
             this.valid_selection = true;
+            this.lastSearchTerm = "";
+            this.scrollBottomValue = this.optionList.height();
+            this.highlightOptionIndex = -1;
             this.initialiseOptions();
             this.watchForFocus();
-            this.watchForSearchTerm();
+            this.watchForKeyPress();
             this.watchForSearch();
             this.watchForDropdown();
         },
@@ -556,24 +559,42 @@
             });
         },
 
-        watchForSearchTerm: function() {
+        watchForKeyPress: function() {
             var that = this;
-            this.searchField.keyup(function(e) {
-                that.valid_selection = false;
-                that.filterOptionsList(e.target.value);
-            });
+
             this.searchField.keydown(function(evt) {
                 if (evt.which === 40) {
                     evt.preventDefault();
-                    for ( var i = 1; i < that.options.length; i++ ) {
+                    for ( var i = that.highlightOptionIndex + 1; i < that.options.length; i++ ) {
                         console.log(i);
                         if (that.options[i].uiOption.is(":visible")) {
-                            //that.options[that.highlightOption.index].unhighlightOption();      
+                            if (that.highlightOptionIndex >= 0) {
+                                that.options[that.highlightOptionIndex].unhighlightOption();
+                            }
+
                             that.options[i].highlightOption();
-                            that.highlightOption.index = i;
+                            that.highlightOptionIndex = i;
+                            that.scrollBottomValue += that.options[i].uiOption.outerHeight();
+
+                            if ( that.scrollBottomValue > (that.optionList.scrollTop() + that.optionList.height()) ) {
+                                that.optionList.scrollTop(that.optionList.scrollTop() + that.options[i].uiOption.outerHeight());
+                            }
+
                             break;
                         }
                     }
+
+                    return;
+                }
+            });
+
+            this.searchField.keyup(function(e) {
+
+                if (e.target.value != that.lastSearchTerm) {
+                    that.lastSearchTerm = e.target.value;
+                    that.valid_selection = false;
+                    that.highlightOptionIndex = -1;
+                    that.filterOptionsList(e.target.value);
                 }
             });
         },
