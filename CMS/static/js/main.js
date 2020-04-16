@@ -565,9 +565,16 @@
             this.searchField.keydown(function(evt) {
                 if (evt.which === 40) {
                     evt.preventDefault();
-                    
+                    for ( var i = 1; i < that.options.length; i++ ) {
+                        console.log(i);
+                        if (that.options[i].uiOption.is(":visible")) {
+                            //that.options[that.highlightOption.index].unhighlightOption();      
+                            that.options[i].highlightOption();
+                            that.highlightOption.index = i;
+                            break;
+                        }
+                    }
                 }
-            
             });
         },
 
@@ -692,6 +699,14 @@
 
         hideOption: function() {
             $(this.uiOption).hide();
+        },
+
+        highlightOption: function(){
+            $(this.uiOption).attr("class", 'option-highlight');
+        },
+
+        unhighlightOption: function(){
+            $(this.uiOption).attr("class", 'option');
         }
     }
 

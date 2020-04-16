@@ -81,6 +81,11 @@
             &:hover {
                 @include green-gradient-background-mixin();
             }
+            
+            &-highlight{
+                @include green-gradient-background-mixin();
+            }
+
         }
 
         #institution_query-na-ui.option{
