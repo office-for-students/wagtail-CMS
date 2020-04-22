@@ -17,17 +17,23 @@
             border-width: 2px 0px 2px 2px;
             width: 100%;
             border-radius: 5px 5px 5px 5px;
+            max-height: 40px;
         }
 
         &-dropdown-button {
             position: absolute;
             display: inline-block;
+            
+            padding: 12px 8px 9px 8px;
+            margin-left: -34px;
             border: 2px solid #6E6E6E;
             border-radius: 0px 5px 5px 0px;
+
+            width: 34px;
             max-height: 40px;
+
             background: linear-gradient(145.9deg, #4EA27D 13.02%, #308282 85.42%);
-            padding: 12px 8px 9px 8px;
-            margin-left: -29px;
+
             cursor: pointer;
             text-align: center;
         }
@@ -75,12 +81,37 @@
             &:hover {
                 @include green-gradient-background-mixin();
             }
+            
+            &-highlight{
+                @include small-font-mixin();
+                @include green-gradient-background-mixin();
+
+                display: block;
+                padding: 28px 30px;
+                margin: 0;
+
+                cursor: pointer;
+            }
         }
 
         #institution_query-na-ui.option{
             font-size: 16px;
             font-weight: bold;
             border-bottom: 2px solid #6E6E6E;
+
+            &-highlight{
+                @include green-gradient-background-mixin();
+
+                font-size: 16px;
+                font-weight: bold;
+                border-bottom: 2px solid #6E6E6E;
+
+                display: block;
+                padding: 28px 30px;
+                margin: 0;
+
+                cursor: pointer;
+            }
         }
     }
 }

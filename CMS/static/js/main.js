@@ -517,9 +517,13 @@
             this.form = $('.search-landing-page__search');
             this.dropdownButton = $(".search-field-dropdown-button");
             this.valid_selection = true;
+            this.lastSearchTerm = "";
+            this.highlightTop = 0;
+            this.highlightBottom = 0;
+            this.highlightOptionIndex = -1;
             this.initialiseOptions();
             this.watchForFocus();
-            this.watchForSearchTerm();
+            this.watchForKeyPress();
             this.watchForSearch();
             this.watchForDropdown();
         },
@@ -540,7 +544,7 @@
             $(document).click(function(e) {
                 if (!that.container[0].contains(e.target)) {
                     that.optionList.hide();
-
+                    that.resetScroll();
                     if (!that.valid_selection) {
                         that.setDefaultValue();
                     }
@@ -554,13 +558,79 @@
                     that.optionList.show();
                 }
             });
+
+
         },
 
-        watchForSearchTerm: function() {
+        watchForKeyPress: function() {
             var that = this;
+
+            this.searchField.keydown(function(evt) {
+                switch (evt.which){
+                    case 13:
+                        evt.preventDefault()
+
+                        if (that.highlightOptionIndex > -1) {
+                            that.options[that.highlightOptionIndex].option.selected = true;
+                            that.handleSelection(that.options[that.highlightOptionIndex]);
+                        }
+                        else {
+                            that.setDefaultValue();
+                        }
+
+                        that.resetScroll();
+                        that.searchField.blur();
+                        that.form.submit();
+
+                        break;
+
+                    case 38:
+                        evt.preventDefault();
+                        for ( var i = that.highlightOptionIndex - 1; i > -1; i-- ) {
+                            if (that.options[i].uiOption.is(":visible")) {
+                                if (that.highlightOptionIndex >= 0) {
+                                    that.options[that.highlightOptionIndex].unhighlightOption();
+                                }
+    
+                                that.options[i].highlightOption();
+                                that.highlightOptionIndex = i;
+                                that.highlightBottom = that.highlightTop;
+                                that.highlightTop -= that.options[i].uiOption.outerHeight();
+                                that.adjustScroll();
+                                break;
+                            }
+                        }
+                        break;
+    
+                    case 40:
+                        evt.preventDefault();
+                        for ( var i = that.highlightOptionIndex + 1; i < that.options.length; i++ ) {
+                            if (that.options[i].uiOption.is(":visible")) {
+                                if (that.highlightOptionIndex >= 0) {
+                                    that.options[that.highlightOptionIndex].unhighlightOption();
+                                }
+
+                                that.options[i].highlightOption();
+                                that.highlightOptionIndex = i;
+                                that.highlightTop = that.highlightBottom;
+                                that.highlightBottom += that.options[i].uiOption.outerHeight();
+                                that.adjustScroll();
+                                break;
+                            }
+                        }
+                        break;
+                }
+
+            });
+
             this.searchField.keyup(function(e) {
-                that.valid_selection = false;
-                that.filterOptionsList(e.target.value);
+
+                if (e.target.value != that.lastSearchTerm) {
+                    that.lastSearchTerm = e.target.value;
+                    that.valid_selection = false;
+                    that.filterOptionsList(e.target.value);
+                    that.resetScroll();
+                }
             });
         },
 
@@ -590,6 +660,7 @@
                     that.valid_selection = false;
                     that.optionList.show();
                 } else {
+                    that.resetScroll();
                     that.optionList.hide();
 
                     if (!that.valid_selection) {
@@ -603,6 +674,25 @@
             this.options[0].option.selected = true;
             this.options[0].handleSelection(this.options[0]);
             this.valid_selection = true;
+        },
+
+        adjustScroll: function() {
+            if ( this.highlightBottom > (this.optionList.scrollTop() + this.optionList.height()) ) {
+                this.optionList.scrollTop(this.highlightBottom - this.optionList.height());
+            }
+            if ( this.highlightTop < this.optionList.scrollTop() ) {
+                 this.optionList.scrollTop(this.highlightTop);
+            }
+        },
+
+        resetScroll: function() {
+            if (this.highlightOptionIndex > -1) {
+                this.options[this.highlightOptionIndex].unhighlightOption();
+            }
+            this.highlightOptionIndex = -1;
+            this.optionList.scrollTop(0);
+            this.highlightBottom = 0;
+            this.highlightTop = 0;
         },
 
         clearSearch: function() {
@@ -685,6 +775,14 @@
 
         hideOption: function() {
             $(this.uiOption).hide();
+        },
+
+        highlightOption: function(){
+            $(this.uiOption).attr("class", 'option-highlight');
+        },
+
+        unhighlightOption: function(){
+            $(this.uiOption).attr("class", 'option');
         }
     }
 

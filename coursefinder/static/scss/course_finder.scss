@@ -129,6 +129,8 @@
             &-button {
                 @include green-gradient-mixin();
                 @include mobile-body-font-mixin();
+                
+                cursor: pointer;
 
                 display: flex;
                 align-items: center;
