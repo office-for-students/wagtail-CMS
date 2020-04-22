@@ -518,7 +518,8 @@
             this.dropdownButton = $(".search-field-dropdown-button");
             this.valid_selection = true;
             this.lastSearchTerm = "";
-            this.scrollBottomValue = this.optionList.height();
+            this.highlightTop = 0;
+            this.highlightBottom = 0;
             this.highlightOptionIndex = -1;
             this.initialiseOptions();
             this.watchForFocus();
@@ -563,29 +564,62 @@
             var that = this;
 
             this.searchField.keydown(function(evt) {
-                if (evt.which === 40) {
-                    evt.preventDefault();
-                    for ( var i = that.highlightOptionIndex + 1; i < that.options.length; i++ ) {
-                        console.log(i);
-                        if (that.options[i].uiOption.is(":visible")) {
-                            if (that.highlightOptionIndex >= 0) {
-                                that.options[that.highlightOptionIndex].unhighlightOption();
+                switch (evt.which){
+                    case 13:
+                        evt.preventDefault();
+                        break
+
+                    case 38:
+                        evt.preventDefault();
+                        for ( var i = that.highlightOptionIndex - 1; i > -1; i-- ) {
+                            if (that.options[i].uiOption.is(":visible")) {
+                                if (that.highlightOptionIndex >= 0) {
+                                    that.options[that.highlightOptionIndex].unhighlightOption();
+                                }
+    
+                                that.options[i].highlightOption();
+                                that.highlightOptionIndex = i;
+                                that.highlightBottom = that.highlightTop;
+                                that.highlightTop -= that.options[i].uiOption.outerHeight();
+    
+    
+                                if ( that.highlightTop > (that.optionList.scrollTop() + that.optionList.height())) {
+                                    that.optionList.scrollTop(that.highlightBottom - that.optionList.height());
+                                }
+                                if ( that.highlightTop < that.optionList.scrollTop()) {
+                                    that.optionList.scrollTop(that.highlightTop);
+                                }
+                                break;
                             }
-
-                            that.options[i].highlightOption();
-                            that.highlightOptionIndex = i;
-                            that.scrollBottomValue += that.options[i].uiOption.outerHeight();
-
-                            if ( that.scrollBottomValue > (that.optionList.scrollTop() + that.optionList.height()) ) {
-                                that.optionList.scrollTop(that.optionList.scrollTop() + that.options[i].uiOption.outerHeight());
-                            }
-
-                            break;
                         }
-                    }
+                        break;
+    
+                    case 40:
+                        evt.preventDefault();
+                        for ( var i = that.highlightOptionIndex + 1; i < that.options.length; i++ ) {
+                            if (that.options[i].uiOption.is(":visible")) {
+                                if (that.highlightOptionIndex >= 0) {
+                                    that.options[that.highlightOptionIndex].unhighlightOption();
+                                }
 
-                    return;
+                                that.options[i].highlightOption();
+                                that.highlightOptionIndex = i;
+                                that.highlightTop = that.highlightBottom;
+                                that.highlightBottom += that.options[i].uiOption.outerHeight();
+
+
+                                if ( that.highlightBottom > (that.optionList.scrollTop() + that.optionList.height()) ) {
+                                   that.optionList.scrollTop(that.highlightBottom - that.optionList.height());
+                                }
+                                if ( that.highlightBottom < that.optionList.scrollTop() ) {
+                                    that.optionList.scrollTop(that.highlightTop);
+                                }
+                                break;
+                            }
+                        }
+                        break;
                 }
+
             });
 
             this.searchField.keyup(function(e) {
