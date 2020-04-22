@@ -594,6 +594,7 @@
                     that.lastSearchTerm = e.target.value;
                     that.valid_selection = false;
                     that.highlightOptionIndex = -1;
+                    that.optionList.scrollTop(0);
                     that.filterOptionsList(e.target.value);
                 }
             });
