@@ -544,7 +544,7 @@
             $(document).click(function(e) {
                 if (!that.container[0].contains(e.target)) {
                     that.optionList.hide();
-
+                    that.resetScroll();
                     if (!that.valid_selection) {
                         that.setDefaultValue();
                     }
@@ -558,6 +558,8 @@
                     that.optionList.show();
                 }
             });
+
+
         },
 
         watchForKeyPress: function() {
@@ -581,14 +583,7 @@
                                 that.highlightOptionIndex = i;
                                 that.highlightBottom = that.highlightTop;
                                 that.highlightTop -= that.options[i].uiOption.outerHeight();
-    
-    
-                                if ( that.highlightTop > (that.optionList.scrollTop() + that.optionList.height())) {
-                                    that.optionList.scrollTop(that.highlightBottom - that.optionList.height());
-                                }
-                                if ( that.highlightTop < that.optionList.scrollTop()) {
-                                    that.optionList.scrollTop(that.highlightTop);
-                                }
+                                that.adjustScroll();
                                 break;
                             }
                         }
@@ -606,14 +601,7 @@
                                 that.highlightOptionIndex = i;
                                 that.highlightTop = that.highlightBottom;
                                 that.highlightBottom += that.options[i].uiOption.outerHeight();
-
-
-                                if ( that.highlightBottom > (that.optionList.scrollTop() + that.optionList.height()) ) {
-                                   that.optionList.scrollTop(that.highlightBottom - that.optionList.height());
-                                }
-                                if ( that.highlightBottom < that.optionList.scrollTop() ) {
-                                    that.optionList.scrollTop(that.highlightTop);
-                                }
+                                that.adjustScroll();
                                 break;
                             }
                         }
@@ -627,9 +615,9 @@
                 if (e.target.value != that.lastSearchTerm) {
                     that.lastSearchTerm = e.target.value;
                     that.valid_selection = false;
-                    that.highlightOptionIndex = -1;
-                    that.optionList.scrollTop(0);
                     that.filterOptionsList(e.target.value);
+                    that.resetScroll();
+                    console.log('Test');
                 }
             });
         },
@@ -653,7 +641,6 @@
 
             this.dropdownButton.click(function(evt) {
                 evt.preventDefault();
-
                 if (!that.optionList.is(":visible")) {
                     that.searchField[0].value = '';
                     that.searchField[0].focus();
@@ -661,7 +648,7 @@
                     that.optionList.show();
                 } else {
                     that.optionList.hide();
-
+                    that.resetScroll();
                     if (!that.valid_selection) {
                         that.setDefaultValue();
                     }
@@ -673,6 +660,23 @@
             this.options[0].option.selected = true;
             this.options[0].handleSelection(this.options[0]);
             this.valid_selection = true;
+        },
+
+        adjustScroll: function() {
+            if ( this.highlightBottom > (this.optionList.scrollTop() + this.optionList.height()) ) {
+                this.optionList.scrollTop(this.highlightBottom - this.optionList.height());
+            }
+            if ( this.highlightTop < this.optionList.scrollTop() ) {
+                 this.optionList.scrollTop(this.highlightTop);
+            }
+        },
+
+        resetScroll: function() {
+            this.options[this.highlightOptionIndex].unhighlightOption();
+            this.highlightOptionIndex = -1;
+            this.optionList.scrollTop(0);
+            this.highlightBottom = 0;
+            this.highlightTop = 0;
         },
 
         clearSearch: function() {
