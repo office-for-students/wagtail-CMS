@@ -568,8 +568,21 @@
             this.searchField.keydown(function(evt) {
                 switch (evt.which){
                     case 13:
-                        evt.preventDefault();
-                        break
+                        evt.preventDefault()
+
+                        if (that.highlightOptionIndex > -1) {
+                            that.options[that.highlightOptionIndex].option.selected = true;
+                            that.handleSelection(that.options[that.highlightOptionIndex]);
+                        }
+                        else {
+                            that.setDefaultValue();
+                        }
+
+                        that.resetScroll();
+                        that.searchField.blur();
+                        that.form.submit();
+
+                        break;
 
                     case 38:
                         evt.preventDefault();
@@ -617,7 +630,6 @@
                     that.valid_selection = false;
                     that.filterOptionsList(e.target.value);
                     that.resetScroll();
-                    console.log('Test');
                 }
             });
         },
@@ -641,14 +653,16 @@
 
             this.dropdownButton.click(function(evt) {
                 evt.preventDefault();
+
                 if (!that.optionList.is(":visible")) {
                     that.searchField[0].value = '';
                     that.searchField[0].focus();
                     that.valid_selection = false;
                     that.optionList.show();
                 } else {
-                    that.optionList.hide();
                     that.resetScroll();
+                    that.optionList.hide();
+
                     if (!that.valid_selection) {
                         that.setDefaultValue();
                     }
@@ -672,7 +686,9 @@
         },
 
         resetScroll: function() {
-            this.options[this.highlightOptionIndex].unhighlightOption();
+            if (this.highlightOptionIndex > -1) {
+                this.options[this.highlightOptionIndex].unhighlightOption();
+            }
             this.highlightOptionIndex = -1;
             this.optionList.scrollTop(0);
             this.highlightBottom = 0;
