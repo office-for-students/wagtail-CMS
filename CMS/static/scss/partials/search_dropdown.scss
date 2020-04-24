@@ -14,38 +14,37 @@
 
         input {
             @extend .textbox;
-            border-width: 2px 0px 2px 2px;
+            border-width: 2px 2px 2px 2px;
             width: 100%;
             border-radius: 5px 5px 5px 5px;
-            max-height: 40px;
         }
 
         &-dropdown-button {
             position: absolute;
             display: inline-block;
+            outline: none;
             
-            padding: 12px 8px 9px 8px;
-            margin-left: -34px;
-            border: 2px solid #6E6E6E;
-            border-radius: 0px 5px 5px 0px;
-
+            right: 0px;
+            
             width: 34px;
-            max-height: 40px;
+            height: 100%;
+            
+            border: none;
 
-            background: linear-gradient(145.9deg, #4EA27D 13.02%, #308282 85.42%);
+            background-color: transparent;
 
             cursor: pointer;
             text-align: center;
-        }
 
-        i {
-            border: solid black;
-            display: inline-block;
-            border-width: 0 3px 3px 0;
-            padding: 3px;
-            margin-bottom: 2px;
-            transform: rotate(45deg);
-            -webkit-transform: rotate(45deg);
+            &:after {
+                position: absolute;
+                content: "";
+                right: 10px;
+                width: 0;
+                height: 0;
+                border: 8px solid transparent;
+                border-color: $ux-grey-3 transparent transparent transparent;
+            }
         }
     }
 
