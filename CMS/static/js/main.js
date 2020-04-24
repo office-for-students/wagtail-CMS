@@ -542,8 +542,9 @@
             var that = this;
         
             $(document).click(function(e) {
-                if (!that.container[0].contains(e.target)) {
+                if (!that.container[0].contains(e.target) && that.optionList.is(":visible")) {
                     that.optionList.hide();
+                    that.dropdownButton.removeClass("active");
                     that.resetScroll();
                     if (!that.valid_selection) {
                         that.setDefaultValue();
@@ -556,6 +557,7 @@
                     that.searchField[0].value = '';
                     that.valid_selection = false;
                     that.optionList.show();
+                    that.dropdownButton.addClass("active");
                 }
             });
 
@@ -580,7 +582,6 @@
 
                         that.resetScroll();
                         that.searchField.blur();
-                        that.form.submit();
 
                         break;
 
@@ -659,9 +660,11 @@
                     that.searchField[0].focus();
                     that.valid_selection = false;
                     that.optionList.show();
+                    that.dropdownButton.addClass("active");
                 } else {
                     that.resetScroll();
                     that.optionList.hide();
+                    that.dropdownButton.removeClass("active");
 
                     if (!that.valid_selection) {
                         that.setDefaultValue();
@@ -719,6 +722,7 @@
             this.resetFilter();
             this.searchField[0].value = $.trim(option.textValue);
             this.optionList.hide();
+            this.dropdownButton.removeClass("active");
             this.valid_selection = true;
         }
     }
