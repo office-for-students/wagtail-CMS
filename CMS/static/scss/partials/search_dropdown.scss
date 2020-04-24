@@ -17,33 +17,47 @@
             border-width: 2px 2px 2px 2px;
             width: 100%;
             border-radius: 5px 5px 5px 5px;
+
+            &::-ms-clear {
+                display: none;
+            }
         }
 
         &-dropdown-button {
             position: absolute;
             display: inline-block;
-            outline: none;
             
-            right: 0px;
+            right: 2px;
             
-            width: 34px;
+            width: 36px;
             height: 100%;
             
             border: none;
-
             background-color: transparent;
 
             cursor: pointer;
-            text-align: center;
+            outline: none;
 
             &:after {
                 position: absolute;
                 content: "";
+                top: 50%;
                 right: 10px;
                 width: 0;
                 height: 0;
                 border: 8px solid transparent;
                 border-color: $ux-grey-3 transparent transparent transparent;
+            }
+
+            &.active:after {
+                position: absolute;
+                content: "";
+                top: 25%;
+                right: 10px;
+                width: 0;
+                height: 0;
+                border: 8px solid transparent;
+                border-color: transparent transparent $ux-grey-3 transparent;
             }
         }
     }
