@@ -119,6 +119,8 @@ GRANT ALL PRIVILEGES ON DATABASE sample TO manager;
 | AZURE_ACCOUNT_KEY                 | <azureaccountkey>    | The access key to account for image storage |
 | AZURE_ACCOUNT                     | <azureaccount>       | The account for image storage               |
 | JSONFILES_STORAGE_CONTAINER       | <azurecontainer>     | The container URI for the json files        |
+| SENDGRID_API_KEY                  | <sendgridapikey>     | The API key for the e-mail notifications    |
+| SENDGRID_FROM_EMAIL               | <sendgridfromemail>  | The e-mail address used for notifications   |
 | LOCAL                             | False                | Tells the site to use external API or mocks |
 
 
