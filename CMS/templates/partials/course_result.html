@@ -5,7 +5,7 @@
 {% get_course_locations_list course.locations page.is_english as locations %}
 <div class="course-finder-results__result-accordion-body-content comparison-course-area"
      data-coursename="{{course_name}}" data-courseid="{{course.kis_course_id}}"
-     data-uniname="{{ institution.pub_ukprn_name | title }}" data-uniid="{{institution_id}}"
+     data-uniname="{{ institution.pub_ukprn_name }}" data-uniid="{{institution_id}}"
      data-locations="{{locations}}" data-length="{{ course.length_of_course|slice:1 }}"
      data-mode-en="{% get_translation key=course.mode language='en' %}" data-mode-cy="{% get_translation key=course.mode language='cy' %}"
      data-sandwich-en="{% get_translation key=course.sandwich_year language='en' %}" data-sandwich-cy="{% get_translation key=course.sandwich_year language='cy' %}"

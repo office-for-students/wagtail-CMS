@@ -107,7 +107,7 @@ class CourseFinderUni(DiscoverUniBasePage):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['institutions_list'] = InstitutionList.options[self.get_language()]
+        context['institutions_list'] = InstitutionList.get_options()[self.get_language()]
         return context
 
 

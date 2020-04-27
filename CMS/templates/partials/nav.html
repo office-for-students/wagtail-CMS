@@ -42,6 +42,7 @@
                             {% if item.label == 'Course search' or item.label == 'Chwilio am Gwrs'  %}
                                 <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
                             {% endif %}
+
                         </a>
                     </li>
                 {% endif %}
@@ -49,13 +50,13 @@
 
             {% if page.is_english %}
                 <li class="discover-uni-nav__desktop-link">
-                    <a href="{{welsh_url}}" class="nav-bookmark">
+                    <a id="language_select" href="{{welsh_url}}" class="nav-bookmark">
                         Cymraeg
                     </a>
                 </li>
             {% else %}
                 <li class="discover-uni-nav__desktop-link">
-                    <a href="{{english_url}}" class="nav-bookmark">
+                    <a id= "language_select" href="{{english_url}}" class="nav-bookmark">
                         English
                     </a>
                 </li>
@@ -82,11 +83,11 @@
 
     <div class="discover-uni-nav__mobile-links">
         <div class="discover-uni-nav__mobile-language-toggles">
-            <a class="discover-uni-nav__mobile-link{% if page.is_english %} active{% endif %}" href="{{english_url}}">
+            <a class="discover-uni-nav__mobile-link{% if page.is_english %} active" {% else %}" href="{{english_url}}" id="language_select"{% endif %}>
                 English
             </a>
 
-            <a class="discover-uni-nav__mobile-link{% if not page.is_english %} active{% endif %}" href="{{welsh_url}}">
+            <a class="discover-uni-nav__mobile-link{% if not page.is_english %} active" {% else %}" href="{{welsh_url}}" id="language_select"{% endif %}>
                 Cymraeg
             </a>
         </div>
@@ -119,7 +120,7 @@
                 <a class="discover-uni-nav__mobile-link" href="{{ item.url }}">
                     {{ item.label }}
 
-                    {% if item.label == 'Course search' %}
+                    {% if item.label == 'Course search' or item.label == 'Chwilio am Gwrs' %}
                         <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
                     {% endif %}
                 </a>

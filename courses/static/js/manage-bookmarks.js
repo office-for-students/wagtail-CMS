@@ -118,7 +118,8 @@
             } else {
                 this.courseNameSpan.attr('href', '/cy/course-details/' + this.course.uniId + '/' + this.course.courseId + '/' + mode + '/');
             }
-            if (this.course.length === '' || this.course === 'None') {
+            
+            if (this.course.length === '' || this.course.length === 'None' || this.course === 'None') {
                 this.lengthKnown.hide();
             } else {
                 this.lengthUnknown.hide();

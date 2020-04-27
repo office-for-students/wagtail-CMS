@@ -21,6 +21,22 @@ ALLOWED_HOSTS = [
     'prod-discover-uni-write.azurewebsites.net',
 ]
 
+
+# Email settings
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = os.environ.get('SENDGRID_FROM_EMAIL')
+WAGTAILADMIN_NOTIFICATION_USE_HTML = True
+WAGTAILADMIN_NOTIFICATION_INCLUDE_SUPERUSERS = False
+
+
+# Cloudflare
+
 WAGTAILFRONTENDCACHE = {
     'cloudflare': {
         'BACKEND': 'wagtail.contrib.frontend_cache.backends.CloudflareBackend',
@@ -29,6 +45,7 @@ WAGTAILFRONTENDCACHE = {
         'ZONEID': os.environ.get('CLOUDFLARE_ZONEID'),
     },
 }
+
 
 # Security settings
 

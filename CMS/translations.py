@@ -99,6 +99,10 @@ DICT = {
         'en': 'How the course is assessed',
         'cy': "Dull asesu'r cwrs"
     },
+    'at:':{
+        'en': 'at:',
+        'cy': 'yn:'
+    },
     'baccalaureate': {
         'en': 'Baccalaureate',
         'cy': 'Bagloriaeth'
@@ -1007,8 +1011,8 @@ DICT = {
         'cy': 'Di-waith'
     },
     'uni_and_college': {
-        'en': 'University or college',
-        'cy': 'Prifysgol neu goleg'
+        'en': 'All universities and colleges',
+        'cy': 'Pob prifysgol a choleg'
     },
     'uni_college': {
         'en': 'Universities / colleges',

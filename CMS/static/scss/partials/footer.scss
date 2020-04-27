@@ -30,9 +30,44 @@
         color: $helper-grey;
     }
 
+    &__logo-container {
+        display: flex;
+        justify-content:center;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
     &__brand-logo {
-        height: 72px;
-        margin-bottom: 35px;
+        display: block;
+        height: 42px;
+        margin: auto;
+        margin-bottom: 30px;
+        padding: 0px 15% 8px;
+        border-bottom: 1px solid;
+    }
+
+    &__ofs-logo {
+        height: 42px;
+        margin-bottom: 20px;
+    }
+
+    &__hefcw-logo {
+        height: 34px;
+        margin-bottom: 20px;
+        margin-left: 25px;
+    }
+
+    &__dfeni-logo {
+        height: 45px;
+        margin-bottom: 20px;
+    }
+
+    &__sfc-logo {
+        height: 52px;
+        margin-bottom: 20px;
+        margin-left: 25px;
     }
 }
 
@@ -63,10 +98,48 @@
 
             color: $helper-grey;
         }
+        
+        &__logo-container {
+            display: inline-block;
+            justify-content: flex-start;
+            min-width: 350px;
+        }
 
         &__brand-logo {
-            height: 94px;
+            display: inline-block;
+            height: 57px;
             margin-bottom: 45px;
+            padding: 0px 5px 5px 0px;
+            border-right: 1px solid;
+            border-bottom: none;
+        }
+
+        &__ofs-logo {
+            display: inline-block;
+            height: 48px;
+            margin-bottom: 56px;
+            margin-left: 14px;
+        }
+
+        &__hefcw-logo {
+            display: inline-block;
+            height: 36px;
+            margin-bottom: 55px;
+            margin-left: 12px;
+        }
+
+        &__dfeni-logo {
+            display: inline-block;
+            height: 56px;
+            margin-bottom: 49px;
+            margin-left: 8px;
+        }
+        
+        &__sfc-logo {
+            display: inline-block;
+            height: 68px;
+            margin-bottom: 43px;
+            margin-left: 2px;
         }
     }
 }

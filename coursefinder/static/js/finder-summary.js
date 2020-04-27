@@ -17,17 +17,17 @@
         initialiseView: function() {
             var that = this;
 
-            if (sessionStorage.getItem("countries") != null) {
+            if (sessionStorage.getItem("countries")) {
                 var countries = sessionStorage.getItem("countries")
                 $('#countries').text(countries.split(",").join(", "))
             }
 
-            if (sessionStorage.getItem("modes") != null) {
+            if (sessionStorage.getItem("modes")) {
                 var modes = sessionStorage.getItem("modes")
                 $('#modes').text(modes.split(",").join(", "))
             }
 
-            if (sessionStorage.getItem("subject") != null) {
+            if (sessionStorage.getItem("subject")) {
                 var subjects = sessionStorage.getItem("subject")
                 var subjectNames = []
                 subjectsArray = subjects.split(",")
@@ -46,12 +46,12 @@
                 $('#subjects').text(subjectNames.join(', '));
             }
 
-            if (sessionStorage.getItem("uni") != null) {
+            if (sessionStorage.getItem("uni")) {
                 var uni = sessionStorage.getItem("uni")
                 $('#narrow').text(uni.split(",").join(", "))
             }
 
-            if (sessionStorage.getItem("postcode") != null) {
+            if (sessionStorage.getItem("postcode")) {
                 var postcode = sessionStorage.getItem("postcode")
                 $('#narrow').text(postcode.split(",").join(", "))
             }

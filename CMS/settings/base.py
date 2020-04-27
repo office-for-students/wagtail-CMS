@@ -30,6 +30,8 @@ ROOT_DOMAIN = os.environ.get('ROOT_DOMAIN', 'http://localhost:3000')
 # Application definition
 
 INSTALLED_APPS = [
+    'customadmin',
+    
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
@@ -200,7 +202,7 @@ WAGTAIL_SITE_NAME = "CMS"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = os.environ.get('ROOT_DOMAIN', 'http://example.com')
 
 # Search API settings
 
