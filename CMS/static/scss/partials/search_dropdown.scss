@@ -42,7 +42,7 @@
             &:after {
                 position: absolute;
                 content: "";
-                top: 50%;
+                top: 45%;
                 right: 10px;
                 width: 0;
                 height: 0;
@@ -53,7 +53,7 @@
             &.active:after {
                 position: absolute;
                 content: "";
-                top: 25%;
+                top: 20%;
                 right: 10px;
                 width: 0;
                 height: 0;
