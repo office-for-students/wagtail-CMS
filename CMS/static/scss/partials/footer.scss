@@ -73,10 +73,27 @@
     &__social-media {
         display: flex;
         justify-content: center;
+        flex-direction: column;
 
         a {
             text-decoration: none;
         }
+    }
+
+    &__connect-text {
+        font-family: Nunito Sans;
+        display: flex;
+        justify-content: center;
+        padding: 0px 15% 8px;
+        border-bottom: 1px solid;
+        margin: auto;
+        margin-left: auto;
+    
+    }
+
+    &__social-container{
+        display: flex;
+        justify-content: center;
     }
 
     &__twitter-logo {
@@ -177,15 +194,14 @@
         }
 
         &__connect-text {
-            font-family: Nunito Sans;
             display: inline-block;
             vertical-align: top;
             overflow-wrap: break-word;
             width: 90px;
             font-size: 19px;
-            padding-top: 14px;
-            padding-bottom: 8px;
+            padding: 14px 0px 8px 0px;
             border-right: 1px solid;
+            border-bottom: none;
 
         }
 
