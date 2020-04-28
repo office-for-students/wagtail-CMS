@@ -32,10 +32,11 @@
 
     &__logo-container {
         display: flex;
-        justify-content:center;
+        justify-content: center;
 
         a {
             text-decoration: none;
+            display:inline-block;
         }
     }
 
@@ -51,24 +52,96 @@
     &__ofs-logo {
         height: 42px;
         margin-bottom: 20px;
+        
+        img { 
+            height: 42px;
+        }
     }
 
     &__hefcw-logo {
         height: 34px;
         margin-bottom: 20px;
         margin-left: 25px;
-    }
 
+        img {
+            height: 34px;
+        }
+    }
     &__dfeni-logo {
         height: 45px;
         margin-bottom: 20px;
+
+        img {
+            height: 45px;
+        }
     }
 
     &__sfc-logo {
         height: 52px;
         margin-bottom: 20px;
         margin-left: 25px;
+
+        img {
+            height: 52px;
+        }
     }
+
+    &__social-media {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        a {
+            text-decoration: none;
+            display:inline-block;
+        }
+    }
+
+    &__connect-text {
+        font-family: Nunito Sans;
+        display: flex;
+        justify-content: center;
+        padding: 0px 15% 8px;
+        border-bottom: 1px solid;
+        margin: auto;
+    }
+
+    &__social-container{
+        display: flex;
+        justify-content: center;
+        height: 90px;
+    }
+
+    &__twitter-logo {
+        height: 52px;
+        margin: 13px;
+
+        img {
+            border-radius: 50%;
+            height: 52px;
+        }
+    }
+
+    &__instagram-logo {
+        height: 52px;
+        margin: 13px;
+
+        img {
+            border-radius: 50%;
+            height: 52px;
+        }
+    }
+
+    &__facebook-logo {
+        height: 52px;
+        margin: 13px;
+
+        img{
+            border-radius: 50%;
+            height: 52px;
+        }
+    }
+
 }
 
 @media only screen and (min-width: 770px) {
@@ -101,45 +174,103 @@
         
         &__logo-container {
             display: inline-block;
-            justify-content: flex-start;
+            justify-content: center;
             min-width: 350px;
         }
 
         &__brand-logo {
             display: inline-block;
             height: 57px;
-            margin-bottom: 45px;
+            margin-bottom: 35px;
             padding: 0px 5px 5px 0px;
             border-right: 1px solid;
             border-bottom: none;
         }
 
         &__ofs-logo {
-            display: inline-block;
             height: 48px;
-            margin-bottom: 56px;
-            margin-left: 14px;
+
+            img {
+                height: 48px;
+                margin-bottom: 56px;
+                margin-left: 4px;
+            }    
         }
 
         &__hefcw-logo {
-            display: inline-block;
             height: 36px;
-            margin-bottom: 55px;
-            margin-left: 12px;
+            
+            img {
+                height: 36px;
+                margin-bottom: 55px;
+            }
         }
 
         &__dfeni-logo {
-            display: inline-block;
             height: 56px;
-            margin-bottom: 49px;
-            margin-left: 8px;
+            img{    
+                height: 56px;
+                margin-bottom: 49px;
+                margin-left: 8px;
+            }
         }
         
         &__sfc-logo {
-            display: inline-block;
             height: 68px;
-            margin-bottom: 43px;
-            margin-left: 2px;
+            img{    
+                height: 68px;
+                margin-bottom: 43px;
+                margin-left: 2px;
+            }
+        }
+
+        &__social-media {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        &__connect-text {
+            display: inline-block;
+            vertical-align: top;
+            overflow-wrap: break-word;
+            width: 90px;
+            font-size: 19px;
+            padding: 14px 0px 8px 0px;
+            border-right: 1px solid;
+            border-bottom: none;
+
+        }
+
+        &__social-container{
+            display: inline-block;
+        }
+
+
+        &__twitter-logo {
+            height: 52px;
+            margin: 8px 13px 0px 26px;
+            
+            img {    
+                height: 52px;
+            }
+        }
+
+        &__instagram-logo {
+            height: 52px;
+            margin: 8px 13px 0px 13px;
+         
+            img {
+                height: 52px;
+            }
+        }
+
+        &__facebook-logo {
+            height: 52px;
+            margin: 8px 13px 0px 13px;
+            
+            img{
+                height: 52px;
+            }
         }
     }
 }
