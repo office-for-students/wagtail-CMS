@@ -46,7 +46,7 @@
         margin: auto;
         margin-bottom: 30px;
         padding: 0px 15% 8px;
-        border-bottom: 1px solid;
+        border-bottom: 1px solid black;
     }
 
     &__ofs-logo {
@@ -100,9 +100,10 @@
     &__connect-text {
         font-family: Nunito Sans;
         display: flex;
+        color: #000000;
         justify-content: center;
         padding: 0px 15% 8px;
-        border-bottom: 1px solid;
+        border-bottom: 1px solid black;
         margin: auto;
     }
 
@@ -183,13 +184,13 @@
             height: 57px;
             margin-bottom: 35px;
             padding: 0px 5px 5px 0px;
-            border-right: 1px solid;
+            border-right: 1px solid black;
             border-bottom: none;
         }
 
         &__ofs-logo {
             height: 48px;
-
+            margin-left: 26px;
             img {
                 height: 48px;
                 margin-bottom: 56px;
@@ -217,10 +218,11 @@
         
         &__sfc-logo {
             height: 68px;
+            margin-left: 10px;
+
             img{    
                 height: 68px;
                 margin-bottom: 43px;
-                margin-left: 2px;
             }
         }
 
@@ -235,8 +237,8 @@
             overflow-wrap: break-word;
             width: 90px;
             font-size: 19px;
-            padding: 14px 0px 8px 0px;
-            border-right: 1px solid;
+            padding: 14px 0px 8px 39px;
+            border-right: 1px solid black;
             border-bottom: none;
 
         }
@@ -248,7 +250,7 @@
 
         &__twitter-logo {
             height: 52px;
-            margin: 8px 13px 0px 26px;
+            margin: 8px 13px 0px 13px;
             
             img {    
                 height: 52px;
@@ -266,7 +268,7 @@
 
         &__facebook-logo {
             height: 52px;
-            margin: 8px 13px 0px 13px;
+            margin: 8px 13px 0px 26px;
             
             img{
                 height: 52px;
