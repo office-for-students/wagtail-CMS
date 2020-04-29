@@ -6,7 +6,8 @@
     <ul class="pagination__item-list">
         <li class="pagination__previous">
             {% if search.show_previous_icon != 0 %}
-                <a class="pagination__link" aria-label="{% get_translation key='previous_page' language=page.get_language %}" href="#"
+                <a class="pagination__link" aria-label="{% get_translation key='previous_page' language=page.get_language %}"
+                        {% if page.is_english %} href="/course-finder/results/" {% else %} href="/cy/course-finder/results/" {% endif %}
                         data-page="{{search.previous_page}}" data-count="{{search.count }}">
                     <img src="{% static 'images/chevrons/black_left_chevron.svg' %}" alt="{% get_translation key='previous_page' language=page.get_language %}" class="black">
                     <img src="{% static 'images/chevrons/green_left_chevron.svg' %}" alt="{% get_translation key='previous_page' language=page.get_language %}" class="green">
@@ -40,8 +41,9 @@
 
         {% for option in search.pages_to_right %}
             <li class="pagination__item">
-                <a class="pagination__item-link" href="#" data-page="{{option}}" data-count="{{search.count }}"
-                   aria-label="Page {{ option }}">
+                <a class="pagination__item-link" {% if page.is_english %} href="/course-finder/results/" {% else %} href="/cy/course-finder/results/" {% endif %}
+                    data-page="{{option}}" data-count="{{search.count }}"
+                    aria-label="Page {{ option }}">
                     {{ option }}
                 </a>
             </li>
@@ -55,7 +57,8 @@
 
         <li class="pagination__next">
             {% if search.show_next_icon %}
-                <a class="pagination__link" aria-label="{% get_translation key='next_page' language=page.get_language %}" href="#"
+                <a class="pagination__link" aria-label="{% get_translation key='next_page' language=page.get_language %}"
+                        {% if page.is_english %} href="/course-finder/results/" {% else %} href="/cy/course-finder/results/" {% endif %}
                         data-page="{{search.next_page}}" data-count="{{search.count }}">
                     <img src="{% static 'images/chevrons/black_right_chevron.svg' %}" alt="{% get_translation key='next_page' language=page.get_language %}" class="black">
                     <img src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="{% get_translation key='next_page' language=page.get_language %}" class="green">
