@@ -6,7 +6,7 @@
 {% block content_class %}narrow-search{% endblock %}
 
 {% block page_js %}
-    <script type="text/javascript" src="{% static 'js/narrow-search.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/narrow-search.js' %}?{% code_version %}"></script>
 {% endblock page_js %}
 
 {% block question %}

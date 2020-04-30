@@ -86,12 +86,12 @@
         }
 
         &-input {
-            margin-bottom: 20px;
 
             input {
                 @include desktop-body-font-mixin();
 
                 width: 100%;
+                height: 40px;
                 box-sizing: border-box;
 
                 border: 2px solid $ux-grey-3;
@@ -104,10 +104,19 @@
 
             }
         }
+
+        &-text {
+            @include mobile-body-font-mixin();
+
+            margin: 10px 0px;
+
+            color: $ux-grey-3;
+            line-height: 22px;
+        }
     }
 
     &__disclaimer {
-        @include desktop-body-font-mixin();
+        @include small-font-mixin();
 
         padding: 20px;
         margin-top: 20px;
@@ -178,6 +187,13 @@
 
             .search-landing-page__nav-card-button {
                 margin-top: 0px;
+            }
+
+            &-text {
+                @include xs-heading-mixin();
+
+                color: $ux-grey-3;
+                line-height: 27px;
             }
         }
     }

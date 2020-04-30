@@ -8,16 +8,16 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script type="text/javascript" src="{% static 'js/course_comparison.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/course_comparison.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}?{% code_version %}"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/bar_chart.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/bar_chart.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
 {% endblock %}
 
 {% block content %}

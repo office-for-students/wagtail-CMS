@@ -99,6 +99,10 @@ DICT = {
         'en': 'How the course is assessed',
         'cy': "Dull asesu'r cwrs"
     },
+    'at:':{
+        'en': 'at:',
+        'cy': 'yn:'
+    },
     'baccalaureate': {
         'en': 'Baccalaureate',
         'cy': 'Bagloriaeth'
@@ -282,6 +286,10 @@ DICT = {
     'courses': {
         'en': 'course(s)',
         'cy': 'cwrs/cyrsiau'
+    },
+    'covid_19_info': {
+        'en': 'Coronavirus (COVID-19) latest information',
+        'cy': 'Gwybodaeth diweddaraf Coronafeirws (COVID-19)'
     },
     'Customer Service Occupations': {
         'en': 'Customer service occupations',
@@ -1003,8 +1011,8 @@ DICT = {
         'cy': 'Di-waith'
     },
     'uni_and_college': {
-        'en': 'University or college',
-        'cy': 'Prifysgol neu goleg'
+        'en': 'All universities and colleges',
+        'cy': 'Pob prifysgol a choleg'
     },
     'uni_college': {
         'en': 'Universities / colleges',
@@ -1229,5 +1237,5 @@ DICT = {
     'Compulsory': {
         'en': 'Compulsory',
         'cy': 'Gorfodol'
-    }
+    },
 }

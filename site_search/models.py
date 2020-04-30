@@ -29,7 +29,7 @@ class SearchLandingPage(DiscoverUniBasePage):
         context['search_url'] = self.get_search_url()
         context['course_finder_url'] = get_page_for_language(self.get_language(),
                                                              CourseFinderChooseCountry.objects.all()).url
-        context['institutions_list'] = InstitutionList.options[self.get_language()]
+        context['institutions_list'] = InstitutionList.get_options()[self.get_language()]
 
         return context
 

@@ -6,8 +6,8 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script type="text/javascript" src="{% static 'js/institution_explanation_pop_ups.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/institution_explanation_pop_ups.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -28,7 +28,9 @@
 
                     <div class="institution-details__overview-item overview-block">
                         <p class="institution-details__overview-item-heading">{% get_translation key='website' language=page.get_language %}</p>
-                        <a class="institution-details__overview-item-value" target="_blank" href="https://{{ institution.website }}">{{institution.pub_ukprn_name}}</a>
+                        {% if institution.website %}
+                            <a class="institution-details__overview-item-value" target="_blank" href="https://{{ institution.website }}">{{institution.pub_ukprn_name}}</a>
+                        {% endif %}
                     </div>
 
                     <div class="institution-details__overview-item overview-block">
