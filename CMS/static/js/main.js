@@ -242,7 +242,7 @@
                 var optionId = baseSelect.id + '-' + i;
                 this.options.push(new DropdownOption(baseSelect[i], optionId, optionList, this.handleSelection.bind(this)));
             }
-            this.wrapper.append(optionList)
+            this.wrapper.append(JSON.stringify(optionList))
             this.optionList = this.wrapper.find('.select-items');
         },
 
