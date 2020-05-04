@@ -12,12 +12,7 @@
             this.popup = new LabelExplanationPopUp(this.wrapper.find('.chart-label-explanation'),
                                                             this.returnFocus.bind(this));
 
-            this.setInitialView();
             this.startWatcher();
-        },
-
-        setInitialView: function()  {
-            this.popup.hide();
         },
 
         startWatcher: function() {
