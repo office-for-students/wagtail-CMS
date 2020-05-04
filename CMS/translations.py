@@ -1028,7 +1028,7 @@ DICT = {
     },
     'view_all_courses': {
         'en': "View all courses at this university/college",
-        'cy': ""
+        'cy': "Gweld pob cwrs y brifysgol hon"
     },
     'wales': {
         'en': 'Wales',
