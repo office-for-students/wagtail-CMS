@@ -1027,7 +1027,7 @@ DICT = {
         'cy': 'Mewn swydd anhysbys'
     },
     'view_all_courses': {
-        'en': "View all courses at this uni",
+        'en': "View all courses at this university/college",
         'cy': ""
     },
     'wales': {
