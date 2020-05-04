@@ -2,7 +2,7 @@
 {% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
 
 {% block extra_css %}
-    <link href="{% sass_src 'scss/institution_details.scss' %}" rel="stylesheet" type="text/css" >
+    <link href="{% sass_src 'scss/institution_details.scss' %}?{% code_version %}" rel="stylesheet" type="text/css" >
 {% endblock %}
 
 {% block extra_js %}

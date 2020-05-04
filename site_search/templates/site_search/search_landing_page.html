@@ -5,7 +5,7 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block extra_css %}
-    <link href="{% sass_src 'scss/search_landing.scss' %}" rel="stylesheet" type="text/css" >
+    <link href="{% sass_src 'scss/search_landing.scss' %}?{% code_version %}" rel="stylesheet" type="text/css" >
 {% endblock extra_css %}
 
 {% block content %}
