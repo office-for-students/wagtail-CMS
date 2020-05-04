@@ -131,6 +131,7 @@
     }
 
     .institution-explanation {
+        display: none;
         position: absolute;
         left: 0;
         z-index: 100;
@@ -239,6 +240,7 @@
         }
 
         .institution-explanation {
+            display: none;
             width: 75%;
         }
     }
