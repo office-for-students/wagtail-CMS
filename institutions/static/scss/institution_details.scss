@@ -23,6 +23,7 @@
         .institution-details__overview {
             display: flex;
             flex-wrap: wrap;
+            justify-content:space-between;
             justify-content: space-evenly;
 
             margin: 0px 0px 40px;
@@ -63,9 +64,9 @@
         @include green-gradient-mixin();
         @include small-font--bold-mixin();
 
-        font-size: 22px;
+        font-size: 20px;
         margin-bottom: 50px;
-        padding: 8px 90px;
+        padding: 8px 25px;
 
         border-radius: 61.5609px;
         line-height: 19px;
@@ -215,9 +216,18 @@
                         @include desktop-body-font--bold-mixin();
 
                         color: $ux-grey-2;
+                        width: 190px;
                     }
                 }
             }
+        }
+        
+        .institution-details__course-button {
+            font-size: 22px;
+            margin-bottom: 50px;
+            padding: 8px 90px;
+            border-radius: 61.5609px;
+            line-height: 19px;
         }
 
         .institution-details__qa, .institution-details__tef {
