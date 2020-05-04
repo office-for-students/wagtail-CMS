@@ -1,5 +1,6 @@
 @import '../../../CMS/static/scss/fonts';
 @import '../../../CMS/static/scss/variables';
+@import '../../../CMS/static/scss/buttons';
 
 .institution-details {
     .institution-details__lead {
@@ -56,6 +57,20 @@
                 }
             }
         }
+    }
+
+    .institution-details__course-button {
+        @include green-gradient-mixin();
+        @include small-font--bold-mixin();
+
+        font-size: 22px;
+        margin-bottom: 50px;
+        padding: 8px 90px;
+
+        border-radius: 61.5609px;
+        line-height: 19px;
+        color: $white;
+        cursor: pointer;
     }
 
     .institution-details__qa, .institution-details__tef {
