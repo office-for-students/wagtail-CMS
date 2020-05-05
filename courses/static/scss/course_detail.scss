@@ -42,6 +42,7 @@
                 }
 
                 #course-detail__nav-control-back {
+                    visibility: hidden;
                     cursor: pointer;
                     margin-left: auto; 
                 }
@@ -273,6 +274,7 @@
     }
 
     .chart-label-explanation {
+        display: none;
         position: absolute;
         left: 0;
         z-index: 100;
@@ -502,6 +504,7 @@
         }
 
         .chart-label-explanation {
+            display: none;
             width: 50%;
             left: initial;
 
