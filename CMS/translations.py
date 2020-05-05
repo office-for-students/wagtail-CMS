@@ -438,7 +438,7 @@ DICT = {
         'cy': 'Mwy o wybodaeth'
     },
     'first_degree': {
-        'en': 'First degree (e.g. BA, BSc)',
+        'en': 'First degree (e.g. BA, BSc, Integrated Masters)',
         'cy': ''
     },
     'foundation_course': {
@@ -694,7 +694,7 @@ DICT = {
         'cy': 'Cymhwyster addysg uwch gwahanol'
     },
     'other_undergraduate': {
-        'en': 'Other undergraduate (e.g. CertHE, DipHE)',
+        'en': 'Other undergraduate (e.g. CertHE, DipHE, FD)',
         'cy': ''
     },
     'page_not_found':

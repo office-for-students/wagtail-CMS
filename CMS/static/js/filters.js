@@ -29,6 +29,8 @@
             this.postcodeInput = this.wrapper.find('.filters-block__filter-postcode');
             this.distanceInputs = this.wrapper.find('input[name=distance]');
             this.postcodeQuery = this.wrapper.find('#postcode_query');
+            this.qualificationInputs = this.wrapper.find('input[name=qualification]');
+            this.qualificationQuery = this.wrapper.find('#qualification_query');
 
             this.uniQuery = this.wrapper.find('#institution_query');
 
@@ -57,6 +59,7 @@
                 that.prepSubjectQuery();
                 that.prepPostcodeQuery();
                 that.prepInstitutionQuery();
+                that.prepQualificationQuery();
                 that.form.submit();
             });
 
@@ -114,6 +117,22 @@
                 this.postcodeQuery.val(queryValue);
             }
         },
+
+        prepQualificationQuery: function() {
+            var selectedQualifications = [];
+
+            for ( var i = 0; i < this.qualificationInputs.length ; i++) {
+                var qualification = this.qualificationInputs;
+                    if (qualification.prop(':checked')){
+                        selectedQualifications.push(qualification.val());
+                    }
+            }
+
+                this.qualificationQuery.val(selectedQualifications);
+
+        },
+
+
 
         prepInstitutionQuery: function() {
             var selectedUnis = this.uniFilter.getSelectedUnis();
