@@ -121,14 +121,13 @@
         prepQualificationQuery: function() {
             var selectedQualifications = [];
 
-            for ( var i = 0; i < this.qualificationInputs.length ; i++) {
-                var qualification = this.qualificationInputs;
-                    if (qualification.prop(':checked')){
-                        selectedQualifications.push(qualification.val());
-                    }
-            }
+            this.qualificationInputs.each( function()  {
+                selectedQualifications.push(this.val());
+                    
+            });
+            console.log(this.qualificationInputs);
 
-                this.qualificationQuery.val(selectedQualifications);
+            this.qualificationQuery.val(selectedQualifications);
 
         },
 
