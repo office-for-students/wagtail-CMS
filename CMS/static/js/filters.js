@@ -33,10 +33,7 @@
             this.uniQuery = this.wrapper.find('#institution_query');
             this.courseQuery = this.wrapper.find('#course_query');
             
-            var lastSearch = JSON.stringify({
-                "institution_querry": this.uniQuery.val(),
-                "course_query": this.courseQuery.val(),
-            });
+            var lastSearch = JSON.stringify(this.form.serializeArray());
 
             sessionStorage.setItem("lastSearch", lastSearch);
 
