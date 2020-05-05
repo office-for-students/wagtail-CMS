@@ -9,7 +9,7 @@
                     
                     <input name="course_query" id="course_query" type="text" value="" hidden />
                     <input name="institution_query" id="institution_query" type="text" value="" hidden />
-                    <span id='course-detail__nav-control-back'>
+                    <span id='course-detail__nav-control-back' style="visibility: hidden;">
                         <img class="course-detail__nav-control-icon" src="{% static 'assets/left-arrow.svg' %}" alt="">
                         {% get_translation key='back_to_results' language=page.get_language %}
                     </span>
