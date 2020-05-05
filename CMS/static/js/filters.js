@@ -62,6 +62,7 @@
                 that.prepSubjectQuery();
                 that.prepPostcodeQuery();
                 that.prepInstitutionQuery();
+                that.pageInput.val(1);
                 that.form.submit();
             });
 
