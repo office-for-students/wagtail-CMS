@@ -4,7 +4,7 @@
     <div class="discover-uni-container">
         <ul class="course-detail__nav">
             <li class="course-detail__nav-control">
-                <form method="post" {% if page.is_english %} id="back_to_search" action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %}>
+                <form method="post" id="back_to_search" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %}>
                     <span id='course-detail__nav-control-back' style="visibility: hidden;">
                         <img class="course-detail__nav-control-icon" src="{% static 'assets/left-arrow.svg' %}" alt="">
                         {% get_translation key='back_to_results' language=page.get_language %}
