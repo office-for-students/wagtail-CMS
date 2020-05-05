@@ -1026,6 +1026,10 @@ DICT = {
         'en': 'In an unknown job type',
         'cy': 'Mewn swydd anhysbys'
     },
+    'view_all_courses': {
+        'en': "View all courses at this university/college",
+        'cy': "Gweld pob cwrs y brifysgol hon"
+    },
     'wales': {
         'en': 'Wales',
         'cy': 'Cymru'

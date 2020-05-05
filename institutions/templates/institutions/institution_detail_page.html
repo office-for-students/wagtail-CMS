@@ -2,7 +2,7 @@
 {% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
 
 {% block extra_css %}
-    <link href="{% sass_src 'scss/institution_details.scss' %}" rel="stylesheet" type="text/css" >
+    <link href="{% sass_src 'scss/institution_details.scss' %}?{% code_version %}" rel="stylesheet" type="text/css" >
 {% endblock %}
 
 {% block extra_js %}
@@ -51,6 +51,14 @@
                         {% endfor %}
                     </div>
                 </div>
+
+                <form class="institution-details__search" {% if page.is_welsh %} action="/cy/course-finder/results/" {% else %} action="/course-finder/results/" {% endif %} method="post" autocomplete="off">
+                    {% csrf_token %}
+                    <input type="hidden" name = "institution_query" value = "{{ institution.pub_ukprn_name }}"/>
+                    <button class="institution-details__course-button">
+                        {% get_translation key='view_all_courses' language=page.get_language %}
+                    </button>
+                </form>
             </div>
 
             <div class="institution-details__qa">

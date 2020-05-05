@@ -12,12 +12,7 @@
             this.popup = new InstitutionExplanationPopUp(this.wrapper.find('.institution-explanation'),
                                                             this.returnFocus.bind(this));
 
-            this.setInitialView();
             this.startWatcher();
-        },
-
-        setInitialView: function()  {
-            this.popup.hide();
         },
 
         startWatcher: function() {
