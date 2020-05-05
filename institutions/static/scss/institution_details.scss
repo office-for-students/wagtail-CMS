@@ -1,5 +1,6 @@
 @import '../../../CMS/static/scss/fonts';
 @import '../../../CMS/static/scss/variables';
+@import '../../../CMS/static/scss/buttons';
 
 .institution-details {
     .institution-details__lead {
@@ -22,6 +23,7 @@
         .institution-details__overview {
             display: flex;
             flex-wrap: wrap;
+            justify-content:space-between;
             justify-content: space-evenly;
 
             margin: 0px 0px 40px;
@@ -56,6 +58,20 @@
                 }
             }
         }
+    }
+
+    .institution-details__course-button {
+        @include green-gradient-mixin();
+        @include small-font--bold-mixin();
+
+        font-size: 20px;
+        margin-bottom: 50px;
+        padding: 8px 25px;
+
+        border-radius: 61.5609px;
+        line-height: 19px;
+        color: $white;
+        cursor: pointer;
     }
 
     .institution-details__qa, .institution-details__tef {
@@ -116,6 +132,7 @@
     }
 
     .institution-explanation {
+        display: none;
         position: absolute;
         left: 0;
         z-index: 100;
@@ -199,9 +216,18 @@
                         @include desktop-body-font--bold-mixin();
 
                         color: $ux-grey-2;
+                        width: 190px;
                     }
                 }
             }
+        }
+        
+        .institution-details__course-button {
+            font-size: 22px;
+            margin-bottom: 50px;
+            padding: 8px 90px;
+            border-radius: 61.5609px;
+            line-height: 19px;
         }
 
         .institution-details__qa, .institution-details__tef {
@@ -224,6 +250,7 @@
         }
 
         .institution-explanation {
+            display: none;
             width: 75%;
         }
     }

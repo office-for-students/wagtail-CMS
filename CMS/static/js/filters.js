@@ -31,6 +31,11 @@
             this.postcodeQuery = this.wrapper.find('#postcode_query');
 
             this.uniQuery = this.wrapper.find('#institution_query');
+            this.courseQuery = this.wrapper.find('#course_query');
+            
+            var lastSearch = JSON.stringify(this.form.serializeArray());
+
+            sessionStorage.setItem("lastSearch", lastSearch);
 
             this.startWatcher();
         },
