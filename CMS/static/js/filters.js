@@ -122,13 +122,12 @@
             var selectedQualifications = [];
 
             this.qualificationInputs.each( function()  {
-                selectedQualifications.push(this.val());
-                    
+                if ( this.checked ) {
+                    selectedQualifications.push(this.value);
+                }
             });
-            console.log(this.qualificationInputs);
 
             this.qualificationQuery.val(selectedQualifications);
-
         },
 
 
