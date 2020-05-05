@@ -37,6 +37,7 @@
 
             sessionStorage.setItem("lastSearch", lastSearch);
 
+            this.prepInstitutionQuery();
             this.startWatcher();
         },
 
