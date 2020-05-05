@@ -70,6 +70,7 @@
 
         border-radius: 61.5609px;
         line-height: 19px;
+        max-width: 270px;
         color: $white;
         cursor: pointer;
     }
@@ -224,10 +225,13 @@
         
         .institution-details__course-button {
             font-size: 22px;
+
             margin-bottom: 50px;
             padding: 8px 90px;
+
             border-radius: 61.5609px;
             line-height: 19px;
+            max-width: 600px;
         }
 
         .institution-details__qa, .institution-details__tef {
