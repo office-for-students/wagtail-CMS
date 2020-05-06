@@ -5,7 +5,7 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block extra_css %}
-    <link href="{% sass_src 'scss/search_landing.scss' %}" rel="stylesheet" type="text/css" >
+    <link href="{% sass_src 'scss/search_landing.scss' %}?{% code_version %}" rel="stylesheet" type="text/css" >
 {% endblock extra_css %}
 
 {% block content %}
@@ -22,10 +22,12 @@
                         {{ page.search_heading }}
                     </p>
 
-                    <form class="search-landing-page__search" action="{{search_url}}" method="get" autocomplete="off">
+                    <form class="search-landing-page__search" action="{{search_url}}" method="post" autocomplete="off">
+                        {% csrf_token %}
+
                         <div class="search-landing-page__search-fields">
                             <div class="search-landing-page__search-input">
-                                <input name="subject_query" type="text" id="course" aria-label="{% get_translation key='course_name' language=page.get_language %}"
+                                <input name="course_query" type="text" id="course" aria-label="{% get_translation key='course_name' language=page.get_language %}"
                                        placeholder="{% get_translation key='course_name' language=page.get_language %}" autocomplete="off">
                             </div>
 

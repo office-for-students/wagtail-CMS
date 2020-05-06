@@ -33,7 +33,13 @@
             this.qualificationQuery = this.wrapper.find('#qualification_query');
 
             this.uniQuery = this.wrapper.find('#institution_query');
+            this.courseQuery = this.wrapper.find('#course_query');
+            
+            var lastSearch = JSON.stringify(this.form.serializeArray());
 
+            sessionStorage.setItem("lastSearch", lastSearch);
+
+            this.prepInstitutionQuery();
             this.startWatcher();
         },
 
@@ -60,6 +66,7 @@
                 that.prepPostcodeQuery();
                 that.prepInstitutionQuery();
                 that.prepQualificationQuery();
+                that.pageInput.val(1);
                 that.form.submit();
             });
 
