@@ -204,7 +204,8 @@
                                     </span>
 
                                     <input class="course-finder-content__question-input" id="first_degree"
-                                        type="checkbox" name="qualification" value="first_degree">
+                                        type="checkbox" name="qualification" value="first_degree"
+                                        {% if 'first_degree' in filter_form.qualification_query %}checked{% endif %} />
 
                                     <span class="checkmark"></span>
                                 </label>
@@ -218,7 +219,8 @@
                                     </span>
 
                                     <input class="course-finder-content__question-input" id="other_undergraduate"
-                                        type="checkbox" name="qualification" value="other_undergraduate">
+                                        type="checkbox" name="qualification" value="other_undergraduate"
+                                        {% if 'other_undergraduate' in filter_form.qualification_query %}checked{% endif %} />
 
                                     <span class="checkmark"></span>
                                 </label>
