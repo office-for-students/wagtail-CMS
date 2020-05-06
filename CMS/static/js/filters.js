@@ -110,7 +110,7 @@
             } else {
                 subjectCodes = this.subjectCodeSelector[0].value;
             }
-            if (subjectCodes !== 'Show all') {
+            if (subjectCodes !== 'Show all' && subjectCodes !== 'Dangos popeth') {
                 this.subjectQuery.val(subjectCodes);
             }
         },
