@@ -127,6 +127,10 @@ DICT = {
         'en': 'Are taking a break from their studies',
         'cy': 'Yn cymryd egwyl o astudio'
     },
+    'Bronze': {
+        'en': 'Bronze',
+        'cy': 'PLACEHOLDER TEXT'
+    },
     'Business and finance associate professionals': {
         'en': 'Business and finance associate professionals',
         'cy': 'Gweithwyr proffesiynol ym maes busnes a chyllid cysylltiol'
@@ -318,6 +322,10 @@ DICT = {
     'Design occupations': {
         'en': 'Design occupations',
         'cy': 'Galwedigaethau Dylunio'
+    },
+    'Did not participate': {
+        'en': 'Did not participate',
+        'cy': 'PLACEHOLDER TEXT'
     },
     'disclaimer': {
         'en': '',
@@ -528,6 +536,10 @@ DICT = {
     'IT service delivery occupations': {
         'en': 'IT service delivery occupations',
         'cy': 'Galwedigaethau darparu gwasanaethau TG'
+    },
+    'Gold': {
+        'en': 'Gold',
+        'cy': "PLACEHOLDER TEXT"
     },
     'learning_and_teaching_methods': {
         'en': 'How the course is taught',
@@ -746,6 +758,10 @@ DICT = {
         'en': 'Protective service officers',
         'cy': 'Swyddogion y gwasanaeth amddiffynnol'
     },
+    'Provisional': {
+        'en': 'Provisional',
+        'cy': 'PLACEHOLDER TEXT'
+    },
     'Public service and other associate professionals': {
         'en': 'Public service and other associate professionals',
         'cy': 'Gwasanaethau cyhoeddus a gweithwyr proffesiynol cysylltiol eraill'
@@ -889,6 +905,10 @@ DICT = {
     'show_all': {
         'en': 'Show all',
         'cy': 'Dangos popeth'
+    },
+    'Silver': {
+        'en': 'Silver',
+        'cy': 'PLACEHOLDER TEXT'
     },
     'similar_courses_elsewhere': {
         'en': 'View similar courses at <strong>other</strong> unis',
@@ -1053,6 +1073,10 @@ DICT = {
     'Welfare Professionals': {
         'en': 'Welfare professionals',
         'cy': 'Gweithwyr Proffesiynol Lles'
+    },
+    'Withdrawn': {
+        'en': 'Withdrawn',
+        'cy': 'PLACEHOLDER TEXT'
     },
     'with_placement': {
         'en': 'With placement year',
