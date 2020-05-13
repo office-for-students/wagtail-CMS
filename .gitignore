@@ -35,3 +35,6 @@ coverage.xml
 media/*
 
 static/**
+
+# Dev env stuff
+*.dev.*
