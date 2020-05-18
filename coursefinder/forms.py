@@ -5,6 +5,7 @@ class FilterForm:
         self.countries_query = ','.join(form_data.getlist('countries_query')) if 'countries_query' in form_data \
             else ''
         self.mode_query = ','.join(form_data.getlist('mode_query')) if 'mode_query' in form_data else ''
+        self.qualification_query = form_data.get('qualification_query')
         self.placement = form_data.get('placement')
         self.foundation = form_data.get('foundation')
         self.abroad = form_data.get('abroad')
