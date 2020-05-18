@@ -129,7 +129,7 @@ DICT = {
     },
     'Bronze': {
         'en': 'Bronze',
-        'cy': 'PLACEHOLDER TEXT'
+        'cy': 'Efydd'
     },
     'Business and finance associate professionals': {
         'en': 'Business and finance associate professionals',
@@ -325,7 +325,7 @@ DICT = {
     },
     'Did not participate': {
         'en': 'Did not participate',
-        'cy': 'PLACEHOLDER TEXT'
+        'cy': 'Heb gymryd rhan'
     },
     'disclaimer': {
         'en': '',
@@ -447,7 +447,7 @@ DICT = {
     },
     'first_degree': {
         'en': 'First degree (e.g. BA, BSc, Integrated Masters)',
-        'cy': ''
+        'cy': 'Gradd Cyntaf (BA, BSc, Gradd Meistr Integredig)'
     },
     'foundation_course': {
         'en': 'Foundation course',
@@ -539,7 +539,7 @@ DICT = {
     },
     'Gold': {
         'en': 'Gold',
-        'cy': "PLACEHOLDER TEXT"
+        'cy': 'Aur'
     },
     'learning_and_teaching_methods': {
         'en': 'How the course is taught',
@@ -707,7 +707,7 @@ DICT = {
     },
     'other_undergraduate': {
         'en': 'Other undergraduate (e.g. CertHE, DipHE, FD)',
-        'cy': ''
+        'cy': 'Isradd arall (e.e. tystysgrif, diploma, gradd sylfaen)'
     },
     'page_not_found':
     {
@@ -760,7 +760,7 @@ DICT = {
     },
     'Provisional': {
         'en': 'Provisional',
-        'cy': 'PLACEHOLDER TEXT'
+        'cy': 'Dros dro'
     },
     'Public service and other associate professionals': {
         'en': 'Public service and other associate professionals',
@@ -772,7 +772,7 @@ DICT = {
     },
     'qualification_type': {
         'en': 'Qualification type',
-        'cy': ''
+        'cy': 'Math o gymhwyster'
     },
     'Quality and Regulatory Professionals': {
         'en': 'Quality and regulatory professionals',
@@ -908,7 +908,7 @@ DICT = {
     },
     'Silver': {
         'en': 'Silver',
-        'cy': 'PLACEHOLDER TEXT'
+        'cy': 'Arian'
     },
     'similar_courses_elsewhere': {
         'en': 'View similar courses at <strong>other</strong> unis',
@@ -1076,7 +1076,7 @@ DICT = {
     },
     'Withdrawn': {
         'en': 'Withdrawn',
-        'cy': 'PLACEHOLDER TEXT'
+        'cy': 'Wedi galw’n ôl'
     },
     'with_placement': {
         'en': 'With placement year',
