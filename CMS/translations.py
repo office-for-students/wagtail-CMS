@@ -127,6 +127,10 @@ DICT = {
         'en': 'Are taking a break from their studies',
         'cy': 'Yn cymryd egwyl o astudio'
     },
+    'Bronze': {
+        'en': 'Bronze',
+        'cy': 'Efydd'
+    },
     'Business and finance associate professionals': {
         'en': 'Business and finance associate professionals',
         'cy': 'Gweithwyr proffesiynol ym maes busnes a chyllid cysylltiol'
@@ -319,6 +323,10 @@ DICT = {
         'en': 'Design occupations',
         'cy': 'Galwedigaethau Dylunio'
     },
+    'Did not participate': {
+        'en': 'Did not participate',
+        'cy': 'Heb gymryd rhan'
+    },
     'disclaimer': {
         'en': '',
         'cy': "Mae enwau'r Prifysgolion fel y'u darperir gan Gofrestr y DU o Ddarparwyr Dysgu. Os nad yw'r enw Cymraeg yn bresennol, chwiliwch amdano gan ddefnyddio'i enw Saesneg."
@@ -439,7 +447,7 @@ DICT = {
     },
     'first_degree': {
         'en': 'First degree (e.g. BA, BSc, Integrated Masters)',
-        'cy': ''
+        'cy': 'Gradd Cyntaf (BA, BSc, Gradd Meistr Integredig)'
     },
     'foundation_course': {
         'en': 'Foundation course',
@@ -528,6 +536,10 @@ DICT = {
     'IT service delivery occupations': {
         'en': 'IT service delivery occupations',
         'cy': 'Galwedigaethau darparu gwasanaethau TG'
+    },
+    'Gold': {
+        'en': 'Gold',
+        'cy': 'Aur'
     },
     'learning_and_teaching_methods': {
         'en': 'How the course is taught',
@@ -695,7 +707,7 @@ DICT = {
     },
     'other_undergraduate': {
         'en': 'Other undergraduate (e.g. CertHE, DipHE, FD)',
-        'cy': ''
+        'cy': 'Isradd arall (e.e. tystysgrif, diploma, gradd sylfaen)'
     },
     'page_not_found':
     {
@@ -746,6 +758,10 @@ DICT = {
         'en': 'Protective service officers',
         'cy': 'Swyddogion y gwasanaeth amddiffynnol'
     },
+    'Provisional': {
+        'en': 'Provisional',
+        'cy': 'Dros dro'
+    },
     'Public service and other associate professionals': {
         'en': 'Public service and other associate professionals',
         'cy': 'Gwasanaethau cyhoeddus a gweithwyr proffesiynol cysylltiol eraill'
@@ -756,7 +772,7 @@ DICT = {
     },
     'qualification_type': {
         'en': 'Qualification type',
-        'cy': ''
+        'cy': 'Math o gymhwyster'
     },
     'Quality and Regulatory Professionals': {
         'en': 'Quality and regulatory professionals',
@@ -889,6 +905,10 @@ DICT = {
     'show_all': {
         'en': 'Show all',
         'cy': 'Dangos popeth'
+    },
+    'Silver': {
+        'en': 'Silver',
+        'cy': 'Arian'
     },
     'similar_courses_elsewhere': {
         'en': 'View similar courses at <strong>other</strong> unis',
@@ -1053,6 +1073,10 @@ DICT = {
     'Welfare Professionals': {
         'en': 'Welfare professionals',
         'cy': 'Gweithwyr Proffesiynol Lles'
+    },
+    'Withdrawn': {
+        'en': 'Withdrawn',
+        'cy': 'Wedi galw’n ôl'
     },
     'with_placement': {
         'en': 'With placement year',
