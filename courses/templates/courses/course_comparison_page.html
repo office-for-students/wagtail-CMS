@@ -3,8 +3,8 @@
 
 
 {% block extra_css %}
-    <link href="{% sass_src 'scss/course_comparison.scss' %}" rel="stylesheet" type="text/css" >
-    <link href="{% sass_src 'scss/course_detail.scss' %}" rel="stylesheet" type="text/css" >
+    <link href="{% sass_src 'scss/course_comparison.scss' %}?{% code_version %}" rel="stylesheet" type="text/css" >
+    <link href="{% sass_src 'scss/course_detail.scss' %}?{% code_version %}" rel="stylesheet" type="text/css" >
 {% endblock %}
 
 {% block extra_js %}

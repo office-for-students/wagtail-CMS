@@ -12,7 +12,7 @@ from site_search.models import SearchLandingPage
 
 
 def results(request, language=enums.languages.ENGLISH):
-    query_params = request.GET
+    query_params = request.POST
     search_form = FilterForm({
         "course_query" : query_params.get('subject_query', ""),
         "institution_query": query_params.get('institution_query', ""),
@@ -126,6 +126,10 @@ def build_filters(params):
         mode_query = ','.join(params.getlist('mode_query'))
         if 'Full-time,Part-time' not in mode_query:
             filters.append(params.get('mode_query').lower().replace('-', '_').replace(' ', '_'))
+    if 'qualification_query' in params:
+        qualification_query = ','.join(params.getlist('qualification_query'))
+        if 'first_degree,other_undergraduate' not in qualification_query:
+            filters.append(params.get('qualification_query')) 
     if 'placement' in params:
         if params.get('placement') == 'yes':
             filters.append('sandwich_year')

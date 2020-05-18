@@ -13,6 +13,7 @@
 
     <form action="javascript:;" class="course-finder-content__question-form">
         <div>
+            {% get_translation key='uni_and_college' language=page.get_language as placeholder %}
             {% include 'partials/search-dropdown.html' with field_name='uni' options=institutions_list %}
         </div>
     </form>

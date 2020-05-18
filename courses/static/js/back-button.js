@@ -1,15 +1,28 @@
-$(document).ready(function() {
-    var btnVisibility = sessionStorage.getItem("btnVisibility");
+(function ($) {
+    function init() {
+        var form = $("#back_to_search");
+        var lastSearch = JSON.parse(sessionStorage.getItem("lastSearch"));
 
-    if(btnVisibility) {
-        var btn = document.getElementById("course-detail__nav-control-back");
-        btn.style.visibility = "visible";  
+        if(lastSearch) {
+            for (var i = 0; i < lastSearch.length; i++ ) {
+                var formInput = document.createElement('input');
+                formInput.setAttribute('type', 'text');
+                formInput.setAttribute('name', lastSearch[i].name);
+                formInput.setAttribute('value', lastSearch[i].value);
+                form.append(formInput);
+            }
 
-        $("#course-detail__nav-control-back").click(function(evt) {
-            evt.preventDefault();
-            history.go(-1);
-            sessionStorage.removeItem('btnVisibility');
-        }); 
+            var backBtn = $("#course-detail__nav-control-back");
+            backBtn.css("visibility", "visible");
+
+            backBtn.click(function(evt) {
+                evt.preventDefault();
+                
+                form.submit();
+            });
+        }
     }
-});
 
+    $(document).on('page:load', init);
+    $(init);
+}(jQuery))

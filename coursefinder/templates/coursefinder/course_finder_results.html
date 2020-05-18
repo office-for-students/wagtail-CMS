@@ -5,14 +5,13 @@
 {% block body_class %}template-course-finder-results{% endblock %}
 
 {% block extra_css %}
-    <link href="{% sass_src 'scss/course_finder.scss' %}" rel="stylesheet" type="text/css" >
+    <link href="{% sass_src 'scss/course_finder.scss' %}?{% code_version %}" rel="stylesheet" type="text/css" >
 {% endblock extra_css %}
 
 {% block extra_js %}
     <script type="text/javascript" src="{% get_static_prefix %}js/filters.js?{% code_version %}"></script>
     <script type="text/javascript" src="{% get_static_prefix %}js/compare-selector.js?{% code_version %}"></script>
     <script type="text/javascript" src="{% get_static_prefix %}js/finder-results.js?{% code_version %}"></script>
-    <script type="text/javascript" src="{% get_static_prefix %}js/button-visibility.js?{% code_version %}"></script>
 {% endblock %}
 
 {% block content %}

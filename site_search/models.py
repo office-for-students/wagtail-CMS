@@ -35,5 +35,5 @@ class SearchLandingPage(DiscoverUniBasePage):
 
     def get_search_url(self):
         if self.get_language() == enums.languages.WELSH:
-            return "/%s/results" % self.get_language()
-        return '/results'
+            return "/%s/course-finder/results/" % self.get_language()
+        return '/course-finder/results/'
