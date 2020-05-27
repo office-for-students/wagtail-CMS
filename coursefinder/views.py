@@ -146,5 +146,5 @@ def build_filters(params):
         elif params.get('abroad') == 'no':
             filters.append('-year_abroad')
 
-    filters_query_params = ','.join(_filter for _filter in filters if _filter)
+    filters_query_params = ','.join(filter_ for filter_ in filters if filter_)
     return filters_query_params.strip(',')
