@@ -147,4 +147,4 @@ def build_filters(params):
             filters.append('-year_abroad')
 
     filters_query_params = ','.join(filter_ for filter_ in filters if filter_)
-    return filters_query_params.strip(',')
+    return filters_query_params
