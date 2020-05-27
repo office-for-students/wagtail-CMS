@@ -129,7 +129,7 @@ def build_filters(params):
     if 'qualification_query' in params:
         qualification_query = ','.join(params.getlist('qualification_query'))
         if 'first_degree,other_undergraduate' not in qualification_query:
-            filters.append(params.get('qualification_query')) 
+            filters.append(params.get('qualification_query'))
     if 'placement' in params:
         if params.get('placement') == 'yes':
             filters.append('sandwich_year')
@@ -146,4 +146,5 @@ def build_filters(params):
         elif params.get('abroad') == 'no':
             filters.append('-year_abroad')
 
-    return ','.join(filters)
+    filters_query_params = ','.join(filters)
+    return filters_query_params.strip(',')
