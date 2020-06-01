@@ -35,3 +35,5 @@ coverage.xml
 media/*
 
 static/**
+
+*.dev.*
