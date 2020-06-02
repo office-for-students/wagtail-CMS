@@ -123,7 +123,7 @@ def build_filters(params):
     filters = []
 
     if 'mode_query' in params:
-        mode_query = ','.join(params.getlist('mode_query')).strip(',')
+        mode_query = ','.join(params.getlist('mode_query'))
         if 'Full-time,Part-time' not in mode_query:
             filters.append(params.get('mode_query').lower().replace('-', '_').replace(' ', '_'))
     if 'qualification_query' in params:
@@ -147,4 +147,5 @@ def build_filters(params):
             filters.append('-year_abroad')
 
     filters_query_params = ','.join(filter_ for filter_ in filters if filter_)
+    print(filters_query_params)
     return filters_query_params
