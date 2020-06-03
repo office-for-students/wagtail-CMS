@@ -36,4 +36,5 @@ media/*
 
 static/**
 
+# Dev env stuff
 *.dev.*
