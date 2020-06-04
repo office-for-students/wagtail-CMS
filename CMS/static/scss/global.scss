@@ -40,6 +40,17 @@ body {
     }
 }
 
+.check-courses-details-banner {
+    display: block;
+    background: #ff9900;
+    border: 6px solid #ff3333;
+    color: $black;
+    padding: 20px 0px;
+    text-align: center;
+    font-family: Nunito Sans;
+    font-size: 18px;
+}
+
 .explanation {
     position: relative;
 
@@ -176,8 +187,8 @@ a {
         @include small-font-mixin();
 
         display: block;
-        position: absolute;
-        top: 195px;
+        position: relative;
+        bottom: 45px;
 
         &__divider {
             margin: 0px 4px 0px 6px;
