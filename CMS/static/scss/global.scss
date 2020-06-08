@@ -42,12 +42,12 @@ body {
 
 .check-courses-details-banner {
     display: block;
-    background: #ffcc33;
-    border: 2px solid #ffcc33;
+    background: #ffcc66;
+    border: 2px solid #ffcc66;
     border-radius: 10px;
     color: $black;
     padding: 10px;
-    max-width: 800px;
+    max-width: 740px;
     margin: 7em 1em 0 1em;
 
     &__message {
@@ -58,8 +58,9 @@ body {
     }
 
     &__exclamation-sign {
-        width: 14%;
+        width: 12%;
         float: left;
+        padding: 6px 0 0 0;
     }
 }
 
@@ -199,7 +200,7 @@ a {
         margin: 5em auto 0 auto;
 
         &__exclamation-sign {
-            width: 10%;
+            padding: 0;
         }
     }
 
