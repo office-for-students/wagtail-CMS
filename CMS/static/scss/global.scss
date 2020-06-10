@@ -51,16 +51,18 @@ body {
     margin: 7em 1em 0 1em;
 
     &__message {
-        padding: 3px;
-        text-align: center;
+        padding: 10px;
+        text-align: left;
         text-decoration: none;
         font-family: Nunito Sans;
     }
 
     &__exclamation-sign {
-        width: 12%;
         float: left;
-        padding: 6px 0 0 0;
+        height: 44px;
+        width: 44px;
+        padding: 10px;
+        margin: 20px 0;
     }
 }
 
@@ -200,7 +202,7 @@ a {
         margin: 5em auto 0 auto;
 
         &__exclamation-sign {
-            padding: 0;
+            margin: 20px;
         }
     }
 
