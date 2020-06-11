@@ -25,7 +25,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 19px 5px;
             margin: 0;
             height: 100%;
             list-style: none;
@@ -36,6 +35,8 @@
                 color: $gradient-light-green;
                 border: none;
                 background-color: transparent;
+                position: absolute;
+                top: 195px;
 
                 .course-detail__nav-control-icon {
                     height: 12px;
@@ -44,7 +45,7 @@
                 #course-detail__nav-control-back {
                     visibility: hidden;
                     cursor: pointer;
-                    margin-left: auto; 
+                    margin-left: auto;
                 }
             }
         }
@@ -356,7 +357,6 @@
 
             .course-detail__nav {
                 visibility: hidden;
-                padding: 24px 0px;
 
                 .course-detail__nav-control {
                     @include xs-heading-mixin();

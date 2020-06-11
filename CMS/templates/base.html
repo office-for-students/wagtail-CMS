@@ -60,6 +60,21 @@
             </a>
         </div>
 
+        {% if 'covid-19' in page.title|lower or "course details" in page.title|lower or "manylion y cwrs" in page.title|lower or "compare courses" in page.title|lower or "cymharu cyrsiau" in page.title|lower %}
+            <div class="check-courses-details-banner-container">
+                <div class="check-courses-details-banner" role="alert">
+                    <div class="check-courses-details-banner__exclamation-sign">
+                        <img src="/static/images/large-exclamation-mark.svg" alt="">
+                    </div>
+
+                    <div class="check-courses-details-banner__message">
+                        <b>{% get_translation key='Important You need to check the details of any courses you are considering or applying for on the university or college website' language=page.get_language %}</b></br>
+                        {% get_translation key='Many courses due to start in autumn 2020 are being changed to online delivery in whole or part. Start dates and course content/structures may also be changing' language=page.get_language %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
         <main>
             <div id="main-content" tabindex="-1">
                 {% block content %}{% endblock %}
