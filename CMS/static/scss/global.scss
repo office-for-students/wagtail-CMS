@@ -20,6 +20,13 @@ body {
         margin-right: auto;
         margin-left: auto;
     }
+
+    .check-courses-details-banner-container {
+        padding: 0 30px 0 30px;
+        max-width: 1020px;
+        margin-right: auto;
+        margin-left: auto;
+    }
 }
 
 .covid-19-banner {
@@ -48,19 +55,21 @@ body {
     color: $black;
     padding: 10px;
     max-width: 740px;
-    margin: 7em 1em 0 1em;
+    margin: 7em 2em 0 2em;
 
     &__message {
-        padding: 3px;
-        text-align: center;
+        padding: 10px;
+        text-align: left;
         text-decoration: none;
         font-family: Nunito Sans;
     }
 
     &__exclamation-sign {
-        width: 12%;
         float: left;
-        padding: 6px 0 0 0;
+        height: 44px;
+        width: 44px;
+        padding: 10px;
+        margin: 20px 0 50px 0;
     }
 }
 
@@ -198,9 +207,10 @@ a {
 @media only screen and (min-width: 770px) {
     .check-courses-details-banner {
         margin: 5em auto 0 auto;
+        max-width: 1020px;
 
         &__exclamation-sign {
-            padding: 0;
+            margin: 20px;
         }
     }
 
