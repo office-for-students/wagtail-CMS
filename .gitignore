@@ -38,3 +38,4 @@ static/**
 
 # Dev env stuff
 *.dev.*
+.DS_Store
