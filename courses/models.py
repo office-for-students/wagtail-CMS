@@ -216,6 +216,11 @@ class Course:
         if course_details:
             self.country = CourseCountry(course_details.get('country'))
             self.kis_course_id = course_details.get('kis_course_id')
+
+            self.apw_top_student_satisfaction = course_details.get('apw_top_student_satisfaction')
+            self.apw_top_average_salary = course_details.get('apw_top_average_salary')
+            self.apw_top_employment = course_details.get('apw_top_employment')
+
             self.ucas_programme_id = course_details.get('ucas_programme_id')
             self.qualification = CourseQualification(course_details.get('qualification'))
 

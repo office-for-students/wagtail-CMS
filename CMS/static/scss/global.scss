@@ -47,32 +47,6 @@ body {
     }
 }
 
-.check-courses-details-banner {
-    display: block;
-    background: #ffcc66;
-    border: 2px solid #ffcc66;
-    border-radius: 10px;
-    color: $black;
-    padding: 10px;
-    max-width: 740px;
-    margin: 7em 2em 0 2em;
-
-    &__message {
-        padding: 10px;
-        text-align: left;
-        text-decoration: none;
-        font-family: Nunito Sans;
-    }
-
-    &__exclamation-sign {
-        float: left;
-        height: 44px;
-        width: 44px;
-        padding: 10px;
-        margin: 20px 0 50px 0;
-    }
-}
-
 .explanation {
     position: relative;
 
@@ -205,15 +179,6 @@ a {
 }
 
 @media only screen and (min-width: 770px) {
-    .check-courses-details-banner {
-        margin: 5em auto 0 auto;
-        max-width: 1020px;
-
-        &__exclamation-sign {
-            margin: 20px;
-        }
-    }
-
     .breadcrumbs {
         @include small-font-mixin();
 

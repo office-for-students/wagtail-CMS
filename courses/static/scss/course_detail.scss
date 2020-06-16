@@ -11,14 +11,12 @@
 
 
 .course-detail {
-    margin-top: 27px;
-
     .course-detail__body {
         padding: 0px 20px;
     }
 
     .course-detail__lead {
-        text-align: center;
+        padding: 0 20px;
 
         .course-detail__nav {
             visibility: hidden;
@@ -36,7 +34,7 @@
                 border: none;
                 background-color: transparent;
                 position: absolute;
-                top: 195px;
+                top: 95px;
 
                 .course-detail__nav-control-icon {
                     height: 12px;
@@ -56,9 +54,9 @@
 
         .course-detail__course-name {
             @include desktop-body-font--bold-mixin();
+            font-size: 28px;
 
-            margin-top: 13px;
-            margin-bottom: 17px;
+            padding: 20px 0 0;
         }
 
         .course-detail__institution-info {
@@ -89,16 +87,14 @@
 
             .course-detail__overview-item {
 
-                display: flex;
+//                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 width: 114px;
-                padding: 20px 13px;
-                margin-bottom: 14px;
+                padding: 20px 14px;
 
                 background-color: $white;
-                border: 1px solid $ux-grey-3;
                 border-radius: 10px;
 
                 .course-detail__overview-item-heading {
@@ -114,6 +110,19 @@
                     color: $helper-grey;
                 }
             }
+        }
+    }
+
+    .course-detail__headline_statistics {
+
+        .course-detail__headline_stat {
+            background-color: #CEE9E7;
+            float: left;
+            width: 30.3%;
+            height: 100px;
+            margin: 1% 1% 2%;
+            padding: 40px 2px;
+            text-align: center;
         }
     }
 
@@ -353,7 +362,7 @@
         }
 
         .course-detail__lead {
-            text-align: center;
+//             text-align: center;
 
             .course-detail__nav {
                 visibility: hidden;
@@ -404,6 +413,13 @@
 
                 .course-detail__overview-item {
                     padding: 30px 13px;
+                }
+            }
+
+            .course-detail__headline_statistics {
+                .course-detail__headline_stat {
+                    padding: 40px 0 40px 10px;
+                    text-align: left;
                 }
             }
         }

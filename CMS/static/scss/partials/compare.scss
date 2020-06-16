@@ -3,17 +3,19 @@
 
 .course-detail__compare-btn {
     @include small-font--bold-mixin();
+//     @include small-font-mixin();
 
     padding: 5px 10px;
     margin-top: 15px;
     margin-bottom: 26px;
 
     border: 1.5px solid $ux-grey-3;
-    color: $ux-grey-3;
+//     color: $ux-grey-3;
+    color: #fdfafa;
     border-radius: 16px;
     cursor: pointer;
-    background-color: transparent;
-    text-transform: lowercase;
+//     background-color: transparent;
+    background-image: linear-gradient(to right, #368382 0%, #42957f 64%, #4fa37e 100%);
 
     .remove {
         display: none;
@@ -98,11 +100,13 @@
     .course-detail__compare-btn {
         @include small-font--bold-mixin();
 
+        float: right;
         padding: 9px 16px 10px 19px;
         margin-bottom: 26px;
 
         border-radius: 16px;
-        color: $ux-grey-3;
+//         color: $ux-grey-3;
+        color: #fdfafa;
         background-color: transparent;
     }
 }
