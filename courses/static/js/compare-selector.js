@@ -114,8 +114,8 @@
                 this.button.addClass('selected');
                 var exists = false;
                 for (var i = 0; i < this.selectedCourses.length; i++) {
-                    //Ensure courseId AND uniId are compared.
-                    if ((this.courseId == this.selectedCourses[i].courseId) && (this.uniId == this.selectedCourses[i].uniId)){ 
+                    //Ensure courseId AND uniId AND Study mode are compared.
+                    if ((this.courseId == this.selectedCourses[i].courseId) && (this.uniId == this.selectedCourses[i].uniId) && (this.modeEn == this.selectedCourses[i].mode.en)){ 
                         exists = true; 
                     }
                 }
