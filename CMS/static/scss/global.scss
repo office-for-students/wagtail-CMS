@@ -254,13 +254,7 @@ a {
                 padding-bottom: 25%!important;
             }
         }
-        // @media only screen and (max-width: 1200px) and (min-width: 770px){
-        //     div.responsive-object{
-        //         width: 70%;
-        //         padding-bottom: 40%!important;
-        //     }
-        // }
-        
+       
         .responsive-object {
             position: relative;
     
@@ -273,15 +267,7 @@ a {
                     height:100%;
                 }
             }
-            // @media only screen and (min-width: 770px) and (max-width: 1200px){
-            //     iframe, object {
-            //         position: absolute;
-            //         top: 0;
-            //         text-align: center;
-            //         width: 100%;
-            //         height:100;
-            //     }
-            // }
+            
             @media only screen and (max-width: 770px){
                 iframe, object {
                     position: absolute;
