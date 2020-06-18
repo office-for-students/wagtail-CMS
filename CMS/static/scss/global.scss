@@ -234,6 +234,7 @@ a {
     .responsive-object {
         position: relative;
 
+        
         iframe, object {
             position: absolute;
             top: 0;
@@ -241,9 +242,44 @@ a {
             width: 100%;
             height: 100%;
         }
+        
     }
 }
+.intro-text{
+    .rich-text {
+        //TEMPORARY Fix for 159
+        @media only screen and (min-width: 770px) {
+            div.responsive-object{
+                width: 50%;
+                padding-bottom: 25%!important;
+            }
+        }
+        .responsive-object {
+            position: relative;
+            iframe, object {
+                position: absolute;
+                top: 0;
+                text-align: center;
+                width: 100%;
+                height:100%;
+            }
+        }
+    }
+}
+    
+    .home .discover-uni-container .link {
+        margin-top: 30px;
+    }
+    @media only screen and (max-width: 770px){
+        .home .discover-uni-container .link {
+            margin-top: 50px;
+        }
+    }
 
+div.home{
+    padding-left:0.5em;
+    padding-right:0.5em;
+}
 a[target=_blank] {
     img {
         height: 0.75em;
