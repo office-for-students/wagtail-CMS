@@ -55,7 +55,8 @@ body {
     color: $black;
     padding: 10px;
     max-width: 740px;
-    margin: 7em 2em 0 2em;
+    margin: 1em 1em 1em 1em;
+
 
     &__message {
         padding: 10px;
@@ -206,7 +207,7 @@ a {
 
 @media only screen and (min-width: 770px) {
     .check-courses-details-banner {
-        margin: 5em auto 0 auto;
+        margin: 4em auto 1em auto;
         max-width: 1020px;
 
         &__exclamation-sign {
@@ -233,6 +234,7 @@ a {
     .responsive-object {
         position: relative;
 
+        
         iframe, object {
             position: absolute;
             top: 0;
@@ -240,9 +242,44 @@ a {
             width: 100%;
             height: 100%;
         }
+        
     }
 }
+.intro-text{
+    .rich-text {
+        //TEMPORARY Fix for 159
+        @media only screen and (min-width: 770px) {
+            div.responsive-object{
+                width: 50%;
+                padding-bottom: 25%!important;
+            }
+        }
+        .responsive-object {
+            position: relative;
+            iframe, object {
+                position: absolute;
+                top: 0;
+                text-align: center;
+                width: 100%;
+                height:100%;
+            }
+        }
+    }
+}
+    
+    .home .discover-uni-container .link {
+        margin-top: 30px;
+    }
+    @media only screen and (max-width: 770px){
+        .home .discover-uni-container .link {
+            margin-top: 50px;
+        }
+    }
 
+div.home{
+    padding-left:0.5em;
+    padding-right:0.5em;
+}
 a[target=_blank] {
     img {
         height: 0.75em;
