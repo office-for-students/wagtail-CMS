@@ -1,0 +1,14 @@
+{% load discover_uni_tags %}
+
+<div class="graduate_perceptions__block">
+    <h3 class="graduate_perceptions__heading">
+        {{ block.value.grad_percep_field_1 }}
+    </h3>
+
+    {% for graduate_perceptions in course_details.graduate_perceptionss %}
+        <p class="graduate_perceptions__body">
+            <!-- TODO: change the value below to reflect the real member fields of graduate_perceptions -->
+            Hello: {{ graduate_perceptions.display_text }}
+        </p>
+    {% endfor %}
+</div

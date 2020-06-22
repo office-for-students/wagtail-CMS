@@ -7,6 +7,8 @@
 @import 'after_one_year';
 @import 'after_course';
 @import 'accreditation';
+@import 'graduate_perceptions';
+
 @import 'highcharts';
 
 
@@ -155,7 +157,7 @@
                     display: flex;
                     align-items: center;
                     margin: 0;
-                    padding: 32px 30px 32px 51px;
+                    padding: 17px 30px 17px 30px;
                     position: relative;
 
                     border: 3px solid transparent;
@@ -167,8 +169,10 @@
 
                     .course-detail__accordion-heading-chevron {
                         display: flex;
-                        position: absolute;
-                        right: 30px;
+//                         position: absolute;
+//                         right: 30px;
+                        margin-right: 50px;
+
                     }
 
                     .course-detail__icon {

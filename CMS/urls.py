@@ -36,7 +36,8 @@ urlpatterns = [
     url(r'', include(wagtail_urls)),
 ]
 
-if not settings.READ_ONLY:
+# TODO: remove the True clause below when going live.
+if True or not settings.READ_ONLY:
     urlpatterns.insert(0, url(r'^admin/', include(wagtailadmin_urls)))
     urlpatterns.insert(0, url(r'^django-admin/', admin.site.urls))
 

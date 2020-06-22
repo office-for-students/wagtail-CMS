@@ -1,4 +1,5 @@
 {% load staticfiles discover_uni_tags %}
+use {% load humanize %}
 
 <div class="course-detail__lead">
     <div class="discover-uni-container">
@@ -94,15 +95,15 @@
     <div class="discover-uni-container">
         <div class="course-detail__headline_statistics">
             <div class="course-detail__headline_stat">
-                {{ course.apw_top_student_satisfaction}}
+                {{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%
                 <p>were satisfied with the quality of the course</p>
             </div>
             <div class="course-detail__headline_stat">
-                £{{ course.apw_top_average_salary }}
+                £{{ course.leo_stats.0.median|intcomma }}
                 <p>average salary 3 years after the course</p>
             </div>
             <div class="course-detail__headline_stat">
-                {{ course.apw_top_employment }}
+                {{ course.in_employment_15_mths }}%
                 <p>work adn / or study within 15 months after the course</p>
             </div>
         </div>
