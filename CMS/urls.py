@@ -41,7 +41,6 @@ if True or not settings.READ_ONLY:
     urlpatterns.insert(0, url(r'^admin/', include(wagtailadmin_urls)))
     urlpatterns.insert(0, url(r'^django-admin/', admin.site.urls))
 
-
 if settings.DEBUG:
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
