@@ -509,6 +509,10 @@ DICT = {
         'en': 'How was this page useful to you?',
         'cy': 'A oedd y dudalen hon yn ddefnyddiol i chi?'
     },
+    'Important You need to check the details of any courses you are considering or applying for on the university or college website': {
+            'en': 'Important: You need to check the details of any courses you are considering or applying for on the university or college website.',
+            'cy': 'Pwysig: Mae angen i chi wirio manylion unrhyw cwrs yr ydych yn ystyried neu ceisio amdani ar wefan y prifysgol neu coleg. '
+    },
     'info_advice': {
         'en': 'Info and advice',
         'cy': 'Gwybodaeth a chyngor'
@@ -612,6 +616,10 @@ DICT = {
     'Managers in distribution, storage and retailing': {
         'en': 'Managers in distribution, storage and retailing',
         'cy': 'Rheolwyr mewn dosbarthu, storio a manwerthu'
+    },
+    'Many courses due to start in autumn 2020 are being changed to online delivery in whole or part. Start dates and course content/structures may also be changing': {
+        'en': 'Many courses due to start in autumn 2020 are being changed to online delivery in whole or part. Start dates and course content/structures may also be changing.',
+        'cy': 'Mae nifer o gyrsiau sydd fod dechrau yn ystod hydref 2020 yn cael eu newid i gyrsiau ar-lein naill ai’n gyfan gwbl neu’n rhan-amser, gall bod newidiau hefyd i ddiwrnodau cychwyn a cynnwys/strwythyr cyrsiau.'
     },
     'miles': {
         'en': 'miles',

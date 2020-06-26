@@ -98,7 +98,7 @@
     }
 
     .additional-links {
-        margin-top: 80px;
+        margin-bottom: 40px;
 
         &__header {
             @include m-heading--bold-mixin();
@@ -108,15 +108,10 @@
 
         &__link {
             &-wrapper {
-                width: 50%;
-
-                &:nth-child(odd) {
-                    margin-right: 10px;
-                }
-
-                &:nth-child(even) {
-                    margin-left: 10px;
-                }
+                width: 40%;
+                margin: 5px;
+                padding: 10px;
+                display: grid;
 
                 a {
                     @include xs-heading--bold-mixin();
@@ -134,6 +129,24 @@
 
             &-list {
                 display: flex;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media only screen and (min-width: 770px) {
+            .additional-links {
+                &__link {
+                    flex-wrap: nowrap;
+
+                    &-wrapper {
+                        margin: 0 5px;
+                        padding: 5px;
+                    }
+
+                    &-list {
+                        flex-wrap: nowrap;
+                    }
+                }
             }
         }
     }

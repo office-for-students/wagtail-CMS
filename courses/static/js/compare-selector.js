@@ -105,6 +105,7 @@
         },
 
         handleCourseAddition: function() {
+            //Don't allow more than 10
             if (this.selectedCourses.length === 10) {
                 this.compareAdd.hide();
                 this.compareRemove.hide();
@@ -113,9 +114,13 @@
                 this.button.addClass('selected');
                 var exists = false;
                 for (var i = 0; i < this.selectedCourses.length; i++) {
-                    if (this.courseId == this.selectedCourses[i].courseId) exists = true;
+                    //Ensure courseId AND uniId AND Study mode are compared.
+                    if ((this.courseId == this.selectedCourses[i].courseId) && (this.uniId == this.selectedCourses[i].uniId) && (this.modeEn == this.selectedCourses[i].mode.en)){ 
+                        exists = true; 
+                    }
                 }
                 if (!exists) {
+                    //Bookmark course
                     this.selectedCourses.push({'uniId': this.uniId, 'courseId': this.courseId,
                                                 'courseName': this.courseName, 'uniName': this.uniName,
                                                 'length': this.length, 'locations': this.locations,

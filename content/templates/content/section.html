@@ -20,6 +20,22 @@
                 {% endif %}
             </div>
 
+            {% if page.related_links_title or page.related_links  %}
+                <div class="additional-links">
+                    {% if page.related_links_title  %}
+                        <h2 class="additional-links__header">{{ page.related_links_title }}</h2>
+                    {% endif %}
+
+                    <div class="additional-links__link-list">
+                        {% for block in page.related_links %}
+                            <div class="additional-links__link-wrapper">
+                                {{block}}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
             <div class="section-page__accordions">
                 {% for block in page.subsections %}
                     <div id="{% title_to_id block.value.subsection_title %}" class="section-page__accordion">
@@ -48,19 +64,7 @@
                 {% endfor %}
             </div>
 
-            {% if page.related_links_title or page.related_links  %}
-                <div class="additional-links">
-                    <h2 class="additional-links__header">{{ page.related_links_title }}</h2>
 
-                    <div class="additional-links__link-list">
-                        {% for block in page.related_links %}
-                            <div class="additional-links__link-wrapper">
-                                {{block}}
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endif %}
 
             {% if page.lateral_links_title or page.lateral_links  %}
                 <div class="additional-links">

@@ -14,7 +14,7 @@
             this.oneSelected = this.wrapper.find('.bookmark__one-selected');
             this.courseBoxes = this.wrapper.find('.bookmark__course');
             this.selectedCourses = [];
-
+       
             this.loadSelectedCourses();
             this.setInitialView();
         },

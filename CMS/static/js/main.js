@@ -89,10 +89,10 @@
 
     // BOOKMARK NAV
     var NavBookMarkBtn = function(btn) {
-    this.btn = $(btn);
-    this.setup();
-}
-
+        this.btn = $(btn);
+        this.setup();
+    }
+    //Build Nav Bookmark Button (with bookmark count)
     NavBookMarkBtn.prototype = {
         setup: function() {
             this.navBar = $('.discover-uni-nav');
