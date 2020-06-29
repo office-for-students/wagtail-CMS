@@ -19,10 +19,12 @@
     }
 
     #gradient-bar stop[offset="0"] {
-        stop-color: $gradient-dark-green;
+        // stop-color: $gradient-dark-green;
+        stop-color: #368382!important;
     }
     #gradient-bar stop[offset="1"] {
-        stop-color: $gradient-light-green;
+        // stop-color: $gradient-light-green;
+        stop-color: #4fa37e!important;
     }
 
     .highcharts-point {
@@ -30,8 +32,10 @@
         stroke-width: 2px;
 
         &.highcharts-color-1 {
+           
+            // fill: $gradient-light-green;
+            fill: #368382;
             fill: url(#gradient-bar);
-            fill: $gradient-light-green;
         }
 
         &.highcharts-color-0 {

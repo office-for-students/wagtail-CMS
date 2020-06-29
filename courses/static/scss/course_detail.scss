@@ -120,11 +120,41 @@
         .course-detail__headline_stat {
             background-color: #CEE9E7;
             float: left;
-            width: 30.3%;
-            height: 100px;
-            margin: 1% 1% 2%;
-            padding: 40px 2px;
+            width: 30%;
+            margin: 1%;
+            padding: 0;
             text-align: center;
+            margin-bottom:20px;
+
+        }
+        h3{
+            display: none;
+        }
+        h2{
+            font-family: NunitoSans;
+            font-size: 1.3em;
+            font-weight: 200;
+            text-align: center;
+            color: #000000;
+        }
+        p{
+            font-family: NunitoSans;
+            font-size: 0.75em;
+            font-weight: 200;
+            text-align: center;
+            color: #000000;
+            padding:0px 5px;
+        }
+        a{
+            font-family: NunitoSans;
+            font-size: 0.75em;
+            font-weight: 200;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            text-decoration: underline;
         }
     }
 
@@ -169,8 +199,6 @@
 
                     .course-detail__accordion-heading-chevron {
                         display: flex;
-//                         position: absolute;
-//                         right: 30px;
                         margin-right: 50px;
 
                     }
@@ -357,6 +385,65 @@
     }
 }
 
+
+
+
+@media only screen and (max-width: 320px){
+    .course-detail {
+        .course-detail__headline_statistics {
+            .course-detail__headline_stat {
+                height: 32vh;
+                width:31%;
+            }
+        }
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 400px){
+    .course-detail {
+        .course-detail__headline_statistics {
+            .course-detail__headline_stat {
+                height: 30vh;
+                width:31%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 520px){
+    .course-detail {
+        .course-detail__headline_statistics {
+            .course-detail__headline_stat {
+                height: 30vh;
+                width:31%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 520px) and (max-width: 770px){
+    .course-detail {
+        .course-detail__headline_statistics {
+            .course-detail__headline_stat {
+                height: 22vh;
+                width:31%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 765px) and (max-width: 790px){
+    .course-detail {
+        .course-detail__headline_statistics {
+            .course-detail__headline_stat {
+                width: 29%;
+                height: 10vh;
+            }
+        }
+    }
+}
+
+
+
 @media only screen and (min-width: 770px) {
     .course-detail {
         margin-top: 35px;
@@ -422,8 +509,49 @@
 
             .course-detail__headline_statistics {
                 .course-detail__headline_stat {
-                    padding: 40px 0 40px 10px;
+                    padding: 20px 0 20px 10px;
                     text-align: left;
+                    height: 19vh;
+                }
+                h3{
+                    font-family: NunitoSans;
+                    font-size: 1.2em;
+                    font-weight: 200;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    color: #000000;
+                    padding: 0;
+                    margin:0;
+                    display: block;
+                    text-align:center;
+                }
+                h2{
+                    font-family: NunitoSans;
+                    font-size: 1.3em;
+                    font-weight: 200;
+                    text-align: center;
+                    color: #000000;
+                }
+                p{
+                    font-family: NunitoSans;
+                    font-size: 0.75em;
+                    font-weight: 200;
+                    text-align: center;
+                    color: #000000;
+                    padding:0px 5px;
+                }
+                a{
+                    font-family: NunitoSans;
+                    font-size: 0.75em;
+                    font-weight: 200;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    text-align: center;
+                    text-decoration: underline;
                 }
             }
         }

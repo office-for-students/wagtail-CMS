@@ -95,16 +95,22 @@ use {% load humanize %}
     <div class="discover-uni-container">
         <div class="course-detail__headline_statistics">
             <div class="course-detail__headline_stat">
-                {{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%
+                <h3>Student Satisfaction</h3>
+                <h2>{{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%</h2>
                 <p>were satisfied with the quality of the course</p>
+                <a>More on student satisfaction</a>
             </div>
             <div class="course-detail__headline_stat">
-                £{{ course.leo_stats.0.median|intcomma }}
+                <h3>Average Earnings</h3>
+                <h2>£{{ course.leo_stats.0.median|intcomma }}</h2>
                 <p>average salary 3 years after the course</p>
+                <a>More on earnings</a>
             </div>
             <div class="course-detail__headline_stat">
-                {{ course.in_employment_15_mths }}%
+                <h3>Employment</h3>
+                <h2>{{ course.in_employment_15_mths }}%</h2>
                 <p>work adn / or study within 15 months after the course</p>
+                <a>More on employment</a>
             </div>
         </div>
     </div>
