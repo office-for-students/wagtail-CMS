@@ -37,12 +37,19 @@
 .student-satisfaction__overview {
     @include desktop-body-font-mixin();
 
-    padding: 7px 30px 32px 30px;
+    padding: 1rem;
     margin-top: 30px;
     text-align: center;
 
     border: 1px solid $ux-grey-3;
     border-radius: 10px;
+    .student-satisfaction__intro .rich-text p{
+        @include s-heading-mixin();
+        margin-top:2rem;
+        margin-left: 5rem;
+        margin-right: 5rem;
+        font-size: 1rem;
+    }
 
     .student-satisfaction__overview-lead {
         @include l-heading-mixin();
@@ -52,7 +59,10 @@
     }
 
     p {
-        margin: 0px;
+        margin: 10px;
+        font-size:1.2rem;
+        letter-spacing: normal;
+        line-height: normal;
     }
 }
 
@@ -90,18 +100,19 @@
             text-align: center;
 
             background-color: $divider-grey;
-            color: $ux-grey-3;
+            color: #000000;
+
 
             p{
-                font-family: NunitoSans;
-                font-size: 16px;
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 1rem;
                 font-weight: normal;
                 font-stretch: normal;
                 font-style: normal;
                 line-height: normal;
                 letter-spacing: normal;
                 color: var(--brownish-grey);
-
+                padding-bottom:0;
             }
         }
 
@@ -109,11 +120,16 @@
             display: flex;
             flex-wrap: wrap;
 
+
             .student-satisfaction__chart-wrapper {
                 width: 100%;
-                margin-bottom:1.5em;
-
+                margin-bottom:15px;
                 .student-satisfaction__chart {
+
+                    .doughnut-chart .highcharts-plot-border {
+                        fill: #F2F2F2!important;
+                    }
+                    
                     margin-bottom: 38px;
 
                     .student-satisfaction__chart-title {
@@ -133,11 +149,21 @@
 }
 
 
-@media only screen and (min-width: 770px) {
+@media only screen and (min-width: 770px){
     .student-satisfaction__overview {
-        padding: 68px 150px 72px;
-        margin-top: 70px;
+        padding: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-top: 1rem;
         text-align: center;
+
+        .student-satisfaction__intro .rich-text p{
+            @include s-heading-mixin();
+            margin-top:2rem;
+            margin-left: 5rem;
+            margin-right: 5rem;
+            font-size: 1rem;
+        }
 
         .student-satisfaction__overview-lead {
             @include xl-heading-mixin();
@@ -150,13 +176,15 @@
 
         p {
             @include s-heading-mixin();
-
-            margin: 0px;
+            margin-left: 5rem;
+            margin-right: 5rem;
+            font-size: 2rem;
         }
+       
     }
 
     .student-satisfaction__block {
-        padding: 50px 15px 60px;
+        padding: 1rem;
 
         .student-satisfaction__intro {
             @include small-font-mixin();
@@ -179,17 +207,21 @@
         }
 
         .student-satisfaction__data-group {
-            margin-top: 34px;
-            margin-bottom: 59px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding:1rem;
 
             .student-satisfaction__data-group-heading {
+                text-align: left;
                 @include s-heading-mixin();
 
                 margin-top: 0px;
                 margin-bottom: 16px;
-
+                padding-left:2rem;
+                padding-right:2rem;
+                padding-top:2rem;
                 background-color: $divider-grey;
-                color: $ux-grey-3;
+                color: #000000;
             }
 
             .student-satisfaction__charts {
@@ -199,31 +231,21 @@
 
                 .student-satisfaction__chart-wrapper {
                     width: 25%;
-                    
-                    &:nth-child(odd) {
-                        .student-satisfaction__chart  {
-                            padding-right: 10px;
-                        }
-                    }
-
-                    &:nth-child(even) {
-                        .student-satisfaction__chart  {
-                            padding-left: 10px;
-                        }
-                    }
+                
                     
                     .student-satisfaction__chart {
                         margin-bottom: 38px;
-                        padding-right: 10px;
-                        padding-left: 10px;
+                        padding-right: 30px;
+                        padding-left: 30px;
 
                         .student-satisfaction__chart-title {
                             @include small-font--bold-mixin();
-
+                            font-family: 'Nunito Sans', sans-serif;
                             text-align: center;
                             margin-bottom: 0;
                             margin-top: 18px;
-
+                            font-size:1rem;
+                            font-weight:400;
                             color: $ux-grey-2;
                         }
                     }
@@ -231,17 +253,22 @@
             }
         }
     }
+    .highcharts-container text.highcharts-title{
+        position: relative;
+        top: 20px!important;
+    }
     .highcharts-container tspan{
-        width: 69px;
-      height: 43px;
-      font-family: NunitoSans;
-      font-size: 32px;
-      font-weight: bold;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: normal;
-      letter-spacing: normal;
-      color: #358282;
+        width: 1rem;
+        height: 1rem;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 2rem;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #358282;
+        fill: #358282;
     }
     .student-satisfaction__chart .discover-uni-chart .doughnut .doughnut-chart{
         width: 139px;
