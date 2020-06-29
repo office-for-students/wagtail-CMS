@@ -130,25 +130,31 @@
         h3{
             display: none;
         }
+        #average_earnings_sm{
+            display:block;
+        }
+        #average_earnings_lg{
+            display:none;
+        }
         h2{
-            font-family: NunitoSans;
-            font-size: 1.3em;
-            font-weight: 200;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.5em;
+            font-weight: 400;
             text-align: center;
             color: #000000;
         }
         p{
-            font-family: NunitoSans;
+            font-family: 'Nunito Sans', sans-serif;
             font-size: 0.75em;
-            font-weight: 200;
+            font-weight: 400;
             text-align: center;
             color: #000000;
             padding:0px 5px;
         }
         a{
-            font-family: NunitoSans;
+            font-family: 'Nunito Sans', sans-serif;
             font-size: 0.75em;
-            font-weight: 200;
+            font-weight: 400;
             font-stretch: normal;
             font-style: normal;
             line-height: normal;
@@ -424,7 +430,7 @@
     .course-detail {
         .course-detail__headline_statistics {
             .course-detail__headline_stat {
-                height: 22vh;
+                height: 24vh;
                 width:31%;
             }
         }
@@ -511,12 +517,12 @@
                 .course-detail__headline_stat {
                     padding: 20px 0 20px 10px;
                     text-align: left;
-                    height: 19vh;
+                    height: 21vh;
                 }
                 h3{
-                    font-family: NunitoSans;
-                    font-size: 1.2em;
-                    font-weight: 200;
+                    font-family: 'Nunito Sans', sans-serif;
+                    font-size: 1.1em;
+                    font-weight: 600;
                     font-stretch: normal;
                     font-style: normal;
                     line-height: normal;
@@ -525,32 +531,40 @@
                     padding: 0;
                     margin:0;
                     display: block;
-                    text-align:center;
+                    text-align:left;
+                }
+                #average_earnings_sm{
+                    display:none;
+                }
+                #average_earnings_lg{
+                    display:block;
                 }
                 h2{
-                    font-family: NunitoSans;
-                    font-size: 1.3em;
-                    font-weight: 200;
-                    text-align: center;
+                    font-family: 'Nunito Sans', sans-serif;
+                    font-size: 1.75em;
+                    font-weight: 400;
+                    text-align: left;
                     color: #000000;
+                    margin-top:10px;
+                    margin-bottom:10px;
                 }
                 p{
-                    font-family: NunitoSans;
+                    font-family: 'Nunito Sans', sans-serif;
                     font-size: 0.75em;
-                    font-weight: 200;
-                    text-align: center;
+                    font-weight: 600;
+                    text-align: left;
                     color: #000000;
                     padding:0px 5px;
                 }
                 a{
-                    font-family: NunitoSans;
+                    font-family: 'Nunito Sans', sans-serif;
                     font-size: 0.75em;
                     font-weight: 200;
                     font-stretch: normal;
                     font-style: normal;
                     line-height: normal;
                     letter-spacing: normal;
-                    text-align: center;
+                    text-align: left;
                     text-decoration: underline;
                 }
             }

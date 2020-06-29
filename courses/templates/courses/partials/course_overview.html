@@ -102,7 +102,8 @@ use {% load humanize %}
             </div>
             <div class="course-detail__headline_stat">
                 <h3>Average Earnings</h3>
-                <h2>£{{ course.leo_stats.0.median|intcomma }}</h2>
+                <h2 id="average_earnings_sm">{{ course.leo_stats.0.median|intcomma }}</h2>
+                <h2 id="average_earnings_lg">£{{ course.leo_stats.0.median|intcomma }}</h2>
                 <p>average salary 3 years after the course</p>
                 <a>More on earnings</a>
             </div>
@@ -115,3 +116,19 @@ use {% load humanize %}
         </div>
     </div>
 </div>
+<script>
+    function kFormatter(num) {
+        return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
+    }
+    function reformatField(){   
+        var earnings = $('#average_earnings_sm').text();
+        earnings = parseFloat(earnings.replace(/,/g, ''));
+        console.log('earnings val: ' + earnings);
+        var reformatted = kFormatter(earnings);
+        $('#average_earnings_sm').text("£" + reformatted);
+    }
+    
+    $( document ).ready(function() {
+        reformatField();
+    });
+</script>
