@@ -123,7 +123,6 @@
     function reformatField(){   
         var earnings = $('#average_earnings_sm').text();
         earnings = parseFloat(earnings.replace(/,/g, ''));
-        console.log('earnings val: ' + earnings);
         var reformatted = kFormatter(earnings);
         $('#average_earnings_sm').text("£" + reformatted);
     }
