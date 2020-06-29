@@ -19,9 +19,7 @@
         <meta name="currentversion" content="{% current_version %}">
         <meta name="pagelanguage" content="{{page.get_language}}">
 
-
-
-        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:regular,bold&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,bold&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -53,27 +51,6 @@
         {% include 'partials/nav.html' %}
 
         {% wagtailuserbar %}
-
-        <div>
-            <a class="covid-19-banner" href="{% if page.is_english %}/corona-covid-19-information/{% else %}/cy/cynnwys-corona-covid-19/{% endif %}">
-                {% get_translation key='covid_19_info' language=page.get_language %}
-            </a>
-        </div>
-
-        {% if 'covid-19' in page.title|lower or "course details" in page.title|lower or "manylion y cwrs" in page.title|lower or "compare courses" in page.title|lower or "cymharu cyrsiau" in page.title|lower %}
-            <div class="check-courses-details-banner-container">
-                <div class="check-courses-details-banner" role="alert">
-                    <div class="check-courses-details-banner__exclamation-sign">
-                        <img src="/static/images/large-exclamation-mark.svg" alt="">
-                    </div>
-
-                    <div class="check-courses-details-banner__message">
-                        <b>{% get_translation key='Important You need to check the details of any courses you are considering or applying for on the university or college website' language=page.get_language %}</b></br>
-                        {% get_translation key='Many courses due to start in autumn 2020 are being changed to online delivery in whole or part. Start dates and course content/structures may also be changing' language=page.get_language %}
-                    </div>
-                </div>
-            </div>
-        {% endif %}
 
         <main>
             <div id="main-content" tabindex="-1">

@@ -41,7 +41,7 @@ $(function () {
                     style: {
                         fontFamily: 'Nunito Sans',
                         color: '#8D8D8D',
-                        fontSize: '26px',
+                        fontSize: '36px',
                     },
                 },
 

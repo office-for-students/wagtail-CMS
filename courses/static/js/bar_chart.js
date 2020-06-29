@@ -72,8 +72,8 @@ $(function () {
                         color: {
                             linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
                             stops: [
-                                [0, '#308282'],
-                                [1, '#4EA27D']
+                                [0, '#368382'],
+                                [1, '#4fa37e']
                             ]
                         },
                         y: this.value,

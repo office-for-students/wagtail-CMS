@@ -38,3 +38,7 @@ static/**
 
 # Dev env stuff
 *.dev.*
+.DS_Store
+
+# Migration files
+*_auto_20*

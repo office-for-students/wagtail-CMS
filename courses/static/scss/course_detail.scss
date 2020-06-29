@@ -7,18 +7,18 @@
 @import 'after_one_year';
 @import 'after_course';
 @import 'accreditation';
+@import 'graduate_perceptions';
+
 @import 'highcharts';
 
 
 .course-detail {
-    margin-top: 27px;
-
     .course-detail__body {
         padding: 0px 20px;
     }
 
     .course-detail__lead {
-        text-align: center;
+        padding: 0 20px;
 
         .course-detail__nav {
             visibility: hidden;
@@ -36,7 +36,7 @@
                 border: none;
                 background-color: transparent;
                 position: absolute;
-                top: 195px;
+                top: 95px;
 
                 .course-detail__nav-control-icon {
                     height: 12px;
@@ -56,9 +56,9 @@
 
         .course-detail__course-name {
             @include desktop-body-font--bold-mixin();
+            font-size: 28px;
 
-            margin-top: 13px;
-            margin-bottom: 17px;
+            padding: 20px 0 0;
         }
 
         .course-detail__institution-info {
@@ -89,16 +89,14 @@
 
             .course-detail__overview-item {
 
-                display: flex;
+//                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 width: 114px;
-                padding: 20px 13px;
-                margin-bottom: 14px;
+                padding: 20px 14px;
 
                 background-color: $white;
-                border: 1px solid $ux-grey-3;
                 border-radius: 10px;
 
                 .course-detail__overview-item-heading {
@@ -114,6 +112,55 @@
                     color: $helper-grey;
                 }
             }
+        }
+    }
+
+    .course-detail__headline_statistics {
+
+        .course-detail__headline_stat {
+            background-color: #CEE9E7;
+            float: left;
+            width: 30%;
+            margin: 1%;
+            padding: 0;
+            text-align: center;
+            margin-bottom:20px;
+
+        }
+        h3{
+            display: none;
+        }
+        #average_earnings_sm{
+            display:block;
+        }
+        #average_earnings_lg{
+            display:none;
+        }
+        h2{
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.5em;
+            font-weight: 400;
+            text-align: center;
+            color: #000000;
+        }
+        p{
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.75em;
+            font-weight: 400;
+            text-align: center;
+            color: #000000;
+            padding:0px 5px;
+        }
+        a{
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.75em;
+            font-weight: 400;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            text-decoration: underline;
         }
     }
 
@@ -146,7 +193,7 @@
                     display: flex;
                     align-items: center;
                     margin: 0;
-                    padding: 32px 30px 32px 51px;
+                    padding: 17px 30px 17px 30px;
                     position: relative;
 
                     border: 3px solid transparent;
@@ -158,8 +205,8 @@
 
                     .course-detail__accordion-heading-chevron {
                         display: flex;
-                        position: absolute;
-                        right: 30px;
+                        margin-right: 50px;
+
                     }
 
                     .course-detail__icon {
@@ -344,6 +391,65 @@
     }
 }
 
+
+
+
+@media only screen and (max-width: 320px){
+    .course-detail {
+        .course-detail__headline_statistics {
+            .course-detail__headline_stat {
+                height: 32vh;
+                width:31%;
+            }
+        }
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 400px){
+    .course-detail {
+        .course-detail__headline_statistics {
+            .course-detail__headline_stat {
+                height: 30vh;
+                width:31%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 520px){
+    .course-detail {
+        .course-detail__headline_statistics {
+            .course-detail__headline_stat {
+                height: 30vh;
+                width:31%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 520px) and (max-width: 770px){
+    .course-detail {
+        .course-detail__headline_statistics {
+            .course-detail__headline_stat {
+                height: 25vh;
+                width:31%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 765px) and (max-width: 790px){
+    .course-detail {
+        .course-detail__headline_statistics {
+            .course-detail__headline_stat {
+                width: 29%;
+                height: 10vh;
+            }
+        }
+    }
+}
+
+
+
 @media only screen and (min-width: 770px) {
     .course-detail {
         margin-top: 35px;
@@ -353,7 +459,7 @@
         }
 
         .course-detail__lead {
-            text-align: center;
+//             text-align: center;
 
             .course-detail__nav {
                 visibility: hidden;
@@ -404,6 +510,62 @@
 
                 .course-detail__overview-item {
                     padding: 30px 13px;
+                }
+            }
+
+            .course-detail__headline_statistics {
+                .course-detail__headline_stat {
+                    padding: 20px 0 20px 10px;
+                    text-align: left;
+                    height: 21vh;
+                }
+                h3{
+                    font-family: 'Nunito Sans', sans-serif;
+                    font-size: 1.1em;
+                    font-weight: 600;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    color: #000000;
+                    padding: 0;
+                    margin:0;
+                    display: block;
+                    text-align:left;
+                }
+                #average_earnings_sm{
+                    display:none;
+                }
+                #average_earnings_lg{
+                    display:block;
+                }
+                h2{
+                    font-family: 'Nunito Sans', sans-serif;
+                    font-size: 1.75em;
+                    font-weight: 400;
+                    text-align: left;
+                    color: #000000;
+                    margin-top:10px;
+                    margin-bottom:10px;
+                }
+                p{
+                    font-family: 'Nunito Sans', sans-serif;
+                    font-size: 0.75em;
+                    font-weight: 600;
+                    text-align: left;
+                    color: #000000;
+                    padding:0px 5px;
+                }
+                a{
+                    font-family: 'Nunito Sans', sans-serif;
+                    font-size: 0.75em;
+                    font-weight: 200;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    text-align: left;
+                    text-decoration: underline;
                 }
             }
         }

@@ -21,6 +21,13 @@ AFTER_ONE_YEAR_KEY = 'after_one_year'
 AFTER_COURSE_KEY = 'after_the_course'
 ACCREDITATION_KEY = 'professional_accreditation'
 
+# New accordion section ('Graduate Perceptions) added; various sections of this file are affected.
+# TODO: In order for the new accordion section to be rendered in the UI, an instance of the corresponding
+#   accordion panel must be created in the Wagtail admin site (http://0.0.0.0:8000/admin/);
+#   go to Pages > Home > Course Details > 'ACCORDIONS' section > Add (+ icon) > add a panel of the new type.
+#   Then Save Draft, then Publish.
+GRADUATE_PERCEPTIONS_KEY = 'graduate_perceptions'
+
 
 class AccordionPanel(blocks.StructBlock):
     heading = blocks.CharBlock(required=False)
@@ -54,6 +61,12 @@ class AccreditationDataSet(blocks.StructValue):
     @staticmethod
     def data_set():
         return ACCREDITATION_KEY
+
+
+class GraduatePerceptionsDataSet(blocks.StructValue):
+    @staticmethod
+    def data_set():
+        return GRADUATE_PERCEPTIONS_KEY
 
 
 class SatisfactionBlock(AccordionPanel):
@@ -141,13 +154,22 @@ class AccreditationBlock(AccordionPanel):
         value_class = AccreditationDataSet
 
 
+class GraduatePerceptionsBlock(AccordionPanel):
+    grad_percep_field_1 = blocks.CharBlock(required=False)
+    grad_percep_field_2 = blocks.CharBlock(required=False)
+
+    class Meta:
+        value_class = GraduatePerceptionsDataSet
+
+
 class CourseDetailPage(DiscoverUniBasePage):
     accordions = StreamField([
         ('satisfaction_panel', SatisfactionBlock(required=True, icon='collapse-down')),
         ('entry_information_panel', EntryInformationBlock(required=True, icon='collapse-down')),
         ('after_one_year_panel', AfterOneYearBlock(required=True, icon='collapse-down')),
         ('after_course_panel', AfterCourseBlock(required=True, icon='collapse-down')),
-        ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down'))
+        ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down')),
+        ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down'))
     ])
     uni_site_links_header = TextField(blank=True)
 
@@ -216,6 +238,7 @@ class Course:
         if course_details:
             self.country = CourseCountry(course_details.get('country'))
             self.kis_course_id = course_details.get('kis_course_id')
+
             self.ucas_programme_id = course_details.get('ucas_programme_id')
             self.qualification = CourseQualification(course_details.get('qualification'))
 
@@ -282,6 +305,22 @@ class Course:
 
             self.course_links = self.set_course_links(course_details.get('links'), self.display_language)
             self.overall_satisfaction = self.sync_satisfaction_stats()
+
+            # Some dummy data added to new skeleton accordion section below.
+            # Also added some mock data fields (self.apw_top...)
+            self.graduate_perceptionss = []
+            graduate_perceptionss = course_details.get('accreditations') # TODO: change this line when implementing for real.
+            if graduate_perceptionss:
+                for graduate_perceptions in graduate_perceptionss:
+                    # TODO: change this line when implementing for real.
+                    self.graduate_perceptionss.append(CourseAccreditation(graduate_perceptions, self.display_language)) 
+
+            # These field names must be present in the JSON data source (see mocks.py if using mock data).
+            # self.apw_top_student_satisfaction = course_details.get('apw_top_student_satisfaction')
+            # self.apw_top_average_salary = course_details.get('apw_top_average_salary')
+            # self.apw_top_employment = course_details.get('apw_top_employment')
+
+            self.in_employment_15_mths = course_details.get('in_employment_15_mths')
 
     def set_course_links(self, links, language):
         link_objs = {'course_details': [], 'costs_support': []}

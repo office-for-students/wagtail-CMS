@@ -30,8 +30,8 @@
         stroke-width: 2px;
 
         &.highcharts-color-1 {
-            fill: url(#gradient-bar);
             fill: $gradient-light-green;
+            // fill: url(#gradient-bar); //currently broken, therefore commented out
         }
 
         &.highcharts-color-0 {
@@ -50,7 +50,7 @@
 
 .doughnut-chart {
     .highcharts-plot-border {
-        fill: $white;
+        fill: #f4f8f8;
         stroke: none;
     }
 
@@ -74,8 +74,11 @@
 
 @media only screen and (min-width: 770px) {
     .doughnut-chart {
+        width: 50%;
+
         .highcharts-plot-border {
-            fill: $white;
+//             fill: $white;
+            fill: #f4f8f8;
             stroke: none;
         }
 
