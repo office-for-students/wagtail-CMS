@@ -76,10 +76,10 @@
         initialiseOptions: function() {
             for (var i = 0; i < this.courses.length; i++) {
                 var course = this.courses[i];
-
+                
                 var courseMode = course.mode.en ? course.mode.en : course.mode;
                 var courseValue = course.uniId + ',' + course.courseId + ',' + courseMode;
-                var courseLabel = course.courseName + ' - ' + course.uniName;
+                var courseLabel = course.courseName + ' - ' + course.uniName + ' (' + courseMode + ')';
 
                 var option = document.createElement("option");
                 option.setAttribute("value", courseValue);
