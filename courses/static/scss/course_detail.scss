@@ -118,13 +118,13 @@
     .course-detail__headline_statistics {
 
         .course-detail__headline_stat {
-            background-color: #CEE9E7;
-            float: left;
-            width: 30%;
-            margin: 1%;
-            padding: 0;
-            text-align: center;
-            margin-bottom:20px;
+            // background-color: #CEE9E7;
+            // float: left;
+            // width: 30%;
+            // margin: 1%;
+            // padding: 0;
+            // text-align: center;
+            // margin-bottom:20px;
 
         }
         h3{
@@ -397,9 +397,9 @@
 @media only screen and (max-width: 320px){
     .course-detail {
         .course-detail__headline_statistics {
-            .course-detail__headline_stat {
-                height: 32vh;
-                width:31%;
+            // .course-detail__headline_stat {
+            //     height: 32vh;
+            //     width:31%;
             }
         }
     }
@@ -408,8 +408,8 @@
     .course-detail {
         .course-detail__headline_statistics {
             .course-detail__headline_stat {
-                height: 30vh;
-                width:31%;
+                // height: 30vh;
+                // width:31%;
             }
         }
     }
