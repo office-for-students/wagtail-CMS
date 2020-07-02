@@ -70,16 +70,20 @@
             this.selector = this.wrapper.find('select');
             this.itemsList = this.wrapper.find('.select-items');
             this.initialiseOptions();
-            this.startWatcher();
+            this.startWatcher();   
         },
 
         initialiseOptions: function() {
             for (var i = 0; i < this.courses.length; i++) {
                 var course = this.courses[i];
-                var courseMode = course.mode.en ? course.mode.en : course.mode;
-                var courseValue = course.uniId + ',' + course.courseId + ',' + courseMode;
+                if (location.pathname.indexOf('/cy/') === -1) {
+                    var courseMode = course.mode.en ? course.mode.en : course.mode;
+                }else{
+                    var courseMode = course.mode.cy ? course.mode.cy : course.mode;
+                }
+                var courseModeEN = course.mode.en ? course.mode.en : course.mode;
+                var courseValue = course.uniId + ',' + course.courseId + ',' + courseModeEN;
                 var courseLabel = course.courseName + ' - ' + course.uniName + ' (' + courseMode + ')';
-
                 var option = document.createElement("option");
                 option.setAttribute("value", courseValue);
                 option.innerHTML = courseLabel
