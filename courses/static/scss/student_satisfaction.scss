@@ -227,18 +227,12 @@
                 .student-satisfaction__chart-wrapper {
                     width: 25%;
                 
-                    
                     .student-satisfaction__chart {
-                        margin-bottom: 38px;
-                        padding-right: 30px;
-                        padding-left: 30px;
-
+                      
                         .student-satisfaction__chart-title {
                             @include small-font--bold-mixin();
                             font-family: 'Nunito Sans', sans-serif;
                             text-align: center;
-                            margin-bottom: 0;
-                            margin-top: 18px;
                             font-size:1rem;
                             font-weight:400;
                             color: $ux-grey-2;

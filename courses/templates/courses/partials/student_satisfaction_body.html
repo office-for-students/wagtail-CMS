@@ -33,7 +33,7 @@
 
             {% if overall_stats.satisfaction_stats.show_teaching_stats %}
                 <div class="student-satisfaction__data-group d-flex flex-wrap row">
-                    <div class="col-lg-3 col-md-12" >
+                    <div class="col-lg-4 col-md-12 my-auto" >
                         <h2 class="student-satisfaction__data-group-heading">
                             {{block.value.teaching_stats_header }}
 
@@ -43,10 +43,10 @@
                             </p>
                         </h2>
                     </div>
-                    <div class="student-satisfaction__charts col-lg-9 col-md-12">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto">
                         {%  if overall_stats.satisfaction_stats.question_1.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                      data-value="{{overall_stats.satisfaction_stats.question_1.agree_or_strongly_agree}}"
                                      data-question="satisfaction-1"
                                      data-language="{{page.get_language}}"
@@ -67,7 +67,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_2.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                      data-value="{{overall_stats.satisfaction_stats.question_2.agree_or_strongly_agree}}"
                                      data-question="satisfaction-2"
                                      data-language="{{page.get_language}}"
@@ -88,7 +88,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_3.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                      data-value="{{overall_stats.satisfaction_stats.question_3.agree_or_strongly_agree}}"
                                      data-question="satisfaction-3"
                                      data-language="{{page.get_language}}"
@@ -110,7 +110,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_4.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                      data-value="{{overall_stats.satisfaction_stats.question_4.agree_or_strongly_agree}}"
                                      data-question="satisfaction-4"
                                      data-language="{{page.get_language}}"
