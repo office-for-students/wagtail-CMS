@@ -58,23 +58,20 @@
             padding: 20px 0 0;
         }
 
-        .course-detail__institution-info {
-            padding: 26px 30px 28px;
+        
 
-            background-color: $divider-grey;
+        a.course-detail__institution-name {
+            
+                @include s-heading-mixin();
 
-            .course-detail__institution-name {
-                @include mobile-body-font-mixin();
+                color: $dark-green-blue!important;
+                text-decoration: underline;
+        }
 
+        .course-detail__institution-locations {
+            @include small-font-mixin();
 
-                color: $link-blue;
-            }
-
-            .course-detail__institution-locations {
-                @include small-font-mixin();
-
-                margin: 8px 0 0;
-            }
+            margin: 8px 0 0;
         }
 
         .course-detail__course-overview {
@@ -388,6 +385,7 @@
 
         .course-detail__lead {
 //             text-align: center;
+            
 
             .course-detail__nav {
                 visibility: hidden;
@@ -417,12 +415,6 @@
                 padding: 55px 300px 46px;
 
                 background-color: $divider-grey;
-
-                .course-detail__institution-name {
-                    @include s-heading-mixin();
-
-                    color: $link-blue;
-                }
 
                 .course-detail__institution-locations {
                     @include desktop-body-font-mixin();
