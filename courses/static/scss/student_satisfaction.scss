@@ -108,6 +108,17 @@
                 color: #666666;
                 padding-bottom:0;
             }
+            a{
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 1rem;
+                font-weight: normal;
+                font-stretch: normal;
+                text-decoration: underline;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #266969;
+                padding-bottom:0;
+            }
         }
 
         .student-satisfaction__charts {
@@ -245,7 +256,7 @@
 
     .highcharts-container tspan{
        fill: #358282;
-       font-weight: 900;
+       font-weight: 600;
     }
     .student-satisfaction__chart .discover-uni-chart .doughnut .doughnut-chart{
         width: 139px;

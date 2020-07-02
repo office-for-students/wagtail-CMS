@@ -30,7 +30,6 @@
 
     <div class="student-satisfaction__block">
         {% if overall_stats.satisfaction_stats.show_satisfaction_stats %}
-
             {% if overall_stats.satisfaction_stats.show_teaching_stats %}
                 <div class="student-satisfaction__data-group d-flex flex-wrap row">
                     <div class="col-lg-4 col-md-12 my-auto" >
@@ -133,16 +132,22 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_learning_opps_stats %}
-                <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row">
+                    <div class="col-lg-4 col-md-12 my-auto" >
+                        <h2 class="student-satisfaction__data-group-heading">
+                            {{block.value.learning_opportunities_stats_header }}
 
-                    <h2 class="student-satisfaction__data-group-heading">
-                        {{block.value.learning_opportunities_stats_header }}
-                    </h2>
+                            <p>
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
 
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto">
                         {%  if overall_stats.satisfaction_stats.question_5.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                    <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                         data-value="{{overall_stats.satisfaction_stats.question_5.agree_or_strongly_agree}}"
                                         data-question="satisfaction-5"
                                         data-language="{{page.get_language}}"
@@ -163,7 +168,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_6.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_6.agree_or_strongly_agree}}"
                                     data-question="satisfaction-6"
                                     data-language="{{page.get_language}}"
@@ -184,7 +189,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_7.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                    <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                    <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                         data-value="{{overall_stats.satisfaction_stats.question_7.agree_or_strongly_agree}}"
                                         data-question="satisfaction-7"
                                         data-language="{{page.get_language}}"
@@ -208,16 +213,20 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_assessment_stats %}
-                <div class="student-satisfaction__data-group">
-
-                <h2 class="student-satisfaction__data-group-heading">
-                    {{block.value.assessment_stats_header }}
-                </h2>
-
-                <div class="student-satisfaction__charts">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row">
+                <div class="col-lg-4 col-md-12 my-auto" >
+                    <h2 class="student-satisfaction__data-group-heading">
+                        {{block.value.assessment_stats_header }}
+                        <p>
+                            {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </p>
+                    </h2>
+                </div>
+                <div class="student-satisfaction__charts  col-lg-8 col-md-12 my-auto">
                     {%  if overall_stats.satisfaction_stats.question_8.show_data_point %}
                         <div class="student-satisfaction__chart-wrapper">
-                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                 data-value="{{overall_stats.satisfaction_stats.question_8.agree_or_strongly_agree}}"
                                 data-question="satisfaction-8"
                                 data-language="{{page.get_language}}"
@@ -238,7 +247,7 @@
 
                     {%  if overall_stats.satisfaction_stats.question_9.show_data_point %}
                         <div class="student-satisfaction__chart-wrapper">
-                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                 data-value="{{overall_stats.satisfaction_stats.question_9.agree_or_strongly_agree}}"
                                 data-question="satisfaction-9"
                                 data-language="{{page.get_language}}"
@@ -259,7 +268,7 @@
 
                     {%  if overall_stats.satisfaction_stats.question_10.show_data_point %}
                         <div class="student-satisfaction__chart-wrapper">
-                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                 data-value="{{overall_stats.satisfaction_stats.question_10.agree_or_strongly_agree}}"
                                 data-question="satisfaction-10"
                                 data-language="{{page.get_language}}"
@@ -280,7 +289,7 @@
 
                     {%  if overall_stats.satisfaction_stats.question_11.show_data_point %}
                         <div class="student-satisfaction__chart-wrapper">
-                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                 data-value="{{overall_stats.satisfaction_stats.question_11.agree_or_strongly_agree}}"
                                 data-question="satisfaction-11"
                                 data-language="{{page.get_language}}"
@@ -303,16 +312,21 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_support_stats %}
-                <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row">
+                    <div class="col-lg-4 col-md-12 my-auto" >
+                        <h2 class="student-satisfaction__data-group-heading">
+                            {{block.value.support_stats_header }}
+                            <p>
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
 
-                    <h2 class="student-satisfaction__data-group-heading">
-                        {{block.value.support_stats_header }}
-                    </h2>
-
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto">
                         {%  if overall_stats.satisfaction_stats.question_12.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_12.agree_or_strongly_agree}}"
                                     data-question="satisfaction-12"
                                     data-language="{{page.get_language}}"
@@ -333,7 +347,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_13.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_13.agree_or_strongly_agree}}"
                                     data-question="satisfaction-13"
                                     data-language="{{page.get_language}}"
@@ -354,7 +368,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_14.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_14.agree_or_strongly_agree}}"
                                     data-question="satisfaction-14"
                                     data-language="{{page.get_language}}"
@@ -377,16 +391,21 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_organisation_stats %}
-                <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row">
+                    <div class="col-lg-4 col-md-12 my-auto" >
+                        <h2 class="student-satisfaction__data-group-heading">
+                            {{block.value.organisation_stats_header }}
+                            <p>
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
 
-                    <h2 class="student-satisfaction__data-group-heading">
-                        {{block.value.organisation_stats_header }}
-                    </h2>
-
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto">
                         {%  if overall_stats.satisfaction_stats.question_15.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_15.agree_or_strongly_agree}}"
                                     data-question="satisfaction-15"
                                     data-language="{{page.get_language}}"
@@ -407,7 +426,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_16.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_16.agree_or_strongly_agree}}"
                                     data-question="satisfaction-16"
                                     data-language="{{page.get_language}}"
@@ -428,7 +447,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_17.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_17.agree_or_strongly_agree}}"
                                     data-question="satisfaction-17"
                                     data-language="{{page.get_language}}"
@@ -451,16 +470,21 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_learning_resources_stats %}
-                <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row">
+                    <div class="col-lg-4 col-md-12 my-auto" >
+                        <h2 class="student-satisfaction__data-group-heading">
+                            {{block.value.learning_resources_stats_header }}
+                            <p>
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
 
-                    <h2 class="student-satisfaction__data-group-heading">
-                        {{block.value.learning_resources_stats_header }}
-                    </h2>
-
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto">
                         {%  if overall_stats.satisfaction_stats.question_18.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_18.agree_or_strongly_agree}}"
                                     data-question="satisfaction-18"
                                     data-language="{{page.get_language}}"
@@ -481,7 +505,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_19.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_19.agree_or_strongly_agree}}"
                                     data-question="satisfaction-19"
                                     data-language="{{page.get_language}}"
@@ -502,7 +526,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_20.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_20.agree_or_strongly_agree}}"
                                     data-question="satisfaction-20"
                                     data-language="{{page.get_language}}"
@@ -526,16 +550,21 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_learning_community_stats %}
-                <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row">
+                    <div class="col-lg-4 col-md-12 my-auto" >
+                        <h2 class="student-satisfaction__data-group-heading">
+                            {{block.value.learning_community_stats_header }}
+                            <p>
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
 
-                    <h2 class="student-satisfaction__data-group-heading">
-                        {{block.value.learning_community_stats_header }}
-                    </h2>
-
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto">
                         {%  if overall_stats.satisfaction_stats.question_21.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_21.agree_or_strongly_agree}}"
                                     data-question="satisfaction-21"
                                     data-language="{{page.get_language}}"
@@ -556,7 +585,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_22.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_22.agree_or_strongly_agree}}"
                                     data-question="satisfaction-22"
                                     data-language="{{page.get_language}}"
@@ -580,16 +609,21 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_voice_stats %}
-                <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row">
+                    <div class="col-lg-4 col-md-12 my-auto" >
+                        <h2 class="student-satisfaction__data-group-heading">
+                            {{block.value.student_voice_stats_header }}
+                            <p>
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
 
-                    <h2 class="student-satisfaction__data-group-heading">
-                        {{block.value.student_voice_stats_header }}
-                    </h2>
-
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto">
                         {%  if overall_stats.satisfaction_stats.question_23.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_23.agree_or_strongly_agree}}"
                                     data-question="satisfaction-23"
                                     data-language="{{page.get_language}}"
@@ -610,7 +644,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_24.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_24.agree_or_strongly_agree}}"
                                     data-question="satisfaction-24"
                                     data-language="{{page.get_language}}"
@@ -631,7 +665,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_25.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_25.agree_or_strongly_agree}}"
                                     data-question="satisfaction-25"
                                     data-language="{{page.get_language}}"
@@ -652,7 +686,7 @@
 
                         {%  if overall_stats.satisfaction_stats.question_26.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.satisfaction_stats.question_26.agree_or_strongly_agree}}"
                                     data-question="satisfaction-26"
                                     data-language="{{page.get_language}}"
@@ -679,16 +713,22 @@
         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.display_unavailable_info %}
 
         {% if overall_stats.nhs_satisfaction_stats %}
-            <div class="student-satisfaction__data-group">
-                <h2 class="student-satisfaction__data-group-heading">
-                    {{block.value.nhs_placement_stats_header }}
-                </h2>
+            <div class="student-satisfaction__data-group d-flex flex-wrap row">
+                <div class="col-lg-4 col-md-12 my-auto" >
+                    <h2 class="student-satisfaction__data-group-heading">
+                        {{block.value.nhs_placement_stats_header }}
+                        <p>
+                            {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </p>
+                    </h2>
+                </div>
 
                 {% if overall_stats.nhs_satisfaction_stats.show_nhs_stats %}
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto">
                         {%  if overall_stats.nhs_satisfaction_stats.question_1.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.nhs_satisfaction_stats.question_1.agree_or_strongly_agree}}"
                                     data-question="nhs-1"
                                     data-language="{{page.get_language}}"
@@ -709,7 +749,7 @@
 
                         {%  if overall_stats.nhs_satisfaction_stats.question_2.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.nhs_satisfaction_stats.question_2.agree_or_strongly_agree}}"
                                     data-question="nhs-2"
                                     data-language="{{page.get_language}}"
@@ -730,7 +770,7 @@
 
                         {%  if overall_stats.nhs_satisfaction_stats.question_3.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.nhs_satisfaction_stats.question_3.agree_or_strongly_agree}}"
                                     data-question="nhs-3"
                                     data-language="{{page.get_language}}"
@@ -751,7 +791,7 @@
 
                         {%  if overall_stats.nhs_satisfaction_stats.question_4.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.nhs_satisfaction_stats.question_4.agree_or_strongly_agree}}"
                                     data-question="nhs-4"
                                     data-language="{{page.get_language}}"
@@ -772,7 +812,7 @@
 
                         {%  if overall_stats.nhs_satisfaction_stats.question_5.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.nhs_satisfaction_stats.question_5.agree_or_strongly_agree}}"
                                     data-question="nhs-5"
                                     data-language="{{page.get_language}}"
@@ -793,7 +833,7 @@
 
                         {%  if overall_stats.nhs_satisfaction_stats.question_6.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-2"
                                     data-value="{{overall_stats.nhs_satisfaction_stats.question_6.agree_or_strongly_agree}}"
                                     data-question="nhs-6"
                                     data-language="{{page.get_language}}"
