@@ -65,7 +65,6 @@
 }
 
 .student-satisfaction__block {
-    padding: 26px 15px 60px;
 
     .student-satisfaction__intro {
         @include small-font-mixin();
@@ -92,9 +91,6 @@
         .student-satisfaction__data-group-heading {
             @include xs-heading-mixin();
 
-            margin-top: 0px;
-            margin-bottom: 10px;
-            padding: 10px 0px;
             text-align: center;
 
             background-color: $divider-grey;
@@ -109,7 +105,7 @@
                 font-style: normal;
                 line-height: normal;
                 letter-spacing: normal;
-                color: var(--brownish-grey);
+                color: #666666;
                 padding-bottom:0;
             }
         }
