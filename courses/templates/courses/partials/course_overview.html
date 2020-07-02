@@ -29,20 +29,24 @@
                 </a>
             {% endif %}
 
-            <p class="course-detail__institution-locations">
-                {% if course.number_of_locations == 1 %}
-                    {{ course.number_of_locations }} {% get_translation key='location' language=page.get_language %}: {{ course.locations_list }}
-                {% else %}
-                    {{ course.number_of_locations }} {% get_translation key='locations' language=page.get_language %}: {{ course.locations_list }}
-                {% endif %}
-            </p>
-<!--        </div>-->
-
-        <button class="course-detail__compare-btn">
-            <img class="add" src="{% static 'images/white-bookmark.svg' %}" alt="">
-            <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
-             {% get_translation key='bookmark_course' language=page.get_language %}
-        </button>
+            <div class="d-flex flex-wrap row mt-2">
+                <div class="col-md-8 col-sm-12"
+                    <p class="course-detail__institution-locations">
+                        {% if course.number_of_locations == 1 %}
+                            {{ course.number_of_locations }} {% get_translation key='location' language=page.get_language %}: {{ course.locations_list }}
+                        {% else %}
+                            {{ course.number_of_locations }} {% get_translation key='locations' language=page.get_language %}: {{ course.locations_list }}
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-12 float-md-right">
+                    <button class="course-detail__compare-btn">
+                        <img class="add" src="{% static 'images/white-bookmark.svg' %}" alt="">
+                        <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
+                         {% get_translation key='bookmark_course' language=page.get_language %}
+                    </button>
+                </div>
+            </div>
     </div>
 
     <div class="discover-uni-container">
