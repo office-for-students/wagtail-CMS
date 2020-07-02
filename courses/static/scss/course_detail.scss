@@ -68,10 +68,10 @@
                 text-decoration: underline;
         }
 
-        .course-detail__institution-locations {
+        .course-detail__institution-locations{
+            
             @include small-font-mixin();
 
-            margin: 8px 0 0;
         }
 
         .course-detail__course-overview {
