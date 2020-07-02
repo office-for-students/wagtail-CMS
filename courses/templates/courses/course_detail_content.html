@@ -1,6 +1,6 @@
 {% load staticfiles discover_uni_tags %}
 
-<div class="course-detail comparison-course-area"
+<div class="course-detail comparison-course-area mx-2"
      data-coursename="{{course.display_title}}" data-courseid="{{course.kis_course_id}}"
      data-uniname="{{course.institution.pub_ukprn_name}}" data-uniid="{{course.institution.pub_ukprn}}"
      data-length="{{course.length.label | slice:1}}" data-locations="{{course.locations_list}}"
@@ -13,8 +13,7 @@
     {% include 'courses/partials/course_overview.html' %}
 
     <div class="course-detail__body">
-        <div class="discover-uni-container mx-4">
-            <div class="course-detail__accordion-block">
+            <div class="course-detail__accordion-block mx-2">
                 {% for accordion in page.accordions %}
                     {% should_show_accordion course accordion.value.data_set as show_accordion %}
                     {% if show_accordion %}
@@ -77,7 +76,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
     <div hidden class="discover-uni-container">

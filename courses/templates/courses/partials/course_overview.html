@@ -92,8 +92,7 @@
         </div>
     </div>
 
-    <div class="discover-uni-container">
-        <div class="course-detail__headline_statistics d-flex flex-row align-items-stretch my-2 text-center text-md-left mx-3">
+        <div class="course-detail__headline_statistics d-flex flex-row align-items-stretch my-2 text-center text-md-left">
             <div class="course-detail__headline_stat flex-fill align-self-stretch m-2 px-2 py-3">
                 <h3>Student Satisfaction</h3>
                 <h2>{{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%</h2>
@@ -115,7 +114,7 @@
             </div>
         </div>
     </div>
-</div>
+
 <script>
     function kFormatter(num) {
         return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
