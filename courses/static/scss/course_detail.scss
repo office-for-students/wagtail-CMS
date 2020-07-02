@@ -391,65 +391,6 @@
     }
 }
 
-
-
-
-@media only screen and (max-width: 320px){
-    .course-detail {
-        .course-detail__headline_statistics {
-            // .course-detail__headline_stat {
-            //     height: 32vh;
-            //     width:31%;
-            }
-        }
-    }
-}
-@media only screen and (min-width: 320px) and (max-width: 400px){
-    .course-detail {
-        .course-detail__headline_statistics {
-            .course-detail__headline_stat {
-                // height: 30vh;
-                // width:31%;
-            }
-        }
-    }
-}
-
-@media only screen and (min-width: 400px) and (max-width: 520px){
-    .course-detail {
-        .course-detail__headline_statistics {
-            .course-detail__headline_stat {
-                height: 30vh;
-                width:31%;
-            }
-        }
-    }
-}
-
-@media only screen and (min-width: 520px) and (max-width: 770px){
-    .course-detail {
-        .course-detail__headline_statistics {
-            .course-detail__headline_stat {
-                height: 25vh;
-                width:31%;
-            }
-        }
-    }
-}
-
-@media only screen and (min-width: 765px) and (max-width: 790px){
-    .course-detail {
-        .course-detail__headline_statistics {
-            .course-detail__headline_stat {
-                width: 29%;
-                height: 10vh;
-            }
-        }
-    }
-}
-
-
-
 @media only screen and (min-width: 770px) {
     .course-detail {
         margin-top: 35px;
