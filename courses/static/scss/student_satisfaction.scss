@@ -37,18 +37,16 @@
 .student-satisfaction__overview {
     @include desktop-body-font-mixin();
 
-    padding: 1rem;
-    margin-top: 30px;
     text-align: center;
-
-    border: 1px solid $ux-grey-3;
-    border-radius: 10px;
+    border: solid 3px #cee9e7;
+    
     .student-satisfaction__intro .rich-text p{
         @include s-heading-mixin();
         margin-top:2rem;
         margin-left: 5rem;
         margin-right: 5rem;
         font-size: 1rem;
+        color: #666666;
     }
 
     .student-satisfaction__overview-lead {
@@ -163,6 +161,7 @@
             margin-left: 5rem;
             margin-right: 5rem;
             font-size: 1rem;
+            color: #666666;
         }
 
         .student-satisfaction__overview-lead {
