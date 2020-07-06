@@ -21,7 +21,8 @@ $(function () {
                     type: 'bar',
                     height: '40px',
                     spacing: [0,70,0,1],
-                    styledMode: true
+                    styledMode: true,
+                    shadow: true
                 },
                 title: {
                     text: this.value + '%',

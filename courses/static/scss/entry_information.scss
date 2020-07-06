@@ -29,10 +29,9 @@
 
             .entry-information__chart-label {
                 @include small-font-mixin();
-
+                font-family: 'Nunito Sans', sans-serif;
                 display: block;
                 margin-top: 7px;
-
                 color: $ux-grey-3;
             }
         }
@@ -68,7 +67,7 @@
 
                 .entry-information__chart-label {
                     @include desktop-body-font-mixin();
-
+                    font-family: 'Nunito Sans', sans-serif;
                     color: $ux-grey-3;
                 }
             }
