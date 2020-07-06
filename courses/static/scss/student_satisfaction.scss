@@ -99,7 +99,7 @@
 
             p{
                 font-family: 'Nunito Sans', sans-serif;
-                font-size: 1rem;
+                font-size: 0.9rem;
                 font-weight: normal;
                 font-stretch: normal;
                 font-style: normal;
@@ -110,7 +110,7 @@
             }
             a{
                 font-family: 'Nunito Sans', sans-serif;
-                font-size: 1rem;
+                font-size: 0.9rem;
                 font-weight: normal;
                 font-stretch: normal;
                 text-decoration: underline;
@@ -126,6 +126,14 @@
             flex-wrap: wrap;
 
 
+            .entry-information__chart-label {
+                @include small-font-mixin();
+                font-family: 'Nunito Sans', sans-serif;
+                display: block;
+                margin-top: 7px;
+                color: $ux-grey-3;
+            }
+            
             .student-satisfaction__chart-wrapper {
                 width: 100%;
                 margin-bottom:15px;
