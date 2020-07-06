@@ -2,7 +2,7 @@
 {% load humanize %}
 
 <div class="course-detail__lead">
-    <div class="discover-uni-container">
+    <div class="mx-2">
         <ul class="course-detail__nav">
             <li class="course-detail__nav-control">
                 <form method="post" id="back_to_search" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %}>
@@ -18,7 +18,6 @@
             {{course.display_title}}
         </h1>
 
-<!--        <div>-->
             {% if page.is_english %}
                 <a class="course-detail__institution-name" href="/institution-details/{{course.institution.pub_ukprn}}/">
                     {% autoescape off %}{{course.institution.pub_ukprn_name | safe}}{% endautoescape %}
@@ -49,7 +48,7 @@
             </div>
     </div>
 
-    <div class="discover-uni-container">
+    <div class="">
         <div class="course-detail__overview-lead">
             <p>Course details</p>
             <hr>
@@ -96,21 +95,21 @@
         </div>
     </div>
 
-        <div class="course-detail__headline_statistics d-flex flex-row align-items-stretch my-2 text-center text-md-left">
-            <div class="course-detail__headline_stat flex-fill align-self-stretch m-2 px-2 py-3">
+        <div class="course-detail__headline_statistics d-flex flex-row align-items-stretch my-2 text-center text-md-left mx-auto px-0">
+            <div class="course-detail__headline_stat flex-fill align-self-stretch mr-2 px-2 py-3">
                 <h3>Student Satisfaction</h3>
                 <h2>{{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%</h2>
                 <p>were satisfied with the quality of the course</p>
                 <a>More on student satisfaction</a>
             </div>
-            <div class="course-detail__headline_stat flex-fill align-self-stretch m-2 px-2 py-3 ">
+            <div class="course-detail__headline_stat flex-fill align-self-stretch ml-2 mr-2 px-2 py-3 ">
                 <h3>Average Earnings</h3>
                 <h2 id="average_earnings_sm">{{ course.leo_stats.0.median|intcomma }}</h2>
                 <h2 id="average_earnings_lg">£{{ course.leo_stats.0.median|intcomma }}</h2>
                 <p>average salary 3 years after the course</p>
                 <a>More on earnings</a>
             </div>
-            <div class="course-detail__headline_stat flex-fill align-self-stretch m-2 px-2 py-3">
+            <div class="course-detail__headline_stat flex-fill align-self-stretch ml-2 px-2 py-3">
                 <h3>Employment</h3>
                 <h2>{{ course.in_employment_15_mths }}%</h2>
                 <p>work adn / or study within 15 months after the course</p>
