@@ -2,7 +2,7 @@
 {% load humanize %}
 
 <div class="course-detail__lead">
-    <div class="mx-2">
+    <div class="">
         <ul class="course-detail__nav">
             <li class="course-detail__nav-control">
                 <form method="post" id="back_to_search" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %}>
@@ -50,11 +50,11 @@
 
     <div class="">
         <div class="course-detail__overview-lead">
-            <p>Course details</p>
-            <hr>
+            <h4>Course details</h4>
+            <hr/>
         </div>
-        <div class="course-detail__course-overview">
-            <div class="course-detail__overview-item overview-block">
+        <div class="course-detail__course-overview my-4">
+            <div class="course-detail__overview-item overview-block my-2">
                 <p class="course-detail__overview-item-heading">{% get_translation key='study_mode' language=page.get_language %}</p>
                 <p class="course-detail__overview-item-value">
                     {% if course.mode.label == 'Both' %}
@@ -67,28 +67,28 @@
             </div>
 
             {% if course.mode.label != 'Part-time' %}
-                <div class="course-detail__overview-item overview-block">
+                <div class="course-detail__overview-item overview-block mx-1 my-2">
                     <p class="course-detail__overview-item-heading">{% get_translation key='length' language=page.get_language %}</p>
                     <p class="course-detail__overview-item-value">{{ course.length.label | slice:1 }} {% get_translation key='year_course' language=page.get_language %}</p>
                 </div>
             {% endif %}
 
-            <div class="course-detail__overview-item overview-block">
+            <div class="course-detail__overview-item overview-block mx-1 my-2">
                 <p class="course-detail__overview-item-heading">{% get_translation key='distance_learning' language=page.get_language %}</p>
                 <p class="course-detail__overview-item-value">{{ course.distance_learning.display_label }}</p>
             </div>
 
-            <div class="course-detail__overview-item overview-block">
+            <div class="course-detail__overview-item overview-block mx-1 my-2">
                 <p class="course-detail__overview-item-heading">{% get_translation key='placement_year' language=page.get_language %}</p>
                 <p class="course-detail__overview-item-value">{% get_translation key=course.sandwich_year.label language=page.get_language %}</p>
             </div>
 
-            <div class="course-detail__overview-item overview-block">
+            <div class="course-detail__overview-item overview-block mx-1 my-2">
                 <p class="course-detail__overview-item-heading">{% get_translation key='year_abroad' language=page.get_language %}</p>
                 <p class="course-detail__overview-item-value">{% get_translation key=course.year_abroad.label language=page.get_language %}</p>
             </div>
 
-            <div class="course-detail__overview-item overview-block">
+            <div class="course-detail__overview-item overview-block mx-1 my-2">
                 <p class="course-detail__overview-item-heading">{% get_translation key='foundation_year' language=page.get_language %}</p>
                 <p class="course-detail__overview-item-value">{% get_translation key=course.foundation_year.label language=page.get_language %}</p>
             </div>
