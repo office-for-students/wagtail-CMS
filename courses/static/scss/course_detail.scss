@@ -19,7 +19,16 @@
 .course-detail {
 
     .course-detail__lead {
-        
+        h4{
+            font-size:1rem;
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        hr{
+            border: none; 
+            height: 3px;
+            background-color: #cee9e7;
+            
+        }
 
         .course-detail__nav {
             visibility: hidden;
@@ -83,17 +92,13 @@
             flex-wrap: wrap;
             justify-content: space-evenly;
 
-            margin: 20px 0px 35px;
-
             .course-detail__overview-item {
 
 //                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                width: 114px;
-                padding: 20px 14px;
-
+                
                 background-color: $white;
                 border-radius: 10px;
 
@@ -433,12 +438,8 @@
 
             .course-detail__course-overview {
                 flex-wrap: nowrap;
-                justify-content: space-between;
-                margin: 61px 0px 44px;
+               
 
-                .course-detail__overview-item {
-                    padding: 30px 13px;
-                }
             }
 
             .course-detail__headline_statistics {
