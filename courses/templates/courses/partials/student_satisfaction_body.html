@@ -1,11 +1,8 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags %}
 
-{% for overall_stats in course_details.overall_satisfaction %}
-    {% if course_details.has_multiple_satisfaction_stats %}
-        <h2 class="satisfaction_subject_name">
-            {% get_translation key='data_for' language=page.get_language %}: {{overall_stats.satisfaction_stats.display_subject_name}}
-        </h2>
-    {% endif %}
+    <h2 class="satisfaction_subject_name">
+        {% get_translation key='data_for' language=page.get_language %}: {{overall_stats.satisfaction_stats.display_subject_name}}
+    </h2>
 
     {% if overall_stats.satisfaction_stats.question_27.show_data_point %}
         <div class="student-satisfaction__overview mt-3 p-2 d-flex flex-wrap row mx-2">
@@ -866,4 +863,4 @@
             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
         {% endif %}
     </div>
-{% endfor %}
+

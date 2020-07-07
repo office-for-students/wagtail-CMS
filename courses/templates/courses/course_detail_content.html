@@ -16,23 +16,24 @@
     {% include 'courses/partials/base_gradient.html' %}
     {% include 'courses/partials/course_overview.html' %}
 
+    <li>ENTRY STATS: {{course.entry_stats}}</li>
+
 
     <!-- sks testing bootstrap tabs -->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="course1-tab" data-toggle="tab" href="#course1" role="tab"
-               aria-controls="course1" aria-selected="true">Course 1</a>
+               aria-controls="course1" aria-selected="true">{{course.overall_satisfaction.0.satisfaction_stats.display_subject_name}}</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="course2-tab" data-toggle="tab" href="#course2" role="tab" aria-controls="course2"
-               aria-selected="false">Course 2</a>
+               aria-selected="false">{{course.overall_satisfaction.1.satisfaction_stats.display_subject_name}}</a>
         </li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div class="tab-pane active" id="course1" role="tabpanel" aria-labelledby="course1-tab">
-            <h3>Course 1 One Tab</h3>
+        <div class="tab-pane fade show active" id="course1" role="tabpanel" aria-labelledby="course1-tab">
             <div class="course-detail__body">
                 <div class="course-detail__accordion-block mx-2">
                     {% for accordion in page.accordions %}
@@ -60,55 +61,17 @@
                                 <div id="course-detail__accordion-body-{{ forloop.counter }}"
                                      class="course-detail__accordion-body"
                                      aria-labelledby="course-detail__accordion-heading-{{ forloop.counter }}">
-                                    {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course block=accordion %}
+                                    {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with overall_stats=course.overall_satisfaction.0 block=accordion %}
                                 </div>
                             </div>
                         {% endif %}
                     {% endfor %}
                 </div>
-
-                <div class="course-detail__uni-site-links">
-                    <h2 class="course-detail__uni-site-links-header">
-                        {{ page.uni_site_links_header }}
-                    </h2>
-
-                    <div class="course-detail__uni-site-links-blocks">
-                        <div class="course-detail__uni-site-links-block">
-                            <p class="course-detail__uni-site-links-heading">
-                                {% get_translation key='course_details' language=page.get_language %}
-                            </p>
-
-                            <ul class="course-detail__uni-site-links-list">
-                                {% for link in course.course_links.course_details %}
-                                    <li class="course-detail__uni-site-links-list-item">
-                                        <a class="course-detail__uni-site-link"
-                                           href="{{ link.link }}">{{ link.label }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-
-                        <div class="course-detail__uni-site-links-block">
-                            <p class="course-detail__uni-site-links-heading">
-                                {% get_translation key='costs_and_support' language=page.get_language %}
-                            </p>
-
-                            <ul class="course-detail__uni-site-links-list">
-                                {% for link in course.course_links.costs_support %}
-                                    <li class="course-detail__uni-site-links-list-item">
-                                        <a class="course-detail__uni-site-link"
-                                           href="{{ link.link }}">{{ link.label }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
+        </div>
         <!-- sks tab for course 2 -->
-        <div class="tab-pane" id="course2" role="tabpanel" aria-labelledby="course2-tab">
-            <h3>Course 2 Two Tab</h3>
+        <div class="tab-pane fade" id="course2" role="tabpanel" aria-labelledby="course2-tab">
             <div class="course-detail__body">
                 <div class="course-detail__accordion-block mx-2">
                     {% for accordion in page.accordions %}
@@ -136,12 +99,15 @@
                                 <div id="course-detail__accordion-body-{{ forloop.counter }}"
                                      class="course-detail__accordion-body"
                                      aria-labelledby="course-detail__accordion-heading-{{ forloop.counter }}">
-                                    {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course block=accordion %}
+                                    {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with overall_stats=course.overall_satisfaction.1 block=accordion %}
                                 </div>
                             </div>
                         {% endif %}
                     {% endfor %}
                 </div>
+            </div>
+        </div>
+        </div>
 
                 <div class="course-detail__uni-site-links">
                     <h2 class="course-detail__uni-site-links-header">
@@ -180,8 +146,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
     </div><!-- remove div when removing tabs sks testing -->
     <div hidden class="discover-uni-container">
         <div class="course-detail__further-info-block">

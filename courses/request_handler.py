@@ -6,8 +6,8 @@ from CMS.test.mocks import NewCourseFormatMocks, CourseMocks
 
 
 def load_course_data(institution_id, course_id, mode):
-    if True or settings.LOCAL:
-    # if settings.LOCAL:
+    # if True or settings.LOCAL:
+    if settings.LOCAL:
         return NewCourseFormatMocks.get_successful_course_load_response()
     else:
         headers = {
