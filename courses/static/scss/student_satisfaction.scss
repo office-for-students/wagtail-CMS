@@ -42,11 +42,15 @@
     
     .student-satisfaction__intro .rich-text p{
         @include s-heading-mixin();
-        margin-top:2rem;
-        margin-left: 5rem;
-        margin-right: 5rem;
         font-size: 1rem;
         color: #666666;
+        font-weight:300;
+    }
+
+    .student-satisfaction__intro .rich-text a{
+        color:#308282;
+        font-weight:400;
+        text-decoration: underline;
     }
 
     .student-satisfaction__overview-lead {
@@ -76,6 +80,11 @@
         p {
             margin: 0;
         }
+        a{
+            color:#308282;
+            font-weight:400;
+            text-decoration: underline;
+        }
 
         .student-satisfaction__nss_logo {
             margin-top: 5px;
@@ -90,7 +99,7 @@
 
         .student-satisfaction__data-group-heading {
             @include xs-heading-mixin();
-
+            font-weight:300;
             text-align: center;
 
             background-color: $divider-grey;
@@ -133,7 +142,7 @@
                 margin-top: 7px;
                 color: $ux-grey-3;
             }
-            
+
             .student-satisfaction__chart-wrapper {
                 width: 100%;
                 margin-bottom:15px;
@@ -172,11 +181,15 @@
 
         .student-satisfaction__intro .rich-text p{
             @include s-heading-mixin();
-            margin-top:2rem;
-            margin-left: 5rem;
-            margin-right: 5rem;
             font-size: 1rem;
             color: #666666;
+            font-weight:300;
+        }
+
+        .student-satisfaction__intro .rich-text a{
+            color:#308282;
+            font-weight:400;
+            text-decoration: underline;
         }
 
         .student-satisfaction__overview-lead {
@@ -214,6 +227,11 @@
 
                 margin: 0;
             }
+            a{
+                color:#308282;
+                font-weight:400;
+                text-decoration: underline;
+            }
 
             .student-satisfaction__nss_logo {
                 margin-top: 5px;
@@ -228,7 +246,7 @@
             .student-satisfaction__data-group-heading {
                 text-align: left;
                 @include s-heading-mixin();
-
+                font-weight:300;            
                 margin-top: 0px;
                 margin-bottom: 16px;
                 padding-left:2rem;

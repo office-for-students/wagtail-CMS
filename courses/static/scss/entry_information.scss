@@ -9,14 +9,42 @@
 }
 
 .entry-information__block {
-    padding: 34px 30px 49px 30px;
 
+    
+    .entry-information__overview{
+
+        .entry-information__overview-lead {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.2rem;
+            color:#000000;
+            font-weight: 300;
+        }
+        .entry-information__intro{
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1rem;
+            color:#000000;
+            font-weight: 300;
+            
+            p{
+                font-size: 0.9rem;
+                color: #666666;
+                font-weight: 300;
+            }
+        }
+        a{
+            color:#308282;
+            text-decoration: underline;
+            font-weight:300;
+        }
+    
+    }
     .entry-information__heading {
         @include s-heading-mixin();
-
+        font-family: 'Nunito Sans', sans-serif;
         margin: 0;
-
-        color: $ux-grey-2;
+        color: black;
+        font-weight:300;
+        font-size:1.2rem;
     }
 
     .entry-information__lead {
@@ -26,7 +54,27 @@
         margin-bottom: 34px;
     }
 
-    .entry-information__qualification-charts, .entry-information__tariff-charts {
+    .entry-information__qualification-charts, .entry-information__tariff-charts, .entry-information__ucas-points {
+        background-color: #F2F2F2;
+
+        .explanation-text a{
+            color:#308282;
+            text-decoration: underline;
+            font-weight:300;
+        }
+        .entry-information__qualification_intro{
+            color:$ux-grey-2;
+            font-weight:300;
+            font-size:0.9rem;
+            font-family: 'Nunito Sans', sans-serif;
+
+            a{
+                color:#308282;
+                text-decoration: underline;
+                font-weight:300;
+            }
+        }
+
         .entry-information__chart {
             margin-bottom: 37px;
 
@@ -40,6 +88,7 @@
                 display: block;
                 margin-top: 7px;
                 color: $ux-grey-3;
+                font-weight:300;
             }
         }
     }
@@ -55,9 +104,9 @@
     
     
     .entry-information__block {
-        padding: 40px 30px 49px 30px;
 
         .entry-information__heading {
+            font-size:1rem;
             @include m-heading-mixin();
 
             margin: 0;

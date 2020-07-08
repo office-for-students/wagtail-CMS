@@ -14,6 +14,12 @@ body {
   color: #5F607C;
 }
 
+a{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight:300;
+    color:#308282;
+}
+
 @media only screen and (min-width: 770px) {
     .discover-uni-container {
         max-width: 1020px;
@@ -62,6 +68,7 @@ body {
             text-decoration: underline;
             background-color: $white;
             border: none;
+            font-family: 'Nunito Sans', sans-serif;
         }
     }
 }
@@ -70,10 +77,6 @@ body {
     height: 20px;
     width: 20px;
     margin-right: 10px;
-}
-
-a {
-    color: $link-blue;
 }
 
 .dropdown-arrow {
