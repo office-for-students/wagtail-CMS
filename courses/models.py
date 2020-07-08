@@ -165,11 +165,11 @@ class GraduatePerceptionsBlock(AccordionPanel):
 class CourseDetailPage(DiscoverUniBasePage):
     accordions = StreamField([
         ('satisfaction_panel', SatisfactionBlock(required=True, icon='collapse-down')),
-        ('entry_information_panel', EntryInformationBlock(required=True, icon='collapse-down')),
-        ('after_one_year_panel', AfterOneYearBlock(required=True, icon='collapse-down')),
-        ('after_course_panel', AfterCourseBlock(required=True, icon='collapse-down')),
-        ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down')),
-        ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down'))
+        ('entry_information_panel', EntryInformationBlock(required=True, icon='collapse-down'))
+        # ('after_one_year_panel', AfterOneYearBlock(required=True, icon='collapse-down')),
+        # ('after_course_panel', AfterCourseBlock(required=True, icon='collapse-down')),
+        # ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down')),
+        # ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down'))
     ])
     uni_site_links_header = TextField(blank=True)
 

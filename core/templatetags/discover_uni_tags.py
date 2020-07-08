@@ -149,3 +149,8 @@ def get_course_locations_list(locations, is_english):
 @register.simple_tag
 def is_multiple_of(number, base):
     return number % base == 0
+
+
+@register.filter
+def index(indexable, i):
+    return indexable[i]

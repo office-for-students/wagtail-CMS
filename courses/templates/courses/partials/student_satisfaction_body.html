@@ -1,5 +1,6 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags %}
 
+{% with overall_stats=course_details.overall_satisfaction|index:id %}
     <h2 class="satisfaction_subject_name">
         {% get_translation key='data_for' language=page.get_language %}: {{overall_stats.satisfaction_stats.display_subject_name}}
     </h2>
@@ -863,4 +864,4 @@
             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
         {% endif %}
     </div>
-
+{% endwith %}

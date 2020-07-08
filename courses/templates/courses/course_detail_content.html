@@ -16,24 +16,33 @@
     {% include 'courses/partials/base_gradient.html' %}
     {% include 'courses/partials/course_overview.html' %}
 
-    <li>ENTRY STATS: {{course.entry_stats}}</li>
-
 
     <!-- sks testing bootstrap tabs -->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="course1-tab" data-toggle="tab" href="#course1" role="tab"
-               aria-controls="course1" aria-selected="true">{{course.overall_satisfaction.0.satisfaction_stats.display_subject_name}}</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="course2-tab" data-toggle="tab" href="#course2" role="tab" aria-controls="course2"
-               aria-selected="false">{{course.overall_satisfaction.1.satisfaction_stats.display_subject_name}}</a>
-        </li>
+        {% for course in course.overall_satisfaction %}
+            <li class="nav-item">
+                <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="course{{ forloop.counter }}-tab" data-toggle="tab" href="#course{{ forloop.counter }}" role="tab"
+                   aria-controls="course{{ forloop.counter }}" aria-selected="true">{{course.satisfaction_stats.display_subject_name}}</a>
+            </li>
+        {% endfor %}
     </ul>
+
+    <!-- sks testing bootstrap tabs -->
+<!--    <ul class="nav nav-tabs" id="myTab" role="tablist">-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link active" id="course1-tab" data-toggle="tab" href="#course1" role="tab"-->
+<!--               aria-controls="course1" aria-selected="true">{{course.overall_satisfaction.0.satisfaction_stats.display_subject_name}}</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" id="course2-tab" data-toggle="tab" href="#course2" role="tab" aria-controls="course2"-->
+<!--               aria-selected="false">{{course.overall_satisfaction.1.satisfaction_stats.display_subject_name}}</a>-->
+<!--        </li>-->
+<!--    </ul>-->
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div class="tab-pane fade show active" id="course1" role="tabpanel" aria-labelledby="course1-tab">
+        {% for element in course.overall_satisfaction %}
+        <div class="tab-pane {% if not forloop.counter0 %} show active {%else%} fade {% endif %}" id="course{{ forloop.counter }}" role="tabpanel" aria-labelledby="course{{ forloop.counter }}-tab">
             <div class="course-detail__body">
                 <div class="course-detail__accordion-block mx-2">
                     {% for accordion in page.accordions %}
@@ -61,7 +70,7 @@
                                 <div id="course-detail__accordion-body-{{ forloop.counter }}"
                                      class="course-detail__accordion-body"
                                      aria-labelledby="course-detail__accordion-heading-{{ forloop.counter }}">
-                                    {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with overall_stats=course.overall_satisfaction.0 block=accordion %}
+                                    {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course id=forloop.parentloop.counter0 block=accordion %}
                                 </div>
                             </div>
                         {% endif %}
@@ -69,45 +78,8 @@
                 </div>
             </div>
         </div>
-        </div>
-        <!-- sks tab for course 2 -->
-        <div class="tab-pane fade" id="course2" role="tabpanel" aria-labelledby="course2-tab">
-            <div class="course-detail__body">
-                <div class="course-detail__accordion-block mx-2">
-                    {% for accordion in page.accordions %}
-                        {% should_show_accordion course accordion.value.data_set as show_accordion %}
-                        {% if show_accordion %}
-                            <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
-                                <div class="discover-uni-container">
-                                    <button class="course-detail__accordion-heading">
-                                        <h2 id="course-detail__accordion-heading-{{ forloop.counter }}"
-                                            aria-controls="course-detail__accordion-body-{{ forloop.counter }}"
-                                            aria-label="Show {{ accordion.value.heading }} content"
-                                            aria-expanded="false">
+        {% endfor %}
 
-                                            <span class="course-detail__accordion-heading-chevron">
-                                                <img class="course-detail__icon plus"
-                                                     src="{% static 'images/plus_icon.svg' %}" alt="">
-                                                <img class="course-detail__icon minus"
-                                                     src="{% static 'images/minus_icon.svg' %}" alt="">
-                                            </span>
-                                            {{ accordion.value.heading }}
-                                        </h2>
-                                    </button>
-                                </div>
-
-                                <div id="course-detail__accordion-body-{{ forloop.counter }}"
-                                     class="course-detail__accordion-body"
-                                     aria-labelledby="course-detail__accordion-heading-{{ forloop.counter }}">
-                                    {% include 'courses/partials/'|add:accordion.value.data_set|add:'_body.html' with overall_stats=course.overall_satisfaction.1 block=accordion %}
-                                </div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-        </div>
 
                 <div class="course-detail__uni-site-links">
                     <h2 class="course-detail__uni-site-links-header">
