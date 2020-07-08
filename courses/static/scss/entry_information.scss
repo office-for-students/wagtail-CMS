@@ -1,6 +1,13 @@
 @import '../../../CMS/static/scss/fonts';
 @import '../../../CMS/static/scss/variables';
 
+.entry-information__overview{
+    @include desktop-body-font-mixin();
+
+    text-align: center;
+    border: solid 3px #cee9e7;
+}
+
 .entry-information__block {
     padding: 34px 30px 49px 30px;
 
@@ -39,6 +46,14 @@
 }
 
 @media only screen and (min-width: 770px) {
+    .entry-information__overview{
+        @include desktop-body-font-mixin();
+
+        text-align: center;
+        border: solid 3px #cee9e7;
+    }
+    
+    
     .entry-information__block {
         padding: 40px 30px 49px 30px;
 
