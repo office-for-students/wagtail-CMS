@@ -3,31 +3,40 @@
 {% load discover_uni_tags %}
 
 {% for entry_stats in course_details.entry_stats %}
+
     <div class="entry-information__block">
-        <h2 class="entry-information__heading">{{block.value.qualification_heading}}{% if course_details.has_multiple_entry_stats %}:
-            {{entry_stats.display_subject_name}}{% endif %}
-        </h2>
+        <div class="entry-information__overview my-3 p-3 mx-1 pt-4 d-flex flex-wrap row">
+            <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
+                <p class="entry-information__overview-lead">
+                    What you need to know about entry data
+                </p>
+            </div>
+            <div class=" col-lg-8 col-md-12 align-self-stretch my-auto pt-2">
+                <p>
+                    <div class="entry-information__intro">
+                        These are the qualifications students had when they were accepted into this course. This is not a list of qualifications a person needs to have to be accepted into this course.
+                    </div>
+                </p>
+                <p><a href="#">Read more about entrance data</a></p>
+            </div>
+        </div>
 
         <!-- <p class="entry-information__lead">
             {{block.value.qualification_intro}}
         </p> -->
-            <div class="entry-information__overview mt-3 p-0 d-flex flex-wrap row">
-                <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
-                    <p class="entry-information__overview-lead ">
-                        djfndjkgndfjgd
-                    </p>
-                </div>
-                <div class=" col-lg-8 col-md-12 align-self-stretch my-auto pt-2">
-                    <p>
-                        <div class="entry-information__intro">
-                            kjndfgjndkjgd
-                        </div>
-                    </p>
-                </div>
-            </div>
 
         {% if entry_stats.display_stats %}
-            <div class="entry-information__qualification-charts">
+        
+            <div class="entry-information__qualification-charts p-3">
+                <h2 class="entry-information__heading py-2">{{block.value.qualification_heading}}{% if course_details.has_multiple_entry_stats %}:
+                    {{entry_stats.display_subject_name}}{% endif %}
+                </h2>
+                <div class="entry-information__qualification_intro mt-2">
+                    <p>Source: <a href="#">Data for individual students collected directly from universities and colleges</a></p>
+                    <p>40 students (90% of those who were asked)</p>
+                    <p><a href="#">Additional information</a></p>
+                    
+                </div>
                 <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.degree}}"
                         data-label="entry-degree"
                         data-title="{% get_translation key='entry_graph_title' language=page.get_language %} {% get_translation key='degree' language=page.get_language %}"
@@ -92,25 +101,6 @@
                     <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key='other' language=page.get_language %}</label>
                 </div>
 
-                <div class="explanation">
-                    <div class="explanation__link">
-                        <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
-                        <button class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</button>
-                    </div>
-
-                    <div tabindex="-1" class="chart-label-explanation" role="dialog">
-                        <h3 class="chart-label-explanation__heading">
-                            {{block.value.qualification_label_explanation_heading}}
-                        </h3>
-
-                        <button class="chart-label-explanation__close"><img src="{% static 'images/close-grey.svg' %}" alt="Close  pop up"></button>
-
-                        <div class="chart-label-explanation__body">
-                            {{block.value.qualification_label_explanation_body}}
-                        </div>
-                    </div>
-                </div>
-
                 <div class="explanation-text">
                     {% create_list entry_stats.number_of_students as substitutions %}
                     {% insert_values_to_rich_text content=block.value.qualification_data_source substitutions=substitutions as subbed_text %}
@@ -124,35 +114,36 @@
 {% endfor %}
 
 {% for tariff_stats in  course_details.tariff_stats %}
-    <div class="entry-information__block">
-        <h2 class="entry-information__heading">{{block.value.tariffs_heading}}{% if course_details.has_multiple_tariff_stats %}:
-            {{tariff_stats.display_subject_name}}{% endif %}</h2>
+    <div class="entry-information__block my-2">
+        <div class="entry-information__ucas-points p-3">
+            <h2 class="entry-information__heading">{{block.value.tariffs_heading}}{% if course_details.has_multiple_tariff_stats %}:
+                {{tariff_stats.display_subject_name}}{% endif %}</h2>
 
-        <p class="entry-information__lead">
-            {{block.value.tariffs_intro}}
-        </p>
+            <p class="entry-information__lead">
+                {{block.value.tariffs_intro}}
+            </p>
 
-        {% if tariff_stats.show_stats %}
-            <div class="entry-information__tariff-charts">
-                {% for tariff in tariff_stats.tariffs %}
-                    <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}"
-                        data-label="entry-tariff-{{forloop.counter}}"
-                        data-title="{% get_translation key='tariff_graph_title' language=page.get_language %} {{tariff.label}}"
-                        data-desc="{% get_translation key='tariff_graph_desc' language=page.get_language %} {{tariff.label}}">
-                        {% include 'courses/partials/bar_chart.html' %}
+            {% if tariff_stats.show_stats %}
+                <div class="entry-information__tariff-charts">
+                    {% for tariff in tariff_stats.tariffs %}
+                        <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}"
+                            data-label="entry-tariff-{{forloop.counter}}"
+                            data-title="{% get_translation key='tariff_graph_title' language=page.get_language %} {{tariff.label}}"
+                            data-desc="{% get_translation key='tariff_graph_desc' language=page.get_language %} {{tariff.label}}">
+                            {% include 'courses/partials/bar_chart.html' %}
 
-                        <label class="entry-information__chart-label" aria-hidden="true"><span>{{tariff.label}}</span></label>
+                            <label class="entry-information__chart-label" aria-hidden="true"><span>{{tariff.label}}</span></label>
+                        </div>
+                    {% endfor %}
+
+                    <div class="explanation-text">
+                        {% create_list tariff_stats.number_of_students as substitutions %}
+                        {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
+                        {{ subbed_text | richtext }}
                     </div>
-                {% endfor %}
-
-                <div class="explanation-text">
-                    {% create_list tariff_stats.number_of_students as substitutions %}
-                    {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
-                    {{ subbed_text | richtext }}
                 </div>
-            </div>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
-
     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
 {% endfor %}

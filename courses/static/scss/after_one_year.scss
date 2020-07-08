@@ -2,25 +2,36 @@
 @import '../../../CMS/static/scss/variables';
 
 .one-year__block, .one-year__lead-block {
-    padding: 34px 30px 49px 30px;
-
-    .one-year__heading {
-        @include s-heading-mixin();
-
-        margin: 0;
-
-        color: $ux-grey-2;
-    }
 
     .one-year__lead {
         @include small-font-mixin();
-
         margin-top: 5px;
     }
 
     .one-year__qualification-charts {
+        background-color:#f4f8f8;
+
+        .one-year__heading {
+            @include s-heading-mixin();
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight:300;
+            color: #000000;
+        }
+        .one-year__lead{
+           
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight:300;
+            color: #000000;
+            font-size:0.9rem;
+            a{
+                text-decoration: underline;
+                color:#266969;
+                font-weight:300;
+            }
+        }
+
         .one-year__chart {
-            margin-bottom: 37px;
+            margin-bottom: 20px;
 
             &:last-of-type {
                 margin-bottom: 13px;
@@ -35,18 +46,13 @@
     }
 }
 
-.one-year__lead-block {
-    padding-bottom: 40px;
-}
 
 .one-year__overview {
-    @include desktop-body-font-mixin();
 
-    padding: 7px 30px 32px 30px;
     text-align: center;
-
-    border: 1px solid $ux-grey-3;
-    border-radius: 10px;
+    border: solid 3px #cee9e7;
+    
+    @include desktop-body-font-mixin();
 
     p {
         margin: 0px;
@@ -58,11 +64,29 @@
         color: $gradient-light-green;
         line-height: 59px;
     }
+    .one-year__overview-sublead{
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 1.2rem;
+        font-weight:300;
+        color: #000000;
+        text-decoration: none;
+    }
+    p{
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: #666666;
+    }
+    a{
+     
+        text-decoration: underline;
+        color: #266969;
+    }
 }
 
 @media only screen and (min-width: 770px) {
     .one-year__block, .one-year__lead-block {
-        padding: 40px 30px 49px 30px;
+        
 
         .one-year__heading {
             @include m-heading-mixin();
@@ -80,7 +104,7 @@
 
         .one-year__qualification-charts {
             .one-year__chart {
-                margin-bottom: 37px;
+                margin-bottom: 20px;
 
                 &:last-of-type {
                     margin-bottom: 13px;
@@ -96,16 +120,11 @@
     }
 
     .one-year__overview {
-        padding: 68px 150px 72px;
 
         .one-year__overview-lead {
             @include xl-heading-mixin();
 
             color: $gradient-light-green;
-        }
-
-        p {
-            @include s-heading-mixin();
         }
     }
 }
