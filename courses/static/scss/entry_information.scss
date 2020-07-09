@@ -89,6 +89,7 @@
                 margin-top: 7px;
                 color: $ux-grey-3;
                 font-weight:300;
+                font-size: 1rem;
             }
         }
     }
@@ -122,6 +123,7 @@
         }
 
         .entry-information__qualification-charts, .entry-information__tariff-charts {
+            font-family: 'Nunito Sans', sans-serif;
             .entry-information__chart {
                 margin-bottom: 10px;
 
@@ -133,6 +135,18 @@
                     @include desktop-body-font-mixin();
                     font-family: 'Nunito Sans', sans-serif;
                     color: $ux-grey-3;
+                   
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 990px) {
+    .entry-information__block {
+        .entry-information__qualification-charts, .entry-information__tariff-charts {
+            .entry-information__chart {
+                .entry-information__chart-label {
+                    text-align: right;
                 }
             }
         }
