@@ -57,6 +57,17 @@
     .entry-information__qualification-charts, .entry-information__tariff-charts, .entry-information__ucas-points {
         background-color: #F2F2F2;
 
+        p{
+            font-size: 0.9rem;
+            color: #666666;
+            font-weight: 300;
+        }
+        a{
+            color:#308282;
+            text-decoration: underline;
+            font-weight:300;
+        }
+        
         .explanation-text a{
             color:#308282;
             text-decoration: underline;

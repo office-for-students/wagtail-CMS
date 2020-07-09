@@ -3,6 +3,18 @@
 
 .one-year__block, .one-year__lead-block {
 
+    p{
+            font-size: 0.9rem;
+            color: #666666;
+            font-weight: 300;
+    }
+    
+    a{
+        color:#308282;
+        text-decoration: underline;
+        font-weight:300;
+    }
+
     .one-year__lead {
         @include small-font-mixin();
         margin-top: 5px;
@@ -126,5 +138,11 @@
 
             color: $gradient-light-green;
         }
+    }
+}
+
+@media only screen and (min-width: 990px) {
+    .one-year-block__chart-label{
+        text-align: right;
     }
 }

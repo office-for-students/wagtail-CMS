@@ -29,7 +29,7 @@
         
             <div class="entry-information__qualification-charts p-3 d-flex flex-wrap row">
                 <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
-                    <h2 class="entry-information__heading py-2">{{block.value.qualification_heading}}{% if course_details.has_multiple_entry_stats %}:
+                    <h2 class="entry-information__heading py-3">{{block.value.qualification_heading}}{% if course_details.has_multiple_entry_stats %}:
                         {{entry_stats.display_subject_name}}{% endif %}
                     </h2>
                     <div class="entry-information__qualification_intro mt-2">
@@ -173,12 +173,15 @@
     <div class="entry-information__block my-2">
         <div class="entry-information__ucas-points p-3 d-flex flex-wrap row">
             <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
-                <h2 class="entry-information__heading">{{block.value.tariffs_heading}}{% if course_details.has_multiple_tariff_stats %}:
+                <h2 class="entry-information__heading py-3">{{block.value.tariffs_heading}}{% if course_details.has_multiple_tariff_stats %}:
                     {{tariff_stats.display_subject_name}}{% endif %}</h2>
 
-                <p class="entry-information__lead">
+                <!-- <p class="entry-information__lead">
                     {{block.value.tariffs_intro}}
-                </p>
+                </p> -->
+                <p>Source: <a href="#">Data for individual students collected directly from universities and colleges</a></p>
+                <p>40 students (90% of those who were asked)</p>
+                <p><a href="#">Additional information</a></p>
 
             </div>
             <div class=" col-lg-8 col-md-12 align-self-stretch my-auto pt-2">
