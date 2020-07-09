@@ -1,9 +1,21 @@
 @import '../../../CMS/static/scss/fonts';
 @import '../../../CMS/static/scss/variables';
 
-.employment-after-course__block {
+.employment-after-course__block, .employment-after-course_occupation-block {
     background-color: #f4f8f8;
     color: #000000;
+
+    .employment-after-course_occupation-statistics{
+        .employment-after-course_occupation-stat{
+            background-color: #ffffff;
+            border-width:3px;
+            border-style: solid none none none;
+            border-color: #42957f;
+            display: flex; /*added*/
+            flex-direction: column; /*added*/
+        }
+        
+    }
 
     .employment-after-course__stats-heading {
         @include s-heading-mixin();
@@ -38,10 +50,9 @@
 
         .employment-after-course__chart-block {
             .employment-after-course__chart {
-                margin-bottom: 37px;
-
+              
                 &:last-of-type {
-                    margin-bottom: 13px;
+                    margin-bottom: 10px;
                 }
 
                 .employment-after-course__chart-label {
@@ -174,16 +185,19 @@
 
             .employment-after-course__chart-block {
                 .employment-after-course__chart {
-                    margin-bottom: 37px;
-
+                    
                     &:last-of-type {
-                        margin-bottom: 13px;
+                        margin-bottom: 10px;
                     }
 
                     .employment-after-course__chart-label {
                         @include desktop-body-font-mixin();
-
-                        margin-top: 5px;
+                        color: #000000;
+                        font-family: 'Nunito Sans', sans-serif;
+                        color: #000000;
+                        font-weight:200;
+                        font-size: 1rem;
+                        // margin-top: 5px;
                     }
                 }
             }
