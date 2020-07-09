@@ -77,9 +77,10 @@
 
     .one-year__overview-lead {
         @include l-heading-mixin();
-
-        color: $gradient-light-green;
-        line-height: 59px;
+        font-family: 'Nunito Sans', sans-serif;
+        color: #000000;
+        font-weight:300;
+        font-size: 2.5rem;
     }
     .one-year__overview-sublead{
         font-family: 'Nunito Sans', sans-serif;
@@ -140,8 +141,10 @@
 
         .one-year__overview-lead {
             @include xl-heading-mixin();
-
-            color: $gradient-light-green;
+            font-family: 'Nunito Sans', sans-serif;
+            color: #000000;
+            font-weight:300;
+            font-size: 2.5rem;
         }
     }
 }

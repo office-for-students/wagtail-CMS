@@ -55,9 +55,10 @@
 
     .student-satisfaction__overview-lead {
         @include l-heading-mixin();
-
-        color: $gradient-light-green;
-        line-height: 59px;
+        font-family: 'Nunito Sans', sans-serif;
+        color: #000000;
+        font-weight:300;
+        font-size: 2.5rem;
     }
 
     p {
@@ -194,11 +195,10 @@
 
         .student-satisfaction__overview-lead {
             @include xl-heading-mixin();
-
-            margin-bottom: 16px;
-
-            color: $gradient-light-green;
-            line-height: 59px;
+            font-family: 'Nunito Sans', sans-serif;
+            color: #000000;
+            font-weight:300;
+            font-size: 2.5rem;
         }
 
         p {
