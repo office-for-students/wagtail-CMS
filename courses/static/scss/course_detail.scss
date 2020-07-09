@@ -126,12 +126,7 @@
         h3{
             display: none;
         }
-        #average_earnings_sm{
-            display:block;
-        }
-        #average_earnings_lg{
-            display:none;
-        }
+        
         h2{
             font-family: 'Nunito Sans', sans-serif;
             font-size: 1.5em;
@@ -397,7 +392,6 @@
         }
 
         .course-detail__lead {
-//             text-align: center;
             
 
             .course-detail__nav {
@@ -458,12 +452,6 @@
                     padding: 0;
                     margin:0;
                     display: block;
-                }
-                #average_earnings_sm{
-                    display:none;
-                }
-                #average_earnings_lg{
-                    display:block;
                 }
                 h2{
                     font-family: 'Nunito Sans', sans-serif;
