@@ -449,10 +449,6 @@ DICT = {
         'en': 'First degree (e.g. BA, BSc, Integrated Masters)',
         'cy': 'Gradd Cyntaf (BA, BSc, Gradd Meistr Integredig)'
     },
-    'For more information and advice, please refer to': {
-            'en': 'For more information and advice, please refer to our <a href="https://pre-prod-discover-uni-write.azurewebsites.net/how-do-i-choose-course/downloadable-resources/">downloadable resources</a> for students, teachers and advisers',
-            'cy': ' '
-        },
     'foundation_course': {
         'en': 'Foundation course',
         'cy': 'Cwrs sylfaen'
