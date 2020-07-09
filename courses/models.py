@@ -19,6 +19,7 @@ STUDENT_SATISFACTION_KEY = 'student_satisfaction'
 ENTRY_INFO_KEY = 'entry_information'
 AFTER_ONE_YEAR_KEY = 'after_one_year'
 AFTER_COURSE_KEY = 'after_the_course'
+EMPLOYMENT_AFTER_COURSE_KEY = 'employment_after_the_course'
 ACCREDITATION_KEY = 'professional_accreditation'
 
 # New accordion section ('Graduate Perceptions) added; various sections of this file are affected.
@@ -57,16 +58,22 @@ class AfterCourseDataSet(blocks.StructValue):
         return AFTER_COURSE_KEY
 
 
+class EmploymentAfterCourseDataSet(blocks.StructValue):
+    @staticmethod
+    def data_set():
+        return EMPLOYMENT_AFTER_COURSE_KEY
+
+
 class AccreditationDataSet(blocks.StructValue):
     @staticmethod
     def data_set():
         return ACCREDITATION_KEY
 
 
-class GraduatePerceptionsDataSet(blocks.StructValue):
-    @staticmethod
-    def data_set():
-        return GRADUATE_PERCEPTIONS_KEY
+# class GraduatePerceptionsDataSet(blocks.StructValue):
+#     @staticmethod
+#     def data_set():
+#         return GRADUATE_PERCEPTIONS_KEY
 
 
 class SatisfactionBlock(AccordionPanel):
@@ -147,6 +154,21 @@ class AfterCourseBlock(AccordionPanel):
         value_class = AfterCourseDataSet
 
 
+class EmploymentAfterCourseBlock(AccordionPanel):
+    six_month_employment_lead = blocks.CharBlock(required=False)
+    six_month_employment_data_source = blocks.RichTextBlock(blank=True)
+
+    section_heading = blocks.RichTextBlock(required=False)
+    intro = blocks.CharBlock(blank=True)
+
+    six_month_employment_roles_heading = blocks.CharBlock(required=False)
+    six_month_employment_roles_label_explanation_heading = blocks.CharBlock(required=False)
+    six_month_employment_roles_data_source = blocks.RichTextBlock(blank=True)
+
+    class Meta:
+        value_class = EmploymentAfterCourseDataSet
+
+
 class AccreditationBlock(AccordionPanel):
     section_heading = blocks.CharBlock(required=False)
 
@@ -154,12 +176,12 @@ class AccreditationBlock(AccordionPanel):
         value_class = AccreditationDataSet
 
 
-class GraduatePerceptionsBlock(AccordionPanel):
-    grad_percep_field_1 = blocks.CharBlock(required=False)
-    grad_percep_field_2 = blocks.CharBlock(required=False)
-
-    class Meta:
-        value_class = GraduatePerceptionsDataSet
+# class GraduatePerceptionsBlock(AccordionPanel):
+#     grad_percep_field_1 = blocks.CharBlock(required=False)
+#     grad_percep_field_2 = blocks.CharBlock(required=False)
+#
+#     class Meta:
+#         value_class = GraduatePerceptionsDataSet
 
 
 class CourseDetailPage(DiscoverUniBasePage):
@@ -168,8 +190,9 @@ class CourseDetailPage(DiscoverUniBasePage):
         ('entry_information_panel', EntryInformationBlock(required=True, icon='collapse-down')),
         ('after_one_year_panel', AfterOneYearBlock(required=True, icon='collapse-down')),
         ('after_course_panel', AfterCourseBlock(required=True, icon='collapse-down')),
+        ('employment_after_course_panel', EmploymentAfterCourseBlock(required=True, icon='collapse-down')),
         ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down')),
-        ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down'))
+        # ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down'))
     ])
     uni_site_links_header = TextField(blank=True)
 
@@ -1393,3 +1416,4 @@ class Job:
             self.job = fallback_to(job_data.get('job'), '')
             self.percentage = fallback_to(job_data.get('percentage_of_students'),0)
             self.order = job_data.get('order')
+            self.hss = job_data.get('hss')
