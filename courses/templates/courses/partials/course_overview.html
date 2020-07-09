@@ -29,7 +29,7 @@
             {% endif %}
 
             <div class="d-flex flex-wrap row mt-2">
-                <div class="col-md-8 col-sm-12"
+                <div class="col-md-8 col-sm-12">
                     <p class="course-detail__institution-locations">
                         {% if course.number_of_locations == 1 %}
                             {{ course.number_of_locations }} {% get_translation key='location' language=page.get_language %}: {{ course.locations_list }}
@@ -106,8 +106,8 @@
             </div>
             <div class="course-detail__headline_stat flex-fill align-self-stretch ml-2 mr-2 px-2 py-3 ">
                 <h3>Average Earnings</h3>
-                <h2 id="average_earnings_sm">{{ course.leo_stats.0.median|intcomma }}</h2>
-                <h2 id="average_earnings_lg">£{{ course.leo_stats.0.median|intcomma }}</h2>
+                <h2 id="average_earnings_sm" class="d-lg-none">{{ course.leo_stats.0.median|intcomma }}</h2>
+                <h2 id="average_earnings_lg" class="d-none  d-lg-block">£{{ course.leo_stats.0.median|intcomma }}</h2>
                 <p>average salary 3 years after the course</p>
                 <a>More on earnings</a>
             </div>
