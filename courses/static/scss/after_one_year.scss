@@ -49,6 +49,11 @@
                 margin-bottom: 13px;
             }
 
+            .one-year-block__chart-label{
+                font-family: 'Nunito Sans', sans-serif;
+                font-weight: 200;
+            }
+
             .one-year__chart-label {
                 @include small-font-mixin();
 
