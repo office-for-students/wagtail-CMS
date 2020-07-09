@@ -12,21 +12,24 @@
 
     
     .entry-information__overview{
+        p{
+            text-align: center;
+        }
 
         .entry-information__overview-lead {
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color:#000000;
             line-height:normal;
             font-weight: 300;
-            text-align: left;
+            text-align: center;
         }
         .entry-information__intro{
             font-family: 'Nunito Sans', sans-serif;
             font-size: 0.9rem;
             columns: #666666;;
             font-weight: 300;
-            text-align: left;
+            text-align: center;
             
             p{
                 font-size: 0.9rem;
@@ -38,7 +41,7 @@
             color:#308282;
             text-decoration: underline;
             font-weight:300;
-            text-align:left;
+            text-align:center;
         }
     
     }
@@ -117,6 +120,10 @@
 
         text-align: left;
         border: solid 3px #cee9e7;
+
+        p{
+            text-align:left;
+        }
 
         .entry-information__intro{
             font-family: 'Nunito Sans', sans-serif;

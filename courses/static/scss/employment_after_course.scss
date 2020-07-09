@@ -2,16 +2,16 @@
 @import '../../../CMS/static/scss/variables';
 
 .employment-after-course__block {
-    margin-top: 34px;
-    padding: 0px 30px 49px 30px;
+    background-color: #f4f8f8;
+    color: #000000;
 
     .employment-after-course__stats-heading {
         @include s-heading-mixin();
-
-        margin: 0;
-        margin-bottom: 21px;
-
-        color: $ux-grey-3;
+        color: #000000;
+        font-family: 'Nunito Sans', sans-serif;
+        color: #000000;
+        font-weight:300;
+        font-size: 1.7rem;
     }
 
     .employment-after-course__data-point {
@@ -54,19 +54,26 @@
     }
 
     p {
-        margin: 0px;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: #666666;
+    }
+    a{
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 300;
+        color:#308282;
+        text-decoration: underline;
     }
 }
 
 .employment-after-course__lead {
     @include mobile-body-font-mixin();
-
-    margin-top: 55px;
-    padding: 23px 30px 25px 30px;
-
-    border: 1px solid $ux-grey-3;
-    border-radius: 10px;
-    line-height: 20px;
+    
+    color: #000000;
+    text-align: center;
+    border: solid 3px #cee9e7;
 
     p {
         margin: 0px;
@@ -74,10 +81,17 @@
 
     .employment-after-course__lead-title {
         @include s-heading-mixin();
-
         color: $gradient-light-green;
         line-height: 32px;
         margin-bottom: 27px;
+    }
+
+    .employment-after-course__lead-intro{
+        font-family: 'Nunito Sans', sans-serif;
+        color: #000000;
+        letter-spacing: normal;
+        font-weight:200;
+        font-size:0.9rem;
     }
 
     h3 {
@@ -122,6 +136,12 @@
         font-weight: 300;
         color: #666666;
     }
+    .explanation-text .rich-text p{
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: #666666;
+    }
 
     .employment-after-course__data-point-overview-lead {
         @include l-heading-mixin();
@@ -136,11 +156,12 @@
     .employment-after-course__block {
         .employment-after-course__stats-heading {
             @include m-heading-mixin();
-
-            margin: 0;
-            margin-bottom: 21px;
-
-            color: $ux-grey-2;
+            color: #000000;
+            font-family: 'Nunito Sans', sans-serif;
+            color: #000000;
+            font-weight:300;
+            font-size: 1.7rem;
+            
         }
 
         .employment-after-course__data-point {
@@ -171,11 +192,9 @@
 
     .employment-after-course__lead {
         @include desktop-body-font-mixin();
-
-        margin-top: 55px;
-        padding: 50px 40px 30px;
-
-        line-height: 20px;
+        color: #000000;
+        text-align: center;
+        border: solid 3px #cee9e7;
 
         p {
             margin: 0px;
@@ -183,11 +202,18 @@
 
         .employment-after-course__lead-title {
             @include m-heading-mixin();
-
-            color: $ux-grey-2;
-            line-height: 32px;
-            margin-top: 0;
-            margin-bottom: 20px;
+            font-family: 'Nunito Sans', sans-serif;
+            color: #000000;
+            letter-spacing: normal;
+            font-weight:200;
+            font-size:1.5rem;
+        }
+        .employment-after-course__lead-intro{
+            font-family: 'Nunito Sans', sans-serif;
+            color: #000000;
+            letter-spacing: normal;
+            font-weight:200;
+            font-size:0.9rem;
         }
 
         h3 {
@@ -203,7 +229,7 @@
         
         p{
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 300;
             color: #000000;
             text-decoration: none;
