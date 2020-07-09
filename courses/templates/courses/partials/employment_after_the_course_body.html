@@ -128,45 +128,59 @@
     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
 
     <div class="employment-after-course_occupation-block mx-1 my-2 p-4">
-        <h2 class="employment-after-course__stats-heading text-center text-lg-left pt-3">
+        <h2 class="employment-after-course__stats-heading text-left pt-3">
             {{block.value.six_month_employment_roles_label_explanation_heading}}{% if course_details.has_multiple_job_type_stats %}:
             {{job_type_stats.display_subject_name}}{% endif %}
         </h2>
-        <div class="explanation-text">
-            {% create_list employment_stats.number_of_students employment_stats.response_rate as substitutions %}
-            {% insert_values_to_rich_text content=block.value.six_month_employment_roles_data_source substitutions=substitutions as subbed_text %}
-            {{ subbed_text | richtext }}
+        <div class="employment-after-course_explanation-text">
+                {% create_list employment_stats.number_of_students employment_stats.response_rate as substitutions %}
+                {% insert_values_to_rich_text content=block.value.six_month_employment_roles_data_source substitutions=substitutions as subbed_text %}
+                {{ subbed_text | richtext }}
         </div>
-
         <div class="discover-uni-container">
-            <div class="employment-after-course_occupation-statistics d-flex d-flex-row align-items-stretch">
-
-                <div class="col-md-12 col-lg-4 align-self-stretch">
+            <div class="employment-after-course_occupation-statistics d-flex row align-items-stretch">
+                <div class="col-md-12 col-lg-4 align-self-stretch my-2">
                     <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
-                        <h2>{{ course.job_type_stats.0.professional_or_managerial_jobs }}%</h2>
-                        <h4>In highly skilled work</h4>
+                        <h2 class="mb-0 text-center text-lg-left">{{ course.job_type_stats.0.professional_or_managerial_jobs }}%</h2>
+                        <h4 class="pt-1 text-center text-lg-left  mb-3">In highly skilled work</h4>
                         {% for job in course.job_lists.0.jobs %}
                             {% if job.hss == 0 %}
                                 <p>{{job.percentage}}% {% get_translation key=job.job language=page.get_language %}</p>
                             {% endif %}
                         {% endfor %}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 col-lg-3 employment-after-course_occ-type-percent">
+                                <p class="mb-0 ">30%</p>
+                            </div>
+                            <div class="col-sm-12 col-md-10 col-lg-9 employment-after-course_occ-type-title text-center text-md-left">
+                                <p>Conservation and environment professions</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-4 align-self-stretch">
+                <div class="col-md-12 col-lg-4 align-self-stretch my-2">
                     <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
-                        <h2 id="average_earnings_sm">{{ course.job_type_stats.0.non_professional_or_managerial_jobs  }}%</h2>
-                        <h4>In other work</h4>
+                        <h2 class="mb-0 text-center text-lg-left">{{ course.job_type_stats.0.non_professional_or_managerial_jobs  }}%</h2>
+                        <h4 class="pt-1 text-center text-lg-left mb-3">In other work</h4>
                         {% for job in course.job_lists.0.jobs %}
                             {% if job.hss == 1 %}
                                 <p>{{job.percentage}}% {% get_translation key=job.job language=page.get_language %}</p>
                             {% endif %}
                         {% endfor %}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 col-lg-3 employment-after-course_occ-type-percent mx-auto">
+                                <p class="mb-0 ">10%</p>
+                            </div>
+                            <div class="col-sm-12 col-md-10 col-lg-9 employment-after-course_occ-type-title text-center text-md-left">
+                                <p>Sales Occupations</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-4 align-self-stretch">
+                <div class="col-md-12 col-lg-4 align-self-stretch my-2">
                     <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
-                        <h2>{{ course.job_type_stats.0.unknown_professions }}%</h2>
-                        <h4>In unknown work</h4>
+                        <h2 class="mb-0 text-center text-lg-left">{{ course.job_type_stats.0.unknown_professions }}%</h2>
+                        <h4 class="pt-1 text-center text-lg-left mb-3">In unknown work</h4>
                     </div>
                 </div>
             </div>

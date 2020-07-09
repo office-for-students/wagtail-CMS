@@ -5,14 +5,49 @@
     background-color: #f4f8f8;
     color: #000000;
 
+    .employment-after-course_explanation-text .rich-text{
+        color: #000000;
+        font-family: 'Nunito Sans', sans-serif;
+        color: #000000;
+        font-weight:300;
+        font-size: 0.9rem;
+        line-height: normal;
+
+        a{
+            text-decoration: underline;
+            color: #266969;
+            line-height:normal;
+        }
+    }
     .employment-after-course_occupation-statistics{
         .employment-after-course_occupation-stat{
             background-color: #ffffff;
             border-width:3px;
             border-style: solid none none none;
             border-color: #42957f;
-            display: flex; /*added*/
-            flex-direction: column; /*added*/
+
+            h2{
+                color: #000000;
+                font-family: 'Nunito Sans', sans-serif;
+                color: #000000;
+                font-weight:300;
+                font-size: 1.3rem;
+                line-height: normal;
+            }
+            h4{
+                color: #000000;
+                font-family: 'Nunito Sans', sans-serif;
+                color: #000000;
+                font-weight:300;
+                font-size: 1rem;
+                line-height: normal;
+            }
+            .employment-after-course_occ-type-percent p{
+                text-align: center;
+            }
+            .employment-after-course_occ-type-title{
+                text-align: left;
+            }
         }
         
     }
@@ -59,6 +94,10 @@
                     @include small-font-mixin();
 
                     margin-top: 5px;
+                    color: #000000;
+                    font-family: 'Nunito Sans', sans-serif;
+                    font-weight:200;
+                    font-size: 1rem;
                 }
             }
         }
@@ -69,6 +108,7 @@
         font-size: 0.9rem;
         font-weight: 300;
         color: #666666;
+        line-height:normal;
     }
     a{
         font-family: 'Nunito Sans', sans-serif;
@@ -76,6 +116,7 @@
         font-weight: 300;
         color:#308282;
         text-decoration: underline;
+        line-height:normal;
     }
 }
 
@@ -95,6 +136,12 @@
         color: $gradient-light-green;
         line-height: 32px;
         margin-bottom: 27px;
+        font-family: 'Nunito Sans', sans-serif;
+        color: #000000;
+        letter-spacing: normal;
+        font-weight:200;
+        font-size:1.5rem;
+
     }
 
     .employment-after-course__lead-intro{
@@ -137,6 +184,7 @@
         text-decoration: none;
 
         a{
+            line-height:normal;
             text-decoration: underline;
             color: #266969;
         }
@@ -221,6 +269,10 @@
             letter-spacing: normal;
             font-weight:200;
             font-size:1.5rem;
+
+            .rich-text{
+                color: #000000;
+            }
         }
         .employment-after-course__lead-intro{
             font-family: 'Nunito Sans', sans-serif;
