@@ -1,4 +1,4 @@
-Django<2.3,>=2.2.2
+Django==2.2.13
 wagtail==2.6
 psycopg2-binary
 flake8==3.7.7
@@ -14,3 +14,4 @@ azure==1.0.0
 django-cors-headers
 django-axes==4.3.1
 pyClamd
+django-ipware==2.1.0

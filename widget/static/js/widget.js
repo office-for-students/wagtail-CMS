@@ -385,7 +385,7 @@ DataWidget.prototype = {
             var courseName = this.courseData.course_name[this.languageKey];
             var dataFor = CONTENT.dataForAggregated[this.language];
             var at = CONTENT.at[this.language];
-            var institution = this.courseData.institution_name;
+            var institution = this.courseData.institution_name[this.languageKey];
             var course = document.createTextNode(dataFor + courseName + at + institution);
         }
         courseNode.appendChild(course);

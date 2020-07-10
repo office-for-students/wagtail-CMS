@@ -75,10 +75,12 @@
                     <div class="check-courses-details-banner__exclamation-sign">
                         <img src="/static/images/large-exclamation-mark.svg" alt="">
                     </div>
-
                     <div class="check-courses-details-banner__message">
-                        <b>{% get_translation key='Important You need to check the details of any courses you are considering or applying for on the university or college website' language=page.get_language %}</b></br>
-                        {% get_translation key='Many courses due to start in autumn 2020 are being changed to online delivery in whole or part. Start dates and course content/structures may also be changing' language=page.get_language %}
+                        <b>{% get_translation key='Important You need to check the details of any courses you are considering or applying for on the university or college website' language=page.get_language %}</b>
+                        {% get_translation key='Many courses due to start in autumn 2020 are being changed to online delivery in whole or part. Start dates and course content/structures may also be changing' language=page.get_language %}</br>
+                        {% if page.is_english %}
+                                For more information and advice, please refer to our <a href="/how-do-i-choose-course/downloadable-resources/">downloadable resources</a> for students, teachers and advisers.
+                        {% endif %}
                     </div>
                 </div>
             </div>
