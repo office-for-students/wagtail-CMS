@@ -8,19 +8,19 @@ class NewCourseFormatMocks:
     @classmethod
     def get_successful_course_load_content(cls):
         return {
-          "_id": "5595391e-9410-11ea-9481-0242ac100705",
-          "created_at": "2020-05-12T05:20:46.445213",
-          "version": 81,
-          "partition_key": "81",
+          "_id": "4b491fd4-b634-11ea-89c3-3e22fbaadd95",
+          "created_at": "2020-06-24T16:03:50.585971",
+          "version": 104,
+          "partition_key": "104",
           "course": {
             "in_employment_15_mths": 85,
             "accreditations": [
               {
-                "type": "00102",
-                "accreditor_url": "http://www.arb.org.uk/student",
+                "type": "00601",
+                "accreditor_url": "http://www.accaglobal.com/en/qualifications/apply-now/exemptions.html",
                 "text": {
-                  "english": "Prescribed by the Architects Registration Board (ARB) at Part 1 level for the purpose of registration in the UK.",
-                  "welsh": "Achrededig gan y Fwrdd Cofrestru Penseiri (ARB) at bwrpas cymhwyster Rhan 1"
+                  "english": "Accredited by the Association of Chartered Certified Accountants (ACCA) for the purpose of exemptions from some professional examinations.",
+                  "welsh": "Achrededig gan Gymdeithas Cyfrifyddion Siartredig Ardystiedig (ACCA) at bwrpas eithriadau rhag rhai arholiadau proffesiynol."
                 },
                 "dependent_on": {
                   "code": 0,
@@ -28,11 +28,59 @@ class NewCourseFormatMocks:
                 }
               },
               {
-                "type": "12102",
-                "accreditor_url": "http://www.architecture.com",
+                "type": "00901",
+                "accreditor_url": "http://www.aacsb.edu/accreditation/accredited-members/global-listing",
                 "text": {
-                  "english": "Validated by the Royal Institute of British Architects (RIBA) at Part 1 level for the purpose of eligibility for membership of the RIBA.",
-                  "welsh": "Achrededig gan Sefydliad Brenhinol Penseiri Prydain (RIBA) at bwrpas eithriad rhan 1 ar gyfer mynediad ar Gofrestr y DU o Benseiri."
+                  "english": "Accredited by the Association to Advance Collegiate Schools of Business (AACSB).",
+                  "welsh": "Achrededig gan Gymdeithas Hyrwyddo Ysgolion Colegol Busnes (AACSB)"
+                },
+                "dependent_on": {
+                  "code": 0,
+                  "label": "Accreditation is not dependent on student choice"
+                }
+              },
+              {
+                "type": "07601",
+                "accreditor_url": "https://www.icas.com/education-and-qualifications/exam-exemptions-for-ca-qualification",
+                "text": {
+                  "english": "Accredited by the Institute of Chartered Accountants Scotland (ICAS) for the purpose of exemption from some professional examinations.",
+                  "welsh": "Achrededig gan Sefydliad Cyfrifwyr Siartredig yn yr Alban (ICAS) at bwrpas eithrio rhag rhai arholiadau proffesiynol."
+                },
+                "dependent_on": {
+                  "code": 0,
+                  "label": "Accreditation is not dependent on student choice"
+                }
+              },
+              {
+                "type": "07501",
+                "accreditor_url": "http://www.icaew.com/en/qualifications-and-programmes/aca/aca-training-in-the-uk/exams/credit-for-prior-learning",
+                "text": {
+                  "english": "Accredited by the Institute of Chartered Accountants in England and Wales (ICAEW) for the purpose of exemption from some professional examinations.",
+                  "welsh": "Achrededig gan Sefydliad Cyfrifwyr Siartredig yng Nghymru a Lloegr (ICAEW) at bwrpas eithrio rhag rhai arholiadau proffesiynol."
+                },
+                "dependent_on": {
+                  "code": 0,
+                  "label": "Accreditation is not dependent on student choice"
+                }
+              },
+              {
+                "type": "03701",
+                "accreditor_url": "https://www.cipfa.org/qualifications/exemptions",
+                "text": {
+                  "english": "Accredited by the Chartered Institute of Public Finance and Accountancy (CIPFA) for the purpose of exemption from some professional examinations.",
+                  "welsh": "Achrededig gan Sefydliad Siartredig Cyllid Cyhoeddus a Chyfrifyddiaeth (CIPFA) at bwrpas eithrio rhag rhai arholiadau proffesiynol."
+                },
+                "dependent_on": {
+                  "code": 0,
+                  "label": "Accreditation is not dependent on student choice"
+                }
+              },
+              {
+                "type": "03401",
+                "accreditor_url": "http://www.cimaglobal.com/Study-with-us/Exemptions/",
+                "text": {
+                  "english": "Accredited by the Chartered Institute of Management Accountants (CIMA) for the purpose of exemption from some professional examinations through the Accredited degree accelerated route.",
+                  "welsh": "Achrededig gan Sefydliad Siartredig Cyfrifwyr Rheolaeth (CIMA) at bwrpas eithrio rhag rhai arholiadau proffesiynol drwy lwybr carlam gradd Achrededig."
                 },
                 "dependent_on": {
                   "code": 0,
@@ -41,8 +89,8 @@ class NewCourseFormatMocks:
               }
             ],
             "country": {
-              "code": "XF",
-              "name": "England"
+              "code": "XH",
+              "name": "Scotland"
             },
             "distance_learning": {
               "code": 0,
@@ -54,57 +102,57 @@ class NewCourseFormatMocks:
             },
             "honours_award_provision": 1,
             "institution": {
-              "pub_ukprn_name": "University of Bath",
-              "pub_ukprn_welsh_name": "University of Bath",
-              "pub_ukprn": "10007850",
-              "ukprn_name": "University of Bath",
-              "ukprn_welsh_name": "University of Bath",
-              "ukprn": "10007850"
+              "pub_ukprn_name": "University of Glasgow",
+              "pub_ukprn_welsh_name": "University of Glasgow",
+              "pub_ukprn": "10007794",
+              "ukprn_name": "University of Glasgow",
+              "ukprn_welsh_name": "University of Glasgow",
+              "ukprn": "10007794"
             },
-            "kis_course_id": "UUUR1-K100~UEAR-ANB08",
+            "kis_course_id": "N400-2310",
             "length_of_course": {
               "code": 4,
               "label": "4 stages"
             },
             "links": {
               "assessment_method": {
-                "english": "http://www.bath.ac.uk/study/kis/2019-2020/assessment-methods/UEAR-ANB08"
+                "english": "https://www.gla.ac.uk/t4/progspecs/files/2018/BACC_ACCOUNTANCY_N400-2310_FINAL_PROGRAMME_SPECIFICATION_(2).pdf"
               },
               "course_cost": {
-                "english": "http://www.bath.ac.uk/study/kis/2019-2020/fees/UEAR-ANB08"
+                "english": "https://www.gla.ac.uk/undergraduate/degrees/accountancy/#tab=fees"
               },
               "course_page": {
-                "english": "http://www.bath.ac.uk/study/kis/2019-2020/programme/UEAR-ANB08"
+                "english": "http://www.gla.ac.uk/undergraduate/degrees/accountancy/"
               },
               "employment_details": {
-                "english": "http://www.bath.ac.uk/study/kis/2019-2020/employment/UEAR-ANB08"
+                "english": "http://www.gla.ac.uk/undergraduate/degrees/accountancy/"
               },
               "financial_support_details": {
-                "english": "http://www.bath.ac.uk/study/kis/funding/"
+                "english": "http://www.gla.ac.uk/services/registry/finance/"
               },
               "learning_and_teaching_methods": {
-                "english": "http://www.bath.ac.uk/study/kis/2019-2020/learning-and-teaching/UEAR-ANB08"
+                "english": "http://senate.gla.ac.uk/progspecs/BAcc_Single_Hons.pdf"
               },
               "student_union": {
-                "english": "http://www.bathstudent.com/"
+                "english": "http://www.guu.co.uk"
               }
             },
             "locations": [
               {
                 "links": {
                   "accommodation": {
-                    "english": "http://www.bath.ac.uk/study/kis/accommodation/"
+                    "english": "http://www.gla.ac.uk/undergraduate/accommodation/"
                   },
                   "student_union": {
-                    "english": "http://www.bathstudent.com/"
+                    "english": "http://www.src.gla.ac.uk/"
                   }
                 },
-                "latitude": "51.37967",
-                "longitude": "-2.330335",
+                "latitude": "55.872",
+                "longitude": "-4.288",
                 "name": {
-                  "english": "University of Bath"
+                  "english": "Glasgow Campus"
                 },
-                "ucas_course_id": "6231"
+                "ucas_course_id": "4669"
               }
             ],
             "mode": {
@@ -112,101 +160,149 @@ class NewCourseFormatMocks:
               "label": "Full-time"
             },
             "qualification": {
-              "code": "021",
-              "label": "BSc",
+              "code": "001",
+              "label": "BAcc",
               "level": "first-degree"
             },
             "sandwich_year": {
-              "code": 2,
-              "label": "Compulsory"
+              "code": 0,
+              "label": "Not available"
             },
             "subjects": [
               {
-                "code": "CAH13-01-01",
+                "code": "CAH17-01-08",
                 "level": 3,
-                "english": "Architecture",
-                "welsh": "Pensaernïaeth"
+                "english": "Accounting",
+                "welsh": "Cyfrifeg"
               }
             ],
             "title": {
-              "english": "Architecture"
+              "english": "Accountancy"
             },
-            "ucas_programme_id": "A20-D55",
+            "ucas_programme_id": "A24-E28",
             "year_abroad": {
-              "code": 0,
-              "label": "Not available"
+              "code": 1,
+              "label": "Optional"
             },
             "statistics": {
               "continuation": [
                 {
                   "aggregation_level": 14,
-                  "continuing_with_provider": 97,
-                  "dormant": 2,
+                  "continuing_with_provider": 85,
+                  "dormant": 10,
                   "gained": 0,
-                  "left": 0,
-                  "lower": 2,
-                  "number_of_students": 125
+                  "left": 5,
+                  "lower": 0,
+                  "number_of_students": 20
                 }
               ],
               "employment": [
                 {
-                  "aggregation_level": 14,
+                  "aggregation_level": 24,
                   "assumed_to_be_unemployed": 5,
-                  "in_study": 10,
-                  "in_work": 70,
-                  "in_work_and_study": 5,
-                  "in_work_or_study": 85,
-                  "not_available_for_work_or_study": 10,
-                  "number_of_students": 50,
-                  "response_rate": 80
+                  "in_study": 0,
+                  "in_work": 80,
+                  "in_work_and_study": 10,
+                  "in_work_or_study": 95,
+                  "not_available_for_work_or_study": 5,
+                  "number_of_students": 35,
+                  "response_rate": 75,
+                  "unavailable": {
+                    "code": 0,
+                    "reason_english": "We have combined data for two years of this course, as there was not enough to publish the most recent year's data only.",
+                    "reason_welsh": "Rydym wedi cyfuno data ar gyfer dwy flynedd o'r cwrs hwn gan nad oedd digon ar gael i gyhoeddi data'r flwyddyn ddiweddaraf yn unig."
+                  }
                 }
               ],
               "entry": [
                 {
-                  "a-level": 84,
-                  "access": 0,
+                  "a-level": 65,
+                  "access": 15,
                   "aggregation_level": 14,
-                  "another_higher_education_qualifications": 1,
-                  "baccalaureate": 15,
+                  "another_higher_education_qualifications": 15,
+                  "baccalaureate": 0,
                   "degree": 0,
-                  "foundation": 1,
+                  "foundation": 0,
                   "none": 0,
-                  "number_of_students": 125,
+                  "number_of_students": 10,
                   "other_qualifications": 0
                 }
               ],
               "job_type": [
                 {
-                  "aggregation_level": 14,
-                  "non_professional_or_managerial_jobs": 0,
-                  "number_of_students": 35,
-                  "professional_or_managerial_jobs": 100,
-                  "response_rate": 80,
+                  "aggregation_level": 24,
+                  "non_professional_or_managerial_jobs": 15,
+                  "number_of_students": 25,
+                  "professional_or_managerial_jobs": 85,
+                  "response_rate": 75,
+                  "unavailable": {
+                    "code": 0,
+                    "reason_english": "We have combined data for two years of this course, as there was not enough to publish the most recent year's data only.",
+                    "reason_welsh": "Rydym wedi cyfuno data ar gyfer dwy flynedd o'r cwrs hwn gan nad oedd digon ar gael i gyhoeddi data'r flwyddyn ddiweddaraf yn unig."
+                  },
                   "unknown_professions": 0
                 }
               ],
               "job_list": [
                 {
-                  "aggregation_level": 14,
+                  "aggregation_level": 24,
                   "list": [
                     {
-                      "job": "Architects, town planners and surveyors",
-                      "percentage_of_students": "95",
-                      "order": "1"
+                      "job": "Business, research and administrative professionals",
+                      "percentage_of_students": "65",
+                      "order": "1",
+                      "hss": 0
                     },
                     {
-                      "job": "Science, engineering and technology associate professionals",
-                      "percentage_of_students": "5",
-                      "order": "2"
+                      "job": "Managers, directors and senior officials",
+                      "percentage_of_students": "10",
+                      "order": "2",
+                      "hss": 0
                     },
                     {
-                      "job": "Design occupations",
+                      "job": "Information technology and telecommunications professionals",
                       "percentage_of_students": "5",
-                      "order": "3"
+                      "order": "3",
+                      "hss": 0
+                    },
+                    {
+                      "job": "Artistic, literary and media occupations",
+                      "percentage_of_students": "5",
+                      "order": "4",
+                      "hss": 1
+                    },
+                    {
+                      "job": "Business and public service associate professionals",
+                      "percentage_of_students": "5",
+                      "order": "5",
+                      "hss": 0
+                    },
+                    {
+                      "job": "Skilled trades occupations",
+                      "percentage_of_students": "5",
+                      "order": "6",
+                      "hss": 0
+                    },
+                    {
+                      "job": "Sales occupations",
+                      "percentage_of_students": "5",
+                      "order": "7",
+                      "hss": 1
+                    },
+                    {
+                      "job": "Customer service occupations",
+                      "percentage_of_students": "5",
+                      "order": "8",
+                      "hss": 1
                     }
                   ],
-                  "number_of_students": 35,
-                  "response_rate": 80
+                  "number_of_students": 25,
+                  "response_rate": 75,
+                  "unavailable": {
+                    "code": 0,
+                    "reason_english": "We have combined data for two years of this course, as there was not enough to publish the most recent year's data only.",
+                    "reason_welsh": "Rydym wedi cyfuno data ar gyfer dwy flynedd o'r cwrs hwn gan nad oedd digon ar gael i gyhoeddi data'r flwyddyn ddiweddaraf yn unig."
+                  }
                 }
               ],
               "leo": [
@@ -226,135 +322,140 @@ class NewCourseFormatMocks:
               "nss": [
                 {
                   "aggregation_level": 14,
-                  "number_of_students": 70,
+                  "number_of_students": 20,
                   "question_1": {
                     "description": "Staff are good at explaining things",
-                    "agree_or_strongly_agree": 96
+                    "agree_or_strongly_agree": 90
                   },
                   "question_2": {
                     "description": "Staff have made the subject interesting",
-                    "agree_or_strongly_agree": 89
+                    "agree_or_strongly_agree": 80
                   },
                   "question_3": {
                     "description": "The course is intellectually stimulating",
-                    "agree_or_strongly_agree": 92
+                    "agree_or_strongly_agree": 70
                   },
                   "question_4": {
                     "description": "My course has challenged me to achieve my best work",
-                    "agree_or_strongly_agree": 92
+                    "agree_or_strongly_agree": 75
                   },
                   "question_5": {
                     "description": "My course has provided me with opportunities to explore ideas or concepts in depth",
-                    "agree_or_strongly_agree": 79
+                    "agree_or_strongly_agree": 80
                   },
                   "question_6": {
                     "description": "My course has provided me with opportunities to bring information and ideas together from different topics",
-                    "agree_or_strongly_agree": 94
+                    "agree_or_strongly_agree": 80
                   },
                   "question_7": {
                     "description": "My course has provided me with opportunities to apply what I have learnt",
-                    "agree_or_strongly_agree": 94
+                    "agree_or_strongly_agree": 45
                   },
                   "question_8": {
                     "description": "The criteria used in marking have been clear in advance",
-                    "agree_or_strongly_agree": 83
+                    "agree_or_strongly_agree": 55
                   },
                   "question_9": {
                     "description": "Marking and assessment has been fair",
-                    "agree_or_strongly_agree": 76
+                    "agree_or_strongly_agree": 75
                   },
                   "question_10": {
                     "description": "Feedback on my work has been timely",
-                    "agree_or_strongly_agree": 85
+                    "agree_or_strongly_agree": 70
                   },
                   "question_11": {
                     "description": "I have received helpful comments on my work",
-                    "agree_or_strongly_agree": 68
+                    "agree_or_strongly_agree": 60
                   },
                   "question_12": {
                     "description": "I have been able to contact staff when I needed to",
-                    "agree_or_strongly_agree": 94
+                    "agree_or_strongly_agree": 95
                   },
                   "question_13": {
                     "description": "I have received sufficient advice and guidance in relation to my course",
-                    "agree_or_strongly_agree": 88
+                    "agree_or_strongly_agree": 70
                   },
                   "question_14": {
                     "description": "Good advice was available when I needed to make study choices on my course",
-                    "agree_or_strongly_agree": 84
+                    "agree_or_strongly_agree": 50
                   },
                   "question_15": {
                     "description": "The course is well organised and running smoothly",
-                    "agree_or_strongly_agree": 92
+                    "agree_or_strongly_agree": 85
                   },
                   "question_16": {
                     "description": "The timetable works efficiently for me",
-                    "agree_or_strongly_agree": 88
+                    "agree_or_strongly_agree": 80
                   },
                   "question_17": {
                     "description": "Any changes in the course or teaching have been communicated effectively",
-                    "agree_or_strongly_agree": 93
+                    "agree_or_strongly_agree": 80
                   },
                   "question_18": {
                     "description": "The IT resources and facilities provided have supported my learning well",
-                    "agree_or_strongly_agree": 69
+                    "agree_or_strongly_agree": 75
                   },
                   "question_19": {
                     "description": "The library resources (e.g. books, online services and learning spaces) have supported my learning well",
-                    "agree_or_strongly_agree": 93
+                    "agree_or_strongly_agree": 95
                   },
                   "question_20": {
                     "description": "I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to",
-                    "agree_or_strongly_agree": 79
+                    "agree_or_strongly_agree": 95
                   },
                   "question_21": {
                     "description": "I feel part of a community of staff and students",
-                    "agree_or_strongly_agree": 88
+                    "agree_or_strongly_agree": 70
                   },
                   "question_22": {
                     "description": "I have had the right opportunities to work with other students as part of my course",
-                    "agree_or_strongly_agree": 97
+                    "agree_or_strongly_agree": 90
                   },
                   "question_23": {
                     "description": "I have had the right opportunities to provide feedback on my course",
-                    "agree_or_strongly_agree": 88
+                    "agree_or_strongly_agree": 90
                   },
                   "question_24": {
                     "description": "Staff value students' views and opinions about the course",
-                    "agree_or_strongly_agree": 78
+                    "agree_or_strongly_agree": 70
                   },
                   "question_25": {
                     "description": "It is clear how students' feedback on the course has been acted on",
-                    "agree_or_strongly_agree": 61
+                    "agree_or_strongly_agree": 50
                   },
                   "question_26": {
                     "description": "The students' union (association or guild) effectively represents students' academic interests",
-                    "agree_or_strongly_agree": 69
+                    "agree_or_strongly_agree": 58
                   },
                   "question_27": {
                     "description": "Overall, I am satisfied with the quality of the course",
-                    "agree_or_strongly_agree": 93
+                    "agree_or_strongly_agree": 90
                   },
-                  "response_rate": 82
+                  "response_rate": 95
                 }
               ],
               "salary": [
                 {
-                  "aggregation_level": 14,
-                  "higher_quartile": 24000,
-                  "lower_quartile": 21000,
-                  "median": 22000,
+                  "aggregation_level": 24,
+                  "higher_quartile": 21000,
+                  "lower_quartile": 16000,
+                  "median": 20000,
                   "number_of_graduates": 20,
-                  "response_rate": 60,
-                  "sector_higher_quartile": 24000,
-                  "sector_lower_quartile": 19000,
-                  "sector_median": 21000
+                  "response_rate": 85,
+                  "sector_higher_quartile": 22000,
+                  "sector_lower_quartile": 18000,
+                  "sector_median": 20000,
+                  "unavailable": {
+                    "code": 0,
+                    "reason_english": "We have combined data for two years of this course, as there was not enough to publish the most recent year's data only.",
+                    "reason_welsh": "Rydym wedi cyfuno data ar gyfer dwy flynedd o'r cwrs hwn gan nad oedd digon ar gael i gyhoeddi data'r flwyddyn ddiweddaraf yn unig."
+                  }
                 }
               ],
               "tariff": [
                 {
-                  "aggregation_level": 14,
-                  "number_of_students": 110,
+                  "aggregation_level": 24,
+                  "number_of_students": 25,
                   "tariffs": [
                     {
                       "code": "T001",
@@ -364,7 +465,7 @@ class NewCourseFormatMocks:
                     {
                       "code": "T048",
                       "description": "between 48 and 63 tariff points",
-                      "entrants": 1
+                      "entrants": 0
                     },
                     {
                       "code": "T064",
@@ -394,44 +495,49 @@ class NewCourseFormatMocks:
                     {
                       "code": "T144",
                       "description": "between 144 and 159 tariff points",
-                      "entrants": 8
+                      "entrants": 5
                     },
                     {
                       "code": "T160",
                       "description": "between 160 and 175 tariff points",
-                      "entrants": 17
+                      "entrants": 10
                     },
                     {
                       "code": "T176",
                       "description": "between 176 and 191 tariff points",
-                      "entrants": 12
+                      "entrants": 10
                     },
                     {
                       "code": "T192",
                       "description": "between 192 and 207 tariff points",
-                      "entrants": 17
+                      "entrants": 5
                     },
                     {
                       "code": "T208",
                       "description": "between 208 and 223 tariff points",
-                      "entrants": 14
+                      "entrants": 10
                     },
                     {
                       "code": "T224",
                       "description": "between 224 and 239 tariff points",
-                      "entrants": 7
+                      "entrants": 30
                     },
                     {
                       "code": "T240",
                       "description": "240 or more tariff points",
-                      "entrants": 24
+                      "entrants": 30
                     }
-                  ]
+                  ],
+                  "unavailable": {
+                    "code": 0,
+                    "reason_english": "We have combined data for two years of this course, as there was not enough to publish the most recent year's data only.",
+                    "reason_welsh": "Rydym wedi cyfuno data ar gyfer dwy flynedd o'r cwrs hwn gan nad oedd digon ar gael i gyhoeddi data'r flwyddyn ddiweddaraf yn unig."
+                  }
                 }
               ]
             }
           },
-          "id": "c7f63728-33e0-5db6-04a8-d120689ebd1b"
+          "id": "7b62860a-654f-c4d4-f64d-7d629925ba55"
         }
 
     @classmethod
