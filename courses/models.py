@@ -70,10 +70,10 @@ class AccreditationDataSet(blocks.StructValue):
         return ACCREDITATION_KEY
 
 
-# class GraduatePerceptionsDataSet(blocks.StructValue):
-#     @staticmethod
-#     def data_set():
-#         return GRADUATE_PERCEPTIONS_KEY
+class GraduatePerceptionsDataSet(blocks.StructValue):
+    @staticmethod
+    def data_set():
+        return GRADUATE_PERCEPTIONS_KEY
 
 
 class SatisfactionBlock(AccordionPanel):
@@ -176,12 +176,12 @@ class AccreditationBlock(AccordionPanel):
         value_class = AccreditationDataSet
 
 
-# class GraduatePerceptionsBlock(AccordionPanel):
-#     grad_percep_field_1 = blocks.CharBlock(required=False)
-#     grad_percep_field_2 = blocks.CharBlock(required=False)
-#
-#     class Meta:
-#         value_class = GraduatePerceptionsDataSet
+class GraduatePerceptionsBlock(AccordionPanel):
+    grad_percep_field_1 = blocks.CharBlock(required=False)
+    grad_percep_field_2 = blocks.CharBlock(required=False)
+
+    class Meta:
+        value_class = GraduatePerceptionsDataSet
 
 
 class CourseDetailPage(DiscoverUniBasePage):
@@ -192,7 +192,7 @@ class CourseDetailPage(DiscoverUniBasePage):
         ('after_course_panel', AfterCourseBlock(required=True, icon='collapse-down')),
         ('employment_after_course_panel', EmploymentAfterCourseBlock(required=True, icon='collapse-down')),
         ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down')),
-        # ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down'))
+        ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down'))
     ])
     uni_site_links_header = TextField(blank=True)
 
@@ -329,21 +329,13 @@ class Course:
             self.course_links = self.set_course_links(course_details.get('links'), self.display_language)
             self.overall_satisfaction = self.sync_satisfaction_stats()
 
-            # Some dummy data added to new skeleton accordion section below.
-            # Also added some mock data fields (self.apw_top...)
-            self.graduate_perceptionss = []
-            graduate_perceptionss = course_details.get('accreditations') # TODO: change this line when implementing for real.
-            if graduate_perceptionss:
-                for graduate_perceptions in graduate_perceptionss:
-                    # TODO: change this line when implementing for real.
-                    self.graduate_perceptionss.append(CourseAccreditation(graduate_perceptions, self.display_language)) 
-
-            # These field names must be present in the JSON data source (see mocks.py if using mock data).
-            # self.apw_top_student_satisfaction = course_details.get('apw_top_student_satisfaction')
-            # self.apw_top_average_salary = course_details.get('apw_top_average_salary')
-            # self.apw_top_employment = course_details.get('apw_top_employment')
-
             self.in_employment_15_mths = course_details.get('in_employment_15_mths')
+
+            self.go_work_skills = course_details.get('go_voice_work')['go_work_skills']
+            self.go_work_mean = course_details.get('go_voice_work')['go_work_mean']
+            self.go_work_on_track = course_details.get('go_voice_work')['go_work_on_track']
+            self.go_work_pop = course_details.get('go_voice_work')['go_work_pop']
+            self.go_work_resp_rate = course_details.get('go_voice_work')['go_work_resp_rate']
 
     def set_course_links(self, links, language):
         link_objs = {'course_details': [], 'costs_support': []}

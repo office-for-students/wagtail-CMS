@@ -110,6 +110,13 @@ class NewCourseFormatMocks:
               "ukprn": "10007794"
             },
             "kis_course_id": "N400-2310",
+            "go_voice_work": {
+              "go_work_skills": "32",
+              "go_work_mean": "87",
+              "go_work_on_track": "50",
+              "go_work_pop": "60",
+              "go_work_resp_rate": "85"
+            },
             "length_of_course": {
               "code": 4,
               "label": "4 stages"
