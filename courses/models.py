@@ -177,8 +177,20 @@ class AccreditationBlock(AccordionPanel):
 
 
 class GraduatePerceptionsBlock(AccordionPanel):
-    grad_percep_field_1 = blocks.CharBlock(required=False)
-    grad_percep_field_2 = blocks.CharBlock(required=False)
+    lead_text = blocks.CharBlock(required=False)
+    intro_body = blocks.RichTextBlock(blank=True)
+
+    perception_of_work_heading = blocks.CharBlock(required=False)
+    data_source = blocks.RichTextBlock(blank=True)
+
+    usefulness_explanation_heading = blocks.CharBlock(required=False)
+    usefulness_explanation = blocks.RichTextBlock(blank=True)
+
+    meaningfulness_explanation_heading = blocks.CharBlock(required=False)
+    meaningfulness_explanation = blocks.RichTextBlock(blank=True)
+
+    future_explanation_heading = blocks.CharBlock(required=False)
+    future_explanation = blocks.RichTextBlock(blank=True)
 
     class Meta:
         value_class = GraduatePerceptionsDataSet
