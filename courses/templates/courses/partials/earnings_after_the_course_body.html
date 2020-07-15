@@ -79,14 +79,9 @@
     <div>
         <h2 class="employment-after-course__stats-heading text-left pt-3">
             {% create_list course.english_title as substitutions %}
-            {% insert_values_to_rich_text content=block.value.average_earnings_inst_heading substitutions=substitutions as subbed_text %}
+            {% insert_values_to_rich_text content=block.value.average_earnings_sector_heading substitutions=substitutions as subbed_text %}
             {{ subbed_text | richtext }}
         </h2>
-        <div class="employment-after-course_explanation-text">
-            {% create_list course.institution.pub_ukprn_name as substitutions %}
-            {% insert_values_to_rich_text content=block.value.institution_graduates_heading substitutions=substitutions as subbed_text %}
-            {{ subbed_text | richtext }}
-        </div>
         <div class="discover-uni-container">
             <div class="employment-after-course_occupation-statistics d-flex row align-items-stretch">
             {% for salary in course_details.salaries_sector %}
