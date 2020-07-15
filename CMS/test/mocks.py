@@ -221,7 +221,12 @@ class NewCourseFormatMocks:
                 "resp_rate": 92,
                 "go_inst_lq": 23700,
                 "go_inst_med": 24800,
-                "go_inst_uq": 26200
+                "go_inst_uq": 26200,
+                "go_inst_prov_pc_uk": 100,
+                "go_inst_prov_pc_e": 80,
+                "go_inst_prov_pc_s": 15,
+                "go_inst_prov_pc_w": 5,
+                "go_inst_prov_pc_ni": 0
             },
             "leo3_inst": {
                 "unavail_reason": 0,
@@ -233,6 +238,13 @@ class NewCourseFormatMocks:
                 "leo3_inst_med": 25800,
                 "leo3_inst_uq": 27200
             },
+
+		        <GOPROV_PC_UK>100</GOPROV_PC_UK> 
+        		<GOPROV_PC_E>80</GOPROV_PC_E>
+        		<GOPROV_PC_W>15</GOPROV_PC_W>
+        		<GOPROV_PC_NI>0</GOPROV_PC_NI> <!-- Note: Zero where no data exists -->
+        		<GOPROV_PC_S>5</GOPROV_PC_S>
+
             "leo5_inst": {
                 "unavail_reason": 0,
                 "agg": 11,
