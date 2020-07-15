@@ -18,7 +18,7 @@ from institutions.models import InstitutionOverview
 STUDENT_SATISFACTION_KEY = 'student_satisfaction'
 ENTRY_INFO_KEY = 'entry_information'
 AFTER_ONE_YEAR_KEY = 'after_one_year'
-AFTER_COURSE_KEY = 'after_the_course'
+EARNINGS_AFTER_COURSE_KEY = 'earnings_after_the_course'
 EMPLOYMENT_AFTER_COURSE_KEY = 'employment_after_the_course'
 ACCREDITATION_KEY = 'professional_accreditation'
 
@@ -52,10 +52,10 @@ class AfterOneYearDataSet(blocks.StructValue):
         return AFTER_ONE_YEAR_KEY
 
 
-class AfterCourseDataSet(blocks.StructValue):
+class EarningsAfterCourseDataSet(blocks.StructValue):
     @staticmethod
     def data_set():
-        return AFTER_COURSE_KEY
+        return EARNINGS_AFTER_COURSE_KEY
 
 
 class EmploymentAfterCourseDataSet(blocks.StructValue):
@@ -121,37 +121,28 @@ class AfterOneYearBlock(AccordionPanel):
         value_class = AfterOneYearDataSet
 
 
-class AfterCourseBlock(AccordionPanel):
+class EarningsAfterCourseBlock(AccordionPanel):
     section_heading = blocks.CharBlock(required=False)
     intro = blocks.RichTextBlock(blank=True)
 
-    six_month_earnings_heading = blocks.CharBlock(required=False)
-    six_month_earnings_explanation = blocks.RichTextBlock(blank=True)
-    six_month_earnings_salary_range_heading = blocks.CharBlock(required=False)
-    six_month_earnings_data_source = blocks.RichTextBlock(blank=True)
+    average_earnings_inst_heading = blocks.RichTextBlock(blank=True)
+    institution_graduates_heading = blocks.RichTextBlock(blank=True)
 
-    three_years_earnings_heading = blocks.CharBlock(required=False)
-    three_years_earnings_explanation = blocks.RichTextBlock(blank=True)
-    three_years_earnings_salary_range_heading = blocks.CharBlock(required=False)
-    three_years_earnings_data_source = blocks.RichTextBlock(blank=True)
+    after_fifteen_months_earnings_heading = blocks.CharBlock(required=False)
+    after_fifteen_months_range_explanation = blocks.RichTextBlock(blank=True)
+    after_fifteen_months_respondents_explanation = blocks.RichTextBlock(blank=True)
+    after_fifteen_months_no_of_graduates_explanation = blocks.RichTextBlock(blank=True)
+    after_fifteen_months_data_source = blocks.RichTextBlock(blank=True)
 
-    six_month_employment_heading = blocks.CharBlock(required=False)
-    six_month_employment_intro = blocks.CharBlock(required=False)
-    six_month_employment_lead = blocks.CharBlock(required=False)
-    six_month_employment_data_source = blocks.RichTextBlock(blank=True)
+    after_three_years_earnings_heading = blocks.CharBlock(required=False)
+    after_five_years_earnings_heading = blocks.CharBlock(required=False)
+    after_three_five_years_data_source = blocks.RichTextBlock(blank=True)
 
-    six_month_employment_roles_heading = blocks.CharBlock(required=False)
-    six_month_employment_roles_intro = blocks.CharBlock(required=False)
-    six_month_employment_roles_label_explanation_heading = blocks.CharBlock(required=False)
-    six_month_employment_roles_label_explanation_body = blocks.RichTextBlock(blank=True)
-    six_month_employment_roles_data_source = blocks.RichTextBlock(blank=True)
-
-    common_jobs_heading = blocks.CharBlock(required=False)
-    common_jobs_intro = blocks.CharBlock(required=False)
-    common_jobs_data_source = blocks.RichTextBlock(blank=True)
+    average_earnings_sector_heading = blocks.RichTextBlock(blank=True)
+    respondents_live_in_explanation = blocks.RichTextBlock(blank=True)
 
     class Meta:
-        value_class = AfterCourseDataSet
+        value_class = EarningsAfterCourseDataSet
 
 
 class EmploymentAfterCourseBlock(AccordionPanel):
@@ -201,9 +192,9 @@ class CourseDetailPage(DiscoverUniBasePage):
         ('satisfaction_panel', SatisfactionBlock(required=True, icon='collapse-down')),
         ('entry_information_panel', EntryInformationBlock(required=True, icon='collapse-down')),
         ('after_one_year_panel', AfterOneYearBlock(required=True, icon='collapse-down')),
-        ('after_course_panel', AfterCourseBlock(required=True, icon='collapse-down')),
-        ('employment_after_course_panel', EmploymentAfterCourseBlock(required=True, icon='collapse-down')),
         ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down')),
+        ('earningsafter_course_panel', EarningsAfterCourseBlock(required=True, icon='collapse-down')),
+        ('employment_after_course_panel', EmploymentAfterCourseBlock(required=True, icon='collapse-down')),
         ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down'))
     ])
     uni_site_links_header = TextField(blank=True)
@@ -224,7 +215,7 @@ class CourseComparisonPage(DiscoverUniBasePage):
         ('satisfaction_panel', SatisfactionBlock(required=True, icon='collapse-down')),
         ('entry_information_panel', EntryInformationBlock(required=True, icon='collapse-down')),
         ('after_one_year_panel', AfterOneYearBlock(required=True, icon='collapse-down')),
-        ('after_course_panel', AfterCourseBlock(required=True, icon='collapse-down')),
+        ('after_course_panel', EarningsAfterCourseBlock(required=True, icon='collapse-down')),
         ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down'))
     ])
 
@@ -348,6 +339,22 @@ class Course:
             self.go_work_on_track = course_details.get('go_voice_work')['go_work_on_track']
             self.go_work_pop = course_details.get('go_voice_work')['go_work_pop']
             self.go_work_resp_rate = course_details.get('go_voice_work')['go_work_resp_rate']
+
+            self.salaries_inst = []
+            if course_details.get('go_salary_inst'):
+                self.salaries_inst.append(Salary(course_details.get('go_salary_inst'), self.display_language))
+            if course_details.get('leo3_inst'):
+                self.salaries_inst.append(Salary(course_details.get('leo3_inst'), self.display_language))
+            if course_details.get('leo5_inst'):
+                self.salaries_inst.append(Salary(course_details.get('leo5_inst'), self.display_language))
+
+            self.salaries_sector = []
+            if course_details.get('go_salary_sector'):
+                self.salaries_sector.append(Salary(course_details.get('go_salary_sector'), self.display_language))
+            if course_details.get('leo3_salary_sector'):
+                self.salaries_sector.append(Salary(course_details.get('leo3_salary_sector'), self.display_language))
+            if course_details.get('leo5_salary_sector'):
+                self.salaries_sector.append(Salary(course_details.get('leo5_salary_sector'), self.display_language))
 
     def set_course_links(self, links, language):
         link_objs = {'course_details': [], 'costs_support': []}
@@ -1421,3 +1428,15 @@ class Job:
             self.percentage = fallback_to(job_data.get('percentage_of_students'),0)
             self.order = job_data.get('order')
             self.hss = job_data.get('hss')
+
+
+class Salary:
+
+    def __init__(self, salary_data, display_language):
+        self.display_language = display_language
+        if salary_data:
+            self.pop = salary_data['pop']
+            self.resp_rate = salary_data['resp_rate']
+            self.lq = salary_data['lq_uk']
+            self.med = salary_data['med_uk']
+            self.uq = salary_data['uq_uk']
