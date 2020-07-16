@@ -184,23 +184,22 @@
                 <p><a href="#">Additional information</a></p>
 
             </div>
-            <div class=" col-lg-8 col-md-12 align-self-stretch my-auto pt-2">
+            <div class=" col-lg-12 col-md-12 align-self-stretch my-auto pt-2">
                 {% if tariff_stats.show_stats %}
-                    <div class="entry-information__tariff-charts">
+                <div class="row">
+                    <div class="entry-information__tariff-charts" style="width:50px;">
                         {% for tariff in tariff_stats.tariffs %}
-                            <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}"
+                
+                            <div class="entry-information__chart discover-uni-chart column" data-value="{{tariff.entrants}}"
                                 data-label="entry-tariff-{{forloop.counter}}"
                                 data-title="{% get_translation key='tariff_graph_title' language=page.get_language %} {{tariff.label}}"
-                                data-desc="{% get_translation key='tariff_graph_desc' language=page.get_language %} {{tariff.label}}">
-                                <div class="row d-flex">
-                                    <div class="col-lg-8 order-md-1 order-lg-2 text-lg-right">
-                                        {% include 'courses/partials/bar_chart.html' %}
-                                    </div>
-                                    <div class="col-lg-4 order-md-2 order-lg-1">
-                                        <label class="entry-information__chart-label" aria-hidden="true"><span class="float-lg-right">{{tariff.label}}</span></label>
-                                    </div>
-                                </div>
+                                data-desc="{% get_translation key='tariff_graph_desc' language=page.get_language %} {{tariff.label}}"
+                                style="width:50px;">
+                        
+                                {% include 'courses/partials/column_chart.html' %}
+                                  
                             </div>
+                            <!-- <label class="entry-information__chart-label" aria-hidden="true"><span class="float-lg-right">{{tariff.label}}</span></label> -->
                         {% endfor %}
 
                         <div class="explanation-text">
@@ -209,6 +208,7 @@
                             {{ subbed_text | richtext }}
                         </div>
                     </div>
+                </div>
                 {% endif %}
              </div>
         </div>
