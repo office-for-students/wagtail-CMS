@@ -155,3 +155,16 @@ def is_multiple_of(number, base):
 @register.simple_tag
 def get_index_of_item(item, view_list):
     return view_list.index(item)
+
+# apw added.
+@register.simple_tag
+def get_region_list():
+    f = open("./CMS/static/jsonfiles/regions.json", "r")
+    regions = f.read()
+    return json.loads(regions)
+# apw added.
+
+
+@register.simple_tag
+def concat(first_str, second_str):
+    return str(first_str) + str(second_str)

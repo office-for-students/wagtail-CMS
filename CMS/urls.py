@@ -15,6 +15,10 @@ from search import views as search_views
 from coursefinder import views as coursefinder_views
 from courses import views as course_views
 
+# apw added.
+from courses.views import refresh_dummy_field
+
+
 urlpatterns = [
     url(r'^search/$', search_views.search, name='search'),
     url(r'^results/$', coursefinder_views.results, name='results'),
@@ -34,6 +38,9 @@ urlpatterns = [
     url(r'(?P<language>[\w\-]+?)/', include(welsh_urls)),
 
     url(r'', include(wagtail_urls)),
+
+    # apw added.
+    url(r'^refresh_dummy_field$', refresh_dummy_field, name='refresh_dummy_field'),
 ]
 
 # TODO: remove the True clause below when going live.

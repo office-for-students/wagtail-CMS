@@ -82,6 +82,24 @@
             {% insert_values_to_rich_text content=block.value.average_earnings_sector_heading substitutions=substitutions as subbed_text %}
             {{ subbed_text | richtext }}
         </h2>
+
+        <!-- apw added -->
+        <form method='post' id='test'>
+            <p id="dummy_field">HTML Element for Ajax Refresh: [not yet refreshed]</p>
+            <br/><br/>
+
+            <p>
+                <label for="regions">Choose a region:</label>
+                <select name="regions" id="regions">
+                {% get_region_list as region_list %}
+                {% for region in region_list %}
+                    <option value="{{region.id}}">{{region.name}}</option>
+                {% endfor %}
+                </select>
+            </p>
+            <br/><br/>
+         <!-- apw added -->
+
         <div class="discover-uni-container">
             <div class="employment-after-course_occupation-statistics d-flex row align-items-stretch">
             {% for salary in course_details.salaries_sector %}
@@ -97,7 +115,8 @@
                     {% endif %}
                     </h3>
                     <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
-                        <h2 class="mb-0 text-center text-lg-left">£{{ salary.med }}</h2>
+                        <h2 class="mb-0 text-center text-lg-left" id="{% concat 'sector_salary_' salary_index %}">£{{ salary.med }}</h2>
+<!--                        <p id="dummy_field2">HTML Element for Ajax Refresh: [not yet refreshed]</p>-->
                         <h4 class="pt-1 text-center text-lg-left  mb-3">
                             {% create_list salary.lq salary.uq as substitutions %}
                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
@@ -131,5 +150,46 @@
             {% endfor %}
             </div>
         </div>
+
+        <!-- apw added -->
+        <script>
+            window.onload = onLoadAction;
+
+            function onLoadAction(){
+                if (typeof jQuery != 'undefined') {
+                    // jQuery is loaded => print the version
+                    var ver = jQuery.fn.jquery;
+                    $("#jqversion").text("JQuery Version: " + ver);
+                }
+
+                $("#regions").change(function () {
+                    var selected_region = $(this).val();
+
+                    $.ajax({
+                        url: '/refresh_dummy_field',
+                        type: "POST",
+                        headers: { "X-CSRFToken": "{{ csrf_token }}" }, // Without this, Django will throw a 403 Forbidden response.
+                        data: {
+                            'region': selected_region
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data['updated_dummy_field_val']) {
+                                $("#dummy_field").text(data['updated_dummy_field_val']);
+                                $("#sector_salary_0").text("£100000");
+                                $("#sector_salary_1").text("£200000");
+                                $("#sector_salary_2").text("£300000");
+                            }
+                        },
+                        error: function (request, status, error) {
+                            alert(request.responseText);
+                        }
+                    });
+                });
+            }
+        </script>
+        <!-- apw added -->
+
+        </form>
     </div>
 </div>

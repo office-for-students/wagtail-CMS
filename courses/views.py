@@ -6,6 +6,25 @@ from core.utils import get_page_for_language
 from courses.models import CourseDetailPage, Course, CourseComparisonPage, CourseManagePage
 from site_search.models import SearchLandingPage
 
+# apw added.
+from django.http import JsonResponse
+# from django.urls import reverse
+# from azure.cosmos import CosmosClient, PartitionKey, exceptions
+# import os
+# import json
+
+
+def refresh_dummy_field(request):
+    if 'region' in request.POST and request.is_ajax():
+        # TODO: call query_cosmos_db_directly()
+        x = request.POST['region']
+        resp = { 'updated_dummy_field_val': 'HTML Element for Ajax Refresh: views.py says: ' + x }
+        # course, error = Course.find(institution_id, course_id, kis_mode, language)
+        return JsonResponse(resp)
+    else:
+        return JsonResponse({'retval': 'apw error'}),
+# apw added.
+
 
 def courses_detail(request, institution_id, course_id, kis_mode, language=enums.languages.ENGLISH):
     course, error = Course.find(institution_id, course_id, kis_mode, language)

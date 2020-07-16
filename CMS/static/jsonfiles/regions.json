@@ -1,0 +1,22 @@
+[
+   {
+        "id": "_uk",
+        "name": "UK"
+    },
+    {
+        "id": "_e",
+        "name": "England"
+    },
+    {
+        "id": "_s",
+        "name": "Scotland"
+    },
+    {
+        "id": "_w",
+        "name": "Wales"
+    },
+    {
+        "id": "_ni",
+        "name": "Northern Ireland"
+    }
+]
