@@ -85,7 +85,7 @@
 
         <!-- apw added -->
         <form method='post' id='test'>
-            <p id="dummy_field">HTML Element for Ajax Refresh: [not yet refreshed]</p>
+<!--            <p id="dummy_field">HTML Element for Ajax Refresh: [not yet refreshed]</p>-->
             <br/><br/>
 
             <p>
@@ -115,24 +115,24 @@
                     {% endif %}
                     </h3>
                     <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
-                        <h2 class="mb-0 text-center text-lg-left" id="{% concat 'sector_salary_' salary_index %}">£{{ salary.med }}</h2>
+                        <h2 class="mb-0 text-center text-lg-left" id="{% concat 'sector_salary_med_' salary_index %}">£{{ salary.med_uk }}</h2>
 <!--                        <p id="dummy_field2">HTML Element for Ajax Refresh: [not yet refreshed]</p>-->
-                        <h4 class="pt-1 text-center text-lg-left  mb-3">
-                            {% create_list salary.lq salary.uq as substitutions %}
+                        <h4 class="pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_lq_' salary_index %}">
+                            {% create_list salary.lq_uk salary.uq_uk as substitutions %}
                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </h4>
-                        <h4 class="pt-1 text-center text-lg-left  mb-3">
-                            {% create_list salary.pop salary.resp_rate as substitutions %}
+                        <h4 class="pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_pop_' salary_index %}">
+                            {% create_list salary.pop_uk salary.resp_uk as substitutions %}
                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_respondents_explanation substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </h4>
-                        <h4 class="pt-1 text-center text-lg-left  mb-3">
-                            {% create_list 30 course.english_title course.institution.pub_ukprn_name as substitutions %}
+                        <h4 class="pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index %}">
+                            {% create_list course_details.salaries_inst.0.prov_pc_uk course.english_title course.institution.pub_ukprn_name as substitutions %}
                             {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </h4>
-                        <h4 class="pt-1 text-center text-lg-left  mb-3">
+                        <h4 class="pt-1 text-center text-lg-left mb-3">
                              {% if salary_index == 0 %}
                                 {% create_list 2018 as substitutions %}
                                 {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
@@ -164,22 +164,40 @@
 
                 $("#regions").change(function () {
                     var selected_region = $(this).val();
+                    var course_details = $("#language_select").prop('href');
+                    var course_params = course_details.split('/').slice(5);
 
                     $.ajax({
-                        url: '/refresh_dummy_field',
+                        url: '/regional_earnings',
                         type: "POST",
                         headers: { "X-CSRFToken": "{{ csrf_token }}" }, // Without this, Django will throw a 403 Forbidden response.
                         data: {
-                            'region': selected_region
+                            'region': selected_region,
+                            'institution_id': course_params[0],
+                            'course_id': course_params[1],
+                            'kis_mode': course_params[2]
                         },
                         dataType: 'json',
                         success: function (data) {
-                            if (data['updated_dummy_field_val']) {
-                                $("#dummy_field").text(data['updated_dummy_field_val']);
-                                $("#sector_salary_0").text("£100000");
-                                $("#sector_salary_1").text("£200000");
-                                $("#sector_salary_2").text("£300000");
-                            }
+                                $("#sector_salary_med_0").text("£" + data['salary_sector_15_med']);
+                                $("#sector_salary_med_1").text("£" + data['salary_sector_3_med']);
+                                $("#sector_salary_med_2").text("£" + data['salary_sector_5_med']);
+                                $("#sector_salary_lq_0 div p").text(data['typical_range_text'] + ": £" + data['salary_sector_15_lq'] + " - £" + data['salary_sector_15_uq']);
+                                $("#sector_salary_lq_1 div p").text(data['typical_range_text'] + ": £" + data['salary_sector_3_lq'] + " - £" + data['salary_sector_3_uq']);
+                                $("#sector_salary_lq_2 div p").text(data['typical_range_text'] + ": £" + data['salary_sector_5_lq'] + " - £" + data['salary_sector_5_uq']);
+                                $("#sector_salary_pop_0 div").replaceWith("<div class='rich-text'><p></p></div>");
+                                $("#sector_salary_pop_1 div").replaceWith("<div class='rich-text'><p></p></div>");
+                                $("#sector_salary_pop_2 div").replaceWith("<div class='rich-text'><p></p></div>");
+                                $("#sector_salary_pop_0 div p").text(data['data_from_text'] + " " + data['salary_sector_15_pop'] + " " + data['respondents_text']);
+                                $("#sector_salary_pop_0 div").append("<p>(" + data['salary_sector_15_resp'] + "% " + data['of_those_asked_text'] + ")</p>");
+                                $("#sector_salary_pop_1 div p").text(data['data_from_text'] + " " + data['salary_sector_3_pop'] + " " + data['students_text']);
+                                $("#sector_salary_pop_2 div p").text(data['data_from_text'] + " " + data['salary_sector_5_pop'] + " " + data['students_text']);
+
+                                var graduates_text = sector_salary_graduates_0.innerText
+                                graduates_text = graduates_text.substring(graduates_text.indexOf('%'), graduates_text.length);
+                                $("#sector_salary_graduates_0 div p").text(data['go_inst_prov_pc'] + graduates_text);
+                                $("#sector_salary_graduates_1 div p").text(data['go_inst_prov_pc'] + graduates_text);
+                                $("#sector_salary_graduates_2 div p").text(data['go_inst_prov_pc'] + graduates_text);
                         },
                         error: function (request, status, error) {
                             alert(request.responseText);

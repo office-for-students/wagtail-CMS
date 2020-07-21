@@ -28,6 +28,7 @@ ACCREDITATION_KEY = 'professional_accreditation'
 #   go to Pages > Home > Course Details > 'ACCORDIONS' section > Add (+ icon) > add a panel of the new type.
 #   Then Save Draft, then Publish.
 GRADUATE_PERCEPTIONS_KEY = 'graduate_perceptions'
+LINKS_TO_THE_INSTITUTION_WEBSITE_KEY = 'links_to_the_institution_website'
 
 
 class AccordionPanel(blocks.StructBlock):
@@ -74,6 +75,12 @@ class GraduatePerceptionsDataSet(blocks.StructValue):
     @staticmethod
     def data_set():
         return GRADUATE_PERCEPTIONS_KEY
+
+
+class LinksToTheInstitutionWebsiteDataSet(blocks.StructValue):
+    @staticmethod
+    def data_set():
+        return LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
 
 
 class SatisfactionBlock(AccordionPanel):
@@ -187,6 +194,13 @@ class GraduatePerceptionsBlock(AccordionPanel):
         value_class = GraduatePerceptionsDataSet
 
 
+class LinksToTheInstitutionWebsiteBlock(AccordionPanel):
+    course_information_on_website_header = blocks.RichTextBlock(blank=True)
+
+    class Meta:
+        value_class = LinksToTheInstitutionWebsiteDataSet
+
+
 class CourseDetailPage(DiscoverUniBasePage):
     accordions = StreamField([
         ('satisfaction_panel', SatisfactionBlock(required=True, icon='collapse-down')),
@@ -195,7 +209,8 @@ class CourseDetailPage(DiscoverUniBasePage):
         ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down')),
         ('earningsafter_course_panel', EarningsAfterCourseBlock(required=True, icon='collapse-down')),
         ('employment_after_course_panel', EmploymentAfterCourseBlock(required=True, icon='collapse-down')),
-        ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down'))
+        ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down')),
+        ('links_to_the_institution_website_panel', LinksToTheInstitutionWebsiteBlock(required=True, icon='collapse-down'))
     ])
     uni_site_links_header = TextField(blank=True)
 
@@ -350,11 +365,11 @@ class Course:
 
             self.salaries_sector = []
             if course_details.get('go_salary_sector'):
-                self.salaries_sector.append(Salary(course_details.get('go_salary_sector'), self.display_language))
+                self.salaries_sector.append(SectorSalary(course_details.get('go_salary_sector'), self.display_language))
             if course_details.get('leo3_salary_sector'):
-                self.salaries_sector.append(Salary(course_details.get('leo3_salary_sector'), self.display_language))
+                self.salaries_sector.append(SectorSalary(course_details.get('leo3_salary_sector'), self.display_language))
             if course_details.get('leo5_salary_sector'):
-                self.salaries_sector.append(Salary(course_details.get('leo5_salary_sector'), self.display_language))
+                self.salaries_sector.append(SectorSalary(course_details.get('leo5_salary_sector'), self.display_language))
 
     def set_course_links(self, links, language):
         link_objs = {'course_details': [], 'costs_support': []}
@@ -1437,6 +1452,132 @@ class Salary:
         if salary_data:
             self.pop = salary_data['pop']
             self.resp_rate = salary_data['resp_rate']
-            self.lq = salary_data['lq_uk']
-            self.med = salary_data['med_uk']
-            self.uq = salary_data['uq_uk']
+            self.lq = salary_data['lq']
+            self.med = salary_data['med']
+            self.uq = salary_data['uq']
+            if 'go_inst_prov_pc_uk' in salary_data:
+                self.prov_pc_uk = salary_data['go_inst_prov_pc_uk']
+                self.prov_pc_e = salary_data['go_inst_prov_pc_e']
+                self.prov_pc_s = salary_data['go_inst_prov_pc_s']
+                self.prov_pc_w = salary_data['go_inst_prov_pc_w']
+                self.prov_pc_ni = salary_data['go_inst_prov_pc_ni']
+                self.prov_pc_nw = salary_data['go_inst_prov_pc_nw']
+                self.prov_pc_ne = salary_data['go_inst_prov_pc_ne']
+                self.prov_pc_em = salary_data['go_inst_prov_pc_em']
+                self.prov_pc_wm = salary_data['go_inst_prov_pc_wm']
+                self.prov_pc_ee = salary_data['go_inst_prov_pc_ee']
+                self.prov_pc_se = salary_data['go_inst_prov_pc_se']
+                self.prov_pc_sw = salary_data['go_inst_prov_pc_sw']
+                self.prov_pc_yh = salary_data['go_inst_prov_pc_yh']
+                self.prov_pc_lo = salary_data['go_inst_prov_pc_lo']
+                self.prov_pc_ed = salary_data['go_inst_prov_pc_ed']
+                self.prov_pc_gl = salary_data['go_inst_prov_pc_gl']
+                self.prov_pc_cf = salary_data['go_inst_prov_pc_cf']
+
+
+class SectorSalary:
+
+    def __init__(self, salary_data, display_language):
+        self.display_language = display_language
+        if salary_data:
+            self.lq_uk = salary_data['lq_uk']
+            self.med_uk = salary_data['med_uk']
+            self.uq_uk = salary_data['uq_uk']
+            self.pop_uk = salary_data['pop_uk']
+            self.resp_uk = salary_data['resp_uk']
+
+            self.lq_e = salary_data['lq_e']
+            self.med_e = salary_data['med_e']
+            self.uq_e = salary_data['uq_e']
+            self.pop_e = salary_data['pop_e']
+            self.resp_e = salary_data['resp_e']
+
+            self.lq_w = salary_data['lq_w']
+            self.med_w = salary_data['med_w']
+            self.uq_w = salary_data['uq_w']
+            self.pop_w = salary_data['pop_w']
+            self.resp_w = salary_data['resp_w']
+
+            self.lq_s = salary_data['lq_s']
+            self.med_s = salary_data['med_s']
+            self.uq_s = salary_data['uq_s']
+            self.pop_s = salary_data['pop_s']
+            self.resp_s = salary_data['resp_s']
+
+            self.lq_ni = salary_data['lq_ni']
+            self.med_ni = salary_data['med_ni']
+            self.uq_ni = salary_data['uq_ni']
+            self.pop_ni = salary_data['pop_ni']
+            self.resp_ni = salary_data['resp_ni']
+
+            self.lq_nw = salary_data['lq_nw']
+            self.med_nw = salary_data['med_nw']
+            self.uq_nw = salary_data['uq_nw']
+            self.pop_nw = salary_data['pop_nw']
+            self.resp_nw = salary_data['resp_nw']
+
+            self.lq_ne = salary_data['lq_ne']
+            self.med_ne = salary_data['med_ne']
+            self.uq_ne = salary_data['uq_ne']
+            self.pop_ne = salary_data['pop_ne']
+            self.resp_ne = salary_data['resp_ne']
+
+            self.lq_em = salary_data['lq_em']
+            self.med_em = salary_data['med_em']
+            self.uq_em = salary_data['uq_em']
+            self.pop_em = salary_data['pop_em']
+            self.resp_em = salary_data['resp_em']
+
+            self.lq_wm = salary_data['lq_wm']
+            self.med_wm = salary_data['med_wm']
+            self.uq_wm = salary_data['uq_wm']
+            self.pop_wm = salary_data['pop_wm']
+            self.resp_wm = salary_data['resp_wm']
+
+            self.lq_ee = salary_data['lq_ee']
+            self.med_ee = salary_data['med_ee']
+            self.uq_ee = salary_data['uq_ee']
+            self.pop_ee = salary_data['pop_ee']
+            self.resp_ee = salary_data['resp_ee']
+
+            self.lq_se = salary_data['lq_se']
+            self.med_se = salary_data['med_se']
+            self.uq_se = salary_data['uq_se']
+            self.pop_se = salary_data['pop_se']
+            self.resp_se = salary_data['resp_se']
+
+            self.lq_sw = salary_data['lq_sw']
+            self.med_sw = salary_data['med_sw']
+            self.uq_sw = salary_data['uq_sw']
+            self.pop_sw = salary_data['pop_sw']
+            self.resp_sw = salary_data['resp_sw']
+
+            self.lq_yh = salary_data['lq_yh']
+            self.med_yh = salary_data['med_yh']
+            self.uq_yh = salary_data['uq_yh']
+            self.pop_yh = salary_data['pop_yh']
+            self.resp_yh = salary_data['resp_yh']
+
+            self.lq_lo = salary_data['lq_lo']
+            self.med_lo = salary_data['med_lo']
+            self.uq_lo = salary_data['uq_lo']
+            self.pop_lo = salary_data['pop_lo']
+            self.resp_lo = salary_data['resp_lo']
+
+            self.lq_ed = salary_data['lq_ed']
+            self.med_ed = salary_data['med_ed']
+            self.uq_ed = salary_data['uq_ed']
+            self.pop_ed = salary_data['pop_ed']
+            self.resp_ed = salary_data['resp_ed']
+
+            self.lq_gl = salary_data['lq_gl']
+            self.med_gl = salary_data['med_gl']
+            self.uq_gl = salary_data['uq_gl']
+            self.pop_gl = salary_data['pop_gl']
+            self.resp_gl = salary_data['resp_gl']
+
+            self.lq_cf = salary_data['lq_cf']
+            self.med_cf = salary_data['med_cf']
+            self.uq_cf = salary_data['uq_cf']
+            self.pop_cf = salary_data['pop_cf']
+            self.resp_cf = salary_data['resp_cf']

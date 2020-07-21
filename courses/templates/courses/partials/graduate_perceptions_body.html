@@ -115,5 +115,7 @@
         {% endif %}
     {% endif %}
     </div>
+    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
+
 {% endfor %}
 
