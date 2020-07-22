@@ -119,9 +119,9 @@ class NewCourseFormatMocks:
                 "level": 2,
                 "pop": 68,
                 "resp_rate": 90,
-                "go_sec_lq_uk": 22500,
-                "go_sec_med_uk": 24600,
-                "go_sec_uq_uk": 27800,
+                "lq_uk": 22500,
+                "med_uk": 24600,
+                "uq_uk": 27800,
                 "go_sec_pop_uk": 51,
                 "go_sec_resp_uk": 86,
                 "go_sec_lq_e": 22500,
@@ -153,9 +153,9 @@ class NewCourseFormatMocks:
                 "level": 3,
                 "pop": 87,
                 "resp_rate": 91,
-                "leo3_sec_lq_uk": 33500,
-                "leo3_sec_med_uk": 34600,
-                "leo3_sec_uq_uk": 37800,
+                "lq_uk": 33500,
+                "med_uk": 34600,
+                "uq_uk": 37800,
                 "leo3_sec_pop_uk": 51,
                 "leo3_sec_resp_uk": 86,
                 "leo3_sec_lq_e": 33500,
@@ -187,9 +187,9 @@ class NewCourseFormatMocks:
                 "level": 4,
                 "pop": 81,
                 "resp_rate": 79,
-                "leo5_sec_lq_uk": 44500,
-                "leo5_sec_med_uk": 44600,
-                "leo5_sec_uq_uk": 47800,
+                "lq_uk": 44500,
+                "med_uk": 44600,
+                "uq_uk": 47800,
                 "leo5_sec_pop_uk": 51,
                 "leo5_sec_resp_uk": 86,
                 "leo5_sec_lq_e": 44500,
@@ -219,9 +219,9 @@ class NewCourseFormatMocks:
                 "sbj": "CAH01-01-01",
                 "pop": 77,
                 "resp_rate": 92,
-                "go_inst_lq": 23700,
-                "go_inst_med": 24800,
-                "go_inst_uq": 26200,
+                "lq_uk": 23700,
+                "med_uk": 24800,
+                "uq_uk": 26200,
                 "go_inst_prov_pc_uk": 100,
                 "go_inst_prov_pc_e": 80,
                 "go_inst_prov_pc_s": 15,
@@ -234,26 +234,19 @@ class NewCourseFormatMocks:
                 "sbj": "CAH01-01-01",
                 "pop": 81,
                 "resp_rate": 94,
-                "leo3_inst_lq": 24700,
-                "leo3_inst_med": 25800,
-                "leo3_inst_uq": 27200
+                "lq_uk": 24700,
+                "med_uk": 25800,
+                "uq_uk": 27200
             },
-
-		        <GOPROV_PC_UK>100</GOPROV_PC_UK> 
-        		<GOPROV_PC_E>80</GOPROV_PC_E>
-        		<GOPROV_PC_W>15</GOPROV_PC_W>
-        		<GOPROV_PC_NI>0</GOPROV_PC_NI> <!-- Note: Zero where no data exists -->
-        		<GOPROV_PC_S>5</GOPROV_PC_S>
-
             "leo5_inst": {
                 "unavail_reason": 0,
                 "agg": 11,
                 "sbj": "CAH01-01-01",
                 "pop": 86,
                 "resp_rate": 95,
-                "leo5_inst_lq": 25700,
-                "leo5_inst_med": 26800,
-                "leo5_inst_uq": 28200
+                "lq_uk": 25700,
+                "med_uk": 26800,
+                "uq_uk": 28200
             },
             "go_voice_work": {
               "go_work_skills": "32",

@@ -117,29 +117,3 @@
     </div>
 {% endfor %}
 
-<div class="graduate_perceptions__block">
-    <h3 class="graduate_perceptions__heading">
-        {{ block.value.grad_percep_field_1 }}
-    </h3>
-
-    <div class="graduate_perceptions__block">
-        <h3 class="graduate_perceptions__heading">
-            {{ course.go_work_mean }}% {{ block.value.grad_percep_field_1 }}
-        </h3>
-        <h4>Source: Graduate Outcomes Survey</h4>
-        <h4>Sample size: {{ course.go_work_pop }} students ({{ course.go_work_resp_rate }}% of those who were asked).</h4>
-        <br/>
-        <h2>Usefulness of skills learnt</h2>
-        <h3>I am utilising what I learnt during my studies in my current work: {{ course.go_work_skills }}%</h3>
-        <br/>
-        <h2>Meaningfulness</h2>
-        <h3>My current work is meaningful: {{ course.go_work_mean }}%</h3>
-        <br/>
-        <h2>Future plans</h2>
-        <h3>My current work fits with my future plans: {{ course.go_work_on_track }}%</h3>
-        <br/>
-        <h2>The following is an example of how to render a list defined in the model.</h2>
-        <h3>*** This section can be removed from the Graduate Perceptions tab prior to go-live ***</h3>
-        <br/>
-    </div>
-</div>

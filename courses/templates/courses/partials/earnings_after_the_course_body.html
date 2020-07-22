@@ -1,0 +1,135 @@
+{% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
+
+
+{% if course_details.show_salary_lead %}
+        <div class="after-course__lead my-3 p-3 mx-1 pt-4 d-flex flex-wrap row">
+            <div class="col-lg-6 col-md-12 align-self-stretch my-auto">
+                <p class="after-course__overview-lead text-center text-lg-left">
+                    {{block.value.section_heading}}
+                </p>
+            </div>
+            <div class=" col-lg-6 col-md-12 align-self-stretch my-auto pt-2">
+                <p>
+                    <div class="after-course__intro text-center text-lg-left">
+                        {{block.value.intro | richtext}}
+                    </div>
+                </p>
+            </div>
+        </div>
+{% endif %}
+
+<div class="employment-after-course_occupation-block mx-1 my-2 p-4">
+    <div>
+        <h2 class="employment-after-course__stats-heading text-left pt-3">
+            {% create_list course.english_title as substitutions %}
+            {% insert_values_to_rich_text content=block.value.average_earnings_inst_heading substitutions=substitutions as subbed_text %}
+            {{ subbed_text | richtext }}
+        </h2>
+        <div class="employment-after-course_explanation-text">
+            {% create_list course.institution.pub_ukprn_name as substitutions %}
+            {% insert_values_to_rich_text content=block.value.institution_graduates_heading substitutions=substitutions as subbed_text %}
+            {{ subbed_text | richtext }}
+        </div>
+        <div class="discover-uni-container">
+            <div class="employment-after-course_occupation-statistics d-flex row align-items-stretch">
+            {% for salary in course_details.salaries_inst %}
+                {% get_index_of_item salary course_details.salaries_inst as salary_index %}
+                <div class="col-md-12 col-lg-4 align-self-stretch my-2">
+                    <h3 class="mb-0 text-center text-lg-left">
+                    {% if salary_index == 0 %}
+                        {{ block.value.after_fifteen_months_earnings_heading }}
+                    {% elif salary_index == 1 %}
+                        {{ block.value.after_three_years_earnings_heading }}
+                    {% elif salary_index == 2 %}
+                        {{ block.value.after_five_years_earnings_heading }}
+                    {% endif %}
+                    </h3>
+                    <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
+                        <h2 class="mb-0 text-center text-lg-left">£{{ salary.med }}</h2>
+                        <h4 class="pt-1 text-center text-lg-left  mb-3">
+                            {% create_list salary.lq salary.uq as substitutions %}
+                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </h4>
+                        <h4 class="pt-1 text-center text-lg-left  mb-3">
+                            {% create_list salary.pop salary.resp_rate as substitutions %}
+                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_respondents_explanation substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </h4>
+                        <h4 class="pt-1 text-center text-lg-left  mb-3">
+                             {% if salary_index == 0 %}
+                                {% create_list 2018 as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                                {{ block.value.after_fifteen_months_data_source }}
+                            {% else %}
+                                {% create_list 2014 as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                                {{ block.value.after_three_five_years_data_source }}
+                            {% endif %}
+                        </h4>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2 class="employment-after-course__stats-heading text-left pt-3">
+            {% create_list course.english_title as substitutions %}
+            {% insert_values_to_rich_text content=block.value.average_earnings_sector_heading substitutions=substitutions as subbed_text %}
+            {{ subbed_text | richtext }}
+        </h2>
+        <div class="discover-uni-container">
+            <div class="employment-after-course_occupation-statistics d-flex row align-items-stretch">
+            {% for salary in course_details.salaries_sector %}
+                {% get_index_of_item salary course_details.salaries_sector as salary_index %}
+                <div class="col-md-12 col-lg-4 align-self-stretch my-2">
+                    <h3 class="mb-0 text-center text-lg-left">
+                    {% if salary_index == 0 %}
+                        {{ block.value.after_fifteen_months_earnings_heading }}
+                    {% elif salary_index == 1 %}
+                        {{ block.value.after_three_years_earnings_heading }}
+                    {% elif salary_index == 2 %}
+                        {{ block.value.after_five_years_earnings_heading }}
+                    {% endif %}
+                    </h3>
+                    <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
+                        <h2 class="mb-0 text-center text-lg-left">£{{ salary.med }}</h2>
+                        <h4 class="pt-1 text-center text-lg-left  mb-3">
+                            {% create_list salary.lq salary.uq as substitutions %}
+                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </h4>
+                        <h4 class="pt-1 text-center text-lg-left  mb-3">
+                            {% create_list salary.pop salary.resp_rate as substitutions %}
+                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_respondents_explanation substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </h4>
+                        <h4 class="pt-1 text-center text-lg-left  mb-3">
+                            {% create_list 30 course.english_title course.institution.pub_ukprn_name as substitutions %}
+                            {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </h4>
+                        <h4 class="pt-1 text-center text-lg-left  mb-3">
+                             {% if salary_index == 0 %}
+                                {% create_list 2018 as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                                {{ block.value.after_fifteen_months_data_source }}
+                            {% else %}
+                                {% create_list 2014 as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                                {{ block.value.after_three_five_years_data_source }}
+                            {% endif %}
+                        </h4>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
