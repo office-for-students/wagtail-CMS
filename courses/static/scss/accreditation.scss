@@ -3,12 +3,12 @@
 
     .accreditation__block {
         .accreditation__info{
-            background-color: #f4f8f8;
+            background-color: $ice-blue;
         }
         .accreditation__overview{
             
             text-align: center;
-            border: solid 3px #cee9e7;
+            border: solid 3px $duck-egg-blue;
 
             .accreditation__overview-lead{
                 font-family: 'Nunito Sans', sans-serif;
@@ -21,14 +21,14 @@
                 font-family: 'Nunito Sans', sans-serif;
                 font-size: 0.9rem;
                 font-weight:300;
-                color: #666666;
+                color: $brownish-grey;
                 text-decoration: none;
             }
             a{
                 font-size:0.9rem;
                 font-weight:300;
                 text-decoration: underline;
-                color: #266969;
+                color: $dark-green-blue;
             }
         }
 

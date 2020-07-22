@@ -27,10 +27,15 @@
         hr{
             border: none; 
             height: 3px;
-            background-color: #cee9e7;
+            background-color: $duck-egg-blue;
             
         }
+        .course-detail__overview-lead h4 {
+            font-size:0.8rem;
+            font-weight:600;
+        }
 
+        
         .course-detail__nav {
             visibility: hidden;
             display: flex;
@@ -122,7 +127,7 @@
     .course-detail__headline_statistics {
 
         .course-detail__headline_stat {
-            background-color: #CEE9E7;
+            background-color: $duck-egg-blue;
         }
         h3{
             font-family: 'Nunito Sans', sans-serif;
@@ -442,7 +447,7 @@
 
             .course-detail__headline_statistics {
                 .course-detail__headline_stat {
-                    background-color: #CEE9E7;
+                    background-color: $duck-egg-blue;
                 }
                 h3{
                     font-family: 'Nunito Sans', sans-serif;

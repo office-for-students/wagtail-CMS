@@ -5,7 +5,7 @@
 
     p{
             font-size: 0.9rem;
-            color: #666666;
+            color: $brownish-grey;
             font-weight: 300;
     }
     
@@ -21,7 +21,7 @@
     }
 
     .one-year__qualification-charts {
-        background-color:#f4f8f8;
+        background-color:$ice-blue;
 
         .one-year__heading {
             @include s-heading-mixin();
@@ -37,7 +37,7 @@
             font-size:0.9rem;
             a{
                 text-decoration: underline;
-                color:#266969;
+                color:$dark-green-blue;
                 font-weight:300;
             }
         }
@@ -67,7 +67,7 @@
 .one-year__overview {
 
     text-align: center;
-    border: solid 3px #cee9e7;
+    border: solid 3px $duck-egg-blue;
     
     @include desktop-body-font-mixin();
 
@@ -93,12 +93,12 @@
         font-family: 'Nunito Sans', sans-serif;
         font-size: 0.9rem;
         font-weight: 300;
-        color: #666666;
+        color: $brownish-grey;
     }
     a{
      
         text-decoration: underline;
-        color: #266969;
+        color: $dark-green-blue;
     }
 }
 

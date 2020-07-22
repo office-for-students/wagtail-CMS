@@ -186,29 +186,27 @@
             </div>
             <div class=" col-lg-12 col-md-12 align-self-stretch my-auto pt-2">
                 {% if tariff_stats.show_stats %}
-                <div class="row">
-                    <div class="entry-information__tariff-charts" style="width:50px;">
+                
+                    <div class="entry-information__tariff-charts">
                         {% for tariff in tariff_stats.tariffs %}
                 
-                            <div class="entry-information__chart discover-uni-chart column" data-value="{{tariff.entrants}}"
+                            <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}"
                                 data-label="entry-tariff-{{forloop.counter}}"
                                 data-title="{% get_translation key='tariff_graph_title' language=page.get_language %} {{tariff.label}}"
                                 data-desc="{% get_translation key='tariff_graph_desc' language=page.get_language %} {{tariff.label}}"
-                                style="width:50px;">
+                                >
                         
-                                {% include 'courses/partials/column_chart.html' %}
-                                  
+                                {% include 'courses/partials/bar_chart.html' %}
                             </div>
-                            <!-- <label class="entry-information__chart-label" aria-hidden="true"><span class="float-lg-right">{{tariff.label}}</span></label> -->
+                            <label class="entry-information__chart-label" aria-hidden="true"><span class="float-lg-right">{{tariff.label}}</span></label>
                         {% endfor %}
-
                         <div class="explanation-text">
                             {% create_list tariff_stats.number_of_students as substitutions %}
                             {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
-                        </div>
+                        </div> 
                     </div>
-                </div>
+
                 {% endif %}
              </div>
         </div>
