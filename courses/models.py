@@ -1455,6 +1455,12 @@ class Salary:
             self.lq = salary_data['lq']
             self.med = salary_data['med']
             self.uq = salary_data['uq']
+
+            self.unavail_reason = salary_data['unavail_reason']
+            self.aggregate = salary_data['agg']
+            self.unavail_reason_inst_level_english = salary_data['unavail_text_inst_level_eng']
+            self.unavail_reason_inst_level_welsh = salary_data['unavail_text_inst_level_wls']
+
             if 'go_inst_prov_pc_uk' in salary_data:
                 self.prov_pc_uk = salary_data['go_inst_prov_pc_uk']
                 self.prov_pc_e = salary_data['go_inst_prov_pc_e']
@@ -1474,12 +1480,16 @@ class Salary:
                 self.prov_pc_gl = salary_data['go_inst_prov_pc_gl']
                 self.prov_pc_cf = salary_data['go_inst_prov_pc_cf']
 
+                self.unavail_reason_inst_level_2_english = salary_data['unavail_text_inst_level_2_eng']
+                self.unavail_reason_inst_level_2_welsh = salary_data['unavail_text_inst_level_2_wls']
+
 
 class SectorSalary:
 
     def __init__(self, salary_data, display_language):
         self.display_language = display_language
         if salary_data:
+            self.unavail_reason = salary_data['unavail_reason']
             self.lq_uk = salary_data['lq_uk']
             self.med_uk = salary_data['med_uk']
             self.uq_uk = salary_data['uq_uk']
@@ -1581,3 +1591,16 @@ class SectorSalary:
             self.uq_cf = salary_data['uq_cf']
             self.pop_cf = salary_data['pop_cf']
             self.resp_cf = salary_data['resp_cf']
+
+            self.unavail_reason = salary_data['unavail_reason']
+            self.aggregate = salary_data['agg']
+            self.unavail_text_sector_level_english = salary_data['unavail_text_sector_level_eng']
+            self.unavail_text_sector_level_welsh = salary_data['unavail_text_sector_level_wls']
+
+            if 'unavail_text_non_nation_selected_eng' in salary_data:
+                self.unavail_text_non_nation_selected_english = salary_data['unavail_text_non_nation_selected_eng']
+                self.unavail_text_non_nation_selected_welsh = salary_data['unavail_text_non_nation_selected_wls']
+
+            if 'unavail_text_ni_selected_eng' in salary_data:
+                self.unavail_text_ni_selected_english = salary_data['unavail_text_ni_selected_eng']
+                self.unavail_text_ni_selected_welsh = salary_data['unavail_text_ni_selected_wls']

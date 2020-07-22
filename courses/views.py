@@ -22,26 +22,30 @@ def regional_earnings(request):
         with open("./CMS/static/jsonfiles/regions.json", "r") as f:
             translations = f.read()
 
+        def format_thousands(earnings):
+            return f'{int(earnings):,}'
+
         resp = {
-            'salary_sector_15_med': getattr(course.salaries_sector[0], "med"+region),
-            'salary_sector_3_med': getattr(course.salaries_sector[1], "med"+region),
-            'salary_sector_5_med': getattr(course.salaries_sector[2], "med"+region),
-
             'typical_range_text': DICT.get('Typical range').get('en'),
-            'salary_sector_15_lq': getattr(course.salaries_sector[0], "lq" + region),
-            'salary_sector_15_uq': getattr(course.salaries_sector[0], "uq" + region),
-            'salary_sector_3_lq': getattr(course.salaries_sector[1], "lq" + region),
-            'salary_sector_3_uq': getattr(course.salaries_sector[1], "uq" + region),
-            'salary_sector_5_lq': getattr(course.salaries_sector[2], "lq" + region),
-            'salary_sector_5_uq': getattr(course.salaries_sector[2], "uq" + region),
-
             'data_from_text': DICT.get('Data from').get('en'),
             'respondents_text': DICT.get('respondents').get('en'),
             'students_text': DICT.get('students').get('en'),
             'of_those_asked_text': DICT.get('of those asked').get('en'),
+
+            'salary_sector_15_med': format_thousands(getattr(course.salaries_sector[0], "med"+region)),
+            'salary_sector_15_lq': format_thousands(getattr(course.salaries_sector[0], "lq" + region)),
+            'salary_sector_15_uq': format_thousands(getattr(course.salaries_sector[0], "uq" + region)),
             'salary_sector_15_pop': getattr(course.salaries_sector[0], "pop" + region),
             'salary_sector_15_resp': getattr(course.salaries_sector[0], "resp" + region),
+
+            'salary_sector_3_med': format_thousands(getattr(course.salaries_sector[1], "med"+region)),
+            'salary_sector_3_lq': format_thousands(getattr(course.salaries_sector[1], "lq" + region)),
+            'salary_sector_3_uq': format_thousands(getattr(course.salaries_sector[1], "uq" + region)),
             'salary_sector_3_pop': getattr(course.salaries_sector[1], "pop" + region),
+
+            'salary_sector_5_med': format_thousands(getattr(course.salaries_sector[2], "med"+region)),
+            'salary_sector_5_lq': format_thousands(getattr(course.salaries_sector[2], "lq" + region)),
+            'salary_sector_5_uq': format_thousands(getattr(course.salaries_sector[2], "uq" + region)),
             'salary_sector_5_pop': getattr(course.salaries_sector[2], "pop" + region),
 
             'go_inst_prov_pc': getattr(course.salaries_inst[0], 'prov_pc' + region)

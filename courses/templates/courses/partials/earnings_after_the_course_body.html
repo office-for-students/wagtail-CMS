@@ -45,9 +45,9 @@
                     {% endif %}
                     </h3>
                     <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
-                        <h2 class="mb-0 text-center text-lg-left">£{{ salary.med }}</h2>
+                        <h2 class="mb-0 text-center text-lg-left">£{{ salary.med|intcomma }}</h2>
                         <h4 class="pt-1 text-center text-lg-left  mb-3">
-                            {% create_list salary.lq salary.uq as substitutions %}
+                            {% create_list salary.lq|intcomma salary.uq|intcomma as substitutions %}
                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </h4>
@@ -115,10 +115,10 @@
                     {% endif %}
                     </h3>
                     <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
-                        <h2 class="mb-0 text-center text-lg-left" id="{% concat 'sector_salary_med_' salary_index %}">£{{ salary.med_uk }}</h2>
+                        <h2 class="mb-0 text-center text-lg-left" id="{% concat 'sector_salary_med_' salary_index %}">£{{ salary.med_uk|intcomma }}</h2>
 <!--                        <p id="dummy_field2">HTML Element for Ajax Refresh: [not yet refreshed]</p>-->
                         <h4 class="pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_lq_' salary_index %}">
-                            {% create_list salary.lq_uk salary.uq_uk as substitutions %}
+                            {% create_list salary.lq_uk|intcomma salary.uq_uk|intcomma as substitutions %}
                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </h4>
@@ -180,17 +180,20 @@
                         dataType: 'json',
                         success: function (data) {
                                 $("#sector_salary_med_0").text("£" + data['salary_sector_15_med']);
-                                $("#sector_salary_med_1").text("£" + data['salary_sector_3_med']);
-                                $("#sector_salary_med_2").text("£" + data['salary_sector_5_med']);
                                 $("#sector_salary_lq_0 div p").text(data['typical_range_text'] + ": £" + data['salary_sector_15_lq'] + " - £" + data['salary_sector_15_uq']);
-                                $("#sector_salary_lq_1 div p").text(data['typical_range_text'] + ": £" + data['salary_sector_3_lq'] + " - £" + data['salary_sector_3_uq']);
-                                $("#sector_salary_lq_2 div p").text(data['typical_range_text'] + ": £" + data['salary_sector_5_lq'] + " - £" + data['salary_sector_5_uq']);
                                 $("#sector_salary_pop_0 div").replaceWith("<div class='rich-text'><p></p></div>");
-                                $("#sector_salary_pop_1 div").replaceWith("<div class='rich-text'><p></p></div>");
-                                $("#sector_salary_pop_2 div").replaceWith("<div class='rich-text'><p></p></div>");
                                 $("#sector_salary_pop_0 div p").text(data['data_from_text'] + " " + data['salary_sector_15_pop'] + " " + data['respondents_text']);
                                 $("#sector_salary_pop_0 div").append("<p>(" + data['salary_sector_15_resp'] + "% " + data['of_those_asked_text'] + ")</p>");
+
+                                $("#sector_salary_med_1").text("£" + data['salary_sector_3_med']);
+                                $("#sector_salary_lq_1 div p").text(data['typical_range_text'] + ": £" + data['salary_sector_3_lq'] + " - £" + data['salary_sector_3_uq']);
+                                $("#sector_salary_pop_1 div").replaceWith("<div class='rich-text'><p></p></div>");
                                 $("#sector_salary_pop_1 div p").text(data['data_from_text'] + " " + data['salary_sector_3_pop'] + " " + data['students_text']);
+
+
+                                $("#sector_salary_med_2").text("£" + data['salary_sector_5_med']);
+                                $("#sector_salary_lq_2 div p").text(data['typical_range_text'] + ": £" + data['salary_sector_5_lq'] + " - £" + data['salary_sector_5_uq']);
+                                $("#sector_salary_pop_2 div").replaceWith("<div class='rich-text'><p></p></div>");
                                 $("#sector_salary_pop_2 div p").text(data['data_from_text'] + " " + data['salary_sector_5_pop'] + " " + data['students_text']);
 
                                 var graduates_text = sector_salary_graduates_0.innerText
