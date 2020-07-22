@@ -349,11 +349,9 @@ class Course:
 
             self.in_employment_15_mths = course_details.get('in_employment_15_mths')
 
-            self.go_work_skills = course_details.get('go_voice_work')['go_work_skills']
-            self.go_work_mean = course_details.get('go_voice_work')['go_work_mean']
-            self.go_work_on_track = course_details.get('go_voice_work')['go_work_on_track']
-            self.go_work_pop = course_details.get('go_voice_work')['go_work_pop']
-            self.go_work_resp_rate = course_details.get('go_voice_work')['go_work_resp_rate']
+            self.graduate_perceptions = []
+            for data_set in course_details.get('go_voice_work'):
+                self.graduate_perceptions.append(GraduatePerceptionStatistics(data_set, self.display_language))
 
             self.salaries_inst = []
             if course_details.get('go_salary_inst'):
@@ -1443,6 +1441,19 @@ class Job:
             self.percentage = fallback_to(job_data.get('percentage_of_students'),0)
             self.order = job_data.get('order')
             self.hss = job_data.get('hss')
+
+
+class GraduatePerceptionStatistics:
+
+    def __init__(self, go_voice_work_data, display_language):
+        self.display_language = display_language
+        if go_voice_work_data:
+            self.course_name = go_voice_work_data['course_name']
+            self.go_work_skills = go_voice_work_data['go_work_skills']
+            self.go_work_mean = go_voice_work_data['go_work_mean']
+            self.go_work_on_track = go_voice_work_data['go_work_on_track']
+            self.go_work_pop = go_voice_work_data['go_work_pop']
+            self.go_work_resp_rate = go_voice_work_data['go_work_resp_rate']
 
 
 class Salary:
