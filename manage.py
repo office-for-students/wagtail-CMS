@@ -10,10 +10,11 @@ if __name__ == "__main__":
     from django.core.management import execute_from_command_line
 
 
-    # Environment variables below added for out-of-container debugging by apw
-    os.environ["OUT_OF_CONTAINER_DEBUG"] = "True"
+    # Environment variables below added for out-of-container debugging.
+    os.environ["OUT_OF_CONTAINER_DEBUG"] = "False"
     if os.environ["OUT_OF_CONTAINER_DEBUG"] == "True":
-        with open(r'docker-compose.dev.yml') as file:
+        os.environ["ENVIRONMENT"] = "dev" # This env var can take the values 'dev' or 'pre-prod'.
+        with open(r'docker-compose.{}.yml'.format(os.environ["ENVIRONMENT"])) as file:
             dataMap = yaml.safe_load(file)
             env = dataMap['services']['web']['environment']
 
@@ -43,7 +44,7 @@ if __name__ == "__main__":
             os.environ["SENDGRID_FROM_EMAIL"] = env['SENDGRID_FROM_EMAIL']
             os.environ["WIDGETAPIHOST"] = env['WIDGETAPIHOST']
             os.environ["WIDGETAPIKEY"] = env['WIDGETAPIKEY']
-    # Environment variables above added for debugging by apw
+    # Environment variables above added for debugging.
 
 
     execute_from_command_line(sys.argv)
