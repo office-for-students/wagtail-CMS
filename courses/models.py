@@ -65,16 +65,22 @@ class EmploymentAfterCourseDataSet(blocks.StructValue):
         return EMPLOYMENT_AFTER_COURSE_KEY
 
 
+class EmploymentAfterCourseDataSet(blocks.StructValue):
+    @staticmethod
+    def data_set():
+        return EMPLOYMENT_AFTER_COURSE_KEY
+
+
 class AccreditationDataSet(blocks.StructValue):
     @staticmethod
     def data_set():
         return ACCREDITATION_KEY
 
 
-class GraduatePerceptionsDataSet(blocks.StructValue):
-    @staticmethod
-    def data_set():
-        return GRADUATE_PERCEPTIONS_KEY
+# class GraduatePerceptionsDataSet(blocks.StructValue):
+#     @staticmethod
+#     def data_set():
+#         return GRADUATE_PERCEPTIONS_KEY
 
 
 class LinksToTheInstitutionWebsiteDataSet(blocks.StructValue):
@@ -150,6 +156,21 @@ class EarningsAfterCourseBlock(AccordionPanel):
 
     class Meta:
         value_class = EarningsAfterCourseDataSet
+
+
+class EmploymentAfterCourseBlock(AccordionPanel):
+    six_month_employment_lead = blocks.CharBlock(required=False)
+    six_month_employment_data_source = blocks.RichTextBlock(blank=True)
+
+    section_heading = blocks.RichTextBlock(required=False)
+    intro = blocks.CharBlock(blank=True)
+
+    six_month_employment_roles_heading = blocks.CharBlock(required=False)
+    six_month_employment_roles_label_explanation_heading = blocks.CharBlock(required=False)
+    six_month_employment_roles_data_source = blocks.RichTextBlock(blank=True)
+
+    class Meta:
+        value_class = EmploymentAfterCourseDataSet
 
 
 class EmploymentAfterCourseBlock(AccordionPanel):

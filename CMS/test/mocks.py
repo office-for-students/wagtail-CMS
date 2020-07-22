@@ -129,6 +129,7 @@ class NewCourseFormatMocks:
                 },
                 "locations": [
                     {
+<<<<<<< HEAD
                         "links": {
                             "student_union": {
                                 "english": "http://www.boltonsu.com/"
@@ -839,6 +840,28 @@ class NewCourseFormatMocks:
             "_etag": "\"e100ce31-0000-1100-0000-5f157b650000\"",
             "_attachments": "attachments/",
             "_ts": 1595243365
+=======
+                      "code": "T224",
+                      "description": "between 224 and 239 tariff points",
+                      "entrants": 30
+                    },
+                    {
+                      "code": "T240",
+                      "description": "240 or more tariff points",
+                      "entrants": 30
+                    }
+                  ],
+                  "unavailable": {
+                    "code": 0,
+                    "reason_english": "We have combined data for two years of this course, as there was not enough to publish the most recent year's data only.",
+                    "reason_welsh": "Rydym wedi cyfuno data ar gyfer dwy flynedd o'r cwrs hwn gan nad oedd digon ar gael i gyhoeddi data'r flwyddyn ddiweddaraf yn unig."
+                  }
+                }
+              ]
+            }
+          },
+          "id": "7b62860a-654f-c4d4-f64d-7d629925ba55"
+>>>>>>> merge/uni-25-and-uni-7
         }
 
     @classmethod

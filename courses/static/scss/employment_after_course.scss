@@ -2,7 +2,7 @@
 @import '../../../CMS/static/scss/variables';
 
 .employment-after-course__block, .employment-after-course_occupation-block {
-    background-color: #f4f8f8;
+    background-color: $ice-blue;
     color: #000000;
 
     .employment-after-course_explanation-text .rich-text{
@@ -15,7 +15,7 @@
 
         a{
             text-decoration: underline;
-            color: #266969;
+            color: $dark-green-blue;
             line-height:normal;
         }
     }
@@ -107,7 +107,7 @@
         font-family: 'Nunito Sans', sans-serif;
         font-size: 0.9rem;
         font-weight: 300;
-        color: #666666;
+        color: $brownish-grey;
         line-height:normal;
     }
     a{
@@ -125,7 +125,7 @@
     
     color: #000000;
     text-align: center;
-    border: solid 3px #cee9e7;
+    border: solid 3px $duck-egg-blue;
 
     p {
         margin: 0px;
@@ -174,7 +174,7 @@
     @include desktop-body-font-mixin();
 
     text-align: center;
-    border: solid 3px #cee9e7;
+    border: solid 3px $duck-egg-blue;
 
     p{
         font-family: 'Nunito Sans', sans-serif;
@@ -186,20 +186,20 @@
         a{
             line-height:normal;
             text-decoration: underline;
-            color: #266969;
+            color: $dark-green-blue;
         }
     }
     .explanation-text p{
         font-family: 'Nunito Sans', sans-serif;
         font-size: 0.9rem;
         font-weight: 300;
-        color: #666666;
+        color: $brownish-grey;
     }
     .explanation-text .rich-text p{
         font-family: 'Nunito Sans', sans-serif;
         font-size: 0.9rem;
         font-weight: 300;
-        color: #666666;
+        color: $brownish-grey;
     }
 
     .employment-after-course__data-point-overview-lead {
@@ -256,7 +256,7 @@
         @include desktop-body-font-mixin();
         color: #000000;
         text-align: center;
-        border: solid 3px #cee9e7;
+        border: solid 3px $duck-egg-blue;
 
         p {
             margin: 0px;
@@ -302,14 +302,14 @@
 
             a{
                 text-decoration: underline;
-                color: #266969;
+                color: $dark-green-blue;
             }
         }
         .explanation-text p{
             font-family: 'Nunito Sans', sans-serif;
             font-size: 0.9rem;
             font-weight: 300;
-            color: #666666;
+            color: $brownish-grey;
         }
 
         .employment-after-course__data-point-overview-lead {
