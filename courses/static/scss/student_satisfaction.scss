@@ -24,7 +24,7 @@
   margin-top: 70px;
   margin-bottom: 0px;
 
-  color: $ux-grey-3;
+  color: $brownish-grey;
 
   & + .student-satisfaction__overview {
     margin-top: 30px;
@@ -72,7 +72,7 @@
 
     text-align: center;
 
-    color: $ux-grey-2;
+    color: $brownish-grey;
 
     p {
       margin: 0;
@@ -104,7 +104,7 @@
 
       p {
         font-family: "Nunito Sans", sans-serif;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
@@ -115,7 +115,7 @@
       }
       a {
         font-family: "Nunito Sans", sans-serif;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         font-weight: normal;
         font-stretch: normal;
         text-decoration: underline;
@@ -135,7 +135,7 @@
         font-family: "Nunito Sans", sans-serif;
         display: block;
         margin-top: 7px;
-        color: $ux-grey-3;
+        color: $brownish-grey;
       }
 
       .student-satisfaction__chart-wrapper {
@@ -150,12 +150,12 @@
 
           .student-satisfaction__chart-title {
             @include small-font--bold-mixin();
-
+            font-size:0.9rem;
             text-align: center;
             margin-bottom: 0;
             margin-top: 18px;
             font-weight: 300;
-            color: $ux-grey-2;
+            color: $brownish-grey;
           }
           .rich-text p{
             font-family: "Nunito Sans", sans-serif;
@@ -197,8 +197,8 @@
 
     p {
       @include s-heading-mixin();
-      margin-left: 5rem;
-      margin-right: 5rem;
+      margin-left: 5px;
+      margin-right: 5px;
       font-size: 1.3rem;
       font-weight: 300;
     }
@@ -214,7 +214,7 @@
       padding-left: 150px;
       padding-right: 150px;
 
-      color: $ux-grey-2;
+      color: $brownish-grey;
 
       p {
         @include small-font-mixin();
@@ -243,8 +243,6 @@
         font-weight: 300;
         margin-top: 0px;
         margin-bottom: 16px;
-        padding-left: 2rem;
-        padding-right: 2rem;
         padding-top: 2rem;
         background-color: $divider-grey;
         color: #000000;
@@ -263,9 +261,9 @@
               @include small-font--bold-mixin();
               font-family: "Nunito Sans", sans-serif;
               text-align: center;
-              font-size: 1rem;
+              font-size: 0.85rem;
               font-weight: 300;
-              color: $ux-grey-2;
+              color: $brownish-grey;
             }
           }
         }
