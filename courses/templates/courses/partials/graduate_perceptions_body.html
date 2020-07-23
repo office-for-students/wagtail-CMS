@@ -8,13 +8,13 @@
     {% endif %}
 
     {% if overall_stats.satisfaction_stats.question_27.show_data_point %}
-        <div class="student-satisfaction__overview mt-3 mx-1 p-0 d-flex flex-wrap row">
-                <div class="col-lg-2 col-md-12 align-self-stretch my-auto pt-3">
+        <div class="student-satisfaction__overview mt-3 mx-1 p-3 d-flex flex-wrap row">
+                <div class="col-lg-2 col-md-12 align-self-stretch my-auto text-center">
                     <p class="student-satisfaction__overview-lead ">
                         {{ course.go_work_mean }}%
                     </p>
                 </div>
-                <div class=" col-lg-10 col-md-12 align-self-stretch my-auto pt-2">
+                <div class=" col-lg-10 col-md-12 align-self-stretch my-auto text-center text-lg-left">
                     <p>
                         {{ block.value.lead_text }}
                         <div class="student-satisfaction__intro">

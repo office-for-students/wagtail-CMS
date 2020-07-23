@@ -154,8 +154,11 @@
             text-align: center;
             margin-bottom: 0;
             margin-top: 18px;
-            font-weight: 200;
+            font-weight: 300;
             color: $ux-grey-2;
+          }
+          .rich-text p{
+            font-family: "Nunito Sans", sans-serif;
           }
         }
       }
@@ -261,7 +264,7 @@
               font-family: "Nunito Sans", sans-serif;
               text-align: center;
               font-size: 1rem;
-              font-weight: 200;
+              font-weight: 300;
               color: $ux-grey-2;
             }
           }
