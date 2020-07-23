@@ -23,7 +23,7 @@ class CoursesModelsTests(UniSimpleTestCase):
 
     def test_AfterCourseBlock_returns_after_the_course_data_set_value(self):
         after_course_block = EarningsAfterCourseBlock().meta.value_class
-        self.assertEquals(after_course_block.data_set(), 'after_the_course')
+        self.assertEquals(after_course_block.data_set(), 'earnings_after_the_course')
 
     def test_AccreditationBlock_returns_professional_accreditation_data_set_value(self):
         accreditation_block = AccreditationBlock().meta.value_class
