@@ -167,13 +167,24 @@ class NewCourseFormatMocks:
                     "unavail_text_inst_level_eng": "This is the unavail message in ENGLISH for the LEO5 institution panel.",
                     "unavail_text_inst_level_wls": "This is the unavail message in WELSH for the LEO5 institution panel."
                 },
-                "go_voice_work": {
-                    "go_work_skills": "32",
-                    "go_work_mean": "87",
-                    "go_work_on_track": "50",
-                    "go_work_pop": "60",
-                    "go_work_resp_rate": "85"
-                },
+                "go_voice_work": [
+                    {
+                        "course_name": "Course 1",
+                        "go_work_skills": "32",
+                        "go_work_mean": "87",
+                        "go_work_on_track": "50",
+                        "go_work_pop": "60",
+                        "go_work_resp_rate": "85"
+                    },
+                    {
+                        "course_name": "Course 2",
+                        "go_work_skills": "87",
+                        "go_work_mean": "50",
+                        "go_work_on_track": "32",
+                        "go_work_pop": "85",
+                        "go_work_resp_rate": "60"
+                    }
+                ],
                 "length_of_course": {
                     "code": 3,
                     "label": "3 stages"
