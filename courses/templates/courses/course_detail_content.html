@@ -24,17 +24,12 @@
                     <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
                         <div class="">
                             <button class="course-detail__accordion-heading">
-                                <h2 id="course-detail__accordion-heading-{{ forloop.counter }}"
+                                <h2 id="course-detail__accordion-heading-{{ forloop.counter }} text-white"
                                     aria-controls="course-detail__accordion-body-{{ forloop.counter }}"
                                     aria-label="Show {{ accordion.value.heading }} content"
                                     aria-expanded="false">
 
-                                                <span class="course-detail__accordion-heading-chevron">
-                                                    <img class="course-detail__icon plus"
-                                                         src="{% static 'images/plus_icon.svg' %}" alt="">
-                                                    <img class="course-detail__icon minus"
-                                                         src="{% static 'images/minus_icon.svg' %}" alt="">
-                                                </span>
+                                    <i class="fas fa-plus pr-3 text-white"></i>
                                     {{ accordion.value.heading }}
                                 </h2>
                             </button>

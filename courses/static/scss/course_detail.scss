@@ -171,9 +171,9 @@
                 display: block;
                 width: 100%;
                 padding: 0px;
-
+                color: $white;
                 border: 0px;
-                background-color: $form-grey;
+                @include green-gradient-background-mixin();
                 cursor: pointer;
 
                 &.open {
@@ -194,7 +194,7 @@
                     position: relative;
 
                     border: 3px solid transparent;
-                    color: $helper-grey;
+                    color: $white;
 
                     &:hover {
                         border: 3px solid $gradient-light-green;
@@ -203,7 +203,6 @@
                     .course-detail__accordion-heading-chevron {
                         display: flex;
                         margin-right: 50px;
-
                     }
 
                     .course-detail__icon {
