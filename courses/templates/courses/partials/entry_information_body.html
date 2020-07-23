@@ -154,12 +154,6 @@
                                 <label class="entry-information__chart-label float-lg-right" aria-hidden="true">{% get_translation key='other' language=page.get_language %}</label>
                             </div>
                         </div>
-                    </div>  
-                    
-                    <div class="explanation-text">
-                        {% create_list entry_stats.number_of_students as substitutions %}
-                        {% insert_values_to_rich_text content=block.value.qualification_data_source substitutions=substitutions as subbed_text %}
-                        {{ subbed_text | richtext }}
                     </div>
                 </div>
             </div>
@@ -202,12 +196,6 @@
                                 </div>
                             </div>
                         {% endfor %}
-
-                        <div class="explanation-text">
-                            {% create_list tariff_stats.number_of_students as substitutions %}
-                            {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
-                            {{ subbed_text | richtext }}
-                        </div>
                     </div>
                 {% endif %}
              </div>

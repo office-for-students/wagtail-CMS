@@ -77,17 +77,15 @@
     </div>
 
     <div>
-        <h2 class="earnings-after-course__stats-heading text-left pt-1 mt-1 mb-2">
-            {% create_list course.english_title as substitutions %}
-            {% insert_values_to_rich_text content=block.value.average_earnings_sector_heading substitutions=substitutions as subbed_text %}
-            {{ subbed_text | richtext }}
-        </h2>
-
-        <!-- apw added -->
         <form method='post' id='test' class="">
-<!--            <p id="dummy_field">HTML Element for Ajax Refresh: [not yet refreshed]</p>-->
-           <div class="row px-3 my-3">
-                <label for="regions">Choose a region:</label>
+            <div class="d-inline-block">
+               <h2 class="earnings-after-course__stats-heading text-left pt-1 mt-1 mb-2">
+                    {% create_list course.english_title as substitutions %}
+                    {% insert_values_to_rich_text content=block.value.average_earnings_sector_heading substitutions=substitutions as subbed_text %}
+                    {{ subbed_text | richtext }}
+                </h2>
+            </div>
+           <div class="d-inline-block row px-3 my-3">
                 <select name="regions" id="regions">
                 {% get_region_list as region_list %}
                 {% for region in region_list %}
@@ -95,7 +93,6 @@
                 {% endfor %}
                 </select>
             </div>
-         <!-- apw added -->
 
         <div class="discover-uni-container">
             <div class="earnings-after-course-statistics d-flex row align-items-stretch">
