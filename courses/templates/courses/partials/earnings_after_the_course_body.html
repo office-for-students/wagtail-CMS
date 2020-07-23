@@ -44,7 +44,7 @@
                         {{ block.value.after_five_years_earnings_heading }}
                     {% endif %}
                     </h3>
-                    <div class="earnings-after-course-stat col-lg-12 p-3 pb-4 h-75">
+                    <div class="earnings-after-course-stat col-lg-12 p-3 pb-4">
                         <h2 class="earnings-after-course-stat-salary mb-3 text-center text-lg-left">£{{ salary.med|intcomma }}</h2>
                         <h4 class="earnings-after-course-stat-salary-range pt-1 text-center text-lg-left  mb-3">
                             {% create_list salary.lq|intcomma salary.uq|intcomma as substitutions %}
@@ -111,7 +111,7 @@
                         {{ block.value.after_five_years_earnings_heading }}
                     {% endif %}
                     </h3>
-                    <div class="earnings-after-course-stat col-lg-12 p-3 pb-0 h-100">
+                    <div class="earnings-after-course-stat col-lg-12 p-3 pb-0">
                         <h2 class="earnings-after-course-stat-salary mb-0 text-center text-lg-left" id="{% concat 'sector_salary_med_' salary_index %}">£{{ salary.med_uk|intcomma }}</h2>
 <!--                        <p id="dummy_field2">HTML Element for Ajax Refresh: [not yet refreshed]</p>-->
                         <h4 class="earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_lq_' salary_index %}">
