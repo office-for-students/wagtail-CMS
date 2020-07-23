@@ -1274,4 +1274,28 @@ DICT = {
         'en': 'Compulsory',
         'cy': 'Gorfodol'
     },
+    'Typical range': {
+        'en': 'Typical range',
+        'cy': ''
+    },
+    'Data from': {
+        'en': 'Data from',
+        'cy': ''
+    },
+    'respondents': {
+        'en': 'respondents',
+        'cy': ''
+    },
+    'students': {
+        'en': 'students',
+        'cy': ''
+    },
+    'of those asked': {
+        'en': 'of those asked',
+        'cy': ''
+    },
+    'graduates live in The UK': {
+        'en': 'graduates live in The UK',
+        'cy': ''
+    },
 }

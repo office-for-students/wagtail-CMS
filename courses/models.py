@@ -18,7 +18,7 @@ from institutions.models import InstitutionOverview
 STUDENT_SATISFACTION_KEY = 'student_satisfaction'
 ENTRY_INFO_KEY = 'entry_information'
 AFTER_ONE_YEAR_KEY = 'after_one_year'
-AFTER_COURSE_KEY = 'after_the_course'
+EARNINGS_AFTER_COURSE_KEY = 'earnings_after_the_course'
 EMPLOYMENT_AFTER_COURSE_KEY = 'employment_after_the_course'
 ACCREDITATION_KEY = 'professional_accreditation'
 
@@ -28,6 +28,7 @@ ACCREDITATION_KEY = 'professional_accreditation'
 #   go to Pages > Home > Course Details > 'ACCORDIONS' section > Add (+ icon) > add a panel of the new type.
 #   Then Save Draft, then Publish.
 GRADUATE_PERCEPTIONS_KEY = 'graduate_perceptions'
+LINKS_TO_THE_INSTITUTION_WEBSITE_KEY = 'links_to_the_institution_website'
 
 
 class AccordionPanel(blocks.StructBlock):
@@ -52,10 +53,10 @@ class AfterOneYearDataSet(blocks.StructValue):
         return AFTER_ONE_YEAR_KEY
 
 
-class AfterCourseDataSet(blocks.StructValue):
+class EarningsAfterCourseDataSet(blocks.StructValue):
     @staticmethod
     def data_set():
-        return AFTER_COURSE_KEY
+        return EARNINGS_AFTER_COURSE_KEY
 
 
 class EmploymentAfterCourseDataSet(blocks.StructValue):
@@ -70,10 +71,16 @@ class AccreditationDataSet(blocks.StructValue):
         return ACCREDITATION_KEY
 
 
-# class GraduatePerceptionsDataSet(blocks.StructValue):
-#     @staticmethod
-#     def data_set():
-#         return GRADUATE_PERCEPTIONS_KEY
+class GraduatePerceptionsDataSet(blocks.StructValue):
+    @staticmethod
+    def data_set():
+        return GRADUATE_PERCEPTIONS_KEY
+
+
+class LinksToTheInstitutionWebsiteDataSet(blocks.StructValue):
+    @staticmethod
+    def data_set():
+        return LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
 
 
 class SatisfactionBlock(AccordionPanel):
@@ -121,37 +128,28 @@ class AfterOneYearBlock(AccordionPanel):
         value_class = AfterOneYearDataSet
 
 
-class AfterCourseBlock(AccordionPanel):
+class EarningsAfterCourseBlock(AccordionPanel):
     section_heading = blocks.CharBlock(required=False)
     intro = blocks.RichTextBlock(blank=True)
 
-    six_month_earnings_heading = blocks.CharBlock(required=False)
-    six_month_earnings_explanation = blocks.RichTextBlock(blank=True)
-    six_month_earnings_salary_range_heading = blocks.CharBlock(required=False)
-    six_month_earnings_data_source = blocks.RichTextBlock(blank=True)
+    average_earnings_inst_heading = blocks.RichTextBlock(blank=True)
+    institution_graduates_heading = blocks.RichTextBlock(blank=True)
 
-    three_years_earnings_heading = blocks.CharBlock(required=False)
-    three_years_earnings_explanation = blocks.RichTextBlock(blank=True)
-    three_years_earnings_salary_range_heading = blocks.CharBlock(required=False)
-    three_years_earnings_data_source = blocks.RichTextBlock(blank=True)
+    after_fifteen_months_earnings_heading = blocks.CharBlock(required=False)
+    after_fifteen_months_range_explanation = blocks.RichTextBlock(blank=True)
+    after_fifteen_months_respondents_explanation = blocks.RichTextBlock(blank=True)
+    after_fifteen_months_no_of_graduates_explanation = blocks.RichTextBlock(blank=True)
+    after_fifteen_months_data_source = blocks.RichTextBlock(blank=True)
 
-    six_month_employment_heading = blocks.CharBlock(required=False)
-    six_month_employment_intro = blocks.CharBlock(required=False)
-    six_month_employment_lead = blocks.CharBlock(required=False)
-    six_month_employment_data_source = blocks.RichTextBlock(blank=True)
+    after_three_years_earnings_heading = blocks.CharBlock(required=False)
+    after_five_years_earnings_heading = blocks.CharBlock(required=False)
+    after_three_five_years_data_source = blocks.RichTextBlock(blank=True)
 
-    six_month_employment_roles_heading = blocks.CharBlock(required=False)
-    six_month_employment_roles_intro = blocks.CharBlock(required=False)
-    six_month_employment_roles_label_explanation_heading = blocks.CharBlock(required=False)
-    six_month_employment_roles_label_explanation_body = blocks.RichTextBlock(blank=True)
-    six_month_employment_roles_data_source = blocks.RichTextBlock(blank=True)
-
-    common_jobs_heading = blocks.CharBlock(required=False)
-    common_jobs_intro = blocks.CharBlock(required=False)
-    common_jobs_data_source = blocks.RichTextBlock(blank=True)
+    average_earnings_sector_heading = blocks.RichTextBlock(blank=True)
+    respondents_live_in_explanation = blocks.RichTextBlock(blank=True)
 
     class Meta:
-        value_class = AfterCourseDataSet
+        value_class = EarningsAfterCourseDataSet
 
 
 class EmploymentAfterCourseBlock(AccordionPanel):
@@ -176,12 +174,31 @@ class AccreditationBlock(AccordionPanel):
         value_class = AccreditationDataSet
 
 
-# class GraduatePerceptionsBlock(AccordionPanel):
-#     grad_percep_field_1 = blocks.CharBlock(required=False)
-#     grad_percep_field_2 = blocks.CharBlock(required=False)
-#
-#     class Meta:
-#         value_class = GraduatePerceptionsDataSet
+class GraduatePerceptionsBlock(AccordionPanel):
+    lead_text = blocks.CharBlock(required=False)
+    intro_body = blocks.RichTextBlock(blank=True)
+
+    perception_of_work_heading = blocks.CharBlock(required=False)
+    data_source = blocks.RichTextBlock(blank=True)
+
+    usefulness_explanation_heading = blocks.CharBlock(required=False)
+    usefulness_explanation = blocks.RichTextBlock(blank=True)
+
+    meaningfulness_explanation_heading = blocks.CharBlock(required=False)
+    meaningfulness_explanation = blocks.RichTextBlock(blank=True)
+
+    future_explanation_heading = blocks.CharBlock(required=False)
+    future_explanation = blocks.RichTextBlock(blank=True)
+
+    class Meta:
+        value_class = GraduatePerceptionsDataSet
+
+
+class LinksToTheInstitutionWebsiteBlock(AccordionPanel):
+    course_information_on_website_header = blocks.RichTextBlock(blank=True)
+
+    class Meta:
+        value_class = LinksToTheInstitutionWebsiteDataSet
 
 
 class CourseDetailPage(DiscoverUniBasePage):
@@ -189,10 +206,11 @@ class CourseDetailPage(DiscoverUniBasePage):
         ('satisfaction_panel', SatisfactionBlock(required=True, icon='collapse-down')),
         ('entry_information_panel', EntryInformationBlock(required=True, icon='collapse-down')),
         ('after_one_year_panel', AfterOneYearBlock(required=True, icon='collapse-down')),
-        ('after_course_panel', AfterCourseBlock(required=True, icon='collapse-down')),
-        ('employment_after_course_panel', EmploymentAfterCourseBlock(required=True, icon='collapse-down')),
         ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down')),
-        # ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down'))
+        ('earningsafter_course_panel', EarningsAfterCourseBlock(required=True, icon='collapse-down')),
+        ('employment_after_course_panel', EmploymentAfterCourseBlock(required=True, icon='collapse-down')),
+        ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down')),
+        ('links_to_the_institution_website_panel', LinksToTheInstitutionWebsiteBlock(required=True, icon='collapse-down'))
     ])
     uni_site_links_header = TextField(blank=True)
 
@@ -212,7 +230,7 @@ class CourseComparisonPage(DiscoverUniBasePage):
         ('satisfaction_panel', SatisfactionBlock(required=True, icon='collapse-down')),
         ('entry_information_panel', EntryInformationBlock(required=True, icon='collapse-down')),
         ('after_one_year_panel', AfterOneYearBlock(required=True, icon='collapse-down')),
-        ('after_course_panel', AfterCourseBlock(required=True, icon='collapse-down')),
+        ('after_course_panel', EarningsAfterCourseBlock(required=True, icon='collapse-down')),
         ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down'))
     ])
 
@@ -329,21 +347,29 @@ class Course:
             self.course_links = self.set_course_links(course_details.get('links'), self.display_language)
             self.overall_satisfaction = self.sync_satisfaction_stats()
 
-            # Some dummy data added to new skeleton accordion section below.
-            # Also added some mock data fields (self.apw_top...)
-            self.graduate_perceptionss = []
-            graduate_perceptionss = course_details.get('accreditations') # TODO: change this line when implementing for real.
-            if graduate_perceptionss:
-                for graduate_perceptions in graduate_perceptionss:
-                    # TODO: change this line when implementing for real.
-                    self.graduate_perceptionss.append(CourseAccreditation(graduate_perceptions, self.display_language)) 
-
-            # These field names must be present in the JSON data source (see mocks.py if using mock data).
-            # self.apw_top_student_satisfaction = course_details.get('apw_top_student_satisfaction')
-            # self.apw_top_average_salary = course_details.get('apw_top_average_salary')
-            # self.apw_top_employment = course_details.get('apw_top_employment')
-
             self.in_employment_15_mths = course_details.get('in_employment_15_mths')
+
+            self.go_work_skills = course_details.get('go_voice_work')['go_work_skills']
+            self.go_work_mean = course_details.get('go_voice_work')['go_work_mean']
+            self.go_work_on_track = course_details.get('go_voice_work')['go_work_on_track']
+            self.go_work_pop = course_details.get('go_voice_work')['go_work_pop']
+            self.go_work_resp_rate = course_details.get('go_voice_work')['go_work_resp_rate']
+
+            self.salaries_inst = []
+            if course_details.get('go_salary_inst'):
+                self.salaries_inst.append(Salary(course_details.get('go_salary_inst'), self.display_language))
+            if course_details.get('leo3_inst'):
+                self.salaries_inst.append(Salary(course_details.get('leo3_inst'), self.display_language))
+            if course_details.get('leo5_inst'):
+                self.salaries_inst.append(Salary(course_details.get('leo5_inst'), self.display_language))
+
+            self.salaries_sector = []
+            if course_details.get('go_salary_sector'):
+                self.salaries_sector.append(SectorSalary(course_details.get('go_salary_sector'), self.display_language))
+            if course_details.get('leo3_salary_sector'):
+                self.salaries_sector.append(SectorSalary(course_details.get('leo3_salary_sector'), self.display_language))
+            if course_details.get('leo5_salary_sector'):
+                self.salaries_sector.append(SectorSalary(course_details.get('leo5_salary_sector'), self.display_language))
 
     def set_course_links(self, links, language):
         link_objs = {'course_details': [], 'costs_support': []}
@@ -1417,3 +1443,164 @@ class Job:
             self.percentage = fallback_to(job_data.get('percentage_of_students'),0)
             self.order = job_data.get('order')
             self.hss = job_data.get('hss')
+
+
+class Salary:
+
+    def __init__(self, salary_data, display_language):
+        self.display_language = display_language
+        if salary_data:
+            self.pop = salary_data['pop']
+            self.resp_rate = salary_data['resp_rate']
+            self.lq = salary_data['lq']
+            self.med = salary_data['med']
+            self.uq = salary_data['uq']
+
+            self.unavail_reason = salary_data['unavail_reason']
+            self.aggregate = salary_data['agg']
+            self.unavail_reason_inst_level_english = salary_data['unavail_text_inst_level_eng']
+            self.unavail_reason_inst_level_welsh = salary_data['unavail_text_inst_level_wls']
+
+            if 'go_inst_prov_pc_uk' in salary_data:
+                self.prov_pc_uk = salary_data['go_inst_prov_pc_uk']
+                self.prov_pc_e = salary_data['go_inst_prov_pc_e']
+                self.prov_pc_s = salary_data['go_inst_prov_pc_s']
+                self.prov_pc_w = salary_data['go_inst_prov_pc_w']
+                self.prov_pc_ni = salary_data['go_inst_prov_pc_ni']
+                self.prov_pc_nw = salary_data['go_inst_prov_pc_nw']
+                self.prov_pc_ne = salary_data['go_inst_prov_pc_ne']
+                self.prov_pc_em = salary_data['go_inst_prov_pc_em']
+                self.prov_pc_wm = salary_data['go_inst_prov_pc_wm']
+                self.prov_pc_ee = salary_data['go_inst_prov_pc_ee']
+                self.prov_pc_se = salary_data['go_inst_prov_pc_se']
+                self.prov_pc_sw = salary_data['go_inst_prov_pc_sw']
+                self.prov_pc_yh = salary_data['go_inst_prov_pc_yh']
+                self.prov_pc_lo = salary_data['go_inst_prov_pc_lo']
+                self.prov_pc_ed = salary_data['go_inst_prov_pc_ed']
+                self.prov_pc_gl = salary_data['go_inst_prov_pc_gl']
+                self.prov_pc_cf = salary_data['go_inst_prov_pc_cf']
+
+                self.unavail_reason_inst_level_2_english = salary_data['unavail_text_inst_level_2_eng']
+                self.unavail_reason_inst_level_2_welsh = salary_data['unavail_text_inst_level_2_wls']
+
+
+class SectorSalary:
+
+    def __init__(self, salary_data, display_language):
+        self.display_language = display_language
+        if salary_data:
+            self.unavail_reason = salary_data['unavail_reason']
+            self.lq_uk = salary_data['lq_uk']
+            self.med_uk = salary_data['med_uk']
+            self.uq_uk = salary_data['uq_uk']
+            self.pop_uk = salary_data['pop_uk']
+            self.resp_uk = salary_data['resp_uk']
+
+            self.lq_e = salary_data['lq_e']
+            self.med_e = salary_data['med_e']
+            self.uq_e = salary_data['uq_e']
+            self.pop_e = salary_data['pop_e']
+            self.resp_e = salary_data['resp_e']
+
+            self.lq_w = salary_data['lq_w']
+            self.med_w = salary_data['med_w']
+            self.uq_w = salary_data['uq_w']
+            self.pop_w = salary_data['pop_w']
+            self.resp_w = salary_data['resp_w']
+
+            self.lq_s = salary_data['lq_s']
+            self.med_s = salary_data['med_s']
+            self.uq_s = salary_data['uq_s']
+            self.pop_s = salary_data['pop_s']
+            self.resp_s = salary_data['resp_s']
+
+            self.lq_ni = salary_data['lq_ni']
+            self.med_ni = salary_data['med_ni']
+            self.uq_ni = salary_data['uq_ni']
+            self.pop_ni = salary_data['pop_ni']
+            self.resp_ni = salary_data['resp_ni']
+
+            self.lq_nw = salary_data['lq_nw']
+            self.med_nw = salary_data['med_nw']
+            self.uq_nw = salary_data['uq_nw']
+            self.pop_nw = salary_data['pop_nw']
+            self.resp_nw = salary_data['resp_nw']
+
+            self.lq_ne = salary_data['lq_ne']
+            self.med_ne = salary_data['med_ne']
+            self.uq_ne = salary_data['uq_ne']
+            self.pop_ne = salary_data['pop_ne']
+            self.resp_ne = salary_data['resp_ne']
+
+            self.lq_em = salary_data['lq_em']
+            self.med_em = salary_data['med_em']
+            self.uq_em = salary_data['uq_em']
+            self.pop_em = salary_data['pop_em']
+            self.resp_em = salary_data['resp_em']
+
+            self.lq_wm = salary_data['lq_wm']
+            self.med_wm = salary_data['med_wm']
+            self.uq_wm = salary_data['uq_wm']
+            self.pop_wm = salary_data['pop_wm']
+            self.resp_wm = salary_data['resp_wm']
+
+            self.lq_ee = salary_data['lq_ee']
+            self.med_ee = salary_data['med_ee']
+            self.uq_ee = salary_data['uq_ee']
+            self.pop_ee = salary_data['pop_ee']
+            self.resp_ee = salary_data['resp_ee']
+
+            self.lq_se = salary_data['lq_se']
+            self.med_se = salary_data['med_se']
+            self.uq_se = salary_data['uq_se']
+            self.pop_se = salary_data['pop_se']
+            self.resp_se = salary_data['resp_se']
+
+            self.lq_sw = salary_data['lq_sw']
+            self.med_sw = salary_data['med_sw']
+            self.uq_sw = salary_data['uq_sw']
+            self.pop_sw = salary_data['pop_sw']
+            self.resp_sw = salary_data['resp_sw']
+
+            self.lq_yh = salary_data['lq_yh']
+            self.med_yh = salary_data['med_yh']
+            self.uq_yh = salary_data['uq_yh']
+            self.pop_yh = salary_data['pop_yh']
+            self.resp_yh = salary_data['resp_yh']
+
+            self.lq_lo = salary_data['lq_lo']
+            self.med_lo = salary_data['med_lo']
+            self.uq_lo = salary_data['uq_lo']
+            self.pop_lo = salary_data['pop_lo']
+            self.resp_lo = salary_data['resp_lo']
+
+            self.lq_ed = salary_data['lq_ed']
+            self.med_ed = salary_data['med_ed']
+            self.uq_ed = salary_data['uq_ed']
+            self.pop_ed = salary_data['pop_ed']
+            self.resp_ed = salary_data['resp_ed']
+
+            self.lq_gl = salary_data['lq_gl']
+            self.med_gl = salary_data['med_gl']
+            self.uq_gl = salary_data['uq_gl']
+            self.pop_gl = salary_data['pop_gl']
+            self.resp_gl = salary_data['resp_gl']
+
+            self.lq_cf = salary_data['lq_cf']
+            self.med_cf = salary_data['med_cf']
+            self.uq_cf = salary_data['uq_cf']
+            self.pop_cf = salary_data['pop_cf']
+            self.resp_cf = salary_data['resp_cf']
+
+            self.unavail_reason = salary_data['unavail_reason']
+            self.aggregate = salary_data['agg']
+            self.unavail_text_sector_level_english = salary_data['unavail_text_sector_level_eng']
+            self.unavail_text_sector_level_welsh = salary_data['unavail_text_sector_level_wls']
+
+            if 'unavail_text_non_nation_selected_eng' in salary_data:
+                self.unavail_text_non_nation_selected_english = salary_data['unavail_text_non_nation_selected_eng']
+                self.unavail_text_non_nation_selected_welsh = salary_data['unavail_text_non_nation_selected_wls']
+
+            if 'unavail_text_ni_selected_eng' in salary_data:
+                self.unavail_text_ni_selected_english = salary_data['unavail_text_ni_selected_eng']
+                self.unavail_text_ni_selected_welsh = salary_data['unavail_text_ni_selected_wls']

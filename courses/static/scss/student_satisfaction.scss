@@ -1,10 +1,10 @@
 // @import "../../../CMS/static/scss/fonts";
 // @import "../../../CMS/static/scss/variables";
 .lg-chart {
-    display: none;
+  display: none;
 }
 .sm-chart {
-    display: block;
+  display: block;
 }
 @media only screen and (min-width: 770px) {
   .lg-chart {
@@ -14,281 +14,277 @@
     display: none;
   }
 }
- 
 
-
-@import '../../../CMS/static/scss/fonts';
-@import '../../../CMS/static/scss/variables';
-
+@import "../../../CMS/static/scss/fonts";
+@import "../../../CMS/static/scss/variables";
 
 .satisfaction_subject_name {
-    @include m-heading--bold-mixin();
+  @include m-heading--bold-mixin();
 
-    margin-top: 70px;
-    margin-bottom: 0px;
+  margin-top: 70px;
+  margin-bottom: 0px;
 
-    color: $ux-grey-3;
+  color: $ux-grey-3;
 
-    &+ .student-satisfaction__overview {
-        margin-top: 30px;
-    }
+  & + .student-satisfaction__overview {
+    margin-top: 30px;
+  }
 }
 
 .student-satisfaction__overview {
-    @include desktop-body-font-mixin();
+  @include desktop-body-font-mixin();
 
-    text-align: center;
-    border: solid 3px #cee9e7;
-    
-    .student-satisfaction__intro .rich-text p{
-        @include s-heading-mixin();
-        font-size: 1rem;
-        color: #666666;
-        font-weight:300;
-    }
+  text-align: center;
+  border: solid 3px $duck-egg-blue;
 
-    .student-satisfaction__intro .rich-text a{
-        color:#308282;
-        font-weight:400;
-        text-decoration: underline;
-    }
+  .student-satisfaction__intro .rich-text p {
+    @include s-heading-mixin();
+    font-size: 1rem;
+    color: $brownish-grey;
+    font-weight: 300;
+  }
 
-    .student-satisfaction__overview-lead {
-        @include l-heading-mixin();
-        font-family: 'Nunito Sans', sans-serif;
-        color: #000000;
-        font-weight:300;
-        font-size: 2.5rem;
-    }
+  .student-satisfaction__intro .rich-text a {
+    color: #308282;
+    font-weight: 400;
+    text-decoration: underline;
+  }
 
-    p {
-        margin: 10px;
-        font-size:1.2rem;
-        letter-spacing: normal;
-        line-height: normal;
-    }
+  .student-satisfaction__overview-lead {
+    @include l-heading-mixin();
+    font-family: "Nunito Sans", sans-serif;
+    color: #000000;
+    font-weight: 300;
+    font-size: 2.5rem;
+  }
+
+  p {
+    margin: 10px;
+    font-size: 1.2rem;
+    letter-spacing: normal;
+    line-height: normal;
+  }
 }
 
 .student-satisfaction__block {
+  .student-satisfaction__intro {
+    @include small-font-mixin();
+
+    text-align: center;
+
+    color: $ux-grey-2;
+
+    p {
+      margin: 0;
+    }
+    a {
+      color: #308282;
+      font-weight: 400;
+      text-decoration: underline;
+    }
+
+    .student-satisfaction__nss_logo {
+      margin-top: 5px;
+    }
+  }
+
+  .student-satisfaction__data-group {
+    margin-top: 24px;
+    margin-bottom: 23px;
+    background-color: $divider-grey;
+    padding: 10px;
+
+    .student-satisfaction__data-group-heading {
+      @include xs-heading-mixin();
+      font-weight: 300;
+      text-align: center;
+
+      background-color: $divider-grey;
+      color: #000000;
+
+      p {
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 0.9rem;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: $brownish-grey;
+        padding-bottom: 0;
+      }
+      a {
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 0.9rem;
+        font-weight: normal;
+        font-stretch: normal;
+        text-decoration: underline;
+        line-height: normal;
+        letter-spacing: normal;
+        color: $dark-green-blue;
+        padding-bottom: 0;
+      }
+    }
+
+    .student-satisfaction__charts {
+      display: flex;
+      flex-wrap: wrap;
+
+      .entry-information__chart-label {
+        @include small-font-mixin();
+        font-family: "Nunito Sans", sans-serif;
+        display: block;
+        margin-top: 7px;
+        color: $ux-grey-3;
+      }
+
+      .student-satisfaction__chart-wrapper {
+        width: 100%;
+        margin-bottom: 15px;
+        .student-satisfaction__chart {
+          .doughnut-chart .highcharts-plot-border {
+            fill: #f2f2f2 !important;
+          }
+
+          margin-bottom: 38px;
+
+          .student-satisfaction__chart-title {
+            @include small-font--bold-mixin();
+
+            text-align: center;
+            margin-bottom: 0;
+            margin-top: 18px;
+            font-weight: 300;
+            color: $ux-grey-2;
+          }
+          .rich-text p{
+            font-family: "Nunito Sans", sans-serif;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 770px) {
+  .student-satisfaction__overview {
+    padding: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+
+    .student-satisfaction__intro .rich-text p {
+      @include s-heading-mixin();
+      font-size: 1rem;
+      color: $brownish-grey;
+      font-weight: 300;
+    }
+
+    .student-satisfaction__intro .rich-text a {
+      color: #308282;
+      font-weight: 400;
+      text-decoration: underline;
+    }
+
+    .student-satisfaction__overview-lead {
+      @include xl-heading-mixin();
+      font-family: "Nunito Sans", sans-serif;
+      color: #000000;
+      font-weight: 300;
+      font-size: 2.5rem;
+    }
+
+    p {
+      @include s-heading-mixin();
+      margin-left: 5rem;
+      margin-right: 5rem;
+      font-size: 1.3rem;
+      font-weight: 300;
+    }
+  }
+
+  .student-satisfaction__block {
+    padding: 1rem;
 
     .student-satisfaction__intro {
+      @include small-font-mixin();
+
+      text-align: center;
+      padding-left: 150px;
+      padding-right: 150px;
+
+      color: $ux-grey-2;
+
+      p {
         @include small-font-mixin();
 
-        text-align: center;
+        margin: 0;
+      }
+      a {
+        color: #308282;
+        font-weight: 400;
+        text-decoration: underline;
+      }
 
-        color: $ux-grey-2;
-
-        p {
-            margin: 0;
-        }
-        a{
-            color:#308282;
-            font-weight:400;
-            text-decoration: underline;
-        }
-
-        .student-satisfaction__nss_logo {
-            margin-top: 5px;
-        }
+      .student-satisfaction__nss_logo {
+        margin-top: 5px;
+      }
     }
 
     .student-satisfaction__data-group {
-        margin-top: 24px;
-        margin-bottom: 23px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      padding: 1rem;
+
+      .student-satisfaction__data-group-heading {
+        text-align: left;
+        @include s-heading-mixin();
+        font-weight: 300;
+        margin-top: 0px;
+        margin-bottom: 16px;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 2rem;
         background-color: $divider-grey;
-        padding: 10px;
+        color: #000000;
+      }
 
-        .student-satisfaction__data-group-heading {
-            @include xs-heading-mixin();
-            font-weight:300;
-            text-align: center;
+      .student-satisfaction__charts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
 
-            background-color: $divider-grey;
-            color: #000000;
+        .student-satisfaction__chart-wrapper {
+          width: 25%;
 
-
-            p{
-                font-family: 'Nunito Sans', sans-serif;
-                font-size: 0.9rem;
-                font-weight: normal;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: normal;
-                letter-spacing: normal;
-                color: #666666;
-                padding-bottom:0;
+          .student-satisfaction__chart {
+            .student-satisfaction__chart-title {
+              @include small-font--bold-mixin();
+              font-family: "Nunito Sans", sans-serif;
+              text-align: center;
+              font-size: 1rem;
+              font-weight: 300;
+              color: $ux-grey-2;
             }
-            a{
-                font-family: 'Nunito Sans', sans-serif;
-                font-size: 0.9rem;
-                font-weight: normal;
-                font-stretch: normal;
-                text-decoration: underline;
-                line-height: normal;
-                letter-spacing: normal;
-                color: #266969;
-                padding-bottom:0;
-            }
+          }
         }
-
-        .student-satisfaction__charts {
-            display: flex;
-            flex-wrap: wrap;
-
-
-            .entry-information__chart-label {
-                @include small-font-mixin();
-                font-family: 'Nunito Sans', sans-serif;
-                display: block;
-                margin-top: 7px;
-                color: $ux-grey-3;
-            }
-
-            .student-satisfaction__chart-wrapper {
-                width: 100%;
-                margin-bottom:15px;
-                .student-satisfaction__chart {
-
-                    .doughnut-chart .highcharts-plot-border {
-                        fill: #F2F2F2!important;
-                    }
-                    
-                    margin-bottom: 38px;
-
-                    .student-satisfaction__chart-title {
-                        @include small-font--bold-mixin();
-
-                        text-align: center;
-                        margin-bottom: 0;
-                        margin-top: 18px;
-                        font-weight:200;
-                        color: $ux-grey-2;
-                    }
-                }
-            }
-            
-        }
+      }
     }
-}
+  }
 
-
-@media only screen and (min-width: 770px){
-    .student-satisfaction__overview {
-        padding: 1rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
-        margin-top: 1rem;
-        text-align: center;
-
-        .student-satisfaction__intro .rich-text p{
-            @include s-heading-mixin();
-            font-size: 1rem;
-            color: #666666;
-            font-weight:300;
-        }
-
-        .student-satisfaction__intro .rich-text a{
-            color:#308282;
-            font-weight:400;
-            text-decoration: underline;
-        }
-
-        .student-satisfaction__overview-lead {
-            @include xl-heading-mixin();
-            font-family: 'Nunito Sans', sans-serif;
-            color: #000000;
-            font-weight:300;
-            font-size: 2.5rem;
-        }
-
-        p {
-            @include s-heading-mixin();
-            margin-left: 5rem;
-            margin-right: 5rem;
-            font-size: 1.3rem;
-            font-weight:300;
-        }
-       
-    }
-
-    .student-satisfaction__block {
-        padding: 1rem;
-
-        .student-satisfaction__intro {
-            @include small-font-mixin();
-
-            text-align: center;
-            padding-left: 150px;
-            padding-right: 150px;
-
-            color: $ux-grey-2;
-
-            p {
-                @include small-font-mixin();
-
-                margin: 0;
-            }
-            a{
-                color:#308282;
-                font-weight:400;
-                text-decoration: underline;
-            }
-
-            .student-satisfaction__nss_logo {
-                margin-top: 5px;
-            }
-        }
-
-        .student-satisfaction__data-group {
-            margin-top: 30px;
-            margin-bottom: 30px;
-            padding:1rem;
-
-            .student-satisfaction__data-group-heading {
-                text-align: left;
-                @include s-heading-mixin();
-                font-weight:300;            
-                margin-top: 0px;
-                margin-bottom: 16px;
-                padding-left:2rem;
-                padding-right:2rem;
-                padding-top:2rem;
-                background-color: $divider-grey;
-                color: #000000;
-            }
-
-            .student-satisfaction__charts {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-
-                .student-satisfaction__chart-wrapper {
-                    width: 25%;
-                
-                    .student-satisfaction__chart {
-                      
-                        .student-satisfaction__chart-title {
-                            @include small-font--bold-mixin();
-                            font-family: 'Nunito Sans', sans-serif;
-                            text-align: center;
-                            font-size:1rem;
-                            font-weight:200;
-                            color: $ux-grey-2;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .highcharts-container tspan{
-       fill: #358282;
-       font-weight: 600;
-    }
-    .student-satisfaction__chart .discover-uni-chart .doughnut .doughnut-chart{
-        width: 139px;
-        height: 142px;
-        background-image: linear-gradient(to right, #4fa37e 0%, #42957f 36%, #368382 100%);
-
-    }
+  .highcharts-container tspan {
+    fill: #358282;
+    font-weight: 600;
+  }
+  .student-satisfaction__chart .discover-uni-chart .doughnut .doughnut-chart {
+    width: 139px;
+    height: 142px;
+    background-image: linear-gradient(
+      to right,
+      #4fa37e 0%,
+      #42957f 36%,
+      #368382 100%
+    );
+  }
 }

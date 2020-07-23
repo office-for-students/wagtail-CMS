@@ -1,10 +1,59 @@
 from django.shortcuts import render, redirect
 
 from CMS.enums import enums
+from CMS.translations import DICT
 from core.utils import get_page_for_language
 
 from courses.models import CourseDetailPage, Course, CourseComparisonPage, CourseManagePage
 from site_search.models import SearchLandingPage
+
+# apw added.
+from django.http import JsonResponse
+
+
+def regional_earnings(request):
+    if 'region' in request.POST and request.is_ajax():
+        region = request.POST['region']
+        institution_id = request.POST['institution_id']
+        course_id = request.POST['course_id']
+        kis_mode = request.POST['kis_mode']
+        course, error = Course.find(institution_id, course_id, kis_mode, language=enums.languages.ENGLISH)
+
+        with open("./CMS/static/jsonfiles/regions.json", "r") as f:
+            translations = f.read()
+
+        def format_thousands(earnings):
+            return f'{int(earnings):,}'
+
+        resp = {
+            'typical_range_text': DICT.get('Typical range').get('en'),
+            'data_from_text': DICT.get('Data from').get('en'),
+            'respondents_text': DICT.get('respondents').get('en'),
+            'students_text': DICT.get('students').get('en'),
+            'of_those_asked_text': DICT.get('of those asked').get('en'),
+
+            'salary_sector_15_med': format_thousands(getattr(course.salaries_sector[0], "med"+region)),
+            'salary_sector_15_lq': format_thousands(getattr(course.salaries_sector[0], "lq" + region)),
+            'salary_sector_15_uq': format_thousands(getattr(course.salaries_sector[0], "uq" + region)),
+            'salary_sector_15_pop': getattr(course.salaries_sector[0], "pop" + region),
+            'salary_sector_15_resp': getattr(course.salaries_sector[0], "resp" + region),
+
+            'salary_sector_3_med': format_thousands(getattr(course.salaries_sector[1], "med"+region)),
+            'salary_sector_3_lq': format_thousands(getattr(course.salaries_sector[1], "lq" + region)),
+            'salary_sector_3_uq': format_thousands(getattr(course.salaries_sector[1], "uq" + region)),
+            'salary_sector_3_pop': getattr(course.salaries_sector[1], "pop" + region),
+
+            'salary_sector_5_med': format_thousands(getattr(course.salaries_sector[2], "med"+region)),
+            'salary_sector_5_lq': format_thousands(getattr(course.salaries_sector[2], "lq" + region)),
+            'salary_sector_5_uq': format_thousands(getattr(course.salaries_sector[2], "uq" + region)),
+            'salary_sector_5_pop': getattr(course.salaries_sector[2], "pop" + region),
+
+            'go_inst_prov_pc': getattr(course.salaries_inst[0], 'prov_pc' + region)
+        }
+        return JsonResponse(resp)
+    else:
+        return JsonResponse({'retval': 'apw error'}),
+# apw added.
 
 
 def courses_detail(request, institution_id, course_id, kis_mode, language=enums.languages.ENGLISH):

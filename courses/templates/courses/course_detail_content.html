@@ -50,45 +50,6 @@
             {% endfor %}
         </div>
 
-        <div class="course-detail__uni-site-links">
-            <h2 class="course-detail__uni-site-links-header">
-                {{ page.uni_site_links_header }}
-            </h2>
-
-            <div class="course-detail__uni-site-links-blocks">
-                <div class="course-detail__uni-site-links-block">
-                    <p class="course-detail__uni-site-links-heading">
-                        {% get_translation key='course_details' language=page.get_language %}
-                    </p>
-
-                    <ul class="course-detail__uni-site-links-list">
-                        {% for link in course.course_links.course_details %}
-                            <li class="course-detail__uni-site-links-list-item">
-                                <a class="course-detail__uni-site-link"
-                                   href="{{ link.link }}">{{ link.label }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-
-                <div class="course-detail__uni-site-links-block">
-                    <p class="course-detail__uni-site-links-heading">
-                        {% get_translation key='costs_and_support' language=page.get_language %}
-                    </p>
-
-                    <ul class="course-detail__uni-site-links-list">
-                        {% for link in course.course_links.costs_support %}
-                            <li class="course-detail__uni-site-links-list-item">
-                                <a class="course-detail__uni-site-link"
-                                   href="{{ link.link }}">{{ link.label }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div hidden class="">
         <div class="course-detail__further-info-block">
             <a href="/dummy-link" class="course-detail__other-courses-link">

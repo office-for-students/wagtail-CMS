@@ -8,8 +8,8 @@ from django import template
 from CMS.enums import enums
 from CMS.translations import DICT
 from core.utils import get_current_version, get_code_version
-from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, AFTER_COURSE_KEY, \
-    EMPLOYMENT_AFTER_COURSE_KEY, ACCREDITATION_KEY, GRADUATE_PERCEPTIONS_KEY
+from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, EARNINGS_AFTER_COURSE_KEY, \
+    EMPLOYMENT_AFTER_COURSE_KEY, ACCREDITATION_KEY, GRADUATE_PERCEPTIONS_KEY, LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
 
 register = template.Library()
 
@@ -18,9 +18,10 @@ SHOW_STATS_LOOKUP = {
     ACCREDITATION_KEY: 'accreditations',
     ENTRY_INFO_KEY: 'show_entry_information_stats',
     AFTER_ONE_YEAR_KEY: 'show_after_one_year_stats',
-    AFTER_COURSE_KEY: 'show_after_course_stats',
+    EARNINGS_AFTER_COURSE_KEY: 'show_after_course_stats',
     EMPLOYMENT_AFTER_COURSE_KEY: 'show_employment_after_course_stats',
-    GRADUATE_PERCEPTIONS_KEY: 'show_graduate_perceptions_stats'
+    GRADUATE_PERCEPTIONS_KEY: 'show_graduate_perceptions_stats',
+    LINKS_TO_THE_INSTITUTION_WEBSITE_KEY: 'show_links_to_the_institution_website'
 }
 
 
@@ -150,3 +151,22 @@ def get_course_locations_list(locations, is_english):
 @register.simple_tag
 def is_multiple_of(number, base):
     return number % base == 0
+
+
+@register.simple_tag
+def get_index_of_item(item, view_list):
+    return view_list.index(item)
+
+
+# apw added.
+@register.simple_tag
+def get_region_list():
+    with open("./CMS/static/jsonfiles/regions.json", "r") as f:
+        regions = f.read()
+    return json.loads(regions)
+# apw added.
+
+
+@register.simple_tag
+def concat(first_str, second_str):
+    return str(first_str) + str(second_str)
