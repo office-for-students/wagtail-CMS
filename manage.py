@@ -9,7 +9,6 @@ if __name__ == "__main__":
 
     from django.core.management import execute_from_command_line
 
-
     # Environment variables below added for out-of-container debugging.
     os.environ["OUT_OF_CONTAINER_DEBUG"] = "False"
     if os.environ["OUT_OF_CONTAINER_DEBUG"] == "True":
@@ -45,6 +44,5 @@ if __name__ == "__main__":
             os.environ["WIDGETAPIHOST"] = env['WIDGETAPIHOST']
             os.environ["WIDGETAPIKEY"] = env['WIDGETAPIKEY']
     # Environment variables above added for debugging.
-
 
     execute_from_command_line(sys.argv)

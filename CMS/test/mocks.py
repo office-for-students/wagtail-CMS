@@ -16,6 +16,80 @@ class NewCourseFormatMocks:
             "course_mode": 1,
             "partition_key": "37",
             "course": {
+                "accreditations": [
+                    {
+                        "type": "00601",
+                        "accreditor_url": "http://www.accaglobal.com/en/qualifications/apply-now/exemptions.html",
+                        "text": {
+                            "english": "Accredited by the Association of Chartered Certified Accountants (ACCA) for the purpose of exemptions from some professional examinations.",
+                            "welsh": "Achrededig gan Gymdeithas Cyfrifyddion Siartredig Ardystiedig (ACCA) at bwrpas eithriadau rhag rhai arholiadau proffesiynol."
+                        },
+                        "dependent_on": {
+                            "code": 0,
+                            "label": "Accreditation is not dependent on student choice"
+                        }
+                    },
+                    {
+                        "type": "00901",
+                        "accreditor_url": "http://www.aacsb.edu/accreditation/accredited-members/global-listing",
+                        "text": {
+                            "english": "Accredited by the Association to Advance Collegiate Schools of Business (AACSB).",
+                            "welsh": "Achrededig gan Gymdeithas Hyrwyddo Ysgolion Colegol Busnes (AACSB)"
+                        },
+                        "dependent_on": {
+                            "code": 0,
+                            "label": "Accreditation is not dependent on student choice"
+                        }
+                    },
+                    {
+                        "type": "07601",
+                        "accreditor_url": "https://www.icas.com/education-and-qualifications/exam-exemptions-for-ca-qualification",
+                        "text": {
+                            "english": "Accredited by the Institute of Chartered Accountants Scotland (ICAS) for the purpose of exemption from some professional examinations.",
+                            "welsh": "Achrededig gan Sefydliad Cyfrifwyr Siartredig yn yr Alban (ICAS) at bwrpas eithrio rhag rhai arholiadau proffesiynol."
+                        },
+                        "dependent_on": {
+                            "code": 0,
+                            "label": "Accreditation is not dependent on student choice"
+                        }
+                    },
+                    {
+                        "type": "07501",
+                        "accreditor_url": "http://www.icaew.com/en/qualifications-and-programmes/aca/aca-training-in-the-uk/exams/credit-for-prior-learning",
+                        "text": {
+                            "english": "Accredited by the Institute of Chartered Accountants in England and Wales (ICAEW) for the purpose of exemption from some professional examinations.",
+                            "welsh": "Achrededig gan Sefydliad Cyfrifwyr Siartredig yng Nghymru a Lloegr (ICAEW) at bwrpas eithrio rhag rhai arholiadau proffesiynol."
+                        },
+                        "dependent_on": {
+                            "code": 0,
+                            "label": "Accreditation is not dependent on student choice"
+                        }
+                    },
+                    {
+                        "type": "03701",
+                        "accreditor_url": "https://www.cipfa.org/qualifications/exemptions",
+                        "text": {
+                            "english": "Accredited by the Chartered Institute of Public Finance and Accountancy (CIPFA) for the purpose of exemption from some professional examinations.",
+                            "welsh": "Achrededig gan Sefydliad Siartredig Cyllid Cyhoeddus a Chyfrifyddiaeth (CIPFA) at bwrpas eithrio rhag rhai arholiadau proffesiynol."
+                        },
+                        "dependent_on": {
+                            "code": 0,
+                            "label": "Accreditation is not dependent on student choice"
+                        }
+                    },
+                    {
+                        "type": "03401",
+                        "accreditor_url": "http://www.cimaglobal.com/Study-with-us/Exemptions/",
+                        "text": {
+                            "english": "Accredited by the Chartered Institute of Management Accountants (CIMA) for the purpose of exemption from some professional examinations through the Accredited degree accelerated route.",
+                            "welsh": "Achrededig gan Sefydliad Siartredig Cyfrifwyr Rheolaeth (CIMA) at bwrpas eithrio rhag rhai arholiadau proffesiynol drwy lwybr carlam gradd Achrededig."
+                        },
+                        "dependent_on": {
+                            "code": 0,
+                            "label": "Accreditation is not dependent on student choice"
+                        }
+                    }
+                ],
                 "country": {
                     "code": "XF",
                     "name": "England"

@@ -9,6 +9,45 @@
     height: 0;
 }
 
+.column-chart {
+    .highcharts-background {
+        fill: none;
+    }
+
+    .highcharts-title {
+        fill: $ux-grey-3;
+    }
+
+    #gradient-bar stop[offset="0"] {
+        stop-color: $gradient-dark-green;
+    }
+    #gradient-bar stop[offset="1"] {
+        stop-color: $gradient-light-green;
+    }
+
+    .highcharts-point {
+        stroke: $gradient-dark-green;
+        stroke-width: 2px;
+
+        &.highcharts-color-1 {
+            fill: $gradient-light-green;
+            fill: url(#gradient-bar); //currently broken, therefore commented out
+        }
+
+        &.highcharts-color-0 {
+            fill: $white;
+        }
+    }
+
+    .highcharts-xaxis .highcharts-axis-line {
+        stroke: $gradient-light-green;
+    }
+
+    .highcharts-grid-line {
+        stroke: none;
+    }
+}
+
 .bar-chart {
     .highcharts-background {
         fill: none;
@@ -50,7 +89,7 @@
 
 .doughnut-chart {
     .highcharts-plot-border {
-        fill: #f4f8f8;
+        fill: $ice-blue;
         stroke: none;
     }
 
@@ -77,8 +116,7 @@
         width: 50%;
 
         .highcharts-plot-border {
-//             fill: $white;
-            fill: #f4f8f8;
+            fill: $ice-blue;
             stroke: none;
         }
 
