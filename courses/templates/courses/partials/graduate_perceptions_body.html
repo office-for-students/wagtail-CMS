@@ -11,7 +11,7 @@
 
 <div class="tab-content">
 {% for perceptions_stats in course_details.graduate_perceptions %}
-    <div class="tab-pane {% if not forloop.counter0 %} show active {%else%} fade {% endif %}" id="course{{ forloop.counter }}" role="tabpanel" aria-labelledby="course{{ forloop.counter }}-tab">
+    <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="course{{ forloop.counter }}" role="tabpanel" aria-labelledby="course{{ forloop.counter }}-tab">
 
     {% if perceptions_stats.go_work_mean %}
         <div class="student-satisfaction__overview mt-3 mx-1 p-0 d-flex flex-wrap row">
