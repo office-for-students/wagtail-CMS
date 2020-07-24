@@ -175,14 +175,6 @@ class NewCourseFormatMocks:
                         "go_work_on_track": "50",
                         "go_work_pop": "60",
                         "go_work_resp_rate": "85"
-                    },
-                    {
-                        "course_name": "Course 2",
-                        "go_work_skills": "87",
-                        "go_work_mean": "50",
-                        "go_work_on_track": "32",
-                        "go_work_pop": "85",
-                        "go_work_resp_rate": "60"
                     }
                 ],
                 "length_of_course": {
