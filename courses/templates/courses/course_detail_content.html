@@ -28,8 +28,7 @@
                                     aria-controls="course-detail__accordion-body-{{ forloop.counter }}"
                                     aria-label="Show {{ accordion.value.heading }} content"
                                     aria-expanded="false">
-
-                                    <i class="fas fa-plus pr-3 text-white"></i>
+                                    <i id="accordion_icon" class="fas fa-plus pr-3 text-white"></i>
                                     {{ accordion.value.heading }}
                                 </h2>
                             </button>
@@ -102,3 +101,9 @@
 
     {% include 'courses/partials/compare-popup-bar.html' %}
 </div>
+<script>
+$(".course-detail__accordion-heading").on("click",function(){
+   $('#accordion_icon').toggleClass("fa-plus");
+   $('#accordion_icon').toggleClass("fa-minus");
+});
+</script>
