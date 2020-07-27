@@ -23,12 +23,12 @@
                 {% if show_accordion %}
                     <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
                         <div class="">
-                            <button class="course-detail__accordion-heading">
+                            <button class="course-detail__accordion-heading" onclick="toggle_icon('accordion_icon_{{ forloop.counter }}')">
                                 <h2 id="course-detail__accordion-heading-{{ forloop.counter }} text-white"
                                     aria-controls="course-detail__accordion-body-{{ forloop.counter }}"
                                     aria-label="Show {{ accordion.value.heading }} content"
                                     aria-expanded="false">
-                                    <i id="accordion_icon" class="fas fa-plus pr-3 text-white"></i>
+                                    <i id="accordion_icon_{{ forloop.counter }}" class="fas fa-plus pr-3 text-white"></i>
                                     {{ accordion.value.heading }}
                                 </h2>
                             </button>
@@ -102,8 +102,13 @@
     {% include 'courses/partials/compare-popup-bar.html' %}
 </div>
 <script>
-$(".course-detail__accordion-heading").on("click",function(){
-   $('#accordion_icon').toggleClass("fa-plus");
-   $('#accordion_icon').toggleClass("fa-minus");
-});
+function toggle_icon(icon_id){
+    
+    var icon_name = "#" + icon_id;
+    console.log(icon_name);
+    $(icon_name).toggleClass("fa-plus");
+    $(icon_name).toggleClass("fa-minus");
+}
+   
+
 </script>

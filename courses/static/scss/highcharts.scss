@@ -31,7 +31,7 @@
 
         &.highcharts-color-1 {
             fill: $gradient-light-green;
-            fill: url(#gradient-bar); //currently broken, therefore commented out
+            fill: url(#gradient-bar);
         }
 
         &.highcharts-color-0 {
@@ -70,7 +70,7 @@
 
         &.highcharts-color-1 {
             fill: $gradient-light-green;
-            // fill: url(#gradient-bar); //currently broken, therefore commented out
+            fill: url(#gradient-bar);
         }
 
         &.highcharts-color-0 {

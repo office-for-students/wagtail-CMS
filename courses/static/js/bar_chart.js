@@ -59,31 +59,45 @@ $(function () {
                     series: {
                         stacking: 'percentage',
                         borderWidth: 2,
-                        borderColor: '#308282'
+                        borderColor: '#308282',
+                        color: {
+                            linearGradient: {
+                              x1: 0,
+                              x2: 0,
+                              y1: 0,
+                              y2: 1
+                            },
+                            stops: [
+                              [0, '#f79685'],
+                              [1, '#f45c42']
+                            ]
+                          },
+                        y: this.value,
+                        pointWidth: '40',
                     }
                 },
                 series: [{
                     data: [{
-                        color: '#FFFFFF',
-                        y: (100 - this.value),
-                        pointWidth: '40',
-                    }]
-                }, {
-                    data: [{
                         color: {
-                            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+                            linearGradient: {
+                              x1: 0,
+                              x2: 0,
+                              y1: 0,
+                              y2: 1
+                            },
                             stops: [
-                                [0, '#368382'],
-                                [1, '#4fa37e']
+                              [0, '#f79685'],
+                              [1, '#f45c42']
                             ]
-                        },
+                          },
                         y: this.value,
-                        pointWidth: '40',
+                        pointWidth: '40'
                     }]
-                }],
+                }], 
+                   
                 tooltip: {
                     enabled: false,
-                },
+                }
             });
 
             var chart = this.target.find('svg');
