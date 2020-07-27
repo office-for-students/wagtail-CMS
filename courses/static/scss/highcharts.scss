@@ -9,46 +9,10 @@
     height: 0;
 }
 
-.column-chart {
-    .highcharts-background {
-        fill: none;
-    }
-
-    .highcharts-title {
-        fill: $ux-grey-3;
-    }
-
-    #gradient-bar stop[offset="0"] {
-        stop-color: $gradient-dark-green;
-    }
-    #gradient-bar stop[offset="1"] {
-        stop-color: $gradient-light-green;
-    }
-
-    .highcharts-point {
-        stroke: $gradient-dark-green;
-        stroke-width: 2px;
-
-        &.highcharts-color-1 {
-            fill: $gradient-light-green;
-            fill: url(#gradient-bar);
-        }
-
-        &.highcharts-color-0 {
-            fill: $white;
-        }
-    }
-
-    .highcharts-xaxis .highcharts-axis-line {
-        stroke: $gradient-light-green;
-    }
-
-    .highcharts-grid-line {
-        stroke: none;
-    }
-}
-
 .bar-chart {
+    .highcharts-plot-border{
+        fill:$white;
+    }
     .highcharts-background {
         fill: none;
     }
@@ -57,16 +21,10 @@
         fill: $ux-grey-3;
     }
 
-    #gradient-bar stop[offset="0"] {
-        stop-color: $gradient-dark-green;
-    }
-    #gradient-bar stop[offset="1"] {
-        stop-color: $gradient-light-green;
-    }
-
     .highcharts-point {
-        stroke: $gradient-dark-green;
-        stroke-width: 2px;
+        // stroke: $gradient-dark-green;
+        // stroke-width: 2px;
+        stroke:none;
 
         &.highcharts-color-1 {
             fill: $gradient-light-green;
@@ -74,12 +32,13 @@
         }
 
         &.highcharts-color-0 {
-            fill: $white;
+            fill: $gradient-light-green;
+            fill: url(#gradient-bar);
         }
     }
 
     .highcharts-xaxis .highcharts-axis-line {
-        stroke: $gradient-light-green;
+        // stroke: $gradient-light-green;
     }
 
     .highcharts-grid-line {
