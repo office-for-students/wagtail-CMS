@@ -1,11 +1,13 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags %}
 
-{% if course_details.graduate_perceptions|length > 1 %}
+{% if course_details.has_multiple_graduate_perceptions_stats %}
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-    {% for course in course_details.graduate_perceptions %}
+    {% for subject in course_details.subject_names %}
         <li class="nav-item">
             <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="course{{ forloop.counter }}-tab" data-toggle="tab" href="#course{{ forloop.counter }}" role="tab"
-               aria-controls="course{{ forloop.counter }}" aria-selected="true">{{course.course_name}}</a>
+               aria-controls="course{{ forloop.counter }}" aria-selected="true">
+                {{subject.display_subject_name}}
+            </a>
         </li>
     {% endfor %}
 </ul>

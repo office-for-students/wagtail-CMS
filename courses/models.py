@@ -300,6 +300,11 @@ class Course:
             self.distance_learning = CourseDistanceLearning(course_details.get('distance_learning'),
                                                             self.display_language)
             self.sandwich_year = CourseSandwichYear(course_details.get('sandwich_year'))
+
+            self.subject_names = []
+            for subject in course_details.get('subjects'):
+                self.subject_names.append(CourseSubject(subject, self.display_language))
+
             self.year_abroad = CourseYearAbroad(course_details.get('year_abroad'))
             self.foundation_year = CourseFoundationYear(course_details.get('foundation_year_availability'),
                                                         self.display_language)
@@ -444,6 +449,10 @@ class Course:
     @property
     def has_multiple_one_year_stats(self):
         return len(self.continuation_stats) > 1
+
+    @property
+    def has_multiple_graduate_perceptions_stats(self):
+        return len(self.graduate_perceptions) > 1
 
     @property
     def show_after_course_stats(self):
@@ -623,6 +632,18 @@ class CourseYearAbroad:
     def __init__(self, data_obj):
         self.code = data_obj.get('code')
         self.label = fallback_to(data_obj.get('label'), '')
+
+
+class CourseSubject:
+    def __init__(self, data_obj, language):
+        self.display_language = language
+        self.subject_english = data_obj.get('english', '')
+        self.subject_welsh = data_obj.get('welsh', '')
+
+    def display_subject_name(self):
+        if self.display_language == enums.languages.ENGLISH:
+            return self.subject_english if self.subject_english else self.subject_welsh
+        return self.subject_welsh if self.subject_welsh else self.subject_english
 
 
 class EntryStatistics:

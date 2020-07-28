@@ -242,10 +242,16 @@ class NewJointCourseFormatMocks:
                 },
                 "subjects": [
                     {
-                        "code": "CAH01-01-01",
+                        "code": "CAH09-01-01",
                         "level": 3,
-                        "english": "Graphical Design (non-specific)",
-                        "welsh": "Gwyddorau meddygol (amhenodol)"
+                        "english": "Mathematics",
+                        "welsh": "Mathemateg"
+                    },
+                    {
+                        "code": "CAH17-01-04",
+                        "level": 3,
+                        "english": "Management studies",
+                        "welsh": "Astudiaethau rheoli"
                     }
                 ],
                 "title": {
@@ -519,6 +525,129 @@ class NewJointCourseFormatMocks:
                                 "agree_or_strongly_agree": 87
                             },
                             "response_rate": 79
+                        },
+                        {
+                          "aggregation_level": 13,
+                          "number_of_students": 60,
+                          "question_1": {
+                            "description": "Staff are good at explaining things",
+                            "agree_or_strongly_agree": 71
+                          },
+                          "question_2": {
+                            "description": "Staff have made the subject interesting",
+                            "agree_or_strongly_agree": 63
+                          },
+                          "question_3": {
+                            "description": "The course is intellectually stimulating",
+                            "agree_or_strongly_agree": 70
+                          },
+                          "question_4": {
+                            "description": "My course has challenged me to achieve my best work",
+                            "agree_or_strongly_agree": 77
+                          },
+                          "question_5": {
+                            "description": "My course has provided me with opportunities to explore ideas or concepts in depth",
+                            "agree_or_strongly_agree": 84
+                          },
+                          "question_6": {
+                            "description": "My course has provided me with opportunities to bring information and ideas together from different topics",
+                            "agree_or_strongly_agree": 70
+                          },
+                          "question_7": {
+                            "description": "My course has provided me with opportunities to apply what I have learnt",
+                            "agree_or_strongly_agree": 57
+                          },
+                          "question_8": {
+                            "description": "The criteria used in marking have been clear in advance",
+                            "agree_or_strongly_agree": 78
+                          },
+                          "question_9": {
+                            "description": "Marking and assessment has been fair",
+                            "agree_or_strongly_agree": 74
+                          },
+                          "question_10": {
+                            "description": "Feedback on my work has been timely",
+                            "agree_or_strongly_agree": 66
+                          },
+                          "question_11": {
+                            "description": "I have received helpful comments on my work",
+                            "agree_or_strongly_agree": 60
+                          },
+                          "question_12": {
+                            "description": "I have been able to contact staff when I needed to",
+                            "agree_or_strongly_agree": 84
+                          },
+                          "question_13": {
+                            "description": "I have received sufficient advice and guidance in relation to my course",
+                            "agree_or_strongly_agree": 76
+                          },
+                          "question_14": {
+                            "description": "Good advice was available when I needed to make study choices on my course",
+                            "agree_or_strongly_agree": 66
+                          },
+                          "question_15": {
+                            "description": "The course is well organised and running smoothly",
+                            "agree_or_strongly_agree": 69
+                          },
+                          "question_16": {
+                            "description": "The timetable works efficiently for me",
+                            "agree_or_strongly_agree": 88
+                          },
+                          "question_17": {
+                            "description": "Any changes in the course or teaching have been communicated effectively",
+                            "agree_or_strongly_agree": 75
+                          },
+                          "question_18": {
+                            "description": "The IT resources and facilities provided have supported my learning well",
+                            "agree_or_strongly_agree": 80
+                          },
+                          "question_19": {
+                            "description": "The library resources (e.g. books, online services and learning spaces) have supported my learning well",
+                            "agree_or_strongly_agree": 93
+                          },
+                          "question_20": {
+                            "description": "I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to",
+                            "agree_or_strongly_agree": 88
+                          },
+                          "question_21": {
+                            "description": "I feel part of a community of staff and students",
+                            "agree_or_strongly_agree": 59
+                          },
+                          "question_22": {
+                            "description": "I have had the right opportunities to work with other students as part of my course",
+                            "agree_or_strongly_agree": 87
+                          },
+                          "question_23": {
+                            "description": "I have had the right opportunities to provide feedback on my course",
+                            "agree_or_strongly_agree": 80
+                          },
+                          "question_24": {
+                            "description": "Staff value students' views and opinions about the course",
+                            "agree_or_strongly_agree": 70
+                          },
+                          "question_25": {
+                            "description": "It is clear how students' feedback on the course has been acted on",
+                            "agree_or_strongly_agree": 47
+                          },
+                          "question_26": {
+                            "description": "The students' union (association or guild) effectively represents students' academic interests",
+                            "agree_or_strongly_agree": 45
+                          },
+                          "question_27": {
+                            "description": "Overall, I am satisfied with the quality of the course",
+                            "agree_or_strongly_agree": 78
+                          },
+                          "response_rate": 66,
+                          "subject": {
+                            "code": "CAH17-01-04",
+                            "english_label": "Management studies",
+                            "welsh_label": "Astudiaethau rheoli"
+                          },
+                          "unavailable": {
+                            "code": 0,
+                            "reason_english": "There was not enough data to publish information specifically for this course. This is either because the course size is small or not enough students responded to a survey. For this reason, the data displayed is for all students in Management studies.",
+                            "reason_welsh": "Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn naill ai oherwydd bod maint y cwrs yn fach neu am nad ymatebodd digon o fyfyrwyr i arolwg. Am y rheswm hwn, mae'r data a ddangosir ar gyfer yr holl fyfyrwyr mewn Astudiaethau rheoli."
+                          }
                         }
                     ],
                     "salary": [

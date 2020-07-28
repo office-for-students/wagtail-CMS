@@ -1,11 +1,21 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags %}
 
+{% if course_details.has_multiple_graduate_perceptions_stats %}
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    {% for subject in course_details.subject_names %}
+        <li class="nav-item">
+            <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="course{{ forloop.counter }}-tab" data-toggle="tab" href="#course{{ forloop.counter }}" role="tab"
+               aria-controls="course{{ forloop.counter }}" aria-selected="true">
+                {{subject.display_subject_name}}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="tab-content">
 {% for overall_stats in course_details.overall_satisfaction %}
-    {% if course_details.has_multiple_satisfaction_stats %}
-        <h2 class="satisfaction_subject_name">
-            {% get_translation key='data_for' language=page.get_language %}: {{overall_stats.satisfaction_stats.display_subject_name}}
-        </h2>
-    {% endif %}
+    <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="course{{ forloop.counter }}" role="tabpanel" aria-labelledby="course{{ forloop.counter }}-tab">
 
     {% if overall_stats.satisfaction_stats.question_27.show_data_point %}
         <div class="student-satisfaction__overview mt-3 mx-1 p-0 d-flex flex-wrap row">
@@ -866,4 +876,6 @@
             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
         {% endif %}
     </div>
+    </div>
 {% endfor %}
+</div>
