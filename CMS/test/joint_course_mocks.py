@@ -299,16 +299,48 @@ class NewJointCourseFormatMocks:
                     ],
                     "entry": [
                         {
-                            "a-level": 75,
+                            "a-level": 65,
                             "access": 0,
-                            "aggregation_level": 14,
-                            "another_higher_education_qualifications": 25,
-                            "baccalaureate": 0,
+                            "aggregation_level": 13,
+                            "another_higher_education_qualifications": 5,
+                            "baccalaureate": 5,
+                            "degree": 5,
+                            "foundation": 0,
+                            "none": 0,
+                            "number_of_students": 30,
+                            "other_qualifications": 20,
+                            "subject": {
+                                "code": "CAH09-01-01",
+                                "english_label": "Mathematics",
+                                "welsh_label": "Mathemateg"
+                            },
+                            "unavailable": {
+                                "code": 1,
+                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Mathematics.",
+                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Mathemateg."
+                            }
+                        },
+                        {
+                            "a-level": 41,
+                            "access": 0,
+                            "aggregation_level": 13,
+                            "another_higher_education_qualifications": 10,
+                            "baccalaureate": 13,
                             "degree": 0,
                             "foundation": 0,
                             "none": 0,
-                            "number_of_students": 20,
-                            "other_qualifications": 0
+                            "number_of_students": 90,
+                            "other_qualifications": 36,
+                            "subject": {
+                                "code": "CAH17-01-04",
+                                "english_label": "Management studies",
+                                "welsh_label": "Astudiaethau rheoli"
+                            },
+                            "unavailable": {
+                                "code": 1,
+                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Management studies.",
+                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Astudiaethau rheoli."
+                            }
                         }
                     ],
                     "job_type": [
@@ -675,13 +707,18 @@ class NewJointCourseFormatMocks:
                     ],
                     "tariff": [
                         {
-                            "aggregation_level": 14,
-                            "number_of_students": 15,
+                            "aggregation_level": 13,
+                            "number_of_students": 20,
+                            "subject": {
+                                "code": "CAH09-01-01",
+                                "english_label": "Mathematics",
+                                "welsh_label": "Mathemateg"
+                            },
                             "tariffs": [
                                 {
                                     "code": "T001",
                                     "description": "less than 48 tariff points",
-                                    "entrants": 0
+                                    "entrants": 5
                                 },
                                 {
                                     "code": "T048",
@@ -691,7 +728,7 @@ class NewJointCourseFormatMocks:
                                 {
                                     "code": "T064",
                                     "description": "between 64 and 79 tariff points",
-                                    "entrants": 25
+                                    "entrants": 0
                                 },
                                 {
                                     "code": "T080",
@@ -706,49 +743,140 @@ class NewJointCourseFormatMocks:
                                 {
                                     "code": "T112",
                                     "description": "between 112 and 127 tariff points",
-                                    "entrants": 30
+                                    "entrants": 20
                                 },
                                 {
                                     "code": "T128",
                                     "description": "between 128 and 143 tariff points",
-                                    "entrants": 15
+                                    "entrants": 10
                                 },
                                 {
                                     "code": "T144",
                                     "description": "between 144 and 159 tariff points",
-                                    "entrants": 0
+                                    "entrants": 10
                                 },
                                 {
                                     "code": "T160",
                                     "description": "between 160 and 175 tariff points",
-                                    "entrants": 30
+                                    "entrants": 10
                                 },
                                 {
                                     "code": "T176",
                                     "description": "between 176 and 191 tariff points",
-                                    "entrants": 0
+                                    "entrants": 5
                                 },
                                 {
                                     "code": "T192",
                                     "description": "between 192 and 207 tariff points",
-                                    "entrants": 0
+                                    "entrants": 15
                                 },
                                 {
                                     "code": "T208",
                                     "description": "between 208 and 223 tariff points",
-                                    "entrants": 0
+                                    "entrants": 15
                                 },
                                 {
                                     "code": "T224",
                                     "description": "between 224 and 239 tariff points",
+                                    "entrants": 10
+                                },
+                                {
+                                    "code": "T240",
+                                    "description": "240 or more tariff points",
+                                    "entrants": 10
+                                }
+                            ],
+                            "unavailable": {
+                                "code": 1,
+                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Mathematics.",
+                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Mathemateg."
+                            }
+                        },
+                        {
+                            "aggregation_level": 13,
+                            "number_of_students": 45,
+                            "subject": {
+                                "code": "CAH17-01-04",
+                                "english_label": "Management studies",
+                                "welsh_label": "Astudiaethau rheoli"
+                            },
+                            "tariffs": [
+                                {
+                                    "code": "T001",
+                                    "description": "less than 48 tariff points",
+                                    "entrants": 5
+                                },
+                                {
+                                    "code": "T048",
+                                    "description": "between 48 and 63 tariff points",
                                     "entrants": 0
+                                },
+                                {
+                                    "code": "T064",
+                                    "description": "between 64 and 79 tariff points",
+                                    "entrants": 0
+                                },
+                                {
+                                    "code": "T080",
+                                    "description": "between 80 and 95 tariff points",
+                                    "entrants": 0
+                                },
+                                {
+                                    "code": "T096",
+                                    "description": "between 96 and 111 tariff points",
+                                    "entrants": 0
+                                },
+                                {
+                                    "code": "T112",
+                                    "description": "between 112 and 127 tariff points",
+                                    "entrants": 0
+                                },
+                                {
+                                    "code": "T128",
+                                    "description": "between 128 and 143 tariff points",
+                                    "entrants": 10
+                                },
+                                {
+                                    "code": "T144",
+                                    "description": "between 144 and 159 tariff points",
+                                    "entrants": 5
+                                },
+                                {
+                                    "code": "T160",
+                                    "description": "between 160 and 175 tariff points",
+                                    "entrants": 10
+                                },
+                                {
+                                    "code": "T176",
+                                    "description": "between 176 and 191 tariff points",
+                                    "entrants": 25
+                                },
+                                {
+                                    "code": "T192",
+                                    "description": "between 192 and 207 tariff points",
+                                    "entrants": 15
+                                },
+                                {
+                                    "code": "T208",
+                                    "description": "between 208 and 223 tariff points",
+                                    "entrants": 15
+                                },
+                                {
+                                    "code": "T224",
+                                    "description": "between 224 and 239 tariff points",
+                                    "entrants": 15
                                 },
                                 {
                                     "code": "T240",
                                     "description": "240 or more tariff points",
                                     "entrants": 0
                                 }
-                            ]
+                            ],
+                            "unavailable": {
+                                "code": 1,
+                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Management studies.",
+                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Astudiaethau rheoli."
+                            }
                         }
                     ]
                 },

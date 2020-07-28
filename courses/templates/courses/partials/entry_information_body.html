@@ -2,7 +2,7 @@
 {% load wagtailcore_tags %}
 {% load discover_uni_tags %}
 
-{% for entry_stats in course_details.entry_stats %}
+
 
     <div class="entry-information__block">
         <div class="entry-information__overview my-3 p-3 mx-1 pt-4 d-flex flex-wrap row">
@@ -25,8 +25,24 @@
             {{block.value.qualification_intro}}
         </p> -->
 
-        {% if entry_stats.display_stats %}
-        
+{% if course_details.has_multiple_entry_stats %}
+<ul class="nav nav-tabs" id="qualification-types-tab" role="tablist">
+    {% for subject in course_details.subject_names %}
+        <li class="nav-item">
+            <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="qualification-types-{{ forloop.counter }}-tab" data-toggle="tab" href="#qualification-types-{{ forloop.counter }}" role="tab"
+               aria-controls="qualification-types-{{ forloop.counter }}" aria-selected="true">
+                {{subject.display_subject_name}}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="tab-content">
+{% for entry_stats in course_details.entry_stats %}
+    {% if entry_stats.display_stats %}
+        <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="qualification-types-{{ forloop.counter }}" role="tabpanel" aria-labelledby="qualification-types-{{ forloop.counter }}-tab">
+
             <div class="entry-information__qualification-charts p-3 d-flex flex-wrap row mx-1">
                 <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
                     <h2 class="entry-information__heading py-3">{{block.value.qualification_heading}}{% if course_details.has_multiple_entry_stats %}:
@@ -158,12 +174,29 @@
                 </div>
             </div>
         {% endif %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}
     </div>
 
-    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}
 {% endfor %}
+</div>
 
+{% if course_details.has_multiple_entry_stats %}
+<ul class="nav nav-tabs" id="ucas-points-tab" role="tablist">
+    {% for subject in course_details.subject_names %}
+        <li class="nav-item">
+            <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="ucas-points-{{ forloop.counter }}-tab" data-toggle="tab" href="#ucas-points-{{ forloop.counter }}" role="tab"
+               aria-controls="ucas-points-{{ forloop.counter }}" aria-selected="true">
+                {{subject.display_subject_name}}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="tab-content">
 {% for tariff_stats in  course_details.tariff_stats %}
+   <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="ucas-points-{{ forloop.counter }}" role="tabpanel" aria-labelledby="ucas-points-{{ forloop.counter }}-tab">
+
     <div class="entry-information__block my-2">
         <div class="entry-information__ucas-points p-3 d-flex flex-wrap row mx-1">
             <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
@@ -202,4 +235,7 @@
         </div>
     </div>
     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
+   </div>
 {% endfor %}
+</div></div>
+
