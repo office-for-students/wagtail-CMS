@@ -6,8 +6,7 @@ from core.utils import get_page_for_language
 
 from courses.models import CourseDetailPage, Course, CourseComparisonPage, CourseManagePage
 from site_search.models import SearchLandingPage
-
-# apw added.
+ 
 from django.http import JsonResponse
 
 
@@ -19,11 +18,43 @@ def regional_earnings(request):
         kis_mode = request.POST['kis_mode']
         course, error = Course.find(institution_id, course_id, kis_mode, language=enums.languages.ENGLISH)
 
+        # TODO: apw: Ask Rob what the following 2 lines of code do. Think it might be a copy n past error.
         with open("./CMS/static/jsonfiles/regions.json", "r") as f:
             translations = f.read()
 
         def format_thousands(earnings):
             return f'{int(earnings):,}'
+
+        unavail_msgs_go = course.salaries_sector[0].display_unavailable_info()
+        unavail_msgs_leo = course.salaries_sector[1].display_unavailable_info()
+        salary_sector_15_unavail_text = ""
+        salary_sector_3_unavail_text = ""
+        salary_sector_5_unavail_text = ""
+        unavailable_region_not_exists = ""
+        unavailable_region_not_nation = ""
+        unavailable_region_is_ni = ""
+
+        if unavail_msgs_leo['unavailable_region_not_exists'] != "":
+            unavailable_region_not_exists = unavail_msgs_leo['unavailable_region_not_exists']
+        if unavail_msgs_go['unavailable_region_not_nation'] != "":
+            unavailable_region_not_nation = unavail_msgs_go['unavailable_region_not_nation']
+        if unavail_msgs_leo['unavailable_region_is_ni'] != "":
+            unavailable_region_is_ni = unavail_msgs_leo['unavailable_region_is_ni']
+
+        if getattr(course.salaries_sector[0], "med"+region) == "" or getattr(course.salaries_sector[0], "med"+region) is None:
+            salary_sector_15_unavail_text = unavailable_region_not_exists
+        elif region not in ('_uk', '_e', '_s', '_w', '_ni'):
+            salary_sector_15_unavail_text = unavailable_region_not_nation
+
+        if getattr(course.salaries_sector[1], "med"+region) == "" or getattr(course.salaries_sector[1], "med"+region) is None:
+            salary_sector_3_unavail_text = unavailable_region_not_exists
+        elif region == '_ni':
+            salary_sector_3_unavail_text = unavailable_region_is_ni
+
+        if getattr(course.salaries_sector[2], "med"+region) == "" or getattr(course.salaries_sector[2], "med"+region) is None:
+            salary_sector_5_unavail_text = unavailable_region_not_exists
+        elif region == '_ni':
+            salary_sector_5_unavail_text = unavailable_region_is_ni
 
         resp = {
             'typical_range_text': DICT.get('Typical range').get('en'),
@@ -37,23 +68,25 @@ def regional_earnings(request):
             'salary_sector_15_uq': format_thousands(getattr(course.salaries_sector[0], "uq" + region)),
             'salary_sector_15_pop': getattr(course.salaries_sector[0], "pop" + region),
             'salary_sector_15_resp': getattr(course.salaries_sector[0], "resp" + region),
+            'salary_sector_15_unavail_text': salary_sector_15_unavail_text,
 
             'salary_sector_3_med': format_thousands(getattr(course.salaries_sector[1], "med"+region)),
             'salary_sector_3_lq': format_thousands(getattr(course.salaries_sector[1], "lq" + region)),
             'salary_sector_3_uq': format_thousands(getattr(course.salaries_sector[1], "uq" + region)),
             'salary_sector_3_pop': getattr(course.salaries_sector[1], "pop" + region),
+            'salary_sector_3_unavail_text': salary_sector_3_unavail_text,
 
             'salary_sector_5_med': format_thousands(getattr(course.salaries_sector[2], "med"+region)),
             'salary_sector_5_lq': format_thousands(getattr(course.salaries_sector[2], "lq" + region)),
             'salary_sector_5_uq': format_thousands(getattr(course.salaries_sector[2], "uq" + region)),
             'salary_sector_5_pop': getattr(course.salaries_sector[2], "pop" + region),
+            'salary_sector_5_unavail_text': salary_sector_5_unavail_text,
 
             'go_inst_prov_pc': getattr(course.salaries_inst[0], 'prov_pc' + region)
         }
         return JsonResponse(resp)
     else:
         return JsonResponse({'retval': 'apw error'}),
-# apw added.
 
 
 def courses_detail(request, institution_id, course_id, kis_mode, language=enums.languages.ENGLISH):

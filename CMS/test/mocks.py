@@ -138,11 +138,9 @@ class NewCourseFormatMocks:
                     "go_inst_prov_pc_ed": "0",
                     "go_inst_prov_pc_gl": "0",
                     "go_inst_prov_pc_cf": "0",
-                    "unavail_text_inst_level_eng": "This is the unavail message in ENGLISH for the GO institution panel.",
-                    "unavail_text_inst_level_wls": "This is the unavail message in WELSH for the GO institution panel.",
-                    "unavail_text_inst_level_2_eng": "This is the second unavail message in ENGLISH for the GO institution panel.",
-                    "unavail_text_inst_level_2_wls": "This is the second unavail message in WELSH for the GO institution panel."
-                },
+                    "unavail_text_english": "No data available\n\nThis is either because the course size is small or there were not enough responses to produce data. This does not reflect on the quality of the course.",
+                    "unavail_text_welsh": "No data available\n\n***Need Welsh translation*** This is either because the course size is small or there were not enough responses to produce data. This does not reflect on the quality of the course."
+               },
                 "leo3_inst": {
                     "unavail_reason": "0",
                     "pop": "110",
@@ -152,8 +150,8 @@ class NewCourseFormatMocks:
                     "lq": "14500",
                     "med": "18000",
                     "uq": "24000",
-                    "unavail_text_inst_level_eng": "This is the unavail message in ENGLISH for the LEO3 institution panel.",
-                    "unavail_text_inst_level_wls": "This is the unavail message in WELSH for the LEO3 institution panel."
+                    "unavail_text_english": "No data available\n\nThis may be because the course size is small, and does not reflect on the quality of the course.",
+                    "unavail_text_welsh": "No data available\n\n***Need Welsh translation*** This may be because the course size is small, and does not reflect on the quality of the course."
                  },
                 "leo5_inst": {
                     "unavail_reason": "0",
@@ -164,8 +162,8 @@ class NewCourseFormatMocks:
                     "lq": "14500",
                     "med": "18000",
                     "uq": "24000",
-                    "unavail_text_inst_level_eng": "This is the unavail message in ENGLISH for the LEO5 institution panel.",
-                    "unavail_text_inst_level_wls": "This is the unavail message in WELSH for the LEO5 institution panel."
+                    "unavail_text_english": "No data available\n\nThis may be because the course size is small, and does not reflect on the quality of the course.",
+                    "unavail_text_welsh": "No data available\n\n***Need Welsh translation*** This may be because the course size is small, and does not reflect on the quality of the course."
                 },
                 "go_voice_work": [
                     {
@@ -708,10 +706,10 @@ class NewCourseFormatMocks:
                     "uq_cf": "25000",
                     "pop_cf": "140",
                     "resp_cf": "20",
-                    "unavail_text_sector_level_eng": "This is the unavail message in ENGLISH for the GO sector panel.",
-                    "unavail_text_sector_level_wls": "This is the unavail message in WELSH for the GO sector panel.",
-                    "unavail_text_non_nation_selected_eng": "This is the unavail message in ENGLISH for the GO institution panel if the user selects a non-nation region.",
-                    "unavail_text_non_nation_selected_wls": "This is the unavail message in WELSH for the GO institution panel if the user selects a non-nation region."
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "No data available ***Need Welsh translation***",
+                    "unavail_text_region_not_nation_english": "No data available\n\nSorry, this data is not available at this level.",
+                    "unavail_text_region_not_nation_welsh": "No data available\n\n***Need Welsh translation*** Sorry, this data is not available at this level."
                 },
                 "leo3_salary_sector": {
                     "unavail_reason": "0",
@@ -806,11 +804,11 @@ class NewCourseFormatMocks:
                     "uq_cf": "25000",
                     "pop_cf": "140",
                     "resp_cf": "20",
-                    "unavail_text_sector_level_eng": "This is the unavail message in ENGLISH for the LEO3 sector panel.",
-                    "unavail_text_sector_level_wls": "This is the unavail message in WELSH for the LEO3 sector panel.",
-                    "unavail_text_ni_selected_eng": "This is the unavail message in ENGLISH for the LEO3 institution panel if the user selects NI.",
-                    "unavail_text_ni_selected_wls": "This is the unavail message in WELSH for the LEO3 institution panel if the user selects NI."
-                },
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "No data available ***Need Welsh translation***",
+                    "unavail_text_region_is_ni_english": "No data available\n\nSorry, this data is not available for courses in Northern Ireland.",
+                    "unavail_text_region_is_ni_welsh": "No data available\n\n***Need Welsh translation*** Sorry, this data is not available for courses in Northern Ireland."
+                 },
                 "leo5_salary_sector": {
                     "unavail_reason": "0",
                     "pop": "15",
@@ -904,10 +902,10 @@ class NewCourseFormatMocks:
                     "uq_cf": "25000",
                     "pop_cf": "140",
                     "resp_cf": "20",
-                    "unavail_text_sector_level_eng": "This is the unavail message in ENGLISH for the LEO5 sector panel.",
-                    "unavail_text_sector_level_wls": "This is the unavail message in WELSH for the LEO5 sector panel.",
-                    "unavail_text_ni_selected_eng": "This is the unavail message in ENGLISH for the LEO5 institution panel if the user selects NI.",
-                    "unavail_text_ni_selected_wls": "This is the unavail message in WELSH for the LEO5 institution panel if the user selects NI."
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "No data available ***Need Welsh translation***",
+                    "unavail_text_region_is_ni_english": "No data available\n\nSorry, this data is not available for courses in Northern Ireland.",
+                    "unavail_text_region_is_ni_welsh": "No data available\n\n***Need Welsh translation*** Sorry, this data is not available for courses in Northern Ireland."
                 }
             },
             "id": "da1abf3b-1129-88bc-fe38-41a2f1ce3991",

@@ -369,6 +369,7 @@ class Course:
             if course_details.get('leo5_salary_sector'):
                 self.salaries_sector.append(SectorSalary(course_details.get('leo5_salary_sector'), self.display_language))
 
+
     def set_course_links(self, links, language):
         link_objs = {'course_details': [], 'costs_support': []}
         if enums.uni_link_keys.COURSE in links:
@@ -1469,8 +1470,14 @@ class Salary:
 
             self.unavail_reason = salary_data['unavail_reason']
             self.aggregate = salary_data['agg']
-            self.unavail_reason_inst_level_english = salary_data['unavail_text_inst_level_eng']
-            self.unavail_reason_inst_level_welsh = salary_data['unavail_text_inst_level_wls']
+            #self.unavail_text_english = salary_data['unavail_text_english']
+            #self.unavail_text_welsh = salary_data['unavail_text_welsh']
+
+            self.unavailable_reason = "" #fallback_to(salary_data.get('reason'), '')
+            self.unavailable_reason_english = fallback_to(salary_data['unavail_text_english'], '')
+            self.unavailable_reason_welsh = fallback_to(salary_data['unavail_text_welsh'], '')
+            # self.unavailable_url_english = fallback_to(salary_data.get('url_english'), '')
+            # self.unavailable_url_welsh = fallback_to(salary_data.get('url_welsh'), '')
 
             if 'go_inst_prov_pc_uk' in salary_data:
                 self.prov_pc_uk = salary_data['go_inst_prov_pc_uk']
@@ -1491,15 +1498,43 @@ class Salary:
                 self.prov_pc_gl = salary_data['go_inst_prov_pc_gl']
                 self.prov_pc_cf = salary_data['go_inst_prov_pc_cf']
 
-                self.unavail_reason_inst_level_2_english = salary_data['unavail_text_inst_level_2_eng']
-                self.unavail_reason_inst_level_2_welsh = salary_data['unavail_text_inst_level_2_wls']
+    def display_unavailable_info(self):
+        unavailable = {}
+
+        if self.unavailable_reason:
+            unavailable["reason"] = self.unavailable_reason
+        else:
+            if self.display_language == enums.languages.ENGLISH:
+                unavailable["reason"] = self.unavailable_reason_english if self.unavailable_reason_english \
+                    else self.unavailable_reason_welsh
+            else:
+                unavailable["reason"] = self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+
+        # if self.display_language == enums.languages.ENGLISH:
+        #     unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
+        #         else self.unavailable_url_welsh
+        # else:
+        #     unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        index_of_delimiter = unavailable["reason"].find('\n\n')
+        if index_of_delimiter > 4:
+            unavailable["reason_heading"] = unavailable["reason"][:index_of_delimiter]
+            unavailable["reason_body"] = unavailable["reason"][index_of_delimiter+2:]
+        else:
+            unavailable["reason_heading"] = unavailable["reason"]
+            unavailable["reason_body"] = ""
+
+        return unavailable
 
 
 class SectorSalary:
 
     def __init__(self, salary_data, display_language):
         self.display_language = display_language
+        self.no_salary_node = "true"
+
         if salary_data:
+            self.no_salary_node = "false"
             self.unavail_reason = salary_data['unavail_reason']
             self.lq_uk = salary_data['lq_uk']
             self.med_uk = salary_data['med_uk']
@@ -1605,13 +1640,67 @@ class SectorSalary:
 
             self.unavail_reason = salary_data['unavail_reason']
             self.aggregate = salary_data['agg']
-            self.unavail_text_sector_level_english = salary_data['unavail_text_sector_level_eng']
-            self.unavail_text_sector_level_welsh = salary_data['unavail_text_sector_level_wls']
 
-            if 'unavail_text_non_nation_selected_eng' in salary_data:
-                self.unavail_text_non_nation_selected_english = salary_data['unavail_text_non_nation_selected_eng']
-                self.unavail_text_non_nation_selected_welsh = salary_data['unavail_text_non_nation_selected_wls']
+            self.unavailable_reason_region_not_exists = ""
+            self.unavailable_reason_region_not_nation = ""
+            self.unavailable_reason_region_is_ni = ""
 
-            if 'unavail_text_ni_selected_eng' in salary_data:
-                self.unavail_text_ni_selected_english = salary_data['unavail_text_ni_selected_eng']
-                self.unavail_text_ni_selected_welsh = salary_data['unavail_text_ni_selected_wls']
+            self.unavail_text_region_not_exists_english = salary_data['unavail_text_region_not_exists_english']
+            self.unavail_text_region_not_exists_welsh = salary_data['unavail_text_region_not_exists_welsh']
+
+            if 'unavail_text_region_not_nation_english' in salary_data:
+                self.unavail_text_region_not_nation_english = salary_data['unavail_text_region_not_nation_english']
+                self.unavail_text_region_not_nation_welsh = salary_data['unavail_text_region_not_nation_welsh']
+
+            if 'unavail_text_region_is_ni_english' in salary_data:
+                self.unavail_text_region_is_ni_english = salary_data['unavail_text_region_is_ni_english']
+                self.unavail_text_region_is_ni_welsh = salary_data['unavail_text_region_is_ni_welsh']
+
+    def display_unavailable_info(self):
+        unavailable = {}
+
+        if self.unavailable_reason_region_not_exists:
+            unavailable["unavailable_region_not_exists"] = self.unavailable_reason_region_not_exists
+        else:
+            if self.display_language == enums.languages.ENGLISH:
+                unavailable["unavailable_region_not_exists"] = self.unavail_text_region_not_exists_english if self.unavail_text_region_not_exists_english \
+                    else self.unavail_text_region_not_exists_welsh
+            else:
+                unavailable["unavailable_region_not_exists"] = self.unavail_text_region_not_exists_welsh if self.unavail_text_region_not_exists_welsh else self.unavail_text_region_not_exists_english
+
+        if self.unavailable_reason_region_not_nation:
+            unavailable["unavailable_region_not_nation"] = self.unavailable_reason_region_not_nation
+        elif hasattr(self, 'unavail_text_region_not_nation_english'):
+            if self.display_language == enums.languages.ENGLISH:
+                unavailable["unavailable_region_not_nation"] = self.unavail_text_region_not_nation_english if self.unavail_text_region_not_nation_english \
+                    else self.unavail_text_region_not_nation_welsh
+            else:
+                unavailable["unavailable_region_not_nation"] = self.unavail_text_region_not_nation_welsh if self.unavail_text_region_not_nation_welsh else self.unavail_text_region_not_nation_english
+
+        if self.unavailable_reason_region_is_ni:
+            unavailable["unavailable_region_is_ni"] = self.unavailable_reason_region_is_ni
+        elif hasattr(self, 'unavail_text_region_is_ni_english'):
+            if self.display_language == enums.languages.ENGLISH:
+                unavailable["unavailable_region_is_ni"] = self.unavail_text_region_is_ni_english if self.unavail_text_region_is_ni_english \
+                    else self.unavail_text_region_is_ni_welsh
+            else:
+                unavailable["unavailable_region_is_ni"] = self.unavail_text_region_is_ni_welsh if self.unavail_text_region_is_ni_welsh else self.unavail_text_region_is_ni_english
+
+        # if self.display_language == enums.languages.ENGLISH:
+        #     unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
+        #         else self.unavailable_url_welsh
+        # else:
+        #     unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        # unavailable["reason"] = "apw_load_default_do_not_display"
+
+
+        index_of_delimiter = unavailable["unavailable_region_not_exists"].find('\n\n')
+        if index_of_delimiter > 4:
+            unavailable["unavailable_region_not_exists_heading"] = unavailable["unavailable_region_not_exists"][:index_of_delimiter]
+            unavailable["unavailable_region_not_exists_body"] = unavailable["unavailable_region_not_exists"][index_of_delimiter+2:]
+        else:
+            unavailable["unavailable_region_not_exists_heading"] = unavailable["unavailable_region_not_exists"]
+            unavailable["unavailable_region_not_exists_body"] = ""
+
+        return unavailable
