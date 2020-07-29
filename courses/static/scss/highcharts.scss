@@ -22,9 +22,8 @@
     }
 
     .highcharts-point {
-        // stroke: $gradient-dark-green;
-        // stroke-width: 2px;
-        stroke:none;
+        stroke: $gradient-dark-green;
+        stroke-width: 2px;
 
         &.highcharts-color-1 {
             fill: $gradient-light-green;
@@ -38,7 +37,7 @@
     }
 
     .highcharts-xaxis .highcharts-axis-line {
-        // stroke: $gradient-light-green;
+        stroke: $gradient-light-green;
     }
 
     .highcharts-grid-line {
@@ -55,13 +54,13 @@
     .highcharts-series {
 
         &.highcharts-color-1 {
-            stroke: $gradient-light-green;
-            stroke-width: 20px;
+            stroke: url(#gradient-doughnut);
+            stroke-width: 18px;
         }
 
         &.highcharts-color-0 {
             stroke: $form-grey;
-            stroke-width: 20px;
+            stroke-width: 18px;
         }
     }
 
@@ -82,13 +81,13 @@
         .highcharts-series {
 
             &.highcharts-color-1 {
-                stroke: $gradient-light-green;
-                stroke-width: 20px;
+                stroke: url(#gradient-doughnut);
+                stroke-width: 18px;
             }
 
             &.highcharts-color-0 {
                 stroke: $form-grey;
-                stroke-width: 20px;
+                stroke-width: 18px;
             }
         }
 
