@@ -24,20 +24,24 @@ $(function () {
                     styledMode: true,
                     shadow: true
                 },
-                title: {
-                    text: this.value + '%',
-                    verticalAlign: 'middle',
-                    align: 'right',
-                    x: 70,
-                    y: 20,
-                    style: {
-                        color: '#6E6E6E',
-                        fontSize: '19px',
-                        fontFamily: 'Nunito Sans',
-                        fontWeight: 'bold',
-                        marginLeft: '15px'
-                    },
+                title:{
+                    text: null
                 },
+                //Leaving this here, incase OFS want to bring this back.
+                // title: {
+                    // text: this.value + '%',
+                    // verticalAlign: 'middle',
+                    // align: 'right',
+                    // x: 70,
+                    // y: 20,
+                    // style: {
+                    //     color: '#6E6E6E',
+                    //     fontSize: '19px',
+                    //     fontFamily: 'Nunito Sans',
+                    //     fontWeight: 'bold',
+                    //     marginLeft: '15px'
+                    // },
+                // },
                 xAxis: {
                     categories: [''],
                     lineWidth: 1,
@@ -92,7 +96,15 @@ $(function () {
                           },
                         y: this.value,
                         pointWidth: '40'
-                    }]
+                    }],
+                    dataLabels: {
+                        enabled: true,
+                        color: 'red',
+                        style: {fontWeight: 'bolder'},
+                        formatter: function() {return this.y + '%'},
+                        inside: true,
+                        backgroundColor: '#e0e0e0',
+                    },
                 }], 
                    
                 tooltip: {
@@ -102,12 +114,12 @@ $(function () {
 
             var chart = this.target.find('svg');
             chart.attr('role', 'img');
-
-            var titleNode = document.createElement('title');
-            var titleId = this.label + '-title';
-            titleNode.setAttribute('id', titleId);
-            var title = document.createTextNode(this.title);
-            titleNode.appendChild(title);
+            //Leaving this here, incase OFS want to bring this back.
+            // var titleNode = document.createElement('title');
+            // var titleId = this.label + '-title';
+            // titleNode.setAttribute('id', titleId);
+            // var title = document.createTextNode(this.title);
+            // titleNode.appendChild(title);
 
             var descNode = document.createElement('desc');
             var descId = this.label + '-desc';
@@ -116,11 +128,11 @@ $(function () {
             descNode.appendChild(desc);
 
             chart.prepend(descNode);
-            chart.prepend(titleNode);
-            chart.attr('aria-labelledby', titleId + ' ' + descId);
+            //Leaving this here, incase OFS want to bring this back.
+            // chart.prepend(titleNode);
+            // chart.attr('aria-labelledby', titleId + ' ' + descId);
         }
     }
-
 
     function init() {
         var barCharts = $('.discover-uni-chart.bar');

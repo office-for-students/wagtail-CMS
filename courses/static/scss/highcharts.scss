@@ -5,11 +5,25 @@
     opacity: 1 !important;
 }
 
+rect.highcharts-label-box, rect.highcharts-data-label-box{
+    fill:none!important;
+}
+
+.highcharts-label text{
+    color: #666666;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
 .base_gradient {
     height: 0;
 }
 
 .bar-chart {
+    .highcharts-label-box .highcharts-data-label-box{
+        fill:none!important;
+        color:grey;
+    }
+
     .highcharts-plot-border{
         fill:$white;
     }
@@ -55,12 +69,12 @@
 
         &.highcharts-color-1 {
             stroke: url(#gradient-doughnut);
-            stroke-width: 18px;
+            stroke-width: 16px;
         }
 
         &.highcharts-color-0 {
             stroke: $form-grey;
-            stroke-width: 18px;
+            stroke-width: 16px;
         }
     }
 
@@ -82,12 +96,12 @@
 
             &.highcharts-color-1 {
                 stroke: url(#gradient-doughnut);
-                stroke-width: 18px;
+                stroke-width: 16px;
             }
 
             &.highcharts-color-0 {
                 stroke: $form-grey;
-                stroke-width: 18px;
+                stroke-width: 16px;
             }
         }
 
@@ -95,4 +109,8 @@
             fill: none;
         }
     }
+}
+
+.bar-chart text.highcharts-title{
+    display: none;
 }
