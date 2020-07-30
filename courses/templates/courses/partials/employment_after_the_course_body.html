@@ -137,6 +137,7 @@
                 {% insert_values_to_rich_text content=block.value.six_month_employment_roles_data_source substitutions=substitutions as subbed_text %}
                 {{ subbed_text | richtext }}
         </div>
+          
         <div class="discover-uni-container">
             <div class="employment-after-course_occupation-statistics d-flex row align-items-stretch">
                 <div class="col-md-12 col-lg-4 align-self-stretch my-2">
@@ -145,7 +146,14 @@
                         <h4 class="pt-1 text-center text-lg-left  mb-3">In highly skilled work</h4>
                         {% for job in course.job_lists.0.jobs %}
                             {% if job.hss == 0 %}
-                                <p>{{job.percentage}}% {% get_translation key=job.job language=page.get_language %}</p>
+                            <div class="row">
+                                <div class="col-2">
+                                    <p>{{job.percentage}}%</p>
+                                </div>
+                                <div class="col">
+                                    <p>{% get_translation key=job.job language=page.get_language %}</p>
+                                </div>
+                            </div>
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -156,7 +164,14 @@
                         <h4 class="pt-1 text-center text-lg-left mb-3">In other work</h4>
                         {% for job in course.job_lists.0.jobs %}
                             {% if job.hss == 1 %}
-                                <p>{{job.percentage}}% {% get_translation key=job.job language=page.get_language %}</p>
+                            <div class="row">
+                                <div class="col-2">
+                                    <p>{{job.percentage}}%</p>
+                                </div>
+                                <div class="col">
+                                    <p>{% get_translation key=job.job language=page.get_language %}</p>
+                                </div>
+                            </div>
                             {% endif %}
                         {% endfor %}
                     </div>

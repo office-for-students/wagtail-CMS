@@ -871,8 +871,8 @@ DICT = {
         'cy': 'Chwilio eto'
     },
     'back_to_results': {
-        'en': 'Back to results',
-        'cy': "Yn ôl i'r canlyniadau"
+        'en': 'Back',
+        'cy': "Canlyniadau"
     },
     'search_within': {
         'en': 'Search within',
@@ -1276,26 +1276,98 @@ DICT = {
     },
     'Typical range': {
         'en': 'Typical range',
-        'cy': ''
+        'cy': 'need Welsh translation'
     },
     'Data from': {
         'en': 'Data from',
-        'cy': ''
+        'cy': 'need Welsh translation'
     },
     'respondents': {
         'en': 'respondents',
-        'cy': ''
+        'cy': 'need Welsh translation'
     },
     'students': {
         'en': 'students',
-        'cy': ''
+        'cy': 'need Welsh translation'
     },
     'of those asked': {
         'en': 'of those asked',
-        'cy': ''
+        'cy': 'need Welsh translation'
     },
-    'graduates live in The UK': {
-        'en': 'graduates live in The UK',
-        'cy': ''
+    'student_satisfaction_course_overview_1': {
+        'en': 'Student Satisfaction',
+        'cy': 'need Welsh translation'
+    },
+    'student_satisfaction_course_overview_2': {
+        'en': 'were satisfied with the quality of the course',
+        'cy': 'need Welsh translation'
+    },
+    'student_satisfaction_course_overview_3': {
+        'en': 'More on student satisfaction',
+        'cy': 'need Welsh translation'
+    },
+    'average_earnings_course_overview_1': {
+        'en': 'Average Earnings',
+        'cy': 'need Welsh translation'
+    },
+    'average_earnings_course_overview_2a': {
+        'en': 'average salary 15 months after the course',
+        'cy': 'need Welsh translation'
+    },
+    'average_earnings_course_overview_2b': {
+        'en': 'average salary 3 years after the course',
+        'cy': 'need Welsh translation'
+    },
+    'average_earnings_course_overview_3': {
+        'en': 'More on earnings',
+        'cy': 'need Welsh translation'
+    },
+    'employment_course_overview_1': {
+        'en': 'Employment',
+        'cy': 'need Welsh translation'
+    },
+    'employment_course_overview_2': {
+        'en': 'work and / or study within 15 months after the course',
+        'cy': 'need Welsh translation'
+    },
+    'employment_course_overview_3': {
+        'en': 'More on employment',
+        'cy': 'need Welsh translation'
+    },
+    'entrance_data_need_to_know': {
+        'en': 'What you need to know about entry data',
+        'cy': 'need Welsh translation'
+    },
+    'entrance_data_quals_students_had': {
+        'en': 'These are the qualifications students had when they were accepted into this course. This is not a list of qualifications a person needs to have to be accepted into this course.',
+        'cy': 'need Welsh translation'
+    },
+    'entrance_data_read_more': {
+        'en': 'Read more about entrance data',
+        'cy': 'need Welsh translation'
+    },
+    'after_1_year_overview_1': {
+        'en': 'Source',
+        'cy': 'need Welsh translation'
+    },
+    'after_1_year_overview_2': {
+        'en': 'students',
+        'cy': 'need Welsh translation'
+    },
+    'after_1_year_overview_3': {
+        'en': 'of those who were asked',
+        'cy': 'need Welsh translation'
+    },
+    'sample_size': {
+        'en': 'Sample size',
+        'cy': 'need Welsh translation'
+    },
+    'data_ind_stud_coll_dir': {
+        'en': 'Data for individual students collected directly from universities and colleges',
+        'cy': 'need Welsh translation'
+    },
+    'default_region': {
+        'en': 'the UK',
+        'cy': 'need Welsh translation'
     },
 }

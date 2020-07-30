@@ -8,6 +8,7 @@ from courses.models import CourseDetailPage, Course, CourseComparisonPage, Cours
 from site_search.models import SearchLandingPage
  
 from django.http import JsonResponse
+import json
 
 
 def regional_earnings(request):
@@ -18,9 +19,15 @@ def regional_earnings(request):
         kis_mode = request.POST['kis_mode']
         course, error = Course.find(institution_id, course_id, kis_mode, language=enums.languages.ENGLISH)
 
-        # TODO: apw: Ask Rob what the following 2 lines of code do. Think it might be a copy n past error.
         with open("./CMS/static/jsonfiles/regions.json", "r") as f:
-            translations = f.read()
+            regions = f.read()
+        region_full_name = "region unknown"
+        region_dict = json.loads(regions)
+        for region_elem in region_dict:
+            elem_id = region_elem['id']
+            if elem_id == region:
+                region_full_name = region_elem['name']
+                break
 
         def format_thousands(earnings):
             return f'{int(earnings):,}'
@@ -62,6 +69,7 @@ def regional_earnings(request):
             'respondents_text': DICT.get('respondents').get('en'),
             'students_text': DICT.get('students').get('en'),
             'of_those_asked_text': DICT.get('of those asked').get('en'),
+            'region_full_name': region_full_name,
 
             'salary_sector_15_med': format_thousands(getattr(course.salaries_sector[0], "med"+region)),
             'salary_sector_15_lq': format_thousands(getattr(course.salaries_sector[0], "lq" + region)),
@@ -82,7 +90,7 @@ def regional_earnings(request):
             'salary_sector_5_pop': getattr(course.salaries_sector[2], "pop" + region),
             'salary_sector_5_unavail_text': salary_sector_5_unavail_text,
 
-            'go_inst_prov_pc': getattr(course.salaries_inst[0], 'prov_pc' + region)
+            'inst_prov_pc': getattr(course.salaries_inst[0], 'prov_pc' + region)
         }
         return JsonResponse(resp)
     else:

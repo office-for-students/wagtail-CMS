@@ -13,6 +13,7 @@ from core.utils import fallback_to
 from courses import request_handler
 from errors.models import ApiError
 from institutions.models import InstitutionOverview
+import datetime
 
 
 STUDENT_SATISFACTION_KEY = 'student_satisfaction'
@@ -353,11 +354,24 @@ class Course:
             for data_set in course_details.get('go_voice_work'):
                 self.graduate_perceptions.append(GraduatePerceptionStatistics(data_set, self.display_language))
 
+            self.summary_med_sal_value = "no_data"
+            self.summary_med_sal_text_trans_key = "no_data"
+
+            current_year = datetime.datetime.now().year
+            self.go_year_range = "{}-{}".format(current_year-2, current_year-1)
+            self.leo3_year_range = "{}-{}".format(current_year-4, current_year-3)
+            self.leo5_year_range = "{}-{}".format(current_year-6, current_year-5)
+
             self.salaries_inst = []
             if course_details.get('go_salary_inst'):
                 self.salaries_inst.append(Salary(course_details.get('go_salary_inst'), self.display_language))
+                self.summary_med_sal_value = Salary(course_details.get('go_salary_inst'), self.display_language).med
+                self.summary_med_sal_text_trans_key = "average_earnings_course_overview_2a"
             if course_details.get('leo3_inst'):
                 self.salaries_inst.append(Salary(course_details.get('leo3_inst'), self.display_language))
+                if self.summary_med_sal_value == "no_data":
+                    self.summary_med_sal_value = Salary(course_details.get('leo3_inst'), self.display_language).med
+                    self.summary_med_sal_text_trans_key = "average_earnings_course_overview_2b"
             if course_details.get('leo5_inst'):
                 self.salaries_inst.append(Salary(course_details.get('leo5_inst'), self.display_language))
 
@@ -1479,24 +1493,24 @@ class Salary:
             # self.unavailable_url_english = fallback_to(salary_data.get('url_english'), '')
             # self.unavailable_url_welsh = fallback_to(salary_data.get('url_welsh'), '')
 
-            if 'go_inst_prov_pc_uk' in salary_data:
-                self.prov_pc_uk = salary_data['go_inst_prov_pc_uk']
-                self.prov_pc_e = salary_data['go_inst_prov_pc_e']
-                self.prov_pc_s = salary_data['go_inst_prov_pc_s']
-                self.prov_pc_w = salary_data['go_inst_prov_pc_w']
-                self.prov_pc_ni = salary_data['go_inst_prov_pc_ni']
-                self.prov_pc_nw = salary_data['go_inst_prov_pc_nw']
-                self.prov_pc_ne = salary_data['go_inst_prov_pc_ne']
-                self.prov_pc_em = salary_data['go_inst_prov_pc_em']
-                self.prov_pc_wm = salary_data['go_inst_prov_pc_wm']
-                self.prov_pc_ee = salary_data['go_inst_prov_pc_ee']
-                self.prov_pc_se = salary_data['go_inst_prov_pc_se']
-                self.prov_pc_sw = salary_data['go_inst_prov_pc_sw']
-                self.prov_pc_yh = salary_data['go_inst_prov_pc_yh']
-                self.prov_pc_lo = salary_data['go_inst_prov_pc_lo']
-                self.prov_pc_ed = salary_data['go_inst_prov_pc_ed']
-                self.prov_pc_gl = salary_data['go_inst_prov_pc_gl']
-                self.prov_pc_cf = salary_data['go_inst_prov_pc_cf']
+            if 'inst_prov_pc_uk' in salary_data:
+                self.prov_pc_uk = salary_data['inst_prov_pc_uk']
+                self.prov_pc_e = salary_data['inst_prov_pc_e']
+                self.prov_pc_s = salary_data['inst_prov_pc_s']
+                self.prov_pc_w = salary_data['inst_prov_pc_w']
+                self.prov_pc_ni = salary_data['inst_prov_pc_ni']
+                self.prov_pc_nw = salary_data['inst_prov_pc_nw']
+                self.prov_pc_ne = salary_data['inst_prov_pc_ne']
+                self.prov_pc_em = salary_data['inst_prov_pc_em']
+                self.prov_pc_wm = salary_data['inst_prov_pc_wm']
+                self.prov_pc_ee = salary_data['inst_prov_pc_ee']
+                self.prov_pc_se = salary_data['inst_prov_pc_se']
+                self.prov_pc_sw = salary_data['inst_prov_pc_sw']
+                self.prov_pc_yh = salary_data['inst_prov_pc_yh']
+                self.prov_pc_lo = salary_data['inst_prov_pc_lo']
+                self.prov_pc_ed = salary_data['inst_prov_pc_ed']
+                self.prov_pc_gl = salary_data['inst_prov_pc_gl']
+                self.prov_pc_cf = salary_data['inst_prov_pc_cf']
 
     def display_unavailable_info(self):
         unavailable = {}
