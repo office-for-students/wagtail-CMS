@@ -20,9 +20,15 @@ $(function () {
                 chart: {
                     type: 'bar',
                     height: '40px',
-                    spacing: [0,70,0,1],
+                    //leaving this here in case OFS want original styling
+                    // spacing: [0,70,0,1],
                     styledMode: true,
-                    shadow: true
+                    shadow: true,
+                    margin: [0, 0, 0, 0],
+                    spacingTop: 0,
+                    spacingBottom: 0,
+                    spacingLeft: 0,
+                    spacingRight: 0
                 },
                 title:{
                     text: null
