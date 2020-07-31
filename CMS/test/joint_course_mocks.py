@@ -263,13 +263,42 @@ class NewJointCourseFormatMocks:
                 "statistics": {
                     "continuation": [
                         {
-                            "aggregation_level": 14,
-                            "continuing_with_provider": 85,
-                            "dormant": 10,
+                            "aggregation_level": 13,
+                            "continuing_with_provider": 90,
+                            "dormant": 5,
+                            "gained": 5,
+                            "left": 0,
+                            "lower": 5,
+                            "number_of_students": 35,
+                            "subject": {
+                                "code": "CAH09-01-01",
+                                "english_label": "Mathematics",
+                                "welsh_label": "Mathemateg"
+                            },
+                            "unavailable": {
+                                "code": 1,
+                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Mathematics.",
+                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Mathemateg."
+                            }
+                        },
+                        {
+                            "aggregation_level": 13,
+                            "continuing_with_provider": 91,
+                            "dormant": 2,
                             "gained": 0,
-                            "left": 10,
-                            "lower": 0,
-                            "number_of_students": 15
+                            "left": 3,
+                            "lower": 3,
+                            "number_of_students": 145,
+                            "subject": {
+                                "code": "CAH17-01-04",
+                                "english_label": "Management studies",
+                                "welsh_label": "Astudiaethau rheoli"
+                            },
+                            "unavailable": {
+                                "code": 1,
+                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Management studies.",
+                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Astudiaethau rheoli."
+                            }
                         }
                     ],
                     "employment": [

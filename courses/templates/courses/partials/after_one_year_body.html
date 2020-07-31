@@ -2,7 +2,22 @@
 {% load wagtailcore_tags %}
 {% load discover_uni_tags %}
 
+{% if course_details.has_multiple_entry_stats %}
+<ul class="nav nav-tabs" id="after-one-year-tab" role="tablist">
+    {% for continuation_stats in course_details.continuation_stats %}
+        <li class="nav-item">
+            <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="after-one-year-{{ forloop.counter }}-tab" data-toggle="tab" href="#after-one-year-{{ forloop.counter }}" role="tab"
+               aria-controls="after-one-year-{{ forloop.counter }}" aria-selected="true">
+                {{ continuation_stats.display_subject_name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="tab-content">
 {% for continuation_stats in course_details.continuation_stats %}
+    <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="after-one-year-{{ forloop.counter }}" role="tabpanel" aria-labelledby="after-one-year-{{ forloop.counter }}-tab">
 
     {% if continuation_stats.display_stats %}
         <div class="one-year__overview my-3 mx-1 p-3 d-flex flex-wrap row">
@@ -19,7 +34,7 @@
                     {% get_translation key='after_1_year_overview_1' language=page.get_language %}: <a href="https://discoveruni.gov.uk/about-our-data/#data_collected_from_universities_and_colleges_on_individual_students">{% get_translation key='data_ind_stud_coll_dir' language=page.get_language %}</a>
                 </p>
                 <p class="text-lg-left">
-                    40 {% get_translation key='after_1_year_overview_2' language=page.get_language %} (90% {% get_translation key='after_1_year_overview_3' language=page.get_language %})
+                    {{ continuation_stats.number_of_students }} {% get_translation key='after_1_year_overview_2' language=page.get_language %} (90% {% get_translation key='after_1_year_overview_3' language=page.get_language %})
                 </p>
             </div>
         </div>
@@ -41,7 +56,7 @@
                             {% get_translation key='after_1_year_overview_1' language=page.get_language %}: <a href="https://discoveruni.gov.uk/about-our-data/#data_collected_from_universities_and_colleges_on_individual_students">{% get_translation key='data_ind_stud_coll_dir' language=page.get_language %}</a>
                         </p>
                         <p>
-                            {% get_translation key='sample_size' language=page.get_language %}: 40 people (80% {% get_translation key='after_1_year_overview_3' language=page.get_language %})
+                            {% get_translation key='sample_size' language=page.get_language %}: {{ continuation_stats.number_of_students }} people (80% {% get_translation key='after_1_year_overview_3' language=page.get_language %})
                         </p>
                     </div>
                     
@@ -124,4 +139,6 @@
     {% endif %}
 
     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=continuation_stats.display_unavailable_info %}
+    </div>
 {% endfor %}
+</div>
