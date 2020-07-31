@@ -8,16 +8,16 @@
         <div class="entry-information__overview my-3 p-3 mx-1 pt-4 d-flex flex-wrap row">
             <div class="col-lg-6 col-md-12 align-self-stretch my-auto">
                 <p class="entry-information__overview-lead text-center text-lg-left">
-                    What you need to know about entry data
+                    {% get_translation key='entrance_data_need_to_know' language=page.get_language %}
                 </p>
             </div>
             <div class=" col-lg-6 col-md-12 align-self-stretch my-auto pt-2">
                 <p>
                     <div class="entry-information__intro text-center text-lg-left">
-                        These are the qualifications students had when they were accepted into this course. This is not a list of qualifications a person needs to have to be accepted into this course.
+                        {% get_translation key='entrance_data_quals_students_had' language=page.get_language %}
                     </div>
                 </p>
-                <p><a href="#" class="text-center text-lg-left">Read more about entrance data</a></p>
+                <p><a href="https://discoveruni.gov.uk/how-do-i-choose-course/entry-requirements/" class="text-center text-lg-left">{% get_translation key='entrance_data_read_more' language=page.get_language %}</a></p>
             </div>
         </div>
 
