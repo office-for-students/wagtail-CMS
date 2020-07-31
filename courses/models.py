@@ -1729,7 +1729,6 @@ class SectorSalary:
 
         # unavailable["reason"] = "apw_load_default_do_not_display"
 
-
         index_of_delimiter = unavailable["unavailable_region_not_exists"].find('\n\n')
         if index_of_delimiter > 4:
             unavailable["unavailable_region_not_exists_heading"] = unavailable["unavailable_region_not_exists"][:index_of_delimiter]
