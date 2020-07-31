@@ -27,11 +27,11 @@
 
 {% if course_details.has_multiple_entry_stats %}
 <ul class="nav nav-tabs" id="qualification-types-tab" role="tablist">
-    {% for subject in course_details.subject_names %}
+    {% for entry_stats in course_details.entry_stats %}
         <li class="nav-item">
             <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="qualification-types-{{ forloop.counter }}-tab" data-toggle="tab" href="#qualification-types-{{ forloop.counter }}" role="tab"
                aria-controls="qualification-types-{{ forloop.counter }}" aria-selected="true">
-                {{subject.display_subject_name}}
+                {{entry_stats.display_subject_name}}
             </a>
         </li>
     {% endfor %}
@@ -182,11 +182,11 @@
 
 {% if course_details.has_multiple_entry_stats %}
 <ul class="nav nav-tabs" id="ucas-points-tab" role="tablist">
-    {% for subject in course_details.subject_names %}
+    {% for tariff_stats in  course_details.tariff_stats %}
         <li class="nav-item">
             <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="ucas-points-{{ forloop.counter }}-tab" data-toggle="tab" href="#ucas-points-{{ forloop.counter }}" role="tab"
                aria-controls="ucas-points-{{ forloop.counter }}" aria-selected="true">
-                {{subject.display_subject_name}}
+                {{tariff_stats.display_subject_name}}
             </a>
         </li>
     {% endfor %}
