@@ -1371,8 +1371,8 @@ DICT = {
         'cy': 'need Welsh translation'
     },
     'data_from_html': {
-        'en': '<i class="fas fa-user-alt d-block d-md-none"></i><div id="sample-size-text" class="d-none d-md-block">Sample size:</div>',
-        'cy': '<i class="fas fa-user-alt d-block d-md-none"></i><div id="sample-size-text" class="d-none d-md-block">need Welsh translation</div>'
+        'en': '<div class="d-inline d-md-none" ><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Sample size:</div>',
+        'cy': '<div class="d-inline d-md-none"><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">need Welsh translation</div>'
     },
     'entry_overview_2': {
         'en': 'students',
