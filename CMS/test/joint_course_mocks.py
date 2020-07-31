@@ -325,6 +325,27 @@ class NewJointCourseFormatMocks:
                                 "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Business and management.",
                                 "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Busnes a rheolaeth."
                             }
+                        },
+                        {
+                            "aggregation_level": 12,
+                            "assumed_to_be_unemployed": 10,
+                            "in_study": 30,
+                            "in_work": 60,
+                            "in_work_and_study": 35,
+                            "in_work_or_study": 75,
+                            "not_available_for_work_or_study": 15,
+                            "number_of_students": 45,
+                            "response_rate": 85,
+                            "subject": {
+                                "code": "CAH09-01-01",
+                                "english_label": "Mathematics",
+                                "welsh_label": "Mathemateg"
+                            },
+                            "unavailable": {
+                                "code": 1,
+                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Business and management.",
+                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Busnes a rheolaeth."
+                            }
                         }
                     ],
                     "entry": [
