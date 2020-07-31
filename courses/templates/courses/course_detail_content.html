@@ -1,10 +1,5 @@
 
 {% load staticfiles discover_uni_tags %}
-<nav class="navbar sticky-top navbar-light bg-light" id="sticky_nav_course_detail">
-    {% for accordion in page.accordions %}
-    <a class="navbar-brand" href="#{{accordion.value.data_set}}" id="a_{{accordion.value.data_set}}">{{ accordion.value.heading }}</a>
-    {%endfor%}
-  </nav>
 
 <div class="course-detail comparison-course-area mx-2"
      data-coursename="{{ course.display_title }}" data-courseid="{{ course.kis_course_id }}"

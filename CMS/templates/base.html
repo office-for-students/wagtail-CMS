@@ -52,27 +52,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
         <!-- Bootstrap - Latest compiled JavaScript -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-        <script>
-            $( document ).ready(function() {
-                $('#sticky_nav_course_detail').hide();
-                $('body').scrollspy({ 
-                target: '#sticky_nav_course_detail' 
-            });
-
-                $('#myScrollspy').on('activate.bs.scrollspy', function () {
-                // do something…
-                })
-            });
-
-            $(window).scroll(function() { // when the page is scrolled run this
-                if($(this).scrollTop() >= ($('.course-detail__lead').outerHeight() + $('.discover-uni-nav').outerHeight())) { // if you're NOT at the top
-                    $('#sticky_nav_course_detail').fadeIn("fast"); // fade in
-                } else { // else
-                    $('#sticky_nav_course_detail').fadeOut("fast"); // fade out
-                }
-            });
-
-        </script>
+       
     </head>
 
     <body class="{% block body_class %}{% endblock %}" data-spy="scroll" data-target="#sticky_nav_course_detail" data-offset="50">
