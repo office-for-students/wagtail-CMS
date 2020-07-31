@@ -22,6 +22,16 @@
             @include small-font-mixin();
         }
     }
+
+
+}
+
+.student-satisfaction__chart .rich-text p{
+    font-size:0.85rem;
+    color:#666666;
+    font-weight:300;
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
 }
 
 @media only screen and (min-width: 770px) {
