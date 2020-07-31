@@ -1,69 +1,69 @@
 [
    {
         "id": "_uk",
-        "name": "UK"
+        "name": "The UK"
     },
     {
         "id": "_e",
         "name": "England"
     },
     {
+        "id": "_nw",
+        "name": "- North West"
+    },
+    {
+        "id": "_ne",
+        "name": "- North East"
+    },
+    {
+        "id": "_em",
+        "name": "- East Midlands"
+    },
+    {
+        "id": "_wm",
+        "name": "- West Midlands"
+    },
+    {
+        "id": "_se",
+        "name": "- South East"
+    },
+    {
+        "id": "_sw",
+        "name": "- South West"
+    },  {
+        "id": "_yh",
+        "name": "- Yorkshire and the Humber"
+    },
+    {
+        "id": "_ee",
+        "name": "- East of England"
+    },
+    {
+        "id": "_lo",
+        "name": "- London"
+    },
+    {
         "id": "_s",
         "name": "Scotland"
+    },
+    {
+        "id": "_ed",
+        "name": "- Edinburgh"
+    },
+    {
+        "id": "_gl",
+        "name": "- Glasgow"
     },
     {
         "id": "_w",
         "name": "Wales"
     },
     {
+        "id": "_cf",
+        "name": "- Cardiff"
+    },
+    {
         "id": "_ni",
         "name": "Northern Ireland"
-    },
-    {
-        "id": "_nw",
-        "name": "North West"
-    },
-    {
-        "id": "_ne",
-        "name": "North East"
-    },
-    {
-        "id": "_em",
-        "name": "East Midlands"
-    },
-    {
-        "id": "_wm",
-        "name": "West Midlands"
-    },
-    {
-        "id": "_ee",
-        "name": "East of England"
-    },
-    {
-        "id": "_se",
-        "name": "South East"
-    },
-    {
-        "id": "_sw",
-        "name": "South West"
-    },  {
-        "id": "_yh",
-        "name": "Yorkshire and the Humber"
-    },
-    {
-        "id": "_lo",
-        "name": "London"
-    },
-    {
-        "id": "_ed",
-        "name": "Edinburgh"
-    },
-    {
-        "id": "_gl",
-        "name": "Glasgow"
-    },
-    {
-        "id": "_cf",
-        "name": "Cardiff"
     }
 ]

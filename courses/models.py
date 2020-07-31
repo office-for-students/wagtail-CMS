@@ -281,6 +281,8 @@ class Course:
             self.country = CourseCountry(course_details.get('country'))
             self.kis_course_id = course_details.get('kis_course_id')
 
+            self.data_from_html = DICT.get('data_from_html').get(language)
+
             self.ucas_programme_id = course_details.get('ucas_programme_id')
             self.qualification = CourseQualification(course_details.get('qualification'))
 
