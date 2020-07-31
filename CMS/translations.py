@@ -1370,4 +1370,17 @@ DICT = {
         'en': 'the UK',
         'cy': 'need Welsh translation'
     },
+    'data_from_html': {
+        'en': '<i class="fas fa-user-alt d-block d-md-none"></i><div id="sample-size-text" class="d-none d-md-block">Sample size:</div>',
+        'cy': '<i class="fas fa-user-alt d-block d-md-none"></i><div id="sample-size-text" class="d-none d-md-block">need Welsh translation</div>'
+    },
+    'entry_overview_2': {
+        'en': 'students',
+        'cy': 'need Welsh translation'
+    },
+    'entry_overview_3': {
+        'en': 'of those who were asked',
+        'cy': 'need Welsh translation'
+    },
+    
 }

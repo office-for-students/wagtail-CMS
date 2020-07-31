@@ -26,7 +26,7 @@
                     <p>
                         {{ block.value.lead_text }}
                         <div class="student-satisfaction__intro">
-                            {% create_list perceptions_stats.go_work_pop perceptions_stats.go_work_resp_rate as substitutions %}
+                            {% create_list course_details.data_from_html perceptions_stats.go_work_pop perceptions_stats.go_work_resp_rate as substitutions %}
                             {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </div>
@@ -45,7 +45,7 @@
                         {{ block.value.perception_of_work_heading }}
 
                         <p>
-                            {% create_list perceptions_stats.go_work_pop perceptions_stats.go_work_resp_rate as substitutions %}
+                            {% create_list course_details.data_from_html perceptions_stats.go_work_pop perceptions_stats.go_work_resp_rate as substitutions %}
                             {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </p>

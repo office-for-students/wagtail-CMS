@@ -7,6 +7,7 @@
         </h2>
     {% endif %}
 
+
     {% if overall_stats.satisfaction_stats.question_27.show_data_point %}
         <div class="student-satisfaction__overview mt-3 mx-1 p-0 d-flex flex-wrap row">
                 <div class="col-lg-2 col-md-12 align-self-stretch my-auto pt-3">
@@ -18,7 +19,7 @@
                     <p>
                         {{ block.value.lead_text }}
                         <div class="student-satisfaction__intro">
-                            {% create_list overall_stats.satisfaction_stats.number_of_students overall_stats.satisfaction_stats.response_rate as substitutions %}
+                            {% create_list course_details.data_from_html overall_stats.satisfaction_stats.number_of_students overall_stats.satisfaction_stats.response_rate as substitutions %}
                             {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </div>
@@ -26,7 +27,6 @@
                 </div>
         </div>
     {% endif %}
-
 
     <div class="student-satisfaction__block">
         {% if overall_stats.satisfaction_stats.show_satisfaction_stats %}

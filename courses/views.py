@@ -27,6 +27,8 @@ def regional_earnings(request):
             elem_id = region_elem['id']
             if elem_id == region:
                 region_full_name = region_elem['name']
+                if region_full_name[:2] == "- ":
+                    region_full_name = region_full_name[2:]
                 break
 
         def format_thousands(earnings):

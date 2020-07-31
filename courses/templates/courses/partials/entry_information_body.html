@@ -33,10 +33,9 @@
                         {{entry_stats.display_subject_name}}{% endif %}
                     </h2>
                     <div class="entry-information__qualification_intro mt-2">
-                        <p>Source: <a href="#">Data for individual students collected directly from universities and colleges</a></p>
-                        <p>40 students (90% of those who were asked)</p>
-                        <p><a href="#">Additional information</a></p>
-                        
+                        {% create_list course_details.data_from_html entry_stats.number_of_students as substitutions %}
+                        {% insert_values_to_rich_text content=block.value.qualification_data_source substitutions=substitutions as subbed_text %}
+                        {{ subbed_text | richtext }}
                     </div>
                 </div>
 
@@ -170,13 +169,9 @@
                 <h2 class="entry-information__heading py-3">{{block.value.tariffs_heading}}{% if course_details.has_multiple_tariff_stats %}:
                     {{tariff_stats.display_subject_name}}{% endif %}</h2>
 
-                <!-- <p class="entry-information__lead">
-                    {{block.value.tariffs_intro}}
-                </p> -->
-                <p>Source: <a href="#">Data for individual students collected directly from universities and colleges</a></p>
-                <p>40 students (90% of those who were asked)</p>
-                <p><a href="#">Additional information</a></p>
-
+                    {% create_list course_details.data_from_html tariff_stats.number_of_students as substitutions %}
+                    {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
+                    {{ subbed_text | richtext }}
             </div>
             <div class=" col-lg-8 col-md-12 align-self-stretch my-auto pt-2">
                 {% if tariff_stats.show_stats %}
