@@ -1,6 +1,22 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
 
+{% if course_details.has_multiple_employment_stats %}
+<ul class="nav nav-tabs" id="after-one-year-tab" role="tablist">
+    {% for employment_stats in course_details.employment_stats %}
+        <li class="nav-item">
+            <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="employment-after-course-{{ forloop.counter }}-tab" data-toggle="tab" href="#employment-after-course-{{ forloop.counter }}" role="tab"
+               aria-controls="employment-after-course-{{ forloop.counter }}" aria-selected="true">
+                {{ employment_stats.display_subject_name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="tab-content">
 {% for employment_stats in course_details.employment_stats %}
+    <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="employment-after-course-{{ forloop.counter }}" role="tabpanel" aria-labelledby="employment-after-course-{{ forloop.counter }}-tab">
+
     {% if employment_stats.display_stats %}
         <div class="employment-after-course__data-point-overview mt-3 mb-4 p-3 d-flex flex-wrap row mx-1">
             <div class="col-lg-2 col-md-12 align-self-stretch my-auto">
@@ -188,5 +204,6 @@
     </div>
 
     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
-
+    </div>
 {% endfor %}
+</div>

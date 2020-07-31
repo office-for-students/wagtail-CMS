@@ -104,12 +104,12 @@ class NewJointCourseFormatMocks:
                 },
                 "honours_award_provision": 1,
                 "institution": {
-                    "pub_ukprn_name": "The University of Bolton",
-                    "pub_ukprn_welsh_name": "The University of Bolton",
-                    "pub_ukprn": "10006841",
-                    "ukprn_name": "The University of Bolton",
-                    "ukprn_welsh_name": "The University of Bolton",
-                    "ukprn": "10006841"
+                    "pub_ukprn_name": "University of Aberdeen",
+                    "pub_ukprn_welsh_name": "University of Aberdeen",
+                    "pub_ukprn": "10007783",
+                    "ukprn_name": "University of Aberdeen",
+                    "ukprn_welsh_name": "University of Aberdeen",
+                    "ukprn": "10007783"
                 },
                 "kis_course_id": "ART002-F-UOB-SX",
                 "go_salary_inst": {
@@ -213,16 +213,19 @@ class NewJointCourseFormatMocks:
                 "locations": [
                     {
                         "links": {
+                            "accommodation": {
+                                "english": "http://www.abdn.ac.uk/accommodation"
+                            },
                             "student_union": {
-                                "english": "http://www.boltonsu.com/"
+                                "english": "http://www.ausa.org.uk/"
                             }
                         },
-                        "latitude": "53.573515",
-                        "longitude": "-2.436239",
+                        "latitude": "57.165019",
+                        "longitude": "-2.099122",
                         "name": {
-                            "english": "University of Bolton"
+                            "english": "Old Aberdeen"
                         },
-                        "ucas_course_id": "5318"
+                        "ucas_course_id": "1764"
                     }
                 ],
                 "mode": {
@@ -253,7 +256,7 @@ class NewJointCourseFormatMocks:
                     }
                 ],
                 "title": {
-                    "english": "Graphic Design"
+                    "english": "Business Management and Mathematics"
                 },
                 "ucas_programme_id": "A09-C13",
                 "year_abroad": {
@@ -303,24 +306,24 @@ class NewJointCourseFormatMocks:
                     ],
                     "employment": [
                         {
-                            "aggregation_level": 13,
-                            "assumed_to_be_unemployed": 20,
-                            "in_study": 15,
-                            "in_work": 60,
-                            "in_work_and_study": 5,
-                            "in_work_or_study": 80,
+                            "aggregation_level": 12,
+                            "assumed_to_be_unemployed": 0,
+                            "in_study": 20,
+                            "in_work": 50,
+                            "in_work_and_study": 25,
+                            "in_work_or_study": 95,
                             "not_available_for_work_or_study": 5,
                             "number_of_students": 35,
-                            "response_rate": 95,
+                            "response_rate": 75,
                             "subject": {
-                                "code": "CAH01-01-01",
-                                "english_label": "Graphical Design (non-specific)",
-                                "welsh_label": "Gwyddorau meddygol (amhenodol)"
+                                "code": "CAH17-01",
+                                "english_label": "Business and management",
+                                "welsh_label": "Busnes a rheolaeth"
                             },
                             "unavailable": {
                                 "code": 1,
-                                "reason_english": "The data displayed is from students on other courses in Graphical Design (non-specific) subject. There was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
-                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn "
+                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Business and management.",
+                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Busnes a rheolaeth."
                             }
                         }
                     ],

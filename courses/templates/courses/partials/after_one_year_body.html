@@ -2,7 +2,7 @@
 {% load wagtailcore_tags %}
 {% load discover_uni_tags %}
 
-{% if course_details.has_multiple_entry_stats %}
+{% if course_details.has_multiple_one_year_stats %}
 <ul class="nav nav-tabs" id="after-one-year-tab" role="tablist">
     {% for continuation_stats in course_details.continuation_stats %}
         <li class="nav-item">
