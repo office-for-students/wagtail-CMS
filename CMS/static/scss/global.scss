@@ -217,3 +217,15 @@ a[target=_blank] {
         margin-left: 10px;
     }
 }
+
+
+#gradient-bar #stop-0 {
+    stop-color: $gradient-dark-green;
+}
+#gradient-bar #stop-1 {
+    stop-color: $gradient-light-green;
+}
+
+body {
+    position: relative;
+  }

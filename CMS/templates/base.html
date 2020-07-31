@@ -52,9 +52,10 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
         <!-- Bootstrap - Latest compiled JavaScript -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+       
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="{% block body_class %}{% endblock %}" data-spy="scroll" data-target="#sticky_nav_course_detail" data-offset="50">
         {% include 'partials/nav.html' %}
 
         {% wagtailuserbar %}
@@ -69,7 +70,6 @@
                     </div>
                 </a>
             </div>
-
             {% include 'partials/feedback-form.html' %}
 
             {% if not cookies_accepted and not load_error %}

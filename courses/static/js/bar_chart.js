@@ -20,24 +20,34 @@ $(function () {
                 chart: {
                     type: 'bar',
                     height: '40px',
-                    spacing: [0,70,0,1],
+                    //leaving this here in case OFS want original styling
+                    // spacing: [0,70,0,1],
                     styledMode: true,
-                    shadow: true
+                    shadow: true,
+                    margin: [0, 0, 0, 0],
+                    spacingTop: 0,
+                    spacingBottom: 0,
+                    spacingLeft: 0,
+                    spacingRight: 0
                 },
-                title: {
-                    text: this.value + '%',
-                    verticalAlign: 'middle',
-                    align: 'right',
-                    x: 70,
-                    y: 20,
-                    style: {
-                        color: '#6E6E6E',
-                        fontSize: '19px',
-                        fontFamily: 'Nunito Sans',
-                        fontWeight: 'bold',
-                        marginLeft: '15px'
-                    },
+                title:{
+                    text: null
                 },
+                //Leaving this here, incase OFS want to bring this back.
+                // title: {
+                    // text: this.value + '%',
+                    // verticalAlign: 'middle',
+                    // align: 'right',
+                    // x: 70,
+                    // y: 20,
+                    // style: {
+                    //     color: '#6E6E6E',
+                    //     fontSize: '19px',
+                    //     fontFamily: 'Nunito Sans',
+                    //     fontWeight: 'bold',
+                    //     marginLeft: '15px'
+                    // },
+                // },
                 xAxis: {
                     categories: [''],
                     lineWidth: 1,
@@ -59,41 +69,63 @@ $(function () {
                     series: {
                         stacking: 'percentage',
                         borderWidth: 2,
-                        borderColor: '#308282'
+                        borderColor: '#308282',
+                        color: {
+                            linearGradient: {
+                              x1: 0,
+                              x2: 0,
+                              y1: 0,
+                              y2: 1
+                            },
+                            stops: [
+                              [0, '#f79685'],
+                              [1, '#f45c42']
+                            ]
+                          },
+                        y: this.value,
+                        pointWidth: '40',
                     }
                 },
                 series: [{
                     data: [{
-                        color: '#FFFFFF',
-                        y: (100 - this.value),
-                        pointWidth: '40',
-                    }]
-                }, {
-                    data: [{
                         color: {
-                            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+                            linearGradient: {
+                              x1: 0,
+                              x2: 0,
+                              y1: 0,
+                              y2: 1
+                            },
                             stops: [
-                                [0, '#368382'],
-                                [1, '#4fa37e']
+                              [0, '#f79685'],
+                              [1, '#f45c42']
                             ]
-                        },
+                          },
                         y: this.value,
-                        pointWidth: '40',
-                    }]
-                }],
+                        pointWidth: '40'
+                    }],
+                    dataLabels: {
+                        enabled: true,
+                        color: 'red',
+                        style: {fontWeight: 'bolder'},
+                        formatter: function() {return this.y + '%'},
+                        inside: true,
+                        backgroundColor: '#e0e0e0',
+                    },
+                }], 
+                   
                 tooltip: {
                     enabled: false,
-                },
+                }
             });
 
             var chart = this.target.find('svg');
             chart.attr('role', 'img');
-
-            var titleNode = document.createElement('title');
-            var titleId = this.label + '-title';
-            titleNode.setAttribute('id', titleId);
-            var title = document.createTextNode(this.title);
-            titleNode.appendChild(title);
+            //Leaving this here, incase OFS want to bring this back.
+            // var titleNode = document.createElement('title');
+            // var titleId = this.label + '-title';
+            // titleNode.setAttribute('id', titleId);
+            // var title = document.createTextNode(this.title);
+            // titleNode.appendChild(title);
 
             var descNode = document.createElement('desc');
             var descId = this.label + '-desc';
@@ -102,11 +134,11 @@ $(function () {
             descNode.appendChild(desc);
 
             chart.prepend(descNode);
-            chart.prepend(titleNode);
-            chart.attr('aria-labelledby', titleId + ' ' + descId);
+            //Leaving this here, incase OFS want to bring this back.
+            // chart.prepend(titleNode);
+            // chart.attr('aria-labelledby', titleId + ' ' + descId);
         }
     }
-
 
     function init() {
         var barCharts = $('.discover-uni-chart.bar');

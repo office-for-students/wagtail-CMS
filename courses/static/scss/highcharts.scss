@@ -5,50 +5,27 @@
     opacity: 1 !important;
 }
 
+rect.highcharts-label-box, rect.highcharts-data-label-box{
+    fill:none!important;
+}
+
+.highcharts-label text{
+    color: #666666;
+}
+
 .base_gradient {
     height: 0;
 }
 
-.column-chart {
-    .highcharts-background {
-        fill: none;
-    }
-
-    .highcharts-title {
-        fill: $ux-grey-3;
-    }
-
-    #gradient-bar stop[offset="0"] {
-        stop-color: $gradient-dark-green;
-    }
-    #gradient-bar stop[offset="1"] {
-        stop-color: $gradient-light-green;
-    }
-
-    .highcharts-point {
-        stroke: $gradient-dark-green;
-        stroke-width: 2px;
-
-        &.highcharts-color-1 {
-            fill: $gradient-light-green;
-            fill: url(#gradient-bar); //currently broken, therefore commented out
-        }
-
-        &.highcharts-color-0 {
-            fill: $white;
-        }
-    }
-
-    .highcharts-xaxis .highcharts-axis-line {
-        stroke: $gradient-light-green;
-    }
-
-    .highcharts-grid-line {
-        stroke: none;
-    }
-}
-
 .bar-chart {
+    .highcharts-label-box .highcharts-data-label-box{
+        fill:none!important;
+        color:grey;
+    }
+
+    .highcharts-plot-border{
+        fill:$white;
+    }
     .highcharts-background {
         fill: none;
     }
@@ -57,24 +34,18 @@
         fill: $ux-grey-3;
     }
 
-    #gradient-bar stop[offset="0"] {
-        stop-color: $gradient-dark-green;
-    }
-    #gradient-bar stop[offset="1"] {
-        stop-color: $gradient-light-green;
-    }
-
     .highcharts-point {
         stroke: $gradient-dark-green;
         stroke-width: 2px;
 
         &.highcharts-color-1 {
             fill: $gradient-light-green;
-            // fill: url(#gradient-bar); //currently broken, therefore commented out
+            fill: url(#gradient-bar);
         }
 
         &.highcharts-color-0 {
-            fill: $white;
+            fill: $gradient-light-green;
+            fill: url(#gradient-bar);
         }
     }
 
@@ -96,13 +67,13 @@
     .highcharts-series {
 
         &.highcharts-color-1 {
-            stroke: $gradient-light-green;
-            stroke-width: 20px;
+            stroke: url(#gradient-doughnut);
+            stroke-width: 14px;
         }
 
         &.highcharts-color-0 {
             stroke: $form-grey;
-            stroke-width: 20px;
+            stroke-width: 14px;
         }
     }
 
@@ -123,13 +94,13 @@
         .highcharts-series {
 
             &.highcharts-color-1 {
-                stroke: $gradient-light-green;
-                stroke-width: 20px;
+                stroke: url(#gradient-doughnut);
+                stroke-width: 16px;
             }
 
             &.highcharts-color-0 {
                 stroke: $form-grey;
-                stroke-width: 20px;
+                stroke-width: 16px;
             }
         }
 
@@ -137,4 +108,8 @@
             fill: none;
         }
     }
+}
+
+.bar-chart text.highcharts-title{
+    display: none;
 }
