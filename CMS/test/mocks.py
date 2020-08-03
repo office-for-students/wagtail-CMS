@@ -239,6 +239,19 @@ class NewCourseFormatMocks:
                 "locations": [
                     {
                         "links": {
+                            "accommodation": {
+                                "english": "https://www.bolton.ac.uk/international/accommodation-and-campus-life/"
+                            }
+                        },
+                        "latitude": "53.573515",
+                        "longitude": "-2.436239",
+                        "name": {
+                            "english": "University of Bolton"
+                        },
+                        "ucas_course_id": "5318"
+                    },
+                    {
+                        "links": {
                             "student_union": {
                                 "english": "http://www.boltonsu.com/"
                             }
@@ -295,12 +308,12 @@ class NewCourseFormatMocks:
                     "employment": [
                         {
                             "aggregation_level": 13,
-                            "assumed_to_be_unemployed": 20,
-                            "in_study": 15,
+                            "unemp_not_work_since_grad": 10,
+                            "doing_further_study": 15,
                             "in_work": 60,
                             "in_work_and_study": 5,
-                            "in_work_or_study": 80,
-                            "not_available_for_work_or_study": 5,
+                            "unemp_prev_emp_since_grad": 8,
+                            "other": 3,
                             "number_of_students": 35,
                             "response_rate": 95,
                             "subject": {
@@ -1120,12 +1133,12 @@ class CourseMocks:
                     "employment": [
                         {
                             "aggregation_level": 13,
-                            "assumed_to_be_unemployed": 5,
-                            "in_study": 80,
+                            "unemp_not_work_since_grad": 5,
+                            "doing_further_study": 80,
                             "in_work": 5,
                             "in_work_and_study": 5,
-                            "in_work_or_study": 95,
-                            "not_available_for_work_or_study": 0,
+                            "unemp_prev_emp_since_grad": 95,
+                            "other": 0,
                             "number_of_students": 15,
                             "response_rate": 100,
                             "subject": {
@@ -1140,12 +1153,12 @@ class CourseMocks:
                         },
                         {
                             "aggregation_level": 13,
-                            "assumed_to_be_unemployed": 5,
-                            "in_study": 80,
+                            "unemp_not_work_since_grad": 5,
+                            "doing_further_study": 80,
                             "in_work": 5,
                             "in_work_and_study": 5,
-                            "in_work_or_study": 95,
-                            "not_available_for_work_or_study": 0,
+                            "unemp_prev_emp_since_grad": 95,
+                            "other": 0,
                             "number_of_students": 15,
                             "response_rate": 100,
                             "subject": {

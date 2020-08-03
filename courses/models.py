@@ -832,28 +832,28 @@ class EmploymentStatistics:
         self.display_language = language
         self.display_stats = False
         self.aggregation_level = 0
-        self.unemployed = 0
-        self.in_study = 0
+        self.unemp_not_work_since_grad = 0
+        self.doing_further_study = 0
         self.in_work = 0
         self.in_work_and_study = 0
-        self.in_work_or_study = 0
-        self.not_available_for_work_or_study = 0
+        self.unemp_prev_emp_since_grad = 0
+        self.other = 0
         self.number_of_students = 0
         self.response_rate = 0
 
         if data_obj:
-            self.display_stats = all(key in data_obj for key in ['assumed_to_be_unemployed', 'in_study', 'in_work',
-                                                                 'in_work_and_study', 'in_work_or_study',
-                                                                 'not_available_for_work_or_study',
+            self.display_stats = all(key in data_obj for key in ['unemp_not_work_since_grad', 'doing_further_study', 'in_work',
+                                                                 'in_work_and_study', 'unemp_prev_emp_since_grad',
+                                                                 'other',
                                                                  'number_of_students', 'response_rate'])
 
             self.aggregation_level = data_obj.get('aggregation_level')
-            self.unemployed = fallback_to(data_obj.get('assumed_to_be_unemployed'), 0)
-            self.in_study = fallback_to(data_obj.get('in_study'), 0)
+            self.unemp_not_work_since_grad = fallback_to(data_obj.get('unemp_not_work_since_grad'), 0)
+            self.doing_further_study = fallback_to(data_obj.get('doing_further_study'), 0)
             self.in_work = fallback_to(data_obj.get('in_work'), 0)
             self.in_work_and_study = fallback_to(data_obj.get('in_work_and_study'), 0)
-            self.in_work_or_study = fallback_to(data_obj.get('in_work_or_study'), 0)
-            self.not_available_for_work_or_study = fallback_to(data_obj.get('not_available_for_work_or_study'), 0)
+            self.unemp_prev_emp_since_grad = fallback_to(data_obj.get('unemp_prev_emp_since_grad'), 0)
+            self.other = fallback_to(data_obj.get('other'), 0)
             self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
             self.response_rate = str(fallback_to(data_obj.get('response_rate'), 0)) + '%'
 
@@ -875,7 +875,7 @@ class EmploymentStatistics:
 
     @property
     def work_and_or_study(self):
-        return self.in_work_or_study
+        return self.unemp_prev_emp_since_grad
 
     def display_subject_name(self):
         if self.display_language == enums.languages.ENGLISH:
