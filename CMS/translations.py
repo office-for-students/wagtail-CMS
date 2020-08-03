@@ -979,8 +979,8 @@ DICT = {
         'cy': 'Blwyddyn dramor'
     },
     'study_and_working': {
-        'en': 'Studying and working',
-        'cy': 'Astudio a gweithio '
+        'en': 'Working and studying',
+        'cy': 'Gweithio a astudio'
     },
     'study_mode': {
         'en': 'Study mode',
@@ -1034,9 +1034,13 @@ DICT = {
         'en': 'Transport associate professionals',
         'cy': 'Gweithwyr proffesiynol  ym maes Cludiant'
     },
-    'unemployed': {
-        'en': 'Unemployed',
-        'cy': 'Di-waith'
+    'unemp_prev_emp_since_grad': {
+        'en': 'Unemployed – previously working or studying',
+        'cy': 'need Welsh translation'
+    },
+    'unemp_not_work_since_grad': {
+        'en': 'Unemployed - not employed since graduation',
+        'cy': 'need Welsh translation'
     },
     'uni_and_college': {
         'en': 'All universities and colleges',

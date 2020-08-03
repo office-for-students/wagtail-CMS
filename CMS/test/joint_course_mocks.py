@@ -315,12 +315,12 @@ class NewJointCourseFormatMocks:
                     "employment": [
                         {
                             "aggregation_level": 12,
-                            "assumed_to_be_unemployed": 0,
-                            "in_study": 20,
+                            "unemp_not_work_since_grad": 0,
+                            "doing_further_study": 20,
                             "in_work": 50,
                             "in_work_and_study": 25,
-                            "in_work_or_study": 95,
-                            "not_available_for_work_or_study": 5,
+                            "unemp_prev_emp_since_grad": 95,
+                            "other": 5,
                             "number_of_students": 35,
                             "response_rate": 75,
                             "subject": {
@@ -336,12 +336,12 @@ class NewJointCourseFormatMocks:
                         },
                         {
                             "aggregation_level": 12,
-                            "assumed_to_be_unemployed": 10,
-                            "in_study": 30,
+                            "unemp_not_work_since_grad": 10,
+                            "doing_further_study": 30,
                             "in_work": 60,
                             "in_work_and_study": 35,
-                            "in_work_or_study": 75,
-                            "not_available_for_work_or_study": 15,
+                            "unemp_prev_emp_since_grad": 75,
+                            "other": 15,
                             "number_of_students": 45,
                             "response_rate": 85,
                             "subject": {
