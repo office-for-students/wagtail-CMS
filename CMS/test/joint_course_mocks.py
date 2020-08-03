@@ -167,20 +167,28 @@ class NewJointCourseFormatMocks:
                 },
                 "go_voice_work": [
                     {
-                        "course_name": "Course 1",
                         "go_work_skills": "32",
                         "go_work_mean": "87",
                         "go_work_on_track": "50",
                         "go_work_pop": "60",
-                        "go_work_resp_rate": "85"
+                        "go_work_resp_rate": "85",
+                        "subject": {
+                            "code": "CAH09-01-01",
+                            "english_label": "Mathematics",
+                            "welsh_label": "Mathemateg"
+                        }
                     },
                     {
-                        "course_name": "Course 2",
                         "go_work_skills": "87",
                         "go_work_mean": "50",
                         "go_work_on_track": "32",
                         "go_work_pop": "85",
-                        "go_work_resp_rate": "60"
+                        "go_work_resp_rate": "60",
+                        "subject": {
+                            "code": "CAH09-01-01",
+                            "english_label": "Management studies",
+                            "welsh_label": "Astudiaethau rheoli"
+                        }
                     }
                 ],
                 "length_of_course": {

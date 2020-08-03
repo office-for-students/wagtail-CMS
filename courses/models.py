@@ -1485,13 +1485,23 @@ class GraduatePerceptionStatistics:
 
     def __init__(self, go_voice_work_data, display_language):
         self.display_language = display_language
+
+        subject_data = fallback_to(go_voice_work_data.get('subject'), {})
+        self.subject_code = subject_data.get('code', '')
+        self.subject_english = subject_data.get('english_label', '')
+        self.subject_welsh = subject_data.get('welsh_label', '')
+
         if go_voice_work_data:
-            self.course_name = go_voice_work_data['course_name']
             self.go_work_skills = go_voice_work_data['go_work_skills']
             self.go_work_mean = go_voice_work_data['go_work_mean']
             self.go_work_on_track = go_voice_work_data['go_work_on_track']
             self.go_work_pop = go_voice_work_data['go_work_pop']
             self.go_work_resp_rate = go_voice_work_data['go_work_resp_rate']
+
+    def display_subject_name(self):
+        if self.display_language == enums.languages.ENGLISH:
+            return self.subject_english if self.subject_english else self.subject_welsh
+        return self.subject_welsh if self.subject_welsh else self.subject_english
 
 
 class Salary:

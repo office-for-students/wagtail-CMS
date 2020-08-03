@@ -2,11 +2,11 @@
 
 {% if course_details.has_multiple_graduate_perceptions_stats %}
 <ul class="nav nav-tabs" id="grad-perceptions-tab" role="tablist">
-    {% for subject in course_details.subject_names %}
+    {% for perceptions_stats in course_details.graduate_perceptions %}
         <li class="nav-item">
             <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="grad-perceptions-{{ forloop.counter }}-tab" data-toggle="tab" href="#grad-perceptions-{{ forloop.counter }}" role="tab"
                aria-controls="grad-perceptions-{{ forloop.counter }}" aria-selected="true">
-                {{subject.display_subject_name}}
+                {{perceptions_stats.display_subject_name}}
             </a>
         </li>
     {% endfor %}
