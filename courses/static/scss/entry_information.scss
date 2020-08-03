@@ -10,6 +10,11 @@
 
 .entry-information__block {
 
+    .rich-text{
+        font-weight:normal;
+        color:#666666;
+        font-size:0.8rem;
+    }
     
     .entry-information__overview{
         p{
@@ -94,7 +99,7 @@
         }
 
         .entry-information__chart {
-            margin-bottom: 37px;
+            margin-bottom: 7px;
 
             &:last-of-type {
                 margin-bottom: 13px;
