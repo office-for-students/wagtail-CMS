@@ -4,11 +4,15 @@
 .one-year__block, .one-year__lead-block {
 
     p{
-            font-size: 0.9rem;
-            color: $brownish-grey;
-            font-weight: 300;
+        font-size: 0.9rem;
+        color: $brownish-grey;
+        font-weight: 300;
     }
-    
+    .rich-text{
+        font-size: 0.9rem;
+        color: $brownish-grey;
+        font-weight: 300;
+    }
     a{
         color:#308282;
         text-decoration: underline;
@@ -27,7 +31,8 @@
             @include s-heading-mixin();
             font-family: 'Nunito Sans', sans-serif;
             font-weight:300;
-            color: #000000;
+            color: $black;
+            font-size:1.2rem;
         }
         .one-year__lead{
            
@@ -43,7 +48,7 @@
         }
 
         .one-year__chart {
-            margin-bottom: 20px;
+            margin-bottom: 5px;
 
             &:last-of-type {
                 margin-bottom: 13px;
@@ -51,7 +56,9 @@
 
             .one-year-block__chart-label{
                 font-family: 'Nunito Sans', sans-serif;
-                font-weight: 200;
+                font-weight: 300;
+                font-size: 0.9rem;
+                color:$black;
             }
 
             .one-year__chart-label {
@@ -85,7 +92,7 @@
     .one-year__overview-sublead{
         font-family: 'Nunito Sans', sans-serif;
         font-size: 1.2rem;
-        font-weight:300;
+        font-weight:200;
         color: #000000;
         text-decoration: none;
     }
