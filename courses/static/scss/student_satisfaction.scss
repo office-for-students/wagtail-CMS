@@ -38,7 +38,7 @@
   #sample-size-text{
     font-size:1rem;
     font-weight:300;
-    color: #666666;
+    color: $brownish-grey;
   }
 
   text-align: center;
@@ -46,21 +46,21 @@
 
   .student-satisfaction__intro .rich-text p {
     @include s-heading-mixin();
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: $brownish-grey;
     font-weight: 300;
   }
 
   .student-satisfaction__intro .rich-text {
     @include s-heading-mixin();
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: $brownish-grey;
     font-weight: 300;
   }
 
   .student-satisfaction__intro .rich-text a {
     color: #308282;
-    font-weight: 400;
+    font-weight: 300;
     text-decoration: underline;
   }
 
@@ -83,15 +83,15 @@
 .student-satisfaction__block {
 
   #sample-size-text{
-    font-size:0.8rem;
-    font-weight:normal;
-    color:#666666;
+    font-size:0.9rem;
+    font-weight:300;
+    color:$brownish-grey;
   }
 
   .rich-text{
-    font-size:0.8rem;
-    font-weight:normal;
-    color:#666666;
+    font-size:0.9rem;
+    font-weight:300;
+    color:$brownish-grey;
   }
 
   .student-satisfaction__intro {
@@ -106,7 +106,7 @@
     }
     a {
       color: #308282;
-      font-weight: 400;
+      font-weight: 300;
       text-decoration: underline;
     }
 
@@ -131,8 +131,8 @@
 
       p {
         font-family: "Nunito Sans", sans-serif;
-        font-size: 0.8rem;
-        font-weight: normal;
+        font-size: 0.9rem;
+        font-weight: 300;
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
@@ -142,8 +142,8 @@
       }
       a {
         font-family: "Nunito Sans", sans-serif;
-        font-size: 0.8rem;
-        font-weight: normal;
+        font-size: 0.9rem;
+        font-weight: 300;
         font-stretch: normal;
         text-decoration: underline;
         line-height: normal;
@@ -162,7 +162,9 @@
         font-family: "Nunito Sans", sans-serif;
         display: block;
         margin-top: 7px;
-        color: $brownish-grey;
+        color: $black;
+        font-weight:300;
+        font-size:0.9rem;
       }
 
       .student-satisfaction__chart-wrapper {
@@ -203,14 +205,14 @@
 
     .student-satisfaction__intro .rich-text p {
       @include s-heading-mixin();
-      font-size: 1rem;
+      font-size: 0.9rem;
       color: $brownish-grey;
       font-weight: 300;
     }
 
     .student-satisfaction__intro .rich-text a {
       color: #308282;
-      font-weight: 400;
+      font-weight: 300;
       text-decoration: underline;
     }
 

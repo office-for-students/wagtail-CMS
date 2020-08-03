@@ -9,13 +9,14 @@
 }
 
 .entry-information__block {
-
-    .rich-text{
-        font-weight:normal;
-        color:#666666;
-        font-size:0.8rem;
+    .entry-information__ucas-points{
+        .rich-text{
+            font-weight:300;
+            color:$brownish-grey;
+            font-size:0.9rem;
+        }
     }
-    
+
     .entry-information__overview{
         p{
             text-align: center;
@@ -86,7 +87,7 @@
             font-weight:300;
         }
         .entry-information__qualification_intro{
-            color:$ux-grey-2;
+            color:$brownish-grey;
             font-weight:300;
             font-size:0.9rem;
             font-family: 'Nunito Sans', sans-serif;
@@ -110,10 +111,10 @@
                 
                 display: block;
                 margin-top: 7px;
-                color: $ux-grey-3;
+                color: $black;
                 font-family: 'Nunito Sans', sans-serif;
-                font-weight:200;
-                font-size: 1rem;
+                font-weight:300;
+                font-size: 0.9rem;
             }
         }
     }
@@ -169,10 +170,10 @@
 
                 .entry-information__chart-label {
                     @include desktop-body-font-mixin();
-                    color: $ux-grey-3;
+                    color: $black;
                     font-family: 'Nunito Sans', sans-serif;
-                    font-weight:200;
-                    font-size: 1rem;
+                    font-weight:300;
+                    font-size: 0.9rem;
                    
                 }
             }
