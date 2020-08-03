@@ -32,12 +32,26 @@
 }
 
 .student-satisfaction__overview {
+
   @include desktop-body-font-mixin();
+
+  #sample-size-text{
+    font-size:1rem;
+    font-weight:300;
+    color: #666666;
+  }
 
   text-align: center;
   border: solid 3px $duck-egg-blue;
 
   .student-satisfaction__intro .rich-text p {
+    @include s-heading-mixin();
+    font-size: 1rem;
+    color: $brownish-grey;
+    font-weight: 300;
+  }
+
+  .student-satisfaction__intro .rich-text {
     @include s-heading-mixin();
     font-size: 1rem;
     color: $brownish-grey;
@@ -67,6 +81,19 @@
 }
 
 .student-satisfaction__block {
+
+  #sample-size-text{
+    font-size:0.8rem;
+    font-weight:normal;
+    color:#666666;
+  }
+
+  .rich-text{
+    font-size:0.8rem;
+    font-weight:normal;
+    color:#666666;
+  }
+
   .student-satisfaction__intro {
     @include small-font-mixin();
 
