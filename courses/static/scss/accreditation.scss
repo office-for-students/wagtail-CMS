@@ -42,6 +42,13 @@
 
         .accreditation__body {
             @include mobile-body-font-mixin();
+            font-weight:300;
+
+            a{
+                color: $dark-green-blue;
+                font-weight:300;
+                text-decoration: underline;
+            }
         }
 
         .accreditation__explanation {

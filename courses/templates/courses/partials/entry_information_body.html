@@ -44,7 +44,7 @@
     {% if entry_stats.display_stats %}
         <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="qualification-types-{{ forloop.counter }}" role="tabpanel" aria-labelledby="qualification-types-{{ forloop.counter }}-tab">
 
-            <div class="entry-information__qualification-charts p-3 d-flex flex-wrap row mx-1">
+            <div class="entry-information__qualification-charts p-3 d-flex flex-wrap row mx-1 my-3">
                 <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
                     <h2 class="entry-information__heading py-3">{{block.value.qualification_heading}}{% if course_details.has_multiple_entry_stats %}:
                         {{entry_stats.display_subject_name}}{% endif %}
@@ -181,7 +181,7 @@
 </div>
 
 {% if course_details.has_multiple_tariff_stats %}
-<ul class="nav nav-tabs mt-2" id="ucas-points-tab" role="tablist">
+<ul class="nav nav-tabs mt-3 mx-1" id="ucas-points-tab" role="tablist">
     {% for tariff_stats in  course_details.tariff_stats %}
         <li class="nav-item">
             <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="ucas-points-{{ forloop.counter }}-tab" data-toggle="tab" href="#ucas-points-{{ forloop.counter }}" role="tab"
@@ -191,7 +191,7 @@
         </li>
     {% endfor %}
 </ul>
-<hr class="nav-tabs-hr"/>
+<hr class="nav-tabs-hr mx-1"/>
 {% endif %}
 
 <div class="tab-content">

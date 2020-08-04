@@ -9,16 +9,18 @@
     .earnings-after-course__stats-heading, .earnings-after-course__stats-heading .rich-text p{
         @include s-heading-mixin();
         color: $black;
-        font-weight:normal;
+        font-weight:300;
         font-size: 1.3rem!important;
         font-family: 'Nunito Sans', sans-serif;
+        font-weight:300;
     }
 
     .earnings-after-course_explanation-text .rich-text p{
-        color: $black;
-        font-weight:normal;
-        font-size: 1rem;
+        color: $brownish-grey;
+        font-weight:300;
+        font-size: 0.9rem;
         font-family: 'Nunito Sans', sans-serif;
+        font-weight:300;
     }
     
     .earnings-after-course_section-block .earnings-after-course-stat{
@@ -31,32 +33,32 @@
     
     .earnings-after-course_section-block h3{
         color: $black;
-        font-weight:normal;
+        font-weight:300;
         font-size: 1.3rem;
         font-family: 'Nunito Sans', sans-serif;
     }
     .earnings-after-course-stat-salary{
         color: $black;
-        font-weight:normal;
+        font-weight:300;
         font-size: 1.5rem;
         font-family: 'Nunito Sans', sans-serif;
     }
     .earnings-after-course-stat-salary-range{
         color: $brownish-grey;
-        font-weight:normal;
+        font-weight:300;
         font-size: 0.9rem;
         font-family: 'Nunito Sans', sans-serif;
     }
 
     .earnings-after-course-stat-small{
         color: $brownish-grey;
-        font-weight:normal;
+        font-weight:300;
         font-size: 0.9rem;
         font-family: 'Nunito Sans', sans-serif;
 
         a{
             color: $dark-green-blue;
-            font-weight: normal;
+            font-weight: 300;
             text-decoration: underline;
             font-size: 0.9rem;
         }
@@ -128,11 +130,11 @@
     .earnings-after-course__lead-intro {
         color: $brownish-grey;
         font-size:0.9rem;
-        font-weight:normal;
+        font-weight:300;
     }
     a{
         color: $dark-green-blue;
-        font-weight: normal;
+        font-weight: 300;
         text-decoration: underline;
         font-size: 0.9rem;
     }
@@ -181,14 +183,14 @@
         .earnings-after-course__stats-heading, .earnings-after-course__stats-heading .rich-text p{
             @include s-heading-mixin();
             color: $black;
-            font-weight:normal;
+            font-weight:300;
             font-size: 1.3rem!important;
             font-family: 'Nunito Sans', sans-serif;
         }
 
         .earnings-after-course_explanation-text .rich-text p{
             color: $black;
-            font-weight:normal;
+            font-weight:300;
             font-size: 1rem;
             font-family: 'Nunito Sans', sans-serif;
         }
@@ -232,11 +234,11 @@
         .earnings-after-course__lead-intro {
             color: $brownish-grey;
             font-size:0.9rem;
-            font-weight:normal;
+            font-weight:300;
         }
         a{
             color: $dark-green-blue;
-            font-weight: normal;
+            font-weight: 300;
             text-decoration: underline;
             font-size: 0.9rem;
         }
@@ -281,32 +283,32 @@
         }
         .earnings-after-course_section-block h3{
             color: $black;
-            font-weight:normal;
+            font-weight:300;
             font-size: 1.2rem;
             font-family: 'Nunito Sans', sans-serif;
         }
         .earnings-after-course-stat-salary{
             color: $black;
-            font-weight:normal;
+            font-weight:300;
             font-size: 1.5rem;
             font-family: 'Nunito Sans', sans-serif;
         }
         .earnings-after-course-stat-salary-range{
             color: $brownish-grey;
-            font-weight:normal;
+            font-weight:300;
             font-size: 0.8rem;
             font-family: 'Nunito Sans', sans-serif;
         }
     
         .earnings-after-course-stat-small{
             color: $brownish-grey;
-            font-weight:normal;
+            font-weight:300;
             font-size: 0.8rem;
             font-family: 'Nunito Sans', sans-serif;
 
             a{
                 color: $dark-green-blue;
-                font-weight: normal;
+                font-weight: 300;
                 text-decoration: underline;
                 font-size: 0.8rem;
             }
