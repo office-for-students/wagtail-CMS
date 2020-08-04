@@ -229,3 +229,33 @@ a[target=_blank] {
 body {
     position: relative;
   }
+.not-enough-data-disclaimer{
+    border: solid 3px #cee9e7!important;
+    color: $ux-grey-2;
+    font-size: 0.9rem;
+    font-weight:300;
+    color:$brownish-grey;
+}
+
+.nav-tabs-hr{
+    
+    background-image: linear-gradient(90deg, #4fa37e, #368382);
+    border: 0;
+    height: 6px;
+    margin:0;
+}
+
+.nav-tabs .nav-link.active  {
+    background-image: linear-gradient(90deg, #4fa37e, #368382);
+    border-radius:0;
+}
+.nav-tabs .nav-link.active{
+    color:white!important;
+    font-weight:600;
+}
+.nav-tabs .nav-link {
+    border-radius: 0;
+    border:none!important;
+    font-weight:600;
+    color:$dark-green-blue!important;
+}
