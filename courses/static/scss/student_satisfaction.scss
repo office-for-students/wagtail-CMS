@@ -36,9 +36,10 @@
   @include desktop-body-font-mixin();
 
   #sample-size-text{
-    font-size:1rem;
+    font-size:0.9rem;
     font-weight:300;
     color: $brownish-grey;
+    margin-left:5px;
   }
 
   text-align: center;
@@ -86,6 +87,7 @@
     font-size:0.9rem;
     font-weight:300;
     color:$brownish-grey;
+    margin-left:5px;
   }
 
   .rich-text{

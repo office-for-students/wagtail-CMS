@@ -1,7 +1,8 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags %}
 
 {% if course_details.has_multiple_graduate_perceptions_stats %}
-<ul class="nav nav-tabs" id="student-satisfaction-tab" role="tablist">
+<ul class="nav nav-tabs mt-2" id="student-satisfaction-tab" role="tablist">
+    
     {% for overall_stats in course_details.overall_satisfaction %}
         <li class="nav-item">
             <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="student-satisfaction-{{ forloop.counter }}-tab" data-toggle="tab" href="#student-satisfaction-{{ forloop.counter }}" role="tab"
@@ -11,6 +12,7 @@
         </li>
     {% endfor %}
 </ul>
+<hr class="nav-tabs-hr"/>
 {% endif %}
 
 <div class="tab-content">
