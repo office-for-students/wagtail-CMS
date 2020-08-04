@@ -164,6 +164,9 @@ class EmploymentAfterCourseBlock(AccordionPanel):
     six_month_employment_roles_label_explanation_heading = blocks.CharBlock(required=False)
     six_month_employment_roles_data_source = blocks.RichTextBlock(blank=True)
 
+    occupation_types_label_explanation_heading = blocks.CharBlock(required=False)
+    occupation_types_label_explanation_body = blocks.RichTextBlock(blank=True)
+
     class Meta:
         value_class = EmploymentAfterCourseDataSet
 

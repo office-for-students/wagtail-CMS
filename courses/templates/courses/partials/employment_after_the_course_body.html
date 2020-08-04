@@ -36,18 +36,7 @@
             </div>
         </div>
 
-        <div class="employment-after-course__lead mt-3 mb-4 p-4 d-flex flex-wrap row mx-1">
-            <h2 class="employment-after-course__lead-title text-center text-lg-left">
-                {% create_list course.english_title as substitutions %}
-                {% insert_values_to_rich_text content=block.value.section_heading substitutions=substitutions as subbed_text %}
-                {{ subbed_text | richtext }}
-            </h2>
-            <div class="employment-after-course__lead-intro text-center text-lg-left">
-                {{block.value.intro | richtext}}
-            </div>
-               
-        </div>
-
+        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
 
         <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
             <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
@@ -148,7 +137,7 @@
                     
                                 </div>
                             </div>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -157,67 +146,84 @@
 
     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
 
-    <div class="employment-after-course_occupation-block mx-1 my-2 p-4">
-        <h2 class="employment-after-course__stats-heading text-left pt-3">
-            {{block.value.six_month_employment_roles_label_explanation_heading}}{% if course_details.has_multiple_job_type_stats %}:
-            {{job_type_stats.display_subject_name}}{% endif %}
-        </h2>
-        <div class="employment-after-course_explanation-text">
-                {% create_list course_details.data_from_html employment_stats.number_of_students employment_stats.response_rate as substitutions %}
-                {% insert_values_to_rich_text content=block.value.six_month_employment_roles_data_source substitutions=substitutions as subbed_text %}
-                {{ subbed_text | richtext }}
-        </div>
-          
-        <div class="discover-uni-container">
-            <div class="employment-after-course_occupation-statistics d-flex row align-items-stretch">
-                <div class="col-md-12 col-lg-4 align-self-stretch my-2">
-                    <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
-                        <h2 class="mb-0 text-center text-lg-left">{{ course.job_type_stats.0.professional_or_managerial_jobs }}%</h2>
-                        <h4 class="pt-1 text-center text-lg-left  mb-3">In highly skilled work</h4>
-                        {% for job in course.job_lists.0.jobs %}
-                            {% if job.hss == 0 %}
-                            <div class="row">
-                                <div class="col-2">
-                                    <p>{{job.percentage}}%</p>
+        <div class="employment-after-course_occupation-block mx-1 my-2 p-4">
+            <h2 class="employment-after-course__stats-heading text-left pt-3">
+                {{block.value.six_month_employment_roles_label_explanation_heading}}{% if course_details.has_multiple_job_type_stats %}:
+                {{job_type_stats.display_subject_name}}{% endif %}
+            </h2>
+            <div class="employment-after-course_explanation-text">
+                    {% create_list course_details.data_from_html employment_stats.number_of_students employment_stats.response_rate as substitutions %}
+                    {% insert_values_to_rich_text content=block.value.six_month_employment_roles_data_source substitutions=substitutions as subbed_text %}
+                    {{ subbed_text | richtext }}
+            </div>
+            
+            <div class="discover-uni-container">
+                <div class="employment-after-course_occupation-statistics d-flex row align-items-stretch">
+                    <div class="col-md-12 col-lg-4 align-self-stretch my-2">
+                        <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
+                            <h2 class="mb-0 text-center text-lg-left">{{ course.job_type_stats.0.professional_or_managerial_jobs }}%</h2>
+                            <h4 class="pt-1 text-center text-lg-left  mb-3">In highly skilled work</h4>
+                            {% for job in course.job_lists.0.jobs %}
+                                {% if job.hss == 0 %}
+                                <div class="row">
+                                    <div class="col-2">
+                                        <p>{{job.percentage}}%</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{% get_translation key=job.job language=page.get_language %}</p>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <p>{% get_translation key=job.job language=page.get_language %}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4 align-self-stretch my-2">
+                        <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
+                            <h2 class="mb-0 text-center text-lg-left">{{ course.job_type_stats.0.non_professional_or_managerial_jobs  }}%</h2>
+                            <h4 class="pt-1 text-center text-lg-left mb-3">In other work</h4>
+                            {% for job in course.job_lists.0.jobs %}
+                                {% if job.hss == 1 %}
+                                <div class="row">
+                                    <div class="col-2">
+                                        <p>{{job.percentage}}%</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{% get_translation key=job.job language=page.get_language %}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            {% endif %}
-                        {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4 align-self-stretch my-2">
+                        <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
+                            <h2 class="mb-0 text-center text-lg-left">{{ course.job_type_stats.0.unknown_professions }}%</h2>
+                            <h4 class="pt-1 text-center text-lg-left mb-3">In unknown work</h4>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-4 align-self-stretch my-2">
-                    <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
-                        <h2 class="mb-0 text-center text-lg-left">{{ course.job_type_stats.0.non_professional_or_managerial_jobs  }}%</h2>
-                        <h4 class="pt-1 text-center text-lg-left mb-3">In other work</h4>
-                        {% for job in course.job_lists.0.jobs %}
-                            {% if job.hss == 1 %}
-                            <div class="row">
-                                <div class="col-2">
-                                    <p>{{job.percentage}}%</p>
-                                </div>
-                                <div class="col">
-                                    <p>{% get_translation key=job.job language=page.get_language %}</p>
-                                </div>
-                            </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
+            </div>
+
+            <div class="explanation">
+                <div class="explanation__link">
+                    <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
+                    <button class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</button>
                 </div>
-                <div class="col-md-12 col-lg-4 align-self-stretch my-2">
-                    <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
-                        <h2 class="mb-0 text-center text-lg-left">{{ course.job_type_stats.0.unknown_professions }}%</h2>
-                        <h4 class="pt-1 text-center text-lg-left mb-3">In unknown work</h4>
+
+                <div tabindex="-1" class="chart-label-explanation" role="dialog">
+                    <h3 class="chart-label-explanation__heading">
+                        {{block.value.occupation_types_label_explanation_heading}}
+
+                        <button class="chart-label-explanation__close"><img src="{% static 'images/close-grey.svg' %}" alt="Close  pop up"></button>
+                    </h3>
+
+                    <div class="chart-label-explanation__body">
+                        {{block.value.occupation_types_label_explanation_body}}
                     </div>
                 </div>
             </div>
 
         </div>
-    </div>
-
-    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
     </div>
 {% endfor %}
 </div>
