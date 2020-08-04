@@ -749,6 +749,8 @@ class EntryStatistics:
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
 
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+
         return unavailable
 
 
@@ -825,6 +827,8 @@ class ContinuationStatistics:
                 else self.unavailable_url_welsh
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+        
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
 
@@ -909,6 +913,8 @@ class EmploymentStatistics:
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
 
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+
         return unavailable
 
 
@@ -981,6 +987,8 @@ class JobTypeStatistics:
                 else self.unavailable_url_welsh
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
 
@@ -1069,6 +1077,8 @@ class SalaryStatistics:
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
 
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+
         return unavailable
 
 
@@ -1139,6 +1149,8 @@ class LEOStatistics:
                 else self.unavailable_url_welsh
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
 
@@ -1263,6 +1275,8 @@ class SatisfactionStatistics:
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
 
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+
         return unavailable
 
 
@@ -1337,6 +1351,8 @@ class TariffStatistics:
                 else self.unavailable_url_welsh
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
 
@@ -1470,6 +1486,8 @@ class JobList:
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
 
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+
         return unavailable
 
 
@@ -1566,13 +1584,7 @@ class Salary:
         # else:
         #     unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
 
-        index_of_delimiter = unavailable["reason"].find('\n\n')
-        if index_of_delimiter > 4:
-            unavailable["reason_heading"] = unavailable["reason"][:index_of_delimiter]
-            unavailable["reason_body"] = unavailable["reason"][index_of_delimiter+2:]
-        else:
-            unavailable["reason_heading"] = unavailable["reason"]
-            unavailable["reason_body"] = ""
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
 
@@ -1741,15 +1753,20 @@ class SectorSalary:
         #         else self.unavailable_url_welsh
         # else:
         #     unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
-
-        # unavailable["reason"] = "apw_load_default_do_not_display"
-
-        index_of_delimiter = unavailable["unavailable_region_not_exists"].find('\n\n')
-        if index_of_delimiter > 4:
-            unavailable["unavailable_region_not_exists_heading"] = unavailable["unavailable_region_not_exists"][:index_of_delimiter]
-            unavailable["unavailable_region_not_exists_body"] = unavailable["unavailable_region_not_exists"][index_of_delimiter+2:]
-        else:
-            unavailable["unavailable_region_not_exists_heading"] = unavailable["unavailable_region_not_exists"]
-            unavailable["unavailable_region_not_exists_body"] = ""
+        
+        unavailable["unavailable_region_not_exists_heading"], unavailable["unavailable_region_not_exists_body"] = separate_unavail_reason(unavailable["unavailable_region_not_exists"])
 
         return unavailable
+
+
+def separate_unavail_reason(reason_unseparated):
+    index_of_delimiter = reason_unseparated.find('\n\n')
+
+    if index_of_delimiter > 4:
+        reason_heading = reason_unseparated[:index_of_delimiter]
+        reason_body = reason_unseparated[index_of_delimiter+2:]
+    else:
+        reason_heading = reason_unseparated
+        reason_body = ""
+
+    return reason_heading, reason_body

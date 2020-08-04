@@ -138,8 +138,8 @@ class NewJointCourseFormatMocks:
                     "inst_prov_pc_ed": "0",
                     "inst_prov_pc_gl": "0",
                     "inst_prov_pc_cf": "0",
-                    "unavail_text_english": "This is the unavail message in ENGLISH for the GO institution panel.",
-                    "unavail_text_welsh": "This is the unavail message in WELSH for the GO institution panel."
+                    "unavail_text_english": "",
+                    "unavail_text_welsh": ""
                 },
                 "leo3_inst": {
                     "unavail_reason": "0",
@@ -150,8 +150,8 @@ class NewJointCourseFormatMocks:
                     "lq": "14500",
                     "med": "18000",
                     "uq": "24000",
-                    "unavail_text_english": "This is the unavail message in ENGLISH for the LEO3 institution panel.",
-                    "unavail_text_welsh": "This is the unavail message in WELSH for the LEO3 institution panel."
+                    "unavail_text_english": "",
+                    "unavail_text_welsh": ""
                  },
                 "leo5_inst": {
                     "unavail_reason": "0",
@@ -162,8 +162,8 @@ class NewJointCourseFormatMocks:
                     "lq": "14500",
                     "med": "18000",
                     "uq": "24000",
-                    "unavail_text_english": "This is the unavail message in ENGLISH for the LEO5 institution panel.",
-                    "unavail_text_welsh": "This is the unavail message in WELSH for the LEO5 institution panel."
+                    "unavail_text_english": "",
+                    "unavail_text_welsh": ""
                 },
                 "go_voice_work": [
                     {
@@ -288,8 +288,8 @@ class NewJointCourseFormatMocks:
                             },
                             "unavailable": {
                                 "code": 1,
-                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Mathematics.",
-                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Mathemateg."
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             }
                         },
                         {
@@ -307,8 +307,8 @@ class NewJointCourseFormatMocks:
                             },
                             "unavailable": {
                                 "code": 1,
-                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Management studies.",
-                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Astudiaethau rheoli."
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             }
                         }
                     ],
@@ -330,8 +330,8 @@ class NewJointCourseFormatMocks:
                             },
                             "unavailable": {
                                 "code": 1,
-                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Business and management.",
-                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Busnes a rheolaeth."
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             }
                         },
                         {
@@ -351,8 +351,8 @@ class NewJointCourseFormatMocks:
                             },
                             "unavailable": {
                                 "code": 1,
-                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Business and management.",
-                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Busnes a rheolaeth."
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             }
                         }
                     ],
@@ -375,8 +375,8 @@ class NewJointCourseFormatMocks:
                             },
                             "unavailable": {
                                 "code": 1,
-                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Management studies.",
-                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Astudiaethau rheoli."
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             }
                         },
                         {
@@ -397,8 +397,8 @@ class NewJointCourseFormatMocks:
                             },
                             "unavailable": {
                                 "code": 1,
-                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Mathematics.",
-                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Mathemateg."
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             }
                         }
                     ],
@@ -416,8 +416,8 @@ class NewJointCourseFormatMocks:
                             },
                             "unavailable": {
                                 "code": 1,
-                                "reason_english": "The data displayed is from students on other courses in Graphical Design (non-specific) subject. There was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
-                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn "
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             },
                             "unknown_professions": 0
                         }
@@ -484,8 +484,8 @@ class NewJointCourseFormatMocks:
                             },
                             "unavailable": {
                                 "code": 1,
-                                "reason_english": "The data displayed is from students on other courses in Graphical Design (non-specific) subject. There was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
-                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn "
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             }
                         }
                     ],
@@ -623,8 +623,8 @@ class NewJointCourseFormatMocks:
                             },
                             "unavailable": {
                                 "code": 0,
-                                "reason_english": "There was not enough data to publish information specifically for this course. This is either because the course size is small or not enough students responded to a survey. For this reason, the data displayed is for all students in Mathematics.",
-                                "reason_welsh": "Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn naill ai oherwydd bod maint y cwrs yn fach neu am nad ymatebodd digon o fyfyrwyr i arolwg. Am y rheswm hwn, mae'r data a ddangosir ar gyfer yr holl fyfyrwyr mewn Mathemateg."
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             }
                         },
                         {
@@ -746,8 +746,8 @@ class NewJointCourseFormatMocks:
                             },
                             "unavailable": {
                                 "code": 0,
-                                "reason_english": "There was not enough data to publish information specifically for this course. This is either because the course size is small or not enough students responded to a survey. For this reason, the data displayed is for all students in Management studies.",
-                                "reason_welsh": "Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn naill ai oherwydd bod maint y cwrs yn fach neu am nad ymatebodd digon o fyfyrwyr i arolwg. Am y rheswm hwn, mae'r data a ddangosir ar gyfer yr holl fyfyrwyr mewn Astudiaethau rheoli."
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             }
                         }
                     ],
@@ -769,8 +769,8 @@ class NewJointCourseFormatMocks:
                             },
                             "unavailable": {
                                 "code": 1,
-                                "reason_english": "The data displayed is from students on other courses in Graphical Design (non-specific) subject. There was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
-                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn "
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             }
                         }
                     ],
@@ -857,8 +857,8 @@ class NewJointCourseFormatMocks:
                             ],
                             "unavailable": {
                                 "code": 1,
-                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Mathematics.",
-                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Mathemateg."
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             }
                         },
                         {
@@ -943,8 +943,8 @@ class NewJointCourseFormatMocks:
                             ],
                             "unavailable": {
                                 "code": 1,
-                                "reason_english": "There is no data available for this course. This is because the course has not yet run or has not been running long enough for this data to be available. For this reason, the data displayed is for students on other courses in Management studies.",
-                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn Astudiaethau rheoli."
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             }
                         }
                     ]
@@ -1043,9 +1043,9 @@ class NewJointCourseFormatMocks:
                     "pop_cf": "140",
                     "resp_cf": "20",
                     "unavail_text_region_not_exists_english": "No data available",
-                    "unavail_text_region_not_exists_welsh": "No data available ***Need Welsh translation***",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
                     "unavail_text_region_not_nation_english": "No data available\n\nSorry, this data is not available at this level.",
-                    "unavail_text_region_not_nation_welsh": "No data available\n\n***Need Welsh translation*** Sorry, this data is not available at this level."
+                    "unavail_text_region_not_nation_welsh": "Nid oes data ar gael\n\nNid yw'r data hwn ar gael ar gyfer y lefel hon."
                 },
                 "leo3_salary_sector": {
                     "unavail_reason": "0",
@@ -1141,9 +1141,9 @@ class NewJointCourseFormatMocks:
                     "pop_cf": "140",
                     "resp_cf": "20",
                     "unavail_text_region_not_exists_english": "No data available",
-                    "unavail_text_region_not_exists_welsh": "No data available ***Need Welsh translation***",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
                     "unavail_text_region_is_ni_english": "No data available\n\nSorry, this data is not available for courses in Northern Ireland.",
-                    "unavail_text_region_is_ni_welsh": "No data available\n\n***Need Welsh translation*** Sorry, this data is not available for courses in Northern Ireland."
+                    "unavail_text_region_is_ni_welsh": "Nid oes data ar gael\n\n***Need Welsh translation***"
                 },
                 "leo5_salary_sector": {
                     "unavail_reason": "0",
@@ -1239,9 +1239,9 @@ class NewJointCourseFormatMocks:
                     "pop_cf": "140",
                     "resp_cf": "20",
                     "unavail_text_region_not_exists_english": "No data available",
-                    "unavail_text_region_not_exists_welsh": "No data available ***Need Welsh translation***",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
                     "unavail_text_region_is_ni_english": "No data available\n\nSorry, this data is not available for courses in Northern Ireland.",
-                    "unavail_text_region_is_ni_welsh": "No data available\n\n***Need Welsh translation*** Sorry, this data is not available for courses in Northern Ireland."
+                    "unavail_text_region_is_ni_welsh": "Nid oes data ar gael\n\n***Need Welsh translation***"
                 }
             },
             "id": "da1abf3b-1129-88bc-fe38-41a2f1ce3991",
