@@ -164,7 +164,7 @@
 {% endif %}
 
 <div class="tab-content">
-{% for jobtype_stats, joblist_stats in course_details.occupation_stats %}
+{% for jobtype_stats, joblist_stats in course_details.sync_occupation_stats %}
     <div class="tab-pane {% if not forloop.counter0 %} show active {% endif %}" id="occupation-types-{{ forloop.counter }}" role="tabpanel" aria-labelledby="occupation-types-{{ forloop.counter }}-tab">
 
         <div class="employment-after-course_occupation-block mx-1 my-2 p-4">

@@ -348,7 +348,6 @@ class Course:
                 self.job_lists = []
                 for data_set in stats.get('job_list'):
                     self.job_lists.append(JobList(data_set, self.display_language))
-                self.occupation_stats = self.sync_occupation_stats()
 
             self.accreditations = []
             accreditations = course_details.get('accreditations')
