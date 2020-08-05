@@ -39,7 +39,6 @@
     font-size:0.9rem;
     font-weight:300;
     color: $brownish-grey;
-    margin-left:5px;
   }
 
   text-align: center;
@@ -87,7 +86,6 @@
     font-size:0.9rem;
     font-weight:300;
     color:$brownish-grey;
-    margin-left:5px;
   }
 
   .rich-text{
@@ -171,7 +169,7 @@
 
       .student-satisfaction__chart-wrapper {
         width: 100%;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         .student-satisfaction__chart {
           .doughnut-chart .highcharts-plot-border {
             fill: #f2f2f2 !important;
@@ -186,7 +184,7 @@
             margin-bottom: 0;
             margin-top: 18px;
             font-weight: 300;
-            color: $brownish-grey;
+            color: $black;
           }
           .rich-text p{
             font-family: "Nunito Sans", sans-serif;
@@ -236,7 +234,6 @@
   }
 
   .student-satisfaction__block {
-    padding: 1rem;
 
     .student-satisfaction__intro {
       @include small-font-mixin();
@@ -286,7 +283,7 @@
 
         .student-satisfaction__chart-wrapper {
           width: 25%;
-
+          margin-bottom: 0;
           .student-satisfaction__chart {
             .student-satisfaction__chart-title {
               @include small-font--bold-mixin();
@@ -294,7 +291,7 @@
               text-align: center;
               font-size: 0.85rem;
               font-weight: 300;
-              color: $brownish-grey;
+              color: $black;
             }
           }
         }

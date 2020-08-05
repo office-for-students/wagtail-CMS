@@ -287,12 +287,12 @@
     }
 
     .explanation-text {
-        @include small-font-mixin();
-
-        margin-top: 21px;
-        margin-bottom: 6px;
-
-        color: $ux-grey-2;
+        .explanation-text {
+           
+            color: $brownish-grey;
+            font-weight:300;
+            font-size:0.9rem;
+        }
     }
 
     .find-out-more-link {
@@ -546,12 +546,10 @@
         }
 
         .explanation-text {
-            @include desktop-body-font-mixin();
-
-            margin-top: 21px;
-            margin-bottom: 6px;
-
-            color: $ux-grey-2;
+           
+            color: $brownish-grey;
+            font-weight:300;
+            font-size:0.9rem;
         }
 
         .find-out-more-link {

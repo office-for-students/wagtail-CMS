@@ -137,8 +137,10 @@
         font-weight: 300;
         text-decoration: underline;
         font-size: 0.9rem;
+
     }
     ul{
+        padding-inline-start: 0;
         list-style-position: inside;
     }
 }

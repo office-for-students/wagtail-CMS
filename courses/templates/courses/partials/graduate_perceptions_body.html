@@ -19,8 +19,8 @@
     <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="grad-perceptions-{{ forloop.counter }}" role="tabpanel" aria-labelledby="grad-perceptions-{{ forloop.counter }}-tab">
 
     {% if perceptions_stats.go_work_mean %}
-        <div class="student-satisfaction__overview mt-3 mx-1 p-0 d-flex flex-wrap row">
-                <div class="col-lg-2 col-md-12 align-self-stretch my-auto pt-3 text-center">
+        <div class="student-satisfaction__overview mt-3 mx-1 p-3 d-flex flex-wrap row">
+                <div class="col-lg-2 col-md-12 align-self-stretch my-auto text-center">
                     <p class="student-satisfaction__overview-lead ">
                         {{ perceptions_stats.go_work_mean }}%
                     </p>
@@ -39,9 +39,9 @@
     {% endif %}
 
         <div class="student-satisfaction__block">
-            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-2 py-3 mx-2">
+            <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 mx-1">
                 <div class="col-lg-4 col-md-12 my-auto pb-3" >
-                    <h2 class="student-satisfaction__data-group-heading">
+                    <h2 class="student-satisfaction__data-group-heading mb-3">
                         {{ block.value.perception_of_work_heading }}
 
                         <p>

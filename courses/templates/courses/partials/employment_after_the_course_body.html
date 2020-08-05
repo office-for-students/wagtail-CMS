@@ -42,8 +42,8 @@
         <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
             <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
 
-                <h2 class="employment-after-course__stats-heading pt-3">
-                    {{block.value.six_month_employment_roles_heading}}{% if course_details.has_multiple_job_type_stats %}:
+                <h2 class="employment-after-course__stats-heading pt-3 mb-4">
+                    {{block.value.six_month_employment_roles_heading}}{% if course_details.has_multiple_job_type_stats %}
                     {{job_type_stats.display_subject_name}}{% endif %}
                 </h2>
                 <div class="explanation-text">
@@ -168,8 +168,8 @@
     <div class="tab-pane {% if not forloop.counter0 %} show active {% endif %}" id="occupation-types-{{ forloop.counter }}" role="tabpanel" aria-labelledby="occupation-types-{{ forloop.counter }}-tab">
 
         <div class="employment-after-course_occupation-block mx-1 my-2 p-4">
-            <h2 class="employment-after-course__stats-heading text-left pt-3">
-                {{block.value.six_month_employment_roles_label_explanation_heading}}{% if course_details.has_multiple_job_type_stats %}:
+            <h2 class="employment-after-course__stats-heading text-left pt-3 mb-4">
+                {{block.value.six_month_employment_roles_label_explanation_heading}}{% if course_details.has_multiple_job_type_stats %}
                 {{jobtype_stats.display_subject_name}}{% endif %}
             </h2>
             <div class="employment-after-course_explanation-text">
