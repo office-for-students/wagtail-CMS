@@ -1,7 +1,7 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
 
 {% if course_details.has_multiple_employment_stats %}
-<ul class="nav nav-tabs mt-2" id="after-one-year-tab" role="tablist">
+<ul class="nav nav-tabs mt-2" id="employment-after-course-tab" role="tablist">
     {% for employment_stats in course_details.employment_stats %}
         <li class="nav-item">
             <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="employment-after-course-{{ forloop.counter }}-tab" data-toggle="tab" href="#employment-after-course-{{ forloop.counter }}" role="tab"
@@ -144,16 +144,36 @@
             </div>
         </div>
     {% endif %}
-
     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
+    </div>
+{% endfor %}
+</div>
+
+{% if course_details.has_multiple_employment_stats %}
+<ul class="nav nav-tabs mt-2" id="occupation-types-tab" role="tablist">
+    {% for job_type_stats in course_details.job_type_stats %}
+        <li class="nav-item">
+            <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="occupation-types-{{ forloop.counter }}-tab" data-toggle="tab" href="#occupation-types-{{ forloop.counter }}" role="tab"
+               aria-controls="occupation-types-{{ forloop.counter }}" aria-selected="true">
+                {{ job_type_stats.display_subject_name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+<hr class="nav-tabs-hr"/>
+{% endif %}
+
+<div class="tab-content">
+{% for jobtype_stats, joblist_stats in course_details.occupation_stats %}
+    <div class="tab-pane {% if not forloop.counter0 %} show active {% endif %}" id="occupation-types-{{ forloop.counter }}" role="tabpanel" aria-labelledby="occupation-types-{{ forloop.counter }}-tab">
 
         <div class="employment-after-course_occupation-block mx-1 my-2 p-4">
             <h2 class="employment-after-course__stats-heading text-left pt-3">
                 {{block.value.six_month_employment_roles_label_explanation_heading}}{% if course_details.has_multiple_job_type_stats %}:
-                {{job_type_stats.display_subject_name}}{% endif %}
+                {{jobtype_stats.display_subject_name}}{% endif %}
             </h2>
             <div class="employment-after-course_explanation-text">
-                    {% create_list course_details.data_from_html employment_stats.number_of_students employment_stats.response_rate as substitutions %}
+                    {% create_list course_details.data_from_html jobtype_stats.number_of_students jobtype_stats.response_rate as substitutions %}
                     {% insert_values_to_rich_text content=block.value.six_month_employment_roles_data_source substitutions=substitutions as subbed_text %}
                     {{ subbed_text | richtext }}
             </div>
@@ -162,9 +182,9 @@
                 <div class="employment-after-course_occupation-statistics d-flex row align-items-stretch">
                     <div class="col-md-12 col-lg-4 align-self-stretch my-2">
                         <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
-                            <h2 class="mb-0 text-center text-lg-left">{{ course.job_type_stats.0.professional_or_managerial_jobs }}%</h2>
+                            <h2 class="mb-0 text-center text-lg-left">{{ jobtype_stats.professional_or_managerial_jobs }}%</h2>
                             <h4 class="pt-1 text-center text-lg-left  mb-3">In highly skilled work</h4>
-                            {% for job in course.job_lists.0.jobs %}
+                            {% for job in joblist_stats.jobs %}
                                 {% if job.hss == 0 %}
                                 <div class="row">
                                     <div class="col-2">
@@ -180,9 +200,9 @@
                     </div>
                     <div class="col-md-12 col-lg-4 align-self-stretch my-2">
                         <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
-                            <h2 class="mb-0 text-center text-lg-left">{{ course.job_type_stats.0.non_professional_or_managerial_jobs  }}%</h2>
+                            <h2 class="mb-0 text-center text-lg-left">{{ jobtype_stats.non_professional_or_managerial_jobs  }}%</h2>
                             <h4 class="pt-1 text-center text-lg-left mb-3">In other work</h4>
-                            {% for job in course.job_lists.0.jobs %}
+                            {% for job in joblist_stats.jobs %}
                                 {% if job.hss == 1 %}
                                 <div class="row">
                                     <div class="col-2">
@@ -198,8 +218,20 @@
                     </div>
                     <div class="col-md-12 col-lg-4 align-self-stretch my-2">
                         <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
-                            <h2 class="mb-0 text-center text-lg-left">{{ course.job_type_stats.0.unknown_professions }}%</h2>
+                            <h2 class="mb-0 text-center text-lg-left">{{ jobtype_stats.unknown_professions }}%</h2>
                             <h4 class="pt-1 text-center text-lg-left mb-3">In unknown work</h4>
+                             {% for job in joblist_stats.jobs %}
+                                {% if job.hss == 2 %}
+                                <div class="row">
+                                    <div class="col-2">
+                                        <p>{{job.percentage}}%</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{% get_translation key=job.job language=page.get_language %}</p>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

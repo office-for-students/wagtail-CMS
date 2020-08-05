@@ -348,6 +348,7 @@ class Course:
                 self.job_lists = []
                 for data_set in stats.get('job_list'):
                     self.job_lists.append(JobList(data_set, self.display_language))
+                self.occupation_stats = self.sync_occupation_stats()
 
             self.accreditations = []
             accreditations = course_details.get('accreditations')
@@ -392,7 +393,6 @@ class Course:
                 self.salaries_sector.append(SectorSalary(course_details.get('leo3_salary_sector'), self.display_language))
             if course_details.get('leo5_salary_sector'):
                 self.salaries_sector.append(SectorSalary(course_details.get('leo5_salary_sector'), self.display_language))
-
 
     def set_course_links(self, links, language):
         link_objs = {'course_details': [], 'costs_support': []}
@@ -508,6 +508,10 @@ class Course:
         return len(self.job_lists) > 1
 
     @property
+    def has_multiple_occupation_stats(self):
+        return lent(self.occupation_stats) > 1
+
+    @property
     def show_leo(self):
         return self.is_in_england and self.leo_stats and self.leo_stats[0].display_stats
 
@@ -555,6 +559,9 @@ class Course:
                     satisfaction_pair['nhs_satisfaction_stats'] = nhs_stats
             overall_satisfaction.append(satisfaction_pair)
         return overall_satisfaction
+
+    def sync_occupation_stats(self):
+        return list(zip(self.job_type_stats, self.job_lists))
 
 
 class CourseCountry:

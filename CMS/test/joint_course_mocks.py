@@ -411,8 +411,8 @@ class NewJointCourseFormatMocks:
                             "response_rate": 95,
                             "subject": {
                                 "code": "CAH01-01-01",
-                                "english_label": "Graphical Design (non-specific)",
-                                "welsh_label": "Gwyddorau meddygol (amhenodol)"
+                                "english_label": "Mathematics",
+                                "welsh_label": "Mathemateg"
                             },
                             "unavailable": {
                                 "code": 1,
@@ -420,9 +420,67 @@ class NewJointCourseFormatMocks:
                                 "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             },
                             "unknown_professions": 0
+                        },
+                        {
+                            "aggregation_level": 13,
+                            "non_professional_or_managerial_jobs": 10,
+                            "number_of_students": 52,
+                            "professional_or_managerial_jobs": 75,
+                            "response_rate": 85,
+                            "subject": {
+                                "code": "CAH17-01-04",
+                                "english_label": "Management studies",
+                                "welsh_label": "Astudiaethau rheoli"
+                            },
+                            "unavailable": {
+                                "code": 1,
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
+                            },
+                            "unknown_professions": 5
                         }
                     ],
-                    "job_list": [
+                    "job_list": [{
+                            "aggregation_level": 13,
+                            "list": [
+                                {
+                                    "job": "Information technology and telecommunications professionals",
+                                    "percentage_of_students": "70",
+                                    "order": "1",
+                                    "hss": 0
+                                },
+                                {
+                                    "job": "Science, engineering and technology associate professionals",
+                                    "percentage_of_students": "15",
+                                    "order": "2",
+                                    "hss": 0
+                                },
+                                {
+                                    "job": "Teaching and educational professionals",
+                                    "percentage_of_students": "5",
+                                    "order": "3",
+                                    "hss": 0
+                                },
+                                {
+                                    "job": "Administrative occupations",
+                                    "percentage_of_students": "5",
+                                    "order": "4",
+                                    "hss": 1
+                                }
+                            ],
+                            "number_of_students": 25,
+                            "response_rate": 100,
+                            "subject": {
+                                "code": "CAH01-01-01",
+                                "english_label": "Mathematics",
+                                "welsh_label": "Mathemateg"
+                            },
+                            "unavailable": {
+                                "code": 0,
+                                "reason_english": "The data displayed is from students on other courses in Graphical Design (non-specific) subject. There was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Nid oes data ar gael ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu am nad yw wedi cael ei gynnal yn ddigon hir i'r data hwn fod ar gael. Am y rheswm hwn, mae'r data a ddangosir ar gyfer myfyrwyr ar gyrsiau eraill mewn "
+                            }
+                        },
                         {
                             "aggregation_level": 24,
                             "list": [
@@ -472,15 +530,15 @@ class NewJointCourseFormatMocks:
                                     "job": "Customer service occupations",
                                     "percentage_of_students": "5",
                                     "order": "8",
-                                    "hss": 1
+                                    "hss": 2
                                 }
                             ],
                             "number_of_students": 25,
                             "response_rate": 100,
                             "subject": {
-                                "code": "CAH01-01-01",
-                                "english_label": "Graphical Design (non-specific)",
-                                "welsh_label": "Gwyddorau meddygol (amhenodol)"
+                                "code": "CAH17-01-04",
+                                "english_label": "Management studies",
+                                "welsh_label": "Astudiaethau rheoli"
                             },
                             "unavailable": {
                                 "code": 1,
