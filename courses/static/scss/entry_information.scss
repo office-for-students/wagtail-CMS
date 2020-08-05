@@ -55,7 +55,7 @@
         margin: 0;
         color: black;
         font-weight:300;
-        font-size:1.2rem;
+        font-size:1.3rem;
     }
 
     .entry-information__lead {
@@ -142,12 +142,11 @@
     .entry-information__block {
 
         .entry-information__heading {
-            font-size:1rem;
-            @include m-heading-mixin();
-
+            font-family: 'Nunito Sans', sans-serif;
             margin: 0;
-
-            color: $ux-grey-2;
+            color: black;
+            font-weight:300;
+            font-size:1.3rem;
         }
 
         .entry-information__lead {

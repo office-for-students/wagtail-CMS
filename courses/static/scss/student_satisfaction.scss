@@ -74,7 +74,7 @@
 
   p {
     margin: 10px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     letter-spacing: normal;
     line-height: normal;
   }
@@ -125,8 +125,8 @@
       @include xs-heading-mixin();
       font-weight: 300;
       text-align: center;
-
-      background-color: $divider-grey;
+      font-size:1.3rem;
+      // background-color: $divider-grey;
       color: #000000;
 
       p {
@@ -197,7 +197,7 @@
 
 @media only screen and (min-width: 770px) {
   .student-satisfaction__overview {
-    padding: 1rem;
+    // padding: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: 1rem;
@@ -263,7 +263,7 @@
     .student-satisfaction__data-group {
       margin-top: 30px;
       margin-bottom: 30px;
-      padding: 1rem;
+      // padding: 1rem;
 
       .student-satisfaction__data-group-heading {
         text-align: left;
@@ -272,7 +272,8 @@
         margin-top: 0px;
         margin-bottom: 16px;
         padding-top: 2rem;
-        background-color: $divider-grey;
+        font-size:1.3rem;
+        // background-color: $divider-grey;
         color: #000000;
       }
 

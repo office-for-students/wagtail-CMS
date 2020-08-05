@@ -216,16 +216,14 @@
     .course-detail__uni-site-links {
         padding: 30px 22px 0px 25px;
         margin-bottom: 30px;
-
-        background-color: white;
-        border: 1px solid $ux-grey-3;
-        border-radius: 10px;
+        background-color: #F2F2F2;
+        border: none;
 
         .course-detail__uni-site-links-header {
-            @include xs-heading-mixin();
-
-            margin: 0px;
-            margin-bottom: 35px;
+            font-size:1.3rem;
+            font-weight:300;
+            color:$black;
+            font-family: 'Nunito Sans', sans-serif;
         }
 
         .course-detail__uni-site-links-block {
@@ -233,12 +231,10 @@
 
 
             .course-detail__uni-site-links-heading {
-                @include mobile-body-font-mixin();
-
-                margin: 0px;
-                margin-bottom: 10px;
-
-                color: $ux-grey-2;
+                font-size:0.9rem;
+                font-weight:300;
+                color:$black;
+                font-family: 'Nunito Sans', sans-serif;
             }
 
             .course-detail__uni-site-links-list {
@@ -250,10 +246,11 @@
 
 
                     .course-detail__uni-site-link {
-                        @include small-font-mixin();
-
-                        line-height: 25px;
-                        color: $link-blue;
+                        font-size:0.9rem;
+                        font-weight:300;
+                        color:$dark-green-blue;
+                        font-family: 'Nunito Sans', sans-serif;
+                        text-decoration: underline;
                     }
                 }
             }
@@ -480,10 +477,10 @@
             margin-bottom: 70px;
 
             .course-detail__uni-site-links-header {
-                @include s-heading-mixin();
-
-                margin: 0px;
-                margin-bottom: 35px;
+                font-size:1.3rem;
+                font-weight:300;
+                color:$black;
+                font-family: 'Nunito Sans', sans-serif;
             }
 
             .course-detail__uni-site-links-blocks {
@@ -494,9 +491,10 @@
                     padding-bottom: 50px;
 
                     .course-detail__uni-site-links-heading {
-                        @include xs-heading-mixin();
-
-                        color: $ux-grey-2;
+                        font-size:0.9rem;
+                        font-weight:300;
+                        color:$black;
+                        font-family: 'Nunito Sans', sans-serif;
                     }
 
                     .course-detail__uni-site-links-list {
@@ -507,10 +505,11 @@
                             display: block;
 
                             .course-detail__uni-site-link {
-                                @include desktop-body-font-mixin();
-
-                                line-height: 25px;
-                                color: $link-blue;
+                                font-size:0.9rem;
+                                font-weight:300;
+                                color:$dark-green-blue;
+                                font-family: 'Nunito Sans', sans-serif;
+                                text-decoration: underline;
                             }
                         }
                     }
