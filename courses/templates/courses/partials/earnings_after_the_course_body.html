@@ -7,10 +7,10 @@
         {% if course_details.show_salary_lead %}
             <div class="earnings-after-course__lead my-3 p-3 mx-1 pt-4 flex-wrap">
                 <div class="row">
-                    <div class="col-6 earnings-after-course__lead-title align-self-stretch my-auto">
+                    <div class="col-lg-4 col-md-12 px-4 earnings-after-course__lead-title align-self-stretch my-auto text-lg-left text-center">
                         <p>{{block.value.section_heading}}</p>
                     </div>
-                    <div class="col earnings-after-course__lead-intro align-self-stretch my-auto pt-2 text-left">
+                    <div class="col-lg-8 col-md-12 earnings-after-course__lead-intro align-self-stretch my-auto pt-2 text-left">
                         <p>{{block.value.intro | richtext}}</p>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
             <div>
                 <form method='post' id='test' class="">
                     <div class="d-inline-block">
-                    <h2 class="earnings-after-course__stats-heading text-left pt-1 mt-1 mb-2">
+                    <h2 class="earnings-after-course__stats-heading text-left pt-3 mt-3 mb-2">
                             {% create_list course.english_title as substitutions %}
                             {% insert_values_to_rich_text content=block.value.average_earnings_sector_heading substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}

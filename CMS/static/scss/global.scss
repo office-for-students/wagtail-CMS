@@ -231,10 +231,33 @@ body {
   }
 .not-enough-data-disclaimer{
     border: solid 3px #cee9e7!important;
-    color: $ux-grey-2;
     font-size: 0.9rem;
     font-weight:300;
     color:$brownish-grey;
+    font-family: 'Nunito Sans', sans-serif;
+
+    h6{
+        font-size: 0.9rem;
+        font-weight: 300;
+    }
+    h4{
+        font-size: 1.2rem;
+        font-weight: 300;
+        color: $black;
+    }
+}
+#leo3_sector_unavail.not-enough-data-disclaimer, #leo5_sector_unavail.not-enough-data-disclaimer, #go_sector_unavail.not-enough-data-disclaimer{
+    padding:0.5rem;
+    h6{
+        
+        font-size: 0.8rem;
+        font-weight: 300;
+    }
+    h4{
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: $black;
+    }
 }
 
 .nav-tabs-hr{
