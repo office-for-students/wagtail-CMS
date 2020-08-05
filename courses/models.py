@@ -561,7 +561,10 @@ class Course:
         return overall_satisfaction
 
     def sync_occupation_stats(self):
-        return list(zip(self.job_type_stats, self.job_lists))
+        occupation_stats = []
+        if len(self.job_type_stats) == len(self.job_lists):
+            occupation_stats = [(jt_stat, jl_stat) for jt_stat in self.job_type_stats for jl_stat in self.job_lists if jt_stat.subject_code == jl_stat.subject_code]
+        return occupation_stats
 
 
 class CourseCountry:

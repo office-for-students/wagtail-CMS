@@ -405,24 +405,6 @@ class NewJointCourseFormatMocks:
                     "job_type": [
                         {
                             "aggregation_level": 13,
-                            "non_professional_or_managerial_jobs": 45,
-                            "number_of_students": 25,
-                            "professional_or_managerial_jobs": 55,
-                            "response_rate": 95,
-                            "subject": {
-                                "code": "CAH01-01-01",
-                                "english_label": "Mathematics",
-                                "welsh_label": "Mathemateg"
-                            },
-                            "unavailable": {
-                                "code": 1,
-                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
-                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
-                            },
-                            "unknown_professions": 0
-                        },
-                        {
-                            "aggregation_level": 13,
                             "non_professional_or_managerial_jobs": 10,
                             "number_of_students": 52,
                             "professional_or_managerial_jobs": 75,
@@ -438,6 +420,24 @@ class NewJointCourseFormatMocks:
                                 "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
                             },
                             "unknown_professions": 5
+                        },
+                        {
+                            "aggregation_level": 13,
+                            "non_professional_or_managerial_jobs": 15,
+                            "number_of_students": 25,
+                            "professional_or_managerial_jobs": 55,
+                            "response_rate": 95,
+                            "subject": {
+                                "code": "CAH01-01-01",
+                                "english_label": "Mathematics",
+                                "welsh_label": "Mathemateg"
+                            },
+                            "unavailable": {
+                                "code": 1,
+                                "reason_english": "The data displayed is from students on this and other courses in Graphical Design (non-specific).\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                                "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Graphical Design (non-specific) eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
+                            },
+                            "unknown_professions": 0
                         }
                     ],
                     "job_list": [{
