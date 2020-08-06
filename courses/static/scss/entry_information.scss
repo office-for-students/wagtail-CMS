@@ -111,8 +111,8 @@
                 margin-top: 7px;
                 color: $black;
                 font-family: 'Nunito Sans', sans-serif;
-                font-weight:300;
-                font-size: 0.9rem;
+                font-weight:200;
+                font-size: 1rem;
             }
         }
     }
@@ -169,8 +169,8 @@
                     @include desktop-body-font-mixin();
                     color: $black;
                     font-family: 'Nunito Sans', sans-serif;
-                    font-weight:300;
-                    font-size: 0.9rem;
+                    font-weight:200;
+                    font-size: 1rem;
                    
                 }
             }

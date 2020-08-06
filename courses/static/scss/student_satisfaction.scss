@@ -164,8 +164,8 @@
         display: block;
         margin-top: 7px;
         color: $black;
-        font-weight:300;
-        font-size:0.9rem;
+        font-weight:200;
+        font-size:1rem;
       }
 
       .student-satisfaction__chart-wrapper {
@@ -283,6 +283,15 @@
         flex-wrap: wrap;
         justify-content: center;
 
+        .entry-information__chart-label {
+          @include small-font-mixin();
+          font-family: "Nunito Sans", sans-serif;
+          display: block;
+          margin-top: 7px;
+          color: $black;
+          font-weight:200;
+          font-size:0.9rem;
+        }
         .student-satisfaction__chart-wrapper {
           width: 25%;
           margin-bottom: 0;
@@ -291,8 +300,8 @@
               @include small-font--bold-mixin();
               font-family: "Nunito Sans", sans-serif;
               text-align: center;
-              font-size: 0.85rem;
-              font-weight: 300;
+              font-size: 0.9rem;
+              font-weight: 200;
               color: $black;
             }
           }
