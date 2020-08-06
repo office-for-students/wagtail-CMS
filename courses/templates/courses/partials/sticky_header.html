@@ -1,0 +1,14 @@
+<nav class="navbar sticky-top navbar-expand-md fixed-top navbar-dark bg-dark" id="sticky_nav_course_detail">
+    <!-- <div class="container"> -->
+        <div class="collapse navbar-collapse" id="navbar1">
+            <div class="navbar-nav flex-md-row">
+                {% for accordion in page.accordions %}
+                    <a class="nav-item nav-link scrollto" href="#{{accordion.value.data_set}}" id="a_{{accordion.value.data_set}}">{{ accordion.value.heading }}</a>
+                {%endfor%}
+            </div>
+        </div>
+        <button class="navbar-toggler align-self-start ml-auto" type="button" data-toggle="collapse" data-target="#navbar1">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    <!-- </div> -->
+</nav>

@@ -1,7 +1,7 @@
-
+{% include 'courses/partials/sticky_header.html' %}
 {% load staticfiles discover_uni_tags %}
 
-<div class="course-detail comparison-course-area mx-2"
+<div class="course-detail comparison-course-area mx-lg-4 mx-sm-2 px-2"
      data-coursename="{{ course.display_title }}" data-courseid="{{ course.kis_course_id }}"
      data-uniname="{{ course.institution.pub_ukprn_name }}" data-uniid="{{ course.institution.pub_ukprn }}"
      data-length="{{ course.length.label | slice:1}}" data-locations="{{ course.locations_list }}"
@@ -69,4 +69,38 @@ function toggle_icon(icon_id){
     $(icon_name).toggleClass("fa-plus");
     $(icon_name).toggleClass("fa-minus");
 }
+
+    $( document ).ready(function() {
+        $('#sticky_nav_course_detail').hide();
+        $('body').scrollspy({ 
+            target: '#sticky_nav_course_detail' 
+        });
+
+        $('#myScrollspy').on('activate.bs.scrollspy', function () {
+            // do something…
+        });
+        var $items = $('.nav-item');
+
+        $items.on('click', function() {
+            var selectedIndex = $items.index(this);
+            $items.eq(selectedIndex).find('a').trigger('click');
+        });
+
+        $('.scrollto').click(function(event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({ scrollTop: $($anchor.attr('href')).offset().top - 70}, 1500);
+            event.preventDefault();
+        });
+    });
+
+    $(window).scroll(function() { // when the page is scrolled run this
+        if($(this).scrollTop() >= ($('.course-detail__lead').outerHeight() + $('.discover-uni-nav').outerHeight() + 10 - $('#sticky_nav_course_detail').outerHeight())) {
+            $('#sticky_nav_course_detail').fadeIn("fast"); // fade in
+        } else { // else
+            $('#sticky_nav_course_detail').fadeOut("fast"); // fade out
+        }
+    });
+
+    
+
 </script>

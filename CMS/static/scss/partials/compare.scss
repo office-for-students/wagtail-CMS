@@ -102,3 +102,58 @@
         background-color: transparent;
     }
 }
+
+#sticky_nav_course_detail{
+
+    .nav-item.nav-link.scrollto {
+        font-size:0.9rem;
+        font-weight:200;
+        text-align: center;
+        // color:$white!important;
+    }
+    .nav-item.nav-link.scrollto.active {
+        // text-decoration: underline!important;
+        font-weight: 400;
+    }
+
+    .navbar-toggler .navbar-dark{
+        border:none!important;
+    }
+    background-color: #2a8384!important;
+    width: 100vw;
+
+    .navbar .collapse {
+        visibility: hidden;
+        display: block;
+    }
+    
+    .navbar .collapse.show {
+        visibility: visible;
+    }
+}
+/* for small screens */
+@media (max-width: 767px) {
+    #sticky_nav_course_detail{
+        
+        .navbar-nav .nav-link.active {
+            visibility: visible;
+        }
+    
+        .collapsing {
+            transition: all 0.35s ease;
+            height: 40px !important;
+        }
+    
+        .collapse:not(.show) .navbar-nav .nav-item:not(.active) {
+            display: none;
+        }
+    }
+}
+/* for larger screens */
+@media (min-width: 768px) {
+    #sticky_nav_course_detail{
+        .navbar .collapse .navbar-nav .nav-item {
+            visibility: visible;
+        }
+    }
+}
