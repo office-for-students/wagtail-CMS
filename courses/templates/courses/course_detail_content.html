@@ -17,7 +17,7 @@
     {% include 'courses/partials/base_gradient.html' %}
     {% include 'courses/partials/course_overview.html' %}
 
-    <div class="course-detail__body">
+    <div id="course-detail__body" class="course-detail__body">
         <div class="course-detail__accordion-block">
             {% for accordion in page.accordions %}
                 {% should_show_accordion course accordion.value.data_set as show_accordion %}

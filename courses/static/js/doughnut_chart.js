@@ -98,6 +98,13 @@ $(function () {
                 tooltip: {
                     enabled: false,
                 },
+                func: function(chart) {
+                    $timeout(function() {
+                        chart.reflow();
+                        //The below is an event that will trigger all instances of charts to reflow
+                        //$scope.$broadcast('highchartsng.reflow');
+                    }, 0);
+                }
             });
 
             var chart = this.target.find('svg');

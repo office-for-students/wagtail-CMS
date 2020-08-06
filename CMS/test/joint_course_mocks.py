@@ -1200,8 +1200,8 @@ class NewJointCourseFormatMocks:
                     "resp_cf": "20",
                     "unavail_text_region_not_exists_english": "No data available",
                     "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
-                    "unavail_text_region_is_ni_english": "No data available\n\nSorry, this data is not available for courses in Northern Ireland.",
-                    "unavail_text_region_is_ni_welsh": "Nid oes data ar gael\n\n***Need Welsh translation***"
+                    "unavail_text_region_is_ni_english": "No data available",
+                    "unavail_text_region_is_ni_welsh": "Nid oes data ar gael"
                 },
                 "leo5_salary_sector": {
                     "unavail_reason": "0",
