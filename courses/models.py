@@ -1522,6 +1522,21 @@ class GraduatePerceptionStatistics:
         self.subject_welsh = subject_data.get('welsh_label', '')
 
         if go_voice_work_data:
+            subject_data = go_voice_work_data.get('subject')
+            if subject_data:
+                self.subject_code = subject_data.get('code')
+                self.subject_english = subject_data.get('english_label')
+                self.subject_welsh = subject_data.get('welsh_label')
+
+            unavailable_data = fallback_to(go_voice_work_data.get('unavailable'), {})
+            self.unavailable_code = unavailable_data.get('code')
+            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
+            self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
+            self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+
+            # self.go_work_unavail_reason = go_voice_work_data['go_work_unavail_reason']
+            # self.go_work_agg = go_voice_work_data['go_work_agg']
+            # self.go_work_sbj = go_voice_work_data['go_work_sbj']
             self.go_work_skills = go_voice_work_data['go_work_skills']
             self.go_work_mean = go_voice_work_data['go_work_mean']
             self.go_work_on_track = go_voice_work_data['go_work_on_track']
@@ -1532,6 +1547,36 @@ class GraduatePerceptionStatistics:
         if self.display_language == enums.languages.ENGLISH:
             return self.subject_english if self.subject_english else self.subject_welsh
         return self.subject_welsh if self.subject_welsh else self.subject_english
+
+	# *** added below by apw
+    def display_unavailable_info(self):
+        unavailable = {}
+
+        if self.unavailable_reason:
+            unavailable["reason"] = self.unavailable_reason
+        else:
+            if self.display_language == enums.languages.ENGLISH:
+                unavailable["reason"] = self.unavailable_reason_english if self.unavailable_reason_english \
+                    else self.unavailable_reason_welsh
+            else:
+                unavailable["reason"] = self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_english if self.unavailable_find_out_more_english \
+                else self.unavailable_find_out_more_welsh
+        else:
+            unavailable["find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
+                else self.unavailable_url_welsh
+        else:
+            unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+
+        return unavailable
+	# *** added above by apw
 
 
 class Salary:
