@@ -73,7 +73,8 @@ function toggle_icon(icon_id){
     $( document ).ready(function() {
         $('#sticky_nav_course_detail').hide();
         $('body').scrollspy({ 
-            target: '#sticky_nav_course_detail' 
+            target: '#sticky_nav_course_detail',
+            offset: 90
         });
 
         $('#myScrollspy').on('activate.bs.scrollspy', function () {
@@ -88,7 +89,7 @@ function toggle_icon(icon_id){
 
         $('.scrollto').click(function(event) {
             var $anchor = $(this);
-            $('html, body').stop().animate({ scrollTop: $($anchor.attr('href')).offset().top - 70}, 1500);
+            $('html, body').stop().animate({ scrollTop: $($anchor.attr('href')).offset().top - 80}, 1500);
             event.preventDefault();
         });
     });
