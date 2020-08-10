@@ -7,7 +7,7 @@
             <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" 
             class="nav-link dropdown-toggle text-white" href="#">
                 <span id="selected">Student Satisfaction</span><span class="caret"></span></a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu dropdown-menu-center">
             {% for accordion in page.accordions %}
                     <li>
                         <a class="nav-item nav-link scrollto" href="#{{accordion.value.data_set}}" id="a_{{accordion.value.data_set}}">{{ accordion.value.heading }}</a>
