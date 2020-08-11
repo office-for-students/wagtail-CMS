@@ -325,3 +325,30 @@
     );
   }
 }
+
+@media only screen and (max-width: 770px) {
+  .scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  
+    .card {
+      flex: 0 0 85vw;
+      // flex: auto;
+    }
+
+    .card:last-child{
+      margin-right:10px
+    }
+    .card:first-child{
+      margin-left:10px
+    }
+  }
+  .scrolling-wrapper {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+}
