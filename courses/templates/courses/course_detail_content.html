@@ -92,7 +92,13 @@ function toggle_icon(icon_id){
             $('html, body').stop().animate({ scrollTop: $($anchor.attr('href')).offset().top - 80}, 1500);
             event.preventDefault();
         });
+
+        $('.dropdown-menu a').click(function(){
+            $('#selected').text($(this).text());
+        });
+
     });
+
 
     $(window).scroll(function() { // when the page is scrolled run this
         if($(this).scrollTop() >= ($('.course-detail__lead').outerHeight() + $('.discover-uni-nav').outerHeight() + 10 - $('#sticky_nav_course_detail').outerHeight())) {

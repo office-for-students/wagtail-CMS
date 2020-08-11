@@ -130,6 +130,12 @@
     .navbar .collapse.show {
         visibility: visible;
     }
+
+    .dropdown-menu{
+        background-color: #379c9e!important;
+        width:90vw;
+        border:none;
+    }
 }
 /* for small screens */
 @media (max-width: 767px) {
@@ -149,6 +155,7 @@
         }
     }
 }
+
 /* for larger screens */
 @media (min-width: 768px) {
     #sticky_nav_course_detail{
