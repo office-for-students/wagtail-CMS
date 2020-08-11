@@ -333,15 +333,15 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   
-    .card {
+    .student-satisfaction__data-group {
       flex: 0 0 85vw;
       // flex: auto;
     }
 
-    .card:last-child{
+    .student-satisfaction__data-group:last-child{
       margin-right:10px
     }
-    .card:first-child{
+    .student-satisfaction__data-group:first-child{
       margin-left:10px
     }
   }
@@ -350,5 +350,4 @@
       display: none;
     }
   }
-
 }

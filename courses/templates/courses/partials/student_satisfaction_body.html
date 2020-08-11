@@ -42,11 +42,10 @@
 
     <div class="student-satisfaction__block">
 
-        <div class="scrolling-wrapper">
-            <!-- <div class="row text-center"> -->
+        <div class="scrolling-wrapper scroll">
         {% if overall_stats.satisfaction_stats.show_satisfaction_stats %}
             {% if overall_stats.satisfaction_stats.show_teaching_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 px-1 mx-1 card">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 px-1 mx-1 scroll_item">
                     <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
                             {{block.value.teaching_stats_header }}
@@ -147,7 +146,7 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_learning_opps_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 card">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                     <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
                             {{block.value.learning_opportunities_stats_header }}
@@ -228,7 +227,7 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_assessment_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 card">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                 <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
                     <h2 class="student-satisfaction__data-group-heading text-left">
                         {{block.value.assessment_stats_header }}
@@ -327,7 +326,7 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_support_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 card">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                     <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
                             {{block.value.support_stats_header }}
@@ -406,7 +405,7 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_organisation_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 card">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                     <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
                             {{block.value.organisation_stats_header }}
@@ -485,7 +484,7 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_learning_resources_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 card">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                     <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
                             {{block.value.learning_resources_stats_header }}
@@ -565,7 +564,7 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_learning_community_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 card">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                     <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
                             {{block.value.learning_community_stats_header }}
@@ -624,7 +623,7 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_voice_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 card">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                     <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
                             {{block.value.student_voice_stats_header }}
@@ -728,7 +727,7 @@
         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.display_unavailable_info %}
 
         {% if overall_stats.nhs_satisfaction_stats %}
-            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 card">
+            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                 <div class="col-lg-4 col-md-12 my-auto pt-3 text-left" >
                     <h2 class="student-satisfaction__data-group-heading text-left">
                         {{block.value.nhs_placement_stats_header }}
@@ -880,8 +879,6 @@
 
             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
         {% endif %}
-
-        <!-- </div> -->
         </div>
     </div>
 </div>
