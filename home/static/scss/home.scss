@@ -2,96 +2,59 @@
 @import '../../../CMS/static/scss/variables';
 @import '../../../CMS/static/scss/buttons';
 
-.home {
-    padding: 69px 0px 62px;
-    background-image: url('/static/images/home-background.png');
-    background-size: cover;
-    background-position: center bottom;
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}
+.home-page__header{
+    font-family: "Nunito Sans", sans-serif;
+    background-color: #1b2537;
+    padding:1rem;
+    padding-bottom:0;
+    color:$white;
 
-
-    .discover-uni-container {
-        padding-right: 25px;
-        padding-left: 25px;
+    .home-page__header-text{
+        color:white;
+        font-weight:bold;
+        font-size:1.5rem;
     }
-
-    .header {
-        @include l-heading-mixin();
-        margin-bottom: 30px;
-
-        color: $ux-grey-3;
-        line-height:52px;
-    }
-
-    .intro-text {
-        p {
-            @include desktop-body-font-mixin();
-            margin-top: 0px;
-            margin-bottom: 14px;
-
-            line-height: 26px;
-        }
-
-        ul {
-            padding-left: 25px;
-
-            li {
-                @include mobile-body-font-mixin();
-
-                list-style-image: url('/static/images/bullet-check.svg');
-                padding-left: 5px;
-
-                line-height: 22px;
-            }
+    .home-page__search-box-header{
+        height:4rem;
+        h4{
+            padding:2rem;
+            color:$black;
+            font-size:1.2rem;
+            font-weight:bold;
         }
     }
+    
+}
 
-    .link {
-        margin-top: 140px;
+.home-page__intro-panel{
+    color:$black;
+    font-weight:bold;
+    font-size:1.2rem;
+    margin-left:1rem;
+    margin-right:1rem;
+    padding:1rem;
 
-        a {
-            @include green-cta-mixin();
-
-            text-decoration: none;
-        }
+    .home-page__search-button{
+        background-color: #f1b434;
+        color:black;
+        font-family: "Nunito Sans", sans-serif;
+        font-size:1rem;
+        border:none;
+        font-weight:bold;
     }
 }
 
-@media only screen and (min-width: 770px) {
-    .home {
-        padding: 15px 0px 243px;
-        background-position: initial;
+.home-page__body{
+    font-family: "Nunito Sans", sans-serif;
+    background-color: $white;
+    padding:1rem;
+    padding-top:0;
+    color:$black;
 
-        .discover-uni-container {
-            padding: 0px;
-        }
-
-        .header {
-            @include xl-heading-mixin();
-            margin: 0px;
-            margin-bottom: 34px;
-
-            color: $ux-grey-3;
-            line-height:95px;
-        }
-
-        .intro-text {
-            p {
-                @include s-heading-mixin();
-
-                line-height: 37px;
-            }
-
-            ul {
-                li {
-                    @include xs-heading-mixin();
-
-                    line-height: 29px;
-                }
-            }
-        }
-
-        .link {
-            margin-top: 40px;
-        }
-    }
+    
+    
 }

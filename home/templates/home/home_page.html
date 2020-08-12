@@ -9,23 +9,17 @@
 {% endblock extra_css %}
 
 {% block content %}
-    <div class="home">
-        <div class="discover-uni-container">
-            <h1 class="header">
-                {{ page.header }}
-            </h1>
 
-            <div class="intro-text">
+            {% include 'partials/home_page_content.html' %}
+            <!-- <div class="intro-text">
                 {{ page.intro  | richtext }}
-            </div>
+            </div> -->
 
-            {% for block in page.page_links %}
+            <!-- {% for block in page.page_links %}
                 <div class="link">
                     <a href='{{ block.value.page.url }}'>
                         {{ block.value.title }}
                     </a>
                 </div>
-            {% endfor %}
-        </div>
-    </div>
+            {% endfor %} -->
 {% endblock content %}
