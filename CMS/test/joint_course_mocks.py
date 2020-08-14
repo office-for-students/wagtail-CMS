@@ -113,33 +113,33 @@ class NewJointCourseFormatMocks:
                 },
                 "kis_course_id": "ART002-F-UOB-SX",
                 "go_salary_inst": {
-                    "unavail_reason": "0",
-                    "pop": "15",
-                    "resp_rate": "55",
-                    "agg": "23",
-                    "sbj": "CAH01-01-01",
-                    "lq": "16000",
-                    "med": "18000",
-                    "uq": "21000",
-                    "inst_prov_pc_uk": "100",
-                    "inst_prov_pc_e": "80",
-                    "inst_prov_pc_s": "5",
-                    "inst_prov_pc_w": "15",
-                    "inst_prov_pc_ni": "0",
-                    "inst_prov_pc_nw": "0",
-                    "inst_prov_pc_ne": "0",
-                    "inst_prov_pc_em": "0",
-                    "inst_prov_pc_wm": "0",
-                    "inst_prov_pc_ee": "0",
-                    "inst_prov_pc_se": "0",
-                    "inst_prov_pc_sw": "0",
-                    "inst_prov_pc_yh": "0",
-                    "inst_prov_pc_lo": "0",
-                    "inst_prov_pc_ed": "0",
-                    "inst_prov_pc_gl": "0",
-                    "inst_prov_pc_cf": "0",
-                    "unavail_text_english": "",
-                    "unavail_text_welsh": ""
+                        "unavail_reason": "0",
+                        "pop": "15",
+                        "resp_rate": "55",
+                        "agg": "23",
+                        "sbj": "CAH01-01-01",
+                        "lq": "16000",
+                        "med": "18000",
+                        "uq": "21000",
+                        "inst_prov_pc_uk": "100",
+                        "inst_prov_pc_e": "80",
+                        "inst_prov_pc_s": "5",
+                        "inst_prov_pc_w": "15",
+                        "inst_prov_pc_ni": "0",
+                        "inst_prov_pc_nw": "0",
+                        "inst_prov_pc_ne": "0",
+                        "inst_prov_pc_em": "0",
+                        "inst_prov_pc_wm": "0",
+                        "inst_prov_pc_ee": "0",
+                        "inst_prov_pc_se": "0",
+                        "inst_prov_pc_sw": "0",
+                        "inst_prov_pc_yh": "0",
+                        "inst_prov_pc_lo": "0",
+                        "inst_prov_pc_ed": "0",
+                        "inst_prov_pc_gl": "0",
+                        "inst_prov_pc_cf": "0",
+                        "unavail_text_english": "",
+                        "unavail_text_welsh": ""
                 },
                 "leo3_inst": {
                     "unavail_reason": "0",
@@ -567,15 +567,15 @@ class NewJointCourseFormatMocks:
                             "number_of_students": 10,
                             "question_1": {
                                 "description": "Staff are good at explaining things",
-                                "agree_or_strongly_agree": 89
+                                "agree_or_strongly_agree": 81
                             },
                             "question_2": {
                                 "description": "Staff have made the subject interesting",
-                                "agree_or_strongly_agree": 89
+                                "agree_or_strongly_agree": 82
                             },
                             "question_3": {
                                 "description": "The course is intellectually stimulating",
-                                "agree_or_strongly_agree": 89
+                                "agree_or_strongly_agree": 83
                             },
                             "question_4": {
                                 "description": "My course has challenged me to achieve my best work",
@@ -607,7 +607,7 @@ class NewJointCourseFormatMocks:
                             },
                             "question_11": {
                                 "description": "I have received helpful comments on my work",
-                                "agree_or_strongly_agree": 89
+                                "agree_or_strongly_agree": 84
                             },
                             "question_12": {
                                 "description": "I have been able to contact staff when I needed to",
@@ -615,7 +615,7 @@ class NewJointCourseFormatMocks:
                             },
                             "question_13": {
                                 "description": "I have received sufficient advice and guidance in relation to my course",
-                                "agree_or_strongly_agree": 89
+                                "agree_or_strongly_agree": 85
                             },
                             "question_14": {
                                 "description": "Good advice was available when I needed to make study choices on my course",
@@ -623,7 +623,7 @@ class NewJointCourseFormatMocks:
                             },
                             "question_15": {
                                 "description": "The course is well organised and running smoothly",
-                                "agree_or_strongly_agree": 89
+                                "agree_or_strongly_agree": 86
                             },
                             "question_16": {
                                 "description": "The timetable works efficiently for me",
@@ -631,7 +631,7 @@ class NewJointCourseFormatMocks:
                             },
                             "question_17": {
                                 "description": "Any changes in the course or teaching have been communicated effectively",
-                                "agree_or_strongly_agree": 89
+                                "agree_or_strongly_agree": 87
                             },
                             "question_18": {
                                 "description": "The IT resources and facilities provided have supported my learning well",
@@ -647,7 +647,7 @@ class NewJointCourseFormatMocks:
                             },
                             "question_21": {
                                 "description": "I feel part of a community of staff and students",
-                                "agree_or_strongly_agree": 89
+                                "agree_or_strongly_agree": 91
                             },
                             "question_22": {
                                 "description": "I have had the right opportunities to work with other students as part of my course",

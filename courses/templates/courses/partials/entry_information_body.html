@@ -2,8 +2,6 @@
 {% load wagtailcore_tags %}
 {% load discover_uni_tags %}
 
-
-
     <div class="entry-information__block">
         <div class="entry-information__overview my-3 p-3 mx-1 pt-4 d-flex flex-wrap row">
             <div class="col-lg-6 col-md-12 align-self-stretch my-auto">
@@ -43,6 +41,7 @@
 {% for entry_stats in course_details.entry_stats %}
     {% if entry_stats.display_stats %}
         <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="qualification-types-{{ forloop.counter }}" role="tabpanel" aria-labelledby="qualification-types-{{ forloop.counter }}-tab">
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}
 
             <div class="entry-information__qualification-charts p-3 d-flex flex-wrap row mx-1 my-3">
                 <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
@@ -174,7 +173,6 @@
                 </div>
             </div>
         {% endif %}
-        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}
     </div>
 
 {% endfor %}
@@ -197,6 +195,8 @@
 <div class="tab-content">
 {% for tariff_stats in  course_details.tariff_stats %}
    <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="ucas-points-{{ forloop.counter }}" role="tabpanel" aria-labelledby="ucas-points-{{ forloop.counter }}-tab">
+
+    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
 
     <div class="entry-information__block my-2">
         <div class="entry-information__ucas-points p-3 d-flex flex-wrap row mx-1">
@@ -231,7 +231,6 @@
              </div>
         </div>
     </div>
-    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
    </div>
 {% endfor %}
 </div></div>

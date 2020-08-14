@@ -10,7 +10,7 @@ if __name__ == "__main__":
     from django.core.management import execute_from_command_line
 
     # Environment variables below added for out-of-container debugging.
-    os.environ["OUT_OF_CONTAINER_DEBUG"] = "False"
+    os.environ["OUT_OF_CONTAINER_DEBUG"] = "True"
     if os.environ["OUT_OF_CONTAINER_DEBUG"] == "True":
         os.environ["ENVIRONMENT"] = "dev" # This env var can take the values 'dev' or 'pre-prod'.
         with open(r'docker-compose.{}.yml'.format(os.environ["ENVIRONMENT"])) as file:

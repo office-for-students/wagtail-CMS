@@ -6,69 +6,58 @@
     {% get_index i course1.continuation_stats as course1_continuation_stats %}
     {% get_index i course2.continuation_stats as course2_continuation_stats %}
 
-    <div class="one-year__lead-block">
-        <h2 class="one-year__heading">
-            {{block.value.section_heading}}
-        </h2>
-
-        <p class="one-year__lead">
-            {{block.value.intro}}
-        </p>
-    </div>
-
-    <div class="comparison__course-columns">
-        <div class="comparison__course-column">
-            <div class="comparison__course">
-                {% if course1.has_multiple_one_year_stats %}
-                    <h3 class="comparison__subject-heading">
-                        {{course1_continuation_stats.display_subject_name}}
-                    </h3>
-                {% endif %}
-
-                {% if course1_continuation_stats and course1_continuation_stats.display_stats %}
-                    <div class="one-year__overview">
-                        <p class="one-year__overview-lead">
-                            {{ course1_continuation_stats.continuing_or_complete }}%
-                        </p>
-
-                        <p>
-                            {{block.value.lead}}
-                        </p>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class="comparison__course-column">
-            <div class="comparison__course">
-                {% if course2.has_multiple_one_year_stats %}
-                    <h3 class="comparison__subject-heading">
-                        {{course2_continuation_stats.display_subject_name}}
-                    </h3>
-                {% endif %}
-
-                {% if course2_continuation_stats and course2_continuation_stats.display_stats %}
-                    <div class="one-year__overview">
-                        <p class="one-year__overview-lead">
-                            {{ course2_continuation_stats.continuing_or_complete }}%
-                        </p>
-
-                        <p>
-                            {{block.value.lead}}
-                        </p>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-
     <div class="one-year__block">
         <div class="comparison__course-columns">
+        {% for course_index in '12'|make_list %}
+            {% if course_index == "1" %}
+                {% define course1 as course %}
+                {% define course1_continuation_stats as course_continuation_stats %}
+            {% else %}
+                {% define course2 as course %}
+                {% define course2_continuation_stats as course_continuation_stats %}
+            {% endif %}
+
+            {% if course_continuation_stats.display_stats %}
             <div class="comparison__course-column">
                 <div class="comparison__course">
-                    <div class="one-year__qualification-charts">
-                        {% if course1_continuation_stats and course1_continuation_stats.display_stats %}
-                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course1_continuation_stats.continuing}}"
+                    <h1>Subject: {{ course_continuation_stats.display_subject_name }}</h1>
+                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_continuation_stats.display_unavailable_info %}
+
+                    <div class="one-year__overview my-3 mx-1 p-3 d-flex flex-wrap row">
+                        <div class="col-lg-3 col-md-12 align-self-stretch my-auto">
+                            <p class="one-year__overview-lead">
+                                {{ course_continuation_stats.continuing_or_complete }}%
+                            </p>
+                        </div>
+                        <div class="col-lg-9 col-md-12 align-self-stretch my-auto pt-2">
+                            <p class="one-year__overview-sublead mb-3 text-center text-lg-left"> 
+                                {{block.value.lead}}
+                            </p>
+                            <p class="my-2 text-lg-left">
+                                {% get_translation key='after_1_year_overview_1' language=page.get_language %}: <a href="https://discoveruni.gov.uk/about-our-data/#data_collected_from_universities_and_colleges_on_individual_students">{% get_translation key='data_ind_stud_coll_dir' language=page.get_language %}</a>
+                            </p>
+                            <p class="text-lg-left">
+                                {{ course_continuation_stats.number_of_students }} {% get_translation key='after_1_year_overview_2' language=page.get_language %} (90% {% get_translation key='after_1_year_overview_3' language=page.get_language %})
+                            </p>
+                        </div>
+                    </div>
+            
+                    <div class="one-year__qualification-charts mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
+                        {% if course_continuation_stats and course_continuation_stats.display_stats %}
+
+                            <div class="col-lg-4 col-md-12 align-self-stretch my-auto"">
+                                <div class="one-year__lead-block my-3 mb-4">
+                                    <h2 class="one-year__heading py-2">
+                                        {{block.value.section_heading}}{% if course.has_multiple_one_year_stats %}:
+                                            {{course_continuation_stats.display_subject_name}}{% endif %}
+                                    </h2>
+                                    {% create_list course.data_from_html course_continuation_stats.number_of_students as substitutions %}
+                                    {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
+                                    {{ subbed_text | richtext }}
+                                </div>
+                            </div>
+
+                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course_continuation_stats.continuing}}"
                                     data-label="course-1-after-one-year-still_on_course"
                                     data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='still_on_course' language=page.get_language %}"
                                     data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='still_on_course' language=page.get_language %}">
@@ -76,7 +65,7 @@
                                 <label class="one-year-block__chart-label" aria-hidden="true">{% get_translation key='still_on_course' language=page.get_language %}</label>
                             </div>
 
-                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course1_continuation_stats.gained}}"
+                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course_continuation_stats.gained}}"
                                     data-label="course-1-after-one-year-completed_course"
                                     data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='completed_course' language=page.get_language %}"
                                     data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='completed_course' language=page.get_language %}">
@@ -84,7 +73,7 @@
                                 <label class="one-year-block__chart-label" aria-hidden="true">{% get_translation key='completed_course' language=page.get_language %}</label>
                             </div>
 
-                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course1_continuation_stats.dormant}}"
+                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course_continuation_stats.dormant}}"
                                     data-label="course-1-after-one-year-break_from_studies"
                                     data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='break_from_studies' language=page.get_language %}"
                                     data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='break_from_studies' language=page.get_language %}">
@@ -92,7 +81,7 @@
                                 <label class="one-year-block__chart-label" aria-hidden="true">{% get_translation key='break_from_studies' language=page.get_language %}</label>
                             </div>
 
-                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course1_continuation_stats.lower}}"
+                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course_continuation_stats.lower}}"
                                     data-label="course-1-after-one-year-left_lower_qualification"
                                     data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='left_lower_qualification' language=page.get_language %}"
                                     data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='left_lower_qualification' language=page.get_language %}">
@@ -100,7 +89,7 @@
                                 <label class="one-year-block__chart-label" aria-hidden="true">{% get_translation key='left_lower_qualification' language=page.get_language %}</label>
                             </div>
 
-                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course1_continuation_stats.left}}"
+                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course_continuation_stats.left}}"
                                     data-label="course-1-after-one-year-left_no_qualification"
                                     data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='left_no_qualification' language=page.get_language %}"
                                     data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='left_no_qualification' language=page.get_language %}">
@@ -109,107 +98,11 @@
                             </div>
                         {% endif %}
                     </div>
-                </div>
+
+                </div>    
             </div>
-
-            <div class="comparison__course-column">
-                <div class="comparison__course">
-                    <div class="one-year__qualification-charts">
-                        {% if course2_continuation_stats and course2_continuation_stats.display_stats %}
-                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course2_continuation_stats.continuing}}"
-                                    data-label="course-2-after-one-year-still_on_course"
-                                    data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='still_on_course' language=page.get_language %}"
-                                    data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='still_on_course' language=page.get_language %}">
-                                {% include 'courses/partials/bar_chart.html' %}
-                                <label class="one-year-block__chart-label" aria-hidden="true">{% get_translation key='still_on_course' language=page.get_language %}</label>
-                            </div>
-
-                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course2_continuation_stats.gained}}"
-                                    data-label="course-2-after-one-year-completed_course"
-                                    data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='completed_course' language=page.get_language %}"
-                                    data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='completed_course' language=page.get_language %}">
-                                {% include 'courses/partials/bar_chart.html' %}
-                                <label class="one-year-block__chart-label" aria-hidden="true">{% get_translation key='completed_course' language=page.get_language %}</label>
-                            </div>
-
-                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course2_continuation_stats.dormant}}"
-                                    data-label="course-2-after-one-year-break_from_studies"
-                                    data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='break_from_studies' language=page.get_language %}"
-                                    data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='break_from_studies' language=page.get_language %}">
-                                {% include 'courses/partials/bar_chart.html' %}
-                                <label class="one-year-block__chart-label" aria-hidden="true">{% get_translation key='break_from_studies' language=page.get_language %}</label>
-                            </div>
-
-                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course2_continuation_stats.lower}}"
-                                    data-label="course-2-after-one-year-left_lower_qualification"
-                                    data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='left_lower_qualification' language=page.get_language %}"
-                                    data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='left_lower_qualification' language=page.get_language %}">
-                                {% include 'courses/partials/bar_chart.html' %}
-                                <label class="one-year-block__chart-label" aria-hidden="true">{% get_translation key='left_lower_qualification' language=page.get_language %}</label>
-                            </div>
-
-                            <div class="one-year__chart discover-uni-chart bar" data-value="{{course2_continuation_stats.left}}"
-                                    data-label="course-2-after-one-year-left_no_qualification"
-                                    data-title="{% get_translation key='after_one_year_graph_title' language=page.get_language %} {% get_translation key='left_no_qualification' language=page.get_language %}"
-                                    data-desc="{% get_translation key='after_one_year_graph_desc' language=page.get_language %} {% get_translation key='left_no_qualification' language=page.get_language %}">
-                                {% include 'courses/partials/bar_chart.html' %}
-                                <label class="one-year-block__chart-label" aria-hidden="true">{% get_translation key='left_no_qualification' language=page.get_language %}</label>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {% if course1_continuation_stats.display_stats or course2_continuation_stats.display_stats %}
-            <div class="explanation">
-                <div class="explanation__link">
-                    <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
-                    <button class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</button>
-                </div>
-
-                <div tabindex="-1" class="chart-label-explanation" role="dialog">
-                    <h3 class="chart-label-explanation__heading">
-                        {{block.value.label_explanation_heading}}
-                    </h3>
-
-                    <button class="chart-label-explanation__close"><img src="{% static 'images/close-grey.svg' %}" alt="Close  pop up"></button>
-
-                    <div class="chart-label-explanation__body">
-                        {{block.value.label_explanation_body}}
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-
-        <div class="comparison__course-columns">
-            <div class="comparison__course-column">
-                <div class="comparison__course">
-                    {% if course1_continuation_stats and course1_continuation_stats.display_stats %}
-                        <div class="explanation-text">
-                            {% create_list course1_continuation_stats.number_of_students as substitutions %}
-                            {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
-                            {{ subbed_text | richtext }}
-                        </div>
-                    {% endif %}
-
-                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1_continuation_stats.display_unavailable_info %}
-                </div>
-            </div>
-
-            <div class="comparison__course-column">
-                <div class="comparison__course">
-                    {% if course2_continuation_stats and course2_continuation_stats.display_stats %}
-                        <div class="explanation-text">
-                            {% create_list course2_continuation_stats.number_of_students as substitutions %}
-                            {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
-                            {{ subbed_text | richtext }}
-                        </div>
-                    {% endif %}
-
-                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2_continuation_stats.display_unavailable_info %}
-                </div>
-            </div>
+            {% endif %}
+        {% endfor %}
         </div>
     </div>
 {% endfor %}

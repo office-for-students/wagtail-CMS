@@ -39,6 +39,7 @@
                 </p>
             </div>
         </div>
+        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=continuation_stats.display_unavailable_info %}
 
         <div class="one-year__block">
             <div class="one-year__qualification-charts mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
@@ -131,7 +132,6 @@
         </div>
     {% endif %}
 
-    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=continuation_stats.display_unavailable_info %}
     </div>
 {% endfor %}
 </div>
