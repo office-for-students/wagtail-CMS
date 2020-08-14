@@ -8,8 +8,8 @@ var CONTENT = {
         'cy-gb': 'cyfran y myfyrwyr sydd yn cytuno bod staff yn dda am esbonio pethau.'
     },
     'workIntro': {
-        'en-gb': 'in work or doing further study six months after finishing.',
-        'cy-gb':"mewn gwaith neu'n astudio ymhellach o fewn chwe mis ar ôl gorffen. "
+        'en-gb': 'in work or doing further study 15 months after the course.',
+        'cy-gb':"Shwmae, sut dach chi bore ‘ma?. I require translation."
     },
     'ctaLead1': {
         'en-gb': 'For ',
@@ -194,7 +194,6 @@ DiscoverUniWidget.prototype = {
         xhttp.send();
     },
 
-
     renderWidget: function(status, response) {
         if (status === 200) {
             var courseData = JSON.parse(response);
@@ -203,12 +202,13 @@ DiscoverUniWidget.prototype = {
                 new DataWidget(this.targetDiv, courseData, this.language, this.languageKey, this.kismode,
                                 this.hasOverallSatisfactionStats, this.hasTeachingSatisfactionStats, this.hasWorkStats,
                                 this.generateLink.bind(this));
-            } else {
-                new NoDataWidget(this.targetDiv, this.language, this.languageKey, this.kismode,
-                                    this.generateLink.bind(this));
+            }
+            else {
+                new NoDataWidget(this.targetDiv, courseData.course_name, courseData.institution_name, this.language,
+                this.languageKey, this.kismode, this.generateLink.bind(this));
             }
         } else {
-            new NoDataWidget(this.targetDiv, this.language, this.languageKey, this.kismode,
+            new NoDataWidget(this.targetDiv, "", "", this.language, this.languageKey, this.kismode,
                                 this.generateLink.bind(this));
         }
     },
@@ -385,7 +385,7 @@ DataWidget.prototype = {
             var courseName = this.courseData.course_name[this.languageKey];
             var dataFor = CONTENT.dataForAggregated[this.language];
             var at = CONTENT.at[this.language];
-            var institution = this.courseData.institution_name;
+            var institution = this.courseData.institution_name[this.languageKey];
             var course = document.createTextNode(dataFor + courseName + at + institution);
         }
         courseNode.appendChild(course);
@@ -473,8 +473,10 @@ DataWidget.prototype = {
     }
 }
 
-var NoDataWidget = function(targetDiv, language, languageKey, kismode, generateLink) {
+var NoDataWidget = function(targetDiv, courseName, institutionName ,language, languageKey, kismode, generateLink) {
     this.targetDiv = targetDiv;
+    this.courseName = courseName;
+    this.institutionName = institutionName;
     this.language = language;
     this.languageKey= languageKey;
     this.kismode =  kismode;
@@ -488,15 +490,32 @@ NoDataWidget.prototype = {
         this.renderNoDataCTABlock();
     },
 
-    renderNoDataLead: function() {
-        this.targetDiv.classList.add('no-data');
+    renderNoDataLead: function(parentNode) {
         var leadNode = document.createElement('div');
         leadNode.classList.add('widget-lead');
+
+        if (typeof this.courseName[this.languageKey] !== 'undefined' && typeof this.institutionName[this.languageKey] !== 'undefined') {
+            var courseNode = document.createElement("p");
+            courseNode.classList.add('intro');
+
+            var courseName = this.courseName[this.languageKey];
+            var at = CONTENT.at[this.language];
+            var institution = this.institutionName[this.languageKey];
+            var course = document.createTextNode(courseName + at + institution);
+
+            courseNode.appendChild(course);
+            leadNode.appendChild(courseNode);
+        }
+
+        var courseDetailsNode = document.createElement('div');
+        courseDetailsNode.classList.add('course-details');
+
         var introNode = document.createElement("p");
-        introNode.classList.add('intro');
+        introNode.classList.add('course');
         var intro = document.createTextNode(CONTENT.noDataIntro[this.language]);
         introNode.appendChild(intro);
-        leadNode.appendChild(introNode);
+        courseDetailsNode.appendChild(introNode);
+        leadNode.appendChild(courseDetailsNode);
         this.targetDiv.appendChild(leadNode);
     },
 

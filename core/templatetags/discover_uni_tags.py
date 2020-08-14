@@ -8,16 +8,17 @@ from django import template
 from CMS.enums import enums
 from CMS.translations import DICT
 from core.utils import get_current_version, get_code_version
-from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, EARNINGS_AFTER_COURSE_KEY, \
-    EMPLOYMENT_AFTER_COURSE_KEY, ACCREDITATION_KEY, GRADUATE_PERCEPTIONS_KEY, LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
+
+from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, ACCREDITATION_KEY,\
+    EARNINGS_AFTER_COURSE_KEY, EMPLOYMENT_AFTER_COURSE_KEY, GRADUATE_PERCEPTIONS_KEY, LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
 
 register = template.Library()
 
 SHOW_STATS_LOOKUP = {
     STUDENT_SATISFACTION_KEY: 'show_satisfaction_stats',
-    ACCREDITATION_KEY: 'accreditations',
     ENTRY_INFO_KEY: 'show_entry_information_stats',
     AFTER_ONE_YEAR_KEY: 'show_after_one_year_stats',
+    ACCREDITATION_KEY: 'accreditations',
     EARNINGS_AFTER_COURSE_KEY: 'show_after_course_stats',
     EMPLOYMENT_AFTER_COURSE_KEY: 'show_employment_after_course_stats',
     GRADUATE_PERCEPTIONS_KEY: 'show_graduate_perceptions_stats',
@@ -81,7 +82,8 @@ def map_distance_learning_values(key, language):
 
 @register.simple_tag
 def should_show_accordion(courses, accordion_type):
-    if accordion_type == ACCREDITATION_KEY:
+    #if accordion_type == ACCREDITATION_KEY:
+    if False:
         if type(courses) == tuple:
             show = False
             for course in courses:
@@ -170,3 +172,20 @@ def get_region_list():
 @register.simple_tag
 def concat(first_str, second_str):
     return str(first_str) + str(second_str)
+
+@register.simple_tag
+def concat4(first_str, second_str, third_str, fourth_str):
+    return str(first_str) + str(second_str) + str(third_str) + str(fourth_str)
+
+# @register.simple_tag
+# def concatn(*_, **kwargs):
+#     # concat tag only handles 2 arguments. This handles an arbitrary number.
+#     concat_string = ""
+#     for arg in kwargs:
+#         concat_string += str(arg)
+#     return concat_string
+
+
+@register.simple_tag
+def define(val=None):
+  return val

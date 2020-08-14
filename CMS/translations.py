@@ -1386,5 +1386,18 @@ DICT = {
         'en': 'of those who were asked',
         'cy': 'need Welsh translation'
     },
+    'accreditation_link_label': {
+        'en': 'Read more about professional accreditation',
+        'cy': 'need Welsh translation'
+    },
+     'accreditation_description': {
+        'en': 'Text here explaining what a professional accreditation is, and why its important. Text here explaining what a professional accreditation is, and why its important.',
+        'cy': 'need Welsh translation'
+    },
+     'accreditation_need_to_know': {
+        'en': 'What you need to know about professional accreditation.',
+        'cy': 'need Welsh translation'
+    },
     
+   
 }

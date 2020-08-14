@@ -39,6 +39,7 @@ static/**
 # Dev env stuff
 *.dev.*
 .DS_Store
+*.localhost.yml
 
 # Migration files
 *_auto_20*

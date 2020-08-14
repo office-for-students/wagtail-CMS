@@ -234,8 +234,11 @@ class CourseComparisonPage(DiscoverUniBasePage):
         ('satisfaction_panel', SatisfactionBlock(required=True, icon='collapse-down')),
         ('entry_information_panel', EntryInformationBlock(required=True, icon='collapse-down')),
         ('after_one_year_panel', AfterOneYearBlock(required=True, icon='collapse-down')),
-        ('after_course_panel', EarningsAfterCourseBlock(required=True, icon='collapse-down')),
-        ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down'))
+        ('accreditation_panel', AccreditationBlock(required=True, icon='collapse-down')),
+        ('earningsafter_course_panel', EarningsAfterCourseBlock(required=True, icon='collapse-down')),
+        ('employment_after_course_panel', EmploymentAfterCourseBlock(required=True, icon='collapse-down')),
+        ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down')),
+        ('links_to_the_institution_website_panel', LinksToTheInstitutionWebsiteBlock(required=True, icon='collapse-down'))
     ])
 
     content_panels = DiscoverUniBasePage.content_panels + [
@@ -333,12 +336,16 @@ class Course:
                 self.continuation_stats = []
                 for data_set in stats.get('continuation'):
                     self.continuation_stats.append(ContinuationStatistics(data_set, self.display_language))
-                self.salary_stats = []
-                for data_set in stats.get('salary'):
-                    self.salary_stats.append(SalaryStatistics(data_set, self.display_language, title))
-                self.leo_stats = []
-                for data_set in stats.get('leo'):
-                    self.leo_stats.append(LEOStatistics(data_set, self.display_language))
+
+
+                # self.salary_stats = []
+                # for data_set in stats.get('go_salary_inst'):
+                #     self.salary_stats.append(SalaryStatistics(data_set, self.display_language, title))
+                # self.leo_stats = []
+                # for data_set in stats.get('leo'):
+                #     self.leo_stats.append(LEOStatistics(data_set, self.display_language))
+
+
                 self.employment_stats = []
                 for data_set in stats.get('employment'):
                     self.employment_stats.append(EmploymentStatistics(data_set, self.display_language))
@@ -473,26 +480,26 @@ class Course:
     def has_multiple_graduate_perceptions_stats(self):
         return len(self.graduate_perceptions) > 1
 
-    @property
-    def show_after_course_stats(self):
-        show_salary_stats = self.salary_stats and self.salary_stats[0].display_stats
-        show_employment_stats = self.employment_stats and self.employment_stats[0].display_stats
-        show_job_type_stats = self.job_type_stats and self.job_type_stats[0].display_stats
-        show_job_lists = self.job_lists and self.job_lists[0].show_stats
-        return show_employment_stats or show_job_type_stats or show_salary_stats or self.show_leo or show_job_lists
+    # @property
+    # def show_after_course_stats(self):
+    #     show_salary_stats = self.salary_stats and self.salary_stats[0].display_stats
+    #     show_employment_stats = self.employment_stats and self.employment_stats[0].display_stats
+    #     show_job_type_stats = self.job_type_stats and self.job_type_stats[0].display_stats
+    #     show_job_lists = self.job_lists and self.job_lists[0].show_stats
+    #     return show_employment_stats or show_job_type_stats or show_salary_stats or self.show_leo or show_job_lists
 
-    @property
-    def show_salary_lead(self):
-        show_salary_stats = self.salary_stats and self.salary_stats[0].display_stats
-        return show_salary_stats or self.show_leo
+    # @property
+    # def show_salary_lead(self):
+    #     show_salary_stats = self.salary_stats and self.salary_stats[0].display_stats
+    #     return show_salary_stats or self.show_leo
 
-    @property
-    def has_multiple_salary_stats(self):
-        return len(self.salary_stats) > 1
+    # @property
+    # def has_multiple_salary_stats(self):
+    #     return len(self.salary_stats) > 1
 
-    @property
-    def has_multiple_leo_stats(self):
-        return len(self.leo_stats) > 1
+    # @property
+    # def has_multiple_leo_stats(self):
+    #     return len(self.leo_stats) > 1
 
     @property
     def has_multiple_employment_stats(self):
@@ -510,9 +517,9 @@ class Course:
     def has_multiple_occupation_stats(self):
         return lent(self.occupation_stats) > 1
 
-    @property
-    def show_leo(self):
-        return self.is_in_england and self.leo_stats and self.leo_stats[0].display_stats
+    # @property
+    # def show_leo(self):
+    #     return self.is_in_england and self.leo_stats and self.leo_stats[0].display_stats
 
     @property
     def is_in_england(self):
@@ -1533,6 +1540,10 @@ class GraduatePerceptionStatistics:
             self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
             self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
             self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
+            self.unavailable_find_out_more_english = fallback_to(unavailable_data.get('find_out_more_english'), '')
+            self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
+            # self.unavailable_url_english = fallback_to(salary_data.get('url_english'), '')
+            # self.unavailable_url_welsh = fallback_to(salary_data.get('url_welsh'), '')
 
             # self.go_work_unavail_reason = go_voice_work_data['go_work_unavail_reason']
             # self.go_work_agg = go_voice_work_data['go_work_agg']
@@ -1567,11 +1578,11 @@ class GraduatePerceptionStatistics:
         else:
             unavailable["find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
 
-        if self.display_language == enums.languages.ENGLISH:
-            unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
-                else self.unavailable_url_welsh
-        else:
-            unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+        # if self.display_language == enums.languages.ENGLISH:
+        #     unavailable["url"] = self.unavailable_url_english if self.unavailable_url_english \
+        #         else self.unavailable_url_welsh
+        # else:
+        #     unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
 
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
