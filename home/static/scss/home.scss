@@ -57,9 +57,16 @@
             font-weight:bold;
         }
         h5{
-            font-weight:bold;
+            font-weight:normal;
             font-size:0.9rem;
             
+        }
+        .home-page__course-wizard-icon{
+            height:35px;
+            width:auto;
+            margin-left:0.5rem;
+            margin-right:0.5rem;
+            margin-bottom:1.5rem;
         }
     }
     .home-page__bookmark-body{
@@ -157,11 +164,13 @@
     height:0;
 } 
 
+
+
 .overflow-visible{
     overflow:visible!important;
 }
 
-@media only screen and (min-width: 500px) and (max-width: 770px){
+@media only screen and (min-width: 500px) and (max-width: 1200px){
     .home-page__header{
         .home-page__intro-panel{
             margin-left:2rem;
@@ -172,11 +181,12 @@
         .home-page__body-panel{
             margin-left:2rem;
             margin-right:2rem;
+            margin-bottom:2rem;
         }
     }
 }
 
-@media only screen and (min-width: 770px){
+@media only screen and (min-width: 1200px){
     .home-page__header{
         .home-page__header-bg-icon{
             padding-top:15px;
@@ -188,6 +198,12 @@
             margin-left:4rem;
             margin-right:4rem;
         }
+        .home-page__course-wizard-icon{
+            height:63px!important;
+            width:auto;
+            
+        }
+
     }
     .home-page__body{
         .home-page__body-panel{
@@ -206,5 +222,11 @@
                 height:110px;
             }
         }
+    }
+    .dash-vertical-left{
+        border-left: 2px dashed #a8a8a8; 
+    }
+    .dash-vertical-right{
+        border-right: 2px dashed #a8a8a8; 
     }
 }
