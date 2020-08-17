@@ -1,23 +1,26 @@
+{% load staticfiles discover_uni_tags %}
 <div class="home-page__header">
-
-    <div>
-        <h1 class="home-page__header-text">
-            {{ page.header }}
-        </h1>
+    <div class="p-3 mx-lg-3">
+            <div class="row">
+                <div class="col-9 pl-lg-4 pl-sm-2 overflow-visible pr-0">
+                    <h1 class="pt-4 home-page__header-text">
+                        {{ page.header }}
+                    </h1>
+                    <h4 class="mt-4 text-white"><span class="text-warning">Search and compare</span> undergraduate courses in the UK</h4>
+    
+                </div>
+                <div class="col-3 p-0 text-right">
+                    <img class="home-page__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
+                </div>
+            </div>
+           
     </div>
     
-    <div class="row">
-        <h4 class="text-warning">Search and compare</h4>
-        <h4 class="text-white">&nbsp;undergraduate courses in the UK</h4>
-    </div>
-    <div class="mt-5 mb-0 mx-3 p-0 bg-white home-page__search-box-header ">
-        <h4>Search by course or location</h1>
-    </div>
-</div>
-<div class="home-page__body bg-warning">
-    <div class="home-page__intro-panel bg-white">
+
+    <div class="home-page__intro-panel bg-white pb-5">
         <div class="row">
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-6 p-3">
+                <h4 class="mb-3">Search by course or location</h4>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fas fa-search"></i></span>
@@ -31,18 +34,92 @@
                     <input type="text" class="form-control" placeholder="Location (City or University name)" aria-label="Location (City or University name)" >
                   </div>
                   <div class="mx-auto">
-                    <button class="home-page__search-button justify-content-center py-1 px-5">Search</button>
+                    <button class="mt-4 home-page__search-button justify-content-center py-2 px-5">Search</button>
                   </div>
                 
             </div>
-            <div class="col-lg-1">
-                <div style="border-left:3px dotted #666666;height:200px"></div>
+            <div class="col-12 d-block d-lg-none mx-auto text-center">
+                <hr class="dash"/>
             </div>
-            <div class="col-12 col-lg-5">
+            <div class="col-12 col-lg-5 mx-auto text-center p-3">
+                <img class="w-25 mb-3" src="{% static 'images/arrows.svg' %}" alt="Course Wizard"/>
                 <h4>Course Wizard</h4>
                 <h5>Answer 4 questions to find courses relevant to me</h5>
+                <button class="mt-4 home-page__search-button justify-content-center py-2 px-5">Start Now</button>
+                
             </div>
         </div>
     </div>
-   <h3>ffd fdsf dfsdf sfdsfs</h3>
+    <div class="home-page__bookmark-body col-11 p-2 px-4">
+        <h4 class="text-white pt-2">You have <span class="home-page__bookmark-circle">6</span> courses bookmarked</h4>
+    </div>
+</div>
+
+<div class="home-page__body">
+    
+    <div class="home-page__body-panel text-center" >
+        <h3 class="home-page__body-panel-title mx-auto p-2">Information and advice</h3>
+        
+        <div class="d-none d-lg-block">
+            <div class="row px-4">
+                <div class="col-4 px-4 pt-4">
+                    <img class="mt-2 section-icons mb-4" src="{% static 'images/group-4.svg' %}" alt="Is university for me?"/>
+                    <h4>Is university is for me?</h4>
+                    <h5>Information that can help you decide if uni is the right choice for you.</h5>
+                </div>
+                <div class="col-4 px-4 pt-4">
+                    <img class="mt-2 section-icons mb-4" src="{% static 'images/group-3.svg' %}" alt="How to pay for university"/>
+                    <h4>How to pay for university</h4>
+                    <h5>There are many ways you can get help to pay for the cost of going to uni.</h5>
+                </div>
+                <div class="col-4 px-4 pt-4">
+                    <iframe class="mt-2 mb-3 video-iframe" src="https://www.youtube.com/embed/xw1JPx3MJSo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <h4>Video on a relevant topic</h4>
+                    <h5>5 mins long</h5>
+                </div>
+            </div>
+            <div class="row px-4">
+                <div class="col-4 px-4 pb-4">
+                    <button class="mt-2 home-page__search-button justify-content-center py-2 px-3">Find out more</button>
+                </div>
+                <div class="col-4 px-4 pb-4">
+                    <button class="mt-2 home-page__search-button justify-content-center py-2 px-3">Find out more</button>
+                </div>
+                <div class="col-4 px-4 pb-4">
+                    <button class="mt-2 home-page__search-button justify-content-center py-2 px-3">Find out more</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="d-block d-lg-none">
+            <div class="row px-4">
+                <div class="col-12 px-4 pt-4">
+                    <img class="section-icons py-2" src="{% static 'images/group-4.svg' %}" alt="Is university for me?"/>
+                    <h4>Is university is for me?</h4>
+                    <h5>Information that can help you decide if uni is the right choice for you.</h5>
+                    <button class="mt-4 mb-3 home-page__search-button justify-content-center py-2 px-3">Find out more</button>
+                    <hr class="dash" />
+                </div>
+                
+                <div class="col-12 px-4 pt-4">
+                    <img class="section-icons py-2" src="{% static 'images/group-3.svg' %}" alt="How to pay for university"/>
+                    <h4>How to pay for university</h4>
+                    <h5>There are many ways you can get help to pay for the cost of going to uni.</h5>
+                    <button class="mt-4 mb-3 home-page__search-button justify-content-center py-2 px-3">Find out more</button>
+                    <hr class="dash" />
+                </div>
+                
+                <div class="col-12 px-4 pt-4">
+                    <iframe class="video-iframe py-2" src="https://www.youtube.com/embed/xw1JPx3MJSo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <h4>Video on a relevant topic</h4>
+                    <h5>5 mins long</h5>
+                    <button class="mt-4 mb-3 home-page__search-button justify-content-center py-2 px-3">Find out more</button>
+                </div>
+            </div>
+        
+        </div>
+
+    </div>   
+   
 </div>
