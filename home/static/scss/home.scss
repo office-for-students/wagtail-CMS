@@ -44,7 +44,7 @@
         }
 
         .home-page__search-button{
-            background-color: #f1b434;
+            background-color: #fcd835;
             color:black;
             font-family: "Nunito Sans", sans-serif;
             font-size:1rem;
@@ -62,7 +62,7 @@
             
         }
         .home-page__course-wizard-icon{
-            height:35px;
+            height:45px;
             width:auto;
             margin-left:0.5rem;
             margin-right:0.5rem;
@@ -73,19 +73,23 @@
         background-color: #8e3b74;
         
         h4{
-            font-size:1.2rem;
+            font-size:1rem;
         }
 
         .home-page__bookmark-circle{
-            font-size:1.5rem;
+            font-size:1.1rem;
             background-color: #fcd835;
             border-radius: 50%;
             display: inline-block;
-            height:30px;
-            width:31px;
+            height:25px;
+            width:23px;
             text-align: center;
             margin: auto;
             color:$black;
+        }
+        a.home-page__bookmark-link {
+            color:#fcd835;
+            text-decoration: underline;
         }
     }
     
@@ -121,7 +125,7 @@
             width:50%;
         }
         .home-page__search-button{
-            background-color: #f1b434;
+            background-color: #fcd835;
             color:black;
             font-family: "Nunito Sans", sans-serif;
             font-size:1rem;
@@ -182,6 +186,11 @@
             margin-left:2rem;
             margin-right:2rem;
             margin-bottom:2rem;
+
+            .section-icons{
+                height:55px;
+                width:auto;
+            }
         }
     }
 }
@@ -202,6 +211,30 @@
             height:63px!important;
             width:auto;
             
+        }
+
+        .home-page__bookmark-body{
+            background-color: #8e3b74;
+            
+            h4{
+                font-size:1.2rem;
+            }
+
+            .home-page__bookmark-circle{
+                font-size:1.5rem;
+                background-color: #fcd835;
+                border-radius: 50%;
+                display: inline-block;
+                height:30px;
+                width:31px;
+                text-align: center;
+                margin: auto;
+                color:$black;
+            }
+            a.home-page__bookmark-link {
+                color:#fcd835;
+                text-decoration: underline;
+            }
         }
 
     }
