@@ -30,6 +30,10 @@ class HomePage(DiscoverUniBasePage):
 
     header = TextField(blank=True)
     intro = RichTextField(blank=True)
+    box_1_title = TextField(blank=True)
+    box_1_content = TextField(blank=True)
+    box_2_title = TextField(blank=True)
+    box_2_content = TextField(blank=True)
     page_links = StreamField([
         ('link', blocks.StructBlock([
             ('page', blocks.PageChooserBlock()),
@@ -40,6 +44,10 @@ class HomePage(DiscoverUniBasePage):
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
         FieldPanel('intro', classname="full"),
+        FieldPanel('box_1_title', classname="full"),
+        FieldPanel('box_1_content', classname="full"),
+        FieldPanel('box_2_title', classname="full"),
+        FieldPanel('box_2_content', classname="full"),
         StreamFieldPanel('page_links', classname="full"),
     ]
 
