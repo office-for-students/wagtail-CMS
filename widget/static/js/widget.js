@@ -9,11 +9,11 @@ var CONTENT = {
     },
     'workIntro': {
         'en-gb': 'in work or doing further study 15 months after the course.',
-        'cy-gb':"Shwmae, sut dach chi bore ‘ma?. I require translation."
+        'cy-gb': "yn symud ymlaen i weithio ac/neu astudio o fewn 15 mis ar ôl y cwrs"
     },
     'ctaLead1': {
         'en-gb': 'For ',
-        'cy-gb': 'Am'
+        'cy-gb': 'Am '
     },
     'ctaLead2': {
         'en-gb': 'more',
@@ -21,7 +21,7 @@ var CONTENT = {
     },
     'ctaLead3': {
         'en-gb': ' official course information visit.',
-        'cy-gb': 'o wybodaeth swyddogol am y cwrs, ewch i'
+        'cy-gb': ' o wybodaeth swyddogol am y cwrs, ewch i'
     },
     'logo': {
         'en-gb': '{{domain_name}}/static/images/logos/widget_logo_english.svg',
@@ -33,7 +33,7 @@ var CONTENT = {
     },
     'cta': {
         'en-gb': 'See course data',
-        'cy-gb':"Gweld data'r cwrs"
+        'cy-gb': "Gweld data'r cwrs"
     },
     'noDataIntro': {
         'en-gb': 'To see official information about this course and others visit Discover Uni.',
@@ -49,7 +49,7 @@ var CONTENT = {
     },
     'noDataCtaLead3': {
         'en-gb': ' choice.',
-        'cy-gb': 'ddeallus.'
+        'cy-gb': ' ddeallus.'
     },
     'noDataCta': {
         'en-gb': 'See course info',
@@ -81,15 +81,15 @@ var CONTENT = {
     },
     'dataFor': {
         'en-gb': 'Data for: ',
-        'cy-gb': 'Data ar gyfer:'
+        'cy-gb': 'Data ar gyfer: '
     },
     'dataForAggregated': {
         'en-gb': 'Data for courses in ',
-        'cy-gb': 'Data ar gyfer cyrsiau'
+        'cy-gb': 'Data ar gyfer cyrsiau '
     },
     'at': {
         'en-gb': ' at ',
-        'cy-gb': 'yn'
+        'cy-gb': ' yn '
     }
 }
 
@@ -375,14 +375,17 @@ DataWidget.prototype = {
         var courseNode = document.createElement("p");
         courseNode.classList.add('course');
 
+        var courseName = this.courseData.course_name[this.languageKey];
+        if (typeof courseName === 'undefined') {
+            courseName = this.courseData.course_name['english'];
+        }
+
         if (isNotAggregated) {
-            var courseName = this.courseData.course_name[this.languageKey];
             courseName += this.courseData.honours_award_provision === 1 ? ' (Hons) ' : ' ';
             courseName += this.courseData.title[this.languageKey]
             var dataFor = CONTENT.dataFor[this.language];
             var course = document.createTextNode(dataFor + courseName);
         } else {
-            var courseName = this.courseData.course_name[this.languageKey];
             var dataFor = CONTENT.dataForAggregated[this.language];
             var at = CONTENT.at[this.language];
             var institution = this.courseData.institution_name[this.languageKey];
