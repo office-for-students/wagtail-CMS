@@ -20,7 +20,7 @@
                 {% if course_employment_stats.display_stats %}
                 <div class="comparison__course-column">
                     <div class="comparison__course">
-                        <h1>Subject: {{ course_employment_stats.display_subject_name }}</h1>
+                        <h1 class="siobhan-please-style-appropriately">Subject: {{ course_employment_stats.display_subject_name }}</h1>
                         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_employment_stats.display_unavailable_info %}
 
                         <div class="employment-after-course__data-point-overview mt-3 mb-4 p-3 d-flex flex-wrap row mx-1">
@@ -184,7 +184,7 @@
 
             <div class="comparison__course-column">
                 <div class="comparison__course">
-                    <h1>Subject: {{ course_job_type_stats.display_subject_name }}</h1>
+                    <h1 class="siobhan-please-style-appropriately">Subject: {{ course_job_type_stats.display_subject_name }}</h1>
                     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_job_type_stats.display_unavailable_info %}
 
                     {% if course_job_type_stats.display_stats %}

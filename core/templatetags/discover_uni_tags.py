@@ -151,6 +151,11 @@ def get_course_locations_list(locations, is_english):
 
 
 @register.simple_tag
+def define(val=None):
+    return val
+
+
+@register.simple_tag
 def is_multiple_of(number, base):
     return number % base == 0
 
@@ -160,32 +165,16 @@ def get_index_of_item(item, view_list):
     return view_list.index(item)
 
 
-# apw added.
 @register.simple_tag
 def get_region_list():
     with open("./CMS/static/jsonfiles/regions.json", "r") as f:
         regions = f.read()
     return json.loads(regions)
-# apw added.
 
 
 @register.simple_tag
-def concat(first_str, second_str):
-    return str(first_str) + str(second_str)
-
-@register.simple_tag
-def concat4(first_str, second_str, third_str, fourth_str):
-    return str(first_str) + str(second_str) + str(third_str) + str(fourth_str)
-
-# @register.simple_tag
-# def concatn(*_, **kwargs):
-#     # concat tag only handles 2 arguments. This handles an arbitrary number.
-#     concat_string = ""
-#     for arg in kwargs:
-#         concat_string += str(arg)
-#     return concat_string
-
-
-@register.simple_tag
-def define(val=None):
-  return val
+def concat(*args, **_):
+    concat_string = ""
+    for arg in args:
+        concat_string += str(arg)
+    return concat_string
