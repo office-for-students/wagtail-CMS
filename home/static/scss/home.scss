@@ -68,6 +68,39 @@
             margin-right:0.5rem;
             margin-bottom:1.5rem;
         }
+
+        .search-dropdown .search-field-dropdown-button{
+            position: absolute;
+            display: inline-block;
+            top: 10%;
+            right: 4px;
+            width: 32px;
+            height: 85%;
+            border: none;
+            background-color: #EDEDED;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .search-dropdown .search-field input {
+            border-width: 1px solid #ced4da!important;
+            width: 100%;
+            border-radius: 5px 5px 5px 5px;
+            font-size:1rem;
+            color: #495057;
+        }
+        .search-dropdown .search-field input {
+            border-width: 1px solid #ced4da!important;
+        }
+
+        input #institution_query-search.search-field-input{
+            border-width: 1px solid #ced4da!important;
+            width: 100%;
+            border-radius: 5px 5px 5px 5px;
+            font-size:1rem;
+            color: #495057;
+        }
+
     }
     .home-page__bookmark-body{
         background-color: #8e3b74;
