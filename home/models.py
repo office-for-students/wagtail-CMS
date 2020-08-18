@@ -30,14 +30,14 @@ class HomePage(DiscoverUniBasePage):
 
     header = TextField(blank=True)
     intro = RichTextField(blank=True)
-    # course_wizard_link = TextField(blank=True)
-    # box_1_title = TextField(blank=True)
-    # box_1_content = TextField(blank=True)
-    # box_1_link = TextField(blank=True)
-    # box_2_title = TextField(blank=True)
-    # box_2_content = TextField(blank=True)
-    # box_2_link = TextField(blank=True)
-    # box_3_link = TextField(blank=True)
+    course_wizard_link = TextField(blank=True)
+    box_1_title = TextField(blank=True)
+    box_1_content = TextField(blank=True)
+    box_1_link = TextField(blank=True)
+    box_2_title = TextField(blank=True)
+    box_2_content = TextField(blank=True)
+    box_2_link = TextField(blank=True)
+    box_3_link = TextField(blank=True)
     page_links = StreamField([
         ('link', blocks.StructBlock([
             ('page', blocks.PageChooserBlock()),
@@ -48,14 +48,14 @@ class HomePage(DiscoverUniBasePage):
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
         FieldPanel('intro', classname="full"),
-        # FieldPanel('course_wizard_link', classname="full"),
-        # FieldPanel('box_1_title', classname="full"),
-        # FieldPanel('box_1_content', classname="full"),
-        # FieldPanel('box_1_link', classname="full"),
-        # FieldPanel('box_2_title', classname="full"),
-        # FieldPanel('box_2_content', classname="full"),
-        # FieldPanel('box_2_link', classname="full"),
-        # FieldPanel('box_3_link', classname="full"),
+        FieldPanel('course_wizard_link', classname="full"),
+        FieldPanel('box_1_title', classname="full"),
+        FieldPanel('box_1_content', classname="full"),
+        FieldPanel('box_1_link', classname="full"),
+        FieldPanel('box_2_title', classname="full"),
+        FieldPanel('box_2_content', classname="full"),
+        FieldPanel('box_2_link', classname="full"),
+        FieldPanel('box_3_link', classname="full"),
         StreamFieldPanel('page_links', classname="full"),
     ]
 
