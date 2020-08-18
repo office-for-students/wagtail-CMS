@@ -9,8 +9,7 @@ var CONTENT = {
     },
     'workIntro': {
         'en-gb': 'in work or doing further study 15 months after the course.',
-        'cy-gb':"Shwmae, sut dach chi bore ‘ma?. I require translation."
-//        'cy-gb':"mewn gwaith neu'n astudio ymhellach o fewn 15 mis ar ôl gorffen."
+        'cy-gb': "yn symud ymlaen i weithio ac/neu astudio o fewn 15 mis ar ôl y cwrs"
     },
     'ctaLead1': {
         'en-gb': 'For ',
@@ -376,14 +375,17 @@ DataWidget.prototype = {
         var courseNode = document.createElement("p");
         courseNode.classList.add('course');
 
+        var courseName = this.courseData.course_name[this.languageKey];
+        if (typeof courseName === 'undefined') {
+            courseName = this.courseData.course_name['english'];
+        }
+
         if (isNotAggregated) {
-            var courseName = this.courseData.course_name[this.languageKey];
             courseName += this.courseData.honours_award_provision === 1 ? ' (Hons) ' : ' ';
             courseName += this.courseData.title[this.languageKey]
             var dataFor = CONTENT.dataFor[this.language];
             var course = document.createTextNode(dataFor + courseName);
         } else {
-            var courseName = this.courseData.course_name[this.languageKey];
             var dataFor = CONTENT.dataForAggregated[this.language];
             var at = CONTENT.at[this.language];
             var institution = this.courseData.institution_name[this.languageKey];
