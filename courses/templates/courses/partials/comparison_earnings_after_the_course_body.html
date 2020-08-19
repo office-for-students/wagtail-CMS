@@ -39,8 +39,10 @@
                 <div class="comparison__course-column">
                     <div class="comparison__course">
                         <!-- We want to remove reliance upon salary stats. Find subject by some other means. -->
-                        <h1 class="siobhan-please-style-appropriately">Subject: {{ course_subject_name.display_subject_name }}</h1>
-
+                        <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
+                            <h1 class="pb-0 my-auto">Subject: {{ course_subject_name.display_subject_name }}</h1>
+                        </div>
+                        
                         <!-- Not sure it makes sense to have an UNAVAIL message at the subject level for earnings. Comment it out for now. -->
                         {# include 'courses/partials/unavailable_disclaimer.html' with unavailable=xxx.display_unavailable_info #}
 

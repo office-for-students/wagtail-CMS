@@ -5,6 +5,21 @@
 .comparison {
     padding: 35px 30px 55px;
 
+    .comparison__subject-header{
+        background-color: #f8d441;
+        
+        h1{
+            color:black;
+            font-size:1.3rem;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+        }
+    }
+
     &__overview {
         padding: 30px 50px;
         text-align: center;
@@ -331,6 +346,7 @@
                                 .comparison__course {
                                     display: flex;
                                     flex-wrap: wrap;
+                                    
                                 }
 
                                 .student-satisfaction__data-group {

@@ -23,7 +23,9 @@
             {% if course_satisfaction_stats.show_satisfaction_stats %}
             <div class="comparison__course-column">
                 <div class="comparison__course">
-                    <h1 class="siobhan-please-style-appropriately">Subject: {{ course_satisfaction_stats.display_subject_name }}</h1>
+                    <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
+                        <h1 class="pb-0 my-auto">Subject: {{ course_satisfaction_stats.display_subject_name }}</h1>
+                    </div>
                     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_satisfaction_stats.display_unavailable_info %}
 
                     {% if course_satisfaction_stats.question_27.show_data_point %}
@@ -784,7 +786,9 @@
                 {% if course_nhs_satisfaction_stats.show_satisfaction_stats %}
                 <div class="comparison__course-column">
                     <div class="comparison__course">
-                        <h1 class="siobhan-please-style-appropriately">Subject: {{ course_nhs_satisfaction_stats.display_subject_name }}</h1>
+                        <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
+                            <h1 class="pb-0 my-auto">Subject: {{ course_nhs_satisfaction_stats.display_subject_name }}</h1>
+                        </div>
                         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_nhs_satisfaction_stats.display_unavailable_info %}
                     </div>    
                 </div>
