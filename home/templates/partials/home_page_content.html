@@ -17,25 +17,10 @@
     </div>
     
 
-    <div class="home-page__intro-panel bg-white pb-5">
+    <div id="home-page__intro-panel" class="home-page__intro-panel bg-white pb-5">
         <div class="row">
             <div class="col-12 col-lg-6 p-3 pr-4">
                 <h4 class="mb-3">Search by course or location</h4>
-                <!-- <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fas fa-search"></i></span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Course name" aria-label="Course name" >
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fas fa-search"></i></span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Location (City or University name)" aria-label="Location (City or University name)" >
-                </div>
-                <div class="mx-auto">
-                    <button class="mt-4 home-page__search-button justify-content-center py-2 px-5">Search</button>
-                </div> -->
                 <form class="search-landing-page__search" action="/course-finder/results/" method="post" autocomplete="off">
                     {% csrf_token %}
                     <div class="search-landing-page__search-fields">

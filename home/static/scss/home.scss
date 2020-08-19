@@ -77,28 +77,21 @@
             width: 32px;
             height: 85%;
             border: none;
-            background-color: #EDEDED;
+            background-color: $white;
             cursor: pointer;
             outline: none;
         }
-        
-        .search-dropdown .search-field input {
-            border-width: 1px solid #ced4da!important;
-            width: 100%;
-            border-radius: 5px 5px 5px 5px;
-            font-size:1rem;
-            color: #495057;
-        }
-        .search-dropdown .search-field input {
-            border-width: 1px solid #ced4da!important;
-        }
+    
 
-        input #institution_query-search.search-field-input{
+        input#institution_query-search.search-field-input{
             border-width: 1px solid #ced4da!important;
             width: 100%;
             border-radius: 5px 5px 5px 5px;
             font-size:1rem;
-            color: #495057;
+            color: rgb(73, 80, 87);
+            height:calc(1.5em + .75rem + 2px);
+            background-color:$white!important;
+            padding-left:0.7rem;
         }
 
     }
