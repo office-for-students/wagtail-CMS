@@ -20,51 +20,12 @@
     <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
 
-
     <script>
-        $( document ).ready(function() {
-            //alert("ready");
-            $('#sticky_nav_course_detail').hide();
-            $('body').scrollspy({ 
-                target: '#sticky_nav_course_detail',
-                offset: 90
-            });
-    
-            $('#myScrollspy').on('activate.bs.scrollspy', function () {
-                // do something…
-            });
-            var $items = $('.nav-item');
-    
-            $items.on('click', function() {
-                var selectedIndex = $items.index(this);
-                $items.eq(selectedIndex).find('a').trigger('click');
-            });
-    
-            $('.scrollto').click(function(event) {
-                var $anchor = $(this);
-                $('html, body').stop().animate({ scrollTop: $($anchor.attr('href')).offset().top - 80}, 1500);
-                event.preventDefault();
-            });
-    
-            function toggle_icon(icon_id){
-                alert("1");
-                var icon_name = "#" + icon_id;
-                $(icon_name).toggleClass("fa-plus");
-                $(icon_name).toggleClass("fa-minus");
-                alert("2");
-            }
-        });
-    
-        $(window).scroll(function() { // when the page is scrolled run this$('#sticky_nav_course_detail').fadeIn("fast"); // fade in
-            $('#sticky_nav_course_detail').fadeIn("fast"); // fade in
-            /*
-            if($(this).scrollTop() >= ($('.course-detail__lead').outerHeight() + $('.discover-uni-nav').outerHeight() + 10 - $('#sticky_nav_course_detail').outerHeight())) {
-                $('#sticky_nav_course_detail').fadeIn("fast"); // fade in
-            } else { // else
-                $('#sticky_nav_course_detail').fadeOut("fast"); // fade out
-            }
-            */
-        });
+        function toggle_icon(icon_id){
+            var icon_name = "#" + icon_id;
+            $(icon_name).toggleClass("fa-plus");
+            $(icon_name).toggleClass("fa-minus");
+        }
     </script>
 
 {% endblock %}
@@ -103,7 +64,7 @@
 
                         {% if course1 %}
                             {% include 'courses/partials/base_gradient.html' %}
-                            {% include 'courses/partials/course_overview.html' with course=course1 %}
+                                {% include 'courses/partials/course_overview.html' with course=course1 %}
                         {% endif %}
                     </div>
                 </div>
@@ -135,8 +96,8 @@
 
                                 <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
                                     <div class="">
-                                        <button class="course-detail__accordion-heading" onclick="toggle_icon('accordion_icon_{{ forloop.counter }}');">
-                                            <h2 id="course-detail__accordion-heading-{{ forloop.counter }} text-white"
+                                        <button class="course-detail__accordion-heading" onclick="toggle_icon('accordion_icon_{{ forloop.counter }}')">
+                                            <h2 id="course-detail__accordion-heading-{{ forloop.counter }}"
                                                 aria-controls="course-detail__accordion-body-{{ forloop.counter }}"
                                                 aria-label="Show {{ accordion.value.heading }} content"
                                                 aria-expanded="false">
@@ -182,11 +143,4 @@
     
     </div>
 {% endblock %}
-<script>
-    function toggle_icon(icon_id){
-        var icon_name = "#" + icon_id;
-        $(icon_name).toggleClass("fa-plus");
-        $(icon_name).toggleClass("fa-minus");
-    }
- 
-    </script>
+

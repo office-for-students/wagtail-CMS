@@ -2,9 +2,11 @@
 @import '../../../CMS/static/scss/variables';
 @import '../../../CMS/static/scss/partials/forms';
 
+.course-detail__headline_stat{
+    display: none;
+}
 .comparison {
-    padding: 35px 30px 55px;
-
+    padding: 5px 5px 5px;
     .comparison__subject-header{
         background-color: #f8d441;
         
@@ -175,17 +177,15 @@
 
             .course-detail__accordion-block {
                 .course-detail__accordion {
-                    margin-left: -30px;
-                    margin-right: -30px;
+                    // margin-left: -30px;
+                    // margin-right: -30px;
                     width: 100vw;
 
                     .course-detail__accordion-heading {
                     }
 
                     .course-detail__accordion-body {
-                        padding-left: 30px;
-                        padding-right: 30px;
-
+                       
                         .satisfaction_subject_name {
                             font-size: $s-heading-font-size;
                         }
@@ -228,8 +228,17 @@
     }
 }
 
+
+
+
+
+
+
+
+
 @media only screen and (min-width: 770px) {
     .comparison {
+        padding: 35px 30px 55px;
         &__course {
             margin: 0px 20px;
 
@@ -363,4 +372,34 @@
             }
         }
     }
+
 }
+.student-satisfaction__block .student-satisfaction__data-group .student-satisfaction__data-group-heading{
+    padding-top:0!important;
+}
+
+@media only screen and (max-width: 770px) {
+    .scrolling-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    
+      .student-satisfaction__data-group {
+        flex: 0 0 85vw;
+        // flex: auto;
+      }
+  
+      .student-satisfaction__data-group:last-child{
+        margin-right:10px
+      }
+      .student-satisfaction__data-group:first-child{
+        margin-left:10px
+      }
+    }
+    .scrolling-wrapper {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }

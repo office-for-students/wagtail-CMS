@@ -62,7 +62,7 @@
                                     <div class="earnings-after-course-statistics d-flex row align-items-stretch">
                                     {% for salary in course.salaries_inst %}
                                         {% get_index_of_item salary course.salaries_inst as salary_index %}
-                                        <div class="earnings-after-course_section-block col-md-12 col-lg-4 align-self-stretch mt-1 mb-0">
+                                        <div class="earnings-after-course_section-block col-md-12 col-lg-4 align-self-stretch mt-1 mb-0 p-1">
                                             <h3 class="mt-3 mb-2 text-center text-lg-left">
                                             {% if salary_index == 0 %}
                                                 {{ block.value.after_fifteen_months_earnings_heading }}
@@ -72,7 +72,7 @@
                                                 {{ block.value.after_five_years_earnings_heading }}
                                             {% endif %}
                                             </h3>
-                                            <div class="earnings-after-course-stat col-lg-12 p-3 pb-4">
+                                            <div class="earnings-after-course-stat col-lg-12 p-1 pb-5">
                                                 {% if salary_index == 0 %}
                                                     {% if salary.display_unavailable_info.reason == "" %}
                                                         <div id="go_inst_avail_container">
@@ -196,7 +196,7 @@
                                                     {{ block.value.after_five_years_earnings_heading }}
                                                 {% endif %}
                                                 </h3>
-                                                <div class="earnings-after-course-stat col-lg-12 p-3 pb-0" border="1">
+                                                <div class="earnings-after-course-stat col-lg-12 p-1 pb-4 pb-lg-2">
                                                     {% if salary_index == 0 %}
                                                         {% if salary.no_salary_node == "false" %}
                                                             <div id="go_sector_avail_container_{{ subject_index }}_{{ l_or_r }}">
