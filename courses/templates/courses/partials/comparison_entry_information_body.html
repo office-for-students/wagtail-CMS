@@ -8,7 +8,7 @@
 
     <div class="entry-information__block">
 
-        <div class="entry-information__overview my-3 p-3 mx-1 pt-4 d-flex flex-wrap row">
+        <div class="entry-information__overview my-3 p-1 p-lg-2 mx-1 pt-2 d-flex flex-wrap row">
             <div class="col-lg-6 col-md-12 align-self-stretch my-auto">
                 <p class="entry-information__overview-lead text-center text-lg-left">
                     {% get_translation key='entrance_data_need_to_know' language=page.get_language %}
@@ -43,7 +43,7 @@
                         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_entry_stats.display_unavailable_info %}
 
                         {% if course_entry_stats.display_stats %}
-                        <div class="entry-information__qualification-charts mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
+                        <div class="entry-information__qualification-charts mt-2 mb-4 p-1 p-lg-2 d-flex flex-wrap row mx-1">
 
                             <div class="col-12 align-self-stretch my-auto">
                                 <h2 class="entry-information__heading py-3">{{block.value.qualification_heading}}{% if course.has_multiple_entry_stats %}:

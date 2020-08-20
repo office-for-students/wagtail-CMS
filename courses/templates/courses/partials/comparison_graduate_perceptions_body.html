@@ -26,7 +26,7 @@
                     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_perception_stats.display_unavailable_info %}
 
                     {% if course_perception_stats.go_work_mean %}
-                        <div class="student-satisfaction__overview mt-3 mx-1 p-3 d-flex flex-wrap row">
+                        <div class="student-satisfaction__overview mt-3 mx-1 p-1 p-lg-3 d-flex flex-wrap row">
                                 <div class="col-lg-2 col-md-12 align-self-stretch my-auto text-center">
                                     <p class="student-satisfaction__overview-lead ">
                                         {{ course_perception_stats.go_work_mean }}%
@@ -58,7 +58,7 @@
                                     </p>
                                 </h2>
                             </div>
-                            <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto">
+                            <div class="student-satisfaction__charts col-12 my-auto">
                                 <div class="student-satisfaction__chart-wrapper">
                                     <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
                                             data-value="{{ course_perception_stats.go_work_skills }}"
