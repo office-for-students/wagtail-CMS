@@ -149,7 +149,7 @@
 {% endfor %}
 </div>
 
-{% if course_details.has_multiple_employment_stats %}
+{% if course_details.has_multiple_job_type_stats and course.has_multiple_job_lists %}
 <ul class="nav nav-tabs mt-2" id="occupation-types-tab" role="tablist">
     {% for job_type_stats in course_details.job_type_stats %}
         <li class="nav-item">

@@ -97,10 +97,28 @@
         </div>
     </div>
 
+    {% if course.has_multiple_employment_stats %}
+    <ul class="nav nav-tabs mt-2" id="course-overview-tab" role="tablist">
+        {% for employment_stats in course.employment_stats %}
+            <li class="nav-item">
+                <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="course-overview-{{ forloop.counter }}-tab" data-toggle="tab" href="#course-overview-{{ forloop.counter }}" role="tab"
+                   aria-controls="course-overview-{{ forloop.counter }}" aria-selected="true">
+                    {{ employment_stats.display_subject_name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <hr class="nav-tabs-hr"/>
+    {% endif %}
+
+    <div class="tab-content">
+    {% for overview_stat in course.overview_stats %}
+        <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="course-overview-{{ forloop.counter }}" role="tabpanel" aria-labelledby="course-overview-{{ forloop.counter }}-tab">
+            
         <div class="course-detail__headline_statistics d-flex flex-row align-items-stretch mt-2 mb-3 text-center text-md-left mx-auto px-0">
             <div class="course-detail__headline_stat flex-fill align-self-stretch mr-2 mr-xs-1 px-2 px-xs-1 py-4">
                 <h3 class="d-none d-lg-block">{% get_translation key='student_satisfaction_course_overview_1' language=page.get_language %}</h3>
-                <h2>{{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%</h2>
+                <h2>{{ overview_stat.student_satisfaction_stat }}%</h2>
                 <p>{% get_translation key='student_satisfaction_course_overview_2' language=page.get_language %}</p>
                 <a>{% get_translation key='student_satisfaction_course_overview_3' language=page.get_language %}</a>
             </div>
@@ -117,12 +135,16 @@
 
             <div class="course-detail__headline_stat flex-fill align-self-stretch ml-2 ml-xs-2 px-2 px-xs-1 py-4">
                 <h3 class="d-none d-lg-block">{% get_translation key='employment_course_overview_1' language=page.get_language %}</h3>
-                <h2>{{ course.employment_stats.0.work_and_or_study }}%</h2>
+                <h2>{{ overview_stat.employment_stat }}%</h2>
                 <p>{% get_translation key='employment_course_overview_2' language=page.get_language %}</p>
                 <a>{% get_translation key='employment_course_overview_3' language=page.get_language %}</a>
             </div>
         </div>
+
+        </div>
+    {% endfor %}
     </div>
+</div>
 
 <script>
     function kFormatter(num) {
