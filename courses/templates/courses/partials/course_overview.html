@@ -49,7 +49,7 @@
     </div>
 
     <div class="">
-        <div class="course-detail__overview-lead mt-2 pb-0">
+        <div class="course-detail__overview-lead mt-1 pb-0">
             <h4>Course details</h4>
             <hr/>
         </div>
@@ -124,7 +124,7 @@
             </div>
 
             {% if course.summary_med_sal_value != "no_data" %}
-                <div class="course-detail__headline_stat flex-fill align-self-stretch ml-2 ml-xs-1 mr-2 mr-xs-1 px-2 px-xs-1 py-4 ">
+                <div class="course-detail__headline_stat flex-fill align-self-stretch ml-2 ml-xs-1 mr-2 mr-xs-1 px-2 px-xs-1 py-4">
                     <h3 class="d-none d-lg-block">{% get_translation key='average_earnings_course_overview_1' language=page.get_language %}</h3>
                     <h2 id="average_earnings_sm" class="d-lg-none">{{ course.summary_med_sal_value|intcomma }}</h2>
                     <h2 id="average_earnings_lg" class="d-none  d-lg-block">£{{ course.summary_med_sal_value|intcomma }}</h2>
@@ -152,9 +152,10 @@
     }
     function reformatField(){   
         var earnings = $('#average_earnings_sm').text();
-        earnings = parseFloat(earnings.replace(/,/g, ''));
-        var reformatted = kFormatter(earnings);
-        $('#average_earnings_sm').text("£" + reformatted);
+            earnings = earnings.replace('£','');
+            earnings = parseFloat(earnings.replace(/,/g, ''));
+            var reformatted = kFormatter(earnings);
+            $('#average_earnings_sm').text("£" + reformatted);
     }
     
     $( document ).ready(function() {
