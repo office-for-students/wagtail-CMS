@@ -13,10 +13,10 @@
         {# if course1.show_salary_lead #}
             <div class="earnings-after-course__lead my-3 p-3 mx-1 pt-4 flex-wrap">
                 <div class="row">
-                    <div class="col-lg-4 col-md-12 px-4 earnings-after-course__lead-title align-self-stretch my-auto text-lg-left text-center">
+                    <div class="col-12 px-4 earnings-after-course__lead-title align-self-stretch my-auto text-lg-left text-center">
                         <p>{{block.value.section_heading}}</p>
                     </div>
-                    <div class="col-lg-8 col-md-12 earnings-after-course__lead-intro align-self-stretch my-auto pt-2 text-left">
+                    <div class="col-12 earnings-after-course__lead-intro align-self-stretch my-auto pt-2 text-left">
                         <p>{{block.value.intro | richtext}}</p>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                                     {{ subbed_text | richtext }}
                                 </div>
                                 <div class="discover-uni-container">
-                                    <div class="earnings-after-course-statistics d-flex row align-items-stretch">
+                                    <div class="earnings-after-course-statistics d-flex row align-items-stretch px-1">
                                     {% for salary in course.salaries_inst %}
                                         {% get_index_of_item salary course.salaries_inst as salary_index %}
                                         <div class="earnings-after-course_section-block col-md-12 col-lg-4 align-self-stretch mt-1 mb-0 p-1">
@@ -183,10 +183,10 @@
                                     </div>
 
                                     <div class="discover-uni-container">
-                                        <div class="earnings-after-course-statistics d-flex row align-items-stretch">
+                                        <div class="earnings-after-course-statistics d-flex row align-items-stretch px-1">
                                         {% for salary in course.salaries_sector %}
                                             {% get_index_of_item salary course.salaries_sector as salary_index %}
-                                            <div class="earnings-after-course_section-block col-md-12 col-lg-4 align-self-stretch my-2">
+                                            <div class="earnings-after-course_section-block col-12 align-self-stretch my-2">
                                                 <h3 class="mb-0 text-center text-lg-left">
                                                 {% if salary_index == 0 %}
                                                     {{ block.value.after_fifteen_months_earnings_heading }}
@@ -196,7 +196,7 @@
                                                     {{ block.value.after_five_years_earnings_heading }}
                                                 {% endif %}
                                                 </h3>
-                                                <div class="earnings-after-course-stat col-lg-12 p-1 pb-4 pb-lg-2">
+                                                <div class="earnings-after-course-stat 12 p-1 pb-4 pb-lg-2">
                                                     {% if salary_index == 0 %}
                                                         {% if salary.no_salary_node == "false" %}
                                                             <div id="go_sector_avail_container_{{ subject_index }}_{{ l_or_r }}">

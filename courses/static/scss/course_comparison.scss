@@ -7,6 +7,25 @@
 }
 .comparison {
     padding: 5px 5px 5px 5px;
+    font-family: "Nunito Sans", sans-serif;
+    background-color: #1F283A;
+    background: -webkit-linear-gradient(top, #1F283A 170px , $white 170px); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom, #1F283A 170px, $white 170px); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom, #1F283A 170px, $white 170px); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom, #1F283A 170px , $white 170px); /* Standard syntax */
+    padding-bottom:0;
+    color:$white;
+    overflow: hidden!important;
+
+    .comparison__header-bg-icon{
+        height:100px;
+        width:auto;
+    }
+
+    .comparison__body{
+        background-color: $white;
+    }
+
     .comparison__subject-header{
         background-color: #f8d441;
         
@@ -23,11 +42,11 @@
     }
 
     &__overview {
-        padding: 30px 50px;
-        text-align: center;
-
-        border: 1px solid #707070;
-        border-radius: 10px;
+        h1{
+            font-size:1.3rem;
+            color:white;
+        }
+        
     }
 
     &__course-count {
@@ -71,12 +90,14 @@
     }
 
     &__heading {
-        @include m-heading--bold-mixin();
-
-        text-align: center;
-        margin: 45px 0px 30px;
-
-        color: $ux-grey-3;
+        font-size:1.3rem;
+        text-align: left;
+        color: $black;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;      
     }
 
     &__courses {
@@ -161,7 +182,6 @@
         }
 
         .course-detail__lead {
-            margin-top: 27px;
 
             .course-detail__institution-info {
                 .course-detail__institution-name {
@@ -226,19 +246,97 @@
             }
         }
     }
+    .not-enough-data-disclaimer h4 {
+        font-size:1rem;
+    }
+    .student-satisfaction__overview{
+        .student-satisfaction__overview-lead{
+            font-size:2rem!important;
+        }
+    }
+    .student-satisfaction__data-group-heading{
+        font-size:  1.1rem!important;
+    }
+    .entry-information__chart-label{
+        font-size:0.8rem!important;
+    }
+    .entry-information__overview-lead{
+        font-size:1.2rem!important;
+    }
+    .entry-information__heading{
+        font-size:1.1rem!important;
+    }
+    .entry-information__chart-label{
+        font-size:0.8rem!important;
+    }
+    .one-year__overview-lead{
+        font-size:2rem!important;
+    }
+    .one-year__overview-sublead{
+        font-size:1.1rem!important;
+    }
+    .one-year__heading{
+        font-size:1.1rem!important;
+    }
+    .one-year-block__chart-label{
+        font-size:0.8rem!important;
+    }
+    .accreditation__overview-lead{
+        font-size:1.2rem!important;
+    }
+    .earnings-after-course_block .earnings-after-course__stats-heading .rich-text p{
+        font-size:1.1rem!important;
+    }
+    .earnings-after-course_block .earnings-after-course_explanation-text .rich-text p {
+        font-size:1rem!important;
+    }
+    .earnings-after-course_block .earnings-after-course_section-block h3 {
+        font-size:1.1rem!important;
+    }
+    .employment-after-course__data-point-overview .employment-after-course__data-point-overview-lead {
+        font-size:2rem!important;
+    }
+    .employment-after-course__data-point-overview p {
+        font-size:1rem!important;
+    }
+    .employment-after-course__block .employment-after-course__stats-heading{
+        font-size:1.1rem!important;
+    }
+    .employment-after-course__block .employment-after-course__data-point .employment-after-course__chart-block .employment-after-course__chart .employment-after-course__chart-label{
+        font-size:0.8rem!important;
+    }
+    .entry-information__chart-label{
+        text-align: left!important;
+    }
+}
+
+
+.course-detail .course-detail__lead .course-detail__course-name {
+    font-size: 1rem;
+}
+.course-detail .course-detail__lead a.course-detail__institution-name {
+    font-size:1rem;
 }
 
 
 
 
-
-
-
-
-
 @media only screen and (min-width: 770px) {
+    .comparison__header-bg-icon{
+        padding-top:15px;
+        height:150px;
+        width:auto;
+    }
     .comparison {
         padding: 35px 30px 55px;
+
+        &__overview {
+            h1{
+                font-size:1.75rem;
+                color:white;
+            }
+            
+        }
         &__course {
             margin: 0px 20px;
 
@@ -253,6 +351,7 @@
                     max-width: 1020px;
                 }
             }
+            
         }
 
         &__lead {
@@ -270,9 +369,14 @@
         }
 
         &__heading {
-            @include l-heading--bold-mixin();
-
-            color: $ux-grey-3;
+            font-size:1.5rem;
+            text-align: left;
+            color: $black;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;     
         }
 
         &__subject-heading {
@@ -313,15 +417,10 @@
 
                         display: flex;
                         flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
+                        justify-content: left;
+                        align-items: left;
                         width: 114px;
-                        padding: 20px 13px;
-                        margin-bottom: 14px;
-
-                        background-color: $white;
-                        border: 1px solid $ux-grey-3;
-                        border-radius: 10px;
+                        text-align: left;
 
                         .course-detail__overview-item-heading {
                             @include small-font--bold-mixin();
