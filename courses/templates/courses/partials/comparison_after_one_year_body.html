@@ -27,12 +27,12 @@
                     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_continuation_stats.display_unavailable_info %}
 
                     <div class="one-year__overview my-3 mx-1 p-3 d-flex flex-wrap row">
-                        <div class="col-12 align-self-stretch my-auto">
+                        <div class="col-12 align-self-stretch my-auto px-0">
                             <p class="one-year__overview-lead">
                                 {{ course_continuation_stats.continuing_or_complete }}%
                             </p>
                         </div>
-                        <div class="col-12 align-self-stretch my-auto pt-2">
+                        <div class="col-12 align-self-stretch my-auto pt-2 px-0">
                             <p class="one-year__overview-sublead mb-3 text-center"> 
                                 {{block.value.lead}}
                             </p>
@@ -48,7 +48,7 @@
                     <div class="one-year__qualification-charts mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
                         {% if course_continuation_stats and course_continuation_stats.display_stats %}
 
-                            <div class="col-12 align-self-stretch my-auto">
+                            <div class="col-12 align-self-stretch my-auto px-0">
                                 <div class="one-year__lead-block my-3 mb-4">
                                     <h2 class="one-year__heading py-2">
                                         {{block.value.section_heading}}{% if course.has_multiple_one_year_stats %}:

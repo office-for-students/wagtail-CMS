@@ -173,8 +173,8 @@
                                             {{ subbed_text | richtext }}
                                         </h2>
                                     </div>
-                                    <div class="d-inline-block row px-3 my-3">
-                                        <select name="regions_{{ subject_index }}_{{ l_or_r }}" id="regions_{{ subject_index }}_{{ l_or_r }}" class="region_ddl">
+                                    <div class="d-inline-block row px-2 my-3 w-100">
+                                        <select name="regions_{{ subject_index }}_{{ l_or_r }}" id="regions_{{ subject_index }}_{{ l_or_r }}" class="region_ddl w-100">
                                         {% get_region_list as region_list %}
                                         {% for region in region_list %}
                                             <option value="{{region.id}}">{{region.name}}</option>

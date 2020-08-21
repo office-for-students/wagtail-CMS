@@ -45,7 +45,7 @@
                         {% if course_entry_stats.display_stats %}
                         <div class="entry-information__qualification-charts mt-2 mb-4 p-1 p-lg-2 d-flex flex-wrap row mx-1">
 
-                            <div class="col-12 align-self-stretch my-auto">
+                            <div class="col-12 align-self-stretch my-auto px-0">
                                 <h2 class="entry-information__heading py-3">{{block.value.qualification_heading}}{% if course.has_multiple_entry_stats %}:
                                     {{course_entry_stats.display_subject_name}}{% endif %}
                                 </h2>
@@ -166,7 +166,7 @@
 
                         <div class="entry-information__block my-2">
                             <div class="entry-information__ucas-points p-3 d-flex flex-wrap row mx-1">
-                                <div class="col-12 align-self-stretch my-auto">
+                                <div class="col-12 align-self-stretch my-auto px-0">
                                     <h2 class="entry-information__heading py-3">{{block.value.tariffs_heading}}{% if course.has_multiple_tariff_stats %}:
                                         {{course_tariff_stats.display_subject_name}}{% endif %}</h2>
                     

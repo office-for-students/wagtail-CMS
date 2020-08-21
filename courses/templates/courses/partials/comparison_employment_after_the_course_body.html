@@ -26,12 +26,12 @@
                         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_employment_stats.display_unavailable_info %}
 
                         <div class="employment-after-course__data-point-overview mt-3 mb-4 p-1 p-lg-2 d-flex flex-wrap row mx-1">
-                            <div class="col-12 align-self-stretch my-auto pt-2">
+                            <div class="col-12 align-self-stretch my-auto pt-2 px-0">
                                 <p class="employment-after-course__data-point-overview-lead text-center">
                                     {{course_employment_stats.work_and_or_study}}%
                                 </p>
                             </div>
-                            <div class="col-12 align-self-stretch my-auto pt-2 text-center">
+                            <div class="col-12 align-self-stretch my-auto pt-2 text-center px-0">
                                 <p>
                                     {{block.value.six_month_employment_lead}}
                                     <div class="explanation-text">
@@ -44,7 +44,7 @@
                         </div>
  
                         <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
-                            <div class="col-12 align-self-stretch my-auto">
+                            <div class="col-12 align-self-stretch my-auto px-0">
                 
                                 <h2 class="employment-after-course__stats-heading pt-3 mb-4">
                                     {{block.value.six_month_employment_roles_heading}}{% if course.has_multiple_job_type_stats %}
@@ -193,7 +193,7 @@
 
                     {% if course_job_type_stats.display_stats %}
                     <div class="employment-after-course_occupation-block mx-1 my-2 py-4 px-1">
-                        <h2 class="employment-after-course__stats-heading text-left pt-3 mb-4">
+                        <h2 class="employment-after-course__stats-heading text-left pt-2 mb-4">
                             {{block.value.six_month_employment_roles_label_explanation_heading}}{% if course.has_multiple_job_type_stats %}
                             {{course_job_type_stats.display_subject_name}}{% endif %}
                         </h2>
