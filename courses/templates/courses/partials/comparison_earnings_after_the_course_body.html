@@ -186,7 +186,7 @@
                                         <div class="earnings-after-course-statistics d-flex row align-items-stretch px-1">
                                         {% for salary in course.salaries_sector %}
                                             {% get_index_of_item salary course.salaries_sector as salary_index %}
-                                            <div class="earnings-after-course_section-block col-12 align-self-stretch my-2">
+                                            <div class="earnings-after-course_section-block col-12 col-lg-4 align-self-stretch my-2">
                                                 <h3 class="mb-0 text-center text-lg-left">
                                                 {% if salary_index == 0 %}
                                                     {{ block.value.after_fifteen_months_earnings_heading }}
