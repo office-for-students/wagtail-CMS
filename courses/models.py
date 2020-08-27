@@ -355,7 +355,6 @@ class Course:
                 self.job_lists = []
                 for data_set in stats.get('job_list'):
                     self.job_lists.append(JobList(data_set, self.display_language))
-                self.overview_stats = []
 
             self.accreditations = []
             accreditations = course_details.get('accreditations')
@@ -401,7 +400,6 @@ class Course:
             if course_details.get('leo5_salary_sector'):
                 self.salaries_sector.append(SectorSalary(course_details.get('leo5_salary_sector'), self.display_language))
 
-            self.overview_stats = self.sync_overview_stats(course_details)
 
     def set_course_links(self, links, language):
         link_objs = {'course_details': [], 'costs_support': []}
@@ -445,6 +443,10 @@ class Course:
         for location in self.locations:
             location_names.append(location.english_name)
         return ', '.join(location_names)
+
+    @property
+    def has_multiple_subject_names(self):
+        return len(self.subject_names) > 1
 
     @property
     def show_satisfaction_stats(self):
@@ -520,10 +522,6 @@ class Course:
     # def has_multiple_occupation_stats(self):
     #     return len(self.occupation_stats) > 1
 
-    @property
-    def has_multiple_overview_stats(self):
-        return len(self.overview_stats) > 1
-
     # @property
     # def show_leo(self):
     #     return self.is_in_england and self.leo_stats and self.leo_stats[0].display_stats
@@ -578,38 +576,6 @@ class Course:
         if len(self.job_type_stats) == len(self.job_lists):
             occupation_stats = [(jt_stat, jl_stat) for jt_stat in self.job_type_stats for jl_stat in self.job_lists if jt_stat.subject_code == jl_stat.subject_code]
         return occupation_stats
-
-    def sync_overview_stats(self, data_obj):
-        overview_stats = []
-        for subject in data_obj.get('subjects'):
-            sbj_code = subject.get('code')
-            subject_english = subject.get('english_label')
-            subject_welsh = subject.get('welsh_label')
-            student_satisfaction_stat = next((stat.question_27.agree_or_strongly_agree for stat in self.satisfaction_stats if stat.subject_code == sbj_code), None)
-            avg_earning_stat = ""
-            employment_stat = next((stat.work_and_or_study for stat in self.employment_stats if stat.subject_code == sbj_code), None)
-
-            overview_stats.append(OverviewStatistics(student_satisfaction_stat, avg_earning_stat, employment_stat, sbj_code, subject_english, subject_welsh, self.display_language))
-
-        return overview_stats
-
-
-class OverviewStatistics:
-
-    def __init__(self, student_satisfaction_stat, avg_earning_stat, employment_stat, sbj_code,  subject_english, subject_welsh, display_language):
-        self.display_language = display_language
-        self.subject_code = sbj_code
-        self.subject_english = subject_english
-        self.subject_welsh = subject_welsh
-
-        self.student_satisfaction_stat = student_satisfaction_stat
-        self.avg_earning_stat = avg_earning_stat
-        self.employment_stat = employment_stat
-
-    def display_subject_name(self):
-        if self.display_language == enums.languages.ENGLISH:
-            return self.subject_english if self.subject_english else self.subject_welsh
-        return self.subject_welsh if self.subject_welsh else self.subject_english
 
 
 class CourseCountry:

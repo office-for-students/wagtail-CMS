@@ -311,7 +311,7 @@ class NewCourseFormatMocks:
                             "unemp_not_work_since_grad": 10,
                             "doing_further_study": 15,
                             "in_work": 60,
-                            "in_work_and_study": 5,
+                            "in_work_and_study": 85,
                             "unemp_prev_emp_since_grad": 8,
                             "other": 3,
                             "number_of_students": 35,
