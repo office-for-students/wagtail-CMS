@@ -3,7 +3,7 @@
 
 @mixin pagination-item-base() {
     @include xs-heading--bold-mixin();
-
+    color:$gradient-dark-green;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,9 +13,9 @@
     margin-left: 12px;
 
     background-color: $form-grey;
-    border: 1px solid $ux-grey-2;
+    border: 2px solid $gradient-dark-green;
     box-sizing: border-box;
-    border-radius: 8px;
+    border-radius: 5px;
 
     @media only screen and (min-width: 770px) {
         @include s-heading--bold-mixin();
@@ -55,13 +55,13 @@
 
         &--active {
             @include pagination-item-base();
-            @include green-gradient-background-mixin();
-
+            background-color: #f8d441;
+            color:$white;
             border: none;
         }
 
         &-link {
-            color: $black;
+            color: $gradient-dark-green;
             text-decoration: none;
         }
     }

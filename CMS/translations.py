@@ -870,6 +870,10 @@ DICT = {
         'en': 'Search again', 
         'cy': 'Chwilio eto'
     },
+    'clear_filters' : {
+        'en':'Clear filters',
+        'cy':'Hidlwyr clir'
+    },
     'back_to_results': {
         'en': 'Back',
         'cy': "Canlyniadau"
@@ -913,6 +917,10 @@ DICT = {
     'show_all': {
         'en': 'Show all',
         'cy': 'Dangos popeth'
+    },
+    'show_filters': {
+        'en': 'Show filters',
+        'cy': 'Dangos hidlyddion'
     },
     'Silver': {
         'en': 'Silver',

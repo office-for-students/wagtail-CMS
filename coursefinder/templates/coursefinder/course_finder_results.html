@@ -5,31 +5,106 @@
 {% block body_class %}template-course-finder-results{% endblock %}
 
 {% block extra_css %}
-    <link href="{% sass_src 'scss/course_finder.scss' %}?{% code_version %}" rel="stylesheet" type="text/css" >
+    <link href="{% sass_src 'scss/course_finder.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
 {% endblock extra_css %}
 
 {% block extra_js %}
     <script type="text/javascript" src="{% get_static_prefix %}js/filters.js?{% code_version %}"></script>
     <script type="text/javascript" src="{% get_static_prefix %}js/compare-selector.js?{% code_version %}"></script>
     <script type="text/javascript" src="{% get_static_prefix %}js/finder-results.js?{% code_version %}"></script>
+    <script>
+        $(function () {
+            $('.chevron-up').hide();
+            $('.course-finder-results__overview-filter-toggle').click(function () {
+                $('.chevron-down').toggle();
+                $('.chevron-up').toggle();
+            });
+        });
+    </script>
 {% endblock %}
 
-{% block content %}
-    <div class="course-finder-base course-finder-results">
-        <div class="discover-uni-container">
-            <ul class="course-finder-base__nav">
-                <li class="course-finder-base__nav-control-start-again">
-                    <a href={% pageurl page.get_parent %} class="course-finder-base__nav-control start-again">
-                        <img class="course-finder-base__nav-control-icon" src="{% static 'images/restart_icon.svg' %}" alt="">
-                        {% get_translation key='search_again' language=page.get_language %}
-                    </a>
-                </li>
-            </ul>
 
-            <div class="course-finder-results">
-                {% include "search_results_list.html" %}
+{% block content %}
+
+<div class="course-finder__header">
+    <div class="course-finder__intro-title px-3 px-lg-5 pt-4">
+        <h1>Search results</h1>
+    </div>
+    <div id="course-finder__intro-panel" class="course-finder__intro-panel bg-white">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6 p-3 pr-4">
+                <h4 class="mb-3">Search by course or location</h4>
+                <form class="search-landing-page__search" action="/course-finder/results/" method="post"
+                      autocomplete="off">
+                    {% csrf_token %}
+                    <div class="search-landing-page__search-fields">
+                        <div class="search-landing-page__search-input">
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                </div>
+                                <input class="form-control" name="course_query" type="text" id="course"
+                                       aria-label="{% get_translation key='course_name' language=page.get_language %}"
+                                       placeholder="{% get_translation key='course_name' language=page.get_language %}"
+                                       autocomplete="off">
+
+                            </div>
+                        </div>
+                        <div class="search-landing-page__search-input">
+                            <div class="form-group">
+                                {% get_translation key='uni_and_college' language=page.get_language as placeholder %}
+                                {% include 'partials/search-dropdown.html' with placeholder=placeholder field_name='institution_query' options=institutions_list %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="mt-4 home-page__search-button justify-content-center py-2 px-5">
+                        {% get_translation key='search' language=page.get_language %}
+                    </button>
+
+                </form>
+
+            </div>
+            <div class="dash-vertical-left col-6 text-center p-3 d-none d-md-block">
+                <div class="course-finder__info-block">
+                    <h5 class="text-center">Need help choosing?</h5>
+                    <h6 class="pt-2 text-center">Search our guidance for help making the best decision for you.</h6>
+                    <h6 class="pt-2 text-center"><a href="#">Information and advice.</a></h6>
+                    <button class="mt-4 home-page__search-button justify-content-center py-2 px-md-3 px-lg-5">Start
+                        Now
+                    </button>
+                </div>
             </div>
         </div>
-        {% include 'courses/partials/compare-popup-bar.html' %}
     </div>
+</div>
+<div class="course-finder-base course-finder-results">
+    <div class="">
+        <div class="course-finder-base__nav row">
+            <div class="col-8 text-left">
+                {% create_list search.total_courses search.total_institutions as substitutions %}
+                {% autoescape off %}
+                {% get_translation key='number_of_results' language=page.get_language substitutions=substitutions %}
+                {% endautoescape %}
+            </div>
+            <div class="col-4 text-right">
+                <a href={% pageurl page.get_parent %} class="course-finder-base__nav-control start-again">
+                {% get_translation key='clear_filters' language=page.get_language %}
+                </a>
+            </div>
+        </div>
+        <div class="course-finder-results">
+            {% include "search_results_list.html" %}
+        </div>
+    </div>
+    {% include 'courses/partials/compare-popup-bar.html' %}
+    <div class="course-finder__info-block mx-2 d-block d-md-none text-center mx-auto">
+        <h5 class="text-center">Need help choosing?</h5>
+        <h6 class="pt-2 text-center">Search our guidance for help making the best decision for you.</h6>
+        <h6 class="pt-2 text-center"><a href="#">Information and advice.</a></h6>
+        <button class="mt-4 home-page__search-button justify-content-center py-2 px-5 mx-auto">Start Now</button>
+    </div>
+</div>
+
 {% endblock content %}
