@@ -112,7 +112,7 @@ class NewCourseFormatMocks:
                     "ukprn": "10006841"
                 },
                 "kis_course_id": "ART002-F-UOB-SX",
-                "go_salary_inst": {
+                "go_salary_inst_single": {
                     "unavail_reason": "0",
                     "pop": "15",
                     "resp_rate": "55",

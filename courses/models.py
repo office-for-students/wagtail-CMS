@@ -379,10 +379,15 @@ class Course:
             self.leo3_year_range = "{}-{}".format(current_year-4, current_year-3)
             self.leo5_year_range = "{}-{}".format(current_year-6, current_year-5)
 
-            self.salaries_inst = []
+            self.go_salaries_inst = []
             if course_details.get('go_salary_inst'):
-                self.salaries_inst.append(Salary(course_details.get('go_salary_inst'), self.display_language))
-                self.summary_med_sal_value = Salary(course_details.get('go_salary_inst'), self.display_language).med
+                for go_salary_inst in course_details.get('go_salary_inst'):
+                    self.go_salaries_inst.append(Salary(go_salary_inst, self.display_language))
+
+            self.salaries_inst = []
+            if course_details.get('go_salary_inst_single'):
+                self.salaries_inst.append(Salary(course_details.get('go_salary_inst_single'), self.display_language))
+                self.summary_med_sal_value = Salary(course_details.get('go_salary_inst_single'), self.display_language).med
                 self.summary_med_sal_text_trans_key = "average_earnings_course_overview_2a"
             if course_details.get('leo3_inst'):
                 self.salaries_inst.append(Salary(course_details.get('leo3_inst'), self.display_language))
@@ -1599,7 +1604,14 @@ class Salary:
 
     def __init__(self, salary_data, display_language):
         self.display_language = display_language
+
         if salary_data:
+            subject_data = salary_data.get('subject')
+            if subject_data:
+                self.subject_code = subject_data.get('code')
+                self.subject_english = subject_data.get('english_label')
+                self.subject_welsh = subject_data.get('welsh_label')
+
             self.pop = salary_data['pop']
             self.resp_rate = salary_data['resp_rate']
             self.lq = salary_data['lq']
@@ -1657,6 +1669,11 @@ class Salary:
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
+
+    def display_subject_name(self):
+        if self.display_language == enums.languages.ENGLISH:
+            return self.subject_english if self.subject_english else self.subject_welsh
+        return self.subject_welsh if self.subject_welsh else self.subject_english
 
 
 class SectorSalary:
