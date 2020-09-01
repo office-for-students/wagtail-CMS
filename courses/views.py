@@ -17,6 +17,7 @@ def regional_earnings(request):
         institution_id = request.POST['institution_id']
         course_id = request.POST['course_id']
         kis_mode = request.POST['kis_mode']
+        language = request.POST['language']
         course, error = Course.find(institution_id, course_id, kis_mode, language=enums.languages.ENGLISH)
 
         with open("./CMS/static/jsonfiles/regions.json", "r") as f:
@@ -26,7 +27,11 @@ def regional_earnings(request):
         for region_elem in region_dict:
             elem_id = region_elem['id']
             if elem_id == region:
-                region_full_name = region_elem['name']
+                if language == 'cy':
+                    region_full_name = region_elem['name_cy']
+                else:
+                    region_full_name = region_elem['name_en']
+
                 if region_full_name[:2] == "- ":
                     region_full_name = region_full_name[2:]
                 break

@@ -40,7 +40,7 @@
                     <div class="comparison__course">
                         <!-- We want to remove reliance upon salary stats. Find subject by some other means. -->
                         <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
-                            <h1 class="pb-0 my-auto">Subject: {{ course_subject_name.display_subject_name }}</h1>
+                            <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ course_subject_name.display_subject_name }}</h1>
                         </div>
                         
                         <!-- Not sure it makes sense to have an UNAVAIL message at the subject level for earnings. Comment it out for now. -->
@@ -177,7 +177,11 @@
                                         <select name="regions_{{ subject_index }}_{{ l_or_r }}" id="regions_{{ subject_index }}_{{ l_or_r }}" class="region_ddl w-100">
                                         {% get_region_list as region_list %}
                                         {% for region in region_list %}
-                                            <option value="{{region.id}}">{{region.name}}</option>
+                                            {% if page.get_language == 'cy' %}
+                                                <option value="{{region.id}}">{{region.name_cy}}</option>
+                                            {% else %}
+                                                <option value="{{region.id}}">{{region.name_en}}</option>
+                                            {% endif %}
                                         {% endfor %}
                                         </select>
                                     </div>
@@ -366,7 +370,8 @@
                         'region': selectedRegion,
                         'institution_id': institution,
                         'course_id': course,
-                        'kis_mode': kismode
+                        'kis_mode': kismode,
+                        'language': '{{ page.get_language }}'
                     },
                     dataType: 'json',
                     success: function (data) {

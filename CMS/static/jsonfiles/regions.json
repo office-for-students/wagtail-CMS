@@ -1,69 +1,87 @@
 [
    {
         "id": "_uk",
-        "name": "The UK"
+        "name_en": "The UK",
+        "name_cy": "Y DU"
     },
     {
         "id": "_e",
-        "name": "England"
+        "name_en": "England",
+        "name_cy": "Lloegr"
     },
     {
         "id": "_nw",
-        "name": "- North West"
+        "name_en": "- North West",
+        "name_cy": "- Y Gogledd Orllewin"
     },
     {
         "id": "_ne",
-        "name": "- North East"
+        "name_en": "- North East",
+        "name_cy": "- Y Gogledd Ddwyrain"
     },
     {
         "id": "_em",
-        "name": "- East Midlands"
+        "name_en": "- East Midlands",
+        "name_cy": "- Dwyrain y Canolbarth"
     },
     {
         "id": "_wm",
-        "name": "- West Midlands"
+        "name_en": "- West Midlands",
+        "name_cy": "- Gorllewin y Canolbarth"
     },
     {
         "id": "_se",
-        "name": "- South East"
+        "name_en": "- South East",
+        "name_cy": "- Y De Ddwyrain"
     },
     {
         "id": "_sw",
-        "name": "- South West"
-    },  {
+        "name_en": "- South West",
+        "name_cy": "- Y De Orllewin"
+    },
+    {
         "id": "_yh",
-        "name": "- Yorkshire and the Humber"
+        "name_en": "- Yorkshire and the Humber",
+        "name_cy": "- Swydd Efrog a'r Humber"
     },
     {
         "id": "_ee",
-        "name": "- East of England"
+        "name_en": "- East of England",
+        "name_cy": "- Dwyrain Lloegr"
     },
     {
         "id": "_lo",
-        "name": "- London"
+        "name_en": "- London",
+        "name_cy": "- Llundain"
     },
     {
         "id": "_s",
-        "name": "Scotland"
+        "name_en": "Scotland",
+        "name_cy": "Yr Alban"
     },
     {
         "id": "_ed",
-        "name": "- Edinburgh"
+        "name_en": "- Edinburgh",
+        "name_cy": "- Caeredin"
     },
     {
         "id": "_gl",
-        "name": "- Glasgow"
+        "name_en": "- Glasgow",
+        "name_cy": "- Glasgow"
     },
     {
         "id": "_w",
-        "name": "Wales"
+        "name_en": "Wales",
+        "name_cy": "Cymru"
     },
     {
         "id": "_cf",
-        "name": "- Cardiff"
+        "name_en": "- Cardiff",
+        "name_cy": "- Caerdydd"
     },
     {
         "id": "_ni",
-        "name": "Northern Ireland"
+        "name_en": "Northern Ireland",
+        "name_cy": "Gogledd Iwerddon"
     }
 ]

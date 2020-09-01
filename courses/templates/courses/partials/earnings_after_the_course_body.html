@@ -17,7 +17,7 @@
             </div>
         {# endif #}
 
-        <h1>Subject: {{ subject_name.display_subject_name }}</h1>
+        <h1>{% get_translation key='subject' language=page.get_language %}: {{ subject_name.display_subject_name }}</h1>
 
         <!-- Not sure it makes sense to have an UNAVAIL message at the subject level for earnings. Comment it out for now. -->
         {# include 'courses/partials/unavailable_disclaimer.html' with unavailable=xxx.display_unavailable_info #}
@@ -153,7 +153,11 @@
                         <select name="regions" id="regions_{{ subject_index }}" class="region_ddl">
                         {% get_region_list as region_list %}
                         {% for region in region_list %}
-                            <option value="{{region.id}}">{{region.name}}</option>
+                            {% if page.get_language == 'cy' %}
+                                <option value="{{region.id}}">{{region.name_cy}}</option>
+                            {% else %}
+                                <option value="{{region.id}}">{{region.name_en}}</option>
+                            {% endif %}
                         {% endfor %}
                         </select>
                     </div>
@@ -316,7 +320,8 @@
                     'region': selectedRegion,
                     'institution_id': courseParams[0],
                     'course_id': courseParams[1],
-                    'kis_mode': courseParams[2]
+                    'kis_mode': courseParams[2],
+                    'language': '{{ page.get_language }}'
                 },
                 dataType: 'json',
                 success: function (data) {
