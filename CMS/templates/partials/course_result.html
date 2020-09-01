@@ -11,7 +11,7 @@
      data-sandwich-en="{% get_translation key=course.sandwich_year language='en' %}" data-sandwich-cy="{% get_translation key=course.sandwich_year language='cy' %}"
      data-distance-en="{% map_distance_learning_values course.distance_learning 'en' %}" data-distance-cy="{% map_distance_learning_values course.distance_learning 'cy' %}"
      data-abroad-en="{% get_translation key=course.year_abroad language='en' %}" data-abroad-cy="{% get_translation key=course.year_abroad language='cy' %}">
-     <button class="course-detail__compare-btn-white float-right">
+     <button class="course-detail__compare-btn">
         <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
         <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
          {% get_translation key='bookmark_course' language=page.get_language %}
