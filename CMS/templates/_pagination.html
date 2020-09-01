@@ -3,8 +3,8 @@
 
 
 <nav role="navigation" aria-label="Pagination" class="pagination">
-    <ul class="pagination__item-list">
-        <li class="pagination__previous">
+    <ul class="pagination__item-list mx-auto">
+        <li class="pagination__previous float-left">
             {% if search.show_previous_icon != 0 %}
                 <a class="pagination__link"
                    aria-label="{% get_translation key='previous_page' language=page.get_language %}"
@@ -17,7 +17,7 @@
                          alt="{% get_translation key='previous_page' language=page.get_language %}" class="green">
                 </a>
             {% else %}
-                <p class="pagination__link--disabled"
+                <p class="pagination__link--disabled mb-0"
                    aria-label="{% get_translation key='previous_page' language=page.get_language %}">
                     <img src="{% static 'images/chevrons/grey_left_chevron.svg' %}"
                          alt="{% get_translation key='previous_page' language=page.get_language %}" class="black">
@@ -66,7 +66,7 @@
             </li>
         {% endif %}
 
-        <li class="pagination__next">
+        <li class="pagination__next float-right">
             {% if search.show_next_icon %}
                 <a class="pagination__link"
                    aria-label="{% get_translation key='next_page' language=page.get_language %}"
@@ -79,7 +79,7 @@
                          alt="{% get_translation key='next_page' language=page.get_language %}" class="green">
                 </a>
             {% else %}
-                <p class="pagination__link--disabled"
+                <p class="pagination__link--disabled mb-0"
                    aria-label="{% get_translation key='next_page' language=page.get_language %}">
                     <img src="{% static 'images/chevrons/grey_right_chevron.svg' %}"
                          alt="{% get_translation key='next_page' language=page.get_language %}" class="black">

@@ -120,6 +120,41 @@
     }
 }
 
+.course-finder__course-wizard{
+    font-family: "Nunito Sans", sans-serif;
+    padding:2rem;
+    border: solid 2px #dee0e0;
+
+    .home-page__search-button {
+        background-color: #fcd835;
+        color: black;
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 1rem;
+        border: none;
+        font-weight: bold;
+
+    }
+    h4 {
+        color: #000000;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    h5 {
+        color: #000000;
+        font-size: 1.4rem;
+        font-weight: normal;
+    }
+    h6{
+        color: #000000;
+        font-size: 0.9rem;
+        font-weight: normal;
+        a{
+            color:#2a8384;
+            text-decoration: underline;
+        }
+    }
+}
+
 .course-finder {
     font-family: "Nunito Sans", sans-serif;
 
@@ -130,6 +165,7 @@
         background-color: white;
         margin-left:2rem;
         margin-right:2rem;
+        margin-bottom:3rem;
 
         &__nav {
             display: flex;

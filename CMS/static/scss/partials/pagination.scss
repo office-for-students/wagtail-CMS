@@ -36,7 +36,7 @@
 .pagination {
     background-color: transparent;
     display: initial;
-    margin-top: 44px;
+    margin-top: 2rem;
 
     &__item-list {
         padding: 0;
@@ -63,6 +63,7 @@
         &-link {
             color: $gradient-dark-green;
             text-decoration: none;
+            font-weight:bold;
         }
     }
 
