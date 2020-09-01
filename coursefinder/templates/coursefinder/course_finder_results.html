@@ -27,9 +27,21 @@
 {% block content %}
 
 <div class="course-finder__header">
-    <div class="course-finder__intro-title px-3 px-lg-5 pt-4">
-        <h1>Search results</h1>
+
+
+    <div class="row mx-0">
+        <div class="col-9 overflow-visible pr-0">
+            <div class="course-finder__intro-title pt-4 pl-md-4 pl-sm-2 ">
+                <h1>Search results</h1>
+            </div>
+        </div>
+        <div class="col-3 p-0 text-right">
+            <img class="home-page__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
+        </div>
     </div>
+
+
+
     <div id="course-finder__intro-panel" class="course-finder__intro-panel bg-white">
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6 p-3 pr-4">

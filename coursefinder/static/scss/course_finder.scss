@@ -13,6 +13,11 @@
     padding-bottom:0;
     color:$white;
 
+    .home-page__header-bg-icon {
+        height: 100px;
+        width: auto;
+    }
+
     .course-finder__intro-title{
         font-family: "Nunito Sans", sans-serif;
         h1{
@@ -527,6 +532,12 @@
 }
 
 @media only screen and (min-width: 770px) {
+
+    .course-finer__header .home-page__header-bg-icon {
+        padding-top: 15px;
+        height: 150px;
+        width: auto;
+    }
     .course-finder__header .course-finder__intro-panel {
         padding: 1rem;
         margin-left: 3rem;
