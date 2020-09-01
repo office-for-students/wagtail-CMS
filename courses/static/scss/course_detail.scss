@@ -12,11 +12,18 @@
 
 @import 'highcharts';
 
-// #main-content{
-//     margin-left:12px;
-//     margin-right:12px;
-// }
+.course_detail__header-bar{
+    background-color: #1F283A;
+    .course_detail__header-bar-div{
+        overflow:hidden;
+        height:80px;
+        .home-page__header-bg-icon {
+            height: 100px;
+            width: auto;
+        }
+    }
 
+}
 .course-detail {
     overflow-x: hidden;
 
@@ -375,6 +382,20 @@
 
 @media only screen and (min-width: 770px) and (max-width: 1100px){
 
+    .course_detail__header-bar {
+        background-color: #1F283A;
+
+        .course_detail__header-bar-div{
+            overflow:hidden;
+            height:100px;
+
+            .home-page__header-bg-icon {
+                height: 150px;
+                width: auto;
+            }
+        }
+
+    }
     .course-detail {
         margin-top: 35px;
 
