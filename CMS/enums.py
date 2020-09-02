@@ -41,6 +41,12 @@ class UniLinkKeys:
     EMPLOYMENT = 'employment_details'
 
 
+class CahCodeLevels:
+    ONE = 1
+    TWO = 2
+    THREE = 3
+
+
 class Enums:
     languages = Languages()
     languages_full = LanguagesFull()
@@ -52,6 +58,7 @@ class Enums:
     apr_values = APRValues()
     tef_values = TEFValues()
     uni_link_keys = UniLinkKeys()
+    cah_code_levels = CahCodeLevels()
 
 
 enums = Enums()

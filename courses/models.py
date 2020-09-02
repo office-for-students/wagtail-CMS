@@ -383,28 +383,81 @@ class Course:
             if course_details.get('go_salary_inst'):
                 for go_salary_inst in course_details.get('go_salary_inst'):
                     self.go_salaries_inst.append(Salary(go_salary_inst, self.display_language))
+            self.leo3_salaries_inst = []
+            if course_details.get('leo3_inst'):
+                for leo3_salary_inst in course_details.get('leo3_inst'):
+                    self.leo3_salaries_inst.append(Salary(leo3_salary_inst, self.display_language))
+            self.leo5_salaries_inst = []
+            if course_details.get('leo5_inst'):
+                for leo5_salary_inst in course_details.get('leo5_inst'):
+                    self.leo5_salaries_inst.append(Salary(leo5_salary_inst, self.display_language))
+
+            self.go_salaries_sector = []
+            if course_details.get('go_salary_sector'):
+                for go_salary_sector in course_details.get('go_salary_sector'):
+                    self.go_salaries_sector.append(SectorSalary(go_salary_sector, self.display_language))
+            self.leo3_salaries_sector = []
+            if course_details.get('leo3_salary_sector'):
+                for leo3_salary_sector in course_details.get('leo3_salary_sector'):
+                    self.leo3_salaries_sector.append(SectorSalary(leo3_salary_sector, self.display_language))
+            self.leo5_salaries_sector = []
+            if course_details.get('leo5_salary_sector'):
+                for leo5_salary_sector in course_details.get('leo5_salary_sector'):
+                    self.leo5_salaries_sector.append(SectorSalary(leo5_salary_sector, self.display_language))
 
             self.salaries_inst = []
             if course_details.get('go_salary_inst_single'):
                 self.salaries_inst.append(Salary(course_details.get('go_salary_inst_single'), self.display_language))
                 self.summary_med_sal_value = Salary(course_details.get('go_salary_inst_single'), self.display_language).med
                 self.summary_med_sal_text_trans_key = "average_earnings_course_overview_2a"
-            if course_details.get('leo3_inst'):
-                self.salaries_inst.append(Salary(course_details.get('leo3_inst'), self.display_language))
+            if course_details.get('leo3_inst_single'):
+                self.salaries_inst.append(Salary(course_details.get('leo3_inst_single'), self.display_language))
                 if self.summary_med_sal_value == "no_data":
-                    self.summary_med_sal_value = Salary(course_details.get('leo3_inst'), self.display_language).med
+                    self.summary_med_sal_value = Salary(course_details.get('leo3_inst_single'), self.display_language).med
                     self.summary_med_sal_text_trans_key = "average_earnings_course_overview_2b"
-            if course_details.get('leo5_inst'):
-                self.salaries_inst.append(Salary(course_details.get('leo5_inst'), self.display_language))
+            if course_details.get('leo5_inst_single'):
+                self.salaries_inst.append(Salary(course_details.get('leo5_inst_single'), self.display_language))
 
             self.salaries_sector = []
-            if course_details.get('go_salary_sector'):
-                self.salaries_sector.append(SectorSalary(course_details.get('go_salary_sector'), self.display_language))
-            if course_details.get('leo3_salary_sector'):
-                self.salaries_sector.append(SectorSalary(course_details.get('leo3_salary_sector'), self.display_language))
-            if course_details.get('leo5_salary_sector'):
-                self.salaries_sector.append(SectorSalary(course_details.get('leo5_salary_sector'), self.display_language))
+            if course_details.get('go_salary_sector_single'):
+                self.salaries_sector.append(SectorSalary(course_details.get('go_salary_sector_single'), self.display_language))
+            if course_details.get('leo3_salary_sector_single'):
+                self.salaries_sector.append(SectorSalary(course_details.get('leo3_salary_sector_single'), self.display_language))
+            if course_details.get('leo5_salary_sector_single'):
+                self.salaries_sector.append(SectorSalary(course_details.get('leo5_salary_sector_single'), self.display_language))
 
+            self.salaries_aggregates = []
+            for code in self.get_sbj_codes_for_earnings():
+                earnings_aggregate = EarningsAggregate(code)
+                earnings_aggregate.sync_go_institution_earnings(self.go_salaries_inst)
+                earnings_aggregate.sync_leo3_institution_earnings(self.leo3_salaries_inst)
+                earnings_aggregate.sync_leo5_institution_earnings(self.leo5_salaries_inst)
+                earnings_aggregate.sync_go_sector_earnings(self.go_salaries_sector)
+                earnings_aggregate.sync_leo3_sector_earnings(self.leo3_salaries_sector)
+                earnings_aggregate.sync_leo5_sector_earnings(self.leo5_salaries_sector)
+                self.salaries_aggregates.append(earnings_aggregate)
+
+    def get_sbj_codes_for_earnings(self):
+        sbj_codes = []
+        longest_salaries_list = self.get_longest_salaries_inst_list()
+        for element in longest_salaries_list:
+            if element.subject_code not in sbj_codes:
+                sbj_codes.append(element.subject_code)
+        return sbj_codes
+
+    def get_longest_salaries_inst_list(self):
+        if self.salaries_inst_lists_are_same_length():
+            return self.go_salaries_inst
+        else:
+            longest_list = self.go_salaries_inst
+            if len(self.leo3_salaries_inst) > len(longest_list):
+                longest_list = self.leo3_salaries_inst
+            if len(self.leo5_salaries_inst) > len(longest_list):
+                return self.leo5_salaries_inst
+            return longest_list
+
+    def salaries_inst_lists_are_same_length(self):
+        return len(self.go_salaries_inst) == len(self.leo3_salaries_inst) == len(self.leo5_salaries_inst)
 
     def set_course_links(self, links, language):
         link_objs = {'course_details': [], 'costs_support': []}
@@ -1683,6 +1736,12 @@ class SectorSalary:
         self.no_salary_node = "true"
 
         if salary_data:
+            subject_data = salary_data.get('subject')
+            if subject_data:
+                self.subject_code = subject_data.get('code')
+                self.subject_english = subject_data.get('english_label')
+                self.subject_welsh = subject_data.get('welsh_label')
+
             self.no_salary_node = "false"
             self.unavail_reason = salary_data['unavail_reason']
             self.lq_uk = salary_data['lq_uk']
@@ -1844,6 +1903,65 @@ class SectorSalary:
         unavailable["unavailable_region_not_exists_heading"], unavailable["unavailable_region_not_exists_body"] = separate_unavail_reason(unavailable["unavailable_region_not_exists"])
 
         return unavailable
+
+
+class EarningsAggregate:
+    def __init__(self, subject_code):
+        self.cah_code_lv_3 = subject_code
+        self.cah_code_lv_2 = self.get_cah_code_for_level(enums.cah_code_levels.TWO)
+        self.cah_code_lv_1 = self.get_cah_code_for_level(enums.cah_code_levels.ONE)
+
+        self.go_salary_institution = None
+        self.leo3_salary_institution = None
+        self.leo5_salary_institution = None
+
+        self.go_salary_sector = None
+        self.leo3_salary_sector = None
+        self.leo5_salary_sector = None
+
+    def get_cah_code_for_level(self, level):
+        cah_code_list = self.cah_code_lv_3.split("-")
+        return "-".join(code_element for code_element in cah_code_list if cah_code_list.index(code_element) < level)
+
+    def sync_go_institution_earnings(self, go_salaries_inst):
+        self.go_salary_institution = self.sync_earnings_data(go_salaries_inst)
+
+    def sync_leo3_institution_earnings(self, leo3_salaries_inst):
+        self.leo3_salary_institution = self.sync_earnings_data(leo3_salaries_inst)
+
+    def sync_leo5_institution_earnings(self, leo5_salaries_inst):
+        self.leo5_salary_institution = self.sync_earnings_data(leo5_salaries_inst)
+
+    def sync_go_sector_earnings(self, go_salaries_sector):
+        self.go_salary_sector = self.sync_earnings_data(go_salaries_sector)
+
+    def sync_leo3_sector_earnings(self, leo3_salaries_sector):
+        self.leo3_salary_sector = self.sync_earnings_data(leo3_salaries_sector)
+
+    def sync_leo5_sector_earnings(self, leo5_salaries_sector):
+        self.leo5_salary_sector = self.sync_earnings_data(leo5_salaries_sector)
+
+    def sync_earnings_data(self, salaries):
+        matched_element = None
+        for salary_data in salaries:
+            if self.is_level_3(salary_data):
+                return salary_data
+        for salary_data in salaries:
+            if self.is_level_2(salary_data):
+                return salary_data
+        for salary_data in salaries:
+            if self.is_level_1(salary_data):
+                return salary_data
+        return matched_element
+
+    def is_level_3(self, element):
+        return element.subject_code == self.cah_code_lv_3
+
+    def is_level_2(self, element):
+        return element.subject_code == self.cah_code_lv_2
+
+    def is_level_1(self, element):
+        return element.subject_code == self.cah_code_lv_1
 
 
 def separate_unavail_reason(reason_unseparated):
