@@ -46,7 +46,6 @@
                     <button class="mt-4 home-page__search-button justify-content-center py-2 px-5">
                         {% get_translation key='search' language=page.get_language %}
                     </button>
-
                 </form>
                 
             </div>
@@ -57,8 +56,9 @@
                 <img class="mx-auto home-page__course-wizard-icon" src="{% static 'images/arrows.svg' %}" alt="Course Wizard"/>
                 <h4 class="text-center">Course Wizard</h4>
                 <h5 class="pt-2 text-center">Answer 4 questions to find courses relevant to me</h5>
-                <button class="mt-4 home-page__search-button justify-content-center py-2 px-5">Start Now</button>
-                
+                <div class="mt-4 ">
+                    <a href="{{ page.course_wizard_link }}" class="home-page__search-button justify-content-center py-2 px-5">Start Now</a>
+                </div>
             </div>
         </div>
     </div>

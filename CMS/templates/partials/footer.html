@@ -2,84 +2,77 @@
 
 
 <footer class="footer">
-    <div class="discover-uni-container">
-        {% if page.is_english %}
-            <img class="footer__brand-logo" src="{% static 'images/logos/footer_logo_color_english.svg' %}"
-                 alt="{% get_translation key='site_logo' language=page.get_language %}">
-        {% else %}
-            <img class="footer__brand-logo" src="{% static 'images/logos/footer_logo_color_welsh.svg' %}"
-                 alt="{% get_translation key='site_logo' language=page.get_language %}">
-        {% endif %}
+    <div class="footer__section-1 px-4 py-3">
+        <div class="discover-uni-container">
+            <div class="row pt-4">
+                <div class="col-12 col-md-2 col-sm-3 pr-0">
+                    {% if page.is_english %}
+                        <img class="footer__brand-logo float-left"
+                             src="{% static 'images/logos/footer_logo_color_english.svg' %}"
+                             alt="{% get_translation key='site_logo' language=page.get_language %}">
+                    {% else %}
+                        <img class="footer__brand-logo" src="{% static 'images/logos/footer_logo_color_welsh.svg' %}"
+                             alt="{% get_translation key='site_logo' language=page.get_language %}">
+                    {% endif %}
+                </div>
+                <div class="col-12 col-md-10 col-sm-9 d-flex justify-content-between">
+                    <div class="footer__items">
+                        <div class=" d-flex justify-content-between flex-wrap">
+                            {% for item in page.footer %}
+                                <a class="footer__link mx-lg-3 mx-2 col-5 col-md-3 px-0" href="{{ item.url }}">
+                                    {{ item.label }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
 
-        <div class="footer__logo-container">
-            <a class="footer__ofs-logo" href="https://www.officeforstudents.org.uk/">
-                <img src="{% static 'images/logos/footer_ofs_logo.svg' %}"
-                    alt="Office for Students" >
-            </a>
-
-            <a class="footer__hefcw-logo" href="https://www.hefcw.ac.uk/">
-                <img  src="{% static 'images/logos/footer_hefcw_logo.png' %}"
-                    alt="HEFCW" >
-            </a>
+            </div>
         </div>
+    </div>
 
-        <div class="footer__logo-container">
-            <a class="footer__dfeni-logo" href="https://www.economy-ni.gov.uk/">
+    <div class="footer__section-2 px-5 py-4 ">
+        <div class="row d-flex justify-content-between pt-4">
+             <a class="footer__logo footer__logo-ofs" href="https://www.officeforstudents.org.uk/">
+                    <img src="{% static 'images/logos/footer_ofs_logo.svg' %}"
+                         alt="Office for Students">
+             </a>
+
+             <a class="footer__logo footer__logo-hefcw" href="https://www.hefcw.ac.uk/">
+                <img src="{% static 'images/logos/footer_hefcw_logo.png' %}"
+                     alt="HEFCW">
+             </a>
+             <a class="footer__logo footer__logo-dfeni" href="https://www.economy-ni.gov.uk/">
                 <img src="{% static 'images/logos/footer_dfeni_logo.png' %}"
-                    alt="DfENI" >
-            </a>
+                     alt="DfENI">
+             </a>
 
-            <a class="footer__sfc-logo" href="http://www.sfc.ac.uk/">
-                <img  src="{% static 'images/logos/footer_sfc_logo.png' %}"
-                    alt="SFC" >
-            </a>
+             <a class="footer__logo footer__sfc" href="http://www.sfc.ac.uk/">
+                <img src="{% static 'images/logos/footer_sfc_logo.png' %}"
+                     alt="SFC">
+             </a>
         </div>
+        <div class="row d-flex justify-content-between">
+            <h6 class="footer__copyright">
+                © {% get_translation key='copyright' language=page.get_language %}
+            </h6>
+            <div class="footer__social-media">
 
-
-
-        <div class="footer__social-media">
-
-            <div {% if page.is_english %} class="footer__connect-text" {% else %} class="footer__connect-text-cy" {% endif %}>
-                {% if page.is_english %} <b>Connect with us</b> {% else %} <b>Cysylltwch â ni</b> {% endif %}
-            </div>
-
-            <div class="footer__social-container">
-                <a class="footer__facebook-logo" href="https://www.facebook.com/DiscoverUniUK">
-                    <img  src="{% static 'images/logos/footer_facebook_logo.svg' %}"
-                    alt="Facebook">
-                </a>
-                
-                <a class="footer__instagram-logo" href="https://www.instagram.com/discoveruniuk/">
-                    <img  src="{% static 'images/logos/footer_instagram_logo.svg' %}"
-                    alt="Instagram">
-                </a>
-
-                <a class="footer__twitter-logo" href="https://twitter.com/DiscoverUniUK/">
-                    <img  src="{% static 'images/logos/footer_twitter_logo.svg' %}"
-                        alt="Twitter">
-                </a>
-            </div>
-        </div>
-
-        <div class="footer__items">
-            <div class="footer__group">
-                {% for item in page.footer %}
-                    <a class="footer__link" href="{{ item.url }}">
-                        {{ item.label }}
+                    <a class="footer__facebook-logo mx-2" href="https://www.facebook.com/DiscoverUniUK">
+                        <i class="fab fa-facebook"></i>
                     </a>
 
-                    {% is_multiple_of forloop.counter 4 as end_group %}
+                    <a class="footer__instagram-logo mx-2" href="https://www.instagram.com/discoveruniuk/">
+                        <i class="fab fa-instagram"></i>
+                    </a>
 
-                    {% if end_group %}
-                        </div>
-                        <div class="footer__group">
-                    {% endif %}
-                {% endfor %}
+                    <a class="footer__twitter-logo mx-2" href="https://twitter.com/DiscoverUniUK/">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
             </div>
         </div>
 
-        <p class="footer__copyright">
-            © {% get_translation key='copyright' language=page.get_language %}
-        </p>
     </div>
+
 </footer>
