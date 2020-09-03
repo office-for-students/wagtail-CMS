@@ -1,12 +1,5 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
 
-{% for aggregate in course_details.salary_aggregates %}
-    {{ aggregate.subject_code }}
-    {{ aggregate.aggregated_salaries_inst }}
-    {{ aggregate.aggregated_salaries_sector }}
-    </br>
-{% endfor %}
-
         {# if course_details.show_salary_lead #}
             <div class="earnings-after-course__lead my-3 p-3 mx-1 pt-4 flex-wrap">
                 <div class="row">
