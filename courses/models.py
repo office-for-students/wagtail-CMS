@@ -426,35 +426,24 @@ class Course:
             if course_details.get('leo5_salary_sector_single'):
                 self.salaries_sector.append(SectorSalary(course_details.get('leo5_salary_sector_single'), self.display_language))
 
-            self.salaries_aggregates = []
-            for code in self.get_sbj_codes_for_earnings():
-                earnings_aggregate = EarningsAggregate(code)
+            self.salary_aggregates = []
+            for code in self.get_subject_codes_for_earnings_aggregation():
+                earnings_aggregate = SalariesAggregate(code, self.display_language)
                 earnings_aggregate.sync_go_institution_earnings(self.go_salaries_inst)
                 earnings_aggregate.sync_leo3_institution_earnings(self.leo3_salaries_inst)
                 earnings_aggregate.sync_leo5_institution_earnings(self.leo5_salaries_inst)
                 earnings_aggregate.sync_go_sector_earnings(self.go_salaries_sector)
                 earnings_aggregate.sync_leo3_sector_earnings(self.leo3_salaries_sector)
                 earnings_aggregate.sync_leo5_sector_earnings(self.leo5_salaries_sector)
-                self.salaries_aggregates.append(earnings_aggregate)
+                self.salary_aggregates.append(earnings_aggregate)
 
-    def get_sbj_codes_for_earnings(self):
-        sbj_codes = []
-        longest_salaries_list = self.get_longest_salaries_inst_list()
-        for element in longest_salaries_list:
-            if element.subject_code not in sbj_codes:
-                sbj_codes.append(element.subject_code)
-        return sbj_codes
-
-    def get_longest_salaries_inst_list(self):
-        if self.salaries_inst_lists_are_same_length():
-            return self.go_salaries_inst
-        else:
-            longest_list = self.go_salaries_inst
-            if len(self.leo3_salaries_inst) > len(longest_list):
-                longest_list = self.leo3_salaries_inst
-            if len(self.leo5_salaries_inst) > len(longest_list):
-                return self.leo5_salaries_inst
-            return longest_list
+    def get_subject_codes_for_earnings_aggregation(self):
+        subject_codes = []
+        all_salaries_inst = self.go_salaries_inst + self.leo3_salaries_inst + self.leo5_salaries_inst
+        for element in all_salaries_inst:
+            if element.subject_code not in subject_codes:
+                subject_codes.append(element.subject_code)
+        return subject_codes
 
     def salaries_inst_lists_are_same_length(self):
         return len(self.go_salaries_inst) == len(self.leo3_salaries_inst) == len(self.leo5_salaries_inst)
@@ -575,6 +564,10 @@ class Course:
     @property
     def has_multiple_job_lists(self):
         return len(self.job_lists) > 1
+
+    @property
+    def has_multiple_salary_aggregates(self):
+        return len(self.salary_aggregates) > 1
 
     # @property
     # def has_multiple_occupation_stats(self):
@@ -1905,11 +1898,15 @@ class SectorSalary:
         return unavailable
 
 
-class EarningsAggregate:
-    def __init__(self, subject_code):
-        self.subject_code_lv_3 = subject_code
-        self.subject_code_lv_2 = self.get_cah_code_for_level(enums.subject_code_levels.TWO)
-        self.subject_code_lv_1 = self.get_cah_code_for_level(enums.subject_code_levels.ONE)
+class SalariesAggregate:
+    def __init__(self, subject_code, display_language):
+        self.subject_code = subject_code
+        self.subject_code_one_level_down = self.get_cah_code_for_level(enums.subject_code_levels.ONE_DOWN)
+        self.subject_code_two_levels_down = self.get_cah_code_for_level(enums.subject_code_levels.TWO_DOWN)
+
+        self.display_language = display_language
+        self.subject_english = ""
+        self.subject_welsh = ""
 
         self.go_salary_institution = None
         self.leo3_salary_institution = None
@@ -1920,48 +1917,85 @@ class EarningsAggregate:
         self.leo5_salary_sector = None
 
     def get_cah_code_for_level(self, level):
-        subject_codes = self.subject_code_lv_3.split("-")
+        subject_codes = self.subject_code.split("-")
         return "-".join(code_element for code_index, code_element in enumerate(subject_codes) if code_index < level)
 
     def sync_go_institution_earnings(self, go_salaries_inst):
         self.go_salary_institution = self.sync_earnings_data(go_salaries_inst)
+        if not self.go_salary_institution:
+            self.go_salary_institution = self.generate_empty_institution_salary_with_unavail_reason()
 
     def sync_leo3_institution_earnings(self, leo3_salaries_inst):
         self.leo3_salary_institution = self.sync_earnings_data(leo3_salaries_inst)
+        if not self.leo3_salary_institution:
+            self.leo3_salary_institution = self.generate_empty_institution_salary_with_unavail_reason()
 
     def sync_leo5_institution_earnings(self, leo5_salaries_inst):
         self.leo5_salary_institution = self.sync_earnings_data(leo5_salaries_inst)
+        if not self.leo5_salary_institution:
+            self.leo5_salary_institution = self.generate_empty_institution_salary_with_unavail_reason()
 
     def sync_go_sector_earnings(self, go_salaries_sector):
         self.go_salary_sector = self.sync_earnings_data(go_salaries_sector)
+        if not self.go_salary_sector:
+            self.go_salary_sector = self.generate_empty_sector_salary_with_unavail_reason()
 
     def sync_leo3_sector_earnings(self, leo3_salaries_sector):
         self.leo3_salary_sector = self.sync_earnings_data(leo3_salaries_sector)
+        if not self.leo3_salary_sector:
+            self.leo3_salary_sector = self.generate_empty_sector_salary_with_unavail_reason()
 
     def sync_leo5_sector_earnings(self, leo5_salaries_sector):
         self.leo5_salary_sector = self.sync_earnings_data(leo5_salaries_sector)
+        if not self.leo5_salary_sector:
+            self.leo5_salary_sector = self.generate_empty_sector_salary_with_unavail_reason()
+
+    def generate_empty_institution_salary_with_unavail_reason(self):
+        salary_substitute = Salary(None, self.display_language)
+        salary_substitute.unavailable_reason_english = "No data available"
+        salary_substitute.unavailable_reason_welsh = "Nid oes data ar gael"
+        return salary_substitute
+
+    def generate_empty_sector_salary_with_unavail_reason(self):
+        salary_substitute = SectorSalary(None, self.display_language)
+        salary_substitute.unavail_text_region_not_exists_english = "No data available"
+        salary_substitute.unavail_text_region_not_exists_welsh = "Nid oes data ar gael"
+        return salary_substitute
 
     def sync_earnings_data(self, salaries):
         matched_element = None
         for salary_data in salaries:
-            if self.matches_level_3_subject_code(salary_data.subject_code):
+            if self.matches_subject_code(salary_data.subject_code):
+                self.get_subject_names(salary_data)
                 return salary_data
         for salary_data in salaries:
-            if self.matches_level_2_subject_code(salary_data.subject_code):
+            if self.matches_subject_code_one_level_down(salary_data.subject_code):
+                self.get_subject_names(salary_data)
                 return salary_data
         for salary_data in salaries:
-            if self.matches_level_1_subject_code(salary_data.subject_code):
+            if self.matches_subject_code_two_levels_down(salary_data.subject_code):
+                self.get_subject_names(salary_data)
                 return salary_data
         return matched_element
 
-    def matches_level_3_subject_code(self, code):
-        return code == self.subject_code_lv_3
+    def matches_subject_code(self, code):
+        return code == self.subject_code
 
-    def matches_level_2_subject_code(self, code):
-        return code == self.subject_code_lv_2
+    def matches_subject_code_one_level_down(self, code):
+        return code == self.subject_code_one_level_down
 
-    def matches_level_1_subject_code(self, code):
-        return code == self.subject_code_lv_1
+    def matches_subject_code_two_levels_down(self, code):
+        return code == self.subject_code_two_levels_down
+
+    def get_subject_names(self, data):
+        self.subject_english = data.subject_english
+        self.subject_welsh = data.subject_welsh
+
+    def display_subject_name(self):
+        if self.display_language == enums.languages.ENGLISH:
+            return self.subject_english if self.subject_english else self.subject_welsh
+        return self.subject_welsh if self.subject_welsh else self.subject_english
+
 
 
 def separate_unavail_reason(reason_unseparated):

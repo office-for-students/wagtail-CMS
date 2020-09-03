@@ -200,40 +200,7 @@ class NewJointCourseFormatMocks:
                     "unavail_text_welsh": ""
                 },
                 "go_salary_inst": [
-                    {
-                        "unavail_reason": "0",
-                        "pop": "35",
-                        "resp_rate": "75",
-                        "agg": "43",
-                        "sbj": "CAH01-01-01",
-                        "lq": "18000",
-                        "med": "20000",
-                        "uq": "22000",
-                        "inst_prov_pc_uk": "100",
-                        "inst_prov_pc_e": "80",
-                        "inst_prov_pc_s": "5",
-                        "inst_prov_pc_w": "15",
-                        "inst_prov_pc_ni": "0",
-                        "inst_prov_pc_nw": "0",
-                        "inst_prov_pc_ne": "0",
-                        "inst_prov_pc_em": "0",
-                        "inst_prov_pc_wm": "0",
-                        "inst_prov_pc_ee": "0",
-                        "inst_prov_pc_se": "0",
-                        "inst_prov_pc_sw": "0",
-                        "inst_prov_pc_yh": "0",
-                        "inst_prov_pc_lo": "0",
-                        "inst_prov_pc_ed": "0",
-                        "inst_prov_pc_gl": "0",
-                        "inst_prov_pc_cf": "0",
-                        "unavail_text_english": "",
-                        "unavail_text_welsh": "",
-                        "subject": {
-                            "code": "CAH17-01-04",
-                            "english_label": "Management studies",
-                            "welsh_label": "Astudiaethau rheoli"
-                        }
-                    },
+
                     {
                         "unavail_reason": "0",
                         "pop": "25",

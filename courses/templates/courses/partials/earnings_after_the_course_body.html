@@ -1,10 +1,21 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
 
-{{ course_details.salaries_aggregates.cah_code_lv_3 }}
-
-{% for subject_name in course_details.subject_names %}
-    {% if subject_name %}
-        {% define forloop.counter0 as subject_index %}
+{% for aggregate in course_details.salary_aggregates %}
+    {{ aggregate.subject_code }}
+    {{ aggregate.go_salary_institution }}
+    {{ aggregate.go_salary_institution.subject_code }}
+    {{ aggregate.leo3_salary_institution }}
+    {{ aggregate.leo3_salary_institution.subject_code }}
+    {{ aggregate.leo5_salary_institution }}
+    {{ aggregate.leo5_salary_institution.subject_code }}
+    {{ aggregate.go_salary_sector }}
+    {{ aggregate.go_salary_sector.subject_code }}
+    {{ aggregate.leo3_salary_sector }}
+    {{ aggregate.leo3_salary_sector.subject_code }}
+    {{ aggregate.leo5_salary_sector }}
+    {{ aggregate.leo5_salary_sector.subject_code }}
+    </br>
+{% endfor %}
 
         {# if course_details.show_salary_lead #}
             <div class="earnings-after-course__lead my-3 p-3 mx-1 pt-4 flex-wrap">
@@ -19,15 +30,33 @@
             </div>
         {# endif #}
 
-        <h1>Subject: {{ subject_name.display_subject_name }}</h1>
 
         <!-- Not sure it makes sense to have an UNAVAIL message at the subject level for earnings. Comment it out for now. -->
         {# include 'courses/partials/unavailable_disclaimer.html' with unavailable=xxx.display_unavailable_info #}
-        
+
+{% if course_details.has_multiple_salary_aggregates %}
+<ul class="nav nav-tabs mt-2" id="earnings-after-course-tab" role="tablist">
+
+    {% for salary_aggregate in course_details.salary_aggregates %}
+        <li class="nav-item">
+            <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="earnings-after-course-{{ forloop.counter }}-tab" data-toggle="tab" href="#earnings-after-course-{{ forloop.counter }}" role="tab"
+               aria-controls="earnings-after-course-{{ forloop.counter }}" aria-selected="true">
+                {{ salary_aggregate.display_subject_name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+<hr class="nav-tabs-hr"/>
+{% endif %}
+
+<div class="tab-content">
+{% for salary_aggregate in course_details.salary_aggregates %}
+    <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="earnings-after-course-{{ forloop.counter }}" role="tabpanel" aria-labelledby="earnings-after-course-{{ forloop.counter }}-tab">
+
         <div class="earnings-after-course_block mx-1 mt-2 px-4 pt-4 pb-0">
             <div>
                 <h2 class="earnings-after-course__stats-heading text-left pt-3 pb-2">
-                    {% create_list course.english_title as substitutions %}
+                    {% create_list salary_aggregate.display_subject_name as substitutions %}
                     {% insert_values_to_rich_text content=block.value.average_earnings_inst_heading substitutions=substitutions as subbed_text %}
                     {{ subbed_text | richtext }}
                 </h2>
@@ -279,9 +308,10 @@
                 </form>
             </div>
         </div>
-    {% endif %}
-{% endfor %}
 
+    </div>
+{% endfor %}
+</div>
 
 <script>
     $(document).ready(function() {

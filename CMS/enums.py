@@ -42,9 +42,8 @@ class UniLinkKeys:
 
 
 class SubjectCodeLevels:
-    ONE = 1
-    TWO = 2
-    THREE = 3
+    ONE_DOWN = 2
+    TWO_DOWN = 1
 
 
 class Enums:
