@@ -429,12 +429,12 @@ class Course:
             self.salary_aggregates = []
             for code in self.get_subject_codes_for_earnings_aggregation():
                 earnings_aggregate = SalariesAggregate(code, self.display_language)
-                earnings_aggregate.sync_go_institution_earnings(self.go_salaries_inst)
-                earnings_aggregate.sync_leo3_institution_earnings(self.leo3_salaries_inst)
-                earnings_aggregate.sync_leo5_institution_earnings(self.leo5_salaries_inst)
-                earnings_aggregate.sync_go_sector_earnings(self.go_salaries_sector)
-                earnings_aggregate.sync_leo3_sector_earnings(self.leo3_salaries_sector)
-                earnings_aggregate.sync_leo5_sector_earnings(self.leo5_salaries_sector)
+                earnings_aggregate.sync_institution_earnings(self.go_salaries_inst)
+                earnings_aggregate.sync_institution_earnings(self.leo3_salaries_inst)
+                earnings_aggregate.sync_institution_earnings(self.leo5_salaries_inst)
+                earnings_aggregate.sync_sector_earnings(self.go_salaries_sector)
+                earnings_aggregate.sync_sector_earnings(self.leo3_salaries_sector)
+                earnings_aggregate.sync_sector_earnings(self.leo5_salaries_sector)
                 self.salary_aggregates.append(earnings_aggregate)
 
     def get_subject_codes_for_earnings_aggregation(self):
@@ -1908,56 +1908,37 @@ class SalariesAggregate:
         self.subject_english = ""
         self.subject_welsh = ""
 
-        self.go_salary_institution = None
-        self.leo3_salary_institution = None
-        self.leo5_salary_institution = None
-
-        self.go_salary_sector = None
-        self.leo3_salary_sector = None
-        self.leo5_salary_sector = None
+        self.aggregated_salaries_inst = []
+        self.aggregated_salaries_sector = []
 
     def get_cah_code_for_level(self, level):
         subject_codes = self.subject_code.split("-")
         return "-".join(code_element for code_index, code_element in enumerate(subject_codes) if code_index < level)
 
-    def sync_go_institution_earnings(self, go_salaries_inst):
-        self.go_salary_institution = self.sync_earnings_data(go_salaries_inst)
-        if not self.go_salary_institution:
-            self.go_salary_institution = self.generate_empty_institution_salary_with_unavail_reason()
+    def sync_institution_earnings(self, salaries_inst):
+        salary_institution = self.sync_earnings_data(salaries_inst)
+        if not salary_institution:
+            salary_institution = self.generate_empty_institution_salary_with_unavail_reason()
+        self.aggregated_salaries_inst.append(salary_institution)
 
-    def sync_leo3_institution_earnings(self, leo3_salaries_inst):
-        self.leo3_salary_institution = self.sync_earnings_data(leo3_salaries_inst)
-        if not self.leo3_salary_institution:
-            self.leo3_salary_institution = self.generate_empty_institution_salary_with_unavail_reason()
-
-    def sync_leo5_institution_earnings(self, leo5_salaries_inst):
-        self.leo5_salary_institution = self.sync_earnings_data(leo5_salaries_inst)
-        if not self.leo5_salary_institution:
-            self.leo5_salary_institution = self.generate_empty_institution_salary_with_unavail_reason()
-
-    def sync_go_sector_earnings(self, go_salaries_sector):
-        self.go_salary_sector = self.sync_earnings_data(go_salaries_sector)
-        if not self.go_salary_sector:
-            self.go_salary_sector = self.generate_empty_sector_salary_with_unavail_reason()
-
-    def sync_leo3_sector_earnings(self, leo3_salaries_sector):
-        self.leo3_salary_sector = self.sync_earnings_data(leo3_salaries_sector)
-        if not self.leo3_salary_sector:
-            self.leo3_salary_sector = self.generate_empty_sector_salary_with_unavail_reason()
-
-    def sync_leo5_sector_earnings(self, leo5_salaries_sector):
-        self.leo5_salary_sector = self.sync_earnings_data(leo5_salaries_sector)
-        if not self.leo5_salary_sector:
-            self.leo5_salary_sector = self.generate_empty_sector_salary_with_unavail_reason()
+    def sync_sector_earnings(self, salaries_sector):
+        salary_sector = self.sync_earnings_data(salaries_sector)
+        if not salary_sector:
+            salary_sector = self.generate_empty_sector_salary_with_unavail_reason()
+        self.aggregated_salaries_sector.append(salary_sector)
 
     def generate_empty_institution_salary_with_unavail_reason(self):
         salary_substitute = Salary(None, self.display_language)
+        salary_substitute.unavail_reason = "1"
+        salary_substitute.unavailable_reason = ""
         salary_substitute.unavailable_reason_english = "No data available"
         salary_substitute.unavailable_reason_welsh = "Nid oes data ar gael"
         return salary_substitute
 
     def generate_empty_sector_salary_with_unavail_reason(self):
         salary_substitute = SectorSalary(None, self.display_language)
+        salary_substitute.unavail_reason = "1"
+        salary_substitute.unavailable_reason = ""
         salary_substitute.unavail_text_region_not_exists_english = "No data available"
         salary_substitute.unavail_text_region_not_exists_welsh = "Nid oes data ar gael"
         return salary_substitute
