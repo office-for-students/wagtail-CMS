@@ -445,9 +445,6 @@ class Course:
                 subject_codes.append(element.subject_code)
         return subject_codes
 
-    def salaries_inst_lists_are_same_length(self):
-        return len(self.go_salaries_inst) == len(self.leo3_salaries_inst) == len(self.leo5_salaries_inst)
-
     def set_course_links(self, links, language):
         link_objs = {'course_details': [], 'costs_support': []}
         if enums.uni_link_keys.COURSE in links:
@@ -1947,15 +1944,15 @@ class SalariesAggregate:
         matched_element = None
         for salary_data in salaries:
             if self.matches_subject_code(salary_data.subject_code):
-                self.get_subject_names(salary_data)
+                self.set_when_empty_subject_names(salary_data)
                 return salary_data
         for salary_data in salaries:
             if self.matches_subject_code_one_level_down(salary_data.subject_code):
-                self.get_subject_names(salary_data)
+                self.set_when_empty_subject_names(salary_data)
                 return salary_data
         for salary_data in salaries:
             if self.matches_subject_code_two_levels_down(salary_data.subject_code):
-                self.get_subject_names(salary_data)
+                self.set_when_empty_subject_names(salary_data)
                 return salary_data
         return matched_element
 
@@ -1968,15 +1965,16 @@ class SalariesAggregate:
     def matches_subject_code_two_levels_down(self, code):
         return code == self.subject_code_two_levels_down
 
-    def get_subject_names(self, data):
-        self.subject_english = data.subject_english
-        self.subject_welsh = data.subject_welsh
+    def set_when_empty_subject_names(self, data):
+        if not self.subject_english:
+            self.subject_english = data.subject_english
+        if not self.subject_welsh:
+            self.subject_welsh = data.subject_welsh
 
     def display_subject_name(self):
         if self.display_language == enums.languages.ENGLISH:
             return self.subject_english if self.subject_english else self.subject_welsh
         return self.subject_welsh if self.subject_welsh else self.subject_english
-
 
 
 def separate_unavail_reason(reason_unseparated):
