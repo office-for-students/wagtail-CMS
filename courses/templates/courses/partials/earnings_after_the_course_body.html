@@ -1,15 +1,5 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
 
-{% for aggregate in course_details.salaries_aggregates %}
-    {{ aggregate.cah_code_lv_3 }}
-    {{ aggregate.go_salary_institution }}
-    {{ aggregate.leo3_salary_institution }}
-    {{ aggregate.leo5_salary_institution }}
-    {{ aggregate.go_salary_sector }}
-    {{ aggregate.leo3_salary_sector }}
-    {{ aggregate.leo5_salary_sector }}
-{% endfor %}
-
 {{ course_details.salaries_aggregates.cah_code_lv_3 }}
 
 {% for subject_name in course_details.subject_names %}

@@ -1907,9 +1907,9 @@ class SectorSalary:
 
 class EarningsAggregate:
     def __init__(self, subject_code):
-        self.cah_code_lv_3 = subject_code
-        self.cah_code_lv_2 = self.get_cah_code_for_level(enums.cah_code_levels.TWO)
-        self.cah_code_lv_1 = self.get_cah_code_for_level(enums.cah_code_levels.ONE)
+        self.subject_code_lv_3 = subject_code
+        self.subject_code_lv_2 = self.get_cah_code_for_level(enums.subject_code_levels.TWO)
+        self.subject_code_lv_1 = self.get_cah_code_for_level(enums.subject_code_levels.ONE)
 
         self.go_salary_institution = None
         self.leo3_salary_institution = None
@@ -1920,8 +1920,8 @@ class EarningsAggregate:
         self.leo5_salary_sector = None
 
     def get_cah_code_for_level(self, level):
-        cah_code_list = self.cah_code_lv_3.split("-")
-        return "-".join(code_element for code_element in cah_code_list if cah_code_list.index(code_element) < level)
+        subject_codes = self.subject_code_lv_3.split("-")
+        return "-".join(code_element for code_index, code_element in enumerate(subject_codes) if code_index < level)
 
     def sync_go_institution_earnings(self, go_salaries_inst):
         self.go_salary_institution = self.sync_earnings_data(go_salaries_inst)
@@ -1944,24 +1944,24 @@ class EarningsAggregate:
     def sync_earnings_data(self, salaries):
         matched_element = None
         for salary_data in salaries:
-            if self.is_level_3(salary_data):
+            if self.matches_level_3_subject_code(salary_data.subject_code):
                 return salary_data
         for salary_data in salaries:
-            if self.is_level_2(salary_data):
+            if self.matches_level_2_subject_code(salary_data.subject_code):
                 return salary_data
         for salary_data in salaries:
-            if self.is_level_1(salary_data):
+            if self.matches_level_1_subject_code(salary_data.subject_code):
                 return salary_data
         return matched_element
 
-    def is_level_3(self, element):
-        return element.subject_code == self.cah_code_lv_3
+    def matches_level_3_subject_code(self, code):
+        return code == self.subject_code_lv_3
 
-    def is_level_2(self, element):
-        return element.subject_code == self.cah_code_lv_2
+    def matches_level_2_subject_code(self, code):
+        return code == self.subject_code_lv_2
 
-    def is_level_1(self, element):
-        return element.subject_code == self.cah_code_lv_1
+    def matches_level_1_subject_code(self, code):
+        return code == self.subject_code_lv_1
 
 
 def separate_unavail_reason(reason_unseparated):

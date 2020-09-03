@@ -1568,7 +1568,7 @@ class NewJointCourseFormatMocks:
                         "pop_cf": "140",
                         "resp_cf": "20",
                         "subject": {
-                            "code": "CAH09-01-01",
+                            "code": "CAH09-01",
                             "english_label": "Mathematics",
                             "welsh_label": "Mathemateg"
                         },
