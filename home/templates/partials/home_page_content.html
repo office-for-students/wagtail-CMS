@@ -1,21 +1,21 @@
 {% load staticfiles discover_uni_tags %}
 <div class="home-page__header">
     <div class="p-3 mx-lg-3">
-            <div class="row">
-                <div class="col-9 pl-lg-4 pl-sm-2 overflow-visible pr-0">
-                    <h1 class="pt-4 home-page__header-text">
-                        {{ page.header }}
-                    </h1>
-                    <h4 class="mt-4 text-white"><span class="text-warning">Search and compare</span> undergraduate courses in the UK</h4>
-    
-                </div>
-                <div class="col-3 p-0 text-right">
-                    <img class="home-page__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
-                </div>
+        <div class="row">
+            <div class="col-9 pl-lg-4 pl-sm-2 overflow-visible pr-0">
+                <h1 class="pt-4 home-page__header-text">
+                    {{ page.header }}
+                </h1>
+                <h4 class="mt-4 text-white"><span class="text-warning">Search and compare</span> undergraduate courses in the UK</h4>
+
             </div>
-           
+            <div class="col-3 p-0 text-right">
+                <img class="home-page__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
+            </div>
+        </div>
+
     </div>
-    
+
 
     <div id="home-page__intro-panel" class="home-page__intro-panel bg-white pb-5">
         <div class="row">
@@ -25,14 +25,14 @@
                     {% csrf_token %}
                     <div class="search-landing-page__search-fields">
                         <div class="search-landing-page__search-input">
-                            
+
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                  <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
                                 </div>
                                 <input class="form-control" name="course_query" type="text" id="course" aria-label="{% get_translation key='course_name' language=page.get_language %}"
-                                   placeholder="{% get_translation key='course_name' language=page.get_language %}" autocomplete="off">
-                       
+                                       placeholder="{% get_translation key='course_name' language=page.get_language %}" autocomplete="off">
+
                             </div>
                         </div>
                         <div class="search-landing-page__search-input">
@@ -46,9 +46,8 @@
                     <button class="mt-4 home-page__search-button justify-content-center py-2 px-5">
                         {% get_translation key='search' language=page.get_language %}
                     </button>
-
                 </form>
-                
+
             </div>
             <div class="col-12 d-block d-lg-none mx-auto text-center">
                 <hr class="dash"/>
@@ -57,8 +56,9 @@
                 <img class="mx-auto home-page__course-wizard-icon" src="{% static 'images/arrows.svg' %}" alt="Course Wizard"/>
                 <h4 class="text-center">Course Wizard</h4>
                 <h5 class="pt-2 text-center">Answer 4 questions to find courses relevant to me</h5>
-                <button class="mt-4 home-page__search-button justify-content-center py-2 px-5">Start Now</button>
-                
+                <div class="mt-4 ">
+                    <a href="{{ page.course_wizard_link }}" class="home-page__search-button justify-content-center py-2 px-5">Start Now</a>
+                </div>
             </div>
         </div>
     </div>
@@ -67,14 +67,14 @@
             <h4 class="text-white pt-2">You have <span class="count home-page__bookmark-circle"></span> courses bookmarked &nbsp; &nbsp;</h4>
             <h4 class="pt-2"><a class="home-page__bookmark-link" href="./bookmarks-manage/">View your courses</a></h4>
         </div>
-     </div>
+    </div>
 </div>
 
 <div class="home-page__body pb-4">
-    
+
     <div class="home-page__body-panel text-center" >
         <h3 class="home-page__body-panel-title mx-auto p-2">Information and advice</h3>
-        
+
         <div class="d-none d-lg-block">
             <div class="row px-4">
                 <div class="col-4 px-4 mt-4 dash-vertical-right">
@@ -103,7 +103,7 @@
                     <div class="my-4 justify-content-center">
                         <a href="{{ page.box_2_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
                     </div>
-               </div>
+                </div>
                 <div class="col-4 px-4 pb-4">
                     <div class="my-4 justify-content-center">
                         <a href="{{ page.box_3_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
@@ -114,38 +114,38 @@
 
 
         <div class="d-block d-lg-none">
-                <div class="col-12">
-                    <img class="section-icons my-3" src="{% static 'images/group-4.svg' %}" alt="Is university for me?"/>
-                    <h4>{{ page.box_1_title }}</h4>
-                    <h5>{{ page.box_1_content }}</h5>
-                    <div class="my-4 justify-content-center">
-                        <a href="{{ page.box_1_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
-                    </div>
-                    <hr class="dash" />
+            <div class="col-12">
+                <img class="section-icons my-3" src="{% static 'images/group-4.svg' %}" alt="Is university for me?"/>
+                <h4>{{ page.box_1_title }}</h4>
+                <h5>{{ page.box_1_content }}</h5>
+                <div class="my-4 justify-content-center">
+                    <a href="{{ page.box_1_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
                 </div>
-                
-                <div class="col-12">
-                    <img class="section-icons my-3" src="{% static 'images/group-3.svg' %}" alt="How to pay for university"/>
-                    <h4>{{ page.box_2_title }}</h4>
-                    <h5>{{ page.box_2_content }}</h5>
-                    <div class="my-4 justify-content-center">
-                        <a href="{{ page.box_2_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
-                    </div>
-                    
-                    <hr class="dash" />
+                <hr class="dash" />
+            </div>
+
+            <div class="col-12">
+                <img class="section-icons my-3" src="{% static 'images/group-3.svg' %}" alt="How to pay for university"/>
+                <h4>{{ page.box_2_title }}</h4>
+                <h5>{{ page.box_2_content }}</h5>
+                <div class="my-4 justify-content-center">
+                    <a href="{{ page.box_2_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
                 </div>
-                
-                <div class="col-12 pb-3">
-                    <iframe class="video-iframe my-3" src="https://www.youtube.com/embed/xw1JPx3MJSo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <h4>Video on a relevant topic</h4>
-                    <h5>5 mins long</h5>
-                    <div class="my-4 justify-content-center">
-                        <a href="{{ page.box_3_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
-                    </div>
+
+                <hr class="dash" />
+            </div>
+
+            <div class="col-12 pb-3">
+                <iframe class="video-iframe my-3" src="https://www.youtube.com/embed/xw1JPx3MJSo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h4>Video on a relevant topic</h4>
+                <h5>5 mins long</h5>
+                <div class="my-4 justify-content-center">
+                    <a href="{{ page.box_3_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
                 </div>
-        
+            </div>
+
         </div>
 
-    </div>   
-   
+    </div>
+
 </div>
