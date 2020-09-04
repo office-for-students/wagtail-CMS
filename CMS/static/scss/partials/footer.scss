@@ -23,10 +23,25 @@
     }
 
     &__link {
-        @include mobile-body-font--bold-mixin();
-
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #1b2537;
         margin-bottom: 30px;
     }
+    &__link:hover {
+        text-decoration: underline;
+        color: #2a8384;
+    }
+    &__link:active {
+        text-decoration: underline;
+        color: #2a8384;
+    }
+
 
     &__copyright {
         font-family: "Nunito Sans", sans-serif;
@@ -136,10 +151,15 @@
         }
 
         &__link {
-            @include desktop-body-font-mixin();
-
-            width: 25%;
-            margin-bottom: 46px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #1b2537;
+            margin-bottom:15px;
         }
 
         &__copyright {
