@@ -317,7 +317,8 @@
             //alert("selectedRegion: " + selectedRegion);
 
             var courseDetails = $("#language_select").prop('href');
-            var courseParams = courseDetails.split('/').slice(5);
+            courseDetails = courseDetails.replace("/cy/", "/");
+            var courseParams = courseDetails.split('/').slice(4);
 
             $.ajax({
                 url: '/regional_earnings',
