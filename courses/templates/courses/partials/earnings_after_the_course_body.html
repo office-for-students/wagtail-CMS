@@ -225,14 +225,7 @@
                                         </h4>
                                         {% get_translation key='default_region' language=page.get_language as default_region %}
                                         <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
-                                            {% if salary_index == 0 %}
-                                                {% create_list course_details.salaries_inst.0.prov_pc_uk course.english_title course.institution.pub_ukprn_name default_region as substitutions %}
-                                            {% elif salary_index == 1 %}
-                                                {% create_list course_details.salaries_inst.1.prov_pc_uk course.english_title course.institution.pub_ukprn_name default_region as substitutions %}
-                                            {% elif salary_index == 2 %}
-                                                {% create_list course_details.salaries_inst.2.prov_pc_uk course.english_title course.institution.pub_ukprn_name default_region as substitutions %}
-                                            {% endif %}
-            
+                                            {% create_list salary_aggregate.aggregated_salaries_inst.0.prov_pc_uk course.english_title course.institution.pub_ukprn_name default_region as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
                                             {{ subbed_text | richtext }}
                                         </h4>
