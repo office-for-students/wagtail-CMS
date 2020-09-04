@@ -870,10 +870,6 @@ DICT = {
         'en': 'Search again', 
         'cy': 'Chwilio eto'
     },
-    'clear_filters' : {
-        'en':'Clear filters',
-        'cy':'Hidlwyr clir'
-    },
     'back_to_results': {
         'en': 'Back',
         'cy': "Canlyniadau"
@@ -917,10 +913,6 @@ DICT = {
     'show_all': {
         'en': 'Show all',
         'cy': 'Dangos popeth'
-    },
-    'show_filters': {
-        'en': 'Show filters',
-        'cy': 'Dangos hidlyddion'
     },
     'Silver': {
         'en': 'Silver',
@@ -1044,11 +1036,11 @@ DICT = {
     },
     'unemp_prev_emp_since_grad': {
         'en': 'Unemployed – previously working or studying',
-        'cy': 'need Welsh translation'
+        'cy': 'Yn ddi-waith - yn gweithio neu''n astudio cyn hynny'
     },
     'unemp_not_work_since_grad': {
         'en': 'Unemployed - not employed since graduation',
-        'cy': 'need Welsh translation'
+        'cy': 'Yn ddi-waith - heb gael gwaith ers graddio'
     },
     'uni_and_college': {
         'en': 'All universities and colleges',
@@ -1288,123 +1280,131 @@ DICT = {
     },
     'Typical range': {
         'en': 'Typical range',
-        'cy': 'need Welsh translation'
+        'cy': 'Ystod arfero'
     },
     'Data from': {
         'en': 'Data from',
-        'cy': 'need Welsh translation'
+        'cy': 'Data gan'
     },
     'respondents': {
-        'en': 'respondents',
-        'cy': 'need Welsh translation'
+        'en': 'students',
+        'cy': 'o myfyrwyr'
     },
     'students': {
         'en': 'students',
-        'cy': 'need Welsh translation'
+        'cy': 'o fyfyrwyr'
     },
     'of those asked': {
         'en': 'of those asked',
-        'cy': 'need Welsh translation'
+        'cy': 'o''r rhai y gofynnwyd iddynt'
     },
     'student_satisfaction_course_overview_1': {
         'en': 'Student Satisfaction',
-        'cy': 'need Welsh translation'
+        'cy': 'Bodlonrwydd Myfyrwyr'
     },
     'student_satisfaction_course_overview_2': {
-        'en': 'were satisfied with the quality of the course',
-        'cy': 'need Welsh translation'
+        'en': 'agreed they were satisfied with the quality of the course',
+        'cy': 'cyfran y myfyrwyr a ymatebodd a oedd yn cytuno â’r datganiad “Rwy’n fodlon ag ansawdd y cwrs ar y cyfan”'
     },
     'student_satisfaction_course_overview_3': {
-        'en': 'More on student satisfaction',
-        'cy': 'need Welsh translation'
+        'en': 'Go to student satisfaction',
+        'cy': 'Mwy am fodlonrwydd myfyrwyr'
     },
     'average_earnings_course_overview_1': {
         'en': 'Average Earnings',
-        'cy': 'need Welsh translation'
+        'cy': 'Enillion cyfartalog'
     },
     'average_earnings_course_overview_2a': {
-        'en': 'average salary 15 months after the course',
-        'cy': 'need Welsh translation'
+        'en': '15 months after the course',
+        'cy': '15 mis ar ôl y cwrs'
     },
     'average_earnings_course_overview_2b': {
-        'en': 'average salary 3 years after the course',
-        'cy': 'need Welsh translation'
+        'en': '3 years after the course',
+        'cy': '3 blynedd ar ôl y cwrs'
     },
     'average_earnings_course_overview_3': {
-        'en': 'More on earnings',
-        'cy': 'need Welsh translation'
+        'en': 'Go to earnings',
+        'cy': 'Mwy am enillion'
     },
     'employment_course_overview_1': {
         'en': 'Employment',
-        'cy': 'need Welsh translation'
+        'cy': 'Cyflogaeth'
     },
     'employment_course_overview_2': {
-        'en': 'work and / or study within 15 months after the course',
-        'cy': 'need Welsh translation'
+        'en': 'go on to work and / or study within 15 months after the course',
+        'cy': 'yn symud ymlaen i weithio ac/neu astudio o fewn 15 mis ar ôl y cwrs'
     },
     'employment_course_overview_3': {
-        'en': 'More on employment',
-        'cy': 'need Welsh translation'
+        'en': 'Go to employment',
+        'cy': 'Mwy am gyflogaeth'
     },
     'entrance_data_need_to_know': {
         'en': 'What you need to know about entry data',
-        'cy': 'need Welsh translation'
+        'cy': 'Yr hyn y mae angen ichi wybod am ddata mynediad'
     },
     'entrance_data_quals_students_had': {
-        'en': 'These are the qualifications students had when they were accepted into this course. This is not a list of qualifications a person needs to have to be accepted into this course.',
-        'cy': 'need Welsh translation'
+        'en': 'These are the qualifications students had when they were accepted onto this course. This is not a list of qualifications a person needs to have to be accepted onto this course.',
+        'cy': 'Dyma''r cymwysterau a oedd gan fyfyrwyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon.'
     },
     'entrance_data_read_more': {
         'en': 'Read more about entrance data',
-        'cy': 'need Welsh translation'
+        'cy': 'Darllen mwy am ddata mynediad'
     },
     'after_1_year_overview_1': {
         'en': 'Source',
-        'cy': 'need Welsh translation'
+        'cy': 'Ffynhonnell'
     },
     'after_1_year_overview_2': {
         'en': 'students',
-        'cy': 'need Welsh translation'
+        'cy': 'myfyrwyr'
     },
     'after_1_year_overview_3': {
         'en': 'of those who were asked',
-        'cy': 'need Welsh translation'
-    },
-    'sample_size': {
-        'en': 'Sample size',
-        'cy': 'need Welsh translation'
+        'cy': 'o''r rhai y gofynnwyd iddynt'
     },
     'data_ind_stud_coll_dir': {
         'en': 'Data for individual students collected directly from universities and colleges',
-        'cy': 'need Welsh translation'
+        'cy': 'Data ar gyfer myfyrwyr unigol a gasglwyd yn uniongyrchol o brifysgolion a cholegau'
     },
     'default_region': {
         'en': 'the UK',
-        'cy': 'need Welsh translation'
+        'cy': 'y DU'
     },
     'data_from_html': {
-        'en': '<div class="d-inline d-md-none" ><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Sample size:</div>',
-        'cy': '<div class="d-inline d-md-none"><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">need Welsh translation</div>'
+        'en': '<div class="d-inline d-md-none" ><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data from:</div>',
+        'cy': '<div class="d-inline d-md-none"><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data gan:</div>'
     },
     'entry_overview_2': {
         'en': 'students',
-        'cy': 'need Welsh translation'
+        'cy': 'myfyrwyr'
     },
     'entry_overview_3': {
         'en': 'of those who were asked',
-        'cy': 'need Welsh translation'
+        'cy': 'o''r rhai y gofynnwyd iddynt'
     },
     'accreditation_link_label': {
         'en': 'Read more about professional accreditation',
-        'cy': 'need Welsh translation'
+        'cy': 'Darllen mwy am achrediad proffesiynol'
     },
      'accreditation_description': {
-        'en': 'Text here explaining what a professional accreditation is, and why its important. Text here explaining what a professional accreditation is, and why its important.',
-        'cy': 'need Welsh translation'
+        'en': 'A professionally accredited course is one which has been approved or endorsed by one or more professional bodies. This is because the learning and achievement of graduates meets the professional benchmarks and standards set by the accrediting body.',
+        'cy': 'Cwrs wedi''i achredu''n broffesiynol yw cwrs sydd wedi''i gymeradwyo neu ei ategu gan un neu fwy o gyrff proffesiynol. Mae hyn oherwydd bod dysg a chyflawniad graddedigion yn bodloni''r meincnodau a''r safonau proffesiynol a osodir gan y corff achredu.'
     },
      'accreditation_need_to_know': {
         'en': 'What you need to know about professional accreditation.',
-        'cy': 'need Welsh translation'
+        'cy': 'Yr hyn y mae angen i chi ei wybod am achrediad proffesiynol'
+    },
+     'highly_skilled': {
+        'en': 'In highly skilled work',
+        'cy': 'Mewn swydd lle mae angen lefel uchel o sgiliau'
+    },
+     'other_work': {
+        'en': 'In other work',
+        'cy': 'Mewn math arall o swydd'
+    },
+     'unknown_work': {
+        'en': 'In unknown work',
+        'cy': 'Mewn swydd anhysbys'
     },
     
    
