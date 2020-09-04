@@ -34,6 +34,39 @@
     }
 }
 
+.course-detail__compare-btn-white {
+    @include small-font--bold-mixin();
+    padding: 5px 10px;
+    border: 1.5px solid #266969;
+    color: #266969;
+    border-radius: 16px;
+    cursor: pointer;
+    background-color:$white;
+
+    .remove {
+        display: none;
+    }
+
+    &.selected {
+        @include green-gradient-background-mixin();
+
+        border: 1.5px solid $gradient-light-green;
+
+        .add {
+            display: none;
+        }
+
+        .remove {
+            display: inline-block;
+        }
+    }
+
+
+    img {
+        margin-right: 6px;
+    }
+}
+
 .compare-popup {
     position: fixed;
     bottom: 0;

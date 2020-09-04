@@ -1,27 +1,26 @@
 {% load staticfiles discover_uni_tags %}
 
+<p class="course-finder-results__overview text-center">
 
-<h1 class="course-finder-results__heading">{{page.header}}</h1>
 
-<p class="course-finder-results__overview">
-    {% create_list search.total_courses search.total_institutions as substitutions %}
-    {% autoescape off %}
-        {% get_translation key='number_of_results' language=page.get_language substitutions=substitutions %}
-    {% endautoescape %}
+    <div class="course-finder-results__overview-filter-open">
+        {% get_translation key='show_filters' language=page.get_language %}
+        <img class="course-finder-results__overview-filter-icon" src="{% static 'images/chevron-down-solid.svg' %}"
+             alt="">
 
-    <span class="course-finder-results__overview-filter-open">
-        <img class="course-finder-results__overview-filter-icon" src="{% static 'images/filter_icon.svg' %}" alt="">
-        {% get_translation key='filter' language=page.get_language %}
-    </span>
+    </div>
 
-    <span class="course-finder-results__overview-filter-toggle">
-        <img class="course-finder-results__overview-filter-icon" src="{% static 'images/filter_icon.svg' %}" alt="">
-        {% get_translation key='filter' language=page.get_language %}
-    </span>
+    <div class="course-finder-results__overview-filter-toggle text-center col-12">
+        {% get_translation key='show_filters' language=page.get_language %}
+        <img class="course-finder-results__overview-filter-icon chevron-down"
+             src="{% static 'images/chevron-down-solid.svg' %}" alt="">
+        <img class="course-finder-results__overview-filter-icon chevron-up"
+             src="{% static 'images/chevron-up-solid.svg' %}" alt="">
+    </div>
 
     {% include 'coursefinder/partials/filters.html' %}
-</p>
 
+<hr class="course-finder__result-hr"/>
 <div class="course-finder-results__result-list">
     {% for item in search.results %}
         {% include 'partials/institution_result.html' with institution=item %}

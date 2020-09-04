@@ -8,6 +8,11 @@
 {% endblock %}
 
 {% block content %}
+    <div class="course_detail__header-bar px-3 pb-0 mb-0">
+       <div class="course_detail__header-bar-div col-12 p-0 text-right mx-0">
+                <img class="home-page__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
+       </div>
+    </div>
     {% include 'courses/course_detail_content.html' %}
 {% endblock %}
 

@@ -183,7 +183,7 @@
                     <div class="col-md-12 col-lg-4 align-self-stretch my-2">
                         <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
                             <h2 class="mb-0 text-center text-lg-left">{{ jobtype_stats.professional_or_managerial_jobs }}%</h2>
-                            <h4 class="pt-1 text-center text-lg-left  mb-3">In highly skilled work</h4>
+                            <h4 class="pt-1 text-center text-lg-left  mb-3">{% get_translation key='highly_skilled' language=page.get_language %}</h4>
                             {% for job in joblist_stats.jobs %}
                                 {% if job.hss == 0 %}
                                 <div class="row">
@@ -201,7 +201,7 @@
                     <div class="col-md-12 col-lg-4 align-self-stretch my-2">
                         <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
                             <h2 class="mb-0 text-center text-lg-left">{{ jobtype_stats.non_professional_or_managerial_jobs  }}%</h2>
-                            <h4 class="pt-1 text-center text-lg-left mb-3">In other work</h4>
+                            <h4 class="pt-1 text-center text-lg-left mb-3">{% get_translation key='other_work' language=page.get_language %}</h4>
                             {% for job in joblist_stats.jobs %}
                                 {% if job.hss == 1 %}
                                 <div class="row">
@@ -219,7 +219,7 @@
                     <div class="col-md-12 col-lg-4 align-self-stretch my-2">
                         <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
                             <h2 class="mb-0 text-center text-lg-left">{{ jobtype_stats.unknown_professions }}%</h2>
-                            <h4 class="pt-1 text-center text-lg-left mb-3">In unknown work</h4>
+                            <h4 class="pt-1 text-center text-lg-left mb-3">{% get_translation key='unknown_work' language=page.get_language %}</h4>
                              {% for job in joblist_stats.jobs %}
                                 {% if job.hss == 2 %}
                                 <div class="row">

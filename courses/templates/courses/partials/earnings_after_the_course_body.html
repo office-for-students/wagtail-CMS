@@ -13,7 +13,6 @@
             </div>
         {# endif #}
 
-
         <!-- Not sure it makes sense to have an UNAVAIL message at the subject level for earnings. Comment it out for now. -->
         {# include 'courses/partials/unavailable_disclaimer.html' with unavailable=xxx.display_unavailable_info #}
 
@@ -148,7 +147,7 @@
                                 {% endif %}
                             </div>
                         </div>
-        
+
                     {% endfor %}
                     </div>
                 </div>
@@ -165,10 +164,14 @@
                     </div>
                     <div class="d-inline-block row px-3 my-3">
                         <select name="regions" id="regions_{{ salary_aggregate.subject_code }}" class="region_ddl">
-                        {% get_region_list as region_list %}
-                        {% for region in region_list %}
-                            <option value="{{region.id}}">{{region.name}}</option>
-                        {% endfor %}
+                            {% get_region_list as region_list %}
+                            {% for region in region_list %}
+                                {% if page.get_language == 'cy' %}
+                                    <option value="{{region.id}}">{{region.name_cy}}</option>
+                                {% else %}
+                                    <option value="{{region.id}}">{{region.name_en}}</option>
+                                {% endif %}
+                            {% endfor %}
                         </select>
                     </div>
 
@@ -206,7 +209,7 @@
                                             <div id="leo5_sector_avail_container_{{ salary_aggregate.subject_code }}" style="display: none">
                                         {% endif %}
                                     {% endif %}
-                                        
+
                                         <h2 class="earnings-sector-field earnings-after-course-stat-salary mb-1 text-center text-lg-left" id="{% concat 'sector_salary_med_' salary_index '_' salary_aggregate.subject_code %}">£{{ salary.med_uk|intcomma }}</h2>
                                         <h4 class="earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_lq_' salary_index '_' salary_aggregate.subject_code %}">
                                             {% create_list salary.lq_uk|intcomma salary.uq_uk|intcomma as substitutions %}
@@ -296,7 +299,7 @@
             var index_of_delimiter = unseparatedString.indexOf('\n\n');
             var separatedString = "";
             if (index_of_delimiter > 4) {
-                separatedString = "<h4>" + unseparatedString.substring(0, index_of_delimiter) + 
+                separatedString = "<h4>" + unseparatedString.substring(0, index_of_delimiter) +
                     "</h4>" + "<h6>" + unseparatedString.substring(index_of_delimiter+2) + "</h6>";
             }
             else {
@@ -325,6 +328,7 @@
                     'institution_id': courseParams[0],
                     'course_id': courseParams[1],
                     'kis_mode': courseParams[2],
+                    'language': '{{ page.get_language }}',
                     'subject_code': subjectIndex
                 },
                 dataType: 'json',
@@ -348,7 +352,7 @@
                     if (data['salary_sector_3_unavail_text'] == "") {
                         $("#leo3_sector_avail_container_" + subjectIndex).show();
                         $("#leo3_sector_unavail_" + subjectIndex).hide();
-                        
+
                         $("#sector_salary_med_1_" + subjectIndex).text("£" + data['salary_sector_3_med']);
                         $("#sector_salary_lq_1_" + subjectIndex + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_3_lq'] + " - £" + data['salary_sector_3_uq']);
                         $("#sector_salary_pop_1_" + subjectIndex + " div p").replaceWith("<div class='rich-text'><p></p></div>");
@@ -363,7 +367,7 @@
                     if (data['salary_sector_5_unavail_text'] == "") {
                         $("#leo5_sector_avail_container_" + subjectIndex).show();
                         $("#leo5_sector_unavail_" + subjectIndex).hide();
-                        
+
                         $("#sector_salary_med_2_" + subjectIndex).text("£" + data['salary_sector_5_med']);
                         $("#sector_salary_lq_2_" + subjectIndex + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_5_lq'] + " - £" + data['salary_sector_5_uq']);
                         $("#sector_salary_pop_2_" + subjectIndex + " div p").replaceWith("<div class='rich-text'><p></p></div>");
