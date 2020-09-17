@@ -200,7 +200,6 @@ class NewJointCourseFormatMocks:
                     "unavail_text_welsh": ""
                 },
                 "go_salary_inst": [
-
                     {
                         "unavail_reason": "0",
                         "pop": "25",

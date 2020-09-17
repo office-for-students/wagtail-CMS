@@ -7,8 +7,8 @@ from CMS.test.joint_course_mocks import NewJointCourseFormatMocks
 
 
 def load_course_data(institution_id, course_id, mode):
-    if True or settings.LOCAL:
-    # if settings.LOCAL:
+    # if True or settings.LOCAL:
+    if settings.LOCAL:
         if course_id == "GN12":
             return NewJointCourseFormatMocks.get_successful_course_load_response()
         return NewCourseFormatMocks.get_successful_course_load_response()
@@ -18,6 +18,6 @@ def load_course_data(institution_id, course_id, mode):
         }
         base_url = "%s/institutions/%s/courses/%s/modes/%s"
 
-        # print(requests.get(url=base_url % (settings.DATASETAPIHOST, institution_id, course_id, mode), headers=headers).content.decode("utf8"))
+        print(requests.get(url=base_url % (settings.DATASETAPIHOST, institution_id, course_id, mode), headers=headers).content.decode("utf8"))
 
         return requests.get(url=base_url % (settings.DATASETAPIHOST, institution_id, course_id, mode), headers=headers)
