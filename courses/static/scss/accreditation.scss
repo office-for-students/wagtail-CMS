@@ -38,7 +38,7 @@
             font-family: 'Nunito Sans', sans-serif;
             font-weight:normal;
             color: #000000;
-            font-size: 32px;
+            font-size: 24px;
         }
 
         .accreditation__body {
@@ -46,6 +46,7 @@
             font-family: 'Nunito Sans', sans-serif;
             font-weight:normal;
             font-size:14px;
+            color: $brownish-grey;
 
             a{
                 color: $dark-green-blue;
@@ -81,7 +82,7 @@
 
             .accreditation__overview-sublead {
                 font-family: 'Nunito Sans', sans-serif;
-                font-size: 14px;
+                font-size: 16px;
                 font-weight: normal;
                 color: $brownish-grey;
                 text-decoration: none;
@@ -89,26 +90,23 @@
 
             a {
                 font-family: 'Nunito Sans', sans-serif;
-                font-size: 14px;
+                font-size: 16px;
                 font-weight: normal;
                 text-decoration: underline;
                 color: $dark-green-blue;
             }
         }
-
         .accreditation__heading {
-            @include s-heading-mixin();
-            font-family: 'Nunito Sans', sans-serif;
-            font-weight: normal;
-            color: #000000;
-            font-size: 32px;
+            font-size:32px;
         }
+
 
         .accreditation__body {
             @include mobile-body-font-mixin();
             font-family: 'Nunito Sans', sans-serif;
             font-weight: normal;
-            font-size: 14px;
+            font-size: 16px;
+            color: $brownish-grey;
 
             a {
                 color: $dark-green-blue;
