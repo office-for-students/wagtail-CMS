@@ -4,19 +4,23 @@
 .one-year__block, .one-year__lead-block {
 
     p{
-        font-size: 0.9rem;
+        font-size: 14px;
         color: $brownish-grey;
-        font-weight: 300;
+        font-weight: normal;
+        letter-spacing: normal;
+        line-height:normal;
     }
     .rich-text{
-        font-size: 0.9rem;
+        font-size: 14px;
         color: $brownish-grey;
-        font-weight: 300;
+        font-weight: normal;
+        letter-spacing: normal;
+        line-height:normal;
     }
     a{
         color:#308282;
         text-decoration: underline;
-        font-weight:300;
+        font-weight:normal;
     }
 
     .one-year__lead {
@@ -30,20 +34,22 @@
         .one-year__heading {
             @include s-heading-mixin();
             font-family: 'Nunito Sans', sans-serif;
-            font-weight:300;
+            font-weight:normal;
+            letter-spacing: normal;
             color: $black;
-            font-size:1.3rem;
+            font-size:24px;
         }
         .one-year__lead{
            
             font-family: 'Nunito Sans', sans-serif;
-            font-weight:300;
+            font-weight:normal;
             color: #000000;
-            font-size:0.9rem;
+            font-size:14px;
+            letter-spacing: normal;
             a{
                 text-decoration: underline;
                 color:$dark-green-blue;
-                font-weight:300;
+                font-weight:normal;
             }
         }
 
@@ -56,9 +62,13 @@
 
             .one-year-block__chart-label{
                 font-family: 'Nunito Sans', sans-serif;
-                font-weight: 200;
-                font-size: 1rem;
-                color:$black;
+                font-size: 14px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #666666;
             }
 
             .one-year__chart-label {
@@ -86,32 +96,67 @@
         @include l-heading-mixin();
         font-family: 'Nunito Sans', sans-serif;
         color: #000000;
-        font-weight:300;
-        font-size: 2.5rem;
+        font-weight:normal;
+        letter-spacing: normal;
+        font-size: 32px;
     }
     .one-year__overview-sublead{
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 1.3rem;
-        font-weight:200;
+        font-size: 28px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
         color: #000000;
         text-decoration: none;
     }
     p{
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 0.9rem;
-        font-weight: 300;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
         color: $brownish-grey;
     }
     a{
-     
+        font-family: 'Nunito Sans', sans-serif;
         text-decoration: underline;
         color: $dark-green-blue;
+        font-weight:normal;
+        font-size: 14px;
     }
 }
 
 @media only screen and (min-width: 770px) {
+    .one-year__block .one-year__qualification-charts .one-year__chart .one-year-block__chart-label, .one-year__lead-block .one-year__qualification-charts .one-year__chart .one-year-block__chart-label {
+        font-size:18px;
+    }
     .one-year__block, .one-year__lead-block {
-        
+         p{
+             font-family: 'Nunito Sans', sans-serif;
+            font-size: 16px;
+            color: $brownish-grey;
+            font-weight: normal;
+            letter-spacing: normal;
+            line-height:normal;
+        }
+        .rich-text{
+            font-size: 16px;
+            color: $brownish-grey;
+            font-weight: normal;
+            letter-spacing: normal;
+            line-height:normal;
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        a{
+            color:#308282;
+            text-decoration: underline;
+            font-weight:normal;
+            font-family: 'Nunito Sans', sans-serif;
+        }
 
         .one-year__heading {
             @include m-heading-mixin();
@@ -136,9 +181,16 @@
                 }
 
                 .one-year__chart-label {
-                    @include small-font-mixin();
-
+                    font-family: 'Nunito Sans', sans-serif;
                     margin-top: 5px;
+                    text-align: right;
+                    font-size: 20px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    color: #000000;
                 }
             }
         }
@@ -149,9 +201,14 @@
         .one-year__overview-lead {
             @include xl-heading-mixin();
             font-family: 'Nunito Sans', sans-serif;
+            font-size: 48px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
             color: #000000;
-            font-weight:300;
-            font-size: 2.5rem;
+
         }
     }
 }

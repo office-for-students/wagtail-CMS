@@ -67,6 +67,7 @@ $(function () {
                 },
                 plotOptions: {
                     series: {
+                        shadow: true,
                         stacking: 'percentage',
                         borderWidth: 2,
                         borderColor: '#308282',

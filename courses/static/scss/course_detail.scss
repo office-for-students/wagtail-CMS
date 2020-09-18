@@ -39,8 +39,10 @@
             
         }
         .course-detail__overview-lead h4 {
-            font-size:0.8rem;
-            font-weight:600;
+            font-size:16px;
+            font-weight:bold;
+            margin-bottom:0;
+            color:$black;
         }
 
         
@@ -79,22 +81,30 @@
         }
 
         .course-detail__course-name {
-            @include desktop-body-font--bold-mixin();
-            font-size: 1.2rem;
-
-            padding: 20px 0 0;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 28px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #000000;
+            margin-bottom: 20px;
         }
-
-        
 
         a.course-detail__institution-name {
-            
-                @include s-heading-mixin();
-
-                color: $dark-green-blue!important;
-                text-decoration: underline;
-                font-size:1.2rem;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 18px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: $dark-green-blue;
+            text-decoration: underline;
         }
+
+
 
         .course-detail__institution-locations{
             
@@ -109,7 +119,6 @@
 
             .course-detail__overview-item {
 
-//                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
@@ -118,7 +127,14 @@
                 border-radius: 10px;
 
                 .course-detail__overview-item-heading {
-                    @include small-font--bold-mixin();
+                    font-family: 'Nunito Sans', sans-serif;
+                    font-size: 14px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    color: #000000;
                     margin: 0px;
                     margin-bottom: 5px;
                 }
@@ -127,7 +143,7 @@
                     @include small-font--bold-mixin();
                     margin: 0px;
 
-                    color: $helper-grey;
+                    color: $black;
                 }
             }
         }
@@ -379,8 +395,43 @@
         }
     }
 }
+@media only screen and (min-width: 770px) and (max-width:1100px){
 
-@media only screen and (min-width: 770px) and (max-width: 1100px){
+    .course-detail{
+
+        .course-detail__overview{
+            .course-detail__overview-item{
+                .course-detail__overview-item-heading {
+                    font-size: 16px;
+                }
+            }
+        }
+        .course-detail__course-name {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 48px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        a.course-detail__institution-name {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 38px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: $dark-green-blue;
+            text-decoration: underline;
+        }
+    }
+}
+@media only screen and (min-width: 1100px){
 
     .course_detail__header-bar {
         background-color: #1F283A;
@@ -398,6 +449,14 @@
     }
     .course-detail {
         margin-top: 35px;
+
+        .course-detail__overview{
+            .course-detail__overview-item{
+                .course-detail__overview-item-heading {
+                    font-size: 16px;
+                }
+            }
+        }
 
         .course-detail__body {
             padding: 0px;
@@ -424,9 +483,27 @@
             }
 
             .course-detail__course-name {
-                @include m-heading--bold-mixin();
-
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 48px;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #000000;
                 margin-bottom: 20px;
+            }
+
+            .course-detail__institution-name {
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 28px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: $dark-green-blue;
+                text-decoration: underline;
             }
 
             .course-detail__institution-info {
@@ -603,9 +680,3 @@
         }
     }
 }
-// @media only screen and (min-width: 1100px) {
-//     #main-content{
-//         margin-left:90px;
-//         margin-right:90px;
-//     }
-// }
