@@ -197,6 +197,9 @@
 }
 
 @media only screen and (min-width: 770px) {
+  .student-satisfaction__overview #sample-size-text {
+    font-size: 16px;
+  }
   .student-satisfaction__block {
 
     #sample-size-text {
@@ -219,7 +222,6 @@
     text-align: center;
 
     .student-satisfaction__intro .rich-text p {
-      @include s-heading-mixin();
       font-size:16px;
       color: $brownish-grey;
       font-weight: normal;
