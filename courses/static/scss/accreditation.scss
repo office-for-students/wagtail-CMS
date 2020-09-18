@@ -12,21 +12,22 @@
 
             .accreditation__overview-lead{
                 font-family: 'Nunito Sans', sans-serif;
-                font-size: 1.3rem;
-                font-weight:300;
+                font-size: 24px;
+                font-weight:normal;
                 color: #000000;
                 text-decoration: none;
             }
             .accreditation__overview-sublead{
                 font-family: 'Nunito Sans', sans-serif;
-                font-size: 0.9rem;
-                font-weight:300;
+                font-size: 14px;
+                font-weight:normal;
                 color: $brownish-grey;
                 text-decoration: none;
             }
             a{
-                font-size:0.9rem;
-                font-weight:300;
+                font-family: 'Nunito Sans', sans-serif;
+                font-size:14px;
+                font-weight:normal;
                 text-decoration: underline;
                 color: $dark-green-blue;
             }
@@ -35,18 +36,20 @@
         .accreditation__heading {
             @include s-heading-mixin();
             font-family: 'Nunito Sans', sans-serif;
-            font-weight:300;
+            font-weight:normal;
             color: #000000;
-            font-size: 1.3rem;
+            font-size: 32px;
         }
 
         .accreditation__body {
             @include mobile-body-font-mixin();
-            font-weight:300;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight:normal;
+            font-size:14px;
 
             a{
                 color: $dark-green-blue;
-                font-weight:300;
+                font-weight:normal;
                 text-decoration: underline;
             }
         }
@@ -55,3 +58,63 @@
             @include small-font-mixin();
         }
     }
+
+
+@media only screen and (min-width: 770px) {
+    .accreditation__block {
+        .accreditation__info {
+            background-color: $ice-blue;
+        }
+
+        .accreditation__overview {
+
+            text-align: center;
+            border: solid 3px $duck-egg-blue;
+
+            .accreditation__overview-lead {
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 32px;
+                font-weight: normal;
+                color: #000000;
+                text-decoration: none;
+            }
+
+            .accreditation__overview-sublead {
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                color: $brownish-grey;
+                text-decoration: none;
+            }
+
+            a {
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                text-decoration: underline;
+                color: $dark-green-blue;
+            }
+        }
+
+        .accreditation__heading {
+            @include s-heading-mixin();
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: normal;
+            color: #000000;
+            font-size: 32px;
+        }
+
+        .accreditation__body {
+            @include mobile-body-font-mixin();
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: normal;
+            font-size: 14px;
+
+            a {
+                color: $dark-green-blue;
+                font-weight: normal;
+                text-decoration: underline;
+            }
+        }
+    }
+}

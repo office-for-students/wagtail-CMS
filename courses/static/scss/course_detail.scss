@@ -29,7 +29,7 @@
 
     .course-detail__lead {
         h4{
-            font-size:1rem;
+            font-size:16px;
             font-family: 'Nunito Sans', sans-serif;
         }
         hr{
@@ -152,32 +152,32 @@
     .course-detail__headline_statistics {
 
         .course-detail__headline_stat {
-            background-color: $duck-egg-blue;
+            background-color: #fef6d9;
         }
         h3{
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 300;
+            font-size: 24px;
+            font-weight: normal;
             color: #000000;
         }
         
         h2{
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 1.5em;
-            font-weight: 400;
+            font-size: 38px;
+            font-weight: normal;
             color: #000000;
         }
         p{
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 0.75em;
-            font-weight: 300;
+            font-size: 18px;
+            font-weight: normal;
             color: #000000;
             padding:0px 5px;
         }
         a{
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 0.75em;
-            font-weight: 300;
+            font-size: 18px;
+            font-weight: normal;
             font-stretch: normal;
             font-style: normal;
             line-height: normal;
@@ -245,8 +245,8 @@
         border: none;
 
         .course-detail__uni-site-links-header {
-            font-size:1.3rem;
-            font-weight:300;
+            font-size:42px;
+            font-weight:normal;
             color:$black;
             font-family: 'Nunito Sans', sans-serif;
         }
@@ -256,8 +256,8 @@
 
 
             .course-detail__uni-site-links-heading {
-                font-size:0.9rem;
-                font-weight:300;
+                font-size:14px;
+                font-weight:normal;
                 color:$black;
                 font-family: 'Nunito Sans', sans-serif;
             }
@@ -271,8 +271,8 @@
 
 
                     .course-detail__uni-site-link {
-                        font-size:0.9rem;
-                        font-weight:300;
+                        font-size:14px;
+                        font-weight:normal;
                         color:$dark-green-blue;
                         font-family: 'Nunito Sans', sans-serif;
                         text-decoration: underline;
@@ -312,8 +312,8 @@
         .explanation-text {
            
             color: $brownish-grey;
-            font-weight:300;
-            font-size:0.9rem;
+            font-weight:normal;
+            font-size:14px;
         }
     }
 
@@ -433,6 +433,43 @@
 }
 @media only screen and (min-width: 1100px){
 
+    .course-detail__headline_statistics {
+
+        .course-detail__headline_stat {
+            background-color:#fef6d9;
+        }
+        h3{
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 18px;
+            font-weight: normal;
+            color: #000000;
+        }
+
+        h2{
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 28px;
+            font-weight: normal;
+            color: #000000;
+        }
+        p{
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000000;
+            padding:0px 5px;
+        }
+        a{
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-decoration: underline;
+        }
+    }
+
     .course_detail__header-bar {
         background-color: #1F283A;
 
@@ -507,7 +544,7 @@
             }
 
             .course-detail__institution-info {
-                padding: 55px 300px 46px;
+                padding: 55px normalpx 46px;
 
                 background-color: $divider-grey;
 
@@ -526,7 +563,7 @@
 
             .course-detail__headline_statistics {
                 .course-detail__headline_stat {
-                    background-color: $duck-egg-blue;
+                    background-color: #fef6d9;
                 }
                 h3{
                     font-family: 'Nunito Sans', sans-serif;
@@ -543,22 +580,22 @@
                 h2{
                     font-family: 'Nunito Sans', sans-serif;
                     font-size: 1.85em;
-                    font-weight: 300;
+                    font-weight: normal;
                     color: #000000;
                     margin-top:10px;
                     margin-bottom:10px;
                 }
                 p{
                     font-family: 'Nunito Sans', sans-serif;
-                    font-size: 0.75em;
+                    font-size: 14px;
                     font-weight: 600;
                     color: #000000;
                     padding:0;
                 }
                 a{
                     font-family: 'Nunito Sans', sans-serif;
-                    font-size: 0.75em;
-                    font-weight: 300;
+                    font-size: 14px;
+                    font-weight: normal;
                     font-stretch: normal;
                     font-style: normal;
                     line-height: normal;
@@ -573,8 +610,8 @@
             margin-bottom: 70px;
 
             .course-detail__uni-site-links-header {
-                font-size:1.3rem;
-                font-weight:300;
+                font-size:42px;
+                font-weight:normal;
                 color:$black;
                 font-family: 'Nunito Sans', sans-serif;
             }
@@ -587,8 +624,8 @@
                     padding-bottom: 50px;
 
                     .course-detail__uni-site-links-heading {
-                        font-size:0.9rem;
-                        font-weight:300;
+                        font-size:14px;
+                        font-weight:normal;
                         color:$black;
                         font-family: 'Nunito Sans', sans-serif;
                     }
@@ -601,8 +638,8 @@
                             display: block;
 
                             .course-detail__uni-site-link {
-                                font-size:0.9rem;
-                                font-weight:300;
+                                font-size:14px;
+                                font-weight:normal;
                                 color:$dark-green-blue;
                                 font-family: 'Nunito Sans', sans-serif;
                                 text-decoration: underline;
@@ -643,8 +680,8 @@
         .explanation-text {
            
             color: $brownish-grey;
-            font-weight:300;
-            font-size:0.9rem;
+            font-weight:normal;
+            font-size:14px;
         }
 
         .find-out-more-link {
