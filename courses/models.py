@@ -895,11 +895,10 @@ class EmploymentStatistics:
             self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
             self.response_rate = str(fallback_to(data_obj.get('response_rate'), 0)) + '%'
 
-            subject_data = data_obj.get('subject')
-            if subject_data:
-                self.subject_code = subject_data.get('code')
-                self.subject_english = subject_data.get('english_label')
-                self.subject_welsh = subject_data.get('welsh_label')
+            subject_data = fallback_to(data_obj.get('subject'), {})
+            self.subject_code = subject_data.get('code', '')
+            self.subject_english = subject_data.get('english_label', '')
+            self.subject_welsh = subject_data.get('welsh_label', '')
 
             unavailable_data = fallback_to(data_obj.get('unavailable'), {})
             self.unavailable_code = unavailable_data.get('code')
@@ -974,11 +973,10 @@ class JobTypeStatistics:
             self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
             self.response_rate = str(fallback_to(data_obj.get('response_rate'), 0)) + '%'
 
-            subject_data = data_obj.get('subject')
-            if subject_data:
-                self.subject_code = subject_data.get('code')
-                self.subject_english = subject_data.get('english_label')
-                self.subject_welsh = subject_data.get('welsh_label')
+            subject_data = fallback_to(data_obj.get('subject'), {})
+            self.subject_code = subject_data.get('code', '')
+            self.subject_english = subject_data.get('english_label', '')
+            self.subject_welsh = subject_data.get('welsh_label', '')
 
             unavailable_data = fallback_to(data_obj.get('unavailable'), {})
             self.unavailable_code = unavailable_data.get('code')
@@ -1552,11 +1550,11 @@ class GraduatePerceptionStatistics:
             self.unavailable_find_out_more_english = fallback_to(unavailable_data.get('find_out_more_english'), '')
             self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
 
-            self.go_work_skills = go_voice_work_data['go_work_skills']
-            self.go_work_mean = go_voice_work_data['go_work_mean']
-            self.go_work_on_track = go_voice_work_data['go_work_on_track']
-            self.go_work_pop = go_voice_work_data['go_work_pop']
-            self.go_work_resp_rate = go_voice_work_data['go_work_resp_rate']
+            self.go_work_skills = fallback_to(go_voice_work_data.get('go_work_skills'), '')
+            self.go_work_mean = fallback_to(go_voice_work_data.get('go_work_mean'), '')
+            self.go_work_on_track = fallback_to(go_voice_work_data.get('go_work_on_track'), '')
+            self.go_work_pop = fallback_to(go_voice_work_data.get('go_work_pop'), '')
+            self.go_work_resp_rate = fallback_to(go_voice_work_data.get('go_work_resp_rate'), '')
 
     def display_subject_name(self):
         if self.display_language == enums.languages.ENGLISH:
