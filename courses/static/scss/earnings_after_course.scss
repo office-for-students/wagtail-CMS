@@ -104,7 +104,7 @@
     }
 
     p {
-        margin: 0px;
+        margin: 0;
     }
 }
 
@@ -115,7 +115,7 @@
     border: solid 3px $duck-egg-blue;
 
     p {
-        margin: 0px;
+        margin: 0.5rem;
     }
 
     .earnings-after-course__lead-title {
@@ -228,14 +228,14 @@
 
         .earnings-after-course__lead-title {
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 24px;
+            font-size: 32px;
             font-weight: normal;
             color: $black;
             text-decoration: none;
         }
         .earnings-after-course__lead-intro {
             color: $brownish-grey;
-            font-size:16px;
+            font-size:18px;
             font-weight:normal;
         }
         a{

@@ -156,27 +156,27 @@
         }
         h3{
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: normal;
             color: #000000;
         }
         
         h2{
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 38px;
+            font-size: 28px;
             font-weight: normal;
             color: #000000;
         }
         p{
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: normal;
             color: #000000;
             padding:0px 5px;
         }
         a{
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
@@ -245,7 +245,7 @@
         border: none;
 
         .course-detail__uni-site-links-header {
-            font-size:42px;
+            font-size:18px;
             font-weight:normal;
             color:$black;
             font-family: 'Nunito Sans', sans-serif;
@@ -399,6 +399,17 @@
 
     .course-detail{
 
+        .course-detail__uni-site-links {
+
+            margin-bottom: 70px;
+
+            .course-detail__uni-site-links-header {
+                font-size: 32px;
+                font-weight: normal;
+                color: $black;
+                font-family: 'Nunito Sans', sans-serif;
+            }
+        }
         .course-detail__overview{
             .course-detail__overview-item{
                 .course-detail__overview-item-heading {
@@ -429,6 +440,42 @@
             color: $dark-green-blue;
             text-decoration: underline;
         }
+        .course-detail__headline_statistics {
+
+            .course-detail__headline_stat {
+                background-color: #fef6d9;
+            }
+            h3{
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 24px;
+                font-weight: normal;
+                color: #000000;
+            }
+
+            h2{
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 38px;
+                font-weight: normal;
+                color: #000000;
+            }
+            p{
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 18px;
+                font-weight: normal;
+                color: #000000;
+                padding:0px 5px;
+            }
+            a{
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 18px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                text-decoration: underline;
+            }
+        }
     }
 }
 @media only screen and (min-width: 1100px){
@@ -436,31 +483,31 @@
     .course-detail__headline_statistics {
 
         .course-detail__headline_stat {
-            background-color:#fef6d9;
+            background-color: #fef6d9;
         }
         h3{
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 18px;
+            font-size: 24px;
             font-weight: normal;
             color: #000000;
         }
 
         h2{
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 28px;
+            font-size: 38px;
             font-weight: normal;
             color: #000000;
         }
         p{
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: normal;
             color: #000000;
             padding:0px 5px;
         }
         a{
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
@@ -567,8 +614,8 @@
                 }
                 h3{
                     font-family: 'Nunito Sans', sans-serif;
-                    font-size: 1.1em;
-                    font-weight: 600;
+                    font-size: 24px;
+                    font-weight: normal;
                     font-stretch: normal;
                     font-style: normal;
                     line-height: normal;
@@ -579,7 +626,7 @@
                 }
                 h2{
                     font-family: 'Nunito Sans', sans-serif;
-                    font-size: 1.85em;
+                    font-size: 48px;
                     font-weight: normal;
                     color: #000000;
                     margin-top:10px;
@@ -587,14 +634,14 @@
                 }
                 p{
                     font-family: 'Nunito Sans', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
+                    font-size: 18px;
+                    font-weight: normal;
                     color: #000000;
                     padding:0;
                 }
                 a{
                     font-family: 'Nunito Sans', sans-serif;
-                    font-size: 14px;
+                    font-size: 18px;
                     font-weight: normal;
                     font-stretch: normal;
                     font-style: normal;
