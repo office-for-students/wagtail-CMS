@@ -88,9 +88,18 @@ function toggle_icon(icon_id){
         });
 
         $('.scrollto').click(function(event) {
-            var $anchor = $(this);
-            $('html, body').stop().animate({ scrollTop: $($anchor.attr('href')).offset().top - 80}, 1500);
-            event.preventDefault();
+            var anchor = $(this);
+
+            if (screen.width <= 600) {
+                $('html, body').stop().animate({scrollTop: $(anchor.attr('href')).offset().top - 430}, 1500);
+                event.preventDefault();
+            }else if (screen.width > 600 && screen.width <= 750) {
+                $('html, body').stop().animate({scrollTop: $(anchor.attr('href')).offset().top - 420}, 1500);
+                event.preventDefault();
+            }else{
+                $('html, body').stop().animate({ scrollTop: $(anchor.attr('href')).offset().top - 80}, 1500);
+                event.preventDefault();
+            }
         });
 
         $('.dropdown-menu a').click(function(){
