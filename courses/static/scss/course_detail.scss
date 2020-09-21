@@ -397,6 +397,12 @@
 }
 @media only screen and (min-width: 770px) and (max-width:1100px){
 
+    .course-detail .course-detail__lead a.course-detail__institution-name {
+        font-size:32px;
+    }
+    .course-detail .course-detail__lead .course-detail__course-name {
+        font-size:28px;
+    }
     .course-detail{
 
         .course-detail__uni-site-links {
@@ -431,7 +437,7 @@
 
         a.course-detail__institution-name {
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 38px;
+            font-size: 28px;
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
@@ -479,6 +485,9 @@
     }
 }
 @media only screen and (min-width: 1100px){
+    .course-detail .course-detail__lead a.course-detail__institution-name {
+        font-size:28px;
+    }
 
     .course-detail__headline_statistics {
 
