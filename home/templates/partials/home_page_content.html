@@ -6,7 +6,7 @@
                 <h1 class="pt-4 home-page__header-text">
                     {{ page.header }}
                 </h1>
-                <h4 class="mt-4 text-white"><span class="text-warning">Search and compare</span> undergraduate courses in the UK</h4>
+                <h4 class="mt-4 text-white"><span class="text-warning">{% get_translation key='search_n_compare' language=page.get_language %}</span> {% get_translation key='under_courses_uk' language=page.get_language %}</h4>
 
             </div>
             <div class="col-3 p-0 text-right">
@@ -20,7 +20,7 @@
     <div id="home-page__intro-panel" class="home-page__intro-panel bg-white pb-5">
         <div class="row">
             <div class="col-12 col-lg-6 p-3 pr-4">
-                <h4 class="mb-3">Search by course or location</h4>
+                <h4 class="mb-3">{% get_translation key='by_course_location' language=page.get_language %}</h4>
                 <form class="search-landing-page__search" action="/course-finder/results/" method="post" autocomplete="off">
                     {% csrf_token %}
                     <div class="search-landing-page__search-fields">
@@ -54,18 +54,18 @@
             </div>
             <div class="dash-vertical-left col-12 col-lg-6 text-center p-3">
                 <img class="mx-auto home-page__course-wizard-icon" src="{% static 'images/arrows.svg' %}" alt="Course Wizard"/>
-                <h4 class="text-center">Course Wizard</h4>
-                <h5 class="pt-2 text-center">Answer 4 questions to find courses relevant to me</h5>
+                <h4 class="text-center">{% get_translation key='course_wizard' language=page.get_language %}</h4>
+                <h5 class="pt-2 text-center">{% get_translation key='answer_4_questions' language=page.get_language %}</h5>
                 <div class="mt-4 ">
-                    <a href="{{ page.course_wizard_link }}" class="home-page__search-button justify-content-center py-2 px-5">Start Now</a>
+                    <a href="{{ page.course_wizard_link }}" class="home-page__search-button justify-content-center py-2 px-5">{% get_translation key='course_wizard_start_now' language=page.get_language %}</a>
                 </div>
             </div>
         </div>
     </div>
     <div class="home-page__bookmark-body col-11 p-2 px-4">
         <div class="row pl-lg-5 pl-sm-2">
-            <h4 class="text-white pt-2">You have <span class="count home-page__bookmark-circle"></span> courses bookmarked &nbsp; &nbsp;</h4>
-            <h4 class="pt-2"><a class="home-page__bookmark-link" href="./bookmarks-manage/">View your courses</a></h4>
+            <h4 class="text-white pt-2">{% get_translation key='n_courses_bookmarked_pt_1' language=page.get_language %} <span class="count home-page__bookmark-circle"></span> {% get_translation key='n_courses_bookmarked_pt_2' language=page.get_language %} &nbsp; &nbsp;</h4>
+            <h4 class="pt-2"><a class="home-page__bookmark-link" href="./bookmarks-manage/">{% get_translation key='view_your_courses' language=page.get_language %}</a></h4>
         </div>
     </div>
 </div>
@@ -73,7 +73,7 @@
 <div class="home-page__body pb-4">
 
     <div class="home-page__body-panel text-center" >
-        <h3 class="home-page__body-panel-title mx-auto p-2">Information and advice</h3>
+        <h3 class="home-page__body-panel-title mx-auto p-2">{% get_translation key='info_n_advice' language=page.get_language %}</h3>
 
         <div class="d-none d-lg-block">
             <div class="row px-4">
@@ -89,24 +89,24 @@
                 </div>
                 <div class="col-4 px-4 mt-4 dash-vertical-left">
                     <iframe class="mt-2 mb-3 video-iframe" src="https://www.youtube.com/embed/xw1JPx3MJSo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <h4>Video on a relevant topic</h4>
-                    <h5>5 mins long</h5>
+                    <h4>{% get_translation key='video_on_topic_title' language=page.get_language %}</h4>
+                    <h5>{% get_translation key='video_on_topic_content' language=page.get_language %}</h5>
                 </div>
             </div>
             <div class="row px-4">
                 <div class="col-4 px-4 pb-4">
                     <div class="my-4 justify-content-center">
-                        <a href="{{ page.box_1_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
+                        <a href="{{ page.box_1_link }}" class="home-page__search-button py-2 px-3">{% get_translation key='find_out_more' language=page.get_language %}</a>
                     </div>
                 </div>
                 <div class="col-4 px-4 pb-4">
                     <div class="my-4 justify-content-center">
-                        <a href="{{ page.box_2_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
+                        <a href="{{ page.box_2_link }}" class="home-page__search-button py-2 px-3">{% get_translation key='find_out_more' language=page.get_language %}</a>
                     </div>
                 </div>
                 <div class="col-4 px-4 pb-4">
                     <div class="my-4 justify-content-center">
-                        <a href="{{ page.box_3_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
+                        <a href="{{ page.box_3_link }}" class="home-page__search-button py-2 px-3">{% get_translation key='find_out_more' language=page.get_language %}</a>
                     </div>
                 </div>
             </div>
@@ -119,7 +119,7 @@
                 <h4>{{ page.box_1_title }}</h4>
                 <h5>{{ page.box_1_content }}</h5>
                 <div class="my-4 justify-content-center">
-                    <a href="{{ page.box_1_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
+                    <a href="{{ page.box_1_link }}" class="home-page__search-button py-2 px-3">{% get_translation key='find_out_more' language=page.get_language %}</a>
                 </div>
                 <hr class="dash" />
             </div>
@@ -129,7 +129,7 @@
                 <h4>{{ page.box_2_title }}</h4>
                 <h5>{{ page.box_2_content }}</h5>
                 <div class="my-4 justify-content-center">
-                    <a href="{{ page.box_2_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
+                    <a href="{{ page.box_2_link }}" class="home-page__search-button py-2 px-3">{% get_translation key='find_out_more' language=page.get_language %}</a>
                 </div>
 
                 <hr class="dash" />
@@ -137,10 +137,10 @@
 
             <div class="col-12 pb-3">
                 <iframe class="video-iframe my-3" src="https://www.youtube.com/embed/xw1JPx3MJSo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h4>Video on a relevant topic</h4>
-                <h5>5 mins long</h5>
+                <h4>{% get_translation key='video_on_topic_title' language=page.get_language %}</h4>
+                <h5>{% get_translation key='video_on_topic_content' language=page.get_language %}</h5>
                 <div class="my-4 justify-content-center">
-                    <a href="{{ page.box_3_link }}" class="home-page__search-button py-2 px-3">Find out more</a>
+                    <a href="{{ page.box_3_link }}" class="home-page__search-button py-2 px-3">{% get_translation key='find_out_more' language=page.get_language %}</a>
                 </div>
             </div>
 

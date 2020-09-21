@@ -58,20 +58,63 @@ def regional_earnings(request):
         if unavail_msgs_leo['unavailable_region_is_ni'] != "":
             unavailable_region_is_ni = unavail_msgs_leo['unavailable_region_is_ni']
 
-        if getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region) == "" or getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region) is None:
-            salary_sector_15_unavail_text = unavailable_region_not_exists
-        elif region not in ('_uk', '_e', '_s', '_w', '_ni'):
+        attr = getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region, None)
+        if attr is not None:
+            if getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region) == "" or getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region) is None:
+                salary_sector_15_unavail_text = unavailable_region_not_exists
+            elif region not in ('_uk', '_e', '_s', '_w', '_ni'):
+                salary_sector_15_unavail_text = unavailable_region_not_nation
+
+            salary_sector_15_med = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region))
+            salary_sector_15_lq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "lq" + region))
+            salary_sector_15_uq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "uq" + region))
+            salary_sector_15_pop = getattr(salaries_aggregate.aggregated_salaries_sector[0], "pop" + region)
+            salary_sector_15_resp = getattr(salaries_aggregate.aggregated_salaries_sector[0], "resp" + region)
+            inst_prov_pc = getattr(salaries_aggregate.aggregated_salaries_inst[0], 'prov_pc' + region)
+        else:
             salary_sector_15_unavail_text = unavailable_region_not_nation
+            salary_sector_15_med = None
+            salary_sector_15_lq = None
+            salary_sector_15_uq = None
+            salary_sector_15_pop = None
+            salary_sector_15_resp = None
+            inst_prov_pc = None
 
-        if getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region) == "" or getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region) is None:
-            salary_sector_3_unavail_text = unavailable_region_not_exists
-        elif region == '_ni':
+        attr = getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region, None)
+        if attr is not None:
+            if getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region) == "" or getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region) is None:
+                salary_sector_3_unavail_text = unavailable_region_not_exists
+            elif region == '_ni':
+                salary_sector_3_unavail_text = unavailable_region_is_ni
+
+            salary_sector_3_med = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region))
+            salary_sector_3_lq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "lq" + region))
+            salary_sector_3_uq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "uq" + region))
+            salary_sector_3_pop = getattr(salaries_aggregate.aggregated_salaries_sector[1], "pop" + region)
+        else:
             salary_sector_3_unavail_text = unavailable_region_is_ni
+            salary_sector_3_med = None
+            salary_sector_3_lq = None
+            salary_sector_3_uq = None
+            salary_sector_3_pop = None
 
-        if getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region) == "" or getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region) is None:
-            salary_sector_5_unavail_text = unavailable_region_not_exists
-        elif region == '_ni':
+        attr = getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region, None)
+        if attr is not None:
+            if getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region) == "" or getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region) is None:
+                salary_sector_5_unavail_text = unavailable_region_not_exists
+            elif region == '_ni':
+                salary_sector_5_unavail_text = unavailable_region_is_ni
+
+            salary_sector_5_med = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region))
+            salary_sector_5_lq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "lq" + region))
+            salary_sector_5_uq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "uq" + region))
+            salary_sector_5_pop = getattr(salaries_aggregate.aggregated_salaries_sector[2], "pop" + region)
+        else:
             salary_sector_5_unavail_text = unavailable_region_is_ni
+            salary_sector_5_med = None
+            salary_sector_5_lq = None
+            salary_sector_5_uq = None
+            salary_sector_5_pop = None
 
         resp = {
             'typical_range_text': DICT.get('Typical range').get('en'),
@@ -81,30 +124,30 @@ def regional_earnings(request):
             'of_those_asked_text': DICT.get('of those asked').get('en'),
             'region_full_name': region_full_name,
 
-            'salary_sector_15_med': format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region)),
-            'salary_sector_15_lq': format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "lq" + region)),
-            'salary_sector_15_uq': format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "uq" + region)),
-            'salary_sector_15_pop': getattr(salaries_aggregate.aggregated_salaries_sector[0], "pop" + region),
-            'salary_sector_15_resp': getattr(salaries_aggregate.aggregated_salaries_sector[0], "resp" + region),
+            'salary_sector_15_med': salary_sector_15_med,
+            'salary_sector_15_lq': salary_sector_15_lq,
+            'salary_sector_15_uq': salary_sector_15_uq,
+            'salary_sector_15_pop': salary_sector_15_pop,
+            'salary_sector_15_resp': salary_sector_15_resp,
             'salary_sector_15_unavail_text': salary_sector_15_unavail_text,
 
-            'salary_sector_3_med': format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region)),
-            'salary_sector_3_lq': format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "lq" + region)),
-            'salary_sector_3_uq': format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "uq" + region)),
-            'salary_sector_3_pop': getattr(salaries_aggregate.aggregated_salaries_sector[1], "pop" + region),
+            'salary_sector_3_med': salary_sector_3_med,
+            'salary_sector_3_lq': salary_sector_3_lq,
+            'salary_sector_3_uq': salary_sector_3_uq,
+            'salary_sector_3_pop': salary_sector_3_pop,
             'salary_sector_3_unavail_text': salary_sector_3_unavail_text,
 
-            'salary_sector_5_med': format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region)),
-            'salary_sector_5_lq': format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "lq" + region)),
-            'salary_sector_5_uq': format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "uq" + region)),
-            'salary_sector_5_pop': getattr(salaries_aggregate.aggregated_salaries_sector[2], "pop" + region),
+            'salary_sector_5_med': salary_sector_5_med,
+            'salary_sector_5_lq': salary_sector_5_lq,
+            'salary_sector_5_uq': salary_sector_5_uq,
+            'salary_sector_5_pop': salary_sector_5_pop,
             'salary_sector_5_unavail_text': salary_sector_5_unavail_text,
 
-            'inst_prov_pc': getattr(salaries_aggregate.aggregated_salaries_inst[0], 'prov_pc' + region)
+            'inst_prov_pc': inst_prov_pc
         }
         return JsonResponse(resp)
     else:
-        return JsonResponse({'retval': 'apw error'}),
+        return JsonResponse({'retval': 'unhandled error'}),
 
 
 def courses_detail(request, institution_id, course_id, kis_mode, language=enums.languages.ENGLISH):

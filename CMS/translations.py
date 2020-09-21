@@ -1406,6 +1406,54 @@ DICT = {
         'en': 'In unknown work',
         'cy': 'Mewn swydd anhysbys'
     },
+     'search_n_compare': {
+        'en': 'Search and compare',
+        'cy': 'Chwilio a chymharu'
+    },
+     'under_courses_uk': {
+        'en': 'undergraduate courses in the UK',
+        'cy': 'cyrsiau israddedig yn y DU'
+    },
+     'by_course_location': {
+        'en': 'Search by course or location',
+        'cy': 'Chwilio yn ôl cwrs neu leoliad'
+    },
+     'course_wizard': {
+        'en': 'Course Wizard',
+        'cy': 'Dewin Cwrs'
+    },
+     'answer_4_questions': {
+        'en': 'Answer 4 questions to find courses relevant to me',
+        'cy': "Atebwch 4 cwestiwn er mwyn darganfod cyrsiau sy'n berthnasol i mi"
+    },
+     'course_wizard_start_now': {
+        'en': 'Start Now',
+        'cy': 'Dechrau Nawr'
+    },
+     'n_courses_bookmarked_pt_1': {
+        'en': 'You have',
+        'cy': 'Mae gennych'
+    },
+     'n_courses_bookmarked_pt_2': {
+        'en': 'courses bookmarked',
+        'cy': "o gyrsiau wedi'u nodi"
+    },
+     'view_your_courses': {
+        'en': 'View your courses',
+        'cy': "Gweld eich cyrsiau"
+    },
+     'info_n_advice': {
+        'en': 'Information and advice',
+        'cy': "Gwybodaeth a chyngor"
+    },
+     'video_on_topic_title': {
+        'en': 'Video on a relevant topic',
+        'cy': "awaiting Welsh translation"
+    },
+     'video_on_topic_content': {
+        'en': '5 mins long',
+        'cy': "awaiting Welsh translation"
+    },
     
    
 }
