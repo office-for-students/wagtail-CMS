@@ -51,11 +51,11 @@ def regional_earnings(request):
         unavailable_region_not_nation = ""
         unavailable_region_is_ni = ""
 
-        if unavail_msgs_leo['unavailable_region_not_exists'] != "":
+        if 'unavailable_region_not_exists' in unavail_msgs_leo and unavail_msgs_leo['unavailable_region_not_exists'] != "":
             unavailable_region_not_exists = unavail_msgs_leo['unavailable_region_not_exists']
-        if unavail_msgs_go['unavailable_region_not_nation'] != "":
+        if 'unavailable_region_not_nation' in unavail_msgs_go and unavail_msgs_go['unavailable_region_not_nation'] != "":
             unavailable_region_not_nation = unavail_msgs_go['unavailable_region_not_nation']
-        if unavail_msgs_leo['unavailable_region_is_ni'] != "":
+        if 'unavailable_region_is_ni' in unavail_msgs_leo and unavail_msgs_leo['unavailable_region_is_ni'] != "":
             unavailable_region_is_ni = unavail_msgs_leo['unavailable_region_is_ni']
 
         attr = getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region, None)

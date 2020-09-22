@@ -4,6 +4,7 @@ from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from django.db.models.fields import TextField
 
 from core.models import DiscoverUniBasePage
+import json
 
 
 NAV_ICON_OPTIONS = (
@@ -58,6 +59,23 @@ class HomePage(DiscoverUniBasePage):
         FieldPanel('box_3_link', classname="full"),
         StreamFieldPanel('page_links', classname="full"),
     ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['page'] = self
+        context['english_url'] = self.get_english_url()
+        context['welsh_url'] = self.get_welsh_url()
+        context['cookies_accepted'] = request.COOKIES.get('discoverUniCookies')
+        context['load_error'] = request.GET.get('load_error', '')
+        context['error_type'] = request.GET.get('error_type', '')
+
+        # Add list of institutions to the context.
+        if not ('institutions_list' in context and len(context['institutions_list']) > 0):
+            with open("./CMS/static/jsonfiles/institutions.json", "r") as f:
+                institutions = f.read()
+            context['institutions_list'] = json.loads(institutions)
+            
+        return context
 
 
 class UserNavPage(DiscoverUniBasePage):
