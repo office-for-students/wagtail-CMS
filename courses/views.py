@@ -117,11 +117,11 @@ def regional_earnings(request):
             salary_sector_5_pop = None
 
         resp = {
-            'typical_range_text': DICT.get('Typical range').get('en'),
-            'data_from_text': DICT.get('Data from').get('en'),
-            'respondents_text': DICT.get('respondents').get('en'),
-            'students_text': DICT.get('students').get('en'),
-            'of_those_asked_text': DICT.get('of those asked').get('en'),
+            'typical_range_text': DICT.get('Typical range').get(language),
+            'data_from_text': DICT.get('Data from').get(language),
+            'respondents_text': DICT.get('respondents').get(language),
+            'students_text': DICT.get('students').get(language),
+            'of_those_asked_text': DICT.get('of those asked').get(language),
             'region_full_name': region_full_name,
 
             'salary_sector_15_med': salary_sector_15_med,
