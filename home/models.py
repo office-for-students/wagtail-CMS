@@ -70,10 +70,10 @@ class HomePage(DiscoverUniBasePage):
         context['error_type'] = request.GET.get('error_type', '')
 
         # Add list of institutions to the context.
-        if not ('institutions_list' in context and len(context['institutions_list']) > 0):
-            with open("./CMS/static/jsonfiles/institutions.json", "r") as f:
-                institutions = f.read()
-            context['institutions_list'] = json.loads(institutions)
+        context['institutions_list'] = []
+        with open("./CMS/static/jsonfiles/institutions.json", "r") as f:
+            institutions = f.read()
+        context['institutions_list'] = json.loads(institutions)
             
         return context
 

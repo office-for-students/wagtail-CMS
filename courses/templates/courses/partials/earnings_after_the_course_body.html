@@ -63,19 +63,19 @@
                             </h3>
                             <div class="earnings-after-course-stat col-lg-12 p-3 pb-4">
                                 {% if salary_index == 0 %}
-                                    {% if salary.display_unavailable_info.reason == "" %}
+                                    {% if salary.aggregate != "" %}
                                         <div id="go_inst_avail_container_{{ salary_aggregate.subject_code }}">
                                     {% else %}
                                         <div id="go_inst_avail_container_{{ salary_aggregate.subject_code }}" style="display: none">
                                     {% endif %}
                                 {% elif salary_index == 1 %}
-                                    {% if salary.display_unavailable_info.reason == "" %}
+                                    {% if salary.aggregate != "" %}
                                         <div id="leo3_inst_avail_container_{{ salary_aggregate.subject_code }}">
                                     {% else %}
                                         <div id="leo3_inst_avail_container_{{ salary_aggregate.subject_code }}" style="display: none">
                                     {% endif %}
                                 {% elif salary_index == 2 %}
-                                    {% if salary.display_unavailable_info.reason == "" %}
+                                    {% if salary.aggregate != "" %}
                                         <div id="leo5_inst_avail_container_{{ salary_aggregate.subject_code }}">
                                     {% else %}
                                         <div id="leo5_inst_avail_container_{{ salary_aggregate.subject_code }}" style="display: none">
@@ -88,16 +88,20 @@
                                         {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
                                         {{ subbed_text | richtext }}
                                     </h4>
+
+
                                     <h4 class="earnings-after-course-stat-small pt-1 text-center text-lg-left  mb-3">
                                         {% create_list course_details.data_from_html salary.pop salary.resp_rate as substitutions %}
                                         {% if salary_index == 0 %}
                                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_respondents_explanation substitutions=substitutions as subbed_text %}
                                             {{ subbed_text | richtext }}
                                         {% else %}
-                                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_respondents_explanation substitutions=substitutions as subbed_text %}
-                                            {{ subbed_text | richtext }}<p>&nbsp;</p>
+                                            {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
+                                            {{ subbed_text | richtext }}
+                                            <br>
                                         {% endif %}
                                     </h4>
+
                                     <h4 class="earnings-after-course-stat-small pt-1 text-center text-lg-left  mb-3">
                                         {% if salary_index == 0 %}
                                             {% create_list course_details.data_from_html course.go_year_range as substitutions %}
@@ -118,7 +122,7 @@
                                     </h4>
                                 </div>
                                 {% if salary_index == 0 %}
-                                    {% if salary.display_unavailable_info.reason == "" %}
+                                    {% if salary.aggregate != "" %}
                                         <div id="go_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer" style="display: none"></div>
                                     {% else %}
                                         <div id="go_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer">
@@ -127,7 +131,7 @@
                                         </div>
                                     {% endif %}
                                 {% elif salary_index == 1 %}
-                                    {% if salary.display_unavailable_info.reason == "" %}
+                                    {% if salary.aggregate != "" %}
                                         <div id="leo3_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer" style="display: none"></div>
                                     {% else %}
                                         <div id="leo3_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer">
@@ -136,7 +140,7 @@
                                         </div>
                                     {% endif %}
                                 {% elif salary_index == 2 %}
-                                    {% if salary.display_unavailable_info.reason == "" %}
+                                    {% if salary.aggregate != "" %}
                                         <div id="leo5_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer" style="display: none"></div>
                                     {% else %}
                                         <div id="leo5_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer">
@@ -222,8 +226,9 @@
                                                 {% insert_values_to_rich_text content=block.value.after_fifteen_months_respondents_explanation substitutions=substitutions as subbed_text %}
                                                 {{ subbed_text | richtext }}
                                             {% else %}
-                                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_respondents_explanation substitutions=substitutions as subbed_text %}
-                                                {{ subbed_text | richtext }}<p>&nbsp;</p>
+                                                {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
+                                                {{ subbed_text | richtext }}
+                                                <br>
                                             {% endif %}
                                         </h4>
                                         {% get_translation key='default_region' language=page.get_language as default_region %}
