@@ -387,9 +387,9 @@
                     var graduates_text = $("#sector_salary_graduates_0_" + subjectIndex).text();
                     graduates_text = graduates_text.substring(graduates_text.indexOf('%'), graduates_text.length);
                     graduates_text = graduates_text.substring(0, graduates_text.indexOf('live in') + 7);
-                    $("#sector_salary_graduates_0_" + subjectIndex + " div p").text(data['inst_prov_pc'] + graduates_text + " " + data['region_full_name']);
-                    $("#sector_salary_graduates_1_" + subjectIndex + " div p").text(data['inst_prov_pc'] + graduates_text + " " + data['region_full_name']);
-                    $("#sector_salary_graduates_2_" + subjectIndex + " div p").text(data['inst_prov_pc'] + graduates_text + " " + data['region_full_name']);
+                    $("#sector_salary_graduates_0_" + subjectIndex + " div p").text(data['inst_prov_pc_go'] + graduates_text + " " + data['region_full_name']);
+                    $("#sector_salary_graduates_1_" + subjectIndex + " div p").text(data['inst_prov_pc_leo3'] + graduates_text + " " + data['region_full_name']);
+                    $("#sector_salary_graduates_2_" + subjectIndex + " div p").text(data['inst_prov_pc_leo5'] + graduates_text + " " + data['region_full_name']);
                 },
                 error: function (request, status, error) {
                     //alert(request.responseText);
