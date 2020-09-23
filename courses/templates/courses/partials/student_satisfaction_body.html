@@ -1,6 +1,6 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags %}
 
-{% if course_details.has_multiple_graduate_perceptions_stats %}
+{% if course_details.has_multiple_satisfaction_stats %}
 <ul class="nav nav-tabs mt-2" id="student-satisfaction-tab" role="tablist">
     
     {% for overall_stats in course_details.overall_satisfaction %}
