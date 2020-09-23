@@ -1290,8 +1290,12 @@ DICT = {
         'en': 'students',
         'cy': 'o myfyrwyr'
     },
-    'students': {
-        'en': 'students',
+    # 'students': {
+    #     'en': 'students',
+    #     'cy': 'o fyfyrwyr'
+    # },
+    'people': {
+        'en': 'people',
         'cy': 'o fyfyrwyr'
     },
     'of those asked': {
@@ -1371,8 +1375,8 @@ DICT = {
         'cy': 'y DU'
     },
     'data_from_html': {
-        'en': '<div class="d-inline d-md-none" ><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data from:</div>',
-        'cy': '<div class="d-inline d-md-none"><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data gan:</div>'
+        'en': '<div class="d-inline d-md-none" ><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data from</div>',
+        'cy': '<div class="d-inline d-md-none"><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data gan</div>'
     },
     'entry_overview_2': {
         'en': 'students',

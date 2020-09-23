@@ -120,7 +120,7 @@ def regional_earnings(request):
             'typical_range_text': DICT.get('Typical range').get(language),
             'data_from_text': DICT.get('Data from').get(language),
             'respondents_text': DICT.get('respondents').get(language),
-            'students_text': DICT.get('students').get(language),
+            'people_text': DICT.get('people').get(language),
             'of_those_asked_text': DICT.get('of those asked').get(language),
             'region_full_name': region_full_name,
 
