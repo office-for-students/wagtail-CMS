@@ -141,6 +141,7 @@ class EarningsAfterCourseBlock(AccordionPanel):
     after_fifteen_months_respondents_explanation = blocks.RichTextBlock(blank=True)
     after_fifteen_months_no_of_graduates_explanation = blocks.RichTextBlock(blank=True)
     after_fifteen_months_data_source = blocks.RichTextBlock(blank=True)
+    leo_respondents_explanation = blocks.RichTextBlock(blank=True)
 
     after_three_years_earnings_heading = blocks.CharBlock(required=False)
     after_five_years_earnings_heading = blocks.CharBlock(required=False)
