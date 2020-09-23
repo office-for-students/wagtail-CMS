@@ -98,7 +98,7 @@
                 {% endautoescape %}
             </div>
             <div class="col-4 text-right">
-                <a href={% pageurl page.get_parent %} class="course-finder-base__nav-control start-again">
+                <a href="{% pageurl page.get_parent %}" class="course-finder-base__nav-control start-again">
                 {% get_translation key='clear_filters' language=page.get_language %}
                 </a>
             </div>
