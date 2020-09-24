@@ -891,6 +891,7 @@ class EmploymentStatistics:
             self.doing_further_study = fallback_to(data_obj.get('doing_further_study'), 0)
             self.in_work = fallback_to(data_obj.get('in_work'), 0)
             self.in_work_and_study = fallback_to(data_obj.get('in_work_and_study'), 0)
+            self.in_work_or_study = fallback_to(data_obj.get('in_work_or_study'), 0)
             self.unemp_prev_emp_since_grad = fallback_to(data_obj.get('unemp_prev_emp_since_grad'), 0)
             self.other = fallback_to(data_obj.get('other'), 0)
             self.number_of_students = fallback_to(data_obj.get('number_of_students'), 0)
@@ -913,7 +914,7 @@ class EmploymentStatistics:
 
     @property
     def work_and_or_study(self):
-        return self.unemp_prev_emp_since_grad
+        return self.in_work_or_study
 
     def display_subject_name(self):
         if self.display_language == enums.languages.ENGLISH:
