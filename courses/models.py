@@ -1530,7 +1530,7 @@ class Job:
             self.job = fallback_to(job_data.get('job'), '')
             self.percentage = fallback_to(job_data.get('percentage_of_students'),0)
             self.order = job_data.get('order')
-            self.hss = job_data.get('hss')
+            self.hs = int(job_data.get('hs'))
 
 
 class GraduatePerceptionStatistics:

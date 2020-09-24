@@ -17,4 +17,5 @@ def load_course_data(institution_id, course_id, mode):
         }
         base_url = "%s/institutions/%s/courses/%s/modes/%s"
 
-        return requests.get(url=base_url % (settings.DATASETAPIHOST, institution_id, course_id, mode), headers=headers)
+        response = requests.get(url=base_url % (settings.DATASETAPIHOST, institution_id, course_id, mode), headers=headers)
+        return response
