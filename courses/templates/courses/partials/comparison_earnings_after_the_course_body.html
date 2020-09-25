@@ -357,8 +357,8 @@
                 prePostAmpersand = "pre";
  
             //alert(courseIndex);
-            alert(n);
-            alert(String(courseParamsBunched).substring(0,7));
+            //alert(n);
+            //alert(String(courseParamsBunched).substring(0,7));
 
             if (n > -1){
                 var courseString = "";
@@ -367,9 +367,7 @@
                 else
                     courseString = String(courseParamsBunched).substring(n+1);
 
-                alert("a");
-                alert(courseString);
-                alert("b");
+                //alert(courseString);
 
                 //var delimiter = "course" + courseIndex + "=";
                 var delimiter = String(courseString).substring(0,7) + "=";
@@ -378,11 +376,11 @@
                 var institution = courseString.split(",")[0];
                 var course = courseString.split(",")[1];
                 var kismode = courseString.split(",")[2];
-                alert(institution);
-                alert(course);
-                alert(kismode);
-                alert(subjectCode);
-                alert('{{ page.get_language }}');
+                // alert(institution);
+                // alert(course);
+                // alert(kismode);
+                // alert(subjectCode);
+                // alert('{{ page.get_language }}');
 
                 $.ajax({
                     url: '/regional_earnings',
@@ -398,7 +396,7 @@
                     },
                     dataType: 'json',
                     success: function (data) {
-                        alert(JSON.stringify(data));
+                        //alert(JSON.stringify(data));
                         if (data['salary_sector_15_unavail_text'] == "") {
                             $("#go_sector_avail_container_" + subjectCode + "_" + leftOrRight).show();
                             $("#go_sector_unavail_" + subjectCode + "_" + leftOrRight).hide();
