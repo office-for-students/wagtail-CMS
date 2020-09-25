@@ -63,19 +63,19 @@
                             </h3>
                             <div class="earnings-after-course-stat col-lg-12 p-3 pb-4">
                                 {% if salary_index == 0 %}
-                                    {% if salary.aggregate != "" %}
+                                    {% if salary.aggregate %}
                                         <div id="go_inst_avail_container_{{ salary_aggregate.subject_code }}">
                                     {% else %}
                                         <div id="go_inst_avail_container_{{ salary_aggregate.subject_code }}" style="display: none">
                                     {% endif %}
                                 {% elif salary_index == 1 %}
-                                    {% if salary.aggregate != "" %}
+                                    {% if salary.aggregate %}
                                         <div id="leo3_inst_avail_container_{{ salary_aggregate.subject_code }}">
                                     {% else %}
                                         <div id="leo3_inst_avail_container_{{ salary_aggregate.subject_code }}" style="display: none">
                                     {% endif %}
                                 {% elif salary_index == 2 %}
-                                    {% if salary.aggregate != "" %}
+                                    {% if salary.aggregate %}
                                         <div id="leo5_inst_avail_container_{{ salary_aggregate.subject_code }}">
                                     {% else %}
                                         <div id="leo5_inst_avail_container_{{ salary_aggregate.subject_code }}" style="display: none">
@@ -122,7 +122,7 @@
                                     </h4>
                                 </div>
                                 {% if salary_index == 0 %}
-                                    {% if salary.aggregate != "" %}
+                                    {% if salary.aggregate%}
                                         <div id="go_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer" style="display: none"></div>
                                     {% else %}
                                         <div id="go_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer">
@@ -131,7 +131,7 @@
                                         </div>
                                     {% endif %}
                                 {% elif salary_index == 1 %}
-                                    {% if salary.aggregate != "" %}
+                                    {% if salary.aggregate %}
                                         <div id="leo3_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer" style="display: none"></div>
                                     {% else %}
                                         <div id="leo3_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer">
@@ -140,7 +140,7 @@
                                         </div>
                                     {% endif %}
                                 {% elif salary_index == 2 %}
-                                    {% if salary.aggregate != "" %}
+                                    {% if salary.aggregate %}
                                         <div id="leo5_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer" style="display: none"></div>
                                     {% else %}
                                         <div id="leo5_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer">
