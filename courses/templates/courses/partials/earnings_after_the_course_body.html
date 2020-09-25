@@ -314,7 +314,7 @@
         }
 
         jQuery('.region_ddl').change(function (event) {
-            // ddlId will have the form regions_<subject_index>, e.g. regions_1.
+            // ddlId will have the form regions_<subject_code>, e.g. regions_CAH17-01-01.
             var ddlId = event.target.id;
             var arr = ddlId.split("_");
             var subjectIndex = arr[1];

@@ -493,6 +493,10 @@ class Course:
     @property
     def has_multiple_satisfaction_stats(self):
         return len(self.overall_satisfaction) > 1
+        
+    @property
+    def has_multiple_continuation_stats(self):
+        return len(self.continuation_stats) > 1
 
     @property
     def show_entry_information_stats(self):

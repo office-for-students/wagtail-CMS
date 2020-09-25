@@ -37,9 +37,13 @@
                 {% if course_entry_stats.display_stats %}
                 <div class="comparison__course-column">
                     <div class="comparison__course">
+
+                        {% if course.has_multiple_entry_stats %}
                         <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
                             <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ course_entry_stats.display_subject_name }}</h1>
                         </div>
+                        {% endif %}
+
                         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_entry_stats.display_unavailable_info %}
 
                         {% if course_entry_stats.display_stats %}
@@ -159,14 +163,16 @@
                 {% if course_tariff_stats.show_stats %}
                 <div class="comparison__course-column">
                     <div class="comparison__course">
+                        {% if course.has_multiple_tariff_stats %}
                         <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
                             <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ course_tariff_stats.display_subject_name }}</h1>
                         </div>
+                        {% endif %}
                         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_tariff_stats.display_unavailable_info %}
 
                         <div class="entry-information__block my-2">
                             <div class="entry-information__ucas-points p-3 d-flex flex-wrap row mx-1">
-                                <div class="col-12 align-self-stretch my-auto px-0">
+                                <div class="col-12 align-self-stretch my-auto px-0"
                                     <h2 class="entry-information__heading py-3">{{block.value.tariffs_heading}}{% if course.has_multiple_tariff_stats %}:
                                         {{course_tariff_stats.display_subject_name}}{% endif %}</h2>
                     
