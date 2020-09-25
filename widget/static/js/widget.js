@@ -379,7 +379,6 @@ DataWidget.prototype = {
         if (typeof courseName === 'undefined') {
             courseName = this.courseData.course_name['english'];
         }
-
         if (isNotAggregated) {
             courseName += this.courseData.honours_award_provision === 1 ? ' (Hons) ' : ' ';
             courseName += this.courseData.title[this.languageKey]
@@ -504,6 +503,16 @@ NoDataWidget.prototype = {
             var courseName = this.courseName[this.languageKey];
             var at = CONTENT.at[this.language];
             var institution = this.institutionName[this.languageKey];
+            var course = document.createTextNode(courseName + at + institution);
+
+            courseNode.appendChild(course);
+            leadNode.appendChild(courseNode);
+        } else {
+            var courseNode = document.createElement("p");
+            courseNode.classList.add('intro');
+            courseName = this.courseName['english'];
+            var at = CONTENT.at['en-gb']
+            var institution = this.institutionName['english'];
             var course = document.createTextNode(courseName + at + institution);
 
             courseNode.appendChild(course);
