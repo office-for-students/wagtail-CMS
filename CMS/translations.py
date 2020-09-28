@@ -1460,15 +1460,19 @@ DICT = {
     },
      'course_details_joint_overview_1': {
         'en': 'What you need to know about this course',
-        'cy': "awaiting Welsh translation"
+        'cy': "Beth y mae angen i chi ei wybod am y cwrs yma"
     },
      'course_details_joint_overview_2': {
         'en': 'This course has information and data for more than one subject. The tabs below are there to help you see which subject the data relates to.',
-        'cy': "awaiting Welsh translation"
+        'cy': "Mae’r cwrs yma’n cynnwys gwybodaeth a data ar gyfer mwy nag un pwnc. Pwrpas y llabedau isod yw eich helpu i weld pa bwnc y mae’r data yn berthnasol iddo"
     },
      'course_details_joint_overview_3': {
         'en': 'Read more about courses with multiple subjects',
-        'cy': "awaiting Welsh translation"
+        'cy': "Darllen mwy am gyrsiau sy’n cynnwys amryw o bynciau"
+    },
+     'course_details_joint_overview_4': {
+        'en': 'https://discoveruni.gov.uk/about-our-data/',
+        'cy': "https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/"
     },
     
    
