@@ -1458,6 +1458,18 @@ DICT = {
         'en': '5 mins long',
         'cy': "awaiting Welsh translation"
     },
+     'course_details_joint_overview_1': {
+        'en': 'What you need to know about this course',
+        'cy': "awaiting Welsh translation"
+    },
+     'course_details_joint_overview_2': {
+        'en': 'This course has information and data for more than one subject. The tabs below are there to help you see which subject the data relates to.',
+        'cy': "awaiting Welsh translation"
+    },
+     'course_details_joint_overview_3': {
+        'en': 'Read more about courses with multiple subjects',
+        'cy': "awaiting Welsh translation"
+    },
     
    
 }

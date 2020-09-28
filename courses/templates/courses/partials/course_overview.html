@@ -122,57 +122,18 @@
         </div>
 
     {% elif course.has_multiple_subject_names %}
-        <div class="course-detail__headline_statistics d-flex flex-row align-items-stretch my-4 text-center text-md-left mx-auto px-0 row-cols-3">
+        <div class="siobhan-to-format-1">
             <div class="col">
-                <h3 class="d-none d-lg-block">{% get_translation key='student_satisfaction_course_overview_1' language=page.get_language %}</h3>
-                <div class="course-detail__headline_stat flex-fill align-self-stretch mr-2 mr-xs-1px-3 px-xs-2 py-4 container">
-                    <div class="row">
-                        <div class="col">
-                            {% for satisfaction_stat in course.satisfaction_stats %}
-                            <h4 style="display: inline;">For all {{satisfaction_stat.display_subject_name}} courses</h4> <h2 style="display: inline;">{{ satisfaction_stat.question_27.agree_or_strongly_agree }}%</h2></br>
-                            {% endfor %}
-                        </div>
-                        <div class="col-2">
-                            <p>{% get_translation key='student_satisfaction_course_overview_2' language=page.get_language %}</p>
-                        </div>
-                    </div>
+                <div class="siobhan-to-format-2">
+                    <p>{% get_translation key='course_details_joint_overview_1' language=page.get_language %}</p>
                 </div>
             </div>
-
-            {% if course.summary_med_sal_value != "no_data" %}
             <div class="col">
-                <h3 class="d-none d-lg-block">{% get_translation key='average_earnings_course_overview_1' language=page.get_language %}</h3>
-                <div class="course-detail__headline_stat flex-fill align-self-stretch mr-2 mr-xs-1 px-3 px-xs-2 py-4 container">
-                    <div class="row">
-                        <div class="col">
-                            {% for go_salary in course.go_salaries_inst %}
-                            <h4 style="display: inline;">For all {{go_salary.display_subject_name}} courses</h4> <h2 style="display: inline;">£{{ go_salary.med|intcomma }}</h2></br>
-                            {% endfor %}
-                        </div>
-                        <div class="col-2">
-                            <p>{% get_translation key=course.summary_med_sal_text_trans_key language=page.get_language %}</p>
-                        </div>
-                    </div>
+                <div class="siobhan-to-format-3">
+                    <p class="siobhan-to-format-4">{% get_translation key='course_details_joint_overview_2' language=page.get_language %}</p>
+                    <p class="siobhan-to-format-5">{% get_translation key='course_details_joint_overview_3' language=page.get_language %}</p>
                 </div>
             </div>
-            {% endif %}
-
-            <div class="col">
-                <h3 class="d-none d-lg-block">{% get_translation key='employment_course_overview_1' language=page.get_language %}</h3>
-                <div class="course-detail__headline_stat flex-fill align-self-stretch mr-2 mr-xs-1 px-3 px-xs-2 py-4 container">
-                    <div class="row">
-                        <div class="col">
-                            {% for employment_stat in course.employment_stats %}
-                            <h4 style="display: inline;">For all {{employment_stat.display_subject_name}} courses</h4> <h2 style="display: inline;">{{ employment_stat.in_work_and_study }}%</h2></br>
-                            {% endfor %}
-                        </div>
-                        <div class="col-2">
-                            <p>{% get_translation key='employment_course_overview_2' language=page.get_language %}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     {% endif %}
 
