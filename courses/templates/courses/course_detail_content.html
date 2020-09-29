@@ -24,12 +24,14 @@
                 {% if show_accordion %}
                     <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
                         <div class="">
-                            <button class="course-detail__accordion-heading" onclick="toggle_icon('accordion_icon_{{ forloop.counter }}')">
+                            <button class="course-detail__accordion-heading"
+                                    onclick="toggle_icon('accordion_icon_{{ forloop.counter }}')">
                                 <h2 id="course-detail__accordion-heading-{{ forloop.counter }}"
                                     aria-controls="course-detail__accordion-body-{{ forloop.counter }}"
                                     aria-label="Show {{ accordion.value.heading }} content"
                                     aria-expanded="false">
-                                    <i id="accordion_icon_{{ forloop.counter }}" class="fas fa-plus pr-3 text-white"></i>
+                                    <i id="accordion_icon_{{ forloop.counter }}"
+                                       class="fas fa-plus pr-3 text-white"></i>
                                     {{ accordion.value.heading }}
                                 </h2>
                             </button>
@@ -45,78 +47,78 @@
             {% endfor %}
         </div>
 
-    <div hidden class="">
-        <div class="course-detail__further-info-block">
-            <a href="/dummy-link" class="course-detail__other-courses-link">
-                <img class="course-detail__other-courses-link-icon" src="{% static 'images/location_paddle.svg' %}"
-                     alt="">
-                <span>{% autoescape off %}{% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
-            </a>
+        <div hidden class="">
+            <div class="course-detail__further-info-block">
+                <a href="/dummy-link" class="course-detail__other-courses-link">
+                    <img class="course-detail__other-courses-link-icon" src="{% static 'images/location_paddle.svg' %}"
+                         alt="">
+                    <span>{% autoescape off %}{% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
+                </a>
 
-            <a href="/dummy-link" class="course-detail__other-courses-link">
-                <img class="course-detail__other-courses-link-icon" src="{% static 'images/curved_arrow_right.svg' %}"
-                     alt="">
-                <span>{% autoescape off %}{% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
-            </a>
+                <a href="/dummy-link" class="course-detail__other-courses-link">
+                    <img class="course-detail__other-courses-link-icon"
+                         src="{% static 'images/curved_arrow_right.svg' %}"
+                         alt="">
+                    <span>{% autoescape off %}{% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
+                </a>
+            </div>
         </div>
+
+        {% include 'courses/partials/compare-popup-bar.html' %}
     </div>
+    <script>
+        function toggle_icon(icon_id) {
+            var icon_name = "#" + icon_id;
+            $(icon_name).toggleClass("fa-plus");
+            $(icon_name).toggleClass("fa-minus");
+        }
 
-    {% include 'courses/partials/compare-popup-bar.html' %}
-</div>
-<script>
-function toggle_icon(icon_id){
-    var icon_name = "#" + icon_id;
-    $(icon_name).toggleClass("fa-plus");
-    $(icon_name).toggleClass("fa-minus");
-}
+        $(document).ready(function () {
+            $('#sticky_nav_course_detail').hide();
+            $('body').scrollspy({
+                target: '#sticky_nav_course_detail',
+                offset: 90
+            });
 
-    $( document ).ready(function() {
-        $('#sticky_nav_course_detail').hide();
-        $('body').scrollspy({ 
-            target: '#sticky_nav_course_detail',
-            offset: 90
+            $('#myScrollspy').on('activate.bs.scrollspy', function () {
+                // do something…
+            });
+            var $items = $('.nav-item');
+
+            $items.on('click', function () {
+                var selectedIndex = $items.index(this);
+                $items.eq(selectedIndex).find('a').trigger('click');
+            });
+
+            $('.scrollto').click(function (event) {
+                var anchor = $(this);
+
+                if (screen.width <= 600) {
+                    $('html, body').stop().animate({scrollTop: $(anchor.attr('href')).offset().top - 430}, 1500);
+                    event.preventDefault();
+                } else if (screen.width > 600 && screen.width <= 750) {
+                    $('html, body').stop().animate({scrollTop: $(anchor.attr('href')).offset().top - 420}, 1500);
+                    event.preventDefault();
+                } else {
+                    $('html, body').stop().animate({scrollTop: $(anchor.attr('href')).offset().top - 80}, 1500);
+                    event.preventDefault();
+                }
+            });
+
+            $('.dropdown-menu a').click(function () {
+                $('#selected').text($(this).text());
+            });
+
         });
 
-        $('#myScrollspy').on('activate.bs.scrollspy', function () {
-            // do something…
-        });
-        var $items = $('.nav-item');
 
-        $items.on('click', function() {
-            var selectedIndex = $items.index(this);
-            $items.eq(selectedIndex).find('a').trigger('click');
-        });
-
-        $('.scrollto').click(function(event) {
-            var anchor = $(this);
-
-            if (screen.width <= 600) {
-                $('html, body').stop().animate({scrollTop: $(anchor.attr('href')).offset().top - 430}, 1500);
-                event.preventDefault();
-            }else if (screen.width > 600 && screen.width <= 750) {
-                $('html, body').stop().animate({scrollTop: $(anchor.attr('href')).offset().top - 420}, 1500);
-                event.preventDefault();
-            }else{
-                $('html, body').stop().animate({ scrollTop: $(anchor.attr('href')).offset().top - 80}, 1500);
-                event.preventDefault();
+        $(window).scroll(function () { // when the page is scrolled run this
+            if ($(this).scrollTop() >= ($('.course-detail__lead').outerHeight() + $('.discover-uni-nav').outerHeight() + 10 - $('#sticky_nav_course_detail').outerHeight())) {
+                $('#sticky_nav_course_detail').fadeIn("fast"); // fade in
+            } else { // else
+                $('#sticky_nav_course_detail').fadeOut("fast"); // fade out
             }
         });
 
-        $('.dropdown-menu a').click(function(){
-            $('#selected').text($(this).text());
-        });
 
-    });
-
-
-    $(window).scroll(function() { // when the page is scrolled run this
-        if($(this).scrollTop() >= ($('.course-detail__lead').outerHeight() + $('.discover-uni-nav').outerHeight() + 10 - $('#sticky_nav_course_detail').outerHeight())) {
-            $('#sticky_nav_course_detail').fadeIn("fast"); // fade in
-        } else { // else
-            $('#sticky_nav_course_detail').fadeOut("fast"); // fade out
-        }
-    });
-
-    
-
-</script>
+    </script>
