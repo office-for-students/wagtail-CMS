@@ -182,24 +182,24 @@
         {% for course_index in '12'|make_list %}
             {% if course_index == "1" %}
                 {% define course1 as course %}
-                {% define course1_job_type_stats as job_type_stats %}
-                {% define course1_job_list_stats as job_list_stats %}
+                {% define course1_job_type_stats as jobtype_stats %}
+                {% define course1_job_list_stats as joblist_stats %}
             {% else %}
                 {% define course2 as course %}
-                {% define course2_job_type_stats as job_type_stats %}
-                {% define course2_job_list_stats as job_list_stats %}
+                {% define course2_job_type_stats as jobtype_stats %}
+                {% define course2_job_list_stats as joblist_stats %}
             {% endif %}
 
             <div class="comparison__course-column">
                 <div class="comparison__course">
                     {% if course.has_multiple_job_type_stats %}
                     <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
-                        <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ job_type_stats.display_subject_name }}</h1>
+                        <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ jobtype_stats.display_subject_name }}</h1>
                     </div>
                     {% endif %}
-                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=job_type_stats.display_unavailable_info %}
+                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
 
-                    {% if job_type_stats.display_stats %}
+                    {% if jobtype_stats.display_stats %}
                     <div class="employment-after-course_occupation-block mx-1 my-2 p-4">
                         <h2 class="employment-after-course__stats-heading text-left pt-3 mb-4">
                             {{block.value.six_month_employment_roles_label_explanation_heading}}{% if course_details.has_multiple_job_type_stats %}
@@ -218,7 +218,7 @@
                                         <h2 class="mb-0 text-center text-lg-left">{{ jobtype_stats.professional_or_managerial_jobs }}%</h2>
                                         <h4 class="pt-1 text-center text-lg-left  mb-3">{% get_translation key='highly_skilled' language=page.get_language %}</h4>
                                         {% for job in joblist_stats.jobs %}
-                                            {% if job.hs == 1 %}
+                                            {% if job.hs == "1" %}
                                             <div class="row">
                                                 <div class="col-2">
                                                     <p>{{job.percentage}}%</p>
@@ -236,7 +236,7 @@
                                         <h2 class="mb-0 text-center text-lg-left">{{ jobtype_stats.non_professional_or_managerial_jobs  }}%</h2>
                                         <h4 class="pt-1 text-center text-lg-left mb-3">{% get_translation key='other_work' language=page.get_language %}</h4>
                                         {% for job in joblist_stats.jobs %}
-                                            {% if job.hs == 0 %}
+                                            {% if job.hs == "0" %}
                                             <div class="row">
                                                 <div class="col-2">
                                                     <p>{{job.percentage}}%</p>
@@ -253,8 +253,8 @@
                                     <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
                                         <h2 class="mb-0 text-center text-lg-left">{{ jobtype_stats.unknown_professions }}%</h2>
                                         <h4 class="pt-1 text-center text-lg-left mb-3">{% get_translation key='unknown_work' language=page.get_language %}</h4>
-                                         {% for job in joblist_stats.jobs %}
-                                            {% if job.hs == 2 %}
+                                        {% for job in joblist_stats.jobs %}
+                                            {% if job.hs == "2" %}
                                             <div class="row">
                                                 <div class="col-2">
                                                     <p>{{job.percentage}}%</p>
