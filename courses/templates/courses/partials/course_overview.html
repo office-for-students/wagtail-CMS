@@ -122,17 +122,22 @@
         </div>
 
     {% elif course.has_multiple_subject_names %}
-        <div class="siobhan-to-format-1">
-            <div class="col">
-                <div class="siobhan-to-format-2">
-                    <p>{% get_translation key='course_details_joint_overview_1' language=page.get_language %}</p>
+        <div class="course-detail__joint-overview mb-3 py-3 px-2 mt-3">
+            <div class="row mx-0">
+                <div class="col-md-4 col-sm-12 mx-auto">
+                    <div class="course-detail__joint-overview-heading mt-2">
+                        <h3>{% get_translation key='course_details_joint_overview_1' language=page.get_language %}</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="siobhan-to-format-3">
-                    <p class="siobhan-to-format-4">{% get_translation key='course_details_joint_overview_2' language=page.get_language %}</p>
-                    <!-- Siobhan - maybe the following hyperlink should open a new page. Who knows! The requirements are incomplete. -->
-                    <a class="siobhan-to-format-5" href="{% get_translation key='course_details_joint_overview_4' language=page.get_language %}">{% get_translation key='course_details_joint_overview_3' language=page.get_language %}</a>
+                <div class="col-md-8 col-sm-12 mx-auto">
+                    <div class="course-detail__joint-overview-body">
+                        <p class="">
+                            {% get_translation key='course_details_joint_overview_2' language=page.get_language %}
+                        </p>
+                        <p>
+                            <a class="" href="{% get_translation key='course_details_joint_overview_4' language=page.get_language %}">{% get_translation key='course_details_joint_overview_3' language=page.get_language %}</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
