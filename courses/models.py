@@ -429,6 +429,20 @@ class Course:
                 earnings_aggregate.sync_sector_earnings(self.leo5_salaries_sector)
                 self.salary_aggregates.append(earnings_aggregate)
 
+
+    # This is the message to display at the top level of the Earnings accordion section if no data is available.
+    def display_no_earnings_info(self):
+        unavailable = {}
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["reason"] = "Sorry, there is no data available for this course.\n\nThis may be because the course size is too small. This does not reflect on the quality of the course."
+        else:
+            unavailable["reason"] = "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+
+        return unavailable
+
     def get_subject_codes_for_earnings_aggregation(self):
         subject_codes = []
         all_salaries_inst = self.go_salaries_inst + self.leo3_salaries_inst + self.leo5_salaries_inst
@@ -1027,7 +1041,7 @@ class JobTypeStatistics:
 
         return unavailable
 
-
+# apw: This class doesn't seem to be referenced anywhere any more. Probably can delete it.
 class SalaryStatistics:
 
     def __init__(self, data_obj, language, course_title):
@@ -1917,6 +1931,22 @@ class SalariesAggregate:
         if self.display_language == enums.languages.ENGLISH:
             return self.subject_english if self.subject_english else self.subject_welsh
         return self.subject_welsh if self.subject_welsh else self.subject_english
+
+    def display_no_data_info(self):
+        unavailable = {}
+
+        if self.unavailable_reason:
+            unavailable["reason"] = self.unavailable_reason
+        else:
+            if self.display_language == enums.languages.ENGLISH:
+                unavailable["reason"] = self.unavailable_reason_english if self.unavailable_reason_english \
+                    else self.unavailable_reason_welsh
+            else:
+                unavailable["reason"] = self.unavailable_reason_welsh if self.unavailable_reason_welsh else self.unavailable_reason_english
+
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+
+        return unavailable
 
 
 def separate_unavail_reason(reason_unseparated):

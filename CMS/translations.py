@@ -1514,5 +1514,9 @@ DICT = {
         'en': '/search-landing-page/course-finder-choose-country/',
         'cy': '/cy/search-landing-cy/course-finder-choose-country-cy/'
     },
+    'professional_accreditation_no_data': {
+        'en': 'There are no professional accreditations recorded',
+        'cy': "Nid oes unrhyw achrediadau proffesiynol wedi'u cofnodi"
+    },
    
 }
