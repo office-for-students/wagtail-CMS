@@ -1,6 +1,7 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
 
-        {# if course_details.show_salary_lead #}
+        {% if course_details.salary_aggregates %}
+            {% if course_details.show_salary_lead %}
             <div class="earnings-after-course__lead my-3 p-3 mx-1 pt-4 flex-wrap">
                 <div class="row">
                     <div class="col-lg-4 col-md-12 px-4 earnings-after-course__lead-title align-self-stretch my-auto text-lg-left text-center">
@@ -11,10 +12,12 @@
                     </div>
                 </div>
             </div>
-        {# endif #}
+            {% endif %}
+        {% else %}
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
+        {% endif %}
 
-        <!-- Not sure it makes sense to have an UNAVAIL message at the subject level for earnings. Comment it out for now. -->
-        {# include 'courses/partials/unavailable_disclaimer.html' with unavailable=xxx.display_unavailable_info #}
+
 
 {% if course_details.has_multiple_salary_aggregates %}
 <ul class="nav nav-tabs mt-2" id="earnings-after-course-tab" role="tablist">

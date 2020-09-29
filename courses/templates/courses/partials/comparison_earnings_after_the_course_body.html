@@ -12,18 +12,18 @@
 
     {% if course1_subject_name or course2_subject_name %}
 
-        {# if course_details.show_salary_lead #}
-        <div class="earnings-after-course__lead my-3 p-3 mx-1 pt-4 flex-wrap">
-            <div class="row">
-                <div class="col-lg-4 col-md-12 px-4 earnings-after-course__lead-title align-self-stretch my-auto text-lg-left text-center">
-                    <p>{{block.value.section_heading}}</p>
-                </div>
-                <div class="col-lg-8 col-md-12 earnings-after-course__lead-intro align-self-stretch my-auto pt-2 text-left">
-                    <p>{{block.value.intro | richtext}}</p>
+        {% if course_details.show_salary_lead %}
+            <div class="earnings-after-course__lead my-3 p-3 mx-1 pt-4 flex-wrap">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 px-4 earnings-after-course__lead-title align-self-stretch my-auto text-lg-left text-center">
+                        <p>{{block.value.section_heading}}</p>
+                    </div>
+                    <div class="col-lg-8 col-md-12 earnings-after-course__lead-intro align-self-stretch my-auto pt-2 text-left">
+                        <p>{{block.value.intro | richtext}}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        {# endif #}
+        {% endif %}
 
         <div class="one-year__block">
             <div class="comparison__course-columns">
@@ -316,8 +316,16 @@
             </div>
         </div>
     
+    {% else %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
     {% endif %}
 {% endfor %}
+
+{% if course1.salary_aggregates and course2.salary_aggregates %}
+    <h2>dfsdf</h2>>
+{% else %}
+    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
+{% endif %}
 
 <script>
     $(document).ready(function() {
