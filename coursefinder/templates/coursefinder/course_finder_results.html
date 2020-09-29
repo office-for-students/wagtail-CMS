@@ -32,7 +32,7 @@
     <div class="row mx-0">
         <div class="col-9 overflow-visible pr-0">
             <div class="course-finder__intro-title pt-4 pl-md-4 pl-sm-2 ">
-                <h1>Search results</h1>
+                <h1>{% get_translation key='search_results' language=page.get_language %}</h1>
             </div>
         </div>
         <div class="col-3 p-0 text-right">
@@ -43,7 +43,7 @@
     <div id="course-finder__intro-panel" class="course-finder__intro-panel bg-white">
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6 p-3 pr-4">
-                <h4 class="mb-3">Search by course or location</h4>
+                <h4 class="mb-3">{% get_translation key='by_course_location' language=page.get_language %}</h4>
                 <form class="search-landing-page__search" action="{{search_url}}" method="post"
                       autocomplete="off">
                     {% csrf_token %}
@@ -78,12 +78,9 @@
             </div>
             <div class="dash-vertical-left col-6 text-center p-3 d-none d-md-block">
                 <div class="course-finder__info-block">
-                    <h5 class="text-center">Need help choosing?</h5>
-                    <h6 class="pt-2 text-center">Search our guidance for help making the best decision for you.</h6>
-                    <h6 class="pt-2 text-center"><a href="#">Information and advice.</a></h6>
-                    <button class="mt-4 home-page__search-button justify-content-center py-2 px-md-3 px-lg-5">Start
-                        Now
-                    </button>
+                    <h5 class="text-center">{% get_translation key='need_help_choosing' language=page.get_language %}</h5>
+                    <h6 class="pt-2 text-center">{% get_translation key='search_our_guidance' language=page.get_language %}</h6>
+                    <h6 class="pt-2 text-center"><a href="{% get_translation key='info_and_advice_url' language=page.get_language %}">{% get_translation key='info_and_advice' language=page.get_language %}</a></h6>
                 </div>
             </div>
         </div>
@@ -110,18 +107,17 @@
     </div>
     {% include 'courses/partials/compare-popup-bar.html' %}
     <div class="course-finder__info-block mx-2 d-block d-md-none text-center mx-auto">
-        <h5 class="text-center">Need help choosing?</h5>
-        <h6 class="pt-2 text-center">Search our guidance for help making the best decision for you.</h6>
-        <h6 class="pt-2 text-center"><a href="#">Information and advice.</a></h6>
-        <button class="mt-4 home-page__search-button justify-content-center py-2 px-5 mx-auto">Start Now</button>
+        <h5 class="text-center">{% get_translation key='need_help_choosing' language=page.get_language %}</h5>
+        <h6 class="pt-2 text-center">{% get_translation key='search_our_guidance' language=page.get_language %}</h6>
+        <h6 class="pt-2 text-center"><a href="{% get_translation key='info_and_advice_url' language=page.get_language %}">{% get_translation key='info_and_advice' language=page.get_language %}</a></h6>
+        <button class="mt-4 home-page__search-button justify-content-center py-2 px-5 mx-auto">{% get_translation key='course_wizard_start_now' language=page.get_language %}</button>
     </div>
     <div class="course-finder__course-wizard col-12 text-center mb-4 mt-3">
-        <h5 class="text-center">Not found what you were looking for?</h5>
-        <h6 class="pt-2 text-center">Try our course wizard to narrow your search down</h6>
+        <h5 class="text-center">{% get_translation key='not_found_looking' language=page.get_language %}</h5>
+        <h6 class="pt-2 text-center">{% get_translation key='try_course_wizard' language=page.get_language %}</h6>
         <div class="col-12">
-            <button class="mt-4 home-page__search-button justify-content-center py-2 px-5 mx-auto">Search</button>
+            <a href="{% get_translation key='course_wizard_start_now_url' language=page.get_language %}" class="mt-4 home-page__search-button justify-content-center py-2 px-5 mx-auto">{% get_translation key='search' language=page.get_language %}</a>
         </div>
-
     </div>
 </div>
 
