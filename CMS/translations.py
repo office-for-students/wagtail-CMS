@@ -1474,6 +1474,45 @@ DICT = {
         'en': 'https://discoveruni.gov.uk/about-our-data/',
         'cy': "https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/"
     },
-    
+     'clear_filters': {
+        'en': 'Clear Filters',
+        'cy': "Clirio'r Hidlau"
+    },
+     'show_filters': {
+        'en': 'Show Filters',
+        'cy': "Dangoswch yr Hidlau"
+    },
+     'need_help_choosing': {
+        'en': 'Need help choosing?',
+        'cy': "Angen help dewis?"
+    },
+     'search_our_guidance': {
+        'en': 'Search our guidance for help making the best decision for you.',
+        'cy': "Chwiliwch yn ein canllawiau am gymorth i wneud y penderfyniad gorau i chi."
+    },
+     'info_and_advice': {
+        'en': 'Information and advice.',
+        'cy': "Gwybodaeth a chyngor"
+    },
+     'info_and_advice_url': {
+        'en': '/how-do-i-choose-course/',
+        'cy': "/cy/how-choose-course-cy/"
+    },
+     'search_results': {
+        'en': 'Search results',
+        'cy': "Canlyniadau'r chwiliad"
+    },
+     'try_course_wizard': {
+        'en': 'Try our course wizard to narrow your search down',
+        'cy': "Rhowch gynnig ar ein dewin cwrs er mwyn culhau eich chwiliad"
+    },
+     'not_found_looking': {
+        'en': 'Not found what you were looking for?',
+        'cy': "Heb ddarganfod yr hyn yr oedd ei angen arnoch?"
+    },
+    'course_wizard_start_now_url': {
+        'en': '/search-landing-page/course-finder-choose-country/',
+        'cy': '/cy/search-landing-cy/course-finder-choose-country-cy/'
+    },
    
 }
