@@ -22,7 +22,7 @@
                 <div class="comparison__course">
                     {% if course.has_multiple_graduate_perceptions_stats %}
                     <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
-                        <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ course_perception_stats.display_subject_name }}</h1>
+                        <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ perceptions_stats.display_subject_name }}</h1>
                     </div>
                     {% endif %}
 
