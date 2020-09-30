@@ -25,8 +25,10 @@
                         <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ course_continuation_stats.display_subject_name }}</h1>
                     </div>
                     {% endif %}
-                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_continuation_stats.display_unavailable_info %}
-
+                    <div class="mt-3">
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_continuation_stats.display_unavailable_info %}
+                    </div>
+                    
                     <div class="one-year__overview my-3 mx-1 p-3 d-flex flex-wrap row">
                         <div class="col-12 align-self-stretch my-auto px-0">
                             <p class="one-year__overview-lead">

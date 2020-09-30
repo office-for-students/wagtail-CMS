@@ -29,7 +29,7 @@
                 <div class="comparison__course">
                     {% if course.has_multiple_satisfaction_stats %}
                     <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
-                        <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ course_satisfaction_stats.display_subject_name }}</h1>
+                        <h1 class="pb-0 ">{% get_translation key='subject' language=page.get_language %}: {{ course_satisfaction_stats.display_subject_name }}</h1>
                     </div>
                     {% endif %}
                     {% if course_satisfaction_stats.question_27.show_data_point %}
@@ -39,7 +39,7 @@
                                     {{ course_satisfaction_stats.question_27.agree_or_strongly_agree }}%
                                 </p>
                             </div>
-                            <div class="col-lg-9 col-md-12 align-self-stretch my-auto pt-2 text-center text-lg-left">
+                            <div class="col-lg-9 col-md-12 align-self-stretch  pt-2 text-center text-lg-left">
                                 <p>
                                     {{ block.value.lead_text }}
                                     <div class="student-satisfaction__intro">
@@ -58,7 +58,7 @@
                     {% if course_satisfaction_stats.show_satisfaction_stats %}
                         {% if course_satisfaction_stats.show_teaching_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 px-1 mx-1 scroll_item">
-                                <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                                <div class="col-lg-4 col-md-12  pt-3 text-left pt-3" >
                                     <h2 class="student-satisfaction__data-group-heading text-left">
                                         {{block.value.teaching_stats_header }}
 
@@ -68,7 +68,7 @@
                                         </p>
                                     </h2>
                                 </div>
-                                <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
+                                <div class="student-satisfaction__charts col-lg-8 col-md-12  justify-content-start">
                                     {%  if course_satisfaction_stats.question_1.show_data_point %}
                                         <div class="student-satisfaction__chart-wrapper">
                                             <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
@@ -159,7 +159,7 @@
 
                         {% if course_satisfaction_stats.show_learning_opps_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
-                                <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                                <div class="col-lg-4 col-md-12 pt-3 text-left pt-3" >
                                     <h2 class="student-satisfaction__data-group-heading text-left">
                                         {{block.value.learning_opportunities_stats_header }}
 
@@ -170,7 +170,7 @@
                                     </h2>
                                 </div>
 
-                                <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
+                                <div class="student-satisfaction__charts col-lg-8 col-md-12  justify-content-start">
                                     {%  if course_satisfaction_stats.question_5.show_data_point %}
                                         <div class="student-satisfaction__chart-wrapper">
                                                 <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
@@ -240,7 +240,7 @@
 
                         {% if course_satisfaction_stats.show_assessment_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
-                            <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                            <div class="col-lg-4 col-md-12  pt-3 text-left pt-3" >
                                 <h2 class="student-satisfaction__data-group-heading text-left">
                                     {{block.value.assessment_stats_header }}
                                     <p>
@@ -249,7 +249,7 @@
                                     </p>
                                 </h2>
                             </div>
-                            <div class="student-satisfaction__charts  col-lg-8 col-md-12 my-auto">
+                            <div class="student-satisfaction__charts  col-lg-8 col-md-12 ">
                                 {%  if course_satisfaction_stats.question_8.show_data_point %}
                                     <div class="student-satisfaction__chart-wrapper">
                                         <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
@@ -339,7 +339,7 @@
 
                         {% if course_satisfaction_stats.show_support_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
-                                <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                                <div class="col-lg-4 col-md-12  pt-3 text-left pt-3" >
                                     <h2 class="student-satisfaction__data-group-heading text-left">
                                         {{block.value.support_stats_header }}
                                         <p>
@@ -349,7 +349,7 @@
                                     </h2>
                                 </div>
 
-                                <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
+                                <div class="student-satisfaction__charts col-lg-8 col-md-12  justify-content-start">
                                     {%  if course_satisfaction_stats.question_12.show_data_point %}
                                         <div class="student-satisfaction__chart-wrapper">
                                             <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
@@ -418,7 +418,7 @@
 
                         {% if course_satisfaction_stats.show_organisation_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
-                                <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                                <div class="col-lg-4 col-md-12  pt-3 text-left pt-3" >
                                     <h2 class="student-satisfaction__data-group-heading text-left">
                                         {{block.value.organisation_stats_header }}
                                         <p>
@@ -428,7 +428,7 @@
                                     </h2>
                                 </div>
 
-                                <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
+                                <div class="student-satisfaction__charts col-lg-8 col-md-12  justify-content-start">
                                     {%  if course_satisfaction_stats.question_15.show_data_point %}
                                         <div class="student-satisfaction__chart-wrapper">
                                             <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
@@ -497,7 +497,7 @@
 
                         {% if course_satisfaction_stats.show_learning_resources_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
-                                <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                                <div class="col-lg-4 col-md-12  pt-3 text-left pt-3" >
                                     <h2 class="student-satisfaction__data-group-heading text-left">
                                         {{block.value.learning_resources_stats_header }}
                                         <p>
@@ -507,7 +507,7 @@
                                     </h2>
                                 </div>
 
-                                <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
+                                <div class="student-satisfaction__charts col-lg-8 col-md-12  justify-content-start">
                                     {%  if course_satisfaction_stats.question_18.show_data_point %}
                                         <div class="student-satisfaction__chart-wrapper">
                                             <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
@@ -577,7 +577,7 @@
 
                         {% if course_satisfaction_stats.show_learning_community_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
-                                <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                                <div class="col-lg-4 col-md-12  pt-3 text-left pt-3" >
                                     <h2 class="student-satisfaction__data-group-heading text-left">
                                         {{block.value.learning_community_stats_header }}
                                         <p>
@@ -587,7 +587,7 @@
                                     </h2>
                                 </div>
 
-                                <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
+                                <div class="student-satisfaction__charts col-lg-8 col-md-12  justify-content-start">
                                     {%  if course_satisfaction_stats.question_21.show_data_point %}
                                         <div class="student-satisfaction__chart-wrapper">
                                             <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
@@ -636,7 +636,7 @@
 
                         {% if course_satisfaction_stats.show_voice_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
-                                <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                                <div class="col-lg-4 col-md-12  pt-3 text-left pt-3" >
                                     <h2 class="student-satisfaction__data-group-heading text-left">
                                         {{block.value.student_voice_stats_header }}
                                         <p>
@@ -646,7 +646,7 @@
                                     </h2>
                                 </div>
 
-                                <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
+                                <div class="student-satisfaction__charts col-lg-8 col-md-12  justify-content-start">
                                     {%  if course_satisfaction_stats.question_23.show_data_point %}
                                         <div class="student-satisfaction__chart-wrapper">
                                             <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
@@ -736,11 +736,13 @@
                         {% endif %}
                     {% endif %}
 
-                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_satisfaction_stats.display_unavailable_info %}
-
+                    <div class="mt-3">
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_satisfaction_stats.display_unavailable_info %}
+                    </div>
+                
                     {% if course_nhs_satisfaction_stats %}
                         <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
-                            <div class="col-lg-4 col-md-12 my-auto pt-3 text-left" >
+                            <div class="col-lg-4 col-md-12  pt-3 text-left" >
                                 <h2 class="student-satisfaction__data-group-heading text-left">
                                     {{block.value.nhs_placement_stats_header }}
                                     <p>
@@ -751,7 +753,7 @@
                             </div>
 
                             {% if course_nhs_satisfaction_stats.show_nhs_stats %}
-                                <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
+                                <div class="student-satisfaction__charts col-lg-8 col-md-12  justify-content-start">
                                     {%  if course_nhs_satisfaction_stats.question_1.show_data_point %}
                                         <div class="student-satisfaction__chart-wrapper">
                                             <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
@@ -889,7 +891,9 @@
                             </div>
                         {%  endif %}
 
-                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_nhs_satisfaction_stats.display_unavailable_info %}
+                        <div class="mt-3">
+                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_nhs_satisfaction_stats.display_unavailable_info %}
+                        </div>
                     {% endif %}
                     </div>
                     </div>
