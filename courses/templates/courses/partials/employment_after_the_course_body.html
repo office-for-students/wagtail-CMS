@@ -165,6 +165,7 @@
 
 <div class="tab-content">
 {% for jobtype_stats, joblist_stats in course_details.sync_occupation_stats %}
+    {% if jobtype_stats.number_of_students and joblist_stats.jobs %}
     <div class="tab-pane {% if not forloop.counter0 %} show active {% endif %}" id="occupation-types-{{ forloop.counter }}" role="tabpanel" aria-labelledby="occupation-types-{{ forloop.counter }}-tab">
 
         <div class="employment-after-course_occupation-block mx-1 my-2 p-4">
@@ -258,5 +259,8 @@
 
         </div>
     </div>
+    {% else %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+    {% endif %}
 {% endfor %}
 </div>
