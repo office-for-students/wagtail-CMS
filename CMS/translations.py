@@ -1452,11 +1452,11 @@ DICT = {
     },
      'video_on_topic_title': {
         'en': 'Video on a relevant topic',
-        'cy': "awaiting Welsh translation"
+        'cy': "Fideo ar bwnc perthnasol"
     },
      'video_on_topic_content': {
         'en': '5 mins long',
-        'cy': "awaiting Welsh translation"
+        'cy': "5 munud o hyd"
     },
      'course_details_joint_overview_1': {
         'en': 'What you need to know about this course',
