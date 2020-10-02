@@ -12,6 +12,13 @@
             
             <div class="flat-content-page__body">
                 {{ page.content_body | richtext }}
+
+                 {% if 'survey' in page.title|lower %}
+                    <script id="ss-embed-968180">
+                        (function(d,w){var s,ss;ss=d.createElement('script');ss.type='text/javascript';ss.async=true;ss.src=('https:'==d.location.protocol?'https://':'http://')+'www.smartsurvey.co.uk/s/r/embed.aspx?i=767222&c=968180';s=d.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ss, s);})(document,window);
+                    </script>
+                {% endif %}
+
             </div>
         </div>
     </div>
