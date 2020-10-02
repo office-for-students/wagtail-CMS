@@ -206,45 +206,49 @@
                     <div class="comparison__course">
 
                         <!-- -->
-                        {% if course.has_multiple_entry_stats %}
-                            <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
-                                <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ tariff_stats.display_subject_name }}</h1>
-                            </div>
-                        {% endif %}
-                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
-
-                        <div class="entry-information__block my-2">
-                            <div class="entry-information__ucas-points p-3 d-flex flex-wrap row mx-1">
-                                <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
-                                    <h2 class="entry-information__heading py-3">{{block.value.tariffs_heading}}</h2>
-                    
-                                        {% create_list course.data_from_html tariff_stats.number_of_students as substitutions %}
-                                        {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
-                                        {{ subbed_text | richtext }}
+                        {% if tariff_stats.tariffs %}
+                            {% if course.has_multiple_entry_stats %}
+                                <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
+                                    <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ tariff_stats.display_subject_name }}</h1>
                                 </div>
-                                <div class=" col-lg-8 col-md-12 align-self-stretch my-auto pt-2">
-                                    {% if tariff_stats.show_stats %}
-                                        <div class="entry-information__tariff-charts">
-                                            {% for tariff in tariff_stats.tariffs %}
-                                                <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}"
-                                                    data-label="entry-tariff-{{forloop.counter}}"
-                                                    data-title="{% get_translation key='tariff_graph_title' language=page.get_language %} {{tariff.label}}"
-                                                    data-desc="{% get_translation key='tariff_graph_desc' language=page.get_language %} {{tariff.label}}">
-                                                    <div class="row d-flex">
-                                                        <div class="col-8 order-md-1 order-lg-2 text-lg-right">
-                                                            {% include 'courses/partials/bar_chart.html' %}
-                                                        </div>
-                                                        <div class="col-4 order-md-2 order-lg-1">
-                                                            <label class="entry-information__chart-label" aria-hidden="true"><span class="float-lg-right">{{tariff.label}}</span></label>
+                            {% endif %}
+                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
+
+                            <div class="entry-information__block my-2">
+                                <div class="entry-information__ucas-points p-3 d-flex flex-wrap row mx-1">
+                                    <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
+                                        <h2 class="entry-information__heading py-3">{{block.value.tariffs_heading}}</h2>
+                        
+                                            {% create_list course.data_from_html tariff_stats.number_of_students as substitutions %}
+                                            {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
+                                            {{ subbed_text | richtext }}
+                                    </div>
+                                    <div class=" col-lg-8 col-md-12 align-self-stretch my-auto pt-2">
+                                        {% if tariff_stats.show_stats %}
+                                            <div class="entry-information__tariff-charts">
+                                                {% for tariff in tariff_stats.tariffs %}
+                                                    <div class="entry-information__chart discover-uni-chart bar" data-value="{{tariff.entrants}}"
+                                                        data-label="entry-tariff-{{forloop.counter}}"
+                                                        data-title="{% get_translation key='tariff_graph_title' language=page.get_language %} {{tariff.label}}"
+                                                        data-desc="{% get_translation key='tariff_graph_desc' language=page.get_language %} {{tariff.label}}">
+                                                        <div class="row d-flex">
+                                                            <div class="col-8 order-md-1 order-lg-2 text-lg-right">
+                                                                {% include 'courses/partials/bar_chart.html' %}
+                                                            </div>
+                                                            <div class="col-4 order-md-2 order-lg-1">
+                                                                <label class="entry-information__chart-label" aria-hidden="true"><span class="float-lg-right">{{tariff.label}}</span></label>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                    {% endif %}
-                                 </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        {% else %}
+                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+                        {% endif %}
                         <!-- -->
 
                     </div>
