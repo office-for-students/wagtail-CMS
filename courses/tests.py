@@ -2,7 +2,7 @@ from unittest.mock import patch
 
 from CMS.test.mocks import CourseMocks
 from CMS.test.utils import UniSimpleTestCase
-from courses.models import SatisfactionBlock, EntryInformationBlock, AfterOneYearBlock, AfterCourseBlock, \
+from courses.models import SatisfactionBlock, EntryInformationBlock, AfterOneYearBlock, EarningsAfterCourseBlock, \
     AccreditationBlock, Course
 from errors.models import ApiError
 
@@ -22,8 +22,8 @@ class CoursesModelsTests(UniSimpleTestCase):
         self.assertEquals(one_year_block.data_set(), 'after_one_year')
 
     def test_AfterCourseBlock_returns_after_the_course_data_set_value(self):
-        after_course_block = AfterCourseBlock().meta.value_class
-        self.assertEquals(after_course_block.data_set(), 'after_the_course')
+        after_course_block = EarningsAfterCourseBlock().meta.value_class
+        self.assertEquals(after_course_block.data_set(), 'earnings_after_the_course')
 
     def test_AccreditationBlock_returns_professional_accreditation_data_set_value(self):
         accreditation_block = AccreditationBlock().meta.value_class

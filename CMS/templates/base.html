@@ -19,9 +19,7 @@
         <meta name="currentversion" content="{% current_version %}">
         <meta name="pagelanguage" content="{{page.get_language}}">
 
-
-
-        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:regular,bold&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,bold&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -29,62 +27,28 @@
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
-
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <script type="text/javascript" src="{% get_static_prefix %}js/main.js?{% code_version %}"></script>
          <script type="text/javascript" src="{% get_static_prefix %}js/load-error-popup.js?{% code_version %}"></script>
-         <!--<script type="text/javascript" src="{% static 'js/cookie-banner.js' %}"></script>-->
-         <!--<script type="text/javascript" src="{% static 'js/subject_chooser.js' %}"></script>-->
-         <!--<script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>-->
-         <!--<script type="text/javascript" src="{% static 'js/nav.js' %}"></script>-->
-         <!--<script type="text/javascript" src="{% static 'js/bookmark-nav.js' %}"></script>-->
-         <!--<script type="text/javascript" src="{% static 'js/dropdown.js' %}"></script>-->
-         <!--<script type="text/javascript" src="{% static 'js/search-dropdown.js' %}"></script>-->
-         <!--<script type="text/javascript" src="{% static 'js/feedback-form.js' %}"></script>-->
          {% block extra_js %}
              {# Override this in templates to add extra javascript #}
          {% endblock %}
 
          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147556197-1"></script>
-         <script type="text/javascript">
-            /*<![CDATA[*/
-            (function() {
-                          var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
-                          sz.src = '//siteimproveanalytics.com/js/siteanalyze_267004.js';
-                          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
-            })();
-            /*]]>*/
-            </script>
-         <!--<script type="text/javascript" src="{% static 'js/google-analytics-tracking.js' %}"></script>-->
+
+        <!-- Bootstrap - Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <!-- Bootstrap - bundle library -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap - Latest compiled JavaScript -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="{% block body_class %}{% endblock %}" >
         {% include 'partials/nav.html' %}
 
         {% wagtailuserbar %}
-
-        <div>
-            <a class="covid-19-banner" href="{% if page.is_english %}/corona-covid-19-information/{% else %}/cy/cynnwys-corona-covid-19/{% endif %}">
-                {% get_translation key='covid_19_info' language=page.get_language %}
-            </a>
-        </div>
-
-        {% if 'covid-19' in page.title|lower or "course details" in page.title|lower or "manylion y cwrs" in page.title|lower or "compare courses" in page.title|lower or "cymharu cyrsiau" in page.title|lower %}
-            <div class="check-courses-details-banner-container">
-                <div class="check-courses-details-banner" role="alert">
-                    <div class="check-courses-details-banner__exclamation-sign">
-                        <img src="/static/images/large-exclamation-mark.svg" alt="">
-                    </div>
-                    <div class="check-courses-details-banner__message">
-                        <b>{% get_translation key='Important You need to check the details of any courses you are considering or applying for on the university or college website' language=page.get_language %}</b>
-                        {% get_translation key='Many courses due to start in autumn 2020 are being changed to online delivery in whole or part. Start dates and course content/structures may also be changing' language=page.get_language %}</br>
-                        {% if page.is_english %}
-                                For more information and advice, please refer to our <a href="/how-do-i-choose-course/downloadable-resources/">downloadable resources</a> for students, teachers and advisers.
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        {% endif %}
 
         <main>
             <div id="main-content" tabindex="-1">
@@ -96,7 +60,6 @@
                     </div>
                 </a>
             </div>
-
             {% include 'partials/feedback-form.html' %}
 
             {% if not cookies_accepted and not load_error %}

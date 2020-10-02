@@ -2,96 +2,290 @@
 @import '../../../CMS/static/scss/variables';
 @import '../../../CMS/static/scss/buttons';
 
-.home {
-    padding: 69px 0px 62px;
-    background-image: url('/static/images/home-background.png');
-    background-size: cover;
-    background-position: center bottom;
 
+.home-page__header{
+    font-family: "Nunito Sans", sans-serif;
+    background-color: #1F283A;
+    background: -webkit-linear-gradient(top, #1F283A 40% , $white 40%); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom, #1F283A 40%, $white 40%); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom, #1F283A 40%, $white 40%); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom, #1F283A 40% , $white 40%); /* Standard syntax */
+    padding-bottom:0;
+    color:$white;
 
-    .discover-uni-container {
-        padding-right: 25px;
-        padding-left: 25px;
+    .home-page__header-bg-icon{
+        height:100px;
+        width:auto;
+    }
+    .row{
+        margin-left: 0;
+        margin-right: 0;
     }
 
-    .header {
-        @include l-heading-mixin();
-        margin-bottom: 30px;
-
-        color: $ux-grey-3;
-        line-height:52px;
+    .home-page__header-text{
+        color:white;
+        font-weight:bold;
+        font-size:1.5rem;
     }
-
-    .intro-text {
-        p {
-            @include desktop-body-font-mixin();
-            margin-top: 0px;
-            margin-bottom: 14px;
-
-            line-height: 26px;
+    .home-page__intro-panel{
+        color:$black;
+        font-weight:bold;
+        font-size:1.2rem;
+        margin-top:2rem;
+        margin-left:1rem;
+        margin-right:1rem;
+        padding:1rem;
+    
+        .col-lg-1{
+            padding:0;
+            padding-left:1rem;
+            flex: 0 0 2.333333%;
+            max-width: 2.333333%;
         }
 
-        ul {
-            padding-left: 25px;
+        .home-page__search-button{
+            background-color: #fcd835;
+            color:black;
+            font-family: "Nunito Sans", sans-serif;
+            font-size:1rem;
+            border:none;
+            font-weight:bold;
+        }
+        h4{
+            color:$black;
+            font-size:1.2rem;
+            font-weight:bold;
+        }
+        h5{
+            font-weight:normal;
+            font-size:0.9rem;
+            
+        }
+        .home-page__course-wizard-icon{
+            height:45px;
+            width:auto;
+            margin-left:0.5rem;
+            margin-right:0.5rem;
+            margin-bottom:1.5rem;
+        }
 
-            li {
-                @include mobile-body-font-mixin();
+        .search-dropdown .search-field-dropdown-button{
+            position: absolute;
+            display: inline-block;
+            top: 10%;
+            right: 4px;
+            width: 32px;
+            height: 85%;
+            border: none;
+            background-color: $white;
+            cursor: pointer;
+            outline: none;
+        }
+    
 
-                list-style-image: url('/static/images/bullet-check.svg');
-                padding-left: 5px;
+        input#institution_query-search.search-field-input{
+            border-width: 1px solid #ced4da!important;
+            width: 100%;
+            border-radius: 5px 5px 5px 5px;
+            font-size:1rem;
+            color: rgb(73, 80, 87);
+            height:calc(1.5em + .75rem + 2px);
+            background-color:$white!important;
+            padding-left:0.7rem;
+        }
 
-                line-height: 22px;
+    }
+    .home-page__bookmark-body{
+        background-color: #8e3b74;
+        
+        h4{
+            font-size:1rem;
+        }
+
+        .home-page__bookmark-circle{
+            font-size:1.1rem;
+            background-color: #fcd835;
+            border-radius: 50%;
+            display: inline-block;
+            height:25px;
+            width:23px;
+            text-align: center;
+            margin: auto;
+            color:$black;
+        }
+        a.home-page__bookmark-link {
+            color:#fcd835;
+            text-decoration: underline;
+        }
+    }
+    
+}
+
+
+
+.home-page__body{
+    overflow:auto;
+    font-family: "Nunito Sans", sans-serif;
+    background-color: #2a8384;
+    padding:1rem;
+    padding-top:0;
+    color:$black;
+
+    .home-page__body-panel{
+        margin-top:2rem;
+        margin-bottom:1rem;
+        margin-left:1rem;
+        margin-right:1rem;
+        background-color: $white;
+
+        .row{
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .home-page__body-panel-title{
+            background-color: #d64f1d;
+            color:$white;
+            font-size:1.2rem;
+            font-weight:bold;
+            width:50%;
+        }
+        .home-page__search-button{
+            background-color: #fcd835;
+            color:black;
+            font-family: "Nunito Sans", sans-serif;
+            font-size:1rem;
+            border:none;
+            font-weight:bold;
+        }
+
+        h4{
+            font-size:1.2rem;
+            font-family: "Nunito Sans", sans-serif;
+            line-height: 1.14;
+            font-weight:bold;
+        }
+        h5{
+            font-size:0.8rem;
+            font-weight:normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+
+        }
+
+        .section-icons{
+            height:43px;
+            width:auto;
+        }
+
+        .video-iframe{
+            width:200px;
+            height:110px;
+        }
+    
+    }
+}
+
+.dash{
+    border: 0 none;
+    border-top: 2px dashed #a8a8a8;
+    background: none;
+    height:0;
+} 
+
+
+
+.overflow-visible{
+    overflow:visible!important;
+}
+
+@media only screen and (min-width: 500px) and (max-width: 992px){
+    .home-page__header{
+        .home-page__intro-panel{
+            margin-left:2rem;
+            margin-right:2rem;
+        }
+    }
+    .home-page__body{
+        .home-page__body-panel{
+            margin-left:2rem;
+            margin-right:2rem;
+            margin-bottom:2rem;
+
+            .section-icons{
+                height:55px;
+                width:auto;
             }
-        }
-    }
-
-    .link {
-        margin-top: 140px;
-
-        a {
-            @include green-cta-mixin();
-
-            text-decoration: none;
         }
     }
 }
 
-@media only screen and (min-width: 770px) {
-    .home {
-        padding: 15px 0px 103px;
-        background-position: initial;
-
-        .discover-uni-container {
-            padding: 0px;
+@media only screen and (min-width: 992px){
+    .home-page__header{
+        .home-page__header-bg-icon{
+            padding-top:15px;
+            height:150px;
+            width:auto;
+        }
+        .home-page__intro-panel{
+            
+            margin-left:4rem;
+            margin-right:4rem;
+        }
+        .home-page__course-wizard-icon{
+            height:63px!important;
+            width:auto;
+            
         }
 
-        .header {
-            @include xl-heading-mixin();
-            margin: 0px;
-            margin-bottom: 34px;
-
-            color: $ux-grey-3;
-            line-height:95px;
-        }
-
-        .intro-text {
-            p {
-                @include s-heading-mixin();
-
-                line-height: 37px;
+        .home-page__bookmark-body{
+            background-color: #8e3b74;
+            
+            h4{
+                font-size:1.2rem;
             }
 
-            ul {
-                li {
-                    @include xs-heading-mixin();
-
-                    line-height: 29px;
-                }
+            .home-page__bookmark-circle{
+                font-size:1.5rem;
+                background-color: #fcd835;
+                border-radius: 50%;
+                display: inline-block;
+                height:30px;
+                width:31px;
+                text-align: center;
+                margin: auto;
+                color:$black;
+            }
+            a.home-page__bookmark-link {
+                color:#fcd835;
+                text-decoration: underline;
             }
         }
 
-        .link {
-            margin-top: 40px;
+    }
+    .home-page__body{
+        .home-page__body-panel{
+            margin-top:4rem;
+            margin-bottom:4rem;
+            margin-left:4rem;
+            margin-right:4rem;
+
+            .section-icons{
+                height:66px;
+                width:auto;
+            }
+
+            .video-iframe{
+                width:200px;
+                height:110px;
+            }
         }
+    }
+    .dash-vertical-left{
+        border-left: 2px dashed #a8a8a8; 
+    }
+    .dash-vertical-right{
+        border-right: 2px dashed #a8a8a8; 
     }
 }

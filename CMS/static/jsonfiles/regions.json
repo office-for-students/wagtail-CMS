@@ -1,0 +1,87 @@
+[
+    {
+         "id": "_uk",
+         "name_en": "The UK",
+         "name_cy": "Y DU"
+     },
+     {
+         "id": "_e",
+         "name_en": "England",
+         "name_cy": "Lloegr"
+     },
+     {
+         "id": "_nw",
+         "name_en": "- North West",
+         "name_cy": "- Y Gogledd Orllewin"
+     },
+     {
+         "id": "_ne",
+         "name_en": "- North East",
+         "name_cy": "- Y Gogledd Ddwyrain"
+     },
+     {
+         "id": "_em",
+         "name_en": "- East Midlands",
+         "name_cy": "- Dwyrain y Canolbarth"
+     },
+     {
+         "id": "_wm",
+         "name_en": "- West Midlands",
+         "name_cy": "- Gorllewin y Canolbarth"
+     },
+     {
+         "id": "_se",
+         "name_en": "- South East",
+         "name_cy": "- Y De Ddwyrain"
+     },
+     {
+         "id": "_sw",
+         "name_en": "- South West",
+         "name_cy": "- Y De Orllewin"
+     },
+     {
+         "id": "_yh",
+         "name_en": "- Yorkshire and the Humber",
+         "name_cy": "- Swydd Efrog a'r Humber"
+     },
+     {
+         "id": "_ee",
+         "name_en": "- East of England",
+         "name_cy": "- Dwyrain Lloegr"
+     },
+     {
+         "id": "_lo",
+         "name_en": "- London",
+         "name_cy": "- Llundain"
+     },
+     {
+         "id": "_s",
+         "name_en": "Scotland",
+         "name_cy": "Yr Alban"
+     },
+     {
+         "id": "_ed",
+         "name_en": "- Edinburgh",
+         "name_cy": "- Caeredin"
+     },
+     {
+         "id": "_gl",
+         "name_en": "- Glasgow",
+         "name_cy": "- Glasgow"
+     },
+     {
+         "id": "_w",
+         "name_en": "Wales",
+         "name_cy": "Cymru"
+     },
+     {
+         "id": "_cf",
+         "name_en": "- Cardiff",
+         "name_cy": "- Caerdydd"
+     },
+     {
+         "id": "_ni",
+         "name_en": "Northern Ireland",
+         "name_cy": "Gogledd Iwerddon"
+     }
+ ]

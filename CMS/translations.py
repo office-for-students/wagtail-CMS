@@ -871,8 +871,8 @@ DICT = {
         'cy': 'Chwilio eto'
     },
     'back_to_results': {
-        'en': 'Back to results',
-        'cy': "Yn ôl i'r canlyniadau"
+        'en': 'Back',
+        'cy': "Canlyniadau"
     },
     'search_within': {
         'en': 'Search within',
@@ -979,8 +979,8 @@ DICT = {
         'cy': 'Blwyddyn dramor'
     },
     'study_and_working': {
-        'en': 'Studying and working',
-        'cy': 'Astudio a gweithio '
+        'en': 'Working and studying',
+        'cy': 'Gweithio a astudio'
     },
     'study_mode': {
         'en': 'Study mode',
@@ -1034,9 +1034,13 @@ DICT = {
         'en': 'Transport associate professionals',
         'cy': 'Gweithwyr proffesiynol  ym maes Cludiant'
     },
-    'unemployed': {
-        'en': 'Unemployed',
-        'cy': 'Di-waith'
+    'unemp_prev_emp_since_grad': {
+        'en': 'Unemployed – previously working or studying',
+        'cy': 'Yn ddi-waith - yn gweithio neu''n astudio cyn hynny'
+    },
+    'unemp_not_work_since_grad': {
+        'en': 'Unemployed - not employed since graduation',
+        'cy': 'Yn ddi-waith - heb gael gwaith ers graddio'
     },
     'uni_and_college': {
         'en': 'All universities and colleges',
@@ -1274,4 +1278,245 @@ DICT = {
         'en': 'Compulsory',
         'cy': 'Gorfodol'
     },
+    'Typical range': {
+        'en': 'Typical range',
+        'cy': 'Ystod arfero'
+    },
+    'Data from': {
+        'en': 'Data from',
+        'cy': 'Data gan'
+    },
+    'respondents': {
+        'en': 'students',
+        'cy': 'o myfyrwyr'
+    },
+    # 'students': {
+    #     'en': 'students',
+    #     'cy': 'o fyfyrwyr'
+    # },
+    'people': {
+        'en': 'people',
+        'cy': 'o fyfyrwyr'
+    },
+    'of those asked': {
+        'en': 'of those asked',
+        'cy': 'o''r rhai y gofynnwyd iddynt'
+    },
+    'student_satisfaction_course_overview_1': {
+        'en': 'Student Satisfaction',
+        'cy': 'Bodlonrwydd Myfyrwyr'
+    },
+    'student_satisfaction_course_overview_2': {
+        'en': 'agreed they were satisfied with the quality of the course',
+        'cy': 'cyfran y myfyrwyr a ymatebodd a oedd yn cytuno â’r datganiad “Rwy’n fodlon ag ansawdd y cwrs ar y cyfan”'
+    },
+    'student_satisfaction_course_overview_3': {
+        'en': 'Go to student satisfaction',
+        'cy': 'Mwy am fodlonrwydd myfyrwyr'
+    },
+    'average_earnings_course_overview_1': {
+        'en': 'Average Earnings',
+        'cy': 'Enillion cyfartalog'
+    },
+    'average_earnings_course_overview_2a': {
+        'en': '15 months after the course',
+        'cy': '15 mis ar ôl y cwrs'
+    },
+    'average_earnings_course_overview_2b': {
+        'en': '3 years after the course',
+        'cy': '3 blynedd ar ôl y cwrs'
+    },
+    'average_earnings_course_overview_3': {
+        'en': 'Go to earnings',
+        'cy': 'Mwy am enillion'
+    },
+    'employment_course_overview_1': {
+        'en': 'Employment',
+        'cy': 'Cyflogaeth'
+    },
+    'employment_course_overview_2': {
+        'en': 'go on to work and / or study within 15 months after the course',
+        'cy': 'yn symud ymlaen i weithio ac/neu astudio o fewn 15 mis ar ôl y cwrs'
+    },
+    'employment_course_overview_3': {
+        'en': 'Go to employment',
+        'cy': 'Mwy am gyflogaeth'
+    },
+    'entrance_data_need_to_know': {
+        'en': 'What you need to know about entry data',
+        'cy': 'Yr hyn y mae angen ichi wybod am ddata mynediad'
+    },
+    'entrance_data_quals_students_had': {
+        'en': 'These are the qualifications students had when they were accepted onto this course. This is not a list of qualifications a person needs to have to be accepted onto this course.',
+        'cy': 'Dyma''r cymwysterau a oedd gan fyfyrwyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon.'
+    },
+    'entrance_data_read_more': {
+        'en': 'Read more about entrance data',
+        'cy': 'Darllen mwy am ddata mynediad'
+    },
+    'after_1_year_overview_1': {
+        'en': 'Source',
+        'cy': 'Ffynhonnell'
+    },
+    'after_1_year_overview_2': {
+        'en': 'students',
+        'cy': 'myfyrwyr'
+    },
+    'after_1_year_overview_3': {
+        'en': 'of those who were asked',
+        'cy': 'o''r rhai y gofynnwyd iddynt'
+    },
+    'data_ind_stud_coll_dir': {
+        'en': 'Data for individual students collected directly from universities and colleges',
+        'cy': 'Data ar gyfer myfyrwyr unigol a gasglwyd yn uniongyrchol o brifysgolion a cholegau'
+    },
+    'default_region': {
+        'en': 'the UK',
+        'cy': 'y DU'
+    },
+    'data_from_html': {
+        'en': '<div class="d-inline d-md-none" ><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data from</div>',
+        'cy': '<div class="d-inline d-md-none"><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data gan</div>'
+    },
+    'entry_overview_2': {
+        'en': 'students',
+        'cy': 'myfyrwyr'
+    },
+    'entry_overview_3': {
+        'en': 'of those who were asked',
+        'cy': 'o''r rhai y gofynnwyd iddynt'
+    },
+    'accreditation_link_label': {
+        'en': 'Read more about professional accreditation',
+        'cy': 'Darllen mwy am achrediad proffesiynol'
+    },
+     'accreditation_description': {
+        'en': 'A professionally accredited course is one which has been approved or endorsed by one or more professional bodies. This is because the learning and achievement of graduates meets the professional benchmarks and standards set by the accrediting body.',
+        'cy': 'Cwrs wedi''i achredu''n broffesiynol yw cwrs sydd wedi''i gymeradwyo neu ei ategu gan un neu fwy o gyrff proffesiynol. Mae hyn oherwydd bod dysg a chyflawniad graddedigion yn bodloni''r meincnodau a''r safonau proffesiynol a osodir gan y corff achredu.'
+    },
+     'accreditation_need_to_know': {
+        'en': 'What you need to know about professional accreditation.',
+        'cy': 'Yr hyn y mae angen i chi ei wybod am achrediad proffesiynol'
+    },
+     'highly_skilled': {
+        'en': 'In highly skilled work',
+        'cy': 'Mewn swydd lle mae angen lefel uchel o sgiliau'
+    },
+     'other_work': {
+        'en': 'In other work',
+        'cy': 'Mewn math arall o swydd'
+    },
+     'unknown_work': {
+        'en': 'In unknown work',
+        'cy': 'Mewn swydd anhysbys'
+    },
+     'search_n_compare': {
+        'en': 'Search and compare',
+        'cy': 'Chwilio a chymharu'
+    },
+     'under_courses_uk': {
+        'en': 'undergraduate courses in the UK',
+        'cy': 'cyrsiau israddedig yn y DU'
+    },
+     'by_course_location': {
+        'en': 'Search by course or location',
+        'cy': 'Chwilio yn ôl cwrs neu leoliad'
+    },
+     'course_wizard': {
+        'en': 'Course Wizard',
+        'cy': 'Dewin Cwrs'
+    },
+     'answer_4_questions': {
+        'en': 'Answer 4 questions to find courses relevant to me',
+        'cy': "Atebwch 4 cwestiwn er mwyn darganfod cyrsiau sy'n berthnasol i mi"
+    },
+     'course_wizard_start_now': {
+        'en': 'Start Now',
+        'cy': 'Dechrau Nawr'
+    },
+     'n_courses_bookmarked_pt_1': {
+        'en': 'You have',
+        'cy': 'Mae gennych'
+    },
+     'n_courses_bookmarked_pt_2': {
+        'en': 'courses bookmarked',
+        'cy': "o gyrsiau wedi'u nodi"
+    },
+     'view_your_courses': {
+        'en': 'View your courses',
+        'cy': "Gweld eich cyrsiau"
+    },
+     'info_n_advice': {
+        'en': 'Information and advice',
+        'cy': "Gwybodaeth a chyngor"
+    },
+     'video_on_topic_title': {
+        'en': 'Video on a relevant topic',
+        'cy': "Fideo ar bwnc perthnasol"
+    },
+     'video_on_topic_content': {
+        'en': '5 mins long',
+        'cy': "5 munud o hyd"
+    },
+     'course_details_joint_overview_1': {
+        'en': 'What you need to know about this course',
+        'cy': "Beth y mae angen i chi ei wybod am y cwrs yma"
+    },
+     'course_details_joint_overview_2': {
+        'en': 'This course has information and data for more than one subject. The tabs below are there to help you see which subject the data relates to.',
+        'cy': "Mae’r cwrs yma’n cynnwys gwybodaeth a data ar gyfer mwy nag un pwnc. Pwrpas y llabedau isod yw eich helpu i weld pa bwnc y mae’r data yn berthnasol iddo"
+    },
+     'course_details_joint_overview_3': {
+        'en': 'Read more about courses with multiple subjects',
+        'cy': "Darllen mwy am gyrsiau sy’n cynnwys amryw o bynciau"
+    },
+     'course_details_joint_overview_4': {
+        'en': 'https://discoveruni.gov.uk/about-our-data/',
+        'cy': "https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/"
+    },
+     'clear_filters': {
+        'en': 'Clear Filters',
+        'cy': "Clirio'r Hidlau"
+    },
+     'show_filters': {
+        'en': 'Show Filters',
+        'cy': "Dangoswch yr Hidlau"
+    },
+     'need_help_choosing': {
+        'en': 'Need help choosing?',
+        'cy': "Angen help dewis?"
+    },
+     'search_our_guidance': {
+        'en': 'Search our guidance for help making the best decision for you.',
+        'cy': "Chwiliwch yn ein canllawiau am gymorth i wneud y penderfyniad gorau i chi."
+    },
+     'info_and_advice': {
+        'en': 'Information and advice.',
+        'cy': "Gwybodaeth a chyngor"
+    },
+     'info_and_advice_url': {
+        'en': '/how-do-i-choose-course/',
+        'cy': "/cy/how-choose-course-cy/"
+    },
+     'search_results': {
+        'en': 'Search results',
+        'cy': "Canlyniadau'r chwiliad"
+    },
+     'try_course_wizard': {
+        'en': 'Try our course wizard to narrow your search down',
+        'cy': "Rhowch gynnig ar ein dewin cwrs er mwyn culhau eich chwiliad"
+    },
+     'not_found_looking': {
+        'en': 'Not found what you were looking for?',
+        'cy': "Heb ddarganfod yr hyn yr oedd ei angen arnoch?"
+    },
+    'course_wizard_start_now_url': {
+        'en': '/search-landing-page/course-finder-choose-country/',
+        'cy': '/cy/search-landing-cy/course-finder-choose-country-cy/'
+    },
+    'professional_accreditation_no_data': {
+        'en': 'There are no professional accreditations recorded',
+        'cy': "Nid oes unrhyw achrediadau proffesiynol wedi'u cofnodi"
+    },
+   
 }

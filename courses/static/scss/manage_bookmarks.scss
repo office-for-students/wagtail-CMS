@@ -8,9 +8,7 @@
     &__overview {
         padding: 30px 50px;
         text-align: center;
-
-        border: 1px solid #707070;
-        border-radius: 10px;
+        border: solid 3px #cee9e7;
     }
 
     &__course-count {
@@ -34,9 +32,7 @@
         margin-top: 20px;
         padding: 30px 26px;
         text-align: center;
-
-        border: 1px solid #707070;
-        border-radius: 10px;
+        border: solid 3px #cee9e7;
 
         .rich-text {
             p {
@@ -50,6 +46,11 @@
                     margin-top: 0px;
                 }
             }
+        }
+        a {
+            color: #308282;
+            text-decoration: underline;
+            font-weight:bold;
         }
     }
 

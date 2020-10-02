@@ -2,28 +2,76 @@
 @import '../../../CMS/static/scss/variables';
 
 .one-year__block, .one-year__lead-block {
-    padding: 34px 30px 49px 30px;
 
-    .one-year__heading {
-        @include s-heading-mixin();
-
-        margin: 0;
-
-        color: $ux-grey-2;
+    p{
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 14px;
+        color: $brownish-grey;
+        font-weight: normal;
+        letter-spacing: normal;
+        line-height:normal;
+    }
+    .rich-text{
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 14px;
+        color: $brownish-grey;
+        font-weight: normal;
+        letter-spacing: normal;
+        line-height:normal;
+    }
+    a{
+        font-family: 'Nunito Sans', sans-serif;
+        color:#308282;
+        text-decoration: underline;
+        font-weight:normal;
     }
 
     .one-year__lead {
         @include small-font-mixin();
-
         margin-top: 5px;
     }
 
     .one-year__qualification-charts {
+        background-color:$ice-blue;
+
+        .one-year__heading {
+            @include s-heading-mixin();
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight:normal;
+            letter-spacing: normal;
+            color: $black;
+            font-size:24px;
+        }
+        .one-year__lead{
+           
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight:normal;
+            color: #000000;
+            font-size:14px;
+            letter-spacing: normal;
+            a{
+                text-decoration: underline;
+                color:$dark-green-blue;
+                font-weight:normal;
+            }
+        }
+
         .one-year__chart {
-            margin-bottom: 37px;
+            margin-bottom: 5px;
 
             &:last-of-type {
-                margin-bottom: 13px;
+                margin-bottom: 5px;
+            }
+
+            .one-year-block__chart-label{
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #666666;
             }
 
             .one-year__chart-label {
@@ -35,18 +83,13 @@
     }
 }
 
-.one-year__lead-block {
-    padding-bottom: 40px;
-}
 
 .one-year__overview {
-    @include desktop-body-font-mixin();
 
-    padding: 7px 30px 32px 30px;
     text-align: center;
-
-    border: 1px solid $ux-grey-3;
-    border-radius: 10px;
+    border: solid 3px $duck-egg-blue;
+    
+    @include desktop-body-font-mixin();
 
     p {
         margin: 0px;
@@ -54,15 +97,80 @@
 
     .one-year__overview-lead {
         @include l-heading-mixin();
-
-        color: $gradient-light-green;
-        line-height: 59px;
+        font-family: 'Nunito Sans', sans-serif;
+        color: #000000;
+        font-weight:normal;
+        letter-spacing: normal;
+        font-size: 32px;
+    }
+    .one-year__overview-sublead{
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 18px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #000000;
+        text-decoration: none;
+    }
+    p{
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: $brownish-grey;
+    }
+    a{
+        font-family: 'Nunito Sans', sans-serif;
+        text-decoration: underline;
+        color: $dark-green-blue;
+        font-weight:normal;
+        font-size: 14px;
     }
 }
 
 @media only screen and (min-width: 770px) {
+    .one-year__block .one-year__qualification-charts .one-year__chart .one-year-block__chart-label, .one-year__lead-block .one-year__qualification-charts .one-year__chart .one-year-block__chart-label {
+        font-size:18px;
+    }
+    .one-year__overview .one-year__overview-sublead{
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 28px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #000000;
+        text-decoration: none;
+    }
     .one-year__block, .one-year__lead-block {
-        padding: 40px 30px 49px 30px;
+         p{
+             font-family: 'Nunito Sans', sans-serif;
+            font-size: 16px;
+            color: $brownish-grey;
+            font-weight: normal;
+            letter-spacing: normal;
+            line-height:normal;
+        }
+        .rich-text{
+            font-size: 16px;
+            color: $brownish-grey;
+            font-weight: normal;
+            letter-spacing: normal;
+            line-height:normal;
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        a{
+            color:#308282;
+            text-decoration: underline;
+            font-weight:normal;
+            font-family: 'Nunito Sans', sans-serif;
+        }
 
         .one-year__heading {
             @include m-heading-mixin();
@@ -80,32 +188,47 @@
 
         .one-year__qualification-charts {
             .one-year__chart {
-                margin-bottom: 37px;
+                margin-bottom: 5px;
 
                 &:last-of-type {
-                    margin-bottom: 13px;
+                    margin-bottom: 5px;
                 }
 
                 .one-year__chart-label {
-                    @include small-font-mixin();
-
+                    font-family: 'Nunito Sans', sans-serif;
                     margin-top: 5px;
+                    text-align: right;
+                    font-size: 20px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    color: #000000;
                 }
             }
         }
     }
 
     .one-year__overview {
-        padding: 68px 150px 72px;
 
         .one-year__overview-lead {
             @include xl-heading-mixin();
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 48px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #000000;
 
-            color: $gradient-light-green;
         }
+    }
+}
 
-        p {
-            @include s-heading-mixin();
-        }
+@media only screen and (min-width: 990px) {
+    .one-year-block__chart-label{
+        text-align: right;
     }
 }

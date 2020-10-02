@@ -9,6 +9,7 @@ from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUn
 from coursefinder.models import CourseFinderResults
 from courses.models import CourseComparisonPage, CourseManagePage
 from site_search.models import SearchLandingPage
+import json
 
 
 def results(request, language=enums.languages.ENGLISH):
@@ -104,6 +105,13 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         return render(request, '404.html')
 
     context = page.get_context(request)
+
+    # Add list of institutions to the context.
+    context['institutions_list'] = []
+    with open("./CMS/static/jsonfiles/institutions.json", "r") as f:
+        institutions = f.read()
+    context['institutions_list'] = json.loads(institutions)
+
     context.update({
         'page': page,
         'search': course_finder_search,

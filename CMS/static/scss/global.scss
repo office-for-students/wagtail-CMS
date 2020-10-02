@@ -10,8 +10,14 @@
 
 body {
   margin: 0;
-  font-family: sans-serif, serif;
+  font-family: 'Nunito Sans', sans-serif;
   color: #5F607C;
+}
+
+a{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight:300;
+    color:#308282;
 }
 
 @media only screen and (min-width: 770px) {
@@ -47,33 +53,6 @@ body {
     }
 }
 
-.check-courses-details-banner {
-    display: block;
-    background: #ffcc66;
-    border: 2px solid #ffcc66;
-    border-radius: 10px;
-    color: $black;
-    padding: 10px;
-    max-width: 740px;
-    margin: 6em 1em 1em 1em;
-
-
-    &__message {
-        padding: 10px;
-        text-align: left;
-        text-decoration: none;
-        font-family: Nunito Sans;
-    }
-
-    &__exclamation-sign {
-        float: left;
-        height: 44px;
-        width: 44px;
-        padding: 10px;
-        margin: 20px 0 50px 0;
-    }
-}
-
 .explanation {
     position: relative;
 
@@ -87,8 +66,9 @@ body {
             font-size: 16px;
             color: $link-blue;
             text-decoration: underline;
-            background-color: $white;
             border: none;
+            font-family: 'Nunito Sans', sans-serif;
+            background: none;
         }
     }
 }
@@ -97,10 +77,6 @@ body {
     height: 20px;
     width: 20px;
     margin-right: 10px;
-}
-
-a {
-    color: $link-blue;
 }
 
 .dropdown-arrow {
@@ -206,15 +182,6 @@ a {
 }
 
 @media only screen and (min-width: 770px) {
-    .check-courses-details-banner {
-        margin: 4em auto 1em auto;
-        max-width: 1020px;
-
-        &__exclamation-sign {
-            margin: 20px;
-        }
-    }
-
     .breadcrumbs {
         @include small-font-mixin();
 
@@ -234,7 +201,6 @@ a {
     .responsive-object {
         position: relative;
 
-        
         iframe, object {
             position: absolute;
             top: 0;
@@ -242,47 +208,108 @@ a {
             width: 100%;
             height: 100%;
         }
-        
     }
 }
-.intro-text{
-    .rich-text {
-        //TEMPORARY Fix for 159
-        @media only screen and (min-width: 770px) {
-            div.responsive-object{
-                width: 50%;
-                padding-bottom: 25%!important;
-            }
-        }
-        .responsive-object {
-            position: relative;
-            iframe, object {
-                position: absolute;
-                top: 0;
-                text-align: center;
-                width: 100%;
-                height:100%;
-            }
-        }
-    }
-}
-    
-    .home .discover-uni-container .link {
-        margin-top: 30px;
-    }
-    @media only screen and (max-width: 770px){
-        .home .discover-uni-container .link {
-            margin-top: 50px;
-        }
-    }
 
-div.home{
-    padding-left:0.5em;
-    padding-right:0.5em;
-}
 a[target=_blank] {
     img {
         height: 0.75em;
         margin-left: 10px;
     }
+}
+
+
+#gradient-bar #stop-0 {
+    stop-color: $gradient-dark-green;
+}
+#gradient-bar #stop-1 {
+    stop-color: $gradient-light-green;
+}
+
+body {
+    position: relative;
+  }
+
+.not-enough-data-disclaimer {
+    border: solid 3px #cee9e7 !important;
+    font-size: 14px;
+    font-weight: normal;
+    color: $brownish-grey;
+    font-family: 'Nunito Sans', sans-serif;
+    padding:6px;
+
+    h6 {
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    h4 {
+        font-size: 18px;
+        font-weight: normal;
+        color: $black;
+
+    }
+}
+@media only screen and (min-width: 770px) {
+    .not-enough-data-disclaimer {
+        border: solid 3px #cee9e7 !important;
+        font-size: 16px;
+        font-weight: normal;
+        color: $brownish-grey;
+        font-family: 'Nunito Sans', sans-serif;
+        padding:10px;
+        
+        h6 {
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        h4 {
+            font-size: 24px;
+            font-weight: normal;
+            color: $black;
+
+        }
+    }
+}
+
+#leo3_sector_unavail.not-enough-data-disclaimer, #leo5_sector_unavail.not-enough-data-disclaimer, #go_sector_unavail.not-enough-data-disclaimer{
+    padding:0.5rem;
+    h6{
+        
+        font-size: 0.8rem;
+        font-weight: normal;
+    }
+    h4{
+        font-size: 0.9rem;
+        font-weight: normal;
+        color: $black;
+    }
+}
+
+.nav-tabs-hr{
+    
+    background-image: linear-gradient(90deg, #4fa37e, #368382);
+    border: 0;
+    height: 6px;
+    margin:0;
+}
+
+.nav-tabs .nav-link.active  {
+    background-image: linear-gradient(90deg, #4fa37e, #368382);
+    border-radius:0;
+}
+.nav-tabs .nav-link.active{
+    color:white!important;
+    font-weight:600;
+}
+.nav-tabs .nav-link {
+    border-radius: 0;
+    border:none!important;
+    font-weight:600;
+    color:$dark-green-blue!important;
+}
+
+.discover-uni-nav a:hover{
+    color:white;
 }

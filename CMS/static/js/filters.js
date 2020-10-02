@@ -5,7 +5,7 @@
         this.toggle = $(toggle);
         this.openBtn = $(openBtn);
         this.setup();
-    }
+    };
 
     Filters.prototype = {
         setup: function() {
@@ -34,7 +34,7 @@
 
             this.uniQuery = this.wrapper.find('#institution_query');
             this.courseQuery = this.wrapper.find('#course_query');
-            
+
             var lastSearch = JSON.stringify(this.form.serializeArray());
 
             sessionStorage.setItem("lastSearch", lastSearch);
@@ -48,7 +48,7 @@
                 that.wrapper.toggle();
             });
 
-            
+
             this.openBtn.click(function() {
                 that.wrapper.animate({ "left": 0 }, "slow");
                 that.submitBlock.animate({ "left": 0 }, "slow");
@@ -75,17 +75,18 @@
                 })
             };
 
-            for (var i = 0; i < this.languageChgBtnList.length; i++) {
-                $(this.languageChgBtnList[i]).click(function(evt) {
-                    evt.preventDefault();
-                    that.prepSubjectQuery();
-                    that.prepPostcodeQuery();
-                    that.prepInstitutionQuery();
-                    that.prepQualificationQuery();
-                    that.form.attr('action', $(this).attr("href"));
-                    that.form.submit();
-                });
-            }
+            // Commenting out this block fixes the cymraeg link issue
+            // for (var i = 0; i < this.languageChgBtnList.length; i++) {
+            //     $(this.languageChgBtnList[i]).click(function(evt) {
+            //         evt.preventDefault();
+            //         that.prepSubjectQuery();
+            //         that.prepPostcodeQuery();
+            //         that.prepInstitutionQuery();
+            //         that.prepQualificationQuery();
+            //         that.form.attr('action', $(this).attr("href"));
+            //         that.form.submit();
+            //     });
+            // }
 
             for (var i = 0; i < this.paginationInputs.length; i++) {
                 $(this.paginationInputs[i]).click(function(evt) {
@@ -99,7 +100,7 @@
         },
 
         prepSubjectQuery: function() {
-            var subjectCodes = ""
+            var subjectCodes = "";
             if (this.subjectAreaSelector.val() === null && this.subjectSelector.val() === null) {
                 subjectCodes = "";
             } else if (this.subjectAreaSelector.val() != null && this.subjectSelector.val() === null) {
@@ -149,12 +150,12 @@
                 this.uniQuery.val(selectedUnis);
             }
         }
-    }
+    };
 
     var UniFilter = function(wrapper) {
         this.wrapper = wrapper;
         this.setup();
-    }
+    };
 
     UniFilter.prototype = {
         setup: function() {
@@ -205,8 +206,8 @@
 
         finishInit: function() {
             this.uniList = new UniList(this.unisListWrapper, this.uniData, this.setTotalCount.bind(this),
-            this.setSelectedCount.bind(this));
-            
+                this.setSelectedCount.bind(this));
+
             this.startWatchers();
         },
 
@@ -238,13 +239,13 @@
         getSelectedUnis: function() {
             return this.uniList.getSelectedUnis();
         }
-    }
+    };
 
     var AlphabetToggle = function(input, callback) {
         this.input = input;
         this.callback = callback;
         this.setup();
-    }
+    };
 
     AlphabetToggle.prototype = {
         setup: function() {
@@ -257,11 +258,11 @@
 
             $(this.input).change(function() {
                 if (this.checked) {
-                   that.callback(that.letter);
+                    that.callback(that.letter);
                 }
             })
         }
-    }
+    };
 
     var UniList = function(listWrapper, uniData, totalSetter, selectedSetter) {
         this.listWrapper = listWrapper;
@@ -269,7 +270,7 @@
         this.totalSetter = totalSetter;
         this.selectedSetter = selectedSetter;
         this.setup();
-    }
+    };
 
     UniList.prototype = {
         setup: function() {
@@ -323,7 +324,7 @@
             }
             return selectedUnis.join(',');
         }
-    }
+    };
 
     var Uni = function(uniData, parent, index, selectedSetter, initialSelection) {
         this.uni = uniData;
@@ -332,7 +333,7 @@
         this.selectedSetter = selectedSetter;
         this.initialSelection = initialSelection;
         this.setup();
-    }
+    };
 
     Uni.prototype = {
         setup: function() {
@@ -415,7 +416,7 @@
         isSelected: function() {
             return this.uniInput[0].checked;
         }
-    }
+    };
 
     function init() {
         var filters = $('.filters-wrapper');
@@ -426,4 +427,4 @@
 
     $(document).on('page:load', init);
     $(init)
-}(jQuery))
+}(jQuery));

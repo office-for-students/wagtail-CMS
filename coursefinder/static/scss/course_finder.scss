@@ -3,12 +3,174 @@
 @import '../../../CMS/static/scss/partials/forms';
 
 
+.course-finder__header{   
+    font-family: "Nunito Sans", sans-serif;
+    background-color: #1F283A;
+    background: -webkit-linear-gradient(top, #1F283A 40% , $white 40%); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom, #1F283A 40%, $white 40%); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom, #1F283A 40%, $white 40%); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom, #1F283A 40% , $white 40%); /* Standard syntax */
+    padding-bottom:0;
+    color:$white;
+
+    .home-page__header-bg-icon {
+        height: 100px;
+        width: auto;
+    }
+
+    .course-finder__intro-title{
+        font-family: "Nunito Sans", sans-serif;
+        h1{
+            font-size:2rem;
+        }
+        
+    }
+
+    .course-finder__intro-panel{
+        font-family: "Nunito Sans", sans-serif;
+        color:$black;
+        font-weight:bold;
+        font-size:1.2rem;
+        margin-left:1rem;
+        margin-right:1rem;
+        padding:1rem;
+
+        input#institution_query-search.search-field-input {
+            border-width: 1px solid #ced4da !important;
+            width: 100%;
+            border-radius: 5px 5px 5px 5px;
+            font-size: 1rem;
+            color: #495057;
+            height: calc(1.5em + .75rem + 2px);
+            background-color: #FFFFFF !important;
+            padding-left: 0.7rem;
+        }
+
+        .search-dropdown .search-field-dropdown-button {
+            position: absolute;
+            display: inline-block;
+            top: 10%;
+            right: 4px;
+            width: 32px;
+            height: 85%;
+            border: none;
+            background-color: #FFFFFF;
+            cursor: pointer;
+            outline: none;
+        }
+
+        h4 {
+            color: #000000;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        h5 {
+            color: #000000;
+            font-size: 1.1rem;
+            font-weight: normal;
+        }
+        h6{
+            color: #000000;
+            font-size: 0.9rem;
+            font-weight: normal;
+            a{
+                color:#2a8384;
+                text-decoration: underline;
+            }
+        }
+        .home-page__search-button {
+            background-color: #fcd835;
+            color: black;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 1rem;
+            border: none;
+            font-weight: bold;
+        }
+
+    }
+
+}
+.course-finder__header .course-finder__intro-panel .course-finder__info-block, .course-finder__info-block{
+    font-family: "Nunito Sans", sans-serif;
+    padding:2rem;
+    border-radius: 5px;
+    background-color: rgba(248, 212, 65, 0.2);
+
+    .home-page__search-button {
+        background-color: #fcd835;
+        color: black;
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 1rem;
+        border: none;
+        font-weight: bold;
+    }
+    h4 {
+        color: #000000;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    h5 {
+        color: #000000;
+        font-size: 1.1rem;
+        font-weight: normal;
+    }
+    h6{
+        color: #000000;
+        font-size: 0.9rem;
+        font-weight: normal;
+        a{
+            color:#2a8384;
+            text-decoration: underline;
+        }
+    }
+}
+
+.course-finder__course-wizard{
+    font-family: "Nunito Sans", sans-serif;
+    padding:2rem;
+    border: solid 2px #dee0e0;
+
+    .home-page__search-button {
+        background-color: #fcd835;
+        color: black;
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 1rem;
+        border: none;
+        font-weight: bold;
+
+    }
+    h4 {
+        color: #000000;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    h5 {
+        color: #000000;
+        font-size: 1.4rem;
+        font-weight: normal;
+    }
+    h6{
+        color: #000000;
+        font-size: 0.9rem;
+        font-weight: normal;
+        a{
+            color:#2a8384;
+            text-decoration: underline;
+        }
+    }
+}
+
 .course-finder {
+    font-family: "Nunito Sans", sans-serif;
+
+    &__result-hr{
+        border-top:1px solid $black;
+    }
     &-base {
-        padding: 0px 19px 48px;
-        background-image: url('/static/images/home-background.png');
-        background-repeat: repeat-y;
-        background-position: right top;
+        background-color: white;
+        margin-left:2rem;
+        margin-right:2rem;
+        margin-bottom:3rem;
 
         &__nav {
             display: flex;
@@ -25,13 +187,14 @@
 
                 padding: 0px;
 
-                text-decoration: none;
+                text-decoration: underline;
                 color: $gradient-light-green;
                 border: none;
                 background-color: transparent;
 
                 &-icon {
                     height: 12px;
+                 
 
                     &.white {
                         display: none;
@@ -156,7 +319,7 @@
             &-icon {
                 height: 14px;
                 margin-left: 6px;
-
+             
                 &.green {
                     display: none;
                 }
@@ -224,8 +387,7 @@
     }
 
     &-results {
-        padding-top: 65px;
-
+       
         &__heading {
             @include m-heading--bold-mixin();
 
@@ -245,11 +407,9 @@
 
             &-filter {
                 &-toggle, &-open {
-                    position: absolute;
-                    right: 0px;
-
-                    color: $gradient-light-green;
+                    color: $black;
                     cursor: pointer;
+                    font-size: 0.9rem;
                 }
 
                 &-toggle {
@@ -258,6 +418,7 @@
 
                 &-icon {
                     height: 15px;
+                   
                 }
             }
         }
@@ -265,11 +426,22 @@
         &__result {
             &-list {
                 margin-top: 20px;
-                margin-bottom: 111px;
+                margin-bottom: 20px;
+
+                .pagination nav{
+                    margin-top:10px!important;
+                    margin-bottom: 2rem;
+                }
             }
 
             &-accordion {
                 margin-bottom: 10px;
+
+                &__compare-btn-white{
+                    position:absolute;
+                    right:10px;
+                }
+        
 
                 &-header {
                     display: flex;
@@ -277,13 +449,17 @@
                     align-items: center;
                     padding: 29px 40px 29px 29px;
 
-                    background-color: $form-grey;
+                    @include green-gradient-background-mixin();
                     border: 3px solid transparent;
                     cursor: pointer;
-
-                    &:hover {
-                        border: 3px solid $gradient-light-green;
+                    .course-finder-results__result-accordion-title, .course-finder-results__result-accordion-overview {
+                        color: white;
                     }
+                    
+
+                    // &:hover {
+                    //     border: 3px solid $gradient-light-green;
+                    // }
 
                     .collapse, .expand {
                         display: none;
@@ -320,12 +496,14 @@
                 }
 
                 &-body {
-                    background-color: $divider-grey;
+                    background-color: rgba(248, 212, 65, 0.2);
+                    padding: 2rem;
 
                     &-content {
-                        padding: 40px 42px 43px;
+                        background-color: #FFFFFF;
 
                         border-bottom: 2px solid $ux-grey-1;
+                        padding: 30px;
                     }
 
                     &-course-name {
@@ -337,6 +515,7 @@
 
                         color: $gradient-dark-green;
                         line-height: 22px;
+                        text-decoration: underline;
                     }
 
                     &-course-info {
@@ -353,10 +532,27 @@
 }
 
 @media only screen and (min-width: 770px) {
+
+    .course-finer__header .home-page__header-bg-icon {
+        padding-top: 15px;
+        height: 150px;
+        width: auto;
+    }
+    .course-finder__header .course-finder__intro-panel {
+        padding: 1rem;
+        margin-left: 3rem;
+        margin-right:3rem;
+
+        h5 {
+            font-size: 1rem;
+        }
+    }
     .course-finder {
+
         &-base {
-            padding: 0px 0px 107px;
-            
+            margin-left:3rem;
+            margin-right:3rem;
+           
             &__nav {
                 padding: 24px 0px;
 
@@ -364,9 +560,13 @@
                     @include xs-heading-mixin();
 
                     color: $gradient-light-green;
+                    a{
+                        text-decoration: underline;
+                    }
 
                     &-icon {
                         height: 16px;
+                        
                     }
                 }
             }
@@ -417,6 +617,8 @@
                 &-icon {
                     height: 19px;
                     margin-left: 4px;
+                  
+                   
                 }
             }
 
@@ -459,8 +661,6 @@
         }
 
         &-results {
-            padding-top: 65px;
-
             &__heading {
                 @include l-heading--bold-mixin();
 
@@ -487,7 +687,13 @@
             &__result {
                 &-list {
                     margin-top: 18px;
-                    margin-bottom: 82px;
+                    margin-bottom: 18px;
+
+                    .pagination nav{
+                        margin-top:10px!important;
+                        margin-bottom: 2rem;
+                    }
+
                 }
 
                 &-accordion {
@@ -513,32 +719,28 @@
 
                         margin: 0px;
 
-                        color: $ux-grey-3;
                     }
 
                     &-overview {
                         @include desktop-body-font--bold-mixin();
 
-                        color: $ux-grey-3;
+                       
                     }
 
                     &-body {
-                        background-color: $divider-grey;
+                        padding: 2rem 3rem 1rem 3rem;
 
                         &-content {
-                            padding: 50px 80px;
+                            padding: 30px;
                         }
 
                         &-course-name {
-                            @include s-heading-mixin();
-
-                            color: $gradient-dark-green;
+                           
                             line-height: 31px;
                         }
 
                         &-course-info {
-                            @include xs-heading-mixin();
-
+                           
                             line-height: 27px;
                         }
                     }

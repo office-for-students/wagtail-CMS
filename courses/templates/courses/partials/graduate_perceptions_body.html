@@ -1,0 +1,127 @@
+{% load staticfiles wagtailcore_tags discover_uni_tags %}
+
+{% if course_details.has_multiple_graduate_perceptions_stats %}
+<ul class="nav nav-tabs mt-2" id="grad-perceptions-tab" role="tablist">
+    {% for perceptions_stats in course_details.graduate_perceptions %}
+        <li class="nav-item">
+            <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="grad-perceptions-{{ forloop.counter }}-tab" data-toggle="tab" href="#grad-perceptions-{{ forloop.counter }}" role="tab"
+               aria-controls="grad-perceptions-{{ forloop.counter }}" aria-selected="true">
+                {{perceptions_stats.display_subject_name}}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+<hr class="nav-tabs-hr"/>
+{% endif %}
+
+<div class="tab-content">
+    {% for perceptions_stats in course_details.graduate_perceptions %}
+        <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="grad-perceptions-{{ forloop.counter }}" role="tabpanel" aria-labelledby="grad-perceptions-{{ forloop.counter }}-tab">
+    
+        {% if perceptions_stats.go_work_mean %}
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=perceptions_stats.display_unavailable_info %}
+            <div class="student-satisfaction__overview mt-3 mx-1 p-3 d-flex flex-wrap row">
+                    <div class="col-lg-2 col-md-12 align-self-stretch text-center">
+                        <p class="student-satisfaction__overview-lead ">
+                            {{ perceptions_stats.go_work_mean }}%
+                        </p>
+                    </div>
+                    <div class=" col-lg-10 col-md-12 align-self-stretch text-center text-lg-left">
+                        <p>
+                            {{ block.value.lead_text }}
+                            <div class="student-satisfaction__intro">
+                                {% create_list course_details.data_from_html perceptions_stats.go_work_pop perceptions_stats.go_work_resp_rate as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </div>
+                        </p>
+                    </div>
+            </div>
+
+            <div class="student-satisfaction__block">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 mx-1">
+                    <div class="col-lg-4 col-md-12 my-auto pb-3" >
+                        <h2 class="student-satisfaction__data-group-heading mb-3">
+                            {{ block.value.perception_of_work_heading }}
+
+                            <p>
+                                {% create_list course_details.data_from_html perceptions_stats.go_work_pop perceptions_stats.go_work_resp_rate as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto">
+                        <div class="student-satisfaction__chart-wrapper">
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{ perceptions_stats.go_work_skills }}"
+                                    data-question="satisfaction-1"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{{ block.value.usefulness_explanation_heading }}">
+                                {% include 'courses/partials/doughnut_chart.html' %}
+                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.usefulness_explanation_heading }}</p>
+                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.usefulness_explanation }}</p>
+                            </div>
+                            <div class="entry-information__chart discover-uni-chart bar sm-chart"
+                                data-value="{{ perceptions_stats.go_work_skills }}"
+                                data-question="satisfaction-1"
+                                data-language="{{page.get_language}}"
+                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_1.description language=page.get_language %}">
+                                {% include 'courses/partials/bar_chart.html' %}
+                                <label class="entry-information__chart-label" aria-hidden="true">{{ block.value.usefulness_explanation_heading }}</label>
+                                <label class="entry-information__chart-label" aria-hidden="true">{{ block.value.usefulness_explanation }}</label>
+                            </div>
+                        </div>
+
+                        <div class="student-satisfaction__chart-wrapper">
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{ perceptions_stats.go_work_mean }}"
+                                    data-question="satisfaction-2"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_2.description language=page.get_language %}">
+                                {% include 'courses/partials/doughnut_chart.html' %}
+                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.meaningfulness_explanation_heading }}</p>
+                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.meaningfulness_explanation }}</p>
+                            </div>
+                            <div class="entry-information__chart discover-uni-chart bar sm-chart"
+                                data-value="{{ perceptions_stats.go_work_mean }}"
+                                data-question="satisfaction-2"
+                                data-language="{{page.get_language}}"
+                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_2.description language=page.get_language %}">
+                                {% include 'courses/partials/bar_chart.html' %}
+                                <label class="entry-information__chart-label" aria-hidden="true">{{ block.value.meaningfulness_explanation_heading }}</label>
+                                <label class="entry-information__chart-label" aria-hidden="true">{{ block.value.meaningfulness_explanation }}</label>
+                            </div>
+                        </div>
+
+                        <div class="student-satisfaction__chart-wrapper">
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{ perceptions_stats.go_work_on_track }}"
+                                    data-question="satisfaction-3"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_3.description language=page.get_language %}">
+                                {% include 'courses/partials/doughnut_chart.html' %}
+                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.future_explanation_heading }}</p>
+                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.future_explanation }}</p>
+                            </div>
+                            <div class="entry-information__chart discover-uni-chart bar sm-chart"
+                                data-value="{{ perceptions_stats.go_work_on_track }}"
+                                data-question="satisfaction-3"
+                                data-language="{{page.get_language}}"
+                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_3.description language=page.get_language %}">
+                                {% include 'courses/partials/bar_chart.html' %}
+                                <label class="entry-information__chart-label" aria-hidden="true">{{ block.value.future_explanation_heading }}</label>
+                                <label class="entry-information__chart-label" aria-hidden="true">{{ block.value.future_explanation }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% else %}
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=perceptions_stats.display_unavailable_info %}
+        {% endif %}
+    </div>
+
+    {% endfor %}
+</div>

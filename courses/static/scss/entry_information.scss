@@ -1,15 +1,87 @@
 @import '../../../CMS/static/scss/fonts';
 @import '../../../CMS/static/scss/variables';
 
-.entry-information__block {
-    padding: 34px 30px 49px 30px;
+.entry-information__overview{
+    @include desktop-body-font-mixin();
 
+    text-align: left;
+    border: solid 3px $duck-egg-blue;
+}
+
+.entry-information__block {
+    .entry-information__ucas-points{
+        .rich-text{
+            color:$brownish-grey;
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+
+        }
+    }
+
+    .entry-information__overview{
+
+        .entry-information__overview-lead {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 24px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #000000;
+            text-align: center;
+        }
+        .entry-information__intro{
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: $brownish-grey;
+            text-align: center;
+            
+            p{
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: $brownish-grey;
+                text-align: center;
+            }
+        }
+        a{
+            text-decoration: underline;
+            font-size: 14px;
+            font-weight: 600;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: $dark-green-blue;
+            text-align:center;
+        
+        }
+    
+    }
     .entry-information__heading {
         @include s-heading-mixin();
-
-        margin: 0;
-
-        color: $ux-grey-2;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 18px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #000000;
     }
 
     .entry-information__lead {
@@ -19,9 +91,44 @@
         margin-bottom: 34px;
     }
 
-    .entry-information__qualification-charts, .entry-information__tariff-charts {
+    .entry-information__qualification-charts, .entry-information__tariff-charts, .entry-information__ucas-points {
+        background-color: #F2F2F2;
+
+        p{
+            font-size: 14px;
+            color: $brownish-grey;
+            font-weight: normal;
+        }
+        a{
+            color:#308282;
+            text-decoration: underline;
+            font-weight:normal;
+        }
+        
+        .explanation-text a{
+            color:#308282;
+            text-decoration: underline;
+            font-weight:normal;
+        }
+        .entry-information__qualification_intro{
+            color:$brownish-grey;
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            font-family: 'Nunito Sans', sans-serif;
+
+            a{
+                color:#308282;
+                text-decoration: underline;
+                font-weight:normal;
+            }
+        }
+
         .entry-information__chart {
-            margin-bottom: 37px;
+            margin-bottom: 7px;
 
             &:last-of-type {
                 margin-bottom: 13px;
@@ -29,26 +136,115 @@
 
             .entry-information__chart-label {
                 @include small-font-mixin();
-
+                
                 display: block;
                 margin-top: 7px;
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: $brownish-grey;
 
-                color: $ux-grey-3;
             }
         }
     }
 }
 
 @media only screen and (min-width: 770px) {
+    .entry-information__block .entry-information__qualification-charts .entry-information__qualification_intro, .entry-information__block .entry-information__tariff-charts .entry-information__qualification_intro, .entry-information__block .entry-information__ucas-points .entry-information__qualification_intro {
+        font-size: 16px;
+    }
+    .entry-information__overview{
+        @include desktop-body-font-mixin();
+
+        text-align: left;
+        border: solid 3px $duck-egg-blue;
+
+        p{
+            text-align:left;
+        }
+
+        .entry-information__intro{
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.9rem;
+            columns: $brownish-grey;
+            font-weight: 300;
+            text-align: left;
+        }
+    }
+    
+    
     .entry-information__block {
-        padding: 40px 30px 49px 30px;
+        .entry-information__ucas-points .rich-text {
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: $brownish-grey;
+        }
+
+        .entry-information__qualification_intro{
+            color:$brownish-grey;
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            font-family: 'Nunito Sans', sans-serif;
+
+            a{
+                color:#308282;
+                text-decoration: underline;
+                font-weight:normal;
+            }
+        }
+        .entry-information__overview {
+            a{
+                font-size: 16px;
+                font-weight: 600;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: $dark-green-blue;
+            }
+
+            .entry-information__overview-lead {
+                font-size: 28px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #000000;
+            }
+            .entry-information__intro{
+                font-size: 16px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #666666;
+            }
+
+        }
 
         .entry-information__heading {
-            @include m-heading-mixin();
-
-            margin: 0;
-
-            color: $ux-grey-2;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 32px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #000000;
         }
 
         .entry-information__lead {
@@ -59,8 +255,9 @@
         }
 
         .entry-information__qualification-charts, .entry-information__tariff-charts {
+            font-family: 'Nunito Sans', sans-serif;
             .entry-information__chart {
-                margin-bottom: 40px;
+                margin-bottom: 10px;
 
                 &:last-of-type {
                     margin-bottom: 13px;
@@ -68,8 +265,34 @@
 
                 .entry-information__chart-label {
                     @include desktop-body-font-mixin();
+                    color: $black;
+                    font-family: 'Nunito Sans', sans-serif;
+                    font-size: 18px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                   
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 990px) {
+    .entry-information__block {
+        .entry-information__qualification-charts, .entry-information__tariff-charts {
 
-                    color: $ux-grey-3;
+            .entry-information__chart {
+                .entry-information__chart-label {
+                    text-align: right;
+                    font-size: 18px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    color: #000000;
                 }
             }
         }
