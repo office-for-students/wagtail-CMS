@@ -5,7 +5,7 @@
 @import 'flat-content';
 
 .content-page {
-    padding: 50px 20px 65px;
+    padding: 35px 20px 65px;
     
     background-image: url('/static/images/user-nav-background.png');
     background-position: right top;
@@ -13,10 +13,11 @@
     &__header {
         @include m-heading--bold-mixin();
 
-        margin: 0;
-        margin-bottom: 28px;
 
+        margin-left: 0;
+        margin-bottom: 28px;
         color: $ux-grey-3;
+        margin-top:1rem;
     }
 
     &__intro {
@@ -37,15 +38,16 @@
 
 @media only screen and (min-width: 770px) {
     .content-page {
-        padding: 75px 0px 132px;
+        padding: 45px 40px 132px;
 
         &__header {
             @include l-heading--bold-mixin();
 
-            margin: 0;
-
+            margin-left: 0;
+            margin-bottom: 28px;
             line-height: 65px;
             color: $ux-grey-3;
+            margin-top:2rem!important;
         }
 
         &__intro {
