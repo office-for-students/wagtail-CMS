@@ -150,11 +150,13 @@
 
     {% if not course.has_multiple_subject_names %}
         <div class="course-detail__headline_statistics d-flex flex-row align-items-stretch my-4 text-center text-md-left mx-auto px-0">
-            <div class="course-detail__headline_stat flex-fill align-self-stretch mr-2 mr-xs-1 px-3 px-xs-2 py-4">
-                <h3 class="d-none d-lg-block">{% get_translation key='student_satisfaction_course_overview_1' language=page.get_language %}</h3>
-                <h2>{{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%</h2>
-                <p>{% get_translation key='student_satisfaction_course_overview_2' language=page.get_language %}</p>
-            </div>
+            {% if course.satisfaction_stats and course.satisfaction_stats.0.question_27 and course.satisfaction_stats.0.question_27.agree_or_strongly_agree %}
+                <div class="course-detail__headline_stat flex-fill align-self-stretch mr-2 mr-xs-1 px-3 px-xs-2 py-4">
+                    <h3 class="d-none d-lg-block">{% get_translation key='student_satisfaction_course_overview_1' language=page.get_language %}</h3>
+                    <h2>{{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%</h2>
+                    <p>{% get_translation key='student_satisfaction_course_overview_2' language=page.get_language %}</p>
+                </div>
+            {% endif %}
 
             {% if course.summary_med_sal_value != "no_data" %}
                 <div class="course-detail__headline_stat flex-fill align-self-stretch ml-2 ml-xs-1 mr-2 mr-xs-1 px-3 px-xs-2 py-4">
@@ -169,14 +171,16 @@
                 </div>
             {% endif %}
 
-            <div class="course-detail__headline_stat flex-fill align-self-stretch ml-2 ml-xs-2 px-3 px-xs-2 py-4">
-                <h3 class="d-none d-lg-block">{% get_translation key='employment_course_overview_1' language=page.get_language %}</h3>
-                <h2>{{ course.employment_stats.0.in_work_and_study }}%</h2>
-                <p>{% get_translation key='employment_course_overview_2' language=page.get_language %}</p>
-            </div>
+            {% if course.employment_stats and course.employment_stats.0.in_work_and_study %}
+                <div class="course-detail__headline_stat flex-fill align-self-stretch ml-2 ml-xs-2 px-3 px-xs-2 py-4">
+                    <h3 class="d-none d-lg-block">{% get_translation key='employment_course_overview_1' language=page.get_language %}</h3>
+                    <h2>{{ course.employment_stats.0.in_work_and_study }}%</h2>
+                    <p>{% get_translation key='employment_course_overview_2' language=page.get_language %}</p>
+                </div>
+            {% endif %}
         </div>
 
-    {% elif course.has_multiple_subject_names %}
+    {% else %}
         <div class="course-detail__joint-overview mb-3 py-3 px-2 mt-3">
             <div class="row mx-0">
                 <div class="col-md-4 col-sm-12 mx-auto">
