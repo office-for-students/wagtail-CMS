@@ -363,8 +363,30 @@ class Course:
             for data_set in course_details.get('go_voice_work'):
                 self.graduate_perceptions.append(GraduatePerceptionStatistics(data_set, self.display_language))
 
+
+            # Salary Summary box content.
+            # e.g. {15 months} after the course for {Accountancy (non-specific)} graduates at {University of Glasgow}
+            # self.summary_med_sal_time summary_med_sal_text_1 self.course_title summary_med_sal_text_2 self.institution
             self.summary_med_sal_value = "no_data"
-            self.summary_med_sal_text_trans_key = "no_data"
+            self.institution_name = self.institution.pub_ukprn_name
+
+            if 'med' in course_details.get('go_salary_inst')[0]:
+                self.summary_med_sal_value = course_details.get('go_salary_inst')[0]['med']
+                if self.display_language == enums.languages.ENGLISH:
+                    self.summary_med_sal_time = "15 months"
+                    self.course_title = fallback_to(self.english_title, '')
+                else:
+                    self.summary_med_sal_time = "15 mis"
+                    self.course_title = fallback_to(self.welsh_title, '')
+            elif 'med' in course_details.get('leo3_inst')[0]:
+                self.summary_med_sal_value = course_details.get('leo3_inst')[0]['med']
+                if self.display_language == enums.languages.ENGLISH:
+                    self.summary_med_sal_time = "3 years"
+                    self.course_title = fallback_to(self.english_title, '')
+                else:
+                    self.summary_med_sal_time = "3 blynedd"
+                    self.course_title = fallback_to(self.welsh_title, '')
+
 
             current_year = datetime.datetime.now().year
             self.go_year_range = "{}-{}".format(current_year-2, current_year-1)
@@ -417,10 +439,15 @@ class Course:
             #     self.salaries_sector.append(SectorSalary(course_details.get('leo3_salary_sector_single'), self.display_language))
             # if course_details.get('leo5_salary_sector_single'):
             #     self.salaries_sector.append(SectorSalary(course_details.get('leo5_salary_sector_single'), self.display_language))
+        
+            if course_details.get('country')['code'] == 'XG':
+                self.is_ni_provider = True
+            else:
+                self.is_ni_provider = False
 
             self.salary_aggregates = []
             for code in self.get_subject_codes_for_earnings_aggregation():
-                earnings_aggregate = SalariesAggregate(code, self.display_language)
+                earnings_aggregate = SalariesAggregate(code, self.display_language, self.is_ni_provider)
                 earnings_aggregate.sync_institution_earnings(self.go_salaries_inst)
                 earnings_aggregate.sync_institution_earnings(self.leo3_salaries_inst)
                 earnings_aggregate.sync_institution_earnings(self.leo5_salaries_inst)
@@ -1442,6 +1469,11 @@ class CourseAccreditation:
         self.display_language = language
         self.type = fallback_to(data_obj.get("type"), '')
         self.accreditor_url = fallback_to(data_obj.get('accreditor_url'), '')
+
+
+#https://pre-prod-discover-uni.azurewebsites.net/course-details/10007856/BA_L700/Full-time/www.rgs.org/www.rgs.org/accreditation
+
+
         text = data_obj.get('text')
         if text:
             self.text_english = fallback_to(text.get('english'), '')
@@ -1718,7 +1750,7 @@ class SectorSalary:
                 self.med_ni = salary_data['med_ni']
                 self.uq_ni = salary_data['uq_ni']
                 self.pop_ni = salary_data['pop_ni']
-                self.resp_ni = salary_data['resp_ni']
+                #self.resp_ni = salary_data['resp_ni']
 
             if 'lq_nw' in salary_data:
                 self.lq_nw = salary_data['lq_nw']
@@ -1791,10 +1823,16 @@ class SectorSalary:
             if 'unavail_text_region_not_nation_english' in salary_data:
                 self.unavail_text_region_not_nation_english = salary_data['unavail_text_region_not_nation_english']
                 self.unavail_text_region_not_nation_welsh = salary_data['unavail_text_region_not_nation_welsh']
+            else:
+                self.unavail_text_region_not_nation_english = ""
+                self.unavail_text_region_not_nation_welsh = ""
 
             if 'unavail_text_region_is_ni_english' in salary_data:
                 self.unavail_text_region_is_ni_english = salary_data['unavail_text_region_is_ni_english']
                 self.unavail_text_region_is_ni_welsh = salary_data['unavail_text_region_is_ni_welsh']
+            else:
+                self.unavail_text_region_is_ni_english = ""
+                self.unavail_text_region_is_ni_welsh = ""
 
     def display_unavailable_info(self):
         unavailable = {}
@@ -1827,15 +1865,17 @@ class SectorSalary:
                 unavailable["unavailable_region_is_ni"] = self.unavail_text_region_is_ni_welsh if self.unavail_text_region_is_ni_welsh else self.unavail_text_region_is_ni_english
 
         unavailable["unavailable_region_not_exists_heading"], unavailable["unavailable_region_not_exists_body"] = separate_unavail_reason(unavailable["unavailable_region_not_exists"])
+        unavailable["unavailable_region_is_ni_heading"], unavailable["unavailable_region_is_ni_body"] = separate_unavail_reason(unavailable["unavailable_region_is_ni"])
 
         return unavailable
 
 
 class SalariesAggregate:
-    def __init__(self, subject_code, display_language):
+    def __init__(self, subject_code, display_language, is_ni_provider):
         self.subject_code = subject_code
         self.subject_code_one_level_down = self.get_cah_code_for_level(enums.subject_code_levels.ONE_DOWN)
         self.subject_code_two_levels_down = self.get_cah_code_for_level(enums.subject_code_levels.TWO_DOWN)
+        self.is_ni_provider = is_ni_provider
 
         self.display_language = display_language
         self.subject_english = ""
@@ -1881,19 +1921,47 @@ class SalariesAggregate:
         salary_substitute.prov_pc_ed = ""
         salary_substitute.prov_pc_gl = ""
         salary_substitute.prov_pc_cf = ""
-        salary_substitute.unavailable_reason_english = "No data available"
-        salary_substitute.unavailable_reason_welsh = "Nid oes data ar gael"
+
+        # TODO: read these values from the course JSON.
+        salary_substitute.unavailable_reason_region_not_nation_english = "No data available\n\nSorry, this data is not available at this level."
+        salary_substitute.unavailable_reason_region_not_nation_welsh = "Nid oes data ar gael\n\nNid yw'r data hwn ar gael ar gyfer y lefel hon."
+        salary_substitute.unavailable_reason_region_is_ni_english = "No data available\n\nSorry, this data is not available for Northern Ireland."
+        salary_substitute.unavailable_reason_region_is_ni_welsh = "Nid oes data ar gael\n\nYn anffodus, nid yw’r data hwn ar gael ar gyfer Gogledd Iwerddon."
+        salary_substitute.unavail_text_region_not_exists_english = "No data available"
+        salary_substitute.unavail_text_region_not_exists_welsh = "Nid oes data ar gael"
+
+        if self.is_ni_provider:
+            salary_substitute.unavailable_reason_english = salary_substitute.unavailable_reason_region_is_ni_english
+            salary_substitute.unavailable_reason_welsh = salary_substitute.unavailable_reason_region_is_ni_welsh
+        else:
+            salary_substitute.unavailable_reason_english = salary_substitute.unavail_text_region_not_exists_english
+            salary_substitute.unavailable_reason_welsh = salary_substitute.unavail_text_region_not_exists_welsh
+
+        #salary_substitute.unavailable_reason_region_not_exists = ""
         return salary_substitute
 
     def generate_empty_sector_salary_with_unavail_reason(self):
         salary_substitute = SectorSalary(None, self.display_language)
         salary_substitute.unavail_reason = "1"
         salary_substitute.unavailable_reason = ""
-        salary_substitute.unavailable_reason_region_not_exists = ""
-        salary_substitute.unavailable_reason_region_not_nation = ""
-        salary_substitute.unavailable_reason_region_is_ni = ""
+
+        # TODO: read these values from the course JSON.
+        salary_substitute.unavailable_reason_region_not_nation_english = "No data available\n\nSorry, this data is not available at this level."
+        salary_substitute.unavailable_reason_region_not_nation_welsh = "Nid oes data ar gael\n\nNid yw'r data hwn ar gael ar gyfer y lefel hon."
+        salary_substitute.unavailable_reason_region_is_ni_english = "No data available\n\nSorry, this data is not available for Northern Ireland."
+        salary_substitute.unavailable_reason_region_is_ni_welsh = "Nid oes data ar gael\n\nYn anffodus, nid yw’r data hwn ar gael ar gyfer Gogledd Iwerddon."
         salary_substitute.unavail_text_region_not_exists_english = "No data available"
         salary_substitute.unavail_text_region_not_exists_welsh = "Nid oes data ar gael"
+
+        if self.display_language == enums.languages.ENGLISH:
+            salary_substitute.unavailable_reason_region_not_exists = salary_substitute.unavail_text_region_not_exists_english
+            salary_substitute.unavailable_reason_region_not_nation = salary_substitute.unavailable_reason_region_not_nation_english
+            salary_substitute.unavailable_reason_region_is_ni = salary_substitute.unavailable_reason_region_is_ni_english
+        else:
+            salary_substitute.unavailable_reason_region_not_exists = salary_substitute.unavail_text_region_not_exists_welsh
+            salary_substitute.unavailable_reason_region_not_nation = salary_substitute.unavailable_reason_region_not_nation_welsh
+            salary_substitute.unavailable_reason_region_is_ni = salary_substitute.unavailable_reason_region_is_ni_welsh
+
         return salary_substitute
 
     def sync_earnings_data(self, salaries):

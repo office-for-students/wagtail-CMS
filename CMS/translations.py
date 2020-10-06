@@ -1518,5 +1518,14 @@ DICT = {
         'en': 'There are no professional accreditations recorded',
         'cy': "Nid oes unrhyw achrediadau proffesiynol wedi'u cofnodi"
     },
+    'summary_med_sal_text_1': {
+        'en': 'after the course for',
+        'cy': "ar ôl y cwrs i raddedigion"
+    },
+    'summary_med_sal_text_2': {
+        'en': 'graduates at',
+        'cy': "yn"
+    },
+
    
 }

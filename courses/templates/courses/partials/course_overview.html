@@ -161,8 +161,11 @@
                     <h3 class="d-none d-lg-block">{% get_translation key='average_earnings_course_overview_1' language=page.get_language %}</h3>
                     <h2 id="average_earnings_sm" class="d-lg-none">{{ course.summary_med_sal_value|intcomma }}</h2>
                     <h2 id="average_earnings_lg" class="d-none  d-lg-block">
-                        £{{ course.salaries_inst.0.med|intcomma }}</h2>
-                    <p>{% get_translation key=course.summary_med_sal_text_trans_key language=page.get_language %}</p>
+                        £{{ course.summary_med_sal_value|intcomma }}</h2>
+                    <p>{{course.summary_med_sal_time}} {% get_translation key='summary_med_sal_text_1' language=page.get_language %}
+                        {{course.course_title}} {% get_translation key='summary_med_sal_text_2' language=page.get_language %}
+                        {{course.institution_name}}
+                    </p>
                 </div>
             {% endif %}
 
