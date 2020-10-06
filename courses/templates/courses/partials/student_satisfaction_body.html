@@ -19,7 +19,6 @@
 {% for overall_stats in course_details.overall_satisfaction %}
     <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="student-satisfaction-{{ forloop.counter }}" role="tabpanel" aria-labelledby="student-satisfaction-{{ forloop.counter }}-tab">
 
-
     {% if overall_stats.satisfaction_stats.question_27.show_data_point %}
         <div class="student-satisfaction__overview mt-3 p-2 d-flex flex-wrap row mx-1">
                 <div class="col-lg-3 col-md-12 align-self-stretch my-lg-3">
@@ -43,7 +42,10 @@
     <div class="student-satisfaction__block">
 
         <div class="scrolling-wrapper scroll">
-        {% if overall_stats.satisfaction_stats.show_satisfaction_stats %}
+            <br>
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.display_unavailable_info %}
+
+            {% if overall_stats.satisfaction_stats.show_satisfaction_stats %}
             {% if overall_stats.satisfaction_stats.show_teaching_stats %}
                 <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 px-1 mx-1 scroll_item">
                     <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
@@ -724,9 +726,9 @@
             {% endif %}
         {% endif %}
 
-        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.display_unavailable_info %}
-
         {% if overall_stats.nhs_satisfaction_stats %}
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
+    
             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                 <div class="col-lg-4 col-md-12 my-auto pt-3 text-left" >
                     <h2 class="student-satisfaction__data-group-heading text-left">
@@ -877,7 +879,6 @@
                 </div>
             {%  endif %}
 
-            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
         {% endif %}
         </div>
     </div>
