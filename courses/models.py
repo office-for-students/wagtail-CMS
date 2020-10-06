@@ -1739,11 +1739,11 @@ class SectorSalary:
                 self.uq_s = salary_data['uq_s']
                 self.pop_s = salary_data['pop_s']
 
-            if 'resp_uk' in salary_data:
-                self.resp_uk = salary_data['resp_uk']
-                self.resp_e = salary_data['resp_e']
-                self.resp_w = salary_data['resp_w']
-                self.resp_s = salary_data['resp_s']
+            # if 'resp_uk' in salary_data:
+            #     self.resp_uk = salary_data['resp_uk']
+            #     self.resp_e = salary_data['resp_e']
+            #     self.resp_w = salary_data['resp_w']
+            #     self.resp_s = salary_data['resp_s']
 
             if 'lq_ni' in salary_data:
                 self.lq_ni = salary_data['lq_ni']

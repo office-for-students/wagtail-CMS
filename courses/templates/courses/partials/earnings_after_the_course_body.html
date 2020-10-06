@@ -224,9 +224,10 @@
                                             {{ subbed_text | richtext }}
                                         </h4>
                                         <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_pop_' salary_index '_' salary_aggregate.subject_code %}">
-                                            {% create_list course_details.data_from_html salary.pop_uk salary.resp_uk as substitutions %}
+                                            {# create_list course_details.data_from_html salary.pop_uk salary.resp_uk as substitutions #}
+                                            {% create_list course_details.data_from_html salary.pop_uk as substitutions %}
                                             {% if salary_index == 0 %}
-                                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_respondents_explanation substitutions=substitutions as subbed_text %}
+                                                {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
                                                 {{ subbed_text | richtext }}
                                             {% else %}
                                                 {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
@@ -274,8 +275,13 @@
                                             <div id="leo3_sector_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer" style="display: none"></div>
                                         {% else %}
                                             <div id="leo3_sector_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer">
-                                                <h4>{{ salary.display_unavailable_info.unavailable_region_not_exists_heading }}</h4>
-                                                <h6>{{ salary.display_unavailable_info.unavailable_region_not_exists_body }}</h6>
+                                                {% if course_details.is_ni_provider == True %}
+                                                    <h4>{{ salary.display_unavailable_info.unavailable_region_is_ni_heading }}</h4>
+                                                    <h6>{{ salary.display_unavailable_info.unavailable_region_is_ni_body }}</h6>
+                                                {% else %}
+                                                    <h4>{{ salary.display_unavailable_info.unavailable_region_not_exists_heading }}</h4>
+                                                    <h6>{{ salary.display_unavailable_info.unavailable_region_not_exists_body }}</h6>
+                                                {% endif %}
                                             </div>
                                         {% endif %}
                                     {% elif salary_index == 2 %}
@@ -283,8 +289,13 @@
                                             <div id="leo5_sector_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer" style="display: none"></div>
                                         {% else %}
                                             <div id="leo5_sector_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer">
-                                                <h4>{{ salary.display_unavailable_info.unavailable_region_not_exists_heading }}</h4>
-                                                <h6>{{ salary.display_unavailable_info.unavailable_region_not_exists_body }}</h6>
+                                                {% if course_details.is_ni_provider == True %}
+                                                    <h4>{{ salary.display_unavailable_info.unavailable_region_is_ni_heading }}</h4>
+                                                    <h6>{{ salary.display_unavailable_info.unavailable_region_is_ni_body }}</h6>
+                                                {% else %}
+                                                    <h4>{{ salary.display_unavailable_info.unavailable_region_not_exists_heading }}</h4>
+                                                    <h6>{{ salary.display_unavailable_info.unavailable_region_not_exists_body }}</h6>
+                                                {% endif %}
                                             </div>
                                         {% endif %}
                                     {% endif %}
