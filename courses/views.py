@@ -69,7 +69,7 @@ def regional_earnings(request):
             salary_sector_15_lq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "lq" + region))
             salary_sector_15_uq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "uq" + region))
             salary_sector_15_pop = getattr(salaries_aggregate.aggregated_salaries_sector[0], "pop" + region)
-            salary_sector_15_resp = getattr(salaries_aggregate.aggregated_salaries_sector[0], "resp" + region)
+            #salary_sector_15_resp = getattr(salaries_aggregate.aggregated_salaries_sector[0], "resp" + region)
             inst_prov_pc_go = getattr(salaries_aggregate.aggregated_salaries_inst[0], 'prov_pc' + region)
         else:
             salary_sector_15_unavail_text = unavailable_region_not_nation
@@ -77,7 +77,7 @@ def regional_earnings(request):
             salary_sector_15_lq = None
             salary_sector_15_uq = None
             salary_sector_15_pop = None
-            salary_sector_15_resp = None
+            #salary_sector_15_resp = None
             inst_prov_pc_go = None
 
         attr = getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region, None)
@@ -133,7 +133,6 @@ def regional_earnings(request):
             'salary_sector_15_lq': salary_sector_15_lq,
             'salary_sector_15_uq': salary_sector_15_uq,
             'salary_sector_15_pop': salary_sector_15_pop,
-            'salary_sector_15_resp': salary_sector_15_resp,
             'salary_sector_15_unavail_text': salary_sector_15_unavail_text,
 
             'salary_sector_3_med': salary_sector_3_med,

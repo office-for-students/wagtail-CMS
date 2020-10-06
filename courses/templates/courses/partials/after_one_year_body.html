@@ -16,6 +16,7 @@
 <hr class="nav-tabs-hr"/>
 {% endif %}
 
+{% if course_details.continuation_stats and course_details.continuation_stats.0.continuing_or_complete %}
 <div class="tab-content">
 {% for continuation_stats in course_details.continuation_stats %}
     <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="after-one-year-{{ forloop.counter }}" role="tabpanel" aria-labelledby="after-one-year-{{ forloop.counter }}-tab">
@@ -135,3 +136,6 @@
     </div>
 {% endfor %}
 </div>
+{% else %}
+    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+{% endif %}

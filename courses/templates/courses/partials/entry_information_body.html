@@ -2,6 +2,8 @@
 {% load wagtailcore_tags %}
 {% load discover_uni_tags %}
 
+{% if course_details.entry_stats and course_details.entry_stats.0.number_of_students %}
+
     <div class="entry-information__block">
         <div class="entry-information__overview my-3 p-3 mx-1 pt-4 d-flex flex-wrap row">
             <div class="col-md-6 col-sm-12 align-self-stretch my-auto">
@@ -18,7 +20,7 @@
                 <p><a href="https://discoveruni.gov.uk/how-do-i-choose-course/entry-requirements/" class="text-center text-lg-left">{% get_translation key='entrance_data_read_more' language=page.get_language %}</a></p>
             </div>
         </div>
-
+     
 {% if course_details.has_multiple_entry_stats %}
 <ul class="nav nav-tabs mt-2 mx-1" id="qualification-types-tab" role="tablist">
     {% for entry_stats in course_details.entry_stats %}
@@ -35,23 +37,24 @@
 
 <div class="tab-content">
 {% for entry_stats in course_details.entry_stats %}
-    {% if entry_stats.display_stats %}
-        <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="qualification-types-{{ forloop.counter }}" role="tabpanel" aria-labelledby="qualification-types-{{ forloop.counter }}-tab">
-            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}
+    {% if entry_stats.number_of_students %}
+        {% if entry_stats.display_stats %}
+            <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="qualification-types-{{ forloop.counter }}" role="tabpanel" aria-labelledby="qualification-types-{{ forloop.counter }}-tab">
+                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}
 
-            <div class="entry-information__qualification-charts p-3 d-flex flex-wrap row mx-1 my-3">
-                <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
-                    <h2 class="entry-information__heading py-2">{{block.value.qualification_heading}}{% if course_details.has_multiple_entry_stats %}:
-                        {{entry_stats.display_subject_name}}{% endif %}
-                    </h2>
-                    <div class="entry-information__qualification_intro mt-2">
-                        {% create_list course_details.data_from_html entry_stats.number_of_students as substitutions %}
-                        {% insert_values_to_rich_text content=block.value.qualification_data_source substitutions=substitutions as subbed_text %}
-                        {{ subbed_text | richtext }}
+                <div class="entry-information__qualification-charts p-3 d-flex flex-wrap row mx-1 my-3">
+                    <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
+                        <h2 class="entry-information__heading py-2">{{block.value.qualification_heading}}{% if course_details.has_multiple_entry_stats %}:
+                            {{entry_stats.display_subject_name}}{% endif %}
+                        </h2>
+                        <div class="entry-information__qualification_intro mt-2">
+                            {% create_list course_details.data_from_html entry_stats.number_of_students as substitutions %}
+                            {% insert_values_to_rich_text content=block.value.qualification_data_source substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </div>
                     </div>
-                </div>
 
-                <div class=" col-lg-8 col-md-12 align-self-stretch my-auto pt-2">
+                    <div class=" col-lg-8 col-md-12 align-self-stretch my-auto pt-2">
 
                         <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.degree}}"
                             data-label="entry-degree"
@@ -169,7 +172,10 @@
                 </div>
             </div>
         {% endif %}
-    </div>
+</div>
+{% else %}
+{% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+{% endif %}
 
 {% endfor %}
 </div>
@@ -190,7 +196,8 @@
 
 <div class="tab-content">
 {% for tariff_stats in  course_details.tariff_stats %}
-   <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="ucas-points-{{ forloop.counter }}" role="tabpanel" aria-labelledby="ucas-points-{{ forloop.counter }}-tab">
+{% if tariff_stats.tariffs %}
+    <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="ucas-points-{{ forloop.counter }}" role="tabpanel" aria-labelledby="ucas-points-{{ forloop.counter }}-tab">
 
     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
 
@@ -228,6 +235,12 @@
         </div>
     </div>
    </div>
+{% else %}
+   {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+{% endif %}
 {% endfor %}
-</div></div>
-
+</div>
+</div>
+{% else %}
+    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+{% endif %}
