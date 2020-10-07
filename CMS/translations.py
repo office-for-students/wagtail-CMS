@@ -1526,6 +1526,9 @@ DICT = {
         'en': 'graduates at',
         'cy': "yn"
     },
-
+    'how_to_search_for_course':{
+        'en': "How to search for courses",
+        'cy': "Sut i chwilio am gyrsiau"
+    }
    
 }
