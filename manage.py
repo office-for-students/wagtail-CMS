@@ -35,6 +35,9 @@ if __name__ == "__main__":
 
             os.environ["FEEDBACK_API_HOST"] = env['FEEDBACK_API_HOST']
             os.environ["JSONFILES_STORAGE_CONTAINER"] = env['JSONFILES_STORAGE_CONTAINER']
+            os.environ["STORAGEKEY"] = env['STORAGEKEY']
+            os.environ["STORAGE_ACCOUNT_NAME"] = env['STORAGE_ACCOUNT_NAME']
+            
             os.environ["READ_ONLY"] = env['READ_ONLY']
             os.environ["SEARCHAPIHOST"] = env['SEARCHAPIHOST']
 

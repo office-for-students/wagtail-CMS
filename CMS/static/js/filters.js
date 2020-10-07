@@ -75,18 +75,17 @@
                 })
             };
 
-            // Commenting out this block fixes the cymraeg link issue
-            // for (var i = 0; i < this.languageChgBtnList.length; i++) {
-            //     $(this.languageChgBtnList[i]).click(function(evt) {
-            //         evt.preventDefault();
-            //         that.prepSubjectQuery();
-            //         that.prepPostcodeQuery();
-            //         that.prepInstitutionQuery();
-            //         that.prepQualificationQuery();
-            //         that.form.attr('action', $(this).attr("href"));
-            //         that.form.submit();
-            //     });
-            // }
+            for (var i = 0; i < this.languageChgBtnList.length; i++) {
+                $(this.languageChgBtnList[i]).click(function(evt) {
+                    evt.preventDefault();
+                    that.prepSubjectQuery();
+                    that.prepPostcodeQuery();
+                    that.prepInstitutionQuery();
+                    that.prepQualificationQuery();
+                    that.form.attr('action', $(this).attr("href"));
+                    that.form.submit();
+                });
+            }
 
             for (var i = 0; i < this.paginationInputs.length; i++) {
                 $(this.paginationInputs[i]).click(function(evt) {
