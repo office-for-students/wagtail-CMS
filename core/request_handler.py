@@ -32,7 +32,7 @@ def get_json_file(json_file):
         response.__setstate__(response_state)
 
         return response
-  
+    
     blob_name = json_file
     container_name='jsonfiles'
     api_version = '2019-12-12'
@@ -40,6 +40,10 @@ def get_json_file(json_file):
     storage_account_name = settings.STORAGE_ACCOUNT_NAME
     storage_account_key = settings.STORAGEKEY
     
+    print('storage_account_name: {}'.format(storage_account_name))
+    print('storage_account_key: {}'.format(storage_account_key))
+    print('blob_name: {}'.format(blob_name))
+
     string_params = {
         'verb': 'GET',
         'Content-Encoding': '',
@@ -54,8 +58,10 @@ def get_json_file(json_file):
         'If-Unmodified-Since': '',
         'Range': '',
         'CanonicalizedHeaders': 'x-ms-date:' + request_time + '\nx-ms-version:' + api_version + '\n',
-        'CanonicalizedResource': '/' + storage_account_name + '/'+container_name + '/' + blob_name
+        'CanonicalizedResource': '/' + storage_account_name + '/'+ container_name + '/' + blob_name
     }
+    print("'CanonicalizedResource': /{}/{}/{} ".format(storage_account_name,container_name,blob_name))
+    print('string_params: {}'.format(string_params))
 
     string_to_sign = (string_params['verb'] + '\n' 
                     + string_params['Content-Encoding'] + '\n'
@@ -79,6 +85,8 @@ def get_json_file(json_file):
         'x-ms-version' : api_version,
         'Authorization' : ('SharedKey ' + storage_account_name + ':' + signed_string)
     }   
+    
+    print('headers: {}'.format(headers))
 
     url = 'https://' + storage_account_name + '.blob.core.windows.net/'+container_name+'/'+blob_name
     r = requests.get(url, headers = headers)
