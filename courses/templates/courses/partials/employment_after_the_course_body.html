@@ -43,8 +43,8 @@
             <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
 
                 <h2 class="employment-after-course__stats-heading pt-3 mb-4">
-                    {{block.value.six_month_employment_roles_heading}}{% if course_details.has_multiple_job_type_stats %}
-                    {{job_type_stats.display_subject_name}}{% endif %}
+                    {{block.value.six_month_employment_roles_heading}}{% if course_details.has_multiple_employment_stats %}
+                    {{employment_stats.display_subject_name}}{% endif %}
                 </h2>
                 <div class="explanation-text">
                     {% create_list course_details.data_from_html employment_stats.number_of_students employment_stats.response_rate as substitutions %}
@@ -144,18 +144,18 @@
             </div>
         </div>
     {% endif %}
-    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=job_type_stats.display_unavailable_info %}
     </div>
 {% endfor %}
 </div>
 
+
 {% if course_details.has_multiple_job_type_stats and course.has_multiple_job_lists %}
 <ul class="nav nav-tabs mt-2" id="occupation-types-tab" role="tablist">
-    {% for job_type_stats in course_details.job_type_stats %}
+    {% for jobtype_stats, joblist_stats in course_details.sync_occupation_stats %}
         <li class="nav-item">
             <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="occupation-types-{{ forloop.counter }}-tab" data-toggle="tab" href="#occupation-types-{{ forloop.counter }}" role="tab"
                aria-controls="occupation-types-{{ forloop.counter }}" aria-selected="true">
-                {{ job_type_stats.display_subject_name }}
+                {{ jobtype_stats.display_subject_name }}
             </a>
         </li>
     {% endfor %}
@@ -164,8 +164,11 @@
 {% endif %}
 
 <div class="tab-content">
+
 {% for jobtype_stats, joblist_stats in course_details.sync_occupation_stats %}
-    {% if jobtype_stats.number_of_students and joblist_stats.jobs %}
+{% include 'courses/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
+{% if jobtype_stats.number_of_students and joblist_stats.jobs %}
+
     <div class="tab-pane {% if not forloop.counter0 %} show active {% endif %}" id="occupation-types-{{ forloop.counter }}" role="tabpanel" aria-labelledby="occupation-types-{{ forloop.counter }}-tab">
 
         <div class="employment-after-course_occupation-block mx-1 my-2 p-4">
