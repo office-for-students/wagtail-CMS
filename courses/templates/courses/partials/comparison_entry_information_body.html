@@ -43,12 +43,14 @@
                                     <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ entry_stats.display_subject_name }}</h1>
                                 </div>
                             {% endif %}
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}
 
                             <div class="entry-information__qualification-charts p-3 d-flex flex-wrap row mx-1 my-3">
                                 <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
                                     <h2 class="entry-information__heading py-2">{{block.value.qualification_heading}}
                                     </h2>
+
+                                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}
+
                                     <div class="entry-information__qualification_intro mt-2">
                                         {% create_list course.data_from_html entry_stats.number_of_students as substitutions %}
                                         {% insert_values_to_rich_text content=block.value.qualification_data_source substitutions=substitutions as subbed_text %}
@@ -212,16 +214,17 @@
                                     <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ tariff_stats.display_subject_name }}</h1>
                                 </div>
                             {% endif %}
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
 
                             <div class="entry-information__block my-2">
                                 <div class="entry-information__ucas-points p-3 d-flex flex-wrap row mx-1">
                                     <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
                                         <h2 class="entry-information__heading py-3">{{block.value.tariffs_heading}}</h2>
+
+                                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
                         
-                                            {% create_list course.data_from_html tariff_stats.number_of_students as substitutions %}
-                                            {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
-                                            {{ subbed_text | richtext }}
+                                        {% create_list course.data_from_html tariff_stats.number_of_students as substitutions %}
+                                        {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
+                                        {{ subbed_text | richtext }}
                                     </div>
                                     <div class=" col-lg-8 col-md-12 align-self-stretch my-auto pt-2">
                                         {% if tariff_stats.show_stats %}
