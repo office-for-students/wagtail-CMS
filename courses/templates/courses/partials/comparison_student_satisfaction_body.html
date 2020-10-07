@@ -21,8 +21,6 @@
             {% endif %}
 
             
-
-            
             <div class="comparison__course-column">
                 {% if course_satisfaction_stats.question_27.show_data_point %}
                 {% if course_satisfaction_stats.show_satisfaction_stats %}
@@ -54,7 +52,12 @@
 
                     <div class="student-satisfaction__block">
 
-                    <div class="scrolling-wrapper scroll">
+
+                    <div class="mt-3">
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_satisfaction_stats.display_unavailable_info %}
+                    </div>
+
+                        <div class="scrolling-wrapper scroll">
                     {% if course_satisfaction_stats.show_satisfaction_stats %}
                         {% if course_satisfaction_stats.show_teaching_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 px-1 mx-1 scroll_item">
@@ -735,13 +738,13 @@
 
                         {% endif %}
                     {% endif %}
-
-                    <div class="mt-3">
-                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_satisfaction_stats.display_unavailable_info %}
-                    </div>
                 
                     {% if course_nhs_satisfaction_stats %}
-                        <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                    <div class="mt-3">
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_nhs_satisfaction_stats.display_unavailable_info %}
+                    </div>
+
+                    <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                             <div class="col-lg-4 col-md-12  pt-3 text-left" >
                                 <h2 class="student-satisfaction__data-group-heading text-left">
                                     {{block.value.nhs_placement_stats_header }}
@@ -890,17 +893,13 @@
                                 {{ subbed_text | richtext }}
                             </div>
                         {%  endif %}
-
-                        <div class="mt-3">
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_nhs_satisfaction_stats.display_unavailable_info %}
-                        </div>
                     {% endif %}
                     </div>
                     </div>
 
                 </div>
                 {% endif %}
-                {% else %}
+            {% else %}
                 <div class="mt-3 mr-lg-3 mr-md-2 mr-sm-2">
                     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_satisfaction_stats.display_unavailable_info %}
                 </div>

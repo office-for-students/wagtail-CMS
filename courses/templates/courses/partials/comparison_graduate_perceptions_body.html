@@ -27,10 +27,6 @@
                     {% endif %}
 
                     {% if perceptions_stats.go_work_mean %}
-                    <div class="mt-3">
-                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=perceptions_stats.display_unavailable_info %}
-                    </div>
-                    
                     <div class="student-satisfaction__overview mt-3 mx-1 p-3 d-flex flex-wrap row">
                             <div class="col-lg-2 col-md-12 align-self-stretch text-center">
                                 <p class="student-satisfaction__overview-lead ">
@@ -47,6 +43,10 @@
                                     </div>
                                 </p>
                             </div>
+                    </div>
+
+                    <div class="mt-3">
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=perceptions_stats.display_unavailable_info %}
                     </div>
         
                     <div class="student-satisfaction__block">
@@ -131,7 +131,7 @@
         
                 {% else %}
                     <div class="mt-3">
-                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=perceptions_stats.display_unavailable_info %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
                     </div>
                 {% endif %}
         

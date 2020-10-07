@@ -31,12 +31,10 @@
             <div class="col-lg-9 col-sm-12 align-self-stretch pt-2">
                 <p class="one-year__overview-sublead mb-3 text-center text-lg-left"> 
                     {{block.value.lead}}
-                </p>
-                <p class="my-2 text-lg-left">
-                    {% get_translation key='after_1_year_overview_1' language=page.get_language %}: <a href="https://discoveruni.gov.uk/about-our-data/#data_collected_from_universities_and_colleges_on_individual_students">{% get_translation key='data_ind_stud_coll_dir' language=page.get_language %}</a>
-                </p>
-                <p class="text-lg-left">
-                    {{ continuation_stats.number_of_students }} {% get_translation key='after_1_year_overview_2' language=page.get_language %} (90% {% get_translation key='after_1_year_overview_3' language=page.get_language %})
+
+                    {% create_list course_details.data_from_html continuation_stats.number_of_students as substitutions %}
+                    {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
+                    {{ subbed_text | richtext }}
                 </p>
             </div>
         </div>

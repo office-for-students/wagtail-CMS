@@ -1,7 +1,7 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
 
         {% if course_details.salary_aggregates %}
-            {% if course_details.show_salary_lead %}
+            {# if course_details.show_salary_lead #}
             <div class="earnings-after-course__lead my-3 p-3 mx-1 pt-4 flex-wrap">
                 <div class="row">
                     <div class="col-lg-4 col-md-12 px-4 earnings-after-course__lead-title align-self-stretch my-auto text-lg-left text-center">
@@ -12,7 +12,7 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
+            {# endif #}
         {% else %}
             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
         {% endif %}
@@ -363,7 +363,7 @@
                             $("#sector_salary_lq_0_" + subjectIndex + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_15_lq'] + " - £" + data['salary_sector_15_uq']);
                             $("#sector_salary_pop_0_" + subjectIndex + " div").replaceWith("<div class='rich-text'><p></p></div>");
                             $("#sector_salary_pop_0_" + subjectIndex + " div p").text(data['data_from_text'] + " " + data['salary_sector_15_pop'] + " " + data['respondents_text']);
-                            $("#sector_salary_pop_0_" + subjectIndex + " div").append("<p>(" + data['salary_sector_15_resp'] + "% " + data['of_those_asked_text'] + ")</p>");
+                            //$("#sector_salary_pop_0_" + subjectIndex + " div").append("<p>(" + data['salary_sector_15_resp'] + "% " + data['of_those_asked_text'] + ")</p>");
                         }
                     }
                     else {

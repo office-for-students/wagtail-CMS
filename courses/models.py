@@ -164,6 +164,7 @@ class EmploymentAfterCourseBlock(AccordionPanel):
     six_month_employment_roles_heading = blocks.CharBlock(required=False)
     six_month_employment_roles_label_explanation_heading = blocks.CharBlock(required=False)
     six_month_employment_roles_data_source = blocks.RichTextBlock(blank=True)
+    six_month_employment_roles_source = blocks.RichTextBlock(blank=True)
 
     occupation_types_label_explanation_heading = blocks.CharBlock(required=False)
     occupation_types_label_explanation_body = blocks.RichTextBlock(blank=True)
@@ -1470,9 +1471,8 @@ class CourseAccreditation:
         self.type = fallback_to(data_obj.get("type"), '')
         self.accreditor_url = fallback_to(data_obj.get('accreditor_url'), '')
 
-
-#https://pre-prod-discover-uni.azurewebsites.net/course-details/10007856/BA_L700/Full-time/www.rgs.org/www.rgs.org/accreditation
-
+        if str(self.accreditor_url)[:4] != "http":
+            self.accreditor_url = 'http://' + self.accreditor_url
 
         text = data_obj.get('text')
         if text:

@@ -206,6 +206,9 @@
                                     <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ jobtype_stats.display_subject_name }}</h1>
                                 </div>
                             {% endif %}
+
+                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
+
                             <div class="employment-after-course_occupation-block mx-1 my-2 p-4">
                                 <h2 class="employment-after-course__stats-heading text-left pt-3 mb-4">
                                     {{block.value.six_month_employment_roles_label_explanation_heading}}
