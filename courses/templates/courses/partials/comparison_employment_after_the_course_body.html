@@ -46,15 +46,16 @@
                                         </p>
                                     </div>
                                 </div>
-                        
-                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
-                        
+                                                
                                 <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
                                     <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
                         
                                         <h2 class="employment-after-course__stats-heading pt-3 mb-4">
                                             {{block.value.six_month_employment_roles_heading}}
                                         </h2>
+
+                                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
+
                                         <div class="explanation-text">
                                             {% create_list course.data_from_html employment_stats.number_of_students employment_stats.response_rate as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.six_month_employment_data_source substitutions=substitutions as subbed_text %}
@@ -207,12 +208,13 @@
                                 </div>
                             {% endif %}
 
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
-
                             <div class="employment-after-course_occupation-block mx-1 my-2 p-4">
                                 <h2 class="employment-after-course__stats-heading text-left pt-3 mb-4">
                                     {{block.value.six_month_employment_roles_label_explanation_heading}}
                                 </h2>
+
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
+
                                 <div class="employment-after-course_explanation-text">
                                         {% create_list course.data_from_html jobtype_stats.number_of_students jobtype_stats.response_rate as substitutions %}
                                         {% insert_values_to_rich_text content=block.value.six_month_employment_roles_data_source substitutions=substitutions as subbed_text %}
