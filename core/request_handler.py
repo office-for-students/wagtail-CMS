@@ -16,23 +16,22 @@ def send_feedback(feedback_data):
 
 
 def get_json_file(json_file):
-    return ""
 
-    # if settings.LOCAL or settings.JSONFILES_STORAGE_CONTAINER == "":
-    #     print("Loading local jsonfile")
-    #     with open(os.path.join(settings.BASE_DIR, 'CMS/static/jsonfiles/' + json_file)) as json_file:
-    #         data = json_file.read()
+    if True or settings.LOCAL or settings.JSONFILES_STORAGE_CONTAINER == "":
+        print("Loading local jsonfile")
+        with open(os.path.join(settings.BASE_DIR, 'CMS/static/jsonfiles/' + json_file)) as json_file:
+            data = json_file.read()
 
-    #     response = requests.Response()
+        response = requests.Response()
 
-    #     response_state = response.__getstate__()
-    #     response_state["status_code"] = 200
-    #     response_state["_content"] = data.encode('utf-8')
-    #     response_state["encoding"] = 'utf-8'
+        response_state = response.__getstate__()
+        response_state["status_code"] = 200
+        response_state["_content"] = data.encode('utf-8')
+        response_state["encoding"] = 'utf-8'
         
-    #     response.__setstate__(response_state)
+        response.__setstate__(response_state)
 
-    #     return response
+        return response
     
     # blob_name = json_file
     # container_name='jsonfiles'
