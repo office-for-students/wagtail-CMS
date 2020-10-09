@@ -28,12 +28,12 @@
 
                     {% if perceptions_stats.go_work_mean %}
                     <div class="student-satisfaction__overview mt-3 mx-1 p-3 d-flex flex-wrap row">
-                            <div class="col-lg-2 col-md-12 align-self-stretch text-center">
+                            <div class="col-xl-2 col-lg-12 align-self-stretch text-center">
                                 <p class="student-satisfaction__overview-lead ">
                                     {{ perceptions_stats.go_work_mean }}%
                                 </p>
                             </div>
-                            <div class=" col-lg-10 col-md-12 align-self-stretch text-center text-lg-left">
+                            <div class=" col-xl-10 col-lg-12 align-self-stretch text-center text-lg-left">
                                 <p>
                                     {{ block.value.lead_text }}
                                     <div class="student-satisfaction__intro">
@@ -51,7 +51,7 @@
         
                     <div class="student-satisfaction__block">
                         <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 mx-1">
-                            <div class="col-lg-4 col-md-12 my-auto pb-3" >
+                            <div class="col-12 my-auto pb-3" >
                                 <h2 class="student-satisfaction__data-group-heading mb-3">
                                     {{ block.value.perception_of_work_heading }}
         
@@ -62,7 +62,7 @@
                                     </p>
                                 </h2>
                             </div>
-                            <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto">
+                            <div class="student-satisfaction__charts col-12 my-auto">
                                 <div class="student-satisfaction__chart-wrapper">
                                     <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
                                             data-value="{{ perceptions_stats.go_work_skills }}"
