@@ -1529,6 +1529,10 @@ DICT = {
     'how_to_search_for_course':{
         'en': "How to search for courses",
         'cy': "Sut i chwilio am gyrsiau"
+    },
+    'accreditation_link_url':{
+        'en': "https://discoveruni.gov.uk/how-do-i-choose-course/employment-prospects/#professional_accreditation",
+        'cy': "https://discoveruni.gov.uk/cy/how-choose-course-cy/rhagolygon-cyflogaeth-employment-prospects/#achrediad_proffesiynol"
     }
    
 }
