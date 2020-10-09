@@ -109,7 +109,10 @@ def regional_earnings(request):
                 salary_sector_3_pop = None
                 inst_prov_pc_leo3 = None
         else:
-            salary_sector_3_unavail_text = unavailable_region_is_ni
+            if region == "_ni":
+                salary_sector_3_unavail_text = unavailable_region_is_ni
+            else:
+                salary_sector_3_unavail_text = unavailable_region_not_exists
             salary_sector_3_med = None
             salary_sector_3_lq = None
             salary_sector_3_uq = None
@@ -138,7 +141,10 @@ def regional_earnings(request):
                 salary_sector_5_pop = None
                 inst_prov_pc_leo5 = None
         else:
-            salary_sector_5_unavail_text = unavailable_region_is_ni
+            if region == "_ni":
+                salary_sector_5_unavail_text = unavailable_region_is_ni
+            else:
+                salary_sector_5_unavail_text = unavailable_region_not_exists
             salary_sector_5_med = None
             salary_sector_5_lq = None
             salary_sector_5_uq = None
