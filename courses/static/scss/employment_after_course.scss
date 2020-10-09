@@ -208,6 +208,9 @@
 }
 
 @media only screen and (min-width: 770px) {
+    .employment-after-course__block .employment-after-course__stats-heading, .employment-after-course__lead-block .employment-after-course__stats-heading, .employment-after-course_occupation-block .employment-after-course__stats-heading {
+        font-size:28px;
+    }
     .employment-after-course__block .employment-after-course_explanation-text .rich-text, .employment-after-course__lead-block .employment-after-course_explanation-text .rich-text, .employment-after-course__block .rich-text, .employment-after-course__lead-block .rich-text, .employment-after-course_occupation-block .employment-after-course_explanation-text .rich-text, .employment-after-course_occupation-block .rich-text {
         font-size: 16px;
         font-weight:normal;
