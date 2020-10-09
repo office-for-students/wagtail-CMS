@@ -421,9 +421,59 @@
         var filters = $('.filters-wrapper');
         var toggle = $('.course-finder-results__overview-filter-toggle');
         var openBtn = $('.course-finder-results__overview-filter-open');
+
         new Filters(filters[0], toggle[0], openBtn[0]);
     }
 
     $(document).on('page:load', init);
     $(init)
+
 }(jQuery));
+
+$(document).ready(function(){
+    $('#clear-filters').click(function(){
+
+        $('#countries-england').attr('checked', false);
+        $('#countries-ireland').attr('checked', false);
+        $('#countries-scotland').attr('checked', false);
+        $('#countries-wales').attr('checked', false);
+
+        $('#mode-full-time').attr('checked', false);
+        $('#mode-part-time').attr('checked', false);
+        $('#mode-distance').attr('checked', false);
+
+        $('#placement-yes').attr('checked', false);
+        $('#placement-no').attr('checked', false);
+        $('#placement-either').attr('checked', false);
+
+        $('#foundation-yes').attr('checked', false);
+        $('#foundation-no').attr('checked', false);
+        $('#foundation-either').attr('checked', false);
+
+        $('#abroad-yes').attr('checked', false);
+        $('#abroad-no').attr('checked', false);
+        $('#abroad-either').attr('checked', false);
+
+        $('#subjectArea').val('disabled');
+        $('#subject').val('disabled');
+        $('#subjectCode').val('default');
+
+        $('#subject_query').val('');
+        $('#postcode_field').val('');
+
+        $("#post-code-10").removeAttr("checked");
+        $("#post-code-25").removeAttr("checked");
+        $("#post-code-50").removeAttr("checked");
+
+        $('#postcode_query').val('');
+
+        $("#first_degree").removeAttr("checked");
+        $("#other_undergraduate").removeAttr("checked");
+
+        $('.filters-block__filter-uni-item-input').each(function() {
+            this.checked = false;
+        });
+
+        $('.filters-block__form').first().submit();
+    });
+});
