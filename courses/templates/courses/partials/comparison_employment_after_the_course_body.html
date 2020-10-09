@@ -58,7 +58,7 @@
 
                                         <div class="explanation-text">
                                             {% create_list course.data_from_html employment_stats.number_of_students employment_stats.response_rate as substitutions %}
-                                            {% insert_values_to_rich_text content=block.value.six_month_employment_data_source substitutions=substitutions as subbed_text %}
+                                            {% insert_values_to_rich_text content=block.value.six_month_employment_roles_data_source substitutions=substitutions as subbed_text %}
                                             {{ subbed_text | richtext }}
                                         </div>
                                     </div>
