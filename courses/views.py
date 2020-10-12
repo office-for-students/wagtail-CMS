@@ -80,7 +80,10 @@ def regional_earnings(request):
                 salary_sector_15_pop = None
                 inst_prov_pc_go = None
         else:
-            salary_sector_15_unavail_text = unavailable_region_not_nation
+            if region in ('_uk', '_e', '_s', '_w', '_ni'):
+                salary_sector_15_unavail_text = unavailable_region_not_exists
+            else:
+                salary_sector_15_unavail_text = unavailable_region_not_nation
             salary_sector_15_med = None
             salary_sector_15_lq = None
             salary_sector_15_uq = None
