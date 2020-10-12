@@ -455,9 +455,10 @@ $(document).ready(function(){
         $('#subject_query').val('');
         $('#postcode_field').val('');
 
-        $("#post-code-10").removeAttr("checked");
-        $("#post-code-25").removeAttr("checked");
-        $("#post-code-50").removeAttr("checked");
+        // Post code radio buttons
+        $("#one").removeAttr("checked");
+        $("#two").removeAttr("checked");
+        $("#three").removeAttr("checked");
 
         $('#postcode_query').val('');
 
