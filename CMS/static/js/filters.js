@@ -442,17 +442,11 @@ $(document).ready(function(){
         $('#mode-part-time').attr('checked', false);
         $('#mode-distance').attr('checked', false);
 
-        $('#placement-yes').attr('checked', false);
-        $('#placement-no').attr('checked', false);
-        $('#placement-either').attr('checked', false);
-
-        $('#foundation-yes').attr('checked', false);
-        $('#foundation-no').attr('checked', false);
-        $('#foundation-either').attr('checked', false);
-
-        $('#abroad-yes').attr('checked', false);
-        $('#abroad-no').attr('checked', false);
-        $('#abroad-either').attr('checked', false);
+        for (filter_base_name of ['placement', 'foundation', 'abroad']) {
+            $('#'+filter_base_name+'-yes').attr('checked', false);
+            $('#'+filter_base_name+'-no').attr('checked', false);
+            $('#'+filter_base_name+'-either').attr('checked', false);
+        }
 
         $('#subjectArea').val('disabled');
         $('#subject').val('disabled');
