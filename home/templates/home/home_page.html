@@ -1,28 +1,15 @@
 {% extends "base.html" %}
 {% load static wagtailcore_tags discover_uni_tags sass_tags %}
 
-
 {% block body_class %}template-homepage{% endblock %}
 
 {% block extra_css %}
     <link href="{% sass_src 'scss/home.scss' %}?{% code_version %}" rel="stylesheet" type="text/css" >
 {% endblock extra_css %}
 {% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/home-page.js' %}?{% code_version %}"></script>
 {% endblock %}
 
-
 {% block content %}
-
             {% include 'partials/home_page_content.html' %}
-            <!-- <div class="intro-text">
-                {{ page.intro  | richtext }}
-            </div> -->
-
-            <!-- {% for block in page.page_links %}
-                <div class="link">
-                    <a href='{{ block.value.page.url }}'>
-                        {{ block.value.title }}
-                    </a>
-                </div>
-            {% endfor %} -->
 {% endblock content %}
