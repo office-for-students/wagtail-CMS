@@ -867,7 +867,7 @@ DICT = {
         'cy': 'Chwilio'
     },
     'search_again': {
-        'en': 'Search again', 
+        'en': 'Search again',
         'cy': 'Chwilio eto'
     },
     'back_to_results': {
@@ -1378,6 +1378,14 @@ DICT = {
         'en': '<div class="d-inline d-md-none" ><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data from</div>',
         'cy': '<div class="d-inline d-md-none"><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data gan</div>'
     },
+    'data_from_html_average_earnings_year_range': {
+        'en': '<div class="d-inline d-md-none" ><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data from</div>',
+        'cy': '<div class="d-inline d-md-none"><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data o</div>'
+    },
+    'average_earnings_year_range': {
+        'en': 'students graduating during',
+        'cy': 'fyfyrwyr a raddiodd yn ystod'
+    },
     'entry_overview_2': {
         'en': 'students',
         'cy': 'myfyrwyr'
@@ -1534,5 +1542,5 @@ DICT = {
         'en': "https://discoveruni.gov.uk/how-do-i-choose-course/employment-prospects/#professional_accreditation",
         'cy': "https://discoveruni.gov.uk/cy/how-choose-course-cy/rhagolygon-cyflogaeth-employment-prospects/#achrediad_proffesiynol"
     }
-   
+
 }

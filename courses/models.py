@@ -289,6 +289,7 @@ class Course:
             self.kis_course_id = course_details.get('kis_course_id')
 
             self.data_from_html = DICT.get('data_from_html').get(language)
+            self.data_from_html_average_earnings_year_range = DICT.get('data_from_html_average_earnings_year_range').get(language)
 
             self.ucas_programme_id = course_details.get('ucas_programme_id')
             self.qualification = CourseQualification(course_details.get('qualification'))
@@ -401,9 +402,10 @@ class Course:
 
 
             current_year = datetime.datetime.now().year
-            self.go_year_range = "{}-{}".format(current_year-2, current_year-1)
-            self.leo3_year_range = "{}-{}".format(current_year-4, current_year-3)
-            self.leo5_year_range = "{}-{}".format(current_year-6, current_year-5)
+            prefix = DICT.get('average_earnings_year_range').get(language)
+            self.go_year_range = prefix+" {}-{}".format(current_year-3, current_year-2)
+            self.leo3_year_range = prefix+" {}-{}".format(current_year-10, current_year-8)
+            self.leo5_year_range = prefix+" {}-{}".format(current_year-10, current_year-8)
 
             self.go_salaries_inst = []
             if course_details.get('go_salary_inst'):
@@ -451,7 +453,7 @@ class Course:
             #     self.salaries_sector.append(SectorSalary(course_details.get('leo3_salary_sector_single'), self.display_language))
             # if course_details.get('leo5_salary_sector_single'):
             #     self.salaries_sector.append(SectorSalary(course_details.get('leo5_salary_sector_single'), self.display_language))
-        
+
             if course_details.get('country')['code'] == 'XG':
                 self.is_ni_provider = True
             else:
@@ -546,7 +548,7 @@ class Course:
     @property
     def has_multiple_satisfaction_stats(self):
         return len(self.overall_satisfaction) > 1
-        
+
     @property
     def has_multiple_continuation_stats(self):
         return len(self.continuation_stats) > 1
@@ -916,7 +918,7 @@ class ContinuationStatistics:
                 else self.unavailable_url_welsh
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
-        
+
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable

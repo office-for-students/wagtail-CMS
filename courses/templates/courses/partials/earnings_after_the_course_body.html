@@ -107,17 +107,17 @@
 
                                     <h4 class="earnings-after-course-stat-small pt-1 text-center text-lg-left  mb-3">
                                         {% if salary_index == 0 %}
-                                            {% create_list course_details.data_from_html course.go_year_range as substitutions %}
+                                            {% create_list course_details.data_from_html_average_earnings_year_range course.go_year_range as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
                                             {{ subbed_text | richtext }}
                                             {{ block.value.after_fifteen_months_data_source }}
                                         {% elif salary_index == 1 %}
-                                            {% create_list course_details.data_from_html course.leo3_year_range as substitutions %}
+                                            {% create_list course_details.data_from_html_average_earnings_year_range course.leo3_year_range as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
                                             {{ subbed_text | richtext }}
                                             {{ block.value.after_three_five_years_data_source }}
                                         {% else %}
-                                            {% create_list course_details.data_from_html course.leo5_year_range as substitutions %}
+                                            {% create_list course_details.data_from_html_average_earnings_year_range course.leo5_year_range as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
                                             {{ subbed_text | richtext }}
                                             {{ block.value.after_three_five_years_data_source }}
@@ -252,17 +252,17 @@
                                         </h4>
                                         <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3">
                                             {% if salary_index == 0 %}
-                                                {% create_list course_details.data_from_html course.go_year_range as substitutions %}
+                                                {% create_list course_details.data_from_html_average_earnings_year_range course.go_year_range as substitutions %}
                                                 {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
                                                 {{ subbed_text | richtext }}
                                                 {{ block.value.after_fifteen_months_data_source }}
                                             {% elif salary_index == 1 %}
-                                                {% create_list course_details.data_from_html course.leo3_year_range as substitutions %}
+                                                {% create_list course_details.data_from_html_average_earnings_year_range course.leo3_year_range as substitutions %}
                                                 {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
                                                 {{ subbed_text | richtext }}
                                                 {{ block.value.after_three_five_years_data_source }}
                                             {% else %}
-                                                {% create_list course_details.data_from_html course.leo5_year_range as substitutions %}
+                                                {% create_list course_details.data_from_html_average_earnings_year_range course.leo5_year_range as substitutions %}
                                                 {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
                                                 {{ subbed_text | richtext }}
                                                 {{ block.value.after_three_five_years_data_source }}
