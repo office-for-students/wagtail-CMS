@@ -186,10 +186,18 @@
                                             {% get_region_list as region_list %}
                                             {% for region in region_list %}
                                                 {% if page.get_language == 'cy' %}
-                                                    <option value="{{region.id}}">{{region.name_cy}}</option>
+                                                    {% if course.default_country_postfix == region.id %}
+                                                        <option value="{{region.id}}" selected>{{region.name_cy}}</option>
+                                                    {% else %}
+                                                        <option value="{{region.id}}">{{region.name_cy}}</option>
+                                                    {% endif %}
                                                 {% else %}
-                                                    <option value="{{region.id}}">{{region.name_en}}</option>
-                                                {% endif %}
+                                                    {% if course.default_country_postfix == region.id %}
+                                                        <option value="{{region.id}}" selected>{{region.name_en}}</option>
+                                                    {% else %}
+                                                        <option value="{{region.id}}">{{region.name_en}}</option>
+                                                    {% endif %}
+                                                {% endif %}        
                                             {% endfor %}
                                         </select>
                                     </div>
@@ -229,14 +237,14 @@
                                                         {% endif %}
                                                     {% endif %}
                 
-                                                        <h2 class="earnings-sector-field earnings-after-course-stat-salary mb-1 text-center text-lg-left" id="{% concat 'sector_salary_med_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">£{{ salary.med_uk|intcomma }}</h2>
+                                                        <h2 class="earnings-sector-field earnings-after-course-stat-salary mb-1 text-center text-lg-left" id="{% concat 'sector_salary_med_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">£{{ salary.salary_default_country_med|intcomma }}</h2>
                                                         <h4 class="earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_lq_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
-                                                            {% create_list salary.lq_uk|intcomma salary.uq_uk|intcomma as substitutions %}
+                                                            {% create_list salary.salary_default_country_lq|intcomma salary.salary_default_country_uq|intcomma as substitutions %}
                                                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
                                                             {{ subbed_text | richtext }}
                                                         </h4>
                                                         <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_pop_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
-                                                            {% create_list course.data_from_html salary.pop_uk as substitutions %}
+                                                            {% create_list course.data_from_html salary.salary_default_country_pop as substitutions %}
                                                             {% if salary_index == 0 %}
                                                                 {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
                                                                 {{ subbed_text | richtext }}
@@ -248,7 +256,7 @@
                                                         </h4>
                                                         {% get_translation key='default_region' language=page.get_language as default_region %}
                                                         <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
-                                                            {% create_list salary_aggregate.aggregated_salaries_inst.0.prov_pc_uk course.english_title course.institution.pub_ukprn_name default_region as substitutions %}
+                                                            {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name default_region as substitutions %}
                                                             {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
                                                             {{ subbed_text | richtext }}
                                                         </h4>
@@ -364,6 +372,7 @@
             //alert("selectedRegion: " + selectedRegion);
 
             var courseDetails = $("#language_select").prop('href');
+            //courseDetails = courseDetails.replace("/cy/", "/");
             var courseParamsBunched = courseDetails.split('/').slice(5);
             var n = String(courseParamsBunched).indexOf("&");
 
@@ -441,8 +450,7 @@
                                 
                                 $("#sector_salary_med_1_" + subjectCode + "_" + leftOrRight).text("£" + data['salary_sector_3_med']);
                                 $("#sector_salary_lq_1_" + subjectCode + "_" + leftOrRight + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_3_lq'] + " - £" + data['salary_sector_3_uq']);
-                                $("#sector_salary_pop_1_" + subjectCode + "_" + leftOrRight + " div p").replaceWith("<div class='rich-text'><p></p></div>");
-                                $("#sector_salary_pop_1_" + subjectCode + "_" + leftOrRight + " div p").text(data['data_from_text'] + " " + data['salary_sector_3_pop'] + " " + data['students_text']);
+                                $("#sector_salary_pop_1_" + subjectCode + "_" + leftOrRight + " div").text(data['data_from_text'] + " " + data['salary_sector_3_pop'] + " " + data['people_text']);
                             }
                         }
                         else {
@@ -458,8 +466,7 @@
                                 
                                 $("#sector_salary_med_2_" + subjectCode + "_" + leftOrRight).text("£" + data['salary_sector_5_med']);
                                 $("#sector_salary_lq_2_" + subjectCode + "_" + leftOrRight + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_5_lq'] + " - £" + data['salary_sector_5_uq']);
-                                $("#sector_salary_pop_2_" + subjectCode + "_" + leftOrRight + " div p").replaceWith("<div class='rich-text'><p></p></div>");
-                                $("#sector_salary_pop_2_" + subjectCode + "_" + leftOrRight + " div p").text(data['data_from_text'] + " " + data['salary_sector_5_pop'] + " " + data['students_text']);
+                                $("#sector_salary_pop_2_" + subjectCode + "_" + leftOrRight + " div").text(data['data_from_text'] + " " + data['salary_sector_5_pop'] + " " + data['people_text']);
                             }
                         }
                         else {
