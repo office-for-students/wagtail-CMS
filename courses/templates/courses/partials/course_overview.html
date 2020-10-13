@@ -149,33 +149,39 @@
     </div>
 
     {% if not course.has_multiple_subject_names %}
-        <div class="course-detail__headline_statistics d-flex flex-row align-items-stretch my-4 text-center text-md-left mx-auto px-0">
+        <div class="course-detail__headline_statistics container-fluid row my-4 text-center text-md-left mx-auto px-0">
             {% if course.satisfaction_stats and course.satisfaction_stats.0.question_27 and course.satisfaction_stats.0.question_27.agree_or_strongly_agree %}
-                <div class="course-detail__headline_stat flex-fill align-self-stretch mr-2 mr-xs-1 px-3 px-xs-2 py-4">
-                    <h3 class="d-none d-lg-block">{% get_translation key='student_satisfaction_course_overview_1' language=page.get_language %}</h3>
-                    <h2>{{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%</h2>
-                    <p>{% get_translation key='student_satisfaction_course_overview_2' language=page.get_language %}</p>
+                <div class="col p-0 m-1">
+                    <div class="course-detail__headline_stat px-3 px-xs-2 py-4 mr-sm-2 mr-xs-1 h-100">
+                        <h3 class="d-none d-lg-block">{% get_translation key='student_satisfaction_course_overview_1' language=page.get_language %}</h3>
+                        <h2>{{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%</h2>
+                        <p>{% get_translation key='student_satisfaction_course_overview_2' language=page.get_language %}</p>
+                    </div>
                 </div>
             {% endif %}
 
             {% if course.summary_med_sal_value != "no_data" %}
-                <div class="course-detail__headline_stat flex-fill align-self-stretch ml-2 ml-xs-1 mr-2 mr-xs-1 px-3 px-xs-2 py-4">
-                    <h3 class="d-none d-lg-block">{% get_translation key='average_earnings_course_overview_1' language=page.get_language %}</h3>
-                    <h2 id="average_earnings_sm" class="d-lg-none">{{ course.summary_med_sal_value|intcomma }}</h2>
-                    <h2 id="average_earnings_lg" class="d-none  d-lg-block">
-                        £{{ course.summary_med_sal_value|intcomma }}</h2>
-                    <p>{{course.summary_med_sal_time}} {% get_translation key='summary_med_sal_text_1' language=page.get_language %}
-                        {{course.course_title}} {% get_translation key='summary_med_sal_text_2' language=page.get_language %}
-                        {{course.institution_name}}
-                    </p>
+                <div class="col p-0 m-1">
+                    <div class="course-detail__headline_stat px-3 px-xs-2 py-4 ml-xs-1 mr-xs-1 ml-sm-2 mr-sm-2 h-100">
+                        <h3 class="d-none d-lg-block">{% get_translation key='average_earnings_course_overview_1' language=page.get_language %}</h3>
+                        <h2 id="average_earnings_sm" class="d-lg-none">{{ course.summary_med_sal_value|intcomma }}</h2>
+                        <h2 id="average_earnings_lg" class="d-none  d-lg-block">
+                            £{{ course.summary_med_sal_value|intcomma }}</h2>
+                        <p>{{course.summary_med_sal_time}} {% get_translation key='summary_med_sal_text_1' language=page.get_language %}
+                            {{course.course_title}} {% get_translation key='summary_med_sal_text_2' language=page.get_language %}
+                            {{course.institution_name}}
+                        </p>
+                    </div>
                 </div>
             {% endif %}
             
             {% if course.employment_stats and course.employment_stats.0.work_and_or_study %}
-                <div class="course-detail__headline_stat flex-fill align-self-stretch ml-2 ml-xs-2 px-3 px-xs-2 py-4">
-                    <h3 class="d-none d-lg-block">{% get_translation key='employment_course_overview_1' language=page.get_language %}</h3>
-                    <h2>{{ course.employment_stats.0.work_and_or_study }}%</h2>
-                    <p>{% get_translation key='employment_course_overview_2' language=page.get_language %}</p>
+                <div class="col p-0 m-1">
+                    <div class="course-detail__headline_stat px-3 px-xs-2 py-4 ml-xs-1 ml-sm-2 h-100">
+                        <h3 class="d-none d-lg-block">{% get_translation key='employment_course_overview_1' language=page.get_language %}</h3>
+                        <h2>{{ course.employment_stats.0.work_and_or_study }}%</h2>
+                        <p>{% get_translation key='employment_course_overview_2' language=page.get_language %}</p>
+                    </div>
                 </div>
             {% endif %}
         </div>
