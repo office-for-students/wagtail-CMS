@@ -174,9 +174,17 @@
                             {% get_region_list as region_list %}
                             {% for region in region_list %}
                                 {% if page.get_language == 'cy' %}
-                                    <option value="{{region.id}}">{{region.name_cy}}</option>
+                                    {% if course_details.default_country_postfix == region.id %}
+                                        <option value="{{region.id}}" selected>{{region.name_cy}}</option>
+                                    {% else %}
+                                        <option value="{{region.id}}">{{region.name_cy}}</option>
+                                    {% endif %}
                                 {% else %}
-                                    <option value="{{region.id}}">{{region.name_en}}</option>
+                                    {% if course_details.default_country_postfix == region.id %}
+                                        <option value="{{region.id}}" selected>{{region.name_en}}</option>
+                                    {% else %}
+                                        <option value="{{region.id}}">{{region.name_en}}</option>
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
                         </select>
@@ -217,15 +225,15 @@
                                         {% endif %}
                                     {% endif %}
 
-                                        <h2 class="earnings-sector-field earnings-after-course-stat-salary mb-1 text-center text-lg-left" id="{% concat 'sector_salary_med_' salary_index '_' salary_aggregate.subject_code %}">£{{ salary.med_uk|intcomma }}</h2>
+                                        <h2 class="earnings-sector-field earnings-after-course-stat-salary mb-1 text-center text-lg-left" id="{% concat 'sector_salary_med_' salary_index '_' salary_aggregate.subject_code %}">£{{ salary.salary_default_country_med|intcomma }}</h2>
                                         <h4 class="earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_lq_' salary_index '_' salary_aggregate.subject_code %}">
-                                            {% create_list salary.lq_uk|intcomma salary.uq_uk|intcomma as substitutions %}
+                                            {% create_list salary.salary_default_country_lq|intcomma salary.salary_default_country_uq|intcomma as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
                                             {{ subbed_text | richtext }}
                                         </h4>
                                         <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_pop_' salary_index '_' salary_aggregate.subject_code %}">
                                             {# create_list course_details.data_from_html salary.pop_uk salary.resp_uk as substitutions #}
-                                            {% create_list course_details.data_from_html salary.pop_uk as substitutions %}
+                                            {% create_list course_details.data_from_html salary.salary_default_country_pop as substitutions %}
                                             {% if salary_index == 0 %}
                                                 {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
                                                 {{ subbed_text | richtext }}
@@ -237,7 +245,8 @@
                                         </h4>
                                         {% get_translation key='default_region' language=page.get_language as default_region %}
                                         <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
-                                            {% create_list salary_aggregate.aggregated_salaries_inst.0.prov_pc_uk course.english_title course.institution.pub_ukprn_name default_region as substitutions %}
+                                            {# create_list salary_aggregate.aggregated_salaries_inst.0.prov_pc_uk course.english_title course.institution.pub_ukprn_name default_region as substitutions #}
+                                            {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name default_region as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
                                             {{ subbed_text | richtext }}
                                         </h4>
@@ -348,7 +357,7 @@
                     'region': selectedRegion,
                     'institution_id': courseParams[0],
                     'course_id': courseParams[1],
-                    'kis_mode': courseParams[2],
+                    'kis_mode': courseParams[2].replace("%20", "-"),
                     'language': '{{ page.get_language }}',
                     'subject_code': subjectIndex
                 },

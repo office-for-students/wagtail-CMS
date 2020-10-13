@@ -388,6 +388,18 @@ class Course:
                     self.course_title = fallback_to(self.welsh_title, '')
 
 
+            self.default_country_postfix = "_uk"
+
+            if self.country.code == 'XF':
+                self.default_country_postfix = "_e"
+            elif self.country.code == 'XG':
+                self.default_country_postfix = "_ni"
+            elif self.country.code == 'XH':
+                self.default_country_postfix = "_s"
+            elif self.country.code == 'XI':
+                self.default_country_postfix = "_w"
+
+
             current_year = datetime.datetime.now().year
             self.go_year_range = "{}-{}".format(current_year-2, current_year-1)
             self.leo3_year_range = "{}-{}".format(current_year-4, current_year-3)
@@ -396,28 +408,28 @@ class Course:
             self.go_salaries_inst = []
             if course_details.get('go_salary_inst'):
                 for go_salary_inst in course_details.get('go_salary_inst'):
-                    self.go_salaries_inst.append(Salary(go_salary_inst, self.display_language))
+                    self.go_salaries_inst.append(Salary(go_salary_inst, self.display_language, self.country.code))
             self.leo3_salaries_inst = []
             if course_details.get('leo3_inst'):
                 for leo3_salary_inst in course_details.get('leo3_inst'):
-                    self.leo3_salaries_inst.append(Salary(leo3_salary_inst, self.display_language))
+                    self.leo3_salaries_inst.append(Salary(leo3_salary_inst, self.display_language, self.country.code))
             self.leo5_salaries_inst = []
             if course_details.get('leo5_inst'):
                 for leo5_salary_inst in course_details.get('leo5_inst'):
-                    self.leo5_salaries_inst.append(Salary(leo5_salary_inst, self.display_language))
+                    self.leo5_salaries_inst.append(Salary(leo5_salary_inst, self.display_language, self.country.code))
 
             self.go_salaries_sector = []
             if course_details.get('go_salary_sector'):
                 for go_salary_sector in course_details.get('go_salary_sector'):
-                    self.go_salaries_sector.append(SectorSalary(go_salary_sector, self.display_language))
+                    self.go_salaries_sector.append(SectorSalary(go_salary_sector, self.display_language, self.country.code))
             self.leo3_salaries_sector = []
             if course_details.get('leo3_salary_sector'):
                 for leo3_salary_sector in course_details.get('leo3_salary_sector'):
-                    self.leo3_salaries_sector.append(SectorSalary(leo3_salary_sector, self.display_language))
+                    self.leo3_salaries_sector.append(SectorSalary(leo3_salary_sector, self.display_language, self.country.code))
             self.leo5_salaries_sector = []
             if course_details.get('leo5_salary_sector'):
                 for leo5_salary_sector in course_details.get('leo5_salary_sector'):
-                    self.leo5_salaries_sector.append(SectorSalary(leo5_salary_sector, self.display_language))
+                    self.leo5_salaries_sector.append(SectorSalary(leo5_salary_sector, self.display_language, self.country.code))
 
             # self.salaries_inst = []
             # if course_details.get('go_salary_inst_single'):
@@ -1637,7 +1649,7 @@ class GraduatePerceptionStatistics:
 
 class Salary:
 
-    def __init__(self, salary_data, display_language):
+    def __init__(self, salary_data, display_language, institution_country_code):
         self.display_language = display_language
 
         if salary_data:
@@ -1651,6 +1663,24 @@ class Salary:
             self.unavailable_reason = "" #fallback_to(salary_data.get('reason'), '')
             self.unavailable_reason_english = fallback_to(salary_data['unavail_text_english'], '')
             self.unavailable_reason_welsh = fallback_to(salary_data['unavail_text_welsh'], '')
+
+
+            # Values used by the Earnings partial HTML files to default the DDL to the institution's country.
+            #   XF - England
+            #   XG - Northern Ireland
+            #   XH - Scotland
+            #   XI - Wales
+            salary_default_country_prov_pc = None
+
+            if institution_country_code == 'XF':
+                country_postfix = "_e"
+            elif institution_country_code == 'XG':
+                country_postfix = "_ni"
+            elif institution_country_code == 'XH':
+                country_postfix = "_s"
+            elif institution_country_code == 'XI':
+                country_postfix = "_w"
+
 
             if 'resp_rate' in salary_data:
                 self.resp_rate = salary_data['resp_rate']
@@ -1667,6 +1697,8 @@ class Salary:
                 self.prov_pc_s = salary_data['inst_prov_pc_s']
                 self.prov_pc_w = salary_data['inst_prov_pc_w']
                 self.prov_pc_ni = salary_data['inst_prov_pc_ni']
+
+                self.salary_default_country_prov_pc = salary_data["inst_prov_pc" + country_postfix]
 
             if 'inst_prov_pc_nw' in salary_data:
                 self.prov_pc_nw = salary_data['inst_prov_pc_nw']
@@ -1706,7 +1738,7 @@ class Salary:
 
 class SectorSalary:
 
-    def __init__(self, salary_data, display_language):
+    def __init__(self, salary_data, display_language, institution_country_code):
         self.display_language = display_language
         self.no_salary_node = "true"
 
@@ -1715,6 +1747,27 @@ class SectorSalary:
             self.subject_code = subject_data.get('code', '')
             self.subject_english = subject_data.get('english_label', '')
             self.subject_welsh = subject_data.get('welsh_label', '')
+
+
+            # Values used by the Earnings partial HTML files to default the DDL to the institution's country.
+            #   XF - England
+            #   XG - Northern Ireland
+            #   XH - Scotland
+            #   XI - Wales
+            self.salary_default_country_med = None
+            self.salary_default_country_lq = None
+            self.salary_default_country_uq = None
+            self.salary_default_country_pop = None
+            #salary_default_country_prov_pc = None
+
+            if institution_country_code == 'XF':
+                country_postfix = "_e"
+            elif institution_country_code == 'XG':
+                country_postfix = "_ni"
+            elif institution_country_code == 'XH':
+                country_postfix = "_s"
+            elif institution_country_code == 'XI':
+                country_postfix = "_w"
 
             self.no_salary_node = "false"
             if 'lq_uk' in salary_data:
@@ -1743,6 +1796,12 @@ class SectorSalary:
             #     self.resp_e = salary_data['resp_e']
             #     self.resp_w = salary_data['resp_w']
             #     self.resp_s = salary_data['resp_s']
+
+                self.salary_default_country_med = salary_data["med" + country_postfix]
+                self.salary_default_country_lq = salary_data["lq" + country_postfix]
+                self.salary_default_country_uq = salary_data["uq" + country_postfix]
+                self.salary_default_country_pop = salary_data["pop" + country_postfix]
+
 
             if 'lq_ni' in salary_data:
                 self.lq_ni = salary_data['lq_ni']
@@ -1900,7 +1959,7 @@ class SalariesAggregate:
         self.aggregated_salaries_sector.append(salary_sector)
 
     def generate_empty_institution_salary_with_unavail_reason(self):
-        salary_substitute = Salary(None, self.display_language)
+        salary_substitute = Salary(None, self.display_language, None)
         salary_substitute.unavail_reason = "1"
         salary_substitute.unavailable_reason = ""
         salary_substitute.prov_pc_uk = ""
@@ -1940,7 +1999,7 @@ class SalariesAggregate:
         return salary_substitute
 
     def generate_empty_sector_salary_with_unavail_reason(self):
-        salary_substitute = SectorSalary(None, self.display_language)
+        salary_substitute = SectorSalary(None, self.display_language, None)
         salary_substitute.unavail_reason = "1"
         salary_substitute.unavailable_reason = ""
 
