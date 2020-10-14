@@ -1684,6 +1684,7 @@ class Salary:
                 country_postfix = "_w"
 
 
+            self.resp_rate = None
             if 'resp_rate' in salary_data:
                 self.resp_rate = salary_data['resp_rate']
 
