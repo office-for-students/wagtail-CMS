@@ -26,7 +26,7 @@ rect.highcharts-label-box, rect.highcharts-data-label-box{
     .highcharts-plot-border{
         fill:$white;
     }
-    .highcharts-background {
+        .highcharts-background {
         fill: none;
     }
 
@@ -35,17 +35,15 @@ rect.highcharts-label-box, rect.highcharts-data-label-box{
     }
 
     .highcharts-point {
-        stroke: $gradient-dark-green;
-        stroke-width: 2px;
+        stroke-width: 0;
 
         &.highcharts-color-1 {
             fill: $gradient-light-green;
-            fill: url(#gradient-bar);
+            fill: url(#gradient-bar); 
         }
 
         &.highcharts-color-0 {
-            fill: $gradient-light-green;
-            fill: url(#gradient-bar);
+            fill: white;
         }
     }
 
@@ -85,7 +83,6 @@ rect.highcharts-label-box, rect.highcharts-data-label-box{
 @media only screen and (min-width: 770px) {
     .doughnut-chart {
         width: 50%;
-
         .highcharts-plot-border {
             fill: $ice-blue;
             stroke: none;
@@ -108,8 +105,4 @@ rect.highcharts-label-box, rect.highcharts-data-label-box{
             fill: none;
         }
     }
-}
-
-.bar-chart text.highcharts-title{
-    display: none;
 }

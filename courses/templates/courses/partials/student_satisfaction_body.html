@@ -40,11 +40,10 @@
     {% endif %}
 
     <div class="student-satisfaction__block">
-
-        <div class="scrolling-wrapper scroll">
-            <br>
+        <div class="mt-3">
             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.display_unavailable_info %}
-
+        </div>
+        <div class="scrolling-wrapper scroll">
             {% if overall_stats.satisfaction_stats.show_satisfaction_stats %}
             {% if overall_stats.satisfaction_stats.show_teaching_stats %}
                 <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 px-1 mx-1 scroll_item">
