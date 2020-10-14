@@ -19,6 +19,11 @@ a{
     font-weight:300;
     color:#308282;
 }
+#sample-size-text{
+    font-size:14px;
+    font-weight:normal;
+    color: $brownish-grey;
+}
 
 @media only screen and (min-width: 770px) {
     .discover-uni-container {
@@ -271,6 +276,12 @@ body {
 
         }
     }
+    #sample-size-text{
+        font-size:14px;
+        font-weight:normal;
+        color:$brownish-grey;
+        text-align:left;
+      }
 }
 
 #leo3_sector_unavail.not-enough-data-disclaimer, #leo5_sector_unavail.not-enough-data-disclaimer, #go_sector_unavail.not-enough-data-disclaimer{
