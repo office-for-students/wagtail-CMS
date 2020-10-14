@@ -45,7 +45,7 @@
                             {% endif %}
 
                             <div class="entry-information__qualification-charts p-3 d-flex flex-wrap row mx-1 my-3">
-                                <div class="col-xl-4 col-lg-12 align-self-stretch my-auto">
+                                <div class="col-12 align-self-stretch my-auto">
                                     <h2 class="entry-information__heading py-2">{{block.value.qualification_heading}}
                                     </h2>
 
@@ -217,7 +217,7 @@
 
                             <div class="entry-information__block my-2">
                                 <div class="entry-information__ucas-points p-3 d-flex flex-wrap row mx-1">
-                                    <div class="col-xl-4 col-lg-12 align-self-stretch my-auto">
+                                    <div class="col-12 align-self-stretch my-auto">
                                         <h2 class="entry-information__heading py-3">{{block.value.tariffs_heading}}</h2>
 
                                         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
@@ -235,10 +235,10 @@
                                                         data-title="{% get_translation key='tariff_graph_title' language=page.get_language %} {{tariff.label}}"
                                                         data-desc="{% get_translation key='tariff_graph_desc' language=page.get_language %} {{tariff.label}}">
                                                         <div class="row d-flex">
-                                                            <div class="col-8 order-md-1 order-lg-2 text-lg-right">
+                                                            <div class="col-sm-8 col-md-9 order-md-2 order-lg-2 text-lg-right">
                                                                 {% include 'courses/partials/bar_chart.html' %}
                                                             </div>
-                                                            <div class="col-4 order-md-2 order-lg-1">
+                                                            <div class="col-sm-4 col-md-3 order-md-1 order-lg-1">
                                                                 <label class="entry-information__chart-label" aria-hidden="true"><span class="float-lg-right">{{tariff.label}}</span></label>
                                                             </div>
                                                         </div>
