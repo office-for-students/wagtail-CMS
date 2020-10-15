@@ -372,8 +372,15 @@
             //alert("selectedRegion: " + selectedRegion);
 
             var courseDetails = $("#language_select").prop('href');
-            //courseDetails = courseDetails.replace("/cy/", "/");
-            var courseParamsBunched = courseDetails.split('/').slice(5);
+            if (courseDetails.includes("/cy/"))
+                courseDetails = courseDetails.replace("/cy/", "/");
+            //alert(courseDetails);
+            var courseParamsBunched = courseDetails.split('/').slice(4);
+            // alert(courseParamsBunched);
+            // courseParamsBunched = courseDetails.split('/').slice(3);
+            // alert(courseParamsBunched);
+            // courseParamsBunched = courseDetails.split('/').slice(4);
+            // alert(courseParamsBunched);
             var n = String(courseParamsBunched).indexOf("&");
 
             // URL may have either course 1 or course 2 first.
