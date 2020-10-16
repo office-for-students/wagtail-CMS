@@ -14,6 +14,7 @@ from courses import request_handler
 from errors.models import ApiError
 from institutions.models import InstitutionOverview
 import datetime
+import json
 
 
 STUDENT_SATISFACTION_KEY = 'student_satisfaction'
@@ -390,15 +391,31 @@ class Course:
 
 
             self.default_country_postfix = "_uk"
+            self.default_region = "The UK"
 
             if self.country.code == 'XF':
                 self.default_country_postfix = "_e"
+                self.default_region = "England"
             elif self.country.code == 'XG':
                 self.default_country_postfix = "_ni"
+                self.default_region = "Northern Ireland"
             elif self.country.code == 'XH':
                 self.default_country_postfix = "_s"
+                self.default_region = "Scotland"
             elif self.country.code == 'XI':
                 self.default_country_postfix = "_w"
+                self.default_region = "Wales"
+            
+            if language == enums.languages.WELSH:
+                with open("./CMS/static/jsonfiles/regions.json", "r") as f:
+                    regions = f.read()
+
+                region_dict = json.loads(regions)
+                for region_elem in region_dict:
+                    elem_name_en = region_elem['name_en']
+                    if elem_name_en == self.default_region:
+                        self.default_region = region_elem['name_cy']
+                        break
 
 
             current_year = datetime.datetime.now().year
