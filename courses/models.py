@@ -483,6 +483,16 @@ class Course:
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
+        
+    def display_no_data(self):
+        unavailable = {}
+
+        if self.display_language == enums.languages.ENGLISH:
+            unavailable["reason"] = "No data available"
+        else:
+            unavailable["reason"] = "Nid oes data ar gael"
+
+        return unavailable
 
     def get_subject_codes_for_earnings_aggregation(self):
         subject_codes = []
@@ -1895,7 +1905,8 @@ class SectorSalary:
                 self.unavail_text_region_is_ni_english = ""
                 self.unavail_text_region_is_ni_welsh = ""
 
-    def display_unavailable_info(self):
+    def display_unavailable_info(self, language=enums.languages.ENGLISH):
+        self.display_language = language
         unavailable = {}
 
         if self.unavailable_reason_region_not_exists:

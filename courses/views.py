@@ -18,8 +18,8 @@ def regional_earnings(request):
         course_id = request.POST['course_id']
         kis_mode = request.POST['kis_mode']
         subject_code = request.POST['subject_code']
-        course, error = Course.find(institution_id, course_id, kis_mode, language=enums.languages.ENGLISH)
         language = request.POST['language']
+        course, error = Course.find(institution_id, course_id, kis_mode, language)
 
         with open("./CMS/static/jsonfiles/regions.json", "r") as f:
             regions = f.read()
@@ -42,8 +42,8 @@ def regional_earnings(request):
 
         salaries_aggregate = [element for element in course.salary_aggregates if element.subject_code == subject_code][0]
 
-        unavail_msgs_go = salaries_aggregate.aggregated_salaries_sector[0].display_unavailable_info()
-        unavail_msgs_leo = salaries_aggregate.aggregated_salaries_sector[1].display_unavailable_info()
+        unavail_msgs_go = salaries_aggregate.aggregated_salaries_sector[0].display_unavailable_info(language)
+        unavail_msgs_leo = salaries_aggregate.aggregated_salaries_sector[1].display_unavailable_info(language)
         salary_sector_15_unavail_text = ""
         salary_sector_3_unavail_text = ""
         salary_sector_5_unavail_text = ""
