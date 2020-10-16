@@ -232,16 +232,9 @@
                                             {{ subbed_text | richtext }}
                                         </h4>
                                         <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_pop_' salary_index '_' salary_aggregate.subject_code %}">
-                                            {# create_list course_details.data_from_html salary.pop_uk salary.resp_uk as substitutions #}
                                             {% create_list course_details.data_from_html salary.salary_default_country_pop as substitutions %}
-                                            {% if salary_index == 0 %}
-                                                {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
-                                                {{ subbed_text | richtext }}
-                                            {% else %}
-                                                {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
-                                                {{ subbed_text | richtext }}
-                                                <br>
-                                            {% endif %}
+                                            {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
+                                            {{ subbed_text | richtext }}
                                         </h4>
                                         {% get_translation key='default_region' language=page.get_language as default_region %}
                                         <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">

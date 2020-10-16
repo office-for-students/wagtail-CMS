@@ -461,7 +461,7 @@ class Course:
 
             self.salary_aggregates = []
             for code in self.get_subject_codes_for_earnings_aggregation():
-                earnings_aggregate = SalariesAggregate(code, self.display_language, self.is_ni_provider)
+                earnings_aggregate = SalariesAggregate(code, self.display_language, self.is_ni_provider, self.mode.label)
                 earnings_aggregate.sync_institution_earnings(self.go_salaries_inst)
                 earnings_aggregate.sync_institution_earnings(self.leo3_salaries_inst)
                 earnings_aggregate.sync_institution_earnings(self.leo5_salaries_inst)
@@ -1459,7 +1459,7 @@ class TariffStatistics:
 
 class Tariff:
     LABELS = {
-        "T001": "< 48",
+        "T001": "less than 48",
         "T048": "48 - 63",
         "T064": "64 - 79",
         "T080": "80 - 95",
@@ -1472,7 +1472,7 @@ class Tariff:
         "T192": "192 - 207",
         "T208": "208 - 223",
         "T224": "224 - 239",
-        "T240": "240 <",
+        "T240": "more than 240",
     }
 
     def __init__(self, tariff):
@@ -1943,7 +1943,8 @@ class SectorSalary:
 
 
 class SalariesAggregate:
-    def __init__(self, subject_code, display_language, is_ni_provider):
+    def __init__(self, subject_code, display_language, is_ni_provider, mode):
+        self.mode = mode
         self.subject_code = subject_code
         self.subject_code_one_level_down = self.get_cah_code_for_level(enums.subject_code_levels.ONE_DOWN)
         self.subject_code_two_levels_down = self.get_cah_code_for_level(enums.subject_code_levels.TWO_DOWN)
@@ -2068,9 +2069,13 @@ class SalariesAggregate:
             self.subject_welsh = data.subject_welsh
 
     def display_subject_name(self):
+        mode = self.mode
+
         if self.display_language == enums.languages.ENGLISH:
-            return self.subject_english if self.subject_english else self.subject_welsh
-        return self.subject_welsh if self.subject_welsh else self.subject_english
+            subject_name = mode + " " + self.subject_english if self.subject_english else mode + " " + self.subject_welsh
+        else:
+            subject_name = mode + " " + self.subject_welsh if self.subject_welsh else self.subject_english
+        return subject_name
 
     def display_no_data_info(self):
         unavailable = {}

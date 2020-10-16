@@ -200,7 +200,7 @@ DICT = {
         'cy': 'cymharu cyrsiau'
     },
     'completed_course': {
-        'en': 'Have completed the course',
+        'en': 'Have completed their studies',
         'cy': "Wedi cwblhau'r cwrs"
     },
     'Conservation associate professionals': {
@@ -967,7 +967,7 @@ DICT = {
         'cy': 'Dechrau'
     },
     'still_on_course': {
-        'en': 'Are still on the course',
+        'en': 'Are still studying',
         'cy': 'Yn dal ar y cwrs '
     },
     'student_unions': {
@@ -1351,7 +1351,7 @@ DICT = {
         'cy': 'Dyma''r cymwysterau a oedd gan fyfyrwyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon.'
     },
     'entrance_data_read_more': {
-        'en': 'Read more about entrance data',
+        'en': 'Read more about entry data',
         'cy': 'Darllen mwy am ddata mynediad'
     },
     'after_1_year_overview_1': {
