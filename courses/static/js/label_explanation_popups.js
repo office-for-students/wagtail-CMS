@@ -47,13 +47,6 @@
                 that.hide();
             });
 
-            document.addEventListener("focus", function(evt) {
-                if (that.isOpen && !that.popup[0].contains(evt.target)) {
-                    event.stopPropagation();
-                    that.popup.focus();
-                }
-            }, true);
-
             document.addEventListener("keydown", function(evt) {
                 if (that.isOpen && evt.keyCode == 27) {
                     that.popup.hide();

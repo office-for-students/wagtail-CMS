@@ -3,18 +3,6 @@
 
 <div class="course-detail__lead">
     <div class="">
-        <ul class="course-detail__nav">
-            <li class="course-detail__nav-control">
-                <form method="post" id="back_to_search" {% if page.is_english %}
-                      action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %}>
-                    <span id='course-detail__nav-control-back' style="visibility: hidden;">
-                        <i class="fas fa-angle-left"></i>
-                        {% get_translation key='back_to_results' language=page.get_language %}
-                    </span>
-                </form>
-            </li>
-        </ul>
-
        <h1 class="course-detail__course-name">
             {{course.display_title}}
         </h1>
