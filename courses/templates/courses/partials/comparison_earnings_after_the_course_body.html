@@ -477,15 +477,16 @@
                         }
 
                         //var graduates_text = sector_salary_graduates_0.innerText;
+                        var liveInDelimiter = String(data['inst_prov_pc_delimiter']);
                         var graduates_text = $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight).text();
                         graduates_text = graduates_text.substring(graduates_text.indexOf('%'), graduates_text.length);
-                        graduates_text = graduates_text.substring(0, graduates_text.indexOf('live in') + 7);
+                        graduates_text = graduates_text.substring(0, graduates_text.indexOf(liveInDelimiter) + liveInDelimiter.length);
                         if (data['salary_sector_15_med'])
-                            $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight + " div p").text(data['inst_prov_pc_go'] + graduates_text + " " + data['region_full_name']);
+                            $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_go'] + graduates_text + " " + data['region_full_name']);
                         if (data['salary_sector_3_med'])
-                            $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight + " div p").text(data['inst_prov_pc_leo3'] + graduates_text + " " + data['region_full_name']);
+                            $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo3'] + graduates_text + " " + data['region_full_name']);
                         if (data['salary_sector_5_med'])
-                            $("#sector_salary_graduates_2_" + subjectCode + "_" + leftOrRight + " div p").text(data['inst_prov_pc_leo5'] + graduates_text + " " + data['region_full_name']);
+                            $("#sector_salary_graduates_2_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo5'] + graduates_text + " " + data['region_full_name']);
                     },
                     error: function (request, status, error) {
                         //alert(request.responseText);
