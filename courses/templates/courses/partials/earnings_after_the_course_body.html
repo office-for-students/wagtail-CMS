@@ -34,6 +34,10 @@
 <hr class="nav-tabs-hr"/>
 {% endif %}
 
+<div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+
 <div class="tab-content">
 {% for salary_aggregate in course_details.salary_aggregates %}
     <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="earnings-after-course-{{ forloop.counter }}" role="tabpanel" aria-labelledby="earnings-after-course-{{ forloop.counter }}-tab">
@@ -226,6 +230,9 @@
                                     {% endif %}
 
                                         <h2 class="earnings-sector-field earnings-after-course-stat-salary mb-1 text-center text-lg-left" id="{% concat 'sector_salary_med_' salary_index '_' salary_aggregate.subject_code %}">£{{ salary.salary_default_country_med|intcomma }}</h2>
+                                        {% if salary_index > 0 %}
+                                            <h4 class="excl-ni-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3" id="{% concat 'exclude_ni_msg_' salary_index '_' salary_aggregate.subject_code %}">(excludes Northern Ireland)</h4>
+                                        {% endif %}
                                         <h4 class="earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_lq_' salary_index '_' salary_aggregate.subject_code %}">
                                             {% create_list salary.salary_default_country_lq|intcomma salary.salary_default_country_uq|intcomma as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
@@ -320,6 +327,9 @@
 
 <script>
     $(document).ready(function() {
+        // Initialise 'exluding NI' messages.
+        //$(".excl-ni-msg").text("ready");
+        $(".excl-ni-msg").hide();
 
         function buildHtml(unseparatedString){
             var index_of_delimiter = unseparatedString.indexOf('\n\n');
@@ -386,6 +396,24 @@
                             $("#sector_salary_med_1_" + subjectIndex).text("£" + data['salary_sector_3_med']);
                             $("#sector_salary_lq_1_" + subjectIndex + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_3_lq'] + " - £" + data['salary_sector_3_uq']);
                             $("#sector_salary_pop_1_" + subjectIndex + " div").text(data['data_from_text'] + " " + data['salary_sector_3_pop'] + " " + data['people_text']);
+
+                            if (selectedRegion == "_uk") {
+                                var lang = "{{page.get_language}}";
+                                if (lang == "cy") {
+                                    $("#exclude_ni_msg_1_" + subjectIndex).text("(ac eithrio Gogledd Iwerddon)");
+                                    //$("#exclude_ni_msg_2_" + subjectIndex).text("(ac eithrio Gogledd Iwerddon)");
+                                }
+                                else {
+                                    $("#exclude_ni_msg_1_" + subjectIndex).text("(excludes Northern Ireland)");
+                                    //$("#exclude_ni_msg_2_" + subjectIndex).text("(excludes Northern Ireland)");
+                                }
+                                $("#exclude_ni_msg_1_" + subjectIndex).show();
+                                //$("#exclude_ni_msg_2_" + subjectIndex).show();
+                            }
+                            else {
+                                $("#exclude_ni_msg_1_" + subjectIndex).hide();
+                                //$("#exclude_ni_msg_2_" + subjectIndex).hide();
+                            }
                         }
                     }
                     else {
@@ -402,6 +430,24 @@
                             $("#sector_salary_med_2_" + subjectIndex).text("£" + data['salary_sector_5_med']);
                             $("#sector_salary_lq_2_" + subjectIndex + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_5_lq'] + " - £" + data['salary_sector_5_uq']);
                             $("#sector_salary_pop_2_" + subjectIndex + " div").text(data['data_from_text'] + " " + data['salary_sector_5_pop'] + " " + data['people_text']);
+                            
+                            if (selectedRegion == "_uk") {
+                                var lang = "{{page.get_language}}";
+                                if (lang == "cy") {
+                                    //$("#exclude_ni_msg_1_" + subjectIndex).text("(ac eithrio Gogledd Iwerddon)");
+                                    $("#exclude_ni_msg_2_" + subjectIndex).text("(ac eithrio Gogledd Iwerddon)");
+                                }
+                                else {
+                                    //$("#exclude_ni_msg_1_" + subjectIndex).text("(excludes Northern Ireland)");
+                                    $("#exclude_ni_msg_2_" + subjectIndex).text("(excludes Northern Ireland)");
+                                }
+                                //$("#exclude_ni_msg_1_" + subjectIndex).show();
+                                $("#exclude_ni_msg_2_" + subjectIndex).show();
+                            }
+                            else {
+                                //$("#exclude_ni_msg_1_" + subjectIndex).hide();
+                                $("#exclude_ni_msg_2_" + subjectIndex).hide();
+                            }
                         }
                     }
                     else {
