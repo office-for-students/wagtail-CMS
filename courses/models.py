@@ -302,7 +302,8 @@ class Course:
                 self.welsh_title = fallback_to(title.get('welsh'), '')
             self.honours_award_provision = course_details.get('honours_award_provision')
 
-            self.institution = InstitutionOverview(course_details.get('institution'), language)
+            institution = course_details.get('institution')
+            self.institution = InstitutionOverview(institution, language)
             self.locations = []
             if course_details.get('locations'):
                 for location in course_details.get('locations'):
@@ -374,23 +375,31 @@ class Course:
             # self.summary_med_sal_time summary_med_sal_text_1 self.course_title summary_med_sal_text_2 self.institution
             self.summary_med_sal_value = "no_data"
             self.institution_name = self.institution.pub_ukprn_name
+            self.summary_med_sal_sbj = title
 
             if 'med' in course_details.get('go_salary_inst')[0]:
                 self.summary_med_sal_value = course_details.get('go_salary_inst')[0]['med']
+
                 if self.display_language == enums.languages.ENGLISH:
                     self.summary_med_sal_time = "15 months"
                     self.course_title = fallback_to(self.english_title, '')
+                    self.summary_med_sal_sbj = course_details.get('go_salary_inst')[0]['subject']['english_label']
                 else:
                     self.summary_med_sal_time = "15 mis"
                     self.course_title = fallback_to(self.welsh_title, '')
+                    self.summary_med_sal_sbj = course_details.get('go_salary_inst')[0]['subject']['welsh_label']
             elif 'med' in course_details.get('leo3_inst')[0]:
                 self.summary_med_sal_value = course_details.get('leo3_inst')[0]['med']
+                self.summary_med_sal_sbj = course_details.get('leo3_inst')[0]['sbj']
+
                 if self.display_language == enums.languages.ENGLISH:
                     self.summary_med_sal_time = "3 years"
                     self.course_title = fallback_to(self.english_title, '')
+                    self.summary_med_sal_sbj = course_details.get('go_salary_inst')[0]['subject']['english_label']
                 else:
                     self.summary_med_sal_time = "3 blynedd"
                     self.course_title = fallback_to(self.welsh_title, '')
+                    self.summary_med_sal_sbj = course_details.get('go_salary_inst')[0]['subject']['welsh_label']
 
 
             self.default_country_postfix = "_uk"
