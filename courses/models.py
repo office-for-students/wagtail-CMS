@@ -149,7 +149,8 @@ class EarningsAfterCourseBlock(AccordionPanel):
     after_three_five_years_data_source = blocks.RichTextBlock(blank=True)
 
     average_earnings_sector_heading = blocks.RichTextBlock(blank=True)
-    respondents_live_in_explanation = blocks.RichTextBlock(blank=True)
+    respondents_live_in_explanation_go = blocks.RichTextBlock(blank=True)
+    respondents_live_in_explanation_leo = blocks.RichTextBlock(blank=True)
 
     class Meta:
         value_class = EarningsAfterCourseDataSet
@@ -320,6 +321,8 @@ class Course:
             self.year_abroad = CourseYearAbroad(course_details.get('year_abroad'))
             self.foundation_year = CourseFoundationYear(course_details.get('foundation_year_availability'),
                                                         self.display_language)
+
+            self.course_level = course_details.get('course_level')
 
             stats = course_details.get('statistics')
             if stats:
@@ -2091,6 +2094,11 @@ class SalariesAggregate:
         if self.display_language == enums.languages.ENGLISH:
             subject_name = mode + " " + self.subject_english if self.subject_english else mode + " " + self.subject_welsh
         else:
+            if mode == "Full-time":
+                mode = DICT.get('full_time').get(self.display_language)
+            elif mode == "Part-time":
+                mode = DICT.get('part_time').get(self.display_language)
+
             subject_name = mode + " " + self.subject_welsh if self.subject_welsh else self.subject_english
         return subject_name
 

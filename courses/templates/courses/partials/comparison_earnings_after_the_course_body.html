@@ -47,7 +47,7 @@
 
                         {% if not course_subject_name == "" %}
                             <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
-                            <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ course_subject_name }}</h1>
+                                <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ course_subject_name }}</h1>
                             </div>
 
                         <div class="earnings-after-course_block mx-1 mt-2 px-4 pt-4 pb-0">
@@ -57,6 +57,9 @@
                                     {% insert_values_to_rich_text content=block.value.average_earnings_inst_heading substitutions=substitutions as subbed_text %}
                                     {{ subbed_text | richtext }}
                                 </h2>
+                                {% if course.course_level == 4 %}
+                                    <h4 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{% get_translation key='course_level_msg' language=page.get_language %}</h4>
+                                {% endif %}
                                 <div class="earnings-after-course_explanation-text pb-2">
                                     {% create_list course.institution.pub_ukprn_name as substitutions %}
                                     {% insert_values_to_rich_text content=block.value.institution_graduates_heading substitutions=substitutions as subbed_text %}
@@ -202,6 +205,10 @@
                                         </select>
                                     </div>
 
+                                    <div class="spinner-border text-primary" role="status" id="busy_{{ salary_aggregate.subject_code }}_{{ l_or_r }}">
+                                        <span class="sr-only">Busy...</span>
+                                    </div>
+                
                                     <div class="discover-uni-container">
                                         <div class="earnings-after-course-statistics d-flex row align-items-stretch">
                                         {% for salary in salary_aggregate.aggregated_salaries_sector %}
@@ -253,8 +260,18 @@
                                                         </h4>
                                                         {# get_translation key='default_region' language=page.get_language as default_region #}
                                                         <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
-                                                            {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name course.default_region as substitutions %}
-                                                            {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
+                                                            {% if salary_index == 0 %}
+                                                                {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                                            {% elif salary_index == 1 %}
+                                                                {% create_list salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                                            {% else %}
+                                                                {% create_list salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                                            {% endif %}
+                                                            {% if salary_index == 0 %}
+                                                                {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation_go substitutions=substitutions as subbed_text %}
+                                                            {% else %}
+                                                                {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation_leo substitutions=substitutions as subbed_text %}
+                                                            {% endif %}
                                                             {{ subbed_text | richtext }}
                                                         </h4>
                                                         <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3">
@@ -346,9 +363,8 @@
 
 <script>
     $(document).ready(function() {
-        // Initialise 'exluding NI' messages.
-        //$(".excl-ni-msg").text("ready");
         $(".excl-ni-msg").hide();
+        $(".spinner-border").hide();
 
         function buildHtml(unseparatedString){
             var index_of_delimiter = unseparatedString.indexOf('\n\n');
@@ -363,6 +379,10 @@
             return separatedString;
         }
 
+        jQuery('.region_ddl').on('focus', function () {
+            $(this).data('prev_region', $(this).val());
+        });
+
         jQuery('.region_ddl').change(function (event) {
             // ddlId will have the form regions_<subject_code>_<l|r>, e.g. regions_CAH17-01-01_l.
             var ddlId = event.target.id;
@@ -371,6 +391,10 @@
             var leftOrRight = arr[2];
             var selectedRegion = $(this).val();
             //alert("selectedRegion: " + selectedRegion);
+
+            var prev_region = $(this).data('prev_region');
+            $("#" + ddlId).prop("disabled", true);
+            $("#busy_" + subjectCode + "_" + leftOrRight).show();
 
             var courseDetails = $("#language_select").prop('href');
             if (courseDetails.includes("/cy/"))
@@ -423,6 +447,7 @@
                     url: '/regional_earnings',
                     type: "POST",
                     headers: { "X-CSRFToken": "{{ csrf_token }}" }, // Without this, Django will throw a 403 Forbidden response.
+                    timeout: 3000,
                     data: {
                         'region': selectedRegion,
                         'institution_id': institution,
@@ -434,6 +459,10 @@
                     dataType: 'json',
                     success: function (data) {
                         //alert(JSON.stringify(data));
+                        prev_region = selectedRegion;
+                        $("#" + ddlId).prop("disabled", false);
+                        $("#busy_" + subjectCode + "_" + leftOrRight).hide();
+
                         if (data['salary_sector_15_unavail_text'] == "") {
                             if (data['salary_sector_15_med']) {
                                 $("#go_sector_avail_container_" + subjectCode + "_" + leftOrRight).show();
@@ -443,6 +472,11 @@
                                 $("#sector_salary_pop_0_" + subjectCode + "_" + leftOrRight + " div").replaceWith("<div class='rich-text'><p></p></div>");
                                 $("#sector_salary_pop_0_" + subjectCode + "_" + leftOrRight + " div p").text(data['data_from_text'] + " " + data['salary_sector_15_pop'] + " " + data['respondents_text']);
                                 //$("#sector_salary_pop_0_" + subjectCode + "_" + leftOrRight + " div").append("<p>(" + data['salary_sector_15_resp'] + "% " + data['of_those_asked_text'] + ")</p>");
+
+                                if (selectedRegion == "_uk")
+                                    $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight).hide();
+                                else
+                                    $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight).show();
                             }
                         }
                         else {
@@ -461,6 +495,8 @@
                                 $("#sector_salary_pop_1_" + subjectCode + "_" + leftOrRight + " div").text(data['data_from_text'] + " " + data['salary_sector_3_pop'] + " " + data['people_text']);
                             
                                 if (selectedRegion == "_uk") {
+                                    $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight).hide();
+                                
                                     var lang = "{{page.get_language}}";
                                     if (lang == "cy") {
                                         $("#exclude_ni_msg_1_" + subjectCode + "_" + leftOrRight).text("(ac eithrio Gogledd Iwerddon)");
@@ -474,6 +510,7 @@
                                     //$("#exclude_ni_msg_2_" + subjectIndex).show();
                                 }
                                 else {
+                                    $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight).show();
                                     $("#exclude_ni_msg_1_" + subjectCode + "_" + leftOrRight).hide();
                                     //$("#exclude_ni_msg_2_" + subjectIndex).hide();
                                 }
@@ -495,6 +532,8 @@
                                 $("#sector_salary_pop_2_" + subjectCode + "_" + leftOrRight + " div").text(data['data_from_text'] + " " + data['salary_sector_5_pop'] + " " + data['people_text']);
                             
                                 if (selectedRegion == "_uk") {
+                                    $("#sector_salary_graduates_2_" + subjectCode + "_" + leftOrRight).hide();
+
                                     var lang = "{{page.get_language}}";
                                     if (lang == "cy") {
                                         //$("#exclude_ni_msg_1_" + subjectIndex).text("(ac eithrio Gogledd Iwerddon)");
@@ -508,6 +547,7 @@
                                     $("#exclude_ni_msg_2_" + subjectCode + "_" + leftOrRight).show();
                                 }
                                 else {
+                                    $("#sector_salary_graduates_2_" + subjectCode + "_" + leftOrRight).show();
                                     //$("#exclude_ni_msg_1_" + subjectIndex).hide();
                                     $("#exclude_ni_msg_2_" + subjectCode + "_" + leftOrRight).hide();
                                 }
@@ -520,19 +560,26 @@
                         }
 
                         //var graduates_text = sector_salary_graduates_0.innerText;
-                        var liveInDelimiter = String(data['inst_prov_pc_delimiter']);
-                        var graduates_text = $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight).text();
-                        graduates_text = graduates_text.substring(graduates_text.indexOf('%'), graduates_text.length);
-                        graduates_text = graduates_text.substring(0, graduates_text.indexOf(liveInDelimiter) + liveInDelimiter.length);
+                        var liveInDelimiterGo = String(data['inst_prov_pc_delimiter_go']);
+                        var liveInDelimiterLeo = String(data['inst_prov_pc_delimiter_leo']);
+                        var graduates_text_go = $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight).text();
+                        var graduates_text_leo = $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight).text();
+                        graduates_text_go = graduates_text_go.substring(graduates_text_go.indexOf('%'), graduates_text_go.length);
+                        graduates_text_go = graduates_text_go.substring(0, graduates_text_go.indexOf(liveInDelimiterGo) + liveInDelimiterGo.length);
+                        graduates_text_leo = graduates_text_leo.substring(graduates_text_leo.indexOf('%'), graduates_text_leo.length);
+                        graduates_text_leo = graduates_text_leo.substring(0, graduates_text_leo.indexOf(liveInDelimiterLeo) + liveInDelimiterLeo.length);
                         if (data['salary_sector_15_med'])
-                            $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_go'] + graduates_text + " " + data['region_full_name']);
+                            $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_go'] + graduates_text_go + " " + data['region_full_name']);
                         if (data['salary_sector_3_med'])
-                            $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo3'] + graduates_text + " " + data['region_full_name']);
+                            $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo3'] + graduates_text_leo + " " + data['region_full_name']);
                         if (data['salary_sector_5_med'])
-                            $("#sector_salary_graduates_2_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo5'] + graduates_text + " " + data['region_full_name']);
+                            $("#sector_salary_graduates_2_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo5'] + graduates_text_leo + " " + data['region_full_name']);
                     },
                     error: function (request, status, error) {
                         //alert(request.responseText);
+                        $("#" + ddlId).prop("disabled", false);
+                        $("#" + ddlId).val(prev_region);
+                        $("#busy_" + subjectCode + "_" + leftOrRight).hide();
                     }
                 });
             }

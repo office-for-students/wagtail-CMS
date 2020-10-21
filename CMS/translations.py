@@ -1541,6 +1541,10 @@ DICT = {
     'accreditation_link_url':{
         'en': "https://discoveruni.gov.uk/how-do-i-choose-course/employment-prospects/#professional_accreditation",
         'cy': "https://discoveruni.gov.uk/cy/how-choose-course-cy/rhagolygon-cyflogaeth-employment-prospects/#achrediad_proffesiynol"
-    }
+    },
+    'course_level_msg':{
+        'en': "Please note: the following information does not contain any data for first degrees (such as BA, BSc, or Integrated Masters). Instead it is displaying information for other undergraduate qualifications – this includes CertHE, DipHE and FD among others",
+        'cy': "Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill"
+    },
 
 }
