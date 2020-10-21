@@ -1546,5 +1546,9 @@ DICT = {
         'en': "Please note: the following information does not contain any data for first degrees (such as BA, BSc, or Integrated Masters). Instead it is displaying information for other undergraduate qualifications – this includes CertHE, DipHE and FD among others",
         'cy': "Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill"
     },
+    'subject_at_least_two': {
+        'en': 'Subject (please select from at least two of the boxes below)',
+        'cy': "Pwnc (dewiswch o ddau neu fwy o'r blychau isod, os gwelwch yn dda)"
+    },
 
 }
