@@ -1311,8 +1311,8 @@ DICT = {
         'cy': 'cyfran y myfyrwyr a ymatebodd a oedd yn cytuno â’r datganiad “Rwy’n fodlon ag ansawdd y cwrs ar y cyfan”'
     },
     'student_satisfaction_course_overview_3': {
-        'en': 'Go to student satisfaction',
-        'cy': 'Mwy am fodlonrwydd myfyrwyr'
+        'en': 'Go to Student Satisfaction',
+        'cy': "Ewch i’r adran Bodlonrwydd Myfyrwyr"
     },
     'average_earnings_course_overview_1': {
         'en': 'Average Earnings',
@@ -1327,8 +1327,8 @@ DICT = {
         'cy': '3 blynedd ar ôl y cwrs'
     },
     'average_earnings_course_overview_3': {
-        'en': 'Go to earnings',
-        'cy': 'Mwy am enillion'
+        'en': 'Go to Earnings',
+        'cy': "Ewch i’r adran Enillion"
     },
     'employment_course_overview_1': {
         'en': 'Employment',
@@ -1339,8 +1339,8 @@ DICT = {
         'cy': 'yn symud ymlaen i weithio ac/neu astudio o fewn 15 mis ar ôl y cwrs'
     },
     'employment_course_overview_3': {
-        'en': 'Go to employment',
-        'cy': 'Mwy am gyflogaeth'
+        'en': 'Go to Employment',
+        'cy': "Ewch i’r adran Cyflogaeth"
     },
     'entrance_data_need_to_know': {
         'en': 'What you need to know about entry data',
