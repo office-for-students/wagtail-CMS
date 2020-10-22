@@ -7,7 +7,7 @@
             <li class="course-detail__nav-control">
                 <form method="post" id="back_to_search" {% if page.is_english %}
                       action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %}>
-                    <span id='course-detail__nav-control-back' style="visibility: hidden;">
+                    <span id='course-detail__nav-control-back' style="visibility: visible;" type="submit" onclick="window.history.go(-1);">
                         <i class="fas fa-angle-left"></i>
                         {% get_translation key='back_to_results' language=page.get_language %}
                     </span>
@@ -156,7 +156,9 @@
                         <h3 class="d-none d-lg-block">{% get_translation key='student_satisfaction_course_overview_1' language=page.get_language %}</h3>
                         <h2>{{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%</h2>
                         <p>{% get_translation key='student_satisfaction_course_overview_2' language=page.get_language %}</p>
-                    </div>
+                        <a class=""
+                        href="{% get_translation key='course_details_joint_overview_4' language=page.get_language %}">{% get_translation key='course_details_joint_overview_3' language=page.get_language %}</a>
+             </div>
                 </div>
             {% endif %}
 
