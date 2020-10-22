@@ -872,7 +872,7 @@
 
             {% if overall_stats.nhs_satisfaction_stats.show_nhs_stats %}
                 <div class="explanation-text">
-                    {% create_list overall_stats.nhs_satisfaction_stats.number_of_students overall_stats.nhs_satisfaction_stats.response_rate as substitutions %}
+                    {% create_list course_details.data_from_html overall_stats.nhs_satisfaction_stats.number_of_students overall_stats.nhs_satisfaction_stats.response_rate as substitutions %}
                     {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                     {{ subbed_text | richtext }}
                 </div>

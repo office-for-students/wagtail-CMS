@@ -671,7 +671,7 @@ DICT = {
     },
     'no_qualifications': {
         'en': 'No / unknown prior qualifications',
-        'cy': 'Dim cymwysterau blaenorol/cymwysterau anhysbys'
+        'cy': 'Dim cymwysterau blaenorol / cymwysterau anhysbys'
     },
     'no_results_found': {
         'en': 'No results found',
@@ -968,7 +968,7 @@ DICT = {
     },
     'still_on_course': {
         'en': 'Are still studying',
-        'cy': 'Yn dal ar y cwrs '
+        'cy': 'Yn dal i astudio'
     },
     'student_unions': {
         'en': 'Student Unions',
@@ -1208,7 +1208,7 @@ DICT = {
     },
     'I have received sufficient advice and guidance in relation to my course': {
         'en': 'I have received sufficient advice and guidance in relation to my course',
-        'cy': 'Rydw i wedi cael digon o gyngor ac arweiniad mewn perthynas â fy nghwrs'
+        'cy': "Rydw i wedi cael digon o gyngor ac arweiniad mewn perthynas â'm cwrs"
     },
     'Good advice was available when I needed to make study choices on my course': {
         'en': 'Good advice was available when I needed to make study choices on my course',
@@ -1224,7 +1224,7 @@ DICT = {
     },
     'Any changes in the course or teaching have been communicated effectively': {
         'en': 'Any changes in the course or teaching have been communicated effectively',
-        'cy': "Mae unrhyw newidiadau o ran y cwrs neu'r addysgu wedi cael eu cyfathrebu'n effeithiol"
+        'cy': "Cafwyd cyfathrebu effeithiol ynghylch unrhyw newidiadau o ran y cwrs neu'r addysgu"
     },
     'The IT resources and facilities provided have supported my learning well': {
         'en': 'The IT resources and facilities provided have supported my learning well',
@@ -1244,7 +1244,7 @@ DICT = {
     },
     'I have had the right opportunities to work with other students as part of my course': {
         'en': 'I have had the right opportunities to work with other students as part of my course',
-        'cy': 'Rydw i wedi cael cyfleoedd priodol i weithio gyda myfyrwyr eraill fel rhan o fy nghwrs'
+        'cy': "Rydw i wedi cael cyfleoedd priodol i weithio gyda myfyrwyr eraill fel rhan o'm cwrs"
     },
     'I have had the right opportunities to provide feedback on my course': {
         'en': 'I have had the right opportunities to provide feedback on my course',
@@ -1347,8 +1347,8 @@ DICT = {
         'cy': 'Yr hyn y mae angen ichi wybod am ddata mynediad'
     },
     'entrance_data_quals_students_had': {
-        'en': 'These are the qualifications students had when they were accepted onto this course. This is not a list of qualifications a person needs to have to be accepted onto this course.',
-        'cy': 'Dyma''r cymwysterau a oedd gan fyfyrwyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon.'
+        'en': 'These are the qualifications students had when they were accepted onto this course. This is not a list of qualifications a person needs to have to be accepted onto this course',
+        'cy': "Dyma'r cymwysterau a oedd gan fyfyrwyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon"
     },
     'entrance_data_read_more': {
         'en': 'Read more about entry data',
@@ -1399,11 +1399,11 @@ DICT = {
         'cy': 'Darllen mwy am achrediad proffesiynol'
     },
      'accreditation_description': {
-        'en': 'A professionally accredited course is one which has been approved or endorsed by one or more professional bodies. This is because the learning and achievement of graduates meets the professional benchmarks and standards set by the accrediting body.',
-        'cy': 'Cwrs wedi''i achredu''n broffesiynol yw cwrs sydd wedi''i gymeradwyo neu ei ategu gan un neu fwy o gyrff proffesiynol. Mae hyn oherwydd bod dysg a chyflawniad graddedigion yn bodloni''r meincnodau a''r safonau proffesiynol a osodir gan y corff achredu.'
+        'en': "A professionally accredited course is one which has been approved or endorsed by one or more professional bodies. This is because the learning and achievement of graduates meets the professional benchmarks and standards set by the accrediting body.",
+        'cy': "Cwrs wedi'i achredu'n broffesiynol yw cwrs sydd wedi'i gymeradwyo neu ei ategu gan un neu fwy o gyrff proffesiynol. Mae hyn oherwydd bod dysg a chyflawniad graddedigion yn bodloni'r meincnodau a'r safonau proffesiynol a osodir gan y corff achredu."
     },
      'accreditation_need_to_know': {
-        'en': 'What you need to know about professional accreditation.',
+        'en': 'What you need to know about professional accreditation',
         'cy': 'Yr hyn y mae angen i chi ei wybod am achrediad proffesiynol'
     },
      'highly_skilled': {
@@ -1549,6 +1549,10 @@ DICT = {
     'subject_at_least_two': {
         'en': 'Subject (please select from at least two of the boxes below)',
         'cy': "Pwnc (dewiswch o ddau neu fwy o'r blychau isod, os gwelwch yn dda)"
+    },
+    'employment_type_unknown': {
+        'en': 'Percentage of those employed after finishing the course but employment type is not known',
+        'cy': "Canran y rhai a gyflogir ar ôl gorffen y cwrs ond nad ydym yn gwybod pa fath o swydd sydd ganddynt"
     },
 
 }
