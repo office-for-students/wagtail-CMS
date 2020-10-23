@@ -263,18 +263,11 @@
                                             <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
                                                 <h2 class="mb-0 text-center text-lg-left">{{ jobtype_stats.unknown_professions }}%</h2>
                                                 <h4 class="pt-1 text-center text-lg-left mb-3">{% get_translation key='unknown_work' language=page.get_language %}</h4>
-                                                {% for job in joblist_stats.jobs %}
-                                                    {% if job.hs == "2" %}
-                                                    <div class="row">
-                                                        <div class="col-2">
-                                                            <p>{{job.percentage}}%</p>
-                                                        </div>
-                                                        <div class="col">
-                                                            <p>{% get_translation key=job.job language=page.get_language %}</p>
-                                                        </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <p>{% get_translation key='employment_type_unknown' language=page.get_language %}</p>
                                                     </div>
-                                                    {% endif %}
-                                                {% endfor %}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

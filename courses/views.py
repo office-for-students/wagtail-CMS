@@ -40,6 +40,15 @@ def regional_earnings(request):
         def format_thousands(earnings):
             return f'{int(earnings):,}'
 
+        if language == 'cy':
+            inst_prov_pc_delimiter_go = "wedi'u cyflogi yn"
+            inst_prov_pc_delimiter_leo = "wedi'u lleoli yn"
+            inst_prov_pc_prefix = "Mae "
+        else:
+            inst_prov_pc_delimiter_go = "are employed in"
+            inst_prov_pc_delimiter_leo = "are based in"
+            inst_prov_pc_prefix = ""
+
         salaries_aggregate = [element for element in course.salary_aggregates if element.subject_code == subject_code][0]
 
         unavail_msgs_go = salaries_aggregate.aggregated_salaries_sector[0].display_unavailable_info(language)
@@ -184,6 +193,9 @@ def regional_earnings(request):
             'inst_prov_pc_go': inst_prov_pc_go,
             'inst_prov_pc_leo3': inst_prov_pc_leo3,
             'inst_prov_pc_leo5': inst_prov_pc_leo5,
+            'inst_prov_pc_delimiter_go': inst_prov_pc_delimiter_go,
+            'inst_prov_pc_delimiter_leo': inst_prov_pc_delimiter_leo,
+            'inst_prov_pc_prefix': inst_prov_pc_prefix
         }
         return JsonResponse(resp)
     else:

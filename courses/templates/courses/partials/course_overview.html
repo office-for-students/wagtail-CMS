@@ -7,7 +7,7 @@
             <li class="course-detail__nav-control">
                 <form method="post" id="back_to_search" {% if page.is_english %}
                       action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %}>
-                    <span id='course-detail__nav-control-back' style="visibility: hidden;">
+                    <span id='course-detail__nav-control-back' style="visibility: visible;" type="submit" onclick="window.history.go(-1);">
                         <i class="fas fa-angle-left"></i>
                         {% get_translation key='back_to_results' language=page.get_language %}
                     </span>
@@ -21,11 +21,11 @@
 
         {% if page.is_english %}
         <a class="course-detail__institution-name" href="/institution-details/{{ course.institution.pub_ukprn }}/">
-            {% autoescape off %}{{ course.institution.pub_ukprn_name | safe }}{% endautoescape %}
+            {% autoescape off %}{{ course.institution_name | safe }}{% endautoescape %}
         </a>
         {% else %}
         <a class="course-detail__institution-name" href="/cy/institution-details/{{ course.institution.pub_ukprn }}/">
-            {% autoescape off %}{{ course.institution.pub_ukprn_name | safe }}{% endautoescape %}
+            {% autoescape off %}{{ course.institution_name | safe }}{% endautoescape %}
         </a>
         {% endif %}
 
@@ -156,6 +156,10 @@
                         <h3 class="d-none d-lg-block">{% get_translation key='student_satisfaction_course_overview_1' language=page.get_language %}</h3>
                         <h2>{{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%</h2>
                         <p>{% get_translation key='student_satisfaction_course_overview_2' language=page.get_language %}</p>
+                        <p>
+                            <a class=""
+                            href="#student_satisfaction">{% get_translation key='student_satisfaction_course_overview_3' language=page.get_language %}</a>
+                        </p>
                     </div>
                 </div>
             {% endif %}
@@ -168,8 +172,12 @@
                         <h2 id="average_earnings_lg" class="d-none  d-lg-block">
                             £{{ course.summary_med_sal_value|intcomma }}</h2>
                         <p>{{course.summary_med_sal_time}} {% get_translation key='summary_med_sal_text_1' language=page.get_language %}
-                            {{course.course_title}} {% get_translation key='summary_med_sal_text_2' language=page.get_language %}
+                            {{course.summary_med_sal_sbj}} {% get_translation key='summary_med_sal_text_2' language=page.get_language %}
                             {{course.institution_name}}
+                        </p>
+                        <p>
+                            <a class=""
+                            href="#earnings_after_the_course">{% get_translation key='average_earnings_course_overview_3' language=page.get_language %}</a>
                         </p>
                     </div>
                 </div>
@@ -181,6 +189,10 @@
                         <h3 class="d-none d-lg-block">{% get_translation key='employment_course_overview_1' language=page.get_language %}</h3>
                         <h2>{{ course.employment_stats.0.work_and_or_study }}%</h2>
                         <p>{% get_translation key='employment_course_overview_2' language=page.get_language %}</p>
+                        <p>
+                            <a class=""
+                            href="#employment_after_the_course">{% get_translation key='employment_course_overview_3' language=page.get_language %}</a>
+                        </p>
                     </div>
                 </div>
             {% endif %}

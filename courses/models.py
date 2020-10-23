@@ -14,6 +14,7 @@ from courses import request_handler
 from errors.models import ApiError
 from institutions.models import InstitutionOverview
 import datetime
+import json
 
 
 STUDENT_SATISFACTION_KEY = 'student_satisfaction'
@@ -148,7 +149,8 @@ class EarningsAfterCourseBlock(AccordionPanel):
     after_three_five_years_data_source = blocks.RichTextBlock(blank=True)
 
     average_earnings_sector_heading = blocks.RichTextBlock(blank=True)
-    respondents_live_in_explanation = blocks.RichTextBlock(blank=True)
+    respondents_live_in_explanation_go = blocks.RichTextBlock(blank=True)
+    respondents_live_in_explanation_leo = blocks.RichTextBlock(blank=True)
 
     class Meta:
         value_class = EarningsAfterCourseDataSet
@@ -300,7 +302,8 @@ class Course:
                 self.welsh_title = fallback_to(title.get('welsh'), '')
             self.honours_award_provision = course_details.get('honours_award_provision')
 
-            self.institution = InstitutionOverview(course_details.get('institution'), language)
+            institution = course_details.get('institution')
+            self.institution = InstitutionOverview(institution, language)
             self.locations = []
             if course_details.get('locations'):
                 for location in course_details.get('locations'):
@@ -319,6 +322,8 @@ class Course:
             self.year_abroad = CourseYearAbroad(course_details.get('year_abroad'))
             self.foundation_year = CourseFoundationYear(course_details.get('foundation_year_availability'),
                                                         self.display_language)
+
+            self.course_level = course_details.get('course_level')
 
             stats = course_details.get('statistics')
             if stats:
@@ -370,35 +375,59 @@ class Course:
             # self.summary_med_sal_time summary_med_sal_text_1 self.course_title summary_med_sal_text_2 self.institution
             self.summary_med_sal_value = "no_data"
             self.institution_name = self.institution.pub_ukprn_name
+            self.summary_med_sal_sbj = title
 
             if 'med' in course_details.get('go_salary_inst')[0]:
                 self.summary_med_sal_value = course_details.get('go_salary_inst')[0]['med']
+
                 if self.display_language == enums.languages.ENGLISH:
                     self.summary_med_sal_time = "15 months"
                     self.course_title = fallback_to(self.english_title, '')
+                    self.summary_med_sal_sbj = course_details.get('go_salary_inst')[0]['subject']['english_label']
                 else:
                     self.summary_med_sal_time = "15 mis"
                     self.course_title = fallback_to(self.welsh_title, '')
+                    self.summary_med_sal_sbj = course_details.get('go_salary_inst')[0]['subject']['welsh_label']
             elif 'med' in course_details.get('leo3_inst')[0]:
                 self.summary_med_sal_value = course_details.get('leo3_inst')[0]['med']
+                self.summary_med_sal_sbj = course_details.get('leo3_inst')[0]['sbj']
+
                 if self.display_language == enums.languages.ENGLISH:
                     self.summary_med_sal_time = "3 years"
                     self.course_title = fallback_to(self.english_title, '')
+                    self.summary_med_sal_sbj = course_details.get('go_salary_inst')[0]['subject']['english_label']
                 else:
                     self.summary_med_sal_time = "3 blynedd"
                     self.course_title = fallback_to(self.welsh_title, '')
+                    self.summary_med_sal_sbj = course_details.get('go_salary_inst')[0]['subject']['welsh_label']
 
 
             self.default_country_postfix = "_uk"
+            self.default_region = "The UK"
 
             if self.country.code == 'XF':
                 self.default_country_postfix = "_e"
+                self.default_region = "England"
             elif self.country.code == 'XG':
                 self.default_country_postfix = "_ni"
+                self.default_region = "Northern Ireland"
             elif self.country.code == 'XH':
                 self.default_country_postfix = "_s"
+                self.default_region = "Scotland"
             elif self.country.code == 'XI':
                 self.default_country_postfix = "_w"
+                self.default_region = "Wales"
+            
+            if language == enums.languages.WELSH:
+                with open("./CMS/static/jsonfiles/regions.json", "r") as f:
+                    regions = f.read()
+
+                region_dict = json.loads(regions)
+                for region_elem in region_dict:
+                    elem_name_en = region_elem['name_en']
+                    if elem_name_en == self.default_region:
+                        self.default_region = region_elem['name_cy']
+                        break
 
 
             current_year = datetime.datetime.now().year
@@ -461,7 +490,7 @@ class Course:
 
             self.salary_aggregates = []
             for code in self.get_subject_codes_for_earnings_aggregation():
-                earnings_aggregate = SalariesAggregate(code, self.display_language, self.is_ni_provider)
+                earnings_aggregate = SalariesAggregate(code, self.display_language, self.is_ni_provider, self.mode.label)
                 earnings_aggregate.sync_institution_earnings(self.go_salaries_inst)
                 earnings_aggregate.sync_institution_earnings(self.leo3_salaries_inst)
                 earnings_aggregate.sync_institution_earnings(self.leo5_salaries_inst)
@@ -1401,7 +1430,7 @@ class TariffStatistics:
             self.number_of_students = fallback_to(tariff_data.get('number_of_students'), 0)
             if tariff_data.get('tariffs'):
                 for tariff in tariff_data.get('tariffs'):
-                    self.tariffs.append(Tariff(tariff))
+                    self.tariffs.append(Tariff(tariff, self.display_language))
             self.tariffs.reverse()
 
             subject_data = tariff_data.get('subject')
@@ -1458,8 +1487,8 @@ class TariffStatistics:
 
 
 class Tariff:
-    LABELS = {
-        "T001": "< 48",
+    LABELS_ENGLISH = {
+        "T001": "Less than 48",
         "T048": "48 - 63",
         "T064": "64 - 79",
         "T080": "80 - 95",
@@ -1472,18 +1501,39 @@ class Tariff:
         "T192": "192 - 207",
         "T208": "208 - 223",
         "T224": "224 - 239",
-        "T240": "240 <",
+        "T240": "More than 240",
     }
 
-    def __init__(self, tariff):
+    LABELS_WELSH = {
+        "T001": "Llai na 48",
+        "T048": "48 - 63",
+        "T064": "64 - 79",
+        "T080": "80 - 95",
+        "T096": "96 - 111",
+        "T112": "112 - 127",
+        "T128": "128 - 143",
+        "T144": "144 - 159",
+        "T160": "160 - 175",
+        "T176": "176 - 191",
+        "T192": "192 - 207",
+        "T208": "208 - 223",
+        "T224": "224 - 239",
+        "T240": "Mwy na 240",
+    }
+
+    def __init__(self, tariff, language):
         self.code = tariff.get('code')
         self.description = fallback_to(tariff.get('description'), '')
         self.entrants = fallback_to(tariff.get('entrants'), 0)
+        self.display_language = language
 
     @property
     def label(self):
         if self.code:
-            return self.LABELS[self.code]
+            if self.display_language == enums.languages.ENGLISH:
+                return self.LABELS_ENGLISH[self.code]
+            else:
+                return self.LABELS_WELSH[self.code]
         return ''
 
 
@@ -1943,7 +1993,8 @@ class SectorSalary:
 
 
 class SalariesAggregate:
-    def __init__(self, subject_code, display_language, is_ni_provider):
+    def __init__(self, subject_code, display_language, is_ni_provider, mode):
+        self.mode = mode
         self.subject_code = subject_code
         self.subject_code_one_level_down = self.get_cah_code_for_level(enums.subject_code_levels.ONE_DOWN)
         self.subject_code_two_levels_down = self.get_cah_code_for_level(enums.subject_code_levels.TWO_DOWN)
@@ -2068,9 +2119,18 @@ class SalariesAggregate:
             self.subject_welsh = data.subject_welsh
 
     def display_subject_name(self):
+        mode = self.mode
+
         if self.display_language == enums.languages.ENGLISH:
-            return self.subject_english if self.subject_english else self.subject_welsh
-        return self.subject_welsh if self.subject_welsh else self.subject_english
+            subject_name = mode + " " + self.subject_english if self.subject_english else mode + " " + self.subject_welsh
+        else:
+            if mode == "Full-time":
+                mode = DICT.get('full_time').get(self.display_language)
+            elif mode == "Part-time":
+                mode = DICT.get('part_time').get(self.display_language)
+
+            subject_name = mode + " " + self.subject_welsh if self.subject_welsh else self.subject_english
+        return subject_name
 
     def display_no_data_info(self):
         unavailable = {}
