@@ -43,6 +43,15 @@
     font-weight: normal;
     color:$black;
 }
+.graduate-perceptions__bar-chart-label{
+    line-height: 100%;
+    color: #000000;
+    font-family: "Nunito Sans", sans-serif;
+    display: block;
+    margin-top: 7px;
+    font-weight: normal;
+    font-size: 14px;
+}
 
 @media only screen and (min-width: 770px) {
     .discover-uni-container {
