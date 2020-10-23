@@ -62,7 +62,7 @@
                                     data-language="{{page.get_language}}"
                                     data-field="{{ block.value.usefulness_explanation_heading }}">
                                 {% include 'courses/partials/doughnut_chart.html' %}
-                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.usefulness_explanation_heading }}</p>
+                                <p   class="graduate-perceptions__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.usefulness_explanation_heading }}</p>
                                 <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.usefulness_explanation }}</p>
                             </div>
                             <div class="entry-information__chart discover-uni-chart bar sm-chart"
@@ -83,8 +83,8 @@
                                     data-language="{{page.get_language}}"
                                     data-field="{% get_translation key=perceptions_stats.satisfaction_stats.question_2.description language=page.get_language %}">
                                 {% include 'courses/partials/doughnut_chart.html' %}
-                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.meaningfulness_explanation_heading }}</p>
-                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.meaningfulness_explanation }}</p>
+                                <p class="graduate-perceptions__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.meaningfulness_explanation_heading }}</p>
+                                <p class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.meaningfulness_explanation }}</p>
                             </div>
                             <div class="entry-information__chart discover-uni-chart bar sm-chart"
                                 data-value="{{ perceptions_stats.go_work_mean }}"
@@ -104,7 +104,7 @@
                                     data-language="{{page.get_language}}"
                                     data-field="{% get_translation key=perceptions_stats.satisfaction_stats.question_3.description language=page.get_language %}">
                                 {% include 'courses/partials/doughnut_chart.html' %}
-                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.future_explanation_heading }}</p>
+                                <p   class="graduate-perceptions__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.future_explanation_heading }}</p>
                                 <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.future_explanation }}</p>
                             </div>
                             <div class="entry-information__chart discover-uni-chart bar sm-chart"

@@ -181,7 +181,7 @@
                                             {{ subbed_text | richtext }}
                                         </h2>
                                     </div>
-                                    <div class="d-inline-block row px-3 my-3">
+                                    <div class="d-inline-block row my-3">
                                         <select name="regions_{{ salary_aggregate.subject_code }}_{{ l_or_r }}" id="regions_{{ salary_aggregate.subject_code }}_{{ l_or_r }}" class="region_ddl w-sm-100 w-lg-25">
                                             {% get_region_list as region_list %}
                                             {% for region in region_list %}

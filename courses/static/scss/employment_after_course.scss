@@ -5,6 +5,8 @@
     background-color: $ice-blue;
     color: #000000;
 
+    
+
     .employment-after-course_explanation-text .rich-text, .rich-text{
         font-family: 'Nunito Sans', sans-serif;
         color: $brownish-grey;
@@ -220,6 +222,10 @@
         font-weight:normal;
     }
     .employment-after-course__block {
+        div.not-enough-data-disclaimer h4{
+            font-size:20px!important;
+        }
+
         .explanation-text p, .explanation-text{
             font-family: 'Nunito Sans', sans-serif;
             font-size: 16px;

@@ -38,7 +38,7 @@
 {% for salary_aggregate in course_details.salary_aggregates %}
     <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="earnings-after-course-{{ forloop.counter }}" role="tabpanel" aria-labelledby="earnings-after-course-{{ forloop.counter }}-tab">
 
-        <div class="earnings-after-course_block mx-1 mt-2 px-4 pt-4 pb-0">
+        <div class="earnings-after-course_block mx-1 mt-2 px-3 px-md-4 pt-4 pb-0">
             <div>
                 <h2 class="earnings-after-course__stats-heading text-left pt-3 pb-2">
                     {% create_list salary_aggregate.display_subject_name as substitutions %}
@@ -51,11 +51,11 @@
                     {{ subbed_text | richtext }}
                 </div>
                 <div class="discover-uni-container">
-                    <div class="earnings-after-course-statistics d-flex row align-items-stretch">
+                    <div class="earnings-after-course-statistics row container-fluid p-0 m-0">
                     {% for salary in salary_aggregate.aggregated_salaries_inst %}
                         {% get_index_of_item salary salary_aggregate.aggregated_salaries_inst as salary_index %}
-                        <div class="earnings-after-course_section-block col-xs-12 col-sm-4 align-self-stretch mt-1 mb-0">
-                            <h3 class="mt-3 mb-2 text-center text-lg-left">
+                        <div class="earnings-after-course_section-block col align-self-stretch mt-1 mb-0 p-1">
+                            <h3 class="mt-3 mb-2 text-left">
                             {% if salary_index == 0 %}
                                 {{ block.value.after_fifteen_months_earnings_heading }}
                             {% elif salary_index == 1 %}
@@ -64,7 +64,7 @@
                                 {{ block.value.after_five_years_earnings_heading }}
                             {% endif %}
                             </h3>
-                            <div class="earnings-after-course-stat col-lg-12 p-3 pb-4">
+                            <div class="earnings-after-course-stat px-1 px-md-3 pt-3 pb-4">
                                 {% if salary_index == 0 %}
                                     {% if salary.aggregate %}
                                         <div id="go_inst_avail_container_{{ salary_aggregate.subject_code }}">
@@ -85,15 +85,15 @@
                                     {% endif %}
                                 {% endif %}
 
-                                    <h2 class="earnings-after-course-stat-salary mb-1 text-center text-lg-left">£{{ salary.med|intcomma }}</h2>
-                                    <h4 class="earnings-after-course-stat-salary-range pt-1 text-center text-lg-left  mb-3">
+                                    <h2 class="earnings-after-course-stat-salary mb-1 ter text-left">£{{ salary.med|intcomma }}</h2>
+                                    <h4 class="earnings-after-course-stat-salary-range pt-1 text-left  mb-3">
                                         {% create_list salary.lq|intcomma salary.uq|intcomma as substitutions %}
                                         {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
                                         {{ subbed_text | richtext }}
                                     </h4>
 
 
-                                    <h4 class="earnings-after-course-stat-small pt-1 text-center text-lg-left  mb-3">
+                                    <h4 class="earnings-after-course-stat-small pt-1 text-left  mb-3">
                                         {% create_list course_details.data_from_html salary.pop salary.resp_rate as substitutions %}
                                         {% if salary_index == 0 %}
                                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_respondents_explanation substitutions=substitutions as subbed_text %}
@@ -105,7 +105,7 @@
                                         {% endif %}
                                     </h4>
 
-                                    <h4 class="earnings-after-course-stat-small pt-1 text-center text-lg-left  mb-3">
+                                    <h4 class="earnings-after-course-stat-small pt-1 text-left  mb-3">
                                         {% if salary_index == 0 %}
                                             {% create_list course_details.data_from_html_average_earnings_year_range course.go_year_range as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
@@ -195,7 +195,7 @@
                         {% for salary in salary_aggregate.aggregated_salaries_sector %}
                             {% get_index_of_item salary salary_aggregate.aggregated_salaries_sector as salary_index %}
                             <div class="earnings-after-course_section-block col-xs-12 col-sm-4 align-self-stretch my-2">
-                                <h3 class="mb-0 text-center text-lg-left">
+                                <h3 class="mb-0 text-left">
                                 {% if salary_index == 0 %}
                                     {{ block.value.after_fifteen_months_earnings_heading }}
                                 {% elif salary_index == 1 %}
@@ -225,13 +225,13 @@
                                         {% endif %}
                                     {% endif %}
 
-                                        <h2 class="earnings-sector-field earnings-after-course-stat-salary mb-1 text-center text-lg-left" id="{% concat 'sector_salary_med_' salary_index '_' salary_aggregate.subject_code %}">£{{ salary.salary_default_country_med|intcomma }}</h2>
-                                        <h4 class="earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_lq_' salary_index '_' salary_aggregate.subject_code %}">
+                                        <h2 class="earnings-sector-field earnings-after-course-stat-salary mb-1 text-left" id="{% concat 'sector_salary_med_' salary_index '_' salary_aggregate.subject_code %}">£{{ salary.salary_default_country_med|intcomma }}</h2>
+                                        <h4 class="earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-left mb-3" id="{% concat 'sector_salary_lq_' salary_index '_' salary_aggregate.subject_code %}">
                                             {% create_list salary.salary_default_country_lq|intcomma salary.salary_default_country_uq|intcomma as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
                                             {{ subbed_text | richtext }}
                                         </h4>
-                                        <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_pop_' salary_index '_' salary_aggregate.subject_code %}">
+                                        <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_pop_' salary_index '_' salary_aggregate.subject_code %}">
                                             {# create_list course_details.data_from_html salary.pop_uk salary.resp_uk as substitutions #}
                                             {% create_list course_details.data_from_html salary.salary_default_country_pop as substitutions %}
                                             {% if salary_index == 0 %}
@@ -244,13 +244,13 @@
                                             {% endif %}
                                         </h4>
                                         {% get_translation key='default_region' language=page.get_language as default_region %}
-                                        <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
+                                        <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
                                             {# create_list salary_aggregate.aggregated_salaries_inst.0.prov_pc_uk course.english_title course.institution.pub_ukprn_name default_region as substitutions #}
                                             {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name default_region as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
                                             {{ subbed_text | richtext }}
                                         </h4>
-                                        <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-center text-lg-left mb-3">
+                                        <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3">
                                             {% if salary_index == 0 %}
                                                 {% create_list course_details.data_from_html_average_earnings_year_range course.go_year_range as substitutions %}
                                                 {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}

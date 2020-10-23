@@ -15,7 +15,7 @@
 <hr class="nav-tabs-hr"/>
 {% endif %}
 
-<div class="tab-content">
+<div class="tab-content mb-4">
 {% for overall_stats in course_details.overall_satisfaction %}
     <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="student-satisfaction-{{ forloop.counter }}" role="tabpanel" aria-labelledby="student-satisfaction-{{ forloop.counter }}-tab">
 
@@ -46,7 +46,7 @@
         <div class="scrolling-wrapper scroll">
             {% if overall_stats.satisfaction_stats.show_satisfaction_stats %}
             {% if overall_stats.satisfaction_stats.show_teaching_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 px-1 mx-1 scroll_item">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                     <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
                             {{block.value.teaching_stats_header }}
@@ -879,6 +879,12 @@
             {%  endif %}
 
         {% endif %}
+        </div>
+        <div class="mt-2 d-block d-md-none student-satisfaction__scrolling-wrapper-arrow">
+            <div class="mx-auto">
+                <h6 class="mx-auto">Scroll to the right &nbsp;<i class="fas fa-arrow-right fa-align-center text-center"></i></h6>
+            </div>
+            <hr class="mx-auto"/>
         </div>
     </div>
 </div>

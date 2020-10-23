@@ -57,7 +57,7 @@
                         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_satisfaction_stats.display_unavailable_info %}
                     </div>
 
-                        <div class="scrolling-wrapper scroll">
+                    <div class="scrolling-wrapper scroll">
                     {% if course_satisfaction_stats.show_satisfaction_stats %}
                         {% if course_satisfaction_stats.show_teaching_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 px-1 mx-1 scroll_item">
@@ -186,7 +186,7 @@
                         {% endif %}
 
                         {% if course_satisfaction_stats.show_assessment_stats %}
-                            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                         <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                             <div class="col-12  pt-3 text-left pt-3" >
                                 <h2 class="student-satisfaction__data-group-heading text-left">
                                     {{block.value.assessment_stats_header }}
@@ -536,7 +536,7 @@
                         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_nhs_satisfaction_stats.display_unavailable_info %}
                     </div>
 
-                    <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                        <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                             <div class="col-lg-4 col-md-12  pt-3 text-left" >
                                 <h2 class="student-satisfaction__data-group-heading text-left">
                                     {{block.value.nhs_placement_stats_header }}
@@ -638,8 +638,14 @@
                             </div>
                         {%  endif %}
                     {% endif %}
+                </div>
+                <div class="mt-2 d-block d-md-none student-satisfaction__scrolling-wrapper-arrow mb-4">
+                    <div class="mx-auto">
+                        <h6 class="mx-auto">Scroll to the right &nbsp;<i class="fas fa-arrow-right fa-align-center text-center"></i></h6>
                     </div>
-                    </div>
+                    <hr class="mx-auto"/>
+                </div>
+                </div>
 
                 </div>
                 {% endif %}
