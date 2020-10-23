@@ -571,7 +571,10 @@ class Course:
     def locations_list(self):
         location_names = []
         for location in self.locations:
-            location_names.append(location.english_name)
+            if self.display_language == enums.languages.ENGLISH:
+                location_names.append(location.english_name)
+            else:
+                location_names.append(location.welsh_name)
         return ', '.join(location_names)
 
     @property
