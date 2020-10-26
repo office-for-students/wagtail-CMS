@@ -99,6 +99,9 @@ def regional_earnings(request):
             salary_sector_15_pop = None
             inst_prov_pc_go = None
 
+        if not inst_prov_pc_go:
+            inst_prov_pc_go = 0
+
         attr = getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region, None)
         if attr is not None:
             if getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region) == "" or getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region) is None:
@@ -130,6 +133,9 @@ def regional_earnings(request):
             salary_sector_3_uq = None
             salary_sector_3_pop = None
             inst_prov_pc_leo3 = None
+
+        if (not inst_prov_pc_leo3 or inst_prov_pc_leo3 == '') and (inst_prov_pc_go != ''):
+            inst_prov_pc_leo3 = inst_prov_pc_go
 
         attr = getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region, None)
         if attr is not None:
@@ -163,6 +169,8 @@ def regional_earnings(request):
             salary_sector_5_pop = None
             inst_prov_pc_leo5 = None
 
+        if (not inst_prov_pc_leo5 or inst_prov_pc_leo5 == '') and (inst_prov_pc_leo3 != ''):
+            inst_prov_pc_leo5 = inst_prov_pc_leo3
 
         resp = {
             'typical_range_text': DICT.get('Typical range').get(language),

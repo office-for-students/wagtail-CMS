@@ -1863,10 +1863,11 @@ class SectorSalary:
             #     self.resp_w = salary_data['resp_w']
             #     self.resp_s = salary_data['resp_s']
 
-                self.salary_default_country_med = salary_data["med" + country_postfix]
-                self.salary_default_country_lq = salary_data["lq" + country_postfix]
-                self.salary_default_country_uq = salary_data["uq" + country_postfix]
-                self.salary_default_country_pop = salary_data["pop" + country_postfix]
+                if "lq" + country_postfix in salary_data:
+                    self.salary_default_country_med = salary_data["med" + country_postfix]
+                    self.salary_default_country_lq = salary_data["lq" + country_postfix]
+                    self.salary_default_country_uq = salary_data["uq" + country_postfix]
+                    self.salary_default_country_pop = salary_data["pop" + country_postfix]
 
 
             if 'lq_ni' in salary_data:
