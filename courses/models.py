@@ -2126,14 +2126,14 @@ class SalariesAggregate:
         mode = self.mode.lower()
 
         if self.display_language == enums.languages.ENGLISH:
-            subject_name = mode + " " + self.subject_english if self.subject_english else mode + " " + self.subject_welsh
+            subject_name = mode + " " + self.subject_english if self.subject_english else self.subject_welsh + " " + mode
         else:
             if mode == "full-time":
                 mode = DICT.get('full_time').get(self.display_language).lower()
             elif mode == "part-time":
                 mode = DICT.get('part_time').get(self.display_language).lower()
 
-            subject_name = mode + " " + self.subject_welsh if self.subject_welsh else self.subject_english
+            subject_name = self.subject_welsh + " " + mode if self.subject_welsh else mode + " " + self.subject_english
         return subject_name
 
     def display_no_data_info(self):
