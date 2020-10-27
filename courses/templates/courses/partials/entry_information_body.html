@@ -3,7 +3,6 @@
 {% load discover_uni_tags %}
 
 {% if course_details.entry_stats and course_details.entry_stats.0.number_of_students %}
-
     <div class="entry-information__block">
         <div class="entry-information__overview my-3 p-3 mx-1 pt-4 d-flex flex-wrap row">
             <div class="col-md-6 col-sm-12 align-self-stretch my-auto">
@@ -191,7 +190,7 @@
                     {% endif %}
                 </div>
                 {% else %}
-                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}
                 {% endif %}
             {% endfor %}
         </div>
@@ -255,11 +254,13 @@
                         </div>
                     </div>
                 {% else %}
-                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
                 {% endif %}
             {% endfor %}
         </div>
     </div>
+{% elif course_details.entry_stats and course_details.entry_stats.0.display_unavailable_info %}
+    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.entry_stats.0.display_unavailable_info %}
 {% else %}
-    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_data %}
 {% endif %}

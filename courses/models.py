@@ -390,16 +390,16 @@ class Course:
                     self.summary_med_sal_sbj = course_details.get('go_salary_inst')[0]['subject']['welsh_label']
             elif 'med' in course_details.get('leo3_inst')[0]:
                 self.summary_med_sal_value = course_details.get('leo3_inst')[0]['med']
-                self.summary_med_sal_sbj = course_details.get('leo3_inst')[0]['sbj']
+                #self.summary_med_sal_sbj = course_details.get('leo3_inst')[0]['sbj']
 
                 if self.display_language == enums.languages.ENGLISH:
                     self.summary_med_sal_time = "3 years"
                     self.course_title = fallback_to(self.english_title, '')
-                    self.summary_med_sal_sbj = course_details.get('go_salary_inst')[0]['subject']['english_label']
+                    self.summary_med_sal_sbj = course_details.get('leo3_inst')[0]['subject']['english_label']
                 else:
                     self.summary_med_sal_time = "3 blynedd"
                     self.course_title = fallback_to(self.welsh_title, '')
-                    self.summary_med_sal_sbj = course_details.get('go_salary_inst')[0]['subject']['welsh_label']
+                    self.summary_med_sal_sbj = course_details.get('leo3_inst')[0]['subject']['welsh_label']
 
 
             self.default_country_postfix = "_uk"
@@ -512,6 +512,43 @@ class Course:
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
+
+
+    # def display_no_entry_info_1(self):
+    #     unavailable = {}
+
+    #     if self.display_language == enums.languages.ENGLISH:
+    #         unavailable["reason"] = "Sorry, there is no data available for this course.\n\nThis may be because the course size is too small. This does not reflect on the quality of the course."
+    #     else:
+    #         unavailable["reason"] = "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+    #     unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+
+    #     return unavailable
+    # def display_no_entry_info_2(self):
+    #     unavailable = {}
+
+    #     if self.display_language == enums.languages.ENGLISH:
+    #         unavailable["reason"] = "Sorry, there is no data available for this course.\n\nThis may be because the course size is too small. This does not reflect on the quality of the course."
+    #     else:
+    #         unavailable["reason"] = "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+    #     unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+
+    #     return unavailable
+    # def display_no_entry_info_3(self):
+    #     unavailable = {}
+
+    #     if self.display_language == enums.languages.ENGLISH:
+    #         unavailable["reason"] = "Sorry, there is no data available for this course.\n\nThis may be because the course size is too small. This does not reflect on the quality of the course."
+    #     else:
+    #         unavailable["reason"] = "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+    #     unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+
+    #     return unavailable
+
+        
         
     def display_no_data(self):
         unavailable = {}
