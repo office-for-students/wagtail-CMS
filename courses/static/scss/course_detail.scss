@@ -104,7 +104,7 @@
                 border: none;
                 background-color: transparent;
                 position: absolute;
-                top: 95px;
+                top: 110px;
 
                 .course-detail__nav-control-icon {
                     height: 12px;
@@ -695,6 +695,7 @@
                 .course-detail__nav-control {
                     @include xs-heading-mixin();
                     color: $gradient-light-green;
+                    top:135px;
 
                     .course-detail__nav-control-icon {
                         height: 16px;
