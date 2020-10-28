@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-12 col-lg-6 p-3 pr-4">
                 <h4 class="mb-3">{% get_translation key='by_course_location' language=page.get_language %}</h4>
-                <form class="search-landing-page__search" action="/course-finder/results/" method="post" autocomplete="off">
+                <form class="search-landing-page__search" action="{% if page.is_welsh %}/cy{% endif %}{% url 'course_finder_results' %}" method="post" autocomplete="off">
                     {% csrf_token %}
                     <div class="search-landing-page__search-fields">
                         <div class="search-landing-page__search-input">
