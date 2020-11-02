@@ -195,7 +195,13 @@
                                 </div>
                             {% endif %}
                         {% else %}
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}
+                            <div class="entry-information__qualification-charts px-1 px-lg-3 py-3 d-flex flex-wrap row mx-1 my-3">
+                                <div class="col-12">
+                                    <h2 class="entry-information__heading py-2">{{block.value.qualification_heading}}
+                                    </h2>
+                                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}
+                                </div>
+                            </div>
                         {% endif %}
                     </div>    
                 </div>
@@ -226,7 +232,6 @@
                 <div class="comparison__course-column">
                     <div class="comparison__course">
 
-                        <!-- -->
                         {% if tariff_stats.tariffs %}
                             {% if course.has_multiple_entry_stats %}
                                 <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
@@ -269,7 +274,15 @@
                                 </div>
                             </div>
                         {% else %}
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_data %}
+                            <div class="entry-information__block my-2">
+                                <div class="entry-information__ucas-points p-3 d-flex flex-wrap row mx-1">
+                                    <div class="col-12 my-auto">
+                                        <h2 class="entry-information__heading py-3">{{block.value.tariffs_heading}}</h2>
+
+                                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
+                                    </div>  
+                                </div>  
+                            </div>
                         {% endif %}                        <!-- -->
                     </div>
                 </div>    

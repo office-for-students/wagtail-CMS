@@ -13,11 +13,14 @@
      data-distance-en="{% map_distance_learning_values course.distance_learning 'en' %}" data-distance-cy="{% map_distance_learning_values course.distance_learning 'cy' %}"
      data-abroad-en="{% get_translation key=course.year_abroad language='en' %}" data-abroad-cy="{% get_translation key=course.year_abroad language='cy' %}">
     
-    <button class="course-detail__compare-btn mb-3">
-        <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
-        <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
-         {% get_translation key='bookmark_course' language=page.get_language %}
-    </button>
+     <div class="mb-3">
+        <button class="course-detail__compare-btn">
+            <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
+            <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
+             {% get_translation key='bookmark_course' language=page.get_language %}
+        </button>
+     </div>
+    
 
      <a href="{% if page.is_welsh %}/cy{% endif %}/course-details/{{institution_id}}/{{course.kis_course_id}}/{{course.mode}}"
        class="course-finder-results__result-accordion-body-course-name">

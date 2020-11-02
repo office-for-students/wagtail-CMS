@@ -154,14 +154,46 @@
                                     </div>
                                 </div>
                             {% elif course.employment_stats and course.employment_stats.0.display_unavailable_info %}
-                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.employment_stats.0.display_unavailable_info %}
+                                <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
+                                    <div class="col-12 align-self-stretch my-auto">
+                        
+                                        <h2 class="employment-after-course__stats-heading pt-3 mb-4">
+                                            {{block.value.six_month_employment_roles_heading}}
+                                        </h2>
+                                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.employment_stats.0.display_unavailable_info %}
+                                    </div>
+                                </div>
                             {% else %}
-                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+                                <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
+                                    <div class="col-12 align-self-stretch my-auto">
+                        
+                                        <h2 class="employment-after-course__stats-heading pt-3 mb-4">
+                                            {{block.value.six_month_employment_roles_heading}}
+                                        </h2>
+                                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+                                    </div>
+                                </div>
                             {% endif %}
                         {% elif course.employment_stats and course.employment_stats.0.display_unavailable_info %}
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.employment_stats.0.display_unavailable_info %}
+                            <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
+                                <div class="col-12 align-self-stretch my-auto">
+                    
+                                    <h2 class="employment-after-course__stats-heading pt-3 mb-4">
+                                        {{block.value.six_month_employment_roles_heading}}
+                                    </h2>
+                                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.employment_stats.0.display_unavailable_info %}
+                                </div>
+                            </div>
                         {% else %}
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+                            <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
+                                <div class="col-12 align-self-stretch my-auto">
+                    
+                                    <h2 class="employment-after-course__stats-heading pt-3 mb-4">
+                                        {{block.value.six_month_employment_roles_heading}}
+                                    </h2>
+                                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+                                </div>
+                            </div>
                         {% endif %}
                         <!-- -->
 
@@ -229,7 +261,7 @@
                                 
                                 <div class="discover-uni-container">
                                     <div class="employment-after-course_occupation-statistics d-flex row align-items-stretch">
-                                        <div class="col-md-12 col-lg-4 align-self-stretch my-2">
+                                        <div class="col-md-12 col-lg-4 align-self-stretch my-2 px-1">
                                             <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
                                                 <h2 class="mb-0 text-center text-lg-left">{{ jobtype_stats.professional_or_managerial_jobs }}%</h2>
                                                 <h4 class="pt-1 text-center text-lg-left  mb-3">{% get_translation key='highly_skilled' language=page.get_language %}</h4>
@@ -247,7 +279,7 @@
                                                 {% endfor %}
                                             </div>
                                         </div>
-                                        <div class="col-md-12 col-lg-4 align-self-stretch my-2">
+                                        <div class="col-md-12 col-lg-4 align-self-stretch my-2 px-1">
                                             <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
                                                 <h2 class="mb-0 text-center text-lg-left">{{ jobtype_stats.non_professional_or_managerial_jobs  }}%</h2>
                                                 <h4 class="pt-1 text-center text-lg-left mb-3">{% get_translation key='other_work' language=page.get_language %}</h4>
@@ -265,7 +297,7 @@
                                                 {% endfor %}
                                             </div>
                                         </div>
-                                        <div class="col-md-12 col-lg-4 align-self-stretch my-2">
+                                        <div class="col-md-12 col-lg-4 align-self-stretch my-2 px-1">
                                             <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
                                                 <h2 class="mb-0 text-center text-lg-left">{{ jobtype_stats.unknown_professions }}%</h2>
                                                 <h4 class="pt-1 text-center text-lg-left mb-3">{% get_translation key='unknown_work' language=page.get_language %}</h4>
@@ -300,10 +332,20 @@
                             </div>
                         {% endif %}
                     {% elif course.jobtype_stats and course.jobtype_stats.0.display_unavailable_info %}
-                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.jobtype_stats.0.display_unavailable_info %}
-                    {% else %}
-                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
-                    {% endif %}
+                        <div class="employment-after-course_occupation-block mx-1 my-2 p-4">
+                            <h2 class="employment-after-course__stats-heading text-left pt-3 mb-4">
+                                {{block.value.six_month_employment_roles_label_explanation_heading}}
+                            </h2>
+                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.jobtype_stats.0.display_unavailable_info %}
+                        </div>
+                        {% else %}
+                        <div class="employment-after-course_occupation-block mx-1 my-2 p-4">
+                            <h2 class="employment-after-course__stats-heading text-left pt-3 mb-4">
+                                {{block.value.six_month_employment_roles_label_explanation_heading}}
+                            </h2>
+                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+                        </div>
+                        {% endif %}
                     <!-- -->
 
                 </div>    
