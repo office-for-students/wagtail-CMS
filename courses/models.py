@@ -149,8 +149,9 @@ class EarningsAfterCourseBlock(AccordionPanel):
     after_three_five_years_data_source = blocks.RichTextBlock(blank=True)
 
     average_earnings_sector_heading = blocks.RichTextBlock(blank=True)
-    respondents_live_in_explanation_go = blocks.RichTextBlock(blank=True)
-    respondents_live_in_explanation_leo = blocks.RichTextBlock(blank=True)
+    # respondents_live_in_explanation_go = blocks.RichTextBlock(blank=True)
+    # respondents_live_in_explanation_leo = blocks.RichTextBlock(blank=True)
+    respondents_live_in_explanation = blocks.RichTextBlock(blank=True)
 
     class Meta:
         value_class = EarningsAfterCourseDataSet

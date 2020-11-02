@@ -245,7 +245,7 @@
                                             {{ subbed_text | richtext }}
                                         </h4>
                                         {# get_translation key='default_region' language=page.get_language as default_region #}
-                                        <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
+                                        <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
                                             {% if salary_index == 0 %}
                                                 {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course_details.english_title course_details.institution.pub_ukprn_name course_details.default_region as substitutions %}
                                             {% elif salary_index == 1 and salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc != None %}
@@ -257,10 +257,13 @@
                                             {% else %}
                                                 {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course_details.english_title course_details.institution.pub_ukprn_name course_details.default_region as substitutions %}
                                             {% endif %}
+
+                                            {# get_prov_pc_verb value=block.value.respondents_live_in_explanation data_source='leo' as respondents_live_in_explanation_leo #}
+                                            {# get_prov_pc_verb value=block.value.respondents_live_in_explanation data_source='go' as respondents_live_in_explanation_go #}
                                             {% if salary_index == 0 %}
-                                                {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation_go substitutions=substitutions as subbed_text %}
+                                                {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
                                             {% else %}
-                                                {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation_leo substitutions=substitutions as subbed_text %}
+                                                {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
                                             {% endif %}
                                             {{ subbed_text | richtext }}
                                         </h4>
@@ -344,6 +347,14 @@
         $(".excl-ni-msg").hide();
         $(".spinner-border").hide();
 
+/*         $('.prov-pc-field').each(function(i, obj) {
+            //alert(obj.id);
+            var pcProvTextOld = obj.innerHTML;
+            alert(pcProvTextOld);
+            // var pcProvTextNew = pcProvTextOld.replace("employed", "based");
+            // $(obj).attr('id').text(pcProvTextNew);
+        });
+ */
         function buildHtml(unseparatedString){
             var index_of_delimiter = unseparatedString.indexOf('\n\n');
             var separatedString = "";
