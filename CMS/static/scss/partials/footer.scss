@@ -5,10 +5,10 @@
 
     background-color: $ux-grey-1;
 
-    &__section-1{
+    &__section-1-parent{
         background-color: #FFFFFF;
     }
-    &__section-2{
+    &__section-2-parent{
         background-color: #f4f8f8;
     }
 
@@ -247,5 +247,40 @@
             color:#1f283a;
             font-size:1.5rem;
         }
+    }
+}
+
+@media only screen and (max-width: 575px){
+    .footer__section-1, .footer__section-2{
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 576px) and (max-width: 766px){
+    .footer__section-1, .footer__section-2{
+        width: 540px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 767px) and (max-width: 991px){
+    .footer__section-1, .footer__section-2{
+        width: 720px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    .footer__section-1, .footer__section-2{
+        width: 960px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .footer__section-1, .footer__section-2{
+        width: 1140px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
     }
 }
