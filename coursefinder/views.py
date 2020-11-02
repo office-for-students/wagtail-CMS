@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 
 from CMS.enums import enums
-from core.utils import get_page_for_language
+from core.utils import get_page_for_language, get_new_landing_page_for_language
 from coursefinder.forms import FilterForm
 from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderPostcode, \
     CourseFinderSummary
@@ -28,7 +28,8 @@ def results(request, language=enums.languages.ENGLISH):
     error = course_search.execute()
 
     if error:
-        redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        redirect_page = get_new_landing_page_for_language(language)
+        #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
         return redirect(redirect_page + '?load_error=true&error_type=1')
 
     page = get_page_for_language(language, CourseFinderResults.objects.all())
@@ -89,9 +90,11 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
                                               query_params.get('count', 20),
                                               language)
     error = course_finder_search.execute()
-
+ 
     if error:
-        redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        redirect_page = get_new_landing_page_for_language(language)
+        #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+
         return redirect(redirect_page + '?load_error=true&error_type=1')
 
     page = get_page_for_language(language, CourseFinderResults.objects.all())
