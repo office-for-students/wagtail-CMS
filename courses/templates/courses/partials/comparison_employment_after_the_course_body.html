@@ -156,8 +156,12 @@
                             {% elif course.employment_stats and course.employment_stats.0.display_unavailable_info %}
                                 {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.employment_stats.0.display_unavailable_info %}
                             {% else %}
-                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_data %}
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
                             {% endif %}
+                        {% elif course.employment_stats and course.employment_stats.0.display_unavailable_info %}
+                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.employment_stats.0.display_unavailable_info %}
+                        {% else %}
+                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
                         {% endif %}
                         <!-- -->
 
@@ -297,8 +301,6 @@
                         {% endif %}
                     {% elif course.jobtype_stats and course.jobtype_stats.0.display_unavailable_info %}
                         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.jobtype_stats.0.display_unavailable_info %}
-                    {% else %}
-                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_data %}
                     {% endif %}
                     <!-- -->
 
