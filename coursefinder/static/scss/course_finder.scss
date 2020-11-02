@@ -3,6 +3,9 @@
 @import '../../../CMS/static/scss/partials/forms';
 
 
+.course-finder-results__overview-filter-open{
+    text-align:center;
+}
 .course-finder__header{   
     font-family: "Nunito Sans", sans-serif;
     background-color: #1F283A;
@@ -12,6 +15,7 @@
     background: linear-gradient(to bottom, #1F283A 40% , $white 40%); /* Standard syntax */
     padding-bottom:0;
     color:$white;
+    overflow: hidden;
 
     .home-page__header-bg-icon {
         height: 100px;
@@ -31,8 +35,6 @@
         color:$black;
         font-weight:bold;
         font-size:1.2rem;
-        margin-left:1rem;
-        margin-right:1rem;
         padding:1rem;
 
         input#institution_query-search.search-field-input {
@@ -168,8 +170,6 @@
     }
     &-base {
         background-color: white;
-        margin-left:2rem;
-        margin-right:2rem;
         margin-bottom:3rem;
 
         &__nav {
@@ -497,7 +497,7 @@
 
                 &-body {
                     background-color: rgba(248, 212, 65, 0.2);
-                    padding: 2rem;
+                    padding: 1rem;
 
                     &-content {
                         background-color: #FFFFFF;
@@ -540,9 +540,7 @@
     }
     .course-finder__header .course-finder__intro-panel {
         padding: 1rem;
-        margin-left: 3rem;
-        margin-right:3rem;
-
+    
         h5 {
             font-size: 1rem;
         }
@@ -550,9 +548,7 @@
     .course-finder {
 
         &-base {
-            margin-left:3rem;
-            margin-right:3rem;
-           
+        
             &__nav {
                 padding: 24px 0px;
 
@@ -747,5 +743,44 @@
                 }
             }
         }
+    }
+}
+
+
+
+
+
+@media only screen and (max-width: 575px){
+    .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content{
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 576px) and (max-width: 766px){
+    .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content{
+        width: 540px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 767px) and (max-width: 991px){
+    .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content{
+        width: 720px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content{
+        width: 960px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content{
+        width: 1140px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
     }
 }

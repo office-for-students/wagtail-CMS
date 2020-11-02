@@ -161,3 +161,39 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 575px){
+    div.bookmark.discover-uni-container{
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 576px) and (max-width: 766px){
+    div.bookmark.discover-uni-container{
+        width: 540px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 767px) and (max-width: 991px){
+    div.bookmark.discover-uni-container{
+        width: 720px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    div.bookmark.discover-uni-container{
+        width: 960px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 1200px){
+    div.bookmark.discover-uni-container{
+        width: 1140px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}

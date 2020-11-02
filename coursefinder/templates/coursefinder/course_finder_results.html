@@ -28,15 +28,16 @@
 {% block content %}
 
 <div class="course-finder__header">
-
-    <div class="row mx-0">
-        <div class="col-9 overflow-visible pr-0">
-            <div class="course-finder__intro-title pt-4 pl-md-4 pl-sm-2 ">
-                <h1>{% get_translation key='search_results' language=page.get_language %}</h1>
+    <div class="course-finder__header-content">
+        <div class="row mx-0">
+            <div class="col-9 overflow-visible pr-0">
+                <div class="course-finder__intro-title pt-4 ">
+                    <h1>{% get_translation key='search_results' language=page.get_language %}</h1>
+                </div>
             </div>
-        </div>
-        <div class="col-3 p-0 text-right">
-            <img class="home-page__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
+            <div class="col-3 p-0 text-right">
+                <img class="home-page__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
+            </div>
         </div>
     </div>
 
@@ -88,7 +89,7 @@
 </div>
 <div class="course-finder-base course-finder-results">
     <div class="">
-        <div class="course-finder-base__nav row">
+        <div class="course-finder-base__nav row mx-0">
             <div class="col-8 text-left">
                 {% create_list search.total_courses search.total_institutions as substitutions %}
                 {% autoescape off %}
