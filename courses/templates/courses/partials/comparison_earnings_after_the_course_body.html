@@ -347,6 +347,8 @@
                         {% endif %}
 
 
+                    {% elif course.go_salaries_inst.0 %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.go_salaries_inst.0.display_unavailable_info %}
                     {% else %}
                         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
                     {% endif %}
@@ -362,7 +364,13 @@
 {% endfor %}
 
 {% if not course1.salary_aggregates and not course2.salary_aggregates %}
-    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1.display_no_earnings_info %}
+    {% if course1.go_salaries_inst.0 %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1.go_salaries_inst.0.display_unavailable_info %}
+    {% elif course2.go_salaries_inst.0 %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2.go_salaries_inst.0.display_unavailable_info %}
+    {% else %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1.display_no_earnings_info %}
+    {% endif %}
 {% endif %}
 
 <script>

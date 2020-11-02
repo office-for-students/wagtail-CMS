@@ -13,6 +13,8 @@
                 </div>
             </div>
             {# endif #}
+        {% elif course_details.go_salaries_inst.0 %}
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.go_salaries_inst.0.display_unavailable_info %}
         {% else %}
             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
         {% endif %}
