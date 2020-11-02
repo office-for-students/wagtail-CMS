@@ -269,6 +269,8 @@
             </div>
         {% elif course_details.jobtype_stats and course_details.jobtype_stats.0.display_unavailable_info %}
             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.jobtype_stats.0.display_unavailable_info %}
+        {% else %}
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
         {% endif %}
     {% endfor %}
 </div>
