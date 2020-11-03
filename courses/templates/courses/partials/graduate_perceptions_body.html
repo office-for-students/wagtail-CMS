@@ -19,7 +19,6 @@
         <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="grad-perceptions-{{ forloop.counter }}" role="tabpanel" aria-labelledby="grad-perceptions-{{ forloop.counter }}-tab">
     
         {% if perceptions_stats.go_work_mean %}
-            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=perceptions_stats.display_unavailable_info %}
             <div class="student-satisfaction__overview mt-3 mx-1 p-3 d-flex flex-wrap row">
                     <div class="col-lg-2 col-md-12 align-self-stretch text-center">
                         <p class="student-satisfaction__overview-lead ">
@@ -38,6 +37,10 @@
                     </div>
             </div>
 
+            <div class="mt-3">
+                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=perceptions_stats.display_unavailable_info %}
+            </div>
+
             <div class="student-satisfaction__block">
                 <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 mx-1">
                     <div class="col-lg-4 col-md-12 my-auto pb-3" >
@@ -52,74 +55,75 @@
                         </h2>
                     </div>
                     <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto">
-                        <div class="student-satisfaction__chart-wrapper">
+                        <div class="student-satisfaction__chart-wrapper mx-md-1">
                             <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
                                     data-value="{{ perceptions_stats.go_work_skills }}"
                                     data-question="satisfaction-1"
                                     data-language="{{page.get_language}}"
                                     data-field="{{ block.value.usefulness_explanation_heading }}">
                                 {% include 'courses/partials/doughnut_chart.html' %}
-                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.usefulness_explanation_heading }}</p>
+                                <p   class="graduate-perceptions__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.usefulness_explanation_heading }}</p>
                                 <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.usefulness_explanation }}</p>
                             </div>
                             <div class="entry-information__chart discover-uni-chart bar sm-chart"
                                 data-value="{{ perceptions_stats.go_work_skills }}"
                                 data-question="satisfaction-1"
                                 data-language="{{page.get_language}}"
-                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_1.description language=page.get_language %}">
+                                data-field="{% get_translation key=perceptions_stats.satisfaction_stats.question_1.description language=page.get_language %}">
                                 {% include 'courses/partials/bar_chart.html' %}
-                                <label class="entry-information__chart-label" aria-hidden="true">{{ block.value.usefulness_explanation_heading }}</label>
+                                <label class="graduate-perceptions__bar-chart-label" aria-hidden="true">{{ block.value.usefulness_explanation_heading }}</label>
                                 <label class="entry-information__chart-label" aria-hidden="true">{{ block.value.usefulness_explanation }}</label>
                             </div>
                         </div>
 
-                        <div class="student-satisfaction__chart-wrapper">
+                        <div class="student-satisfaction__chart-wrapper mx-md-2">
                             <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
                                     data-value="{{ perceptions_stats.go_work_mean }}"
                                     data-question="satisfaction-2"
                                     data-language="{{page.get_language}}"
-                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_2.description language=page.get_language %}">
+                                    data-field="{% get_translation key=perceptions_stats.satisfaction_stats.question_2.description language=page.get_language %}">
                                 {% include 'courses/partials/doughnut_chart.html' %}
-                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.meaningfulness_explanation_heading }}</p>
-                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.meaningfulness_explanation }}</p>
+                                <p class="graduate-perceptions__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.meaningfulness_explanation_heading }}</p>
+                                <p class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.meaningfulness_explanation }}</p>
                             </div>
                             <div class="entry-information__chart discover-uni-chart bar sm-chart"
                                 data-value="{{ perceptions_stats.go_work_mean }}"
                                 data-question="satisfaction-2"
                                 data-language="{{page.get_language}}"
-                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_2.description language=page.get_language %}">
+                                data-field="{% get_translation key=perceptions_stats.satisfaction_stats.question_2.description language=page.get_language %}">
                                 {% include 'courses/partials/bar_chart.html' %}
-                                <label class="entry-information__chart-label" aria-hidden="true">{{ block.value.meaningfulness_explanation_heading }}</label>
+                                <label class="graduate-perceptions__bar-chart-label" aria-hidden="true">{{ block.value.meaningfulness_explanation_heading }}</label>
                                 <label class="entry-information__chart-label" aria-hidden="true">{{ block.value.meaningfulness_explanation }}</label>
                             </div>
                         </div>
 
-                        <div class="student-satisfaction__chart-wrapper">
+                        <div class="student-satisfaction__chart-wrapper mx-md-1">
                             <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
                                     data-value="{{ perceptions_stats.go_work_on_track }}"
                                     data-question="satisfaction-3"
                                     data-language="{{page.get_language}}"
-                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_3.description language=page.get_language %}">
+                                    data-field="{% get_translation key=perceptions_stats.satisfaction_stats.question_3.description language=page.get_language %}">
                                 {% include 'courses/partials/doughnut_chart.html' %}
-                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.future_explanation_heading }}</p>
+                                <p   class="graduate-perceptions__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.future_explanation_heading }}</p>
                                 <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{{ block.value.future_explanation }}</p>
                             </div>
                             <div class="entry-information__chart discover-uni-chart bar sm-chart"
                                 data-value="{{ perceptions_stats.go_work_on_track }}"
                                 data-question="satisfaction-3"
                                 data-language="{{page.get_language}}"
-                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_3.description language=page.get_language %}">
+                                data-field="{% get_translation key=perceptions_stats.satisfaction_stats.question_3.description language=page.get_language %}">
                                 {% include 'courses/partials/bar_chart.html' %}
-                                <label class="entry-information__chart-label" aria-hidden="true">{{ block.value.future_explanation_heading }}</label>
+                                <label class="graduate-perceptions__bar-chart-label" aria-hidden="true">{{ block.value.future_explanation_heading }}</label>
                                 <label class="entry-information__chart-label" aria-hidden="true">{{ block.value.future_explanation }}</label>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-        {% else %}
+        {% elif perceptions_stats.display_unavailable_info %}
             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=perceptions_stats.display_unavailable_info %}
+        {% else %}
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
         {% endif %}
     </div>
 

@@ -10,7 +10,7 @@
         @include s-heading-mixin();
         color: $black;
         font-weight:normal;
-        font-size: 24px!important;
+        font-size: 18px;
         font-family: 'Nunito Sans', sans-serif;
         font-weight:normal;
     }
@@ -18,7 +18,7 @@
     .earnings-after-course_explanation-text .rich-text p{
         color: $black;
         font-weight:normal;
-        font-size: 24px;
+        font-size: 18px;
         font-family: 'Nunito Sans', sans-serif;
         font-weight:normal;
     }
@@ -34,13 +34,13 @@
     .earnings-after-course_section-block h3{
         color: $black;
         font-weight:normal;
-        font-size: 24px;
+        font-size: 16px;
         font-family: 'Nunito Sans', sans-serif;
     }
     .earnings-after-course-stat-salary{
         color: $black;
         font-weight:normal;
-        font-size: 24px;
+        font-size: 18px;
         font-family: 'Nunito Sans', sans-serif;
     }
     .earnings-after-course-stat-salary-range{
@@ -177,16 +177,14 @@
 }
 
 
-
-
 @media only screen and (min-width: 770px) {
 
     .earnings-after-course__block {
-        .earnings-after-course__stats-heading, .earnings-after-course__stats-heading .rich-text p{
-            @include s-heading-mixin();
+
+        .earnings-after-course__stats-heading, .earnings-after-course__stats-heading.rich-text p {
             color: $black;
             font-weight:normal;
-            font-size: 24px!important;
+            font-size: 24px;
             font-family: 'Nunito Sans', sans-serif;
         }
 

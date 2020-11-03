@@ -4,11 +4,11 @@
 .course-detail__compare-btn {
     @include small-font--bold-mixin();
     padding: 5px 10px;
-    border: 1.5px solid $ux-grey-3;
-    color: #fdfafa;
+    border: 1.5px solid #266969;
+    color: #266969!important;
     border-radius: 16px;
     cursor: pointer;
-    background-image: linear-gradient(to right, #368382 0%, #42957f 64%, #4fa37e 100%);
+    background: white;
 
     .remove {
         display: none;
@@ -18,7 +18,7 @@
         @include green-gradient-background-mixin();
 
         border: 1.5px solid $gradient-light-green;
-
+        color: white!important;
         .add {
             display: none;
         }
@@ -153,8 +153,7 @@
         border:none!important;
     }
     background-color: #2a8384!important;
-    width: 100vw;
-
+  
     .navbar .collapse {
         visibility: hidden;
         display: block;

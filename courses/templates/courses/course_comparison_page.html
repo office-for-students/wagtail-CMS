@@ -31,9 +31,22 @@
 {% endblock %}
 
 {% block content %}
-    <div class="comparison">
-        <div class="row">
-            <div class="col-8 pl-lg-4 pl-sm-2 overflow-visible pr-0">
+    <div class="d-block d-sm-none comparison__xs-rotate mb-sm-4 course-comparison-body">
+        <div class="mx-auto p-4">
+            <div class="row my-3">
+                <div class="mx-auto">
+                    <i class="fas fa-mobile-alt fa-5x align-text-bottom mx-3"></i>
+                    <i class="fas fa-sync-alt fa-5x align-text-bottom mx-3"></i>
+                    <i class="fas fa-mobile-alt fa-rotate-90 fa-5x align-text-bottom mx-4"></i>
+                </div>
+                
+            </div>
+            <h3 class="text-center">Please rotate your device to landscape to view this page</h3>
+        </div>
+    </div>
+    <div class="comparison d-none d-sm-block mb-5">
+        <div class="row mx-0">
+            <div class="col-8 pl-4 overflow-visible pr-0">
                 <div class="comparison__overview">
                     <h1 class="">
                         <span class="count"></span> {{page.heading}} {{page.lead}}

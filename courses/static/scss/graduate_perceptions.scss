@@ -34,6 +34,25 @@
     text-align: center;
 }
 
+.student-satisfaction__chart .graduate-perceptions__chart-title{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size:14px;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 14px;
+    font-weight: normal;
+    color:$black;
+}
+.graduate-perceptions__bar-chart-label{
+    line-height: 100%;
+    color: #000000;
+    font-family: "Nunito Sans", sans-serif;
+    display: block;
+    margin-top: 7px;
+    font-weight: normal;
+    font-size: 14px;
+}
+
 @media only screen and (min-width: 770px) {
     .discover-uni-container {
         .graduate_perceptions__block {
@@ -41,7 +60,7 @@
             .graduate_perceptions__heading {
                 @include m-heading-mixin();
 
-                color: $ux-grey-2;
+                color: $brownish-grey;
             }
 
             .graduate_perceptions__body {
@@ -53,9 +72,19 @@
     }
     .student-satisfaction__chart .rich-text p{
         font-size:18px;
-        color:$black;
+        color:$brownish-grey;
         font-weight:normal;
         font-family: 'Nunito Sans', sans-serif;
         text-align: center;
     }
+
+    
+    .student-satisfaction__chart .graduate-perceptions__chart-title{
+        font-size: 18px;
+        font-weight: normal;
+        color: $black;
+        margin-left:0.5rem;
+        margin-right:0.5rem;
+    }
+    
 }

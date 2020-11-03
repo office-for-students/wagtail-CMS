@@ -9,6 +9,10 @@ from CMS.enums import enums
 from CMS.translations import DICT
 from core.utils import get_current_version, get_code_version
 
+from django.utils.safestring import mark_safe
+from wagtail.core.rich_text import RichText, expand_db_html
+
+
 from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, ACCREDITATION_KEY,\
     EARNINGS_AFTER_COURSE_KEY, EMPLOYMENT_AFTER_COURSE_KEY, GRADUATE_PERCEPTIONS_KEY, LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
 
@@ -177,3 +181,12 @@ def concat(*args, **_):
     for arg in args:
         concat_string += str(arg)
     return concat_string
+
+# @register.simple_tag
+# def get_prov_pc_verb(value, data_source):
+#     value2 = value.deepcopy()
+#     if data_source == "go":
+#         value2.source = value2.source.replace("based", "fish")
+#     else:
+#         value2.source = value2.source.replace("employed", "based")
+#     return value2

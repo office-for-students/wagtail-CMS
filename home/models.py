@@ -2,6 +2,7 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from django.db.models.fields import TextField
+from institutions.models import InstitutionList
 
 from core.models import DiscoverUniBasePage
 import json
@@ -69,12 +70,8 @@ class HomePage(DiscoverUniBasePage):
         context['load_error'] = request.GET.get('load_error', '')
         context['error_type'] = request.GET.get('error_type', '')
 
-        # Add list of institutions to the context.
-        context['institutions_list'] = []
-        with open("./CMS/static/jsonfiles/institutions.json", "r") as f:
-            institutions = f.read()
-        context['institutions_list'] = json.loads(institutions)
-            
+        context['institutions_list'] = InstitutionList.get_options()[self.get_language()]
+       
         return context
 
 

@@ -1,4 +1,5 @@
 {% load staticfiles discover_uni_tags %}
+{% load humanize %}
 
 {% get_course_name course page.is_english as course_name %}
 {% map_distance_learning_values course.distance_learning page.get_language as distance_learning_display %}
@@ -11,17 +12,22 @@
      data-sandwich-en="{% get_translation key=course.sandwich_year language='en' %}" data-sandwich-cy="{% get_translation key=course.sandwich_year language='cy' %}"
      data-distance-en="{% map_distance_learning_values course.distance_learning 'en' %}" data-distance-cy="{% map_distance_learning_values course.distance_learning 'cy' %}"
      data-abroad-en="{% get_translation key=course.year_abroad language='en' %}" data-abroad-cy="{% get_translation key=course.year_abroad language='cy' %}">
-     <button class="course-detail__compare-btn">
-        <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
-        <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
-         {% get_translation key='bookmark_course' language=page.get_language %}
-    </button>
+    
+     <div class="mb-3">
+        <button class="course-detail__compare-btn">
+            <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
+            <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
+             {% get_translation key='bookmark_course' language=page.get_language %}
+        </button>
+     </div>
+    
+
      <a href="{% if page.is_welsh %}/cy{% endif %}/course-details/{{institution_id}}/{{course.kis_course_id}}/{{course.mode}}"
        class="course-finder-results__result-accordion-body-course-name">
         {{ course_name }}
     </a>
 
-   
+
 
     {% if course.length_of_course == "" or course.length_of_course == None %}
         <p class="course-finder-results__result-accordion-body-course-info">
@@ -29,13 +35,18 @@
         </p>
     {% else %}
         <p class="course-finder-results__result-accordion-body-course-info">
-            {{ course.length_of_course|slice:1 }}-{% get_translation key='year_course' language=page.get_language %}
+            {{ course.length_of_course | slice:1 }}-{% get_translation key='year_course' language=page.get_language %}
         </p>
     {% endif %}
 
     <p class="course-finder-results__result-accordion-body-course-info">
-        {% get_translation key='study_mode' language=page.get_language %}:
-        {% get_translation key='course.mode' language=page.get_language %}
+        {% get_translation key='study_mode' language=page.get_language %}: 
+        {% if course.mode == 'Both' %}
+            {% get_translation key='full_time' language=page.get_language %}
+            {% get_translation key='part_time' language=page.get_language %}
+        {% else %}
+            {% get_translation key=course.mode language=page.get_language %}
+        {% endif %}
     </p>
 
     <p class="course-finder-results__result-accordion-body-course-info">

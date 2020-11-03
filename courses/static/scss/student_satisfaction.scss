@@ -118,7 +118,7 @@
 
   .student-satisfaction__data-group {
     margin-top: 24px;
-    margin-bottom: 23px;
+    margin-bottom: 5px;
     background-color: $divider-grey;
     padding: 10px;
 
@@ -186,6 +186,7 @@
             margin-top: 14px;
             font-weight: normal;
             color: #666666;
+            
           }
           .rich-text p{
             font-family: "Nunito Sans", sans-serif;
@@ -195,6 +196,23 @@
     }
   }
 }
+
+.student-satisfaction__scrolling-wrapper-arrow{
+    font-family: "Nunito Sans", sans-serif;
+    color: #4a4a4a;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: center;
+
+    hr{
+      border: none; 
+      height: 5px; 
+      background: #368382; 
+      width:25vw;
+      margin-top:0;
+      margin-bottom:0;
+    }
+} 
 
 @media only screen and (min-width: 770px) {
   .student-satisfaction__overview #sample-size-text {
@@ -206,6 +224,7 @@
       font-size: 16px;
       font-weight: normal;
       color: $brownish-grey;
+      text-align: left;
     }
 
     .rich-text {
@@ -333,6 +352,8 @@
               font-size: 18px;
               font-weight: normal;
               color: #666666;
+              margin-left:0.5rem;
+              margin-right:0.5rem;
             }
           }
         }

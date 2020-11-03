@@ -1,6 +1,17 @@
 @import '../../../CMS/static/scss/fonts';
 @import '../../../CMS/static/scss/variables';
 
+.rich-text{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    color: $brownish-grey;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height:normal;
+   
+    
+}
+
 .one-year__block, .one-year__lead-block {
 
     p{
@@ -10,6 +21,7 @@
         font-weight: normal;
         letter-spacing: normal;
         line-height:normal;
+        
     }
     .rich-text{
         font-family: 'Nunito Sans', sans-serif;
@@ -134,6 +146,16 @@
 }
 
 @media only screen and (min-width: 770px) {
+    .rich-text{
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 16px;
+        color: $brownish-grey;
+        font-weight: normal;
+        letter-spacing: normal;
+        line-height:normal;
+        text-align:left;
+    }
+
     .one-year__block .one-year__qualification-charts .one-year__chart .one-year-block__chart-label, .one-year__lead-block .one-year__qualification-charts .one-year__chart .one-year-block__chart-label {
         font-size:18px;
     }

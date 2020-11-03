@@ -26,15 +26,14 @@
         color:white;
         font-weight:bold;
         font-size:1.5rem;
+        overflow: hidden;
     }
     .home-page__intro-panel{
         color:$black;
         font-weight:bold;
         font-size:1.2rem;
-        margin-top:2rem;
-        margin-left:1rem;
-        margin-right:1rem;
-        padding:1rem;
+        margin-top:1rem;
+        
     
         .col-lg-1{
             padding:0;
@@ -103,7 +102,7 @@
         }
 
         .home-page__bookmark-circle{
-            font-size:1.1rem;
+            font-size:1rem;
             background-color: #fcd835;
             border-radius: 50%;
             display: inline-block;
@@ -134,8 +133,6 @@
     .home-page__body-panel{
         margin-top:2rem;
         margin-bottom:1rem;
-        margin-left:1rem;
-        margin-right:1rem;
         background-color: $white;
 
         .row{
@@ -247,7 +244,7 @@
             }
 
             .home-page__bookmark-circle{
-                font-size:1.5rem;
+                font-size:1.4rem;
                 background-color: #fcd835;
                 border-radius: 50%;
                 display: inline-block;
@@ -287,5 +284,42 @@
     }
     .dash-vertical-right{
         border-right: 2px dashed #a8a8a8; 
+    }
+}
+
+
+
+@media only screen and (max-width: 575px){
+    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel{
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 576px) and (max-width: 766px){
+    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel{
+        width: 540px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 767px) and (max-width: 991px){
+    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel{
+        width: 720px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel{
+        width: 960px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 1200px){
+    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel{
+        width: 1140px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
     }
 }

@@ -15,10 +15,9 @@
 <hr class="nav-tabs-hr"/>
 {% endif %}
 
-<div class="tab-content">
+<div class="tab-content mb-4">
 {% for overall_stats in course_details.overall_satisfaction %}
     <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="student-satisfaction-{{ forloop.counter }}" role="tabpanel" aria-labelledby="student-satisfaction-{{ forloop.counter }}-tab">
-
 
     {% if overall_stats.satisfaction_stats.question_27.show_data_point %}
         <div class="student-satisfaction__overview mt-3 p-2 d-flex flex-wrap row mx-1">
@@ -41,11 +40,13 @@
     {% endif %}
 
     <div class="student-satisfaction__block">
-
+        <div class="mt-3">
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.display_unavailable_info %}
+        </div>
         <div class="scrolling-wrapper scroll">
         {% if overall_stats.satisfaction_stats.show_satisfaction_stats %}
             {% if overall_stats.satisfaction_stats.show_teaching_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 px-1 mx-1 scroll_item">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                     <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
                             {{block.value.teaching_stats_header }}
@@ -724,9 +725,9 @@
             {% endif %}
         {% endif %}
 
-        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.display_unavailable_info %}
-
         {% if overall_stats.nhs_satisfaction_stats %}
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
+    
             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
                 <div class="col-lg-4 col-md-12 my-auto pt-3 text-left" >
                     <h2 class="student-satisfaction__data-group-heading text-left">
@@ -871,14 +872,19 @@
 
             {% if overall_stats.nhs_satisfaction_stats.show_nhs_stats %}
                 <div class="explanation-text">
-                    {% create_list overall_stats.nhs_satisfaction_stats.number_of_students overall_stats.nhs_satisfaction_stats.response_rate as substitutions %}
+                    {% create_list course_details.data_from_html overall_stats.nhs_satisfaction_stats.number_of_students overall_stats.nhs_satisfaction_stats.response_rate as substitutions %}
                     {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                     {{ subbed_text | richtext }}
                 </div>
             {%  endif %}
 
-            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
         {% endif %}
+        </div>
+        <div class="mt-2 d-block d-md-none student-satisfaction__scrolling-wrapper-arrow">
+            <div class="mx-auto">
+                <h6 class="mx-auto">Scroll to the right &nbsp;<i class="fas fa-arrow-right fa-align-center text-center"></i></h6>
+            </div>
+            <hr class="mx-auto"/>
         </div>
     </div>
 </div>

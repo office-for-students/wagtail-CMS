@@ -200,7 +200,7 @@ DICT = {
         'cy': 'cymharu cyrsiau'
     },
     'completed_course': {
-        'en': 'Have completed the course',
+        'en': 'Have completed their studies',
         'cy': "Wedi cwblhau'r cwrs"
     },
     'Conservation associate professionals': {
@@ -671,7 +671,7 @@ DICT = {
     },
     'no_qualifications': {
         'en': 'No / unknown prior qualifications',
-        'cy': 'Dim cymwysterau blaenorol/cymwysterau anhysbys'
+        'cy': 'Dim cymwysterau blaenorol / cymwysterau anhysbys'
     },
     'no_results_found': {
         'en': 'No results found',
@@ -867,7 +867,7 @@ DICT = {
         'cy': 'Chwilio'
     },
     'search_again': {
-        'en': 'Search again', 
+        'en': 'Search again',
         'cy': 'Chwilio eto'
     },
     'back_to_results': {
@@ -967,8 +967,8 @@ DICT = {
         'cy': 'Dechrau'
     },
     'still_on_course': {
-        'en': 'Are still on the course',
-        'cy': 'Yn dal ar y cwrs '
+        'en': 'Are still studying',
+        'cy': 'Yn dal i astudio'
     },
     'student_unions': {
         'en': 'Student Unions',
@@ -1208,7 +1208,7 @@ DICT = {
     },
     'I have received sufficient advice and guidance in relation to my course': {
         'en': 'I have received sufficient advice and guidance in relation to my course',
-        'cy': 'Rydw i wedi cael digon o gyngor ac arweiniad mewn perthynas â fy nghwrs'
+        'cy': "Rydw i wedi cael digon o gyngor ac arweiniad mewn perthynas â'm cwrs"
     },
     'Good advice was available when I needed to make study choices on my course': {
         'en': 'Good advice was available when I needed to make study choices on my course',
@@ -1224,7 +1224,7 @@ DICT = {
     },
     'Any changes in the course or teaching have been communicated effectively': {
         'en': 'Any changes in the course or teaching have been communicated effectively',
-        'cy': "Mae unrhyw newidiadau o ran y cwrs neu'r addysgu wedi cael eu cyfathrebu'n effeithiol"
+        'cy': "Cafwyd cyfathrebu effeithiol ynghylch unrhyw newidiadau o ran y cwrs neu'r addysgu"
     },
     'The IT resources and facilities provided have supported my learning well': {
         'en': 'The IT resources and facilities provided have supported my learning well',
@@ -1244,7 +1244,7 @@ DICT = {
     },
     'I have had the right opportunities to work with other students as part of my course': {
         'en': 'I have had the right opportunities to work with other students as part of my course',
-        'cy': 'Rydw i wedi cael cyfleoedd priodol i weithio gyda myfyrwyr eraill fel rhan o fy nghwrs'
+        'cy': "Rydw i wedi cael cyfleoedd priodol i weithio gyda myfyrwyr eraill fel rhan o'm cwrs"
     },
     'I have had the right opportunities to provide feedback on my course': {
         'en': 'I have had the right opportunities to provide feedback on my course',
@@ -1311,8 +1311,8 @@ DICT = {
         'cy': 'cyfran y myfyrwyr a ymatebodd a oedd yn cytuno â’r datganiad “Rwy’n fodlon ag ansawdd y cwrs ar y cyfan”'
     },
     'student_satisfaction_course_overview_3': {
-        'en': 'Go to student satisfaction',
-        'cy': 'Mwy am fodlonrwydd myfyrwyr'
+        'en': 'Go to Student Satisfaction',
+        'cy': "Ewch i’r adran Bodlonrwydd Myfyrwyr"
     },
     'average_earnings_course_overview_1': {
         'en': 'Average Earnings',
@@ -1327,8 +1327,8 @@ DICT = {
         'cy': '3 blynedd ar ôl y cwrs'
     },
     'average_earnings_course_overview_3': {
-        'en': 'Go to earnings',
-        'cy': 'Mwy am enillion'
+        'en': 'Go to Earnings',
+        'cy': "Ewch i’r adran Enillion"
     },
     'employment_course_overview_1': {
         'en': 'Employment',
@@ -1339,19 +1339,19 @@ DICT = {
         'cy': 'yn symud ymlaen i weithio ac/neu astudio o fewn 15 mis ar ôl y cwrs'
     },
     'employment_course_overview_3': {
-        'en': 'Go to employment',
-        'cy': 'Mwy am gyflogaeth'
+        'en': 'Go to Employment',
+        'cy': "Ewch i’r adran Cyflogaeth"
     },
     'entrance_data_need_to_know': {
         'en': 'What you need to know about entry data',
         'cy': 'Yr hyn y mae angen ichi wybod am ddata mynediad'
     },
     'entrance_data_quals_students_had': {
-        'en': 'These are the qualifications students had when they were accepted onto this course. This is not a list of qualifications a person needs to have to be accepted onto this course.',
-        'cy': 'Dyma''r cymwysterau a oedd gan fyfyrwyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon.'
+        'en': 'These are the qualifications students had when they were accepted onto this course. This is not a list of qualifications a person needs to have to be accepted onto this course',
+        'cy': "Dyma'r cymwysterau a oedd gan fyfyrwyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon"
     },
     'entrance_data_read_more': {
-        'en': 'Read more about entrance data',
+        'en': 'Read more about entry data',
         'cy': 'Darllen mwy am ddata mynediad'
     },
     'after_1_year_overview_1': {
@@ -1375,8 +1375,16 @@ DICT = {
         'cy': 'y DU'
     },
     'data_from_html': {
+        'en': '<div class="d-inline d-md-none" ><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline text-left">Data from</div>',
+        'cy': '<div class="d-inline d-md-none"><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline text-left">Data gan</div>'
+    },
+    'data_from_html_average_earnings_year_range': {
         'en': '<div class="d-inline d-md-none" ><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data from</div>',
-        'cy': '<div class="d-inline d-md-none"><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data gan</div>'
+        'cy': '<div class="d-inline d-md-none"><i class="fas fa-user-alt "></i></div><div id="sample-size-text" class="d-none d-md-inline">Data o</div>'
+    },
+    'average_earnings_year_range': {
+        'en': 'students graduating during',
+        'cy': 'fyfyrwyr a raddiodd yn ystod'
     },
     'entry_overview_2': {
         'en': 'students',
@@ -1391,11 +1399,11 @@ DICT = {
         'cy': 'Darllen mwy am achrediad proffesiynol'
     },
      'accreditation_description': {
-        'en': 'A professionally accredited course is one which has been approved or endorsed by one or more professional bodies. This is because the learning and achievement of graduates meets the professional benchmarks and standards set by the accrediting body.',
-        'cy': 'Cwrs wedi''i achredu''n broffesiynol yw cwrs sydd wedi''i gymeradwyo neu ei ategu gan un neu fwy o gyrff proffesiynol. Mae hyn oherwydd bod dysg a chyflawniad graddedigion yn bodloni''r meincnodau a''r safonau proffesiynol a osodir gan y corff achredu.'
+        'en': "A professionally accredited course is one which has been approved or endorsed by one or more professional bodies. This is because the learning and achievement of graduates meets the professional benchmarks and standards set by the accrediting body.",
+        'cy': "Cwrs wedi'i achredu'n broffesiynol yw cwrs sydd wedi'i gymeradwyo neu ei ategu gan un neu fwy o gyrff proffesiynol. Mae hyn oherwydd bod dysg a chyflawniad graddedigion yn bodloni'r meincnodau a'r safonau proffesiynol a osodir gan y corff achredu."
     },
      'accreditation_need_to_know': {
-        'en': 'What you need to know about professional accreditation.',
+        'en': 'What you need to know about professional accreditation',
         'cy': 'Yr hyn y mae angen i chi ei wybod am achrediad proffesiynol'
     },
      'highly_skilled': {
@@ -1518,5 +1526,33 @@ DICT = {
         'en': 'There are no professional accreditations recorded',
         'cy': "Nid oes unrhyw achrediadau proffesiynol wedi'u cofnodi"
     },
-   
+    'summary_med_sal_text_1': {
+        'en': 'after the course for',
+        'cy': "ar ôl y cwrs i raddedigion"
+    },
+    'summary_med_sal_text_2': {
+        'en': 'graduates at',
+        'cy': "yn"
+    },
+    'how_to_search_for_course':{
+        'en': "How to search for courses",
+        'cy': "Sut i chwilio am gyrsiau"
+    },
+    'accreditation_link_url':{
+        'en': "https://discoveruni.gov.uk/how-do-i-choose-course/employment-prospects/#professional_accreditation",
+        'cy': "https://discoveruni.gov.uk/cy/how-choose-course-cy/rhagolygon-cyflogaeth-employment-prospects/#achrediad_proffesiynol"
+    },
+    'course_level_msg':{
+        'en': "Please note: the following information does not contain any data for first degrees (such as BA, BSc, or Integrated Masters). Instead it is displaying information for other undergraduate qualifications – this includes CertHE, DipHE and FD among others",
+        'cy': "Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill"
+    },
+    'subject_at_least_two': {
+        'en': 'Subject (please select from at least two of the boxes below)',
+        'cy': "Pwnc (dewiswch o ddau neu fwy o'r blychau isod, os gwelwch yn dda)"
+    },
+    'employment_type_unknown': {
+        'en': 'Percentage of those employed after finishing the course but employment type is not known',
+        'cy': "Canran y rhai a gyflogir ar ôl gorffen y cwrs ond nad ydym yn gwybod pa fath o swydd sydd ganddynt"
+    },
+
 }

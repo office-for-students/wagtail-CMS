@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from CMS.enums import enums
 from CMS.translations import DICT
-from core.utils import get_page_for_language
+from core.utils import get_page_for_language, get_new_landing_page_for_language
 
 from courses.models import CourseDetailPage, Course, CourseComparisonPage, CourseManagePage
 from site_search.models import SearchLandingPage
@@ -18,8 +18,8 @@ def regional_earnings(request):
         course_id = request.POST['course_id']
         kis_mode = request.POST['kis_mode']
         subject_code = request.POST['subject_code']
-        course, error = Course.find(institution_id, course_id, kis_mode, language=enums.languages.ENGLISH)
         language = request.POST['language']
+        course, error = Course.find(institution_id, course_id, kis_mode, language)
 
         with open("./CMS/static/jsonfiles/regions.json", "r") as f:
             regions = f.read()
@@ -40,10 +40,21 @@ def regional_earnings(request):
         def format_thousands(earnings):
             return f'{int(earnings):,}'
 
+        if language == 'cy':
+            # inst_prov_pc_delimiter_go = "wedi'u cyflogi yn"
+            inst_prov_pc_delimiter_go = "wedi'u lleoli yn"
+            inst_prov_pc_delimiter_leo = "wedi'u lleoli yn"
+            inst_prov_pc_prefix = "Mae "
+        else:
+            # inst_prov_pc_delimiter_go = "are employed in"
+            inst_prov_pc_delimiter_go = "are based in"
+            inst_prov_pc_delimiter_leo = "are based in"
+            inst_prov_pc_prefix = ""
+
         salaries_aggregate = [element for element in course.salary_aggregates if element.subject_code == subject_code][0]
 
-        unavail_msgs_go = salaries_aggregate.aggregated_salaries_sector[0].display_unavailable_info()
-        unavail_msgs_leo = salaries_aggregate.aggregated_salaries_sector[1].display_unavailable_info()
+        unavail_msgs_go = salaries_aggregate.aggregated_salaries_sector[0].display_unavailable_info(language)
+        unavail_msgs_leo = salaries_aggregate.aggregated_salaries_sector[1].display_unavailable_info(language)
         salary_sector_15_unavail_text = ""
         salary_sector_3_unavail_text = ""
         salary_sector_5_unavail_text = ""
@@ -65,20 +76,33 @@ def regional_earnings(request):
             elif region not in ('_uk', '_e', '_s', '_w', '_ni'):
                 salary_sector_15_unavail_text = unavailable_region_not_nation
 
-            salary_sector_15_med = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region))
-            salary_sector_15_lq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "lq" + region))
-            salary_sector_15_uq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "uq" + region))
-            salary_sector_15_pop = getattr(salaries_aggregate.aggregated_salaries_sector[0], "pop" + region)
-            salary_sector_15_resp = getattr(salaries_aggregate.aggregated_salaries_sector[0], "resp" + region)
-            inst_prov_pc_go = getattr(salaries_aggregate.aggregated_salaries_inst[0], 'prov_pc' + region)
+            med = getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region, None)
+            if med is not None and med != "NA":
+                salary_sector_15_med = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region))
+                salary_sector_15_lq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "lq" + region))
+                salary_sector_15_uq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "uq" + region))
+                salary_sector_15_pop = getattr(salaries_aggregate.aggregated_salaries_sector[0], "pop" + region)
+                inst_prov_pc_go = getattr(salaries_aggregate.aggregated_salaries_inst[0], 'prov_pc' + region)
+            else:
+                salary_sector_15_unavail_text = unavailable_region_not_exists
+                salary_sector_15_med = None
+                salary_sector_15_lq = None
+                salary_sector_15_uq = None
+                salary_sector_15_pop = None
+                inst_prov_pc_go = None
         else:
-            salary_sector_15_unavail_text = unavailable_region_not_nation
+            if region in ('_uk', '_e', '_s', '_w', '_ni'):
+                salary_sector_15_unavail_text = unavailable_region_not_exists
+            else:
+                salary_sector_15_unavail_text = unavailable_region_not_nation
             salary_sector_15_med = None
             salary_sector_15_lq = None
             salary_sector_15_uq = None
             salary_sector_15_pop = None
-            salary_sector_15_resp = None
             inst_prov_pc_go = None
+
+        if not inst_prov_pc_go:
+            inst_prov_pc_go = 0
 
         attr = getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region, None)
         if attr is not None:
@@ -87,18 +111,33 @@ def regional_earnings(request):
             elif region == '_ni':
                 salary_sector_3_unavail_text = unavailable_region_is_ni
 
-            salary_sector_3_med = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region))
-            salary_sector_3_lq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "lq" + region))
-            salary_sector_3_uq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "uq" + region))
-            salary_sector_3_pop = getattr(salaries_aggregate.aggregated_salaries_sector[1], "pop" + region)
-            inst_prov_pc_leo3 = getattr(salaries_aggregate.aggregated_salaries_inst[1], 'prov_pc' + region)
+            med = getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region)
+            if med is not None and med != "NA":
+                salary_sector_3_med = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region))
+                salary_sector_3_lq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "lq" + region))
+                salary_sector_3_uq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "uq" + region))
+                salary_sector_3_pop = getattr(salaries_aggregate.aggregated_salaries_sector[1], "pop" + region)
+                inst_prov_pc_leo3 = getattr(salaries_aggregate.aggregated_salaries_inst[1], 'prov_pc' + region)
+            else:
+                salary_sector_3_unavail_text = unavailable_region_not_exists
+                salary_sector_3_med = None
+                salary_sector_3_lq = None
+                salary_sector_3_uq = None
+                salary_sector_3_pop = None
+                inst_prov_pc_leo3 = None
         else:
-            salary_sector_3_unavail_text = unavailable_region_is_ni
+            if region == "_ni":
+                salary_sector_3_unavail_text = unavailable_region_is_ni
+            else:
+                salary_sector_3_unavail_text = unavailable_region_not_exists
             salary_sector_3_med = None
             salary_sector_3_lq = None
             salary_sector_3_uq = None
             salary_sector_3_pop = None
             inst_prov_pc_leo3 = None
+
+        if (not inst_prov_pc_leo3 or inst_prov_pc_leo3 == '') and (inst_prov_pc_go != ''):
+            inst_prov_pc_leo3 = inst_prov_pc_go
 
         attr = getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region, None)
         if attr is not None:
@@ -107,19 +146,33 @@ def regional_earnings(request):
             elif region == '_ni':
                 salary_sector_5_unavail_text = unavailable_region_is_ni
 
-            salary_sector_5_med = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region))
-            salary_sector_5_lq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "lq" + region))
-            salary_sector_5_uq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "uq" + region))
-            salary_sector_5_pop = getattr(salaries_aggregate.aggregated_salaries_sector[2], "pop" + region)
-            inst_prov_pc_leo5 = getattr(salaries_aggregate.aggregated_salaries_inst[2], 'prov_pc' + region)
+            med = getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region)
+            if med is not None and med != "NA":
+                salary_sector_5_med = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region))
+                salary_sector_5_lq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "lq" + region))
+                salary_sector_5_uq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "uq" + region))
+                salary_sector_5_pop = getattr(salaries_aggregate.aggregated_salaries_sector[2], "pop" + region)
+                inst_prov_pc_leo5 = getattr(salaries_aggregate.aggregated_salaries_inst[2], 'prov_pc' + region)
+            else:
+                salary_sector_5_unavail_text = unavailable_region_not_exists
+                salary_sector_5_med = None
+                salary_sector_5_lq = None
+                salary_sector_5_uq = None
+                salary_sector_5_pop = None
+                inst_prov_pc_leo5 = None
         else:
-            salary_sector_5_unavail_text = unavailable_region_is_ni
+            if region == "_ni":
+                salary_sector_5_unavail_text = unavailable_region_is_ni
+            else:
+                salary_sector_5_unavail_text = unavailable_region_not_exists
             salary_sector_5_med = None
             salary_sector_5_lq = None
             salary_sector_5_uq = None
             salary_sector_5_pop = None
             inst_prov_pc_leo5 = None
 
+        if (not inst_prov_pc_leo5 or inst_prov_pc_leo5 == '') and (inst_prov_pc_leo3 != ''):
+            inst_prov_pc_leo5 = inst_prov_pc_leo3
 
         resp = {
             'typical_range_text': DICT.get('Typical range').get(language),
@@ -133,7 +186,6 @@ def regional_earnings(request):
             'salary_sector_15_lq': salary_sector_15_lq,
             'salary_sector_15_uq': salary_sector_15_uq,
             'salary_sector_15_pop': salary_sector_15_pop,
-            'salary_sector_15_resp': salary_sector_15_resp,
             'salary_sector_15_unavail_text': salary_sector_15_unavail_text,
 
             'salary_sector_3_med': salary_sector_3_med,
@@ -151,6 +203,9 @@ def regional_earnings(request):
             'inst_prov_pc_go': inst_prov_pc_go,
             'inst_prov_pc_leo3': inst_prov_pc_leo3,
             'inst_prov_pc_leo5': inst_prov_pc_leo5,
+            'inst_prov_pc_delimiter_go': inst_prov_pc_delimiter_go,
+            'inst_prov_pc_delimiter_leo': inst_prov_pc_delimiter_leo,
+            'inst_prov_pc_prefix': inst_prov_pc_prefix
         }
         return JsonResponse(resp)
     else:
@@ -160,7 +215,8 @@ def regional_earnings(request):
 def courses_detail(request, institution_id, course_id, kis_mode, language=enums.languages.ENGLISH):
     course, error = Course.find(institution_id, course_id, kis_mode, language)
     if error:
-        redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        redirect_page = get_new_landing_page_for_language(language)
+        #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
         return redirect(redirect_page + '?load_error=true&error_type=0')
 
     page = get_page_for_language(language, CourseDetailPage.objects.all())
@@ -210,7 +266,8 @@ def compare_courses(request, language=enums.languages.ENGLISH):
         course2, error2 = Course.find(course2_params[0], course2_params[1], course2_params[2], language)
 
     if error1 or error2:
-        redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        redirect_page = get_new_landing_page_for_language(language)
+        #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
         return redirect(redirect_page + '?load_error=true&error_type=0')
 
     if not page:

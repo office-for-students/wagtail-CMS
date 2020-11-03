@@ -28,15 +28,16 @@
 {% block content %}
 
 <div class="course-finder__header">
-
-    <div class="row mx-0">
-        <div class="col-9 overflow-visible pr-0">
-            <div class="course-finder__intro-title pt-4 pl-md-4 pl-sm-2 ">
-                <h1>{% get_translation key='search_results' language=page.get_language %}</h1>
+    <div class="course-finder__header-content">
+        <div class="row mx-0">
+            <div class="col-9 overflow-visible pr-0">
+                <div class="course-finder__intro-title pt-4 ">
+                    <h1>{% get_translation key='search_results' language=page.get_language %}</h1>
+                </div>
             </div>
-        </div>
-        <div class="col-3 p-0 text-right">
-            <img class="home-page__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
+            <div class="col-3 p-0 text-right">
+                <img class="home-page__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
+            </div>
         </div>
     </div>
 
@@ -88,7 +89,7 @@
 </div>
 <div class="course-finder-base course-finder-results">
     <div class="">
-        <div class="course-finder-base__nav row">
+        <div class="course-finder-base__nav row mx-0">
             <div class="col-8 text-left">
                 {% create_list search.total_courses search.total_institutions as substitutions %}
                 {% autoescape off %}
@@ -96,7 +97,7 @@
                 {% endautoescape %}
             </div>
             <div class="col-4 text-right">
-                <p  class="filters-block__filter-uni-controls-clear">
+                <p id="clear-filters" class="filters-block__filter-uni-controls-clear">
                 {% get_translation key='clear_filters' language=page.get_language %}
                 </p>
             </div>
@@ -114,7 +115,7 @@
     </div>
     <div class="course-finder__course-wizard col-12 text-center mb-4 mt-3">
         <h5 class="text-center">{% get_translation key='not_found_looking' language=page.get_language %}</h5>
-        <h6 class="pt-2 text-center">{% get_translation key='try_course_wizard' language=page.get_language %}</h6>
+        <h6 class="pt-2 pb-4 text-center">{% get_translation key='try_course_wizard' language=page.get_language %}</h6>
         <div class="col-12">
             <a href="{% get_translation key='course_wizard_start_now_url' language=page.get_language %}" class="mt-4 home-page__search-button justify-content-center py-2 px-5 mx-auto">{% get_translation key='search' language=page.get_language %}</a>
         </div>

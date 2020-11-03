@@ -5,7 +5,7 @@
 @import 'flat-content';
 
 .content-page {
-    padding: 50px 20px 65px;
+    padding: 35px 20px 65px;
     
     background-image: url('/static/images/user-nav-background.png');
     background-position: right top;
@@ -13,10 +13,11 @@
     &__header {
         @include m-heading--bold-mixin();
 
-        margin: 0;
-        margin-bottom: 28px;
 
+        margin-left: 0;
+        margin-bottom: 28px;
         color: $ux-grey-3;
+        margin-top:1rem;
     }
 
     &__intro {
@@ -37,15 +38,16 @@
 
 @media only screen and (min-width: 770px) {
     .content-page {
-        padding: 75px 0px 132px;
+        padding: 45px 40px 132px;
 
         &__header {
             @include l-heading--bold-mixin();
 
-            margin: 0;
-
+            margin-left: 0;
+            margin-bottom: 28px;
             line-height: 65px;
             color: $ux-grey-3;
+            margin-top:2rem!important;
         }
 
         &__intro {
@@ -54,5 +56,40 @@
             margin-bottom: 30px;
             line-height: 26px;
         }
+    }
+}
+
+@media only screen and (max-width: 575px){
+    div.content-landing-page__content{
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 576px) and (max-width: 766px){
+    div.content-landing-page__content{
+        width: 540px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 767px) and (max-width: 991px){
+    div.content-landing-page__content{
+        width: 720px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    div.content-landing-page__content{
+        width: 960px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 1200px){
+    div.content-landing-page__content{
+        width: 1140px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
     }
 }

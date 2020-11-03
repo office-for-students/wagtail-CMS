@@ -75,18 +75,17 @@
                 })
             };
 
-            // Commenting out this block fixes the cymraeg link issue
-            // for (var i = 0; i < this.languageChgBtnList.length; i++) {
-            //     $(this.languageChgBtnList[i]).click(function(evt) {
-            //         evt.preventDefault();
-            //         that.prepSubjectQuery();
-            //         that.prepPostcodeQuery();
-            //         that.prepInstitutionQuery();
-            //         that.prepQualificationQuery();
-            //         that.form.attr('action', $(this).attr("href"));
-            //         that.form.submit();
-            //     });
-            // }
+            for (var i = 0; i < this.languageChgBtnList.length; i++) {
+                $(this.languageChgBtnList[i]).click(function(evt) {
+                    evt.preventDefault();
+                    that.prepSubjectQuery();
+                    that.prepPostcodeQuery();
+                    that.prepInstitutionQuery();
+                    that.prepQualificationQuery();
+                    that.form.attr('action', $(this).attr("href"));
+                    that.form.submit();
+                });
+            }
 
             for (var i = 0; i < this.paginationInputs.length; i++) {
                 $(this.paginationInputs[i]).click(function(evt) {
@@ -422,9 +421,54 @@
         var filters = $('.filters-wrapper');
         var toggle = $('.course-finder-results__overview-filter-toggle');
         var openBtn = $('.course-finder-results__overview-filter-open');
+
         new Filters(filters[0], toggle[0], openBtn[0]);
     }
 
     $(document).on('page:load', init);
     $(init)
+
 }(jQuery));
+
+$(document).ready(function(){
+    $('#clear-filters').click(function(){
+
+        $('#countries-england').attr('checked', false);
+        $('#countries-ireland').attr('checked', false);
+        $('#countries-scotland').attr('checked', false);
+        $('#countries-wales').attr('checked', false);
+
+        $('#mode-full-time').attr('checked', false);
+        $('#mode-part-time').attr('checked', false);
+        $('#mode-distance').attr('checked', false);
+
+        for (filter_base_name of ['placement', 'foundation', 'abroad']) {
+            $('#'+filter_base_name+'-yes').attr('checked', false);
+            $('#'+filter_base_name+'-no').attr('checked', false);
+            $('#'+filter_base_name+'-either').attr('checked', false);
+        }
+
+        $('#subjectArea').val('disabled');
+        $('#subject').val('disabled');
+        $('#subjectCode').val('default');
+
+        $('#subject_query').val('');
+        $('#postcode_field').val('');
+
+        // Post code radio buttons
+        $("#one").removeAttr("checked");
+        $("#two").removeAttr("checked");
+        $("#three").removeAttr("checked");
+
+        $('#postcode_query').val('');
+
+        $("#first_degree").removeAttr("checked");
+        $("#other_undergraduate").removeAttr("checked");
+
+        $('.filters-block__filter-uni-item-input').each(function() {
+            this.checked = false;
+        });
+
+        $('.filters-block__form').first().submit();
+    });
+});

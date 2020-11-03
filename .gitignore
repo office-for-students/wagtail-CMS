@@ -45,3 +45,5 @@ static/**
 *_auto_20*
 .vscode/launch.json
 docker-compose.pre-prod.yml
+
+*.vscode
