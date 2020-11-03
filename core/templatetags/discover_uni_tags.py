@@ -190,3 +190,7 @@ def concat(*args, **_):
 #     else:
 #         value2.source = value2.source.replace("employed", "based")
 #     return value2
+
+@register.simple_tag
+def insert_values_to_plain_text(*_, **kwargs):
+    return kwargs.get('content').format(*kwargs.get('substitutions'))

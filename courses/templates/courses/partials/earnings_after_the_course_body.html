@@ -260,12 +260,12 @@
                                                 {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course_details.english_title course_details.institution.pub_ukprn_name course_details.default_region as substitutions %}
                                             {% endif %}
 
-                                            {# get_prov_pc_verb value=block.value.respondents_live_in_explanation data_source='leo' as respondents_live_in_explanation_leo #}
-                                            {# get_prov_pc_verb value=block.value.respondents_live_in_explanation data_source='go' as respondents_live_in_explanation_go #}
+                                            {% get_translation key='prov_pc_text_template_go' language=page.get_language as prov_pc_text_template_go %}
+                                            {% get_translation key='prov_pc_text_template_leo' language=page.get_language as prov_pc_text_template_leo %}
                                             {% if salary_index == 0 %}
-                                                {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
+                                                {% insert_values_to_plain_text content=prov_pc_text_template_go substitutions=substitutions as subbed_text %}
                                             {% else %}
-                                                {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
+                                                {% insert_values_to_plain_text content=prov_pc_text_template_leo substitutions=substitutions as subbed_text %}
                                             {% endif %}
                                             {{ subbed_text | richtext }}
                                         </h4>
