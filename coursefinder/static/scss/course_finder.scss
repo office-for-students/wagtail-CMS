@@ -15,7 +15,10 @@
     background: linear-gradient(to bottom, #1F283A 40% , $white 40%); /* Standard syntax */
     padding-bottom:0;
     color:$white;
-    overflow: hidden;
+
+    .course-finder__header-content{
+        overflow: hidden;
+    }
 
     .home-page__header-bg-icon {
         height: 100px;
