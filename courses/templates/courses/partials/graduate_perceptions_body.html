@@ -120,8 +120,8 @@
                     </div>
                 </div>
             </div>
-        {% elif course_details.perceptions_stats and course_details.perceptions_stats.0.display_unavailable_info %}
-            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.perceptions_stats.0.display_unavailable_info %}
+        {% elif perceptions_stats.display_unavailable_info %}
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=perceptions_stats.display_unavailable_info %}
         {% else %}
             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
         {% endif %}

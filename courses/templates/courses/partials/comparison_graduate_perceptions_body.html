@@ -103,9 +103,9 @@
                                 </div>
                             </div>
                         </div>
-                    {% elif course.perceptions_stats and course.perceptions_stats.0.display_unavailable_info %}
+                    {% elif perceptions_stats.display_unavailable_info %}
                         <div class="mt-3">
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.perceptions_stats.0.display_unavailable_info %}
+                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=perceptions_stats.display_unavailable_info %}
                         </div>
                     {% else %}
                         <div class="mt-3">
