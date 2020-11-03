@@ -1,0 +1,600 @@
+{% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
+
+{% get_max_length course1.salary_aggregates course2.salary_aggregates as max_subject_names_length %}
+
+{% for i in max_subject_names_length|times %}
+    {% get_index i course1.salary_aggregates as course1_salary_aggregate %}
+    {% get_index i course2.salary_aggregates as course2_salary_aggregate %}
+    {% define course1_salary_aggregate.display_subject_name as course1_subject_name %}
+    {% define course2_salary_aggregate.display_subject_name as course2_subject_name %}
+
+    {% define forloop.counter0 as subject_index %}
+
+    {% if course1_subject_name or course2_subject_name %}
+
+        {# if course.show_salary_lead #}
+            <div class="earnings-after-course__lead my-3 p-1 p-xl-2 mx-1 flex-wrap">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 px-4 earnings-after-course__lead-title align-self-stretch my-auto text-lg-left text-center">
+                        <p>{{block.value.section_heading}}</p>
+                    </div>
+                    <div class="col-lg-8 col-md-12 earnings-after-course__lead-intro align-self-stretch my-auto pt-2 text-left">
+                        <p>{{block.value.intro | richtext}}</p>
+                    </div>
+                </div>
+            </div>
+        {# endif #}
+
+        <div class="one-year__block">
+            <div class="comparison__course-columns">
+            {% for course_index in '12'|make_list %}
+                {% if course_index == "1" %}
+                    {% define course1 as course %}
+                    {% define course1_subject_name as course_subject_name %}
+                    {% define course1_salary_aggregate as salary_aggregate %}
+                    {% define "l" as l_or_r %}
+                {% else %}
+                    {% define course2 as course %}
+                    {% define course2_subject_name as course_subject_name %}
+                    {% define course2_salary_aggregate as salary_aggregate %}
+                    {% define "r" as l_or_r %}
+                {% endif %}
+
+                <div class="comparison__course-column">
+                    <div class="comparison__course">
+
+                    {% if course.salary_aggregates %}
+
+                        {% if not course_subject_name == "" %}
+                            <div class="comparison__subject-header px-3 py-2 mx-1 my-2">
+                                <h1 class="pb-0 my-auto">{% get_translation key='subject' language=page.get_language %}: {{ course_subject_name }}</h1>
+                            </div>
+
+                        <div class="earnings-after-course_block mx-1 mt-2 px-4 pt-4 pb-0">
+                            <div>
+                                <h2 class="earnings-after-course__stats-heading text-left pt-3 pb-2">
+                                    {% create_list salary_aggregate.display_subject_name as substitutions %}
+                                    {% insert_values_to_rich_text content=block.value.average_earnings_inst_heading substitutions=substitutions as subbed_text %}
+                                    {{ subbed_text | richtext }}
+                                </h2>
+                                {% if course.course_level == 4 %}
+                                    <h4 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{% get_translation key='course_level_msg' language=page.get_language %}</h4>
+                                {% endif %}
+                                <div class="earnings-after-course_explanation-text pb-2">
+                                    {% create_list course.institution.pub_ukprn_name as substitutions %}
+                                    {% insert_values_to_rich_text content=block.value.institution_graduates_heading substitutions=substitutions as subbed_text %}
+                                    {{ subbed_text | richtext }}
+                                </div>
+                                <div class="discover-uni-container">
+                                    <div class="earnings-after-course-statistics d-flex row align-items-stretch">
+                                    {% for salary in salary_aggregate.aggregated_salaries_inst %}
+                                        {% get_index_of_item salary salary_aggregate.aggregated_salaries_inst as salary_index %}
+                                        <div class="earnings-after-course_section-block col-xs-12 col-lg-4 align-self-stretch mt-1 mb-0">
+                                            <h3 class="mt-3 mb-2 text-center text-lg-left">
+                                            {% if salary_index == 0 %}
+                                                {{ block.value.after_fifteen_months_earnings_heading }}
+                                            {% elif salary_index == 1 %}
+                                                {{ block.value.after_three_years_earnings_heading }}
+                                            {% elif salary_index == 2 %}
+                                                {{ block.value.after_five_years_earnings_heading }}
+                                            {% endif %}
+                                            </h3>
+                                            <div class="earnings-after-course-stat col-lg-12 p-3 pb-4">
+                                                {% if salary_index == 0 %}
+                                                    {% if salary.aggregate %}
+                                                        <div id="go_inst_avail_container_{{ salary_aggregate.subject_code }}">
+                                                    {% else %}
+                                                        <div id="go_inst_avail_container_{{ salary_aggregate.subject_code }}" style="display: none">
+                                                    {% endif %}
+                                                {% elif salary_index == 1 %}
+                                                    {% if salary.aggregate %}
+                                                        <div id="leo3_inst_avail_container_{{ salary_aggregate.subject_code }}">
+                                                    {% else %}
+                                                        <div id="leo3_inst_avail_container_{{ salary_aggregate.subject_code }}" style="display: none">
+                                                    {% endif %}
+                                                {% elif salary_index == 2 %}
+                                                    {% if salary.aggregate %}
+                                                        <div id="leo5_inst_avail_container_{{ salary_aggregate.subject_code }}">
+                                                    {% else %}
+                                                        <div id="leo5_inst_avail_container_{{ salary_aggregate.subject_code }}" style="display: none">
+                                                    {% endif %}
+                                                {% endif %}
+
+                                                    <h2 class="earnings-after-course-stat-salary mb-1 text-center text-lg-left">£{{ salary.med|intcomma }}</h2>
+                                                    <h4 class="earnings-after-course-stat-salary-range pt-1 text-center text-lg-left  mb-3">
+                                                        {% create_list salary.lq|intcomma salary.uq|intcomma as substitutions %}
+                                                        {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
+                                                        {{ subbed_text | richtext }}
+                                                    </h4>
+
+
+                                                    <h4 class="earnings-after-course-stat-small pt-1 text-center text-lg-left  mb-3">
+                                                        {% create_list course.data_from_html salary.pop salary.resp_rate as substitutions %}
+                                                        {% if salary_index == 0 %}
+                                                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_respondents_explanation substitutions=substitutions as subbed_text %}
+                                                            {{ subbed_text | richtext }}
+                                                        {% else %}
+                                                            {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
+                                                            {{ subbed_text | richtext }}
+                                                            <br>
+                                                        {% endif %}
+                                                    </h4>
+
+                                                    <h4 class="earnings-after-course-stat-small pt-1 text-center text-lg-left  mb-3">
+                                                        {% if salary_index == 0 %}
+                                                            {% create_list course.data_from_html_average_earnings_year_range course.go_year_range as substitutions %}
+                                                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                                                            {{ subbed_text | richtext }}
+                                                            {{ block.value.after_fifteen_months_data_source }}
+                                                        {% elif salary_index == 1 %}
+                                                            {% create_list course.data_from_html_average_earnings_year_range course.leo3_year_range as substitutions %}
+                                                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                                                            {{ subbed_text | richtext }}
+                                                            {{ block.value.after_three_five_years_data_source }}
+                                                        {% else %}
+                                                            {% create_list course.data_from_html_average_earnings_year_range course.leo5_year_range as substitutions %}
+                                                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                                                            {{ subbed_text | richtext }}
+                                                            {{ block.value.after_three_five_years_data_source }}
+                                                        {% endif %}
+                                                    </h4>
+                                                </div>
+                                                {% if salary_index == 0 %}
+                                                    {% if salary.aggregate %}
+                                                        <div id="go_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer" style="display: none"></div>
+                                                    {% else %}
+                                                        <div id="go_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer">
+                                                            <h4>{{ salary.display_unavailable_info.reason_heading }}</h4>
+                                                            <h6>{{ salary.display_unavailable_info.reason_body }}</h6>
+                                                        </div>
+                                                    {% endif %}
+                                                {% elif salary_index == 1 %}
+                                                    {% if salary.aggregate %}
+                                                        <div id="leo3_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer" style="display: none"></div>
+                                                    {% else %}
+                                                        <div id="leo3_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer">
+                                                            <h4>{{ salary.display_unavailable_info.reason_heading }}</h4>
+                                                            <h6>{{ salary.display_unavailable_info.reason_body }}</h6>
+                                                        </div>
+                                                    {% endif %}
+                                                {% elif salary_index == 2 %}
+                                                    {% if salary.aggregate %}
+                                                        <div id="leo5_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer" style="display: none"></div>
+                                                    {% else %}
+                                                        <div id="leo5_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer">
+                                                            <h4>{{ salary.display_unavailable_info.reason_heading }}</h4>
+                                                            <h6>{{ salary.display_unavailable_info.reason_body }}</h6>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <form method='post' id='form_{{ subject_index }}_{{ l_or_r }}'>
+                                    <div class="d-inline-block">
+                                        <h2 class="earnings-after-course__stats-heading text-left pt-3 mt-3 mb-2">
+                                            {% create_list salary_aggregate.display_subject_name as substitutions %}
+                                            {% insert_values_to_rich_text content=block.value.average_earnings_sector_heading substitutions=substitutions as subbed_text %}
+                                            {{ subbed_text | richtext }}
+                                        </h2>
+                                    </div>
+                                    <div class="d-inline-block row my-3">
+                                        <select name="regions_{{ salary_aggregate.subject_code }}_{{ l_or_r }}" id="regions_{{ salary_aggregate.subject_code }}_{{ l_or_r }}" class="region_ddl w-sm-100 w-lg-25">
+                                            {% get_region_list as region_list %}
+                                            {% for region in region_list %}
+                                                {% if page.get_language == 'cy' %}
+                                                    {% if course.default_country_postfix == region.id %}
+                                                        <option value="{{region.id}}" selected>{{region.name_cy}}</option>
+                                                    {% else %}
+                                                        <option value="{{region.id}}">{{region.name_cy}}</option>
+                                                    {% endif %}
+                                                {% else %}
+                                                    {% if course.default_country_postfix == region.id %}
+                                                        <option value="{{region.id}}" selected>{{region.name_en}}</option>
+                                                    {% else %}
+                                                        <option value="{{region.id}}">{{region.name_en}}</option>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                    <div class="spinner-border text-primary" role="status" id="busy_{{ salary_aggregate.subject_code }}_{{ l_or_r }}">
+                                        <span class="sr-only">Busy...</span>
+                                    </div>
+                
+                                    <div class="discover-uni-container">
+                                        <div class="earnings-after-course-statistics d-flex row align-items-stretch">
+                                        {% for salary in salary_aggregate.aggregated_salaries_sector %}
+                                            {% get_index_of_item salary salary_aggregate.aggregated_salaries_sector as salary_index %}
+                                            <div class="earnings-after-course_section-block col-xs-12 col-lg-4 align-self-stretch my-2">
+                                                <h3 class="mb-0 text-center text-lg-left">
+                                                {% if salary_index == 0 %}
+                                                    {{ block.value.after_fifteen_months_earnings_heading }}
+                                                {% elif salary_index == 1 %}
+                                                    {{ block.value.after_three_years_earnings_heading }}
+                                                {% elif salary_index == 2 %}
+                                                    {{ block.value.after_five_years_earnings_heading }}
+                                                {% endif %}
+                                                </h3>
+                                                <div class="earnings-after-course-stat col-lg-12 p-1 pb-0" border="1">
+                                                    {% if salary_index == 0 %}
+                                                        {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}
+                                                            <div id="go_sector_avail_container_{{ salary_aggregate.subject_code }}_{{ l_or_r }}">
+                                                        {% else %}
+                                                            <div id="go_sector_avail_container_{{ salary_aggregate.subject_code }}_{{ l_or_r }}" style="display: none">
+                                                        {% endif %}
+                                                    {% elif salary_index == 1 %}
+                                                        {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}
+                                                            <div id="leo3_sector_avail_container_{{ salary_aggregate.subject_code }}_{{ l_or_r }}">
+                                                        {% else %}
+                                                            <div id="leo3_sector_avail_container_{{ salary_aggregate.subject_code }}_{{ l_or_r }}" style="display: none">
+                                                        {% endif %}
+                                                    {% elif salary_index == 2 %}
+                                                        {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}
+                                                            <div id="leo5_sector_avail_container_{{ salary_aggregate.subject_code }}_{{ l_or_r }}">
+                                                        {% else %}
+                                                            <div id="leo5_sector_avail_container_{{ salary_aggregate.subject_code }}_{{ l_or_r }}" style="display: none">
+                                                        {% endif %}
+                                                    {% endif %}
+
+                                                        <h2 class="earnings-sector-field earnings-after-course-stat-salary mb-1 text-center text-lg-left" id="{% concat 'sector_salary_med_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">£{{ salary.salary_default_country_med|intcomma }}</h2>
+                                                        {% if salary_index > 0 %}
+                                                            <h4 class="excl-ni-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3" id="{% concat 'exclude_ni_msg_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">(excludes Northern Ireland)</h4>
+                                                        {% endif %}
+                                                        <h4 class="earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3" id="{% concat 'sector_salary_lq_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
+                                                            {% create_list salary.salary_default_country_lq|intcomma salary.salary_default_country_uq|intcomma as substitutions %}
+                                                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
+                                                            {{ subbed_text | richtext }}
+                                                        </h4>
+                                                        <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_pop_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
+                                                            {% create_list course.data_from_html salary.salary_default_country_pop as substitutions %}
+                                                            {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
+                                                            {{ subbed_text | richtext }}
+                                                        </h4>
+                                                        {# get_translation key='default_region' language=page.get_language as default_region #}
+                                                        <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
+                                                            {% if salary_index == 0 %}
+                                                                {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course_details.english_title course_details.institution.pub_ukprn_name course_details.default_region as substitutions %}
+                                                            {% elif salary_index == 1 and salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc != None %}
+                                                                {% create_list salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                                            {% elif salary_index == 1 %}
+                                                                {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course_details.english_title course_details.institution.pub_ukprn_name course_details.default_region as substitutions %}
+                                                            {% elif salary_index == 2 and salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc != None %}
+                                                                {% create_list salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                                            {% else %}
+                                                                {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course_details.english_title course_details.institution.pub_ukprn_name course_details.default_region as substitutions %}
+                                                            {% endif %}
+                                                            {% if salary_index == 0 %}
+                                                                {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
+                                                            {% else %}
+                                                                {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
+                                                            {% endif %}
+                                                            {{ subbed_text | richtext }}
+                                                        </h4>
+                                                        <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3">
+                                                            {% if salary_index == 0 %}
+                                                                {% create_list course.data_from_html_average_earnings_year_range course.go_year_range as substitutions %}
+                                                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                                                                {{ subbed_text | richtext }}
+                                                                {{ block.value.after_fifteen_months_data_source }}
+                                                            {% elif salary_index == 1 %}
+                                                                {% create_list course.data_from_html_average_earnings_year_range course.leo3_year_range as substitutions %}
+                                                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                                                                {{ subbed_text | richtext }}
+                                                                {{ block.value.after_three_five_years_data_source }}
+                                                            {% else %}
+                                                                {% create_list course.data_from_html_average_earnings_year_range course.leo5_year_range as substitutions %}
+                                                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                                                                {{ subbed_text | richtext }}
+                                                                {{ block.value.after_three_five_years_data_source }}
+                                                            {% endif %}
+                                                        </h4>
+                                                    </div>
+
+                                                    {% if salary_index == 0 %}
+                                                        {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}
+                                                            <div id="go_sector_unavail_{{ salary_aggregate.subject_code }}_{{ l_or_r }}" class="not-enough-data-disclaimer" style="display: none"></div>
+                                                        {% else %}
+                                                            <div id="go_sector_unavail_{{ salary_aggregate.subject_code }}_{{ l_or_r }}" class="not-enough-data-disclaimer">
+                                                                <h4>{{ salary.display_unavailable_info.unavailable_region_not_exists_heading }}</h4>
+                                                                <h6>{{ salary.display_unavailable_info.unavailable_region_not_exists_body }}</h6>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% elif salary_index == 1 %}
+                                                        {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}
+                                                            <div id="leo3_sector_unavail_{{ salary_aggregate.subject_code }}_{{ l_or_r }}" class="not-enough-data-disclaimer" style="display: none"></div>
+                                                        {% else %}
+                                                            <div id="leo3_sector_unavail_{{ salary_aggregate.subject_code }}_{{ l_or_r }}" class="not-enough-data-disclaimer">
+                                                            {% if course.is_ni_provider == True %}
+                                                                <h4>{{ salary.display_unavailable_info.unavailable_region_is_ni_heading }}</h4>
+                                                                <h6>{{ salary.display_unavailable_info.unavailable_region_is_ni_body }}</h6>
+                                                            {% else %}
+                                                                <h4>{{ salary.display_unavailable_info.unavailable_region_not_exists_heading }}</h4>
+                                                                <h6>{{ salary.display_unavailable_info.unavailable_region_not_exists_body }}</h6>
+                                                            {% endif %}
+                                                                        </div>
+                                                        {% endif %}
+                                                    {% elif salary_index == 2 %}
+                                                        {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}
+                                                            <div id="leo5_sector_unavail_{{ salary_aggregate.subject_code }}_{{ l_or_r }}" class="not-enough-data-disclaimer" style="display: none"></div>
+                                                        {% else %}
+                                                            <div id="leo5_sector_unavail_{{ salary_aggregate.subject_code }}_{{ l_or_r }}" class="not-enough-data-disclaimer">
+                                                            {% if course.is_ni_provider == True %}
+                                                                <h4>{{ salary.display_unavailable_info.unavailable_region_is_ni_heading }}</h4>
+                                                                <h6>{{ salary.display_unavailable_info.unavailable_region_is_ni_body }}</h6>
+                                                            {% else %}
+                                                                <h4>{{ salary.display_unavailable_info.unavailable_region_not_exists_heading }}</h4>
+                                                                <h6>{{ salary.display_unavailable_info.unavailable_region_not_exists_body }}</h6>
+                                                            {% endif %}
+                                                                        </div>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        {% endif %}
+
+
+                    {% elif course.go_salaries_inst.0 %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.go_salaries_inst.0.display_unavailable_info %}
+                    {% else %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+                    {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+    {% else %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
+    {% endif %}
+{% endfor %}
+
+{% if not course1.salary_aggregates and not course2.salary_aggregates %}
+    {% if course1.go_salaries_inst.0 %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1.go_salaries_inst.0.display_unavailable_info %}
+    {% elif course2.go_salaries_inst.0 %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course2.go_salaries_inst.0.display_unavailable_info %}
+    {% else %}
+        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course1.display_no_earnings_info %}
+    {% endif %}
+{% endif %}
+
+<script>
+    $(document).ready(function() {
+        $(".excl-ni-msg").hide();
+        $(".spinner-border").hide();
+
+        function buildHtml(unseparatedString){
+            var index_of_delimiter = unseparatedString.indexOf('\n\n');
+            var separatedString = "";
+            if (index_of_delimiter > 4) {
+                separatedString = "<h4>" + unseparatedString.substring(0, index_of_delimiter) +
+                    "</h4>" + "<h6>" + unseparatedString.substring(index_of_delimiter+2) + "</h6>";
+            }
+            else {
+                separatedString = "<h4>" + unseparatedString + "</h4>";
+            }
+            return separatedString;
+        }
+
+        jQuery('.region_ddl').on('focus', function () {
+            $(this).data('prev_region', $(this).val());
+        });
+
+        jQuery('.region_ddl').change(function (event) {
+            // ddlId will have the form regions_<subject_code>_<l|r>, e.g. regions_CAH17-01-01_l.
+            var ddlId = event.target.id;
+            var arr = ddlId.split("_");
+            var subjectCode = arr[1];
+            var leftOrRight = arr[2];
+            var selectedRegion = $(this).val();
+            //alert("selectedRegion: " + selectedRegion);
+
+            var prev_region = $(this).data('prev_region');
+            $("#" + ddlId).prop("disabled", true);
+            $("#busy_" + subjectCode + "_" + leftOrRight).show();
+
+            var courseDetails = $("#language_select").prop('href');
+            if (courseDetails.includes("/cy/"))
+                courseDetails = courseDetails.replace("/cy/", "/");
+            //alert(courseDetails);
+            var courseParamsBunched = courseDetails.split('/').slice(4);
+            // alert(courseParamsBunched);
+            // courseParamsBunched = courseDetails.split('/').slice(3);
+            // alert(courseParamsBunched);
+            // courseParamsBunched = courseDetails.split('/').slice(4);
+            // alert(courseParamsBunched);
+            var n = String(courseParamsBunched).indexOf("&");
+
+            // URL may have either course 1 or course 2 first.
+            //var courseIndex = 2;
+            //if (String(courseParamsBunched).substring(0,7) == "course1")
+            //    courseIndex = 1;
+
+            var prePostAmpersand = "post";
+            if ((String(courseParamsBunched).substring(0,7) == "course1" && leftOrRight == "l") || (String(courseParamsBunched).substring(0,7) == "course2" && leftOrRight == "r"))
+                prePostAmpersand = "pre";
+
+            //alert(courseIndex);
+            //alert(n);
+            //alert(String(courseParamsBunched).substring(0,7));
+
+            if (n > -1){
+                var courseString = "";
+                if (prePostAmpersand == "pre")
+                    courseString = String(courseParamsBunched).substring(0, n);
+                else
+                    courseString = String(courseParamsBunched).substring(n+1);
+
+                //alert(courseString);
+
+                //var delimiter = "course" + courseIndex + "=";
+                var delimiter = String(courseString).substring(0,7) + "=";
+                courseString = courseString.split(delimiter)[1];
+
+                var institution = courseString.split(",")[0];
+                var course = courseString.split(",")[1];
+                var kismode = courseString.split(",")[2];
+                // alert(institution);
+                // alert(course);
+                // alert(kismode);
+                // alert(subjectCode);
+                // alert('{{ page.get_language }}');
+
+                $.ajax({
+                    url: '/regional_earnings',
+                    type: "POST",
+                    headers: { "X-CSRFToken": "{{ csrf_token }}" }, // Without this, Django will throw a 403 Forbidden response.
+                    timeout: 3000,
+                    data: {
+                        'region': selectedRegion,
+                        'institution_id': institution,
+                        'course_id': course,
+                        'kis_mode': kismode.replace("%20", "-"),
+                        'language': '{{ page.get_language }}',
+                        'subject_code': subjectCode
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        //alert(JSON.stringify(data));
+                        prev_region = selectedRegion;
+                        $("#" + ddlId).prop("disabled", false);
+                        $("#busy_" + subjectCode + "_" + leftOrRight).hide();
+
+                        if (data['salary_sector_15_unavail_text'] == "") {
+                            if (data['salary_sector_15_med']) {
+                                $("#go_sector_avail_container_" + subjectCode + "_" + leftOrRight).show();
+                                $("#go_sector_unavail_" + subjectCode + "_" + leftOrRight).hide();
+                                $("#sector_salary_med_0_" + subjectCode + "_" + leftOrRight).text("£" + data['salary_sector_15_med']);
+                                $("#sector_salary_lq_0_" + subjectCode + "_" + leftOrRight + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_15_lq'] + " - £" + data['salary_sector_15_uq']);
+                                $("#sector_salary_pop_0_" + subjectCode + "_" + leftOrRight + " div").replaceWith("<div class='rich-text'><p></p></div>");
+                                $("#sector_salary_pop_0_" + subjectCode + "_" + leftOrRight + " div p").text(data['data_from_text'] + " " + data['salary_sector_15_pop'] + " " + data['respondents_text']);
+                                //$("#sector_salary_pop_0_" + subjectCode + "_" + leftOrRight + " div").append("<p>(" + data['salary_sector_15_resp'] + "% " + data['of_those_asked_text'] + ")</p>");
+
+                                if (selectedRegion == "_uk")
+                                    $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight).hide();
+                                else
+                                    $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight).show();
+                            }
+                        }
+                        else {
+                            $("#go_sector_unavail_" + subjectCode + "_" + leftOrRight).html(buildHtml(data['salary_sector_15_unavail_text']));
+                            $("#go_sector_unavail_" + subjectCode + "_" + leftOrRight).show();
+                            $("#go_sector_avail_container_" + subjectCode + "_" + leftOrRight).hide();
+                        }
+
+                        if (data['salary_sector_3_unavail_text'] == "") {
+                            if (data['salary_sector_3_med']) {
+                                $("#leo3_sector_avail_container_" + subjectCode + "_" + leftOrRight).show();
+                                $("#leo3_sector_unavail_" + subjectCode + "_" + leftOrRight).hide();
+
+                                $("#sector_salary_med_1_" + subjectCode + "_" + leftOrRight).text("£" + data['salary_sector_3_med']);
+                                $("#sector_salary_lq_1_" + subjectCode + "_" + leftOrRight + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_3_lq'] + " - £" + data['salary_sector_3_uq']);
+                                $("#sector_salary_pop_1_" + subjectCode + "_" + leftOrRight + " div").text(data['data_from_text'] + " " + data['salary_sector_3_pop'] + " " + data['people_text']);
+                            
+                                if (selectedRegion == "_uk") {
+                                    $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight).hide();
+                                
+                                    var lang = "{{page.get_language}}";
+                                    if (lang == "cy") {
+                                        $("#exclude_ni_msg_1_" + subjectCode + "_" + leftOrRight).text("(ac eithrio Gogledd Iwerddon)");
+                                        //$("#exclude_ni_msg_2_" + subjectIndex).text("(ac eithrio Gogledd Iwerddon)");
+                                    }
+                                    else {
+                                        $("#exclude_ni_msg_1_" + subjectCode + "_" + leftOrRight).text("(excludes Northern Ireland)");
+                                        //$("#exclude_ni_msg_2_" + subjectIndex).text("(excludes Northern Ireland)");
+                                    }
+                                    $("#exclude_ni_msg_1_" + subjectCode + "_" + leftOrRight).show();
+                                    //$("#exclude_ni_msg_2_" + subjectIndex).show();
+                                }
+                                else {
+                                    $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight).show();
+                                    $("#exclude_ni_msg_1_" + subjectCode + "_" + leftOrRight).hide();
+                                    //$("#exclude_ni_msg_2_" + subjectIndex).hide();
+                                }
+                            }
+                        }
+                        else {
+                            $("#leo3_sector_unavail_" + subjectCode + "_" + leftOrRight).html(buildHtml(data['salary_sector_3_unavail_text']));
+                            $("#leo3_sector_avail_container_" + subjectCode + "_" + leftOrRight).hide();
+                            $("#leo3_sector_unavail_" + subjectCode + "_" + leftOrRight).show();
+                        }
+
+                        if (data['salary_sector_5_unavail_text'] == "") {
+                            if (data['salary_sector_5_med']) {
+                                $("#leo5_sector_avail_container_" + subjectCode + "_" + leftOrRight).show();
+                                $("#leo5_sector_unavail_" + subjectCode + "_" + leftOrRight).hide();
+
+                                $("#sector_salary_med_2_" + subjectCode + "_" + leftOrRight).text("£" + data['salary_sector_5_med']);
+                                $("#sector_salary_lq_2_" + subjectCode + "_" + leftOrRight + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_5_lq'] + " - £" + data['salary_sector_5_uq']);
+                                $("#sector_salary_pop_2_" + subjectCode + "_" + leftOrRight + " div").text(data['data_from_text'] + " " + data['salary_sector_5_pop'] + " " + data['people_text']);
+                            
+                                if (selectedRegion == "_uk") {
+                                    $("#sector_salary_graduates_2_" + subjectCode + "_" + leftOrRight).hide();
+
+                                    var lang = "{{page.get_language}}";
+                                    if (lang == "cy") {
+                                        //$("#exclude_ni_msg_1_" + subjectIndex).text("(ac eithrio Gogledd Iwerddon)");
+                                        $("#exclude_ni_msg_2_" + subjectCode + "_" + leftOrRight).text("(ac eithrio Gogledd Iwerddon)");
+                                    }
+                                    else {
+                                        //$("#exclude_ni_msg_1_" + subjectIndex).text("(excludes Northern Ireland)");
+                                        $("#exclude_ni_msg_2_" + subjectCode + "_" + leftOrRight).text("(excludes Northern Ireland)");
+                                    }
+                                    //$("#exclude_ni_msg_1_" + subjectIndex).show();
+                                    $("#exclude_ni_msg_2_" + subjectCode + "_" + leftOrRight).show();
+                                }
+                                else {
+                                    $("#sector_salary_graduates_2_" + subjectCode + "_" + leftOrRight).show();
+                                    //$("#exclude_ni_msg_1_" + subjectIndex).hide();
+                                    $("#exclude_ni_msg_2_" + subjectCode + "_" + leftOrRight).hide();
+                                }
+                            }
+                        }
+                        else {
+                            $("#leo5_sector_unavail_" + subjectCode + "_" + leftOrRight).html(buildHtml(data['salary_sector_5_unavail_text']));
+                            $("#leo5_sector_avail_container_" + subjectCode + "_" + leftOrRight).hide();
+                            $("#leo5_sector_unavail_" + subjectCode + "_" + leftOrRight).show();
+                        }
+
+                        //var graduates_text = sector_salary_graduates_0.innerText;
+                        var liveInDelimiterGo = String(data['inst_prov_pc_delimiter_go']);
+                        var liveInDelimiterLeo = String(data['inst_prov_pc_delimiter_leo']);
+                        var graduates_text_go = $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight).text();
+                        var graduates_text_leo = $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight).text();
+                        graduates_text_go = graduates_text_go.substring(graduates_text_go.indexOf('%'), graduates_text_go.length);
+                        graduates_text_go = graduates_text_go.substring(0, graduates_text_go.indexOf(liveInDelimiterGo) + liveInDelimiterGo.length);
+                        graduates_text_leo = graduates_text_leo.substring(graduates_text_leo.indexOf('%'), graduates_text_leo.length);
+                        graduates_text_leo = graduates_text_leo.substring(0, graduates_text_leo.indexOf(liveInDelimiterLeo) + liveInDelimiterLeo.length);
+                        if (data['salary_sector_15_med'])
+                            $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_go'] + graduates_text_go + " " + data['region_full_name']);
+                        if (data['salary_sector_3_med'])
+                            $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo3'] + graduates_text_leo + " " + data['region_full_name']);
+                        if (data['salary_sector_5_med'])
+                            $("#sector_salary_graduates_2_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo5'] + graduates_text_leo + " " + data['region_full_name']);
+                    },
+                    error: function (request, status, error) {
+                        //alert(request.responseText);
+                        $("#" + ddlId).prop("disabled", false);
+                        $("#" + ddlId).val(prev_region);
+                        $("#busy_" + subjectCode + "_" + leftOrRight).hide();
+                    }
+                });
+            }
+        });
+    });
+</script>

@@ -8,17 +8,25 @@ from django import template
 from CMS.enums import enums
 from CMS.translations import DICT
 from core.utils import get_current_version, get_code_version
-from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, AFTER_COURSE_KEY, \
-    ACCREDITATION_KEY
+
+from django.utils.safestring import mark_safe
+from wagtail.core.rich_text import RichText, expand_db_html
+
+
+from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, ACCREDITATION_KEY,\
+    EARNINGS_AFTER_COURSE_KEY, EMPLOYMENT_AFTER_COURSE_KEY, GRADUATE_PERCEPTIONS_KEY, LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
 
 register = template.Library()
 
 SHOW_STATS_LOOKUP = {
     STUDENT_SATISFACTION_KEY: 'show_satisfaction_stats',
-    ACCREDITATION_KEY: 'accreditations',
     ENTRY_INFO_KEY: 'show_entry_information_stats',
     AFTER_ONE_YEAR_KEY: 'show_after_one_year_stats',
-    AFTER_COURSE_KEY: 'show_after_course_stats'
+    ACCREDITATION_KEY: 'accreditations',
+    EARNINGS_AFTER_COURSE_KEY: 'show_after_course_stats',
+    EMPLOYMENT_AFTER_COURSE_KEY: 'show_employment_after_course_stats',
+    GRADUATE_PERCEPTIONS_KEY: 'show_graduate_perceptions_stats',
+    LINKS_TO_THE_INSTITUTION_WEBSITE_KEY: 'show_links_to_the_institution_website'
 }
 
 
@@ -146,5 +154,39 @@ def get_course_locations_list(locations, is_english):
 
 
 @register.simple_tag
+def define(val=None):
+    return val
+
+
+@register.simple_tag
 def is_multiple_of(number, base):
     return number % base == 0
+
+
+@register.simple_tag
+def get_index_of_item(item, view_list):
+    return view_list.index(item)
+
+
+@register.simple_tag
+def get_region_list():
+    with open("./CMS/static/jsonfiles/regions.json", "r") as f:
+        regions = f.read()
+    return json.loads(regions)
+
+
+@register.simple_tag
+def concat(*args, **_):
+    concat_string = ""
+    for arg in args:
+        concat_string += str(arg)
+    return concat_string
+
+# @register.simple_tag
+# def get_prov_pc_verb(value, data_source):
+#     value2 = value.deepcopy()
+#     if data_source == "go":
+#         value2.source = value2.source.replace("based", "fish")
+#     else:
+#         value2.source = value2.source.replace("employed", "based")
+#     return value2

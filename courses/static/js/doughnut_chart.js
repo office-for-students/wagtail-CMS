@@ -41,7 +41,7 @@ $(function () {
                     style: {
                         fontFamily: 'Nunito Sans',
                         color: '#8D8D8D',
-                        fontSize: '26px',
+                        fontSize: '36px',
                     },
                 },
 
@@ -98,6 +98,13 @@ $(function () {
                 tooltip: {
                     enabled: false,
                 },
+                func: function(chart) {
+                    $timeout(function() {
+                        chart.reflow();
+                        //The below is an event that will trigger all instances of charts to reflow
+                        //$scope.$broadcast('highchartsng.reflow');
+                    }, 0);
+                }
             });
 
             var chart = this.target.find('svg');

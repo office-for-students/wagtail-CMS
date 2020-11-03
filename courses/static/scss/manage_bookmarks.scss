@@ -8,9 +8,7 @@
     &__overview {
         padding: 30px 50px;
         text-align: center;
-
-        border: 1px solid #707070;
-        border-radius: 10px;
+        border: solid 3px #cee9e7;
     }
 
     &__course-count {
@@ -34,9 +32,7 @@
         margin-top: 20px;
         padding: 30px 26px;
         text-align: center;
-
-        border: 1px solid #707070;
-        border-radius: 10px;
+        border: solid 3px #cee9e7;
 
         .rich-text {
             p {
@@ -50,6 +46,11 @@
                     margin-top: 0px;
                 }
             }
+        }
+        a {
+            color: #308282;
+            text-decoration: underline;
+            font-weight:bold;
         }
     }
 
@@ -158,5 +159,41 @@
         &__none-selected {
             @include desktop-body-font-mixin();
         }
+    }
+}
+
+
+@media only screen and (max-width: 575px){
+    div.bookmark.discover-uni-container{
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 576px) and (max-width: 766px){
+    div.bookmark.discover-uni-container{
+        width: 540px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 767px) and (max-width: 991px){
+    div.bookmark.discover-uni-container{
+        width: 720px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    div.bookmark.discover-uni-container{
+        width: 960px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 1200px){
+    div.bookmark.discover-uni-container{
+        width: 1140px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
     }
 }

@@ -1,74 +1,108 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags %}
 
+{% if course_details.has_multiple_satisfaction_stats %}
+<ul class="nav nav-tabs mt-2" id="student-satisfaction-tab" role="tablist">
+    
+    {% for overall_stats in course_details.overall_satisfaction %}
+        <li class="nav-item">
+            <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="student-satisfaction-{{ forloop.counter }}-tab" data-toggle="tab" href="#student-satisfaction-{{ forloop.counter }}" role="tab"
+               aria-controls="student-satisfaction-{{ forloop.counter }}" aria-selected="true">
+                {{ overall_stats.satisfaction_stats.display_subject_name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+<hr class="nav-tabs-hr"/>
+{% endif %}
+
+<div class="tab-content mb-4">
 {% for overall_stats in course_details.overall_satisfaction %}
-    {% if course_details.has_multiple_satisfaction_stats %}
-        <h2 class="satisfaction_subject_name">
-            {% get_translation key='data_for' language=page.get_language %}: {{overall_stats.satisfaction_stats.display_subject_name}}
-        </h2>
-    {% endif %}
+    <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="student-satisfaction-{{ forloop.counter }}" role="tabpanel" aria-labelledby="student-satisfaction-{{ forloop.counter }}-tab">
 
     {% if overall_stats.satisfaction_stats.question_27.show_data_point %}
-        <div class="student-satisfaction__overview">
-            <div class="discover-uni-container">
-                <p class="student-satisfaction__overview-lead">
-                    {{ overall_stats.satisfaction_stats.question_27.agree_or_strongly_agree }}%
-                </p>
-
-                <p>
-                    {{ block.value.lead_text }}
-                </p>
-            </div>
+        <div class="student-satisfaction__overview mt-3 p-2 d-flex flex-wrap row mx-1">
+                <div class="col-lg-3 col-md-12 align-self-stretch my-lg-3">
+                    <p class="student-satisfaction__overview-lead text-center">
+                        {{ overall_stats.satisfaction_stats.question_27.agree_or_strongly_agree }}%
+                    </p>
+                </div>
+                <div class="col-lg-9 col-md-12 align-self-stretch my-auto pt-2 text-center text-lg-left">
+                    <p>
+                        {{ block.value.lead_text }}
+                        <div class="student-satisfaction__intro">
+                            {% create_list course_details.data_from_html overall_stats.satisfaction_stats.number_of_students overall_stats.satisfaction_stats.response_rate as substitutions %}
+                            {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </div>
+                    </p>
+                </div>
         </div>
     {% endif %}
 
-
     <div class="student-satisfaction__block">
+        <div class="mt-3">
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.display_unavailable_info %}
+        </div>
+        <div class="scrolling-wrapper scroll">
         {% if overall_stats.satisfaction_stats.show_satisfaction_stats %}
-            <div class="student-satisfaction__intro">
-                {% create_list overall_stats.satisfaction_stats.number_of_students overall_stats.satisfaction_stats.response_rate as substitutions %}
-                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
-                {{ subbed_text | richtext }}
-            </div>
-
             {% if overall_stats.satisfaction_stats.show_teaching_stats %}
-                <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                    <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                        <h2 class="student-satisfaction__data-group-heading text-left">
+                            {{block.value.teaching_stats_header }}
 
-                    <h2 class="student-satisfaction__data-group-heading">
-                        {{block.value.teaching_stats_header }}
-                    </h2>
-
-                    <div class="student-satisfaction__charts">
+                            <p>
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
                         {%  if overall_stats.satisfaction_stats.question_1.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
                                      data-value="{{overall_stats.satisfaction_stats.question_1.agree_or_strongly_agree}}"
                                      data-question="satisfaction-1"
                                      data-language="{{page.get_language}}"
                                      data-field="{% get_translation key=overall_stats.satisfaction_stats.question_1.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
                                     <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_1.description language=page.get_language %}</p>
                                 </div>
-                            </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_1.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-1"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_1.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_1.description language=page.get_language %}</label>
+                                </div>
+                            </div>                          
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_2.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
                                      data-value="{{overall_stats.satisfaction_stats.question_2.agree_or_strongly_agree}}"
                                      data-question="satisfaction-2"
                                      data-language="{{page.get_language}}"
                                      data-field="{% get_translation key=overall_stats.satisfaction_stats.question_2.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
                                     <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_2.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_2.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-2"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_2.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_2.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_3.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
                                      data-value="{{overall_stats.satisfaction_stats.question_3.agree_or_strongly_agree}}"
                                      data-question="satisfaction-3"
                                      data-language="{{page.get_language}}"
@@ -77,19 +111,34 @@
 
                                     <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_3.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_3.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-3"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_3.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_3.description language=page.get_language %}</label>
+                                </div>
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_4.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
                                      data-value="{{overall_stats.satisfaction_stats.question_4.agree_or_strongly_agree}}"
                                      data-question="satisfaction-4"
                                      data-language="{{page.get_language}}"
                                      data-field="{% get_translation key=overall_stats.satisfaction_stats.question_4.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
                                     <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_4.description language=page.get_language %}</p>
+                                </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_4.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-4"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_4.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_4.description language=page.get_language %}</label>
                                 </div>
                             </div>
                         {% endif %}
@@ -98,119 +147,179 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_learning_opps_stats %}
-                <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                    <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                        <h2 class="student-satisfaction__data-group-heading text-left">
+                            {{block.value.learning_opportunities_stats_header }}
 
-                    <h2 class="student-satisfaction__data-group-heading">
-                        {{block.value.learning_opportunities_stats_header }}
-                    </h2>
+                            <p>
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
 
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
                         {%  if overall_stats.satisfaction_stats.question_5.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_5.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-5"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_5.description language=page.get_language %}">
-                                    {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_5.description language=page.get_language %}</p>
-                                </div>
+                                    <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                        data-value="{{overall_stats.satisfaction_stats.question_5.agree_or_strongly_agree}}"
+                                        data-question="satisfaction-5"
+                                        data-language="{{page.get_language}}"
+                                        data-field="{% get_translation key=overall_stats.satisfaction_stats.question_5.description language=page.get_language %}">
+                                        {% include 'courses/partials/doughnut_chart.html' %}
+                                        <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_5.description language=page.get_language %}</p>
+                                    </div>
+                                    <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                        data-value="{{overall_stats.satisfaction_stats.question_5.agree_or_strongly_agree}}"
+                                        data-question="satisfaction-5"
+                                        data-language="{{page.get_language}}"
+                                        data-field="{% get_translation key=overall_stats.satisfaction_stats.question_5.description language=page.get_language %}">
+                                        {% include 'courses/partials/bar_chart.html' %}
+                                        <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_5.description language=page.get_language %}</label>
+                                    </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_6.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_6.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-6"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_6.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_6.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-6"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_6.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_6.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_6.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_6.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-6"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_6.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_6.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_7.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_7.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-7"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_7.description language=page.get_language %}">
-                                    {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_7.description language=page.get_language %}</p>
+                                    <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                        data-value="{{overall_stats.satisfaction_stats.question_7.agree_or_strongly_agree}}"
+                                        data-question="satisfaction-7"
+                                        data-language="{{page.get_language}}"
+                                        data-field="{% get_translation key=overall_stats.satisfaction_stats.question_7.description language=page.get_language %}">
+                                        {% include 'courses/partials/doughnut_chart.html' %}
+                                        <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_7.description language=page.get_language %}</p>
+                                    </div>
+                                    <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                        data-value="{{overall_stats.satisfaction_stats.question_7.agree_or_strongly_agree}}"
+                                        data-question="satisfaction-7"
+                                        data-language="{{page.get_language}}"
+                                        data-field="{% get_translation key=overall_stats.satisfaction_stats.question_7.description language=page.get_language %}">
+                                        {% include 'courses/partials/bar_chart.html' %}
+                                        <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_7.description language=page.get_language %}</label>
+                                    </div>  
                                 </div>
-                            </div>
                         {% endif %}
+
                     </div>
                 </div>
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_assessment_stats %}
-                <div class="student-satisfaction__data-group">
-
-                <h2 class="student-satisfaction__data-group-heading">
-                    {{block.value.assessment_stats_header }}
-                </h2>
-
-                <div class="student-satisfaction__charts">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                    <h2 class="student-satisfaction__data-group-heading text-left">
+                        {{block.value.assessment_stats_header }}
+                        <p>
+                            {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </p>
+                    </h2>
+                </div>
+                <div class="student-satisfaction__charts  col-lg-8 col-md-12 my-auto">
                     {%  if overall_stats.satisfaction_stats.question_8.show_data_point %}
                         <div class="student-satisfaction__chart-wrapper">
-                            <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                 data-value="{{overall_stats.satisfaction_stats.question_8.agree_or_strongly_agree}}"
-                                 data-question="satisfaction-8"
-                                 data-language="{{page.get_language}}"
-                                 data-field="{% get_translation key=overall_stats.satisfaction_stats.question_8.description language=page.get_language %}">
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                data-value="{{overall_stats.satisfaction_stats.question_8.agree_or_strongly_agree}}"
+                                data-question="satisfaction-8"
+                                data-language="{{page.get_language}}"
+                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_8.description language=page.get_language %}">
                                 {% include 'courses/partials/doughnut_chart.html' %}
-
-                                <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_8.description language=page.get_language %}</p>
+                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_8.description language=page.get_language %}</p>
                             </div>
+                            <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                data-value="{{overall_stats.satisfaction_stats.question_8.agree_or_strongly_agree}}"
+                                data-question="satisfaction-8"
+                                data-language="{{page.get_language}}"
+                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_8.description language=page.get_language %}">
+                                {% include 'courses/partials/bar_chart.html' %}
+                                <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_8.description language=page.get_language %}</label>
+                            </div>  
                         </div>
                     {% endif %}
 
                     {%  if overall_stats.satisfaction_stats.question_9.show_data_point %}
                         <div class="student-satisfaction__chart-wrapper">
-                            <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                 data-value="{{overall_stats.satisfaction_stats.question_9.agree_or_strongly_agree}}"
-                                 data-question="satisfaction-9"
-                                 data-language="{{page.get_language}}"
-                                 data-field="{% get_translation key=overall_stats.satisfaction_stats.question_9.description language=page.get_language %}">
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                data-value="{{overall_stats.satisfaction_stats.question_9.agree_or_strongly_agree}}"
+                                data-question="satisfaction-9"
+                                data-language="{{page.get_language}}"
+                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_9.description language=page.get_language %}">
                                 {% include 'courses/partials/doughnut_chart.html' %}
-
-                                <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_9.description language=page.get_language %}</p>
+                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_9.description language=page.get_language %}</p>
                             </div>
+                            <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                data-value="{{overall_stats.satisfaction_stats.question_9.agree_or_strongly_agree}}"
+                                data-question="satisfaction-9"
+                                data-language="{{page.get_language}}"
+                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_9.description language=page.get_language %}">
+                                {% include 'courses/partials/bar_chart.html' %}
+                                <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_9.description language=page.get_language %}</label>
+                            </div>  
                         </div>
                     {% endif %}
 
                     {%  if overall_stats.satisfaction_stats.question_10.show_data_point %}
                         <div class="student-satisfaction__chart-wrapper">
-                            <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                 data-value="{{overall_stats.satisfaction_stats.question_10.agree_or_strongly_agree}}"
-                                 data-question="satisfaction-10"
-                                 data-language="{{page.get_language}}"
-                                 data-field="{% get_translation key=overall_stats.satisfaction_stats.question_10.description language=page.get_language %}">
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                data-value="{{overall_stats.satisfaction_stats.question_10.agree_or_strongly_agree}}"
+                                data-question="satisfaction-10"
+                                data-language="{{page.get_language}}"
+                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_10.description language=page.get_language %}">
                                 {% include 'courses/partials/doughnut_chart.html' %}
-
-                                <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_10.description language=page.get_language %}</p>
+                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_10.description language=page.get_language %}</p>
                             </div>
+                            <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                data-value="{{overall_stats.satisfaction_stats.question_10.agree_or_strongly_agree}}"
+                                data-question="satisfaction-10"
+                                data-language="{{page.get_language}}"
+                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_10.description language=page.get_language %}">
+                                {% include 'courses/partials/bar_chart.html' %}
+                                <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_10.description language=page.get_language %}</label>
+                            </div>  
                         </div>
                     {% endif %}
 
                     {%  if overall_stats.satisfaction_stats.question_11.show_data_point %}
                         <div class="student-satisfaction__chart-wrapper">
-                            <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                 data-value="{{overall_stats.satisfaction_stats.question_11.agree_or_strongly_agree}}"
-                                 data-question="satisfaction-11"
-                                 data-language="{{page.get_language}}"
-                                 data-field="{% get_translation key=overall_stats.satisfaction_stats.question_11.description language=page.get_language %}">
+                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                data-value="{{overall_stats.satisfaction_stats.question_11.agree_or_strongly_agree}}"
+                                data-question="satisfaction-11"
+                                data-language="{{page.get_language}}"
+                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_11.description language=page.get_language %}">
                                 {% include 'courses/partials/doughnut_chart.html' %}
-
-                                <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_11.description language=page.get_language %}</p>
+                                <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_11.description language=page.get_language %}</p>
                             </div>
+                            <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                data-value="{{overall_stats.satisfaction_stats.question_11.agree_or_strongly_agree}}"
+                                data-question="satisfaction-11"
+                                data-language="{{page.get_language}}"
+                                data-field="{% get_translation key=overall_stats.satisfaction_stats.question_11.description language=page.get_language %}">
+                                {% include 'courses/partials/bar_chart.html' %}
+                                <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_11.description language=page.get_language %}</label>
+                            </div>  
                         </div>
                     {% endif %}
                 </div>
@@ -218,52 +327,78 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_support_stats %}
-                <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                    <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                        <h2 class="student-satisfaction__data-group-heading text-left">
+                            {{block.value.support_stats_header }}
+                            <p>
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
 
-                    <h2 class="student-satisfaction__data-group-heading">
-                        {{block.value.support_stats_header }}
-                    </h2>
-
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
                         {%  if overall_stats.satisfaction_stats.question_12.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_12.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-12"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_12.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_12.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-12"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_12.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_12.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_12.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_12.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-12"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_12.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_12.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_13.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_13.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-13"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_13.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_13.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-13"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_13.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_13.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_13.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_13.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-13"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_13.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_13.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_14.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_14.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-14"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_14.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_14.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-14"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_14.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_14.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_14.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_14.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-14"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_14.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_14.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
                     </div>
@@ -271,52 +406,78 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_organisation_stats %}
-                <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                    <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                        <h2 class="student-satisfaction__data-group-heading text-left">
+                            {{block.value.organisation_stats_header }}
+                            <p>
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
 
-                    <h2 class="student-satisfaction__data-group-heading">
-                        {{block.value.organisation_stats_header }}
-                    </h2>
-
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
                         {%  if overall_stats.satisfaction_stats.question_15.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_15.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-15"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_15.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_15.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-15"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_15.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_15.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_15.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_15.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-15"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_15.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_15.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_16.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_16.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-16"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_16.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_16.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-16"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_16.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_16.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_16.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_16.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-16"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_16.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_16.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_17.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_17.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-17"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_17.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_17.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-17"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_17.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_17.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_17.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_17.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-17"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_17.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_17.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
                     </div>
@@ -324,158 +485,238 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_learning_resources_stats %}
-                <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                    <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                        <h2 class="student-satisfaction__data-group-heading text-left">
+                            {{block.value.learning_resources_stats_header }}
+                            <p>
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
 
-                    <h2 class="student-satisfaction__data-group-heading">
-                        {{block.value.learning_resources_stats_header }}
-                    </h2>
-
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
                         {%  if overall_stats.satisfaction_stats.question_18.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_18.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-18"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_18.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_18.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-18"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_18.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_18.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_18.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_18.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-18"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_18.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_18.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_19.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_19.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-19"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_19.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_19.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-19"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_19.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_19.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_19.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                        data-value="{{overall_stats.satisfaction_stats.question_19.agree_or_strongly_agree}}"
+                                        data-question="satisfaction-19"
+                                        data-language="{{page.get_language}}"
+                                        data-field="{% get_translation key=overall_stats.satisfaction_stats.question_19.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_19.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_20.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_20.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-20"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_20.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_20.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-20"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_20.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_20.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_20.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_20.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-20"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_20.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_20.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
+
                     </div>
                 </div>
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_learning_community_stats %}
-                <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                    <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                        <h2 class="student-satisfaction__data-group-heading text-left">
+                            {{block.value.learning_community_stats_header }}
+                            <p>
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
 
-                    <h2 class="student-satisfaction__data-group-heading">
-                        {{block.value.learning_community_stats_header }}
-                    </h2>
-
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
                         {%  if overall_stats.satisfaction_stats.question_21.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_21.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-21"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_21.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_21.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-21"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_21.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_21.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_21.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_21.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-21"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_21.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_21.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_22.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_22.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-22"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_22.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_22.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-22"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_22.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_22.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_22.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_22.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-22"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_22.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_22.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
+
                     </div>
                 </div>
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_voice_stats %}
-                <div class="student-satisfaction__data-group">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                    <div class="col-lg-4 col-md-12 my-auto pt-3 text-left pt-3" >
+                        <h2 class="student-satisfaction__data-group-heading text-left">
+                            {{block.value.student_voice_stats_header }}
+                            <p>
+                                {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </p>
+                        </h2>
+                    </div>
 
-                    <h2 class="student-satisfaction__data-group-heading">
-                        {{block.value.student_voice_stats_header }}
-                    </h2>
-
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
                         {%  if overall_stats.satisfaction_stats.question_23.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_23.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-23"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_23.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_23.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-23"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_23.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_23.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_23.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_23.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-23"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_23.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_23.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_24.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_24.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-24"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_24.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_24.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-24"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_24.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_24.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_24.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_24.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-24"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_24.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_24.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_25.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_25.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-25"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_25.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_25.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-25"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_25.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_25.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_25.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_25.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-25"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_25.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_25.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.satisfaction_stats.question_26.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.satisfaction_stats.question_26.agree_or_strongly_agree}}"
-                                     data-question="satisfaction-26"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.satisfaction_stats.question_26.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.satisfaction_stats.question_26.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-26"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_26.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_26.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_26.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.satisfaction_stats.question_26.agree_or_strongly_agree}}"
+                                    data-question="satisfaction-26"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.satisfaction_stats.question_26.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.satisfaction_stats.question_26.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
                     </div>
@@ -484,97 +725,145 @@
             {% endif %}
         {% endif %}
 
-        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.display_unavailable_info %}
-
         {% if overall_stats.nhs_satisfaction_stats %}
-            <div class="student-satisfaction__data-group">
-                <h2 class="student-satisfaction__data-group-heading">
-                    {{block.value.nhs_placement_stats_header }}
-                </h2>
+            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
+    
+            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                <div class="col-lg-4 col-md-12 my-auto pt-3 text-left" >
+                    <h2 class="student-satisfaction__data-group-heading text-left">
+                        {{block.value.nhs_placement_stats_header }}
+                        <p>
+                            {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </p>
+                    </h2>
+                </div>
 
                 {% if overall_stats.nhs_satisfaction_stats.show_nhs_stats %}
-                    <div class="student-satisfaction__charts">
+                    <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto justify-content-start">
                         {%  if overall_stats.nhs_satisfaction_stats.question_1.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.nhs_satisfaction_stats.question_1.agree_or_strongly_agree}}"
-                                     data-question="nhs-1"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_1.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.nhs_satisfaction_stats.question_1.agree_or_strongly_agree}}"
+                                    data-question="nhs-1"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_1.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_1.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_1.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.nhs_satisfaction_stats.question_1.agree_or_strongly_agree}}"
+                                    data-question="nhs-1"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_1.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_1.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.nhs_satisfaction_stats.question_2.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.nhs_satisfaction_stats.question_2.agree_or_strongly_agree}}"
-                                     data-question="nhs-2"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_2.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.nhs_satisfaction_stats.question_2.agree_or_strongly_agree}}"
+                                    data-question="nhs-2"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_2.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_2.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_2.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.nhs_satisfaction_stats.question_2.agree_or_strongly_agree}}"
+                                    data-question="nhs-2"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_2.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_2.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.nhs_satisfaction_stats.question_3.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.nhs_satisfaction_stats.question_3.agree_or_strongly_agree}}"
-                                     data-question="nhs-3"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_3.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.nhs_satisfaction_stats.question_3.agree_or_strongly_agree}}"
+                                    data-question="nhs-3"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_3.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_3.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_3.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.nhs_satisfaction_stats.question_3.agree_or_strongly_agree}}"
+                                    data-question="nhs-3"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_3.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_3.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.nhs_satisfaction_stats.question_4.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.nhs_satisfaction_stats.question_4.agree_or_strongly_agree}}"
-                                     data-question="nhs-4"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_4.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.nhs_satisfaction_stats.question_4.agree_or_strongly_agree}}"
+                                    data-question="nhs-4"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_4.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_4.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_4.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.nhs_satisfaction_stats.question_4.agree_or_strongly_agree}}"
+                                    data-question="nhs-4"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_4.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_4.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.nhs_satisfaction_stats.question_5.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.nhs_satisfaction_stats.question_5.agree_or_strongly_agree}}"
-                                     data-question="nhs-5"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_5.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.nhs_satisfaction_stats.question_5.agree_or_strongly_agree}}"
+                                    data-question="nhs-5"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_5.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_5.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_5.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.nhs_satisfaction_stats.question_5.agree_or_strongly_agree}}"
+                                    data-question="nhs-5"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_5.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_5.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
 
                         {%  if overall_stats.nhs_satisfaction_stats.question_6.show_data_point %}
                             <div class="student-satisfaction__chart-wrapper">
-                                <div class="student-satisfaction__chart discover-uni-chart doughnut"
-                                     data-value="{{overall_stats.nhs_satisfaction_stats.question_6.agree_or_strongly_agree}}"
-                                     data-question="nhs-6"
-                                     data-language="{{page.get_language}}"
-                                     data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_6.description language=page.get_language %}">
+                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                    data-value="{{overall_stats.nhs_satisfaction_stats.question_6.agree_or_strongly_agree}}"
+                                    data-question="nhs-6"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_6.description language=page.get_language %}">
                                     {% include 'courses/partials/doughnut_chart.html' %}
-
-                                    <p  class="student-satisfaction__chart-title" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_6.description language=page.get_language %}</p>
+                                    <p   class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_6.description language=page.get_language %}</p>
                                 </div>
+                                <div class="entry-information__chart discover-uni-chart bar sm-chart" 
+                                    data-value="{{overall_stats.nhs_satisfaction_stats.question_6.agree_or_strongly_agree}}"
+                                    data-question="nhs-6"
+                                    data-language="{{page.get_language}}"
+                                    data-field="{% get_translation key=overall_stats.nhs_satisfaction_stats.question_6.description language=page.get_language %}">
+                                    {% include 'courses/partials/bar_chart.html' %}
+                                    <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=overall_stats.nhs_satisfaction_stats.question_6.description language=page.get_language %}</label>
+                                </div>  
                             </div>
                         {% endif %}
                     </div>
@@ -583,13 +872,21 @@
 
             {% if overall_stats.nhs_satisfaction_stats.show_nhs_stats %}
                 <div class="explanation-text">
-                    {% create_list overall_stats.nhs_satisfaction_stats.number_of_students overall_stats.nhs_satisfaction_stats.response_rate as substitutions %}
+                    {% create_list course_details.data_from_html overall_stats.nhs_satisfaction_stats.number_of_students overall_stats.nhs_satisfaction_stats.response_rate as substitutions %}
                     {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                     {{ subbed_text | richtext }}
                 </div>
             {%  endif %}
 
-            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
         {% endif %}
+        </div>
+        <div class="mt-2 d-block d-md-none student-satisfaction__scrolling-wrapper-arrow">
+            <div class="mx-auto">
+                <h6 class="mx-auto">Scroll to the right &nbsp;<i class="fas fa-arrow-right fa-align-center text-center"></i></h6>
+            </div>
+            <hr class="mx-auto"/>
+        </div>
     </div>
+</div>
 {% endfor %}
+</div>

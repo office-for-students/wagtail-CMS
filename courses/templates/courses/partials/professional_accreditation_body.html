@@ -1,22 +1,42 @@
 {% load discover_uni_tags %}
 
 <div class="accreditation__block">
-    <h3 class="accreditation__heading">
-        {{ block.value.section_heading }}
-    </h3>
-
-    {% for accreditation in course_details.accreditations %}
-        <p class="accreditation__body">
-            {{accreditation.display_text}}
-            <a href="{{accreditation.accreditor_url}}">{% get_translation key='find_out_more' language=page.get_language %}</a>
-        </p>
-
-        {% if accreditation.show_dependency %}
-            <p class="accreditation__explanation">
-                {{accreditation.dependent_on_label}}
-
-                <a href="{{accreditation.language_url}}">{% get_translation key='find_out_more' language=page.get_language %}</a>
+    <div class="accreditation__overview my-3 mx-1 p-3 d-flex flex-wrap row">
+        <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
+            <p class="accreditation__overview-lead text-center text-lg-left">
+                {% get_translation key='accreditation_need_to_know' language=page.get_language %}
             </p>
-        {% endif %}
-    {% endfor %}
+        </div>
+        <div class="col-lg-8 col-md-12 align-self-stretch my-auto pt-2 text-center text-lg-left">
+            <p class="accreditation__overview-sublead mb-3"> 
+                {% get_translation key='accreditation_description' language=page.get_language %}
+            </p>
+            <p class="">
+                <a href="{% get_translation key='accreditation_link_url' language=page.get_language %}">{% get_translation key='accreditation_link_label' language=page.get_language %}</a>
+            </p>
+        </div>
+    </div>
+    <div class="accreditation__info p-3 mx-1">
+        <div class="col-sm-10 col-md-9">
+            <h3 class="accreditation__heading mb-4">
+                {{ block.value.section_heading }}
+            </h3>
+
+            {% for accreditation in course_details.accreditations %}
+                <p class="accreditation__body">
+                    {{accreditation.display_text}}
+                    <a href="{{accreditation.accreditor_url}}">{% get_translation key='find_out_more' language=page.get_language %}</a>
+                </p>
+
+                {% if accreditation.show_dependency %}
+                    <p class="accreditation__explanation">
+                        {{accreditation.dependent_on_label}}
+
+                        <a href="{{accreditation.language_url}}">{% get_translation key='find_out_more' language=page.get_language %}</a>
+                    </p>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
 </div>

@@ -2,9 +2,15 @@
 @import '../fonts';
 
 .footer {
-    padding: 50px 31px 39px;
 
     background-color: $ux-grey-1;
+
+    &__section-1-parent{
+        background-color: #FFFFFF;
+    }
+    &__section-2-parent{
+        background-color: #f4f8f8;
+    }
 
     &__items {
         display: flex;
@@ -17,79 +23,71 @@
     }
 
     &__link {
-        @include mobile-body-font--bold-mixin();
-
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #1b2537;
         margin-bottom: 30px;
     }
+    &__link:hover {
+        text-decoration: underline;
+        color: #2a8384;
+    }
+    &__link:active {
+        text-decoration: underline;
+        color: #2a8384;
+    }
+
 
     &__copyright {
-        @include mobile-body-font--bold-mixin();
-
-        margin-top: 24px;
-
-        color: $helper-grey;
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #666666;
     }
 
     &__logo-container {
         display: flex;
         justify-content: center;
-
-        a {
-            text-decoration: none;
-            display:inline-block;
-        }
     }
+
+    &__logo{
+        width: 50%;
+        margin-bottom:2rem;
+    }
+
+    &__logo img {
+        width: 75%;
+    }
+
+    &__logo.footer__logo-ofs img {
+        width: 50%;
+    }
+
+    &__logo.footer__logo-dfeni img {
+        width: 55%;
+    }
+
 
     &__brand-logo {
         display: block;
-        height: 42px;
+        height: 60px;
         margin: auto;
         margin-bottom: 30px;
-        padding: 0px 15% 8px;
-        border-bottom: 1px solid black;
-    }
-
-    &__ofs-logo {
-        height: 42px;
-        margin-bottom: 20px;
-        
-        img { 
-            height: 42px;
-        }
-    }
-
-    &__hefcw-logo {
-        height: 34px;
-        margin-bottom: 20px;
-        margin-left: 25px;
-
-        img {
-            height: 34px;
-        }
-    }
-    &__dfeni-logo {
-        height: 45px;
-        margin-bottom: 20px;
-
-        img {
-            height: 45px;
-        }
-    }
-
-    &__sfc-logo {
-        height: 52px;
-        margin-bottom: 20px;
-        margin-left: 25px;
-
-        img {
-            height: 52px;
-        }
+        padding: 0px 10px 8px;
     }
 
     &__social-media {
         display: flex;
         justify-content: center;
-        flex-direction: column;
 
         a {
             text-decoration: none;
@@ -124,40 +122,24 @@
     }
 
     &__twitter-logo {
-        height: 52px;
-        margin: 13px;
-
-        img {
-            border-radius: 50%;
-            height: 52px;
-        }
+        color:#1f283a;
+        font-size:1.5rem;
     }
 
     &__instagram-logo {
-        height: 52px;
-        margin: 13px;
-
-        img {
-            border-radius: 50%;
-            height: 52px;
-        }
+        color:#1f283a;
+        font-size:1.5rem;
     }
 
     &__facebook-logo {
-        height: 52px;
-        margin: 13px;
-
-        img{
-            border-radius: 50%;
-            height: 52px;
-        }
+        color:#1f283a;
+        font-size:1.5rem;
     }
 
 }
 
 @media only screen and (min-width: 770px) {
     .footer {
-        padding: 75px 0px 65px;
 
         &__items {
             flex-direction: column;
@@ -169,18 +151,26 @@
         }
 
         &__link {
-            @include desktop-body-font-mixin();
-
-            width: 25%;
-            margin-bottom: 46px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #1b2537;
+            margin-bottom:15px;
         }
 
         &__copyright {
-            @include desktop-body-font--bold-mixin();
-
-            margin-top: 9px;
-
-            color: $helper-grey;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #666666;
         }
         
         &__logo-container {
@@ -191,54 +181,30 @@
 
         &__brand-logo {
             display: inline-block;
-            height: 57px;
-            margin-bottom: 35px;
-            padding: 0px 5px 5px 0px;
-            border-right: 1px solid black;
-            border-bottom: none;
+            height: 55px;
+            margin-bottom: 25px;
+            padding: 0px 5px 5px 10px;
         }
 
-        &__ofs-logo {
-            height: 48px;
-            margin-left: 24px;
-            img {
-                height: 48px;
-                margin-bottom: 56px;
-                margin-left: 4px;
-            }    
+        &__logo {
+            width: 25%;
         }
 
-        &__hefcw-logo {
-            height: 36px;
-            
-            img {
-                height: 36px;
-                margin-bottom: 55px;
-            }
+        &__logo img {
+            width: 75%;
         }
 
-        &__dfeni-logo {
-            height: 56px;
-            img{    
-                height: 56px;
-                margin-bottom: 49px;
-                margin-left: 8px;
-            }
+        &__logo.footer__logo-ofs img {
+            width: 50%;
         }
-        
-        &__sfc-logo {
-            height: 68px;
-            margin-left: 10px;
 
-            img{    
-                height: 68px;
-                margin-bottom: 43px;
-            }
+        &__logo.footer__logo-dfeni img {
+            width: 55%;
         }
+
 
         &__social-media {
             display: block;
-            margin-bottom: 20px;
         }
 
         &__connect-text {
@@ -268,30 +234,53 @@
 
 
         &__twitter-logo {
-            height: 52px;
-            margin: 8px 13px 0px 13px;
-            
-            img {    
-                height: 52px;
-            }
+            color:#1f283a;
+            font-size:1.5rem;
         }
 
         &__instagram-logo {
-            height: 52px;
-            margin: 8px 13px 0px 13px;
-         
-            img {
-                height: 52px;
-            }
+            color:#1f283a;
+            font-size:1.5rem;
         }
 
         &__facebook-logo {
-            height: 52px;
-            margin: 8px 13px 0px 26px;
-            
-            img{
-                height: 52px;
-            }
+            color:#1f283a;
+            font-size:1.5rem;
         }
+    }
+}
+
+@media only screen and (max-width: 575px){
+    .footer__section-1, .footer__section-2{
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 576px) and (max-width: 766px){
+    .footer__section-1, .footer__section-2{
+        width: 540px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 767px) and (max-width: 991px){
+    .footer__section-1, .footer__section-2{
+        width: 720px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    .footer__section-1, .footer__section-2{
+        width: 960px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .footer__section-1, .footer__section-2{
+        width: 1140px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
     }
 }

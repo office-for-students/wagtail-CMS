@@ -5,7 +5,7 @@
         this.toggle = $(toggle);
         this.openBtn = $(openBtn);
         this.setup();
-    }
+    };
 
     Filters.prototype = {
         setup: function() {
@@ -34,7 +34,7 @@
 
             this.uniQuery = this.wrapper.find('#institution_query');
             this.courseQuery = this.wrapper.find('#course_query');
-            
+
             var lastSearch = JSON.stringify(this.form.serializeArray());
 
             sessionStorage.setItem("lastSearch", lastSearch);
@@ -48,7 +48,7 @@
                 that.wrapper.toggle();
             });
 
-            
+
             this.openBtn.click(function() {
                 that.wrapper.animate({ "left": 0 }, "slow");
                 that.submitBlock.animate({ "left": 0 }, "slow");
@@ -99,7 +99,7 @@
         },
 
         prepSubjectQuery: function() {
-            var subjectCodes = ""
+            var subjectCodes = "";
             if (this.subjectAreaSelector.val() === null && this.subjectSelector.val() === null) {
                 subjectCodes = "";
             } else if (this.subjectAreaSelector.val() != null && this.subjectSelector.val() === null) {
@@ -149,12 +149,12 @@
                 this.uniQuery.val(selectedUnis);
             }
         }
-    }
+    };
 
     var UniFilter = function(wrapper) {
         this.wrapper = wrapper;
         this.setup();
-    }
+    };
 
     UniFilter.prototype = {
         setup: function() {
@@ -205,8 +205,8 @@
 
         finishInit: function() {
             this.uniList = new UniList(this.unisListWrapper, this.uniData, this.setTotalCount.bind(this),
-            this.setSelectedCount.bind(this));
-            
+                this.setSelectedCount.bind(this));
+
             this.startWatchers();
         },
 
@@ -238,13 +238,13 @@
         getSelectedUnis: function() {
             return this.uniList.getSelectedUnis();
         }
-    }
+    };
 
     var AlphabetToggle = function(input, callback) {
         this.input = input;
         this.callback = callback;
         this.setup();
-    }
+    };
 
     AlphabetToggle.prototype = {
         setup: function() {
@@ -257,11 +257,11 @@
 
             $(this.input).change(function() {
                 if (this.checked) {
-                   that.callback(that.letter);
+                    that.callback(that.letter);
                 }
             })
         }
-    }
+    };
 
     var UniList = function(listWrapper, uniData, totalSetter, selectedSetter) {
         this.listWrapper = listWrapper;
@@ -269,7 +269,7 @@
         this.totalSetter = totalSetter;
         this.selectedSetter = selectedSetter;
         this.setup();
-    }
+    };
 
     UniList.prototype = {
         setup: function() {
@@ -323,7 +323,7 @@
             }
             return selectedUnis.join(',');
         }
-    }
+    };
 
     var Uni = function(uniData, parent, index, selectedSetter, initialSelection) {
         this.uni = uniData;
@@ -332,7 +332,7 @@
         this.selectedSetter = selectedSetter;
         this.initialSelection = initialSelection;
         this.setup();
-    }
+    };
 
     Uni.prototype = {
         setup: function() {
@@ -415,15 +415,60 @@
         isSelected: function() {
             return this.uniInput[0].checked;
         }
-    }
+    };
 
     function init() {
         var filters = $('.filters-wrapper');
         var toggle = $('.course-finder-results__overview-filter-toggle');
         var openBtn = $('.course-finder-results__overview-filter-open');
+
         new Filters(filters[0], toggle[0], openBtn[0]);
     }
 
     $(document).on('page:load', init);
     $(init)
-}(jQuery))
+
+}(jQuery));
+
+$(document).ready(function(){
+    $('#clear-filters').click(function(){
+
+        $('#countries-england').attr('checked', false);
+        $('#countries-ireland').attr('checked', false);
+        $('#countries-scotland').attr('checked', false);
+        $('#countries-wales').attr('checked', false);
+
+        $('#mode-full-time').attr('checked', false);
+        $('#mode-part-time').attr('checked', false);
+        $('#mode-distance').attr('checked', false);
+
+        for (filter_base_name of ['placement', 'foundation', 'abroad']) {
+            $('#'+filter_base_name+'-yes').attr('checked', false);
+            $('#'+filter_base_name+'-no').attr('checked', false);
+            $('#'+filter_base_name+'-either').attr('checked', false);
+        }
+
+        $('#subjectArea').val('disabled');
+        $('#subject').val('disabled');
+        $('#subjectCode').val('default');
+
+        $('#subject_query').val('');
+        $('#postcode_field').val('');
+
+        // Post code radio buttons
+        $("#one").removeAttr("checked");
+        $("#two").removeAttr("checked");
+        $("#three").removeAttr("checked");
+
+        $('#postcode_query').val('');
+
+        $("#first_degree").removeAttr("checked");
+        $("#other_undergraduate").removeAttr("checked");
+
+        $('.filters-block__filter-uni-item-input').each(function() {
+            this.checked = false;
+        });
+
+        $('.filters-block__form').first().submit();
+    });
+});

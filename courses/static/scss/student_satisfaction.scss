@@ -1,210 +1,404 @@
-@import '../../../CMS/static/scss/fonts';
-@import '../../../CMS/static/scss/variables';
+// @import "../../../CMS/static/scss/fonts";
+// @import "../../../CMS/static/scss/variables";
+.lg-chart {
+  display: none;
+}
+.sm-chart {
+  display: block;
+}
+@media only screen and (min-width: 770px) {
+  .lg-chart {
+    display: block;
+  }
+  .sm-chart {
+    display: none;
+  }
+}
 
+@import "../../../CMS/static/scss/fonts";
+@import "../../../CMS/static/scss/variables";
 
 .satisfaction_subject_name {
-    @include m-heading--bold-mixin();
+  @include m-heading--bold-mixin();
 
-    margin-top: 70px;
-    margin-bottom: 0px;
+  margin-top: 70px;
+  margin-bottom: 0px;
 
-    color: $ux-grey-3;
+  color: $brownish-grey;
 
-    &+ .student-satisfaction__overview {
-        margin-top: 30px;
-    }
+  & + .student-satisfaction__overview {
+    margin-top: 30px;
+  }
 }
 
 .student-satisfaction__overview {
-    @include desktop-body-font-mixin();
 
-    padding: 7px 30px 32px 30px;
-    margin-top: 30px;
-    text-align: center;
+  @include desktop-body-font-mixin();
 
-    border: 1px solid $ux-grey-3;
-    border-radius: 10px;
+  #sample-size-text{
+    font-size:14px;
+    font-weight:normal;
+    color: $brownish-grey;
+  }
 
-    .student-satisfaction__overview-lead {
-        @include l-heading-mixin();
+  text-align: center;
+  border: solid 3px $duck-egg-blue;
 
-        color: $gradient-light-green;
-        line-height: 59px;
-    }
+  .student-satisfaction__intro .rich-text p {
+    @include s-heading-mixin();
+    font-size: 14px;
+    color: $brownish-grey;
+    font-weight: normal;
+  }
 
-    p {
-        margin: 0px;
-    }
+  .student-satisfaction__intro .rich-text {
+    @include s-heading-mixin();
+    font-size: 14px;
+    color: $brownish-grey;
+    font-weight: normal;
+  }
+
+  .student-satisfaction__intro .rich-text a {
+    color: #308282;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .student-satisfaction__overview-lead {
+    @include l-heading-mixin();
+    font-family: "Nunito Sans", sans-serif;
+    color: #000000;
+    font-weight: normal;
+    font-size: 32px;
+  }
+
+  p {
+    margin: 10px;
+    font-size: 18px;
+    letter-spacing: normal;
+    line-height: normal;
+    font-weight:normal;
+  }
 }
 
 .student-satisfaction__block {
-    padding: 26px 15px 60px;
+
+  #sample-size-text{
+    font-size:14px;
+    font-weight:normal;
+    color:$brownish-grey;
+  }
+
+  .rich-text{
+    font-size:14px;
+    font-weight:normal;
+    color:$brownish-grey;
+  }
+
+  .student-satisfaction__intro {
+    @include small-font-mixin();
+
+    text-align: center;
+
+    color: $brownish-grey;
+
+    p {
+      margin: 0;
+    }
+    a {
+      color: #308282;
+      font-weight: normal;
+      text-decoration: underline;
+    }
+
+    .student-satisfaction__nss_logo {
+      margin-top: 5px;
+    }
+  }
+
+  .student-satisfaction__data-group {
+    margin-top: 24px;
+    margin-bottom: 5px;
+    background-color: $divider-grey;
+    padding: 10px;
+
+    .student-satisfaction__data-group-heading {
+      @include xs-heading-mixin();
+      font-weight: normal;
+      text-align: center;
+      font-size:18px;
+      // background-color: $divider-grey;
+      color: #000000;
+
+      p {
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: $brownish-grey;
+        padding-bottom: 0;
+      }
+      a {
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        text-decoration: underline;
+        line-height: normal;
+        letter-spacing: normal;
+        color: $dark-green-blue;
+        padding-bottom: 0;
+      }
+    }
+
+    .student-satisfaction__charts {
+      display: flex;
+      flex-wrap: wrap;
+
+      .entry-information__chart-label {
+        @include small-font-mixin();
+        font-family: "Nunito Sans", sans-serif;
+        display: block;
+        margin-top: 7px;
+        color: #666666;
+        font-weight:normal;
+        font-size:14px;
+      }
+
+      .student-satisfaction__chart-wrapper {
+        width: 100%;
+        margin-bottom: 10px;
+        .student-satisfaction__chart {
+          .doughnut-chart .highcharts-plot-border {
+            fill: #f2f2f2 !important;
+          }
+
+          margin-bottom: 38px;
+
+          .student-satisfaction__chart-title {
+            @include small-font--bold-mixin();
+            font-size:14px;
+            text-align: center;
+            margin-bottom: 0;
+            margin-top: 14px;
+            font-weight: normal;
+            color: #666666;
+            
+          }
+          .rich-text p{
+            font-family: "Nunito Sans", sans-serif;
+          }
+        }
+      }
+    }
+  }
+}
+
+.student-satisfaction__scrolling-wrapper-arrow{
+    font-family: "Nunito Sans", sans-serif;
+    color: #4a4a4a;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: center;
+
+    hr{
+      border: none; 
+      height: 5px; 
+      background: #368382; 
+      width:25vw;
+      margin-top:0;
+      margin-bottom:0;
+    }
+} 
+
+@media only screen and (min-width: 770px) {
+  .student-satisfaction__overview #sample-size-text {
+    font-size: 16px;
+  }
+  .student-satisfaction__block {
+
+    #sample-size-text {
+      font-size: 16px;
+      font-weight: normal;
+      color: $brownish-grey;
+      text-align: left;
+    }
+
+    .rich-text {
+      font-size: 16px;
+      font-weight: normal;
+      color: $brownish-grey;
+    }
+  }
+  .student-satisfaction__overview {
+    // padding: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+
+    .student-satisfaction__intro .rich-text p {
+      font-size:16px;
+      color: $brownish-grey;
+      font-weight: normal;
+    }
+    .student-satisfaction__intro .rich-text {
+      @include s-heading-mixin();
+      font-size: 16px;
+      color: $brownish-grey;
+      font-weight: normal;
+    }
+
+    .student-satisfaction__intro .rich-text a {
+      color: #308282;
+      font-weight: 600;
+      text-decoration: underline;
+      font-size: 16px;
+    }
+
+    .student-satisfaction__overview-lead {
+      @include xl-heading-mixin();
+      font-family: "Nunito Sans", sans-serif;
+      color: #000000;
+      font-weight: normal;
+      font-size: 48px;
+    }
+
+    p {
+      @include s-heading-mixin();
+      margin-left: 5px;
+      margin-right: 5px;
+      font-size: 28px;
+      font-weight: normal;
+    }
+  }
+
+  .student-satisfaction__block {
 
     .student-satisfaction__intro {
+      @include small-font-mixin();
+
+      text-align: center;
+      padding-left: 150px;
+      padding-right: 150px;
+
+      color: $brownish-grey;
+
+      p {
         @include small-font-mixin();
 
-        text-align: center;
+        margin: 0;
+      }
+      a {
+        color: #308282;
+        font-weight: 400;
+        text-decoration: underline;
+      }
 
-        color: $ux-grey-2;
+      .student-satisfaction__nss_logo {
+        margin-top: 5px;
+      }
 
-        p {
-            margin: 0;
-        }
-
-        .student-satisfaction__nss_logo {
-            margin-top: 5px;
-        }
     }
 
     .student-satisfaction__data-group {
-        margin-top: 34px;
-        margin-bottom: 23px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      // padding: 1rem;
 
-        .student-satisfaction__data-group-heading {
-            @include xs-heading-mixin();
+      .student-satisfaction__data-group-heading {
+        text-align: left;
+        @include s-heading-mixin();
+        font-weight: normal;
+        margin-top: 0px;
+        margin-bottom: 16px;
+        padding-top: 2rem;
+        font-size:32px;
+        color: #000000;
 
-            margin-top: 0px;
-            margin-bottom: 26px;
-            padding: 30px 0px;
-            text-align: center;
-
-            background-color: $divider-grey;
-            color: $ux-grey-3;
+        p{
+          font-size:16px;
+          font-weight:normal;
         }
+        a {
+          font-size: 16px;
+        }
+      }
 
-        .student-satisfaction__charts {
-            display: flex;
-            flex-wrap: wrap;
+      .student-satisfaction__charts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
 
-            .student-satisfaction__chart-wrapper {
-                width: 50%;
-  
-                &:nth-child(odd) {
-                    .student-satisfaction__chart  {
-                        padding-right: 13px;
-                    }
-                }
+        .entry-information__chart-label {
+          @include small-font-mixin();
+          font-family: "Nunito Sans", sans-serif;
+          display: block;
+          margin-top: 7px;
+          color: #666666;
+          font-weight:normal;
+          font-size:18px;
+        }
+        .student-satisfaction__chart-wrapper {
+          width: 25%;
+          margin-bottom: 0;
+          .student-satisfaction__chart {
+            .student-satisfaction__chart-title {
+              @include small-font--bold-mixin();
 
-                &:nth-child(even) {
-                    .student-satisfaction__chart  {
-                        padding-left: 13px;
-                    }
-                }
-          
-                .student-satisfaction__chart {
-                    margin-bottom: 38px;
-
-                    .student-satisfaction__chart-title {
-                        @include small-font--bold-mixin();
-
-                        text-align: center;
-                        margin-bottom: 0;
-                        margin-top: 18px;
-
-                        color: $ux-grey-2;
-                    }
-                }
+              font-size: 18px;
+              font-weight: normal;
+              color: #666666;
+              margin-left:0.5rem;
+              margin-right:0.5rem;
             }
+          }
         }
+      }
     }
+  }
+
+  .highcharts-container tspan {
+    fill: #358282;
+    font-weight: 600;
+  }
+  .student-satisfaction__chart .discover-uni-chart .doughnut .doughnut-chart {
+    width: 139px;
+    height: 142px;
+    background-image: linear-gradient(
+      to right,
+      #4fa37e 0%,
+      #42957f 36%,
+      #368382 100%
+    );
+  }
 }
 
-@media only screen and (min-width: 770px) {
-    .student-satisfaction__overview {
-        padding: 68px 150px 72px;
-        margin-top: 70px;
-        text-align: center;
-
-        .student-satisfaction__overview-lead {
-            @include xl-heading-mixin();
-
-            margin-bottom: 16px;
-
-            color: $gradient-light-green;
-            line-height: 59px;
-        }
-
-        p {
-            @include s-heading-mixin();
-
-            margin: 0px;
-        }
+@media only screen and (max-width: 770px) {
+  .scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  
+    .student-satisfaction__data-group {
+      flex: 0 0 85vw;
+      // flex: auto;
     }
 
-    .student-satisfaction__block {
-        padding: 50px 15px 60px;
-
-        .student-satisfaction__intro {
-            @include small-font-mixin();
-
-            text-align: center;
-            padding-left: 150px;
-            padding-right: 150px;
-
-            color: $ux-grey-2;
-
-            p {
-                @include small-font-mixin();
-
-                margin: 0;
-            }
-
-            .student-satisfaction__nss_logo {
-                margin-top: 5px;
-            }
-        }
-
-        .student-satisfaction__data-group {
-            margin-top: 34px;
-            margin-bottom: 59px;
-
-            .student-satisfaction__data-group-heading {
-                @include s-heading-mixin();
-
-                margin-top: 0px;
-                margin-bottom: 36px;
-
-                background-color: $divider-grey;
-                color: $ux-grey-3;
-            }
-
-            .student-satisfaction__charts {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-
-                .student-satisfaction__chart-wrapper {
-                    width: 25%;
-                    
-                    &:nth-child(odd) {
-                        .student-satisfaction__chart  {
-                            padding-right: 10px;
-                        }
-                    }
-
-                    &:nth-child(even) {
-                        .student-satisfaction__chart  {
-                            padding-left: 10px;
-                        }
-                    }
-                    
-                    .student-satisfaction__chart {
-                        margin-bottom: 38px;
-                        padding-right: 10px;
-                        padding-left: 10px;
-
-                        .student-satisfaction__chart-title {
-                            @include small-font--bold-mixin();
-
-                            text-align: center;
-                            margin-bottom: 0;
-                            margin-top: 18px;
-
-                            color: $ux-grey-2;
-                        }
-                    }
-                }
-            }
-        }
+    .student-satisfaction__data-group:last-child{
+      margin-right:10px
     }
+    .student-satisfaction__data-group:first-child{
+      margin-left:10px
+    }
+  }
+  .scrolling-wrapper {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }

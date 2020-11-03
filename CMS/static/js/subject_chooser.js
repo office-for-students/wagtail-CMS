@@ -25,26 +25,15 @@
             var that = this;
 
             var currentVersion = $('meta[name=codeversion]')[0].content;
-            var isCurrentVersionStored = localStorage.getItem("version") === currentVersion;
-
-            if (!isCurrentVersionStored || localStorage.getItem("subjectJSON") === null) {
-            if (localStorage.getItem("subjectJSON") === null) {
-                $.getJSON("/static/jsonfiles/subject-codes.json", function(result) {
-                    result.sort(function(a, b){
-                        if (a.english_name < b.english_name) { return -1; }
-                        if (a.english_name > b.english_name) { return 1; }
-                        return 0;
-                    });
-
-                    localStorage.setItem("subjectJSON", JSON.stringify(result));
-
-                    that.subjectData = result;
-                    that.initialiseSelectors();
-                })
-            } else {
-                this.subjectData = JSON.parse(localStorage.getItem("subjectJSON"));
-                this.initialiseSelectors();
-            }
+            $.getJSON("/static/jsonfiles/subjects.json", function(result) {
+                result.sort(function(a, b){
+                    if (a.english_name < b.english_name) { return -1; }
+                    if (a.english_name > b.english_name) { return 1; }
+                    return 0;
+                });
+                that.subjectData = result;
+                that.initialiseSelectors();
+            })
         },
 
         initialiseSelectors: function() {

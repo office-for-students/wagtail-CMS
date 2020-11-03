@@ -2,8 +2,10 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from django.db.models.fields import TextField
+from institutions.models import InstitutionList
 
 from core.models import DiscoverUniBasePage
+import json
 
 
 NAV_ICON_OPTIONS = (
@@ -30,6 +32,14 @@ class HomePage(DiscoverUniBasePage):
 
     header = TextField(blank=True)
     intro = RichTextField(blank=True)
+    course_wizard_link = TextField(blank=True)
+    box_1_title = TextField(blank=True)
+    box_1_content = TextField(blank=True)
+    box_1_link = TextField(blank=True)
+    box_2_title = TextField(blank=True)
+    box_2_content = TextField(blank=True)
+    box_2_link = TextField(blank=True)
+    box_3_link = TextField(blank=True)
     page_links = StreamField([
         ('link', blocks.StructBlock([
             ('page', blocks.PageChooserBlock()),
@@ -40,8 +50,29 @@ class HomePage(DiscoverUniBasePage):
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
         FieldPanel('intro', classname="full"),
+        FieldPanel('course_wizard_link', classname="full"),
+        FieldPanel('box_1_title', classname="full"),
+        FieldPanel('box_1_content', classname="full"),
+        FieldPanel('box_1_link', classname="full"),
+        FieldPanel('box_2_title', classname="full"),
+        FieldPanel('box_2_content', classname="full"),
+        FieldPanel('box_2_link', classname="full"),
+        FieldPanel('box_3_link', classname="full"),
         StreamFieldPanel('page_links', classname="full"),
     ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['page'] = self
+        context['english_url'] = self.get_english_url()
+        context['welsh_url'] = self.get_welsh_url()
+        context['cookies_accepted'] = request.COOKIES.get('discoverUniCookies')
+        context['load_error'] = request.GET.get('load_error', '')
+        context['error_type'] = request.GET.get('error_type', '')
+
+        context['institutions_list'] = InstitutionList.get_options()[self.get_language()]
+       
+        return context
 
 
 class UserNavPage(DiscoverUniBasePage):

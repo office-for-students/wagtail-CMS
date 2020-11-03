@@ -167,6 +167,20 @@ class CourseFinderResults(DiscoverUniBasePage):
         FieldPanel('related_links_title'),
         StreamFieldPanel('related_links', classname="full"),
     ]
+    
+    def get_context(self, request):
+        context = super(CourseFinderResults, self).get_context(request)
+        context['search_url'] = self.get_search_url()
+        context['course_finder_url'] = get_page_for_language(self.get_language(),
+                                                             CourseFinderChooseCountry.objects.all()).url
+        context['institutions_list'] = InstitutionList.get_options()[self.get_language()]
+
+        return context
+
+    def get_search_url(self):
+        if self.get_language() == enums.languages.WELSH:
+            return "/%s/course-finder/results/" % self.get_language()
+        return '/course-finder/results/'
 
 
 class BaseSearch:

@@ -118,9 +118,8 @@
 
                 <div class="filters-block__filter">
                     <h2 class="filters-block__filter-heading">
-                        {% get_translation key='subject' language=page.get_language %}
+                        {% get_translation key='subject_at_least_two' language=page.get_language %}
                     </h2>
-
                     {% include 'partials/subject_selector.html' %}
 
                     <input hidden id="subject_query" name="subject_query" type="text" value="{{filter_form.courses}}" />
@@ -228,7 +227,7 @@
 
                             {{ page.qualification_helper_text|richtext }}
                         </div>
-                        
+
                         <input hidden id="qualification_query" name="qualification_query" type="text" value="" />
                     </div>
 
