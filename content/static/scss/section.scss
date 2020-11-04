@@ -50,7 +50,6 @@
 
             &-content {
                 @include small-font-mixin();
-
                 padding: 30px;
 
                 h3 {
@@ -171,9 +170,6 @@
             &-body {
                 &-content {
                     @include xs-heading-mixin();
-
-                    width: 66%;
-
                     padding: 60px 80px 70px;
 
                     h3 {
