@@ -123,6 +123,10 @@ DICT = {
         'en': 'bookmarked courses',
         'cy': 'cyrsiau a nodwyd'
     },
+    'bookmark_courses_link': {
+        'en': './bookmarks-manage/',
+        'cy': '.rheoli-nodau-tudalen/'
+    },
     'break_from_studies': {
         'en': 'Are taking a break from their studies',
         'cy': 'Yn cymryd egwyl o astudio'
@@ -500,6 +504,10 @@ DICT = {
     'hnd': {
         'en': 'Higher National Diploma (HND)',
         'cy': ''
+    },
+    'home_page_video_link':{
+        'en': 'https://www.youtube.com/embed/4AmezarRQKc',
+        'cy': 'https://www.youtube.com/embed/tfodsrNWEOs'
     },
     'how_improve': {
         'en': 'Please tell us about your experience',
@@ -1463,8 +1471,8 @@ DICT = {
         'cy': "Fideo ar bwnc perthnasol"
     },
      'video_on_topic_content': {
-        'en': '5 mins long',
-        'cy': "5 munud o hyd"
+        'en': '2 mins long',
+        'cy': "2 funud o hyd"
     },
      'course_details_joint_overview_1': {
         'en': 'What you need to know about this course',
@@ -1553,6 +1561,14 @@ DICT = {
     'employment_type_unknown': {
         'en': 'Percentage of those employed after finishing the course but employment type is not known',
         'cy': "Canran y rhai a gyflogir ar ôl gorffen y cwrs ond nad ydym yn gwybod pa fath o swydd sydd ganddynt"
+    },
+    'prov_pc_text_template_go': {
+        'en': '<div><p>{}% of UK-resident {} graduates from {} are employed in {}</p></div>',
+        'cy': "<div><p>Mae {}% o raddedigion {} yn {} sy’n preswylio yn y DU wedi'u cyflogi yn {}</p></div>"
+    },
+    'prov_pc_text_template_leo': {
+        'en': '<div><p>{}% of UK-resident {} graduates from {} are based in {}</p></div>',
+        'cy': "<div><p>Mae {}% o raddedigion {} yn {} sy’n preswylio yn y DU wedi'u lleoli yn {}</p></div>"
     },
 
 }

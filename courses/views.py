@@ -42,12 +42,12 @@ def regional_earnings(request):
 
         if language == 'cy':
             # inst_prov_pc_delimiter_go = "wedi'u cyflogi yn"
-            inst_prov_pc_delimiter_go = "wedi'u lleoli yn"
+            inst_prov_pc_delimiter_go = "wedi'u cyflogi yn"
             inst_prov_pc_delimiter_leo = "wedi'u lleoli yn"
             inst_prov_pc_prefix = "Mae "
         else:
             # inst_prov_pc_delimiter_go = "are employed in"
-            inst_prov_pc_delimiter_go = "are based in"
+            inst_prov_pc_delimiter_go = "are employed in"
             inst_prov_pc_delimiter_leo = "are based in"
             inst_prov_pc_prefix = ""
 

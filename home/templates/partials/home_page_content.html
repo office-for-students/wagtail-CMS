@@ -65,7 +65,7 @@
     <div class="home-page__bookmark-body col-11 p-2 px-4">
         <div class="row pl-lg-5 pl-sm-5">
             <h4 class="text-white pt-2">{% get_translation key='n_courses_bookmarked_pt_1' language=page.get_language %} <span class="count home-page__bookmark-circle"></span> {% get_translation key='n_courses_bookmarked_pt_2' language=page.get_language %} &nbsp; &nbsp;</h4>
-            <h4 class="pt-2"><a class="home-page__bookmark-link" href="./bookmarks-manage/">{% get_translation key='view_your_courses' language=page.get_language %}</a></h4>
+            <h4 class="pt-2"><a class="home-page__bookmark-link" href="{% get_translation key='bookmark_courses_link' language=page.get_language %}">{% get_translation key='view_your_courses' language=page.get_language %}</a></h4>
         </div>
     </div>
 </div>
@@ -88,7 +88,7 @@
                     <h5>{{ page.box_2_content }}</h5>
                 </div>
                 <div class="col-4 px-4 mt-4 dash-vertical-left">
-                    <iframe class="mt-2 mb-3 video-iframe" src="https://www.youtube.com/embed/xw1JPx3MJSo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe class="mt-2 mb-3 video-iframe" src="{% get_translation key='home_page_video_link' language=page.get_language %}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <h4>{% get_translation key='how_to_search_for_course' language=page.get_language %}</h4>
                     <h5>{% get_translation key='video_on_topic_content' language=page.get_language %}</h5>
                 </div>
@@ -135,8 +135,9 @@
                 <hr class="dash" />
             </div>
 
+
             <div class="col-12 pb-3">
-                <iframe class="video-iframe my-3" src="https://www.youtube.com/embed/xw1JPx3MJSo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe class="video-iframe my-3" src="{% get_translation key='home_page_video_link' language=page.get_language %}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <h4>{% get_translation key='video_on_topic_title' language=page.get_language %}</h4>
                 <h5>{% get_translation key='video_on_topic_content' language=page.get_language %}</h5>
                 <div class="my-4 justify-content-center">

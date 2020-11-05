@@ -107,7 +107,7 @@
                         <div class="mt-3">
                             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=perceptions_stats.display_unavailable_info %}
                         </div>
-                    {% else %}
+                    {% elif i == 0 %}
                         <div class="mt-3">
                             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_earnings_info %}
                         </div>

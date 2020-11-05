@@ -12,7 +12,7 @@
 
     {% if course1_subject_name or course2_subject_name %}
 
-        {# if course.show_salary_lead #}
+        {% if i == 0 %}
             <div class="earnings-after-course__lead my-3 p-1 p-xl-2 mx-1 flex-wrap">
                 <div class="row">
                     <div class="col-lg-4 col-md-12 px-4 earnings-after-course__lead-title align-self-stretch my-auto text-lg-left text-center">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-        {# endif #}
+        {% endif %}
 
         <div class="one-year__block">
             <div class="comparison__course-columns">
@@ -258,26 +258,29 @@
                                                             {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
                                                             {{ subbed_text | richtext }}
                                                         </h4>
-                                                        {# get_translation key='default_region' language=page.get_language as default_region #}
-                                                        <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
-                                                            {% if salary_index == 0 %}
-                                                                {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course_details.english_title course_details.institution.pub_ukprn_name course_details.default_region as substitutions %}
-                                                            {% elif salary_index == 1 and salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc != None %}
+
+                                                        {% get_translation key='prov_pc_text_template_go' language=page.get_language as prov_pc_text_template_go %}
+                                                        {% get_translation key='prov_pc_text_template_leo' language=page.get_language as prov_pc_text_template_leo %}
+                                                        {% if salary_index == 0 and salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc != None %}
+                                                            <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
+                                                                {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                                                {% insert_values_to_plain_text content=prov_pc_text_template_go substitutions=substitutions as subbed_text %}
+                                                                {{ subbed_text | richtext }}
+                                                            </h4>
+                                                        {% elif salary_index == 1 and salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc != None %}
+                                                            <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
                                                                 {% create_list salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name course.default_region as substitutions %}
-                                                            {% elif salary_index == 1 %}
-                                                                {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course_details.english_title course_details.institution.pub_ukprn_name course_details.default_region as substitutions %}
-                                                            {% elif salary_index == 2 and salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc != None %}
+                                                                {% insert_values_to_plain_text content=prov_pc_text_template_leo substitutions=substitutions as subbed_text %}
+                                                                {{ subbed_text | richtext }}
+                                                            </h4>
+                                                        {% elif salary_index == 2 and salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc != None %}
+                                                            <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
                                                                 {% create_list salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name course.default_region as substitutions %}
-                                                            {% else %}
-                                                                {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course_details.english_title course_details.institution.pub_ukprn_name course_details.default_region as substitutions %}
-                                                            {% endif %}
-                                                            {% if salary_index == 0 %}
-                                                                {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
-                                                            {% else %}
-                                                                {% insert_values_to_rich_text content=block.value.respondents_live_in_explanation substitutions=substitutions as subbed_text %}
-                                                            {% endif %}
-                                                            {{ subbed_text | richtext }}
-                                                        </h4>
+                                                                {% insert_values_to_plain_text content=prov_pc_text_template_leo substitutions=substitutions as subbed_text %}
+                                                                {{ subbed_text | richtext }}
+                                                            </h4>
+                                                        {% endif %}
+
                                                         <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3">
                                                             {% if salary_index == 0 %}
                                                                 {% create_list course.data_from_html_average_earnings_year_range course.go_year_range as substitutions %}
@@ -571,21 +574,33 @@
                             $("#leo5_sector_unavail_" + subjectCode + "_" + leftOrRight).show();
                         }
 
-                        //var graduates_text = sector_salary_graduates_0.innerText;
                         var liveInDelimiterGo = String(data['inst_prov_pc_delimiter_go']);
                         var liveInDelimiterLeo = String(data['inst_prov_pc_delimiter_leo']);
-                        var graduates_text_go = $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight).text();
-                        var graduates_text_leo = $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight).text();
-                        graduates_text_go = graduates_text_go.substring(graduates_text_go.indexOf('%'), graduates_text_go.length);
-                        graduates_text_go = graduates_text_go.substring(0, graduates_text_go.indexOf(liveInDelimiterGo) + liveInDelimiterGo.length);
-                        graduates_text_leo = graduates_text_leo.substring(graduates_text_leo.indexOf('%'), graduates_text_leo.length);
-                        graduates_text_leo = graduates_text_leo.substring(0, graduates_text_leo.indexOf(liveInDelimiterLeo) + liveInDelimiterLeo.length);
-                        if (data['salary_sector_15_med'])
-                            $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_go'] + graduates_text_go + " " + data['region_full_name']);
-                        if (data['salary_sector_3_med'])
-                            $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo3'] + graduates_text_leo + " " + data['region_full_name']);
-                        if (data['salary_sector_5_med'])
-                            $("#sector_salary_graduates_2_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo5'] + graduates_text_leo + " " + data['region_full_name']);
+
+                        var graduates_text_go = $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight);
+                        if (graduates_text_go) {
+                            graduates_text_go = $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight).text();
+                        }
+
+                        var graduates_text_leo = $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight);
+                        if (graduates_text_leo) {
+                            graduates_text_leo = $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight).text();
+                        }
+
+                        if (graduates_text_go) {
+                            graduates_text_go = graduates_text_go.substring(graduates_text_go.indexOf('%'), graduates_text_go.length);
+                            graduates_text_go = graduates_text_go.substring(0, graduates_text_go.indexOf(liveInDelimiterGo) + liveInDelimiterGo.length);
+                            if (data['salary_sector_15_med'])
+                                $("#sector_salary_graduates_0_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_go'] + graduates_text_go + " " + data['region_full_name']);
+                        }
+                        if (graduates_text_leo) {
+                            graduates_text_leo = graduates_text_leo.substring(graduates_text_leo.indexOf('%'), graduates_text_leo.length);
+                            graduates_text_leo = graduates_text_leo.substring(0, graduates_text_leo.indexOf(liveInDelimiterLeo) + liveInDelimiterLeo.length);
+                            if (data['salary_sector_3_med'])
+                                $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo3'] + graduates_text_leo + " " + data['region_full_name']);
+                            if (data['salary_sector_5_med'])
+                                $("#sector_salary_graduates_2_" + subjectCode + "_" + leftOrRight + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo5'] + graduates_text_leo + " " + data['region_full_name']);
+                        }
                     },
                     error: function (request, status, error) {
                         //alert(request.responseText);
