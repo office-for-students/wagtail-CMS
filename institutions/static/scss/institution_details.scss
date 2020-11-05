@@ -277,3 +277,39 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 575px){
+    .institution-details{
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 576px) and (max-width: 766px){
+    .institution-details{
+        width: 540px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 767px) and (max-width: 991px){
+    .institution-details{
+        width: 720px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    .institution-details{
+        width: 960px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .institution-details{
+        width: 1140px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
+    }
+}
