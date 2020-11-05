@@ -133,9 +133,9 @@
                             </div>
                             </div>
                         </div>
-                    {% elif course.continuation_stats and course.continuation_stats.0.display_unavailable_info %}
+                    {% elif i == 0 and course.continuation_stats and course.continuation_stats.0.display_unavailable_info %}
                         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.continuation_stats.0.display_unavailable_info %}
-                    {% else %}
+                    {% elif i == 0 %}
                         {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course.display_no_data %}
                     {% endif %}                    <!-- ********************************************** -->
                 </div>

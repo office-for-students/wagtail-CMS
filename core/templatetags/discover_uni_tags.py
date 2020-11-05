@@ -174,7 +174,6 @@ def get_region_list():
         regions = f.read()
     return json.loads(regions)
 
-
 @register.simple_tag
 def concat(*args, **_):
     concat_string = ""
@@ -182,11 +181,6 @@ def concat(*args, **_):
         concat_string += str(arg)
     return concat_string
 
-# @register.simple_tag
-# def get_prov_pc_verb(value, data_source):
-#     value2 = value.deepcopy()
-#     if data_source == "go":
-#         value2.source = value2.source.replace("based", "fish")
-#     else:
-#         value2.source = value2.source.replace("employed", "based")
-#     return value2
+@register.simple_tag
+def insert_values_to_plain_text(*_, **kwargs):
+    return kwargs.get('content').format(*kwargs.get('substitutions'))

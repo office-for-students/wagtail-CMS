@@ -194,7 +194,7 @@
                                     </div>  
                                 </div>
                             {% endif %}
-                        {% else %}
+                        {% elif i == 0 %}
                             <div class="entry-information__qualification-charts px-1 px-lg-3 py-3 d-flex flex-wrap row mx-1 my-3">
                                 <div class="col-12">
                                     <h2 class="entry-information__heading py-2">{{block.value.qualification_heading}}
@@ -273,7 +273,7 @@
                                     </div>
                                 </div>
                             </div>
-                        {% else %}
+                        {% elif i == 0 %}
                             <div class="entry-information__block my-2">
                                 <div class="entry-information__ucas-points p-3 d-flex flex-wrap row mx-1">
                                     <div class="col-12 my-auto">
