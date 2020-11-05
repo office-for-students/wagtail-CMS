@@ -2,7 +2,14 @@
 @import '../../../CMS/static/scss/variables';
 @import '../../../CMS/static/scss/buttons';
 
+
 .institution-details {
+    font-family: "Nunito Sans", sans-serif;
+    &__qa-report-link, &__tef-report-link{
+        color: #2a8384;
+        text-decoration: underline;
+        font-weight:normal;
+    }
     .institution-details__lead {
         text-align: center;
         margin-top: 28px;
@@ -16,8 +23,12 @@
 
         .institution-details__name {
             @include desktop-body-font--bold-mixin();
-
+            margin-top: 17px;
             margin-bottom: 27px;
+        }
+
+        .overview-block{
+            padding:10px;
         }
 
         .institution-details__overview {
@@ -26,24 +37,29 @@
             justify-content:space-between;
             justify-content: space-evenly;
 
-            margin: 0px 0px 40px;
+            margin: 10px 10px 40px;
+
+            .row-flex {
+                display: flex;
+                flex-wrap: wrap;
+            }
 
             .institution-details__overview-item {
 
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                width: 135px;
                 padding: 20px 15px;
                 margin-bottom: 14px;
-
+                height:100%;
                 background-color: $divider-grey;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 .institution-details__overview-item-heading {
+                    
                     @include xs-heading-mixin();
                     margin: 0px;
                     margin-bottom: 5px;
+                    text-align: center;
                 }
 
                 .institution-details__overview-item-value {
@@ -51,10 +67,12 @@
                     margin: 0px;
 
                     color: $ux-grey-2;
+                    text-align: center;
                 }
 
                 a.institution-details__overview-item-value {
                     color: $link-blue;
+                    text-align: center;
                 }
             }
         }
@@ -199,7 +217,7 @@
 
             .institution-details__name {
                 @include m-heading--bold-mixin();
-
+                margin-top:25px;
                 margin-bottom: 40px;
             }
 
@@ -207,21 +225,17 @@
                 margin-bottom: 50px;
 
                 .institution-details__overview-item {
-                    width: 190px;
                     padding: 30px 15px;
                     margin-bottom: 0px;
 
                     .institution-details__overview-item-heading {
                         @include xs-heading-mixin();
-
                         margin-bottom: 10px;
                     }
 
                     .institution-details__overview-item-value {
                         @include desktop-body-font--bold-mixin();
-
                         color: $ux-grey-2;
-                        width: 190px;
                     }
                 }
             }
