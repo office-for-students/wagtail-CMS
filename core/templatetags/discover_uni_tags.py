@@ -127,15 +127,17 @@ def get_index(index, view_list):
 @register.simple_tag
 def get_course_name(course, is_english):
     name = ''
-    if course.get('qualification'):
-        name += course.get('qualification') + ' '
-    if course.get('honours_award') and course.get('honours_award') == 1:
-        name += '(Hons) '
-    title = course.get('title')
-    if title and is_english:
-        name += title.get('english') if title.get('english') else title.get('welsh')
-    else:
-        name += title.get('welsh') if title.get('welsh') else title.get('english')
+
+    if course.get('title') and course.get('title')['english']:
+        if course.get('qualification'):
+            name += course.get('qualification') + ' '
+        if course.get('honours_award') and course.get('honours_award') == 1:
+            name += '(Hons) '
+        title = course.get('title')
+        if title and is_english:
+            name += title.get('english') if title.get('english') else title.get('welsh')
+        else:
+            name += title.get('welsh') if title.get('welsh') else title.get('english')
     return name
 
 
