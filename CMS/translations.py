@@ -125,7 +125,7 @@ DICT = {
     },
     'bookmark_courses_link': {
         'en': './bookmarks-manage/',
-        'cy': '.rheoli-nodau-tudalen/'
+        'cy': './rheoli-nodau-tudalen/'
     },
     'break_from_studies': {
         'en': 'Are taking a break from their studies',
