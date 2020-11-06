@@ -7,7 +7,7 @@
             <li class="course-detail__nav-control">
                 <form method="post" id="back_to_search" {% if page.is_english %}
                       action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %}>
-                    <span id='course-detail__nav-control-back' style="visibility: visible;" type="submit" onclick="window.history.go(-1);">
+                    <span id='course-detail__nav-control-back' style="visibility: visible;" type="submit" onclick="window.history.back();">
                         <i class="fas fa-angle-left"></i>
                         {% get_translation key='back_to_results' language=page.get_language %}
                     </span>
