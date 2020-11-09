@@ -5,8 +5,8 @@
 {% for i in max_subject_names_length|times %}
     {% get_index i course1.salary_aggregates as course1_salary_aggregate %}
     {% get_index i course2.salary_aggregates as course2_salary_aggregate %}
-    {% define course1_salary_aggregate.display_subject_name as course1_subject_name %}
-    {% define course2_salary_aggregate.display_subject_name as course2_subject_name %}
+    {% define course1_salary_aggregate.display_subject_name_earnings_tabs as course1_subject_name %}
+    {% define course2_salary_aggregate.display_subject_name_earnings_tabs as course2_subject_name %}
 
     {% define forloop.counter0 as subject_index %}
 

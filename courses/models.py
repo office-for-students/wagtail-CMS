@@ -2174,6 +2174,15 @@ class SalariesAggregate:
             subject_name = self.subject_welsh + " " + mode if self.subject_welsh else mode + " " + self.subject_english
         return subject_name
 
+    def display_subject_name_earnings_tabs(self):
+        mode = self.mode.lower()
+
+        if self.display_language == enums.languages.ENGLISH:
+            subject_name = self.subject_english if self.subject_english else self.subject_welsh
+        else:
+            subject_name = self.subject_welsh if self.subject_welsh else self.subject_english
+        return subject_name
+
     def display_no_data_info(self):
         unavailable = {}
 
