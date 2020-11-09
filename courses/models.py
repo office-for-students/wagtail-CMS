@@ -1998,7 +1998,9 @@ class SectorSalary:
                 self.unavail_text_region_is_ni_welsh = ""
 
     def display_unavailable_info(self, language=enums.languages.ENGLISH):
-        self.display_language = language
+        if not self.display_language or self.display_language == "":
+            self.display_language = language
+
         unavailable = {}
 
         if self.unavailable_reason_region_not_exists:
@@ -2090,8 +2092,8 @@ class SalariesAggregate:
         # TODO: read these values from the course JSON.
         salary_substitute.unavailable_reason_region_not_nation_english = "No data available\n\nSorry, this data is not available at this level."
         salary_substitute.unavailable_reason_region_not_nation_welsh = "Nid oes data ar gael\n\nNid yw'r data hwn ar gael ar gyfer y lefel hon."
-        salary_substitute.unavailable_reason_region_is_ni_english = "No data available\n\nSorry, this data is not available for Northern Ireland."
-        salary_substitute.unavailable_reason_region_is_ni_welsh = "Nid oes data ar gael\n\nYn anffodus, nid yw’r data hwn ar gael ar gyfer Gogledd Iwerddon."
+        salary_substitute.unavailable_reason_region_is_ni_english = "No data available\n\nSorry, this data is not available for courses in Northern Ireland."
+        salary_substitute.unavailable_reason_region_is_ni_welsh = "Nid oes data ar gael\n\nYn anffodus, nid yw'r data hwn ar gael ar gyfer cyrsiau yng Ngogledd Iwerddon."
         salary_substitute.unavail_text_region_not_exists_english = "No data available"
         salary_substitute.unavail_text_region_not_exists_welsh = "Nid oes data ar gael"
 
