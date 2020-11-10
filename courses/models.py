@@ -555,9 +555,9 @@ class Course:
         unavailable = {}
 
         if self.display_language == enums.languages.ENGLISH:
-            unavailable["reason"] = "No data available"
+            unavailable["reason"] = "No data available\n\nThis is because the course has not yet run or has not been running long enough for this data to be available."
         else:
-            unavailable["reason"] = "Nid oes data ar gael"
+            unavailable["reason"] = "Nid oes data ar gael\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
 
         return unavailable
 
@@ -2094,8 +2094,8 @@ class SalariesAggregate:
         salary_substitute.unavailable_reason_region_not_nation_welsh = "Nid oes data ar gael\n\nNid yw'r data hwn ar gael ar gyfer y lefel hon."
         salary_substitute.unavailable_reason_region_is_ni_english = "No data available\n\nSorry, this data is not available for courses in Northern Ireland."
         salary_substitute.unavailable_reason_region_is_ni_welsh = "Nid oes data ar gael\n\nYn anffodus, nid yw'r data hwn ar gael ar gyfer cyrsiau yng Ngogledd Iwerddon."
-        salary_substitute.unavail_text_region_not_exists_english = "No data available"
-        salary_substitute.unavail_text_region_not_exists_welsh = "Nid oes data ar gael"
+        salary_substitute.unavail_text_region_not_exists_english = "No data available\n\nThis is because the course has not yet run or has not been running long enough for this data to be available."
+        salary_substitute.unavail_text_region_not_exists_welsh = "Nid oes data ar gael\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
 
         if self.is_ni_provider:
             salary_substitute.unavailable_reason_english = salary_substitute.unavailable_reason_region_is_ni_english
@@ -2117,8 +2117,8 @@ class SalariesAggregate:
         salary_substitute.unavailable_reason_region_not_nation_welsh = "Nid oes data ar gael\n\nNid yw'r data hwn ar gael ar gyfer y lefel hon."
         salary_substitute.unavailable_reason_region_is_ni_english = "No data available\n\nSorry, this data is not available for Northern Ireland."
         salary_substitute.unavailable_reason_region_is_ni_welsh = "Nid oes data ar gael\n\nYn anffodus, nid yw’r data hwn ar gael ar gyfer Gogledd Iwerddon."
-        salary_substitute.unavail_text_region_not_exists_english = "No data available"
-        salary_substitute.unavail_text_region_not_exists_welsh = "Nid oes data ar gael"
+        salary_substitute.unavail_text_region_not_exists_english = "No data available\n\nThis is because the course has not yet run or has not been running long enough for this data to be available."
+        salary_substitute.unavail_text_region_not_exists_welsh = "Nid oes data ar gael\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
 
         if self.display_language == enums.languages.ENGLISH:
             salary_substitute.unavailable_reason_region_not_exists = salary_substitute.unavail_text_region_not_exists_english
