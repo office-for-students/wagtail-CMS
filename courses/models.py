@@ -1818,6 +1818,16 @@ class Salary:
                 self.prov_pc_gl = salary_data['inst_prov_pc_gl']
                 self.prov_pc_cf = salary_data['inst_prov_pc_cf']
 
+            if 'earnings_agg_unavail_message' in salary_data:
+                self.earnings_aggregation_msg = {}
+                if self.display_language == enums.languages.ENGLISH:
+                    self.earnings_aggregation_str = salary_data['earnings_agg_unavail_message']['english']
+                else:
+                    self.earnings_aggregation_str = salary_data['earnings_agg_unavail_message']['welsh']
+
+                self.earnings_aggregation_msg["msg_heading"], self.earnings_aggregation_msg["msg_body"] = separate_unavail_reason(self.earnings_aggregation_str)
+
+
     def display_unavailable_info(self):
         unavailable = {}
 

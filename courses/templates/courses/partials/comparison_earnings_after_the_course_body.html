@@ -60,6 +60,17 @@
                                 {% if course.course_level == 4 %}
                                     <h4 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{% get_translation key='course_level_msg' language=page.get_language %}</h4>
                                 {% endif %}
+                                {% if salary_aggregate.aggregated_salaries_inst.0.earnings_aggregation_msg != None %}
+                                    <div class="not-enough-data-disclaimer">
+                                        <h4 style="font-weight: bold;" class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{{salary_aggregate.aggregated_salaries_inst.0.earnings_aggregation_msg.msg_heading}}</h4>
+                                        <h6 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{{salary_aggregate.aggregated_salaries_inst.0.earnings_aggregation_msg.msg_body}}</h6>
+                                    </div>
+                                {% elif salary_aggregate.aggregated_salaries_inst.1.earnings_aggregation_msg != None %}
+                                    <div class="not-enough-data-disclaimer">
+                                        <h4 style="font-weight: bold;" class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{{salary_aggregate.aggregated_salaries_inst.1.earnings_aggregation_msg.msg_heading}}</h4>
+                                        <h6 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{{salary_aggregate.aggregated_salaries_inst.1.earnings_aggregation_msg.msg_body}}</h6>
+                                    </div>
+                                {% endif %}
                                 <div class="earnings-after-course_explanation-text pb-2">
                                     {% create_list course.institution.pub_ukprn_name as substitutions %}
                                     {% insert_values_to_rich_text content=block.value.institution_graduates_heading substitutions=substitutions as subbed_text %}
