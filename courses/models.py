@@ -1700,7 +1700,7 @@ class Job:
                 self.percentage = self.percentage.replace('<5', 'Llai na 5')
 
             self.order = job_data.get('order')
-            self.hs = fallback_to(job_data.get('hs'), '')
+            self.hs = fallback_to(job_data.get('hs'), '') 
 
 
 class GraduatePerceptionStatistics:
