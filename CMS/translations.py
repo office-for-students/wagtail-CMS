@@ -1563,12 +1563,12 @@ DICT = {
         'cy': "Canran y rhai a gyflogir ar ôl gorffen y cwrs ond nad ydym yn gwybod pa fath o swydd sydd ganddynt"
     },
     'prov_pc_text_template_go': {
-        'en': '<div><p>{}% of UK-resident {} graduates from {} are employed in {}</p></div>',
-        'cy': "<div><p>Mae {}% o raddedigion {} yn {} sy’n preswylio yn y DU wedi'u cyflogi yn {}</p></div>"
+        'en': '<div><p>{}% of UK-resident {} graduates from {} are employed in {}.</p></div>',
+        'cy': "<div><p>Mae {}% o raddedigion {} yn {} sy’n preswylio yn y DU wedi'u cyflogi yn {}.</p></div>"
     },
     'prov_pc_text_template_leo': {
-        'en': '<div><p>{}% of UK-resident {} graduates from {} are based in {}</p></div>',
-        'cy': "<div><p>Mae {}% o raddedigion {} yn {} sy’n preswylio yn y DU wedi'u lleoli yn {}</p></div>"
+        'en': '<div><p>{}% of UK-resident {} graduates from {} are based in {}.</p></div>',
+        'cy': "<div><p>Mae {}% o raddedigion {} yn {} sy’n preswylio yn y DU wedi'u lleoli yn {}.</p></div>"
     },
 
 }
