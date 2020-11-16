@@ -290,7 +290,7 @@
         background-color: #F2F2F2;
         border: none;
 
-        .course-detail__uni-site-links-header {
+        .course-detail__uni-site-links-header, .course-detail__uni-site-links-header .rich-text p{
             font-size:18px;
             font-weight:normal;
             color:$black;
@@ -496,7 +496,7 @@
 
             margin-bottom: 70px;
 
-            .course-detail__uni-site-links-header {
+            .course-detail__uni-site-links-header, .course-detail__uni-site-links-header .rich-text p{
                 font-size: 32px;
                 font-weight: normal;
                 color: $black;
@@ -797,7 +797,7 @@
 
             margin-bottom: 70px;
 
-            .course-detail__uni-site-links-header {
+            .course-detail__uni-site-links-header, .course-detail__uni-site-links-header .rich-text p{
                 font-size:32px;
                 font-weight:normal;
                 color:$black;
