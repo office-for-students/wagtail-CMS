@@ -33,6 +33,11 @@
                margin-bottom: 0px;
             }
         }
+        a{
+            text-decoration: underline;
+            color: #266969;
+            font-weight:bold;
+        }
     }
 }
 
@@ -55,6 +60,12 @@
 
             margin-bottom: 30px;
             line-height: 26px;
+
+            a{
+                text-decoration: underline;
+                color: #266969;
+                font-weight:bold;
+            }
         }
     }
 }

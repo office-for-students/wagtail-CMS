@@ -97,17 +97,18 @@
     }
 
     .additional-links {
+        margin-top:2.5rem;
         margin-bottom: 40px;
 
         &__header {
-            @include m-heading--bold-mixin();
-
-            text-align: center;
+            @include s-heading--bold-mixin();
+            text-align: left;
+            color:#6E6E6E;
         }
 
         &__link {
             &-wrapper {
-                width: 40%;
+                min-width: 40%;
                 margin: 5px;
                 padding: 10px;
                 display: grid;
@@ -129,11 +130,16 @@
             &-list {
                 display: flex;
                 flex-wrap: wrap;
+                margin-top:1rem;
+                margin-bottom:1rem;
             }
         }
 
         @media only screen and (min-width: 770px) {
             .additional-links {
+
+                margin-top:2.5rem;
+
                 &__link {
                     flex-wrap: nowrap;
 
