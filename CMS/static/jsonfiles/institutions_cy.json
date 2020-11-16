@@ -125,6 +125,11 @@
         "order_by_name": "bridgwater and taunton college"
     },
     {
+        "alphabet": "g",
+        "name": "Coleg Gwent",
+        "order_by_name": "gwent"
+    },
+    {
         "alphabet": "b",
         "name": "University of Brighton",
         "order_by_name": "brighton"
@@ -961,7 +966,7 @@
     },
     {
         "alphabet": "s",
-        "name": "Solent University",
+        "name": "Solent University, Southampton",
         "order_by_name": "solent university"
     },
     {
@@ -996,9 +1001,14 @@
     },
     {
         "alphabet": "s",
-        "name": "Stephenson College",
-        "order_by_name": "stephenson college"
+        "name": "The Smb Group",
+        "order_by_name": "smb"
     },
+    {
+        "alphabet": "o",
+        "name": "Orbital South Colleges",
+        "order_by_name": "orbital"
+    },    
     {
         "alphabet": "s",
         "name": "Stockton Riverside College",
@@ -1450,9 +1460,9 @@
         "order_by_name": "exeter"
     },
     {
-        "alphabet": "s",
-        "name": "University of South Wales/prifysgol De Cymru",
-        "order_by_name": "south wales/prifysgol de cymru"
+        "alphabet": "d",
+        "name": "Prifysgol De Cymru",
+        "order_by_name": "de cymru"
     },
     {
         "alphabet": "g",
@@ -1531,8 +1541,8 @@
     },
     {
         "alphabet": "c",
-        "name": "Cardiff University",
-        "order_by_name": "cardiff university"
+        "name": "Prifysgol Caerdydd",
+        "order_by_name": "caerdydd"
     },
     {
         "alphabet": "t",
@@ -1545,7 +1555,7 @@
         "order_by_name": "chichester college group"
     },
     {
-        "alphabet": "c",
+        "alphabet": "l",
         "name": "Coleg Llandrillo",
         "order_by_name": "coleg llandrillo"
     },
@@ -1566,13 +1576,13 @@
     },
     {
         "alphabet": "g",
-        "name": "Glyndwr University",
-        "order_by_name": "glyndwr university"
+        "name": "Prifysgol Glyndŵr Wrecsam",
+        "order_by_name": "glyndwr wrecsam"
     },
     {
-        "alphabet": "p",
-        "name": "Pembrokeshire College",
-        "order_by_name": "pembrokeshire college"
+        "alphabet": "s",
+        "name": "Coleg Sir Benfro",
+        "order_by_name": "sir benfro"
     },
     {
         "alphabet": "t",
@@ -1585,9 +1595,9 @@
         "order_by_name": "royal northern college of music"
     },
     {
-        "alphabet": "r",
-        "name": "Royal Welsh College of Music and Drama Limited",
-        "order_by_name": "royal welsh college of music and drama limited"
+        "alphabet": "b",
+        "name": "Coleg Brenhinol Cerdd a Drama Cymru",
+        "order_by_name": "brenhinol cerdd a drama cymru"
     },
     {
         "alphabet": "s",
@@ -1631,28 +1641,28 @@
     },
     {
         "alphabet": "c",
-        "name": "Cardiff Metropolitan University",
-        "order_by_name": "cardiff metropolitan university"
-    },
-    {
-        "alphabet": "s",
-        "name": "Swansea University",
-        "order_by_name": "swansea university"
+        "name": "Prifysgol Metropolitan Caerdydd",
+        "order_by_name": "metropolitan caerdydd"
     },
     {
         "alphabet": "a",
-        "name": "Aberystwyth University",
-        "order_by_name": "aberystwyth university"
+        "name": "Prifysgol Abertawe",
+        "order_by_name": "abertawe"
+    },
+    {
+        "alphabet": "a",
+        "name": "Prifysgol Aberystwyth",
+        "order_by_name": "aberystwyth"
     },
     {
         "alphabet": "b",
-        "name": "Bangor University",
-        "order_by_name": "bangor university"
+        "name": "Prifysgol Bangor",
+        "order_by_name": "bangor"
     },
     {
-        "alphabet": "w",
-        "name": "University of Wales: Trinity Saint David",
-        "order_by_name": "wales: trinity saint david"
+        "alphabet": "c",
+        "name": "Prifysgol Cymru Y Drindod Dewi Sant",
+        "order_by_name": "cymru y drindod dewi sant"
     },
     {
         "alphabet": "w",
@@ -1742,7 +1752,7 @@
     {
         "alphabet": "c",
         "name": "Coleg Y Cymoedd",
-        "order_by_name": "coleg y cymoedd"
+        "order_by_name": "cymoedd"
     },
     {
         "alphabet": "f",
@@ -1766,13 +1776,13 @@
     },
     {
         "alphabet": "g",
-        "name": "Grwp NPTC Group",
-        "order_by_name": "grwp nptc group"
+        "name": "Grŵp Colegau NPTC",
+        "order_by_name": "grwp nptc"
     },
     {
         "alphabet": "m",
-        "name": "Merthyr Tydfil College Limited",
-        "order_by_name": "merthyr tydfil college limited"
+        "name": "Y Coleg Merthyr Tudful",
+        "order_by_name": "merthyr tudful"
     },
     {
         "alphabet": "o",
@@ -1911,8 +1921,8 @@
     },
     {
         "alphabet": "g",
-        "name": "Gower College Swansea",
-        "order_by_name": "gower college swansea"
+        "name": "Coleg Gŵyr Abertawe",
+        "order_by_name": "gŵyr abertawe"
     },
     {
         "alphabet": "s",
@@ -1958,6 +1968,11 @@
         "alphabet": "b",
         "name": "Bodmin College",
         "order_by_name": "bodmin college"
+    },
+    {
+        "alphabet": "p",
+        "name": "Coleg Pen-y-bont",
+        "order_by_name": "pen-y-bont"
     },
     {
         "alphabet": "l",
