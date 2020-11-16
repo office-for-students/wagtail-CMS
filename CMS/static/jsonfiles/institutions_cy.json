@@ -996,9 +996,14 @@
     },
     {
         "alphabet": "s",
-        "name": "Stephenson College",
-        "order_by_name": "stephenson college"
+        "name": "The Smb Group",
+        "order_by_name": "smb"
     },
+    {
+        "alphabet": "o",
+        "name": "Orbital South Colleges",
+        "order_by_name": "orbital"
+    },    
     {
         "alphabet": "s",
         "name": "Stockton Riverside College",

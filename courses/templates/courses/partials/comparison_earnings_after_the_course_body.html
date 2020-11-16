@@ -5,8 +5,8 @@
 {% for i in max_subject_names_length|times %}
     {% get_index i course1.salary_aggregates as course1_salary_aggregate %}
     {% get_index i course2.salary_aggregates as course2_salary_aggregate %}
-    {% define course1_salary_aggregate.display_subject_name as course1_subject_name %}
-    {% define course2_salary_aggregate.display_subject_name as course2_subject_name %}
+    {% define course1_salary_aggregate.display_subject_name_earnings_tabs as course1_subject_name %}
+    {% define course2_salary_aggregate.display_subject_name_earnings_tabs as course2_subject_name %}
 
     {% define forloop.counter0 as subject_index %}
 
@@ -59,6 +59,17 @@
                                 </h2>
                                 {% if course.course_level == 4 %}
                                     <h4 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{% get_translation key='course_level_msg' language=page.get_language %}</h4>
+                                {% endif %}
+                                {% if salary_aggregate.aggregated_salaries_inst.0.earnings_aggregation_msg != None %}
+                                    <div class="not-enough-data-disclaimer">
+                                        <h4 style="font-weight: bold;" class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{{salary_aggregate.aggregated_salaries_inst.0.earnings_aggregation_msg.msg_heading}}</h4>
+                                        <h6 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{{salary_aggregate.aggregated_salaries_inst.0.earnings_aggregation_msg.msg_body}}</h6>
+                                    </div>
+                                {% elif salary_aggregate.aggregated_salaries_inst.1.earnings_aggregation_msg != None %}
+                                    <div class="not-enough-data-disclaimer">
+                                        <h4 style="font-weight: bold;" class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{{salary_aggregate.aggregated_salaries_inst.1.earnings_aggregation_msg.msg_heading}}</h4>
+                                        <h6 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{{salary_aggregate.aggregated_salaries_inst.1.earnings_aggregation_msg.msg_body}}</h6>
+                                    </div>
                                 {% endif %}
                                 <div class="earnings-after-course_explanation-text pb-2">
                                     {% create_list course.institution.pub_ukprn_name as substitutions %}
