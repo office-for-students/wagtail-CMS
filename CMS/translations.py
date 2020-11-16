@@ -870,6 +870,10 @@ DICT = {
         'en': 'Scotland',
         'cy': 'Yr Alban'
     },
+    'scroll_to_the_right':{
+        'en':'Scroll to the right',
+        'cy':'Sgroliwch i’r dde'
+    },
     'search': {
         'en': 'Search',
         'cy': 'Chwilio'

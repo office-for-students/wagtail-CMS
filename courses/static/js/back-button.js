@@ -5,7 +5,6 @@
             window.history.back();
         });
     }
-
     $(document).on('page:load', init);
     $(init);
 }(jQuery))
