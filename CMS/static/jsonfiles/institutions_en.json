@@ -961,7 +961,7 @@
     },
     {
         "alphabet": "s",
-        "name": "Solent University",
+        "name": "Solent University, Southampton",
         "order_by_name": "solent university"
     },
     {
@@ -1788,6 +1788,16 @@
         "alphabet": "c",
         "name": "Cambridge School of Visual and Performing Arts",
         "order_by_name": "cambridge school of visual and performing arts"
+    },
+    {
+        "alphabet": "b",
+        "name": "Bridgend College",
+        "order_by_name": "bridgend college"
+    },
+    {
+        "alphabet": "g",
+        "name": "Coleg Gwent",
+        "order_by_name": "gwent"
     },
     {
         "alphabet": "l",
