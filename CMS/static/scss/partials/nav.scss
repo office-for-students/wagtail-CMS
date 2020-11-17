@@ -178,6 +178,16 @@
         margin-left: 7px;
     }
 
+    #language_select.nav-bookmark{
+        border-style: solid;
+        border-color: #FFFFFF;
+        border-width:1.5px;
+        border-radius: 15px;
+        margin-top:auto;
+        margin-bottom:auto;
+        height:30px;
+    }
+
     .nav-bookmark {
         position: relative;
 
@@ -290,6 +300,7 @@
         }
 
         .nav-bookmark {
+
             &__count {
                 padding: 0px 5.3px;
                 right: 5px;
