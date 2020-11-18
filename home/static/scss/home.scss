@@ -97,7 +97,6 @@
     .home-page__bookmark-body{
         background: linear-gradient(to left, #FFFFFF 10%, #8e3b74 10%); 
         .home-page__bookmark-body-inner{
-            padding-left: 1rem;
             h4{
                 font-size:1rem;
             }
@@ -292,6 +291,12 @@
     #home-page__intro-panel, .home-page__header-text, .home-page__body-panel, .home-page__bookmark-body-inner{
         margin-left:auto!important;
         margin-right:auto!important;
+    }
+    .home-page__header .home-page__bookmark-body{
+        background:#8e3b74; 
+    }
+    .home-page__bookmark-body-inner{
+        padding-left: 1rem;
     }
 }
 @media only screen and (min-width: 576px) and (max-width: 766px){
