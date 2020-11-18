@@ -62,6 +62,10 @@
             text-decoration: underline;
             font-size: 14px;
         }
+        #sample-size-text{
+            font-size: 14px;
+            font-family: 'Nunito Sans', sans-serif;
+        }
     }
 
     .earnings-after-course__data-point {
@@ -312,6 +316,11 @@
                 font-weight: normal;
                 text-decoration: underline;
                 font-size: 14px;
+            }
+
+            #sample-size-text{
+                font-size: 16px;
+                font-family: 'Nunito Sans', sans-serif;
             }
         }
     }
