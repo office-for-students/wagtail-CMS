@@ -40,7 +40,7 @@
         "order_by_name": "askham bryan college"
     },
     {
-        "alphabet": "b",
+   	    "alphabet": "b",
         "name": "Buckinghamshire College Group",
         "order_by_name": "buckinghamshire college group"
     },
@@ -220,7 +220,12 @@
         "order_by_name": "chesterfield college"
     },
     {
-        "alphabet": "b",
+        "alphabet": "c",
+        "name": "The Chicken Shed Theatre Trust",
+        "order_by_name": "chicken shed"
+    },
+    {
+    	"alphabet": "b",
         "name": "Bath College",
         "order_by_name": "bath college"
     },
@@ -265,6 +270,11 @@
         "order_by_name": "the conservatoire for dance and drama"
     },
     {
+    	"alphabet": "c",
+        "name": "Court Theatre Training Company Ltd",
+        "order_by_name": "court theatre"
+    },
+    {
         "alphabet": "c",
         "name": "Cornwall College",
         "order_by_name": "cornwall college"
@@ -280,12 +290,22 @@
         "order_by_name": "craven college"
     },
     {
-        "alphabet": "d",
+        "alphabet": "c",
+        "name": "Croydon College",
+        "order_by_name": "croydon"
+    },
+    {
+   	    "alphabet": "d",
         "name": "Darlington College",
         "order_by_name": "darlington college"
     },
     {
         "alphabet": "d",
+        "name": "David Game College Ltd",
+        "order_by_name": "David game college"
+    },
+    {
+	"alphabet": "d",
         "name": "De Montfort University",
         "order_by_name": "de montfort university"
     },
@@ -311,6 +331,11 @@
     },
     {
         "alphabet": "e",
+        "name": "Ealing, Hammersmith & West London College ",
+        "order_by_name": "ealing hammersmith"
+    },
+    {
+    	"alphabet": "e",
         "name": "East Riding College",
         "order_by_name": "east riding college"
     },
@@ -330,7 +355,12 @@
         "order_by_name": "exeter college"
     },
     {
-        "alphabet": "f",
+   	    "alphabet": "f",
+        "name": "The Film Education Training Trust Limited",
+        "order_by_name": "film education training"
+    },
+    {
+    	"alphabet": "f",
         "name": "Farnborough College of Technology",
         "order_by_name": "farnborough college of technology"
     },
@@ -450,7 +480,12 @@
         "order_by_name": "imperial college london"
     },
     {
-        "alphabet": "r",
+        "alphabet": "i",
+        "name": "Irshad Trust",
+        "order_by_name": "irshad"
+    },
+    {
+    	"alphabet": "r",
         "name": "Regent's University London",
         "order_by_name": "regent's university london"
     },
@@ -460,7 +495,12 @@
         "order_by_name": "the chartered institute of payroll professionals"
     },
     {
-        "alphabet": "k",
+        "alphabet": "j",
+        "name": "JSA Education Group",
+        "order_by_name": "jsa education"
+    },
+    {
+   	    "alphabet": "k",
         "name": "Kendal College",
         "order_by_name": "kendal college"
     },
@@ -761,6 +801,11 @@
     },
     {
         "alphabet": "o",
+        "name": "Osteopathic Education and Research Limited",
+        "order_by_name": "osteopathic education"
+    },
+    {
+        "alphabet": "o",
         "name": "Oxford Brookes University",
         "order_by_name": "oxford brookes university"
     },
@@ -820,7 +865,12 @@
         "order_by_name": "reaseheath college"
     },
     {
-        "alphabet": "a",
+        "alphabet": "r",
+        "name": "Results Consortium Ltd",
+        "order_by_name": "results consortium"
+    },
+    {
+    	"alphabet": "a",
         "name": "Arden University",
         "order_by_name": "arden university"
     },
@@ -925,7 +975,12 @@
         "order_by_name": "south & city college birmingham"
     },
     {
-        "alphabet": "c",
+        "alphabet": "s",
+        "name": "Spurgeon's College",
+        "order_by_name": "spurgeon’s"
+    },
+    {
+    	"alphabet": "c",
         "name": "Cheshire College South and West",
         "order_by_name": "cheshire college south and west"
     },
@@ -1933,6 +1988,11 @@
         "alphabet": "s",
         "name": "St Mellitus College",
         "order_by_name": "st mellitus college"
+    },
+    {
+	    "alphabet": "w",
+        "name": " WaterBear – The College of Music",
+        "order_by_name": "waterbear"
     },
     {
         "alphabet": "w",
