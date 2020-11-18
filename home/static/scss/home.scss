@@ -95,29 +95,29 @@
 
     }
     .home-page__bookmark-body{
-        background-color: #8e3b74;
-        
-        h4{
-            font-size:1rem;
-        }
-
-        .home-page__bookmark-circle{
-            font-size:1rem;
-            background-color: #fcd835;
-            border-radius: 50%;
-            display: inline-block;
-            height:25px;
-            width:23px;
-            text-align: center;
-            margin: auto;
-            color:$black;
-        }
-        a.home-page__bookmark-link {
-            color:#fcd835;
-            text-decoration: underline;
+        background: linear-gradient(to left, #FFFFFF 10%, #8e3b74 10%); 
+        .home-page__bookmark-body-inner{
+            padding-left: 1rem;
+            h4{
+                font-size:1rem;
+            }
+            .home-page__bookmark-circle{
+                font-size:1rem;
+                background-color: #fcd835;
+                border-radius: 50%;
+                display: inline-block;
+                height:25px;
+                width:23px;
+                text-align: center;
+                margin: auto;
+                color:$black;
+            }
+            a.home-page__bookmark-link {
+                color:#fcd835;
+                text-decoration: underline;
+            }
         }
     }
-    
 }
 
 
@@ -237,29 +237,28 @@
         }
 
         .home-page__bookmark-body{
-            background-color: #8e3b74;
-            
-            h4{
-                font-size:1.2rem;
-            }
-
-            .home-page__bookmark-circle{
-                font-size:1.4rem;
-                background-color: #fcd835;
-                border-radius: 50%;
-                display: inline-block;
-                height:30px;
-                width:31px;
-                text-align: center;
-                margin: auto;
-                color:$black;
-            }
-            a.home-page__bookmark-link {
-                color:#fcd835;
-                text-decoration: underline;
+            background: linear-gradient(to left, #FFFFFF 10%, #8e3b74 10%); 
+            .home-page__bookmark-body-inner{
+                h4{
+                    font-size:1.2rem;
+                }
+                .home-page__bookmark-circle{
+                    font-size:1.4rem;
+                    background-color: #fcd835;
+                    border-radius: 50%;
+                    display: inline-block;
+                    height:30px;
+                    width:31px;
+                    text-align: center;
+                    margin: auto;
+                    color:$black;
+                }
+                a.home-page__bookmark-link {
+                    color:#fcd835;
+                    text-decoration: underline;
+                }
             }
         }
-
     }
     .home-page__body{
         .home-page__body-panel{
@@ -290,34 +289,34 @@
 
 
 @media only screen and (max-width: 575px){
-    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel{
+    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel, .home-page__bookmark-body-inner{
         margin-left:auto!important;
         margin-right:auto!important;
     }
 }
 @media only screen and (min-width: 576px) and (max-width: 766px){
-    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel{
+    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel, .home-page__bookmark-body-inner{
         width: 540px!important;
         margin-left:auto!important;
         margin-right:auto!important;
     }
 }
 @media only screen and (min-width: 767px) and (max-width: 991px){
-    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel{
+    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel, .home-page__bookmark-body-inner{
         width: 720px!important;
         margin-left:auto!important;
         margin-right:auto!important;
     }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px){
-    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel{
+    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel, .home-page__bookmark-body-inner{
         width: 960px!important;
         margin-left:auto!important;
         margin-right:auto!important;
     }
 }
 @media only screen and (min-width: 1200px){
-    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel{
+    #home-page__intro-panel, .home-page__header-text, .home-page__body-panel, .home-page__bookmark-body-inner{
         width: 1140px!important;
         margin-left:auto!important;
         margin-right:auto!important;
