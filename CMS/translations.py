@@ -1367,7 +1367,7 @@ DICT = {
         'cy': 'Darllen mwy am ddata mynediad'
     },
     'entrance_data_read_more_url': {
-        'en': 'www.discoveruni.gov.uk/about-our-data/#data_collected_from_universities_and_colleges_on_individual_students',
+        'en': 'https://discoveruni.gov.uk/about-our-data/#data_collected_from_universities_and_colleges_on_individual_students',
         'cy': 'https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#data_a_gasglwyd_gan_brifysgolion_a_cholegau_ar_fyfyrwyr_unigol'
     },
     'after_1_year_overview_1': {
@@ -1495,8 +1495,8 @@ DICT = {
         'cy': "Darllen mwy am gyrsiau sy’n cynnwys amryw o bynciau"
     },
      'course_details_joint_overview_4': {
-        'en': 'www.discoveruni.gov.uk/about-our-data/#understanding_the_data',
-        'cy': "https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#data_a_ gasglwyd_gan_brifysgolion_a_cholegau_ar_fyfyrwyr_unigol"
+        'en': 'https://discoveruni.gov.uk/about-our-data/#understanding_the_data',
+        'cy': 'https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#data_a_gasglwyd_gan_brifysgolion_a_cholegau_ar_fyfyrwyr_unigol'
     },
      'clear_filters': {
         'en': 'Clear Filters',
