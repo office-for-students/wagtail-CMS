@@ -555,9 +555,9 @@ class Course:
         unavailable = {}
 
         if self.display_language == enums.languages.ENGLISH:
-            unavailable["reason"] = "No data available"
+            unavailable["reason"] = "No data available\n\nThis is because the course has not yet run or has not been running long enough for this data to be available."
         else:
-            unavailable["reason"] = "Nid oes data ar gael"
+            unavailable["reason"] = "Nid oes data ar gael\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
 
         return unavailable
 
@@ -1693,8 +1693,14 @@ class Job:
         if job_data:
             self.job = fallback_to(job_data.get('job'), '')
             self.percentage = fallback_to(job_data.get('percentage_of_students'),0)
+
+            if self.display_language == enums.languages.ENGLISH:
+                self.percentage = self.percentage.replace('<5', 'Less than 5')
+            else:
+                self.percentage = self.percentage.replace('<5', 'Llai na 5')
+
             self.order = job_data.get('order')
-            self.hs = fallback_to(job_data.get('hs'), '')
+            self.hs = fallback_to(job_data.get('hs'), '') 
 
 
 class GraduatePerceptionStatistics:
@@ -1817,6 +1823,16 @@ class Salary:
                 self.prov_pc_ed = salary_data['inst_prov_pc_ed']
                 self.prov_pc_gl = salary_data['inst_prov_pc_gl']
                 self.prov_pc_cf = salary_data['inst_prov_pc_cf']
+
+            if 'earnings_agg_unavail_message' in salary_data and len(salary_data['earnings_agg_unavail_message']) > 0:
+                self.earnings_aggregation_msg = {}
+                if self.display_language == enums.languages.ENGLISH:
+                    self.earnings_aggregation_str = salary_data['earnings_agg_unavail_message']['english']
+                else:
+                    self.earnings_aggregation_str = salary_data['earnings_agg_unavail_message']['welsh']
+
+                self.earnings_aggregation_msg["msg_heading"], self.earnings_aggregation_msg["msg_body"] = separate_unavail_reason(self.earnings_aggregation_str)
+
 
     def display_unavailable_info(self):
         unavailable = {}
@@ -1998,7 +2014,9 @@ class SectorSalary:
                 self.unavail_text_region_is_ni_welsh = ""
 
     def display_unavailable_info(self, language=enums.languages.ENGLISH):
-        self.display_language = language
+        if not self.display_language or self.display_language == "":
+            self.display_language = language
+
         unavailable = {}
 
         if self.unavailable_reason_region_not_exists:
@@ -2056,16 +2074,34 @@ class SalariesAggregate:
     def sync_institution_earnings(self, salaries_inst):
         salary_institution = self.sync_earnings_data(salaries_inst)
         if not salary_institution:
-            salary_institution = self.generate_empty_institution_salary_with_unavail_reason()
+            unavail_text_en = ""
+            unavail_text_cy = ""
+
+            if salaries_inst and len(salaries_inst) > 0 and salaries_inst[0].unavailable_reason_english:
+                unavail_text_en = salaries_inst[0].unavailable_reason_english
+            if salaries_inst and len(salaries_inst) > 0 and salaries_inst[0].unavailable_reason_welsh:
+                unavail_text_cy = salaries_inst[0].unavailable_reason_welsh
+
+            salary_institution = self.generate_empty_institution_salary_with_unavail_reason(unavail_text_en, unavail_text_cy)
+
         self.aggregated_salaries_inst.append(salary_institution)
 
     def sync_sector_earnings(self, salaries_sector):
         salary_sector = self.sync_earnings_data(salaries_sector)
         if not salary_sector:
-            salary_sector = self.generate_empty_sector_salary_with_unavail_reason()
+            unavail_text_en = ""
+            unavail_text_cy = ""
+
+            if salaries_sector and len(salaries_sector) > 0 and salaries_sector[0].unavail_text_region_not_exists_english:
+                unavail_text_en = salaries_sector[0].unavail_text_region_not_exists_english
+            if salaries_sector and len(salaries_sector) > 0 and salaries_sector[0].unavail_text_region_not_exists_welsh:
+                unavail_text_cy = salaries_sector[0].unavail_text_region_not_exists_welsh
+
+            salary_sector = self.generate_empty_sector_salary_with_unavail_reason(unavail_text_en, unavail_text_cy)
+
         self.aggregated_salaries_sector.append(salary_sector)
 
-    def generate_empty_institution_salary_with_unavail_reason(self):
+    def generate_empty_institution_salary_with_unavail_reason(self, unavail_text_en, unavail_text_cy):
         salary_substitute = Salary(None, self.display_language, None)
         salary_substitute.unavail_reason = "1"
         salary_substitute.unavailable_reason = ""
@@ -2090,10 +2126,18 @@ class SalariesAggregate:
         # TODO: read these values from the course JSON.
         salary_substitute.unavailable_reason_region_not_nation_english = "No data available\n\nSorry, this data is not available at this level."
         salary_substitute.unavailable_reason_region_not_nation_welsh = "Nid oes data ar gael\n\nNid yw'r data hwn ar gael ar gyfer y lefel hon."
-        salary_substitute.unavailable_reason_region_is_ni_english = "No data available\n\nSorry, this data is not available for Northern Ireland."
-        salary_substitute.unavailable_reason_region_is_ni_welsh = "Nid oes data ar gael\n\nYn anffodus, nid yw’r data hwn ar gael ar gyfer Gogledd Iwerddon."
-        salary_substitute.unavail_text_region_not_exists_english = "No data available"
-        salary_substitute.unavail_text_region_not_exists_welsh = "Nid oes data ar gael"
+        salary_substitute.unavailable_reason_region_is_ni_english = "No data available\n\nSorry, this data is not available for courses in Northern Ireland."
+        salary_substitute.unavailable_reason_region_is_ni_welsh = "Nid oes data ar gael\n\nYn anffodus, nid yw'r data hwn ar gael ar gyfer cyrsiau yng Ngogledd Iwerddon."
+
+        if unavail_text_en == "":
+            salary_substitute.unavail_text_region_not_exists_english = "No data available\n\nThis is because the course has not yet run or has not been running long enough for this data to be available."
+        else:
+            salary_substitute.unavail_text_region_not_exists_english = unavail_text_en
+
+        if unavail_text_cy == "":
+            salary_substitute.unavail_text_region_not_exists_welsh = "Nid oes data ar gael\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
+        else:
+            salary_substitute.unavail_text_region_not_exists_welsh = unavail_text_cy
 
         if self.is_ni_provider:
             salary_substitute.unavailable_reason_english = salary_substitute.unavailable_reason_region_is_ni_english
@@ -2105,7 +2149,7 @@ class SalariesAggregate:
         #salary_substitute.unavailable_reason_region_not_exists = ""
         return salary_substitute
 
-    def generate_empty_sector_salary_with_unavail_reason(self):
+    def generate_empty_sector_salary_with_unavail_reason(self, unavail_text_en, unavail_text_cy):
         salary_substitute = SectorSalary(None, self.display_language, None)
         salary_substitute.unavail_reason = "1"
         salary_substitute.unavailable_reason = ""
@@ -2115,8 +2159,16 @@ class SalariesAggregate:
         salary_substitute.unavailable_reason_region_not_nation_welsh = "Nid oes data ar gael\n\nNid yw'r data hwn ar gael ar gyfer y lefel hon."
         salary_substitute.unavailable_reason_region_is_ni_english = "No data available\n\nSorry, this data is not available for Northern Ireland."
         salary_substitute.unavailable_reason_region_is_ni_welsh = "Nid oes data ar gael\n\nYn anffodus, nid yw’r data hwn ar gael ar gyfer Gogledd Iwerddon."
-        salary_substitute.unavail_text_region_not_exists_english = "No data available"
-        salary_substitute.unavail_text_region_not_exists_welsh = "Nid oes data ar gael"
+
+        if unavail_text_en == "":
+            salary_substitute.unavail_text_region_not_exists_english = "No data available\n\nThis is because the course has not yet run or has not been running long enough for this data to be available."
+        else:
+            salary_substitute.unavail_text_region_not_exists_english = unavail_text_en
+
+        if unavail_text_cy == "":
+            salary_substitute.unavail_text_region_not_exists_welsh = "Nid oes data ar gael\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
+        else:
+            salary_substitute.unavail_text_region_not_exists_welsh = unavail_text_cy
 
         if self.display_language == enums.languages.ENGLISH:
             salary_substitute.unavailable_reason_region_not_exists = salary_substitute.unavail_text_region_not_exists_english
@@ -2172,6 +2224,15 @@ class SalariesAggregate:
                 mode = DICT.get('part_time').get(self.display_language).lower()
 
             subject_name = self.subject_welsh + " " + mode if self.subject_welsh else mode + " " + self.subject_english
+        return subject_name
+
+    def display_subject_name_earnings_tabs(self):
+        mode = self.mode.lower()
+
+        if self.display_language == enums.languages.ENGLISH:
+            subject_name = self.subject_english if self.subject_english else self.subject_welsh
+        else:
+            subject_name = self.subject_welsh if self.subject_welsh else self.subject_english
         return subject_name
 
     def display_no_data_info(self):

@@ -5,10 +5,10 @@
     <div class="mx-3">
         <ul class="course-detail__nav">
             <li class="course-detail__nav-control">
-               <span id='course-detail__nav-control-back' style="visibility: visible;" onclick="window.history.back();">
-                        <i class="fas fa-angle-left"></i>
-                        {% get_translation key='back_to_results' language=page.get_language %}
-                </span>
+              <span id='course-detail__nav-control-back' style="visibility: visible;" >
+                 <i class="fas fa-angle-left"></i>
+                  {% get_translation key='back_to_results' language=page.get_language %}
+              </span>
             </li>
         </ul>
 
@@ -32,7 +32,7 @@
                     {% if course.number_of_locations == 1 %}
                         {{ course.number_of_locations }} {% get_translation key='location' language=page.get_language %}
                         : {{ course.locations_list }}
-                    {% else %}
+                    {% elif course.number_of_locations > 1 %}
                         {{ course.number_of_locations }}
                         {% get_translation key='locations' language=page.get_language %}: {{ course.locations_list }}
                     {% endif %}
@@ -153,10 +153,12 @@
                         <h3 class="d-none d-lg-block">{% get_translation key='student_satisfaction_course_overview_1' language=page.get_language %}</h3>
                         <h2>{{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%</h2>
                         <p>{% get_translation key='student_satisfaction_course_overview_2' language=page.get_language %}</p>
+                        <!--
                         <p>
                             <a class="text-dark"
                             href="#student_satisfaction">{% get_translation key='student_satisfaction_course_overview_3' language=page.get_language %}</a>
                         </p>
+                        -->
                     </div>
                 </div>
             {% endif %}
@@ -172,10 +174,12 @@
                             {{course.summary_med_sal_sbj}} {% get_translation key='summary_med_sal_text_2' language=page.get_language %}
                             {{course.institution_name}}
                         </p>
+                        <!--
                         <p>
                             <a class="text-dark"
                             href="#earnings_after_the_course">{% get_translation key='average_earnings_course_overview_3' language=page.get_language %}</a>
                         </p>
+                        -->
                     </div>
                 </div>
             {% endif %}
@@ -186,10 +190,12 @@
                         <h3 class="d-none d-lg-block">{% get_translation key='employment_course_overview_1' language=page.get_language %}</h3>
                         <h2>{{ course.employment_stats.0.work_and_or_study }}%</h2>
                         <p>{% get_translation key='employment_course_overview_2' language=page.get_language %}</p>
+                        <!--
                         <p>
                         <a class="text-dark"
                             href="#employment_after_the_course">{% get_translation key='employment_course_overview_3' language=page.get_language %}</a>
                         </p>
+                        -->
                     </div>
                 </div>
             {% endif %}

@@ -432,42 +432,37 @@
 
 $(document).ready(function(){
     $('#clear-filters').click(function(){
+        $('#countries-england').prop('checked', false);
+        $('#countries-ireland').prop('checked', false);
+        $('#countries-scotland').prop('checked', false);
+        $('#countries-wales').prop('checked', false);
 
-        $('#countries-england').attr('checked', false);
-        $('#countries-ireland').attr('checked', false);
-        $('#countries-scotland').attr('checked', false);
-        $('#countries-wales').attr('checked', false);
-
-        $('#mode-full-time').attr('checked', false);
-        $('#mode-part-time').attr('checked', false);
-        $('#mode-distance').attr('checked', false);
+        $('#mode-full-time').prop('checked', false);
+        $('#mode-part-time').prop('checked', false);
+        $('#mode-distance').prop('checked', false);
 
         for (filter_base_name of ['placement', 'foundation', 'abroad']) {
-            $('#'+filter_base_name+'-yes').attr('checked', false);
-            $('#'+filter_base_name+'-no').attr('checked', false);
-            $('#'+filter_base_name+'-either').attr('checked', false);
+            $('#'+filter_base_name+'-yes').prop('checked', false);
+            $('#'+filter_base_name+'-no').prop('checked', false);
+            $('#'+filter_base_name+'-either').prop('checked', false);
         }
 
-        $('#subjectArea').val('disabled');
-        $('#subject').val('disabled');
-        $('#subjectCode').val('default');
-
+        $('#subjectArea option:eq(0)').prop('selected','selected');
+        $('#subject option:eq(0)').prop('selected','selected');
+        $('#subjectCode option:eq(0)').prop('selected','selected');
         $('#subject_query').val('');
+
         $('#postcode_field').val('');
-
-        // Post code radio buttons
-        $("#one").removeAttr("checked");
-        $("#two").removeAttr("checked");
-        $("#three").removeAttr("checked");
-
+        $("#one").prop('checked', false);
+        $("#two").prop('checked', false);
+        $("#three").prop('checked', false);
         $('#postcode_query').val('');
 
-        $("#first_degree").removeAttr("checked");
-        $("#other_undergraduate").removeAttr("checked");
+        $("#first_degree").prop('checked', false);
+        $("#other_undergraduate").prop('checked', false);
 
-        $('.filters-block__filter-uni-item-input').each(function() {
-            this.checked = false;
-        });
+        $('.filters-block__filter-uni-alphabet-input').prop('checked', false);
+        $(".filters-block__filter-uni-list").html("");
 
         $('.filters-block__form').first().submit();
     });

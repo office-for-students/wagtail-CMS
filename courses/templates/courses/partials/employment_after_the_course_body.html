@@ -161,7 +161,7 @@
                             </div>
                         </div>
                     </div>
-                {% elif course_details.employment_stats and course_details.employment_stats.0.display_unavailable_info %}
+                {% elif employment_stats and employment_stats.display_unavailable_info %}
                     <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
                         <div class="col-12 align-self-stretch my-auto">
                             <h2 class="employment-after-course__stats-heading pt-3 mb-4">
@@ -169,7 +169,7 @@
                                         {% if course_details.has_multiple_employment_stats %}
                                             {{ employment_stats.display_subject_name }}{% endif %}
                             </h2>
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.employment_stats.0.display_unavailable_info %}
+                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
                         </div>
                     </div>
                 {% else %}
@@ -184,7 +184,7 @@
                         </div>
                     </div>
                 {% endif %}
-            {% elif course_details.employment_stats and course_details.employment_stats.0.display_unavailable_info %}
+            {% elif employment_stats and employment_stats.display_unavailable_info %}
                 <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
                     <div class="col-12 align-self-stretch my-auto">
                         <h2 class="employment-after-course__stats-heading pt-3 mb-4">
@@ -192,7 +192,7 @@
                                     {% if course_details.has_multiple_employment_stats %}
                                         {{ employment_stats.display_subject_name }}{% endif %}
                         </h2>
-                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.employment_stats.0.display_unavailable_info %}
+                        {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
                     </div>
                 </div>
             {% else %}
@@ -251,8 +251,8 @@
                                 {% insert_values_to_rich_text content=block.value.six_month_employment_roles_data_source substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </div>
-                        {% elif course_details.jobtype_stats and course_details.jobtype_stats.0.display_unavailable_info %}
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.jobtype_stats.0.display_unavailable_info %}
+                        {% elif jobtype_stats and jobtype_stats.display_unavailable_info %}
+                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
                         {% else %}
                             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
                         {% endif %}
@@ -268,7 +268,7 @@
                                         {% for job in joblist_stats.jobs %}
                                             {% if job.hs == "1" %}
                                                 <div class="row">
-                                                    <div class="col-2">
+                                                    <div class="col-4 employment-after-course__job-percentage">
                                                         <p>{{ job.percentage }}%</p>
                                                     </div>
                                                     <div class="col">
@@ -286,7 +286,7 @@
                                         {% for job in joblist_stats.jobs %}
                                             {% if job.hs == "0" %}
                                                 <div class="row">
-                                                    <div class="col-2">
+                                                    <div class="col-4 employment-after-course__job-percentage">
                                                         <p>{{ job.percentage }}%</p>
                                                     </div>
                                                     <div class="col">

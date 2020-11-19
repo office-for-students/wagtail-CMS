@@ -22,7 +22,7 @@
                     <p class="course-detail__institution-locations">
                         {% if course.number_of_locations == 1 %}
                             {{ course.number_of_locations }} {% get_translation key='location' language=page.get_language %}: {{ course.locations_list }}
-                        {% else %}
+                        {% elif course.number_of_locations > 1 %}
                             {{ course.number_of_locations }} {% get_translation key='locations' language=page.get_language %}: {{ course.locations_list }}
                         {% endif %}
                     </p>
