@@ -31,9 +31,13 @@
         text-decoration: none;
     }
 
-    &:hover {
+    &:hover :not(#language_select){
         @include green-gradient-background-mixin();
     }
+    #language_select:hover{
+        @include green-gradient-background-mixin();
+    }
+
 }
 
 
