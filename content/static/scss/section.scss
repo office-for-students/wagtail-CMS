@@ -111,7 +111,13 @@
                 margin: 5px;
                 padding: 10px;
                 display: grid;
-            
+                -ms-flex-preferred-size: 0;
+                -ms-flex-positive: 1;
+                flex-grow: 1;
+                min-width: 0;
+                max-width: 100%;
+                flex-wrap: wrap;
+               
                 a {
                     @include xs-heading--bold-mixin();
 
