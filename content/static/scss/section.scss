@@ -119,6 +119,7 @@
                 flex-wrap: wrap;
                
                 a {
+                    text-align: center;
                     @include xs-heading--bold-mixin();
 
                     padding: 37px;
@@ -146,6 +147,7 @@
                 margin-top:2.5rem;
 
                 &__link {
+                    text-align: center;
                     flex-wrap: nowrap;
 
                     &-wrapper {
