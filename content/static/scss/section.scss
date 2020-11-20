@@ -108,11 +108,10 @@
 
         &__link {
             &-wrapper {
-                min-width: 40%;
                 margin: 5px;
                 padding: 10px;
                 display: grid;
-
+            
                 a {
                     @include xs-heading--bold-mixin();
 
