@@ -108,12 +108,18 @@
 
         &__link {
             &-wrapper {
-                min-width: 40%;
                 margin: 5px;
                 padding: 10px;
                 display: grid;
-
+                -ms-flex-preferred-size: 0;
+                -ms-flex-positive: 1;
+                flex-grow: 1;
+                min-width: 0;
+                max-width: 100%;
+                flex-wrap: wrap;
+               
                 a {
+                    text-align: center;
                     @include xs-heading--bold-mixin();
 
                     padding: 37px;
@@ -141,6 +147,7 @@
                 margin-top:2.5rem;
 
                 &__link {
+                    text-align: center;
                     flex-wrap: nowrap;
 
                     &-wrapper {
