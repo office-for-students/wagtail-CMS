@@ -1001,8 +1001,23 @@
     },
     {
         "alphabet": "s",
-        "name": "South Essex College",
+        "name": "South Essex College of Further and Higher Education",
         "order_by_name": "south essex college"
+    },
+    {
+        "alphabet": "r",
+        "name": "Royal School of Needlework(the)",
+        "order_by_name": "royal school of needlework"
+    },
+    {
+        "alphabet": "s",
+        "name": "Soas University of London",
+        "order_by_name": "soas university of london"
+    },
+    {
+        "alphabet": "j",
+        "name": "Jca | London Fashion Academy",
+        "order_by_name": "jca london fashion academy"
     },
     {
         "alphabet": "t",
@@ -1985,8 +2000,8 @@
         "order_by_name": "st mellitus college"
     },
     {
-	    "alphabet": "w",
-        "name": " WaterBear – The College of Music",
+        "alphabet": "w",
+        "name": "Waterbear Education Ltd",
         "order_by_name": "waterbear"
     },
     {
@@ -2030,9 +2045,9 @@
         "order_by_name": "bodmin college"
     },
     {
-        "alphabet": "p",
-        "name": "Coleg Penybont",
-        "order_by_name": "penybont"
+        "alphabet": "b",
+        "name": "Bridgend College",
+        "order_by_name": "bridgend"
     },
     {
         "alphabet": "l",
