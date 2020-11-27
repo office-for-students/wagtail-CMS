@@ -32,9 +32,9 @@
 
         initialiseDropdowns: function() {
             this.dropdown1 = new CourseDropdown(this.wrapper.find('#course1'), this.selectedCourses,
-                                                this.course2, this.handleCourseSelection.bind(this));
+                this.course2, this.handleCourseSelection.bind(this));
             this.dropdown2 = new CourseDropdown(this.wrapper.find('#course2'), this.selectedCourses,
-                                                this.course1, this.handleCourseSelection.bind(this));
+                this.course1, this.handleCourseSelection.bind(this));
         },
 
         handleCourseSelection: function(selectorId, selection) {

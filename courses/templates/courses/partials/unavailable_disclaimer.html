@@ -1,7 +1,7 @@
 {% if unavailable.reason %}
-    <div class="not-enough-data-disclaimer">
-        {{ unavailable.reason|safe }}
-
+    <div class="not-enough-data-disclaimer p-3 mx-1 mb-3">
+        <h4>{{ unavailable.reason_heading|safe }}</h4>
+        <h6>{{ unavailable.reason_body|safe }}</h6>
         {% if unavailable.find_out_more %}
             <a href="{{ unavailable.url }}">{{ unavailable.find_out_more|safe }}</a>
         {% endif %}

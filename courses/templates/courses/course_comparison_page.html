@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% include 'courses/partials/sticky_header.html' %}
 {% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
 
 
@@ -18,96 +19,140 @@
     <script type="text/javascript" src="{% static 'js/bar_chart.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
+
+    <script>
+        function toggle_icon(icon_id){
+            var icon_name = "#" + icon_id;
+            $(icon_name).toggleClass("fa-plus");
+            $(icon_name).toggleClass("fa-minus");
+        }
+    </script>
+
 {% endblock %}
 
 {% block content %}
-    <div class="comparison discover-uni-container">
-        <div class="comparison__overview">
-            <h1 class="comparison__course-count">
-                <span class="count"></span> {{page.heading}}
-            </h1>
-
-            <p class="comparison__lead">
-                {{page.lead}}
-            </p>
-        </div>
-
-        <!--<div class="comparison__nav-box">
-            {{page.remove_text | richtext}}
-
-            {{page.save_text | richtext}}
-        </div>-->
-
-        <h2 class="comparison__heading">
-            {{page.compare_heading}}
-        </h2>
-
-        <div class="comparison__courses course-detail">
-            <div class="comparison__course-columns">
-                <div class="comparison__course-column">
-                    <div class="comparison__course">
-                        <div id="course1" class="comparison__course-selector">
-                            <select id="course1-select">
-                                <option value="na" disabled selected>{% get_translation key='select_course' language=page.get_language %}</option>
-                            </select>
-                        </div>
-
-                        {% if course1 %}
-                            {% include 'courses/partials/course_overview.html' with course=course1 %}
-                        {% endif %}
-                    </div>
+    <div class="d-block d-sm-none comparison__xs-rotate mb-sm-4 course-comparison-body">
+        <div class="mx-auto p-4">
+            <div class="row my-3">
+                <div class="mx-auto">
+                    <i class="fas fa-mobile-alt fa-5x align-text-bottom mx-3"></i>
+                    <i class="fas fa-sync-alt fa-5x align-text-bottom mx-3"></i>
+                    <i class="fas fa-mobile-alt fa-rotate-90 fa-5x align-text-bottom mx-4"></i>
                 </div>
-
-                <div class="comparison__course-column">
-                    <div class="comparison__course">
-                        <div id="course2" class="comparison__course-selector">
-                            <select id="course2-select">
-                                <option value="na" disabled selected>{% get_translation key='select_course' language=page.get_language %}</option>
-                            </select>
-                        </div>
-
-                        {% if course2 %}
-                            {% include 'courses/partials/course_overview.html' with course=course2 %}
-                        {% endif %}
-                    </div>
+                
+            </div>
+            <h3 class="text-center">Please rotate your device to landscape to view this page</h3>
+        </div>
+    </div>
+    <div class="comparison d-none d-sm-block mb-5">
+        <div class="row mx-0">
+            <div class="col-8 pl-4 overflow-visible pr-0">
+                <div class="comparison__overview">
+                    <h1 class="">
+                        <span class="count"></span> {{page.heading}} {{page.lead}}
+                    </h1>
                 </div>
             </div>
+            <div class="col-4 p-0 text-right pr-2">
+                <img class="comparison__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
+            </div>
+        </div>
+        
+    
+        <div class="comparison__body pt-1">
+            
+            <h2 class="comparison__heading px-3 pt-3">
+                {{page.compare_heading}}
+            </h2>
 
-            {% if course1 and course2 %}
-                <div class="course-detail__body">
-                    <div class="discover-uni-container">
-                        <div class="course-detail__accordion-block">
-                            {% for accordion in page.accordions %}
-                                {% create_list course1 course2 as courses %}
-                                {% should_show_accordion courses accordion.value.data_set as show_accordion %}
-                                {% if show_accordion %}
-                                    <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
-                                        <button class="course-detail__accordion-heading">
-                                            <h2 id="course-detail__accordion-heading-{{forloop.counter}}"
-                                                aria-controls="course-detail__accordion-body-{{forloop.counter}}"
-                                                aria-label="Show {{ accordion.value.heading }} content" aria-expanded="false">
-                                                {{ accordion.value.heading }}
+            <div class="comparison__courses course-detail">
+                <div class="comparison__course-columns">
+                    <div class="comparison__course-column">
+                        <div class="comparison__course">
+                            <div id="course1" class="comparison__course-selector">
+                                <select id="course1-select">
+                                    <option value="na" disabled selected>{% get_translation key='select_course' language=page.get_language %}</option>
+                                </select>
+                            </div>
 
-                                                <span class="course-detail__accordion-heading-chevron">
-                                                    <img class="course-detail__icon plus" src="{% static 'images/plus_icon.svg' %}" alt="">
-                                                    <img class="course-detail__icon minus" src="{% static 'images/minus_icon.svg' %}" alt="">
-                                                </span>
-                                            </h2>
-                                        </button>
+                            {% if course1 %}
+                                {% include 'courses/partials/base_gradient.html' %}
+                                    {% include 'courses/partials/comparison_course_overview.html' with course=course1 %}
+                            {% endif %}
+                        </div>
+                    </div>
 
-                                        <div class="course-detail__accordion-body">
-                                            <div id="course-detail__accordion-body-{{forloop.counter}}" class="course-detail__accordion-body"
-                                                aria-labelledby="course-detail__accordion-heading-{{forloop.counter}}">
-                                                {% include 'courses/partials/comparison_'|add:accordion.value.data_set|add:'_body.html' with block=accordion %}
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
+                    <div class="comparison__course-column">
+                        <div class="comparison__course">
+                            <div id="course2" class="comparison__course-selector">
+                                <select id="course2-select">
+                                    <option value="na" disabled selected>{% get_translation key='select_course' language=page.get_language %}</option>
+                                </select>
+                            </div>
+
+                            {% if course2 %}
+                                {% include 'courses/partials/base_gradient.html' %}
+                                {% include 'courses/partials/comparison_course_overview.html' with course=course2 %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-            {% endif %}
+
+                {% if course1 and course2 %}
+                    <div class="course-detail__body">
+                    
+                            <div class="course-detail__accordion-block">
+                                {% for accordion in page.accordions %}
+                                    {% create_list course1 course2 as courses %}
+                                    {% should_show_accordion courses accordion.value.data_set as show_accordion %}
+                                    {% if show_accordion %}
+
+                                    <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
+                                        <div class="">
+                                            <button class="course-detail__accordion-heading" onclick="toggle_icon('accordion_icon_{{ forloop.counter }}')">
+                                                <h2 id="course-detail__accordion-heading-{{ forloop.counter }}"
+                                                    aria-controls="course-detail__accordion-body-{{ forloop.counter }}"
+                                                    aria-label="Show {{ accordion.value.heading }} content"
+                                                    aria-expanded="false">
+                                                    <i id="accordion_icon_{{ forloop.counter }}" class="fas fa-plus pr-3 text-white"></i>
+                                                    {{ accordion.value.heading }}
+
+                                                </h2>
+                                            </button>
+                                        </div>
+                
+                                        <div id="course-detail__accordion-body-{{ forloop.counter }}"
+                                            class="course-detail__accordion-body"
+                                            aria-labelledby="course-detail__accordion-heading-{{ forloop.counter }}">
+                                            {% include 'courses/partials/comparison_'|add:accordion.value.data_set|add:'_body.html' with block=accordion %}
+                                        </div>
+                                    </div>
+                                
+
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div hidden class="">
+                <div class="course-detail__further-info-block">
+                    <a href="/dummy-link" class="course-detail__other-courses-link">
+                        <img class="course-detail__other-courses-link-icon" src="{% static 'images/location_paddle.svg' %}"
+                            alt="">
+                        <span>{% autoescape off %}{% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
+                    </a>
+        
+                    <a href="/dummy-link" class="course-detail__other-courses-link">
+                        <img class="course-detail__other-courses-link-icon" src="{% static 'images/curved_arrow_right.svg' %}"
+                            alt="">
+                        <span>{% autoescape off %}{% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
+                    </a>
+                </div>
+            </div>
+        
+            <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
         </div>
     </div>
 {% endblock %}

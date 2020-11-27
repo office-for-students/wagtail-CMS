@@ -20,35 +20,51 @@
                     {{institution.pub_ukprn_name}}
                 </h1>
 
-                <div class="institution-details__overview overview-group">
-                    <div class="institution-details__overview-item overview-block">
-                        <p class="institution-details__overview-item-heading">{% get_translation key='address' language=page.get_language %}</p>
-                        <p class="institution-details__overview-item-value">{{ institution.contact_details.address }}</p>
+                <div class="institution-details__overview row row-flex">
+                    <div class="overview-block col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                        <div class="institution-details__overview-item">
+                            <div class="item my-auto">
+                                <p class="institution-details__overview-item-heading">{% get_translation key='address' language=page.get_language %}</p>
+                                <p class="institution-details__overview-item-value">{{ institution.contact_details.address }}</p>    
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="institution-details__overview-item overview-block">
-                        <p class="institution-details__overview-item-heading">{% get_translation key='website' language=page.get_language %}</p>
-                        {% if institution.website %}
-                            <a class="institution-details__overview-item-value" target="_blank" href="https://{{ institution.website }}">{{institution.pub_ukprn_name}}</a>
-                        {% endif %}
-                    </div>
-
-                    <div class="institution-details__overview-item overview-block">
-                        <p class="institution-details__overview-item-heading">{% get_translation key='telephone' language=page.get_language %}</p>
-                        <p class="institution-details__overview-item-value">{{ institution.contact_details.phone_number }}</p>
-                    </div>
-
-                    <div class="institution-details__overview-item overview-block">
-                        <p class="institution-details__overview-item-heading">{% get_translation key='student_unions' language=page.get_language %}</p>
-                        {% for union in institution.student_unions %}
-                            {% if union.display_name %}
-                                {% if union.display_url %}
-                                    <a class="institution-details__overview-item-value" target="_blank" href="{{ union.display_url }}">{{ union.display_name }}</a>
-                                {% else %}
-                                    <p class="institution-details__overview-item-value">{{ union.display_name }}</p>
+                    <div class="overview-block col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                        <div class="institution-details__overview-item">
+                            <div class="item my-auto">
+                                <p class="institution-details__overview-item-heading">{% get_translation key='website' language=page.get_language %}</p>
+                                {% if institution.website %}
+                                    <a class="institution-details__overview-item-value" target="_blank" href="https://{{ institution.website }}">{{institution.pub_ukprn_name}}</a>
                                 {% endif %}
-                            {% endif %}
-                        {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overview-block col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                        <div class="institution-details__overview-item">
+                            <div class="item my-auto">
+                                <p class="institution-details__overview-item-heading">{% get_translation key='telephone' language=page.get_language %}</p>
+                                <p class="institution-details__overview-item-value">{{ institution.contact_details.phone_number }}</p>
+                            </div>  
+                        </div>
+                    </div>
+
+                    <div class="overview-block col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                        <div class="institution-details__overview-item">
+                            <div class="item my-auto">
+                                <p class="institution-details__overview-item-heading">{% get_translation key='student_unions' language=page.get_language %}</p>
+                                {% for union in institution.student_unions %}
+                                    {% if union.display_name %}
+                                        {% if union.display_url %}
+                                            <a class="institution-details__overview-item-value" target="_blank" href="{{ union.display_url }}">{{ union.display_name }}</a>
+                                        {% else %}
+                                            <p class="institution-details__overview-item-value">{{ union.display_name }}</p>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
                     </div>
                 </div>
 

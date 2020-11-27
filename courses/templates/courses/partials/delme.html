@@ -1,0 +1,45 @@
+{% load staticfiles wagtailcore_tags discover_uni_tags %}
+
+{% get_max_length course1.salary_stats course2.salary_stats as max_salary_stats_length %}
+
+{% for i in max_salary_stats_length|times %}
+    {% get_index i course1.salary_stats as course1_salary_stats %}
+    {% get_index i course2.salary_stats as course2_salary_stats %}
+
+    <div class="one-year__block">
+        <div class="comparison__course-columns">
+            <div class="comparison__course-column">
+                <div class="comparison__course">
+
+                </div>
+            </div>
+
+            <div class="comparison__course-column">
+                <div class="comparison__course">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="one-year__block">
+        <div class="comparison__course-columns">
+
+
+            {% for course_index in '12'|make_list %}
+            <div class="comparison__course-column">
+                <div class="comparison__course">
+
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+
+{% endfor %}

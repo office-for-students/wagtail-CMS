@@ -1,0 +1,90 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.discover-uni-container {
+    .graduate_perceptions__block {
+        padding: 0px 30px 30px;
+
+        .graduate_perceptions__heading {
+            @include s-heading-mixin();
+
+            margin-top: 55px;
+            margin-bottom: 25px;
+
+            color: $ux-grey-2;
+        }
+
+        .graduate_perceptions__body {
+            @include mobile-body-font-mixin();
+        }
+
+        .graduate_perceptions__explanation {
+            @include small-font-mixin();
+        }
+    }
+
+
+}
+
+.student-satisfaction__chart .rich-text p{
+    font-size:14px;
+    color:$black;
+    font-weight:normal;
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+}
+
+.student-satisfaction__chart .graduate-perceptions__chart-title{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size:14px;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 14px;
+    font-weight: normal;
+    color:$black;
+}
+.graduate-perceptions__bar-chart-label{
+    line-height: 100%;
+    color: #000000;
+    font-family: "Nunito Sans", sans-serif;
+    display: block;
+    margin-top: 7px;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+@media only screen and (min-width: 770px) {
+    .discover-uni-container {
+        .graduate_perceptions__block {
+
+            .graduate_perceptions__heading {
+                @include m-heading-mixin();
+
+                color: $brownish-grey;
+            }
+
+            .graduate_perceptions__body {
+                @include desktop-body-font-mixin();
+
+                width: 66%;
+            }
+        }
+    }
+    .student-satisfaction__chart .rich-text p{
+        font-size:18px;
+        color:$brownish-grey;
+        font-weight:normal;
+        font-family: 'Nunito Sans', sans-serif;
+        text-align: center;
+    }
+
+    
+    .student-satisfaction__chart .graduate-perceptions__chart-title{
+        font-size: 18px;
+        font-weight: normal;
+        color: $black;
+        margin-left:0.5rem;
+        margin-right:0.5rem;
+    }
+    
+}

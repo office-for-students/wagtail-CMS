@@ -3,17 +3,45 @@
 
 .course-detail__compare-btn {
     @include small-font--bold-mixin();
-
     padding: 5px 10px;
-    margin-top: 15px;
-    margin-bottom: 26px;
-
-    border: 1.5px solid $ux-grey-3;
-    color: $ux-grey-3;
+    border: 1.5px solid #266969;
+    color: #266969!important;
     border-radius: 16px;
     cursor: pointer;
-    background-color: transparent;
-    text-transform: lowercase;
+    background: white;
+
+    .remove {
+        display: none;
+    }
+
+    &.selected {
+        @include green-gradient-background-mixin();
+
+        border: 1.5px solid $gradient-light-green;
+        color: white!important;
+        .add {
+            display: none;
+        }
+
+        .remove {
+            display: inline-block;
+        }
+    }
+
+
+    img {
+        margin-right: 6px;
+    }
+}
+
+.course-detail__compare-btn-white {
+    @include small-font--bold-mixin();
+    padding: 5px 10px;
+    border: 1.5px solid #266969;
+    color: #266969;
+    border-radius: 16px;
+    cursor: pointer;
+    background-color:$white;
 
     .remove {
         display: none;
@@ -98,11 +126,73 @@
     .course-detail__compare-btn {
         @include small-font--bold-mixin();
 
+        float: right;
         padding: 9px 16px 10px 19px;
-        margin-bottom: 26px;
 
         border-radius: 16px;
-        color: $ux-grey-3;
+//         color: $ux-grey-3;
+        color: #fdfafa;
         background-color: transparent;
+    }
+}
+
+#sticky_nav_course_detail{
+
+    .nav-item.nav-link.scrollto {
+        font-size:0.9rem;
+        font-weight:200;
+        text-align: center;
+        // color:$white!important;
+    }
+    .nav-item.nav-link.scrollto.active {
+        // text-decoration: underline!important;
+        font-weight: 400;
+    }
+
+    .navbar-toggler .navbar-dark{
+        border:none!important;
+    }
+    background-color: #2a8384!important;
+  
+    .navbar .collapse {
+        visibility: hidden;
+        display: block;
+    }
+    
+    .navbar .collapse.show {
+        visibility: visible;
+    }
+
+    .dropdown-menu{
+        background-color: #379c9e!important;
+        width:90vw;
+        border:none;
+    }
+}
+/* for small screens */
+@media (max-width: 767px) {
+    #sticky_nav_course_detail{
+        
+        .navbar-nav .nav-link.active {
+            visibility: visible;
+        }
+    
+        .collapsing {
+            transition: all 0.35s ease;
+            height: 40px !important;
+        }
+    
+        .collapse:not(.show) .navbar-nav .nav-item:not(.active) {
+            display: none;
+        }
+    }
+}
+
+/* for larger screens */
+@media (min-width: 768px) {
+    #sticky_nav_course_detail{
+        .navbar .collapse .navbar-nav .nav-item {
+            visibility: visible;
+        }
     }
 }

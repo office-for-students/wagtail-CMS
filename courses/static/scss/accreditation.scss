@@ -1,43 +1,117 @@
 @import '../../../CMS/static/scss/fonts';
 @import '../../../CMS/static/scss/variables';
 
-.discover-uni-container {
     .accreditation__block {
-        padding: 0px 30px 30px;;
+        .accreditation__info{
+            background-color: $ice-blue;
+        }
+        .accreditation__overview{
+            
+            text-align: center;
+            border: solid 3px $duck-egg-blue;
+
+            .accreditation__overview-lead{
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 24px;
+                font-weight:normal;
+                color: #000000;
+                text-decoration: none;
+            }
+            .accreditation__overview-sublead{
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 14px;
+                font-weight:normal;
+                color: $brownish-grey;
+                text-decoration: none;
+            }
+            a{
+                font-family: 'Nunito Sans', sans-serif;
+                font-size:14px;
+                font-weight:normal;
+                text-decoration: underline;
+                color: $dark-green-blue;
+            }
+        }
 
         .accreditation__heading {
             @include s-heading-mixin();
-
-            margin-top: 55px;
-            margin-bottom: 25px;
-
-            color: $ux-grey-2;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight:normal;
+            color: #000000;
+            font-size: 24px;
         }
 
         .accreditation__body {
             @include mobile-body-font-mixin();
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight:normal;
+            font-size:14px;
+            color: $brownish-grey;
+
+            a{
+                color: $dark-green-blue;
+                font-weight:normal;
+                text-decoration: underline;
+            }
         }
 
         .accreditation__explanation {
             @include small-font-mixin();
         }
     }
-}
+
 
 @media only screen and (min-width: 770px) {
-    .discover-uni-container {
-        .accreditation__block {
+    .accreditation__block {
+        .accreditation__info {
+            background-color: $ice-blue;
+        }
 
-            .accreditation__heading {
-                @include m-heading-mixin();
+        .accreditation__overview {
 
-                color: $ux-grey-2;
+            text-align: center;
+            border: solid 3px $duck-egg-blue;
+
+            .accreditation__overview-lead {
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 28px;
+                font-weight: normal;
+                color: #000000;
+                text-decoration: none;
             }
 
-            .accreditation__body {
-                @include desktop-body-font-mixin();
+            .accreditation__overview-sublead {
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 16px;
+                font-weight: normal;
+                color: $brownish-grey;
+                text-decoration: none;
+            }
 
-                width: 66%;
+            a {
+                font-family: 'Nunito Sans', sans-serif;
+                font-size: 16px;
+                font-weight: normal;
+                text-decoration: underline;
+                color: $dark-green-blue;
+            }
+        }
+        .accreditation__heading {
+            font-size:32px;
+        }
+
+
+        .accreditation__body {
+            @include mobile-body-font-mixin();
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: normal;
+            font-size: 16px;
+            color: $brownish-grey;
+
+            a {
+                color: $dark-green-blue;
+                font-weight: normal;
+                text-decoration: underline;
             }
         }
     }

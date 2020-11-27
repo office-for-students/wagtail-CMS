@@ -140,3 +140,10 @@ def get_current_version():
 def get_code_version():
         with open(os.path.join(settings.BASE_DIR, 'version.txt'), 'r') as file:
             return file.read().replace('\n', '')
+
+
+def get_new_landing_page_for_language(language):
+    if language == enums.languages.ENGLISH:
+        return "/"
+    else:
+        return "/cy/"

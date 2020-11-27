@@ -41,6 +41,11 @@ class UniLinkKeys:
     EMPLOYMENT = 'employment_details'
 
 
+class SubjectCodeLevels:
+    ONE_DOWN = 2
+    TWO_DOWN = 1
+
+
 class Enums:
     languages = Languages()
     languages_full = LanguagesFull()
@@ -52,6 +57,7 @@ class Enums:
     apr_values = APRValues()
     tef_values = TEFValues()
     uni_link_keys = UniLinkKeys()
+    subject_code_levels = SubjectCodeLevels()
 
 
 enums = Enums()

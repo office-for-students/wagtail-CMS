@@ -6,6 +6,7 @@ DEBUG = False
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = [
+    'dev-discover-uni2.azurewebsites.net',
     'devdiscoveruni.com',
     'www.devdiscoveruni.com',
     'pre-prod-discover-uni.azurewebsites.net',
@@ -20,6 +21,7 @@ ALLOWED_HOSTS = [
     'prod-widget-discover-uni.azurewebsites.net',
     'prod-discover-uni-write.azurewebsites.net',
 ]
+
 
 
 # Email settings

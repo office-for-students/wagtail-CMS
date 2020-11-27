@@ -1,0 +1,66 @@
+{% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
+
+    <div class="one-year__block">
+
+        <div class="comparison__course-columns">
+        {% for course_index in '12'|make_list %}
+            {% if course_index == "1" %}
+                {% define course1 as course %}
+            {% else %}
+                {% define course2 as course %}
+            {% endif %}
+
+            <div class="comparison__course-column">
+                <div class="comparison__course">
+
+                    <div class="course-detail__uni-site-links mt-3">
+                        <h2 class="course-detail__uni-site-links-header">
+                            {% create_list course.institution.pub_ukprn_name as substitutions %}
+                            {% insert_values_to_rich_text content=block.value.course_information_on_website_header substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </h2>
+                        <br>
+                        <div class="course-detail__uni-site-links-blocks">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="course-detail__uni-site-links-block">
+                                        <p class="course-detail__uni-site-links-heading">
+                                            {% get_translation key='course_details' language=page.get_language %}
+                                        </p>
+                    
+                                        <ul class="course-detail__uni-site-links-list">
+                                            {% for link in course.course_links.course_details %}
+                                                <li class="course-detail__uni-site-links-list-item">
+                                                    <a class="course-detail__uni-site-link"
+                                                    href="{{ link.link }}">{{ link.label }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="course-detail__uni-site-links-block">
+                                        <p class="course-detail__uni-site-links-heading">
+                                            {% get_translation key='costs_and_support' language=page.get_language %}
+                                        </p>
+                    
+                                        <ul class="course-detail__uni-site-links-list">
+                                            {% for link in course.course_links.costs_support %}
+                                                <li class="course-detail__uni-site-links-list-item">
+                                                    <a class="course-detail__uni-site-link"
+                                                    href="{{ link.link }}">{{ link.label }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>    
+            </div>
+        {% endfor %}
+        </div>
+    </div>

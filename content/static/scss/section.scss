@@ -50,7 +50,6 @@
 
             &-content {
                 @include small-font-mixin();
-
                 padding: 30px;
 
                 h3 {
@@ -98,22 +97,29 @@
     }
 
     .additional-links {
+        margin-top:2.5rem;
         margin-bottom: 40px;
 
         &__header {
-            @include m-heading--bold-mixin();
-
-            text-align: center;
+            @include s-heading--bold-mixin();
+            text-align: left;
+            color:#6E6E6E;
         }
 
         &__link {
             &-wrapper {
-                width: 40%;
                 margin: 5px;
                 padding: 10px;
                 display: grid;
-
+                -ms-flex-preferred-size: 0;
+                -ms-flex-positive: 1;
+                flex-grow: 1;
+                min-width: 0;
+                max-width: 100%;
+                flex-wrap: wrap;
+               
                 a {
+                    text-align: center;
                     @include xs-heading--bold-mixin();
 
                     padding: 37px;
@@ -130,12 +136,18 @@
             &-list {
                 display: flex;
                 flex-wrap: wrap;
+                margin-top:1rem;
+                margin-bottom:1rem;
             }
         }
 
         @media only screen and (min-width: 770px) {
             .additional-links {
+
+                margin-top:2.5rem;
+
                 &__link {
+                    text-align: center;
                     flex-wrap: nowrap;
 
                     &-wrapper {
@@ -171,9 +183,6 @@
             &-body {
                 &-content {
                     @include xs-heading-mixin();
-
-                    width: 66%;
-
                     padding: 60px 80px 70px;
 
                     h3 {

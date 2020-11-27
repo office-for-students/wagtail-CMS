@@ -6,16 +6,16 @@ CAH01-01-02,Medicine (non-specific),3,Meddygaeth (amhenodol)
 CAH01-01-03,Medicine by specialism,3,Meddygaeth yn ôl arbenigedd
 CAH01-01-04,Dentistry,3,Deintyddiaeth
 CAH02,Subjects allied to medicine,1,Pynciau’n gysylltiedig â meddygaeth
-CAH02-01,Nursing and midwifery,2,Nyrsio a bydwreigiaeth
-CAH02-01-01,Nursing (non-specific),3,Nyrsio (amhenodol)
-CAH02-01-02,Adult nursing,3,Nyrsio oedolion
-CAH02-01-03,Community nursing,3,Nyrsio cymunedol
-CAH02-01-04,Midwifery,3,Bydwreigiaeth
-CAH02-01-05,Childrens nursing,3,Nyrsio plant
-CAH02-01-06,Dental nursing,3,Nyrsio deintyddol
-CAH02-01-07,Mental health nursing,3,Nyrsio iechyd meddwl
-CAH02-01-08,Learning disabilities nursing,3,Nyrsio anableddau dysgu
-CAH02-01-09,Nursing (other),3,Nyrsio (arall)
+CAH02-04,Nursing and midwifery,2,Nyrsio a bydwreigiaeth
+CAH02-04-01,Nursing (non-specific),3,Nyrsio (amhenodol)
+CAH02-04-02,Adult nursing,3,Nyrsio oedolion
+CAH02-04-03,Community nursing,3,Nyrsio cymunedol
+CAH02-04-04,Midwifery,3,Bydwreigiaeth
+CAH02-04-05,Childrens nursing,3,Nyrsio plant
+CAH02-04-06,Dental nursing,3,Nyrsio deintyddol
+CAH02-04-07,Mental health nursing,3,Nyrsio iechyd meddwl
+CAH02-04-08,Learning disabilities nursing,3,Nyrsio anableddau dysgu
+CAH02-04-09,Nursing (other),3,Nyrsio (arall)
 CAH02-02,"Pharmacology, toxicology and pharmacy",2,"Ffarmacoleg,  tocsicoleg a fferylliaeth "
 CAH02-02-01,Pharmacology,3,Ffarmacoleg
 CAH02-02-02,Toxicology,3,Tocsicoleg

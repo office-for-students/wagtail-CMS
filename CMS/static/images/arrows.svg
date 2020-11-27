@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="85" height="63" viewBox="0 0 85 63">
+    <g fill="#8E3B74" fill-rule="evenodd">
+        <circle cx="2.5" cy="2.5" r="2.5" transform="rotate(90 2.5 2.5)"/>
+        <circle cx="2.5" cy="41.5" r="2.5" transform="rotate(90 2.5 41.5)"/>
+        <circle cx="2.5" cy="21.5" r="2.5" transform="rotate(90 2.5 21.5)"/>
+        <circle cx="2.5" cy="60.5" r="2.5" transform="rotate(90 2.5 60.5)"/>
+        <circle cx="2.5" cy="12.5" r="2.5" transform="rotate(90 2.5 12.5)"/>
+        <circle cx="2.5" cy="50.5" r="2.5" transform="rotate(90 2.5 50.5)"/>
+        <circle cx="2.5" cy="31.5" r="2.5" transform="rotate(90 2.5 31.5)"/>
+        <circle cx="18.5" cy="41.5" r="2.5" transform="rotate(90 18.5 41.5)"/>
+        <circle cx="50.5" cy="41.5" r="2.5" transform="rotate(90 50.5 41.5)"/>
+        <circle cx="74.5" cy="41.5" r="2.5" transform="rotate(90 74.5 41.5)"/>
+        <circle cx="10.5" cy="41.5" r="2.5" transform="rotate(90 10.5 41.5)"/>
+        <circle cx="42.5" cy="41.5" r="2.5" transform="rotate(90 42.5 41.5)"/>
+        <circle cx="18.5" cy="21.5" r="2.5" transform="rotate(90 18.5 21.5)"/>
+        <circle cx="50.5" cy="21.5" r="2.5" transform="rotate(90 50.5 21.5)"/>
+        <circle cx="74.5" cy="21.5" r="2.5" transform="rotate(90 74.5 21.5)"/>
+        <circle cx="10.5" cy="21.5" r="2.5" transform="rotate(90 10.5 21.5)"/>
+        <circle cx="42.5" cy="21.5" r="2.5" transform="rotate(90 42.5 21.5)"/>
+        <circle cx="10.5" cy="12.5" r="2.5" transform="rotate(90 10.5 12.5)"/>
+        <circle cx="42.5" cy="12.5" r="2.5" transform="rotate(90 42.5 12.5)"/>
+        <circle cx="10.5" cy="50.5" r="2.5" transform="rotate(90 10.5 50.5)"/>
+        <circle cx="42.5" cy="50.5" r="2.5" transform="rotate(90 42.5 50.5)"/>
+        <circle cx="26.5" cy="31.5" r="2.5" transform="rotate(90 26.5 31.5)"/>
+        <circle cx="58.5" cy="31.5" r="2.5" transform="rotate(90 58.5 31.5)"/>
+        <circle cx="82.5" cy="31.5" r="2.5" transform="rotate(90 82.5 31.5)"/>
+        <circle cx="10.5" cy="31.5" r="2.5" transform="rotate(90 10.5 31.5)"/>
+        <circle cx="42.5" cy="31.5" r="2.5" transform="rotate(90 42.5 31.5)"/>
+        <circle cx="18.5" cy="31.5" r="2.5" transform="rotate(90 18.5 31.5)"/>
+        <circle cx="50.5" cy="31.5" r="2.5" transform="rotate(90 50.5 31.5)"/>
+        <circle cx="74.5" cy="31.5" r="2.5" transform="rotate(90 74.5 31.5)"/>
+    </g>
+</svg>
