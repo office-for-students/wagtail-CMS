@@ -12,10 +12,10 @@ class FilterForm:
         self.institutions = form_data.get('institution_query', '').replace('"', '')
         self.courses = form_data.get('subject_query', '')
         self.course_query = form_data.get('course_query', '')
-        postcode_query = form_data.get('postcode_query')
-        if postcode_query:
-            self.postcode = postcode_query.split(',')[0]
-            self.distance = postcode_query.split(',')[1]
+        self.postcode_query = form_data.get('postcode_query', '')
+        if self.postcode_query:
+            self.postcode = self.postcode_query.split(',')[0]
+            self.distance = self.postcode_query.split(',')[1]
         else:
             self.postcode = ''
             self.distance = ''
