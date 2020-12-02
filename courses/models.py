@@ -292,7 +292,7 @@ class Course:
             self.kis_course_id = course_details.get('kis_course_id')
 
             self.data_from_html = DICT.get('data_from_html').get(language)
-            self.data_from_html_average_earnings_year_range = DICT.get('data_from_html_average_earnings_year_range').get(language)
+            self.data_from_htlocations_listml_average_earnings_year_range = DICT.get('data_from_html_average_earnings_year_range').get(language)
 
             self.ucas_programme_id = course_details.get('ucas_programme_id')
             self.qualification = CourseQualification(course_details.get('qualification'))
@@ -418,7 +418,7 @@ class Course:
             elif self.country.code == 'XI':
                 self.default_country_postfix = "_w"
                 self.default_region = "Wales"
-            
+
             if language == enums.languages.WELSH:
                 with open("./CMS/static/jsonfiles/regions.json", "r") as f:
                     regions = f.read()
@@ -549,8 +549,8 @@ class Course:
 
     #     return unavailable
 
-        
-        
+
+
     def display_no_data(self):
         unavailable = {}
 
@@ -609,10 +609,13 @@ class Course:
     def locations_list(self):
         location_names = []
         for location in self.locations:
-            if self.display_language == enums.languages.ENGLISH:
-                location_names.append(location.english_name)
+            if self.display_language == enums.languages.WELSH:
+                if location.welsh_name:
+                    location_names.append(location.welsh_name)
+                else:
+                    location_names.append(location.english_name)
             else:
-                location_names.append(location.welsh_name)
+                location_names.append(location.english_name)
         return ', '.join(location_names)
 
     @property
@@ -1700,7 +1703,7 @@ class Job:
                 self.percentage = self.percentage.replace('<5', 'Llai na 5')
 
             self.order = job_data.get('order')
-            self.hs = fallback_to(job_data.get('hs'), '') 
+            self.hs = fallback_to(job_data.get('hs'), '')
 
 
 class GraduatePerceptionStatistics:
