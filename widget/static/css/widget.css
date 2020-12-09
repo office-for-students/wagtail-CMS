@@ -79,7 +79,10 @@
 
 .kis-widget.vertical {
     width: 186px;
-    height: 496px;
+    /* This has been removed because if one of the pages in the animation is */
+    /* larger than the box it will overflow the box and the border will not */
+    /* apear at the bottom any more */
+    /*height: 496px;*/
     flex-direction: column;
 }
 
