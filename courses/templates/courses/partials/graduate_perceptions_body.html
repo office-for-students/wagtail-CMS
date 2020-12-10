@@ -17,7 +17,7 @@
 <div class="tab-content">
     {% for perceptions_stats in course_details.graduate_perceptions %}
         <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="grad-perceptions-{{ forloop.counter }}" role="tabpanel" aria-labelledby="grad-perceptions-{{ forloop.counter }}-tab">
-    
+
         {% if perceptions_stats.go_work_mean %}
             <div class="student-satisfaction__overview mt-3 mx-1 p-3 d-flex flex-wrap row">
                     <div class="col-lg-2 col-md-12 align-self-stretch text-center">
@@ -37,9 +37,12 @@
                     </div>
             </div>
 
-            <div class="mt-3">
-                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=perceptions_stats.display_unavailable_info %}
-            </div>
+            <!-- {{ perceptions_stats.go_work_agg }} -->
+            {% if perceptions_stats.go_work_agg != '24' %}
+                <div class="mt-3">
+                    {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=perceptions_stats.display_unavailable_info %}
+                </div>
+            {% endif %}
 
             <div class="student-satisfaction__block">
                 <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 mx-1">
