@@ -1730,6 +1730,7 @@ class GraduatePerceptionStatistics:
             self.go_work_on_track = fallback_to(go_voice_work_data.get('go_work_on_track'), '')
             self.go_work_pop = fallback_to(go_voice_work_data.get('go_work_pop'), '')
             self.go_work_resp_rate = fallback_to(go_voice_work_data.get('go_work_resp_rate'), '')
+            self.go_work_agg = fallback_to(go_voice_work_data.get('go_work_agg'), '')
 
     def display_subject_name(self):
         if self.display_language == enums.languages.ENGLISH:
