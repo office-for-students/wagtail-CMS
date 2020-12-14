@@ -1087,6 +1087,14 @@ class EmploymentStatistics:
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
 
+        if "reason" in unavailable:
+            if self.aggregation_level in [21, 22, 23]:
+                if self.display_language == enums.languages.ENGLISH:
+                    unavailable["reason"] = unavailable["reason"].replace(" over the previous two years", "")
+                else:
+                    #pass
+                    unavailable["reason"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol", "eraill")
+
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
@@ -1160,6 +1168,13 @@ class JobTypeStatistics:
                 else self.unavailable_url_welsh
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        if "reason" in unavailable:
+            if self.aggregation_level in [21, 22, 23]:
+                if self.display_language == enums.languages.ENGLISH:
+                    unavailable["reason"] = unavailable["reason"].replace(" over the previous two years", "")
+                else:
+                    unavailable["reason"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol", "eraill")
 
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
@@ -1684,6 +1699,13 @@ class JobList:
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
 
+        if "reason" in unavailable:
+            if self.aggregation in ["21","22","23"]:
+                if self.display_language == enums.languages.ENGLISH:
+                    unavailable["reason"] = unavailable["reason"].replace(" over the previous two years", "")
+                else:
+                    unavailable["reason"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol", "eraill")
+
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
@@ -1754,6 +1776,13 @@ class GraduatePerceptionStatistics:
                 else self.unavailable_find_out_more_welsh
         else:
             unavailable["find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
+
+        if "reason" in unavailable:
+            if self.go_work_agg in ["21","22","23"]:
+                if self.display_language == enums.languages.ENGLISH:
+                    unavailable["reason"] = unavailable["reason"].replace(" over the previous two years", "")
+                else:
+                    unavailable["reason"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol", "eraill")
 
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
