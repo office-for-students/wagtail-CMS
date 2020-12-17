@@ -54,6 +54,10 @@
                 justify-content: center;
                 align-items: center;
 
+                div.item{
+                    overflow:auto;
+                }
+
                 .institution-details__overview-item-heading {
                     
                     @include xs-heading-mixin();

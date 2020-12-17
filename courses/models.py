@@ -292,7 +292,7 @@ class Course:
             self.kis_course_id = course_details.get('kis_course_id')
 
             self.data_from_html = DICT.get('data_from_html').get(language)
-            self.data_from_html_average_earnings_year_range = DICT.get('data_from_html_average_earnings_year_range').get(language)
+            self.data_from_htlocations_listml_average_earnings_year_range = DICT.get('data_from_html_average_earnings_year_range').get(language)
 
             self.ucas_programme_id = course_details.get('ucas_programme_id')
             self.qualification = CourseQualification(course_details.get('qualification'))
@@ -418,7 +418,7 @@ class Course:
             elif self.country.code == 'XI':
                 self.default_country_postfix = "_w"
                 self.default_region = "Wales"
-            
+
             if language == enums.languages.WELSH:
                 with open("./CMS/static/jsonfiles/regions.json", "r") as f:
                     regions = f.read()
@@ -549,8 +549,8 @@ class Course:
 
     #     return unavailable
 
-        
-        
+
+
     def display_no_data(self):
         unavailable = {}
 
@@ -609,10 +609,13 @@ class Course:
     def locations_list(self):
         location_names = []
         for location in self.locations:
-            if self.display_language == enums.languages.ENGLISH:
-                location_names.append(location.english_name)
+            if self.display_language == enums.languages.WELSH:
+                if location.welsh_name:
+                    location_names.append(location.welsh_name)
+                else:
+                    location_names.append(location.english_name)
             else:
-                location_names.append(location.welsh_name)
+                location_names.append(location.english_name)
         return ', '.join(location_names)
 
     @property
@@ -683,10 +686,15 @@ class Course:
     def display_title(self):
         honours = ""
         if int(self.honours_award_provision) == 1:
-            honours = "(Hons) "
+            honours = " (Hons) "
 
-        english_title = self.qualification.label + " " + honours + self.english_title
-        welsh_title = self.qualification.label + " " + honours + self.welsh_title
+        english_title = self.qualification.label + honours + self.english_title
+        welsh_title = self.qualification.label + honours + self.welsh_title
+
+        # HESA data fix
+        if self.institution.pub_ukprn == "10007804" and self.kis_course_id == "U18-LAWLLB":
+            english_title = self.qualification.label + honours + self.subject_names[0].subject_english
+            welsh_title = self.qualification.label + honours + self.subject_names[0].subject_welsh
 
         if self.display_language == enums.languages.ENGLISH:
             return english_title if self.english_title else welsh_title
@@ -1084,6 +1092,14 @@ class EmploymentStatistics:
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
 
+        if "reason" in unavailable:
+            if self.aggregation_level in [21, 22, 23]:
+                if self.display_language == enums.languages.ENGLISH:
+                    unavailable["reason"] = unavailable["reason"].replace(" over the previous two years", "")
+                else:
+                    #pass
+                    unavailable["reason"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol", "eraill")
+
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
@@ -1157,6 +1173,13 @@ class JobTypeStatistics:
                 else self.unavailable_url_welsh
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
+
+        if "reason" in unavailable:
+            if self.aggregation_level in [21, 22, 23]:
+                if self.display_language == enums.languages.ENGLISH:
+                    unavailable["reason"] = unavailable["reason"].replace(" over the previous two years", "")
+                else:
+                    unavailable["reason"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol", "eraill")
 
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
@@ -1681,6 +1704,13 @@ class JobList:
         else:
             unavailable["url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
 
+        if "reason" in unavailable:
+            if self.aggregation in ["21","22","23"]:
+                if self.display_language == enums.languages.ENGLISH:
+                    unavailable["reason"] = unavailable["reason"].replace(" over the previous two years", "")
+                else:
+                    unavailable["reason"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol", "eraill")
+
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
@@ -1700,7 +1730,7 @@ class Job:
                 self.percentage = self.percentage.replace('<5', 'Llai na 5')
 
             self.order = job_data.get('order')
-            self.hs = fallback_to(job_data.get('hs'), '') 
+            self.hs = fallback_to(job_data.get('hs'), '')
 
 
 class GraduatePerceptionStatistics:
@@ -1727,6 +1757,7 @@ class GraduatePerceptionStatistics:
             self.go_work_on_track = fallback_to(go_voice_work_data.get('go_work_on_track'), '')
             self.go_work_pop = fallback_to(go_voice_work_data.get('go_work_pop'), '')
             self.go_work_resp_rate = fallback_to(go_voice_work_data.get('go_work_resp_rate'), '')
+            self.go_work_agg = fallback_to(go_voice_work_data.get('go_work_agg'), '')
 
     def display_subject_name(self):
         if self.display_language == enums.languages.ENGLISH:
@@ -1750,6 +1781,13 @@ class GraduatePerceptionStatistics:
                 else self.unavailable_find_out_more_welsh
         else:
             unavailable["find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
+
+        if "reason" in unavailable:
+            if self.go_work_agg in ["21","22","23"]:
+                if self.display_language == enums.languages.ENGLISH:
+                    unavailable["reason"] = unavailable["reason"].replace(" over the previous two years", "")
+                else:
+                    unavailable["reason"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol", "eraill")
 
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 

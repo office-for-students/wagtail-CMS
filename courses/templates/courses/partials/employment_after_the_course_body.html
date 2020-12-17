@@ -49,8 +49,9 @@
                                         {% if course_details.has_multiple_employment_stats %}
                                             {{ employment_stats.display_subject_name }}{% endif %}
                             </h2>
-
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
+                            {% if employment_stats.aggregation_level != 24 %}
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
+                            {% endif %}
 
                             <div class="explanation-text">
                                 {% create_list course_details.data_from_html employment_stats.number_of_students employment_stats.response_rate as substitutions %}
@@ -244,7 +245,9 @@
                         </h2>
                         {% if jobtype_stats.number_of_students and joblist_stats.jobs %}
 
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
+                            {% if jobtype_stats.aggregation_level != 24 %}
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
+                            {% endif %}
 
                             <div class="employment-after-course_explanation-text">
                                 {% create_list course_details.data_from_html jobtype_stats.number_of_students jobtype_stats.response_rate as substitutions %}
@@ -252,9 +255,13 @@
                                 {{ subbed_text | richtext }}
                             </div>
                         {% elif jobtype_stats and jobtype_stats.display_unavailable_info %}
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
+                            {% if jobtype_stats.aggregation_level != 24 %}
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
+                            {% endif %}
                         {% else %}
-                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
+                            {% if jobtype_stats.aggregation_level != 24 %}
+                                {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
+                            {% endif %}
                         {% endif %}
 
                     </div>
