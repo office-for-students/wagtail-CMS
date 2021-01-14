@@ -4,50 +4,17 @@
 [![Build Status](https://dev.azure.com/ofsbeta/discoverUni/_apis/build/status/pre-prod/pp-wagtail-cms?label=Pre%20prod%20build%20status)](https://dev.azure.com/ofsbeta/discoverUni/_build/latest?definitionId=11)
 [![Build Status](https://dev.azure.com/ofsbeta/discoverUni/_apis/build/status/prod/prod-wagtail-cms?branchName=master&label=Prod%20build%20status)](https://dev.azure.com/ofsbeta/discoverUni/_build/latest?definitionId=12&branchName=master)
 
-<!-- vim-markdown-toc GitLab -->
+# Table of Contents
 
-* [About this application](#about-this-application)
-    * [Purpose of this app](#purpose-of-this-app)
-    * [Tech stack](#tech-stack)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-    * [Without Docker](#without-docker)
-    * [With Docker](#with-docker)
-  * [Running the database](#running-the-database)
-  * [Environment variables](#environment-variables)
-  * [Running the site](#running-the-site)
-    * [Running without Docker](#running-without-docker)
-    * [Running with Docker](#running-with-docker)
-      * [Useful  commands](#useful-commands)
-      * [Adding new dependencies](#adding-new-dependencies)
-* [Continuous Integration and Deployment Pipeline](#continuous-integration-and-deployment-pipeline)
-  * [Continuous Integration](#continuous-integration)
-    * [CI test](#ci-test)
-    * [Development build](#development-build)
-    * [Pre prod build](#pre-prod-build)
-    * [Production build](#production-build)
-  * [Continuous Deployment](#continuous-deployment)
-    * [Development deploy](#development-deploy)
-    * [Pre prod deploy](#pre-prod-deploy)
-    * [Production deploy](#production-deploy)
-  * [Releases](#releases)
-    * [Creating A Release](#creating-a-release)
-        * [Manual release process](#manual-release-process)
-        * [Automated release process](#automated-release-process)
-    * [Finishing A Release](#finishing-a-release)
-* [Contributing](#contributing)
-* [License](#license)
+...
 
-<!-- vim-markdown-toc -->
+# About this application
 
-
-## About this application
-
-### Purpose of this app
+## Purpose of this app
 
 The purpose of this app is to provide a user interface for admin users to maintain the 'DiscoverUni' site content.
 
-### Tech stack
+## Tech stack
 
 This application is based on the Wagtail CMS.
 It utilises:
@@ -56,52 +23,7 @@ It utilises:
 - jQuery
 - SASS
 
-## Getting Started
-
-### Prerequisites
-
-#### Without Docker
-
-You need to have Python (3.6.8), PIP and PostgreSQL installed. There are multiple ways to install Python, either download from the official [Python site](https://www.python.org/downloads/) or use the package manager [Homebrew](https://brew.sh/) ```brew install python3```. PIP comes installed with Python 3.4(or greater) by default.
-
-To install Postgres you can also use [Homebrew](https://brew.sh/)
-
-```
-brew update
-brew doctor
-brew install postgresql
-```
-
-
-#### With Docker
-
-You need to have Docker and PostgreSQL installed. Docker installation guidance can be found in the [Docker Docs](https://docs.docker.com/install/).
-
-To install Postgres you can also use [Homebrew](https://brew.sh/)
-
-```
-brew update
-brew doctor
-brew install postgresql
-```
-
-### Running the database
-
-To start Postgres:
-
-```
-pg_ctl -D /usr/local/var/postgres start && brew services start postgresql
-```
-
-Create a local database
-
-```
-CREATE DATABASE sampledb;
-CREATE USER manager WITH PASSWORD 'supersecretpassword';
-GRANT ALL PRIVILEGES ON DATABASE sample TO manager;
-```
-
-### Environment variables
+## Environment variables
 
 | Variable                          | Default              | Description                                 |
 | --------------------------------- | -------------------- | ------------------------------------------- |
@@ -123,68 +45,175 @@ GRANT ALL PRIVILEGES ON DATABASE sample TO manager;
 | SENDGRID_FROM_EMAIL               | <sendgridfromemail>  | The e-mail address used for notifications   |
 | LOCAL                             | False                | Tells the site to use external API or mocks |
 
+# Getting Started
 
-### Running the site
+## Configure
 
-#### Running without Docker
-
-Create a Python 3.6.8 virtual environment and run the following commands from the root directory of the project:
-
-```
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
-```
-
-
-#### Running with Docker
+### Defaults
 
 ```
-docker-compose build
-docker-compose up
+$ cp docker-compose.yml.example docker-compose.yml
+$ vim docker-compose.yml
+...
+DBHOST:                       "db"
+DBNAME:                       "django"
+DBUSER:                       "docker"
+DBPASSWORD:                   "docker"
+DBPORT:                       "5432"
+SEARCHAPIHOST:                "..."
+WIDGETAPIHOST:                "..."
+WIDGETAPIKEY:                 "..."
+DATASETAPIHOST:               "${DATASETAPIHOST}"
+DATASETAPIKEY:                "${DATASETAPIKEY}"
+FEEDBACK_API_HOST:            "..."
+...:                          "..."
+...
 ```
 
-The first command builds the docker image.
-The second command starts the docker container, running on port 8000.
+### Secret Key
 
-After the docker image is running for the first time, connect to it and create an admin login as follows:
-
-(From the route directory)
 ```
-./bin/manage createsuperuser
+$ python
+>>> import random, string
+>>> ''.join([random.SystemRandom().choice(string.ascii_letters + string.digits + string.punctuation) for _ in range(50)])
+'<secret_key>'
+>>> exit()
+$ vim docker-compose.yml
+...
+SECRET_KEY:                   "<secret_key>"
+...
 ```
 
-##### Useful commands
+## Docker
 
-There are commands setup in the bin directory of the project, that allow easy use of common commands inside the docker container.
+You need to have [Docker Docs](https://docs.docker.com/install/) installed to be able to see changes in the code, run tests and update local data.
 
-- container - takes you on to the containers command line.
-- manage - can be passed arguments to run standard django manage.py commands.
-- shell - takes you on to the python shell command line for the project.
+```
+$ docker-compose up
+```
 
+> Make sure to run this command in a separate window so you have somewhere to run other commands from
+
+> This command will download all the required images (Python, PostgreSQL, CosmosDB) and start them for you all preconfigured
+
+## Database (PostgreSQL)
+
+### Creating
+
+```
+$ docker container exec -it wagtail-cms_web_1 python manage.py migrate
+```
+
+### Populating
+
+First lets get the data from the development environment in Azure.
+
+> **IMPORTANT:** Remember to use the **REMOTE** database details below (because you are getting the data from the remote database)
+
+```
+$ vim docker-compose.yml
+...
+DBHOST:      "..."
+DBNAME:      "..."
+DBUSER:      "..."
+DBPASSWORD:  "..."
+DBPORT:      "..."
+...
+$ docker container exec -it wagtail-cms_web_1 python manage.py dumpdata --natural-foreign --indent=4 > postgres.json
+```
+
+> **IMPORTANT:** Stop docker (press Ctrl+C in the window in which you have it running)
+
+Now put back in your local variables.
+
+```
+$ vim docker-compose.yml
+...
+DBHOST:      "db"
+DBNAME:      "django"
+DBUSER:      "docker"
+DBPASSWORD:  "docker"
+DBPORT:      "5432"
+...
+```
+
+Restart Docker in the other window.
+
+Now we need to create the schema in the database. Unfortunately this will also creates a number of default entries. We need to remove these default entries otherwise the import will not work.
+
+```
+$ docker container exec wagtail-cms_web_1 python manage.py migrate
+...
+$ docker container exec -it wagtail-cms_web_1 python manage.py shell
+>>> from wagtail.core.models import Page
+>>> Page.objects.all().delete()
+>>> from django.contrib.contenttypes.models import ContentType
+>>> ContentType.objects.all().delete()
+>>> exit()
+$ docker container exec wagtail-cms_web_1 python manage.py loaddata postgres.json
+```
+
+## CosmosDB
+
+### Populating
+
+...
+
+# Useful Commands
+
+## Docker
+
+### List images
+
+```
+$ docker images
+```
+
+From this list you can find the docker images you no longer need. Copy their `IMAGE ID`
+
+### Deleting Images
+
+```
+$ docker rm <IMAGE_ID>
+```
+
+### Listing Containers
+
+Container are based of images. This is what runs your code
+
+```
+$ docker ps --all
+```
+
+The `NAME`s you can see in the commands above. The `STATUS` tells you whether ac container is being used. If you no longer need a container copy the `CONTAINER ID`
+
+### Deleting Containers
+
+```
+$  docker rmi -f <CONTAINER_ID>
+```
+
+### Get into a Container
+
+```
+$ docker container exec -it wagtail-cms_web_1 bash
+$ docker container exec -it wagtail-cms_db_1 bash
+```
+
+### Using the Django Shell
+
+```
+$ docker container exec -it wagtail-cms_web_1 python manage.py shell
+```
 
 ##### Adding new dependencies
 
-Adding a new dependency requires rebuilding docker image for Django app.
-
-Stop docker container
-
 ```
-docker-compose down
+$ docker container exec -it wagtail-cms_web_1 pip install ...
+$ docker container exec -it wagtail-cms_web_1 pip freeze > requirements.txt
 ```
 
-Rebuild Docker image
-
-```
-docker-compose build
-```
-
-Start server again
-
-```
-docker-compose up
-```
+# Other Stuff
 
 ## Continuous Integration and Deployment Pipeline
 

@@ -17,8 +17,6 @@ services:
       # CosmosDB
       DATASETAPIHOST:               "${DATASETAPIHOST}"
       DATASETAPIKEY:                "${DATASETAPIKEY}"
-      FEEDBACK_API_HOST:            "${FEEDBACK_API_HOST}"
-      JSONFILES_STORAGE_CONTAINER:  "${JSONFILES_STORAGE_CONTAINER}"
       # Azure storage (institutions.xx.json, subjects.json, versions,json, etc...)
       STORAGE_ACCOUNT_NAME:         "${STORAGE_ACCOUNT_NAME}"
       STORAGEKEY:                   "${STORAGEKEY}"
@@ -30,6 +28,9 @@ services:
       SENDGRID_API_KEY:             "${SENDGRID_API_KEY}"
       SECRET_KEY:                   "${SECRET_KEY}"
       SENDGRID_FROM_EMAIL:          "${SENDGRID_FROM_EMAIL}"
+      # Other
+      FEEDBACK_API_HOST:            "${FEEDBACK_API_HOST}"
+      JSONFILES_STORAGE_CONTAINER:  "${JSONFILES_STORAGE_CONTAINER}"
       # Custom
       ROOT_DOMAIN:                  "${ROOT_DOMAIN}"
       READ_ONLY:                    "${READ_ONLY}"
@@ -41,3 +42,11 @@ services:
       - .:/code
     ports:
       - "8000:8000"
+
+  db:
+    image: postgres:9.6
+    restart: always
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: django
