@@ -31,7 +31,7 @@ ROOT_DOMAIN = os.environ.get('ROOT_DOMAIN', 'http://localhost:3000')
 
 INSTALLED_APPS = [
     'customadmin',
-    
+
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
@@ -208,9 +208,9 @@ BASE_URL = os.environ.get('ROOT_DOMAIN', 'http://example.com')
 
 SEARCHAPIHOST = os.environ.get('SEARCHAPIHOST')
 DATASETAPIHOST = os.environ.get('DATASETAPIHOST')
+DATASETAPIKEY = os.environ.get('DATASETAPIKEY')
 WIDGETAPIKEY = os.environ.get('WIDGETAPIKEY')
 WIDGETAPIHOST = os.environ.get('WIDGETAPIHOST')
-DATASETAPIKEY = os.environ.get('DATASETAPIKEY')
 FEEDBACK_API_HOST = os.environ.get('FEEDBACK_API_HOST')
 JSONFILES_STORAGE_CONTAINER = os.environ.get('JSONFILES_STORAGE_CONTAINER', "")
 STORAGEKEY = os.environ.get('STORAGEKEY')

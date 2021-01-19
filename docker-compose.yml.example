@@ -17,6 +17,8 @@ services:
       # CosmosDB
       DATASETAPIHOST:               "${DATASETAPIHOST}"
       DATASETAPIKEY:                "${DATASETAPIKEY}"
+      DATASETAPIHOST_LOCAL:         "mongodb"
+      DATASETAPIKEY_LOCAL:          "mongodb"
       # Azure storage (institutions.xx.json, subjects.json, versions,json, etc...)
       STORAGE_ACCOUNT_NAME:         "${STORAGE_ACCOUNT_NAME}"
       STORAGEKEY:                   "${STORAGEKEY}"

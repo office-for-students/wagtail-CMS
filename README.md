@@ -153,6 +153,10 @@ $ docker container exec -it wagtail-cms_web_1 python manage.py shell
 $ docker container exec wagtail-cms_web_1 python manage.py loaddata postgres.json
 ```
 
+> Because we have copied wholesale the data over from development you can use your original development credentials to login to the Wagtail Admin if you need to
+
+> Also now that Wagtail has been localised you can login and change things to your hearts content. If anything breaks (irrevocably) then just just delete the PostgreSQL container (use the docker commands below) and re-do the populating as described above.
+
 ## CosmosDB
 
 ### Populating

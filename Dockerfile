@@ -9,10 +9,3 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 COPY . /code/
-
-RUN useradd wagtail
-RUN chown -R wagtail /code
-USER wagtail
-RUN chmod +x ./deploy_files/docker-entrypoint.sh
-
-#RUN python manage.py compilescss
