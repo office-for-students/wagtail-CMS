@@ -8,12 +8,6 @@
 
 ...
 
-# About this application
-
-## Purpose of this app
-
-The purpose of this app is to provide a user interface for admin users to maintain the 'DiscoverUni' site content.
-
 ## Tech stack
 
 This application is based on the Wagtail CMS.
@@ -22,6 +16,16 @@ It utilises:
 - Python/Django framework
 - jQuery
 - SASS
+
+## Rollout
+
+### LIVE
+
+The following command will need to be run to make the codebase work in LIVE:
+
+```
+$ cp docker-compose.yml.example docker-compose.yml
+```
 
 ## Environment variables
 
@@ -80,7 +84,7 @@ $ python
 >>> exit()
 $ vim docker-compose.yml
 ...
-SECRET_KEY:                   "<secret_key>"
+SECRET_KEY: "<secret_key>"
 ...
 ```
 
