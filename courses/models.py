@@ -691,11 +691,6 @@ class Course:
         english_title = self.qualification.label + honours + self.english_title
         welsh_title = self.qualification.label + honours + self.welsh_title
 
-        # HESA data fix
-        if self.institution.pub_ukprn == "10007804" and self.kis_course_id == "U18-LAWLLB":
-            english_title = self.qualification.label + honours + self.subject_names[0].subject_english
-            welsh_title = self.qualification.label + honours + self.subject_names[0].subject_welsh
-
         if self.display_language == enums.languages.ENGLISH:
             return english_title if self.english_title else welsh_title
         return welsh_title if self.welsh_title else english_title
