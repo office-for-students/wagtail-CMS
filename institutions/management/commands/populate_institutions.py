@@ -9,6 +9,8 @@ from django.conf import settings
 
 class Command(BaseCommand):
     help = 'Copies Institutions from the Cosmos DB in Azure to the projects root folder as a json'
+
+    request_options = {"enableCrossPartitionQuery": True}
     base_url = 'dbs/discoveruni/colls/'
     version = None
 
@@ -27,29 +29,31 @@ class Command(BaseCommand):
         #for poll_id in options['poll_ids']:
         #database = self.client.get_database_client('d735a2c7-1a90-4b37-9b85-687226b2e1f9')
         #print('Database with id \'{0}\' was found, it\'s link is {1}'.format(id, database.database_link))
-        pprint(self.get_all_institutions())
-        self.stdout.write(self.style.SUCCESS('Successfully closed poll Dave'))
+        number_of_institutions = self.get_number_of_institutions()
+        institutions_json = self.get_all_institutions()
+        pprint(institutions_json)
+        self.stdout.write(self.style.SUCCESS('Success!'))
+
+    def get_number_of_institutions(self):
+        return self.base_query('institutions', 'SELECT VALUE MAX(c.version) from c')
 
     def get_all_institutions(self):
-        query = "SELECT * from c OFFSET 0 LIMIT 100"
-        options = {"enableCrossPartitionQuery": True}
-        institutions_json = list(
+        return list(
             self.cosmos_client.QueryItems(
                 self.base_url + 'institutions',
-                query,
-                options
+                'SELECT * from c OFFSET 0 LIMIT 100',
+                self.request_options
             )
         )
-        return institutions_json
 
     def get_latest_version_number(self):
-        query = "SELECT VALUE MAX(c.version) from c "
-        options = {"enableCrossPartitionQuery": True}
-        max_version_number_list = list(
+        return self.base_query('datasets', 'SELECT VALUE MAX(c.version) from c')
+
+    def base_query(self, table, query):
+        return list(
             self.cosmos_client.QueryItems(
-                self.base_url + 'datasets',
+                self.base_url + table,
                 query,
-                options
+                self.request_options
             )
         )
-        return int(max_version_number_list[0])
