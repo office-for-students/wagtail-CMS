@@ -6,7 +6,7 @@
     },
     {
         "alphabet": "a",
-        "name": "Abdo College of Education",
+        "name": "ABDO College of Education",
         "order_by_name": "abdo college of education"
     },
     {
@@ -16,18 +16,13 @@
     },
     {
         "alphabet": "a",
-        "name": "Prifysgol Abertawe",
-        "order_by_name": "abertawe"
-    },
-    {
-        "alphabet": "a",
         "name": "Abertay University",
         "order_by_name": "abertay university"
     },
     {
         "alphabet": "a",
-        "name": "Prifysgol Aberystwyth",
-        "order_by_name": "aberystwyth"
+        "name": "Aberystwyth University",
+        "order_by_name": "aberystwyth university"
     },
     {
         "alphabet": "a",
@@ -106,8 +101,8 @@
     },
     {
         "alphabet": "b",
-        "name": "Prifysgol Bangor",
-        "order_by_name": "bangor"
+        "name": "Bangor University",
+        "order_by_name": "bangor university"
     },
     {
         "alphabet": "b",
@@ -181,7 +176,7 @@
     },
     {
         "alphabet": "b",
-        "name": "Birmingham Community Nhs Trust",
+        "name": "Birmingham Community NHS Trust",
         "order_by_name": "birmingham community nhs trust"
     },
     {
@@ -256,8 +251,8 @@
     },
     {
         "alphabet": "b",
-        "name": "Coleg Brenhinol Cerdd a Drama Cymru",
-        "order_by_name": "brenhinol cerdd a drama cymru"
+        "name": "BRIDGEND COLLEGE",
+        "order_by_name": "bridgend college"
     },
     {
         "alphabet": "b",
@@ -291,7 +286,7 @@
     },
     {
         "alphabet": "b",
-        "name": "British College of Osteopathic Medicine",
+        "name": "British College Of Osteopathic Medicine",
         "order_by_name": "british college of osteopathic medicine"
     },
     {
@@ -336,11 +331,6 @@
     },
     {
         "alphabet": "c",
-        "name": "Prifysgol Caerdydd",
-        "order_by_name": "caerdydd"
-    },
-    {
-        "alphabet": "c",
         "name": "Calderdale College",
         "order_by_name": "calderdale college"
     },
@@ -378,6 +368,16 @@
         "alphabet": "c",
         "name": "Cardiff and Vale College",
         "order_by_name": "cardiff and vale college"
+    },
+    {
+        "alphabet": "c",
+        "name": "Cardiff Metropolitan University",
+        "order_by_name": "cardiff metropolitan university"
+    },
+    {
+        "alphabet": "c",
+        "name": "Cardiff University",
+        "order_by_name": "cardiff university"
     },
     {
         "alphabet": "c",
@@ -570,11 +570,6 @@
         "order_by_name": "cumbria"
     },
     {
-        "alphabet": "c",
-        "name": "Prifysgol Cymru Y Drindod Dewi Sant",
-        "order_by_name": "cymru y drindod dewi sant"
-    },
-    {
         "alphabet": "d",
         "name": "Darlington College",
         "order_by_name": "darlington college"
@@ -583,11 +578,6 @@
         "alphabet": "d",
         "name": "David Game College Ltd",
         "order_by_name": "David game college"
-    },
-    {
-        "alphabet": "d",
-        "name": "Prifysgol De Cymru",
-        "order_by_name": "de cymru"
     },
     {
         "alphabet": "d",
@@ -781,13 +771,18 @@
     },
     {
         "alphabet": "g",
-        "name": "Prifysgol Glyndŵr Wrecsam",
-        "order_by_name": "glyndwr wrecsam"
+        "name": "Glyndwr University",
+        "order_by_name": "glyndwr university"
     },
     {
         "alphabet": "g",
         "name": "Goldsmiths, University of London",
         "order_by_name": "goldsmiths university of london"
+    },
+    {
+        "alphabet": "g",
+        "name": "Gower College Swansea",
+        "order_by_name": "gower college swansea"
     },
     {
         "alphabet": "g",
@@ -811,8 +806,8 @@
     },
     {
         "alphabet": "g",
-        "name": "Grŵp Colegau NPTC",
-        "order_by_name": "grwp nptc"
+        "name": "Grwp NPTC Group",
+        "order_by_name": "grwp nptc group"
     },
     {
         "alphabet": "g",
@@ -823,11 +818,6 @@
         "alphabet": "g",
         "name": "Coleg Gwent",
         "order_by_name": "gwent"
-    },
-    {
-        "alphabet": "g",
-        "name": "Coleg Gŵyr Abertawe",
-        "order_by_name": "gŵyr abertawe"
     },
     {
         "alphabet": "h",
@@ -951,7 +941,7 @@
     },
     {
         "alphabet": "i",
-        "name": "Icon College of Technology & Management",
+        "name": "ICON College of Technology & Management",
         "order_by_name": "icon college of technology & management"
     },
     {
@@ -981,7 +971,7 @@
     },
     {
         "alphabet": "j",
-        "name": "Jca | London Fashion Academy",
+        "name": "JCA | London Fashion Academy",
         "order_by_name": "jca london fashion academy"
     },
     {
@@ -1261,8 +1251,8 @@
     },
     {
         "alphabet": "m",
-        "name": "Y Coleg Merthyr Tudful",
-        "order_by_name": "merthyr tudful"
+        "name": "Merthyr Tydfil College Limited",
+        "order_by_name": "merthyr tydfil college limited"
     },
     {
         "alphabet": "m",
@@ -1273,11 +1263,6 @@
         "alphabet": "m",
         "name": "The Metanoia Institute",
         "order_by_name": "metanoia institute"
-    },
-    {
-        "alphabet": "m",
-        "name": "Prifysgol Metropolitan Caerdydd",
-        "order_by_name": "metropolitan caerdydd"
     },
     {
         "alphabet": "m",
@@ -1500,9 +1485,9 @@
         "order_by_name": "pearson college london"
     },
     {
-        "alphabet": "c",
-        "name": "Coleg Penybont",
-        "order_by_name": "coleg penybont"
+        "alphabet": "p",
+        "name": "Pembrokeshire College",
+        "order_by_name": "pembrokeshire college"
     },
     {
         "alphabet": "p",
@@ -1606,7 +1591,7 @@
     },
     {
         "alphabet": "r",
-        "name": "Richmond, the American International University in London",
+        "name": "Richmond, The American International University in London",
         "order_by_name": "richmond the american international university in london"
     },
     {
@@ -1696,6 +1681,11 @@
     },
     {
         "alphabet": "r",
+        "name": "Royal Welsh College of Music and Drama Limited",
+        "order_by_name": "royal welsh college of music and drama limited"
+    },
+    {
+        "alphabet": "r",
         "name": "Rtc Education Ltd",
         "order_by_name": "rtc education ltd"
     },
@@ -1771,17 +1761,12 @@
     },
     {
         "alphabet": "s",
-        "name": "Coleg Sir Benfro",
-        "order_by_name": "sir benfro"
-    },
-    {
-        "alphabet": "s",
         "name": "The Smb Group",
         "order_by_name": "smb"
     },
     {
         "alphabet": "s",
-        "name": "Soas University of London",
+        "name": "SOAS University of London",
         "order_by_name": "soas university of london"
     },
     {
@@ -1813,6 +1798,11 @@
         "alphabet": "s",
         "name": "South Thames Colleges Group",
         "order_by_name": "south thames colleges group"
+    },
+    {
+        "alphabet": "s",
+        "name": "University of South Wales/prifysgol De Cymru",
+        "order_by_name": "south wales/prifysgol de cymru"
     },
     {
         "alphabet": "s",
@@ -1933,6 +1923,11 @@
         "alphabet": "s",
         "name": "University of Sussex",
         "order_by_name": "sussex"
+    },
+    {
+        "alphabet": "s",
+        "name": "Swansea University",
+        "order_by_name": "swansea university"
     },
     {
         "alphabet": "t",
@@ -2056,6 +2051,11 @@
     },
     {
         "alphabet": "w",
+        "name": "University of Wales: Trinity Saint David",
+        "order_by_name": "wales: trinity saint david"
+    },
+    {
+        "alphabet": "w",
         "name": "University of Warwick",
         "order_by_name": "warwick"
     },
@@ -2066,7 +2066,7 @@
     },
     {
         "alphabet": "w",
-        "name": "Waterbear - the College of Music",
+        "name": "WaterBear - The College of Music",
         "order_by_name": "waterbear"
     },
     {
