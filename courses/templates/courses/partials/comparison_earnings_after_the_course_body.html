@@ -219,7 +219,7 @@
                                     <div class="spinner-border text-primary" role="status" id="busy_{{ salary_aggregate.subject_code }}_{{ l_or_r }}">
                                         <span class="sr-only">Busy...</span>
                                     </div>
-                
+
                                     <div class="discover-uni-container">
                                         <div class="earnings-after-course-statistics d-flex row align-items-stretch">
                                         {% for salary in salary_aggregate.aggregated_salaries_sector %}
@@ -274,19 +274,19 @@
                                                         {% get_translation key='prov_pc_text_template_leo' language=page.get_language as prov_pc_text_template_leo %}
                                                         {% if salary_index == 0 and salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc != None %}
                                                             <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
-                                                                {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                                                {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.0.subject_title_in_local_language course.institution.pub_ukprn_name course.default_region as substitutions %}
                                                                 {% insert_values_to_plain_text content=prov_pc_text_template_go substitutions=substitutions as subbed_text %}
                                                                 {{ subbed_text | richtext }}
                                                             </h4>
                                                         {% elif salary_index == 1 and salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc != None %}
                                                             <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
-                                                                {% create_list salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                                                {% create_list salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.0.subject_title_in_local_language course.institution.pub_ukprn_name course.default_region as substitutions %}
                                                                 {% insert_values_to_plain_text content=prov_pc_text_template_leo substitutions=substitutions as subbed_text %}
                                                                 {{ subbed_text | richtext }}
                                                             </h4>
                                                         {% elif salary_index == 2 and salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc != None %}
                                                             <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code '_' l_or_r %}">
-                                                                {% create_list salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc course.english_title course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                                                {% create_list salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.0.subject_title_in_local_language course.institution.pub_ukprn_name course.default_region as substitutions %}
                                                                 {% insert_values_to_plain_text content=prov_pc_text_template_leo substitutions=substitutions as subbed_text %}
                                                                 {{ subbed_text | richtext }}
                                                             </h4>
@@ -519,10 +519,10 @@
                                 $("#sector_salary_med_1_" + subjectCode + "_" + leftOrRight).text("£" + data['salary_sector_3_med']);
                                 $("#sector_salary_lq_1_" + subjectCode + "_" + leftOrRight + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_3_lq'] + " - £" + data['salary_sector_3_uq']);
                                 $("#sector_salary_pop_1_" + subjectCode + "_" + leftOrRight + " div").text(data['data_from_text'] + " " + data['salary_sector_3_pop'] + " " + data['people_text']);
-                            
+
                                 if (selectedRegion == "_uk") {
                                     $("#sector_salary_graduates_1_" + subjectCode + "_" + leftOrRight).hide();
-                                
+
                                     var lang = "{{page.get_language}}";
                                     if (lang == "cy") {
                                         $("#exclude_ni_msg_1_" + subjectCode + "_" + leftOrRight).text("(ac eithrio Gogledd Iwerddon)");
@@ -556,7 +556,7 @@
                                 $("#sector_salary_med_2_" + subjectCode + "_" + leftOrRight).text("£" + data['salary_sector_5_med']);
                                 $("#sector_salary_lq_2_" + subjectCode + "_" + leftOrRight + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_5_lq'] + " - £" + data['salary_sector_5_uq']);
                                 $("#sector_salary_pop_2_" + subjectCode + "_" + leftOrRight + " div").text(data['data_from_text'] + " " + data['salary_sector_5_pop'] + " " + data['people_text']);
-                            
+
                                 if (selectedRegion == "_uk") {
                                     $("#sector_salary_graduates_2_" + subjectCode + "_" + leftOrRight).hide();
 
