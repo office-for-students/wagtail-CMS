@@ -1799,7 +1799,6 @@ class Salary:
             self.subject_code = subject_data.get('code', '')
             self.subject_english = subject_data.get('english_label', '')
             self.subject_welsh = subject_data.get('welsh_label', '')
-
             self.subject_title_in_local_language = self.subject_english
 
             # TODO Why do we need two of those?
