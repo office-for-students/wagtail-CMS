@@ -262,19 +262,19 @@
                                         {% get_translation key='prov_pc_text_template_leo' language=page.get_language as prov_pc_text_template_leo %}
                                         {% if salary_index == 0 and salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc != None %}
                                             <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
-                                                {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.0.subject_title_in_local_language course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                                {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc course_details.title_form_salary_data course.institution.pub_ukprn_name course.default_region as substitutions %}
                                                 {% insert_values_to_plain_text content=prov_pc_text_template_go substitutions=substitutions as subbed_text %}
                                                 {{ subbed_text | richtext }}
                                             </h4>
                                         {% elif salary_index == 1 and salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc != None %}
                                             <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
-                                                {% create_list salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.0.subject_title_in_local_language course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                                {% create_list salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc course_details.title_form_salary_data course.institution.pub_ukprn_name course.default_region as substitutions %}
                                                 {% insert_values_to_plain_text content=prov_pc_text_template_leo substitutions=substitutions as subbed_text %}
                                                 {{ subbed_text | richtext }}
                                             </h4>
                                         {% elif salary_index == 2 and salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc != None %}
                                             <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3" id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
-                                                {% create_list salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.0.subject_title_in_local_language course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                                {% create_list salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc course_details.title_form_salary_data course.institution.pub_ukprn_name course.default_region as substitutions %}
                                                 {% insert_values_to_plain_text content=prov_pc_text_template_leo substitutions=substitutions as subbed_text %}
                                                 {{ subbed_text | richtext }}
                                             </h4>
