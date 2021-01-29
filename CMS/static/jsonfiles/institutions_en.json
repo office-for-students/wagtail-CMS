@@ -16,18 +16,13 @@
     },
     {
         "alphabet": "a",
-        "name": "Prifysgol Abertawe",
-        "order_by_name": "abertawe"
-    },
-    {
-        "alphabet": "a",
         "name": "Abertay University",
         "order_by_name": "abertay university"
     },
     {
         "alphabet": "a",
-        "name": "Prifysgol Aberystwyth",
-        "order_by_name": "aberystwyth"
+        "name": "Aberystwyth University",
+        "order_by_name": "aberystwyth university"
     },
     {
         "alphabet": "a",
@@ -106,8 +101,8 @@
     },
     {
         "alphabet": "b",
-        "name": "Prifysgol Bangor",
-        "order_by_name": "bangor"
+        "name": "Bangor University",
+        "order_by_name": "bangor university"
     },
     {
         "alphabet": "b",
@@ -165,7 +160,6 @@
         "order_by_name": "bimm limited"
     },
     {
-        "alphabet": "b",
         "name": "Birkbeck, University of London",
         "order_by_name": "birkbeck university of london"
     },
@@ -256,8 +250,8 @@
     },
     {
         "alphabet": "b",
-        "name": "Coleg Brenhinol Cerdd a Drama Cymru",
-        "order_by_name": "brenhinol cerdd a drama cymru"
+        "name": "BRIDGEND COLLEGE",
+        "order_by_name": "bridgend college"
     },
     {
         "alphabet": "b",
@@ -336,11 +330,6 @@
     },
     {
         "alphabet": "c",
-        "name": "Prifysgol Caerdydd",
-        "order_by_name": "caerdydd"
-    },
-    {
-        "alphabet": "c",
         "name": "Calderdale College",
         "order_by_name": "calderdale college"
     },
@@ -378,6 +367,16 @@
         "alphabet": "c",
         "name": "Cardiff and Vale College",
         "order_by_name": "cardiff and vale college"
+    },
+    {
+        "alphabet": "c",
+        "name": "Cardiff Metropolitan University",
+        "order_by_name": "cardiff metropolitan university"
+    },
+    {
+        "alphabet": "c",
+        "name": "Cardiff University",
+        "order_by_name": "cardiff university"
     },
     {
         "alphabet": "c",
@@ -570,11 +569,6 @@
         "order_by_name": "cumbria"
     },
     {
-        "alphabet": "c",
-        "name": "Prifysgol Cymru Y Drindod Dewi Sant",
-        "order_by_name": "cymru y drindod dewi sant"
-    },
-    {
         "alphabet": "d",
         "name": "Darlington College",
         "order_by_name": "darlington college"
@@ -583,11 +577,6 @@
         "alphabet": "d",
         "name": "David Game College Ltd",
         "order_by_name": "David game college"
-    },
-    {
-        "alphabet": "d",
-        "name": "Prifysgol De Cymru",
-        "order_by_name": "de cymru"
     },
     {
         "alphabet": "d",
@@ -781,13 +770,18 @@
     },
     {
         "alphabet": "g",
-        "name": "Prifysgol Glyndŵr Wrecsam",
-        "order_by_name": "glyndwr wrecsam"
+        "name": "Glyndwr University",
+        "order_by_name": "glyndwr university"
     },
     {
         "alphabet": "g",
         "name": "Goldsmiths, University of London",
         "order_by_name": "goldsmiths university of london"
+    },
+    {
+        "alphabet": "g",
+        "name": "Gower College Swansea",
+        "order_by_name": "gower college swansea"
     },
     {
         "alphabet": "g",
@@ -811,8 +805,8 @@
     },
     {
         "alphabet": "g",
-        "name": "Grŵp Colegau NPTC",
-        "order_by_name": "grwp nptc"
+        "name": "Grwp NPTC Group",
+        "order_by_name": "grwp nptc group"
     },
     {
         "alphabet": "g",
@@ -823,11 +817,6 @@
         "alphabet": "g",
         "name": "Coleg Gwent",
         "order_by_name": "gwent"
-    },
-    {
-        "alphabet": "g",
-        "name": "Coleg Gŵyr Abertawe",
-        "order_by_name": "gŵyr abertawe"
     },
     {
         "alphabet": "h",
@@ -1261,8 +1250,8 @@
     },
     {
         "alphabet": "m",
-        "name": "Y Coleg Merthyr Tudful",
-        "order_by_name": "merthyr tudful"
+        "name": "Merthyr Tydfil College Limited",
+        "order_by_name": "merthyr tydfil college limited"
     },
     {
         "alphabet": "m",
@@ -1273,11 +1262,6 @@
         "alphabet": "m",
         "name": "The Metanoia Institute",
         "order_by_name": "metanoia institute"
-    },
-    {
-        "alphabet": "m",
-        "name": "Prifysgol Metropolitan Caerdydd",
-        "order_by_name": "metropolitan caerdydd"
     },
     {
         "alphabet": "m",
@@ -1501,8 +1485,8 @@
     },
     {
         "alphabet": "p",
-        "name": "Coleg Pen-y-bont",
-        "order_by_name": "pen-y-bont"
+        "name": "Pembrokeshire College",
+        "order_by_name": "pembrokeshire college"
     },
     {
         "alphabet": "p",
@@ -1696,6 +1680,11 @@
     },
     {
         "alphabet": "r",
+        "name": "Royal Welsh College of Music and Drama Limited",
+        "order_by_name": "royal welsh college of music and drama limited"
+    },
+    {
+        "alphabet": "r",
         "name": "Rtc Education Ltd",
         "order_by_name": "rtc education ltd"
     },
@@ -1771,11 +1760,6 @@
     },
     {
         "alphabet": "s",
-        "name": "Coleg Sir Benfro",
-        "order_by_name": "sir benfro"
-    },
-    {
-        "alphabet": "s",
         "name": "The Smb Group",
         "order_by_name": "smb"
     },
@@ -1813,6 +1797,11 @@
         "alphabet": "s",
         "name": "South Thames Colleges Group",
         "order_by_name": "south thames colleges group"
+    },
+    {
+        "alphabet": "s",
+        "name": "University of South Wales/prifysgol De Cymru",
+        "order_by_name": "south wales/prifysgol de cymru"
     },
     {
         "alphabet": "s",
@@ -1935,6 +1924,11 @@
         "order_by_name": "sussex"
     },
     {
+        "alphabet": "s",
+        "name": "Swansea University",
+        "order_by_name": "swansea university"
+    },
+    {
         "alphabet": "t",
         "name": "Tameside College",
         "order_by_name": "tameside college"
@@ -2053,6 +2047,11 @@
         "alphabet": "w",
         "name": "Wakefield College",
         "order_by_name": "wakefield college"
+    },
+    {
+        "alphabet": "w",
+        "name": "University of Wales: Trinity Saint David",
+        "order_by_name": "wales: trinity saint david"
     },
     {
         "alphabet": "w",
