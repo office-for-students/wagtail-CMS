@@ -691,11 +691,6 @@ class Course:
         english_title = self.qualification.label + honours + self.english_title
         welsh_title = self.qualification.label + honours + self.welsh_title
 
-        # HESA data fix
-        if self.institution.pub_ukprn == "10007804" and self.kis_course_id == "U18-LAWLLB":
-            english_title = self.qualification.label + honours + self.subject_names[0].subject_english
-            welsh_title = self.qualification.label + honours + self.subject_names[0].subject_welsh
-
         if self.display_language == enums.languages.ENGLISH:
             return english_title if self.english_title else welsh_title
         return welsh_title if self.welsh_title else english_title
@@ -1805,6 +1800,10 @@ class Salary:
             self.subject_english = subject_data.get('english_label', '')
             self.subject_welsh = subject_data.get('welsh_label', '')
 
+            self.subject_title_in_local_language = self.subject_english
+            if self.display_language == enums.languages.WELSH:
+                self.subject_title_in_local_language = self.subject_welsh
+
             # TODO Why do we need two of those?
             self.unavail_reason = salary_data['unavail_reason']
             self.unavailable_reason = "" #fallback_to(salary_data.get('reason'), '')
@@ -1868,6 +1867,7 @@ class Salary:
                     self.earnings_aggregation_str = salary_data['earnings_agg_unavail_message']['english']
                 else:
                     self.earnings_aggregation_str = salary_data['earnings_agg_unavail_message']['welsh']
+                    self.subject_title_in_local_language = self.subject_welsh
 
                 self.earnings_aggregation_msg["msg_heading"], self.earnings_aggregation_msg["msg_body"] = separate_unavail_reason(self.earnings_aggregation_str)
 
