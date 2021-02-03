@@ -59,18 +59,12 @@ $ cp docker-compose.yml.example docker-compose.yml
 $ cp docker-compose.yml.example docker-compose.yml
 $ vim docker-compose.yml
 ...
-DBHOST:                       "db"
-DBNAME:                       "django"
-DBUSER:                       "docker"
-DBPASSWORD:                   "docker"
-DBPORT:                       "5432"
-SEARCHAPIHOST:                "..."
-WIDGETAPIHOST:                "..."
-WIDGETAPIKEY:                 "..."
-DATASETAPIHOST:               "${DATASETAPIHOST}"
-DATASETAPIKEY:                "${DATASETAPIKEY}"
-FEEDBACK_API_HOST:            "..."
-...:                          "..."
+DBHOST:               "db"
+DBNAME:               "django"
+DBUSER:               "docker"
+DBPASSWORD:           "docker"
+DBPORT:               "5432"
+...
 ...
 ```
 

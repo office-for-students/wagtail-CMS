@@ -14,11 +14,20 @@ services:
       # Widget
       WIDGETAPIHOST:                "${WIDGETAPIHOST}"
       WIDGETAPIKEY:                 "${WIDGETAPIKEY}"
-      # CosmosDB
+      # CosmosDB (via requests library)
+      # (used by the application to get courses and institutions)
+      # (these can be found on the App Service under "Configuration")
+      # (in absence of values the local MongoDB will be used)
       DATASETAPIHOST:               "${DATASETAPIHOST}"
       DATASETAPIKEY:                "${DATASETAPIKEY}"
-      DATASETAPIHOST_LOCAL:         "mongodb"
-      DATASETAPIKEY_LOCAL:          "mongodb"
+      # CosmosDB (via azure.cosmos library)
+      # (used to extract data from CosmosDB and populate fixtures)
+      # (these can be found on the CosmosDB instance under "Keys")
+      AZURECOSMOSDBURI:             ""
+      AZURECOSMOSDBKEY:             ""
+      # MongoDB (used for local development and testing)
+      MONGODB_USERNAME:             "mongodb"
+      MONGODB_PASSWORD:             "mongodb"
       # Azure storage (institutions.xx.json, subjects.json, versions,json, etc...)
       STORAGE_ACCOUNT_NAME:         "${STORAGE_ACCOUNT_NAME}"
       STORAGEKEY:                   "${STORAGEKEY}"
@@ -52,3 +61,10 @@ services:
       POSTGRES_USER: docker
       POSTGRES_PASSWORD: docker
       POSTGRES_DB: django
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "mongodb"
+      MONGO_INITDB_ROOT_PASSWORD: "mongodb"
