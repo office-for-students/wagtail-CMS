@@ -26,6 +26,7 @@ services:
       AZURECOSMOSDBURI:             ""
       AZURECOSMOSDBKEY:             ""
       # MongoDB (used for local development and testing)
+      MONGODB_HOST:                 "mongo"
       MONGODB_USERNAME:             "mongodb"
       MONGODB_PASSWORD:             "mongodb"
       # Azure storage (institutions.xx.json, subjects.json, versions,json, etc...)
@@ -47,8 +48,6 @@ services:
       READ_ONLY:                    "${READ_ONLY}"
       LOCAL:                        "${LOCAL}"
     build: .
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
-#    command: bash -c "sh ./deploy_files/docker-entrypoint.sh"
     volumes:
       - .:/code
     ports:

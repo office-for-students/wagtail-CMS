@@ -65,7 +65,13 @@ DBUSER:               "docker"
 DBPASSWORD:           "docker"
 DBPORT:               "5432"
 ...
+DATASETAPIHOST:       "..."
+DATASETAPIKEY:        "..."
 ...
+AZURECOSMOSDBURI:     "..."
+AZURECOSMOSDBKEY:     "..."
+...
+# docker-compose up
 ```
 
 ### Secret Key
@@ -216,6 +222,10 @@ $ docker container exec -it wagtail-cms_web_1 pip freeze > requirements.txt
 ```
 
 # Other Stuff
+
+## Adding Environment Variables
+
+If you add environment variable to `docker-compose.yml` don't forget to also add it to `CMS/settings/base.py`
 
 ## Continuous Integration and Deployment Pipeline
 
