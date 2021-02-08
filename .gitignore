@@ -35,6 +35,7 @@ static/
 .DS_Store
 *.vscode
 .vscode/
+.env
 docker-compose.yml
 docker-compose.*.yml
 postgres.json
