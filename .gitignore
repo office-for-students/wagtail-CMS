@@ -28,7 +28,6 @@ coverage.xml
 **/*.css*
 
 # Media files
-media/
 static/
 
 # Custom
