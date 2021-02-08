@@ -4,36 +4,14 @@ from math import ceil
 
 from django.core.management.base import BaseCommand, CommandError
 import azure.cosmos.cosmos_client as cosmos_client
-from pymongo import MongoClient
 
 from django.conf import settings
-
-
-class Mongo():
-    client      = None
-    database    = None
-    collection  = None
-
-    def __init__(self):
-        self.client = MongoClient(
-            settings.MONGODB_HOST,
-            username = settings.MONGODB_USERNAME,
-            password = settings.MONGODB_PASSWORD
-        )
-        self.database = self.client.database
-        self.collection = self.database.collection
-
-    def collection_delete(self):
-        collections = self.database.list_collection_names()
-        if 'collection' in collections:
-            self.database.drop_collection('collection')
-
-    def insert(self, json):
-        self.collection.insert(json)
+from core.mongo import Mongo
 
 
 class Command(BaseCommand):
-    help = 'Copies Institutions from the Cosmos DB in Azure to the institutions/fixtures folder as a json'
+    help = 'Copies Institutions from Cosmos DB to the local MongoDB ' + \
+        '(and into the institutions/fixtures folder)'
 
     fixture_file      = None
     request_options   = {"enableCrossPartitionQuery": True}
@@ -46,12 +24,6 @@ class Command(BaseCommand):
 
         super(Command, self).__init__(*args, **kwargs)
 
-        if not settings.MONGODB_HOST or \
-           not settings.MONGODB_USERNAME or \
-           not settings.MONGODB_PASSWORD:
-            raise CommandError('MONGODB_HOST, MONGODB_USERNAME and  ' +
-                'MONGODB_PASSWORD should be in the docker-compose.yml')
-
         if not settings.AZURECOSMOSDBURI or \
            not settings.AZURECOSMOSDBKEY:
             raise CommandError('AZURECOSMOSDBURI and AZURECOSMOSDBKEY in ' + \
@@ -60,7 +32,7 @@ class Command(BaseCommand):
         self.fixture_file = \
             settings.BASE_DIR + '/institutions/fixtures/institutions.json'
 
-        self.mongo = Mongo()
+        self.mongo = Mongo('institutions')
         self.mongo.collection_delete()
 
         self.cosmos_client = cosmos_client.CosmosClient(

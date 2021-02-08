@@ -26,9 +26,9 @@ services:
       AZURECOSMOSDBURI:             ""
       AZURECOSMOSDBKEY:             ""
       # MongoDB (used for local development and testing)
-      MONGODB_HOST:                 "mongo"
-      MONGODB_USERNAME:             "mongodb"
-      MONGODB_PASSWORD:             "mongodb"
+      MONGODB_HOST:                 ""
+      MONGODB_USERNAME:             ""
+      MONGODB_PASSWORD:             ""
       # Azure storage (institutions.xx.json, subjects.json, versions,json, etc...)
       STORAGE_ACCOUNT_NAME:         "${STORAGE_ACCOUNT_NAME}"
       STORAGEKEY:                   "${STORAGEKEY}"

@@ -71,6 +71,10 @@ DATASETAPIKEY:        "..."
 AZURECOSMOSDBURI:     "..."
 AZURECOSMOSDBKEY:     "..."
 ...
+MONGODB_HOST:         "mongo"
+MONGODB_USERNAME:     "mongodb"
+MONGODB_PASSWORD:     "mongodb"
+...
 # docker-compose up
 ```
 
@@ -198,7 +202,7 @@ The `NAME`s you can see in the commands above. The `STATUS` tells you whether ac
 ### Deleting Containers
 
 ```
-$  docker rmi -f <CONTAINER_ID>
+$ docker rmi -f <CONTAINER_ID>
 ```
 
 ### Get into a Container
