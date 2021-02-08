@@ -6,7 +6,7 @@ from core.utils import get_page_for_language, get_new_landing_page_for_language
 
 from courses.models import CourseDetailPage, Course, CourseComparisonPage, CourseManagePage
 from site_search.models import SearchLandingPage
- 
+
 from django.http import JsonResponse
 import json
 

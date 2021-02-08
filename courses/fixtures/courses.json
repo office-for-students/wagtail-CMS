@@ -1,0 +1,1444 @@
+[
+    {
+        "_id": "ef8786f8-5f21-11eb-8377-0242ac100405",
+        "created_at": "2021-01-25T15:28:12.212846",
+        "updated_at": "2021-01-25T15:28:12.212855",
+        "version": 48,
+        "institution_id": "10007804",
+        "course_id": "U18-LAWLLB",
+        "course_mode": 1,
+        "course_level": 3,
+        "partition_key": "48",
+        "course": {
+            "course_level": 3,
+            "accreditations": [
+                {
+                    "type": "10501",
+                    "accreditor_url": "https://www.lawscot.org.uk/qualifying-and-education/",
+                    "text": {
+                        "english": "Recognised by the Law Society of Scotland as a Foundation programme, being one part of the route to qualification as a solicitor in Scotland.",
+                        "welsh": "Cydnabuwyd gan Gymdeithas y Gyfraith yr Alban fel Rhaglen sylfaen, gan fod yn un llwybr i gymhwyster fel cyfreithiwr yn yr Alban"
+                    },
+                    "url": {
+                        "english": "https://www.stir.ac.uk/courses/ug/arts-humanities/law-llb/"
+                    },
+                    "dependent_on": {
+                        "code": 1,
+                        "label": "Accreditation is dependent on student choice"
+                    }
+                }
+            ],
+            "country": {
+                "code": "XH",
+                "name": "Scotland"
+            },
+            "distance_learning": {
+                "code": 0,
+                "label": "Course is available other than by distance learning"
+            },
+            "foundation_year_availability": {
+                "code": 0,
+                "label": "Not available"
+            },
+            "honours_award_provision": 1,
+            "institution": {
+                "pub_ukprn_name": "University of Stirling",
+                "pub_ukprn_welsh_name": "University of Stirling",
+                "pub_ukprn": "10007804",
+                "ukprn_name": "University of Stirling",
+                "ukprn_welsh_name": "University of Stirling",
+                "ukprn": "10007804"
+            },
+            "kis_course_id": "U18-LAWLLB",
+            "go_salary_inst": [
+                {
+                    "unavail_reason": "0",
+                    "pop": "20",
+                    "resp_rate": "55",
+                    "agg": "23",
+                    "subject": {
+                        "code": "CAH16-01-01",
+                        "english_label": "Law",
+                        "welsh_label": "Y gyfraith"
+                    },
+                    "lq": "17000",
+                    "med": "19000",
+                    "uq": "23000",
+                    "inst_prov_pc_uk": "100",
+                    "inst_prov_pc_e": "15",
+                    "inst_prov_pc_ni": "0",
+                    "inst_prov_pc_s": "85",
+                    "inst_prov_pc_w": "0",
+                    "unavail_text_english": "No data available\n\nThis is either because the course size is small or there were not enough responses to produce data. This does not reflect on the quality of the course.",
+                    "unavail_text_welsh": "Nid oes data ar gael\n\nMae hyn naill ai oherwydd bod maint y cwrs yn fach neu am nad oedd digon o ymatebion ar gael i gynhyrchu data. Nid yw hyn yn adlewyrchu ansawdd y cwrs.",
+                    "earnings_agg_unavail_message": {}
+                }
+            ],
+            "leo3_inst": [
+                {
+                    "unavail_reason": "0",
+                    "pop": "85",
+                    "agg": "23",
+                    "subject": {
+                        "code": "CAH16-01-01",
+                        "english_label": "Law",
+                        "welsh_label": "Y gyfraith"
+                    },
+                    "lq": "15500",
+                    "med": "20000",
+                    "uq": "26500",
+                    "inst_prov_pc_uk": "100",
+                    "inst_prov_pc_e": "14",
+                    "inst_prov_pc_ni": "0",
+                    "inst_prov_pc_s": "86",
+                    "inst_prov_pc_w": "0",
+                    "inst_prov_pc_nw": "4",
+                    "inst_prov_pc_ne": "0",
+                    "inst_prov_pc_em": "0",
+                    "inst_prov_pc_wm": "1",
+                    "inst_prov_pc_ee": "1",
+                    "inst_prov_pc_se": "4",
+                    "inst_prov_pc_sw": "1",
+                    "inst_prov_pc_yh": "0",
+                    "inst_prov_pc_lo": "4",
+                    "inst_prov_pc_ed": "8",
+                    "inst_prov_pc_gl": "8",
+                    "inst_prov_pc_cf": "0",
+                    "unavail_text_english": "No data available\n\nThis may be because the course size is too small. This does not reflect on the quality of the course.",
+                    "unavail_text_welsh": "Nid oes data ar gael\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs.",
+                    "earnings_agg_unavail_message": {}
+                }
+            ],
+            "leo5_inst": [
+                {
+                    "unavail_reason": "0",
+                    "pop": "100",
+                    "agg": "23",
+                    "subject": {
+                        "code": "CAH16-01-01",
+                        "english_label": "Law",
+                        "welsh_label": "Y gyfraith"
+                    },
+                    "lq": "22000",
+                    "med": "26500",
+                    "uq": "33000",
+                    "inst_prov_pc_uk": "99",
+                    "inst_prov_pc_e": "18",
+                    "inst_prov_pc_ni": "0",
+                    "inst_prov_pc_s": "81",
+                    "inst_prov_pc_w": "0",
+                    "inst_prov_pc_nw": "4",
+                    "inst_prov_pc_ne": "2",
+                    "inst_prov_pc_em": "1",
+                    "inst_prov_pc_wm": "1",
+                    "inst_prov_pc_ee": "1",
+                    "inst_prov_pc_se": "5",
+                    "inst_prov_pc_sw": "0",
+                    "inst_prov_pc_yh": "2",
+                    "inst_prov_pc_lo": "3",
+                    "inst_prov_pc_ed": "9",
+                    "inst_prov_pc_gl": "11",
+                    "inst_prov_pc_cf": "0",
+                    "unavail_text_english": "No data available\n\nThis may be because the course size is too small. This does not reflect on the quality of the course.",
+                    "unavail_text_welsh": "Nid oes data ar gael\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                }
+            ],
+            "go_voice_work": [
+                {
+                    "go_work_pop": "15",
+                    "go_work_resp_rate": "55",
+                    "go_work_agg": "24",
+                    "go_work_mean": "75",
+                    "go_work_skills": "50",
+                    "go_work_on_track": "50",
+                    "unavailable": {
+                        "code": 0,
+                        "reason_english": "The data displayed is from students over the previous two years.\n\nThis may be because the course size is too small or not enough students responded to the survey. This does not reflect on the quality of the course.",
+                        "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr yn ystod y ddwy flynedd flaenorol.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                    }
+                }
+            ],
+            "length_of_course": {
+                "code": 4,
+                "label": "4 stages"
+            },
+            "links": {
+                "assessment_method": {
+                    "english": "https://www.stir.ac.uk/courses/ug/arts-humanities/law-llb/"
+                },
+                "course_cost": {
+                    "english": "https://www.stir.ac.uk/courses/ug/arts-humanities/law-llb/"
+                },
+                "course_page": {
+                    "english": "https://www.stir.ac.uk/courses/ug/arts-humanities/law-llb/"
+                },
+                "employment_details": {
+                    "english": "https://www.stir.ac.uk/courses/ug/arts-humanities/law-llb/"
+                },
+                "financial_support_details": {
+                    "english": "https://www.stir.ac.uk/study/fees-funding/undergraduate-funding/"
+                },
+                "learning_and_teaching_methods": {
+                    "english": "https://www.stir.ac.uk/courses/ug/arts-humanities/law-llb/"
+                },
+                "student_union": {
+                    "english": "http://www.stir.ac.uk/campus-life/the-students-union/"
+                }
+            },
+            "locations": [
+                {
+                    "links": {
+                        "accommodation": {
+                            "english": "http://www.stir.ac.uk/campus-life/accommodation/"
+                        },
+                        "student_union": {
+                            "english": "http://www.stir.ac.uk/campus-life/the-students-union/"
+                        }
+                    },
+                    "latitude": "56.149213",
+                    "longitude": "-3.926794",
+                    "name": {
+                        "english": "University of Stirling - Stirling Campus"
+                    },
+                    "ucas_course_id": "3932"
+                }
+            ],
+            "mode": {
+                "code": 1,
+                "label": "Full-time"
+            },
+            "nhs_funded": {
+                "code": 0,
+                "label": "None"
+            },
+            "qualification": {
+                "code": "039",
+                "label": "LLB",
+                "level": "first-degree"
+            },
+            "sandwich_year": {
+                "code": 0,
+                "label": "Not available"
+            },
+            "subjects": [
+                {
+                    "code": "CAH16-01-01",
+                    "level": 3,
+                    "english": "Law",
+                    "welsh": "Y gyfraith"
+                }
+            ],
+            "title": {
+                "english": "Law"
+            },
+            "ucas_programme_id": "A16-H09",
+            "year_abroad": {
+                "code": 1,
+                "label": "Optional"
+            },
+            "statistics": {
+                "continuation": [
+                    {
+                        "aggregation_level": 14,
+                        "continuing_with_provider": 85,
+                        "dormant": 1,
+                        "gained": 0,
+                        "left": 10,
+                        "lower": 4,
+                        "number_of_students": 80
+                    }
+                ],
+                "employment": [
+                    {
+                        "aggregation_level": 24,
+                        "doing_further_study": 15,
+                        "in_work": 80,
+                        "in_work_and_study": 5,
+                        "in_work_or_study": 100,
+                        "number_of_students": 20,
+                        "other": 0,
+                        "response_not_used": 20,
+                        "response_rate": 55,
+                        "sample_not_used": 40,
+                        "unavailable": {
+                            "code": 0,
+                            "reason_english": "The data displayed is from students over the previous two years.\n\nThis may be because the course size is too small or not enough students responded to the survey. This does not reflect on the quality of the course.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr yn ystod y ddwy flynedd flaenorol.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                        },
+                        "unemp_not_work_since_grad": 0,
+                        "unemp_prev_emp_since_grad": 0
+                    }
+                ],
+                "entry": [
+                    {
+                        "a-level": 60,
+                        "access": 5,
+                        "aggregation_level": 14,
+                        "another_higher_education_qualifications": 32,
+                        "baccalaureate": 0,
+                        "degree": 2,
+                        "foundation": 0,
+                        "none": 0,
+                        "number_of_students": 100,
+                        "other_qualifications": 1
+                    }
+                ],
+                "job_type": [
+                    {
+                        "aggregation_level": 24,
+                        "non_professional_or_managerial_jobs": 45,
+                        "number_of_students": 20,
+                        "professional_or_managerial_jobs": 50,
+                        "response_not_used": 20,
+                        "response_rate": 55,
+                        "sample_not_used": 40,
+                        "unavailable": {
+                            "code": 0,
+                            "reason_english": "The data displayed is from students over the previous two years.\n\nThis may be because the course size is too small or not enough students responded to the survey. This does not reflect on the quality of the course.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr yn ystod y ddwy flynedd flaenorol.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                        },
+                        "unknown_professions": 5
+                    }
+                ],
+                "job_list": [
+                    {
+                        "aggregation_level": 24,
+                        "list": [
+                            {
+                                "job": "Business and public service associate professionals",
+                                "percentage_of_students": "30",
+                                "order": "1",
+                                "hs": "1"
+                            },
+                            {
+                                "job": "Secretarial and related occupations",
+                                "percentage_of_students": "15",
+                                "order": "1",
+                                "hs": "0"
+                            },
+                            {
+                                "job": "Customer service occupations",
+                                "percentage_of_students": "10",
+                                "order": "2",
+                                "hs": "0"
+                            },
+                            {
+                                "job": "Legal professionals",
+                                "percentage_of_students": "15",
+                                "order": "2",
+                                "hs": "1"
+                            },
+                            {
+                                "job": "Administrative occupations",
+                                "percentage_of_students": "5",
+                                "order": "3",
+                                "hs": "0"
+                            },
+                            {
+                                "job": "Protective service occupations",
+                                "percentage_of_students": "5",
+                                "order": "3",
+                                "hs": "1"
+                            },
+                            {
+                                "job": "Sales occupations",
+                                "percentage_of_students": "5",
+                                "order": "4",
+                                "hs": "0"
+                            },
+                            {
+                                "job": "Elementary occupations",
+                                "percentage_of_students": "5",
+                                "order": "5",
+                                "hs": "0"
+                            }
+                        ],
+                        "number_of_students": 20,
+                        "response_rate": 55,
+                        "unavailable": {
+                            "code": 0,
+                            "reason_english": "The data displayed is from students over the previous two years.\n\nThis may be because the course size is too small or not enough students responded to the survey. This does not reflect on the quality of the course.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr yn ystod y ddwy flynedd flaenorol.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                        }
+                    }
+                ],
+                "nss": [
+                    {
+                        "aggregation_level": 14,
+                        "number_of_students": 30,
+                        "question_1": {
+                            "description": "Staff are good at explaining things",
+                            "agree_or_strongly_agree": 93
+                        },
+                        "question_2": {
+                            "description": "Staff have made the subject interesting",
+                            "agree_or_strongly_agree": 93
+                        },
+                        "question_3": {
+                            "description": "The course is intellectually stimulating",
+                            "agree_or_strongly_agree": 96
+                        },
+                        "question_4": {
+                            "description": "My course has challenged me to achieve my best work",
+                            "agree_or_strongly_agree": 96
+                        },
+                        "question_5": {
+                            "description": "My course has provided me with opportunities to explore ideas or concepts in depth",
+                            "agree_or_strongly_agree": 96
+                        },
+                        "question_6": {
+                            "description": "My course has provided me with opportunities to bring information and ideas together from different topics",
+                            "agree_or_strongly_agree": 79
+                        },
+                        "question_7": {
+                            "description": "My course has provided me with opportunities to apply what I have learnt",
+                            "agree_or_strongly_agree": 86
+                        },
+                        "question_8": {
+                            "description": "The criteria used in marking have been clear in advance",
+                            "agree_or_strongly_agree": 82
+                        },
+                        "question_9": {
+                            "description": "Marking and assessment has been fair",
+                            "agree_or_strongly_agree": 93
+                        },
+                        "question_10": {
+                            "description": "Feedback on my work has been timely",
+                            "agree_or_strongly_agree": 86
+                        },
+                        "question_11": {
+                            "description": "I have received helpful comments on my work",
+                            "agree_or_strongly_agree": 89
+                        },
+                        "question_12": {
+                            "description": "I have been able to contact staff when I needed to",
+                            "agree_or_strongly_agree": 93
+                        },
+                        "question_13": {
+                            "description": "I have received sufficient advice and guidance in relation to my course",
+                            "agree_or_strongly_agree": 89
+                        },
+                        "question_14": {
+                            "description": "Good advice was available when I needed to make study choices on my course",
+                            "agree_or_strongly_agree": 79
+                        },
+                        "question_15": {
+                            "description": "The course is well organised and running smoothly",
+                            "agree_or_strongly_agree": 89
+                        },
+                        "question_16": {
+                            "description": "The timetable works efficiently for me",
+                            "agree_or_strongly_agree": 89
+                        },
+                        "question_17": {
+                            "description": "Any changes in the course or teaching have been communicated effectively",
+                            "agree_or_strongly_agree": 89
+                        },
+                        "question_18": {
+                            "description": "The IT resources and facilities provided have supported my learning well",
+                            "agree_or_strongly_agree": 89
+                        },
+                        "question_19": {
+                            "description": "The library resources (e.g. books, online services and learning spaces) have supported my learning well",
+                            "agree_or_strongly_agree": 93
+                        },
+                        "question_20": {
+                            "description": "I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to",
+                            "agree_or_strongly_agree": 89
+                        },
+                        "question_21": {
+                            "description": "I feel part of a community of staff and students",
+                            "agree_or_strongly_agree": 68
+                        },
+                        "question_22": {
+                            "description": "I have had the right opportunities to work with other students as part of my course",
+                            "agree_or_strongly_agree": 86
+                        },
+                        "question_23": {
+                            "description": "I have had the right opportunities to provide feedback on my course",
+                            "agree_or_strongly_agree": 96
+                        },
+                        "question_24": {
+                            "description": "Staff value students' views and opinions about the course",
+                            "agree_or_strongly_agree": 71
+                        },
+                        "question_25": {
+                            "description": "It is clear how students' feedback on the course has been acted on",
+                            "agree_or_strongly_agree": 57
+                        },
+                        "question_26": {
+                            "description": "The students' union (association or guild) effectively represents students' academic interests",
+                            "agree_or_strongly_agree": 70
+                        },
+                        "question_27": {
+                            "description": "Overall, I am satisfied with the quality of the course",
+                            "agree_or_strongly_agree": 93
+                        },
+                        "response_rate": 68
+                    }
+                ],
+                "tariff": [
+                    {
+                        "aggregation_level": 14,
+                        "number_of_students": 55,
+                        "tariffs": [
+                            {
+                                "code": "T001",
+                                "description": "less than 48 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T048",
+                                "description": "between 48 and 63 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T064",
+                                "description": "between 64 and 79 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T080",
+                                "description": "between 80 and 95 tariff points",
+                                "entrants": 2
+                            },
+                            {
+                                "code": "T096",
+                                "description": "between 96 and 111 tariff points",
+                                "entrants": 2
+                            },
+                            {
+                                "code": "T112",
+                                "description": "between 112 and 127 tariff points",
+                                "entrants": 7
+                            },
+                            {
+                                "code": "T128",
+                                "description": "between 128 and 143 tariff points",
+                                "entrants": 5
+                            },
+                            {
+                                "code": "T144",
+                                "description": "between 144 and 159 tariff points",
+                                "entrants": 15
+                            },
+                            {
+                                "code": "T160",
+                                "description": "between 160 and 175 tariff points",
+                                "entrants": 5
+                            },
+                            {
+                                "code": "T176",
+                                "description": "between 176 and 191 tariff points",
+                                "entrants": 13
+                            },
+                            {
+                                "code": "T192",
+                                "description": "between 192 and 207 tariff points",
+                                "entrants": 13
+                            },
+                            {
+                                "code": "T208",
+                                "description": "between 208 and 223 tariff points",
+                                "entrants": 16
+                            },
+                            {
+                                "code": "T224",
+                                "description": "between 224 and 239 tariff points",
+                                "entrants": 5
+                            },
+                            {
+                                "code": "T240",
+                                "description": "240 or more tariff points",
+                                "entrants": 16
+                            }
+                        ]
+                    }
+                ]
+            },
+            "go_salary_sector": [
+                {
+                    "subject": {
+                        "code": "CAH16-01-01",
+                        "english_label": "Law",
+                        "welsh_label": "Y gyfraith"
+                    },
+                    "mode": "1",
+                    "level": "3",
+                    "lq_uk": "18000",
+                    "med_uk": "21000",
+                    "uq_uk": "25000",
+                    "pop_uk": "2770",
+                    "lq_e": "18000",
+                    "med_e": "21000",
+                    "uq_e": "26000",
+                    "pop_e": "2275",
+                    "lq_s": "18500",
+                    "med_s": "20000",
+                    "uq_s": "23000",
+                    "pop_s": "240",
+                    "lq_w": "17000",
+                    "med_w": "19000",
+                    "uq_w": "21000",
+                    "pop_w": "110",
+                    "lq_ni": "17000",
+                    "med_ni": "19000",
+                    "uq_ni": "21000",
+                    "pop_ni": "90",
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
+                    "unavail_text_region_not_nation_english": "No data available\n\nSorry, this data is not available at this level.",
+                    "unavail_text_region_not_nation_welsh": "Nid oes data ar gael\n\nNid yw'r data hwn ar gael ar gyfer y lefel hon."
+                }
+            ],
+            "leo3_salary_sector": [
+                {
+                    "subject": {
+                        "code": "CAH16-01-01",
+                        "english_label": "Law",
+                        "welsh_label": "Y gyfraith"
+                    },
+                    "mode": "1",
+                    "level": "3",
+                    "lq_uk": "16500",
+                    "med_uk": "21000",
+                    "uq_uk": "27500",
+                    "pop_uk": "18315",
+                    "lq_e": "16500",
+                    "med_e": "21000",
+                    "uq_e": "27500",
+                    "pop_e": "15765",
+                    "lq_s": "18500",
+                    "med_s": "23000",
+                    "uq_s": "28000",
+                    "pop_s": "1515",
+                    "lq_w": "15000",
+                    "med_w": "18000",
+                    "uq_w": "22000",
+                    "pop_w": "900",
+                    "lq_nw": "15000",
+                    "med_nw": "18500",
+                    "uq_nw": "23000",
+                    "pop_nw": "2275",
+                    "lq_ne": "15000",
+                    "med_ne": "18500",
+                    "uq_ne": "23500",
+                    "pop_ne": "565",
+                    "lq_em": "15500",
+                    "med_em": "19000",
+                    "uq_em": "24000",
+                    "pop_em": "1140",
+                    "lq_wm": "15500",
+                    "med_wm": "19000",
+                    "uq_wm": "23500",
+                    "pop_wm": "1600",
+                    "lq_ee": "17000",
+                    "med_ee": "22500",
+                    "uq_ee": "29500",
+                    "pop_ee": "1490",
+                    "lq_se": "18000",
+                    "med_se": "22500",
+                    "uq_se": "29000",
+                    "pop_se": "2155",
+                    "lq_sw": "17000",
+                    "med_sw": "20500",
+                    "uq_sw": "25500",
+                    "pop_sw": "1075",
+                    "lq_yh": "15500",
+                    "med_yh": "18500",
+                    "uq_yh": "24000",
+                    "pop_yh": "1360",
+                    "lq_lo": "18500",
+                    "med_lo": "25500",
+                    "uq_lo": "34000",
+                    "pop_lo": "4115",
+                    "lq_ed": "19000",
+                    "med_ed": "24000",
+                    "uq_ed": "29500",
+                    "pop_ed": "275",
+                    "lq_gl": "18000",
+                    "med_gl": "22500",
+                    "uq_gl": "27500",
+                    "pop_gl": "225",
+                    "lq_cf": "16000",
+                    "med_cf": "19000",
+                    "uq_cf": "24000",
+                    "pop_cf": "175",
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
+                    "unavail_text_region_is_ni_english": "No data available\n\nSorry, this data is not available for Northern Ireland.",
+                    "unavail_text_region_is_ni_welsh": "Nid oes data ar gael\n\nYn anffodus, nid yw\u2019r data hwn ar gael ar gyfer Gogledd Iwerddon."
+                }
+            ],
+            "leo5_salary_sector": [
+                {
+                    "subject": {
+                        "code": "CAH16-01-01",
+                        "english_label": "Law",
+                        "welsh_label": "Y gyfraith"
+                    },
+                    "mode": "1",
+                    "level": "3",
+                    "lq_uk": "19500",
+                    "med_uk": "26500",
+                    "uq_uk": "36000",
+                    "pop_uk": "18200",
+                    "lq_e": "19500",
+                    "med_e": "26500",
+                    "uq_e": "37000",
+                    "pop_e": "15705",
+                    "lq_s": "23000",
+                    "med_s": "29500",
+                    "uq_s": "37000",
+                    "pop_s": "1475",
+                    "lq_w": "17500",
+                    "med_w": "22000",
+                    "uq_w": "27500",
+                    "pop_w": "900",
+                    "lq_nw": "18500",
+                    "med_nw": "23000",
+                    "uq_nw": "30000",
+                    "pop_nw": "2250",
+                    "lq_ne": "17500",
+                    "med_ne": "22500",
+                    "uq_ne": "29500",
+                    "pop_ne": "550",
+                    "lq_em": "18000",
+                    "med_em": "23000",
+                    "uq_em": "30500",
+                    "pop_em": "1090",
+                    "lq_wm": "18000",
+                    "med_wm": "23500",
+                    "uq_wm": "30500",
+                    "pop_wm": "1555",
+                    "lq_ee": "22000",
+                    "med_ee": "28500",
+                    "uq_ee": "38500",
+                    "pop_ee": "1460",
+                    "lq_se": "22000",
+                    "med_se": "28500",
+                    "uq_se": "38000",
+                    "pop_se": "2005",
+                    "lq_sw": "19500",
+                    "med_sw": "25000",
+                    "uq_sw": "33000",
+                    "pop_sw": "1035",
+                    "lq_yh": "18000",
+                    "med_yh": "22500",
+                    "uq_yh": "29500",
+                    "pop_yh": "1370",
+                    "lq_lo": "24500",
+                    "med_lo": "33000",
+                    "uq_lo": "50000",
+                    "pop_lo": "4390",
+                    "lq_ed": "26500",
+                    "med_ed": "33500",
+                    "uq_ed": "40000",
+                    "pop_ed": "300",
+                    "lq_gl": "23500",
+                    "med_gl": "30500",
+                    "uq_gl": "36500",
+                    "pop_gl": "245",
+                    "lq_cf": "18500",
+                    "med_cf": "23500",
+                    "uq_cf": "30000",
+                    "pop_cf": "185",
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
+                    "unavail_text_region_is_ni_english": "No data available\n\nSorry, this data is not available for Northern Ireland.",
+                    "unavail_text_region_is_ni_welsh": "Nid oes data ar gael\n\nYn anffodus, nid yw\u2019r data hwn ar gael ar gyfer Gogledd Iwerddon."
+                }
+            ]
+        },
+        "id": "3bd9b6c2-7b17-43bc-75b7-79dd8f89142c",
+        "_rid": "isg9ALQtK5tTtAUAAAAAAA==",
+        "_self": "dbs/isg9AA==/colls/isg9ALQtK5s=/docs/isg9ALQtK5tTtAUAAAAAAA==/",
+        "_etag": "\"ad0131c0-0000-1100-0000-600ee3900000\"",
+        "_attachments": "attachments/",
+        "_ts": 1611588496
+    },
+    {
+        "_id": "e2562ce8-5f10-11eb-8377-0242ac100405",
+        "created_at": "2021-01-25T13:26:08.634629",
+        "updated_at": "2021-01-25T13:26:08.634639",
+        "version": 48,
+        "institution_id": "10000055",
+        "course_id": "AB35",
+        "course_mode": 1,
+        "course_level": 4,
+        "partition_key": "48",
+        "course": {
+            "course_level": 4,
+            "application_provider": "10004930",
+            "country": {
+                "code": "XF",
+                "name": "England"
+            },
+            "distance_learning": {
+                "code": 0,
+                "label": "Course is available other than by distance learning"
+            },
+            "foundation_year_availability": {
+                "code": 0,
+                "label": "Not available"
+            },
+            "honours_award_provision": 0,
+            "institution": {
+                "pub_ukprn_name": "Abingdon and Witney College",
+                "pub_ukprn_welsh_name": "Abingdon and Witney College",
+                "pub_ukprn": "10000055",
+                "ukprn_name": "Abingdon and Witney College",
+                "ukprn_welsh_name": "Abingdon and Witney College",
+                "ukprn": "10000055"
+            },
+            "kis_course_id": "AB35",
+            "go_salary_inst": [
+                {
+                    "unavail_reason": "1",
+                    "unavail_text_english": "No data available\n\nThis is because the course has not yet run or has not been running long enough for this data to be available.",
+                    "unavail_text_welsh": "Nid oes data ar gael\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                }
+            ],
+            "leo3_inst": [
+                {
+                    "unavail_reason": "0",
+                    "pop": "15",
+                    "agg": "23",
+                    "subject": {
+                        "code": "CAH06-01-01",
+                        "english_label": "Animal science",
+                        "welsh_label": "Gwyddorau anifeiliaid"
+                    },
+                    "lq": "14000",
+                    "med": "17000",
+                    "uq": "23500",
+                    "inst_prov_pc_uk": "100",
+                    "inst_prov_pc_e": "95",
+                    "inst_prov_pc_ni": "0",
+                    "inst_prov_pc_s": "0",
+                    "inst_prov_pc_w": "5",
+                    "inst_prov_pc_nw": "0",
+                    "inst_prov_pc_ne": "0",
+                    "inst_prov_pc_em": "0",
+                    "inst_prov_pc_wm": "0",
+                    "inst_prov_pc_ee": "5",
+                    "inst_prov_pc_se": "70",
+                    "inst_prov_pc_sw": "5",
+                    "inst_prov_pc_yh": "5",
+                    "inst_prov_pc_lo": "5",
+                    "inst_prov_pc_ed": "0",
+                    "inst_prov_pc_gl": "0",
+                    "inst_prov_pc_cf": "0",
+                    "unavail_text_english": "No data available\n\nThis may be because the course size is too small. This does not reflect on the quality of the course.",
+                    "unavail_text_welsh": "Nid oes data ar gael\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs.",
+                    "earnings_agg_unavail_message": {}
+                }
+            ],
+            "leo5_inst": [
+                {
+                    "unavail_reason": "0",
+                    "pop": "15",
+                    "agg": "23",
+                    "subject": {
+                        "code": "CAH06-01-01",
+                        "english_label": "Animal science",
+                        "welsh_label": "Gwyddorau anifeiliaid"
+                    },
+                    "lq": "17500",
+                    "med": "21000",
+                    "uq": "26000",
+                    "inst_prov_pc_uk": "100",
+                    "inst_prov_pc_e": "95",
+                    "inst_prov_pc_ni": "0",
+                    "inst_prov_pc_s": "0",
+                    "inst_prov_pc_w": "5",
+                    "inst_prov_pc_nw": "0",
+                    "inst_prov_pc_ne": "0",
+                    "inst_prov_pc_em": "0",
+                    "inst_prov_pc_wm": "0",
+                    "inst_prov_pc_ee": "5",
+                    "inst_prov_pc_se": "75",
+                    "inst_prov_pc_sw": "5",
+                    "inst_prov_pc_yh": "0",
+                    "inst_prov_pc_lo": "5",
+                    "inst_prov_pc_ed": "0",
+                    "inst_prov_pc_gl": "0",
+                    "inst_prov_pc_cf": "0",
+                    "unavail_text_english": "No data available\n\nThis may be because the course size is too small. This does not reflect on the quality of the course.",
+                    "unavail_text_welsh": "Nid oes data ar gael\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                }
+            ],
+            "go_voice_work": [
+                {
+                    "unavailable": {
+                        "code": 1,
+                        "reason_english": "Sorry, there is no data available for this course.\n\nThis is because the course has not yet run or has not been running long enough for this data to be available. This does not reflect on the quality of the course.",
+                        "reason_welsh": "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                    }
+                }
+            ],
+            "length_of_course": {
+                "code": 2,
+                "label": "2 stages"
+            },
+            "links": {
+                "assessment_method": {
+                    "english": "https://www.abingdon-witney.ac.uk/courses/animal-therapy-and-rehabilitation-foundation-degree-39412"
+                },
+                "course_cost": {
+                    "english": "https://www.brookes.ac.uk/courses/undergraduate/animal-therapy-and-rehabilitation-fdsc"
+                },
+                "course_page": {
+                    "english": "https://www.abingdon-witney.ac.uk/courses/animal-therapy-and-rehabilitation-foundation-degree-39412"
+                },
+                "employment_details": {
+                    "english": "https://www.abingdon-witney.ac.uk/courses/animal-therapy-and-rehabilitation-foundation-degree-39412"
+                },
+                "financial_support_details": {
+                    "english": "https://www.brookes.ac.uk/studying-at-brookes/finance/undergraduate-finance---uk-and-eu-students/financial-support/financial-support-uk-eu-2020-21/"
+                },
+                "learning_and_teaching_methods": {
+                    "english": "https://www.abingdon-witney.ac.uk/courses/animal-therapy-and-rehabilitation-foundation-degree-39412"
+                },
+                "student_union": {
+                    "english": "http://www.nus.org.uk/en/students-unions/abingdon-and-witney-college-students-union/"
+                }
+            },
+            "locations": [
+                {
+                    "links": {
+                        "accommodation": {
+                            "english": "https://www.brookes.ac.uk/studying-at-brookes/accommodation/"
+                        },
+                        "student_union": {
+                            "english": "https://www.nus.org.uk/en/students-unions/abingdon-and-witney-college-students-union/"
+                        }
+                    },
+                    "latitude": "51.8202",
+                    "longitude": "-1.477227",
+                    "name": {
+                        "english": "Abingdon & Witney College (Common Leys Campus)"
+                    }
+                }
+            ],
+            "mode": {
+                "code": 1,
+                "label": "Full-time"
+            },
+            "nhs_funded": {
+                "code": 0,
+                "label": "None"
+            },
+            "qualification": {
+                "code": "036",
+                "label": "FdSc",
+                "level": "other-undergraduate"
+            },
+            "sandwich_year": {
+                "code": 0,
+                "label": "Not available"
+            },
+            "subjects": [
+                {
+                    "code": "CAH06-01-01",
+                    "level": 3,
+                    "english": "Animal science",
+                    "welsh": "Gwyddorau anifeiliaid"
+                }
+            ],
+            "title": {
+                "english": "Animal Therapy and Rehabilition"
+            },
+            "year_abroad": {
+                "code": 0,
+                "label": "Not available"
+            },
+            "statistics": {
+                "continuation": [
+                    {
+                        "aggregation_level": 23,
+                        "continuing_with_provider": 75,
+                        "dormant": 0,
+                        "gained": 10,
+                        "left": 15,
+                        "lower": 0,
+                        "number_of_students": 25,
+                        "subject": {
+                            "code": "CAH06-01-01",
+                            "english_label": "Animal science",
+                            "welsh_label": "Gwyddorau anifeiliaid"
+                        },
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "The data displayed is from students on this and other courses in Animal science over the previous two years.\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Gwyddorau anifeiliaid eraill yn ystod y ddwy flynedd flaenorol.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                        }
+                    }
+                ],
+                "employment": [
+                    {
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "Sorry, there is no data available for this course.\n\nThis is because the course has not yet run or has not been running long enough for this data to be available. This does not reflect on the quality of the course.",
+                            "reason_welsh": "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                        }
+                    }
+                ],
+                "entry": [
+                    {
+                        "a-level": 75,
+                        "access": 0,
+                        "aggregation_level": 13,
+                        "another_higher_education_qualifications": 10,
+                        "baccalaureate": 0,
+                        "degree": 0,
+                        "foundation": 0,
+                        "none": 5,
+                        "number_of_students": 25,
+                        "other_qualifications": 10,
+                        "subject": {
+                            "code": "CAH06-01-01",
+                            "english_label": "Animal science",
+                            "welsh_label": "Gwyddorau anifeiliaid"
+                        },
+                        "unavailable": {
+                            "code": 0,
+                            "reason_english": "The data displayed is from students on this and other courses in Animal science.\n\nThere was not enough data to publish information specifically for this course. This may be because the course size is too small. This does not reflect on the quality of the course.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Gwyddorau anifeiliaid eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                        }
+                    }
+                ],
+                "job_type": [
+                    {
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "Sorry, there is no data available for this course.\n\nThis is because the course has not yet run or has not been running long enough for this data to be available. This does not reflect on the quality of the course.",
+                            "reason_welsh": "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                        }
+                    }
+                ],
+                "job_list": [
+                    {
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "Sorry, there is no data available for this course.\n\nThis is because the course has not yet run or has not been running long enough for this data to be available. This does not reflect on the quality of the course.",
+                            "reason_welsh": "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                        }
+                    }
+                ],
+                "nss": [
+                    {
+                        "aggregation_level": 13,
+                        "number_of_students": 15,
+                        "question_1": {
+                            "description": "Staff are good at explaining things",
+                            "agree_or_strongly_agree": 100
+                        },
+                        "question_2": {
+                            "description": "Staff have made the subject interesting",
+                            "agree_or_strongly_agree": 94
+                        },
+                        "question_3": {
+                            "description": "The course is intellectually stimulating",
+                            "agree_or_strongly_agree": 88
+                        },
+                        "question_4": {
+                            "description": "My course has challenged me to achieve my best work",
+                            "agree_or_strongly_agree": 88
+                        },
+                        "question_5": {
+                            "description": "My course has provided me with opportunities to explore ideas or concepts in depth",
+                            "agree_or_strongly_agree": 88
+                        },
+                        "question_6": {
+                            "description": "My course has provided me with opportunities to bring information and ideas together from different topics",
+                            "agree_or_strongly_agree": 94
+                        },
+                        "question_7": {
+                            "description": "My course has provided me with opportunities to apply what I have learnt",
+                            "agree_or_strongly_agree": 75
+                        },
+                        "question_8": {
+                            "description": "The criteria used in marking have been clear in advance",
+                            "agree_or_strongly_agree": 75
+                        },
+                        "question_9": {
+                            "description": "Marking and assessment has been fair",
+                            "agree_or_strongly_agree": 100
+                        },
+                        "question_10": {
+                            "description": "Feedback on my work has been timely",
+                            "agree_or_strongly_agree": 69
+                        },
+                        "question_11": {
+                            "description": "I have received helpful comments on my work",
+                            "agree_or_strongly_agree": 88
+                        },
+                        "question_12": {
+                            "description": "I have been able to contact staff when I needed to",
+                            "agree_or_strongly_agree": 75
+                        },
+                        "question_13": {
+                            "description": "I have received sufficient advice and guidance in relation to my course",
+                            "agree_or_strongly_agree": 94
+                        },
+                        "question_14": {
+                            "description": "Good advice was available when I needed to make study choices on my course",
+                            "agree_or_strongly_agree": 81
+                        },
+                        "question_15": {
+                            "description": "The course is well organised and running smoothly",
+                            "agree_or_strongly_agree": 63
+                        },
+                        "question_16": {
+                            "description": "The timetable works efficiently for me",
+                            "agree_or_strongly_agree": 100
+                        },
+                        "question_17": {
+                            "description": "Any changes in the course or teaching have been communicated effectively",
+                            "agree_or_strongly_agree": 69
+                        },
+                        "question_18": {
+                            "description": "The IT resources and facilities provided have supported my learning well",
+                            "agree_or_strongly_agree": 50
+                        },
+                        "question_19": {
+                            "description": "The library resources (e.g. books, online services and learning spaces) have supported my learning well",
+                            "agree_or_strongly_agree": 81
+                        },
+                        "question_20": {
+                            "description": "I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to",
+                            "agree_or_strongly_agree": 81
+                        },
+                        "question_21": {
+                            "description": "I feel part of a community of staff and students",
+                            "agree_or_strongly_agree": 88
+                        },
+                        "question_22": {
+                            "description": "I have had the right opportunities to work with other students as part of my course",
+                            "agree_or_strongly_agree": 94
+                        },
+                        "question_23": {
+                            "description": "I have had the right opportunities to provide feedback on my course",
+                            "agree_or_strongly_agree": 94
+                        },
+                        "question_24": {
+                            "description": "Staff value students' views and opinions about the course",
+                            "agree_or_strongly_agree": 94
+                        },
+                        "question_25": {
+                            "description": "It is clear how students' feedback on the course has been acted on",
+                            "agree_or_strongly_agree": 94
+                        },
+                        "question_26": {
+                            "description": "The students' union (association or guild) effectively represents students' academic interests",
+                            "agree_or_strongly_agree": 100
+                        },
+                        "question_27": {
+                            "description": "Overall, I am satisfied with the quality of the course",
+                            "agree_or_strongly_agree": 88
+                        },
+                        "response_rate": 76,
+                        "subject": {
+                            "code": "CAH06-01-01",
+                            "english_label": "Animal science",
+                            "welsh_label": "Gwyddorau anifeiliaid"
+                        },
+                        "unavailable": {
+                            "code": 0,
+                            "reason_english": "The data displayed is from students on this and other courses in Animal science.\n\nThere was not enough data to publish information specifically for this course. This may be because the course size is too small or not enough students responded to the survey. This does not reflect on the quality of the course.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Gwyddorau anifeiliaid eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Gall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                        }
+                    }
+                ],
+                "tariff": [
+                    {
+                        "aggregation_level": 13,
+                        "number_of_students": 15,
+                        "subject": {
+                            "code": "CAH06-01-01",
+                            "english_label": "Animal science",
+                            "welsh_label": "Gwyddorau anifeiliaid"
+                        },
+                        "tariffs": [
+                            {
+                                "code": "T001",
+                                "description": "less than 48 tariff points",
+                                "entrants": 5
+                            },
+                            {
+                                "code": "T048",
+                                "description": "between 48 and 63 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T064",
+                                "description": "between 64 and 79 tariff points",
+                                "entrants": 5
+                            },
+                            {
+                                "code": "T080",
+                                "description": "between 80 and 95 tariff points",
+                                "entrants": 20
+                            },
+                            {
+                                "code": "T096",
+                                "description": "between 96 and 111 tariff points",
+                                "entrants": 20
+                            },
+                            {
+                                "code": "T112",
+                                "description": "between 112 and 127 tariff points",
+                                "entrants": 15
+                            },
+                            {
+                                "code": "T128",
+                                "description": "between 128 and 143 tariff points",
+                                "entrants": 5
+                            },
+                            {
+                                "code": "T144",
+                                "description": "between 144 and 159 tariff points",
+                                "entrants": 15
+                            },
+                            {
+                                "code": "T160",
+                                "description": "between 160 and 175 tariff points",
+                                "entrants": 5
+                            },
+                            {
+                                "code": "T176",
+                                "description": "between 176 and 191 tariff points",
+                                "entrants": 5
+                            },
+                            {
+                                "code": "T192",
+                                "description": "between 192 and 207 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T208",
+                                "description": "between 208 and 223 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T224",
+                                "description": "between 224 and 239 tariff points",
+                                "entrants": 5
+                            },
+                            {
+                                "code": "T240",
+                                "description": "240 or more tariff points",
+                                "entrants": 0
+                            }
+                        ],
+                        "unavailable": {
+                            "code": 0,
+                            "reason_english": "The data displayed is from students on this and other courses in Animal science.\n\nThere was not enough data to publish information specifically for this course. This may be because the course size is too small. This does not reflect on the quality of the course.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Gwyddorau anifeiliaid eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                        }
+                    }
+                ]
+            },
+            "go_salary_sector": [
+                {
+                    "subject": {
+                        "code": "CAH06-01-01",
+                        "english_label": "Animal science",
+                        "welsh_label": "Gwyddorau anifeiliaid"
+                    },
+                    "mode": "1",
+                    "level": "4",
+                    "lq_uk": "15000",
+                    "med_uk": "17500",
+                    "uq_uk": "20000",
+                    "pop_uk": "95",
+                    "lq_e": "16000",
+                    "med_e": "18000",
+                    "uq_e": "20000",
+                    "pop_e": "70",
+                    "lq_s": "13000",
+                    "med_s": "17000",
+                    "uq_s": "18000",
+                    "pop_s": "15",
+                    "lq_w": "NA",
+                    "med_w": "NA",
+                    "uq_w": "NA",
+                    "pop_w": "NA",
+                    "lq_ni": "NA",
+                    "med_ni": "NA",
+                    "uq_ni": "NA",
+                    "pop_ni": "NA",
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
+                    "unavail_text_region_not_nation_english": "No data available\n\nSorry, this data is not available at this level.",
+                    "unavail_text_region_not_nation_welsh": "Nid oes data ar gael\n\nNid yw'r data hwn ar gael ar gyfer y lefel hon."
+                }
+            ],
+            "leo3_salary_sector": [
+                {
+                    "subject": {
+                        "code": "CAH06-01-01",
+                        "english_label": "Animal science",
+                        "welsh_label": "Gwyddorau anifeiliaid"
+                    },
+                    "mode": "1",
+                    "level": "4",
+                    "lq_uk": "11000",
+                    "med_uk": "14500",
+                    "uq_uk": "17500",
+                    "pop_uk": "835",
+                    "lq_e": "11000",
+                    "med_e": "14500",
+                    "uq_e": "18000",
+                    "pop_e": "765",
+                    "lq_s": "8500",
+                    "med_s": "11500",
+                    "uq_s": "13500",
+                    "pop_s": "20",
+                    "lq_w": "10000",
+                    "med_w": "12500",
+                    "uq_w": "15500",
+                    "pop_w": "50",
+                    "lq_nw": "10000",
+                    "med_nw": "13500",
+                    "uq_nw": "16500",
+                    "pop_nw": "110",
+                    "lq_ne": "NA",
+                    "med_ne": "NA",
+                    "uq_ne": "NA",
+                    "pop_ne": "NA",
+                    "lq_em": "10500",
+                    "med_em": "14500",
+                    "uq_em": "17500",
+                    "pop_em": "95",
+                    "lq_wm": "10500",
+                    "med_wm": "14000",
+                    "uq_wm": "17500",
+                    "pop_wm": "70",
+                    "lq_ee": "13000",
+                    "med_ee": "15500",
+                    "uq_ee": "18500",
+                    "pop_ee": "95",
+                    "lq_se": "13000",
+                    "med_se": "15500",
+                    "uq_se": "18500",
+                    "pop_se": "170",
+                    "lq_sw": "10000",
+                    "med_sw": "14500",
+                    "uq_sw": "17500",
+                    "pop_sw": "120",
+                    "lq_yh": "10000",
+                    "med_yh": "14500",
+                    "uq_yh": "17500",
+                    "pop_yh": "60",
+                    "lq_lo": "9500",
+                    "med_lo": "14500",
+                    "uq_lo": "18500",
+                    "pop_lo": "30",
+                    "lq_ed": "NA",
+                    "med_ed": "NA",
+                    "uq_ed": "NA",
+                    "pop_ed": "NA",
+                    "lq_gl": "NA",
+                    "med_gl": "NA",
+                    "uq_gl": "NA",
+                    "pop_gl": "NA",
+                    "lq_cf": "NA",
+                    "med_cf": "NA",
+                    "uq_cf": "NA",
+                    "pop_cf": "NA",
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
+                    "unavail_text_region_is_ni_english": "No data available\n\nSorry, this data is not available for Northern Ireland.",
+                    "unavail_text_region_is_ni_welsh": "Nid oes data ar gael\n\nYn anffodus, nid yw\u2019r data hwn ar gael ar gyfer Gogledd Iwerddon."
+                }
+            ],
+            "leo5_salary_sector": [
+                {
+                    "subject": {
+                        "code": "CAH06-01-01",
+                        "english_label": "Animal science",
+                        "welsh_label": "Gwyddorau anifeiliaid"
+                    },
+                    "mode": "1",
+                    "level": "4",
+                    "lq_uk": "13000",
+                    "med_uk": "17000",
+                    "uq_uk": "21000",
+                    "pop_uk": "805",
+                    "lq_e": "13000",
+                    "med_e": "17500",
+                    "uq_e": "21000",
+                    "pop_e": "740",
+                    "lq_s": "11000",
+                    "med_s": "16000",
+                    "uq_s": "19500",
+                    "pop_s": "20",
+                    "lq_w": "10000",
+                    "med_w": "16000",
+                    "uq_w": "19000",
+                    "pop_w": "45",
+                    "lq_nw": "13000",
+                    "med_nw": "17500",
+                    "uq_nw": "21000",
+                    "pop_nw": "110",
+                    "lq_ne": "NA",
+                    "med_ne": "NA",
+                    "uq_ne": "NA",
+                    "pop_ne": "NA",
+                    "lq_em": "13000",
+                    "med_em": "17500",
+                    "uq_em": "21000",
+                    "pop_em": "85",
+                    "lq_wm": "13500",
+                    "med_wm": "16000",
+                    "uq_wm": "20500",
+                    "pop_wm": "70",
+                    "lq_ee": "15000",
+                    "med_ee": "18500",
+                    "uq_ee": "23500",
+                    "pop_ee": "95",
+                    "lq_se": "13500",
+                    "med_se": "18500",
+                    "uq_se": "22500",
+                    "pop_se": "160",
+                    "lq_sw": "12000",
+                    "med_sw": "16000",
+                    "uq_sw": "19500",
+                    "pop_sw": "120",
+                    "lq_yh": "13000",
+                    "med_yh": "17500",
+                    "uq_yh": "20500",
+                    "pop_yh": "55",
+                    "lq_lo": "15500",
+                    "med_lo": "22500",
+                    "uq_lo": "28000",
+                    "pop_lo": "30",
+                    "lq_ed": "NA",
+                    "med_ed": "NA",
+                    "uq_ed": "NA",
+                    "pop_ed": "NA",
+                    "lq_gl": "NA",
+                    "med_gl": "NA",
+                    "uq_gl": "NA",
+                    "pop_gl": "NA",
+                    "lq_cf": "NA",
+                    "med_cf": "NA",
+                    "uq_cf": "NA",
+                    "pop_cf": "NA",
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
+                    "unavail_text_region_is_ni_english": "No data available\n\nSorry, this data is not available for Northern Ireland.",
+                    "unavail_text_region_is_ni_welsh": "Nid oes data ar gael\n\nYn anffodus, nid yw\u2019r data hwn ar gael ar gyfer Gogledd Iwerddon."
+                }
+            ]
+        },
+        "id": "ea7a1a79-538a-52b4-d417-b5657449249b",
+        "_rid": "isg9ALQtK5tEVQUAAAAAAA==",
+        "_self": "dbs/isg9AA==/colls/isg9ALQtK5s=/docs/isg9ALQtK5tEVQUAAAAAAA==/",
+        "_etag": "\"8c019a1f-0000-1100-0000-600ec6f40000\"",
+        "_attachments": "attachments/",
+        "_ts": 1611581172
+    }
+]

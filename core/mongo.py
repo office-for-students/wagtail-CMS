@@ -34,5 +34,5 @@ class Mongo():
     def insert(self, json):
         self.collection.insert(json)
 
-    def get_one(self, key, value):
-        return self.collection.find_one({key: value})
+    def get_one(self, key_value_dict):
+        return self.collection.find_one(key_value_dict)
