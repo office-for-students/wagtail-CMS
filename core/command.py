@@ -63,3 +63,7 @@ class RootCommand(BaseCommand):
 
     def success(self, message):
         self.stdout.write(self.style.SUCCESS('SUCCESS: ' + message))
+
+
+    def error(self, message):
+        self.stdout.write(self.style.ERROR('ERROR: ' + message))

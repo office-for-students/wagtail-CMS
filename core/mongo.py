@@ -1,5 +1,7 @@
 from pymongo import MongoClient
 
+from django.core.management.base import CommandError
+
 from django.conf import settings
 
 

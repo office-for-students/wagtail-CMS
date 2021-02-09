@@ -49,7 +49,13 @@ class Command(RootCommand):
 
         courses = []
         for course_id in settings.TEST_COURSES.split(','):
-            courses.append(self.get_course(course_id, version)[0])
+            course_data = self.get_course(course_id, version)
+            if course_data:
+                self.success('Got course (' + str(course_id) + ') from CosmosDB')
+                courses.append(course_data[0])
+            else:
+                self.error('Could not get data for course (' + \
+                    str(course_id) + ')')
 
         return courses
 
@@ -73,7 +79,5 @@ class Command(RootCommand):
         except Exception:
             raise CommandError('Converting course into list failed (' + \
                 str(query_result) + ')')
-
-        self.success('Got course (' + str(course_id) + ') from CosmosDB')
 
         return list_result
