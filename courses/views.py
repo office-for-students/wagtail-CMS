@@ -220,7 +220,6 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         return redirect(redirect_page + '?load_error=true&error_type=0')
 
     page = get_page_for_language(language, CourseDetailPage.objects.all())
-
     page.uni_site_links_header = page.uni_site_links_header.replace('{{institution_name}}',
                                                                     course.institution.pub_ukprn_name)
 

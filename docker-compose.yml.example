@@ -8,7 +8,7 @@ services:
       DBNAME:                       "${DBNAME}"
       DBUSER:                       "${DBUSER}"
       DBPASSWORD:                   "${DBPASSWORD}"
-      DBPORT:                       "${DBPORT}"
+      DBPORT:                       "5432"
       # Search
       SEARCHAPIHOST:                "${SEARCHAPIHOST}"
       # Widget
@@ -26,11 +26,11 @@ services:
       AZURECOSMOSDBURI:             ""
       AZURECOSMOSDBKEY:             ""
       # MongoDB (used for local development and testing)
-      MONGODB_HOST:                 ""
-      MONGODB_USERNAME:             ""
-      MONGODB_PASSWORD:             ""
+      MONGODB_HOST:                 "${MONGODB_HOST}"
+      MONGODB_USERNAME:             "${MONGODB_USERNAME}"
+      MONGODB_PASSWORD:             "${MONGODB_PASSWORD}"
       # A number of courses to load into the fixtures folder for mongodb and tests
-      TEST_COURSES:                 "U18-LAWLLB,AB35"
+      TEST_COURSES:                 "U18-LAWLLB,AB35,PBSFND-D_FT,U09FUECW,UMDAHFY"
       # Azure storage (institutions.xx.json, subjects.json, versions,json, etc...)
       STORAGE_ACCOUNT_NAME:         "${STORAGE_ACCOUNT_NAME}"
       STORAGEKEY:                   "${STORAGEKEY}"

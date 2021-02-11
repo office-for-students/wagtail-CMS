@@ -11,7 +11,7 @@ def load_institution_data(institution_id):
         return InstitutionMocks.get_successful_institution_load_response()
     if settings.MONGODB_HOST:
         mongo = Mongo('institutions')
-        return mongo.get_one({'institution_id', institution_id})
+        return mongo.get_one({'institution_id': str(institution_id)})
     else:
         headers = {
             'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY

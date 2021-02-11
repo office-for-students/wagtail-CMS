@@ -5,13 +5,13 @@ from math import ceil
 from django.core.management.base import CommandError
 import azure.cosmos.cosmos_client as cosmos_client
 
-from core.command import RootCommand
+from core.command import CosmosCommand
 from core.mongo import Mongo
 
 from django.conf import settings
 
 
-class Command(RootCommand):
+class Command(CosmosCommand):
     help = 'Copies Courses from Cosmos DB to the local MongoDB ' + \
         '(and into the courses/fixtures folder)'
 

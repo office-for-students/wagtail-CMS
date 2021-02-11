@@ -16,8 +16,8 @@ def load_course_data(institution_id, course_id, mode):
         mongo = Mongo('courses')
         return mongo.get_one(
             {
-                'institution_id': institution_id,
-                'course_id': course_id,
+                'institution_id': str(institution_id),
+                'course_id': str(course_id),
             }
         )
     else:

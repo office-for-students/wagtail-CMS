@@ -63,7 +63,6 @@ DBHOST:               "db"
 DBNAME:               "django"
 DBUSER:               "docker"
 DBPASSWORD:           "docker"
-DBPORT:               "5432"
 ...
 DATASETAPIHOST:       "..."
 DATASETAPIKEY:        "..."
@@ -94,7 +93,7 @@ SECRET_KEY: "<secret_key>"
 
 ## Docker
 
-You need to have [Docker Docs](https://docs.docker.com/install/) installed to be able to see changes in the code, run tests and update local data.
+You need to have [Docker](https://docs.docker.com/install/) installed to be able to see changes in the code, run tests and update local data.
 
 ```
 $ docker-compose up
@@ -114,62 +113,67 @@ $ docker container exec -it wagtail-cms_web_1 python manage.py migrate
 
 ### Populating
 
-First lets get the data from the development environment in Azure.
-
-> **IMPORTANT:** Remember to use the **REMOTE** database details below (because you are getting the data from the remote database)
-
 ```
-$ vim docker-compose.yml
-...
-DBHOST:      "..."
-DBNAME:      "..."
-DBUSER:      "..."
-DBPASSWORD:  "..."
-DBPORT:      "..."
-...
-$ docker container exec -it wagtail-cms_web_1 python manage.py dumpdata --natural-foreign --indent=4 > postgres.json
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_cms --db_host ... --db_name ... --db_user ... --db_password ... --db_port ...
 ```
 
-> **IMPORTANT:** Stop docker (press Ctrl+C in the window in which you have it running)
+> Use the creds for the remote PostgreSQL in the above statement
 
-Now put back in your local variables.
-
-```
-$ vim docker-compose.yml
-...
-DBHOST:      "db"
-DBNAME:      "django"
-DBUSER:      "docker"
-DBPASSWORD:  "docker"
-DBPORT:      "5432"
-...
-```
-
-Restart Docker in the other window.
-
-Now we need to create the schema in the database. Unfortunately this will also creates a number of default entries. We need to remove these default entries otherwise the import will not work.
+Want to delete the command from your command history so people can see passwords on your machine?
 
 ```
-$ docker container exec wagtail-cms_web_1 python manage.py migrate
-...
-$ docker container exec -it wagtail-cms_web_1 python manage.py shell
->>> from wagtail.core.models import Page
->>> Page.objects.all().delete()
->>> from django.contrib.contenttypes.models import ContentType
->>> ContentType.objects.all().delete()
->>> exit()
-$ docker container exec wagtail-cms_web_1 python manage.py loaddata postgres.json
+$ history | tail -n 5
+100 ...
+101 ...
+102 ...  # <- You want to delete this one
+103 ...
+104 ...
+$ history -d 103
 ```
 
-> Because we have copied wholesale the data over from development you can use your original development credentials to login to the Wagtail Admin if you need to
-
-> Also now that Wagtail has been localised you can login and change things to your hearts content. If anything breaks (irrevocably) then just just delete the PostgreSQL container (use the docker commands below) and re-do the populating as described above.
-
-## CosmosDB
+## MongoDB
 
 ### Populating
 
+```
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
+```
+
+> `populate_courses` will get the courses in `settings.TEST_COURSES` from CosmosDB and put them in MongoDB **(as well as populate the file found in `courses/fixtures/courses.json`)**
+
+### Adding More courses
+
+```
+$ vim docker-compose.yml
 ...
+TEST_COURSES = 'U18-LAWLLB,AB35,...'
+...
+$ vim docker-compose.yml.example
+...
+TEST_COURSES = 'U18-LAWLLB,AB35,...'
+...
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
+...
+$ git add docker-compose.yml.example
+$ git add courses/fixtures/courses.json
+$ git commit -m '...'
+...
+```
+
+## Viewable URLs
+
+You can view the following URLs in the browser
+
+```
+$ wget http://localhost:8000/institution-details/<any_institution>/
+$ wget http://localhost:8000/admin/  # <- All wagtail pages
+$ wget http://localhost:8000/course-details/10007804/U18-LAWLLB/Full-time/
+$ wget http://localhost:8000/course-details/10000055/AB35/Full-time/
+$ wget http://localhost:8000/course-details/10001850/PBSFND-D_FT/Full-time/
+$ wget http://localhost:8000/course-details/10007165/U09FUECW/Full-time/
+$ wget http://localhost:8000/course-details/10007767/UMDAHFY/Full-time/
+```
 
 # Useful Commands
 

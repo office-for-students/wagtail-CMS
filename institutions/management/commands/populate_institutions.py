@@ -2,14 +2,16 @@ import json
 import requests
 from math import ceil
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import CommandError
 import azure.cosmos.cosmos_client as cosmos_client
 
-from django.conf import settings
+from core.command import CosmosCommand
 from core.mongo import Mongo
 
+from django.conf import settings
 
-class Command(BaseCommand):
+
+class Command(CosmosCommand):
     help = 'Copies Institutions from Cosmos DB to the local MongoDB ' + \
         '(and into the institutions/fixtures folder)'
 
@@ -22,23 +24,13 @@ class Command(BaseCommand):
 
     def __init__(self, *args, **kwargs):
 
-        super(Command, self).__init__(*args, **kwargs)
-
-        if not settings.AZURECOSMOSDBURI or \
-           not settings.AZURECOSMOSDBKEY:
-            raise CommandError('AZURECOSMOSDBURI and AZURECOSMOSDBKEY in ' + \
-                'docker-compose.yml need to point to the CosmosDB')
+        super().__init__(*args, **kwargs)
 
         self.fixture_file = \
             settings.BASE_DIR + '/institutions/fixtures/institutions.json'
 
         self.mongo = Mongo('institutions')
         self.mongo.collection_delete()
-
-        self.cosmos_client = cosmos_client.CosmosClient(
-            settings.AZURECOSMOSDBURI,
-            {'masterKey': settings.AZURECOSMOSDBKEY}
-        )
 
     #def add_arguments(self, parser):
     #    parser.add_argument('poll_ids', nargs='+', type=int)
@@ -115,17 +107,3 @@ class Command(BaseCommand):
         self.success('Got latest version number from CosmosDB (' + \
             str(version_int) + ')')
         return version_int
-
-
-    def base_query(self, table, query):
-        return list(
-            self.cosmos_client.QueryItems(
-                self.base_url + table,
-                query,
-                self.request_options
-            )
-        )
-
-
-    def success(self, message):
-        self.stdout.write(self.style.SUCCESS('SUCCESS: ' + message))

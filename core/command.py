@@ -9,9 +9,27 @@ from django.conf import settings
 from core.mongo import Mongo
 
 
-class RootCommand(BaseCommand):
-    help = 'IMPORTANT: If you are seeing this no help text has been ' + \
-        'set for the command!!!'
+class SimpleCommand(BaseCommand):
+    help = 'IMPORTANT: Replace the help text in your command!!!'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+
+    def info(self, message):
+        self.stdout.write(self.style.WARNING('INFO:    ' + message))
+
+
+    def success(self, message):
+        self.stdout.write(self.style.SUCCESS('SUCCESS: ' + message))
+
+
+    def error(self, message):
+        self.stdout.write(self.style.ERROR('ERROR:   ' + message))
+
+
+class CosmosCommand(SimpleCommand):
+    help = 'IMPORTANT: Replace the help text in your command!!!'
 
     cosmos_client     = None
     fixture_file      = None
@@ -35,10 +53,6 @@ class RootCommand(BaseCommand):
         )
 
 
-    def save_courses_to_mongo_db(self, courses_json):
-        self.mongo_collection.insert(courses_json)
-
-
     def get_latest_version_number(self):
         version = self.base_query('datasets', 'SELECT VALUE MAX(c.version) from c')
         try:
@@ -59,11 +73,3 @@ class RootCommand(BaseCommand):
                 self.request_options
             )
         )
-
-
-    def success(self, message):
-        self.stdout.write(self.style.SUCCESS('SUCCESS: ' + message))
-
-
-    def error(self, message):
-        self.stdout.write(self.style.ERROR('ERROR: ' + message))

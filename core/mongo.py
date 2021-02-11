@@ -38,3 +38,6 @@ class Mongo():
 
     def get_one(self, key_value_dict):
         return self.collection.find_one(key_value_dict)
+
+    def count(self):
+        return self.collection.count_documents({})
