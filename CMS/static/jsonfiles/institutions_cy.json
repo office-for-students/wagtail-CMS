@@ -6,7 +6,7 @@
     },
     {
         "alphabet": "a",
-        "name": "Abdo College of Education",
+        "name": "ABDO College of Education",
         "order_by_name": "abdo college of education"
     },
     {
@@ -181,7 +181,7 @@
     },
     {
         "alphabet": "b",
-        "name": "Birmingham Community Nhs Trust",
+        "name": "Birmingham Community NHS Trust",
         "order_by_name": "birmingham community nhs trust"
     },
     {
@@ -213,6 +213,11 @@
         "alphabet": "b",
         "name": "Blackpool and the Fylde College",
         "order_by_name": "blackpool and the fylde college"
+    },
+    {
+        "alphabet": "b",
+        "name": "Bloomsbury Institute",
+        "order_by_name": "bloomsbury"
     },
     {
         "alphabet": "b",
@@ -291,7 +296,7 @@
     },
     {
         "alphabet": "b",
-        "name": "British College of Osteopathic Medicine",
+        "name": "British College Of Osteopathic Medicine",
         "order_by_name": "british college of osteopathic medicine"
     },
     {
@@ -476,7 +481,7 @@
     },
     {
         "alphabet": "c",
-        "name": "City Of Stoke-On-Trent Sixth Form College",
+        "name": "City of Stoke-on-trent Sixth Form College",
         "order_by_name": "city of stoke-on-trent sixth form college"
     },
     {
@@ -521,8 +526,18 @@
     },
     {
         "alphabet": "c",
+        "name": "The College of Health Ltd",
+        "order_by_name": "college of health"
+    },
+    {
+        "alphabet": "c",
         "name": "College of Integrated Chinese Medicine",
         "order_by_name": "college of integrated chinese medicine"
+    },
+    {
+        "alphabet": "c",
+        "name": "The College of Osteopaths",
+        "order_by_name": "college of osteopaths"
     },
     {
         "alphabet": "c",
@@ -951,7 +966,7 @@
     },
     {
         "alphabet": "i",
-        "name": "Icon College of Technology & Management",
+        "name": "ICON College of Technology & Management",
         "order_by_name": "icon college of technology & management"
     },
     {
@@ -981,7 +996,7 @@
     },
     {
         "alphabet": "j",
-        "name": "Jca | London Fashion Academy",
+        "name": "JCA | London Fashion Academy",
         "order_by_name": "jca london fashion academy"
     },
     {
@@ -1153,6 +1168,11 @@
         "alphabet": "l",
         "name": "The London Institute of Banking & Finance",
         "order_by_name": "london institute of banking & finance"
+    },
+    {
+        "alphabet": "l",
+        "name": "London Interdisciplinary School",
+        "order_by_name": "london interdisciplinary school"
     },
     {
         "alphabet": "l",
@@ -1361,6 +1381,11 @@
     },
     {
         "alphabet": "n",
+        "name": "Newbold College",
+        "order_by_name": "newbold"
+    },
+    {
+        "alphabet": "n",
         "name": "Newbury College",
         "order_by_name": "newbury college"
     },
@@ -1500,9 +1525,9 @@
         "order_by_name": "pearson college london"
     },
     {
-        "alphabet": "c",
-        "name": "Coleg Penybont",
-        "order_by_name": "coleg penybont"
+        "alphabet": "p",
+        "name": "Coleg Pen-y-bont",
+        "order_by_name": "pen-y-bont"
     },
     {
         "alphabet": "p",
@@ -1576,6 +1601,11 @@
     },
     {
         "alphabet": "r",
+        "name": "Raindance",
+        "order_by_name": "raindance"
+    },
+    {
+        "alphabet": "r",
         "name": "Ravensbourne University London",
         "order_by_name": "ravensbourne university london"
     },
@@ -1596,6 +1626,11 @@
     },
     {
         "alphabet": "r",
+        "name": "Regent's University",
+        "order_by_name": "regents university"
+    },
+    {
+        "alphabet": "r",
         "name": "Results Consortium Limited",
         "order_by_name": "results consortium"
     },
@@ -1606,7 +1641,7 @@
     },
     {
         "alphabet": "r",
-        "name": "Richmond, the American International University in London",
+        "name": "Richmond, The American International University in London",
         "order_by_name": "richmond the american international university in london"
     },
     {
@@ -1781,7 +1816,7 @@
     },
     {
         "alphabet": "s",
-        "name": "Soas University of London",
+        "name": "SOAS University of London",
         "order_by_name": "soas university of london"
     },
     {
@@ -2066,7 +2101,7 @@
     },
     {
         "alphabet": "w",
-        "name": "Waterbear - the College of Music",
+        "name": "WaterBear - The College of Music",
         "order_by_name": "waterbear"
     },
     {

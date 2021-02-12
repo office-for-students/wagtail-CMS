@@ -1800,6 +1800,10 @@ class Salary:
             self.subject_english = subject_data.get('english_label', '')
             self.subject_welsh = subject_data.get('welsh_label', '')
 
+            self.subject_title_in_local_language = self.subject_english
+            if self.display_language == enums.languages.WELSH:
+                self.subject_title_in_local_language = self.subject_welsh
+
             # TODO Why do we need two of those?
             self.unavail_reason = salary_data['unavail_reason']
             self.unavailable_reason = "" #fallback_to(salary_data.get('reason'), '')
@@ -1863,6 +1867,7 @@ class Salary:
                     self.earnings_aggregation_str = salary_data['earnings_agg_unavail_message']['english']
                 else:
                     self.earnings_aggregation_str = salary_data['earnings_agg_unavail_message']['welsh']
+                    self.subject_title_in_local_language = self.subject_welsh
 
                 self.earnings_aggregation_msg["msg_heading"], self.earnings_aggregation_msg["msg_body"] = separate_unavail_reason(self.earnings_aggregation_str)
 
