@@ -160,6 +160,7 @@
         "order_by_name": "bimm limited"
     },
     {
+        "alphabet": "b",
         "name": "Birkbeck, University of London",
         "order_by_name": "birkbeck university of london"
     },
@@ -207,6 +208,11 @@
         "alphabet": "b",
         "name": "Blackpool and the Fylde College",
         "order_by_name": "blackpool and the fylde college"
+    },
+    {
+        "alphabet": "b",
+        "name": "Bloomsbury Institute",
+        "order_by_name": "bloomsbury"
     },
     {
         "alphabet": "b",
@@ -475,7 +481,7 @@
     },
     {
         "alphabet": "c",
-        "name": "City Of Stoke-On-Trent Sixth Form College",
+        "name": "City of Stoke-on-trent Sixth Form College",
         "order_by_name": "city of stoke-on-trent sixth form college"
     },
     {
@@ -520,8 +526,18 @@
     },
     {
         "alphabet": "c",
+        "name": "The College of Health Ltd",
+        "order_by_name": "college of health"
+    },
+    {
+        "alphabet": "c",
         "name": "College of Integrated Chinese Medicine",
         "order_by_name": "college of integrated chinese medicine"
+    },
+    {
+        "alphabet": "c",
+        "name": "The College of Osteopaths",
+        "order_by_name": "college of osteopaths"
     },
     {
         "alphabet": "c",
@@ -1145,6 +1161,11 @@
     },
     {
         "alphabet": "l",
+        "name": "London Interdisciplinary School",
+        "order_by_name": "london interdisciplinary school"
+    },
+    {
+        "alphabet": "l",
         "name": "London Metropolitan University",
         "order_by_name": "london metropolitan university"
     },
@@ -1342,6 +1363,11 @@
         "alphabet": "n",
         "name": "New College Swindon",
         "order_by_name": "new college swindon"
+    },
+    {
+        "alphabet": "n",
+        "name": "Newbold College",
+        "order_by_name": "newbold"
     },
     {
         "alphabet": "n",
@@ -1560,6 +1586,11 @@
     },
     {
         "alphabet": "r",
+        "name": "Raindance",
+        "order_by_name": "raindance"
+    },
+    {
+        "alphabet": "r",
         "name": "Ravensbourne University London",
         "order_by_name": "ravensbourne university london"
     },
@@ -1577,6 +1608,11 @@
         "alphabet": "r",
         "name": "Regents Theological College",
         "order_by_name": "regents theological college"
+    },
+    {
+        "alphabet": "r",
+        "name": "Regent's University",
+        "order_by_name": "regents university"
     },
     {
         "alphabet": "r",
