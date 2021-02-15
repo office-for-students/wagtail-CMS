@@ -30,7 +30,7 @@ services:
       MONGODB_USERNAME:             "${MONGODB_USERNAME}"
       MONGODB_PASSWORD:             "${MONGODB_PASSWORD}"
       # A number of courses to load into the fixtures folder for mongodb and tests
-      TEST_COURSES:                 "U18-LAWLLB,AB35,PBSFND-D_FT,U09FUECW,UMDAHFY"
+      TEST_COURSES:                 "GN12,U18-LAWLLB,AB35,PBSFND-D_FT,U09FUECW,UMDAHFY"
       # Azure storage (institutions.xx.json, subjects.json, versions,json, etc...)
       STORAGE_ACCOUNT_NAME:         "${STORAGE_ACCOUNT_NAME}"
       STORAGEKEY:                   "${STORAGEKEY}"

@@ -51,6 +51,26 @@ $ cp docker-compose.yml.example docker-compose.yml
 
 # Getting Started
 
+## First time here?
+
+The docker image for this branch is created differently from the other branches (`python manage.py runserver 0.0.0.0` is now run inside the image, not as a command on the image in the `docker-compose.yml`). This means that the old containers and images for other branches need to be deleted so the new one can be built.
+
+```
+$ docker ps --all
+CONTAINER ID     IMAGE               COMMAND                  CREATED        STATUS                  PORTS       NAMES
+<container_id>   wagtail-cms_web     "python manage.py ru…"   3 days ago     Exited (0) 3 days ago               wagtail-cms_web_1
+............     .....               "...................."   ..........     .............           27017/tcp   .................
+$ docker rmi -f <container_id>
+$ docker images
+REPOSITORY                            TAG          IMAGE ID       CREATED         SIZE
+wagtail-cms_web                       latest       <image_id>     11 days ago     1.07GB
+...............                       latest       ............   3 weeks ago     ......
+$ docker rm <image_id>
+...
+```
+
+This now means when you run `docker-compose up` docker will rebuild the image using the new commands in the `Dcokerfile`, and then build a new container from that
+
 ## Configure
 
 ### Defaults

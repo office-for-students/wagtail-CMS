@@ -1,5 +1,1271 @@
 [
     {
+        "_id": "ddb324a4-5f1d-11eb-8377-0242ac100405",
+        "created_at": "2021-01-25T14:59:04.312779",
+        "updated_at": "2021-01-25T14:59:04.312788",
+        "version": 48,
+        "institution_id": "10007783",
+        "course_id": "GN12",
+        "course_mode": 1,
+        "course_level": 3,
+        "partition_key": "48",
+        "course": {
+            "course_level": 3,
+            "country": {
+                "code": "XH",
+                "name": "Scotland"
+            },
+            "distance_learning": {
+                "code": 0,
+                "label": "Course is available other than by distance learning"
+            },
+            "foundation_year_availability": {
+                "code": 0,
+                "label": "Not available"
+            },
+            "honours_award_provision": 1,
+            "institution": {
+                "pub_ukprn_name": "University of Aberdeen",
+                "pub_ukprn_welsh_name": "University of Aberdeen",
+                "pub_ukprn": "10007783",
+                "ukprn_name": "University of Aberdeen",
+                "ukprn_welsh_name": "University of Aberdeen",
+                "ukprn": "10007783"
+            },
+            "kis_course_id": "GN12",
+            "go_salary_inst": [
+                {
+                    "unavail_reason": "1",
+                    "pop": "15",
+                    "resp_rate": "60",
+                    "agg": "22",
+                    "subject": {
+                        "code": "CAH17-01",
+                        "english_label": "Business and management",
+                        "welsh_label": "Busnes a rheolaeth"
+                    },
+                    "lq": "21000",
+                    "med": "24000",
+                    "uq": "28000",
+                    "inst_prov_pc_uk": "100",
+                    "inst_prov_pc_e": "25",
+                    "inst_prov_pc_ni": "0",
+                    "inst_prov_pc_s": "75",
+                    "inst_prov_pc_w": "0",
+                    "unavail_text_english": "No data available\n\nThis is because the course has not yet run or has not been running long enough for this data to be available.",
+                    "unavail_text_welsh": "Nid oes data ar gael\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael.",
+                    "earnings_agg_unavail_message": {
+                        "english": "The data displayed is from students on this and other courses in Business and management.\n\nThis includes data from this and related courses at the same university or college. There was not enough data to publish more specific information. This does not reflect on the quality of the course.",
+                        "welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Busnes a rheolaeth eraill.\n\nMae hwn yn cynnwys data o'r cwrs hwn a chyrsiau cysylltiedig yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                    }
+                }
+            ],
+            "leo3_inst": [
+                {
+                    "unavail_reason": "0",
+                    "pop": "15",
+                    "agg": "23",
+                    "subject": {
+                        "code": "CAH09-01-01",
+                        "english_label": "Mathematics",
+                        "welsh_label": "Mathemateg"
+                    },
+                    "lq": "22500",
+                    "med": "24500",
+                    "uq": "27500",
+                    "inst_prov_pc_uk": "100",
+                    "inst_prov_pc_e": "15",
+                    "inst_prov_pc_ni": "0",
+                    "inst_prov_pc_s": "85",
+                    "inst_prov_pc_w": "0",
+                    "inst_prov_pc_nw": "5",
+                    "inst_prov_pc_ne": "5",
+                    "inst_prov_pc_em": "0",
+                    "inst_prov_pc_wm": "0",
+                    "inst_prov_pc_ee": "0",
+                    "inst_prov_pc_se": "0",
+                    "inst_prov_pc_sw": "0",
+                    "inst_prov_pc_yh": "5",
+                    "inst_prov_pc_lo": "0",
+                    "inst_prov_pc_ed": "10",
+                    "inst_prov_pc_gl": "0",
+                    "inst_prov_pc_cf": "0",
+                    "unavail_text_english": "No data available\n\nThis may be because the course size is too small. This does not reflect on the quality of the course.",
+                    "unavail_text_welsh": "Nid oes data ar gael\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs.",
+                    "earnings_agg_unavail_message": {}
+                },
+                {
+                    "unavail_reason": "0",
+                    "pop": "115",
+                    "agg": "22",
+                    "subject": {
+                        "code": "CAH17-01",
+                        "english_label": "Business and management",
+                        "welsh_label": "Busnes a rheolaeth"
+                    },
+                    "lq": "22000",
+                    "med": "26500",
+                    "uq": "32500",
+                    "inst_prov_pc_uk": "100",
+                    "inst_prov_pc_e": "23",
+                    "inst_prov_pc_ni": "3",
+                    "inst_prov_pc_s": "74",
+                    "inst_prov_pc_w": "0",
+                    "inst_prov_pc_nw": "2",
+                    "inst_prov_pc_ne": "2",
+                    "inst_prov_pc_em": "0",
+                    "inst_prov_pc_wm": "3",
+                    "inst_prov_pc_ee": "1",
+                    "inst_prov_pc_se": "3",
+                    "inst_prov_pc_sw": "1",
+                    "inst_prov_pc_yh": "2",
+                    "inst_prov_pc_lo": "10",
+                    "inst_prov_pc_ed": "12",
+                    "inst_prov_pc_gl": "0",
+                    "inst_prov_pc_cf": "0",
+                    "unavail_text_english": "No data available\n\nThis may be because the course size is too small. This does not reflect on the quality of the course.",
+                    "unavail_text_welsh": "Nid oes data ar gael\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs.",
+                    "earnings_agg_unavail_message": {
+                        "english": "The data displayed is from students on this and other courses in Business and management.\n\nThis includes data from this and related courses at the same university or college. There was not enough data to publish more specific information. This does not reflect on the quality of the course.",
+                        "welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Busnes a rheolaeth eraill.\n\nMae hwn yn cynnwys data o'r cwrs hwn a chyrsiau cysylltiedig yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                    }
+                }
+            ],
+            "leo5_inst": [
+                {
+                    "unavail_reason": "0",
+                    "pop": "15",
+                    "agg": "23",
+                    "subject": {
+                        "code": "CAH09-01-01",
+                        "english_label": "Mathematics",
+                        "welsh_label": "Mathemateg"
+                    },
+                    "lq": "22500",
+                    "med": "26500",
+                    "uq": "38500",
+                    "inst_prov_pc_uk": "100",
+                    "inst_prov_pc_e": "35",
+                    "inst_prov_pc_ni": "0",
+                    "inst_prov_pc_s": "65",
+                    "inst_prov_pc_w": "0",
+                    "inst_prov_pc_nw": "5",
+                    "inst_prov_pc_ne": "10",
+                    "inst_prov_pc_em": "0",
+                    "inst_prov_pc_wm": "0",
+                    "inst_prov_pc_ee": "10",
+                    "inst_prov_pc_se": "0",
+                    "inst_prov_pc_sw": "0",
+                    "inst_prov_pc_yh": "5",
+                    "inst_prov_pc_lo": "0",
+                    "inst_prov_pc_ed": "15",
+                    "inst_prov_pc_gl": "5",
+                    "inst_prov_pc_cf": "0",
+                    "unavail_text_english": "No data available\n\nThis may be because the course size is too small. This does not reflect on the quality of the course.",
+                    "unavail_text_welsh": "Nid oes data ar gael\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                },
+                {
+                    "unavail_reason": "0",
+                    "pop": "115",
+                    "agg": "22",
+                    "subject": {
+                        "code": "CAH17-01",
+                        "english_label": "Business and management",
+                        "welsh_label": "Busnes a rheolaeth"
+                    },
+                    "lq": "25500",
+                    "med": "30500",
+                    "uq": "39000",
+                    "inst_prov_pc_uk": "100",
+                    "inst_prov_pc_e": "26",
+                    "inst_prov_pc_ni": "3",
+                    "inst_prov_pc_s": "71",
+                    "inst_prov_pc_w": "0",
+                    "inst_prov_pc_nw": "3",
+                    "inst_prov_pc_ne": "3",
+                    "inst_prov_pc_em": "0",
+                    "inst_prov_pc_wm": "2",
+                    "inst_prov_pc_ee": "1",
+                    "inst_prov_pc_se": "4",
+                    "inst_prov_pc_sw": "1",
+                    "inst_prov_pc_yh": "1",
+                    "inst_prov_pc_lo": "11",
+                    "inst_prov_pc_ed": "13",
+                    "inst_prov_pc_gl": "2",
+                    "inst_prov_pc_cf": "0",
+                    "unavail_text_english": "No data available\n\nThis may be because the course size is too small. This does not reflect on the quality of the course.",
+                    "unavail_text_welsh": "Nid oes data ar gael\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+                }
+            ],
+            "go_voice_work": [
+                {
+                    "subject": {
+                        "code": "CAH17-01",
+                        "english_label": "Business and management",
+                        "welsh_label": "Busnes a rheolaeth"
+                    },
+                    "go_work_pop": "20",
+                    "go_work_resp_rate": "60",
+                    "go_work_agg": "22",
+                    "go_work_mean": "90",
+                    "go_work_skills": "70",
+                    "go_work_on_track": "85",
+                    "unavailable": {
+                        "code": 1,
+                        "reason_english": "The data displayed is from students on this and other courses in Business and management over the previous two years.\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                        "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Busnes a rheolaeth eraill yn ystod y ddwy flynedd flaenorol.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                    }
+                }
+            ],
+            "length_of_course": {
+                "code": 4,
+                "label": "4 stages"
+            },
+            "links": {
+                "assessment_method": {
+                    "english": "http://www.abdn.ac.uk/prospectus/ugrad/study/GN12/"
+                },
+                "course_cost": {
+                    "english": "http://www.abdn.ac.uk/prospectus/ugrad/study/GN12/"
+                },
+                "course_page": {
+                    "english": "http://www.abdn.ac.uk/prospectus/ugrad/study/GN12/"
+                },
+                "employment_details": {
+                    "english": "http://www.abdn.ac.uk/prospectus/ugrad/study/GN12/"
+                },
+                "financial_support_details": {
+                    "english": "http://www.abdn.ac.uk/undergraduate/finance.php"
+                },
+                "learning_and_teaching_methods": {
+                    "english": "http://www.abdn.ac.uk/prospectus/ugrad/study/GN12/"
+                },
+                "student_union": {
+                    "english": "http://www.ausa.org.uk/"
+                }
+            },
+            "locations": [
+                {
+                    "links": {
+                        "accommodation": {
+                            "english": "http://www.abdn.ac.uk/accommodation"
+                        },
+                        "student_union": {
+                            "english": "http://www.ausa.org.uk/"
+                        }
+                    },
+                    "latitude": "57.165019",
+                    "longitude": "-2.099122",
+                    "name": {
+                        "english": "Old Aberdeen"
+                    },
+                    "ucas_course_id": "1764"
+                }
+            ],
+            "mode": {
+                "code": 1,
+                "label": "Full-time"
+            },
+            "qualification": {
+                "code": "181",
+                "label": "MA",
+                "level": "first-degree"
+            },
+            "sandwich_year": {
+                "code": 0,
+                "label": "Not available"
+            },
+            "subjects": [
+                {
+                    "code": "CAH09-01-01",
+                    "level": 3,
+                    "english": "Mathematics",
+                    "welsh": "Mathemateg"
+                },
+                {
+                    "code": "CAH17-01-04",
+                    "level": 3,
+                    "english": "Management studies",
+                    "welsh": "Astudiaethau rheoli"
+                }
+            ],
+            "title": {
+                "english": "Business Management and Mathematics"
+            },
+            "ucas_programme_id": "A33-D99",
+            "year_abroad": {
+                "code": 1,
+                "label": "Optional"
+            },
+            "statistics": {
+                "continuation": [
+                    {
+                        "aggregation_level": 13,
+                        "continuing_with_provider": 90,
+                        "dormant": 5,
+                        "gained": 0,
+                        "left": 5,
+                        "lower": 0,
+                        "number_of_students": 30,
+                        "subject": {
+                            "code": "CAH09-01-01",
+                            "english_label": "Mathematics",
+                            "welsh_label": "Mathemateg"
+                        },
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "The data displayed is from students on this and other courses in Mathematics.\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Mathemateg eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                        }
+                    },
+                    {
+                        "aggregation_level": 13,
+                        "continuing_with_provider": 89,
+                        "dormant": 2,
+                        "gained": 0,
+                        "left": 4,
+                        "lower": 5,
+                        "number_of_students": 90,
+                        "subject": {
+                            "code": "CAH17-01-04",
+                            "english_label": "Management studies",
+                            "welsh_label": "Astudiaethau rheoli"
+                        },
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "The data displayed is from students on this and other courses in Management studies.\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Astudiaethau rheoli eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                        }
+                    }
+                ],
+                "employment": [
+                    {
+                        "aggregation_level": 23,
+                        "doing_further_study": 15,
+                        "in_work": 80,
+                        "in_work_and_study": 0,
+                        "in_work_or_study": 95,
+                        "number_of_students": 10,
+                        "other": 0,
+                        "response_not_used": 10,
+                        "response_rate": 65,
+                        "sample_not_used": 15,
+                        "subject": {
+                            "code": "CAH17-01-04",
+                            "english_label": "Management studies",
+                            "welsh_label": "Astudiaethau rheoli"
+                        },
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "The data displayed is from students on this and other courses in Management studies over the previous two years.\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Astudiaethau rheoli eraill yn ystod y ddwy flynedd flaenorol.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                        },
+                        "unemp_not_work_since_grad": 0,
+                        "unemp_prev_emp_since_grad": 5
+                    }
+                ],
+                "entry": [
+                    {
+                        "a-level": 85,
+                        "access": 0,
+                        "aggregation_level": 13,
+                        "another_higher_education_qualifications": 10,
+                        "baccalaureate": 5,
+                        "degree": 0,
+                        "foundation": 0,
+                        "none": 0,
+                        "number_of_students": 45,
+                        "other_qualifications": 0,
+                        "subject": {
+                            "code": "CAH09-01-01",
+                            "english_label": "Mathematics",
+                            "welsh_label": "Mathemateg"
+                        },
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "The data displayed is from students on this and other courses in Mathematics.\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Mathemateg eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                        }
+                    },
+                    {
+                        "a-level": 87,
+                        "access": 0,
+                        "aggregation_level": 13,
+                        "another_higher_education_qualifications": 4,
+                        "baccalaureate": 8,
+                        "degree": 0,
+                        "foundation": 1,
+                        "none": 0,
+                        "number_of_students": 85,
+                        "other_qualifications": 0,
+                        "subject": {
+                            "code": "CAH17-01-04",
+                            "english_label": "Management studies",
+                            "welsh_label": "Astudiaethau rheoli"
+                        },
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "The data displayed is from students on this and other courses in Management studies.\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Astudiaethau rheoli eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                        }
+                    }
+                ],
+                "job_type": [
+                    {
+                        "aggregation_level": 22,
+                        "non_professional_or_managerial_jobs": 15,
+                        "number_of_students": 25,
+                        "professional_or_managerial_jobs": 80,
+                        "response_not_used": 25,
+                        "response_rate": 60,
+                        "sample_not_used": 45,
+                        "subject": {
+                            "code": "CAH17-01",
+                            "english_label": "Business and management",
+                            "welsh_label": "Busnes a rheolaeth"
+                        },
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "The data displayed is from students on this and other courses in Business and management over the previous two years.\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Busnes a rheolaeth eraill yn ystod y ddwy flynedd flaenorol.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                        },
+                        "unknown_professions": 10
+                    }
+                ],
+                "job_list": [
+                    {
+                        "aggregation_level": 22,
+                        "list": [
+                            {
+                                "job": "Administrative occupations",
+                                "percentage_of_students": "15",
+                                "order": "1",
+                                "hs": "0"
+                            },
+                            {
+                                "job": "Business and public service associate professionals",
+                                "percentage_of_students": "35",
+                                "order": "1",
+                                "hs": "1"
+                            },
+                            {
+                                "job": "Business, research and administrative professionals",
+                                "percentage_of_students": "30",
+                                "order": "2",
+                                "hs": "1"
+                            },
+                            {
+                                "job": "Managers, directors and senior officials",
+                                "percentage_of_students": "5",
+                                "order": "3",
+                                "hs": "1"
+                            },
+                            {
+                                "job": "Information technology and telecommunications professionals",
+                                "percentage_of_students": "<5",
+                                "order": "4",
+                                "hs": "1"
+                            },
+                            {
+                                "job": "Welfare and housing associate professionals",
+                                "percentage_of_students": "<5",
+                                "order": "5",
+                                "hs": "1"
+                            }
+                        ],
+                        "number_of_students": 25,
+                        "response_rate": 60,
+                        "subject": {
+                            "code": "CAH17-01",
+                            "english_label": "Business and management",
+                            "welsh_label": "Busnes a rheolaeth"
+                        },
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "The data displayed is from students on this and other courses in Business and management over the previous two years.\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Busnes a rheolaeth eraill yn ystod y ddwy flynedd flaenorol.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                        }
+                    }
+                ],
+                "nss": [
+                    {
+                        "aggregation_level": 13,
+                        "number_of_students": 20,
+                        "question_1": {
+                            "description": "Staff are good at explaining things",
+                            "agree_or_strongly_agree": 89
+                        },
+                        "question_2": {
+                            "description": "Staff have made the subject interesting",
+                            "agree_or_strongly_agree": 68
+                        },
+                        "question_3": {
+                            "description": "The course is intellectually stimulating",
+                            "agree_or_strongly_agree": 96
+                        },
+                        "question_4": {
+                            "description": "My course has challenged me to achieve my best work",
+                            "agree_or_strongly_agree": 68
+                        },
+                        "question_5": {
+                            "description": "My course has provided me with opportunities to explore ideas or concepts in depth",
+                            "agree_or_strongly_agree": 71
+                        },
+                        "question_6": {
+                            "description": "My course has provided me with opportunities to bring information and ideas together from different topics",
+                            "agree_or_strongly_agree": 82
+                        },
+                        "question_7": {
+                            "description": "My course has provided me with opportunities to apply what I have learnt",
+                            "agree_or_strongly_agree": 61
+                        },
+                        "question_8": {
+                            "description": "The criteria used in marking have been clear in advance",
+                            "agree_or_strongly_agree": 96
+                        },
+                        "question_9": {
+                            "description": "Marking and assessment has been fair",
+                            "agree_or_strongly_agree": 100
+                        },
+                        "question_10": {
+                            "description": "Feedback on my work has been timely",
+                            "agree_or_strongly_agree": 89
+                        },
+                        "question_11": {
+                            "description": "I have received helpful comments on my work",
+                            "agree_or_strongly_agree": 79
+                        },
+                        "question_12": {
+                            "description": "I have been able to contact staff when I needed to",
+                            "agree_or_strongly_agree": 100
+                        },
+                        "question_13": {
+                            "description": "I have received sufficient advice and guidance in relation to my course",
+                            "agree_or_strongly_agree": 75
+                        },
+                        "question_14": {
+                            "description": "Good advice was available when I needed to make study choices on my course",
+                            "agree_or_strongly_agree": 68
+                        },
+                        "question_15": {
+                            "description": "The course is well organised and running smoothly",
+                            "agree_or_strongly_agree": 86
+                        },
+                        "question_16": {
+                            "description": "The timetable works efficiently for me",
+                            "agree_or_strongly_agree": 79
+                        },
+                        "question_17": {
+                            "description": "Any changes in the course or teaching have been communicated effectively",
+                            "agree_or_strongly_agree": 93
+                        },
+                        "question_18": {
+                            "description": "The IT resources and facilities provided have supported my learning well",
+                            "agree_or_strongly_agree": 83
+                        },
+                        "question_19": {
+                            "description": "The library resources (e.g. books, online services and learning spaces) have supported my learning well",
+                            "agree_or_strongly_agree": 89
+                        },
+                        "question_20": {
+                            "description": "I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to",
+                            "agree_or_strongly_agree": 100
+                        },
+                        "question_21": {
+                            "description": "I feel part of a community of staff and students",
+                            "agree_or_strongly_agree": 71
+                        },
+                        "question_22": {
+                            "description": "I have had the right opportunities to work with other students as part of my course",
+                            "agree_or_strongly_agree": 79
+                        },
+                        "question_23": {
+                            "description": "I have had the right opportunities to provide feedback on my course",
+                            "agree_or_strongly_agree": 100
+                        },
+                        "question_24": {
+                            "description": "Staff value students' views and opinions about the course",
+                            "agree_or_strongly_agree": 82
+                        },
+                        "question_25": {
+                            "description": "It is clear how students' feedback on the course has been acted on",
+                            "agree_or_strongly_agree": 46
+                        },
+                        "question_26": {
+                            "description": "The students' union (association or guild) effectively represents students' academic interests",
+                            "agree_or_strongly_agree": 57
+                        },
+                        "question_27": {
+                            "description": "Overall, I am satisfied with the quality of the course",
+                            "agree_or_strongly_agree": 79
+                        },
+                        "response_rate": 86,
+                        "subject": {
+                            "code": "CAH09-01-01",
+                            "english_label": "Mathematics",
+                            "welsh_label": "Mathemateg"
+                        },
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "The data displayed is from students on this and other courses in Mathematics.\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Mathemateg eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                        }
+                    },
+                    {
+                        "aggregation_level": 13,
+                        "number_of_students": 75,
+                        "question_1": {
+                            "description": "Staff are good at explaining things",
+                            "agree_or_strongly_agree": 85
+                        },
+                        "question_2": {
+                            "description": "Staff have made the subject interesting",
+                            "agree_or_strongly_agree": 69
+                        },
+                        "question_3": {
+                            "description": "The course is intellectually stimulating",
+                            "agree_or_strongly_agree": 74
+                        },
+                        "question_4": {
+                            "description": "My course has challenged me to achieve my best work",
+                            "agree_or_strongly_agree": 72
+                        },
+                        "question_5": {
+                            "description": "My course has provided me with opportunities to explore ideas or concepts in depth",
+                            "agree_or_strongly_agree": 81
+                        },
+                        "question_6": {
+                            "description": "My course has provided me with opportunities to bring information and ideas together from different topics",
+                            "agree_or_strongly_agree": 76
+                        },
+                        "question_7": {
+                            "description": "My course has provided me with opportunities to apply what I have learnt",
+                            "agree_or_strongly_agree": 69
+                        },
+                        "question_8": {
+                            "description": "The criteria used in marking have been clear in advance",
+                            "agree_or_strongly_agree": 72
+                        },
+                        "question_9": {
+                            "description": "Marking and assessment has been fair",
+                            "agree_or_strongly_agree": 73
+                        },
+                        "question_10": {
+                            "description": "Feedback on my work has been timely",
+                            "agree_or_strongly_agree": 51
+                        },
+                        "question_11": {
+                            "description": "I have received helpful comments on my work",
+                            "agree_or_strongly_agree": 58
+                        },
+                        "question_12": {
+                            "description": "I have been able to contact staff when I needed to",
+                            "agree_or_strongly_agree": 84
+                        },
+                        "question_13": {
+                            "description": "I have received sufficient advice and guidance in relation to my course",
+                            "agree_or_strongly_agree": 78
+                        },
+                        "question_14": {
+                            "description": "Good advice was available when I needed to make study choices on my course",
+                            "agree_or_strongly_agree": 63
+                        },
+                        "question_15": {
+                            "description": "The course is well organised and running smoothly",
+                            "agree_or_strongly_agree": 66
+                        },
+                        "question_16": {
+                            "description": "The timetable works efficiently for me",
+                            "agree_or_strongly_agree": 87
+                        },
+                        "question_17": {
+                            "description": "Any changes in the course or teaching have been communicated effectively",
+                            "agree_or_strongly_agree": 87
+                        },
+                        "question_18": {
+                            "description": "The IT resources and facilities provided have supported my learning well",
+                            "agree_or_strongly_agree": 87
+                        },
+                        "question_19": {
+                            "description": "The library resources (e.g. books, online services and learning spaces) have supported my learning well",
+                            "agree_or_strongly_agree": 92
+                        },
+                        "question_20": {
+                            "description": "I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to",
+                            "agree_or_strongly_agree": 93
+                        },
+                        "question_21": {
+                            "description": "I feel part of a community of staff and students",
+                            "agree_or_strongly_agree": 69
+                        },
+                        "question_22": {
+                            "description": "I have had the right opportunities to work with other students as part of my course",
+                            "agree_or_strongly_agree": 88
+                        },
+                        "question_23": {
+                            "description": "I have had the right opportunities to provide feedback on my course",
+                            "agree_or_strongly_agree": 83
+                        },
+                        "question_24": {
+                            "description": "Staff value students' views and opinions about the course",
+                            "agree_or_strongly_agree": 71
+                        },
+                        "question_25": {
+                            "description": "It is clear how students' feedback on the course has been acted on",
+                            "agree_or_strongly_agree": 55
+                        },
+                        "question_26": {
+                            "description": "The students' union (association or guild) effectively represents students' academic interests",
+                            "agree_or_strongly_agree": 48
+                        },
+                        "question_27": {
+                            "description": "Overall, I am satisfied with the quality of the course",
+                            "agree_or_strongly_agree": 80
+                        },
+                        "response_rate": 55,
+                        "subject": {
+                            "code": "CAH17-01-04",
+                            "english_label": "Management studies",
+                            "welsh_label": "Astudiaethau rheoli"
+                        },
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "The data displayed is from students on this and other courses in Management studies.\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Astudiaethau rheoli eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                        }
+                    }
+                ],
+                "tariff": [
+                    {
+                        "aggregation_level": 13,
+                        "number_of_students": 25,
+                        "subject": {
+                            "code": "CAH09-01-01",
+                            "english_label": "Mathematics",
+                            "welsh_label": "Mathemateg"
+                        },
+                        "tariffs": [
+                            {
+                                "code": "T001",
+                                "description": "less than 48 tariff points",
+                                "entrants": 5
+                            },
+                            {
+                                "code": "T048",
+                                "description": "between 48 and 63 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T064",
+                                "description": "between 64 and 79 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T080",
+                                "description": "between 80 and 95 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T096",
+                                "description": "between 96 and 111 tariff points",
+                                "entrants": 5
+                            },
+                            {
+                                "code": "T112",
+                                "description": "between 112 and 127 tariff points",
+                                "entrants": 15
+                            },
+                            {
+                                "code": "T128",
+                                "description": "between 128 and 143 tariff points",
+                                "entrants": 10
+                            },
+                            {
+                                "code": "T144",
+                                "description": "between 144 and 159 tariff points",
+                                "entrants": 10
+                            },
+                            {
+                                "code": "T160",
+                                "description": "between 160 and 175 tariff points",
+                                "entrants": 10
+                            },
+                            {
+                                "code": "T176",
+                                "description": "between 176 and 191 tariff points",
+                                "entrants": 15
+                            },
+                            {
+                                "code": "T192",
+                                "description": "between 192 and 207 tariff points",
+                                "entrants": 20
+                            },
+                            {
+                                "code": "T208",
+                                "description": "between 208 and 223 tariff points",
+                                "entrants": 5
+                            },
+                            {
+                                "code": "T224",
+                                "description": "between 224 and 239 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T240",
+                                "description": "240 or more tariff points",
+                                "entrants": 10
+                            }
+                        ],
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "The data displayed is from students on this and other courses in Mathematics.\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Mathemateg eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                        }
+                    },
+                    {
+                        "aggregation_level": 13,
+                        "number_of_students": 55,
+                        "subject": {
+                            "code": "CAH17-01-04",
+                            "english_label": "Management studies",
+                            "welsh_label": "Astudiaethau rheoli"
+                        },
+                        "tariffs": [
+                            {
+                                "code": "T001",
+                                "description": "less than 48 tariff points",
+                                "entrants": 4
+                            },
+                            {
+                                "code": "T048",
+                                "description": "between 48 and 63 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T064",
+                                "description": "between 64 and 79 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T080",
+                                "description": "between 80 and 95 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T096",
+                                "description": "between 96 and 111 tariff points",
+                                "entrants": 0
+                            },
+                            {
+                                "code": "T112",
+                                "description": "between 112 and 127 tariff points",
+                                "entrants": 7
+                            },
+                            {
+                                "code": "T128",
+                                "description": "between 128 and 143 tariff points",
+                                "entrants": 4
+                            },
+                            {
+                                "code": "T144",
+                                "description": "between 144 and 159 tariff points",
+                                "entrants": 4
+                            },
+                            {
+                                "code": "T160",
+                                "description": "between 160 and 175 tariff points",
+                                "entrants": 16
+                            },
+                            {
+                                "code": "T176",
+                                "description": "between 176 and 191 tariff points",
+                                "entrants": 16
+                            },
+                            {
+                                "code": "T192",
+                                "description": "between 192 and 207 tariff points",
+                                "entrants": 26
+                            },
+                            {
+                                "code": "T208",
+                                "description": "between 208 and 223 tariff points",
+                                "entrants": 9
+                            },
+                            {
+                                "code": "T224",
+                                "description": "between 224 and 239 tariff points",
+                                "entrants": 10
+                            },
+                            {
+                                "code": "T240",
+                                "description": "240 or more tariff points",
+                                "entrants": 6
+                            }
+                        ],
+                        "unavailable": {
+                            "code": 1,
+                            "reason_english": "The data displayed is from students on this and other courses in Management studies.\n\nThere was not enough data to publish information specifically for this course. This is because the course has not yet run or has not been running long enough for this data to be available.",
+                            "reason_welsh": "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Astudiaethau rheoli eraill.\n\nNid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i\u2019r data hwn fod ar gael."
+                        }
+                    }
+                ]
+            },
+            "go_salary_sector": [
+                {
+                    "subject": {
+                        "code": "CAH17-01",
+                        "english_label": "Business and management",
+                        "welsh_label": "Busnes a rheolaeth"
+                    },
+                    "mode": "1",
+                    "level": "3",
+                    "lq_uk": "20000",
+                    "med_uk": "23000",
+                    "uq_uk": "27500",
+                    "pop_uk": "11005",
+                    "lq_e": "20000",
+                    "med_e": "23000",
+                    "uq_e": "28000",
+                    "pop_e": "9270",
+                    "lq_s": "19000",
+                    "med_s": "21000",
+                    "uq_s": "25000",
+                    "pop_s": "915",
+                    "lq_w": "18000",
+                    "med_w": "20000",
+                    "uq_w": "23000",
+                    "pop_w": "295",
+                    "lq_ni": "18000",
+                    "med_ni": "20000",
+                    "uq_ni": "22000",
+                    "pop_ni": "310",
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
+                    "unavail_text_region_not_nation_english": "No data available\n\nSorry, this data is not available at this level.",
+                    "unavail_text_region_not_nation_welsh": "Nid oes data ar gael\n\nNid yw'r data hwn ar gael ar gyfer y lefel hon."
+                }
+            ],
+            "leo3_salary_sector": [
+                {
+                    "subject": {
+                        "code": "CAH09-01-01",
+                        "english_label": "Mathematics",
+                        "welsh_label": "Mathemateg"
+                    },
+                    "mode": "1",
+                    "level": "3",
+                    "lq_uk": "22000",
+                    "med_uk": "27500",
+                    "uq_uk": "36000",
+                    "pop_uk": "7200",
+                    "lq_e": "22500",
+                    "med_e": "27500",
+                    "uq_e": "36000",
+                    "pop_e": "6525",
+                    "lq_s": "20000",
+                    "med_s": "26000",
+                    "uq_s": "33500",
+                    "pop_s": "385",
+                    "lq_w": "17000",
+                    "med_w": "23000",
+                    "uq_w": "28000",
+                    "pop_w": "245",
+                    "lq_nw": "20000",
+                    "med_nw": "24000",
+                    "uq_nw": "30500",
+                    "pop_nw": "680",
+                    "lq_ne": "19000",
+                    "med_ne": "24000",
+                    "uq_ne": "31000",
+                    "pop_ne": "195",
+                    "lq_em": "20000",
+                    "med_em": "25000",
+                    "uq_em": "31500",
+                    "pop_em": "445",
+                    "lq_wm": "20000",
+                    "med_wm": "25000",
+                    "uq_wm": "32000",
+                    "pop_wm": "520",
+                    "lq_ee": "22500",
+                    "med_ee": "29500",
+                    "uq_ee": "38500",
+                    "pop_ee": "660",
+                    "lq_se": "23000",
+                    "med_se": "29000",
+                    "uq_se": "37000",
+                    "pop_se": "1165",
+                    "lq_sw": "21500",
+                    "med_sw": "25500",
+                    "uq_sw": "33000",
+                    "pop_sw": "510",
+                    "lq_yh": "20000",
+                    "med_yh": "24500",
+                    "uq_yh": "30500",
+                    "pop_yh": "445",
+                    "lq_lo": "25000",
+                    "med_lo": "32000",
+                    "uq_lo": "42000",
+                    "pop_lo": "1905",
+                    "lq_ed": "22500",
+                    "med_ed": "30500",
+                    "uq_ed": "37500",
+                    "pop_ed": "115",
+                    "lq_gl": "18000",
+                    "med_gl": "25000",
+                    "uq_gl": "32000",
+                    "pop_gl": "50",
+                    "lq_cf": "20000",
+                    "med_cf": "26000",
+                    "uq_cf": "32000",
+                    "pop_cf": "45",
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
+                    "unavail_text_region_is_ni_english": "No data available\n\nSorry, this data is not available for Northern Ireland.",
+                    "unavail_text_region_is_ni_welsh": "Nid oes data ar gael\n\nYn anffodus, nid yw\u2019r data hwn ar gael ar gyfer Gogledd Iwerddon."
+                },
+                {
+                    "subject": {
+                        "code": "CAH17-01",
+                        "english_label": "Business and management",
+                        "welsh_label": "Busnes a rheolaeth"
+                    },
+                    "mode": "1",
+                    "level": "3",
+                    "lq_uk": "17000",
+                    "med_uk": "22500",
+                    "uq_uk": "29000",
+                    "pop_uk": "49560",
+                    "lq_e": "17500",
+                    "med_e": "22500",
+                    "uq_e": "29500",
+                    "pop_e": "43365",
+                    "lq_s": "17000",
+                    "med_s": "22000",
+                    "uq_s": "27500",
+                    "pop_s": "4270",
+                    "lq_w": "15500",
+                    "med_w": "19000",
+                    "uq_w": "24500",
+                    "pop_w": "1560",
+                    "lq_nw": "15500",
+                    "med_nw": "20000",
+                    "uq_nw": "25500",
+                    "pop_nw": "5655",
+                    "lq_ne": "15500",
+                    "med_ne": "19500",
+                    "uq_ne": "25000",
+                    "pop_ne": "1335",
+                    "lq_em": "17000",
+                    "med_em": "21000",
+                    "uq_em": "27500",
+                    "pop_em": "3170",
+                    "lq_wm": "16500",
+                    "med_wm": "21000",
+                    "uq_wm": "26500",
+                    "pop_wm": "4135",
+                    "lq_ee": "19000",
+                    "med_ee": "24000",
+                    "uq_ee": "31000",
+                    "pop_ee": "4175",
+                    "lq_se": "19500",
+                    "med_se": "25000",
+                    "uq_se": "32000",
+                    "pop_se": "6680",
+                    "lq_sw": "17500",
+                    "med_sw": "22500",
+                    "uq_sw": "28500",
+                    "pop_sw": "2835",
+                    "lq_yh": "16500",
+                    "med_yh": "21000",
+                    "uq_yh": "26000",
+                    "pop_yh": "3725",
+                    "lq_lo": "19000",
+                    "med_lo": "25000",
+                    "uq_lo": "32000",
+                    "pop_lo": "11660",
+                    "lq_ed": "17500",
+                    "med_ed": "21500",
+                    "uq_ed": "28000",
+                    "pop_ed": "615",
+                    "lq_gl": "16500",
+                    "med_gl": "21000",
+                    "uq_gl": "26500",
+                    "pop_gl": "555",
+                    "lq_cf": "16000",
+                    "med_cf": "19500",
+                    "uq_cf": "24500",
+                    "pop_cf": "310",
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
+                    "unavail_text_region_is_ni_english": "No data available\n\nSorry, this data is not available for Northern Ireland.",
+                    "unavail_text_region_is_ni_welsh": "Nid oes data ar gael\n\nYn anffodus, nid yw\u2019r data hwn ar gael ar gyfer Gogledd Iwerddon."
+                }
+            ],
+            "leo5_salary_sector": [
+                {
+                    "subject": {
+                        "code": "CAH09-01-01",
+                        "english_label": "Mathematics",
+                        "welsh_label": "Mathemateg"
+                    },
+                    "mode": "1",
+                    "level": "3",
+                    "lq_uk": "26500",
+                    "med_uk": "34500",
+                    "uq_uk": "47000",
+                    "pop_uk": "7365",
+                    "lq_e": "26500",
+                    "med_e": "35000",
+                    "uq_e": "48000",
+                    "pop_e": "6660",
+                    "lq_s": "24500",
+                    "med_s": "31500",
+                    "uq_s": "41000",
+                    "pop_s": "400",
+                    "lq_w": "22500",
+                    "med_w": "28500",
+                    "uq_w": "36000",
+                    "pop_w": "265",
+                    "lq_nw": "23000",
+                    "med_nw": "29000",
+                    "uq_nw": "37000",
+                    "pop_nw": "675",
+                    "lq_ne": "22000",
+                    "med_ne": "29500",
+                    "uq_ne": "36000",
+                    "pop_ne": "165",
+                    "lq_em": "22500",
+                    "med_em": "29500",
+                    "uq_em": "37500",
+                    "pop_em": "410",
+                    "lq_wm": "25000",
+                    "med_wm": "31500",
+                    "uq_wm": "39000",
+                    "pop_wm": "505",
+                    "lq_ee": "27500",
+                    "med_ee": "36500",
+                    "uq_ee": "50000",
+                    "pop_ee": "625",
+                    "lq_se": "28000",
+                    "med_se": "35500",
+                    "uq_se": "47000",
+                    "pop_se": "1105",
+                    "lq_sw": "25000",
+                    "med_sw": "31000",
+                    "uq_sw": "41000",
+                    "pop_sw": "515",
+                    "lq_yh": "23500",
+                    "med_yh": "30000",
+                    "uq_yh": "38500",
+                    "pop_yh": "470",
+                    "lq_lo": "32000",
+                    "med_lo": "43500",
+                    "uq_lo": "60000",
+                    "pop_lo": "2195",
+                    "lq_ed": "27000",
+                    "med_ed": "36000",
+                    "uq_ed": "48000",
+                    "pop_ed": "125",
+                    "lq_gl": "25000",
+                    "med_gl": "34500",
+                    "uq_gl": "38500",
+                    "pop_gl": "60",
+                    "lq_cf": "23500",
+                    "med_cf": "29000",
+                    "uq_cf": "37000",
+                    "pop_cf": "50",
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
+                    "unavail_text_region_is_ni_english": "No data available\n\nSorry, this data is not available for Northern Ireland.",
+                    "unavail_text_region_is_ni_welsh": "Nid oes data ar gael\n\nYn anffodus, nid yw\u2019r data hwn ar gael ar gyfer Gogledd Iwerddon."
+                },
+                {
+                    "subject": {
+                        "code": "CAH17-01",
+                        "english_label": "Business and management",
+                        "welsh_label": "Busnes a rheolaeth"
+                    },
+                    "mode": "1",
+                    "level": "3",
+                    "lq_uk": "20500",
+                    "med_uk": "27500",
+                    "uq_uk": "37000",
+                    "pop_uk": "48715",
+                    "lq_e": "21000",
+                    "med_e": "28000",
+                    "uq_e": "38000",
+                    "pop_e": "42765",
+                    "lq_s": "19500",
+                    "med_s": "26000",
+                    "uq_s": "33000",
+                    "pop_s": "4110",
+                    "lq_w": "18000",
+                    "med_w": "23000",
+                    "uq_w": "30500",
+                    "pop_w": "1500",
+                    "lq_nw": "18500",
+                    "med_nw": "24500",
+                    "uq_nw": "32500",
+                    "pop_nw": "5540",
+                    "lq_ne": "18500",
+                    "med_ne": "23500",
+                    "uq_ne": "30500",
+                    "pop_ne": "1285",
+                    "lq_em": "19500",
+                    "med_em": "25500",
+                    "uq_em": "34500",
+                    "pop_em": "3025",
+                    "lq_wm": "19500",
+                    "med_wm": "25500",
+                    "uq_wm": "34500",
+                    "pop_wm": "3905",
+                    "lq_ee": "22500",
+                    "med_ee": "29500",
+                    "uq_ee": "40500",
+                    "pop_ee": "4040",
+                    "lq_se": "23000",
+                    "med_se": "30500",
+                    "uq_se": "41000",
+                    "pop_se": "6320",
+                    "lq_sw": "20000",
+                    "med_sw": "26500",
+                    "uq_sw": "35000",
+                    "pop_sw": "2735",
+                    "lq_yh": "19000",
+                    "med_yh": "25000",
+                    "uq_yh": "32500",
+                    "pop_yh": "3580",
+                    "lq_lo": "23500",
+                    "med_lo": "32000",
+                    "uq_lo": "44000",
+                    "pop_lo": "12335",
+                    "lq_ed": "20500",
+                    "med_ed": "26500",
+                    "uq_ed": "35500",
+                    "pop_ed": "645",
+                    "lq_gl": "19500",
+                    "med_gl": "25000",
+                    "uq_gl": "32500",
+                    "pop_gl": "615",
+                    "lq_cf": "19000",
+                    "med_cf": "24500",
+                    "uq_cf": "31500",
+                    "pop_cf": "305",
+                    "unavail_text_region_not_exists_english": "No data available",
+                    "unavail_text_region_not_exists_welsh": "Nid oes data ar gael",
+                    "unavail_text_region_is_ni_english": "No data available\n\nSorry, this data is not available for Northern Ireland.",
+                    "unavail_text_region_is_ni_welsh": "Nid oes data ar gael\n\nYn anffodus, nid yw\u2019r data hwn ar gael ar gyfer Gogledd Iwerddon."
+                }
+            ]
+        },
+        "id": "9d1df7aa-d143-4dfc-acc3-a71349744fa6",
+        "_rid": "isg9ALQtK5sQoQUAAAAAAA==",
+        "_self": "dbs/isg9AA==/colls/isg9ALQtK5s=/docs/isg9ALQtK5sQoQUAAAAAAA==/",
+        "_etag": "\"a801c169-0000-1100-0000-600edcbd0000\"",
+        "_attachments": "attachments/",
+        "_ts": 1611586749
+    },
+    {
         "_id": "ef8786f8-5f21-11eb-8377-0242ac100405",
         "created_at": "2021-01-25T15:28:12.212846",
         "updated_at": "2021-01-25T15:28:12.212855",
