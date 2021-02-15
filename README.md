@@ -71,6 +71,8 @@ $ docker rm <image_id>
 
 This now means when you run `docker-compose up` docker will rebuild the image using the new commands in the `Dcokerfile`, and then build a new container from that
 
+> *REMEMBER:* To run the commands above when switching back to the other branches on the project
+
 ## Configure
 
 ### Defaults
