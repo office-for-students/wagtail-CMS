@@ -1,6 +1,6 @@
 import json
 import requests
-from math import ceil
+from pathlib import Path
 
 from django.core.management.base import CommandError
 import azure.cosmos.cosmos_client as cosmos_client
@@ -15,32 +15,54 @@ class Command(CosmosCommand):
     help = 'Copies Courses from Cosmos DB to the local MongoDB ' + \
         '(and into the courses/fixtures folder)'
 
+    fixture_file           = 'courses/fixtures/courses.json'
+    full_fixture_filename  = None
+
+
     def __init__(self, *args, **kwargs):
 
         super().__init__(*args, **kwargs)
 
-        self.fixture_file = \
-            settings.BASE_DIR + '/courses/fixtures/courses.json'
+        self.full_fixture_filename = str(
+            Path(settings.BASE_DIR + '/' + self.fixture_file)
+        )
 
-        self.mongo = Mongo('courses')
-        self.mongo.collection_delete()
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--update',
+            action='store_true',
+            help='Gets the latest data from CosmosDB and stores it in ' + \
+                self.fixture_file,
+        )
 
 
     def handle(self, *args, **options):
-        version = self.get_latest_version_number()
 
-        courses_list = self.get_courses(version)
+        if options['update']:
+            version = self.get_latest_version_number()
+            courses_list = self.get_courses(version)
 
-        try:
-            self.mongo.insert(courses_list)
-            self.success('Inserted courses into MongoDB')
-        except Exception as e:
-            raise CommandError('Failed to insert courses into MongoDB (' + \
-                str(e) + ')')
+            with open(self.fixture_file, 'w') as outfile:
+                json.dump(courses_list, outfile, indent=4)
+                self.success('Saved file to ' + self.fixture_file)
 
-        with open(self.fixture_file, 'w') as outfile:
-            json.dump(courses_list, outfile, indent=4)
-            self.success('Saved file to ' + self.fixture_file)
+        else:
+            with open(self.fixture_file, 'r') as file:
+                self.info('Getting courses from ' + self.fixture_file)
+                contents = json.load(file)
+                self.success('Retrived courses from ' + self.fixture_file)
+
+                self.mongo = Mongo('courses')
+                self.mongo.collection_delete()
+
+                try:
+                    self.mongo.insert(contents)
+                    self.success('Inserted courses into MongoDB')
+                except Exception as e:
+                    message = e.message if hasattr(e, 'message') else \
+                        'Failed to insert institutions into MongoDB'
+                    raise CommandError(message)
 
 
     def get_courses(self, version):

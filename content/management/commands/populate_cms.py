@@ -45,12 +45,10 @@ class Command(SimpleCommand):
                 'be pointing to the local PostgresSQL in docker')
 
         self.message_count = 1
+        self.json_file = str(Path(self.json_file))
 
 
     def handle(self, *args, **options):
-
-        base_path = Path(settings.BASE_DIR + '/')
-        full_file_name = base_path / self.json_file
 
         management.call_command(
             'flush_db',

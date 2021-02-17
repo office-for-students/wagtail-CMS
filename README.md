@@ -104,6 +104,8 @@ MONGODB_HOST:         "mongo"
 MONGODB_USERNAME:     "mongodb"
 MONGODB_PASSWORD:     "mongodb"
 ...
+SEARCHAPIHOST:        "..."
+...
 # docker-compose up
 ```
 
@@ -189,6 +191,24 @@ $ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
 
 > `populate_courses` will get the courses in `settings.TEST_COURSES` from CosmosDB and put them in MongoDB **(as well as populate the file found in `courses/fixtures/courses.json`)**
 
+### Updating local course data
+
+If the course data has changed remotely and you want to update it locally then do the following:
+
+```
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses --update
+...
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
+...
+```
+
+Don't forget to commit the changes to the course data to the repo
+
+```
+$ git add courses/fixtures/courses.json
+$ git commit -m '...'
+```
+
 ### Adding More courses
 
 ```
@@ -200,6 +220,8 @@ $ vim docker-compose.yml.example
 ...
 TEST_COURSES = 'U18-LAWLLB,AB35,...'
 ...
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses --update
+...
 $ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
 ...
 $ git add docker-compose.yml.example
@@ -207,6 +229,25 @@ $ git add courses/fixtures/courses.json
 $ git commit -m '...'
 ...
 ```
+
+### Updating local institutions data
+
+If the course data has changed remotely and you want to update it locally then do the following:
+
+```
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions --update
+...
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions
+...
+```
+
+Don't forget to commit the changes to the institutions data to the repo
+
+```
+$ git add institutions/fixtures/institutions.json
+$ git commit -m '...'
+```
+
 
 ### Deleting Data
 

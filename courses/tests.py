@@ -6,6 +6,8 @@ from courses.models import SatisfactionBlock, EntryInformationBlock, AfterOneYea
     AccreditationBlock, Course
 from errors.models import ApiError
 
+from courses.test_files.test_courses import CoursesTestCase
+
 
 class CoursesModelsTests(UniSimpleTestCase):
 

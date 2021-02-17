@@ -38,6 +38,8 @@ services:
       AZURE_ACCOUNT_NAME:           "${AZURE_ACCOUNT_NAME}"
       AZURE_ACCOUNT_KEY:            "${AZURE_ACCOUNT_KEY}"
       AZURE_CONTAINER:              "${AZURE_CONTAINER}"
+      # Search functions in Azure
+      SEARCHAPIHOST:                "{$SEARCHAPIHOST}"
       # Send Grid
       SENDGRID_API_KEY:             "${SENDGRID_API_KEY}"
       SECRET_KEY:                   "${SECRET_KEY}"

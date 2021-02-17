@@ -1,6 +1,6 @@
 import json
 import requests
-from math import ceil
+from pathlib import Path
 
 from django.core.management.base import CommandError
 import azure.cosmos.cosmos_client as cosmos_client
@@ -15,44 +15,56 @@ class Command(CosmosCommand):
     help = 'Copies Institutions from Cosmos DB to the local MongoDB ' + \
         '(and into the institutions/fixtures folder)'
 
-    fixture_file      = None
-    request_options   = {"enableCrossPartitionQuery": True}
-    base_url          = 'dbs/discoveruni/colls/'
-    mongo             = None
-    version           = None
-    num_institutions  = None
+    request_options        = {"enableCrossPartitionQuery": True}
+    base_url               = 'dbs/discoveruni/colls/'
+    fixture_file           = 'institutions/fixtures/institutions.json'
+    full_fixture_filename  = None
+    mongo                  = None
+    version                = None
+    num_institutions       = None
 
     def __init__(self, *args, **kwargs):
 
         super().__init__(*args, **kwargs)
 
-        self.fixture_file = \
-            settings.BASE_DIR + '/institutions/fixtures/institutions.json'
+        self.full_fixture_filename = str(
+            Path(settings.BASE_DIR + '/' + self.fixture_file)
+        )
 
-        self.mongo = Mongo('institutions')
-        self.mongo.collection_delete()
-
-    #def add_arguments(self, parser):
-    #    parser.add_argument('poll_ids', nargs='+', type=int)
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--update',
+            action='store_true',
+            help='Gets the latest data from CosmosDB and stores it in ' + \
+                self.fixture_file,
+        )
 
     def handle(self, *args, **options):
-        #for poll_id in options['poll_ids']:
-        #database = self.client.get_database_client('d735a2c7-1a90-4b37-9b85-687226b2e1f9')
-        #print('Database with id \'{0}\' was found, it\'s link is {1}'.format(id, database.database_link))
-        version = self.get_latest_version_number()
-        num_institutions = self.get_number_of_institutions(version)
 
-        institutions_list = self.get_institutions(version)
+        if options['update']:
+            version = self.get_latest_version_number()
+            num_institutions = self.get_number_of_institutions(version)
+            institutions_list = self.get_institutions(version)
 
-        try:
-            self.mongo.insert(institutions_list)
-            self.success('Inserted institutions into MongoDB')
-        except Exception:
-            raise CommandError('Failed to insert institutions into MongoDB')
+            with open(self.fixture_file, 'w') as outfile:
+                json.dump(institutions_list, outfile, indent=4)
+                self.success('Saved file to ' + self.fixture_file)
+                outfile.close()
 
-        with open(self.fixture_file, 'w') as outfile:
-            json.dump(institutions_list, outfile, indent=4)
-            self.success('Saved file to ' + self.fixture_file)
+        else:
+            with open(self.fixture_file, 'r') as file:
+                contents = json.load(file)
+
+                self.mongo = Mongo('institutions')
+                self.mongo.collection_delete()
+
+                try:
+                    self.mongo.insert(contents)
+                    self.success('Inserted institutions into MongoDB')
+                except Exception as e:
+                    message = e.message if hasattr(e, 'message') else \
+                        'Failed to insert institutions into MongoDB'
+                    raise CommandError(message)
 
 
     def save_institutions_to_mongo_db(self, institutions_json):

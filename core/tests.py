@@ -1,3 +1,9 @@
+from django.core import management
+from django.test import TestCase, Client
+from django.contrib.contenttypes.models import ContentType
+
+from wagtail.core.models import Page
+
 from CMS.enums import enums
 from CMS.test.factories import PageFactory
 from CMS.test.utils import UniSimpleTestCase
@@ -90,3 +96,18 @@ class CoreModelsTests(UniSimpleTestCase):
         self.assertIsTrue('cy' in created_page.url)
 
         self.assertEquals(created_page.get_language(), enums.languages.WELSH)
+
+
+class BaseTestCase(TestCase):
+
+    client = None
+
+    def __init__(self, *args, **kwargs):
+
+        super().__init__(*args, **kwargs)
+        self.client = Client()
+
+    def setup(self):
+        Page.objects.all().delete()
+        ContentType.objects.all().delete()
+        management.call_command('loaddata', 'CMS/fixtures/postgres.json')
