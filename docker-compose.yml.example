@@ -54,6 +54,9 @@ services:
       - .:/code
     ports:
       - "8000:8000"
+    depends_on:
+      - db
+      - mongo
 
   db:
     image: postgres:9.6
@@ -62,6 +65,8 @@ services:
       POSTGRES_USER: docker
       POSTGRES_PASSWORD: docker
       POSTGRES_DB: django
+    volumes:
+      - './data/postgres:/var/lib/postgresql/data'
 
   mongo:
     image: mongo
@@ -69,3 +74,5 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: "mongodb"
       MONGO_INITDB_ROOT_PASSWORD: "mongodb"
+    volumes:
+      - './data/mongodb:/data/db'

@@ -69,9 +69,17 @@ $ docker rm <image_id>
 ...
 ```
 
-This now means when you run `docker-compose up` docker will rebuild the image using the new commands in the `Dcokerfile`, and then build a new container from that
+This now means when you run `docker-compose up` docker will rebuild the image using the new commands in the `Dockerfile`, and then build a new container from that
 
 > *REMEMBER:* To run the commands above when switching back to the other branches on the project
+
+## Tests
+
+```
+$ docker container exec -it wagtail-cms_web_1 python manage.py test
+```
+
+> *IMPORTANT:* When fixing an issue write a test first to prove it's broken. Then, and only then, fix the problem
 
 ## Configure
 
@@ -125,23 +133,31 @@ $ docker-compose up
 
 > This command will download all the required images (Python, PostgreSQL, CosmosDB) and start them for you all preconfigured
 
-## Database (PostgreSQL)
+# Database (PostgreSQL)
 
-### Creating
-
-```
-$ docker container exec -it wagtail-cms_web_1 python manage.py migrate
-```
-
-### Populating
+## Populating
 
 ```
-$ docker container exec -it wagtail-cms_web_1 python manage.py populate_cms --db_host ... --db_name ... --db_user ... --db_password ... --db_port ...
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_cms
+```
+
+### Updating Postgres Data *(CMS/fixtures/postgres.json)*
+
+```
+$ docker container exec -it wagtail-cms_web_1 python manage.py update_cms_fixture --db_host ... --db_name ... --db_user ... --db_password ... --db_port ...
 ```
 
 > Use the creds for the remote PostgreSQL in the above statement
 
-Want to delete the command from your command history so people can see passwords on your machine?
+Want to make sure the command above is not in your command history for people to find on your machine? Then do the following.
+
+```
+$ set +o history
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_cms ...
+$ set -o history
+```
+
+Already in your command history but want to delete it?
 
 ```
 $ history | tail -n 5
@@ -153,7 +169,16 @@ $ history | tail -n 5
 $ history -d 103
 ```
 
-## MongoDB
+### Deleting Data
+
+Stop docker before running the following command
+
+```
+$ sudo rm -rf data/postgres
+$ docker-compose up
+```
+
+# MongoDB
 
 ### Populating
 
@@ -183,9 +208,18 @@ $ git commit -m '...'
 ...
 ```
 
-## Viewable URLs
+### Deleting Data
 
-You can view the following URLs in the browser
+Stop docker before running the following command
+
+```
+$ sudo rm -rf data/mongodb
+$ docker-compose up
+```
+
+# URLs
+
+The following URLs work in development
 
 ```
 $ wget http://localhost:8000/institution-details/<any_institution>/
