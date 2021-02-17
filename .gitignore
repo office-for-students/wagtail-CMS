@@ -41,6 +41,6 @@ data/postgres/*
 *.vscode
 .vscode/
 .env
+data/
 docker-compose.yml
 docker-compose.*.yml
-postgres.json
