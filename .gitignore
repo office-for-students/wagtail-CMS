@@ -30,12 +30,6 @@ coverage.xml
 # Media files
 static/
 
-# Local data files for development
-data/mongodb/*
-data/postgres/*
-!data/mongodb/.gitkeep
-!data/postgres/.gitkeep
-
 # Custom
 .DS_Store
 *.vscode
