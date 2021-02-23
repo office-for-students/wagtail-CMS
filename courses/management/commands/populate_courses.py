@@ -48,6 +48,9 @@ class Command(CosmosCommand):
                 self.success('Saved file to ' + self.fixture_file)
 
         else:
+            self.check_settings_exist()
+            self.set_cosmos_client()
+
             with open(self.fixture_file, 'r') as file:
                 self.info('Getting courses from ' + self.fixture_file)
                 contents = json.load(file)

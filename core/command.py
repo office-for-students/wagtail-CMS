@@ -38,14 +38,16 @@ class CosmosCommand(SimpleCommand):
     mongo             = None
     version           = None
 
-    def __init__(self, *args, **kwargs):
 
-        super().__init__(*args, **kwargs)
+    def check_settings_exist():
 
         if not settings.AZURECOSMOSDBURI or \
            not settings.AZURECOSMOSDBKEY:
             raise CommandError('AZURECOSMOSDBURI and AZURECOSMOSDBKEY in ' + \
                 'docker-compose.yml need to point to the CosmosDB')
+
+
+    def set_cosmos_client():
 
         self.cosmos_client = cosmos_client.CosmosClient(
             settings.AZURECOSMOSDBURI,

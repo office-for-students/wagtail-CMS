@@ -83,6 +83,20 @@ $ docker container exec -it wagtail-cms_web_1 python manage.py test
 
 ## Configure
 
+### Secret Key
+
+```
+$ python
+>>> import random, string
+>>> ''.join([random.SystemRandom().choice(string.ascii_letters + string.digits + string.punctuation) for _ in range(50)])
+'<secret_key>'
+>>> exit()
+$ vim docker-compose.yml
+...
+SECRET_KEY: "<secret_key>"
+...
+```
+
 ### Defaults
 
 ```
@@ -107,20 +121,6 @@ MONGODB_PASSWORD:     "mongodb"
 SEARCHAPIHOST:        "..."
 ...
 # docker-compose up
-```
-
-### Secret Key
-
-```
-$ python
->>> import random, string
->>> ''.join([random.SystemRandom().choice(string.ascii_letters + string.digits + string.punctuation) for _ in range(50)])
-'<secret_key>'
->>> exit()
-$ vim docker-compose.yml
-...
-SECRET_KEY: "<secret_key>"
-...
 ```
 
 ## Docker

@@ -52,6 +52,9 @@ class Command(CosmosCommand):
                 outfile.close()
 
         else:
+            self.check_settings_exist()
+            self.set_cosmos_client()
+            
             with open(self.fixture_file, 'r') as file:
                 contents = json.load(file)
 
