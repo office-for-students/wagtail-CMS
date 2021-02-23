@@ -97,6 +97,8 @@ SECRET_KEY: "<secret_key>"
 ...
 ```
 
+> Sometimes `docker-compose up` will fail after setting the `SECRET_KEY`, simply re-generate the key and re-run `docker-compose up`
+
 ### Defaults
 
 ```

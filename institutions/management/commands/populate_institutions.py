@@ -42,6 +42,9 @@ class Command(CosmosCommand):
     def handle(self, *args, **options):
 
         if options['update']:
+            self.check_settings_exist()
+            self.set_cosmos_client()
+
             version = self.get_latest_version_number()
             num_institutions = self.get_number_of_institutions(version)
             institutions_list = self.get_institutions(version)
@@ -52,9 +55,6 @@ class Command(CosmosCommand):
                 outfile.close()
 
         else:
-            self.check_settings_exist()
-            self.set_cosmos_client()
-            
             with open(self.fixture_file, 'r') as file:
                 contents = json.load(file)
 
