@@ -39,7 +39,7 @@ class CosmosCommand(SimpleCommand):
     version           = None
 
 
-    def check_settings_exist():
+    def check_settings_exist(self):
 
         if not settings.AZURECOSMOSDBURI or \
            not settings.AZURECOSMOSDBKEY:
@@ -47,7 +47,7 @@ class CosmosCommand(SimpleCommand):
                 'docker-compose.yml need to point to the CosmosDB')
 
 
-    def set_cosmos_client():
+    def set_cosmos_client(self):
 
         self.cosmos_client = cosmos_client.CosmosClient(
             settings.AZURECOSMOSDBURI,

@@ -88,7 +88,7 @@ $ docker container exec -it wagtail-cms_web_1 python manage.py test
 ```
 $ python
 >>> import random, string
->>> ''.join([random.SystemRandom().choice(string.ascii_letters + string.digits + string.punctuation) for _ in range(50)])
+>>> "".join([random.SystemRandom().choice(string.ascii_letters + string.digits + string.punctuation) for _ in range(50)])
 '<secret_key>'
 >>> exit()
 $ vim docker-compose.yml
@@ -108,11 +108,7 @@ DBNAME:               "django"
 DBUSER:               "docker"
 DBPASSWORD:           "docker"
 ...
-DATASETAPIHOST:       "..."
-DATASETAPIKEY:        "..."
-...
-AZURECOSMOSDBURI:     "..."
-AZURECOSMOSDBKEY:     "..."
+
 ...
 MONGODB_HOST:         "mongo"
 MONGODB_USERNAME:     "mongodb"
@@ -122,6 +118,8 @@ SEARCHAPIHOST:        "..."
 ...
 # docker-compose up
 ```
+
+> If you are going to be importing new data to the fixtures remember to set DATASETAPIHOST, DATASETAPIKEY, AZURECOSMOSDBURI and AZURECOSMOSDBKEY
 
 ## Docker
 
