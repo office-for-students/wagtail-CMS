@@ -86,18 +86,17 @@ $ docker container exec -it wagtail-cms_web_1 python manage.py test
 ### Secret Key
 
 ```
-$ python
->>> import random, string
->>> "".join([random.SystemRandom().choice(string.ascii_letters + string.digits + string.punctuation) for _ in range(50)])
-'<secret_key>'
+$ python3
+>>> import secrets
+>>> chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+>>> ''.join(secrets.choice(chars) for i in range(50))
+<secret_key>
 >>> exit()
 $ vim docker-compose.yml
 ...
 SECRET_KEY: "<secret_key>"
 ...
 ```
-
-> Sometimes `docker-compose up` will fail after setting the `SECRET_KEY`, simply re-generate the key and re-run `docker-compose up`
 
 ### Defaults
 
