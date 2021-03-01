@@ -79,6 +79,8 @@ This now means when you run `docker-compose up` docker will rebuild the image us
 $ docker container exec -it wagtail-cms_web_1 python manage.py test
 ```
 
+> The tests will output `An error occurred whilst Bad configuration` and `An error occurred on the API during the...` when they run. This is the expected behaviour. Unfortunately some of the exceptions in the project are caught and returned as objects. Though during this process they print to the log. When testing the log is the terminal.
+
 > *IMPORTANT:* When fixing an issue write a test first to prove it's broken. Then, and only then, fix the problem
 
 ## Configure
@@ -117,8 +119,12 @@ MONGODB_PASSWORD:     "mongodb"
 ...
 SEARCHAPIHOST:        "..."
 ...
-# docker-compose up
+$ docker-compose up
 ```
+
+> If docker fails to start up because the `SECRET_KEY`, re-create the secret key and try again. Sometime it fails because of the use of irregular or un-escapped characters.
+
+> If this is the first time working on the code base remember to populate [PostgreSQL](#database) and [MongoDB](#mongodb)
 
 > If you are going to be importing new data to the fixtures remember to set DATASETAPIHOST, DATASETAPIKEY, AZURECOSMOSDBURI and AZURECOSMOSDBKEY
 
@@ -134,13 +140,17 @@ $ docker-compose up
 
 > This command will download all the required images (Python, PostgreSQL, CosmosDB) and start them for you all preconfigured
 
-# Database (PostgreSQL)
+# Database
 
 ## Populating
 
 ```
 $ docker container exec -it wagtail-cms_web_1 python manage.py populate_cms
 ```
+
+This will run the command `content/management/commands/populate_cms.py`. This command loads the data found at `CMS/fixtures/postgres.json` into the database.
+
+You might ask why you can't use Django and to run `... python manage.py loaddata CMS/fixtures/postgres.json`. The foreign key constraints in Wagtail prevent this. When trying to run `loaddata` Django will fail in deleting (truncating) the old data. The `populate_cms` command gets round this by calling a custom flush command (`content/management/commands/flush_db.py`) that exposes the `--allow-cascade` flag on Django's own flush command. In additional it deletes a number of default posts and content types that are created when migrations are run and prevent the `postgres.json` file from being inserted into the database.
 
 ### Updating Postgres Data *(CMS/fixtures/postgres.json)*
 
@@ -174,6 +184,8 @@ $ history -d 103
 
 Stop docker before running the following command
 
+> You can stop docker by pressing `Ctrl+C` in the window in which it is running.
+
 ```
 $ sudo rm -rf data/postgres
 $ docker-compose up
@@ -200,6 +212,8 @@ $ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses 
 $ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
 ...
 ```
+
+> The first command goes to the CosmosDB *(as defined by `AZURECOSMOSDBURI` in `docker-compose.yml`)* and copies the courses specified in `TEST_COURSES` in `docker-comnpose.yml` to to `courses/fixtures/courses.json`. The second command gets the contents of `courses/fixtures/courses.json` and puts them in the local MongoDB instance.
 
 Don't forget to commit the changes to the course data to the repo
 
@@ -251,6 +265,8 @@ $ git commit -m '...'
 ### Deleting Data
 
 Stop docker before running the following command
+
+> You can stop docker by pressing `Ctrl+C` in the window in which it is running.
 
 ```
 $ sudo rm -rf data/mongodb
