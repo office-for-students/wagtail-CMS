@@ -23,8 +23,6 @@ READ_ONLY = os.environ.get('READ_ONLY', False)
 
 ROOT_DOMAIN = os.environ.get('ROOT_DOMAIN', 'http://localhost:3000')
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
 
 # Application definition
 
