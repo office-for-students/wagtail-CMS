@@ -46,7 +46,6 @@ steps:
 
 - script: |
     pushd '$(projectRoot)'
-    echo $SECRET_KEY
     python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
   condition: succeededOrFailed()
   displayName: 'Run tests'
@@ -59,7 +58,6 @@ steps:
 
 - script: |
     pushd '$(projectRoot)'
-    echo $SECRET_KEY
     docker build -f ./deploy_files/Dockerfile -t $(dockerId).azurecr.io/$(imageName) .
     docker login -u $(dockerId) -p $pswd $(dockerId).azurecr.io
     docker push $(dockerId).azurecr.io/$(imageName)
