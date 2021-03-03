@@ -13,6 +13,10 @@ variables:
   dockerId: devdiscoverunicontainerregistry
 
 steps:
+- script: |
+    cp docker-compose.yml.example docker-compose.yml
+  displayName: 'Create docker-compose.yml'
+
 - task: UsePythonVersion@0
   inputs:
     versionSpec: 3.7
@@ -42,7 +46,7 @@ steps:
 
 - script: |
     pushd '$(projectRoot)'
-    export $SECRET_KEY=testing
+    echo $SECRET_KEY
     python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
   condition: succeededOrFailed()
   displayName: 'Run tests'
@@ -56,7 +60,6 @@ steps:
 - script: |
     pushd '$(projectRoot)'
     echo $SECRET_KEY
-    cp docker-compose.yml.example docker-compose.yml
     docker build -f ./deploy_files/Dockerfile -t $(dockerId).azurecr.io/$(imageName) .
     docker login -u $(dockerId) -p $pswd $(dockerId).azurecr.io
     docker push $(dockerId).azurecr.io/$(imageName)
