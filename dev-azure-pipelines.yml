@@ -42,6 +42,7 @@ steps:
 
 - script: |
     pushd '$(projectRoot)'
+    cp docker-compose.yml.example docker-compose.yml
     export SECRET_KEY='dave'
     python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
   condition: succeededOrFailed()
