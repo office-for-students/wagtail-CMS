@@ -42,6 +42,7 @@ steps:
 
 - script: |
     pushd '$(projectRoot)'
+    cp docker-compose.yml.example docker-compose.yml
     python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
   condition: succeededOrFailed()
   displayName: 'Run tests'
