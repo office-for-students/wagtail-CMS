@@ -1,10 +1,9 @@
 import requests
 
+from django.conf import settings
+
 from CMS.test.mocks import NewCourseFormatMocks, CourseMocks
 from CMS.test.joint_course_mocks import NewJointCourseFormatMocks
-
-from core.mongo import Mongo
-from django.conf import settings
 
 
 def load_course_data(institution_id, course_id, mode):
@@ -12,14 +11,6 @@ def load_course_data(institution_id, course_id, mode):
         if course_id == "GN12":
             return NewJointCourseFormatMocks.get_successful_course_load_response()
         return NewCourseFormatMocks.get_successful_course_load_response()
-    if settings.MONGODB_HOST:
-        mongo = Mongo('courses')
-        return mongo.get_one(
-            {
-                'institution_id': str(institution_id),
-                'course_id': str(course_id),
-            }
-        )
     else:
         headers = {
             'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
