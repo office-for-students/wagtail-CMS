@@ -1,5 +1,3 @@
-import requests
-
 from django.db.models.fields import TextField
 
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
@@ -704,14 +702,11 @@ class Course:
 
         response = request_handler.load_course_data(institution_id, course_id, cls.get_mode_code(mode))
 
-        if type(response) == requests.models.Response:
-            if response.ok:
-                course = cls(response.json(), language)
-            else:
-                error = ApiError(response.status_code, 'Loading details for course %s %s at %s' %
-                                 (course_id, mode, institution_id))
-        elif type(response) == dict:
-            course = cls(response, language)
+        if response.ok:
+            course = cls(response.json(), language)
+        else:
+            error = ApiError(response.status_code, 'Loading details for course %s %s at %s' %
+                             (course_id, mode, institution_id))
 
         return course, error
 

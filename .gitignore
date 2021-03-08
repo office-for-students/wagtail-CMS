@@ -9,6 +9,10 @@ local_settings.py
 local.py
 db.sqlite3
 
+# Env stuff
+.env
+env.sh
+
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -28,13 +32,18 @@ coverage.xml
 **/*.css*
 
 # Media files
-static/
+media/*
 
-# Custom
+static/**
+
+# Dev env stuff
+*.dev.*
 .DS_Store
+*.localhost.yml
+
+# Migration files
+*_auto_20*
+.vscode/launch.json
+docker-compose.pre-prod.yml
+
 *.vscode
-.vscode/
-.env
-data/
-docker-compose.yml
-docker-compose.*.yml

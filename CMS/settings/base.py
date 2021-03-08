@@ -23,6 +23,9 @@ READ_ONLY = os.environ.get('READ_ONLY', False)
 
 ROOT_DOMAIN = os.environ.get('ROOT_DOMAIN', 'http://localhost:3000')
 
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
+
 
 # Application definition
 
@@ -205,15 +208,9 @@ BASE_URL = os.environ.get('ROOT_DOMAIN', 'http://example.com')
 
 SEARCHAPIHOST = os.environ.get('SEARCHAPIHOST')
 DATASETAPIHOST = os.environ.get('DATASETAPIHOST')
-DATASETAPIKEY = os.environ.get('DATASETAPIKEY')
-AZURECOSMOSDBURI = os.environ.get('AZURECOSMOSDBURI')
-AZURECOSMOSDBKEY = os.environ.get('AZURECOSMOSDBKEY')
-MONGODB_HOST = os.environ.get('MONGODB_HOST')
-MONGODB_USERNAME = os.environ.get('MONGODB_USERNAME')
-MONGODB_PASSWORD = os.environ.get('MONGODB_PASSWORD')
-TEST_COURSES = os.environ.get('TEST_COURSES')
 WIDGETAPIKEY = os.environ.get('WIDGETAPIKEY')
 WIDGETAPIHOST = os.environ.get('WIDGETAPIHOST')
+DATASETAPIKEY = os.environ.get('DATASETAPIKEY')
 FEEDBACK_API_HOST = os.environ.get('FEEDBACK_API_HOST')
 JSONFILES_STORAGE_CONTAINER = os.environ.get('JSONFILES_STORAGE_CONTAINER', "")
 STORAGEKEY = os.environ.get('STORAGEKEY')

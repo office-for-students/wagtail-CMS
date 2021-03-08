@@ -3,6 +3,9 @@ import sys
 from .base import *
 
 DEBUG = False
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
+TEST_ENV = 'pre-prod'
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
