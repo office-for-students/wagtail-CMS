@@ -5,6 +5,8 @@ from .base import *
 DEBUG = False
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
+TEST_ENV = 'prod'
+
 ALLOWED_HOSTS = [
     'devdiscoveruni.com',
     'www.devdiscoveruni.com',
