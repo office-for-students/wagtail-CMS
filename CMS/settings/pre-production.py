@@ -5,6 +5,8 @@ from .base import *
 DEBUG = False
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
+TEST_ENV = 'pre-prod'
+
 ALLOWED_HOSTS = [
     'dev-discover-uni2.azurewebsites.net',
     'devdiscoveruni.com',
