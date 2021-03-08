@@ -13,10 +13,6 @@ variables:
   dockerId: devdiscoverunicontainerregistry
 
 steps:
-- script: |
-    cp docker-compose.yml.example docker-compose.yml
-  displayName: 'Create docker-compose.yml'
-
 - task: UsePythonVersion@0
   inputs:
     versionSpec: 3.7
