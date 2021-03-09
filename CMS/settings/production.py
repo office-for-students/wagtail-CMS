@@ -3,9 +3,8 @@ import sys
 from .base import *
 
 DEBUG = False
-SECRET_KEY = os.environ.get('SECRET_KEY')
 
-TEST_ENV = 'prod'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = [
     'devdiscoveruni.com',

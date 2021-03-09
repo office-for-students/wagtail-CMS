@@ -1,7 +1,6 @@
-from django.contrib import admin
 from django.conf import settings
-from django.http import HttpResponse
 from django.conf.urls import include, url
+from django.contrib import admin
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
@@ -19,8 +18,6 @@ from courses import views as course_views
 # apw added.
 from courses.views import regional_earnings
 
-from django.conf import settings
-
 
 urlpatterns = [
     url(r'^search/$', search_views.search, name='search'),
@@ -37,8 +34,6 @@ urlpatterns = [
     url(r'^course-details/', include(courses_urls)),
     url(r'^institution-details/', include(institution_urls)),
     url(r'^course-comparison/', course_views.compare_courses),
-
-    url(r'^env-check/$', lambda request: HttpResponse(settings.TEST_ENV, content_type="text/plain")),
 
     url(r'(?P<language>[\w\-]+?)/', include(welsh_urls)),
 

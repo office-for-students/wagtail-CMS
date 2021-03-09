@@ -1,3 +1,6 @@
+import json
+import requests
+
 from django.db.models.fields import TextField
 
 from wagtail.admin.edit_handlers import FieldPanel
@@ -32,9 +35,9 @@ class InstitutionList:
 
         if version != InstitutionList.version:
             InstitutionList.options = load_institution_json()
-            
+
         return InstitutionList.options
-    
+
     version = get_latest_version()
     options = load_institution_json()
 
@@ -197,14 +200,20 @@ class Institution:
     @classmethod
     def find(cls, institution_id, language):
         institution = None
-        error = None
+        error       = None
 
         response = request_handler.load_institution_data(institution_id)
 
-        if response.ok:
-            institution = cls(response.json(), language)
-        else:
-            error = ApiError(response.status_code, 'Loading details for institution %s ' % institution_id)
+        if type(response) == requests.models.Response:
+            if response.ok:
+                institution = cls(response.json(), language)
+            else:
+                error = ApiError(response.status_code, 'Loading institution %s failed' % institution_id)
+        elif type(response) == dict:
+            institution = cls(response, language)
+
+        if institution == None:
+            error = ApiError(None, 'Loading institution %s from MongoDB failed' % institution_id)
 
         return institution, error
 
