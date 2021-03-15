@@ -1,0 +1,30 @@
+name: Docker Based CI
+
+on:
+  push:
+    branches: [ rob-fixes ]
+  pull_request:
+    branches: [ rob-fixes ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the docker-compose stack
+      run: docker-compose -f docker-compose.ci.yml up -d
+    - name: Check running containers
+      run: docker ps -a
+    - name: Check logs
+      run: docker logs wagtail
+    - name: Populate Postgres
+      run: docker exec wagtail python manage.py populate_cms
+    - name: Populate MongoDB (institutions)
+      run: docker exec wagtail python manage.py populate_institutions
+    - name: Populate MongoDB (courses)
+      run: docker exec wagtail python manage.py populate_courses
+    - name: Run test suite
+      run: docker exec wagtail python manage.py test
