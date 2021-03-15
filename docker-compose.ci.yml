@@ -2,6 +2,7 @@ version: '3'
 
 services:
   web:
+    container_name:                 "wagtail"
     environment:
       # Postgres
       DBHOST:                       "db"
@@ -9,43 +10,27 @@ services:
       DBUSER:                       "docker"
       DBPASSWORD:                   "docker"
       DBPORT:                       "5432"
-      # Search
       SEARCHAPIHOST:                "${SEARCHAPIHOST}"
-      # Widget
       WIDGETAPIHOST:                "${WIDGETAPIHOST}"
       WIDGETAPIKEY:                 "${WIDGETAPIKEY}"
-      # CosmosDB (via requests library)
-      # (used by the application to get courses and institutions)
-      # (these can be found on the App Service under "Configuration")
-      # (in absence of values the local MongoDB will be used)
-      DATASETAPIHOST:               "https://dev-discoveruni.azure-api.net/dataset"
-      DATASETAPIKEY:                "f0baf483efd245b9805fe28c27ef6cc5"
-      # CosmosDB (via azure.cosmos library)
-      # (used to extract data from CosmosDB and populate fixtures)
-      # (these can be found on the CosmosDB instance under "Keys")
-      AZURECOSMOSDBURI:             "https://dev-mob-discoveruni.documents.azure.com:443/"
-      AZURECOSMOSDBKEY:             "xbrnDkm5zfC6lE0Rg6LYJ9dks2qvSTAQPWO3D47ub0Sua0fWFr5qlbvVf6ae4OoZpJvTvdwxzbyfNMEj9kyTig=="
-      # MongoDB (used for local development and testing)
+      DATASETAPIHOST:               "${DATASETAPIHOST}"
+      DATASETAPIKEY:                "${DATASETAPIKEY}"
+      AZURECOSMOSDBURI:             ""
+      AZURECOSMOSDBKEY:             ""
       MONGODB_HOST:                 "mongo"
       MONGODB_USERNAME:             "mongodb"
       MONGODB_PASSWORD:             "mongodb"
-      # A number of courses to load into the fixtures folder for mongodb and tests
-      TEST_COURSES:                 "GN12,U18-LAWLLB,AB35,PBSFND-D_FT,U09FUECW,UMDAHFY"
-      # Azure storage (institutions.xx.json, subjects.json, versions,json, etc...)
+      TEST_COURSES:                 ""
       STORAGE_ACCOUNT_NAME:         "${STORAGE_ACCOUNT_NAME}"
       STORAGEKEY:                   "${STORAGEKEY}"
-      # Azure
       AZURE_ACCOUNT_NAME:           "${AZURE_ACCOUNT_NAME}"
       AZURE_ACCOUNT_KEY:            "${AZURE_ACCOUNT_KEY}"
       AZURE_CONTAINER:              "${AZURE_CONTAINER}"
-      # Send Grid
       SENDGRID_API_KEY:             "${SENDGRID_API_KEY}"
-      SECRET_KEY:                   "(94t8(yg+fxigdp=&qm6m3!uwn&+)2sc=5_4n)zly0k10y&1%e"
+      SECRET_KEY:                   "${SECRET_KEY}"
       SENDGRID_FROM_EMAIL:          "${SENDGRID_FROM_EMAIL}"
-      # Other
       FEEDBACK_API_HOST:            "${FEEDBACK_API_HOST}"
       JSONFILES_STORAGE_CONTAINER:  "${JSONFILES_STORAGE_CONTAINER}"
-      # Custom
       ROOT_DOMAIN:                  "${ROOT_DOMAIN}"
       READ_ONLY:                    "${READ_ONLY}"
       LOCAL:                        "${LOCAL}"
@@ -65,8 +50,6 @@ services:
       POSTGRES_USER: docker
       POSTGRES_PASSWORD: docker
       POSTGRES_DB: django
-    volumes:
-      - './data/postgres:/var/lib/postgresql/data'
 
   mongo:
     image: mongo
@@ -74,5 +57,3 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: "mongodb"
       MONGO_INITDB_ROOT_PASSWORD: "mongodb"
-    volumes:
-      - './data/mongodb:/data/db'
