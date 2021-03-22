@@ -28,7 +28,7 @@ coverage.xml
 **/*.css*
 
 # Media files
-static/
+static/**
 
 # Custom
 .DS_Store
