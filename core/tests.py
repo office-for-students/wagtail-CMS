@@ -1,5 +1,5 @@
 from django.core import management
-from django.test import TestCase, Client
+from django.test import TestCase, Client, tag
 from django.core.management.base import CommandError
 from django.contrib.contenttypes.models import ContentType
 
@@ -16,6 +16,7 @@ from site_search.models import SearchLandingPage
 from django.conf import settings
 
 
+@tag('azure')
 class CoreUtilsTests(UniSimpleTestCase):
 
     def test_get_page_for_language_returns_english_page_if_it_exists(self):
@@ -84,6 +85,7 @@ class CoreUtilsTests(UniSimpleTestCase):
         self.assertIsNone(found_page)
 
 
+@tag('azure')
 class CoreModelsTests(UniSimpleTestCase):
 
     def test_get_language_returns_en_for_english_page(self):
@@ -102,6 +104,7 @@ class CoreModelsTests(UniSimpleTestCase):
         self.assertEquals(created_page.get_language(), enums.languages.WELSH)
 
 
+@tag('azure')
 class BaseTestCase(TestCase):
     mongo_host      = 'mongo'
     mongo_username  = 'mongodb'
