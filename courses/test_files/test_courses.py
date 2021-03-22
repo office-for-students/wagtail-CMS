@@ -4,7 +4,7 @@ from core.tests import BaseTestCase
 from courses.models import CourseManagePage
 
 
-@tag('github-ci')
+@tag('github')
 class CoursesTestCase(BaseTestCase):
 
     def test_front_page(self):
