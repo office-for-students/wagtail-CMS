@@ -526,6 +526,11 @@
     },
     {
         "alphabet": "c",
+        "name": "College of Legal Practice Limited",
+        "order_by_name": "college legal practice"
+    },
+    {
+        "alphabet": "c",
         "name": "The College of Health Ltd",
         "order_by_name": "college of health"
     },
@@ -1976,6 +1981,11 @@
     },
     {
         "alphabet": "t",
+        "name": "Tedi-london",
+        "order_by_name": "tedi london"
+    },
+    {
+        "alphabet": "t",
         "name": "Teesside University",
         "order_by_name": "teesside university"
     },
@@ -1983,6 +1993,11 @@
         "alphabet": "t",
         "name": "Telford College",
         "order_by_name": "telford college"
+    },
+    {
+        "alphabet": "t",
+        "name": "Thinkspace Education Limited",
+        "order_by_name": "thinkspace"
     },
     {
         "alphabet": "t",
@@ -2008,6 +2023,11 @@
         "alphabet": "t",
         "name": "Tyne Coast College",
         "order_by_name": "tyne coast college"
+    },
+    {
+        "alphabet": "u",
+        "name": "UA92",
+        "order_by_name": "ua92"
     },
     {
         "alphabet": "u",
