@@ -1,3 +1,4 @@
+from django.test import tag
 from unittest.mock import patch
 
 from CMS.test.factories import PageFactory
@@ -13,6 +14,7 @@ from errors.models import ApiError
 from site_search.models import SearchLandingPage
 
 
+@tag('azure')
 class CourseFinderModelsTests(UniSimpleTestCase):
 
     def test_course_search_execute_function_appends_counts_and_list_of_courses_to_model_on_success(self):
@@ -253,7 +255,7 @@ class CourseFinderModelsTests(UniSimpleTestCase):
 
         self.assertIsFalse(actual)
 
-
+@tag('azure')
 class CourseFinderUtilsTests(UniSimpleTestCase):
     def test_choose_country_sibling_finder_returns_country_finder_if_in_list(self):
         course_finder_page = PageFactory.create_search_landing_page('Course Finder')

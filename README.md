@@ -4,50 +4,11 @@
 [![Build Status](https://dev.azure.com/ofsbeta/discoverUni/_apis/build/status/pre-prod/pp-wagtail-cms?label=Pre%20prod%20build%20status)](https://dev.azure.com/ofsbeta/discoverUni/_build/latest?definitionId=11)
 [![Build Status](https://dev.azure.com/ofsbeta/discoverUni/_apis/build/status/prod/prod-wagtail-cms?branchName=master&label=Prod%20build%20status)](https://dev.azure.com/ofsbeta/discoverUni/_build/latest?definitionId=12&branchName=master)
 
-<!-- vim-markdown-toc GitLab -->
+# Table of Contents
 
-* [About this application](#about-this-application)
-    * [Purpose of this app](#purpose-of-this-app)
-    * [Tech stack](#tech-stack)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-    * [Without Docker](#without-docker)
-    * [With Docker](#with-docker)
-  * [Running the database](#running-the-database)
-  * [Environment variables](#environment-variables)
-  * [Running the site](#running-the-site)
-    * [Running without Docker](#running-without-docker)
-    * [Running with Docker](#running-with-docker)
-      * [Useful  commands](#useful-commands)
-      * [Adding new dependencies](#adding-new-dependencies)
-* [Continuous Integration and Deployment Pipeline](#continuous-integration-and-deployment-pipeline)
-  * [Continuous Integration](#continuous-integration)
-    * [CI test](#ci-test)
-    * [Development build](#development-build)
-    * [Pre prod build](#pre-prod-build)
-    * [Production build](#production-build)
-  * [Continuous Deployment](#continuous-deployment)
-    * [Development deploy](#development-deploy)
-    * [Pre prod deploy](#pre-prod-deploy)
-    * [Production deploy](#production-deploy)
-  * [Releases](#releases)
-    * [Creating A Release](#creating-a-release)
-        * [Manual release process](#manual-release-process)
-        * [Automated release process](#automated-release-process)
-    * [Finishing A Release](#finishing-a-release)
-* [Contributing](#contributing)
-* [License](#license)
+...
 
-<!-- vim-markdown-toc -->
-
-
-## About this application
-
-### Purpose of this app
-
-The purpose of this app is to provide a user interface for admin users to maintain the 'DiscoverUni' site content.
-
-### Tech stack
+## Tech stack
 
 This application is based on the Wagtail CMS.
 It utilises:
@@ -56,52 +17,17 @@ It utilises:
 - jQuery
 - SASS
 
-## Getting Started
+## Rollout
 
-### Prerequisites
+### LIVE
 
-#### Without Docker
-
-You need to have Python (3.6.8), PIP and PostgreSQL installed. There are multiple ways to install Python, either download from the official [Python site](https://www.python.org/downloads/) or use the package manager [Homebrew](https://brew.sh/) ```brew install python3```. PIP comes installed with Python 3.4(or greater) by default.
-
-To install Postgres you can also use [Homebrew](https://brew.sh/)
+The following command will need to be run to make the codebase work in LIVE:
 
 ```
-brew update
-brew doctor
-brew install postgresql
+$ cp docker-compose.yml.example docker-compose.yml
 ```
 
-
-#### With Docker
-
-You need to have Docker and PostgreSQL installed. Docker installation guidance can be found in the [Docker Docs](https://docs.docker.com/install/).
-
-To install Postgres you can also use [Homebrew](https://brew.sh/)
-
-```
-brew update
-brew doctor
-brew install postgresql
-```
-
-### Running the database
-
-To start Postgres:
-
-```
-pg_ctl -D /usr/local/var/postgres start && brew services start postgresql
-```
-
-Create a local database
-
-```
-CREATE DATABASE sampledb;
-CREATE USER manager WITH PASSWORD 'supersecretpassword';
-GRANT ALL PRIVILEGES ON DATABASE sample TO manager;
-```
-
-### Environment variables
+## Environment variables
 
 | Variable                          | Default              | Description                                 |
 | --------------------------------- | -------------------- | ------------------------------------------- |
@@ -123,68 +49,303 @@ GRANT ALL PRIVILEGES ON DATABASE sample TO manager;
 | SENDGRID_FROM_EMAIL               | <sendgridfromemail>  | The e-mail address used for notifications   |
 | LOCAL                             | False                | Tells the site to use external API or mocks |
 
+# Getting Started
 
-### Running the site
+## First time here?
 
-#### Running without Docker
-
-Create a Python 3.6.8 virtual environment and run the following commands from the root directory of the project:
-
-```
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
-```
-
-
-#### Running with Docker
+The docker image for this branch is created differently from the other branches (`python manage.py runserver 0.0.0.0` is now run inside the image, not as a command on the image in the `docker-compose.yml`). This means that the old containers and images for other branches need to be deleted so the new one can be built.
 
 ```
-docker-compose build
-docker-compose up
+$ docker ps --all
+CONTAINER ID     IMAGE               COMMAND                  CREATED        STATUS                  PORTS       NAMES
+<container_id>   wagtail-cms_web     "python manage.py ru…"   3 days ago     Exited (0) 3 days ago               wagtail-cms_web_1
+............     .....               "...................."   ..........     .............           27017/tcp   .................
+$ docker rmi -f <container_id>
+$ docker images
+REPOSITORY                            TAG          IMAGE ID       CREATED         SIZE
+wagtail-cms_web                       latest       <image_id>     11 days ago     1.07GB
+...............                       latest       ............   3 weeks ago     ......
+$ docker rm <image_id>
+...
 ```
 
-The first command builds the docker image.
-The second command starts the docker container, running on port 8000.
+This now means when you run `docker-compose up` docker will rebuild the image using the new commands in the `Dockerfile`, and then build a new container from that
 
-After the docker image is running for the first time, connect to it and create an admin login as follows:
+> *REMEMBER:* To run the commands above when switching back to the other branches on the project
 
-(From the route directory)
+## Tests
+
 ```
-./bin/manage createsuperuser
+$ docker container exec -it wagtail-cms_web_1 python manage.py test
 ```
 
-##### Useful commands
+> The tests will output `An error occurred whilst Bad configuration` and `An error occurred on the API during the...` when they run. This is the expected behaviour. Unfortunately some of the exceptions in the project are caught and returned as objects. Though during this process they print to the log. When testing the log is the terminal.
 
-There are commands setup in the bin directory of the project, that allow easy use of common commands inside the docker container.
+> *IMPORTANT:* When fixing an issue write a test first to prove it's broken. Then, and only then, fix the problem
 
-- container - takes you on to the containers command line.
-- manage - can be passed arguments to run standard django manage.py commands.
-- shell - takes you on to the python shell command line for the project.
+## Configure
 
+### Secret Key
+
+```
+$ python3
+>>> import secrets
+>>> chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+>>> ''.join(secrets.choice(chars) for i in range(50))
+<secret_key>
+>>> exit()
+$ vim docker-compose.yml
+...
+SECRET_KEY: "<secret_key>"
+...
+```
+
+### Defaults
+
+```
+$ cp docker-compose.yml.example docker-compose.yml
+$ vim docker-compose.yml
+...
+DBHOST:               "db"
+DBNAME:               "django"
+DBUSER:               "docker"
+DBPASSWORD:           "docker"
+...
+
+...
+MONGODB_HOST:         "mongo"
+MONGODB_USERNAME:     "mongodb"
+MONGODB_PASSWORD:     "mongodb"
+...
+SEARCHAPIHOST:        "..."
+...
+$ docker-compose up
+```
+
+> If docker fails to start up because the `SECRET_KEY`, re-create the secret key and try again. Sometime it fails because of the use of irregular or un-escapped characters.
+
+> If this is the first time working on the code base remember to populate [PostgreSQL](#database) and [MongoDB](#mongodb)
+
+> If you are going to be importing new data to the fixtures remember to set DATASETAPIHOST, DATASETAPIKEY, AZURECOSMOSDBURI and AZURECOSMOSDBKEY
+
+## Docker
+
+You need to have [Docker](https://docs.docker.com/install/) installed to be able to see changes in the code, run tests and update local data.
+
+```
+$ docker-compose up
+```
+
+> Make sure to run this command in a separate window so you have somewhere to run other commands from
+
+> This command will download all the required images (Python, PostgreSQL, CosmosDB) and start them for you all preconfigured
+
+# Database
+
+## Populating
+
+```
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_cms
+```
+
+This will run the command `content/management/commands/populate_cms.py`. This command loads the data found at `CMS/fixtures/postgres.json` into the database.
+
+You might ask why you can't use Django and to run `... python manage.py loaddata CMS/fixtures/postgres.json`. The foreign key constraints in Wagtail prevent this. When trying to run `loaddata` Django will fail in deleting (truncating) the old data. The `populate_cms` command gets round this by calling a custom flush command (`content/management/commands/flush_db.py`) that exposes the `--allow-cascade` flag on Django's own flush command. In additional it deletes a number of default posts and content types that are created when migrations are run and prevent the `postgres.json` file from being inserted into the database.
+
+### Updating Postgres Data *(CMS/fixtures/postgres.json)*
+
+```
+$ docker container exec -it wagtail-cms_web_1 python manage.py update_cms_fixture --db_host ... --db_name ... --db_user ... --db_password ... --db_port ...
+```
+
+> Use the creds for the remote PostgreSQL in the above statement
+
+Want to make sure the command above is not in your command history for people to find on your machine? Then do the following.
+
+```
+$ set +o history
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_cms ...
+$ set -o history
+```
+
+Already in your command history but want to delete it?
+
+```
+$ history | tail -n 5
+100 ...
+101 ...
+102 ...  # <- You want to delete this one
+103 ...
+104 ...
+$ history -d 103
+```
+
+### Deleting Data
+
+Stop docker before running the following command
+
+> You can stop docker by pressing `Ctrl+C` in the window in which it is running.
+
+```
+$ sudo rm -rf data/postgres
+$ docker-compose up
+```
+
+# MongoDB
+
+### Populating
+
+```
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
+```
+
+> `populate_courses` will get the courses in `settings.TEST_COURSES` from CosmosDB and put them in MongoDB **(as well as populate the file found in `courses/fixtures/courses.json`)**
+
+### Updating local course data
+
+If the course data has changed remotely and you want to update it locally then do the following:
+
+```
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses --update
+...
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
+...
+```
+
+> The first command goes to the CosmosDB *(as defined by `AZURECOSMOSDBURI` in `docker-compose.yml`)* and copies the courses specified in `TEST_COURSES` in `docker-comnpose.yml` to to `courses/fixtures/courses.json`. The second command gets the contents of `courses/fixtures/courses.json` and puts them in the local MongoDB instance.
+
+Don't forget to commit the changes to the course data to the repo
+
+```
+$ git add courses/fixtures/courses.json
+$ git commit -m '...'
+```
+
+### Adding More courses
+
+```
+$ vim docker-compose.yml
+...
+TEST_COURSES = 'U18-LAWLLB,AB35,...'
+...
+$ vim docker-compose.yml.example
+...
+TEST_COURSES = 'U18-LAWLLB,AB35,...'
+...
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses --update
+...
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
+...
+$ git add docker-compose.yml.example
+$ git add courses/fixtures/courses.json
+$ git commit -m '...'
+...
+```
+
+### Updating local institutions data
+
+If the course data has changed remotely and you want to update it locally then do the following:
+
+```
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions --update
+...
+$ docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions
+...
+```
+
+Don't forget to commit the changes to the institutions data to the repo
+
+```
+$ git add institutions/fixtures/institutions.json
+$ git commit -m '...'
+```
+
+
+### Deleting Data
+
+Stop docker before running the following command
+
+> You can stop docker by pressing `Ctrl+C` in the window in which it is running.
+
+```
+$ sudo rm -rf data/mongodb
+$ docker-compose up
+```
+
+# URLs
+
+The following URLs work in development
+
+```
+$ wget http://localhost:8000/institution-details/<any_institution>/
+$ wget http://localhost:8000/admin/  # <- All wagtail pages
+$ wget http://localhost:8000/course-details/10007804/U18-LAWLLB/Full-time/
+$ wget http://localhost:8000/course-details/10000055/AB35/Full-time/
+$ wget http://localhost:8000/course-details/10001850/PBSFND-D_FT/Full-time/
+$ wget http://localhost:8000/course-details/10007165/U09FUECW/Full-time/
+$ wget http://localhost:8000/course-details/10007767/UMDAHFY/Full-time/
+```
+
+# Useful Commands
+
+## Docker
+
+### List images
+
+```
+$ docker images
+```
+
+From this list you can find the docker images you no longer need. Copy their `IMAGE ID`
+
+### Deleting Images
+
+```
+$ docker rm <IMAGE_ID>
+```
+
+### Listing Containers
+
+Container are based of images. This is what runs your code
+
+```
+$ docker ps --all
+```
+
+The `NAME`s you can see in the commands above. The `STATUS` tells you whether ac container is being used. If you no longer need a container copy the `CONTAINER ID`
+
+### Deleting Containers
+
+```
+$ docker rmi -f <CONTAINER_ID>
+```
+
+### Get into a Container
+
+```
+$ docker container exec -it wagtail-cms_web_1 bash
+$ docker container exec -it wagtail-cms_db_1 bash
+```
+
+### Using the Django Shell
+
+```
+$ docker container exec -it wagtail-cms_web_1 python manage.py shell
+```
 
 ##### Adding new dependencies
 
-Adding a new dependency requires rebuilding docker image for Django app.
-
-Stop docker container
-
 ```
-docker-compose down
+$ docker container exec -it wagtail-cms_web_1 pip install ...
+$ docker container exec -it wagtail-cms_web_1 pip freeze > requirements.txt
 ```
 
-Rebuild Docker image
+# Other Stuff
 
-```
-docker-compose build
-```
+## Adding Environment Variables
 
-Start server again
-
-```
-docker-compose up
-```
+If you add environment variable to `docker-compose.yml` don't forget to also add it to `CMS/settings/base.py`
 
 ## Continuous Integration and Deployment Pipeline
 
