@@ -1,3 +1,4 @@
+from django.test import tag
 from unittest.mock import patch
 
 from CMS.test.mocks import InstitutionMocks
@@ -6,6 +7,7 @@ from errors.models import ApiError
 from institutions.models import Institution
 
 
+@tag('azure')
 class InstitutionsModelsTests(UniSimpleTestCase):
 
     @patch('institutions.request_handler.load_institution_data',

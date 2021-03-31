@@ -211,9 +211,8 @@ class Institution:
                 error = ApiError(response.status_code, 'Loading institution %s failed' % institution_id)
         elif type(response) == dict:
             institution = cls(response, language)
-
-        if institution == None:
-            error = ApiError(None, 'Loading institution %s from MongoDB failed' % institution_id)
+            if institution == None:
+                error = ApiError(None, 'Institution %s does not exist in MongoDB' % institution_id)
 
         return institution, error
 
