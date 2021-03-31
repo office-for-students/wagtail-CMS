@@ -1,3 +1,4 @@
+from django.test import tag
 from unittest.mock import patch
 
 from CMS.test.mocks import CourseMocks
@@ -6,7 +7,10 @@ from courses.models import SatisfactionBlock, EntryInformationBlock, AfterOneYea
     AccreditationBlock, Course
 from errors.models import ApiError
 
+from courses.test_files.test_courses import CoursesTestCase
 
+
+@tag('azure')
 class CoursesModelsTests(UniSimpleTestCase):
 
     def test_SatisfactionBlock_returns_student_satisfaction_data_set_value(self):

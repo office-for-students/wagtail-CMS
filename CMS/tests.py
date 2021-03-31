@@ -1,6 +1,9 @@
+from django.test import tag
+
 from CMS.test.utils import UniSimpleTestCase
 
 
+@tag('azure')
 class MedexTestUtilsTests(UniSimpleTestCase):
 
     def test_uni_simple_test_case_assert_is_true_returns_true_when_passed_true(self):
