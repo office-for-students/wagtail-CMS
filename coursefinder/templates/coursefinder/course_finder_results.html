@@ -96,11 +96,13 @@
                 {% get_translation key='number_of_results' language=page.get_language substitutions=substitutions %}
                 {% endautoescape %}
             </div>
+            <!-- TODO WIP: FILTERS  
             <div class="col-4 text-right">
                 <p id="clear-filters" class="filters-block__filter-uni-controls-clear">
                 {% get_translation key='clear_filters' language=page.get_language %}
                 </p>
             </div>
+            -->
         </div>
         <div class="course-finder-results">
             {% include "search_results_list.html" %}
