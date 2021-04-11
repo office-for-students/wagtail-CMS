@@ -2,7 +2,7 @@
 
 <p class="course-finder-results__overview text-center">
 
-
+<!-- TODO WIP: FILTERS
     <div class="course-finder-results__overview-filter-open">
         {% get_translation key='show_filters' language=page.get_language %}
         <img class="course-finder-results__overview-filter-icon" src="{% static 'images/chevron-down-solid.svg' %}"
@@ -21,10 +21,24 @@
     {% include 'coursefinder/partials/filters.html' %}
 
 <hr class="course-finder__result-hr"/>
-<div class="course-finder-results__result-list">
-    {% for item in search.results %}
-        {% include 'partials/institution_result.html' with institution=item %}
-    {% endfor %}
-</div>
+-->
+
+<!-- results -->
+<div class="container">    
+    <div class="row">
+        
+        <!-- filters -->
+        <div class="col-2 bg-primary">
+        </div><!-- /filters -->
+
+        <!-- institutions -->
+        <div class="col">
+            {% for item in search.results %}
+                {% include 'partials/institution_result.html' with institution=item %}
+            {% endfor %}
+        </div><!-- institutions -->
+    </div>
+</div><!-- /results -->
+
 
 {% include '_pagination.html' %}
