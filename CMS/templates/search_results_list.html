@@ -26,9 +26,52 @@
 <!-- results -->
 <div class="container">    
     <div class="row">
-        
         <!-- filters -->
-        <div class="col-2 bg-primary">
+        <div class="col-3">
+            <div class="bg-light p-1" id="filterStudyMode">
+                <button type="button" 
+                    id="filterStudyModeButton"
+                    class="btn btn-block text-left filter-header" 
+                    data-toggle="collapse" 
+                    data-target="#filter-study-mode" 
+                    aria-expanded="false" 
+                    aria-controls="filter-study-mode">
+                    Study mode 1
+                </button>
+        
+                <div id="filter-study-mode" class="collapse show m-2">
+                    <div class="custom-control custom-checkbox mb-1">
+                        <input type="checkbox" class="custom-control-input" id="filterStudyModeFullTime">
+                        <label class="custom-control-label" for="filterStudyModeFullTime">Full time</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="filterStudyModePartTime">
+                        <label class="custom-control-label" for="filterStudyModePartTime">Part time</label>
+                    </div>                      
+                </div>
+            </div>
+            <div class="bg-light p-1" id="filterStudyMode2">
+                <button type="button" 
+                    id="filterStudyModeButton2"
+                    class="btn btn-block text-left filter-header" 
+                    data-toggle="collapse" 
+                    data-target="#filter-study-mode2" 
+                    aria-expanded="false" 
+                    aria-controls="filter-study-mode2">
+                    Study mode 2
+                </button>
+        
+                <div id="filter-study-mode2" class="collapse show m-2">
+                    <div class="custom-control custom-checkbox mb-1">
+                        <input type="checkbox" class="custom-control-input" id="filterStudyModeFullTime2">
+                        <label class="custom-control-label" for="filterStudyModeFullTime2">Full time</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="filterStudyModePartTime2">
+                        <label class="custom-control-label" for="filterStudyModePartTime2">Part time</label>
+                    </div>                      
+                </div>
+            </div>
         </div><!-- /filters -->
 
         <!-- institutions -->

@@ -1,0 +1,26 @@
+.filter-header {
+  background: rgba(195, 230, 227, 100)!important;
+  border: none;
+  color: black;
+  font-weight:450;
+}
+.filter-header:focus {
+  box-shadow: none;
+} 
+.filter-header:active:focus {
+  box-shadow: none;
+} 
+.filter-header:after {
+  position: relative;
+  top: 0px; 
+  left: 20px;
+  right: 0px;
+  content: "+";
+  color: rgba(58,133,131,100);  
+  font-size:xx-large;
+}
+/* right: 25px;
+top: -4px; */
+.filter-header[aria-expanded="true"]:after {
+  content: "-";
+}
