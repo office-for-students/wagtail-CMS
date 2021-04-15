@@ -2,12 +2,10 @@
 
 <p class="course-finder-results__overview text-center">
 
-<!-- TODO WIP: FILTERS
     <div class="course-finder-results__overview-filter-open">
         {% get_translation key='show_filters' language=page.get_language %}
         <img class="course-finder-results__overview-filter-icon" src="{% static 'images/chevron-down-solid.svg' %}"
              alt="">
-
     </div>
 
     <div class="course-finder-results__overview-filter-toggle text-center col-12">
@@ -21,58 +19,16 @@
     {% include 'coursefinder/partials/filters.html' %}
 
 <hr class="course-finder__result-hr"/>
--->
+<!-- -->
 
 <!-- results -->
 <div class="container">    
     <div class="row">
         <!-- filters -->
-        <div class="col-3">
-            <div class="bg-light p-1" id="filterStudyMode">
-                <button type="button" 
-                    id="filterStudyModeButton"
-                    class="btn btn-block text-left filter-header" 
-                    data-toggle="collapse" 
-                    data-target="#filter-study-mode" 
-                    aria-expanded="false" 
-                    aria-controls="filter-study-mode">
-                    Study mode 1
-                </button>
-        
-                <div id="filter-study-mode" class="collapse show m-2">
-                    <div class="custom-control custom-checkbox mb-1">
-                        <input type="checkbox" class="custom-control-input" id="filterStudyModeFullTime">
-                        <label class="custom-control-label" for="filterStudyModeFullTime">Full time</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="filterStudyModePartTime">
-                        <label class="custom-control-label" for="filterStudyModePartTime">Part time</label>
-                    </div>                      
-                </div>
-            </div>
-            <div class="bg-light p-1" id="filterStudyMode2">
-                <button type="button" 
-                    id="filterStudyModeButton2"
-                    class="btn btn-block text-left filter-header" 
-                    data-toggle="collapse" 
-                    data-target="#filter-study-mode2" 
-                    aria-expanded="false" 
-                    aria-controls="filter-study-mode2">
-                    Study mode 2
-                </button>
-        
-                <div id="filter-study-mode2" class="collapse show m-2">
-                    <div class="custom-control custom-checkbox mb-1">
-                        <input type="checkbox" class="custom-control-input" id="filterStudyModeFullTime2">
-                        <label class="custom-control-label" for="filterStudyModeFullTime2">Full time</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="filterStudyModePartTime2">
-                        <label class="custom-control-label" for="filterStudyModePartTime2">Part time</label>
-                    </div>                      
-                </div>
-            </div>
-        </div><!-- /filters -->
+        <!-- <div class="col"> -->
+        {% include 'coursefinder/partials/filters2.html' %}
+        <!-- </div> -->
+        <!-- /filters -->
 
         <!-- institutions -->
         <div class="col">
