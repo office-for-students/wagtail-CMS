@@ -1,373 +1,50 @@
-{% load staticfiles discover_uni_tags wagtailcore_tags %}
+{% load discover_uni_tags wagtailcore_tags %}
 
-<div class="filters2-wrapper">
+<div class="filters-wrapper">
     <div class="discover-uni-container">
-        <div class="filters2-block">
-            <!-- <p class="filters2-block__cancel-button"><span class="filters2-block__cancel-button-icon">X</span> Cancel</p> -->
-            <form method="post" {% if page.is_english %} action="/course2-finder/results/" {% else %} action="/cy/course2-finder/results/" {% endif %} class="filters2-block__form">
+        <div class="filters-block">
+            <p class="filters-block__cancel-button"><span class="filters-block__cancel-button-icon">X</span> Cancel</p>
+
+            <form method="post" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %} class="filters-block__form">
                 {% csrf_token %}
 
                 <input id="page_input" name="page" type="text" value="{{search.page}}" hidden />
                 <input id="count_input" name="count" type="text" value="{{search.count}}" hidden />
 
                 <input name="course_query" id="course_query" type="text" value="{{filter_form.course_query}}" hidden />
-            
-                <!-- INSTITUTION ACCORDION -->
-                <!-- <div class="bg-light p-1" id="filterStudyMode">
-                    <button type="button" 
-                        id="filterStudyModeButton"
-                        class="btn btn-block text-left filter-header" 
-                        data-toggle="collapse" 
-                        data-target="#filter-study-mode" 
-                        aria-expanded="false" 
-                        aria-controls="filter-study-mode">
-                        Study mode 1
-                    </button>
-            
-                    <div id="filter-study-mode" class="collapse show m-2">
-                        <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" id="filterStudyModeFullTime">
-                            <label class="custom-control-label" for="filterStudyModeFullTime">Full time</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="filterStudyModePartTime">
-                            <label class="custom-control-label" for="filterStudyModePartTime">Part time</label>
-                        </div>                      
-                    </div>
-                </div>  -->
-                     
-                <div class="course2-finder-results__result-accordion">
-                    <div tabindex="0" role="button" aria-label="Show content" class="course2-finder-results__result-accordion-header">
-                        <div class="course2-finder-results__result-accordion-heading">
-                            <h2 class="course2-finder-results__result-accordion-title">{% get_translation key='study_mode' language=page.get_language %}</h2>
-                        </div>
-                        
-                        <div class="expand">
-                            <img class="nav-card__icon" src="{% static 'images/plus_icon_white.svg' %}" alt="expand">
-                        </div>
-                        
-                        <div class="collapse">
-                            <img class="nav-card__icon" src="{% static 'images/minus_icon.svg' %}" alt="collapse">
-                        </div>
-                    </div>
-                    
-                    <div class="course2-finder-results__result-accordion-body">
-                        <!-- straight from bootstrap -->
-                        <!-- <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" id="filterStudyModeFullTime">
-                            <label class="custom-control-label" for="filterStudyModeFullTime">Full time</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="filterStudyModePartTime">
-                            <label class="custom-control-label" for="filterStudyModePartTime">Part time</label>
-                        </div>     -->
-                        <!-- modified accordion  -->
-                        <div class="custom-control custom-checkbox mb-1">
-                            <input type="checkbox" class="custom-control-input" id="filterStudyModeFullTime">
-                            <label class="custom-control-label" for="filterStudyModeFullTime">Full time</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="filterStudyModePartTime">
-                            <label class="custom-control-label" for="filterStudyModePartTime">Part time</label>
-                        </div> 
-                        <!-- orig accordion  -->
-                        <!-- <div class="filters2-block__filter-option">
-                            <input id="mode-full-time" class="filters2-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Full-time"
-                                {% if 'Full-time' in filter_form.mode_query %}checked{% endif %}/>
 
-                            <label class="filters2-block__filter-checkbox-label" for="mode-full-time">
-                                {% get_translation key='full_time' language=page.get_language %}
-                            </label>
-                        </div>
-
-                        <div class="filters2-block__filter-option--three-col">
-                            <input id="mode-part-time" class="filters2-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Part-time"
-                                {% if 'Part-time' in filter_form.mode_query %}checked{% endif %}/>
-
-                            <label class="filters2-block__filter-checkbox-label" for="mode-part-time">
-                                {% get_translation key='part_time' language=page.get_language %}
-                            </label>
-                        </div> -->
-
-                        <!-- <div class="filters2-block__filter-option--three-col">
-                            <input id="mode-distance" class="filters2-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Distance learning"
-                                {% if 'Distance learning' in filter_form.mode_query %}checked{% endif %}/>
-
-                            <label class="filters2-block__filter-checkbox-label" for="mode-distance">
-                                {% get_translation key='distance_learning' language=page.get_language %}
-                            </label>
-                        </div> -->
-                    </div>
-                </div><!-- /INSTITUTION ACCORDION -->
-
-                <!-- <div class="filters2-block__filter">
+                <div class="filters-block__filter">
                     <fieldset>
                         <legend>
-                            <h2 class="filters2-block__filter-heading">
+                            <h2 class="filters-block__filter-heading">
                                 {% get_translation key='study_mode' language=page.get_language %}
                             </h2>
                         </legend>
 
-                        <div class="filters2-block__filter-options">
-                            <div class="filters2-block__filter-option--three-col">
-                                <input id="mode-full-time" class="filters2-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Full-time"
+                        <div class="filters-block__filter-options">
+                            <div class="filters-block__filter-option--three-col">
+                                <input id="mode-full-time" class="" type="checkbox" name="mode_query" value="Full-time"
                                     {% if 'Full-time' in filter_form.mode_query %}checked{% endif %}/>
 
-                                <label class="filters2-block__filter-checkbox-label" for="mode-full-time">
+                                <label class="" for="mode-full-time">
                                     {% get_translation key='full_time' language=page.get_language %}
                                 </label>
                             </div>
 
-                            <div class="filters2-block__filter-option--three-col">
-                                <input id="mode-part-time" class="filters2-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Part-time"
+                            <div class="filters-block__filter-option--three-col">
+                                <input id="mode-part-time" class="" type="checkbox" name="mode_query" value="Part-time"
                                     {% if 'Part-time' in filter_form.mode_query %}checked{% endif %}/>
 
-                                <label class="filters2-block__filter-checkbox-label" for="mode-part-time">
+                                <label class="" for="mode-part-time">
                                     {% get_translation key='part_time' language=page.get_language %}
                                 </label>
                             </div>
-
-                            <div class="filters2-block__filter-option--three-col">
-                                <input id="mode-distance" class="filters2-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Distance learning"
-                                    {% if 'Distance learning' in filter_form.mode_query %}checked{% endif %}/>
-
-                                <label class="filters2-block__filter-checkbox-label" for="mode-distance">
-                                    {% get_translation key='distance_learning' language=page.get_language %}
-                                </label>
-                            </div>
                         </div>
                     </fieldset>
                 </div>
 
-                <div class="filters2-block__filter">
-                    <fieldset>
-                        <legend>
-                            <h2 class="filters2-block__filter-heading">
-                                {% get_translation key='countries' language=page.get_language %}
-                            </h2>
-                        </legend>
-
-                        <div class="filters2-block__filter-options">
-                            <div class="filters2-block__filter-option--two-col">
-                                <input id="countries-england" class="filters2-block__filter-checkbox-input" type="checkbox" name="countries_query" value="England"
-                                    {% if 'England' in filter_form.countries_query %}checked{% endif %} />
-
-                                <label class="filters2-block__filter-checkbox-label" for="countries-england">
-                                    {% get_translation key='england' language=page.get_language %}
-                                </label>
-                            </div>
-
-                            <div class="filters2-block__filter-option--two-col">
-                                <input id="countries-ireland" class="filters2-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Northern Ireland"
-                                    {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %} />
-
-                                <label class="filters2-block__filter-checkbox-label" for="countries-ireland">
-                                    {% get_translation key='northern_ireland' language=page.get_language %}
-                                </label>
-                            </div>
-
-                            <div class="filters2-block__filter-option--two-col">
-                                <input id="countries-scotland" class="filters2-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Scotland"
-                                    {% if 'Scotland' in filter_form.countries_query %}checked{% endif %} />
-
-                                <label class="filters2-block__filter-checkbox-label" for="countries-scotland">
-                                    {% get_translation key='scotland' language=page.get_language %}
-                                </label>
-                            </div>
-
-                            <div class="filters2-block__filter-option--two-col">
-                                <input id="countries-wales" class="filters2-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Wales"
-                                    {% if 'Wales' in filter_form.countries_query %}checked{% endif %} />
-
-                                <label class="filters2-block__filter-checkbox-label" for="countries-wales">
-                                    {% get_translation key='wales' language=page.get_language %}
-                                </label>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-
-                <div class="filters2-block__filter">
-                    <div class="filters2-block__filter-years-group">
-                        <div class="filters2-block__filter-year">
-                            {% include 'coursefinder/partials/placement_filters.html' %}
-                        </div>
-
-                        <div class="filters2-block__filter-year">
-                            {% include 'coursefinder/partials/foundation_filters.html' %}
-                        </div>
-
-                        <div class="filters2-block__filter-year">
-                            {% include 'coursefinder/partials/abroad_filters.html' %}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="filters2-block__filter">
-                    <h2 class="filters2-block__filter-heading">
-                        {% get_translation key='subject_at_least_two' language=page.get_language %}
-                    </h2>
-                    {% include 'partials/subject_selector.html' %}
-
-                    <input hidden id="subject_query" name="subject_query" type="text" value="{{filter_form.courses}}" />
-                </div>
-
-                <div class="filters2-block__filter">
-                    <h2 class="filters2-block__filter-heading">
-                        {% get_translation key='narrow_location' language=page.get_language %}
-                    </h2>
-
-                    <div class="filters2-block__filter-fields">
-                        <div class="filters2-block__filter-field">
-                            <label for="postcode_field" class="filters2-block__filter-postcode-heading-label">
-                                {% get_translation key='enter_postcode' language=page.get_language %}
-                            </label>
-
-                            <input id="postcode_field" class="filters2-block__filter-postcode textbox" type="text" value="{{filter_form.postcode}}">
-                        </div>
-
-                        <div class="filters2-block__filter-field">
-                            <fieldset>
-                                <legend>
-                                    <p class="filters2-block__filter-postcode-heading-label">
-                                        {% get_translation key='search_within' language=page.get_language %}:
-                                    </p>
-                                </legend>
-
-                                <div class="filters2-block__filter-field-radios">
-                                    <label class="filters2-block__filter-postcode radio" for="one">
-                                        <span class="filters2-block__filter-postcode-label">
-                                            10 {% get_translation key='miles' language=page.get_language %}
-                                        </span>
-
-                                        <input class="course2-finder-content__question-input" id="one" type="radio" name="distance"
-                                               value="10" {% if filter_form.distance == '10' %}checked{% endif %} />
-
-                                        <span class="radiobox"></span>
-                                    </label>
-
-                                    <label class="filters2-block__filter-postcode radio" for="two">
-                                        <span class="filters2-block__filter-postcode-label">
-                                            25 {% get_translation key='miles' language=page.get_language %}
-                                        </span>
-
-                                        <input class="course2-finder-content__question-input" id="two" type="radio" name="distance"
-                                               value="25" {% if filter_form.distance == '25' %}checked{% endif %} />
-
-                                        <span class="radiobox"></span>
-                                    </label>
-
-                                    <label class="filters2-block__filter-postcode radio" for="three">
-                                        <span class="filters2-block__filter-postcode-label">
-                                            50 {% get_translation key='miles' language=page.get_language %}
-                                        </span>
-
-                                        <input class="course2-finder-content__question-input" id="three" type="radio" name="distance"
-                                               value="50" {% if filter_form.distance == '50' %}checked{% endif %} />
-
-                                        <span class="radiobox"></span>
-                                    </label>
-                                </div>
-                            </fieldset>
-                        </div>
-                    </div>
-
-                    <input hidden id="postcode_query" name="postcode_query" type="text" value="{{ filter_form.postcode_query }}" />
-                </div>
-
-                {# qualification type filter not yet supported on the API #}
-                <div class="filters2-block__filter">
-                    <h2 class="filters2-block__filter-heading">
-                        {% get_translation key='qualification_type' language=page.get_language %}
-                    </h2>
-
-                    <div class="filters2-block__filter-options">
-
-                        <div class="filters2-block__filter-option">
-                            <label class="filters2-block__filter-qualification checkbox" for="first_degree">
-                                <span class="filters2-block__filter-qualification-label">
-                                    {% get_translation key='first_degree' language=page.get_language %}
-                                </span>
-
-                                <input class="course2-finder-content__question-input" id="first_degree"
-                                    type="checkbox" name="qualification" value="first_degree"
-                                    {% if 'first_degree' in filter_form.qualification_query %}checked{% endif %} />
-
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-
-
-                        <div class="filters2-block__filter-option">
-                            <label class="filters2-block__filter-qualification checkbox" for="other_undergraduate">
-                                <span class="filters2-block__filter-qualification-label">
-                                    {% get_translation key='other_undergraduate' language=page.get_language %}
-                                </span>
-
-                                <input class="course2-finder-content__question-input" id="other_undergraduate"
-                                    type="checkbox" name="qualification" value="other_undergraduate"
-                                    {% if 'other_undergraduate' in filter_form.qualification_query %}checked{% endif %} />
-
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-
-                        {{ page.qualification_helper_text|richtext }}
-                    </div>
-
-                    <input hidden id="qualification_query" name="qualification_query" type="text" value="" />
-                </div>
-
-                <div id="uniFilter" class="filters2-block__filter">
-                    <h2 class="filters2-block__filter-heading">
-                        {% get_translation key='uni_college' language=page.get_language %}
-                    </h2>
-
-                    <div class="filters2-block__filter-uni-controls">
-                        <p class="filters2-block__filter-uni-controls-select">
-                            {% get_translation key='select_all' language=page.get_language %}
-                        </p>
-
-                        <p class="filters2-block__filter-uni-controls-count">
-                            {% if page.is_welsh %}{% get_translation key='selected_1' language=page.get_language %}{% endif %}
-                            <span class="selected">0</span>
-                            {% get_translation key='selected_2' language=page.get_language %}
-                            <span class="total"></span>
-                        </p>
-
-                        <p class="filters2-block__filter-uni-controls-clear">
-                            {% get_translation key='clear_all' language=page.get_language %}
-                        </p>
-                    </div>
-
-                    <fieldset>
-                        <legend hidden>
-                            Letter selectors
-                        </legend>
-
-                        <div class="filters2-block__filter-uni-alphabet">
-                            {% get_alphabet as alphabet %}
-                            {% for letter in alphabet %}
-                                <div class="filters2-block__filter-uni-alphabet-letter">
-                                    <input id="{{letter}}" class="filters2-block__filter-uni-alphabet-input" type="radio" name="letter" value="{{letter}}" />
-
-                                    <label class="filters2-block__filter-uni-alphabet-label" for="{{letter}}">
-                                        {{ letter|upper }}
-                                    </label>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </fieldset>
-
-                    <div class="filters2-block__filter-uni-list" data-selectedunis="{{filter_form.institutions}}">
-
-                    </div>
-
-                    <input hidden id="institution_query" name="institution_query" type="text" value="" />
-                </div> -->
-
-                <div class="filters2-block__submit-block">
-                    <button class="filters2-block__submit-btn disabled">
+                <div class="filters-block__submit-block">
+                    <button class="filters-block__submit-btn disabled">
                         {% get_translation key='apply_filters' language=page.get_language %}
                     </button>
                 </div>

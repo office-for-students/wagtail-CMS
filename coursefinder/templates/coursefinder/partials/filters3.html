@@ -1,0 +1,66 @@
+{% load staticfiles discover_uni_tags wagtailcore_tags %}
+
+<div class="filters2-wrapper">
+    <div class="discover-uni-container">
+        <div class="filters2-block">
+            <form method="post" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %} class="filters2-block__form">
+                {% csrf_token %}
+                
+                <input id="page_input" name="page" type="text" value="{{search.page}}" hidden />
+                <input id="count_input" name="count" type="text" value="{{search.count}}" hidden />
+                
+                <input name="course_query" id="course_query" type="text" value="{{filter_form.course_query}}" hidden />
+                
+                <!-- MY STUFF -->
+                <div class="filters">
+                    <div class="filters-heading">
+                        <div class="filters-heading-title">Filters</div>
+                        <div class="filters-heading-cta">Close</div>
+                    </div>
+                    <div class="filters-filter">
+                        {% comment 'comment_name' %}
+                        {% include 'coursefinder/partials/filters3.html' %}
+                        {% include 'coursefinder/partials/filters3.html' %}
+                        {% endcomment %}
+                    </div>
+                    <!-- <div class="filters-apply-button">Apply filters</div>
+                    <div class="filters-show-button">Show filters</div> -->
+
+                    <div class="course2-finder-results__result-accordion">
+                        <div tabindex="0" role="button" aria-label="Show content" class="course2-finder-results__result-accordion-header">
+                            <div class="course2-finder-results__result-accordion-heading">
+                                <h2 class="course2-finder-results__result-accordion-title">{% get_translation key='study_mode' language=page.get_language %}</h2>
+                            </div>
+                            
+                            <div class="expand">
+                                <img class="nav-card__icon" src="{% static 'images/plus_icon_white.svg' %}" alt="expand">
+                            </div>
+                            
+                            <div class="collapse">
+                                <img class="nav-card__icon" src="{% static 'images/minus_icon.svg' %}" alt="collapse">
+                            </div>
+                        </div>
+                        
+                        <div class="course2-finder-results__result-accordion-body">
+                            <div class="custom-control custom-checkbox mb-1">
+                                <input type="checkbox" class="custom-control-input" id="filterStudyModeFullTime">
+                                <label class="custom-control-label" for="filterStudyModeFullTime">Full time</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="filterStudyModePartTime">
+                                <label class="custom-control-label" for="filterStudyModePartTime">Part time</label>
+                            </div> 
+                        </div>
+                    </div>
+                </div><!-- /MY STUFF END -->
+
+
+                <div class="filters2-block__submit-block">
+                    <button class="filters2-block__submit-btn disabled">
+                        {% get_translation key='apply_filters' language=page.get_language %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

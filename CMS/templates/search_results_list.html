@@ -1,4 +1,6 @@
 {% load staticfiles discover_uni_tags %}
+{% load discover_uni_tags wagtailcore_tags %}
+
 
 <p class="course-finder-results__overview text-center">
 
@@ -24,38 +26,7 @@
         <div class="filters-heading-title">Filters</div>
         <div class="filters-heading-cta">Close</div>
     </div>
-    <div class="filters-filter">
-        <div class="course2-finder-results__result-accordion">
-            <div tabindex="0" role="button" aria-label="Show content"
-                class="course2-finder-results__result-accordion-header">
-                <div class="course2-finder-results__result-aIGNOREccordion-heading">
-                    <h2 class="course2-finder-results__result-aIGNOREccordion-title">{% get_translation key='study_mode'
-                        language=page.get_language %}</h2>
-                </div>
-
-                <div class="expand">
-                    <img src="{% static 'images/plus_icon_white.svg' %}" alt="expand">
-                </div>
-
-                <div class="collapse">
-                    <img src="{% static 'images/minus_icon.svg' %}" alt="collapse">
-                </div>
-            </div>
-
-            <div class="course2-finder-results__result-accordion-body">
-                <div class="custom-control custom-checkbox mb-1">
-                    <input type="checkbox" class="custom-control-input" id="filterStudyModeFullTime">
-                    <label class="custom-control-label" for="filterStudyModeFullTime">Full time</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="filterStudyModePartTime">
-                    <label class="custom-control-label" for="filterStudyModePartTime">Part time</label>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="filters-apply-button">Apply filters</div>
-    <div class="filters-show-button">Show filters</div>
+    {% include 'coursefinder/partials/filters2.html' %}
 </div>
 
 <div class="institutions">
