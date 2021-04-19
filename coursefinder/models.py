@@ -238,32 +238,6 @@ class BaseSearch:
         return math.ceil(self.total_institutions / self.count)
 
 
-class CourseSearch(BaseSearch):
-
-    def __init__(self, subject, institution, page, count, language=enums.languages.ENGLISH):
-        super().__init__(page, count)
-        self.subject = subject
-        self.institution = institution
-        self.total_courses = None
-        self.total_institutions = None
-        self.results = None
-        self.language = language
-
-    def execute(self):
-        response = request_handler.query_course_and_institution(self.subject, self.institution, self.count, self.offset, self.language)
-        error = None
-
-        if response.ok:
-            data = response.json()
-            self.total_courses = data.get('total_number_of_courses')
-            self.total_institutions = data.get('total_results')
-            self.results = data.get('items')
-        else:
-            error = ApiError(response.status_code, 'searching courses for %s %s' %
-                             (self.institution, self.subject))
-
-        return error
-
 
 class CourseFinderSearch(BaseSearch):
 

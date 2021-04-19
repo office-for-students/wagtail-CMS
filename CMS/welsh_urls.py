@@ -9,7 +9,6 @@ from courses import views as course_views
 
 urlpatterns = [
     url(r'^search/$', search_views.search, name='search'),
-    url(r'^results/$', coursefinder_views.results, name='results'),
 
     url(r'^narrow-search/$', coursefinder_views.narrow_search, name='narrow_search'),
     url(r'^course-finder/results/$', coursefinder_views.course_finder_results, name='course_finder_results'),
