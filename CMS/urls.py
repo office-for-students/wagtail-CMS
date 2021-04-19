@@ -21,6 +21,7 @@ from courses.views import regional_earnings
 
 urlpatterns = [
     url(r'^search/$', search_views.search, name='search'),
+    url(r'^results/$', coursefinder_views.results, name='results'),
     url(r'^feedback',  core_views.submit_feedback, name='submit_feedback'),
     url(r'^jsonfiles/subjects',  core_views.get_subjects_json, name='jsonfiles_subjects'),
     url(r'^jsonfiles/institutions/(?P<language>[\w\-]+?)/',  core_views.get_institutions_json, name='jsonfiles_institutions'),
