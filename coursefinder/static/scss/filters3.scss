@@ -1,0 +1,164 @@
+body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    background-color: var(--white);
+  }
+  
+  :root {
+    --pale: #fef7d7;
+    --sun-yellow: #fcd835;
+    --ugly-blue: #308282;
+    --dark: #1f283a;
+    --ice-blue: #f4f8f8;
+    --duck-egg-blue: #cee9e7;
+    --maize: #efcc4b;
+    --very-light-pink: #d2d2d2;
+    --very-light-pink: #f2f2f2;
+    --lipstick: #ce1421;
+    --bruise: #8e3b74;
+    --brownish-orange: #d6501d;
+    --reddish: #c24444;
+    --text-black: #1e1e1e;
+    --dropdown: #e2e2e2;
+    --greyish-brown: #595959;
+    --brown-grey: #7e7e7e;
+    --dusty-teal: #4ea27d;
+    --white: #ffffff;
+    --links: #008784;
+    --very-light-pink: #f2f2f2;
+    --very-light-blue: #e9ecef;
+    --black: #000000;
+    --black-10: rgba(0, 0, 0, 0.1);
+    --light-blue-grey: #ced4d9;
+    --very-light-pink: #e2e2e2;
+  }
+  
+  .filters {
+    margin: 0;
+    padding: 0;
+    width: 255px;
+    background-color: var(--white);
+    position: absolute;
+    overflow: auto;
+  
+    &-filter {
+      display: block;
+    }
+    &-heading {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      &-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: var(--black);
+      }
+      &-cta {
+        font-size: 18px;
+        color: var(--black);
+        display: none;
+      }
+    }
+    &-filter-header {
+      margin-bottom: 5px;
+      padding: 9px 4px 9px 10px;
+      border-radius: 2px;
+      background-color: var(--duck-egg-blue);
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--black);
+    }
+  
+    &-apply-button {
+      margin-top: 12px;
+      margin-bottom: 21px;
+      padding: 7px 47px 9px;
+      border-radius: 2px;
+      box-shadow: 0 2px 4px 0 var(--bruise);
+      background-color: var(--bruise);
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      color: var(--white);
+    }
+  
+    &-show-button {
+      display: none;
+      padding: 8px 0;
+      margin: 0 24px 0 33px;
+      border-radius: 3px;
+      background-color: var(--very-light-blue);
+      font-size: 18px;
+      text-align: center;
+      color: var(--black);
+    }
+  }
+  
+  .institutions {
+    margin-left: 255px;
+    padding-left: 30px;
+    &-heading {
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--black);
+    }
+  
+    &-institution-header {
+      margin-bottom: 20px;
+      padding: 27px 33px;
+      background-image: linear-gradient(278deg, var(--ugly-blue), var(--dusty-teal));
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--white);
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .filters {
+      width: 100%;
+      height: auto;
+      position: relative;
+  
+      &-apply-button {
+        display: none;
+      }
+  
+      &-filter {
+        display: none;
+      }
+  
+      &-show-button {
+        display: block;
+        margin-bottom: 32px;
+      }
+  
+      &-heading {
+        padding-left: 32px;
+      }
+    }
+  
+    .institutions {
+      margin-left: 0;
+      padding-left: 0;
+  
+      &-heading {
+        padding-left: 32px;
+      }
+    }
+  }
+  
+  @media screen and (max-width: 375px) {
+    .filters {
+      &-heading {
+        padding-left: 15px;
+      }
+      &-show-button {
+        margin-left: 15px;
+      }
+    }
+    .institutions-heading {
+      padding-left: 15px;
+    }
+  }
+  

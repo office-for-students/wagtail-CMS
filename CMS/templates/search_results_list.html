@@ -2,42 +2,76 @@
 
 <p class="course-finder-results__overview text-center">
 
-    <div class="course-finder-results__overview-filter-open">
-        {% get_translation key='show_filters' language=page.get_language %}
-        <img class="course-finder-results__overview-filter-icon" src="{% static 'images/chevron-down-solid.svg' %}"
-             alt="">
+<div class="course-finder-results__overview-filter-open">
+    {% get_translation key='show_filters' language=page.get_language %}
+    <img class="course-finder-results__overview-filter-icon" src="{% static 'images/chevron-down-solid.svg' %}" alt="">
+</div>
+
+<div class="course-finder-results__overview-filter-toggle text-center col-12">
+    {% get_translation key='show_filters' language=page.get_language %}
+    <img class="course-finder-results__overview-filter-icon chevron-down"
+        src="{% static 'images/chevron-down-solid.svg' %}" alt="">
+    <img class="course-finder-results__overview-filter-icon chevron-up" src="{% static 'images/chevron-up-solid.svg' %}"
+        alt="">
+</div>
+
+{% include 'coursefinder/partials/filters.html' %}
+
+<hr class="course-finder__result-hr" />
+
+<div class="filters">
+    <div class="filters-heading">
+        <div class="filters-heading-title">Filters</div>
+        <div class="filters-heading-cta">Close</div>
     </div>
+    <div class="filters-filter">
+        <div class="course2-finder-results__result-accordion">
+            <div tabindex="0" role="button" aria-label="Show content"
+                class="course2-finder-results__result-accordion-header">
+                <div class="course2-finder-results__result-aIGNOREccordion-heading">
+                    <h2 class="course2-finder-results__result-aIGNOREccordion-title">{% get_translation key='study_mode'
+                        language=page.get_language %}</h2>
+                </div>
 
-    <div class="course-finder-results__overview-filter-toggle text-center col-12">
-        {% get_translation key='show_filters' language=page.get_language %}
-        <img class="course-finder-results__overview-filter-icon chevron-down"
-             src="{% static 'images/chevron-down-solid.svg' %}" alt="">
-        <img class="course-finder-results__overview-filter-icon chevron-up"
-             src="{% static 'images/chevron-up-solid.svg' %}" alt="">
+                <div class="expand">
+                    <img src="{% static 'images/plus_icon_white.svg' %}" alt="expand">
+                </div>
+
+                <div class="collapse">
+                    <img src="{% static 'images/minus_icon.svg' %}" alt="collapse">
+                </div>
+            </div>
+
+            <div class="course2-finder-results__result-accordion-body">
+                <div class="custom-control custom-checkbox mb-1">
+                    <input type="checkbox" class="custom-control-input" id="filterStudyModeFullTime">
+                    <label class="custom-control-label" for="filterStudyModeFullTime">Full time</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="filterStudyModePartTime">
+                    <label class="custom-control-label" for="filterStudyModePartTime">Part time</label>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="filters-apply-button">Apply filters</div>
+    <div class="filters-show-button">Show filters</div>
+</div>
 
-    {% include 'coursefinder/partials/filters.html' %}
-
-<hr class="course-finder__result-hr"/>
-<!-- -->
-
-<!-- results -->
-<div class="container">    
-    <div class="row">
-        <!-- filters -->
-        <!-- <div class="col"> -->
-        {% include 'coursefinder/partials/filters2.html' %}
-        <!-- </div> -->
-        <!-- /filters -->
-
-        <!-- institutions -->
-        <div class="col">
-            {% for item in search.results %}
-                {% include 'partials/institution_result.html' with institution=item %}
-            {% endfor %}
-        </div><!-- institutions -->
+<div class="institutions">
+    <div class="institutions-heading">
+        Sort by:
+        <font color="#008784">
+            <a href="#">Institution A-Z</a>
+        </font>
     </div>
-</div><!-- /results -->
+    <div class="institutions-institution-header">Institution name</div>
+    <div class="col">
+        {% for item in search.results %}
+        {% include 'partials/institution_result.html' with institution=item %}
+        {% endfor %}
+    </div>
+</div>
 
 
 {% include '_pagination.html' %}

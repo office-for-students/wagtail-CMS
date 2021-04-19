@@ -1,7 +1,7 @@
 .filters2-wrapper {
-    position: absolute;
+    // position: absolute;
     top: 72px;
-    width: 25%;
+    // width: 25%;
     left: -100%;
     z-index: 50;
 
@@ -369,7 +369,7 @@
 
 @media only screen and (min-width: 770px) {
     .filters2-wrapper {
-        position: static;
+        // position: static;
         // display: none;
         max-height: 620px;
         overflow-y: scroll;
