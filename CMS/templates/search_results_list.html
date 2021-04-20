@@ -1,6 +1,4 @@
 {% load staticfiles discover_uni_tags %}
-{% load discover_uni_tags wagtailcore_tags %}
-
 
 <p class="course-finder-results__overview text-center">
 
@@ -26,7 +24,7 @@
         <div class="filters-heading-title">Filters</div>
         <div class="filters-heading-cta">Close</div>
     </div>
-    {% include 'coursefinder/partials/filters3.html' %}
+    {% include 'coursefinder/partials/filters2.html' %}
 </div>
 
 <div class="institutions">
@@ -43,6 +41,5 @@
         {% endfor %}
     </div>
 </div>
-
 
 {% include '_pagination.html' %}
