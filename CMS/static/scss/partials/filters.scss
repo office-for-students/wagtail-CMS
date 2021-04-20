@@ -1,7 +1,5 @@
 .filters-wrapper {
-    position: absolute;
     top: 72px;
-    width: 100%;
     left: -100%;
     z-index: 50;
 
@@ -119,8 +117,6 @@
 
         &-checkbox, &-radio {
             &-input {
-                display: none;
-
                 &:checked ~ label {
                     @include green-gradient-background-mixin();
                 }
@@ -364,7 +360,6 @@
 @media only screen and (min-width: 770px) {
     .filters-wrapper {
         position: static;
-        display: none;
         max-height: 620px;
         overflow-y: scroll;
         margin-top: 10px;

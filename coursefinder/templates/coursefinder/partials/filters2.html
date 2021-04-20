@@ -1,9 +1,9 @@
 {% load staticfiles discover_uni_tags wagtailcore_tags %}
 
-<div class="filters2-wrapper">
+<div class="filters-wrapper">
     <div class="discover-uni-container">
-        <div class="filters2-block">
-            <form method="post" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %} class="filters2-block__form">
+        <div class="filters-block">
+            <form method="post" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %} class="filters-block__form">
                 {% csrf_token %}
                 
                 <input id="page_input" name="page" type="text" value="{{search.page}}" hidden />
@@ -57,8 +57,8 @@
             <!-- /MY STUFF END -->
 
 
-                <div class="filters2-block__submit-block">
-                    <button class="filters2-block__submit-btn disabled">
+                <div class="filters-block__submit-block">
+                    <button class="filters-block__submit-btn disabled">
                         {% get_translation key='apply_filters' language=page.get_language %}
                     </button>
                 </div>
