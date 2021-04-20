@@ -26,6 +26,55 @@
     &__filter {
         padding: 50px 33px;
 
+        &-accordion {
+            margin-bottom: 10px;
+
+            &-header {
+                display:flex;
+                margin-bottom: 5px;
+                padding: 9px 4px 9px 10px;
+                border-radius: 2px;
+                background-color: var(--duck-egg-blue);
+                font-size: 16px;
+                font-weight: bold;
+                color: var(--black);
+               
+                // &:hover {
+                //     border: 3px solid $gradient-light-green;
+                // }
+
+                .collapse, .expand, .open {
+                    display: inline;
+
+                    img {
+                        width: 16px;
+                    }
+                }
+   
+            }
+
+            &-title {
+                @include mobile-body-font--bold-mixin();
+
+                margin: 0px;
+                margin-bottom: 10px;
+
+                color: $ux-grey-3;
+            }
+
+            &-body {
+                background-color: rgba(248, 212, 65, 0.2);
+                padding: 1rem;
+
+                &-content {
+                    background-color: #FFFFFF;
+
+                    border-bottom: 2px solid $ux-grey-1;
+                    padding: 30px;
+                }
+            }
+        }
+
         &:nth-child(even) {
             background-color: $divider-grey;
         }
@@ -392,6 +441,55 @@
 
         &__filter {
             padding: 50px 81px;
+
+            &-accordion {
+                margin-bottom: 10px;      
+    
+                &-header {
+                    display:flex;
+                    margin-bottom: 5px;
+                    padding: 9px 4px 9px 10px;
+                    border-radius: 2px;
+                    background-color: var(--duck-egg-blue);
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: var(--black);
+                   
+                    // &:hover {
+                    //     border: 3px solid $gradient-light-green;
+                    // }
+    
+                    // .collapse, .expand, .open {
+                    //     display: inline;
+    
+                    //     img {
+                    //         width: 16px;
+                    //     }
+                    // }
+       
+                }
+    
+                &-title {
+                    @include mobile-body-font--bold-mixin();
+    
+                    margin: 0px;
+                    margin-bottom: 10px;
+    
+                    color: $ux-grey-3;
+                }
+    
+                &-body {
+                    background-color: rgba(248, 212, 65, 0.2);
+                    padding: 1rem;
+    
+                    &-content {
+                        background-color: #FFFFFF;
+    
+                        border-bottom: 2px solid $ux-grey-1;
+                        padding: 30px;
+                    }
+                }
+            }            
 
             &-options {
                 flex-wrap: nowrap;

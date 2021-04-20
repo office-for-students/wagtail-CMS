@@ -16,12 +16,14 @@
                     <div class="filters-filter-header">Study mode</div>                   
                     <div class="course-finder-results__result-accordion">
                         <fieldset>
-                            <div tabindex="0" role="button" aria-label="Show content" class="course-finder-results__result-accordion-header">
-                                <div class="course-finder-results__result-accordion-heading">
-                                    <h2 class="course-finder-results__result-accordion-title">
-                                        {% get_translation key='study_mode' language=page.get_language %}
-                                    </h2>
-                                </div>
+                            <div tabindex="0" role="button" aria-label="Show content" class="filters-block__filter-accordion-header">
+                                <!-- <div class="course-finder-results__result-accordion-heading">  -->
+                                <!-- <div class="filters-block__filter-heading"> -->
+                                <!-- <div class=""> -->
+                                <!-- <div class="course-finder-results__result-accordion-title"> -->
+                                {% get_translation key='study_mode' language=page.get_language %}
+                                    <!-- </div> -->
+                                <!-- </div> -->
                                 
                                 <div class="expand">
                                     <img src="{% static 'images/plus_icon_white.svg' %}" alt="expand">
@@ -49,6 +51,8 @@
                                     </label>
                                 </div>
                             </div>                            
+                            {% comment %}
+                            {% endcomment %}
                         <fieldset>                        
                     </div>
                 </div>
