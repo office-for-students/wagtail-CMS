@@ -12,36 +12,62 @@
                 <input name="course_query" id="course_query" type="text" value="{{filter_form.course_query}}" hidden />
                 
                 <!-- MY STUFF -->
-                <div class="filters">
-                    <div class="filters-heading">
-                        <div class="filters-heading-title">Filters</div>
-                        <div class="filters-heading-cta">Close</div>
-                    </div>
-                    <div class="filters-filter">
-                        {% comment 'comment_name' %}
-                        {% include 'coursefinder/partials/filters3.html' %}
-                        {% include 'coursefinder/partials/filters3.html' %}
-                        {% endcomment %}
-                    </div>
-                    <!-- <div class="filters-apply-button">Apply filters</div>
-                    <div class="filters-show-button">Show filters</div> -->
-
-                    <div class="course2-finder-results__result-accordion">
-                        <div tabindex="0" role="button" aria-label="Show content" class="course2-finder-results__result-accordion-header">
-                            <div class="course2-finder-results__result-accordion-heading">
-                                <h2 class="course2-finder-results__result-accordion-title">{% get_translation key='study_mode' language=page.get_language %}</h2>
+                <div class="filters-filter">
+                    <div class="filters-filter-header">Study mode</div>
+                    <div class="filters-filter-header">Subject</div>
+                    <div class="filters-filter-header">Location</div>
+                    <div class="filters-filter-header">Institution</div>
+                    <div class="filters-filter-header">Study options</div>
+                    <div class="filters-filter-header">Qualification types</div>
+                    <div class="filters-block__filter">
+                        <fieldset>
+                            <legend>
+                                <h2 class="filters-block__filter-heading">
+                                    {% get_translation key='study_mode' language=page.get_language %}
+                                </h2>
+                            </legend>
+    
+                            <div class="filters-block__filter-options">
+                                <div class="filters-block__filter-option--three-col">
+                                    <input id="mode-full-time" class="" type="checkbox" name="mode_query" value="Full-time"
+                                        {% if 'Full-time' in filter_form.mode_query %}checked{% endif %}/>
+    
+                                    <label class="" for="mode-full-time">
+                                            {% get_translation key='full_time' language=page.get_language %}
+                                    </label>
+                                </div>
+    
+                                <div class="filters-block__filter-option--three-col">
+                                    <input id="mode-part-time" class="" type="checkbox" name="mode_query" value="Part-time"
+                                        {% if 'Part-time' in filter_form.mode_query %}checked{% endif %}/>
+    
+                                    <label class="" for="mode-part-time">
+                                        {% get_translation key='part_time' language=page.get_language %}
+                                    </label>
+                                </div>
                             </div>
-                            
+                        </fieldset>
+                    </div>                    
+                
+                    <div class="course-finder-results__result-accordion">
+                        <div tabindex="0" role="button" aria-label="Show content"
+                            class="course-finder-results__result-accordion-header">
+                            <div class="course-finder-results__result-accordion-heading">
+                                <h2 class="course-finder-results__result-accordion-title">
+                                    {% get_translation key='study_mode' language=page.get_language %}
+                                </h2>
+                            </div>
+            
                             <div class="expand">
-                                <img class="nav-card__icon" src="{% static 'images/plus_icon_white.svg' %}" alt="expand">
+                                <img src="{% static 'images/plus_icon_white.svg' %}" alt="expand">
                             </div>
-                            
+            
                             <div class="collapse">
-                                <img class="nav-card__icon" src="{% static 'images/minus_icon.svg' %}" alt="collapse">
+                                <img src="{% static 'images/minus_icon.svg' %}" alt="collapse">
                             </div>
                         </div>
-                        
-                        <div class="course2-finder-results__result-accordion-body">
+            
+                        <div class="course-finder-results__result-accordion-body">
                             <div class="custom-control custom-checkbox mb-1">
                                 <input type="checkbox" class="custom-control-input" id="filterStudyModeFullTime">
                                 <label class="custom-control-label" for="filterStudyModeFullTime">Full time</label>
@@ -49,10 +75,13 @@
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="filterStudyModePartTime">
                                 <label class="custom-control-label" for="filterStudyModePartTime">Part time</label>
-                            </div> 
+                            </div>
                         </div>
                     </div>
-                </div><!-- /MY STUFF END -->
+                </div>                
+                <div class="filters-apply-button">Apply filters</div>
+                <div class="filters-show-button">Show filters</div>
+                <!-- /MY STUFF END -->
 
 
                 <div class="filters2-block__submit-block">
