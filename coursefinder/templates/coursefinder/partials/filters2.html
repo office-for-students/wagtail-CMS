@@ -27,7 +27,7 @@
                                     {% if 'Full-time' in filter_form.mode_query %}checked{% endif %}/>
 
                                 <label class="" for="mode-full-time">
-                                    {% get_translation key='full_time' language=page.get_language %}
+                                        {% get_translation key='full_time' language=page.get_language %}
                                 </label>
                             </div>
 
@@ -47,6 +47,8 @@
                     <button class="filters-block__submit-btn disabled">
                         {% get_translation key='apply_filters' language=page.get_language %}
                     </button>
+                    <div class="filters-apply-button">Apply filters</div>
+                    <div class="filters-show-button">Show filters</div>            
                 </div>
             </form>
         </div>

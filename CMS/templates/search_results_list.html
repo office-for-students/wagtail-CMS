@@ -4,6 +4,7 @@
 
 <p class="course-finder-results__overview text-center">
 
+{% comment %}
 <div class="course-finder-results__overview-filter-open">
     {% get_translation key='show_filters' language=page.get_language %}
     <img class="course-finder-results__overview-filter-icon" src="{% static 'images/chevron-down-solid.svg' %}" alt="">
@@ -12,12 +13,13 @@
 <div class="course-finder-results__overview-filter-toggle text-center col-12">
     {% get_translation key='show_filters' language=page.get_language %}
     <img class="course-finder-results__overview-filter-icon chevron-down"
-        src="{% static 'images/chevron-down-solid.svg' %}" alt="">
+    src="{% static 'images/chevron-down-solid.svg' %}" alt="">
     <img class="course-finder-results__overview-filter-icon chevron-up" src="{% static 'images/chevron-up-solid.svg' %}"
-        alt="">
+    alt="">
 </div>
 
 {% include 'coursefinder/partials/filters.html' %}
+{% endcomment %}
 
 <hr class="course-finder__result-hr" />
 
