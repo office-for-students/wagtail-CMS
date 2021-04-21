@@ -1,17 +1,17 @@
 {% load staticfiles discover_uni_tags wagtailcore_tags %}
 
-<div class="filters-wrapper">
+<div class="filters2-wrapper">
     <div class="discover-uni-container">
-        <div class="filters-heading">
-            <div class="filters-heading-title">
+        <div class="filters2-heading">
+            <div class="filters2-heading-title">
                 {% get_translation key='filters' language=page.get_language %}
             </div>
-            <div class="filters-heading-cta">
+            <div class="filters2-heading-cta">
                 {% get_translation key='close' language=page.get_language %}
             </div>
         </div>
-        <div class="filters-block">
-            <form method="post" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %} class="filters-block__form">
+        <div class="filters2-block">
+            <form method="post" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %} class="filters2-block__form">
                 {% csrf_token %}
                 
                 <input id="page_input" name="page" type="text" value="{{search.page}}" hidden />
@@ -19,12 +19,12 @@
                 
                 <input name="course_query" id="course_query" type="text" value="{{filter_form.course_query}}" hidden />
                 
-                <div class="filters-filter">
-                    <div class="filters-block__filter-accordion">
+                <div class="filters2-filter">
+                    <div class="filters2-block__filter-accordion">
                         <fieldset>
-                            <div tabindex="0" role="button" aria-label="Show content" class="filters-block__filter-accordion-header">
-                                <div class="filters-block__filter-accordion-heading"> 
-                                    <div class="filters-block__filter-accordion-title">                                        
+                            <div tabindex="0" role="button" aria-label="Show content" class="filters2-block__filter-accordion-header">
+                                <div class="filters2-block__filter-accordion-heading"> 
+                                    <div class="filters2-block__filter-accordion-title">                                        
                                         {% get_translation key='study_mode' language=page.get_language %}
                                     </div>
                                 </div>
@@ -37,32 +37,32 @@
                                     <img src="/static/images/minus_icon_black.svg" alt="collapse">
                                 </div>
                             </div>
-                            <div class="filters-block__filter-accordion-body" style="display: none;">
+                            <div class="filters2-block__filter-accordion-body" style="display: none;">
                                 <div>
                                     <input 
                                         id="mode-full-time" 
-                                        class="filters-block__filter-checkbox-input" 
+                                        class="filters2-block__filter-checkbox-input" 
                                         type="checkbox" 
                                         name="mode_query" 
                                         value="Full-time"
                                         {% if 'Full-time' in filter_form.mode_query %}checked{% endif %}
                                     />
                                     
-                                    <label class="filters-block__filter-checkbox-label" for="mode-full-time">
+                                    <label class="filters2-block__filter-checkbox-label" for="mode-full-time">
                                         {% get_translation key='full_time' language=page.get_language %}
                                     </label>
                                 </div>
                                 <div>
                                     <input 
                                         id="mode-part-time" 
-                                        class="filters-block__filter-checkbox-input" 
+                                        class="filters2-block__filter-checkbox-input" 
                                         type="checkbox" 
                                         name="mode_query" 
                                         value="Part-time"
                                         {% if 'Part-time' in filter_form.mode_query %}checked{% endif %}
                                     />
                                     
-                                    <label class="filters-block__filter-checkbox-label" for="mode-part-time">
+                                    <label class="filters2-block__filter-checkbox-label" for="mode-part-time">
                                         {% get_translation key='part_time' language=page.get_language %}
                                     </label>
                                 </div>
@@ -72,10 +72,10 @@
                     </div>
                 </div>
                 
-                <button class="filters-block__submit-btn">
+                <button class="filters2-block__submit-btn">
                     {% get_translation key='apply_filters' language=page.get_language %}
 
-                <button class="filters-block__show-btn">
+                <button class="filters2-block__show-btn">
                     {% get_translation key='show_filters' language=page.get_language %}
                 </div>
             </form>

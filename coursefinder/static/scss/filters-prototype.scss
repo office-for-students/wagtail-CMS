@@ -33,7 +33,7 @@ body {
     --very-light-pink: #c49292;
   }
   
-  .filters {
+  .filters2 {
     margin: 0;
     padding: 0;
     width: 255px;
@@ -114,7 +114,7 @@ body {
   }
   
   @media screen and (max-width: 576px) {
-    .filters {
+    .filters2 {
       width: 100%;
       height: auto;
       position: relative;
@@ -148,7 +148,7 @@ body {
   }
   
   @media screen and (max-width: 375px) {
-    .filters {
+    .filters2 {
       &-heading {
         padding-left: 15px;
       }
