@@ -27,7 +27,7 @@
 
 <div class="institutions">
     <div class="institutions-heading">
-        Sort by:
+        {% get_translation key='sort_by' language=page.get_language %}
     </div>
     {% for item in search.results %}
     {% include 'partials/institution_result.html' with institution=item %}

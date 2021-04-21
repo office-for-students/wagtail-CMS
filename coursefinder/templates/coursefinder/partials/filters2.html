@@ -3,8 +3,12 @@
 <div class="filters-wrapper">
     <div class="discover-uni-container">
         <div class="filters-heading">
-            <div class="filters-heading-title">Filters</div>
-            <div class="filters-heading-cta">Close</div>
+            <div class="filters-heading-title">
+                {% get_translation key='filters' language=page.get_language %}
+            </div>
+            <div class="filters-heading-cta">
+                {% get_translation key='close' language=page.get_language %}
+            </div>
         </div>
         <div class="filters-block">
             <form method="post" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %} class="filters-block__form">
@@ -15,7 +19,6 @@
                 
                 <input name="course_query" id="course_query" type="text" value="{{filter_form.course_query}}" hidden />
                 
-                <!-- MY STUFF -->
                 <div class="filters-filter">
                     <div class="filters-block__filter-accordion">
                         <fieldset>
@@ -68,15 +71,12 @@
                         <fieldset>                        
                     </div>
                 </div>
-                <!-- <div class="filters-apply-button">Apply filters</div> -->
-                <!-- <div class="filters-show-button">Show filters</div> -->
-                <!-- /MY STUFF END -->
                 
                 <button class="filters-block__submit-btn">
                     {% get_translation key='apply_filters' language=page.get_language %}
 
                 <button class="filters-block__show-btn">
-                    Show filters
+                    {% get_translation key='show_filters' language=page.get_language %}
                 </div>
             </form>
         </div>
