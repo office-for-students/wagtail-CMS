@@ -36,12 +36,9 @@
             <a href="#">Institution A-Z</a>
         </font>
     </div>
-    <div class="institutions-institution-header">Institution name</div>
-    <div class="col">
-        {% for item in search.results %}
-        {% include 'partials/institution_result.html' with institution=item %}
-        {% endfor %}
-    </div>
+    {% for item in search.results %}
+    {% include 'partials/institution_result.html' with institution=item %}
+    {% endfor %}
 </div>
 
 {% include '_pagination.html' %}

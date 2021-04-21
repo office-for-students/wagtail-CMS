@@ -13,7 +13,6 @@
                 
                 <!-- MY STUFF -->
                 <div class="filters-filter">
-                    <div class="filters-filter-header">Study mode</div>                   
                     <div class="course-finder-results__result-accordion">
                         <fieldset>
                             <!-- <div tabindex="0" role="button" aria-label="Show content" class="course-finder-results__result-accordion-header" aria-expanded="false"> -->
@@ -73,8 +72,11 @@
                 <!-- <div class="filters-show-button">Show filters</div> -->
                 <!-- /MY STUFF END -->
                 
-                    <button class="filters-block__submit-btn">
-                        {% get_translation key='apply_filters' language=page.get_language %}
+                <button class="filters-block__submit-btn">
+                    {% get_translation key='apply_filters' language=page.get_language %}
+
+                <button class="filters-block__show-btn">
+                    Show filters
                 </div>
             </form>
         </div>

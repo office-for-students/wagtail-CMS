@@ -403,6 +403,31 @@
             // }
         }
     }
+    &__show {
+        &-btn {
+            display: none;
+            width: -webkit-fill-available;
+            padding: 8px 0;
+            margin: 0 24px 0 33px;
+            border-radius: 3px;
+            background-color: var(--very-light-blue);
+            font-size: 18px;
+            text-align: center;
+            color: var(--black);
+
+            // &.disabled {
+            //     background: $white;
+            //     border: 2px solid $ux-grey-3;
+            //     color: $ux-grey-3;
+            // }
+
+            // &:hover {
+            //     background: $white;
+            //     border: 2px solid $gradient-light-green;
+            //     color: $gradient-light-green;
+            // }
+        }
+    }
 
     .course-finder-content__question-selector {
         width: 100%;
@@ -435,7 +460,21 @@
             position: relative;
         }
 
+        &__show {
+            &-btn {
+                display:block;
+                margin-bottom: 32px;
+            }
+            &-block {
+                position: relative;
+                left: 0;
+                bottom: 0;
+            }
+        }
         &__submit {
+            &-btn {
+                display:none;
+            }
             &-block {
                 position: relative;
                 left: 0;
