@@ -67,7 +67,7 @@
             }
 
             &-body {
-                background-color: rgba(248, 212, 65, 0.2);
+                // background-color: rgba(248, 212, 65, 0.2);
                 padding: 1rem;
 
                 &-content {
@@ -171,22 +171,22 @@
         &-checkbox, &-radio {
             &-input {
                 &:checked ~ label {
-                    @include green-gradient-background-mixin();
+                    // @include green-gradient-background-mixin();
                 }
             }
 
             &-label{
-                @include small-font--bold-mixin();
+                // @include small-font--bold-mixin();
 
-                display: block;
-                text-align: center;
-                padding: 31px 0px;
-                margin-top: 15px;
+                // display: block;
+                // text-align: center;
+                // padding: 31px 0px;
+                // margin-top: 15px;
 
-                background: $white;
-                border: 1px solid $ux-grey-1;
-                box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.08);
-                border-radius: 5px;
+                // background: $white;
+                // border: 1px solid $ux-grey-1;
+                // box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.08);
+                // border-radius: 5px;
             }
         }
 

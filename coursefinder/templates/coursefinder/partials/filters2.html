@@ -34,19 +34,34 @@
                                     <img src="/static/images/minus_icon_black.svg" alt="collapse">
                                 </div>
                             </div>
-                            <div class="course-finder-results__result-accordion-body" style="display: none;">
+                            <!-- <div class="course-finder-results__result-accordion-body" style="display: none;"> -->
+                            <div class="filters-block__filter-accordion-body" style="display: none;">
                                 <div>
-                                    <input id="mode-full-time" class="" type="checkbox" name="mode_query" value="Full-time">
+                                    <input 
+                                        id="mode-full-time" 
+                                        class="filters-block__filter-checkbox-input" 
+                                        type="checkbox" 
+                                        name="mode_query" 
+                                        value="Full-time"
+                                        {% if 'Full-time' in filter_form.mode_query %}checked{% endif %}
+                                    />
                                     
-                                    <label class="" for="mode-full-time">
-                                        Full time
+                                    <label class="filters-block__filter-checkbox-label" for="mode-full-time">
+                                        {% get_translation key='full_time' language=page.get_language %}
                                     </label>
                                 </div>
                                 <div>
-                                    <input id="mode-part-time" class="" type="checkbox" name="mode_query" value="Part-time">
+                                    <input 
+                                        id="mode-part-time" 
+                                        class="filters-block__filter-checkbox-input" 
+                                        type="checkbox" 
+                                        name="mode_query" 
+                                        value="Part-time"
+                                        {% if 'Part-time' in filter_form.mode_query %}checked{% endif %}
+                                    />
                                     
-                                    <label class="" for="mode-part-time">
-                                        Part time
+                                    <label class="filters-block__filter-checkbox-label" for="mode-part-time">
+                                        {% get_translation key='part_time' language=page.get_language %}
                                     </label>
                                 </div>
                             </div>                            
