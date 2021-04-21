@@ -68,7 +68,7 @@
 
             &-body {
                 // background-color: rgba(248, 212, 65, 0.2);
-                padding: 1rem;
+                padding: 10px;
 
                 &-content {
                     background-color: #FFFFFF;
@@ -176,6 +176,12 @@
             }
 
             &-label{
+                // width: 187px;
+                // height: 22px;
+                // margin: 19px 28px 8px 10px;
+                // font-family: NunitoSans;
+                font-size: 16px;
+                // color: var(--black);                
                 // @include small-font--bold-mixin();
 
                 // display: block;
