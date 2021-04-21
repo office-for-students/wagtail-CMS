@@ -38,7 +38,8 @@
         color:$black;
         font-weight:bold;
         font-size:1.2rem;
-        padding:1rem;
+        padding: 32px 0px;
+        
 
         input#institution_query-search.search-field-input {
             border-width: 1px solid #ced4da !important;
@@ -102,7 +103,7 @@
     background-color: rgba(248, 212, 65, 0.2);
     max-width:370px;
     margin-left:auto;
-    // margin-right:1rem;
+    margin-right:1rem;
 
     .home-page__search-button {
         background-color: #fcd835;
@@ -756,15 +757,30 @@
 
 
 
-@media only screen and (max-width: 575px){
-    .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content{
+@media only screen and (max-width: 576px){
+    .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content {
         margin-left:auto!important;
         margin-right:auto!important;
-        padding: 1rem;
+        // padding: 32px;
     }
+
+    .course-finder__header {
+        // margin-left:auto!important;
+        // margin-right:auto!important;
+        padding: 32px;
+    }
+
+    .course-finder-base__nav {
+        padding-left: 32px;
 }
-@media only screen and (min-width: 576px) and (max-width: 766px){
-    .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content{
+    
+}
+
+@media only screen and (min-width: 577px) and (max-width: 766px){
+    .course-finder__intro-panel, 
+    .course-finder-base.course-finder-results, 
+    .course-finder__header-content 
+    {
         width: 540px!important;
         margin-left:auto!important;
         margin-right:auto!important;
@@ -792,6 +808,6 @@
         width: 1140px!important;
         margin-left:auto!important;
         margin-right:auto!important;
-        padding: 1rem;
+        // padding: 1rem;
     }
 }

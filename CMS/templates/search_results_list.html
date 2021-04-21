@@ -28,11 +28,6 @@
 <div class="institutions">
     <div class="institutions-heading">
         Sort by:
-        <a class="institutions-heading-sort-selected" href="#">Institution A-Z</a>
-        <!-- &NonBreakingSpace;
-        &NonBreakingSpace;
-        &NonBreakingSpace;
-        <a class="institutions-heading-sort" href="#">Subject</a> -->
     </div>
     {% for item in search.results %}
     {% include 'partials/institution_result.html' with institution=item %}

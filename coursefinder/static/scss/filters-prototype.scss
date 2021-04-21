@@ -102,16 +102,6 @@ body {
       font-size: 18px;
       font-weight: bold;
       color: var(--black);
-      &-sort {
-        color: var(--links);
-        &-selected {
-          color: var(--links);
-          font-weight: bold;
-          text-decoration: underline; 
-          font-weight: bold;
-        }
-      }
-
     }
     &-institution-header {
       margin-bottom: 20px;
