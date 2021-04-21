@@ -30,7 +30,7 @@ body {
     --black: #000000;
     --black-10: rgba(0, 0, 0, 0.1);
     --light-blue-grey: #ced4d9;
-    --very-light-pink: #e2e2e2;
+    --very-light-pink: #c49292;
   }
   
   .filters {
@@ -95,15 +95,24 @@ body {
   }
   
   .institutions {
-    margin-left: 255px;
-    padding-left: 30px;
+    margin-left: 285px;
+    // padding-left: 30px;
     &-heading {
       margin-bottom: 20px;
       font-size: 18px;
       font-weight: bold;
       color: var(--black);
+      &-sort {
+        color: var(--links);
+        &-selected {
+          color: var(--links);
+          font-weight: bold;
+          text-decoration: underline; 
+          font-weight: bold;
+        }
+      }
+
     }
-  
     &-institution-header {
       margin-bottom: 20px;
       padding: 27px 33px;

@@ -17,13 +17,10 @@
                 
                 <!-- MY STUFF -->
                 <div class="filters-filter">
-                    <div class="course-finder-results__result-accordion">
+                    <div class="filters-block__filter-accordion">
                         <fieldset>
-                            <!-- <div tabindex="0" role="button" aria-label="Show content" class="course-finder-results__result-accordion-header" aria-expanded="false"> -->
                             <div tabindex="0" role="button" aria-label="Show content" class="filters-block__filter-accordion-header">
-                                <!-- <div class="course-finder-results__result-accordion-heading">  -->
                                 <div class="filters-block__filter-accordion-heading"> 
-                                    <!-- <div class="course-finder-results__result-accordion-title">                                         -->
                                     <div class="filters-block__filter-accordion-title">                                        
                                         {% get_translation key='study_mode' language=page.get_language %}
                                     </div>
@@ -37,7 +34,58 @@
                                     <img src="/static/images/minus_icon_black.svg" alt="collapse">
                                 </div>
                             </div>
-                            <!-- <div class="course-finder-results__result-accordion-body" style="display: none;"> -->
+                            <div class="filters-block__filter-accordion-body" style="display: none;">
+                                <div>
+                                    <input 
+                                        id="mode-full-time" 
+                                        class="filters-block__filter-checkbox-input" 
+                                        type="checkbox" 
+                                        name="mode_query" 
+                                        value="Full-time"
+                                        {% if 'Full-time' in filter_form.mode_query %}checked{% endif %}
+                                    />
+                                    
+                                    <label class="filters-block__filter-checkbox-label" for="mode-full-time">
+                                        {% get_translation key='full_time' language=page.get_language %}
+                                    </label>
+                                </div>
+                                <div>
+                                    <input 
+                                        id="mode-part-time" 
+                                        class="filters-block__filter-checkbox-input" 
+                                        type="checkbox" 
+                                        name="mode_query" 
+                                        value="Part-time"
+                                        {% if 'Part-time' in filter_form.mode_query %}checked{% endif %}
+                                    />
+                                    
+                                    <label class="filters-block__filter-checkbox-label" for="mode-part-time">
+                                        {% get_translation key='part_time' language=page.get_language %}
+                                    </label>
+                                </div>
+                            </div>                            
+                            
+                        <fieldset>                        
+                    </div>
+                </div>
+                <div class="filters-filter">
+                    <div class="filters-block__filter-accordion">
+                        <fieldset>
+                            <div tabindex="0" role="button" aria-label="Show content" class="filters-block__filter-accordion-header">
+                                <div class="filters-block__filter-accordion-heading"> 
+                                    <div class="filters-block__filter-accordion-title">                                        
+                                        {% get_translation key='study_mode' language=page.get_language %}
+                                    </div>
+                                </div>
+                                
+                                <div class="expand" style="display: block;">
+                                    <img src="/static/images/plus_icon_black.svg" alt="expand">
+                                </div>
+                                
+                                <div class="collapse" style="display: none;">
+                                    <img src="/static/images/minus_icon_black.svg" alt="collapse">
+                                </div>
+                            </div>
                             <div class="filters-block__filter-accordion-body" style="display: none;">
                                 <div>
                                     <input 
