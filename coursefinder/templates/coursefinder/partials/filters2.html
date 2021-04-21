@@ -2,6 +2,10 @@
 
 <div class="filters-wrapper">
     <div class="discover-uni-container">
+        <div class="filters-heading">
+            <div class="filters-heading-title">Filters</div>
+            <div class="filters-heading-cta">Close</div>
+        </div>
         <div class="filters-block">
             <form method="post" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %} class="filters-block__form">
                 {% csrf_token %}
