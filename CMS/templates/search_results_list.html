@@ -1,4 +1,4 @@
-{% load discover_uni_tags sass_tags %}
+{% load static discover_uni_tags sass_tags %}
 
 {% block extra_css %}
     <link href="{% sass_src 'scss/side-filters.scss' %}?{% code_version %}" rel="stylesheet" type="text/css"> 
@@ -6,7 +6,6 @@
 
 <p class="course-finder-results__overview text-center">
 
-{% comment %}
 <div class="course-finder-results__overview-filter-open">
     {% get_translation key='show_filters' language=page.get_language %}
     <img class="course-finder-results__overview-filter-icon" src="{% static 'images/chevron-down-solid.svg' %}" alt="">
@@ -23,7 +22,6 @@
 {% include 'coursefinder/partials/filters.html' %}
 
 <hr class="course-finder__result-hr" />
-{% endcomment %}
 
 {% include 'coursefinder/partials/side-filters.html' %}
 <div class="side-filters-institutions">
