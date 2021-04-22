@@ -4,106 +4,108 @@
     <link href="{% sass_src 'scss/side-filters.scss' %}?{% code_version %}" rel="stylesheet" type="text/css"> 
 {% endblock extra_css %}
 
-<div class="side-filters-heading">
-    <div class="side-filters-heading-title">
-        {% get_translation key='filters' language=page.get_language %}
-    </div>
-    <div class="side-filters-heading-cta">
-        {% get_translation key='close' language=page.get_language %}
-    </div>
-</div>
-<div class="side-filters-block">
-    <form method="post" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %} class="side-filters-block__form">
-        {% csrf_token %}
-
-        <input id="page_input" name="page" type="text" value="{{search.page}}" hidden />
-        <input id="count_input" name="count" type="text" value="{{search.count}}" hidden />
-
-        <input name="course_query" id="course_query" type="text" value="{{filter_form.course_query}}" hidden />
-
-        <div class="side-filters-filter">
-            <div class="side-filters-block__filter-accordion">
-                <fieldset>
-                    <div tabindex="0" role="button" aria-label="Show content" class="side-filters-block__filter-accordion-header">
-                        <div class="side-filters-block__filter-accordion-heading">
-                            <div class="side-filters-block__filter-accordion-title">
-                                {% get_translation key='study_mode' language=page.get_language %}
-                            </div>
-                        </div>
-
-                        <div class="expand">
-                            <img src="/static/images/plus_icon_black.svg" alt="expand">
-                        </div>
-
-                        <div class="collapse">
-                            <img src="/static/images/minus_icon_black.svg" alt="collapse">
-                        </div>
-                    </div>
-                    <div class="side-filters-block__filter-accordion-body">
-                        <div class="side-filters-block__filter-options">
-                            <div class="side-filters-block__filter-option">
-                                <input id="mode-full-time" class="side-filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Full-time" {% if 'Full-time' in filter_form.mode_query %}checked{% endif %} />
-                                
-                                <label class="side-filters-block__filter-checkbox-label" for="mode-full-time">
-                                    {% get_translation key='full_time' language=page.get_language %}
-                                </label>
-                            </div>
-                            <div class="side-filters-block__filter-option">
-                                <input id="mode-part-time" class="side-filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Part-time" {% if 'Part-time' in filter_form.mode_query %}checked{% endif %} />
-
-                                <label class="side-filters-block__filter-checkbox-label" for="mode-part-time">
-                                    {% get_translation key='part_time' language=page.get_language %}
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                <fieldset>
-            </div>
+<div class="side-filters">
+    <div class="side-filters-heading">
+        <div class="side-filters-heading-title">
+            {% get_translation key='filters' language=page.get_language %}
         </div>
-        <div class="side-filters-filter">
-            <div class="side-filters-block__filter-accordion">
-                <fieldset>
-                    <div tabindex="0" role="button" aria-label="Show content" class="side-filters-block__filter-accordion-header">
-                        <div class="side-filters-block__filter-accordion-heading">
-                            <div class="side-filters-block__filter-accordion-title">
-                                {% get_translation key='study_mode' language=page.get_language %}
-                            </div>
-                        </div>
-
-                        <div class="expand">
-                            <img src="/static/images/plus_icon_black.svg" alt="expand">
-                        </div>
-
-                        <div class="collapse">
-                            <img src="/static/images/minus_icon_black.svg" alt="collapse">
-                        </div>
-                    </div>
-                    <div class="side-filters-block__filter-accordion-body">
-                        <div class="side-filters-block__filter-options">
-                            <div class="side-filters-block__filter-option">
-                                <input id="mode-full-time" class="side-filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Full-time" {% if 'Full-time' in filter_form.mode_query %}checked{% endif %} />
-                                
-                                <label class="side-filters-block__filter-checkbox-label" for="mode-full-time">
-                                    {% get_translation key='full_time' language=page.get_language %}
-                                </label>
-                            </div>
-                            <div class="side-filters-block__filter-option">
-                                <input id="mode-part-time" class="side-filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Part-time" {% if 'Part-time' in filter_form.mode_query %}checked{% endif %} />
-
-                                <label class="side-filters-block__filter-checkbox-label" for="mode-part-time">
-                                    {% get_translation key='part_time' language=page.get_language %}
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                <fieldset>
-            </div>
+        <div class="side-filters-heading-cta">
+            {% get_translation key='close' language=page.get_language %}
         </div>
+    </div>
+    <div class="side-filters-block">
+        <form method="post" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %} class="side-filters-block__form">
+            {% csrf_token %}
 
-        <button class="side-filters-block__submit-btn">
-            {% get_translation key='apply_filters' language=page.get_language %}
+            <input id="page_input" name="page" type="text" value="{{search.page}}" hidden />
+            <input id="count_input" name="count" type="text" value="{{search.count}}" hidden />
 
-        <button class="side-filters-block__show-btn">
-            {% get_translation key='show_filters' language=page.get_language %}
-    </form>
+            <input name="course_query" id="course_query" type="text" value="{{filter_form.course_query}}" hidden />
+
+            <div class="side-filters-filter">
+                <div class="side-filters-block__filter-accordion">
+                    <fieldset>
+                        <div tabindex="0" role="button" aria-label="Show content" class="side-filters-block__filter-accordion-header">
+                            <div class="side-filters-block__filter-accordion-heading">
+                                <div class="side-filters-block__filter-accordion-title">
+                                    {% get_translation key='study_mode' language=page.get_language %}
+                                </div>
+                            </div>
+
+                            <div class="expand">
+                                <img src="/static/images/plus_icon_black.svg" alt="expand">
+                            </div>
+
+                            <div class="collapse">
+                                <img src="/static/images/minus_icon_black.svg" alt="collapse">
+                            </div>
+                        </div>
+                        <div class="side-filters-block__filter-accordion-body">
+                            <div class="side-filters-block__filter-options">
+                                <div class="side-filters-block__filter-option">
+                                    <input id="mode-full-time" class="side-filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Full-time" {% if 'Full-time' in filter_form.mode_query %}checked{% endif %} />
+                                    
+                                    <label class="side-filters-block__filter-checkbox-label" for="mode-full-time">
+                                        {% get_translation key='full_time' language=page.get_language %}
+                                    </label>
+                                </div>
+                                <div class="side-filters-block__filter-option">
+                                    <input id="mode-part-time" class="side-filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Part-time" {% if 'Part-time' in filter_form.mode_query %}checked{% endif %} />
+
+                                    <label class="side-filters-block__filter-checkbox-label" for="mode-part-time">
+                                        {% get_translation key='part_time' language=page.get_language %}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    <fieldset>
+                </div>
+            </div>
+            <div class="side-filters-filter">
+                <div class="side-filters-block__filter-accordion">
+                    <fieldset>
+                        <div tabindex="0" role="button" aria-label="Show content" class="side-filters-block__filter-accordion-header">
+                            <div class="side-filters-block__filter-accordion-heading">
+                                <div class="side-filters-block__filter-accordion-title">
+                                    {% get_translation key='study_mode' language=page.get_language %}
+                                </div>
+                            </div>
+
+                            <div class="expand">
+                                <img src="/static/images/plus_icon_black.svg" alt="expand">
+                            </div>
+
+                            <div class="collapse">
+                                <img src="/static/images/minus_icon_black.svg" alt="collapse">
+                            </div>
+                        </div>
+                        <div class="side-filters-block__filter-accordion-body">
+                            <div class="side-filters-block__filter-options">
+                                <div class="side-filters-block__filter-option">
+                                    <input id="mode-full-time" class="side-filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Full-time" {% if 'Full-time' in filter_form.mode_query %}checked{% endif %} />
+                                    
+                                    <label class="side-filters-block__filter-checkbox-label" for="mode-full-time">
+                                        {% get_translation key='full_time' language=page.get_language %}
+                                    </label>
+                                </div>
+                                <div class="side-filters-block__filter-option">
+                                    <input id="mode-part-time" class="side-filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Part-time" {% if 'Part-time' in filter_form.mode_query %}checked{% endif %} />
+
+                                    <label class="side-filters-block__filter-checkbox-label" for="mode-part-time">
+                                        {% get_translation key='part_time' language=page.get_language %}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    <fieldset>
+                </div>
+            </div>
+
+            <button class="side-filters-block__submit-btn">
+                {% get_translation key='apply_filters' language=page.get_language %}
+
+            <button class="side-filters-block__show-btn">
+                {% get_translation key='show_filters' language=page.get_language %}
+        </form>
+    </div>
 </div>

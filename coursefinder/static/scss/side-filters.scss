@@ -1,5 +1,40 @@
+@import "../../../CMS/static/scss/fonts";
+@import "../../../CMS/static/scss/variables";
+@import "../../../CMS/static/scss/partials/forms";
 
-@import '../../../CMS/static/scss/variables';
+.side-filters {
+    font-family: "Nunito Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 255px;
+    background-color: $white;
+    position: absolute;
+    overflow: auto;
+    &-heading {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        &-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        &-cta {
+            font-size: 18px;
+            display: none;
+        }
+    }
+    &-filter {
+        display: block;
+    }
+    &-institutions {
+        margin-left: 285px;
+        &-heading {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+}
 
 .side-filters-block {
     &__filter {
@@ -28,7 +63,6 @@
             &-title {
                 font-size: 16px;
                 font-weight: bold;
-                color: $black;
             }
 
             &-body {
@@ -55,7 +89,6 @@
             }
 
             &-label {
-                color: $black;
                 font-size: 16px;
             }
         }
@@ -71,7 +104,6 @@
             background-color: $very-light-blue;
             font-size: 18px;
             text-align: center;
-            color: $black;
         }
     }
 
@@ -94,27 +126,46 @@
 }
 
 @media only screen and (max-width: 576px) {
-    .side-filters-block {
-        &__show {
-            &-btn {
-                display: block;
-                margin: 0 33px 32px;
+    .side-filters {
+        width: 100%;
+        height: auto;
+        position: relative;
+        &-heading {
+            padding-left: 32px;
+        }
+        &-filter {
+            display: none;
+        }
+        &-institutions {
+            margin-left: 0;
+            padding-left: 0;
+            &-heading {
+                padding-left: 32px;
             }
         }
-        &__submit {
-            &-btn {
-                display: none;
-            }
+    }
+
+    .side-filters-block {
+        &__show-btn {
+            display: block;
+            margin: 0 33px 32px;
+        }
+        &__submit-btn {
+            display: none;
         }
     }
 }
 
 @media only screen and (max-width: 375px) {
-    .side-filters-block {
-        &__show {
-            &-btn {
-                margin: 0 15px 32px;
-            }
+    .side-filters {
+        &-heading {
+            padding-left: 15px;
+        }
+        &-institutions-heading {
+            padding-left: 15px;
+        }
+        &-block__show-btn {
+            margin: 0 15px 32px;
         }
     }
 }

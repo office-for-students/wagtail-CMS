@@ -1,7 +1,7 @@
 {% load discover_uni_tags sass_tags %}
 
 {% block extra_css %}
-    <link href="{% sass_src 'scss/filters-prototype.scss' %}?{% code_version %}" rel="stylesheet" type="text/css"> 
+    <link href="{% sass_src 'scss/side-filters.scss' %}?{% code_version %}" rel="stylesheet" type="text/css"> 
 {% endblock extra_css %}
 
 <p class="course-finder-results__overview text-center">
@@ -25,16 +25,13 @@
 <hr class="course-finder__result-hr" />
 {% endcomment %}
 
-<div class="side-filters">
-    {% include 'coursefinder/partials/side-filters.html' %}
-</div>
-
-<div class="institutions">
-    <div class="institutions-heading">
+{% include 'coursefinder/partials/side-filters.html' %}
+<div class="side-filters-institutions">
+    <div class="side-filters-institutions-heading">
         {% get_translation key='sort_by' language=page.get_language %}
     </div>
     {% for item in search.results %}
-    {% include 'partials/institution_result.html' with institution=item %}
+        {% include 'partials/institution_result.html' with institution=item %}
     {% endfor %}
 </div>
 
