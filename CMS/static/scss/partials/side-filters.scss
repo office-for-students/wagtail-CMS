@@ -69,6 +69,20 @@
         }
     }
 
+    &__show {
+        &-btn {
+            border: none;
+            display: none;
+            width: -webkit-fill-available;
+            padding: 8px 0;
+            border-radius: 3px;
+            background-color: $very-light-blue;
+            font-size: 18px;
+            text-align: center;
+            color: $black;
+        }
+    }
+
     &__submit {
         &-btn {
             margin-top: 12px;
@@ -85,28 +99,6 @@
             border: none;
         }
     }
-
-    &__show {
-        &-btn {
-            border: none;
-            display: none;
-            width: -webkit-fill-available;
-            padding: 8px 0;
-            border-radius: 3px;
-            background-color: $very-light-blue;
-            font-size: 18px;
-            text-align: center;
-            color: $black;
-        }
-    }
-
-    .course-finder-content__question-selector {
-        width: 100%;
-
-        .select-selected {
-            background-color: $white;
-        }
-    }
 }
 
 @media only screen and (max-width: 576px) {
@@ -119,22 +111,6 @@
     // }
 
     .side-filters-block {
-        &__cancel-button {
-            display: none;
-        }
-
-        &__show {
-            &-btn {
-                display: block;
-                margin: 0 33px 32px;
-            }
-        }
-        &__submit {
-            &-btn {
-                display: none;
-            }
-        }
-
         &__filter {
             padding: 50px 81px;
 
@@ -169,6 +145,18 @@
 
             &-options {
                 flex-wrap: nowrap;
+            }
+        }
+
+        &__show {
+            &-btn {
+                display: block;
+                margin: 0 33px 32px;
+            }
+        }
+        &__submit {
+            &-btn {
+                display: none;
             }
         }
     }
@@ -184,22 +172,6 @@
     // }
 
     .side-filters-block {
-        &__cancel-button {
-            display: none;
-        }
-
-        &__show {
-            &-btn {
-                display: block;
-                margin: 0 15px 32px;
-            }
-        }
-        &__submit {
-            &-btn {
-                display: none;
-            }
-        }
-
         &__filter {
             padding: 50px 81px;
 
@@ -232,6 +204,19 @@
 
             &-options {
                 flex-wrap: nowrap;
+            }
+        }
+
+        &__show {
+            &-btn {
+                display: block;
+                margin: 0 15px 32px;
+            }
+        }
+
+        &__submit {
+            &-btn {
+                display: none;
             }
         }
     }
