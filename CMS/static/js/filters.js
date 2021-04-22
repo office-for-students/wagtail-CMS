@@ -10,7 +10,7 @@
     Filters.prototype = {
         setup: function() {
             this.closeBtn = this.wrapper.find('.filters-block__cancel-button');
-            this.uniFilter = new UniFilter(this.wrapper.find('#uniFilter'));
+            // this.uniFilter = new UniFilter(this.wrapper.find('#uniFilter'));
             this.submitBlock = this.wrapper.find('.filters-block__submit-block');
             this.submitBtn = this.wrapper.find('.filters-block__submit-btn');
             this.inputs = this.wrapper.find('input');
@@ -142,13 +142,13 @@
 
 
 
-        prepInstitutionQuery: function() {
-            var selectedUnis = this.uniFilter.getSelectedUnis();
+        // prepInstitutionQuery: function() {
+        //     var selectedUnis = this.uniFilter.getSelectedUnis();
 
-            if (selectedUnis) {
-                this.uniQuery.val(selectedUnis);
-            }
-        }
+        //     if (selectedUnis) {
+        //         this.uniQuery.val(selectedUnis);
+        //     }
+        // }
     };
 
     var UniFilter = function(wrapper) {
