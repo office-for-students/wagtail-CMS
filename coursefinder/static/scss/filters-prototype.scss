@@ -1,6 +1,6 @@
 @import '../../../CMS/static/scss/variables';
   
-  .filters2 {
+  .side-filters {
     margin: 0;
     padding: 0;
     width: 255px;
@@ -81,7 +81,7 @@
   }
   
   @media screen and (max-width: 576px) {
-    .filters2 {
+    .side-filters {
       width: 100%;
       height: auto;
       position: relative;
@@ -115,7 +115,7 @@
   }
   
   @media screen and (max-width: 375px) {
-    .filters2 {
+    .side-filters {
       &-heading {
         padding-left: 15px;
       }
