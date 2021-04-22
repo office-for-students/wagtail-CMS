@@ -63,7 +63,7 @@
                 evt.preventDefault();
                 that.prepSubjectQuery();
                 that.prepPostcodeQuery();
-                that.prepInstitutionQuery();
+                // that.prepInstitutionQuery();
                 that.prepQualificationQuery();
                 that.pageInput.val(1);
                 that.form.submit();
@@ -80,7 +80,7 @@
                     evt.preventDefault();
                     that.prepSubjectQuery();
                     that.prepPostcodeQuery();
-                    that.prepInstitutionQuery();
+                    // that.prepInstitutionQuery();
                     that.prepQualificationQuery();
                     that.form.attr('action', $(this).attr("href"));
                     that.form.submit();
