@@ -1,4 +1,8 @@
-{% load staticfiles discover_uni_tags wagtailcore_tags %}
+{% load discover_uni_tags sass_tags %}
+
+{% block extra_css %}
+    <link href="{% sass_src 'scss/side-filters.scss' %}?{% code_version %}" rel="stylesheet" type="text/css"> 
+{% endblock extra_css %}
 
 <div class="side-filters-heading">
     <div class="side-filters-heading-title">

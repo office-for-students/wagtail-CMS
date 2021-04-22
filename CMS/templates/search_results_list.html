@@ -1,4 +1,8 @@
-{% load staticfiles discover_uni_tags %}
+{% load discover_uni_tags sass_tags %}
+
+{% block extra_css %}
+    <link href="{% sass_src 'scss/filters-prototype.scss' %}?{% code_version %}" rel="stylesheet" type="text/css"> 
+{% endblock extra_css %}
 
 <p class="course-finder-results__overview text-center">
 
