@@ -83,33 +83,30 @@
         }
     }
 
-    &__show {
-        &-btn {
+    &__btn {
+        font-size: 18px;
+        text-align: center;
+        
+        &-show {
             border: none;
             display: none;
             width: -webkit-fill-available;
             padding: 8px 0;
             border-radius: 3px;
             background-color: $very-light-blue;
-            font-size: 18px;
-            text-align: center;
         }
-    }
-
-    &__submit {
-        &-btn {
+        
+        &-submit {
+            border: none;
             margin-top: 12px;
             margin-bottom: 21px;
             padding: 7px 47px 9px;
             border-radius: 2px;
             box-shadow: 0 2px 4px 0 $bruise;
             background-color: $bruise;
-            font-size: 18px;
             font-weight: bold;
-            text-align: center;
             color: $white;
             width: 100%;
-            border: none;
         }
     }
 }
@@ -135,12 +132,14 @@
     }
 
     .side-filters-block {
-        &__show-btn {
-            display: block;
-            margin: 0 33px 32px;
-        }
-        &__submit-btn {
-            display: none;
+        &__btn {
+            &-show {
+                display: block;
+                margin: 0 33px 32px;
+            }
+            &-submit {
+                display: none;
+            }
         }
     }
 }
@@ -153,7 +152,7 @@
         &-institutions-heading {
             padding-left: 15px;
         }
-        &-block__show-btn {
+        &-block__btn-show {
             margin: 0 15px 32px;
         }
     }
