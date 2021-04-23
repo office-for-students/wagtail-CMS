@@ -396,14 +396,10 @@
     &-results {
        
         &__heading {
-            @include m-heading--bold-mixin();
-
-            margin-top: 0px;
-            margin-bottom: 47px;
-            width: 80%;
-
-            line-height: 45px;
-            color: $ux-grey-3;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
         }
 
         &__overview {
@@ -538,6 +534,18 @@
     }
 }
 
+@media only screen and (min-width: 376px) {
+    .course-finder-results__heading {
+        padding-left: 32px;
+    }
+}
+
+@media only screen and (min-width: 577px) {
+    .course-finder-results__heading {
+        padding-left: 0;
+    }
+}
+
 @media only screen and (min-width: 770px) {
 
     .course-finer__header .home-page__header-bg-icon {
@@ -664,14 +672,14 @@
         }
 
         &-results {
-            &__heading {
-                @include l-heading--bold-mixin();
+            // &__heading {
+            //     @include l-heading--bold-mixin();
 
-                margin-bottom: 32px;
+            //     margin-bottom: 32px;
 
-                line-height: 60px;
-                color: $ux-grey-3;
-            }
+            //     line-height: 60px;
+            //     color: $ux-grey-3;
+            // }
 
             &__overview {
                 @include desktop-body-font-mixin();
@@ -772,8 +780,8 @@
 
     .course-finder-base__nav {
         padding-left: 32px;
-}
-    
+    }
+
 }
 
 @media only screen and (min-width: 577px) and (max-width: 766px){
