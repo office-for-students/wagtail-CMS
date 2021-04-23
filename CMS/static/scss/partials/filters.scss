@@ -1,11 +1,11 @@
 .filters-wrapper {
-    position: absolute;
-    top: 72px;
-    width: 100%;
-    left: -100%;
-    z-index: 50;
+    // position: absolute;
+    // top: 72px;
+    // width: 100%;
+    // left: -100%;
+    // z-index: 50;
 
-    background-color: $white;
+    // background-color: $white;
 }
 
 .filters-block {
@@ -15,7 +15,12 @@
         padding-left: 15px;
     }
 
+    &__form {
+        display: none;
+    }
+
     &__cancel-button {
+        display: none;
         position: absolute;
         top: 15px;
         right: 33px;
@@ -364,6 +369,20 @@
             color: $white;
             width: 100%;
         }
+    }    
+    &__show {
+        &-block {
+            margin: 0 15px 32px;
+        }
+
+        &-btn {
+            border: none;
+            display: block;
+            width: -webkit-fill-available;
+            padding: 8px 0;
+            border-radius: 3px;
+            background-color: $very-light-blue;
+        }
     }
 
     .course-finder-content__question-selector {
@@ -383,8 +402,8 @@
         &-institutions-heading {
             padding-left: 15px;
         }
-        &-block__btn-show {
-            margin: 0 15px 32px;
+        &__show-block {
+            margin: 0 33px 32px;
         }
     }
 }
@@ -413,6 +432,7 @@
 
         form {
             position: relative;
+            display: block;
         }
 
         &__submit {
@@ -420,6 +440,17 @@
                 position: relative;
                 left: 0;
                 bottom: 0;
+            }
+        }
+
+        &__show {
+            &-block {
+                position: relative;
+                left: 0;
+                bottom: 0;
+            }
+            &-btn {
+                display: none;
             }
         }
 
