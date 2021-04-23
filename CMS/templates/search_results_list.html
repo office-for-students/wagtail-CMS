@@ -6,6 +6,7 @@
 
 <p class="course-finder-results__overview text-center">
 
+{% comment %}
 <div class="course-finder-results__overview-filter-open">
     {% get_translation key='show_filters' language=page.get_language %}
     <img class="course-finder-results__overview-filter-icon" src="{% static 'images/chevron-down-solid.svg' %}" alt="">
@@ -22,8 +23,19 @@
 {% include 'coursefinder/partials/filters.html' %}
 
 <hr class="course-finder__result-hr" />
+{% endcomment %}
 
-{% include 'coursefinder/partials/side-filters.html' %}
+<div class="side-filters">
+    <div class="filters-block__heading">
+        <div class="filters-block__heading-title">
+            {% get_translation key='filters' language=page.get_language %}
+        </div>
+        <div class="filters-block__heading-cta">
+            {% get_translation key='close' language=page.get_language %}
+        </div>
+    </div>    
+    {% include 'coursefinder/partials/filters.html' %}
+</div>
 <div class="side-filters-institutions">
     <div class="side-filters-institutions-heading">
         {% get_translation key='sort_by' language=page.get_language %}

@@ -13,6 +13,7 @@
 
                 <input name="course_query" id="course_query" type="text" value="{{filter_form.course_query}}" hidden />
 
+                {% comment %}
                 <div class="filters-block__filter">
                     <fieldset>
                         <legend>
@@ -60,7 +61,11 @@
                         </div>
                     </fieldset>
                 </div>
+                {% endcomment %}
 
+                {% include 'coursefinder/partials/filter_study_mode.html' %}
+                
+                {% comment %}
                 <div class="filters-block__filter">
                     <fieldset>
                         <legend>
@@ -99,7 +104,9 @@
                         </div>
                     </fieldset>
                 </div>
+                {% endcomment %}
 
+                {% comment %}
                 <div class="filters-block__filter">
                     <div class="filters-block__filter-years-group">
                         <div class="filters-block__filter-year">
@@ -231,7 +238,6 @@
                         <input hidden id="qualification_query" name="qualification_query" type="text" value="" />
                     </div>
 
-                {% comment %}
                 <div id="uniFilter" class="filters-block__filter">
                     <h2 class="filters-block__filter-heading">
                         {% get_translation key='uni_college' language=page.get_language %}
