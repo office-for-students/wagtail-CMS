@@ -25,24 +25,7 @@
 <hr class="course-finder__result-hr" />
 {% endcomment %}
 
-<div class="side-filters">
-    <div class="filters-block__heading">
-        <div class="filters-block__heading-title">
-            {% get_translation key='filters' language=page.get_language %}
-        </div>
-        <div class="filters-block__heading-cta">
-            {% get_translation key='close' language=page.get_language %}
-        </div>
-    </div>    
-    {% include 'coursefinder/partials/filters.html' %}
-</div>
-<div class="side-filters-institutions">
-    <div class="side-filters-institutions-heading">
-        {% get_translation key='sort_by' language=page.get_language %}
-    </div>
-    {% for item in search.results %}
-        {% include 'partials/institution_result.html' with institution=item %}
-    {% endfor %}
-</div>
+{% include 'coursefinder/partials/filters.html' %}
+{% include 'partials/institution_results.html'%}
 
 {% include '_pagination.html' %}

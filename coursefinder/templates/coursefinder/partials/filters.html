@@ -2,6 +2,14 @@
 
 <div class="filters-wrapper">
     <div class="discover-uni-container">
+        <div class="filters-block__heading">
+            <div class="filters-block__heading-title">
+                {% get_translation key='filters' language=page.get_language %}
+            </div>
+            <div class="filters-block__heading-cta">
+                {% get_translation key='close' language=page.get_language %}
+            </div>
+        </div>            
         <div class="filters-block">
             <p class="filters-block__cancel-button"><span class="filters-block__cancel-button-icon">X</span> Cancel</p>
 

@@ -410,15 +410,13 @@
 
 @media only screen and (min-width: 577px) {
     .filters-wrapper {
-        // position: static;
-        // max-height: 620px;
-        // overflow-y: scroll;
-        // margin-top: 10px;
-
-        // background-color: $white;
-        // // border: 1px solid #DCDCDC;
-        // // box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.08);
-        // border-radius: 5px;
+        font-family: "Nunito Sans", sans-serif;
+        margin: 0;
+        padding: 0;
+        width: 255px;
+        background-color: $white;
+        position: absolute;
+        overflow: auto;
     }
 
     .filters-block {   
