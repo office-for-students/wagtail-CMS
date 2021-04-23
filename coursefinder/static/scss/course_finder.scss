@@ -3,6 +3,16 @@
 @import '../../../CMS/static/scss/partials/forms';
 
 
+.course-finder-wrapper {
+    margin-left: 0;
+    padding-left: 0;
+}
+@media only screen and (min-width: 577px) {
+    .course-finder-wrapper {
+        margin-left: 285px;
+    }
+}
+
 .course-finder-results__overview-filter-open{
     text-align:center;
 }
@@ -547,7 +557,7 @@
 }
 
 @media only screen and (min-width: 770px) {
-
+    
     .course-finer__header .home-page__header-bg-icon {
         padding-top: 15px;
         height: 150px;
