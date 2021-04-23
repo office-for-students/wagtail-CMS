@@ -61,10 +61,10 @@
 
             this.submitBtn.click(function(evt) {
                 evt.preventDefault();
-                that.prepSubjectQuery();
-                that.prepPostcodeQuery();
+                // that.prepSubjectQuery();
+                // that.prepPostcodeQuery();
                 // that.prepInstitutionQuery();
-                that.prepQualificationQuery();
+                // that.prepQualificationQuery();
                 that.pageInput.val(1);
                 that.form.submit();
             });
@@ -78,10 +78,10 @@
             for (var i = 0; i < this.languageChgBtnList.length; i++) {
                 $(this.languageChgBtnList[i]).click(function(evt) {
                     evt.preventDefault();
-                    that.prepSubjectQuery();
-                    that.prepPostcodeQuery();
+                    // that.prepSubjectQuery();
+                    // that.prepPostcodeQuery();
                     // that.prepInstitutionQuery();
-                    that.prepQualificationQuery();
+                    // that.prepQualificationQuery();
                     that.form.attr('action', $(this).attr("href"));
                     that.form.submit();
                 });
@@ -142,13 +142,13 @@
 
 
 
-        // prepInstitutionQuery: function() {
-        //     var selectedUnis = this.uniFilter.getSelectedUnis();
+        prepInstitutionQuery: function() {
+            var selectedUnis = this.uniFilter.getSelectedUnis();
 
-        //     if (selectedUnis) {
-        //         this.uniQuery.val(selectedUnis);
-        //     }
-        // }
+            if (selectedUnis) {
+                this.uniQuery.val(selectedUnis);
+            }
+        }
     };
 
     var UniFilter = function(wrapper) {
