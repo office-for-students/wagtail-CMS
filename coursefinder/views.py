@@ -75,6 +75,11 @@ def narrow_search(request, language=enums.languages.ENGLISH):
     return render(request, '404.html')
 
 
+def course_finder_filters(request, language=enums.languages.ENGLISH):
+    page = get_page_for_language(language, CourseFinderResults.objects.all())
+    context = page.get_context(request)
+    return render(request, 'coursefinder/partials/filters.html', context)
+
 def course_finder_results(request, language=enums.languages.ENGLISH):
     query_params = request.POST
     countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None

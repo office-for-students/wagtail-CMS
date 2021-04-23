@@ -28,6 +28,7 @@ urlpatterns = [
 
     url(r'^narrow-search/$', coursefinder_views.narrow_search, name='narrow_search'),
     url(r'^course-finder/results/$', coursefinder_views.course_finder_results, name='course_finder_results'),
+    url(r'^course-finder/filters/$', coursefinder_views.course_finder_filters, name='course_finder_filters'),
 
     url(r'^widget/', include('widget.urls')),
     url(r'^Widget/', include('widget.urls')),

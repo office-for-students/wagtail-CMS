@@ -301,11 +301,20 @@
 
             </form>
             <div class="filters-block__show-block">
-                <button class="filters-block__show-btn">
-                    {% get_translation key='show_filters' language=page.get_language %}
-                </button>
-            </div>
+                <form method="post" 
+                    {% if page.is_english %} 
+                        action="/course-finder/filters/" 
+                    {% else %} 
+                        action="/cy/course-finder/filters/" 
+                    {% endif %} 
+                    class="filters-block__formIGNORE">
+                    {% csrf_token %}
 
+                    <button class="filters-block__show-btn">
+                        {% get_translation key='show_filters' language=page.get_language %}
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
