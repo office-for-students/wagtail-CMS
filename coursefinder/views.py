@@ -75,61 +75,15 @@ def narrow_search(request, language=enums.languages.ENGLISH):
     return render(request, '404.html')
 
 
-def course_finder_filtersIGNORE(request, language=enums.languages.ENGLISH):
-    query_params = request.POST
-    search_form = FilterForm({
-        "course_query" : query_params.get('subject_query', ""),
-        "institution_query": query_params.get('institution_query', ""),
-    })
-    page = get_page_for_language(language, CourseFinderResults.objects.all())
-
-    if not page:
-        return render(request, '404.html')
-
-    comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
-    bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
-
-    full_path = '%s?%s' % (request.path, request.environ.get('QUERY_STRING'))
-    welsh_url = '/cy' + full_path if language == enums.languages.ENGLISH else full_path
-    english_url = full_path.replace('/cy/', '/')
-
-    context = page.get_context(request)
-    context.update({
-    'page': page,
-    # 'search': course_finder_search,
-    'pagination_url': 'course_finder_results',
-    'comparison_link': comparison_page.url if comparison_page else '#',
-    'manage_link': bookmark_page.url if bookmark_page else '#',
-    'english_url': english_url,
-    'welsh_url': welsh_url,
-    'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
-    'filter_form': search_form
-    })
-    return render(request, 'coursefinder/filters.html', context)
-
 def course_finder_filters(request, language=enums.languages.ENGLISH):
     query_params = request.POST
     countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
     filter_form = FilterForm(query_params)
     filters = build_filters(query_params)
-    # course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
-    #                                           query_params.get('institution_query', None),
-    #                                           countries_query,
-    #                                           query_params.get('postcode_query', None),
-    #                                           filters,
-    #                                           query_params.get('course_query', None),
-    #                                           query_params.get('page', 1),
-    #                                           query_params.get('count', 20),
-    #                                           language)
-    # error = course_finder_search.execute()
- 
-    # if error:
-    #     redirect_page = get_new_landing_page_for_language(language)
-    #     #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
-
-    #     return redirect(redirect_page + '?load_error=true&error_type=1')
-
     page = get_page_for_language(language, CourseFinderResults.objects.all())
+
+    if not page:
+        return render(request, '404.html')
 
     comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
     bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
@@ -137,14 +91,10 @@ def course_finder_filters(request, language=enums.languages.ENGLISH):
     welsh_url = '/cy' + request.path if language == enums.languages.ENGLISH else request.path
     english_url = request.path.replace('/cy/', '/')
 
-    if not page:
-        return render(request, '404.html')
-
     context = page.get_context(request)
 
     context.update({
         'page': page,
-        # 'search': course_finder_search,
         'pagination_url': 'course_finder_results',
         'comparison_link': comparison_page.url if comparison_page else '#',
         'manage_link': bookmark_page.url if bookmark_page else '#',
