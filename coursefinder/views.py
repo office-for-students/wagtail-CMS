@@ -112,22 +112,22 @@ def course_finder_filters(request, language=enums.languages.ENGLISH):
     countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
     filter_form = FilterForm(query_params)
     filters = build_filters(query_params)
-    course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
-                                              query_params.get('institution_query', None),
-                                              countries_query,
-                                              query_params.get('postcode_query', None),
-                                              filters,
-                                              query_params.get('course_query', None),
-                                              query_params.get('page', 1),
-                                              query_params.get('count', 20),
-                                              language)
-    error = course_finder_search.execute()
+    # course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
+    #                                           query_params.get('institution_query', None),
+    #                                           countries_query,
+    #                                           query_params.get('postcode_query', None),
+    #                                           filters,
+    #                                           query_params.get('course_query', None),
+    #                                           query_params.get('page', 1),
+    #                                           query_params.get('count', 20),
+    #                                           language)
+    # error = course_finder_search.execute()
  
-    if error:
-        redirect_page = get_new_landing_page_for_language(language)
-        #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+    # if error:
+    #     redirect_page = get_new_landing_page_for_language(language)
+    #     #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
 
-        return redirect(redirect_page + '?load_error=true&error_type=1')
+    #     return redirect(redirect_page + '?load_error=true&error_type=1')
 
     page = get_page_for_language(language, CourseFinderResults.objects.all())
 
@@ -144,7 +144,7 @@ def course_finder_filters(request, language=enums.languages.ENGLISH):
 
     context.update({
         'page': page,
-        'search': course_finder_search,
+        # 'search': course_finder_search,
         'pagination_url': 'course_finder_results',
         'comparison_link': comparison_page.url if comparison_page else '#',
         'manage_link': bookmark_page.url if bookmark_page else '#',
