@@ -303,12 +303,13 @@
             </form>
             <div class="filters-block__show-block">
                 <form method="post" 
+                    class="filters-block__formIGNORE"
                     {% if page.is_english %} 
                         action="/course-finder/filters/" 
                     {% else %} 
                         action="/cy/course-finder/filters/" 
                     {% endif %} 
-                    class="filters-block__formIGNORE">
+                    >
                     {% csrf_token %}
 
                     <button class="filters-block__show-btn">

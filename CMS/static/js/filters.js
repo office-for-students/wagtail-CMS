@@ -19,7 +19,7 @@
             this.paginationInputs = $('.pagination a');
             this.languageChgBtnList = $('#language_select');
 
-            this.form = this.wrapper.find('form');
+            this.form = this.wrapper.find('.filters-block__form');
 
             this.subjectAreaSelector = this.wrapper.find('#subjectArea');
             this.subjectSelector = this.wrapper.find('#subject');
