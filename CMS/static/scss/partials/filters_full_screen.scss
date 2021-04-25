@@ -1,0 +1,40 @@
+.iconclose {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    margin-left: 10px;
+} 
+
+.filters {
+    &-wrapper {
+        padding: 20px 15px 0
+    }
+    &-block {
+        &__heading {
+            margin-bottom: 20px;
+            padding-left: inherit;
+            &-cta {
+                display: block;
+            }
+        }
+        &__show-block {
+            display: none;
+        }
+        &__form {
+            display: block;
+        }
+        &__submit-block {
+            left: inherit;
+            position:inherit;
+        }
+    }
+}
+
+@media only screen and (min-width: 376px) {
+    .filters-wrapper {
+        padding: 20px 33px 0
+    }
+    .filter-block__heading {
+        margin-bottom: 20px;
+    }
+}

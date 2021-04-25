@@ -1,4 +1,4 @@
-{% load discover_uni_tags wagtailcore_tags %}
+{% load static discover_uni_tags wagtailcore_tags %}
 
 <div class="filters-wrapper">
     <div class="discover-uni-container">
@@ -8,6 +8,7 @@
             </div>
             <div class="filters-block__heading-cta">
                 {% get_translation key='close' language=page.get_language %}
+                <img class="iconclose" src="{% static 'images/icon-close.svg' %}" alt="Close">
             </div>
         </div>            
         <div class="filters-block">
