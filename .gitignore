@@ -34,8 +34,9 @@ static/**
 .DS_Store
 *.vscode
 .vscode/
-.env
+.env*
+!.env.example
 data/
-docker-compose.yml
 docker-compose.*.yml
+!docker-compose.non-dev.yml
 !docker-compose.ci.yml

@@ -1,9 +1,3 @@
-# Legacy file used for CI
-#
-# It should be replaced with docker-compose.non-dev.yml as this one 
-# includes Mongo which is not required in non-dev environments.
-#
-
 version: '3'
 
 services:
@@ -29,8 +23,8 @@ services:
       # CosmosDB (via azure.cosmos library)
       # (used to extract data from CosmosDB and populate fixtures)
       # (these can be found on the CosmosDB instance under "Keys")
-      AZURECOSMOSDBURI:             ""
-      AZURECOSMOSDBKEY:             ""
+      AZURECOSMOSDBURI:             "${AZURECOSMOSDBURI}"
+      AZURECOSMOSDBKEY:             "${AZURECOSMOSDBKEY}"
       # MongoDB (used for local development and testing)
       MONGODB_HOST:                 "${MONGODB_HOST}"
       MONGODB_USERNAME:             "${MONGODB_USERNAME}"
