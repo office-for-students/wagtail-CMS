@@ -104,7 +104,7 @@ def course_finder_filters(request, language=enums.languages.ENGLISH):
         'filter_form': filter_form
     })
 
-    return render(request, 'coursefinder/filters.html', context)
+    return render(request, 'coursefinder/filters_full_screen.html', context)
     
 def course_finder_results(request, language=enums.languages.ENGLISH):
     query_params = request.POST
