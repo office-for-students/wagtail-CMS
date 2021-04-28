@@ -1,3 +1,10 @@
+.modal-dialog {
+    position: relative;
+    pointer-events: none;    
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+
 .filters-block {
     position: relative;
 
@@ -7,6 +14,7 @@
 
     &__form {
         display: none;
+        // display: block;
     }
 
     &__cancel-button {
@@ -335,7 +343,6 @@
 
     &__submit {
         &-block {
-            position: fixed;
             bottom: 0;
             left: -100%;
             width: 100%;
@@ -433,12 +440,10 @@
 
         &__show {
             &-block {
+                display: none;
                 position: relative;
                 left: 0;
                 bottom: 0;
-            }
-            &-btn {
-                display: none;
             }
         }
 

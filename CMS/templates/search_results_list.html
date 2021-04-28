@@ -22,6 +22,36 @@
 {% endcomment %}
 
 {% include 'coursefinder/partials/filters.html' %}
+
+<!-- "Show filters" button and corresponding Modal -->
+<div class="filters-block__show-block">
+    
+    <!-- Button trigger modal -->
+    <button type="button" class="filters-block__show-btn" data-toggle="modal" data-target="#staticBackdrop">
+        {% get_translation key='show_filters' language=page.get_language %}
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+                {% get_translation key='filters' language=page.get_language %}
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                {% get_translation key='close' language=page.get_language %}
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                {% include 'coursefinder/partials/filters.html' %}
+            </div>
+        </div>
+        </div>
+    </div>
+</div><!-- /"Show filters" button and corresponding Modal -->   
+
 {% include 'partials/institution_results.html'%}
 
 {% include '_pagination.html' %}

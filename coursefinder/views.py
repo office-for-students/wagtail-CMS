@@ -74,37 +74,6 @@ def narrow_search(request, language=enums.languages.ENGLISH):
         return HttpResponseRedirect(page.url)
     return render(request, '404.html')
 
-
-def course_finder_filters(request, language=enums.languages.ENGLISH):
-    query_params = request.POST
-    countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
-    filter_form = FilterForm(query_params)
-    filters = build_filters(query_params)
-    page = get_page_for_language(language, CourseFinderResults.objects.all())
-
-    if not page:
-        return render(request, '404.html')
-
-    comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
-    bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
-
-    welsh_url = '/cy' + request.path if language == enums.languages.ENGLISH else request.path
-    english_url = request.path.replace('/cy/', '/')
-
-    context = page.get_context(request)
-
-    context.update({
-        'page': page,
-        'pagination_url': 'course_finder_results',
-        'comparison_link': comparison_page.url if comparison_page else '#',
-        'manage_link': bookmark_page.url if bookmark_page else '#',
-        'english_url': english_url,
-        'welsh_url': welsh_url,
-        'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
-        'filter_form': filter_form
-    })
-
-    return render(request, 'coursefinder/filters_full_screen.html', context)
     
 def course_finder_results(request, language=enums.languages.ENGLISH):
     query_params = request.POST

@@ -299,29 +299,7 @@
                         {% get_translation key='apply_filters' language=page.get_language %}
                     </button>
                 </div>
-
             </form>
-            <div class="filters-block__show-block">
-                <form method="post" 
-                    class="filters-block__formIGNORE"
-                    {% if page.is_english %} 
-                        action="/course-finder/filters/" 
-                    {% else %} 
-                        action="/cy/course-finder/filters/" 
-                    {% endif %} 
-                    >
-                    {% csrf_token %}
-
-                    <input id="page_input" name="page" type="text" value="{{search.page}}" hidden />
-                    <input id="count_input" name="count" type="text" value="{{search.count}}" hidden />
-    
-                    <input name="course_query" id="course_query" type="text" value="{{filter_form.course_query}}" hidden />
-                    
-                    <button class="filters-block__show-btn">
-                        {% get_translation key='show_filters' language=page.get_language %}
-                    </button>
-                </form>
-            </div>
         </div>
     </div>
 </div>
