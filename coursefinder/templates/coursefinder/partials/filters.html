@@ -1,5 +1,17 @@
 {% load static discover_uni_tags wagtailcore_tags %}
 
+{% block extra_js %}
+    <script>
+        $(function () {
+            $('#staticBackdrop').on('show.bs.modal', function (e) {   
+                var modal = $(this)
+                modal.find('.filters-block__form').show()
+                return e; 
+            })
+        });    
+    </script>
+{% endblock %}
+
 <div class="filters-wrapper">
     <div class="discover-uni-container">
         <div class="filters-block__heading">
