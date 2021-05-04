@@ -5,8 +5,13 @@
     &-dialog {
         max-width: 100% !important;
         margin: 0 !important;
+        height: 100%;
     }
 
+    &-content {
+        height: 100%;
+    }
+        
     &-header {
         border-bottom: 0 !important;
         padding: 20px 15px !important;
