@@ -36,13 +36,15 @@
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">
-                {% get_translation key='filters' language=page.get_language %}
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                {% get_translation key='close' language=page.get_language %}
-                <span aria-hidden="true">&times;</span>
-            </button>
+                <div class="filters-block__heading-title" id="staticBackdropLabel">
+                    {% get_translation key='filters' language=page.get_language %}
+                </div>
+                <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    {% get_translation key='close' language=page.get_language %}
+                        <span aria-hidden="true">                    
+                            <img src="{% static 'images/icon-close.svg' %}" alt="Close">
+                        </span>
+                    </div>
             </div>
             <div class="modal-body">
                 {% include 'coursefinder/partials/filters.html' %}

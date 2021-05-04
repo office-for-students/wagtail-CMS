@@ -1,8 +1,38 @@
-.modal-dialog {
-    position: relative;
-    pointer-events: none;    
-    max-width: 100% !important;
-    margin: 0 !important;
+.modal {
+    &-body {
+        padding: 0 15px !important;
+    }
+    &-dialog {
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+
+    &-header {
+        border-bottom: 0 !important;
+        padding: 20px 15px !important;
+
+        .close {
+            color: black;
+            opacity: 1;
+            padding: 0!important;
+            margin: 0!important;
+            align-self: center;
+            font-size: 18px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: right;
+
+            span {
+                padding-left: .5rem;
+                img {
+                    vertical-align: baseline;
+                }        
+            }        
+        }
+    }
 }
 
 .filters-block {
@@ -391,6 +421,15 @@
 }
 
 @media only screen and (min-width: 376px) {
+    .modal {
+        &-body {
+            padding: 0 33px !important;
+        }
+        &-header {
+            padding: 20px 33px !important;
+        }
+    }  
+      
     .filters-block {
         &__heading {
            padding-left: 32px;
