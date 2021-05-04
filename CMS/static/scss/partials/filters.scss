@@ -49,7 +49,6 @@
 
     &__form {
         display: none;
-        // display: block;
     }
 
     &__cancel-button {
@@ -75,10 +74,6 @@
             font-size: 18px;
             font-weight: bold;
         }
-        &-cta {
-            font-size: 18px;
-            display: none;
-        }    
     }
 
     &__filter {
