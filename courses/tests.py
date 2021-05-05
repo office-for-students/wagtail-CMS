@@ -1,7 +1,7 @@
 from django.test import tag
 from unittest.mock import patch
 
-from CMS.test.mocks import CourseMocks
+from CMS.test.mocks.course_mocks import CourseMocks
 from CMS.test.utils import UniSimpleTestCase
 from courses.models import SatisfactionBlock, EntryInformationBlock, AfterOneYearBlock, EarningsAfterCourseBlock, \
     AccreditationBlock, Course

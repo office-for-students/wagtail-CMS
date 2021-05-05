@@ -2,7 +2,7 @@ import requests
 import urllib.parse
 from django.conf import settings
 
-from CMS.test.mocks import SearchMocks
+from CMS.test.mocks.search_mocks import SearchMocks
 
 
 def query_course_and_institution(course, institution, limit, offset, language):

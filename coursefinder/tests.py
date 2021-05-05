@@ -2,7 +2,7 @@ from django.test import tag
 from unittest.mock import patch
 
 from CMS.test.factories import PageFactory
-from CMS.test.mocks import SearchMocks
+from CMS.test.mocks.search_mocks import SearchMocks
 from CMS.test.utils import UniSimpleTestCase
 from coursefinder.models import CourseSearch, CourseFinderChooseCountry, CourseFinderModeOfStudy, \
     CourseFinderChooseSubject, CourseFinderNarrowSearch, CourseFinderPostcode, CourseFinderSummary, \

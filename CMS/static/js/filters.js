@@ -10,7 +10,7 @@
     Filters.prototype = {
         setup: function() {
             this.closeBtn = this.wrapper.find('.filters-block__cancel-button');
-            this.uniFilter = new UniFilter(this.wrapper.find('#uniFilter'));
+            // this.uniFilter = new UniFilter(this.wrapper.find('#uniFilter'));
             this.submitBlock = this.wrapper.find('.filters-block__submit-block');
             this.submitBtn = this.wrapper.find('.filters-block__submit-btn');
             this.inputs = this.wrapper.find('input');
@@ -19,7 +19,7 @@
             this.paginationInputs = $('.pagination a');
             this.languageChgBtnList = $('#language_select');
 
-            this.form = this.wrapper.find('form');
+            this.form = this.wrapper.find('.filters-block__form');
 
             this.subjectAreaSelector = this.wrapper.find('#subjectArea');
             this.subjectSelector = this.wrapper.find('#subject');
@@ -61,10 +61,10 @@
 
             this.submitBtn.click(function(evt) {
                 evt.preventDefault();
-                that.prepSubjectQuery();
-                that.prepPostcodeQuery();
-                that.prepInstitutionQuery();
-                that.prepQualificationQuery();
+                // that.prepSubjectQuery();
+                // that.prepPostcodeQuery();
+                // that.prepInstitutionQuery();
+                // that.prepQualificationQuery();
                 that.pageInput.val(1);
                 that.form.submit();
             });
@@ -78,10 +78,10 @@
             for (var i = 0; i < this.languageChgBtnList.length; i++) {
                 $(this.languageChgBtnList[i]).click(function(evt) {
                     evt.preventDefault();
-                    that.prepSubjectQuery();
-                    that.prepPostcodeQuery();
-                    that.prepInstitutionQuery();
-                    that.prepQualificationQuery();
+                    // that.prepSubjectQuery();
+                    // that.prepPostcodeQuery();
+                    // that.prepInstitutionQuery();
+                    // that.prepQualificationQuery();
                     that.form.attr('action', $(this).attr("href"));
                     that.form.submit();
                 });
