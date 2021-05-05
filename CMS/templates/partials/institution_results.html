@@ -1,0 +1,10 @@
+{% load discover_uni_tags %}
+
+<div class="course-finder-wrapper">
+    <div class="course-finder-results__heading">
+        {% get_translation key='sort_by' language=page.get_language %}
+    </div>
+    {% for item in search.results %}
+        {% include 'partials/institution_result.html' with institution=item %}
+    {% endfor %}
+</div>

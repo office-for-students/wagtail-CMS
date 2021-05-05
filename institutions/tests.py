@@ -1,7 +1,7 @@
 from django.test import tag
 from unittest.mock import patch
 
-from CMS.test.mocks import InstitutionMocks
+from CMS.test.mocks.institution_mocks import InstitutionMocks
 from CMS.test.utils import UniSimpleTestCase
 from errors.models import ApiError
 from institutions.models import Institution

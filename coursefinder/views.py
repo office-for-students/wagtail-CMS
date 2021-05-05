@@ -74,7 +74,7 @@ def narrow_search(request, language=enums.languages.ENGLISH):
         return HttpResponseRedirect(page.url)
     return render(request, '404.html')
 
-
+    
 def course_finder_results(request, language=enums.languages.ENGLISH):
     query_params = request.POST
     countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
