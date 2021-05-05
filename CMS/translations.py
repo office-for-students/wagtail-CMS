@@ -467,11 +467,11 @@ DICT = {
     },
     'full_time': {
         'en': 'Full time',
-        'cy': 'Llawnamser'
+        'cy': 'Llawn-amser'
     },
     'Full-time': {
         'en': 'Full time',
-        'cy': 'Llawnamser'
+        'cy': 'Llawn-amser'
     },
     'Functional managers': {
         'en': 'Functional managers',
@@ -1501,6 +1501,14 @@ DICT = {
      'clear_filters': {
         'en': 'Clear Filters',
         'cy': "Clirio'r Hidlau"
+    },
+     'filters': {
+        'en': 'Filters',
+        'cy': "Hidlau"
+    },
+     'sort_by': {
+        'en': 'Sort by:',
+        'cy': "Didoli yn ôl:"
     },
      'show_filters': {
         'en': 'Show Filters',
