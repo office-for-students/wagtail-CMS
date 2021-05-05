@@ -85,6 +85,11 @@ Institutions | MongoDB     | CosmosDB    | `institutions/fixtures/institutions.j
 
 ## Load local databases with data from fixtures
 ```bash
+# If you receive the following error when trying to populate...
+#   ValueError: Table wagtailforms_formsubmission does not exist
+# then run the following command to migrate:
+#   docker container exec -it wagtail-cms_web_1 python manage.py migrate
+
 # CMS
 docker container exec -it wagtail-cms_web_1 python manage.py populate_cms
 
