@@ -1,6 +1,6 @@
 import requests
 
-from CMS.test.mocks import InstitutionMocks
+from CMS.test.mocks.institution_mocks import InstitutionMocks
 from core.mongo import Mongo
 from django.conf import settings
 

@@ -1,7 +1,25 @@
-{% load discover_uni_tags wagtailcore_tags %}
+{% load static discover_uni_tags wagtailcore_tags %}
+
+{% block extra_js %}
+    <script>
+        $(function () {
+            $('#staticBackdrop').on('show.bs.modal', function (e) {   
+                var modal = $(this)
+                modal.find('.filters-block__form').show()
+                modal.find('.filters-block__heading').hide()
+                return e; 
+            })
+        });    
+    </script>
+{% endblock %}
 
 <div class="filters-wrapper">
     <div class="discover-uni-container">
+        <div class="filters-block__heading">
+            <div class="filters-block__heading-title">
+                {% get_translation key='filters' language=page.get_language %}
+            </div>
+        </div>            
         <div class="filters-block">
             <p class="filters-block__cancel-button"><span class="filters-block__cancel-button-icon">X</span> Cancel</p>
 
@@ -13,6 +31,7 @@
 
                 <input name="course_query" id="course_query" type="text" value="{{filter_form.course_query}}" hidden />
 
+                {% comment %}
                 <div class="filters-block__filter">
                     <fieldset>
                         <legend>
@@ -60,7 +79,11 @@
                         </div>
                     </fieldset>
                 </div>
+                {% endcomment %}
 
+                {% include 'coursefinder/partials/filter_study_mode.html' %}
+                
+                {% comment %}
                 <div class="filters-block__filter">
                     <fieldset>
                         <legend>
@@ -278,6 +301,7 @@
 
                     <input hidden id="institution_query" name="institution_query" type="text" value="" />
                 </div>
+                {% endcomment %}
 
                 <div class="filters-block__submit-block">
                     <button class="filters-block__submit-btn disabled">
