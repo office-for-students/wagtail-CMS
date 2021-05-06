@@ -15,7 +15,6 @@ from core.utils import fallback_to
 from courses import request_handler
 from errors.models import ApiError
 from institutions.models import InstitutionOverview
-import datetime
 import json
 
 
@@ -433,7 +432,6 @@ class Course:
                         break
 
 
-            current_year = datetime.datetime.now().year
             prefix = DICT.get('average_earnings_year_range').get(language)
             self.go_year_range = prefix+" {}-{}".format(2017, 2018)
             self.leo3_year_range = prefix+" {}-{}".format(2010, 2012)
