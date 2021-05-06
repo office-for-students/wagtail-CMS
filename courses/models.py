@@ -435,9 +435,9 @@ class Course:
 
             current_year = datetime.datetime.now().year
             prefix = DICT.get('average_earnings_year_range').get(language)
-            self.go_year_range = prefix+" {}-{}".format(current_year-3, current_year-2)
-            self.leo3_year_range = prefix+" {}-{}".format(current_year-10, current_year-8)
-            self.leo5_year_range = prefix+" {}-{}".format(current_year-10, current_year-8)
+            self.go_year_range = prefix+" {}-{}".format(2017, 2018)
+            self.leo3_year_range = prefix+" {}-{}".format(2010, 2012)
+            self.leo5_year_range = prefix+" {}-{}".format(2010, 2012)
 
             self.go_salaries_inst = []
             if course_details.get('go_salary_inst'):
