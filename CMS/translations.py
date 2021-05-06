@@ -553,6 +553,10 @@ DICT = {
         'en': 'Gold',
         'cy': 'Aur'
     },
+    'learning': {
+        'en': 'Learning',
+        'cy': 'Dysgu'
+    },
     'learning_and_teaching_methods': {
         'en': 'How the course is taught',
         'cy': "Dull addysgu'r cwrs"
@@ -712,6 +716,10 @@ DICT = {
     'Nursing and Midwifery Professionals': {
         'en': 'Nursing and midwifery professionals',
         'cy': 'Gweithwyr Proffesiynol Nyrsio a Bydwreigiaeth'
+    },
+    'on_campus': {
+        'en': 'On campus',
+        'cy': 'Ar y campws'
     },
     'other': {
         'en': 'Other',
