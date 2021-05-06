@@ -373,12 +373,13 @@
 
     &__submit {
         &-block {
-            bottom: 0;
+            position: -webkit-sticky; 
+            position: sticky;
             left: -100%;
             width: 100%;
             text-align: center;
 
-            background-color: $white;
+        
         }
 
         &-btn {
@@ -451,7 +452,7 @@
         width: 255px;
         background-color: $white;
         position: absolute;
-        overflow: auto;
+        overflow: visible;
     }
 
     .filters-block {   
@@ -471,7 +472,6 @@
 
         &__submit {
             &-block {
-                position: relative;
                 left: 0;
                 bottom: 0;
             }
@@ -483,6 +483,7 @@
                 position: relative;
                 left: 0;
                 bottom: 0;
+
             }
         }
 
