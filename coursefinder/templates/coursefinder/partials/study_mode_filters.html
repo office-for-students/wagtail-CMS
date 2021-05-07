@@ -46,6 +46,14 @@
                     {% get_translation key='distance_learning' language=page.get_language %}
                 </label>
             </div>
+            <div class="filters-block__filter-option">
+                <input id="mode-campus" class="filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="On campus" 
+                {% if 'On campus' in filter_form.mode_query %}checked{% endif %} />
+                
+                <label class="filters-block__filter-checkbox-label" for="mode-campus">
+                    {% get_translation key='on_campus' language=page.get_language %}
+                </label>
+            </div>
         </div>
     </div>
 </div>
