@@ -102,20 +102,30 @@
 
         &-active-filter{
             display: flex;
+            flex-wrap: wrap;
         }
 
             &-pill{
                 display: flex;
                 height: 31px;
-                margin: 19px 8px 40px;
+                margin: 0px 8px 10px 0px;
                 padding: 5px 10px 4px;
                 background-color: #ced4d9
             }
 
+            &-remove-pill{
+                display: flex;
+                height: 31px;
+                margin: 0px 8px 10px 0px;
+                padding: 5px 10px 4px;
+                background-color: white;
+                cursor: pointer;
+            }
+
             &-text {
-                
                 height: 22px;
                 margin: 0 20px 0 0;
+                padding-top: 2px;
                 font-family: NunitoSans;
                 font-size: 16px;
                 font-weight: bold;
