@@ -11,46 +11,54 @@
 
 
 <div class="filters-block__filter-active-filter">
-{% if 'Full-time' in filter_form.mode_query %}
+    {% if 'Full-time' in filter_form.mode_query %}
 
-        <div class="filters-block__filter-pill">
-            <p class="filters-block__filter-text">{% get_translation key='full_time' language=page.get_language %}</p>
-            <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-full-time') class="filters-block__filter-iconclose">
+            <div class="filters-block__filter-pill">
+                <p class="filters-block__filter-text">{% get_translation key='full_time' language=page.get_language %}</p>
+                <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-full-time') class="filters-block__filter-iconclose">
+            </div>
+
+    {% endif %}
+
+    {% if 'Part-time' in filter_form.mode_query %}
+
+            <div class="filters-block__filter-pill">
+                <p class="filters-block__filter-text">{% get_translation key='part_time' language=page.get_language %}</p>
+                <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-part-time') class="filters-block__filter-iconclose">
+            </div>
+     
+
+    {% endif %}
+
+    {% if 'Distance' in filter_form.mode_query %}
+
+            <div class="filters-block__filter-pill">
+                <p class="filters-block__filter-text">{% get_translation key='distance_learning' language=page.get_language %}</p>
+                <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-distance') class="filters-block__filter-iconclose">
+            </div>
+
+
+    {% endif %}
+
+    {% if 'Campus' in filter_form.mode_query %}
+
+            <div class="filters-block__filter-pill">
+                <p class="filters-block__filter-text">{% get_translation key='on_campus' language=page.get_language %}</p>
+                <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-campus') class="filters-block__filter-iconclose">
+            </div>
+        
+
+    {% endif %}
+
+    {% if filter_form.mode_query %}
+
+        <div id="clear-filters" class="filters-block__filter-remove-pill">
+            <p class="filters-block__filter-text">
+                {% get_translation key='clear_filters' language=page.get_language %}
+            </p>
+            <img src="{% static 'images/icon-close.svg'%}" class="filters-block__filter-iconclose">
         </div>
 
-{% endif %}
+    {% endif %}
 
-{% if 'Part-time' in filter_form.mode_query %}
-
-        <div class="filters-block__filter-pill">
-            <p class="filters-block__filter-text">{% get_translation key='part_time' language=page.get_language %}</p>
-            <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-part-time') class="filters-block__filter-iconclose">
-        </div>
- 
-
-{% endif %}
-
-{% if 'Distance' in filter_form.mode_query %}
-
-        <div class="filters-block__filter-pill">
-            <p class="filters-block__filter-text">{% get_translation key='distance_learning' language=page.get_language %}</p>
-            <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-distance') class="filters-block__filter-iconclose">
-        </div>
-
-
-{% endif %}
-
-{% if 'Campus' in filter_form.mode_query %}
-
-        <div class="filters-block__filter-pill">
-            <p class="filters-block__filter-text">{% get_translation key='on_campus' language=page.get_language %}</p>
-            <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-campus') class="filters-block__filter-iconclose">
-        </div>
-    
-
-{% endif %}
 </div>
-
-<p id="clear-filters" class="filters-block__filter-uni-controls-clear">
-    {% get_translation key='clear_filters' language=page.get_language %}
-</p>
