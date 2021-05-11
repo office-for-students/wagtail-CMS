@@ -11,6 +11,7 @@
             })
         });    
     </script>
+
 {% endblock %}
 
 <div class="filters-wrapper">
@@ -23,7 +24,7 @@
         <div class="filters-block">
             <p class="filters-block__cancel-button"><span class="filters-block__cancel-button-icon">X</span> Cancel</p>
 
-            <form method="post" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %} class="filters-block__form">
+            <form method="post" {% if page.is_english %} action="/course-finder/results/" {% else %} action="/cy/course-finder/results/" {% endif %} class="filters-block__form" id="filterForm">
                 {% csrf_token %}
 
                 <input id="page_input" name="page" type="text" value="{{search.page}}" hidden />
@@ -80,6 +81,7 @@
                     </fieldset>
                 </div>
                 {% endcomment %}
+
 
                 {% include 'coursefinder/partials/study_mode_filters.html' %}
                 
