@@ -101,6 +101,7 @@
         }
 
         &-active-filter{
+            margin-top: 20px;
             display: flex;
             flex-wrap: wrap;
         }
@@ -125,8 +126,7 @@
             &-text {
                 height: 22px;
                 margin: 0 20px 0 0;
-                padding-top: 2px;
-                font-family: NunitoSans;
+                font-family: "Nunito Sans", sans-serif;
                 font-size: 16px;
                 font-weight: bold;
                 font-stretch: normal;
