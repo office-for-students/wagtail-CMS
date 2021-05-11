@@ -10,6 +10,7 @@ from coursefinder.models import CourseSearch, CourseFinderChooseCountry, CourseF
 from coursefinder.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
     choose_subject_sibling_finder, narrow_search_sibling_finder, postcode_sibling_finder, summary_sibling_finder, \
     results_sibling_finder
+from coursefinder.views import build_study_mode_filter
 from errors.models import ApiError
 from site_search.models import SearchLandingPage
 
@@ -544,3 +545,67 @@ class CourseFinderUtilsTests(UniSimpleTestCase):
         country_finder = PageFactory.create_country_finder_page(title='Country Finder')
         output = results_sibling_finder(country_finder)
         self.assertIsNone(output)
+
+
+    def test_build_study_mode_filter_when_no_params(self):
+        params = []
+        expected = ''
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)
+
+
+    def test_build_study_mode_filter_when_full_and_part_time_selected(self):
+        params = ['Full-time', 'Part-time']
+        expected = ''
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)        
+
+
+    def test_build_study_mode_filter_when_full_time_selected(self):
+        params = ['Full-time']
+        expected = 'full_time'
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)   
+
+
+    def test_build_study_mode_filter_when_part_time_selected(self):
+        params = ['Part-time']
+        expected = 'part_time'
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)   
+
+
+    def test_build_study_mode_filter_when_distance_selected(self):
+        params = ['Distance learning']
+        expected = 'distance_learning'
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)   
+
+
+    def test_build_study_mode_filter_when_full_time_and_distance_selected(self):
+        params = ['Full-time', 'Distance learning'] 
+        expected = 'full_time,distance_learning'
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)   
+
+
+    def test_build_study_mode_filter_when_part_time_and_distance_selected(self):
+        params = ['Part-time', 'Distance learning']    
+        expected = 'part_time,distance_learning'
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)   
+
+
+    def test_build_study_mode_filter_when_full_and_part_time_and_distance_selected(self):
+        params = ['Full-time', 'Part-time', 'Distance learning']    
+        expected = 'distance_learning'
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)   
