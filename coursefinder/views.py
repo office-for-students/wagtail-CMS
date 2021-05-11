@@ -125,13 +125,25 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     return render(request, 'coursefinder/course_finder_results.html', context)
 
 
+def build_study_mode_filter(list):
+    filter = ''
+    if (len(list) > 1 and list[0:2] == ['Full-time', 'Part-time']):
+        filter = ','.join(list[2:])
+    else:
+        filter = ','.join(list)
+    return transform_study_mode_filter_name(filter)
+
+
+def transform_study_mode_filter_name(filter):
+    return filter.lower().replace('-', '_').replace(' ', '_')
+
+
 def build_filters(params):
     filters = []
 
     if 'mode_query' in params:
-        mode_query = ','.join(params.getlist('mode_query'))
-        if 'Full-time,Part-time' not in mode_query:
-            filters.append(params.get('mode_query').lower().replace('-', '_').replace(' ', '_'))
+        mode_query = params.getlist('mode_query')
+        filters.append(build_study_mode_filter(mode_query))
     if 'qualification_query' in params:
         qualification_query = ','.join(params.getlist('qualification_query'))
         if 'first_degree,other_undergraduate' not in qualification_query:
