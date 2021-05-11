@@ -1510,6 +1510,10 @@ DICT = {
         'en': 'Clear Filters',
         'cy': "Clirio'r Hidlau"
     },
+    'remove_filters': {
+        'en': 'Remove all filters',
+        'cy': 'Dileu yr holl hidlwyr'
+    },
      'filters': {
         'en': 'Filters',
         'cy': "Hidlau"
