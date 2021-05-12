@@ -681,6 +681,10 @@ DICT = {
         'en': 'Next page',
         'cy': 'Y dudalen nesaf'
     },
+    'no_courses_found': {
+        'en': 'No courses found, remove or change some filters',
+        'cy': 'Ni chafwyd hyd i gyrsiau dileu newid rhai hidlwyr.'
+    },
     'no_qualifications': {
         'en': 'No / unknown prior qualifications',
         'cy': 'Dim cymwysterau blaenorol / cymwysterau anhysbys'
