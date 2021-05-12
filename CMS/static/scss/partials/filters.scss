@@ -41,20 +41,6 @@
     }
 }
 
-.no-courses{
-    height: 28px;
-    padding-left: 15px;
-    margin: 15px 6.5px 31px 0px;
-    font-family: "Nunito Sans", sans-serif;
-    font-size: 21px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #000000;
-}
-
 .filters-block {
     position: relative;
 
@@ -449,14 +435,12 @@
 
     &__submit {
         &-block {
-            position: -webkit-sticky; 
-            position: sticky;
-            left: -100%;
+            position: -webkit-fixed; 
+            position: fixed;
             width: 100%;
             text-align: center;
-            bottom: 5px;
-
-        
+            bottom: 0px;
+            padding-right: 30px;
         }
 
         &-btn {
@@ -506,7 +490,7 @@
         &-header {
             padding: 20px 33px !important;
         }
-    }  
+    }
       
     .filters-block {
         &__heading {
@@ -517,6 +501,11 @@
         }
         &__show-block {
             margin: 0 33px 32px;
+        }
+        &__submit {
+            &-block {
+                padding-right: 66px;
+            }
         }
     }
 }
@@ -531,11 +520,6 @@
         position: absolute;
         overflow: visible;
     }
-
-    .no-courses{
-        width: auto;
-        padding-left: 0px;
-    } 
 
     .filters-block {   
         &__heading {
@@ -554,8 +538,11 @@
 
         &__submit {
             &-block {
+                position: -webkit-sticky; 
+                position: sticky;
                 left: 0;
                 bottom: 0;
+                padding-right: 0px;
             }
         }
 
