@@ -449,14 +449,12 @@
 
     &__submit {
         &-block {
-            position: -webkit-sticky; 
-            position: sticky;
-            left: -100%;
+            position: -webkit-fixed; 
+            position: fixed;
             width: 100%;
             text-align: center;
-            bottom: 5px;
-
-        
+            bottom: 0px;
+            padding-right: 30px;
         }
 
         &-btn {
@@ -506,7 +504,7 @@
         &-header {
             padding: 20px 33px !important;
         }
-    }  
+    }
       
     .filters-block {
         &__heading {
@@ -517,6 +515,11 @@
         }
         &__show-block {
             margin: 0 33px 32px;
+        }
+        &__submit {
+            &-block {
+                padding-right: 66px;
+            }
         }
     }
 }
@@ -531,7 +534,7 @@
         position: absolute;
         overflow: visible;
     }
-
+    
     .no-courses{
         width: auto;
         padding-left: 0px;
@@ -554,8 +557,11 @@
 
         &__submit {
             &-block {
+                position: -webkit-sticky; 
+                position: sticky;
                 left: 0;
                 bottom: 0;
+                padding-right: 0px;
             }
         }
 
