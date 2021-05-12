@@ -1,0 +1,58 @@
+{% load discover_uni_tags wagtailcore_tags %}
+<div class="filters-block__filter-accordion">
+    <div tabindex="0" role="button" aria-label="Show content" class="filters-block__filter-accordion-header">
+        <div class="filters-block__filter-accordion-heading">
+            <div class="filters-block__filter-accordion-title">
+                {% get_translation key='countries' language=page.get_language %}
+            </div>
+        </div>
+
+        <div class="expand">
+            <img src="/static/images/plus_icon_black.svg" alt="expand">
+        </div>
+
+        <div class="collapse">
+            <img src="/static/images/minus_icon_black.svg" alt="collapse">
+        </div>
+    </div>
+    <div class="filters-block__filter-accordion-body">
+        <div class="filters-block__filter-options">
+
+        	<div class="filters-block__filter-option">
+                <input id="countries-scotland" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Scotland"
+                    {% if 'Scotland' in filter_form.countries_query %}checked{% endif %} />
+
+                <label class="filters-block__filter-checkbox-label" for="countries-scotland">
+                    {% get_translation key='scotland' language=page.get_language %}
+                </label>
+            </div>
+
+            <div class="filters-block__filter-option">
+                <input id="countries-ireland" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Northern Ireland"
+                    {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %} />
+
+                <label class="filters-block__filter-checkbox-label" for="countries-ireland">
+                    {% get_translation key='northern_ireland' language=page.get_language %}
+                </label>
+            </div>
+
+            <div class="filters-block__filter-option">
+                <input id="countries-wales" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Wales"
+                    {% if 'Wales' in filter_form.countries_query %}checked{% endif %} />
+
+                <label class="filters-block__filter-checkbox-label" for="countries-wales">
+                    {% get_translation key='wales' language=page.get_language %}
+                </label>
+            </div>
+
+            <div class="filters-block__filter-option">
+                <input id="countries-england" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="England"
+                    {% if 'England' in filter_form.countries_query %}checked{% endif %} />
+
+                <label class="filters-block__filter-checkbox-label" for="countries-england">
+                    {% get_translation key='england' language=page.get_language %}
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
