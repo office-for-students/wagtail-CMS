@@ -41,6 +41,20 @@
     }
 }
 
+.no-courses{
+    height: 28px;
+    padding-left: 15px;
+    margin: 15px 6.5px 31px 0px;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+}
+
 .filters-block {
     position: relative;
 
@@ -517,6 +531,11 @@
         position: absolute;
         overflow: visible;
     }
+
+    .no-courses{
+        width: auto;
+        padding-left: 0px;
+    } 
 
     .filters-block {   
         &__heading {
