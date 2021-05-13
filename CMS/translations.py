@@ -439,7 +439,7 @@ DICT = {
     },
     'filter_by': {
         'en': 'Filter by',
-        'cy': 'Hidlo yn ôl'
+        'cy': 'Hidlo gan'
     },
     'financial_support_details': {
         'en': 'Financial support',
