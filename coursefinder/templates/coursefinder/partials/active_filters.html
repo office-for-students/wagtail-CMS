@@ -9,7 +9,7 @@
    
     </script>
 
-{% if filter_form.mode_query %}
+{% if filter_form.mode_query or filter_form.countries_query %}
     <div class="filters-block__filter-active-filter">
         {% if 'Full-time' in filter_form.mode_query %}
 
@@ -50,6 +50,42 @@
 
         {% endif %}
 
+        {% if 'England' in filter_form.countries_query %}
+
+                <div class="filters-block__filter-pill">
+                    <p class="filters-block__filter-text">{% get_translation key='england' language=page.get_language %}</p>
+                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-england') class="filters-block__filter-iconclose">
+                </div>
+
+        {% endif %}
+
+        {% if 'Scotland' in filter_form.countries_query %}
+
+                <div class="filters-block__filter-pill">
+                    <p class="filters-block__filter-text">{% get_translation key='scotland' language=page.get_language %}</p>
+                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-scotland') class="filters-block__filter-iconclose">
+                </div>
+
+        {% endif %}
+
+        {% if 'Wales' in filter_form.countries_query %}
+
+                <div class="filters-block__filter-pill">
+                    <p class="filters-block__filter-text">{% get_translation key='wales' language=page.get_language %}</p>
+                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-wales') class="filters-block__filter-iconclose">
+                </div>
+
+        {% endif %}
+
+        {% if 'Ireland' in filter_form.countries_query %}
+
+                <div class="filters-block__filter-pill">
+                    <p class="filters-block__filter-text">{% get_translation key='northern_ireland' language=page.get_language %}</p>
+                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-ireland') class="filters-block__filter-iconclose">
+                </div>
+
+        {% endif %}
+
         {% if filter_form.mode_query %}
 
             <div id="clear-filters" class="filters-block__filter-remove-pill">
@@ -60,6 +96,7 @@
             </div>
 
         {% endif %}
+
 
     </div>
 {% endif %}
