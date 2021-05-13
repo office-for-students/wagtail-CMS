@@ -437,6 +437,10 @@ DICT = {
         'en': 'Filter',
         'cy': 'Hidlo'
     },
+    'filter_by': {
+        'en': 'Filter by',
+        'cy': 'Hidlo gan'
+    },
     'financial_support_details': {
         'en': 'Financial support',
         'cy': 'Cymorth ariannol'
@@ -754,6 +758,10 @@ DICT = {
         'en': 'Placement year',
         'cy': 'Blwyddyn ar leoliad'
     },
+    'postcode': {
+        'en': 'Postcode',
+        'cy': 'Cod post'
+    },
     'previous_page': {
         'en': 'Previous page',
         'cy': 'Y dudalen flaenorol'
@@ -813,6 +821,10 @@ DICT = {
     'Quality and customer care managers': {
         'en': 'Quality and customer care managers',
         'cy': 'Rheolwyr ansawdd a gofal cwsmeriaid'
+    },
+    "regions": {
+        'en': 'Region(s)',
+        'cy': 'Rhanbarth(au)' 
     },
     'remove_course': {
         'en': 'Remove course',
