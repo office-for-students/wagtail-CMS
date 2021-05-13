@@ -205,11 +205,22 @@
                 margin: 10px 0 10px;
                 background-color: $light-blue-grey;
               }
-            
         }
 
         &-option {
             width: 100%;
+
+            &-location{
+                margin-bottom: 14px;
+                margin-left: 3px
+            }
+
+            &-country{
+                width: 200px;
+                height: 40px;
+                padding: 9px 15px 9px 0px;
+                
+            }
 
             &--two-col {
                 width: 50%;
@@ -270,12 +281,19 @@
 
             &-label {
                 font-size: 16px;
+
+                &-bold {
+                    font-weight: bold;
+                }
             }
         }
 
         &-radio {
+
             &-label{
-                padding: 20px 13px;
+                width: 191px;
+                height: 22px;
+                font-family: "Nunito Sans", sans-serif;
             }
         }
 
