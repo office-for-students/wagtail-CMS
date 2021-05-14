@@ -1,16 +1,16 @@
 {% load discover_uni_tags wagtailcore_tags %}
 <script>
-	$(document).ready(function() {
-	   $('input[type="radio"]').click(function() {
-	       if($(this).attr('id') == 'region') {
-	            $('#regionDiv').show();           
-	       }
+    $(document).ready(function() {
+       $('input[type="radio"]').click(function() {
+           if($(this).attr('id') == 'region') {
+                $('.region-div').css( "display", "block" );           
+           }
 
-	       else if($(this).attr('id') == 'postcode') {
-	            $('#regionDiv').hide();   
-	       }
-	   });
-	});
+           else if($(this).attr('id') == 'postcode') {
+                $('.region-div').css( "display", "none" );   
+           }
+       });
+    });
 </script>
 
 <div class="filters-block__filter-accordion">
@@ -31,30 +31,40 @@
     </div>
 
     <div class="filters-block__filter-accordion-body">
-    	<div class="filters-block__filter-options-title">
-	    	{% get_translation key='filter_by' language=page.get_language %}
-	    </div>
-    	<div class="filters-block__filter-option-location">
-	    	<input type="radio" id="region" class="filters-block__filter-radio" name="location" value="region">
-		    <label class="filters-block__filter-radio-label" for="region">{% get_translation key='regions' language=page.get_language %}</label><br>
-		    <input type="radio" id="postcode" class="filters-block__filter-radio" name="location" value="postcode">
-		    <label class="filters-block__filter-radio-label" for="postcode">{% get_translation key='postcode' language=page.get_language %}</label><br>
-		</div>
+        {% if filter_form.mode_query == "Distance learning" %}
+        <div class="filters-block__filter-disabled">
+            {% get_translation key='filter_not_applicable' language=page.get_language %}
+        </div>
+        {% endif %}
 
-        <div id="regionDiv" class="filters-block__filter-options" style="display: none;">
+        <div class="filters-block__filter-options-title">
+            {% get_translation key='filter_by' language=page.get_language %}
+        </div>
+        <div class="filters-block__filter-option-location">
+            <input type="radio" id="region" class="filters-block__filter-radio" name="location" value="region"
+            {% if filter_form.mode_query == "Distance learning" %}disabled='disabled'{% endif %}>
+            <label class="filters-block__filter-radio-label" for="region">{% get_translation key='regions' language=page.get_language %}</label><br>
+            <input type="radio" id="postcode" class="filters-block__filter-radio" name="location" value="postcode"
+            {% if filter_form.mode_query == "Distance learning" %}disabled='disabled'{% endif %}>
+            <label class="filters-block__filter-radio-label" for="postcode">{% get_translation key='postcode' language=page.get_language %}</label><br>
+        </div>
 
-        	<div class="filters-block__filter-option-country">
+        <div id="regionDiv" class="filters-block__filter-options region-div">
+
+            <div class="filters-block__filter-option-country">
                 <input id="countries-england" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="England"
-                    {% if 'England' in filter_form.countries_query %}checked{% endif %} />
+                    {% if 'England' in filter_form.countries_query %}checked{% endif %}
+                    {% if filter_form.mode_query == "Distance learning" %}disabled='disabled'{% endif %} />
 
                 <label class="filters-block__filter-checkbox-label-bold" for="countries-england">
                     {% get_translation key='england' language=page.get_language %}
                 </label>
             </div>
 
-        	<div class="filters-block__filter-option-country">
+            <div class="filters-block__filter-option-country">
                 <input id="countries-scotland" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Scotland"
-                    {% if 'Scotland' in filter_form.countries_query %}checked{% endif %} />
+                    {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}
+                    {% if filter_form.mode_query == "Distance learning" %}disabled='disabled'{% endif %} />
 
                 <label class="filters-block__filter-checkbox-label-bold" for="countries-scotland">
                     {% get_translation key='scotland' language=page.get_language %}
@@ -63,7 +73,8 @@
 
             <div class="filters-block__filter-option-country">
                 <input id="countries-ireland" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Northern Ireland"
-                    {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %} />
+                    {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}
+                    {% if filter_form.mode_query == "Distance learning" %}disabled='disabled'{% endif %} />
 
                 <label class="filters-block__filter-checkbox-label-bold" for="countries-ireland">
                     {% get_translation key='northern_ireland' language=page.get_language %}
@@ -72,7 +83,8 @@
 
             <div class="filters-block__filter-option-country">
                 <input id="countries-wales" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Wales"
-                    {% if 'Wales' in filter_form.countries_query %}checked{% endif %} />
+                    {% if 'Wales' in filter_form.countries_query %}checked{% endif %}
+                    {% if filter_form.mode_query == "Distance learning" %}disabled='disabled'{% endif %} />
 
                 <label class="filters-block__filter-checkbox-label-bold" for="countries-wales">
                     {% get_translation key='wales' language=page.get_language %}
