@@ -158,6 +158,13 @@
                 cursor: pointer;
             }
 
+        &-disabled {
+            padding: 10px;
+            background-color: $pale;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 16px;
+        }
+
         &-years-group {
             margin: 0px -33px;
         }
@@ -612,6 +619,11 @@
                         }
                     }
                 }
+            }
+
+            &-disabled {
+                width: 255px;
+                transform: translate(-10px)
             }
 
             &-years-group {
