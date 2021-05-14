@@ -2,11 +2,19 @@
 
     <script>
         // a function to select the value the passed in value for study_mode and set it to null
+        // if distance learning is the only filter applied, or if you are closing the oncampus filter, and the distance learning is active, all regional filters will be removed also.
         function closeFilter(filter) {  
           document.getElementById(filter).checked = false;
-          document.getElementById("filterForm").submit()
+          const mode_query = '{{filter_form.mode_query}}'
+          
+          if(filter === 'mode-campus' && mode_query.includes("Distance")){
+                document.getElementById('countries-england').checked = false;
+                document.getElementById('countries-scotland').checked = false;
+                document.getElementById('countries-ireland').checked = false;
+                document.getElementById('countries-wales').checked = false;        
+            }
+                document.getElementById("filterForm").submit()
         }
-   
     </script>
 
 {% if filter_form.mode_query or filter_form.countries_query %}
@@ -50,40 +58,45 @@
 
         {% endif %}
 
-        {% if 'England' in filter_form.countries_query %}
+        {% if 'Distance' in filter_form.mode_query and 'campus' not in filter_form.mode_query %}
 
-                <div class="filters-block__filter-pill">
-                    <p class="filters-block__filter-text">{% get_translation key='england' language=page.get_language %}</p>
-                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-england') class="filters-block__filter-iconclose">
-                </div>
+        {% else %}
 
-        {% endif %}
+            {% if 'England' in filter_form.countries_query %}
 
-        {% if 'Scotland' in filter_form.countries_query %}
+                    <div class="filters-block__filter-pill">
+                        <p class="filters-block__filter-text">{% get_translation key='england' language=page.get_language %}</p>
+                        <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-england') class="filters-block__filter-iconclose">
+                    </div>
 
-                <div class="filters-block__filter-pill">
-                    <p class="filters-block__filter-text">{% get_translation key='scotland' language=page.get_language %}</p>
-                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-scotland') class="filters-block__filter-iconclose">
-                </div>
+            {% endif %}
 
-        {% endif %}
+            {% if 'Scotland' in filter_form.countries_query %}
 
-        {% if 'Wales' in filter_form.countries_query %}
+                    <div class="filters-block__filter-pill">
+                        <p class="filters-block__filter-text">{% get_translation key='scotland' language=page.get_language %}</p>
+                        <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-scotland') class="filters-block__filter-iconclose">
+                    </div>
 
-                <div class="filters-block__filter-pill">
-                    <p class="filters-block__filter-text">{% get_translation key='wales' language=page.get_language %}</p>
-                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-wales') class="filters-block__filter-iconclose">
-                </div>
+            {% endif %}
 
-        {% endif %}
+            {% if 'Wales' in filter_form.countries_query %}
 
-        {% if 'Ireland' in filter_form.countries_query %}
+                    <div class="filters-block__filter-pill">
+                        <p class="filters-block__filter-text">{% get_translation key='wales' language=page.get_language %}</p>
+                        <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-wales') class="filters-block__filter-iconclose">
+                    </div>
 
-                <div class="filters-block__filter-pill">
-                    <p class="filters-block__filter-text">{% get_translation key='northern_ireland' language=page.get_language %}</p>
-                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-ireland') class="filters-block__filter-iconclose">
-                </div>
+            {% endif %}
 
+            {% if 'Ireland' in filter_form.countries_query %}
+
+                    <div class="filters-block__filter-pill">
+                        <p class="filters-block__filter-text">{% get_translation key='northern_ireland' language=page.get_language %}</p>
+                        <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-ireland') class="filters-block__filter-iconclose">
+                    </div>
+
+            {% endif %}
         {% endif %}
 
             <div id="clear-filters" class="filters-block__filter-remove-pill">
@@ -92,7 +105,7 @@
                 </p>
                 <img src="{% static 'images/icon-close.svg'%}" class="filters-block__filter-iconclose">
             </div>
-
+            
 
     </div>
 {% endif %}
