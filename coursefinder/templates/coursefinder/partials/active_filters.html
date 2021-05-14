@@ -7,7 +7,7 @@
           document.getElementById(filter).checked = false;
           const mode_query = '{{filter_form.mode_query}}'
           
-          if(mode_query.includes("Distance") && !mode_query.includes("campus") || filter === 'mode-campus' && mode_query.includes("Distance")){
+          if(filter === 'mode-campus' && mode_query.includes("Distance")){
                 document.getElementById('countries-england').checked = false;
                 document.getElementById('countries-scotland').checked = false;
                 document.getElementById('countries-ireland').checked = false;
