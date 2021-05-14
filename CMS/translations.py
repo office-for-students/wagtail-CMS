@@ -442,7 +442,7 @@ DICT = {
         'cy': 'Hidlo gan'
     },
     'filter_not_applicable':{
-        'en': 'The filter is not applicable for distance learning courses.',
+        'en': 'This filter is not applicable for distance learning courses.',
         'cy': "Nid yw'r hidlydd hwn yn berthnasol i gyrsiau dysgu o bell."
     },
     'financial_support_details': {
