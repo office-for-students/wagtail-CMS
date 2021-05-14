@@ -440,6 +440,7 @@ $(document).ready(function(){
         $('#mode-full-time').prop('checked', false);
         $('#mode-part-time').prop('checked', false);
         $('#mode-distance').prop('checked', false);
+        $('#mode-campus').prop('checked', false);
 
         for (filter_base_name of ['placement', 'foundation', 'abroad']) {
             $('#'+filter_base_name+'-yes').prop('checked', false);
