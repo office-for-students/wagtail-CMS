@@ -442,6 +442,9 @@ $(document).ready(function(){
         $('#mode-distance').prop('checked', false);
         $('#mode-campus').prop('checked', false);
 
+        $('#course_query').val('');
+        $('#institutions_query').val('');
+
         for (filter_base_name of ['placement', 'foundation', 'abroad']) {
             $('#'+filter_base_name+'-yes').prop('checked', false);
             $('#'+filter_base_name+'-no').prop('checked', false);
