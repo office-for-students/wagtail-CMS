@@ -414,6 +414,23 @@
             margin-bottom: 20px;
             font-size: 18px;
             font-weight: bold;
+
+            &_sort_by_institution {
+                padding-left: 10px;
+                margin-bottom: 20px;
+                font-size: 18px;
+                font-weight: bold;
+                color: $link-green;
+                text-decoration: underline;      
+            }
+            
+            &_sort_by_subject {
+                padding-left: 31px;
+                margin-bottom: 20px;
+                font-size: 18px;
+                font-weight: normal;      
+                color: $link-green;
+            }
         }
 
         &__overview {

@@ -557,6 +557,10 @@ DICT = {
         'en': 'Institution name',
         'cy': "Enw'r sefydliad"
     },
+    'institution_az': {
+        'en': 'Institution A-Z',
+        'cy': 'Sefydliad A-Z'
+    },
     'Information technology and telecommunications professionals': {
         'en': 'Information technology and telecommunications professionals',
         'cy': 'Gweithwyr Proffesiynol Technoleg Gwybodaeth a Thelathrebu'
