@@ -17,8 +17,41 @@
         }
     </script>
 
-{% if filter_form.mode_query or filter_form.countries_query %}
+    <script>
+        function closeCourseQuery(){
+            document.getElementById('course_query').value = '';
+            let institution = '"{{filter_form.institutions}}"';
+            document.getElementById('institutions_query').value = institution;
+            document.getElementById("filterForm").submit();
+        }           
+
+        function closeInstitutionQuery(){
+            document.getElementById('institutions_query').value = '';
+            let course = '{{filter_form.course_query}}';
+            document.getElementById('course').value = course;
+            document.getElementById("filterForm").submit();
+        }
+    </script>
+
+{% if filter_form.mode_query or filter_form.countries_query or filter_form.course_query or filter_form.institutions %}
     <div class="filters-block__filter-active-filter">
+        {% if filter_form.course_query %}
+
+                <div class="filters-block__filter-pill">
+                    <p class="filters-block__filter-text">{{filter_form.course_query}}</p>
+                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeCourseQuery() class="filters-block__filter-iconclose">
+                </div>
+
+        {% endif %}
+
+        {% if filter_form.institutions %}
+                <div class="filters-block__filter-pill">
+                    <p class="filters-block__filter-text">{{filter_form.institutions}}</p>
+                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeInstitutionQuery('institution_query') class="filters-block__filter-iconclose">
+                </div>
+
+        {% endif %}
+
         {% if 'Full-time' in filter_form.mode_query %}
 
                 <div class="filters-block__filter-pill">
