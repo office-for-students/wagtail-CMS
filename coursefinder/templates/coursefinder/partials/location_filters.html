@@ -11,6 +11,36 @@
            }
        });
     });
+
+    $(document).ready(function() {
+        var disable_input = $('input[name=countries_query]');
+        if($('.distance').is(":checked") && $('.campus').is(":checked") == false){
+            disable_input.attr('disabled', 'disabled');
+            $(".message").removeClass('hidden')
+
+            $('.distance').change(function() {
+            if($('.distance').prop("checked") == false){
+                disable_input.attr('disabled', false);
+                $(".message").addClass('hidden')
+            }
+        })
+        }
+        
+    });
+
+    $(document).ready(function() {
+        $('input[type="checkbox"]').click(function() {
+            var disable_input = $('input[name=countries_query]');
+            if($('.distance').is(":checked") && $('.campus').is(":checked") == false){
+                disable_input.attr('disabled', 'disabled');
+                $(".message").removeClass('hidden')
+            }
+            else{
+                disable_input.attr('disabled', false);
+                $(".message").addClass('hidden')
+            }
+        });
+    });
 </script>
 
 <div class="filters-block__filter-accordion">
@@ -31,21 +61,17 @@
     </div>
 
     <div class="filters-block__filter-accordion-body">
-        {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}
-        <div class="filters-block__filter-disabled">
+        <div class="filters-block__filter-disabled message hidden">
             {% get_translation key='filter_not_applicable' language=page.get_language %}
         </div>
-        {% endif %}
 
         <div class="filters-block__filter-options-title">
             {% get_translation key='filter_by' language=page.get_language %}
         </div>
         <div class="filters-block__filter-option-location">
-            <input type="radio" id="region" class="filters-block__filter-radio" name="location" value="region"
-            {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}disabled='disabled'{% endif %}>
+            <input type="radio" id="region" class="filters-block__filter-radio" name="countries_query" value="region">
             <label class="filters-block__filter-radio-label" for="region">{% get_translation key='regions' language=page.get_language %}</label><br>
-            <input type="radio" id="postcode" class="filters-block__filter-radio" name="location" value="postcode"
-            {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}disabled='disabled'{% endif %}>
+            <input type="radio" id="postcode" class="filters-block__filter-radio" name="countries_query" value="postcode">
             <label class="filters-block__filter-radio-label" for="postcode">{% get_translation key='postcode' language=page.get_language %}</label><br>
         </div>
 
@@ -53,8 +79,7 @@
 
             <div class="filters-block__filter-option-country">
                 <input id="countries-england" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="England"
-                    {% if 'England' in filter_form.countries_query %}checked{% endif %}
-                    {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}disabled='disabled'{% endif %} />
+                    {% if 'England' in filter_form.countries_query %}checked{% endif %}/>
 
                 <label class="filters-block__filter-checkbox-label-bold" for="countries-england">
                     {% get_translation key='england' language=page.get_language %}
@@ -63,8 +88,7 @@
 
             <div class="filters-block__filter-option-country">
                 <input id="countries-scotland" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Scotland"
-                    {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}
-                    {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}disabled='disabled'{% endif %} />
+                    {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}/>
 
                 <label class="filters-block__filter-checkbox-label-bold" for="countries-scotland">
                     {% get_translation key='scotland' language=page.get_language %}
@@ -73,8 +97,7 @@
 
             <div class="filters-block__filter-option-country">
                 <input id="countries-ireland" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Northern Ireland"
-                    {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}
-                    {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}disabled='disabled'{% endif %} />
+                    {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}/>
 
                 <label class="filters-block__filter-checkbox-label-bold" for="countries-ireland">
                     {% get_translation key='northern_ireland' language=page.get_language %}
@@ -83,8 +106,7 @@
 
             <div class="filters-block__filter-option-country">
                 <input id="countries-wales" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Wales"
-                    {% if 'Wales' in filter_form.countries_query %}checked{% endif %}
-                    {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}disabled='disabled'{% endif %} />
+                    {% if 'Wales' in filter_form.countries_query %}checked{% endif %}/>
 
                 <label class="filters-block__filter-checkbox-label-bold" for="countries-wales">
                     {% get_translation key='wales' language=page.get_language %}
