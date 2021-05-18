@@ -5,15 +5,7 @@
         // if distance learning is the only filter applied, or if you are closing the oncampus filter, and the distance learning is active, all regional filters will be removed also.
         function closeFilter(filter) {  
           document.getElementById(filter).checked = false;
-          const mode_query = '{{filter_form.mode_query}}'
-          
-          if(filter === 'mode-campus' && mode_query.includes("Distance")){
-                document.getElementById('countries-england').checked = false;
-                document.getElementById('countries-scotland').checked = false;
-                document.getElementById('countries-ireland').checked = false;
-                document.getElementById('countries-wales').checked = false;        
-            }
-                document.getElementById("filterForm").submit()
+          document.getElementById("filterForm").submit();
         }
     </script>
 
