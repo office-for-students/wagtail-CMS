@@ -1,10 +1,18 @@
 {% load discover_uni_tags %}
 
 <div class="course-finder-wrapper">
-    <div class="course-finder-results__heading">
+    <label class="course-finder-results__heading">
         {% get_translation key='sort_by' language=page.get_language %}
         {% include 'coursefinder/partials/active_filters.html' %}
-    </div>
+    </label>
+    <label class="course-finder-results__heading_sort_by_institution">
+        {% get_translation key='institution_az' language=page.get_language %}
+        {% include 'coursefinder/partials/active_filters.html' %}
+    </label>
+    <label class="course-finder-results__heading_sort_by_subject">
+        {% get_translation key='subject' language=page.get_language %}
+        {% include 'coursefinder/partials/active_filters.html' %}
+    </label>
     {% if substitutions.0 == 0 %}
         <p class="no-courses">
             {% get_translation key='no_courses_found' language=page.get_language %}
