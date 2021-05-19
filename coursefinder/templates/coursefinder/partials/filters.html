@@ -75,45 +75,6 @@
                 
                 {% comment %}
                 <div class="filters-block__filter">
-                    <fieldset>
-                        <legend>
-                            <h2 class="filters-block__filter-heading">
-                                {% get_translation key='study_mode' language=page.get_language %}
-                            </h2>
-                        </legend>
-
-                        <div class="filters-block__filter-options">
-                            <div class="filters-block__filter-option--three-col">
-                                <input id="mode-full-time" class="filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Full-time"
-                                    {% if 'Full-time' in filter_form.mode_query %}checked{% endif %}/>
-
-                                <label class="filters-block__filter-checkbox-label" for="mode-full-time">
-                                    {% get_translation key='full_time' language=page.get_language %}
-                                </label>
-                            </div>
-
-                            <div class="filters-block__filter-option--three-col">
-                                <input id="mode-part-time" class="filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Part-time"
-                                    {% if 'Part-time' in filter_form.mode_query %}checked{% endif %}/>
-
-                                <label class="filters-block__filter-checkbox-label" for="mode-part-time">
-                                    {% get_translation key='part_time' language=page.get_language %}
-                                </label>
-                            </div>
-
-                            <div class="filters-block__filter-option--three-col">
-                                <input id="mode-distance" class="filters-block__filter-checkbox-input" type="checkbox" name="mode_query" value="Distance learning"
-                                    {% if 'Distance learning' in filter_form.mode_query %}checked{% endif %}/>
-
-                                <label class="filters-block__filter-checkbox-label" for="mode-distance">
-                                    {% get_translation key='distance_learning' language=page.get_language %}
-                                </label>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-
-                <div class="filters-block__filter">
                     <div class="filters-block__filter-years-group">
                         <div class="filters-block__filter-year">
                             {% include 'coursefinder/partials/placement_filters.html' %}
