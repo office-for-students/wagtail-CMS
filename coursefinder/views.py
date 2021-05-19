@@ -121,6 +121,9 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
 
     context = page.get_context(request)
 
+    sort_by_subject = query_params.get('sort_by_subject', 'false')
+    print(f'sort_by_subject={sort_by_subject}')
+
     context.update({
         'page': page,
         'search': course_finder_search,
@@ -133,6 +136,7 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         'filter_form': filter_form,
         'filters': filters,
         'postcode_query': postcode_query,
+        'sort_by_subject': sort_by_subject
     })
 
     return render(request, 'coursefinder/course_finder_results.html', context)

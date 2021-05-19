@@ -418,18 +418,35 @@
             &_sort_by_institution {
                 padding-left: 10px;
                 margin-bottom: 20px;
-                font-size: 18px;
-                font-weight: bold;
                 color: $link-green;
-                text-decoration: underline;      
+                font-size: 18px;
+                font-weight: normal;      
+                
+                &_selected {
+                    padding-left: 10px;
+                    margin-bottom: 20px;
+                    color: $link-green;
+                    font-size: 18px;                
+                    font-weight: bold;
+                    text-decoration: underline;          
+                }
             }
             
             &_sort_by_subject {
                 padding-left: 31px;
                 margin-bottom: 20px;
+                color: $link-green;
                 font-size: 18px;
                 font-weight: normal;      
-                color: $link-green;
+                
+                &_selected {
+                    padding-left: 31px;
+                    margin-bottom: 20px;
+                    color: $link-green;
+                    font-size: 18px;                
+                    font-weight: bold;
+                    text-decoration: underline;          
+                }
             }
         }
 
