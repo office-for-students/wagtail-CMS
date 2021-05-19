@@ -23,9 +23,9 @@
                 disable_input.attr('disabled', false);
                 $(".message").addClass('hidden')
             }
+        
         })
         }
-        
     });
 
     $(document).ready(function() {
@@ -42,10 +42,11 @@
         });
     });
 
+
     // a function to trigger each hidden checkbox. This hidden input is what is submitted to the FilterForm. Using this means we can keep the value of the checkbox if distance learning is selected, submitted and then removed
     function toggleCheckbox(country) { 
-        var shown = document.getElementsByClassName(country)
-        var hidden = document.getElementsByClassName('hidden-' + country)
+        var shown = document.getElementsByClassName(country);
+        var hidden = document.getElementsByClassName('hidden-' + country);
         if(shown[0].checked){
            hidden[0].checked = true; 
         } 
@@ -74,7 +75,7 @@
     </div>
 
     <div class="filters-block__filter-accordion-body">
-        <div class="filters-block__filter-disabled message hidden">
+        <div class="filters-block__filter-disabled message hidden" >
             {% get_translation key='filter_not_applicable' language=page.get_language %}
         </div>
 
