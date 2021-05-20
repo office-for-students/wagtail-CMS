@@ -31,7 +31,7 @@
                 <input id="count_input" name="count" type="text" value="{{search.count}}" hidden />
 
                 <input name="course_query" id="course_query" type="text" value="{{filter_form.course_query}}" hidden />
-                <input name="institution_query" id="institutions_query" type="text" value='"{{filter_form.institutions}}"' hidden />
+                <input name="institution_query" id="institutions_query" type="text" {% if filter_form.institutions %} value='"{{filter_form.institutions}}"' {% endif %} hidden />
 
 
                 {% comment %}
