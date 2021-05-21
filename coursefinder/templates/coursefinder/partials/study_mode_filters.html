@@ -1,5 +1,9 @@
 {% load discover_uni_tags wagtailcore_tags %}
 
+<script>
+    var distance_checked = document.getElementsByClassName('distance').checked
+</script>
+
 <div class="filters-block__filter-accordion">
     <div tabindex="0" role="button" aria-label="Show content" class="filters-block__filter-accordion-header">
         <div class="filters-block__filter-accordion-heading">
@@ -39,7 +43,7 @@
                 {% get_translation key='learning' language=page.get_language %}
             </div>
             <div class="filters-block__filter-option">
-                <input id="mode-distance" class="filters-block__filter-checkbox-input distance" type="checkbox" name="mode_query" value="Distance learning" 
+                <input id="mode-distance" class="filters-block__filter-checkbox-input distance" onchange="toggleDistance(checked, document.getElementById('mode-campus').checked)" type="checkbox" name="mode_query" value="Distance learning" 
                     {% if 'Distance learning' in filter_form.mode_query %}checked{% endif %}/>
 
                 <label class="filters-block__filter-checkbox-label" for="mode-distance">
@@ -47,7 +51,7 @@
                 </label>
             </div>
             <div class="filters-block__filter-option">
-                <input id="mode-campus" class="filters-block__filter-checkbox-input campus" type="checkbox" name="mode_query" value="On campus" 
+                <input id="mode-campus" class="filters-block__filter-checkbox-input campus" onchange="toggleDistance(document.getElementById('mode-distance').checked, checked)" type="checkbox" name="mode_query" value="On campus" 
                 {% if 'On campus' in filter_form.mode_query %}checked{% endif %} />
                 
                 <label class="filters-block__filter-checkbox-label" for="mode-campus">

@@ -12,35 +12,41 @@
        });
     });
 
+    //function to check whether distance is checked on page load and to disable the location filters if it is.
     $(document).ready(function() {
         var disable_input = $('input[name=countries_check]');
-        if($('.distance').is(":checked") && $('.campus').is(":checked") == false){
+        if($('.distance').is(":checked") == true && $('.campus').is(":checked") == false){
             disable_input.attr('disabled', 'disabled');
-            $(".message").removeClass('hidden')
-
-            $('.distance').change(function() {
-            if($('.distance').prop("checked") == false){
-                disable_input.attr('disabled', false);
-                $(".message").addClass('hidden')
-            }
-        
-        })
+            $(".message").css( "display", "block" )
         }
     });
 
-    $(document).ready(function() {
-        $('input[type="checkbox"]').click(function() {
-            var disable_input = $('input[name=countries_check]');
-            if($('.distance').is(":checked") && $('.campus').is(":checked") == false){
+    function toggleDistance(distance_checked, campus_checked) {
+        var disable_input = $('input[name=countries_check]');
+        var distance_checked_mobile = document.getElementsByClassName('distance')[1].checked;
+        var campus_checked_mobile = document.getElementsByClassName('campus')[1].checked;
+        // form duplicates when in mobile view so the Id cannot be used. 
+        if(window.innerWidth > 576){
+            if(distance_checked && campus_checked == false){
+                $(".message").css( "display", "block" )
                 disable_input.attr('disabled', 'disabled');
-                $(".message").removeClass('hidden')
             }
             else{
+                $(".message").css( "display", "none" )
                 disable_input.attr('disabled', false);
-                $(".message").addClass('hidden')
             }
-        });
-    });
+        }
+        else{
+            if(distance_checked_mobile && campus_checked_mobile == false){
+                $(".message").css( "display", "block" )
+                disable_input.attr('disabled', 'disabled');
+            }
+            else {
+                $(".message").css( "display", "none" )
+                disable_input.attr('disabled', false);
+            }
+        }
+    }
 
 
     // a function to trigger each hidden checkbox. This hidden input is what is submitted to the FilterForm. Using this means we can keep the value of the checkbox if distance learning is selected, submitted and then removed
@@ -53,7 +59,7 @@
         else{
            hidden[0].checked = false; 
         } 
-}
+    }
 
 </script>
 
