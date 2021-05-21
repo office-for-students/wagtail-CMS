@@ -12,8 +12,10 @@
     <script>
         function closeCourseQuery(){
             document.getElementById('course_query').value = '';
-            let institution = '"{{filter_form.institutions}}"';
-            document.getElementById('institutions_query').value = institution;
+            if('{{filter_form.institutions}}'){
+                let institution = '"{{filter_form.institutions}}"';
+                document.getElementById('institutions_query').value = institution;
+            }
             document.getElementById("filterForm").submit();
         }           
 
