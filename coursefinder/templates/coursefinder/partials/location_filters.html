@@ -11,6 +11,56 @@
            }
        });
     });
+
+    //function to check whether distance is checked on page load and to disable the location filters if it is.
+    $(document).ready(function() {
+        var disable_input = $('input[name=countries_check]');
+        if($('.distance').is(":checked") == true && $('.campus').is(":checked") == false){
+            disable_input.attr('disabled', 'disabled');
+            $(".message").css( "display", "block" )
+        }
+    });
+
+    function toggleDistance(distance_checked, campus_checked) {
+        var disable_input = $('input[name=countries_check]');
+        var distance_checked_mobile = document.getElementsByClassName('distance')[1].checked;
+        var campus_checked_mobile = document.getElementsByClassName('campus')[1].checked;
+        // form duplicates when in mobile view so the Id cannot be used. 
+        if(window.innerWidth > 576){
+            if(distance_checked && campus_checked == false){
+                $(".message").css( "display", "block" )
+                disable_input.attr('disabled', 'disabled');
+            }
+            else{
+                $(".message").css( "display", "none" )
+                disable_input.attr('disabled', false);
+            }
+        }
+        else{
+            if(distance_checked_mobile && campus_checked_mobile == false){
+                $(".message").css( "display", "block" )
+                disable_input.attr('disabled', 'disabled');
+            }
+            else {
+                $(".message").css( "display", "none" )
+                disable_input.attr('disabled', false);
+            }
+        }
+    }
+
+
+    // a function to trigger each hidden checkbox. This hidden input is what is submitted to the FilterForm. Using this means we can keep the value of the checkbox if distance learning is selected, submitted and then removed
+    function toggleCheckbox(country) { 
+        var shown = document.getElementsByClassName(country);
+        var hidden = document.getElementsByClassName('hidden-' + country);
+        if(shown[0].checked){
+           hidden[0].checked = true; 
+        } 
+        else{
+           hidden[0].checked = false; 
+        } 
+    }
+
 </script>
 
 <div class="filters-block__filter-accordion">
@@ -31,40 +81,27 @@
     </div>
 
     <div class="filters-block__filter-accordion-body">
-        {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}
-        <div class="filters-block__filter-disabled">
+        <div class="filters-block__filter-disabled message hidden" >
             {% get_translation key='filter_not_applicable' language=page.get_language %}
         </div>
-        {% endif %}
 
         <div class="filters-block__filter-options-title">
             {% get_translation key='filter_by' language=page.get_language %}
         </div>
         <div class="filters-block__filter-option-location">
-            <input type="radio" id="region" class="filters-block__filter-radio" name="location" value="region"
-            {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}disabled='disabled'{% endif %}>
+            <input type="radio" id="region" class="filters-block__filter-radio" name="countries_check" value="region">
             <label class="filters-block__filter-radio-label" for="region">{% get_translation key='regions' language=page.get_language %}</label><br>
-            <input type="radio" id="postcode" class="filters-block__filter-radio" name="location" value="postcode"
-            {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}disabled='disabled'{% endif %}>
+            <input type="radio" id="postcode" class="filters-block__filter-radio" name="countries_check" value="postcode">
             <label class="filters-block__filter-radio-label" for="postcode">{% get_translation key='postcode' language=page.get_language %}</label><br>
         </div>
 
         <div id="regionDiv" class="filters-block__filter-options region-div">
 
             <div class="filters-block__filter-option-country">
-                <input id="countries-england" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="England"
-                    {% if 'England' in filter_form.countries_query %}checked{% endif %}
-                    {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}disabled='disabled'{% endif %} />
-
-                <label class="filters-block__filter-checkbox-label-bold" for="countries-england">
-                    {% get_translation key='england' language=page.get_language %}
-                </label>
-            </div>
-
-            <div class="filters-block__filter-option-country">
-                <input id="countries-scotland" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Scotland"
-                    {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}
-                    {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}disabled='disabled'{% endif %} />
+                <input id="countries-scotland" class="hidden-scotland" type="checkbox" name="countries_query" value="Scotland" hidden
+                    {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}/>
+                <input id="countries-scotland" class="filters-block__filter-checkbox-input scotland" onclick="toggleCheckbox('scotland')" type="checkbox" name="countries_check" value="Scotland"
+                    {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}/>
 
                 <label class="filters-block__filter-checkbox-label-bold" for="countries-scotland">
                     {% get_translation key='scotland' language=page.get_language %}
@@ -72,9 +109,21 @@
             </div>
 
             <div class="filters-block__filter-option-country">
-                <input id="countries-ireland" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Northern Ireland"
-                    {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}
-                    {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}disabled='disabled'{% endif %} />
+                <input id="countries-wales" class="hidden-wales" type="checkbox" name="countries_query" value="Wales" hidden
+                    {% if 'Wales' in filter_form.countries_query %}checked{% endif %}/>
+                <input id="countries-wales" class="filters-block__filter-checkbox-input wales" onclick="toggleCheckbox('wales')" type="checkbox" name="countries_check" value="Wales" 
+                    {% if 'Wales' in filter_form.countries_query %}checked{% endif %}/>
+
+                <label class="filters-block__filter-checkbox-label-bold" for="countries-wales">
+                    {% get_translation key='wales' language=page.get_language %}
+                </label>
+            </div>
+
+            <div class="filters-block__filter-option-country">
+                <input id="countries-ireland" class="hidden-ireland" type="checkbox" name="countries_query" value="Northern Ireland" hidden
+                    {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}/>
+                <input id="countries-ireland" class="filters-block__filter-checkbox-input ireland" onclick="toggleCheckbox('ireland')" type="checkbox" name="countries_check" value="Northern Ireland"
+                    {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}/>
 
                 <label class="filters-block__filter-checkbox-label-bold" for="countries-ireland">
                     {% get_translation key='northern_ireland' language=page.get_language %}
@@ -82,12 +131,13 @@
             </div>
 
             <div class="filters-block__filter-option-country">
-                <input id="countries-wales" class="filters-block__filter-checkbox-input" type="checkbox" name="countries_query" value="Wales"
-                    {% if 'Wales' in filter_form.countries_query %}checked{% endif %}
-                    {% if "Distance" in filter_form.mode_query and "campus" not in filter_form.mode_query %}disabled='disabled'{% endif %} />
+                <input id="countries-england" class="hidden-england" type="checkbox" name="countries_query" value="England" hidden
+                    {% if 'England' in filter_form.countries_query %}checked{% endif %}/>
+                <input id="countries-england" class="filters-block__filter-checkbox-input england" onclick="toggleCheckbox('england')" type="checkbox" name="countries_check" value="England"
+                    {% if 'England' in filter_form.countries_query %}checked{% endif %}/>
 
-                <label class="filters-block__filter-checkbox-label-bold" for="countries-wales">
-                    {% get_translation key='wales' language=page.get_language %}
+                <label class="filters-block__filter-checkbox-label-bold" for="countries-england">
+                    {% get_translation key='england' language=page.get_language %}
                 </label>
             </div>
 

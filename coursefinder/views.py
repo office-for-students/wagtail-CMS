@@ -77,9 +77,13 @@ def narrow_search(request, language=enums.languages.ENGLISH):
     
 def course_finder_results(request, language=enums.languages.ENGLISH):
     query_params = request.POST
-    countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
     filter_form = FilterForm(query_params)
     filters = build_filters(query_params)
+    if "distance" in filters:
+        countries_query = ''
+    else: 
+        countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
+
     course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
                                               query_params.get('institution_query', None),
                                               countries_query,
@@ -119,7 +123,9 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         'english_url': english_url,
         'welsh_url': welsh_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
-        'filter_form': filter_form
+        'filter_form': filter_form,
+        'filters': filters,
+        'countries': countries_query
     })
 
     return render(request, 'coursefinder/course_finder_results.html', context)
