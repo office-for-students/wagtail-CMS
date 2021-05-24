@@ -689,6 +689,10 @@ DICT = {
         'en': 'Next page',
         'cy': 'Y dudalen nesaf'
     },
+    'new_search': {
+        'en': 'New Search',
+        'cy': 'Chwiliad newydd'
+    },
     'no_courses_found': {
         'en': 'No courses found - remove or change some filters',
         'cy': 'Ni chafwyd hyd i unrhyw cyrsiau - dileu neu newid rhai hidlwyr'
