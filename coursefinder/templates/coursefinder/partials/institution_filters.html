@@ -1,0 +1,64 @@
+{% load discover_uni_tags wagtailcore_tags %}
+
+<script>
+    function searchList() {
+      // Declare variables
+      var input, filter, table, institutions, label, i, txtValue;
+      input = document.getElementById("institutionSearchBar");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("{{institution}}-check");
+      institutions = document.getElementsByClassName("institution-check");
+      block = document.getElementById("institution-block");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < institutions.length; i++) {
+        label = institutions[i].getElementsByTagName("label")[0];
+        if (label) {
+          txtValue = label.textContent || label.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            institutions[i].style.display = "flex";
+          } else {
+            institutions[i].style.display = "none";
+          }
+          if (txtValue.toUpperCase().indexOf(filter).length < 5){
+            block.style.overflowY = "hidden"
+          }
+        }
+      }
+    }
+</script>
+
+{{institution_array}}
+
+
+<div class="filters-block__filter-accordion">
+    <div tabindex="0" role="button" aria-label="Show content" class="filters-block__filter-accordion-header">
+        <div class="filters-block__filter-accordion-heading">
+            <div class="filters-block__filter-accordion-title">
+                {% get_translation key='institution' language=page.get_language %}
+            </div>
+        </div>
+
+        <div class="expand">
+            <img src="/static/images/plus_icon_black.svg" alt="expand">
+        </div>
+
+        <div class="collapse">
+            <img src="/static/images/minus_icon_black.svg" alt="collapse">
+        </div>
+    </div>
+    <div class="filters-block__filter-accordion-body">
+        <input type="text" id="institutionSearchBar" onkeyup="searchList()" placeholder="Search institutions" class="filters-block__filter-search">
+        <div id="institution-block" class="filters-block__filter-options-institution"> 
+            {% for institution in institutions_list %}
+                <div class="filters-block__filter-option institution-check" style="display: flex; margin-bottom: 10px">
+                    <input id="{{institution.name}}" class="filters-block__filter-checkbox-input" type="checkbox" name="institution_query" value="{{institution.name}}" 
+                                {% if institution.name in filter_form.institutions %}checked{% endif %} />
+                    <label style="width: 200px; margin-top: -5px; margin-left: 10px" class="filters-block__filter-checkbox-label" for="{{institution}}-check">
+                        {{institution.name}}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
