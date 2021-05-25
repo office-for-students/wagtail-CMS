@@ -195,9 +195,7 @@ def build_filters(params):
     return filters_query_params
         
 
-def create_sort_by_subject():
-    print(f'get_json_file()')
-    
+def create_sort_by_subject():   
     with open(os.path.join(settings.BASE_DIR, "CMS/static/jsonfiles/subjects-sort-by.json")) as json_file:   
         data = json.load(json_file)
     return SortBySubject(data)
