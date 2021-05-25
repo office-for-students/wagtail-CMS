@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 
@@ -7,11 +8,13 @@ from coursefinder.forms import FilterForm
 from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderPostcode, \
     CourseFinderSummary
 from coursefinder.models import CourseFinderResults
+from coursefinder.sort_by_subject import SortBySubject
 from courses.models import CourseComparisonPage, CourseManagePage
 from site_search.models import SearchLandingPage
 from home.models import HomePage
 
 import json
+import os
 
 def results(request, language=enums.languages.ENGLISH):
     query_params = request.POST
@@ -101,7 +104,7 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
                                               query_params.get('count', 20),
                                               language)
     error = course_finder_search.execute()
- 
+
     if error:
         redirect_page = get_new_landing_page_for_language(language)
         #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
@@ -122,7 +125,14 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     context = page.get_context(request)
 
     sort_by_subject = query_params.get('sort_by_subject', 'false')
-    print(f'sort_by_subject={sort_by_subject}')
+
+    # Example usage of calling SortBySubject within view
+    # 
+    # sortBySubject = create_sort_by_subject()
+    # subject = 'CAH09-01-03'
+    # print(f'{subject} labels={sortBySubject.get_labels(subject)}')
+    # print(f'{subject} English={sortBySubject.get_label(subject)}')
+    # print(f'{subject} Welsh={sortBySubject.get_label_welsh(subject)}')
 
     context.update({
         'page': page,
@@ -183,3 +193,11 @@ def build_filters(params):
 
     filters_query_params = ','.join(filter_ for filter_ in filters if filter_)
     return filters_query_params
+        
+
+def create_sort_by_subject():
+    print(f'get_json_file()')
+    
+    with open(os.path.join(settings.BASE_DIR, "CMS/static/jsonfiles/subjects-sort-by.json")) as json_file:   
+        data = json.load(json_file)
+    return SortBySubject(data)
