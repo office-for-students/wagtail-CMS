@@ -9,7 +9,8 @@
 }
 @media only screen and (min-width: 577px) {
     .course-finder-wrapper {
-        margin-left: 285px;
+        flex: 1 0 50vw; 
+        margin-left: 30px;
     }
 }
 
@@ -820,6 +821,10 @@
         margin-right:auto!important;
         padding: 1rem;
     }
+    .course-finder-wrapper {
+        flex: 1 0 62vw;
+        padding-right: 15px;
+    }
 }
 @media only screen and (min-width: 1200px){
     .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content{
@@ -827,5 +832,9 @@
         margin-left:auto!important;
         margin-right:auto!important;
         // padding: 1rem;
+    }
+    .course-finder-wrapper {
+        flex: 1 0 62vw;
+        padding-right: 0px;
     }
 }
