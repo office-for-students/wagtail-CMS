@@ -560,8 +560,13 @@
         padding: 0;
         width: 255px;
         background-color: $white;
-        position: absolute;
         overflow: visible;
+        flex: 1 0 270px;
+    }
+
+    .course-finder-flex{
+        display: flex;
+        flex-direction: row;
     }
     
     .no-courses{
