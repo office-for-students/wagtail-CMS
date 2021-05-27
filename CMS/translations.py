@@ -200,8 +200,16 @@ DICT = {
         'cy': "Cymharu'r cwrs"
     },
     'compare_courses': {
-        'en': 'compare courses',
-        'cy': 'cymharu cyrsiau'
+        'en': 'Compare courses',
+        'cy': 'Cymharu cyrsiau'
+    },
+    'compare': {
+        'en': 'Compare',
+        'cy': 'Cymharu'
+    },
+    'courses_to_view':{
+        'en': 'to view saved courses side-by-side',
+        'cy': 'i weld cyrsiau a gadwyd ochr wrth ochr'
     },
     'completed_course': {
         'en': 'Have completed their studies',
@@ -881,6 +889,14 @@ DICT = {
     'sandwich_year': {
         'en': 'Sandwich year',
         'cy': 'Blwyddyn ryngosod'
+    },
+    "save_courses": {
+        'en': "Save courses",
+        'cy': "Cadw cyrsiau"
+    },
+    "you're_interested_in": {
+        'en': "you're interested in",
+        'cy': "sydd o ddiddordeb iti"
     },
     'Science, engineering and technology associate professionals': {
         'en': 'Science, engineering and technology associate professionals',
