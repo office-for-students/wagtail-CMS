@@ -194,11 +194,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 19px 0px;
-            margin: 0;
+            padding: 0px 0px;
+            margin: 20px 0 0;
             height: 100%;
             list-style: none;
-
 
             &-control {
                 @include mobile-body-font--bold-mixin();
