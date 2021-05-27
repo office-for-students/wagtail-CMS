@@ -34,6 +34,46 @@
     }
 }
 
+.compare-courses-box{
+    display: flex;
+    width: 100vw;
+    min-height: 147px;
+    margin: 0px -17px 0px -17px;
+    padding: 20px 15px 20px 14px;
+    background-color: $ice-blue;
+    position: relative;
+    align-items: center;
+}
+
+.compare-courses-img{
+    height: 90px;
+}
+
+.compare-text{
+    font-family: "Nunito Sans", sans-serif;
+
+    &-header{
+        width: 180px;
+        font-size: 20px !important;
+        font-weight: bold !important;
+        margin: 10px 0px 20px 0;
+    }
+
+    &-content{
+        display: flex;
+        margin: 20px 0 16px;
+        font-size: 16px;
+        font-weight: normal;
+        min-width: 211px;
+    }
+
+    &-highlight{
+        font-size: 16px;
+        font-weight: bold;
+        color: $ugly-blue;
+    }
+}
+
 .course-detail__compare-btn-white {
     @include small-font--bold-mixin();
     padding: 5px 10px;
@@ -194,5 +234,44 @@
         .navbar .collapse .navbar-nav .nav-item {
             visibility: visible;
         }
+    }
+    .compare-courses-box{
+        width: 48%;
+        height: 156px;
+        margin: 16px 0 48px 0px;
+        position: relative;
+    }
+    
+}
+
+@media only screen and (min-width: 767px) and (max-width: 991px){
+
+    .compare-courses-box{
+        display: flex;
+        flex-direction: column;
+        height: 287px;
+        width: 287px;
+        margin-left: 40px
+    }
+    .compare-courses-block{
+        display: block;
+    }
+    .compare-courses-img-block{
+        margin-left: auto;
+        padding-right: 13px;
+    }
+    .compare-courses-img{
+        height: 78px;
+    }
+    .compare-text{
+        &-content{
+            margin: 10px 0 8px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1280px){
+    .compare-courses-img-block{
+        margin-left: auto;
     }
 }

@@ -53,12 +53,22 @@
     function toggleCheckbox(country) { 
         var shown = document.getElementsByClassName(country);
         var hidden = document.getElementsByClassName('hidden-' + country);
-        if(shown[0].checked){
-           hidden[0].checked = true; 
-        } 
+        if(window.innerWidth > 576){
+            if(shown[0].checked){
+               hidden[0].checked = true; 
+            } 
+            else{
+               hidden[0].checked = false; 
+            } 
+        }
         else{
-           hidden[0].checked = false; 
-        } 
+            if(shown[1].checked){
+               hidden[1].checked = true; 
+            } 
+            else{
+               hidden[1].checked = false; 
+            } 
+        }
     }
 
 </script>
