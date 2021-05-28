@@ -2,8 +2,12 @@
 
 {% block extra_js %}
     <script>
-        function sortBySubject(value) {  
-            document.getElementById("sort_by_subject").value = value
+        function sortByInstitution() {  
+            document.getElementById("sort_by_subject").value = false
+            document.getElementById("filterForm").submit()
+        }            
+        function sortBySubject() {  
+            document.getElementById("sort_by_subject").value = true
             document.getElementById("filterForm").submit()
         }    
     </script>
@@ -14,23 +18,24 @@
         {% get_translation key='sort_by' language=page.get_language %}
     </label>
     <label id="sort-by-institution" 
-        {% if sort_by_subject == 'true' %}
+        {% if sort_by_subject_enabled == 'true' %}
             class="course-finder-results__heading_sort_by_institution" 
         {% else %}
             class="course-finder-results__heading_sort_by_institution_selected" 
         {% endif %} 
-        onClick="sortBySubject(false)">
+        {% if sort_by_subject_enabled == 'true' %} onClick="sortByInstitution()" {% endif %} >        
         {% get_translation key='institution_az' language=page.get_language %}
     </label>
     <label id="sort-by-subject" 
-        {% if sort_by_subject == 'true' %}
+        {% if sort_by_subject_enabled == 'true' %}
             class="course-finder-results__heading_sort_by_subject_selected" 
         {% else %}
             class="course-finder-results__heading_sort_by_subject" 
         {% endif %} 
-        onClick="sortBySubject(true)">
-        {% get_translation key='subject' language=page.get_language %} 
+        {% if sort_by_subject_enabled == 'false' and search.total_courses < sort_by_subject_limit %} onClick="sortBySubject()" {% endif %} >
+        {% get_translation key='subject' language=page.get_language %}
     </label>
+
     {% include 'coursefinder/partials/active_filters.html' %}
     {% if substitutions.0 == 0 %}
         <p class="no-courses">

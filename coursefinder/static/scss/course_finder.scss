@@ -422,6 +422,10 @@
                 font-size: 18px;
                 font-weight: normal;      
                 
+                &:hover {
+                    cursor: pointer;
+                }
+
                 &_selected {
                     padding-left: 10px;
                     margin-bottom: 20px;
@@ -429,6 +433,10 @@
                     font-size: 18px;                
                     font-weight: bold;
                     text-decoration: underline;          
+
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
             }
             
@@ -439,6 +447,10 @@
                 font-size: 18px;
                 font-weight: normal;      
                 
+                &:hover {
+                    cursor: pointer;
+                }
+    
                 &_selected {
                     padding-left: 31px;
                     margin-bottom: 20px;
@@ -446,6 +458,10 @@
                     font-size: 18px;                
                     font-weight: bold;
                     text-decoration: underline;          
+    
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
             }
         }

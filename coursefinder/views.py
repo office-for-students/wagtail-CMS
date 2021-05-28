@@ -89,10 +89,11 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
 
     institution_query = '@'.join(query_params.getlist('institution_query')) if 'institution_query' in query_params else None
     
-
     postcode = query_params.getlist('postcode') if 'postcode' in query_params else None
     distance_query = query_params.getlist('distance') if 'distance' in query_params else None
     postcode_query = ','.join(postcode + distance_query) if 'postcode' and 'distance' in query_params else None
+    sort_by_subject_enabled = query_params.get('sort_by_subject', 'false')
+    sort_by_subject_limit = int(os.environ.get('SORT_BY_SUBJECT_LIMIT'))
 
     course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
                                               institution_query,
@@ -124,8 +125,6 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
 
     context = page.get_context(request)
 
-    sort_by_subject = query_params.get('sort_by_subject', 'false')
-
     # Example usage of calling SortBySubject within view
     # 
     # sortBySubject = create_sort_by_subject()
@@ -146,7 +145,8 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         'filter_form': filter_form,
         'filters': filters,
         'postcode_query': postcode_query,
-        'sort_by_subject': sort_by_subject
+        'sort_by_subject_enabled': sort_by_subject_enabled,
+        'sort_by_subject_limit': sort_by_subject_limit,        
     })
 
     return render(request, 'coursefinder/course_finder_results.html', context)
