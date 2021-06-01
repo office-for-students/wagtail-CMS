@@ -457,6 +457,10 @@ DICT = {
         'en': 'This filter is not applicable for distance learning courses.',
         'cy': "Nid yw'r hidlydd hwn yn berthnasol i gyrsiau dysgu o bell."
     },
+    'filter_sort_by_subject_add_more_filters':{
+        'en': 'Please apply more filters to sort by subject',
+        'cy': "Defnyddiwch fwy o hidlwyr i'w didoli yn ôl pwnc"
+    },
     'financial_support_details': {
         'en': 'Financial support',
         'cy': 'Cymorth ariannol'
