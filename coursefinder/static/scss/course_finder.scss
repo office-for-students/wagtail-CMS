@@ -618,6 +618,14 @@
     }
 }
 
+@media only screen and (min-width: 992px) {
+    .course-finder-results__heading_sort_by_subject_disabled {
+        padding: 10px;
+        margin: 0 0 20px 10px;
+        display: inline;
+    }
+}
+
 @media only screen and (min-width: 770px) {
     
     .course-finer__header .home-page__header-bg-icon {
