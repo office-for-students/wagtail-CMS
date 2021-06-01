@@ -35,9 +35,12 @@
         {% if sort_by_subject_enabled == 'false' and search.total_courses < sort_by_subject_limit %} onClick="sortBySubject()" {% endif %} >
         {% get_translation key='subject' language=page.get_language %}
     </label>
-    <span class="course-finder-results__heading_sort_by_subject_disabled message" >
+    {% if search.total_courses > sort_by_subject_limit %}  
+    <span class="course-finder-results__heading_sort_by_subject_disabled x_message" >
         {% get_translation key='filter_sort_by_subject_add_more_filters' language=page.get_language %}
     </span>
+    {% endif %} 
+
 
     {% include 'coursefinder/partials/active_filters.html' %}
     {% if substitutions.0 == 0 %}
