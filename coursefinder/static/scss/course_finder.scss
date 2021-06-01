@@ -465,9 +465,11 @@
                 }
 
                 &_disabled {
-                    padding: 10px;
+                    padding: 10px 10px 10px 32px;
+                    margin-bottom: 20px;
                     background-color: $pale;
                     font-size: 16px;
+                    display:block;
                 }
             }
         }
