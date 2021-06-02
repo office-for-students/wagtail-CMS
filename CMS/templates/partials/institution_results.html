@@ -59,15 +59,18 @@
     {% endif %} 
 
 
-    <div class="spinner-border text-primary" style="display: block;" role="status" >
-    </div>
-
     {% include 'coursefinder/partials/active_filters.html' %}
     {% if substitutions.0 == 0 %}
         <p class="no-courses">
             {% get_translation key='no_courses_found' language=page.get_language %}
         </p>
     {% endif %}	
+
+    {% if filter_form.mode_query or filter_form.countries_query or filter_form.course_query or filter_form.institutions %}
+        <div class="spinner-border text-primary" style="display: block;" role="status" >
+        </div>
+    {% endif %}
+
     {% for item in search.results %}
         {% include 'partials/institution_result.html' with institution=item %}
     {% endfor %}
