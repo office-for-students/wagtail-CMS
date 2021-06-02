@@ -1,1334 +1,1334 @@
 [
     {
-        "code": "CAH17-01-08",
-        "english_name": "Accounting",
-        "welsh_name": "Cyfrifeg",
-        "level": "3"
+        "code":  "CAH01",
+        "english_name":  "Medicine and dentistry",
+        "welsh_name":  "Meddygaeth a deintyddiaeth",
+        "level":  "1"
     },
     {
-        "code": "CAH02-04-02",
-        "english_name": "Adult nursing",
-        "welsh_name": "Nyrsio oedolion",
-        "level": "3"
+        "code":  "CAH01-01",
+        "english_name":  "Medicine and dentistry",
+        "welsh_name":  "Meddygaeth a deintyddiaeth",
+        "level":  "2"
     },
     {
-        "code": "CAH10-01-04",
-        "english_name": "Aeronautical and aerospace engineering",
-        "welsh_name": "Peirianneg awyrenegol ac awyrofod",
-        "level": "3"
+        "code":  "CAH01-01-01",
+        "english_name":  "Medical sciences",
+        "welsh_name":  "Gwyddorau meddygol",
+        "level":  "3"
     },
     {
-        "code": "CAH19-04-07",
-        "english_name": "African and modern Middle Eastern studies",
-        "welsh_name": "Astudiaethau Affricanaidd a Dwyrain Canol modern",
-        "level": "3"
+        "code":  "CAH01-01-02",
+        "english_name":  "Medicine",
+        "welsh_name":  "Meddygaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH06-01-02",
-        "english_name": "Agricultural sciences",
-        "welsh_name": "Gwyddorau amaethyddol",
-        "level": "3"
+        "code":  "CAH01-01-03",
+        "english_name":  "Medicine by specialism",
+        "welsh_name":  "Meddygaeth yn ôl arbenigedd",
+        "level":  "3"
     },
     {
-        "code": "CAH06-01-03",
-        "english_name": "Agriculture",
-        "welsh_name": "Amaethyddiaeth",
-        "level": "3"
+        "code":  "CAH01-01-04",
+        "english_name":  "Dentistry",
+        "welsh_name":  "Deintyddiaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH06",
-        "english_name": "Agriculture, food and related studies",
-        "welsh_name": "Amaethyddiaeth, bwyd ac astudiaethau cysylltiedig ",
-        "level": "1"
+        "code":  "CAH02",
+        "english_name":  "Subjects allied to medicine",
+        "welsh_name":  "Pynciau’n gysylltiedig â meddygaeth",
+        "level":  "1"
     },
     {
-        "code": "CAH06-01",
-        "english_name": "Agriculture, food and related studies",
-        "welsh_name": "Amaethyddiaeth, bwyd ac astudiaethau cysylltiedig ",
-        "level": "2"
+        "code":  "CAH02-02",
+        "english_name":  "Pharmacology, toxicology and pharmacy",
+        "welsh_name":  "Ffarmacoleg,  tocsicoleg a fferylliaeth",
+        "level":  "2"
     },
     {
-        "code": "CAH02-06",
-        "english_name": "Allied health",
-        "welsh_name": "Perthynol i iechyd",
-        "level": "2"
+        "code":  "CAH02-02-01",
+        "english_name":  "Pharmacology",
+        "welsh_name":  "Ffarmacoleg",
+        "level":  "3"
     },
     {
-        "code": "CAH19-04-08",
-        "english_name": "American and Australasian studies",
-        "welsh_name": "Astudiaethau Americanaidd ac Awstralasiaidd",
-        "level": "3"
+        "code":  "CAH02-02-02",
+        "english_name":  "Toxicology",
+        "welsh_name":  "Tocsicoleg",
+        "level":  "3"
     },
     {
-        "code": "CAH02-05-04",
-        "english_name": "Anatomy, physiology and pathology",
-        "welsh_name": "Anatomeg, ffisioleg a phatholeg  ",
-        "level": "3"
+        "code":  "CAH02-02-03",
+        "english_name":  "Pharmacy",
+        "welsh_name":  "Fferylliaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH06-01-01",
-        "english_name": "Animal science",
-        "welsh_name": "Gwyddorau anifeiliaid",
-        "level": "3"
+        "code":  "CAH02-04",
+        "english_name":  "Nursing and midwifery",
+        "welsh_name":  "Nyrsio a bydwreigiaeth",
+        "level":  "2"
     },
     {
-        "code": "CAH15-01-04",
-        "english_name": "Anthropology",
-        "welsh_name": "Anthropoleg",
-        "level": "3"
+        "code":  "CAH02-04-01",
+        "english_name":  "Nursing",
+        "welsh_name":  "Nyrsio",
+        "level":  "3"
     },
     {
-        "code": "CAH04-01-02",
-        "english_name": "Applied psychology",
-        "welsh_name": "Seicoleg gymhwysol",
-        "level": "3"
+        "code":  "CAH02-04-02",
+        "english_name":  "Adult nursing",
+        "welsh_name":  "Nyrsio oedolion",
+        "level":  "3"
     },
     {
-        "code": "CAH20-01-03",
-        "english_name": "Archaeology",
-        "welsh_name": "Archaeoleg",
-        "level": "3"
+        "code":  "CAH02-04-03",
+        "english_name":  "Community nursing",
+        "welsh_name":  "Nyrsio cymunedol",
+        "level":  "3"
     },
     {
-        "code": "CAH13-01-01",
-        "english_name": "Architecture",
-        "welsh_name": "Pensaern\u00efaeth",
-        "level": "3"
+        "code":  "CAH02-04-04",
+        "english_name":  "Midwifery",
+        "welsh_name":  "Bydwreigiaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH13",
-        "english_name": "Architecture, building and planning",
-        "welsh_name": "Pensaern\u00efaeth, adeiladu a chynllunio ",
-        "level": "1"
+        "code":  "CAH02-04-05",
+        "english_name":  "Children's nursing",
+        "welsh_name":  "Nyrsio plant",
+        "level":  "3"
     },
     {
-        "code": "CAH13-01",
-        "english_name": "Architecture, building and planning",
-        "welsh_name": "Pensaern\u00efaeth, adeiladu a chynllunio ",
-        "level": "2"
+        "code":  "CAH02-04-06",
+        "english_name":  "Dental nursing",
+        "welsh_name":  "Nyrsio deintyddol",
+        "level":  "3"
     },
     {
-        "code": "CAH25-01-02",
-        "english_name": "Art",
-        "welsh_name": "Celf",
-        "level": "3"
+        "code":  "CAH02-04-07",
+        "english_name":  "Mental health nursing",
+        "welsh_name":  "Nyrsio iechyd meddwl",
+        "level":  "3"
     },
     {
-        "code": "CAH11-01-05",
-        "english_name": "Artificial intelligence",
-        "welsh_name": "Deallusrwydd artiffisial",
-        "level": "3"
+        "code":  "CAH02-04-08",
+        "english_name":  "Learning disabilities nursing",
+        "welsh_name":  "Nyrsio anableddau dysgu",
+        "level":  "3"
     },
     {
-        "code": "CAH19-04-06",
-        "english_name": "Asian studies",
-        "welsh_name": "Astudiaethau Asiaidd",
-        "level": "3"
+        "code":  "CAH02-04-09",
+        "english_name":  "Nursing",
+        "welsh_name":  "Nyrsio",
+        "level":  "3"
     },
     {
-        "code": "CAH07-01-02",
-        "english_name": "Astronomy",
-        "welsh_name": "Astronomeg",
-        "level": "3"
+        "code":  "CAH02-05",
+        "english_name":  "Medical sciences",
+        "welsh_name":  "Gwyddorau meddygol",
+        "level":  "2"
     },
     {
-        "code": "CAH10-01-06",
-        "english_name": "Bioengineering, medical and biomedical engineering",
-        "welsh_name": "Biobeirianneg, peirianneg feddygol a biofeddygol    ",
-        "level": "3"
+        "code":  "CAH02-05-01",
+        "english_name":  "Medical technology",
+        "welsh_name":  "Technoleg feddygol",
+        "level":  "3"
     },
     {
-        "code": "CAH03",
-        "english_name": "Biological and sport sciences",
-        "welsh_name": "Gwyddorau biolegol a chwaraeon",
-        "level": "1"
+        "code":  "CAH02-05-02",
+        "english_name":  "Healthcare science",
+        "welsh_name":  "Gwyddorau gofal iechyd",
+        "level":  "3"
     },
     {
-        "code": "CAH03-01-02",
-        "english_name": "Biology (non-specific)",
-        "welsh_name": "Bioleg (amhenodol)",
-        "level": "3"
+        "code":  "CAH02-05-03",
+        "english_name":  "Biomedical sciences",
+        "welsh_name":  "Gwyddorau biofeddygol",
+        "level":  "3"
     },
     {
-        "code": "CAH02-05-03",
-        "english_name": "Biomedical sciences (non-specific)",
-        "welsh_name": "Gwyddorau biofeddygol (amhenodol)",
-        "level": "3"
+        "code":  "CAH02-05-04",
+        "english_name":  "Anatomy, physiology and pathology",
+        "welsh_name":  "Anatomeg, ffisioleg a phatholeg",
+        "level":  "3"
     },
     {
-        "code": "CAH03-01",
-        "english_name": "Biosciences",
-        "welsh_name": "Biowyddorau",
-        "level": "2"
+        "code":  "CAH02-06",
+        "english_name":  "Allied health",
+        "welsh_name":  "Perthynol i iechyd",
+        "level":  "2"
     },
     {
-        "code": "CAH03-01-01",
-        "english_name": "Biosciences (non-specific)",
-        "welsh_name": "Biowyddorau (amhenodol)",
-        "level": "3"
+        "code":  "CAH02-06-01",
+        "english_name":  "Health sciences",
+        "welsh_name":  "Gwyddorau iechyd",
+        "level":  "3"
     },
     {
-        "code": "CAH10-03-05",
-        "english_name": "Biotechnology",
-        "welsh_name": "Biodechnoleg",
-        "level": "3"
+        "code":  "CAH02-06-02",
+        "english_name":  "Nutrition and dietetics",
+        "welsh_name":  "Maeth a deieteteg",
+        "level":  "3"
     },
     {
-        "code": "CAH13-01-02",
-        "english_name": "Building",
-        "welsh_name": "Adeiladu",
-        "level": "3"
+        "code":  "CAH02-06-03",
+        "english_name":  "Ophthalmics",
+        "welsh_name":  "Offthalmoleg",
+        "level":  "3"
     },
     {
-        "code": "CAH17",
-        "english_name": "Business and management",
-        "welsh_name": "Busnes a rheolaeth",
-        "level": "1"
+        "code":  "CAH02-06-04",
+        "english_name":  "Environmental and public health",
+        "welsh_name":  "Iechyd amgylcheddol a chyhoeddus",
+        "level":  "3"
     },
     {
-        "code": "CAH17-01",
-        "english_name": "Business and management",
-        "welsh_name": "Busnes a rheolaeth",
-        "level": "2"
+        "code":  "CAH02-06-05",
+        "english_name":  "Physiotherapy",
+        "welsh_name":  "Ffisiotherapi",
+        "level":  "3"
     },
     {
-        "code": "CAH17-01-01",
-        "english_name": "Business and management (non-specific)",
-        "welsh_name": "Busnes a rheolaeth (amhenodol)",
-        "level": "3"
+        "code":  "CAH02-06-06",
+        "english_name":  "Complementary and alternative medicine",
+        "welsh_name":  "Meddygaeth ategol ac amgen",
+        "level":  "3"
     },
     {
-        "code": "CAH11-01-07",
-        "english_name": "Business computing",
-        "welsh_name": "Cyfrifiadura busnes",
-        "level": "3"
+        "code":  "CAH02-06-07",
+        "english_name":  "Counselling, psychotherapy and occupational therapy",
+        "welsh_name":  "Cwnsela, seicotherapi a therapi galwedigaethol",
+        "level":  "3"
     },
     {
-        "code": "CAH17-01-02",
-        "english_name": "Business studies",
-        "welsh_name": "Astudiaethau busnes",
-        "level": "3"
+        "code":  "CAH03",
+        "english_name":  "Biological and sport sciences",
+        "welsh_name":  "Gwyddorau biolegol a chwaraeon",
+        "level":  "1"
     },
     {
-        "code": "CAH19-02",
-        "english_name": "Celtic studies",
-        "welsh_name": "Astudiaethau Celtaidd",
-        "level": "2"
+        "code":  "CAH03-01",
+        "english_name":  "Biosciences",
+        "welsh_name":  "Biowyddorau",
+        "level":  "2"
     },
     {
-        "code": "CAH19-02-01",
-        "english_name": "Celtic studies (non-specific)",
-        "welsh_name": "Astudiaethau Celtaidd (amhenodol)",
-        "level": "3"
+        "code":  "CAH03-01-01",
+        "english_name":  "Biosciences",
+        "welsh_name":  "Biowyddorau",
+        "level":  "3"
     },
     {
-        "code": "CAH10-01-09",
-        "english_name": "Chemical, process and energy engineering",
-        "welsh_name": "Peirianneg gemegol, proses ac ynni                  ",
-        "level": "3"
+        "code":  "CAH03-01-02",
+        "english_name":  "Biology",
+        "welsh_name":  "Bioleg",
+        "level":  "3"
     },
     {
-        "code": "CAH07-02",
-        "english_name": "Chemistry",
-        "welsh_name": "Cemeg",
-        "level": "2"
+        "code":  "CAH03-01-03",
+        "english_name":  "Ecology and environmental biology",
+        "welsh_name":  "Ecoleg a bioleg amgylcheddol",
+        "level":  "3"
     },
     {
-        "code": "CAH07-02-01",
-        "english_name": "Chemistry",
-        "welsh_name": "Cemeg",
-        "level": "3"
+        "code":  "CAH03-01-04",
+        "english_name":  "Microbiology and cell science",
+        "welsh_name":  "Microbioleg a gwyddoniaeth celloedd",
+        "level":  "3"
     },
     {
-        "code": "CAH15-04-02",
-        "english_name": "Childhood and youth studies",
-        "welsh_name": "Astudiaethau plentyndod ac ieuenctid",
-        "level": "3"
+        "code":  "CAH03-01-05",
+        "english_name":  "Plant sciences",
+        "welsh_name":  "Gwyddorau planhigion",
+        "level":  "3"
     },
     {
-        "code": "CAH02-04-05",
-        "english_name": "Children's nursing",
-        "welsh_name": "Nyrsio plant",
-        "level": "3"
+        "code":  "CAH03-01-06",
+        "english_name":  "Zoology",
+        "welsh_name":  "S\u0175oleg",
+        "level":  "3"
     },
     {
-        "code": "CAH25-01-04",
-        "english_name": "Cinematics and photography",
-        "welsh_name": "Sinemateg a ffotograffiaeth",
-        "level": "3"
+        "code":  "CAH03-01-07",
+        "english_name":  "Genetics",
+        "welsh_name":  "Geneteg",
+        "level":  "3"
     },
     {
-        "code": "CAH10-01-07",
-        "english_name": "Civil engineering",
-        "welsh_name": "Peirianneg sifil",
-        "level": "3"
+        "code":  "CAH03-01-08",
+        "english_name":  "Molecular biology, biophysics and biochemistry",
+        "welsh_name":  "Bioleg folecylaidd, bioffiseg a biocemeg",
+        "level":  "3"
     },
     {
-        "code": "CAH20-01-05",
-        "english_name": "Classics",
-        "welsh_name": "Clasuron",
-        "level": "3"
+        "code":  "CAH03-01-09",
+        "english_name":  "Hair and beauty sciences",
+        "welsh_name":  "Gwyddorau gwallt a harddwch",
+        "level":  "3"
     },
     {
-        "code": "CAH23",
-        "english_name": "Combined and general studies",
-        "welsh_name": "Astudiaethau cyfun a chyffredinol",
-        "level": "1"
+        "code":  "CAH03-01-10",
+        "english_name":  "Biosciences",
+        "welsh_name":  "Biowyddorau",
+        "level":  "3"
     },
     {
-        "code": "CAH23-01",
-        "english_name": "Combined and general studies",
-        "welsh_name": "Astudiaethau cyfun a chyffredinol",
-        "level": "2"
+        "code":  "CAH03-02",
+        "english_name":  "Sport and exercise sciences",
+        "welsh_name":  "Chwaraeon a gwyddorau ymarfer",
+        "level":  "2"
     },
     {
-        "code": "CAH23-01-01",
-        "english_name": "Combined, general or negotiated studies",
-        "welsh_name": "Astudiaethau cyfun, cyffredinol neu wedi\u2019u trefnu ",
-        "level": "3"
+        "code":  "CAH03-02-01",
+        "english_name":  "Sport and exercise sciences",
+        "welsh_name":  "Chwaraeon a gwyddorau ymarfer",
+        "level":  "3"
     },
     {
-        "code": "CAH02-04-03",
-        "english_name": "Community nursing",
-        "welsh_name": "Nyrsio cymunedol",
-        "level": "3"
+        "code":  "CAH04",
+        "english_name":  "Psychology",
+        "welsh_name":  "Seicoleg",
+        "level":  "1"
     },
     {
-        "code": "CAH02-06-06",
-        "english_name": "Complementary and alternative medicine",
-        "welsh_name": "Meddygaeth ategol ac amgen",
-        "level": "3"
+        "code":  "CAH04-01",
+        "english_name":  "Psychology",
+        "welsh_name":  "Seicoleg",
+        "level":  "2"
     },
     {
-        "code": "CAH11-01-06",
-        "english_name": "Computer games and animation",
-        "welsh_name": "Gemau cyfrifiadurol ac animeiddio",
-        "level": "3"
+        "code":  "CAH04-01-01",
+        "english_name":  "Psychology",
+        "welsh_name":  "Seicoleg",
+        "level":  "3"
     },
     {
-        "code": "CAH11-01-01",
-        "english_name": "Computer science",
-        "welsh_name": "Gwyddoniaeth gyfrifiadurol",
-        "level": "3"
+        "code":  "CAH04-01-02",
+        "english_name":  "Applied psychology",
+        "welsh_name":  "Seicoleg gymhwysol",
+        "level":  "3"
     },
     {
-        "code": "CAH11",
-        "english_name": "Computing",
-        "welsh_name": "Cyfrifiadura",
-        "level": "1"
+        "code":  "CAH04-01-03",
+        "english_name":  "Developmental psychology",
+        "welsh_name":  "Seicoleg ddatblygiadol",
+        "level":  "3"
     },
     {
-        "code": "CAH11-01",
-        "english_name": "Computing",
-        "welsh_name": "Cyfrifiadura",
-        "level": "2"
+        "code":  "CAH04-01-04",
+        "english_name":  "Psychology and health",
+        "welsh_name":  "Seicoleg ac iechyd",
+        "level":  "3"
     },
     {
-        "code": "CAH02-06-07",
-        "english_name": "Counselling, psychotherapy and occupational therapy",
-        "welsh_name": "Cwnsela, seicotherapi a therapi galwedigaethol      ",
-        "level": "3"
+        "code":  "CAH04-01-05",
+        "english_name":  "Psychology",
+        "welsh_name":  "Seicoleg",
+        "level":  "3"
     },
     {
-        "code": "CAH25-01",
-        "english_name": "Creative arts and design",
-        "welsh_name": "Celfyddydau creadigol a dylunio",
-        "level": "2"
+        "code":  "CAH05",
+        "english_name":  "Veterinary sciences",
+        "welsh_name":  "Gwyddorau milfeddygol",
+        "level":  "1"
     },
     {
-        "code": "CAH25-01-01",
-        "english_name": "Creative arts and design (non-specific)",
-        "welsh_name": "Celfyddydau creadigol a dylunio (amhenodol)",
-        "level": "3"
+        "code":  "CAH05-01",
+        "english_name":  "Veterinary sciences",
+        "welsh_name":  "Gwyddorau milfeddygol",
+        "level":  "2"
     },
     {
-        "code": "CAH19-01-05",
-        "english_name": "Creative writing",
-        "welsh_name": "Ysgrifennu creadigol",
-        "level": "3"
+        "code":  "CAH05-01-01",
+        "english_name":  "Veterinary medicine and dentistry",
+        "welsh_name":  "Meddygaeth filfeddygol a deintyddiaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH15-01-06",
-        "english_name": "Cultural studies",
-        "welsh_name": "Astudiaethau diwylliannol",
-        "level": "3"
+        "code":  "CAH05-01-02",
+        "english_name":  "Veterinary sciences",
+        "welsh_name":  "Gwyddorau milfeddygol",
+        "level":  "3"
     },
     {
-        "code": "CAH25-02-04",
-        "english_name": "Dance",
-        "welsh_name": "Dawns",
-        "level": "3"
+        "code":  "CAH06",
+        "english_name":  "Agriculture, food and related studies",
+        "welsh_name":  "Amaethyddiaeth, bwyd ac astudiaethau cysylltiedig",
+        "level":  "1"
     },
     {
-        "code": "CAH02-04-06",
-        "english_name": "Dental nursing",
-        "welsh_name": "Nyrsio deintyddol",
-        "level": "3"
+        "code":  "CAH06-01",
+        "english_name":  "Agriculture, food and related studies",
+        "welsh_name":  "Amaethyddiaeth, bwyd ac astudiaethau cysylltiedig",
+        "level":  "2"
     },
     {
-        "code": "CAH01-01-04",
-        "english_name": "Dentistry",
-        "welsh_name": "Deintyddiaeth",
-        "level": "3"
+        "code":  "CAH06-01-01",
+        "english_name":  "Animal science",
+        "welsh_name":  "Gwyddorau anifeiliaid",
+        "level":  "3"
     },
     {
-        "code": "CAH25-01-03",
-        "english_name": "Design studies",
-        "welsh_name": "Astudiaethau dylunio",
-        "level": "3"
+        "code":  "CAH06-01-02",
+        "english_name":  "Agricultural sciences",
+        "welsh_name":  "Gwyddorau amaethyddol",
+        "level":  "3"
     },
     {
-        "code": "CAH25",
-        "english_name": "Design, and creative and performing arts",
-        "welsh_name": "Celfyddydau perfformio, celfyddydau creadigol a dylunio",
-        "level": "1"
+        "code":  "CAH06-01-03",
+        "english_name":  "Agriculture",
+        "welsh_name":  "Amaethyddiaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH15-01-05",
-        "english_name": "Development studies",
-        "welsh_name": "Astudiaethau datblygiad",
-        "level": "3"
+        "code":  "CAH06-01-04",
+        "english_name":  "Rural estate management",
+        "welsh_name":  "Rheoli stadau gwledig",
+        "level":  "3"
     },
     {
-        "code": "CAH04-01-03",
-        "english_name": "Developmental psychology",
-        "welsh_name": "Seicoleg ddatblygiadol",
-        "level": "3"
+        "code":  "CAH06-01-05",
+        "english_name":  "Forestry and arboriculture",
+        "welsh_name":  "Coedwigaeth a choedyddiaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH25-02-03",
-        "english_name": "Drama",
-        "welsh_name": "Drama",
-        "level": "3"
+        "code":  "CAH06-01-06",
+        "english_name":  "Food and beverage studies",
+        "welsh_name":  "Astudiaethau bwyd a diod",
+        "level":  "3"
     },
     {
-        "code": "CAH26-01-06",
-        "english_name": "Earth sciences",
-        "welsh_name": "Gwyddorau daear",
-        "level": "3"
+        "code":  "CAH06-01-07",
+        "english_name":  "Food sciences",
+        "welsh_name":  "Gwyddorau bwyd",
+        "level":  "3"
     },
     {
-        "code": "CAH03-01-03",
-        "english_name": "Ecology and environmental biology",
-        "welsh_name": "Ecoleg a bioleg amgylcheddol",
-        "level": "3"
+        "code":  "CAH06-01-08",
+        "english_name":  "Food and beverage production",
+        "welsh_name":  "Cynhyrchu bwyd a diod",
+        "level":  "3"
     },
     {
-        "code": "CAH15-02",
-        "english_name": "Economics",
-        "welsh_name": "Economeg",
-        "level": "2"
+        "code":  "CAH07",
+        "english_name":  "Physical sciences",
+        "welsh_name":  "Gwyddorau ffisegol",
+        "level":  "1"
     },
     {
-        "code": "CAH15-02-01",
-        "english_name": "Economics",
-        "welsh_name": "Economeg",
-        "level": "3"
+        "code":  "CAH07-01",
+        "english_name":  "Physics and astronomy",
+        "welsh_name":  "Ffiseg ac astronomeg",
+        "level":  "2"
     },
     {
-        "code": "CAH22-01-01",
-        "english_name": "Education",
-        "welsh_name": "Addysg",
-        "level": "3"
+        "code":  "CAH07-01-01",
+        "english_name":  "Physics",
+        "welsh_name":  "Ffiseg",
+        "level":  "3"
     },
     {
-        "code": "CAH22",
-        "english_name": "Education and teaching",
-        "welsh_name": "Addysg ac addysgu",
-        "level": "1"
+        "code":  "CAH07-01-02",
+        "english_name":  "Astronomy",
+        "welsh_name":  "Astronomeg",
+        "level":  "3"
     },
     {
-        "code": "CAH22-01",
-        "english_name": "Education and teaching",
-        "welsh_name": "Addysg ac addysgu",
-        "level": "2"
+        "code":  "CAH07-02",
+        "english_name":  "Chemistry",
+        "welsh_name":  "Cemeg",
+        "level":  "2"
     },
     {
-        "code": "CAH10-01-08",
-        "english_name": "Electrical and electronic engineering",
-        "welsh_name": "Peirianneg drydanol ac electronig",
-        "level": "3"
+        "code":  "CAH07-02-01",
+        "english_name":  "Chemistry",
+        "welsh_name":  "Cemeg",
+        "level":  "3"
     },
     {
-        "code": "CAH10-01",
-        "english_name": "Engineering",
-        "welsh_name": "Peirianneg",
-        "level": "2"
+        "code":  "CAH07-04",
+        "english_name":  "General, applied and forensic sciences",
+        "welsh_name":  "Gwyddorau cyffredinol, cymwysedig a fforensig",
+        "level":  "2"
     },
     {
-        "code": "CAH10-01-01",
-        "english_name": "Engineering (non-specific)",
-        "welsh_name": "Peirianneg (amhenodol)",
-        "level": "3"
+        "code":  "CAH07-04-01",
+        "english_name":  "Physical sciences",
+        "welsh_name":  "Gwyddorau ffisegol",
+        "level":  "3"
     },
     {
-        "code": "CAH10",
-        "english_name": "Engineering and technology",
-        "welsh_name": "Peirianneg a thechnoleg",
-        "level": "1"
+        "code":  "CAH07-04-02",
+        "english_name":  "Forensic and archaeological sciences",
+        "welsh_name":  "Gwyddorau fforensig ac archaeolegol",
+        "level":  "3"
     },
     {
-        "code": "CAH19-01-02",
-        "english_name": "English language",
-        "welsh_name": "Iaith Saesneg",
-        "level": "3"
+        "code":  "CAH07-04-03",
+        "english_name":  "Sciences",
+        "welsh_name":  "Gwyddorau",
+        "level":  "3"
     },
     {
-        "code": "CAH19-01",
-        "english_name": "English studies",
-        "welsh_name": "Astudiaethau Saesneg",
-        "level": "2"
+        "code":  "CAH07-04-04",
+        "english_name":  "Natural sciences",
+        "welsh_name":  "Gwyddorau naturiol",
+        "level":  "3"
     },
     {
-        "code": "CAH19-01-01",
-        "english_name": "English studies (non-specific)",
-        "welsh_name": "Astudiaethau Saesneg (amhenodol)",
-        "level": "3"
+        "code":  "CAH09",
+        "english_name":  "Mathematical sciences",
+        "welsh_name":  "Gwyddorau mathemategol",
+        "level":  "1"
     },
     {
-        "code": "CAH02-06-04",
-        "english_name": "Environmental and public health",
-        "welsh_name": "Iechyd amgylcheddol a chyhoeddus",
-        "level": "3"
+        "code":  "CAH09-01",
+        "english_name":  "Mathematical sciences",
+        "welsh_name":  "Gwyddorau mathemategol",
+        "level":  "2"
     },
     {
-        "code": "CAH26-01-04",
-        "english_name": "Environmental sciences",
-        "welsh_name": "Gwyddorau amgylcheddol",
-        "level": "3"
+        "code":  "CAH09-01-01",
+        "english_name":  "Mathematics",
+        "welsh_name":  "Mathemateg",
+        "level":  "3"
     },
     {
-        "code": "CAH17-01-07",
-        "english_name": "Finance",
-        "welsh_name": "Cyllid",
-        "level": "3"
+        "code":  "CAH09-01-02",
+        "english_name":  "Operational research",
+        "welsh_name":  "Ymchwil gweithredol",
+        "level":  "3"
     },
     {
-        "code": "CAH06-01-08",
-        "english_name": "Food and beverage production",
-        "welsh_name": "Cynhyrchu bwyd a diod",
-        "level": "3"
+        "code":  "CAH09-01-03",
+        "english_name":  "Statistics",
+        "welsh_name":  "Ystadegau",
+        "level":  "3"
     },
     {
-        "code": "CAH06-01-06",
-        "english_name": "Food and beverage studies (non-specific)",
-        "welsh_name": "Astudiaethau bwyd a diod (amhenodol)",
-        "level": "3"
+        "code":  "CAH10",
+        "english_name":  "Engineering and technology",
+        "welsh_name":  "Peirianneg a thechnoleg",
+        "level":  "1"
     },
     {
-        "code": "CAH06-01-07",
-        "english_name": "Food sciences",
-        "welsh_name": "Gwyddorau bwyd",
-        "level": "3"
+        "code":  "CAH10-01",
+        "english_name":  "Engineering",
+        "welsh_name":  "Peirianneg",
+        "level":  "2"
     },
     {
-        "code": "CAH07-04-02",
-        "english_name": "Forensic and archaeological sciences",
-        "welsh_name": "Gwyddorau fforensig ac archaeolegol",
-        "level": "3"
+        "code":  "CAH10-01-01",
+        "english_name":  "Engineering",
+        "welsh_name":  "Peirianneg",
+        "level":  "3"
     },
     {
-        "code": "CAH06-01-05",
-        "english_name": "Forestry and arboriculture",
-        "welsh_name": "Coedwigaeth a choedyddiaeth",
-        "level": "3"
+        "code":  "CAH10-01-02",
+        "english_name":  "Mechanical engineering",
+        "welsh_name":  "Peirianneg fecanyddol",
+        "level":  "3"
     },
     {
-        "code": "CAH19-04-01",
-        "english_name": "French studies",
-        "welsh_name": "Astudiaethau Ffrangeg",
-        "level": "3"
+        "code":  "CAH10-01-03",
+        "english_name":  "Production and manufacturing engineering",
+        "welsh_name":  "Peirianneg cynhyrchu a gweithgynhyrchu",
+        "level":  "3"
     },
     {
-        "code": "CAH19-02-02",
-        "english_name": "Gaelic studies",
-        "welsh_name": "Astudiaethau Gaeleg",
-        "level": "3"
+        "code":  "CAH10-01-04",
+        "english_name":  "Aeronautical and aerospace engineering",
+        "welsh_name":  "Peirianneg awyrenegol ac awyrofod",
+        "level":  "3"
     },
     {
-        "code": "CAH07-04",
-        "english_name": "General, applied and forensic sciences",
-        "welsh_name": "Gwyddorau cyffredinol, cymwysedig a fforensig",
-        "level": "2"
+        "code":  "CAH10-01-05",
+        "english_name":  "Naval architecture",
+        "welsh_name":  "Pensaernïaeth forol",
+        "level":  "3"
     },
     {
-        "code": "CAH03-01-07",
-        "english_name": "Genetics",
-        "welsh_name": "Geneteg",
-        "level": "3"
+        "code":  "CAH10-01-06",
+        "english_name":  "Bioengineering, medical and biomedical engineering",
+        "welsh_name":  "Biobeirianneg, peirianneg feddygol a biofeddygol",
+        "level":  "3"
     },
     {
-        "code": "CAH26-01-01",
-        "english_name": "Geography (non-specific)",
-        "welsh_name": "Daearyddiaeth (amhenodol)",
-        "level": "3"
+        "code":  "CAH10-01-07",
+        "english_name":  "Civil engineering",
+        "welsh_name":  "Peirianneg sifil",
+        "level":  "3"
     },
     {
-        "code": "CAH26",
-        "english_name": "Geography, earth and environmental studies",
-        "welsh_name": "Astudiaethau daearyddiaeth, y ddaear a'r amgylchedd",
-        "level": "1"
+        "code":  "CAH10-01-08",
+        "english_name":  "Electrical and electronic engineering",
+        "welsh_name":  "Peirianneg drydanol ac electronig",
+        "level":  "3"
     },
     {
-        "code": "CAH26-01",
-        "english_name": "Geography, earth and environmental studies",
-        "welsh_name": "Astudiaethau daearyddiaeth, y ddaear a'r amgylchedd",
-        "level": "2"
+        "code":  "CAH10-01-09",
+        "english_name":  "Chemical, process and energy engineering",
+        "welsh_name":  "Peirianneg gemegol, proses ac ynni",
+        "level":  "3"
     },
     {
-        "code": "CAH19-04-02",
-        "english_name": "German and Scandinavian studies",
-        "welsh_name": "Astudiaethau Almaeneg a Llychlynnaidd",
-        "level": "3"
+        "code":  "CAH10-01-10",
+        "english_name":  "Engineering",
+        "welsh_name":  "Peirianneg",
+        "level":  "3"
     },
     {
-        "code": "CAH03-01-09",
-        "english_name": "Hair and beauty sciences",
-        "welsh_name": "Gwyddorau gwallt a harddwch",
-        "level": "3"
+        "code":  "CAH10-03",
+        "english_name":  "Materials and technology",
+        "welsh_name":  "Deunyddiau a thechnoleg",
+        "level":  "2"
     },
     {
-        "code": "CAH15-04",
-        "english_name": "Health and social care",
-        "welsh_name": "Iechyd a gofal cymdeithasol",
-        "level": "2"
+        "code":  "CAH10-03-01",
+        "english_name":  "Minerals technology",
+        "welsh_name":  "Technoleg mwynau",
+        "level":  "3"
     },
     {
-        "code": "CAH02-06-01",
-        "english_name": "Health sciences (non-specific)",
-        "welsh_name": "Gwyddorau iechyd (amhenodol)",
-        "level": "3"
+        "code":  "CAH10-03-02",
+        "english_name":  "Materials technology",
+        "welsh_name":  "Technoleg deunyddiau",
+        "level":  "3"
     },
     {
-        "code": "CAH15-04-03",
-        "english_name": "Health studies",
-        "welsh_name": "Astudiaethau iechyd",
-        "level": "3"
+        "code":  "CAH10-03-03",
+        "english_name":  "Polymers and textiles",
+        "welsh_name":  "Polymerau a thecstilau",
+        "level":  "3"
     },
     {
-        "code": "CAH02-05-02",
-        "english_name": "Healthcare science (non-specific)",
-        "welsh_name": "Gwyddorau gofal iechyd (amhenodol)",
-        "level": "3"
+        "code":  "CAH10-03-04",
+        "english_name":  "Maritime technology",
+        "welsh_name":  "Technoleg forol",
+        "level":  "3"
     },
     {
-        "code": "CAH20-01-04",
-        "english_name": "Heritage studies",
-        "welsh_name": "Astudiaethau treftadaeth",
-        "level": "3"
+        "code":  "CAH10-03-05",
+        "english_name":  "Biotechnology",
+        "welsh_name":  "Biodechnoleg",
+        "level":  "3"
     },
     {
-        "code": "CAH20",
-        "english_name": "Historical, philosophical and religious studies",
-        "welsh_name": "Astudiaethau hanesyddol, athronyddol a chrefyddol               ",
-        "level": "1"
+        "code":  "CAH10-03-06",
+        "english_name":  "Technology",
+        "welsh_name":  "Technoleg",
+        "level":  "3"
     },
     {
-        "code": "CAH20-01-01",
-        "english_name": "History",
-        "welsh_name": "Hanes",
-        "level": "3"
+        "code":  "CAH10-03-07",
+        "english_name":  "Materials science",
+        "welsh_name":  "Gwyddoniaeth deunyddiau",
+        "level":  "3"
     },
     {
-        "code": "CAH20-01",
-        "english_name": "History and archaeology",
-        "welsh_name": "Hanes ac archaeoleg",
-        "level": "2"
+        "code":  "CAH11",
+        "english_name":  "Computing",
+        "welsh_name":  "Cyfrifiadura",
+        "level":  "1"
     },
     {
-        "code": "CAH20-01-02",
-        "english_name": "History of art, architecture and design",
-        "welsh_name": "Hanes celf, pensaern\u00efaeth a dylunio ",
-        "level": "3"
+        "code":  "CAH11-01",
+        "english_name":  "Computing",
+        "welsh_name":  "Cyfrifiadura",
+        "level":  "2"
     },
     {
-        "code": "CAH26-01-03",
-        "english_name": "Human geography",
-        "welsh_name": "Daearyddiaeth ddynol",
-        "level": "3"
+        "code":  "CAH11-01-01",
+        "english_name":  "Computer science",
+        "welsh_name":  "Gwyddoniaeth gyfrifiadurol",
+        "level":  "3"
     },
     {
-        "code": "CAH17-01-05",
-        "english_name": "Human resource management",
-        "welsh_name": "Rheoli adnoddau dynol",
-        "level": "3"
+        "code":  "CAH11-01-02",
+        "english_name":  "Information technology",
+        "welsh_name":  "Technoleg gwybodaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH23-01-03",
-        "english_name": "Humanities (non-specific)",
-        "welsh_name": "Dyniaethau (amhenodol)",
-        "level": "3"
+        "code":  "CAH11-01-03",
+        "english_name":  "Information systems",
+        "welsh_name":  "Systemau gwybodaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH19-04-04",
-        "english_name": "Iberian studies",
-        "welsh_name": "Astudiaethau Iberaidd",
-        "level": "3"
+        "code":  "CAH11-01-04",
+        "english_name":  "Software engineering",
+        "welsh_name":  "Peirianneg meddalwedd",
+        "level":  "3"
     },
     {
-        "code": "CAH24-01-01",
-        "english_name": "Information services",
-        "welsh_name": "Gwasanaethau gwybodaeth",
-        "level": "3"
+        "code":  "CAH11-01-05",
+        "english_name":  "Artificial intelligence",
+        "welsh_name":  "Deallusrwydd artiffisial",
+        "level":  "3"
     },
     {
-        "code": "CAH11-01-03",
-        "english_name": "Information systems",
-        "welsh_name": "Systemau gwybodaeth",
-        "level": "3"
+        "code":  "CAH11-01-06",
+        "english_name":  "Computer games and animation",
+        "welsh_name":  "Gemau cyfrifiadurol ac animeiddio",
+        "level":  "3"
     },
     {
-        "code": "CAH11-01-02",
-        "english_name": "Information technology",
-        "welsh_name": "Technoleg gwybodaeth",
-        "level": "3"
+        "code":  "CAH11-01-07",
+        "english_name":  "Business computing",
+        "welsh_name":  "Cyfrifiadura busnes",
+        "level":  "3"
     },
     {
-        "code": "CAH19-04-03",
-        "english_name": "Italian studies",
-        "welsh_name": "Astudiaethau Eidaleg",
-        "level": "3"
+        "code":  "CAH11-01-08",
+        "english_name":  "Computing",
+        "welsh_name":  "Cyfrifiadura",
+        "level":  "3"
     },
     {
-        "code": "CAH24-01-04",
-        "english_name": "Journalism",
-        "welsh_name": "Newyddiaduraeth",
-        "level": "3"
+        "code":  "CAH13",
+        "english_name":  "Architecture, building and planning",
+        "welsh_name":  "Pensaernïaeth, adeiladu a chynllunio",
+        "level":  "1"
     },
     {
-        "code": "CAH13-01-03",
-        "english_name": "Landscape design",
-        "welsh_name": "Cynllunio tirwedd",
-        "level": "3"
+        "code":  "CAH13-01",
+        "english_name":  "Architecture, building and planning",
+        "welsh_name":  "Pensaernïaeth, adeiladu a chynllunio",
+        "level":  "2"
     },
     {
-        "code": "CAH19",
-        "english_name": "Language and area studies",
-        "welsh_name": "Astudiaethau iaith ac ardal",
-        "level": "1"
+        "code":  "CAH13-01-01",
+        "english_name":  "Architecture",
+        "welsh_name":  "Pensaernïaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH19-04",
-        "english_name": "Languages and area studies",
-        "welsh_name": "Ieithoedd ac astudiaethau ardal",
-        "level": "2"
+        "code":  "CAH13-01-02",
+        "english_name":  "Building",
+        "welsh_name":  "Adeiladu",
+        "level":  "3"
     },
     {
-        "code": "CAH16",
-        "english_name": "Law",
-        "welsh_name": "Y gyfraith",
-        "level": "1"
+        "code":  "CAH13-01-03",
+        "english_name":  "Landscape design",
+        "welsh_name":  "Cynllunio tirwedd",
+        "level":  "3"
     },
     {
-        "code": "CAH16-01",
-        "english_name": "Law",
-        "welsh_name": "Y gyfraith",
-        "level": "2"
+        "code":  "CAH13-01-04",
+        "english_name":  "Planning (urban, rural and regional)",
+        "welsh_name":  "Cynllunio (trefol, gwledig a rhanbarthol)",
+        "level":  "3"
     },
     {
-        "code": "CAH16-01-01",
-        "english_name": "Law",
-        "welsh_name": "Y gyfraith",
-        "level": "3"
+        "code":  "CAH15",
+        "english_name":  "Social sciences",
+        "welsh_name":  "Gwyddorau cymdeithasol",
+        "level":  "1"
     },
     {
-        "code": "CAH02-04-08",
-        "english_name": "Learning disabilities nursing",
-        "welsh_name": "Nyrsio anableddau dysgu",
-        "level": "3"
+        "code":  "CAH15-01",
+        "english_name":  "Sociology, social policy and anthropology",
+        "welsh_name":  "Cymdeithaseg, polisi cymdeithasol ac anthropoleg",
+        "level":  "2"
     },
     {
-        "code": "CAH23-01-04",
-        "english_name": "Liberal arts (non-specific)",
-        "welsh_name": "Celfyddydau rhyddfrydol (amhenodol)",
-        "level": "3"
+        "code":  "CAH15-01-01",
+        "english_name":  "Social sciences",
+        "welsh_name":  "Gwyddorau cymdeithasol",
+        "level":  "3"
     },
     {
-        "code": "CAH19-01-07",
-        "english_name": "Linguistics",
-        "welsh_name": "Ieithyddiaeth",
-        "level": "3"
+        "code":  "CAH15-01-02",
+        "english_name":  "Sociology",
+        "welsh_name":  "Cymdeithaseg",
+        "level":  "3"
     },
     {
-        "code": "CAH19-01-03",
-        "english_name": "Literature in English",
-        "welsh_name": "Llenyddiaeth yn Saesneg",
-        "level": "3"
+        "code":  "CAH15-01-03",
+        "english_name":  "Social policy",
+        "welsh_name":  "Polisi cymdeithasol",
+        "level":  "3"
     },
     {
-        "code": "CAH17-01-04",
-        "english_name": "Management studies",
-        "welsh_name": "Astudiaethau rheoli",
-        "level": "3"
+        "code":  "CAH15-01-04",
+        "english_name":  "Anthropology",
+        "welsh_name":  "Anthropoleg",
+        "level":  "3"
     },
     {
-        "code": "CAH10-03-04",
-        "english_name": "Maritime technology",
-        "welsh_name": "Technoleg forol",
-        "level": "3"
+        "code":  "CAH15-01-05",
+        "english_name":  "Development studies",
+        "welsh_name":  "Astudiaethau datblygiad",
+        "level":  "3"
     },
     {
-        "code": "CAH17-01-03",
-        "english_name": "Marketing",
-        "welsh_name": "Marchnata",
-        "level": "3"
+        "code":  "CAH15-01-06",
+        "english_name":  "Cultural studies",
+        "welsh_name":  "Astudiaethau diwylliannol",
+        "level":  "3"
     },
     {
-        "code": "CAH10-03",
-        "english_name": "Materials and technology",
-        "welsh_name": "Deunyddiau a thechnoleg",
-        "level": "2"
+        "code":  "CAH15-02",
+        "english_name":  "Economics",
+        "welsh_name":  "Economeg",
+        "level":  "2"
     },
     {
-        "code": "CAH10-03-07",
-        "english_name": "Materials science",
-        "welsh_name": "Gwyddoniaeth deunyddiau",
-        "level": "3"
+        "code":  "CAH15-02-01",
+        "english_name":  "Economics",
+        "welsh_name":  "Economeg",
+        "level":  "3"
     },
     {
-        "code": "CAH10-03-02",
-        "english_name": "Materials technology",
-        "welsh_name": "Technoleg deunyddiau",
-        "level": "3"
+        "code":  "CAH15-03",
+        "english_name":  "Politics",
+        "welsh_name":  "Gwleidyddiaeth",
+        "level":  "2"
     },
     {
-        "code": "CAH09",
-        "english_name": "Mathematical sciences",
-        "welsh_name": "Gwyddorau mathemategol",
-        "level": "1"
+        "code":  "CAH15-03-01",
+        "english_name":  "Politics",
+        "welsh_name":  "Gwleidyddiaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH09-01",
-        "english_name": "Mathematical sciences",
-        "welsh_name": "Gwyddorau mathemategol",
-        "level": "2"
+        "code":  "CAH15-04",
+        "english_name":  "Health and social care",
+        "welsh_name":  "Iechyd a gofal cymdeithasol",
+        "level":  "2"
     },
     {
-        "code": "CAH09-01-01",
-        "english_name": "Mathematics",
-        "welsh_name": "Mathemateg",
-        "level": "3"
+        "code":  "CAH15-04-01",
+        "english_name":  "Social work",
+        "welsh_name":  "Gwaith cymdeithasol",
+        "level":  "3"
     },
     {
-        "code": "CAH10-01-02",
-        "english_name": "Mechanical engineering",
-        "welsh_name": "Peirianneg fecanyddol",
-        "level": "3"
+        "code":  "CAH15-04-02",
+        "english_name":  "Childhood and youth studies",
+        "welsh_name":  "Astudiaethau plentyndod ac ieuenctid",
+        "level":  "3"
     },
     {
-        "code": "CAH24-01-05",
-        "english_name": "Media studies",
-        "welsh_name": "Astudiaethau cyfryngau",
-        "level": "3"
+        "code":  "CAH15-04-03",
+        "english_name":  "Health studies",
+        "welsh_name":  "Astudiaethau iechyd",
+        "level":  "3"
     },
     {
-        "code": "CAH24",
-        "english_name": "Media, journalism and communications",
-        "welsh_name": "Y cyfryngau, newyddiaduraeth a chyfathrebu",
-        "level": "1"
+        "code":  "CAH16",
+        "english_name":  "Law",
+        "welsh_name":  "Y gyfraith",
+        "level":  "1"
     },
     {
-        "code": "CAH24-01",
-        "english_name": "Media, journalism and communications",
-        "welsh_name": "Y cyfryngau, newyddiaduraeth a chyfathrebu ",
-        "level": "2"
+        "code":  "CAH16-01",
+        "english_name":  "Law",
+        "welsh_name":  "Y gyfraith",
+        "level":  "2"
     },
     {
-        "code": "CAH02-05",
-        "english_name": "Medical sciences",
-        "welsh_name": "Gwyddorau meddygol",
-        "level": "2"
+        "code":  "CAH16-01-01",
+        "english_name":  "Law",
+        "welsh_name":  "Y gyfraith",
+        "level":  "3"
     },
     {
-        "code": "CAH01-01-01",
-        "english_name": "Medical sciences (non-specific)",
-        "welsh_name": "Gwyddorau meddygol (amhenodol)",
-        "level": "3"
+        "code":  "CAH17",
+        "english_name":  "Business and management",
+        "welsh_name":  "Busnes a rheolaeth",
+        "level":  "1"
     },
     {
-        "code": "CAH02-05-01",
-        "english_name": "Medical technology",
-        "welsh_name": "Technoleg feddygol",
-        "level": "3"
+        "code":  "CAH17-01",
+        "english_name":  "Business and management",
+        "welsh_name":  "Busnes a rheolaeth",
+        "level":  "2"
     },
     {
-        "code": "CAH01-01-02",
-        "english_name": "Medicine (non-specific)",
-        "welsh_name": "Meddygaeth (amhenodol)",
-        "level": "3"
+        "code":  "CAH17-01-01",
+        "english_name":  "Business and management",
+        "welsh_name":  "Busnes a rheolaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH01",
-        "english_name": "Medicine and dentistry",
-        "welsh_name": "Meddygaeth a deintyddiaeth",
-        "level": "1"
+        "code":  "CAH17-01-02",
+        "english_name":  "Business studies",
+        "welsh_name":  "Astudiaethau busnes",
+        "level":  "3"
     },
     {
-        "code": "CAH01-01",
-        "english_name": "Medicine and dentistry",
-        "welsh_name": "Meddygaeth a deintyddiaeth",
-        "level": "2"
+        "code":  "CAH17-01-03",
+        "english_name":  "Marketing",
+        "welsh_name":  "Marchnata",
+        "level":  "3"
     },
     {
-        "code": "CAH01-01-03",
-        "english_name": "Medicine by specialism",
-        "welsh_name": "Meddygaeth yn \u00f4l arbenigedd",
-        "level": "3"
+        "code":  "CAH17-01-04",
+        "english_name":  "Management studies",
+        "welsh_name":  "Astudiaethau rheoli",
+        "level":  "3"
     },
     {
-        "code": "CAH02-04-07",
-        "english_name": "Mental health nursing",
-        "welsh_name": "Nyrsio iechyd meddwl",
-        "level": "3"
+        "code":  "CAH17-01-05",
+        "english_name":  "Human resource management",
+        "welsh_name":  "Rheoli adnoddau dynol",
+        "level":  "3"
     },
     {
-        "code": "CAH03-01-04",
-        "english_name": "Microbiology and cell science",
-        "welsh_name": "Microbioleg a gwyddoniaeth celloedd",
-        "level": "3"
+        "code":  "CAH17-01-06",
+        "english_name":  "Tourism, transport and travel",
+        "welsh_name":  "Twristiaeth, trafnidiaeth a theithio",
+        "level":  "3"
     },
     {
-        "code": "CAH02-04-04",
-        "english_name": "Midwifery",
-        "welsh_name": "Bydwreigiaeth",
-        "level": "3"
+        "code":  "CAH17-01-07",
+        "english_name":  "Finance",
+        "welsh_name":  "Cyllid",
+        "level":  "3"
     },
     {
-        "code": "CAH10-03-01",
-        "english_name": "Minerals technology",
-        "welsh_name": "Technoleg mwynau",
-        "level": "3"
+        "code":  "CAH17-01-08",
+        "english_name":  "Accounting",
+        "welsh_name":  "Cyfrifeg",
+        "level":  "3"
     },
     {
-        "code": "CAH03-01-08",
-        "english_name": "Molecular biology, biophysics and biochemistry",
-        "welsh_name": "Bioleg folecylaidd, bioffiseg a biocemeg       ",
-        "level": "3"
+        "code":  "CAH17-01-09",
+        "english_name":  "Business and management",
+        "welsh_name":  "Busnes a rheolaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH25-02-02",
-        "english_name": "Music",
-        "welsh_name": "Cerddoriaeth",
-        "level": "3"
+        "code":  "CAH19",
+        "english_name":  "Language and area studies",
+        "welsh_name":  "Astudiaethau iaith ac ardal",
+        "level":  "1"
     },
     {
-        "code": "CAH07-04-04",
-        "english_name": "Natural sciences (non-specific)",
-        "welsh_name": "Gwyddorau naturiol (amhenodol)",
-        "level": "3"
+        "code":  "CAH19-01",
+        "english_name":  "English studies",
+        "welsh_name":  "Astudiaethau Saesneg",
+        "level":  "2"
     },
     {
-        "code": "CAH10-01-05",
-        "english_name": "Naval architecture",
-        "welsh_name": "Pensaern\u00efaeth forol",
-        "level": "3"
+        "code":  "CAH19-01-01",
+        "english_name":  "English studies",
+        "welsh_name":  "Astudiaethau Saesneg",
+        "level":  "3"
     },
     {
-        "code": "CAH02-04-01",
-        "english_name": "Nursing (non-specific)",
-        "welsh_name": "Nyrsio (amhenodol)",
-        "level": "3"
+        "code":  "CAH19-01-02",
+        "english_name":  "English language",
+        "welsh_name":  "Iaith Saesneg",
+        "level":  "3"
     },
     {
-        "code": "CAH02-04",
-        "english_name": "Nursing and midwifery",
-        "welsh_name": "Nyrsio a bydwreigiaeth",
-        "level": "2"
+        "code":  "CAH19-01-03",
+        "english_name":  "Literature in English",
+        "welsh_name":  "Llenyddiaeth yn Saesneg",
+        "level":  "3"
     },
     {
-        "code": "CAH02-06-02",
-        "english_name": "Nutrition and dietetics",
-        "welsh_name": "Maeth a deieteteg",
-        "level": "3"
+        "code":  "CAH19-01-04",
+        "english_name":  "Studies of specific authors",
+        "welsh_name":  "Astudiaethau o awduron penodol",
+        "level":  "3"
     },
     {
-        "code": "CAH09-01-02",
-        "english_name": "Operational research",
-        "welsh_name": "Ymchwil gweithredol",
-        "level": "3"
+        "code":  "CAH19-01-05",
+        "english_name":  "Creative writing",
+        "welsh_name":  "Ysgrifennu creadigol",
+        "level":  "3"
     },
     {
-        "code": "CAH02-06-03",
-        "english_name": "Ophthalmics",
-        "welsh_name": "Offthalmoleg",
-        "level": "3"
+        "code":  "CAH19-01-06",
+        "english_name":  "English studies",
+        "welsh_name":  "Astudiaethau Saesneg",
+        "level":  "3"
     },
     {
-        "code": "CAH19-02-04",
-        "english_name": "Others in Celtic studies",
-        "welsh_name": "Eraill mewn astudiaethau Celtaidd",
-        "level": "3"
+        "code":  "CAH19-01-07",
+        "english_name":  "Linguistics",
+        "welsh_name":  "Ieithyddiaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH19-01-06",
-        "english_name": "Others in English studies",
-        "welsh_name": "Eraill mewn astudiaethau Saesneg",
-        "level": "3"
+        "code":  "CAH19-02",
+        "english_name":  "Celtic studies",
+        "welsh_name":  "Astudiaethau Celtaidd",
+        "level":  "2"
     },
     {
-        "code": "CAH02-04-09",
-        "english_name": "Others in Nursing",
-        "welsh_name": "Eraill mewn nyrsio",
-        "level": "3"
+        "code":  "CAH19-02-01",
+        "english_name":  "Celtic studies",
+        "welsh_name":  "Astudiaethau Celtaidd",
+        "level":  "3"
     },
     {
-        "code": "CAH03-01-10",
-        "english_name": "Others in biosciences",
-        "welsh_name": "Eraill mewn biowyddorau",
-        "level": "3"
+        "code":  "CAH19-02-02",
+        "english_name":  "Gaelic studies",
+        "welsh_name":  "Astudiaethau Gaeleg",
+        "level":  "3"
     },
     {
-        "code": "CAH17-01-09",
-        "english_name": "Others in business and management",
-        "welsh_name": "Eraill mewn busnes a rheolaeth",
-        "level": "3"
+        "code":  "CAH19-02-03",
+        "english_name":  "Welsh studies",
+        "welsh_name":  "Astudiaethau Cymraeg",
+        "level":  "3"
     },
     {
-        "code": "CAH11-01-08",
-        "english_name": "Others in computing",
-        "welsh_name": "Eraill mewn cyfrifiadura ",
-        "level": "3"
+        "code":  "CAH19-02-04",
+        "english_name":  "Celtic studies",
+        "welsh_name":  "Astudiaethau Celtaidd",
+        "level":  "3"
     },
     {
-        "code": "CAH25-01-05",
-        "english_name": "Others in creative arts and design",
-        "welsh_name": "Eraill mewn celfyddydau creadigol a dylunio",
-        "level": "3"
+        "code":  "CAH19-04",
+        "english_name":  "Languages and area studies",
+        "welsh_name":  "Ieithoedd ac astudiaethau ardal",
+        "level":  "2"
     },
     {
-        "code": "CAH10-01-10",
-        "english_name": "Others in engineering",
-        "welsh_name": "Eraill mewn peirianneg",
-        "level": "3"
+        "code":  "CAH19-04-01",
+        "english_name":  "French studies",
+        "welsh_name":  "Astudiaethau Ffrangeg",
+        "level":  "3"
     },
     {
-        "code": "CAH26-01-05",
-        "english_name": "Others in geographical studies",
-        "welsh_name": "Eraill mewn astudiaethau daearyddol",
-        "level": "3"
+        "code":  "CAH19-04-02",
+        "english_name":  "German and Scandinavian studies",
+        "welsh_name":  "Astudiaethau Almaeneg a Llychlynnaidd",
+        "level":  "3"
     },
     {
-        "code": "CAH19-04-09",
-        "english_name": "Others in language and area studies",
-        "welsh_name": "Eraill mewn astudiaethau iaith ac ardal",
-        "level": "3"
+        "code":  "CAH19-04-03",
+        "english_name":  "Italian studies",
+        "welsh_name":  "Astudiaethau Eidaleg",
+        "level":  "3"
     },
     {
-        "code": "CAH04-01-05",
-        "english_name": "Others in psychology",
-        "welsh_name": "Eraill mewn seicoleg",
-        "level": "3"
+        "code":  "CAH19-04-04",
+        "english_name":  "Iberian studies",
+        "welsh_name":  "Astudiaethau Iberaidd",
+        "level":  "3"
     },
     {
-        "code": "CAH10-03-06",
-        "english_name": "Others in technology",
-        "welsh_name": "Eraill mewn technoleg",
-        "level": "3"
+        "code":  "CAH19-04-05",
+        "english_name":  "Slavic studies",
+        "welsh_name":  "Astudiaethau Slafig",
+        "level":  "3"
     },
     {
-        "code": "CAH05-01-02",
-        "english_name": "Others in veterinary sciences",
-        "welsh_name": "Eraill mewn gwyddorau milfeddygol",
-        "level": "3"
+        "code":  "CAH19-04-06",
+        "english_name":  "Asian studies",
+        "welsh_name":  "Astudiaethau Asiaidd",
+        "level":  "3"
     },
     {
-        "code": "CAH25-02",
-        "english_name": "Performing arts",
-        "welsh_name": "Celfyddydau perfformio",
-        "level": "2"
+        "code":  "CAH19-04-07",
+        "english_name":  "African and modern Middle Eastern studies",
+        "welsh_name":  "Astudiaethau Affricanaidd a Dwyrain Canol modern",
+        "level":  "3"
     },
     {
-        "code": "CAH25-02-01",
-        "english_name": "Performing arts (non-specific)",
-        "welsh_name": "Celfyddydau perfformio (amhenodol)",
-        "level": "3"
+        "code":  "CAH19-04-08",
+        "english_name":  "American and Australasian studies",
+        "welsh_name":  "Astudiaethau Americanaidd ac Awstralasiaidd",
+        "level":  "3"
     },
     {
-        "code": "CAH23-01-02",
-        "english_name": "Personal development",
-        "welsh_name": "Datblygiad personol",
-        "level": "3"
+        "code":  "CAH19-04-09",
+        "english_name":  "Languages and area studies",
+        "welsh_name":  "Ieithoedd ac astudiaethau ardal",
+        "level":  "3"
     },
     {
-        "code": "CAH02-02-01",
-        "english_name": "Pharmacology",
-        "welsh_name": "Ffarmacoleg",
-        "level": "3"
+        "code":  "CAH20",
+        "english_name":  "Historical, philosophical and religious studies",
+        "welsh_name":  "Astudiaethau hanesyddol, athronyddol a chrefyddol",
+        "level":  "1"
     },
     {
-        "code": "CAH02-02",
-        "english_name": "Pharmacology, toxicology and pharmacy",
-        "welsh_name": "Ffarmacoleg,  tocsicoleg a fferylliaeth ",
-        "level": "2"
+        "code":  "CAH20-01",
+        "english_name":  "History and archaeology",
+        "welsh_name":  "Hanes ac archaeoleg",
+        "level":  "2"
     },
     {
-        "code": "CAH02-02-03",
-        "english_name": "Pharmacy",
-        "welsh_name": "Fferylliaeth",
-        "level": "3"
+        "code":  "CAH20-01-01",
+        "english_name":  "History",
+        "welsh_name":  "Hanes",
+        "level":  "3"
     },
     {
-        "code": "CAH20-02-01",
-        "english_name": "Philosophy",
-        "welsh_name": "Athroniaeth",
-        "level": "3"
+        "code":  "CAH20-01-02",
+        "english_name":  "History of art, architecture and design",
+        "welsh_name":  "Hanes celf, pensaernïaeth a dylunio",
+        "level":  "3"
     },
     {
-        "code": "CAH20-02",
-        "english_name": "Philosophy and religious studies",
-        "welsh_name": "Athroniaeth ac astudiaethau crefyddol",
-        "level": "2"
+        "code":  "CAH20-01-03",
+        "english_name":  "Archaeology",
+        "welsh_name":  "Archaeoleg",
+        "level":  "3"
     },
     {
-        "code": "CAH26-01-02",
-        "english_name": "Physical geographical sciences",
-        "welsh_name": "Gwyddorau daearyddol ffisegol",
-        "level": "3"
+        "code":  "CAH20-01-04",
+        "english_name":  "Heritage studies",
+        "welsh_name":  "Astudiaethau treftadaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH07",
-        "english_name": "Physical sciences",
-        "welsh_name": "Gwyddorau ffisegol",
-        "level": "1"
+        "code":  "CAH20-01-05",
+        "english_name":  "Classics",
+        "welsh_name":  "Clasuron",
+        "level":  "3"
     },
     {
-        "code": "CAH07-04-01",
-        "english_name": "Physical sciences (non-specific)",
-        "welsh_name": "Gwyddorau ffisegol (amhenodol)",
-        "level": "3"
+        "code":  "CAH20-02",
+        "english_name":  "Philosophy and religious studies",
+        "welsh_name":  "Athroniaeth ac astudiaethau crefyddol",
+        "level":  "2"
     },
     {
-        "code": "CAH07-01-01",
-        "english_name": "Physics",
-        "welsh_name": "Ffiseg",
-        "level": "3"
+        "code":  "CAH20-02-01",
+        "english_name":  "Philosophy",
+        "welsh_name":  "Athroniaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH07-01",
-        "english_name": "Physics and astronomy",
-        "welsh_name": "Ffiseg ac astronomeg",
-        "level": "2"
+        "code":  "CAH20-02-02",
+        "english_name":  "Theology and religious studies",
+        "welsh_name":  "Diwinyddiaeth ac astudiaethau crefyddol",
+        "level":  "3"
     },
     {
-        "code": "CAH02-06-05",
-        "english_name": "Physiotherapy",
-        "welsh_name": "Ffisiotherapi",
-        "level": "3"
+        "code":  "CAH22",
+        "english_name":  "Education and teaching",
+        "welsh_name":  "Addysg ac addysgu",
+        "level":  "1"
     },
     {
-        "code": "CAH13-01-04",
-        "english_name": "Planning (urban, rural and regional)",
-        "welsh_name": "Cynllunio (trefol, gwledig a rhanbarthol) ",
-        "level": "3"
+        "code":  "CAH22-01",
+        "english_name":  "Education and teaching",
+        "welsh_name":  "Addysg ac addysgu",
+        "level":  "2"
     },
     {
-        "code": "CAH03-01-05",
-        "english_name": "Plant sciences",
-        "welsh_name": "Gwyddorau planhigion",
-        "level": "3"
+        "code":  "CAH22-01-01",
+        "english_name":  "Education",
+        "welsh_name":  "Addysg",
+        "level":  "3"
     },
     {
-        "code": "CAH15-03",
-        "english_name": "Politics",
-        "welsh_name": "Gwleidyddiaeth",
-        "level": "2"
+        "code":  "CAH22-01-02",
+        "english_name":  "Teacher training",
+        "welsh_name":  "Hyfforddi athrawon",
+        "level":  "3"
     },
     {
-        "code": "CAH15-03-01",
-        "english_name": "Politics",
-        "welsh_name": "Gwleidyddiaeth",
-        "level": "3"
+        "code":  "CAH23",
+        "english_name":  "Combined and general studies",
+        "welsh_name":  "Astudiaethau cyfun a chyffredinol",
+        "level":  "1"
     },
     {
-        "code": "CAH10-03-03",
-        "english_name": "Polymers and textiles",
-        "welsh_name": "Polymerau a thecstilau",
-        "level": "3"
+        "code":  "CAH23-01",
+        "english_name":  "Combined and general studies",
+        "welsh_name":  "Astudiaethau cyfun a chyffredinol",
+        "level":  "2"
     },
     {
-        "code": "CAH10-01-03",
-        "english_name": "Production and manufacturing engineering",
-        "welsh_name": "Peirianneg cynhyrchu a gweithgynhyrchu",
-        "level": "3"
+        "code":  "CAH23-01-01",
+        "english_name":  "Combined, general or negotiated studies",
+        "welsh_name":  "Astudiaethau cyfun, cyffredinol neu wedi’u trefnu",
+        "level":  "3"
     },
     {
-        "code": "CAH04",
-        "english_name": "Psychology",
-        "welsh_name": "Seicoleg",
-        "level": "1"
+        "code":  "CAH23-01-02",
+        "english_name":  "Personal development",
+        "welsh_name":  "Datblygiad personol",
+        "level":  "3"
     },
     {
-        "code": "CAH04-01",
-        "english_name": "Psychology",
-        "welsh_name": "Seicoleg",
-        "level": "2"
+        "code":  "CAH23-01-03",
+        "english_name":  "Humanities",
+        "welsh_name":  "Dyniaethau",
+        "level":  "3"
     },
     {
-        "code": "CAH04-01-01",
-        "english_name": "Psychology (non-specific)",
-        "welsh_name": "Seicoleg (amhenodol)",
-        "level": "3"
+        "code":  "CAH23-01-04",
+        "english_name":  "Liberal arts",
+        "welsh_name":  "Celfyddydau rhyddfrydol",
+        "level":  "3"
     },
     {
-        "code": "CAH04-01-04",
-        "english_name": "Psychology and health",
-        "welsh_name": "Seicoleg ac iechyd",
-        "level": "3"
+        "code":  "CAH24",
+        "english_name":  "Media, journalism and communications",
+        "welsh_name":  "Y cyfryngau, newyddiaduraeth a chyfathrebu",
+        "level":  "1"
     },
     {
-        "code": "CAH24-01-02",
-        "english_name": "Publicity studies",
-        "welsh_name": "Astudiaethau cyhoeddusrwydd",
-        "level": "3"
+        "code":  "CAH24-01",
+        "english_name":  "Media, journalism and communications",
+        "welsh_name":  "Y cyfryngau, newyddiaduraeth a chyfathrebu",
+        "level":  "2"
     },
     {
-        "code": "CAH24-01-03",
-        "english_name": "Publishing",
-        "welsh_name": "Cyhoeddi",
-        "level": "3"
+        "code":  "CAH24-01-01",
+        "english_name":  "Information services",
+        "welsh_name":  "Gwasanaethau gwybodaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH06-01-04",
-        "english_name": "Rural estate management",
-        "welsh_name": "Rheoli stadau gwledig",
-        "level": "3"
+        "code":  "CAH24-01-02",
+        "english_name":  "Publicity studies",
+        "welsh_name":  "Astudiaethau cyhoeddusrwydd",
+        "level":  "3"
     },
     {
-        "code": "CAH07-04-03",
-        "english_name": "Sciences (non-specific)",
-        "welsh_name": "Gwyddorau (amhenodol)",
-        "level": "3"
+        "code":  "CAH24-01-03",
+        "english_name":  "Publishing",
+        "welsh_name":  "Cyhoeddi",
+        "level":  "3"
     },
     {
-        "code": "CAH19-04-05",
-        "english_name": "Slavic studies",
-        "welsh_name": "Astudiaethau Slafig",
-        "level": "3"
+        "code":  "CAH24-01-04",
+        "english_name":  "Journalism",
+        "welsh_name":  "Newyddiaduraeth",
+        "level":  "3"
     },
     {
-        "code": "CAH15-01-03",
-        "english_name": "Social policy",
-        "welsh_name": "Polisi cymdeithasol",
-        "level": "3"
+        "code":  "CAH24-01-05",
+        "english_name":  "Media studies",
+        "welsh_name":  "Astudiaethau cyfryngau",
+        "level":  "3"
     },
     {
-        "code": "CAH15",
-        "english_name": "Social sciences",
-        "welsh_name": "Gwyddorau cymdeithasol",
-        "level": "1"
+        "code":  "CAH25",
+        "english_name":  "Design, and creative and performing arts",
+        "welsh_name":  "Celfyddydau perfformio, celfyddydau creadigol a dylunio",
+        "level":  "1"
     },
     {
-        "code": "CAH15-01-01",
-        "english_name": "Social sciences (non-specific)",
-        "welsh_name": "Gwyddorau cymdeithasol (amhenodol)",
-        "level": "3"
+        "code":  "CAH25-01",
+        "english_name":  "Creative arts and design",
+        "welsh_name":  "Celfyddydau creadigol a dylunio",
+        "level":  "2"
     },
     {
-        "code": "CAH15-04-01",
-        "english_name": "Social work",
-        "welsh_name": "Gwaith cymdeithasol",
-        "level": "3"
+        "code":  "CAH25-01-01",
+        "english_name":  "Creative arts and design",
+        "welsh_name":  "Celfyddydau creadigol a dylunio",
+        "level":  "3"
     },
     {
-        "code": "CAH15-01-02",
-        "english_name": "Sociology",
-        "welsh_name": "Cymdeithaseg",
-        "level": "3"
+        "code":  "CAH25-01-02",
+        "english_name":  "Art",
+        "welsh_name":  "Celf",
+        "level":  "3"
     },
     {
-        "code": "CAH15-01",
-        "english_name": "Sociology, social policy and anthropology",
-        "welsh_name": "Cymdeithaseg, polisi cymdeithasol ac anthropoleg",
-        "level": "2"
+        "code":  "CAH25-01-03",
+        "english_name":  "Design studies",
+        "welsh_name":  "Astudiaethau dylunio",
+        "level":  "3"
     },
     {
-        "code": "CAH11-01-04",
-        "english_name": "Software engineering",
-        "welsh_name": "Peirianneg meddalwedd",
-        "level": "3"
+        "code":  "CAH25-01-04",
+        "english_name":  "Cinematics and photography",
+        "welsh_name":  "Sinemateg a ffotograffiaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH03-02",
-        "english_name": "Sport and exercise sciences",
-        "welsh_name": "Chwaraeon a gwyddorau ymarfer",
-        "level": "2"
+        "code":  "CAH25-01-05",
+        "english_name":  "Creative arts and design",
+        "welsh_name":  "Celfyddydau creadigol a dylunio",
+        "level":  "3"
     },
     {
-        "code": "CAH03-02-01",
-        "english_name": "Sport and exercise sciences",
-        "welsh_name": "Chwaraeon a gwyddorau ymarfer",
-        "level": "3"
+        "code":  "CAH25-02",
+        "english_name":  "Performing arts",
+        "welsh_name":  "Celfyddydau perfformio",
+        "level":  "2"
     },
     {
-        "code": "CAH09-01-03",
-        "english_name": "Statistics",
-        "welsh_name": "Ystadegau",
-        "level": "3"
+        "code":  "CAH25-02-01",
+        "english_name":  "Performing arts",
+        "welsh_name":  "Celfyddydau perfformio",
+        "level":  "3"
     },
     {
-        "code": "CAH19-01-04",
-        "english_name": "Studies of specific authors",
-        "welsh_name": "Astudiaethau o awduron penodol",
-        "level": "3"
+        "code":  "CAH25-02-02",
+        "english_name":  "Music",
+        "welsh_name":  "Cerddoriaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH02",
-        "english_name": "Subjects allied to medicine",
-        "welsh_name": "Pynciau\u2019n gysylltiedig \u00e2 meddygaeth",
-        "level": "1"
+        "code":  "CAH25-02-03",
+        "english_name":  "Drama",
+        "welsh_name":  "Drama",
+        "level":  "3"
     },
     {
-        "code": "CAH22-01-02",
-        "english_name": "Teacher training",
-        "welsh_name": "Hyfforddi athrawon",
-        "level": "3"
+        "code":  "CAH25-02-04",
+        "english_name":  "Dance",
+        "welsh_name":  "Dawns",
+        "level":  "3"
     },
     {
-        "code": "CAH20-02-02",
-        "english_name": "Theology and religious studies",
-        "welsh_name": "Diwinyddiaeth ac astudiaethau crefyddol",
-        "level": "3"
+        "code":  "CAH26",
+        "english_name":  "Geography, earth and environmental studies",
+        "welsh_name":  "Astudiaethau daearyddiaeth, y ddaear a'r amgylchedd",
+        "level":  "1"
     },
     {
-        "code": "CAH17-01-06",
-        "english_name": "Tourism, transport and travel",
-        "welsh_name": "Twristiaeth, trafnidiaeth a theithio ",
-        "level": "3"
+        "code":  "CAH26-01",
+        "english_name":  "Geography, earth and environmental studies",
+        "welsh_name":  "Astudiaethau daearyddiaeth, y ddaear a'r amgylchedd",
+        "level":  "2"
     },
     {
-        "code": "CAH02-02-02",
-        "english_name": "Toxicology",
-        "welsh_name": "Tocsicoleg",
-        "level": "3"
+        "code":  "CAH26-01-01",
+        "english_name":  "Geography",
+        "welsh_name":  "Daearyddiaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH05-01-01",
-        "english_name": "Veterinary medicine and dentistry",
-        "welsh_name": "Meddygaeth filfeddygol a deintyddiaeth",
-        "level": "3"
+        "code":  "CAH26-01-02",
+        "english_name":  "Physical geographical sciences",
+        "welsh_name":  "Gwyddorau daearyddol ffisegol",
+        "level":  "3"
     },
     {
-        "code": "CAH05",
-        "english_name": "Veterinary sciences",
-        "welsh_name": "Gwyddorau milfeddygol",
-        "level": "1"
+        "code":  "CAH26-01-03",
+        "english_name":  "Human geography",
+        "welsh_name":  "Daearyddiaeth ddynol",
+        "level":  "3"
     },
     {
-        "code": "CAH05-01",
-        "english_name": "Veterinary sciences",
-        "welsh_name": "Gwyddorau milfeddygol",
-        "level": "2"
+        "code":  "CAH26-01-04",
+        "english_name":  "Environmental sciences",
+        "welsh_name":  "Gwyddorau amgylcheddol",
+        "level":  "3"
     },
     {
-        "code": "CAH19-02-03",
-        "english_name": "Welsh studies",
-        "welsh_name": "Astudiaethau Cymraeg",
-        "level": "3"
+        "code":  "CAH26-01-05",
+        "english_name":  "Geography",
+        "welsh_name":  "Daearyddiaeth",
+        "level":  "3"
     },
     {
-        "code": "CAH03-01-06",
-        "english_name": "Zoology",
-        "welsh_name": "S\u0175oleg",
-        "level": "3"
+        "code":  "CAH26-01-06",
+        "english_name":  "Earth sciences",
+        "welsh_name":  "Gwyddorau daear",
+        "level":  "3"
     }
 ]
