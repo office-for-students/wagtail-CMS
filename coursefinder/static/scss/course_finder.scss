@@ -462,14 +462,23 @@
                     &:hover {
                         cursor: pointer;
                     }
+
                 }
 
                 &_disabled {
+                    padding-left: 31px;
+                    margin-bottom: 20px;
+                    color: #ccc;
+                    font-size: 18px;                
+                }
+
+                &_warning {
                     padding: 10px 10px 10px 32px;
                     margin-bottom: 20px;
                     background-color: $pale;
                     font-size: 16px;
                     display:block;
+                    line-height: normal;
                 }
             }
         }
@@ -619,7 +628,7 @@
 }
 
 @media only screen and (min-width: 992px) {
-    .course-finder-results__heading_sort_by_subject_disabled {
+    .course-finder-results__heading_sort_by_subject_warning {
         padding: 10px;
         margin: 0 0 20px 20px;
         display: inline-block;
