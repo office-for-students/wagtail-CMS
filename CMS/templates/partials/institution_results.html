@@ -3,27 +3,17 @@
 {% block extra_js %}
     <script>
         function sortByInstitution() {  
-            $(".spinner-border").show();
-            $(".course-finder-results__result-accordion").hide()
             document.getElementById("sort_by_subject").value = false
             document.getElementById("filterForm").submit()
-            submit();
         }            
         function sortBySubject() {  
             $(".spinner-border").show();
             $(".course-finder-results__result-accordion").hide()
             document.getElementById("sort_by_subject").value = true
             document.getElementById("filterForm").submit()
-            submit();
         }    
-        $(document).submit(function() {
-            $(".spinner-border").show();
-            $(".course-finder-results__result-accordion").hide()
-            document.getElementById("filterForm").submit()
-        });
         $(document).ready(function() {
             $(".spinner-border").hide();
-            $(".course-finder-results__result-accordion").show()
         });
     </script>
 {% endblock %}
@@ -66,10 +56,8 @@
         </p>
     {% endif %}	
 
-    {% if filter_form.mode_query or filter_form.countries_query or filter_form.course_query or filter_form.institutions %}
-        <div class="spinner-border text-primary" style="display: block;" role="status" >
-        </div>
-    {% endif %}
+    <div class="spinner-border text-primary" style="display: block;" role="status" >
+    </div>
 
     {% for item in search.results %}
         {% include 'partials/institution_result.html' with institution=item %}
