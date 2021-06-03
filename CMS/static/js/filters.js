@@ -444,6 +444,7 @@ $(document).ready(function(){
 
         $('#course_query').val('');
         $('#institutions_query').val('');
+        $('.inst-chk').prop('checked', false);
 
         for (filter_base_name of ['placement', 'foundation', 'abroad']) {
             $('#'+filter_base_name+'-yes').prop('checked', false);
