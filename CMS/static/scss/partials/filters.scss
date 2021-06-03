@@ -124,6 +124,22 @@
             flex-wrap: wrap;
         }
 
+        &-search{
+            width: 95%;
+            height: 35px;
+            padding: 7px 93px 6px 10px;
+            margin: 12px;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 16px;
+            border-radius: .25rem;
+            border: 1px solid #ced4da;
+        }
+
+        &-search:focus {
+            outline: none;
+            border: 3px solid #c1dfff;
+        }
+
             &-pill{
                 display: flex;
                 height: 31px;
@@ -216,6 +232,12 @@
                 margin: 10px 0 10px;
                 background-color: $light-blue-grey;
               }
+
+            &-institution{
+                max-height: 385px;
+                overflow-y: scroll;
+                margin-top: 19px;
+            }
         }
 
         &-option {
@@ -521,6 +543,73 @@
 
         .select-selected {
             background-color: $white;
+        }
+    }
+}
+
+.dropdown {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+
+    &-dropbtn {
+        width: 100%;
+        background-color: white;
+        color: grey;
+        padding: .375rem .75rem;
+        font-size: 16px;
+        font-weight: normal;
+        cursor: pointer;
+        border: 1px solid #ced4da; 
+        border-radius: .25rem;
+    }
+
+    &-dropbtn:hover, &-dropbtn:focus {
+      background-color: whitesmoke;
+    }
+
+    &-chevron {
+        position: absolute;
+        display: inline;
+        top: 45%;
+        right: 10px;
+        border: 8px solid black;
+        border-color: #6E6E6E transparent transparent transparent;
+        cursor: pointer;
+    }
+
+    &-content {
+        display: none;
+        height: 40vh;
+        width: 100%;
+        overflow-y: scroll;
+        position: absolute;
+        background-color: white;
+        box-shadow: 3px 3px 4px 0px rgba(0,0,0,0.4);
+        z-index: 1;
+
+        &-institution-check{
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            margin-left: 25px;
+            padding-bottom: 5px;
+
+            &-institution-label{
+                margin: 5px;
+            }
+        }
+
+        &-select-all-check{
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            margin-left: 25px;
+            padding-bottom: 5px;
+
+            &-institution-label{
+                margin: 5px;
+            }
         }
     }
 }

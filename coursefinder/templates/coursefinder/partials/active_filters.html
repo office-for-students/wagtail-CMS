@@ -4,26 +4,33 @@
         // a function to select the value the passed in value for study_mode and set it to null
         // if distance learning is the only filter applied, or if you are closing the oncampus filter, and the distance learning is active, all regional filters will be removed also.
         function closeFilter(filter) {  
-          document.getElementById(filter).checked = false;
-          document.getElementById("filterForm").submit();
+            document.getElementById(filter).checked = false;
+            document.getElementById("filterForm").submit();
         }
     </script>
 
     <script>
         function closeCourseQuery(){
             document.getElementById('course_query').value = '';
-            if('{{filter_form.institutions}}'){
-                let institution = '"{{filter_form.institutions}}"';
-                document.getElementById('institutions_query').value = institution;
+            var institutions = '{{filter_form.institutions}}'.split('#')
+            if(institutions){
+                for (i = 0; i < institutions.length; i++ ){
+                    document.getElementById(institutions[1]).checked = true;
+                }
             }
             document.getElementById("filterForm").submit();
         }           
 
-        function closeInstitutionQuery(){
-            document.getElementById('institutions_query').value = '';
+        function closeInstitutionQuery(id){
+            document.getElementById(id + '-check').checked = false;
             let course = '{{filter_form.course_query}}';
             document.getElementById('course').value = course;
             document.getElementById("filterForm").submit();
+        }
+
+        function closeAllInstitutions(){
+            $('.inst-chk').prop('checked', false);
+            $('.filters-block__form').first().submit();
         }
     </script>
 
@@ -38,12 +45,20 @@
 
         {% endif %}
 
-        {% if filter_form.institutions %}
-                <div class="filters-block__filter-pill">
-                    <p class="filters-block__filter-text">{{filter_form.institutions}}</p>
-                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeInstitutionQuery('institution_query') class="filters-block__filter-iconclose">
-                </div>
+        {% if institution_array|length >= 6 %}
+        <div class="filters-block__filter-pill">
+            <p class="filters-block__filter-text">{{institution_array|length}} selected institutions</p>
+            <img src="{% static 'images/icon-close.svg'%}" id="{{institution}}" onclick='closeAllInstitutions()' class="filters-block__filter-iconclose">
+        </div>
 
+        {% else %}
+            {% for institution in institution_array %}
+                    <div class="filters-block__filter-pill">
+                        <p class="filters-block__filter-text">{{institution}}</p>
+                        <img src="{% static 'images/icon-close.svg'%}" id="{{institution}}" onclick=closeInstitutionQuery(id) class="filters-block__filter-iconclose">
+                    </div>
+
+            {% endfor %}
         {% endif %}
 
         {% if 'Full-time' in filter_form.mode_query %}

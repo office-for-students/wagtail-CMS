@@ -84,8 +84,11 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     else: 
         countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
 
+    institution_query = '#'.join(query_params.getlist('institution_query')) if 'institution_query' in query_params else None
+    institution_array = '#'.join(query_params.getlist('institution_query')).split("#") if 'institution_query' in query_params else None
+
     course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
-                                              query_params.get('institution_query', None),
+                                              institution_query,
                                               countries_query,
                                               query_params.get('postcode_query', None),
                                               filters,
@@ -125,7 +128,7 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
         'filter_form': filter_form,
         'filters': filters,
-        'countries': countries_query
+        'institution_array': institution_array,
     })
 
     return render(request, 'coursefinder/course_finder_results.html', context)
