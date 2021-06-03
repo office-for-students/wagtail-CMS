@@ -6,8 +6,8 @@
         {% include 'coursefinder/partials/active_filters.html' %}
     </div>
     {% if substitutions.0 == 0 %}
-    <p class="no-courses">
-        {% get_translation key='no_courses_found' language=page.get_language %}
+        <p class="no-courses">
+            {% get_translation key='no_courses_found' language=page.get_language %}
         </p>
     {% endif %}	
     {% for item in search.results %}
