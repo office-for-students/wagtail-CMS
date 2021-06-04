@@ -15,7 +15,7 @@
             var institutions = '{{filter_form.institutions}}'.split('#')
             if(institutions){
                 for (i = 0; i < institutions.length; i++ ){
-                    document.getElementById(institutions[1]).checked = true;
+                    document.getElementById(institutions[i]).checked = true;
                 }
             }
             document.getElementById("filterForm").submit();
