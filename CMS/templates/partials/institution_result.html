@@ -7,7 +7,7 @@
         const allEqual = arr => arr.every( v => v === arr[0] )
 
         if(distance_array[0] === "distance" && allEqual(distance_array) == true){
-            document.getElementById('{{ institution.pub_ukprn_name }}-accordionHeader').innerHTML = "{{ institution.pub_ukprn_name }}<small style='font-size: 21px'> - distance learning</small>"
+            document.getElementById('{{ institution.pub_ukprn_name }}-accordionHeader').innerHTML = "{{ institution.pub_ukprn_name }}<small style='font-weight: normal' class='course-finder-results__result-accordion-title'> - distance learning</small>"
         }
     }  
 </script>
@@ -16,9 +16,6 @@
     <div tabindex="0" role="button" aria-label="Show content" class="course-finder-results__result-accordion-header">
         <div class="course-finder-results__result-accordion-heading">
             <h2 id='{{ institution.pub_ukprn_name }}-accordionHeader' style="max-width: 440px;" class="course-finder-results__result-accordion-title">{{ institution.pub_ukprn_name }}</h2>
-
-            
-
             <p style="margin-top: auto; margin-bottom: auto; " class="course-finder-results__result-accordion-overview">
                 {{ institution.number_of_courses }} {% get_translation key='courses' language=page.get_language %}
             </p>
