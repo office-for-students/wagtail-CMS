@@ -39,7 +39,7 @@
         {% if filter_form.course_query %}
 
                 <div class="filters-block__filter-pill">
-                    <p class="filters-block__filter-text">{{filter_form.course_query|title}}</p>
+                    <p class="filters-block__filter-text">"{{filter_form.course_query|title}}"</p>
                     <img src="{% static 'images/icon-close.svg'%}" onclick=closeCourseQuery() class="filters-block__filter-iconclose">
                 </div>
 
