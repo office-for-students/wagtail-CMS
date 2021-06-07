@@ -13,7 +13,7 @@
         function closeCourseQuery(){
             document.getElementById('course_query').value = '';
             var institutions = '{{filter_form.institutions}}'.split('#')
-            if(institutions){
+            if(institutions[0].length > 1){
                 for (i = 0; i < institutions.length; i++ ){
                     document.getElementById(institutions[i]).checked = true;
                 }
