@@ -238,10 +238,9 @@
     .compare-courses-box{
         width: 48%;
         height: 156px;
-        margin: 16px 0 48px 0px;
+        margin: 16px 0 48px auto;
         position: relative;
     }
-    
 }
 
 @media only screen and (min-width: 767px) and (max-width: 991px){
@@ -268,10 +267,16 @@
             margin: 10px 0 8px;
         }
     }
+    .intro-position{
+        margin-left: 20px;
+    }
 }
 
 @media only screen and (min-width: 1280px){
     .compare-courses-img-block{
         margin-left: auto;
+    }
+    .intro-position{
+        margin-left: -16px;
     }
 }

@@ -19,13 +19,11 @@
 }
 .course-finder__header{   
     font-family: "Nunito Sans", sans-serif;
-    background-color: #1F283A;
-    background: -webkit-linear-gradient(top, #1F283A 40% , $white 40%); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom, #1F283A 40%, $white 40%); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom, #1F283A 40%, $white 40%); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom, #1F283A 40% , $white 40%); /* Standard syntax */
+    font-size: 32px;
+    background-color: white;
     padding-bottom:0;
-    color:$white;
+    padding-top: 8px;
+    color: #5d5d5d;
 
     .course-finder__header-content{
         overflow: hidden;
@@ -198,6 +196,12 @@
             margin: 20px 0 0;
             height: 100%;
             list-style: none;
+
+            &-results{
+                font-weight: normal; 
+                font-size: 18px; 
+                padding-left: 0px !important;
+            }
 
             &-control {
                 @include mobile-body-font--bold-mixin();
@@ -811,6 +815,7 @@
         margin-left:auto!important;
         margin-right:auto!important;
         padding: 1rem;
+        padding-bottom: 0px !important;
     }
 
     .course-finder-wrapper {
