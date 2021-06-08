@@ -127,14 +127,6 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
 
     context = page.get_context(request)
 
-    # Example usage of calling SortBySubject within view
-    # 
-    # sortBySubject = create_sort_by_subject()
-    # subject = 'CAH09-01-03'
-    # print(f'{subject} labels={sortBySubject.get_labels(subject)}')
-    # print(f'{subject} English={sortBySubject.get_label(subject)}')
-    # print(f'{subject} Welsh={sortBySubject.get_label_welsh(subject)}')
-
     context.update({
         'page': page,
         'search': course_finder_search,
@@ -196,8 +188,3 @@ def build_filters(params):
     filters_query_params = ','.join(filter_ for filter_ in filters if filter_)
     return filters_query_params
         
-
-def create_sort_by_subject():   
-    with open(os.path.join(settings.BASE_DIR, "CMS/static/jsonfiles/subjects-sort-by.json")) as json_file:   
-        data = json.load(json_file)
-    return SortBySubject(data)
