@@ -8,7 +8,6 @@ from coursefinder.forms import FilterForm
 from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderPostcode, \
     CourseFinderSummary
 from coursefinder.models import CourseFinderResults
-from coursefinder.sort_by_subject import SortBySubject
 from courses.models import CourseComparisonPage, CourseManagePage
 from site_search.models import SearchLandingPage
 from home.models import HomePage
