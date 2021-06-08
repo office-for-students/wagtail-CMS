@@ -28,13 +28,10 @@
 <div class="course-finder__header">
     <div class="course-finder__header-content">
         <div class="row mx-0">
-            <div class="col-9 overflow-visible pr-0">
+            <div class="overflow-visible pr-0">
                 <div class="course-finder__intro-title pt-4 ">
                     <h1>{% get_translation key='search_results' language=page.get_language %}</h1>
                 </div>
-            </div>
-            <div class="col-3 p-0 text-right">
-                <img class="home-page__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
             </div>
         </div>
     </div>
@@ -42,7 +39,7 @@
     <div id="course-finder__intro-panel" class="course-finder__intro-panel bg-white">
         <div class="row">
 
-            <div class="col-sm-12 col-md-6 col-lg-6 p-3 pr-4">
+            <div class="col-sm-12 col-md-6 col-lg-6 p-3 pr-4 intro-position">
                 <form class="search-landing-page__search" action="{{search_url}}" method="post"
                       autocomplete="off" id="searchForm">
                     {% csrf_token %}
@@ -71,8 +68,8 @@
                     <button class="mt-2 home-page__search-button justify-content-center py-2 px-5">
                         {% get_translation key='new_search' language=page.get_language %}
                     </button>
-                    <div class="course-finder-base__nav" style="padding-left: 0px;">
-                        <div style="font-weight: normal; font-size: 18px; padding-left:0px" class="col-12 text-left">
+                    <div class="course-finder-base__nav">
+                        <div class="course-finder-base__nav-results col-12 text-left">
                             {% create_list search.total_courses search.total_institutions as substitutions %}
                             {% autoescape off %}
                             {% get_translation key='number_of_results' language=page.get_language substitutions=substitutions %}
@@ -101,10 +98,6 @@
                 <div class="compare-courses-img-block">
                     <img class="compare-courses-img" src="{% static 'images/compare-course-graphic.svg' %}">
                 </div>
-                <!-- <div style="margin-top: 2vw; margin-left: 2vw" class="shapes">
-                    <div class="orange-triangle"></div>
-                    <div class="purple-triangle"></div>
-                </div> -->
             </div>
             {% comment %}
             <div class="dash-vertical-left col-6 text-center p-3 d-none d-md-block">
