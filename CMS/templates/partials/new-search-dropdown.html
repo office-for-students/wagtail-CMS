@@ -124,7 +124,7 @@
     	</div>
 		{% for option in options %}
 			{% if option.name in institution_array %}
-				<div class="dropdown-content-institution-check">
+				<div class="dropdown-content-institution-check institution-check">
 			    	<input id='{{option.name}}' onclick="dropdownName(id, checked)" class="inst-check" name='institution_query' value="{{option.name}}" type='checkbox' checked></input>
 			    	<label class="dropdown-content-institution-check-institution-label" id="{{option.name}}-label" for="{{option.name}}">{{option.name}}</label>
 		    	</div>
@@ -133,7 +133,7 @@
 		{% for option in options %}
 			{% if option.name in institution_array %}
 			{% else %}
-				<div class="dropdown-content-institution-check">
+				<div class="dropdown-content-institution-check institution-check">
 			    	<input id='{{option.name}}' onclick="dropdownName(id, checked)" class="inst-check" name='institution_query' value="{{option.name}}" type='checkbox'></input>
 			    	<label class="dropdown-content-institution-check-institution-label" id="{{option.name}}-label" for="{{option.name}}">{{option.name}}</label>
 		    	</div>
