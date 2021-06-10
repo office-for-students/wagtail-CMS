@@ -106,7 +106,7 @@
 
         handleCourseAddition: function() {
             //Don't allow more than 10
-            if (this.selectedCourses.length === 10) {
+            if (this.selectedCourses.length === 25) {
                 this.compareAdd.hide();
                 this.compareRemove.hide();
                 this.compareTooMany.show();

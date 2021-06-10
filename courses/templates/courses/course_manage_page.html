@@ -11,55 +11,61 @@
 {% endblock %}
 
 {% block content %}
-    <div class="bookmark discover-uni-container">
-        <div class="bookmark__overview">
-            <h1 class="bookmark__course-count">
-                <span class="count"></span> {{page.heading}}
-            </h1>
+<script>
+    let checked_bookmark = 0
 
-            <p class="bookmark__lead">
-                {{page.lead}}
-            </p>
-        </div>
-        <div class="bookmark__nav-box">
-            <!--{{page.save_text | richtext}}-->
+    function compareButtonFormat(checked){
+        var compare_button = document.getElementById('compare-courses-button')
+        var compare_text = document.getElementById('bookmark-text')
+        var courses_selected = document.getElementById('courses-selected')
 
-            {{page.compare_text | richtext}}
-        </div>
+        if(checked){
+            checked_bookmark += 1
+        }
+        else{
+            checked_bookmark -= 1
+        };
 
-        <div class="bookmark__none-selected">
-            {{page.none_selected_text | richtext}}
+        if(checked_bookmark >= 1){
+            courses_selected.innerHTML = "<strong>" + checked_bookmark + "</strong> course(s) selected"
+        }
+        else{
+            courses_selected.innerHTML = ""
+        }
 
-            <div class="bookmark__none-selected-example">
-                <button class="course-detail__compare-btn">
-                    <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
-                     {% get_translation key='bookmark_course' language=page.get_language %}
-                </button>
+        if(2 <= checked_bookmark && checked_bookmark <= 7){
+            compare_button.classList.add("enabled")
+            compare_button.disabled = false
+            compare_text.innerHTML = "Select up to 7 courses to compare"
+            courses_selected.classList.remove("red")
+        }
+        else if(7 < checked_bookmark){
+            courses_selected.classList.add("red")
+            compare_button.classList.remove("enabled")
+            compare_button.disabled = true
+        }
+        else{
+            compare_button.disabled = true
+            compare_button.classList.remove("enabled")
+            compare_text.innerHTML = "Select at least 2 courses to compare"    
+        }
+    }
 
-                <img class="down-arrow" src="{% static 'images/down-arrow.svg' %}" alt="">
-
-                <button class="course-detail__compare-btn selected">
-                    <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
-                     {% get_translation key='bookmark_course' language=page.get_language %}
-                </button>
-            </div>
-        </div>
-
-        <div class="bookmark__one-selected">
-            {{page.one_selected_text | richtext}}
-        </div>
-
-        <div class="bookmark__courses">
-            {% for i in 10|times %}
-                <div id="course-{{i}}" class="bookmark__course">
-                    <a href="" class="bookmark__course-name">
-                    </a>
-
+    function savedInstitutions(){
+        
+        var saved_institutions = JSON.parse(localStorage.getItem("comparisonCourses"));
+        for(i in saved_institutions){
+            containing_div = document.getElementById("institution-bookmark");
+            let courseId = saved_institutions[i].uniId + ',' + saved_institutions[i].courseId + ',' + saved_institutions[i].mode.en
+            containing_div.innerHTML += `
+            <div style="display:flex; align-items:center;">
+                <input id=${i}-bookmarked class="bookmark-check" style="margin-right: 95px; margin-bottom:auto; margin-top: 40px" name="courses" type="checkbox" onchange="compareButtonFormat(checked)" value="${courseId}">
+                <div id='course-${i}' class='bookmark__course'>
+                    <a href='' class='bookmark__course-name'></a>
                     <p class="bookmark__course-info length">
                         <span class="unknown">{% get_translation key='course_length_not_available' language=page.get_language %}</span>
                         <span class="known"><span class="length"></span>-{% get_translation key='year_course' language=page.get_language %}</span>
                     </p>
-
                     <p class="bookmark__course-info mode">
                         {% get_translation key='study_mode' language=page.get_language %}: <span class="mode"></span>
                     </p>
@@ -84,7 +90,49 @@
                         <img class="bookmark__course-remove-icon" src="{% static 'images/bin.svg' %}" alt=""> {% get_translation key='remove_course' language=page.get_language %}
                     </button>
                 </div>
-            {% endfor %}
+            </div>`
+        }
+    }
+</script>
+
+    <div class="bookmark discover-uni-container">
+        <div class="bookmark-header">Saved course(s)</div>
+
+        <div>
+            <button id="compare-courses-button" class="bookmark-compare-button" onclick="document.getElementById('compareForm').submit();" disabled>
+                Compare courses
+            </button>
+            <h4 id="bookmark-text" class="bookmark-text">Select at least 2 courses to compare</h4>
+            <h4 id="courses-selected" style="margin-left: 20px" class="bookmark-text"></h4>
         </div>
+
+        <div class="bookmark__none-selected">
+            {{page.none_selected_text | richtext}}
+
+            <div class="bookmark__none-selected-example">
+                <button class="course-detail__compare-btn">
+                    <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
+                     {% get_translation key='bookmark_course' language=page.get_language %}
+                </button>
+
+                <img class="down-arrow" src="{% static 'images/down-arrow.svg' %}" alt="">
+
+                <button class="course-detail__compare-btn selected">
+                    <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
+                     {% get_translation key='bookmark_course' language=page.get_language %}
+                </button>
+            </div>
+        </div>
+
+        <div class="bookmark__one-selected">
+            {{page.one_selected_text | richtext}}
+        </div>
+
+        <form id="compareForm" method="GET" action="/course-comparison/">
+        <div class="bookmark__courses" id="institution-bookmark"></div>
+        </form>
+        <script>
+            savedInstitutions();
+        </script>
     </div>
 {% endblock %}
