@@ -1,17 +1,41 @@
+{% load discover_uni_tags %}
+
 <script>
-	function openDropdown() {
-	  document.getElementById("myDropdown").classList.toggle("show");
-	  document.getElementById("institutionSearchBar").focus();
-	  document.getElementById("institutionDropdown").classList.toggle("dropdown-border")
-	  document.getElementById("dropdownChevron").classList.toggle("rotate")
+	document.addEventListener("click", toggleDropdown);
+	function toggleDropdown(event) {
+	    var dropdown = document.getElementById("myDropdown");
+	    var border = document.getElementById("institutionDropdown")
+	    var rotate = document.getElementById("dropdownChevron")
+
+	    if (!(event.target.classList.contains('drop-item'))){
+	        dropdown.classList.remove('show');
+	        border.classList.remove("dropdown-border");
+	        rotate.classList.remove("rotate");
+	    }
 	}
+
+	function openDropdown() {
+	    document.getElementById("myDropdown").classList.toggle("show");
+	    document.getElementById("institutionSearchBar").focus();
+	    document.getElementById("institutionDropdown").classList.toggle("dropdown-border");
+	    document.getElementById("dropdownChevron").classList.toggle("rotate");
+	    // document.getElementById("course-finder__intro-panel").classList.toggle("pb");
+	}
+
+	// function focusDropdown(){
+	// 		document.getElementById("myDropdown").classList.add("show");
+	// 		document.getElementById("institutionDropdown").classList.add("dropdown-border");
+	// 	    document.getElementById("dropdownChevron").classList.add("rotate");
+	// 	    document.getElementById("course-finder__intro-panel").classList.add("pb");
+	// }
 
 	var list = []
 
 	function dropdownName(id, checked) {
 		var dropdown = document.getElementById("institutionDropdown");
+		var options_selected = "{% get_translation key='number_options_selected' language=page.get_language %}"
 		
-		if(checked && list.includes(id) == false && id !== 'selectAllInstitutions'){
+		if(checked && list.includes(id) == false && id !== 'selectMultipleInstitutions'){
 			list.push(id)
 		}
 		else if(checked == false && list.includes(id)){
@@ -22,48 +46,58 @@
 		list.sort()
 		
 		if(list.length == 0){
-			dropdown.innerHTML = "Institution name"
+			dropdown.innerHTML = "{% get_translation key='institution_name' language=page.get_language %}"
 		}
 		else if(list.length < 3){
-			dropdown.innerHTML = list
+			dropdown.innerHTML = list.join(", ")
 		}
 		else if(2 < list.length){
-			dropdown.innerHTML = list.length + " options selected"
+			dropdown.innerHTML = options_selected.replace('{}', list.length)
 		}
 	}
 
 	function dropdownLoad(){
 		var dropdown = document.getElementById("institutionDropdown");
-		var institutions = '{{filter_form.institutions}}'.split('#')
+		var institution_array = "{{institution_array}}".replace('&,39;', "'")
+		var institutions = institution_array.split('@')
+		var options_selected = "{% get_translation key='number_options_selected' language=page.get_language %}"
 		if(institutions){
 			for (i = 0; i < institutions.length; i++ ){
             	list.push(institutions[i])
         	}
 		}
 
-		if(list[0].length < 2){
+		if(list[0] == "None" || list[0] == ""){
 			list.pop()
 		}
 
+		if('{{page}}' == "Home"){
+			list = []
+		}
+
 		if(list.length == 0){
-			dropdown.innerHTML = "Institution name"
+			dropdown.innerHTML = "{% get_translation key='institution_name' language=page.get_language %}"
 		}
 		else if(list.length < 3){
-			dropdown.innerHTML = list
+			dropdown.innerHTML = list.join(", ")
 		}
 		else if(2 < list.length){
-			dropdown.innerHTML = list.length + " options selected"
+			dropdown.innerHTML = options_selected.replace('{}', list.length)
 		}
 	}
 
 	function selectAll(source) {
-	  var aInputs = document.getElementsByTagName('input');
+	    var aInputs = document.getElementsByTagName('input');
+	    if(!(document.getElementById("institutionSearchBar").value)){
+	    	list = []
+	    }
+
         for (var i=0;i<aInputs.length;i++) {
             if (aInputs[i] != source && aInputs[i].className == source.className && aInputs[i].offsetWidth !== 0) {
-            	if(source.checked){  
+            	if(source.checked && !(list.includes(aInputs[i].id))){  
             		list.push(aInputs[i].id)
             	}
-            	else{
+            	else if(!(source.checked)){
             		const index = list.indexOf(aInputs[i].id);
             		list.splice(index, 1);
             	}
@@ -76,27 +110,35 @@
 <script>
     function searchList() {
       // Declare variables
-      var input, filter, institutions, label, i, txtValue;
-      input = document.getElementById("institutionSearchBar");
-      filter = input.value.toUpperCase();
-      institutions = document.getElementsByClassName("institution-check");
-      block = document.getElementById("myDropdown");
+    	var input, filter, institutions, label, i, txtValue, selectMultiple;
+        input = document.getElementById("institutionSearchBar");
+        filter = input.value.toUpperCase();
+        institutions = document.getElementsByClassName("dropdown-content-institution-check");
+        block = document.getElementById("myDropdown");
+        selectAllCheck = document.getElementById("selectAll-check");
+
+        if(filter){
+        	selectAllCheck.innerHTML = "{% get_translation key='select_all_results' language=page.get_language %}"
+        }
+        else{
+        	selectAllCheck.innerHTML = "{% get_translation key='select_all_institutions' language=page.get_language %}"
+        }
 
       // Loop through all table rows, and hide those who don't match the search query
-      for (i = 0; i < institutions.length; i++) {
-        label = institutions[i].getElementsByTagName("label")[0];
-        if (label) {
-          txtValue = label.textContent || label.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            institutions[i].style.display = "block";
-          } else {
-            institutions[i].style.display = "none";
-          }
-          if (txtValue.toUpperCase().indexOf(filter).length < 5){
-            block.style.overflowY = "hidden"
-          }
+        for (i = 0; i < institutions.length; i++) {
+        	label = institutions[i].getElementsByTagName("label")[0];
+        	if (label) {
+            	txtValue = label.textContent || label.innerText;
+            	if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            		institutions[i].style.display = "block";
+            	} else {
+            		institutions[i].style.display = "none";
+            	}
+            	if (txtValue.toUpperCase().indexOf(filter).length < 5){
+            		block.style.overflowY = "hidden"
+            	}
+        	}
         }
-      }
     }
 </script>
 
@@ -104,38 +146,39 @@
 .show {display:block;}
 .dropdown-border{border: 3px solid #c1dfff}
 .rotate{transform: rotate(180deg); top:20%;}
+.pb{padding-bottom: 12px !important;}
 </style>
 
 <div class="dropdown">
-	<div onclick="openDropdown()" style="display: flex;">
-	<div id="institutionDropdown" class="dropdown-dropbtn">
-		<p>Institution name</p>	
+	<div style="display: flex;">
+	<div tabindex="0" onclick="openDropdown();" id="institutionDropdown" class="dropdown-dropbtn drop-item">
+		<p>{% get_translation key='institution_name' language=page.get_language %}</p>	
 	</div>
-	<div id="dropdownChevron" class="dropdown-chevron"></div>
+	<div id="dropdownChevron" class="dropdown-chevron drop-item"></div>
 	</div>
 	<script>
 		dropdownLoad()
 	</script>
-	<div id="myDropdown" class="dropdown-content">
-		<input type="text" id="institutionSearchBar" onkeyup="searchList()" placeholder="Search..." class="filters-block__filter-search">
-		<div class='dropdown-content-select-all-check'>
-	    	<input id='selectAllInstitutions' class="inst-check" onclick="selectAll(this); dropdownName(id, checked)" type='checkbox'></input>
-	    	<label class="dropdown-content-institution-check-institution-label" id="selectAll-check" for="selectAllInstitutions">Select all institutions</label>
+	<div id="myDropdown" class="dropdown-content drop-item">
+		<input type="text" id="institutionSearchBar" onkeyup="searchList()" placeholder="{% get_translation key='search' language=page.get_language %}..." class="filters-block__filter-search drop-item">
+		<div id="selectMultiple" class='dropdown-content-select-all-check drop-item'>
+	    	<input id='selectMultipleInstitutions' class="inst-check drop-item" onclick="selectAll(this); dropdownName(id, checked)" type='checkbox'></input>
+	    	<label class="dropdown-content-institution-check-institution-label drop-item" id="selectAll-check" for="selectMultipleInstitutions">{% get_translation key='select_all_institutions' language=page.get_language %}</label>
     	</div>
 		{% for option in options %}
 			{% if option.name in institution_array %}
-				<div class="dropdown-content-institution-check institution-check">
-			    	<input id='{{option.name}}' onclick="dropdownName(id, checked)" class="inst-check" name='institution_query' value="{{option.name}}" type='checkbox' checked></input>
-			    	<label class="dropdown-content-institution-check-institution-label" id="{{option.name}}-label" for="{{option.name}}">{{option.name}}</label>
+				<div class="dropdown-content-institution-check drop-item">
+			    	<input id='{{option.name}}' onclick="dropdownName(id, checked)" class="inst-check drop-item" name='institution_query' value="{{option.name}}" type='checkbox' checked></input>
+			    	<label class="dropdown-content-institution-check-institution-label drop-item" id="{{option.name}}-label" for="{{option.name}}">{{option.name}}</label>
 		    	</div>
 		    {% endif %}
 		{% endfor %}
 		{% for option in options %}
 			{% if option.name in institution_array %}
 			{% else %}
-				<div class="dropdown-content-institution-check institution-check">
-			    	<input id='{{option.name}}' onclick="dropdownName(id, checked)" class="inst-check" name='institution_query' value="{{option.name}}" type='checkbox'></input>
-			    	<label class="dropdown-content-institution-check-institution-label" id="{{option.name}}-label" for="{{option.name}}">{{option.name}}</label>
+				<div class="dropdown-content-institution-check drop-item">
+			    	<input id='{{option.name}}' onclick="dropdownName(id, checked)" class="inst-check drop-item" name='institution_query' value="{{option.name}}" type='checkbox'></input>
+			    	<label class="dropdown-content-institution-check-institution-label drop-item" id="{{option.name}}-label" for="{{option.name}}">{{option.name}}</label>
 		    	</div>
 		    {% endif %}
 		{% endfor %}
