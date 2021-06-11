@@ -549,6 +549,10 @@ DICT = {
         'en': 'Institution',
         'cy': 'Sefydliad'
     },
+    'institution_name': {
+        'en': 'Institution name',
+        'cy': "Enw'r sefydliad"
+    },
     'Information technology and telecommunications professionals': {
         'en': 'Information technology and telecommunications professionals',
         'cy': 'Gweithwyr Proffesiynol Technoleg Gwybodaeth a Thelathrebu'
@@ -732,6 +736,14 @@ DICT = {
     'number_of_results': {
         'en': '<strong>%s</strong> course(s) from <strong>%s</strong> provider(s)',
         'cy': 'Ceir <strong>%s</strong> cwrs gan <strong>%s</strong> darparydd'
+    },
+    'number_options_selected': {
+        'en': '{} options selected',
+        'cy': 'Dewiswyd {} opsiwn'
+    },
+    'number_selected_institutions': {
+        'en': '{} selected institutions',
+        'cy': 'Dewiswyd {} sefydliad'
     },
     'Nursing and midwifery professionals': {
         'en': 'Nursing and midwifery professionals',
@@ -930,6 +942,10 @@ DICT = {
         'en': 'Search again',
         'cy': 'Chwilio eto'
     },
+    'search_by_course_or_institution': {
+        'en': 'Search by course name and/or institution',
+        'cy': 'Chwilio yn ôl enw cwrs ac/neu sefydliad'
+    },
     'back_to_results': {
         'en': 'Back',
         'cy': "Canlyniadau"
@@ -953,6 +969,14 @@ DICT = {
     'select_all': {
         'en': 'Select all',
         'cy': "Dewis popeth sy'n berthnasol"
+    },
+    'select_all_institutions': {
+        'en': 'Select all institutions',
+        'cy': "Dewis pob sefydliad"
+    },
+    'select_all_results': {
+        'en': 'Select all results',
+        'cy': "Dewis pob canlyniad"
     },
     'select_course': {
         'en': 'Select a course',

@@ -85,7 +85,7 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
 
     institution_query = '#'.join(query_params.getlist('institution_query')) if 'institution_query' in query_params else None
-    institution_array = '#'.join(query_params.getlist('institution_query')).split("#") if 'institution_query' in query_params else None
+    institution_array = '@'.join(query_params.getlist('institution_query')) if 'institution_query' in query_params else None
 
     course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
                                               institution_query,
