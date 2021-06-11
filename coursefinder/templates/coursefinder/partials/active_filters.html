@@ -34,8 +34,35 @@
         }
     </script>
 
+    <script>
+        function institutionFilterPills(){
+            var containing_div = document.getElementById('institution_pill')
+            var institution_array = '{{institution_array}}'.split("@")
+            var translation_text = "{% get_translation key='number_selected_institutions' language=page.get_language %}"
+            var number_selected_institutions = translation_text.replace('{}', institution_array.length)
+
+            if(institution_array.length >= 6){
+                containing_div.innerHTML += `
+                    <div class="filters-block__filter-pill">
+                        <p class="filters-block__filter-text">${number_selected_institutions}</p>
+                        <img src="{% static 'images/icon-close.svg'%}" onclick='closeAllInstitutions()' class="filters-block__filter-iconclose">
+                    </div>`
+            }
+            else if(institution_array[0].length > 1){
+                for(i in institution_array){
+                    containing_div.innerHTML += `
+                        <div class="filters-block__filter-pill">
+                            <p class="filters-block__filter-text">${institution_array[i]}</p>
+                            <img src="{% static 'images/icon-close.svg'%}" id="${institution_array[i]}" onclick=closeInstitutionQuery(id) class="filters-block__filter-iconclose">
+                        </div>
+                    `
+                }
+            }
+        }
+    </script>
+
 {% if filter_form.mode_query or filter_form.countries_query or filter_form.course_query or filter_form.institutions %}
-    <div class="filters-block__filter-active-filter">
+    <div id="institution_pill" class="filters-block__filter-active-filter">
         {% if filter_form.course_query %}
 
                 <div class="filters-block__filter-pill">
@@ -45,21 +72,11 @@
 
         {% endif %}
 
-        {% if institution_array|length >= 6 %}
-        <div class="filters-block__filter-pill">
-            <p class="filters-block__filter-text">{{institution_array|length}} selected institutions</p>
-            <img src="{% static 'images/icon-close.svg'%}" id="{{institution}}" onclick='closeAllInstitutions()' class="filters-block__filter-iconclose">
-        </div>
-
-        {% else %}
-            {% for institution in institution_array %}
-                    <div class="filters-block__filter-pill">
-                        <p class="filters-block__filter-text">{{institution}}</p>
-                        <img src="{% static 'images/icon-close.svg'%}" id="{{institution}}" onclick=closeInstitutionQuery(id) class="filters-block__filter-iconclose">
-                    </div>
-
-            {% endfor %}
-        {% endif %}
+        
+            <script>
+                institutionFilterPills()
+            </script>
+        
 
         {% if 'Full-time' in filter_form.mode_query %}
 
