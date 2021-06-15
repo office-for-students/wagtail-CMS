@@ -61,7 +61,24 @@
         </div>
     </div>
 
-    {% for item in search.results %}
-        {% include 'partials/institution_result.html' with institution=item %}
-    {% endfor %}
+    {% if sort_by_subject_enabled == 'true' %}
+        {% for single_subject_courses in search.results.single_subject_courses %}
+          {{single_subject_courses}}
+          {% comment %}
+            {% for item in single_subject_courses %}
+                {% include 'partials/course_result.html' with course=item %}
+                {% endfor %}
+            {% endcomment %}
+        {% endfor %}
+        <div>
+            ------------------------------------------
+        </div>
+        {% for multiple_subject_courses in search.results.multiple_subject_courses %}
+            {{multiple_subject_courses}}
+        {% endfor %}
+    {% else %}
+        {% for item in search.results %}
+            {% include 'partials/institution_result.html' with institution=item %}
+        {% endfor %}
+    {% endif %}
 </div>
