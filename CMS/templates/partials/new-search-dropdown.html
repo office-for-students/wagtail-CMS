@@ -52,11 +52,12 @@
 		else if(2 < list.length){
 			dropdown.innerHTML = options_selected.replace('{}', list.length)
 		}
+		
 	}
 
 	function dropdownLoad(){
 		var dropdown = document.getElementById("institutionDropdown");
-		var institution_array = "{{institution_array}}".replace('&,39;', "'")
+		var institution_array = "{{filter_form.institutions}}".replace('&#39;', "'")
 		var institutions = institution_array.split('@')
 		var options_selected = "{% get_translation key='number_options_selected' language=page.get_language %}"
 		if(institutions){
@@ -165,7 +166,7 @@
 	    	<label class="dropdown-content-institution-check-institution-label drop-item" id="selectAll-check" for="selectMultipleInstitutions">{% get_translation key='select_all_institutions' language=page.get_language %}</label>
     	</div>
 		{% for option in options %}
-			{% if option.name in institution_array %}
+			{% if option.name in filter_form.institutions %}
 				<div class="dropdown-content-institution-check drop-item">
 			    	<input id='{{option.name}}' onclick="dropdownName(id, checked)" class="inst-check drop-item" name='institution_query' value="{{option.name}}" type='checkbox' checked></input>
 			    	<label class="dropdown-content-institution-check-institution-label drop-item" id="{{option.name}}-label" for="{{option.name}}">{{option.name}}</label>
@@ -173,7 +174,7 @@
 		    {% endif %}
 		{% endfor %}
 		{% for option in options %}
-			{% if option.name in institution_array %}
+			{% if option.name in filter_form.institutions %}
 			{% else %}
 				<div class="dropdown-content-institution-check drop-item">
 			    	<input id='{{option.name}}' onclick="dropdownName(id, checked)" class="inst-check drop-item" name='institution_query' value="{{option.name}}" type='checkbox'></input>

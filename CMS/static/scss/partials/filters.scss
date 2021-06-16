@@ -124,6 +124,15 @@
             flex-wrap: wrap;
         }
 
+        &-postcode-div{
+            display: none; 
+            flex-direction: column;
+
+            &-textfield{
+                height: 35px; 
+            }
+        }
+
         &-search{
             width: 95%;
             height: 35px;
@@ -319,6 +328,12 @@
                     font-weight: bold;
                 }
             }
+        }
+
+        &-textfield{
+            height: 35px;
+            border-radius: 2px;
+            border: 1px solid #595959;
         }
 
         &-radio {

@@ -9,7 +9,7 @@ class FilterForm:
         self.placement = form_data.get('placement')
         self.foundation = form_data.get('foundation')
         self.abroad = form_data.get('abroad')
-        self.institutions = '#'.join(form_data.getlist('institution_query')).replace('"', '') if 'institution_query' in form_data \
+        self.institutions = '@'.join(form_data.getlist('institution_query')).replace('"', '') if 'institution_query' in form_data \
             else ''
         self.courses = form_data.get('subject_query', '')
         self.course_query = form_data.get('course_query', '')
