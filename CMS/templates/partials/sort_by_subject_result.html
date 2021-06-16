@@ -16,10 +16,10 @@
 <div  class="course-finder-results__result-accordion">
     <div tabindex="0" role="button" aria-label="Show content" class="course-finder-results__result-accordion-header">
         <div class="course-finder-results__result-accordion-heading">
-            <h2 id='{{ course }}-accordionHeader' style="max-width: 440px;" class="course-finder-results__result-accordion-title">{{ title }}</h2>
+            <h2 id='{{ title }}-accordionHeader' style="max-width: 440px;" class="course-finder-results__result-accordion-title">{{ title }}</h2>
             {% comment %}
             <p style="margin-top: auto; margin-bottom: auto; " class="course-finder-results__result-accordion-overview">
-                {{ course.number_of_courses }} {% get_translation key='courses' language=page.get_language %}
+                {{ number_of_courses }} {% get_translation key='courses' language=page.get_language %}
             </p>            
             {% endcomment %}
         </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="course-finder-results__result-accordion-body">
-        {% for item in course.courses %}
+        {% for item in courses %}
             {% include 'partials/course_result.html' with course=item institution_id=item.institution.pub_ukprn sort_by_subject_enabled='true' %}
         {% endfor %}    
     </div>
