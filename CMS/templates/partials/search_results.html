@@ -62,16 +62,12 @@
     </div>
 
     {% if sort_by_subject_enabled == 'true' %}
-        {% for courses in search.results.single_subject_courses %}
-            {% for key, value in courses.items %}
-                {% include 'partials/sort_by_subject_result.html' with course=value title=key %}
-            {% endfor %}
+        {% for key, value in search.results.single_subject_courses.items %}
+            {% include 'partials/sort_by_subject_result.html' with title=key courses=value.courses number_of_courses=value.number_of_courses %}
         {% endfor %}
 
-        {% for courses in search.results.multiple_subject_courses %}
-            {% for key, value in courses.items %}
-                {% include 'partials/sort_by_subject_result.html' with course=value title=key %}
-            {% endfor %}
+        {% for key, value in search.results.multiple_subject_courses.items %}
+            {% include 'partials/sort_by_subject_result.html' with title=key courses=value.courses number_of_courses=value.number_of_courses %}
         {% endfor %}
     {% else %}
         {% for item in search.results %}
