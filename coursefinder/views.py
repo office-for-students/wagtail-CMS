@@ -127,8 +127,6 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
 
     context = page.get_context(request)
 
-    print(f'course_finder_search={course_finder_search}')
-
     context.update({
         'page': page,
         'search': course_finder_search,
