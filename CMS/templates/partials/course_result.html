@@ -78,9 +78,6 @@
     <p class="course-finder-results__result-accordion-body-course-info">
         {% get_translation key='distance_learning' language=page.get_language %}: {{distance_learning_display}}
     </p>
-    <p class="course-finder-results__result-accordion-body-course-info">
-        Country: {{course.country}}
-    </p>
     <script>
         pushToArray('{{distance_learning_display}}', '{{course.country}}')
     </script>
