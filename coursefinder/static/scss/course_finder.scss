@@ -602,6 +602,28 @@
                         text-decoration: underline;
                     }
 
+                    &-sort-by-subject-course-name {
+                        @include desktop-body-font-mixin();
+
+                        display: block;
+                        margin: 0px;
+
+                        color: $gradient-dark-green;
+                        line-height: 22px;
+                        text-decoration: underline;
+                    }
+
+                    &-course-provider {
+                        @include mobile-body-font-mixin();
+
+                        margin: 0px;
+
+                        line-height: 26px;
+
+                        text-decoration-line: underline;
+                        font-weight: bold;
+                    }
+
                     &-course-info {
                         @include mobile-body-font-mixin();
 
@@ -840,6 +862,16 @@
                             line-height: 31px;
                         }
 
+                        &-sort-by-subject-course-name {
+                           
+                            line-height: 31px;
+                        }
+
+                        &-course-provider {
+                           
+                            line-height: 27px;
+                        }
+
                         &-course-info {
                            
                             line-height: 27px;
@@ -913,7 +945,7 @@
     .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content{
         width: 1140px!important;
         margin-left:auto!important;
-        margin-right:auto!important;
+            margin-right:auto!important;
         // padding: 1rem;
     }
     .course-finder-wrapper {
