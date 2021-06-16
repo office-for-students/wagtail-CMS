@@ -84,13 +84,17 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     else: 
         countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
 
-    institution_query = '#'.join(query_params.getlist('institution_query')) if 'institution_query' in query_params else None
-    institution_array = '@'.join(query_params.getlist('institution_query')) if 'institution_query' in query_params else None
+    institution_query = '@'.join(query_params.getlist('institution_query')) if 'institution_query' in query_params else None
+    
+
+    postcode = query_params.getlist('postcode') if 'postcode' in query_params else None
+    distance_query = query_params.getlist('distance') if 'distance' in query_params else None
+    postcode_query = ','.join(postcode + distance_query) if 'postcode' and 'distance' in query_params else None
 
     course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
                                               institution_query,
                                               countries_query,
-                                              query_params.get('postcode_query', None),
+                                              postcode_query,
                                               filters,
                                               query_params.get('course_query', None),
                                               query_params.get('page', 1),
@@ -128,7 +132,7 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
         'filter_form': filter_form,
         'filters': filters,
-        'institution_array': institution_array,
+        'postcode_query': postcode_query,
     })
 
     return render(request, 'coursefinder/course_finder_results.html', context)
