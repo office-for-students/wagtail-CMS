@@ -124,6 +124,27 @@
             flex-wrap: wrap;
         }
 
+        &-postcode-div{
+            display: none; 
+            flex-direction: column;
+
+            &-textfield{
+                height: 35px;
+                border: 1px solid red;
+                border-radius: 2px;
+            }
+
+            &-question{
+                @include m-heading--bold-mixin();
+                margin-top: 0px;
+                margin-bottom: 35px;
+                width: 80%;
+
+                line-height: 45px;
+                color: $ux-grey-3;
+            }
+        }
+
         &-search{
             width: 95%;
             height: 35px;
@@ -319,6 +340,12 @@
                     font-weight: bold;
                 }
             }
+        }
+
+        &-textfield{
+            height: 35px;
+            border-radius: 2px;
+            border: 1px solid red;
         }
 
         &-radio {

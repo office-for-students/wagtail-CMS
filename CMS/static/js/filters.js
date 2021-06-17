@@ -430,6 +430,152 @@
 
 }(jQuery));
 
+function toggleDistance(distance_checked, campus_checked) {
+    var disable_countries = $('input[name=countries_check]');
+    var disable_postcode = $('.postcode-fieldset')
+    var distance_checked_mobile = document.getElementsByClassName('distance')[1].checked;
+    var campus_checked_mobile = document.getElementsByClassName('campus')[1].checked;
+    // form duplicates when in mobile view so the Id cannot be used. 
+    if(window.innerWidth > 576){
+        if(distance_checked && campus_checked == false){
+            $(".message").css( "display", "block" )
+            disable_countries.attr('disabled', 'disabled');
+            disable_postcode.attr('disabled', 'disabled');
+            disable_postcode.css('border', '1px solid grey')
+            $('.filters-block__submit-btn').prop('disabled', false);
+            $('.filters-block__submit-btn').css('background-color', "#8e3b74"); 
+        }
+        else{
+            $(".message").css( "display", "none" )
+            disable_countries.attr('disabled', false);
+            disable_postcode.attr('disabled', false);
+
+            if(!($('[name="postcode"]').val()) || (!($('[name="distance"]').val()))){
+                $('.filters-block__submit-btn').css('background-color', "grey"); 
+                $('.filters-block__submit-btn').prop('disabled', true);
+            }
+
+            if(!($('[name="postcode"]').val())){
+                $('[name="postcode"]').css( "border", "1px solid red" )
+            }
+
+            if(!($('[name="distance"]').val())){
+                $('[name="distance"]').css( "border", "1px solid red" )
+            }
+        }
+    }
+    else{
+        if(distance_checked_mobile && campus_checked_mobile == false){
+            $(".message").css( "display", "block" )
+            disable_countries.attr('disabled', 'disabled');
+            disable_postcode.attr('disabled', 'disabled');
+            $('.filters-block__submit-btn').prop('disabled', false);
+            $('.filters-block__submit-btn').css('background-color', "#8e3b74"); 
+            
+        }
+        else {
+            $(".message").css( "display", "none" )
+            disable_countries.attr('disabled', false);
+            disable_postcode.attr('disabled', false);
+
+            if(!($('[name="postcode"]').val()) || (!($('[name="distance"]').val()))){
+                $('.filters-block__submit-btn').css('background-color', "grey"); 
+                $('.filters-block__submit-btn').prop('disabled', true);
+            }
+
+            if(!($('[name="postcode"]').val())){
+                $('[name="postcode"]').css( "border", "1px solid red" )
+            }
+
+            if(!($('[name="distance"]').val())){
+                $('[name="distance"]').css( "border", "1px solid red" )
+            }
+        }
+    }
+}
+
+// a function to trigger each hidden checkbox. This hidden input is what is submitted to the FilterForm. Using this means we can keep the value of the checkbox if distance learning is selected, submitted and then removed
+function toggleCheckbox(country) { 
+    var shown = document.getElementsByClassName(country);
+    var hidden = document.getElementsByClassName('hidden-' + country);
+    if(window.innerWidth > 576){
+        if(shown[0].checked){
+           hidden[0].checked = true; 
+        } 
+        else{
+           hidden[0].checked = false; 
+        } 
+    }
+    else{
+        if(shown[1].checked){
+           hidden[1].checked = true; 
+        } 
+        else{
+           hidden[1].checked = false; 
+        } 
+    }
+}
+
+$(document).ready(function() {
+   $('input[type="radio"]').click(function() {
+       if($(this).attr('id') == 'region') {
+            $('.region-div').css( "display", "block" );
+            $('.filters-block__filter-postcode-div').css( "display", "none" );
+            $('[name="countries_query"]').prop('disabled', false);
+            $('[name="distance"]').prop('disabled', true);
+            $('[name="postcode"]').prop('disabled', true);  
+            $('.filters-block__submit-btn').prop('disabled', false);  
+            $('.filters-block__submit-btn').css('background-color', "#8e3b74");       
+       }
+
+       else if($(this).attr('id') == 'postcode') {
+            $('.region-div').css( "display", "none" );
+            $('.filters-block__filter-postcode-div').css( "display", "flex" );    
+            $('[name="countries_query"]').prop('disabled', true);
+            $('[name="distance"]').prop('disabled', false);
+            $('[name="postcode"]').prop('disabled', false);
+
+            if(!($('[name="postcode"]').val()) || (!($('[name="distance"]').val()))){
+                $('.filters-block__submit-btn').css('background-color', "grey");
+                $('.filters-block__submit-btn').prop('disabled', true);
+            }
+       }    
+   });
+});
+
+$(document).ready(function() {
+   $('.postcode-fieldset').change(function() {
+        if(!($('[name="postcode"]').val()) || (!($('[name="distance"]').val()))){
+            $('.filters-block__submit-btn').prop('disabled', true);
+            $('.filters-block__submit-btn').css('background-color', "grey");
+        }
+        else{
+            $('.filters-block__submit-btn').prop('disabled', false);
+            $('.filters-block__submit-btn').css('background-color', "#8e3b74");
+        }
+        if(!($('[name="postcode"]').val())){
+            $('[name="postcode"]').css( "border", "1px solid red" )
+        }
+        else{
+            $('[name="postcode"]').css( "border", "1px solid #595959" )
+        }
+        if(!($('[name="distance"]').val())){
+            $('[name="distance"]').css( "border", "1px solid red" )
+        }
+        else{
+            $('[name="distance"]').css( "border", "1px solid #595959" )
+        }
+    });
+});
+//function to check whether distance is checked on page load and to disable the location filters if it is.
+$(document).ready(function() {
+    var disable_input = $('input[name=countries_check]');
+    if($('.distance').is(":checked") == true && $('.campus').is(":checked") == false){
+        disable_input.attr('disabled', 'disabled');
+        $(".message").css( "display", "block" )
+    }
+});
+
 $(document).ready(function(){
     $('#clear-filters').click(function(){
         $('#countries-england').prop('checked', false);

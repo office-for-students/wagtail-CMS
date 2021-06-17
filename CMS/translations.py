@@ -343,6 +343,10 @@ DICT = {
         'en': '',
         'cy': "Mae enwau'r Prifysgolion fel y'u darperir gan Gofrestr y DU o Ddarparwyr Dysgu. Os nad yw'r enw Cymraeg yn bresennol, chwiliwch amdano gan ddefnyddio'i enw Saesneg."
     },
+    'distance': {
+        'en': 'Distance',
+        'cy': 'Pellter'
+    },
     'distance_learning': {
         'en': 'Distance learning',
         'cy': 'Dysgu o bell'
@@ -1397,6 +1401,10 @@ DICT = {
     'student_satisfaction_course_overview_3': {
         'en': 'Go to Student Satisfaction',
         'cy': "Ewch i’r adran Bodlonrwydd Myfyrwyr"
+    },
+    'within_miles': {
+        'en': 'within {} miles',
+        'cy': 'fewn {} milltir'
     },
     'average_earnings_course_overview_1': {
         'en': 'Average Earnings',
