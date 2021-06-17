@@ -1,47 +1,5 @@
 {% load discover_uni_tags wagtailcore_tags %}
 <script>
-    $(document).ready(function() {
-       $('input[type="radio"]').click(function() {
-           if($(this).attr('id') == 'region') {
-                $('.region-div').css( "display", "block" );
-                $('.filters-block__filter-postcode-div').css( "display", "none" );
-                $('[name="countries_query"]').prop('disabled', false);
-                $('[name="distance"]').prop('disabled', true);
-                $('#postcode_field').prop('disabled', true);           
-           }
-
-           else if($(this).attr('id') == 'postcode') {
-                $('.region-div').css( "display", "none" );
-                $('.filters-block__filter-postcode-div').css( "display", "flex" );    
-                $('[name="countries_query"]').prop('disabled', true);
-                $('[name="distance"]').prop('disabled', false);
-                $("#postcode_field").prop('disabled', false);
-                $('.filters-block__submit-btn').prop('disabled', true);
-           }
-       });
-    });
-
-    $(document).ready(function() {
-       $('.postcode-fieldset').change(function() {
-            console.log("got here")
-            if(!($("#postcode_field").val()) || (!($('[name="distance"]').val()))){
-                $('.filters-block__submit-btn').prop('disabled', true);
-                $('.filters-block__submit-btn').css('background-color', "grey");
-            }
-            else{
-                $('.filters-block__submit-btn').prop('disabled', false);
-            }
-        });
-    });
-    //function to check whether distance is checked on page load and to disable the location filters if it is.
-    $(document).ready(function() {
-        var disable_input = $('input[name=countries_check]');
-        if($('.distance').is(":checked") == true && $('.campus').is(":checked") == false){
-            disable_input.attr('disabled', 'disabled');
-            $(".message").css( "display", "block" )
-        }
-    });
-
     function toggleDistance(distance_checked, campus_checked) {
         var disable_input = $('input[name=countries_check]');
         var distance_checked_mobile = document.getElementsByClassName('distance')[1].checked;
@@ -68,7 +26,6 @@
             }
         }
     }
-
 
     // a function to trigger each hidden checkbox. This hidden input is what is submitted to the FilterForm. Using this means we can keep the value of the checkbox if distance learning is selected, submitted and then removed
     function toggleCheckbox(country) { 
@@ -179,16 +136,16 @@
 
             <label for="postcode-distance" class="filters-block__filter-checkbox-label-bold">{% get_translation key='distance' language=page.get_language %}</label>
             <select id="postcode-distance" name="distance" class="filters-block__filter-postcode-div-textfield postcode-fieldset" disabled>
-                <option class="course-finder-content__question-input"
+                <option class="filters-block__filter-postcode-div-question"
                                         id="one" value="">
                 </option>
-                <option class="course-finder-content__question-input"
+                <option class="filters-block__filter-postcode-div-question"
                                         id="ten_miles" placeholder="Within 10 miles"  value="10">Within 10 miles
                 </option>
-                <option class="course-finder-content__question-input"
+                <option class="filters-block__filter-postcode-div-question"
                                         id="twenty_five_miles" placeholder="Within 25 miles"  value="25">Within 25 miles
                 </option>
-                <option class="course-finder-content__question-input"
+                <option class="filters-block__filter-postcode-div-question"
                                         id="fifty_miles" placeholder="Within 50 miles"  value="50">Within 50 miles
                 </option>
             </select>
