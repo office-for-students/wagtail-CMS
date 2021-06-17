@@ -1,55 +1,4 @@
 {% load discover_uni_tags wagtailcore_tags %}
-<script>
-    function toggleDistance(distance_checked, campus_checked) {
-        var disable_input = $('input[name=countries_check]');
-        var distance_checked_mobile = document.getElementsByClassName('distance')[1].checked;
-        var campus_checked_mobile = document.getElementsByClassName('campus')[1].checked;
-        // form duplicates when in mobile view so the Id cannot be used. 
-        if(window.innerWidth > 576){
-            if(distance_checked && campus_checked == false){
-                $(".message").css( "display", "block" )
-                disable_input.attr('disabled', 'disabled');
-            }
-            else{
-                $(".message").css( "display", "none" )
-                disable_input.attr('disabled', false);
-            }
-        }
-        else{
-            if(distance_checked_mobile && campus_checked_mobile == false){
-                $(".message").css( "display", "block" )
-                disable_input.attr('disabled', 'disabled');
-            }
-            else {
-                $(".message").css( "display", "none" )
-                disable_input.attr('disabled', false);
-            }
-        }
-    }
-
-    // a function to trigger each hidden checkbox. This hidden input is what is submitted to the FilterForm. Using this means we can keep the value of the checkbox if distance learning is selected, submitted and then removed
-    function toggleCheckbox(country) { 
-        var shown = document.getElementsByClassName(country);
-        var hidden = document.getElementsByClassName('hidden-' + country);
-        if(window.innerWidth > 576){
-            if(shown[0].checked){
-               hidden[0].checked = true; 
-            } 
-            else{
-               hidden[0].checked = false; 
-            } 
-        }
-        else{
-            if(shown[1].checked){
-               hidden[1].checked = true; 
-            } 
-            else{
-               hidden[1].checked = false; 
-            } 
-        }
-    }
-
-</script>
 
 <div class="filters-block__filter-accordion">
     <div tabindex="0" role="button" aria-label="Show content" class="filters-block__filter-accordion-header">
@@ -137,18 +86,29 @@
             <label for="postcode-distance" class="filters-block__filter-checkbox-label-bold">{% get_translation key='distance' language=page.get_language %}</label>
             <select id="postcode-distance" name="distance" class="filters-block__filter-postcode-div-textfield postcode-fieldset" disabled>
                 <option class="filters-block__filter-postcode-div-question"
-                                        id="one" value="">
+                                        value="">
                 </option>
                 <option class="filters-block__filter-postcode-div-question"
-                                        id="ten_miles" placeholder="Within 10 miles"  value="10">Within 10 miles
+                                        id="ten_miles" placeholder="Within 10 miles"  value="10">
                 </option>
                 <option class="filters-block__filter-postcode-div-question"
-                                        id="twenty_five_miles" placeholder="Within 25 miles"  value="25">Within 25 miles
+                                        id="twenty_five_miles" placeholder="Within 25 miles"  value="25">
                 </option>
                 <option class="filters-block__filter-postcode-div-question"
-                                        id="fifty_miles" placeholder="Within 50 miles"  value="50">Within 50 miles
+                                        id="fifty_miles" placeholder="Within 50 miles"  value="50">
                 </option>
             </select>
+
+        <script>
+            ten_miles = document.getElementById("ten_miles")
+            twenty_five_miles = document.getElementById("twenty_five_miles")
+            fifty_miles = document.getElementById("fifty_miles")
+
+
+            ten_miles.innerHTML = "{% get_translation key='within_miles' language=page.get_language %}".replace('{}', '10')
+            twenty_five_miles.innerHTML = "{% get_translation key='within_miles' language=page.get_language %}".replace('{}', '25')
+            fifty_miles.innerHTML = "{% get_translation key='within_miles' language=page.get_language %}".replace('{}', '50')
+        </script>
         </div>
 
     </div>
