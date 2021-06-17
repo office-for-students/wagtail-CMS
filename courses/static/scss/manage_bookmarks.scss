@@ -5,6 +5,43 @@
 .bookmark {
     padding: 35px 30px 55px;
 
+    &-header{
+        width: 231px;
+        color: #5d5d5d;
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    &-text{
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 20px;
+        display: inline;
+        margin-bottom: 6.5px
+    }
+
+    &-compare-button{
+        width: 180px;
+        height: 40px;
+        margin: 48px 16px 6.5px 0px;
+        border: 0px;
+        border-radius: 20px;
+        background-color: #e2e2e2;
+        color: #595959;
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .enabled{
+        background-image: linear-gradient(283deg, #308282, #4ea27d);
+        color: white;
+    }
+
+    .red{
+        color: red;
+    }
+
     &__overview {
         padding: 30px 50px;
         text-align: center;
@@ -90,10 +127,10 @@
     }
 
     &__course {
-        margin-bottom: 4px;
+        margin-bottom: 32px;
         display: none;
         padding: 40px 40px 30px;
-
+        width: 100%;
         background-color: $divider-grey;
 
         &-name {
@@ -101,7 +138,7 @@
 
             margin-bottom:20px;
             display: block;
-
+            font-size: 20px;
             color: $gradient-dark-green;
         }
 
@@ -118,6 +155,7 @@
 
             margin-top: 15px;
             padding: 12px;
+            margin-bottom: 12px;
 
             color: $white;
             background-color: $delete-red;

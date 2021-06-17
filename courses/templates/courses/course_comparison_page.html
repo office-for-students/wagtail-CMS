@@ -73,8 +73,14 @@
                                 <select id="course1-select">
                                     <option value="na" disabled selected>{% get_translation key='select_course' language=page.get_language %}</option>
                                 </select>
-                            </div>
-
+                            </div>  
+                            {% if courses_array %}
+                                {% for course in courses_array %}
+                                    {% include 'courses/partials/base_gradient.html' %}
+                                        {% include 'courses/partials/comparison_course_overview.html' with course=course %}
+                                {% endfor %}
+                            {% endif %}
+                            
                             {% if course1 %}
                                 {% include 'courses/partials/base_gradient.html' %}
                                     {% include 'courses/partials/comparison_course_overview.html' with course=course1 %}

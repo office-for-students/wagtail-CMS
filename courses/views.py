@@ -253,12 +253,29 @@ def compare_courses(request, language=enums.languages.ENGLISH):
     error2 = None
     course1 = None
     course2 = None
+    courses_array = []
 
+    courses_list = get_params.getlist('courses') if 'courses' in get_params else None
+
+    #Can delete these once we have finished setting up the array with the accordions
     course1_params = get_params.get('course1').split(',') if 'course1' in get_params else None
     course2_params = get_params.get('course2').split(',') if 'course2' in get_params else None
 
+    #Remove the if condition and just have a loop once we are done with the old code.
+    if courses_list:
+        for course in courses_list:
+            if course:
+                course = course.split(',')
+                course, error = Course.find(course[0], course[1], course[2], language)
+                courses_array.append(course)
+
+            if error:
+                redirect_page = get_new_landing_page_for_language(language)
+                return redirect(redirect_page + '?load_error=true&error_type=0')
+
     page = get_page_for_language(language, CourseComparisonPage.objects.all())
 
+    #Can delete these once we have finished setting up the array with the accordions
     if course1_params:
         course1, error1 = Course.find(course1_params[0], course1_params[1], course1_params[2], language)
     if course2_params:
@@ -281,9 +298,10 @@ def compare_courses(request, language=enums.languages.ENGLISH):
         'page': page,
         'course1': course1,
         'course2': course2,
+        'courses_array': courses_array,
         'english_url': english_url,
         'welsh_url': welsh_url,
-        'cookies_accepted': request.COOKIES.get('discoverUniCookies')
+        'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
     })
 
     return render(request, 'courses/course_comparison_page.html', context)
