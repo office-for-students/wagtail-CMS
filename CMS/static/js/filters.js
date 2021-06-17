@@ -430,6 +430,66 @@
 
 }(jQuery));
 
+$(document).ready(function() {
+   $('input[type="radio"]').click(function() {
+       if($(this).attr('id') == 'region') {
+            $('.region-div').css( "display", "block" );
+            $('.filters-block__filter-postcode-div').css( "display", "none" );
+            $('[name="countries_query"]').prop('disabled', false);
+            $('[name="distance"]').prop('disabled', true);
+            $('[name="postcode"]').prop('disabled', true);  
+            $('.filters-block__submit-btn').prop('disabled', false);  
+            $('.filters-block__submit-btn').css('background-color', "#8e3b74");       
+       }
+
+       else if($(this).attr('id') == 'postcode') {
+            $('.region-div').css( "display", "none" );
+            $('.filters-block__filter-postcode-div').css( "display", "flex" );    
+            $('[name="countries_query"]').prop('disabled', true);
+            $('[name="distance"]').prop('disabled', false);
+            $('[name="postcode"]').prop('disabled', false);
+            $('.filters-block__submit-btn').prop('disabled', true);
+
+            if(!($('[name="postcode"]').val()) || (!($('[name="distance"]').val()))){
+                $('.filters-block__submit-btn').css('background-color', "grey");
+            }
+       }    
+   });
+});
+
+$(document).ready(function() {
+   $('.postcode-fieldset').change(function() {
+        if(!($('[name="postcode"]').val()) || (!($('[name="distance"]').val()))){
+            $('.filters-block__submit-btn').prop('disabled', true);
+            $('.filters-block__submit-btn').css('background-color', "grey");
+        }
+        else{
+            $('.filters-block__submit-btn').prop('disabled', false);
+            $('.filters-block__submit-btn').css('background-color', "#8e3b74");
+        }
+        if(!($('[name="postcode"]').val())){
+            $('[name="postcode"]').css( "border", "1px solid red" )
+        }
+        else{
+            $('[name="postcode"]').css( "border", "1px solid #595959" )
+        }
+        if(!($('[name="distance"]').val())){
+            $('[name="distance"]').css( "border", "1px solid red" )
+        }
+        else{
+            $('[name="distance"]').css( "border", "1px solid #595959" )
+        }
+    });
+});
+//function to check whether distance is checked on page load and to disable the location filters if it is.
+$(document).ready(function() {
+    var disable_input = $('input[name=countries_check]');
+    if($('.distance').is(":checked") == true && $('.campus').is(":checked") == false){
+        disable_input.attr('disabled', 'disabled');
+        $(".message").css( "display", "block" )
+    }
+});
+
 $(document).ready(function(){
     $('#clear-filters').click(function(){
         $('#countries-england').prop('checked', false);

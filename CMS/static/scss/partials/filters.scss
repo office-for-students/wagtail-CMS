@@ -129,8 +129,21 @@
             flex-direction: column;
 
             &-textfield{
-                height: 35px; 
+                height: 35px;
+                border: 1px solid red;
+                border-radius: 2px;
             }
+
+            &-question{
+                @include m-heading--bold-mixin();
+                margin-top: 0px;
+                margin-bottom: 35px;
+                width: 80%;
+
+                line-height: 45px;
+                color: $ux-grey-3;
+            }
+            
         }
 
         &-search{
@@ -333,7 +346,7 @@
         &-textfield{
             height: 35px;
             border-radius: 2px;
-            border: 1px solid #595959;
+            border: 1px solid red;
         }
 
         &-radio {
