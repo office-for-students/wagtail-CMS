@@ -1,5 +1,18 @@
 {% load static discover_uni_tags sass_tags %}
 
+{% block extra_js %}
+    <script>
+        $(function () {
+            $('#staticBackdrop').on('show.bs.modal', function (e) {   
+                var modal = $(this)
+                modal.find('.filters-block__form').show()
+                modal.find('.filters-block__heading').hide()
+                return e; 
+            })
+        });    
+    </script>
+{% endblock %}
+
 <p class="course-finder-results__overview text-center">
 
 {% comment %}
@@ -54,7 +67,7 @@
         </div>
     </div><!-- /"Show filters" button and corresponding Modal -->   
 
-    {% include 'partials/institution_results.html'%}
+    {% include 'partials/search_results.html'%}
 </div>
 
 {% include '_pagination.html' %}

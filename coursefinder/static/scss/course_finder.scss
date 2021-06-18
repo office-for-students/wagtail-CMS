@@ -414,6 +414,73 @@
             margin-bottom: 20px;
             font-size: 18px;
             font-weight: bold;
+
+            &_sort_by_institution {
+                padding-left: 10px;
+                margin-bottom: 20px;
+                color: $link-green;
+                font-size: 18px;
+                font-weight: normal;      
+                
+                &:hover {
+                    cursor: pointer;
+                }
+
+                &_selected {
+                    padding-left: 10px;
+                    margin-bottom: 20px;
+                    color: $link-green;
+                    font-size: 18px;                
+                    font-weight: bold;
+                    text-decoration: underline;          
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            
+            &_sort_by_subject {
+                padding-left: 31px;
+                margin-bottom: 20px;
+                color: $link-green;
+                font-size: 18px;
+                font-weight: normal;      
+                
+                &:hover {
+                    cursor: pointer;
+                }
+    
+                &_selected {
+                    padding-left: 31px;
+                    margin-bottom: 20px;
+                    color: $link-green;
+                    font-size: 18px;                
+                    font-weight: bold;
+                    text-decoration: underline;          
+    
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                }
+
+                &_disabled {
+                    padding-left: 31px;
+                    margin-bottom: 20px;
+                    color: #ccc;
+                    font-size: 18px;                
+                }
+
+                &_warning {
+                    padding: 10px 10px 10px 32px;
+                    margin-bottom: 20px;
+                    background-color: $pale;
+                    font-size: 16px;
+                    display:block;
+                    line-height: normal;
+                }
+            }
         }
 
         &__overview {
@@ -535,6 +602,28 @@
                         text-decoration: underline;
                     }
 
+                    &-sort-by-subject-course-name {
+                        @include desktop-body-font-mixin();
+
+                        display: block;
+                        margin: 0px;
+
+                        color: $gradient-dark-green;
+                        line-height: 22px;
+                        text-decoration: underline;
+                    }
+
+                    &-course-provider {
+                        @include mobile-body-font-mixin();
+
+                        margin: 0px;
+
+                        line-height: 26px;
+
+                        text-decoration-line: underline;
+                        font-weight: bold;
+                    }
+
                     &-course-info {
                         @include mobile-body-font-mixin();
 
@@ -557,6 +646,15 @@
 @media only screen and (min-width: 577px) {
     .course-finder-results__heading {
         padding-left: 0;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .course-finder-results__heading_sort_by_subject_warning {
+        padding: 10px;
+        margin: 0 0 20px 20px;
+        display: inline-block;
+        max-width: 220px;
     }
 }
 
@@ -764,6 +862,16 @@
                             line-height: 31px;
                         }
 
+                        &-sort-by-subject-course-name {
+                           
+                            line-height: 31px;
+                        }
+
+                        &-course-provider {
+                           
+                            line-height: 27px;
+                        }
+
                         &-course-info {
                            
                             line-height: 27px;
@@ -837,7 +945,7 @@
     .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content{
         width: 1140px!important;
         margin-left:auto!important;
-        margin-right:auto!important;
+            margin-right:auto!important;
         // padding: 1rem;
     }
     .course-finder-wrapper {
