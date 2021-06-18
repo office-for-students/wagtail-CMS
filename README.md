@@ -47,6 +47,7 @@ $ cp docker-compose.yml.example docker-compose.yml
 | JSONFILES_STORAGE_CONTAINER       | <azurecontainer>     | The container URI for the json files        |
 | SENDGRID_API_KEY                  | <sendgridapikey>     | The API key for the e-mail notifications    |
 | SENDGRID_FROM_EMAIL               | <sendgridfromemail>  | The e-mail address used for notifications   |
+| SORT_BY_SUBJECT_LIMIT             | 5000                 | Used to determine how to display subjects   |
 | LOCAL                             | False                | Tells the site to use external API or mocks |
 
 # Getting Started

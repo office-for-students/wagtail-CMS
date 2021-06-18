@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 
@@ -12,6 +13,7 @@ from site_search.models import SearchLandingPage
 from home.models import HomePage
 
 import json
+import os
 
 def results(request, language=enums.languages.ENGLISH):
     query_params = request.POST
@@ -74,23 +76,38 @@ def narrow_search(request, language=enums.languages.ENGLISH):
         return HttpResponseRedirect(page.url)
     return render(request, '404.html')
 
-
+    
 def course_finder_results(request, language=enums.languages.ENGLISH):
     query_params = request.POST
-    countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
     filter_form = FilterForm(query_params)
     filters = build_filters(query_params)
+    if "distance" in filters and "campus" not in filters:
+        countries_query = ''
+    else: 
+        countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
+
+    institution_query = '@'.join(query_params.getlist('institution_query')) if 'institution_query' in query_params else None
+    
+    postcode = query_params.getlist('postcode') if 'postcode' in query_params else None
+    distance_query = query_params.getlist('distance') if 'distance' in query_params else None
+    postcode_query = ','.join(postcode + distance_query) if 'postcode' and 'distance' in query_params else None
+    sort_by_subject_enabled = query_params.get('sort_by_subject', 'false')
+    sort_by_subject_limit = int(os.environ.get('SORT_BY_SUBJECT_LIMIT', 5000))
+    count = sort_by_subject_limit if sort_by_subject_enabled == 'true' else 20
+
     course_finder_search = CourseFinderSearch(query_params.get('subject_query', None),
-                                              query_params.get('institution_query', None),
+                                              institution_query,
                                               countries_query,
-                                              query_params.get('postcode_query', None),
+                                              postcode_query,
                                               filters,
+                                              sort_by_subject_enabled,
+                                              sort_by_subject_limit,
                                               query_params.get('course_query', None),
                                               query_params.get('page', 1),
-                                              query_params.get('count', 20),
+                                              count,
                                               language)
     error = course_finder_search.execute()
- 
+
     if error:
         redirect_page = get_new_landing_page_for_language(language)
         #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
@@ -119,19 +136,35 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         'english_url': english_url,
         'welsh_url': welsh_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
-        'filter_form': filter_form
+        'filter_form': filter_form,
+        'filters': filters,
+        'postcode_query': postcode_query,
+        'sort_by_subject_enabled': sort_by_subject_enabled,
+        'sort_by_subject_limit': sort_by_subject_limit,        
     })
 
     return render(request, 'coursefinder/course_finder_results.html', context)
+
+
+def build_study_mode_filter(list):
+    filter = ''
+    if (len(list) > 1 and list[0:2] == ['Full-time', 'Part-time']):
+        filter = ','.join(list[2:])
+    else:
+        filter = ','.join(list)
+    return transform_study_mode_filter_name(filter)
+
+
+def transform_study_mode_filter_name(filter):
+    return filter.lower().replace('-', '_').replace(' ', '_')
 
 
 def build_filters(params):
     filters = []
 
     if 'mode_query' in params:
-        mode_query = ','.join(params.getlist('mode_query'))
-        if 'Full-time,Part-time' not in mode_query:
-            filters.append(params.get('mode_query').lower().replace('-', '_').replace(' ', '_'))
+        mode_query = params.getlist('mode_query')
+        filters.append(build_study_mode_filter(mode_query))
     if 'qualification_query' in params:
         qualification_query = ','.join(params.getlist('qualification_query'))
         if 'first_degree,other_undergraduate' not in qualification_query:
@@ -154,3 +187,4 @@ def build_filters(params):
 
     filters_query_params = ','.join(filter_ for filter_ in filters if filter_)
     return filters_query_params
+        

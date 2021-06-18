@@ -4,6 +4,21 @@
 {% get_course_name course page.is_english as course_name %}
 {% map_distance_learning_values course.distance_learning page.get_language as distance_learning_display %}
 {% get_course_locations_list course.locations page.is_english as locations %}
+
+<script>
+    function pushToArray(distance, country) {
+        if(distance === "Course is only available through distance learning" ){
+            distance_array.push("distance")
+        }
+        if(distance === "Course is optionally available through distance learning" && '{{filter_form.countries_query}}'.includes(country) === false){
+            distance_array.push("distance")
+        }
+        else{
+            distance_array.push("not_distance")
+        }
+    }
+</script>
+
 <div class="course-finder-results__result-accordion-body-content comparison-course-area mb-4"
      data-coursename="{{course_name}}" data-courseid="{{course.kis_course_id}}"
      data-uniname="{{ institution.pub_ukprn_name }}" data-uniid="{{institution_id}}"
@@ -22,10 +37,21 @@
      </div>
 
 
-     <a href="{% if page.is_welsh %}/cy{% endif %}/course-details/{{institution_id}}/{{course.kis_course_id}}/{{course.mode}}"
-       class="course-finder-results__result-accordion-body-course-name">
-        {{ course_name }}
-    </a>
+  
+    {% if sort_by_subject_enabled == 'true' %}
+        <a href="{% if page.is_welsh %}/cy{% endif %}/course-details/{{institution_id}}/{{item.kis_course_id}}/{{item.mode}}"
+        class="course-finder-results__result-accordion-body-sort-by-subject-course-name">
+            {{ course_name }}
+        </a>     
+        <p class="course-finder-results__result-accordion-body-course-provider">
+            {{ course.institution.pub_ukprn_name }}
+        </p>     
+    {% else %}
+        <a href="{% if page.is_welsh %}/cy{% endif %}/course-details/{{institution_id}}/{{course.kis_course_id}}/{{course.mode}}"
+        class="course-finder-results__result-accordion-body-course-name">
+            {{ course_name }}
+        </a>
+    {% endif %}
 
 
 
@@ -52,6 +78,9 @@
     <p class="course-finder-results__result-accordion-body-course-info">
         {% get_translation key='distance_learning' language=page.get_language %}: {{distance_learning_display}}
     </p>
+    <script>
+        pushToArray('{{distance_learning_display}}', '{{course.country}}')
+    </script>
 
     <p class="course-finder-results__result-accordion-body-course-info">
         {% get_translation key='work_placement_year' language=page.get_language %}: {% get_translation key=course.sandwich_year language=page.get_language %}

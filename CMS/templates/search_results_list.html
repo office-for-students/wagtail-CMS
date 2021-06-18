@@ -1,30 +1,73 @@
-{% load staticfiles discover_uni_tags %}
+{% load static discover_uni_tags sass_tags %}
+
+{% block extra_js %}
+    <script>
+        $(function () {
+            $('#staticBackdrop').on('show.bs.modal', function (e) {   
+                var modal = $(this)
+                modal.find('.filters-block__form').show()
+                modal.find('.filters-block__heading').hide()
+                return e; 
+            })
+        });    
+    </script>
+{% endblock %}
 
 <p class="course-finder-results__overview text-center">
 
+{% comment %}
+<div class="course-finder-results__overview-filter-open">
+    {% get_translation key='show_filters' language=page.get_language %}
+    <img class="course-finder-results__overview-filter-icon" src="{% static 'images/chevron-down-solid.svg' %}" alt="">
+</div>
 
-    <div class="course-finder-results__overview-filter-open">
-        {% get_translation key='show_filters' language=page.get_language %}
-        <img class="course-finder-results__overview-filter-icon" src="{% static 'images/chevron-down-solid.svg' %}"
-             alt="">
+<div class="course-finder-results__overview-filter-toggle text-center col-12">
+    {% get_translation key='show_filters' language=page.get_language %}
+    <img class="course-finder-results__overview-filter-icon chevron-down"
+    src="{% static 'images/chevron-down-solid.svg' %}" alt="">
+    <img class="course-finder-results__overview-filter-icon chevron-up" src="{% static 'images/chevron-up-solid.svg' %}"
+    alt="">
+</div>
 
-    </div>
+{% include 'coursefinder/partials/filters.html' %}
 
-    <div class="course-finder-results__overview-filter-toggle text-center col-12">
-        {% get_translation key='show_filters' language=page.get_language %}
-        <img class="course-finder-results__overview-filter-icon chevron-down"
-             src="{% static 'images/chevron-down-solid.svg' %}" alt="">
-        <img class="course-finder-results__overview-filter-icon chevron-up"
-             src="{% static 'images/chevron-up-solid.svg' %}" alt="">
-    </div>
-
+<hr class="course-finder__result-hr" />
+{% endcomment %}
+<div class="course-finder-flex">
     {% include 'coursefinder/partials/filters.html' %}
 
-<hr class="course-finder__result-hr"/>
-<div class="course-finder-results__result-list">
-    {% for item in search.results %}
-        {% include 'partials/institution_result.html' with institution=item %}
-    {% endfor %}
+    <!-- "Show filters" button and corresponding Modal -->
+    <div class="filters-block__show-block">
+        
+        <!-- Button trigger modal -->
+        <button type="button" class="filters-block__show-btn" data-toggle="modal" data-target="#staticBackdrop">
+            {% get_translation key='show_filters' language=page.get_language %}
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="filters-block__heading-title" id="staticBackdropLabel">
+                        {% get_translation key='filters' language=page.get_language %}
+                    </div>
+                    <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        {% get_translation key='close' language=page.get_language %}
+                            <span aria-hidden="true">                    
+                                <img src="{% static 'images/icon-close.svg' %}" alt="Close">
+                            </span>
+                        </div>
+                </div>
+                <div class="modal-body">
+                    {% include 'coursefinder/partials/filters.html' %}
+                </div>
+            </div>
+            </div>
+        </div>
+    </div><!-- /"Show filters" button and corresponding Modal -->   
+
+    {% include 'partials/search_results.html'%}
 </div>
 
 {% include '_pagination.html' %}

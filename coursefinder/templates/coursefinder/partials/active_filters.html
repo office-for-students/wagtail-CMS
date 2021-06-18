@@ -1,0 +1,193 @@
+{% load static discover_uni_tags wagtailcore_tags %}
+
+    <script>
+        // a function to select the value the passed in value for study_mode and set it to null
+        // if distance learning is the only filter applied, or if you are closing the oncampus filter, and the distance learning is active, all regional filters will be removed also.
+        function closeFilter(filter) {  
+            document.getElementById(filter).checked = false;
+            document.getElementById("filterForm").submit();
+        }
+
+        function closePostcode(){
+            document.getElementById('postcode_field').value = ""
+            document.getElementById('postcode-distance').value = ""
+            document.getElementById("filterForm").submit();
+        }
+    </script>
+
+    <script>
+        function closeCourseQuery(){
+            document.getElementById('course_query').value = '';
+            var institutions = '{{filter_form.institutions}}'.split('@')
+            if(institutions[0].length > 1){
+                for (i = 0; i < institutions.length; i++ ){
+                    document.getElementById(institutions[i]).checked = true;
+                }
+            }
+            document.getElementById("filterForm").submit();
+        }           
+
+        function closeInstitutionQuery(id){
+            document.getElementById(id + '-check').checked = false;
+            let course = '{{filter_form.course_query}}';
+            let institutions = '{{filter_form.institutions}}'
+            document.getElementById('course').value = course;
+            document.getElementById("filterForm").submit();
+        }
+
+        function closeAllInstitutions(){
+            $('.inst-chk').prop('checked', false);
+            $('.filters-block__form').first().submit();
+        }
+    </script>
+
+    <script>
+        function institutionFilterPills(){
+            var containing_div = document.getElementById('institution_pill')
+            var institution_array = '{{filter_form.institutions}}'.split('@')
+            var translation_text = "{% get_translation key='number_selected_institutions' language=page.get_language %}"
+            var number_selected_institutions = translation_text.replace('{}', institution_array.length)
+
+            if(institution_array.length >= 6){
+                containing_div.innerHTML += `
+                    <div class="filters-block__filter-pill">
+                        <p class="filters-block__filter-text">${number_selected_institutions}</p>
+                        <img src="{% static 'images/icon-close.svg'%}" onclick='closeAllInstitutions()' class="filters-block__filter-iconclose">
+                    </div>`
+            }
+            else if(institution_array[0].length > 1){
+                for(i in institution_array){
+                    containing_div.innerHTML += `
+                        <div class="filters-block__filter-pill">
+                            <p class="filters-block__filter-text">${institution_array[i]}</p>
+                            <img src="{% static 'images/icon-close.svg'%}" id="${institution_array[i]}" onclick=closeInstitutionQuery(id) class="filters-block__filter-iconclose">
+                        </div>
+                    `
+                }
+            }
+        }
+
+        var postcode_query = '{{postcode_query}}'.split(',')
+        var postcode_pill_text = "{% get_translation key='within_miles' language=page.get_language %}"
+        
+    </script>
+
+{% if filter_form.mode_query or filter_form.countries_query or filter_form.course_query or filter_form.institutions or postcode_query %}
+    <div id="institution_pill" class="filters-block__filter-active-filter">
+        {% if filter_form.course_query %}
+
+                <div class="filters-block__filter-pill">
+                    <p class="filters-block__filter-text">"{{filter_form.course_query|title}}"</p>
+                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeCourseQuery() class="filters-block__filter-iconclose">
+                </div>
+
+        {% endif %}
+
+            <script>
+                institutionFilterPills()
+            </script>
+        
+
+        {% if 'Full-time' in filter_form.mode_query %}
+
+                <div class="filters-block__filter-pill">
+                    <p class="filters-block__filter-text">{% get_translation key='full_time' language=page.get_language %}</p>
+                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-full-time') class="filters-block__filter-iconclose">
+                </div>
+
+        {% endif %}
+
+        {% if 'Part-time' in filter_form.mode_query %}
+
+                <div class="filters-block__filter-pill">
+                    <p class="filters-block__filter-text">{% get_translation key='part_time' language=page.get_language %}</p>
+                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-part-time') class="filters-block__filter-iconclose">
+                </div>
+         
+
+        {% endif %}
+
+        {% if 'Distance' in filter_form.mode_query %}
+
+                <div class="filters-block__filter-pill">
+                    <p class="filters-block__filter-text">{% get_translation key='distance_learning' language=page.get_language %}</p>
+                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-distance') class="filters-block__filter-iconclose">
+                </div>
+
+
+        {% endif %}
+
+        {% if 'campus' in filter_form.mode_query %}
+
+                <div class="filters-block__filter-pill">
+                    <p class="filters-block__filter-text">{% get_translation key='on_campus' language=page.get_language %}</p>
+                    <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-campus') class="filters-block__filter-iconclose">
+                </div>
+            
+
+        {% endif %}
+
+        {% if 'Distance' in filter_form.mode_query and 'campus' not in filter_form.mode_query %}
+
+        {% else %}
+
+            {% if 'England' in filter_form.countries_query %}
+
+                    <div class="filters-block__filter-pill">
+                        <p class="filters-block__filter-text">{% get_translation key='england' language=page.get_language %}</p>
+                        <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-england') class="filters-block__filter-iconclose">
+                    </div>
+
+            {% endif %}
+
+            {% if 'Scotland' in filter_form.countries_query %}
+
+                    <div class="filters-block__filter-pill">
+                        <p class="filters-block__filter-text">{% get_translation key='scotland' language=page.get_language %}</p>
+                        <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-scotland') class="filters-block__filter-iconclose">
+                    </div>
+
+            {% endif %}
+
+            {% if 'Wales' in filter_form.countries_query %}
+
+                    <div class="filters-block__filter-pill">
+                        <p class="filters-block__filter-text">{% get_translation key='wales' language=page.get_language %}</p>
+                        <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-wales') class="filters-block__filter-iconclose">
+                    </div>
+
+            {% endif %}
+
+            {% if 'Ireland' in filter_form.countries_query %}
+
+                    <div class="filters-block__filter-pill">
+                        <p class="filters-block__filter-text">{% get_translation key='northern_ireland' language=page.get_language %}</p>
+                        <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('countries-ireland') class="filters-block__filter-iconclose">
+                    </div>
+
+            {% endif %}
+        {% endif %}
+        
+        {% if postcode_query|length > 0 %}
+
+                <div class="filters-block__filter-pill">
+                    <p id="postcode-pill" class="filters-block__filter-text"></p>
+                    <img src="{% static 'images/icon-close.svg'%}" onclick=closePostcode() class="filters-block__filter-iconclose">
+                </div>
+
+                <script>
+                    var postcode_pill = document.getElementById('postcode-pill')
+                    postcode_pill.innerHTML = postcode_query[0].toUpperCase() + " " + postcode_pill_text.replace('{}', postcode_query[1])
+                </script>
+        {% endif %}
+
+            <div id="clear-filters" class="filters-block__filter-remove-pill">
+                <p class="filters-block__filter-text">
+                    {% get_translation key='remove_filters' language=page.get_language %}
+                </p>
+                <img src="{% static 'images/icon-close.svg'%}" class="filters-block__filter-iconclose">
+            </div>
+            
+
+    </div>
+{% endif %}

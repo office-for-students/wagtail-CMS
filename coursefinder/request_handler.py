@@ -2,7 +2,7 @@ import requests
 import urllib.parse
 from django.conf import settings
 
-from CMS.test.mocks import SearchMocks
+from CMS.test.mocks.search_mocks import SearchMocks
 
 
 def query_course_and_institution(course, institution, limit, offset, language):
@@ -19,7 +19,17 @@ def query_course_and_institution(course, institution, limit, offset, language):
                             headers=headers)
 
 
-def course_finder_query(subject, institution, countries, postcode, filters, course_query, limit, offset, language):
+def course_finder_query(subject, 
+                        institution, 
+                        countries, 
+                        postcode, 
+                        filters, 
+                        sortBySubject, 
+                        sortBySubjectLimit, 
+                        course_query, 
+                        limit, 
+                        offset, 
+                        language):
     if settings.LOCAL:
         return SearchMocks.get_successful_search_response()
     else:
@@ -41,4 +51,8 @@ def course_finder_query(subject, institution, countries, postcode, filters, cour
             url = f"{url}&postcode={postcode}"
         if filters and filters != '':
             url = f"{url}&filters={filters}"
+        if sortBySubject and sortBySubject == 'true':
+            url = f"{url}&sortBySubject={sortBySubject}"
+            if sortBySubjectLimit and sortBySubjectLimit != '':
+                url = f"{url}&sortBySubjectLimit={sortBySubjectLimit}"
         return requests.get(url=url, headers=headers)
