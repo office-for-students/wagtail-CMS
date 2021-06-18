@@ -17,11 +17,9 @@
     <div tabindex="0" role="button" aria-label="Show content" class="course-finder-results__result-accordion-header">
         <div class="course-finder-results__result-accordion-heading">
             <h2 id='{{ title }}-accordionHeader' style="max-width: 440px;" class="course-finder-results__result-accordion-title">{{ title }}</h2>
-            {% comment %}
             <p style="margin-top: auto; margin-bottom: auto; " class="course-finder-results__result-accordion-overview">
                 {{ number_of_courses }} {% get_translation key='courses' language=page.get_language %}
             </p>            
-            {% endcomment %}
         </div>
 
         <div class="expand">
