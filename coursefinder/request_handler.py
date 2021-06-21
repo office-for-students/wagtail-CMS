@@ -1,3 +1,4 @@
+import os
 import requests
 import urllib.parse
 from django.conf import settings
@@ -55,4 +56,8 @@ def course_finder_query(subject,
             url = f"{url}&sortBySubject={sortBySubject}"
             if sortBySubjectLimit and sortBySubjectLimit != '':
                 url = f"{url}&sortBySubjectLimit={sortBySubjectLimit}"
-        return requests.get(url=url, headers=headers)
+            timeout = (3.05, int(os.environ.get('RESPONSE_TIMEOUT_SORT_BY_SUBJECT', 120)))
+        else:
+            timeout = (3.05, int(os.environ.get('RESPONSE_TIMEOUT_DEFAULT', 60)))
+
+        return requests.get(url=url, headers=headers, timeout=timeout)
