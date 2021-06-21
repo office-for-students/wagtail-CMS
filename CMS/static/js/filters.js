@@ -450,9 +450,10 @@ function toggleDistance(distance_checked, campus_checked) {
             disable_countries.attr('disabled', false);
             disable_postcode.attr('disabled', false);
 
-            if(!($('[name="postcode"]').val()) || (!($('[name="distance"]').val()))){
+            if($('.filters-block__filter-radio-postcode').is(":checked") && ((!($('[name="postcode"]').val())) || (!($('[name="distance"]').val())))){
                 $('.filters-block__submit-btn').css('background-color', "grey"); 
                 $('.filters-block__submit-btn').prop('disabled', true);
+
             }
 
             if(!($('[name="postcode"]').val())){
@@ -478,7 +479,7 @@ function toggleDistance(distance_checked, campus_checked) {
             disable_countries.attr('disabled', false);
             disable_postcode.attr('disabled', false);
 
-            if(!($('[name="postcode"]').val()) || (!($('[name="distance"]').val()))){
+            if($('.filters-block__filter-radio-postcode').is(":checked") && ((!($('[name="postcode"]').val())) || (!($('[name="distance"]').val())))){
                 $('.filters-block__submit-btn').css('background-color', "grey"); 
                 $('.filters-block__submit-btn').prop('disabled', true);
             }
