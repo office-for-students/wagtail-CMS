@@ -10,7 +10,7 @@
         if(distance === "Course is only available through distance learning" ){
             distance_array.push("distance")
         }
-        if(distance === "Course is optionally available through distance learning" && '{{filter_form.countries_query}}'.includes(country) === false){
+        else if(distance === "Course is optionally available through distance learning" && "{{postcode_query}}" === "{}" && "{{filter_form.countries_query}}".includes(country) === false){
             distance_array.push("distance")
         }
         else{
