@@ -88,9 +88,10 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
 
     institution_query = '@'.join(query_params.getlist('institution_query')) if 'institution_query' in query_params else None
     
-    postcode = query_params.getlist('postcode') if 'postcode' in query_params else None
-    distance_query = query_params.getlist('distance') if 'distance' in query_params else None
-    postcode_query = ','.join(postcode + distance_query) if 'postcode' and 'distance' in query_params else None
+    postcode = query_params.get('postcode') if 'postcode' in query_params else None
+    distance_query = query_params.get('distance') if 'distance' in query_params else None
+    postcode_query = (postcode + ',' + distance_query) if postcode and distance_query else {}
+
     sort_by_subject_enabled = query_params.get('sort_by_subject', 'false')
     sort_by_subject_limit = int(os.environ.get('SORT_BY_SUBJECT_LIMIT', 5000))
     count = sort_by_subject_limit if sort_by_subject_enabled == 'true' else 20
@@ -140,7 +141,7 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         'filters': filters,
         'postcode_query': postcode_query,
         'sort_by_subject_enabled': sort_by_subject_enabled,
-        'sort_by_subject_limit': sort_by_subject_limit,        
+        'sort_by_subject_limit': sort_by_subject_limit,  
     })
 
     return render(request, 'coursefinder/course_finder_results.html', context)
