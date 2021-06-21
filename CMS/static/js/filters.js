@@ -432,6 +432,7 @@
 
 function toggleDistance(distance_checked, campus_checked) {
     var disable_countries = $('input[name=countries_check]');
+    var disable_radio = $('input[name=location_radio]');
     var disable_postcode = $('.postcode-fieldset')
     var distance_checked_mobile = document.getElementsByClassName('distance')[1].checked;
     var campus_checked_mobile = document.getElementsByClassName('campus')[1].checked;
@@ -440,6 +441,7 @@ function toggleDistance(distance_checked, campus_checked) {
         if(distance_checked && campus_checked == false){
             $(".message").css( "display", "block" )
             disable_countries.attr('disabled', 'disabled');
+            disable_radio.attr('disabled', 'disabled');
             disable_postcode.attr('disabled', 'disabled');
             disable_postcode.css('border', '1px solid grey')
             $('.filters-block__submit-btn').prop('disabled', false);
@@ -448,11 +450,13 @@ function toggleDistance(distance_checked, campus_checked) {
         else{
             $(".message").css( "display", "none" )
             disable_countries.attr('disabled', false);
+            disable_radio.attr('disabled', false);
             disable_postcode.attr('disabled', false);
 
-            if(!($('[name="postcode"]').val()) || (!($('[name="distance"]').val()))){
+            if($('.filters-block__filter-radio-postcode').is(":checked") && ((!($('[name="postcode"]').val())) || (!($('[name="distance"]').val())))){
                 $('.filters-block__submit-btn').css('background-color', "grey"); 
                 $('.filters-block__submit-btn').prop('disabled', true);
+
             }
 
             if(!($('[name="postcode"]').val())){
@@ -468,6 +472,7 @@ function toggleDistance(distance_checked, campus_checked) {
         if(distance_checked_mobile && campus_checked_mobile == false){
             $(".message").css( "display", "block" )
             disable_countries.attr('disabled', 'disabled');
+            disable_radio.attr('disabled', 'disabled');
             disable_postcode.attr('disabled', 'disabled');
             $('.filters-block__submit-btn').prop('disabled', false);
             $('.filters-block__submit-btn').css('background-color', "#8e3b74"); 
@@ -476,9 +481,10 @@ function toggleDistance(distance_checked, campus_checked) {
         else {
             $(".message").css( "display", "none" )
             disable_countries.attr('disabled', false);
+            disable_radio.attr('disabled', false);
             disable_postcode.attr('disabled', false);
 
-            if(!($('[name="postcode"]').val()) || (!($('[name="distance"]').val()))){
+            if($('.filters-block__filter-radio-postcode').is(":checked") && ((!($('[name="postcode"]').val())) || (!($('[name="distance"]').val())))){
                 $('.filters-block__submit-btn').css('background-color', "grey"); 
                 $('.filters-block__submit-btn').prop('disabled', true);
             }
@@ -567,21 +573,41 @@ $(document).ready(function() {
         }
     });
 });
+
+
+//Check on load whether the postcode radio button is checked and then display the postcode div if true.
+//Make sure borders of inputs aren't red as these will have to be prefilled anyway.
+$(document).ready(function() {
+    if($('.filters-block__filter-radio-postcode').is(":checked")){
+        $('.region-div').css( "display", "none" );
+        $('.filters-block__filter-postcode-div').css( "display", "flex" );    
+        $('[name="countries_query"]').prop('disabled', true);
+        $('[name="distance"]').prop('disabled', false);
+        $('[name="postcode"]').prop('disabled', false);
+        $('[name="postcode"]').css( "border", "1px solid #595959" )
+        $('[name="distance"]').css( "border", "1px solid #595959" )
+    }
+});
 //function to check whether distance is checked on page load and to disable the location filters if it is.
 $(document).ready(function() {
     var disable_input = $('input[name=countries_check]');
+    var disable_radio = $('input[name=location_radio]');
     if($('.distance').is(":checked") == true && $('.campus').is(":checked") == false){
         disable_input.attr('disabled', 'disabled');
+        disable_radio.attr('disabled', 'disabled')
         $(".message").css( "display", "block" )
     }
 });
 
 $(document).ready(function(){
     $('#clear-filters').click(function(){
+        $('.filters-block__filter-radio-region').prop('checked', true)
         $('#countries-england').prop('checked', false);
         $('#countries-ireland').prop('checked', false);
         $('#countries-scotland').prop('checked', false);
         $('#countries-wales').prop('checked', false);
+        $('[name="distance"]').val('')
+        $('[name="postcode"]').val('')
 
         $('#mode-full-time').prop('checked', false);
         $('#mode-part-time').prop('checked', false);
