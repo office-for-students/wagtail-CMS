@@ -459,11 +459,11 @@ function toggleDistance(distance_checked, campus_checked) {
 
             }
 
-            if(!($('[name="postcode"]').val())){
+            if(!($('[name="postcode"]').val()) && $('[name="distance"]').val()){
                 $('[name="postcode"]').css( "border", "1px solid red" )
             }
 
-            if(!($('[name="distance"]').val())){
+            if(!($('[name="distance"]').val()) && $('[name="postcode"]').val()){
                 $('[name="distance"]').css( "border", "1px solid red" )
             }
         }
@@ -489,11 +489,11 @@ function toggleDistance(distance_checked, campus_checked) {
                 $('.filters-block__submit-btn').prop('disabled', true);
             }
 
-            if(!($('[name="postcode"]').val())){
+            if(!($('[name="postcode"]').val()) && $('[name="distance"]').val()){
                 $('[name="postcode"]').css( "border", "1px solid red" )
             }
 
-            if(!($('[name="distance"]').val())){
+            if(!($('[name="distance"]').val()) && $('[name="postcode"]').val()){
                 $('[name="distance"]').css( "border", "1px solid red" )
             }
         }
@@ -532,7 +532,7 @@ $(document).ready(function() {
             $('[name="postcode"]').prop('disabled', true);  
             $('.filters-block__submit-btn').prop('disabled', false);  
             $('.filters-block__submit-btn').css('background-color', "#8e3b74");       
-       }
+        }
 
        else if($(this).attr('id') == 'postcode') {
             $('.region-div').css( "display", "none" );
@@ -541,31 +541,36 @@ $(document).ready(function() {
             $('[name="distance"]').prop('disabled', false);
             $('[name="postcode"]').prop('disabled', false);
 
-            if(!($('[name="postcode"]').val()) || (!($('[name="distance"]').val()))){
-                $('.filters-block__submit-btn').css('background-color', "grey");
-                $('.filters-block__submit-btn').prop('disabled', true);
+            if($('[name="postcode"]').val() && $('[name="distance"]').val()){
+                $('.filters-block__submit-btn').prop('disabled', false);
+                $('.filters-block__submit-btn').css('background-color', "#8e3b74");
             }
-       }    
-   });
+            else if($('[name="postcode"]').val() !== $('[name="distance"]').val()){
+                $('.filters-block__submit-btn').prop('disabled', true);
+                $('.filters-block__submit-btn').css('background-color', "grey");
+            }
+        }    
+    });
 });
 
 $(document).ready(function() {
    $('.postcode-fieldset').change(function() {
-        if(!($('[name="postcode"]').val()) || (!($('[name="distance"]').val()))){
-            $('.filters-block__submit-btn').prop('disabled', true);
-            $('.filters-block__submit-btn').css('background-color', "grey");
-        }
-        else{
+
+        if($('[name="postcode"]').val() && $('[name="distance"]').val()){
             $('.filters-block__submit-btn').prop('disabled', false);
             $('.filters-block__submit-btn').css('background-color', "#8e3b74");
         }
-        if(!($('[name="postcode"]').val())){
+        else if($('[name="postcode"]').val() !== $('[name="distance"]').val()){
+            $('.filters-block__submit-btn').prop('disabled', true);
+            $('.filters-block__submit-btn').css('background-color', "grey");
+        }
+        if(!($('[name="postcode"]').val()) && $('[name="distance"]').val()){
             $('[name="postcode"]').css( "border", "1px solid red" )
         }
         else{
             $('[name="postcode"]').css( "border", "1px solid #595959" )
         }
-        if(!($('[name="distance"]').val())){
+        if(!($('[name="distance"]').val()) && $('[name="postcode"]').val()){
             $('[name="distance"]').css( "border", "1px solid red" )
         }
         else{
@@ -584,8 +589,8 @@ $(document).ready(function() {
         $('[name="countries_query"]').prop('disabled', true);
         $('[name="distance"]').prop('disabled', false);
         $('[name="postcode"]').prop('disabled', false);
-        $('[name="postcode"]').css( "border", "1px solid #595959" )
-        $('[name="distance"]').css( "border", "1px solid #595959" )
+        $('.filters-block__submit-btn').prop('disabled', false);
+        $('.filters-block__submit-btn').css('background-color', "#8e3b74");
     }
 });
 //function to check whether distance is checked on page load and to disable the location filters if it is.
