@@ -61,6 +61,7 @@
 
             this.submitBtn.click(function(evt) {
                 evt.preventDefault();
+                document.getElementById("sort_by_subject").value = false
                 // that.prepSubjectQuery();
                 // that.prepPostcodeQuery();
                 // that.prepInstitutionQuery();
