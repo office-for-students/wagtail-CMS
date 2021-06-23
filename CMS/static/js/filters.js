@@ -61,6 +61,7 @@
 
             this.submitBtn.click(function(evt) {
                 evt.preventDefault();
+                document.getElementById("sort_by_subject").value = false
                 // that.prepSubjectQuery();
                 // that.prepPostcodeQuery();
                 // that.prepInstitutionQuery();
@@ -541,13 +542,17 @@ $(document).ready(function() {
             $('[name="distance"]').prop('disabled', false);
             $('[name="postcode"]').prop('disabled', false);
 
-            if($('[name="postcode"]').val() && $('[name="distance"]').val()){
+            if(($('[name="postcode"]').val() && $('[name="distance"]').val())){
                 $('.filters-block__submit-btn').prop('disabled', false);
                 $('.filters-block__submit-btn').css('background-color', "#8e3b74");
             }
             else if($('[name="postcode"]').val() !== $('[name="distance"]').val()){
                 $('.filters-block__submit-btn').prop('disabled', true);
                 $('.filters-block__submit-btn').css('background-color', "grey");
+            }
+            else{
+                $('.filters-block__submit-btn').prop('disabled', false);
+                $('.filters-block__submit-btn').css('background-color', "#8e3b74");
             }
         }    
     });
@@ -557,6 +562,10 @@ $(document).ready(function() {
    $('.postcode-fieldset').change(function() {
 
         if($('[name="postcode"]').val() && $('[name="distance"]').val()){
+            $('.filters-block__submit-btn').prop('disabled', false);
+            $('.filters-block__submit-btn').css('background-color', "#8e3b74");
+        }
+        else if($('[name="postcode"]').val() === $('[name="distance"]').val()){
             $('.filters-block__submit-btn').prop('disabled', false);
             $('.filters-block__submit-btn').css('background-color', "#8e3b74");
         }

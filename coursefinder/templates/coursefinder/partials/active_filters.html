@@ -5,12 +5,14 @@
         // if distance learning is the only filter applied, or if you are closing the oncampus filter, and the distance learning is active, all regional filters will be removed also.
         function closeFilter(filter) {  
             document.getElementById(filter).checked = false;
+            document.getElementById("sort_by_subject").value = false
             document.getElementById("filterForm").submit();
         }
 
         function closePostcode(){
             document.getElementById('postcode_field').value = ""
             document.getElementById('postcode-distance').value = ""
+            document.getElementById("sort_by_subject").value = false
             document.getElementById("filterForm").submit();
         }
     </script>
@@ -24,6 +26,7 @@
                     document.getElementById(institutions[i]).checked = true;
                 }
             }
+            document.getElementById("sort_by_subject").value = false
             document.getElementById("filterForm").submit();
         }           
 
@@ -32,11 +35,13 @@
             let course = '{{filter_form.course_query}}';
             let institutions = '{{filter_form.institutions}}'
             document.getElementById('course').value = course;
+            document.getElementById("sort_by_subject").value = false
             document.getElementById("filterForm").submit();
         }
 
         function closeAllInstitutions(){
             $('.inst-chk').prop('checked', false);
+            document.getElementById("sort_by_subject").value = false
             $('.filters-block__form').first().submit();
         }
     </script>
