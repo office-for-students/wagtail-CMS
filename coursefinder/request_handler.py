@@ -2,6 +2,7 @@ import os
 import requests
 import urllib.parse
 from django.conf import settings
+import json
 
 from CMS.test.mocks.search_mocks import SearchMocks
 
@@ -31,6 +32,7 @@ def course_finder_query(subject,
                         limit, 
                         offset, 
                         language):
+    institution_dict = {}
     if settings.LOCAL:
         return SearchMocks.get_successful_search_response()
     else:
@@ -44,8 +46,8 @@ def course_finder_query(subject,
             encoded_course_query = urllib.parse.quote_plus(course_query)
             url = f"{url}&qc={encoded_course_query}"
         if institution and institution != '':
-            encoded_institution_query = urllib.parse.quote_plus(institution)
-            url = f"{url}&institutions={encoded_institution_query}"
+            institution_list = institution.split("@")
+            institution_dict = dict(institutions=institution_list)
         if countries and countries != '':
             url = f"{url}&countries={countries.lower().replace(' ', '_')}"
         if postcode and postcode != '':
@@ -60,4 +62,5 @@ def course_finder_query(subject,
         else:
             timeout = (3.05, int(os.environ.get('RESPONSE_TIMEOUT_DEFAULT', 60)))
 
-        return requests.get(url=url, headers=headers, timeout=timeout)
+            
+        return requests.get(url=url, headers=headers, timeout=timeout, data=json.dumps(institution_dict))
