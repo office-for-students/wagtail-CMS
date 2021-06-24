@@ -3,6 +3,7 @@ import requests
 import urllib.parse
 from django.conf import settings
 import json
+import logging
 
 from CMS.test.mocks.search_mocks import SearchMocks
 
@@ -37,7 +38,8 @@ def course_finder_query(subject,
         return SearchMocks.get_successful_search_response()
     else:
         headers = {
-            'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
+            'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY,
+            'Content-Type': 'application/json'
         }
         url = "%s?limit=%s&offset=%s&language=%s" % (settings.SEARCHAPIHOST, limit, offset, language)
         if subject and subject != '':
@@ -62,5 +64,5 @@ def course_finder_query(subject,
         else:
             timeout = (3.05, int(os.environ.get('RESPONSE_TIMEOUT_DEFAULT', 60)))
 
-            
-        return requests.get(url=url, headers=headers, timeout=timeout, data=json.dumps(institution_dict))
+        
+        return requests.request("POST", url, headers=headers, data=json.dumps(institution_dict))
