@@ -8,46 +8,51 @@
         }            
         function sortBySubject() {  
             $(".spinner-border").show();
+            $(".pagination").hide();
             $(".course-finder-results__result-accordion").hide()
             document.getElementById("sort_by_subject").value = true
             document.getElementById("filterForm").submit()
         }    
         $(document).ready(function() {
             $(".spinner-border").hide();
+            $(".pagination").show();
         });
     </script>
 {% endblock %}
 
-<div class="course-finder-wrapper">   
-    <label class="course-finder-results__heading">
-        {% get_translation key='sort_by' language=page.get_language %}
-    </label>
-    <label id="sort-by-institution" 
-        {% if sort_by_subject_enabled == 'true' %}
-            class="course-finder-results__heading_sort_by_institution" 
-        {% else %}
-            class="course-finder-results__heading_sort_by_institution_selected" 
-        {% endif %} 
-        {% if sort_by_subject_enabled == 'true' %} onClick="sortByInstitution()" {% endif %} >        
-        {% get_translation key='institution_az' language=page.get_language %}
-    </label>
-    <label id="sort-by-subject" 
-        {% if search.total_courses >= sort_by_subject_limit %}  
-            class="course-finder-results__heading_sort_by_subject_disabled"
-        {% elif sort_by_subject_enabled == 'true' %}
-            class="course-finder-results__heading_sort_by_subject_selected" 
-        {% else %}
-            class="course-finder-results__heading_sort_by_subject" 
-        {% endif %} 
-        {% if sort_by_subject_enabled == 'false' and search.total_courses < sort_by_subject_limit %} onClick="sortBySubject()" {% endif %} >
-        {% get_translation key='subject' language=page.get_language %}
-    </label>
+<div class="course-finder-wrapper">
+    <div id="sortPlacement">
+        <label class="course-finder-results__heading">
+            {% get_translation key='sort_by' language=page.get_language %}
+        </label>
+        <label id="sort-by-institution" 
+            {% if sort_by_subject_enabled == 'true' %}
+                class="course-finder-results__heading_sort_by_institution" 
+            {% else %}
+                class="course-finder-results__heading_sort_by_institution_selected" 
+            {% endif %} 
+            {% if sort_by_subject_enabled == 'true' %} onClick="sortByInstitution()" {% endif %} >        
+            {% get_translation key='institution_az' language=page.get_language %}
+        </label>
+        <label id="sort-by-subject" 
+            {% if search.total_courses >= sort_by_subject_limit %}  
+                class="course-finder-results__heading_sort_by_subject_disabled"
+            {% elif sort_by_subject_enabled == 'true' %}
+                class="course-finder-results__heading_sort_by_subject_selected" 
+            {% else %}
+                class="course-finder-results__heading_sort_by_subject" 
+            {% endif %} 
+            {% if sort_by_subject_enabled == 'false' and search.total_courses < sort_by_subject_limit %} onClick="sortBySubject()" {% endif %} >
+            {% get_translation key='subject' language=page.get_language %}
+        </label>
+
     {% if search.total_courses >= sort_by_subject_limit %}  
         <div class="course-finder-results__heading_sort_by_subject_warning" >
             {% get_translation key='filter_sort_by_subject_add_more_filters' language=page.get_language %}
         </div>
+        <script>document.getElementById("sortPlacement").style.marginTop = "-22px"</script>
     {% endif %} 
-
+    </div>
 
     {% include 'coursefinder/partials/active_filters.html' %}
     {% if substitutions.0 == 0 %}
@@ -57,7 +62,7 @@
     {% endif %}	
 
     <div>
-        <div class="spinner-border text-primary" style="display: block; margin-left: auto; margin-right: auto;" role="status" >
+        <div class="spinner-border text-primary" style="display: block; margin-left: auto; margin-right: auto; margin-top: 60px;" role="status" >
         </div>
     </div>
 
