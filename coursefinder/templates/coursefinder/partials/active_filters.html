@@ -20,10 +20,13 @@
     <script>
         function closeCourseQuery(){
             document.getElementById('course_query').value = '';
-            var institutions = '{{filter_form.institutions}}'.split('@')
-            if(institutions[0].length > 1){
-                for (i = 0; i < institutions.length; i++ ){
-                    document.getElementById(institutions[i]).checked = true;
+            var institutions = '{{filter_form.institutions}}'.replace(/&#39;/g, "'")
+            var institutions_format = institutions.replace(/&amp;/g, "&")
+            var institutions_list = institutions_format.split("@")
+
+            if(institutions_list[0].length > 1){
+                for (i = 0; i < institutions_list.length; i++ ){
+                    document.getElementById(institutions_list[i]).checked = true;    
                 }
             }
             document.getElementById("sort_by_subject").value = false
@@ -40,9 +43,11 @@
         }
 
         function closeAllInstitutions(){
+            let course = '{{filter_form.course_query}}';
+            document.getElementById('course').value = course;
             $('.inst-chk').prop('checked', false);
             document.getElementById("sort_by_subject").value = false
-            $('.filters-block__form').first().submit();
+            document.getElementById("filterForm").submit();
         }
     </script>
 
