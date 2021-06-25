@@ -643,6 +643,8 @@ $(document).ready(function(){
         $('#subjectCode option:eq(0)').prop('selected','selected');
         $('#subject_query').val('');
 
+        $('#sort_by_subject').val(false);
+
         $('#postcode_field').val('');
         $("#one").prop('checked', false);
         $("#two").prop('checked', false);
