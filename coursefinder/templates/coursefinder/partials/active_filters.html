@@ -1,9 +1,12 @@
 {% load static discover_uni_tags wagtailcore_tags %}
 
     <script>
+        var total_courses = "{{search.total_courses}}"
+        var sort_by_subject_limit = "{{sort_by_subject_limit}}"
+
         function closeFilter(filter) {  
             document.getElementById(filter).checked = false;
-            if("{{search.total_courses}}" > "{{sort_by_subject_limit}}"){
+            if(total_courses > sort_by_subject_limit){
                 document.getElementById("sort_by_subject").value = false
             }
             document.getElementById("filterForm").submit();
@@ -12,20 +15,18 @@
         function closePostcode(){
             document.getElementById('postcode_field').value = ""
             document.getElementById('postcode-distance').value = ""
-            if("{{search.total_courses}}" > "{{sort_by_subject_limit}}"){
+            if(total_courses > sort_by_subject_limit){
                 document.getElementById("sort_by_subject").value = false
             }
             document.getElementById("filterForm").submit();
         }
-    </script>
 
-    <script>
         function closeCourseQuery(){
             document.getElementById('course_query').value = '';
             var institutions = '{{filter_form.institutions}}'.replace(/&#39;/g, "'")
             var institutions_format = institutions.replace(/&amp;/g, "&")
             var institutions_list = institutions_format.split("@")
-            if("{{search.total_courses}}" > "{{sort_by_subject_limit}}"){
+            if(total_courses > sort_by_subject_limit){
                 document.getElementById("sort_by_subject").value = false
             }
 
@@ -42,7 +43,7 @@
             let course = '{{filter_form.course_query}}';
             let institutions = '{{filter_form.institutions}}'
             document.getElementById('course').value = course;
-            if("{{search.total_courses}}" > "{{sort_by_subject_limit}}"){
+            if(total_courses > sort_by_subject_limit){
                 document.getElementById("sort_by_subject").value = false
             }
             document.getElementById("filterForm").submit();
@@ -52,7 +53,7 @@
             let course = '{{filter_form.course_query}}';
             document.getElementById('course').value = course;
             $('.inst-chk').prop('checked', false);
-            if("{{search.total_courses}}" > "{{sort_by_subject_limit}}"){
+            if(total_courses > sort_by_subject_limit){
                 document.getElementById("sort_by_subject").value = false
             }
             document.getElementById("filterForm").submit();
