@@ -2,7 +2,7 @@ from django.test import tag
 from unittest.mock import patch
 
 from CMS.test.factories import PageFactory
-from CMS.test.mocks import SearchMocks
+from CMS.test.mocks.search_mocks import SearchMocks
 from CMS.test.utils import UniSimpleTestCase
 from coursefinder.models import CourseSearch, CourseFinderChooseCountry, CourseFinderModeOfStudy, \
     CourseFinderChooseSubject, CourseFinderNarrowSearch, CourseFinderPostcode, CourseFinderSummary, \
@@ -10,6 +10,7 @@ from coursefinder.models import CourseSearch, CourseFinderChooseCountry, CourseF
 from coursefinder.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
     choose_subject_sibling_finder, narrow_search_sibling_finder, postcode_sibling_finder, summary_sibling_finder, \
     results_sibling_finder
+from coursefinder.views import build_study_mode_filter
 from errors.models import ApiError
 from site_search.models import SearchLandingPage
 
@@ -136,7 +137,7 @@ class CourseFinderModelsTests(UniSimpleTestCase):
 
     def test_course_finder_search_execute_function_appends_counts_and_list_of_courses_to_model_on_success(self):
         mock_data = SearchMocks.get_search_response_content()
-        course_finder_search = CourseFinderSearch("Computing", None, None, None, None, None, 1, 20)
+        course_finder_search = CourseFinderSearch("Computing", None, None, None, None, None, None, None, 1, 20)
         error = course_finder_search.execute()
         self.assertIsNone(error)
         self.assertEquals(course_finder_search.total_courses, mock_data.get('total_number_of_courses'))
@@ -147,7 +148,7 @@ class CourseFinderModelsTests(UniSimpleTestCase):
     @patch('coursefinder.request_handler.course_finder_query',
            return_value=SearchMocks.get_unsuccessful_search_response())
     def test_course_finder_search_execute_function_returns_error_on_failure(self, mock_search):
-        course_finder_search = CourseFinderSearch("Computing", None, None, None, None, None, 1, 20)
+        course_finder_search = CourseFinderSearch("Computing", None, None, None, None, None, None, None, 1, 20)
         error = course_finder_search.execute()
         self.assertIsNone(course_finder_search.total_courses)
         self.assertIsNone(course_finder_search.total_institutions)
@@ -544,3 +545,67 @@ class CourseFinderUtilsTests(UniSimpleTestCase):
         country_finder = PageFactory.create_country_finder_page(title='Country Finder')
         output = results_sibling_finder(country_finder)
         self.assertIsNone(output)
+
+
+    def test_build_study_mode_filter_when_no_params(self):
+        params = []
+        expected = ''
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)
+
+
+    def test_build_study_mode_filter_when_full_and_part_time_selected(self):
+        params = ['Full-time', 'Part-time']
+        expected = ''
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)        
+
+
+    def test_build_study_mode_filter_when_full_time_selected(self):
+        params = ['Full-time']
+        expected = 'full_time'
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)   
+
+
+    def test_build_study_mode_filter_when_part_time_selected(self):
+        params = ['Part-time']
+        expected = 'part_time'
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)   
+
+
+    def test_build_study_mode_filter_when_distance_selected(self):
+        params = ['Distance learning']
+        expected = 'distance_learning'
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)   
+
+
+    def test_build_study_mode_filter_when_full_time_and_distance_selected(self):
+        params = ['Full-time', 'Distance learning'] 
+        expected = 'full_time,distance_learning'
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)   
+
+
+    def test_build_study_mode_filter_when_part_time_and_distance_selected(self):
+        params = ['Part-time', 'Distance learning']    
+        expected = 'part_time,distance_learning'
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)   
+
+
+    def test_build_study_mode_filter_when_full_and_part_time_and_distance_selected(self):
+        params = ['Full-time', 'Part-time', 'Distance learning']    
+        expected = 'distance_learning'
+
+        actual = build_study_mode_filter(params)
+        self.assertEquals(actual, expected)   

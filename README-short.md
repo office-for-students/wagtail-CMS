@@ -5,7 +5,7 @@ The purpose of this document is to try an simplify the dev start-up process, in 
 - introduce a virtual environment, of use when running tests outside of docker
 - use a default `docker-compose.yml` file suitable for dev
 - use a `docker-compose.non-dev.yml` file that does not contain Mongo for non-dev
-- use docker `.env` files to store local environment variables (https://github.com/xni06/ofs-secrets.git)
+- use docker `.env` files to store local environment variables (https://gitlab.mgmt.mobilise.cloud/mobilise-dev/ofs-secrets)
 - easier and quicker to read/digest
 
 _Note that the original `docker-compose.yml.example` is maintained for CI but ideally `docker-compose.non-dev.yml` should be used in future._
