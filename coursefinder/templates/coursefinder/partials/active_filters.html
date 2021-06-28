@@ -1,35 +1,40 @@
 {% load static discover_uni_tags wagtailcore_tags %}
 
     <script>
-        // a function to select the value the passed in value for study_mode and set it to null
-        // if distance learning is the only filter applied, or if you are closing the oncampus filter, and the distance learning is active, all regional filters will be removed also.
+        const total_courses = "{{search.total_courses}}"
+        const sort_by_subject_limit = "{{sort_by_subject_limit}}"
+
         function closeFilter(filter) {  
             document.getElementById(filter).checked = false;
-            document.getElementById("sort_by_subject").value = false
+            if(total_courses > sort_by_subject_limit){
+                document.getElementById("sort_by_subject").value = false
+            }
             document.getElementById("filterForm").submit();
         }
 
         function closePostcode(){
             document.getElementById('postcode_field').value = ""
             document.getElementById('postcode-distance').value = ""
-            document.getElementById("sort_by_subject").value = false
+            if(total_courses > sort_by_subject_limit){
+                document.getElementById("sort_by_subject").value = false
+            }
             document.getElementById("filterForm").submit();
         }
-    </script>
 
-    <script>
         function closeCourseQuery(){
             document.getElementById('course_query').value = '';
             var institutions = '{{filter_form.institutions}}'.replace(/&#39;/g, "'")
             var institutions_format = institutions.replace(/&amp;/g, "&")
             var institutions_list = institutions_format.split("@")
+            if(total_courses > sort_by_subject_limit){
+                document.getElementById("sort_by_subject").value = false
+            }
 
             if(institutions_list[0].length > 1){
                 for (i = 0; i < institutions_list.length; i++ ){
                     document.getElementById(institutions_list[i]).checked = true;    
                 }
             }
-            document.getElementById("sort_by_subject").value = false
             document.getElementById("filterForm").submit();
         }           
 
@@ -38,7 +43,9 @@
             let course = '{{filter_form.course_query}}';
             let institutions = '{{filter_form.institutions}}'
             document.getElementById('course').value = course;
-            document.getElementById("sort_by_subject").value = false
+            if(total_courses > sort_by_subject_limit){
+                document.getElementById("sort_by_subject").value = false
+            }
             document.getElementById("filterForm").submit();
         }
 
@@ -46,7 +53,9 @@
             let course = '{{filter_form.course_query}}';
             document.getElementById('course').value = course;
             $('.inst-chk').prop('checked', false);
-            document.getElementById("sort_by_subject").value = false
+            if(total_courses > sort_by_subject_limit){
+                document.getElementById("sort_by_subject").value = false
+            }
             document.getElementById("filterForm").submit();
         }
     </script>
