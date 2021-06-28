@@ -1,8 +1,8 @@
 {% load static discover_uni_tags wagtailcore_tags %}
 
     <script>
-        var total_courses = "{{search.total_courses}}"
-        var sort_by_subject_limit = "{{sort_by_subject_limit}}"
+        const total_courses = "{{search.total_courses}}"
+        const sort_by_subject_limit = "{{sort_by_subject_limit}}"
 
         function closeFilter(filter) {  
             document.getElementById(filter).checked = false;
