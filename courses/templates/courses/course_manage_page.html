@@ -13,8 +13,16 @@
 {% block content %}
 <script>
     let checked_bookmark = 0
+    var id_list = []
 
-    function compareButtonFormat(checked){
+    if(localStorage.getItem('compareCourses')){
+        var compare_list = JSON.parse(localStorage.getItem('compareCourses'))  
+    }
+    else{
+        var compare_list = []
+    }
+
+    function compareButtonFormat(checked, id){
         var compare_button = document.getElementById('compare-courses-button')
         var compare_text = document.getElementById('bookmark-text')
         var courses_selected = document.getElementById('courses-selected')
@@ -49,17 +57,73 @@
             compare_button.classList.remove("enabled")
             compare_text.innerHTML = "Select at least 2 courses to compare"    
         }
+
+
+        if(checked){
+            compare_list.push({"id": id, "rating": 0})
+            localStorage.setItem('compareCourses', JSON.stringify(compare_list));
+        }
+        else{
+            for(var i = 0; i < compare_list.length; i++) {
+                if(compare_list[i].id === id){
+                    index = compare_list.indexOf(compare_list[i])
+                    compare_list.splice(index, 1)
+                }
+            }
+        }
+    }
+
+    function buttonFormat(){
+        console.log(checked_bookmark)
+        var compare_button = document.getElementById('compare-courses-button')
+        var compare_text = document.getElementById('bookmark-text')
+        var courses_selected = document.getElementById('courses-selected')
+
+        if(checked_bookmark >= 1){
+            courses_selected.innerHTML = "<strong>" + checked_bookmark + "</strong> course(s) selected"
+        }
+        else{
+            courses_selected.innerHTML = ""
+        }
+        if(2 <= checked_bookmark && checked_bookmark <= 7){
+            compare_button.classList.add("enabled")
+            compare_button.disabled = false
+            compare_text.innerHTML = "Select up to 7 courses to compare"
+            courses_selected.classList.remove("red")
+        }
+        else if(7 < checked_bookmark){
+            courses_selected.classList.add("red")
+            compare_button.classList.remove("enabled")
+            compare_button.disabled = true
+        }
+        else{
+            compare_button.disabled = true
+            compare_button.classList.remove("enabled")
+            compare_text.innerHTML = "Select at least 2 courses to compare"    
+        }
+    }
+
+    function checkSelectedOnLoad(id){
+        for(var i = 0; i < compare_list.length; i++) {
+            
+                if(id.includes(compare_list[i].id)){
+                    var index = id.indexOf(compare_list[i].id)
+                    document.getElementById(id[index]).checked = true
+                    checked_bookmark += 1
+                }
+            }
     }
 
     function savedInstitutions(){
-        
         var saved_institutions = JSON.parse(localStorage.getItem("comparisonCourses"));
         for(i in saved_institutions){
             containing_div = document.getElementById("institution-bookmark");
-            let courseId = saved_institutions[i].uniId + ',' + saved_institutions[i].courseId + ',' + saved_institutions[i].mode.en
+            let courseId = saved_institutions[i].courseId
+            id_list.push(courseId)
+            let query = saved_institutions[i].uniId + ',' + courseId + ',' + saved_institutions[i].mode.en
             containing_div.innerHTML += `
             <div style="display:flex; align-items:center;">
-                <input id=${i}-bookmarked class="bookmark-check" style="margin-right: 95px; margin-bottom:auto; margin-top: 40px" name="courses" type="checkbox" onchange="compareButtonFormat(checked)" value="${courseId}">
+                <input id="${courseId}" class="bookmark-check" style="margin-right: 95px; margin-bottom:auto; margin-top: 40px" name="courses"  type="checkbox" {% if courseId in compare_list %}checked{% endif %} onchange="compareButtonFormat(checked, id)" value="${query}">
                 <div id='course-${i}' class='bookmark__course'>
                     <a href='' class='bookmark__course-name'></a>
                     <p class="bookmark__course-info length">
@@ -92,6 +156,7 @@
                 </div>
             </div>`
         }
+        checkSelectedOnLoad(id_list)
     }
 </script>
 
@@ -133,6 +198,7 @@
         </form>
         <script>
             savedInstitutions();
+            buttonFormat();
         </script>
     </div>
 {% endblock %}
