@@ -12,14 +12,27 @@
 .course-detail__headline_stat{
     display: none;
 }
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  color: black;
+  cursor: pointer;
+  content: ☆;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating:hover {
+   content: "★";
+   color: orange;
+   
+}
 .comparison {
     padding: 5px 5px 5px 5px;
     font-family: "Nunito Sans", sans-serif;
-    background-color: #1F283A;
-    background: -webkit-linear-gradient(top, #1F283A 170px , $white 170px); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom, #1F283A 170px, $white 170px); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom, #1F283A 170px, $white 170px); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom, #1F283A 170px , $white 170px); /* Standard syntax */
     padding-bottom:0;
     color:$white;
 
@@ -54,6 +67,49 @@
         }
         
     }
+
+    &__top-container{
+        position: relative; 
+        margin-bottom: 100px; 
+        position: relative;
+
+        &-add-btn{
+            display: inline-block; 
+            position: relative;
+
+            &-add-courses-button{
+                width: 210px;
+                height: 40px;
+                margin: 48px 16px 6.5px 0px;
+                border: 0px;
+                border-radius: 20px;
+                background-image: linear-gradient(281deg, #308282, #4ea27d);
+                color: white;
+                font-family: "Nunito Sans", sans-serif;
+                font-size: 16px;
+                font-weight: bold;
+                position: relative;
+                top: 100%;
+                transform: translate(0%, -100%);
+            }
+
+            &-compare-text{
+                display: inline-block; 
+                color: #5d5d5d; 
+                vertical-align: top; 
+                margin-top:18px;
+            }
+        }
+
+        &-need-help-box{
+            display: inline-block; 
+            color: black; 
+            background-color: #f4f8f8; 
+            float: right; 
+            padding: 20px;
+        }
+    }
+
 
     &__course-count {
         @include m-heading--bold-mixin();
@@ -96,14 +152,15 @@
     }
 
     &__heading {
-        font-size:1.3rem;
+        font-size: 32px !important;
         text-align: left;
-        color: $black;
+        color: #5d5d5d;
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
-        letter-spacing: normal;      
+        letter-spacing: normal; 
+        margin-bottom: 48px;     
     }
 
     &__courses {
@@ -182,6 +239,45 @@
     }
 
     .course-detail {
+
+        &__course{
+            &-container{
+                display: flex; 
+                flex-direction: row; 
+                justify-content: center; 
+                align-items: center; 
+                height: 140px;
+            }
+            &-selected{
+                color: black; 
+                margin-bottom: auto; 
+                margin-top: 10px; 
+                margin-right: auto; 
+                width: 250px;
+            }
+        }
+
+        &__courses{
+            &-container{
+                background-color: #f2f2f2;
+                margin: 48px 4px 48px 4px;
+                padding: 16px;
+            }
+
+            &-name{
+                margin: 16px 0;
+                font-family: "Nunito Sans", sans-serif;
+                font-size: 18px;
+                color: #1e1e1e;
+            }
+
+            &-institution-name{
+                margin: 16px 0 0;
+                font-family: "Nunito Sans", sans-serif;
+                font-size: 16px;
+                color: #595959
+            }
+        }
 
         &__compare-btn {
             display: none;

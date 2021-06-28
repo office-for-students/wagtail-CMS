@@ -31,6 +31,7 @@
 {% endblock %}
 
 {% block content %}
+
     <div class="d-block d-sm-none comparison__xs-rotate mb-sm-4 course-comparison-body">
         <div class="mx-auto p-4">
             <div class="row my-3">
@@ -45,26 +46,43 @@
         </div>
     </div>
     <div class="comparison d-none d-sm-block mb-5">
-        <div class="row mx-0">
-            <div class="col-8 pl-4 overflow-visible pr-0">
-                <div class="comparison__overview">
-                    <h1 class="">
-                        <span class="count"></span> {{page.heading}} {{page.lead}}
-                    </h1>
-                </div>
-            </div>
-            <div class="col-4 p-0 text-right pr-2">
-                <img class="comparison__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
-            </div>
-        </div>
         
-    
+        
+
         <div class="comparison__body pt-1">
-            
-            <h2 class="comparison__heading px-3 pt-3">
+
+            <h2 class="comparison__heading">
                 {{page.compare_heading}}
             </h2>
 
+            <div class="comparison__top-container">
+                <div class="comparison__top-container-add-btn" style="">
+                        <a href="/bookmark-manage/">
+                            <button class="comparison__top-container-add-btn-add-courses-button">
+                                <span style="font-size:20px;">+</span> <span style="padding-left: 10px;">Add saved course</span>
+                            </button> 
+                        </a>
+                    </form>
+                    <p class="comparison__top-container-add-btn-compare-text" style="display: inline-block;">Compare up to 7 courses</p>
+                </div>
+                <div class="comparison__top-container-need-help-box">
+                    <h4>Need help choosing?</h4>
+                    <p>Search our guidelines for help making the best decision for you.</p>
+                    <p style="margin-bottom: 0px;">Go to Information and advice</p>
+                </div>
+
+            </div>
+            <div class="course-detail__course-container">
+                {% if courses_array %}
+                    <div class="course-detail__course-selected">
+                        {{courses_array|length}} courses selected
+                    </div>
+                        {% for course in courses_array %}
+                            {% include 'courses/partials/course_comparison_overview.html' %}
+                        {% endfor %}
+                {% endif %}
+            </div>
+    
             <div class="comparison__courses course-detail">
                 <div class="comparison__course-columns">
                     <div class="comparison__course-column">
@@ -74,12 +92,6 @@
                                     <option value="na" disabled selected>{% get_translation key='select_course' language=page.get_language %}</option>
                                 </select>
                             </div>  
-                            {% if courses_array %}
-                                {% for course in courses_array %}
-                                    {% include 'courses/partials/base_gradient.html' %}
-                                        {% include 'courses/partials/comparison_course_overview.html' with course=course %}
-                                {% endfor %}
-                            {% endif %}
                             
                             {% if course1 %}
                                 {% include 'courses/partials/base_gradient.html' %}

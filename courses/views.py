@@ -302,6 +302,7 @@ def compare_courses(request, language=enums.languages.ENGLISH):
         'english_url': english_url,
         'welsh_url': welsh_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
+        'get_params': get_params
     })
 
     return render(request, 'courses/course_comparison_page.html', context)
