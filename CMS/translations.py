@@ -207,6 +207,10 @@ DICT = {
         'en': 'Compare',
         'cy': 'Cymharu'
     },
+    'course_comparison_link': {
+        'en': './course-comparison/',
+        'cy': './cymharu-cyrsiau/'
+    },
     'courses_to_view':{
         'en': 'to view saved courses side-by-side',
         'cy': 'i weld cyrsiau a gadwyd ochr wrth ochr'
