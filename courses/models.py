@@ -703,6 +703,7 @@ class Course:
         response = request_handler.load_course_data(institution_id, course_id, cls.get_mode_code(mode))
 
         if type(response) == requests.models.Response:
+            print("response ", response)
             if response.ok:
                 course = cls(response.json(), language)
             else:
