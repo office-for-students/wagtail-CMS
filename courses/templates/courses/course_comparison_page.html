@@ -151,7 +151,8 @@
                     <div class="course-detail__course-selected">
                         {{courses_array|length}} courses selected
                     </div>
-                    <form id="compareForm" method="GET" action="/course-comparison/">
+
+                    <form id="compareForm" method="GET" action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
                         <div id="hiddenCourseCompare"></div>
                     </form>
                         {% for course in courses_array %}
