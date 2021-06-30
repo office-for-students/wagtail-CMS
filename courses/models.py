@@ -463,27 +463,6 @@ class Course:
                 for leo5_salary_sector in course_details.get('leo5_salary_sector'):
                     self.leo5_salaries_sector.append(SectorSalary(leo5_salary_sector, self.display_language, self.country.code))
 
-            # self.salaries_inst = []
-            # if course_details.get('go_salary_inst_single'):
-            #     self.salaries_inst.append(Salary(course_details.get('go_salary_inst_single'), self.display_language))
-            #     self.summary_med_sal_value = Salary(course_details.get('go_salary_inst_single'), self.display_language).med
-            #     self.summary_med_sal_text_trans_key = "average_earnings_course_overview_2a"
-            # if course_details.get('leo3_inst_single'):
-            #     self.salaries_inst.append(Salary(course_details.get('leo3_inst_single'), self.display_language))
-            #     if self.summary_med_sal_value == "no_data":
-            #         self.summary_med_sal_value = Salary(course_details.get('leo3_inst_single'), self.display_language).med
-            #         self.summary_med_sal_text_trans_key = "average_earnings_course_overview_2b"
-            # if course_details.get('leo5_inst_single'):
-            #     self.salaries_inst.append(Salary(course_details.get('leo5_inst_single'), self.display_language))
-            #
-            # self.salaries_sector = []
-            # if course_details.get('go_salary_sector_single'):
-            #     self.salaries_sector.append(SectorSalary(course_details.get('go_salary_sector_single'), self.display_language))
-            # if course_details.get('leo3_salary_sector_single'):
-            #     self.salaries_sector.append(SectorSalary(course_details.get('leo3_salary_sector_single'), self.display_language))
-            # if course_details.get('leo5_salary_sector_single'):
-            #     self.salaries_sector.append(SectorSalary(course_details.get('leo5_salary_sector_single'), self.display_language))
-
             if course_details.get('country')['code'] == 'XG':
                 self.is_ni_provider = True
             else:
@@ -513,42 +492,6 @@ class Course:
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
-
-
-    # def display_no_entry_info_1(self):
-    #     unavailable = {}
-
-    #     if self.display_language == enums.languages.ENGLISH:
-    #         unavailable["reason"] = "Sorry, there is no data available for this course.\n\nThis may be because the course size is too small. This does not reflect on the quality of the course."
-    #     else:
-    #         unavailable["reason"] = "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
-
-    #     unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
-
-    #     return unavailable
-    # def display_no_entry_info_2(self):
-    #     unavailable = {}
-
-    #     if self.display_language == enums.languages.ENGLISH:
-    #         unavailable["reason"] = "Sorry, there is no data available for this course.\n\nThis may be because the course size is too small. This does not reflect on the quality of the course."
-    #     else:
-    #         unavailable["reason"] = "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
-
-    #     unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
-
-    #     return unavailable
-    # def display_no_entry_info_3(self):
-    #     unavailable = {}
-
-    #     if self.display_language == enums.languages.ENGLISH:
-    #         unavailable["reason"] = "Sorry, there is no data available for this course.\n\nThis may be because the course size is too small. This does not reflect on the quality of the course."
-    #     else:
-    #         unavailable["reason"] = "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
-
-    #     unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
-
-    #     return unavailable
-
 
 
     def display_no_data(self):
@@ -703,7 +646,6 @@ class Course:
         response = request_handler.load_course_data(institution_id, course_id, cls.get_mode_code(mode))
 
         if type(response) == requests.models.Response:
-            print("response ", response)
             if response.ok:
                 course = cls(response.json(), language)
             else:
