@@ -9,6 +9,7 @@ from CMS.enums import enums
 from CMS.translations import DICT
 from core.utils import get_new_landing_page_for_language
 from core.utils import get_page_for_language
+from courses import preprocessors
 from courses.models import Course
 from courses.models import CourseComparisonPage
 from courses.models import CourseDetailPage
@@ -267,19 +268,16 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
 
 
 def compare_courses(request, language=enums.languages.ENGLISH):
-    get_params = request.GET
-    error1 = None
-    error2 = None
+    url_params = request.GET
+    page = get_page_for_language(language, CourseComparisonPage.objects.all())
+
+    if not page:
+        return render(request, '404.html')
 
     courses_array = []
 
-    courses_list = get_params.getlist('courses') if 'courses' in get_params else None
+    courses_list = url_params.getlist('courses') if 'courses' in url_params else None
 
-    # Can delete these once we have finished setting up the array with the accordions
-    course1_params = get_params.get('course1').split(',') if 'course1' in get_params else None
-    course2_params = get_params.get('course2').split(',') if 'course2' in get_params else None
-
-    # Remove the if condition and just have a loop once we are done with the old code.
     if courses_list:
         for course in courses_list:
             if course:
@@ -291,61 +289,22 @@ def compare_courses(request, language=enums.languages.ENGLISH):
                     redirect_page = get_new_landing_page_for_language(language)
                     return redirect(redirect_page + '?load_error=true&error_type=0')
 
-                print(course)
-                # Create course mode label as we want it presented in template
-                course.mode.label = translations.presentable_course_detail_mode_label(
-                    course.mode.label,
-                    language
-                )
-                print(f"course.locations_list {type(course.all_locations)}")
-                print(f"course.locations {course.locations}")
-                # Create length label as we want to present it
-                course.length.label = translations.presentable_course_detail_length_label(
-                    course.length.label,
-                    language)
-
-                # Create Placement year label
-                course.sandwich_year.label = translations.presentable_course_placement_year(
-                    course.sandwich_year.label,
-                    language
-                )
-
-                # Create year abroad label
-                course.year_abroad.label = translations.presentable_year_abroad(course.year_abroad.label, language)
-                print(f"course.distance_learning.display_label {course.year_abroad.label}")
-
                 courses_array.append(course)
 
-
-
-    page = get_page_for_language(language, CourseComparisonPage.objects.all())
-
-    # Can delete these once we have finished setting up the array with the accordions
-    if course1_params:
-        course1, error1 = Course.find(course1_params[0], course1_params[1], course1_params[2], language)
-    if course2_params:
-        course2, error2 = Course.find(course2_params[0], course2_params[1], course2_params[2], language)
-
-    if error1 or error2:
-        redirect_page = get_new_landing_page_for_language(language)
-        # redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
-        return redirect(redirect_page + '?load_error=true&error_type=0')
-
-    if not page:
-        return render(request, '404.html')
+    courses = preprocessors.dict_for_comparison_view_for_courses(courses_array, language)
 
     query_string = request.environ.get('QUERY_STRING')
-    english_url = page.get_english_url() + query_string
-    welsh_url = page.get_welsh_url() + query_string
 
     context = page.get_context(request)
-    context.update({
-        'page': page,
-        'courses': courses_array,
-        'english_url': english_url,
-        'welsh_url': welsh_url,
-        'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
-        'get_params': get_params
-    })
+    context.update(
+        dict(
+            page=page,
+            courses=courses,
+            english_url=page.get_english_url() + query_string,
+            welsh_url=page.get_welsh_url() + query_string,
+            cookies_accepted=request.COOKIES.get('discoverUniCookies'),
+            get_params=url_params
+        )
+    )
 
     return render(request, 'courses/course_comparison_page.html', context)
