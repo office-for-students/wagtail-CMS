@@ -13,7 +13,8 @@ class FilterForm:
             else ''
         self.courses = form_data.get('subject_query', '')
         self.course_query = form_data.get('course_query', '')
-        self.postcode_query = form_data.get('postcode_query', '')
+        self.postcode_query = (form_data.get('postcode') + ',' + form_data.get('distance')) if form_data.get('postcode') != None \
+            and form_data.get('postcode') != '' else {}
         if self.postcode_query:
             self.postcode = self.postcode_query.split(',')[0]
             self.distance = self.postcode_query.split(',')[1]

@@ -1,6 +1,9 @@
+import os
 import requests
 import urllib.parse
 from django.conf import settings
+import json
+import logging
 
 from CMS.test.mocks.search_mocks import SearchMocks
 
@@ -15,26 +18,30 @@ def query_course_and_institution(course, institution, limit, offset, language):
         base_url = "%s?limit=%s&offset=%s&qc=%s&institutions=%s&language=%s"
         institution_query = urllib.parse.quote_plus(institution)
         course_query = urllib.parse.quote_plus(course)
-        return requests.get(url=base_url % (settings.SEARCHAPIHOST, limit, offset, course_query, institution_query, language),
-                            headers=headers)
+        return requests.get(
+            url=base_url % (settings.SEARCHAPIHOST, limit, offset, course_query, institution_query, language),
+            headers=headers)
 
 
-def course_finder_query(subject, 
-                        institution, 
-                        countries, 
-                        postcode, 
-                        filters, 
-                        sortBySubject, 
-                        sortBySubjectLimit, 
-                        course_query, 
-                        limit, 
-                        offset, 
+def course_finder_query(subject,
+                        institution,
+                        countries,
+                        postcode,
+                        filters,
+                        sortBySubject,
+                        sortBySubjectLimit,
+                        course_query,
+                        limit,
+                        offset,
                         language):
+    institution_dict = {}
+
     if settings.LOCAL:
         return SearchMocks.get_successful_search_response()
     else:
         headers = {
-            'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
+            'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY,
+            'Content-Type': 'application/json'
         }
         url = "%s?limit=%s&offset=%s&language=%s" % (settings.SEARCHAPIHOST, limit, offset, language)
         if subject and subject != '':
@@ -43,8 +50,8 @@ def course_finder_query(subject,
             encoded_course_query = urllib.parse.quote_plus(course_query)
             url = f"{url}&qc={encoded_course_query}"
         if institution and institution != '':
-            encoded_institution_query = urllib.parse.quote_plus(institution)
-            url = f"{url}&institutions={encoded_institution_query}"
+            institution_list = institution.split("@")
+            institution_dict = dict(institutions=institution_list)
         if countries and countries != '':
             url = f"{url}&countries={countries.lower().replace(' ', '_')}"
         if postcode and postcode != '':
@@ -55,4 +62,9 @@ def course_finder_query(subject,
             url = f"{url}&sortBySubject={sortBySubject}"
             if sortBySubjectLimit and sortBySubjectLimit != '':
                 url = f"{url}&sortBySubjectLimit={sortBySubjectLimit}"
-        return requests.get(url=url, headers=headers)
+
+            timeout = (3.05, int(os.environ.get('RESPONSE_TIMEOUT_SORT_BY_SUBJECT', 120)))
+        else:
+            timeout = (3.05, int(os.environ.get('RESPONSE_TIMEOUT_DEFAULT', 60)))
+
+        return requests.request("POST", url, headers=headers, data=json.dumps(institution_dict))

@@ -119,7 +119,7 @@
         }
 
         &-active-filter{
-            margin-top: 20px;
+            margin-top: 0px;
             display: flex;
             flex-wrap: wrap;
         }
@@ -130,7 +130,7 @@
 
             &-textfield{
                 height: 35px;
-                border: 1px solid red;
+                border: 1px solid #595959;
                 border-radius: 2px;
             }
 
@@ -145,6 +145,7 @@
             }
         }
 
+>>>>>>> 7fee22607f8987f193d3795dc41fa9c603b1cb20
         &-search{
             width: 95%;
             height: 35px;
