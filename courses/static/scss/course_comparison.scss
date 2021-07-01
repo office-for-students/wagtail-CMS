@@ -12,24 +12,7 @@
 .course-detail__headline_stat{
     display: none;
 }
-.rating {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-  color: black;
-  cursor: pointer;
-  content: ☆;
-}
-.rating > span {
-  display: inline-block;
-  position: relative;
-  width: 1.1em;
-}
-.rating > span:hover:before,
-.rating:hover {
-   content: "★";
-   color: orange;
-   
-}
+
 .comparison {
     padding: 5px 5px 5px 5px;
     font-family: "Nunito Sans", sans-serif;
@@ -69,7 +52,6 @@
     }
 
     &__top-container{
-        position: relative; 
         margin-bottom: 100px; 
         position: relative;
 
@@ -107,6 +89,7 @@
             background-color: #f4f8f8; 
             float: right; 
             padding: 20px;
+            text-align: center;
         }
     }
 
@@ -242,16 +225,17 @@
 
         &__course{
             &-container{
-                display: flex; 
+                display: flex;
                 flex-direction: row; 
                 justify-content: center; 
-                align-items: center; 
-                height: 140px;
+
+                width: 100%;
+
             }
             &-selected{
                 color: black; 
-                margin-bottom: auto; 
-                margin-top: 10px; 
+                margin-bottom: auto;
+                margin-top: 17px;
                 margin-right: auto; 
                 width: 250px;
             }
@@ -259,8 +243,9 @@
 
         &__courses{
             &-container{
+                flex: 1;
                 background-color: #f2f2f2;
-                margin: 48px 4px 48px 4px;
+                margin: 0px 4px 48px 4px;
                 padding: 16px;
             }
 
@@ -617,12 +602,34 @@
         margin-left:auto!important;
         margin-right:auto!important;
     }
+
+    .comparison__top-container{
+        &-need-help-box{
+            display: block;
+            width: 100%;
+            margin: auto;
+        }
+        &-add-btn{
+            margin-top: 32px;
+        }
+    }
 }
 @media only screen and (min-width: 767px) and (max-width: 991px){
     div.comparison__body, div.course-detail__body{
         width: 720px!important;
         margin-left:auto!important;
         margin-right:auto!important;
+    }
+
+    .comparison__top-container{
+        &-need-help-box{
+            display: block;
+            width: 100%;
+            margin: auto;
+        }
+        &-add-btn{
+            margin-top: 32px;
+        }
     }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px){
