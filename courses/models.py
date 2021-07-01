@@ -1,3 +1,6 @@
+import logging
+from typing import List
+
 import requests
 
 from django.db.models.fields import TextField
@@ -16,7 +19,7 @@ from courses import request_handler
 from errors.models import ApiError
 from institutions.models import InstitutionOverview
 import json
-
+logger = logging.getLogger(__name__)
 
 STUDENT_SATISFACTION_KEY = 'student_satisfaction'
 ENTRY_INFO_KEY = 'entry_information'
@@ -284,10 +287,13 @@ class Course:
         'Part time': 2
     }
 
+
+
     def __init__(self, data_obj, language):
         self.id = data_obj.get('id')
         self.display_language = language
         course_details = data_obj.get('course')
+        logger.info(f"course_details {course_details}")
         if course_details:
             self.country = CourseCountry(course_details.get('country'))
             self.kis_course_id = course_details.get('kis_course_id')
@@ -549,7 +555,12 @@ class Course:
         return len(self.locations)
 
     @property
-    def locations_list(self):
+    def locations_list(self) -> str:
+        location_names = self.all_locations
+        return ', '.join(location_names)
+
+    @property
+    def all_locations(self) -> List[str]:
         location_names = []
         for location in self.locations:
             if self.display_language == enums.languages.WELSH:
@@ -559,7 +570,8 @@ class Course:
                     location_names.append(location.english_name)
             else:
                 location_names.append(location.english_name)
-        return ', '.join(location_names)
+
+        return location_names
 
     @property
     def has_multiple_subject_names(self):

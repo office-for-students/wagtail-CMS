@@ -28,7 +28,7 @@
 .rating:hover {
    content: "★";
    color: orange;
-   
+
 }
 .comparison {
     padding: 5px 5px 5px 5px;
@@ -47,7 +47,7 @@
 
     .comparison__subject-header{
         background-color: #f8d441;
-        
+
         h1{
             color:black;
             font-size:1.3rem;
@@ -65,16 +65,16 @@
             font-size:1.3rem;
             color:white;
         }
-        
+
     }
 
     &__top-container{
-        position: relative; 
-        margin-bottom: 100px; 
+        position: relative;
+        margin-bottom: 100px;
         position: relative;
 
         &-add-btn{
-            display: inline-block; 
+            display: inline-block;
             position: relative;
 
             &-add-courses-button{
@@ -94,18 +94,18 @@
             }
 
             &-compare-text{
-                display: inline-block; 
-                color: #5d5d5d; 
-                vertical-align: top; 
+                display: inline-block;
+                color: #5d5d5d;
+                vertical-align: top;
                 margin-top:18px;
             }
         }
 
         &-need-help-box{
-            display: inline-block; 
-            color: black; 
-            background-color: #f4f8f8; 
-            float: right; 
+            display: inline-block;
+            color: black;
+            background-color: #f4f8f8;
+            float: right;
             padding: 20px;
         }
     }
@@ -159,8 +159,8 @@
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
-        letter-spacing: normal; 
-        margin-bottom: 48px;     
+        letter-spacing: normal;
+        margin-bottom: 48px;
     }
 
     &__courses {
@@ -242,17 +242,17 @@
 
         &__course{
             &-container{
-                display: flex; 
-                flex-direction: row; 
-                justify-content: center; 
-                align-items: center; 
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
                 height: 140px;
             }
             &-selected{
-                color: black; 
-                margin-bottom: auto; 
-                margin-top: 10px; 
-                margin-right: auto; 
+                color: black;
+                margin-bottom: auto;
+                margin-top: 10px;
+                margin-right: auto;
                 width: 250px;
             }
         }
@@ -282,7 +282,13 @@
         &__compare-btn {
             display: none;
         }
+        courses-detail__row{
+                margin: 16px 0;
+                font-family: "Nunito Sans", sans-serif;
+                font-size: 18px;
+                color: #1e1e1e;
 
+        }
         .course-detail__lead {
 
             .course-detail__institution-info {
@@ -307,7 +313,7 @@
                     }
 
                     .course-detail__accordion-body {
-                       
+
                         .satisfaction_subject_name {
                             font-size: $s-heading-font-size;
                         }
@@ -343,7 +349,7 @@
             }
         }
     }
-   
+
     .student-satisfaction__overview{
         .student-satisfaction__overview-lead{
             font-size:2rem!important;
@@ -433,7 +439,7 @@
                 font-size:1.75rem;
                 color:white;
             }
-            
+
         }
         &__course {
             margin: 0px 20px;
@@ -449,7 +455,7 @@
                     max-width: 1020px;
                 }
             }
-            
+
         }
 
         &__lead {
@@ -474,7 +480,7 @@
             font-stretch: normal;
             font-style: normal;
             line-height: normal;
-            letter-spacing: normal;     
+            letter-spacing: normal;
         }
 
         &__subject-heading {
@@ -552,7 +558,7 @@
                                 .comparison__course {
                                     display: flex;
                                     flex-wrap: wrap;
-                                    
+
                                 }
 
                                 .student-satisfaction__data-group {
@@ -581,11 +587,11 @@
       flex-wrap: nowrap;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-    
+
       .student-satisfaction__data-group {
         flex: 0 0 85vw;
       }
-  
+
       .student-satisfaction__data-group:last-child{
         margin-right:10px
       }
@@ -598,7 +604,7 @@
         display: none;
       }
     }
-    
+
   }
 
 
