@@ -437,7 +437,7 @@ function toggleDistance(distance_checked, campus_checked) {
     var disable_postcode = $('.postcode-fieldset')
     var distance_checked_mobile = document.getElementsByClassName('distance')[1].checked;
     var campus_checked_mobile = document.getElementsByClassName('campus')[1].checked;
-    // form duplicates when in mobile view so the Id cannot be used. 
+    // form duplicates when in mobile view so the Id cannot be used.
     if(window.innerWidth > 576){
         if(distance_checked && campus_checked == false){
             $(".message").css( "display", "block" )
@@ -446,7 +446,7 @@ function toggleDistance(distance_checked, campus_checked) {
             disable_postcode.attr('disabled', 'disabled');
             disable_postcode.css('border', '1px solid grey')
             $('.filters-block__submit-btn').prop('disabled', false);
-            $('.filters-block__submit-btn').css('background-color', "#8e3b74"); 
+            $('.filters-block__submit-btn').css('background-color', "#8e3b74");
         }
         else{
             $(".message").css( "display", "none" )
@@ -455,7 +455,7 @@ function toggleDistance(distance_checked, campus_checked) {
             disable_postcode.attr('disabled', false);
 
             if($('.filters-block__filter-radio-postcode').is(":checked") && ((!($('[name="postcode"]').val())) || (!($('[name="distance"]').val())))){
-                $('.filters-block__submit-btn').css('background-color', "grey"); 
+                $('.filters-block__submit-btn').css('background-color', "grey");
                 $('.filters-block__submit-btn').prop('disabled', true);
 
             }
@@ -476,8 +476,8 @@ function toggleDistance(distance_checked, campus_checked) {
             disable_radio.attr('disabled', 'disabled');
             disable_postcode.attr('disabled', 'disabled');
             $('.filters-block__submit-btn').prop('disabled', false);
-            $('.filters-block__submit-btn').css('background-color', "#8e3b74"); 
-            
+            $('.filters-block__submit-btn').css('background-color', "#8e3b74");
+
         }
         else {
             $(".message").css( "display", "none" )
@@ -486,7 +486,7 @@ function toggleDistance(distance_checked, campus_checked) {
             disable_postcode.attr('disabled', false);
 
             if($('.filters-block__filter-radio-postcode').is(":checked") && ((!($('[name="postcode"]').val())) || (!($('[name="distance"]').val())))){
-                $('.filters-block__submit-btn').css('background-color', "grey"); 
+                $('.filters-block__submit-btn').css('background-color', "grey");
                 $('.filters-block__submit-btn').prop('disabled', true);
             }
 
@@ -502,24 +502,24 @@ function toggleDistance(distance_checked, campus_checked) {
 }
 
 // a function to trigger each hidden checkbox. This hidden input is what is submitted to the FilterForm. Using this means we can keep the value of the checkbox if distance learning is selected, submitted and then removed
-function toggleCheckbox(country) { 
+function toggleCheckbox(country) {
     var shown = document.getElementsByClassName(country);
     var hidden = document.getElementsByClassName('hidden-' + country);
     if(window.innerWidth > 576){
         if(shown[0].checked){
-           hidden[0].checked = true; 
-        } 
+           hidden[0].checked = true;
+        }
         else{
-           hidden[0].checked = false; 
-        } 
+           hidden[0].checked = false;
+        }
     }
     else{
         if(shown[1].checked){
-           hidden[1].checked = true; 
-        } 
+           hidden[1].checked = true;
+        }
         else{
-           hidden[1].checked = false; 
-        } 
+           hidden[1].checked = false;
+        }
     }
 }
 
@@ -530,14 +530,14 @@ $(document).ready(function() {
             $('.filters-block__filter-postcode-div').css( "display", "none" );
             $('[name="countries_query"]').prop('disabled', false);
             $('[name="distance"]').prop('disabled', true);
-            $('[name="postcode"]').prop('disabled', true);  
-            $('.filters-block__submit-btn').prop('disabled', false);  
-            $('.filters-block__submit-btn').css('background-color', "#8e3b74");       
+            $('[name="postcode"]').prop('disabled', true);
+            $('.filters-block__submit-btn').prop('disabled', false);
+            $('.filters-block__submit-btn').css('background-color', "#8e3b74");
         }
 
        else if($(this).attr('id') == 'postcode') {
             $('.region-div').css( "display", "none" );
-            $('.filters-block__filter-postcode-div').css( "display", "flex" );    
+            $('.filters-block__filter-postcode-div').css( "display", "flex" );
             $('[name="countries_query"]').prop('disabled', true);
             $('[name="distance"]').prop('disabled', false);
             $('[name="postcode"]').prop('disabled', false);
@@ -554,7 +554,7 @@ $(document).ready(function() {
                 $('.filters-block__submit-btn').prop('disabled', false);
                 $('.filters-block__submit-btn').css('background-color', "#8e3b74");
             }
-        }    
+        }
     });
 });
 
@@ -594,7 +594,7 @@ $(document).ready(function() {
 $(document).ready(function() {
     if($('.filters-block__filter-radio-postcode').is(":checked")){
         $('.region-div').css( "display", "none" );
-        $('.filters-block__filter-postcode-div').css( "display", "flex" );    
+        $('.filters-block__filter-postcode-div').css( "display", "flex" );
         $('[name="countries_query"]').prop('disabled', true);
         $('[name="distance"]').prop('disabled', false);
         $('[name="postcode"]').prop('disabled', false);

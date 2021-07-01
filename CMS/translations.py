@@ -32,7 +32,6 @@ def presentable_year_abroad(label, language):
     return DICT.get(label).get(language)
 
 
-
 DICT = {
     'a_level_similar': {
         'en': 'A-levels, Advanced Highers or similar',
@@ -241,6 +240,10 @@ DICT = {
     'compare': {
         'en': 'Compare',
         'cy': 'Cymharu'
+    },
+    'course_comparison_link': {
+        'en': './course-comparison/',
+        'cy': './cymharu-cyrsiau/'
     },
     'courses_to_view': {
         'en': 'to view saved courses side-by-side',

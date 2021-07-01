@@ -22,11 +22,88 @@
 
     <script>
         function toggle_icon(icon_id) {
+        var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
+
+        function toggle_icon(icon_id){
             var icon_name = "#" + icon_id;
             $(icon_name).toggleClass("fa-plus");
             $(icon_name).toggleClass("fa-minus");
         }
+
+        function removeCourseCompare(index){
+            compare_list.splice(index, 1);
+            localStorage.setItem('compareCourses', JSON.stringify(compare_list));
+
+            var checkbox = document.getElementById("course" + index);
+            const form = document.getElementById("compareForm");
+            checkbox.checked = false;
+
+            form.submit();
+        }
+
+        window.addEventListener("load", function(){
+            var saved_institutions = JSON.parse(localStorage.getItem("comparisonCourses"));
+            var id_list = [];
+            var hidden_check = document.getElementById("hiddenCourseCompare");
+
+            for(var i = 0; i < compare_list.length; i++){
+                id_list.push(compare_list[i].id);
+            }
+
+            var index = 0
+            for(var i = 0; i < saved_institutions.length; i++){
+                let courseId = saved_institutions[i].courseId
+                let query = saved_institutions[i].uniId + ',' + courseId + ',' + saved_institutions[i].mode.en
+
+                if(id_list.includes(courseId)){
+                    document.getElementById("hiddenCourseCompare").innerHTML += `<input id="${'course' + index}" type="checkbox" value="${query}" name="courses" hidden checked>`
+                    index++
+                }
+            }
+        })
+
+        function addStarRating(id, value, index){
+            var star = document.getElementById(id);
+
+            if(+value > compare_list[index].rating){
+                for(var i = 1; i <= value; i++){
+                    var star_fill = document.getElementById("course-" + index + "-star" + i);
+                    star_fill.innerHTML = "★";
+                    star_fill.classList.add("orange");
+                }
+                compare_list[index].rating = +value
+            }
+            else if(+value < compare_list[index].rating){
+                for(var i = 3; i > +value; i--){
+                    var star_fill = document.getElementById("course-" + index + "-star" + i);
+                    star_fill.innerHTML = "☆";
+                    star_fill.classList.remove("orange");
+                }
+                compare_list[index].rating = +value
+            }
+            else if(compare_list[index].rating == +value){
+                star.innerHTML = '☆';
+                star.classList.remove("orange");
+                compare_list[index].rating = +value - 1;
+            }
+
+            localStorage.setItem('compareCourses', JSON.stringify(compare_list));
+        }
+
+        function prefillStars(index){
+            for(i = 1; i <= compare_list[index].rating; i++){
+                var star = document.getElementById("course-" + index + "-star" + i);
+                star.innerHTML = "★";
+                star.classList.add("orange");
+            }
+        }
     </script>
+
+    <style>
+        .orange{
+            color: orange !important;
+        }
+    </style>
 
 {% endblock %}
 
@@ -54,13 +131,12 @@
 
             <div class="comparison__top-container">
                 <div class="comparison__top-container-add-btn" style="">
-                    <a href="/bookmarks-manage/">
+                    <a href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/">
                         <button class="comparison__top-container-add-btn-add-courses-button">
                             <span style="font-size:20px;">+</span> <span
                                 style="padding-left: 10px;">Add saved course</span>
                         </button>
                     </a>
-                    </form>
                     <p class="comparison__top-container-add-btn-compare-text" style="display: inline-block;">Compare up
                         to 7 courses</p>
                 </div>
@@ -76,6 +152,10 @@
                     <div class="course-detail__course-selected">
                         {{ courses|length }} courses selected
                     </div>
+                    <form id="compareForm" method="GET"
+                          action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
+                        <div id="hiddenCourseCompare"></div>
+                    </form>
                     {% for course in courses %}
                         {% include 'courses/partials/course_comparison_overview.html' %}
                     {% endfor %}
@@ -186,79 +266,6 @@
                     {% include 'courses/partials/comparison_courses_row.html' with content=course.foundation_year.label %}
                 {% endfor %}
             </div>
-
-
-            {#    #TODO: Remove after taking out the corresponding JS#}
-            {#            <div class="comparison__courses course-detail">#}
-            {#                <div class="comparison__course-columns">#}
-            {#                    <div class="comparison__course-column">#}
-            {#                        <div class="comparison__course">#}
-            {#                            <div id="course1" class="comparison__course-selector">#}
-            {#                                <select id="course1-select">#}
-            {#                                    <option value="na" disabled selected>{% get_translation key='select_course' language=page.get_language %}</option>#}
-            {#                                </select>#}
-            {#                            </div>#}
-            {##}
-            {#                            {% if course1 %}#}
-            {#                                {% include 'courses/partials/base_gradient.html' %}#}
-            {#                                    {% include 'courses/partials/comparison_course_overview.html' with course=course1 %}#}
-            {#                            {% endif %}#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {##}
-            {#                    <div class="comparison__course-column">#}
-            {#                        <div class="comparison__course">#}
-            {#                            <div id="course2" class="comparison__course-selector">#}
-            {#                                <select id="course2-select">#}
-            {#                                    <option value="na" disabled selected>{% get_translation key='select_course' language=page.get_language %}</option>#}
-            {#                                </select>#}
-            {#                            </div>#}
-            {##}
-            {#                            {% if course2 %}#}
-            {#                                {% include 'courses/partials/base_gradient.html' %}#}
-            {#                                {% include 'courses/partials/comparison_course_overview.html' with course=course2 %}#}
-            {#                            {% endif %}#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#                {{ coure }}#}
-            {#                {% if course1 and course2 %}#}
-            {#                    <div class="course-detail__body">#}
-            {##}
-            {#                            <div class="course-detail__accordion-block">#}
-            {#                                {% for accordion in page.accordions %}#}
-            {#                                    {% create_list course1 course2 as courses %}#}
-            {#                                    {% should_show_accordion courses accordion.value.data_set as show_accordion %}#}
-            {#                                    {% if show_accordion %}#}
-            {##}
-            {#                                    <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">#}
-            {#                                        <div class="">#}
-            {#                                            <button class="course-detail__accordion-heading" onclick="toggle_icon('accordion_icon_{{ forloop.counter }}')">#}
-            {#                                                <h2 id="course-detail__accordion-heading-{{ forloop.counter }}"#}
-            {#                                                    aria-controls="course-detail__accordion-body-{{ forloop.counter }}"#}
-            {#                                                    aria-label="Show {{ accordion.value.heading }} content"#}
-            {#                                                    aria-expanded="false">#}
-            {#                                                    <i id="accordion_icon_{{ forloop.counter }}" class="fas fa-plus pr-3 text-white"></i>#}
-            {#                                                    {{ accordion.value.heading }}#}
-            {##}
-            {#                                                </h2>#}
-            {#                                            </button>#}
-            {#                                        </div>#}
-            {##}
-            {#                                        <div id="course-detail__accordion-body-{{ forloop.counter }}"#}
-            {#                                            class="course-detail__accordion-body"#}
-            {#                                            aria-labelledby="course-detail__accordion-heading-{{ forloop.counter }}">#}
-            {#                                            {% include 'courses/partials/comparison_'|add:accordion.value.data_set|add:'_body.html' with block=accordion %}#}
-            {#                                        </div>#}
-            {#                                    </div>#}
-            {##}
-            {##}
-            {#                                    {% endif %}#}
-            {#                                {% endfor %}#}
-            {#                            </div>#}
-            {#                    </div>#}
-            {#                {% endif %}#}
-            {#            </div>#}
 
             <div hidden class="">
                 <div class="course-detail__further-info-block">

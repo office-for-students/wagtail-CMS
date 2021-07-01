@@ -74,7 +74,6 @@
     }
 
     function buttonFormat(){
-        console.log(checked_bookmark)
         var compare_button = document.getElementById('compare-courses-button')
         var compare_text = document.getElementById('bookmark-text')
         var courses_selected = document.getElementById('courses-selected')
@@ -193,7 +192,7 @@
             {{page.one_selected_text | richtext}}
         </div>
 
-        <form id="compareForm" method="GET" action="/course-comparison/">
+        <form id="compareForm" method="GET" action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
         <div class="bookmark__courses" id="institution-bookmark"></div>
         </form>
         <script>
