@@ -1,37 +1,3 @@
-def presentable_course_detail_mode_label(label, language):
-    # Create course mode label as we want it presented in template
-    if label == "Both":
-        label = f"{DICT.get('Full-time').get(language)}/{DICT.get('Part-time').get(language)}"
-    else:
-        label = DICT.get(label).get(language)
-    return label
-
-
-def presentable_course_detail_length_label(label, language):
-    number_of_years = label if type(label) == int else int(label.split()[0])
-    if language == "en":
-        if number_of_years > 1:
-            word_year = "years"
-        else:
-            word_year = "year"
-    else:
-        if number_of_years > 1:
-            word_year = "mlynedd"
-        else:
-            word_year = "blynedd"
-
-    label = f"{number_of_years} {word_year}"
-    return label
-
-
-def presentable_course_placement_year(label, language):
-    return DICT.get(label).get(language)
-
-
-def presentable_year_abroad(label, language):
-    return DICT.get(label).get(language)
-
-
 DICT = {
     'a_level_similar': {
         'en': 'A-levels, Advanced Highers or similar',
@@ -1675,6 +1641,10 @@ DICT = {
     'course_wizard_start_now_url': {
         'en': '/search-landing-page/course-finder-choose-country/',
         'cy': '/cy/search-landing-cy/course-finder-choose-country-cy/'
+    },
+    'professional_accreditation': {
+        'en': 'Professional accreditation',
+        'cy': "Achrediad professiyno"
     },
     'professional_accreditation_no_data': {
         'en': 'There are no professional accreditations recorded',
