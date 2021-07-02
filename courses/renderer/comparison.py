@@ -102,9 +102,14 @@ def presentable_course_length(course, language):
 
 
 def presentable_course_locations(course, language=None):
-    # all_locations currently determines language inside model due to internal dependency
+    # all_location_names currently determines language inside model due to internal dependency
     # in model class that I don't want to unpick
-    return course.all_locations
+    response = ""
+    for index, location in enumerate(course.all_location_names):
+        display = index + 1
+        response += f"{display}. {location} <br/>"
+
+    return response
 
 
 def presentable_distance_learning(course: Course, language: str):
