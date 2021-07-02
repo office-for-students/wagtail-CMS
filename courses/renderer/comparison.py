@@ -1,10 +1,12 @@
+import logging
+from typing import Any
 from typing import Callable
+from typing import Dict
 from typing import List
 
 from CMS import translations
 from CMS.translations import DICT
 from courses.models import Course
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -30,11 +32,11 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
     return response
 
 
-def empty_data_structure(key: str, language: str):
+def empty_data_structure(key: str, language: str) -> Dict[str, Any]:
     return dict(title=subject_for_key(key, language), values=[])
 
 
-def course_details(courses: List[Course], language: str):
+def course_details(courses: List[Course], language: str) -> Dict[str, str]:
     primary_key = 0
     action = 1
     sections = [
@@ -72,12 +74,12 @@ def create_dataset(action: Callable[[Course, str], str], course: Course, languag
     return action(course, language)
 
 
-def subject_for_key(key, language):
+def subject_for_key(key: str, language: str) -> Dict[str, Any]:
     response = DICT.get(key).get(language) if key in DICT else key
     return response
 
 
-def presentable_course_mode(course, language):
+def presentable_course_mode(course: Course, language: str) -> str:
     # Create course mode label as we want it presented in template
     label = course.mode.label
     if label == "Both":
@@ -87,7 +89,7 @@ def presentable_course_mode(course, language):
     return response
 
 
-def presentable_course_length(course, language):
+def presentable_course_length(course: Course, language: str) -> str:
     label = course.length.label
     # when switching databases some times this was a string some times it was an int. Remove if data normalised
     number_of_years = label if type(label) == int else int(label.split()[0])
@@ -101,7 +103,7 @@ def presentable_course_length(course, language):
     return label
 
 
-def presentable_course_locations(course, language=None):
+def presentable_course_locations(course: Course, language=None) -> str:
     # all_location_names currently determines language inside model due to internal dependency
     # in model class that I don't want to unpick
     response = ""
@@ -113,35 +115,34 @@ def presentable_course_locations(course, language=None):
 
 
 def presentable_distance_learning(course: Course, language: str) -> str:
-    response = {}
     if int(course.distance_learning.code) == 1:
-        response = translations.OPTIONALS['yes']
+        return translations.OPTIONALS['yes'].get(language)
     elif int(course.distance_learning.code) == 0:
-        response = translations.OPTIONALS["not_available"]
+        return translations.OPTIONALS["not_available"].get(language)
     else:
         logger.warning("Distance learning code not managed: {course.distance_learning.code}")
 
 
-def presentable_placement_year(course: Course, language: str):
+def presentable_placement_year(course: Course, language: str) -> str:
     code = course.sandwich_year.code
     return string_for_code(code, language, error="Course placement year code not managed:")
 
 
-def presentable_year_abroad(course: Course, language: str):
+def presentable_year_abroad(course: Course, language: str) -> str:
     code = course.year_abroad.code
     return string_for_code(code, language, error="Course year abroad code not managed:")
 
 
-def presentable_foundation_year(course: Course, language: str):
+def presentable_foundation_year(course: Course, language: str) -> str:
     code = course.foundation_year.code
     return string_for_code(code, language, error="Course Foundations Year code not managed:")
 
 
-def presentable_accreditation(course: Course, language: str):
+def presentable_accreditation(course: Course, language: str) -> bool:
     return True if len(course.accreditations) > 0 else False
 
 
-def string_for_code(code, language, error):
+def string_for_code(code: int, language: str, error: str) -> str:
     # called from multiple methods, if one requires a change
     # in terms of the string returned for the code, consider a new method vs editing this one
     if code == 0:
