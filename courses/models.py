@@ -315,6 +315,7 @@ class Course:
             self.locations = []
             if course_details.get('locations'):
                 for location in course_details.get('locations'):
+                    print("building locations, ", location)
                     self.locations.append(CourseLocation(location, self.display_language))
 
             self.length = CourseLength(course_details.get('length_of_course'), language)
@@ -556,11 +557,12 @@ class Course:
 
     @property
     def locations_list(self) -> str:
-        location_names = self.all_locations
+        location_names = self.all_location_names
         return ', '.join(location_names)
 
     @property
-    def all_locations(self) -> List[str]:
+    def all_location_names(self) -> List[str]:
+        """ returns a list of unique locations"""
         location_names = []
         for location in self.locations:
             if self.display_language == enums.languages.WELSH:
@@ -571,7 +573,7 @@ class Course:
             else:
                 location_names.append(location.english_name)
 
-        return location_names
+        return set(location_names)
 
     @property
     def has_multiple_subject_names(self):
