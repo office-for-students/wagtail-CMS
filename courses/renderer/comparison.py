@@ -20,17 +20,13 @@ def presentable_course_mode(course, language):
 
 def presentable_course_length(course, language):
     label = course.length.label
+    # when switching databases some times this was a string some times it was an int. Remove if data normalised
     number_of_years = label if type(label) == int else int(label.split()[0])
-    if language == "en":
-        if number_of_years > 1:
-            word_year = "years"
-        else:
-            word_year = "year"
+
+    if number_of_years > 1:
+        word_year = translations.DICT["years"].get(language)
     else:
-        if number_of_years > 1:
-            word_year = "mlynedd"
-        else:
-            word_year = "blynedd"
+        word_year = translations.DICT["year"].get(language)
 
     label = f"{number_of_years} {word_year}"
     return label
@@ -44,9 +40,9 @@ def presentable_course_locations(course, language=None):
 
 def presentable_distance_learning(course: Course, language: str):
     if course.distance_learning.code:
-        return "Yes" if language == "en" else "Ydy"
+        return translations.OPTIONALS['yes'].get(language)
     else:
-        return "Not available" if language == "en" else "Ddim ar gael"
+        return translations.OPTIONALS["not_available"].get(language)
 
 
 def presentable_placement_year(course: Course, language: str):
@@ -70,13 +66,15 @@ def presentable_accreditation(course: Course, language: str):
 
 def string_for_code(code, language, error):
     if code == 0:
-        return "Not available" if language == "en" else "Ddim ar gael"
+        option = translations.OPTIONALS['not_available']
     elif code == 1:
-        return "Optional" if language == "en" else "Dewisol"
-    elif code == 3:
-        return "Compulsory" if language == "en" else "Gorfodol"
+        option = translations.OPTIONALS['optional']
+    elif code == 2:
+        option = translations.OPTIONALS['compulsory']
     else:
         raise Exception(f"{error} {code}")
+
+    return option[language]
 
 
 def subject_for_key(key, language):
