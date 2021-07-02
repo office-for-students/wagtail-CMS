@@ -22,85 +22,83 @@
 
     <script>
         function toggle_icon(icon_id) {
-        var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
+            var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
 
-        function toggle_icon(icon_id){
-            var icon_name = "#" + icon_id;
-            $(icon_name).toggleClass("fa-plus");
-            $(icon_name).toggleClass("fa-minus");
-        }
-
-        function removeCourseCompare(index){
-            compare_list.splice(index, 1);
-            localStorage.setItem('compareCourses', JSON.stringify(compare_list));
-
-            var checkbox = document.getElementById("course" + index);
-            const form = document.getElementById("compareForm");
-            checkbox.checked = false;
-
-            form.submit();
-        }
-
-        window.addEventListener("load", function(){
-            var saved_institutions = JSON.parse(localStorage.getItem("comparisonCourses"));
-            var id_list = [];
-            var hidden_check = document.getElementById("hiddenCourseCompare");
-
-            for(var i = 0; i < compare_list.length; i++){
-                id_list.push(compare_list[i].id);
+            function toggle_icon(icon_id) {
+                var icon_name = "#" + icon_id;
+                $(icon_name).toggleClass("fa-plus");
+                $(icon_name).toggleClass("fa-minus");
             }
 
-            var index = 0
-            for(var i = 0; i < saved_institutions.length; i++){
-                let courseId = saved_institutions[i].courseId
-                let query = saved_institutions[i].uniId + ',' + courseId + ',' + saved_institutions[i].mode.en
+            function removeCourseCompare(index) {
+                compare_list.splice(index, 1);
+                localStorage.setItem('compareCourses', JSON.stringify(compare_list));
 
-                if(id_list.includes(courseId)){
-                    document.getElementById("hiddenCourseCompare").innerHTML += `<input id="${'course' + index}" type="checkbox" value="${query}" name="courses" hidden checked>`
-                    index++
+                var checkbox = document.getElementById("course" + index);
+                const form = document.getElementById("compareForm");
+                checkbox.checked = false;
+
+                form.submit();
+            }
+
+            window.addEventListener("load", function () {
+                var saved_institutions = JSON.parse(localStorage.getItem("comparisonCourses"));
+                var id_list = [];
+                var hidden_check = document.getElementById("hiddenCourseCompare");
+
+                for (var i = 0; i < compare_list.length; i++) {
+                    id_list.push(compare_list[i].id);
+                }
+
+                var index = 0
+                for (var i = 0; i < saved_institutions.length; i++) {
+                    let courseId = saved_institutions[i].courseId
+                    let query = saved_institutions[i].uniId + ',' + courseId + ',' + saved_institutions[i].mode.en
+
+                    if (id_list.includes(courseId)) {
+                        document.getElementById("hiddenCourseCompare").innerHTML += `<input id="${'course' + index}" type="checkbox" value="${query}" name="courses" hidden checked>`
+                        index++
+                    }
+                }
+            })
+
+            function addStarRating(id, value, index) {
+                var star = document.getElementById(id);
+
+                if (+value > compare_list[index].rating) {
+                    for (var i = 1; i <= value; i++) {
+                        var star_fill = document.getElementById("course-" + index + "-star" + i);
+                        star_fill.innerHTML = "★";
+                        star_fill.classList.add("orange");
+                    }
+                    compare_list[index].rating = +value
+                } else if (+value < compare_list[index].rating) {
+                    for (var i = 3; i > +value; i--) {
+                        var star_fill = document.getElementById("course-" + index + "-star" + i);
+                        star_fill.innerHTML = "☆";
+                        star_fill.classList.remove("orange");
+                    }
+                    compare_list[index].rating = +value
+                } else if (compare_list[index].rating == +value) {
+                    star.innerHTML = '☆';
+                    star.classList.remove("orange");
+                    compare_list[index].rating = +value - 1;
+                }
+
+                localStorage.setItem('compareCourses', JSON.stringify(compare_list));
+            }
+
+            function prefillStars(index) {
+                for (i = 1; i <= compare_list[index].rating; i++) {
+                    var star = document.getElementById("course-" + index + "-star" + i);
+                    star.innerHTML = "★";
+                    star.classList.add("orange");
                 }
             }
-        })
-
-        function addStarRating(id, value, index){
-            var star = document.getElementById(id);
-
-            if(+value > compare_list[index].rating){
-                for(var i = 1; i <= value; i++){
-                    var star_fill = document.getElementById("course-" + index + "-star" + i);
-                    star_fill.innerHTML = "★";
-                    star_fill.classList.add("orange");
-                }
-                compare_list[index].rating = +value
-            }
-            else if(+value < compare_list[index].rating){
-                for(var i = 3; i > +value; i--){
-                    var star_fill = document.getElementById("course-" + index + "-star" + i);
-                    star_fill.innerHTML = "☆";
-                    star_fill.classList.remove("orange");
-                }
-                compare_list[index].rating = +value
-            }
-            else if(compare_list[index].rating == +value){
-                star.innerHTML = '☆';
-                star.classList.remove("orange");
-                compare_list[index].rating = +value - 1;
-            }
-
-            localStorage.setItem('compareCourses', JSON.stringify(compare_list));
-        }
-
-        function prefillStars(index){
-            for(i = 1; i <= compare_list[index].rating; i++){
-                var star = document.getElementById("course-" + index + "-star" + i);
-                star.innerHTML = "★";
-                star.classList.add("orange");
-            }
-        }
     </script>
 
     <style>
-        .orange{
+        .orange {
             color: orange !important;
         }
     </style>
@@ -201,71 +199,22 @@
 
                 }
             </style>
-
-            <div class="table_row--header">
-                Course Details
-            </div>
-            <div class="table_row">
-                <div class="table__column-first">
-                    {% get_translation key='study_mode' language=page.get_language %}
+            {% with dataset=courses_data.0.course_details %}
+                <div class="table_row--header">
+                    {{ dataset.title }}
                 </div>
-                {% for course in courses %}
-                    {% include 'courses/partials/comparison_courses_row.html' with content=course.mode.label %}
-                {% endfor %}
-            </div>
-
-            <div class="table_row">
-                <div class="table__column-first">
-                    {% get_translation key='length' language=page.get_language %}
-                </div>
-                {% for course in courses %}
-                    {% include 'courses/partials/comparison_courses_row.html' with content=course.length.label %}
-                {% endfor %}
-            </div>
-            <div class="table_row">
-                <div class="table__column-first">
-                    {% get_translation key='locations' language=page.get_language %}
-                </div>
-                {% for course in courses %}
-                    <div class="table__column">
-                        {% for location in course.all_locations %}
-                            {{ forloop.counter }}. {{ location }}<br/>
+                {% for item, value in dataset.dataset.items %}
+                    <div class="table_row">
+                        <div class="table__column-first">
+                            {{ value.title }}
+                        </div>
+                        {% for course in value.values %}
+                            {% include 'courses/partials/comparison_courses_row.html' with content=course %}
                         {% endfor %}
                     </div>
                 {% endfor %}
-            </div>
-            <div class="table_row">
-                <div class="table__column-first">
-                    {% get_translation key='distance_learning' language=page.get_language %}
-                </div>
-                {% for course in courses %}
-                    {% include 'courses/partials/comparison_courses_row.html' with content=course.distance_learning.display_label %}
-                {% endfor %}
-            </div>
-            <div class="table_row">
-                <div class="table__column-first">
-                    {% get_translation key='placement_year' language=page.get_language %}
-                </div>
-                {% for course in courses %}
-                    {% include 'courses/partials/comparison_courses_row.html' with content=course.sandwich_year.label %}
-                {% endfor %}
-            </div>
-            <div class="table_row">
-                <div class="table__column-first">
-                    {% get_translation key='year_abroad' language=page.get_language %}
-                </div>
-                {% for course in courses %}
-                    {% include 'courses/partials/comparison_courses_row.html' with content=course.year_abroad.label %}
-                {% endfor %}
-            </div>
-            <div class="table_row">
-                <div class="table__column-first">
-                    {% get_translation key='foundation_year' language=page.get_language %}
-                </div>
-                {% for course in courses %}
-                    {% include 'courses/partials/comparison_courses_row.html' with content=course.foundation_year.label %}
-                {% endfor %}
-            </div>
+            {% endwith %}
+
 
             <div hidden class="">
                 <div class="course-detail__further-info-block">
