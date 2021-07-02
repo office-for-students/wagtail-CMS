@@ -10,7 +10,7 @@ from CMS.enums import enums
 from CMS.translations import DICT
 from core.utils import get_new_landing_page_for_language
 from core.utils import get_page_for_language
-from courses import preprocessors
+from courses import renderer
 from courses.models import Course
 from courses.models import CourseComparisonPage
 from courses.models import CourseDetailPage
@@ -293,7 +293,7 @@ def compare_courses(request, language=enums.languages.ENGLISH):
 
                 courses_array.append(course)
 
-    courses = preprocessors.dict_for_comparison_view_for_courses(courses_array, language)
+    courses = renderer.dict_for_comparison_view_for_courses(courses_array, language)
 
     query_string = request.environ.get('QUERY_STRING')
 
