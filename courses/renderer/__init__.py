@@ -1,1 +1,1 @@
-from .comparison import dict_for_comparison_view_for_courses
+from .comparison import dataset_for_comparison_view

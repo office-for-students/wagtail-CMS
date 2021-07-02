@@ -293,7 +293,7 @@ def compare_courses(request, language=enums.languages.ENGLISH):
 
                 courses_array.append(course)
 
-    courses = renderer.dict_for_comparison_view_for_courses(courses_array, language)
+    courses = renderer.dataset_for_comparison_view(courses_array, language)
 
     query_string = request.environ.get('QUERY_STRING')
 

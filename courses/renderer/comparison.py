@@ -18,7 +18,7 @@ FOUNDATION_YEAR = "foundation_year"
 PROFESSIONAL_ACCREDITATION = "professional_accreditation"
 
 
-def dict_for_comparison_view_for_courses(courses: List[Course], language="en") -> List[dict]:
+def dataset_for_comparison_view(courses: List[Course], language="en") -> List[dict]:
     response = []
     context = dict()
     context["course_details"] = dict(
