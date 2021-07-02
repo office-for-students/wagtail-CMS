@@ -1,4 +1,5 @@
 import json
+import logging
 
 from django.http import JsonResponse
 from django.shortcuts import redirect
@@ -15,6 +16,7 @@ from courses.models import CourseComparisonPage
 from courses.models import CourseDetailPage
 from courses.models import CourseManagePage
 
+logger = logging.getLogger(__name__)
 
 def regional_earnings(request):
     if 'region' in request.POST and request.is_ajax():
@@ -283,9 +285,9 @@ def compare_courses(request, language=enums.languages.ENGLISH):
             if course:
                 course = course.split(',')
                 course, error = Course.find(course[0], course[1], course[2], language)
-                print("error ", error)
 
                 if error:
+                    logger.warning(f"Failed to fetch course, Error fetching course: {error} for {course}")
                     redirect_page = get_new_landing_page_for_language(language)
                     return redirect(redirect_page + '?load_error=true&error_type=0')
 
@@ -299,7 +301,8 @@ def compare_courses(request, language=enums.languages.ENGLISH):
     context.update(
         dict(
             page=page,
-            courses=courses,
+            courses=courses_array,
+            courses_data=courses,
             english_url=page.get_english_url() + query_string,
             welsh_url=page.get_welsh_url() + query_string,
             cookies_accepted=request.COOKIES.get('discoverUniCookies'),
