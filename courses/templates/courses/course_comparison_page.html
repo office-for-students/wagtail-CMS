@@ -9,7 +9,6 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script type="text/javascript" src="{% static 'js/course_comparison.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}?{% code_version %}"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
@@ -43,6 +42,8 @@
 
         window.addEventListener("load", function () {
             var saved_institutions = JSON.parse(localStorage.getItem("comparisonCourses"));
+            var add_courses_link = document.getElementById("addCoursesLink")
+            var add_courses_button = document.getElementById("addCourses")
             var id_list = [];
             var hidden_check = document.getElementById("hiddenCourseCompare");
 
@@ -60,7 +61,13 @@
                     index++
                 }
             }
-        })
+
+            if(compare_list.length === 7){
+                add_courses_link.href = "";
+                add_courses_button.disabled = true;
+                add_courses_button.style.backgroundColor = "grey";
+            }
+        });
 
         function addStarRating(id, value, index) {
             var star = document.getElementById(id);
@@ -88,9 +95,35 @@
             localStorage.setItem('compareCourses', JSON.stringify(compare_list));
         }
 
+        var temp_value = 0
 
-        function prefillStars(index) {
-            for (i = 1; i <= compare_list[index].rating; i++) {
+        function hoverStars(id, value, index){
+            var star = document.getElementById(id);
+
+            if(+value > temp_value){
+                for(var i = 1; i <= value; i++){
+                    var star_fill = document.getElementById("course-" + index + "-star" + i);
+                    star_fill.innerHTML = "★";
+                    star_fill.classList.add("orange");
+                }
+                temp_value = +value
+            }
+            else if(+value < temp_value){
+                for(var i = 3; i > +value; i--){
+                    var star_fill = document.getElementById("course-" + index + "-star" + i);
+                    star_fill.innerHTML = "☆";
+                    star_fill.classList.remove("orange");
+                }
+                temp_value = +value
+            }
+        }
+
+        function mouseExitStars(index){
+            console.log(index)
+        }
+
+        function prefillStars(index){
+            for(i = 1; i <= compare_list[index].rating; i++){
                 var star = document.getElementById("course-" + index + "-star" + i);
                 star.innerHTML = "★";
                 star.classList.add("orange");
@@ -131,20 +164,18 @@
             </h2>
 
             <div class="comparison__top-container">
-                <div class="comparison__top-container-add-btn" style="">
-                    <a href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/">
-                        <button class="comparison__top-container-add-btn-add-courses-button">
-                            <span style="font-size:20px;">+</span> <span
-                                style="padding-left: 10px;">Add saved course</span>
-                        </button>
-                    </a>
-                    <p class="comparison__top-container-add-btn-compare-text" style="display: inline-block;">Compare up
-                        to 7 courses</p>
-                </div>
                 <div class="comparison__top-container-need-help-box">
                     <h4>Need help choosing?</h4>
                     <p>Search our guidelines for help making the best decision for you.</p>
                     <p style="margin-bottom: 0px;">Go to Information and advice</p>
+                </div>
+                <div class="comparison__top-container-add-btn" style="">
+                        <a id="addCoursesLink" href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/">
+                            <button id="addCourses" class="comparison__top-container-add-btn-add-courses-button">
+                                <span style="font-size:20px;">+</span> <span style="padding-left: 10px;">Add saved course</span>
+                            </button> 
+                        </a>
+                    <p class="comparison__top-container-add-btn-compare-text" style="display: inline-block;">Compare up to 7 courses</p>
                 </div>
 
             </div>
