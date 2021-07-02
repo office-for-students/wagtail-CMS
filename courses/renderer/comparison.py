@@ -1,9 +1,12 @@
+from typing import Callable
 from typing import List
 
 from CMS import translations
 from CMS.translations import DICT
 from courses.models import Course
 
+
+# TODO: update these methods to use the translation.py to store the various translations to be consistent elsewhere
 
 def presentable_course_mode(course, language):
     # Create course mode label as we want it presented in template
@@ -31,6 +34,12 @@ def presentable_course_length(course, language):
 
     label = f"{number_of_years} {word_year}"
     return label
+
+
+def presentable_course_locations(course, language=None):
+    # all_locations currently determines language inside model due to internal dependency
+    # in model class that I don't want to unpick
+    return course.all_locations
 
 
 def presentable_distance_learning(course: Course, language: str):
@@ -78,88 +87,59 @@ def subject_for_key(key, language):
 def dict_for_comparison_view_for_courses(courses: List[Course], language="en") -> List[dict]:
     response = []
     context = dict()
-    context["Course Details"] = course_details(courses, language)
+    # TODO remember to get the correct translaction for course details
+    context["course_details"] = dict(title=subject_for_key("course_details", language),
+                                     dataset=course_details(courses, language))
     response.append(context)
     return response
 
 
-def course_details(courses: List[Course], language: str):
-    items = []
+def empty_data_structure(key: str, language: str):
+    return dict(title=subject_for_key(key, language), values=[])
 
-    STUDY_MODE = "study_mode"
-    COURSE_LENGTH = "length"
-    LOCATIONS = "locations"
-    DISTANCE_LEARNING = "distance_learning"
-    PLACEMENT_YEAR = "placement_year"
-    YEAR_ABROAD = "year_abroad"
-    FOUNDATION_YEAR = "foundation_year"
-    PROFESSIONAL_ACCREDITATION = "professional_accreditation"
+
+STUDY_MODE = "study_mode"
+COURSE_LENGTH = "length"
+LOCATIONS = "locations"
+DISTANCE_LEARNING = "distance_learning"
+PLACEMENT_YEAR = "placement_year"
+YEAR_ABROAD = "year_abroad"
+FOUNDATION_YEAR = "foundation_year"
+PROFESSIONAL_ACCREDITATION = "professional_accreditation"
+
+
+def create_dataset(action: Callable[[Course, str], str], course: Course, language: str):
+    return action(course, language)
+
+
+def course_details(courses: List[Course], language: str):
+    primary_key = 0
+    dataset = 1
+    sections = [
+        (STUDY_MODE, presentable_course_mode),
+        (COURSE_LENGTH, presentable_course_length),
+        (LOCATIONS, presentable_course_locations),
+        (DISTANCE_LEARNING, presentable_distance_learning),
+        (PLACEMENT_YEAR, presentable_placement_year),
+        (YEAR_ABROAD, presentable_year_abroad),
+        (FOUNDATION_YEAR, presentable_foundation_year),
+        (PROFESSIONAL_ACCREDITATION, presentable_accreditation)
+    ]
 
     section_1 = dict()
-    section_1[subject_for_key(STUDY_MODE, language)] = []
-    section_1[subject_for_key(COURSE_LENGTH, language)] = []
-    section_1[subject_for_key(LOCATIONS, language)] = []
-    section_1[subject_for_key(DISTANCE_LEARNING, language)] = []
-    section_1[subject_for_key(PLACEMENT_YEAR, language)] = []
-    section_1[subject_for_key(YEAR_ABROAD, language)] = []
-    section_1[subject_for_key(FOUNDATION_YEAR, language)] = []
-    section_1[subject_for_key(PROFESSIONAL_ACCREDITATION, language)] = []
+    for section in sections:
+        section_1[section[primary_key]] = empty_data_structure(section[primary_key], language)
+
+    print(f"empty sections = {section_1}")
 
     for course in courses:
         # Study mode
-        section_1[subject_for_key(STUDY_MODE, language)].append(presentable_course_mode(
-            course,
-            language
-        ))
-
-        # Course length
-        section_1[subject_for_key(COURSE_LENGTH, language)].append(presentable_course_length(
-            course,
-            language
-        ))
-
-        # Course locations
-        section_1[subject_for_key(LOCATIONS, language)].append(course.all_locations)
-
-        # Distance Learning
-        section_1[subject_for_key(DISTANCE_LEARNING, language)].append(
-            presentable_distance_learning(
-                course,
-                language
+        for section in sections:
+            section_1[section[primary_key]]["values"].append(
+                section[dataset](
+                    course,
+                    language
+                )
             )
-        )
 
-        # Placement Year
-        section_1[subject_for_key(PLACEMENT_YEAR, language)].append(
-            presentable_placement_year(
-                course,
-                language
-            )
-        )
-        print(f"course.sandwich_year: {course.sandwich_year.code}")
-        # Year abroad
-        section_1[subject_for_key(YEAR_ABROAD, language)].append(
-            presentable_year_abroad(
-                course, language
-            )
-        )
-        #
-        # # Foundation year
-        section_1[subject_for_key(FOUNDATION_YEAR, language)].append(
-            presentable_foundation_year(
-                course,
-                language
-            )
-        )
-        # Professional Accreditation
-        section_1[subject_for_key(PROFESSIONAL_ACCREDITATION, language)].append(
-            presentable_accreditation(
-                course,
-                language
-            )
-        )
-
-        items.append(section_1)
-    print(section_1)
-
-    return items
+    return section_1
