@@ -1,0 +1,1 @@
+from .comparison import dict_for_comparison_view_for_courses
