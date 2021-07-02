@@ -1385,10 +1385,7 @@ DICT = {
         'cy': 'Ddim ar gael'
     },
     'Optional': OPTIONALS['optional'],
-    'Compulsory': {
-        'en': 'Compulsory',
-        'cy': 'Gorfodol'
-    },
+    'Compulsory': OPTIONALS['compulsory'],
     'Typical range': {
         'en': 'Typical range',
         'cy': 'Ystod arfero'
