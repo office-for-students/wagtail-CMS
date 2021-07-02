@@ -1,4 +1,31 @@
+OPTIONALS = {
+    'not_available': {
+        'en': 'Not Available',
+        'cy': 'Ddim ar gael'
+    },
+    'optional': {
+        "en": 'Optional',
+        'cy': 'Dewisol'
+    },
+    'compulsory': {
+        "en": 'Compulsory',
+        'cy': 'Gorfodol'
+    },
+    'yes': {
+        'en': 'Yes',
+        'cy': 'Ydy'
+    },
+}
+
 DICT = {
+    'years': {
+        "en": "years",
+        "cy": "mlynedd"
+    },
+    'year': {
+        "en": "year",
+        "cy": "blynedd"
+    },
     'a_level_similar': {
         'en': 'A-levels, Advanced Highers or similar',
         'cy': 'Safonau Uwch, Cymwysterau Advanced Higher neu debyg'
@@ -355,23 +382,13 @@ DICT = {
         'en': 'Distance learning',
         'cy': 'Dysgu o bell'
     },
+
     'distance_learning_values': {
-        '0': {
-            'en': 'Not Available',
-            'cy': 'Ddim ar gael'
-        },
-        '1': {
-            'en': 'Yes',
-            'cy': 'Ydy'
-        },
-        '2': {
-            'en': 'Optional',
-            'cy': 'Dewisol'
-        },
-        'Course is available other than by distance learning': {
-            'en': 'Not Available',
-            'cy': 'Ddim ar gael'
-        }
+        '0': OPTIONALS['not_available'],
+        '1': OPTIONALS['yes'],
+        '2': OPTIONALS['optional']
+        ,
+        'Course is available other than by distance learning': OPTIONALS['not_available']
     },
     'doing_further_study': {
         'en': 'Doing further study',
@@ -1226,10 +1243,7 @@ DICT = {
         'en': 'year course',
         'cy': 'blwyddyn'
     },
-    'yes': {
-        'en': 'Yes',
-        'cy': 'Ydy'
-    },
+    'yes': OPTIONALS['yes'],
     'you_can': {
         'en': 'You can',
         'cy': 'Gallwch '
@@ -1370,10 +1384,7 @@ DICT = {
         'en': 'Not Available',
         'cy': 'Ddim ar gael'
     },
-    'Optional': {
-        'en': 'Optional',
-        'cy': 'Dewisol'
-    },
+    'Optional': OPTIONALS['optional'],
     'Compulsory': {
         'en': 'Compulsory',
         'cy': 'Gorfodol'
