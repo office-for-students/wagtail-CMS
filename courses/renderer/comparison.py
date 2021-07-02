@@ -65,7 +65,7 @@ def course_details(courses: List[Course], language: str) -> Dict[str, str]:
                     language
                 )
             )
-        # TODO: add next section here
+            # TODO: add next section here
 
     return section_1
 
@@ -139,7 +139,11 @@ def presentable_foundation_year(course: Course, language: str) -> str:
 
 
 def presentable_accreditation(course: Course, language: str) -> bool:
-    return True if len(course.accreditations) > 0 else False
+    value = True if len(course.accreditations) > 0 else False
+    if value:
+        return '<i class="fas fa-check-circle table__tick-icon"></i>'
+    else:
+        return "-<br/>None recorded"
 
 
 def string_for_code(code: int, language: str, error: str) -> str:

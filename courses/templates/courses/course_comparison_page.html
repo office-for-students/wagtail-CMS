@@ -201,13 +201,30 @@
                     padding: 10px;
 
                 }
+
+                .table__tick-icon,
+                .table__tick-icon:before {
+                    font-size: 34px;
+                    background: -webkit-gradient(linear, left top, left bottom, from(#4EA27D), to(#308282));
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    display: initial;
+                }
+
+                .table__tick-gradient:before {
+                    background: -webkit-gradient(linear, left top, left bottom, from(#4EA27D), to(#308282));
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+
+
             </style>
             {% with dataset=courses_data.0.course_details %}
                 <div class="table_row--header">
                     {{ dataset.title }}
                 </div>
                 {% for item, value in dataset.dataset.items %}
-                  {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
+                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
                 {% endfor %}
             {% endwith %}
 
