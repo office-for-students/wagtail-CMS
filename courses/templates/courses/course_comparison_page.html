@@ -62,7 +62,7 @@
                 }
             }
 
-            if(compare_list.length === 7){
+            if (compare_list.length === 7) {
                 add_courses_link.href = "";
                 add_courses_button.disabled = true;
                 add_courses_button.style.backgroundColor = "grey";
@@ -97,19 +97,18 @@
 
         var temp_value = 0
 
-        function hoverStars(id, value, index){
+        function hoverStars(id, value, index) {
             var star = document.getElementById(id);
 
-            if(+value > temp_value){
-                for(var i = 1; i <= value; i++){
+            if (+value > temp_value) {
+                for (var i = 1; i <= value; i++) {
                     var star_fill = document.getElementById("course-" + index + "-star" + i);
                     star_fill.innerHTML = "★";
                     star_fill.classList.add("orange");
                 }
                 temp_value = +value
-            }
-            else if(+value < temp_value){
-                for(var i = 3; i > +value; i--){
+            } else if (+value < temp_value) {
+                for (var i = 3; i > +value; i--) {
                     var star_fill = document.getElementById("course-" + index + "-star" + i);
                     star_fill.innerHTML = "☆";
                     star_fill.classList.remove("orange");
@@ -118,12 +117,12 @@
             }
         }
 
-        function mouseExitStars(index){
+        function mouseExitStars(index) {
             console.log(index)
         }
 
-        function prefillStars(index){
-            for(i = 1; i <= compare_list[index].rating; i++){
+        function prefillStars(index) {
+            for (i = 1; i <= compare_list[index].rating; i++) {
                 var star = document.getElementById("course-" + index + "-star" + i);
                 star.innerHTML = "★";
                 star.classList.add("orange");
@@ -170,12 +169,15 @@
                     <p style="margin-bottom: 0px;">Go to Information and advice</p>
                 </div>
                 <div class="comparison__top-container-add-btn" style="">
-                        <a id="addCoursesLink" href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/">
-                            <button id="addCourses" class="comparison__top-container-add-btn-add-courses-button">
-                                <span style="font-size:20px;">+</span> <span style="padding-left: 10px;">Add saved course</span>
-                            </button> 
-                        </a>
-                    <p class="comparison__top-container-add-btn-compare-text" style="display: inline-block;">Compare up to 7 courses</p>
+                    <a id="addCoursesLink"
+                       href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/">
+                        <button id="addCourses" class="comparison__top-container-add-btn-add-courses-button">
+                            <span style="font-size:20px;">+</span> <span
+                                style="padding-left: 10px;">Add saved course</span>
+                        </button>
+                    </a>
+                    <p class="comparison__top-container-add-btn-compare-text" style="display: inline-block;">Compare up
+                        to 7 courses</p>
                 </div>
 
             </div>
@@ -218,18 +220,19 @@
 
                 .table__column-first {
                     color: black;
-                    width: 250px;
+                    width: 100%;
                     text-align: left;
-                    flex-grow: 100;
+                    flex: 1;
                     vertical-align: middle;
                     line-height: 44px;
                     padding-left: 10px;
+                    display: inline-block;
                 }
 
                 .table__column {
-                    flex-grow: 100;
                     text-align: center;
                     padding: 10px;
+                    flex: 1 1 0;
 
                 }
 
