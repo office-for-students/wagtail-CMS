@@ -104,13 +104,12 @@
 
     function checkSelectedOnLoad(id){
         for(var i = 0; i < compare_list.length; i++) {
-            
-                if(id.includes(compare_list[i].id)){
-                    var index = id.indexOf(compare_list[i].id)
-                    document.getElementById(id[index]).checked = true
-                    checked_bookmark += 1
-                }
+            if(id.includes(compare_list[i].id)){
+                var index = id.indexOf(compare_list[i].id)
+                document.getElementById(id[index]).checked = true
+                checked_bookmark += 1
             }
+        }
     }
 
     function savedInstitutions(){
@@ -149,7 +148,7 @@
                         {% get_translation key='location' language=page.get_language %}: <span class="location"></span>
                     </p>
 
-                    <button class="bookmark__course-remove">
+                    <button type="button" class="bookmark__course-remove" onclick="handleCourseRemoval(this)">
                         <img class="bookmark__course-remove-icon" src="{% static 'images/bin.svg' %}" alt=""> {% get_translation key='remove_course' language=page.get_language %}
                     </button>
                 </div>
@@ -174,14 +173,14 @@
             {{page.none_selected_text | richtext}}
 
             <div class="bookmark__none-selected-example">
-                <button class="course-detail__compare-btn">
+                <button class="course-detail__bookmark-compare-btn">
                     <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
                      {% get_translation key='bookmark_course' language=page.get_language %}
                 </button>
 
                 <img class="down-arrow" src="{% static 'images/down-arrow.svg' %}" alt="">
 
-                <button class="course-detail__compare-btn selected">
+                <button class="course-detail__bookmark-compare-btn selected">
                     <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
                      {% get_translation key='bookmark_course' language=page.get_language %}
                 </button>
@@ -193,7 +192,7 @@
         </div>
 
         <form id="compareForm" method="GET" action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
-        <div class="bookmark__courses" id="institution-bookmark"></div>
+            <div class="bookmark__courses" id="institution-bookmark"></div>
         </form>
         <script>
             savedInstitutions();

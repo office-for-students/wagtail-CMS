@@ -1,7 +1,7 @@
 @import '../variables';
 @import '../fonts';
 
-.course-detail__compare-btn {
+.course-detail__compare-btn,  .course-detail__bookmark-compare-btn{
     @include small-font--bold-mixin();
     padding: 5px 10px;
     border: 1.5px solid #266969;
@@ -167,6 +167,15 @@
         @include small-font--bold-mixin();
 
         float: right;
+        padding: 9px 16px 10px 19px;
+
+        border-radius: 16px;
+//         color: $ux-grey-3;
+        color: #fdfafa;
+        background-color: transparent;
+    }
+    .course-detail__bookmark-compare-btn {
+        @include small-font--bold-mixin();
         padding: 9px 16px 10px 19px;
 
         border-radius: 16px;

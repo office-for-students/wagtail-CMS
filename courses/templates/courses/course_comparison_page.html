@@ -20,16 +20,15 @@
     <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
 
     <script>
-
         var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
 
-        function toggle_icon(icon_id) {
+        function toggle_icon(icon_id){
             var icon_name = "#" + icon_id;
             $(icon_name).toggleClass("fa-plus");
             $(icon_name).toggleClass("fa-minus");
         }
 
-        function removeCourseCompare(index) {
+        function removeCourseCompare(index){
             compare_list.splice(index, 1);
             localStorage.setItem('compareCourses', JSON.stringify(compare_list));
 
@@ -40,101 +39,110 @@
             form.submit();
         }
 
-        window.addEventListener("load", function () {
+        window.addEventListener("load", function(){
             var saved_institutions = JSON.parse(localStorage.getItem("comparisonCourses"));
             var add_courses_link = document.getElementById("addCoursesLink")
             var add_courses_button = document.getElementById("addCourses")
             var id_list = [];
             var hidden_check = document.getElementById("hiddenCourseCompare");
 
-            for (var i = 0; i < compare_list.length; i++) {
+            for(var i = 0; i < compare_list.length; i++){
                 id_list.push(compare_list[i].id);
             }
 
             var index = 0
-            for (var i = 0; i < saved_institutions.length; i++) {
+            for(var i = 0; i < saved_institutions.length; i++){
                 let courseId = saved_institutions[i].courseId
                 let query = saved_institutions[i].uniId + ',' + courseId + ',' + saved_institutions[i].mode.en
 
-                if (id_list.includes(courseId)) {
+                if(id_list.includes(courseId)){
                     document.getElementById("hiddenCourseCompare").innerHTML += `<input id="${'course' + index}" type="checkbox" value="${query}" name="courses" hidden checked>`
                     index++
                 }
             }
 
-            if (compare_list.length === 7) {
+            if(compare_list.length === 7){
                 add_courses_link.href = "";
                 add_courses_button.disabled = true;
                 add_courses_button.style.backgroundColor = "grey";
             }
+
+            for(var index = 0; index < compare_list.length; index++)
+                for(var i = 1; i <= compare_list[index].rating; i++){
+                    var star = document.getElementById("course-" + index + "-star" + i);
+                    star.innerHTML = "★";
+                    star.classList.add("orange");
+            }
         });
 
-        function addStarRating(id, value, index) {
+        function addStarRating(id, value, index){
             var star = document.getElementById(id);
 
-            if (+value > compare_list[index].rating) {
-                for (var i = 1; i <= value; i++) {
+            if(+value > compare_list[index].rating){
+                for(var i = 1; i <= value; i++){
                     var star_fill = document.getElementById("course-" + index + "-star" + i);
                     star_fill.innerHTML = "★";
                     star_fill.classList.add("orange");
                 }
                 compare_list[index].rating = +value
-            } else if (+value < compare_list[index].rating) {
-                for (var i = 3; i > +value; i--) {
+            }
+            else if(+value < compare_list[index].rating){
+                for(var i = 3; i > +value; i--){
                     var star_fill = document.getElementById("course-" + index + "-star" + i);
                     star_fill.innerHTML = "☆";
                     star_fill.classList.remove("orange");
                 }
                 compare_list[index].rating = +value
-            } else if (compare_list[index].rating == +value) {
-                star.innerHTML = '☆';
-                star.classList.remove("orange");
-                compare_list[index].rating = +value - 1;
             }
+            else if(+value == compare_list[index].rating){
+                for(var i = 3; i > +value; i--){
+                    var star_fill = document.getElementById("course-" + index + "-star" + i);
+                    star_fill.innerHTML = "☆";
+                    star_fill.classList.remove("orange");
+                }
+                compare_list[index].rating = +value - 1
+            }
+
 
             localStorage.setItem('compareCourses', JSON.stringify(compare_list));
         }
 
-        var temp_value = 0
+        function hoverStars(value, index, dataIndex){
 
-        function hoverStars(id, value, index) {
-            var star = document.getElementById(id);
-
-            if (+value > temp_value) {
-                for (var i = 1; i <= value; i++) {
-                    var star_fill = document.getElementById("course-" + index + "-star" + i);
-                    star_fill.innerHTML = "★";
-                    star_fill.classList.add("orange");
+            if(+value < compare_list[index].rating){
+                for(var i = 3; i > +value; i--){
+                    var star = document.getElementById("course-" + index + "-star" + i);
+                    star.innerHTML = "☆";
+                    star.classList.remove("orange");
                 }
-                temp_value = +value
-            } else if (+value < temp_value) {
-                for (var i = 3; i > +value; i--) {
-                    var star_fill = document.getElementById("course-" + index + "-star" + i);
-                    star_fill.innerHTML = "☆";
-                    star_fill.classList.remove("orange");
+            }
+            else if(+value > 0){
+                for(var i = 1; i <= value; i++){
+                    var star = document.getElementById("course-" + index + "-star" + i);
+                    star.innerHTML = "★";
+                    star.classList.add("orange");
                 }
-                temp_value = +value
             }
         }
 
-        function mouseExitStars(index) {
-            console.log(index)
-        }
-
-        function prefillStars(index) {
-            for (i = 1; i <= compare_list[index].rating; i++) {
-                var star = document.getElementById("course-" + index + "-star" + i);
-                star.innerHTML = "★";
-                star.classList.add("orange");
+        function mouseExitStars(index){
+            for(var i = 1; i <= 3; i++){
+            var star = document.getElementById("course-" + index + "-star" + i);
+                if(i <= compare_list[index].rating){
+                    star.innerHTML = "★";
+                    star.classList.add("orange");
+                }
+                else{
+                    star.innerHTML = "☆";
+                    star.classList.remove("orange");
+                }
             }
         }
-
-
     </script>
 
     <style>
-        .orange {
-            color: orange !important;
+        .orange{
+            color: orange;
         }
     </style>
 
@@ -150,7 +158,6 @@
                     <i class="fas fa-sync-alt fa-5x align-text-bottom mx-3"></i>
                     <i class="fas fa-mobile-alt fa-rotate-90 fa-5x align-text-bottom mx-4"></i>
                 </div>
-
             </div>
             <h3 class="text-center">Please rotate your device to landscape to view this page</h3>
         </div>
