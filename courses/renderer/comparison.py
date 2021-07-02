@@ -138,12 +138,14 @@ def presentable_foundation_year(course: Course, language: str) -> str:
     return string_for_code(code, language, error="Course Foundations Year code not managed:")
 
 
-def presentable_accreditation(course: Course, language: str) -> bool:
+def presentable_accreditation(course: Course, language: str) -> str:
     value = True if len(course.accreditations) > 0 else False
-    if value:
+    none_text = translations.DICT['none_recorded'].get(language)
+
+    if not value:
         return '<i class="fas fa-check-circle table__tick-icon"></i>'
     else:
-        return "-<br/>None recorded"
+        return f"-<br/>{none_text}"
 
 
 def string_for_code(code: int, language: str, error: str) -> str:

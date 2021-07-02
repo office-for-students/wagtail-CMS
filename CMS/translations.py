@@ -18,6 +18,10 @@ OPTIONALS = {
 }
 
 DICT = {
+    'none_recorded': {
+        'en': 'None recorded',
+        'cy': 'Ni chofnodwyd yr un'
+    },
     'years': {
         "en": "years",
         "cy": "mlynedd"
