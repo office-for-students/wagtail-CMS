@@ -207,14 +207,7 @@
                     {{ dataset.title }}
                 </div>
                 {% for item, value in dataset.dataset.items %}
-                    <div class="table_row">
-                        <div class="table__column-first">
-                            {{ value.title }}
-                        </div>
-                        {% for course in value.values %}
-                            {% include 'courses/partials/comparison_courses_row.html' with content=course %}
-                        {% endfor %}
-                    </div>
+                  {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
                 {% endfor %}
             {% endwith %}
 
