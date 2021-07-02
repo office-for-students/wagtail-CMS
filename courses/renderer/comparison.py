@@ -112,11 +112,12 @@ def presentable_course_locations(course, language=None):
     return response
 
 
-def presentable_distance_learning(course: Course, language: str):
-    if course.distance_learning.code == 1:
-        return translations.OPTIONALS['yes'].get(language)
-    elif course.distance_learning.code == 0:
-        return translations.OPTIONALS["not_available"].get(language)
+def presentable_distance_learning(course: Course, language: str) -> str:
+    response = {}
+    if int(course.distance_learning.code) == 1:
+        response = translations.OPTIONALS['yes']
+    elif int(course.distance_learning.code) == 0:
+        response = translations.OPTIONALS["not_available"]
     else:
         logger.warning("Distance learning code not managed: {course.distance_learning.code}")
 
