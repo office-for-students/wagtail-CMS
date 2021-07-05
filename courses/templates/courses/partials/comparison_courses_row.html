@@ -1,0 +1,12 @@
+<div class="table_row">
+    <div class="table__column-first">
+        {{ title }}
+    </div>
+    {% for item in values %}
+        <div class="table__column">
+            {{ item | safe }}
+        </div>
+    {% endfor %}
+</div>
+
+

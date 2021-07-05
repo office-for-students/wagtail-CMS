@@ -1,3 +1,6 @@
+import logging
+from typing import List
+
 import requests
 
 from django.db.models.fields import TextField
@@ -16,7 +19,7 @@ from courses import request_handler
 from errors.models import ApiError
 from institutions.models import InstitutionOverview
 import json
-
+logger = logging.getLogger(__name__)
 
 STUDENT_SATISFACTION_KEY = 'student_satisfaction'
 ENTRY_INFO_KEY = 'entry_information'
@@ -284,10 +287,13 @@ class Course:
         'Part time': 2
     }
 
+
+
     def __init__(self, data_obj, language):
         self.id = data_obj.get('id')
         self.display_language = language
         course_details = data_obj.get('course')
+        logger.info(f"course_details {course_details}")
         if course_details:
             self.country = CourseCountry(course_details.get('country'))
             self.kis_course_id = course_details.get('kis_course_id')
@@ -309,6 +315,7 @@ class Course:
             self.locations = []
             if course_details.get('locations'):
                 for location in course_details.get('locations'):
+                    print("building locations, ", location)
                     self.locations.append(CourseLocation(location, self.display_language))
 
             self.length = CourseLength(course_details.get('length_of_course'), language)
@@ -463,27 +470,6 @@ class Course:
                 for leo5_salary_sector in course_details.get('leo5_salary_sector'):
                     self.leo5_salaries_sector.append(SectorSalary(leo5_salary_sector, self.display_language, self.country.code))
 
-            # self.salaries_inst = []
-            # if course_details.get('go_salary_inst_single'):
-            #     self.salaries_inst.append(Salary(course_details.get('go_salary_inst_single'), self.display_language))
-            #     self.summary_med_sal_value = Salary(course_details.get('go_salary_inst_single'), self.display_language).med
-            #     self.summary_med_sal_text_trans_key = "average_earnings_course_overview_2a"
-            # if course_details.get('leo3_inst_single'):
-            #     self.salaries_inst.append(Salary(course_details.get('leo3_inst_single'), self.display_language))
-            #     if self.summary_med_sal_value == "no_data":
-            #         self.summary_med_sal_value = Salary(course_details.get('leo3_inst_single'), self.display_language).med
-            #         self.summary_med_sal_text_trans_key = "average_earnings_course_overview_2b"
-            # if course_details.get('leo5_inst_single'):
-            #     self.salaries_inst.append(Salary(course_details.get('leo5_inst_single'), self.display_language))
-            #
-            # self.salaries_sector = []
-            # if course_details.get('go_salary_sector_single'):
-            #     self.salaries_sector.append(SectorSalary(course_details.get('go_salary_sector_single'), self.display_language))
-            # if course_details.get('leo3_salary_sector_single'):
-            #     self.salaries_sector.append(SectorSalary(course_details.get('leo3_salary_sector_single'), self.display_language))
-            # if course_details.get('leo5_salary_sector_single'):
-            #     self.salaries_sector.append(SectorSalary(course_details.get('leo5_salary_sector_single'), self.display_language))
-
             if course_details.get('country')['code'] == 'XG':
                 self.is_ni_provider = True
             else:
@@ -513,42 +499,6 @@ class Course:
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
         return unavailable
-
-
-    # def display_no_entry_info_1(self):
-    #     unavailable = {}
-
-    #     if self.display_language == enums.languages.ENGLISH:
-    #         unavailable["reason"] = "Sorry, there is no data available for this course.\n\nThis may be because the course size is too small. This does not reflect on the quality of the course."
-    #     else:
-    #         unavailable["reason"] = "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
-
-    #     unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
-
-    #     return unavailable
-    # def display_no_entry_info_2(self):
-    #     unavailable = {}
-
-    #     if self.display_language == enums.languages.ENGLISH:
-    #         unavailable["reason"] = "Sorry, there is no data available for this course.\n\nThis may be because the course size is too small. This does not reflect on the quality of the course."
-    #     else:
-    #         unavailable["reason"] = "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
-
-    #     unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
-
-    #     return unavailable
-    # def display_no_entry_info_3(self):
-    #     unavailable = {}
-
-    #     if self.display_language == enums.languages.ENGLISH:
-    #         unavailable["reason"] = "Sorry, there is no data available for this course.\n\nThis may be because the course size is too small. This does not reflect on the quality of the course."
-    #     else:
-    #         unavailable["reason"] = "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn.\n\nGall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
-
-    #     unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
-
-    #     return unavailable
-
 
 
     def display_no_data(self):
@@ -606,7 +556,13 @@ class Course:
         return len(self.locations)
 
     @property
-    def locations_list(self):
+    def locations_list(self) -> str:
+        location_names = self.all_location_names
+        return ', '.join(location_names)
+
+    @property
+    def all_location_names(self) -> List[str]:
+        """ returns a list of unique locations"""
         location_names = []
         for location in self.locations:
             if self.display_language == enums.languages.WELSH:
@@ -616,7 +572,8 @@ class Course:
                     location_names.append(location.english_name)
             else:
                 location_names.append(location.english_name)
-        return ', '.join(location_names)
+
+        return set(location_names)
 
     @property
     def has_multiple_subject_names(self):

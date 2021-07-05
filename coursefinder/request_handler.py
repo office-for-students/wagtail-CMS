@@ -18,22 +18,24 @@ def query_course_and_institution(course, institution, limit, offset, language):
         base_url = "%s?limit=%s&offset=%s&qc=%s&institutions=%s&language=%s"
         institution_query = urllib.parse.quote_plus(institution)
         course_query = urllib.parse.quote_plus(course)
-        return requests.get(url=base_url % (settings.SEARCHAPIHOST, limit, offset, course_query, institution_query, language),
-                            headers=headers)
+        return requests.get(
+            url=base_url % (settings.SEARCHAPIHOST, limit, offset, course_query, institution_query, language),
+            headers=headers)
 
 
-def course_finder_query(subject, 
-                        institution, 
-                        countries, 
-                        postcode, 
-                        filters, 
-                        sortBySubject, 
-                        sortBySubjectLimit, 
-                        course_query, 
-                        limit, 
-                        offset, 
+def course_finder_query(subject,
+                        institution,
+                        countries,
+                        postcode,
+                        filters,
+                        sortBySubject,
+                        sortBySubjectLimit,
+                        course_query,
+                        limit,
+                        offset,
                         language):
     institution_dict = {}
+
     if settings.LOCAL:
         return SearchMocks.get_successful_search_response()
     else:
@@ -60,5 +62,5 @@ def course_finder_query(subject,
             url = f"{url}&sortBySubject={sortBySubject}"
             if sortBySubjectLimit and sortBySubjectLimit != '':
                 url = f"{url}&sortBySubjectLimit={sortBySubjectLimit}"
-        
+
         return requests.request("POST", url, headers=headers, data=json.dumps(institution_dict))

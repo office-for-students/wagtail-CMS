@@ -32,11 +32,11 @@
 
             if(institutions_list[0].length > 1){
                 for (i = 0; i < institutions_list.length; i++ ){
-                    document.getElementById(institutions_list[i]).checked = true;    
+                    document.getElementById(institutions_list[i]).checked = true;
                 }
             }
             document.getElementById("filterForm").submit();
-        }           
+        }
 
         function closeInstitutionQuery(id){
             document.getElementById(id + '-check').checked = false;
@@ -88,7 +88,7 @@
 
         var postcode_query = '{{postcode_query}}'.split(',')
         var postcode_pill_text = "{% get_translation key='within_miles' language=page.get_language %}"
-        
+
     </script>
 
 {% if filter_form.mode_query or filter_form.countries_query or filter_form.course_query or filter_form.institutions or postcode_query %}
@@ -105,7 +105,7 @@
             <script>
                 institutionFilterPills()
             </script>
-        
+
 
         {% if 'Full-time' in filter_form.mode_query %}
 
@@ -122,7 +122,7 @@
                     <p class="filters-block__filter-text">{% get_translation key='part_time' language=page.get_language %}</p>
                     <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-part-time') class="filters-block__filter-iconclose">
                 </div>
-         
+
 
         {% endif %}
 
@@ -142,7 +142,7 @@
                     <p class="filters-block__filter-text">{% get_translation key='on_campus' language=page.get_language %}</p>
                     <img src="{% static 'images/icon-close.svg'%}" onclick=closeFilter('mode-campus') class="filters-block__filter-iconclose">
                 </div>
-            
+
 
         {% endif %}
 
@@ -205,7 +205,5 @@
                 </p>
                 <img src="{% static 'images/icon-close.svg'%}" class="filters-block__filter-iconclose">
             </div>
-            
-
     </div>
 {% endif %}

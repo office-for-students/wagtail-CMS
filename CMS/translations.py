@@ -1,4 +1,35 @@
+OPTIONALS = {
+    'not_available': {
+        'en': 'Not Available',
+        'cy': 'Ddim ar gael'
+    },
+    'optional': {
+        "en": 'Optional',
+        'cy': 'Dewisol'
+    },
+    'compulsory': {
+        "en": 'Compulsory',
+        'cy': 'Gorfodol'
+    },
+    'yes': {
+        'en': 'Yes',
+        'cy': 'Ydy'
+    },
+}
+
 DICT = {
+    'none_recorded': {
+        'en': 'None recorded',
+        'cy': 'Ni chofnodwyd yr un'
+    },
+    'years': {
+        "en": "years",
+        "cy": "mlynedd"
+    },
+    'year': {
+        "en": "year",
+        "cy": "blynedd"
+    },
     'a_level_similar': {
         'en': 'A-levels, Advanced Highers or similar',
         'cy': 'Safonau Uwch, Cymwysterau Advanced Higher neu debyg'
@@ -99,7 +130,7 @@ DICT = {
         'en': 'How the course is assessed',
         'cy': "Dull asesu'r cwrs"
     },
-    'at:':{
+    'at:': {
         'en': 'at:',
         'cy': 'yn:'
     },
@@ -207,7 +238,11 @@ DICT = {
         'en': 'Compare',
         'cy': 'Cymharu'
     },
-    'courses_to_view':{
+    'course_comparison_link': {
+        'en': './course-comparison/',
+        'cy': './cymharu-cyrsiau/'
+    },
+    'courses_to_view': {
         'en': 'to view saved courses side-by-side',
         'cy': 'i weld cyrsiau a gadwyd ochr wrth ochr'
     },
@@ -351,23 +386,13 @@ DICT = {
         'en': 'Distance learning',
         'cy': 'Dysgu o bell'
     },
+
     'distance_learning_values': {
-        '0': {
-            'en': 'Not Available',
-            'cy': 'Ddim ar gael'
-        },
-        '1': {
-            'en': 'Yes',
-            'cy': 'Ydy'
-        },
-        '2': {
-            'en': 'Optional',
-            'cy': 'Dewisol'
-        },
-        'Course is available other than by distance learning': {
-            'en': 'Not Available',
-            'cy': 'Ddim ar gael'
-        }
+        '0': OPTIONALS['not_available'],
+        '1': OPTIONALS['yes'],
+        '2': OPTIONALS['optional']
+        ,
+        'Course is available other than by distance learning': OPTIONALS['not_available']
     },
     'doing_further_study': {
         'en': 'Doing further study',
@@ -453,11 +478,11 @@ DICT = {
         'en': 'Filter by',
         'cy': 'Hidlo gan'
     },
-    'filter_not_applicable':{
+    'filter_not_applicable': {
         'en': 'This filter is not applicable for distance learning courses.',
         'cy': "Nid yw'r hidlydd hwn yn berthnasol i gyrsiau dysgu o bell."
     },
-    'filter_sort_by_subject_add_more_filters':{
+    'filter_sort_by_subject_add_more_filters': {
         'en': 'Please apply more filters to sort by subject',
         'cy': "Defnyddiwch fwy o hidlwyr i'w didoli yn ôl pwnc"
     },
@@ -529,7 +554,7 @@ DICT = {
         'en': 'Higher National Diploma (HND)',
         'cy': ''
     },
-    'home_page_video_link':{
+    'home_page_video_link': {
         'en': 'https://www.youtube.com/embed/4AmezarRQKc',
         'cy': 'https://www.youtube.com/embed/tfodsrNWEOs'
     },
@@ -542,8 +567,8 @@ DICT = {
         'cy': 'A oedd y dudalen hon yn ddefnyddiol i chi?'
     },
     'Important You need to check the details of any courses you are considering or applying for on the university or college website': {
-            'en': 'Important: You need to check the details of any courses you are considering or applying for on the university or college website.',
-            'cy': 'Pwysig: Mae angen i chi wirio manylion unrhyw cwrs yr ydych yn ystyried neu ceisio amdani ar wefan y prifysgol neu coleg. '
+        'en': 'Important: You need to check the details of any courses you are considering or applying for on the university or college website.',
+        'cy': 'Pwysig: Mae angen i chi wirio manylion unrhyw cwrs yr ydych yn ystyried neu ceisio amdani ar wefan y prifysgol neu coleg. '
     },
     'info_advice': {
         'en': 'Info and advice',
@@ -782,10 +807,10 @@ DICT = {
         'cy': 'Isradd arall (e.e. tystysgrif, diploma, gradd sylfaen)'
     },
     'page_not_found':
-    {
-        'en': 'This course or page is not available',
-        'cy': 'Nid yw’r cwrs hwn neu’r dudalen hon ar gael'
-    },
+        {
+            'en': 'This course or page is not available',
+            'cy': 'Nid yw’r cwrs hwn neu’r dudalen hon ar gael'
+        },
     'part_time': {
         'en': 'Part time',
         'cy': 'Rhan-amser'
@@ -864,7 +889,7 @@ DICT = {
     },
     "regions": {
         'en': 'Region(s)',
-        'cy': 'Rhanbarth(au)' 
+        'cy': 'Rhanbarth(au)'
     },
     'remove_course': {
         'en': 'Remove course',
@@ -942,9 +967,9 @@ DICT = {
         'en': 'Scotland',
         'cy': 'Yr Alban'
     },
-    'scroll_to_the_right':{
-        'en':'Scroll to the right',
-        'cy':'Sgroliwch i’r dde'
+    'scroll_to_the_right': {
+        'en': 'Scroll to the right',
+        'cy': 'Sgroliwch i’r dde'
     },
     'search': {
         'en': 'Search',
@@ -1222,10 +1247,7 @@ DICT = {
         'en': 'year course',
         'cy': 'blwyddyn'
     },
-    'yes': {
-        'en': 'Yes',
-        'cy': 'Ydy'
-    },
+    'yes': OPTIONALS['yes'],
     'you_can': {
         'en': 'You can',
         'cy': 'Gallwch '
@@ -1334,7 +1356,7 @@ DICT = {
         'en': 'I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to',
         'cy': 'Rydw i wedi gallu cael mynediad at adnoddau penodol i gwrs (e.e. offer, cyfleusterau, meddalwedd, casgliadau) pan oedd angen i mi wneud hynny'
     },
-    'I feel part of a community of staff and students' : {
+    'I feel part of a community of staff and students': {
         'en': 'I feel part of a community of staff and students',
         'cy': 'Rydw i’n teimlo’n rhan o gymuned o staff a myfyrwyr'
     },
@@ -1366,14 +1388,8 @@ DICT = {
         'en': 'Not Available',
         'cy': 'Ddim ar gael'
     },
-    'Optional': {
-        'en': 'Optional',
-        'cy': 'Dewisol'
-    },
-    'Compulsory': {
-        'en': 'Compulsory',
-        'cy': 'Gorfodol'
-    },
+    'Optional': OPTIONALS['optional'],
+    'Compulsory': OPTIONALS['compulsory'],
     'Typical range': {
         'en': 'Typical range',
         'cy': 'Ystod arfero'
@@ -1502,91 +1518,91 @@ DICT = {
         'en': 'Read more about professional accreditation',
         'cy': 'Darllen mwy am achrediad proffesiynol'
     },
-     'accreditation_description': {
+    'accreditation_description': {
         'en': "A professionally accredited course is one which has been approved or endorsed by one or more professional bodies. This is because the learning and achievement of graduates meets the professional benchmarks and standards set by the accrediting body.",
         'cy': "Cwrs wedi'i achredu'n broffesiynol yw cwrs sydd wedi'i gymeradwyo neu ei ategu gan un neu fwy o gyrff proffesiynol. Mae hyn oherwydd bod dysg a chyflawniad graddedigion yn bodloni'r meincnodau a'r safonau proffesiynol a osodir gan y corff achredu."
     },
-     'accreditation_need_to_know': {
+    'accreditation_need_to_know': {
         'en': 'What you need to know about professional accreditation',
         'cy': 'Yr hyn y mae angen i chi ei wybod am achrediad proffesiynol'
     },
-     'highly_skilled': {
+    'highly_skilled': {
         'en': 'In highly skilled work',
         'cy': 'Mewn swydd lle mae angen lefel uchel o sgiliau'
     },
-     'other_work': {
+    'other_work': {
         'en': 'In other work',
         'cy': 'Mewn math arall o swydd'
     },
-     'unknown_work': {
+    'unknown_work': {
         'en': 'In unknown work',
         'cy': 'Mewn swydd anhysbys'
     },
-     'search_n_compare': {
+    'search_n_compare': {
         'en': 'Search and compare',
         'cy': 'Chwilio a chymharu'
     },
-     'under_courses_uk': {
+    'under_courses_uk': {
         'en': 'undergraduate courses in the UK',
         'cy': 'cyrsiau israddedig yn y DU'
     },
-     'by_course_location': {
+    'by_course_location': {
         'en': 'Search by course or location',
         'cy': 'Chwilio yn ôl cwrs neu leoliad'
     },
-     'course_wizard': {
+    'course_wizard': {
         'en': 'Course Wizard',
         'cy': 'Dewin Cwrs'
     },
-     'answer_4_questions': {
+    'answer_4_questions': {
         'en': 'Answer 4 questions to find courses relevant to me',
         'cy': "Atebwch 4 cwestiwn er mwyn darganfod cyrsiau sy'n berthnasol i mi"
     },
-     'course_wizard_start_now': {
+    'course_wizard_start_now': {
         'en': 'Start Now',
         'cy': 'Dechrau Nawr'
     },
-     'n_courses_bookmarked_pt_1': {
+    'n_courses_bookmarked_pt_1': {
         'en': 'You have',
         'cy': 'Mae gennych'
     },
-     'n_courses_bookmarked_pt_2': {
+    'n_courses_bookmarked_pt_2': {
         'en': 'courses bookmarked',
         'cy': "o gyrsiau wedi'u nodi"
     },
-     'view_your_courses': {
+    'view_your_courses': {
         'en': 'View your courses',
         'cy': "Gweld eich cyrsiau"
     },
-     'info_n_advice': {
+    'info_n_advice': {
         'en': 'Information and advice',
         'cy': "Gwybodaeth a chyngor"
     },
-     'video_on_topic_title': {
+    'video_on_topic_title': {
         'en': 'Video on a relevant topic',
         'cy': "Fideo ar bwnc perthnasol"
     },
-     'video_on_topic_content': {
+    'video_on_topic_content': {
         'en': '2 mins long',
         'cy': "2 funud o hyd"
     },
-     'course_details_joint_overview_1': {
+    'course_details_joint_overview_1': {
         'en': 'What you need to know about this course',
         'cy': "Beth y mae angen i chi ei wybod am y cwrs yma"
     },
-     'course_details_joint_overview_2': {
+    'course_details_joint_overview_2': {
         'en': 'This course has information and data for more than one subject. The tabs below are there to help you see which subject the data relates to.',
         'cy': "Mae’r cwrs yma’n cynnwys gwybodaeth a data ar gyfer mwy nag un pwnc. Pwrpas y llabedau isod yw eich helpu i weld pa bwnc y mae’r data yn berthnasol iddo"
     },
-     'course_details_joint_overview_3': {
+    'course_details_joint_overview_3': {
         'en': 'Read more about courses with multiple subjects',
         'cy': "Darllen mwy am gyrsiau sy’n cynnwys amryw o bynciau"
     },
-     'course_details_joint_overview_4': {
+    'course_details_joint_overview_4': {
         'en': 'https://discoveruni.gov.uk/about-our-data/#understanding_the_data',
         'cy': 'https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#data_a_gasglwyd_gan_brifysgolion_a_cholegau_ar_fyfyrwyr_unigol'
     },
-     'clear_filters': {
+    'clear_filters': {
         'en': 'Clear Filters',
         'cy': "Clirio'r Hidlau"
     },
@@ -1594,49 +1610,53 @@ DICT = {
         'en': 'Remove all filters',
         'cy': 'Dileu yr holl hidlwyr'
     },
-     'filters': {
+    'filters': {
         'en': 'Filters',
         'cy': "Hidlau"
     },
-     'sort_by': {
+    'sort_by': {
         'en': 'Sort by:',
         'cy': "Didoli yn ôl:"
     },
-     'show_filters': {
+    'show_filters': {
         'en': 'Show Filters',
         'cy': "Dangoswch yr Hidlau"
     },
-     'need_help_choosing': {
+    'need_help_choosing': {
         'en': 'Need help choosing?',
         'cy': "Angen help dewis?"
     },
-     'search_our_guidance': {
+    'search_our_guidance': {
         'en': 'Search our guidance for help making the best decision for you.',
         'cy': "Chwiliwch yn ein canllawiau am gymorth i wneud y penderfyniad gorau i chi."
     },
-     'info_and_advice': {
+    'info_and_advice': {
         'en': 'Information and advice.',
         'cy': "Gwybodaeth a chyngor"
     },
-     'info_and_advice_url': {
+    'info_and_advice_url': {
         'en': '/how-do-i-choose-course/',
         'cy': "/cy/how-choose-course-cy/"
     },
-     'search_results': {
+    'search_results': {
         'en': 'Search results',
         'cy': "Canlyniadau'r chwiliad"
     },
-     'try_course_wizard': {
+    'try_course_wizard': {
         'en': 'Try our course wizard to narrow your search down',
         'cy': "Rhowch gynnig ar ein dewin cwrs er mwyn culhau eich chwiliad"
     },
-     'not_found_looking': {
+    'not_found_looking': {
         'en': 'Not found what you were looking for?',
         'cy': "Heb ddarganfod yr hyn yr oedd ei angen arnoch?"
     },
     'course_wizard_start_now_url': {
         'en': '/search-landing-page/course-finder-choose-country/',
         'cy': '/cy/search-landing-cy/course-finder-choose-country-cy/'
+    },
+    'professional_accreditation': {
+        'en': 'Professional accreditation',
+        'cy': "Achrediad professiyno"
     },
     'professional_accreditation_no_data': {
         'en': 'There are no professional accreditations recorded',
@@ -1650,15 +1670,15 @@ DICT = {
         'en': 'graduates at',
         'cy': "yn"
     },
-    'how_to_search_for_course':{
+    'how_to_search_for_course': {
         'en': "How to search for courses",
         'cy': "Sut i chwilio am gyrsiau"
     },
-    'accreditation_link_url':{
+    'accreditation_link_url': {
         'en': "https://discoveruni.gov.uk/how-do-i-choose-course/employment-prospects/#professional_accreditation",
         'cy': "https://discoveruni.gov.uk/cy/how-choose-course-cy/rhagolygon-cyflogaeth-employment-prospects/#achrediad_proffesiynol"
     },
-    'course_level_msg':{
+    'course_level_msg': {
         'en': "Please note: the following information does not contain any data for first degrees (such as BA, BSc, or Integrated Masters). Instead it is displaying information for other undergraduate qualifications – this includes CertHE, DipHE and FD among others",
         'cy': "Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill"
     },
