@@ -1,6 +1,6 @@
 {% load staticfiles discover_uni_tags %}
 
-<div class="course-detail__courses-container">
+<div id="courseContainer-{{forloop.counter0}}" class="course-detail__courses-container" data-index="{{forloop.counter0}}">
     <div>
         <li class="rating"
                 onmouseover="hoverStars(value, {{forloop.counter0}})"
@@ -25,7 +25,7 @@
     </div>
 
     <div class="course-detail__courses-name">
-        {{course.display_title}}
+        {{course.display_title}} {% if forloop.counter0 == 3 %}testing with a really long name because why not{% endif %}
     </div>
 
     {% if page.is_english %}
