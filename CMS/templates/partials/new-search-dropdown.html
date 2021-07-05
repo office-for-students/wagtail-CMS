@@ -27,6 +27,21 @@
 	    }
 	}
 
+    var lastClick = null;
+    $(document).ready(function() {
+        $('#institutionDropdown').mousedown(function(e) {
+          lastClick = e.target;
+        }).focus(function(e){
+            if (e.target == lastClick) {
+              openDropdown();
+            } else {
+              openDropdown();
+            }
+            lastClick = null;
+            $("#institutionDropdown").blur();
+        });
+    });
+
 	var list = []
 
 	function dropdownName(id, checked) {
@@ -104,6 +119,9 @@
             }
 	    }
 	}
+
+
+
 </script>
 
 <script>
@@ -139,6 +157,9 @@
         	}
         }
     }
+
+
+
 </script>
 
 <style>
@@ -147,40 +168,51 @@
 .rotate{transform: rotate(180deg); top:20%;}
 .pb{padding-bottom: 12px !important;}
 .pt{margin-bottom: -4px !important;}
+
+
+
 </style>
 
 <div class="dropdown">
-	<div style="display: flex;">
-	<div tabindex="0" onclick="openDropdown();" id="institutionDropdown" class="dropdown-dropbtn drop-item">
-		<p>{% get_translation key='institution_name' language=page.get_language %}</p>	
-	</div>
-	<div id="dropdownChevron" class="dropdown-chevron drop-item"></div>
-	</div>
-	<script>
+    <div style="display: flex;">
+        <div tabindex="0" id="institutionDropdown" class="dropdown-dropbtn drop-item">
+            <p>{% get_translation key='institution_name' language=page.get_language %}</p>
+        </div>
+        <div id="dropdownChevron" class="dropdown-chevron drop-item"></div>
+    </div>
+    <script>
 		dropdownLoad()
-	</script>
-	<div id="myDropdown" class="dropdown-content drop-item">
-		<input type="text" id="institutionSearchBar" onkeyup="searchList()" placeholder="{% get_translation key='search' language=page.get_language %}..." class="filters-block__filter-search drop-item">
-		<div id="selectMultiple" class='dropdown-content-select-all-check drop-item'>
-	    	<input id='selectMultipleInstitutions' class="inst-check drop-item" onclick="selectAll(this); dropdownName(id, checked)" type='checkbox'></input>
-	    	<label class="dropdown-content-institution-check-institution-label drop-item" id="selectAll-check" for="selectMultipleInstitutions">{% get_translation key='select_all_institutions' language=page.get_language %}</label>
-    	</div>
-		{% for option in options %}
-			{% if option.name in filter_form.institutions %}
-				<div class="dropdown-content-institution-check drop-item">
-			    	<input id='{{option.name}}' onclick="dropdownName(id, checked)" class="inst-check drop-item" name='institution_query' value="{{option.name}}" type='checkbox' checked></input>
-			    	<label class="dropdown-content-institution-check-institution-label drop-item" id="{{option.name}}-label" for="{{option.name}}">{{option.name}}</label>
-		    	</div>
-		    {% endif %}
-		{% endfor %}
-		{% for option in options %}
-			{% if option.name in filter_form.institutions %}
-			{% else %}
-				<div class="dropdown-content-institution-check drop-item">
-			    	<input id='{{option.name}}' onclick="dropdownName(id, checked)" class="inst-check drop-item" name='institution_query' value="{{option.name}}" type='checkbox'></input>
-			    	<label class="dropdown-content-institution-check-institution-label drop-item" id="{{option.name}}-label" for="{{option.name}}">{{option.name}}</label>
-		    	</div>
-		    {% endif %}
-		{% endfor %}
-	</div>
+    </script>
+    <div id="myDropdown" class="dropdown-content drop-item">
+        <input type="text" id="institutionSearchBar" onkeyup="searchList()"
+               placeholder="{% get_translation key='search' language=page.get_language %}..."
+               class="filters-block__filter-search drop-item">
+        <div id="selectMultiple" class='dropdown-content-select-all-check drop-item'>
+            <input id='selectMultipleInstitutions' class="inst-check drop-item"
+                   onclick="selectAll(this); dropdownName(id, checked)" type='checkbox'></input>
+            <label class="dropdown-content-institution-check-institution-label drop-item" id="selectAll-check"
+                   for="selectMultipleInstitutions">{% get_translation key='select_all_institutions' language=page.get_language %}</label>
+        </div>
+        {% for option in options %}
+        {% if option.name in filter_form.institutions %}
+        <div class="dropdown-content-institution-check drop-item">
+            <input id='{{option.name}}' onclick="dropdownName(id, checked)" class="inst-check drop-item"
+                   name='institution_query' value="{{option.name}}" type='checkbox' checked></input>
+            <label class="dropdown-content-institution-check-institution-label drop-item" id="{{option.name}}-label"
+                   for="{{option.name}}">{{option.name}}</label>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% for option in options %}
+        {% if option.name in filter_form.institutions %}
+        {% else %}
+        <div class="dropdown-content-institution-check drop-item">
+            <input id='{{option.name}}' onclick="dropdownName(id, checked)" class="inst-check drop-item"
+                   name='institution_query' value="{{option.name}}" type='checkbox'></input>
+            <label class="dropdown-content-institution-check-institution-label drop-item" id="{{option.name}}-label"
+                   for="{{option.name}}">{{option.name}}</label>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
 </div>
