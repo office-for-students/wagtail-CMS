@@ -62,10 +62,5 @@ def course_finder_query(subject,
             url = f"{url}&sortBySubject={sortBySubject}"
             if sortBySubjectLimit and sortBySubjectLimit != '':
                 url = f"{url}&sortBySubjectLimit={sortBySubjectLimit}"
-            timeout = (3.05, int(os.environ.get('RESPONSE_TIMEOUT_SORT_BY_SUBJECT', 120)))
-        else:
-            timeout = (3.05, int(os.environ.get('RESPONSE_TIMEOUT_DEFAULT', 60)))
 
         return requests.request("POST", url, headers=headers, data=json.dumps(institution_dict))
-        print(f"settings.SEARCHAPIHOST {url}")
-        print(f"headers = {headers}\ndata = {json.dumps(institution_dict)}")
