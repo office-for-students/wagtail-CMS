@@ -291,10 +291,12 @@ $course_comparison_first_column_width: 250px;
             &-container{
                 display: flex;
                 flex-direction: row; 
-                justify-content: center; 
-
+                justify-content: center;
                 width: 100%;
 
+                &-pills{
+                    display: flex;
+                }
             }
             &-selected{
                 color: black; 
@@ -684,7 +686,21 @@ $course_comparison_first_column_width: 250px;
         margin-left:auto!important;
         margin-right:auto!important;
     }
+    .comparison .course-detail__course-container{
+        display: block;
+        &-pills-slider{
+            background-color: #d2d2d2;
+            color: black;
+            width: 49px;
+            margin-bottom: 48px;
 
+        }
+    }
+    .comparison .course-detail__course-selected{
+        display: block;
+        width: 100%;
+        margin-bottom: 17px;
+    }
     .comparison__top-container{
         &-need-help-box{
             display: block;
