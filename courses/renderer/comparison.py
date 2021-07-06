@@ -143,7 +143,7 @@ def presentable_accreditation(course: Course, language: str) -> str:
     none_text = translations.DICT['none_recorded'].get(language)
 
     if value:
-        return '<i class="fas fa-check-circle table__tick-icon"></i>'
+        return '<i class="fas fa-check-circle course_comparison-table__tick-icon"></i>'
     else:
         return f"-<br/>{none_text}"
 
