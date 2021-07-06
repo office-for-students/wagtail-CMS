@@ -196,69 +196,24 @@
                 {% endif %}
             </div>
 
-            <style>
-                .table_row {
-                    display: flex;
-                    color: black;
-                    background: #f2f2f2;
-                    min-height: 44px;
-                    margin-bottom: 10px;
-                }
-
-                .table_row--header {
-                    color: black;
-                    background: #f2f2f2;
-                    height: 44px;
-
-                    line-height: 44px;
-                    margin-bottom: 10px;
-                    text-align: left;
-                    display: block;
-                    padding-left: 10px;
-                    font-weight: 600;
-                }
-
-                .table__column-first {
-                    color: black;
-                    width: 240px;
-                    text-align: left;
-                    flex: 1;
-                    vertical-align: middle;
-                    line-height: 44px;
-                    padding-left: 10px;
-                    display: inline-block;
-                }
-
-                .table__column {
-                    text-align: center;
-                    padding: 10px;
-                    flex: 1 1 0;
-
-                }
-
-                .table__tick-icon,
-                .table__tick-icon:before {
-                    font-size: 34px;
-                    background: -webkit-gradient(linear, left top, left bottom, from(#4EA27D), to(#308282));
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    display: initial;
-                }
-
-                .table__tick-gradient:before {
-                    background: -webkit-gradient(linear, left top, left bottom, from(#4EA27D), to(#308282));
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-
-
-            </style>
             {% with dataset=courses_data.0.course_details %}
-                <div class="table_row--header">
+                <div class="course_comparison-table__row-header">
                     {{ dataset.title }}
                 </div>
                 {% for item, value in dataset.dataset.items %}
+
                     {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
+                    {% if forloop.counter == 2 %}
+                        <!-- Hidden content start -->
+                        <div class="course-detail__accordion">
+                    {% endif %}
+                    {% if forloop.last %}
+                        <!-- Hidden content start -->
+                        </div>
+                        <!-- Show more start-->
+                        <div> show more </div>
+                        <!-- show more end -->
+                    {% endif %}
                 {% endfor %}
             {% endwith %}
 
