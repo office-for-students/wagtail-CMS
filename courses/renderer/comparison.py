@@ -28,7 +28,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         call_to_action=[
             dict(
                 show_more=dict(
-                    affirmitive=translations.term_for_key(key="show_more", language=language),
+                    affirmative=translations.term_for_key(key="show_more", language=language),
                     negative=translations.term_for_key(key="show_less", language=language),
                 )
             )
