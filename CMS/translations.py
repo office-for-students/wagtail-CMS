@@ -1,3 +1,19 @@
+from typing import Any
+from typing import Dict
+from typing import Optional
+
+
+# Use this to access DICT/OPTIONS, don't access them directly
+def term_for_key(key: str, language: str) -> str:
+    """ Method to use to access welsh translations for static content
+        returns: a language specific translation or the origin key string passed in if it can't be found.
+    """
+    term = DICT.get(key).get(language) if key in DICT else None
+    if not term:
+        term = OPTIONALS.get(key).get(language) if key in OPTIONALS else key
+    return term
+
+
 OPTIONALS = {
     'not_available': {
         'en': 'Not Available',
@@ -18,6 +34,14 @@ OPTIONALS = {
 }
 
 DICT = {
+    'show_more': {
+        "en": "Show more",
+        "cy": "Dangos mwy"
+    },
+    'show_less': {
+        "en": "Show less",
+        "cy": "Dangos llai"
+    },
     'none_recorded': {
         'en': 'None recorded',
         'cy': 'Ni chofnodwyd yr un'
