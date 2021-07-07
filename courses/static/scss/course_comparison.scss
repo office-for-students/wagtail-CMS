@@ -19,6 +19,7 @@
 $course_comparison_line_height: 51px;
 $course_comparison_font_normal: 14px;
 $course_comparison_show_more: 16px;
+$course_comparison_first_column_width: 250px;
 
 .course_comparison-table {
   &__tick-icon {
@@ -27,6 +28,7 @@ $course_comparison_show_more: 16px;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: initial;
+    vertical-align: middle;
   }
 
   &__row {
@@ -60,7 +62,8 @@ $course_comparison_show_more: 16px;
 
     &-first {
       color: black;
-      max-width: 240px;
+      max-width: $course_comparison_first_column_width;
+      min-width: $course_comparison_first_column_width;
       text-align: left;
       line-height: $course_comparison_line_height;
       flex: 1;
@@ -298,7 +301,7 @@ $course_comparison_show_more: 16px;
         margin-bottom: auto;
         margin-top: 17px;
         margin-right: auto;
-        width: 250px;
+        width: $course_comparison_first_column_width
       }
     }
 
