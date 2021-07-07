@@ -16,9 +16,13 @@
   display: none;
 }
 
+$course_comparison_line_height: 51px;
+$course_comparison_font_normal: 14px;
+$course_comparison_show_more: 16px;
+
 .course_comparison-table {
   &__tick-icon {
-    font-size: 34px;
+    font-size: 28px;
     background: -webkit-gradient(linear, left top, left bottom, from(#4EA27D), to(#308282));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -35,30 +39,35 @@
     &-header {
       color: black;
       background: #f2f2f2;
-      height: 44px;
-      line-height: 44px;
+      height: $course_comparison_line_height;
+      line-height: $course_comparison_line_height;
       margin-bottom: 10px;
       text-align: left;
       display: block;
       padding-left: 10px;
-      font-weight: 600;
+      font-weight: normal;
+      font-size: 20px;
     }
   }
 
   &__column {
     text-align: center;
-    padding: 10px;
+    vertical-align: middle;
     flex: 1 1 0;
+    font-size: 14px;
+    line-height: $course_comparison_line_height;
+
 
     &-first {
       color: black;
       max-width: 240px;
       text-align: left;
+      line-height: $course_comparison_line_height;
       flex: 1;
       vertical-align: middle;
-      line-height: 44px;
       padding-left: 10px;
       display: inline-block;
+      font-size: $course_comparison_font_normal;
     }
   }
 }
