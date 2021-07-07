@@ -156,134 +156,108 @@
         </div>
     </div>
     <div class="comparison d-none d-sm-block mb-5">
-        <div class="comparison__body pt-1">
+    <div class="comparison__body pt-1">
 
-            <h2 class="comparison__heading">
-                {{ page.compare_heading }}
-            </h2>
+        <h2 class="comparison__heading">
+            {{ page.compare_heading }}
+        </h2>
 
-            <div class="comparison__top-container">
-                <div class="comparison__top-container-need-help-box">
-                    <h4>Need help choosing?</h4>
-                    <p>Search our guidelines for help making the best decision for you.</p>
-                    <p style="margin-bottom: 0px;">Go to Information and advice</p>
-                </div>
-                <div class="comparison__top-container-add-btn" style="">
-                    <a id="addCoursesLink"
-                       href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/">
-                        <button id="addCourses" class="comparison__top-container-add-btn-add-courses-button">
-                            <span style="font-size:20px;">+</span> <span
-                                style="padding-left: 10px;">Add saved course</span>
-                        </button>
-                    </a>
-                    <p class="comparison__top-container-add-btn-compare-text" style="display: inline-block;">Compare up
-                        to 7 courses</p>
-                </div>
-
+        <div class="comparison__top-container">
+            <div class="comparison__top-container-need-help-box">
+                <h4>Need help choosing?</h4>
+                <p>Search our guidelines for help making the best decision for you.</p>
+                <p style="margin-bottom: 0px;">Go to Information and advice</p>
             </div>
-            <div class="course-detail__course-container">
-                {% if courses %}
-                    <div class="course-detail__course-selected">
-                        {{ courses|length }} courses selected
-                    </div>
-                    <form id="compareForm" method="GET"
-                          action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
-                        <div id="hiddenCourseCompare"></div>
-                    </form>
-                    {% for course in courses %}
-                        {% include 'courses/partials/course_comparison_overview.html' %}
-                    {% endfor %}
-                {% endif %}
+            <div class="comparison__top-container-add-btn" style="">
+                <a id="addCoursesLink"
+                   href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/">
+                    <button id="addCourses" class="comparison__top-container-add-btn-add-courses-button">
+                        <span style="font-size:20px;">+</span> <span
+                            style="padding-left: 10px;">Add saved course</span>
+                    </button>
+                </a>
+                <p class="comparison__top-container-add-btn-compare-text" style="display: inline-block;">Compare up
+                    to 7 courses</p>
             </div>
 
-            <style>
-                .table_row {
-                    display: flex;
-                    color: black;
-                    background: #f2f2f2;
-                    min-height: 44px;
-                    margin-bottom: 10px;
-                }
-
-                .table_row--header {
-                    color: black;
-                    background: #f2f2f2;
-                    height: 44px;
-
-                    line-height: 44px;
-                    margin-bottom: 10px;
-                    text-align: left;
-                    display: block;
-                    padding-left: 10px;
-                    font-weight: 600;
-                }
-
-                .table__column-first {
-                    color: black;
-                    width: 240px;
-                    text-align: left;
-                    flex: 1;
-                    vertical-align: middle;
-                    line-height: 44px;
-                    padding-left: 10px;
-                    display: inline-block;
-                }
-
-                .table__column {
-                    text-align: center;
-                    padding: 10px;
-                    flex: 1 1 0;
-
-                }
-
-                .table__tick-icon,
-                .table__tick-icon:before {
-                    font-size: 34px;
-                    background: -webkit-gradient(linear, left top, left bottom, from(#4EA27D), to(#308282));
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    display: initial;
-                }
-
-                .table__tick-gradient:before {
-                    background: -webkit-gradient(linear, left top, left bottom, from(#4EA27D), to(#308282));
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-
-
-            </style>
-            {% with dataset=courses_data.0.course_details %}
-                <div class="table_row--header">
-                    {{ dataset.title }}
+        </div>
+        <div class="course-detail__course-container">
+            {% if courses %}
+                <div class="course-detail__course-selected">
+                    {{ courses|length }} courses selected
                 </div>
-                {% for item, value in dataset.dataset.items %}
-                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
+                <form id="compareForm" method="GET"
+                      action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
+                    <div id="hiddenCourseCompare"></div>
+                </form>
+                {% for course in courses %}
+                    {% include 'courses/partials/course_comparison_overview.html' %}
                 {% endfor %}
-            {% endwith %}
+            {% endif %}
+        </div>
 
+        {% with dataset=courses_data.0.course_details %}
+            <div class="course_comparison-table__row-header">
+                {{ dataset.title }}
+            </div>
+            {% for item, value in dataset.dataset.items %}
+                {% if forloop.counter == 3 %}
+                    <!-- Hidden content start -->
+                    <div class="accordion">
+                    <div class="accordion-body">
 
-            <div hidden class="">
-                <div class="course-detail__further-info-block">
-                    <a href="/dummy-link" class="course-detail__other-courses-link">
-                        <img class="course-detail__other-courses-link-icon"
-                             src="{% static 'images/location_paddle.svg' %}"
-                             alt="">
-                        <span>{% autoescape off %}
-                            {% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
-                    </a>
-
-                    <a href="/dummy-link" class="course-detail__other-courses-link">
-                        <img class="course-detail__other-courses-link-icon"
-                             src="{% static 'images/curved_arrow_right.svg' %}"
-                             alt="">
-                        <span>{% autoescape off %}
-                            {% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
-                    </a>
+                {% endif %}
+            {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
+            {% if forloop.last %}
                 </div>
+                <!-- Hidden content end -->
+                <!-- Show more start-->
+                {% with action=dataset.call_to_action.0.show_more %}
+                    <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
+                         class="accordion-header">
+                    <div class="accordion-title">
+                    <div class="accordion-header course_comparison-table__row-header"
+                         style="font-size: 16px; font-weight: normal;">
+                    <i class="fas fa-chevron-down expand" alt="expand"
+                       style="font-size: 20px; margin-right: 4px;"
+                       aria-label="{{ action.affirmative }}"></i>
+                    <i class="fas fa-chevron-up collapse" alt="collapse"
+                       style=" font-size: 20px;margin-right: 4px;"
+                       aria-label="{{ action.negative }}"></i>
+                    <span class="expand">{{ action.affirmative }}</span>
+                    <span class="collapse">{{ action.negative }}</span>
+                {% endwith %}
+            </div>
             </div>
 
-            <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
+            </div>
+                <!-- show more end -->
+            {% endif %}
+            {% endfor %}
+        {% endwith %}
+
+
+        <div hidden class="">
+            <div class="course-detail__further-info-block">
+                <a href="/dummy-link" class="course-detail__other-courses-link">
+                    <img class="course-detail__other-courses-link-icon"
+                         src="{% static 'images/location_paddle.svg' %}"
+                         alt="">
+                    <span>{% autoescape off %}
+                        {% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
+                </a>
+
+                <a href="/dummy-link" class="course-detail__other-courses-link">
+                    <img class="course-detail__other-courses-link-icon"
+                         src="{% static 'images/curved_arrow_right.svg' %}"
+                         alt="">
+                    <span>{% autoescape off %}
+                        {% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
         </div>
     </div>
 {% endblock %}
