@@ -1,5 +1,7 @@
 # Introduction
-**<font color="red">This is a _work-in-progress_ document....</font>**
+**This is a _work-in-progress_ document....**
+
+_For the fastest possible set of steps to get things up and running, take a look at [README-quick-start.md](README-quick-start.md)_
 
 The purpose of this document is to try an simplify the dev start-up process, in particular:
 - introduce a virtual environment, of use when running tests outside of docker
