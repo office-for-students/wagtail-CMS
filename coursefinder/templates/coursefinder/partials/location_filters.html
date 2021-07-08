@@ -1,4 +1,15 @@
 {% load discover_uni_tags wagtailcore_tags %}
+<script>
+    var ten_miles = document.getElementsByClassName("ten_miles")
+    var twenty_five_miles = document.getElementsByClassName("twenty_five_miles")
+    var fifty_miles = document.getElementsByClassName("fifty_miles")
+    var distance_value = document.getElementsByClassName("filters-block__filter-postcode-div-dropdown-text")
+    var form_value = "{{filter_form.distance}}"
+
+    var dropdownText = document.getElementsByClassName("filters-block__filter-postcode-div-dropdown-text");
+    var distanceValue = document.getElementsByClassName("distance-value");
+    var translation = "{% get_translation key='within_miles' language=page.get_language %}"
+</script>
 
 <div class="filters-block__filter-accordion">
     <div tabindex="0" role="button" aria-label="Show content" class="filters-block__filter-accordion-header">
@@ -81,34 +92,46 @@
 
         <div class="filters-block__filter-postcode-div">
             <label for="postcode_field" class="filters-block__filter-checkbox-label-bold">{% get_translation key='postcode' language=page.get_language %}</label>
-            <input style="margin-bottom: 20px;" id="postcode_field" class="filters-block__filter-postcode-div-textfield postcode-fieldset" type="text" name="postcode" {% if filter_form.postcode %} value="{{filter_form.postcode}}" {% endif %} disabled required />
+            <input style="margin-bottom: 20px;" id="postcode_field" class="filters-block__filter-postcode-div-textfield postcode-fieldset" type="text" name="postcode" {% if filter_form.postcode %} value="{{filter_form.postcode}}" {% endif %} disabled />
 
             <label for="postcode-distance" class="filters-block__filter-checkbox-label-bold">{% get_translation key='distance' language=page.get_language %}</label>
-            <select id="postcode-distance" name="distance" class="filters-block__filter-postcode-div-textfield postcode-fieldset" disabled>
+            <div onclick="$('.filters-block__filter-postcode-div-dropdown-body').toggle();" class="filters-block__filter-postcode-div-dropdown distance-dropdown postcode-fieldset">
+                <div class="filters-block__filter-postcode-div-dropdown-text">{{filter_form.distance}}</div>
+                <div style="display: inline; float: right; padding-right: 5px; font-weight: bold;">&#x2304;</div>
+                <div class="filters-block__filter-postcode-div-dropdown-body distance-content">
+                    <div class="filters-block__filter-postcode-div-dropdown-item" onclick="selectDistance('');" style="height: 23px;"></div>
+                    <div class="filters-block__filter-postcode-div-dropdown-item ten_miles" onclick="selectDistance(10);"></div>
+                    <div class="filters-block__filter-postcode-div-dropdown-item twenty_five_miles" onclick="selectDistance(25);"></div>
+                    <div class="filters-block__filter-postcode-div-dropdown-item fifty_miles" onclick="selectDistance(50);"></div>
+                </div>
+            </div>
+
+            <script>
+                for(var i = 0; i < 2; i++){
+                    if(ten_miles[i]){
+                        ten_miles[i].innerHTML = translation.replace("{}", 10);
+                        twenty_five_miles[i].innerHTML= translation.replace("{}", 25);
+                        fifty_miles[i].innerHTML = translation.replace("{}", 50);
+                        if(form_value){
+                            distance_value[i].innerHTML = translation.replace("{}", form_value);
+                        };
+                    };
+                };
+            </script>
+            <select id="postcode-distance" name="distance" class="filters-block__filter-postcode-div-textfield postcode-fieldset distance-value" hidden disabled>
                 <option class="filters-block__filter-postcode-div-question"
                                         value="">
                 </option>
                 <option class="filters-block__filter-postcode-div-question"
-                                        id="ten_miles" placeholder="Within 10 miles"  value="10" {% if filter_form.distance == '10' %}selected{% endif %}>
+                        placeholder="Within 10 miles"  value="10" {% if filter_form.distance == '10' %}selected{% endif %}>10
                 </option>
                 <option class="filters-block__filter-postcode-div-question"
-                                        id="twenty_five_miles" placeholder="Within 25 miles" value="25" {% if filter_form.distance == '25' %}selected{% endif %}>
+                        placeholder="Within 25 miles" value="25" {% if filter_form.distance == '25' %}selected{% endif %}>25
                 </option>
                 <option class="filters-block__filter-postcode-div-question"
-                                        id="fifty_miles" placeholder="Within 50 miles"  value="50" {% if filter_form.distance == '50' %}selected{% endif %}>
+                        placeholder="Within 50 miles"  value="50" {% if filter_form.distance == '50' %}selected{% endif %}>50
                 </option>
             </select>
-
-            <script>
-                ten_miles = document.getElementById("ten_miles")
-                twenty_five_miles = document.getElementById("twenty_five_miles")
-                fifty_miles = document.getElementById("fifty_miles")
-
-
-                ten_miles.innerHTML = "{% get_translation key='within_miles' language=page.get_language %}".replace('{}', '10')
-                twenty_five_miles.innerHTML = "{% get_translation key='within_miles' language=page.get_language %}".replace('{}', '25')
-                fifty_miles.innerHTML = "{% get_translation key='within_miles' language=page.get_language %}".replace('{}', '50')
-            </script>
         </div>
     </div>
 </div>
