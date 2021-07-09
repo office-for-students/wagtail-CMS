@@ -658,13 +658,13 @@ $course_comparison_first_column_width: 250px;
 
 
 
-@media only screen and (max-width: 575px){
+@media(max-width: 575px){
     div.comparison__body, div.course-detail__body{
         margin-left:auto!important;
         margin-right:auto!important;
     }
 }
-@media only screen and (min-width: 576px) and (max-width: 766px){
+@media(min-width: 576px){
     div.comparison__body, div.course-detail__body{
         width: 540px!important;
         margin-left:auto!important;
@@ -683,7 +683,7 @@ $course_comparison_first_column_width: 250px;
         }
     }
 }
-@media (min-width: 767px), (max-width: 991px){
+@media (min-width: 767px){
     div.comparison__body, div.course-detail__body{
         width: 720px!important;
         margin-left:auto!important;
@@ -744,7 +744,7 @@ $course_comparison_first_column_width: 250px;
         }
     }
 }
-@media only screen and (min-width: 992px) and (max-width: 1199px){
+@media (min-width: 992px){
     div.comparison__body, div.course-detail__body{
         width: 960px!important;
         margin-left:auto!important;
@@ -752,7 +752,7 @@ $course_comparison_first_column_width: 250px;
     }
 }
 
-@media only screen and (min-width: 1200px){
+@media (min-width: 1200px){
     div.comparison__body, div.course-detail__body{
         width: 1140px!important;
         margin-left:auto!important;

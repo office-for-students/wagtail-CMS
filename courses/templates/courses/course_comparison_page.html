@@ -215,10 +215,10 @@
             </form>
 
             <div class="course-detail__course-container-pills">
-                <div style="display: flex; align-items: center; justify-content:center;"
+                <div class="course-detail__course-container-pills-slider"
                      onclick="bottom_display -= 1; scrollDisplay();" id="slideLeft"
                      class="course-detail__course-container-pills-slider">
-                    <p style="padding: 100% 0; text-align:center; font-size: 20px; font-weight: bold;"> < </p>
+                    <p class="course-detail__course-container-pills-slider-arrow"> < </p>
                 </div>
                 {% for course in courses %}
                 {% include 'courses/partials/course_comparison_overview.html' %}
@@ -352,7 +352,8 @@
         }
 
         function smallScreenDisplay(){
-            if(screen.width <= 768 || window.innerWidth){
+            console.log(screen.availWidth)
+            if(window.innerWidth <= 768){
                 if(bottom_display === 0){
                     slide_left.style.display = "none";
                     course_info_container.classList.remove("course-info-left");
@@ -383,7 +384,7 @@
                     var course_info = document.getElementById(dataset[i] + index)
                     var course_div = document.getElementById(`courseContainer-${index}`);
 
-                    if((screen.width <= 768 || window.innerWidth) && +course_div.dataset.index > bottom_display + 2 ||(screen.width <= 768 || window.innerWidth) && +course_div.dataset.index < bottom_display){
+                    if(window.innerWidth <= 768 && +course_div.dataset.index > bottom_display + 2 ||window.innerWidth <= 768 && +course_div.dataset.index < bottom_display){
                         course_div.style.display = "none";
                         course_info.style.display = "none";
                     }
@@ -396,6 +397,7 @@
         }
 
         smallScreenDisplay();
+
         window.addEventListener("load", smallScreenDisplay);
         window.addEventListener("resize", smallScreenDisplay);
 
