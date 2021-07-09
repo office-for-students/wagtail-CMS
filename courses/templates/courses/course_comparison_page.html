@@ -4,23 +4,37 @@
 
 
 {% block extra_css %}
-    <link href="{% sass_src 'scss/course_comparison.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
-    <link href="{% sass_src 'scss/course_detail.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+<link href="{% sass_src 'scss/course_comparison.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+<link href="{% sass_src 'scss/course_detail.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block extra_js %}
-    <script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}?{% code_version %}"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/highcharts-more.js"></script>
-    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}?{% code_version %}"></script>
-    <script type="text/javascript" src="{% static 'js/bar_chart.js' %}?{% code_version %}"></script>
-    <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
-    <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
+<script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}?{% code_version %}"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}?{% code_version %}"></script>
+<script type="text/javascript" src="{% static 'js/bar_chart.js' %}?{% code_version %}"></script>
+<script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
+<script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
 
-    <script>
+<style>
+    .course-info-right{
+        margin-right: 49px;
+    }
+    .course-info-left{
+        margin-left: 49px;
+    }
+    .course-info-both{
+        margin-right: 27px;
+        margin-left: 27px;
+    }
+</style>
+
+<script>
         var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
+        var dataset = []
 
         function toggle_icon(icon_id){
             var icon_name = "#" + icon_id;
@@ -138,143 +152,150 @@
                 }
             }
         }
-    </script>
 
-    <style>
+</script>
+
+<style>
         .orange{
             color: orange;
         }
-    </style>
+
+</style>
 
 {% endblock %}
 
 {% block content %}
 
-    <div class="d-block d-sm-none comparison__xs-rotate mb-sm-4 course-comparison-body">
-        <div class="mx-auto p-4">
-            <div class="row my-3">
-                <div class="mx-auto">
-                    <i class="fas fa-mobile-alt fa-5x align-text-bottom mx-3"></i>
-                    <i class="fas fa-sync-alt fa-5x align-text-bottom mx-3"></i>
-                    <i class="fas fa-mobile-alt fa-rotate-90 fa-5x align-text-bottom mx-4"></i>
-                </div>
+<div class="d-block d-sm-none comparison__xs-rotate mb-sm-4 course-comparison-body">
+    <div class="mx-auto p-4">
+        <div class="row my-3">
+            <div class="mx-auto">
+                <i class="fas fa-mobile-alt fa-5x align-text-bottom mx-3"></i>
+                <i class="fas fa-sync-alt fa-5x align-text-bottom mx-3"></i>
+                <i class="fas fa-mobile-alt fa-rotate-90 fa-5x align-text-bottom mx-4"></i>
             </div>
-            <h3 class="text-center">Please rotate your device to landscape to view this page</h3>
         </div>
+        <h3 class="text-center">Please rotate your device to landscape to view this page</h3>
     </div>
-    <div class="comparison d-none d-sm-block mb-5">
-        <div class="comparison__body pt-1">
+</div>
+<div class="comparison d-none d-sm-block mb-5">
+    <div class="comparison__body pt-1">
 
-            <h2 class="comparison__heading">
-                {{ page.compare_heading }}
-            </h2>
+        <h2 class="comparison__heading">
+            {{ page.compare_heading }}
+        </h2>
 
-            <div class="comparison__top-container">
-                <div class="comparison__top-container-need-help-box">
-                    <h4>Need help choosing?</h4>
-                    <p>Search our guidelines for help making the best decision for you.</p>
-                    <p style="margin-bottom: 0px;">Go to Information and advice</p>
-                </div>
-                <div class="comparison__top-container-add-btn" style="">
-                    <a id="addCoursesLink"
-                       href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/">
-                        <button id="addCourses" class="comparison__top-container-add-btn-add-courses-button">
-                            <span style="font-size:20px;">+</span> <span
-                                style="padding-left: 10px;">Add saved course</span>
-                        </button>
-                    </a>
-                    <p class="comparison__top-container-add-btn-compare-text" style="display: inline-block;">Compare up
-                        to 7 courses</p>
-                </div>
-
+        <div class="comparison__top-container">
+            <div class="comparison__top-container-need-help-box">
+                <h4>Need help choosing?</h4>
+                <p>Search our guidelines for help making the best decision for you.</p>
+                <p style="margin-bottom: 0px;">Go to Information and advice</p>
             </div>
-            <div class="course-detail__course-container">
-                {% if courses %}
-                    <div class="course-detail__course-selected">
-                        {{ courses|length }} courses selected
-                    </div>
-                    <form id="compareForm" method="GET"
-                          action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
-                        <div id="hiddenCourseCompare"></div>
-                    </form>
-
-                    <div class="course-detail__course-container-pills">
-                        <div style="display: flex; align-items: center; justify-content:center;" onclick="bottom_display -= 1; scrollDisplay();" id="slideLeft" class="course-detail__course-container-pills-slider">
-                            <p style="padding: 100% 0; text-align:center; font-size: 20px; font-weight: bold;"> < </p>
-                        </div>
-                    {% for course in courses %}
-                        {% include 'courses/partials/course_comparison_overview.html' %}
-                    {% endfor %}
-                        <div style="display: flex; align-items: center; justify-content:center;" onclick="bottom_display += 1; scrollDisplay();" id="slideRight" class="course-detail__course-container-pills-slider">
-                            <p style="font-size: 20px; font-weight: bold;"> > </p>
-                        </div>
-                    </div>
-
-                {% endif %}
+            <div class="comparison__top-container-add-btn" style="">
+                <a id="addCoursesLink"
+                   href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/">
+                    <button id="addCourses" class="comparison__top-container-add-btn-add-courses-button">
+                        <span style="font-size:20px;">+</span> <span
+                            style="padding-left: 10px;">Add saved course</span>
+                    </button>
+                </a>
+                <p class="comparison__top-container-add-btn-compare-text" style="display: inline-block;">Compare up
+                    to 7 courses</p>
             </div>
 
-        {% with dataset=courses_data.0.course_details %}
+        </div>
+        <div class="course-detail__course-container">
+            {% if courses %}
+            <div class="course-detail__course-selected">
+                {{ courses|length }} courses selected
+            </div>
+            <form id="compareForm" method="GET"
+                  action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
+                <div id="hiddenCourseCompare"></div>
+            </form>
+
+            <div class="course-detail__course-container-pills">
+                <div style="display: flex; align-items: center; justify-content:center;"
+                     onclick="bottom_display -= 1; scrollDisplay();" id="slideLeft"
+                     class="course-detail__course-container-pills-slider">
+                    <p style="padding: 100% 0; text-align:center; font-size: 20px; font-weight: bold;"> < </p>
+                </div>
+                {% for course in courses %}
+                {% include 'courses/partials/course_comparison_overview.html' %}
+                {% endfor %}
+                <div class="course-detail__course-container-pills-slider"
+                     onclick="bottom_display += 1; scrollDisplay();" id="slideRight"
+                     class="course-detail__course-container-pills-slider">
+                    <p class="course-detail__course-container-pills-slider-arrow"> > </p>
+                </div>
+            </div>
+
+            {% endif %}
+        </div>
+        <div id="course-info-container">
+            {% with dataset=courses_data.0.course_details %}
             <div class="course_comparison-table__row-header">
                 {{ dataset.title }}
             </div>
             {% for item, value in dataset.dataset.items %}
-                {% if forloop.counter == 3 %}
-                    <!-- Hidden content start -->
-                    <div class="accordion">
-                    <div class="accordion-body">
+            {% if forloop.counter == 3 %}
+            <!-- Hidden content start -->
+            <div class="accordion">
+                <div class="accordion-body">
 
-                {% endif %}
-            {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
-            {% if forloop.last %}
+                    {% endif %}
+                    <script>dataset.push("{{value.title}}")</script>
+                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
+                    {% if forloop.last %}
                 </div>
                 <!-- Hidden content end -->
                 <!-- Show more start-->
                 {% with action=dataset.call_to_action.0.show_more %}
-                    <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
-                         class="accordion-header">
+                <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
+                     class="accordion-header">
                     <div class="accordion-title">
-                    <div class="accordion-header course_comparison-table__row-header"
-                         style="font-size: 16px; font-weight: normal;">
-                    <i class="fas fa-chevron-down expand" alt="expand"
-                       style="font-size: 20px; margin-right: 4px;"
-                       aria-label="{{ action.affirmative }}"></i>
-                    <i class="fas fa-chevron-up collapse" alt="collapse"
-                       style=" font-size: 20px;margin-right: 4px;"
-                       aria-label="{{ action.negative }}"></i>
-                    <span class="expand">{{ action.affirmative }}</span>
-                    <span class="collapse">{{ action.negative }}</span>
+                        <div class="accordion-header course_comparison-table__row-header"
+                             style="font-size: 16px; font-weight: normal;">
+                            <i class="fas fa-chevron-down expand" alt="expand"
+                               style="font-size: 20px; margin-right: 4px;"
+                               aria-label="{{ action.affirmative }}"></i>
+                            <i class="fas fa-chevron-up collapse" alt="collapse"
+                               style=" font-size: 20px;margin-right: 4px;"
+                               aria-label="{{ action.negative }}"></i>
+                            <span class="expand">{{ action.affirmative }}</span>
+                            <span class="collapse">{{ action.negative }}</span>
+                            {% endwith %}
+                        </div>
+                    </div>
+
+                </div>
+                <!-- show more end -->
+                {% endif %}
+                {% endfor %}
                 {% endwith %}
             </div>
-            </div>
 
-            </div>
-                <!-- show more end -->
-            {% endif %}
-            {% endfor %}
-        {% endwith %}
-
-
-        <div hidden class="">
-            <div class="course-detail__further-info-block">
-                <a href="/dummy-link" class="course-detail__other-courses-link">
-                    <img class="course-detail__other-courses-link-icon"
-                         src="{% static 'images/location_paddle.svg' %}"
-                         alt="">
-                    <span>{% autoescape off %}
+            <div hidden class="">
+                <div class="course-detail__further-info-block">
+                    <a href="/dummy-link" class="course-detail__other-courses-link">
+                        <img class="course-detail__other-courses-link-icon"
+                             src="{% static 'images/location_paddle.svg' %}"
+                             alt="">
+                        <span>{% autoescape off %}
                         {% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
-                </a>
+                    </a>
 
-                <a href="/dummy-link" class="course-detail__other-courses-link">
-                    <img class="course-detail__other-courses-link-icon"
-                         src="{% static 'images/curved_arrow_right.svg' %}"
-                         alt="">
-                    <span>{% autoescape off %}
+                    <a href="/dummy-link" class="course-detail__other-courses-link">
+                        <img class="course-detail__other-courses-link-icon"
+                             src="{% static 'images/curved_arrow_right.svg' %}"
+                             alt="">
+                        <span>{% autoescape off %}
                         {% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
-                </a>
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
+            <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
         </div>
     </div>
 
@@ -282,73 +303,102 @@
         var bottom_display = 0;
         const slide_left = document.getElementById("slideLeft");
         const slide_right = document.getElementById("slideRight");
+        const course_info_container = document.getElementById("course-info-container")
 
         function scrollDisplay(){
             if(bottom_display + 3 === compare_list.length){
                 slide_right.style.display = "none";
+                course_info_container.classList.remove("course-info-right");
             }
             else{
                 slide_right.style.display = "flex";
+                course_info_container.classList.add("course-info-right");
             }
 
             if(bottom_display === 0){
                 slide_left.style.display = "none";
+                course_info_container.classList.remove("course-info-both", "course-info-left");
             }
             else{
                 slide_left.style.display = "flex";
+                course_info_container.classList.add("course-info-left");
             }
             if(slide_left.style.display == "flex" && slide_right.style.display == "flex"){
                 slide_left.style.width = "27px";
                 slide_right.style.width = "27px";
+                course_info_container.classList.remove("course-info-left", "course-info-right");
+                course_info_container.classList.add("course-info-both");
             }
             else{
                 slide_left.style.width = "49px";
                 slide_right.style.width = "49px";
+                course_info_container.classList.remove("course-info-both");
             }
 
-            for(var i=0; i < compare_list.length; i++){
-                var course_div = document.getElementById(`courseContainer-${i}`);
-                if(+course_div.dataset.index > bottom_display + 2 || +course_div.dataset.index < bottom_display){
-                    course_div.style.display = "none";
-                }
-                else{
-                    course_div.style.display = "block";
+            for(var i=0; i < 8; i++){
+                for(var index=0; index < compare_list.length; index++){
+                    var course_info = document.getElementById(dataset[i] + index)
+                    var course_div = document.getElementById(`courseContainer-${index}`);
+                    if(+course_div.dataset.index > bottom_display + 2 || +course_div.dataset.index < bottom_display){
+                        course_div.style.display = "none";
+                        course_info.style.display = "none";
+                    }
+                    else{
+                        course_div.style.display = "block";
+                        course_info.style.display = "block";
+                    }
                 }
             }
         }
 
         function smallScreenDisplay(){
-            for(var i=0; i < compare_list.length; i++){
-                var course_div = document.getElementById(`courseContainer-${i}`);
-                    if(window.innerWidth <= 768 && +course_div.dataset.index > bottom_display + 2 ||window.innerWidth <= 768 && +course_div.dataset.index < bottom_display){
+            if(screen.width <= 768 || window.innerWidth){
+                if(bottom_display === 0){
+                    slide_left.style.display = "none";
+                    course_info_container.classList.remove("course-info-left");
+                }
+                else{
+                    slide_left.style.display = "flex";
+                    course_info_container.classList.add("course-info-left")
+                }
+                if(bottom_display + 3 === compare_list.length){
+                    slide_right.style.display = "none";
+                    course_info_container.classList.remove("course-info-right");
+                }
+                else{
+
+                    slide_right.style.display = "flex";
+                    console.log(slide_right.style.display)
+                    course_info_container.classList.add("course-info-right");
+                }
+            }
+            else{
+                slide_left.style.display = "none";
+                slide_right.style.display = "none";
+                course_info_container.classList.remove("course-info-right", "course-info-left", "course-info-both");
+
+            }
+            for(var i=0; i < 8; i++){
+                for (var index = 0; index < compare_list.length; index ++){
+                    var course_info = document.getElementById(dataset[i] + index)
+                    var course_div = document.getElementById(`courseContainer-${index}`);
+
+                    if((screen.width <= 768 || window.innerWidth) && +course_div.dataset.index > bottom_display + 2 ||(screen.width <= 768 || window.innerWidth) && +course_div.dataset.index < bottom_display){
                         course_div.style.display = "none";
+                        course_info.style.display = "none";
                     }
                     else{
                         course_div.style.display = "block";
+                        course_info.style.display = "block";
                     }
-                if(window.innerWidth <= 768){
-                    if(bottom_display === 0){
-                        slide_left.style.display = "none";
-                    }
-                    else{
-                        slide_left.style.display = "flex";
-                    }
-                    if(bottom_display + 3 === compare_list.length){
-                        slide_right.style.display = "none";
-                    }
-                    else{
-                        slide_right.style.display = "flex";
-                    }
-                }
-                else{
-                    slide_left.style.display = "none";
-                    slide_right.style.display = "none";
                 }
             }
         }
 
         smallScreenDisplay();
+        window.addEventListener("load", smallScreenDisplay);
         window.addEventListener("resize", smallScreenDisplay);
 
+
     </script>
-{% endblock %}
+    {% endblock %}

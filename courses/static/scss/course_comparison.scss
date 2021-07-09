@@ -36,9 +36,9 @@ $course_comparison_first_column_width: 250px;
   &__row {
     display: flex;
     color: black;
-    background: #f2f2f2;
+
     min-height: 44px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 
     &-header {
       color: black;
@@ -60,6 +60,7 @@ $course_comparison_first_column_width: 250px;
     flex: 1 1 0;
     font-size: 14px;
     line-height: $course_comparison_line_height;
+    background: #f2f2f2;
 
 
     &-first {
@@ -73,6 +74,7 @@ $course_comparison_first_column_width: 250px;
       padding-left: 10px;
       display: inline-block;
       font-size: $course_comparison_font_normal;
+      background: #f2f2f2;
     }
   }
 }
@@ -303,7 +305,7 @@ $course_comparison_first_column_width: 250px;
                 margin-bottom: auto;
                 margin-top: 17px;
                 margin-right: auto; 
-                width: 250px;
+                min-width: 250px;
             }
         }
 
@@ -669,6 +671,7 @@ $course_comparison_first_column_width: 250px;
         margin-right:auto!important;
     }
 
+
     .comparison__top-container{
         &-need-help-box{
             display: block;
@@ -680,19 +683,48 @@ $course_comparison_first_column_width: 250px;
         }
     }
 }
-@media only screen and (min-width: 767px) and (max-width: 991px){
+@media (min-width: 767px), (max-width: 991px){
     div.comparison__body, div.course-detail__body{
         width: 720px!important;
         margin-left:auto!important;
         margin-right:auto!important;
     }
+    .course_comparison-table__row{
+        display: block;
+        text-align: center;
+        margin-bottom: 16px;
+
+        &-header{
+            margin-bottom: 16px;
+        }
+    }
+    .course_comparison-table__column-first{
+        display: block;
+        min-width: 100%;
+        max-width: 100%;
+        margin-bottom: 4px;
+    }
+
+    .small-flex-div{
+        display: flex;
+        flex-direction: row;
+    }
+
     .comparison .course-detail__course-container{
         display: block;
         &-pills-slider{
-            background-color: #d2d2d2;
-            color: black;
-            width: 49px;
+            display: flex;
+            align-items: center;
+            justify-content:center;
             margin-bottom: 48px;
+            width: 49px;
+            background-color: #d2d2d2;
+
+            &-arrow{
+                color: black;
+                font-size: 20px;
+                font-weight: bold;
+            }
 
         }
     }
