@@ -10,6 +10,7 @@
 
 {% block extra_js %}
 <script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}?{% code_version %}"></script>
+<script type="text/javascript" src="{% static 'js/ratings.js' %}?{% code_version %}"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
@@ -19,148 +20,10 @@
 <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
 <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
 
-<style>
-    .course-info-right{
-        margin-right: 49px;
-    }
-    .course-info-left{
-        margin-left: 49px;
-    }
-    .course-info-both{
-        margin-right: 27px;
-        margin-left: 27px;
-    }
-</style>
-
 <script>
         var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
         var dataset = []
-
-        function toggle_icon(icon_id){
-            var icon_name = "#" + icon_id;
-            $(icon_name).toggleClass("fa-plus");
-            $(icon_name).toggleClass("fa-minus");
-        }
-
-        function removeCourseCompare(index){
-            compare_list.splice(index, 1);
-            localStorage.setItem('compareCourses', JSON.stringify(compare_list));
-
-            var checkbox = document.getElementById("course" + index);
-            const form = document.getElementById("compareForm");
-            checkbox.checked = false;
-
-            form.submit();
-        }
-
-        window.addEventListener("load", function(){
-            var saved_institutions = JSON.parse(localStorage.getItem("comparisonCourses"));
-            var add_courses_link = document.getElementById("addCoursesLink")
-            var add_courses_button = document.getElementById("addCourses")
-            var id_list = [];
-            var hidden_check = document.getElementById("hiddenCourseCompare");
-
-            for(var i = 0; i < compare_list.length; i++){
-                id_list.push(compare_list[i].id);
-            }
-
-            var index = 0
-            for(var i = 0; i < saved_institutions.length; i++){
-                let courseId = saved_institutions[i].courseId
-                let query = saved_institutions[i].uniId + ',' + courseId + ',' + saved_institutions[i].mode.en
-
-                if(id_list.includes(courseId)){
-                    document.getElementById("hiddenCourseCompare").innerHTML += `<input id="${'course' + index}" type="checkbox" value="${query}" name="courses" hidden checked>`
-                    index++
-                }
-            }
-
-            if(compare_list.length === 7){
-                add_courses_link.href = "";
-                add_courses_button.disabled = true;
-                add_courses_button.style.backgroundColor = "grey";
-            }
-
-            for(var index = 0; index < compare_list.length; index++)
-                for(var i = 1; i <= compare_list[index].rating; i++){
-                    var star = document.getElementById("course-" + index + "-star" + i);
-                    star.innerHTML = "★";
-                    star.classList.add("orange");
-            }
-        });
-
-        function addStarRating(id, value, index){
-            var star = document.getElementById(id);
-
-            if(+value > compare_list[index].rating){
-                for(var i = 1; i <= value; i++){
-                    var star_fill = document.getElementById("course-" + index + "-star" + i);
-                    star_fill.innerHTML = "★";
-                    star_fill.classList.add("orange");
-                }
-                compare_list[index].rating = +value
-            }
-            else if(+value < compare_list[index].rating){
-                for(var i = 3; i > +value; i--){
-                    var star_fill = document.getElementById("course-" + index + "-star" + i);
-                    star_fill.innerHTML = "☆";
-                    star_fill.classList.remove("orange");
-                }
-                compare_list[index].rating = +value
-            }
-            else if(+value == compare_list[index].rating){
-                for(var i = 3; i > +value; i--){
-                    var star_fill = document.getElementById("course-" + index + "-star" + i);
-                    star_fill.innerHTML = "☆";
-                    star_fill.classList.remove("orange");
-                }
-                compare_list[index].rating = +value - 1
-            }
-
-
-            localStorage.setItem('compareCourses', JSON.stringify(compare_list));
-        }
-
-        function hoverStars(value, index, dataIndex){
-
-            if(+value < compare_list[index].rating){
-                for(var i = 3; i > +value; i--){
-                    var star = document.getElementById("course-" + index + "-star" + i);
-                    star.innerHTML = "☆";
-                    star.classList.remove("orange");
-                }
-            }
-            else if(+value > 0){
-                for(var i = 1; i <= value; i++){
-                    var star = document.getElementById("course-" + index + "-star" + i);
-                    star.innerHTML = "★";
-                    star.classList.add("orange");
-                }
-            }
-        }
-
-        function mouseExitStars(index){
-            for(var i = 1; i <= 3; i++){
-            var star = document.getElementById("course-" + index + "-star" + i);
-                if(i <= compare_list[index].rating){
-                    star.innerHTML = "★";
-                    star.classList.add("orange");
-                }
-                else{
-                    star.innerHTML = "☆";
-                    star.classList.remove("orange");
-                }
-            }
-        }
-
 </script>
-
-<style>
-        .orange{
-            color: orange;
-        }
-
-</style>
 
 {% endblock %}
 
@@ -181,10 +44,10 @@
             </div>
             <div class="comparison__top-container-add-btn">
 
-                    <button id="addCourses" class="comparison__top-container-add-btn-add-courses-button">
-                        <span style="font-size:20px;">+</span> <span
-                            style="padding-left: 10px;">Add saved course</span>
-                    </button>
+                    <a id="addCourses" href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/" class="comparison__top-container-add-btn-add-courses-button">
+                        <span style="font-size:20px;">+</span>
+                        <span>&nbsp; Add saved course</span>
+                    </a>
 
                 <p class="comparison__top-container-add-btn-compare-text">Compare up
                     to 7 courses</p>
@@ -193,28 +56,27 @@
         </div>
         <div class="course-detail__course-container">
             {% if courses %}
-            <div class="course-detail__course-selected">
-                {{ courses|length }} courses selected
-            </div>
-            <form id="compareForm" method="GET"
-                  action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
-                <div id="hiddenCourseCompare"></div>
-            </form>
-
-            <div class="course-detail__course-container-pills">
-                <div class="course-detail__course-container-pills-slider"
-                     onclick="bottom_display -= 1; scrollDisplay();" id="slideLeft">
-                    <p class="course-detail__course-container-pills-slider-arrow"> < </p>
+                <div class="course-detail__course-selected">
+                    {{ courses|length }} courses selected
                 </div>
-                {% for course in courses %}
-                {% include 'courses/partials/course_comparison_overview.html' %}
-                {% endfor %}
-                <div class="course-detail__course-container-pills-slider single-arrow"
-                     onclick="bottom_display += 1; scrollDisplay();" id="slideRight">
-                    <p class="course-detail__course-container-pills-slider-arrow"> > </p>
-                </div>
-            </div>
+                <form id="compareForm" method="GET"
+                      action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
+                    <div id="hiddenCourseCompare"></div>
+                </form>
 
+                <div class="course-detail__course-container-pills">
+                    <div class="course-detail__course-container-pills-slider"
+                         onclick="bottom_display -= 1; scrollDisplay();" id="slideLeft">
+                        <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-left"></i>
+                    </div>
+                    {% for course in courses %}
+                        {% include 'courses/partials/course_comparison_overview.html' %}
+                    {% endfor %}
+                    <div class="course-detail__course-container-pills-slider single-arrow"
+                         onclick="bottom_display += 1; scrollDisplay();" id="slideRight">
+                        <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-right"></i>
+                    </div>
+                </div>
             {% endif %}
         </div>
         <div id="course-info-container">
@@ -239,13 +101,10 @@
                 <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
                      class="accordion-header">
                     <div class="accordion-title">
-                        <div class="accordion-header course_comparison-table__row-header"
-                             style="font-size: 16px; font-weight: normal;">
-                            <i class="fas fa-chevron-down expand" alt="expand"
-                               style="font-size: 20px; margin-right: 4px;"
+                        <div class="accordion-header course_comparison-table__row-header">
+                            <i class="fas fa-chevron-down expand chevron" alt="expand"
                                aria-label="{{ action.affirmative }}"></i>
-                            <i class="fas fa-chevron-up collapse" alt="collapse"
-                               style=" font-size: 20px;margin-right: 4px;"
+                            <i class="fas fa-chevron-up collapse chevron" alt="collapse"
                                aria-label="{{ action.negative }}"></i>
                             <span class="expand">{{ action.affirmative }}</span>
                             <span class="collapse">{{ action.negative }}</span>
@@ -279,126 +138,9 @@
                     </a>
                 </div>
             </div>
-
             <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
         </div>
     </div>
-
-    <script>
-
-        document.getElementById("addCourses").onclick = function () {
-            location.href = "/{% get_translation key='bookmarks-manage' language=page.get_language %}/";
-        };
-
-        var bottom_display = 0;
-        const slide_left = document.getElementById("slideLeft");
-        const slide_right = document.getElementById("slideRight");
-        const course_info_container = document.getElementById("course-info-container")
-         if(screen.availWidth < 450 || window.innerWidth < 450){
-             var small_screen_amount = 1
-         }
-         else{
-             var small_screen_amount = 2
-         }
-
-        function scrollDisplay(){
-            if(bottom_display + small_screen_amount + 1 === compare_list.length){
-                slide_right.style.display = "none";
-                course_info_container.classList.remove("course-info-right");
-            }
-            else{
-                slide_right.style.display = "flex";
-                course_info_container.classList.add("course-info-right");
-            }
-
-            if(bottom_display === 0){
-                slide_left.style.display = "none";
-                course_info_container.classList.remove("course-info-both", "course-info-left");
-            }
-            else{
-                slide_left.style.display = "flex";
-                course_info_container.classList.add("course-info-left");
-            }
-            if(slide_left.style.display == "flex" && slide_right.style.display == "flex"){
-                slide_left.classList.remove("single-arrow");
-                slide_right.classList.remove("single-arrow");
-                slide_left.classList.add("both-arrows");
-                slide_right.classList.add("both-arrows");
-                course_info_container.classList.remove("course-info-left", "course-info-right");
-                course_info_container.classList.add("course-info-both");
-            }
-            else{
-                slide_left.classList.add("single-arrow");
-                slide_right.classList.add("single-arrow");
-                slide_left.classList.remove("both-arrows");
-                slide_right.classList.remove("both-arrows");
-                course_info_container.classList.remove("course-info-both");
-            }
-
-            for(var i=0; i < 8; i++){
-                for(var index=0; index < compare_list.length; index++){
-                    var course_info = document.getElementById(dataset[i] + index)
-                    var course_div = document.getElementById(`courseContainer-${index}`);
-                    if(+course_div.dataset.index > bottom_display + small_screen_amount || +course_div.dataset.index < bottom_display){
-                        course_div.style.display = "none";
-                        course_info.style.display = "none";
-                    }
-                    else{
-                        course_div.style.display = "block";
-                        course_info.style.display = "block";
-                    }
-                }
-            }
-        }
-
-        function smallScreenDisplay(){
-            if(screen.availWidth < 450 || window.innerWidth < 450){
-                var small_screen_amount = 1
-            }
-            else{
-                var small_screen_amount = 2
-            }
-            if(slide_left.style.display === "flex" && slide_right.style.display === "none"){
-                course_info_container.classList.add("course-info-left");
-            }
-            if(slide_right.style.display === "flex" && slide_left.style.display == "none"){
-                course_info_container.classList.add("course-info-right");
-            }
-            if(slide_left.style.display && slide_right.style.display == "flex"){
-                course_info_container.classList.remove("course-info-right");
-                course_info_container.classList.remove("course-info-left");
-                course_info_container.classList.add("course-info-both");
-            }
-            if(bottom_display === 0){
-                slide_left.style.display = "none";
-            }
-
-            for(var i=0; i < 8; i++){
-                for (var index = 0; index < compare_list.length; index ++){
-                    var course_info = document.getElementById(dataset[i] + index)
-                    var course_div = document.getElementById(`courseContainer-${index}`);
-
-                    if(screen.availWidth <= 768 && +course_div.dataset.index > bottom_display + small_screen_amount ||screen.availWidth <= 768 && +course_div.dataset.index < bottom_display){
-                        course_div.style.display = "none";
-                        course_info.style.display = "none";
-                    }
-                    if(window.innerWidth <= 768 && +course_div.dataset.index > bottom_display + small_screen_amount ||window.innerWidth <= 768 && +course_div.dataset.index < bottom_display){
-                        course_div.style.display = "none";
-                        course_info.style.display = "none";
-                    }
-                    else{
-                        course_div.style.display = "block";
-                        course_info.style.display = "block";
-                    }
-                }
-            }
-        }
-        $(window).on('load', function(){
-            smallScreenDisplay();
-        });
-        $(window).on('resize orientationchange', function(){
-            smallScreenDisplay();
-        });
-
-    </script>
+    <script type="text/javascript" src="{% static 'js/arrows.js' %}?{% code_version %}"></script>
     {% endblock %}
+</div>

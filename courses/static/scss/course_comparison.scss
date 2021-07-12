@@ -18,6 +18,29 @@
     color: black;
     cursor: pointer;
 }
+
+.orange{
+    color: orange;
+}
+
+.course-info-right{
+    margin-right: 49px;
+}
+.course-info-left{
+    margin-left: 49px;
+}
+.course-info-both{
+    margin-right: 27px;
+    margin-left: 27px;
+}
+
+.chevron{
+    font-size: 20px;
+    margin-right: 4px;
+}
+
+#addCourses:hover { color: white; text-decoration: none; }
+
 $course_comparison_line_height: 51px;
 $course_comparison_font_normal: 14px;
 $course_comparison_show_more: 16px;
@@ -69,7 +92,7 @@ $course_comparison_first_column_width: 250px;
             font-size: $course_comparison_font_normal;
             background: #f2f2f2;
             line-height: $course_comparison_line_height;
-            text-align: center;
+            text-align: left;
         }
     }
 }
@@ -136,6 +159,7 @@ $course_comparison_first_column_width: 250px;
         width: 210px;
         height: 40px;
         margin: 48px 16px 6.5px 0px;
+        padding: 9px 26px;
         border: 0px;
         border-radius: 20px;
         background-image: linear-gradient(281deg, #308282, #4ea27d);
@@ -152,6 +176,7 @@ $course_comparison_first_column_width: 250px;
         display: inline-block;
         color: #5d5d5d;
         vertical-align: top;
+        margin-top: 5px;
       }
     }
 
@@ -491,7 +516,9 @@ $course_comparison_first_column_width: 250px;
     font-size:1rem;
 }
 
-
+.hidden{
+    display: none !important;
+}
 
 
 @media only screen and (min-width: 770px) {
@@ -650,6 +677,8 @@ $course_comparison_first_column_width: 250px;
     padding-top:0!important;
 }
 
+
+
 @media only screen and (max-width: 770px) {
     .scrolling-wrapper {
       display: flex;
@@ -681,10 +710,6 @@ $course_comparison_first_column_width: 250px;
         margin-left:auto!important;
         margin-right:auto!important;
     }
-
-    .comparison__top-container-add-btn-compare-text{
-        margin-top: 18px;
-    }
 }
 @media only screen and (min-width: 576px) and (max-width: 766px){
     div.comparison__body, div.course-detail__body{
@@ -701,10 +726,6 @@ $course_comparison_first_column_width: 250px;
         }
         &-add-btn{
             margin-top: 32px;
-
-            &-compare-text{
-                margin-top: 18px;
-            }
         }
     }
 
@@ -766,9 +787,6 @@ $course_comparison_first_column_width: 250px;
         &-add-btn{
             margin-top: 32px;
 
-            &-compare-text{
-                margin-top: 18px;
-            }
         }
     }
 }
@@ -789,7 +807,6 @@ $course_comparison_first_column_width: 250px;
         display: inline-block;
         color: #5d5d5d;
         vertical-align: top;
-        margin-top: 18px;
     }
 
     .comparison .course-detail__course-container-pills-slider{
@@ -820,7 +837,6 @@ $course_comparison_first_column_width: 250px;
             vertical-align: middle;
             flex: 1 1 0;
             font-size: 14px;
-            line-height: $course_comparison_line_height;
             background: #f2f2f2;
 
             &-first {
@@ -843,11 +859,23 @@ $course_comparison_first_column_width: 250px;
         display: flex;
         width: 100%;
         margin-bottom: 4px;
+        align-items: center;
     }
 
     .comparison .course-detail__course-selected{
         min-width: 186px;
         max-width: 186px;
+    }
+
+    .course-info-right{
+        margin-right: 0px;
+    }
+    .course-info-left{
+        margin-left: 0px;
+    }
+    .course-info-both{
+        margin-right: 0px;
+        margin-left: 0px;
     }
 }
 
@@ -868,7 +896,6 @@ $course_comparison_first_column_width: 250px;
         display: inline-block;
         color: #5d5d5d;
         vertical-align: top;
-        margin-top: 18px;
     }
 
     .comparison .course-detail__course-container-pills-slider{
@@ -898,13 +925,12 @@ $course_comparison_first_column_width: 250px;
             vertical-align: middle;
             flex: 1 1 0;
             font-size: 14px;
-            line-height: $course_comparison_line_height;
             background: #f2f2f2;
 
             &-first {
                 color: black;
-                max-width: 186px;
-                min-width: 186px;
+                max-width: 250px;
+                min-width: 250px;
                 text-align: left;
                 line-height: $course_comparison_line_height;
                 flex: 1;
@@ -921,6 +947,18 @@ $course_comparison_first_column_width: 250px;
         display: flex;
         width: 100%;
         margin-bottom: 4px;
+        align-items: center;
+    }
+
+    .course-info-right{
+        margin-right: 0px;
+    }
+    .course-info-left{
+        margin-left: 0px;
+    }
+    .course-info-both{
+        margin-right: 0px;
+        margin-left: 0px;
     }
 }
 
