@@ -61,34 +61,8 @@
     </script>
 
     <script>
-        function institutionFilterPills(){
-            var containing_div = document.getElementById('institution_pill')
-            var institution_array = '{{filter_form.institutions}}'.split('@')
-            var translation_text = "{% get_translation key='number_selected_institutions' language=page.get_language %}"
-            var number_selected_institutions = translation_text.replace('{}', institution_array.length)
-
-            if(institution_array.length >= 6){
-                containing_div.innerHTML += `
-                    <div class="filters-block__filter-pill">
-                        <p class="filters-block__filter-text">${number_selected_institutions}</p>
-                        <img src="{% static 'images/icon-close.svg'%}" onclick='closeAllInstitutions()' class="filters-block__filter-iconclose">
-                    </div>`
-            }
-            else if(institution_array[0].length > 1){
-                for(i in institution_array){
-                    containing_div.innerHTML += `
-                        <div class="filters-block__filter-pill">
-                            <p class="filters-block__filter-text">${institution_array[i]}</p>
-                            <img src="{% static 'images/icon-close.svg'%}" id="${institution_array[i]}" onclick=closeInstitutionQuery(id) class="filters-block__filter-iconclose">
-                        </div>
-                    `
-                }
-            }
-        }
-
         var postcode_query = '{{postcode_query}}'.split(',')
         var postcode_pill_text = "{% get_translation key='within_miles' language=page.get_language %}"
-        
     </script>
 
 {% if filter_form.mode_query or filter_form.countries_query or filter_form.course_query or filter_form.institutions or postcode_query %}
@@ -101,11 +75,19 @@
                 </div>
 
         {% endif %}
-
-            <script>
-                institutionFilterPills()
-            </script>
-        
+            {% if institution_array|length >= 6 %}
+            <div class="filters-block__filter-pill">
+                <p class="filters-block__filter-text">{{institution_array|length}} {% get_translation key='number_selected_institutions' language=page.get_language %}</p>
+                <img src="{% static 'images/icon-close.svg'%}" onclick='closeAllInstitutions()' class="filters-block__filter-iconclose">
+            </div>
+            {% elif institution_array|length >= 1 %}
+                {% for institution in institution_array %}
+                    <div class="filters-block__filter-pill">
+                        <p class="filters-block__filter-text">{{institution}}</p>
+                        <img src="{% static 'images/icon-close.svg'%}" id="{{institution}}" onclick=closeInstitutionQuery(id) class="filters-block__filter-iconclose">
+                    </div>
+                {% endfor %}
+            {% endif %}
 
         {% if 'Full-time' in filter_form.mode_query %}
 
