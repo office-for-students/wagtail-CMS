@@ -47,6 +47,7 @@ $ cp docker-compose.yml.example docker-compose.yml
 | JSONFILES_STORAGE_CONTAINER       | <azurecontainer>     | The container URI for the json files        |
 | SENDGRID_API_KEY                  | <sendgridapikey>     | The API key for the e-mail notifications    |
 | SENDGRID_FROM_EMAIL               | <sendgridfromemail>  | The e-mail address used for notifications   |
+| SORT_BY_SUBJECT_LIMIT             | 5000                 | Used to determine how to display subjects   |
 | LOCAL                             | False                | Tells the site to use external API or mocks |
 
 # Getting Started
@@ -78,8 +79,6 @@ This now means when you run `docker-compose up` docker will rebuild the image us
 ```
 $ docker container exec -it wagtail-cms_web_1 python manage.py test
 ```
-
-> The tests will output `An error occurred whilst Bad configuration` and `An error occurred on the API during the...` when they run. This is the expected behaviour. Unfortunately some of the exceptions in the project are caught and returned as objects. Though during this process they print to the log. When testing the log is the terminal.
 
 > *IMPORTANT:* When fixing an issue write a test first to prove it's broken. Then, and only then, fix the problem
 

@@ -3,18 +3,27 @@
 @import '../../../CMS/static/scss/partials/forms';
 
 
+.course-finder-wrapper {
+    margin-left: 0;
+    padding-left: 0;
+}
+@media only screen and (min-width: 577px) {
+    .course-finder-wrapper {
+        flex: 1 0 50vw; 
+        margin-left: 30px;
+    }
+}
+
 .course-finder-results__overview-filter-open{
     text-align:center;
 }
 .course-finder__header{   
     font-family: "Nunito Sans", sans-serif;
-    background-color: #1F283A;
-    background: -webkit-linear-gradient(top, #1F283A 40% , $white 40%); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom, #1F283A 40%, $white 40%); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom, #1F283A 40%, $white 40%); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom, #1F283A 40% , $white 40%); /* Standard syntax */
+    font-size: 32px;
+    background-color: white;
     padding-bottom:0;
-    color:$white;
+    padding-top: 8px;
+    color: #5d5d5d;
 
     .course-finder__header-content{
         overflow: hidden;
@@ -38,7 +47,8 @@
         color:$black;
         font-weight:bold;
         font-size:1.2rem;
-        padding:1rem;
+        padding: 32px 0px;
+        
 
         input#institution_query-search.search-field-input {
             border-width: 1px solid #ced4da !important;
@@ -182,11 +192,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 19px 0px;
-            margin: 0;
+            padding: 0px 0px;
+            margin: 20px 0 0;
             height: 100%;
             list-style: none;
 
+            &-results{
+                font-weight: normal; 
+                font-size: 18px; 
+                padding-left: 0px !important;
+            }
 
             &-control {
                 @include mobile-body-font--bold-mixin();
@@ -395,14 +410,77 @@
     &-results {
        
         &__heading {
-            @include m-heading--bold-mixin();
+            padding-left: 15px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
 
-            margin-top: 0px;
-            margin-bottom: 47px;
-            width: 80%;
+            &_sort_by_institution {
+                padding-left: 10px;
+                margin-bottom: 20px;
+                color: $link-green;
+                font-size: 18px;
+                font-weight: normal;      
+                
+                &:hover {
+                    cursor: pointer;
+                }
 
-            line-height: 45px;
-            color: $ux-grey-3;
+                &_selected {
+                    padding-left: 10px;
+                    margin-bottom: 20px;
+                    color: $link-green;
+                    font-size: 18px;                
+                    font-weight: bold;
+                    text-decoration: underline;          
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            
+            &_sort_by_subject {
+                padding-left: 31px;
+                margin-bottom: 20px;
+                color: $link-green;
+                font-size: 18px;
+                font-weight: normal;      
+                
+                &:hover {
+                    cursor: pointer;
+                }
+    
+                &_selected {
+                    padding-left: 31px;
+                    margin-bottom: 20px;
+                    color: $link-green;
+                    font-size: 18px;                
+                    font-weight: bold;
+                    text-decoration: underline;          
+    
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                }
+
+                &_disabled {
+                    padding-left: 31px;
+                    margin-bottom: 20px;
+                    color: #ccc;
+                    font-size: 18px;                
+                }
+
+                &_warning {
+                    padding: 10px 10px 10px 32px;
+                    margin-bottom: 20px;
+                    background-color: $pale;
+                    font-size: 16px;
+                    display:block;
+                    line-height: normal;
+                }
+            }
         }
 
         &__overview {
@@ -441,7 +519,7 @@
             }
 
             &-accordion {
-                margin-bottom: 10px;
+                margin-bottom: 20px;
 
                 &__compare-btn-white{
                     position:absolute;
@@ -524,6 +602,28 @@
                         text-decoration: underline;
                     }
 
+                    &-sort-by-subject-course-name {
+                        @include desktop-body-font-mixin();
+
+                        display: block;
+                        margin: 0px;
+
+                        color: $gradient-dark-green;
+                        line-height: 22px;
+                        text-decoration: underline;
+                    }
+
+                    &-course-provider {
+                        @include mobile-body-font-mixin();
+
+                        margin: 0px;
+
+                        line-height: 26px;
+
+                        text-decoration-line: underline;
+                        font-weight: bold;
+                    }
+
                     &-course-info {
                         @include mobile-body-font-mixin();
 
@@ -537,8 +637,29 @@
     }
 }
 
-@media only screen and (min-width: 770px) {
+@media only screen and (min-width: 376px) {
+    .course-finder-results__heading {
+        padding-left: 32px;
+    }
+}
 
+@media only screen and (min-width: 577px) {
+    .course-finder-results__heading {
+        padding-left: 0;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .course-finder-results__heading_sort_by_subject_warning {
+        padding: 10px;
+        margin: 0 0 14px 20px;
+        display: inline-block;
+        max-width: 220px;
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    
     .course-finer__header .home-page__header-bg-icon {
         padding-top: 15px;
         height: 150px;
@@ -663,14 +784,14 @@
         }
 
         &-results {
-            &__heading {
-                @include l-heading--bold-mixin();
+            // &__heading {
+            //     @include l-heading--bold-mixin();
 
-                margin-bottom: 32px;
+            //     margin-bottom: 32px;
 
-                line-height: 60px;
-                color: $ux-grey-3;
-            }
+            //     line-height: 60px;
+            //     color: $ux-grey-3;
+            // }
 
             &__overview {
                 @include desktop-body-font-mixin();
@@ -741,6 +862,16 @@
                             line-height: 31px;
                         }
 
+                        &-sort-by-subject-course-name {
+                           
+                            line-height: 31px;
+                        }
+
+                        &-course-provider {
+                           
+                            line-height: 27px;
+                        }
+
                         &-course-info {
                            
                             line-height: 27px;
@@ -756,17 +887,34 @@
 
 
 
-@media only screen and (max-width: 575px){
-    .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content{
+@media only screen and (max-width: 576px){
+    .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content {
         margin-left:auto!important;
         margin-right:auto!important;
+        // padding: 32px;
     }
+
+    .course-finder__header {
+        // margin-left:auto!important;
+        // margin-right:auto!important;
+        padding: 32px;
+    }
+
+    .course-finder-base__nav {
+        padding-left: 32px;
+    }
+
 }
-@media only screen and (min-width: 576px) and (max-width: 766px){
-    .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content{
+
+@media only screen and (min-width: 577px) and (max-width: 766px){
+    .course-finder__intro-panel, 
+    .course-finder-base.course-finder-results, 
+    .course-finder__header-content 
+    {
         width: 540px!important;
         margin-left:auto!important;
         margin-right:auto!important;
+        padding: 1rem;
     }
 }
 @media only screen and (min-width: 767px) and (max-width: 991px){
@@ -774,6 +922,12 @@
         width: 720px!important;
         margin-left:auto!important;
         margin-right:auto!important;
+        padding: 1rem;
+        padding-bottom: 0px !important;
+    }
+
+    .course-finder-wrapper {
+        flex: 1 0 55%;
     }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px){
@@ -781,12 +935,21 @@
         width: 960px!important;
         margin-left:auto!important;
         margin-right:auto!important;
+        padding: 1rem;
+    }
+    .course-finder-wrapper {
+        flex: 1 0 69%;
     }
 }
 @media only screen and (min-width: 1200px){
     .course-finder__intro-panel, .course-finder-base.course-finder-results, .course-finder__header-content{
         width: 1140px!important;
         margin-left:auto!important;
-        margin-right:auto!important;
+            margin-right:auto!important;
+        // padding: 1rem;
+    }
+    .course-finder-wrapper {
+        flex: 1 0 74%;
+        
     }
 }

@@ -1,9 +1,3 @@
-# Legacy file used for CI
-#
-# It should be replaced with docker-compose.non-dev.yml as this one 
-# includes Mongo which is not required in non-dev environments.
-#
-
 version: '3'
 
 services:
@@ -31,10 +25,6 @@ services:
       # (these can be found on the CosmosDB instance under "Keys")
       AZURECOSMOSDBURI:             ""
       AZURECOSMOSDBKEY:             ""
-      # MongoDB (used for local development and testing)
-      MONGODB_HOST:                 "${MONGODB_HOST}"
-      MONGODB_USERNAME:             "${MONGODB_USERNAME}"
-      MONGODB_PASSWORD:             "${MONGODB_PASSWORD}"
       # A number of courses to load into the fixtures folder for mongodb and tests
       TEST_COURSES:                 "GN12,U18-LAWLLB,AB35,PBSFND-D_FT,U09FUECW,UMDAHFY"
       # Azure storage (institutions.xx.json, subjects.json, versions,json, etc...)
@@ -63,7 +53,6 @@ services:
       - "8000:8000"
     depends_on:
       - db
-      - mongo
 
   db:
     image: postgres:9.6
@@ -74,12 +63,3 @@ services:
       POSTGRES_DB: django
     volumes:
       - './data/postgres:/var/lib/postgresql/data'
-
-  mongo:
-    image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: "mongodb"
-      MONGO_INITDB_ROOT_PASSWORD: "mongodb"
-    volumes:
-      - './data/mongodb:/data/db'
