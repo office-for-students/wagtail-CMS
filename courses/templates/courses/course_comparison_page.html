@@ -166,19 +166,7 @@
 
 {% block content %}
 
-<div class="d-block d-sm-none comparison__xs-rotate mb-sm-4 course-comparison-body">
-    <div class="mx-auto p-4">
-        <div class="row my-3">
-            <div class="mx-auto">
-                <i class="fas fa-mobile-alt fa-5x align-text-bottom mx-3"></i>
-                <i class="fas fa-sync-alt fa-5x align-text-bottom mx-3"></i>
-                <i class="fas fa-mobile-alt fa-rotate-90 fa-5x align-text-bottom mx-4"></i>
-            </div>
-        </div>
-        <h3 class="text-center">Please rotate your device to landscape to view this page</h3>
-    </div>
-</div>
-<div class="comparison d-none d-sm-block mb-5">
+<div class="comparison d-sm-block mb-5">
     <div class="comparison__body pt-1">
 
         <h2 class="comparison__heading">
@@ -191,15 +179,14 @@
                 <p>Search our guidelines for help making the best decision for you.</p>
                 <p style="margin-bottom: 0px;">Go to Information and advice</p>
             </div>
-            <div class="comparison__top-container-add-btn" style="">
-                <a id="addCoursesLink"
-                   href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/">
+            <div class="comparison__top-container-add-btn">
+
                     <button id="addCourses" class="comparison__top-container-add-btn-add-courses-button">
                         <span style="font-size:20px;">+</span> <span
                             style="padding-left: 10px;">Add saved course</span>
                     </button>
-                </a>
-                <p class="comparison__top-container-add-btn-compare-text" style="display: inline-block;">Compare up
+
+                <p class="comparison__top-container-add-btn-compare-text">Compare up
                     to 7 courses</p>
             </div>
 
@@ -216,16 +203,14 @@
 
             <div class="course-detail__course-container-pills">
                 <div class="course-detail__course-container-pills-slider"
-                     onclick="bottom_display -= 1; scrollDisplay();" id="slideLeft"
-                     class="course-detail__course-container-pills-slider">
+                     onclick="bottom_display -= 1; scrollDisplay();" id="slideLeft">
                     <p class="course-detail__course-container-pills-slider-arrow"> < </p>
                 </div>
                 {% for course in courses %}
                 {% include 'courses/partials/course_comparison_overview.html' %}
                 {% endfor %}
-                <div class="course-detail__course-container-pills-slider"
-                     onclick="bottom_display += 1; scrollDisplay();" id="slideRight"
-                     class="course-detail__course-container-pills-slider">
+                <div class="course-detail__course-container-pills-slider single-arrow"
+                     onclick="bottom_display += 1; scrollDisplay();" id="slideRight">
                     <p class="course-detail__course-container-pills-slider-arrow"> > </p>
                 </div>
             </div>
@@ -300,13 +285,24 @@
     </div>
 
     <script>
+
+        document.getElementById("addCourses").onclick = function () {
+            location.href = "/{% get_translation key='bookmarks-manage' language=page.get_language %}/";
+        };
+
         var bottom_display = 0;
         const slide_left = document.getElementById("slideLeft");
         const slide_right = document.getElementById("slideRight");
         const course_info_container = document.getElementById("course-info-container")
+         if(screen.availWidth < 450 || window.innerWidth < 450){
+             var small_screen_amount = 1
+         }
+         else{
+             var small_screen_amount = 2
+         }
 
         function scrollDisplay(){
-            if(bottom_display + 3 === compare_list.length){
+            if(bottom_display + small_screen_amount + 1 === compare_list.length){
                 slide_right.style.display = "none";
                 course_info_container.classList.remove("course-info-right");
             }
@@ -324,14 +320,18 @@
                 course_info_container.classList.add("course-info-left");
             }
             if(slide_left.style.display == "flex" && slide_right.style.display == "flex"){
-                slide_left.style.width = "27px";
-                slide_right.style.width = "27px";
+                slide_left.classList.remove("single-arrow");
+                slide_right.classList.remove("single-arrow");
+                slide_left.classList.add("both-arrows");
+                slide_right.classList.add("both-arrows");
                 course_info_container.classList.remove("course-info-left", "course-info-right");
                 course_info_container.classList.add("course-info-both");
             }
             else{
-                slide_left.style.width = "49px";
-                slide_right.style.width = "49px";
+                slide_left.classList.add("single-arrow");
+                slide_right.classList.add("single-arrow");
+                slide_left.classList.remove("both-arrows");
+                slide_right.classList.remove("both-arrows");
                 course_info_container.classList.remove("course-info-both");
             }
 
@@ -339,7 +339,7 @@
                 for(var index=0; index < compare_list.length; index++){
                     var course_info = document.getElementById(dataset[i] + index)
                     var course_div = document.getElementById(`courseContainer-${index}`);
-                    if(+course_div.dataset.index > bottom_display + 2 || +course_div.dataset.index < bottom_display){
+                    if(+course_div.dataset.index > bottom_display + small_screen_amount || +course_div.dataset.index < bottom_display){
                         course_div.style.display = "none";
                         course_info.style.display = "none";
                     }
@@ -352,39 +352,37 @@
         }
 
         function smallScreenDisplay(){
-            console.log(screen.availWidth)
-            if(window.innerWidth <= 768){
-                if(bottom_display === 0){
-                    slide_left.style.display = "none";
-                    course_info_container.classList.remove("course-info-left");
-                }
-                else{
-                    slide_left.style.display = "flex";
-                    course_info_container.classList.add("course-info-left")
-                }
-                if(bottom_display + 3 === compare_list.length){
-                    slide_right.style.display = "none";
-                    course_info_container.classList.remove("course-info-right");
-                }
-                else{
-
-                    slide_right.style.display = "flex";
-                    console.log(slide_right.style.display)
-                    course_info_container.classList.add("course-info-right");
-                }
+            if(screen.availWidth < 450 || window.innerWidth < 450){
+                var small_screen_amount = 1
             }
             else{
-                slide_left.style.display = "none";
-                slide_right.style.display = "none";
-                course_info_container.classList.remove("course-info-right", "course-info-left", "course-info-both");
-
+                var small_screen_amount = 2
             }
+            if(slide_left.style.display === "flex" && slide_right.style.display === "none"){
+                course_info_container.classList.add("course-info-left");
+            }
+            if(slide_right.style.display === "flex" && slide_left.style.display == "none"){
+                course_info_container.classList.add("course-info-right");
+            }
+            if(slide_left.style.display && slide_right.style.display == "flex"){
+                course_info_container.classList.remove("course-info-right");
+                course_info_container.classList.remove("course-info-left");
+                course_info_container.classList.add("course-info-both");
+            }
+            if(bottom_display === 0){
+                slide_left.style.display = "none";
+            }
+
             for(var i=0; i < 8; i++){
                 for (var index = 0; index < compare_list.length; index ++){
                     var course_info = document.getElementById(dataset[i] + index)
                     var course_div = document.getElementById(`courseContainer-${index}`);
 
-                    if(window.innerWidth <= 768 && +course_div.dataset.index > bottom_display + 2 ||window.innerWidth <= 768 && +course_div.dataset.index < bottom_display){
+                    if(screen.availWidth <= 768 && +course_div.dataset.index > bottom_display + small_screen_amount ||screen.availWidth <= 768 && +course_div.dataset.index < bottom_display){
+                        course_div.style.display = "none";
+                        course_info.style.display = "none";
+                    }
+                    if(window.innerWidth <= 768 && +course_div.dataset.index > bottom_display + small_screen_amount ||window.innerWidth <= 768 && +course_div.dataset.index < bottom_display){
                         course_div.style.display = "none";
                         course_info.style.display = "none";
                     }
@@ -395,12 +393,12 @@
                 }
             }
         }
-
-        smallScreenDisplay();
-
-        window.addEventListener("load", smallScreenDisplay);
-        window.addEventListener("resize", smallScreenDisplay);
-
+        $(window).on('load', function(){
+            smallScreenDisplay();
+        });
+        $(window).on('resize orientationchange', function(){
+            smallScreenDisplay();
+        });
 
     </script>
     {% endblock %}

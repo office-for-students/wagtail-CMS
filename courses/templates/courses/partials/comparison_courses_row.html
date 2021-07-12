@@ -2,7 +2,7 @@
     <div class="course_comparison-table__column-first">
         {{ title }}
     </div>
-    <div style="display: flex; flex-direction: row; flex: 1;" class="small-flex-div">
+    <div class="small-flex-div">
     {% for item in values %}
         <div id="{{title}}{{forloop.counter0}}" class="course_comparison-table__column">
             {{ item | safe }}

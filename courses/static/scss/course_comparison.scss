@@ -24,59 +24,66 @@ $course_comparison_show_more: 16px;
 $course_comparison_first_column_width: 250px;
 
 .course_comparison-table {
-  &__tick-icon {
-    font-size: 28px;
-    background: -webkit-gradient(linear, left top, left bottom, from(#4EA27D), to(#308282));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: initial;
-    vertical-align: middle;
-  }
+    &__tick-icon {
+        font-size: 28px;
+        background: -webkit-gradient(linear, left top, left bottom, from(#4EA27D), to(#308282));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: initial;
+        vertical-align: middle;
+}
+    &__row{
+        display: block;
+        text-align: center;
+        margin-bottom: 16px;
+        min-height: 44px;
 
-  &__row {
+            &-header{
+                height: $course_comparison_line_height;
+                line-height: $course_comparison_line_height;
+                margin-bottom: 16px;
+                display: block;
+                background: #f2f2f2;
+                color: black;
+                padding-left: 10px;
+            }
+        }
+
+
+    &__column{
+        text-align: center;
+        vertical-align: middle;
+        flex: 1 1 0;
+        font-size: 14px;
+        line-height: $course_comparison_line_height;
+        background: #f2f2f2;
+        color: black;
+
+        &-first{
+            display: block;
+            min-width: 100%;
+            max-width: 100%;
+            margin-bottom: 4px;
+            color: black;
+            padding-left: 10px;
+            font-size: $course_comparison_font_normal;
+            background: #f2f2f2;
+            line-height: $course_comparison_line_height;
+            text-align: center;
+        }
+    }
+}
+.small-flex-div{
     display: flex;
-    color: black;
+    flex-direction: row;
+}
 
-    min-height: 44px;
-    margin-bottom: 8px;
+.single-arrow{
+    width: 49px;
+}
 
-    &-header {
-      color: black;
-      background: #f2f2f2;
-      height: $course_comparison_line_height;
-      line-height: $course_comparison_line_height;
-      margin-bottom: 10px;
-      text-align: left;
-      display: block;
-      padding-left: 10px;
-      font-weight: normal;
-      font-size: 20px;
-    }
-  }
-
-  &__column {
-    text-align: center;
-    vertical-align: middle;
-    flex: 1 1 0;
-    font-size: 14px;
-    line-height: $course_comparison_line_height;
-    background: #f2f2f2;
-
-
-    &-first {
-      color: black;
-      max-width: $course_comparison_first_column_width;
-      min-width: $course_comparison_first_column_width;
-      text-align: left;
-      line-height: $course_comparison_line_height;
-      flex: 1;
-      vertical-align: middle;
-      padding-left: 10px;
-      display: inline-block;
-      font-size: $course_comparison_font_normal;
-      background: #f2f2f2;
-    }
-  }
+.both-arrows{
+    width: 27px;
 }
 
 .comparison {
@@ -145,7 +152,6 @@ $course_comparison_first_column_width: 250px;
         display: inline-block;
         color: #5d5d5d;
         vertical-align: top;
-        margin-top: 18px;
       }
     }
 
@@ -156,6 +162,7 @@ $course_comparison_first_column_width: 250px;
       float: right;
       padding: 20px;
       text-align: center;
+      margin-bottom: 31px;
     }
   }
 
@@ -291,13 +298,27 @@ $course_comparison_first_column_width: 250px;
 
         &__course{
             &-container{
-                display: flex;
-                flex-direction: row; 
-                justify-content: center;
+
                 width: 100%;
 
                 &-pills{
                     display: flex;
+                    overflow: hidden;
+
+                    &-slider{
+                        display: flex;
+                        align-items: center;
+                        justify-content:center;
+                        margin-bottom: 48px;
+                        background-color: #d2d2d2;
+                        cursor: pointer;
+
+                        &-arrow{
+                            color: black;
+                            font-size: 20px;
+                            font-weight: bold;
+                        }
+                    }
                 }
             }
             &-selected{
@@ -655,13 +676,14 @@ $course_comparison_first_column_width: 250px;
     
   }
 
-
-
-
 @media only screen and (max-width: 575px){
     div.comparison__body, div.course-detail__body{
         margin-left:auto!important;
         margin-right:auto!important;
+    }
+
+    .comparison__top-container-add-btn-compare-text{
+        margin-top: 18px;
     }
 }
 @media only screen and (min-width: 576px) and (max-width: 766px){
@@ -671,7 +693,6 @@ $course_comparison_first_column_width: 250px;
         margin-right:auto!important;
     }
 
-
     .comparison__top-container{
         &-need-help-box{
             display: block;
@@ -680,6 +701,19 @@ $course_comparison_first_column_width: 250px;
         }
         &-add-btn{
             margin-top: 32px;
+
+            &-compare-text{
+                margin-top: 18px;
+            }
+        }
+    }
+
+    .comparison .course-detail__course-container{
+        display: block;
+        &-pills-slider{
+            display: flex;
+            align-items: center;
+            justify-content:center;
         }
     }
 }
@@ -716,16 +750,6 @@ $course_comparison_first_column_width: 250px;
             display: flex;
             align-items: center;
             justify-content:center;
-            margin-bottom: 48px;
-            width: 49px;
-            background-color: #d2d2d2;
-
-            &-arrow{
-                color: black;
-                font-size: 20px;
-                font-weight: bold;
-            }
-
         }
     }
     .comparison .course-detail__course-selected{
@@ -741,6 +765,10 @@ $course_comparison_first_column_width: 250px;
         }
         &-add-btn{
             margin-top: 32px;
+
+            &-compare-text{
+                margin-top: 18px;
+            }
         }
     }
 }
@@ -750,6 +778,77 @@ $course_comparison_first_column_width: 250px;
         margin-left:auto!important;
         margin-right:auto!important;
     }
+
+    .course-detail__course-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .comparison__top-container-add-btn-compare-text {
+        display: inline-block;
+        color: #5d5d5d;
+        vertical-align: top;
+        margin-top: 18px;
+    }
+
+    .comparison .course-detail__course-container-pills-slider{
+       display: none;
+    }
+
+    .course_comparison-table {
+        &__row {
+            display: flex;
+            flex-direction: row;
+            color: black;
+            min-height: 44px;
+            margin-bottom: 8px;
+
+            &-header {
+                height: $course_comparison_line_height;
+                line-height: $course_comparison_line_height;
+                margin-bottom: 10px;
+                display: block;
+                background: #f2f2f2;
+                color: black;
+                padding-left: 10px;
+            }
+        }
+
+        &__column {
+            text-align: center;
+            vertical-align: middle;
+            flex: 1 1 0;
+            font-size: 14px;
+            line-height: $course_comparison_line_height;
+            background: #f2f2f2;
+
+            &-first {
+                color: black;
+                max-width: 186px;
+                min-width: 186px;
+                text-align: left;
+                line-height: $course_comparison_line_height;
+                flex: 1;
+                vertical-align: middle;
+                padding-left: 10px;
+                display: inline-block;
+                font-size: $course_comparison_font_normal;
+                background: #f2f2f2;
+            }
+        }
+    }
+
+    .small-flex-div{
+        display: flex;
+        width: 100%;
+        margin-bottom: 4px;
+    }
+
+    .comparison .course-detail__course-selected{
+        min-width: 186px;
+        max-width: 186px;
+    }
 }
 
 @media only screen and (min-width: 1200px){
@@ -757,6 +856,71 @@ $course_comparison_first_column_width: 250px;
         width: 1140px!important;
         margin-left:auto!important;
         margin-right:auto!important;
+    }
+
+    .course-detail__course-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .comparison__top-container-add-btn-compare-text {
+        display: inline-block;
+        color: #5d5d5d;
+        vertical-align: top;
+        margin-top: 18px;
+    }
+
+    .comparison .course-detail__course-container-pills-slider{
+       display: none;
+    }
+    .course_comparison-table {
+        &__row {
+            display: flex;
+            flex-direction: row;
+            color: black;
+            min-height: 44px;
+            margin-bottom: 8px;
+
+            &-header {
+                height: $course_comparison_line_height;
+                line-height: $course_comparison_line_height;
+                margin-bottom: 10px;
+                display: block;
+                background: #f2f2f2;
+                color: black;
+                padding-left: 10px;
+            }
+        }
+
+        &__column {
+            text-align: center;
+            vertical-align: middle;
+            flex: 1 1 0;
+            font-size: 14px;
+            line-height: $course_comparison_line_height;
+            background: #f2f2f2;
+
+            &-first {
+                color: black;
+                max-width: 186px;
+                min-width: 186px;
+                text-align: left;
+                line-height: $course_comparison_line_height;
+                flex: 1;
+                vertical-align: middle;
+                padding-left: 10px;
+                display: inline-block;
+                font-size: $course_comparison_font_normal;
+                background: #f2f2f2;
+            }
+        }
+    }
+
+    .small-flex-div{
+        display: flex;
+        width: 100%;
+        margin-bottom: 4px;
     }
 }
 
