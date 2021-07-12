@@ -20,12 +20,12 @@
                 onclick="addStarRating(id, value, {{forloop.counter0}})" id="course-{{forloop.counter0}}-star3"
                 value="3">☆
         </li>
-        <img style="float: right; cursor: pointer;" onclick="removeCourseCompare({{ forloop.counter0 }})"
+        <img class="course-detail__courses-container-exit-course" onclick="removeCourseCompare({{ forloop.counter0 }})"
              src="{% static 'images/icon-close.svg'%}">
     </div>
 
     <div class="course-detail__courses-name">
-        {{course.display_title}} {% if forloop.counter0 == 3 %}testing with a really long name because why not{% endif %}
+        {{course.display_title}}
     </div>
 
     {% if page.is_english %}

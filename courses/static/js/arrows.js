@@ -2,7 +2,7 @@ var bottom_display = 0;
 const slide_left = document.getElementById("slideLeft");
 const slide_right = document.getElementById("slideRight");
 const course_info_container = document.getElementById("course-info-container")
-if(screen.availWidth < 450 || window.innerWidth < 450){
+if(screen.availWidth <= 320 || window.innerWidth <= 320){
     var small_screen_amount = 1
 }
 else{
@@ -60,7 +60,7 @@ function scrollDisplay(){
 }
 
 function smallScreenDisplay(){
-    if(screen.availWidth < 450 || window.innerWidth < 450){
+    if(screen.availWidth <= 320 || window.innerWidth <= 320){
         var small_screen_amount = 1
     }
     else{
@@ -69,17 +69,23 @@ function smallScreenDisplay(){
     if(bottom_display === 0){
         slide_left.classList.add("hidden");
     }
-    if(!(slide_left.classList.contains("hidden")) && slide_right.classList.contains("hidden")){
+    if(screen.availWidth >= 768 || window.innerWidth >= 768){
+        course_info_container.classList.remove("course-info-right");
+        course_info_container.classList.remove("course-info-left");
+        course_info_container.classList.remove("course-info-both");
+    }
+    else if(!(slide_left.classList.contains("hidden")) && slide_right.classList.contains("hidden")){
         course_info_container.classList.add("course-info-left");
     }
-    if(!(slide_right.classList.contains("hidden")) && slide_left.classList.contains("hidden")){
+    else if(!(slide_right.classList.contains("hidden")) && slide_left.classList.contains("hidden")){
         course_info_container.classList.add("course-info-right");
     }
-    if(!(slide_right.classList.contains("hidden")) && !(slide_left.classList.contains("hidden"))){
+    else if(!(slide_right.classList.contains("hidden")) && !(slide_left.classList.contains("hidden"))){
         course_info_container.classList.remove("course-info-right");
         course_info_container.classList.remove("course-info-left");
         course_info_container.classList.add("course-info-both");
     }
+
 
 
     for(var i=0; i < 8; i++){
@@ -87,11 +93,11 @@ function smallScreenDisplay(){
             var course_info = document.getElementById(dataset[i] + index)
             var course_div = document.getElementById(`courseContainer-${index}`);
 
-            if(screen.availWidth <= 768 && +course_div.dataset.index > bottom_display + small_screen_amount ||screen.availWidth <= 768 && +course_div.dataset.index < bottom_display){
+            if(screen.availWidth <= 576 && +course_div.dataset.index > bottom_display + small_screen_amount ||screen.availWidth <= 576 && +course_div.dataset.index < bottom_display){
                 course_div.classList.add("hidden");
                 course_info.classList.add("hidden");
             }
-            if(window.innerWidth <= 768 && +course_div.dataset.index > bottom_display + small_screen_amount ||window.innerWidth <= 768 && +course_div.dataset.index < bottom_display){
+            else if(window.innerWidth <= 576 && +course_div.dataset.index > bottom_display + small_screen_amount ||window.innerWidth <= 576 && +course_div.dataset.index < bottom_display){
                 course_div.classList.add("hidden");
                 course_info.classList.add("hidden");
             }

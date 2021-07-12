@@ -39,6 +39,10 @@
     margin-right: 4px;
 }
 
+.blue-text{
+    color: #308282;
+}
+
 #addCourses:hover { color: white; text-decoration: none; }
 
 $course_comparison_line_height: 51px;
@@ -323,7 +327,6 @@ $course_comparison_first_column_width: 250px;
 
         &__course{
             &-container{
-
                 width: 100%;
 
                 &-pills{
@@ -361,6 +364,11 @@ $course_comparison_first_column_width: 250px;
                 background-color: #f2f2f2;
                 margin: 0px 4px 48px 4px;
                 padding: 16px;
+
+                &-exit-course{
+                    float: right;
+                    cursor: pointer;
+                }
             }
 
             &-name{
@@ -768,9 +776,7 @@ $course_comparison_first_column_width: 250px;
     .comparison .course-detail__course-container{
         display: block;
         &-pills-slider{
-            display: flex;
-            align-items: center;
-            justify-content:center;
+            display: none;
         }
     }
     .comparison .course-detail__course-selected{
@@ -786,7 +792,6 @@ $course_comparison_first_column_width: 250px;
         }
         &-add-btn{
             margin-top: 32px;
-
         }
     }
 }
