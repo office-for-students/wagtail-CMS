@@ -75,19 +75,25 @@
                 </div>
 
         {% endif %}
-            {% if institution_array|length >= 6 %}
+        {% if institution_array|length >= 6 %}
             <div class="filters-block__filter-pill">
-                <p class="filters-block__filter-text">{{institution_array|length}} {% get_translation key='number_selected_institutions' language=page.get_language %}</p>
+                <p id="multipleInstitutions" class="filters-block__filter-text"></p>
                 <img src="{% static 'images/icon-close.svg'%}" onclick='closeAllInstitutions()' class="filters-block__filter-iconclose">
             </div>
-            {% elif institution_array|length >= 1 %}
-                {% for institution in institution_array %}
-                    <div class="filters-block__filter-pill">
-                        <p class="filters-block__filter-text">{{institution}}</p>
-                        <img src="{% static 'images/icon-close.svg'%}" id="{{institution}}" onclick=closeInstitutionQuery(id) class="filters-block__filter-iconclose">
-                    </div>
-                {% endfor %}
-            {% endif %}
+            <script>
+                var translation = "{% get_translation key='number_selected_institutions' language=page.get_language %}"
+                var institutions = document.getElementById("multipleInstitutions")
+                var institutions_list = "{{filter_form.institutions}}".split("@")
+                institutions.innerHTML = translation.replace("{}", institutions_list.length)
+            </script>
+        {% elif institution_array|length >= 1 %}
+            {% for institution in institution_array %}
+                <div class="filters-block__filter-pill">
+                    <p class="filters-block__filter-text">{{institution}}</p>
+                    <img src="{% static 'images/icon-close.svg'%}" id="{{institution}}" onclick=closeInstitutionQuery(id) class="filters-block__filter-iconclose">
+                </div>
+            {% endfor %}
+        {% endif %}
 
         {% if 'Full-time' in filter_form.mode_query %}
 
