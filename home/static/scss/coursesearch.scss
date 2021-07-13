@@ -2,7 +2,7 @@
 @import '../../../CMS/static/scss/variables';
 
 .search_button {
-  @include search-btn;
+  @include yellow-btn;
 }
 
 .course_search {
@@ -41,8 +41,6 @@
 
         padding-left: 10px;
         padding-right: 10px;
-
-
       }
     }
 
@@ -75,4 +73,71 @@
       }
     }
   }
+}
+
+.course_comparison-search {
+  color: $black;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+
+  .row{
+    width: 100%;
+  }
+
+  .col-lg-1 {
+    padding: 0;
+    padding-left: 1rem;
+    flex: 0 0 2.333333%;
+    max-width: 2.333333%;
+  }
+
+
+  h4 {
+    color: $black;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  h5 {
+    font-weight: normal;
+    font-size: 0.9rem;
+
+  }
+
+  .home-page__course-wizard-icon {
+    height: 45px;
+    width: auto;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-dropdown .search-field-dropdown-button {
+    position: absolute;
+    display: inline-block;
+    top: 10%;
+    right: 4px;
+    width: 32px;
+    height: 85%;
+    border: none;
+    background-color: $white;
+    cursor: pointer;
+    outline: none;
+  }
+
+
+  input#institution_query-search.search-field-input {
+    border-width: 1px solid #ced4da !important;
+    width: 100%;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 1rem;
+    color: rgb(73, 80, 87);
+    height: calc(1.5em + .75rem + 2px);
+    background-color: $white !important;
+    padding-left: 0.7rem;
+  }
+
 }

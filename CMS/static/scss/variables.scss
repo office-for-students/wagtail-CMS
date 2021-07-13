@@ -53,13 +53,16 @@ $mobile-body-line-height: 16px;
 $small-font-size: 14px;
 $small-line-height: 14px;
 
-@mixin search-btn {
+@mixin yellow-btn {
   background-color: #fcd835;
   color: black;
   font-family: "Nunito Sans", sans-serif;
   font-size: 1rem;
   border: none;
   font-weight: bold;
+  &:hover {
+    color: black;
+  }
 }
 
 @mixin green-gradient-background-mixin() {

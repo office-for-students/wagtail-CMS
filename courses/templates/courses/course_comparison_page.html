@@ -5,6 +5,7 @@
 
 {% block extra_css %}
     <link href="{% sass_src 'scss/course_comparison.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+    <link href="{% sass_src 'scss/home.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
     <link href="{% sass_src 'scss/course_detail.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
@@ -56,7 +57,7 @@
 
         </div>
         <!-- Course Search box -->
-        <div id="home-page__intro-panel" class="home-page__intro-panel bg-white pb-5">
+        <div class="course_comparison-search bg-white pb-5">
             <div class="row">
                 {% include 'coursefinder/partials/coursesearch/searchbox.html' %}
                 <div class="col-12 d-block d-lg-none mx-auto text-center">
