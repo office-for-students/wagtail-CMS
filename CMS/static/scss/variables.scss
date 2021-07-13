@@ -53,23 +53,32 @@ $mobile-body-line-height: 16px;
 $small-font-size: 14px;
 $small-line-height: 14px;
 
+@mixin search-btn {
+  background-color: #fcd835;
+  color: black;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  border: none;
+  font-weight: bold;
+}
+
 @mixin green-gradient-background-mixin() {
-    background: linear-gradient(145.9deg, $gradient-light-green 13.02%, $gradient-dark-green 85.42%);
-    color: $white;
+  background: linear-gradient(145.9deg, $gradient-light-green 13.02%, $gradient-dark-green 85.42%);
+  color: $white;
 }
 
 
 @mixin green-gradient-mixin() {
-    @include green-gradient-background-mixin();
-    border: 2px solid transparent;
+  @include green-gradient-background-mixin();
+  border: 2px solid transparent;
 
-    &:hover {
-        background: $white;
-        color: $gradient-light-green;
-        border: 2px solid $gradient-light-green;
-    }
+  &:hover {
+    background: $white;
+    color: $gradient-light-green;
+    border: 2px solid $gradient-light-green;
+  }
 }
 
 @mixin default-box-shadowing() {
-    box-shadow: 6px 5px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 6px 5px 30px rgba(0, 0, 0, 0.08);
 }
