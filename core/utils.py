@@ -12,6 +12,11 @@ from errors.models import InternalError
 from core.request_handler import send_feedback, get_json_file
 
 
+def get_language(url):
+    if url and '/cy/' in url:
+        return 'cy'
+    return 'en'
+
 def get_collection_link(db_id, collection_id):
     """Create and return collection link based on values passed in"""
 
