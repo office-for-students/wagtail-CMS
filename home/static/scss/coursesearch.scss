@@ -1,0 +1,78 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.search_button {
+  @include search-btn;
+}
+
+.course_search {
+  display: contents;
+
+  .search_form {
+    margin-top: 25px;
+
+    &-fields {
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    &-label {
+      @include small-font-mixin();
+
+      margin-bottom: 7px;
+      display: block;
+
+      color: $helper-grey;
+    }
+
+    &-input {
+
+      input {
+        @include desktop-body-font-mixin();
+
+        width: 100%;
+        height: 40px;
+        box-sizing: border-box;
+
+        border: 1px solid $ux-grey-3;
+        border-radius: 5px;
+        background: $background-grey;
+        line-height: 34px;
+
+        padding-left: 10px;
+        padding-right: 10px;
+
+
+      }
+    }
+
+    &-text {
+      @include mobile-body-font-mixin();
+
+      margin: 10px 0px;
+
+      color: $ux-grey-3;
+      line-height: 22px;
+    }
+  }
+
+}
+
+@media only screen and (min-width: 770px) {
+  .course_search {
+    &__search {
+      margin-top: 35px;
+
+      .search-landing-page__nav-card-button {
+        margin-top: 0px;
+      }
+
+      &-text {
+        @include xs-heading-mixin();
+
+        color: $ux-grey-3;
+        line-height: 27px;
+      }
+    }
+  }
+}

@@ -4,32 +4,32 @@
 
 
 {% block extra_css %}
-<link href="{% sass_src 'scss/course_comparison.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
-<link href="{% sass_src 'scss/course_detail.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+    <link href="{% sass_src 'scss/course_comparison.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+    <link href="{% sass_src 'scss/course_detail.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block extra_js %}
-<script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}?{% code_version %}"></script>
-<script type="text/javascript" src="{% static 'js/ratings.js' %}?{% code_version %}"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/highcharts-more.js"></script>
-<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
-<script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}?{% code_version %}"></script>
-<script type="text/javascript" src="{% static 'js/bar_chart.js' %}?{% code_version %}"></script>
-<script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
-<script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/ratings.js' %}?{% code_version %}"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/bar_chart.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
 
-<script>
+    <script>
         var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
         var dataset = []
-</script>
+    </script>
 
 {% endblock %}
 
 {% block content %}
 
-<div class="comparison d-sm-block mb-5">
+    <div class="comparison d-sm-block mb-5">
     <div class="comparison__body pt-1">
 
         <h2 class="comparison__heading">
@@ -44,16 +44,28 @@
             </div>
             <div class="comparison__top-container-add-btn">
 
-                    <a id="addCourses" href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/" class="comparison__top-container-add-btn-add-courses-button">
-                        <span style="font-size:20px;">+</span>
-                        <span>&nbsp; Add saved course</span>
-                    </a>
+                <a id="addCourses" href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/"
+                   class="comparison__top-container-add-btn-add-courses-button">
+                    <span style="font-size:20px;">+</span>
+                    <span>&nbsp; Add saved course</span>
+                </a>
 
                 <p class="comparison__top-container-add-btn-compare-text">Compare up
                     to 7 courses</p>
             </div>
 
         </div>
+        <!-- Course Search box -->
+        <div id="home-page__intro-panel" class="home-page__intro-panel bg-white pb-5">
+            <div class="row">
+                {% include 'coursefinder/partials/coursesearch/searchbox.html' %}
+                <div class="col-12 d-block d-lg-none mx-auto text-center">
+                    <hr class="dash"/>
+                </div>
+                {% include 'coursefinder/partials/coursesearch/coursewizard.html' %}
+            </div>
+        </div>
+        <!-- Course Search box end -->
         <div class="course-detail__course-container">
             {% if courses %}
                 <div class="course-detail__course-selected">
@@ -81,42 +93,42 @@
         </div>
         <div id="course-info-container">
             {% with dataset=courses_data.0.course_details %}
-            <div class="course_comparison-table__row-header">
-                {{ dataset.title }}
-            </div>
-            {% for item, value in dataset.dataset.items %}
-            {% if forloop.counter == 3 %}
-            <!-- Hidden content start -->
-            <div class="accordion">
-                <div class="accordion-body">
+                <div class="course_comparison-table__row-header">
+                    {{ dataset.title }}
+                </div>
+                {% for item, value in dataset.dataset.items %}
+                    {% if forloop.counter == 3 %}
+                        <!-- Hidden content start -->
+                        <div class="accordion">
+                        <div class="accordion-body">
 
                     {% endif %}
-                    <script>dataset.push("{{value.title}}")</script>
-                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
-                    {% if forloop.last %}
-                </div>
-                <!-- Hidden content end -->
-                <!-- Show more start-->
-                {% with action=dataset.call_to_action.0.show_more %}
-                <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
-                     class="accordion-header">
-                    <div class="accordion-title">
-                        <div class="accordion-header course_comparison-table__row-header">
-                            <i class="fas fa-chevron-down expand chevron" alt="expand"
-                               aria-label="{{ action.affirmative }}"></i>
-                            <i class="fas fa-chevron-up collapse chevron" alt="collapse"
-                               aria-label="{{ action.negative }}"></i>
-                            <span class="expand">{{ action.affirmative }}</span>
-                            <span class="collapse">{{ action.negative }}</span>
-                            {% endwith %}
-                        </div>
+                <script>dataset.push("{{value.title}}")</script>
+                {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
+                {% if forloop.last %}
                     </div>
+                    <!-- Hidden content end -->
+                    <!-- Show more start-->
+                    {% with action=dataset.call_to_action.0.show_more %}
+                        <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
+                             class="accordion-header">
+                        <div class="accordion-title">
+                        <div class="accordion-header course_comparison-table__row-header">
+                        <i class="fas fa-chevron-down expand chevron" alt="expand"
+                           aria-label="{{ action.affirmative }}"></i>
+                        <i class="fas fa-chevron-up collapse chevron" alt="collapse"
+                           aria-label="{{ action.negative }}"></i>
+                        <span class="expand">{{ action.affirmative }}</span>
+                        <span class="collapse">{{ action.negative }}</span>
+                    {% endwith %}
+                </div>
+                </div>
 
                 </div>
-                <!-- show more end -->
+                    <!-- show more end -->
                 {% endif %}
                 {% endfor %}
-                {% endwith %}
+            {% endwith %}
             </div>
 
             <div hidden class="">
@@ -126,7 +138,7 @@
                              src="{% static 'images/location_paddle.svg' %}"
                              alt="">
                         <span>{% autoescape off %}
-                        {% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
+                            {% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
                     </a>
 
                     <a href="/dummy-link" class="course-detail__other-courses-link">
@@ -134,7 +146,7 @@
                              src="{% static 'images/curved_arrow_right.svg' %}"
                              alt="">
                         <span>{% autoescape off %}
-                        {% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
+                            {% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
                     </a>
                 </div>
             </div>
@@ -142,5 +154,5 @@
         </div>
     </div>
     <script type="text/javascript" src="{% static 'js/arrows.js' %}?{% code_version %}"></script>
-    {% endblock %}
+{% endblock %}
 </div>
