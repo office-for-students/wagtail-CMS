@@ -754,7 +754,7 @@ DICT = {
         'cy': 'Dewiswyd {} opsiwn'
     },
     'number_selected_institutions': {
-        'en': 'selected institutions',
+        'en': '{} selected institutions',
         'cy': 'Dewiswyd {} sefydliad'
     },
     'Nursing and midwifery professionals': {
