@@ -1,8 +1,5 @@
 import logging
-from typing import Any, Type
-from typing import Callable
-from typing import Dict
-from typing import List
+from typing import Any, Type, Callable, Dict, List
 
 from CMS import translations
 
