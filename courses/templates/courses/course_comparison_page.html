@@ -60,11 +60,11 @@
         </div>
         <!-- Course Search box -->
         <div id="courseSearchContainer" class="course-search-container hidden">
-            <div style="font-weight: bold; font-size: 18px; color: black; white-space: nowrap; padding-top: 20px; padding-left: 20px;">
+            <div class="no_courses_saved">
                     No courses saved. To compare courses, search for and save courses you're interested in.
             </div>
             <div class="course_comparison-search bg-white pb-5">
-                <div style="background-color: #f4f8f8 !important; padding: 15px;" class="row">
+                <div class="row course_compare_search">
                     {% include 'coursefinder/partials/coursesearch/searchbox.html' %}
                     <div class="col-12 d-block d-lg-none mx-auto text-center">
                         <hr class="dash"/>
@@ -103,8 +103,6 @@
                     <p >Add 2 courses to use the comparison tool</p>
                 </div>
             {% endif %}
-
-
         </div>
         {% if courses %}
             <div id="course-info-container">
