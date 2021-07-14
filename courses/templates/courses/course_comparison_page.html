@@ -242,8 +242,8 @@
                     {% create_list course1 course2 as courses %}
                     {% should_show_accordion courses accordion.value.data_set as show_accordion %}
                     {% if show_accordion %}
-
-                    <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
+                    
+                    <div id="{{ accordion.value.data_set }}" class="my-3 course-detail__accordion sticky-top" >
                          <button class="course-detail__accordion-heading" onclick="toggle_icon('accordion_icon_{{ forloop.counter }}')">
                                 <span class="float-left">
                                     <h2 id="course-detail__accordion-heading-{{ forloop.counter }}"
@@ -263,7 +263,15 @@
                         <div id="course-detail__accordion-body-{{ forloop.counter }}"
                             class="course-detail__accordion-body "
                             aria-labelledby="course-detail__accordion-heading-{{ forloop.counter }}">
-                            <div class="bg-light text-dark">Test Body Data here ...... </div>
+                            <div class="bg-light text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel hendrerit purus. Aenean vestibulum leo eu risus luctus, ut luctus eros elementum. Nam ut ipsum mauris. Suspendisse lobortis id mi sit amet fermentum. Vestibulum egestas ut orci dapibus gravida. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse maximus orci et libero gravida, in mattis felis efficitur. Duis vehicula lectus et faucibus tincidunt. Mauris luctus odio neque, nec porta lacus pretium vitae. Suspendisse euismod scelerisque diam vitae vehicula. Aliquam sagittis gravida est, id vulputate massa aliquet vel. Nunc venenatis sagittis lorem, a dignissim ligula porta et. Integer sed tellus ac leo sodales volutpat sit amet sit amet purus. Praesent imperdiet, arcu id tincidunt fringilla, nisl lorem sollicitudin odio, euismod viverra velit nisi sit amet libero. In magna purus, faucibus vitae rutrum nec, tincidunt at dui.
+
+                                Duis in dolor iaculis quam congue porta. Proin ex odio, imperdiet a consectetur eget, mattis eget diam. Morbi ultrices arcu vel mi porta, eu tincidunt augue congue. Aliquam in vehicula quam. Praesent a sem scelerisque, dignissim nibh vel, interdum nunc. Quisque ullamcorper tincidunt turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+                                
+                                Nulla volutpat finibus tellus a malesuada. Mauris dapibus quam id sem aliquam accumsan. Suspendisse et turpis nec erat varius tristique eget non enim. Vivamus sed eleifend lorem. Vivamus et arcu metus. Sed odio nibh, volutpat ac gravida quis, porta eget turpis. Vivamus at rutrum ipsum. Praesent dictum sem quis egestas mollis. Nullam fringilla tincidunt tortor at vehicula. Ut erat enim, ultrices et placerat sed, luctus ac purus. Nulla quis ornare elit, eget molestie ex. Ut sem tortor, imperdiet vitae auctor vitae, pretium in nulla. Fusce et accumsan justo, eget eleifend diam. Aenean eu lorem ligula. Vivamus lobortis augue est, quis convallis enim scelerisque nec. Suspendisse posuere suscipit ipsum, ut mollis odio pretium et.
+                                
+                                Vestibulum mi augue, dapibus non dignissim et, porttitor sit amet dolor. Integer ligula diam, fringilla in feugiat et, placerat eget elit. Phasellus porta molestie ligula. Donec quis congue odio. Suspendisse id nunc a sem tristique placerat. Nullam porta tristique lacus non rhoncus. Curabitur a ipsum vel metus mollis tempus sit amet ac purus.
+                                
+                                Nulla facilisi. Cras tellus neque, mollis sed sodales pellentesque, tristique at nunc. Fusce elementum porttitor ex. Sed purus quam, faucibus id feugiat a, tempus a nisl. Etiam et ex malesuada, elementum nibh quis, euismod orci. In dignissim varius metus et elementum. Pellentesque eu fringilla felis, a maximus tellus. Vestibulum ut nisl scelerisque, sollicitudin mauris et, maximus sapien. Integer molestie laoreet elementum. Quisque id ipsum id magna dignissim semper. Cras vestibulum diam porttitor urna fermentum interdum. Pellentesque lacinia, elit tincidunt auctor faucibus, lacus elit sagittis mi, at iaculis justo lorem eget arcu. Sed vel posuere ligula, vulputate ullamcorper dolor. Suspendisse vitae bibendum dolor, id tincidunt justo. Nam eu egestas tellus.</div>
                         </div>
                     </div>
                     {% endif %}
