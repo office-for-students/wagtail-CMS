@@ -10,9 +10,27 @@ def term_for_key(key: str, language: str) -> str:
     """
     term = DICT.get(key).get(language) if key in DICT else None
     if not term:
+        term = STATISTICS.get(key).get(language) if key in STATISTICS else None
+    if not term:
         term = OPTIONALS.get(key).get(language) if key in OPTIONALS else key
     return term
 
+
+
+STATISTICS = {
+    'overall_satisfied': {
+        'en': 'Overall I am satisfied with the quality of the course',
+        'cy': 'Rwy’n fodlon ag ansawdd y cwrs ar y cyfan'
+    },
+    'data_from_people': {
+        'en': 'Data from (# of people)',
+        'cy': "Data gan (# o fyfyrwyr)"
+    },
+    'percent_of_those_asked': {
+        'en': '% of those asked',
+        'cy': "% o'r rhai y gofynnwyd iddynt"
+    },
+}
 
 OPTIONALS = {
     'not_available': {
