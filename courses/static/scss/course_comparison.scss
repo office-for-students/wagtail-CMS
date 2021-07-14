@@ -358,6 +358,20 @@ $course_comparison_first_column_width: 250px;
                 margin-right: auto; 
                 min-width: 250px;
             }
+            &-none-selected{
+                font-size: 16px;
+                width: 250px;
+                color: black;
+                margin-right: auto;
+                min-width: 186px;
+
+                &-header{
+                    font-weight: bold;
+                    font-size: 20px;
+                    margin-bottom: 18px;
+                }
+            }
+
         }
 
         &__courses{

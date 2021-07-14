@@ -23,7 +23,9 @@
 
     <script>
         var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
-        var dataset = []
+        var saved_courses = JSON.parse(localStorage.getItem("comparisonCourses"));
+        var dataset = [];
+
     </script>
 
 {% endblock %}
@@ -57,13 +59,18 @@
 
         </div>
         <!-- Course Search box -->
-        <div class="course_comparison-search bg-white pb-5">
-            <div class="row">
-                {% include 'coursefinder/partials/coursesearch/searchbox.html' %}
-                <div class="col-12 d-block d-lg-none mx-auto text-center">
-                    <hr class="dash"/>
+        <div id="courseSearchContainer" class="course-search-container hidden">
+            <div style="font-weight: bold; font-size: 18px; color: black; white-space: nowrap; padding-top: 20px; padding-left: 20px;">
+                    No courses saved. To compare courses, search for and save courses you're interested in.
+            </div>
+            <div class="course_comparison-search bg-white pb-5">
+                <div style="background-color: #f4f8f8 !important; padding: 15px;" class="row">
+                    {% include 'coursefinder/partials/coursesearch/searchbox.html' %}
+                    <div class="col-12 d-block d-lg-none mx-auto text-center">
+                        <hr class="dash"/>
+                    </div>
+                    {% include 'coursefinder/partials/coursesearch/coursewizard.html' %}
                 </div>
-                {% include 'coursefinder/partials/coursesearch/coursewizard.html' %}
             </div>
         </div>
         <!-- Course Search box end -->
@@ -90,70 +97,88 @@
                         <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-right"></i>
                     </div>
                 </div>
+            {% else %}
+                <div class="course-detail__course-none-selected">
+                    <div class="course-detail__course-none-selected-header">No courses selected</div>
+                    <p >Add 2 courses to use the comparison tool</p>
+                </div>
             {% endif %}
-        </div>
-        <div id="course-info-container">
-            {% with dataset=courses_data.0.course_details %}
-                <div class="course_comparison-table__row-header">
-                    {{ dataset.title }}
-                </div>
-                {% for item, value in dataset.dataset.items %}
-                    {% if forloop.counter == 3 %}
-                        <!-- Hidden content start -->
-                        <div class="accordion">
-                        <div class="accordion-body">
 
-                    {% endif %}
-                <script>dataset.push("{{value.title}}")</script>
-                {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
-                {% if forloop.last %}
+
+        </div>
+        {% if courses %}
+            <div id="course-info-container">
+                {% with dataset=courses_data.0.course_details %}
+                    <div class="course_comparison-table__row-header">
+                        {{ dataset.title }}
                     </div>
-                    <!-- Hidden content end -->
-                    <!-- Show more start-->
-                    {% with action=dataset.call_to_action.0.show_more %}
-                        <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
-                             class="accordion-header">
-                        <div class="accordion-title">
-                        <div class="accordion-header course_comparison-table__row-header">
-                        <i class="fas fa-chevron-down expand chevron" alt="expand"
-                           aria-label="{{ action.affirmative }}"></i>
-                        <i class="fas fa-chevron-up collapse chevron" alt="collapse"
-                           aria-label="{{ action.negative }}"></i>
-                        <span class="expand">{{ action.affirmative }}</span>
-                        <span class="collapse">{{ action.negative }}</span>
-                    {% endwith %}
-                </div>
+                    {% for item, value in dataset.dataset.items %}
+                        {% if forloop.counter == 3 %}
+                            <!-- Hidden content start -->
+                            <div class="accordion">
+                            <div class="accordion-body">
+
+                        {% endif %}
+                    <script>dataset.push("{{value.title}}")</script>
+                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
+                    {% if forloop.last %}
+                        </div>
+                        <!-- Hidden content end -->
+                        <!-- Show more start-->
+                        {% with action=dataset.call_to_action.0.show_more %}
+                            <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
+                                 class="accordion-header">
+                            <div class="accordion-title">
+                            <div class="accordion-header course_comparison-table__row-header">
+                            <i class="fas fa-chevron-down expand chevron" alt="expand"
+                               aria-label="{{ action.affirmative }}"></i>
+                            <i class="fas fa-chevron-up collapse chevron" alt="collapse"
+                               aria-label="{{ action.negative }}"></i>
+                            <span class="expand">{{ action.affirmative }}</span>
+                            <span class="collapse">{{ action.negative }}</span>
+                        {% endwith %}
+                    </div>
+                    </div>
+
+                    </div>
+                        <!-- show more end -->
+                    {% endif %}
+                    {% endfor %}
+                {% endwith %}
                 </div>
 
+                <div hidden class="">
+                    <div class="course-detail__further-info-block">
+                        <a href="/dummy-link" class="course-detail__other-courses-link">
+                            <img class="course-detail__other-courses-link-icon"
+                                 src="{% static 'images/location_paddle.svg' %}"
+                                 alt="">
+                            <span>{% autoescape off %}
+                                {% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
+                        </a>
+
+                        <a href="/dummy-link" class="course-detail__other-courses-link">
+                            <img class="course-detail__other-courses-link-icon"
+                                 src="{% static 'images/curved_arrow_right.svg' %}"
+                                 alt="">
+                            <span>{% autoescape off %}
+                                {% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
+                        </a>
+                    </div>
                 </div>
-                    <!-- show more end -->
-                {% endif %}
-                {% endfor %}
-            {% endwith %}
+                <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
             </div>
-
-            <div hidden class="">
-                <div class="course-detail__further-info-block">
-                    <a href="/dummy-link" class="course-detail__other-courses-link">
-                        <img class="course-detail__other-courses-link-icon"
-                             src="{% static 'images/location_paddle.svg' %}"
-                             alt="">
-                        <span>{% autoescape off %}
-                            {% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
-                    </a>
-
-                    <a href="/dummy-link" class="course-detail__other-courses-link">
-                        <img class="course-detail__other-courses-link-icon"
-                             src="{% static 'images/curved_arrow_right.svg' %}"
-                             alt="">
-                        <span>{% autoescape off %}
-                            {% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
-                    </a>
-                </div>
-            </div>
-            <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
-        </div>
+        {% endif %}
     </div>
-    <script type="text/javascript" src="{% static 'js/arrows.js' %}?{% code_version %}"></script>
+    </div>
+    {% if courses %}
+        <script type="text/javascript" src="{% static 'js/arrows.js' %}?{% code_version %}"></script>
+    {% endif %}
+    <script>
+        var course_search_container = document.getElementById("courseSearchContainer");
+        if(!(saved_courses)){
+            course_search_container.classList.remove("hidden")
+        }
+    </script>
+
 {% endblock %}
-</div>
