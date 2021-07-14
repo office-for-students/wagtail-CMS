@@ -554,6 +554,53 @@ $course_comparison_first_column_width: 250px;
     }
 
     .course-detail {
+
+      &__accordion {
+        display: block;
+        width: 100%;
+        padding: 0;
+        color: #fff;
+        border: 0;
+        background: linear-gradient(145.9deg,#4EA27D 13.02%,#308282 85.42%);
+        color: #fff;
+        cursor: pointer;
+
+        h2, i{
+            font-family: Nunito Sans;
+            font-weight: 400;
+            font-size: 21px;
+            line-height: 21px;
+            line-height: 100%;
+            color: #000;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 17px 30px;
+            position: relative;
+            text-align: left;
+            border: 3px solid transparent;
+            color: #fff;
+        }
+        &-heading {
+          display: block;
+          width: 100%;
+          padding: 0px;
+          color: $white;
+          border: 0px;
+          @include green-gradient-background-mixin();
+          cursor: pointer;
+
+          &.open {
+              @include green-gradient-background-mixin();
+
+              h2 {
+                  color: $white;
+              }
+          }
+        }
+      }
+      
+
       .course-detail__lead {
         .course-detail__institution-info {
           padding: 26px 30px 28px;
