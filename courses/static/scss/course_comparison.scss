@@ -565,7 +565,7 @@ $course_comparison_first_column_width: 250px;
         color: #fff;
         cursor: pointer;
 
-        h2, i{
+        h2{
             font-family: Nunito Sans;
             font-weight: 400;
             font-size: 21px;
@@ -580,6 +580,11 @@ $course_comparison_first_column_width: 250px;
             text-align: left;
             border: 3px solid transparent;
             color: #fff;
+        }
+        i{
+            margin: 0;
+            padding: 17px 30px;
+            position: relative;
         }
         &-heading {
           display: block;

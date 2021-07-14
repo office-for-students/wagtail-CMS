@@ -236,27 +236,6 @@
             {% endfor %}
         {% endwith %}
 
-        <!-- <div class="accordion course-detail__accordion" id="accordionExample">
-            <div class="text-dark accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="text-dark accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Accordion Item #1
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                     data-bs-parent="#accordionExample">
-                    <div class="accordion-body text-dark">
-                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the
-                        collapse plugin adds the appropriate classes that we use to style each element. These classes
-                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
-                        that just about any HTML can go within the <code>.accordion-body</code>, though the transition
-                        does limit overflow.
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="course-detail__body">
             <div class="course-detail__accordion-block">
                 {% for accordion in page.accordions %}
@@ -282,9 +261,9 @@
                             </button>
 
                         <div id="course-detail__accordion-body-{{ forloop.counter }}"
-                            class="course-detail__accordion-body"
+                            class="course-detail__accordion-body "
                             aria-labelledby="course-detail__accordion-heading-{{ forloop.counter }}">
-                            {% include 'courses/partials/comparison_'|add:accordion.value.data_set|add:'_body.html' with block=accordion %}
+                            <div class="bg-light text-dark">Test Body Data here ...... </div>
                         </div>
                     </div>
                     {% endif %}
