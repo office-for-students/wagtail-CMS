@@ -8,6 +8,7 @@ from django.shortcuts import render
 from CMS import translations
 from CMS.enums import enums
 from CMS.translations import DICT
+from core import utils
 from core.utils import get_new_landing_page_for_language
 from core.utils import get_page_for_language
 from courses import renderer
@@ -15,8 +16,10 @@ from courses.models import Course
 from courses.models import CourseComparisonPage
 from courses.models import CourseDetailPage
 from courses.models import CourseManagePage
+from institutions.models import InstitutionList
 
 logger = logging.getLogger(__name__)
+
 
 def regional_earnings(request):
     if 'region' in request.POST and request.is_ajax():
@@ -306,7 +309,8 @@ def compare_courses(request, language=enums.languages.ENGLISH):
             english_url=page.get_english_url() + query_string,
             welsh_url=page.get_welsh_url() + query_string,
             cookies_accepted=request.COOKIES.get('discoverUniCookies'),
-            get_params=url_params
+            get_params=url_params,
+            institutions_list=InstitutionList.get_options()[utils.get_language(request.get_full_path())]
         )
     )
 
