@@ -635,6 +635,7 @@
         border: 8px solid black;
         border-color: #6E6E6E transparent transparent transparent;
         cursor: pointer;
+        z-index: 10;
     }
 
     &-content {
@@ -647,6 +648,7 @@
         background-color: white;
         box-shadow: 3px 3px 4px 0px rgba(0,0,0,0.4);
         z-index: 1;
+        margin-top: 3px;
 
         &-institution-check{
             font-family: "Nunito Sans", sans-serif;
