@@ -403,6 +403,9 @@ $course_comparison_first_column_width: 250px;
     &__course {
       &-container {
         width: 100%;
+        position: sticky;
+        top: 10px;
+        background: white;
 
         &-pills {
           display: flex;

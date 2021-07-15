@@ -249,7 +249,7 @@
                         {% endfor %}
                     </div>
                 </div>
-
+                {% endif %}
                 <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
             </div>
         </div>
@@ -260,8 +260,14 @@
     <script>
         var course_search_container = document.getElementById("courseSearchContainer");
         if (!(saved_courses)) {
-            course_search_container.classList.remove("hidden")
+            course_search_container.classList.remove("hidden");
         }
+    </script>
+    <script>
+        var element_height = $(".course-detail__course-container-pills").height();
+        var accordion_header = $(".course-detail__accordion");
+        accordion_header.css('top', element_height + 10 + "px")
+        console.log("HEIGHT", element_height);
     </script>
 
 {% endblock %}
