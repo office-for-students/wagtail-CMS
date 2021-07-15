@@ -118,7 +118,9 @@
 
                         {% endif %}
                     <script>dataset.push("{{value.title}}")</script>
+                                <div class="course_comparison-table__row-grey_background">
                     {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
+                                </div>
                     {% if forloop.last %}
                         </div>
                         <!-- Hidden content end -->
@@ -164,6 +166,9 @@
                         </a>
                     </div>
                 </div>
+
+                {% include 'courses/partials/satisfaction_accordion.html' with title=value.title values=value.values %}
+
                 <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
             </div>
         {% endif %}
