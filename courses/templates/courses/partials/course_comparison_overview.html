@@ -1,31 +1,29 @@
 {% load staticfiles discover_uni_tags %}
 
-<div class="course-detail__courses-container">
+<div id="courseContainer-{{forloop.counter0}}" class="course-detail__courses-container" data-index="{{forloop.counter0}}">
     <div>
-        <option style="display: inline-block; color: black;" class="rating"
-                onmouseover="hoverStars(id, value, {{forloop.counter0}})"
-                onmouseleave="prefillStars({{forloop.counter0}})"
+        <li class="rating"
+                onmouseover="hoverStars(value, {{forloop.counter0}})"
+                onmouseleave="mouseExitStars({{forloop.counter0}})"
                 onclick="addStarRating(id, value, {{forloop.counter0}})" id="course-{{forloop.counter0}}-star1"
                 value="1">☆
-        </option>
-        <option style="display: inline-block; color: black;" class="rating"
-                onmouseover="hoverStars(id, value, {{forloop.counter0}})"
-                onmouseleave="prefillStars({{forloop.counter0}})"
+        </li>
+        <li class="rating"
+                onmouseover="hoverStars(value, {{forloop.counter0}})"
+                onmouseleave="mouseExitStars({{forloop.counter0}})"
                 onclick="addStarRating(id, value, {{forloop.counter0}})" id="course-{{forloop.counter0}}-star2"
                 value="2">☆
-        </option>
-        <option style="display: inline-block; color: black;" class="rating"
-                onmouseover="hoverStars(id, value, {{forloop.counter0}})"
+        </li>
+        <li class="rating"
+                onmouseover="hoverStars(value, {{forloop.counter0}})"
                 onmouseleave="mouseExitStars({{forloop.counter0}})"
                 onclick="addStarRating(id, value, {{forloop.counter0}})" id="course-{{forloop.counter0}}-star3"
                 value="3">☆
-        </option>
-        <img style="float: right; cursor: pointer;" onclick="removeCourseCompare({{ forloop.counter0 }})"
+        </li>
+        <img class="course-detail__courses-container-exit-course" onclick="removeCourseCompare({{ forloop.counter0 }})"
              src="{% static 'images/icon-close.svg'%}">
     </div>
-    <script>
-        prefillStars({{forloop.counter0}})
-    </script>
+
     <div class="course-detail__courses-name">
         {{course.display_title}}
     </div>

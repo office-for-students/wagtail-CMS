@@ -444,7 +444,8 @@ function toggleDistance(distance_checked, campus_checked) {
             disable_countries.attr('disabled', 'disabled');
             disable_radio.attr('disabled', 'disabled');
             disable_postcode.attr('disabled', 'disabled');
-            disable_postcode.css('border', '1px solid grey')
+            disable_postcode.css('border', '1px solid grey');
+            $(".distance-dropdown").css("pointer-events", "none");
             $('.filters-block__submit-btn').prop('disabled', false);
             $('.filters-block__submit-btn').css('background-color', "#8e3b74");
         }
@@ -453,11 +454,15 @@ function toggleDistance(distance_checked, campus_checked) {
             disable_countries.attr('disabled', false);
             disable_radio.attr('disabled', false);
             disable_postcode.attr('disabled', false);
+            $(".distance-dropdown").css("pointer-events", "auto");
 
-            if($('.filters-block__filter-radio-postcode').is(":checked") && ((!($('[name="postcode"]').val())) || (!($('[name="distance"]').val())))){
+            if($('[name="distance"]').val() && $('[name="postcode"]').val()){
+                $('.filters-block__submit-btn').prop('disabled', false);
+                $('.filters-block__submit-btn').css('background-color', "#8e3b74");
+            }
+            else if($('.filters-block__filter-radio-postcode').is(":checked") && ($('[name="postcode"]').val() !== $('[name="distance"]').val())){
                 $('.filters-block__submit-btn').css('background-color', "grey");
                 $('.filters-block__submit-btn').prop('disabled', true);
-
             }
 
             if(!($('[name="postcode"]').val()) && $('[name="distance"]').val()){
@@ -465,7 +470,7 @@ function toggleDistance(distance_checked, campus_checked) {
             }
 
             if(!($('[name="distance"]').val()) && $('[name="postcode"]').val()){
-                $('[name="distance"]').css( "border", "1px solid red" )
+                $('.distance-dropdown').css( "border", "1px solid red" )
             }
         }
     }
@@ -484,8 +489,13 @@ function toggleDistance(distance_checked, campus_checked) {
             disable_countries.attr('disabled', false);
             disable_radio.attr('disabled', false);
             disable_postcode.attr('disabled', false);
+            $(".distance-dropdown").css("pointer-events", "auto");
 
-            if($('.filters-block__filter-radio-postcode').is(":checked") && ((!($('[name="postcode"]').val())) || (!($('[name="distance"]').val())))){
+            if($('[name="distance"]').val() && $('[name="postcode"]').val()){
+                $('.filters-block__submit-btn').prop('disabled', false);
+                $('.filters-block__submit-btn').css('background-color', "#8e3b74");
+            }
+            else if($('.filters-block__filter-radio-postcode').is(":checked") && ($('[name="postcode"]').val() !== $('[name="distance"]').val())){
                 $('.filters-block__submit-btn').css('background-color', "grey");
                 $('.filters-block__submit-btn').prop('disabled', true);
             }
@@ -495,7 +505,7 @@ function toggleDistance(distance_checked, campus_checked) {
             }
 
             if(!($('[name="distance"]').val()) && $('[name="postcode"]').val()){
-                $('[name="distance"]').css( "border", "1px solid red" )
+                $('.distance-dropdown').css( "border", "1px solid red" )
             }
         }
     }
@@ -521,6 +531,21 @@ function toggleCheckbox(country) {
            hidden[1].checked = false;
         }
     }
+}
+
+function selectDistance(id){
+    var dropdownText = $(".filters-block__filter-postcode-div-dropdown-text");
+    var distanceValue = $('[name="distance"]');
+
+        if(id !== ""){
+            dropdownText.text(translation.replace("{}", id))
+        }
+        else{
+            dropdownText.text("")
+        }
+
+    distanceValue.val(id);
+    distanceValue.trigger('change');
 }
 
 $(document).ready(function() {
@@ -560,30 +585,35 @@ $(document).ready(function() {
 
 $(document).ready(function() {
    $('.postcode-fieldset').change(function() {
-
-        if($('[name="postcode"]').val() && $('[name="distance"]').val()){
+        if(window.innerWidth > 576){
+            var postcode = $('[name="postcode"]')[0]
+        }
+        else{
+            var postcode = $('[name="postcode"]')[1]
+        }
+        if(postcode.value && $('[name="distance"]').val()){
             $('.filters-block__submit-btn').prop('disabled', false);
             $('.filters-block__submit-btn').css('background-color', "#8e3b74");
         }
-        else if($('[name="postcode"]').val() === $('[name="distance"]').val()){
+        else if(postcode.value === $('[name="distance"]').val()){
             $('.filters-block__submit-btn').prop('disabled', false);
             $('.filters-block__submit-btn').css('background-color', "#8e3b74");
         }
-        else if($('[name="postcode"]').val() !== $('[name="distance"]').val()){
+        else if(postcode.value !== $('[name="distance"]').val()){
             $('.filters-block__submit-btn').prop('disabled', true);
             $('.filters-block__submit-btn').css('background-color', "grey");
         }
-        if(!($('[name="postcode"]').val()) && $('[name="distance"]').val()){
+        if(!(postcode.value) && $('[name="distance"]').val()){
             $('[name="postcode"]').css( "border", "1px solid red" )
         }
         else{
             $('[name="postcode"]').css( "border", "1px solid #595959" )
         }
-        if(!($('[name="distance"]').val()) && $('[name="postcode"]').val()){
-            $('[name="distance"]').css( "border", "1px solid red" )
+        if(!($('[name="distance"]').val()) && postcode.value){
+            $('.distance-dropdown').css( "border", "1px solid red" )
         }
         else{
-            $('[name="distance"]').css( "border", "1px solid #595959" )
+            $('.distance-dropdown').css( "border", "1px solid #595959" )
         }
     });
 });

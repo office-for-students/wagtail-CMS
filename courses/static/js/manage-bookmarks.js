@@ -22,8 +22,10 @@
         loadSelectedCourses: function() {
             if (JSON.parse(localStorage.getItem('comparisonCourses'))) {
                 this.selectedCourses = JSON.parse(localStorage.getItem('comparisonCourses'));
+                this.compareCourses = JSON.parse(localStorage.getItem('compareCourses'));
             } else {
                 this.selectedCourses = [];
+                this.compareCourses = [];
             }
         },
 
@@ -53,8 +55,14 @@
                 if (this.isCourse(course, removedCourse)) {
                     this.selectedCourses.splice(i, 1);
                 }
+                for(var index = 0; index < this.compareCourses.length; index++){
+                    if(this.compareCourses[index].id == removedCourse.courseId){
+                        this.compareCourses.splice(index, 1);
+                    }
+                }
             }
             localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
+            localStorage.setItem('compareCourses', JSON.stringify(this.compareCourses));
             location.reload();
         },
 

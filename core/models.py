@@ -7,6 +7,7 @@ from wagtail.core.models import Page
 from wagtail.snippets.models import register_snippet
 
 from CMS.enums import enums
+from core import utils
 from core.utils import parse_menu_item, get_page_for_language, get_current_version
 
 
@@ -24,9 +25,7 @@ class DiscoverUniBasePage(Page):
     ]
 
     def get_language(self):
-        if self.url and '/cy/' in self.url:
-            return 'cy'
-        return 'en'
+        return utils.get_language(self.url)
 
     def is_english(self):
         return self.get_language() == 'en'
