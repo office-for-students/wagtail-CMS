@@ -80,6 +80,12 @@ DICT = {
         'en': 'About',
         'cy': 'Ynghylch'
     },
+    #TODO: "about our data link" can be removed once the wagtail panels have been
+    # changed to only contain the source link
+    'about_our_data_link': {
+        'en': 'https://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey',
+        'cy': 'https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#arolwg_cenedlaethol_o_fyfyrwyr'
+    },
     'access_course': {
         'en': 'Completed Access course',
         'cy': 'Wedi cwblhau cwrs mynediad'
