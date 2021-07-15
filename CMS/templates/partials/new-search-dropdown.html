@@ -19,12 +19,6 @@
 	    document.getElementById("institutionSearchBar").focus();
 	    document.getElementById("institutionDropdown").classList.toggle("dropdown-border");
 	    document.getElementById("dropdownChevron").classList.toggle("rotate");
-
-	    if('{{page}}' == "Home" || '{{page}}' == "Darganfod Prifysgol"){
-	    	document.getElementById('home-page__intro-panel').classList.toggle("pt");
-	    }else{
-	    	document.getElementById("course-finder__intro-panel").classList.toggle("pb");
-	    }
 	}
 
     var lastClick = null;
@@ -174,7 +168,7 @@
 </style>
 
 <div class="dropdown">
-    <div style="display: flex;">
+    <div style="display: flex; height:38px !important;">
         <div tabindex="0" id="institutionDropdown" class="dropdown-dropbtn drop-item">
             <p>{% get_translation key='institution_name' language=page.get_language %}</p>
         </div>
