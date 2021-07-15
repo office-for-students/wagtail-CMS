@@ -282,7 +282,7 @@ DICT = {
     },
     'course_comparison_link': {
         'en': './course-comparison/',
-        'cy': './cymharu-cyrsiau/'
+        'cy': './cy/cymharu-cyrsiau/'
     },
     'courses_to_view': {
         'en': 'to view saved courses side-by-side',
