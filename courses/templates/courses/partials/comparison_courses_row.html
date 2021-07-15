@@ -4,7 +4,9 @@
     </div>
     <div class="small-flex-div">
     {% for item in values %}
-        <div id="{{title}}{{forloop.counter0}}" class="course_comparison-table__column">
+        <div id="arrow-{{forloop.counter0}}{{title}}"
+             class="course_comparison-table__column arrow"
+             data-index="{{forloop.counter0}}">
             {{ item | safe }}
         </div>
     {% endfor %}
