@@ -51,9 +51,10 @@
                                     <span class="input-group-text"><i class="fas fa-search"></i></span>
                                 </div>
                                 <input class="form-control" name="course_query" type="text" id="course"
+                                       {% if filter_form.course_query %} value="{{filter_form.course_query}}" {% endif %}
                                        aria-label="{% get_translation key='course_name' language=page.get_language %}"
                                        placeholder="{% get_translation key='course_name' language=page.get_language %}"
-                                       autocomplete="off">
+                                       autocomplete="off" >
 
                             </div>
                         </div>
@@ -83,7 +84,7 @@
                 <div class="compare-courses-block">
                     <h5 class="compare-text-header">{% get_translation key='compare_courses' language=page.get_language %}</h5>
                     <div class="compare-text-content">1.
-                        <div style="padding-left: 10px;"> 
+                        <div style="padding-left: 10px;">
                             <span class="compare-text-highlight">{% get_translation key="save_courses" language=page.get_language %}</span>
                             <span>{% get_translation key="you're_interested_in" language=page.get_language %}</span>
                         </div>
