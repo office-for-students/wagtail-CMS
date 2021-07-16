@@ -10,3 +10,6 @@ class SatisfactionQuestion:
             self.description = fallback_to(question_data.get('description'), '')
             self.agree_or_strongly_agree = fallback_to(
                 question_data.get('agree_or_strongly_agree'), 0)
+
+    def __str__(self):
+        return str(self.agree_or_strongly_agree)
