@@ -30,6 +30,38 @@ STATISTICS = {
         'en': '% of those asked',
         'cy': "% o'r rhai y gofynnwyd iddynt"
     },
+    'teaching_on_my_course': {
+        'en': 'teaching_on_my_course',
+        'cy': 'Yr addysgu ar fy nghwrs'
+    },
+    'learning_opportunities': {
+        'en': "Learning opportunities",
+        'cy': "Cyfleoedd dysgu"
+    },
+    'assessment_and_feedback': {
+        'en': "Assessment and feedback",
+        'cy': "Asesiad ac adborth"
+    },
+    'academic_support': {
+        'en': "Academic support",
+        'cy': "Cefnogaeth academaidd"
+    },
+    'organisation_and_management': {
+        'en': "Organisation and management",
+        'cy': "Trefniant a rheolaeth"
+    },
+    'learning_resources': {
+        'en': "Learning resources",
+        'cy': "Adnoddau dysgu"
+    },
+    'learning_community': {
+        'en': "Learning community",
+        'cy': "Cymuned ddysgu"
+    },
+    'student_voice': {
+        'en': "Student voice",
+        'cy': "Llais y myfyriwr"
+    },
 }
 
 OPTIONALS = {
