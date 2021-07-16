@@ -36,53 +36,53 @@ def get_sub_accordion_dataset(courses, language):
     response = []
 
     for accordion in list_sub_accordions:
-
-        response.append(dict(
-            title=accordion[0],
-            dataset=SubSatisfactionSection(
-                keys=accordion[1],
-                courses=courses,
-                language=language
-            )
-        ))
-
-    return response
-
-
-def dataset_for_comparison_view(courses: List[Course], language="en") -> List[dict]:
-    response = []
-    context = dict()
-    context["course_details"] = get_accordion_dataset(
-        title=translations.term_for_key(key="course_details", language=language),
-        dataset=get_details(CourseDetailSection, courses, language),
-        call_to_action=[
+        response.append(
             dict(
-                show_more=dict(
-                    affirmative=translations.term_for_key(key="show_more", language=language),
-                    negative=translations.term_for_key(key="show_less", language=language),
+                title=accordion[0],
+                dataset=get_details(
+                    **dict(
+                        section_model=SubSatisfactionSection,
+                        courses=courses,
+                        language=language,
+                        keys=accordion[1]
+                    )
                 )
             )
-        ]
-    )
+        )
 
-    context["student_satisfaction_course_overview_1"] = dict(
-        title=translations.term_for_key(key="student_satisfaction_course_overview_1", language=language),
-        dataset=get_details(SatisfactionSection, courses, language),
-        sub_accordions=get_sub_accordion_dataset(courses, language)
-    )
+        return response
 
+    def dataset_for_comparison_view(courses: List[Course], language="en") -> List[dict]:
+        response = []
+        context = dict()
+        context["course_details"] = get_accordion_dataset(
+            title=translations.term_for_key(key="course_details", language=language),
+            dataset=get_details(CourseDetailSection, courses, language),
+            call_to_action=[
+                dict(
+                    show_more=dict(
+                        affirmative=translations.term_for_key(key="show_more", language=language),
+                        negative=translations.term_for_key(key="show_less", language=language),
+                    )
+                )
+            ]
+        )
 
-    response.append(context)
-    return response
+        context["student_satisfaction_course_overview_1"] = dict(
+            title=translations.term_for_key(key="student_satisfaction_course_overview_1", language=language),
+            dataset=get_details(SatisfactionSection, courses, language),
+            sub_accordions=get_sub_accordion_dataset(courses, language)
+        )
 
+        response.append(context)
+        return response
 
-def get_details(section_model: Type[Section], courses: List[Course], language: str) -> Dict[str, str]:
-    section = section_model(courses, language)
-    section.prep_data()
-    response = section.generate_dict()
-    print(f"respone = {response}")
-    return response
+    def get_details(section_model: Type[Section], courses: List[Course], language: str, **kwargs) -> Dict[str, str]:
+        section = section_model(courses, language)
+        section.prep_data()
+        response = section.generate_dict()
+        print(f"respone = {response}")
+        return response
 
-
-def create_dataset(action: Callable[[Course, str], str], course: Course, language: str):
-    return action(course, language)
+    def create_dataset(action: Callable[[Course, str], str], course: Course, language: str):
+        return action(course, language)
