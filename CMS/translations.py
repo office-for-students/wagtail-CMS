@@ -31,7 +31,7 @@ STATISTICS = {
         'cy': "% o'r rhai y gofynnwyd iddynt"
     },
     'teaching_on_my_course': {
-        'en': 'teaching_on_my_course',
+        'en': 'Teaching on my course',
         'cy': 'Yr addysgu ar fy nghwrs'
     },
     'learning_opportunities': {
