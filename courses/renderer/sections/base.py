@@ -15,7 +15,6 @@ action = 1
 class Section:
 
     def __init__(self, courses: List[Course], language: str):
-        self.sections = []
         self.data = {}
         self.courses = courses
         self.language = language

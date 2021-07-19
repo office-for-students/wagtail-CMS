@@ -23,7 +23,6 @@
 
         {% endwith %}
         {% with dataset=courses_data.0.student_satisfaction_course_overview_1.sub_accordions %}
-        <p style="color: black;">{{dataset.0.items}}</p>
             {% for sub_accordion in dataset %}
             <p style="color: black;">{{sub_accordion.title}}</p>
                 {% for item, value in sub_accordion.dataset.items %}
