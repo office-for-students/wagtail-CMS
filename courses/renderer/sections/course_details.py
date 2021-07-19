@@ -107,7 +107,7 @@ def string_for_code(code: int, language: str, error: str) -> str:
 class CourseDetailSection(Section):
 
     def get_sections(self) -> List[Tuple[Any, Any]]:
-        self.sections = [
+        sections = [
             (STUDY_MODE, presentable_course_mode),
             (COURSE_LENGTH, presentable_course_length),
             (LOCATIONS, presentable_course_locations),
@@ -117,11 +117,12 @@ class CourseDetailSection(Section):
             (FOUNDATION_YEAR, presentable_foundation_year),
             (PROFESSIONAL_ACCREDITATION, presentable_accreditation)
         ]
-        return self.sections
+        return sections
 
     def generate_dict(self) -> dict:
+        sections = self.get_sections()
         for course in self.courses:
-            for section in self.get_sections():
+            for section in sections:
                 self.data[section[primary_key]]["values"].append(
                     section[action](
                         course,
