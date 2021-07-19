@@ -12,4 +12,7 @@ class SatisfactionQuestion:
                 question_data.get('agree_or_strongly_agree'), 0)
 
     def __str__(self):
-        return str(self.agree_or_strongly_agree)
+        if self.show_data_point:
+            return str(self.agree_or_strongly_agree)
+        else:
+            return "Data not available"
