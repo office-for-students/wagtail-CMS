@@ -52,13 +52,13 @@
 
 		list.sort()
 
-		if(list.length == 0){
+		if(list.length === 0){
 			dropdown.innerHTML = "{% get_translation key='institution_name' language=page.get_language %}"
 		}
-		else if(list.length < 3){
+		else if(list.length === 1){
 			dropdown.innerHTML = list.join(", ")
 		}
-		else if(2 < list.length){
+		else {
 			dropdown.innerHTML = options_selected.replace('{}', list.length)
 		}
 
@@ -86,7 +86,7 @@
 		if(list.length == 0){
 			dropdown.innerHTML = "{% get_translation key='institution_name' language=page.get_language %}"
 		}
-		else if(list.length < 3){
+		else if(list.length < 1){
 			dropdown.innerHTML = list.join(", ")
 		}
 		else if(2 < list.length){
