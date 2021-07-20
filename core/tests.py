@@ -15,6 +15,9 @@ from site_search.models import SearchLandingPage
 
 from django.conf import settings
 
+import logging
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=9999) # suppress logs during unit tests
 
 @tag('azure')
 class CoreUtilsTests(UniSimpleTestCase):

@@ -9,6 +9,10 @@ local_settings.py
 local.py
 db.sqlite3
 
+# Virtual Environment
+.venv
+venv/
+
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -34,8 +38,9 @@ static/**
 .DS_Store
 *.vscode
 .vscode/
-.env
+.env*
+!.env.example
 data/
-docker-compose.yml
 docker-compose.*.yml
+!docker-compose.non-dev.yml
 !docker-compose.ci.yml

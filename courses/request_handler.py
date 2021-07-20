@@ -1,7 +1,8 @@
 import requests
 
-from CMS.test.mocks import NewCourseFormatMocks, CourseMocks
-from CMS.test.joint_course_mocks import NewJointCourseFormatMocks
+from CMS.test.mocks.course_format_mocks import CourseFormatMocks
+from CMS.test.mocks.course_mocks import CourseMocks
+from CMS.test.mocks.joint_course_format_mocks import JointCourseFormatMocks
 
 from core.mongo import Mongo
 from django.conf import settings
@@ -10,8 +11,8 @@ from django.conf import settings
 def load_course_data(institution_id, course_id, mode):
     if settings.LOCAL:
         if course_id == "GN12":
-            return NewJointCourseFormatMocks.get_successful_course_load_response()
-        return NewCourseFormatMocks.get_successful_course_load_response()
+            return JointCourseFormatMocks.get_successful_course_load_response()
+        return CourseFormatMocks.get_successful_course_load_response()
     if settings.MONGODB_HOST:
         mongo = Mongo('courses')
         return mongo.get_one(

@@ -200,8 +200,16 @@ DICT = {
         'cy': "Cymharu'r cwrs"
     },
     'compare_courses': {
-        'en': 'compare courses',
-        'cy': 'cymharu cyrsiau'
+        'en': 'Compare courses',
+        'cy': 'Cymharu cyrsiau'
+    },
+    'compare': {
+        'en': 'Compare',
+        'cy': 'Cymharu'
+    },
+    'courses_to_view':{
+        'en': 'to view saved courses side-by-side',
+        'cy': 'i weld cyrsiau a gadwyd ochr wrth ochr'
     },
     'completed_course': {
         'en': 'Have completed their studies',
@@ -335,6 +343,10 @@ DICT = {
         'en': '',
         'cy': "Mae enwau'r Prifysgolion fel y'u darperir gan Gofrestr y DU o Ddarparwyr Dysgu. Os nad yw'r enw Cymraeg yn bresennol, chwiliwch amdano gan ddefnyddio'i enw Saesneg."
     },
+    'distance': {
+        'en': 'Distance',
+        'cy': 'Pellter'
+    },
     'distance_learning': {
         'en': 'Distance learning',
         'cy': 'Dysgu o bell'
@@ -437,6 +449,18 @@ DICT = {
         'en': 'Filter',
         'cy': 'Hidlo'
     },
+    'filter_by': {
+        'en': 'Filter by',
+        'cy': 'Hidlo gan'
+    },
+    'filter_not_applicable':{
+        'en': 'This filter is not applicable for distance learning courses.',
+        'cy': "Nid yw'r hidlydd hwn yn berthnasol i gyrsiau dysgu o bell."
+    },
+    'filter_sort_by_subject_add_more_filters':{
+        'en': 'Please apply more filters to sort by subject',
+        'cy': "Defnyddiwch fwy o hidlwyr i'w didoli yn ôl pwnc"
+    },
     'financial_support_details': {
         'en': 'Financial support',
         'cy': 'Cymorth ariannol'
@@ -467,11 +491,11 @@ DICT = {
     },
     'full_time': {
         'en': 'Full time',
-        'cy': 'Llawnamser'
+        'cy': 'Llawn-amser'
     },
     'Full-time': {
         'en': 'Full time',
-        'cy': 'Llawnamser'
+        'cy': 'Llawn-amser'
     },
     'Functional managers': {
         'en': 'Functional managers',
@@ -533,6 +557,14 @@ DICT = {
         'en': 'Institution',
         'cy': 'Sefydliad'
     },
+    'institution_name': {
+        'en': 'Institution name',
+        'cy': "Enw'r sefydliad"
+    },
+    'institution_az': {
+        'en': 'Institution A-Z',
+        'cy': 'Sefydliad A-Z'
+    },
     'Information technology and telecommunications professionals': {
         'en': 'Information technology and telecommunications professionals',
         'cy': 'Gweithwyr Proffesiynol Technoleg Gwybodaeth a Thelathrebu'
@@ -552,6 +584,10 @@ DICT = {
     'Gold': {
         'en': 'Gold',
         'cy': 'Aur'
+    },
+    'learning': {
+        'en': 'Learning',
+        'cy': 'Dysgu'
     },
     'learning_and_teaching_methods': {
         'en': 'How the course is taught',
@@ -677,6 +713,14 @@ DICT = {
         'en': 'Next page',
         'cy': 'Y dudalen nesaf'
     },
+    'new_search': {
+        'en': 'New Search',
+        'cy': 'Chwiliad newydd'
+    },
+    'no_courses_found': {
+        'en': 'No courses found, remove or change some filters',
+        'cy': 'Ni chafwyd hyd i unrhyw gyrsiau - canslwch neu newidiwch rai hidlyddion'
+    },
     'no_qualifications': {
         'en': 'No / unknown prior qualifications',
         'cy': 'Dim cymwysterau blaenorol / cymwysterau anhysbys'
@@ -705,6 +749,14 @@ DICT = {
         'en': '<strong>%s</strong> course(s) from <strong>%s</strong> provider(s)',
         'cy': 'Ceir <strong>%s</strong> cwrs gan <strong>%s</strong> darparydd'
     },
+    'number_options_selected': {
+        'en': '{} options selected',
+        'cy': 'Dewiswyd {} opsiwn'
+    },
+    'number_selected_institutions': {
+        'en': '{} selected institutions',
+        'cy': 'Dewiswyd {} sefydliad'
+    },
     'Nursing and midwifery professionals': {
         'en': 'Nursing and midwifery professionals',
         'cy': 'Gweithwyr Proffesiynol Nyrsio a Bydwreigiaeth'
@@ -712,6 +764,10 @@ DICT = {
     'Nursing and Midwifery Professionals': {
         'en': 'Nursing and midwifery professionals',
         'cy': 'Gweithwyr Proffesiynol Nyrsio a Bydwreigiaeth'
+    },
+    'on_campus': {
+        'en': 'On campus',
+        'cy': 'Ar y campws'
     },
     'other': {
         'en': 'Other',
@@ -741,6 +797,10 @@ DICT = {
     'placement_year': {
         'en': 'Placement year',
         'cy': 'Blwyddyn ar leoliad'
+    },
+    'postcode': {
+        'en': 'Postcode',
+        'cy': 'Cod post'
     },
     'previous_page': {
         'en': 'Previous page',
@@ -802,6 +862,10 @@ DICT = {
         'en': 'Quality and customer care managers',
         'cy': 'Rheolwyr ansawdd a gofal cwsmeriaid'
     },
+    "regions": {
+        'en': 'Region(s)',
+        'cy': 'Rhanbarth(au)' 
+    },
     'remove_course': {
         'en': 'Remove course',
         'cy': 'Dileu cwrs'
@@ -850,6 +914,14 @@ DICT = {
         'en': 'Sandwich year',
         'cy': 'Blwyddyn ryngosod'
     },
+    "save_courses": {
+        'en': "Save courses",
+        'cy': "Cadw cyrsiau"
+    },
+    "you're_interested_in": {
+        'en': "you're interested in",
+        'cy': "sydd o ddiddordeb iti"
+    },
     'Science, engineering and technology associate professionals': {
         'en': 'Science, engineering and technology associate professionals',
         'cy': 'Gweithwyr Proffesiynol Cysylltiol Gwyddoniaeth, Peirianneg a Thechnoleg '
@@ -882,6 +954,10 @@ DICT = {
         'en': 'Search again',
         'cy': 'Chwilio eto'
     },
+    'search_by_course_or_institution': {
+        'en': 'Search by course name and/or institution',
+        'cy': 'Chwilio yn ôl enw cwrs ac/neu sefydliad'
+    },
     'back_to_results': {
         'en': 'Back',
         'cy': "Canlyniadau"
@@ -905,6 +981,14 @@ DICT = {
     'select_all': {
         'en': 'Select all',
         'cy': "Dewis popeth sy'n berthnasol"
+    },
+    'select_all_institutions': {
+        'en': 'Select all institutions',
+        'cy': "Dewis pob sefydliad"
+    },
+    'select_all_results': {
+        'en': 'Select all results',
+        'cy': "Dewis pob canlyniad"
     },
     'select_course': {
         'en': 'Select a course',
@@ -1326,6 +1410,10 @@ DICT = {
         'en': 'Go to Student Satisfaction',
         'cy': "Ewch i’r adran Bodlonrwydd Myfyrwyr"
     },
+    'within_miles': {
+        'en': 'within {} miles',
+        'cy': 'fewn {} milltir'
+    },
     'average_earnings_course_overview_1': {
         'en': 'Average Earnings',
         'cy': 'Enillion cyfartalog'
@@ -1501,6 +1589,18 @@ DICT = {
      'clear_filters': {
         'en': 'Clear Filters',
         'cy': "Clirio'r Hidlau"
+    },
+    'remove_filters': {
+        'en': 'Remove all filters',
+        'cy': 'Dileu yr holl hidlwyr'
+    },
+     'filters': {
+        'en': 'Filters',
+        'cy': "Hidlau"
+    },
+     'sort_by': {
+        'en': 'Sort by:',
+        'cy': "Didoli yn ôl:"
     },
      'show_filters': {
         'en': 'Show Filters',

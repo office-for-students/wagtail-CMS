@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="105px" height="101px" viewBox="0 0 105 101" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="promo/compare-courses" transform="translate(-415.000000, -35.000000)">
+            <g id="Group" transform="translate(415.000000, 35.000000)">
+                <polygon id="Triangle" fill="#D6501D" points="34.8970588 -2.13162821e-14 69.7941176 57.9637309 -8.52651283e-14 57.9637309"></polygon>
+                <polygon id="Triangle-Copy" fill="#8E3B74" transform="translate(70.102941, 72.017014) rotate(-180.000000) translate(-70.102941, -72.017014) " points="70.1029412 43.0351481 105 100.998879 35.2058824 100.998879"></polygon>
+                <path d="M59.948,42.9997309 L69,57.9997493 L43.052,57.9997309 L34,42.9997493 L59.948,42.9997309 Z" id="Combined-Shape" fill="#CE1421"></path>
+            </g>
+        </g>
+    </g>
+</svg>

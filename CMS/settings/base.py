@@ -203,6 +203,7 @@ BASE_URL = os.environ.get('ROOT_DOMAIN', 'http://example.com')
 
 # Search API settings
 
+SORT_BY_SUBJECT_LIMIT = os.environ.get('SORT_BY_SUBJECT_LIMIT')
 SEARCHAPIHOST = os.environ.get('SEARCHAPIHOST')
 DATASETAPIHOST = os.environ.get('DATASETAPIHOST')
 DATASETAPIKEY = os.environ.get('DATASETAPIKEY')

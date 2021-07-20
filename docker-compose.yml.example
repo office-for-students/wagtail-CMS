@@ -1,3 +1,9 @@
+# Legacy file used for CI
+#
+# It should be replaced with docker-compose.non-dev.yml as this one 
+# includes Mongo which is not required in non-dev environments.
+#
+
 version: '3'
 
 services:
@@ -48,6 +54,7 @@ services:
       # Custom
       ROOT_DOMAIN:                  "${ROOT_DOMAIN}"
       READ_ONLY:                    "${READ_ONLY}"
+      SORT_BY_SUBJECT_LIMIT:        "${SORT_BY_SUBJECT_LIMIT}"
       LOCAL:                        "${LOCAL}"
     build: .
     volumes:

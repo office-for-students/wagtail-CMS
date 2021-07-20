@@ -9,10 +9,12 @@ class FilterForm:
         self.placement = form_data.get('placement')
         self.foundation = form_data.get('foundation')
         self.abroad = form_data.get('abroad')
-        self.institutions = form_data.get('institution_query', '').replace('"', '')
+        self.institutions = '@'.join(form_data.getlist('institution_query')).replace('"', '') if 'institution_query' in form_data \
+            else ''
         self.courses = form_data.get('subject_query', '')
         self.course_query = form_data.get('course_query', '')
-        self.postcode_query = form_data.get('postcode_query', '')
+        self.postcode_query = (form_data.get('postcode') + ',' + form_data.get('distance')) if form_data.get('postcode') != None \
+            and form_data.get('postcode') != '' else {}
         if self.postcode_query:
             self.postcode = self.postcode_query.split(',')[0]
             self.distance = self.postcode_query.split(',')[1]

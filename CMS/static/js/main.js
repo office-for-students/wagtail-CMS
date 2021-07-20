@@ -39,8 +39,11 @@
             this.anchor = '#' + this.wrapper[0].id;
             this.header = this.wrapper.find('[class$=accordion-header]');
             this.body  = this.wrapper.find('[class$=accordion-body]');
+            this.filterBody  = this.wrapper.find('[class$=default-open-accordion]');
             this.expandIcon = this.wrapper.find('.expand');
             this.collapseIcon = this.wrapper.find('.collapse');
+            this.expandFilterIcon = this.wrapper.find('.expand-filter');
+            this.collapseFilterIcon = this.wrapper.find('.collapse-filter');
 
             this.setInitialView()
             this.startWatchers();
@@ -49,11 +52,15 @@
         setInitialView: function() {
             if (this.anchor === window.location.hash) {
                 this.collapseIcon.show();
+                this.expandFilterIcon.show();
                 this.header.addClass('open');
                 this.header.attr('aria-expanded', true);
             } else {
                 this.body.hide();
+                this.filterBody.show();
                 this.expandIcon.show();
+                this.collapseFilterIcon.show();
+                this.expandFilterIcon.hide();
             }
         },
 
@@ -72,15 +79,21 @@
             if (this.header.hasClass('open')) {
                 this.header.attr('aria-expanded', false);
                 this.body.hide();
+                this.filterBody.show()
                 this.expandIcon.show();
+                this.expandFilterIcon.hide();
                 this.collapseIcon.hide();
+                this.collapseFilterIcon.show();
                 this.header.removeClass('open');
             }
             else {
                 this.header.attr('aria-expanded', true);
                 this.body.show();
+                this.filterBody.hide()
                 this.expandIcon.hide();
+                this.expandFilterIcon.show();
                 this.collapseIcon.show();
+                this.collapseFilterIcon.hide();
                 this.header.addClass('open');
             }
         }
