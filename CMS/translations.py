@@ -10,9 +10,164 @@ def term_for_key(key: str, language: str) -> str:
     """
     term = DICT.get(key).get(language) if key in DICT else None
     if not term:
+        term = STATISTICS.get(key).get(language) if key in STATISTICS else None
+    if not term:
         term = OPTIONALS.get(key).get(language) if key in OPTIONALS else key
     return term
 
+
+
+STATISTICS = {
+    'overall_satisfied': {
+        'en': 'Overall I am satisfied with the quality of the course',
+        'cy': 'Rwy’n fodlon ag ansawdd y cwrs ar y cyfan'
+    },
+    'data_from_people': {
+        'en': 'Data from (# of people)',
+        'cy': "Data gan (# o fyfyrwyr)"
+    },
+    'percent_of_those_asked': {
+        'en': '% of those asked',
+        'cy': "% o'r rhai y gofynnwyd iddynt"
+    },
+    'teaching_on_my_course': {
+        'en': 'Teaching on my course',
+        'cy': 'Yr addysgu ar fy nghwrs'
+    },
+    'learning_opportunities': {
+        'en': "Learning opportunities",
+        'cy': "Cyfleoedd dysgu"
+    },
+    'assessment_and_feedback': {
+        'en': "Assessment and feedback",
+        'cy': "Asesiad ac adborth"
+    },
+    'academic_support': {
+        'en': "Academic support",
+        'cy': "Cefnogaeth academaidd"
+    },
+    'organisation_and_management': {
+        'en': "Organisation and management",
+        'cy': "Trefniant a rheolaeth"
+    },
+    'learning_resources': {
+        'en': "Learning resources",
+        'cy': "Adnoddau dysgu"
+    },
+    'learning_community': {
+        'en': "Learning community",
+        'cy': "Cymuned ddysgu"
+    },
+    'student_voice': {
+        'en': "Student voice",
+        'cy': "Llais y myfyriwr"
+    },
+    'nss_question_1': {
+        'en': "Staff are good at explaining things",
+        'cy': "Mae'r staff yn dda am esbonio pethau"
+    },
+    'nss_question_2': {
+        'en': "Staff have made the subject interesting.",
+        'cy': "Mae'r staff wedi gwneud y pwnc yn ddiddorol"
+    },
+    'nss_question_3': {
+        'en': "The course is intellectually stimulating.",
+        'cy': "Mae'r cwrs yn symbylu'r deallusrwydd"
+    },
+    'nss_question_4': {
+        'en': "My course has challenged me to achieve my best work.",
+        'cy': "Mae fy nghwrs wedi fy herio i i wneud fy ngwaith gorau"
+    },
+    'nss_question_5': {
+        'en': "My course has provided me with opportunities to explore ideas or concepts in depth.",
+        'cy': "Mae fy nghwrs wedi rhoi cyfleoedd i mi i archwilio syniadau neu gysyniadau’n fanwl"
+    },
+    'nss_question_6': {
+        'en': "My course has provided me with opportunities to bring information and ideas together from different topics.",
+        'cy': "Mae fy nghwrs wedi rhoi cyfleoedd i mi i ddod â gwybodaeth a syniadau at ei gilydd o wahanol bynciau"
+    },
+    'nss_question_7': {
+        'en': "My course has provided me with opportunities to apply what I have learnt.",
+        'cy': "Mae fy nghwrs wedi rhoi cyfleoedd i mi i ddefnyddio’r hyn rydw i wedi’i ddysgu"
+    },
+    'nss_question_8': {
+        'en': "The criteria used in marking have been clear in advance.",
+        'cy': "Mae'r meini prawf a ddefnyddir ar gyfer marcio wedi cael eu gwneud yn eglur ymlaen llaw"
+    },
+    'nss_question_9': {
+        'en': "Marking and assessment has been fair.",
+        'cy': "Mae’r marcio a’r asesu wedi bod yn deg"
+    },
+    'nss_question_10': {
+        'en': "Feedback on my work has been timely.",
+        'cy': "Mae’r adborth ar fy ngwaith i wedi bod yn amserol"
+    },
+    'nss_question_11': {
+        'en': "I have received helpful comments on my work.",
+        'cy': "Rydw i wedi cael sylwadau defnyddiol ar fy ngwaith"
+    },
+    'nss_question_12': {
+        'en': "I have been able to contact staff when I needed to.",
+        'cy': "Rydw i wedi gallu cysylltu â staff pan oeddwn i angen gwneud hynny"
+    },
+    'nss_question_13': {
+        'en': "I have received sufficient advice and guidance in relation to my course.",
+        'cy': "Rydw i wedi cael digon o gyngor ac arweiniad mewn perthynas â'm cwrs"
+    },
+    'nss_question_14': {
+        'en': "Good advice was available when I needed to make study choices on my course.",
+        'cy': "Roedd cyngor da ar gael i mi pan oeddwn i eisiau gwneud dewisiadau astudio ar fy nghwrs"
+    },
+    'nss_question_15': {
+        'en': "The course is well organised and is running smoothly.",
+        'cy': "Mae'r cwrs wedi’i drefnu'n dda ac mae'n rhedeg yn hwylus"
+    },
+    'nss_question_16': {
+        'en': "The timetable works efficiently for me.",
+        'cy': "Mae’r amserlen yn gweithio’n effeithlon i mi"
+    },
+    'nss_question_17': {
+        'en': "Any changes in the course or teaching have been communicated effectively.",
+        'cy': "Cafwyd cyfathrebu effeithiol ynghylch unrhyw newidiadau o ran y cwrs neu'r addysgu"
+    },
+    'nss_question_18': {
+        'en': "The IT resources and facilities provided have supported my learning well.",
+        'cy': "Mae’r adnoddau a’r cyfleusterau TG sydd wedi’u darparu wedi cefnogi fy nysgu i’n dda"
+    },
+    'nss_question_19': {
+        'en': "The library resources (e.g. books, online services and learning spaces) have supported my learning well.",
+        'cy': "Mae’r adnoddau llyfrgell (e.e. llyfrau, gwasanaethau ar-lein a gofod dysgu) wedi cefnogi fy nysgu i’n dda"
+    },
+    'nss_question_20': {
+        'en': "I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to.",
+        'cy': "Rydw i wedi gallu cael mynediad at adnoddau penodol i gwrs (e.e. offer, cyfleusterau, meddalwedd, casgliadau) pan oedd angen i mi wneud hynny"
+    },
+    'nss_question_21': {
+        'en': "I feel part of a community of staff and students.",
+        'cy': "Rydw i’n teimlo’n rhan o gymuned o staff a myfyrwyr"
+    },
+    'nss_question_22': {
+        'en': "I have had the right opportunities to work with other students as part of my course.",
+        'cy': "Rydw i wedi cael cyfleoedd priodol i weithio gyda myfyrwyr eraill fel rhan o'm cwrs"
+    },
+    'nss_question_23': {
+        'en': "I have had the right opportunities to provide feedback on my course.",
+        'cy': "Rydw i wedi cael cyfleoedd priodol i roi adborth ar fy nghwrs"
+    },
+    'nss_question_24': {
+        'en': "Staff value students’ views and opinions about the course.",
+        'cy': "Mae’r staff yn gwerthfawrogi barn a safbwynt y myfyrwyr am y cwrs"
+    },
+    'nss_question_25': {
+        'en': "It is clear how students’ feedback on the course has been acted on.",
+        'cy': "Mae’n glir sut gweithredwyd fel ymateb i adborth y myfyrwyr ar y cwrs"
+    },
+    'nss_question_26': {
+        'en': "The students’ union (association or guild) effectively represents students’ academic interests.",
+        'cy': "Mae undeb y myfyrwyr (cymdeithas neu urdd) yn cynrychioli buddiannau academaidd y myfyrwyr yn effeithiol"
+    },
+
+}
 
 OPTIONALS = {
     'not_available': {
@@ -61,6 +216,12 @@ DICT = {
     'about': {
         'en': 'About',
         'cy': 'Ynghylch'
+    },
+    #TODO: "about our data link" can be removed once the wagtail panels have been
+    # changed to only contain the source link
+    'about_our_data_link': {
+        'en': 'https://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey',
+        'cy': 'https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#arolwg_cenedlaethol_o_fyfyrwyr'
     },
     'access_course': {
         'en': 'Completed Access course',
@@ -264,7 +425,7 @@ DICT = {
     },
     'course_comparison_link': {
         'en': './course-comparison/',
-        'cy': './cymharu-cyrsiau/'
+        'cy': './cy/cymharu-cyrsiau/'
     },
     'courses_to_view': {
         'en': 'to view saved courses side-by-side',
