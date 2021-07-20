@@ -26,8 +26,18 @@
   color: orange;
 }
 
-.course-info-right {
-  margin-right: 49px;
+.accordion-header{
+    background: #f2f2f2;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.accordion-block{
+    margin-bottom: 32px !important;
+}
+
+.course-info-right{
+    margin-right: 49px;
 }
 
 .course-info-left {
@@ -52,6 +62,13 @@
   color: white;
   text-decoration: none;
 }
+.invert-image{
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+    margin-right: 22px;
+}
+
+#addCourses:hover { color: white; text-decoration: none; }
 
 $course_comparison_line_height: 51px;
 $course_comparison_font_normal: 14px;
@@ -74,46 +91,98 @@ $course_comparison_first_column_width: 250px;
     margin-bottom: 16px;
     min-height: 44px;
 
-    &-header {
-      height: $course_comparison_line_height;
-      line-height: $course_comparison_line_height;
-      margin-bottom: 16px;
-      display: block;
-      background: #f2f2f2;
-      color: black;
-      padding-left: 10px;
+            &-header{
+                height: $course_comparison_line_height;
+                margin-bottom: 16px;
+                display: flex;
+                align-items: center;
+                background: #f2f2f2;
+                color: black;
+                padding-left: 10px;
+                font-weight: bold;
+                font-size: 18px;
+            }
+
+            &-grey_background{
+                background: $divider-grey;
+
+                &.source{
+                    margin-bottom: 16px;
+                }
+            }
+
+            &-yellow_background{
+                width: 100%;
+                background: $pale;
+                border-bottom: 1px solid $pale;
+                margin-bottom: 16px;
+
+                .header{
+                    background: #eecc4b;
+                }
+            }
+        }
+
+
+    &__column{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1 1 0;
+        font-size: 14px;
+        height: $course_comparison_line_height;
+        background: inherit;
+        color: black;
+        margin-bottom: auto;
+        margin-top: auto;
+
+        &.sub_accordion_item{
+            font-size: 20px !important;
+        }
+
+        &-first{
+            display: flex;
+            align-items: center;
+            min-width: 100%;
+            max-width: 100%;
+            padding-bottom: 4px;
+            color: black;
+            padding-left: 10px;
+            font-size: $course_comparison_font_normal;
+            background: inherit;
+            min-height: 40px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 4px solid white;
+
+            &.sub_accordion_header{
+                font-size: 16px !important;
+            }
+        }
     }
-  }
 
+    &.source{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 14px;
+        height: $course_comparison_line_height;
+        background: inherit;
+        color: black;
+        margin-left: 24px;
 
-  &__column {
-    text-align: center;
-    vertical-align: middle;
-    flex: 1 1 0;
-    font-size: 14px;
-    line-height: $course_comparison_line_height;
-    background: #f2f2f2;
-    color: black;
-
-    &-first {
-      display: block;
-      min-width: 100%;
-      max-width: 100%;
-      margin-bottom: 4px;
-      color: black;
-      padding-left: 10px;
-      font-size: $course_comparison_font_normal;
-      background: #f2f2f2;
-      line-height: $course_comparison_line_height;
-      text-align: left;
+        &-link{
+            color: #308282;
+            text-decoration: underline;
+        }
     }
-  }
 }
-
-.small-flex-div {
-  display: flex;
-  flex-direction: row;
-  margin-left: auto;
+.small-flex-div{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    background-color: inherit;
+    align-items: center;
 }
 
 .course_compare_search {
@@ -482,152 +551,10 @@ $course_comparison_first_column_width: 250px;
       }
     }
 
-    &__compare-btn {
-      display: none;
-    }
-
-    .course-detail__lead {
-
-      .course-detail__institution-info {
-        .course-detail__institution-name {
-          @include desktop-body-font--bold-mixin();
-
-          color: $link-blue;
+        &__compare-btn {
+            display: none;
         }
-      }
     }
-
-    .course-detail__body {
-      padding: 0px;
-
-      .course-detail__accordion-block {
-        .course-detail__accordion {
-          margin-left: auto;
-          margin-right: auto;
-          // width: 98vw;
-
-          .course-detail__accordion-heading {
-          }
-
-          .course-detail__accordion-body {
-
-            .satisfaction_subject_name {
-              font-size: $s-heading-font-size;
-            }
-
-            .student-satisfaction__block {
-              padding: 0px;
-
-              .student-satisfaction__data-group {
-                margin-left: -30px;
-                margin-right: -30px;
-
-                .student-satisfaction__charts {
-                  // padding-left: 30px;
-                  // padding-right: 30px;
-
-                  .student-satisfaction__chart-wrapper {
-                    width: 100%;
-
-                    .student-satisfaction__chart {
-                      padding: 0px;
-                    }
-                  }
-                }
-              }
-            }
-
-            .after-course__block, .accreditation__block, .after-course__lead-block {
-              padding: 0;
-            }
-
-          }
-        }
-      }
-    }
-  }
-
-  .student-satisfaction__overview {
-    .student-satisfaction__overview-lead {
-      font-size: 2rem !important;
-    }
-  }
-
-  .student-satisfaction__data-group-heading {
-    font-size: 1.1rem !important;
-  }
-
-  .entry-information__chart-label {
-    font-size: 0.8rem !important;
-  }
-
-  .entry-information__overview-lead {
-    font-size: 1.2rem !important;
-  }
-
-  .entry-information__heading {
-    font-size: 1.1rem !important;
-  }
-
-  .entry-information__chart-label {
-    font-size: 0.8rem !important;
-  }
-
-  .one-year__overview-lead {
-    font-size: 2rem !important;
-  }
-
-  .one-year__overview-sublead {
-    font-size: 1.1rem !important;
-  }
-
-  .one-year__heading {
-    font-size: 1.1rem !important;
-  }
-
-  .one-year-block__chart-label {
-    font-size: 0.8rem !important;
-  }
-
-  .accreditation__overview-lead {
-    font-size: 1.2rem !important;
-  }
-
-  .earnings-after-course_block .earnings-after-course__stats-heading .rich-text p {
-    font-size: 1.1rem !important;
-  }
-
-  .earnings-after-course_block .earnings-after-course_explanation-text .rich-text p {
-    font-size: 1rem !important;
-  }
-
-  .earnings-after-course_block .earnings-after-course_section-block h3 {
-    font-size: 1.1rem !important;
-  }
-
-  .employment-after-course__data-point-overview .employment-after-course__data-point-overview-lead {
-    font-size: 2rem !important;
-  }
-
-  .employment-after-course__data-point-overview p {
-    font-size: 1rem !important;
-  }
-
-  .employment-after-course__block .employment-after-course__stats-heading {
-    font-size: 1.1rem !important;
-  }
-
-  .employment-after-course__block .employment-after-course__data-point .employment-after-course__chart-block .employment-after-course__chart .employment-after-course__chart-label {
-    font-size: 0.8rem !important;
-  }
-
-  .entry-information__chart-label {
-    text-align: left;
-  }
-
-  .employment-after-course__stats-heading {
-    font-size: 1.1rem !important;
-  }
 }
 
 
@@ -919,33 +846,31 @@ $course_comparison_first_column_width: 250px;
     }
   }
 }
-
-@media only screen and (min-width: 767px) and (max-width: 991px) {
-  div.comparison__body, div.course-detail__body {
-    width: 720px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  .course_comparison-table__row {
-    display: block;
-    text-align: center;
-    margin-bottom: 16px;
-
-    &-header {
-      margin-bottom: 16px;
+@media only screen and (min-width: 767px) and (max-width: 991px){
+    div.comparison__body, div.course-detail__body{
+        width: 720px!important;
+        margin-left:auto!important;
+        margin-right:auto!important;
     }
-  }
-  .course_comparison-table__column-first {
-    display: block;
-    min-width: 100%;
-    max-width: 100%;
-    margin-bottom: 4px;
-  }
+    .course_comparison-table__row{
+        text-align: center;
+        margin-bottom: 16px;
 
-  .small-flex-div {
-    display: flex;
-    flex-direction: row;
-  }
+        &-header{
+            margin-bottom: 16px;
+        }
+    }
+    .course_comparison-table__column-first{
+        min-width: 100%;
+        max-width: 100%;
+        margin-bottom: 4px;
+    }
+
+    .small-flex-div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
 
   .comparison .course-detail__course-container {
     display: block;
@@ -995,49 +920,56 @@ $course_comparison_first_column_width: 250px;
     display: none;
   }
 
-  .course_comparison-table {
-    &__row {
-      display: flex;
-      flex-direction: row;
-      color: black;
-      min-height: 44px;
-      margin-bottom: 8px;
-      margin-left: auto;
+    .course_comparison-table {
+        &__row {
+            display: flex;
+            min-height: $course_comparison_line_height;
+            flex-direction: row;
+            color: black;
+            margin-bottom: 8px;
+            align-items: center;
 
-      &-header {
-        height: $course_comparison_line_height;
-        line-height: $course_comparison_line_height;
-        margin-bottom: 10px;
-        display: block;
-        background: #f2f2f2;
-        color: black;
-        padding-left: 10px;
-      }
+            &-header {
+                display: flex;
+                height: $course_comparison_line_height;
+                align-items: center;
+                min-height: $course_comparison_line_height;
+                margin-bottom: 10px;
+
+                background: #f2f2f2;
+                color: black;
+                padding-left: 24px;
+            }
+            &-yellow_background{
+                border-bottom: 5px solid $pale;
+                margin-bottom: 0px;
+
+                .header{
+                    background: #fef7d7;
+                }
+            }
+        }
+
+        &__column {
+            flex: 1 1 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: inherit;
+
+            &-first {
+                color: black;
+                max-width: 186px;
+                min-width: 186px;
+                text-align: left;
+                min-height: $course_comparison_line_height;
+                flex: 1;
+                background: inherit;
+                border: none;
+                padding: 16px 0px 16px 24px;
+            }
+        }
     }
-
-    &__column {
-      text-align: center;
-      vertical-align: middle;
-      flex: 1 1 0;
-      font-size: 14px;
-      background: #f2f2f2;
-      margin-left: auto;
-
-      &-first {
-        color: black;
-        max-width: 186px;
-        min-width: 186px;
-        text-align: left;
-        line-height: $course_comparison_line_height;
-        flex: 1;
-        vertical-align: middle;
-        padding-left: 10px;
-        display: inline-block;
-        font-size: $course_comparison_font_normal;
-        background: #f2f2f2;
-      }
-    }
-  }
 
   .small-flex-div {
     display: flex;
@@ -1084,58 +1016,69 @@ $course_comparison_first_column_width: 250px;
     vertical-align: top;
   }
 
-  .comparison .course-detail__course-container-pills-slider {
-    display: none;
-  }
-  .course_comparison-table {
-    &__row {
-      display: flex;
-      flex-direction: row;
-      color: black;
-      min-height: 44px;
-      margin-bottom: 8px;
+    .comparison .course-detail__course-container-pills-slider{
+       display: none;
+    }
+    .course_comparison-table {
+        &__row {
+            display: flex;
+            min-height: $course_comparison_line_height;
+            flex-direction: row;
+            color: black;
+            margin-bottom: 8px;
+            align-items: center;
 
-      &-header {
-        height: $course_comparison_line_height;
-        line-height: $course_comparison_line_height;
-        margin-bottom: 10px;
-        display: block;
-        background: #f2f2f2;
-        color: black;
-        padding-left: 10px;
-      }
+
+
+
+            &-header {
+                min-height: $course_comparison_line_height;
+                margin-bottom: 10px;
+                background: #f2f2f2;
+                color: black;
+                padding-left: 24px;
+                font-size: 20px;
+            }
+
+            &-yellow_background{
+                border-bottom: 5px solid $pale;
+                margin-bottom: 0px;
+
+                .header{
+                    background: #fef7d7 !important;
+                }
+            }
+        }
+
+        &__column {
+            flex: 1 1 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: inherit;
+
+            &-first {
+                color: black;
+                max-width: 250px;
+                min-width: 250px;
+                text-align: left;
+                min-height: $course_comparison_line_height;
+                flex: 1;
+                padding: 16px 0px 16px 24px;
+                background: inherit;
+                border: none;
+            }
+        }
     }
 
-    &__column {
-      text-align: center;
-      vertical-align: middle;
-      flex: 1 1 0;
-      font-size: 14px;
-      background: #f2f2f2;
-
-      &-first {
-        color: black;
-        max-width: 250px;
-        min-width: 250px;
-        text-align: left;
-        line-height: $course_comparison_line_height;
+    .small-flex-div{
+        display: flex;
+        width: 100%;
+        min-height: $course_comparison_line_height;
+        margin-bottom: 4px;
+        align-items: center;
         flex: 1;
-        vertical-align: middle;
-        padding-left: 10px;
-        display: inline-block;
-        font-size: $course_comparison_font_normal;
-        background: #f2f2f2;
-      }
     }
-  }
-
-  .small-flex-div {
-    display: flex;
-    width: 100%;
-    margin-bottom: 4px;
-    align-items: center;
-    flex: 1;
-  }
 
   .course-info-right {
     margin-right: 0px;

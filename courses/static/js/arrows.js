@@ -1,4 +1,6 @@
 var bottom_display = 0;
+var items = document.getElementsByClassName("arrow")
+
 const slide_left = document.getElementById("slideLeft");
 const slide_right = document.getElementById("slideRight");
 const course_info_container = document.getElementById("course-info-container")
@@ -7,6 +9,49 @@ if(screen.availWidth <= 320 || window.innerWidth <= 320){
 }
 else{
     var small_screen_amount = 2
+}
+
+function hideCourses(){
+    for(var i=0; i < items.length; i++){
+        for (var index = 0; index < compare_list.length; index ++){
+
+            var course_info = document.getElementById(items[i].id)
+            var course_div = document.getElementById(`courseContainer-${index}`);
+
+            if(screen.availWidth <= 576 ||screen.availWidth <= 576){
+                if(+course_div.dataset.index > bottom_display + small_screen_amount || +course_div.dataset.index < bottom_display){
+                    course_div.classList.add("hidden");
+                }
+                else{
+                    course_div.classList.remove("hidden");
+                }
+                if(+course_info.dataset.index > bottom_display + small_screen_amount || +course_info.dataset.index < bottom_display){
+                    course_info.classList.add("hidden");
+                }
+                else{
+                    course_info.classList.remove("hidden");
+                }
+            }
+            else if(window.innerWidth <= 576 ||window.innerWidth <= 576){
+                if(+course_div.dataset.index > bottom_display + small_screen_amount || +course_div.dataset.index < bottom_display){
+                    course_div.classList.add("hidden");
+                }
+                else{
+                    course_div.classList.remove("hidden");
+                }
+                if(+course_info.dataset.index > bottom_display + small_screen_amount || +course_info.dataset.index < bottom_display){
+                    course_info.classList.add("hidden");
+                }
+                else{
+                    course_info.classList.remove("hidden");
+                }
+            }
+            else{
+                course_div.classList.remove("hidden");
+                course_info.classList.remove("hidden");
+            }
+        }
+    }
 }
 
 function scrollDisplay(){
@@ -43,33 +88,14 @@ function scrollDisplay(){
         course_info_container.classList.remove("course-info-both");
     }
 
-    for(var i=0; i < 8; i++){
-        for(var index=0; index < compare_list.length; index++){
-            var course_info = document.getElementById(dataset[i] + index)
-            var course_div = document.getElementById(`courseContainer-${index}`);
-            if(+course_div.dataset.index > bottom_display + small_screen_amount || +course_div.dataset.index < bottom_display){
-                course_div.classList.add("hidden");
-                course_info.classList.add("hidden");
-            }
-            else{
-                course_div.classList.remove("hidden");
-                course_info.classList.remove("hidden");
-            }
-        }
-    }
+    hideCourses();
 }
 
 function smallScreenDisplay(){
-    if(screen.availWidth <= 320 || window.innerWidth <= 320){
-        var small_screen_amount = 1
-    }
-    else{
-        var small_screen_amount = 2
-    }
     if(bottom_display === 0){
         slide_left.classList.add("hidden");
     }
-    if(screen.availWidth >= 768 || window.innerWidth >= 768){
+    if(screen.availWidth >= 576 || window.innerWidth >= 576){
         course_info_container.classList.remove("course-info-right");
         course_info_container.classList.remove("course-info-left");
         course_info_container.classList.remove("course-info-both");
@@ -86,28 +112,10 @@ function smallScreenDisplay(){
         course_info_container.classList.add("course-info-both");
     }
 
-
-
-    for(var i=0; i < 8; i++){
-        for (var index = 0; index < compare_list.length; index ++){
-            var course_info = document.getElementById(dataset[i] + index)
-            var course_div = document.getElementById(`courseContainer-${index}`);
-
-            if(screen.availWidth <= 576 && +course_div.dataset.index > bottom_display + small_screen_amount ||screen.availWidth <= 576 && +course_div.dataset.index < bottom_display){
-                course_div.classList.add("hidden");
-                course_info.classList.add("hidden");
-            }
-            else if(window.innerWidth <= 576 && +course_div.dataset.index > bottom_display + small_screen_amount ||window.innerWidth <= 576 && +course_div.dataset.index < bottom_display){
-                course_div.classList.add("hidden");
-                course_info.classList.add("hidden");
-            }
-            else{
-                course_div.classList.remove("hidden");
-                course_info.classList.remove("hidden");
-            }
-        }
-    }
+    hideCourses();
 }
+
+
 
 $(window).on('resize orientationchange load', function(){
     smallScreenDisplay();
