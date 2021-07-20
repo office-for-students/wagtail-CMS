@@ -87,7 +87,6 @@ def get_details(section_model: Type[Section], courses: List[Course], language: s
 
     section.prep_data()
     response = section.generate_dict()
-    print(f"respone = {response}")
     return response
 
 
