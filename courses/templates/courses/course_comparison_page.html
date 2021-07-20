@@ -148,8 +148,8 @@
                     <div class="course-detail__body">
                         {% for accordion in page.accordions %}
                             <div class="accordion" id="ac-{{ forloop.counter }}">
-                                <div tabindex="0" role="button" aria-label="Show content"
-                                     class="green narrow accordion-header">
+                                <div tabindex="{{ forloop.counter }}" role="button" aria-label="Show content"
+                                     class="green narrow accordion-header sticky-accordion-header">
                                     <div class="">
                                         <div id="{{ accordion.value.heading }}" style="max-width: 440px;"
                                              class="accordion-title"
@@ -188,8 +188,10 @@
     </script>
     <script>
         var element_height = $(".course-detail__course-container-pills").height();
-        var accordion_header = $(".course-detail__accordion");
-        accordion_header.css('top', element_height + 10 + "px")
+        var accordion_header = $(".sticky-accordion-header");
+        accordion_header.css('top', element_height + 20 + "px");
+        accordion_header.css('position', "sticky");
+        accordion_header.css("z-index", "98");
         console.log("HEIGHT", element_height);
     </script>
 

@@ -473,9 +473,11 @@ $course_comparison_first_column_width: 250px;
       &-container {
         width: 100%;
         position: sticky;
-        top: 10px;
         background: white;
-
+        padding-top: 20px;
+        position: sticky;
+        z-index: 999;
+        top: 0;
         &-pills {
           display: flex;
           overflow: hidden;
@@ -504,6 +506,8 @@ $course_comparison_first_column_width: 250px;
         margin-top: 17px;
         margin-right: auto;
         min-width: 250px;
+        font-size: 24px;
+        font-weight: bold;
       }
 
       &-none-selected {
