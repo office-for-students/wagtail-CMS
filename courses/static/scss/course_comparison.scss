@@ -53,6 +53,12 @@
     color: #308282;
 }
 
+.invert-image{
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+    margin-right: 22px;
+}
+
 #addCourses:hover { color: white; text-decoration: none; }
 
 $course_comparison_line_height: 51px;
@@ -87,13 +93,8 @@ $course_comparison_first_column_width: 250px;
                 font-size: 18px;
             }
 
-            &-link{
-                color: #308282;
-                text-decoration: underline;
-            }
-
             &-grey_background{
-                background: #f2f2f2;
+                background: $divider-grey;
 
                 &.source{
                     margin-bottom: 16px;
@@ -102,15 +103,12 @@ $course_comparison_first_column_width: 250px;
 
             &-yellow_background{
                 width: 100%;
-                background: #fef7d7;
-                border-bottom: 5px solid #fef7d7;
-
-                &:nth-last-child(3n){
-                    margin-bottom: 32px !important;
-                }
+                background: $pale;
+                border-bottom: 1px solid $pale;
+                margin-bottom: 16px;
 
                 .header{
-                    background: #eecc4b
+                    background: #eecc4b;
                 }
             }
         }
@@ -128,6 +126,10 @@ $course_comparison_first_column_width: 250px;
         margin-bottom: auto;
         margin-top: auto;
 
+        &.sub_accordion_item{
+            font-size: 20px !important;
+        }
+
         &-first{
             display: flex;
             align-items: center;
@@ -142,6 +144,26 @@ $course_comparison_first_column_width: 250px;
             text-align: left;
             font-weight: bold;
             border-bottom: 4px solid white;
+
+            &.sub_accordion_header{
+                font-size: 16px !important;
+            }
+        }
+    }
+
+    &.source{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 14px;
+        height: $course_comparison_line_height;
+        background: inherit;
+        color: black;
+        margin-left: 24px;
+
+        &-link{
+            color: #308282;
+            text-decoration: underline;
         }
     }
 }
@@ -788,9 +810,12 @@ $course_comparison_first_column_width: 250px;
 
                 background: #f2f2f2;
                 color: black;
-                padding-left: 10px;
+                padding-left: 24px;
             }
             &-yellow_background{
+                border-bottom: 5px solid $pale;
+                margin-bottom: 0px;
+
                 .header{
                     background: #fef7d7;
                 }
@@ -875,6 +900,9 @@ $course_comparison_first_column_width: 250px;
             margin-bottom: 8px;
             align-items: center;
 
+
+
+
             &-header {
                 min-height: $course_comparison_line_height;
                 margin-bottom: 10px;
@@ -885,6 +913,9 @@ $course_comparison_first_column_width: 250px;
             }
 
             &-yellow_background{
+                border-bottom: 5px solid $pale;
+                margin-bottom: 0px;
+
                 .header{
                     background: #fef7d7 !important;
                 }

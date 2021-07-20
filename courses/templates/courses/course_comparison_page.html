@@ -20,6 +20,7 @@
 <script type="text/javascript" src="{% static 'js/bar_chart.js' %}?{% code_version %}"></script>
 <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
 <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
+<script type="text/javascript" src="{% static 'js/sub_accordion.js' %}?{% code_version %}"></script>
 
 <script>
         var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
@@ -126,7 +127,7 @@
                     <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
                          class="accordion-header">
                         <div class="accordion-title">
-                            <div class="accordion-header course_comparison-table__row-header">
+                            <div class="accordion-header course_comparison-table__column-first">
                                 <i class="fas fa-chevron-down expand chevron" alt="expand"
                                    aria-label="{{ action.affirmative }}"></i>
                                 <i class="fas fa-chevron-up collapse chevron" alt="collapse"
@@ -144,7 +145,7 @@
                     {% endwith %}
                 </div>
 
-                {% include 'courses/partials/satisfaction_accordion.html' with title=value.title values=value.values change_point=3 %}
+                {% include 'courses/partials/accordion_body.html' with title=value.title values=value.values change_point=4 %}
 
                 <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
             </div>
