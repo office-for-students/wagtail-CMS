@@ -44,7 +44,7 @@
         if(2 <= checked_bookmark && checked_bookmark <= 7){
             compare_button.classList.add("enabled")
             compare_button.disabled = false
-            compare_text.innerHTML = "Select up to 7 courses to compare"
+            compare_text.innerHTML = "{% get_translation key='select_up_to_7' language=page.get_language %}"
             courses_selected.classList.remove("red")
         }
         else if(7 < checked_bookmark){
@@ -79,7 +79,7 @@
         var courses_selected = document.getElementById('courses-selected')
 
         if(checked_bookmark >= 1){
-            courses_selected.innerHTML = "<strong>" + checked_bookmark + "</strong> course(s) selected"
+            courses_selected.innerHTML = "<strong>" + checked_bookmark + "</strong> {% get_translation key='courses_selected' language=page.get_language %}"
         }
         else{
             courses_selected.innerHTML = ""
@@ -87,7 +87,7 @@
         if(2 <= checked_bookmark && checked_bookmark <= 7){
             compare_button.classList.add("enabled")
             compare_button.disabled = false
-            compare_text.innerHTML = "Select up to 7 courses to compare"
+            compare_text.innerHTML = "{% get_translation key='select_up_to_7' language=page.get_language %}"
             courses_selected.classList.remove("red")
         }
         else if(7 < checked_bookmark){
@@ -98,7 +98,7 @@
         else{
             compare_button.disabled = true
             compare_button.classList.remove("enabled")
-            compare_text.innerHTML = "Select at least 2 courses to compare"    
+            compare_text.innerHTML = "{% get_translation key='select_at_least_2' language=page.get_language %}"
         }
     }
 
@@ -159,13 +159,13 @@
 </script>
 
     <div class="bookmark discover-uni-container">
-        <div class="bookmark-header">Saved course(s)</div>
+        <div class="bookmark-header">{% get_translation key='saved_courses' language=page.get_language %}</div>
 
         <div>
             <button id="compare-courses-button" class="bookmark-compare-button" onclick="document.getElementById('compareForm').submit();" disabled>
-                Compare courses
+                {% get_translation key='can_compare_courses' language=page.get_language %}
             </button>
-            <h4 id="bookmark-text" class="bookmark-text">Select at least 2 courses to compare</h4>
+            <h4 id="bookmark-text" class="bookmark-text">{% get_translation key='select_at_least_2' language=page.get_language %}</h4>
             <h4 id="courses-selected" style="margin-left: 20px" class="bookmark-text"></h4>
         </div>
 
