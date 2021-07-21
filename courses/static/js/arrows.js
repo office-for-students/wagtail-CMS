@@ -32,9 +32,7 @@ function hideCourses() {
             var course_div = document.getElementById(`courseContainer-${index}`);
 
             if (isMediumScreenOrSmaller()) {
-                console.log("isMediumScreenOrSmaller");
-                var nextIndex = bottom_display + small_screen_amount;
-                console.log("Next index: ", nextIndex);
+                let nextIndex = bottom_display + small_screen_amount;
                 if (parseInt(course_div.dataset.index) > nextIndex || parseInt(course_div.dataset.index) < bottom_display) {
                     course_div.classList.add("hidden");
                 } else {
