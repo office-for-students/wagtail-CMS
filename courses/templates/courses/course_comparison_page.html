@@ -24,7 +24,7 @@
 
     <script>
         var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
-        var saved_courses = JSON.parse(localStorage.getItem("comparisonCourses"));
+
     </script>
 
 {% endblock %}
@@ -180,17 +180,17 @@
     {% endif %}
     <script>
         var course_search_container = document.getElementById("courseSearchContainer");
+        var saved_courses = JSON.parse(localStorage.getItem("comparisonCourses"));
         if (!(saved_courses)) {
             course_search_container.classList.remove("hidden")
         }
     </script>
     <script>
         var element_height = $(".course-detail__course-container-pills").height();
-        var accordion_header = $(".sticky-accordion-header");
+        let accordion_header = $(".sticky-accordion-header");
         accordion_header.css('top', element_height + 20 + "px");
         accordion_header.css('position', "sticky");
         accordion_header.css("z-index", "98");
-        console.log("HEIGHT", element_height);
     </script>
 
 {% endblock %}
