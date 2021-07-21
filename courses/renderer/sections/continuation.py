@@ -4,10 +4,10 @@ from courses.models import Course
 from courses.renderer.sections.base import Section
 
 CONTINUATION_DATA_FROM_PEOPLE = "data_from_people"
-STILL_STUDYING = "still_studying"
-TAKING_BREAK = "taking_break"
-LEFT_WITH_LOWER = "left_with_lower"
-LEFT_WITHOUT_QUALIFICATION = "left_without_qualification"
+STILL_STUDYING = "still_on_course"
+TAKING_BREAK = "break_from_studies"
+LEFT_WITH_LOWER = "left_lower_qualification"
+LEFT_WITHOUT_QUALIFICATION = "left_no_qualification"
 
 continuation_list = [
     "number_of_students",

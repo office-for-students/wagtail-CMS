@@ -81,6 +81,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             title=translations.term_for_key(key="after_one_year", language=language),
             dataset=get_details(ContinuationSection, courses, language),
         )
+        #TODO: additional accordions to be added here, however, in the order they are supposed to appear.
     ]
 
     response.append(context)
