@@ -70,17 +70,19 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         ]
     )
 
-    context["student_satisfaction_course_overview_1"] = dict(
-        title=translations.term_for_key(key="student_satisfaction_course_overview_1", language=language),
-        dataset=get_details(SatisfactionSection, courses, language),
-        sub_accordions=get_sub_accordion_dataset(courses, language)
-    )
+    context["accordions"] = [
+        dict(
+            title=translations.term_for_key(key="student_satisfaction_course_overview_1", language=language),
+            dataset=get_details(SatisfactionSection, courses, language),
+            sub_accordions=get_sub_accordion_dataset(courses, language),
+            change_point=4
+        ),
+        dict(
+            title=translations.term_for_key(key="after_one_year", language=language),
+            dataset=get_details(ContinuationSection, courses, language),
+        )
+    ]
 
-    context["after_one_year"] = dict(
-        title=translations.term_for_key(key="after_one_year", language=language),
-        dataset=get_details(ContinuationSection, courses, language),
-    )
-    print(context["after_one_year"])
     response.append(context)
     return response
 
