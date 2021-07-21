@@ -11,7 +11,6 @@
 {% endblock %}
 
 {% block extra_js %}
-{#    <script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}?{% code_version %}"></script>#}
     <script type="text/javascript" src="{% static 'js/ratings.js' %}?{% code_version %}"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
@@ -171,7 +170,6 @@
                             </div>
                         {% endfor %}
                     </div>
-
                     <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
                 </div>
             {% endif %}
