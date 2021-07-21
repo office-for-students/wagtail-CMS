@@ -227,6 +227,10 @@ DICT = {
         'en': 'https://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey',
         'cy': 'https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#arolwg_cenedlaethol_o_fyfyrwyr'
     },
+    'national_student_survey': {
+        'en': 'NSS (National Student Survey)',
+        'cy': 'ACF (Arolwg Cenedlaethol o Fyfyrwyr)'
+    },
     'access_course': {
         'en': 'Completed Access course',
         'cy': 'Wedi cwblhau cwrs mynediad'
@@ -1707,7 +1711,7 @@ DICT = {
         'en': 'https://discoveruni.gov.uk/about-our-data/#data_collected_from_universities_and_colleges_on_individual_students',
         'cy': 'https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#data_a_gasglwyd_gan_brifysgolion_a_cholegau_ar_fyfyrwyr_unigol'
     },
-    'after_1_year_overview_1': {
+    'source': {
         'en': 'Source',
         'cy': 'Ffynhonnell'
     },

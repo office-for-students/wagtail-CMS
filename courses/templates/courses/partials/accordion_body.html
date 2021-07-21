@@ -1,16 +1,20 @@
 {% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
 {% with dataset=accordion.dataset sub_accordions=accordion.sub_accordions change_point=accordion.change_point %}
-    <div class="course_comparison-table__row-grey_background source">
-        <div class="course_comparison-table source">
-            Source: &nbsp;<a class="course_comparison-table source-link"
-                              href="{% get_translation key='about_our_data_link' language=page.get_language %}">
-            NSS (National Student Survey)</a>
-            <!--            TODO: revise wagtail content so it just contains the source link then get link from wagtail-->
-            <!--                {{ page.accordions.0.value.intro_body }} OR make a dictionary of accordions: links on the view-->
-        </div>
-    </div>
     <div class="mb-3">
         {% for item, value in dataset.items %}
+            {% if forloop.counter == accordion.source.0 %}
+                <div class="course_comparison-table__row-grey_background source">
+                    <div class="course_comparison-table source">
+                        {% get_translation key='source' language=page.get_language %}: &nbsp;
+                        <a class="course_comparison-table source-link" href="{{accordion.source.1}}">
+                            {{accordion.source.2}}
+                        </a>
+                        <!--            TODO: revise wagtail content so it just contains the source link then get link from wagtail-->
+                        <!--                {{ page.accordions.0.value.intro_body }} OR make a dictionary of accordions: links on the view-->
+                    </div>
+                </div>
+            {% endif %}
+
             {% if forloop.counter < change_point %}
                 <div class="course_comparison-table__row-yellow_background">
                     {% if forloop.counter == 1 %}
@@ -22,6 +26,19 @@
             {% else %}
                 <div class="course_comparison-table__row-grey_background">
                     {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values item_font="item_font" header_font="header_font" %}
+                </div>
+            {% endif %}
+
+            {% if forloop.last and forloop.counter < accordion.source.0 %}
+                <div class="course_comparison-table__row-grey_background source">
+                    <div class="course_comparison-table source">
+                        {% get_translation key='source' language=page.get_language %}: &nbsp;
+                        <a class="course_comparison-table source-link" href="{{accordion.source.1}}">
+                            {{accordion.source.2}}
+                        </a>
+                        <!--            TODO: revise wagtail content so it just contains the source link then get link from wagtail-->
+                        <!--                {{ page.accordions.0.value.intro_body }} OR make a dictionary of accordions: links on the view-->
+                    </div>
                 </div>
             {% endif %}
         {% endfor %}

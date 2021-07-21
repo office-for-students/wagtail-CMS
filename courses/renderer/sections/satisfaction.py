@@ -15,6 +15,7 @@ satisfaction_list = [
 
 primary_key = 0
 action = 1
+suffix_index = 2
 
 
 def presentable_satisfaction(course: Course, stat: str, suffix: str, language: str) -> str:
@@ -46,13 +47,14 @@ class SatisfactionSection(Section):
 
     def generate_dict(self) -> dict:
         sections = self.get_sections()
-        suffix=2
         for course in self.courses:
             for section in sections:
                 self.data[section[primary_key]]["values"].append(
-                    presentable_satisfaction(course, section[action], section[suffix], self.language)
+                    presentable_satisfaction(course,
+                                             section[action],
+                                             section[suffix_index],
+                                             self.language)
                 )
-
         return self.data
 
 
@@ -70,14 +72,13 @@ class SubSatisfactionSection(Section):
 
     def generate_dict(self) -> dict:
         sections = self.get_sections()
-        suffix = 2
         for course in self.courses:
             for section in sections:
                 self.data[section[primary_key]]["values"].append(
                     presentable_satisfaction(
                         course=course,
                         stat=section[action],
-                        suffix=section[suffix],
+                        suffix=section[suffix_index],
                         language=self.language
                     )
                 )
