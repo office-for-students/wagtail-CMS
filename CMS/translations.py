@@ -236,8 +236,8 @@ DICT = {
         'cy': 'ar draws y DU'
     },
     'address': {
-        'en': 'Add 2 courses to use the comparison tool',
-        'cy': 'Ychwanegwch 2 gwrs i ddefnyddio’r offeryn cymharu'
+        'en': 'Address',
+        'cy': 'Cyfeiriad'
     },
     'add_saved_course': {
         'en': 'Add saved course',
