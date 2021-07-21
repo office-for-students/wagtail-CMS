@@ -191,15 +191,6 @@
         accordion_header.css('top', element_height + 20 + "px");
         accordion_header.css('position', "sticky");
         accordion_header.css("z-index", "98");
-        console.log("HEIGHT", element_height);
-
-        const resizeObserver = new ResizeObserver(entries =>
-            accordion_header.css('top', element_height + 20 + "px")
-        )
-
-        // start observing a DOM node
-        resizeObserver.observe(document.body)
-
     </script>
 
 {% endblock %}
