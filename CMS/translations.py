@@ -236,8 +236,16 @@ DICT = {
         'cy': 'ar draws y DU'
     },
     'address': {
-        'en': 'Address',
-        'cy': 'Cyfeiriad'
+        'en': 'Add 2 courses to use the comparison tool',
+        'cy': 'Ychwanegwch 2 gwrs i ddefnyddio’r offeryn cymharu'
+    },
+    'add_saved_course': {
+        'en': 'Add saved course',
+        'cy': 'Ychwanegu cwrs wedi’i gadw'
+    },
+    'add_two_courses': {
+        'en': 'Add 2 courses to use the comparison tool',
+        'cy': 'Ychwanegwch 2 gwrs i ddefnyddio’r offeryn cymharu'
     },
     'Administrative occupations': {
         'en': 'Administrative occupations',
@@ -423,9 +431,17 @@ DICT = {
         'en': 'Compare',
         'cy': 'Cymharu'
     },
+    'compare_7_courses': {
+        'en': 'Compare up to 7 courses',
+        'cy': 'Cymharwch hyd at 7 o gyrsiau'
+    },
     'course_comparison_link': {
         'en': './course-comparison/',
         'cy': './cy/cymharu-cyrsiau/'
+    },
+    'courses_selected':{
+        'en': 'course(s) selected',
+        'cy': 'cwrs wedi’u dewis'
     },
     'courses_to_view': {
         'en': 'to view saved courses side-by-side',
@@ -915,6 +931,10 @@ DICT = {
         'en': 'to near your home',
         'cy': 'agos at adref'
     },
+    'need_help_choosing': {
+        'en': 'Need help choosing?',
+        'cy': 'Angen cymorth i ddewis?'
+    },
     'next': {
         'en': 'Next',
         'cy': 'Nesaf'
@@ -930,6 +950,14 @@ DICT = {
     'no_courses_found': {
         'en': 'No courses found, remove or change some filters',
         'cy': 'Ni chafwyd hyd i unrhyw gyrsiau - canslwch neu newidiwch rai hidlyddion'
+    },
+    'no_courses_saved': {
+        'en': "No courses saved. To compare courses, search for and save courses you're interested in.",
+        'cy': "Nid oes unrhyw gyrsiau wedi’u cadw. I gymharu cyrsiau, chwiliwch am gyrsiau sydd o ddiddordeb ichi a’u cadw."
+    },
+    'no_courses_selected': {
+        'en': 'No courses selected',
+        'cy': 'Nid ydych wedi dewis unrhyw gyrsiau'
     },
     'no_qualifications': {
         'en': 'No / unknown prior qualifications',
@@ -1128,6 +1156,10 @@ DICT = {
         'en': "Save courses",
         'cy': "Cadw cyrsiau"
     },
+    "saved_courses": {
+        'en': "Saved courses",
+        'cy': "Cyrsiau wedi’u cadw"
+    },
     "you're_interested_in": {
         'en': "you're interested in",
         'cy': "sydd o ddiddordeb iti"
@@ -1176,6 +1208,10 @@ DICT = {
         'en': 'Search within',
         'cy': 'Chwilio yn '
     },
+    'search_guidelines': {
+        'en': 'Search our guidelines for help making the best decision for you.',
+        'cy': 'Chwiliwch am gymorth yn ein canllawiau i wneud y penderfyniad gorau i chi.'
+    },
     'Secretarial and Related Occupations': {
         'en': 'Secretarial and related occupations',
         'cy': 'Galwedigaethau ysgrifenyddol a chysylltiedig'
@@ -1211,6 +1247,14 @@ DICT = {
     'selected_2': {
         'en': 'selected of',
         'cy': 'o'
+    },
+    'select_up_to_7': {
+        'en': 'Select up to 7 courses to compare',
+        'cy': 'Dewiswch hyd at 7 cwrs i’w cymharu'
+    },
+    'select_at_least_2': {
+        'en': 'Select at least 2 courses to compare',
+        'cy': 'Dewiswch o leiaf 2 gwrs i’w cymharu'
     },
     'send_message': {
         'en': 'Send message',
@@ -1763,6 +1807,10 @@ DICT = {
         'en': 'Information and advice',
         'cy': "Gwybodaeth a chyngor"
     },
+    'information_advice': {
+        'en': 'Go to <strong class="blue-text">Information and advice</strong>',
+        'cy': 'Ewch i <strong class="blue-text">Gwybodaeth a chyngor</strong>'
+    },
     'video_on_topic_title': {
         'en': 'Video on a relevant topic',
         'cy': "Fideo ar bwnc perthnasol"
@@ -1806,10 +1854,6 @@ DICT = {
     'show_filters': {
         'en': 'Show Filters',
         'cy': "Dangoswch yr Hidlau"
-    },
-    'need_help_choosing': {
-        'en': 'Need help choosing?',
-        'cy': "Angen help dewis?"
     },
     'search_our_guidance': {
         'en': 'Search our guidance for help making the best decision for you.',

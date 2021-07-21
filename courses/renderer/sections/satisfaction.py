@@ -18,7 +18,10 @@ action = 1
 
 
 def presentable_satisfaction(course: Course, stat: str, language: str) -> str:
-    response = "No data available"
+    if language == 'cy':
+        response = "Nid yw'r data ar gael"
+    else:
+        response = "No data available"
     try:
         _object = course.satisfaction_stats[0]
         method = getattr(_object, stat)
