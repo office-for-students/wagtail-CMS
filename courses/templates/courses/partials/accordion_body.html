@@ -14,7 +14,7 @@
             {% if forloop.counter < change_point %}
                 <div class="course_comparison-table__row-yellow_background">
                     {% if forloop.counter == 1 %}
-                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values sub_item="sub_accordion_item" sub_header="sub_accordion_header" suffix="%" mt="mt-3" %}
+                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values sub_item="sub_accordion_item" sub_header="sub_accordion_header" mt="mt-3" %}
                     {% else %}
                         {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values mt="mt-3" %}
                     {% endif %}

@@ -17,7 +17,7 @@ primary_key = 0
 action = 1
 
 
-def presentable_satisfaction(course: Course, stat: str, language: str) -> str:
+def presentable_satisfaction(course: Course, stat: str, suffix: str, language: str) -> str:
     if language == 'cy':
         response = "Nid yw'r data ar gael"
     else:
@@ -25,7 +25,7 @@ def presentable_satisfaction(course: Course, stat: str, language: str) -> str:
     try:
         _object = course.satisfaction_stats[0]
         method = getattr(_object, stat)
-        response = method
+        response = str(method) + suffix
     except Exception as e:
         print("error: ", e)
         pass
@@ -35,21 +35,22 @@ def presentable_satisfaction(course: Course, stat: str, language: str) -> str:
 
 class SatisfactionSection(Section):
 
-    def get_sections(self) -> List[Tuple[Any, Any]]:
+    def get_sections(self) -> List[Tuple[Any, Any, str]]:
         sections = [
-            (OVERALL_SATISFACTION, satisfaction_list[0]),
-            (SATISFACTION_DATA_FROM_PEOPLE, satisfaction_list[1]),
-            (PERCENTAGE_THOSE_ASKED, satisfaction_list[2])
+            (OVERALL_SATISFACTION, satisfaction_list[0], "%"),
+            (SATISFACTION_DATA_FROM_PEOPLE, satisfaction_list[1], ''),
+            (PERCENTAGE_THOSE_ASKED, satisfaction_list[2], '')
         ]
 
         return sections
 
     def generate_dict(self) -> dict:
         sections = self.get_sections()
+        suffix=2
         for course in self.courses:
             for section in sections:
                 self.data[section[primary_key]]["values"].append(
-                    presentable_satisfaction(course, section[action], self.language)
+                    presentable_satisfaction(course, section[action], section[suffix], self.language)
                 )
 
         return self.data
@@ -64,17 +65,19 @@ class SubSatisfactionSection(Section):
     def get_sections(self) -> List[Tuple[Any, Any]]:
         sections = []
         for i in self.keys:
-            sections.append((f"nss_question_{i}", f"question_{i}"))
+            sections.append((f"nss_question_{i}", f"question_{i}", "%"))
         return sections
 
     def generate_dict(self) -> dict:
         sections = self.get_sections()
+        suffix = 2
         for course in self.courses:
             for section in sections:
                 self.data[section[primary_key]]["values"].append(
                     presentable_satisfaction(
                         course=course,
                         stat=section[action],
+                        suffix=section[suffix],
                         language=self.language
                     )
                 )
