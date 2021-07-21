@@ -135,7 +135,7 @@ $course_comparison_first_column_width: 250px;
     margin-bottom: auto;
     margin-top: auto;
 
-    &.sub_accordion_item {
+    &.item_font {
       font-size: 20px !important;
     }
 
@@ -154,7 +154,7 @@ $course_comparison_first_column_width: 250px;
       font-weight: bold;
       border-bottom: 4px solid white;
 
-      &.sub_accordion_header {
+      &.header_font {
         font-size: 16px !important;
       }
     }

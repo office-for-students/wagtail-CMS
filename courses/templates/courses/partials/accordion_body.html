@@ -21,12 +21,11 @@
                 </div>
             {% else %}
                 <div class="course_comparison-table__row-grey_background">
-                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
+                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values item_font="item_font" header_font="header_font" %}
                 </div>
             {% endif %}
         {% endfor %}
     </div>
-
 
     {% for sub_accordion in sub_accordions %}
         <div class="accordion-block">
@@ -46,7 +45,7 @@
         {% for item, value in sub_accordion.dataset.items %}
             <div id="{{sub_accordion.title}}{{forloop.counter}}"
                  class="course_comparison-table__row-grey_background accordion-body">
-                {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values suffix="%" sub_item="sub_accordion_item" sub_header="sub_accordion_header" %}
+                {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values sub_item="sub_accordion_item" sub_header="sub_accordion_header" %}
             </div>
         {% endfor %}
         </div>
