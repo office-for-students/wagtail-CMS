@@ -4,28 +4,28 @@
 
 
 {% block extra_css %}
-<link href="{% sass_src 'scss/course_comparison.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
-<link href="{% sass_src 'scss/home.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
-<link href="{% sass_src 'scss/course_detail.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+    <link href="{% sass_src 'scss/course_comparison.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+    <link href="{% sass_src 'scss/home.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+    <link href="{% sass_src 'scss/course_detail.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+    <link href="{% sass_src 'scss/accordions.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block extra_js %}
-<script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}?{% code_version %}"></script>
-<script type="text/javascript" src="{% static 'js/ratings.js' %}?{% code_version %}"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/highcharts-more.js"></script>
-<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
-<script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}?{% code_version %}"></script>
-<script type="text/javascript" src="{% static 'js/bar_chart.js' %}?{% code_version %}"></script>
-<script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
-<script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
-<script type="text/javascript" src="{% static 'js/sub_accordion.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/ratings.js' %}?{% code_version %}"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/bar_chart.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/sub_accordion.js' %}?{% code_version %}"></script>
 
-<script>
+    <script>
         var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
-        var saved_courses = JSON.parse(localStorage.getItem("comparisonCourses"));
-</script>
+
+    </script>
 
 {% endblock %}
 
@@ -109,51 +109,74 @@
                 {% endif %}
             </div>
             {% if courses %}
-            <div id="course-info-container">
-                {% with dataset=courses_data.0.course_details %}
-                <div class="course_comparison-table__row-header">
-                    {{ dataset.title }}
-                </div>
-                {% for item, value in dataset.dataset.items %}
-                {% if forloop.counter == 3 %}
-                <!-- Hidden content start -->
-                <div class="accordion">
-                    <div class="accordion-body">
+                <div id="course-info-container">
+                    {% with dataset=courses_data.0.course_details %}
+                        <div class="course_comparison-table__row-header">
+                            {{ dataset.title }}
+                        </div>
+                        {% for item, value in dataset.dataset.items %}
+                            {% if forloop.counter == 3 %}
+                                <!-- Hidden content start -->
+                                <div class="accordion" id="initial-accordian">
+                                <div class="accordion-body">
 
-                        {% endif %}
+                            {% endif %}
                         <div class="course_comparison-table__row-grey_background">
                             {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
                         </div>
                         {% if forloop.last %}
-                    </div>
-                    <!-- Hidden content end -->
-                    <!-- Show more start-->
-                    {% with action=dataset.call_to_action.0.show_more %}
-                    <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
-                         class="accordion-header">
-                        <div class="accordion-title">
-                            <div class="accordion-header course_comparison-table__column-first">
+                            </div>
+                            <!-- Hidden content end -->
+                            <!-- Show more start-->
+                            {% with action=dataset.call_to_action.0.show_more %}
+                                <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
+                                     class="accordion-header">
+                                <div class="accordion-title">
+                                <div class="accordion-header course_comparison-table__column-first">
                                 <i class="fas fa-chevron-down expand chevron" alt="expand"
                                    aria-label="{{ action.affirmative }}"></i>
                                 <i class="fas fa-chevron-up collapse chevron" alt="collapse"
                                    aria-label="{{ action.negative }}"></i>
                                 <span class="expand">{{ action.affirmative }}</span>
                                 <span class="collapse">{{ action.negative }}</span>
-                                {% endwith %}
-                            </div>
+                            {% endwith %}
+                        </div>
                         </div>
 
-                    </div>
-                    <!-- show more end -->
-                    {% endif %}
-                    {% endfor %}
+                        </div>
+                            <!-- show more end -->
+                        {% endif %}
+                        {% endfor %}
                     {% endwith %}
+                    </div>
+                    <div class="course-detail__body">
+                        {% for accordion in page.accordions %}
+                            <div class="accordion" id="ac-{{ forloop.counter }}">
+                                <div tabindex="{{ forloop.counter }}" role="button" aria-label="Show content"
+                                     class="green narrow accordion-header sticky-accordion-header">
+                                    <div class="">
+                                        <div id="{{ accordion.value.heading }}" style="max-width: 440px;"
+                                             class="accordion-title"
+                                             aria-label="Show {{ accordion.value.heading }} content"
+                                             aria-expanded="false">{{ accordion.value.heading }}
+                                        </div>
+                                    </div>
+                                    <div class="expand" style="display: block;">
+                                        <img class="nav-card__icon" src="/static/images/plus_icon_white.svg"
+                                             alt="expand">
+                                    </div>
+                                    <div class="collapse">
+                                        <img class="nav-card__icon" src="/static/images/minus_icon.svg" alt="collapse">
+                                    </div>
+                                </div>
+                                <div class="accordion-body">
+                                    {% include 'courses/partials/accordion_body.html' with title=value.title values=value.values change_point=4 %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
                 </div>
-
-                {% include 'courses/partials/accordion_body.html' with title=value.title values=value.values change_point=4 %}
-
-                <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
-            </div>
             {% endif %}
         </div>
     </div>
@@ -166,5 +189,13 @@
                 course_search_container.classList.remove("hidden")
             }
     </script>
+    <script>
+        var element_height = $(".course-detail__course-container-pills").height();
+        let accordion_header = $(".sticky-accordion-header");
+        accordion_header.css('top', element_height + 20 + "px");
+        accordion_header.css('position', "sticky");
+        accordion_header.css("z-index", "98");
+    </script>
 
 {% endblock %}
+
