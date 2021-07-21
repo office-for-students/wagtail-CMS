@@ -6,6 +6,7 @@ from CMS import translations
 from courses.models import Course
 from courses.renderer.sections import CourseDetailSection, SatisfactionSection
 from courses.renderer.sections.base import Section
+from courses.renderer.sections.continuation import ContinuationSection
 from courses.renderer.sections.satisfaction import SubSatisfactionSection
 
 logger = logging.getLogger(__name__)
@@ -75,6 +76,11 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         sub_accordions=get_sub_accordion_dataset(courses, language)
     )
 
+    context["after_one_year"] = dict(
+        title=translations.term_for_key(key="after_one_year", language=language),
+        dataset=get_details(ContinuationSection, courses, language),
+    )
+    print(context["after_one_year"])
     response.append(context)
     return response
 

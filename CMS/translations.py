@@ -166,6 +166,10 @@ STATISTICS = {
         'en': "The students’ union (association or guild) effectively represents students’ academic interests.",
         'cy': "Mae undeb y myfyrwyr (cymdeithas neu urdd) yn cynrychioli buddiannau academaidd y myfyrwyr yn effeithiol"
     },
+    'after_one_year': {
+        'en': "After 1 year on the course",
+        'cy': "Ar ôl blwyddyn o astudio"
+    }
 
 }
 
