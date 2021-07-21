@@ -40,27 +40,30 @@
 
             <div class="comparison__top-container">
                 <div class="comparison__top-container-need-help-box">
-                    <h4>Need help choosing?</h4>
-                    <p>Search our guidelines for help making the best decision for you.</p>
-                    <p style="margin-bottom: 0px;">Go to <strong class="blue-text">Information and advice</strong></p>
+                    <h4>{% get_translation key='need_help_choosing' language=page.get_language %}</h4>
+                    <p>{% get_translation key='search_guidelines' language=page.get_language %}</p>
+                    <p style="margin-bottom: 0px;">
+                        {% autoescape off %}{% get_translation key='information_advice' language=page.get_language %}{% endautoescape %}
+                    </p>
                 </div>
                 <div class="comparison__top-container-add-btn">
 
                     <a id="addCourses" href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/"
                        class="comparison__top-container-add-btn-add-courses-button">
                         <span style="font-size:20px;">+</span>
-                        <span>&nbsp; Add saved course</span>
+                        <span>{% get_translation key='add_saved_course' language=page.get_language %}</span>
                     </a>
 
-                    <p class="comparison__top-container-add-btn-compare-text">Compare up
-                        to 7 courses</p>
+                    <p class="comparison__top-container-add-btn-compare-text">
+                        {% get_translation key='compare_7_courses' language=page.get_language %}
+                    </p>
                 </div>
 
             </div>
             <!-- Course Search box -->
             <div id="courseSearchContainer" class="course-search-container hidden">
                 <div class="no_courses_saved">
-                    No courses saved. To compare courses, search for and save courses you're interested in.
+                    {% get_translation key='no_courses_saved' language=page.get_language %}
                 </div>
                 <div class="course_comparison-search bg-white pb-5">
                     <div class="row course_compare_search">
@@ -76,7 +79,7 @@
             <div class="course-detail__course-container">
                 {% if courses %}
                 <div class="course-detail__course-selected">
-                    {{ courses|length }} courses selected
+                    {{ courses|length }} {% get_translation key='courses_selected' language=page.get_language %}
                 </div>
                 <form id="compareForm" method="GET"
                       action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
@@ -89,7 +92,7 @@
                         <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-left"></i>
                     </div>
                     {% for course in courses %}
-                    {% include 'courses/partials/course_comparison_overview.html' %}
+                        {% include 'courses/partials/course_comparison_overview.html' %}
                     {% endfor %}
                     <div class="course-detail__course-container-pills-slider single-arrow"
                          onclick="bottom_display += 1; scrollDisplay();" id="slideRight">
@@ -98,8 +101,10 @@
                 </div>
                 {% else %}
                 <div class="course-detail__course-none-selected">
-                    <div class="course-detail__course-none-selected-header">No courses selected</div>
-                    <p>Add 2 courses to use the comparison tool</p>
+                    <div class="course-detail__course-none-selected-header">
+                        {% get_translation key='no_courses_selected' language=page.get_language %}
+                    </div>
+                    <p>{% get_translation key='add_two_courses' language=page.get_language %}</p>
                 </div>
                 {% endif %}
             </div>
@@ -157,7 +162,7 @@
     {% endif %}
     <script>
             var course_search_container = document.getElementById("courseSearchContainer");
-            if(!(saved_courses)){
+            if(!(saved_courses) || saved_courses === 0){
                 course_search_container.classList.remove("hidden")
             }
     </script>
