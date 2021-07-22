@@ -18,15 +18,15 @@ action = 1
 suffix_index = 2
 
 
-def presentable_satisfaction(course: Course, stat: str, suffix: str, language: str) -> str:
+def presentable_satisfaction(course: Course, stat: str, suffix: Any, language: str) -> str:
     if language == 'cy':
         response = "Nid yw'r data ar gael"
     else:
         response = "No data available"
     try:
         _object = course.satisfaction_stats[0]
-        method = getattr(_object, stat)
-        response = str(method) + suffix
+        method = str(getattr(_object, stat))
+        response = f"{method}{suffix}" if suffix else method
     except Exception as e:
         print("error: ", e)
         pass
@@ -36,11 +36,11 @@ def presentable_satisfaction(course: Course, stat: str, suffix: str, language: s
 
 class SatisfactionSection(Section):
 
-    def get_sections(self) -> List[Tuple[Any, Any, str]]:
+    def get_sections(self) -> List[Tuple[Any, Any, Any]]:
         sections = [
             (OVERALL_SATISFACTION, satisfaction_list[0], "%"),
-            (SATISFACTION_DATA_FROM_PEOPLE, satisfaction_list[1], ''),
-            (PERCENTAGE_THOSE_ASKED, satisfaction_list[2], '')
+            (SATISFACTION_DATA_FROM_PEOPLE, satisfaction_list[1], None),
+            (PERCENTAGE_THOSE_ASKED, satisfaction_list[2], None)
         ]
 
         return sections

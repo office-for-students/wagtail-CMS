@@ -21,7 +21,7 @@ primary_key = 0
 action = 1
 
 
-def presentable_continuation(course: Course, stat: str, suffix: str, language: str) -> str:
+def presentable_continuation(course: Course, stat: str, suffix: Any, language: str) -> str:
     if language == 'cy':
         response = "Nid yw'r data ar gael"
     else:
@@ -29,7 +29,7 @@ def presentable_continuation(course: Course, stat: str, suffix: str, language: s
     try:
         _object = course.continuation_stats[0]
         method = getattr(_object, stat)
-        response = str(method) + suffix
+        response = f"{method}{suffix}" if suffix else method
     except Exception as e:
         print("error: ", e)
         pass
@@ -41,7 +41,7 @@ class ContinuationSection(Section):
 
     def get_sections(self) -> List[Tuple[Any, Any, Any]]:
         sections = [
-            (CONTINUATION_DATA_FROM_PEOPLE, continuation_list[0], ''),
+            (CONTINUATION_DATA_FROM_PEOPLE, continuation_list[0], None),
             (STILL_STUDYING, continuation_list[1], "%"),
             (TAKING_BREAK, continuation_list[2], "%"),
             (LEFT_WITH_LOWER, continuation_list[3], "%"),
