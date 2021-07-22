@@ -150,7 +150,7 @@
                     {% endwith %}
                     </div>
                     <div class="course-detail__body">
-                        {% for accordion in page.accordions %}
+                        {% for accordion in courses_data.0.accordions %}
                             <div class="accordion" id="ac-{{ forloop.counter }}">
                                 <div tabindex="{{ forloop.counter }}" role="button" aria-label="Show content"
                                      class="green narrow accordion-header sticky-accordion-header">
@@ -158,7 +158,7 @@
                                         <div id="{{ accordion.value.heading }}" style="max-width: 440px;"
                                              class="accordion-title"
                                              aria-label="Show {{ accordion.value.heading }} content"
-                                             aria-expanded="false">{{ accordion.value.heading }}
+                                             aria-expanded="false">{{ accordion.title }}
                                         </div>
                                     </div>
                                     <div class="expand" style="display: block;">
@@ -170,7 +170,7 @@
                                     </div>
                                 </div>
                                 <div class="accordion-body">
-                                    {% include 'courses/partials/accordion_body.html' with title=value.title values=value.values change_point=4 %}
+                                    {% include 'courses/partials/accordion_body.html' %}
                                 </div>
                             </div>
                         {% endfor %}

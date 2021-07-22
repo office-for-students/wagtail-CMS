@@ -6,6 +6,7 @@ from CMS import translations
 from courses.models import Course
 from courses.renderer.sections import CourseDetailSection, SatisfactionSection
 from courses.renderer.sections.base import Section
+from courses.renderer.sections.continuation import ContinuationSection
 from courses.renderer.sections.satisfaction import SubSatisfactionSection
 
 logger = logging.getLogger(__name__)
@@ -69,11 +70,27 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         ]
     )
 
-    context["student_satisfaction_course_overview_1"] = dict(
-        title=translations.term_for_key(key="student_satisfaction_course_overview_1", language=language),
-        dataset=get_details(SatisfactionSection, courses, language),
-        sub_accordions=get_sub_accordion_dataset(courses, language)
-    )
+    context["accordions"] = [
+        dict(
+            title=translations.term_for_key(key="student_satisfaction_course_overview_1", language=language),
+            dataset=get_details(SatisfactionSection, courses, language),
+            sub_accordions=get_sub_accordion_dataset(courses, language),
+            change_point=4,
+            source=(1,
+                    translations.term_for_key(key="about_our_data_link", language=language),
+                    translations.term_for_key(key="national_student_survey", language=language)
+                    )
+        ),
+        dict(
+            title=translations.term_for_key(key="after_one_year", language=language),
+            dataset=get_details(ContinuationSection, courses, language),
+            source=(6,
+                    translations.term_for_key(key="entrance_data_read_more_url", language=language),
+                    translations.term_for_key(key="data_ind_stud_coll_dir", language=language)
+                    )
+        )
+        #TODO: additional accordions to be added here, however, in the order they are supposed to appear.
+    ]
 
     response.append(context)
     return response
