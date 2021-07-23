@@ -35,14 +35,26 @@
     margin-right: 49px;
 }
 
+$widthOfWideArrow: 49px;
+$widthOfNarrowArrow: 27px;
+
 .course-info-left {
-  margin-left: 49px;
+  margin-left: $widthOfWideArrow;
 }
 
 .course-info-both {
-  margin-right: 27px;
-  margin-left: 27px;
+  margin-right: $widthOfNarrowArrow;
+  margin-left: $widthOfNarrowArrow;
 }
+
+.single-arrow {
+  width: $widthOfWideArrow;
+}
+
+.both-arrows {
+  width: $widthOfNarrowArrow;
+}
+
 
 .chevron {
   font-size: 20px;
@@ -188,14 +200,6 @@ $course_comparison_first_column_width: 250px;
 .course_compare_search {
   background-color: #f4f8f8 !important;
   padding: 15px;
-}
-
-.single-arrow {
-  width: 49px;
-}
-
-.both-arrows {
-  width: 27px;
 }
 
 .no_courses_saved {
