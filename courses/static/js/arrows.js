@@ -1,109 +1,150 @@
-var bottom_display;
-bottom_display = 0;
-var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
-var items = document.getElementsByClassName("arrow");
-const slide_left = document.getElementById("slideLeft");
-const slide_right = document.getElementById("slideRight");
-const course_info_container = document.getElementById("course-info-container")
-var small_screen_amount = 2
+const narrowMarginLeftAndRightClass = "course-info-both";
+const wideMarginLeftClass = "course-info-left";
+const wideMarginRightClass = "course-info-right";
 
-function setAmountToDisplay() {
-    if (isASmallScreen()) {
-        small_screen_amount = 1
-    } else {
-        small_screen_amount = 2
+let current_index = 0;
+
+class ArrowManager {
+    leftArrow = document.getElementById("leftArrow");
+    rightArrow = document.getElementById("rightArrow");
+    centralContainer = document.getElementById("course-info-container");
+
+    removeAllArrows() {
+        this.removeBothWideArrows();
+        this.removeNarrowArrowsLeftAndRight();
     }
+
+    removeBothWideArrows() {
+        this.removeWideArrowLeft();
+        this.removeWideArrowRight();
+    }
+
+    removeWideArrowLeft() {
+        this.centralContainer.classList.remove(wideMarginLeftClass);
+        this.leftArrow.classList.remove("single-arrow");
+        this.leftArrow.classList.add("hidden");
+    }
+
+    removeWideArrowRight() {
+        this.centralContainer.classList.remove(wideMarginRightClass);
+        this.rightArrow.classList.remove("single-arrow");
+        this.rightArrow.classList.add("hidden");
+    }
+
+    removeNarrowArrowsLeftAndRight() {
+        this.centralContainer.classList.remove(narrowMarginLeftAndRightClass);
+        this.rightArrow.classList.add("hidden");
+        this.leftArrow.classList.add("hidden");
+    }
+
+    includeWideArrowLeft() {
+        this.centralContainer.classList.add(wideMarginLeftClass);
+        this.leftArrow.classList.remove("hidden");
+    }
+
+    includeWideArrowRight() {
+        this.centralContainer.classList.add(wideMarginRightClass);
+        this.rightArrow.classList.remove("hidden");
+    }
+
+
+    includeBothArrows() {
+        this.centralContainer.classList.add(narrowMarginLeftAndRightClass);
+        this.leftArrow.classList.add("both-arrows");
+        this.leftArrow.classList.remove("hidden");
+        this.rightArrow.classList.add("both-arrows");
+        this.rightArrow.classList.remove("hidden");
+    }
+
 }
 
-function isASmallScreen() {
-    return (screen.availWidth <= 320 || window.innerWidth <= 320);
+function getMaxItems(maximum) {
+    if (screen.availWidth <= 320 || window.innerWidth <= 320) {
+        return 2;
+    } else if (screen.availWidth <= 576 || window.innerWidth <= 576) {
+        return 3;
+    }
+    return maximum;
 }
 
-function isMediumScreenOrSmaller() {
-    var response = (screen.availWidth <= 576 || window.innerWidth <= 576)
-    return response
+function getColumns() {
+    const compare_list = JSON.parse(localStorage.getItem("compareCourses"));
+    const columns = [];
+    for (var index = 0; index < compare_list.length; index++) {
+        let className = "cc-row-" + index;
+        columns.push(document.getElementsByClassName(className));
+    }
+    return columns;
 }
 
-function hideCourses() {
-    for (var i = 0; i < items.length; i++) {
-        for (var index = 0; index < compare_list.length; index++) {
-
-            var course_info = document.getElementById(items[i].id);
-            var course_div = document.getElementById(`courseContainer-${index}`);
-
-            if (isMediumScreenOrSmaller()) {
-                let nextIndex = bottom_display + small_screen_amount;
-                if (parseInt(course_div.dataset.index) > nextIndex || parseInt(course_div.dataset.index) < bottom_display) {
-                    course_div.classList.add("hidden");
-                } else {
-                    course_div.classList.remove("hidden");
-                }
-            } else {
-                course_div.classList.remove("hidden");
-                course_info.classList.remove("hidden");
-            }
+function displayColumn(column, display = false) {
+    for (var index = 0; index < column.length; index++) {
+        if (display) {
+            column.item(index).classList.remove("hidden");
+        } else {
+            column.item(index).classList.add("hidden");
         }
     }
 }
 
-function scrollDisplay() {
-    if (bottom_display + small_screen_amount + 1 === compare_list.length) {
-        slide_right.classList.add("hidden");
-        course_info_container.classList.remove("course-info-right");
-    } else {
-        slide_right.classList.remove("hidden");
-        course_info_container.classList.add("course-info-right");
+function displayColumnsWithIndex(columns, indexes) {
+    for (let index = 0; index < columns.length; index++) {
+        if (indexes.includes(index)) {
+            displayColumn(columns[index], true);
+        } else {
+            displayColumn(columns[index])
+        }
     }
-
-    if (bottom_display === 0) {
-        slide_left.classList.add("hidden");
-        course_info_container.classList.remove("course-info-both", "course-info-left");
-    } else {
-        slide_left.classList.remove("hidden");
-        course_info_container.classList.add("course-info-left");
-    }
-    if (!(slide_left.classList.contains("hidden")) && !(slide_right.classList.contains("hidden"))) {
-        slide_left.classList.remove("single-arrow");
-        slide_right.classList.remove("single-arrow");
-        slide_left.classList.add("both-arrows");
-        slide_right.classList.add("both-arrows");
-        course_info_container.classList.remove("course-info-left", "course-info-right");
-        course_info_container.classList.add("course-info-both");
-    } else {
-        slide_left.classList.add("single-arrow");
-        slide_right.classList.add("single-arrow");
-        slide_left.classList.remove("both-arrows");
-        slide_right.classList.remove("both-arrows");
-        course_info_container.classList.remove("course-info-both");
-    }
-
-    hideCourses();
 }
 
-function smallScreenDisplay() {
-
-    if (bottom_display === 0) {
-        slide_left.classList.add("hidden");
+function getNewIndex(increment, max) {
+    let new_index = current_index + increment;
+    if (new_index > max) {
+        new_index = max
     }
-    if (isMediumScreenOrSmaller()) {
-        course_info_container.classList.remove("course-info-right");
-        course_info_container.classList.remove("course-info-left");
-        course_info_container.classList.remove("course-info-both");
-    } else if (!(slide_left.classList.contains("hidden")) && slide_right.classList.contains("hidden")) {
-        course_info_container.classList.add("course-info-left");
-    } else if (!(slide_right.classList.contains("hidden")) && slide_left.classList.contains("hidden")) {
-        course_info_container.classList.add("course-info-right");
-    } else if (!(slide_right.classList.contains("hidden")) && !(slide_left.classList.contains("hidden"))) {
-        course_info_container.classList.remove("course-info-right");
-        course_info_container.classList.remove("course-info-left");
-        course_info_container.classList.add("course-info-both");
+    if (new_index < 0) {
+        new_index = 0;
     }
-
-    hideCourses();
+    return new_index
 }
 
-$(window).on('resize orientationchange load', function () {
-    setAmountToDisplay();
-    smallScreenDisplay();
+function getCourseIndexesToShow(index, number_of_courses) {
+    let indexesToShow = [];
+    for (let i = index; i < (index + number_of_courses); i++) {
+        indexesToShow.push(i)
+    }
+    return indexesToShow
+}
+
+function updateArrows(active_index, number_of_courses, max_courses) {
+    const arrows = new ArrowManager();
+    arrows.removeAllArrows();
+    if (active_index + number_of_courses >= max_courses) {
+        if (number_of_courses != max_courses) {
+            arrows.includeWideArrowLeft();
+        }
+    } else if (active_index === 0) {
+        arrows.includeWideArrowRight();
+    } else {
+        arrows.includeBothArrows();
+    }
+}
+
+function scrollDisplay(increment) {
+    const columns = getColumns();
+    let total_number_of_courses = columns.length
+    let new_index = getNewIndex(increment, total_number_of_courses);
+    let number_of_columns = getMaxItems(total_number_of_courses);
+    updateArrows(new_index,number_of_columns,total_number_of_courses);
+    displayColumnsWithIndex(columns, getCourseIndexesToShow(new_index, number_of_columns));
+    current_index = new_index;
+}
+
+$(window).on('resize orientationchange', function () {
+    current_index = 0;
+    scrollDisplay(0)
 });
 
+window.onload = function () {
+    scrollDisplay(0);
+};
