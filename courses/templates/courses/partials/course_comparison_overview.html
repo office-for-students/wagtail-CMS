@@ -1,6 +1,6 @@
 {% load staticfiles discover_uni_tags %}
 
-<div id="courseContainer-{{forloop.counter0}}" class="course-detail__courses-container" data-index="{{forloop.counter0}}">
+<div id="courseContainer-{{forloop.counter0}}" class="course-detail__courses-container cc-row-{{forloop.counter0}}" data-index="{{forloop.counter0}}">
     <div>
         <li class="rating"
                 onmouseover="hoverStars(value, {{forloop.counter0}})"

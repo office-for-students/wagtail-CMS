@@ -23,8 +23,8 @@
     <script type="text/javascript" src="{% static 'js/sub_accordion.js' %}?{% code_version %}"></script>
 
     <script>
-        var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
-
+        var saved_courses = JSON.parse(localStorage.getItem("comparisonCourses"));
+        var compare_list = JSON.parse(localStorage.getItem('compareCourses'));
     </script>
 
 {% endblock %}
@@ -88,14 +88,14 @@
 
                 <div class="course-detail__course-container-pills">
                     <div class="course-detail__course-container-pills-slider"
-                         onclick="bottom_display -= 1; scrollDisplay();" id="slideLeft">
+                         onclick="scrollDisplay(-1);" id="leftArrow">
                         <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-left"></i>
                     </div>
                     {% for course in courses %}
                         {% include 'courses/partials/course_comparison_overview.html' %}
                     {% endfor %}
                     <div class="course-detail__course-container-pills-slider single-arrow"
-                         onclick="bottom_display += 1; scrollDisplay();" id="slideRight">
+                         onclick="scrollDisplay(1);" id="rightArrow">
                         <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-right"></i>
                     </div>
                 </div>
