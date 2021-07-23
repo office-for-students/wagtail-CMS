@@ -125,14 +125,17 @@ function getCourseIndexesToShow(index, number_of_courses) {
 function updateArrows(active_index, number_of_courses, max_courses) {
     const arrows = new ArrowManager();
     arrows.removeAllArrows();
-    if (active_index + number_of_courses >= max_courses) {
-        if (number_of_courses != max_courses) {
-            arrows.includeWideArrowLeft();
+    console.log(number_of_courses, max_courses)
+    if (!(number_of_courses === max_courses)){
+        if (active_index + number_of_courses >= max_courses) {
+            if (number_of_courses != max_courses) {
+                arrows.includeWideArrowLeft();
+            }
+        } else if (active_index === 0) {
+            arrows.includeWideArrowRight();
+        } else {
+            arrows.includeBothArrows();
         }
-    } else if (active_index === 0) {
-        arrows.includeWideArrowRight();
-    } else {
-        arrows.includeBothArrows();
     }
 }
 
