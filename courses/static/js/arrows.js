@@ -40,11 +40,15 @@ class ArrowManager {
     includeWideArrowLeft() {
         this.centralContainer.classList.add(wideMarginLeftClass);
         this.leftArrow.classList.remove("hidden");
+        this.leftArrow.classList.add("single-arrow");
+        this.leftArrow.classList.remove("both-arrows");
     }
 
     includeWideArrowRight() {
         this.centralContainer.classList.add(wideMarginRightClass);
         this.rightArrow.classList.remove("hidden");
+        this.rightArrow.classList.add("single-arrow");
+        this.rightArrow.classList.remove("both-arrows");
     }
 
 
@@ -52,14 +56,16 @@ class ArrowManager {
         this.centralContainer.classList.add(narrowMarginLeftAndRightClass);
         this.leftArrow.classList.add("both-arrows");
         this.leftArrow.classList.remove("hidden");
+        this.rightArrow.classList.remove("single-arrow");
         this.rightArrow.classList.add("both-arrows");
         this.rightArrow.classList.remove("hidden");
+        this.rightArrow.classList.remove("single-arrow");
     }
 
 }
 
 function getMaxItems(maximum) {
-    if (screen.availWidth <= 320 || window.innerWidth <= 320) {
+    if (screen.availWidth <= 450 || window.innerWidth <= 450) {
         return 2;
     } else if (screen.availWidth <= 576 || window.innerWidth <= 576) {
         return 3;
