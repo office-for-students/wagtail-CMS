@@ -22,11 +22,6 @@
     <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/sub_accordion.js' %}?{% code_version %}"></script>
 
-    <script>
-        var compare_list = JSON.parse(localStorage.getItem("compareCourses"));
-
-    </script>
-
 {% endblock %}
 
 {% block content %}
@@ -88,14 +83,14 @@
 
                 <div class="course-detail__course-container-pills">
                     <div class="course-detail__course-container-pills-slider"
-                         onclick="bottom_display -= 1; scrollDisplay();" id="slideLeft">
+                         onclick="scrollDisplay(-1);" id="leftArrow">
                         <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-left"></i>
                     </div>
                     {% for course in courses %}
                         {% include 'courses/partials/course_comparison_overview.html' %}
                     {% endfor %}
                     <div class="course-detail__course-container-pills-slider single-arrow"
-                         onclick="bottom_display += 1; scrollDisplay();" id="slideRight">
+                         onclick="scrollDisplay(1);" id="rightArrow">
                         <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-right"></i>
                     </div>
                 </div>
@@ -181,21 +176,6 @@
         </div>
     </div>
     {% if courses %}
-        <script type="text/javascript" src="{% static 'js/arrows.js' %}?{% code_version %}"></script>
+        <script type="text/javascript" src="{% static 'js/responsive_comparison.js' %}?{% code_version %}"></script>
     {% endif %}
-    <script>
-            var course_search_container = document.getElementById("courseSearchContainer");
-            if(!(saved_courses) || saved_courses === 0){
-                course_search_container.classList.remove("hidden")
-            }
-    </script>
-    <script>
-        var element_height = $(".course-detail__course-container-pills").height();
-        let accordion_header = $(".sticky-accordion-header");
-        accordion_header.css('top', element_height + 20 + "px");
-        accordion_header.css('position', "sticky");
-        accordion_header.css("z-index", "98");
-    </script>
-
 {% endblock %}
-
