@@ -26,7 +26,7 @@ def presentable_satisfaction(course: Course, stat: str, suffix: Any, language: s
     try:
         _object = course.satisfaction_stats[0]
         method = str(getattr(_object, stat))
-        response = f"{method}{suffix}" if suffix else method
+        response = f"{method}{suffix}" if suffix and method.isnumeric() else method
     except Exception as e:
         print("error: ", e)
         pass
@@ -64,8 +64,9 @@ class SubSatisfactionSection(Section):
         self.keys = keys
         super().__init__(courses, language)
 
-    def get_sections(self) -> List[Tuple[Any, Any]]:
+    def get_sections(self) -> List[Tuple[Any, Any, Any]]:
         sections = []
+
         for i in self.keys:
             sections.append((f"nss_question_{i}", f"question_{i}", "%"))
         return sections
