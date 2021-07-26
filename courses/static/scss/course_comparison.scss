@@ -31,12 +31,12 @@
     margin-bottom: 32px !important;
 }
 
-.course-info-right{
-    margin-right: 49px;
-}
-
 $widthOfWideArrow: 49px;
 $widthOfNarrowArrow: 27px;
+
+.course-info-right{
+    margin-right: $widthOfWideArrow;
+}
 
 .course-info-left {
   margin-left: $widthOfWideArrow;
@@ -491,7 +491,7 @@ $course_comparison_first_column_width: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 48px;
+            margin-bottom: 8px;
             background-color: #d2d2d2;
             cursor: pointer;
 
@@ -534,7 +534,7 @@ $course_comparison_first_column_width: 250px;
       &-container {
         flex: 1;
         background-color: #f2f2f2;
-        margin: 0px 4px 48px 4px;
+        margin: 0px 4px 8px 4px;
         padding: 16px;
 
         &-exit-course {
@@ -755,10 +755,6 @@ $course_comparison_first_column_width: 250px;
 
   .comparison .course-detail__course-container {
     display: block;
-
-    &-pills-slider {
-      display: none;
-    }
   }
   .comparison .course-detail__course-selected {
     display: block;
@@ -797,9 +793,6 @@ $course_comparison_first_column_width: 250px;
     vertical-align: top;
   }
 
-  .comparison .course-detail__course-container-pills-slider {
-    display: none;
-  }
 
   .course_comparison-table {
     &__row {
@@ -866,17 +859,6 @@ $course_comparison_first_column_width: 250px;
     min-width: 186px;
     max-width: 186px;
   }
-
-  .course-info-right {
-    margin-right: 0px;
-  }
-  .course-info-left {
-    margin-left: 0px;
-  }
-  .course-info-both {
-    margin-right: 0px;
-    margin-left: 0px;
-  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -898,9 +880,6 @@ $course_comparison_first_column_width: 250px;
     vertical-align: top;
   }
 
-  .comparison .course-detail__course-container-pills-slider {
-    display: none;
-  }
   .course_comparison-table {
     &__row {
       display: flex;
@@ -960,15 +939,8 @@ $course_comparison_first_column_width: 250px;
     flex: 1;
   }
 
-  .course-info-right {
-    margin-right: 0px;
-  }
-  .course-info-left {
-    margin-left: 0px;
-  }
-  .course-info-both {
-    margin-right: 0px;
-    margin-left: 0px;
-  }
 }
 
+#course-info-container {
+  margin-top: 48px;
+}
