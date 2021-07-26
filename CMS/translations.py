@@ -169,7 +169,38 @@ STATISTICS = {
     'after_one_year': {
         'en': "After 1 year on the course",
         'cy': "Ar ôl blwyddyn o astudio"
-    }
+    },
+    'guidance_title': {
+        'en': "What you need to consider when comparing courses",
+        'cy': "Beth y mae angen ichi ei ystyried wrth gymharu cyrsiau"
+    },
+    'satisfaction_guidance_1': {
+        'en': '''<strong>Number of people the data is based on</strong> - 
+            more people mean it is more likely giving a clearer picture of student experience. 
+            Also consider the percentage of students who responded to the survey.''',
+        'cy': '''<strong>Nifer y bobl y mae'r data'n seiliedig arnynt</strong> - 
+            bydd mwy o bobl yn golygu ei bod hi'n debygol y ceir darlun cliriach o brofiadau myfyrwyr. 
+            Dylech hefyd ystyried canran y myfyrwyr a ymatebodd i'r arolwg.'''
+    },
+    'satisfaction_guidance_2': {
+        'en': '''<strong>Some data may be for a course and some for a subject</strong> -
+            - course data is more specific but subject data will still give an indication of students’ views. 
+            Use caution when comparing the two.''',
+        'cy': '''<strong>Gall rhywfaint o ddata fod ar gyfer cwrs a rhywfaint ar gyfer pwnc</strong> - 
+            mae data cwrs yn fwy penodol ond bydd data pwnc yn dal i roi syniad o farn myfyrwyr. 
+            Byddwch yn ofalus wrth gymharu'r naill a'r llall. 
+            Darllenwch fwy am Arolwg Cenedlaethol o Fyfyrwyr'''
+    },
+    'after_one_year_guidance': {
+        'en': '''The number of students indicates the size of the course, and more people 
+            means it is more likely to be representative of outcomes for students.''',
+        'cy': '''Bydd nifer y myfyrwyr yn dynodi maint y cwrs, ac os ceir mwy o bobl mae 
+            hynny'n golygu ei fod yn fwy tebygol o gynrychioli canlyniadau myfyrwyr.'''
+    },
+    'read_more_about_continuation': {
+        'en': "Read more about Continuation",
+        'cy': "Darllenwch fwy am Parhad"
+    },
 
 }
 
