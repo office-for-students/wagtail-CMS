@@ -40,7 +40,7 @@ window.addEventListener("load", function () {
     }
 
     if (compare_list.length === 7) {
-        add_courses_link.href = "";
+        // add_courses_link.href = "";
         add_courses_button.disabled = true;
         add_courses_button.style.backgroundColor = "grey";
     }

@@ -827,7 +827,7 @@ $course_comparison_first_column_width: 250px;
 
 @media only screen and (min-width: 576px) and (max-width: 766px) {
   div.comparison__body, div.course-detail__body {
-    width: 540px !important;
+    //width: 540px !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
@@ -857,7 +857,7 @@ $course_comparison_first_column_width: 250px;
 
 @media only screen and (min-width: 767px) and (max-width: 991px) {
   div.comparison__body, div.course-detail__body {
-    width: 720px !important;
+    //width: 720px !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
@@ -908,7 +908,7 @@ $course_comparison_first_column_width: 250px;
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   div.comparison__body, div.course-detail__body {
-    width: 960px !important;
+    //width: 960px !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
