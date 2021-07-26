@@ -173,28 +173,6 @@ function hideSearchContainerIfNoCourses() {
     }
 }
 
-// function maxTitleLength() {
-//     let saved_courses = JSON.parse(localStorage.getItem("comparisonCourses"));
-//     console.log("saved_courses = ", saved_courses);
-//
-//     let items = []
-//     for (var i = 0; i < saved_courses.length; i++) {
-//         // var items = ['test'];
-//         let item = saved_courses[i];
-//         items = items.concat(item.courseName.split(" "));
-//         items = items.concat(item.uniName.split(" "))
-//         console.log("items = ", items);
-//     }
-//     console.log("items = ", items);
-//
-//     var longest = items.reduce(
-//         function (a, b) {
-//             return a.length > b.length ? a : b;
-//         }
-//     );
-//
-//     console.log("longest= ", longest.length);
-// }
 
 $(window).on('resize orientationchange', function () {
     current_index = 0;
@@ -206,5 +184,4 @@ window.onload = function () {
     hideSearchContainerIfNoCourses();
     scrollDisplay(0);
     updateStickyHeader();
-    // maxTitleLength();
 };
