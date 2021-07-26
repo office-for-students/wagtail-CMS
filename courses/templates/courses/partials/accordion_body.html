@@ -1,6 +1,21 @@
 {% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
 {% with dataset=accordion.dataset sub_accordions=accordion.sub_accordions change_point=accordion.change_point %}
     <div class="mb-3">
+        <div class="guidance_box">
+            <p class="guidance_box-title">{% get_translation key='guidance_title' language=page.get_language %}</p>
+            {% autoescape off %}
+                <div>
+                    <ul class="mt-3">
+                        {% for entry in accordion.guidance_information %}
+                            <li class="guidance_box-item">{{entry}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% if accordion.source.0 >= accordion.dataset|length %}
+                        <a class="guidance_box-link blue-text" href="{{accordion.source.1}}">{{accordion.source.2}}</a>
+                    {% endif %}
+                </div>
+            {% endautoescape %}
+        </div>
         {% for item, value in dataset.items %}
             {% if forloop.counter == accordion.source.0 %}
                 <div class="course_comparison-table__row-grey_background source">
@@ -29,18 +44,18 @@
                 </div>
             {% endif %}
 
-            {% if forloop.last and forloop.counter < accordion.source.0 %}
-                <div class="course_comparison-table__row-grey_background source">
-                    <div class="course_comparison-table source">
-                        {% get_translation key='source' language=page.get_language %}: &nbsp;
-                        <a class="course_comparison-table source-link" href="{{accordion.source.1}}">
-                            {{accordion.source.2}}
-                        </a>
-                        <!--            TODO: revise wagtail content so it just contains the source link then get link from wagtail-->
-                        <!--                {{ page.accordions.0.value.intro_body }} OR make a dictionary of accordions: links on the view-->
-                    </div>
-                </div>
-            {% endif %}
+<!--            {% if forloop.last and forloop.counter < accordion.source.0 %}-->
+<!--                <div class="course_comparison-table__row-grey_background source">-->
+<!--                    <div class="course_comparison-table source">-->
+<!--                        {% get_translation key='source' language=page.get_language %}: &nbsp;-->
+<!--                        <a class="course_comparison-table source-link" href="{{accordion.source.1}}">-->
+<!--                            {{accordion.source.2}}-->
+<!--                        </a>-->
+<!--                        &lt;!&ndash;            TODO: revise wagtail content so it just contains the source link then get link from wagtail&ndash;&gt;-->
+<!--                        &lt;!&ndash;                {{ page.accordions.0.value.intro_body }} OR make a dictionary of accordions: links on the view&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            {% endif %}-->
         {% endfor %}
     </div>
 

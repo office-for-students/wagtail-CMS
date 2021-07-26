@@ -73,21 +73,28 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
     context["accordions"] = [
         dict(
             title=translations.term_for_key(key="student_satisfaction_course_overview_1", language=language),
+            guidance_information=(
+                translations.term_for_key(key="satisfaction_guidance_1", language=language),
+                translations.term_for_key(key="satisfaction_guidance_2", language=language)
+            ),
             dataset=get_details(SatisfactionSection, courses, language),
             sub_accordions=get_sub_accordion_dataset(courses, language),
             change_point=4,
-            source=(1,
-                    translations.term_for_key(key="about_our_data_link", language=language),
-                    translations.term_for_key(key="national_student_survey", language=language)
-                    )
+            source=(
+                1,
+                translations.term_for_key(key="about_our_data_link", language=language),
+                translations.term_for_key(key="national_student_survey", language=language)
+            )
         ),
         dict(
             title=translations.term_for_key(key="after_one_year", language=language),
+            guidance_information=(translations.term_for_key(key="after_one_year_guidance", language=language),),
             dataset=get_details(ContinuationSection, courses, language),
-            source=(6,
-                    translations.term_for_key(key="entrance_data_read_more_url", language=language),
-                    translations.term_for_key(key="data_ind_stud_coll_dir", language=language)
-                    )
+            source=(
+                6,
+                translations.term_for_key(key="entrance_data_read_more_url", language=language),
+                translations.term_for_key(key="read_more_about_continuation", language=language),
+            )
         )
         #TODO: additional accordions to be added here, however, in the order they are supposed to appear.
     ]

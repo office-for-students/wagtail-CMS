@@ -19,6 +19,7 @@ continuation_list = [
 
 primary_key = 0
 action = 1
+suffix_index = 2
 
 
 def presentable_continuation(course: Course, stat: str, suffix: Any, language: str) -> str:
@@ -28,8 +29,8 @@ def presentable_continuation(course: Course, stat: str, suffix: Any, language: s
         response = "No data available"
     try:
         _object = course.continuation_stats[0]
-        method = getattr(_object, stat)
-        response = f"{method}{suffix}" if suffix else method
+        method = str(getattr(_object, stat))
+        response = f"{method}{suffix}" if suffix and method.isnumeric() else method
     except Exception as e:
         print("error: ", e)
         pass
@@ -52,11 +53,10 @@ class ContinuationSection(Section):
 
     def generate_dict(self) -> dict:
         sections = self.get_sections()
-        suffix = 2
         for course in self.courses:
             for section in sections:
                 self.data[section[primary_key]]["values"].append(
-                    presentable_continuation(course, section[action], section[suffix], self.language)
+                    presentable_continuation(course, section[action], section[suffix_index], self.language)
                 )
 
         return self.data
