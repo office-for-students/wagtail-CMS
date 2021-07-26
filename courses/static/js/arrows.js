@@ -122,13 +122,13 @@ function getCourseIndexesToShow(index, number_of_courses) {
     return indexesToShow
 }
 
-function updateArrows(active_index, number_of_courses, max_courses) {
+function updateArrows(active_index, number_columns, total_number_of_courses) {
     const arrows = new ArrowManager();
     arrows.removeAllArrows();
-    console.log(number_of_courses, max_courses)
-    if (!(number_of_courses === max_courses)){
-        if (active_index + number_of_courses >= max_courses) {
-            if (number_of_courses != max_courses) {
+    console.log(number_columns, total_number_of_courses)
+    if (!(number_columns >= total_number_of_courses)) {
+        if (active_index + number_columns >= total_number_of_courses) {
+            if (number_columns !== total_number_of_courses) {
                 arrows.includeWideArrowLeft();
             }
         } else if (active_index === 0) {
@@ -144,16 +144,35 @@ function scrollDisplay(increment) {
     let total_number_of_courses = columns.length
     let new_index = getNewIndex(increment, total_number_of_courses);
     let number_of_columns = getMaxItems(total_number_of_courses);
-    updateArrows(new_index,number_of_columns,total_number_of_courses);
+    updateArrows(new_index, number_of_columns, total_number_of_courses);
     displayColumnsWithIndex(columns, getCourseIndexesToShow(new_index, number_of_columns));
     current_index = new_index;
 }
 
+function updateStickyHeader() {
+    let element_height = $(".course-detail__course-container").height();
+    let accordion_header = $(".sticky-accordion-header");
+    accordion_header.css('top', element_height + 20 + "px");
+    accordion_header.css('position', "sticky");
+    accordion_header.css("z-index", "98");
+}
+
+
+function makeTheMagicHappen() {
+    let saved_courses = JSON.parse(localStorage.getItem("comparisonCourses"));
+    let course_search_container = document.getElementById("courseSearchContainer");
+    if (!(saved_courses) || saved_courses === 0) {
+        course_search_container.classList.remove("hidden")
+    }
+}
+
 $(window).on('resize orientationchange', function () {
     current_index = 0;
-    scrollDisplay(0)
+    scrollDisplay(0);
+    updateStickyHeader();
 });
 
 window.onload = function () {
     scrollDisplay(0);
+    updateStickyHeader();
 };
