@@ -170,10 +170,6 @@ STATISTICS = {
         'en': "After 1 year on the course",
         'cy': "Ar ôl blwyddyn o astudio"
     },
-    'guidance_title': {
-        'en': "What you need to consider when comparing courses",
-        'cy': "Beth y mae angen ichi ei ystyried wrth gymharu cyrsiau"
-    },
     'satisfaction_guidance_1': {
         'en': '''<strong>Number of people the data is based on</strong> - 
             more people mean it is more likely giving a clearer picture of student experience. 
@@ -184,7 +180,7 @@ STATISTICS = {
     },
     'satisfaction_guidance_2': {
         'en': '''<strong>Some data may be for a course and some for a subject</strong> -
-            - course data is more specific but subject data will still give an indication of students’ views. 
+            course data is more specific but subject data will still give an indication of students’ views. 
             Use caution when comparing the two.''',
         'cy': '''<strong>Gall rhywfaint o ddata fod ar gyfer cwrs a rhywfaint ar gyfer pwnc</strong> - 
             mae data cwrs yn fwy penodol ond bydd data pwnc yn dal i roi syniad o farn myfyrwyr. 
@@ -765,6 +761,10 @@ DICT = {
     'Functional managers': {
         'en': 'Functional managers',
         'cy': 'Rheolwyr gweithredol'
+    },
+    'guidance_title': {
+        'en': "What you need to consider when comparing courses",
+        'cy': "Beth y mae angen ichi ei ystyried wrth gymharu cyrsiau"
     },
     'Health and social services managers': {
         'en': 'Health and social services managers',

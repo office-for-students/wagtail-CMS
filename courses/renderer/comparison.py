@@ -88,15 +88,12 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         ),
         dict(
             title=translations.term_for_key(key="after_one_year", language=language),
-            guidance_information=(
-                translations.term_for_key(key="after_one_year_guidance", language=language),
-                translations.term_for_key(key="read_more_about_continuation", language=language)
-            ),
+            guidance_information=(translations.term_for_key(key="after_one_year_guidance", language=language),),
             dataset=get_details(ContinuationSection, courses, language),
             source=(
                 6,
                 translations.term_for_key(key="entrance_data_read_more_url", language=language),
-                translations.term_for_key(key="data_ind_stud_coll_dir", language=language)
+                translations.term_for_key(key="read_more_about_continuation", language=language),
             )
         )
         #TODO: additional accordions to be added here, however, in the order they are supposed to appear.

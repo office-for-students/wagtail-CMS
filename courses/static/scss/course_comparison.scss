@@ -565,6 +565,35 @@ $course_comparison_first_column_width: 250px;
   }
 }
 
+.guidance_box{
+    border: 1px solid #daf4ef;
+    padding: 25px 25px 25px 25px;
+    color: black;
+    margin: 16px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-title{
+        font-size: 20px;
+        font-weight: bold;
+        max-width: 100%;
+        margin: 0px;
+    }
+    &-item{
+        font-size: 14px;
+        margin-bottom: 15px;
+
+        &:last-child{
+            margin-bottom: 0px;
+        }
+    }
+    &-link{
+        font-size: 14px;
+        padding-left: 40px;
+    }
+}
+
 
 .course-detail .course-detail__lead .course-detail__course-name {
   font-size: 1rem;
@@ -578,6 +607,16 @@ $course_comparison_first_column_width: 250px;
   display: none !important;
 }
 
+@media only screen and (min-width: 992px) {
+    .guidance_box{
+        flex-direction: row;
+
+        title{
+            width: 25%;
+            margin: 16px 0px;
+        }
+    }
+}
 
 @media only screen and (min-width: 770px) {
   .comparison__header-bg-icon {
