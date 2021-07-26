@@ -72,7 +72,7 @@ function getMaxItems(maximum) {
     } else if (screen.availWidth <= 750 || window.innerWidth <= 750) {
         return 4;
     } else if (screen.availWidth <= 1140 || window.innerWidth <= 1140) {
-        return 4;
+        return 5;
     }
 
     return maximum;
@@ -80,7 +80,6 @@ function getMaxItems(maximum) {
 
 function getColumns() {
     const compare_list = JSON.parse(localStorage.getItem("compareCourses"));
-    console.log(compare_list);
     const columns = [];
     for (var index = 0; index < compare_list.length; index++) {
         let className = "cc-column-" + index;
@@ -131,7 +130,6 @@ function getCourseIndexesToShow(index, number_of_courses) {
 function updateArrows(active_index, number_columns, total_number_of_courses) {
     const arrows = new ArrowManager();
     arrows.removeAllArrows();
-    console.log(number_columns, total_number_of_courses)
     if (!(number_columns >= total_number_of_courses)) {
         if (active_index + number_columns >= total_number_of_courses) {
             if (number_columns !== total_number_of_courses) {
@@ -150,10 +148,10 @@ function scrollDisplay(increment) {
     let total_number_of_courses = columns.length
     let new_index = getNewIndex(increment, total_number_of_courses);
     let number_of_columns = getMaxItems(total_number_of_courses);
-    console.log(columns);
     updateArrows(new_index, number_of_columns, total_number_of_courses);
     displayColumnsWithIndex(columns, getCourseIndexesToShow(new_index, number_of_columns));
     current_index = new_index;
+    updateStickyHeader();
 }
 
 function updateStickyHeader() {
@@ -177,11 +175,9 @@ function hideSearchContainerIfNoCourses() {
 $(window).on('resize orientationchange', function () {
     current_index = 0;
     scrollDisplay(0);
-    updateStickyHeader();
 });
 
 window.onload = function () {
     hideSearchContainerIfNoCourses();
     scrollDisplay(0);
-    updateStickyHeader();
 };
