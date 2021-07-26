@@ -419,7 +419,7 @@ DICT = {
         'cy': 'Gweithwyr Proffesiynol Busnes, Ymchwil a Gweinyddu'
     },
     'can_compare_courses': {
-        'en': 'compare courses',
+        'en': 'Compare courses',
         'cy': 'gymharu cyrsiau'
     },
     'Caring personal service occupations': {

@@ -63,13 +63,16 @@
             compare_list.push({"id": id, "rating": 0})
             localStorage.setItem('compareCourses', JSON.stringify(compare_list));
         }
+
         else{
             for(var i = 0; i < compare_list.length; i++) {
                 if(compare_list[i].id === id){
                     index = compare_list.indexOf(compare_list[i])
                     compare_list.splice(index, 1)
                 }
+
             }
+            localStorage.setItem('compareCourses', JSON.stringify(compare_list));
         }
     }
 
