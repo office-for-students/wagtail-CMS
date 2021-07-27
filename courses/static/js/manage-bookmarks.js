@@ -1,12 +1,12 @@
 (function ($) {
 
-    var BookmarkPage = function(wrapper) {
+    var BookmarkPage = function (wrapper) {
         this.wrapper = $(wrapper);
         this.setup();
     }
 
     BookmarkPage.prototype = {
-        setup: function() {
+        setup: function () {
             this.isEnglish = location.pathname.indexOf('/cy/') === -1;
             this.courseCountSpan = this.wrapper.find('.count');
             this.navBox = this.wrapper.find('.bookmark__nav-box');
@@ -14,12 +14,12 @@
             this.oneSelected = this.wrapper.find('.bookmark__one-selected');
             this.courseBoxes = this.wrapper.find('.bookmark__course');
             this.selectedCourses = [];
-       
+
             this.loadSelectedCourses();
             this.setInitialView();
         },
 
-        loadSelectedCourses: function() {
+        loadSelectedCourses: function () {
             if (JSON.parse(localStorage.getItem('comparisonCourses'))) {
                 this.selectedCourses = JSON.parse(localStorage.getItem('comparisonCourses'));
                 this.compareCourses = JSON.parse(localStorage.getItem('compareCourses'));
@@ -29,7 +29,7 @@
             }
         },
 
-        setInitialView: function() {
+        setInitialView: function () {
             this.courseCountSpan.text(this.selectedCourses.length);
 
             if (this.selectedCourses.length === 0) {
@@ -45,33 +45,48 @@
             this.courseBlocks = [];
             for (var i = 0; i < this.selectedCourses.length; i++) {
                 this.courseBlocks.push(new CourseBlock(this.courseBoxes[i], this.selectedCourses[i], this.isEnglish,
-                                                        this.handleCourseRemoval.bind(this)));
+                    this.handleCourseRemoval.bind(this)));
+            }
+        },
+        updateBookmarkNumber: function () {
+            let bookmark_el = document.getElementsByClassName('nav-bookmark__count')[0]
+            let total_bookmark = parseInt(bookmark_el.innerHTML);
+            total_bookmark = total_bookmark - 1;
+            if (total_bookmark === 0) {
+                bookmark_el.classList.add("hidden");
+            } else {
+                bookmark_el.innerHTML = total_bookmark.toString();
             }
         },
 
-        handleCourseRemoval: function(removedCourse) {
+        handleCourseRemoval: function (removedCourse) {
             for (var i = 0; i < this.selectedCourses.length; i++) {
                 var course = this.selectedCourses[i];
                 if (this.isCourse(course, removedCourse)) {
                     this.selectedCourses.splice(i, 1);
                 }
-                for(var index = 0; index < this.compareCourses.length; index++){
-                    if(this.compareCourses[index].id == removedCourse.courseId){
-                        this.compareCourses.splice(index, 1);
+                if (this.compareCourses) {
+                    for (var index = 0; index < this.compareCourses.length; index++) {
+                        if (this.compareCourses[index].id == removedCourse.courseId) {
+                            this.compareCourses.splice(index, 1);
+
+                        }
                     }
                 }
             }
+            this.updateBookmarkNumber();
             localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
             localStorage.setItem('compareCourses', JSON.stringify(this.compareCourses));
-            location.reload();
+            let course_to_remove = document.getElementById("" + removedCourse.courseId + "-container");
+            course_to_remove.classList.add("hidden");
         },
 
-        isCourse: function(course, removedCourse) {
+        isCourse: function (course, removedCourse) {
             return course.uniId === removedCourse.uniId && course.courseId === removedCourse.courseId && course.mode === removedCourse.mode;
         }
     }
 
-    var CourseBlock = function(wrapper, course,  isEnglish, handleCourseRemoval) {
+    var CourseBlock = function (wrapper, course, isEnglish, handleCourseRemoval) {
         this.wrapper = $(wrapper);
         this.course = course;
         this.isEnglish = isEnglish;
@@ -80,7 +95,7 @@
     }
 
     CourseBlock.prototype = {
-        setup: function() {
+        setup: function () {
             this.courseNameSpan = this.wrapper.find('.bookmark__course-name');
             this.lengthBlock = this.wrapper.find('.bookmark__course-info.length');
             this.lengthUnknown = this.lengthBlock.find('.unknown');
@@ -97,7 +112,7 @@
             this.startWatcher();
         },
 
-        setInitialView: function() {
+        setInitialView: function () {
             this.courseNameSpan.text(this.course.courseName + ' - ' + this.course.uniName);
             this.courseLengthSpan.text(this.course.length);
             this.courseLocationSpan.text(this.course.locations);
@@ -126,7 +141,7 @@
             } else {
                 this.courseNameSpan.attr('href', '/cy/course-details/' + this.course.uniId + '/' + this.course.courseId + '/' + mode + '/');
             }
-            
+
             if (this.course.length === '' || this.course.length === 'None' || this.course === 'None') {
                 this.lengthKnown.hide();
             } else {
@@ -136,10 +151,10 @@
             this.wrapper.show();
         },
 
-        startWatcher: function() {
+        startWatcher: function () {
             var that = this;
 
-            this.removeBtn.click(function() {
+            this.removeBtn.click(function () {
                 that.handleCourseRemoval(that.course)
             });
         }
