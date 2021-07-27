@@ -104,7 +104,7 @@
             var courses_selected = document.getElementById('courses-selected')
 
             if (checked_bookmark >= 1) {
-                courses_selected.innerHTML = "<strong>" + checked_bookmark + "</strong> {% get_translation key='courses_selected' language=page.get_language %}"
+                courses_selected.innerHTML = "<strong>" + checked_bookmark + " {% get_translation key='courses_selected' language=page.get_language %}</strong>"
             } else {
                 courses_selected.innerHTML = ""
             }
