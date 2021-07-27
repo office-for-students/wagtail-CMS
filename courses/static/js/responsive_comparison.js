@@ -133,15 +133,18 @@ function getCourseIndexesToShow(index, number_of_courses) {
 function updateArrows(active_index, number_columns, total_number_of_courses) {
     const arrows = new ArrowManager();
     arrows.removeAllArrows();
-    if (!(number_columns >= total_number_of_courses)) {
-        if (active_index + number_columns >= total_number_of_courses) {
-            if (number_columns !== total_number_of_courses) {
-                arrows.includeWideArrowLeft();
+    var hidden_check = document.getElementById("hiddenCourseCompare");
+    if (hidden_check) {
+        if (!(number_columns >= total_number_of_courses)) {
+            if (active_index + number_columns >= total_number_of_courses) {
+                if (number_columns !== total_number_of_courses) {
+                    arrows.includeWideArrowLeft();
+                }
+            } else if (active_index === 0) {
+                arrows.includeWideArrowRight();
+            } else {
+                arrows.includeBothArrows();
             }
-        } else if (active_index === 0) {
-            arrows.includeWideArrowRight();
-        } else {
-            arrows.includeBothArrows();
         }
     }
 }

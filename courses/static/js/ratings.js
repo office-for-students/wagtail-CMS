@@ -23,35 +23,36 @@ window.addEventListener("load", function () {
     var add_courses_button = document.getElementById("addCourses")
     var id_list = [];
     var hidden_check = document.getElementById("hiddenCourseCompare");
-
-    if (compare_list) {
-        for (var i = 0; i < compare_list.length; i++) {
-            id_list.push(compare_list[i].id);
-        }
-
-        var index = 0
-        for (var i = 0; i < saved_institutions.length; i++) {
-            let courseId = saved_institutions[i].courseId
-            let query = saved_institutions[i].uniId + ',' + courseId + ',' + saved_institutions[i].mode.en
-
-            if (id_list.includes(courseId)) {
-                hidden_check.innerHTML += `<input id="${'course' + index}" type="checkbox" value="${query}" name="courses" hidden checked>`
-                index++
+    if (hidden_check) {
+        if (compare_list) {
+            for (var i = 0; i < compare_list.length; i++) {
+                id_list.push(compare_list[i].id);
             }
-        }
 
-        if (compare_list.length === 7) {
-            // add_courses_link.href = "";
-            add_courses_button.disabled = true;
-            add_courses_button.style.backgroundColor = "grey";
-        }
+            var index = 0
+            for (var i = 0; i < saved_institutions.length; i++) {
+                let courseId = saved_institutions[i].courseId
+                let query = saved_institutions[i].uniId + ',' + courseId + ',' + saved_institutions[i].mode.en
 
-        for (var index = 0; index < compare_list.length; index++)
-            for (var i = 1; i <= compare_list[index].rating; i++) {
-                var star = document.getElementById("course-" + index + "-star" + i);
-                star.innerHTML = "★";
-                star.classList.add("orange");
+                if (id_list.includes(courseId)) {
+                    hidden_check.innerHTML += `<input id="${'course' + index}" type="checkbox" value="${query}" name="courses" hidden checked>`
+                    index++
+                }
             }
+
+            if (compare_list.length === 7) {
+                // add_courses_link.href = "";
+                add_courses_button.disabled = true;
+                add_courses_button.style.backgroundColor = "grey";
+            }
+
+            for (var index = 0; index < compare_list.length; index++)
+                for (var i = 1; i <= compare_list[index].rating; i++) {
+                    var star = document.getElementById("course-" + index + "-star" + i);
+                    star.innerHTML = "★";
+                    star.classList.add("orange");
+                }
+        }
     }
 });
 
