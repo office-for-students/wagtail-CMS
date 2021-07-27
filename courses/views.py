@@ -302,13 +302,14 @@ def compare_courses(request, language=enums.languages.ENGLISH):
     query_string = request.environ.get('QUERY_STRING')
 
     context = page.get_context(request)
+
     context.update(
         dict(
             page=page,
             courses=courses_array,
             courses_data=courses,
-            english_url=page.get_english_url() + query_string,
-            welsh_url=page.get_welsh_url() + query_string,
+            english_url=f"{page.get_english_url()}?{query_string}",
+            welsh_url=f"{page.get_welsh_url()}?{query_string}",
             cookies_accepted=request.COOKIES.get('discoverUniCookies'),
             get_params=url_params,
             institutions_list=InstitutionList.get_options()[utils.get_language(request.get_full_path())]
