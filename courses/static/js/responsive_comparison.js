@@ -2,6 +2,7 @@ const narrowMarginLeftAndRightClass = "course-info-both";
 const wideMarginLeftClass = "course-info-left";
 const wideMarginRightClass = "course-info-right";
 
+
 let current_index = 0;
 
 class ArrowManager {
@@ -81,9 +82,11 @@ function getMaxItems(maximum) {
 function getColumns() {
     const compare_list = JSON.parse(localStorage.getItem("compareCourses"));
     const columns = [];
-    for (var index = 0; index < compare_list.length; index++) {
-        let className = "cc-column-" + index;
-        columns.push(document.getElementsByClassName(className));
+    if (compare_list) {
+        for (var index = 0; index < compare_list.length; index++) {
+            let className = "cc-column-" + index;
+            columns.push(document.getElementsByClassName(className));
+        }
     }
     return columns;
 }
@@ -162,11 +165,10 @@ function updateStickyHeader() {
     accordion_header.css("z-index", "98");
 }
 
-
 function hideSearchContainerIfNoCourses() {
     let saved_courses = JSON.parse(localStorage.getItem("comparisonCourses"));
     let course_search_container = document.getElementById("courseSearchContainer");
-    if (!(saved_courses) || saved_courses === 0) {
+    if (!(saved_courses) || saved_courses.length === 0) {
         course_search_container.classList.remove("hidden")
     }
 }
@@ -177,7 +179,9 @@ $(window).on('resize orientationchange', function () {
     scrollDisplay(0);
 });
 
-window.onload = function () {
-    hideSearchContainerIfNoCourses();
+$(window).on('load', function () {
     scrollDisplay(0);
-};
+    hideSearchContainerIfNoCourses();
+});
+
+
