@@ -1,10 +1,13 @@
 import logging
-from typing import Any, Type, Callable, Dict, List, Tuple
+from typing import Callable
+from typing import Dict
+from typing import List
+from typing import Type
 
 from CMS import translations
-
 from courses.models import Course
-from courses.renderer.sections import CourseDetailSection, SatisfactionSection
+from courses.renderer.sections import CourseDetailSection
+from courses.renderer.sections import SatisfactionSection
 from courses.renderer.sections.base import Section
 from courses.renderer.sections.continuation import ContinuationSection
 from courses.renderer.sections.satisfaction import SubSatisfactionSection
@@ -86,6 +89,11 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="national_student_survey", language=language)
             )
         ),
+        # TODO: Update with correct data when you get to that ticket
+        dict(
+            title="Entry Information",
+        ),
+        # End
         dict(
             title=translations.term_for_key(key="after_one_year", language=language),
             guidance_information=(translations.term_for_key(key="after_one_year_guidance", language=language),),
@@ -95,8 +103,21 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="entrance_data_read_more_url", language=language),
                 translations.term_for_key(key="read_more_about_continuation", language=language),
             )
-        )
-        #TODO: additional accordions to be added here, however, in the order they are supposed to appear.
+        ),
+        # TODO: Update with correct data when you get to that ticket
+        dict(
+            title="Earnings after the course",
+        ),
+        dict(
+            title="Employment 15 months after the course",
+        ),
+        dict(
+            title="Graduate perceptions",
+        ),
+        dict(
+            title="information on the uni website",
+        ),
+        # end
     ]
 
     response.append(context)
