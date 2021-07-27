@@ -69,6 +69,8 @@
     font-size: 16px !important;
     font-weight: bold !important;
     cursor: pointer;
+    display: block;
+    text-align: center;
 
     &-text{
         display: inline-block;
@@ -156,7 +158,7 @@
     background-color: $divider-grey;
 
     &__left_container{
-        max-width: 50%;
+        max-width: 100%;
         text-align: left;
     }
 
@@ -286,7 +288,6 @@
         }
     }
     .compare-popup__wrapper{
-        width: 540px!important;
         margin-left:auto !important;
         margin-right:auto !important;
     }
@@ -309,6 +310,10 @@
             display: block;
             margin-top: 8px;
         }
+    }
+
+    .compare-popup__left_container{
+        max-width: 50%;
     }
 
 }

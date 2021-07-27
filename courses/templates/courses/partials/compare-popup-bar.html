@@ -3,7 +3,7 @@
 
 <div class="compare-popup">
     <div class="compare-popup__wrapper">
-
+        <button class="compare-popup__close">Close x</button>
         <div class="compare-popup__add">
             <div class="compare-popup__left_container">
                 <p class="course_added">
@@ -16,7 +16,7 @@
             </div>
 
             <div class="compare-popup__not-enough">
-                <button class="compare-popup__close">Close x</button>
+
                 <a class="green_button compare_courses_btn disable"
                    href="/{% get_translation key='course_comparison_link' language=page.get_language %}"
                    onclick="document.getElementById('compareForm').submit();">
@@ -27,7 +27,7 @@
 
             <div>
                 <p class="compare-popup__enough">
-                    <button style="border: none; box-shadow: none; background-color: transparent;" class="compare-popup__close">Close x</button>
+
                     <a id="compare-courses-button" class="green_button compare_courses_btn"
                        href="/{% get_translation key='course_comparison_link' language=page.get_language %}"
                        onclick="document.getElementById('compareForm').submit();">
