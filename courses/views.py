@@ -284,7 +284,8 @@ def compare_courses(request, language=enums.languages.ENGLISH):
     courses_list = url_params.getlist('courses') if 'courses' in url_params else None
 
     if courses_list:
-        for course in courses_list:
+        # Ignore anything more than 7 (avoid malicious activity)
+        for course in courses_list[0:7]:
             if course:
                 course = course.split(',')
                 course, error = Course.find(course[0], course[1], course[2], language)
