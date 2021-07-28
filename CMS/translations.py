@@ -16,8 +16,16 @@ def term_for_key(key: str, language: str) -> str:
     return term
 
 
+def dict_for_key(english, welsh):
+    return dict(en=english, cy=welsh)
+
 
 STATISTICS = {
+    "entry_information": dict_for_key("Entry Information", "Gwybodaeth am fynediad"),
+    "earnings_after_the_course": dict_for_key("Earnings after the course", "Enillion ar ôl y cwrs"),
+    "employment_15_months": dict_for_key("Employment 15 months after the course", "Cyflogaeth 15 mis ar ôl y cwrs"),
+    "graduate_perceptions": dict_for_key("Graduate perceptions", "Canfyddiadau graddedigion"),
+    "information_on_uni": dict_for_key("information on the uni website", "Gwybodaeth ar wefan y prifysgol"),
     'overall_satisfied': {
         'en': 'Overall I am satisfied with the quality of the course',
         'cy': 'Rwy’n fodlon ag ansawdd y cwrs ar y cyfan'
@@ -312,7 +320,7 @@ DICT = {
         'en': 'About',
         'cy': 'Ynghylch'
     },
-    #TODO: "about our data link" can be removed once the wagtail panels have been
+    # TODO: "about our data link" can be removed once the wagtail panels have been
     # changed to only contain the source link
     'about_our_data_link': {
         'en': 'https://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey',
@@ -538,7 +546,7 @@ DICT = {
         'en': './course-comparison/',
         'cy': './cy/cymharu-cyrsiau/'
     },
-    'courses_selected':{
+    'courses_selected': {
         'en': 'course(s) selected',
         'cy': 'cwrs wedi’u dewis'
     },

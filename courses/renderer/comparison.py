@@ -90,7 +90,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         ),
         # TODO: Update with correct data when you get to that ticket
         dict(
-            title="Entry Information",
+            title=translations.term_for_key(key="entry_information", language=language),
             guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),
             source=(
                 translations.term_for_key(key="about_our_data_link", language=language),
@@ -109,7 +109,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         ),
         # TODO: Update with correct data when you get to that ticket
         dict(
-            title="Earnings after the course",
+            title=translations.term_for_key(key="earnings_after_the_course", language=language),
             guidance_information=(
                 translations.term_for_key(key="earnings_guidance_1", language=language),
                 translations.term_for_key(key="earnings_guidance_2", language=language),
@@ -121,7 +121,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             )
         ),
         dict(
-            title="Employment 15 months after the course",
+            title=translations.term_for_key(key="employment_15_months", language=language),
             guidance_information=(
                 translations.term_for_key(key="employment_guidance_1", language=language),
                 translations.term_for_key(key="employment_guidance_2", language=language),
@@ -133,7 +133,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             )
         ),
         dict(
-            title="Graduate perceptions",
+            title=translations.term_for_key(key="graduate_perceptions", language=language),
             guidance_information=(
                 translations.term_for_key(key="graduate_guidance_1", language=language),
                 translations.term_for_key(key="graduate_guidance_2", language=language),
@@ -144,7 +144,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             )
         ),
         dict(
-            title="information on the uni website",
+            title=translations.term_for_key(key="information_on_uni", language=language),
         ),
         # end
     ]
