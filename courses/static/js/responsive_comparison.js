@@ -65,16 +65,24 @@ class ArrowManager {
 
 }
 
+function getValueComparedToMax(value, maximum){
+    if (maximum < value) {
+            return maximum;
+        } else {
+            return value;
+        }
+}
+
 function getMaxItems(maximum) {
     if (screen.availWidth <= 450 || window.innerWidth <= 450) {
-        return 2;
+        return getValueComparedToMax(2, maximum);
     } else if (screen.availWidth <= 576 || window.innerWidth <= 576) {
-        return 3;
+        return getValueComparedToMax(3, maximum);
     } else if (screen.availWidth <= 750 || window.innerWidth <= 750) {
-        return 4;
+        return getValueComparedToMax(4, maximum);
     } else if (screen.availWidth <= 1140 || window.innerWidth <= 1140) {
-        return 5;
-    }
+        return getValueComparedToMax(5, maximum)
+     }
 
     return maximum;
 }
@@ -130,14 +138,14 @@ function getCourseIndexesToShow(index, number_of_courses) {
     return indexesToShow
 }
 
-function updateArrows(active_index, number_columns, total_number_of_courses) {
+function updateArrows(active_index, max_columns, total_number_of_courses) {
     const arrows = new ArrowManager();
     arrows.removeAllArrows();
     var hidden_check = document.getElementById("hiddenCourseCompare");
     if (hidden_check) {
-        if (!(number_columns >= total_number_of_courses)) {
-            if (active_index + number_columns >= total_number_of_courses) {
-                if (number_columns !== total_number_of_courses) {
+        if (!(max_columns >= total_number_of_courses)) {
+            if (active_index + max_columns >= total_number_of_courses) {
+                if (max_columns !== total_number_of_courses) {
                     arrows.includeWideArrowLeft();
                 }
             } else if (active_index === 0) {
@@ -153,9 +161,9 @@ function scrollDisplay(increment) {
     const columns = getColumns();
     let total_number_of_courses = columns.length
     let new_index = getNewIndex(increment, total_number_of_courses);
-    let number_of_columns = getMaxItems(total_number_of_courses);
-    updateArrows(new_index, number_of_columns, total_number_of_courses);
-    displayColumnsWithIndex(columns, getCourseIndexesToShow(new_index, number_of_columns));
+    let max_columns = getMaxItems(total_number_of_courses);
+    updateArrows(new_index, max_columns, total_number_of_courses);
+    displayColumnsWithIndex(columns, getCourseIndexesToShow(new_index, max_columns));
     current_index = new_index;
     updateStickyHeader();
 }

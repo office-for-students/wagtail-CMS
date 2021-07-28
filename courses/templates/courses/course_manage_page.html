@@ -135,16 +135,25 @@
             }
         }
 
+        function getCourseID(course) {
+            let courseId = course.courseId;
+            let studyMode = course.mode.en;
+            let htmlID = courseId + "-" + studyMode.replace(" ", "-") + "-container";
+            return htmlID.toLowerCase();
+        }
+
+
         function savedInstitutions() {
             let saved_institutions = getComparisonCourses();
             for (let i = 0; i < saved_institutions.length; i++) {
                 let containing_div = document.getElementById("institution-bookmark");
-                let courseId = saved_institutions[i].courseId
-                id_list.push(courseId)
-                let query = saved_institutions[i].uniId + ',' + courseId + ',' + saved_institutions[i].mode.en
+                let course = saved_institutions[i];
+                let courseHTMLID = getCourseID(course);
+                id_list.push(courseHTMLID)
+                let query = course.uniId + ',' + course.courseId + ',' + course.mode.en
                 containing_div.innerHTML += `
-            <div class="bookmark-container" id="${courseId}-container">
-                <input id="${courseId}" class="bookmark-check" style="margin-right: 95px; margin-bottom:auto; margin-top: 40px" name="courses"  type="checkbox"
+            <div class="bookmark-container" id="${courseHTMLID}">
+                <input id="${courseHTMLID}" class="bookmark-check" style="margin-right: 95px; margin-bottom:auto; margin-top: 40px" name="courses"  type="checkbox"
 onchange="compareButtonFormat(checked, id)" value="${query}">
                 <div id='course-${i}' class='bookmark__course'>
                     <a href='' class='bookmark__course-name'></a>

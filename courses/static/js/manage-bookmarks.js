@@ -58,8 +58,14 @@
                 bookmark_el.innerHTML = total_bookmark.toString();
             }
         },
+        hideSelectedCoursElement: function (el_id) {
+            let course_to_remove = document.getElementById(el_id);
+            course_to_remove.classList.add("hidden");
+        },
+
 
         handleCourseRemoval: function (removedCourse) {
+            let HTMLID = getCourseID(removedCourse);
             for (var i = 0; i < this.selectedCourses.length; i++) {
                 var course = this.selectedCourses[i];
                 if (this.isCourse(course, removedCourse)) {
@@ -67,7 +73,7 @@
                 }
                 if (this.compareCourses) {
                     for (var index = 0; index < this.compareCourses.length; index++) {
-                        if (this.compareCourses[index].id == removedCourse.courseId) {
+                        if (this.compareCourses[index].id == HTMLID) {
                             this.compareCourses.splice(index, 1);
 
                         }
@@ -75,10 +81,10 @@
                 }
             }
             this.updateBookmarkNumber();
+            this.hideSelectedCoursElement(HTMLID);
             localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
             localStorage.setItem('compareCourses', JSON.stringify(this.compareCourses));
-            let course_to_remove = document.getElementById("" + removedCourse.courseId + "-container");
-            course_to_remove.classList.add("hidden");
+
         },
 
         isCourse: function (course, removedCourse) {
