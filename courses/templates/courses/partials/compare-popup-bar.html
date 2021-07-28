@@ -3,20 +3,38 @@
 
 <div class="compare-popup">
     <div class="compare-popup__wrapper">
-        <button class="compare-popup__close"><img src="{% static 'images/close-grey.svg' %}" alt="Close  pop up"></button>
-
+        <button class="compare-popup__close">Close x</button>
         <div class="compare-popup__add">
-            <p class="compare-popup__count"><span class="count"></span> 
-                <span class="course_added">{% get_translation key='course_added' language=page.get_language %}</span>
-                <span class="courses_added">{% get_translation key='courses_added' language=page.get_language %}</span>
-                <a href="{{manage_link}}">{% get_translation key='bookmarked_courses' language=page.get_language %}</a></p>
+            <div class="compare-popup__left_container">
+                <p class="course_added">
+                    <i class="fas fa-check-circle checkmark"></i>
+                    Course saved</p>
+                <p class="compare-popup__count">
+                    You have saved <strong><span class="count"></span> course(s)</strong>
+                    <a class="compare-popup-saved_courses_link" href="{{manage_link}}">View saved courses</a>
+                </p>
+            </div>
 
-            <p class="compare-popup__not-enough">{% get_translation key='not_enough' language=page.get_language %}</p>
+            <div class="compare-popup__not-enough">
 
-            <p class="compare-popup__enough">
-                {% get_translation key='you_can' language=page.get_language %}
-                <a href="{{comparison_link}}">{% get_translation key='compare_courses' language=page.get_language %}</a>
-            </p>
+                <a class="green_button compare_courses_btn disable"
+                   href="/{% get_translation key='course_comparison_link' language=page.get_language %}"
+                   onclick="document.getElementById('compareForm').submit();">
+                    <span class="compare_courses_btn-text">{% get_translation key='can_compare_courses' language=page.get_language %}</span>
+                </a>
+                <p class="not_enough">{% get_translation key='not_enough' language=page.get_language %}</p>
+            </div>
+
+            <div>
+                <p class="compare-popup__enough">
+
+                    <a id="compare-courses-button" class="green_button compare_courses_btn"
+                       href="/{% get_translation key='course_comparison_link' language=page.get_language %}"
+                       onclick="document.getElementById('compareForm').submit();">
+                        <span class="compare_courses_btn-text">{% get_translation key='can_compare_courses' language=page.get_language %}</span>
+                    </a>
+                </p>
+            </div>
         </div>
 
         <div class="compare-popup__remove">
