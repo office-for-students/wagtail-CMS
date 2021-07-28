@@ -62,7 +62,7 @@
             }
 
             if (checked_bookmark >= 1) {
-                courses_selected.innerHTML = "<strong>" + checked_bookmark + "</strong> course(s) selected"
+                courses_selected.innerHTML = "<strong>" + checked_bookmark + " {% get_translation key="courses_selected" language=page.get_language %}</strong>"
             } else {
                 courses_selected.innerHTML = ""
             }
@@ -124,13 +124,15 @@
             }
         }
 
-        function checkSelectedOnLoad(id) {
+        function checkSelectedOnLoad(ids) {
             let compare_list = getSavedCourses();
             for (var i = 0; i < compare_list.length; i++) {
-                if (id.includes(compare_list[i].id)) {
-                    var index = id.indexOf(compare_list[i].id)
-                    document.getElementById(id[index]).checked = true
-                    checked_bookmark += 1
+                let none = compare_list[i].id.toLowerCase().replace("-checkbox", "");
+                console.log("compare list id = ", none, " id passed in = ", ids);
+                if (ids.includes(none)) {
+                    var index = ids.indexOf(none);
+                    document.getElementById(ids[index] + "-checkbox").checked = true;
+                    checked_bookmark += 1;
                 }
             }
         }
@@ -153,7 +155,7 @@
                 let query = course.uniId + ',' + course.courseId + ',' + course.mode.en
                 containing_div.innerHTML += `
             <div class="bookmark-container" id="${courseHTMLID}">
-                <input id="${courseHTMLID}" class="bookmark-check" style="margin-right: 95px; margin-bottom:auto; margin-top: 40px" name="courses"  type="checkbox"
+                <input id="${courseHTMLID}-checkbox" class="bookmark-check" style="margin-right: 95px; margin-bottom:auto; margin-top: 40px" name="courses"  type="checkbox"
 onchange="compareButtonFormat(checked, id)" value="${query}">
                 <div id='course-${i}' class='bookmark__course'>
                     <a href='' class='bookmark__course-name'></a>
