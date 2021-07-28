@@ -84,14 +84,18 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             sub_accordions=get_sub_accordion_dataset(courses, language),
             change_point=4,
             source=(
-                1,
                 translations.term_for_key(key="about_our_data_link", language=language),
-                translations.term_for_key(key="national_student_survey", language=language)
+                translations.term_for_key(key="read_more_about_satisfaction", language=language)
             )
         ),
         # TODO: Update with correct data when you get to that ticket
         dict(
             title=translations.term_for_key(key="entry_information", language=language),
+            guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),
+            source=(
+                translations.term_for_key(key="about_our_data_link", language=language),
+                translations.term_for_key(key="read_more_about_entry", language=language)
+            )
         ),
         # End
         dict(
@@ -99,7 +103,6 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             guidance_information=(translations.term_for_key(key="after_one_year_guidance", language=language),),
             dataset=get_details(ContinuationSection, courses, language),
             source=(
-                6,
                 translations.term_for_key(key="entrance_data_read_more_url", language=language),
                 translations.term_for_key(key="read_more_about_continuation", language=language),
             )
@@ -107,12 +110,38 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         # TODO: Update with correct data when you get to that ticket
         dict(
             title=translations.term_for_key(key="earnings_after_the_course", language=language),
+            guidance_information=(
+                translations.term_for_key(key="earnings_guidance_1", language=language),
+                translations.term_for_key(key="earnings_guidance_2", language=language),
+                translations.term_for_key(key="earnings_guidance_3", language=language)
+            ),
+            source=(
+                translations.term_for_key(key="earnings_link", language=language),
+                translations.term_for_key(key="read_more_about_earnings", language=language),
+            )
         ),
         dict(
             title=translations.term_for_key(key="employment_15_months", language=language),
+            guidance_information=(
+                translations.term_for_key(key="employment_guidance_1", language=language),
+                translations.term_for_key(key="employment_guidance_2", language=language),
+                translations.term_for_key(key="employment_guidance_3", language=language)
+            ),
+            source=(
+                translations.term_for_key(key="earnings_link", language=language),
+                translations.term_for_key(key="read_more_about_employment", language=language),
+            )
         ),
         dict(
             title=translations.term_for_key(key="graduate_perceptions", language=language),
+            guidance_information=(
+                translations.term_for_key(key="graduate_guidance_1", language=language),
+                translations.term_for_key(key="graduate_guidance_2", language=language),
+            ),
+            source=(
+                translations.term_for_key(key="graduate_link", language=language),
+                translations.term_for_key(key="read_more_about_graduate_perceptions", language=language),
+            )
         ),
         dict(
             title=translations.term_for_key(key="information_on_uni", language=language),

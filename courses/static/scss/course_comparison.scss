@@ -291,6 +291,25 @@ $course_comparison_first_column_width: 250px;
       padding: 20px;
       text-align: center;
       margin-bottom: 31px;
+
+      &-header{
+        font-size: 16px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        text-align: left;
+      }
+      &-text{
+        font-size: 14px;
+        margin-bottom: 0px;
+        text-align: left;
+      }
+      &-image{
+        position: absolute;
+        width: 50px;
+        height: auto;
+        right: 5px;
+        top: 10px;
+      }
     }
   }
 
@@ -612,8 +631,8 @@ $course_comparison_first_column_width: 250px;
     .guidance_box{
         flex-direction: row;
 
-        title{
-            width: 25%;
+        &-title{
+            max-width: 25%;
             margin: 16px 0px;
         }
     }
@@ -696,6 +715,18 @@ $course_comparison_first_column_width: 250px;
     margin-left: auto !important;
     margin-right: auto !important;
   }
+}
+
+@media only screen and (min-width: 576px){
+    .comparison__top-container {
+        &-need-help-box-image {
+            position: absolute;
+            width: 50px;
+            height: auto;
+            right: 50px;
+            top: 10px;
+        }
+    }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 766px) {
@@ -860,6 +891,15 @@ $course_comparison_first_column_width: 250px;
     min-width: 186px;
     max-width: 186px;
   }
+
+  .comparison__top-container {
+    &-need-help-box {
+      display: block;
+      width: 45%;
+      margin: auto;
+      text-align: left;
+    }
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -873,6 +913,15 @@ $course_comparison_first_column_width: 250px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+  }
+
+  .comparison__top-container {
+    &-need-help-box {
+      display: block;
+      width: 45%;
+      margin: auto;
+      text-align: left;
+    }
   }
 
   .comparison__top-container-add-btn-compare-text {
