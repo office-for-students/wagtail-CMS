@@ -88,7 +88,7 @@ function addStarRating(id, value, index) {
     localStorage.setItem('compareCourses', JSON.stringify(compare_list));
 }
 
-function hoverStars(value, index, dataIndex) {
+function hoverStars(value, index) {
     const compare_list = JSON.parse(localStorage.getItem("compareCourses"));
     if (+value < compare_list[index].rating) {
         for (var i = 3; i > +value; i--) {
