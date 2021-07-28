@@ -128,7 +128,6 @@
             let compare_list = getSavedCourses();
             for (var i = 0; i < compare_list.length; i++) {
                 let none = compare_list[i].id.toLowerCase().replace("-checkbox", "");
-                console.log("compare list id = ", none, " id passed in = ", ids);
                 if (ids.includes(none)) {
                     var index = ids.indexOf(none);
                     document.getElementById(ids[index] + "-checkbox").checked = true;
