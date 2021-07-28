@@ -187,6 +187,10 @@ STATISTICS = {
             Byddwch yn ofalus wrth gymharu'r naill a'r llall. 
             Darllenwch fwy am Arolwg Cenedlaethol o Fyfyrwyr'''
     },
+    'read_more_about_satisfaction': {
+        'en': "Read more about the National Student Survey",
+        'cy': "Darllenwch fwy am Arolwg Cenedlaethol o Fyfyrwyr"
+    },
     'after_one_year_guidance': {
         'en': '''The number of students indicates the size of the course, and more people 
             means it is more likely to be representative of outcomes for students.''',
@@ -196,6 +200,66 @@ STATISTICS = {
     'read_more_about_continuation': {
         'en': "Read more about Continuation",
         'cy': "Darllenwch fwy am Parhad"
+    },
+    'employment_guidance_1': {
+        'en': "Some data is from graduates surveyed during the pandemic",
+        'cy': "Daw rhywfaint o ddata gan raddedigion a gymerodd ran yn yr arolwg yn ystod y pandemig."
+    },
+    'employment_guidance_2': {
+        'en': "Labour markets vary and change over time",
+        'cy': "Bydd marchnadoedd llafur yn amrywio ac yn newid dros amser"
+    },
+    'employment_guidance_3': {
+        'en': "Employment and job opportunities vary across regions in the UK",
+        'cy': "Bydd cyfleoedd am gyflogaeth a swyddi'n amrywio ar draws rhanbarthau'r DU"
+    },
+    'read_more_about_employment': {
+        'en': "Read more about employment",
+        'cy': "Darllen mwy am gyflogaeth"
+    },
+    'employment_link': {
+        'en': "https://www.discoveruni.gov.uk/how-do-i-choose-course/employment-prospects/",
+        'cy': "https://www.discoveruni.gov.uk/cy/how-choose-course-cy/rhagolygon-cyflogaeth-employment-prospects/"
+    },
+    'graduate_guidance_1': {
+        'en': "Number of people the data is based on - more people mean it is more likely giving a clearer picture of student experience. Also consider the percentage of graduates who responded to the survey.",
+        'cy': "Nifer y bobl y mae'r data'n seiliedig arnynt - bydd mwy o bobl yn golygu ei bod hi'n debygol y ceir darlun cliriach o brofiadau myfyrwyr. Dylech hefyd ystyried canran y myfyrwyr a ymatebodd i'r arolwg."
+    },
+    'graduate_guidance_2': {
+        'en': "Some data may be for a course and some for a subject - course data is more specific but subject data will still give an indication of students’ views. Use caution when comparing the two.",
+        'cy': "Gall rhywfaint o ddata fod ar gyfer cwrs a rhywfaint ar gyfer pwnc - mae data cwrs yn fwy penodol ond bydd data pwnc yn dal i roi syniad o farn myfyrwyr. Byddwch yn ofalus wrth gymharu'r naill a'r llall."
+    },
+    'read_more_about_graduate_perceptions': {
+        'en': "Read more about Graduate Perceptions",
+        'cy': "Darllenwch fwy am Canfyddiadau Graddedigion"
+    },
+    'graduate_link': {
+        'en': "https://www.discoveruni.gov.uk/about-our-data/#graduate_outcomes_survey",
+        'cy': "https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#arolwg_canlyniadau_graddedigion"
+    },
+    'earnings_guidance_1': {
+        'en': "Labour markets change",
+        'cy': "mae marchnadoedd llaffur yn newid"
+    },
+    'earnings_guidance_2': {
+        'en': "Salaries vary across regions in the UK",
+        'cy': "mae cyflogau'n amrywio yng ngwahanol rannau o'r DU"
+    },
+    'earnings_guidance_3': {
+        'en': "There are lots of factors that affect graduates' earnings",
+        'cy': "mae llawer o ffactorau'n effeithio ar enillion graddedigion"
+    },
+    'read_more_about_earnings': {
+        'en': "Read more about earnings",
+        'cy': "Darllen mwy am enillion"
+    },
+    'entry_guidance': {
+        'en': "These are the qualifications students had when they were accepted onto this course. This is not a list of qualifications a person needs to have to be accepted onto this course",
+        'cy': "Dyma'r cymwysterau a oedd gan fyfywyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon"
+    },
+    'read_more_about_entry': {
+        'en': "Read more about entry data",
+        'cy': "Darllen mwy am ddata mynediad"
     },
 
 }
@@ -765,6 +829,14 @@ DICT = {
     'guidance_title': {
         'en': "What you need to consider when comparing courses",
         'cy': "Beth y mae angen ichi ei ystyried wrth gymharu cyrsiau"
+    },
+    'guidance_comparing': {
+        'en': "Guidance on comparing courses",
+        'cy': "Canllawiau ar gymharu cyrsiau"
+    },
+    'guidance_text': {
+        'en': "This course data presents a snapshot at a point in time, your experience may be different. Some data is from students surveyed during the pandemic. <strong class='blue-text'>Find out more</strong> about how to use this data when making decisions about where and what to study.",
+        'cy': "Mae'r data hyn ar gyrsiau'n rhoi cipolwg o brofiadau ar adeg benodol. Gallai eich profiad chi fod yn wahanol.  Daw rhywfaint o'r data gan fyfyrwyr a gymerodd ran yn yr arolwg yn ystod y pandemig. <strong class='blue-text'>Mae rhagor o wybodaeth</strong> ar gael ynghylch sut i ddefnyddio'r data hyn wrth benderfynu beth i'w astudio ac ymhle."
     },
     'Health and social services managers': {
         'en': 'Health and social services managers',
