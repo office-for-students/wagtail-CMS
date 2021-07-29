@@ -52,9 +52,8 @@ class ContinuationSection(Section):
         return sections
 
     def generate_dict(self) -> dict:
-        sections = self.get_sections()
         for course in self.courses:
-            for section in sections:
+            for section in self.sections:
                 self.data[section[primary_key]]["values"].append(
                     presentable_continuation(course, section[action], section[suffix_index], self.language)
                 )
