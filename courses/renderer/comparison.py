@@ -10,6 +10,7 @@ from courses.renderer.sections import CourseDetailSection
 from courses.renderer.sections import SatisfactionSection
 from courses.renderer.sections.base import Section
 from courses.renderer.sections.continuation import ContinuationSection
+from courses.renderer.sections.employment import SubEmploymentSection
 from courses.renderer.sections.satisfaction import SubSatisfactionSection
 
 logger = logging.getLogger(__name__)
@@ -25,7 +26,7 @@ def get_accordion_dataset(title: str, dataset, call_to_action=[]):
     return response
 
 
-def get_sub_accordion_dataset(courses, language) -> List:
+def get_sub_satisfaction(language) -> List:
     list_sub_accordions = [
         (translations.term_for_key(key="teaching_on_my_course", language=language), [1, 2, 3, 4]),
         (translations.term_for_key(key="learning_opportunities", language=language), [5, 6, 7]),
@@ -37,15 +38,27 @@ def get_sub_accordion_dataset(courses, language) -> List:
         (translations.term_for_key(key="learning_community", language=language), [21, 22]),
         (translations.term_for_key(key="student_voice", language=language), [23, 24, 25, 26])
     ]
+    return list_sub_accordions
+
+
+def get_sub_employment(language) -> List:
+    list_sub_accordions = [
+        (translations.term_for_key(key="employment_after_the_course", language=language), [0, 7]),
+        (translations.term_for_key(key="occupation_type", language=language), [7, 11]),
+    ]
+    return list_sub_accordions
+
+
+def get_sub_accordion_dataset(courses, section_model, get_sub_headers, language) -> List:
     response = []
 
-    for accordion in list_sub_accordions:
+    for accordion in get_sub_headers(language):
         response.append(
             dict(
                 title=accordion[0],
                 dataset=get_details(
                     **dict(
-                        section_model=SubSatisfactionSection,
+                        section_model=section_model,
                         courses=courses,
                         language=language,
                         keys=accordion[1]
@@ -81,7 +94,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="satisfaction_guidance_2", language=language)
             ),
             dataset=get_details(SatisfactionSection, courses, language),
-            sub_accordions=get_sub_accordion_dataset(courses, language),
+            sub_accordions=get_sub_accordion_dataset(courses, SubSatisfactionSection, get_sub_satisfaction, language),
             change_point=4,
             source=(
                 translations.term_for_key(key="about_our_data_link", language=language),
@@ -89,14 +102,14 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             )
         ),
         # TODO: Update with correct data when you get to that ticket
-        dict(
-            title=translations.term_for_key(key="entry_information", language=language),
-            guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),
-            source=(
-                translations.term_for_key(key="about_our_data_link", language=language),
-                translations.term_for_key(key="read_more_about_entry", language=language)
-            )
-        ),
+        # dict(
+        #     title=translations.term_for_key(key="entry_information", language=language),
+        #     guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),
+        #     source=(
+        #         translations.term_for_key(key="about_our_data_link", language=language),
+        #         translations.term_for_key(key="read_more_about_entry", language=language)
+        #     )
+        # ),
         # End
         dict(
             title=translations.term_for_key(key="after_one_year", language=language),
@@ -127,6 +140,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="employment_guidance_2", language=language),
                 translations.term_for_key(key="employment_guidance_3", language=language)
             ),
+            sub_accordions=get_sub_accordion_dataset(courses, SubEmploymentSection, get_sub_employment, language),
             source=(
                 translations.term_for_key(key="earnings_link", language=language),
                 translations.term_for_key(key="read_more_about_employment", language=language),
@@ -143,12 +157,13 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="read_more_about_graduate_perceptions", language=language),
             )
         ),
-        dict(
-            title=translations.term_for_key(key="information_on_uni", language=language),
-        ),
+        # dict(
+        #     title=translations.term_for_key(key="information_on_uni", language=language),
+        # ),
         # end
     ]
 
+    print(context["accordions"][3])
     response.append(context)
     return response
 
