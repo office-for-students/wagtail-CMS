@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script type="text/javascript" src="{% static 'js/manage-bookmarks.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/button-visibility.js' %}?{% code_version %}"></script>
 {% endblock %}
 
@@ -22,177 +21,6 @@
             display: none;
         }
     </style>
-    <script>
-        let checked_bookmark = 0
-        var id_list = [];
-
-        function getSavedCourses() {
-            if (!localStorage.getItem('compareCourses')) {
-                return [];
-            }
-
-            return JSON.parse(localStorage.getItem('compareCourses'));
-        }
-
-        var compare_list = getSavedCourses();
-
-        function getComparisonCourses() {
-            if (!localStorage.getItem("comparisonCourses")) {
-
-                return [];
-            }
-            return JSON.parse(localStorage.getItem("comparisonCourses"));
-        }
-
-        function setSavedCourses(compare_list) {
-            if (compare_list != null) {
-                localStorage.setItem('compareCourses', JSON.stringify(compare_list));
-            }
-        }
-
-        function compareButtonFormat(checked, id) {
-            var compare_button = document.getElementById('compare-courses-button')
-            var compare_text = document.getElementById('bookmark-text')
-            var courses_selected = document.getElementById('courses-selected')
-
-            if (checked) {
-                checked_bookmark += 1
-            } else {
-                checked_bookmark -= 1
-            }
-
-            if (checked_bookmark >= 1) {
-                courses_selected.innerHTML = "<strong>" + checked_bookmark + " {% get_translation key="courses_selected" language=page.get_language %}</strong>"
-            } else {
-                courses_selected.innerHTML = ""
-            }
-
-            if (2 <= checked_bookmark && checked_bookmark <= 7) {
-                compare_button.classList.add("enabled")
-                compare_button.disabled = false
-                compare_text.innerHTML = "{% get_translation key='select_up_to_7' language=page.get_language %}"
-                courses_selected.classList.remove("red")
-            } else if (7 < checked_bookmark) {
-                courses_selected.classList.add("red")
-                compare_button.classList.remove("enabled")
-                compare_button.disabled = true
-            } else {
-                compare_button.disabled = true
-                compare_button.classList.remove("enabled")
-                compare_text.innerHTML = "Select at least 2 courses to compare"
-            }
-
-
-            const compare_list = getSavedCourses();
-            if (checked) {
-                let course = {"id": id, "rating": 0}
-                compare_list.push(course);
-            } else {
-                for (var i = 0; i < compare_list.length; i++) {
-                    if (compare_list[i].id === id) {
-                        let index = compare_list.indexOf(compare_list[i])
-                        compare_list.splice(index, 1)
-                    }
-                }
-            }
-            setSavedCourses(compare_list);
-        }
-
-        function buttonFormat() {
-            var compare_button = document.getElementById('compare-courses-button')
-            var compare_text = document.getElementById('bookmark-text')
-            var courses_selected = document.getElementById('courses-selected')
-
-            if (checked_bookmark >= 1) {
-                courses_selected.innerHTML = "<strong>" + checked_bookmark + " {% get_translation key='courses_selected' language=page.get_language %}</strong>"
-            } else {
-                courses_selected.innerHTML = ""
-            }
-            if (2 <= checked_bookmark && checked_bookmark <= 7) {
-                compare_button.classList.add("enabled")
-                compare_button.disabled = false
-                compare_text.innerHTML = "{% get_translation key='select_up_to_7' language=page.get_language %}"
-                courses_selected.classList.remove("red")
-            } else if (7 < checked_bookmark) {
-                courses_selected.classList.add("red")
-                compare_button.classList.remove("enabled")
-                compare_button.disabled = true
-            } else {
-                compare_button.disabled = true
-                compare_button.classList.remove("enabled")
-                compare_text.innerHTML = "{% get_translation key='select_at_least_2' language=page.get_language %}"
-            }
-        }
-
-        function checkSelectedOnLoad(ids) {
-            let compare_list = getSavedCourses();
-            for (var i = 0; i < compare_list.length; i++) {
-                let none = compare_list[i].id.toLowerCase().replace("-checkbox", "");
-                console.log("compare list id = ", none, " id passed in = ", ids);
-                if (ids.includes(none)) {
-                    var index = ids.indexOf(none);
-                    document.getElementById(ids[index] + "-checkbox").checked = true;
-                    checked_bookmark += 1;
-                }
-            }
-        }
-
-        function getCourseID(course) {
-            let courseId = course.courseId;
-            let studyMode = course.mode.en;
-            let htmlID = courseId + "-" + studyMode.replace(" ", "-") + "-container";
-            return htmlID.toLowerCase();
-        }
-
-
-        function savedInstitutions() {
-            let saved_institutions = getComparisonCourses();
-            for (let i = 0; i < saved_institutions.length; i++) {
-                let containing_div = document.getElementById("institution-bookmark");
-                let course = saved_institutions[i];
-                let courseHTMLID = getCourseID(course);
-                id_list.push(courseHTMLID)
-                let query = course.uniId + ',' + course.courseId + ',' + course.mode.en
-                containing_div.innerHTML += `
-            <div class="bookmark-container" id="${courseHTMLID}">
-                <input id="${courseHTMLID}-checkbox" class="bookmark-check" style="margin-right: 95px; margin-bottom:auto; margin-top: 40px" name="courses"  type="checkbox"
-onchange="compareButtonFormat(checked, id)" value="${query}">
-                <div id='course-${i}' class='bookmark__course'>
-                    <a href='' class='bookmark__course-name'></a>
-                    <p class="bookmark__course-info length">
-                        <span class="unknown">{% get_translation key='course_length_not_available' language=page.get_language %}</span>
-                        <span class="known"><span class="length"></span>-{% get_translation key='year_course' language=page.get_language %}</span>
-                    </p>
-                    <p class="bookmark__course-info mode">
-                        {% get_translation key='study_mode' language=page.get_language %}: <span class="mode"></span>
-                    </p>
-
-                    <p class="bookmark__course-info distance">
-                        {% get_translation key='distance_learning' language=page.get_language %}: <span class="distance"></span>
-                    </p>
-
-                    <p class="bookmark__course-info sandwich">
-                        {% get_translation key='work_placement_year' language=page.get_language %}: <span class="sandwich"></span>
-                    </p>
-
-                    <p class="bookmark__course-info abroad">
-                        {% get_translation key='year_abroad' language=page.get_language %}: <span class="abroad"></span>
-                    </p>
-
-                    <p class="bookmark__course-info location">
-                        {% get_translation key='location' language=page.get_language %}: <span class="location"></span>
-                    </p>
-
-                    <button type="button" class="bookmark__course-remove">
-                        <img class="bookmark__course-remove-icon" src="{% static 'images/bin.svg' %}" alt=""> {% get_translation key='remove_course' language=page.get_language %}
-                    </button>
-                </div>
-            </div>`
-            }
-            checkSelectedOnLoad(id_list);
-        }
-
-    </script>
 
     <div class="bookmark discover-uni-container">
         <div class="bookmark-header">{% get_translation key='saved_courses' language=page.get_language %}</div>
@@ -232,10 +60,8 @@ onchange="compareButtonFormat(checked, id)" value="${query}">
         <form id="compareForm" method="GET"
               action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
             <div class="bookmark__courses" id="institution-bookmark"></div>
+            {% csrf_token %}
         </form>
-        <script>
-            savedInstitutions();
-            buttonFormat();
-        </script>
+    <script type="text/javascript" src="{% static 'js/bookmark_management.js' %}?{% code_version %}"></script>
     </div>
 {% endblock %}
