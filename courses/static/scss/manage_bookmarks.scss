@@ -131,7 +131,6 @@
 
   &__course {
     margin-bottom: 32px;
-    display: none;
     padding: 40px 40px 30px;
     width: 100%;
     background-color: $divider-grey;
@@ -154,12 +153,13 @@
     }
 
     &-remove {
+
+
       @include small-font-mixin();
 
       margin-top: 15px;
       padding: 12px;
       margin-bottom: 12px;
-
       color: $white;
       background-color: $delete-red;
       border-radius: 3px;
@@ -242,3 +242,5 @@
     margin-right: auto !important;
   }
 }
+
+
