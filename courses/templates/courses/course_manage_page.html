@@ -59,9 +59,51 @@
 
         <form id="compareForm" method="GET"
               action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
-            <div class="bookmark__courses" id="institution-bookmark"></div>
+            <div class="bookmark__courses" id="institution-bookmark">
+                <div class="bookmark-container" id="placeholder">
+                    <input class="bookmark-check"
+                           style="margin-right: 95px; margin-bottom:auto; margin-top: 40px"
+                           name="courses"
+                           type="checkbox">
+                    <div class='bookmark__course'>
+                        <a href='' class='bookmark__course-name'></a>
+                        <p class="bookmark__course-info length">
+
+                        </p>
+                        <p class="bookmark__course-info mode">
+                            {% get_translation key='study_mode' language=page.get_language %}: <span
+                                class="mode"></span>
+                        </p>
+
+                        <p class="bookmark__course-info distance">
+                            {% get_translation key='distance_learning' language=page.get_language %}: <span
+                                class="distance"></span>
+                        </p>
+
+                        <p class="bookmark__course-info sandwich">
+                            {% get_translation key='work_placement_year' language=page.get_language %}: <span
+                                class="sandwich"></span>
+                        </p>
+
+                        <p class="bookmark__course-info abroad">
+                            {% get_translation key='year_abroad' language=page.get_language %}: <span
+                                class="abroad"></span>
+                        </p>
+
+                        <p class="bookmark__course-info location">
+                            {% get_translation key='location' language=page.get_language %}: <span
+                                class="location"></span>
+                        </p>
+
+                        <button type="button" class="bookmark__course-remove">
+                            <img class="bookmark__course-remove-icon" src="{% static 'images/bin.svg' %}"
+                                 alt=""> {% get_translation key='remove_course' language=page.get_language %}
+                        </button>
+                    </div>
+                </div>
+            </div>
             {% csrf_token %}
         </form>
-    <script type="text/javascript" src="{% static 'js/bookmark_management.js' %}?{% code_version %}"></script>
+        <script type="text/javascript" src="{% static 'js/bookmark_management.js' %}?{% code_version %}"></script>
     </div>
 {% endblock %}
