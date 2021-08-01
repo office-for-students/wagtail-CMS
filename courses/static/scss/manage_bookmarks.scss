@@ -23,7 +23,7 @@
   &-compare-button {
     width: 180px;
     height: 40px;
-    margin: 48px 16px 6.5px 0px;
+    margin: 28px 16px 28px 0px;
     border: 0px;
     border-radius: 20px;
     background-color: #e2e2e2;
@@ -33,14 +33,6 @@
     font-weight: bold;
   }
 
-  .enabled {
-    background-image: linear-gradient(283deg, #308282, #4ea27d);
-    color: white;
-  }
-
-  .red {
-    color: red;
-  }
 
   &__overview {
     padding: 30px 50px;
@@ -244,3 +236,11 @@
 }
 
 
+.enabled {
+  background-image: linear-gradient(283deg, #308282, #4ea27d);
+  color: white;
+}
+
+.red {
+  color: red;
+}

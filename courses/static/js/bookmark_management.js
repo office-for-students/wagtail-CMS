@@ -100,13 +100,20 @@ function allTerms(callback) {
                 }
             )
 
+            Object.defineProperty(this, 'query', {
+                get: function () {
+                    const _query = this.data.uniId + ',' + this.data.courseId + ',' + this.mode;
+                    return _query;
+                }
+            });
+
             Object.defineProperty(this, 'url', {
                 get: function () {
-                    const url = this.data.uniId + '/' + this.data.courseId + '/' + this.mode + '/';
+                    const _url = this.data.uniId + '/' + this.data.courseId + '/' + this.mode + '/';
                     if (document.documentElement.lang == 'en') {
-                        return '/course-details/' + url
+                        return '/course-details/' + _url
                     } else {
-                        return '/cy/course-details/' + url
+                        return '/cy/course-details/' + _url
                     }
                 }
             });
@@ -234,7 +241,6 @@ function allTerms(callback) {
         }
 
         let saved_courses = new CourseStorage('comparisonCourses', function (items) {
-            console.log("action called on saved courses change");
             let bookmark_el = document.getElementsByClassName('nav-bookmark__count')[0]
             let total_bookmark = items.length;
             if (total_bookmark === 0) {
@@ -248,37 +254,40 @@ function allTerms(callback) {
             "compareCourses",
             function (items) {
                 let compare_button = document.getElementById('compare-courses-button')
+                console.log("compare_button compare_button ", compare_button);
                 let compare_text = document.getElementById('bookmark-text')
                 let courses_selected = document.getElementById('courses-selected')
                 const number_selected = items.length;
+                console.log("number selected =", number_selected);
                 if (number_selected >= 1) {
-                    courses_selected.innerHTML = "<strong>" + number_selected + " " +_translationTerms["courses_selected"] + "</strong>";
+                    courses_selected.innerHTML = "<strong>" + number_selected + " " + _translationTerms["courses_selected"] + "</strong>";
                 } else {
-                    courses_selected.innerHTML = ""
+                    courses_selected.innerHTML = "";
                 }
 
                 if (2 <= number_selected && number_selected <= 7) {
-                    compare_button.classList.add("enabled")
-                    compare_button.disabled = false
-                    compare_text.innerHTML = _translationTerms["select_up_to_7"]
-                    courses_selected.classList.remove("red")
+                    console.log("match was onw");
+                    compare_button.disabled = false;
+                    compare_button.classList.add("enabled");
+                    compare_text.innerHTML = _translationTerms["select_up_to_7"];
+                    courses_selected.classList.remove("red");
                 } else if (7 < number_selected) {
-                    courses_selected.classList.add("red")
-                    compare_button.classList.remove("enabled")
-                    compare_button.disabled = true
+                    courses_selected.classList.add("red");
+                    compare_button.classList.remove("enabled");
+                    compare_button.disabled = true;
                 } else {
-                    compare_button.disabled = true
-                    compare_button.classList.remove("enabled")
-                    compare_text.innerHTML = _translationTerms["select_at_least_2"]
+                    console.log(" disabled compare_button --", compare_button);
+                    compare_button.disabled = true;
+                    compare_button.classList.remove("enabled");
+                    compare_text.innerHTML = _translationTerms["select_at_least_2"];
                 }
             });
 
 
-        processWithTranslationTerms(processDataForCards, saved_courses.items);
-
-        // TODO: remove or call the above somewhere else
-        function processDataForCards(saved_institutions, terms) {
-        }
+        processWithTranslationTerms(function () {
+                courses_selected_for_comparison.storage_action(courses_selected_for_comparison.items);
+            },
+            saved_courses.items);
 
 
         function markCourseForComparison(should_store, element_id) {
@@ -343,6 +352,7 @@ function allTerms(callback) {
                 container.appendChild(courseTemplate);
                 const el = document.getElementById(course.elementID);
                 let checkbox = el.querySelector('.bookmark-check');
+                checkbox.value = course.query;
                 checkbox.addEventListener("change", comparisonHandler);
                 let removeButton = el.querySelector('.bookmark__course-remove');
                 removeButton.addEventListener('click', removeCourse);
