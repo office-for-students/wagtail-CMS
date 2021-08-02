@@ -23,7 +23,7 @@
   &-compare-button {
     width: 180px;
     height: 40px;
-    margin: 48px 16px 6.5px 0px;
+    margin: 28px 16px 28px 0px;
     border: 0px;
     border-radius: 20px;
     background-color: #e2e2e2;
@@ -33,14 +33,6 @@
     font-weight: bold;
   }
 
-  .enabled {
-    background-image: linear-gradient(283deg, #308282, #4ea27d);
-    color: white;
-  }
-
-  .red {
-    color: red;
-  }
 
   &__overview {
     padding: 30px 50px;
@@ -131,7 +123,6 @@
 
   &__course {
     margin-bottom: 32px;
-    display: none;
     padding: 40px 40px 30px;
     width: 100%;
     background-color: $divider-grey;
@@ -154,12 +145,13 @@
     }
 
     &-remove {
+
+
       @include small-font-mixin();
 
       margin-top: 15px;
       padding: 12px;
       margin-bottom: 12px;
-
       color: $white;
       background-color: $delete-red;
       border-radius: 3px;
@@ -241,4 +233,14 @@
     margin-left: auto !important;
     margin-right: auto !important;
   }
+}
+
+
+.enabled {
+  background-image: linear-gradient(283deg, #308282, #4ea27d);
+  color: white;
+}
+
+.red {
+  color: red;
 }
