@@ -9,7 +9,7 @@ MEANINGFULNESS = "meaningfulness"
 FUTURE = "future"
 
 graduate_list = [
-    "number_of_students",
+    "go_work_pop",
     "go_work_skills",
     "go_work_mean",
     "go_work_on_track"
@@ -20,7 +20,7 @@ action = 2
 suffix_index = 3
 
 
-def presentable_graduate(course: Course, stat: str, suffix: Any, model: str, language: str) -> str:
+def presentable_graduate(course: Course, stat: str, suffix: Any, language: str) -> str:
     if language == 'cy':
         response = "Nid yw'r data ar gael"
     else:
@@ -40,9 +40,9 @@ class GraduatePerceptionSection(Section):
     def get_sections(self) -> List[Tuple[Any, Any, Any, str]]:
         sections = [
                 ("1", DATA_FROM_PEOPLE, graduate_list[0], None),
-                ("2", NOW_WORKING, graduate_list[1], "%"),
-                ("3", DOING_FURTHER_STUDY, graduate_list[2], "%"),
-                ("4", WORKING_AND_STUDYING, graduate_list[3], "%"),
+                ("2", USEFULNESS, graduate_list[1], "%"),
+                ("3", MEANINGFULNESS, graduate_list[2], "%"),
+                ("4", FUTURE, graduate_list[3], "%"),
             ]
         return sections
 
@@ -68,9 +68,9 @@ class GraduatePerceptionSection(Section):
 
     def update_data_with_subtitles(self, data: Dict[str, Any]):
         subtitles = {
-            "1": "unemp_prev_emp_since_grad",
-            "2": "unemp_not_work_since_grad",
-            "3": "employed_in_professional"
+            "2": "usefulness_subtitle",
+            "3": "meaningfulness_subtitle",
+            "4": "future_subtitle"
         }
         for section in self.sections:
             if section[0] in subtitles:
