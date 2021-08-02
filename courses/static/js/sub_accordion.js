@@ -1,12 +1,13 @@
 function toggleAccordion(subAccordion){
-    var expand = document.getElementById(subAccordion + "-expand")
-    var collapse = document.getElementById(subAccordion + "-collapse")
+    let expand = document.getElementById(subAccordion + "-expand")
+    let collapse = document.getElementById(subAccordion + "-collapse")
+    const items = document.getElementsByClassName("accordion-body")
 
     expand.classList.toggle("hidden")
     collapse.classList.toggle("hidden")
 
-    for(var i=0; i<=4; i++){
-        var accordionBody = document.getElementById(subAccordion + i)
+    for(let i=0; i < items.length; i++){
+        const accordionBody = document.getElementById(subAccordion + i)
         if(accordionBody){
             accordionBody.classList.toggle("hidden")
         }

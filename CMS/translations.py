@@ -12,7 +12,9 @@ def term_for_key(key: str, language: str) -> str:
     if not term:
         term = STATISTICS.get(key).get(language) if key in STATISTICS else None
     if not term:
-        term = OPTIONALS.get(key).get(language) if key in OPTIONALS else key
+        term = OPTIONALS.get(key).get(language) if key in OPTIONALS else None
+    if not term:
+        term = DICT.get(key).get(language) if key in DICT else key
     return term
 
 
@@ -272,6 +274,22 @@ STATISTICS = {
     'read_more_about_entry': {
         'en': "Read more about entry data",
         'cy': "Darllen mwy am ddata mynediad"
+    },
+    'employment_after_the_course': {
+        'en': "What graduates are doing 15 months after the course",
+        'cy': "Yr hyn y mae graddedigion yn ei wneud 15 mis ar y cwrs"
+    },
+    'occupation_type': {
+        'en': "Occupation types 15 months after the course",
+        'cy': "Mathau o swydd 15 mis ar ôl y cwrs"
+    },
+    'employed_in_professional': {
+        'en': "Employed in a professional or managerial job",
+        'cy': "Canran y rhai a gyflogir sydd mewn swydd broffesiynol neu swydd reoli ar ôl gorffen y cwrs."
+    },
+    'employed_not_in_professional': {
+        'en': "Employed not in a professional or managerial job",
+        'cy': "Canran y rhai a gyflogir nad ydynt mewn swydd broffesiynol neu swydd reoli ar gorffen y cwrs."
     },
 
 }
@@ -1507,13 +1525,17 @@ DICT = {
         'en': 'Transport associate professionals',
         'cy': 'Gweithwyr proffesiynol  ym maes Cludiant'
     },
+    'unemployed': {
+        'en': "Unemployed",
+        'cy': "Yn ddi-waith"
+    },
     'unemp_prev_emp_since_grad': {
-        'en': 'Unemployed – previously working or studying',
-        'cy': 'Yn ddi-waith - yn gweithio neu''n astudio cyn hynny'
+        'en': 'Previously working or studying',
+        'cy': 'Yn gweithio neu''n astudio cyn hynny'
     },
     'unemp_not_work_since_grad': {
-        'en': 'Unemployed - not employed since graduation',
-        'cy': 'Yn ddi-waith - heb gael gwaith ers graddio'
+        'en': 'Not employed since graduation',
+        'cy': 'Heb gael gwaith ers graddio'
     },
     'uni_and_college': {
         'en': 'All universities and colleges',
@@ -2039,8 +2061,8 @@ DICT = {
         'cy': "Pwnc (dewiswch o ddau neu fwy o'r blychau isod, os gwelwch yn dda)"
     },
     'employment_type_unknown': {
-        'en': 'Percentage of those employed after finishing the course but employment type is not known',
-        'cy': "Canran y rhai a gyflogir ar ôl gorffen y cwrs ond nad ydym yn gwybod pa fath o swydd sydd ganddynt"
+        'en': 'Employed after finishing the course but employment type is not known',
+        'cy': "Gyflogir ar ôl gorffen y cwrs ond nad ydym yn gwybod pa fath o swydd sydd ganddynt"
     },
     'prov_pc_text_template_go': {
         'en': '<div><p>{}% of UK-resident {} graduates from {} are employed in {}.</p></div>',
