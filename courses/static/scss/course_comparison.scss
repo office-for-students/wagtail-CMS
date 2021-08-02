@@ -158,7 +158,6 @@ $course_comparison_first_column_width: 250px;
       border-bottom: 4px solid white;
       min-height: 40px;
       background: inherit;
-      align-items: center;
       padding: 17px 10px 10px 18px;
     }
 
@@ -181,6 +180,10 @@ $course_comparison_first_column_width: 250px;
         margin-top: 10px;
         padding-top: 10px;
         padding-bottom: 20px;
+      }
+
+      &.show_more{
+        margin: 0;
       }
 
       &.header_font {
@@ -267,7 +270,6 @@ $course_comparison_first_column_width: 250px;
   }
 
   &__top-container {
-    margin-bottom: 100px;
     position: relative;
 
     &-add-btn {
@@ -925,7 +927,7 @@ $course_comparison_first_column_width: 250px;
     &-need-help-box {
       display: block;
       width: 45%;
-      margin: auto;
+      margin: auto auto 40px auto;
       text-align: left;
     }
   }
@@ -948,7 +950,7 @@ $course_comparison_first_column_width: 250px;
     &-need-help-box {
       display: block;
       width: 45%;
-      margin: auto;
+      margin: auto auto 40px auto;
       text-align: left;
     }
   }
