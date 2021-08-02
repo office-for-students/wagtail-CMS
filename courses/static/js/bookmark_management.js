@@ -1,4 +1,4 @@
-var terms_on_page = [
+const terms_on_page = [
     "select_up_to_7",
     "select_at_least_2",
     "courses_selected",
@@ -45,6 +45,17 @@ function allTerms(callback) {
     )
 }
 
+function processWithTranslationTerms(saved_institutions, callback) {
+    if (Object.keys(_translationTerms).length === 0) {
+        allTerms(function (terms) {
+            _translationTerms = terms;
+            callback(saved_institutions, _translationTerms);
+        });
+    } else {
+        callback(saved_institutions, _translationTerms);
+    }
+
+}
 
 (function ($) {
 
@@ -80,11 +91,10 @@ function allTerms(callback) {
 
             Object.defineProperty(this, 'length', {
                 get: function () {
-                    // TODO: user translation for these keys "course_length_not_available" 7 "year_course"
                     if (this.hasCourseLength) {
-                        return this.data.length + " year course"
+                        return this.data.length + " " + _translationTerms["year_course"]
                     } else {
-                        return "Length of course is not available"
+                        return _translationTerms["course_length_not_available"]
                     }
                 }
             });
@@ -102,15 +112,14 @@ function allTerms(callback) {
 
             Object.defineProperty(this, 'query', {
                 get: function () {
-                    const _query = this.data.uniId + ',' + this.data.courseId + ',' + this.mode;
-                    return _query;
+                    return this.data.uniId + ',' + this.data.courseId + ',' + this.mode;
                 }
             });
 
             Object.defineProperty(this, 'url', {
                 get: function () {
                     const _url = this.data.uniId + '/' + this.data.courseId + '/' + this.mode + '/';
-                    if (document.documentElement.lang == 'en') {
+                    if (document.documentElement.lang === 'en') {
                         return '/course-details/' + _url
                     } else {
                         return '/cy/course-details/' + _url
@@ -120,11 +129,7 @@ function allTerms(callback) {
 
             Object.defineProperty(this, 'hasCourseLength', {
                 get: function () {
-                    if (this.data.length === '' || this.data.length === 'None' || this.data === 'None') {
-                        return false;
-                    } else {
-                        return true;
-                    }
+                    return !(this.data.length === '' || this.data.length === 'None' || this.data === 'None');
                 }
             });
         }
@@ -156,16 +161,14 @@ function allTerms(callback) {
                         return storage;
                     }
                 } catch (error) {
-                    console.log(error);
                     return response
                 }
             }
 
             this.writeToStorage = function (values) {
-                if (!values) {
-                    console.log("no values to store");
+                if (values) {
+                    localStorage.setItem(this.storageKey, JSON.stringify(values));
                 }
-                localStorage.setItem(this.storageKey, JSON.stringify(values));
             }
         }
 
@@ -240,25 +243,24 @@ function allTerms(callback) {
             }
         }
 
-        let saved_courses = new CourseStorage('comparisonCourses', function (items) {
-            let bookmark_el = document.getElementsByClassName('nav-bookmark__count')[0]
-            let total_bookmark = items.length;
-            if (total_bookmark === 0) {
-                bookmark_el.classList.add("hidden");
-            } else {
-                bookmark_el.innerHTML = total_bookmark.toString();
-            }
-        });
+        let saved_courses = new CourseStorage('comparisonCourses',
+            function (items) {
+                let bookmark_el = document.getElementsByClassName('nav-bookmark__count')[0]
+                let total_bookmark = items.length;
+                if (total_bookmark === 0) {
+                    bookmark_el.classList.add("hidden");
+                } else {
+                    bookmark_el.innerHTML = total_bookmark.toString();
+                }
+            });
 
         let courses_selected_for_comparison = new ComparisonStorage(
             "compareCourses",
             function (items) {
                 let compare_button = document.getElementById('compare-courses-button')
-                console.log("compare_button compare_button ", compare_button);
                 let compare_text = document.getElementById('bookmark-text')
                 let courses_selected = document.getElementById('courses-selected')
                 const number_selected = items.length;
-                console.log("number selected =", number_selected);
                 if (number_selected >= 1) {
                     courses_selected.innerHTML = "<strong>" + number_selected + " " + _translationTerms["courses_selected"] + "</strong>";
                 } else {
@@ -266,7 +268,6 @@ function allTerms(callback) {
                 }
 
                 if (2 <= number_selected && number_selected <= 7) {
-                    console.log("match was onw");
                     compare_button.disabled = false;
                     compare_button.classList.add("enabled");
                     compare_text.innerHTML = _translationTerms["select_up_to_7"];
@@ -276,7 +277,6 @@ function allTerms(callback) {
                     compare_button.classList.remove("enabled");
                     compare_button.disabled = true;
                 } else {
-                    console.log(" disabled compare_button --", compare_button);
                     compare_button.disabled = true;
                     compare_button.classList.remove("enabled");
                     compare_text.innerHTML = _translationTerms["select_at_least_2"];
@@ -284,25 +284,23 @@ function allTerms(callback) {
             });
 
 
-        processWithTranslationTerms(function () {
-                courses_selected_for_comparison.storage_action(courses_selected_for_comparison.items);
-            },
-            saved_courses.items);
-
+        processWithTranslationTerms(saved_courses.items, function () {
+            addCourseViews(saved_courses.items, document.getElementById("placeholder"));
+            courses_selected_for_comparison.storage_action(courses_selected_for_comparison.items);
+        });
 
         function markCourseForComparison(should_store, element_id) {
             const current = courses_selected_for_comparison.items
             saved_courses.items.forEach(function (saved_course, index) {
-                if (saved_course.elementID == element_id) {
+                if (saved_course.elementID === element_id) {
                     if (should_store) {
                         let compare = {"id": saved_course.id, "rating": 0}
                         current.push(compare);
                         courses_selected_for_comparison.items = current;
                     } else {
-                        let filtered = current.filter(function (value, index, arr) {
+                        courses_selected_for_comparison.items = current.filter(function (value, index, arr) {
                             return saved_course.id !== value.id;
                         });
-                        courses_selected_for_comparison.items = filtered;
                     }
                 }
             });
@@ -312,7 +310,7 @@ function allTerms(callback) {
             markCourseForComparison(this.checked, this.parentElement.id);
         }
 
-        function removeCourse() {
+        function removeCourseHandler() {
             const container = this.parentElement.parentElement;
             const elementToRemove = this.parentElement.parentElement.id;
 
@@ -340,12 +338,12 @@ function allTerms(callback) {
             storage.items = to_keep;
         }
 
-
         function removeElFromView(element_id) {
             document.getElementById(element_id).classList.add("hidden");
         }
 
         function addCourseViews(courses, template) {
+            const container = document.getElementById("institution-bookmark");
             courses.forEach(function (course) {
                 const courseTemplate = template.cloneNode(true);
                 courseTemplate.id = course.elementID;
@@ -355,7 +353,7 @@ function allTerms(callback) {
                 checkbox.value = course.query;
                 checkbox.addEventListener("change", comparisonHandler);
                 let removeButton = el.querySelector('.bookmark__course-remove');
-                removeButton.addEventListener('click', removeCourse);
+                removeButton.addEventListener('click', removeCourseHandler);
 
                 let checked = false;
                 if (courses_selected_for_comparison.items.some(e => e.id === course.id)) {
@@ -365,32 +363,12 @@ function allTerms(callback) {
                 let courseView = new CourseView(courseTemplate, course, checked);
                 courseView.update();
             })
+
+            const empty = document.getElementById("placeholder");
+            container.removeChild(empty);
         }
 
-        const container = document.getElementById("institution-bookmark");
-        addCourseViews(saved_courses.items, document.getElementById("placeholder"));
-
-        const empty = document.getElementById("placeholder");
-        container.removeChild(empty);
-
-
-        console.log("Courses('compareCourses') : ", saved_courses.items, " ", courses_selected_for_comparison.items);
 
     }
     (jQuery)
 )
-
-
-function processWithTranslationTerms(callback, saved_institutions) {
-    if (Object.keys(_translationTerms).length === 0) {
-        console.log("FETCHING TRANSLATION TERMS");
-        allTerms(function (terms) {
-            _translationTerms = terms;
-            callback(saved_institutions, _translationTerms);
-        });
-    } else {
-        callback(saved_institutions, _translationTerms);
-    }
-
-}
-
