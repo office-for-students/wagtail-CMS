@@ -15,60 +15,76 @@
                     alt="{% get_translation key='site_logo' language=page.get_language %}">
             </a>
         {% endif %}
-      
-        <ul class="discover-uni-nav__desktop-links">
-            {% for item in page.menu %}
-                {% if item.sub_items %}
-                    <li class="discover-uni-nav__desktop-dropdown">
-                        <a class="discover-uni-nav__desktop-dropdown-toggle" href="#">
-                            {{ item.label }}
-                        </a>
 
-                        <ul class="discover-uni-nav__desktop-dropdown-body">
-                            {% for sub_item in item.sub_items %}
-                                <li>
-                                    <a class="discover-uni-nav__desktop-dropdown-link" href="{{ sub_item.url }}">
-                                        {{ sub_item.label }}
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ul>
+        <div class="discover-uni-nav__links-container">
+            <ul class="discover-uni-nav__desktop-links">
+                {% for item in page.menu %}
+                    {% if item.sub_items %}
+                        <li class="discover-uni-nav__desktop-dropdown">
+                            <a class="discover-uni-nav__desktop-dropdown-toggle" href="#">
+                                {{ item.label }}
+                            </a>
+
+                            <ul class="discover-uni-nav__desktop-dropdown-body">
+                                {% for sub_item in item.sub_items %}
+                                    <li>
+                                        <a class="discover-uni-nav__desktop-dropdown-link" href="{{ sub_item.url }}">
+                                            {{ sub_item.label }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="discover-uni-nav__desktop-link">
+                            <a href="{{ item.url }}">
+                                {{ item.label }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page.is_english %}
+                    <li class="discover-uni-nav__desktop-link">
+                        <a id="language_select" href="{{welsh_url}}">
+                            Cymraeg
+                        </a>
                     </li>
                 {% else %}
                     <li class="discover-uni-nav__desktop-link">
-                        <a href="{{ item.url }}">
-                            {{ item.label }}
-
-                            {% if item.label == 'Course search' or item.label == 'Chwilio am Gwrs'  %}
-                                <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
-                            {% endif %}
-
+                        <a id= "language_select" href="{{english_url}}">
+                            English
                         </a>
                     </li>
                 {% endif %}
-            {% endfor %}
 
-            {% if page.is_english %}
-                <li class="discover-uni-nav__desktop-link">
-                    <a id="language_select" href="{{welsh_url}}" class="nav-bookmark">
-                        Cymraeg
+
+            </ul>
+            <ul class="discover-uni-nav__desktop-search-links">
+                <li class="discover-uni-nav__desktop-search-link">
+                    <a href="{{page.manage_link}}">
+                        <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
+                        <span class="discover-uni-nav__search-link">Search</span>
                     </a>
                 </li>
-            {% else %}
-                <li class="discover-uni-nav__desktop-link">
-                    <a id= "language_select" href="{{english_url}}" class="nav-bookmark">
-                        English
+                <li class="discover-uni-nav__desktop-search-link">
+                    <a href="{{page.manage_link}}">
+                        <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
+                        <span class="discover-uni-nav__search-link">Compare</span>
                     </a>
                 </li>
-            {% endif %}
+                <li class="discover-uni-nav__desktop-search-link">
+                    <a href="{{page.manage_link}}">
+                        <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="Bookmarked courses">
+                        <span class="nav-bookmark__count"></span>
+                        <span>Saved</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-            <li class="discover-uni-nav__desktop-link">
-                <a href="{{page.manage_link}}" class="nav-bookmark">
-                    <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="Bookmarked courses">
-                    <span class="nav-bookmark__count"></span>
-                </a>
-            </li>
-        </ul>
+
+
 
         <div class="discover-uni-nav__mobile-nav">
             <a href="{{page.manage_link}}" class="nav-bookmark">
