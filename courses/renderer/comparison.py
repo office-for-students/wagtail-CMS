@@ -159,6 +159,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="read_more_about_graduate_perceptions", language=language),
             )
         ),
+
         # dict(
         #     title=translations.term_for_key(key="information_on_uni", language=language),
         # ),
@@ -166,6 +167,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
     ]
 
     response.append(context)
+    print(response[0]["accordions"][3])
     return response
 
 

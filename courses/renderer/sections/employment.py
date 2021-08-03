@@ -42,12 +42,26 @@ def presentable_employment(course: Course, stat: str, suffix: Any, model: str, l
     else:
         response = "No data available"
     try:
-        if model == "employment":
-            _object = course.employment_stats[0]
+        if course.has_multiple_subject_names:
+            response = dict(title="subject", subject=[], values=[])
+            for index, subject in enumerate(course.subject_names):
+                subject_name = subject.display_subject_name()
+                print(index, subject_name)
+                if model == "employment":
+                    _object = course.employment_stats[index]
+                else:
+                    _object = course.job_type_stats[index]
+                method = str(getattr(_object, stat))
+                response["subject"].append(subject_name)
+                response["values"].append(f"{method}{suffix}" if suffix and method.isnumeric() else method)
         else:
-            _object = course.job_type_stats[0]
-        method = str(getattr(_object, stat))
-        response = f"{method}{suffix}" if suffix and method.isnumeric() else method
+            if model == "employment":
+                _object = course.employment_stats[0]
+            else:
+                _object = course.job_type_stats[0]
+            method = str(getattr(_object, stat))
+            response = f"{method}{suffix}" if suffix and method.isnumeric() else method
+
     except Exception as e:
         print("error: ", e)
         pass
