@@ -7,12 +7,12 @@
         {% if page.is_english %}
             <a class="discover-uni-nav__home-link" href="/">
                 <img class="discover-uni-nav__brand-logo" src="{% static 'images/logos/nav_logo_english.svg' %}"
-                    alt="{% get_translation key='site_logo' language=page.get_language %}">
+                     alt="{% get_translation key='site_logo' language=page.get_language %}">
             </a>
         {% else %}
             <a class="discover-uni-nav__home-link" href="/cy">
                 <img class="discover-uni-nav__brand-logo" src="{% static 'images/logos/nav_logo_welsh.svg' %}"
-                    alt="{% get_translation key='site_logo' language=page.get_language %}">
+                     alt="{% get_translation key='site_logo' language=page.get_language %}">
             </a>
         {% endif %}
 
@@ -46,49 +46,47 @@
 
                 {% if page.is_english %}
                     <li class="discover-uni-nav__desktop-link">
-                        <a id="language_select" href="{{welsh_url}}">
+                        <a id="language_select" href="{{ welsh_url }}">
                             Cymraeg
                         </a>
                     </li>
                 {% else %}
                     <li class="discover-uni-nav__desktop-link">
-                        <a id= "language_select" href="{{english_url}}">
+                        <a id="language_select" href="{{ english_url }}">
                             English
                         </a>
                     </li>
                 {% endif %}
-
-
             </ul>
+
             <ul class="discover-uni-nav__desktop-search-links">
-                <li class="discover-uni-nav__desktop-search-link">
-                    <a href="{{page.manage_link}}">
-                        <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
-                        <span class="discover-uni-nav__search-link">Search</span>
-                    </a>
-                </li>
-                <li class="discover-uni-nav__desktop-search-link">
-                    <a href="{{page.manage_link}}">
-                        <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
-                        <span class="discover-uni-nav__search-link">Compare</span>
-                    </a>
-                </li>
-                <li class="discover-uni-nav__desktop-search-link">
-                    <a href="{{page.manage_link}}">
-                        <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="Bookmarked courses">
-                        <span class="nav-bookmark__count"></span>
-                        <span>Saved</span>
-                    </a>
-                </li>
+
+                {% for link in comp_menu%}
+                    <li class="discover-uni-nav__desktop-search-link">#}
+                        <a href="{{ page.manage_link }}">
+                            <img class="discover-uni-nav__link-icon" src="{% static link.img %}" alt="">
+                            <span class="discover-uni-nav__search-links">{{ link.label }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
 
 
-
-
         <div class="discover-uni-nav__mobile-nav">
-            <a href="{{page.manage_link}}" class="nav-bookmark">
-                <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="Bookmarked courses">
+            <a href="{{ page.manage_link }}" class="nav-bookmark">
+                <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/search_icon.svg' %}"
+                     alt="Bookmarked courses">
+            </a>
+
+            <a href="{{ page.manage_link }}" class="nav-bookmark">
+                <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/search_icon.svg' %}"
+                     alt="Bookmarked courses">
+            </a>
+
+            <a href="{{ page.manage_link }}" class="nav-bookmark">
+                <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}"
+                     alt="Bookmarked courses">
                 <span class="nav-bookmark__count"></span>
             </a>
 
@@ -99,12 +97,14 @@
 
     <div class="discover-uni-nav__mobile-links">
         <div class="discover-uni-nav__mobile-language-toggles">
-            <a class="discover-uni-nav__mobile-link{% if page.is_english %} active" {% else %}" href="{{english_url}}" id="language_select"{% endif %}>
-                English
+            <a class="discover-uni-nav__mobile-link{% if page.is_english %} active" {% else %}" href="{{ english_url }}"
+                id="language_select"{% endif %}>
+            English
             </a>
 
-            <a class="discover-uni-nav__mobile-link{% if not page.is_english %} active" {% else %}" href="{{welsh_url}}" id="language_select"{% endif %}>
-                Cymraeg
+            <a class="discover-uni-nav__mobile-link{% if not page.is_english %} active" {% else %}" href="
+                {{ welsh_url }}" id="language_select"{% endif %}>
+            Cymraeg
             </a>
         </div>
         {% for item in page.menu %}
@@ -116,11 +116,13 @@
                         </p>
 
                         <div class="expand">
-                            <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand {{ item.label }} drop down menu">
+                            <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}"
+                                 alt="expand {{ item.label }} drop down menu">
                         </div>
 
                         <div class="collapse">
-                            <img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}" alt="collapse {{ item.label }} drop down menu">
+                            <img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}"
+                                 alt="collapse {{ item.label }} drop down menu">
                         </div>
                     </div>
 
