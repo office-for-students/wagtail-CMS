@@ -15,10 +15,11 @@ from home.models import HomePage
 import json
 import os
 
+
 def results(request, language=enums.languages.ENGLISH):
     query_params = request.POST
     search_form = FilterForm({
-        "course_query" : query_params.get('subject_query', ""),
+        "course_query": query_params.get('subject_query', ""),
         "institution_query": query_params.get('institution_query', ""),
     })
 
@@ -31,7 +32,7 @@ def results(request, language=enums.languages.ENGLISH):
 
     if error:
         redirect_page = get_new_landing_page_for_language(language)
-        #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        # redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
         return redirect(redirect_page + '?load_error=true&error_type=1')
 
     page = get_page_for_language(language, CourseFinderResults.objects.all())
@@ -76,19 +77,20 @@ def narrow_search(request, language=enums.languages.ENGLISH):
         return HttpResponseRedirect(page.url)
     return render(request, '404.html')
 
-    
+
 def course_finder_results(request, language=enums.languages.ENGLISH):
     query_params = request.POST
     filter_form = FilterForm(query_params)
     filters = build_filters(query_params)
     if "distance" in filters and "campus" not in filters:
         countries_query = ''
-    else: 
-        countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
+    else:
+        countries_query = ','.join(
+            query_params.getlist('countries_query')) if 'countries_query' in query_params else None
 
     institution_query = '@'.join(query_params.getlist('institution_query')) if 'institution_query' in query_params else None
     institution_array = institution_query.split("@") if institution_query else None
-    
+
     postcode = query_params.get('postcode') if 'postcode' in query_params else None
     distance_query = query_params.get('distance') if 'distance' in query_params else None
     postcode_query = (postcode + ',' + distance_query) if postcode and distance_query else {}
@@ -112,7 +114,7 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
 
     if error:
         redirect_page = get_new_landing_page_for_language(language)
-        #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        # redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
 
         return redirect(redirect_page + '?load_error=true&error_type=1')
 
@@ -190,4 +192,3 @@ def build_filters(params):
 
     filters_query_params = ','.join(filter_ for filter_ in filters if filter_)
     return filters_query_params
-        

@@ -1,0 +1,23 @@
+<div class="course_comparison-table__row">
+    <div class="course_comparison-table__column-title_container">
+        <div class="course_comparison-table__column-first {{header_font}} header">
+            {{ title }}
+        </div>
+        {% if subtitle %}
+        <div class="course_comparison-table__column-first subtitle {{header_font}}">
+            {{subtitle}}
+        </div>
+        {% endif %}
+    </div>
+    <div class="small-flex-div">
+    {% for item in values %}
+        <div id="arrow-{{forloop.counter0}}"
+             class="course_comparison-table__column {{item_font}} {{mt}} arrow cc-column-{{forloop.counter0}}"
+             data-index="{{forloop.counter0}}">
+            {{ item | safe }}
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+

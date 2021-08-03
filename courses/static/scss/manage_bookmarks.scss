@@ -3,197 +3,244 @@
 
 
 .bookmark {
-    padding: 35px 30px 55px;
+  padding: 35px 30px 55px;
 
-    &__overview {
-        padding: 30px 50px;
-        text-align: center;
-        border: solid 3px #cee9e7;
-    }
+  &-header {
+    width: 231px;
+    color: #5d5d5d;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+  }
 
-    &__course-count {
-        @include m-heading--bold-mixin();
+  &-text {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 20px;
+    display: inline;
+    margin-bottom: 6.5px
+  }
 
-        margin: 0px 0px 15px;
+  &-compare-button {
+    width: 180px;
+    height: 40px;
+    margin: 28px 16px 28px 0px;
+    border: 0px;
+    border-radius: 20px;
+    background-color: #e2e2e2;
+    color: #595959;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+  }
 
 
-        color: $gradient-light-green;
-    }
+  &__overview {
+    padding: 30px 50px;
+    text-align: center;
+    border: solid 3px #cee9e7;
+  }
 
-    &__lead {
-        @include xs-heading-mixin();
+  &__course-count {
+    @include m-heading--bold-mixin();
 
-        margin: 0px;
+    margin: 0px 0px 15px;
 
-        color: $ux-grey-3;
-    }
 
-    &__nav-box {
-        margin-top: 20px;
-        padding: 30px 26px;
-        text-align: center;
-        border: solid 3px #cee9e7;
+    color: $gradient-light-green;
+  }
 
-        .rich-text {
-            p {
-                @include small-font-mixin();
+  &__lead {
+    @include xs-heading-mixin();
 
-                margin: 10px 0px 0px;
-            }
+    margin: 0px;
 
-            &:first-child {
-                p {
-                    margin-top: 0px;
-                }
-            }
-        }
-        a {
-            color: #308282;
-            text-decoration: underline;
-            font-weight:bold;
-        }
-    }
+    color: $ux-grey-3;
+  }
 
-    &__none-selected {
+  &__nav-box {
+    margin-top: 20px;
+    padding: 30px 26px;
+    text-align: center;
+    border: solid 3px #cee9e7;
+
+    .rich-text {
+      p {
         @include small-font-mixin();
 
-        display: none;
-        padding: 100px 30px 0px;
-        text-align: center;
+        margin: 10px 0px 0px;
+      }
 
-        &-example {
-            margin-top: 45px;
-            padding-bottom: 70px;
-
-            .course-detail__compare-btn {
-                margin-bottom: 18px;
-            }
-            .down-arrow {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: 18px;
-            }
+      &:first-child {
+        p {
+          margin-top: 0px;
         }
+      }
     }
 
-    &__one-selected {
-        @include small-font-mixin();
+    a {
+      color: #308282;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  }
 
-        display: none;
-        padding: 40px 30px 0px;
-        text-align: center;
+  &__none-selected {
+    @include small-font-mixin();
+
+    display: none;
+    padding: 100px 30px 0px;
+    text-align: center;
+
+    &-example {
+      margin-top: 45px;
+      padding-bottom: 70px;
+
+      .course-detail__compare-btn {
+        margin-bottom: 18px;
+      }
+
+      .down-arrow {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 18px;
+        padding-top: 18px;
+      }
+    }
+  }
+
+  &__one-selected {
+    @include small-font-mixin();
+
+    display: none;
+    padding: 40px 30px 0px;
+    text-align: center;
+  }
+
+  &__courses {
+    margin-top: 33px;
+  }
+
+  &__course {
+    margin-bottom: 32px;
+    padding: 40px 40px 30px;
+    width: 100%;
+    background-color: $divider-grey;
+
+    &-name {
+      @include desktop-body-font--bold-mixin();
+
+      margin-bottom: 20px;
+      display: block;
+      font-size: 20px;
+      color: $gradient-dark-green;
     }
 
-    &__courses {
-        margin-top: 33px;
+    &-info {
+      @include mobile-body-font-mixin();
+
+      margin: 0px;
+
+      line-height: 22px;
     }
 
-    &__course {
-        margin-bottom: 4px;
-        display: none;
-        padding: 40px 40px 30px;
+    &-remove {
 
-        background-color: $divider-grey;
 
-        &-name {
-            @include desktop-body-font--bold-mixin();
+      @include small-font-mixin();
 
-            margin-bottom:20px;
-            display: block;
+      margin-top: 15px;
+      padding: 12px;
+      margin-bottom: 12px;
+      color: $white;
+      background-color: $delete-red;
+      border-radius: 3px;
+      border: none;
 
-            color: $gradient-dark-green;
-        }
-
-        &-info {
-            @include mobile-body-font-mixin();
-
-            margin: 0px;
-
-            line-height: 22px;
-        }
-
-        &-remove {
-            @include small-font-mixin();
-
-            margin-top: 15px;
-            padding: 12px;
-
-            color: $white;
-            background-color: $delete-red;
-            border-radius: 3px;
-            border: none;
-
-            &-icon {
-                height: 12px;
-            }
-        }
+      &-icon {
+        height: 12px;
+      }
     }
+  }
 }
 
 @media only screen and (min-width: 770px) {
-    .bookmark {
-        &__course {
+  .bookmark {
+    &__course {
 
-            &-count {
-                @include l-heading--bold-mixin();
+      &-count {
+        @include l-heading--bold-mixin();
 
-                color: $gradient-light-green;
-            }
+        color: $gradient-light-green;
+      }
+    }
+
+    &__lead {
+      @include s-heading-mixin();
+
+      color: $ux-grey-3;
+    }
+
+    &__nav-box {
+      .rich-text {
+        p {
+          @include desktop-body-font-mixin();
         }
-
-        &__lead {
-            @include s-heading-mixin();
-
-            color: $ux-grey-3;
-        }
-
-        &__nav-box {
-            .rich-text {
-                p {
-                    @include desktop-body-font-mixin();
-                }
-            }
-        }
-
-        &__none-selected {
-            @include desktop-body-font-mixin();
-        }
+      }
     }
+
+    &__none-selected {
+      @include desktop-body-font-mixin();
+    }
+  }
 }
 
 
-@media only screen and (max-width: 575px){
-    div.bookmark.discover-uni-container{
-        margin-left:auto!important;
-        margin-right:auto!important;
-    }
+@media only screen and (max-width: 575px) {
+  div.bookmark.discover-uni-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
-@media only screen and (min-width: 576px) and (max-width: 766px){
-    div.bookmark.discover-uni-container{
-        width: 540px!important;
-        margin-left:auto!important;
-        margin-right:auto!important;
-    }
+
+@media only screen and (min-width: 576px) and (max-width: 766px) {
+  div.bookmark.discover-uni-container {
+    width: 540px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
-@media only screen and (min-width: 767px) and (max-width: 991px){
-    div.bookmark.discover-uni-container{
-        width: 720px!important;
-        margin-left:auto!important;
-        margin-right:auto!important;
-    }
+
+@media only screen and (min-width: 767px) and (max-width: 991px) {
+  div.bookmark.discover-uni-container {
+    width: 720px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
-@media only screen and (min-width: 992px) and (max-width: 1199px){
-    div.bookmark.discover-uni-container{
-        width: 960px!important;
-        margin-left:auto!important;
-        margin-right:auto!important;
-    }
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  div.bookmark.discover-uni-container {
+    width: 960px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
-@media only screen and (min-width: 1200px){
-    div.bookmark.discover-uni-container{
-        width: 1140px!important;
-        margin-left:auto!important;
-        margin-right:auto!important;
-    }
+
+@media only screen and (min-width: 1200px) {
+  div.bookmark.discover-uni-container {
+    width: 1140px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+
+.enabled {
+  background-image: linear-gradient(283deg, #308282, #4ea27d);
+  color: white;
+}
+
+.red {
+  color: red;
 }

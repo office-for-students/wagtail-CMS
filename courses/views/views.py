@@ -1,14 +1,24 @@
-from django.shortcuts import render, redirect
-
-from CMS.enums import enums
-from CMS.translations import DICT
-from core.utils import get_page_for_language, get_new_landing_page_for_language
-
-from courses.models import CourseDetailPage, Course, CourseComparisonPage, CourseManagePage
-from site_search.models import SearchLandingPage
+import json
+import logging
 
 from django.http import JsonResponse
-import json
+from django.shortcuts import redirect
+from django.shortcuts import render
+
+from CMS import translations
+from CMS.enums import enums
+from CMS.translations import DICT
+from core import utils
+from core.utils import get_new_landing_page_for_language
+from core.utils import get_page_for_language
+from courses import renderer
+from courses.models import Course
+from courses.models import CourseComparisonPage
+from courses.models import CourseDetailPage
+from courses.models import CourseManagePage
+from institutions.models import InstitutionList
+
+logger = logging.getLogger(__name__)
 
 
 def regional_earnings(request):
@@ -51,7 +61,8 @@ def regional_earnings(request):
             inst_prov_pc_delimiter_leo = "are based in"
             inst_prov_pc_prefix = ""
 
-        salaries_aggregate = [element for element in course.salary_aggregates if element.subject_code == subject_code][0]
+        salaries_aggregate = [element for element in course.salary_aggregates if element.subject_code == subject_code][
+            0]
 
         unavail_msgs_go = salaries_aggregate.aggregated_salaries_sector[0].display_unavailable_info(language)
         unavail_msgs_leo = salaries_aggregate.aggregated_salaries_sector[1].display_unavailable_info(language)
@@ -62,25 +73,31 @@ def regional_earnings(request):
         unavailable_region_not_nation = ""
         unavailable_region_is_ni = ""
 
-        if 'unavailable_region_not_exists' in unavail_msgs_leo and unavail_msgs_leo['unavailable_region_not_exists'] != "":
+        if 'unavailable_region_not_exists' in unavail_msgs_leo and unavail_msgs_leo[
+            'unavailable_region_not_exists'] != "":
             unavailable_region_not_exists = unavail_msgs_leo['unavailable_region_not_exists']
-        if 'unavailable_region_not_nation' in unavail_msgs_go and unavail_msgs_go['unavailable_region_not_nation'] != "":
+        if 'unavailable_region_not_nation' in unavail_msgs_go and unavail_msgs_go[
+            'unavailable_region_not_nation'] != "":
             unavailable_region_not_nation = unavail_msgs_go['unavailable_region_not_nation']
         if 'unavailable_region_is_ni' in unavail_msgs_leo and unavail_msgs_leo['unavailable_region_is_ni'] != "":
             unavailable_region_is_ni = unavail_msgs_leo['unavailable_region_is_ni']
 
-        attr = getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region, None)
+        attr = getattr(salaries_aggregate.aggregated_salaries_sector[0], "med" + region, None)
         if attr is not None:
-            if getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region) == "" or getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region) is None:
+            if getattr(salaries_aggregate.aggregated_salaries_sector[0], "med" + region) == "" or getattr(
+                    salaries_aggregate.aggregated_salaries_sector[0], "med" + region) is None:
                 salary_sector_15_unavail_text = unavailable_region_not_exists
             elif region not in ('_uk', '_e', '_s', '_w', '_ni'):
                 salary_sector_15_unavail_text = unavailable_region_not_nation
 
-            med = getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region, None)
+            med = getattr(salaries_aggregate.aggregated_salaries_sector[0], "med" + region, None)
             if med is not None and med != "NA":
-                salary_sector_15_med = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "med"+region))
-                salary_sector_15_lq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "lq" + region))
-                salary_sector_15_uq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[0], "uq" + region))
+                salary_sector_15_med = format_thousands(
+                    getattr(salaries_aggregate.aggregated_salaries_sector[0], "med" + region))
+                salary_sector_15_lq = format_thousands(
+                    getattr(salaries_aggregate.aggregated_salaries_sector[0], "lq" + region))
+                salary_sector_15_uq = format_thousands(
+                    getattr(salaries_aggregate.aggregated_salaries_sector[0], "uq" + region))
                 salary_sector_15_pop = getattr(salaries_aggregate.aggregated_salaries_sector[0], "pop" + region)
                 inst_prov_pc_go = getattr(salaries_aggregate.aggregated_salaries_inst[0], 'prov_pc' + region)
             else:
@@ -104,18 +121,22 @@ def regional_earnings(request):
         if not inst_prov_pc_go:
             inst_prov_pc_go = 0
 
-        attr = getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region, None)
+        attr = getattr(salaries_aggregate.aggregated_salaries_sector[1], "med" + region, None)
         if attr is not None:
-            if getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region) == "" or getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region) is None:
+            if getattr(salaries_aggregate.aggregated_salaries_sector[1], "med" + region) == "" or getattr(
+                    salaries_aggregate.aggregated_salaries_sector[1], "med" + region) is None:
                 salary_sector_3_unavail_text = unavailable_region_not_exists
             elif region == '_ni':
                 salary_sector_3_unavail_text = unavailable_region_is_ni
 
-            med = getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region)
+            med = getattr(salaries_aggregate.aggregated_salaries_sector[1], "med" + region)
             if med is not None and med != "NA":
-                salary_sector_3_med = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "med"+region))
-                salary_sector_3_lq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "lq" + region))
-                salary_sector_3_uq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[1], "uq" + region))
+                salary_sector_3_med = format_thousands(
+                    getattr(salaries_aggregate.aggregated_salaries_sector[1], "med" + region))
+                salary_sector_3_lq = format_thousands(
+                    getattr(salaries_aggregate.aggregated_salaries_sector[1], "lq" + region))
+                salary_sector_3_uq = format_thousands(
+                    getattr(salaries_aggregate.aggregated_salaries_sector[1], "uq" + region))
                 salary_sector_3_pop = getattr(salaries_aggregate.aggregated_salaries_sector[1], "pop" + region)
                 inst_prov_pc_leo3 = getattr(salaries_aggregate.aggregated_salaries_inst[1], 'prov_pc' + region)
             else:
@@ -139,18 +160,22 @@ def regional_earnings(request):
         if (not inst_prov_pc_leo3 or inst_prov_pc_leo3 == '') and (inst_prov_pc_go != ''):
             inst_prov_pc_leo3 = inst_prov_pc_go
 
-        attr = getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region, None)
+        attr = getattr(salaries_aggregate.aggregated_salaries_sector[2], "med" + region, None)
         if attr is not None:
-            if getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region) == "" or getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region) is None:
+            if getattr(salaries_aggregate.aggregated_salaries_sector[2], "med" + region) == "" or getattr(
+                    salaries_aggregate.aggregated_salaries_sector[2], "med" + region) is None:
                 salary_sector_5_unavail_text = unavailable_region_not_exists
             elif region == '_ni':
                 salary_sector_5_unavail_text = unavailable_region_is_ni
 
-            med = getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region)
+            med = getattr(salaries_aggregate.aggregated_salaries_sector[2], "med" + region)
             if med is not None and med != "NA":
-                salary_sector_5_med = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "med"+region))
-                salary_sector_5_lq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "lq" + region))
-                salary_sector_5_uq = format_thousands(getattr(salaries_aggregate.aggregated_salaries_sector[2], "uq" + region))
+                salary_sector_5_med = format_thousands(
+                    getattr(salaries_aggregate.aggregated_salaries_sector[2], "med" + region))
+                salary_sector_5_lq = format_thousands(
+                    getattr(salaries_aggregate.aggregated_salaries_sector[2], "lq" + region))
+                salary_sector_5_uq = format_thousands(
+                    getattr(salaries_aggregate.aggregated_salaries_sector[2], "uq" + region))
                 salary_sector_5_pop = getattr(salaries_aggregate.aggregated_salaries_sector[2], "pop" + region)
                 inst_prov_pc_leo5 = getattr(salaries_aggregate.aggregated_salaries_inst[2], 'prov_pc' + region)
             else:
@@ -216,7 +241,7 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
     course, error = Course.find(institution_id, course_id, kis_mode, language)
     if error:
         redirect_page = get_new_landing_page_for_language(language)
-        #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        # redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
         return redirect(redirect_page + '?load_error=true&error_type=0')
 
     page = get_page_for_language(language, CourseDetailPage.objects.all())
@@ -248,42 +273,47 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
 
 
 def compare_courses(request, language=enums.languages.ENGLISH):
-    get_params = request.GET
-    error1 = None
-    error2 = None
-    course1 = None
-    course2 = None
-
-    course1_params = get_params.get('course1').split(',') if 'course1' in get_params else None
-    course2_params = get_params.get('course2').split(',') if 'course2' in get_params else None
-
+    url_params = request.GET
     page = get_page_for_language(language, CourseComparisonPage.objects.all())
-
-    if course1_params:
-        course1, error1 = Course.find(course1_params[0], course1_params[1], course1_params[2], language)
-    if course2_params:
-        course2, error2 = Course.find(course2_params[0], course2_params[1], course2_params[2], language)
-
-    if error1 or error2:
-        redirect_page = get_new_landing_page_for_language(language)
-        #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
-        return redirect(redirect_page + '?load_error=true&error_type=0')
 
     if not page:
         return render(request, '404.html')
 
+    courses_array = []
+
+    courses_list = url_params.getlist('courses') if 'courses' in url_params else None
+
+    if courses_list:
+        # Ignore anything more than 7 (avoid malicious activity)
+        for course in courses_list[0:7]:
+            if course:
+                course = course.split(',')
+                course, error = Course.find(course[0], course[1], course[2], language)
+
+                if error:
+                    logger.warning(f"Failed to fetch course, Error fetching course: {error} for {course}")
+                    redirect_page = get_new_landing_page_for_language(language)
+                    return redirect(redirect_page + '?load_error=true&error_type=0')
+
+                courses_array.append(course)
+
+    courses = renderer.dataset_for_comparison_view(courses_array, language)
+
     query_string = request.environ.get('QUERY_STRING')
-    english_url = page.get_english_url() + query_string
-    welsh_url = page.get_welsh_url() + query_string
 
     context = page.get_context(request)
-    context.update({
-        'page': page,
-        'course1': course1,
-        'course2': course2,
-        'english_url': english_url,
-        'welsh_url': welsh_url,
-        'cookies_accepted': request.COOKIES.get('discoverUniCookies')
-    })
+
+    context.update(
+        dict(
+            page=page,
+            courses=courses_array,
+            courses_data=courses,
+            english_url=f"{page.get_english_url()}?{query_string}",
+            welsh_url=f"{page.get_welsh_url()}?{query_string}",
+            cookies_accepted=request.COOKIES.get('discoverUniCookies'),
+            get_params=url_params,
+            institutions_list=InstitutionList.get_options()[utils.get_language(request.get_full_path())]
+        )
+    )
 
     return render(request, 'courses/course_comparison_page.html', context)
