@@ -2,27 +2,18 @@
 
 <nav class="discover-uni-nav">
     <a href="#main-content" class="screen-reader">skip to main content</a>
-
     <div class="discover-uni-nav__container discover-uni-container px-3">
-        {% if page.is_english %}
-            <a class="discover-uni-nav__home-link" href="/">
-                <img class="discover-uni-nav__brand-logo" src="{% static 'images/logos/nav_logo_english.svg' %}"
-                     alt="{% get_translation key='site_logo' language=page.get_language %}">
-            </a>
-        {% else %}
-            <a class="discover-uni-nav__home-link" href="/cy">
-                <img class="discover-uni-nav__brand-logo" src="{% static 'images/logos/nav_logo_welsh.svg' %}"
-                     alt="{% get_translation key='site_logo' language=page.get_language %}">
-            </a>
-        {% endif %}
-
+        <a class="discover-uni-nav__home-link" href="{{ brand_logo.url }}">
+            <img class="discover-uni-nav__brand-logo" src="{% static brand_logo.img %}"
+                 alt="{% get_translation key='site_logo' language=page.get_language %}">
+        </a>
         <div class="discover-uni-nav__links-container">
             {# Primary Menu #}
             <ul class="discover-uni-nav__desktop-links">
                 {% for item in primary_menu %}
                     <li class="{% if item.sub_items %} discover-uni-nav__desktop-dropdown {% else %} discover-uni-nav__desktop-link {% endif %} ">
                         <a class="{% if item.sub_items %} discover-uni-nav__desktop-dropdown-toggle {% endif %}"
-                           href="#">
+                           href="{% if item.sub_items %} # {% else %} {{ item.url }} {% endif %}">
                             {{ item.label }}
                         </a>
                         {% if item.sub_items %}
@@ -51,7 +42,7 @@
             <ul class="discover-uni-nav__desktop-search-links">
                 {% for link in comp_menu %}
                     <li class="discover-uni-nav__desktop-search-link">
-                        <a href="{{ page.manage_link }}">
+                        <a href="{{ link.url }}">
                             <img class="discover-uni-nav__link-icon" src="{% static link.img %}" alt="">
                             <span class="discover-uni-nav__search-links">{{ link.label }}</span>
                         </a>

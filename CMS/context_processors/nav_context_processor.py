@@ -13,8 +13,12 @@ def nav_menu_render(request):
     search = translations.term_for_key(key='search', language=language)
     compare = translations.term_for_key(key='compare', language=language)
     saved = translations.term_for_key(key='saved', language=language)
+    brand_logo = {'img': 'images/logos/nav_logo_english.svg', 'url': '/'} if language == 'en' else {
+        'img': 'images/logos/nav_logo_welsh.svg', 'url': 'cy/'}
+
     # TODO: Add comparison image below
     return {
+        'brand_logo': brand_logo,
         'primary_menu': get_menu(Menu, language, 'menu_items'),
         'comp_menu': [{'label': search, 'img': 'images/search_icon.svg', 'url': '/'},
                       {'label': compare, 'img': 'images/search_icon.svg', 'url': comparison_page.url},
@@ -31,6 +35,7 @@ def get_menu(Model, language, type):
     for item in items:
         menu.append(parse_menu_item(item))
     return menu
+
 
 def parse_menu_item(menu_item):
     label = menu_item.value.get('label') if menu_item.value.get('label', '') else menu_item.value.get('link_page').title
