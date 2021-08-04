@@ -101,7 +101,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'CMS.context_processors.comp_menu_renderer'
+                'CMS.context_processors.nav_menu_render'
             ],
         },
     },

@@ -67,19 +67,7 @@ def get_page_for_language(language, pages):
     return page_for_language[0]
 
 
-def parse_menu_item(menu_item):
-    label = menu_item.value.get('label') if menu_item.value.get('label', '') else menu_item.value.get('link_page').title
-    item_dict = {'label': label}
-    if 'menu_items' in menu_item.value:
-        sub_items = []
-        for item in menu_item.value.get('menu_items'):
-            sub_items.append(parse_menu_item(item))
-        item_dict['sub_items'] = sub_items
-    else:
-        item_dict['sub_items'] = None
-        item_dict['url'] = menu_item.value.get('link_page').url
 
-    return item_dict
 
 
 def fallback_to(value, default_value):

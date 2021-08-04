@@ -60,10 +60,9 @@
             </ul>
 
             <ul class="discover-uni-nav__desktop-search-links">
-
                 {% for link in comp_menu%}
                     <li class="discover-uni-nav__desktop-search-link">#}
-                        <a href="{{ page.manage_link }}">
+                        <a href="{{ link.url }}">
                             <img class="discover-uni-nav__link-icon" src="{% static link.img %}" alt="">
                             <span class="discover-uni-nav__search-links">{{ link.label }}</span>
                         </a>
@@ -72,9 +71,8 @@
             </ul>
         </div>
 
-
         <div class="discover-uni-nav__mobile-nav">
-            <a href="{{ page.manage_link }}" class="nav-bookmark">
+            <a href="{{ page.menu_link }}" class="nav-bookmark">
                 <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/search_icon.svg' %}"
                      alt="Bookmarked courses">
             </a>

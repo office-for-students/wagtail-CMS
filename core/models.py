@@ -8,7 +8,7 @@ from wagtail.snippets.models import register_snippet
 
 from CMS.enums import enums
 from core import utils
-from core.utils import parse_menu_item, get_page_for_language, get_current_version
+from core.utils import get_page_for_language, get_current_version
 
 
 class DiscoverUniBasePage(Page):
@@ -46,32 +46,6 @@ class DiscoverUniBasePage(Page):
             return self.translated_page.url if self.translated_page \
                 else get_page_for_language(enums.languages.WELSH, HomePage.objects.all()).url
         return self.url
-
-    @property
-    def menu(self):
-        menu_name = enums.languages_map.get(self.get_language()).capitalize()
-        menu_data = Menu.objects.filter(name=menu_name).first()
-        if not menu_data:
-            menu_name = enums.languages_map.get(enums.languages.ENGLISH).capitalize()
-            menu_data = Menu.objects.filter(name=menu_name).first()
-        menu = []
-        if menu_data:
-            for item in menu_data.menu_items:
-                menu.append(parse_menu_item(item))
-        return menu
-
-    @property
-    def footer(self):
-        footer_name = enums.languages_map.get(self.get_language()).capitalize()
-        footer_data = Footer.objects.filter(name=footer_name).first()
-        if not footer_data:
-            footer_name = enums.languages_map.get(enums.languages.ENGLISH).capitalize()
-            footer_data = Footer.objects.filter(name=footer_name).first()
-        footer = []
-        if footer_data:
-            for item in footer_data.footer_items:
-                footer.append(parse_menu_item(item))
-        return footer
 
     class Meta:
         abstract = True
