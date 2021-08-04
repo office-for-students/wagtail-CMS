@@ -13,6 +13,7 @@ def nav_menu_render(request):
     search = translations.term_for_key(key='search', language=language)
     compare = translations.term_for_key(key='compare', language=language)
     saved = translations.term_for_key(key='saved', language=language)
+    # TODO: Add comparison image below
     return {
         'primary_menu': get_menu(Menu, language, 'menu_items'),
         'comp_menu': [{'label': search, 'img': 'images/search_icon.svg', 'url': '/'},
