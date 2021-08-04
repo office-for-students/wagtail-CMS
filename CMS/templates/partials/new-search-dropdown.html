@@ -75,7 +75,6 @@
 
     function populateDropDown(dropdown, list) {
         var options_selected = "{% get_translation key='number_options_selected' language=page.get_language %}"
-        console.log("list ", list)
         if (list.length === 0) {
             dropdown.innerHTML = "{% get_translation key='institution_name' language=page.get_language %}";
         } else if (list.length === 1) {

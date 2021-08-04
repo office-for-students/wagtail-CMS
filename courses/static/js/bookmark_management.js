@@ -78,8 +78,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
 
             Object.defineProperty(this, 'elementID', {
                 get: function () {
-                    let htmlID = this.data.courseId + "-" + this.data.mode.en.replace(" ", "-");
-                    return htmlID.toLowerCase();
+                   return this.id
                 }
             });
 
@@ -243,7 +242,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
             }
         }
 
-        let saved_courses = new CourseStorage('comparisonCourses',
+        let saved_courses = new CourseStorage('bookmarkedCourses',
             function (items) {
                 let bookmark_el = document.getElementsByClassName('nav-bookmark__count')[0]
                 let total_bookmark = items.length;
@@ -255,7 +254,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
             });
 
         let courses_selected_for_comparison = new ComparisonStorage(
-            "compareCourses",
+            "CoursesForComparison",
             function (items) {
                 let compare_button = document.getElementById('compare-courses-button')
                 let compare_text = document.getElementById('bookmark-text')
