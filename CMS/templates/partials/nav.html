@@ -17,14 +17,15 @@
         {% endif %}
 
         <div class="discover-uni-nav__links-container">
+            {# Primary Menu #}
             <ul class="discover-uni-nav__desktop-links">
-                {% for item in page.menu %}
-                    {% if item.sub_items %}
-                        <li class="discover-uni-nav__desktop-dropdown">
-                            <a class="discover-uni-nav__desktop-dropdown-toggle" href="#">
-                                {{ item.label }}
-                            </a>
-
+                {% for item in primary_menu %}
+                    <li class="{% if item.sub_items %} discover-uni-nav__desktop-dropdown {% else %} discover-uni-nav__desktop-link {% endif %} ">
+                        <a class="{% if item.sub_items %} discover-uni-nav__desktop-dropdown-toggle {% endif %}"
+                           href="#">
+                            {{ item.label }}
+                        </a>
+                        {% if item.sub_items %}
                             <ul class="discover-uni-nav__desktop-dropdown-body">
                                 {% for sub_item in item.sub_items %}
                                     <li>
@@ -34,35 +35,23 @@
                                     </li>
                                 {% endfor %}
                             </ul>
-                        </li>
-                    {% else %}
-                        <li class="discover-uni-nav__desktop-link">
-                            <a href="{{ item.url }}">
-                                {{ item.label }}
-                            </a>
-                        </li>
-                    {% endif %}
+                        {% endif %}
+                    </li>
                 {% endfor %}
-
-                {% if page.is_english %}
-                    <li class="discover-uni-nav__desktop-link">
-                        <a id="language_select" href="{{ welsh_url }}">
-                            Cymraeg
-                        </a>
-                    </li>
-                {% else %}
-                    <li class="discover-uni-nav__desktop-link">
-                        <a id="language_select" href="{{ english_url }}">
-                            English
-                        </a>
-                    </li>
-                {% endif %}
+                {#                TODO: Remove course search from CMS, replace with language toggle           #}
+                <li class="discover-uni-nav__desktop-link">
+                    <a id="language_select"
+                       href="{% if page.is_english %} {{ welsh_url }} {% else %} {{ english_url }} {% endif %}">
+                        {% if page.is_english %} Cymraeg {% else %} English {% endif %}
+                    </a>
+                </li>
             </ul>
 
+            {# Comparison Menu #}
             <ul class="discover-uni-nav__desktop-search-links">
-                {% for link in comp_menu%}
-                    <li class="discover-uni-nav__desktop-search-link">#}
-                        <a href="{{ link.url }}">
+                {% for link in comp_menu %}
+                    <li class="discover-uni-nav__desktop-search-link">
+                        <a href="{{ page.manage_link }}">
                             <img class="discover-uni-nav__link-icon" src="{% static link.img %}" alt="">
                             <span class="discover-uni-nav__search-links">{{ link.label }}</span>
                         </a>
@@ -71,23 +60,14 @@
             </ul>
         </div>
 
+        {# Mobile Menu #}
         <div class="discover-uni-nav__mobile-nav">
-            <a href="{{ page.menu_link }}" class="nav-bookmark">
-                <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/search_icon.svg' %}"
-                     alt="Bookmarked courses">
-            </a>
-
-            <a href="{{ page.manage_link }}" class="nav-bookmark">
-                <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/search_icon.svg' %}"
-                     alt="Bookmarked courses">
-            </a>
-
-            <a href="{{ page.manage_link }}" class="nav-bookmark">
-                <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}"
-                     alt="Bookmarked courses">
-                <span class="nav-bookmark__count"></span>
-            </a>
-
+            {% for link in comp_menu %}
+                <a href="{{ link.url }}" class="nav-bookmark">
+                    <img class="discover-uni-nav__bookmark-icon" src="{% static link.img %}"
+                         alt="Bookmarked courses">
+                </a>
+            {% endfor %}
             <i id="burger-menu" class="discover-uni-nav__burger-menu fas fa-bars"></i>
             <i id="close-menu" class="discover-uni-nav__close-menu fas fa-times"></i>
         </div>

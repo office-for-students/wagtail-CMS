@@ -29,7 +29,7 @@ def get_menu(Model, language, type):
     items = getattr(data, type)
     for item in items:
         menu.append(parse_menu_item(item))
-
+    return menu
 
 def parse_menu_item(menu_item):
     label = menu_item.value.get('label') if menu_item.value.get('label', '') else menu_item.value.get('link_page').title
