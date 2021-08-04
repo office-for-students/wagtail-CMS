@@ -217,6 +217,51 @@ $course_comparison_first_column_width: 250px;
   align-items: center;
 }
 
+.subject_wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  color: black;
+
+  &__show_data_box{
+    background-color: #f2f2f2;
+    max-width: 250px;
+    padding: 16px 16px 16px 24px;
+    margin: 0 8px 8px 0;
+
+    &-header{
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+  }
+  &__container{
+    width: 100%;
+
+    &-header{
+      background-color: #f2f2f2;
+      position: relative;
+      padding:16px 8px 13px 8px;
+    }
+    &-subjects{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      height: 100px;
+
+
+      &-subject{
+        background-color: #efcc4b;
+        margin: 8px 0px 8px 0;
+
+        border-radius: 3px;
+        flex: 1;
+      }
+    }
+  }
+}
+
 .course_compare_search {
   background-color: #f4f8f8 !important;
   padding: 15px;
@@ -517,7 +562,6 @@ $course_comparison_first_column_width: 250px;
         position: sticky;
         background: white;
         padding-top: 20px;
-        position: sticky;
         z-index: 999;
         top: 0;
         &-pills {

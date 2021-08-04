@@ -11,11 +11,21 @@
     </div>
     <div class="small-flex-div">
     {% for item in values %}
-        <div id="arrow-{{forloop.counter0}}"
-             class="course_comparison-table__column {{item_font}} {{mt}} arrow cc-column-{{forloop.counter0}}"
-             data-index="{{forloop.counter0}}">
-            {{ item | safe }}
-        </div>
+        {% if item.values %}
+            {% for value in item.values %}
+                <div id="arrow-{{forloop.counter0}}"
+                     class="course_comparison-table__column {{item_font}} {{mt}} arrow cc-column-{{forloop.counter0}}"
+                     data-index="{{forloop.counter0}}">
+                    {{value}}
+                </div>
+            {% endfor %}
+        {% else %}
+            <div id="arrow-{{forloop.counter0}}"
+                 class="course_comparison-table__column {{item_font}} {{mt}} arrow cc-column-{{forloop.counter0}}"
+                 data-index="{{forloop.counter0}}">
+                {{ item | safe }}
+            </div>
+        {% endif %}
     {% endfor %}
     </div>
 </div>

@@ -1,0 +1,20 @@
+<div class="subject_wrapper">
+    <div class="subject_wrapper__show_data_box">
+        <div class="subject_wrapper__show_data_box-header">Show data from</div>
+        <div>Some courses selected have data from more than one subject. Select the subject you wish to see data from</div>
+    </div>
+    <div class="subject_wrapper__container">
+        <div class="subject_wrapper__container-header">Select Subject</div>
+        <div class="subject_wrapper__container-subjects">
+            {% for items in subjects.subject %}
+                <div class="mr-2">
+                {% for subject in items %}
+                    <div class="subject_wrapper__container-subjects-subject">
+                        {{ subject }}
+                    </div>
+                {% endfor %}
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
