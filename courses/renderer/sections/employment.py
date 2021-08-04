@@ -129,3 +129,4 @@ class SubEmploymentSection(Section):
         for section in self.sections:
             if section[0] in subtitles:
                 data[section[0]]["subtitle"] = self.term_for_key(subtitles[section[0]], self.language)
+

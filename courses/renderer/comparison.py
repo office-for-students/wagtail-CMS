@@ -71,6 +71,18 @@ def get_sub_accordion_dataset(courses, section_model, get_sub_headers, language)
     return response
 
 
+def get_multiple_subjects(courses: List[Course]):
+    subjects = dict(subject=[])
+    for course in courses:
+        subject_list = list()
+        subject_names = course.subject_names
+        for subject in subject_names:
+            subject_list.append(subject.display_subject_name())
+        subjects["subject"].append(subject_list)
+
+    return subjects
+
+
 def dataset_for_comparison_view(courses: List[Course], language="en") -> List[dict]:
     response = []
     context = dict()
@@ -141,6 +153,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="employment_guidance_2", language=language),
                 translations.term_for_key(key="employment_guidance_3", language=language)
             ),
+            subjects=get_multiple_subjects(courses),
             sub_accordions=get_sub_accordion_dataset(courses, SubEmploymentSection, get_sub_employment, language),
             source=(
                 translations.term_for_key(key="earnings_link", language=language),
