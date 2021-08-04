@@ -47,7 +47,7 @@
                 {% for link in navigation.comp_menu %}
                     <li class="discover-uni-nav__desktop-search-link">
                         <a href="{{ link.url }}">
-                            <img class="discover-uni-nav__link-icon" src="{% static link.img %}" alt="">
+                            <img class="discover-uni-nav__link-icon" src="{{ link.img }}" alt="">
                             <span class="discover-uni-nav__search-links">{{ link.label }}</span>
                         </a>
                     </li>
@@ -57,10 +57,9 @@
 
         {# Mobile Menu #}
         <div class="discover-uni-nav__mobile-nav">
-            {% for link in comp_menu %}
+            {% for link in navigation.comp_menu %}
                 <a href="{{ link.url }}" class="nav-bookmark">
-                    <img class="discover-uni-nav__bookmark-icon" src="{% static link.img %}"
-                         alt="Bookmarked courses">
+                    <img class="discover-uni-nav__bookmark-icon" src="{{ link.img }}" alt="">
                 </a>
             {% endfor %}
             <i id="burger-menu" class="discover-uni-nav__burger-menu fas fa-bars"></i>

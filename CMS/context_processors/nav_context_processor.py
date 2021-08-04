@@ -3,6 +3,8 @@ from CMS.enums import enums
 from core.models import Menu, Footer
 from core.utils import get_language, get_page_for_language
 from courses.models import CourseComparisonPage, CourseManagePage
+from django.templatetags.static import static
+
 
 
 def nav_menu_render(request):
@@ -21,9 +23,9 @@ def nav_menu_render(request):
         'navigation': {
             'brand_logo': brand_logo,
             'primary_menu': get_menu(Menu, language, 'menu_items'),
-            'comp_menu': [{'label': search, 'img': 'images/search_icon.svg', 'url': '/'},
-                          {'label': compare, 'img': 'images/search_icon.svg', 'url': comparison_page.url},
-                          {'label': saved, 'img': 'images/white-bookmark.svg', 'url': bookmark_page.url}],
+            'comp_menu': [{'label': search, 'img': static('images/search_icon.svg'), 'url': '/'},
+                          {'label': compare, 'img': static('images/compare_icon.svg'), 'url': comparison_page.url},
+                          {'label': saved, 'img': static('images/white-bookmark.svg'), 'url': bookmark_page.url}],
             'footer_menu': get_menu(Footer, language, 'footer_items')
         }
     }
