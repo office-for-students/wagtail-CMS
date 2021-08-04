@@ -17,8 +17,8 @@
         },
 
         loadSelectedCourses: function() {
-            if (JSON.parse(localStorage.getItem('comparisonCourses'))) {
-                this.selectedCourses = JSON.parse(localStorage.getItem('comparisonCourses'));
+            if (JSON.parse(localStorage.getItem('bookmarkedCourses'))) {
+                this.selectedCourses = JSON.parse(localStorage.getItem('bookmarkedCourses'));
             } else {
                 this.selectedCourses = [];
             }

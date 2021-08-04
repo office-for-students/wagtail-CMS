@@ -518,7 +518,7 @@ $course_comparison_first_column_width: 250px;
         background: white;
         padding-top: 20px;
         position: sticky;
-        z-index: 999;
+        z-index: 10;
         top: 0;
         &-pills {
           display: flex;

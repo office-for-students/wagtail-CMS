@@ -1,0 +1,98 @@
+{% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
+<div class="comparison__body pt-1">
+
+    <h2 class="comparison__heading">
+        {{ page.compare_heading }}
+    </h2>
+    <!-- Guidance box -->
+    {% include 'courses/partials/comparison/guidance_box.html' %}
+    <!-- Guidance box end -->
+    <div class="course-detail__course-container">
+        <div class="course-detail__course-selected">
+            <span id="numberOfSelected">{{ courses|length }}</span> {% get_translation key='courses_selected' language=page.get_language %}
+        </div>
+        <div class="course-detail__course-container-pills">
+            <div class="course-detail__course-container-pills-slider"
+                 onclick="scrollDisplay(-1);" id="leftArrow">
+                <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-left"></i>
+            </div>
+            {% include 'courses/partials/course_comparison_overview.html' with courses=courses %}
+            <div class="course-detail__course-container-pills-slider single-arrow"
+                 onclick="scrollDisplay(1);" id="rightArrow">
+                <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <div id="course-info-container">
+        {% if courses %}
+            {% with dataset=courses_data.0.course_details %}
+                <div class="course_comparison-table__row-header">
+                    {{ dataset.title }}
+                </div>
+                {% for item, value in dataset.dataset.items %}
+                    {% if forloop.counter == 3 %}
+                        <!-- Hidden content start -->
+                        <div class="accordion" id="initial-accordian">
+                        <div class="accordion-body">
+
+                    {% endif %}
+                <div class="course_comparison-table__row-grey_background">
+                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
+                </div>
+                {% if forloop.last %}
+                    </div>
+                    <!-- Hidden content end -->
+                    <!-- Show more start-->
+                    {% with action=dataset.call_to_action.0.show_more %}
+                        <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
+                             class="accordion-header">
+                        <div class="course_comparison-table__column-title_container">
+                        <div class="accordion-header course_comparison-table__column-first show_more">
+                        <i class="fas fa-chevron-down expand chevron" alt="expand"
+                           aria-label="{{ action.affirmative }}"></i>
+                        <i class="fas fa-chevron-up collapse chevron" alt="collapse"
+                           aria-label="{{ action.negative }}"></i>
+                        <span class="expand">{{ action.affirmative }}</span>
+                        <span class="collapse">{{ action.negative }}</span>
+                    {% endwith %}
+                </div>
+                </div>
+
+                </div>
+                    <!-- show more end -->
+                {% endif %}
+                {% endfor %}
+            {% endwith %}
+        </div>
+            <div class="course-detail__body">
+                {% for accordion in courses_data.0.accordions %}
+                    <div class="accordion" id="ac-{{ forloop.counter }}">
+                        <div tabindex="{{ forloop.counter }}" role="button" aria-label="Show content"
+                             class="green narrow accordion-header sticky-accordion-header">
+                            <div class="">
+                                <div id="{{ accordion.value.heading }}" style="max-width: 440px;"
+                                     class="accordion-title"
+                                     aria-label="Show {{ accordion.value.heading }} content"
+                                     aria-expanded="false">{{ accordion.title }}
+                                </div>
+                            </div>
+                            <div class="expand" style="display: block;">
+                                <img class="nav-card__icon" src="/static/images/plus_icon_white.svg"
+                                     alt="expand">
+                            </div>
+                            <div class="collapse">
+                                <img class="nav-card__icon" src="/static/images/minus_icon.svg" alt="collapse">
+                            </div>
+                        </div>
+                        <div class="accordion-body">
+                            {% include 'courses/partials/accordion_body.html' %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
+        {% endif %}
+    </div>
+
+</div>

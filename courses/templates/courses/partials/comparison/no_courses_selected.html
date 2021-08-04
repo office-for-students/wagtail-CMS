@@ -1,0 +1,9 @@
+{% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
+<div class="course-detail__course-container">
+    <div class="course-detail__course-none-selected">
+        <div class="course-detail__course-none-selected-header">
+            {% get_translation key='no_courses_selected' language=page.get_language %}
+        </div>
+        <p>{% get_translation key='add_two_courses' language=page.get_language %}</p>
+    </div>
+</div>
