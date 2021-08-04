@@ -5,35 +5,32 @@ from django.shortcuts import render
 from CMS.enums import enums
 from core import utils
 from core.utils import get_new_landing_page_for_language
-from core.utils import get_page_for_language
 from courses import renderer
 from courses.models import Course
-from courses.models import CourseComparisonPage
 from institutions.models import InstitutionList
 
 logger = logging.getLogger(__name__)
 
 
-def compare_courses_body(request, language=enums.languages.ENGLISH):
-    url_params = request.GET
+def show_has_no_bookmarked_courses(request, language):
+    context = dict(institutions_list=InstitutionList.get_options()[utils.get_language(request.get_full_path())])
+    return render_with_language_context(request, 'courses/comparison/has_no_saved_courses.html', context, language)
 
-    page = get_page_for_language(language, CourseComparisonPage.objects.all())
 
-    if not page:
-        return render(request, '404.html')
+def show_not_enough_saved(request, language):
+    return render_with_language_context(request, 'courses/comparison/has_no_compare_courses.html', {}, language)
 
+
+def show_courses_selected_for_comparison(courses_list, request, language):
     courses_array = []
-
-    courses_list = url_params.getlist('courses') if 'courses' in url_params else None
-    print("url_params ::", courses_list)
-
     if courses_list:
         # Ignore anything more than 7 (avoid malicious activity)
         for course in courses_list[0:7]:
             if course:
                 course = course.split(',')
                 print("course = course");
-                course, error = Course.find(institution_id=course[0], course_id=course[1], mode=course[2], language=language)
+                course, error = Course.find(institution_id=course[0], course_id=course[1], mode=course[2],
+                                            language=language)
 
                 if error:
                     logger.warning(f"Failed to fetch course, Error fetching course: {error} for {course}")
@@ -45,19 +42,26 @@ def compare_courses_body(request, language=enums.languages.ENGLISH):
 
     courses = renderer.dataset_for_comparison_view(courses_array, language)
 
-    query_string = request.environ.get('QUERY_STRING')
-
-    context = page.get_context(request)
-
-    context.update(
-        dict(
-            courses=courses_array,
-            courses_data=courses,
-            english_url=f"{page.get_english_url()}?{query_string}",
-            welsh_url=f"{page.get_welsh_url()}?{query_string}",
-            get_params=url_params,
-            institutions_list=InstitutionList.get_options()[utils.get_language(request.get_full_path())]
-        )
+    context = dict(
+        courses=courses_array,
+        courses_data=courses,
     )
 
-    return render(request, 'courses/course_comparison_body.html', context)
+    return render_with_language_context(request, 'courses/comparison/comparison_has_courses.html', context, language)
+
+
+def compare_courses_body(request, language=enums.languages.ENGLISH):
+    url_params = request.GET
+    if url_params.get('hasStorage', 0) == "0":
+        return show_has_no_bookmarked_courses(request, language)
+
+    stored = url_params.getlist('courses') if 'courses' in url_params else None
+    if len(stored) <= 1:
+        return show_not_enough_saved(request, language)
+
+    return show_courses_selected_for_comparison(stored, request, language)
+
+
+def render_with_language_context(request, template, context, language):
+    default = dict(page={"get_language": language})
+    return render(request, template, {**default, **context})
