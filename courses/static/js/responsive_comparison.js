@@ -65,12 +65,12 @@ class ArrowManager {
 
 }
 
-function getValueComparedToMax(value, maximum){
+function getValueComparedToMax(value, maximum) {
     if (maximum < value) {
-            return maximum;
-        } else {
-            return value;
-        }
+        return maximum;
+    } else {
+        return value;
+    }
 }
 
 function getMaxItems(maximum) {
@@ -82,20 +82,21 @@ function getMaxItems(maximum) {
         return getValueComparedToMax(4, maximum);
     } else if (screen.availWidth <= 1140 || window.innerWidth <= 1140) {
         return getValueComparedToMax(5, maximum)
-     }
+    }
 
     return maximum;
 }
 
 function getColumns() {
-    const compare_list = JSON.parse(localStorage.getItem("compareCourses"));
+    const compare_list = JSON.parse(localStorage.getItem("CoursesForComparison"));
     const columns = [];
     if (compare_list) {
-        for (var index = 0; index < compare_list.length; index++) {
+        for (let index = 0; index < compare_list.length; index++) {
             let className = "cc-column-" + index;
             columns.push(document.getElementsByClassName(className));
         }
     }
+    console.log("columns :: ", columns)
     return columns;
 }
 
@@ -141,23 +142,21 @@ function getCourseIndexesToShow(index, number_of_courses) {
 function updateArrows(active_index, max_columns, total_number_of_courses) {
     const arrows = new ArrowManager();
     arrows.removeAllArrows();
-    var hidden_check = document.getElementById("hiddenCourseCompare");
-    if (hidden_check) {
-        if (!(max_columns >= total_number_of_courses)) {
-            if (active_index + max_columns >= total_number_of_courses) {
-                if (max_columns !== total_number_of_courses) {
-                    arrows.includeWideArrowLeft();
-                }
-            } else if (active_index === 0) {
-                arrows.includeWideArrowRight();
-            } else {
-                arrows.includeBothArrows();
+    if (!(max_columns >= total_number_of_courses)) {
+        if (active_index + max_columns >= total_number_of_courses) {
+            if (max_columns !== total_number_of_courses) {
+                arrows.includeWideArrowLeft();
             }
+        } else if (active_index === 0) {
+            arrows.includeWideArrowRight();
+        } else {
+            arrows.includeBothArrows();
         }
     }
 }
 
 function scrollDisplay(increment) {
+    console.log(" i do the scroll display thing")
     const columns = getColumns();
     let total_number_of_courses = columns.length
     let new_index = getNewIndex(increment, total_number_of_courses);
@@ -173,15 +172,7 @@ function updateStickyHeader() {
     let accordion_header = $(".sticky-accordion-header");
     accordion_header.css('top', element_height + 20 + "px");
     accordion_header.css('position', "sticky");
-    accordion_header.css("z-index", "98");
-}
-
-function hideSearchContainerIfNoCourses() {
-    let saved_courses = JSON.parse(localStorage.getItem("comparisonCourses"));
-    let course_search_container = document.getElementById("courseSearchContainer");
-    if (!(saved_courses) || saved_courses.length === 0) {
-        course_search_container.classList.remove("hidden")
-    }
+    accordion_header.css("z-index", "8");
 }
 
 
@@ -189,10 +180,4 @@ $(window).on('resize orientationchange', function () {
     current_index = 0;
     scrollDisplay(0);
 });
-
-$(window).on('load', function () {
-    scrollDisplay(0);
-    hideSearchContainerIfNoCourses();
-});
-
 

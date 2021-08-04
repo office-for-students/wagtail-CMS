@@ -42,8 +42,8 @@
         },
 
         loadSelectedCourses: function() {
-            if (JSON.parse(localStorage.getItem('comparisonCourses'))) {
-                this.selectedCourses = JSON.parse(localStorage.getItem('comparisonCourses'));
+            if (JSON.parse(localStorage.getItem('bookmarkedCourses'))) {
+                this.selectedCourses = JSON.parse(localStorage.getItem('bookmarkedCourses'));
             } else {
                 this.selectedCourses = [];
             }
@@ -95,7 +95,7 @@
                     this.selectedCourses.splice(i, 1);
                 }
             }
-            localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
+            localStorage.setItem('bookmarkedCourses', JSON.stringify(this.selectedCourses));
             this.navBar.trigger('loadeddata');
             this.courseSelected = false;
             this.compareAdd.hide();
@@ -141,7 +141,7 @@
                                                     'cy': this.modeCy,
                                                 }
                                             });
-                    localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
+                    localStorage.setItem('bookmarkedCourses', JSON.stringify(this.selectedCourses));
                 }
                 this.navBar.trigger('loadeddata');
                 this.courseSelected = true;
