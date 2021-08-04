@@ -308,7 +308,8 @@
         display: flex;
         justify-content: space-between;
         list-style: none;
-        padding: 0px 20px 0px 0px;
+        padding-left: 15px;
+        padding-right: 15px;
         margin: 5px 5px 5px 30px;
         background-color: #000000;
         border-radius: 40px 40px 40px 40px;
@@ -319,11 +320,13 @@
         @include small-font--bold-mixin();
         display: flex;
         align-items: center;
+        padding-left: 8px;
+        padding-right: 8px;
 
         a {
           display: flex;
           align-items: center;
-          padding-left: 15px;
+          padding-left: 5px;
           padding-right: 15px;
           color: #FFFFFF;
           text-decoration: none;
