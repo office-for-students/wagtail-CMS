@@ -3,31 +3,35 @@
 <nav class="discover-uni-nav">
     <a href="#main-content" class="screen-reader">skip to main content</a>
     <div class="discover-uni-nav__container discover-uni-container px-3">
-        <a class="discover-uni-nav__home-link" href="{{ brand_logo.url }}">
-            <img class="discover-uni-nav__brand-logo" src="{% static brand_logo.img %}"
+        <a class="discover-uni-nav__home-link" href="{{ navigation.brand_logo.url }}">
+            <img class="discover-uni-nav__brand-logo" src="{% static navigation.brand_logo.img %}"
                  alt="{% get_translation key='site_logo' language=page.get_language %}">
         </a>
         <div class="discover-uni-nav__links-container">
             {# Primary Menu #}
             <ul class="discover-uni-nav__desktop-links">
-                {% for item in primary_menu %}
-                    <li class="{% if item.sub_items %} discover-uni-nav__desktop-dropdown {% else %} discover-uni-nav__desktop-link {% endif %} ">
-                        <a class="{% if item.sub_items %} discover-uni-nav__desktop-dropdown-toggle {% endif %}"
-                           href="{% if item.sub_items %} # {% else %} {{ item.url }} {% endif %}">
-                            {{ item.label }}
-                        </a>
-                        {% if item.sub_items %}
-                            <ul class="discover-uni-nav__desktop-dropdown-body">
-                                {% for sub_item in item.sub_items %}
-                                    <li>
-                                        <a class="discover-uni-nav__desktop-dropdown-link" href="{{ sub_item.url }}">
-                                            {{ sub_item.label }}
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </li>
+                {% for item in navigation.primary_menu %}
+                    {% with has_sub=item.sub_items %}
+                        <li class="{% if has_sub %} discover-uni-nav__desktop-dropdown {% else %} discover-uni-nav__desktop-link {% endif %} ">
+                            <a class="{% if has_sub %} discover-uni-nav__desktop-dropdown-toggle {% endif %}"
+                               href="{% if has_sub %} # {% else %} {{ item.url }} {% endif %}">
+                                {{ item.label }}
+                            </a>
+                            {% if has_sub %}
+                                <ul class="discover-uni-nav__desktop-dropdown-body">
+                                    {% for sub_item in has_sub %}
+                                        <li>
+                                            <a class="discover-uni-nav__desktop-dropdown-link"
+                                               href="{{ sub_item.url }}">
+                                                {{ sub_item.label }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endwith %}
                 {% endfor %}
                 {#                TODO: Remove course search from CMS, replace with language toggle           #}
                 <li class="discover-uni-nav__desktop-link">
@@ -40,7 +44,7 @@
 
             {# Comparison Menu #}
             <ul class="discover-uni-nav__desktop-search-links">
-                {% for link in comp_menu %}
+                {% for link in navigation.comp_menu %}
                     <li class="discover-uni-nav__desktop-search-link">
                         <a href="{{ link.url }}">
                             <img class="discover-uni-nav__link-icon" src="{% static link.img %}" alt="">
@@ -76,42 +80,45 @@
             Cymraeg
             </a>
         </div>
-        {% for item in primary_menu %}
-            {% if item.sub_items %}
-                <div class="discover-uni-nav__mobile-accordion">
-                    <div class="discover-uni-nav__mobile-accordion-header">
-                        <p class="discover-uni-nav__mobile-accordion-title">
-                            {{ item.label }}
-                        </p>
+        {% for item in navigation.primary_menu %}
+            {% with has_sub=item.sub_items %}
+                {% if has_sub %}
+                    <div class="discover-uni-nav__mobile-accordion">
+                        <div class="discover-uni-nav__mobile-accordion-header">
+                            <p class="discover-uni-nav__mobile-accordion-title">
+                                {{ item.label }}
+                            </p>
 
-                        <div class="expand">
-                            <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}"
-                                 alt="expand {{ item.label }} drop down menu">
+                            <div class="expand">
+                                <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}"
+                                     alt="expand {{ item.label }} drop down menu">
+                            </div>
+
+                            <div class="collapse">
+                                <img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}"
+                                     alt="collapse {{ item.label }} drop down menu">
+                            </div>
                         </div>
 
-                        <div class="collapse">
-                            <img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}"
-                                 alt="collapse {{ item.label }} drop down menu">
+                        <div class="discover-uni-nav__mobile-accordion-body">
+                            {% for sub_item in has_sub %}
+                                <a class="discover-uni-nav__mobile-accordion-body-link" href="{{ sub_item.url }}">
+                                    {{ sub_item.label }}
+                                </a>
+                            {% endfor %}
                         </div>
                     </div>
+                {% else %}
+                    <a class="discover-uni-nav__mobile-link" href="{{ item.url }}">
+                        {{ item.label }}
 
-                    <div class="discover-uni-nav__mobile-accordion-body">
-                        {% for sub_item in item.sub_items %}
-                            <a class="discover-uni-nav__mobile-accordion-body-link" href="{{ sub_item.url }}">
-                                {{ sub_item.label }}
-                            </a>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% else %}
-                <a class="discover-uni-nav__mobile-link" href="{{ item.url }}">
-                    {{ item.label }}
-
-                    {% if item.label == 'Course search' or item.label == 'Chwilio am Gwrs' %}
-                        <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
-                    {% endif %}
-                </a>
-            {% endif %}
+                        {% if item.label == 'Course search' or item.label == 'Chwilio am Gwrs' %}
+                            <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
+                        {% endif %}
+                    </a>
+                {% endif %}
+            {% endwith %}
         {% endfor %}
+
     </div>
 </nav>

@@ -18,20 +18,22 @@ def nav_menu_render(request):
 
     # TODO: Add comparison image below
     return {
-        'brand_logo': brand_logo,
-        'primary_menu': get_menu(Menu, language, 'menu_items'),
-        'comp_menu': [{'label': search, 'img': 'images/search_icon.svg', 'url': '/'},
-                      {'label': compare, 'img': 'images/search_icon.svg', 'url': comparison_page.url},
-                      {'label': saved, 'img': 'images/white-bookmark.svg', 'url': bookmark_page.url}],
-        'footer_menu': get_menu(Footer, language, 'footer_items')
+        'navigation': {
+            'brand_logo': brand_logo,
+            'primary_menu': get_menu(Menu, language, 'menu_items'),
+            'comp_menu': [{'label': search, 'img': 'images/search_icon.svg', 'url': '/'},
+                          {'label': compare, 'img': 'images/search_icon.svg', 'url': comparison_page.url},
+                          {'label': saved, 'img': 'images/white-bookmark.svg', 'url': bookmark_page.url}],
+            'footer_menu': get_menu(Footer, language, 'footer_items')
+        }
     }
 
 
-def get_menu(Model, language, type):
+def get_menu(model, language, attribute):
     menu = []
     name = enums.languages_map.get(language).capitalize()
-    data = Model.objects.filter(name=name).first()
-    items = getattr(data, type)
+    data = model.objects.filter(name=name).first()
+    items = getattr(data, attribute)
     for item in items:
         menu.append(parse_menu_item(item))
     return menu
