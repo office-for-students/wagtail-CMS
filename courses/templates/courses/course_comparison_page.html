@@ -25,157 +25,49 @@
 
 {% block content %}
 
-    <div class="comparison d-sm-block mb-5">
-        <div class="comparison__body pt-1">
+    <div class="comparison d-sm-block mb-5" id="comparison-body"></div>
 
-            <h2 class="comparison__heading">
-                {{ page.compare_heading }}
-            </h2>
+    <script>
+        let local_storage = localStorage.getItem("CoursesForComparison");
+        let array = [];
+        if (local_storage) {
+            array = JSON.parse(local_storage);
+        }
+        list = []
+        array.forEach(function (value, index) {
+            list.push(value.id);
+        })
+        urls_params = list.join('&courses=');
 
-            <div class="comparison__top-container">
-                <div class="comparison__top-container-need-help-box">
-                    {% autoescape off %}
-                        <h4 class="comparison__top-container-need-help-box-header">{% get_translation key='guidance_comparing' language=page.get_language %}</h4>
-                        <img class="comparison__top-container-need-help-box-image" src="/static/images/compare-course-graphic.svg">
-                        <p class="comparison__top-container-need-help-box-text">{% get_translation key='guidance_text' language=page.get_language %}</p>
-                    {% endautoescape %}
-                </div>
-                <div class="comparison__top-container-add-btn">
+        function showComparison(array) {
+            var xmlhttp;
+            if (!array) {
+                document.getElementById("comparison-body").innerHTML = "";
+                return;
+            }
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("comparison-body").innerHTML = this.responseText;
+                    scrollDisplay(0);
+                }
+            };
 
-                    <a id="addCourses" href="/{% get_translation key='bookmarks-manage' language=page.get_language %}/"
-                       class="comparison__top-container-add-btn-add-courses-button">
-                        <span style="font-size:20px;">+</span>
-                        <span>{% get_translation key='add_saved_course' language=page.get_language %}</span>
-                    </a>
+            let saved = [];
+            if (localStorage.getItem("bookmarkedCourses"))
+                saved = JSON.parse(localStorage.getItem("bookmarkedCourses"));
+            if (document.documentElement.lang == "cy") {
+                console.log("should be welsh");
+                xmlhttp.open("GET", "/cy/ajax/course-comparison/?courses=" + urls_params + '&hasStorage=' + saved.length, true);
+            } else {
+                xmlhttp.open("GET", "/ajax/course-comparison/?courses=" + urls_params + '&hasStorage=' + saved.length, true);
+            }
+            xmlhttp.send();
+        }
 
-                    <p class="comparison__top-container-add-btn-compare-text">
-                        {% get_translation key='compare_7_courses' language=page.get_language %}
-                    </p>
-                </div>
+        showComparison(array);
+    </script>
 
-            </div>
-            <!-- Course Search box -->
-            <div id="courseSearchContainer" class="course-search-container hidden">
-                <div class="no_courses_saved">
-                    {% get_translation key='no_courses_saved' language=page.get_language %}
-                </div>
-                <div class="course_comparison-search bg-white pb-5">
-                    <div class="row course_compare_search">
-                        {% include 'coursefinder/partials/coursesearch/searchbox.html' %}
-                        <div class="col-12 d-block d-lg-none mx-auto text-center">
-                            <hr class="dash"/>
-                        </div>
-                        {% include 'coursefinder/partials/coursesearch/coursewizard.html' %}
-                    </div>
-                </div>
-            </div>
-            <!-- Course Search box end -->
-            <div class="course-detail__course-container">
-                {% if courses %}
-                    <div class="course-detail__course-selected">
-                        {{ courses|length }} {% get_translation key='courses_selected' language=page.get_language %}
-                    </div>
-                    <form id="compareForm" method="GET"
-                          action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
-                        <div id="hiddenCourseCompare"></div>
-                    </form>
-
-                {% else %}
-                    <div class="course-detail__course-none-selected">
-                        <div class="course-detail__course-none-selected-header">
-                            {% get_translation key='no_courses_selected' language=page.get_language %}
-                        </div>
-                        <p>{% get_translation key='add_two_courses' language=page.get_language %}</p>
-                    </div>
-                {% endif %}
-                <div class="course-detail__course-container-pills">
-                    <div class="course-detail__course-container-pills-slider"
-                         onclick="scrollDisplay(-1);" id="leftArrow">
-                        <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-left"></i>
-                    </div>
-                    {% for course in courses %}
-                        {% include 'courses/partials/course_comparison_overview.html' %}
-                    {% endfor %}
-                    <div class="course-detail__course-container-pills-slider single-arrow"
-                         onclick="scrollDisplay(1);" id="rightArrow">
-                        <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-right"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div id="course-info-container">
-                {% if courses %}
-                    {% with dataset=courses_data.0.course_details %}
-                        <div class="course_comparison-table__row-header">
-                            {{ dataset.title }}
-                        </div>
-                        {% for item, value in dataset.dataset.items %}
-                            {% if forloop.counter == 3 %}
-                                <!-- Hidden content start -->
-                                <div class="accordion" id="initial-accordian">
-                                <div class="accordion-body">
-
-                            {% endif %}
-                        <div class="course_comparison-table__row-grey_background">
-                            {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
-                        </div>
-                        {% if forloop.last %}
-                            </div>
-                            <!-- Hidden content end -->
-                            <!-- Show more start-->
-                            {% with action=dataset.call_to_action.0.show_more %}
-                                <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
-                                     class="accordion-header">
-                                <div class="course_comparison-table__column-title_container">
-                                <div class="accordion-header course_comparison-table__column-first show_more">
-                                <i class="fas fa-chevron-down expand chevron" alt="expand"
-                                   aria-label="{{ action.affirmative }}"></i>
-                                <i class="fas fa-chevron-up collapse chevron" alt="collapse"
-                                   aria-label="{{ action.negative }}"></i>
-                                <span class="expand">{{ action.affirmative }}</span>
-                                <span class="collapse">{{ action.negative }}</span>
-                            {% endwith %}
-                        </div>
-                        </div>
-
-                        </div>
-                            <!-- show more end -->
-                        {% endif %}
-                        {% endfor %}
-                    {% endwith %}
-                </div>
-                    <div class="course-detail__body">
-                        {% for accordion in courses_data.0.accordions %}
-                            <div class="accordion" id="ac-{{ forloop.counter }}">
-                                <div tabindex="{{ forloop.counter }}" role="button" aria-label="Show content"
-                                     class="green narrow accordion-header sticky-accordion-header">
-                                    <div class="">
-                                        <div id="{{ accordion.value.heading }}" style="max-width: 440px;"
-                                             class="accordion-title"
-                                             aria-label="Show {{ accordion.value.heading }} content"
-                                             aria-expanded="false">{{ accordion.title }}
-                                        </div>
-                                    </div>
-                                    <div class="expand" style="display: block;">
-                                        <img class="nav-card__icon" src="/static/images/plus_icon_white.svg"
-                                             alt="expand">
-                                    </div>
-                                    <div class="collapse">
-                                        <img class="nav-card__icon" src="/static/images/minus_icon.svg" alt="collapse">
-                                    </div>
-                                </div>
-                                <div class="accordion-body">
-                                    {% include 'courses/partials/accordion_body.html' %}
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
-                {% endif %}
-            </div>
-
-        </div>
-    </div>
     <script type="text/javascript" src="{% static 'js/ratings.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/responsive_comparison.js' %}?{% code_version %}"></script>
 {% endblock %}
