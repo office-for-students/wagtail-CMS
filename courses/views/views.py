@@ -273,46 +273,17 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
 
 
 def compare_courses(request, language=enums.languages.ENGLISH):
-    url_params = request.GET
     page = get_page_for_language(language, CourseComparisonPage.objects.all())
 
     if not page:
         return render(request, '404.html')
-
-    courses_array = []
-
-    courses_list = url_params.getlist('courses') if 'courses' in url_params else None
-
-    if courses_list:
-        # Ignore anything more than 7 (avoid malicious activity)
-        for course in courses_list[0:7]:
-            if course:
-                course = course.split(',')
-                course, error = Course.find(course[0], course[1], course[2], language)
-
-                if error:
-                    logger.warning(f"Failed to fetch course, Error fetching course: {error} for {course}")
-                    redirect_page = get_new_landing_page_for_language(language)
-                    return redirect(redirect_page + '?load_error=true&error_type=0')
-
-                courses_array.append(course)
-
-    courses = renderer.dataset_for_comparison_view(courses_array, language)
-
-    query_string = request.environ.get('QUERY_STRING')
 
     context = page.get_context(request)
 
     context.update(
         dict(
             page=page,
-            courses=courses_array,
-            courses_data=courses,
-            english_url=f"{page.get_english_url()}?{query_string}",
-            welsh_url=f"{page.get_welsh_url()}?{query_string}",
             cookies_accepted=request.COOKIES.get('discoverUniCookies'),
-            get_params=url_params,
-            institutions_list=InstitutionList.get_options()[utils.get_language(request.get_full_path())]
         )
     )
 

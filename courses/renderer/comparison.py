@@ -11,6 +11,7 @@ from courses.renderer.sections import SatisfactionSection
 from courses.renderer.sections.base import Section
 from courses.renderer.sections.continuation import ContinuationSection
 from courses.renderer.sections.employment import SubEmploymentSection
+from courses.renderer.sections.graduate_perception import GraduatePerceptionSection
 from courses.renderer.sections.satisfaction import SubSatisfactionSection
 
 logger = logging.getLogger(__name__)
@@ -152,6 +153,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="graduate_guidance_1", language=language),
                 translations.term_for_key(key="graduate_guidance_2", language=language),
             ),
+            dataset=get_details(GraduatePerceptionSection, courses, language),
             source=(
                 translations.term_for_key(key="graduate_link", language=language),
                 translations.term_for_key(key="read_more_about_graduate_perceptions", language=language),
