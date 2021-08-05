@@ -31,10 +31,7 @@
 
         function loadPageContent(urls_params, callback) {
             let xmlhttp;
-            if (!urls_params) {
-                document.getElementById("comparison-body").innerHTML = "";
-                return;
-            }
+
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
@@ -69,6 +66,7 @@
 
             loadPageContent(urls_params, function(){
                 scrollDisplay(0);
+                console.log("I'm a big boy")
                 // let accordions = $('[class$=accordion]');
                 // for (let i = 0; i < accordions.length; i++) {
                 //     new Accordion(accordions[i]);

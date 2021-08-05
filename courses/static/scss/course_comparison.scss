@@ -219,40 +219,51 @@ $course_comparison_first_column_width: 250px;
 }
 
 .subject_wrapper{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  display: block;
   width: 100%;
   color: black;
 
-  &__show_data_box{
+  .box{
     background-color: #f2f2f2;
-    max-width: 250px;
+    min-width: 100%;
+    display: block;
     padding: 16px 16px 16px 24px;
-    margin: 0 8px 8px 0;
+    margin: 0 0 4px 0;
 
-    &-header{
+    .header{
       font-weight: bold;
       font-size: 16px;
       margin-bottom: 16px;
     }
   }
-  &__container{
-    width: 100%;
+  .container{
+    min-width: 100%;
+    padding: 0;
+    margin: 0;
 
-    &-header{
+    .header{
       background-color: #f2f2f2;
       position: relative;
       padding:16px 8px 13px 8px;
     }
-    &-subjects{
+    .subjects{
       display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      height: 100px;
 
+      .subject{
+        flex: 1;
+        margin-right: 8px;
 
-      &-subject{
+        &:last-child{
+          margin-right: 0;
+        }
+
+        .list{
+          list-style-type: none;
+          padding: 0;
+        }
+      }
+
+      .button{
         background-color: rgba(239, 204, 75, 0.5);
         margin: 8px 0 8px 0;
         padding: 8px;
@@ -983,6 +994,20 @@ $course_comparison_first_column_width: 250px;
       text-align: left;
     }
   }
+  .subject_wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    .box{
+      min-width: 0;
+      max-width: 186px;
+      margin-right: 4px;
+    }
+    .container{
+      min-width: 0;
+      width: 100%
+    }
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -1074,6 +1099,21 @@ $course_comparison_first_column_width: 250px;
     margin-bottom: 4px;
     align-items: center;
     flex: 1;
+  }
+
+  .subject_wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    .box{
+      min-width: 0;
+      max-width: 250px;
+      margin-right: 8px;
+    }
+    .container{
+      min-width: 0;
+      width: 100%
+    }
   }
 
 }

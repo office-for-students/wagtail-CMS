@@ -16,7 +16,9 @@
                 {% endautoescape %}
             </div>
         {% endif %}
-        {% include 'courses/partials/subject_selector.html' with subjects=accordion.subjects %}
+        {% if accordion.subjects %}
+            {% include 'courses/partials/subject_selector.html' with subjects=accordion.subjects %}
+        {% endif %}
         {% for item, value in dataset.items %}
             {% if forloop.counter < change_point %}
                 <div class="course_comparison-table__row-yellow_background">
