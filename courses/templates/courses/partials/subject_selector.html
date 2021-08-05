@@ -1,19 +1,49 @@
-<div class="subject_wrapper">
+<script>
+    function getClickedElement (element) {
+        if (element.children.length > 1) {
+            for (let i = 0; i < element.children.length; i++) {
+                element.children[i].classList.remove("selected")
+            }
+        }
+    }
+    function getOl(){
+        return document.getElementsByTagName("OL")
+    }
+
+
+    for(let i=0; i<getOl().length; i++)
+        getOl()[i].addEventListener("click", function(e){
+            e.target.classList.add("selected")
+        })
+
+</script>
+
+<div class="subject_wrapper" id="subject_wrapper">
     <div class="subject_wrapper__show_data_box">
         <div class="subject_wrapper__show_data_box-header">Show data from</div>
         <div>Some courses selected have data from more than one subject. Select the subject you wish to see data from</div>
     </div>
-    <div class="subject_wrapper__container">
+    <div  class="subject_wrapper__container">
         <div class="subject_wrapper__container-header">Select Subject</div>
-        <div class="subject_wrapper__container-subjects">
+        <div id="subjects-testing" class="subject_wrapper__container-subjects">
             {% for items in subjects.subject %}
                 <div class="mr-2">
-                {% for subject in items %}
-                    <div class="subject_wrapper__container-subjects-subject">
-                        {{ subject }}
-                    </div>
-                {% endfor %}
-                    </div>
+                    <ol onclick="getClickedElement(this)">
+                    {% for subject in items %}
+                        {% if forloop.first %}
+                            <li id="{{subject}}{{forloop.counter0}}"
+                                class="subject_wrapper__container-subjects-subject selected">
+                                {{ subject }}
+                            </li>
+                        {% else %}
+                            <li id="{{subject}}{{forloop.counter0}}"
+                                class="subject_wrapper__container-subjects-subject">
+                                {{ subject }}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ol>
+                </div>
             {% endfor %}
         </div>
     </div>

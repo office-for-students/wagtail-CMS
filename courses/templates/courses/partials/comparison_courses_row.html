@@ -1,6 +1,6 @@
 <div class="course_comparison-table__row">
-    <div class="course_comparison-table__column-title_container">
-        <div class="course_comparison-table__column-first {{header_font}} header">
+    <div class="course_comparison-table__column-title_container header">
+        <div class="course_comparison-table__column-first {{header_font}}">
             {{ title }}
         </div>
         {% if subtitle %}
@@ -13,9 +13,10 @@
     {% for item in values %}
         {% if item.values %}
             {% for value in item.values %}
-                <div id="arrow-{{forloop.counter0}}"
+                <div id="arrow-{{forloop.counter0}}-multiple"
                      class="course_comparison-table__column {{item_font}} {{mt}} arrow cc-column-{{forloop.counter0}}"
-                     data-index="{{forloop.counter0}}">
+                     data-index="{{forloop.counter0}}"
+                     {% if not forloop.first %}hidden{% endif %}>
                     {{value}}
                 </div>
             {% endfor %}

@@ -252,11 +252,17 @@ $course_comparison_first_column_width: 250px;
 
 
       &-subject{
-        background-color: #efcc4b;
-        margin: 8px 0px 8px 0;
-
+        background-color: rgba(239, 204, 75, 0.5);
+        margin: 8px 0 8px 0;
+        padding: 8px;
         border-radius: 3px;
         flex: 1;
+        cursor: pointer;
+
+        &.selected{
+          background-color: #efcc4b;
+          cursor: default;
+        }
       }
     }
   }
