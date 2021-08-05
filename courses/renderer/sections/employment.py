@@ -1,5 +1,6 @@
 from typing import List, Tuple, Any, Dict
 
+from CMS import translations
 from courses.models import Course
 from courses.renderer.sections.base import Section
 
@@ -36,24 +37,34 @@ suffix_index = 3
 model_index = 4
 
 
+def multiple_subjects(course: Course, stat: str, suffix: Any, model: str, language: str) -> dict:
+    response = dict(title="subject", subject=[], values=[])
+    for index, subject in enumerate(course.subject_names):
+        subject_name = subject.display_subject_name()
+
+        if model == "employment":
+            if len(course.employment_stats) >= index+1:
+                _object = course.employment_stats[index]
+                method = str(getattr(_object, stat))
+            else:
+                method = translations.term_for_key(key="no_data_available", language=language)
+        else:
+            if len(course.job_type_stats) >= index+1:
+                _object = course.job_type_stats[index]
+                method = str(getattr(_object, stat))
+            else:
+                method = translations.term_for_key(key="no_data_available", language=language)
+
+        response["subject"].append(subject_name)
+        response["values"].append(f"{method}{suffix}" if suffix and method.isnumeric() else method)
+    return response
+
+
 def presentable_employment(course: Course, stat: str, suffix: Any, model: str, language: str) -> str:
-    if language == 'cy':
-        response = "Nid yw'r data ar gael"
-    else:
-        response = "No data available"
+    response = translations.term_for_key(key="no_data_available", language=language)
     try:
         if course.has_multiple_subject_names:
-            response = dict(title="subject", subject=[], values=[])
-            for index, subject in enumerate(course.subject_names):
-                subject_name = subject.display_subject_name()
-                print(index, subject_name)
-                if model == "employment":
-                    _object = course.employment_stats[index]
-                else:
-                    _object = course.job_type_stats[index]
-                method = str(getattr(_object, stat))
-                response["subject"].append(subject_name)
-                response["values"].append(f"{method}{suffix}" if suffix and method.isnumeric() else method)
+            response = multiple_subjects(course, stat, suffix, model, language)
         else:
             if model == "employment":
                 _object = course.employment_stats[0]

@@ -166,6 +166,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="graduate_guidance_1", language=language),
                 translations.term_for_key(key="graduate_guidance_2", language=language),
             ),
+            subjects=get_multiple_subjects(courses),
             dataset=get_details(GraduatePerceptionSection, courses, language),
             source=(
                 translations.term_for_key(key="graduate_link", language=language),
