@@ -291,7 +291,30 @@ STATISTICS = {
         'en': "Employed not in a professional or managerial job",
         'cy': "Canran y rhai a gyflogir nad ydynt mewn swydd broffesiynol neu swydd reoli ar gorffen y cwrs."
     },
-
+    'usefulness': {
+        'en': "Usefulness",
+        'cy': "Pa mor ddefnyddiol"
+    },
+    'usefulness_subtitle': {
+        'en': "What I learnt on my course has been useful in my current work",
+        'cy': "Rwy'n defnyddio'r hyn a ddysgais wrth astudio yn fy ngwaith presennol"
+    },
+    'meaningfulness': {
+        'en': "Meaningfulness",
+        'cy': "Pa mor ystyrlon"
+    },
+    'meaningfulness_subtitle': {
+        'en': "The course has made my current work meaningful",
+        'cy': "Mae fy ngwaith presennol yn ystyrlon"
+    },
+    'future': {
+        'en': "Future",
+        'cy': "Y Dyfodol"
+    },
+    'future_subtitle': {
+        'en': "The course has had a positive impact on my future plans",
+        'cy': "Mae fy ngwaith presennol yn cyd-fynd â'm cynlluniau ar gyfer y dyfodol"
+    },
 }
 
 OPTIONALS = {
