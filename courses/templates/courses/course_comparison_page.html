@@ -28,35 +28,25 @@
     <div class="comparison d-sm-block mb-5" id="comparison-body"></div>
 
     <script>
-        let local_storage = localStorage.getItem("CoursesForComparison");
-        let array = [];
-        if (local_storage) {
-            array = JSON.parse(local_storage);
-        }
-        list = []
-        array.forEach(function (value, index) {
-            list.push(value.id);
-        })
-        urls_params = list.join('&courses=');
 
-        function showComparison(array) {
-            var xmlhttp;
-            if (!array) {
+        function loadPageContent(urls_params, callback) {
+            let xmlhttp;
+            if (!urls_params) {
                 document.getElementById("comparison-body").innerHTML = "";
                 return;
             }
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
+                if (this.readyState === 4 && this.status === 200) {
                     document.getElementById("comparison-body").innerHTML = this.responseText;
-                    scrollDisplay(0);
+                    callback();
                 }
             };
 
             let saved = [];
             if (localStorage.getItem("bookmarkedCourses"))
                 saved = JSON.parse(localStorage.getItem("bookmarkedCourses"));
-            if (document.documentElement.lang == "cy") {
+            if (document.documentElement.lang === "cy") {
                 console.log("should be welsh");
                 xmlhttp.open("GET", "/cy/ajax/course-comparison/?courses=" + urls_params + '&hasStorage=' + saved.length, true);
             } else {
@@ -65,9 +55,30 @@
             xmlhttp.send();
         }
 
-        showComparison(array);
-    </script>
+        window.onload = function(){
+            let local_storage = localStorage.getItem("CoursesForComparison");
+            let array = [];
+            if (local_storage) {
+                array = JSON.parse(local_storage);
+            }
+            let list = []
+            array.forEach(function (value, index) {
+                list.push(value.id);
+            })
+            let urls_params = list.join('&courses=');
 
-    <script type="text/javascript" src="{% static 'js/ratings.js' %}?{% code_version %}"></script>
+            loadPageContent(urls_params, function(){
+                scrollDisplay(0);
+                // let accordions = $('[class$=accordion]');
+                // for (let i = 0; i < accordions.length; i++) {
+                //     new Accordion(accordions[i]);
+                // }
+                setEventListeners();
+            });
+        }
+
+    </script>
     <script type="text/javascript" src="{% static 'js/responsive_comparison.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/ratings.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/subject_selector.js' %}?{% code_version %}"></script>
 {% endblock %}

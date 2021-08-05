@@ -1,22 +1,3 @@
-<script>
-    function getClickedElement (element) {
-        if (element.children.length > 1) {
-            for (let i = 0; i < element.children.length; i++) {
-                element.children[i].classList.remove("selected")
-            }
-        }
-    }
-    function getOl(){
-        return document.getElementsByTagName("OL")
-    }
-
-
-    for(let i=0; i<getOl().length; i++)
-        getOl()[i].addEventListener("click", function(e){
-            e.target.classList.add("selected")
-        })
-
-</script>
 
 <div class="subject_wrapper" id="subject_wrapper">
     <div class="subject_wrapper__show_data_box">
@@ -28,7 +9,7 @@
         <div id="subjects-testing" class="subject_wrapper__container-subjects">
             {% for items in subjects.subject %}
                 <div class="mr-2">
-                    <ol onclick="getClickedElement(this)">
+                    <ol>
                     {% for subject in items %}
                         {% if forloop.first %}
                             <li id="{{subject}}{{forloop.counter0}}"
