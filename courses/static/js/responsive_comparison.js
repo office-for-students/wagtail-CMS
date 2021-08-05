@@ -175,9 +175,9 @@ function updateStickyHeader() {
     accordion_header.css("z-index", "8");
 }
 
-//
-// $(window).on('resize orientationchange', function () {
-//     current_index = 0;
-//     scrollDisplay(0);
-// });
+
+$(window).on('resize orientationchange', function () {
+    current_index = 0;
+    scrollDisplay(0);
+});
 
