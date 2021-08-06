@@ -1,4 +1,5 @@
 from django.templatetags.static import static
+from wagtail.core.models import Page
 
 from CMS import translations
 from CMS.enums import enums
@@ -13,9 +14,6 @@ def nav_menu_render(request, url_for_language, menu, footer):
     search_page_url = get_page_for_language(language, HomePage.objects.all()).url
     comparison_page_url = get_page_for_language(language, CourseComparisonPage.objects.all()).url
     bookmark_page_url = get_page_for_language(language, CourseManagePage.objects.all()).url
-    search = translations.term_for_key(key='search', language=language)
-    compare = translations.term_for_key(key='compare', language=language)
-    saved = translations.term_for_key(key='saved', language=language)
 
     brand_logo = {
         'img': 'images/logos/nav_logo_english.svg', 'url': '/'
@@ -29,9 +27,17 @@ def nav_menu_render(request, url_for_language, menu, footer):
     return {
         'brand_logo': brand_logo,
         'primary_menu': get_menu(menu, language, 'menu_items') + [language_toggle],
-        'comp_menu': [{'label': search, 'img': static('images/search_icon.svg'), 'url': search_page_url},
-                      {'label': compare, 'img': static('images/compare_icon.svg'), 'url': comparison_page_url},
-                      {'label': saved, 'img': static('images/white-bookmark.svg'), 'url': bookmark_page_url}],
+        'comp_menu': [
+            {'label': translations.term_for_key(key='search', language=language),
+             'img': static('images/search_icon.svg'),
+             'url': search_page_url},
+            {'label': translations.term_for_key(key='compare', language=language),
+             'img': static('images/compare_icon.svg'),
+             'url': comparison_page_url},
+            {'label': translations.term_for_key(key='saved', language=language),
+             'img': static('images/white-bookmark.svg'),
+             'url': bookmark_page_url}
+        ],
         'footer_menu': get_menu(footer, language, 'footer_items')
     }
 
