@@ -24,10 +24,10 @@
         </div>
     </div>
 
-    <div id="course-info-container">
+    <div class="course_comparison-table" id="course-info-container">
         {% if courses %}
             {% with dataset=courses_data.0.course_details %}
-                <div class="course_comparison-table__row-header">
+                <div class="comparison_row-header">
                     {{ dataset.title }}
                 </div>
                 {% for item, value in dataset.dataset.items %}
@@ -37,7 +37,7 @@
                         <div class="accordion-body">
 
                     {% endif %}
-                <div class="course_comparison-table__row-grey_background">
+                <div class="comparison_row-grey_background">
                     {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
                 </div>
                 {% if forloop.last %}
@@ -48,7 +48,7 @@
                         <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
                              class="accordion-header">
                         <div class="accordion-title">
-                        <div class="accordion-header course_comparison-table__column-first">
+                        <div class="accordion-header column-first">
                         <i class="fas fa-chevron-down expand chevron" alt="expand"
                            aria-label="{{ action.affirmative }}"></i>
                         <i class="fas fa-chevron-up collapse chevron" alt="collapse"

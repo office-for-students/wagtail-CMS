@@ -3,15 +3,15 @@
     <div class="mb-3">
         {% if accordion.guidance_information %}
             <div class="guidance_box">
-                <p class="guidance_box-title">{% get_translation key='guidance_title' language=page.get_language %}</p>
+                <p class="title">{% get_translation key='guidance_title' language=page.get_language %}</p>
                 {% autoescape off %}
                     <div>
                         <ul class="mt-3">
                             {% for entry in accordion.guidance_information %}
-                                <li class="guidance_box-item">{{entry}}</li>
+                                <li class="item">{{entry}}</li>
                             {% endfor %}
                         </ul>
-                    <a class="guidance_box-link blue-text" href="{{accordion.source.0}}">{{accordion.source.1}}</a>
+                    <a class="link blue-text" href="{{accordion.source.0}}">{{accordion.source.1}}</a>
                     </div>
                 {% endautoescape %}
             </div>
@@ -21,15 +21,15 @@
         {% endif %}
         {% for item, value in dataset.items %}
             {% if forloop.counter < change_point %}
-                <div class="course_comparison-table__row-yellow_background">
+                <div class="comparison_row-yellow_background">
                     {% if forloop.counter == 1 %}
                         {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values item_font="item_font" header_font="header_font" mt="mt-3" %}
                     {% else %}
-                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values mt="mt-3" %}
+                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values mt="mt-2" %}
                     {% endif %}
                 </div>
             {% else %}
-                <div class="course_comparison-table__row-grey_background">
+                <div class="comparison_row-grey_background">
                     {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values item_font="item_font" header_font="header_font" %}
                 </div>
             {% endif %}
@@ -38,7 +38,7 @@
 
     {% for sub_accordion in sub_accordions %}
         <div class="accordion-block">
-            <div id="{{sub_accordion.title}}-header" class="accordion-header course_comparison-table__row-header"
+            <div id="{{sub_accordion.title}}-header" class="comparison_row-header"
                  onclick="toggleAccordion('{{sub_accordion.title}}');">
                 {{sub_accordion.title}}
                 <div class="ml-auto">
@@ -53,7 +53,7 @@
             </div>
         {% for item, value in sub_accordion.dataset.items %}
             <div id="{{sub_accordion.title}}{{forloop.counter0}}"
-                 class="course_comparison-table__row-grey_background accordion-body">
+                 class="comparison_row-grey_background accordion-body">
                 {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values item_font="item_font" header_font="header_font" %}
             </div>
         {% endfor %}

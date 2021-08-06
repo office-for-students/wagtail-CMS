@@ -96,7 +96,8 @@ $course_comparison_first_column_width: 250px;
     vertical-align: middle;
   }
 
-  &__row {
+
+  .comparison_row {
     display: block;
     text-align: center;
     margin-bottom: 16px;
@@ -113,6 +114,7 @@ $course_comparison_first_column_width: 250px;
       font-weight: bold;
       font-size: 18px;
     }
+
 
     &-grey_background {
       background: $divider-grey;
@@ -135,7 +137,7 @@ $course_comparison_first_column_width: 250px;
   }
 
 
-  &__column {
+  .column {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -299,9 +301,8 @@ $course_comparison_first_column_width: 250px;
 }
 
 .comparison {
-  padding: 5px 5px 5px 5px;
+  padding: 5px 5px 0px 5px;
   font-family: "Nunito Sans", sans-serif;
-  padding-bottom: 0;
   color: $white;
 
   .comparison__header-bg-icon {
@@ -674,28 +675,29 @@ $course_comparison_first_column_width: 250px;
 
 .guidance_box{
     border: 1px solid #daf4ef;
-    padding: 25px 25px 25px 25px;
+    padding: 8px;
     color: black;
     margin: 16px 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    &-title{
+    .title{
         font-size: 20px;
         font-weight: bold;
         max-width: 100%;
-        margin: 0px;
+        margin: 16px 0px;
+        padding: 0px 15px;
     }
-    &-item{
+    .item{
         font-size: 14px;
-        margin-bottom: 15px;
+        margin-bottom: 2px;
 
         &:last-child{
             margin-bottom: 0px;
         }
     }
-    &-link{
+    .link{
         font-size: 14px;
         padding-left: 40px;
         display: block;
@@ -864,15 +866,17 @@ $course_comparison_first_column_width: 250px;
     margin-left: auto !important;
     margin-right: auto !important;
   }
-  .course_comparison-table__row {
-    text-align: center;
-    margin-bottom: 16px;
+  .course_comparison-table{
+    .comparison_row {
+      text-align: center;
+      margin-bottom: 16px;
+    }
 
     &-header {
       margin-bottom: 16px;
     }
   }
-  .course_comparison-table__column-first {
+  .column-first {
     min-width: 100%;
     max-width: 100%;
     margin-bottom: 4px;
@@ -932,7 +936,7 @@ $course_comparison_first_column_width: 250px;
 
 
   .course_comparison-table {
-    &__row {
+    .comparison_row {
       display: flex;
       min-height: $course_comparison_line_height;
       flex-direction: row;
@@ -962,7 +966,7 @@ $course_comparison_first_column_width: 250px;
       }
     }
 
-    &__column {
+    .column {
       flex: 1 1 0;
       display: flex;
       justify-content: center;
@@ -1058,7 +1062,7 @@ $course_comparison_first_column_width: 250px;
   }
 
   .course_comparison-table {
-    &__row {
+    .comparison_row {
       display: flex;
       min-height: $course_comparison_line_height;
       flex-direction: row;
@@ -1086,7 +1090,7 @@ $course_comparison_first_column_width: 250px;
       }
     }
 
-    &__column {
+    .column {
       flex: 1 1 0;
       display: flex;
       justify-content: center;
