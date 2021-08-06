@@ -10,9 +10,9 @@ def nav_menu_render(request, url_for_language, menu, footer):
     from home.models import HomePage
     url = request.get_full_path()
     language = get_language(url)
-    search_page_url = get_page_for_language(language, HomePage.objects.all())
-    comparison_page_url = get_page_for_language(language, CourseComparisonPage.objects.all())
-    bookmark_page_url = get_page_for_language(language, CourseManagePage.objects.all())
+    search_page_url = get_page_for_language(language, HomePage.objects.all()).url
+    comparison_page_url = get_page_for_language(language, CourseComparisonPage.objects.all()).url
+    bookmark_page_url = get_page_for_language(language, CourseManagePage.objects.all()).url
     search = translations.term_for_key(key='search', language=language)
     compare = translations.term_for_key(key='compare', language=language)
     saved = translations.term_for_key(key='saved', language=language)
