@@ -31,13 +31,10 @@ class DiscoverUniBasePage(Page):
         return self.get_language() == enums.languages.ENGLISH
 
     def url_for_language(self):
-        from home.models import HomePage
-        if self.translated_page:
-            return self.translated_page.url
-        elif self.is_english():
-            return get_page_for_language(enums.languages.WELSH, HomePage.objects.all()).url
+        if self.is_english():
+            return get_page_for_language(enums.languages.WELSH, self.__class__.objects.all()).url
         else:
-            return get_page_for_language(enums.languages.ENGLISH, HomePage.objects.all()).url
+            return get_page_for_language(enums.languages.ENGLISH, self.__class__.objects.all()).url
 
     class Meta:
         abstract = True
