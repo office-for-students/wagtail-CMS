@@ -228,7 +228,7 @@ $course_comparison_first_column_width: 250px;
     min-width: 100%;
     display: block;
     padding: 16px 16px 16px 24px;
-    margin: 0 0 4px 0;
+    margin: 0 0 8px 0;
 
     .header{
       font-weight: bold;
@@ -274,6 +274,10 @@ $course_comparison_first_column_width: 250px;
         &.selected{
           background-color: #efcc4b;
           cursor: default;
+
+          &:before{
+            content: "\2713";
+          }
         }
       }
     }
@@ -336,11 +340,11 @@ $course_comparison_first_column_width: 250px;
     margin-bottom: 100px;
     position: relative;
 
-    &-add-btn {
+    .add-btn {
       display: inline-block;
       position: relative;
 
-      &-add-courses-button {
+      .add-courses-button {
         width: 210px;
         height: 40px;
         margin: 48px 16px 6.5px 0px;
@@ -357,7 +361,7 @@ $course_comparison_first_column_width: 250px;
         transform: translate(0%, -100%);
       }
 
-      &-compare-text {
+      .compare-text {
         display: inline-block;
         color: #5d5d5d;
         vertical-align: top;
@@ -365,7 +369,7 @@ $course_comparison_first_column_width: 250px;
       }
     }
 
-    &-need-help-box {
+    .need-help-box {
       display: inline-block;
       color: black;
       background-color: #f4f8f8;
@@ -374,18 +378,18 @@ $course_comparison_first_column_width: 250px;
       text-align: center;
       margin-bottom: 31px;
 
-      &-header{
+      .header{
         font-size: 16px;
         margin-bottom: 20px;
         font-weight: bold;
         text-align: left;
       }
-      &-text{
+      .text{
         font-size: 14px;
         margin-bottom: 0px;
         text-align: left;
       }
-      &-image{
+      .image{
         position: absolute;
         width: 50px;
         height: auto;
@@ -575,20 +579,30 @@ $course_comparison_first_column_width: 250px;
       }
     }
 
-    &__course {
-      &-container {
+    &__course-container {
         width: 100%;
         position: sticky;
         background: white;
         padding-top: 20px;
         z-index: 10;
         top: 0;
-        &-pills {
+
+        .number_selected {
+          color: black;
+          margin-bottom: auto;
+          margin-top: 17px;
+          margin-right: auto;
+          min-width: 250px;
+          font-size: 24px;
+          font-weight: bold;
+        }
+
+        .cards {
           display: flex;
           overflow: hidden;
           flex: 1;
 
-          &-slider {
+          .slider {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -596,33 +610,25 @@ $course_comparison_first_column_width: 250px;
             background-color: #d2d2d2;
             cursor: pointer;
 
-            &-arrow {
+            .arrow {
               color: black;
               font-size: 20px;
               font-weight: bold;
             }
           }
         }
-      }
 
-      &-selected {
-        color: black;
-        margin-bottom: auto;
-        margin-top: 17px;
-        margin-right: auto;
-        min-width: 250px;
-        font-size: 24px;
-        font-weight: bold;
-      }
 
-      &-none-selected {
+
+
+      .none-selected {
         font-size: 16px;
         width: 250px;
         color: black;
         margin-right: auto;
         min-width: 186px;
 
-        &-header {
+        .header {
           font-weight: bold;
           font-size: 20px;
           margin-bottom: 18px;
@@ -801,13 +807,15 @@ $course_comparison_first_column_width: 250px;
 
 @media only screen and (min-width: 576px){
     .comparison__top-container {
-        &-need-help-box-image {
-            position: absolute;
-            width: 50px;
-            height: auto;
-            right: 50px;
-            top: 10px;
+      .need-help-box {
+        .image {
+          position: absolute;
+          width: 50px;
+          height: auto;
+          right: 50px;
+          top: 10px;
         }
+      }
     }
     .course_comparison-table__column-first {
       &.subtitle{
@@ -826,13 +834,13 @@ $course_comparison_first_column_width: 250px;
   }
 
   .comparison__top-container {
-    &-need-help-box {
+    .need-help-box {
       display: block;
       width: 100%;
       margin: auto;
     }
 
-    &-add-btn {
+    .add-btn {
       margin-top: 32px;
     }
   }
@@ -840,10 +848,12 @@ $course_comparison_first_column_width: 250px;
   .comparison .course-detail__course-container {
     display: block;
 
-    &-pills-slider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .cards {
+      .slider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 }
@@ -877,19 +887,21 @@ $course_comparison_first_column_width: 250px;
   .comparison .course-detail__course-container {
     display: block;
   }
-  .comparison .course-detail__course-selected {
-    display: block;
-    width: 100%;
-    margin-bottom: 17px;
+  .comparison .course-detail__course-container {
+    .number_selected {
+      display: block;
+      width: 100%;
+      margin-bottom: 17px;
+    }
   }
   .comparison__top-container {
-    &-need-help-box {
+    .need-help-box {
       display: block;
       width: 100%;
       margin: auto;
     }
 
-    &-add-btn {
+    .add-btn {
       margin-top: 32px;
     }
   }
@@ -908,10 +920,14 @@ $course_comparison_first_column_width: 250px;
     justify-content: center;
   }
 
-  .comparison__top-container-add-btn-compare-text {
-    display: inline-block;
-    color: #5d5d5d;
-    vertical-align: top;
+  .comparison__top-container{
+    .add-btn {
+      .compare-text {
+        display: inline-block;
+        color: #5d5d5d;
+        vertical-align: top;
+      }
+    }
   }
 
 
@@ -981,13 +997,15 @@ $course_comparison_first_column_width: 250px;
 
   }
 
-  .comparison .course-detail__course-selected {
-    min-width: 186px;
-    max-width: 186px;
+  .comparison .course-detail__course-container {
+    .number_selected {
+      min-width: 186px;
+      max-width: 186px;
+    }
   }
 
   .comparison__top-container {
-    &-need-help-box {
+    .need-help-box {
       display: block;
       width: 45%;
       margin: auto;
@@ -1024,18 +1042,19 @@ $course_comparison_first_column_width: 250px;
   }
 
   .comparison__top-container {
-    &-need-help-box {
+    .need-help-box {
       display: block;
       width: 45%;
       margin: auto;
       text-align: left;
     }
-  }
-
-  .comparison__top-container-add-btn-compare-text {
-    display: inline-block;
-    color: #5d5d5d;
-    vertical-align: top;
+    .add-btn {
+      .compare-text {
+        display: inline-block;
+        color: #5d5d5d;
+        vertical-align: top;
+      }
+    }
   }
 
   .course_comparison-table {

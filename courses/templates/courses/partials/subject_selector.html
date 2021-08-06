@@ -13,8 +13,7 @@
                     {% for subject in items %}
                         <li {% if forloop.first %} class="button selected" {% else %} class="button" {% endif %}
                             data-details="{{accordion.title}},{{index}},{{forloop.counter0}}">
-                            <span style="pointer-events: none;">{% if forloop.first %}&#x2713;{% endif %}
-                                {{ subject }}</span>
+                                {{ subject }}
                         </li>
                     {% endfor %}
                     </ol>

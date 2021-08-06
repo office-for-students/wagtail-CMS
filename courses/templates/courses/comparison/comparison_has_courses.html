@@ -8,18 +8,18 @@
     {% include 'courses/partials/comparison/guidance_box.html' %}
     <!-- Guidance box end -->
     <div class="course-detail__course-container">
-        <div class="course-detail__course-selected">
+        <div class="number_selected">
             <span id="numberOfSelected">{{ courses|length }}</span> {% get_translation key='courses_selected' language=page.get_language %}
         </div>
-        <div class="course-detail__course-container-pills">
-            <div class="course-detail__course-container-pills-slider"
+        <div class="cards">
+            <div class="slider"
                  onclick="scrollDisplay(-1);" id="leftArrow">
-                <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-left"></i>
+                <i class="arrow fas fa-chevron-left"></i>
             </div>
             {% include 'courses/partials/course_comparison_overview.html' with courses=courses %}
-            <div class="course-detail__course-container-pills-slider single-arrow"
+            <div class="slider single-arrow"
                  onclick="scrollDisplay(1);" id="rightArrow">
-                <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-right"></i>
+                <i class="arrow fas fa-chevron-right"></i>
             </div>
         </div>
     </div>
