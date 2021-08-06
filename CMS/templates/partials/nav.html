@@ -33,13 +33,6 @@
                         </li>
                     {% endwith %}
                 {% endfor %}
-                {#                TODO: Remove course search from CMS, replace with language toggle           #}
-                <li class="discover-uni-nav__desktop-link">
-                    <a id="language_select"
-                       href="{% if page.is_english %} {{ welsh_url }} {% else %} {{ english_url }} {% endif %}">
-                        {% if page.is_english %} Cymraeg {% else %} English {% endif %}
-                    </a>
-                </li>
             </ul>
 
             {# Comparison Menu #}

@@ -40,20 +40,6 @@
 
 }
 
-.arrow {
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid black;
-  border-color: #ffffff;
-  &-down{
-    transform: rotate(180deg);
-  }
-}
-
-
-
 .discover-uni-nav {
   width: 100%;
 

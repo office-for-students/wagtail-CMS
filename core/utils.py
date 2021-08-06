@@ -1,21 +1,20 @@
 import os
+from http import HTTPStatus
 
 import pyclamd
-
 from django.conf import settings
-
-from http import HTTPStatus
 
 from CMS.enums import enums
 from core.exceptions import VirusException
+from core.request_handler import get_json_file
 from errors.models import InternalError
-from core.request_handler import send_feedback, get_json_file
 
 
 def get_language(url):
     if url and '/cy/' in url:
         return 'cy'
     return 'en'
+
 
 def get_collection_link(db_id, collection_id):
     """Create and return collection link based on values passed in"""
@@ -39,7 +38,6 @@ def get_cosmos_client():
 
 
 def get_page_for_language(language, pages):
-
     def is_correct_language(page):
         return page.get_language() == language
 
@@ -64,10 +62,9 @@ def get_page_for_language(language, pages):
     if len(page_for_language) > 1:
         InternalError(HTTPStatus.INTERNAL_SERVER_ERROR,
                       'Bad configuration - Found multiple copies of this page type for this language')
+
+    print(page_for_language)
     return page_for_language[0]
-
-
-
 
 
 def fallback_to(value, default_value):
@@ -126,13 +123,13 @@ def get_current_version():
         version_number = response.json()["version"]
     else:
         version_number = ""
-        
+
     return version_number
 
 
 def get_code_version():
-        with open(os.path.join(settings.BASE_DIR, 'version.txt'), 'r') as file:
-            return file.read().replace('\n', '')
+    with open(os.path.join(settings.BASE_DIR, 'version.txt'), 'r') as file:
+        return file.read().replace('\n', '')
 
 
 def get_new_landing_page_for_language(language):

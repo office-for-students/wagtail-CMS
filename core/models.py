@@ -1,14 +1,14 @@
 from django.db import models
-
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, PageChooserPanel
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.snippets.models import register_snippet
 
+from CMS.context_processors import nav_menu_render
 from CMS.enums import enums
 from core import utils
-from core.utils import get_page_for_language, get_current_version
+from core.utils import get_page_for_language
 
 
 class DiscoverUniBasePage(Page):
@@ -28,24 +28,16 @@ class DiscoverUniBasePage(Page):
         return utils.get_language(self.url)
 
     def is_english(self):
-        return self.get_language() == 'en'
+        return self.get_language() == enums.languages.ENGLISH
 
-    def is_welsh(self):
-        return self.get_language() == 'cy'
-
-    def get_english_url(self):
+    def url_for_language(self):
         from home.models import HomePage
-        if self.is_english():
-            return self.url
-        return self.translated_page.url if self.translated_page \
-            else get_page_for_language(enums.languages.ENGLISH, HomePage.objects.all()).url
-
-    def get_welsh_url(self):
-        from home.models import HomePage
-        if self.is_english():
-            return self.translated_page.url if self.translated_page \
-                else get_page_for_language(enums.languages.WELSH, HomePage.objects.all()).url
-        return self.url
+        if self.translated_page:
+            return self.translated_page.url
+        elif self.is_english():
+            return get_page_for_language(enums.languages.WELSH, HomePage.objects.all()).url
+        else:
+            return get_page_for_language(enums.languages.ENGLISH, HomePage.objects.all()).url
 
     class Meta:
         abstract = True
@@ -60,8 +52,7 @@ class DiscoverUniBasePage(Page):
     def get_context(self, request):
         context = super().get_context(request)
         context['page'] = self
-        context['english_url'] = self.get_english_url()
-        context['welsh_url'] = self.get_welsh_url()
+        context['navigation'] = nav_menu_render(request, self.url_for_language(), Menu, Footer)
         context['cookies_accepted'] = request.COOKIES.get('discoverUniCookies')
         context['load_error'] = request.GET.get('load_error', '')
         context['error_type'] = request.GET.get('error_type', '')
