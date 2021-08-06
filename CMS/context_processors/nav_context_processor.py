@@ -16,13 +16,16 @@ def nav_menu_render(request, url_for_language, menu, footer):
     search = translations.term_for_key(key='search', language=language)
     compare = translations.term_for_key(key='compare', language=language)
     saved = translations.term_for_key(key='saved', language=language)
-    brand_logo = {'img': 'images/logos/nav_logo_english.svg', 'url': '/'} if language == enums.languages.ENGLISH else {
-        'img': 'images/logos/nav_logo_welsh.svg', 'url': 'cy/'}
-    language_toggle = {'label': 'Cymraeg' if language == 'en' else 'English',
+
+    brand_logo = {
+        'img': 'images/logos/nav_logo_english.svg', 'url': '/'
+    } if language == enums.languages.ENGLISH else {
+        'img': 'images/logos/nav_logo_welsh.svg', 'url': '/cy/'
+    }
+    language_toggle = {'label': 'Cymraeg' if language == enums.languages.ENGLISH else 'English',
                        'sub_items': None,
                        'url': url_for_language}
 
-    # TODO: Update comparison image below to correct one from design
     return {
         'brand_logo': brand_logo,
         'primary_menu': get_menu(menu, language, 'menu_items') + [language_toggle],
