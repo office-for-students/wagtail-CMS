@@ -5,7 +5,6 @@ from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.snippets.models import register_snippet
 
-from CMS.context_processors import nav_menu_render
 from CMS.enums import enums
 from core import utils
 from core.utils import get_page_for_language
@@ -49,7 +48,7 @@ class DiscoverUniBasePage(Page):
     def get_context(self, request):
         context = super().get_context(request)
         context['page'] = self
-        context['navigation'] = nav_menu_render(request, self.url_for_language(), Menu, Footer)
+        context['translated_url'] = self.url_for_language()
         context['cookies_accepted'] = request.COOKIES.get('discoverUniCookies')
         context['load_error'] = request.GET.get('load_error', '')
         context['error_type'] = request.GET.get('error_type', '')

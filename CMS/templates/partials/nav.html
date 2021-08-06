@@ -27,12 +27,18 @@
                                             </a>
                                         </li>
                                     {% endfor %}
-
                                 </ul>
                             {% endif %}
                         </li>
                     {% endwith %}
                 {% endfor %}
+                {#                TODO: Remove course search from CMS         #}
+                <li class="discover-uni-nav__desktop-link">
+                    <a id="language_select"
+                       href="{{ translated_url }}">
+                        {% if page.is_english %} Cymraeg {% else %} English {% endif %}
+                    </a>
+                </li>
             </ul>
 
             {# Comparison Menu #}
@@ -62,14 +68,16 @@
 
     <div class="discover-uni-nav__mobile-links">
         <div class="discover-uni-nav__mobile-language-toggles">
-            <a class="discover-uni-nav__mobile-link{% if page.is_english %} active" {% else %}" href="{{ english_url }}"
-                id="language_select"{% endif %}>
-            English
+            <a class="discover-uni-nav__mobile-link{% if page.is_english %} active {% else %}{% endif %}"
+               href="{% if not page.is_english %} {{ translated_url }} {% else %}#{% endif %}"
+               id="language_select">
+                English
             </a>
 
-            <a class="discover-uni-nav__mobile-link{% if not page.is_english %} active" {% else %}" href="
-                {{ welsh_url }}" id="language_select"{% endif %}>
-            Cymraeg
+            <a class="discover-uni-nav__mobile-link{% if not page.is_english %} active {% else %}{% endif %}"
+               href=" {% if page.is_english %} {{ translated_url }} {% else %}#{% endif %}"
+               id="language_select">
+                Cymraeg
             </a>
         </div>
         {% for item in navigation.primary_menu %}

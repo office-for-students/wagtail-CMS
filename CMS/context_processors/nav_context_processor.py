@@ -1,14 +1,14 @@
 from django.templatetags.static import static
-from wagtail.core.models import Page
 
 from CMS import translations
 from CMS.enums import enums
+from core.models import Menu, Footer
 from core.utils import get_language, get_page_for_language
+from courses.models import CourseComparisonPage, CourseManagePage
+from home.models import HomePage
 
 
-def nav_menu_render(request, url_for_language, menu, footer):
-    from courses.models import CourseComparisonPage, CourseManagePage
-    from home.models import HomePage
+def nav_menu_render(request):
     url = request.get_full_path()
     language = get_language(url)
     search_page_url = get_page_for_language(language, HomePage.objects.all()).url
@@ -20,25 +20,24 @@ def nav_menu_render(request, url_for_language, menu, footer):
     } if language == enums.languages.ENGLISH else {
         'img': 'images/logos/nav_logo_welsh.svg', 'url': '/cy/'
     }
-    language_toggle = {'label': 'Cymraeg' if language == enums.languages.ENGLISH else 'English',
-                       'sub_items': None,
-                       'url': url_for_language}
 
     return {
-        'brand_logo': brand_logo,
-        'primary_menu': get_menu(menu, language, 'menu_items') + [language_toggle],
-        'comp_menu': [
-            {'label': translations.term_for_key(key='search', language=language),
-             'img': static('images/search_icon.svg'),
-             'url': search_page_url},
-            {'label': translations.term_for_key(key='compare', language=language),
-             'img': static('images/compare_icon.svg'),
-             'url': comparison_page_url},
-            {'label': translations.term_for_key(key='saved', language=language),
-             'img': static('images/white-bookmark.svg'),
-             'url': bookmark_page_url}
-        ],
-        'footer_menu': get_menu(footer, language, 'footer_items')
+        'navigation': {
+            'brand_logo': brand_logo,
+            'primary_menu': get_menu(Menu, language, 'menu_items'),
+            'comp_menu': [
+                {'label': translations.term_for_key(key='search', language=language),
+                 'img': static('images/search_icon.svg'),
+                 'url': search_page_url},
+                {'label': translations.term_for_key(key='compare', language=language),
+                 'img': static('images/compare_icon.svg'),
+                 'url': comparison_page_url},
+                {'label': translations.term_for_key(key='saved', language=language),
+                 'img': static('images/white-bookmark.svg'),
+                 'url': bookmark_page_url}
+            ],
+            'footer_menu': get_menu(Footer, language, 'footer_items')
+        }
     }
 
 
@@ -49,7 +48,6 @@ def get_menu(model, language, attribute):
     items = getattr(data, attribute)
     for item in items:
         menu.append(parse_menu_item(item))
-
     return menu
 
 
