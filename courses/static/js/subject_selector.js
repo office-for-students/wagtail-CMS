@@ -1,7 +1,6 @@
 function displayData(element) {
     let index = element.target.dataset.details.split(",");
     let title = index[0]
-    console.log(title)
     let column = index[1];
     let dataIndex = index[2];
     let toBeShown = document.getElementsByClassName(`column-${column}${title} item-${dataIndex}`);
