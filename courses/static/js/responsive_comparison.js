@@ -96,7 +96,6 @@ function getColumns() {
             columns.push(document.getElementsByClassName(className));
         }
     }
-    console.log("columns :: ", columns)
     return columns;
 }
 
@@ -156,7 +155,6 @@ function updateArrows(active_index, max_columns, total_number_of_courses) {
 }
 
 function scrollDisplay(increment) {
-    console.log(" i do the scroll display thing")
     const columns = getColumns();
     let total_number_of_courses = columns.length
     let new_index = getNewIndex(increment, total_number_of_courses);
