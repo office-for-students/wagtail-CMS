@@ -15,11 +15,10 @@
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}?{% code_version %}"></script>
-    <script type="text/javascript" src="{% static 'js/bar_chart.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/sub_accordion.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>
 
 {% endblock %}
 
@@ -28,6 +27,8 @@
     <div class="comparison d-sm-block mb-5" id="comparison-body"></div>
 
     <script>
+
+        const event = new Event('build-accordions');
         let local_storage = localStorage.getItem("CoursesForComparison");
         let array = [];
         if (local_storage) {
@@ -47,16 +48,17 @@
             }
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
+                if (this.readyState === 4 && this.status === 200) {
                     document.getElementById("comparison-body").innerHTML = this.responseText;
-                    scrollDisplay(0);
+                    moveIndexToDisplayBy(0);
+                    document.dispatchEvent(event);
                 }
             };
 
             let saved = [];
             if (localStorage.getItem("bookmarkedCourses"))
                 saved = JSON.parse(localStorage.getItem("bookmarkedCourses"));
-            if (document.documentElement.lang == "cy") {
+            if (document.documentElement.lang === "cy") {
                 console.log("should be welsh");
                 xmlhttp.open("GET", "/cy/ajax/course-comparison/?courses=" + urls_params + '&hasStorage=' + saved.length, true);
             } else {
