@@ -2,8 +2,52 @@ const narrowMarginLeftAndRightClass = "course-info-both";
 const wideMarginLeftClass = "course-info-left";
 const wideMarginRightClass = "course-info-right";
 
+let currentIndex = 0;
 
-let current_index = 0;
+function removeCourseCompare(el) {
+    const columns = getColumns();
+
+    console.log("columns = getColumns();", columns);
+        console.log("columns.length;", columns.length);
+    let index = parseInt(el.parentElement.parentElement.id.split("-")[1]);
+        columns.forEach(function (column, index){
+        console.log(column, index);
+    })
+    let elements = document.getElementsByClassName("cc-column-" + index);
+    for (let i = 0; 1 <= elements.length; i++) {
+        elements[0].remove();
+    }
+
+    let local_storage = localStorage.getItem("CoursesForComparison");
+    try {
+        if (local_storage) {
+            let storageItems = JSON.parse(local_storage);
+            console.log("storage items =", storageItems);
+
+            let courseToRemove = storageItems[index];
+            let removeId = courseToRemove.id.replace(" ", "");
+            let final = storageItems.slice();
+            for (let i = 0; i < storageItems.length; i++) {
+                let courseId = storageItems[i].id.replace(" ", '');
+                if (courseId.toUpperCase() === removeId.toUpperCase()) {
+                    final.splice(i, 1);
+                }
+            }
+            localStorage.setItem('CoursesForComparison', JSON.stringify(final));
+
+            if (final.length === 0) {
+                window.location.reload(true);
+            }
+
+            let selectedCount = document.getElementById("numberOfSelected");
+            selectedCount.innerHTML = final.length;
+        }
+        moveIndexToDisplayBy(-1);
+    } catch (error){
+        console.log("Error = ", error);
+    }
+}
+
 
 class ArrowManager {
     leftArrow = document.getElementById("leftArrow");
@@ -145,29 +189,35 @@ function getCourseIndexesToShow(index, number_of_courses) {
 
 function updateArrows(active_index, max_columns, total_number_of_courses) {
     const arrows = new ArrowManager();
+    let start = indexes[0]
+    const displayingAll = (number_of_courses === indexes.length);
+    const hasMoreToDisplay = (start + max_columns < number_of_courses);
+
     arrows.removeAllArrows();
-    if (!(max_columns >= total_number_of_courses)) {
-        if (active_index + max_columns >= total_number_of_courses) {
-            if (max_columns !== total_number_of_courses) {
-                arrows.includeWideArrowLeft();
-            }
-        } else if (active_index === 0) {
-            arrows.includeWideArrowRight();
-        } else {
-            arrows.includeBothArrows();
-        }
+
+    if (displayingAll) {
+        arrows.removeAllArrows();
+        return;
+    }
+
+    if (start == 0 && !displayingAll) {
+        arrows.includeWideArrowRight();
+    } else if (start > 0 && !hasMoreToDisplay) {
+        arrows.includeWideArrowLeft();
+    } else {
+        arrows.includeBothArrows();
     }
 }
 
-function scrollDisplay(increment) {
-    console.log(" i do the scroll display thing")
+function moveIndexToDisplayBy(increment) {
     const columns = getColumns();
     let total_number_of_courses = columns.length
     let new_index = getNewIndex(increment, total_number_of_courses);
     let max_columns = getMaxItems(total_number_of_courses);
-    updateArrows(new_index, max_columns, total_number_of_courses);
-    displayColumnsWithIndex(columns, getCourseIndexesToShow(new_index, max_columns));
-    current_index = new_index;
+    let currentIndexes = getCourseIndexesToShow(new_index, max_columns, total_number_of_courses)
+    updateArrows(currentIndexes, max_columns, total_number_of_courses);
+    displayColumnsWithIndex(columns, currentIndexes);
+    currentIndex = new_index;
     updateStickyHeader();
 }
 
@@ -181,7 +231,7 @@ function updateStickyHeader() {
 
 
 $(window).on('resize orientationchange', function () {
-    current_index = 0;
-    scrollDisplay(0);
+    currentIndex = 0;
+    moveIndexToDisplayBy(0);
 });
 
