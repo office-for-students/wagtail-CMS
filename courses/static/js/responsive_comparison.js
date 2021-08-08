@@ -5,47 +5,34 @@ const wideMarginRightClass = "course-info-right";
 let currentIndex = 0;
 
 function removeCourseCompare(el) {
-    const columns = getColumns();
-
-    console.log("columns = getColumns();", columns);
-        console.log("columns.length;", columns.length);
-    let index = parseInt(el.parentElement.parentElement.id.split("-")[1]);
-        columns.forEach(function (column, index){
-        console.log(column, index);
-    })
-    let elements = document.getElementsByClassName("cc-column-" + index);
+    let courseIdToRemove = el.parentElement.parentElement.id;
+    let el_index = parseInt(el.parentElement.parentElement.dataset.index);
+    let elements = document.getElementsByClassName("cc-column-" + el_index);
     for (let i = 0; 1 <= elements.length; i++) {
         elements[0].remove();
     }
 
     let local_storage = localStorage.getItem("CoursesForComparison");
-    try {
-        if (local_storage) {
-            let storageItems = JSON.parse(local_storage);
-            console.log("storage items =", storageItems);
-
-            let courseToRemove = storageItems[index];
-            let removeId = courseToRemove.id.replace(" ", "");
-            let final = storageItems.slice();
-            for (let i = 0; i < storageItems.length; i++) {
-                let courseId = storageItems[i].id.replace(" ", '');
-                if (courseId.toUpperCase() === removeId.toUpperCase()) {
-                    final.splice(i, 1);
-                }
+    if (local_storage) {
+        let storageItems = JSON.parse(local_storage);
+        let final = storageItems.slice();
+        for (let i = 0; i < storageItems.length; i++) {
+            let courseId = storageItems[i].id;
+            if (courseId === courseIdToRemove) {
+                final.splice(i, 1);
             }
-            localStorage.setItem('CoursesForComparison', JSON.stringify(final));
-
-            if (final.length === 0) {
-                window.location.reload(true);
-            }
-
-            let selectedCount = document.getElementById("numberOfSelected");
-            selectedCount.innerHTML = final.length;
         }
-        moveIndexToDisplayBy(-1);
-    } catch (error){
-        console.log("Error = ", error);
+
+        localStorage.setItem('CoursesForComparison', JSON.stringify(final));
+
+        if (final.length === 0) {
+            window.location.reload(true);
+        }
+
+        let selectedCount = document.getElementById("numberOfSelected");
+        selectedCount.innerHTML = final.length;
     }
+    moveIndexToDisplayBy(-1);
 }
 
 
