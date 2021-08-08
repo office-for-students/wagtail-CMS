@@ -13,12 +13,12 @@
         </div>
         <div class="course-detail__course-container-pills">
             <div class="course-detail__course-container-pills-slider"
-                 onclick="scrollDisplay(-1);" id="leftArrow">
+                 onclick="moveIndexToDisplayBy(-1);" id="leftArrow">
                 <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-left"></i>
             </div>
             {% include 'courses/partials/course_comparison_overview.html' with courses=courses %}
             <div class="course-detail__course-container-pills-slider single-arrow"
-                 onclick="scrollDisplay(1);" id="rightArrow">
+                 onclick="moveIndexToDisplayBy(1);" id="rightArrow">
                 <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-right"></i>
             </div>
         </div>
