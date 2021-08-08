@@ -88,15 +88,19 @@ function getMaxItems(maximum) {
 }
 
 function getColumns() {
+    const max_columns = 7
     const compare_list = JSON.parse(localStorage.getItem("CoursesForComparison"));
     const columns = [];
     if (compare_list) {
-        for (let index = 0; index < compare_list.length; index++) {
+        for (let index = 0; index < max_columns; index++) {
             let className = "cc-column-" + index;
-            columns.push(document.getElementsByClassName(className));
+            let items = document.getElementsByClassName(className);
+            if (items.length) {
+                columns.push(items);
+            }
         }
     }
-    console.log("columns :: ", columns)
+
     return columns;
 }
 
