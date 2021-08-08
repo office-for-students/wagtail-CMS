@@ -132,24 +132,20 @@ function getMaxItems(maximum) {
 }
 
 function getColumns() {
-    const max_columns = 7
-    const compare_list = JSON.parse(localStorage.getItem("CoursesForComparison"));
+    const maxColumns = 7
     const columns = [];
-    if (compare_list) {
-        for (let index = 0; index < max_columns; index++) {
-            let className = "cc-column-" + index;
-            let items = document.getElementsByClassName(className);
-            if (items.length) {
-                columns.push(items);
-            }
+    for (let index = 0; index < maxColumns; index++) {
+        let className = "cc-column-" + index;
+        let items = document.getElementsByClassName(className);
+        if (items.length) {
+            columns.push(items);
         }
     }
-
     return columns;
 }
 
 function displayColumn(column, display = false) {
-    for (var index = 0; index < column.length; index++) {
+    for (let index = 0; index < column.length; index++) {
         if (display) {
             column.item(index).classList.remove("hidden");
         } else {
@@ -169,13 +165,14 @@ function displayColumnsWithIndex(columns, indexes) {
 }
 
 function getNewIndex(increment, max) {
-    let new_index = current_index + increment;
+    let new_index = currentIndex + increment;
     if (new_index > max) {
         new_index = max
     }
     if (new_index < 0) {
         new_index = 0;
     }
+
     return new_index
 }
 
@@ -187,7 +184,8 @@ function getCourseIndexesToShow(index, number_of_courses) {
     return indexesToShow
 }
 
-function updateArrows(active_index, max_columns, total_number_of_courses) {
+
+function updateArrows(indexes, max_columns, number_of_courses) {
     const arrows = new ArrowManager();
     let start = indexes[0]
     const displayingAll = (number_of_courses === indexes.length);
@@ -200,7 +198,7 @@ function updateArrows(active_index, max_columns, total_number_of_courses) {
         return;
     }
 
-    if (start == 0 && !displayingAll) {
+    if (start === 0 && !displayingAll) {
         arrows.includeWideArrowRight();
     } else if (start > 0 && !hasMoreToDisplay) {
         arrows.includeWideArrowLeft();
