@@ -40,18 +40,17 @@
         })
         urls_params = list.join('&courses=');
 
-        function showComparison(array) {
-            var xmlhttp;
-            if (!array) {
-                document.getElementById("comparison-body").innerHTML = "";
-                return;
-            }
+
+        function showComparison(urls_params, callback) {
+            let xmlhttp;
+
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
                     document.getElementById("comparison-body").innerHTML = this.responseText;
                     moveIndexToDisplayBy(0);
                     document.dispatchEvent(event);
+                    setEventListeners();
                 }
             };
 
@@ -59,7 +58,6 @@
             if (localStorage.getItem("bookmarkedCourses"))
                 saved = JSON.parse(localStorage.getItem("bookmarkedCourses"));
             if (document.documentElement.lang === "cy") {
-                console.log("should be welsh");
                 xmlhttp.open("GET", "/cy/ajax/course-comparison/?courses=" + urls_params + '&hasStorage=' + saved.length, true);
             } else {
                 xmlhttp.open("GET", "/ajax/course-comparison/?courses=" + urls_params + '&hasStorage=' + saved.length, true);
@@ -67,9 +65,10 @@
             xmlhttp.send();
         }
 
-        showComparison(array);
+        showComparison(urls_params);
     </script>
 
-    <script type="text/javascript" src="{% static 'js/ratings.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/responsive_comparison.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/ratings.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/subject_selector.js' %}?{% code_version %}"></script>
 {% endblock %}

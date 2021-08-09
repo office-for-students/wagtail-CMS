@@ -203,6 +203,7 @@ function moveIndexToDisplayBy(increment) {
     displayColumnsWithIndex(columns, currentIndexes);
     currentIndex = new_index;
     updateStickyHeader();
+    showMultipleSubjects();
 }
 
 function updateStickyHeader() {
@@ -213,9 +214,23 @@ function updateStickyHeader() {
     accordion_header.css("z-index", "8");
 }
 
+function showMultipleSubjects(){
+    let courses = document.getElementsByClassName("course-detail__courses-container");
+    let subjectSelector = document.getElementsByClassName("js_subject_wrapper");
+    let response = false;
+    for(let i=0; i < courses.length; i++){
+        if(courses[i].dataset.multiple_subjects === "True"){
+            response = true;
+        }
+    }
+    Array.from(subjectSelector).forEach(function(value){
+        value.hidden = !response;
+    });
+}
 
 $(window).on('resize orientationchange', function () {
     currentIndex = 0;
     moveIndexToDisplayBy(0);
 });
+
 

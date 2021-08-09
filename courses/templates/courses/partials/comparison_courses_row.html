@@ -1,20 +1,29 @@
-<div class="course_comparison-table__row">
-    <div class="course_comparison-table__column-title_container">
-        <div class="course_comparison-table__column-first {{header_font}} header">
+<div class="comparison_row">
+    <div class="column-title_container header">
+        <div class="column-first {{header_font}}">
             {{ title }}
         </div>
         {% if subtitle %}
-        <div class="course_comparison-table__column-first subtitle {{header_font}}">
+        <div class="column-first subtitle {{header_font}}">
             {{subtitle}}
         </div>
         {% endif %}
     </div>
     <div class="small-flex-div">
     {% for item in values %}
-        <div id="arrow-{{forloop.counter0}}"
-             class="course_comparison-table__column {{item_font}} {{mt}} arrow cc-column-{{forloop.counter0}}"
-             data-index="{{forloop.counter0}}">
-            {{ item | safe }}
+        <div class="column {{item_font}} {{mt}} cc-column-{{forloop.counter0}}">
+        {% with index=forloop.counter0 %}
+            {% if item.values %}
+                {% for value in item.values %}
+                     <div class="column-{{index}}{{accordion.title}} item-{{forloop.counter0}}"
+                         {% if not forloop.first %}hidden{% endif %}>
+                        {{value}}
+                     </div>
+                {% endfor %}
+            {% else %}
+                {{ item | safe }}
+            {% endif %}
+        {% endwith %}
         </div>
     {% endfor %}
     </div>

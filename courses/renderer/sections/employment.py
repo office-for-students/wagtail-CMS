@@ -1,5 +1,6 @@
 from typing import List, Tuple, Any, Dict
 
+from CMS import translations
 from courses.models import Course
 from courses.renderer.sections.base import Section
 
@@ -36,18 +37,42 @@ suffix_index = 3
 model_index = 4
 
 
-def presentable_employment(course: Course, stat: str, suffix: Any, model: str, language: str) -> str:
-    if language == 'cy':
-        response = "Nid yw'r data ar gael"
-    else:
-        response = "No data available"
-    try:
+def multiple_subjects(course: Course, stat: str, suffix: Any, model: str, language: str) -> dict:
+    response = dict(subject=[], values=[])
+
+    for index, subject in enumerate(course.subject_names):
+        subject_name = subject.display_subject_name()
+        values = translations.term_for_key(key="no_data_available", language=language)
+
         if model == "employment":
-            _object = course.employment_stats[0]
+            if index < len(course.employment_stats):
+                _object = course.employment_stats[index]
+                method = str(getattr(_object, stat))
+                values = f"{method}{suffix}" if suffix and method.isnumeric() else method
         else:
-            _object = course.job_type_stats[0]
-        method = str(getattr(_object, stat))
-        response = f"{method}{suffix}" if suffix and method.isnumeric() else method
+            if index < len(course.job_type_stats):
+                _object = course.job_type_stats[index]
+                method = str(getattr(_object, stat))
+                values = f"{method}{suffix}" if suffix and method.isnumeric() else method
+
+        response["subject"].append(subject_name)
+        response["values"].append(values)
+    return response
+
+
+def presentable_employment(course: Course, stat: str, suffix: Any, model: str, language: str) -> str:
+    response = translations.term_for_key(key="no_data_available", language=language)
+    try:
+        if course.has_multiple_subject_names:
+            response = multiple_subjects(course, stat, suffix, model, language)
+        else:
+            if model == "employment":
+                _object = course.employment_stats[0]
+            else:
+                _object = course.job_type_stats[0]
+            method = str(getattr(_object, stat))
+            response = f"{method}{suffix}" if suffix and method.isnumeric() else method
+
     except Exception as e:
         print("error: ", e)
         pass
@@ -115,3 +140,4 @@ class SubEmploymentSection(Section):
         for section in self.sections:
             if section[0] in subtitles:
                 data[section[0]]["subtitle"] = self.term_for_key(subtitles[section[0]], self.language)
+

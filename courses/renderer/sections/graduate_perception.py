@@ -1,5 +1,6 @@
 from typing import List, Tuple, Any, Dict
 
+from CMS import translations
 from courses.models import Course
 from courses.renderer.sections.base import Section
 
@@ -20,15 +21,30 @@ action = 2
 suffix_index = 3
 
 
+def multiple_subjects(course: Course, stat: str, suffix: Any, language: str) -> dict:
+    response = dict(subject=[], values=[])
+    for index, subject in enumerate(course.subject_names):
+        subject_name = subject.display_subject_name()
+        if index < len(course.graduate_perceptions):
+            _object = course.graduate_perceptions[index]
+            method = str(getattr(_object, stat))
+            response["values"].append(f"{method}{suffix}" if suffix and method.isnumeric() else method)
+            response["subject"].append(subject_name)
+        else:
+            response["values"].append(translations.term_for_key(key="no_data_available", language=language))
+    return response
+
+
 def presentable_graduate(course: Course, stat: str, suffix: Any, language: str) -> str:
-    if language == 'cy':
-        response = "Nid yw'r data ar gael"
-    else:
-        response = "No data available"
+    response = translations.term_for_key(key="no_data_available", language=language)
     try:
-        _object = course.graduate_perceptions[0]
-        method = str(getattr(_object, stat))
-        response = f"{method}{suffix}" if suffix and method.isnumeric() else method
+        if course.has_multiple_subject_names:
+            response = multiple_subjects(course, stat, suffix, language)
+        else:
+            _object = course.graduate_perceptions[0]
+            method = str(getattr(_object, stat))
+            if method:
+                response = f"{method}{suffix}" if suffix and method.isnumeric() else method
     except Exception as e:
         print("error: ", e)
         pass

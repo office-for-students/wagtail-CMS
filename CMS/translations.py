@@ -315,6 +315,10 @@ STATISTICS = {
         'en': "The course has had a positive impact on my future plans",
         'cy': "Mae fy ngwaith presennol yn cyd-fynd â'm cynlluniau ar gyfer y dyfodol"
     },
+    'no_data_available': {
+        'en': "No data available",
+        'cy': "Nid yw'r data ar gael"
+    },
 }
 
 OPTIONALS = {
