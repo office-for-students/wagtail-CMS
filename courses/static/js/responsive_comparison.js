@@ -181,7 +181,6 @@ function updateArrows(indexes, max_columns, number_of_courses) {
     arrows.removeAllArrows();
 
     if (displayingAll) {
-        arrows.removeAllArrows();
         return;
     }
 
