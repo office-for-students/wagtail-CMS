@@ -38,25 +38,25 @@ model_index = 4
 
 
 def multiple_subjects(course: Course, stat: str, suffix: Any, model: str, language: str) -> dict:
-    response = dict(title="subject", subject=[], values=[])
+    response = dict(subject=[], values=[])
+
     for index, subject in enumerate(course.subject_names):
         subject_name = subject.display_subject_name()
+        values = translations.term_for_key(key="no_data_available", language=language)
 
         if model == "employment":
-            if len(course.employment_stats) >= index+1:
+            if index < len(course.employment_stats):
                 _object = course.employment_stats[index]
                 method = str(getattr(_object, stat))
-            else:
-                method = translations.term_for_key(key="no_data_available", language=language)
+                values = f"{method}{suffix}" if suffix and method.isnumeric() else method
         else:
-            if len(course.job_type_stats) >= index+1:
+            if index < len(course.job_type_stats):
                 _object = course.job_type_stats[index]
                 method = str(getattr(_object, stat))
-            else:
-                method = translations.term_for_key(key="no_data_available", language=language)
+                values = f"{method}{suffix}" if suffix and method.isnumeric() else method
 
         response["subject"].append(subject_name)
-        response["values"].append(f"{method}{suffix}" if suffix and method.isnumeric() else method)
+        response["values"].append(values)
     return response
 
 
