@@ -17,7 +17,6 @@ function displayData(element) {
 
 function handleSelected(element) {
     let parent = element.target.parentElement;
-    console.log(element.children)
     if (parent.children.length > 1) {
         for (let i = 0; i < parent.children.length; i++) {
             parent.children[i].classList.remove("selected");

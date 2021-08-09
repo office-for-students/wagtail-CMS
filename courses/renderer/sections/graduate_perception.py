@@ -22,18 +22,16 @@ suffix_index = 3
 
 
 def multiple_subjects(course: Course, stat: str, suffix: Any, language: str) -> dict:
-    response = dict(title="subject", subject=[], values=[])
+    response = dict(subject=[], values=[])
     for index, subject in enumerate(course.subject_names):
         subject_name = subject.display_subject_name()
-
-        if len(course.graduate_perceptions) >= index+1:
+        if index < len(course.graduate_perceptions):
             _object = course.graduate_perceptions[index]
             method = str(getattr(_object, stat))
+            response["values"].append(f"{method}{suffix}" if suffix and method.isnumeric() else method)
+            response["subject"].append(subject_name)
         else:
-            method = translations.term_for_key(key="no_data_available", language=language)
-
-        response["subject"].append(subject_name)
-        response["values"].append(f"{method}{suffix}" if suffix and method.isnumeric() else method)
+            response["values"].append(translations.term_for_key(key="no_data_available", language=language))
     return response
 
 
@@ -45,7 +43,8 @@ def presentable_graduate(course: Course, stat: str, suffix: Any, language: str) 
         else:
             _object = course.graduate_perceptions[0]
             method = str(getattr(_object, stat))
-            response = f"{method}{suffix}" if suffix and method.isnumeric() else method
+            if method:
+                response = f"{method}{suffix}" if suffix and method.isnumeric() else method
     except Exception as e:
         print("error: ", e)
         pass
