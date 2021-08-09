@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^Widget/', include('widget.urls')),
     url(r'^course-details/', include(courses_urls)),
     url(r'^institution-details/', include(institution_urls)),
-    url(r'^course-comparison/', course_views.compare_courses),
+    url(r'^course-comparison/', course_views.compare_courses, name="course_comparison"),
     url(r'^ajax/course-comparison/', course_views.compare_courses_body),
 
     url(r'(?P<language>[\w\-]+?)/', include(welsh_urls)),
