@@ -2,8 +2,39 @@ const narrowMarginLeftAndRightClass = "course-info-both";
 const wideMarginLeftClass = "course-info-left";
 const wideMarginRightClass = "course-info-right";
 
+let currentIndex = 0;
 
-let current_index = 0;
+function removeCourseCompare(el) {
+    let courseIdToRemove = el.parentElement.parentElement.id;
+    let el_index = parseInt(el.parentElement.parentElement.dataset.index);
+    let elements = document.getElementsByClassName("cc-column-" + el_index);
+    for (let i = 0; 1 <= elements.length; i++) {
+        elements[0].remove();
+    }
+
+    let local_storage = localStorage.getItem("CoursesForComparison");
+    if (local_storage) {
+        let storageItems = JSON.parse(local_storage);
+        let final = storageItems.slice();
+        for (let i = 0; i < storageItems.length; i++) {
+            let courseId = storageItems[i].id;
+            if (courseId === courseIdToRemove) {
+                final.splice(i, 1);
+            }
+        }
+
+        localStorage.setItem('CoursesForComparison', JSON.stringify(final));
+
+        if (final.length === 0) {
+            window.location.reload(true);
+        }
+
+        let selectedCount = document.getElementById("numberOfSelected");
+        selectedCount.innerHTML = final.length;
+    }
+    moveIndexToDisplayBy(-1);
+}
+
 
 class ArrowManager {
     leftArrow = document.getElementById("leftArrow");
@@ -88,20 +119,20 @@ function getMaxItems(maximum) {
 }
 
 function getColumns() {
-    const compare_list = JSON.parse(localStorage.getItem("CoursesForComparison"));
+    const maxColumns = 7
     const columns = [];
-    if (compare_list) {
-        for (let index = 0; index < compare_list.length; index++) {
-            let className = "cc-column-" + index;
-            columns.push(document.getElementsByClassName(className));
+    for (let index = 0; index < maxColumns; index++) {
+        let className = "cc-column-" + index;
+        let items = document.getElementsByClassName(className);
+        if (items.length) {
+            columns.push(items);
         }
     }
-    console.log("columns :: ", columns)
     return columns;
 }
 
 function displayColumn(column, display = false) {
-    for (var index = 0; index < column.length; index++) {
+    for (let index = 0; index < column.length; index++) {
         if (display) {
             column.item(index).classList.remove("hidden");
         } else {
@@ -121,13 +152,14 @@ function displayColumnsWithIndex(columns, indexes) {
 }
 
 function getNewIndex(increment, max) {
-    let new_index = current_index + increment;
+    let new_index = currentIndex + increment;
     if (new_index > max) {
         new_index = max
     }
     if (new_index < 0) {
         new_index = 0;
     }
+
     return new_index
 }
 
@@ -139,31 +171,37 @@ function getCourseIndexesToShow(index, number_of_courses) {
     return indexesToShow
 }
 
-function updateArrows(active_index, max_columns, total_number_of_courses) {
+
+function updateArrows(indexes, max_columns, number_of_courses) {
     const arrows = new ArrowManager();
+    let start = indexes[0]
+    const displayingAll = (number_of_courses === indexes.length);
+    const hasMoreToDisplay = (start + max_columns < number_of_courses);
+
     arrows.removeAllArrows();
-    if (!(max_columns >= total_number_of_courses)) {
-        if (active_index + max_columns >= total_number_of_courses) {
-            if (max_columns !== total_number_of_courses) {
-                arrows.includeWideArrowLeft();
-            }
-        } else if (active_index === 0) {
-            arrows.includeWideArrowRight();
-        } else {
-            arrows.includeBothArrows();
-        }
+
+    if (displayingAll) {
+        return;
+    }
+
+    if (start === 0 && !displayingAll) {
+        arrows.includeWideArrowRight();
+    } else if (start > 0 && !hasMoreToDisplay) {
+        arrows.includeWideArrowLeft();
+    } else {
+        arrows.includeBothArrows();
     }
 }
 
-function scrollDisplay(increment) {
-    console.log(" i do the scroll display thing")
+function moveIndexToDisplayBy(increment) {
     const columns = getColumns();
     let total_number_of_courses = columns.length
     let new_index = getNewIndex(increment, total_number_of_courses);
     let max_columns = getMaxItems(total_number_of_courses);
-    updateArrows(new_index, max_columns, total_number_of_courses);
-    displayColumnsWithIndex(columns, getCourseIndexesToShow(new_index, max_columns));
-    current_index = new_index;
+    let currentIndexes = getCourseIndexesToShow(new_index, max_columns, total_number_of_courses)
+    updateArrows(currentIndexes, max_columns, total_number_of_courses);
+    displayColumnsWithIndex(columns, currentIndexes);
+    currentIndex = new_index;
     updateStickyHeader();
 }
 
@@ -177,7 +215,7 @@ function updateStickyHeader() {
 
 
 $(window).on('resize orientationchange', function () {
-    current_index = 0;
-    scrollDisplay(0);
+    currentIndex = 0;
+    moveIndexToDisplayBy(0);
 });
 

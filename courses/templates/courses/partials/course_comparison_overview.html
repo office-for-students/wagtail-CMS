@@ -1,6 +1,6 @@
 {% load staticfiles discover_uni_tags %}
 {% for course in courses %}
-    <div id="courseContainer-{{ forloop.counter0 }}"
+    <div id="{{course.institution.pub_ukprn}}/{{course.kis_course_id}}/{{course.mode.label}}"
          class="course-detail__courses-container cc-column-{{ forloop.counter0 }}" data-index="{{ forloop.counter0 }}">
         <div>
 

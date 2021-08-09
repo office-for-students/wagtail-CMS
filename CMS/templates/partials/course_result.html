@@ -20,6 +20,7 @@
 </script>
 
 <div class="course-finder-results__result-accordion-body-content comparison-course-area mb-4"
+     data-courseidentifier="{{institution_id}}/{{course.kis_course_id}}/{{course.mode}}"
      data-coursename="{{course_name}}" data-courseid="{{course.kis_course_id}}"
      data-uniname="{{ institution.pub_ukprn_name }}" data-uniid="{{institution_id}}"
      data-locations="{{locations}}" data-length="{{ course.length_of_course|slice:1 }}"
