@@ -40,7 +40,8 @@
         })
         urls_params = list.join('&courses=');
 
-        function loadPageContent(urls_params, callback) {
+
+        function showComparison(urls_params, callback) {
             let xmlhttp;
 
             xmlhttp = new XMLHttpRequest();
@@ -57,7 +58,6 @@
             if (localStorage.getItem("bookmarkedCourses"))
                 saved = JSON.parse(localStorage.getItem("bookmarkedCourses"));
             if (document.documentElement.lang === "cy") {
-                console.log("should be welsh");
                 xmlhttp.open("GET", "/cy/ajax/course-comparison/?courses=" + urls_params + '&hasStorage=' + saved.length, true);
             } else {
                 xmlhttp.open("GET", "/ajax/course-comparison/?courses=" + urls_params + '&hasStorage=' + saved.length, true);
@@ -65,7 +65,7 @@
             xmlhttp.send();
         }
 
-        showComparison(array);
+        showComparison(urls_params);
     </script>
 
     <script type="text/javascript" src="{% static 'js/responsive_comparison.js' %}?{% code_version %}"></script>
