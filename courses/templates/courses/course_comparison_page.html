@@ -28,44 +28,58 @@
 
     <script>
 
-        const event = new Event('build-accordions');
-        let local_storage = localStorage.getItem("CoursesForComparison");
-        let array = [];
-        if (local_storage) {
-            array = JSON.parse(local_storage);
-        }
-        list = []
-        array.forEach(function (value, index) {
-            list.push(value.id);
-        })
-        urls_params = list.join('&courses=');
-
-
-        function showComparison(urls_params, callback) {
-            let xmlhttp;
-
-            xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState === 4 && this.status === 200) {
-                    document.getElementById("comparison-body").innerHTML = this.responseText;
-                    moveIndexToDisplayBy(0);
-                    document.dispatchEvent(event);
-                    setEventListeners();
+        $(window).on('load', function () {
+            const event = new Event('build-accordions');
+            function generateURLParams() {
+                let local_storage = localStorage.getItem("CoursesForComparison");
+                let array = [];
+                if (local_storage) {
+                    array = JSON.parse(local_storage);
                 }
-            };
-
-            let saved = [];
-            if (localStorage.getItem("bookmarkedCourses"))
-                saved = JSON.parse(localStorage.getItem("bookmarkedCourses"));
-            if (document.documentElement.lang === "cy") {
-                xmlhttp.open("GET", "/cy/ajax/course-comparison/?courses=" + urls_params + '&hasStorage=' + saved.length, true);
-            } else {
-                xmlhttp.open("GET", "/ajax/course-comparison/?courses=" + urls_params + '&hasStorage=' + saved.length, true);
+                list = []
+                array.forEach(function (value, index) {
+                    list.push(value.id);
+                })
+                const urls_params = list.join('&courses=');
+                return urls_params;
             }
-            xmlhttp.send();
-        }
 
-        showComparison(urls_params);
+            function numberOfStored() {
+                let saved = [];
+                if (localStorage.getItem("bookmarkedCourses"))
+                    saved = JSON.parse(localStorage.getItem("bookmarkedCourses"));
+                return saved.length
+            }
+
+            function showComparison(callback) {
+                console.log("this is it here I stand");
+                let request = new XMLHttpRequest();
+                request.onreadystatechange = function () {
+                    if (this.readyState === 4 && this.status === 200) {
+                        callback(this.responseText);
+                    } else {
+                        console.log("logging me");
+                    }
+                };
+
+                if (document.documentElement.lang === "cy") {
+                    request.open("GET", "/cy/ajax/course-comparison/?courses=" + generateURLParams() + '&hasStorage=' + numberOfStored(), true);
+                } else {
+                    request.open("GET", "/ajax/course-comparison/?courses=" + generateURLParams() + '&hasStorage=' + numberOfStored(), true);
+                }
+                request.send();
+            }
+
+            showComparison(function (response) {
+                console.log("help ");
+                document.getElementById("comparison-body").innerHTML = response;
+                moveIndexToDisplayBy(0);
+                document.dispatchEvent(event);
+                setEventListeners();
+                console.log("i;m happening")
+            });
+        });
+
     </script>
 
     <script type="text/javascript" src="{% static 'js/responsive_comparison.js' %}?{% code_version %}"></script>
