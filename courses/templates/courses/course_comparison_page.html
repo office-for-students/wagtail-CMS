@@ -15,11 +15,10 @@
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}?{% code_version %}"></script>
-    <script type="text/javascript" src="{% static 'js/bar_chart.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/sub_accordion.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>
 
 {% endblock %}
 
@@ -28,6 +27,8 @@
     <div class="comparison d-sm-block mb-5" id="comparison-body"></div>
 
     <script>
+
+        const event = new Event('build-accordions');
         let local_storage = localStorage.getItem("CoursesForComparison");
         let array = [];
         if (local_storage) {
@@ -46,7 +47,9 @@
             xmlhttp.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
                     document.getElementById("comparison-body").innerHTML = this.responseText;
-                    callback();
+                    moveIndexToDisplayBy(0);
+                    document.dispatchEvent(event);
+                    setEventListeners();
                 }
             };
 
@@ -62,28 +65,7 @@
             xmlhttp.send();
         }
 
-        window.onload = function(){
-            let local_storage = localStorage.getItem("CoursesForComparison");
-            let array = [];
-            if (local_storage) {
-                array = JSON.parse(local_storage);
-            }
-            let list = []
-            array.forEach(function (value, index) {
-                list.push(value.id);
-            })
-            let urls_params = list.join('&courses=');
-
-            loadPageContent(urls_params, function(){
-                scrollDisplay(0);
-                // let accordions = $('[class$=accordion]');
-                // for (let i = 0; i < accordions.length; i++) {
-                //     new Accordion(accordions[i]);
-                // }
-                setEventListeners();
-            });
-        }
-
+        showComparison(array);
     </script>
 
     <script type="text/javascript" src="{% static 'js/responsive_comparison.js' %}?{% code_version %}"></script>

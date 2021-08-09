@@ -27,7 +27,7 @@ def show_courses_selected_for_comparison(courses_list, request, language):
         # Ignore anything more than 7 (avoid malicious activity)
         for course in courses_list[0:7]:
             if course:
-                course = course.split(',')
+                course = course.split('/')
                 print("course = course");
                 course, error = Course.find(institution_id=course[0], course_id=course[1], mode=course[2],
                                             language=language)

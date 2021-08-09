@@ -72,7 +72,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
 
             Object.defineProperty(this, "id", {
                 get: function () {
-                    return this.data.uniId + ',' + this.data.courseId + ',' + this.data.mode.en;
+                    return this.data.uniqueId;
                 }
             });
 
