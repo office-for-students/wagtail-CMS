@@ -217,11 +217,9 @@ function updateStickyHeader() {
 function showMultipleSubjects(){
     let courses = document.getElementsByClassName("course-detail__courses-container");
     let subjectSelector = document.getElementsByClassName("js_subject_wrapper");
-    console.log(subjectSelector)
     let response = false;
     for(let i=0; i < courses.length; i++){
         if(courses[i].dataset.multiple_subjects === "True"){
-            console.log(courses[i])
             response = true;
         }
     }
