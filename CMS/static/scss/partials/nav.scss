@@ -29,6 +29,22 @@ nav {
     display: none !important;
   }
 
+  .saved-counter {
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    padding-top: 1px;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    bottom: 10px;
+    left: 25px;
+    p {
+      font-size: 11px;
+    }
+  }
+
   .nav {
     display: flex;
     justify-content: space-between;
@@ -165,6 +181,7 @@ nav {
         align-items: center;
         color: $white;
         font-weight: bold;
+        position: relative;
 
         img {
           height: 22px;
