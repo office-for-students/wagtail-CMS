@@ -14,6 +14,19 @@
             </div>
         </div>
         <div class="nav__menus-container">
+            {# Language Toggles#}
+            <div class="nav__language-toggles">
+                <a class="nav__primary-link{% if page.is_english %} active {% endif %}" href="
+                    {% if page.is_english %} # {% else %} {{ translated_url }}{% endif %}"
+                   id="language_select">
+                    English
+                </a>
+
+                <a class="nav__primary-link{% if not page.is_english %} active {% endif %}" href="
+                {% if not page.is_english %} # {% else %} {{ translated_url }}{% endif %}" id="language_select">
+                    Cymraeg
+                </a>
+            </div>
             {# Primary Menu #}
             <div class="nav__primary-menu">
                 {% for item in navigation.primary_menu %}
@@ -59,7 +72,7 @@
                     {% endwith %}
                 {% endfor %}
                 {#                TODO: Remove course search from CMS         #}
-                <li class="nav__primary-link">
+                <li class="nav__primary-link language-select">
                     <a id="language_select"
                        href="{{ translated_url }}">
                         {% if page.is_english %} Cymraeg {% else %} English {% endif %}

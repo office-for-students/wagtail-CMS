@@ -25,6 +25,10 @@ nav {
   color: $white;
   padding-bottom: 67px;
 
+  .language-select{
+    display: none !important;
+  }
+
   .nav {
     display: flex;
     justify-content: space-between;
@@ -130,6 +134,19 @@ nav {
       display: none;
     }
 
+    &__language-toggles {
+      display: flex;
+      border-top: 1px solid $white;
+      .nav__primary-link {
+        width: 50%;
+        justify-content: center;
+        color: $white;
+        &.active {
+          @include green-gradient-background-mixin();
+        }
+      }
+    }
+
     &__secondary-menu {
       width: 100%;
       list-style: none;
@@ -159,6 +176,9 @@ nav {
 
 @media only screen and (min-width: 768px) {
   nav {
+    .language-select{
+    display: inline !important;
+  }
     .nav {
       display: flex;
       align-items: center;
@@ -187,6 +207,10 @@ nav {
         align-items: center;
         height: 100%;
         width: unset;
+      }
+
+      &__language-toggles {
+        display: none;
       }
 
       &__primary-menu {
