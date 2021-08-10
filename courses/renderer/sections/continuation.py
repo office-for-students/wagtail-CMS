@@ -1,5 +1,4 @@
 from typing import List, Tuple, Any
-
 from courses.models import Course
 from courses.renderer.sections.base import Section
 

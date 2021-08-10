@@ -53,10 +53,10 @@ class Section:
         return response
 
     @classmethod
-    def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, suffix="") -> str:
+    def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, multiple=False, suffix="") -> str:
         response = translations.term_for_key(key="no_data_available", language=language)
         try:
-            if course.has_multiple_subject_names:
+            if multiple and course.has_multiple_subject_names:
                 response = cls.multiple_subjects(
                     course=course,
                     stat=stat,

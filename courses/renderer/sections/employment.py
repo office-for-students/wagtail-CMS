@@ -1,7 +1,4 @@
 from typing import List, Tuple, Any, Dict
-
-from CMS import translations
-from courses.models import Course
 from courses.renderer.sections.base import Section
 
 DATA_FROM_PEOPLE = "data_from_people"
@@ -35,32 +32,6 @@ primary_key = 1
 action = 2
 suffix_index = 3
 model_index = 4
-
-
-# def multiple_subjects(course: Course, stat: str, suffix: Any, model: str, language: str) -> dict:
-#     response = dict(subject=[], values=[])
-#
-#     for index, subject in enumerate(course.subject_names):
-#         subject_name = subject.display_subject_name()
-#         values = translations.term_for_key(key="no_data_available", language=language)
-#
-#         if model == "employment":
-#             if index < len(course.employment_stats):
-#                 _object = course.employment_stats[index]
-#                 method = str(getattr(_object, stat))
-#                 values = f"{method}{suffix}" if suffix and method.isnumeric() else method
-#         else:
-#             if index < len(course.job_type_stats):
-#                 _object = course.job_type_stats[index]
-#                 method = str(getattr(_object, stat))
-#                 values = f"{method}{suffix}" if suffix and method.isnumeric() else method
-#
-#         response["subject"].append(subject_name)
-#         response["values"].append(values)
-#     return response
-
-
-
 
 
 class SubEmploymentSection(Section):
@@ -107,7 +78,8 @@ class SubEmploymentSection(Section):
                         stat=section[action],
                         model_list=section[model_index],
                         language=self.language,
-                        suffix=section[suffix_index],
+                        multiple=True,
+                        suffix=section[suffix_index]
                     )
                 )
         self.update_data_with_subtitles(self.data)

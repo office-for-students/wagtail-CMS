@@ -78,7 +78,8 @@ class GraduatePerceptionSection(Section):
                         stat=section[action],
                         model_list=section[model_array],
                         language=self.language,
-                        suffix=section[suffix_index]
+                        multiple=True,
+                        suffix=section[suffix_index],
                     )
                 )
         self.update_data_with_subtitles(self.data)
