@@ -1,5 +1,4 @@
 from typing import List, Tuple, Any
-
 from courses.models import Course
 from courses.renderer.sections.base import Section
 
@@ -20,6 +19,7 @@ continuation_list = [
 primary_key = 0
 action = 1
 suffix_index = 2
+model_array = 3
 
 
 def presentable_continuation(course: Course, stat: str, suffix: Any, language: str) -> str:
@@ -40,13 +40,13 @@ def presentable_continuation(course: Course, stat: str, suffix: Any, language: s
 
 class ContinuationSection(Section):
 
-    def get_sections(self) -> List[Tuple[Any, Any, Any]]:
+    def get_sections(self) -> List[Tuple[Any, Any, str, str]]:
         sections = [
-            (CONTINUATION_DATA_FROM_PEOPLE, continuation_list[0], None),
-            (STILL_STUDYING, continuation_list[1], "%"),
-            (TAKING_BREAK, continuation_list[2], "%"),
-            (LEFT_WITH_LOWER, continuation_list[3], "%"),
-            (LEFT_WITHOUT_QUALIFICATION, continuation_list[4], "%")
+            (CONTINUATION_DATA_FROM_PEOPLE, continuation_list[0], "", "continuation_stats"),
+            (STILL_STUDYING, continuation_list[1], "%", "continuation_stats"),
+            (TAKING_BREAK, continuation_list[2], "%", "continuation_stats"),
+            (LEFT_WITH_LOWER, continuation_list[3], "%", "continuation_stats"),
+            (LEFT_WITHOUT_QUALIFICATION, continuation_list[4], "%", "continuation_stats")
         ]
         
         return sections
@@ -55,7 +55,13 @@ class ContinuationSection(Section):
         for course in self.courses:
             for section in self.sections:
                 self.data[section[primary_key]]["values"].append(
-                    presentable_continuation(course, section[action], section[suffix_index], self.language)
+                    self.presentable_data(
+                        course=course,
+                        stat=section[action],
+                        model_list=section[model_array],
+                        language=self.language,
+                        suffix=section[suffix_index]
+                    )
                 )
 
         return self.data

@@ -19,6 +19,7 @@ graduate_list = [
 primary_key = 1
 action = 2
 suffix_index = 3
+model_array = 4
 
 
 def multiple_subjects(course: Course, stat: str, suffix: Any, language: str) -> dict:
@@ -53,12 +54,12 @@ def presentable_graduate(course: Course, stat: str, suffix: Any, language: str) 
 
 class GraduatePerceptionSection(Section):
 
-    def get_sections(self) -> List[Tuple[Any, Any, Any, str]]:
+    def get_sections(self) -> List[Tuple[Any, Any, Any, str, str]]:
         sections = [
-                ("1", DATA_FROM_PEOPLE, graduate_list[0], None),
-                ("2", USEFULNESS, graduate_list[1], "%"),
-                ("3", MEANINGFULNESS, graduate_list[2], "%"),
-                ("4", FUTURE, graduate_list[3], "%"),
+                ("1", DATA_FROM_PEOPLE, graduate_list[0], "", "graduate_perceptions"),
+                ("2", USEFULNESS, graduate_list[1], "%", "graduate_perceptions"),
+                ("3", MEANINGFULNESS, graduate_list[2], "%", "graduate_perceptions"),
+                ("4", FUTURE, graduate_list[3], "%", "graduate_perceptions"),
             ]
         return sections
 
@@ -72,11 +73,13 @@ class GraduatePerceptionSection(Section):
         for course in self.courses:
             for section in self.sections:
                 self.data[section[0]]["values"].append(
-                    presentable_graduate(
+                    self.presentable_data(
                         course=course,
                         stat=section[action],
+                        model_list=section[model_array],
+                        language=self.language,
+                        multiple=True,
                         suffix=section[suffix_index],
-                        language=self.language
                     )
                 )
         self.update_data_with_subtitles(self.data)

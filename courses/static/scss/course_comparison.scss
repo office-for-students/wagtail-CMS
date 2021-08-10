@@ -1025,6 +1025,12 @@ $course_comparison_first_column_width: 250px;
         transform: translate(0%, -100%);
         margin: 48px 16px 6.5px 0px;
       }
+      .compare-text {
+        display: inline-block;
+        color: #5d5d5d;
+        vertical-align: top;
+        line-height: 1.5;
+      }
     }
     .need-help-box {
       display: block;
@@ -1080,6 +1086,7 @@ $course_comparison_first_column_width: 250px;
         display: inline-block;
         color: #5d5d5d;
         vertical-align: top;
+        line-height: 1.5;
       }
     }
   }
