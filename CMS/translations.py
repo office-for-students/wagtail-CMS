@@ -579,8 +579,8 @@ DICT = {
         'cy': ''
     },
     'home_page_video_link': {
-        'en': 'https://www.youtube.com/embed/4AmezarRQKc',
-        'cy': 'https://www.youtube.com/embed/tfodsrNWEOs'
+        'en': 'https://www.youtube.com/embed/W7jJ03_UjUg',
+        'cy': 'https://www.youtube.com/embed/ZMJqdQhtO3E'
     },
     'how_improve': {
         'en': 'Please tell us about your experience',
