@@ -14,7 +14,6 @@ def load_course_data(institution_id, course_id, mode):
             return JointCourseFormatMocks.get_successful_course_load_response()
         return CourseFormatMocks.get_successful_course_load_response()
     if settings.MONGODB_HOST:
-        print("mongo")
         mongo = Mongo('courses')
         return mongo.get_one(
             {
@@ -23,7 +22,6 @@ def load_course_data(institution_id, course_id, mode):
             }
         )
     else:
-        print("application")
         headers = {
             'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
         }

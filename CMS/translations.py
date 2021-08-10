@@ -315,6 +315,10 @@ STATISTICS = {
         'en': "The course has had a positive impact on my future plans",
         'cy': "Mae fy ngwaith presennol yn cyd-fynd â'm cynlluniau ar gyfer y dyfodol"
     },
+    'no_data_available': {
+        'en': "No data available",
+        'cy': "Nid yw'r data ar gael"
+    },
 }
 
 OPTIONALS = {
@@ -541,7 +545,7 @@ DICT = {
     },
     'can_compare_courses': {
         'en': 'Compare courses',
-        'cy': 'gymharu cyrsiau'
+        'cy': 'Gymharu cyrsiau'
     },
     'Caring personal service occupations': {
         'en': 'Caring personal service occupations',
@@ -1408,6 +1412,10 @@ DICT = {
         'en': 'Select a course',
         'cy': 'Dewis cwrs'
     },
+    'select_subject': {
+        'en': 'Select Subject',
+        'cy': 'Dewis Pwnc'
+    },
     'selected_1': {
         'en': '',
         'cy': 'Dewiswyd'
@@ -1431,6 +1439,14 @@ DICT = {
     'show_all': {
         'en': 'Show all',
         'cy': 'Dangos popeth'
+    },
+    'show_data_from': {
+        'en': "Show data from",
+        'cy': "Dangos data o"
+    },
+    'subject_select_text': {
+        'en': "Some courses selected have data from more than one subject. Select the subject you wish to see data from.",
+        'cy': "Mae gan rai cyrsiau a ddewisir ddata o fwy nag un pwnc. Dewiswch y pwnc rydych am weld data ohono"
     },
     'Silver': {
         'en': 'Silver',

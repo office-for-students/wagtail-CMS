@@ -8,26 +8,24 @@
     {% include 'courses/partials/comparison/guidance_box.html' %}
     <!-- Guidance box end -->
     <div class="course-detail__course-container">
-        <div class="course-detail__course-selected">
+        <div class="number_selected">
             <span id="numberOfSelected">{{ courses|length }}</span> {% get_translation key='courses_selected' language=page.get_language %}
         </div>
-        <div class="course-detail__course-container-pills">
-            <div class="course-detail__course-container-pills-slider"
-                 onclick="scrollDisplay(-1);" id="leftArrow">
-                <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-left"></i>
+        <div class="cards">
+            <div class="slider" id="leftArrow">
+                <i class="arrow fas fa-chevron-left"></i>
             </div>
             {% include 'courses/partials/course_comparison_overview.html' with courses=courses %}
-            <div class="course-detail__course-container-pills-slider single-arrow"
-                 onclick="scrollDisplay(1);" id="rightArrow">
-                <i class="course-detail__course-container-pills-slider-arrow fas fa-chevron-right"></i>
+            <div class="slider single-arrow" id="rightArrow">
+                <i class="arrow fas fa-chevron-right"></i>
             </div>
         </div>
     </div>
 
-    <div id="course-info-container">
+    <div class="course_comparison-table" id="course-info-container">
         {% if courses %}
             {% with dataset=courses_data.0.course_details %}
-                <div class="course_comparison-table__row-header">
+                <div class="comparison_row-header">
                     {{ dataset.title }}
                 </div>
                 {% for item, value in dataset.dataset.items %}
@@ -37,7 +35,7 @@
                         <div class="accordion-body">
 
                     {% endif %}
-                <div class="course_comparison-table__row-grey_background">
+                <div class="comparison_row-grey_background">
                     {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
                 </div>
                 {% if forloop.last %}
@@ -47,8 +45,8 @@
                     {% with action=dataset.call_to_action.0.show_more %}
                         <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
                              class="accordion-header">
-                        <div class="course_comparison-table__column-title_container">
-                        <div class="accordion-header course_comparison-table__column-first show_more">
+                        <div class="accordion-title">
+                        <div class="accordion-header column-first show_more">
                         <i class="fas fa-chevron-down expand chevron" alt="expand"
                            aria-label="{{ action.affirmative }}"></i>
                         <i class="fas fa-chevron-up collapse chevron" alt="collapse"
