@@ -61,7 +61,7 @@ class SubSatisfactionSection(Section):
         for course in self.courses:
             for section in self.sections:
                 self.data[section[primary_key]]["values"].append(
-                    self.__class__.presentable_data(
+                    self.presentable_data(
                         course=course,
                         stat=section[action],
                         model_list=section[model_array],
