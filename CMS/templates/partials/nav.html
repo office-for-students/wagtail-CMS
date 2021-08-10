@@ -1,130 +1,99 @@
 {% load staticfiles discover_uni_tags %}
 
-<nav class="discover-uni-nav">
+<nav>
     <a href="#main-content" class="screen-reader">skip to main content</a>
+    <div class="nav">
 
-    <div class="discover-uni-nav__container discover-uni-container px-3">
-        {% if page.is_english %}
-            <a class="discover-uni-nav__home-link" href="/">
-                <img class="discover-uni-nav__brand-logo" src="{% static 'images/logos/nav_logo_english.svg' %}"
-                    alt="{% get_translation key='site_logo' language=page.get_language %}">
-            </a>
-        {% else %}
-            <a class="discover-uni-nav__home-link" href="/cy">
-                <img class="discover-uni-nav__brand-logo" src="{% static 'images/logos/nav_logo_welsh.svg' %}"
-                    alt="{% get_translation key='site_logo' language=page.get_language %}">
-            </a>
-        {% endif %}
-      
-        <ul class="discover-uni-nav__desktop-links">
-            {% for item in page.menu %}
-                {% if item.sub_items %}
-                    <li class="discover-uni-nav__desktop-dropdown">
-                        <a class="discover-uni-nav__desktop-dropdown-toggle" href="#">
-                            {{ item.label }}
-                        </a>
+        {# Brand Logo #}
 
-                        <ul class="discover-uni-nav__desktop-dropdown-body">
-                            {% for sub_item in item.sub_items %}
-                                <li>
-                                    <a class="discover-uni-nav__desktop-dropdown-link" href="{{ sub_item.url }}">
-                                        {{ sub_item.label }}
+        <div class="nav__mobile">
+            <a class="nav__home-link" href="{{ navigation.brand_logo.url }}">
+                <img class="nav__brand-logo" src="{% static navigation.brand_logo.img %}"
+                     alt="{% get_translation key='site_logo' language=page.get_language %}">
+            </a>
+            <div class="nav__icon-wrapper">
+                <i id="burger-menu" class="nav__burger-menu fas fa-bars"></i>
+                <i id="close-menu" class="nav__close-menu fas fa-times"></i>
+            </div>
+        </div>
+        <div class="nav__menus-container">
+            {# Primary Menu #}
+            <div class="nav__primary-menu">
+                {% for item in navigation.primary_menu %}
+                    {% with has_sub=item.sub_items %}
+                        {% if has_sub %}
+                            <div class="nav__mobile-accordion">
+
+                                <div class="nav__primary-link nav__accordion-header">
+                                    <a href="#" class="nav__link-title accordion-title">
+                                        {{ item.label }}
                                     </a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                {% else %}
-                    <li class="discover-uni-nav__desktop-link">
-                        <a href="{{ item.url }}">
-                            {{ item.label }}
+                                    <div class="nav__icon-wrapper">
+                                        <div class="expand">
+                                            <img src="{% static 'images/menu_down_icon.svg' %}"
+                                                 alt="expand {{ item.label }} drop down menu">
+                                        </div>
+                                        <div class="collapse">
+                                            <img src="{% static 'images/menu_up_icon.svg' %}"
+                                                 alt="collapse {{ item.label }} drop down menu">
+                                        </div>
+                                    </div>
+                                </div>
 
-                            {% if item.label == 'Course search' or item.label == 'Chwilio am Gwrs'  %}
-                                <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
-                            {% endif %}
 
+                                <div class="nav__accordion-body">
+                                    <ul class="nav__dropdown-body">
+                                        {% for sub_item in has_sub %}
+                                            <li>
+                                                <a
+                                                        href="{{ sub_item.url }}">
+                                                    {{ sub_item.label }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+
+                            </div>
+
+
+
+                        {% else %}
+                            <div class="nav__primary-link">
+                                <a href="{% if item.url %}{{ item.url }} {% else %} # {% endif %}">
+                                    {{ item.label }}</a>
+                            </div>
+                        {% endif %}
+
+
+                        </li>
+                    {% endwith %}
+                {% endfor %}
+
+                {#                TODO: Remove course search from CMS         #}
+                <div class="nav__primary-link">
+                    <a id="language_select"
+                       href="{{ translated_url }}">
+                        {% if page.is_english %} Cymraeg {% else %} English {% endif %}
+                    </a>
+                </div>
+            </div>
+
+            {# Comparison Menu #}
+            <ul class="nav__secondary-menu">
+                {% for link in navigation.comp_menu %}
+                    <li class="nav__secondary-link">
+                        <a href="{{ link.url }}">
+                            <img src="{{ link.img }}" alt="">
+                            {{ link.label }}
                         </a>
                     </li>
-                {% endif %}
-            {% endfor %}
+                {% endfor %}
+            </ul>
 
-            {% if page.is_english %}
-                <li class="discover-uni-nav__desktop-link">
-                    <a id="language_select" href="{{welsh_url}}" class="nav-bookmark">
-                        Cymraeg
-                    </a>
-                </li>
-            {% else %}
-                <li class="discover-uni-nav__desktop-link">
-                    <a id= "language_select" href="{{english_url}}" class="nav-bookmark">
-                        English
-                    </a>
-                </li>
-            {% endif %}
-
-            <li class="discover-uni-nav__desktop-link">
-                <a href="{{page.manage_link}}" class="nav-bookmark">
-                    <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="Bookmarked courses">
-                    <span class="nav-bookmark__count"></span>
-                </a>
-            </li>
-        </ul>
-
-        <div class="discover-uni-nav__mobile-nav">
-            <a href="{{page.manage_link}}" class="nav-bookmark">
-                <img class="discover-uni-nav__bookmark-icon" src="{% static 'images/white-bookmark.svg' %}" alt="Bookmarked courses">
-                <span class="nav-bookmark__count"></span>
-            </a>
-
-            <i id="burger-menu" class="discover-uni-nav__burger-menu fas fa-bars"></i>
-            <i id="close-menu" class="discover-uni-nav__close-menu fas fa-times"></i>
         </div>
-    </div>
 
-    <div class="discover-uni-nav__mobile-links">
-        <div class="discover-uni-nav__mobile-language-toggles">
-            <a class="discover-uni-nav__mobile-link{% if page.is_english %} active" {% else %}" href="{{english_url}}" id="language_select"{% endif %}>
-                English
-            </a>
 
-            <a class="discover-uni-nav__mobile-link{% if not page.is_english %} active" {% else %}" href="{{welsh_url}}" id="language_select"{% endif %}>
-                Cymraeg
-            </a>
-        </div>
-        {% for item in page.menu %}
-            {% if item.sub_items %}
-                <div class="discover-uni-nav__mobile-accordion">
-                    <div class="discover-uni-nav__mobile-accordion-header">
-                        <p class="discover-uni-nav__mobile-accordion-title">
-                            {{ item.label }}
-                        </p>
-
-                        <div class="expand">
-                            <img class="nav-section__icon" src="{% static 'images/menu_down_icon.svg' %}" alt="expand {{ item.label }} drop down menu">
-                        </div>
-
-                        <div class="collapse">
-                            <img class="nav-section__icon" src="{% static 'images/menu_up_icon.svg' %}" alt="collapse {{ item.label }} drop down menu">
-                        </div>
-                    </div>
-
-                    <div class="discover-uni-nav__mobile-accordion-body">
-                        {% for sub_item in item.sub_items %}
-                            <a class="discover-uni-nav__mobile-accordion-body-link" href="{{ sub_item.url }}">
-                                {{ sub_item.label }}
-                            </a>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% else %}
-                <a class="discover-uni-nav__mobile-link" href="{{ item.url }}">
-                    {{ item.label }}
-
-                    {% if item.label == 'Course search' or item.label == 'Chwilio am Gwrs' %}
-                        <img class="discover-uni-nav__link-icon" src="{% static 'images/search_icon.svg' %}" alt="">
-                    {% endif %}
-                </a>
-            {% endif %}
-        {% endfor %}
     </div>
 </nav>
+
