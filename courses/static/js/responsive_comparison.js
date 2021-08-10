@@ -65,10 +65,14 @@ class RatingsManager {
     addStarRating(value, index) {
         const compare_list = this.getCoursesForComparison();
         const currentRating = compare_list[index].rating;
-        if (value === currentRating && value === 1) {
-            value = 0;
+
+        if (currentRating > value) {
+            if (currentRating - 1 === 1) {
+                value = 0;
+            }
         }
-        compare_list[index].rating = value
+        let new_rating = value === 0 ? value : value + 1;
+        compare_list[index].rating = new_rating;
         localStorage.setItem('CoursesForComparison', JSON.stringify(compare_list));
     }
 
@@ -98,7 +102,7 @@ class RatingsManager {
         if (index < compare_list.length) {
             for (var i = 1; i <= 3; i++) {
                 var star = document.getElementById("course-" + index + "-star" + i);
-                if (i <= compare_list[index].rating) {
+                if (i <= compare_list[index].rating - 1) {
                     star.innerHTML = "★";
                     star.classList.add("orange");
                 } else {
