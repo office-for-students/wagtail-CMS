@@ -541,7 +541,7 @@ DICT = {
     },
     'can_compare_courses': {
         'en': 'Compare courses',
-        'cy': 'gymharu cyrsiau'
+        'cy': 'Gymharu cyrsiau'
     },
     'Caring personal service occupations': {
         'en': 'Caring personal service occupations',
