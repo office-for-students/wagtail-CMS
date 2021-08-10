@@ -1,11 +1,8 @@
 {% load staticfiles discover_uni_tags %}
-
 <nav>
     <a href="#main-content" class="screen-reader">skip to main content</a>
     <div class="nav">
-
         {# Brand Logo #}
-
         <div class="nav__mobile">
             <a class="nav__home-link" href="{{ navigation.brand_logo.url }}">
                 <img class="nav__brand-logo" src="{% static navigation.brand_logo.img %}"
@@ -24,7 +21,7 @@
                         {% if has_sub %}
                             <div class="nav__mobile-accordion">
 
-                                <div class="nav__primary-link nav__accordion-header">
+                                <li class="nav__primary-link nav__accordion-header">
                                     <a href="#" class="nav__link-title accordion-title">
                                         {{ item.label }}
                                     </a>
@@ -38,9 +35,7 @@
                                                  alt="collapse {{ item.label }} drop down menu">
                                         </div>
                                     </div>
-                                </div>
-
-
+                                </li>
                                 <div class="nav__accordion-body">
                                     <ul class="nav__dropdown-body">
                                         {% for sub_item in has_sub %}
@@ -53,32 +48,24 @@
                                         {% endfor %}
                                     </ul>
                                 </div>
-
                             </div>
-
-
-
                         {% else %}
-                            <div class="nav__primary-link">
+                            <li class="nav__primary-link">
                                 <a href="{% if item.url %}{{ item.url }} {% else %} # {% endif %}">
                                     {{ item.label }}</a>
-                            </div>
+                            </li>
                         {% endif %}
-
-
                         </li>
                     {% endwith %}
                 {% endfor %}
-
                 {#                TODO: Remove course search from CMS         #}
-                <div class="nav__primary-link">
+                <li class="nav__primary-link">
                     <a id="language_select"
                        href="{{ translated_url }}">
                         {% if page.is_english %} Cymraeg {% else %} English {% endif %}
                     </a>
-                </div>
+                </li>
             </div>
-
             {# Comparison Menu #}
             <ul class="nav__secondary-menu">
                 {% for link in navigation.comp_menu %}
@@ -90,10 +77,6 @@
                     </li>
                 {% endfor %}
             </ul>
-
         </div>
-
-
     </div>
 </nav>
-

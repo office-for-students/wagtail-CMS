@@ -17,20 +17,23 @@
   //height: 67px;
   border-top: unset;
   padding: unset;
-
 }
 
 nav {
   width: 100%;
   background-color: $header-blue;
   color: $white;
+  padding-bottom: 67px;
 
   .nav {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
-
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    background-color: inherit;
 
     &__brand-logo {
       height: 40px;
@@ -45,7 +48,7 @@ nav {
     }
 
     &__icon-wrapper {
-      display: inline;
+      display: flex;
     }
 
     &__burger-menu {
@@ -65,7 +68,6 @@ nav {
     &__menus-container {
       display: none;
       width: 100%;
-
     }
 
     &__primary-menu {
@@ -73,7 +75,6 @@ nav {
       list-style: none;
       padding: 0;
       margin-bottom: 0;
-
     }
 
     &__primary-link {
@@ -81,6 +82,7 @@ nav {
 
       a {
         color: $white;
+        font-weight: bold;
       }
     }
 
@@ -93,8 +95,9 @@ nav {
       list-style: none;
       text-align: right;
       position: static;
-      padding-top: 30px;
-      padding-right: 15px;
+      padding-top: 10px;
+      padding-right: 0;
+      padding-left: 0;
 
       li {
         @include mobile-body-font-mixin();
@@ -107,8 +110,11 @@ nav {
       li:hover {
         @include green-gradient-background-mixin();
       }
+
       li a {
         color: $white;
+        font-weight: bold;
+        margin-right: 15px
       }
     }
 
@@ -129,6 +135,7 @@ nav {
       list-style: none;
       padding: 0;
       border-bottom: 1px solid $white;
+      margin-bottom: 0;
     }
 
     &__secondary-link {
@@ -138,6 +145,7 @@ nav {
         display: flex;
         align-items: center;
         color: $white;
+        font-weight: bold;
 
         img {
           height: 22px;
@@ -146,17 +154,10 @@ nav {
         }
       }
     }
-
-    &__secondary-link:hover {
-      background: none;
-    }
   }
 }
 
-
 @media only screen and (min-width: 768px) {
-
-
   nav {
     .nav {
       display: flex;
@@ -192,7 +193,6 @@ nav {
         display: flex;
         list-style: none;
         height: 100%;
-
       }
 
       &__primary-link {
@@ -201,7 +201,6 @@ nav {
         border: none;
         background-color: transparent;
         text-decoration: none;
-
 
         a {
           height: 100%;
@@ -212,6 +211,7 @@ nav {
           margin: 0;
           color: $white;
           text-decoration: none;
+          font-weight: normal;
         }
       }
 
@@ -247,8 +247,11 @@ nav {
         li:hover {
           @include green-gradient-background-mixin();
         }
-      }
 
+        li a {
+          font-weight: normal;
+        }
+      }
 
       &__secondary-menu {
         display: flex;
@@ -271,7 +274,6 @@ nav {
         padding-left: 8px;
         padding-right: 8px;
 
-
         a {
           display: flex;
           align-items: center;
@@ -279,6 +281,7 @@ nav {
           padding-right: 15px;
           color: #FFFFFF;
           text-decoration: none;
+          font-weight: normal;
 
           img {
             height: 22px;
@@ -290,6 +293,10 @@ nav {
             padding-left: 10px;
           }
         }
+      }
+
+      &__secondary-link:hover {
+        background: none;
       }
     }
   }
