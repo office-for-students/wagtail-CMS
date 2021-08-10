@@ -12,13 +12,11 @@
             <span id="numberOfSelected">{{ courses|length }}</span> {% get_translation key='courses_selected' language=page.get_language %}
         </div>
         <div class="cards">
-            <div class="slider"
-                 onclick="moveIndexToDisplayBy(-1);" id="leftArrow">
+            <div class="slider" id="leftArrow">
                 <i class="arrow fas fa-chevron-left"></i>
             </div>
             {% include 'courses/partials/course_comparison_overview.html' with courses=courses %}
-            <div class="slider single-arrow"
-                 onclick="moveIndexToDisplayBy(1);" id="rightArrow">
+            <div class="slider single-arrow" id="rightArrow">
                 <i class="arrow fas fa-chevron-right"></i>
             </div>
         </div>
