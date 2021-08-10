@@ -1408,6 +1408,10 @@ DICT = {
         'en': 'Select a course',
         'cy': 'Dewis cwrs'
     },
+    'select_subject': {
+        'en': 'Select Subject',
+        'cy': 'Dewis Pwnc'
+    },
     'selected_1': {
         'en': '',
         'cy': 'Dewiswyd'
@@ -1431,6 +1435,14 @@ DICT = {
     'show_all': {
         'en': 'Show all',
         'cy': 'Dangos popeth'
+    },
+    'show_data_from': {
+        'en': "Show data from",
+        'cy': "Dangos data o"
+    },
+    'subject_select_text': {
+        'en': "Some courses selected have data from more than one subject. Select the subject you wish to see data from.",
+        'cy': "Mae gan rai cyrsiau a ddewisir ddata o fwy nag un pwnc. Dewiswch y pwnc rydych am weld data ohono"
     },
     'Silver': {
         'en': 'Silver',
