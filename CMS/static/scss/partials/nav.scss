@@ -39,7 +39,7 @@ nav {
     width: 18px;
     height: 18px;
     bottom: 10px;
-    left: 25px;
+    left: 10px;
     p {
       font-size: 11px;
     }
@@ -197,6 +197,10 @@ nav {
   nav {
     .language-select {
       display: inline !important;
+    }
+
+    .saved-counter {
+      left: 25px;
     }
 
     .nav {
