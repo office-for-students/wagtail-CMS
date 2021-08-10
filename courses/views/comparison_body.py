@@ -2,6 +2,7 @@ import logging
 
 from django.shortcuts import render
 
+from CMS import translations
 from CMS.enums import enums
 from core import utils
 from core.utils import get_new_landing_page_for_language
@@ -28,7 +29,6 @@ def show_courses_selected_for_comparison(courses_list, request, language):
         for course in courses_list[0:7]:
             if course:
                 course = course.split('/')
-                print("course = course");
                 course, error = Course.find(institution_id=course[0], course_id=course[1], mode=course[2],
                                             language=language)
 
@@ -63,5 +63,5 @@ def compare_courses_body(request, language=enums.languages.ENGLISH):
 
 
 def render_with_language_context(request, template, context, language):
-    default = dict(page={"get_language": language})
+    default = dict(page={"get_language": language, "compare_heading": translations.term_for_key("can_compare_courses", language)})
     return render(request, template, {**default, **context})
