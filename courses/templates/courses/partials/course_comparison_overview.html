@@ -1,31 +1,18 @@
 {% load staticfiles discover_uni_tags %}
 {% for course in courses %}
-    <div id="{{course.institution.pub_ukprn}}/{{course.kis_course_id}}/{{course.mode.label}}"
+    <div id="{{ course.institution.pub_ukprn }}/{{ course.kis_course_id }}/{{ course.mode.label }}"
          data-multiple_subjects="{{ course.has_multiple_subject_names }}"
          class="course-detail__courses-container cc-column-{{ forloop.counter0 }}" data-index="{{ forloop.counter0 }}">
         <div>
-
-            <li class="rating"
-                onmouseover="hoverStars(value, {{ forloop.counter0 }})"
-                onmouseleave="mouseExitStars({{ forloop.counter0 }})"
-                onclick="addStarRating(id, value, {{ forloop.counter0 }})" id="course-{{ forloop.counter0 }}-star1"
-                value="1">☆
-            </li>
-            <li class="rating"
-                onmouseover="hoverStars(value, {{ forloop.counter0 }})"
-                onmouseleave="mouseExitStars({{ forloop.counter0 }})"
-                onclick="addStarRating(id, value, {{ forloop.counter0 }})" id="course-{{ forloop.counter0 }}-star2"
-                value="2">☆
-            </li>
-            <li class="rating"
-                onmouseover="hoverStars(value, {{ forloop.counter0 }})"
-                onmouseleave="mouseExitStars({{ forloop.counter0 }})"
-                onclick="addStarRating(id, value, {{ forloop.counter0 }})" id="course-{{ forloop.counter0 }}-star3"
-                value="3">☆
-            </li>
-
-            <img class="course-detail__courses-container-exit-course"
-                 onclick="removeCourseCompare(this)"
+            {% with stars="123" index=forloop.counter0 %}
+                {% for star in stars %}
+                    <li class="rating js-star-rating"
+                        id="course-{{ index }}-star{{ star }}"
+                        value="{{ star }}">☆
+                    </li>
+                {% endfor %}
+            {% endwith %}
+            <img id="ratings_remove-{{ forloop.counter0 }}" class="course-detail__courses-container-exit-course"
                  src="{% static 'images/icon-close.svg' %}">
         </div>
 

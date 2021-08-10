@@ -26,49 +26,5 @@
 
     <div class="comparison d-sm-block mb-5" id="comparison-body"></div>
 
-    <script>
-
-        const event = new Event('build-accordions');
-        let local_storage = localStorage.getItem("CoursesForComparison");
-        let array = [];
-        if (local_storage) {
-            array = JSON.parse(local_storage);
-        }
-        list = []
-        array.forEach(function (value, index) {
-            list.push(value.id);
-        })
-        urls_params = list.join('&courses=');
-
-
-        function showComparison(urls_params, callback) {
-            let xmlhttp;
-
-            xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState === 4 && this.status === 200) {
-                    document.getElementById("comparison-body").innerHTML = this.responseText;
-                    moveIndexToDisplayBy(0);
-                    document.dispatchEvent(event);
-                    setEventListeners();
-                }
-            };
-
-            let saved = [];
-            if (localStorage.getItem("bookmarkedCourses"))
-                saved = JSON.parse(localStorage.getItem("bookmarkedCourses"));
-            if (document.documentElement.lang === "cy") {
-                xmlhttp.open("GET", "/cy/ajax/course-comparison/?courses=" + urls_params + '&hasStorage=' + saved.length, true);
-            } else {
-                xmlhttp.open("GET", "/ajax/course-comparison/?courses=" + urls_params + '&hasStorage=' + saved.length, true);
-            }
-            xmlhttp.send();
-        }
-
-        showComparison(urls_params);
-    </script>
-
     <script type="text/javascript" src="{% static 'js/responsive_comparison.js' %}?{% code_version %}"></script>
-    <script type="text/javascript" src="{% static 'js/ratings.js' %}?{% code_version %}"></script>
-    <script type="text/javascript" src="{% static 'js/subject_selector.js' %}?{% code_version %}"></script>
 {% endblock %}

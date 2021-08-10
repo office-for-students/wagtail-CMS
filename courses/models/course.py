@@ -71,7 +71,6 @@ class Course:
             self.locations = []
             if course_details.get('locations'):
                 for location in course_details.get('locations'):
-                    print("building locations, ", location)
                     self.locations.append(CourseLocation(location, self.display_language))
 
             self.length = CourseLength(course_details.get('length_of_course'), language)
