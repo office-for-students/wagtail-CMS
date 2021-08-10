@@ -83,9 +83,14 @@
             <ul class="nav__secondary-menu">
                 {% for link in navigation.comp_menu %}
                     <li class="nav__secondary-link">
-                        <a href="{{ link.url }}">
-                            <img src="{{ link.img }}" alt="">
+                        <a href="{{ link.url }}" >
+                            <img src="{{ link.img }}" alt={{ link.alt }}>
+                            {% if link.additional %}
+{#                                <span class="nav-bookmark__count"></span>#}
+                            {% endif %}
+
                             {{ link.label }}
+
                         </a>
                     </li>
                 {% endfor %}

@@ -25,7 +25,7 @@ nav {
   color: $white;
   padding-bottom: 67px;
 
-  .language-select{
+  .language-select {
     display: none !important;
   }
 
@@ -137,10 +137,12 @@ nav {
     &__language-toggles {
       display: flex;
       border-top: 1px solid $white;
+
       .nav__primary-link {
         width: 50%;
         justify-content: center;
         color: $white;
+
         &.active {
           @include green-gradient-background-mixin();
         }
@@ -176,9 +178,10 @@ nav {
 
 @media only screen and (min-width: 768px) {
   nav {
-    .language-select{
-    display: inline !important;
-  }
+    .language-select {
+      display: inline !important;
+    }
+
     .nav {
       display: flex;
       align-items: center;

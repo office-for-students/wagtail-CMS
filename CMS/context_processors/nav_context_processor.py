@@ -28,13 +28,18 @@ def nav_menu_render(request):
             'comp_menu': [
                 {'label': translations.term_for_key(key='search', language=language),
                  'img': static('images/search_icon.svg'),
-                 'url': search_page_url},
+                 'url': search_page_url,
+                 'alt': 'Search Page'},
                 {'label': translations.term_for_key(key='compare', language=language),
                  'img': static('images/compare_icon.svg'),
-                 'url': comparison_page_url},
+                 'url': comparison_page_url,
+                 'alt': 'Comparison'},
+
                 {'label': translations.term_for_key(key='saved', language=language),
                  'img': static('images/white-bookmark.svg'),
-                 'url': bookmark_page_url}
+                 'url': bookmark_page_url,
+                 'alt': 'Saved',
+                 'additional': True}
             ],
             'footer_menu': get_menu(Footer, language, 'footer_items')
         }
