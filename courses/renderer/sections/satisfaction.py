@@ -16,31 +16,16 @@ satisfaction_list = [
 primary_key = 0
 action = 1
 suffix_index = 2
-
-
-def presentable_satisfaction(course: Course, stat: str, suffix: Any, language: str) -> str:
-    if language == 'cy':
-        response = "Nid yw'r data ar gael"
-    else:
-        response = "No data available"
-    try:
-        _object = course.satisfaction_stats[0]
-        method = str(getattr(_object, stat))
-        response = f"{method}{suffix}" if suffix and method.isnumeric() else method
-    except Exception as e:
-        print("error: ", e)
-        pass
-
-    return response
+model_array = 3
 
 
 class SatisfactionSection(Section):
 
-    def get_sections(self) -> List[Tuple[Any, Any, Any]]:
+    def get_sections(self) -> List[Tuple[Any, Any, Any, Any]]:
         sections = [
-            (OVERALL_SATISFACTION, satisfaction_list[0], "%"),
-            (SATISFACTION_DATA_FROM_PEOPLE, satisfaction_list[1], None),
-            (PERCENTAGE_THOSE_ASKED, satisfaction_list[2], None)
+            (OVERALL_SATISFACTION, satisfaction_list[0], "%", "satisfaction_stats"),
+            (SATISFACTION_DATA_FROM_PEOPLE, satisfaction_list[1], "", "satisfaction_stats"),
+            (PERCENTAGE_THOSE_ASKED, satisfaction_list[2], "", "satisfaction_stats")
         ]
 
         return sections
@@ -49,11 +34,15 @@ class SatisfactionSection(Section):
         for course in self.courses:
             for section in self.sections:
                 self.data[section[primary_key]]["values"].append(
-                    presentable_satisfaction(course,
-                                             section[action],
-                                             section[suffix_index],
-                                             self.language)
+                    self.presentable_data(
+                        course=course,
+                        stat=section[action],
+                        model_list=section[model_array],
+                        language=self.language,
+                        suffix=section[suffix_index]
+                    )
                 )
+
         return self.data
 
 
@@ -63,22 +52,23 @@ class SubSatisfactionSection(Section):
         self.keys = keys
         super().__init__(courses, language)
 
-    def get_sections(self) -> List[Tuple[Any, Any, Any]]:
+    def get_sections(self) -> List[Tuple[Any, Any, str, str]]:
         sections = []
 
         for i in self.keys:
-            sections.append((f"nss_question_{i}", f"question_{i}", "%"))
+            sections.append((f"nss_question_{i}", f"question_{i}", "%", "satisfaction_stats"))
         return sections
 
     def generate_dict(self) -> dict:
         for course in self.courses:
             for section in self.sections:
                 self.data[section[primary_key]]["values"].append(
-                    presentable_satisfaction(
+                    self.__class__.presentable_data(
                         course=course,
                         stat=section[action],
-                        suffix=section[suffix_index],
-                        language=self.language
+                        model_list=section[model_array],
+                        language=self.language,
+                        suffix=section[suffix_index]
                     )
                 )
 

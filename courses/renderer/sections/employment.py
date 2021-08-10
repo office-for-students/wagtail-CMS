@@ -37,46 +37,30 @@ suffix_index = 3
 model_index = 4
 
 
-def multiple_subjects(course: Course, stat: str, suffix: Any, model: str, language: str) -> dict:
-    response = dict(subject=[], values=[])
+# def multiple_subjects(course: Course, stat: str, suffix: Any, model: str, language: str) -> dict:
+#     response = dict(subject=[], values=[])
+#
+#     for index, subject in enumerate(course.subject_names):
+#         subject_name = subject.display_subject_name()
+#         values = translations.term_for_key(key="no_data_available", language=language)
+#
+#         if model == "employment":
+#             if index < len(course.employment_stats):
+#                 _object = course.employment_stats[index]
+#                 method = str(getattr(_object, stat))
+#                 values = f"{method}{suffix}" if suffix and method.isnumeric() else method
+#         else:
+#             if index < len(course.job_type_stats):
+#                 _object = course.job_type_stats[index]
+#                 method = str(getattr(_object, stat))
+#                 values = f"{method}{suffix}" if suffix and method.isnumeric() else method
+#
+#         response["subject"].append(subject_name)
+#         response["values"].append(values)
+#     return response
 
-    for index, subject in enumerate(course.subject_names):
-        subject_name = subject.display_subject_name()
-        values = translations.term_for_key(key="no_data_available", language=language)
-
-        if model == "employment":
-            if index < len(course.employment_stats):
-                _object = course.employment_stats[index]
-                method = str(getattr(_object, stat))
-                values = f"{method}{suffix}" if suffix and method.isnumeric() else method
-        else:
-            if index < len(course.job_type_stats):
-                _object = course.job_type_stats[index]
-                method = str(getattr(_object, stat))
-                values = f"{method}{suffix}" if suffix and method.isnumeric() else method
-
-        response["subject"].append(subject_name)
-        response["values"].append(values)
-    return response
 
 
-def presentable_employment(course: Course, stat: str, suffix: Any, model: str, language: str) -> str:
-    response = translations.term_for_key(key="no_data_available", language=language)
-    try:
-        if course.has_multiple_subject_names:
-            response = multiple_subjects(course, stat, suffix, model, language)
-        else:
-            if model == "employment":
-                _object = course.employment_stats[0]
-            else:
-                _object = course.job_type_stats[0]
-            method = str(getattr(_object, stat))
-            response = f"{method}{suffix}" if suffix and method.isnumeric() else method
-
-    except Exception as e:
-        print("error: ", e)
-        pass
-    return response
 
 
 class SubEmploymentSection(Section):
@@ -90,18 +74,18 @@ class SubEmploymentSection(Section):
         sub_sections = []
         sections = [
             (
-                ("1", DATA_FROM_PEOPLE, employment_list[0], None, "employment"),
-                ("2", NOW_WORKING, employment_list[1], "%", "employment"),
-                ("3", DOING_FURTHER_STUDY, employment_list[2], "%", "employment"),
-                ("4", WORKING_AND_STUDYING, employment_list[3], "%", "employment"),
-                ("5", UNEMPLOYED, employment_list[4], "%", "employment"),
-                ("6", UNEMPLOYED2, employment_list[5], "%", "employment"),
-                ("7", OTHER, employment_list[6], "%", "employment"),
+                ("1", DATA_FROM_PEOPLE, employment_list[0], "", "employment_stats"),
+                ("2", NOW_WORKING, employment_list[1], "%", "employment_stats"),
+                ("3", DOING_FURTHER_STUDY, employment_list[2], "%", "employment_stats"),
+                ("4", WORKING_AND_STUDYING, employment_list[3], "%", "employment_stats"),
+                ("5", UNEMPLOYED, employment_list[4], "%", "employment_stats"),
+                ("6", UNEMPLOYED2, employment_list[5], "%", "employment_stats"),
+                ("7", OTHER, employment_list[6], "%", "employment_stats"),
 
-                ("8", DATA_FROM_PEOPLE, job_types_list[0], None, "job_types"),
-                ("9", HIGHLY_SKILLED, job_types_list[1], "%", "job_types"),
-                ("10", OTHER_WORK, job_types_list[2], "%", "job_types"),
-                ("11", UNKNOWN_WORK, job_types_list[3], "%", "job_types"),
+                ("8", DATA_FROM_PEOPLE, job_types_list[0], "", "job_type_stats"),
+                ("9", HIGHLY_SKILLED, job_types_list[1], "%", "job_type_stats"),
+                ("10", OTHER_WORK, job_types_list[2], "%", "job_type_stats"),
+                ("11", UNKNOWN_WORK, job_types_list[3], "%", "job_type_stats"),
             )]
 
         for i in range(self.start_range, self.end_range):
@@ -118,12 +102,12 @@ class SubEmploymentSection(Section):
         for course in self.courses:
             for section in self.sections:
                 self.data[section[0]]["values"].append(
-                    presentable_employment(
+                    self.presentable_data(
                         course=course,
                         stat=section[action],
+                        model_list=section[model_index],
+                        language=self.language,
                         suffix=section[suffix_index],
-                        model=section[model_index],
-                        language=self.language
                     )
                 )
         self.update_data_with_subtitles(self.data)
@@ -140,4 +124,6 @@ class SubEmploymentSection(Section):
         for section in self.sections:
             if section[0] in subtitles:
                 data[section[0]]["subtitle"] = self.term_for_key(subtitles[section[0]], self.language)
+
+
 
