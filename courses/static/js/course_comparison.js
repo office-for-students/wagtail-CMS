@@ -1,16 +1,10 @@
-const narrowMarginLeftAndRightClass = "course-info-both";
-const wideMarginLeftClass = "course-info-left";
-const wideMarginRightClass = "course-info-right";
-
-let currentIndex = 0;
-
 class RatingsManager {
 
     valueAndIndexForElement(el) {
         let index = el.id.split("-")[1];
         let value = el.value;
 
-        return [parseInt(index), parseInt(value)]
+        return [parseInt(index), parseInt(value), el.parentElement.parentElement.id]
     }
 
     valueAndIndexFor(event) {
@@ -36,24 +30,23 @@ class RatingsManager {
     }
 
     setEventListener() {
-
         const manager = this
         let ratingsContainers = document.getElementsByClassName('js-star-rating');
         Array.from(ratingsContainers).forEach(function (el) {
             el.addEventListener("mouseover", function (event) {
-                let [index, value] = manager.valueAndIndexFor(event)
-                manager.hoverStars(value, index);
+                let [index, value, elementID] = manager.valueAndIndexFor(event)
+                manager.hoverStars(value, index, elementID);
 
             })
 
             el.addEventListener("mouseleave", function (event) {
-                let [index, value] = manager.valueAndIndexFor(event)
-                manager.mouseExitStars(value, index);
+                let [index, value, elementID] = manager.valueAndIndexFor(event)
+                manager.mouseExitStars(value, index, elementID);
             })
 
             el.addEventListener('click', function (event) {
-                let [index, value] = manager.valueAndIndexFor(event)
-                manager.addStarRating(value, index);
+                let [index, value, elementId] = manager.valueAndIndexFor(event)
+                manager.addStarRating(value, index, elementId);
             })
         })
     }
@@ -62,60 +55,76 @@ class RatingsManager {
         return JSON.parse(localStorage.getItem("CoursesForComparison"));
     }
 
-    addStarRating(value, index) {
+    getCourseForID(element_id) {
         const compare_list = this.getCoursesForComparison();
-        const currentRating = compare_list[index].rating;
 
+        let selectCourse = null;
+
+        compare_list.forEach(function (course) {
+            if (course.id === element_id) {
+                selectCourse = course;
+            }
+        })
+        return selectCourse
+    }
+
+    addStarRating(value, index, element_id) {
+        const compare_list = this.getCoursesForComparison();
+        let selectedCourse = this.getCourseForID(element_id)
+        const currentRating = selectedCourse.rating;
         if (currentRating > value) {
             if (currentRating - 1 === 1) {
                 value = 0;
             }
         }
-        let new_rating = value === 0 ? value : value + 1;
-        compare_list[index].rating = new_rating;
+        compare_list.forEach(function (course) {
+            if (course.id === selectedCourse.id) {
+                course.rating = value === 0 ? value : value + 1;
+                course.rating = value === 0 ? value : value + 1;
+            }
+        })
         localStorage.setItem('CoursesForComparison', JSON.stringify(compare_list));
     }
 
 
-    hoverStars(value, index) {
-        const compare_list = this.getCoursesForComparison()
-        if (index < compare_list.length) {
-            if (value < compare_list[index].rating) {
-                for (var i = 3; i > value; i--) {
-                    var star = document.getElementById("course-" + index + "-star" + i);
-                    star.innerHTML = "☆";
-                    star.classList.remove("orange");
-                }
-            } else if (value > 0) {
-                for (var i = 1; i <= value; i++) {
-                    var star = document.getElementById("course-" + index + "-star" + i);
-                    star.innerHTML = "★";
-                    star.classList.add("orange");
-                }
+    hoverStars(value, index, element_id) {
+        let selectedCourse = this.getCourseForID(element_id)
+        if (value < selectedCourse.rating) {
+            for (let i = 3; i > value; i--) {
+                let star = document.getElementById("course-" + index + "-star" + i);
+                star.innerHTML = "☆";
+                star.classList.remove("orange");
+            }
+        } else if (value > 0) {
+            for (let i = 1; i <= value; i++) {
+                let star = document.getElementById("course-" + index + "-star" + i);
+                star.innerHTML = "★";
+                star.classList.add("orange");
             }
         }
     }
 
 
-    mouseExitStars(value, index) {
-        const compare_list = this.getCoursesForComparison();
-        if (index < compare_list.length) {
-            for (var i = 1; i <= 3; i++) {
-                var star = document.getElementById("course-" + index + "-star" + i);
-                if (i <= compare_list[index].rating - 1) {
-                    star.innerHTML = "★";
-                    star.classList.add("orange");
-                } else {
-                    star.innerHTML = "☆";
-                    star.classList.remove("orange");
-                }
+    mouseExitStars(value, index, element_id) {
+        let selectedCourse = this.getCourseForID(element_id)
+        for (let i = 1; i <= 3; i++) {
+            let star = document.getElementById("course-" + index + "-star" + i);
+            if (i <= selectedCourse.rating - 1) {
+                star.innerHTML = "★";
+                star.classList.add("orange");
+            } else {
+                star.innerHTML = "☆";
+                star.classList.remove("orange");
             }
         }
     }
 }
 
-
 class ArrowManager {
+    narrowMarginLeftAndRightClass = "course-info-both";
+    wideMarginLeftClass = "course-info-left";
+    wideMarginRightClass = "course-info-right";
+
     leftArrow = document.getElementById("leftArrow");
     rightArrow = document.getElementById("rightArrow");
     centralContainer = document.getElementById("course-info-container");
@@ -131,32 +140,32 @@ class ArrowManager {
     }
 
     removeWideArrowLeft() {
-        this.centralContainer.classList.remove(wideMarginLeftClass);
+        this.centralContainer.classList.remove(this.wideMarginLeftClass);
         this.leftArrow.classList.remove("single-arrow");
         this.leftArrow.classList.add("hidden");
     }
 
     removeWideArrowRight() {
-        this.centralContainer.classList.remove(wideMarginRightClass);
+        this.centralContainer.classList.remove(this.wideMarginRightClass);
         this.rightArrow.classList.remove("single-arrow");
         this.rightArrow.classList.add("hidden");
     }
 
     removeNarrowArrowsLeftAndRight() {
-        this.centralContainer.classList.remove(narrowMarginLeftAndRightClass);
+        this.centralContainer.classList.remove(this.narrowMarginLeftAndRightClass);
         this.rightArrow.classList.add("hidden");
         this.leftArrow.classList.add("hidden");
     }
 
     includeWideArrowLeft() {
-        this.centralContainer.classList.add(wideMarginLeftClass);
+        this.centralContainer.classList.add(this.wideMarginLeftClass);
         this.leftArrow.classList.remove("hidden");
         this.leftArrow.classList.add("single-arrow");
         this.leftArrow.classList.remove("both-arrows");
     }
 
     includeWideArrowRight() {
-        this.centralContainer.classList.add(wideMarginRightClass);
+        this.centralContainer.classList.add(this.wideMarginRightClass);
         this.rightArrow.classList.remove("hidden");
         this.rightArrow.classList.add("single-arrow");
         this.rightArrow.classList.remove("both-arrows");
@@ -164,7 +173,7 @@ class ArrowManager {
 
 
     includeBothArrows() {
-        this.centralContainer.classList.add(narrowMarginLeftAndRightClass);
+        this.centralContainer.classList.add(this.narrowMarginLeftAndRightClass);
         this.leftArrow.classList.add("both-arrows");
         this.leftArrow.classList.remove("hidden");
         this.rightArrow.classList.remove("single-arrow");
@@ -175,10 +184,10 @@ class ArrowManager {
 
 }
 
-
 class ComparisonDisplayManager {
     arrowManager = null;
     onChange = null;
+    currentIndex = 0;
 
     setup(arrowManager, onchange) {
         this.arrowManager = arrowManager;
@@ -292,7 +301,7 @@ class ComparisonDisplayManager {
     }
 
     getNewIndex(increment, max) {
-        let new_index = currentIndex + increment;
+        let new_index = this.currentIndex + increment;
         if (new_index > max) {
             new_index = max
         }
@@ -341,7 +350,7 @@ class ComparisonDisplayManager {
         let currentIndexes = this.getCourseIndexesToShow(new_index, max_columns, total_number_of_courses)
         this.updateArrows(currentIndexes, max_columns, total_number_of_courses);
         this.displayColumnsWithIndex(columns, currentIndexes);
-        currentIndex = new_index;
+        this.currentIndex = new_index;
         this.updateStickyHeader();
         this.onChange();
     }
@@ -356,11 +365,11 @@ class ComparisonDisplayManager {
 
 }
 
-class MultipleSubjects {
+class MultipleSubjectsManager {
 
     setup() {
-        this.setEventListeners()
         this.showMultipleSubjects();
+        this.setEventListeners()
     }
 
     showMultipleSubjects() {
@@ -406,9 +415,10 @@ class MultipleSubjects {
 
     setEventListeners() {
         let parents = document.getElementsByTagName("OL");
+        let manager = this;
         for (let i = 0; i < parents.length; i++) {
             parents[i].addEventListener("click", function (e) {
-                this.handleSelected(e);
+                manager.handleSelected(e);
                 e.target.classList.add("selected");
             });
         }
@@ -419,7 +429,7 @@ function setupView() {
     let arrowManager = new ArrowManager();
     arrowManager.removeAllArrows();
     let courseComparison = new ComparisonDisplayManager();
-    let multipleSubjectsManager = new MultipleSubjects();
+    let multipleSubjectsManager = new MultipleSubjectsManager();
     let courseRatingsManager = new RatingsManager();
     courseRatingsManager.setupView();
     multipleSubjectsManager.setup();
@@ -429,7 +439,6 @@ function setupView() {
 
     courseComparison.moveIndexToDisplayBy(0);
     $(window).on('resize orientationchange', function () {
-        currentIndex = 0;
         courseComparison.moveIndexToDisplayBy(0);
     });
 }
