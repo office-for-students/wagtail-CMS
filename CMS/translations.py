@@ -341,6 +341,10 @@ OPTIONALS = {
 }
 
 DICT = {
+    'saved': {
+        'en': 'Saved',
+        'cy': 'Wedi’u cadw'
+    },
     'show_more': {
         "en": "Show more",
         "cy": "Dangos mwy"
