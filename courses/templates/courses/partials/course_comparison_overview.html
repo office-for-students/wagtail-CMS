@@ -1,4 +1,4 @@
-{% load staticfiles discover_uni_tags %}
+{% load static discover_uni_tags %}
 {% for course in courses %}
     <div id="{{ course.institution.pub_ukprn }}/{{ course.kis_course_id }}/{{ course.mode.label }}"
          data-multiple_subjects="{{ course.has_multiple_subject_names }}"

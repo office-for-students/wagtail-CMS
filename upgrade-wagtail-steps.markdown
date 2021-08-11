@@ -2,13 +2,15 @@
 
 ## Steps to upgrade:
 
-- Run docker compose `docker compose up`
-- Open container bash `docker container exec -it wagtail-cms_web_1 /bin/bash`
-- Upgrade python packages `pip install --upgrade wagtail django-axes django-sass-processor whitenoise`
+- Run `docker compose up`
+- In a new terminal run `docker container exec -it wagtail-cms_web_1 /bin/bash`
+- From docker container bash upgrade python packages `pip install --upgrade wagtail django-axes django-sass-processor whitenoise`
+- Requirements.txt has been updated already
 
 ## Changes:
 
-Wagtail 2.14 now uses Django 3.2.6
+Wagtail 2.14 now uses Django 3.2.6.
+
 As of Django 3.0 `staticfiles` and `admin_static` have been removed.
 
 Any of these:
