@@ -86,6 +86,18 @@ nav {
       display: none;
     }
 
+    &__tablet-menu {
+      display: none;
+    }
+
+    &__tablet-link {
+      display: none;
+    }
+
+    &__tablet-text {
+      display: none;
+    }
+
     &__menus-container {
       display: none;
       width: 100%;
@@ -115,7 +127,6 @@ nav {
     &__dropdown-body {
       list-style: none;
       text-align: right;
-      position: static;
       padding-top: 10px;
       padding-right: 0;
       padding-left: 0;
@@ -194,12 +205,82 @@ nav {
   }
 }
 
+@media only screen and (min-width: 576px) {
+  nav {
+
+    .saved-counter {
+      left: 10px;
+      top: -3px;
+    }
+
+    .nav {
+
+      &__secondary-menu {
+        display: none;
+      }
+
+      &__tablet-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+        margin: auto auto auto 15px;
+        height: 50px;
+        background-color: #000000;
+        border-radius: 40px 40px 40px 40px;
+        border-bottom: unset;
+      }
+
+      &__tablet-link {
+        @include top-level-desktop-item();
+        display: flex;
+        align-items: center;
+        padding-left: 4px;
+        padding-right: 4px;
+
+        a {
+          display: flex;
+          align-items: center;
+          padding-left: 7.5px;
+          padding-right: 7.5px;
+          color: #FFFFFF;
+          text-decoration: none;
+          font-weight: normal;
+          position: relative;
+
+          img {
+            height: 22px;
+            width: 22px;
+          }
+
+          span {
+            display: flex;
+            padding-left: 5px;
+          }
+        }
+      }
+
+      &__tablet-link:hover {
+        background: none;
+      }
+
+      &__tablet-text {
+        display: inline;
+        @include desktop-body-font-mixin();
+        color: $white;
+        margin: auto;
+      }
+    }
+  }
+}
 
 @media only screen and (min-width: 1025px) {
   nav {
     display: flex !important;
     justify-content: center;
-    padding-bottom: 120px;
+    padding-bottom: 100px;
 
     .language-select {
       display: inline !important;
@@ -210,17 +291,12 @@ nav {
       top: -3px;
     }
 
-
     .nav {
       display: flex;
       align-items: center;
       height: 100px;
       padding: 0px;
       max-width: 1240px;
-
-      padding: 0px;
-      max-width: 1240px;
-
 
       &__mobile {
         width: unset;
@@ -236,6 +312,7 @@ nav {
 
       &__burger-menu {
         display: none;
+
       }
 
       &__menus-container {
@@ -362,8 +439,3 @@ nav {
     }
   }
 }
-
-
-//@media only screen and (min-width: 1025px) {
-//
-//}

@@ -11,6 +11,25 @@
             <div class="nav__icon-wrapper">
                 <i id="burger-menu" class="nav__burger-menu fas fa-bars"></i>
                 <i id="close-menu" class="nav__close-menu fas fa-times"></i>
+                <p id="menu-text" class="nav__tablet-text">Menu</a>
+
+                <ul class="nav__tablet-menu">
+                    {% for link in navigation.comp_menu %}
+{#                        {% if link.label != "Compare" %}#}
+                            <li class="nav__tablet-link">
+                                <a href="{{ link.url }}">
+                                    <img src="{{ link.img }}" alt={{ link.alt }}>
+                                    {% if link.additional %}
+                                        <div class="saved-counter">
+                                            <p class="nav-bookmark__count"></p>
+                                        </div>
+                                    {% endif %}
+                                    {{ link.label }}
+                                </a>
+                            </li>
+{#                        {% endif %}#}
+                    {% endfor %}
+                </ul>
             </div>
         </div>
         <div class="nav__menus-container">
@@ -90,9 +109,7 @@
                                     <p class="nav-bookmark__count"></p>
                                 </div>
                             {% endif %}
-
                             {{ link.label }}
-
                         </a>
                     </li>
                 {% endfor %}
