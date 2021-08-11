@@ -100,7 +100,7 @@ $course_comparison_first_column_width: 250px;
   .comparison_row {
     display: block;
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     min-height: 44px;
 
     &-header {
@@ -882,7 +882,7 @@ $course_comparison_first_column_width: 250px;
   .course_comparison-table {
     .comparison_row {
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
 
     &-header {
@@ -956,7 +956,7 @@ $course_comparison_first_column_width: 250px;
       min-height: $course_comparison_line_height;
       flex-direction: row;
       color: black;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       align-items: center;
 
       &-header {
@@ -1121,7 +1121,7 @@ $course_comparison_first_column_width: 250px;
       min-height: $course_comparison_line_height;
       flex-direction: row;
       color: black;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       align-items: center;
 
 
