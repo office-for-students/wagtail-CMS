@@ -112,38 +112,38 @@ nav {
 
     &__primary-link {
       @include top-level-mobile-item();
+      color: $white;
+      font-weight: bold;
 
-      a {
-        color: $white;
-        font-weight: bold;
-      }
+
     }
 
     &__link-title {
       color: $white;
       padding-right: 8px;
+      font-weight: bold;
+    }
+
+    &__link-title:hover {
+      color: $white;
     }
 
     &__dropdown-body {
       list-style: none;
       text-align: right;
-      padding-top: 10px;
-      padding-right: 0;
-      padding-left: 0;
+      padding: 0;
 
-      li {
-        @include mobile-body-font-mixin();
-        display: block;
-        min-width: 179px;
-        padding: 8px;
-        text-decoration: none;
-      }
 
       li:hover {
         @include green-gradient-background-mixin();
       }
 
-      li a {
+      a {
+        @include mobile-body-font-mixin();
+        display: block;
+        min-width: 179px;
+        padding: 8px;
+        text-decoration: none;
         color: $white;
         font-weight: bold;
         margin-right: 15px
@@ -283,7 +283,7 @@ nav {
     padding-bottom: 100px;
 
     .language-select {
-      display: inline !important;
+      display: flex !important;
     }
 
     .saved-counter {
@@ -339,21 +339,6 @@ nav {
         border: none;
         background-color: transparent;
         text-decoration: none;
-
-        a {
-          height: 100%;
-          display: flex;
-          align-items: center;
-          padding-left: 15px;
-          padding-right: 15px;
-          margin: 0;
-          color: $white;
-          text-decoration: none;
-          font-weight: normal;
-        }
-      }
-
-      &__link-title {
         height: 100%;
         display: flex;
         align-items: center;
@@ -362,6 +347,19 @@ nav {
         margin: 0;
         color: $white;
         text-decoration: none;
+        font-weight: normal;
+      }
+
+      &__link-title {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        //padding-left: 15px;
+        //padding-right: 15px;
+        margin: 0;
+        color: $white;
+        text-decoration: none;
+        font-weight: normal;
       }
 
       &__dropdown-body {
@@ -372,7 +370,13 @@ nav {
         padding-left: 0px;
         background-color: $header-blue;
 
-        li {
+
+        li:hover {
+          @include green-gradient-background-mixin();
+        }
+
+        a {
+          font-weight: normal;
           @include mobile-body-font-mixin();
           display: block;
           padding: 25px 15px;
@@ -380,14 +384,6 @@ nav {
           line-height: 19px;
           color: $white;
           text-decoration: none;
-        }
-
-        li:hover {
-          @include green-gradient-background-mixin();
-        }
-
-        li a {
-          font-weight: normal;
         }
       }
 

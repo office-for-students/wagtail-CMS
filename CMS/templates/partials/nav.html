@@ -11,23 +11,23 @@
             <div class="nav__icon-wrapper">
                 <i id="burger-menu" class="nav__burger-menu fas fa-bars"></i>
                 <i id="close-menu" class="nav__close-menu fas fa-times"></i>
-                <p id="menu-text" class="nav__tablet-text">Menu</a>
+                <p id="menu-text" class="nav__tablet-text">Menu</p>
 
                 <ul class="nav__tablet-menu">
                     {% for link in navigation.comp_menu %}
-{#                        {% if link.label != "Compare" %}#}
-                            <li class="nav__tablet-link">
-                                <a href="{{ link.url }}">
-                                    <img src="{{ link.img }}" alt={{ link.alt }}>
-                                    {% if link.additional %}
-                                        <div class="saved-counter">
-                                            <p class="nav-bookmark__count"></p>
-                                        </div>
-                                    {% endif %}
-                                    {{ link.label }}
-                                </a>
-                            </li>
-{#                        {% endif %}#}
+                        {#                        {% if link.label != "Compare" %}#}
+                        <li class="nav__tablet-link">
+                            <a href="{{ link.url }}">
+                                <img src="{{ link.img }}" alt={{ link.alt }}>
+                                {% if link.additional %}
+                                    <div class="saved-counter">
+                                        <p class="nav-bookmark__count"></p>
+                                    </div>
+                                {% endif %}
+                                {{ link.label }}
+                            </a>
+                        </li>
+                        {#                        {% endif %}#}
                     {% endfor %}
                 </ul>
             </div>
@@ -53,7 +53,7 @@
                         {% if has_sub %}
                             <div class="nav__mobile-accordion">
 
-                                <li class="nav__primary-link nav__accordion-header">
+                                <div class="nav__primary-link nav__accordion-header">
                                     <a href="#" class="nav__link-title accordion-title">
                                         {{ item.label }}
                                     </a>
@@ -67,7 +67,7 @@
                                                  alt="collapse {{ item.label }} drop down menu">
                                         </div>
                                     </div>
-                                </li>
+                                </div>
                                 <div class="nav__accordion-body">
                                     <ul class="nav__dropdown-body">
                                         {% for sub_item in has_sub %}
@@ -82,21 +82,22 @@
                                 </div>
                             </div>
                         {% else %}
-                            <li class="nav__primary-link">
-                                <a href="{% if item.url %}{{ item.url }} {% else %} # {% endif %}">
-                                    {{ item.label }}</a>
-                            </li>
+
+                            <a class="nav__primary-link"
+                               href="{% if item.url %}{{ item.url }} {% else %} # {% endif %}">
+                                {{ item.label }}</a>
+
                         {% endif %}
-                        </li>
+
                     {% endwith %}
                 {% endfor %}
                 {#                TODO: Remove course search from CMS         #}
-                <li class="nav__primary-link language-select">
-                    <a id="language_select"
-                       href="{{ translated_url }}">
-                        {% if page.is_english %} Cymraeg {% else %} English {% endif %}
-                    </a>
-                </li>
+
+                <a class="nav__primary-link language-select" id="language_select"
+                   href="{{ translated_url }}">
+                    {% if page.is_english %} Cymraeg {% else %} English {% endif %}
+                </a>
+
             </div>
             {# Comparison Menu #}
             <ul class="nav__secondary-menu">
