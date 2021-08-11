@@ -52,7 +52,10 @@ def get_menu(model, language, attribute):
     data = model.objects.filter(name=name).first()
     items = getattr(data, attribute)
     for item in items:
-        menu.append(parse_menu_item(item))
+        # TODO: remove when code goes to develop, as added cause we need to used the data and
+        #  don't want to edit the CMS just yet - done for show an tell only. Remove the if wrapping statement
+        if "Course search" != item.value.get('label'):
+            menu.append(parse_menu_item(item))
     return menu
 
 
