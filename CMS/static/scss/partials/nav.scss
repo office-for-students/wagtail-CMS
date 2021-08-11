@@ -40,6 +40,7 @@ nav {
     height: 18px;
     bottom: 10px;
     left: 10px;
+
     p {
       font-size: 11px;
     }
@@ -194,7 +195,14 @@ nav {
 }
 
 @media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 1025px) {
   nav {
+    display: flex !important;
+    justify-content: center;
+
     .language-select {
       display: inline !important;
     }
@@ -209,6 +217,8 @@ nav {
       align-items: center;
       height: 100px;
       padding: 0px;
+      max-width: 1240px;
+
 
       &__mobile {
         width: unset;
