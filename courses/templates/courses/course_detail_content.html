@@ -2,6 +2,7 @@
 {% load static discover_uni_tags %}
 
 <div class="course-detail comparison-course-area mx-sm-2 px-xs-1 px-md-3"
+     data-courseidentifier="{{course.institution.pub_ukprn}}/{{course.kis_course_id}}/{{course.mode.label}}"
      data-coursename="{{ course.display_title }}" data-courseid="{{ course.kis_course_id }}"
      data-uniname="{{ course.institution.pub_ukprn_name }}" data-uniid="{{ course.institution.pub_ukprn }}"
      data-length="{{ course.length.label | slice:1}}" data-locations="{{ course.locations_list }}"
@@ -122,3 +123,4 @@
 
 
     </script>
+{##TODO: this should have a closing div, check why it doesn't#}

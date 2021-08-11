@@ -1,16 +1,17 @@
 (function ($) {
 
-    var CompareSelector = function(wrapper, compareBar) {
+    var CompareSelector = function (wrapper, compareBar) {
         this.wrapper = $(wrapper);
         this.compareBar = $(compareBar);
         this.setup();
     }
 
     CompareSelector.prototype = {
-        setup: function() {
+        setup: function () {
             this.navBar = $('.discover-uni-nav');
             this.button = this.wrapper.find('[class$=compare-btn]');
             this.courseSelected = false;
+            this.courseIdentifier = this.wrapper.data().courseidentifier;
             this.courseName = this.wrapper.data().coursename;
             this.uniName = this.wrapper.data().uniname;
             this.uniId = this.wrapper.data().uniid;
@@ -41,16 +42,16 @@
             this.startWatcher();
         },
 
-        loadSelectedCourses: function() {
-            if (JSON.parse(localStorage.getItem('comparisonCourses'))) {
-                this.selectedCourses = JSON.parse(localStorage.getItem('comparisonCourses'));
+        loadSelectedCourses: function () {
+            if (JSON.parse(localStorage.getItem('bookmarkedCourses'))) {
+                this.selectedCourses = JSON.parse(localStorage.getItem('bookmarkedCourses'));
             } else {
                 this.selectedCourses = [];
             }
             this.setCourseSelected();
         },
 
-        setCourseSelected: function() {
+        setCourseSelected: function () {
             for (var i = 0; i < this.selectedCourses.length; i++) {
                 var course = this.selectedCourses[i];
                 if (this.isCourse(course)) {
@@ -59,20 +60,20 @@
             }
         },
 
-        isCourse: function(course) {
+        isCourse: function (course) {
             return course.uniId === this.uniId && course.courseId === this.courseId && course.mode.en === this.modeEn;
         },
 
-        setInitialView: function() {
+        setInitialView: function () {
             if (this.courseSelected) {
                 this.button.addClass('selected');
             }
             this.compareBar.slideUp('slow');
         },
 
-        startWatcher: function() {
+        startWatcher: function () {
             var that = this;
-            this.button.click(function() {
+            this.button.click(function () {
                 that.loadSelectedCourses();
                 that.compareBar.slideUp("slow");
                 if (that.button.hasClass('selected')) {
@@ -82,12 +83,12 @@
                 }
             });
 
-            this.compareClose.click(function() {
+            this.compareClose.click(function () {
                 that.compareBar.slideUp('slow');
             });
         },
 
-        handleCourseRemoval: function() {
+        handleCourseRemoval: function () {
             this.button.removeClass('selected');
             for (var i = 0; i < this.selectedCourses.length; i++) {
                 var course = this.selectedCourses[i];
@@ -95,7 +96,7 @@
                     this.selectedCourses.splice(i, 1);
                 }
             }
-            localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
+            localStorage.setItem('bookmarkedCourses', JSON.stringify(this.selectedCourses));
             this.navBar.trigger('loadeddata');
             this.courseSelected = false;
             this.compareAdd.hide();
@@ -104,9 +105,9 @@
             this.compareBar.slideDown("slow");
         },
 
-        handleCourseAddition: function() {
+        handleCourseAddition: function () {
             //Don't allow more than 10
-            if (this.selectedCourses.length === 10) {
+            if (this.selectedCourses.length === 25) {
                 this.compareAdd.hide();
                 this.compareRemove.hide();
                 this.compareTooMany.show();
@@ -115,33 +116,35 @@
                 var exists = false;
                 for (var i = 0; i < this.selectedCourses.length; i++) {
                     //Ensure courseId AND uniId AND Study mode are compared.
-                    if ((this.courseId == this.selectedCourses[i].courseId) && (this.uniId == this.selectedCourses[i].uniId) && (this.modeEn == this.selectedCourses[i].mode.en)){ 
-                        exists = true; 
+                    if ((this.courseId == this.selectedCourses[i].courseId) && (this.uniId == this.selectedCourses[i].uniId) && (this.modeEn == this.selectedCourses[i].mode.en)) {
+                        exists = true;
                     }
                 }
                 if (!exists) {
                     //Bookmark course
-                    this.selectedCourses.push({'uniId': this.uniId, 'courseId': this.courseId,
-                                                'courseName': this.courseName, 'uniName': this.uniName,
-                                                'length': this.length, 'locations': this.locations,
-                                                'distance': {
-                                                    'en': this.distanceEn,
-                                                    'cy': this.distanceCy
-                                                },
-                                                'sandwich': {
-                                                    'en': this.sandwichEn,
-                                                    'cy': this.sandwichCy
-                                                },
-                                                'abroad': {
-                                                    'en': this.abroadEn,
-                                                    'cy': this.abroadCy,
-                                                },
-                                                'mode': {
-                                                    'en': this.modeEn,
-                                                    'cy': this.modeCy,
-                                                }
-                                            });
-                    localStorage.setItem('comparisonCourses', JSON.stringify(this.selectedCourses));
+                    this.selectedCourses.push({
+                        "uniqueId": this.courseIdentifier,
+                        'uniId': this.uniId, 'courseId': this.courseId,
+                        'courseName': this.courseName, 'uniName': this.uniName,
+                        'length': this.length, 'locations': this.locations,
+                        'distance': {
+                            'en': this.distanceEn,
+                            'cy': this.distanceCy
+                        },
+                        'sandwich': {
+                            'en': this.sandwichEn,
+                            'cy': this.sandwichCy
+                        },
+                        'abroad': {
+                            'en': this.abroadEn,
+                            'cy': this.abroadCy,
+                        },
+                        'mode': {
+                            'en': this.modeEn,
+                            'cy': this.modeCy,
+                        }
+                    });
+                    localStorage.setItem('bookmarkedCourses', JSON.stringify(this.selectedCourses));
                 }
                 this.navBar.trigger('loadeddata');
                 this.courseSelected = true;

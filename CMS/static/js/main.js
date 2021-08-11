@@ -1,45 +1,45 @@
-(function($) {
-    $.fn.invisible = function() {
-        return this.each(function() {
+(function ($) {
+    $.fn.invisible = function () {
+        return this.each(function () {
             $(this).css("visibility", "hidden");
         });
     };
-    $.fn.visible = function() {
-        return this.each(function() {
+    $.fn.visible = function () {
+        return this.each(function () {
             $(this).css("visibility", "visible");
         });
     };
 }(jQuery));
 
 (function ($) {
-    
+
     // ie polyfill for Includes
     if (!String.prototype.includes) {
-      String.prototype.includes = function(search, start) {
-        if (typeof start !== 'number') {
-          start = 0;
-        }
+        String.prototype.includes = function (search, start) {
+            if (typeof start !== 'number') {
+                start = 0;
+            }
 
-        if (start + search.length > this.length) {
-          return false;
-        } else {
-          return this.indexOf(search, start) !== -1;
-        }
-      };
+            if (start + search.length > this.length) {
+                return false;
+            } else {
+                return this.indexOf(search, start) !== -1;
+            }
+        };
     }
-    
+
     // ACCORDION
-    var Accordion = function(wrapper) {
+    var Accordion = function (wrapper) {
         this.wrapper = $(wrapper);
         this.setup();
     }
 
     Accordion.prototype = {
-        setup: function() {
+        setup: function () {
             this.anchor = '#' + this.wrapper[0].id;
             this.header = this.wrapper.find('[class$=accordion-header]');
-            this.body  = this.wrapper.find('[class$=accordion-body]');
-            this.filterBody  = this.wrapper.find('[class$=default-open-accordion]');
+            this.body = this.wrapper.find('[class$=accordion-body]');
+            this.filterBody = this.wrapper.find('[class$=default-open-accordion]');
             this.expandIcon = this.wrapper.find('.expand');
             this.collapseIcon = this.wrapper.find('.collapse');
             this.expandFilterIcon = this.wrapper.find('.expand-filter');
@@ -49,7 +49,7 @@
             this.startWatchers();
         },
 
-        setInitialView: function() {
+        setInitialView: function () {
             if (this.anchor === window.location.hash) {
                 this.collapseIcon.show();
                 this.expandFilterIcon.show();
@@ -64,18 +64,35 @@
             }
         },
 
-        startWatchers: function() {
+        startWatchers: function () {
             var that = this;
             this.header.click(this.handleAccordionToggle.bind(this));
+            this.header.mouseover(this.handleAccordionMouseOver.bind(this))
+            this.body.mouseover(this.handleAccordionMouseOver.bind(this))
+            this.header.mouseout(this.handleAccordionMouseOut.bind(this))
+            this.body.mouseout(this.handleAccordionMouseOut.bind(this))
 
-            this.header.keydown(function(evt) {
-                if(evt.which === 13 || evt.which === 32) {
-                  that.handleAccordionToggle();
+
+            this.header.keydown(function (evt) {
+                if (evt.which === 13 || evt.which === 32) {
+                    that.handleAccordionToggle();
                 }
             });
         },
 
-        handleAccordionToggle: function() {
+        handleAccordionMouseOver: function () {
+            if ($(window).width() >= 1025) {
+                this.body.show()
+            }
+        },
+
+        handleAccordionMouseOut: function () {
+            if ($(window).width() >= 1025) {
+                this.body.hide()
+            }
+        },
+
+        handleAccordionToggle: function () {
             if (this.header.hasClass('open')) {
                 this.header.attr('aria-expanded', false);
                 this.body.hide();
@@ -85,8 +102,7 @@
                 this.collapseIcon.hide();
                 this.collapseFilterIcon.show();
                 this.header.removeClass('open');
-            }
-            else {
+            } else {
                 this.header.attr('aria-expanded', true);
                 this.body.show();
                 this.filterBody.hide()
@@ -101,21 +117,21 @@
 
 
     // BOOKMARK NAV
-    var NavBookMarkBtn = function(btn) {
+    var NavBookMarkBtn = function (btn) {
         this.btn = $(btn);
         this.setup();
     }
     //Build Nav Bookmark Button (with bookmark count)
     NavBookMarkBtn.prototype = {
-        setup: function() {
+        setup: function () {
             this.navBar = $('.discover-uni-nav');
             this.loadSelectedCourses();
             this.startWatcher();
         },
 
-        loadSelectedCourses: function() {
-            if (JSON.parse(localStorage.getItem('comparisonCourses'))) {
-                this.selectedCourses = JSON.parse(localStorage.getItem('comparisonCourses'));
+        loadSelectedCourses: function () {
+            if (JSON.parse(localStorage.getItem('bookmarkedCourses'))) {
+                this.selectedCourses = JSON.parse(localStorage.getItem('bookmarkedCourses'));
             } else {
                 this.selectedCourses = [];
             }
@@ -128,9 +144,9 @@
             }
         },
 
-        startWatcher: function() {
+        startWatcher: function () {
             var that = this;
-            this.navBar.on('loadeddata', function() {
+            this.navBar.on('loadeddata', function () {
                 that.loadSelectedCourses();
             })
         }
@@ -138,13 +154,13 @@
 
 
     // COOKIE BANNER
-    var CookieBanner = function(wrapper) {
+    var CookieBanner = function (wrapper) {
         this.wrapper = $(wrapper);
         this.setup();
     }
 
     CookieBanner.prototype = {
-        setup: function() {
+        setup: function () {
             this.acceptBtn = this.wrapper.find('.cookie-banner__ok');
             this.findOutMoreBtn = this.wrapper.find('.cookie-banner__find-out-more');
             if (localStorage.discoverUniCookies === 'accepted') {
@@ -155,63 +171,63 @@
             this.startWatchers();
         },
 
-        startWatchers: function() {
+        startWatchers: function () {
             var that = this;
 
-            this.acceptBtn.click(function() {
+            this.acceptBtn.click(function () {
                 document.cookie = "discoverUniCookies=accepted;";
                 localStorage.discoverUniCookies = 'accepted';
                 that.wrapper.hide();
             });
         }
     }
-    
+
     // SCROLL TO TOP BUTTON
-    var ScrollToTop = function(scrollBtn) {
+    var ScrollToTop = function (scrollBtn) {
         this.scrollBtn = $(scrollBtn);
         this.setup();
     }
-    
-    ScrollToTop.prototype = {
-      setup: function() {
-        this.startWatcher();
-      },
 
-      startWatcher: function() {
-          this.scrollBtn.click(function(e) {
-              e.preventDefault();
-              $('html, body').animate({scrollTop:0}, '300');
-          });
-      }
+    ScrollToTop.prototype = {
+        setup: function () {
+            this.startWatcher();
+        },
+
+        startWatcher: function () {
+            this.scrollBtn.click(function (e) {
+                e.preventDefault();
+                $('html, body').animate({scrollTop: 0}, '300');
+            });
+        }
     }
-    
+
     // DROPDOWN
-    var PageDropdowns = function(dropdowns) {
+    var PageDropdowns = function (dropdowns) {
         this.dropdownsList = $(dropdowns);
         this.setup()
     }
 
     PageDropdowns.prototype = {
-        setup: function() {
+        setup: function () {
             this.dropdowns = [];
             this.initialiseDropdowns();
             this.startCloseWatcher();
         },
 
-        initialiseDropdowns: function() {
+        initialiseDropdowns: function () {
             for (var i = 0; i < this.dropdownsList.length; i++) {
                 this.dropdowns.push(new Dropdown(this.dropdownsList[i], this.closeAll.bind(this)));
             }
         },
 
-        startCloseWatcher: function() {
+        startCloseWatcher: function () {
             var that = this;
-            $(document).click(function() {
+            $(document).click(function () {
                 that.closeAll();
             });
         },
 
-        closeAll: function(activeSelector) {
+        closeAll: function (activeSelector) {
             for (var i = 0; i < this.dropdowns.length; i++) {
                 this.dropdowns[i].closeOptionList();
             }
@@ -222,20 +238,20 @@
         }
     }
 
-    var Dropdown = function(wrapper, closeCallback) {
+    var Dropdown = function (wrapper, closeCallback) {
         this.wrapper = $(wrapper);
         this.closeCallback = closeCallback;
         this.setup();
     }
 
     Dropdown.prototype = {
-        setup: function() {
+        setup: function () {
             this.baseSelect = this.wrapper.find('select');
             this.options = [];
             this.createUISelect();
         },
 
-        createUISelect: function() {
+        createUISelect: function () {
             var baseSelect = this.baseSelect[0];
             var uiSelect = document.createElement("div");
             uiSelect.setAttribute("class", "select-selected");
@@ -247,7 +263,7 @@
             this.baseSelect.hide();
         },
 
-        createOptionList: function() {
+        createOptionList: function () {
             var baseSelect = this.baseSelect[0];
             var optionList = document.createElement("div");
             optionList.setAttribute("class", "select-items select-hide");
@@ -259,7 +275,7 @@
             this.optionList = this.wrapper.find('.select-items');
         },
 
-        resetOptionList: function() {
+        resetOptionList: function () {
             this.optionList.remove();
             this.createOptionList();
             this.uiSelect[0].innerHTML = this.options[0].baseOption[0].innerHTML;
@@ -274,10 +290,10 @@
 
         },
 
-        startWatcher: function() {
+        startWatcher: function () {
             var that = this;
 
-            this.uiSelect.click(function(evt) {
+            this.uiSelect.click(function (evt) {
                 evt.stopPropagation();
                 activeSelector = that;
                 if (that.uiSelect.hasClass('select-arrow-active')) {
@@ -286,7 +302,7 @@
                 that.closeCallback(activeSelector);
             });
 
-            this.uiSelect.keydown(function(evt) {
+            this.uiSelect.keydown(function (evt) {
                 if (event.which === 13) {
                     evt.stopPropagation();
                     activeSelector = that;
@@ -297,28 +313,28 @@
                 }
             });
 
-            this.wrapper.keydown(function(evt) {
+            this.wrapper.keydown(function (evt) {
                 if (event.which === 27) {
                     that.closeCallback(null);
                 }
             });
 
-            this.baseSelect.on('loadeddata', function() {
+            this.baseSelect.on('loadeddata', function () {
                 that.resetOptionList();
             })
         },
 
-        openOptionList: function() {
+        openOptionList: function () {
             this.optionList.toggleClass("select-hide");
             this.uiSelect.toggleClass("select-arrow-active");
         },
 
-        closeOptionList: function() {
+        closeOptionList: function () {
             this.optionList.addClass("select-hide");
             this.uiSelect.removeClass("select-arrow-active");
         },
 
-        handleSelection: function(selection) {
+        handleSelection: function (selection) {
             for (var i = 0; i < this.baseSelect[0].length; i++) {
                 if (this.baseSelect[0][i].innerHTML == selection.baseOption[0].innerHTML) {
                     this.baseSelect[0].selectedIndex = i;
@@ -333,7 +349,7 @@
         }
     }
 
-    var DropdownOption = function(option, index, listContainer, selectionCallback) {
+    var DropdownOption = function (option, index, listContainer, selectionCallback) {
         this.baseOption = $(option);
         this.index = index;
         this.listContainer = $(listContainer);
@@ -342,13 +358,13 @@
     }
 
     DropdownOption.prototype = {
-        setup: function() {
+        setup: function () {
             this.value = this.baseOption[0].text;
             this.createUIOption();
             this.startWatcher();
         },
 
-        createUIOption: function() {
+        createUIOption: function () {
             var uiOption = document.createElement("div");
             uiOption.setAttribute("id", this.index);
             uiOption.setAttribute("class", 'option');
@@ -365,37 +381,37 @@
             }
         },
 
-        startWatcher: function() {
+        startWatcher: function () {
             var that = this;
-            this.uiOption.click(function() {
+            this.uiOption.click(function () {
                 that.selectionCallback(that);
             });
 
-            this.uiOption.keydown(function() {
+            this.uiOption.keydown(function () {
                 if (event.which === 13) {
                     that.selectionCallback(that);
                 }
             });
         },
 
-        unselect: function() {
+        unselect: function () {
             this.uiOption.removeClass("same-as-selected");
         },
 
-        markSelected: function() {
+        markSelected: function () {
             this.uiOption.addClass("same-as-selected");
         }
     }
 
 
     //FEEDBACK FORM
-    var FeedbackForm = function(wrapper) {
+    var FeedbackForm = function (wrapper) {
         this.wrapper = $(wrapper);
         this.setup();
     }
 
     FeedbackForm.prototype = {
-        setup: function() {
+        setup: function () {
             this.toggleBtn = this.wrapper.find('.feedback-form__toggle');
             this.formHeading = this.wrapper.find('.feedback-form__message');
             this.feedbackThankYou = this.wrapper.find('.feedback-form__thank-you');
@@ -407,13 +423,13 @@
             this.startWatchers();
         },
 
-        startWatchers: function() {
+        startWatchers: function () {
             var that = this;
-            this.toggleBtn.click(function() {
+            this.toggleBtn.click(function () {
                 that.formBody.show();
             });
 
-            this.submitBtn.click(function() {
+            this.submitBtn.click(function () {
                 var formData = that.form.serializeArray();
                 data = {
                     "page": window.location.href,
@@ -424,89 +440,102 @@
                 }
 
                 var url = window.location.origin + '/feedback';
-                $.post(url, data, function(data,status,xhr) {
+                $.post(url, data, function (data, status, xhr) {
                     that.handleSubmissionSuccess();
                 }, 'json')
-                .fail(function(data,status,xhr) {
-                    that.handleSubmissionError();
-                });
+                    .fail(function (data, status, xhr) {
+                        that.handleSubmissionError();
+                    });
             })
         },
 
-        handleFormClose: function() {
+        handleFormClose: function () {
             this.formBody.hide();
             this.form[0].reset();
         },
 
-        handleSubmissionSuccess: function() {
+        handleSubmissionSuccess: function () {
             this.errorMessage.hide();
             this.handleFormClose();
             this.formHeading.hide();
             this.feedbackThankYou.show();
         },
 
-        handleSubmissionError: function() {
+        handleSubmissionError: function () {
             this.errorMessage.show();
         }
     }
 
 
     //NAV BAR
-    var NavBar = function(wrapper) {
+    var NavBar = function (wrapper) {
         this.wrapper = $(wrapper);
         this.setup();
     }
 
     NavBar.prototype = {
-        setup: function() {
+        setup: function () {
             this.mobileBurgerButton = this.wrapper.find('#burger-menu');
             this.mobileCloseButton = this.wrapper.find('#close-menu');
-            this.mobileMenuBody = this.wrapper.find('.discover-uni-nav__mobile-links');
+            this.tabletMenuText = this.wrapper.find('#menu-text')
+            this.mobileMenuBody = this.wrapper.find('.nav__menus-container');
 
             this.initialiseDropdowns();
             this.startWatchers();
         },
 
-        initialiseDropdowns: function() {
+        initialiseDropdowns: function () {
             this.dropdowns = []
-            var dropdowns = this.wrapper.find('.discover-uni-nav__desktop-dropdown');
+            var dropdowns = this.wrapper.find('.nav__dropdown-body');
             for (var i = 0; i < dropdowns.length; i++) {
                 this.dropdowns.push(new NavDropdown(dropdowns[i]));
             }
         },
 
-        startWatchers: function() {
-            var that = this;
-            this.mobileBurgerButton.click(function() {
+        startWatchers: function () {
+            let that = this;
+            this.mobileBurgerButton.click(function () {
                 that.mobileMenuBody.show();
                 that.mobileBurgerButton.hide();
                 that.mobileCloseButton.show();
             });
 
-            this.mobileCloseButton.click(function() {
+            this.mobileCloseButton.click(function () {
                 that.mobileMenuBody.hide();
                 that.mobileCloseButton.hide();
                 that.mobileBurgerButton.show();
             });
+
+            this.tabletMenuText.click(function () {
+                if (that.mobileMenuBody.is(":visible")) {
+                    that.mobileMenuBody.hide();
+                    that.mobileCloseButton.hide();
+                    that.mobileBurgerButton.show();
+                } else {
+                    that.mobileMenuBody.show();
+                    that.mobileCloseButton.show();
+                    that.mobileBurgerButton.hide();
+                }
+            })
         }
     }
 
-    var NavDropdown =  function(wrapper) {
+    var NavDropdown = function (wrapper) {
         this.wrapper = $(wrapper);
         this.setup();
     }
 
     NavDropdown.prototype = {
-        setup: function() {
+        setup: function () {
             this.toggle = this.wrapper.find('.discover-uni-nav__desktop-dropdown-toggle');
             this.body = this.wrapper.find('.discover-uni-nav__desktop-dropdown-body');
 
             this.startWatcher();
         },
 
-        startWatcher: function() {
+        startWatcher: function () {
             var that = this;
-            this.toggle.click(function() {
+            this.toggle.click(function () {
                 that.body.toggle();
             });
         }
@@ -514,14 +543,14 @@
 
 
     // SEARCH DROPDOWN
-    var SearchDropdown = function(container) {
+    var SearchDropdown = function (container) {
         this.container = $(container);
         this.minSearchTermLength = 1;
         this.setup()
     }
 
     SearchDropdown.prototype = {
-        setup: function() {
+        setup: function () {
             this.selectionField = this.container.find('.selection-field');
             this.fieldName = this.selectionField[0].name;
             this.searchField = $(this.container.find('.search-field-input')[0]);
@@ -541,7 +570,7 @@
             this.watchForDropdown();
         },
 
-        initialiseOptions: function() {
+        initialiseOptions: function () {
             this.options = [];
             this.options.push();
             for (var i = 0; i < this.selectOptions.length; i++) {
@@ -551,10 +580,10 @@
             this.setDefaultValue();
         },
 
-        watchForFocus: function() {
+        watchForFocus: function () {
             var that = this;
-        
-            $(document).click(function(e) {
+
+            $(document).click(function (e) {
                 if (!that.container[0].contains(e.target) && that.optionList.is(":visible")) {
                     that.optionList.hide();
                     that.dropdownButton.removeClass("active");
@@ -565,7 +594,7 @@
                 }
             });
 
-            this.searchField.focus(function() {
+            this.searchField.focus(function () {
                 if (!that.optionList.is(":visible")) {
                     that.searchField[0].value = '';
                     that.valid_selection = false;
@@ -577,19 +606,18 @@
 
         },
 
-        watchForKeyPress: function() {
+        watchForKeyPress: function () {
             var that = this;
 
-            this.searchField.keydown(function(evt) {
-                switch (evt.which){
+            this.searchField.keydown(function (evt) {
+                switch (evt.which) {
                     case 13:
                         evt.preventDefault()
 
                         if (that.highlightOptionIndex > -1) {
                             that.options[that.highlightOptionIndex].option.selected = true;
                             that.handleSelection(that.options[that.highlightOptionIndex]);
-                        }
-                        else {
+                        } else {
                             that.setDefaultValue();
                         }
 
@@ -600,12 +628,12 @@
 
                     case 38:
                         evt.preventDefault();
-                        for ( var i = that.highlightOptionIndex - 1; i > -1; i-- ) {
+                        for (var i = that.highlightOptionIndex - 1; i > -1; i--) {
                             if (that.options[i].uiOption.is(":visible")) {
                                 if (that.highlightOptionIndex >= 0) {
                                     that.options[that.highlightOptionIndex].unhighlightOption();
                                 }
-    
+
                                 that.options[i].highlightOption();
                                 that.highlightOptionIndex = i;
                                 that.highlightBottom = that.highlightTop;
@@ -615,10 +643,10 @@
                             }
                         }
                         break;
-    
+
                     case 40:
                         evt.preventDefault();
-                        for ( var i = that.highlightOptionIndex + 1; i < that.options.length; i++ ) {
+                        for (var i = that.highlightOptionIndex + 1; i < that.options.length; i++) {
                             if (that.options[i].uiOption.is(":visible")) {
                                 if (that.highlightOptionIndex >= 0) {
                                     that.options[that.highlightOptionIndex].unhighlightOption();
@@ -637,7 +665,7 @@
 
             });
 
-            this.searchField.keyup(function(e) {
+            this.searchField.keyup(function (e) {
 
                 if (e.target.value != that.lastSearchTerm) {
                     that.lastSearchTerm = e.target.value;
@@ -648,10 +676,10 @@
             });
         },
 
-        watchForSearch: function() {
+        watchForSearch: function () {
             var that = this;
 
-            this.form.submit(function(evt) {
+            this.form.submit(function (evt) {
                 if (!that.valid_selection) {
                     evt.preventDefault();
                 } else {
@@ -662,10 +690,10 @@
             });
         },
 
-        watchForDropdown: function() {
+        watchForDropdown: function () {
             var that = this;
 
-            this.dropdownButton.click(function(evt) {
+            this.dropdownButton.click(function (evt) {
                 evt.preventDefault();
 
                 if (!that.optionList.is(":visible")) {
@@ -686,22 +714,22 @@
             });
         },
 
-        setDefaultValue: function() {
+        setDefaultValue: function () {
             this.options[0].option.selected = true;
             this.options[0].handleSelection(this.options[0]);
             this.valid_selection = true;
         },
 
-        adjustScroll: function() {
-            if ( this.highlightBottom > (this.optionList.scrollTop() + this.optionList.height()) ) {
+        adjustScroll: function () {
+            if (this.highlightBottom > (this.optionList.scrollTop() + this.optionList.height())) {
                 this.optionList.scrollTop(this.highlightBottom - this.optionList.height());
             }
-            if ( this.highlightTop < this.optionList.scrollTop() ) {
-                 this.optionList.scrollTop(this.highlightTop);
+            if (this.highlightTop < this.optionList.scrollTop()) {
+                this.optionList.scrollTop(this.highlightTop);
             }
         },
 
-        resetScroll: function() {
+        resetScroll: function () {
             if (this.highlightOptionIndex > -1) {
                 this.options[this.highlightOptionIndex].unhighlightOption();
             }
@@ -711,11 +739,11 @@
             this.highlightTop = 0;
         },
 
-        clearSearch: function() {
+        clearSearch: function () {
             this.searchField[0].value = '';
         },
 
-        resetFilter: function() {
+        resetFilter: function () {
             this.optionList.scrollTop(0);
 
             for (var i = 1; i < this.options.length; i++) {
@@ -723,14 +751,14 @@
             }
         },
 
-        filterOptionsList: function(searchTerm) {
+        filterOptionsList: function (searchTerm) {
             var searchTerm = searchTerm.toLowerCase();
             for (var i = 1; i < this.options.length; i++) {
                 this.options[i].filterForSearch(searchTerm);
             }
         },
 
-        handleSelection: function(option) {
+        handleSelection: function (option) {
             this.clearSearch();
             this.resetFilter();
             this.searchField[0].value = $.trim(option.textValue);
@@ -740,7 +768,7 @@
         }
     }
 
-    var SearchOption = function(option, wrapper, handleSelectionCallback) {
+    var SearchOption = function (option, wrapper, handleSelectionCallback) {
         this.option = option;
         this.wrapper = wrapper;
 
@@ -749,7 +777,7 @@
     }
 
     SearchOption.prototype = {
-        setup: function() {
+        setup: function () {
             this.textValue = this.option.innerText;
             this.id = this.option.id;
             this.idValue = this.option.value;
@@ -758,7 +786,7 @@
             this.watchForSelection();
         },
 
-        createUIOption: function() {
+        createUIOption: function () {
             var uiOption = document.createElement("div");
             uiOption.setAttribute("id", this.id + '-ui');
             uiOption.setAttribute("class", 'option');
@@ -770,15 +798,15 @@
             }
         },
 
-        watchForSelection: function() {
+        watchForSelection: function () {
             var that = this;
-            $(this.uiOption).click(function(e) {
+            $(this.uiOption).click(function (e) {
                 that.option.selected = true;
                 that.handleSelection(that);
             })
         },
 
-        filterForSearch: function(searchTerm) {
+        filterForSearch: function (searchTerm) {
             if (this.textValue.toLowerCase().indexOf(searchTerm) > -1) {
                 $(this.uiOption).show();
             } else {
@@ -786,32 +814,32 @@
             }
         },
 
-        showOption: function() {
+        showOption: function () {
             $(this.uiOption).show();
         },
 
-        hideOption: function() {
+        hideOption: function () {
             $(this.uiOption).hide();
         },
 
-        highlightOption: function(){
+        highlightOption: function () {
             $(this.uiOption).attr("class", 'option-highlight');
         },
 
-        unhighlightOption: function(){
+        unhighlightOption: function () {
             $(this.uiOption).attr("class", 'option');
         }
     }
 
 
     // SUBJECT CHOOSER
-    var SubjectSelector = function(wrapper) {
+    var SubjectSelector = function (wrapper) {
         this.wrapper = $(wrapper);
         this.setup()
     }
 
     SubjectSelector.prototype = {
-        setup: function() {
+        setup: function () {
             this.subjectAreaSelector = this.wrapper.find('#subjectArea');
             this.subjectSelector = this.wrapper.find('#subject');
             this.subjectCodeSelector = this.wrapper.find('#subjectCode');
@@ -825,13 +853,13 @@
             this.loadSubjectData();
         },
 
-        loadSubjectData: function() {
+        loadSubjectData: function () {
             var that = this;
             var currentVersion = $('meta[name=currentversion]')[0].content;
             var isCurrentVersionStored = localStorage.getItem("subjectsJSONVersion") === currentVersion;
 
             if (!isCurrentVersionStored || localStorage.getItem("subjectsJSON") === null) {
-                $.getJSON("/jsonfiles/subjects", function(result) {
+                $.getJSON("/jsonfiles/subjects", function (result) {
                     localStorage.setItem("subjectsJSON", JSON.stringify(result));
                     localStorage.setItem("subjectsJSONVersion", currentVersion)
 
@@ -846,7 +874,7 @@
             }
         },
 
-        initialiseSelectors: function() {
+        initialiseSelectors: function () {
             for (var i = 0; i < this.subjectData.length; i++) {
                 var item = this.subjectData[i];
 
@@ -881,7 +909,7 @@
             this.handleSubjectCodeSelection(this);
         },
 
-        getOptionName: function(item) {
+        getOptionName: function (item) {
             if (location.href.indexOf('/cy/') === -1) {
                 return item.english_name;
             } else {
@@ -889,7 +917,7 @@
             }
         },
 
-        createOption: function(value, text, selected, data) {
+        createOption: function (value, text, selected, data) {
             var option = document.createElement("option");
             option.setAttribute("value", value);
             option.innerHTML = text;
@@ -902,7 +930,7 @@
             return option;
         },
 
-        startWatchers: function() {
+        startWatchers: function () {
             var that = this;
 
             this.subjectAreaSelector.change(this.handleAreaSelection.bind(this));
@@ -912,7 +940,7 @@
             this.subjectCodeSelector.change(this.handleSubjectCodeSelection.bind(this));
         },
 
-        handleAreaSelection: function() {
+        handleAreaSelection: function () {
             if (this.subjectAreaSelector[0].value === 'disabled') {
                 this.resetSubjectSelector();
             } else {
@@ -938,7 +966,7 @@
             this.hideCodeSelector();
         },
 
-        handleSubjectSelection: function() {
+        handleSubjectSelection: function () {
             if (this.subjectSelector[0].value === 'disabled') {
                 this.hideCodeSelector();
             } else {
@@ -967,20 +995,20 @@
             this.subjectCodeSelector.trigger('loadeddata');
         },
 
-        handleSubjectCodeSelection: function() {
+        handleSubjectCodeSelection: function () {
             for (var i = 0; i < this.subjectCodeOptions.length; i++) {
                 var option = this.subjectCodeOptions[i];
                 $(option).removeAttr("disabled");
                 if (option.value === this.subjectCodeSelector[0].value
-                  || (!option.dataset.code.includes(this.subjectSelector[0].value)
-                  && !option.dataset.code.includes("default"))) {
+                    || (!option.dataset.code.includes(this.subjectSelector[0].value)
+                        && !option.dataset.code.includes("default"))) {
                     $(option).attr("disabled", "disabled");
                 }
             }
             this.subjectCodeSelector.trigger('loadeddata');
         },
 
-        resetSubjectSelector: function() {
+        resetSubjectSelector: function () {
             for (var i = 0; i < this.subjectOptions.length; i++) {
                 var option = this.subjectOptions[i];
                 $(option).removeAttr("disabled");
@@ -990,24 +1018,24 @@
             }
         },
 
-        showCodeSelector: function() {
+        showCodeSelector: function () {
             this.subjectCodeSelector.removeClass('hidden');
             this.subjectCodeSelector.addClass('visible');
         },
 
-        hideCodeSelector: function() {
+        hideCodeSelector: function () {
             this.subjectCodeSelector.removeClass('visible');
             this.subjectCodeSelector.addClass('hidden');
         }
     }
 
-    var NewTabLinks = function(link) {
+    var NewTabLinks = function (link) {
         this.link = link;
         this.setup();
     }
 
     NewTabLinks.prototype = {
-        setup: function() {
+        setup: function () {
             var imgNode = document.createElement('img');
             imgNode.classList.add('logo');
             imgNode.setAttribute('src', "/static/images/new_tab_icon.png");
@@ -1020,7 +1048,7 @@
     function init() {
         $.urlParam = function (name) {
             var results = new RegExp('[\?&]' + name + '=([^&#]*)')
-                              .exec(window.location.search);
+                .exec(window.location.search);
 
             return (results !== null) ? results[1] || 0 : false;
         }
@@ -1030,7 +1058,7 @@
         var isCurrentVersionStored = localStorage.getItem("subjectsJSONVersion") === currentVersion;
 
         if (!isCurrentVersionStored || localStorage.getItem("subjectsJSON") === null) {
-            $.getJSON("/jsonfiles/subjects", function(result) {
+            $.getJSON("/jsonfiles/subjects", function (result) {
                 localStorage.setItem("subjectsJSON", JSON.stringify(result));
                 localStorage.setItem("subjectsJSONVersion", currentVersion);
             });
@@ -1053,7 +1081,7 @@
 
         var dropdowns = $('[class$=selector]');
         new PageDropdowns(dropdowns);
-        
+
         var scrollToTop = $('.scroll-to-top');
         for (var i = 0; i < scrollToTop.length; i++) {
             new ScrollToTop(scrollToTop[i]);
@@ -1064,7 +1092,7 @@
             new FeedbackForm(feedbackForm[i]);
         }
 
-        var navBar = $('.discover-uni-nav');
+        var navBar = $('.nav');
         for (var i = 0; i < navBar.length; i++) {
             new NavBar(navBar[i]);
         }
@@ -1083,18 +1111,22 @@
         for (var i = 0; i < newTabLinks.length; i++) {
             new NewTabLinks(newTabLinks[i]);
         }
-          
-        $(window).scroll(function() {
-            if ($(window).scrollTop() > ($(window).height()*3)) {
-              scrollToTop.addClass('show');
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > ($(window).height() * 3)) {
+                scrollToTop.addClass('show');
             } else {
-              scrollToTop.removeClass('show');
+                scrollToTop.removeClass('show');
             }
-        });  
-            
+        });
+
         // GOOGLE  ANALYTICS
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-147556197-1', {'anonymize_ip': true});

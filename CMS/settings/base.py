@@ -23,7 +23,6 @@ READ_ONLY = os.environ.get('READ_ONLY', False)
 
 ROOT_DOMAIN = os.environ.get('ROOT_DOMAIN', 'http://localhost:3000')
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -101,13 +100,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'CMS.context_processors.nav_menu_render'
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'CMS.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -131,7 +130,6 @@ else:
         }
     }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -149,7 +147,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -192,7 +189,6 @@ STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
 ]
 
-
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "CMS"
@@ -221,9 +217,9 @@ STORAGEKEY = os.environ.get('STORAGEKEY')
 STORAGE_ACCOUNT_NAME = os.environ.get('STORAGE_ACCOUNT_NAME')
 
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')    # eg. 'campaignstorage'
-AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')      # eg. '<secret key>'
-AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')          # eg. 'campaign-resource-centre'
+AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')  # eg. 'campaignstorage'
+AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')  # eg. '<secret key>'
+AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')  # eg. 'campaign-resource-centre'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
