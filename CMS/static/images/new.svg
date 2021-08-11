@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="59" height="59" viewBox="0 0 59 59">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g transform="translate(-351.000000, -793.000000) translate(351.000000, 793.000000)">
+                    <circle cx="56.5" cy="29.5" r="2.5" fill="#F8D441"/>
+                    <circle cx="20.5" cy="38.5" r="2.5" fill="#C75431"/>
+                    <circle cx="20.5" cy="20.5" r="2.5" fill="#C75431"/>
+                    <circle cx="20.5" cy="29.5" r="2.5" fill="#C75431"/>
+                    <circle cx="29.5" cy="11.5" r="2.5" fill="#C75431"/>
+                    <circle cx="29.5" cy="38.5" r="2.5" fill="#C75431"/>
+                    <circle cx="29.5" cy="20.5" r="2.5" fill="#C75431"/>
+                    <circle cx="29.5" cy="47.5" r="2.5" fill="#C75431"/>
+                    <circle cx="29.5" cy="2.5" r="2.5" fill="#F8D441"/>
+                    <circle cx="29.5" cy="29.5" r="2.5" fill="#C75431"/>
+                    <circle cx="29.5" cy="56.5" r="2.5" fill="#F8D441"/>
+                    <circle cx="2.5" cy="29.5" r="2.5" fill="#F8D441"/>
+                    <circle cx="38.5" cy="38.5" r="2.5" fill="#C75431"/>
+                    <circle cx="38.5" cy="20.5" r="2.5" fill="#C75431"/>
+                    <circle cx="38.5" cy="29.5" r="2.5" fill="#C75431"/>
+                    <circle cx="11.5" cy="11.5" r="2.5" fill="#F8D441"/>
+                    <circle cx="11.5" cy="47.5" r="2.5" fill="#F8D441"/>
+                    <circle cx="11.5" cy="29.5" r="2.5" fill="#C75431"/>
+                    <circle cx="47.5" cy="11.5" r="2.5" fill="#F8D441"/>
+                    <circle cx="47.5" cy="47.5" r="2.5" fill="#F8D441"/>
+                    <circle cx="47.5" cy="29.5" r="2.5" fill="#C75431"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
