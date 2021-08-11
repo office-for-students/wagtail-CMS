@@ -1,0 +1,32 @@
+<div class="comparison_row">
+    <div class="column-title_container header">
+        <div class="column-first {{header_font}}">
+            {{ title }}
+        </div>
+        {% if subtitle %}
+        <div class="column-first subtitle {{header_font}}">
+            {{subtitle}}
+        </div>
+        {% endif %}
+    </div>
+    <div class="small-flex-div">
+    {% for item in values %}
+        <div class="column {{item_font}} {{mt}} cc-column-{{forloop.counter0}}">
+        {% with index=forloop.counter0 %}
+            {% if item.values %}
+                {% for value in item.values %}
+                     <div class="column-{{index}}{{accordion.title}} item-{{forloop.counter0}}"
+                         {% if not forloop.first %}hidden{% endif %}>
+                        {{value}}
+                     </div>
+                {% endfor %}
+            {% else %}
+                {{ item | safe }}
+            {% endif %}
+        {% endwith %}
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+
