@@ -239,7 +239,9 @@ class ComparisonDisplayManager {
             }
 
             let selectedCount = document.getElementById("numberOfSelected");
+            let selectedCountMob = document.getElementById("numberOfSelected-mob")
             selectedCount.innerHTML = final.length;
+            selectedCountMob.innerHTML = final.length;
         }
         this.moveIndexToDisplayBy(-1);
     }
