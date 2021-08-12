@@ -26,12 +26,16 @@ class SectorSalary:
 
             if institution_country_code == 'XF':
                 country_postfix = "_e"
+                self.country = "England"
             elif institution_country_code == 'XG':
                 country_postfix = "_ni"
+                self.country = "Nortern Ireland"
             elif institution_country_code == 'XH':
                 country_postfix = "_s"
+                self.country = "Scotland"
             elif institution_country_code == 'XI':
                 country_postfix = "_w"
+                self.country = "Wales"
 
             self.no_salary_node = "false"
             if 'lq_uk' in salary_data:

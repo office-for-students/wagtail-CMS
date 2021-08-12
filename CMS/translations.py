@@ -319,6 +319,22 @@ STATISTICS = {
         'en': "No data available",
         'cy': "Nid yw'r data ar gael"
     },
+    'national_average': {
+        'en': "National average",
+        'cy': "Cyfartaledd cenedlaethol"
+    },
+    'after_15_months': {
+        'en': "After 15 months",
+        'cy': "Ar ôl 15 mis"
+    },
+    'after_3_years': {
+        'en': "After 3 years",
+        'cy': "Ar ôl 3 blynedd"
+    },
+    'after_5_years': {
+        'en': "After 5 years",
+        'cy': "Ar ôl 5 blynedd"
+    },
 }
 
 OPTIONALS = {
