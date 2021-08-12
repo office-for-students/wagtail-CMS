@@ -1,11 +1,8 @@
 {% load staticfiles discover_uni_tags %}
-
 <nav>
     <a href="#main-content" class="screen-reader">skip to main content</a>
     <div class="nav">
-
         {# Brand Logo #}
-
         <div class="nav__mobile">
             <a class="nav__home-link" href="{{ navigation.brand_logo.url }}">
                 <img class="nav__brand-logo" src="{% static navigation.brand_logo.img %}"
@@ -14,9 +11,41 @@
             <div class="nav__icon-wrapper">
                 <i id="burger-menu" class="nav__burger-menu fas fa-bars"></i>
                 <i id="close-menu" class="nav__close-menu fas fa-times"></i>
+                <p id="menu-text" class="nav__tablet-text">Menu</p>
+
+                <ul class="nav__tablet-menu">
+                    {% for link in navigation.comp_menu %}
+                        {#                        {% if link.label != "Compare" %}#}
+                        <li class="nav__tablet-link">
+                            <a href="{{ link.url }}">
+                                <img src="{{ link.img }}" alt={{ link.alt }}>
+                                {% if link.additional %}
+                                    <div class="saved-counter">
+                                        <p class="nav-bookmark__count"></p>
+                                    </div>
+                                {% endif %}
+                                {{ link.label }}
+                            </a>
+                        </li>
+                        {#                        {% endif %}#}
+                    {% endfor %}
+                </ul>
             </div>
         </div>
         <div class="nav__menus-container">
+            {# Language Toggles#}
+            <div class="nav__language-toggles">
+                <a class="nav__primary-link{% if page.is_english %} active {% endif %}" href="
+                    {% if page.is_english %} # {% else %} {{ translated_url }}{% endif %}"
+                   id="language_select">
+                    English
+                </a>
+
+                <a class="nav__primary-link{% if not page.is_english %} active {% endif %}" href="
+                {% if not page.is_english %} # {% else %} {{ translated_url }}{% endif %}" id="language_select">
+                    Cymraeg
+                </a>
+            </div>
             {# Primary Menu #}
             <div class="nav__primary-menu">
                 {% for item in navigation.primary_menu %}
@@ -39,8 +68,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div class="nav__accordion-body">
                                     <ul class="nav__dropdown-body">
                                         {% for sub_item in has_sub %}
@@ -53,47 +80,41 @@
                                         {% endfor %}
                                     </ul>
                                 </div>
-
                             </div>
-
-
-
                         {% else %}
-                            <div class="nav__primary-link">
-                                <a href="{% if item.url %}{{ item.url }} {% else %} # {% endif %}">
-                                    {{ item.label }}</a>
-                            </div>
+
+                            <a class="nav__primary-link"
+                               href="{% if item.url %}{{ item.url }} {% else %} # {% endif %}">
+                                {{ item.label }}</a>
+
                         {% endif %}
 
-
-                        </li>
                     {% endwith %}
                 {% endfor %}
-
                 {#                TODO: Remove course search from CMS         #}
-                <div class="nav__primary-link">
-                    <a id="language_select"
-                       href="{{ translated_url }}">
-                        {% if page.is_english %} Cymraeg {% else %} English {% endif %}
-                    </a>
-                </div>
-            </div>
 
+                <a class="nav__primary-link language-select" id="language_select"
+                   href="{{ translated_url }}">
+                    {% if page.is_english %} Cymraeg {% else %} English {% endif %}
+                </a>
+
+            </div>
             {# Comparison Menu #}
             <ul class="nav__secondary-menu">
                 {% for link in navigation.comp_menu %}
                     <li class="nav__secondary-link">
                         <a href="{{ link.url }}">
-                            <img src="{{ link.img }}" alt="">
+                            <img src="{{ link.img }}" alt={{ link.alt }}>
+                            {% if link.additional %}
+                                <div class="saved-counter">
+                                    <p class="nav-bookmark__count"></p>
+                                </div>
+                            {% endif %}
                             {{ link.label }}
                         </a>
                     </li>
                 {% endfor %}
             </ul>
-
         </div>
-
-
     </div>
 </nav>
-

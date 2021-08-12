@@ -7,9 +7,29 @@
     <!-- Guidance box -->
     {% include 'courses/partials/comparison/guidance_box.html' %}
     <!-- Guidance box end -->
+<style>
+    .number_selected-small{
+        display: none;
+    }
+    @media only screen and (max-width: 991px){
+    .number_selected-small {
+          color: black;
+          margin-bottom: auto;
+          margin-top: 17px;
+          margin-right: auto;
+          min-width: 250px;
+          font-size: 24px;
+          font-weight: bold;
+        z-index: 99;
+        display: inline;
+    }}
+</style>
+    <div class="number_selected-small">
+ <span id="numberOfSelected-mob">{{ courses|length }}</span> {% get_translation key='courses_selected' language=page.get_language %}
+    </div>
     <div class="course-detail__course-container">
         <div class="number_selected">
-            <span id="numberOfSelected">{{ courses|length }}</span> {% get_translation key='courses_selected' language=page.get_language %}
+         <span id="numberOfSelected">{{ courses|length }}</span> {% get_translation key='courses_selected' language=page.get_language %}
         </div>
         <div class="cards">
             <div class="slider" id="leftArrow">
@@ -21,7 +41,6 @@
             </div>
         </div>
     </div>
-
     <div class="course_comparison-table" id="course-info-container">
         {% if courses %}
             {% with dataset=courses_data.0.course_details %}

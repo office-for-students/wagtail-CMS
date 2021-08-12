@@ -17,20 +17,44 @@
   //height: 67px;
   border-top: unset;
   padding: unset;
-
 }
 
 nav {
   width: 100%;
   background-color: $header-blue;
   color: $white;
+  padding-bottom: 67px;
+
+  .language-select {
+    display: none !important;
+  }
+
+  .saved-counter {
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    padding-top: 1px;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    bottom: 10px;
+    left: 10px;
+
+    p {
+      font-size: 11px;
+    }
+  }
 
   .nav {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
-
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    background-color: inherit;
 
     &__brand-logo {
       height: 40px;
@@ -45,7 +69,7 @@ nav {
     }
 
     &__icon-wrapper {
-      display: inline;
+      display: flex;
     }
 
     &__burger-menu {
@@ -62,10 +86,21 @@ nav {
       display: none;
     }
 
+    &__tablet-menu {
+      display: none;
+    }
+
+    &__tablet-link {
+      display: none;
+    }
+
+    &__tablet-text {
+      display: none;
+    }
+
     &__menus-container {
       display: none;
       width: 100%;
-
     }
 
     &__primary-menu {
@@ -73,42 +108,45 @@ nav {
       list-style: none;
       padding: 0;
       margin-bottom: 0;
-
     }
 
     &__primary-link {
       @include top-level-mobile-item();
+      color: $white;
+      font-weight: bold;
 
-      a {
-        color: $white;
-      }
+
     }
 
     &__link-title {
       color: $white;
       padding-right: 8px;
+      font-weight: bold;
+    }
+
+    &__link-title:hover {
+      color: $white;
     }
 
     &__dropdown-body {
       list-style: none;
       text-align: right;
-      position: static;
-      padding-top: 30px;
-      padding-right: 15px;
+      padding: 0;
 
-      li {
+
+      li:hover {
+        @include green-gradient-background-mixin();
+      }
+
+      a {
         @include mobile-body-font-mixin();
         display: block;
         min-width: 179px;
         padding: 8px;
         text-decoration: none;
-      }
-
-      li:hover {
-        @include green-gradient-background-mixin();
-      }
-      li a {
         color: $white;
+        font-weight: bold;
+        margin-right: 15px
       }
     }
 
@@ -124,11 +162,27 @@ nav {
       display: none;
     }
 
+    &__language-toggles {
+      display: flex;
+      border-top: 1px solid $white;
+
+      .nav__primary-link {
+        width: 50%;
+        justify-content: center;
+        color: $white;
+
+        &.active {
+          @include green-gradient-background-mixin();
+        }
+      }
+    }
+
     &__secondary-menu {
       width: 100%;
       list-style: none;
       padding: 0;
       border-bottom: 1px solid $white;
+      margin-bottom: 0;
     }
 
     &__secondary-link {
@@ -138,6 +192,8 @@ nav {
         display: flex;
         align-items: center;
         color: $white;
+        font-weight: bold;
+        position: relative;
 
         img {
           height: 22px;
@@ -146,23 +202,101 @@ nav {
         }
       }
     }
+  }
+}
 
-    &__secondary-link:hover {
-      background: none;
+@media only screen and (min-width: 576px) {
+  nav {
+
+    .saved-counter {
+      left: 10px;
+      top: -3px;
+    }
+
+    .nav {
+
+      &__secondary-menu {
+        display: none;
+      }
+
+      &__tablet-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+        margin: auto auto auto 15px;
+        height: 50px;
+        background-color: #000000;
+        border-radius: 40px 40px 40px 40px;
+        border-bottom: unset;
+      }
+
+      &__tablet-link {
+        @include top-level-desktop-item();
+        display: flex;
+        align-items: center;
+        padding-left: 4px;
+        padding-right: 4px;
+
+        a {
+          display: flex;
+          align-items: center;
+          padding-left: 7.5px;
+          padding-right: 7.5px;
+          color: #FFFFFF;
+          text-decoration: none;
+          font-weight: normal;
+          position: relative;
+
+          img {
+            height: 22px;
+            width: 22px;
+          }
+
+          span {
+            display: flex;
+            padding-left: 5px;
+          }
+        }
+      }
+
+      &__tablet-link:hover {
+        background: none;
+      }
+
+      &__tablet-text {
+        display: inline;
+        @include desktop-body-font-mixin();
+        color: $white;
+        margin: auto;
+      }
     }
   }
 }
 
-
-@media only screen and (min-width: 768px) {
-
-
+@media only screen and (min-width: 1025px) {
   nav {
+    display: flex !important;
+    justify-content: center;
+    padding-bottom: 100px;
+
+    .language-select {
+      display: flex !important;
+    }
+
+    .saved-counter {
+      left: 10px;
+      top: -3px;
+    }
+
     .nav {
       display: flex;
       align-items: center;
       height: 100px;
       padding: 0px;
+      max-width: 1240px;
 
       &__mobile {
         width: unset;
@@ -178,6 +312,7 @@ nav {
 
       &__burger-menu {
         display: none;
+
       }
 
       &__menus-container {
@@ -188,11 +323,14 @@ nav {
         width: unset;
       }
 
+      &__language-toggles {
+        display: none;
+      }
+
       &__primary-menu {
         display: flex;
         list-style: none;
         height: 100%;
-
       }
 
       &__primary-link {
@@ -201,21 +339,6 @@ nav {
         border: none;
         background-color: transparent;
         text-decoration: none;
-
-
-        a {
-          height: 100%;
-          display: flex;
-          align-items: center;
-          padding-left: 15px;
-          padding-right: 15px;
-          margin: 0;
-          color: $white;
-          text-decoration: none;
-        }
-      }
-
-      &__link-title {
         height: 100%;
         display: flex;
         align-items: center;
@@ -224,6 +347,19 @@ nav {
         margin: 0;
         color: $white;
         text-decoration: none;
+        font-weight: normal;
+      }
+
+      &__link-title {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        //padding-left: 15px;
+        //padding-right: 15px;
+        margin: 0;
+        color: $white;
+        text-decoration: none;
+        font-weight: normal;
       }
 
       &__dropdown-body {
@@ -234,7 +370,13 @@ nav {
         padding-left: 0px;
         background-color: $header-blue;
 
-        li {
+
+        li:hover {
+          @include green-gradient-background-mixin();
+        }
+
+        a {
+          font-weight: normal;
           @include mobile-body-font-mixin();
           display: block;
           padding: 25px 15px;
@@ -243,42 +385,38 @@ nav {
           color: $white;
           text-decoration: none;
         }
-
-        li:hover {
-          @include green-gradient-background-mixin();
-        }
       }
-
 
       &__secondary-menu {
         display: flex;
         justify-content: space-between;
         align-items: center;
         list-style: none;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 7.5px;
+        padding-right: 7.5px;
         margin: auto auto auto 30px;
         height: 50px;
         background-color: #000000;
         border-radius: 40px 40px 40px 40px;
         border-bottom: unset;
+        width: unset;
       }
 
       &__secondary-link {
         @include top-level-desktop-item();
         display: flex;
         align-items: center;
-        padding-left: 8px;
-        padding-right: 8px;
-
+        padding-left: 4px;
+        padding-right: 4px;
 
         a {
           display: flex;
           align-items: center;
-          padding-left: 15px;
-          padding-right: 15px;
+          padding-left: 7.5px;
+          padding-right: 7.5px;
           color: #FFFFFF;
           text-decoration: none;
+          font-weight: normal;
 
           img {
             height: 22px;
@@ -290,6 +428,10 @@ nav {
             padding-left: 10px;
           }
         }
+      }
+
+      &__secondary-link:hover {
+        background: none;
       }
     }
   }

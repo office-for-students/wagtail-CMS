@@ -27,15 +27,15 @@
 }
 
 
-.accordion-block{
-    margin-bottom: 32px !important;
+.accordion-block {
+  margin-bottom: 32px !important;
 }
 
 $widthOfWideArrow: 49px;
 $widthOfNarrowArrow: 27px;
 
-.course-info-right{
-    margin-right: $widthOfWideArrow;
+.course-info-right {
+  margin-right: $widthOfWideArrow;
 }
 
 .course-info-left {
@@ -100,7 +100,7 @@ $course_comparison_first_column_width: 250px;
   .comparison_row {
     display: block;
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     min-height: 44px;
 
     &-header {
@@ -154,7 +154,7 @@ $course_comparison_first_column_width: 250px;
       font-size: 20px !important;
     }
 
-    &-title_container{
+    &-title_container {
       display: flex;
       flex-direction: column;
       border-bottom: 4px solid white;
@@ -178,14 +178,14 @@ $course_comparison_first_column_width: 250px;
       font-weight: bold;
       background: inherit;
 
-      &.subtitle{
+      &.subtitle {
         font-weight: normal;
         margin-top: 0px;
         padding-top: 5px;
         padding-bottom: 5px;
       }
 
-      &.show_more{
+      &.show_more {
         margin: 0;
         padding: 10px 10px 10px 18px;
       }
@@ -221,52 +221,54 @@ $course_comparison_first_column_width: 250px;
   align-items: center;
 }
 
-.subject_wrapper{
+.subject_wrapper {
   display: block;
   width: 100%;
   color: black;
 
-  .box{
+  .box {
     background-color: #f2f2f2;
     min-width: 100%;
     display: block;
     padding: 16px 16px 16px 24px;
     margin: 0 0 8px 0;
 
-    .header{
+    .header {
       font-weight: bold;
       font-size: 16px;
       margin-bottom: 16px;
     }
   }
-  .container{
+
+  .container {
     min-width: 100%;
     padding: 0;
     margin: 0;
 
-    .header{
+    .header {
       background-color: #f2f2f2;
       position: relative;
-      padding:16px 8px 13px 8px;
+      padding: 16px 8px 13px 8px;
     }
-    .subjects{
+
+    .subjects {
       display: flex;
 
-      .subject{
+      .subject {
         flex: 1;
         margin-right: 8px;
 
-        &:last-child{
+        &:last-child {
           margin-right: 0;
         }
 
-        .list{
+        .list {
           list-style-type: none;
           padding: 0;
         }
       }
 
-      .button{
+      .button {
         background-color: rgba(239, 204, 75, 0.5);
         margin: 8px 0 8px 0;
         padding: 8px;
@@ -274,11 +276,11 @@ $course_comparison_first_column_width: 250px;
         flex: 1;
         cursor: pointer;
 
-        &.selected{
+        &.selected {
           background-color: #efcc4b;
           cursor: default;
 
-          &:before{
+          &:before {
             content: "\2713";
           }
         }
@@ -362,7 +364,7 @@ $course_comparison_first_column_width: 250px;
         font-size: 16px;
         font-weight: bold;
 
-        .plus{
+        .plus {
           font-size: 20px;
           padding-right: 10px;
         }
@@ -386,18 +388,20 @@ $course_comparison_first_column_width: 250px;
       text-align: center;
       margin-bottom: 31px;
 
-      .header{
+      .header {
         font-size: 16px;
         margin-bottom: 20px;
         font-weight: bold;
         text-align: left;
       }
-      .text{
+
+      .text {
         font-size: 14px;
         margin-bottom: 0px;
         text-align: left;
       }
-      .image{
+
+      .image {
         position: absolute;
         width: 50px;
         height: auto;
@@ -588,45 +592,44 @@ $course_comparison_first_column_width: 250px;
     }
 
     &__course-container {
-        width: 100%;
-        position: sticky;
-        background: white;
-        padding-top: 20px;
-        z-index: 10;
-        top: 0;
+      width: 100%;
+      position: sticky;
+      background: white;
+      padding-top: 20px;
+      z-index: 10;
+      top: 0;
 
-        .number_selected {
-          color: black;
-          margin-bottom: auto;
-          margin-top: 17px;
-          margin-right: auto;
-          min-width: 250px;
-          font-size: 24px;
-          font-weight: bold;
-        }
+      .number_selected {
+        color: black;
+        margin-bottom: auto;
+        margin-top: 17px;
+        margin-right: auto;
+        min-width: 250px;
+        font-size: 24px;
+        font-weight: bold;
+        display: none;
+      }
 
-        .cards {
+      .cards {
+        display: flex;
+        overflow: hidden;
+        flex: 1;
+
+        .slider {
           display: flex;
-          overflow: hidden;
-          flex: 1;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 8px;
+          background-color: #d2d2d2;
+          cursor: pointer;
 
-          .slider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 8px;
-            background-color: #d2d2d2;
-            cursor: pointer;
-
-            .arrow {
-              color: black;
-              font-size: 20px;
-              font-weight: bold;
-            }
+          .arrow {
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
           }
         }
-
-
+      }
 
 
       .none-selected {
@@ -680,35 +683,37 @@ $course_comparison_first_column_width: 250px;
   }
 }
 
-.guidance_box{
-    border: 1px solid #daf4ef;
-    padding: 8px;
-    color: black;
+.guidance_box {
+  border: 1px solid #daf4ef;
+  padding: 8px;
+  color: black;
+  margin: 16px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    max-width: 100%;
     margin: 16px 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 0px 15px;
+  }
 
-    .title{
-        font-size: 20px;
-        font-weight: bold;
-        max-width: 100%;
-        margin: 16px 0px;
-        padding: 0px 15px;
-    }
-    .item{
-        font-size: 14px;
-        margin-bottom: 2px;
+  .item {
+    font-size: 14px;
+    margin-bottom: 2px;
 
-        &:last-child{
-            margin-bottom: 0px;
-        }
+    &:last-child {
+      margin-bottom: 0px;
     }
-    .link{
-        font-size: 14px;
-        padding-left: 40px;
-        display: block;
-    }
+  }
+
+  .link {
+    font-size: 14px;
+    padding-left: 40px;
+    display: block;
+  }
 }
 
 
@@ -725,14 +730,14 @@ $course_comparison_first_column_width: 250px;
 }
 
 @media only screen and (min-width: 992px) {
-    .guidance_box{
-        flex-direction: row;
+  .guidance_box {
+    flex-direction: row;
 
-        &-title{
-            max-width: 25%;
-            margin: 16px 0px;
-        }
+    &-title {
+      max-width: 25%;
+      margin: 16px 0px;
     }
+  }
 }
 
 @media only screen and (min-width: 770px) {
@@ -751,6 +756,7 @@ $course_comparison_first_column_width: 250px;
       }
 
     }
+
     .course-detail {
       &__accordion {
         display: block;
@@ -814,25 +820,25 @@ $course_comparison_first_column_width: 250px;
   }
 }
 
-@media only screen and (min-width: 576px){
-    .comparison__top-container {
-      .need-help-box {
-        .image {
-          position: absolute;
-          width: 50px;
-          height: auto;
-          right: 50px;
-          top: 10px;
-        }
+@media only screen and (min-width: 576px) {
+  .comparison__top-container {
+    .need-help-box {
+      .image {
+        position: absolute;
+        width: 50px;
+        height: auto;
+        right: 50px;
+        top: 10px;
       }
     }
-    .course_comparison-table__column-first {
-      &.subtitle{
-        margin-top: 0;
-        padding-top: 0;
-        padding-bottom: 10px;
-      }
+  }
+  .course_comparison-table__column-first {
+    &.subtitle {
+      margin-top: 0;
+      padding-top: 0;
+      padding-bottom: 10px;
     }
+  }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 766px) {
@@ -873,10 +879,10 @@ $course_comparison_first_column_width: 250px;
     margin-left: auto !important;
     margin-right: auto !important;
   }
-  .course_comparison-table{
+  .course_comparison-table {
     .comparison_row {
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
 
     &-header {
@@ -900,7 +906,7 @@ $course_comparison_first_column_width: 250px;
   }
   .comparison .course-detail__course-container {
     .number_selected {
-      display: block;
+      display: none;
       width: 100%;
       margin-bottom: 17px;
     }
@@ -931,9 +937,10 @@ $course_comparison_first_column_width: 250px;
     justify-content: center;
   }
 
-  .comparison__top-container{
+  .comparison__top-container {
     .add-btn {
       display: flex;
+
       .compare-text {
         display: inline-block;
         color: #5d5d5d;
@@ -949,7 +956,7 @@ $course_comparison_first_column_width: 250px;
       min-height: $course_comparison_line_height;
       flex-direction: row;
       color: black;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       align-items: center;
 
       &-header {
@@ -981,7 +988,7 @@ $course_comparison_first_column_width: 250px;
       align-items: center;
       background: inherit;
 
-      &-title_container{
+      &-title_container {
         border: none;
         padding: 0;
       }
@@ -1013,18 +1020,22 @@ $course_comparison_first_column_width: 250px;
     .number_selected {
       min-width: 186px;
       max-width: 186px;
+      display: inline;
     }
   }
 
   .comparison__top-container {
     margin-bottom: 10px;
-    .add-btn{
+
+    .add-btn {
       display: flex;
-      .add-courses-button{
+
+      .add-courses-button {
         top: 100%;
         transform: translate(0%, -100%);
         margin: 48px 16px 6.5px 0px;
       }
+
       .compare-text {
         display: inline-block;
         color: #5d5d5d;
@@ -1032,6 +1043,7 @@ $course_comparison_first_column_width: 250px;
         line-height: 1.5;
       }
     }
+
     .need-help-box {
       display: block;
       width: 45%;
@@ -1039,16 +1051,18 @@ $course_comparison_first_column_width: 250px;
       text-align: left;
     }
   }
-  .subject_wrapper{
+  .subject_wrapper {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    .box{
+
+    .box {
       min-width: 0;
       max-width: 186px;
       margin-right: 4px;
     }
-    .container{
+
+    .container {
       min-width: 0;
       width: 100%
     }
@@ -1056,6 +1070,13 @@ $course_comparison_first_column_width: 250px;
 }
 
 @media only screen and (min-width: 1200px) {
+  .comparison .course-detail__course-container {
+    .number_selected {
+      //min-width: 186px;
+      //max-width: 186px;
+      display: inline;
+    }
+  }
   div.comparison__body, div.course-detail__body {
     width: 1140px !important;
     margin-left: auto !important;
@@ -1075,13 +1096,16 @@ $course_comparison_first_column_width: 250px;
       margin: auto;
       text-align: left;
     }
+
     .add-btn {
       display: flex;
-      .add-courses-button{
+
+      .add-courses-button {
         top: 100%;
         transform: translate(0%, -100%);
         margin: 48px 16px 6.5px 0px;
       }
+
       .compare-text {
         display: inline-block;
         color: #5d5d5d;
@@ -1097,7 +1121,7 @@ $course_comparison_first_column_width: 250px;
       min-height: $course_comparison_line_height;
       flex-direction: row;
       color: black;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       align-items: center;
 
 
@@ -1127,7 +1151,7 @@ $course_comparison_first_column_width: 250px;
       align-items: center;
       background: inherit;
 
-      &-title_container{
+      &-title_container {
         border: none;
         padding: 0;
       }
@@ -1154,16 +1178,18 @@ $course_comparison_first_column_width: 250px;
     flex: 1;
   }
 
-  .subject_wrapper{
+  .subject_wrapper {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    .box{
+
+    .box {
       min-width: 0;
       max-width: 250px;
       margin-right: 8px;
     }
-    .container{
+
+    .container {
       min-width: 0;
       width: 100%
     }
