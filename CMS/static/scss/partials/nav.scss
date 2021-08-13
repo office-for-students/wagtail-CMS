@@ -133,6 +133,9 @@ nav {
       text-align: right;
       padding: 0;
 
+      li {
+        z-index: 1;
+      }
 
       li:hover {
         @include green-gradient-background-mixin();
@@ -209,6 +212,7 @@ nav {
   nav {
 
     .saved-counter {
+
       left: 10px;
       top: -3px;
     }
