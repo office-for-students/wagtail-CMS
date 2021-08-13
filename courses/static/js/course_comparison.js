@@ -473,8 +473,9 @@ $(window).on('load', function () {
     function showComparison(callback) {
         let request = new XMLHttpRequest();
         request.onreadystatechange = function () {
-            if (this.readyState === 4 && this.status === 200) {
-                callback(this.responseText);
+            if (this.readyState === 4 && this.status >= 200 && this.status && this.status < 300) {
+                callback(this.responseText, (this.status !== 206));
+
             }
         };
 
@@ -486,10 +487,12 @@ $(window).on('load', function () {
         request.send();
     }
 
-    showComparison(function (response) {
+    showComparison(function (response, run_js = false) {
         document.getElementById("comparison-body").innerHTML = response;
-        setupView();
-        // triggers the accordions
-        document.dispatchEvent(event);
+        console.log("i should run the js");
+        if (run_js) {
+            setupView();
+            document.dispatchEvent(event);
+        }
     });
 });

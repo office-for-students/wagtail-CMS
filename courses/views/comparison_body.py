@@ -15,11 +15,23 @@ logger = logging.getLogger(__name__)
 
 def show_has_no_bookmarked_courses(request, language):
     context = dict(institutions_list=InstitutionList.get_options()[utils.get_language(request.get_full_path())])
-    return render_with_language_context(request, 'courses/comparison/has_no_saved_courses.html', context, language)
+    return render_with_language_context(
+        request,
+        'courses/comparison/has_no_saved_courses.html',
+        context,
+        language,
+        status=206
+    )
 
 
 def show_not_enough_saved(request, language):
-    return render_with_language_context(request, 'courses/comparison/has_no_compare_courses.html', {}, language)
+    return render_with_language_context(
+        request,
+        'courses/comparison/has_no_compare_courses.html',
+        {},
+        language,
+        status=206
+    )
 
 
 def show_courses_selected_for_comparison(courses_list, request, language):
@@ -62,6 +74,7 @@ def compare_courses_body(request, language=enums.languages.ENGLISH):
     return show_courses_selected_for_comparison(stored, request, language)
 
 
-def render_with_language_context(request, template, context, language):
-    default = dict(page={"get_language": language, "compare_heading": translations.term_for_key("can_compare_courses", language)})
-    return render(request, template, {**default, **context})
+def render_with_language_context(request, template, context, language, status=200):
+    default = dict(
+        page={"get_language": language, "compare_heading": translations.term_for_key("can_compare_courses", language)})
+    return render(request, template, {**default, **context}, status=status)
