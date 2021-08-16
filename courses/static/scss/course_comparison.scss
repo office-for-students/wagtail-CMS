@@ -28,7 +28,9 @@
 }
 
 @media only screen and (min-width: 414px) {
- .rating{ display: inline-block;}
+  .rating {
+    display: inline-block;
+  }
 }
 
 
@@ -62,7 +64,7 @@ $widthOfNarrowArrow: 27px;
 }
 
 .both-arrows {
-  width: $widthOfNarrowArrow;
+  min-width: $widthOfNarrowArrow;
 }
 
 

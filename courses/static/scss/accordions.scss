@@ -3,7 +3,8 @@
   background: #f2f2f2;
   cursor: pointer;
   margin-bottom: 8px;
-  &:focus, &:active{
+
+  &:focus, &:active {
     outline: none;
   }
 }
@@ -12,11 +13,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 29px 40px 29px 29px;
   background: linear-gradient(145.9deg, #4EA27D 13.02%, #308282 85.42%);
   color: #FFFFFF;
   border: 3px solid transparent;
-  .title{
+
+  .title {
     color: white;
   }
 }
@@ -39,8 +40,5 @@
   }
 }
 
-.accordion-title{
-  font-weight: bold;
-}
 
 //#Accordion CSS END
