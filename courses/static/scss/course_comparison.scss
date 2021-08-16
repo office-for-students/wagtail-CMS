@@ -605,7 +605,7 @@ $course_comparison_first_column_width: 250px;
       width: 100%;
       position: sticky;
       background: white;
-      padding-top: 20px;
+      padding-top: 10px;
       z-index: 10;
       top: 0;
 
@@ -622,8 +622,9 @@ $course_comparison_first_column_width: 250px;
 
       .cards {
         display: flex;
-        overflow: hidden;
-        flex: 1;
+        flex-grow: 1;
+        flex-basis: 0;
+        min-width: 0;
 
         .slider {
           display: flex;
@@ -662,8 +663,9 @@ $course_comparison_first_column_width: 250px;
       &-container {
         flex: 1;
         background-color: #f2f2f2;
-        margin: 0px 4px 8px 4px;
-        padding: 16px;
+        //margin: 0px 4px 8px 4px;
+        margin: 0px 1px 8px 1px;
+        padding: 12px 10px;
 
         &-exit-course {
           float: right;
