@@ -195,6 +195,17 @@
   }
 }
 
+.bookmark-check {
+  margin-right: 15px;
+  margin-bottom: auto;
+  margin-top: 40px;
+}
+
+@media only screen and (min-width: 575px) {
+  .bookmark-check {
+    margin-right: 95px;
+  }
+}
 
 @media only screen and (max-width: 575px) {
   div.bookmark.discover-uni-container {

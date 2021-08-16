@@ -2,6 +2,10 @@
 @import '../../../CMS/static/scss/variables';
 @import '../../../CMS/static/scss/partials/forms';
 
+*:focus {
+  outline: none;
+}
+
 .comparison__xs-rotate {
   // background-color: #1F283A;
   color: #1F283A;
@@ -16,11 +20,6 @@
   display: none;
 }
 
-.rating {
-  display: inline-block;
-  color: black;
-  cursor: pointer;
-}
 
 .orange {
   color: orange;
@@ -52,7 +51,7 @@ $widthOfNarrowArrow: 27px;
 }
 
 .both-arrows {
-  width: $widthOfNarrowArrow;
+  min-width: $widthOfNarrowArrow;
 }
 
 
@@ -612,7 +611,7 @@ $course_comparison_first_column_width: 250px;
       width: 100%;
       position: sticky;
       background: white;
-      padding-top: 20px;
+      padding-top: 10px;
       z-index: 10;
       top: 0;
 
@@ -629,8 +628,9 @@ $course_comparison_first_column_width: 250px;
 
       .cards {
         display: flex;
-        overflow: hidden;
-        flex: 1;
+        flex-grow: 1;
+        flex-basis: 0;
+        min-width: 0;
 
         .slider {
           display: flex;
@@ -669,8 +669,9 @@ $course_comparison_first_column_width: 250px;
       &-container {
         flex: 1;
         background-color: #f2f2f2;
-        margin: 0px 4px 8px 4px;
-        padding: 16px;
+        //margin: 0px 4px 8px 4px;
+        margin: 0px 1px 8px 1px;
+        padding: 12px 10px;
 
         &-exit-course {
           float: right;
@@ -679,18 +680,19 @@ $course_comparison_first_column_width: 250px;
       }
 
       &-name {
-        margin: 16px 0;
+        margin: 6px 0;
         font-family: "Nunito Sans", sans-serif;
-        font-size: 18px;
+        font-size: 13px;
         color: #1e1e1e;
         line-height: 1.2;
       }
 
       &-institution-name {
-        margin: 16px 0 0;
+        margin: 0;
         font-family: "Nunito Sans", sans-serif;
-        font-size: 16px;
-        color: #595959
+        font-size: 12px;
+        color: #595959;
+        display: block;
       }
     }
 
@@ -956,6 +958,7 @@ $course_comparison_first_column_width: 250px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+
   }
 
   .comparison__top-container {
@@ -1261,3 +1264,20 @@ $course_comparison_first_column_width: 250px;
 #course-info-container {
   margin-top: 48px;
 }
+
+.rating {
+  color: black;
+  cursor: pointer;
+  display: none;
+}
+
+@media only screen and (min-width: 414px) {
+  .rating {
+    display: inline-block;
+  }
+  .comparison .course-detail__course-container {
+    padding-top: 20px;
+  }
+}
+
+

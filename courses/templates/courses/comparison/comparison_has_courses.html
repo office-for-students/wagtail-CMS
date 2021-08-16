@@ -25,9 +25,9 @@
     }}
 </style>
     <div class="number_selected-small">
- <span id="numberOfSelected">{{ courses|length }}</span> {% get_translation key='courses_selected' language=page.get_language %}
+ <span id="numberOfSelected-mob">{{ courses|length }}</span> {% get_translation key='courses_selected' language=page.get_language %}
     </div>
-    <div class="course-detail__course-container">
+    <div class="course-detail__course-container" id="course-cards-container">
         <div class="number_selected">
          <span id="numberOfSelected">{{ courses|length }}</span> {% get_translation key='courses_selected' language=page.get_language %}
         </div>
@@ -86,7 +86,7 @@
                 {% for accordion in courses_data.0.accordions %}
                     <div class="accordion" id="ac-{{ forloop.counter }}">
                         <div tabindex="{{ forloop.counter }}" role="button" aria-label="Show content"
-                             class="green narrow accordion-header sticky-accordion-header">
+                             class="green accordion-padding accordion-header sticky-accordion-header">
                             <div class="">
                                 <div id="{{ accordion.value.heading }}" style="max-width: 440px;"
                                      class="accordion-title"

@@ -239,7 +239,9 @@ class ComparisonDisplayManager {
             }
 
             let selectedCount = document.getElementById("numberOfSelected");
+            let selectedCountMob = document.getElementById("numberOfSelected-mob")
             selectedCount.innerHTML = final.length;
+            selectedCountMob.innerHTML = final.length;
         }
         this.moveIndexToDisplayBy(-1);
     }
@@ -356,9 +358,10 @@ class ComparisonDisplayManager {
     }
 
     updateStickyHeader() {
-        let element_height = $(".course-detail__course-container").height();
+        const element = document.getElementById("course-cards-container");
+        let style = getComputedStyle(element);
         let accordion_header = $(".sticky-accordion-header");
-        accordion_header.css('top', element_height + 20 + "px");
+        accordion_header.css('top', parseInt(style.height) + "px");
         accordion_header.css('position', "sticky");
         accordion_header.css("z-index", "8");
     }
@@ -457,8 +460,7 @@ $(window).on('load', function () {
         array.forEach(function (value, index) {
             list.push(value.id);
         })
-        const urls_params = list.join('&courses=');
-        return urls_params;
+        return list.join('&courses=');
     }
 
     function numberOfStored() {
@@ -471,8 +473,9 @@ $(window).on('load', function () {
     function showComparison(callback) {
         let request = new XMLHttpRequest();
         request.onreadystatechange = function () {
-            if (this.readyState === 4 && this.status === 200) {
-                callback(this.responseText);
+            if (this.readyState === 4 && this.status >= 200 && this.status && this.status < 300) {
+                callback(this.responseText, (this.status !== 206));
+
             }
         };
 
@@ -484,10 +487,12 @@ $(window).on('load', function () {
         request.send();
     }
 
-    showComparison(function (response) {
+    showComparison(function (response, run_js = false) {
         document.getElementById("comparison-body").innerHTML = response;
-        setupView();
-        // triggers the accordions
-        document.dispatchEvent(event);
+        console.log("i should run the js");
+        if (run_js) {
+            setupView();
+            document.dispatchEvent(event);
+        }
     });
 });
