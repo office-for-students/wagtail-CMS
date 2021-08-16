@@ -674,18 +674,19 @@ $course_comparison_first_column_width: 250px;
       }
 
       &-name {
-        margin: 16px 0;
+        margin: 6px 0;
         font-family: "Nunito Sans", sans-serif;
-        font-size: 18px;
+        font-size: 13px;
         color: #1e1e1e;
         line-height: 1.2;
       }
 
       &-institution-name {
-        margin: 16px 0 0;
+        margin: 0;
         font-family: "Nunito Sans", sans-serif;
-        font-size: 16px;
-        color: #595959
+        font-size: 12px;
+        color: #595959;
+        display: block;
       }
     }
 
