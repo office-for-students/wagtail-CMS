@@ -2,6 +2,10 @@
 @import '../../../CMS/static/scss/variables';
 @import '../../../CMS/static/scss/partials/forms';
 
+*:focus {
+  outline: none;
+}
+
 .comparison__xs-rotate {
   // background-color: #1F283A;
   color: #1F283A;
