@@ -11,9 +11,9 @@ from home.models import HomePage
 def nav_menu_render(request):
     url = request.get_full_path()
     language = get_language(url)
-    search_page_url = get_page_for_language(language, HomePage.objects.all()).url
-    comparison_page_url = get_page_for_language(language, CourseComparisonPage.objects.all()).url
-    bookmark_page_url = get_page_for_language(language, CourseManagePage.objects.all()).url
+    search_page = get_page_for_language(language, HomePage.objects.all())
+    comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
+    bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
 
     brand_logo = {
         'img': 'images/logos/nav_logo_english.svg', 'url': '/'
