@@ -21,11 +21,6 @@
 }
 
 
-.orange {
-  color: orange;
-}
-
-
 .accordion-block {
   margin-bottom: 32px !important;
 }
@@ -1210,6 +1205,10 @@ $course_comparison_first_column_width: 250px;
   display: none;
 }
 
+.orange {
+  color: orange;
+}
+
 @media only screen and (min-width: 414px) {
   .rating {
     display: inline-block;
@@ -1218,5 +1217,4 @@ $course_comparison_first_column_width: 250px;
     padding-top: 20px;
   }
 }
-
 
