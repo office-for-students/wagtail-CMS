@@ -24,7 +24,13 @@
   display: inline-block;
   color: black;
   cursor: pointer;
+  display: none;
 }
+
+@media only screen and (min-width: 414px) {
+ .rating{ display: inline-block;}
+}
+
 
 .orange {
   color: orange;
