@@ -51,10 +51,10 @@
                 {% for item in navigation.primary_menu %}
                     {% with has_sub=item.sub_items %}
                         {% if has_sub %}
-                            <div class="nav__mobile-accordion">
+                            <div class="nav__sub_menu">
 
-                                <div class="nav__primary-link nav__accordion-header">
-                                    <a href="#" class="nav__link-title accordion-title">
+                                <div class="nav__primary-link nav__dd-acc-header">
+                                    <a href="#" class="nav__link-title">
                                         {{ item.label }}
                                     </a>
                                     <div class="nav__icon-wrapper">
@@ -68,7 +68,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="nav__accordion-body">
+                                <div class="nav__dd-acc-body">
                                     <ul class="nav__dropdown-body">
                                         {% for sub_item in has_sub %}
                                             <li>

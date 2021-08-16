@@ -28,6 +28,7 @@
         };
     }
 
+
     // ACCORDION
     var Accordion = function (wrapper) {
         this.wrapper = $(wrapper);
@@ -67,12 +68,6 @@
         startWatchers: function () {
             var that = this;
             this.header.click(this.handleAccordionToggle.bind(this));
-            this.header.mouseover(this.handleAccordionMouseOver.bind(this))
-            this.body.mouseover(this.handleAccordionMouseOver.bind(this))
-            this.header.mouseout(this.handleAccordionMouseOut.bind(this))
-            this.body.mouseout(this.handleAccordionMouseOut.bind(this))
-
-
             this.header.keydown(function (evt) {
                 if (evt.which === 13 || evt.which === 32) {
                     that.handleAccordionToggle();
@@ -80,17 +75,7 @@
             });
         },
 
-        handleAccordionMouseOver: function () {
-            if ($(window).width() >= 1025) {
-                this.body.show()
-            }
-        },
 
-        handleAccordionMouseOut: function () {
-            if ($(window).width() >= 1025) {
-                this.body.hide()
-            }
-        },
 
         handleAccordionToggle: function () {
             if (this.header.hasClass('open')) {
@@ -479,18 +464,25 @@
             this.mobileCloseButton = this.wrapper.find('#close-menu');
             this.tabletMenuText = this.wrapper.find('#menu-text')
             this.mobileMenuBody = this.wrapper.find('.nav__menus-container');
-
-            this.initialiseDropdowns();
+            this.dropdownHeader = this.wrapper.find('[class$=dd-acc-header]');
+            this.dropdownBody = this.wrapper.find('[class$=dd-acc-body]');
+            this.expandIcon = this.wrapper.find('.expand');
+            this.collapseIcon = this.wrapper.find('.collapse');
+            this.setInitialView()
             this.startWatchers();
         },
 
-        initialiseDropdowns: function () {
-            this.dropdowns = []
-            var dropdowns = this.wrapper.find('.nav__dropdown-body');
-            for (var i = 0; i < dropdowns.length; i++) {
-                this.dropdowns.push(new NavDropdown(dropdowns[i]));
+        setInitialView: function () {
+            if (this.anchor === window.location.hash) {
+                this.collapseIcon.show();
+                this.dropdownHeader.addClass('open');
+                this.dropdownHeader.attr('aria-expanded', true);
+            } else {
+                this.dropdownBody.hide();
+                this.expandIcon.show();
             }
         },
+
 
         startWatchers: function () {
             let that = this;
@@ -517,28 +509,40 @@
                     that.mobileBurgerButton.hide();
                 }
             })
-        }
-    }
 
-    var NavDropdown = function (wrapper) {
-        this.wrapper = $(wrapper);
-        this.setup();
-    }
+            this.dropdownHeader.click(function () {
+                if (that.dropdownHeader.hasClass('open')) {
+                    that.dropdownHeader.attr('aria-expanded', false)
+                    that.dropdownBody.hide();
+                    that.expandIcon.show();
+                    that.collapseIcon.hide()
+                    that.dropdownHeader.removeClass('open')
+                } else {
+                    that.dropdownHeader.attr('aria-expanded', true)
+                    that.dropdownBody.show();
+                    that.expandIcon.hide();
+                    that.collapseIcon.show()
+                    that.dropdownHeader.addClass('open')
+                }
+            })
 
-    NavDropdown.prototype = {
-        setup: function () {
-            this.toggle = this.wrapper.find('.discover-uni-nav__desktop-dropdown-toggle');
-            this.body = this.wrapper.find('.discover-uni-nav__desktop-dropdown-body');
-
-            this.startWatcher();
+            this.dropdownHeader.mouseover(this.handleDropdownMouseOver.bind(this));
+            this.dropdownBody.mouseover(this.handleDropdownMouseOver.bind(this));
+            this.dropdownHeader.mouseout(this.handleDropdownMouseOut.bind(this));
+            this.dropdownBody.mouseout(this.handleDropdownMouseOut.bind(this));
         },
 
-        startWatcher: function () {
-            var that = this;
-            this.toggle.click(function () {
-                that.body.toggle();
-            });
-        }
+        handleDropdownMouseOver: function () {
+            if ($(window).width() >= 1025) {
+                this.dropdownBody.show()
+            }
+        },
+
+        handleDropdownMouseOut: function () {
+            if ($(window).width() >= 1025) {
+                this.dropdownBody.hide()
+            }
+        },
     }
 
 
