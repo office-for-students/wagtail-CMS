@@ -30,20 +30,18 @@ nav {
   }
 
   .saved-counter {
+    font-size: 11px;
     position: absolute;
     background-color: red;
     border-radius: 50%;
     display: flex;
     padding-top: 1px;
     justify-content: center;
-    width: 18px;
-    height: 18px;
-    bottom: 10px;
-    left: 10px;
-
-    p {
-      font-size: 11px;
-    }
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    bottom: 0.5px;
+    left: 2px;
   }
 
   .nav {
