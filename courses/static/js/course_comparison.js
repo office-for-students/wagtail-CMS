@@ -358,9 +358,10 @@ class ComparisonDisplayManager {
     }
 
     updateStickyHeader() {
-        let element_height = $(".course-detail__course-container").height();
+        const element = document.getElementById("course-cards-container");
+        let style = getComputedStyle(element);
         let accordion_header = $(".sticky-accordion-header");
-        accordion_header.css('top', element_height + 20 + "px");
+        accordion_header.css('top', parseInt(style.height) + "px");
         accordion_header.css('position', "sticky");
         accordion_header.css("z-index", "8");
     }
@@ -459,8 +460,7 @@ $(window).on('load', function () {
         array.forEach(function (value, index) {
             list.push(value.id);
         })
-        const urls_params = list.join('&courses=');
-        return urls_params;
+        return list.join('&courses=');
     }
 
     function numberOfStored() {
