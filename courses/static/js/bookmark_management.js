@@ -244,7 +244,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
 
         let saved_courses = new CourseStorage('bookmarkedCourses',
             function (items) {
-                let bookmark_el = document.getElementsByClassName('nav-bookmark__count')[0]
+                let bookmark_el = document.getElementsByClassName('saved-counter')
                 let total_bookmark = items.length;
                 if (total_bookmark === 0) {
                     bookmark_el.classList.add("hidden");

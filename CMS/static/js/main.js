@@ -120,7 +120,7 @@
                     this.selectedCourses = [];
                 }
 
-                if (this.selectedCourses.length) {
+                if (this.selectedCourses.length > 0) {
                     this.btn.show();
                     this.btn.text(this.selectedCourses.length);
                 } else if (this.selectedCourses.length === 0) {
