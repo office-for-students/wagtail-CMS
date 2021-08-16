@@ -6,7 +6,7 @@
 
     NavBookMarkBtn.prototype = {
         setup: function() {
-            this.navBar = $('.discover-uni-nav');
+            this.navBar = $('.nav');
             this.loadSelectedCourses();
             this.startWatcher();
         },

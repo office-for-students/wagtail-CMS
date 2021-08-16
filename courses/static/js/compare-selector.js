@@ -8,7 +8,7 @@
 
     CompareSelector.prototype = {
         setup: function () {
-            this.navBar = $('.discover-uni-nav');
+            this.navBar = $('.nav');
             this.button = this.wrapper.find('[class$=compare-btn]');
             this.courseSelected = false;
             this.courseIdentifier = this.wrapper.data().courseidentifier;
