@@ -21,9 +21,22 @@
   }
 }
 
-.narrow {
-  font-size: 20px;
-  padding: 17px 24px 18px 23px;
+.accordion-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.accordion-padding {
+  padding: 9px 4px 9px 4px;
+}
+
+@media only screen and (min-width: 575px) {
+  .accordion-padding {
+    padding: 29px 40px 29px 29px;
+  }
+  .accordion-title {
+    font-size: 20px;
+  }
 }
 
 .accordion-title{
