@@ -3,7 +3,8 @@
   background: #f2f2f2;
   cursor: pointer;
   margin-bottom: 8px;
-  &:focus, &:active{
+
+  &:focus, &:active {
     outline: none;
   }
 }
@@ -12,22 +13,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 29px 40px 29px 29px;
   background: linear-gradient(145.9deg, #4EA27D 13.02%, #308282 85.42%);
   color: #FFFFFF;
   border: 3px solid transparent;
-  .title{
+
+  .title {
     color: white;
   }
 }
 
-.narrow {
-  font-size: 20px;
-  padding: 17px 24px 18px 23px;
+.accordion-title {
+  font-weight: bold;
+  font-size: 16px;
 }
 
-.accordion-title{
-  font-weight: bold;
+.accordion-padding {
+  padding: 9px 4px 9px 4px;
 }
+
+@media only screen and (min-width: 575px) {
+  .accordion-padding {
+    padding: 29px 40px 29px 29px;
+  }
+  .accordion-title {
+    font-size: 20px;
+  }
+}
+
 
 //#Accordion CSS END
