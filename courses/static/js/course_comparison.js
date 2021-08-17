@@ -368,6 +368,26 @@ class ComparisonDisplayManager {
 
 }
 
+class InfoBoxManager {
+
+    setup() {
+        this.setListeners()
+    }
+
+    setListeners(){
+        let infoIcon = document.getElementsByClassName("information-icon")
+        let infoText = document.getElementsByClassName("information-text")
+        for(let i=0; i < infoIcon.length; i++){
+            infoIcon[i].addEventListener("mouseover", function(){
+                infoText[i].classList.toggle("hidden")
+            })
+            infoIcon[i].addEventListener("mouseout", function(){
+                infoText[i].classList.toggle("hidden")
+            })
+        }
+    }
+}
+
 class MultipleSubjectsManager {
 
     setup() {
@@ -434,8 +454,10 @@ function setupView() {
     let courseComparison = new ComparisonDisplayManager();
     let multipleSubjectsManager = new MultipleSubjectsManager();
     let courseRatingsManager = new RatingsManager();
+    let infoBoxManager = new InfoBoxManager();
     courseRatingsManager.setupView();
     multipleSubjectsManager.setup();
+    infoBoxManager.setup();
     courseComparison.setup(arrowManager, function () {
         multipleSubjectsManager.showMultipleSubjects();
     });
