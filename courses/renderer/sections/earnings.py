@@ -108,8 +108,8 @@ class SubEarningsSection(Section):
                 no_data = translations.term_for_key(key="no_data_available", language=language)
 
                 if extra == "first":
-                    mode = course.mode.label
-                    values = f'{mode} {method} courses'
+                    mode = translations.term_for_key(course.mode.label, language=language)
+                    values = f'{mode} {method} {translations.term_for_key("course", language=language)}'
                 elif extra == "final":
                     country = str(getattr(_object, "country"))
                     values = render_to_string(
@@ -142,9 +142,10 @@ class SubEarningsSection(Section):
             else:
                 _object = getattr(course, model_list)[0]
                 method = str(getattr(_object, stat))
+                mode = translations.term_for_key(course.mode.label, language=language)
 
                 if extra == "first":
-                    response = f'{course.mode.label} {method} courses'
+                    response = f'{mode} {method} {translations.term_for_key("course", language=language)}'
                 elif extra == "final":
                     country = str(getattr(_object, "country"))
                     response = render_to_string(

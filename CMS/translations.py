@@ -615,6 +615,10 @@ DICT = {
         'en': './course-comparison/',
         'cy': './cy/cymharu-cyrsiau/'
     },
+    'course': {
+        'en': "courses",
+        'cy': "cyrsiau"
+    },
     'courses_selected': {
         'en': 'course(s) selected',
         'cy': 'cwrs wedi’u dewis'
@@ -1163,7 +1167,7 @@ DICT = {
         'en': 'Not in a professional or managerial job',
         'cy': 'Ddim mewn swydd broffesiynol neu reoli'
     },
-    'northern_ireland': {
+    '': {
         'en': 'Northern Ireland',
         'cy': 'Gogledd Iwerddon'
     },
