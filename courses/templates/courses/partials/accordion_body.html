@@ -37,7 +37,7 @@
     </div>
 
     {% for sub_accordion in sub_accordions %}
-        <div onclick="console.log(this.children)" class="accordion-block">
+        <div class="accordion-block">
             <div id="{{sub_accordion.title}}-header" class="comparison_row-header"
                  onclick="toggleAccordion('{{sub_accordion.title}}');">
                 {{sub_accordion.title}}

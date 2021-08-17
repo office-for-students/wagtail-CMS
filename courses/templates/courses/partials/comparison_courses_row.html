@@ -9,9 +9,9 @@
         </div>
         {% endif %}
     </div>
-    <div class="small-flex-div" >
+    <div class="small-flex-div">
     {% for item in values %}
-        <div class="column {{mt}} cc-column-{{forloop.counter0}}" >
+        <div class="column {{mt}} cc-column-{{forloop.counter0}}">
         {% with index=forloop.counter0 %}
             {% if item.values %}
                 {% for value in item.values %}
