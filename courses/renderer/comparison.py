@@ -193,7 +193,6 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
     ]
 
     response.append(context)
-    print("DATA", context["accordions"][2])
     return response
 
 

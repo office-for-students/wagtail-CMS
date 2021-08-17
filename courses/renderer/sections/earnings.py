@@ -24,6 +24,7 @@ primary_key = 1
 action = 2
 prefix_index = 3
 model_index = 4
+extras = 5
 
 
 class SubEarningsSection(Section):
@@ -46,19 +47,19 @@ class SubEarningsSection(Section):
         prefixes = ["go", "leo3", "leo5"]
         sections = [
             (
-                ("1", AVERAGE_EARNINGS, earnings_list[0], "", "go_salaries_inst", False),
+                ("1", AVERAGE_EARNINGS, earnings_list[0], "", "go_salaries_inst", "first"),
                 ("2", INSTITUTION, earnings_list[1], "£", "go_salaries_inst", False),
                 ("3", DATA_FROM_PEOPLE, earnings_list[2], "", "go_salaries_inst", False),
                 ("4", NATIONAL_AVERAGE, earnings_list[3], "£", "go_salaries_sector", False),
                 ("6", DATA_FROM_PEOPLE, earnings_list[4], "", "go_salaries_sector", "final"),
 
-                ("7", AVERAGE_EARNINGS, earnings_list[0], "", "leo3_salaries_inst", False),
+                ("7", AVERAGE_EARNINGS, earnings_list[0], "", "leo3_salaries_inst", "first"),
                 ("8", INSTITUTION, earnings_list[1], "£", "leo3_salaries_inst", False),
                 ("9", DATA_FROM_PEOPLE, earnings_list[2], "", "leo3_salaries_inst", False),
                 ("10", NATIONAL_AVERAGE, earnings_list[3], "£", "leo3_salaries_sector", False),
                 ("12", DATA_FROM_PEOPLE, earnings_list[4], "", "leo3_salaries_sector", "final"),
 
-                ("13", AVERAGE_EARNINGS, earnings_list[0], "", "leo5_salaries_inst", False),
+                ("13", AVERAGE_EARNINGS, earnings_list[0], "", "leo5_salaries_inst", "first"),
                 ("14", INSTITUTION, earnings_list[1], "£", "leo5_salaries_inst", False),
                 ("15", DATA_FROM_PEOPLE, earnings_list[2], "", "leo5_salaries_inst", False),
                 ("16", NATIONAL_AVERAGE, earnings_list[3], "£", "leo5_salaries_sector", False),
@@ -88,14 +89,13 @@ class SubEarningsSection(Section):
                         model_list=section[model_index],
                         language=self.language,
                         prefix=section[prefix_index],
-                        final=section[5]
+                        extra=section[extras]
                     )
                 )
-        print(self.data)
         return self.data
 
     @classmethod
-    def multiple_subjects(cls, course: Course, stat: str, model_list: str, language: str, prefix="", final=False):
+    def multiple_subjects(cls, course: Course, stat: str, model_list: str, language: str, prefix="", extra=False):
         response = dict(subject=[], values=[])
 
         for index, subject in enumerate(course.subject_names):
@@ -106,9 +106,19 @@ class SubEarningsSection(Section):
                 _object = getattr(course, model_list)[index]
                 method = str(getattr(_object, stat))
                 no_data = translations.term_for_key(key="no_data_available", language=language)
-                if final:
+
+                if extra == "first":
+                    mode = course.mode.label
+                    values = f'{mode} {method} courses'
+                elif extra == "final":
                     country = str(getattr(_object, "country"))
-                    values = f'<div class="country_population" style="border-bottom: 5px solid red">{country}</div><div{method}</div>'
+                    values = render_to_string(
+                        "courses/partials/country_population.html",
+                        context=dict(
+                            country=country,
+                            population=method
+                        )
+                    )
                 else:
                     values = f"{prefix}{method}" if method else no_data
 
@@ -117,7 +127,7 @@ class SubEarningsSection(Section):
         return response
 
     @classmethod
-    def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, prefix="", final=False) -> str:
+    def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, prefix="", extra=False) -> str:
         response = translations.term_for_key(key="no_data_available", language=language)
         try:
             if course.has_multiple_subject_names:
@@ -127,13 +137,15 @@ class SubEarningsSection(Section):
                     model_list=model_list,
                     language=language,
                     prefix=prefix,
-                    final=final
+                    extra=extra
                 )
             else:
                 _object = getattr(course, model_list)[0]
                 method = str(getattr(_object, stat))
-                response = f"{prefix}{method}" if method else response
-                if final:
+
+                if extra == "first":
+                    response = f'{course.mode.label} {method} courses'
+                elif extra == "final":
                     country = str(getattr(_object, "country"))
                     response = render_to_string(
                         "courses/partials/country_population.html",
@@ -142,6 +154,9 @@ class SubEarningsSection(Section):
                             population=method
                         )
                     )
+                else:
+                    response = f"{prefix}{method}" if method else response
+
         except Exception as e:
             print("error: ", e)
             pass
