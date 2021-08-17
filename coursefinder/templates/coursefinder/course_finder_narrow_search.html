@@ -10,11 +10,12 @@
 {% endblock page_js %}
 
 {% block question %}
-    <form action="{% if page.is_welsh %}/cy{% endif %}{% url 'narrow_search' %}" method="post" class="course-finder-content__question-form">
+    <form action="{% if page.is_welsh %}/cy{% endif %}{% url 'narrow_search' %}" method="post"
+          class="course-finder-content__question-form">
         {% csrf_token %}
 
         <fieldset>
-            <legend><h1 class="course-finder-content__question">{{page.question}}</h1></legend>
+            <legend><h1 class="course-finder-content__question">{{ page.question }}</h1></legend>
 
             <label class="course-finder-content__question-option radio" for="uni">
                 <span class="course-finder-content__question-label">
@@ -22,7 +23,7 @@
                 </span>
 
                 <input class="course-finder-content__question-input"
-                       id="uni" type="radio" name="radioGroup" value="uni">
+                       id="uni" type="radio" name="radioGroup" value="uni" aria-label="specific uni checkbox">
 
                 <span class="radiobox"></span>
             </label>
@@ -33,7 +34,7 @@
                 </span>
 
                 <input class="course-finder-content__question-input"
-                       id="home" type="radio" name="radioGroup" value="home">
+                       id="home" type="radio" name="radioGroup" value="home" aria-label="near home checkbox">
 
                 <span class="radiobox"></span>
             </label>
@@ -44,8 +45,7 @@
                 </span>
 
                 <input class="course-finder-content__question-input"
-                       id="all" type="radio" name="radioGroup" value="all">
-
+                       id="all" type="radio" name="radioGroup" value="all" aria-label="dont narrow checkbox">
                 <span class="radiobox"></span>
             </label>
         </fieldset>
@@ -64,7 +64,9 @@
     <button class="course-finder-content__next-button">
         {% get_translation key='next' language=page.get_language %}
 
-        <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}" alt="">
-        <img class="course-finder-content__next-icon green" src="{% static 'images/chevrons/green_right_chevron.svg' %}" alt="">
+        <img class="course-finder-content__next-icon white" src="{% static 'images/chevrons/white_right_chevron.svg' %}"
+             alt="">
+        <img class="course-finder-content__next-icon green" src="{% static 'images/chevrons/green_right_chevron.svg' %}"
+             alt="">
     </button>
 {% endblock %}
