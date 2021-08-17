@@ -1,24 +1,24 @@
 {% load discover_uni_tags %}
 
 <div class="subject-picker">
-    <div class="course-finder-content__question-selector">
-        <select id="subjectArea">
+    <div class="course-finder-content__question-selector" aria-label="Subject area">
+        <select id="subjectArea" aria-label="Subject area">
             <option value="disabled" disabled selected>
                 {% get_translation key='subject_area' language=page.get_language %}
             </option>
         </select>
     </div>
 
-    <div class="course-finder-content__question-selector">
-        <select id="subject">
+    <div class="course-finder-content__question-selector" aria-label="Subject selector">
+        <select id="subject" aria-label="Subject selector">
             <option value="disabled" disabled selected>
                 {% get_translation key='subject' language=page.get_language %}
             </option>
         </select>
     </div>
 
-    <div class="course-finder-content__question-selector">
-        <select id="subjectCode" class="hidden">
+    <div class="course-finder-content__question-selector" aria-label="Subject code">
+        <select id="subjectCode" class="hidden" aria-label="Subject code">
             <option data-code="default" selected>
                 {% get_translation key='show_all' language=page.get_language %}
             </option>
