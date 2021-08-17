@@ -10,6 +10,7 @@ from courses.renderer.sections import CourseDetailSection
 from courses.renderer.sections import SatisfactionSection
 from courses.renderer.sections.base import Section
 from courses.renderer.sections.continuation import ContinuationSection
+from courses.renderer.sections.earnings import SubEarningsSection
 from courses.renderer.sections.employment import SubEmploymentSection
 from courses.renderer.sections.graduate_perception import GraduatePerceptionSection
 from courses.renderer.sections.satisfaction import SubSatisfactionSection
@@ -46,6 +47,15 @@ def get_sub_employment(language) -> List:
     list_sub_accordions = [
         (translations.term_for_key(key="employment_after_the_course", language=language), [0, 7]),
         (translations.term_for_key(key="occupation_type", language=language), [7, 11]),
+    ]
+    return list_sub_accordions
+
+
+def get_sub_earnings(language) -> List:
+    list_sub_accordions = [
+        (translations.term_for_key(key="after_15_months", language=language), [0, 5]),
+        (translations.term_for_key(key="after_3_years", language=language), [5, 10]),
+        (translations.term_for_key(key="after_5_years", language=language), [10, 15]),
     ]
     return list_sub_accordions
 
@@ -141,6 +151,8 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="earnings_guidance_2", language=language),
                 translations.term_for_key(key="earnings_guidance_3", language=language)
             ),
+            subjects=get_multiple_subjects(courses),
+            sub_accordions=get_sub_accordion_dataset(courses, SubEarningsSection, get_sub_earnings, language),
             source=(
                 translations.term_for_key(key="earnings_link", language=language),
                 translations.term_for_key(key="read_more_about_earnings", language=language),

@@ -52,10 +52,16 @@
                 </div>
             </div>
         {% for item, value in sub_accordion.dataset.items %}
-            <div id="{{sub_accordion.title}}{{forloop.counter0}}"
-                 class="comparison_row-grey_background accordion-body">
-                {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values item_font="item_font" header_font="header_font" %}
-            </div>
+                {% if accordion.title == "Earnings after the course" %}
+                    <div id="{{sub_accordion.title}}{{forloop.counter0}}"
+                        class="comparison_row-earnings accordion-body">
+                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values item_font="item_font" header_font="header_font" %}                    </div>
+                {% else %}
+                    <div id="{{sub_accordion.title}}{{forloop.counter0}}"
+                        class="comparison_row-grey_background accordion-body">
+                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values item_font="item_font" header_font="header_font" %}
+                    </div>
+                {% endif %}
         {% endfor %}
         </div>
     {% endfor %}

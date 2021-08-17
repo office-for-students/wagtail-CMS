@@ -1,3 +1,4 @@
+from CMS import translations
 from .utils import fallback_to, enums, separate_unavail_reason
 
 
@@ -26,12 +27,16 @@ class SectorSalary:
 
             if institution_country_code == 'XF':
                 country_postfix = "_e"
+                self.country = translations.term_for_key(key="england", language=self.display_language)
             elif institution_country_code == 'XG':
                 country_postfix = "_ni"
+                self.country = translations.term_for_key(key="northern_ireland", language=self.display_language)
             elif institution_country_code == 'XH':
                 country_postfix = "_s"
+                self.country = translations.term_for_key(key="scotland", language=self.display_language)
             elif institution_country_code == 'XI':
                 country_postfix = "_w"
+                self.country = translations.term_for_key(key="wales", language=self.display_language)
 
             self.no_salary_node = "false"
             if 'lq_uk' in salary_data:

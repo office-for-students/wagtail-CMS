@@ -90,11 +90,9 @@ $course_comparison_first_column_width: 250px;
     vertical-align: middle;
   }
 
-
   .comparison_row {
     display: block;
     text-align: center;
-    margin-bottom: 8px;
     min-height: 44px;
 
     &-header {
@@ -109,9 +107,29 @@ $course_comparison_first_column_width: 250px;
       font-size: 18px;
     }
 
+    &-earnings {
+      background: $divider-grey;
+      margin-bottom: 8px;
+      font-size: 20px;
+
+      &:nth-child(4), &:nth-child(6), &:nth-child(7){
+        font-size: 18px;
+      }
+    }
+    &-details_background {
+      background: $divider-grey;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
 
     &-grey_background {
       background: $divider-grey;
+      margin-bottom: 8px;
+      font-size: 20px;
+
+      &:nth-child(2) {
+        font-size: 18px;
+      }
 
       &.source {
         margin-bottom: 16px;
@@ -123,6 +141,11 @@ $course_comparison_first_column_width: 250px;
       background: $pale;
       border-bottom: 1px solid $pale;
       margin-bottom: 16px;
+      font-size: 20px;
+
+      &:nth-child(3), &:nth-child(4){
+        font-size: 14px;
+      }
 
       .header {
         background: #eecc4b;
@@ -130,13 +153,12 @@ $course_comparison_first_column_width: 250px;
     }
   }
 
-
   .column {
     display: flex;
     align-items: center;
     justify-content: center;
     flex: 1 1 0;
-    font-size: 14px;
+    font-size: inherit;
     min-height: $course_comparison_line_height;
     background: inherit;
     color: black;
@@ -207,12 +229,32 @@ $course_comparison_first_column_width: 250px;
   }
 }
 
+.snippet_container{
+  width: 100%;
+  .country{
+    position: relative;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .margin{
+    position: absolute;
+    bottom: -10px;
+    border-bottom: 4px solid white;
+    width: 100vw;
+    margin-left: -20px;
+  }
+  .population{
+    padding-top: 24px;
+  }
+}
+
 .small-flex-div {
   display: flex;
   flex-direction: row;
   margin-left: auto;
   background-color: inherit;
   align-items: center;
+  overflow: hidden;
 }
 
 .subject_wrapper {
@@ -882,6 +924,10 @@ $course_comparison_first_column_width: 250px;
       margin-bottom: 8px;
     }
 
+    &-grey_background{
+        margin-bottom: 8px;
+      }
+
     &-header {
       margin-bottom: 16px;
     }
@@ -947,7 +993,6 @@ $course_comparison_first_column_width: 250px;
     }
   }
 
-
   .course_comparison-table {
     .comparison_row {
       display: flex;
@@ -956,6 +1001,23 @@ $course_comparison_first_column_width: 250px;
       color: black;
       margin-bottom: 6px;
       align-items: center;
+
+      &-grey_background{
+        margin-bottom: 6px;
+        padding: 0px;
+      }
+
+      &-earnings {
+      margin-bottom: 8px;
+      font-size: 20px;
+      padding: 8px;
+        &:nth-child(3), &:nth-child(5), &:nth-child(6),{
+          margin-bottom: 0px;
+        }
+        &:nth-child(4), &:nth-child(6), &:nth-child(7){
+          font-size: 18px;
+        }
+      }
 
       &-header {
         display: flex;
@@ -972,6 +1034,7 @@ $course_comparison_first_column_width: 250px;
       &-yellow_background {
         border-bottom: 5px solid $pale;
         margin-bottom: 0px;
+        padding: 0px;
 
         .header {
           background: #fef7d7;
@@ -985,6 +1048,7 @@ $course_comparison_first_column_width: 250px;
       justify-content: center;
       align-items: center;
       background: inherit;
+      padding: 0px;
 
       &-title_container {
         border: none;
@@ -1065,6 +1129,18 @@ $course_comparison_first_column_width: 250px;
       width: 100%
     }
   }
+  .snippet_container{
+    .country{
+      width: 100%;
+      padding-bottom: 0px;
+    }
+    .margin{
+      display: none;
+    }
+    .population{
+      padding-top: 10px;
+    }
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -1113,15 +1189,42 @@ $course_comparison_first_column_width: 250px;
     }
   }
 
+  .snippet_container{
+    .country{
+      width: 100%;
+      padding-bottom: 0px;
+    }
+    .margin{
+      display: none;
+    }
+    .population{
+      padding-top: 10px;
+    }
+  }
   .course_comparison-table {
     .comparison_row {
       display: flex;
       min-height: $course_comparison_line_height;
       flex-direction: row;
       color: black;
-      margin-bottom: 6px;
       align-items: center;
 
+      &-grey_background{
+        margin-bottom: 6px;
+        padding: 0px;
+      }
+
+      &-earnings {
+      margin-bottom: 8px;
+      font-size: 20px;
+      padding: 8px;
+        &:nth-child(3), &:nth-child(5), &:nth-child(6),{
+          margin-bottom: 0px;
+        }
+        &:nth-child(4), &:nth-child(6), &:nth-child(7){
+          font-size: 18px;
+        }
+      }
 
       &-header {
         min-height: $course_comparison_line_height;
@@ -1148,6 +1251,7 @@ $course_comparison_first_column_width: 250px;
       justify-content: center;
       align-items: center;
       background: inherit;
+      padding: 0px;
 
       &-title_container {
         border: none;
