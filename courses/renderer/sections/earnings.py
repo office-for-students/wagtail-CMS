@@ -1,5 +1,7 @@
 from typing import List, Tuple, Any, Dict
 
+from django.template.loader import render_to_string
+
 from CMS import translations
 from courses.models import Course
 from courses.renderer.sections.base import Section
@@ -15,7 +17,6 @@ earnings_list = [
     "med",
     "pop",
     "salary_default_country_med",
-    "country",
     "salary_default_country_pop"
 ]
 
@@ -45,26 +46,23 @@ class SubEarningsSection(Section):
         prefixes = ["go", "leo3", "leo5"]
         sections = [
             (
-                ("1", AVERAGE_EARNINGS, earnings_list[0], "", "go_salaries_inst"),
-                ("2", INSTITUTION, earnings_list[1], "£", "go_salaries_inst"),
-                ("3", DATA_FROM_PEOPLE, earnings_list[2], "", "go_salaries_inst"),
-                ("4", NATIONAL_AVERAGE, earnings_list[3], "£", "go_salaries_sector"),
-                ("5", "", earnings_list[4], "", "go_salaries_sector"),
-                ("6", DATA_FROM_PEOPLE, earnings_list[5], "", "go_salaries_sector"),
+                ("1", AVERAGE_EARNINGS, earnings_list[0], "", "go_salaries_inst", False),
+                ("2", INSTITUTION, earnings_list[1], "£", "go_salaries_inst", False),
+                ("3", DATA_FROM_PEOPLE, earnings_list[2], "", "go_salaries_inst", False),
+                ("4", NATIONAL_AVERAGE, earnings_list[3], "£", "go_salaries_sector", False),
+                ("6", DATA_FROM_PEOPLE, earnings_list[4], "", "go_salaries_sector", "final"),
 
-                ("7", AVERAGE_EARNINGS, earnings_list[0], "", "leo3_salaries_inst"),
-                ("8", INSTITUTION, earnings_list[1], "£", "leo3_salaries_inst"),
-                ("9", DATA_FROM_PEOPLE, earnings_list[2], "", "leo3_salaries_inst"),
-                ("10", NATIONAL_AVERAGE, earnings_list[3], "£", "leo3_salaries_sector"),
-                ("11", "", earnings_list[4], "", "go_salaries_sector"),
-                ("12", DATA_FROM_PEOPLE, earnings_list[5], "", "leo3_salaries_sector"),
+                ("7", AVERAGE_EARNINGS, earnings_list[0], "", "leo3_salaries_inst", False),
+                ("8", INSTITUTION, earnings_list[1], "£", "leo3_salaries_inst", False),
+                ("9", DATA_FROM_PEOPLE, earnings_list[2], "", "leo3_salaries_inst", False),
+                ("10", NATIONAL_AVERAGE, earnings_list[3], "£", "leo3_salaries_sector", False),
+                ("12", DATA_FROM_PEOPLE, earnings_list[4], "", "leo3_salaries_sector", "final"),
 
-                ("13", AVERAGE_EARNINGS, earnings_list[0], "", "leo5_salaries_inst"),
-                ("14", INSTITUTION, earnings_list[1], "£", "leo5_salaries_inst"),
-                ("15", DATA_FROM_PEOPLE, earnings_list[2], "", "leo5_salaries_inst"),
-                ("16", NATIONAL_AVERAGE, earnings_list[3], "£", "leo5_salaries_sector"),
-                ("17", "", earnings_list[4], "", "go_salaries_sector"),
-                ("18", DATA_FROM_PEOPLE, earnings_list[5], "", "leo5_salaries_sector")
+                ("13", AVERAGE_EARNINGS, earnings_list[0], "", "leo5_salaries_inst", False),
+                ("14", INSTITUTION, earnings_list[1], "£", "leo5_salaries_inst", False),
+                ("15", DATA_FROM_PEOPLE, earnings_list[2], "", "leo5_salaries_inst", False),
+                ("16", NATIONAL_AVERAGE, earnings_list[3], "£", "leo5_salaries_sector", False),
+                ("18", DATA_FROM_PEOPLE, earnings_list[4], "", "leo5_salaries_sector", "final")
             )
         ]
         sub_sections = []
@@ -80,24 +78,24 @@ class SubEarningsSection(Section):
         for section in self.sections:
             self.data[section[0]] = self.empty_data_structure(section[primary_key], self.language)
 
-
     def generate_dict(self) -> dict:
         for course in self.courses:
-            for section in self.sections:
+            for index, section in enumerate(self.sections):
                 self.data[section[0]]["values"].append(
                     self.presentable_data(
                         course=course,
                         stat=section[action],
                         model_list=section[model_index],
                         language=self.language,
-                        multiple=True,
-                        prefix=section[prefix_index]
+                        prefix=section[prefix_index],
+                        final=section[5]
                     )
                 )
+        print(self.data)
         return self.data
 
     @classmethod
-    def multiple_subjects(cls, course: Course, stat: str, model_list: str, language: str, prefix=""):
+    def multiple_subjects(cls, course: Course, stat: str, model_list: str, language: str, prefix="", final=False):
         response = dict(subject=[], values=[])
 
         for index, subject in enumerate(course.subject_names):
@@ -108,29 +106,42 @@ class SubEarningsSection(Section):
                 _object = getattr(course, model_list)[index]
                 method = str(getattr(_object, stat))
                 no_data = translations.term_for_key(key="no_data_available", language=language)
-                values = f"{prefix}{method}" if method else no_data
+                if final:
+                    country = str(getattr(_object, "country"))
+                    values = f'<div class="country_population" style="border-bottom: 5px solid red">{country}</div><div{method}</div>'
+                else:
+                    values = f"{prefix}{method}" if method else no_data
 
             response["subject"].append(subject_name)
             response["values"].append(values)
         return response
 
     @classmethod
-    def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, multiple=False, prefix="") -> str:
+    def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, prefix="", final=False) -> str:
         response = translations.term_for_key(key="no_data_available", language=language)
         try:
-            if multiple and course.has_multiple_subject_names:
+            if course.has_multiple_subject_names:
                 response = cls.multiple_subjects(
                     course=course,
                     stat=stat,
                     model_list=model_list,
                     language=language,
-                    prefix=prefix
+                    prefix=prefix,
+                    final=final
                 )
             else:
                 _object = getattr(course, model_list)[0]
                 method = str(getattr(_object, stat))
-                if method:
-                    response = f"{prefix}{method}" if method.isnumeric() else method
+                response = f"{prefix}{method}" if method else response
+                if final:
+                    country = str(getattr(_object, "country"))
+                    response = render_to_string(
+                        "courses/partials/country_population.html",
+                        context=dict(
+                            country=country,
+                            population=method
+                        )
+                    )
         except Exception as e:
             print("error: ", e)
             pass

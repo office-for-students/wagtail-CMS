@@ -489,7 +489,6 @@ $(window).on('load', function () {
 
     showComparison(function (response, run_js = false) {
         document.getElementById("comparison-body").innerHTML = response;
-        console.log("i should run the js");
         if (run_js) {
             setupView();
             document.dispatchEvent(event);
