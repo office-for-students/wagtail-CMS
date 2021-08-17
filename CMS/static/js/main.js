@@ -1,3 +1,5 @@
+const BookmarkEvent = new Event('bookmarkchanged');
+
 (function ($) {
     $.fn.invisible = function () {
         return this.each(function () {
@@ -105,6 +107,8 @@
             this.btn = $(btn);
             this.setup();
         }
+
+
         //Build Nav Bookmark Button (with bookmark count)
         NavBookMarkBtn.prototype = {
             setup: function () {
@@ -129,8 +133,8 @@
             },
 
             startWatcher: function () {
-                var that = this;
-                this.navBar.on('loadeddata', function () {
+                let that = this;
+                window.document.addEventListener('bookmarkchanged', function (event) {
                     that.loadSelectedCourses();
                 })
             }

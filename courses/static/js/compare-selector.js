@@ -81,6 +81,7 @@
                 } else {
                     that.handleCourseAddition();
                 }
+                window.document.dispatchEvent(BookmarkEvent);
             });
 
             this.compareClose.click(function () {
@@ -146,7 +147,7 @@
                     });
                     localStorage.setItem('bookmarkedCourses', JSON.stringify(this.selectedCourses));
                 }
-                this.navBar.trigger('loadeddata');
+
                 this.courseSelected = true;
                 this.compareCount.text(this.selectedCourses.length);
 
@@ -170,6 +171,7 @@
                 this.compareTooMany.hide();
             }
             this.compareBar.slideDown("slow");
+
         }
     }
 
