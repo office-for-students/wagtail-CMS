@@ -78,7 +78,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
 
             Object.defineProperty(this, 'elementID', {
                 get: function () {
-                   return this.id
+                    return this.id
                 }
             });
 
@@ -243,14 +243,8 @@ function processWithTranslationTerms(saved_institutions, callback) {
         }
 
         let saved_courses = new CourseStorage('bookmarkedCourses',
-            function (items) {
-                let bookmark_el = document.getElementsByClassName('nav-bookmark__count')[0]
-                let total_bookmark = items.length;
-                if (total_bookmark === 0) {
-                    bookmark_el.classList.add("hidden");
-                } else {
-                    bookmark_el.innerHTML = total_bookmark.toString();
-                }
+            function () {
+                window.document.dispatchEvent(BookmarkEvent);
             });
 
         let courses_selected_for_comparison = new ComparisonStorage(

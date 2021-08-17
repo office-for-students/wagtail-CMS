@@ -6,7 +6,7 @@
 
     NavBookMarkBtn.prototype = {
         setup: function() {
-            this.navBar = $('.discover-uni-nav');
+            this.navBar = $('.nav');
             this.loadSelectedCourses();
             this.startWatcher();
         },
@@ -29,7 +29,7 @@
     }
 
     function init() {
-        var bookmarkBtns = $('.nav-bookmark__count');
+        var bookmarkBtns = $('.saved-counter');
         for (var i = 0; i < bookmarkBtns.length; i++) {
             new NavBookMarkBtn(bookmarkBtns[i]);
         }
