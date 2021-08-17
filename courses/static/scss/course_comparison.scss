@@ -75,6 +75,25 @@ $widthOfNarrowArrow: 27px;
   text-decoration: none;
 }
 
+.no_data_container{
+  font-size: 16px;
+
+  .information-text{
+    position: absolute;
+    width: 250px;
+    background-color: #e4e4e4;
+    box-shadow: 2px 5px 5px 2px grey;
+    text-align: left;
+    font-size: 14px;
+    padding: 15px;
+    border-radius: 3px;
+  }
+  .information-icon{
+    height: 20px;
+    margin: 0px 0px 3px 3px;
+  }
+}
+
 $course_comparison_line_height: 51px;
 $course_comparison_font_normal: 14px;
 $course_comparison_show_more: 16px;
@@ -856,6 +875,11 @@ $course_comparison_first_column_width: 250px;
   div.comparison__body, div.course-detail__body {
     margin-left: auto !important;
     margin-right: auto !important;
+  }
+  .no_data_container{
+    .information-text{
+      right: 10px;
+    }
   }
 }
 

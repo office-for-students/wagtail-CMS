@@ -1,3 +1,7 @@
+<script>
+
+</script>
+
 <div class="comparison_row">
     <div class="column-title_container header">
         <div class="column-first {{header_font}}">
@@ -17,11 +21,26 @@
                 {% for value in item.values %}
                      <div class="column-{{index}}{{accordion.title}} item-{{forloop.counter0}}"
                          {% if not forloop.first %}hidden{% endif %}>
-                        {{value}}
+                        {% if value == "no_data" %}
+                            {{ courses_data.0.no_data.0 }}
+                            <img class="information-icon" src="/static/images/information.svg" alt>
+                            <div>{{ courses_data.0.no_data.1 }}</div>
+                        {% else %}
+                            {{value}}
+                        {% endif %}
                      </div>
                 {% endfor %}
             {% else %}
+                {% if item == "no_data" %}
+                    <div class="no_data_container">
+                        {{ courses_data.0.no_data.0 }}
+                        <img class="information-icon" src="/static/images/information.svg" alt>
+                        <div class="information-text hidden">{{ courses_data.0.no_data.1 }}</div>
+                    <script>setListeners()</script>
+                    </div>
+                {% else %}
                 {{ item | safe }}
+                {% endif %}
             {% endif %}
         {% endwith %}
         </div>
