@@ -242,10 +242,21 @@ function processWithTranslationTerms(saved_institutions, callback) {
             }
         }
 
+        function should_enable_how_to(items) {
+            if (!items.length) {
+                document.getElementById("bookmark__none-selected").style.display = "block";
+            } else {
+                document.getElementById("bookmark__none-selected").style.display = "none";
+            }
+        }
+
         let saved_courses = new CourseStorage('bookmarkedCourses',
-            function () {
+            function (items) {
+                should_enable_how_to(items);
                 window.document.dispatchEvent(BookmarkEvent);
             });
+
+        should_enable_how_to(saved_courses.items);
 
         let courses_selected_for_comparison = new ComparisonStorage(
             "CoursesForComparison",
