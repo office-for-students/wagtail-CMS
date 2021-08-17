@@ -114,7 +114,7 @@
 
 
         $(window).scroll(function () { // when the page is scrolled run this
-            if ($(this).scrollTop() >= ($('.course-detail__lead').outerHeight() + $('.discover-uni-nav').outerHeight() + 10 - $('#sticky_nav_course_detail').outerHeight())) {
+            if ($(this).scrollTop() >= ($('.course-detail__lead').outerHeight() + $('.nav').outerHeight() + 10 - $('#sticky_nav_course_detail').outerHeight())) {
                 $('#sticky_nav_course_detail').fadeIn("fast"); // fade in
             } else { // else
                 $('#sticky_nav_course_detail').fadeOut("fast"); // fade out

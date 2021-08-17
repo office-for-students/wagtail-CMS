@@ -8,7 +8,7 @@
 
     CompareSelector.prototype = {
         setup: function () {
-            this.navBar = $('.discover-uni-nav');
+            this.navBar = $('.nav');
             this.button = this.wrapper.find('[class$=compare-btn]');
             this.courseSelected = false;
             this.courseIdentifier = this.wrapper.data().courseidentifier;
@@ -81,6 +81,7 @@
                 } else {
                     that.handleCourseAddition();
                 }
+                window.document.dispatchEvent(BookmarkEvent);
             });
 
             this.compareClose.click(function () {
@@ -146,7 +147,7 @@
                     });
                     localStorage.setItem('bookmarkedCourses', JSON.stringify(this.selectedCourses));
                 }
-                this.navBar.trigger('loadeddata');
+
                 this.courseSelected = true;
                 this.compareCount.text(this.selectedCourses.length);
 
@@ -170,6 +171,7 @@
                 this.compareTooMany.hide();
             }
             this.compareBar.slideDown("slow");
+
         }
     }
 
