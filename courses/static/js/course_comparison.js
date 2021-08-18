@@ -232,6 +232,13 @@ class ComparisonDisplayManager {
                 }
             }
 
+            let lastIndex = storageItems.length - 2
+            console.log(lastIndex, document.getElementsByClassName(`info-box-${lastIndex}`))
+            Array.from(document.getElementsByClassName(`info-box-${lastIndex}`)).forEach(function(el){
+                el.classList.remove("left")
+                el.classList.add("right")
+            })
+
             localStorage.setItem('CoursesForComparison', JSON.stringify(final));
 
             if (final.length === 0) {
@@ -371,18 +378,33 @@ class ComparisonDisplayManager {
 class InfoBoxManager {
 
     setup() {
-        this.setListeners()
+        this.addLeft();
+        this.setListeners();
+    }
+
+    toggleHidden(el) {
+        el.classList.toggle("hidden");
+    }
+
+    addLeft() {
+        Array.from(document.getElementsByClassName("information-text info-box-0")).forEach(function(el){
+            el.classList.add("info-left");
+        })
+
     }
 
     setListeners(){
-        let infoIcon = document.getElementsByClassName("information-icon")
-        let infoText = document.getElementsByClassName("information-text")
+        let infoIcon = document.getElementsByClassName("information-icon");
+        let infoText = document.getElementsByClassName("information-text");
         for(let i=0; i < infoIcon.length; i++){
-            infoIcon[i].addEventListener("mouseover", function(){
-                infoText[i].classList.toggle("hidden")
+            let that = this;
+            let icon = infoIcon[i];
+            let text = infoText[i];
+            icon.addEventListener("mouseover", function(){
+                that.toggleHidden(text);
             })
-            infoIcon[i].addEventListener("mouseout", function(){
-                infoText[i].classList.toggle("hidden")
+            icon.addEventListener("mouseout", function(){
+                that.toggleHidden(text);
             })
         }
     }
