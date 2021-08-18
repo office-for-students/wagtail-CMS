@@ -51,13 +51,13 @@
 
             {% if page.is_english %}
                 <li class="discover-uni-nav__desktop-link">
-                    <a id="language_select" href="{{ welsh_url }}" class="nav-bookmark">
+                    <a id="cy_language_select" href="{{ welsh_url }}" class="nav-bookmark">
                         Cymraeg
                     </a>
                 </li>
             {% else %}
                 <li class="discover-uni-nav__desktop-link">
-                    <a id="language_select" href="{{ english_url }}" class="nav-bookmark">
+                    <a id="en_language_select" href="{{ english_url }}" class="nav-bookmark">
                         English
                     </a>
                 </li>
@@ -87,12 +87,12 @@
     <div class="discover-uni-nav__mobile-links">
         <div class="discover-uni-nav__mobile-language-toggles">
             <a class="discover-uni-nav__mobile-link{% if page.is_english %} active" {% else %}" href="{{ english_url }}"
-                id="language_select"{% endif %}>
+                id="mob_cy_language_select"{% endif %}>
             English
             </a>
 
             <a class="discover-uni-nav__mobile-link{% if not page.is_english %} active" {% else %}" href="
-                {{ welsh_url }}" id="language_select"{% endif %}>
+                {{ welsh_url }}" id="mob_en_language_select"{% endif %}>
             Cymraeg
             </a>
         </div>
