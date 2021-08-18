@@ -77,6 +77,7 @@ $widthOfNarrowArrow: 27px;
 
 .no_data_container{
   font-size: 16px;
+  position: relative;
 
   .information-text{
     position: absolute;
@@ -87,10 +88,17 @@ $widthOfNarrowArrow: 27px;
     font-size: 14px;
     padding: 15px;
     border-radius: 3px;
+    z-index: 9;
   }
   .information-icon{
     height: 20px;
     margin: 0px 0px 3px 3px;
+  }
+  .left{
+    left:0px
+  }
+  .right{
+    right: 0px;
   }
 }
 
@@ -273,7 +281,6 @@ $course_comparison_first_column_width: 250px;
   margin-left: auto;
   background-color: inherit;
   align-items: center;
-  overflow: hidden;
 }
 
 .subject_wrapper {
@@ -878,7 +885,7 @@ $course_comparison_first_column_width: 250px;
   }
   .no_data_container{
     .information-text{
-      right: 10px;
+      width: 130px;
     }
   }
 }

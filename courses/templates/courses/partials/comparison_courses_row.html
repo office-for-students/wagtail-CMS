@@ -16,16 +16,19 @@
     <div class="small-flex-div">
     {% for item in values %}
         <div class="column {{mt}} cc-column-{{forloop.counter0}}">
-        {% with index=forloop.counter0 %}
+        {% with index=forloop.counter0 last=forloop.last %}
             {% if item.values %}
                 {% for value in item.values %}
                      <div class="column-{{index}}{{accordion.title}} item-{{forloop.counter0}}"
                          {% if not forloop.first %}hidden{% endif %}>
-                        {% if value == "no_data" %}
-                            {{ courses_data.0.no_data.0 }}
-                            <img class="information-icon" src="/static/images/information.svg" alt>
-                            <div>{{ courses_data.0.no_data.1 }}</div>
-                        {% else %}
+                         {% if value == "no_data" %}
+                             <div class="no_data_container">
+                                {{ courses_data.0.no_data.0 }}
+                                 <br>
+                                <img class="information-icon" src="/static/images/information.svg" alt>
+                                <div class="information-text hidden info-box-{{index}} {% if last %}right{% else %}left{% endif %}">{{ courses_data.0.no_data.1 }}</div>
+                             </div>
+                         {% else %}
                             {{value}}
                         {% endif %}
                      </div>
@@ -34,12 +37,12 @@
                 {% if item == "no_data" %}
                     <div class="no_data_container">
                         {{ courses_data.0.no_data.0 }}
+                        <br>
                         <img class="information-icon" src="/static/images/information.svg" alt>
-                        <div class="information-text hidden">{{ courses_data.0.no_data.1 }}</div>
-                    <script>setListeners()</script>
+                        <div class="information-text hidden info-box-{{forloop.counter0}} {% if forloop.last %}right{% else %}left{% endif %}">{{ courses_data.0.no_data.1 }}</div>
                     </div>
                 {% else %}
-                {{ item | safe }}
+                    {{ item | safe }}
                 {% endif %}
             {% endif %}
         {% endwith %}
