@@ -40,12 +40,12 @@ class Section:
 
         for index, subject in enumerate(course.subject_names):
             subject_name = subject.display_subject_name()
-            values = translations.term_for_key(key="no_data_available", language=language)
+            values = "no_data"
 
             if index < len(getattr(course, model_list)):
                 _object = getattr(course, model_list)[index]
                 method = str(getattr(_object, stat))
-                values = f"{method}{suffix}" if method else "no_data"
+                values = f"{method}{suffix}" if method else values
 
             response["subject"].append(subject_name)
             response["values"].append(values)
