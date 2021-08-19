@@ -78,6 +78,7 @@ $widthOfNarrowArrow: 27px;
 .no_data_container{
   font-size: 16px;
   position: relative;
+  padding: 5px;
 
   .information-text{
     position: absolute;
@@ -918,6 +919,12 @@ $course_comparison_first_column_width: 250px;
     margin-right: auto !important;
   }
 
+  .no_data_container{
+    .information-text{
+      width: 185px;
+    }
+  }
+
   .comparison__top-container {
     .need-help-box {
       display: block;
@@ -949,6 +956,13 @@ $course_comparison_first_column_width: 250px;
     margin-left: auto !important;
     margin-right: auto !important;
   }
+
+  .no_data_container{
+    .information-text{
+      width: 185px;
+    }
+  }
+
   .course_comparison-table {
     .comparison_row {
       text-align: center;
