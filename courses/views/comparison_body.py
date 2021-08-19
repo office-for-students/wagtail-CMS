@@ -90,5 +90,5 @@ def render_with_language_context(request, template, context, language, status=20
         page={"get_language": language, "compare_heading": translations.term_for_key("can_compare_courses", language)})
 
     context = {**default, **context}
-    print(context)
+
     return render(request, template, context, status=status)
