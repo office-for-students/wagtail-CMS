@@ -332,9 +332,10 @@ $course_comparison_first_column_width: 250px;
       }
 
       .button {
+        display: flex;
         background-color: rgba(239, 204, 75, 0.5);
         margin: 8px 0 8px 0;
-        padding: 8px;
+        padding: 8px 8px 8px 26px;
         border-radius: 3px;
         flex: 1;
         cursor: pointer;
@@ -342,9 +343,17 @@ $course_comparison_first_column_width: 250px;
         &.selected {
           background-color: #efcc4b;
           cursor: default;
+          padding: 8px;
 
           &:before {
-            content: "\2713";
+            content: "";
+            background-image: url(/static/assets/tick.png);
+            background-repeat: no-repeat;
+            height: 17px;
+            width: 12px;
+            background-size: 12px 12px;
+            padding-right: 18px;
+            background-position-y: 5px;
           }
         }
       }
