@@ -1,19 +1,22 @@
-from django.conf import settings
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
-
-from CMS.enums import enums
-from core.utils import get_page_for_language, get_new_landing_page_for_language
-from coursefinder.forms import FilterForm
-from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderPostcode, \
-    CourseFinderSummary
-from coursefinder.models import CourseFinderResults
-from courses.models import CourseComparisonPage, CourseManagePage
-from site_search.models import SearchLandingPage
-from home.models import HomePage
-
-import json
 import os
+
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
+from django.shortcuts import render
+
+from CMS import translations
+from CMS.enums import enums
+from core.utils import get_new_landing_page_for_language
+from core.utils import get_page_for_language
+from coursefinder.forms import FilterForm
+from coursefinder.models import CourseFinderPostcode
+from coursefinder.models import CourseFinderResults
+from coursefinder.models import CourseFinderSearch
+from coursefinder.models import CourseFinderSummary
+from coursefinder.models import CourseFinderUni
+from coursefinder.models import CourseSearch
+from courses.models import CourseComparisonPage
+from courses.models import CourseManagePage
 
 
 def results(request, language=enums.languages.ENGLISH):
@@ -57,7 +60,6 @@ def results(request, language=enums.languages.ENGLISH):
         'english_url': english_url,
         'welsh_url': welsh_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
-        'filter_form': search_form
     })
 
     return render(request, 'coursefinder/course_finder_results.html', context)
@@ -88,7 +90,8 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         countries_query = ','.join(
             query_params.getlist('countries_query')) if 'countries_query' in query_params else None
 
-    institution_query = '@'.join(query_params.getlist('institution_query')) if 'institution_query' in query_params else None
+    institution_query = '@'.join(
+        query_params.getlist('institution_query')) if 'institution_query' in query_params else None
     institution_array = institution_query.split("@") if institution_query else None
 
     postcode = query_params.get('postcode') if 'postcode' in query_params else None
@@ -145,7 +148,14 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         'postcode_query': postcode_query,
         'sort_by_subject_enabled': sort_by_subject_enabled,
         'sort_by_subject_limit': sort_by_subject_limit,
-        'institution_array': institution_array
+        'institution_array': institution_array,
+        'search_info': {
+            'institutions': filter_form.institutions,
+            'number_options_selected': translations.term_for_key('number_options_selected', language),
+            'institution_name': translations.term_for_key('institution_name', language),
+            'select_all_results': translations.term_for_key('select_all_results', language),
+            'select_all_institutions': translations.term_for_key('select_all_institutions', language)
+        }
     })
 
     return render(request, 'coursefinder/course_finder_results.html', context)
