@@ -14,22 +14,33 @@ logger = logging.getLogger(__name__)
 
 
 def show_has_no_bookmarked_courses(request, language):
-    context = dict(institutions_list=InstitutionList.get_options()[utils.get_language(request.get_full_path())])
+    # print("OPTIONS:::  ", InstitutionList.get_options()[utils.get_language(request.get_full_path())])
+    context = dict(
+        institutions_list=InstitutionList.get_options()[language],
+        search_info={
+            'institutions': "",
+            'number_options_selected': translations.term_for_key('number_options_selected', language),
+            'institution_name': translations.term_for_key('institution_name', language),
+            'select_all_results': translations.term_for_key('select_all_results', language),
+            'select_all_institutions': translations.term_for_key('select_all_institutions', language)
+        }
+    )
+
     return render_with_language_context(
-        request,
-        'courses/comparison/has_no_saved_courses.html',
-        context,
-        language,
+        request=request,
+        template='courses/comparison/has_no_saved_courses.html',
+        context=context,
+        language=language,
         status=206
     )
 
 
 def show_not_enough_saved(request, language):
     return render_with_language_context(
-        request,
-        'courses/comparison/has_no_compare_courses.html',
-        {},
-        language,
+        request=request,
+        template='courses/comparison/has_no_compare_courses.html',
+        context={},
+        language=language,
         status=206
     )
 
@@ -77,4 +88,7 @@ def compare_courses_body(request, language=enums.languages.ENGLISH):
 def render_with_language_context(request, template, context, language, status=200):
     default = dict(
         page={"get_language": language, "compare_heading": translations.term_for_key("can_compare_courses", language)})
-    return render(request, template, {**default, **context}, status=status)
+
+    context = {**default, **context}
+
+    return render(request, template, context, status=status)

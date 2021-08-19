@@ -492,7 +492,8 @@ function setupView() {
 
 
 $(window).on('load', function () {
-    const event = new Event('build-accordions');
+    const AccordionsEvent = new Event('build-accordions');
+    const SearchReadyEvent = new Event('searchready')
 
     function generateURLParams() {
         let local_storage = localStorage.getItem("CoursesForComparison");
@@ -535,7 +536,10 @@ $(window).on('load', function () {
         document.getElementById("comparison-body").innerHTML = response;
         if (run_js) {
             setupView();
-            document.dispatchEvent(event);
+            document.dispatchEvent(AccordionsEvent);
+        } else {
+            console.log("dispatching")
+            document.dispatchEvent(SearchReadyEvent);
         }
     });
 });

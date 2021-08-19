@@ -2,6 +2,8 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from django.db.models.fields import TextField
+
+from CMS import translations
 from institutions.models import InstitutionList
 
 from core.models import DiscoverUniBasePage
@@ -63,7 +65,15 @@ class HomePage(DiscoverUniBasePage):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['institutions_list'] = InstitutionList.get_options()[self.get_language()]
+        language = self.get_language()
+        context['institutions_list'] = InstitutionList.get_options()[language]
+        context['search_info'] = {
+            'institutions': "",
+            'number_options_selected': translations.term_for_key('number_options_selected', language),
+            'institution_name': translations.term_for_key('institution_name', language),
+            'select_all_results': translations.term_for_key('select_all_results', language),
+            'select_all_institutions': translations.term_for_key('select_all_institutions', language)
+        }
         return context
 
 

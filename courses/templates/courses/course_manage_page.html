@@ -27,9 +27,9 @@
         <div class="bookmark-header">{% get_translation key='saved_courses' language=page.get_language %}</div>
         <div style="line-height: 20px; background-color: white;">
             <form method="get" action=" {% url 'course_comparison' %}" style="display: inline">
-            <button id="compare-courses-button" class="bookmark-compare-button" type="submit" disabled>
-                {% get_translation key='can_compare_courses' language=page.get_language %}
-            </button>
+                <button id="compare-courses-button" class="bookmark-compare-button" type="submit" disabled>
+                    {% get_translation key='can_compare_courses' language=page.get_language %}
+                </button>
             </form>
             <h4 id="bookmark-text"
                 class="bookmark-text"
@@ -37,7 +37,7 @@
             <h4 id="courses-selected" style="display: inline-block" class="bookmark-text"></h4>
         </div>
 
-        <div class="bookmark__none-selected">
+        <div class="bookmark__none-selected" id="bookmark__none-selected">
             {{ page.none_selected_text | richtext }}
 
             <div class="bookmark__none-selected-example">

@@ -59,7 +59,8 @@
                     <h5>{{ page.box_1_content }}</h5>
                 </div>
                 <div class="col-4 px-4 mt-4">
-                    <img class="mt-2 section-icons mb-4" src="{% static 'images/new.svg' %}" alt="How to pay for university"/>
+                    <img class="mt-2 section-icons mb-4" src="{% static 'images/new.svg' %}"
+                         alt="How to pay for university"/>
                     <h4>{{ page.box_2_title }}</h4>
                     <h5>{{ page.box_2_content }}</h5>
                 </div>
@@ -139,3 +140,9 @@
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function () {
+        document.dispatchEvent(new Event('searchready'));
+    });
+</script>
