@@ -108,7 +108,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             )
         ]
     )
-
+    context["no_data"] = [translations.term_for_key(key="no_data_available", language=language), translations.term_for_key(key="unavailable_data_message", language=language)]
     context["accordions"] = [
         dict(
             title=translations.term_for_key(key="student_satisfaction_course_overview_1", language=language),
@@ -124,7 +124,6 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="read_more_about_satisfaction", language=language)
             )
         ),
-        # TODO: Update with correct data when you get to that ticket
         # dict(
         #     title=translations.term_for_key(key="entry_information", language=language),
         #     guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),

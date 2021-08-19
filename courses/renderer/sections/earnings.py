@@ -100,16 +100,15 @@ class SubEarningsSection(Section):
 
         for index, subject in enumerate(course.subject_names):
             subject_name = subject.display_subject_name()
-            values = translations.term_for_key(key="no_data_available", language=language)
+            values = "no_data"
 
             if index < len(getattr(course, model_list)):
                 _object = getattr(course, model_list)[index]
                 method = str(getattr(_object, stat))
-                no_data = translations.term_for_key(key="no_data_available", language=language)
 
                 if extra == "first":
                     mode = translations.term_for_key(course.mode.label, language=language)
-                    values = f'{mode} {method} {translations.term_for_key("course", language=language)}'
+                    values = f'{mode} {method} {translations.term_for_key("course", language=language)}' if method else values
                 elif extra == "final":
                     country = str(getattr(_object, "country"))
                     values = render_to_string(
@@ -118,9 +117,9 @@ class SubEarningsSection(Section):
                             country=country,
                             population=method
                         )
-                    )
+                    ) if method else values
                 else:
-                    values = f"{prefix}{method}" if method else no_data
+                    values = f"{prefix}{method}" if method else vales
 
             response["subject"].append(subject_name)
             response["values"].append(values)
@@ -128,7 +127,7 @@ class SubEarningsSection(Section):
 
     @classmethod
     def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, prefix="", extra=False) -> str:
-        response = translations.term_for_key(key="no_data_available", language=language)
+        response = "no_data"
         try:
             if course.has_multiple_subject_names:
                 response = cls.multiple_subjects(
@@ -145,7 +144,7 @@ class SubEarningsSection(Section):
                 mode = translations.term_for_key(course.mode.label, language=language)
 
                 if extra == "first":
-                    response = f'{mode} {method} {translations.term_for_key("course", language=language)}'
+                    response = f'{mode} {method} {translations.term_for_key("course", language=language)}' if method else response
                 elif extra == "final":
                     country = str(getattr(_object, "country"))
                     response = render_to_string(
@@ -154,7 +153,7 @@ class SubEarningsSection(Section):
                             country=country,
                             population=method
                         )
-                    )
+                    ) if method else response
                 else:
                     response = f"{prefix}{method}" if method else response
 
