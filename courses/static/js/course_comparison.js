@@ -233,7 +233,6 @@ class ComparisonDisplayManager {
             }
 
             let lastIndex = storageItems.length - 2
-            console.log(lastIndex, document.getElementsByClassName(`info-box-${lastIndex}`))
             Array.from(document.getElementsByClassName(`info-box-${lastIndex}`)).forEach(function(el){
                 el.classList.remove("left")
                 el.classList.add("right")
@@ -377,7 +376,7 @@ class ComparisonDisplayManager {
 
 class InfoBoxManager {
 
-    setup() {
+    constructor() {
         this.addLeft();
         this.setListeners();
     }
@@ -479,7 +478,6 @@ function setupView() {
     let infoBoxManager = new InfoBoxManager();
     courseRatingsManager.setupView();
     multipleSubjectsManager.setup();
-    infoBoxManager.setup();
     courseComparison.setup(arrowManager, function () {
         multipleSubjectsManager.showMultipleSubjects();
     });
