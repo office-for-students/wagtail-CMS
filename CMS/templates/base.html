@@ -28,9 +28,10 @@
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <script type="text/javascript" src="{% get_static_prefix %}js/main.js?{% code_version %}"></script>
+            <script type="text/javascript" src="{% get_static_prefix %}js/search_box.js"></script>
          <script type="text/javascript" src="{% get_static_prefix %}js/load-error-popup.js?{% code_version %}"></script>
          {% block extra_js %}
              {# Override this in templates to add extra javascript #}
