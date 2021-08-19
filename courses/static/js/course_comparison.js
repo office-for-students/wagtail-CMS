@@ -314,7 +314,11 @@ class ComparisonDisplayManager {
         return new_index
     }
 
-    getCourseIndexesToShow(index, number_of_courses) {
+    getCourseIndexesToShow(index, number_of_courses, total_number_of_courses) {
+        if (number_of_courses === total_number_of_courses){
+            index = 0;
+        }
+
         let indexesToShow = [];
         for (let i = index; i < (index + number_of_courses); i++) {
             indexesToShow.push(i)
@@ -352,6 +356,7 @@ class ComparisonDisplayManager {
         let currentIndexes = this.getCourseIndexesToShow(new_index, max_columns, total_number_of_courses)
         this.updateArrows(currentIndexes, max_columns, total_number_of_courses);
         this.displayColumnsWithIndex(columns, currentIndexes);
+        console.log("currentIndexes", currentIndexes, "columns", columns);
         this.currentIndex = new_index;
         this.updateStickyHeader();
         this.onChange();
