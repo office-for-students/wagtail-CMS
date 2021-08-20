@@ -1,3 +1,43 @@
+class ScrollManager {
+    #ticking = false;
+    #listeners = {}
+    lastPosition = 0
+
+    constructor() {
+        const that = this;
+        document.addEventListener('scroll', function (e) {
+            that.lastPosition = window.scrollY > 0 ? window.scrollY : 0;
+
+            if (!that.#ticking) {
+                window.requestAnimationFrame(function () {
+                    that.updateListeners(that.lastPosition);
+                    that.#ticking = false;
+                });
+
+                that.#ticking = true;
+            }
+        });
+    }
+
+    add(object, key) {
+        if (this.#listeners.hasOwnProperty(key)) {
+            throw 'Item for key already added';
+        }
+        this.#listeners[key] = object;
+    }
+
+    remove(key) {
+        if (this.#listeners.hasOwnProperty(key)) {
+            this.#listeners.splice(this.#listeners.indexOf(key), 1);
+        }
+    }
+
+    updateListeners(position) {
+        console.log("Position Changed:: ", position);
+    }
+}
+
+
 class RatingsManager {
 
     valueAndIndexForElement(el) {
@@ -189,28 +229,35 @@ class ComparisonDisplayManager {
     onChange = null;
     currentIndex = 0;
 
-    setup(arrowManager, onchange) {
+    constructor(arrowManager, scrollManager, onchange) {
+        this.scrollManager = scrollManager;
         this.arrowManager = arrowManager;
         this.setEventListeners();
         this.onChange = onchange;
     }
 
     setEventListeners() {
-        const element = this;
+        const that = this;
         this.arrowManager.leftArrow.addEventListener("click", function () {
-            element.moveIndexToDisplayBy(-1);
+            that.moveIndexToDisplayBy(-1);
         });
         this.arrowManager.rightArrow.addEventListener("click", function () {
-            element.moveIndexToDisplayBy(1);
+            that.moveIndexToDisplayBy(1);
         })
 
         const removeCourseButtons = document.querySelectorAll('*[id^="ratings_remove"]');
         Array.from(removeCourseButtons).forEach(function (value) {
             value.addEventListener("click", function (el) {
-                element.removeCourseCompare(el.target)
+                that.removeCourseCompare(el.target)
             })
         });
+        window.addEventListener('resize', function () {
+            that.moveIndexToDisplayBy(0);
+        })
 
+        window.addEventListener('orientationchange', function () {
+            that.moveIndexToDisplayBy(0);
+        })
     }
 
     removeCourseCompare(el) {
@@ -315,7 +362,7 @@ class ComparisonDisplayManager {
     }
 
     getCourseIndexesToShow(index, number_of_courses, total_number_of_courses) {
-        if (number_of_courses === total_number_of_courses){
+        if (number_of_courses === total_number_of_courses) {
             index = 0;
         }
 
@@ -433,22 +480,20 @@ class MultipleSubjectsManager {
     }
 }
 
+
 function setupView() {
+    let scrollManager = new ScrollManager();
     let arrowManager = new ArrowManager();
     arrowManager.removeAllArrows();
-    let courseComparison = new ComparisonDisplayManager();
     let multipleSubjectsManager = new MultipleSubjectsManager();
     let courseRatingsManager = new RatingsManager();
     courseRatingsManager.setupView();
     multipleSubjectsManager.setup();
-    courseComparison.setup(arrowManager, function () {
+    let courseComparison = new ComparisonDisplayManager(arrowManager, scrollManager, function () {
         multipleSubjectsManager.showMultipleSubjects();
     });
-
     courseComparison.moveIndexToDisplayBy(0);
-    $(window).on('resize orientationchange', function () {
-        courseComparison.moveIndexToDisplayBy(0);
-    });
+
 }
 
 
@@ -462,7 +507,7 @@ $(window).on('load', function () {
         if (local_storage) {
             array = JSON.parse(local_storage);
         }
-        list = []
+        let list = []
         array.forEach(function (value, index) {
             list.push(value.id);
         })
@@ -499,7 +544,6 @@ $(window).on('load', function () {
             setupView();
             document.dispatchEvent(AccordionsEvent);
         } else {
-            console.log("dispatching")
             document.dispatchEvent(SearchReadyEvent);
         }
     });
