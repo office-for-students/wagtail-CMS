@@ -1,6 +1,40 @@
+class ScrollListener {
+    lastActionPosition = 0
+    actionAdjustment = 0
+    lastPosition = 0
+    forwardAction = null;
+    reverseAction = null;
+
+    constructor(forwardAction, reverseAction, adjustment) {
+        this.forwardAction = forwardAction;
+        this.reverseAction = reverseAction;
+        this.actionAdjustment = adjustment;
+    }
+
+    updatePosition(position) {
+        if (position > this.lastPosition) {
+            let next_action_point = this.actionAdjustment + this.lastActionPosition
+            let important = next_action_point;
+            if (position >= important) {
+                this.lastActionPosition = position;
+                this.forwardAction();
+            }
+        } else if (position < this.lastPosition) {
+            let next_action_point = this.lastActionPosition - this.actionAdjustment
+            if (position <= next_action_point) {
+                this.lastActionPosition = position;
+                this.reverseAction();
+            }
+        }
+
+        this.lastPosition = position
+    }
+}
+
 class ScrollManager {
-    #ticking = false;
-    #listeners = {}
+    ticking = false;
+    listeners = [];
+    keys = [];
     lastPosition = 0
 
     constructor() {
@@ -8,32 +42,38 @@ class ScrollManager {
         document.addEventListener('scroll', function (e) {
             that.lastPosition = window.scrollY > 0 ? window.scrollY : 0;
 
-            if (!that.#ticking) {
+            if (!that.ticking) {
                 window.requestAnimationFrame(function () {
                     that.updateListeners(that.lastPosition);
-                    that.#ticking = false;
+                    that.ticking = false;
                 });
 
-                that.#ticking = true;
+                that.ticking = true;
             }
         });
     }
 
     add(object, key) {
-        if (this.#listeners.hasOwnProperty(key)) {
+        if (this.keys.hasOwnProperty(key)) {
             throw 'Item for key already added';
         }
-        this.#listeners[key] = object;
+        this.keys.push(key);
+        this.listeners.push(object);
     }
 
     remove(key) {
-        if (this.#listeners.hasOwnProperty(key)) {
-            this.#listeners.splice(this.#listeners.indexOf(key), 1);
+        if (this.keys.hasOwnProperty(key)) {
+            let index = this.keys.indexOf(key)
+            this.keys.splice(index, 1);
+            this.listeners.splice(index, 1);
         }
     }
 
     updateListeners(position) {
-        console.log("Position Changed:: ", position);
+        this.listeners.forEach(function (item) {
+                item.updatePosition(position);
+            }
+        )
     }
 }
 
@@ -403,7 +443,6 @@ class ComparisonDisplayManager {
         let currentIndexes = this.getCourseIndexesToShow(new_index, max_columns, total_number_of_courses)
         this.updateArrows(currentIndexes, max_columns, total_number_of_courses);
         this.displayColumnsWithIndex(columns, currentIndexes);
-        console.log("currentIndexes", currentIndexes, "columns", columns);
         this.currentIndex = new_index;
         this.updateStickyHeader();
         this.onChange();
@@ -483,6 +522,15 @@ class MultipleSubjectsManager {
 
 function setupView() {
     let scrollManager = new ScrollManager();
+    let scrollListener = new ScrollListener(function () {
+            console.log("I am called - forward action");
+        }, function () {
+            console.log("I am called - reverse action");
+        },
+        200
+    );
+
+    scrollManager.add(scrollListener, "header");
     let arrowManager = new ArrowManager();
     arrowManager.removeAllArrows();
     let multipleSubjectsManager = new MultipleSubjectsManager();
@@ -495,7 +543,6 @@ function setupView() {
     courseComparison.moveIndexToDisplayBy(0);
 
 }
-
 
 $(window).on('load', function () {
     const AccordionsEvent = new Event('build-accordions');
