@@ -38,10 +38,10 @@ nav {
     padding-top: 1px;
     justify-content: center;
     align-items: center;
-    width: 16px;
-    height: 16px;
-    bottom: 0.5px;
-    left: 2px;
+    width: 10px;
+    height: 10px;
+    left: 15px;
+    top: 0px;
   }
 
   .nav {
@@ -208,13 +208,6 @@ nav {
 
 @media only screen and (min-width: 576px) {
   nav {
-
-    .saved-counter {
-
-      left: 10px;
-      top: -3px;
-    }
-
     .nav {
 
       &__secondary-menu {
@@ -253,8 +246,9 @@ nav {
           position: relative;
 
           img {
-            height: 22px;
-            width: 22px;
+            height: 17px;
+            width: 17px;
+            margin-right: 5px;
           }
 
           span {
@@ -289,8 +283,9 @@ nav {
     }
 
     .saved-counter {
-      left: 10px;
-      top: -3px;
+      left: 19px;
+      height: 12px;
+      width: 12px;
     }
 
     .nav {
@@ -422,7 +417,7 @@ nav {
 
           img {
             height: 22px;
-            width: 22px;
+            width: 18px;
           }
 
           span {
