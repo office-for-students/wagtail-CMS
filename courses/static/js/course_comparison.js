@@ -539,15 +539,8 @@ class MultipleSubjectsManager {
 
 function setupView() {
     let scrollManager = new ScrollManager();
-    let scrollListener = new ScrollListener(function () {
-            console.log("I am called - forward action");
-        }, function () {
-            console.log("I am called - reverse action");
-        },
-        200
-    );
 
-    scrollManager.add(scrollListener, "header");
+
     let arrowManager = new ArrowManager();
     arrowManager.removeAllArrows();
     let multipleSubjectsManager = new MultipleSubjectsManager();
