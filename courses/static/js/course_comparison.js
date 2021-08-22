@@ -5,28 +5,45 @@ class ScrollListener {
     forwardAction = null;
     reverseAction = null;
 
-    constructor(forwardAction, reverseAction, adjustment) {
+    constructor(forwardAction, reverseAction, adjustment, triggerY=0) {
         this.forwardAction = forwardAction;
         this.reverseAction = reverseAction;
         this.actionAdjustment = adjustment;
+        this.triggerY = triggerY;
+    }
+
+    movingForward(position, lastPosition) {
+        return (position > lastPosition);
+    }
+
+    isTimerForAction(position, adjustment, last_action, forward = true) {
+        if (forward) {
+            const actionPoint = adjustment + last_action
+            return (position >= actionPoint)
+        } else {
+            const actionPoint = last_action - (adjustment);
+            return (position <= actionPoint)
+        }
+    }
+
+    callActionForDirection(position, is_forward) {
+        if (is_forward) {
+            this.forwardAction(position);
+        } else {
+            this.reverseAction(position);
+
+        }
     }
 
     updatePosition(position) {
-        if (position > this.lastPosition) {
-            let next_action_point = this.actionAdjustment + this.lastActionPosition
-            let important = next_action_point;
-            if (position >= important) {
-                this.lastActionPosition = position;
-                this.forwardAction();
-            }
-        } else if (position < this.lastPosition) {
-            let next_action_point = this.lastActionPosition - this.actionAdjustment
-            if (position <= next_action_point) {
-                this.lastActionPosition = position;
-                this.reverseAction();
-            }
+        if (position > this.triggerY){
+            console.log("past the trigger location");
         }
-
+        const isForward = this.movingForward(position, this.lastPosition);
+        if (this.isTimerForAction(position, this.actionAdjustment, this.lastActionPosition, isForward)) {
+            this.callActionForDirection(position, isForward);
+            this.lastActionPosition = position;
+        }
         this.lastPosition = position
     }
 }
@@ -541,7 +558,33 @@ function setupView() {
         multipleSubjectsManager.showMultipleSubjects();
     });
     courseComparison.moveIndexToDisplayBy(0);
+    let animateTime = 192;
+    let scrollListener = new ScrollListener(function (position) {
+            console.log("this forward action is called")
+            let cards = document.getElementById('course-cards-container');
+            const rect = cards.getBoundingClientRect();
 
+            if (rect.y < position) {
+                console.log("y is of the cards is less than the scroll")
+            }
+            // if (rect.y === 0) {
+            cards.classList.add('cards-hide');
+            setTimeout(function () {
+                courseComparison.moveIndexToDisplayBy(0);
+            }, animateTime);
+            // }
+
+        }, function (position) {
+        console.log("reverse action is called");
+            let cards = document.getElementById('course-cards-container');
+            cards.classList.remove('cards-hide');
+            setTimeout(function () {
+                courseComparison.moveIndexToDisplayBy(0);
+            }, animateTime);
+        },
+        150
+    );
+    scrollManager.add(scrollListener, "header");
 }
 
 $(window).on('load', function () {
