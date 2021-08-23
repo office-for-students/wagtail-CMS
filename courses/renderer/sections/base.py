@@ -40,13 +40,12 @@ class Section:
 
         for index, subject in enumerate(course.subject_names):
             subject_name = subject.display_subject_name()
-            values = translations.term_for_key(key="no_data_available", language=language)
+            values = "no_data"
 
             if index < len(getattr(course, model_list)):
                 _object = getattr(course, model_list)[index]
                 method = str(getattr(_object, stat))
-                no_data = translations.term_for_key(key="no_data_available", language=language)
-                values = f"{method}{suffix}" if method.isnumeric() else no_data
+                values = f"{method}{suffix}" if method else values
 
             response["subject"].append(subject_name)
             response["values"].append(values)
@@ -54,7 +53,7 @@ class Section:
 
     @classmethod
     def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, multiple=False, suffix="") -> str:
-        response = translations.term_for_key(key="no_data_available", language=language)
+        response = "no_data"
         try:
             if multiple and course.has_multiple_subject_names:
                 response = cls.multiple_subjects(
@@ -68,7 +67,7 @@ class Section:
                 _object = getattr(course, model_list)[0]
                 method = str(getattr(_object, stat))
                 if method:
-                    response = f"{method}{suffix}" if method.isnumeric() else method
+                    response = f"{method}{suffix}"
         except Exception as e:
             print("error: ", e)
             pass

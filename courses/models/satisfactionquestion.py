@@ -14,5 +14,3 @@ class SatisfactionQuestion:
     def __str__(self):
         if self.show_data_point:
             return str(self.agree_or_strongly_agree)
-        else:
-            return "Data not available"

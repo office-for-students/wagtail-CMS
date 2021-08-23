@@ -338,6 +338,12 @@ class ComparisonDisplayManager {
                 }
             }
 
+            let lastIndex = storageItems.length - 2
+            Array.from(document.getElementsByClassName(`info-box-${lastIndex}`)).forEach(function(el){
+                el.classList.remove("left")
+                el.classList.add("right")
+            })
+
             localStorage.setItem('CoursesForComparison', JSON.stringify(final));
 
             if (final.length === 0) {
@@ -478,6 +484,41 @@ class ComparisonDisplayManager {
 
 }
 
+class InfoBoxManager {
+
+    constructor() {
+        this.addLeft();
+        this.setListeners();
+    }
+
+    toggleHidden(el) {
+        el.classList.toggle("hidden");
+    }
+
+    addLeft() {
+        Array.from(document.getElementsByClassName("information-text info-box-0")).forEach(function(el){
+            el.classList.add("info-left");
+        })
+
+    }
+
+    setListeners(){
+        let infoIcon = document.getElementsByClassName("information-icon");
+        let infoText = document.getElementsByClassName("information-text");
+        for(let i=0; i < infoIcon.length; i++){
+            let that = this;
+            let icon = infoIcon[i];
+            let text = infoText[i];
+            icon.addEventListener("mouseover", function(){
+                that.toggleHidden(text);
+            })
+            icon.addEventListener("mouseout", function(){
+                that.toggleHidden(text);
+            })
+        }
+    }
+}
+
 class MultipleSubjectsManager {
 
     setup() {
@@ -547,6 +588,7 @@ function setupView() {
     arrowManager.removeAllArrows();
     let multipleSubjectsManager = new MultipleSubjectsManager();
     let courseRatingsManager = new RatingsManager();
+    let infoBoxManager = new InfoBoxManager();
     courseRatingsManager.setupView();
     multipleSubjectsManager.setup();
     let courseComparison = new ComparisonDisplayManager(arrowManager, scrollManager, function () {

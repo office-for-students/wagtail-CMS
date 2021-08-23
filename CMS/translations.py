@@ -335,6 +335,10 @@ STATISTICS = {
         'en': "After 5 years",
         'cy': "Ar ôl 5 blynedd"
     },
+    'unavailable_data_message': {
+        'en': "This may be because the course size is too small or not enough students responded to the survey. This does not reflect on the quality of the course.",
+        'cy': "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+    },
 }
 
 OPTIONALS = {
