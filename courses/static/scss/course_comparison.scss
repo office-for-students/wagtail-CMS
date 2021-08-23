@@ -80,12 +80,12 @@ $widthOfNarrowArrow: 27px;
   text-decoration: none;
 }
 
-.no_data_container{
+.no_data_container {
   font-size: 16px;
   position: relative;
   padding: 5px;
 
-  .information-text{
+  .information-text {
     position: absolute;
     width: 250px;
     background-color: #e4e4e4;
@@ -96,14 +96,17 @@ $widthOfNarrowArrow: 27px;
     border-radius: 3px;
     z-index: 9;
   }
-  .information-icon{
+
+  .information-icon {
     height: 20px;
     margin: 0px 0px 3px 3px;
   }
-  .left{
-    left:0px
+
+  .left {
+    left: 0px
   }
-  .right{
+
+  .right {
     right: 0px;
   }
 }
@@ -685,6 +688,7 @@ $course_comparison_first_column_width: 250px;
       -webkit-transition: max-height 0.25s ease-out;
       -moz-transition: max-height 0.25s ease-out;
 
+
       .number_selected {
         color: black;
         margin-bottom: auto;
@@ -907,8 +911,8 @@ $course_comparison_first_column_width: 250px;
     margin-left: auto !important;
     margin-right: auto !important;
   }
-  .no_data_container{
-    .information-text{
+  .no_data_container {
+    .information-text {
       width: 130px;
     }
   }
@@ -942,8 +946,8 @@ $course_comparison_first_column_width: 250px;
     margin-right: auto !important;
   }
 
-  .no_data_container{
-    .information-text{
+  .no_data_container {
+    .information-text {
       width: 185px;
     }
   }
@@ -980,8 +984,8 @@ $course_comparison_first_column_width: 250px;
     margin-right: auto !important;
   }
 
-  .no_data_container{
-    .information-text{
+  .no_data_container {
+    .information-text {
       width: 185px;
     }
   }
