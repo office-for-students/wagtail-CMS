@@ -339,7 +339,7 @@ class ComparisonDisplayManager {
             }
 
             let lastIndex = storageItems.length - 2
-            Array.from(document.getElementsByClassName(`info-box-${lastIndex}`)).forEach(function(el){
+            Array.from(document.getElementsByClassName(`info-box-${lastIndex}`)).forEach(function (el) {
                 el.classList.remove("left")
                 el.classList.add("right")
             })
@@ -473,11 +473,15 @@ class ComparisonDisplayManager {
         this.onChange();
     }
 
-    updateStickyHeader() {
+    updateStickyHeader(force_top = false) {
         const element = document.getElementById("course-cards-container");
         let style = getComputedStyle(element);
         let accordion_header = $(".sticky-accordion-header");
-        accordion_header.css('top', parseInt(style.height) + "px");
+        if (!force_top) {
+            accordion_header.css('top', parseInt(style.height) - 2 + "px");
+        } else {
+            accordion_header.css('top', parseInt(style.paddingTop) - 2 + "px");
+        }
         accordion_header.css('position', "sticky");
         accordion_header.css("z-index", "8");
     }
@@ -496,23 +500,23 @@ class InfoBoxManager {
     }
 
     addLeft() {
-        Array.from(document.getElementsByClassName("information-text info-box-0")).forEach(function(el){
+        Array.from(document.getElementsByClassName("information-text info-box-0")).forEach(function (el) {
             el.classList.add("info-left");
         })
 
     }
 
-    setListeners(){
+    setListeners() {
         let infoIcon = document.getElementsByClassName("information-icon");
         let infoText = document.getElementsByClassName("information-text");
-        for(let i=0; i < infoIcon.length; i++){
+        for (let i = 0; i < infoIcon.length; i++) {
             let that = this;
             let icon = infoIcon[i];
             let text = infoText[i];
-            icon.addEventListener("mouseover", function(){
+            icon.addEventListener("mouseover", function () {
                 that.toggleHidden(text);
             })
-            icon.addEventListener("mouseout", function(){
+            icon.addEventListener("mouseout", function () {
                 that.toggleHidden(text);
             })
         }
@@ -602,15 +606,15 @@ function setupView() {
     let scrollListener = new ScrollListener(function (position) {
             cards.classList.add('cards-hide');
             setTimeout(function () {
-                courseComparison.moveIndexToDisplayBy(0);
+                courseComparison.updateStickyHeader(true);
             }, animateTime);
         }, function (position) {
             cards.classList.remove('cards-hide');
             setTimeout(function () {
-                courseComparison.moveIndexToDisplayBy(0);
+                courseComparison.updateStickyHeader();
             }, animateTime);
         },
-        cardsRect.height * 2,
+        cardsRect.height,
         tabletop
     );
 

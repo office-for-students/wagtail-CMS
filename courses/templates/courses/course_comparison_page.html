@@ -24,15 +24,29 @@
 
 {% block content %}
     <style>
-    @media only screen and (max-width: 766px) {
-        .cards-hide {
-            max-height: 0px !important;
-            overflow: hidden;
-            transition: max-height 0.25s ease-out;
-            -webkit-transition: max-height 0.25s ease-out;
-            -moz-transition: max-height 0.25s ease-out;
+        @media only screen and (max-width: 766px) {
+            .cards-hide {
+                max-height: 0px !important;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                -webkit-transition: max-height 0.3s ease-out;
+                -moz-transition: max-height 0.3s ease-out;
+                animation: fadeOut ease 0.5s;
+                -webkit-animation: fadeOut ease 0.5s;
+                -moz-animation: fadeOut ease 0.5s;
+                -o-animation: fadeOut ease 0.5s;
+                -ms-animation: fadeOut ease 0.5s;
+            }
+
+            @keyframes fadeOut {
+                0% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0.5;
+                }
+            }
         }
-    }
 
     </style>
     <div class="comparison d-sm-block mb-5" id="comparison-body"></div>
