@@ -1,3 +1,102 @@
+class ScrollListener {
+    lastActionPosition = 0
+    actionAdjustment = 0
+    lastPosition = 0
+    forwardAction = null;
+    reverseAction = null;
+
+    constructor(forwardAction, reverseAction, adjustment, triggerElement = null) {
+        this.forwardAction = forwardAction;
+        this.reverseAction = reverseAction;
+        this.actionAdjustment = adjustment;
+        this.triggerY = triggerElement;
+    }
+
+    movingForward(position, lastPosition) {
+        return (position > lastPosition);
+    }
+
+    isTimerForAction(position, adjustment, last_action, forward = true) {
+        if (forward) {
+            const actionPoint = adjustment + last_action
+            return (position >= actionPoint)
+        } else {
+            const actionPoint = last_action - (adjustment);
+            return (position <= actionPoint)
+        }
+    }
+
+    callActionForDirection(position, is_forward) {
+        if (is_forward) {
+            this.forwardAction(position);
+        } else {
+            this.reverseAction(position);
+
+        }
+    }
+
+    updatePosition(position) {
+        const rect = this.triggerY.getBoundingClientRect();
+        if (rect.top <= 0) {
+            const isForward = this.movingForward(position, this.lastPosition);
+            if (this.isTimerForAction(position, this.actionAdjustment, this.lastActionPosition, isForward)) {
+                this.callActionForDirection(position, isForward);
+                this.lastActionPosition = position;
+            }
+        } else {
+            this.reverseAction(position);
+        }
+        this.lastPosition = position
+    }
+}
+
+class ScrollManager {
+    ticking = false;
+    listeners = [];
+    keys = [];
+    lastPosition = 0
+
+    constructor() {
+        const that = this;
+        document.addEventListener('scroll', function (e) {
+            that.lastPosition = window.scrollY > 0 ? window.scrollY : 0;
+
+            if (!that.ticking) {
+                window.requestAnimationFrame(function () {
+                    that.updateListeners(that.lastPosition);
+                    that.ticking = false;
+                });
+
+                that.ticking = true;
+            }
+        });
+    }
+
+    add(object, key) {
+        if (this.keys.hasOwnProperty(key)) {
+            throw 'Item for key already added';
+        }
+        this.keys.push(key);
+        this.listeners.push(object);
+    }
+
+    remove(key) {
+        if (this.keys.hasOwnProperty(key)) {
+            let index = this.keys.indexOf(key)
+            this.keys.splice(index, 1);
+            this.listeners.splice(index, 1);
+        }
+    }
+
+    updateListeners(position) {
+        this.listeners.forEach(function (item) {
+                item.updatePosition(position);
+            }
+        )
+    }
+}
+
+
 class RatingsManager {
 
     valueAndIndexForElement(el) {
@@ -189,28 +288,35 @@ class ComparisonDisplayManager {
     onChange = null;
     currentIndex = 0;
 
-    setup(arrowManager, onchange) {
+    constructor(arrowManager, scrollManager, onchange) {
+        this.scrollManager = scrollManager;
         this.arrowManager = arrowManager;
         this.setEventListeners();
         this.onChange = onchange;
     }
 
     setEventListeners() {
-        const element = this;
+        const that = this;
         this.arrowManager.leftArrow.addEventListener("click", function () {
-            element.moveIndexToDisplayBy(-1);
+            that.moveIndexToDisplayBy(-1);
         });
         this.arrowManager.rightArrow.addEventListener("click", function () {
-            element.moveIndexToDisplayBy(1);
+            that.moveIndexToDisplayBy(1);
         })
 
         const removeCourseButtons = document.querySelectorAll('*[id^="ratings_remove"]');
         Array.from(removeCourseButtons).forEach(function (value) {
             value.addEventListener("click", function (el) {
-                element.removeCourseCompare(el.target)
+                that.removeCourseCompare(el.target)
             })
         });
+        window.addEventListener('resize', function () {
+            that.moveIndexToDisplayBy(0);
+        })
 
+        window.addEventListener('orientationchange', function () {
+            that.moveIndexToDisplayBy(0);
+        })
     }
 
     removeCourseCompare(el) {
@@ -233,7 +339,7 @@ class ComparisonDisplayManager {
             }
 
             let lastIndex = storageItems.length - 2
-            Array.from(document.getElementsByClassName(`info-box-${lastIndex}`)).forEach(function(el){
+            Array.from(document.getElementsByClassName(`info-box-${lastIndex}`)).forEach(function (el) {
                 el.classList.remove("left")
                 el.classList.add("right")
             })
@@ -320,7 +426,11 @@ class ComparisonDisplayManager {
         return new_index
     }
 
-    getCourseIndexesToShow(index, number_of_courses) {
+    getCourseIndexesToShow(index, number_of_courses, total_number_of_courses) {
+        if (number_of_courses === total_number_of_courses) {
+            index = 0;
+        }
+
         let indexesToShow = [];
         for (let i = index; i < (index + number_of_courses); i++) {
             indexesToShow.push(i)
@@ -363,11 +473,15 @@ class ComparisonDisplayManager {
         this.onChange();
     }
 
-    updateStickyHeader() {
+    updateStickyHeader(force_top = false) {
         const element = document.getElementById("course-cards-container");
         let style = getComputedStyle(element);
         let accordion_header = $(".sticky-accordion-header");
-        accordion_header.css('top', parseInt(style.height) + "px");
+        if (!force_top) {
+            accordion_header.css('top', parseInt(style.height) - 2 + "px");
+        } else {
+            accordion_header.css('top', parseInt(style.paddingTop) - 2 + "px");
+        }
         accordion_header.css('position', "sticky");
         accordion_header.css("z-index", "8");
     }
@@ -386,23 +500,23 @@ class InfoBoxManager {
     }
 
     addLeft() {
-        Array.from(document.getElementsByClassName("information-text info-box-0")).forEach(function(el){
+        Array.from(document.getElementsByClassName("information-text info-box-0")).forEach(function (el) {
             el.classList.add("info-left");
         })
 
     }
 
-    setListeners(){
+    setListeners() {
         let infoIcon = document.getElementsByClassName("information-icon");
         let infoText = document.getElementsByClassName("information-text");
-        for(let i=0; i < infoIcon.length; i++){
+        for (let i = 0; i < infoIcon.length; i++) {
             let that = this;
             let icon = infoIcon[i];
             let text = infoText[i];
-            icon.addEventListener("mouseover", function(){
+            icon.addEventListener("mouseover", function () {
                 that.toggleHidden(text);
             })
-            icon.addEventListener("mouseout", function(){
+            icon.addEventListener("mouseout", function () {
                 that.toggleHidden(text);
             })
         }
@@ -469,25 +583,43 @@ class MultipleSubjectsManager {
     }
 }
 
+
 function setupView() {
+    let scrollManager = new ScrollManager();
+
+
     let arrowManager = new ArrowManager();
     arrowManager.removeAllArrows();
-    let courseComparison = new ComparisonDisplayManager();
     let multipleSubjectsManager = new MultipleSubjectsManager();
     let courseRatingsManager = new RatingsManager();
     let infoBoxManager = new InfoBoxManager();
     courseRatingsManager.setupView();
     multipleSubjectsManager.setup();
-    courseComparison.setup(arrowManager, function () {
+    let courseComparison = new ComparisonDisplayManager(arrowManager, scrollManager, function () {
         multipleSubjectsManager.showMultipleSubjects();
     });
-
     courseComparison.moveIndexToDisplayBy(0);
-    $(window).on('resize orientationchange', function () {
-        courseComparison.moveIndexToDisplayBy(0);
-    });
-}
+    let animateTime = 192;
+    let cards = document.getElementById('course-cards-container');
+    const cardsRect = cards.getBoundingClientRect()
+    let tabletop = document.getElementById("ac-1");
+    let scrollListener = new ScrollListener(function (position) {
+            cards.classList.add('cards-hide');
+            setTimeout(function () {
+                courseComparison.updateStickyHeader(true);
+            }, animateTime);
+        }, function (position) {
+            cards.classList.remove('cards-hide');
+            setTimeout(function () {
+                courseComparison.updateStickyHeader();
+            }, animateTime);
+        },
+        cardsRect.height,
+        tabletop
+    );
 
+    scrollManager.add(scrollListener, "header");
+}
 
 $(window).on('load', function () {
     const AccordionsEvent = new Event('build-accordions');
@@ -499,7 +631,7 @@ $(window).on('load', function () {
         if (local_storage) {
             array = JSON.parse(local_storage);
         }
-        list = []
+        let list = []
         array.forEach(function (value, index) {
             list.push(value.id);
         })
@@ -536,7 +668,6 @@ $(window).on('load', function () {
             setupView();
             document.dispatchEvent(AccordionsEvent);
         } else {
-            console.log("dispatching")
             document.dispatchEvent(SearchReadyEvent);
         }
     });

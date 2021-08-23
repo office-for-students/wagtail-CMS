@@ -41,14 +41,14 @@
             {{ page.none_selected_text | richtext }}
 
             <div class="bookmark__none-selected-example">
-                <button class="course-detail__bookmark-compare-btn" type="submit">
+                <button class="course-detail__bookmark-compare-btn" type="submit" style="cursor:default;">
                     <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
                     {% get_translation key='bookmark_course' language=page.get_language %}
                 </button>
 
                 <img class="down-arrow" src="{% static 'images/down-arrow.svg' %}" alt="">
 
-                <button class="course-detail__bookmark-compare-btn selected">
+                <button class="course-detail__bookmark-compare-btn selected" style="cursor:default;">
                     <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
                     {% get_translation key='bookmark_course' language=page.get_language %}
                 </button>
