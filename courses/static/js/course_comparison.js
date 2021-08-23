@@ -311,11 +311,11 @@ class ComparisonDisplayManager {
             })
         });
         window.addEventListener('resize', function () {
-            // that.moveIndexToDisplayBy(0);
+            that.moveIndexToDisplayBy(0);
         })
 
         window.addEventListener('orientationchange', function () {
-            // that.moveIndexToDisplayBy(0);
+            that.moveIndexToDisplayBy(0);
         })
     }
 
