@@ -5,11 +5,11 @@ class ScrollListener {
     forwardAction = null;
     reverseAction = null;
 
-    constructor(forwardAction, reverseAction, adjustment, triggerY=0) {
+    constructor(forwardAction, reverseAction, adjustment, triggerElement = null) {
         this.forwardAction = forwardAction;
         this.reverseAction = reverseAction;
         this.actionAdjustment = adjustment;
-        this.triggerY = triggerY;
+        this.triggerY = triggerElement;
     }
 
     movingForward(position, lastPosition) {
@@ -36,13 +36,15 @@ class ScrollListener {
     }
 
     updatePosition(position) {
-        if (position > this.triggerY){
-            console.log("past the trigger location");
-        }
-        const isForward = this.movingForward(position, this.lastPosition);
-        if (this.isTimerForAction(position, this.actionAdjustment, this.lastActionPosition, isForward)) {
-            this.callActionForDirection(position, isForward);
-            this.lastActionPosition = position;
+        const rect = this.triggerY.getBoundingClientRect();
+        if (rect.top <= 0) {
+            const isForward = this.movingForward(position, this.lastPosition);
+            if (this.isTimerForAction(position, this.actionAdjustment, this.lastActionPosition, isForward)) {
+                this.callActionForDirection(position, isForward);
+                this.lastActionPosition = position;
+            }
+        } else {
+            this.reverseAction(position);
         }
         this.lastPosition = position
     }
@@ -309,11 +311,11 @@ class ComparisonDisplayManager {
             })
         });
         window.addEventListener('resize', function () {
-            that.moveIndexToDisplayBy(0);
+            // that.moveIndexToDisplayBy(0);
         })
 
         window.addEventListener('orientationchange', function () {
-            that.moveIndexToDisplayBy(0);
+            // that.moveIndexToDisplayBy(0);
         })
     }
 
@@ -552,31 +554,24 @@ function setupView() {
     });
     courseComparison.moveIndexToDisplayBy(0);
     let animateTime = 192;
+    let cards = document.getElementById('course-cards-container');
+    const cardsRect = cards.getBoundingClientRect()
+    let tabletop = document.getElementById("ac-1");
     let scrollListener = new ScrollListener(function (position) {
-            console.log("this forward action is called")
-            let cards = document.getElementById('course-cards-container');
-            const rect = cards.getBoundingClientRect();
-
-            if (rect.y < position) {
-                console.log("y is of the cards is less than the scroll")
-            }
-            // if (rect.y === 0) {
             cards.classList.add('cards-hide');
             setTimeout(function () {
                 courseComparison.moveIndexToDisplayBy(0);
             }, animateTime);
-            // }
-
         }, function (position) {
-        console.log("reverse action is called");
-            let cards = document.getElementById('course-cards-container');
             cards.classList.remove('cards-hide');
             setTimeout(function () {
                 courseComparison.moveIndexToDisplayBy(0);
             }, animateTime);
         },
-        150
+        cardsRect.height * 2,
+        tabletop
     );
+
     scrollManager.add(scrollListener, "header");
 }
 

@@ -6,6 +6,11 @@
   outline: none;
 }
 
+//#course-cards-container {
+//  position: fixed;
+//  top: 0px;
+//}
+
 .comparison__xs-rotate {
   // background-color: #1F283A;
   color: #1F283A;
@@ -112,10 +117,11 @@ $course_comparison_first_column_width: 250px;
       margin-bottom: 8px;
       font-size: 20px;
 
-      &:nth-child(4), &:nth-child(6), &:nth-child(7){
+      &:nth-child(4), &:nth-child(6), &:nth-child(7) {
         font-size: 18px;
       }
     }
+
     &-details_background {
       background: $divider-grey;
       margin-bottom: 8px;
@@ -143,7 +149,7 @@ $course_comparison_first_column_width: 250px;
       margin-bottom: 16px;
       font-size: 20px;
 
-      &:nth-child(3), &:nth-child(4){
+      &:nth-child(3), &:nth-child(4) {
         font-size: 14px;
       }
 
@@ -229,21 +235,24 @@ $course_comparison_first_column_width: 250px;
   }
 }
 
-.snippet_container{
+.snippet_container {
   width: 100%;
-  .country{
+
+  .country {
     position: relative;
     width: 100%;
     padding-bottom: 10px;
   }
-  .margin{
+
+  .margin {
     position: absolute;
     bottom: -10px;
     border-bottom: 4px solid white;
     width: 100vw;
     margin-left: -20px;
   }
-  .population{
+
+  .population {
     padding-top: 24px;
   }
 }
@@ -351,6 +360,7 @@ $course_comparison_first_column_width: 250px;
 
   .comparison__body {
     background-color: $white;
+    position: relative;
   }
 
   .comparison__subject-header {
@@ -633,7 +643,11 @@ $course_comparison_first_column_width: 250px;
       background: white;
       padding-top: 10px;
       z-index: 10;
-      top: 0;
+      top: -2px; // for chrome (lame)
+      max-height: 250px;
+      transition: max-height 0.25s ease-out;
+      -webkit-transition: max-height 0.25s ease-out;
+      -moz-transition: max-height 0.25s ease-out;
 
       .number_selected {
         color: black;
@@ -860,6 +874,7 @@ $course_comparison_first_column_width: 250px;
 }
 
 @media only screen and (min-width: 576px) {
+
   .comparison__top-container {
     .need-help-box {
       .image {
@@ -882,7 +897,6 @@ $course_comparison_first_column_width: 250px;
 
 @media only screen and (min-width: 576px) and (max-width: 766px) {
   div.comparison__body, div.course-detail__body {
-    //width: 540px !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
@@ -924,9 +938,9 @@ $course_comparison_first_column_width: 250px;
       margin-bottom: 8px;
     }
 
-    &-grey_background{
-        margin-bottom: 8px;
-      }
+    &-grey_background {
+      margin-bottom: 8px;
+    }
 
     &-header {
       margin-bottom: 16px;
@@ -967,7 +981,15 @@ $course_comparison_first_column_width: 250px;
   }
 }
 
+//@media only screen and (min-width: 767px) {
+//  #course-cards-container {
+//    position: sticky;
+//    top: 0px;
+//  }
+//}
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
+
   div.comparison__body, div.course-detail__body {
     //width: 960px !important;
     margin-left: auto !important;
@@ -1002,19 +1024,21 @@ $course_comparison_first_column_width: 250px;
       margin-bottom: 6px;
       align-items: center;
 
-      &-grey_background{
+      &-grey_background {
         margin-bottom: 6px;
         padding: 0px;
       }
 
       &-earnings {
-      margin-bottom: 8px;
-      font-size: 20px;
-      padding: 8px;
-        &:nth-child(3), &:nth-child(5), &:nth-child(6),{
+        margin-bottom: 8px;
+        font-size: 20px;
+        padding: 8px;
+
+        &:nth-child(3), &:nth-child(5), &:nth-child(6), {
           margin-bottom: 0px;
         }
-        &:nth-child(4), &:nth-child(6), &:nth-child(7){
+
+        &:nth-child(4), &:nth-child(6), &:nth-child(7) {
           font-size: 18px;
         }
       }
@@ -1129,15 +1153,17 @@ $course_comparison_first_column_width: 250px;
       width: 100%
     }
   }
-  .snippet_container{
-    .country{
+  .snippet_container {
+    .country {
       width: 100%;
       padding-bottom: 0px;
     }
-    .margin{
+
+    .margin {
       display: none;
     }
-    .population{
+
+    .population {
       padding-top: 10px;
     }
   }
@@ -1189,15 +1215,17 @@ $course_comparison_first_column_width: 250px;
     }
   }
 
-  .snippet_container{
-    .country{
+  .snippet_container {
+    .country {
       width: 100%;
       padding-bottom: 0px;
     }
-    .margin{
+
+    .margin {
       display: none;
     }
-    .population{
+
+    .population {
       padding-top: 10px;
     }
   }
@@ -1209,19 +1237,21 @@ $course_comparison_first_column_width: 250px;
       color: black;
       align-items: center;
 
-      &-grey_background{
+      &-grey_background {
         margin-bottom: 6px;
         padding: 0px;
       }
 
       &-earnings {
-      margin-bottom: 8px;
-      font-size: 20px;
-      padding: 8px;
-        &:nth-child(3), &:nth-child(5), &:nth-child(6),{
+        margin-bottom: 8px;
+        font-size: 20px;
+        padding: 8px;
+
+        &:nth-child(3), &:nth-child(5), &:nth-child(6), {
           margin-bottom: 0px;
         }
-        &:nth-child(4), &:nth-child(6), &:nth-child(7){
+
+        &:nth-child(4), &:nth-child(6), &:nth-child(7) {
           font-size: 18px;
         }
       }
@@ -1321,4 +1351,5 @@ $course_comparison_first_column_width: 250px;
     padding-top: 20px;
   }
 }
+
 
