@@ -23,7 +23,8 @@
                 </span>
 
                 <input class="course-finder-content__question-input"
-                       id="uni" type="radio" name="radioGroup" value="uni" aria-label="specific uni checkbox">
+                       id="uni" type="radio" name="radioGroup" value="uni"
+                       aria-label="{% get_translation key='specific_uni' language=page.get_language %}">
 
                 <span class="radiobox"></span>
             </label>
@@ -34,7 +35,8 @@
                 </span>
 
                 <input class="course-finder-content__question-input"
-                       id="home" type="radio" name="radioGroup" value="home" aria-label="near home checkbox">
+                       id="home" type="radio" name="radioGroup" value="home"
+                       aria-label="{% get_translation key='near_your_home' language=page.get_language %}?">
 
                 <span class="radiobox"></span>
             </label>
@@ -45,7 +47,8 @@
                 </span>
 
                 <input class="course-finder-content__question-input"
-                       id="all" type="radio" name="radioGroup" value="all" aria-label="dont narrow checkbox">
+                       id="all" type="radio" name="radioGroup" value="all"
+                       aria-label="{% get_translation key='dont_narrow' language=page.get_language %}">
                 <span class="radiobox"></span>
             </label>
         </fieldset>

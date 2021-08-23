@@ -11,12 +11,12 @@
             <div class="search_form-fields">
                 <div class="search-landing-page__search-input">
 
-                    <div class="input-group mb-3" role="group" aria-label="search form inputs">
+                    <div class="input-group mb-3" role="group" aria-label="{% get_translation key='course_name_search_box' language=page.get_language %}">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-search"></i></span>
                         </div>
                         <input class="form-control" name="course_query" type="text" id="course"
-                               aria-label="{% get_translation key='course_name' language=page.get_language %} search box"
+                               aria-label="{% get_translation key='course_name_search_box' language=page.get_language %}"
                                placeholder="{% get_translation key='course_name' language=page.get_language %}"
                                autocomplete="off">
                     </div>

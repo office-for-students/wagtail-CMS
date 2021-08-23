@@ -1,24 +1,28 @@
 {% load discover_uni_tags %}
 
 <div class="subject-picker">
-    <div class="course-finder-content__question-selector" aria-label="Subject area">
-        <select id="subjectArea" aria-label="Subject area">
+    <div class="course-finder-content__question-selector"
+         aria-label="{% get_translation key='subject_area' language=page.get_language %}">
+        <select id="subjectArea" aria-label="{% get_translation key='subject_area' language=page.get_language %}">
             <option value="disabled" disabled selected>
                 {% get_translation key='subject_area' language=page.get_language %}
             </option>
         </select>
     </div>
 
-    <div class="course-finder-content__question-selector" aria-label="Subject selector">
-        <select id="subject" aria-label="Subject selector">
+    <div class="course-finder-content__question-selector"
+         aria-label="{% get_translation key='subject' language=page.get_language %}">
+        <select id="subject" aria-label="{% get_translation key='subject' language=page.get_language %}">
             <option value="disabled" disabled selected>
                 {% get_translation key='subject' language=page.get_language %}
             </option>
         </select>
     </div>
 
-    <div class="course-finder-content__question-selector" aria-label="Subject code">
-        <select id="subjectCode" class="hidden" aria-label="Subject code">
+    <div class="course-finder-content__question-selector"
+         aria-label="{% get_translation key='show_all' language=page.get_language %}">
+        <select id="subjectCode" class="hidden"
+                aria-label="{% get_translation key='show_all' language=page.get_language %}">
             <option data-code="default" selected>
                 {% get_translation key='show_all' language=page.get_language %}
             </option>
