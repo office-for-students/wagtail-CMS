@@ -222,6 +222,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
             this.courseLocationSpan = this.container.querySelector('.bookmark__course-info.location .location');
             this.removeBtn = this.container.querySelector('.bookmark__course-remove');
             this.checkbox = this.container.querySelector('.bookmark-check')
+            this.label = this.container.querySelector('.bookmark_label')
             this.update = function () {
                 this.checkbox.checked = this.checked;
                 this.courseNameSpan.text = this.course.name;
@@ -349,12 +350,16 @@ function processWithTranslationTerms(saved_institutions, callback) {
         function addCourseViews(courses, template) {
             const container = document.getElementById("institution-bookmark");
             courses.forEach(function (course) {
+                const query = course.query;
                 const courseTemplate = template.cloneNode(true);
                 courseTemplate.id = course.elementID;
                 container.appendChild(courseTemplate);
                 const el = document.getElementById(course.elementID);
                 let checkbox = el.querySelector('.bookmark-check');
-                checkbox.value = course.query;
+                let label = el.querySelector('.bookmark_label');
+                checkbox.value = query;
+                checkbox.id = query
+                label.htmlFor = query
                 checkbox.addEventListener("change", comparisonHandler);
                 let removeButton = el.querySelector('.bookmark__course-remove');
                 removeButton.addEventListener('click', removeCourseHandler);
@@ -371,8 +376,6 @@ function processWithTranslationTerms(saved_institutions, callback) {
             const empty = document.getElementById("placeholder");
             container.removeChild(empty);
         }
-
-
     }
     (jQuery)
 )

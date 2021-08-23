@@ -201,6 +201,33 @@
   margin-top: 40px;
 }
 
+input[type=checkbox] {
+  display:none;
+}
+
+input[type=checkbox] + label {
+  display:inline-block;
+  padding: 0 0 0 0px;
+  background:url("/static/assets/empty_check.png") no-repeat;
+  height: 64px;
+  width: 64px;;
+  background-size: 50%;
+  margin-bottom: auto;
+  margin-top: 35px;
+  margin-right: 63px;
+}
+
+input[type=checkbox]:checked + label {
+  background:url("/static/assets/checked.png") no-repeat;
+  height: 64px;
+  width: 64px;
+  display:inline-block;
+  background-size: 50%;
+  margin-bottom: auto;
+  margin-top: 35px;
+  margin-right: 63px;
+}
+
 @media only screen and (min-width: 575px) {
   .bookmark-check {
     margin-right: 95px;
@@ -211,6 +238,9 @@
   div.bookmark.discover-uni-container {
     margin-left: auto !important;
     margin-right: auto !important;
+  }
+  input[type=checkbox] + label, input[type=checkbox]:checked + label {
+    margin-right: 10px;
   }
 }
 
