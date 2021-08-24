@@ -30,10 +30,9 @@ class DiscoverUniBasePage(Page):
         return self.get_language() == enums.languages.ENGLISH
 
     def url_for_language(self):
-        if self.is_english():
-            return get_page_for_language(enums.languages.WELSH, self.__class__.objects.all()).url
-        else:
-            return get_page_for_language(enums.languages.ENGLISH, self.__class__.objects.all()).url
+        language = enums.languages.WELSH if self.is_english() else enums.languages.ENGLISH
+        return self.translated_page.url if self.translated_page else get_page_for_language(language,
+                                                                                           self.__class__.objects.all()).url
 
     class Meta:
         abstract = True
