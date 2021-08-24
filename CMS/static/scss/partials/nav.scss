@@ -106,14 +106,14 @@ nav {
       list-style: none;
       padding: 0;
       margin-bottom: 0;
+      z-index: 99;
     }
 
     &__primary-link {
       @include top-level-mobile-item();
       color: $white;
       font-weight: bold;
-
-
+      z-index: 99;
     }
 
     &__link-title {
