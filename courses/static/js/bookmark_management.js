@@ -349,6 +349,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
 
         function addCourseViews(courses, template) {
             const container = document.getElementById("institution-bookmark");
+            container.hidden = false;
             courses.forEach(function (course) {
                 const query = course.query;
                 const courseTemplate = template.cloneNode(true);
