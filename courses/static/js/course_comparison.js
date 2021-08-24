@@ -587,6 +587,10 @@ class MultipleSubjectsManager {
 function setupView() {
     let scrollManager = new ScrollManager();
 
+    function areCardsOnDisplay(cards){
+        let style = getComputedStyle(cards).display;
+        return true ? style == "block" : false
+    }
 
     let arrowManager = new ArrowManager();
     arrowManager.removeAllArrows();
@@ -606,7 +610,7 @@ function setupView() {
     let scrollListener = new ScrollListener(function (position) {
             cards.classList.add('cards-hide');
             setTimeout(function () {
-                courseComparison.updateStickyHeader(true);
+                courseComparison.updateStickyHeader(areCardsOnDisplay(cards));
             }, animateTime);
         }, function (position) {
             cards.classList.remove('cards-hide');
