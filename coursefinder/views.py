@@ -126,8 +126,10 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
     bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
 
-    welsh_url = '/cy' + request.path if language == enums.languages.ENGLISH else request.path
-    english_url = request.path.replace('/cy/', '/')
+    if language == enums.languages.ENGLISH:
+        translated_url = '/cy' + request.path if language == enums.languages.ENGLISH else request.path
+    else:
+        translated_url = request.path.replace('/cy/', '/')
 
     if not page:
         return render(request, '404.html')
@@ -140,8 +142,7 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         'pagination_url': 'course_finder_results',
         'comparison_link': comparison_page.url if comparison_page else '#',
         'manage_link': bookmark_page.url if bookmark_page else '#',
-        'english_url': english_url,
-        'welsh_url': welsh_url,
+        'translated_url': translated_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
         'filter_form': filter_form,
         'filters': filters,
