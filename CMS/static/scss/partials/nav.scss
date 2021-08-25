@@ -40,7 +40,7 @@ nav {
     align-items: center;
     width: 10px;
     height: 10px;
-    left: 15px;
+    left: 12px;
     top: 0;
   }
 
@@ -212,6 +212,10 @@ nav {
 
       &__secondary-menu {
         display: none;
+      }
+
+      .saved-counter{
+        left: 15px;
       }
 
       &__tablet-menu {
@@ -395,6 +399,8 @@ nav {
         border-radius: 40px 40px 40px 40px;
         border-bottom: unset;
         width: unset;
+        flex-grow: 0;
+        flex-shrink: 0;
       }
 
       &__secondary-link {
