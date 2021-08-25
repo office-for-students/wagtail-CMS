@@ -956,7 +956,7 @@ $course_comparison_first_column_width: 250px;
   }
 
   .comparison .course-detail__course-container {
-    display: block;
+    display: flex;
 
     .cards {
       .slider {
@@ -1007,7 +1007,7 @@ $course_comparison_first_column_width: 250px;
   }
 
   .comparison .course-detail__course-container {
-    display: block;
+    display: flex;
   }
   .comparison .course-detail__course-container {
     .number_selected {
