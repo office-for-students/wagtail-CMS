@@ -448,6 +448,7 @@ $course_comparison_first_column_width: 250px;
         font-family: "Nunito Sans", sans-serif;
         font-size: 16px;
         font-weight: bold;
+        line-height: 16px;
 
         .plus {
           font-size: 20px;
@@ -1204,6 +1205,7 @@ $course_comparison_first_column_width: 250px;
       min-width: 0;
       max-width: 186px;
       margin-right: 4px;
+      max-height: 218px;
     }
 
     .container {
@@ -1377,6 +1379,7 @@ $course_comparison_first_column_width: 250px;
       min-width: 0;
       max-width: 250px;
       margin-right: 8px;
+      max-height: 170px;
     }
 
     .container {
