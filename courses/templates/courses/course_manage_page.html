@@ -2,89 +2,122 @@
 {% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
 
 {% block extra_css %}
-    <link href="{% sass_src 'scss/manage_bookmarks.scss' %}?{% code_version %}" rel="stylesheet" type="text/css" >
+    <link href="{% sass_src 'scss/manage_bookmarks.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block extra_js %}
-    <script type="text/javascript" src="{% static 'js/manage-bookmarks.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/button-visibility.js' %}?{% code_version %}"></script>
 {% endblock %}
 
 {% block content %}
-    <div class="bookmark discover-uni-container">
-        <div class="bookmark__overview">
-            <h1 class="bookmark__course-count">
-                <span class="count"></span> {{page.heading}}
-            </h1>
 
-            <p class="bookmark__lead">
-                {{page.lead}}
-            </p>
+    <style>
+        .bookmark-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <div class="discover-uni-container"
+         style="padding: 30px 0px 20px 35px; position: sticky; top:0;background-color: white;">
+        <div class="bookmark-header">{% get_translation key='saved_courses' language=page.get_language %}</div>
+        <div style="line-height: 20px; background-color: white;">
+            <form method="get" action="/{% get_translation key='course_comparison_link' language=page.get_language %}" style="display: inline">
+                <button id="compare-courses-button" class="bookmark-compare-button" type="submit" disabled>
+                    {% get_translation key='can_compare_courses' language=page.get_language %}
+                </button>
+            </form>
+            <h4 id="bookmark-text"
+                class="bookmark-text"
+                style="display: inline-block; margin-right: 20px">{% get_translation key='select_at_least_2' language=page.get_language %}</h4>
+            <h4 id="courses-selected" style="display: inline-block" class="bookmark-text"></h4>
         </div>
-        <div class="bookmark__nav-box">
-            <!--{{page.save_text | richtext}}-->
 
-            {{page.compare_text | richtext}}
-        </div>
-
-        <div class="bookmark__none-selected">
-            {{page.none_selected_text | richtext}}
+        <div class="bookmark__none-selected" id="bookmark__none-selected">
+            {{ page.none_selected_text | richtext }}
 
             <div class="bookmark__none-selected-example">
-                <button class="course-detail__compare-btn">
+                <button class="course-detail__bookmark-compare-btn" type="submit" style="cursor:default;">
                     <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
-                     {% get_translation key='bookmark_course' language=page.get_language %}
+                    {% get_translation key='bookmark_course' language=page.get_language %}
                 </button>
 
                 <img class="down-arrow" src="{% static 'images/down-arrow.svg' %}" alt="">
 
-                <button class="course-detail__compare-btn selected">
+                <button class="course-detail__bookmark-compare-btn selected" style="cursor:default;">
                     <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
-                     {% get_translation key='bookmark_course' language=page.get_language %}
+                    {% get_translation key='bookmark_course' language=page.get_language %}
                 </button>
             </div>
         </div>
 
         <div class="bookmark__one-selected">
-            {{page.one_selected_text | richtext}}
-        </div>
-
-        <div class="bookmark__courses">
-            {% for i in 10|times %}
-                <div id="course-{{i}}" class="bookmark__course">
-                    <a href="" class="bookmark__course-name">
-                    </a>
-
-                    <p class="bookmark__course-info length">
-                        <span class="unknown">{% get_translation key='course_length_not_available' language=page.get_language %}</span>
-                        <span class="known"><span class="length"></span>-{% get_translation key='year_course' language=page.get_language %}</span>
-                    </p>
-
-                    <p class="bookmark__course-info mode">
-                        {% get_translation key='study_mode' language=page.get_language %}: <span class="mode"></span>
-                    </p>
-
-                    <p class="bookmark__course-info distance">
-                        {% get_translation key='distance_learning' language=page.get_language %}: <span class="distance"></span>
-                    </p>
-
-                    <p class="bookmark__course-info sandwich">
-                        {% get_translation key='work_placement_year' language=page.get_language %}: <span class="sandwich"></span>
-                    </p>
-
-                    <p class="bookmark__course-info abroad">
-                        {% get_translation key='year_abroad' language=page.get_language %}: <span class="abroad"></span>
-                    </p>
-
-                    <p class="bookmark__course-info location">
-                        {% get_translation key='location' language=page.get_language %}: <span class="location"></span>
-                    </p>
-
-                    <button class="bookmark__course-remove">
-                        <img class="bookmark__course-remove-icon" src="{% static 'images/bin.svg' %}" alt=""> {% get_translation key='remove_course' language=page.get_language %}
-                    </button>
-                </div>
-            {% endfor %}
+            {{ page.one_selected_text | richtext }}
         </div>
     </div>
+    <div class="discover-uni-container">
+        <form id="compareForm" class="bookmark" method="GET"
+              action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
+            <div class="bookmark__courses" id="institution-bookmark" hidden>
+                <div class="bookmark-container" id="placeholder">
+                    <input class="bookmark-check"
+                           name="courses"
+                           type="checkbox">
+                    <label class="bookmark_label"></label>
+                    <div class='bookmark__course'>
+                        <a href='' class='bookmark__course-name'></a>
+                        <p class="bookmark__course-info length">
+
+                        </p>
+                        <p class="bookmark__course-info mode">
+                            {% get_translation key='study_mode' language=page.get_language %}: <span
+                                class="mode"></span>
+                        </p>
+
+                        <p class="bookmark__course-info distance">
+                            {% get_translation key='distance_learning' language=page.get_language %}: <span
+                                class="distance"></span>
+                        </p>
+
+                        <p class="bookmark__course-info sandwich">
+                            {% get_translation key='work_placement_year' language=page.get_language %}: <span
+                                class="sandwich"></span>
+                        </p>
+
+                        <p class="bookmark__course-info abroad">
+                            {% get_translation key='year_abroad' language=page.get_language %}: <span
+                                class="abroad"></span>
+                        </p>
+
+                        <p class="bookmark__course-info location">
+                            {% get_translation key='location' language=page.get_language %}: <span
+                                class="location"></span>
+                        </p>
+
+                        <button type="button" class="bookmark__course-remove">
+                            <img class="bookmark__course-remove-icon" src="{% static 'images/bin.svg' %}"
+                                 alt=""> {% get_translation key='remove_course' language=page.get_language %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% csrf_token %}
+        </form>
+    </div>
+    <script>
+        {#Reload the page on back #}
+        window.addEventListener("pageshow", function (event) {
+            var historyTraversal = event.persisted ||
+                (typeof window.performance != "undefined" &&
+                    window.performance.navigation.type === 2);
+            if (historyTraversal) {
+                window.location.reload();
+            }
+        });
+    </script>
+    <script type="text/javascript" src="{% static 'js/bookmark_management.js' %}?{% code_version %}"></script>
 {% endblock %}

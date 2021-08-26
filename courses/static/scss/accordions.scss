@@ -1,0 +1,44 @@
+//Accordion CSS
+.accordion-header {
+  background: #f2f2f2;
+  cursor: pointer;
+  margin-bottom: 8px;
+
+  &:focus, &:active {
+    outline: none;
+  }
+}
+
+.green {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(145.9deg, #4EA27D 13.02%, #308282 85.42%);
+  color: #FFFFFF;
+  border: 3px solid transparent;
+
+  .title {
+    color: white;
+  }
+}
+
+.accordion-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.accordion-padding {
+  padding: 9px 12px 9px 12px;
+}
+
+@media only screen and (min-width: 780px) {
+  .accordion-padding {
+    padding: 29px 40px 29px 29px;
+  }
+  .accordion-title {
+    font-size: 20px;
+  }
+}
+
+
+//#Accordion CSS END

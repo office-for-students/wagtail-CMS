@@ -1,24 +1,28 @@
-from django.conf import settings
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
-
-from CMS.enums import enums
-from core.utils import get_page_for_language, get_new_landing_page_for_language
-from coursefinder.forms import FilterForm
-from coursefinder.models import CourseSearch, CourseFinderSearch, CourseFinderUni, CourseFinderPostcode, \
-    CourseFinderSummary
-from coursefinder.models import CourseFinderResults
-from courses.models import CourseComparisonPage, CourseManagePage
-from site_search.models import SearchLandingPage
-from home.models import HomePage
-
-import json
 import os
+
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
+from django.shortcuts import render
+
+from CMS import translations
+from CMS.enums import enums
+from core.utils import get_new_landing_page_for_language
+from core.utils import get_page_for_language
+from coursefinder.forms import FilterForm
+from coursefinder.models import CourseFinderPostcode
+from coursefinder.models import CourseFinderResults
+from coursefinder.models import CourseFinderSearch
+from coursefinder.models import CourseFinderSummary
+from coursefinder.models import CourseFinderUni
+from coursefinder.models import CourseSearch
+from courses.models import CourseComparisonPage
+from courses.models import CourseManagePage
+
 
 def results(request, language=enums.languages.ENGLISH):
     query_params = request.POST
     search_form = FilterForm({
-        "course_query" : query_params.get('subject_query', ""),
+        "course_query": query_params.get('subject_query', ""),
         "institution_query": query_params.get('institution_query', ""),
     })
 
@@ -31,7 +35,7 @@ def results(request, language=enums.languages.ENGLISH):
 
     if error:
         redirect_page = get_new_landing_page_for_language(language)
-        #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        # redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
         return redirect(redirect_page + '?load_error=true&error_type=1')
 
     page = get_page_for_language(language, CourseFinderResults.objects.all())
@@ -56,7 +60,6 @@ def results(request, language=enums.languages.ENGLISH):
         'english_url': english_url,
         'welsh_url': welsh_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
-        'filter_form': search_form
     })
 
     return render(request, 'coursefinder/course_finder_results.html', context)
@@ -76,19 +79,21 @@ def narrow_search(request, language=enums.languages.ENGLISH):
         return HttpResponseRedirect(page.url)
     return render(request, '404.html')
 
-    
+
 def course_finder_results(request, language=enums.languages.ENGLISH):
     query_params = request.POST
     filter_form = FilterForm(query_params)
     filters = build_filters(query_params)
     if "distance" in filters and "campus" not in filters:
         countries_query = ''
-    else: 
-        countries_query = ','.join(query_params.getlist('countries_query')) if 'countries_query' in query_params else None
+    else:
+        countries_query = ','.join(
+            query_params.getlist('countries_query')) if 'countries_query' in query_params else None
 
-    institution_query = '@'.join(query_params.getlist('institution_query')) if 'institution_query' in query_params else None
+    institution_query = '@'.join(
+        query_params.getlist('institution_query')) if 'institution_query' in query_params else None
     institution_array = institution_query.split("@") if institution_query else None
-    
+
     postcode = query_params.get('postcode') if 'postcode' in query_params else None
     distance_query = query_params.get('distance') if 'distance' in query_params else None
     postcode_query = (postcode + ',' + distance_query) if postcode and distance_query else {}
@@ -112,7 +117,7 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
 
     if error:
         redirect_page = get_new_landing_page_for_language(language)
-        #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        # redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
 
         return redirect(redirect_page + '?load_error=true&error_type=1')
 
@@ -121,8 +126,10 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
     bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
 
-    welsh_url = '/cy' + request.path if language == enums.languages.ENGLISH else request.path
-    english_url = request.path.replace('/cy/', '/')
+    if language == enums.languages.ENGLISH:
+        translated_url = '/cy' + request.path if language == enums.languages.ENGLISH else request.path
+    else:
+        translated_url = request.path.replace('/cy/', '/')
 
     if not page:
         return render(request, '404.html')
@@ -135,15 +142,21 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         'pagination_url': 'course_finder_results',
         'comparison_link': comparison_page.url if comparison_page else '#',
         'manage_link': bookmark_page.url if bookmark_page else '#',
-        'english_url': english_url,
-        'welsh_url': welsh_url,
+        'translated_url': translated_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
         'filter_form': filter_form,
         'filters': filters,
         'postcode_query': postcode_query,
         'sort_by_subject_enabled': sort_by_subject_enabled,
         'sort_by_subject_limit': sort_by_subject_limit,
-        'institution_array': institution_array
+        'institution_array': institution_array,
+        'search_info': {
+            'institutions': filter_form.institutions,
+            'number_options_selected': translations.term_for_key('number_options_selected', language),
+            'institution_name': translations.term_for_key('institution_name', language),
+            'select_all_results': translations.term_for_key('select_all_results', language),
+            'select_all_institutions': translations.term_for_key('select_all_institutions', language)
+        }
     })
 
     return render(request, 'coursefinder/course_finder_results.html', context)
@@ -190,4 +203,3 @@ def build_filters(params):
 
     filters_query_params = ','.join(filter_ for filter_ in filters if filter_)
     return filters_query_params
-        
