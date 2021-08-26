@@ -188,7 +188,6 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         ),
         dict(
             title=translations.term_for_key(key="information_on_uni", language=language),
-            guidance_information=(),
             dataset=get_details(InformationSection, courses, language)
         ),
     ]
