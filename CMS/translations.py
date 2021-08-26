@@ -283,9 +283,9 @@ DICT = {
         'en': 'Course name',
         'cy': "Enw'r cwrs"
     },
-    'course_name_saerch_box': {
+    'course_name_search_box': {
         'en': 'Course name search box',
-        'cy': "Blwch chwilio enw'r cwrs"
+        'cy': "Blwch chwilio enw’r cwrs"
     },
     'course_page': {
         'en': 'Course page',
@@ -301,7 +301,7 @@ DICT = {
     },
     'course_search_form_inputs': {
         'en': 'Course search form inputs',
-        'cy': 'Mewnbynnau ffurflen chwilio cwrs'
+        'cy': 'Mewnbynnau ffurflen chwilio am gwrs'
     },
     'course_too_many': {
         'en': 'is the maximum number of bookmarks.',
