@@ -27,7 +27,7 @@ STATISTICS = {
     "earnings_after_the_course": dict_for_key("Earnings after the course", "Enillion ar ôl y cwrs"),
     "employment_15_months": dict_for_key("Employment 15 months after the course", "Cyflogaeth 15 mis ar ôl y cwrs"),
     "graduate_perceptions": dict_for_key("Graduate perceptions", "Canfyddiadau graddedigion"),
-    "information_on_uni": dict_for_key("information on the uni website", "Gwybodaeth ar wefan y prifysgol"),
+    "information_on_uni": dict_for_key("Information on the uni website", "Gwybodaeth ar wefan y prifysgol"),
     'overall_satisfied': {
         'en': 'Overall I am satisfied with the quality of the course',
         'cy': 'Rwy’n fodlon ag ansawdd y cwrs ar y cyfan'
