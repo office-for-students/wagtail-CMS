@@ -20,6 +20,7 @@
 </script>
 
 <div class="course-finder-results__result-accordion-body-content comparison-course-area mb-4"
+     data-courseidentifier="{{institution_id}}/{{course.kis_course_id}}/{{course.mode}}"
      data-coursename="{{course_name}}" data-courseid="{{course.kis_course_id}}"
      data-uniname="{{ institution.pub_ukprn_name }}" data-uniid="{{institution_id}}"
      data-locations="{{locations}}" data-length="{{ course.length_of_course|slice:1 }}"
@@ -37,15 +38,15 @@
      </div>
 
 
-  
+
     {% if sort_by_subject_enabled == 'true' %}
         <a href="{% if page.is_welsh %}/cy{% endif %}/course-details/{{institution_id}}/{{item.kis_course_id}}/{{item.mode}}"
         class="course-finder-results__result-accordion-body-sort-by-subject-course-name">
             {{ course_name }}
-        </a>     
+        </a>
         <p class="course-finder-results__result-accordion-body-course-provider">
             {{ course.institution.pub_ukprn_name }}
-        </p>     
+        </p>
     {% else %}
         <a href="{% if page.is_welsh %}/cy{% endif %}/course-details/{{institution_id}}/{{course.kis_course_id}}/{{course.mode}}"
         class="course-finder-results__result-accordion-body-course-name">

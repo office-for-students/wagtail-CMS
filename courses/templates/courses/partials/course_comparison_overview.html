@@ -1,0 +1,35 @@
+{% load staticfiles discover_uni_tags %}
+{% for course in courses %}
+    <div id="{{ course.institution.pub_ukprn }}/{{ course.kis_course_id }}/{{ course.mode.label }}"
+         data-multiple_subjects="{{ course.has_multiple_subject_names }}"
+         class="course-detail__courses-container cc-column-{{ forloop.counter0 }}" data-index="{{ forloop.counter0 }}">
+        <div>
+            {% with stars="123" index=forloop.counter0 %}
+                {% for star in stars %}
+                    <li class="rating js-star-rating"
+                        id="course-{{ index }}-star{{ star }}"
+                        value="{{ star }}">☆
+                    </li>
+                {% endfor %}
+            {% endwith %}
+            <img id="ratings_remove-{{ forloop.counter0 }}" class="course-detail__courses-container-exit-course"
+                 src="{% static 'images/icon-close.svg' %}">
+        </div>
+
+        <div class="course-detail__courses-name">
+            {{ course.display_title }}
+        </div>
+
+        {% if page.is_english %}
+            <a class="course-detail__courses-institution-name"
+               href="/institution-details/{{ course.institution.pub_ukprn }}/">
+                {% autoescape off %}{{ course.institution.pub_ukprn_name | safe }}{% endautoescape %}
+            </a>
+        {% else %}
+            <a class="course-detail__courses-institution-name"
+               href="/cy/institution-details/{{ course.institution.pub_ukprn }}/">
+                {% autoescape off %}{{ course.institution.pub_ukprn_name | safe }}{% endautoescape %}
+            </a>
+        {% endif %}
+    </div>
+{% endfor %}

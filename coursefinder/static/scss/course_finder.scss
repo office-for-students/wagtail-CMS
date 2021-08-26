@@ -659,7 +659,7 @@
 }
 
 @media only screen and (min-width: 770px) {
-    
+
     .course-finer__header .home-page__header-bg-icon {
         padding-top: 15px;
         height: 150px;
@@ -667,7 +667,7 @@
     }
     .course-finder__header .course-finder__intro-panel {
         padding: 1rem;
-    
+
         h5 {
             font-size: 1rem;
         }
@@ -675,7 +675,7 @@
     .course-finder {
 
         &-base {
-        
+
             &__nav {
                 padding: 24px 0px;
 
@@ -689,7 +689,7 @@
 
                     &-icon {
                         height: 16px;
-                        
+
                     }
                 }
             }
@@ -740,8 +740,8 @@
                 &-icon {
                     height: 19px;
                     margin-left: 4px;
-                  
-                   
+
+
                 }
             }
 
@@ -847,7 +847,7 @@
                     &-overview {
                         @include desktop-body-font--bold-mixin();
 
-                       
+
                     }
 
                     &-body {
@@ -858,22 +858,22 @@
                         }
 
                         &-course-name {
-                           
+
                             line-height: 31px;
                         }
 
                         &-sort-by-subject-course-name {
-                           
+
                             line-height: 31px;
                         }
 
                         &-course-provider {
-                           
+
                             line-height: 27px;
                         }
 
                         &-course-info {
-                           
+
                             line-height: 27px;
                         }
                     }
@@ -907,9 +907,9 @@
 }
 
 @media only screen and (min-width: 577px) and (max-width: 766px){
-    .course-finder__intro-panel, 
-    .course-finder-base.course-finder-results, 
-    .course-finder__header-content 
+    .course-finder__intro-panel,
+    .course-finder-base.course-finder-results,
+    .course-finder__header-content
     {
         width: 540px!important;
         margin-left:auto!important;
@@ -950,6 +950,6 @@
     }
     .course-finder-wrapper {
         flex: 1 0 74%;
-        
+
     }
 }
