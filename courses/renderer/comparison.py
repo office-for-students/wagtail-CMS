@@ -14,6 +14,7 @@ from courses.renderer.sections.earnings import SubEarningsSection
 from courses.renderer.sections.employment import SubEmploymentSection
 from courses.renderer.sections.graduate_perception import GraduatePerceptionSection
 from courses.renderer.sections.satisfaction import SubSatisfactionSection
+from courses.renderer.sections.entry import SubEntrySection
 
 logger = logging.getLogger(__name__)
 
@@ -56,6 +57,14 @@ def get_sub_earnings(language) -> List:
         (translations.term_for_key(key="after_15_months", language=language), [0, 5]),
         (translations.term_for_key(key="after_3_years", language=language), [5, 10]),
         (translations.term_for_key(key="after_5_years", language=language), [10, 15]),
+    ]
+    return list_sub_accordions
+
+
+def get_sub_entry(language) -> List:
+    list_sub_accordions = [
+        (translations.term_for_key(key="after_15_months", language=language), [0, 9]),
+        (translations.term_for_key(key="after_3_years", language=language), [9, 11]),
     ]
     return list_sub_accordions
 
@@ -124,15 +133,15 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="read_more_about_satisfaction", language=language)
             )
         ),
-        # dict(
-        #     title=translations.term_for_key(key="entry_information", language=language),
-        #     guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),
-        #     source=(
-        #         translations.term_for_key(key="about_our_data_link", language=language),
-        #         translations.term_for_key(key="read_more_about_entry", language=language)
-        #     )
-        # ),
-        # End
+        dict(
+            title=translations.term_for_key(key="entry_information", language=language),
+            guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),
+            sub_accordions=get_sub_accordion_dataset(courses, SubEntrySection, get_sub_entry, language),
+            source=(
+                translations.term_for_key(key="about_our_data_link", language=language),
+                translations.term_for_key(key="read_more_about_entry", language=language)
+            )
+        ),
         dict(
             title=translations.term_for_key(key="after_one_year", language=language),
             guidance_information=(translations.term_for_key(key="after_one_year_guidance", language=language),),
@@ -142,7 +151,6 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="read_more_about_continuation", language=language),
             )
         ),
-        # TODO: Update with correct data when you get to that ticket
         dict(
             title=translations.term_for_key(key="earnings_after_the_course", language=language),
             guidance_information=(
@@ -187,8 +195,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
 
         # dict(
         #     title=translations.term_for_key(key="information_on_uni", language=language),
-        # ),
-        # end
+        # )
     ]
 
     response.append(context)
