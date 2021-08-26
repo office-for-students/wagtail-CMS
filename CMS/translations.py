@@ -1831,7 +1831,7 @@ DICT = {
     },
     'Optional': OPTIONALS['optional'],
     'Compulsory': OPTIONALS['compulsory'],
-    'Typical range': {
+    'typical_range': {
         'en': 'Typical range',
         'cy': 'Ystod arfero'
     },
