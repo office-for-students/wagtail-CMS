@@ -45,14 +45,19 @@
         </div>
     </div>
     <div class="filters-block__filter-accordion-body">
-        <input type="text" id="institutionSearchBar" onkeyup="searchList()" placeholder="Search institutions" class="filters-block__filter-search">
-        <div id="institution-block" class="filters-block__filter-options-institution"> 
+        <input type="text" id="institutionSearchBar" onkeyup="searchList()"
+               placeholder="{% get_translation key='search_institutions' language=page.get_language %}"
+               class="filters-block__filter-search"
+               title="{% get_translation key='institution_search_input' language=page.get_language %}">
+        <div id="institution-block" class="filters-block__filter-options-institution">
             {% for institution in institutions_list %}
                 <div class="filters-block__filter-option institution-check" style="display: flex; margin-bottom: 10px">
-                    <input id="{{institution.name}}-check" class="filters-block__filter-checkbox-input inst-chk" type="checkbox" name="institution_query" value="{{institution.name}}" 
-                                {% if institution.name in filter_form.institutions %}checked{% endif %} />
-                    <label style="width: 200px; margin-top: -5px; margin-left: 10px" class="filters-block__filter-checkbox-label" for="{{institution}}-check">
-                        {{institution.name}}
+                    <input id="{{ institution.name }}-check" class="filters-block__filter-checkbox-input inst-chk"
+                           type="checkbox" name="institution_query" value="{{ institution.name }}"
+                           {% if institution.name in filter_form.institutions %}checked{% endif %}/>
+                    <label style="width: 200px; margin-top: -5px; margin-left: 10px"
+                           class="filters-block__filter-checkbox-label" for="{{ institution }}-check">
+                        {{ institution.name }}
                     </label>
                 </div>
             {% endfor %}

@@ -703,6 +703,10 @@ DICT = {
         'en': 'Course name',
         'cy': "Enw'r cwrs"
     },
+    'course_name_search_box': {
+        'en': 'Course name search box',
+        'cy': "Blwch chwilio enw’r cwrs"
+    },
     'course_page': {
         'en': 'Course page',
         'cy': 'Tudalen y cwrs'
@@ -714,6 +718,10 @@ DICT = {
     'course_search': {
         'en': 'Course search',
         'cy': 'Chwilio am Gwrs '
+    },
+    'course_search_form_inputs': {
+        'en': 'Course search form inputs',
+        'cy': 'Mewnbynnau ffurflen chwilio am gwrs'
     },
     'course_too_many': {
         'en': 'is the maximum number of bookmarks.',
@@ -771,7 +779,6 @@ DICT = {
         'en': 'Distance learning',
         'cy': 'Dysgu o bell'
     },
-
     'distance_learning_values': {
         '0': OPTIONALS['not_available'],
         '1': OPTIONALS['yes'],
@@ -951,6 +958,10 @@ DICT = {
         'en': 'Higher National Diploma (HND)',
         'cy': ''
     },
+    'home_page_video': {
+        'en': 'Home page video',
+        'cy': 'Fideo hafan'
+    },
     'home_page_video_link':{
         'en': 'https://www.youtube.com/embed/W7jJ03_UjUg',
         'cy': 'https://www.youtube.com/embed/ZMJqdQhtO3E'
@@ -982,6 +993,10 @@ DICT = {
     'institution_name': {
         'en': 'Institution name',
         'cy': "Enw'r sefydliad"
+    },
+    'institution_search_input': {
+        'en': 'Institution Search Input',
+        'cy': 'Mewnbwn chwilio sefydliad'
     },
     'institution_az': {
         'en': 'Institution A-Z',
@@ -1171,7 +1186,7 @@ DICT = {
         'en': 'Not in a professional or managerial job',
         'cy': 'Ddim mewn swydd broffesiynol neu reoli'
     },
-    '': {
+    'northern_ireland': {
         'en': 'Northern Ireland',
         'cy': 'Gogledd Iwerddon'
     },
@@ -1298,7 +1313,7 @@ DICT = {
     },
     "regions": {
         'en': 'Region(s)',
-        'cy': 'Rhanbarth(au)'
+        'cy': 'Rhanbarth(au)' 
     },
     'remove_course': {
         'en': 'Remove course',
@@ -1380,9 +1395,9 @@ DICT = {
         'en': 'Scotland',
         'cy': 'Yr Alban'
     },
-    'scroll_to_the_right': {
-        'en': 'Scroll to the right',
-        'cy': 'Sgroliwch i’r dde'
+    'scroll_to_the_right':{
+        'en':'Scroll to the right',
+        'cy':'Sgroliwch i’r dde'
     },
     'search': {
         'en': 'Search',
@@ -1395,6 +1410,10 @@ DICT = {
     'search_by_course_or_institution': {
         'en': 'Search by course name and/or institution',
         'cy': 'Chwilio yn ôl enw cwrs ac/neu sefydliad'
+    },
+    'search_institutions': {
+        'en': 'Search institutions',
+        'cy': 'Chwilio am sefydliadau'
     },
     'back_to_results': {
         'en': 'Back',
@@ -1597,12 +1616,12 @@ DICT = {
         'cy': "Yn ddi-waith"
     },
     'unemp_prev_emp_since_grad': {
-        'en': 'Previously working or studying',
-        'cy': 'Yn gweithio neu''n astudio cyn hynny'
+        'en': 'Unemployed – previously working or studying',
+        'cy': 'Yn ddi-waith - yn gweithio neu''n astudio cyn hynny'
     },
     'unemp_not_work_since_grad': {
-        'en': 'Not employed since graduation',
-        'cy': 'Heb gael gwaith ers graddio'
+        'en': 'Unemployed - not employed since graduation',
+        'cy': 'Yn ddi-waith - heb gael gwaith ers graddio'
     },
     'uni_and_college': {
         'en': 'All universities and colleges',
@@ -1797,7 +1816,7 @@ DICT = {
         'en': 'I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to',
         'cy': 'Rydw i wedi gallu cael mynediad at adnoddau penodol i gwrs (e.e. offer, cyfleusterau, meddalwedd, casgliadau) pan oedd angen i mi wneud hynny'
     },
-    'I feel part of a community of staff and students': {
+    'I feel part of a community of staff and students' : {
         'en': 'I feel part of a community of staff and students',
         'cy': 'Rydw i’n teimlo’n rhan o gymuned o staff a myfyrwyr'
     },
