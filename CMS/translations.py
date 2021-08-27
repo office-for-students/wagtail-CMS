@@ -958,6 +958,10 @@ DICT = {
         'en': 'Higher National Diploma (HND)',
         'cy': ''
     },
+    'home_page_video': {
+        'en': 'Home page video',
+        'cy': 'Fideo hafan'
+    },
     'home_page_video_link':{
         'en': 'https://www.youtube.com/embed/W7jJ03_UjUg',
         'cy': 'https://www.youtube.com/embed/ZMJqdQhtO3E'
@@ -989,6 +993,10 @@ DICT = {
     'institution_name': {
         'en': 'Institution name',
         'cy': "Enw'r sefydliad"
+    },
+    'institution_search_input': {
+        'en': 'Institution Search Input',
+        'cy': 'Mewnbwn chwilio sefydliad'
     },
     'institution_az': {
         'en': 'Institution A-Z',
@@ -1402,6 +1410,10 @@ DICT = {
     'search_by_course_or_institution': {
         'en': 'Search by course name and/or institution',
         'cy': 'Chwilio yn ôl enw cwrs ac/neu sefydliad'
+    },
+    'search_institutions': {
+        'en': 'Search institutions',
+        'cy': 'Chwilio am sefydliadau'
     },
     'back_to_results': {
         'en': 'Back',
