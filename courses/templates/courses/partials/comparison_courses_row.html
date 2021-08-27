@@ -1,0 +1,50 @@
+<div class="comparison_row">
+    <div class="column-title_container header">
+        <div class="column-first {{header_font}}">
+            {% if title != "" %}{{ title }}{% else %}&nbsp;{% endif %}
+        </div>
+        {% if subtitle %}
+        <div class="column-first subtitle {{header_font}}">
+            {{subtitle}}
+        </div>
+        {% endif %}
+    </div>
+    <div class="small-flex-div">
+    {% for item in values %}
+        <div class="column {{mt}} cc-column-{{forloop.counter0}}">
+        {% with index=forloop.counter0 last=forloop.last %}
+            {% if item.values %}
+                {% for value in item.values %}
+                     <div class="column-{{index}}{{accordion.title}} item-{{forloop.counter0}}"
+                         {% if not forloop.first %}hidden{% endif %}>
+                         {% if value == "no_data" %}
+                             <div class="no_data_container">
+                                {{ courses_data.0.no_data.0 }}
+                                 <br>
+                                <img class="information-icon" src="/static/images/information.svg" alt>
+                                <div class="information-text hidden info-box-{{index}} {% if last %}right{% else %}left{% endif %}">{{ courses_data.0.no_data.1 }}</div>
+                             </div>
+                         {% else %}
+                            {{value}}
+                        {% endif %}
+                     </div>
+                {% endfor %}
+            {% else %}
+                {% if item == "no_data" %}
+                    <div class="no_data_container">
+                        {{ courses_data.0.no_data.0 }}
+                        <br>
+                        <img class="information-icon" src="/static/images/information.svg" alt>
+                        <div class="information-text hidden info-box-{{forloop.counter0}} {% if forloop.last %}right{% else %}left{% endif %}">{{ courses_data.0.no_data.1 }}</div>
+                    </div>
+                {% else %}
+                    {{ item | safe }}
+                {% endif %}
+            {% endif %}
+        {% endwith %}
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+

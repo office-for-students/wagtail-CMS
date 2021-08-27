@@ -1,0 +1,26 @@
+{% load staticfiles discover_uni_tags %}
+<div class="js_subject_wrapper subject_wrapper" id="subject_wrapper">
+    <div class="box">
+        <div class="header">{% get_translation key='show_data_from' language=page.get_language %}</div>
+        <div>{% get_translation key='subject_select_text' language=page.get_language %}</div>
+    </div>
+    <div class="container">
+        <div class="header">{% get_translation key='select_subject' language=page.get_language %}</div>
+        <div id="subjects-testing" class="subjects">
+            {% for items in subjects.subject %}
+                {% with index=forloop.counter0 %}
+                <div class="subject cc-column-{{forloop.counter0}}">
+                    <ol class="list">
+                    {% for subject in items %}
+                        <li {% if forloop.first %} class="button selected" {% else %} class="button" {% endif %}
+                            data-details="{{accordion.title}},{{index}},{{forloop.counter0}}">
+                                {{ subject }}
+                        </li>
+                    {% endfor %}
+                    </ol>
+                </div>
+                {% endwith %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

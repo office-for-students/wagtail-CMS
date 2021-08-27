@@ -19,59 +19,18 @@
 
     </div>
 
-
+    <!-- Course Search box -->
     <div id="home-page__intro-panel" class="home-page__intro-panel bg-white pb-5">
         <div class="row">
-            <div class="col-12 col-lg-6 p-3 pr-4">
-                <label for="course">
-                    <h4 class="mb-3">{% get_translation key='search_by_course_or_institution' language=page.get_language %}</h4>
-                </label>
-                <form class="search-landing-page__search"
-                      action="{% if page.is_welsh %}/cy{% endif %}{% url 'course_finder_results' %}" method="post"
-                      autocomplete="off">
-                    {% csrf_token %}
-                    <div class="search-landing-page__search-fields">
-                        <div class="search-landing-page__search-input">
-                            <div class="input-group mb-3" role="group" aria-label="search form inputs">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
-                                </div>
-                                <input class="form-control" name="course_query" type="text" id="course"
-                                       aria-label="{% get_translation key='course_name' language=page.get_language %} search box"
-                                       placeholder="{% get_translation key='course_name' language=page.get_language %}"
-                                       autocomplete="off">
-
-                            </div>
-                        </div>
-                        <div class="search-landing-page__search-input">
-                            <div class="form-group">
-                                {% get_translation key='uni_and_college' language=page.get_language as placeholder %}
-                                {% include 'partials/new-search-dropdown.html' with placeholder=placeholder field_name='institution_query' options=institutions_list %}
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="mt-4 home-page__search-button justify-content-center py-2 px-5">
-                        {% get_translation key='search' language=page.get_language %}
-                    </button>
-                </form>
-
-            </div>
+            {% include 'coursefinder/partials/coursesearch/searchbox.html' %}
             <div class="col-12 d-block d-lg-none mx-auto text-center">
                 <hr class="dash"/>
             </div>
-            <div class="dash-vertical-left col-12 col-lg-6 text-center p-3">
-                <img class="mx-auto home-page__course-wizard-icon" src="{% static 'images/arrows.svg' %}"
-                     alt="Course Wizard"/>
-                <h4 class="text-center">{% get_translation key='course_wizard' language=page.get_language %}</h4>
-                <h5 class="pt-2 text-center">{% get_translation key='answer_4_questions' language=page.get_language %}</h5>
-                <div class="mt-4 ">
-                    <a href="{% get_translation key='course_wizard_start_now_url' language=page.get_language %}"
-                       class="home-page__search-button justify-content-center py-2 px-5">{% get_translation key='course_wizard_start_now' language=page.get_language %}</a>
-                </div>
-            </div>
+            {% include 'coursefinder/partials/coursesearch/coursewizard.html' %}
         </div>
     </div>
+    <!-- Course Search box end -->
+
     <div class="home-page__bookmark-body">
         <div class="home-page__bookmark-body-inner">
             <div class="row">
@@ -119,22 +78,19 @@
                 <div class="col-4 px-4 pb-4">
                     <div class="my-4 justify-content-center">
                         <a href="{{ page.box_1_link }}"
-                           class="home-page__search-button py-2 px-3"
-                           aria-label="{{ page.box_1_title }} find out more button">{% get_translation key='find_out_more' language=page.get_language %}</a>
+                           class="home-page__search-button py-2 px-3" aria-label="{{ page.box_1_title }}>{% get_translation key='find_out_more' language=page.get_language %}</a>
                     </div>
                 </div>
                 <div class="col-4 px-4 pb-4">
                     <div class="my-4 justify-content-center">
                         <a href="{{ page.box_2_link }}"
-                           class="home-page__search-button py-2 px-3"
-                           aria-label="{{ page.box_2_title }} find out more button">{% get_translation key='find_out_more' language=page.get_language %}</a>
+                           class="home-page__search-button py-2 px-3" aria-label="{{ page.box_2_title }}>{% get_translation key='find_out_more' language=page.get_language %}</a>
                     </div>
                 </div>
                 <div class="col-4 px-4 pb-4">
                     <div class="my-4 justify-content-center">
                         <a href="{{ page.box_3_link }}"
-                           class="home-page__search-button py-2 px-3"
-                           aria-label="{{ page.box_3_title }} find out more button">{% get_translation key='find_out_more' language=page.get_language %}</a>
+                           class="home-page__search-button py-2 px-3" aria-label="{{ page.box_3_title }}>{% get_translation key='find_out_more' language=page.get_language %}</a>
                     </div>
                 </div>
             </div>
@@ -184,3 +140,9 @@
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function () {
+        document.dispatchEvent(new Event('searchready'));
+    });
+</script>

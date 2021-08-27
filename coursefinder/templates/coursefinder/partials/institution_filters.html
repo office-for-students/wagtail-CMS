@@ -1,32 +1,32 @@
 {% load discover_uni_tags wagtailcore_tags %}
-<!-- THIS CODE WILL BE USED IN THE FUTURE
-<script>
-    function searchList() {
-      // Declare variables
-      var input, filter, table, institutions, label, i, txtValue;
-      input = document.getElementById("institutionSearchBar");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("{{institution}}-check");
-      institutions = document.getElementsByClassName("institution-check");
-      block = document.getElementById("institution-block");
-
-      // Loop through all table rows, and hide those who don't match the search query
-      for (i = 0; i < institutions.length; i++) {
-        label = institutions[i].getElementsByTagName("label")[0];
-        if (label) {
-          txtValue = label.textContent || label.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            institutions[i].style.display = "flex";
-          } else {
-            institutions[i].style.display = "none";
-          }
-          if (txtValue.toUpperCase().indexOf(filter).length < 5){
-            block.style.overflowY = "hidden"
-          }
-        }
-      }
-    }
-</script> -->
+{#<!-- THIS CODE WILL BE USED IN THE FUTURE#}
+{#<script>#}
+{#    function searchList() {#}
+{#      // Declare variables#}
+{#      var input, filter, table, institutions, label, i, txtValue;#}
+{#      input = document.getElementById("institutionSearchBar");#}
+{#      filter = input.value.toUpperCase();#}
+{#      table = document.getElementById("{{institution}}-check");#}
+{#      institutions = document.getElementsByClassName("institution-check");#}
+{#      block = document.getElementById("institution-block");#}
+{##}
+{#      // Loop through all table rows, and hide those who don't match the search query#}
+{#      for (i = 0; i < institutions.length; i++) {#}
+{#        label = institutions[i].getElementsByTagName("label")[0];#}
+{#        if (label) {#}
+{#          txtValue = label.textContent || label.innerText;#}
+{#          if (txtValue.toUpperCase().indexOf(filter) > -1) {#}
+{#            institutions[i].style.display = "flex";#}
+{#          } else {#}
+{#            institutions[i].style.display = "none";#}
+{#          }#}
+{#          if (txtValue.toUpperCase().indexOf(filter).length < 5){#}
+{#            block.style.overflowY = "hidden"#}
+{#          }#}
+{#        }#}
+{#      }#}
+{#    }#}
+{#</script> -->#}
 
 <div style="display: none;" class="filters-block__filter-accordion">
     <div tabindex="0" role="button" aria-label="Show content" class="filters-block__filter-accordion-header">
