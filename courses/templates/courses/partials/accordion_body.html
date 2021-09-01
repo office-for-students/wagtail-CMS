@@ -1,5 +1,5 @@
 {% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
-{% with dataset=accordion.dataset sub_accordions=accordion.sub_accordions change_point=accordion.change_point %}
+{% with dataset=accordion.dataset sub_accordions=accordion.sub_accordions unavailable=accordion.unavailable change_point=accordion.change_point %}
     <div class="mb-3">
         {% if accordion.guidance_information %}
             <div class="guidance_box">
@@ -19,6 +19,12 @@
         {% if accordion.subjects %}
             {% include 'courses/partials/subject_selector.html' with subjects=accordion.subjects %}
         {% endif %}
+        {% if not sub_accordions and unavailable %}
+        <div
+            class="comparison_row-grey_background unavailable accordion-body">
+            {% include 'courses/partials/comparison_courses_row.html' with title=unavailable.title values=unavailable.header %}
+        </div>
+        {% endif %}
         {% for item, value in dataset.items %}
             {% if forloop.counter < change_point %}
                 <div class="comparison_row-yellow_background">
@@ -29,9 +35,10 @@
                     {% endif %}
                 </div>
             {% else %}
-                <div class="comparison_row-grey_background">
-                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values item_font="item_font" header_font="header_font" %}
-                </div>
+
+                    <div class="comparison_row-grey_background">
+                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values item_font="item_font" header_font="header_font" %}
+                    </div>
             {% endif %}
         {% endfor %}
     </div>
@@ -51,18 +58,24 @@
                     </div>
                 </div>
             </div>
-        {% for item, value in sub_accordion.dataset.items %}
-                {% if accordion.title == "Earnings after the course" %}
-                    <div id="{{sub_accordion.title}}{{forloop.counter0}}"
-                        class="comparison_row-earnings accordion-body">
-                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values item_font="item_font" header_font="header_font" %}                    </div>
-                {% else %}
-                    <div id="{{sub_accordion.title}}{{forloop.counter0}}"
-                        class="comparison_row-grey_background accordion-body">
-                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values item_font="item_font" header_font="header_font" %}
-                    </div>
-                {% endif %}
-        {% endfor %}
+            {% if unavailable %}
+                <div
+                    class="comparison_row-grey_background accordion-body">
+                    {% include 'courses/partials/comparison_courses_row.html' with title=unavailable.title values=unavailable.header %}
+                </div>
+            {% endif %}
+            {% for item, value in sub_accordion.dataset.items %}
+                    {% if accordion.title == "Earnings after the course" %}
+                        <div id="{{sub_accordion.title}}{{forloop.counter0}}"
+                            class="comparison_row-earnings accordion-body">
+                            {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" %}                    </div>
+                    {% else %}
+                        <div id="{{sub_accordion.title}}{{forloop.counter0}}"
+                            class="comparison_row-grey_background accordion-body">
+                            {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" %}
+                        </div>
+                    {% endif %}
+            {% endfor %}
         </div>
     {% endfor %}
 {% endwith %}
