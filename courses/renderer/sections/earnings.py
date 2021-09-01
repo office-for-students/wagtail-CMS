@@ -119,7 +119,7 @@ class SubEarningsSection(Section):
                         )
                     ) if method else values
                 else:
-                    values = f"{prefix}{method}" if method else vales
+                    values = f"{prefix}{method}" if method else values
 
             response["subject"].append(subject_name)
             response["values"].append(values)
