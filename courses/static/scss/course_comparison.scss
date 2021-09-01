@@ -111,6 +111,11 @@ $course_comparison_font_normal: 14px;
 $course_comparison_show_more: 16px;
 $course_comparison_first_column_width: 250px;
 
+.unavailable{
+  font-size: 16px !important;
+  padding: 5px;
+}
+
 .course_comparison-table {
   &__tick-icon {
     font-size: 28px;
