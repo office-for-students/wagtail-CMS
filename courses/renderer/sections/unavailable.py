@@ -14,12 +14,14 @@ def get_multiple_subjects(course: Course):
 
 
 def get_unavailable(courses: List[Course], model_list: str, language: str, multiple=False) -> dict:
-    response = dict(pk=[], title="The data displayed is from students on", header=[], message=[])
+    response = dict(title="The data displayed is from students on", header=[], message=[], multiple={"pk":[], "header":[], "message":[]})
     for course in courses:
         if multiple:
-            for index, subject in enumerate(get_multiple_subjects(course)):
-                response["pk"].append(index)
-                response = get_data(course=course, model_list=model_list, language=language, data=response, subject=subject)
+            subjects = get_multiple_subjects(course)
+            for index, subject in enumerate(subjects):
+                if len(subjects) > 1:
+                    response["multiple"]["pk"].append(index)
+                response = get_data(course=course, model_list=model_list, language=language, data=response, subject=subject, multiple=len(subjects)>1)
         else:
             response = get_data(course=course, model_list=model_list, language=language, data=response)
 
@@ -27,7 +29,7 @@ def get_unavailable(courses: List[Course], model_list: str, language: str, multi
     return response
 
 
-def get_data(course: Course, model_list: str, language: str, data: Dict[str, str], subject=None):
+def get_data(course: Course, model_list: str, language: str, data: Dict[str, str], subject=None, multiple=False):
     _object = getattr(course, model_list)[0]
     unavailable_code = str(getattr(_object, "unavailable_code"))
     aggregation_level = str(getattr(_object, "aggregation_level"))
@@ -35,12 +37,12 @@ def get_data(course: Course, model_list: str, language: str, data: Dict[str, str
     response_rate = _getattr(_object, "response_rate", None)
     agg = aggregation_level if str(aggregation_level) not in ("None", "") else "blank"
     # Sometimes None was entered into the DB as a string, and sometimes not, sometimes empty string. ^^^
-    response = set_message(unavailable_code, response_rate, agg, subject_name, data, language)
+    response = set_message(unavailable_code, response_rate, agg, subject_name, data, language, multiple=multiple)
 
     return response
 
 
-def set_message(unavailable_code, response_rate, agg, subject, data, language):
+def set_message(unavailable_code, response_rate, agg, subject, data, language, multiple=False):
     try:
         for key, value in unavailable_dict[unavailable_code].items():
             resp = 1 if unavailable_code == "0" and response_rate else 0
@@ -54,11 +56,14 @@ def set_message(unavailable_code, response_rate, agg, subject, data, language):
                 message = translations.term_for_key(key=result, language=language)
                 message = message.replace("{}", subject) if subject else message.replace("{}", "fix me")
                 header = translations.term_for_key(key=title, language=language)
-                data["header"].append(header)
-                data["message"].append(message)
+                if multiple:
+                    data["multiple"]["header"].append(header)
+                    data["multiple"]["message"].append(message)
+                else:
+                    data["header"].append(header)
+                    data["message"].append(message)
                 details = (
                     f"UNAVILBLE CODE: {unavailable_code} \n AGG:{agg} \n resp: {response_rate}, \n SUBJECT: {subject} \n {result}")
-                print("DETAILS", details)
     except KeyError:
         data["header"].append("Fix me")
 

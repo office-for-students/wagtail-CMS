@@ -1,0 +1,24 @@
+<div class="comparison_row">
+    <div class="column-title_container header">
+        <div class="column-first {{header_font}}">
+            {{ title }}
+        </div>
+    </div>
+    <div class="small-flex-div">
+        <div class="column {{mt}} cc-column-{{forloop.counter0}}">
+
+            {% for key, values in unavailable.multiple.items %}
+            {% w %}
+            <p style="color: black;">{{key}} {{test}}</p>
+            {% for key, item in values.items %}
+                 <div class="column-{{index}}{{accordion.title}}">
+                     {{ item.header }}
+                 </div>
+            {% endfor %}
+            {% endfor %}
+<!--                {{ unavailable.header | safe }}-->
+        </div>
+    </div>
+</div>
+
+
