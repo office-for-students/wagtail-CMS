@@ -2,7 +2,7 @@ from CMS import translations
 
 unavailable_dict = {
     "None": {
-        "14": ["this_course"]
+        "14": ["this course"]
     },
     "0": {
         ("11", "12", "13"): [

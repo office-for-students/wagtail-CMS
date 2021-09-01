@@ -1,51 +1,69 @@
 from courses.models import Course
-from typing import List
+from typing import List, Dict
 from courses.renderer.sections.unavailable_dict import unavailable_dict
 from CMS import translations
 
-def get_multiple_subjects(courses: List[Course]):
-    subjects = dict(subject=[])
-    for course in courses:
-        subject_list = list()
-        subject_names = course.subject_names
-        for subject in subject_names:
-            subject_list.append(subject.display_subject_name())
-        subjects["subject"].append(subject_list)
+
+def get_multiple_subjects(course: Course):
+    subjects = list()
+    subject_names = course.subject_names
+    for subject in subject_names:
+        subjects.append(subject.display_subject_name())
 
     return subjects
 
+
 def get_unavailable(courses: List[Course], model_list: str, language: str, multiple=False) -> dict:
-    data = dict(header=[], message=[])
+    response = dict(pk=[], title="The data displayed is from students on", header=[], message=[])
     for course in courses:
-        _object = getattr(course, model_list)[0]
-        unavailable_code = str(getattr(_object, "unavailable_code"))
-        aggregation_level = str(getattr(_object, "aggregation_level"))
-        subject = str(getattr(_object, "subject_english"))
-        response_rate = str(getattr(_object, "response_rate"))
-        agg = aggregation_level if aggregation_level else "blank"
-        print(f"UNAVILBLE CODE: {unavailable_code} \n AGG:{agg} \n resp: {response_rate}")
+        if multiple:
+            for index, subject in enumerate(get_multiple_subjects(course)):
+                response["pk"].append(index)
+                response = get_data(course=course, model_list=model_list, language=language, data=response, subject=subject)
+        else:
+            response = get_data(course=course, model_list=model_list, language=language, data=response)
 
-        set_unavailable(unavailable_code, response_rate, agg, subject, data, language)
-
-    return data
+    print(response)
+    return response
 
 
-def set_unavailable(unavailable_code, response_rate, agg, subject, data, language):
+def get_data(course: Course, model_list: str, language: str, data: Dict[str, str], subject=None):
+    _object = getattr(course, model_list)[0]
+    unavailable_code = str(getattr(_object, "unavailable_code"))
+    aggregation_level = str(getattr(_object, "aggregation_level"))
+    subject_name = subject or _getattr(_object, "subject_english", "This is a subject")
+    response_rate = _getattr(_object, "response_rate", None)
+    agg = aggregation_level if str(aggregation_level) not in ("None", "") else "blank"
+    # Sometimes None was entered into the DB as a string, and sometimes not, sometimes empty string. ^^^
+    response = set_message(unavailable_code, response_rate, agg, subject_name, data, language)
+
+    return response
+
+
+def set_message(unavailable_code, response_rate, agg, subject, data, language):
     try:
         for key, value in unavailable_dict[unavailable_code].items():
             resp = 1 if unavailable_code == "0" and response_rate else 0
             if agg in key:
-                result = value[resp]
+                try:
+                    result = value[resp]
+                except IndexError:
+                    result = value[0]
+
                 title = f"{result}_header"
-
                 message = translations.term_for_key(key=result, language=language)
-                message = message.replace("{}", subject)
+                message = message.replace("{}", subject) if subject else message.replace("{}", "fix me")
                 header = translations.term_for_key(key=title, language=language)
-                print("MESSAGE", result)
-
                 data["header"].append(header)
                 data["message"].append(message)
+                details = (
+                    f"UNAVILBLE CODE: {unavailable_code} \n AGG:{agg} \n resp: {response_rate}, \n SUBJECT: {subject} \n {result}")
+                print("DETAILS", details)
     except KeyError:
         data["header"].append("Fix me")
 
     return data
+
+
+def _getattr(obj, attr, fallback):
+    return getattr(obj, attr) if hasattr(obj, attr) else fallback
