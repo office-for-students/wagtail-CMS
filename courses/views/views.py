@@ -200,7 +200,7 @@ def regional_earnings(request):
             inst_prov_pc_leo5 = inst_prov_pc_leo3
 
         resp = {
-            'typical_range_text': DICT.get('Typical range').get(language),
+            'typical_range_text': DICT.get('typical_range').get(language),
             'data_from_text': DICT.get('Data from').get(language),
             'respondents_text': DICT.get('respondents').get(language),
             'people_text': DICT.get('people').get(language),

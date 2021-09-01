@@ -200,7 +200,7 @@ $course_comparison_first_column_width: 250px;
     padding: 20px;
 
     &.item_font {
-      font-size: 20px !important;
+      font-size: 20px;
     }
 
     &-title_container {
@@ -262,6 +262,12 @@ $course_comparison_first_column_width: 250px;
   }
 }
 
+.institution-link{
+  color: #308282;
+  text-decoration: underline;
+  font-size: 14px !important;
+}
+
 .snippet_container {
   width: 100%;
 
@@ -311,7 +317,7 @@ $course_comparison_first_column_width: 250px;
     }
   }
 
-  .container {
+  &-container {
     min-width: 100%;
     padding: 0;
     margin: 0;
@@ -1194,13 +1200,13 @@ $course_comparison_first_column_width: 250px;
     justify-content: flex-start;
 
     .box {
-      min-width: 0;
       max-width: 186px;
+      min-width: 186px;
       margin-right: 4px;
       max-height: 218px;
     }
 
-    .container {
+    &-container {
       min-width: 0;
       width: 100%
     }
@@ -1372,11 +1378,12 @@ $course_comparison_first_column_width: 250px;
     .box {
       min-width: 0;
       max-width: 250px;
+      min-width: 250px;
       margin-right: 8px;
       max-height: 170px;
     }
 
-    .container {
+    &-container {
       min-width: 0;
       width: 100%
     }

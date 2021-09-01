@@ -376,6 +376,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
 
             const empty = document.getElementById("placeholder");
             container.removeChild(empty);
+            document.getElementById('spinner-loading').hidden=true;
         }
     }
     (jQuery)
