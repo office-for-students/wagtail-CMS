@@ -1,7 +1,6 @@
 from typing import Any
 from typing import Dict
 from typing import List
-from typing import Tuple
 
 from CMS import translations
 from courses.models import Course
@@ -17,22 +16,23 @@ def get_multiple_subjects(course: Course):
     return subjects
 
 
-def get_unavailable_row(courses: List[Course], model_list: str, language: str, present_as_multiple=False) -> List[Any]:
+def get_unavailable_rows(courses: List[Course], model_list: List[str], language: str, change_key=0,
+                         present_as_multiple=False) -> List[Any]:
     columns = []
-    for course in courses:
+    for index, course in enumerate(courses):
         columns.append(
             get_unavailable(
                 course=course,
-                model_list=model_list,
+                model_list=model_list[1] if change_key > index else model_list[0],
                 language=language,
                 present_as_multiple=present_as_multiple
             )
         )
 
-    return columns
+    return columns, "The data displayed is from students on"
 
 
-def get_unavailable(course: Course, model_list: str, language: str, present_as_multiple=False) -> Tuple:
+def get_unavailable(course: Course, model_list: str, language: str, present_as_multiple=False) -> Dict[str, List[str]]:
     response = dict(
         header=[],
         message=[],
@@ -56,7 +56,7 @@ def get_unavailable(course: Course, model_list: str, language: str, present_as_m
             data=response
         )
 
-    response = response, "The data displayed is from students on"
+    response = response
     print(response)
     return response
 

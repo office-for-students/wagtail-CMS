@@ -22,7 +22,7 @@
         {% if not sub_accordions and unavailable %}
         <div
             class="comparison_row-grey_background unavailable accordion-body">
-            {% include 'courses/partials/unavailable.html' with title=unavailable.title unavailable=unavailable %}
+            {% include 'courses/partials/unavailable.html' with title=unavailable.1 data=unavailable.0 %}
         </div>
         {% endif %}
         {% for item, value in dataset.items %}
@@ -61,7 +61,7 @@
             {% if unavailable %}
                 <div
                     class="comparison_row-grey_background accordion-body">
-                    {% include 'courses/partials/unavailable.html' with title=unavailable.title unavailable=unavailable %}
+                    {% include 'courses/partials/unavailable.html' with title=unavailable.1 data=unavailable.0 %}
                 </div>
             {% endif %}
             {% for item, value in sub_accordion.dataset.items %}
