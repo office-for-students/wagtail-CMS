@@ -73,7 +73,9 @@ class Section:
                 if method:
                     response = f"{method}{suffix}"
         except Exception as e:
-            print("error: ", e)
+            #TODO investigate statisfaction stats error: __str__ returned non-string (type NoneType)
+            #TODO investigate 'EntryStatistics' object has no attribute 'other'
+            print("error: ", model_list, e)
             pass
 
         return response

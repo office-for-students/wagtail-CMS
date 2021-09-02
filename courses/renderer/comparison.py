@@ -7,17 +7,17 @@ from typing import Type
 
 from CMS import translations
 from courses.models import Course
-from courses.renderer.sections import CourseDetailSection
-from courses.renderer.sections import SatisfactionSection
-from courses.renderer.sections.base import Section
-from courses.renderer.sections.continuation import ContinuationSection
-from courses.renderer.sections.earnings import SubEarningsSection
-from courses.renderer.sections.employment import SubEmploymentSection
-from courses.renderer.sections.entry import SubEntrySection
-from courses.renderer.sections.graduate_perception import GraduatePerceptionSection
-from courses.renderer.sections.information import InformationSection
-from courses.renderer.sections.satisfaction import SubSatisfactionSection
-from courses.renderer.sections.unavailable import get_unavailable_rows
+from .sections import CourseDetailSection
+from .sections import SatisfactionSection
+from .sections.base import Section
+from .sections.continuation import ContinuationSection
+from .sections.earnings import SubEarningsSection
+from .sections.employment import SubEmploymentSection
+from .sections.entry import SubEntrySection
+from .sections.graduate_perception import GraduatePerceptionSection
+from .sections.information import InformationSection
+from .sections.satisfaction import SubSatisfactionSection
+from .sections.unavailable import get_unavailable_rows
 
 logger = logging.getLogger(__name__)
 
