@@ -11,9 +11,10 @@
                 {% with column_id=forloop.counter0 %}
                     <div class="column-{{ index }}{{ accordion.title }}">
                         {% for header in course.header %}
-                            <div style="padding: 5px 7px 5px 7px; text-align: left; font-size: 16px; margin-left: 15px;"
-                                 class="column-{{ column_id }}{{ accordion.title }} item-{{ forloop.counter0 }}"
-                                 {% if not forloop.first %}hidden{% endif %}>{{ header }}
+                            <div
+                                 class="unavailable-container
+                                    column-{{ column_id }}{{ accordion.title }} item-{{ forloop.counter0 }}"
+                                    {% if not forloop.first %}hidden{% endif %}>{{ header }}
                                 {% if course.message %}
                                     <img class="information-icon" src="/static/images/information.svg" alt>
                                 {% endif %}

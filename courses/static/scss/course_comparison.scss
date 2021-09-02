@@ -116,6 +116,13 @@ $course_comparison_first_column_width: 250px;
   padding: 5px;
 }
 
+.unavailable-container{
+  padding: 5px 7px 5px 7px;
+  text-align: left;
+  font-size: 16px;
+  margin-left: 15px;
+}
+
 .course_comparison-table {
   &__tick-icon {
     font-size: 28px;

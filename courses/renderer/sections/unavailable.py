@@ -61,7 +61,6 @@ def get_unavailable(course: Course, model_list: str, language: str, present_as_m
         )
 
     response = response
-    print(response)
     return response
 
 
@@ -112,7 +111,6 @@ def set_message(
 
     except KeyError:
         data["header"].append(header)
-
     return data
 
 
