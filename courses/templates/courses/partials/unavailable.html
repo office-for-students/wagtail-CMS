@@ -1,22 +1,23 @@
 <div class="comparison_row">
     <div class="column-title_container header">
-        <div class="column-first {{header_font}}">
+        <div class="column-first {{ header_font }}">
             {{ title }}
         </div>
     </div>
-    <div class="small-flex-div">
-        <div class="column {{mt}} cc-column-{{forloop.counter0}}">
 
-            {% for key, values in unavailable.multiple.items %}
-            <p style="color: black;">{{key}} {{test}}</p>
-            {% for key, item in values.items %}
-                 <div class="column-{{index}}{{accordion.title}}">
-                     {{ item.header }}
-                 </div>
-            {% endfor %}
-            {% endfor %}
-<!--                {{ unavailable.header | safe }}-->
-        </div>
+    <div class="small-flex-div">
+        {% for course in data %}
+            <div class="column {{ mt }} cc-column-{{ forloop.counter0 }}">
+                {% with column_id=forloop.counter0 %}
+                    <div class="column-{{ index }}{{ accordion.title }}">
+                        {% for header in course.header %}
+                            <div class="column-{{ column_id }}{{ accordion.title }} item-{{ forloop.counter0 }}"
+                                 {% if not forloop.first %}hidden{% endif %}>{{ header }}</div>
+                        {% endfor %}
+                    </div>
+                {% endwith %}
+            </div>
+        {% endfor %}
     </div>
 </div>
 
