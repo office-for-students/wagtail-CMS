@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Tuple
 from typing import Dict
 from typing import List
 
@@ -17,8 +17,10 @@ def get_multiple_subjects(course: Course):
 
 
 def get_unavailable_rows(courses: List[Course], model_list: List[str], language: str, change_key=0,
-                         present_as_multiple=False) -> List[Any]:
+                         present_as_multiple=False) -> Tuple:
     columns = []
+    title = translations.term_for_key(key="data_displayed", language=language)
+
     for index, course in enumerate(courses):
         columns.append(
             get_unavailable(
@@ -29,7 +31,7 @@ def get_unavailable_rows(courses: List[Course], model_list: List[str], language:
             )
         )
 
-    return columns, "The data displayed is from students on"
+    return columns, title
 
 
 def get_unavailable(course: Course, model_list: str, language: str, present_as_multiple=False) -> Dict[str, List[str]]:
@@ -49,11 +51,13 @@ def get_unavailable(course: Course, model_list: str, language: str, present_as_m
                 subject=subject
             )
     else:
+        subject = get_multiple_subjects(course)[0]
         response = get_data(
             course=course,
             model_list=model_list,
             language=language,
-            data=response
+            data=response,
+            subject=subject
         )
 
     response = response
@@ -71,11 +75,11 @@ def get_data(
     _object = getattr(course, model_list)[0]
     unavailable_code = str(getattr(_object, "unavailable_code"))
     aggregation_level = str(getattr(_object, "aggregation_level"))
-    subject_name = subject or _getattr(_object, "subject_english", "This is a subject")
+    # subject_name = subject or _getattr(_object, "subject_english", "This is a subject")
     response_rate = _getattr(_object, "response_rate", None)
     agg = aggregation_level if str(aggregation_level) not in ("None", "") else "blank"
     # Sometimes None was entered into the DB as a string, and sometimes not, sometimes empty string. ^^^
-    response = set_message(unavailable_code, response_rate, agg, subject_name, data, language)
+    response = set_message(unavailable_code, response_rate, agg, subject, data, language)
 
     return response
 
@@ -88,6 +92,7 @@ def set_message(
         data: Dict[str, List[str]],
         language,
 ) -> Dict[str, List[str]]:
+    header = translations.term_for_key(key="this_course", language=language)
     try:
         for key, value in unavailable_dict[unavailable_key].items():
             resp = 1 if unavailable_key == "0" and response_rate else 0
@@ -105,8 +110,8 @@ def set_message(
                 data["header"].append(header)
                 data["message"].append(message)
 
-    except KeyError as ke:
-        data["header"].append(f"Fix me {ke}")
+    except KeyError:
+        data["header"].append(header)
 
     return data
 
