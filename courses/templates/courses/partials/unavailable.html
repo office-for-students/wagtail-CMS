@@ -11,8 +11,24 @@
                 {% with column_id=forloop.counter0 %}
                     <div class="column-{{ index }}{{ accordion.title }}">
                         {% for header in course.header %}
-                            <div class="column-{{ column_id }}{{ accordion.title }} item-{{ forloop.counter0 }}"
-                                 {% if not forloop.first %}hidden{% endif %}>{{ header }}</div>
+                            <div style="padding: 5px 7px 5px 7px; text-align: left; font-size: 16px; margin-left: 15px;"
+                                 class="column-{{ column_id }}{{ accordion.title }} item-{{ forloop.counter0 }}"
+                                 {% if not forloop.first %}hidden{% endif %}>{{ header }}
+                                {% if course.message %}
+                                    <img class="information-icon" src="/static/images/information.svg" alt>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        {% for message in course.message %}
+                            <div style="padding:0" class="no_data_container"
+                                 column-{{ column_id }}{{ accordion.title }} item-{{ forloop.counter0 }}>
+                                <div
+                                    class="information-text hidden info-box-{{index}}
+                                        {% if forloop.last %}right{% else %}left{% endif %}
+                                        {% if not forloop.first %}hidden{% endif %}">
+                                    {{ message|safe }}
+                                </div>
+                             </div>
                         {% endfor %}
                     </div>
                 {% endwith %}
