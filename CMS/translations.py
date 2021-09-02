@@ -1,8 +1,3 @@
-from typing import Any
-from typing import Dict
-from typing import Optional
-
-
 # Use this to access DICT/OPTIONS, don't access them directly
 def term_for_key(key: str, language: str) -> str:
     """ Method to use to access welsh translations for static content
@@ -361,6 +356,19 @@ OPTIONALS = {
 }
 
 DICT = {
+
+    'facebook_link': {
+        'en': 'Facebook link',
+        'cy': ''
+    },
+    'insta_link': {
+        'en': 'Instagram link',
+        'cy': ''
+    },
+    'twitter_link': {
+        'en': 'Twitter link',
+        'cy': ''
+    },
     'saved': {
         'en': 'Saved',
         'cy': 'Wedi’u cadw'
@@ -962,7 +970,7 @@ DICT = {
         'en': 'Home page video',
         'cy': 'Fideo hafan'
     },
-    'home_page_video_link':{
+    'home_page_video_link': {
         'en': 'https://www.youtube.com/embed/W7jJ03_UjUg',
         'cy': 'https://www.youtube.com/embed/ZMJqdQhtO3E'
     },
@@ -1313,7 +1321,7 @@ DICT = {
     },
     "regions": {
         'en': 'Region(s)',
-        'cy': 'Rhanbarth(au)' 
+        'cy': 'Rhanbarth(au)'
     },
     'remove_course': {
         'en': 'Remove course',
@@ -1395,9 +1403,9 @@ DICT = {
         'en': 'Scotland',
         'cy': 'Yr Alban'
     },
-    'scroll_to_the_right':{
-        'en':'Scroll to the right',
-        'cy':'Sgroliwch i’r dde'
+    'scroll_to_the_right': {
+        'en': 'Scroll to the right',
+        'cy': 'Sgroliwch i’r dde'
     },
     'search': {
         'en': 'Search',
@@ -1816,7 +1824,7 @@ DICT = {
         'en': 'I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to',
         'cy': 'Rydw i wedi gallu cael mynediad at adnoddau penodol i gwrs (e.e. offer, cyfleusterau, meddalwedd, casgliadau) pan oedd angen i mi wneud hynny'
     },
-    'I feel part of a community of staff and students' : {
+    'I feel part of a community of staff and students': {
         'en': 'I feel part of a community of staff and students',
         'cy': 'Rydw i’n teimlo’n rhan o gymuned o staff a myfyrwyr'
     },
