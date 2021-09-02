@@ -1,3 +1,4 @@
+from typing import Any
 from typing import Dict
 from typing import List
 from typing import Tuple
@@ -14,6 +15,21 @@ def get_multiple_subjects(course: Course):
         subjects.append(subject.display_subject_name())
 
     return subjects
+
+
+def get_unavailable_row(courses: List[Course], model_list: str, language: str, present_as_multiple=False) -> List[Any]:
+    columns = []
+    for course in courses:
+        columns.append(
+            get_unavailable(
+                course=course,
+                model_list=model_list,
+                language=language,
+                present_as_multiple=present_as_multiple
+            )
+        )
+
+    return columns
 
 
 def get_unavailable(course: Course, model_list: str, language: str, present_as_multiple=False) -> Tuple:
@@ -40,11 +56,18 @@ def get_unavailable(course: Course, model_list: str, language: str, present_as_m
             data=response
         )
 
+    response = response, "The data displayed is from students on"
     print(response)
-    return (response, "The data displayed is from students on")
+    return response
 
 
-def get_data(course: Course, model_list: str, language: str, data: Dict[str, List[str]], subject=None):
+def get_data(
+        course: Course,
+        model_list: str,
+        language: str,
+        data: Dict[str, List[str]],
+        subject=None
+) -> Dict[str, List[str]]:
     _object = getattr(course, model_list)[0]
     unavailable_code = str(getattr(_object, "unavailable_code"))
     aggregation_level = str(getattr(_object, "aggregation_level"))
@@ -57,13 +80,14 @@ def get_data(course: Course, model_list: str, language: str, data: Dict[str, Lis
     return response
 
 
-def set_message(unavailable_key: str,
-                response_rate: str,
-                aggregation_level: str,
-                subject: str,
-                data: Dict[str, List[str]],
-                language,
-                ):
+def set_message(
+        unavailable_key: str,
+        response_rate: str,
+        aggregation_level: str,
+        subject: str,
+        data: Dict[str, List[str]],
+        language,
+) -> Dict[str, List[str]]:
     try:
         for key, value in unavailable_dict[unavailable_key].items():
             resp = 1 if unavailable_key == "0" and response_rate else 0
