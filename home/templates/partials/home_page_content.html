@@ -68,7 +68,6 @@
                     <iframe title="{% get_translation key='home_page_video' language=page.get_language %}"
                             class="mt-2 mb-3 video-iframe"
                             src="{% get_translation key='home_page_video_link' language=page.get_language %}"
-                            frameborder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     <h4>{% get_translation key='how_to_search_for_course' language=page.get_language %}</h4>
@@ -80,21 +79,21 @@
                     <div class="my-4 justify-content-center">
                         <a href="{{ page.box_1_link }}"
                            class="home-page__search-button py-2 px-3"
-                           aria-label="{{ page.box_1_title }}>{% get_translation key='find_out_more' language=page.get_language %}</a>
+                           aria-label="{{ page.box_1_title }}">{% get_translation key='find_out_more' language=page.get_language %}</a>
                     </div>
                 </div>
                 <div class=" col-4 px-4 pb-4">
-                        <div class="my-4 justify-content-center">
-                            <a href="{{ page.box_2_link }}"
-                               class="home-page__search-button py-2 px-3"
-                               aria-label="{{ page.box_2_title }}>{% get_translation key='find_out_more' language=page.get_language %}</a>
+                    <div class="my-4 justify-content-center">
+                        <a href="{{ page.box_2_link }}"
+                           class="home-page__search-button py-2 px-3"
+                           aria-label="{{ page.box_2_title }}">{% get_translation key='find_out_more' language=page.get_language %}</a>
                     </div>
                 </div>
                 <div class=" col-4 px-4 pb-4">
-                            <div class="my-4 justify-content-center">
-                                <a href="{{ page.box_3_link }}"
-                                   class="home-page__search-button py-2 px-3"
-                                   aria-label="{{ page.box_3_title }}>{% get_translation key='find_out_more' language=page.get_language %}</a>
+                    <div class="my-4 justify-content-center">
+                        <a href="{{ page.box_3_link }}"
+                           class="home-page__search-button py-2 px-3"
+                           aria-label="{{ page.box_3_title }}">{% get_translation key='find_out_more' language=page.get_language %}</a>
                     </div>
                 </div>
             </div>
@@ -102,19 +101,19 @@
 
 
         <div class=" d-block d-lg-none">
-                                <div class="col-12">
-                                    <img class="section-icons my-3" src="{% static 'images/group-4.svg' %}"
-                                         alt="Is university for me?"/>
-                                    <h4>{{ page.box_1_title }}</h4>
-                                    <h5>{{ page.box_1_content }}</h5>
-                                    <div class="my-4 justify-content-center">
-                                        <a href="{{ page.box_1_link }}"
-                                           class="home-page__search-button py-2 px-3">{% get_translation key='find_out_more' language=page.get_language %}</a>
-                                    </div>
-                                    <hr class="dash"/>
-                                </div>
+            <div class="col-12">
+                <img class="section-icons my-3" src="{% static 'images/group-4.svg' %}"
+                     alt="Is university for me?"/>
+                <h4>{{ page.box_1_title }}</h4>
+                <h5>{{ page.box_1_content }}</h5>
+                <div class="my-4 justify-content-center">
+                    <a href="{{ page.box_1_link }}"
+                       class="home-page__search-button py-2 px-3">{% get_translation key='find_out_more' language=page.get_language %}</a>
+                </div>
+                <hr class="dash"/>
+            </div>
 
-                                <div class="col-12">
+            <div class="col-12">
                                     <img class="section-icons my-3" src="{% static 'images/new.svg' %}"
                                          alt="How to pay for university"/>
                                     <h4>{{ page.box_2_title }}</h4>
@@ -131,7 +130,6 @@
                                 <div class="col-12 pb-3">
                                     <iframe class="video-iframe my-3"
                                             src="{% get_translation key='home_page_video_link' language=page.get_language %}"
-                                            frameborder="0"
                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                             allowfullscreen></iframe>
                                     <h4>{% get_translation key='video_on_topic_title' language=page.get_language %}</h4>
