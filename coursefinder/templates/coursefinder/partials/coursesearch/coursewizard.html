@@ -1,8 +1,8 @@
 {% load staticfiles discover_uni_tags %}
 <div class="dash-vertical-left col-12 col-lg-6 text-center p-3">
     <img class="mx-auto home-page__course-wizard-icon" src="{% static 'images/arrows.svg' %}" alt="Course Wizard"/>
-    <h4 class="text-center">{% get_translation key='course_wizard' language=page.get_language %}</h4>
-    <h5 class="pt-2 text-center">{% get_translation key='answer_4_questions' language=page.get_language %}</h5>
+    <p class="text-center">{% get_translation key='course_wizard' language=page.get_language %}</p>
+    <p class="pt-2 text-center h6">{% get_translation key='answer_4_questions' language=page.get_language %}</p>
     <div class="mt-4 ">
         <a href="{% get_translation key='course_wizard_start_now_url' language=page.get_language %}"
            class="search_button py-2 px-5">{% get_translation key='course_wizard_start_now' language=page.get_language %}</a>
