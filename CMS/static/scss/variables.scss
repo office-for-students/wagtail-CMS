@@ -36,22 +36,22 @@ $ice-blue: #f4f8f8;
 $ugly-blue: #308282;
 
 $xl-heading-font-size: 70px;
-$xl-heading-line-height: 70px;
+$xl-heading-line-height: 1.5;
 $l-heading-font-size: 48px;
-$l-heading-line-height: 48px;
+$l-heading-line-height: 1.5;
 $m-heading-font-size: 36px;
-$m-heading-line-height: 36px;
+$m-heading-line-height: 1.5;
 $s-heading-font-size: 27px;
-$s-heading-line-height: 27px;
+$s-heading-line-height: 1.5;
 $xs-heading-font-size: 21px;
-$xs-heading-line-height: 21px;
+$xs-heading-line-height: 1.5;
 
 $desktop-body-font-size: 19px;
-$desktop-body-line-height: 19px;
+$desktop-body-line-height: 1.5;
 $mobile-body-font-size: 16px;
-$mobile-body-line-height: 16px;
+$mobile-body-line-height: 1.5;
 $small-font-size: 14px;
-$small-line-height: 14px;
+$small-line-height: 1.5;
 
 @mixin yellow-btn {
   background-color: #fcd835;
