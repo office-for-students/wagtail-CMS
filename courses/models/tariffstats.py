@@ -1,5 +1,8 @@
-from .tariff import Tariff, tariff_range
-from .utils import fallback_to, enums, separate_unavail_reason
+from .tariff import Tariff
+from .tariff import tariff_range
+from .utils import enums
+from .utils import fallback_to
+from .utils import separate_unavail_reason
 
 
 class TariffStatistics:
@@ -10,7 +13,7 @@ class TariffStatistics:
         self.tariff_list = []
 
         if tariff_data:
-            self.aggregation = tariff_data.get('aggregation')
+            self.aggregation_level = tariff_data.get('aggregation')
             self.number_of_students = fallback_to(tariff_data.get('number_of_students'), 0)
             if tariff_data.get('tariffs'):
                 for tariff in tariff_data.get('tariffs'):

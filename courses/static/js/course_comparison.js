@@ -583,6 +583,35 @@ class MultipleSubjectsManager {
     }
 }
 
+class SubAccordionManager{
+
+    constructor(){
+        this.setEventListeners();
+    }
+
+    toggleAccordion(title, index){
+        let expand = document.getElementById(`${title}-${index}-expand`)
+        let collapse = document.getElementById(`${title}-${index}-collapse`)
+        let accordionBody = document.getElementById(`${title}-${index}`)
+
+        expand.classList.toggle("hidden")
+        collapse.classList.toggle("hidden")
+        accordionBody.classList.toggle("hidden")
+    }
+
+    setEventListeners() {
+        let subAccordions = document.getElementsByClassName("sub_accordion_header")
+        for (let i = 0; i < subAccordions.length; i++) {
+            const that = this
+            let title = subAccordions[i].id
+            let index = subAccordions[i].dataset.index
+            subAccordions[i].addEventListener("click", function(){
+                that.toggleAccordion(title, index)
+            })
+        }
+    }
+}
+
 
 function setupView() {
     let scrollManager = new ScrollManager();
@@ -594,6 +623,7 @@ function setupView() {
 
     let arrowManager = new ArrowManager();
     arrowManager.removeAllArrows();
+    let subAccordionManager = new SubAccordionManager();
     let multipleSubjectsManager = new MultipleSubjectsManager();
     let courseRatingsManager = new RatingsManager();
     let infoBoxManager = new InfoBoxManager();

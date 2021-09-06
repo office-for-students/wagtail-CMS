@@ -1,4 +1,7 @@
-from typing import List, Dict, Any, Tuple
+from typing import Any
+from typing import Dict
+from typing import List
+from typing import Tuple
 
 from CMS import translations
 from courses.models import Course
@@ -9,7 +12,8 @@ action = 1
 
 class Section:
 
-    def __init__(self, courses: List[Course], language: str):
+    def __init__(self, courses: List[Course], language: str, keys=None):
+        self.keys = keys
         self.data = {}
         self.courses = courses
         self.language = language
@@ -69,7 +73,7 @@ class Section:
                 if method:
                     response = f"{method}{suffix}"
         except Exception as e:
-            print("error: ", e)
+            print("error: ", model_list, e)
             pass
 
         return response
