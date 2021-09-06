@@ -1,4 +1,7 @@
-from typing import List, Tuple, Any
+from typing import Any
+from typing import List
+from typing import Tuple
+
 from courses.renderer.sections.base import Section
 
 OVERALL_SATISFACTION = "overall_satisfied"
@@ -45,10 +48,6 @@ class SatisfactionSection(Section):
 
 
 class SubSatisfactionSection(Section):
-
-    def __init__(self, keys: List[str], courses, language='en'):
-        self.keys = keys
-        super().__init__(courses, language)
 
     def get_sections(self) -> List[Tuple[Any, Any, str, str]]:
         sections = []

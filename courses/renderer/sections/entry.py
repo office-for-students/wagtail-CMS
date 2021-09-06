@@ -21,7 +21,7 @@ entry_list = [
     "access",
     "foundation",
     "none",
-    "other"
+    "other_qualifications"
 ]
 tariff_list = [
     "number_of_students",
