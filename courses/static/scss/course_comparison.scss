@@ -156,6 +156,10 @@ $course_comparison_first_column_width: 250px;
       margin-bottom: 8px;
       font-size: 20px;
 
+      &:nth-child(1){
+        font-size: 18px;
+      }
+
       &:nth-child(4), &:nth-child(6), &:nth-child(7) {
         font-size: 18px;
       }
