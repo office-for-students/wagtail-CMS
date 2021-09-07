@@ -111,7 +111,8 @@
                 }
 
                 #course-detail__nav-control-back {
-                    visibility: hidden;
+                    visibility: visible;
+                    display: inline;
                     cursor: pointer;
                     margin-left: auto;
                     font-family: 'Nunito Sans', sans-serif;
@@ -699,6 +700,10 @@
 
                     .course-detail__nav-control-icon {
                         height: 16px;
+                    }
+
+                    #course-detail__nav-control-back{
+                        display: none;
                     }
                 }
             }
