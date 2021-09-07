@@ -98,7 +98,7 @@ def get_multiple_subjects(courses: List[Course]) -> Dict[str, List[str]]:
     for course in courses:
         subject_list = list()
         subject_names = course.subject_names
-        for index, subject in enumerate(subject_names):
+        for index in range(len(subject_names)):
             subject_list.append(get_subject_label(course, index))
         subjects["subject"].append(subject_list)
     return subjects
