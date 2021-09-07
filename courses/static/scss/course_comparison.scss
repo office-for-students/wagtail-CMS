@@ -93,16 +93,21 @@ $widthOfNarrowArrow: 27px;
   }
 
   .information-icon {
+    display: inline-block;
     height: 20px;
     margin: 0 0 3px 3px;
   }
 
+  .close_button_mobile{
+    float: right;
+  }
+
   .left {
-    left: 0
+    left: -15px;
   }
 
   .right {
-    right: 0;
+    right: -10px;
   }
 }
 
@@ -850,6 +855,11 @@ $course_comparison_first_column_width: 250px;
     height: 150px;
     width: auto;
   }
+  .no_data_container{
+    .close_button_mobile{
+      display: none;
+    }
+  }
   .comparison {
     padding: 35px 30px 55px;
 
@@ -921,7 +931,7 @@ $course_comparison_first_column_width: 250px;
   }
   .no_data_container {
     .information-text {
-      width: 160px;
+      width: 220px;
     }
   }
 }
