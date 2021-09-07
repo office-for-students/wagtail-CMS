@@ -486,15 +486,15 @@ DICT = {
 
     'facebook_link': {
         'en': 'Facebook link',
-        'cy': ''
+        'cy': 'Dolen Facebook'
     },
     'insta_link': {
         'en': 'Instagram link',
-        'cy': ''
+        'cy': 'Dolen Instagram'
     },
     'twitter_link': {
         'en': 'Twitter link',
-        'cy': ''
+        'cy': 'Dolen Twitter'
     },
     'saved': {
         'en': 'Saved',
