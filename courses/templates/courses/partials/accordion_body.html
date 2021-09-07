@@ -44,39 +44,41 @@
     </div>
 
     {% for sub_accordion in sub_accordions %}
-        <div class="accordion-block">
-            <div id="{{ sub_accordion.title }}" data-index="{{ index }}" class="comparison_row-header sub_accordion_header">
-                {{sub_accordion.title}}
-                <div class="ml-auto">
-                    <div id="{{ sub_accordion.title }}-{{ index }}-expand" class="hidden">
-                        <img class="invert-image" src="{% static 'images/plus_icon_white.svg' %}" alt="expand">
-                    </div>
+        {% with identifier=sub_accordion.title|title|cut:" "|add:"-ac-" %}
+            <div class="accordion-block">
+                <div id="{{ identifier }}{{ index }}" data-index="{{ index }}" class="comparison_row-header sub_accordion_header">
+                    {{sub_accordion.title}}
+                    <div class="ml-auto">
+                        <div id="{{ identifier }}{{ index }}-expand" class="hidden">
+                            <img class="invert-image" src="{% static 'images/plus_icon_white.svg' %}" alt="expand">
+                        </div>
 
-                    <div id="{{ sub_accordion.title }}-{{ index }}-collapse" class="">
-                        <img class="invert-image" src="{% static 'images/minus_icon.svg' %}" alt="collapse">
+                        <div id="{{ identifier }}{{ index }}-collapse" class="">
+                            <img class="invert-image" src="{% static 'images/minus_icon.svg' %}" alt="collapse">
+                        </div>
                     </div>
                 </div>
+                <div id="body-{{ identifier }}{{ index }}">
+                    {% if unavailable %}
+                        <div
+                            class="comparison_row-grey_background">
+                            {% include 'courses/partials/unavailable.html' with title=unavailable.1 data=unavailable.0 %}
+                        </div>
+                    {% endif %}
+                    {% for item, value in sub_accordion.dataset.items %}
+                            {% if accordion.title == "Earnings after the course" %}
+                                <div id="{{sub_accordion.title}}{{forloop.counter0}}"
+                                    class="comparison_row-earnings">
+                                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" %}                    </div>
+                            {% else %}
+                                <div id="{{sub_accordion.title}}{{forloop.counter0}}"
+                                    class="comparison_row-grey_background">
+                                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" %}
+                                </div>
+                            {% endif %}
+                    {% endfor %}
+                </div>
             </div>
-            <div id="{{ sub_accordion.title }}-{{ index }}">
-                {% if unavailable %}
-                    <div
-                        class="comparison_row-grey_background">
-                        {% include 'courses/partials/unavailable.html' with title=unavailable.1 data=unavailable.0 %}
-                    </div>
-                {% endif %}
-                {% for item, value in sub_accordion.dataset.items %}
-                        {% if accordion.title == "Earnings after the course" %}
-                            <div id="{{sub_accordion.title}}{{forloop.counter0}}"
-                                class="comparison_row-earnings">
-                                {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" %}                    </div>
-                        {% else %}
-                            <div id="{{sub_accordion.title}}{{forloop.counter0}}"
-                                class="comparison_row-grey_background">
-                                {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" %}
-                            </div>
-                        {% endif %}
-                {% endfor %}
-            </div>
-        </div>
+        {% endwith %}
     {% endfor %}
 {% endwith %}

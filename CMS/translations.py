@@ -293,24 +293,24 @@ STATISTICS = {
         'cy': "Pa mor ddefnyddiol"
     },
     'usefulness_subtitle': {
-        'en': "What I learnt on my course has been useful in my current work",
-        'cy': "Rwy'n defnyddio'r hyn a ddysgais wrth astudio yn fy ngwaith presennol"
+        'en': "I am utilising what I learnt during my studies in my current work.",
+        'cy': "Rwy'n defnyddio'r hyn a ddysgais wrth astudio yn fy ngwaith presennol."
     },
     'meaningfulness': {
         'en': "Meaningfulness",
         'cy': "Pa mor ystyrlon"
     },
     'meaningfulness_subtitle': {
-        'en': "The course has made my current work meaningful",
-        'cy': "Mae fy ngwaith presennol yn ystyrlon"
+        'en': "My current work is meaningful.",
+        'cy': "Mae fy ngwaith presennol yn ystyrlon."
     },
     'future': {
         'en': "Future",
         'cy': "Y Dyfodol"
     },
     'future_subtitle': {
-        'en': "The course has had a positive impact on my future plans",
-        'cy': "Mae fy ngwaith presennol yn cyd-fynd â'm cynlluniau ar gyfer y dyfodol"
+        'en': " My current work fits with my future plans.",
+        'cy': "Mae fy ngwaith presennol yn cyd-fynd â'm cynlluniau ar gyfer y dyfodol."
     },
     'no_data_available': {
         'en': "No data available",

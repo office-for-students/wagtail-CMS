@@ -93,16 +93,26 @@ def get_sub_accordion_dataset(courses, section_model, get_sub_headers, language)
     return response
 
 
-def get_multiple_subjects(courses: List[Course]):
+def get_multiple_subjects(courses: List[Course]) -> Dict[str, List[str]]:
     subjects = dict(subject=[])
     for course in courses:
         subject_list = list()
         subject_names = course.subject_names
-        for subject in subject_names:
-            subject_list.append(subject.display_subject_name())
+        for index in range(len(subject_names)):
+            subject_list.append(get_subject_label(course, index))
         subjects["subject"].append(subject_list)
-
     return subjects
+
+
+def get_subject_label(course, index):
+    sources = ["go", "leo3", "leo5"]
+    method = "No Subject Name"
+    for source in sources:
+        _object = getattr(course, f'{source}_salaries_inst')[index]
+        method = getattr(_object, "subject_title_in_local_language")
+        if method:
+            break
+    return method
 
 
 def dataset_for_comparison_view(courses: List[Course], language="en") -> List[dict]:
@@ -189,7 +199,6 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="earnings_link", language=language),
                 translations.term_for_key(key="read_more_about_employment", language=language),
             )
-
         ),
         dict(
             title=translations.term_for_key(key="graduate_perceptions", language=language),

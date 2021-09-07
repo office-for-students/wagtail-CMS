@@ -590,23 +590,23 @@ class SubAccordionManager{
     }
 
     toggleAccordion(title, index){
-        let expand = document.getElementById(`${title}-${index}-expand`)
-        let collapse = document.getElementById(`${title}-${index}-collapse`)
-        let accordionBody = document.getElementById(`${title}-${index}`)
+        let expand = document.getElementById(`${title}-expand`);
+        let collapse = document.getElementById(`${title}-collapse`);
+        let accordionBody = document.getElementById(`body-${title}`);
 
-        expand.classList.toggle("hidden")
-        collapse.classList.toggle("hidden")
-        accordionBody.classList.toggle("hidden")
+        expand.classList.toggle("hidden");
+        collapse.classList.toggle("hidden");
+        accordionBody.classList.toggle("hidden");
     }
 
     setEventListeners() {
-        let subAccordions = document.getElementsByClassName("sub_accordion_header")
+        let subAccordions = document.getElementsByClassName("sub_accordion_header");
         for (let i = 0; i < subAccordions.length; i++) {
-            const that = this
-            let title = subAccordions[i].id
-            let index = subAccordions[i].dataset.index
+            const that = this;
+            let title = subAccordions[i].id;
+            let index = subAccordions[i].dataset.index;
             subAccordions[i].addEventListener("click", function(){
-                that.toggleAccordion(title, index)
+                that.toggleAccordion(title, index);
             })
         }
     }
