@@ -20,9 +20,10 @@
     &__message, &__thank-you {
         @include small-font-mixin();
 
-        margin: 0px 20px;
-        padding: 9px 12px 0px;
-
+        margin: 0 20px;
+        padding: 9px 12px 0;
+        font-size: 100% !important;
+        line-height: 1.5;
         color: $white;
         background-color: $header-blue;
     }
@@ -92,7 +93,7 @@
     &__toggle {
         @include small-font-mixin();
 
-        padding: 0px;
+        padding: 0;
 
         border: none;
         background-color: transparent;
@@ -106,7 +107,7 @@
         &__message, &__toggle {
             @include mobile-body-font-mixin();
 
-            margin: 0px;
+            margin: 0;
 
             color: $white;
         }
