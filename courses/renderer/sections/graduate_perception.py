@@ -5,12 +5,14 @@ from courses.models import Course
 from courses.renderer.sections.base import Section
 
 DATA_FROM_PEOPLE = "data_from_people"
+PERCENTAGE_THOSE_ASKED = "percent_of_those_asked"
 USEFULNESS = "usefulness"
 MEANINGFULNESS = "meaningfulness"
 FUTURE = "future"
 
 graduate_list = [
     "go_work_pop",
+    "response_rate",
     "go_work_skills",
     "go_work_mean",
     "go_work_on_track"
@@ -57,9 +59,10 @@ class GraduatePerceptionSection(Section):
     def get_sections(self) -> List[Tuple[Any, Any, Any, str, str]]:
         sections = [
                 ("1", DATA_FROM_PEOPLE, graduate_list[0], "", "graduate_perceptions"),
-                ("2", USEFULNESS, graduate_list[1], "%", "graduate_perceptions"),
-                ("3", MEANINGFULNESS, graduate_list[2], "%", "graduate_perceptions"),
-                ("4", FUTURE, graduate_list[3], "%", "graduate_perceptions"),
+                ("2", PERCENTAGE_THOSE_ASKED, graduate_list[1], "%", "graduate_perceptions"),
+                ("3", USEFULNESS, graduate_list[2], "%", "graduate_perceptions"),
+                ("4", MEANINGFULNESS, graduate_list[3], "%", "graduate_perceptions"),
+                ("5", FUTURE, graduate_list[4], "%", "graduate_perceptions"),
             ]
         return sections
 
@@ -87,9 +90,9 @@ class GraduatePerceptionSection(Section):
 
     def update_data_with_subtitles(self, data: Dict[str, Any]):
         subtitles = {
-            "2": "usefulness_subtitle",
-            "3": "meaningfulness_subtitle",
-            "4": "future_subtitle"
+            "3": "usefulness_subtitle",
+            "4": "meaningfulness_subtitle",
+            "5": "future_subtitle"
         }
         for section in self.sections:
             if section[0] in subtitles:
