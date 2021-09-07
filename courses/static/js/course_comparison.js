@@ -470,6 +470,7 @@ class ComparisonDisplayManager {
         this.displayColumnsWithIndex(columns, currentIndexes);
         this.currentIndex = new_index;
         this.updateStickyHeader();
+        this.addRightInfo(currentIndexes);
         this.onChange();
     }
 
@@ -486,24 +487,34 @@ class ComparisonDisplayManager {
         accordion_header.css("z-index", "8");
     }
 
+    resetInfoPosition(){
+        let informationText = document.getElementsByClassName("information-text")
+        Array.from(informationText).forEach(function(el){
+            el.classList.remove("right")
+            el.classList.add("left")
+        })
+    }
+
+    addRightInfo(currentIndexes){
+        this.resetInfoPosition();
+        let lastIndex = currentIndexes.length-1
+        let rightIndex = currentIndexes[lastIndex]
+        let rightItem = document.getElementsByClassName(`info-box-${rightIndex}`)
+        Array.from(rightItem).forEach(function(el) {
+            el.classList.remove("left")
+            el.classList.add("right")
+        })
+    }
 }
 
 class InfoBoxManager {
 
     constructor() {
-        this.addLeft();
         this.setListeners();
     }
 
     toggleHidden(el) {
         el.classList.toggle("hidden");
-    }
-
-    addLeft() {
-        Array.from(document.getElementsByClassName("information-text info-box-0")).forEach(function (el) {
-            el.classList.add("info-left");
-        })
-
     }
 
     setListeners() {
