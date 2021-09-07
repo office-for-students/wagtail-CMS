@@ -38,7 +38,7 @@
                     <span class="count home-page__bookmark-circle line-height-1-5"></span> {% get_translation key='n_courses_bookmarked_pt_2' language=page.get_language %}
                     &nbsp; &nbsp;</p>
                 <p class="pt-2 h5 line-height-1-5"><a class="home-page__bookmark-link"
-                                      href="{% get_translation key='bookmark_courses_link' language=page.get_language %}">{% get_translation key='view_your_courses' language=page.get_language %}</a>
+                                                      href="{% get_translation key='bookmark_courses_link' language=page.get_language %}">{% get_translation key='view_your_courses' language=page.get_language %}</a>
                 </p>
             </div>
         </div>
@@ -79,21 +79,24 @@
                     <div class="my-4 justify-content-center">
                         <a href="{{ page.box_1_link }}"
                            class="home-page__search-button py-2 px-3"
-                           aria-label="{{ page.box_1_title }}">{% get_translation key='find_out_more' language=page.get_language %}</a>
+                           aria-label="{{ page.box_1_title }} {% get_translation key='find_out_more' language=page.get_language %}">
+                            {% get_translation key='find_out_more' language=page.get_language %}</a>
                     </div>
                 </div>
                 <div class=" col-4 px-4 pb-4">
                     <div class="my-4 justify-content-center">
                         <a href="{{ page.box_2_link }}"
                            class="home-page__search-button py-2 px-3"
-                           aria-label="{{ page.box_2_title }}">{% get_translation key='find_out_more' language=page.get_language %}</a>
+                           aria-label="{{ page.box_2_title }} {% get_translation key='find_out_more' language=page.get_language %}">
+                            {% get_translation key='find_out_more' language=page.get_language %}</a>
                     </div>
                 </div>
                 <div class=" col-4 px-4 pb-4">
                     <div class="my-4 justify-content-center">
                         <a href="{{ page.box_3_link }}"
                            class="home-page__search-button py-2 px-3"
-                           aria-label="{{ page.box_3_title }}">{% get_translation key='find_out_more' language=page.get_language %}</a>
+                           aria-label="{{ page.box_3_title }} {% get_translation key='find_out_more' language=page.get_language %}">
+                            {% get_translation key='find_out_more' language=page.get_language %}</a>
                     </div>
                 </div>
             </div>
