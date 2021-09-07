@@ -29,7 +29,9 @@
 {#</script> -->#}
 
 <div style="display: none;" class="filters-block__filter-accordion">
-    <div tabindex="0" role="button" aria-label="Show content" class="filters-block__filter-accordion-header">
+    <div tabindex="0" role="button"
+         aria-label="Show {% get_translation key='institution' language=page.get_language %} content"
+         class="filters-block__filter-accordion-header">
         <div class="filters-block__filter-accordion-heading">
             <div class="filters-block__filter-accordion-title">
                 {% get_translation key='institution' language=page.get_language %}
