@@ -54,12 +54,15 @@
             <div class="filters-block__filter-option-country">
                 <input id="countries-scotland" class="hidden-scotland" type="checkbox" name="countries_query"
                        value="Scotland" hidden
-                       {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}/>
+                       {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-scotland-label"/>
                 <input id="countries-scotland" class="filters-block__filter-checkbox-input scotland"
                        onclick="toggleCheckbox('scotland')" type="checkbox" name="countries_check" value="Scotland"
-                       {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}/>
+                       {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-scotland-label"/>
 
-                <label class="filters-block__filter-checkbox-label-bold" for="countries-scotland">
+                <label class="filters-block__filter-checkbox-label-bold" id="countries-scotland-label"
+                       for="countries-scotland">
                     {% get_translation key='scotland' language=page.get_language %}
                 </label>
             </div>
@@ -67,12 +70,14 @@
             <div class="filters-block__filter-option-country">
                 <input id="countries-wales" class="hidden-wales" type="checkbox" name="countries_query" value="Wales"
                        hidden
-                       {% if 'Wales' in filter_form.countries_query %}checked{% endif %}/>
+                       {% if 'Wales' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-wales-label"/>
                 <input id="countries-wales" class="filters-block__filter-checkbox-input wales"
                        onclick="toggleCheckbox('wales')" type="checkbox" name="countries_check" value="Wales"
-                       {% if 'Wales' in filter_form.countries_query %}checked{% endif %}/>
+                       {% if 'Wales' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-wales-label"/>
 
-                <label class="filters-block__filter-checkbox-label-bold" for="countries-wales">
+                <label class="filters-block__filter-checkbox-label-bold" id="countries-wales-label">
                     {% get_translation key='wales' language=page.get_language %}
                 </label>
             </div>
@@ -80,13 +85,16 @@
             <div class="filters-block__filter-option-country">
                 <input id="countries-ireland" class="hidden-ireland" type="checkbox" name="countries_query"
                        value="Northern Ireland" hidden
-                       {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}/>
+                       {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-ireland-label"/>
                 <input id="countries-ireland" class="filters-block__filter-checkbox-input ireland"
                        onclick="toggleCheckbox('ireland')" type="checkbox" name="countries_check"
                        value="Northern Ireland"
-                       {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}/>
+                       {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-ireland-label"/>
 
-                <label class="filters-block__filter-checkbox-label-bold" for="countries-ireland">
+                <label class="filters-block__filter-checkbox-label-bold" id="countries-ireland-label"
+                       for="countries-ireland">
                     {% get_translation key='northern_ireland' language=page.get_language %}
                 </label>
             </div>
@@ -94,12 +102,15 @@
             <div class="filters-block__filter-option-country">
                 <input id="countries-england" class="hidden-england" type="checkbox" name="countries_query"
                        value="England" hidden
-                       {% if 'England' in filter_form.countries_query %}checked{% endif %}/>
+                       {% if 'England' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-england-label"/>
                 <input id="countries-england" class="filters-block__filter-checkbox-input england"
                        onclick="toggleCheckbox('england')" type="checkbox" name="countries_check" value="England"
-                       {% if 'England' in filter_form.countries_query %}checked{% endif %}/>
+                       {% if 'England' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-england-label"/>
 
-                <label class="filters-block__filter-checkbox-label-bold" for="countries-england">
+                <label class="filters-block__filter-checkbox-label-bold" id="countries-england-label"
+                       for="countries-england">
                     {% get_translation key='england' language=page.get_language %}
                 </label>
             </div>
