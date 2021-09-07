@@ -9,11 +9,12 @@
                     <div class="col-12 col-lg-4 pr-0">
                         {% if page.is_english %}
                             <img class="footer__brand-logo float-lg-left float-md-center"
-                                src="{% static 'images/logos/footer_logo_color_english.svg' %}"
-                                alt="{% get_translation key='site_logo' language=page.get_language %}">
+                                 src="{% static 'images/logos/footer_logo_color_english.svg' %}"
+                                 alt="{% get_translation key='site_logo' language=page.get_language %}">
                         {% else %}
-                            <img class="footer__brand-logo" src="{% static 'images/logos/footer_logo_color_welsh.svg' %}"
-                                alt="{% get_translation key='site_logo' language=page.get_language %}">
+                            <img class="footer__brand-logo"
+                                 src="{% static 'images/logos/footer_logo_color_welsh.svg' %}"
+                                 alt="{% get_translation key='site_logo' language=page.get_language %}">
                         {% endif %}
                     </div>
                     <div class="col-12 col-lg-8 d-flex justify-content-between">
@@ -38,45 +39,45 @@
             <div class="row mx-0 d-flex justify-content-between py-4 px-lg-4">
                 <a class="footer__logo footer__logo-ofs" href="https://www.officeforstudents.org.uk/">
                     <img src="{% static 'images/logos/footer_ofs_logo.svg' %}"
-                        alt="Office for Students">
+                         alt="Office for Students">
                 </a>
 
                 <a class="footer__logo footer__logo-hefcw" href="https://www.hefcw.ac.uk/">
                     <img src="{% static 'images/logos/footer_hefcw_logo.png' %}"
-                        alt="HEFCW">
+                         alt="HEFCW">
                 </a>
                 <a class="footer__logo footer__logo-dfeni" href="https://www.economy-ni.gov.uk/">
                     <img src="{% static 'images/logos/footer_dfeni_logo.png' %}"
-                        alt="DfENI">
+                         alt="DfENI">
                 </a>
 
                 <a class="footer__logo footer__sfc" href="http://www.sfc.ac.uk/">
                     <img src="{% static 'images/logos/footer_sfc_logo.png' %}"
-                        alt="SFC">
+                         alt="SFC">
                 </a>
             </div>
             <div class="row mx-0 d-flex justify-content-between">
-                <h6 class="footer__copyright">
+                <p class="footer__copyright">
                     © {% get_translation key='copyright' language=page.get_language %}
-                </h6>
+                </p>
                 <div class="footer__social-media">
 
-                    <a class="footer__facebook-logo mx-2" href="https://www.facebook.com/DiscoverUniUK">
+                    <a class="footer__facebook-logo mx-2" href="https://www.facebook.com/DiscoverUniUK"
+                       aria-label="{% get_translation key='facebook_link' language=page.get_language %}">
                         <i class="fab fa-facebook"></i>
                     </a>
 
-                    <a class="footer__instagram-logo mx-2" href="https://www.instagram.com/discoveruniuk/">
+                    <a class="footer__instagram-logo mx-2" href="https://www.instagram.com/discoveruniuk/"
+                       aria-label="{% get_translation key='insta_link' language=page.get_language %}">
                         <i class="fab fa-instagram"></i>
                     </a>
 
-                    <a class="footer__twitter-logo mx-2" href="https://twitter.com/DiscoverUniUK/">
+                    <a class="footer__twitter-logo mx-2" href="https://twitter.com/DiscoverUniUK/"
+                       aria-label="{% get_translation key='twitter_link' language=page.get_language %}">
                         <i class="fab fa-twitter"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
-
-    </div>
-
 </footer>

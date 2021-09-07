@@ -23,8 +23,8 @@
   &-compare-button {
     width: 180px;
     height: 40px;
-    margin: 28px 16px 28px 0px;
-    border: 0px;
+    margin: 28px 16px 28px 0;
+    border: 0;
     border-radius: 20px;
     background-color: #e2e2e2;
     color: #595959;
@@ -43,7 +43,7 @@
   &__course-count {
     @include m-heading--bold-mixin();
 
-    margin: 0px 0px 15px;
+    margin: 0 0 15px;
 
 
     color: $gradient-light-green;
@@ -52,7 +52,7 @@
   &__lead {
     @include xs-heading-mixin();
 
-    margin: 0px;
+    margin: 0;
 
     color: $ux-grey-3;
   }
@@ -67,12 +67,12 @@
       p {
         @include small-font-mixin();
 
-        margin: 10px 0px 0px;
+        margin: 10px 0 0;
       }
 
       &:first-child {
         p {
-          margin-top: 0px;
+          margin-top: 0;
         }
       }
     }
@@ -88,7 +88,7 @@
     @include small-font-mixin();
 
     display: none;
-    padding: 100px 30px 0px;
+    padding: 100px 30px 0;
     text-align: center;
 
     &-example {
@@ -113,7 +113,7 @@
     @include small-font-mixin();
 
     display: none;
-    padding: 40px 30px 0px;
+    padding: 40px 30px 0;
     text-align: center;
   }
 
@@ -139,9 +139,9 @@
     &-info {
       @include mobile-body-font-mixin();
 
-      margin: 0px;
+      margin: 0;
 
-      line-height: 22px;
+      line-height: 1.5;
     }
 
     &-remove {
@@ -207,7 +207,7 @@ input[type=checkbox] {
 
 input[type=checkbox] + label {
   display:inline-block;
-  padding: 0 0 0 0px;
+  padding: 0 0 0 0;
   background:url("/static/assets/empty_check.png") no-repeat;
   height: 64px;
   width: 64px;;

@@ -13,7 +13,8 @@
                 {% endfor %}
             {% endwith %}
             <img id="ratings_remove-{{ forloop.counter0 }}" class="course-detail__courses-container-exit-course"
-                 src="{% static 'images/icon-close.svg' %}">
+                 src="{% static 'images/icon-close.svg' %}"
+                 alt="{% get_translation key='close' language=page.get_language %}">
         </div>
 
         <div class="course-detail__courses-name">

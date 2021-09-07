@@ -1,8 +1,3 @@
-from typing import Any
-from typing import Dict
-from typing import Optional
-
-
 # Use this to access DICT/OPTIONS, don't access them directly
 def term_for_key(key: str, language: str) -> str:
     """ Method to use to access welsh translations for static content
@@ -488,6 +483,19 @@ OPTIONALS = {
 }
 
 DICT = {
+
+    'facebook_link': {
+        'en': 'Facebook link',
+        'cy': 'Dolen Facebook'
+    },
+    'insta_link': {
+        'en': 'Instagram link',
+        'cy': 'Dolen Instagram'
+    },
+    'twitter_link': {
+        'en': 'Twitter link',
+        'cy': 'Dolen Twitter'
+    },
     'saved': {
         'en': 'Saved',
         'cy': 'Wedi’u cadw'
