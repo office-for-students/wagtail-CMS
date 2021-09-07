@@ -83,7 +83,7 @@
                 </div>
                 <div class="compare-courses-box">
                     <div class="compare-courses-block">
-                        <h5 class="compare-text-header">{% get_translation key='compare_courses' language=page.get_language %}</h5>
+                        <p class="compare-text-header">{% get_translation key='compare_courses' language=page.get_language %}</p>
                         <div class="compare-text-content">1.
                             <div style="padding-left: 10px;">
                                 <span class="compare-text-highlight">{% get_translation key="save_courses" language=page.get_language %}</span>
@@ -98,7 +98,8 @@
                         </div>
                     </div>
                     <div class="compare-courses-img-block">
-                        <img class="compare-courses-img" src="{% static 'images/compare-course-graphic.svg' %}">
+                        <img class="compare-courses-img" src="{% static 'images/compare-course-graphic.svg' %}"
+                             alt="{% get_translation key='compare_courses' language=page.get_language %}">
                     </div>
                 </div>
                 {% comment %}
