@@ -771,11 +771,13 @@ $course_comparison_first_column_width: 250px;
       }
 
       &-name {
+        display: block;
         margin: 6px 0;
         font-family: "Nunito Sans", sans-serif;
-        font-size: 13px;
+        font-size: 0.8125rem;
+        font-weight: 400;
         color: #1e1e1e;
-        line-height: 1.2;
+        line-height: 1.5;
       }
 
       &-institution-name {
