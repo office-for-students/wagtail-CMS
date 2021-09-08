@@ -104,17 +104,26 @@ def get_multiple_subjects(courses: List[Course]) -> Dict[str, List[str]]:
     return subjects
 
 
+def has_valid_value(attrib, _object):
+    method = getattr(_object, attrib)
+    if method:
+        return True
+
+    return False
+
+
 def get_subject_label(course, index):
     sources = ["go", "leo3", "leo5"]
     method = "No Subject Name"
     for source in sources:
-        try:
-            _object = getattr(course, f'{source}_salaries_inst')[index]
-            method = getattr(_object, "subject_title_in_local_language")
-        except Exception as e:
-            pass
-        if method:
-            break
+        _object = getattr(course, f'{source}_salaries_inst')[index]
+        attrib = "subject_title_in_local_language"
+        if has_valid_value(
+                _object=_object,
+                attrib=attrib
+        ):
+            return getattr(_object, attrib)
+
     return method
 
 
