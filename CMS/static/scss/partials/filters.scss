@@ -20,10 +20,10 @@
         .close {
             color: black;
             opacity: 1;
-            padding: 0!important;
-            margin: 0!important;
+            padding: 0 !important;
+            margin: 0 !important;
             align-self: center;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
@@ -33,6 +33,7 @@
 
             span {
                 padding-left: .5rem;
+
                 img {
                     vertical-align: baseline;
                 }        
@@ -90,7 +91,7 @@
         justify-content: space-between;
         margin-bottom: 10px;
         &-title {
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: bold;
         }
     }
@@ -109,7 +110,7 @@
             }
 
             &-title {
-                font-size: 16px;
+                font-size: 1rem;
                 font-weight: bold;
             }
 
@@ -159,7 +160,7 @@
                     padding-left: 5px;
                 }
 
-                &-body{
+                &-body {
                     display: none;
                     position: absolute;
                     z-index: 1;
@@ -168,22 +169,24 @@
                     box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 4px 0;
 
                 }
-                &-item{
+
+                &-item {
                     padding-left: 5px;
                 }
-                &-item:hover{
+
+                &-item:hover {
                     background-color: #ced4da;
                 }
             }
         }
 
-        &-search{
+        &-search {
             width: 95%;
             height: 35px;
             padding: 7px 93px 6px 10px;
             margin: 12px;
             font-family: "Nunito Sans", sans-serif;
-            font-size: 16px;
+            font-size: 1rem;
             border-radius: .25rem;
             border: 1px solid #ced4da;
         }
@@ -193,19 +196,19 @@
             border: 3px solid #c1dfff;
         }
 
-            &-pill{
-                display: flex;
-                height: 31px;
-                margin: 0 8px 10px 0;
-                padding: 5px 10px 4px;
-                background-color: #ced4d9
-            }
+        &-pill {
+            display: flex;
+            height: 31px;
+            margin: 0 8px 10px 0;
+            padding: 5px 10px 4px;
+            background-color: #ced4d9
+        }
 
-            &-remove-pill{
-                display: flex;
-                height: 31px;
-                margin: 0 8px 10px 0;
-                padding: 5px 10px 4px;
+        &-remove-pill {
+            display: flex;
+            height: 31px;
+            margin: 0 8px 10px 0;
+            padding: 5px 10px 4px;
                 background-color: white;
                 cursor: pointer;
             }
@@ -214,7 +217,7 @@
                 height: 22px;
                 margin: 0 20px 0 0;
                 font-family: "Nunito Sans", sans-serif;
-                font-size: 16px;
+                font-size: 1rem;
                 font-weight: bold;
                 font-stretch: normal;
                 font-style: normal;
@@ -235,7 +238,7 @@
             padding: 10px;
             background-color: $pale;
             font-family: "Nunito Sans", sans-serif;
-            font-size: 16px;
+            font-size: 1rem;
         }
 
         &-years-group {
@@ -272,7 +275,7 @@
 
             &-title {
                 margin: 10px 28px 9px 0;
-                font-size: 16px;
+                font-size: 1rem;
                 font-weight: bold;
                 font-stretch: normal;
                 font-style: normal;
@@ -366,7 +369,7 @@
             }
 
             &-label {
-                font-size: 16px;
+                font-size: 1rem;
 
                 &-bold {
                     font-weight: bold;
@@ -568,7 +571,7 @@
         }
 
         &-btn {
-            font-size: 18px;
+            font-size: 1.125rem;
             text-align: center;
             border: none;
             margin-top: 12px;
@@ -616,7 +619,7 @@
         background-color: white;
         color: grey;
         padding: .375rem .75rem;
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: normal;
         cursor: pointer;
         border: 1px solid #ced4da;
@@ -646,30 +649,30 @@
         overflow-x: hidden;
         position: absolute;
         background-color: white;
-        box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4);
+        box-shadow: 3px 3px 4px 0 rgba(0, 0, 0, 0.4);
         z-index: 11;
         margin-top: 3px;
 
-        &-institution-check{
+        &-institution-check {
             font-family: "Nunito Sans", sans-serif;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: normal;
             margin-left: 25px;
             padding-bottom: 5px;
 
-            &-institution-label{
+            &-institution-label {
                 margin: 5px;
             }
         }
 
-        &-select-all-check{
+        &-select-all-check {
             font-family: "Nunito Sans", sans-serif;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: normal;
             margin-left: 25px;
             padding-bottom: 5px;
 
-            &-institution-label{
+            &-institution-label {
                 margin: 5px;
             }
         }

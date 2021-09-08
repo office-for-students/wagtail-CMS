@@ -33,7 +33,7 @@
         .course-detail__joint-overview-heading h3{
             font-family: 'Nunito Sans', sans-serif;
             font-weight: normal;
-            font-size: 18px;
+            font-size: 1.125rem;
             line-height: normal;
             line-height: 100%;
             color: #000000;
@@ -44,10 +44,10 @@
             text-align: center;
         }
         .course-detail__joint-overview-body{
-            p{
+            p {
                 font-family: 'Nunito Sans', sans-serif;
                 font-weight: normal;
-                font-size: 14px;
+                font-size: 0.875rem;
                 line-height: normal;
                 line-height: 100%;
                 color: #000000;
@@ -58,7 +58,7 @@
             a {
                 font-family: 'Nunito Sans', sans-serif;
                 line-height: normal;
-                font-size: 14px;
+                font-size: 0.875rem;
                 color: #666666;
                 font-weight: normal;
                 color: #308282;
@@ -70,21 +70,23 @@
     }
 
     .course-detail__lead {
-        h4{
-            font-size:16px;
+        h4 {
+            font-size: 1rem;
             font-family: 'Nunito Sans', sans-serif;
         }
-        hr{
-            border: none; 
+
+        hr {
+            border: none;
             height: 3px;
             background-color: $duck-egg-blue;
-            
+
         }
+
         .course-detail__overview-lead h4 {
-            font-size:16px;
-            font-weight:bold;
-            margin-bottom:0;
-            color:$black;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 0;
+            color: $black;
         }
 
         
@@ -115,9 +117,9 @@
                     cursor: pointer;
                     margin-left: auto;
                     font-family: 'Nunito Sans', sans-serif;
-                    font-size:16px;
-                    color:white;
-                    font-weight:normal;
+                    font-size: 1rem;
+                    color: white;
+                    font-weight: normal;
                 }
             }
         }
@@ -140,7 +142,7 @@
 
         a.course-detail__institution-name {
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
@@ -174,7 +176,7 @@
 
                 .course-detail__overview-item-heading {
                     font-family: 'Nunito Sans', sans-serif;
-                    font-size: 14px;
+                    font-size: 0.875rem;
                     font-weight: normal;
                     font-stretch: normal;
                     font-style: normal;
@@ -200,29 +202,32 @@
         .course-detail__headline_stat {
             background-color: #fef6d9;
         }
-        h3{
+
+        h3 {
             font-family: 'Nunito Sans', sans-serif;
             font-size: 22px;
             font-weight: normal;
             color: #000000;
         }
-        
-        h2{
+
+        h2 {
             font-family: 'Nunito Sans', sans-serif;
             font-size: 28px;
             font-weight: normal;
             color: #000000;
         }
-        p{
+
+        p {
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: normal;
             color: #000000;
-            padding:0px 5px;
+            padding: 0px 5px;
         }
-        a{
+
+        a {
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
@@ -290,10 +295,10 @@
         background-color: #F2F2F2;
         border: none;
 
-        .course-detail__uni-site-links-header, .course-detail__uni-site-links-header .rich-text p{
-            font-size:18px;
-            font-weight:normal;
-            color:$black;
+        .course-detail__uni-site-links-header, .course-detail__uni-site-links-header .rich-text p {
+            font-size: 1.125rem;
+            font-weight: normal;
+            color: $black;
             font-family: 'Nunito Sans', sans-serif;
         }
 
@@ -302,9 +307,9 @@
 
 
             .course-detail__uni-site-links-heading {
-                font-size:16px;
-                font-weight:normal;
-                color:$black;
+                font-size: 1rem;
+                font-weight: normal;
+                color: $black;
                 font-family: 'Nunito Sans', sans-serif;
             }
 
@@ -317,9 +322,9 @@
 
 
                     .course-detail__uni-site-link {
-                        font-size:14px;
-                        font-weight:normal;
-                        color:$dark-green-blue;
+                        font-size: 0.875rem;
+                        font-weight: normal;
+                        color: $dark-green-blue;
                         font-family: 'Nunito Sans', sans-serif;
                         text-decoration: underline;
                     }
@@ -356,10 +361,10 @@
 
     .explanation-text {
         .explanation-text {
-           
+
             color: $brownish-grey;
-            font-weight:normal;
-            font-size:14px;
+            font-weight: normal;
+            font-size: 0.875rem;
         }
     }
 
@@ -466,13 +471,13 @@
                 text-align: left;
             }
             .course-detail__joint-overview-body{
-                p{
+                p {
                     font-family: 'Nunito Sans', sans-serif;
                     font-weight: normal;
                     line-height: normal;
                     line-height: 100%;
                     color: #000000;
-                    font-size: 16px;
+                    font-size: 1rem;
                     color: #666666;
                     font-weight: normal;
                     text-align: left;
@@ -481,7 +486,7 @@
                     font-family: 'Nunito Sans', sans-serif;
                     line-height: normal;
                     line-height: 100%;
-                    font-size: 16px;
+                    font-size: 1rem;
                     color: #666666;
                     font-weight: normal;
                     color: #308282;
@@ -506,7 +511,7 @@
         .course-detail__overview{
             .course-detail__overview-item{
                 .course-detail__overview-item-heading {
-                    font-size: 16px;
+                    font-size: 1rem;
                 }
             }
         }
@@ -545,22 +550,24 @@
                 color: #000000;
             }
 
-            h2{
+            h2 {
                 font-family: 'Nunito Sans', sans-serif;
                 font-size: 38px;
                 font-weight: normal;
                 color: #000000;
             }
-            p{
+
+            p {
                 font-family: 'Nunito Sans', sans-serif;
-                font-size: 18px;
+                font-size: 1.125rem;
                 font-weight: normal;
                 color: #000000;
-                padding:0px 5px;
+                padding: 0px 5px;
             }
-            a{
+
+            a {
                 font-family: 'Nunito Sans', sans-serif;
-                font-size: 18px;
+                font-size: 1.125rem;
                 font-weight: normal;
                 font-stretch: normal;
                 font-style: normal;
@@ -594,13 +601,13 @@
             text-align: left;
         }
         .course-detail__joint-overview-body{
-            p{
+            p {
                 font-family: 'Nunito Sans', sans-serif;
                 font-weight: normal;
                 line-height: normal;
                 line-height: 100%;
                 color: #000000;
-                font-size: 16px;
+                font-size: 1rem;
                 color: #666666;
                 font-weight: normal;
                 text-align: left;
@@ -609,7 +616,7 @@
                 font-family: 'Nunito Sans', sans-serif;
                 line-height: normal;
                 line-height: 100%;
-                font-size: 16px;
+                font-size: 1rem;
                 color: #666666;
                 font-weight: normal;
                 color: #308282;
@@ -632,22 +639,24 @@
             color: #000000;
         }
 
-        h2{
+        h2 {
             font-family: 'Nunito Sans', sans-serif;
             font-size: 38px;
             font-weight: normal;
             color: #000000;
         }
-        p{
+
+        p {
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: normal;
             color: #000000;
-            padding:0px 5px;
+            padding: 0px 5px;
         }
-        a{
+
+        a {
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
@@ -677,7 +686,7 @@
         .course-detail__overview{
             .course-detail__overview-item{
                 .course-detail__overview-item-heading {
-                    font-size: 16px;
+                    font-size: 1rem;
                 }
             }
         }
@@ -765,24 +774,27 @@
                     padding: 0;
                     margin:0;
                 }
-                h2{
+
+                h2 {
                     font-family: 'Nunito Sans', sans-serif;
                     font-size: 48px;
                     font-weight: normal;
                     color: #000000;
-                    margin-top:10px;
-                    margin-bottom:10px;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
                 }
-                p{
+
+                p {
                     font-family: 'Nunito Sans', sans-serif;
-                    font-size: 18px;
+                    font-size: 1.125rem;
                     font-weight: normal;
                     color: #000000;
-                    padding:0;
+                    padding: 0;
                 }
-                a{
+
+                a {
                     font-family: 'Nunito Sans', sans-serif;
-                    font-size: 18px;
+                    font-size: 1.125rem;
                     font-weight: normal;
                     font-stretch: normal;
                     font-style: normal;
@@ -812,9 +824,9 @@
                     padding-bottom: 50px;
 
                     .course-detail__uni-site-links-heading {
-                        font-size:18px;
-                        font-weight:normal;
-                        color:$black;
+                        font-size: 1.125rem;
+                        font-weight: normal;
+                        color: $black;
                         font-family: 'Nunito Sans', sans-serif;
                     }
 
@@ -826,9 +838,9 @@
                             display: block;
 
                             .course-detail__uni-site-link {
-                                font-size:14px;
-                                font-weight:normal;
-                                color:$dark-green-blue;
+                                font-size: 0.875rem;
+                                font-weight: normal;
+                                color: $dark-green-blue;
                                 font-family: 'Nunito Sans', sans-serif;
                                 text-decoration: underline;
                             }
@@ -866,10 +878,10 @@
         }
 
         .explanation-text {
-           
+
             color: $brownish-grey;
-            font-weight:normal;
-            font-size:14px;
+            font-weight: normal;
+            font-size: 0.875rem;
         }
 
         .find-out-more-link {
