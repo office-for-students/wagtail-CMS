@@ -9,18 +9,16 @@
     .earnings-after-course__stats-heading, .earnings-after-course__stats-heading .rich-text p{
         @include s-heading-mixin();
         color: $black;
-        font-weight:normal;
-        font-size: 18px;
+        font-weight: normal;
+        font-size: 1.125rem;
         font-family: 'Nunito Sans', sans-serif;
-        font-weight:normal;
     }
 
-    .earnings-after-course_explanation-text .rich-text p{
+    .earnings-after-course_explanation-text .rich-text p {
         color: $black;
-        font-weight:normal;
-        font-size: 18px;
+        font-weight: normal;
+        font-size: 1.125rem;
         font-family: 'Nunito Sans', sans-serif;
-        font-weight:normal;
     }
     
     .earnings-after-course_section-block .earnings-after-course-stat{
@@ -28,42 +26,45 @@
         border-width:3px;
         border-style: solid none none none;
         border-color: #42957f;
-        height:85%!important;
+        height: 85% !important;
     }
-    
-    .earnings-after-course_section-block h3{
+
+    .earnings-after-course_section-block h3 {
         color: $black;
-        font-weight:normal;
-        font-size: 16px;
-        font-family: 'Nunito Sans', sans-serif;
-    }
-    .earnings-after-course-stat-salary{
-        color: $black;
-        font-weight:normal;
-        font-size: 18px;
-        font-family: 'Nunito Sans', sans-serif;
-    }
-    .earnings-after-course-stat-salary-range{
-        color: $brownish-grey;
-        font-weight:normal;
-        font-size: 14px;
+        font-weight: normal;
+        font-size: 1rem;
         font-family: 'Nunito Sans', sans-serif;
     }
 
-    .earnings-after-course-stat-small{
+    .earnings-after-course-stat-salary {
+        color: $black;
+        font-weight: normal;
+        font-size: 1.125rem;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .earnings-after-course-stat-salary-range {
         color: $brownish-grey;
-        font-weight:normal;
-        font-size: 14px;
+        font-weight: normal;
+        font-size: 0.875rem;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .earnings-after-course-stat-small {
+        color: $brownish-grey;
+        font-weight: normal;
+        font-size: 0.875rem;
         font-family: 'Nunito Sans', sans-serif;
 
-        a{
+        a {
             color: $dark-green-blue;
             font-weight: normal;
             text-decoration: underline;
-            font-size: 14px;
+            font-size: 0.875rem;
         }
-        #sample-size-text{
-            font-size: 14px;
+
+        #sample-size-text {
+            font-size: 0.875rem;
             font-family: 'Nunito Sans', sans-serif;
         }
     }
@@ -133,17 +134,19 @@
 
     .earnings-after-course__lead-intro {
         color: $brownish-grey;
-        font-size:14px;
-        font-weight:normal;
+        font-size: 0.875rem;
+        font-weight: normal;
     }
-    a{
+
+    a {
         color: $dark-green-blue;
         font-weight: normal;
         text-decoration: underline;
-        font-size: 14px;
+        font-size: 0.875rem;
 
     }
-    ul{
+
+    ul {
         padding-inline-start: 0;
         list-style-position: inside;
     }
@@ -192,10 +195,10 @@
             font-family: 'Nunito Sans', sans-serif;
         }
 
-        .earnings-after-course_explanation-text .rich-text p{
+        .earnings-after-course_explanation-text .rich-text p {
             color: $black;
-            font-weight:normal;
-            font-size: 16px;
+            font-weight: normal;
+            font-size: 1rem;
             font-family: 'Nunito Sans', sans-serif;
         }
 
@@ -235,20 +238,23 @@
             color: $black;
             text-decoration: none;
         }
+
         .earnings-after-course__lead-intro {
             color: $brownish-grey;
-            font-size:18px;
-            font-weight:normal;
+            font-size: 1.125rem;
+            font-weight: normal;
         }
-        a{
+
+        a {
             color: $dark-green-blue;
             font-weight: normal;
             text-decoration: underline;
-            font-size: 16px;
+            font-size: 1rem;
         }
-        ul{
+
+        ul {
             list-style-position: inside;
-            font-size:16px;
+            font-size: 1rem;
         }
 
     }
@@ -284,42 +290,45 @@
             border-width:3px;
             border-style: solid none none none;
             border-color: #42957f;
-            height:85%!important;
+            height: 85% !important;
         }
-        .earnings-after-course_section-block h3{
+
+        .earnings-after-course_section-block h3 {
             color: $black;
-            font-weight:normal;
+            font-weight: normal;
             font-size: 24px;
             font-family: 'Nunito Sans', sans-serif;
         }
-        .earnings-after-course-stat-salary{
+
+        .earnings-after-course-stat-salary {
             color: $black;
-            font-weight:normal;
+            font-weight: normal;
             font-size: 28px;
             font-family: 'Nunito Sans', sans-serif;
         }
-        .earnings-after-course-stat-salary-range{
+
+        .earnings-after-course-stat-salary-range {
             color: $brownish-grey;
-            font-weight:normal;
-            font-size: 14px;
+            font-weight: normal;
+            font-size: 0.875rem;
             font-family: 'Nunito Sans', sans-serif;
         }
-    
-        .earnings-after-course-stat-small{
+
+        .earnings-after-course-stat-small {
             color: $brownish-grey;
-            font-weight:normal;
-            font-size: 14px;
+            font-weight: normal;
+            font-size: 0.875rem;
             font-family: 'Nunito Sans', sans-serif;
 
-            a{
+            a {
                 color: $dark-green-blue;
                 font-weight: normal;
                 text-decoration: underline;
-                font-size: 14px;
+                font-size: 0.875rem;
             }
 
-            #sample-size-text{
-                font-size: 16px;
+            #sample-size-text {
+                font-size: 1rem;
                 font-family: 'Nunito Sans', sans-serif;
             }
         }

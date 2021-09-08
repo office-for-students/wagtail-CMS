@@ -77,7 +77,7 @@ $widthOfNarrowArrow: 27px;
 }
 
 .no_data_container {
-  font-size: 1em;
+  font-size: 1rem;
   position: relative;
   padding: 5px;
 
@@ -87,7 +87,7 @@ $widthOfNarrowArrow: 27px;
     background-color: #e4e4e4;
     box-shadow: 2px 5px 5px 2px grey;
     text-align: left;
-    font-size: 0.875em;
+    font-size: 0.875rem;
     padding: 15px;
     border-radius: 3px;
     z-index: 9;
@@ -113,19 +113,19 @@ $widthOfNarrowArrow: 27px;
 }
 
 $course_comparison_line_height: 51px;
-$course_comparison_font_normal: 14px;
-$course_comparison_show_more: 16px;
+$course_comparison_font_normal: 0.875rem;
+$course_comparison_show_more: 1rem;
 $course_comparison_first_column_width: 250px;
 
-.unavailable{
-  font-size: 1em !important;
+.unavailable {
+  font-size: 1rem !important;
   padding: 5px;
 }
 
-.unavailable-container{
+.unavailable-container {
   padding: 0;
   text-align: left;
-  font-size: 1em;
+  font-size: 1rem;
   margin-left: 0;
 }
 
@@ -153,7 +153,7 @@ $course_comparison_first_column_width: 250px;
       color: black;
       padding: 8px 0 8px 23px;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 1.125rem;
       cursor: pointer;
     }
 
@@ -162,19 +162,19 @@ $course_comparison_first_column_width: 250px;
       margin-bottom: 8px;
       font-size: 20px;
 
-      &:nth-child(1){
-        font-size: 18px;
+      &:nth-child(1) {
+        font-size: 0.2rem;
       }
 
       &:nth-child(4), &:nth-child(6), &:nth-child(7) {
-        font-size: 18px;
+        font-size: 1.125rem;
       }
     }
 
     &-details_background {
       background: $divider-grey;
       margin-bottom: 8px;
-      font-size: 0.875em;
+      font-size: 0.875rem;
     }
 
     &-grey_background {
@@ -183,7 +183,7 @@ $course_comparison_first_column_width: 250px;
       font-size: 20px;
 
       &:nth-child(2) {
-        font-size: 18px;
+        font-size: 1.125rem;
       }
 
       &.source {
@@ -199,7 +199,7 @@ $course_comparison_first_column_width: 250px;
       font-size: 20px;
 
       &:nth-child(3), &:nth-child(4) {
-        font-size: 0.875em;
+        font-size: 0.875rem;
       }
 
       .header {
@@ -262,7 +262,7 @@ $course_comparison_first_column_width: 250px;
       }
 
       &.header_font {
-        font-size: 1em !important;
+        font-size: 1rem !important;
       }
     }
   }
@@ -271,7 +271,7 @@ $course_comparison_first_column_width: 250px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-size: 0.875em;
+    font-size: 0.875rem;
     height: $course_comparison_line_height;
     background: inherit;
     color: black;
@@ -284,10 +284,10 @@ $course_comparison_first_column_width: 250px;
   }
 }
 
-.institution-link{
+.institution-link {
   color: #308282;
   text-decoration: underline;
-  font-size: 0.875em !important;
+  font-size: 0.875rem !important;
 }
 
 .snippet_container {
@@ -334,7 +334,7 @@ $course_comparison_first_column_width: 250px;
 
     .header {
       font-weight: bold;
-      font-size: 1em;
+      font-size: 1rem;
       margin-bottom: 16px;
     }
   }
@@ -404,7 +404,7 @@ $course_comparison_first_column_width: 250px;
 
 .no_courses_saved {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.125rem;
   color: black;
   white-space: nowrap;
   padding-top: 20px;
@@ -470,7 +470,7 @@ $course_comparison_first_column_width: 250px;
         background-image: linear-gradient(281deg, #308282, #4ea27d);
         color: white;
         font-family: "Nunito Sans", sans-serif;
-        font-size: 1em;
+        font-size: 1rem;
         font-weight: bold;
         line-height: 16px;
 
@@ -499,14 +499,14 @@ $course_comparison_first_column_width: 250px;
       margin-bottom: 31px;
 
       .header {
-        font-size: 1em;
+        font-size: 1rem;
         margin-bottom: 20px;
         font-weight: bold;
         text-align: left;
       }
 
       .text {
-        font-size: 0.875em;
+        font-size: 0.875rem;
         margin-bottom: 0;
         text-align: left;
       }
@@ -742,7 +742,7 @@ $course_comparison_first_column_width: 250px;
 
 
       .none-selected {
-        font-size: 1em;
+        font-size: 1rem;
         width: 250px;
         color: black;
         margin-right: auto;
@@ -811,7 +811,7 @@ $course_comparison_first_column_width: 250px;
   }
 
   .item {
-    font-size: 0.875em;
+    font-size: 0.875rem;
     margin-bottom: 2px;
 
     &:last-child {
@@ -820,7 +820,7 @@ $course_comparison_first_column_width: 250px;
   }
 
   .link {
-    font-size: 0.875em;
+    font-size: 0.875rem;
     padding-left: 40px;
     display: block;
   }
@@ -1030,6 +1030,7 @@ $course_comparison_first_column_width: 250px;
     min-width: 100%;
     max-width: 100%;
     margin-bottom: 4px;
+    font-size: 1rem;
   }
 
   .small-flex-div {
@@ -1082,8 +1083,8 @@ $course_comparison_first_column_width: 250px;
 
   }
   .comparison .course-detail__courses-name {
-      font-size: 0.875em;
-    }
+    font-size: 0.875rem;
+  }
 
   .comparison__top-container {
     .add-btn {
@@ -1121,7 +1122,7 @@ $course_comparison_first_column_width: 250px;
         }
 
         &:nth-child(4), &:nth-child(6), &:nth-child(7) {
-          font-size: 18px;
+          font-size: 1.125rem;
         }
       }
 
@@ -1263,8 +1264,8 @@ $course_comparison_first_column_width: 250px;
     }
   }
   .comparison .course-detail__courses-name {
-      font-size: 0.875em;
-    }
+    font-size: 0.875rem;
+  }
 
   div.comparison__body, div.course-detail__body {
     width: 1140px !important;
@@ -1341,8 +1342,8 @@ $course_comparison_first_column_width: 250px;
         font-size: 20px;
         padding: 8px;
 
-        &:nth-child(1){
-          font-size: 18px;
+        &:nth-child(1) {
+          font-size: 1.125rem;
         }
 
         &:nth-child(3), &:nth-child(5), &:nth-child(6), {
@@ -1350,7 +1351,7 @@ $course_comparison_first_column_width: 250px;
         }
 
         &:nth-child(4), &:nth-child(6), &:nth-child(7) {
-          font-size: 18px;
+          font-size: 1.125rem;
         }
       }
 
