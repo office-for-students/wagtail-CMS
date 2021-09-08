@@ -254,9 +254,10 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
     if not page:
         return render(request, '404.html')
 
-    full_path = '%s?%s' % (request.path, request.environ.get('QUERY_STRING'))
-    welsh_url = '/cy' + full_path if language == enums.languages.ENGLISH else full_path
-    english_url = full_path.replace('/cy/', '/')
+    if language == enums.languages.ENGLISH:
+        translated_url = '/cy' + request.path if language == enums.languages.ENGLISH else request.path
+    else:
+        translated_url = request.path.replace('/cy/', '/')
 
     context = page.get_context(request)
     context.update({
@@ -264,8 +265,7 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         'course': course,
         'comparison_link': comparison_page.url if comparison_page else '#',
         'manage_link': bookmark_page.url if bookmark_page else '#',
-        'english_url': english_url,
-        'welsh_url': welsh_url,
+        'translated_url': translated_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies')
     })
 
