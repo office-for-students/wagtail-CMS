@@ -1,6 +1,6 @@
 {% load staticfiles discover_uni_tags %}
 {% for course in courses %}
-    {% with course_id=course.institution.pub_ukprn|add:"/"|add:course.kis_course_id|add:"/"|add:course.mode.label|add:"/" %}
+    {% with course_id=course.institution.pub_ukprn|add:"/"|add:course.kis_course_id|add:"/"|add:course.mode.label %}
     <div id="{{ course_id }}"
          data-multiple_subjects="{{ course.has_multiple_subject_names }}"
          class="course-detail__courses-container cc-column-{{ forloop.counter0 }}" data-index="{{ forloop.counter0 }}">
@@ -18,7 +18,7 @@
                  alt="{% get_translation key='close' language=page.get_language %}">
         </div>
 
-        <a class="course-detail__courses-name" href="{% if page.get_language == "cy" %}/cy{% endif %}/course-details/{{ course_id }}" target="_blank">
+        <a class="course-detail__courses-name" href="{% if page.get_language == "cy" %}/cy{% endif %}/course-details/{{ course_id }}/" target="_blank">
             {{ course.display_title }}
         </a>
 
