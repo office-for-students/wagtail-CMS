@@ -108,8 +108,11 @@ def get_subject_label(course, index):
     sources = ["go", "leo3", "leo5"]
     method = "No Subject Name"
     for source in sources:
-        _object = getattr(course, f'{source}_salaries_inst')[index]
-        method = getattr(_object, "subject_title_in_local_language")
+        try:
+            _object = getattr(course, f'{source}_salaries_inst')[index]
+            method = getattr(_object, "subject_title_in_local_language")
+        except Exception as e:
+            pass
         if method:
             break
     return method
