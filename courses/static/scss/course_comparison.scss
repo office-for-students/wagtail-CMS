@@ -51,7 +51,7 @@ $widthOfNarrowArrow: 27px;
 
 
 .chevron {
-  font-size: 20px;
+  font-size: 1.25rem;
   margin-right: 4px;
 }
 
@@ -160,7 +160,7 @@ $course_comparison_first_column_width: 250px;
     &-earnings {
       background: $divider-grey;
       margin-bottom: 8px;
-      font-size: 20px;
+      font-size: 1.25rem;
 
       &:nth-child(1) {
         font-size: 1rem;
@@ -180,7 +180,7 @@ $course_comparison_first_column_width: 250px;
     &-grey_background {
       background: $divider-grey;
       margin-bottom: 8px;
-      font-size: 20px;
+      font-size: 1.25rem;
 
       &:nth-child(2) {
         font-size: 1.125rem;
@@ -196,7 +196,7 @@ $course_comparison_first_column_width: 250px;
       background: $pale;
       border-bottom: 1px solid $pale;
       margin-bottom: 16px;
-      font-size: 20px;
+      font-size: 1.25rem;
 
       &:nth-child(3), &:nth-child(4) {
         font-size: 0.875rem;
@@ -222,7 +222,7 @@ $course_comparison_first_column_width: 250px;
     padding: 20px;
 
     &.item_font {
-      font-size: 20px;
+      font-size: 1.25rem;
     }
 
     &-title_container {
@@ -475,7 +475,7 @@ $course_comparison_first_column_width: 250px;
         line-height: 16px;
 
         .plus {
-          font-size: 20px;
+          font-size: 1.25rem;
           padding-right: 10px;
         }
       }
@@ -734,7 +734,7 @@ $course_comparison_first_column_width: 250px;
 
           .arrow {
             color: black;
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: bold;
           }
         }
@@ -750,7 +750,7 @@ $course_comparison_first_column_width: 250px;
 
         .header {
           font-weight: bold;
-          font-size: 20px;
+          font-size: 1.25rem;
           margin-bottom: 18px;
         }
       }
@@ -805,7 +805,7 @@ $course_comparison_first_column_width: 250px;
   align-items: center;
 
   .title {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: bold;
     max-width: 100%;
     margin: 16px 0;
@@ -1116,7 +1116,7 @@ $course_comparison_first_column_width: 250px;
 
       &-earnings {
         margin-bottom: 8px;
-        font-size: 20px;
+        font-size: 1.25rem;
         padding: 8px;
 
         &:nth-child(3), &:nth-child(5), &:nth-child(6), {
@@ -1341,18 +1341,18 @@ $course_comparison_first_column_width: 250px;
 
       &-earnings {
         margin-bottom: 8px;
-        font-size: 20px;
+        font-size: 1.25rem;
         padding: 8px;
 
         &:nth-child(1) {
           font-size: 1rem;
         }
 
-        &:nth-child(3), &:nth-child(5), &:nth-child(6), {
+        &:nth-child(2), &:nth-child(4), &:nth-child(5), {
           margin-bottom: 0;
         }
 
-        &:nth-child(4), &:nth-child(6), &:nth-child(7) {
+        &:nth-child(5), &:nth-child(7), &:nth-child(8) {
           font-size: 1.125rem;
         }
       }
@@ -1363,7 +1363,7 @@ $course_comparison_first_column_width: 250px;
         background: #f2f2f2;
         color: black;
         padding-left: 24px;
-        font-size: 20px;
+        font-size: 1.25rem;
       }
 
       &-yellow_background {
