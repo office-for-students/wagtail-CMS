@@ -54,7 +54,7 @@
         
 
         input#institution_query-search.search-field-input {
-            border-width: 1px solid #ced4da !important;
+            border: 1px solid #ced4da !important;
             width: 100%;
             border-radius: 5px 5px 5px 5px;
             font-size: 1rem;
@@ -534,15 +534,16 @@
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    padding: 29px 40px 29px 29px;
+                    padding: 20px 40px 20px 29px;
 
                     @include green-gradient-background-mixin();
                     border: 3px solid transparent;
                     cursor: pointer;
+
                     .course-finder-results__result-accordion-title, .course-finder-results__result-accordion-overview {
                         color: white;
                     }
-                    
+
 
                     // &:hover {
                     //     border: 3px solid $gradient-light-green;
