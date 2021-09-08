@@ -44,7 +44,7 @@
 .no-courses{
     height: 28px;
     padding-left: 15px;
-    margin: 15px 6.5px 70px 0px;
+    margin: 15px 6.5px 70px 0;
     font-family: "Nunito Sans", sans-serif;
     font-size: 21px;
     font-weight: bold;
@@ -75,7 +75,7 @@
         position: absolute;
         top: 15px;
         right: 33px;
-        margin: 0px;
+        margin: 0;
         text-align: right;
 
         color: $gradient-light-green;
@@ -119,7 +119,7 @@
         }
 
         &-active-filter{
-            margin-top: 0px;
+            margin-top: 0;
             display: flex;
             flex-wrap: wrap;
         }
@@ -137,7 +137,7 @@
 
             &-question{
                 @include m-heading--bold-mixin();
-                margin-top: 0px;
+                margin-top: 0;
                 margin-bottom: 35px;
                 width: 80%;
 
@@ -165,7 +165,7 @@
                     z-index: 1;
                     background-color: white;
                     width: 100%;
-                    box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 4px 0px;
+                    box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 4px 0;
 
                 }
                 &-item{
@@ -196,7 +196,7 @@
             &-pill{
                 display: flex;
                 height: 31px;
-                margin: 0px 8px 10px 0px;
+                margin: 0 8px 10px 0;
                 padding: 5px 10px 4px;
                 background-color: #ced4d9
             }
@@ -204,7 +204,7 @@
             &-remove-pill{
                 display: flex;
                 height: 31px;
-                margin: 0px 8px 10px 0px;
+                margin: 0 8px 10px 0;
                 padding: 5px 10px 4px;
                 background-color: white;
                 cursor: pointer;
@@ -250,18 +250,18 @@
             }
 
             &:first-child {
-                padding-top: 0px;
+                padding-top: 0;
             }
 
             &:last-child {
-                padding-bottom: 0px;
+                padding-bottom: 0;
             }
         }
 
         &-heading {
             @include xs-heading--bold-mixin();
 
-            margin-top: 0px;
+            margin-top: 0;
             margin-bottom: 20px;
         }
 
@@ -271,7 +271,7 @@
             align-items: stretch;
 
             &-title {
-                margin: 10px 28px 9px 0px;
+                margin: 10px 28px 9px 0;
                 font-size: 16px;
                 font-weight: bold;
                 font-stretch: normal;
@@ -304,7 +304,7 @@
             &-country{
                 width: 200px;
                 height: 40px;
-                padding: 9px 15px 9px 0px;
+                padding: 9px 15px 9px 0;
 
             }
 
@@ -335,13 +335,13 @@
 
                 &:first-child {
                     .filters-block__filter-checkbox-label {
-                        margin-right: 0px;
+                        margin-right: 0;
                     }
                 }
 
                 &:last-child {
                     .filters-block__filter-checkbox-label {
-                        margin-left: 0px;
+                        margin-left: 0;
                     }
                 }
             }
@@ -394,7 +394,7 @@
                 @include mobile-body-font--bold-mixin();
 
                 display: block;
-                margin-top: 0px;
+                margin-top: 0;
                 margin-bottom: 15px;
             }
 
@@ -469,7 +469,7 @@
 
                 &-select, &-clear, &-count {
                     margin-top: 10px;
-                    margin-bottom: 0px;
+                    margin-bottom: 0;
                 }
 
                 &-select, &-clear {
@@ -543,7 +543,7 @@
 
                     display: block;
                     text-align: center;
-                    padding: 8px 0px;
+                    padding: 8px 0;
                     margin-top: 15px;
                     width: 28px;
 
@@ -563,7 +563,7 @@
             position: fixed;
             width: 100%;
             text-align: center;
-            bottom: 0px;
+            bottom: 0;
             padding-right: 30px;
         }
 
@@ -646,7 +646,7 @@
         overflow-x: hidden;
         position: absolute;
         background-color: white;
-        box-shadow: 3px 3px 4px 0px rgba(0,0,0,0.4);
+        box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4);
         z-index: 11;
         margin-top: 3px;
 
@@ -722,12 +722,12 @@
 
     .no-courses{
         width: auto;
-        padding-left: 0px;
+        padding-left: 0;
     }
 
     .filters-block {
         &__heading {
-            padding-left: 0px;
+            padding-left: 0;
             margin-bottom: 20px;
         }
 
@@ -746,7 +746,7 @@
                 position: sticky;
                 left: 0;
                 bottom: 0;
-                padding-right: 0px;
+                padding-right: 0;
             }
         }
 
@@ -764,18 +764,18 @@
             &-option {
                 &--two-col, &--three-col {
                     .filters-block__filter-checkbox-label {
-                        margin: 0px 7.5px;
+                        margin: 0 7.5px;
                     }
 
                     &:first-child {
                         .filters-block__filter-checkbox-label {
-                            margin-left: 0px;
+                            margin-left: 0;
                         }
                     }
 
                     &:last-child(even) {
                         .filters-block__filter-checkbox-label {
-                            margin-right: 0px;
+                            margin-right: 0;
                         }
                     }
                 }
@@ -793,7 +793,7 @@
             }
 
             &-year {
-                padding: 0px 34px;
+                padding: 0 34px;
 
                 &:nth-child(even) {
                     background-color: transparent;
@@ -818,14 +818,14 @@
 
                 .filters-block__filter-heading {
                     text-align: center;
-                    height: 2em;
+                    height: 2rem;
                     width: 239px;
                     max-width: 239px;
                 }
             }
 
             &-field {
-                padding: 0px;
+                padding: 0;
                 flex: 0 1 auto;
 
                 &:first-child {
@@ -834,7 +834,7 @@
 
                 &:last-child {
                     width: 75%;
-                    padding: 0px 90px;
+                    padding: 0 90px;
                 }
 
                 &-radios {
