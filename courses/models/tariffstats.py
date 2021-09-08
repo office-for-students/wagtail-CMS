@@ -1,19 +1,30 @@
 from .tariff import Tariff
-from .utils import fallback_to, enums, separate_unavail_reason
+from .tariff import tariff_range
+from .utils import enums
+from .utils import fallback_to
+from .utils import separate_unavail_reason
+
 
 class TariffStatistics:
 
     def __init__(self, tariff_data, display_language):
         self.display_language = display_language
         self.tariffs = []
+        self.tariff_list = []
 
         if tariff_data:
-            self.aggregation = tariff_data.get('aggregation')
+            self.aggregation_level = tariff_data.get('aggregation')
             self.number_of_students = fallback_to(tariff_data.get('number_of_students'), 0)
             if tariff_data.get('tariffs'):
                 for tariff in tariff_data.get('tariffs'):
                     self.tariffs.append(Tariff(tariff, self.display_language))
+                    if tariff["entrants"] != 0:
+                        self.tariff_list.append(tariff)
             self.tariffs.reverse()
+            if self.tariff_list:
+                self.range = tariff_range(self.tariff_list, self.display_language)
+            else:
+                self.range = "no_data"
 
             subject_data = tariff_data.get('subject')
             if subject_data:

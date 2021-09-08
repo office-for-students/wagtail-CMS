@@ -21,7 +21,7 @@ a {
   color: #308282;
 }
 #sample-size-text {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: normal;
   color: $brownish-grey;
 }
@@ -74,7 +74,7 @@ a {
   text-align: center;
   text-decoration: none;
   font-family: Nunito Sans;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
 
   &:hover {
@@ -93,7 +93,7 @@ a {
     cursor: pointer;
 
     .information-link {
-      font-size: 16px;
+      font-size: 1rem;
       color: $link-blue;
       text-decoration: underline;
       border: none;
@@ -123,6 +123,7 @@ a {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+  color: $white;
 
   &:active,
   &:focus {
@@ -271,19 +272,19 @@ body {
 
 .not-enough-data-disclaimer {
   //border: solid 3px #cee9e7 !important;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: normal;
   color: $brownish-grey;
   font-family: "Nunito Sans", sans-serif;
   padding: 6px;
 
   h6 {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: normal;
   }
 
   h4 {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: normal;
     color: $black;
   }
@@ -291,14 +292,14 @@ body {
 @media only screen and (min-width: 770px) {
   .not-enough-data-disclaimer {
     //border: solid 3px #cee9e7 !important;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: normal;
     color: $brownish-grey;
     font-family: "Nunito Sans", sans-serif;
     padding: 10px;
 
     h6 {
-      font-size: 16px;
+      font-size: 1rem;
       font-weight: normal;
     }
 
@@ -309,7 +310,7 @@ body {
     }
   }
   #sample-size-text {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: normal;
     color: $brownish-grey;
     text-align: left;

@@ -2,6 +2,9 @@
 @import '../../../CMS/static/scss/variables';
 @import '../../../CMS/static/scss/partials/forms';
 
+.line-height-1-5 {
+    line-height: 1.5 !important;
+}
 
 .course-finder-wrapper {
     margin-left: 0;
@@ -47,11 +50,11 @@
         color:$black;
         font-weight:bold;
         font-size:1.2rem;
-        padding: 32px 0px;
+        padding: 32px 0;
         
 
         input#institution_query-search.search-field-input {
-            border-width: 1px solid #ced4da !important;
+            border: 1px solid #ced4da !important;
             width: 100%;
             border-radius: 5px 5px 5px 5px;
             font-size: 1rem;
@@ -192,21 +195,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0px 0px;
+            padding: 0 0;
             margin: 20px 0 0;
             height: 100%;
             list-style: none;
 
             &-results{
-                font-weight: normal; 
-                font-size: 18px; 
-                padding-left: 0px !important;
+                font-weight: normal;
+                font-size: 1.125rem;
+                padding-left: 0 !important;
             }
 
             &-control {
                 @include mobile-body-font--bold-mixin();
 
-                padding: 0px;
+                padding: 0;
 
                 text-decoration: underline;
                 color: $gradient-light-green;
@@ -246,7 +249,7 @@
         &__question {
             @include m-heading--bold-mixin();
 
-            margin-top: 0px;
+            margin-top: 0;
             margin-bottom: 35px;
             width: 80%;
 
@@ -276,7 +279,7 @@
                 @include xs-heading-mixin();
 
                 display: block;
-                padding: 8px 0px 5px 20px;
+                padding: 8px 0 5px 20px;
             }
 
             &-helper {
@@ -287,7 +290,7 @@
                 color: $helper-grey;
 
                 p {
-                    margin: 0px;
+                    margin: 0;
                 }
             }
 
@@ -363,7 +366,7 @@
             &-heading {
                 @include desktop-body-font--bold-mixin();
 
-                margin: 0px;
+                margin: 0;
 
                 line-height: 26px;
             }
@@ -371,7 +374,7 @@
             &-value {
                 @include desktop-body-font-mixin();
 
-                margin: 0px;
+                margin: 0;
                 margin-bottom: 30px;
 
                 line-height: 26px;
@@ -412,16 +415,16 @@
         &__heading {
             padding-left: 15px;
             margin-bottom: 20px;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: bold;
 
             &_sort_by_institution {
                 padding-left: 10px;
                 margin-bottom: 20px;
                 color: $link-green;
-                font-size: 18px;
-                font-weight: normal;      
-                
+                font-size: 1.125rem;
+                font-weight: normal;
+
                 &:hover {
                     cursor: pointer;
                 }
@@ -430,9 +433,9 @@
                     padding-left: 10px;
                     margin-bottom: 20px;
                     color: $link-green;
-                    font-size: 18px;                
+                    font-size: 1.125rem;
                     font-weight: bold;
-                    text-decoration: underline;          
+                    text-decoration: underline;
 
                     &:hover {
                         cursor: pointer;
@@ -444,21 +447,21 @@
                 padding-left: 31px;
                 margin-bottom: 20px;
                 color: $link-green;
-                font-size: 18px;
-                font-weight: normal;      
-                
+                font-size: 1.125rem;
+                font-weight: normal;
+
                 &:hover {
                     cursor: pointer;
                 }
-    
+
                 &_selected {
                     padding-left: 31px;
                     margin-bottom: 20px;
                     color: $link-green;
-                    font-size: 18px;                
+                    font-size: 1.125rem;
                     font-weight: bold;
-                    text-decoration: underline;          
-    
+                    text-decoration: underline;
+
                     &:hover {
                         cursor: pointer;
                     }
@@ -469,15 +472,15 @@
                     padding-left: 31px;
                     margin-bottom: 20px;
                     color: #ccc;
-                    font-size: 18px;                
+                    font-size: 1.125rem;
                 }
 
                 &_warning {
                     padding: 10px 10px 10px 32px;
                     margin-bottom: 20px;
                     background-color: $pale;
-                    font-size: 16px;
-                    display:block;
+                    font-size: 1rem;
+                    display: block;
                     line-height: normal;
                 }
             }
@@ -486,7 +489,7 @@
         &__overview {
             @include mobile-body-font-mixin();
 
-            margin: 0px;
+            margin: 0;
             position: relative;
 
             &-filter {
@@ -531,15 +534,16 @@
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    padding: 29px 40px 29px 29px;
+                    padding: 20px 40px 20px 29px;
 
                     @include green-gradient-background-mixin();
                     border: 3px solid transparent;
                     cursor: pointer;
+
                     .course-finder-results__result-accordion-title, .course-finder-results__result-accordion-overview {
                         color: white;
                     }
-                    
+
 
                     // &:hover {
                     //     border: 3px solid $gradient-light-green;
@@ -565,7 +569,7 @@
                 &-title {
                     @include mobile-body-font--bold-mixin();
 
-                    margin: 0px;
+                    margin: 0;
                     margin-bottom: 10px;
 
                     color: $ux-grey-3;
@@ -574,7 +578,7 @@
                 &-overview {
                     @include small-font--bold-mixin();
 
-                    margin: 0px;
+                    margin: 0;
 
                     color: $ux-grey-3;
                 }
@@ -594,7 +598,7 @@
                         @include desktop-body-font-mixin();
 
                         display: block;
-                        margin: 0px;
+                        margin: 0;
                         margin-bottom: 20px;
 
                         color: $gradient-dark-green;
@@ -606,7 +610,7 @@
                         @include desktop-body-font-mixin();
 
                         display: block;
-                        margin: 0px;
+                        margin: 0;
 
                         color: $gradient-dark-green;
                         line-height: 22px;
@@ -616,7 +620,7 @@
                     &-course-provider {
                         @include mobile-body-font-mixin();
 
-                        margin: 0px;
+                        margin: 0;
 
                         line-height: 26px;
 
@@ -627,7 +631,7 @@
                     &-course-info {
                         @include mobile-body-font-mixin();
 
-                        margin: 0px;
+                        margin: 0;
 
                         line-height: 26px;
                     }
@@ -677,7 +681,7 @@
         &-base {
 
             &__nav {
-                padding: 24px 0px;
+                padding: 24px 0;
 
                 &-control {
                     @include xs-heading-mixin();
@@ -840,7 +844,7 @@
                     &-title {
                         @include xs-heading--bold-mixin();
 
-                        margin: 0px;
+                        margin: 0;
 
                     }
 
@@ -923,7 +927,7 @@
         margin-left:auto!important;
         margin-right:auto!important;
         padding: 1rem;
-        padding-bottom: 0px !important;
+        padding-bottom: 0 !important;
     }
 
     .course-finder-wrapper {

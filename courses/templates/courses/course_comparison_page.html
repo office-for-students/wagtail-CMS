@@ -17,7 +17,6 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
-    <script type="text/javascript" src="{% static 'js/sub_accordion.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>
 
 {% endblock %}
@@ -53,7 +52,16 @@
         }
 
     </style>
-    <div class="comparison d-sm-block mb-5" id="comparison-body"></div>
 
+    <div class="comparison d-sm-block mb-5" id="comparison-body">
+        <div class="comparison__body pt-1">
+
+            <h2 class="comparison__heading">
+                {{ page.compare_heading }}
+            </h2>
+
+           {%  include 'courses/partials/comparison/loading_spinner.html' %}
+        </div>
+    </div>
     <script type="text/javascript" src="{% static 'js/course_comparison.js' %}?{% code_version %}"></script>
 {% endblock %}

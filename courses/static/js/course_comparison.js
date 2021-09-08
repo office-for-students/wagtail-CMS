@@ -470,6 +470,7 @@ class ComparisonDisplayManager {
         this.displayColumnsWithIndex(columns, currentIndexes);
         this.currentIndex = new_index;
         this.updateStickyHeader();
+        this.addRightInfo(currentIndexes);
         this.onChange();
     }
 
@@ -486,24 +487,34 @@ class ComparisonDisplayManager {
         accordion_header.css("z-index", "8");
     }
 
+    resetInfoPosition(){
+        let informationText = document.getElementsByClassName("information-text")
+        Array.from(informationText).forEach(function(el){
+            el.classList.remove("right")
+            el.classList.add("left")
+        })
+    }
+
+    addRightInfo(currentIndexes){
+        this.resetInfoPosition();
+        let lastIndex = currentIndexes.length-1
+        let rightIndex = currentIndexes[lastIndex]
+        let rightItem = document.getElementsByClassName(`info-box-${rightIndex}`)
+        Array.from(rightItem).forEach(function(el) {
+            el.classList.remove("left")
+            el.classList.add("right")
+        })
+    }
 }
 
 class InfoBoxManager {
 
     constructor() {
-        this.addLeft();
         this.setListeners();
     }
 
     toggleHidden(el) {
         el.classList.toggle("hidden");
-    }
-
-    addLeft() {
-        Array.from(document.getElementsByClassName("information-text info-box-0")).forEach(function (el) {
-            el.classList.add("info-left");
-        })
-
     }
 
     setListeners() {
@@ -583,6 +594,35 @@ class MultipleSubjectsManager {
     }
 }
 
+class SubAccordionManager{
+
+    constructor(){
+        this.setEventListeners();
+    }
+
+    toggleAccordion(title, index){
+        let expand = document.getElementById(`${title}-expand`);
+        let collapse = document.getElementById(`${title}-collapse`);
+        let accordionBody = document.getElementById(`body-${title}`);
+
+        expand.classList.toggle("hidden");
+        collapse.classList.toggle("hidden");
+        accordionBody.classList.toggle("hidden");
+    }
+
+    setEventListeners() {
+        let subAccordions = document.getElementsByClassName("sub_accordion_header");
+        for (let i = 0; i < subAccordions.length; i++) {
+            const that = this;
+            let title = subAccordions[i].id;
+            let index = subAccordions[i].dataset.index;
+            subAccordions[i].addEventListener("click", function(){
+                that.toggleAccordion(title, index);
+            })
+        }
+    }
+}
+
 
 function setupView() {
     let scrollManager = new ScrollManager();
@@ -594,6 +634,7 @@ function setupView() {
 
     let arrowManager = new ArrowManager();
     arrowManager.removeAllArrows();
+    let subAccordionManager = new SubAccordionManager();
     let multipleSubjectsManager = new MultipleSubjectsManager();
     let courseRatingsManager = new RatingsManager();
     let infoBoxManager = new InfoBoxManager();

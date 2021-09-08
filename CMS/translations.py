@@ -1,8 +1,3 @@
-from typing import Any
-from typing import Dict
-from typing import Optional
-
-
 # Use this to access DICT/OPTIONS, don't access them directly
 def term_for_key(key: str, language: str) -> str:
     """ Method to use to access welsh translations for static content
@@ -11,6 +6,8 @@ def term_for_key(key: str, language: str) -> str:
     term = DICT.get(key).get(language) if key in DICT else None
     if not term:
         term = STATISTICS.get(key).get(language) if key in STATISTICS else None
+    if not term:
+        term = UNAVAILABLE.get(key).get(language) if key in UNAVAILABLE else None
     if not term:
         term = OPTIONALS.get(key).get(language) if key in OPTIONALS else None
     if not term:
@@ -27,7 +24,7 @@ STATISTICS = {
     "earnings_after_the_course": dict_for_key("Earnings after the course", "Enillion ar ôl y cwrs"),
     "employment_15_months": dict_for_key("Employment 15 months after the course", "Cyflogaeth 15 mis ar ôl y cwrs"),
     "graduate_perceptions": dict_for_key("Graduate perceptions", "Canfyddiadau graddedigion"),
-    "information_on_uni": dict_for_key("information on the uni website", "Gwybodaeth ar wefan y prifysgol"),
+    "information_on_uni": dict_for_key("Information on the uni website", "Gwybodaeth ar wefan y prifysgol"),
     'overall_satisfied': {
         'en': 'Overall I am satisfied with the quality of the course',
         'cy': 'Rwy’n fodlon ag ansawdd y cwrs ar y cyfan'
@@ -180,6 +177,10 @@ STATISTICS = {
         'en': "After 1 year on the course",
         'cy': "Ar ôl blwyddyn o astudio"
     },
+    'find_out_more_link': {
+        'en': "https://www.discoveruni.gov.uk/about-our-data/",
+        'cy': "https://www.discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/"
+    },
     'satisfaction_guidance_1': {
         'en': '''<strong>Number of people the data is based on</strong> - 
             more people mean it is more likely giving a clearer picture of student experience. 
@@ -296,24 +297,24 @@ STATISTICS = {
         'cy': "Pa mor ddefnyddiol"
     },
     'usefulness_subtitle': {
-        'en': "What I learnt on my course has been useful in my current work",
-        'cy': "Rwy'n defnyddio'r hyn a ddysgais wrth astudio yn fy ngwaith presennol"
+        'en': "I am utilising what I learnt during my studies in my current work.",
+        'cy': "Rwy'n defnyddio'r hyn a ddysgais wrth astudio yn fy ngwaith presennol."
     },
     'meaningfulness': {
         'en': "Meaningfulness",
         'cy': "Pa mor ystyrlon"
     },
     'meaningfulness_subtitle': {
-        'en': "The course has made my current work meaningful",
-        'cy': "Mae fy ngwaith presennol yn ystyrlon"
+        'en': "My current work is meaningful.",
+        'cy': "Mae fy ngwaith presennol yn ystyrlon."
     },
     'future': {
         'en': "Future",
         'cy': "Y Dyfodol"
     },
     'future_subtitle': {
-        'en': "The course has had a positive impact on my future plans",
-        'cy': "Mae fy ngwaith presennol yn cyd-fynd â'm cynlluniau ar gyfer y dyfodol"
+        'en': " My current work fits with my future plans.",
+        'cy': "Mae fy ngwaith presennol yn cyd-fynd â'm cynlluniau ar gyfer y dyfodol."
     },
     'no_data_available': {
         'en': "No data available",
@@ -341,6 +342,131 @@ STATISTICS = {
     },
 }
 
+UNAVAILABLE = {
+    'message_1_header': {
+        'en': "This and other courses.",
+        'cy': "Hwn a chyrsiau eraill."
+    },
+    'message_2_header': {
+        'en': "This course over 2 years.",
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr yn ystod y ddwy flynedd flaenorol."
+    },
+    'message_3_header': {
+        'en': "This and other courses over 2 years.",
+        'cy': "Cwrs hwn a chyrsiau eraill dros 2 flynedd."
+    },
+    'message_4_header': {
+        'en': "This and other courses.",
+        'cy': "Hwn a chyrsiau eraill."
+    },
+    'message_5_header': {
+        'en': "This course over 2 years.",
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr yn ystod y ddwy flynedd flaenorol."
+    },
+    'message_6_header': {
+        'en': "This and other courses over 2 years.",
+        'cy': "Cwrs hwn a chyrsiau eraill dros 2 flynedd."
+    },
+    'message_7_header': {
+        'en': "Sorry, there is no data available for this course.",
+        'cy': "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn."
+    },
+    'message_8_header': {
+        'en': "This and other courses.",
+        'cy': "Hwn a chyrsiau eraill."
+    },
+    'message_9_header': {
+        'en': "This and other courses over 2 years.",
+        'cy': "Cwrs hwn a chyrsiau eraill dros 2 flynedd."
+    },
+    'message_10_header': {
+        'en': "Sorry, there is no data available for this course.",
+        'cy': "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn."
+    },
+    'message_11_header': {
+        'en': "There is no data available for this course.",
+        'cy': "Nid oes data ar gael ar gyfer y cwrs hwn."
+    },
+    'message_1': {
+        'en': "The data displayed is from students on this and other courses in <b>{}</b>. " \
+              "There was not enough data to publish information specifically for this course. " \
+              "This may be because the course size is too small. This does not reflect on the quality of the course.",
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill. " \
+              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " \
+              "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+    },
+    'message_2': {
+        'en': "This may be because the course size is too small. This does not reflect on the quality of the course.",
+        'cy': "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+    },
+    'message_3': {
+        'en': "The data displayed is from students on this and other courses over two years in <b>{}</b>. " \
+              "There was not enough data to publish information specifically for this course. " \
+              "This may be because the course size is too small. This does not reflect on the quality of the course.",
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill yn ystod y ddwy flynedd flaenorol. " \
+              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. " \
+              "Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+    },
+    'message_4': {
+        'en': "The data displayed is from students on this and other courses in <b>{}</b>. " \
+              "There was not enough data to publish information specifically for this course. " \
+              "This may be because the course size is too small or not enough students responded to the survey. " \
+              "This does not reflect on the quality of the course.",
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill. " \
+              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " \
+              "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. " \
+              "Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+    },
+    'message_5': {
+        'en': "This may be because the course size is too small or not enough students responded to the survey. This does not reflect on the quality of the course.",
+        'cy': "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+    },
+    'message_6': {
+        'en': "The data displayed is from students on this and other courses over two years in <b>{}</b>. " \
+              "There was not enough data to publish information specifically for this course. " \
+              "This may be because the course size is too small or not enough students responded to the survey. This does not reflect on the quality of the course.",
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill yn ystod y ddwy flynedd flaenorol. " \
+              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " \
+              "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+    },
+    'message_7': {
+        'en': "This may be because the course size is too small. This does not reflect on the quality of the course.",
+        'cy': "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs.",
+    },
+    'message_8': {
+        'en': "The data displayed is from students on this and other courses in <b>{}</b>. " \
+              "There was not enough data to publish information specifically for this course. " \
+              "This is because the course has not yet run or has not been running long enough for this data to be available.",
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill. " \
+              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " \
+              "Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
+    },
+    'message_9': {
+        'en': "The data displayed is from students on this and other courses over two years in <b>{}</b>. " \
+              "There was not enough data to publish information specifically for this course. " \
+              "This is because the course has not yet run or has not been running long enough for this data to be available.",
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill yn ystod y ddwy flynedd flaenorol. " \
+              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " \
+              "Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
+    },
+    'message_10': {
+        'en': "This is because the course has not yet run or has not been running long enough for this data to be available. This does not reflect on the quality of the course.",
+        'cy': "Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+    },
+    'message_11': {
+        'en': "This does not reflect on the quality of the course.",
+        'cy': "Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+    },
+    "this_course": {
+        'en': "This course",
+        'cy': "Y cwrs hwn"
+    },
+    "data_displayed": {
+        'en': "The data displayed is from students on",
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr ymlaen"
+    }
+}
+
 OPTIONALS = {
     'not_available': {
         'en': 'Not Available',
@@ -361,6 +487,19 @@ OPTIONALS = {
 }
 
 DICT = {
+
+    'facebook_link': {
+        'en': 'Facebook link',
+        'cy': 'Dolen Facebook'
+    },
+    'insta_link': {
+        'en': 'Instagram link',
+        'cy': 'Dolen Instagram'
+    },
+    'twitter_link': {
+        'en': 'Twitter link',
+        'cy': 'Dolen Twitter'
+    },
     'saved': {
         'en': 'Saved',
         'cy': 'Wedi’u cadw'
@@ -703,6 +842,10 @@ DICT = {
         'en': 'Course name',
         'cy': "Enw'r cwrs"
     },
+    'course_name_search_box': {
+        'en': 'Course name search box',
+        'cy': "Blwch chwilio enw’r cwrs"
+    },
     'course_page': {
         'en': 'Course page',
         'cy': 'Tudalen y cwrs'
@@ -714,6 +857,10 @@ DICT = {
     'course_search': {
         'en': 'Course search',
         'cy': 'Chwilio am Gwrs '
+    },
+    'course_search_form_inputs': {
+        'en': 'Course search form inputs',
+        'cy': 'Mewnbynnau ffurflen chwilio am gwrs'
     },
     'course_too_many': {
         'en': 'is the maximum number of bookmarks.',
@@ -771,7 +918,6 @@ DICT = {
         'en': 'Distance learning',
         'cy': 'Dysgu o bell'
     },
-
     'distance_learning_values': {
         '0': OPTIONALS['not_available'],
         '1': OPTIONALS['yes'],
@@ -920,8 +1066,8 @@ DICT = {
         'cy': "Canllawiau ar gymharu cyrsiau"
     },
     'guidance_text': {
-        'en': "This course data presents a snapshot at a point in time, your experience may be different. Some data is from students surveyed during the pandemic. <strong class='blue-text'>Find out more</strong> about how to use this data when making decisions about where and what to study.",
-        'cy': "Mae'r data hyn ar gyrsiau'n rhoi cipolwg o brofiadau ar adeg benodol. Gallai eich profiad chi fod yn wahanol.  Daw rhywfaint o'r data gan fyfyrwyr a gymerodd ran yn yr arolwg yn ystod y pandemig. <strong class='blue-text'>Mae rhagor o wybodaeth</strong> ar gael ynghylch sut i ddefnyddio'r data hyn wrth benderfynu beth i'w astudio ac ymhle."
+        'en': "This course data presents a snapshot at a point in time, your experience may be different. Some data is from students surveyed during the pandemic. <a href='https://www.discoveruni.gov.uk/about-our-data/' target='_blank' class='blue-text'>Find out more</a> about how to use this data when making decisions about where and what to study.",
+        'cy': "Mae'r data hyn ar gyrsiau'n rhoi cipolwg o brofiadau ar adeg benodol. Gallai eich profiad chi fod yn wahanol.  Daw rhywfaint o'r data gan fyfyrwyr a gymerodd ran yn yr arolwg yn ystod y pandemig. <a href='https://www.discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/' target='_blank' class='blue-text'>Mae rhagor o wybodaeth</a> ar gael ynghylch sut i ddefnyddio'r data hyn wrth benderfynu beth i'w astudio ac ymhle."
     },
     'Health and social services managers': {
         'en': 'Health and social services managers',
@@ -951,7 +1097,11 @@ DICT = {
         'en': 'Higher National Diploma (HND)',
         'cy': ''
     },
-    'home_page_video_link':{
+    'home_page_video': {
+        'en': 'Home page video',
+        'cy': 'Fideo hafan'
+    },
+    'home_page_video_link': {
         'en': 'https://www.youtube.com/embed/W7jJ03_UjUg',
         'cy': 'https://www.youtube.com/embed/ZMJqdQhtO3E'
     },
@@ -982,6 +1132,10 @@ DICT = {
     'institution_name': {
         'en': 'Institution name',
         'cy': "Enw'r sefydliad"
+    },
+    'institution_search_input': {
+        'en': 'Institution Search Input',
+        'cy': 'Mewnbwn chwilio sefydliad'
     },
     'institution_az': {
         'en': 'Institution A-Z',
@@ -1171,7 +1325,7 @@ DICT = {
         'en': 'Not in a professional or managerial job',
         'cy': 'Ddim mewn swydd broffesiynol neu reoli'
     },
-    '': {
+    'northern_ireland': {
         'en': 'Northern Ireland',
         'cy': 'Gogledd Iwerddon'
     },
@@ -1396,6 +1550,10 @@ DICT = {
         'en': 'Search by course name and/or institution',
         'cy': 'Chwilio yn ôl enw cwrs ac/neu sefydliad'
     },
+    'search_institutions': {
+        'en': 'Search institutions',
+        'cy': 'Chwilio am sefydliadau'
+    },
     'back_to_results': {
         'en': 'Back',
         'cy': "Canlyniadau"
@@ -1597,12 +1755,12 @@ DICT = {
         'cy': "Yn ddi-waith"
     },
     'unemp_prev_emp_since_grad': {
-        'en': 'Previously working or studying',
-        'cy': 'Yn gweithio neu''n astudio cyn hynny'
+        'en': 'Unemployed – previously working or studying',
+        'cy': 'Yn ddi-waith - yn gweithio neu''n astudio cyn hynny'
     },
     'unemp_not_work_since_grad': {
-        'en': 'Not employed since graduation',
-        'cy': 'Heb gael gwaith ers graddio'
+        'en': 'Unemployed - not employed since graduation',
+        'cy': 'Yn ddi-waith - heb gael gwaith ers graddio'
     },
     'uni_and_college': {
         'en': 'All universities and colleges',
@@ -1831,7 +1989,7 @@ DICT = {
     },
     'Optional': OPTIONALS['optional'],
     'Compulsory': OPTIONALS['compulsory'],
-    'Typical range': {
+    'typical_range': {
         'en': 'Typical range',
         'cy': 'Ystod arfero'
     },

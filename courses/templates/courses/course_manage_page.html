@@ -26,7 +26,8 @@
          style="padding: 30px 0px 20px 35px; position: sticky; top:0;background-color: white;">
         <div class="bookmark-header">{% get_translation key='saved_courses' language=page.get_language %}</div>
         <div style="line-height: 20px; background-color: white;">
-            <form method="get" action="/{% get_translation key='course_comparison_link' language=page.get_language %}" style="display: inline">
+            <form method="get" action="/{% get_translation key='course_comparison_link' language=page.get_language %}"
+                  style="display: inline">
                 <button id="compare-courses-button" class="bookmark-compare-button" type="submit" disabled>
                     {% get_translation key='can_compare_courses' language=page.get_language %}
                 </button>
@@ -62,6 +63,7 @@
     <div class="discover-uni-container">
         <form id="compareForm" class="bookmark" method="GET"
               action="/{% get_translation key='course_comparison_link' language=page.get_language %}">
+            {% include 'courses/partials/comparison/loading_spinner.html' %}
             <div class="bookmark__courses" id="institution-bookmark" hidden>
                 <div class="bookmark-container" id="placeholder">
                     <input class="bookmark-check"
@@ -69,7 +71,7 @@
                            type="checkbox">
                     <label class="bookmark_label"></label>
                     <div class='bookmark__course'>
-                        <a href='' class='bookmark__course-name'></a>
+                        <a href='' target="_blank" class='bookmark__course-name'></a>
                         <p class="bookmark__course-info length">
 
                         </p>
@@ -109,7 +111,7 @@
         </form>
     </div>
     <script>
-        {#Reload the page on back #}
+        {# Reload on page back #}
         window.addEventListener("pageshow", function (event) {
             var historyTraversal = event.persisted ||
                 (typeof window.performance != "undefined" &&
@@ -118,6 +120,8 @@
                 window.location.reload();
             }
         });
+        {# Reload end #} %
+        }
     </script>
     <script type="text/javascript" src="{% static 'js/bookmark_management.js' %}?{% code_version %}"></script>
 {% endblock %}

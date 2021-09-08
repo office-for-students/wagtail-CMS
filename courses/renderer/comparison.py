@@ -1,4 +1,5 @@
 import logging
+from typing import Any
 from typing import Callable
 from typing import Dict
 from typing import List
@@ -6,19 +7,22 @@ from typing import Type
 
 from CMS import translations
 from courses.models import Course
-from courses.renderer.sections import CourseDetailSection
-from courses.renderer.sections import SatisfactionSection
-from courses.renderer.sections.base import Section
-from courses.renderer.sections.continuation import ContinuationSection
-from courses.renderer.sections.earnings import SubEarningsSection
-from courses.renderer.sections.employment import SubEmploymentSection
-from courses.renderer.sections.graduate_perception import GraduatePerceptionSection
-from courses.renderer.sections.satisfaction import SubSatisfactionSection
+from .sections import CourseDetailSection
+from .sections import SatisfactionSection
+from .sections.base import Section
+from .sections.continuation import ContinuationSection
+from .sections.earnings import SubEarningsSection
+from .sections.employment import SubEmploymentSection
+from .sections.entry import SubEntrySection
+from .sections.graduate_perception import GraduatePerceptionSection
+from .sections.information import InformationSection
+from .sections.satisfaction import SubSatisfactionSection
+from .sections.unavailable import get_unavailable_rows
 
 logger = logging.getLogger(__name__)
 
 
-def get_accordion_dataset(title: str, dataset, call_to_action=[]):
+def get_accordion_dataset(title: str, dataset, call_to_action=List[Dict[Any, Dict[Any, str]]]):
     response = dict(
         title=title,
         dataset=dataset,
@@ -60,6 +64,14 @@ def get_sub_earnings(language) -> List:
     return list_sub_accordions
 
 
+def get_sub_entry(language) -> List:
+    list_sub_accordions = [
+        (translations.term_for_key(key="after_15_months", language=language), [0, 9]),
+        (translations.term_for_key(key="after_3_years", language=language), [9, 11]),
+    ]
+    return list_sub_accordions
+
+
 def get_sub_accordion_dataset(courses, section_model, get_sub_headers, language) -> List:
     response = []
 
@@ -81,16 +93,26 @@ def get_sub_accordion_dataset(courses, section_model, get_sub_headers, language)
     return response
 
 
-def get_multiple_subjects(courses: List[Course]):
+def get_multiple_subjects(courses: List[Course]) -> Dict[str, List[str]]:
     subjects = dict(subject=[])
     for course in courses:
         subject_list = list()
         subject_names = course.subject_names
-        for subject in subject_names:
-            subject_list.append(subject.display_subject_name())
+        for index in range(len(subject_names)):
+            subject_list.append(get_subject_label(course, index))
         subjects["subject"].append(subject_list)
-
     return subjects
+
+
+def get_subject_label(course, index):
+    sources = ["go", "leo3", "leo5"]
+    method = "No Subject Name"
+    for source in sources:
+        _object = getattr(course, f'{source}_salaries_inst')[index]
+        method = getattr(_object, "subject_title_in_local_language")
+        if method:
+            break
+    return method
 
 
 def dataset_for_comparison_view(courses: List[Course], language="en") -> List[dict]:
@@ -108,7 +130,8 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             )
         ]
     )
-    context["no_data"] = [translations.term_for_key(key="no_data_available", language=language), translations.term_for_key(key="unavailable_data_message", language=language)]
+    context["no_data"] = [translations.term_for_key(key="no_data_available", language=language),
+                          translations.term_for_key(key="unavailable_data_message", language=language)]
     context["accordions"] = [
         dict(
             title=translations.term_for_key(key="student_satisfaction_course_overview_1", language=language),
@@ -118,31 +141,34 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             ),
             dataset=get_details(SatisfactionSection, courses, language),
             sub_accordions=get_sub_accordion_dataset(courses, SubSatisfactionSection, get_sub_satisfaction, language),
+            unavailable=get_unavailable_rows(courses, ["satisfaction_stats", ], language=language),
             change_point=4,
             source=(
                 translations.term_for_key(key="about_our_data_link", language=language),
                 translations.term_for_key(key="read_more_about_satisfaction", language=language)
             )
         ),
-        # dict(
-        #     title=translations.term_for_key(key="entry_information", language=language),
-        #     guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),
-        #     source=(
-        #         translations.term_for_key(key="about_our_data_link", language=language),
-        #         translations.term_for_key(key="read_more_about_entry", language=language)
-        #     )
-        # ),
-        # End
+        dict(
+            title=translations.term_for_key(key="entry_information", language=language),
+            guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),
+            sub_accordions=get_sub_accordion_dataset(courses, SubEntrySection, get_sub_entry, language),
+            unavailable=get_unavailable_rows(courses, ["entry_stats", "tariff_stats"], change_key=10,
+                                             language=language),
+            source=(
+                translations.term_for_key(key="about_our_data_link", language=language),
+                translations.term_for_key(key="read_more_about_entry", language=language)
+            )
+        ),
         dict(
             title=translations.term_for_key(key="after_one_year", language=language),
             guidance_information=(translations.term_for_key(key="after_one_year_guidance", language=language),),
             dataset=get_details(ContinuationSection, courses, language),
+            unavailable=get_unavailable_rows(courses, ["continuation_stats", ], language=language),
             source=(
                 translations.term_for_key(key="entrance_data_read_more_url", language=language),
                 translations.term_for_key(key="read_more_about_continuation", language=language),
             )
         ),
-        # TODO: Update with correct data when you get to that ticket
         dict(
             title=translations.term_for_key(key="earnings_after_the_course", language=language),
             guidance_information=(
@@ -166,6 +192,9 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             ),
             subjects=get_multiple_subjects(courses),
             sub_accordions=get_sub_accordion_dataset(courses, SubEmploymentSection, get_sub_employment, language),
+            unavailable=get_unavailable_rows(courses, ["employment_stats", "job_type_stats"], change_key=9,
+                                             language=language,
+                                             present_as_multiple=True),
             source=(
                 translations.term_for_key(key="earnings_link", language=language),
                 translations.term_for_key(key="read_more_about_employment", language=language),
@@ -179,16 +208,19 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             ),
             subjects=get_multiple_subjects(courses),
             dataset=get_details(GraduatePerceptionSection, courses, language),
+            unavailable=get_unavailable_rows(courses, ["graduate_perceptions", ], language=language,
+                                             present_as_multiple=True),
+
             source=(
                 translations.term_for_key(key="graduate_link", language=language),
                 translations.term_for_key(key="read_more_about_graduate_perceptions", language=language),
             )
         ),
+        dict(
+            title=translations.term_for_key(key="information_on_uni", language=language),
+            dataset=get_details(InformationSection, courses, language)
+        ),
 
-        # dict(
-        #     title=translations.term_for_key(key="information_on_uni", language=language),
-        # ),
-        # end
     ]
 
     response.append(context)
