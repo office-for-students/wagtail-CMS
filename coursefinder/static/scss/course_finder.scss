@@ -201,8 +201,8 @@
             list-style: none;
 
             &-results{
-                font-weight: normal; 
-                font-size: 18px; 
+                font-weight: normal;
+                font-size: 1.125rem;
                 padding-left: 0 !important;
             }
 
@@ -415,16 +415,16 @@
         &__heading {
             padding-left: 15px;
             margin-bottom: 20px;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: bold;
 
             &_sort_by_institution {
                 padding-left: 10px;
                 margin-bottom: 20px;
                 color: $link-green;
-                font-size: 18px;
-                font-weight: normal;      
-                
+                font-size: 1.125rem;
+                font-weight: normal;
+
                 &:hover {
                     cursor: pointer;
                 }
@@ -433,9 +433,9 @@
                     padding-left: 10px;
                     margin-bottom: 20px;
                     color: $link-green;
-                    font-size: 18px;                
+                    font-size: 1.125rem;
                     font-weight: bold;
-                    text-decoration: underline;          
+                    text-decoration: underline;
 
                     &:hover {
                         cursor: pointer;
@@ -447,21 +447,21 @@
                 padding-left: 31px;
                 margin-bottom: 20px;
                 color: $link-green;
-                font-size: 18px;
-                font-weight: normal;      
-                
+                font-size: 1.125rem;
+                font-weight: normal;
+
                 &:hover {
                     cursor: pointer;
                 }
-    
+
                 &_selected {
                     padding-left: 31px;
                     margin-bottom: 20px;
                     color: $link-green;
-                    font-size: 18px;                
+                    font-size: 1.125rem;
                     font-weight: bold;
-                    text-decoration: underline;          
-    
+                    text-decoration: underline;
+
                     &:hover {
                         cursor: pointer;
                     }
@@ -472,15 +472,15 @@
                     padding-left: 31px;
                     margin-bottom: 20px;
                     color: #ccc;
-                    font-size: 18px;                
+                    font-size: 1.125rem;
                 }
 
                 &_warning {
                     padding: 10px 10px 10px 32px;
                     margin-bottom: 20px;
                     background-color: $pale;
-                    font-size: 16px;
-                    display:block;
+                    font-size: 1rem;
+                    display: block;
                     line-height: normal;
                 }
             }

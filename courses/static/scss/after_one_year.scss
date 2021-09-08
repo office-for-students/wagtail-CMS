@@ -2,96 +2,100 @@
 @import '../../../CMS/static/scss/variables';
 
 .rich-text{
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 14px;
-    color: $brownish-grey;
-    font-weight: normal;
-    letter-spacing: normal;
-    line-height:normal;
-   
-    
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.875rem;
+  color: $brownish-grey;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: normal;
+
+
 }
 
 .one-year__block, .one-year__lead-block {
 
-    p{
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 14px;
-        color: $brownish-grey;
-        font-weight: normal;
-        letter-spacing: normal;
-        line-height:normal;
-        
-    }
-    .rich-text{
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 14px;
-        color: $brownish-grey;
-        font-weight: normal;
-        letter-spacing: normal;
-        line-height:normal;
-    }
-    a{
-        font-family: 'Nunito Sans', sans-serif;
-        color:#308282;
-        text-decoration: underline;
-        font-weight:normal;
+  p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.875rem;
+    color: $brownish-grey;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: normal;
+
+  }
+
+  .rich-text {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.875rem;
+    color: $brownish-grey;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: normal;
+  }
+
+  a {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #308282;
+    text-decoration: underline;
+    font-weight: normal;
+  }
+
+  .one-year__lead {
+    @include small-font-mixin();
+    margin-top: 5px;
+  }
+
+  .one-year__qualification-charts {
+    background-color: $ice-blue;
+
+    .one-year__heading {
+      @include s-heading-mixin();
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: normal;
+      letter-spacing: normal;
+      color: $black;
+      font-size: 24px;
     }
 
     .one-year__lead {
-        @include small-font-mixin();
-        margin-top: 5px;
+
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: normal;
+      color: #000000;
+      font-size: 0.875rem;
+      letter-spacing: normal;
+
+      a {
+        text-decoration: underline;
+        color: $dark-green-blue;
+        font-weight: normal;
+      }
     }
 
-    .one-year__qualification-charts {
-        background-color:$ice-blue;
+    .one-year__chart {
+      margin-bottom: 5px;
 
-        .one-year__heading {
-            @include s-heading-mixin();
-            font-family: 'Nunito Sans', sans-serif;
-            font-weight:normal;
-            letter-spacing: normal;
-            color: $black;
-            font-size:24px;
-        }
-        .one-year__lead{
-           
-            font-family: 'Nunito Sans', sans-serif;
-            font-weight:normal;
-            color: #000000;
-            font-size:14px;
-            letter-spacing: normal;
-            a{
-                text-decoration: underline;
-                color:$dark-green-blue;
-                font-weight:normal;
-            }
-        }
+      &:last-of-type {
+        margin-bottom: 5px;
+      }
 
-        .one-year__chart {
-            margin-bottom: 5px;
+      .one-year-block__chart-label {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.875rem;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #666666;
+      }
 
-            &:last-of-type {
-                margin-bottom: 5px;
-            }
+      .one-year__chart-label {
+        @include small-font-mixin();
 
-            .one-year-block__chart-label{
-                font-family: 'Nunito Sans', sans-serif;
-                font-size: 14px;
-                font-weight: normal;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: normal;
-                letter-spacing: normal;
-                color: #666666;
-            }
-
-            .one-year__chart-label {
-                @include small-font-mixin();
-
-                margin-top: 5px;
-            }
-        }
+        margin-top: 5px;
+      }
+    }
     }
 }
 
@@ -107,105 +111,110 @@
         margin: 0px;
     }
 
-    .one-year__overview-lead {
-        @include l-heading-mixin();
-        font-family: 'Nunito Sans', sans-serif;
-        color: #000000;
-        font-weight:normal;
-        letter-spacing: normal;
-        font-size: 32px;
-    }
-    .one-year__overview-sublead{
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 18px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: normal;
-        letter-spacing: normal;
-        color: #000000;
-        text-decoration: none;
-    }
-    p{
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 14px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: normal;
-        letter-spacing: normal;
-        color: $brownish-grey;
-    }
-    a{
-        font-family: 'Nunito Sans', sans-serif;
-        text-decoration: underline;
-        color: $dark-green-blue;
-        font-weight:normal;
-        font-size: 14px;
-    }
+  .one-year__overview-lead {
+    @include l-heading-mixin();
+    font-family: 'Nunito Sans', sans-serif;
+    color: #000000;
+    font-weight: normal;
+    letter-spacing: normal;
+    font-size: 32px;
+  }
+
+  .one-year__overview-sublead {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.125rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+    text-decoration: none;
+  }
+
+  p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: $brownish-grey;
+  }
+
+  a {
+    font-family: 'Nunito Sans', sans-serif;
+    text-decoration: underline;
+    color: $dark-green-blue;
+    font-weight: normal;
+    font-size: 0.875rem;
+  }
 }
 
 @media only screen and (min-width: 770px) {
-    .rich-text{
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 16px;
-        color: $brownish-grey;
-        font-weight: normal;
-        letter-spacing: normal;
-        line-height:normal;
-        text-align:left;
+  .rich-text {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1rem;
+    color: $brownish-grey;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: normal;
+    text-align: left;
+  }
+
+  .one-year__block .one-year__qualification-charts .one-year__chart .one-year-block__chart-label, .one-year__lead-block .one-year__qualification-charts .one-year__chart .one-year-block__chart-label {
+    font-size: 1.125rem;
+  }
+  .one-year__overview .one-year__overview-sublead {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+    text-decoration: none;
+  }
+  .one-year__block, .one-year__lead-block {
+    p {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1rem;
+      color: $brownish-grey;
+      font-weight: normal;
+      letter-spacing: normal;
+      line-height: normal;
     }
 
-    .one-year__block .one-year__qualification-charts .one-year__chart .one-year-block__chart-label, .one-year__lead-block .one-year__qualification-charts .one-year__chart .one-year-block__chart-label {
-        font-size:18px;
+    .rich-text {
+      font-size: 1rem;
+      color: $brownish-grey;
+      font-weight: normal;
+      letter-spacing: normal;
+      line-height: normal;
+      font-family: 'Nunito Sans', sans-serif;
     }
-    .one-year__overview .one-year__overview-sublead{
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 28px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: normal;
-        letter-spacing: normal;
-        color: #000000;
-        text-decoration: none;
+
+    a {
+      color: #308282;
+      text-decoration: underline;
+      font-weight: normal;
+      font-family: 'Nunito Sans', sans-serif;
     }
-    .one-year__block, .one-year__lead-block {
-         p{
-             font-family: 'Nunito Sans', sans-serif;
-            font-size: 16px;
-            color: $brownish-grey;
-            font-weight: normal;
-            letter-spacing: normal;
-            line-height:normal;
-        }
-        .rich-text{
-            font-size: 16px;
-            color: $brownish-grey;
-            font-weight: normal;
-            letter-spacing: normal;
-            line-height:normal;
-            font-family: 'Nunito Sans', sans-serif;
-        }
-        a{
-            color:#308282;
-            text-decoration: underline;
-            font-weight:normal;
-            font-family: 'Nunito Sans', sans-serif;
-        }
 
-        .one-year__heading {
-            @include m-heading-mixin();
+    .one-year__heading {
+      @include m-heading-mixin();
 
-            margin: 0;
+      margin: 0;
 
-            color: $ux-grey-2;
-        }
+      color: $ux-grey-2;
+    }
 
-        .one-year__lead {
-            @include desktop-body-font-mixin();
+    .one-year__lead {
+      @include desktop-body-font-mixin();
 
-            margin-top: 5px;
+      margin-top: 5px;
         }
 
         .one-year__qualification-charts {
