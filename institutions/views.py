@@ -22,15 +22,16 @@ def institution_detail(request, institution_id, language=enums.languages.ENGLISH
     page.tef_report_link = page.tef_report_link.replace('{{institution_name}}', institution.pub_ukprn_name)
 
     full_path = '%s?%s' % (request.path, request.environ.get('QUERY_STRING'))
-    welsh_url = '/cy' + full_path if language == enums.languages.ENGLISH else full_path
-    english_url = full_path.replace('/cy/', '/')
+    if language == enums.languages.ENGLISH:
+        translated_url = '/cy' + request.path if language == enums.languages.ENGLISH else request.path
+    else:
+        translated_url = request.path.replace('/cy/', '/')
 
     context = page.get_context(request)
     context.update({
         'page': page,
         'institution': institution,
-        'english_url': english_url,
-        'welsh_url': welsh_url,
+        'translated_url': translated_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies')
     })
 
