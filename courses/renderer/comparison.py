@@ -119,7 +119,7 @@ def get_subject_label(course, index):
         try:
             _object = getattr(course, f'{source}_salaries_inst')[index]
         except IndexError as e:
-            return method
+            continue
 
         attrib = "subject_title_in_local_language"
         if has_valid_value(
