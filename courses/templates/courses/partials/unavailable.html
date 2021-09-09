@@ -17,6 +17,7 @@
                                     column-{{ column_id }}{{ accordion.title }} item-{{ forloop.counter0 }}"
                                     {% if not forloop.first %}hidden{% endif %}>{{ header }}
                                 {% if course.message %}
+                                    <br />
                                     <img class="information-icon" src="/static/images/information.svg" alt>
                                 {% endif %}
                             </div>
