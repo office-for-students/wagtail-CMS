@@ -71,7 +71,11 @@ def get_data(
         data: Dict[str, List[str]],
         subject=None
 ) -> Dict[str, List[str]]:
-    _object = getattr(course, model_list)[0]
+    print("MODEL LIST", model_list)
+    try:
+        _object = getattr(course, model_list)[0]
+    except IndexError:
+        _object = getattr(course, model_list)
     unavailable_code = _getattr(_object, "unavailable_code", "2")
     aggregation_level = _getattr(_object, "aggregation_level", None)
     response_rate = _getattr(_object, "response_rate", None)
