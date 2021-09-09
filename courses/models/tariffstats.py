@@ -23,8 +23,6 @@ class TariffStatistics:
             self.tariffs.reverse()
             if self.tariff_list:
                 self.range = tariff_range(self.tariff_list, self.display_language)
-            else:
-                self.range = "no_data"
 
             subject_data = tariff_data.get('subject')
             if subject_data:
