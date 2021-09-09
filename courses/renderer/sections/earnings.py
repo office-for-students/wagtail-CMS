@@ -5,6 +5,7 @@ from django.template.loader import render_to_string
 from CMS import translations
 from courses.models import Course
 from courses.renderer.sections.base import Section
+from courses.renderer.sections.unavailable import get_unavailable
 
 AVERAGE_EARNINGS = "average_earnings_course_overview_1"
 INSTITUTION = "institution"
@@ -97,19 +98,24 @@ class SubEarningsSection(Section):
     @classmethod
     def multiple_subjects(cls, course: Course, stat: str, model_list: str, language: str, prefix="", extra=False):
         response = dict(subject=[], values=[])
+        values = cls.unavailable_message(
+            course=course,
+            model_list=model_list,
+            language=language,
+            present_as_multiple=True
+        )
 
         for index, subject in enumerate(course.subject_names):
             subject_name = subject.display_subject_name()
-            values = "no_data"
 
             if index < len(getattr(course, model_list)):
                 _object = getattr(course, model_list)[index]
                 method = str(getattr(_object, stat))
 
-                if extra == "first":
+                if method and (extra == "first"):
                     mode = translations.term_for_key(course.mode.label, language=language)
-                    values = f'{mode} {method} {translations.term_for_key("course", language=language)}' if method else values
-                elif extra == "final":
+                    values = f'{mode} {method} {translations.term_for_key("course", language=language)}'
+                elif method and (extra == "final"):
                     country = str(getattr(_object, "country"))
                     values = render_to_string(
                         "courses/partials/country_population.html",
@@ -117,7 +123,7 @@ class SubEarningsSection(Section):
                             country=country,
                             population=method
                         )
-                    ) if method else values
+                    )
                 else:
                     values = f"{prefix}{method}" if method else values
 
@@ -127,7 +133,11 @@ class SubEarningsSection(Section):
 
     @classmethod
     def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, prefix="", extra=False) -> str:
-        response = "no_data"
+        response = get_unavailable(
+            course=course,
+            model_list=model_list,
+            language=language
+        )
         try:
             if course.has_multiple_subject_names:
                 response = cls.multiple_subjects(
@@ -162,3 +172,4 @@ class SubEarningsSection(Section):
             pass
 
         return response
+

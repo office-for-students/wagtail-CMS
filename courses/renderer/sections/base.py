@@ -5,6 +5,7 @@ from typing import Tuple
 
 from CMS import translations
 from courses.models import Course
+from courses.renderer.sections.unavailable import get_unavailable
 
 primary_key = 0
 action = 1
@@ -41,15 +42,21 @@ class Section:
     @classmethod
     def multiple_subjects(cls, course: Course, stat: str, model_list: str, language: str, suffix=""):
         response = dict(subject=[], values=[])
+        values = cls.unavailable_message(
+            course=course,
+            model_list=model_list,
+            language=language,
+            present_as_multiple=True
+        )
 
         for index, subject in enumerate(course.subject_names):
             subject_name = subject.display_subject_name()
-            values = "no_data"
 
             if index < len(getattr(course, model_list)):
                 _object = getattr(course, model_list)[index]
                 method = str(getattr(_object, stat))
-                values = f"{method}{suffix}" if method else values
+                if method:
+                    values = f"{method}{suffix}"
 
             response["subject"].append(subject_name)
             response["values"].append(values)
@@ -57,7 +64,12 @@ class Section:
 
     @classmethod
     def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, multiple=False, suffix="") -> str:
-        response = "no_data"
+        response = cls.unavailable_message(
+            course=course,
+            model_list=model_list,
+            language=language,
+            present_as_multiple=False
+        )
         try:
             if multiple and course.has_multiple_subject_names:
                 response = cls.multiple_subjects(
@@ -72,10 +84,23 @@ class Section:
                 method = str(getattr(_object, stat))
                 if method:
                     response = f"{method}{suffix}"
+
         except Exception as e:
             print("error: ", model_list, e)
             pass
 
         return response
 
+    @classmethod
+    def unavailable_message(cls, course, model_list, language, present_as_multiple):
+        unavailable = get_unavailable(
+            course=course,
+            model_list=model_list,
+            language=language,
+            present_as_multiple=present_as_multiple
+        )
+        header = unavailable["header"]
+        message = unavailable["message"]
+        response = [header, message, "unavailable"]
 
+        return response
