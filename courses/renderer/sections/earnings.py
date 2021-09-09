@@ -98,7 +98,7 @@ class SubEarningsSection(Section):
     @classmethod
     def multiple_subjects(cls, course: Course, stat: str, model_list: str, language: str, prefix="", extra=False):
         response = dict(subject=[], values=[])
-        values = cls.unavailable_message(
+        values = Section.unavailable_message(
             course=course,
             model_list=model_list,
             language=language,
@@ -125,7 +125,7 @@ class SubEarningsSection(Section):
                         )
                     )
                 else:
-                    values = f"{prefix}{method}" if method else values
+                    values = f"{prefix}{method}"
 
             response["subject"].append(subject_name)
             response["values"].append(values)
@@ -133,10 +133,11 @@ class SubEarningsSection(Section):
 
     @classmethod
     def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, prefix="", extra=False) -> str:
-        response = get_unavailable(
+        response = cls.unavailable_message(
             course=course,
             model_list=model_list,
-            language=language
+            language=language,
+            present_as_multiple=False
         )
         try:
             if course.has_multiple_subject_names:
@@ -153,9 +154,9 @@ class SubEarningsSection(Section):
                 method = str(getattr(_object, stat))
                 mode = translations.term_for_key(course.mode.label, language=language)
 
-                if extra == "first":
-                    response = f'{mode} {method} {translations.term_for_key("course", language=language)}' if method else response
-                elif extra == "final":
+                if method and (extra == "first"):
+                    response = f'{mode} {method} {translations.term_for_key("course", language=language)}'
+                elif method and (extra == "final"):
                     country = str(getattr(_object, "country"))
                     response = render_to_string(
                         "courses/partials/country_population.html",
@@ -163,7 +164,7 @@ class SubEarningsSection(Section):
                             country=country,
                             population=method
                         )
-                    ) if method else response
+                    )
                 else:
                     response = f"{prefix}{method}" if method else response
 
