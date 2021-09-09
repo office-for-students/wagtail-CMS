@@ -72,12 +72,10 @@ def get_data(
         subject=None
 ) -> Dict[str, List[str]]:
     _object = getattr(course, model_list)[0]
-    unavailable_code = str(getattr(_object, "unavailable_code"))
-    aggregation_level = str(getattr(_object, "aggregation_level"))
-    # subject_name = subject or _getattr(_object, "subject_english", "This is a subject")
+    unavailable_code = _getattr(_object, "unavailable_code", "2")
+    aggregation_level = _getattr(_object, "aggregation_level", None)
     response_rate = _getattr(_object, "response_rate", None)
     agg = aggregation_level if str(aggregation_level) not in ("None", "") else "blank"
-    # Sometimes None was entered into the DB as a string, and sometimes not, sometimes empty string. ^^^
     response = set_message(unavailable_code, response_rate, agg, subject, data, language)
 
     return response
@@ -115,4 +113,4 @@ def set_message(
 
 
 def _getattr(obj, attr, fallback):
-    return getattr(obj, attr) if hasattr(obj, attr) else fallback
+    return str(getattr(obj, attr)) if hasattr(obj, attr) else fallback
