@@ -2081,6 +2081,10 @@ DICT = {
         'en': 'What you need to know about the data',
         'cy': ''
     },
+    'survey_need_to_know': {
+        'en': 'What you need to know about the student survey data',
+        'cy': ''
+    },
     'entrance_data_quals_students_had': {
         'en': 'These are the qualifications students had when they were accepted onto this course. This is not a list of qualifications a person needs to have to be accepted onto this course',
         'cy': "Dyma'r cymwysterau a oedd gan fyfyrwyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon"
@@ -2340,5 +2344,9 @@ DICT = {
               'the student experience in the future.</li>',
         'cy': ''
     },
+    'survey_info_box':{
+        'en': 'Student satisfation data is from the 2021 NSS survey and many have been affected by the Covid-19 pandemic.',
+        'cy': ''
+    }
 
 }
