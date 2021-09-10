@@ -198,9 +198,17 @@ STATISTICS = {
             Byddwch yn ofalus wrth gymharu'r naill a'r llall. 
             Darllenwch fwy am Arolwg Cenedlaethol o Fyfyrwyr'''
     },
+    'data_read_more': {
+        'en': 'Read more about this data',
+        'cy': ''
+    },
     'read_more_about_satisfaction': {
         'en': "Read more about the National Student Survey",
         'cy': "Darllenwch fwy am Arolwg Cenedlaethol o Fyfyrwyr"
+    },
+    'student_satisfaction_info_read_more_url': {
+        'en': '#',
+        'cy': '#'
     },
     'after_one_year_guidance': {
         'en': '''The number of students indicates the size of the course, and more people 
@@ -2061,6 +2069,10 @@ DICT = {
         'en': 'What you need to know about entry data',
         'cy': 'Yr hyn y mae angen ichi wybod am ddata mynediad'
     },
+    'data_need_to_know': {
+        'en': 'What you need to know about the data',
+        'cy': ''
+    },
     'entrance_data_quals_students_had': {
         'en': 'These are the qualifications students had when they were accepted onto this course. This is not a list of qualifications a person needs to have to be accepted onto this course',
         'cy': "Dyma'r cymwysterau a oedd gan fyfyrwyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon"
@@ -2298,4 +2310,11 @@ DICT = {
         'cy': "<div><p>Mae {}% o raddedigion {} yn {} sy’n preswylio yn y DU wedi'u lleoli yn {}.</p></div>"
     },
 
+    'student_satisfaction_info_box': {
+        'en': '<li>The data is from students surveyed during the Covid-19 pandemic</li>'
+              '<li>All providers, courses and students have been affected by the pandemic and this is likely to have affected the data we show here.<li>'
+              'This data is reliable and of value in comparing courses but may not provide a reliable prediction of '
+              'the student experience in the future.</li>',
+        'cy': ''
+    }
 }
