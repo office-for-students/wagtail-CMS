@@ -60,7 +60,8 @@ class ContinuationSection(Section):
                         stat=section[action],
                         model_list=section[model_array],
                         language=self.language,
-                        suffix=section[suffix_index]
+                        suffix=section[suffix_index],
+                        multiple=True
                     )
                 )
 
