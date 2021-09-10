@@ -11,7 +11,7 @@ def term_for_key(key: str, language: str) -> str:
     if not term:
         term = OPTIONALS.get(key).get(language) if key in OPTIONALS else None
     if not term:
-        term = DICT.get(key).get(language) if key in DICT else key
+        term = key
     return term
 
 
