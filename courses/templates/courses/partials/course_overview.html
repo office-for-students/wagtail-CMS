@@ -11,10 +11,23 @@
               </span>
             </li>
         </ul>
-
-        <h1 class="course-detail__course-name">
-            {{ course.display_title }}
-        </h1>
+        <div class="d-flex flex-wrap row">
+            <h1 class="course-detail__course-name col-md-7">
+                {{ course.display_title }}
+            </h1>
+            <div class="data-info col-md-5 float-md-right mb-2">
+                <div class="row">
+                    <p class="data-info__heading col-md-4 mt-2 mb-2">{% get_translation key='survey_need_to_know' language=page.get_language %}</p>
+                    <div class="col-md-8 ">
+                        <img class="data-info__img"
+                             src="/static/images/compare-course-graphic.svg" alt="Survey info">
+                        <p class="data-info__content mt-2 mb-2">{% get_translation key='survey_info_box' language=page.get_language %}
+                            <a href="#"
+                               class="data-info__link">{% get_translation key='find_out_more' language=page.get_language %}</a>
+                        </p></div>
+                </div>
+            </div>
+        </div>
 
         {% if page.is_english %}
             <a class="course-detail__institution-name" href="/institution-details/{{ course.institution.pub_ukprn }}/"
@@ -40,6 +53,7 @@
                     {% endif %}
                 </p>
             </div>
+
             <div class="col-md-4 col-sm-12 float-md-right mb-2">
                 <button class="course-detail__compare-btn">
                     <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">

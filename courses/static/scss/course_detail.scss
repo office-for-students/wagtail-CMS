@@ -52,6 +52,35 @@
     }
   }
 
+    .data-info {
+        background: #f4f8f8;
+        border: solid 2px #cee9e7;
+        max-height: 80px;
+        &__heading {
+            font-size: 0.8125rem;
+            padding-right: 5px;
+            font-weight: bold;
+        }
+        &__img{
+            float: right;
+            width: 25px;
+            height: 25px;
+            margin-left: 10px;
+            margin-top: 1px;
+        }
+        &__content{
+            font-size: 0.75rem;
+            text-align: justify
+        }
+        &__link{
+            color:#266969;
+            text-decoration: underline;
+            font-weight: bold;
+            padding-left: 20px;
+        }
+    }
+
+
     .course-detail__joint-overview{
         border: solid 3px #cee9e7;
 
