@@ -118,10 +118,9 @@
                     window.performance.navigation.type === 2);
             if (historyTraversal) {
                 window.location.reload();
-            }
-        });
-        {# Reload end #} %
-        }
+            };
+        })
+        {# Reload end #}
     </script>
     <script type="text/javascript" src="{% static 'js/bookmark_management.js' %}?{% code_version %}"></script>
 {% endblock %}

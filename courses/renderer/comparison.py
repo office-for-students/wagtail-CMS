@@ -98,8 +98,8 @@ def get_multiple_subjects(courses: List[Course]) -> Dict[str, List[str]]:
     for course in courses:
         subject_list = list()
         subject_names = course.subject_names
-        for index in range(len(subject_names)):
-            subject_list.append(get_subject_label(course, index))
+        for index, subject_name in enumerate(subject_names):
+            subject_list.append(get_subject_label(course, index, subject_name.display_subject_name))
         subjects["subject"].append(subject_list)
     return subjects
 
@@ -112,11 +112,15 @@ def has_valid_value(attrib, _object):
     return False
 
 
-def get_subject_label(course, index):
+def get_subject_label(course, index, subject_name):
     sources = ["go", "leo3", "leo5"]
-    method = "No Subject Name"
+    method = subject_name
     for source in sources:
-        _object = getattr(course, f'{source}_salaries_inst')[index]
+        try:
+            _object = getattr(course, f'{source}_salaries_inst')[index]
+        except IndexError as e:
+            continue
+
         attrib = "subject_title_in_local_language"
         if has_valid_value(
                 _object=_object,
