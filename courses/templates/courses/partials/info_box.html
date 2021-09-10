@@ -1,0 +1,12 @@
+{% load staticfiles wagtailcore_tags discover_uni_tags %}
+
+<div class="info-box my-3 p-3 mx-1 d-flex flex-wrap row">
+    <div class="col-lg-3 col-md-12 align-self-stretch my-lg-3">
+        <p class="info-box__heading">{% get_translation key=header language=page.get_language %}</p>
+    </div>
+    <div class="col-lg-9 col-md-12 align-self-stretch my-auto text-center text-lg-left">
+        {% get_translation key=content language=page.get_language as content_text%}
+        <ul class="info-box__content"> {{ content_text | safe }}</ul>
+        <p><a href="{% get_translation key=url language=page.get_language %}" class="text-center text-lg-left">{% get_translation key='data_read_more' language=page.get_language %}</a></p>
+    </div>
+</div>
