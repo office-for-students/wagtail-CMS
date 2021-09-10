@@ -210,6 +210,14 @@ STATISTICS = {
         'en': '#',
         'cy': '#'
     },
+    'employment_info_read_more_url': {
+        'en': '#',
+        'cy': '#'
+    },
+    'graduate_perceptions_info_read_more_url': {
+        'en': '#',
+        'cy': '#'
+    },
     'after_one_year_guidance': {
         'en': '''The number of students indicates the size of the course, and more people 
             means it is more likely to be representative of outcomes for students.''',
@@ -2316,5 +2324,21 @@ DICT = {
               'This data is reliable and of value in comparing courses but may not provide a reliable prediction of '
               'the student experience in the future.</li>',
         'cy': ''
-    }
+    },
+
+    'graduate_perceptions_info_box': {
+        'en': '<li>The data is from students surveyed during the Covid-19 pandemic</li>'
+              '<li>All providers, courses and students have been affected by the pandemic and this is likely to have affected the data we show here.<li>'
+              'This data is reliable and of value in comparing courses but may not provide a reliable prediction of '
+              'the student experience in the future.</li>',
+        'cy': ''
+    },
+    'employment_info_box': {
+        'en': '<li>The data is from students surveyed during the Covid-19 pandemic</li>'
+              '<li>All providers, courses and students have been affected by the pandemic and this is likely to have affected the data we show here.<li>'
+              'This data is reliable and of value in comparing courses but may not provide a reliable prediction of '
+              'the student experience in the future.</li>',
+        'cy': ''
+    },
+
 }
