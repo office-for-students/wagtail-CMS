@@ -67,6 +67,7 @@ class HomePage(DiscoverUniBasePage):
         context = super().get_context(request)
         language = self.get_language()
         context['institutions_list'] = InstitutionList.get_options()[language]
+        context['language'] = language
         context['search_info'] = {
             'institutions': "",
             'number_options_selected': translations.term_for_key('number_options_selected', language),
