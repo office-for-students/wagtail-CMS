@@ -27,6 +27,20 @@
 .course-detail {
     // overflow-x: hidden;
 
+    .info-box {
+      border: solid 3px $duck-egg-blue;
+
+    &__heading {
+      font-size: 1.875rem;
+    }
+
+    &__content {
+      li:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
     .course-detail__joint-overview{
         border: solid 3px #cee9e7;
 
@@ -89,7 +103,7 @@
             color: $black;
         }
 
-        
+
         .course-detail__nav {
             visibility: hidden;
             display: flex;
@@ -156,7 +170,7 @@
 
 
         .course-detail__institution-locations{
-            
+
             @include small-font-mixin();
 
         }
@@ -171,7 +185,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                
+
                 background-color: $white;
                 border-radius: 10px;
 
@@ -588,7 +602,7 @@
 
     .course-detail .course-detail__joint-overview{
         border: solid 3px #cee9e7;
-    
+
         .course-detail__joint-overview-heading h3{
             font-family: 'Nunito Sans', sans-serif;
             font-weight: normal;
@@ -697,7 +711,7 @@
         }
 
         .course-detail__lead {
-            
+
 
             .course-detail__nav {
                 visibility: hidden;
@@ -759,7 +773,7 @@
 
             .course-detail__course-overview {
                 flex-wrap: nowrap;
-               
+
 
             }
 
