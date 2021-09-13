@@ -52,8 +52,6 @@ class Section:
                 method = str(getattr(_object, stat))
                 values = f"{method}{suffix}" if method else values
 
-            print(values)
-
             response["subject"].append(subject_name)
             response["values"].append(values)
         return response
@@ -86,16 +84,16 @@ class Section:
     @classmethod
     def set_unavailable(cls, course: Course, model_list: str, language: str, index=0):
         try:
-            _object = getattr(course, model_list)[0]
-            title = getattr(_object, "unavailable_reason_heading")
+            _object = getattr(course, model_list)[index]
             body = getattr(_object, "unavailable_reason_body")
-            header = get_unavailable(course, model_list, language)
+            header = get_unavailable(course, model_list, language)["header"][0]
         except Exception as e:
-            print(model_list, "error: ", e)
-            header = "no_data"
-            body = "no_data"
-            title = "no_data"
+            header = translations.term_for_key(key="no_data_available", language=language)
+            _object = getattr(course, "display_no_data")()
+            body = _object["reason"]
 
         return ["unavailable", header, body]
 
-
+    def check_unavailable(self, section):
+        unavailable = True if section[-1] is True else False
+        return unavailable

@@ -26,7 +26,8 @@ class SatisfactionSection(Section):
         sections = [
             (OVERALL_SATISFACTION, satisfaction_list[0], "%", "satisfaction_stats"),
             (SATISFACTION_DATA_FROM_PEOPLE, satisfaction_list[1], "", "satisfaction_stats"),
-            (PERCENTAGE_THOSE_ASKED, satisfaction_list[2], "", "satisfaction_stats")
+            (PERCENTAGE_THOSE_ASKED, satisfaction_list[2], "", "satisfaction_stats"),
+            ("data_displayed", "", "", "satisfaction_stats", True)
         ]
 
         return sections
@@ -41,10 +42,10 @@ class SatisfactionSection(Section):
                         model_list=section[model_array],
                         language=self.language,
                         suffix=section[suffix_index],
-                        multiple=True
+                        multiple=True,
+                        unavailable=self.check_unavailable(section)
                     )
                 )
-
         return self.data
 
 
@@ -53,8 +54,12 @@ class SubSatisfactionSection(Section):
     def get_sections(self) -> List[Tuple[Any, Any, str, str]]:
         sections = []
 
+        first = True
         for i in self.keys:
+            if first is True:
+                sections.append(("data_displayed", "", "", "satisfaction_stats", True))
             sections.append((f"nss_question_{i}", f"question_{i}", "%", "satisfaction_stats"))
+            first = False
         return sections
 
     def generate_dict(self) -> dict:
@@ -67,7 +72,8 @@ class SubSatisfactionSection(Section):
                         model_list=section[model_array],
                         language=self.language,
                         suffix=section[suffix_index],
-                        multiple=True
+                        multiple=True,
+                        unavailable=self.check_unavailable(section)
                     )
                 )
 

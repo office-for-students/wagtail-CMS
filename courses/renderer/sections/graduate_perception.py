@@ -58,6 +58,7 @@ class GraduatePerceptionSection(Section):
 
     def get_sections(self) -> List[Tuple[Any, Any, Any, str, str]]:
         sections = [
+                ("0", "data_displayed", "", "", "graduate_perceptions", True),
                 ("1", DATA_FROM_PEOPLE, graduate_list[0], "", "graduate_perceptions"),
                 ("2", PERCENTAGE_THOSE_ASKED, graduate_list[1], "%", "graduate_perceptions"),
                 ("3", USEFULNESS, graduate_list[2], "%", "graduate_perceptions"),
@@ -83,6 +84,7 @@ class GraduatePerceptionSection(Section):
                         language=self.language,
                         multiple=True,
                         suffix=section[suffix_index],
+                        unavailable=self.check_unavailable(section)
                     )
                 )
         self.update_data_with_subtitles(self.data)

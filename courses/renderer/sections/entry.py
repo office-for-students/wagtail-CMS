@@ -45,6 +45,7 @@ class SubEntrySection(Section):
         sub_sections = []
         sections = [
             (
+                ("0", "data_displayed", "", "", "entry_stats", True),
                 ("1", DATA_FROM_PEOPLE, entry_list[0], "", "entry_stats"),
                 ("2", A_LEVEL, entry_list[1], "%", "entry_stats"),
                 ("3", BACCALAUREATE, entry_list[2], "%", "entry_stats"),
@@ -55,8 +56,9 @@ class SubEntrySection(Section):
                 ("8", NO_QUALIFICATIONS, entry_list[7], "%", "entry_stats"),
                 ("9", OTHER, entry_list[8], "%", "entry_stats"),
 
-                ("10", DATA_FROM_PEOPLE, tariff_list[0], "", "tariff_stats"),
-                ("11", TYPICAL_RANGE, tariff_list[1], "", "tariff_stats"),
+                ("10", "data_displayed", "", "", "tariff_stats", True),
+                ("11", DATA_FROM_PEOPLE, tariff_list[0], "", "tariff_stats"),
+                ("12", TYPICAL_RANGE, tariff_list[1], "", "tariff_stats"),
 
             )]
 
@@ -80,7 +82,8 @@ class SubEntrySection(Section):
                         model_list=section[model_index],
                         language=self.language,
                         multiple=True,
-                        suffix=section[suffix_index]
+                        suffix=section[suffix_index],
+                        unavailable=self.check_unavailable(section)
                     )
                 )
         return self.data
