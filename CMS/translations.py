@@ -404,11 +404,11 @@ UNAVAILABLE = {
         'cy': "Nid oes data ar gael ar gyfer y cwrs hwn."
     },
     'message_1': {
-        'en': "The data displayed is from students on this and other courses in <b>{}</b>. " \
-              "There was not enough data to publish information specifically for this course. " \
+        'en': "The data displayed is from students on this and other courses in <b>{}</b>. " 
+              "There was not enough data to publish information specifically for this course. " 
               "This may be because the course size is too small. This does not reflect on the quality of the course.",
-        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill. " \
-              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " \
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill. " 
+              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " 
               "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
     },
     'message_2': {
@@ -416,21 +416,21 @@ UNAVAILABLE = {
         'cy': "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
     },
     'message_3': {
-        'en': "The data displayed is from students on this and other courses over two years in <b>{}</b>. " \
-              "There was not enough data to publish information specifically for this course. " \
+        'en': "The data displayed is from students on this and other courses over two years in <b>{}</b>. " 
+              "There was not enough data to publish information specifically for this course. " 
               "This may be because the course size is too small. This does not reflect on the quality of the course.",
-        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill yn ystod y ddwy flynedd flaenorol. " \
-              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. " \
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill yn ystod y ddwy flynedd flaenorol. " 
+              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. " 
               "Nid yw hyn yn adlewyrchu ansawdd y cwrs."
     },
     'message_4': {
-        'en': "The data displayed is from students on this and other courses in <b>{}</b>. " \
-              "There was not enough data to publish information specifically for this course. " \
-              "This may be because the course size is too small or not enough students responded to the survey. " \
+        'en': "The data displayed is from students on this and other courses in <b>{}</b>. " 
+              "There was not enough data to publish information specifically for this course. " 
+              "This may be because the course size is too small or not enough students responded to the survey. " 
               "This does not reflect on the quality of the course.",
-        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill. " \
-              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " \
-              "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. " \
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill. " 
+              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " 
+              "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. " 
               "Nid yw hyn yn adlewyrchu ansawdd y cwrs."
     },
     'message_5': {
@@ -438,11 +438,11 @@ UNAVAILABLE = {
         'cy': "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
     },
     'message_6': {
-        'en': "The data displayed is from students on this and other courses over two years in <b>{}</b>. " \
-              "There was not enough data to publish information specifically for this course. " \
+        'en': "The data displayed is from students on this and other courses over two years in <b>{}</b>. " 
+              "There was not enough data to publish information specifically for this course. " 
               "This may be because the course size is too small or not enough students responded to the survey. This does not reflect on the quality of the course.",
-        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill yn ystod y ddwy flynedd flaenorol. " \
-              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " \
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill yn ystod y ddwy flynedd flaenorol. " 
+              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " 
               "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
     },
     'message_7': {
@@ -450,19 +450,19 @@ UNAVAILABLE = {
         'cy': "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs.",
     },
     'message_8': {
-        'en': "The data displayed is from students on this and other courses in <b>{}</b>. " \
-              "There was not enough data to publish information specifically for this course. " \
+        'en': "The data displayed is from students on this and other courses in <b>{}</b>. " 
+              "There was not enough data to publish information specifically for this course. " 
               "This is because the course has not yet run or has not been running long enough for this data to be available.",
-        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill. " \
-              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " \
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill. " 
+              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " 
               "Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
     },
     'message_9': {
-        'en': "The data displayed is from students on this and other courses over two years in <b>{}</b>. " \
-              "There was not enough data to publish information specifically for this course. " \
+        'en': "The data displayed is from students on this and other courses over two years in <b>{}</b>. " 
+              "There was not enough data to publish information specifically for this course. " 
               "This is because the course has not yet run or has not been running long enough for this data to be available.",
-        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill yn ystod y ddwy flynedd flaenorol. " \
-              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " \
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill yn ystod y ddwy flynedd flaenorol. " 
+              "Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. " 
               "Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
     },
     'message_10': {
@@ -2081,6 +2081,10 @@ DICT = {
         'en': 'What you need to know about the data',
         'cy': ''
     },
+    'employment_need_to_know': {
+        'en': 'What you need to know about employment data',
+        'cy': ''
+    },
     'survey_need_to_know': {
         'en': 'What you need to know about the student survey data',
         'cy': ''
@@ -2331,17 +2335,13 @@ DICT = {
     },
 
     'graduate_perceptions_info_box': {
-        'en': '<li>The data is from students surveyed during the Covid-19 pandemic</li>'
-              '<li>All providers, courses and students have been affected by the pandemic and this is likely to have affected the data we show here.<li>'
-              'This data is reliable and of value in comparing courses but may not provide a reliable prediction of '
-              'the student experience in the future.</li>',
+        'en': '<li>Some data is from graduates surveyed during the Covid-19 pandemic</li>',
         'cy': ''
     },
     'employment_info_box': {
-        'en': '<li>The data is from students surveyed during the Covid-19 pandemic</li>'
-              '<li>All providers, courses and students have been affected by the pandemic and this is likely to have affected the data we show here.<li>'
-              'This data is reliable and of value in comparing courses but may not provide a reliable prediction of '
-              'the student experience in the future.</li>',
+        'en': '<li>Some data is from graduates surveyed during Covid-19 pandemic</li>'
+              '<li>Labour markets vary and change over time<li>'
+              '<li>Employment and job opportunities vary across regions in the UK</li>',
         'cy': ''
     },
     'survey_info_box':{
