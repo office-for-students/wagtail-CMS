@@ -40,6 +40,8 @@ class JobTypeStatistics:
             self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
             self.unavailable_url_english = fallback_to(unavailable_data.get('url_english'), '')
             self.unavailable_url_welsh = fallback_to(unavailable_data.get('url_welsh'), '')
+            self.unavailable_reason_heading = self.display_unavailable_info()["reason_heading"]
+            self.unavailable_reason_body = self.display_unavailable_info()["reason_body"]
 
     def display_subject_name(self):
         if self.display_language == enums.languages.ENGLISH:

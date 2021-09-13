@@ -49,6 +49,9 @@ class EmploymentStatistics:
             self.unavailable_url_english = fallback_to(unavailable_data.get('url_english'), '')
             self.unavailable_url_welsh = fallback_to(unavailable_data.get('url_welsh'), '')
 
+            self.unavailable_reason_heading = self.display_unavailable_info()["reason_heading"]
+            self.unavailable_reason_body = self.display_unavailable_info()["reason_body"]
+
     @property
     def work_and_or_study(self):
         return self.in_work_or_study

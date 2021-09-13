@@ -19,6 +19,8 @@ class GraduatePerceptionStatistics:
             self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
             self.unavailable_find_out_more_english = fallback_to(unavailable_data.get('find_out_more_english'), '')
             self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
+            self.unavailable_reason_heading = self.display_unavailable_info()["reason_heading"]
+            self.unavailable_reason_body = self.display_unavailable_info()["reason_body"]
 
             self.go_work_skills = fallback_to(go_voice_work_data.get('go_work_skills'), '')
             self.go_work_mean = fallback_to(go_voice_work_data.get('go_work_mean'), '')
@@ -55,13 +57,13 @@ class GraduatePerceptionStatistics:
             unavailable[
                 "find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
 
-        if "reason" in unavailable:
-            if self.go_work_agg in ["21", "22", "23"]:
-                if self.display_language == enums.languages.ENGLISH:
-                    unavailable["reason"] = unavailable["reason"].replace(" over the previous two years", "")
-                else:
-                    unavailable["reason"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol",
-                                                                          "eraill")
+        # if "reason" in unavailable:
+        #     if self.go_work_agg in ["21", "22", "23"]:
+        #         if self.display_language == enums.languages.ENGLISH:
+        #             unavailable["reason"] = unavailable["reason"].replace(" over the previous two years", "")
+        #         else:
+        #             unavailable["reason"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol",
+        #                                                                   "eraill")
 
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 
