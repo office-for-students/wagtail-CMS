@@ -100,7 +100,7 @@ class SubEarningsSection(Section):
 
         for index, subject in enumerate(course.subject_names):
             subject_name = subject.display_subject_name()
-            values = "no_data"
+            values = cls.set_unavailable(course=course, language=language)
 
             if index < len(getattr(course, model_list)):
                 _object = getattr(course, model_list)[index]
@@ -127,7 +127,7 @@ class SubEarningsSection(Section):
 
     @classmethod
     def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, prefix="", extra=False) -> str:
-        response = "no_data"
+        response = cls.set_unavailable(course=course, language=language)
         try:
             if course.has_multiple_subject_names:
                 response = cls.multiple_subjects(
@@ -162,3 +162,11 @@ class SubEarningsSection(Section):
             pass
 
         return response
+
+    @classmethod
+    def set_unavailable(cls, course: Course, language: str):
+        header = translations.term_for_key(key="no_data_available", language=language)
+        _object = getattr(course, "display_no_data")()
+        body = _object["reason"]
+
+        return ["unavailable", header, body]
