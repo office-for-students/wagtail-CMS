@@ -29,7 +29,7 @@
             {% if forloop.counter < change_point %}
                 <div class="comparison_row-yellow_background">
                     {% if forloop.counter == 1 %}
-                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values item_font="item_font" header_font="header_font" mt="mt-3" %}
+                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values header_font="header_font" mt="mt-3" %}
                     {% else %}
                         {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values mt="mt-2" %}
                     {% endif %}
@@ -37,7 +37,7 @@
             {% else %}
 
                     <div class="comparison_row-grey_background">
-                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values item_font="item_font" header_font="header_font" %}
+                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" %}
                     </div>
             {% endif %}
         {% endfor %}

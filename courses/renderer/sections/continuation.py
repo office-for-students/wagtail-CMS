@@ -63,7 +63,8 @@ class ContinuationSection(Section):
                         model_list=section[model_array],
                         language=self.language,
                         suffix=section[suffix_index],
-                        unavailable=self.check_if_in_array(section)
+                        unavailable=self.check_if_in_array(section),
+                        multiple=True
                     )
                 )
 

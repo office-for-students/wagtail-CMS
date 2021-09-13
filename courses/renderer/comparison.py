@@ -67,7 +67,7 @@ def get_sub_earnings(language) -> List:
 def get_sub_entry(language) -> List:
     list_sub_accordions = [
         (translations.term_for_key(key="after_15_months", language=language), [0, 9]),
-        (translations.term_for_key(key="after_3_years", language=language), [9, 11]),
+        (translations.term_for_key(key="ucas_tariff_points", language=language), [9, 11]),
     ]
     return list_sub_accordions
 
@@ -155,9 +155,10 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="satisfaction_guidance_1", language=language),
                 translations.term_for_key(key="satisfaction_guidance_2", language=language)
             ),
+            subjects=get_multiple_subjects(courses),
             dataset=get_details(SatisfactionSection, courses, language),
             sub_accordions=get_sub_accordion_dataset(courses, SubSatisfactionSection, get_sub_satisfaction, language),
-            unavailable=get_unavailable_rows(courses, ["satisfaction_stats", ], language=language),
+            unavailable=get_unavailable_rows(courses, ["satisfaction_stats", ], language=language, present_as_multiple=True),
             change_point=4,
             source=(
                 translations.term_for_key(key="about_our_data_link", language=language),
@@ -167,9 +168,10 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         dict(
             title=translations.term_for_key(key="entry_information", language=language),
             guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),
+            subjects=get_multiple_subjects(courses),
             sub_accordions=get_sub_accordion_dataset(courses, SubEntrySection, get_sub_entry, language),
             unavailable=get_unavailable_rows(courses, ["entry_stats", "tariff_stats"], change_key=10,
-                                             language=language),
+                                             language=language, present_as_multiple=True),
             source=(
                 translations.term_for_key(key="about_our_data_link", language=language),
                 translations.term_for_key(key="read_more_about_entry", language=language)
@@ -178,8 +180,9 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         dict(
             title=translations.term_for_key(key="after_one_year", language=language),
             guidance_information=(translations.term_for_key(key="after_one_year_guidance", language=language),),
+            subjects=get_multiple_subjects(courses),
             dataset=get_details(ContinuationSection, courses, language),
-            unavailable=get_unavailable_rows(courses, ["continuation_stats", ], language=language),
+            unavailable=get_unavailable_rows(courses, ["continuation_stats", ], language=language, present_as_multiple=True),
             source=(
                 translations.term_for_key(key="entrance_data_read_more_url", language=language),
                 translations.term_for_key(key="read_more_about_continuation", language=language),
