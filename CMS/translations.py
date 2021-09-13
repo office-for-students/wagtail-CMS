@@ -340,6 +340,10 @@ STATISTICS = {
         'en': "This may be because the course size is too small or not enough students responded to the survey. This does not reflect on the quality of the course.",
         'cy': "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
     },
+    'ucas_tariff_points': {
+        'en': "UCAS Tariff points",
+        'cy': "Pwyntiau Tariff UCAS"
+    },
 }
 
 UNAVAILABLE = {
