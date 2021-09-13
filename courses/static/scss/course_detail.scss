@@ -70,7 +70,6 @@
         }
         &__content{
             font-size: 0.75rem;
-            text-align: justify
         }
         &__link{
             color:#266969;
@@ -86,13 +85,10 @@
 
         .course-detail__joint-overview-heading h3{
             font-family: 'Nunito Sans', sans-serif;
-            font-weight: normal;
             font-size: 1.125rem;
-            line-height: normal;
             line-height: 100%;
-            color: #000000;
             font-weight: normal;
-            margin-top: 0px;
+            margin-top: 0;
             margin-bottom: 16px;
             color: #000000;
             text-align: center;
@@ -100,21 +96,16 @@
         .course-detail__joint-overview-body{
             p {
                 font-family: 'Nunito Sans', sans-serif;
-                font-weight: normal;
                 font-size: 0.875rem;
-                line-height: normal;
-                line-height: 100%;
-                color: #000000;
+                line-height: 1.5;
                 color: #666666;
                 font-weight: normal;
                 text-align: center;
             }
             a {
                 font-family: 'Nunito Sans', sans-serif;
-                line-height: normal;
+                line-height: 1.5;
                 font-size: 0.875rem;
-                color: #666666;
-                font-weight: normal;
                 color: #308282;
                 font-weight: 600;
                 text-decoration: underline;
@@ -155,7 +146,7 @@
 
             .course-detail__nav-control {
                 @include mobile-body-font--bold-mixin();
-                padding: 0px;
+                padding: 0;
                 color: $gradient-light-green;
                 border: none;
                 background-color: transparent;
@@ -238,13 +229,13 @@
                     line-height: normal;
                     letter-spacing: normal;
                     color: #000000;
-                    margin: 0px;
+                    margin: 0;
                     margin-bottom: 5px;
                 }
 
                 .course-detail__overview-item-value {
                     @include small-font--bold-mixin();
-                    margin: 0px;
+                    margin: 0;
 
                     color: $black;
                 }
@@ -277,7 +268,7 @@
             font-size: 1rem;
             font-weight: normal;
             color: #000000;
-            padding: 0px 5px;
+            padding: 0 5px;
         }
 
         a {
@@ -301,9 +292,9 @@
             .course-detail__accordion-heading {
                 display: block;
                 width: 100%;
-                padding: 0px;
+                padding: 0;
                 color: $white;
-                border: 0px;
+                border: 0;
                 @include green-gradient-background-mixin();
                 cursor: pointer;
 
@@ -345,7 +336,7 @@
     }
 
     .course-detail__uni-site-links {
-        padding: 30px 22px 0px 25px;
+        padding: 30px 22px 0 25px;
         margin-bottom: 30px;
         background-color: #F2F2F2;
         border: none;
@@ -369,8 +360,8 @@
             }
 
             .course-detail__uni-site-links-list {
-                padding: 0px;
-                margin: 0px;
+                padding: 0;
+                margin: 0;
 
                 .course-detail__uni-site-links-list-item {
                     display: block;
@@ -428,7 +419,7 @@
             @include small-font-mixin();
 
             margin-top: 23px;
-            margin-bottom: 0px;
+            margin-bottom: 0;
         }
     }
 
@@ -451,7 +442,7 @@
 
             position: relative;
             padding: 38px 30px 20px;
-            margin: 0px;
+            margin: 0;
 
             color: $gradient-light-green;
         }
@@ -464,18 +455,18 @@
         }
 
         .chart-label-explanation__body {
-            padding: 0px 30px 25px;
+            padding: 0 30px 25px;
 
             p, li, h4 {
                 @include mobile-body-font-mixin();
 
-                margin-top: 0px;
+                margin-top: 0;
 
                 color: $ux-grey-3;
 
                 b {
                     @include mobile-body-font--bold-mixin();
-                    margin: 0px;
+                    margin: 0;
                     margin-bottom: 5px;
 
                     color: $ux-grey-3;
@@ -492,10 +483,10 @@
 
             ul {
                 padding-left: 20px;
-                margin-top: 0px;
+                margin-top: 0;
 
                 li {
-                    margin-bottom: 0px;
+                    margin-bottom: 0;
                 }
             }
         }
@@ -517,21 +508,15 @@
                 font-family: 'Nunito Sans', sans-serif;
                 font-weight: normal;
                 font-size: 24px;
-                line-height: normal;
-                line-height: 100%;
+                line-height: 1.5;
                 color: #000000;
-                font-weight: normal;
-                margin-top: 0px;
-                color: #000000;
+                margin-top: 0;
                 text-align: left;
             }
             .course-detail__joint-overview-body{
                 p {
                     font-family: 'Nunito Sans', sans-serif;
-                    font-weight: normal;
-                    line-height: normal;
-                    line-height: 100%;
-                    color: #000000;
+                    line-height: 1.5;
                     font-size: 1rem;
                     color: #666666;
                     font-weight: normal;
@@ -539,11 +524,8 @@
                 }
                 a {
                     font-family: 'Nunito Sans', sans-serif;
-                    line-height: normal;
-                    line-height: 100%;
+                    line-height: 1.5;
                     font-size: 1rem;
-                    color: #666666;
-                    font-weight: normal;
                     color: #308282;
                     font-weight: 600;
                     text-decoration: underline;
@@ -588,7 +570,7 @@
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
-            line-height: normal;
+            line-height: 1.5;
             letter-spacing: normal;
             color: $dark-green-blue;
             text-decoration: underline;
@@ -617,7 +599,7 @@
                 font-size: 1.125rem;
                 font-weight: normal;
                 color: #000000;
-                padding: 0px 5px;
+                padding: 0 5px;
             }
 
             a {
@@ -626,7 +608,7 @@
                 font-weight: normal;
                 font-stretch: normal;
                 font-style: normal;
-                line-height: normal;
+                line-height: 1.5;
                 letter-spacing: normal;
                 text-decoration: underline;
             }
@@ -647,11 +629,8 @@
             font-family: 'Nunito Sans', sans-serif;
             font-weight: normal;
             font-size: 24px;
-            line-height: normal;
-            line-height: 100%;
-            color: #000000;
-            font-weight: normal;
-            margin-top: 0px;
+            line-height: 1.5;
+            margin-top: 0;
             color: #000000;
             text-align: left;
         }
@@ -659,21 +638,15 @@
             p {
                 font-family: 'Nunito Sans', sans-serif;
                 font-weight: normal;
-                line-height: normal;
-                line-height: 100%;
-                color: #000000;
+                line-height: 1.5;
                 font-size: 1rem;
                 color: #666666;
-                font-weight: normal;
                 text-align: left;
             }
             a {
                 font-family: 'Nunito Sans', sans-serif;
-                line-height: normal;
-                line-height: 100%;
+                line-height: 1.5;
                 font-size: 1rem;
-                color: #666666;
-                font-weight: normal;
                 color: #308282;
                 font-weight: 600;
                 text-decoration: underline;
@@ -706,7 +679,7 @@
             font-size: 1.125rem;
             font-weight: normal;
             color: #000000;
-            padding: 0px 5px;
+            padding: 0 5px;
         }
 
         a {
@@ -715,7 +688,7 @@
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
-            line-height: normal;
+            line-height: 1.5;
             letter-spacing: normal;
             text-decoration: underline;
         }
@@ -747,7 +720,7 @@
         }
 
         .course-detail__body {
-            padding: 0px;
+            padding: 0;
         }
 
         .course-detail__lead {
@@ -799,22 +772,8 @@
                 text-decoration: underline;
             }
 
-            .course-detail__institution-info {
-                padding: 55px normalpx 46px;
-
-                background-color: $divider-grey;
-
-                .course-detail__institution-locations {
-                    @include desktop-body-font-mixin();
-
-                    margin: 11px 0 0;
-                }
-            }
-
             .course-detail__course-overview {
                 flex-wrap: nowrap;
-
-
             }
 
             .course-detail__headline_statistics {
@@ -890,8 +849,8 @@
                     }
 
                     .course-detail__uni-site-links-list {
-                        padding: 0px;
-                        margin: 0px;
+                        padding: 0;
+                        margin: 0;
 
                         .course-detail__uni-site-links-list-item {
                             display: block;
