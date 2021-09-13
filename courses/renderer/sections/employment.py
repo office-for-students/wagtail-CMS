@@ -1,5 +1,7 @@
 from typing import List, Tuple, Any, Dict
 from courses.renderer.sections.base import Section
+from courses.renderer.sections.unavailable import get_unavailable
+from courses.models import Course
 
 DATA_FROM_PEOPLE = "data_from_people"
 NOW_WORKING = "now_working"
@@ -45,6 +47,7 @@ class SubEmploymentSection(Section):
         sub_sections = []
         sections = [
             (
+                ("0", "unavailable", "", "", "employment_stats", True),
                 ("1", DATA_FROM_PEOPLE, employment_list[0], "", "employment_stats"),
                 ("2", NOW_WORKING, employment_list[1], "%", "employment_stats"),
                 ("3", DOING_FURTHER_STUDY, employment_list[2], "%", "employment_stats"),
@@ -53,10 +56,11 @@ class SubEmploymentSection(Section):
                 ("6", UNEMPLOYED2, employment_list[5], "%", "employment_stats"),
                 ("7", OTHER, employment_list[6], "%", "employment_stats"),
 
-                ("8", DATA_FROM_PEOPLE, job_types_list[0], "", "job_type_stats"),
-                ("9", HIGHLY_SKILLED, job_types_list[1], "%", "job_type_stats"),
-                ("10", OTHER_WORK, job_types_list[2], "%", "job_type_stats"),
-                ("11", UNKNOWN_WORK, job_types_list[3], "%", "job_type_stats"),
+                ("8", "unavailable", "", "", "employment_stats", True),
+                ("9", DATA_FROM_PEOPLE, job_types_list[0], "", "job_type_stats"),
+                ("10", HIGHLY_SKILLED, job_types_list[1], "%", "job_type_stats"),
+                ("11", OTHER_WORK, job_types_list[2], "%", "job_type_stats"),
+                ("12", UNKNOWN_WORK, job_types_list[3], "%", "job_type_stats"),
             )]
 
         for i in range(self.start_range, self.end_range):
@@ -97,5 +101,21 @@ class SubEmploymentSection(Section):
             if section[0] in subtitles:
                 data[section[0]]["subtitle"] = self.term_for_key(subtitles[section[0]], self.language)
 
+    @classmethod
+    def set_unavailable(cls, course: Course, model_list: str, language: str, index=0):
+        print("employment section")
+        try:
+            _object = getattr(course, model_list)[index]
+            title = getattr(_object, "unavailable_reason_heading")
+            body = getattr(_object, "unavailable_reason_body")
+            combine = f'{title} <br> {body}'
+            header = get_unavailable(course, model_list, language)
+        except Exception as e:
+            print(model_list, "error: ", e)
+            header = "no_data"
+            body = "no_data"
+            title = "no_data"
+            combine = "no_data"
 
+        return ["unavailable", header, combine]
 
