@@ -128,6 +128,7 @@ class Institution:
             self.ukprn = institution_data.get("ukprn")
 
             if 'contact_details' in institution_data:
+                print(f"institution_data.get('contact_details') {institution_data.get('contact_details')}")
                 self.contact_details = InstitutionContactDetails(institution_data.get('contact_details'))
 
             self.student_unions = []
@@ -220,22 +221,12 @@ class Institution:
 class InstitutionContactDetails:
 
     def __init__(self, contact_data):
-        address = contact_data.get('address')
-        if address:
-            self.address_1 = address.get('line_1')
-            self.address_2 = address.get('line_2')
-            self.address_3 = address.get('line_3')
-            self.address_4 = address.get('line_4')
-            self.town = address.get('town')
-            self.county = address.get('county')
-            self.postcode = address.get('post_code')
+        self.address = contact_data.get('address')
         self.phone_number = contact_data.get('telephone')
 
     @property
     def address(self):
-        address_arr = filter(None, [self.address_1, self.address_2, self.address_3, self.address_4,
-                             self.town, self.county, self.postcode])
-        return ', '.join(address_arr)
+        return self.address
 
 
 class InstitutionStudentUnions:
