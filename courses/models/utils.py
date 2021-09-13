@@ -7,7 +7,7 @@ fallback_to = fallback_available
 DICT = CMS.translations.DICT
 
 
-def display_unavailable_info(self, aggregation_level, replace=False):
+def display_unavailable_info(self, aggregation_level, replace=False, model=None):
     unavailable = {}
 
     if self.unavailable_reason:
@@ -29,16 +29,22 @@ def display_unavailable_info(self, aggregation_level, replace=False):
             "find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
 
     if "reason" in unavailable:
-        if replace and int(aggregation_level in [11, 12, 13, 21, 22, 23]):
+        if replace and str(aggregation_level) in ["11", "12", "13", "21", "22", "23"]:
             if self.display_language == enums.languages.ENGLISH:
                 unavailable["reason_body"] = unavailable["reason"].replace(" over the previous two years", "")
+                if model == "grad":
+                    print("FIRST")
             else:
                 unavailable["reason_body"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol",
                                                                            "eraill")
-        elif int(aggregation_level in [11, 12, 13, 21, 22, 23]):
+        elif str(aggregation_level) in ["11", "12", "13", "21", "22", "23"]:
             unavailable["reason_body"] = unavailable["reason"]
+            if model == "grad":
+                print("SECOND", replace, aggregation_level)
         else:
             unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+            if model == "grad":
+                print("TBIRD", replace, aggregation_level)
     return unavailable
 
 
