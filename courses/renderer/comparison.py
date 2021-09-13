@@ -49,8 +49,8 @@ def get_sub_satisfaction(language) -> List:
 
 def get_sub_employment(language) -> List:
     list_sub_accordions = [
-        (translations.term_for_key(key="employment_after_the_course", language=language), [0, 7]),
-        (translations.term_for_key(key="occupation_type", language=language), [7, 11]),
+        (translations.term_for_key(key="employment_after_the_course", language=language), [0, 8]),
+        (translations.term_for_key(key="occupation_type", language=language), [8, 13]),
     ]
     return list_sub_accordions
 
