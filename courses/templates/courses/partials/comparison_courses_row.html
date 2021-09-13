@@ -19,10 +19,12 @@
                          {% if not forloop.first %}hidden{% endif %}>
                          {% if value.0 == "unavailable" %}
                              <div class="no_data_container">
-                                {{ value.1.header.0 }}
+                                {{ value.1 }}
                                 <br>
-                                <img class="information-icon" src="/static/images/information.svg" alt>
-                                <div class="information-text hidden info-box-{{index}} {% if last %}right{% else %}left{% endif %}">{{ value.2|safe }}</div>
+                                {% if value.2 %}
+                                    <img class="information-icon" src="/static/images/information.svg" alt>
+                                    <div class="information-text hidden info-box-{{index}} {% if last %}right{% else %}left{% endif %}">{{ value.2|safe }}</div>
+                                {% endif %}
                              </div>
                          {% else %}
                             {{value}}
@@ -32,10 +34,12 @@
             {% else %}
                 {% if item.0 == "unavailable" %}
                     <div class="no_data_container">
-                        {{ item.1.header.0 }}
+                        {{ item.1 }}
                         <br>
-                        <img class="information-icon" src="/static/images/information.svg" alt>
-                        <div class="information-text hidden info-box-{{forloop.counter0}} {% if forloop.last %}right{% else %}left{% endif %}">{{ item.2|safe }}</div>
+                        {% if item.2 %}
+                            <img class="information-icon" src="/static/images/information.svg" alt>
+                            <div class="information-text hidden info-box-{{forloop.counter0}} {% if forloop.last %}right{% else %}left{% endif %}">{{ item.2|safe }}</div>
+                        {% endif %}
                     </div>
                 {% else %}
                     {{ item | safe }}
