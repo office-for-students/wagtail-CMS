@@ -19,10 +19,10 @@
                          {% if not forloop.first %}hidden{% endif %}>
                          {% if value.0 == "unavailable" %}
                              <div class="no_data_container">
-                                {{ value.1 }}
-                                 <br>
+                                {{ value.1.header.0 }}
+                                <br>
                                 <img class="information-icon" src="/static/images/information.svg" alt>
-                                <div class="information-text hidden info-box-{{index}} {% if last %}right{% else %}left{% endif %}">{{ value.2 }}</div>
+                                <div class="information-text hidden info-box-{{index}} {% if last %}right{% else %}left{% endif %}">{{ value.2|safe }}</div>
                              </div>
                          {% else %}
                             {{value}}
