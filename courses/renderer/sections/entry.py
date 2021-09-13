@@ -79,7 +79,7 @@ class SubEntrySection(Section):
                         stat=section[action],
                         model_list=section[model_index],
                         language=self.language,
-                        multiple=False,
+                        multiple=True,
                         suffix=section[suffix_index]
                     )
                 )
