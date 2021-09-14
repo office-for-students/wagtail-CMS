@@ -70,7 +70,7 @@ a {
   background: #268283;
   border-bottom: 2px solid #268283;
   color: $white;
-  padding: 20px 0px;
+  padding: 20px 0;
   text-align: center;
   text-decoration: none;
   font-family: Nunito Sans;
@@ -168,7 +168,7 @@ a {
   padding: 43px 20px 15px;
 
   text-align: center;
-  line-height: 121.1%;
+  line-height: 1.5;
 
   font-family: $default-font;
   color: #595959;
@@ -230,7 +230,7 @@ a {
     }
 
     &__divider {
-      margin: 0px 4px 0px 6px;
+      margin: 0 4px 0 6px;
     }
   }
 }

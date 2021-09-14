@@ -27,7 +27,7 @@
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
-            line-height: normal;
+            line-height: 1.5;
             letter-spacing: normal;
             text-align: right;
 
@@ -51,7 +51,7 @@
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
-    line-height: normal;
+    line-height: 1.5;
     letter-spacing: normal;
     color: #000000;
 }
@@ -142,7 +142,7 @@
                 margin-bottom: 35px;
                 width: 80%;
 
-                line-height: 45px;
+                line-height: 1.5;
                 color: $ux-grey-3;
             }
 
@@ -155,7 +155,7 @@
 
                 &-text{
                     display: inline-block;
-                    line-height: 34px;
+                    line-height: 1.5;
                     vertical-align: middle;
                     padding-left: 5px;
                 }
@@ -221,7 +221,7 @@
                 font-weight: bold;
                 font-stretch: normal;
                 font-style: normal;
-                line-height: normal;
+                line-height: 1.5;
                 letter-spacing: normal;
                 color: var(--black);
             }

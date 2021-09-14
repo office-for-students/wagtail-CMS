@@ -2344,7 +2344,7 @@ DICT = {
     },
     'employment_info_box': {
         'en': '<li>Some data is from graduates surveyed during Covid-19 pandemic</li>'
-              '<li>Labour markets vary and change over time<li>'
+              '<li>Labour markets vary and change over time</li>'
               '<li>Employment and job opportunities vary across regions in the UK</li>',
         'cy': ''
     },

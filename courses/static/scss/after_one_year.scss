@@ -7,7 +7,7 @@
   color: $brownish-grey;
   font-weight: normal;
   letter-spacing: normal;
-  line-height: normal;
+  line-height: 1.5;
 
 
 }
@@ -20,7 +20,7 @@
     color: $brownish-grey;
     font-weight: normal;
     letter-spacing: normal;
-    line-height: normal;
+    line-height: 1.5;
 
   }
 
@@ -30,7 +30,7 @@
     color: $brownish-grey;
     font-weight: normal;
     letter-spacing: normal;
-    line-height: normal;
+    line-height: 1.5;
   }
 
   a {
@@ -85,7 +85,7 @@
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
-        line-height: normal;
+        line-height: 1.5;
         letter-spacing: normal;
         color: #666666;
       }
@@ -108,7 +108,7 @@
     @include desktop-body-font-mixin();
 
     p {
-        margin: 0px;
+        margin: 0;
     }
 
   .one-year__overview-lead {
@@ -126,7 +126,7 @@
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
-    line-height: normal;
+    line-height: 1.5;
     letter-spacing: normal;
     color: #000000;
     text-decoration: none;
@@ -138,7 +138,7 @@
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
-    line-height: normal;
+    line-height: 1.5;
     letter-spacing: normal;
     color: $brownish-grey;
   }
@@ -159,7 +159,7 @@
     color: $brownish-grey;
     font-weight: normal;
     letter-spacing: normal;
-    line-height: normal;
+    line-height: 1.5;
     text-align: left;
   }
 
@@ -172,7 +172,7 @@
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
-    line-height: normal;
+    line-height: 1.5;
     letter-spacing: normal;
     color: #000000;
     text-decoration: none;
@@ -184,7 +184,7 @@
       color: $brownish-grey;
       font-weight: normal;
       letter-spacing: normal;
-      line-height: normal;
+      line-height: 1.5;
     }
 
     .rich-text {
@@ -192,7 +192,7 @@
       color: $brownish-grey;
       font-weight: normal;
       letter-spacing: normal;
-      line-height: normal;
+      line-height: 1.5;
       font-family: 'Nunito Sans', sans-serif;
     }
 
@@ -233,7 +233,7 @@
                     font-weight: normal;
                     font-stretch: normal;
                     font-style: normal;
-                    line-height: normal;
+                    line-height: 1.5;
                     letter-spacing: normal;
                     color: #000000;
                 }
@@ -250,7 +250,7 @@
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
-            line-height: normal;
+            line-height: 1.5;
             letter-spacing: normal;
             color: #000000;
 
