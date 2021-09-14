@@ -7,7 +7,7 @@ fallback_to = fallback_available
 DICT = CMS.translations.DICT
 
 
-def display_unavailable_info(self, aggregation_level, replace=False, model=None):
+def display_unavailable_info(self, aggregation_level, replace=False):
     unavailable = {}
 
     if self.unavailable_reason:
@@ -32,19 +32,13 @@ def display_unavailable_info(self, aggregation_level, replace=False, model=None)
         if replace and str(aggregation_level) in ["11", "12", "13", "21", "22", "23"]:
             if self.display_language == enums.languages.ENGLISH:
                 unavailable["reason_body"] = unavailable["reason"].replace(" over the previous two years", "")
-                if model == "grad":
-                    print("FIRST")
             else:
                 unavailable["reason_body"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol",
                                                                            "eraill")
         elif str(aggregation_level) in ["11", "12", "13", "21", "22", "23"]:
             unavailable["reason_body"] = unavailable["reason"]
-            if model == "grad":
-                print("SECOND", replace, aggregation_level)
         else:
             unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
-            if model == "grad":
-                print("TBIRD", replace, aggregation_level)
     return unavailable
 
 

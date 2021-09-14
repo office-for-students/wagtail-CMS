@@ -31,11 +31,9 @@ class GraduatePerceptionStatistics:
             self.display_unavailable_info = display_unavailable_info(
                 self,
                 aggregation_level=self.aggregation_level,
-                replace=True,
-                model="grad"
+                replace=True
             )
             self.unavailable_reason_body = self.display_unavailable_info["reason_body"]
-            print("AGGREGATION", self.aggregation_level)
 
     def display_subject_name(self):
         if self.display_language == enums.languages.ENGLISH:
