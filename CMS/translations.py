@@ -9,6 +9,8 @@ def term_for_key(key: str, language: str) -> str:
     if not term:
         term = UNAVAILABLE.get(key).get(language) if key in UNAVAILABLE else None
     if not term:
+        term = JOBS.get(key).get(language) if key in JOBS else None
+    if not term:
         term = OPTIONALS.get(key).get(language) if key in OPTIONALS else None
     if not term:
         term = DICT.get(key).get(language) if key in DICT else key
@@ -484,6 +486,185 @@ OPTIONALS = {
         'en': 'Yes',
         'cy': 'Ydy'
     },
+}
+
+JOBS = {
+    "Managers, directors and senior officials": {
+        "en": "Managers, directors and senior officials",
+        "cy": "Rheolwyr, Cyfarwyddwyr ac Uwch Swyddogion"
+    },
+    "Skilled trades occupations": {
+        "en": "Skilled trades occupations",
+        "cy": "Galwedigaethau crefftau medrus"
+    },
+    "Process, plant and machine operatives": {
+        "en": "Process, plant and machine operatives",
+        "cy": "Gweithwyr prosesau, offer a pheiriannau"
+    },
+    "Elementary occupations": {
+        "en": "Elementary occupations",
+        "cy": "Galwedigaethau elfennol"
+    },
+    "Science, engineering and technology associate professionals": {
+        "en": "Science, engineering and technology associate professionals",
+        "cy": "Gweithwyr Cyswllt Proffesiynol ym maes gwyddoniaeth, peirianneg a thechnoleg"
+    },
+    "Protective service occupations": {
+        "en": "Protective service occupations",
+        "cy": "Galwedigaethau gwasanaeth amddiffyn"
+    },
+    "Business and public service associate professionals": {
+        "en": "Business and public service associate professionals",
+        "cy": "Gweithwyr Cyswllt Proffesiynol ym maes Busnes a Gwasanaeth Cyhoeddus"
+    },
+    "Administrative occupations": {
+        "en": "Administrative occupations",
+        "cy": "Galwedigaethau gweinyddol"
+    },
+    "Secretarial and related occupations": {
+        "en": "Secretarial and related occupations",
+        "cy": "Galwedigaethau ysgrifenyddol a chysylltiedig"
+    },
+    "Leisure, travel and related personal service occupations": {
+        "en": "Leisure, travel and related personal service occupations",
+        "cy": "Hamdden, teithio a galwedigaethau gwasanaeth personol cysylltiedig"
+    },
+    "Community and Civil Enforcement Occupations": {
+        "en": "Community and Civil Enforcement Occupations",
+        "cy": "Galwedigaethau Gorfodi Sifil a Chymunedol"
+    },
+    "Sales occupations": {
+        "en": "Sales occupations",
+        "cy": "Galwedigaethau Gwerthu"
+    },
+    "Customer service occupations": {
+        "en": "Customer service occupations",
+        "cy": "Galwedigaethau Gwasanaeth cwsmeriaid"
+    },
+    "Natural and social science professionals": {
+        "en": "Natural and social science professionals",
+        "cy": "Gweithwyr Proffesiynol Gwyddor naturiol a Chymdeithasol"
+    },
+    "Engineering professionals": {
+        "en": "Engineering professionals",
+        "cy": "Gweithwyr Proffesiynol Peirianneg"
+    },
+    "Information Technology Professionals": {
+        "en": "Information Technology Professionals",
+        "cy": "Gweithwyr Proffesiynol Technoleg Gwybodaeth"
+    },
+    "Web and Multimedia Design Professionals": {
+        "en": "Web and Multimedia Design Professionals",
+        "cy": "Gweithwyr Proffesiynol Dylunio'r We ac Amlgyfrwng"
+    },
+    "Conservation and environment professionals": {
+        "en": "Conservation and environment professionals",
+        "cy": "Gweithwyr Proffesiynol Cadwraeth a'r Amgylchedd"
+    },
+    "Research and Development (RandD) and Other Research Professionals": {
+        "en": "Research and Development (RandD) and Other Research Professionals",
+        "cy": "Ymchwil a Datblygu (YaD) a Gweithwyr Proffesiynol Ymchwil Eraill"
+    },
+    "Medical Practitioners": {
+        "en": "Medical Practitioners",
+        "cy": "Ymarferwyr Meddygol"
+    },
+    "Therapy professionals": {
+        "en": "Therapy professionals",
+        "cy": "Gweithwyr Therapi Proffesiynol"
+    },
+    "Nursing Professionals": {
+        "en": "Nursing Professionals",
+        "cy": "Gweithwyr Nyrsio Proffesiynol"
+    },
+    "Veterinarians": {
+        "en": "Veterinarians",
+        "cy": "Milfeddygon"
+    },
+    "Other Health Professionals": {
+        "en": "Other Health Professionals",
+        "cy": "Gweithwyr Iechyd Proffesiynol Eraill"
+    },
+    "Teaching Professionals": {
+        "en": "Teaching Professionals",
+        "cy": "Gweithwyr Addysgu Proffesiynol"
+    },
+    "Other Educational Professionals": {
+        "en": "Other Educational Professionals",
+        "cy": "Gweithwyr Addysg Proffesiynol Eraill"
+    },
+    "Legal professionals": {
+        "en": "Legal professionals",
+        "cy": "Gweithwyr Cyfreithiol Proffesiynol"
+    },
+    "Finance Professionals": {
+        "en": "Finance Professionals",
+        "cy": "Gweithwyr Cyllid Proffesiynol "
+    },
+    "Business, Research and Administrative Professionals": {
+        "en": "Business, Research and Administrative Professionals",
+        "cy": "Gweithwyr Proffesiynol ym maes Busnes, Ymchwil a Gweinyddiaeth"
+    },
+    "Business and Financial Project Management Professionals": {
+        "en": "Business and Financial Project Management Professionals",
+        "cy": "Gweithwyr Proffesiynol ym maes Rheoli Prosiectau Busnes ac Ariannol"
+    },
+    "Architects, Chartered Architectural Technologists, Planning Officers, Surveyors and Construction Professionals": {
+        "en": "Architects, Chartered Architectural Technologists, Planning Officers, Surveyors and Construction Professionals",
+        "cy": "Penseiri, Technolegwyr Pensaernïol Siartredig, Swyddogion Cynllunio, Syrfewyr ac Adeiladwyr Proffesiynol"
+    },
+    "Welfare Professionals": {
+        "en": "Welfare Professionals",
+        "cy": "Gweithwyr Proffesiynol Llesiant"
+    },
+    "Librarians and Related Professionals": {
+        "en": "Librarians and Related Professionals",
+        "cy": "Llyfrgellwyr a Gweithwyr Proffesiynol Cysylltiedig"
+    },
+    "Quality and Regulatory Professionals": {
+        "en": "Quality and Regulatory Professionals",
+        "cy": "Gweithwyr Proffesiynol Ansawdd a Rheoleiddio"
+    },
+    "Media Professionals": {
+        "en": "Media Professionals",
+        "cy": "Gweithwyr Proffesiynol y Cyfryngau"
+    },
+    "Health associate professionals": {
+        "en": "Health associate professionals",
+        "cy": "Gweithwyr Proffesiynol Cyswllt ym maes Iechyd"
+    },
+    "Welfare and housing associate professionals": {
+        "en": "Welfare and housing associate professionals",
+        "cy": "Gweithwyr Proffesiynol Cyswllt ym maes Lles a Thai"
+    },
+    "Teaching and Childcare Associate Professionals": {
+        "en": "Teaching and Childcare Associate Professionals",
+        "cy": "Gweithwyr Proffesiynol Cyswllt ym maes Addysgu a Gofal Plant"
+    },
+    "Veterinary nurses": {
+        "en": "Veterinary nurses",
+        "cy": "Nyrsys Milfeddygol"
+    },
+    "Artistic, literary and media occupations": {
+        "en": "Artistic, literary and media occupations",
+        "cy": "Galwedigaethau Artistig, Llenyddol a'r Cyfryngau"
+    },
+    "Design occupations": {
+        "en": "Design occupations",
+        "cy": "Galwedigaethau Dylunio"
+    },
+    "Sports and fitness occupations": {
+        "en": "Sports and fitness occupations",
+        "cy": "Galwedigaethau Chwaraeon a Ffitrwydd"
+    },
+    "Teaching and Childcare Support Occupation": {
+        "en": "Teaching and Childcare Support Occupation",
+        "cy": "Galwedigaethau Cymorth Addysgu a Gofal Plant"
+    },
+    "Animal care and control services": {
+        "en": "Animal care and control services",
+        "cy": "Gwasanaethau Gofal a Rheoli Anifeiliaid"
+    }
 }
 
 DICT = {
