@@ -1,7 +1,6 @@
 from typing import List, Tuple, Any, Dict
 from courses.renderer.sections.base import Section
 
-DATA_FROM_PEOPLE = "data_from_people"
 A_LEVEL = "a_level_similar"
 BACCALAUREATE = "baccalaureate"
 DEGREE = "degree"
@@ -45,7 +44,8 @@ class SubEntrySection(Section):
         sub_sections = []
         sections = [
             (
-                ("1", DATA_FROM_PEOPLE, entry_list[0], "", "entry_stats"),
+                ("0", self.DATA_DISPLAYED, "", "", "entry_stats", True),
+                ("1", self.DATA_FROM_PEOPLE, entry_list[0], "", "entry_stats"),
                 ("2", A_LEVEL, entry_list[1], "%", "entry_stats"),
                 ("3", BACCALAUREATE, entry_list[2], "%", "entry_stats"),
                 ("4", DEGREE, entry_list[3], "%", "entry_stats"),
@@ -55,8 +55,9 @@ class SubEntrySection(Section):
                 ("8", NO_QUALIFICATIONS, entry_list[7], "%", "entry_stats"),
                 ("9", OTHER, entry_list[8], "%", "entry_stats"),
 
-                ("10", DATA_FROM_PEOPLE, tariff_list[0], "", "tariff_stats"),
-                ("11", TYPICAL_RANGE, tariff_list[1], "", "tariff_stats"),
+                ("10", self.DATA_DISPLAYED, "", "", "tariff_stats", True),
+                ("11", self.DATA_FROM_PEOPLE, tariff_list[0], "", "tariff_stats"),
+                ("12", TYPICAL_RANGE, tariff_list[1], "", "tariff_stats"),
 
             )]
 
@@ -80,7 +81,8 @@ class SubEntrySection(Section):
                         model_list=section[model_index],
                         language=self.language,
                         multiple=True,
-                        suffix=section[suffix_index]
+                        suffix=section[suffix_index],
+                        unavailable=self.check_unavailable(section)
                     )
                 )
         return self.data

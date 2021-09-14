@@ -20,6 +20,7 @@ primary_key = 0
 action = 1
 suffix_index = 2
 model_array = 3
+unavailable = 4
 
 
 def presentable_continuation(course: Course, stat: str, suffix: Any, language: str) -> str:
@@ -42,6 +43,7 @@ class ContinuationSection(Section):
 
     def get_sections(self) -> List[Tuple[Any, Any, str, str]]:
         sections = [
+            (self.DATA_DISPLAYED, "", "", "continuation_stats", True),
             (CONTINUATION_DATA_FROM_PEOPLE, continuation_list[0], "", "continuation_stats"),
             (STILL_STUDYING, continuation_list[1], "%", "continuation_stats"),
             (TAKING_BREAK, continuation_list[2], "%", "continuation_stats"),
@@ -61,8 +63,9 @@ class ContinuationSection(Section):
                         model_list=section[model_array],
                         language=self.language,
                         suffix=section[suffix_index],
+                        unavailable=self.check_unavailable(section),
                         multiple=True
                     )
                 )
-
         return self.data
+

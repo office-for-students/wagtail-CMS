@@ -388,8 +388,8 @@ UNAVAILABLE = {
         'cy': "Cwrs hwn a chyrsiau eraill dros 2 flynedd."
     },
     'message_7_header': {
-        'en': "Sorry, there is no data available for this course.",
-        'cy': "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn."
+        'en': "No data available.",
+        'cy': "Nid yw'r data ar gael."
     },
     'message_8_header': {
         'en': "This and other courses.",
@@ -400,12 +400,12 @@ UNAVAILABLE = {
         'cy': "Cwrs hwn a chyrsiau eraill dros 2 flynedd."
     },
     'message_10_header': {
-        'en': "Sorry, there is no data available for this course.",
-        'cy': "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn."
+        'en': "No data available.",
+        'cy': "Nid yw'r data ar gael."
     },
     'message_11_header': {
-        'en': "There is no data available for this course.",
-        'cy': "Nid oes data ar gael ar gyfer y cwrs hwn."
+        'en': "No data available.",
+        'cy': "Nid yw'r data ar gael."
     },
     'message_1': {
         'en': "The data displayed is from students on this and other courses in <b>{}</b>. " 
