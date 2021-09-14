@@ -1,74 +1,91 @@
 {% load static wagtailuserbar discover_uni_tags sass_tags %}
 
 <!DOCTYPE html>
-<html class="no-js" lang="{{page.get_language}}">
-    <head>
-        <meta charset="utf-8" />
-        <title>
-            {% block title %}
-                {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
-            {% endblock %}
-            {% block title_suffix %}
-                {% with page.get_site.site_name as site_name %}
-                    {% if site_name %}- {{ site_name }}{% endif %}
-                {% endwith %}
-            {% endblock %}
-        </title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="currentversion" content="{% current_version %}">
-        <meta name="pagelanguage" content="{{page.get_language}}">
-
-        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,bold&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <link href="{% sass_src 'scss/coursesearch.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
-        <link href="{% sass_src 'scss/global.scss' %}?{% code_version %}" rel="stylesheet" type="text/css" >
-        {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
+<html class="no-js" lang="{{ page.get_language }}">
+<head>
+    <!-- favicon related -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'android-chrome-512x512.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- favicon related end -->
+    <meta charset="utf-8"/>
+    <title>
+        {% block title %}
+            {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
         {% endblock %}
+        {% block title_suffix %}
+            {% with page.get_site.site_name as site_name %}
+                {% if site_name %}- {{ site_name }}{% endif %}
+            {% endwith %}
+        {% endblock %}
+    </title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="currentversion" content="{% current_version %}">
+    <meta name="pagelanguage" content="{{ page.get_language }}">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-         <script type="text/javascript" src="{% get_static_prefix %}js/main.js?{% code_version %}"></script>
-            <script type="text/javascript" src="{% get_static_prefix %}js/search_box.js"></script>
-         <script type="text/javascript" src="{% get_static_prefix %}js/load-error-popup.js?{% code_version %}"></script>
-         {% block extra_js %}
-             {# Override this in templates to add extra javascript #}
-         {% endblock %}
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,bold&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="{% sass_src 'scss/coursesearch.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+    <link href="{% sass_src 'scss/global.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+    {% block extra_css %}
+        {# Override this in templates to add extra stylesheets #}
+    {% endblock %}
 
-         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147556197-1"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}js/main.js?{% code_version %}"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}js/search_box.js"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}js/load-error-popup.js?{% code_version %}"></script>
+    {% block extra_js %}
+        {# Override this in templates to add extra javascript #}
+    {% endblock %}
 
-        <!-- Bootstrap - Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-        <!-- Bootstrap - bundle library -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-        <!-- Bootstrap - Latest compiled JavaScript -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147556197-1"></script>
 
-        <!-- Siteimprove -->
-        <script type="text/javascript">
-            /*<![CDATA[*/
-            (function() {
-                          var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
-                          sz.src = '//siteimproveanalytics.com/js/siteanalyze_267004.js';
-                          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
-            })();
-            /*]]>*/
-            </script>
-    </head>
+    <!-- Bootstrap - Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Bootstrap - bundle library -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap - Latest compiled JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-    <body class="{% block body_class %}{% endblock %}" >
-        {% include 'partials/nav.html' %}
+    <!-- Siteimprove -->
+    <script type="text/javascript">
+        /*<![CDATA[*/
+        (function () {
+            var sz = document.createElement('script');
+            sz.type = 'text/javascript';
+            sz.async = true;
+            sz.src = '//siteimproveanalytics.com/js/siteanalyze_267004.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(sz, s);
+        })();
+        /*]]>*/
+    </script>
+</head>
 
-        {% wagtailuserbar %}
+<body class="{% block body_class %}{% endblock %}">
+{% include 'partials/nav.html' %}
 
-        <!-- ********* Uncomment for Covid Banner **************** -->
-        <!-- <div>
-            <a class="covid-19-banner" href="{% if page.is_english %}/corona-covid-19-information/{% else %}/cy/cynnwys-corona-covid-19/{% endif %}">
+{% wagtailuserbar %}
+
+<!-- ********* Uncomment for Covid Banner **************** -->
+<!-- <div>
+            <a class="covid-19-banner" href="{% if page.is_english %}/corona-covid-19-information/{% else %}
+    /cy/cynnwys-corona-covid-19/{% endif %}">
                 {% get_translation key='covid_19_info' language=page.get_language %}
             </a>
         </div>
+
+
 
         {% if 'covid-19' in page.title|lower or "course details" in page.title|lower or "compare courses" in page.title|lower %}
             <div class="mx-2">
@@ -78,35 +95,39 @@
                     </div>
     
                     <div class="check-courses-details-banner__message">
-                        <b>{% get_translation key='Important You need to check the details of any courses you are considering or applying for on the university or college website' language=page.get_language %}</b></br>
-                        {% get_translation key='Many courses due to start in autumn 2020 are being changed to online delivery in whole or part, start dates and course content/structures may also be changing' language=page.get_language %}
+                        <b>
+
+            {% get_translation key='Important You need to check the details of any courses you are considering or applying for on the university or college website' language=page.get_language %}</b></br>
+
+
+            {% get_translation key='Many courses due to start in autumn 2020 are being changed to online delivery in whole or part, start dates and course content/structures may also be changing' language=page.get_language %}
                     </div>
                 </div>
             </div>
         {% endif %} -->
-        <!-- **************** -->
-        <main>
-            <div id="main-content" tabindex="-1">
-                {% block content %}{% endblock %}
+<!-- **************** -->
+<main>
+    <div id="main-content" tabindex="-1">
+        {% block content %}{% endblock %}
 
-                <a class="scroll-to-top" href="#">
-                    <div class="scroll-to-top__bkg">
-                        Back<br />to top
-                    </div>
-                </a>
+        <a class="scroll-to-top" href="#">
+            <div class="scroll-to-top__bkg">
+                Back<br/>to top
             </div>
-            {% include 'partials/feedback-form.html' %}
+        </a>
+    </div>
+    {% include 'partials/feedback-form.html' %}
 
-            {% if not cookies_accepted and not load_error %}
-                {% include 'partials/cookie-banner.html' %}
-            {% endif %}
+    {% if not cookies_accepted and not load_error %}
+        {% include 'partials/cookie-banner.html' %}
+    {% endif %}
 
-            {% if load_error %}
-                {% include 'partials/load-error-popup-bar.html' with error_type=error_type %}
-            {% endif %}
-        </main>
+    {% if load_error %}
+        {% include 'partials/load-error-popup-bar.html' with error_type=error_type %}
+    {% endif %}
+</main>
 
-        {% include 'partials/footer.html' %}
-    </body>
+{% include 'partials/footer.html' %}
+</body>
 
 </html>

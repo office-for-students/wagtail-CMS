@@ -61,7 +61,7 @@ def presentable_distance_learning(course: Course, language: str) -> str:
     elif int(course.distance_learning.code) == 0:
         return translations.term_for_key(key="not_available", language=language)
     else:
-        logger.warning("Distance learning code not managed: {course.distance_learning.code}")
+        return translations.term_for_key(key="optional", language=language)
 
 
 def presentable_placement_year(course: Course, language: str) -> str:
