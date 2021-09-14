@@ -11,13 +11,13 @@
 .entry-information__block {
     .entry-information__ucas-points{
         .rich-text{
-            color:$brownish-grey;
-            font-size: 14px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: normal;
+          color: $brownish-grey;
+          font-size: 0.875rem;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
 
         }
     }
@@ -25,63 +25,65 @@
     .entry-information__overview{
 
         .entry-information__overview-lead {
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 24px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: normal;
-            color: #000000;
-            text-align: center;
+          font-family: 'Nunito Sans', sans-serif;
+          font-size: 24px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: #000000;
+          text-align: center;
         }
-        .entry-information__intro{
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 14px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: normal;
-            color: $brownish-grey;
-            text-align: center;
-            
-            p{
-                font-family: 'Nunito Sans', sans-serif;
-                font-size: 14px;
-                font-weight: normal;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: normal;
-                letter-spacing: normal;
-                color: $brownish-grey;
-                text-align: center;
-            }
-        }
-        a{
-            text-decoration: underline;
-            font-size: 14px;
-            font-weight: 600;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: normal;
-            color: $dark-green-blue;
-            text-align:center;
-        
-        }
-    
-    }
-    .entry-information__heading {
-        @include s-heading-mixin();
+
+      .entry-information__intro {
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 18px;
+        font-size: 0.875rem;
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
         letter-spacing: normal;
-        color: #000000;
+        color: $brownish-grey;
+        text-align: center;
+
+        p {
+          font-family: 'Nunito Sans', sans-serif;
+          font-size: 0.875rem;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: $brownish-grey;
+          text-align: center;
+        }
+      }
+
+      a {
+        text-decoration: underline;
+        font-size: 0.875rem;
+        font-weight: 600;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: $dark-green-blue;
+        text-align: center;
+
+      }
+
+    }
+    .entry-information__heading {
+      @include s-heading-mixin();
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.125rem;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #000000;
     }
 
     .entry-information__lead {
@@ -92,70 +94,72 @@
     }
 
     .entry-information__qualification-charts, .entry-information__tariff-charts, .entry-information__ucas-points {
-        background-color: #F2F2F2;
+      background-color: #F2F2F2;
 
-        p{
-            font-size: 14px;
-            color: $brownish-grey;
-            font-weight: normal;
+      p {
+        font-size: 0.875rem;
+        color: $brownish-grey;
+        font-weight: normal;
+      }
+
+      a {
+        color: #308282;
+        text-decoration: underline;
+        font-weight: normal;
+      }
+
+      .explanation-text a {
+        color: #308282;
+        text-decoration: underline;
+        font-weight: normal;
+      }
+
+      .entry-information__qualification_intro {
+        color: $brownish-grey;
+        font-size: 0.875rem;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        font-family: 'Nunito Sans', sans-serif;
+
+        a {
+          color: #308282;
+          text-decoration: underline;
+          font-weight: normal;
         }
-        a{
-            color:#308282;
-            text-decoration: underline;
-            font-weight:normal;
-        }
-        
-        .explanation-text a{
-            color:#308282;
-            text-decoration: underline;
-            font-weight:normal;
-        }
-        .entry-information__qualification_intro{
-            color:$brownish-grey;
-            font-size: 14px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: normal;
-            font-family: 'Nunito Sans', sans-serif;
+      }
 
-            a{
-                color:#308282;
-                text-decoration: underline;
-                font-weight:normal;
-            }
+      .entry-information__chart {
+        margin-bottom: 7px;
+
+        &:last-of-type {
+          margin-bottom: 13px;
         }
 
-        .entry-information__chart {
-            margin-bottom: 7px;
+        .entry-information__chart-label {
+          @include small-font-mixin();
 
-            &:last-of-type {
-                margin-bottom: 13px;
-            }
+          display: block;
+          margin-top: 7px;
+          font-family: 'Nunito Sans', sans-serif;
+          font-size: 0.875rem;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: $brownish-grey;
 
-            .entry-information__chart-label {
-                @include small-font-mixin();
-                
-                display: block;
-                margin-top: 7px;
-                font-family: 'Nunito Sans', sans-serif;
-                font-size: 14px;
-                font-weight: normal;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: normal;
-                letter-spacing: normal;
-                color: $brownish-grey;
-
-            }
+        }
         }
     }
 }
 
 @media only screen and (min-width: 770px) {
     .entry-information__block .entry-information__qualification-charts .entry-information__qualification_intro, .entry-information__block .entry-information__tariff-charts .entry-information__qualification_intro, .entry-information__block .entry-information__ucas-points .entry-information__qualification_intro {
-        font-size: 16px;
+      font-size: 1rem;
     }
     .entry-information__overview{
         @include desktop-body-font-mixin();
@@ -178,63 +182,65 @@
     
     
     .entry-information__block {
-        .entry-information__ucas-points .rich-text {
-            font-size: 16px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: normal;
-            color: $brownish-grey;
+      .entry-information__ucas-points .rich-text {
+        font-size: 1rem;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: $brownish-grey;
+      }
+
+      .entry-information__qualification_intro {
+        color: $brownish-grey;
+        font-size: 1rem;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        font-family: 'Nunito Sans', sans-serif;
+
+        a {
+          color: #308282;
+          text-decoration: underline;
+          font-weight: normal;
+        }
+      }
+
+      .entry-information__overview {
+        a {
+          font-size: 1rem;
+          font-weight: 600;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: $dark-green-blue;
         }
 
-        .entry-information__qualification_intro{
-            color:$brownish-grey;
-            font-size: 16px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: normal;
-            font-family: 'Nunito Sans', sans-serif;
-
-            a{
-                color:#308282;
-                text-decoration: underline;
-                font-weight:normal;
-            }
+        .entry-information__overview-lead {
+          font-size: 28px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: #000000;
         }
-        .entry-information__overview {
-            a{
-                font-size: 16px;
-                font-weight: 600;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: normal;
-                letter-spacing: normal;
-                color: $dark-green-blue;
-            }
 
-            .entry-information__overview-lead {
-                font-size: 28px;
-                font-weight: normal;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: normal;
-                letter-spacing: normal;
-                color: #000000;
-            }
-            .entry-information__intro{
-                font-size: 16px;
-                font-weight: normal;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: normal;
-                letter-spacing: normal;
-                color: #666666;
-            }
-
+        .entry-information__intro {
+          font-size: 1rem;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: #666666;
         }
+
+      }
 
         .entry-information__heading {
             font-family: 'Nunito Sans', sans-serif;
@@ -264,16 +270,16 @@
                 }
 
                 .entry-information__chart-label {
-                    @include desktop-body-font-mixin();
-                    color: $black;
-                    font-family: 'Nunito Sans', sans-serif;
-                    font-size: 18px;
-                    font-weight: normal;
-                    font-stretch: normal;
-                    font-style: normal;
-                    line-height: normal;
-                    letter-spacing: normal;
-                   
+                  @include desktop-body-font-mixin();
+                  color: $black;
+                  font-family: 'Nunito Sans', sans-serif;
+                  font-size: 1.125rem;
+                  font-weight: normal;
+                  font-stretch: normal;
+                  font-style: normal;
+                  line-height: normal;
+                  letter-spacing: normal;
+
                 }
             }
         }
@@ -285,14 +291,14 @@
 
             .entry-information__chart {
                 .entry-information__chart-label {
-                    text-align: right;
-                    font-size: 18px;
-                    font-weight: normal;
-                    font-stretch: normal;
-                    font-style: normal;
-                    line-height: normal;
-                    letter-spacing: normal;
-                    color: #000000;
+                  text-align: right;
+                  font-size: 1.125rem;
+                  font-weight: normal;
+                  font-stretch: normal;
+                  font-style: normal;
+                  line-height: normal;
+                  letter-spacing: normal;
+                  color: #000000;
                 }
             }
         }

@@ -1,8 +1,10 @@
-from typing import List, Tuple, Any
+from typing import Any
+from typing import List
+from typing import Tuple
+
 from courses.renderer.sections.base import Section
 
 OVERALL_SATISFACTION = "overall_satisfied"
-SATISFACTION_DATA_FROM_PEOPLE = "data_from_people"
 PERCENTAGE_THOSE_ASKED = "percent_of_those_asked"
 
 satisfaction_list = [
@@ -22,8 +24,9 @@ class SatisfactionSection(Section):
     def get_sections(self) -> List[Tuple[Any, Any, Any, Any]]:
         sections = [
             (OVERALL_SATISFACTION, satisfaction_list[0], "%", "satisfaction_stats"),
-            (SATISFACTION_DATA_FROM_PEOPLE, satisfaction_list[1], "", "satisfaction_stats"),
-            (PERCENTAGE_THOSE_ASKED, satisfaction_list[2], "", "satisfaction_stats")
+            (self.DATA_FROM_PEOPLE, satisfaction_list[1], "", "satisfaction_stats"),
+            (PERCENTAGE_THOSE_ASKED, satisfaction_list[2], "", "satisfaction_stats"),
+            (self.DATA_DISPLAYED, "", "", "satisfaction_stats", True)
         ]
 
         return sections
@@ -37,23 +40,22 @@ class SatisfactionSection(Section):
                         stat=section[action],
                         model_list=section[model_array],
                         language=self.language,
-                        suffix=section[suffix_index]
+                        suffix=section[suffix_index],
+                        multiple=True,
+                        unavailable=self.check_unavailable(section)
                     )
                 )
-
         return self.data
 
 
 class SubSatisfactionSection(Section):
 
-    def __init__(self, keys: List[str], courses, language='en'):
-        self.keys = keys
-        super().__init__(courses, language)
-
     def get_sections(self) -> List[Tuple[Any, Any, str, str]]:
         sections = []
 
-        for i in self.keys:
+        for index, i in enumerate(self.keys):
+            if index == 0:
+                sections.append((self.DATA_DISPLAYED, "", "", "satisfaction_stats", True))
             sections.append((f"nss_question_{i}", f"question_{i}", "%", "satisfaction_stats"))
         return sections
 
@@ -66,7 +68,9 @@ class SubSatisfactionSection(Section):
                         stat=section[action],
                         model_list=section[model_array],
                         language=self.language,
-                        suffix=section[suffix_index]
+                        suffix=section[suffix_index],
+                        multiple=True,
+                        unavailable=self.check_unavailable(section)
                     )
                 )
 

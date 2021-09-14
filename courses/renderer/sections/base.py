@@ -1,15 +1,25 @@
-from typing import List, Dict, Any, Tuple
+from typing import Any
+from typing import Dict
+from typing import List
+from typing import Tuple
+import logging
 
 from CMS import translations
 from courses.models import Course
+from courses.renderer.sections.unavailable import get_unavailable
 
 primary_key = 0
 action = 1
 
+logger = logging.getLogger(__name__)
+
 
 class Section:
+    DATA_DISPLAYED = "data_displayed"
+    DATA_FROM_PEOPLE = "data_from_people"
 
-    def __init__(self, courses: List[Course], language: str):
+    def __init__(self, courses: List[Course], language: str, keys=None):
+        self.keys = keys
         self.data = {}
         self.courses = courses
         self.language = language
@@ -35,14 +45,14 @@ class Section:
         raise NotImplementedError
 
     @classmethod
-    def multiple_subjects(cls, course: Course, stat: str, model_list: str, language: str, suffix=""):
+    def multiple_subjects(cls, course: Course, stat: str, model_list: str, language: str, suffix="", unavailable=False):
         response = dict(subject=[], values=[])
 
         for index, subject in enumerate(course.subject_names):
             subject_name = subject.display_subject_name()
-            values = "no_data"
+            values = cls.set_unavailable(course=course, model_list=model_list, index=index, language=language)
 
-            if index < len(getattr(course, model_list)):
+            if (index < len(getattr(course, model_list))) and not unavailable:
                 _object = getattr(course, model_list)[index]
                 method = str(getattr(_object, stat))
                 values = f"{method}{suffix}" if method else values
@@ -52,8 +62,8 @@ class Section:
         return response
 
     @classmethod
-    def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, multiple=False, suffix="") -> str:
-        response = "no_data"
+    def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, multiple=False, suffix="", unavailable=False) -> str:
+        response = cls.set_unavailable(course=course, model_list=model_list, language=language)
         try:
             if multiple and course.has_multiple_subject_names:
                 response = cls.multiple_subjects(
@@ -61,17 +71,35 @@ class Section:
                     stat=stat,
                     model_list=model_list,
                     language=language,
-                    suffix=suffix
+                    suffix=suffix,
+                    unavailable=unavailable
                 )
             else:
-                _object = getattr(course, model_list)[0]
-                method = str(getattr(_object, stat))
-                if method:
-                    response = f"{method}{suffix}"
+                if not unavailable:
+                    _object = getattr(course, model_list)[0]
+                    method = str(getattr(_object, stat))
+                    if method:
+                        response = f"{method}{suffix}"
         except Exception as e:
-            print("error: ", e)
+            logger.warning(e.__cause__)
             pass
 
         return response
 
+    @classmethod
+    def set_unavailable(cls, course: Course, model_list: str, language: str, index=0):
+        # noinspection PyBroadException
+        try:
+            _object = getattr(course, model_list)[index]
+            body = getattr(_object, "unavailable_reason_body")
+            header = get_unavailable(course, model_list, language)["header"][0]
+        except Exception as e:
+            header = translations.term_for_key(key="no_data_available", language=language)
+            _object = getattr(course, "display_no_data")()
+            body = _object["reason"]
 
+        return ["unavailable", header, body]
+
+    def check_unavailable(self, section):
+        unavailable = True if section[-1] is True else False
+        return unavailable

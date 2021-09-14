@@ -109,14 +109,14 @@
         }
 
         #institution_query-na-ui.option{
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: bold;
             border-bottom: 2px solid #6E6E6E;
 
-            &-highlight{
+            &-highlight {
                 @include green-gradient-background-mixin();
 
-                font-size: 16px;
+                font-size: 1rem;
                 font-weight: bold;
                 border-bottom: 2px solid #6E6E6E;
 

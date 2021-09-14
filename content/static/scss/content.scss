@@ -6,7 +6,6 @@
 
 .content-page {
     padding: 35px 20px 65px;
-    
     background-image: url('/static/images/user-nav-background.png');
     background-position: right top;
 
@@ -26,11 +25,11 @@
         margin-bottom: 30px;
 
         p {
-            margin: 0px;
+            margin: 0;
             margin-bottom: 1em;
 
             &:last-child {
-               margin-bottom: 0px;
+               margin-bottom: 0;
             }
         }
         a{
@@ -59,8 +58,6 @@
             @include desktop-body-font-mixin();
 
             margin-bottom: 30px;
-            line-height: 26px;
-
             a{
                 text-decoration: underline;
                 color: #266969;
