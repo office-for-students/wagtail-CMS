@@ -179,7 +179,7 @@ $course_comparison_first_column_width: 250px;
 
     &-grey_background {
       background: $divider-grey;
-      margin-bottom: 8px;
+      margin-top: 8px;
       font-size: 1.25rem;
 
       &:nth-child(2) {
@@ -370,7 +370,7 @@ $course_comparison_first_column_width: 250px;
       .button {
         display: flex;
         background-color: rgba(239, 204, 75, 0.5);
-        margin: 8px 0 8px 0;
+        margin: 6px 0 6px 0;
         padding: 8px 8px 8px 26px;
         border-radius: 3px;
         flex: 1;
@@ -1021,7 +1021,7 @@ $course_comparison_first_column_width: 250px;
     }
 
     &-grey_background {
-      margin-bottom: 8px;
+      margin-top: 8px;
     }
 
     &-header {
@@ -1110,7 +1110,7 @@ $course_comparison_first_column_width: 250px;
       align-items: center;
 
       &-grey_background {
-        margin-bottom: 6px;
+        margin-top: 6px;
         padding: 0;
       }
 
@@ -1335,7 +1335,7 @@ $course_comparison_first_column_width: 250px;
       align-items: center;
 
       &-grey_background {
-        margin-bottom: 6px;
+        margin-top: 6px;
         padding: 0;
       }
 
