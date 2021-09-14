@@ -4,7 +4,6 @@ from CMS import translations
 from courses.models import Course
 from courses.renderer.sections.base import Section
 
-DATA_FROM_PEOPLE = "data_from_people"
 PERCENTAGE_THOSE_ASKED = "percent_of_those_asked"
 USEFULNESS = "usefulness"
 MEANINGFULNESS = "meaningfulness"
@@ -58,8 +57,8 @@ class GraduatePerceptionSection(Section):
 
     def get_sections(self) -> List[Tuple[Any, Any, Any, str, str]]:
         sections = [
-                ("0", "data_displayed", "", "", "graduate_perceptions", True),
-                ("1", DATA_FROM_PEOPLE, graduate_list[0], "", "graduate_perceptions"),
+                ("0", self.DATA_DISPLAYED, "", "", "graduate_perceptions", True),
+                ("1", self.DATA_FROM_PEOPLE, graduate_list[0], "", "graduate_perceptions"),
                 ("2", PERCENTAGE_THOSE_ASKED, graduate_list[1], "%", "graduate_perceptions"),
                 ("3", USEFULNESS, graduate_list[2], "%", "graduate_perceptions"),
                 ("4", MEANINGFULNESS, graduate_list[3], "%", "graduate_perceptions"),

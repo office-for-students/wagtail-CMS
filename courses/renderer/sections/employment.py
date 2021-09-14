@@ -3,7 +3,6 @@ from courses.renderer.sections.base import Section
 from courses.renderer.sections.unavailable import get_unavailable
 from courses.models import Course
 
-DATA_FROM_PEOPLE = "data_from_people"
 NOW_WORKING = "now_working"
 DOING_FURTHER_STUDY = "doing_further_study"
 WORKING_AND_STUDYING = "study_and_working"
@@ -46,8 +45,8 @@ class SubEmploymentSection(Section):
         sub_sections = []
         sections = [
             (
-                ("0", "data_displayed", "", "", "employment_stats", True),
-                ("1", DATA_FROM_PEOPLE, employment_list[0], "", "employment_stats"),
+                ("0", self.DATA_DISPLAYED, "", "", "employment_stats", True),
+                ("1", self.DATA_FROM_PEOPLE, employment_list[0], "", "employment_stats"),
                 ("2", NOW_WORKING, employment_list[1], "%", "employment_stats"),
                 ("3", DOING_FURTHER_STUDY, employment_list[2], "%", "employment_stats"),
                 ("4", WORKING_AND_STUDYING, employment_list[3], "%", "employment_stats"),
@@ -55,8 +54,8 @@ class SubEmploymentSection(Section):
                 ("6", UNEMPLOYED, employment_list[5], "%", "employment_stats"),
                 ("7", OTHER, employment_list[6], "%", "employment_stats"),
 
-                ("8", "data_displayed", "", "", "job_type_stats", True),
-                ("9", DATA_FROM_PEOPLE, job_types_list[0], "", "job_type_stats"),
+                ("8", self.DATA_DISPLAYED, "", "", "job_type_stats", True),
+                ("9", self.DATA_FROM_PEOPLE, job_types_list[0], "", "job_type_stats"),
                 ("10", HIGHLY_SKILLED, job_types_list[1], "%", "job_type_stats"),
                 ("11", OTHER_WORK, job_types_list[2], "%", "job_type_stats"),
                 ("12", UNKNOWN_WORK, job_types_list[3], "%", "job_type_stats"),

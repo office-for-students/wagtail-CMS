@@ -43,7 +43,7 @@ class ContinuationSection(Section):
 
     def get_sections(self) -> List[Tuple[Any, Any, str, str]]:
         sections = [
-            ("data_displayed", "", "", "continuation_stats", True),
+            (self.DATA_DISPLAYED, "", "", "continuation_stats", True),
             (CONTINUATION_DATA_FROM_PEOPLE, continuation_list[0], "", "continuation_stats"),
             (STILL_STUDYING, continuation_list[1], "%", "continuation_stats"),
             (TAKING_BREAK, continuation_list[2], "%", "continuation_stats"),

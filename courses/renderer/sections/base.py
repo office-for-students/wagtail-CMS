@@ -2,6 +2,7 @@ from typing import Any
 from typing import Dict
 from typing import List
 from typing import Tuple
+import logging
 
 from CMS import translations
 from courses.models import Course
@@ -10,8 +11,12 @@ from courses.renderer.sections.unavailable import get_unavailable
 primary_key = 0
 action = 1
 
+logger = logging.getLogger(__name__)
+
 
 class Section:
+    DATA_DISPLAYED = "data_displayed"
+    DATA_FROM_PEOPLE = "data_from_people"
 
     def __init__(self, courses: List[Course], language: str, keys=None):
         self.keys = keys
@@ -76,13 +81,14 @@ class Section:
                     if method:
                         response = f"{method}{suffix}"
         except Exception as e:
-            print("error: ", model_list, e)
+            logger.warning(e.__cause__)
             pass
 
         return response
 
     @classmethod
     def set_unavailable(cls, course: Course, model_list: str, language: str, index=0):
+        # noinspection PyBroadException
         try:
             _object = getattr(course, model_list)[index]
             body = getattr(_object, "unavailable_reason_body")

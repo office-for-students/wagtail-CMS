@@ -5,7 +5,6 @@ from typing import Tuple
 from courses.renderer.sections.base import Section
 
 OVERALL_SATISFACTION = "overall_satisfied"
-SATISFACTION_DATA_FROM_PEOPLE = "data_from_people"
 PERCENTAGE_THOSE_ASKED = "percent_of_those_asked"
 
 satisfaction_list = [
@@ -25,9 +24,9 @@ class SatisfactionSection(Section):
     def get_sections(self) -> List[Tuple[Any, Any, Any, Any]]:
         sections = [
             (OVERALL_SATISFACTION, satisfaction_list[0], "%", "satisfaction_stats"),
-            (SATISFACTION_DATA_FROM_PEOPLE, satisfaction_list[1], "", "satisfaction_stats"),
+            (self.DATA_FROM_PEOPLE, satisfaction_list[1], "", "satisfaction_stats"),
             (PERCENTAGE_THOSE_ASKED, satisfaction_list[2], "", "satisfaction_stats"),
-            ("data_displayed", "", "", "satisfaction_stats", True)
+            (self.DATA_DISPLAYED, "", "", "satisfaction_stats", True)
         ]
 
         return sections
@@ -54,12 +53,10 @@ class SubSatisfactionSection(Section):
     def get_sections(self) -> List[Tuple[Any, Any, str, str]]:
         sections = []
 
-        first = True
-        for i in self.keys:
-            if first is True:
-                sections.append(("data_displayed", "", "", "satisfaction_stats", True))
+        for index, i in enumerate(self.keys):
+            if index == 0:
+                sections.append((self.DATA_DISPLAYED, "", "", "satisfaction_stats", True))
             sections.append((f"nss_question_{i}", f"question_{i}", "%", "satisfaction_stats"))
-            first = False
         return sections
 
     def generate_dict(self) -> dict:
