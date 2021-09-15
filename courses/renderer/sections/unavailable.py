@@ -34,7 +34,7 @@ def get_unavailable_rows(courses: List[Course], model_list: List[str], language:
     return columns, title
 
 
-def get_unavailable(course: Course, model_list: str, language: str, present_as_multiple=False) -> Dict[str, List[str]]:
+def get_unavailable(course: Course, model_list: str, language: str, accordion=None, present_as_multiple=False) -> Dict[str, List[str]]:
     response = dict(
         header=[],
         message=[],
@@ -47,6 +47,7 @@ def get_unavailable(course: Course, model_list: str, language: str, present_as_m
                 course=course,
                 model_list=model_list,
                 language=language,
+                accordion=accordion,
                 data=response,
                 subject=subject
             )
@@ -56,6 +57,7 @@ def get_unavailable(course: Course, model_list: str, language: str, present_as_m
             course=course,
             model_list=model_list,
             language=language,
+            accordion=accordion,
             data=response,
             subject=subject
         )
@@ -69,16 +71,24 @@ def get_data(
         model_list: str,
         language: str,
         data: Dict[str, List[str]],
+        accordion: str,
         subject=None
 ) -> Dict[str, List[str]]:
     _object = getattr(course, model_list)[0]
     unavailable_code = str(getattr(_object, "unavailable_code"))
     aggregation_level = str(getattr(_object, "aggregation_level"))
-    # subject_name = subject or _getattr(_object, "subject_english", "This is a subject")
     response_rate = _getattr(_object, "response_rate", None)
     agg = aggregation_level if str(aggregation_level) not in ("None", "") else "blank"
     # Sometimes None was entered into the DB as a string, and sometimes not, sometimes empty string. ^^^
-    response = set_message(unavailable_code, response_rate, agg, subject, data, language)
+    response = set_message(
+        unavailable_key=unavailable_code,
+        response_rate=response_rate,
+        aggregation_level=agg,
+        subject=subject,
+        accordion=accordion,
+        data=data,
+        language=language
+    )
 
     return response
 
@@ -88,10 +98,15 @@ def set_message(
         response_rate: str,
         aggregation_level: str,
         subject: str,
+        accordion: str,
         data: Dict[str, List[str]],
         language,
 ) -> Dict[str, List[str]]:
     header = translations.term_for_key(key="this_course", language=language)
+    override_accordions = [
+        translations.term_for_key(key="employment_15_months", language=language),
+        translations.term_for_key(key="graduate_perceptions", language=language),
+    ]
     try:
         for key, value in unavailable_dict[unavailable_key].items():
             resp = 1 if unavailable_key == "0" and response_rate else 0
@@ -103,8 +118,14 @@ def set_message(
 
                 title = f"{result}_header"
                 message = translations.term_for_key(key=result, language=language)
-                message = message.replace("{}", subject) if subject else message.replace("{}", "fix me")
+                message = message.replace("{}", subject) if subject else message.replace("{}", "")
                 header = translations.term_for_key(key=title, language=language)
+
+                if (aggregation_level in ["21", "22", "23", "24"]) and (accordion in override_accordions):
+                    header = temporary_override(
+                        aggregation_level=aggregation_level,
+                        language=language
+                    )
 
                 data["header"].append(header)
                 data["message"].append(message)
@@ -116,3 +137,14 @@ def set_message(
 
 def _getattr(obj, attr, fallback):
     return getattr(obj, attr) if hasattr(obj, attr) else fallback
+
+
+# This is a temporary override. Remove once OFS have stated they want to disable the override.
+def temporary_override(aggregation_level: str, language: str):
+    if aggregation_level == "24":
+        header = translations.term_for_key(key="this_course", language=language)
+        return header
+    elif aggregation_level in ["21", "22", "23"]:
+        header = translations.term_for_key(key="message_1_header", language=language)
+        return header
+
