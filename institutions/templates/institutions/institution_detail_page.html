@@ -137,13 +137,11 @@
                 </div>
             {% endif %}
 
-            <div class="institution-details__tef">
-                <h2 class="institution-details__tef-heading">
-                    {{ page.tef_heading }}
-                </h2>
-
-                {# Uncomment to add TEF info section back in to institution detail#}
-
+        {# Uncomment to add TEF info section back in to institution detail#}
+{#            <div class="institution-details__tef">#}
+{#                <h2 class="institution-details__tef-heading">#}
+{#                    {{ page.tef_heading }}#}
+{#                </h2>#}
                 {#                <div class="institution-details__tef-outcome">#}
                 {#                    {% if institution.show_tef_logo %}#}
                 {#                        <img src="{% static 'images/tef_'|add:institution.tef_outcome|lower|add:'_en.jpg' %}" alt="TEF {{institution.tef_outcome}} logo">#}
@@ -183,7 +181,7 @@
                 {##}
                 {#                    {% include 'institutions/partials/explanation_pop_up.html' with heading=page.tef_explanation_heading body=page.tef_explanation_body close_color='black' %}#}
                 {#                </div>#}
-            </div>
+{#            </div>#}
         </div>
     </div>
 {% endblock %}
