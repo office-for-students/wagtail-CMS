@@ -15,6 +15,7 @@ def term_for_key(key: str, language: str) -> str:
     """ Method to use to access welsh translations for static content
         returns: a language specific translation or the origin key string passed in if it can't be found.
     """
+    key = cleanup_key(key)
     term = DICT.get(key).get(language) if key in DICT else None
     if not term:
         term = STATISTICS.get(key).get(language) if key in STATISTICS else None
