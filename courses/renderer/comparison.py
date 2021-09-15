@@ -66,7 +66,7 @@ def get_sub_earnings(language) -> List:
 
 def get_sub_entry(language) -> List:
     list_sub_accordions = [
-        (translations.term_for_key(key="after_15_months", language=language), [0, 10]),
+        (translations.term_for_key(key="qualification_types", language=language), [0, 10]),
         (translations.term_for_key(key="ucas_tariff_points", language=language), [10, 13]),
     ]
     return list_sub_accordions
