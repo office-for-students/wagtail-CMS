@@ -1,5 +1,11 @@
-from .utils import enums, fallback_to
+import re
+import string
+
+from CMS import translations
 from .job import Job
+from .utils import enums, fallback_to
+
+
 class JobList:
 
     def __init__(self, jobs_data, display_language):
@@ -28,7 +34,16 @@ class JobList:
 
             if jobs_data.get('list'):
                 for job in jobs_data.get('list'):
+                    job['job'] = translations.term_for_key(
+                        key=self.format_job_title(job['job']), language=self.display_language)
                     self.jobs.append(Job(job, self.display_language))
+
+    @staticmethod
+    def format_job_title(title):
+        exclude = set(string.punctuation) - {'_', '-'}
+        new = ''.join(ch for ch in title if ch not in exclude)
+        new = re.sub('\s', '_', new)
+        return new.lower()
 
     def show_stats(self):
         return self.jobs
