@@ -29,7 +29,7 @@ def display_unavailable_info(self, aggregation_level, replace=False):
             "find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
 
     if "reason" in unavailable:
-        #### Remove once OFS want the override disabled ####
+        #TODO: Remove once OFS want the override disabled https://app.clickup.com/t/j337mq
         if replace and str(aggregation_level) in ["21", "22", "23"]:
             if self.display_language == enums.languages.ENGLISH:
                 unavailable["reason_body"] = unavailable["reason"].replace(" over the previous two years", "")
@@ -38,7 +38,7 @@ def display_unavailable_info(self, aggregation_level, replace=False):
                                                                            "eraill")
         elif replace and str(aggregation_level) == "24":
             unavailable["reason_body"] = None
-        ########
+        # end remove
         elif str(aggregation_level) in ["11", "12", "13", "21", "22", "23"]:
             unavailable["reason_body"] = unavailable["reason"]
         else:

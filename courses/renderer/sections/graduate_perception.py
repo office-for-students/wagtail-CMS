@@ -100,7 +100,8 @@ class GraduatePerceptionSection(Section):
                 data[section[0]]["subtitle"] = self.term_for_key(subtitles[section[0]], self.language)
 
 
-    #Remove below method and use set_unavailable from base class when OFS want to remove the unavailable message override
+    #TODO: Remove below method and use set_unavailable from base class when OFS want to remove the unavailable message override.
+    # https://app.clickup.com/t/j337mq
     @classmethod
     def set_unavailable(
             cls,
@@ -120,3 +121,4 @@ class GraduatePerceptionSection(Section):
             body = _object["reason"]
 
         return ["unavailable", header, body]
+    # end remove

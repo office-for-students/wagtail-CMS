@@ -139,7 +139,8 @@ def _getattr(obj, attr, fallback):
     return getattr(obj, attr) if hasattr(obj, attr) else fallback
 
 
-# This is a temporary override. Remove once OFS have stated they want to disable the override.
+#TODO: This is a temporary override. Remove once OFS have stated they want to disable the override.
+# Remove accordion from all parameters too. https://app.clickup.com/t/j337mq
 def temporary_override(aggregation_level: str, language: str):
     if aggregation_level == "24":
         header = translations.term_for_key(key="this_course", language=language)
@@ -147,4 +148,4 @@ def temporary_override(aggregation_level: str, language: str):
     elif aggregation_level in ["21", "22", "23"]:
         header = translations.term_for_key(key="message_1_header", language=language)
         return header
-
+# end remove
