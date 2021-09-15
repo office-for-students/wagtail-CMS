@@ -342,6 +342,10 @@ STATISTICS = {
         'en': "This may be because the course size is too small or not enough students responded to the survey. This does not reflect on the quality of the course.",
         'cy': "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
     },
+    'ucas_tariff_points': {
+        'en': "UCAS Tariff points",
+        'cy': "Pwyntiau Tariff UCAS"
+    },
 }
 
 UNAVAILABLE = {
@@ -370,8 +374,8 @@ UNAVAILABLE = {
         'cy': "Cwrs hwn a chyrsiau eraill dros 2 flynedd."
     },
     'message_7_header': {
-        'en': "Sorry, there is no data available for this course.",
-        'cy': "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn."
+        'en': "No data available.",
+        'cy': "Nid yw'r data ar gael."
     },
     'message_8_header': {
         'en': "This and other courses.",
@@ -382,12 +386,12 @@ UNAVAILABLE = {
         'cy': "Cwrs hwn a chyrsiau eraill dros 2 flynedd."
     },
     'message_10_header': {
-        'en': "Sorry, there is no data available for this course.",
-        'cy': "Yn anffodus, nid oes data ar gael ar gyfer y cwrs hwn."
+        'en': "No data available.",
+        'cy': "Nid yw'r data ar gael."
     },
     'message_11_header': {
-        'en': "There is no data available for this course.",
-        'cy': "Nid oes data ar gael ar gyfer y cwrs hwn."
+        'en': "No data available.",
+        'cy': "Nid yw'r data ar gael."
     },
     'message_1': {
         'en': "The data displayed is from students on this and other courses in <b>{}</b>. " \

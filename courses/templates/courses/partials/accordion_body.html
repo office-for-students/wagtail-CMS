@@ -19,26 +19,19 @@
         {% if accordion.subjects %}
             {% include 'courses/partials/subject_selector.html' with subjects=accordion.subjects %}
         {% endif %}
-        {% if not sub_accordions and unavailable %}
-        <div
-            class="comparison_row-grey_background unavailable">
-            {% include 'courses/partials/unavailable.html' with title=unavailable.1 data=unavailable.0 %}
-        </div>
-        {% endif %}
         {% for item, value in dataset.items %}
             {% if forloop.counter < change_point %}
                 <div class="comparison_row-yellow_background">
                     {% if forloop.counter == 1 %}
-                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values item_font="item_font" header_font="header_font" mt="mt-3" %}
+                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values header_font="header_font" mt="mt-3" %}
                     {% else %}
                         {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values mt="mt-2" %}
                     {% endif %}
                 </div>
             {% else %}
-
-                    <div class="comparison_row-grey_background">
-                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values item_font="item_font" header_font="header_font" %}
-                    </div>
+                <div class="comparison_row-grey_background">
+                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" %}
+                </div>
             {% endif %}
         {% endfor %}
     </div>
@@ -59,14 +52,8 @@
                     </div>
                 </div>
                 <div id="body-{{ identifier }}{{ index }}">
-                    {% if unavailable %}
-                        <div
-                            class="comparison_row-grey_background">
-                            {% include 'courses/partials/unavailable.html' with title=unavailable.1 data=unavailable.0 %}
-                        </div>
-                    {% endif %}
                     {% for item, value in sub_accordion.dataset.items %}
-                            {% if accordion.title == "Earnings after the course" %}
+                            {% if accordion.earnings %}
                                 <div id="{{sub_accordion.title}}{{forloop.counter0}}"
                                     class="comparison_row-earnings">
                                     {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" %}                    </div>

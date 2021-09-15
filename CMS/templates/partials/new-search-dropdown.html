@@ -45,19 +45,8 @@
             <label class="dropdown-content-institution-check-institution-label drop-item" id="selectAll-check"
                    for="selectMultipleInstitutions">{% get_translation key='select_all_institutions' language=page.get_language %}</label>
         </div>
-        {% for option in options %}
-            {% if option.name in filter_form.institutions %}
-                <div class="dropdown-content-institution-check drop-item">
-                    <input id='{{ option.name }}' class="inst-check drop-item"
-                           name='institution_query' value="{{ option.name }}" type='checkbox' checked></input>
-                    <label class="dropdown-content-institution-check-institution-label drop-item"
-                           id="{{ option.name }}-label"
-                           for="{{ option.name }}">{{ option.name }}</label>
-                </div>
-            {% endif %}
-        {% endfor %}
-        {% for option in options %}
-            {% if not option.name in filter_form.institutions %}
+        {% if home_page == "true" %}
+            {% for option in options %}
                 <div class="dropdown-content-institution-check drop-item">
                     <input id='{{ option.name }}' class="inst-check drop-item"
                            name='institution_query' value="{{ option.name }}" type='checkbox'></input>
@@ -65,7 +54,30 @@
                            id="{{ option.name }}-label"
                            for="{{ option.name }}">{{ option.name }}</label>
                 </div>
-            {% endif %}
-        {% endfor %}
+            {% endfor %}
+        {% else %}
+            {% for option in options %}
+                {% if option.name in filter_form.institutions %}
+                    <div class="dropdown-content-institution-check drop-item">
+                        <input id='{{ option.name }}' class="inst-check drop-item"
+                               name='institution_query' value="{{ option.name }}" type='checkbox' checked></input>
+                        <label class="dropdown-content-institution-check-institution-label drop-item"
+                               id="{{ option.name }}-label"
+                               for="{{ option.name }}">{{ option.name }}</label>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% for option in options %}
+                {% if not option.name in filter_form.institutions %}
+                    <div class="dropdown-content-institution-check drop-item">
+                        <input id='{{ option.name }}' class="inst-check drop-item"
+                               name='institution_query' value="{{ option.name }}" type='checkbox'></input>
+                        <label class="dropdown-content-institution-check-institution-label drop-item"
+                               id="{{ option.name }}-label"
+                               for="{{ option.name }}">{{ option.name }}</label>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
     </div>
 </div>
