@@ -3,6 +3,7 @@ from typing import List, Tuple, Any, Dict
 from CMS import translations
 from courses.models import Course
 from courses.renderer.sections.base import Section
+from courses.renderer.sections.unavailable import get_unavailable
 
 PERCENTAGE_THOSE_ASKED = "percent_of_those_asked"
 USEFULNESS = "usefulness"
@@ -82,8 +83,7 @@ class GraduatePerceptionSection(Section):
                         model_list=section[model_array],
                         language=self.language,
                         multiple=True,
-                        suffix=section[suffix_index],
-                        unavailable=self.check_unavailable(section)
+                        suffix=section[suffix_index]
                     )
                 )
         self.update_data_with_subtitles(self.data)
@@ -98,3 +98,25 @@ class GraduatePerceptionSection(Section):
         for section in self.sections:
             if section[0] in subtitles:
                 data[section[0]]["subtitle"] = self.term_for_key(subtitles[section[0]], self.language)
+
+
+    #Remove below method and use set_unavailable from base class when OFS want to remove the unavailable message override
+    @classmethod
+    def set_unavailable(
+            cls,
+            course: Course,
+            model_list: str,
+            language: str,
+            index=0
+    ):
+        try:
+            accordion = translations.term_for_key(key="graduate_perceptions", language=language)
+            _object = getattr(course, model_list)[index]
+            body = getattr(_object, "unavailable_reason_body")
+            header = get_unavailable(course, model_list, language, accordion)["header"][0]
+        except Exception as e:
+            header = translations.term_for_key(key="no_data_available", language=language)
+            _object = getattr(course, "display_no_data")()
+            body = _object["reason"]
+
+        return ["unavailable", header, body]
