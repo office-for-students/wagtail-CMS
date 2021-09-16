@@ -1,4 +1,5 @@
-from .utils import enums, fallback_to, DICT
+from CMS.enums import enums
+from CMS.translations import DICT
 
 
 class CourseDistanceLearning:
@@ -7,7 +8,7 @@ class CourseDistanceLearning:
         self.display_language = language
         if data_obj:
             self.code = str(data_obj.get('code'))
-            self.label = fallback_to(data_obj.get('label'), '')
+            self.label = data_obj.get('label', '')
 
     def display_label(self):
         if self.code is not None and self.code in DICT.get('distance_learning_values'):
@@ -21,7 +22,7 @@ class CourseFoundationYear:
         self.label = DICT.get('unknown').get(language)
         if data_obj:
             self.code = data_obj.get('code')
-            self.label = fallback_to(data_obj.get('label'), '')
+            self.label = data_obj.get('label', '')
 
 
 class CourseLength:
@@ -30,7 +31,7 @@ class CourseLength:
         self.label = 0
         if data_obj:
             self.code = data_obj.get('code')
-            self.label = fallback_to(data_obj.get('label'), '')
+            self.label = data_obj.get('label', '')
 
 
 class CourseLink:
@@ -40,7 +41,7 @@ class CourseLink:
         if language_key in link_obj:
             self.link = link_obj.get(language_key)
         else:
-            self.link = fallback_to(link_obj.get(enums.languages_full.ENGLISH), '')
+            self.link = link_obj.get(enums.languages_full.ENGLISH, '')
 
 
 class CourseLocation:
@@ -51,8 +52,8 @@ class CourseLocation:
         self.longitude = data_obj.get('longitude')
         name = data_obj.get('name')
         if name:
-            self.english_name = fallback_to(name.get('english'), '')
-            self.welsh_name = fallback_to(name.get('welsh'), '')
+            self.english_name = name.get('english', '')
+            self.welsh_name = name.get('welsh', '')
         self.links = data_obj.get('links')
 
     def display_name(self):

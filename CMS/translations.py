@@ -1442,6 +1442,10 @@ DICT = {
         'en': 'Qualification type',
         'cy': 'Math o gymhwyster'
     },
+    'qualification_types': {
+        'en': 'Qualification types',
+        'cy': 'Math o gymhwyster'
+    },
     'Quality and Regulatory Professionals': {
         'en': 'Quality and regulatory professionals',
         'cy': 'Gweithwyr Proffesiynol Ansawdd a Rheoleiddio'
