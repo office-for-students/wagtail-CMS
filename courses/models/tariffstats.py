@@ -1,7 +1,5 @@
 from .tariff import Tariff
 from .tariff import tariff_range
-from .utils import enums
-from .utils import fallback_to
 from .utils import display_unavailable_info
 
 
@@ -14,7 +12,7 @@ class TariffStatistics:
 
         if tariff_data:
             self.aggregation_level = tariff_data.get('aggregation_level')
-            self.number_of_students = fallback_to(tariff_data.get('number_of_students'), 0)
+            self.number_of_students = tariff_data.get('number_of_students', 0)
             if tariff_data.get('tariffs'):
                 for tariff in tariff_data.get('tariffs'):
                     self.tariffs.append(Tariff(tariff, self.display_language))
@@ -30,15 +28,15 @@ class TariffStatistics:
                 self.subject_english = subject_data.get('english_label')
                 self.subject_welsh = subject_data.get('welsh_label')
 
-            unavailable_data = fallback_to(tariff_data.get('unavailable'), {})
+            unavailable_data = tariff_data.get('unavailable', {})
             self.unavailable_code = unavailable_data.get('code')
-            self.unavailable_reason = fallback_to(unavailable_data.get('reason'), '')
-            self.unavailable_reason_english = fallback_to(unavailable_data.get('reason_english'), '')
-            self.unavailable_reason_welsh = fallback_to(unavailable_data.get('reason_welsh'), '')
-            self.unavailable_find_out_more_english = fallback_to(unavailable_data.get('find_out_more_english'), '')
-            self.unavailable_find_out_more_welsh = fallback_to(unavailable_data.get('find_out_more_welsh'), '')
-            self.unavailable_url_english = fallback_to(unavailable_data.get('url_english'), '')
-            self.unavailable_url_welsh = fallback_to(unavailable_data.get('url_welsh'), '')
+            self.unavailable_reason = unavailable_data.get('reason', '')
+            self.unavailable_reason_english = unavailable_data.get('reason_english', '')
+            self.unavailable_reason_welsh = unavailable_data.get('reason_welsh', '')
+            self.unavailable_find_out_more_english = unavailable_data.get('find_out_more_english', '')
+            self.unavailable_find_out_more_welsh = unavailable_data.get('find_out_more_welsh', '')
+            self.unavailable_url_english = unavailable_data.get('url_english', '')
+            self.unavailable_url_welsh = unavailable_data.get('url_welsh', '')
             self.display_unavailable_info = display_unavailable_info(
                 self,
                 aggregation_level=self.aggregation_level,
