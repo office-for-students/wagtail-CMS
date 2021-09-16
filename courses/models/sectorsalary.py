@@ -1,5 +1,6 @@
 from CMS import translations
-from .utils import fallback_to, enums, separate_unavail_reason
+from core.utils import enums
+from courses.models.utils import separate_unavail_reason
 
 
 class SectorSalary:
@@ -9,7 +10,7 @@ class SectorSalary:
         self.no_salary_node = "true"
 
         if salary_data:
-            subject_data = fallback_to(salary_data.get('subject'), {})
+            subject_data = salary_data.get('subject', {})
             self.subject_code = subject_data.get('code', '')
             self.subject_english = subject_data.get('english_label', '')
             self.subject_welsh = subject_data.get('welsh_label', '')
