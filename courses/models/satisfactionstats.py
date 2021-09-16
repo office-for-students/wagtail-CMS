@@ -55,7 +55,11 @@ class SatisfactionStatistics:
             self,
             aggregation_level=self.aggregation_level,
         )
+        self.unavailable_reason_heading = self.display_unavailable_info["reason_heading"]
         self.unavailable_reason_body = self.display_unavailable_info["reason_body"]
+        if str(self.aggregation_level) in ["11", "12", "13", "21", "22", "23"]:
+            self.unavailable_reason_body = f"{self.unavailable_reason_heading} {self.unavailable_reason_body}"
+
 
     def show_teaching_stats(self):
         return self.question_1.show_data_point or self.question_2.show_data_point or \

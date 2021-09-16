@@ -35,8 +35,6 @@ def display_unavailable_info(self, aggregation_level, replace=False):
             else:
                 unavailable["reason_body"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol",
                                                                            "eraill")
-        elif str(aggregation_level) in ["11", "12", "13", "21", "22", "23"]:
-            unavailable["reason_body"] = unavailable["reason"]
         else:
             unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
     return unavailable
