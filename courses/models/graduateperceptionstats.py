@@ -33,7 +33,10 @@ class GraduatePerceptionStatistics:
                 aggregation_level=self.aggregation_level,
                 replace=True
             )
+            self.unavailable_reason_heading = self.display_unavailable_info.get("reason_heading", '')
             self.unavailable_reason_body = self.display_unavailable_info["reason_body"]
+            if str(self.aggregation_level) in ["11", "12", "13", "21", "22", "23"]:
+                self.unavailable_reason_body = f"{self.unavailable_reason_heading} {self.unavailable_reason_body}"
 
     def display_subject_name(self):
         if self.display_language == enums.languages.ENGLISH:
