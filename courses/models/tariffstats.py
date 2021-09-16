@@ -1,3 +1,4 @@
+from CMS.enums import enums
 from .tariff import Tariff
 from .tariff import tariff_range
 from .utils import display_unavailable_info
