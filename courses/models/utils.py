@@ -24,14 +24,14 @@ def display_unavailable_info(self, aggregation_level, replace=False):
             "find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
 
     if "reason" in unavailable:
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+
         if replace and str(aggregation_level) in ["11", "12", "13", "21", "22", "23"]:
             if self.display_language == enums.languages.ENGLISH:
-                unavailable["reason_body"] = unavailable["reason"].replace(" over the previous two years", "")
+                unavailable["reason_body"] = unavailable["reason_body"].replace(" over the previous two years", "")
             else:
-                unavailable["reason_body"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol",
+                unavailable["reason_body"] = unavailable["reason_body"].replace("eraill yn ystod y ddwy flynedd flaenorol",
                                                                            "eraill")
-        else:
-            unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
     return unavailable
 
 
