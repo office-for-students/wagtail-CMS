@@ -1,10 +1,10 @@
-from .utils import fallback_to
+from core.utils import fallback_to
 
 
 class CourseCodeGeneric:
     def __init__(self, data_obj):
         self.code = data_obj.get('code')
-        self.label = fallback_to(data_obj.get('label'), '')
+        self.label = data_obj.get('label', '')
 
 
 class CourseMode(CourseCodeGeneric):

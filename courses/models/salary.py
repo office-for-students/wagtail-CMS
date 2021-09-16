@@ -1,4 +1,5 @@
-from .utils import fallback_to, enums, separate_unavail_reason
+from core.utils import enums
+from courses.models.utils import separate_unavail_reason
 
 
 class Salary:
@@ -7,7 +8,7 @@ class Salary:
         self.display_language = display_language
 
         if salary_data:
-            subject_data = fallback_to(salary_data.get('subject'), {})
+            subject_data = salary_data.get('subject', {})
             self.subject_code = subject_data.get('code', '')
             self.subject_english = subject_data.get('english_label', '')
             self.subject_welsh = subject_data.get('welsh_label', '')
@@ -16,11 +17,10 @@ class Salary:
             if self.display_language == enums.languages.WELSH:
                 self.subject_title_in_local_language = self.subject_welsh
 
-            # TODO Why do we need two of those?
             self.unavail_reason = salary_data['unavail_reason']
-            self.unavailable_reason = ""  # fallback_to(salary_data.get('reason'), '')
-            self.unavailable_reason_english = fallback_to(salary_data['unavail_text_english'], '')
-            self.unavailable_reason_welsh = fallback_to(salary_data['unavail_text_welsh'], '')
+            self.unavailable_reason = ""  # salary_data.get('reason', '')
+            self.unavailable_reason_english = salary_data.get('unavail_text_english', '')
+            self.unavailable_reason_welsh = salary_data.get('unavail_text_welsh', '')
 
             # Values used by the Earnings partial HTML files to default the DDL to the institution's country.
             #   XF - England
