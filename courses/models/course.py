@@ -1,4 +1,5 @@
 import json
+from typing import Set
 
 import requests
 
@@ -331,7 +332,7 @@ class Course:
         return ', '.join(location_names)
 
     @property
-    def all_location_names(self) -> List[str]:
+    def all_location_names(self) -> Set[str]:
         """ returns a list of unique locations"""
         location_names = []
         for location in self.locations:
