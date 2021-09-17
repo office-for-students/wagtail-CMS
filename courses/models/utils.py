@@ -28,9 +28,9 @@ def display_unavailable_info(self, aggregation_level, replace=False):
 
         if replace and str(aggregation_level) in ["11", "12", "13", "21", "22", "23"]:
             if self.display_language == enums.languages.ENGLISH:
-                unavailable["reason_body"] = unavailable["reason_body"].replace(" over the previous two years", "")
+                unavailable["reason_heading"] = unavailable["reason_heading"].replace(" over the previous two years", "")
             else:
-                unavailable["reason_body"] = unavailable["reason_body"].replace("eraill yn ystod y ddwy flynedd flaenorol",
+                unavailable["reason_heading"] = unavailable["reason_heading"].replace("eraill yn ystod y ddwy flynedd flaenorol",
                                                                            "eraill")
     return unavailable
 
