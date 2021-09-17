@@ -1,6 +1,8 @@
+from CMS.enums import enums
+from CMS.translations import DICT
 from .salary import Salary
 from .sectorsalary import SectorSalary
-from .utils import enums, separate_unavail_reason, DICT
+from .utils import separate_unavail_reason
 
 
 class SalariesAggregate:

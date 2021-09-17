@@ -1,4 +1,5 @@
-from .utils import enums
+from CMS.enums import enums
+
 
 class CourseSubject:
     def __init__(self, data_obj, language):

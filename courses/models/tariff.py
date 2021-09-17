@@ -1,6 +1,6 @@
 from typing import List
 
-from .utils import enums, fallback_to
+from CMS.enums import enums
 
 LABELS_ENGLISH = {
     "T001": "Less than 48",
@@ -41,8 +41,8 @@ class Tariff:
 
     def __init__(self, tariff, language):
         self.code = tariff.get('code')
-        self.description = fallback_to(tariff.get('description'), '')
-        self.entrants = fallback_to(tariff.get('entrants'), 0)
+        self.description = tariff.get('description', '')
+        self.entrants = tariff.get('entrants', 0)
         self.display_language = language
 
     @property
@@ -72,5 +72,3 @@ def tariff_range(tariff_list: List, language: str) -> str:
     last_range = max_split[-1]
 
     return first_range + " - " + last_range
-
-
