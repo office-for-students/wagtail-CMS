@@ -1,11 +1,8 @@
 import json
 from typing import Set
-
 import requests
-
 from CMS.enums import enums
 from CMS import translations
-
 from .continuationstatistics import ContinuationStatistics
 from .courseaccrediation import CourseAccreditation
 from .courseother import CourseDistanceLearning
