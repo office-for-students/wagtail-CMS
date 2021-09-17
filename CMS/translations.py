@@ -1070,8 +1070,8 @@ DICT = {
         'cy': "Canllawiau ar gymharu cyrsiau"
     },
     'guidance_text': {
-        'en': "This course data presents a snapshot at a point in time, your experience may be different. Some data is from students surveyed during the pandemic. <a href='https://www.discoveruni.gov.uk/about-our-data/' target='_blank' class='blue-text'>Find out more</a> about how to use this data when making decisions about where and what to study.",
-        'cy': "Mae'r data hyn ar gyrsiau'n rhoi cipolwg o brofiadau ar adeg benodol. Gallai eich profiad chi fod yn wahanol.  Daw rhywfaint o'r data gan fyfyrwyr a gymerodd ran yn yr arolwg yn ystod y pandemig. <a href='https://www.discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/' target='_blank' class='blue-text'>Mae rhagor o wybodaeth</a> ar gael ynghylch sut i ddefnyddio'r data hyn wrth benderfynu beth i'w astudio ac ymhle."
+        'en': "This course data presents a snapshot at a point in time, your experience may be different. Some data is from students surveyed during the pandemic. <a href='https://www.discoveruni.gov.uk/about-our-data/' target='_blank' class='blue-text'>Find out more<img class='new_tab' src='/static/images/new_tab_icon.png' alt></a> about how to use this data when making decisions about where and what to study.",
+        'cy': "Mae'r data hyn ar gyrsiau'n rhoi cipolwg o brofiadau ar adeg benodol. Gallai eich profiad chi fod yn wahanol.  Daw rhywfaint o'r data gan fyfyrwyr a gymerodd ran yn yr arolwg yn ystod y pandemig. <a href='https://www.discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/' target='_blank' class='blue-text'><img class='new_tab' src='/static/images/new_tab_icon.png' alt>Mae rhagor o wybodaeth</a> ar gael ynghylch sut i ddefnyddio'r data hyn wrth benderfynu beth i'w astudio ac ymhle."
     },
     'Health and social services managers': {
         'en': 'Health and social services managers',
@@ -1360,6 +1360,10 @@ DICT = {
     'on_campus': {
         'en': 'On campus',
         'cy': 'Ar y campws'
+    },
+    'open_tab': {
+        'en': "Open tab",
+        'cy': "Agor tab"
     },
     'other': {
         'en': 'Other',
