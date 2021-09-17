@@ -9,12 +9,12 @@ welsh_fails = []
 
 for key, value in dicts.items():
     try:
-        assert term_for_key(key, 'en') == value.get('en')
+        assert term_for_key(key, 'en') == value.get('en'), f"English Failed for value {value}"
         english_pass_count += 1
     except Exception:
         english_fails.append(key)
     try:
-        assert term_for_key(key, 'cy') == value.get('cy')
+        assert term_for_key(key, 'cy') == value.get('cy'), f"Welsh Failed for value {value}"
         welsh_pass_count += 1
     except Exception:
         welsh_fails.append(key)
