@@ -10,5 +10,6 @@ class InformationSection(Section):
         for course in self.courses:
             link = course.course_links['course_details'][0].link
             self.data['info']['values'].append(
-                f"<a class='institution-link' href='{link}' target='_blank'>{course.institution_name}</a>")
+                f"<a class='institution-link' href='{link}' target='_blank'>{course.institution_name}"
+                f"<img src='/static/images/new_tab_icon.png' alt='graphic'></a>")
         return self.data
