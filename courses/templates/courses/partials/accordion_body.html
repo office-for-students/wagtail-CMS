@@ -12,7 +12,7 @@
                             {% endfor %}
                         </ul>
                     <a class="link blue-text" href="{{accordion.source.0}}" target="_blank">{{accordion.source.1}}
-                        <img class="new_tab" src="/static/images/new_tab_icon.png" alt="graphic">
+                        <img class="new_tab" src="/static/images/new_tab_icon.png" alt={% get_translation key='open_tab' language=page.get_language %}>
                     </a>
                     </div>
                 {% endautoescape %}
