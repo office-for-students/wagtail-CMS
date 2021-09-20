@@ -116,7 +116,7 @@ class SubEmploymentSection(Section):
             accordion = translations.term_for_key(key="employment_15_months", language=language)
             _object = getattr(course, model_list)[index]
             body = getattr(_object, "unavailable_reason_body")
-            header = get_unavailable(course, model_list, language, accordion)["header"][0]
+            header = get_unavailable(course, model_list, language, accordion)
         except Exception as e:
             header = translations.term_for_key(key="no_data_available", language=language)
             _object = getattr(course, "display_no_data")()
