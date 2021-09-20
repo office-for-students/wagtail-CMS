@@ -44,6 +44,7 @@ class JobTypeStatistics:
             self.display_unavailable_info = display_unavailable_info(
                 self,
                 aggregation_level=self.aggregation_level,
+                replace=True
             )
             self.unavailable_reason_heading = self.display_unavailable_info["reason_heading"]
             self.unavailable_reason_body = self.display_unavailable_info["reason_body"]

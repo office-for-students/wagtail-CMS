@@ -1,9 +1,6 @@
 import json
-import logging
 from typing import Set
-
 import requests
-
 from CMS import translations
 from CMS.enums import enums
 from .continuationstatistics import ContinuationStatistics

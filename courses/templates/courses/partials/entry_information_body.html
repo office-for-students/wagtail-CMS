@@ -16,10 +16,16 @@
                         {% get_translation key='entrance_data_quals_students_had' language=page.get_language %}
                     </div>
                 </p>
-                <p><a href="{% get_translation key='entrance_data_read_more_url' language=page.get_language %}" class="text-center text-lg-left">{% get_translation key='entrance_data_read_more' language=page.get_language %}</a></p>
+                <p>
+                    <a href="{% get_translation key='entrance_data_read_more_url' language=page.get_language %}"
+                        class="text-center text-lg-left"
+                        target="_blank">
+                        {% get_translation key='entrance_data_read_more' language=page.get_language %}
+                    </a>
+                </p>
             </div>
         </div>
-     
+
         {% if course_details.has_multiple_entry_stats %}
             <ul class="nav nav-tabs mt-2 mx-1" id="qualification-types-tab" role="tablist">
                 {% for entry_stats in course_details.entry_stats %}
@@ -61,7 +67,7 @@
                                         data-label="entry-degree"
                                         data-title="{% get_translation key='entry_graph_title' language=page.get_language %} {% get_translation key='degree' language=page.get_language %}"
                                         data-desc="{% get_translation key='entry_graph_desc' language=page.get_language %} {% get_translation key='degree' language=page.get_language %}">
-                                        
+
                                         <div class="row d-flex">
                                             <div class="col-lg-6 order-md-1 order-lg-2 text-lg-right">
                                                 {% include 'courses/partials/bar_chart.html' %}
@@ -71,12 +77,12 @@
                                             </div>
                                         </div>
                                     </div>
-                            
+
                                 <div class="entry-information__chart discover-uni-chart bar" data-value="{{entry_stats.another_higher_education_qualifications}}"
                                     data-label="entry-other_higher_qualifications"
                                     data-title="{% get_translation key='entry_graph_title' language=page.get_language %} {% get_translation key='other_higher_qualifications' language=page.get_language %}"
                                     data-desc="{% get_translation key='entry_graph_desc' language=page.get_language %} {% get_translation key='other_higher_qualifications' language=page.get_language %}">
-                                
+
                                     <div class="row d-flex">
                                         <div class="col-lg-6 order-md-1 order-lg-2 text-lg-right">
                                         {% include 'courses/partials/bar_chart.html' %}
@@ -185,7 +191,7 @@
                                         {{block.value.qualification_label_explanation_body}}
                                      </div>
                                 </div>
-                            </div>  
+                            </div>
                         </div>
                     {% endif %}
                 </div>
@@ -220,9 +226,7 @@
                                 <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
                                     <h2 class="entry-information__heading py-3">{{block.value.tariffs_heading}}{% if course_details.has_multiple_tariff_stats %}:
                                         {{tariff_stats.display_subject_name}}{% endif %}</h2>
-
-                                        
-
+                                            {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
                                             {% create_list course_details.data_from_html tariff_stats.number_of_students as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
                                             {{ subbed_text | richtext }}
@@ -261,7 +265,7 @@
                             </div>
                         </div>
                     </div>
-              
+
             {% endfor %}
         </div>
     </div>
