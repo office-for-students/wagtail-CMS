@@ -85,7 +85,7 @@ class GraduatePerceptionSection(Section):
             accordion = translations.term_for_key(key="graduate_perceptions", language=language)
             _object = getattr(course, model_list)[index]
             body = getattr(_object, "unavailable_reason_body")
-            header = get_unavailable(course, model_list, language, accordion)["header"]
+            header = get_unavailable(course, model_list, language, accordion)
         except Exception as e:
             header = translations.term_for_key(key="no_data_available", language=language)
             _object = getattr(course, "display_no_data")()
