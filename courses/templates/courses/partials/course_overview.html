@@ -17,13 +17,15 @@
         </h1>
 
         {% if page.is_english %}
-        <a class="course-detail__institution-name" href="/institution-details/{{ course.institution.pub_ukprn }}/">
-            {% autoescape off %}{{ course.institution_name | safe }}{% endautoescape %}
-        </a>
+            <a class="course-detail__institution-name" href="/institution-details/{{ course.institution.pub_ukprn }}/"
+               target="_blank">
+                {% autoescape off %}{{ course.institution_name | safe }}{% endautoescape %}
+            </a>
         {% else %}
-        <a class="course-detail__institution-name" href="/cy/institution-details/{{ course.institution.pub_ukprn }}/">
-            {% autoescape off %}{{ course.institution_name | safe }}{% endautoescape %}
-        </a>
+            <a class="course-detail__institution-name"
+               href="/cy/institution-details/{{ course.institution.pub_ukprn }}/" target="_blank">
+                {% autoescape off %}{{ course.institution_name | safe }}{% endautoescape %}
+            </a>
         {% endif %}
 
         <div class="d-flex flex-wrap row mt-2">
@@ -170,9 +172,9 @@
                         <h2 id="average_earnings_sm" class="d-lg-none">{{ course.summary_med_sal_value|intcomma }}</h2>
                         <h2 id="average_earnings_lg" class="d-none  d-lg-block">
                             £{{ course.summary_med_sal_value|intcomma }}</h2>
-                        <p>{{course.summary_med_sal_time}} {% get_translation key='summary_med_sal_text_1' language=page.get_language %}
-                            {{course.summary_med_sal_sbj}} {% get_translation key='summary_med_sal_text_2' language=page.get_language %}
-                            {{course.institution_name}}
+                        <p>{{ course.summary_med_sal_time }} {% get_translation key='summary_med_sal_text_1' language=page.get_language %}
+                            {{ course.summary_med_sal_sbj }} {% get_translation key='summary_med_sal_text_2' language=page.get_language %}
+                            {{ course.institution_name }}
                         </p>
                         <!--
                         <p>
@@ -183,7 +185,7 @@
                     </div>
                 </div>
             {% endif %}
-            
+
             {% if course.employment_stats and course.employment_stats.0.work_and_or_study %}
                 <div class="col p-0 m-1">
                     <div class="course-detail__headline_stat px-3 px-xs-2 py-4 ml-xs-1 ml-sm-2 h-100">
@@ -216,7 +218,9 @@
                         </p>
                         <p class="text-lg-left">
                             <a class=""
-                               href="{% get_translation key='course_details_joint_overview_4' language=page.get_language %}">{% get_translation key='course_details_joint_overview_3' language=page.get_language %}</a>
+                               href="{% get_translation key='course_details_joint_overview_4' language=page.get_language %}"
+                               target="_blank">
+                                {% get_translation key='course_details_joint_overview_3' language=page.get_language %}</a>
                         </p>
                     </div>
                 </div>
@@ -236,7 +240,7 @@
         earnings = earnings.replace('£', '');
         earnings = parseFloat(earnings.replace(/,/g, ''));
         var reformatted = kFormatter(earnings);
-        $('#average_earnings_sm').text("£" + reformatted);
+        earnings.text("£" + reformatted);
     }
 
     $(document).ready(function () {
