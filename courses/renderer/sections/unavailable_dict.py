@@ -74,8 +74,6 @@ earnings_dict = {
             "3": "earnings_15_months_unavailable_22_21_3",
             "4": "after_3_years_21_22_4"
         },
-        "blank": [
-            "unavailable_2_any"
-        ]
+        "blank": "unavailable_2_any"
     },
 }

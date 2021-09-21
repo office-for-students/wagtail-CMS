@@ -3,7 +3,6 @@ from typing import List, Tuple, Any, Dict
 from django.template.loader import render_to_string
 
 from CMS import translations
-from CMS.translations import term_for_key
 from courses.models import Course
 from courses.renderer.sections.base import Section
 from courses.renderer.sections.earnings_unavailable import get_unavailable
@@ -99,6 +98,7 @@ class SubEarningsSection(Section):
     @classmethod
     def multiple_subjects(cls, course: Course, stat: str, model_list_name: str, language: str, prefix="", extra=False):
         response = dict(subject=[], values=[])
+        no_data = translations.term_for_key(key="no_data_available", language=language)
 
         for index, subject in enumerate(course.subject_names):
             subject_name = subject.display_subject_name()
@@ -115,8 +115,9 @@ class SubEarningsSection(Section):
 
                 if extra == "first":
                     mode = translations.term_for_key(course.mode.label, language=language)
-                    # values = f'{mode} {method} {translations.term_for_key("course", language=language)}' if method else values
-                    header = f'{mode} {method} {translations.term_for_key("course", language=language)}'
+                    course_string = f'{mode} {method} {translations.term_for_key("course", language=language)}' if method else values
+                    header = course_string if method else translations.term_for_key(key="no_data_available",
+                                                                                    language=language)
                     values = cls.set_unavailable(
                         course=course,
                         model_list_name=model_list_name,
@@ -156,6 +157,7 @@ class SubEarningsSection(Section):
             language=language,
             extra=extra
         )
+        no_data = translations.term_for_key(key="no_data_available", language=language)
         try:
             if course.has_multiple_subject_names:
                 response = cls.multiple_subjects(
@@ -172,7 +174,8 @@ class SubEarningsSection(Section):
                 mode = translations.term_for_key(course.mode.label, language=language)
 
                 if extra == "first":
-                    header = f'{mode} {method} {translations.term_for_key("course", language=language)}'
+                    course_string = f'{mode} {method} {translations.term_for_key("course", language=language)}'
+                    header = course_string if method else no_data
                     response = cls.set_unavailable(
                         course=course,
                         model_list_name=model_list_name,
@@ -205,10 +208,10 @@ class SubEarningsSection(Section):
             header = header
             body = get_unavailable(course=course, model_list_name=model_list_name, language=language)
         else:
-            header = term_for_key(key="no_data_available", language=language)
+            header = translations.term_for_key(key="no_data_available", language=language)
 
         if header is None:
-            header = term_for_key(key="no_data_available", language=language)
+            header = translations.term_for_key(key="no_data_available", language=language)
 
         if body is not None:
             return ["unavailable", header, body]

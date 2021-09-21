@@ -61,15 +61,11 @@ def set_message(
         data: List[str],
         language,
 ) -> List[str]:
-    header = translations.term_for_key(key="this_course", language=language)
-    override_accordions = [
-        translations.term_for_key(key="employment_15_months", language=language),
-        translations.term_for_key(key="graduate_perceptions", language=language),
-    ]
-    message = earnings_dict[unavailable_key][aggregation_level]
+    message = earnings_dict[unavailable_key]["blank"]
+    message = term_for_key(key=message, language=language)
 
     if not aggregation_level == "blank":
-        message = earnings_dict[unavailable_key][aggregation_level][kis_level]
+        message = earnings_dict[unavailable_key][aggregation_level].get(kis_level)
         message = term_for_key(key=message, language=language)
 
     data.append(message)
