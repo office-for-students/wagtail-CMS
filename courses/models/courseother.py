@@ -1,5 +1,6 @@
 from CMS.enums import enums
-from CMS.translations import DICT
+from CMS.translations import term_for_key
+from CMS.translations.dictionaries.general import DICT
 
 
 class CourseDistanceLearning:
@@ -19,7 +20,7 @@ class CourseDistanceLearning:
 class CourseFoundationYear:
 
     def __init__(self, data_obj, language):
-        self.label = DICT.get('unknown').get(language)
+        self.label = term_for_key(key='unknown', language=language)
         if data_obj:
             self.code = data_obj.get('code')
             self.label = data_obj.get('label', '')

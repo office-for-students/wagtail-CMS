@@ -6,15 +6,16 @@ from urllib.parse import urlencode
 from django import template
 
 from CMS.enums import enums
-from CMS.translations import DICT
+from CMS.translations.dictionaries.general import DICT
+
 from core.utils import get_current_version, get_code_version
 
 from django.utils.safestring import mark_safe
 from wagtail.core.rich_text import RichText, expand_db_html
 
-
-from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, ACCREDITATION_KEY,\
-    EARNINGS_AFTER_COURSE_KEY, EMPLOYMENT_AFTER_COURSE_KEY, GRADUATE_PERCEPTIONS_KEY, LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
+from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, ACCREDITATION_KEY, \
+    EARNINGS_AFTER_COURSE_KEY, EMPLOYMENT_AFTER_COURSE_KEY, GRADUATE_PERCEPTIONS_KEY, \
+    LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
 
 register = template.Library()
 

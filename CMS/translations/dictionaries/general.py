@@ -1,3 +1,22 @@
+OPTIONALS = {
+    'not_available': {
+        'en': 'Not Available',
+        'cy': 'Ddim ar gael'
+    },
+    'optional': {
+        "en": 'Optional',
+        'cy': 'Dewisol'
+    },
+    'compulsory': {
+        "en": 'Compulsory',
+        'cy': 'Gorfodol'
+    },
+    'yes': {
+        'en': 'Yes',
+        'cy': 'Ydy'
+    },
+}
+
 DICT = {
 
     'facebook_link': {

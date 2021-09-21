@@ -10,7 +10,6 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core.models import Page
 from wagtail.core import blocks
 
-from CMS.translations import DICT
 from CMS.enums import enums
 
 from core.models import DiscoverUniBasePage

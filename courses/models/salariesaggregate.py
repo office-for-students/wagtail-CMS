@@ -1,5 +1,5 @@
 from CMS.enums import enums
-from CMS.translations import DICT
+from CMS.translations.dictionaries.general import DICT
 from .salary import Salary
 from .sectorsalary import SectorSalary
 from .utils import separate_unavail_reason
