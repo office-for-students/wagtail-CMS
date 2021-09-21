@@ -55,9 +55,3 @@ def separate_unavail_reason(reason_unseparated):
         reason_body = ""
 
     return reason_heading, reason_body
-
-
-def display_subject_name(language, subject_english, subject_welsh):
-    if language == enums.languages.ENGLISH:
-        return subject_english if subject_english else subject_welsh
-    return subject_welsh if subject_welsh else subject_english
