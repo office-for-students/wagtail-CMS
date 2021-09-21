@@ -104,8 +104,6 @@ class Section:
     @classmethod
     def set_unavailable(cls, course: Course, model_list: str, language: str, index=0):
         # noinspection PyBroadException
-        print(f"MULTPLERE NAMES  {course.has_multiple_subject_names}, {model_list} {len(getattr(course, model_list))}")
-
         if index < len(getattr(course, model_list)):
             _object = getattr(course, model_list)[index]
             body = getattr(_object, "unavailable_reason_body")
