@@ -32,3 +32,84 @@ unavailable_dict = {
             "message_11"
         ]}
 }
+
+earnings_dict = {
+    "0": {
+        "23": {
+            "4": [
+                "earnings_message_1"
+            ]
+        },
+        "21": {
+            "3": [
+                "earnings_message_2"
+            ],
+            "4": [
+                "earnings_message_3"
+            ]
+        },
+        "22": {
+            "3": [
+                "earnings_message_2"
+            ],
+            "4": [
+                "earnings_message_3"
+            ]
+        },
+        "blank": [
+            "earnings_message_4"
+        ]
+    },
+    "1": {
+        "23": {
+            "4": [
+                "earnings_message_1"
+            ]
+        },
+        "21": {
+            "3": [
+                "earnings_message_2"
+            ],
+            "4": [
+                "earnings_message_3"
+            ]
+        },
+        "22": {
+            "3": [
+                "earnings_message_2"
+            ],
+            "4": [
+                "earnings_message_3"
+            ]
+        },
+        "blank": [
+            "earnings_message_5"
+        ]
+    },
+    "2": {
+        "23": {
+            "4": [
+                "earnings_message_1"
+            ]
+        },
+        "21": {
+            "3": [
+                "earnings_message_2"
+            ],
+            "4": [
+                "earnings_message_3"
+            ]
+        },
+        "22": {
+            "3": [
+                "earnings_message_2"
+            ],
+            "4": [
+                "earnings_message_3"
+            ]
+        },
+        "blank": [
+            "earnings_message_6"
+        ]
+    },
+}
