@@ -102,7 +102,12 @@ class SubEarningsSection(Section):
 
         for index, subject in enumerate(course.subject_names):
             subject_name = subject.display_subject_name()
-            values = cls.set_unavailable(course=course, model_list_name=model_list_name, language=language, extra=extra)
+            values = cls.set_unavailable(
+                course=course,
+                model_list_name=model_list_name,
+                language=language,
+                extra=extra
+            )
 
             if index < len(getattr(course, model_list_name)):
                 _object = getattr(course, model_list_name)[index]
@@ -112,8 +117,13 @@ class SubEarningsSection(Section):
                     mode = translations.term_for_key(course.mode.label, language=language)
                     # values = f'{mode} {method} {translations.term_for_key("course", language=language)}' if method else values
                     header = f'{mode} {method} {translations.term_for_key("course", language=language)}'
-                    values = cls.set_unavailable(course=course, model_list_name=model_list_name, language=language,
-                                                 extra=extra, header=header)
+                    values = cls.set_unavailable(
+                        course=course,
+                        model_list_name=model_list_name,
+                        language=language,
+                        extra=extra,
+                        header=header
+                    )
                 elif extra == "final":
                     country = str(getattr(_object, "country"))
                     values = render_to_string(
@@ -131,9 +141,21 @@ class SubEarningsSection(Section):
         return response
 
     @classmethod
-    def presentable_data(cls, course: Course, stat: str, model_list_name: str, language: str, prefix="",
-                         extra=False) -> str:
-        response = cls.set_unavailable(course=course, model_list_name=model_list_name, language=language, extra=extra)
+    def presentable_data(
+            cls,
+            course: Course,
+            stat: str,
+            model_list_name: str,
+            language: str,
+            prefix="",
+            extra=False
+    ) -> str:
+        response = cls.set_unavailable(
+            course=course,
+            model_list_name=model_list_name,
+            language=language,
+            extra=extra
+        )
         try:
             if course.has_multiple_subject_names:
                 response = cls.multiple_subjects(
@@ -151,8 +173,13 @@ class SubEarningsSection(Section):
 
                 if extra == "first":
                     header = f'{mode} {method} {translations.term_for_key("course", language=language)}'
-                    response = cls.set_unavailable(course=course, model_list_name=model_list_name, language=language,
-                                                   extra=extra, header=header)
+                    response = cls.set_unavailable(
+                        course=course,
+                        model_list_name=model_list_name,
+                        language=language,
+                        extra=extra,
+                        header=header
+                    )
                 elif extra == "final":
                     country = str(getattr(_object, "country"))
                     response = render_to_string(
@@ -178,6 +205,9 @@ class SubEarningsSection(Section):
             header = header
             body = get_unavailable(course=course, model_list_name=model_list_name, language=language)
         else:
+            header = term_for_key(key="no_data_available", language=language)
+
+        if header is None:
             header = term_for_key(key="no_data_available", language=language)
 
         if body is not None:
