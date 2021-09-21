@@ -93,13 +93,13 @@ def get_sub_accordion_dataset(courses, section_model, get_sub_headers, language)
     return response
 
 
-def get_multiple_subjects(courses: List[Course], sources=[]) -> Dict[str, List[str]]:
+def get_multiple_subjects(courses: List[Course]) -> Dict[str, List[str]]:
     subjects = dict(subject=[])
     for course in courses:
         subject_list = list()
         subject_names = course.subject_names
         for index, subject_name in enumerate(subject_names):
-            subject_list.append(get_subject_label(course, index, subject_name.display_subject_name, sources))
+            subject_list.append(get_subject_label(course, index, subject_name.display_subject_name))
         subjects["subject"].append(subject_list)
     return subjects
 
@@ -112,15 +112,16 @@ def has_valid_value(attrib, _object):
     return False
 
 
-def get_subject_label(course, index, subject_name, sources):
+def get_subject_label(course, index, subject_name):
+    sources = ["go", "leo3", "leo5"]
     method = subject_name
     for source in sources:
         try:
-            _object = getattr(course, f'{source}')[index]
+            _object = getattr(course, f'{source}_salaries_inst')[index]
         except IndexError as e:
             continue
 
-        attrib = "display_subject_name"
+        attrib = "subject_title_in_local_language"
         if has_valid_value(
                 _object=_object,
                 attrib=attrib
@@ -154,7 +155,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="satisfaction_guidance_1", language=language),
                 translations.term_for_key(key="satisfaction_guidance_2", language=language)
             ),
-            subjects=get_multiple_subjects(courses, ["satisfaction_stats"]),
+            subjects=get_multiple_subjects(courses),
             dataset=get_details(SatisfactionSection, courses, language),
             sub_accordions=get_sub_accordion_dataset(courses, SubSatisfactionSection, get_sub_satisfaction, language),
             change_point=4,
@@ -166,7 +167,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         dict(
             title=translations.term_for_key(key="entry_information", language=language),
             guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),
-            subjects=get_multiple_subjects(courses, ["entry_stats"]),
+            subjects=get_multiple_subjects(courses),
             sub_accordions=get_sub_accordion_dataset(courses, SubEntrySection, get_sub_entry, language),
             source=(
                 translations.term_for_key(key="about_our_data_link", language=language),
@@ -176,7 +177,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         dict(
             title=translations.term_for_key(key="after_one_year", language=language),
             guidance_information=(translations.term_for_key(key="after_one_year_guidance", language=language),),
-            subjects=get_multiple_subjects(courses, ["continuation_stats"]),
+            subjects=get_multiple_subjects(courses),
             dataset=get_details(ContinuationSection, courses, language),
             source=(
                 translations.term_for_key(key="entrance_data_read_more_url", language=language),
@@ -190,7 +191,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="earnings_guidance_2", language=language),
                 translations.term_for_key(key="earnings_guidance_3", language=language)
             ),
-            subjects=get_multiple_subjects(courses, ["go_salaries_inst", "leo3_salaries_inst", "leo5_salaries_inst"]),
+            subjects=get_multiple_subjects(courses),
             sub_accordions=get_sub_accordion_dataset(courses, SubEarningsSection, get_sub_earnings, language),
             source=(
                 translations.term_for_key(key="earnings_link", language=language),
@@ -205,7 +206,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="employment_guidance_2", language=language),
                 translations.term_for_key(key="employment_guidance_3", language=language)
             ),
-            subjects=get_multiple_subjects(courses, ["employment_stats", "job_type_stats"]),
+            subjects=get_multiple_subjects(courses),
             sub_accordions=get_sub_accordion_dataset(courses, SubEmploymentSection, get_sub_employment, language),
             source=(
                 translations.term_for_key(key="earnings_link", language=language),
@@ -218,7 +219,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="graduate_guidance_1", language=language),
                 translations.term_for_key(key="graduate_guidance_2", language=language),
             ),
-            subjects=get_multiple_subjects(courses, ["graduate_perceptions"]),
+            subjects=get_multiple_subjects(courses),
             dataset=get_details(GraduatePerceptionSection, courses, language),
             source=(
                 translations.term_for_key(key="graduate_link", language=language),
