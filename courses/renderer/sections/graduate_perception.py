@@ -24,36 +24,6 @@ suffix_index = 3
 model_array = 4
 
 
-def multiple_subjects(course: Course, stat: str, suffix: Any, language: str) -> dict:
-    response = dict(subject=[], values=[])
-    for index, subject in enumerate(course.subject_names):
-        subject_name = subject.display_subject_name()
-        if index < len(course.graduate_perceptions):
-            _object = course.graduate_perceptions[index]
-            method = str(getattr(_object, stat))
-            response["values"].append(f"{method}{suffix}" if suffix and method.isnumeric() else method)
-            response["subject"].append(subject_name)
-        else:
-            response["values"].append(translations.term_for_key(key="no_data_available", language=language))
-    return response
-
-
-def presentable_graduate(course: Course, stat: str, suffix: Any, language: str) -> str:
-    response = translations.term_for_key(key="no_data_available", language=language)
-    try:
-        if course.has_multiple_subject_names:
-            response = multiple_subjects(course, stat, suffix, language)
-        else:
-            _object = course.graduate_perceptions[0]
-            method = str(getattr(_object, stat))
-            if method:
-                response = f"{method}{suffix}" if suffix and method.isnumeric() else method
-    except Exception as e:
-        print("error: ", e)
-        pass
-    return response
-
-
 class GraduatePerceptionSection(Section):
 
     def get_sections(self) -> List[Tuple[Any, Any, Any, str, str]]:
@@ -83,7 +53,8 @@ class GraduatePerceptionSection(Section):
                         model_list=section[model_array],
                         language=self.language,
                         multiple=True,
-                        suffix=section[suffix_index]
+                        suffix=section[suffix_index],
+                        unavailable=self.check_unavailable(section)
                     )
                 )
         self.update_data_with_subtitles(self.data)
@@ -114,7 +85,7 @@ class GraduatePerceptionSection(Section):
             accordion = translations.term_for_key(key="graduate_perceptions", language=language)
             _object = getattr(course, model_list)[index]
             body = getattr(_object, "unavailable_reason_body")
-            header = get_unavailable(course, model_list, language, accordion)["header"][0]
+            header = get_unavailable(course, model_list, language, accordion)
         except Exception as e:
             header = translations.term_for_key(key="no_data_available", language=language)
             _object = getattr(course, "display_no_data")()
