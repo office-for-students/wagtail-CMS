@@ -2,43 +2,9 @@ from CMS.enums import enums
 from courses.models.utils import display_unavailable_info, display_subject_name
 
 
-def getUnavailble(cls, model):
-    if cls == EntryStatistics:
-        return UnavailableClass
-    pass
-
-
-class UnavailableClass():
-    def __init__(self, course, display_language):
-        self.display_language = display_language
-        self.course = course
-        self.subject_english = course.subject_english
-        self.subject_welsh = course.subject_welsh
-        # aware the above won't do anything yet - check and see if it's viable
-
-    def display_name(self):
-        subject_name = display_subject_name(
-            language=self.display_language,
-            subject_english=self.subject_english,
-            subject_welsh=self.subject_welsh
-        )
-        return getattr(self.course, subject_name)
-
-    def unavailable_heading(self):
-        return self.course.display_unavailable_info.get("reason_heading", '')
-
-    def unavailable_messages(self):
-        return self.course.display_unavailable_info.get("reason_body", '')
-
-
-class EntryUnavailable(UnavailableClass):
-    pass
-
-
 class EntryStatistics:
 
     def __init__(self, data_obj, display_language):
-        self.unavailable = getUnavailble(self.__class__, self)
         self.display_language = display_language
         self.display_stats = False
         self.aggregation_level = 0
