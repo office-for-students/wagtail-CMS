@@ -93,13 +93,13 @@ def get_sub_accordion_dataset(courses, section_model, get_sub_headers, language)
     return response
 
 
-def get_multiple_subjects(courses: List[Course]) -> Dict[str, List[str]]:
+def get_multiple_subjects(courses: List[Course], sources=[]) -> Dict[str, List[str]]:
     subjects = dict(subject=[])
     for course in courses:
         subject_list = list()
         subject_names = course.subject_names
         for index, subject_name in enumerate(subject_names):
-            subject_list.append(get_subject_label(course, index, subject_name.display_subject_name))
+            subject_list.append(get_subject_label(course, index, subject_name.display_subject_name, sources))
         subjects["subject"].append(subject_list)
     return subjects
 
@@ -112,16 +112,15 @@ def has_valid_value(attrib, _object):
     return False
 
 
-def get_subject_label(course, index, subject_name):
-    sources = ["go", "leo3", "leo5"]
+def get_subject_label(course, index, subject_name, sources):
     method = subject_name
     for source in sources:
         try:
-            _object = getattr(course, f'{source}_salaries_inst')[index]
+            _object = getattr(course, f'{source}')[index]
         except IndexError as e:
             continue
 
-        attrib = "subject_title_in_local_language"
+        attrib = "display_subject_name"
         if has_valid_value(
                 _object=_object,
                 attrib=attrib
@@ -155,10 +154,11 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="satisfaction_guidance_1", language=language),
                 translations.term_for_key(key="satisfaction_guidance_2", language=language)
             ),
-            subjects=get_multiple_subjects(courses),
+            subjects=get_multiple_subjects(courses, ["satisfaction_stats"]),
             dataset=get_details(SatisfactionSection, courses, language),
             sub_accordions=get_sub_accordion_dataset(courses, SubSatisfactionSection, get_sub_satisfaction, language),
-            unavailable=get_unavailable_rows(courses, ["satisfaction_stats", ], language=language, present_as_multiple=True),
+            unavailable=get_unavailable_rows(courses, ["satisfaction_stats", ], language=language,
+                                             present_as_multiple=True),
             change_point=4,
             source=(
                 translations.term_for_key(key="about_our_data_link", language=language),
@@ -168,7 +168,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         dict(
             title=translations.term_for_key(key="entry_information", language=language),
             guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),
-            subjects=get_multiple_subjects(courses),
+            subjects=get_multiple_subjects(courses, ["entry_stats"]),
             sub_accordions=get_sub_accordion_dataset(courses, SubEntrySection, get_sub_entry, language),
             unavailable=get_unavailable_rows(courses, ["entry_stats", "tariff_stats"], change_key=10,
                                              language=language, present_as_multiple=True),
@@ -180,9 +180,10 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         dict(
             title=translations.term_for_key(key="after_one_year", language=language),
             guidance_information=(translations.term_for_key(key="after_one_year_guidance", language=language),),
-            subjects=get_multiple_subjects(courses),
+            subjects=get_multiple_subjects(courses, ["continuation_stats"]),
             dataset=get_details(ContinuationSection, courses, language),
-            unavailable=get_unavailable_rows(courses, ["continuation_stats", ], language=language, present_as_multiple=True),
+            unavailable=get_unavailable_rows(courses, ["continuation_stats"], language=language,
+                                             present_as_multiple=True),
             source=(
                 translations.term_for_key(key="entrance_data_read_more_url", language=language),
                 translations.term_for_key(key="read_more_about_continuation", language=language),
@@ -195,7 +196,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="earnings_guidance_2", language=language),
                 translations.term_for_key(key="earnings_guidance_3", language=language)
             ),
-            subjects=get_multiple_subjects(courses),
+            subjects=get_multiple_subjects(courses, ["go_salaries_inst", "leo3_salaries_inst", "leo5_salaries_inst"]),
             sub_accordions=get_sub_accordion_dataset(courses, SubEarningsSection, get_sub_earnings, language),
             source=(
                 translations.term_for_key(key="earnings_link", language=language),
@@ -210,7 +211,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="employment_guidance_2", language=language),
                 translations.term_for_key(key="employment_guidance_3", language=language)
             ),
-            subjects=get_multiple_subjects(courses),
+            subjects=get_multiple_subjects(courses, ["employment_stats", "job_type_stats"]),
             sub_accordions=get_sub_accordion_dataset(courses, SubEmploymentSection, get_sub_employment, language),
             unavailable=get_unavailable_rows(courses, ["employment_stats", "job_type_stats"], change_key=9,
                                              language=language,
@@ -226,7 +227,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="graduate_guidance_1", language=language),
                 translations.term_for_key(key="graduate_guidance_2", language=language),
             ),
-            subjects=get_multiple_subjects(courses),
+            subjects=get_multiple_subjects(courses, ["graduate_perceptions"]),
             dataset=get_details(GraduatePerceptionSection, courses, language),
             unavailable=get_unavailable_rows(courses, ["graduate_perceptions", ], language=language,
                                              present_as_multiple=True),

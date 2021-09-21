@@ -1,6 +1,9 @@
 from CMS.enums import enums
 from courses.models.utils import display_unavailable_info
 
+class EntryUnavailable(UnavailableClass):
+    pass
+
 
 class EntryStatistics:
 
@@ -61,8 +64,3 @@ class EntryStatistics:
             self.unavailable_reason_body = self.display_unavailable_info["reason_body"]
             if str(self.aggregation_level) in ["11", "12", "13", "21", "22", "23"]:
                 self.unavailable_reason_body = f"{self.unavailable_reason_heading} {self.unavailable_reason_body}"
-
-    def display_subject_name(self):
-        if self.display_language == enums.languages.ENGLISH:
-            return self.subject_english if self.subject_english else self.subject_welsh
-        return self.subject_welsh if self.subject_welsh else self.subject_english
