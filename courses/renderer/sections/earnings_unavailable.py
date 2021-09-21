@@ -38,14 +38,13 @@ def get_data(
     _object = getattr(course, model_list_name)[0]
     unavailable_code = str(getattr(_object, "unavail_reason"))
     print("Unavailable code: ", unavailable_code)
-    aggregation_level = str(getattr(_object, "aggregate"))
+    aggregation_level = _getattr(_object, "aggregate", "blank")
     kis_level = str(getattr(course, "course_level"))
     is_ni = _getattr(_object, "is_ni", False)
-    agg = aggregation_level if str(aggregation_level) not in ("None", "") else "blank"
     # Sometimes None was entered into the DB as a string, and sometimes not, sometimes empty string. ^^^
     response = set_message(
         unavailable_key=unavailable_code,
-        aggregation_level=agg,
+        aggregation_level=aggregation_level,
         kis_level=kis_level,
         is_ni=is_ni,
         data=data,
