@@ -77,6 +77,11 @@ class EntryStatistics:
                 self.subject_code = subject_data.get('code')
                 self.subject_english = subject_data.get('english_label')
                 self.subject_welsh = subject_data.get('welsh_label')
+                self.display_subject_name = display_subject_name(
+                    language=self.display_language,
+                    subject_english=self.subject_english,
+                    subject_welsh=self.subject_welsh
+                )
 
             unavailable_data = data_obj.get('unavailable', {})
             self.unavailable_code = unavailable_data.get('code')
