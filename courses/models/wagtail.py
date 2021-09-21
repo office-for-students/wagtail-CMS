@@ -1,23 +1,13 @@
 import logging
-from typing import List
-
-import requests
 
 from django.db.models.fields import TextField
-
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.core.fields import StreamField, RichTextField
-from wagtail.core.models import Page
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.core import blocks
-
-from CMS.enums import enums
+from wagtail.core.fields import RichTextField
+from wagtail.core.fields import StreamField
 
 from core.models import DiscoverUniBasePage
-from core.utils import fallback_to
-from courses import request_handler
-from errors.models import ApiError
-from institutions.models import InstitutionOverview
-import json
 
 logger = logging.getLogger(__name__)
 
