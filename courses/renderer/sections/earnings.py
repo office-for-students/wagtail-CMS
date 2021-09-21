@@ -5,6 +5,7 @@ from django.template.loader import render_to_string
 from CMS import translations
 from courses.models import Course
 from courses.renderer.sections.base import Section
+from courses.renderer.sections.earnings_unavailable import get_unavailable
 
 AVERAGE_EARNINGS = "average_earnings_course_overview_1"
 INSTITUTION = "institution"
@@ -164,9 +165,12 @@ class SubEarningsSection(Section):
         return response
 
     @classmethod
-    def set_unavailable(cls, course: Course, language: str):
-        header = translations.term_for_key(key="no_data_available", language=language)
-        _object = getattr(course, "display_no_data")()
-        body = _object["reason"]
+    def set_unavailable(cls, course: Course, model_list_name: str, language: str, extras=False):
+        if extras == "first":
+            header = None
+            body = get_unavailable(course=course, model_list_name=model_list_name, language=language)
+        else:
+            header = None
+            body = None
 
         return ["unavailable", header, body]
