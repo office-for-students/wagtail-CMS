@@ -1,5 +1,5 @@
 from CMS.enums import enums
-from courses.models.utils import display_unavailable_info, display_subject_name
+from courses.models.utils import display_unavailable_info
 
 
 class EntryStatistics:
