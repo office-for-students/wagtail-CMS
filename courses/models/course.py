@@ -1,8 +1,8 @@
 import json
 from typing import Set
 import requests
-from CMS.enums import enums
 from CMS import translations
+from CMS.enums import enums
 from .continuationstatistics import ContinuationStatistics
 from .courseaccrediation import CourseAccreditation
 from .courseother import CourseDistanceLearning
@@ -34,7 +34,6 @@ import logging
 from .utils import separate_unavail_reason
 
 logger = logging.getLogger(__name__)
-
 
 class Course:
     MODES = {

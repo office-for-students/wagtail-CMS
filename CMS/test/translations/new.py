@@ -7,11 +7,10 @@ def cleanup_key(key):
     exclude = set(string.punctuation) - {'_', '-'}
     new = ''.join(ch for ch in key if ch not in exclude)
     new = re.sub('\s|[-]', '_', new)
-    print(new.lower())
     return new.lower()
 
 
-def term_for_key(key: str, language: str) -> str:
+def term_for_key(key: str, language: str) -> tuple:
     """ Method to use to access welsh translations for static content
         returns: a language specific translation or the origin key string passed in if it can't be found.
     """
@@ -27,7 +26,7 @@ def term_for_key(key: str, language: str) -> str:
         term = OPTIONALS.get(key).get(language) if key in OPTIONALS else None
     if not term:
         term = DICT.get(key).get(language) if key in DICT else key
-    return term
+    return term, key
 
 STATISTICS = {
     "academic_support": {

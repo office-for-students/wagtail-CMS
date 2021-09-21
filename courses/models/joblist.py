@@ -1,5 +1,8 @@
-from CMS.enums import enums
+from CMS import translations
 from .job import Job
+
+
+from .utils import enums
 
 
 class JobList:
@@ -30,6 +33,8 @@ class JobList:
 
             if jobs_data.get('list'):
                 for job in jobs_data.get('list'):
+                    job['job'] = translations.term_for_key(
+                        key=job['job'], language=self.display_language)
                     self.jobs.append(Job(job, self.display_language))
 
     def show_stats(self):

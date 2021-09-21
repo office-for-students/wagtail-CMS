@@ -7,16 +7,12 @@ from django.shortcuts import render
 
 from CMS import translations
 from CMS.enums import enums
-from CMS.translations import DICT
-from core import utils
 from core.utils import get_new_landing_page_for_language
 from core.utils import get_page_for_language
-from courses import renderer
 from courses.models import Course
 from courses.models import CourseComparisonPage
 from courses.models import CourseDetailPage
 from courses.models import CourseManagePage
-from institutions.models import InstitutionList
 
 logger = logging.getLogger(__name__)
 
@@ -200,11 +196,11 @@ def regional_earnings(request):
             inst_prov_pc_leo5 = inst_prov_pc_leo3
 
         resp = {
-            'typical_range_text': DICT.get('typical_range').get(language),
-            'data_from_text': DICT.get('Data from').get(language),
-            'respondents_text': DICT.get('respondents').get(language),
-            'people_text': DICT.get('people').get(language),
-            'of_those_asked_text': DICT.get('of those asked').get(language),
+            'typical_range_text': translations.term_for_key('typical_range', language),
+            'data_from_text': translations.term_for_key('Data from', language),
+            'respondents_text': translations.term_for_key('respondents', language),
+            'people_text': translations.term_for_key('people', language),
+            'of_those_asked_text': translations.term_for_key('of those asked', language),
             'region_full_name': region_full_name,
 
             'salary_sector_15_med': salary_sector_15_med,

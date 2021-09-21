@@ -1,4 +1,3 @@
-import CMS.translations
 from CMS.enums import enums
 
 
