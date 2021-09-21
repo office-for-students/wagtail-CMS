@@ -44,11 +44,11 @@ def set_message(
         is_ni: bool,
         language: str
 ) -> str:
-    message = earnings_first_dict[unavailable_key]["blank"]
+    message = earnings_dict[unavailable_key]["blank"]
     message = translations.term_for_key(key=message, language=language)
 
     if not aggregation_level == "blank":
-        message = earnings_first_dict[unavailable_key][aggregation_level].get(kis_level)
+        message = earnings_dict[unavailable_key][aggregation_level].get(kis_level)
         message = translations.term_for_key(key=message, language=language)
     if is_ni:
         message = translations.term_for_key(key="unavailable_northern_ireland", language=language)
