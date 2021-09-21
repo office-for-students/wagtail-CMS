@@ -3,6 +3,7 @@ from typing import List, Tuple, Any, Dict
 from django.template.loader import render_to_string
 
 from CMS import translations
+from CMS.translations import term_for_key
 from courses.models import Course
 from courses.renderer.sections.base import Section
 from courses.renderer.sections.earnings_unavailable import get_unavailable
@@ -87,7 +88,7 @@ class SubEarningsSection(Section):
                     self.presentable_data(
                         course=course,
                         stat=section[action],
-                        model_list=section[model_index],
+                        model_list_name=section[model_index],
                         language=self.language,
                         prefix=section[prefix_index],
                         extra=section[extras]
@@ -96,20 +97,23 @@ class SubEarningsSection(Section):
         return self.data
 
     @classmethod
-    def multiple_subjects(cls, course: Course, stat: str, model_list: str, language: str, prefix="", extra=False):
+    def multiple_subjects(cls, course: Course, stat: str, model_list_name: str, language: str, prefix="", extra=False):
         response = dict(subject=[], values=[])
 
         for index, subject in enumerate(course.subject_names):
             subject_name = subject.display_subject_name()
-            values = cls.set_unavailable(course=course, language=language)
+            values = cls.set_unavailable(course=course, model_list_name=model_list_name, language=language, extra=extra)
 
-            if index < len(getattr(course, model_list)):
-                _object = getattr(course, model_list)[index]
+            if index < len(getattr(course, model_list_name)):
+                _object = getattr(course, model_list_name)[index]
                 method = str(getattr(_object, stat))
 
                 if extra == "first":
                     mode = translations.term_for_key(course.mode.label, language=language)
-                    values = f'{mode} {method} {translations.term_for_key("course", language=language)}' if method else values
+                    # values = f'{mode} {method} {translations.term_for_key("course", language=language)}' if method else values
+                    header = f'{mode} {method} {translations.term_for_key("course", language=language)}'
+                    values = cls.set_unavailable(course=course, model_list_name=model_list_name, language=language,
+                                                 extra=extra, header=header)
                 elif extra == "final":
                     country = str(getattr(_object, "country"))
                     values = render_to_string(
@@ -127,25 +131,28 @@ class SubEarningsSection(Section):
         return response
 
     @classmethod
-    def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, prefix="", extra=False) -> str:
-        response = cls.set_unavailable(course=course, language=language)
+    def presentable_data(cls, course: Course, stat: str, model_list_name: str, language: str, prefix="",
+                         extra=False) -> str:
+        response = cls.set_unavailable(course=course, model_list_name=model_list_name, language=language, extra=extra)
         try:
             if course.has_multiple_subject_names:
                 response = cls.multiple_subjects(
                     course=course,
                     stat=stat,
-                    model_list=model_list,
+                    model_list_name=model_list_name,
                     language=language,
                     prefix=prefix,
                     extra=extra
                 )
             else:
-                _object = getattr(course, model_list)[0]
+                _object = getattr(course, model_list_name)[0]
                 method = str(getattr(_object, stat))
                 mode = translations.term_for_key(course.mode.label, language=language)
 
                 if extra == "first":
-                    response = f'{mode} {method} {translations.term_for_key("course", language=language)}' if method else response
+                    header = f'{mode} {method} {translations.term_for_key("course", language=language)}'
+                    response = cls.set_unavailable(course=course, model_list_name=model_list_name, language=language,
+                                                   extra=extra, header=header)
                 elif extra == "final":
                     country = str(getattr(_object, "country"))
                     response = render_to_string(
@@ -165,12 +172,15 @@ class SubEarningsSection(Section):
         return response
 
     @classmethod
-    def set_unavailable(cls, course: Course, model_list_name: str, language: str, extras=False):
-        if extras == "first":
-            header = None
+    def set_unavailable(cls, course: Course, model_list_name: str, language: str, extra=False, header=None):
+        body = None
+        if extra == "first":
+            header = header
             body = get_unavailable(course=course, model_list_name=model_list_name, language=language)
         else:
-            header = None
-            body = None
+            header = term_for_key(key="no_data_available", language=language)
 
-        return ["unavailable", header, body]
+        if body is not None:
+            return ["unavailable", header, body]
+        else:
+            pass
