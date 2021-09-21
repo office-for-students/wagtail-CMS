@@ -18,7 +18,6 @@ OPTIONALS = {
 }
 
 DICT = {
-
     'facebook_link': {
         'en': 'Facebook link',
         'cy': 'Dolen Facebook'

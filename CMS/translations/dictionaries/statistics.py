@@ -2,28 +2,6 @@ def dict_for_key(english, welsh):
     return dict(en=english, cy=welsh)
 
 
-UNAVAILABLE = {
-    "earnings_15_months_unavailable_22_21_3": dict_for_key(
-        "This includes data from this and related courses at the same university or college. There was not enough data to publish more specific information. This does not reflect on the quality of the course.",
-        "Mae hwn yn cynnwys data o'r cwrs hwn a chyrsiau cysylltiedig yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
-    ),
-    "earnings_15_months_unavailable_22_21_4": dict_for_key(
-        "<p>This includes data from this and related courses at the same university or college. There was not enough data to publish more specific information. This does not reflect on the quality of the course.</p><p>Please note: the following information does not contain any data for first degrees (such as BA, BSc, or Integrated Masters). Instead it is displaying information for other undergraduate qualifications – this includes CertHE, DipHE and FD among others.</p>",
-        "<p>Mae hwn yn cynnwys data o'r cwrs hwn a chyrsiau cysylltiedig yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl. Nid yw hyn yn adlewyrchu ansawdd y cwrs.</p><p>Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill.</p>"
-    ),
-    "earnings_15_months_unavailable_0_any": dict_for_key(
-        "This is either because the course size is small or there were not enough responses to produce data. This does not reflect on the quality of the course.",
-        "Mae hyn naill ai oherwydd bod y cwrs yn fach neu am nad oedd digon o ymatebion ar gael i gynhyrchu data. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
-    ),
-    "earnings_15_months_unavailable_1_any": dict_for_key(
-        "This is because the course has not yet run or has not been running long enough for this data to be available.",
-        "Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nad yw wedi cael ei gynnal yn ddigon hir i’r data hyn fod ar gael."
-    ),
-    "earnings_15_months_unavailable_2_any": dict_for_key(
-        "This does not reflect on the quality of the course.",
-        "Nid yw hyn yn adlewyrchu ansawdd y cwrs."
-    )
-}
 
 STATISTICS = {
     "entry_information": dict_for_key("Entry Information", "Gwybodaeth am fynediad"),
