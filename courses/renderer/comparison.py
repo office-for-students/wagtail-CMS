@@ -157,8 +157,6 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             subjects=get_multiple_subjects(courses, ["satisfaction_stats"]),
             dataset=get_details(SatisfactionSection, courses, language),
             sub_accordions=get_sub_accordion_dataset(courses, SubSatisfactionSection, get_sub_satisfaction, language),
-            unavailable=get_unavailable_rows(courses, ["satisfaction_stats", ], language=language,
-                                             present_as_multiple=True),
             change_point=4,
             source=(
                 translations.term_for_key(key="about_our_data_link", language=language),
@@ -170,8 +168,6 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),
             subjects=get_multiple_subjects(courses, ["entry_stats"]),
             sub_accordions=get_sub_accordion_dataset(courses, SubEntrySection, get_sub_entry, language),
-            unavailable=get_unavailable_rows(courses, ["entry_stats", "tariff_stats"], change_key=10,
-                                             language=language, present_as_multiple=True),
             source=(
                 translations.term_for_key(key="about_our_data_link", language=language),
                 translations.term_for_key(key="read_more_about_entry", language=language)
@@ -182,8 +178,6 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             guidance_information=(translations.term_for_key(key="after_one_year_guidance", language=language),),
             subjects=get_multiple_subjects(courses, ["continuation_stats"]),
             dataset=get_details(ContinuationSection, courses, language),
-            unavailable=get_unavailable_rows(courses, ["continuation_stats"], language=language,
-                                             present_as_multiple=True),
             source=(
                 translations.term_for_key(key="entrance_data_read_more_url", language=language),
                 translations.term_for_key(key="read_more_about_continuation", language=language),
@@ -213,9 +207,6 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             ),
             subjects=get_multiple_subjects(courses, ["employment_stats", "job_type_stats"]),
             sub_accordions=get_sub_accordion_dataset(courses, SubEmploymentSection, get_sub_employment, language),
-            unavailable=get_unavailable_rows(courses, ["employment_stats", "job_type_stats"], change_key=9,
-                                             language=language,
-                                             present_as_multiple=True),
             source=(
                 translations.term_for_key(key="earnings_link", language=language),
                 translations.term_for_key(key="read_more_about_employment", language=language),
@@ -229,9 +220,6 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             ),
             subjects=get_multiple_subjects(courses, ["graduate_perceptions"]),
             dataset=get_details(GraduatePerceptionSection, courses, language),
-            unavailable=get_unavailable_rows(courses, ["graduate_perceptions", ], language=language,
-                                             present_as_multiple=True),
-
             source=(
                 translations.term_for_key(key="graduate_link", language=language),
                 translations.term_for_key(key="read_more_about_graduate_perceptions", language=language),
@@ -243,7 +231,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         ),
 
     ]
-
+    print(context["accordions"][1])
     response.append(context)
     return response
 

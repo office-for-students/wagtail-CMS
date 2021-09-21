@@ -23,22 +23,6 @@ model_array = 3
 unavailable = 4
 
 
-def presentable_continuation(course: Course, stat: str, suffix: Any, language: str) -> str:
-    if language == 'cy':
-        response = "Nid yw'r data ar gael"
-    else:
-        response = "No data available"
-    try:
-        _object = course.continuation_stats[0]
-        method = str(getattr(_object, stat))
-        response = f"{method}{suffix}" if suffix and method.isnumeric() else method
-    except Exception as e:
-        print("error: ", e)
-        pass
-
-    return response
-
-
 class ContinuationSection(Section):
 
     def get_sections(self) -> List[Tuple[Any, Any, str, str]]:
