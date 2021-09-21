@@ -34,35 +34,14 @@ def get_unavailable_rows(courses: List[Course], model_list: List[str], language:
     return columns, title
 
 
-def get_unavailable(course: Course, model_list: str, language: str, accordion=None, present_as_multiple=False) -> Dict[str, List[str]]:
-    response = dict(
-        header=[],
-        message=[],
+def get_unavailable(course: Course, model_list: str, language: str, accordion=None) -> str:
+    response = get_data(
+        course=course,
+        model_list=model_list,
+        language=language,
+        accordion=accordion
     )
 
-    if present_as_multiple:
-        subjects = get_multiple_subjects(course)
-        for index, subject in enumerate(subjects):
-            response = get_data(
-                course=course,
-                model_list=model_list,
-                language=language,
-                accordion=accordion,
-                data=response,
-                subject=subject
-            )
-    else:
-        subject = get_multiple_subjects(course)[0]
-        response = get_data(
-            course=course,
-            model_list=model_list,
-            language=language,
-            accordion=accordion,
-            data=response,
-            subject=subject
-        )
-
-    response = response
     return response
 
 
@@ -70,10 +49,8 @@ def get_data(
         course: Course,
         model_list: str,
         language: str,
-        data: Dict[str, List[str]],
         accordion: str,
-        subject=None
-) -> Dict[str, List[str]]:
+) -> str:
     _object = getattr(course, model_list)[0]
     unavailable_code = str(getattr(_object, "unavailable_code"))
     aggregation_level = str(getattr(_object, "aggregation_level"))
@@ -84,9 +61,7 @@ def get_data(
         unavailable_key=unavailable_code,
         response_rate=response_rate,
         aggregation_level=agg,
-        subject=subject,
         accordion=accordion,
-        data=data,
         language=language
     )
 
@@ -97,42 +72,35 @@ def set_message(
         unavailable_key: str,
         response_rate: str,
         aggregation_level: str,
-        subject: str,
         accordion: str,
-        data: Dict[str, List[str]],
         language,
-) -> Dict[str, List[str]]:
+) -> str:
     header = translations.term_for_key(key="this_course", language=language)
     override_accordions = [
         translations.term_for_key(key="employment_15_months", language=language),
         translations.term_for_key(key="graduate_perceptions", language=language),
     ]
-    try:
-        for key, value in unavailable_dict[unavailable_key].items():
-            resp = 1 if unavailable_key == "0" and response_rate else 0
-            if aggregation_level in key:
-                try:
-                    result = value[resp]
-                except IndexError:
-                    result = value[0]
+    if unavailable_key == "None":
+        unavailable_key = "2"
 
-                title = f"{result}_header"
-                message = translations.term_for_key(key=result, language=language)
-                message = message.replace("{}", subject) if subject else message.replace("{}", "")
-                header = translations.term_for_key(key=title, language=language)
+    for key, value in unavailable_dict[unavailable_key].items():
+        resp = 1 if unavailable_key == "0" and response_rate else 0
+        if aggregation_level in key:
+            try:
+                result = value[resp]
+            except IndexError:
+                result = value[0]
 
-                if (aggregation_level in ["21", "22", "23", "24"]) and (accordion in override_accordions):
-                    header = temporary_override(
-                        aggregation_level=aggregation_level,
-                        language=language
-                    )
+            title = f"{result}_header"
+            header = translations.term_for_key(key=title, language=language)
 
-                data["header"].append(header)
-                data["message"].append(message)
+            if (aggregation_level in ["21", "22", "23", "24"]) and (accordion in override_accordions):
+                header = temporary_override(
+                    aggregation_level=aggregation_level,
+                    language=language
+                )
 
-    except KeyError:
-        data["header"].append(header)
-    return data
+    return header
 
 
 def _getattr(obj, attr, fallback):

@@ -12,7 +12,7 @@ unavailable_dict = {
             "message_2",
             "message_5"
         ],
-        ("blank",): [
+        ("0", "blank",): [
             "message_7"
         ]
     },
@@ -23,11 +23,11 @@ unavailable_dict = {
         ("21", "22", "23"): [
             "message_9"
         ],
-        ("blank",): [
+        ("0", "blank",): [
             "message_10"
         ]
     },
-    "2": {('blank',):
+    "2": {("0", "blank",):
         [
             "message_11"
         ]}

@@ -264,10 +264,10 @@ class Course:
 
         if self.display_language == enums.languages.ENGLISH:
             unavailable[
-                "reason"] = "No data available\n\nThis is because the course has not yet run or has not been running long enough for this data to be available."
+                "reason"] = "This is because the course has not yet run or has not been running long enough for this data to be available."
         else:
             unavailable[
-                "reason"] = "Nid oes data ar gael\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
+                "reason"] = "Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
 
         return unavailable
 
