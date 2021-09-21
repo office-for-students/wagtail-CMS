@@ -33,6 +33,7 @@ class Salary:
                 country_postfix = "_e"
             elif institution_country_code == 'XG':
                 country_postfix = "_ni"
+                self.is_ni = True
             elif institution_country_code == 'XH':
                 country_postfix = "_s"
             elif institution_country_code == 'XI':
