@@ -1,19 +1,17 @@
 # Use this to access DICT/OPTIONS, don't access them directly
+import re
+import string
+
 from .dictionaries import general
 from .dictionaries import jobs
 from .dictionaries import statistics
 from .dictionaries import unavailable
 
-import re
-import string
-
 
 def cleanup_key(key):
-    print(f"Key = {key}")
     exclude = set(string.punctuation) - {'_', '-'}
     new = ''.join(ch for ch in key if ch not in exclude)
     new = re.sub('\s|[-]', '_', new)
-    print(new.lower())
 
     return new.lower()
 
