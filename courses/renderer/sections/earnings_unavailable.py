@@ -4,7 +4,7 @@ from typing import List
 
 from CMS import translations
 from courses.models import Course
-from courses.renderer.sections.unavailable_dict import earnings_first_dict
+from courses.renderer.sections.unavailable_dict import earnings_dict
 
 
 def get_unavailable(course: Course, model_list_name: str, language: str, first=False) -> str:
