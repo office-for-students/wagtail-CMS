@@ -15,7 +15,11 @@ class SearchBoxManager {
                 that.hideDropDown();
             }
         })
-        this.institutionDropDownWrapper.addEventListener("click", (e) => {
+        this.institutionDropDown.addEventListener("focus", (e) => {
+            that.toggleDropDownDisplay();
+            this.institutionDropDown.blur()
+        })
+        this.rotate.addEventListener('click', (e) => {
             that.toggleDropDownDisplay();
         })
 
