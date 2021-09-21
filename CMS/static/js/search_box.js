@@ -1,39 +1,27 @@
 class SearchBoxManager {
     dropdown = document.getElementById("myDropdown");
     institutionDropDown = document.getElementById("institutionDropdown");
+    institutionDropDownWrapper = document.getElementById('institutionDropdownWrapper')
     rotate = document.getElementById("dropdownChevron")
     searchBar = document.getElementById("institutionSearchBar");
     data = JSON.parse(document.getElementById('search_info').textContent);
-    lastInteractionOutside = true;
     list = [];
-
 
     setup() {
         let that = this;
-
         window.addEventListener('click', function (e) {
-            if (document.getElementById('myDropdown').contains(e.target)) {
-                that.lastInteractionOutside = false;
-            } else {
-                if (document.getElementById('dropDownPlaceholder').contains(e.target)) {
-                    if (that.lastInteractionOutside) {
-                        that.showDropDown();
-                        that.lastInteractionOutside = false;
-                    }
-                } else {
-                    that.hideDropDown();
-                    that.lastInteractionOutside = true;
-                }
+            if ((that.institutionDropDownWrapper.contains(e.target) === false) &&
+                (that.dropdown.contains(e.target) === false)) {
+                that.hideDropDown();
             }
-        });
-
-        this.institutionDropDown.addEventListener("focus", function (event) {
+        })
+        this.institutionDropDown.addEventListener("focus", (e) => {
             that.toggleDropDownDisplay();
-            that.lastInteractionOutside = !this.lastInteractionOutside;
-            that.institutionDropDown.blur();
-
-        });
-
+            this.institutionDropDown.blur()
+        })
+        this.rotate.addEventListener('click', (e) => {
+            that.toggleDropDownDisplay();
+        })
 
         Array.from(document.getElementsByClassName('inst-check')).forEach(function (el) {
 
