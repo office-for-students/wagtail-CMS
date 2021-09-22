@@ -10,8 +10,8 @@ class GraduatePerceptionStatistics:
         if go_voice_work_data:
             subject_data = go_voice_work_data.get('subject', {})
             self.subject_code = subject_data.get('code', '')
-            self.subject_english = subject_data.get('english_label', '')
-            self.subject_welsh = subject_data.get('welsh_label', '')
+            self.subject_english = subject_data.get('english_label')
+            self.subject_welsh = subject_data.get('welsh_label')
 
             self.go_work_skills = go_voice_work_data.get('go_work_skills')
             self.go_work_mean = go_voice_work_data.get('go_work_mean')
