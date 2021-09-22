@@ -7,12 +7,24 @@ from courses.models import Course
 from courses.renderer.sections.unavailable_dict import unavailable_dict
 
 
-def get_unavailable(course: Course, model_list: str, language: str, accordion=None) -> str:
+def get_subject_unavailable(course: Course, model_list_name: str, language: str, index: int) -> List:
+    subject_unavail = []
+    subject_names = course.subject_names
+    for test in range(len(subject_names)):
+        subject_unavail.append(
+            get_unavailable(course, model_list_name, language, index=index)
+        )
+        print(subject_unavail)
+    return subject_unavail
+
+
+def get_unavailable(course: Course, model_list: str, language: str, accordion=None, index=0) -> str:
     response = get_data(
         course=course,
         model_list=model_list,
         language=language,
-        accordion=accordion
+        accordion=accordion,
+        index=index
     )
 
     return response
@@ -23,8 +35,9 @@ def get_data(
         model_list: str,
         language: str,
         accordion: str,
+        index=0
 ) -> str:
-    _object = getattr(course, model_list)[0]
+    _object = getattr(course, model_list)[index]
     unavailable_code = str(getattr(_object, "unavailable_code"))
     aggregation_level = str(getattr(_object, "aggregation_level"))
     response_rate = _getattr(_object, "response_rate", None)

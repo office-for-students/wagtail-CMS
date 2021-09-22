@@ -12,7 +12,7 @@
                     <div class="subject cc-column-{{ forloop.counter0 }}">
                         <ol class="list">
                             {% for subject in items %}
-                                <li {% if forloop.first %} class="button selected" {% else %} class="button" {% endif %}
+                                <li {% if forloop.first %} class="button selected" {% else %} class="button {% data_not_available subject=subject language=page.get_language %}" {% endif %}
                                                            data-details="{{ accordion.title }},{{ index }},{{ forloop.counter0 }},{{ sub_count }}">
                                     {{ subject }}
                                 </li>
