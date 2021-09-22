@@ -28,8 +28,8 @@ class JobTypeStatistics:
 
             subject_data = data_obj.get('subject', {})
             self.subject_code = subject_data.get('code', '')
-            self.subject_english = subject_data.get('english_label', '')
-            self.subject_welsh = subject_data.get('welsh_label', '')
+            self.subject_english = subject_data.get('english_label')
+            self.subject_welsh = subject_data.get('welsh_label')
 
             unavailable_data = data_obj.get('unavailable', {})
             self.unavailable_code = unavailable_data.get('code')

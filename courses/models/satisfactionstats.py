@@ -8,7 +8,7 @@ class SatisfactionStatistics:
     def __init__(self, data_obj, language):
         self.display_language = language
         self.aggregation_level = data_obj.get('aggregation_level')
-        self.number_of_students = data_obj.get('number_of_students', 0)
+        self.number_of_students = data_obj.get('number_of_students')
         self.response_rate = data_obj.get('response_rate')
         self.question_1 = SatisfactionQuestion(data_obj.get('question_1'))
         self.question_2 = SatisfactionQuestion(data_obj.get('question_2'))
@@ -40,8 +40,8 @@ class SatisfactionStatistics:
 
         subject_data = data_obj.get('subject', {})
         self.subject_code = subject_data.get('code', '')
-        self.subject_english = subject_data.get('english_label', '')
-        self.subject_welsh = subject_data.get('welsh_label', '')
+        self.subject_english = subject_data.get('english_label')
+        self.subject_welsh = subject_data.get('welsh_label')
 
         unavailable_data = data_obj.get('unavailable', {})
         self.unavailable_code = unavailable_data.get('code')

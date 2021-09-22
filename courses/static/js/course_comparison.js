@@ -560,8 +560,14 @@ class MultipleSubjectsManager {
         let title = index[0]
         let column = index[1];
         let dataIndex = index[2];
+        let subCount = index[3]
         let toBeShown = document.getElementsByClassName(`column-${column}${title} item-${dataIndex}`);
         let toBeHidden = document.getElementsByClassName(`column-${column}${title}`);
+        if (subCount !== "") {
+            toBeShown = document.getElementsByClassName(`column-${column}${title} item-${dataIndex} sub-${subCount}`);
+            toBeHidden = document.getElementsByClassName(`column-${column}${title} sub-${subCount}`);
+        }
+
 
         for (let i = 0; i < toBeHidden.length; i++) {
             let el = toBeHidden[i];
