@@ -23,11 +23,10 @@ class TariffStatistics:
             if self.tariff_list:
                 self.range = tariff_range(self.tariff_list, self.display_language)
 
-            subject_data = tariff_data.get('subject')
-            if subject_data:
-                self.subject_code = subject_data.get('code')
-                self.subject_english = subject_data.get('english_label')
-                self.subject_welsh = subject_data.get('welsh_label')
+            subject_data = tariff_data.get('subject', {})
+            self.subject_code = subject_data.get('code')
+            self.subject_english = subject_data.get('english_label')
+            self.subject_welsh = subject_data.get('welsh_label')
 
             unavailable_data = tariff_data.get('unavailable', {})
             self.unavailable_code = unavailable_data.get('code')
