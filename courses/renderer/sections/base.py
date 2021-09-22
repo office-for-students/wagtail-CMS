@@ -1,9 +1,8 @@
-import traceback
+import logging
 from typing import Any
 from typing import Dict
 from typing import List
 from typing import Tuple
-import logging
 
 from CMS import translations
 from courses.models import Course
@@ -50,18 +49,23 @@ class Section:
         response = dict(values=[])
 
         for index, subject in enumerate(course.subject_names):
-            values = cls.set_unavailable(course=course, model_list=model_list, index=index, language=language)
 
             if unavailable:
-                response["values"].append(values)
+                response["values"].append(
+                    cls.set_unavailable(course=course, model_list=model_list, index=index, language=language))
                 continue
 
             if index < len(getattr(course, model_list)):
                 _object = getattr(course, model_list)[index]
-                method = str(getattr(_object, stat))
-                response["values"].append(f"{method}{suffix}" if method else values)
+                method = getattr(_object, stat)
+                if method is not None:
+                    response["values"].append(f"{method}{suffix}")
+                else:
+                    response["values"].append(
+                        cls.set_unavailable(course=course, model_list=model_list, index=index, language=language))
             else:
-                response["values"].append(values)
+                response["values"].append(
+                    cls.set_unavailable(course=course, model_list=model_list, index=index, language=language))
 
         return response
 
@@ -90,8 +94,8 @@ class Section:
                 )
             else:
                 if not unavailable:
-                    method = str(getattr(_object, stat))
-                    if method:
+                    method = getattr(_object, stat)
+                    if method is not None:
                         response = f"{method}{suffix}"
         except Exception as e:
             logger.warning(e.__cause__)
@@ -110,12 +114,6 @@ class Section:
             header = translations.term_for_key(key="no_data_available", language=language)
             _object = getattr(course, "display_no_data")()
             body = _object["reason"]
-
-        # except Exception as e:
-        #     traceback.print_exc()
-        #     header = translations.term_for_key(key="no_data_available", language=language)
-        #     _object = getattr(course, "display_no_data")()
-        #     body = _object["reason"]
 
         return ["unavailable", header, body, index]
 
