@@ -1,4 +1,6 @@
-from typing import List, Tuple, Any, Dict
+from typing import Any
+from typing import List
+from typing import Tuple
 
 from django.template.loader import render_to_string
 
@@ -111,7 +113,7 @@ class SubEarningsSection(Section):
 
             if index < len(getattr(course, model_list_name)):
                 _object = getattr(course, model_list_name)[index]
-                method = str(getattr(_object, stat))
+                method = getattr(_object, stat)
 
                 if extra == "first":
                     mode = translations.term_for_key(course.mode.label, language=language)
@@ -170,7 +172,7 @@ class SubEarningsSection(Section):
                 )
             else:
                 _object = getattr(course, model_list_name)[0]
-                method = str(getattr(_object, stat))
+                method = getattr(_object, stat)
                 mode = translations.term_for_key(course.mode.label, language=language)
 
                 if extra == "first":
