@@ -139,7 +139,7 @@ DICT = {
     },
     "bookmark_course": {
         "cy": "Nodi cwrs",
-        "en": "Bookmark course"
+        "en": "Save course"
     },
     "bookmark_courses_link": {
         "cy": "./cy/rheoli-nodau-tudalen/",
@@ -147,7 +147,7 @@ DICT = {
     },
     "bookmarked_courses": {
         "cy": "cyrsiau a nodwyd",
-        "en": "bookmarked courses"
+        "en": "saved courses"
     },
     "break_from_studies": {
         "cy": "Yn cymryd egwyl o astudio",
@@ -303,7 +303,7 @@ DICT = {
     },
     "course_too_many": {
         "cy": "yw'r nifer uchaf o nodau tudalen y gallwch eu hychwanegu",
-        "en": "is the maximum number of bookmarks."
+        "en": "is the maximum number of saved courses."
     },
     "course_wizard": {
         "cy": "Dewin Cwrs",
@@ -801,7 +801,7 @@ DICT = {
     },
     "n_courses_bookmarked_pt_2": {
         "cy": "o gyrsiau wedi'u nodi",
-        "en": "courses bookmarked"
+        "en": "courses saved"
     },
     "narrow_location": {
         "cy": "Hidlo yn ôl lleoliad",
