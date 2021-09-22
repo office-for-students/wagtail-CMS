@@ -128,7 +128,7 @@ class SubEarningsSection(Section):
                         header=header
                     )
                 elif extra == "final":
-                    country = str(getattr(_object, "country"))
+                    country = getattr(_object, "country")
                     values = render_to_string(
                         "courses/partials/country_population.html",
                         context=dict(
@@ -139,8 +139,8 @@ class SubEarningsSection(Section):
                 else:
                     values = f"{prefix}{method}" if method else values
 
-            response["subject"].append(subject_name)
             response["values"].append(values)
+            response["subject"].append(subject_name)
         return response
 
     @classmethod
@@ -186,7 +186,7 @@ class SubEarningsSection(Section):
                         header=header
                     )
                 elif extra == "final":
-                    country = str(getattr(_object, "country"))
+                    country = getattr(_object, "country")
                     response = render_to_string(
                         "courses/partials/country_population.html",
                         context=dict(

@@ -20,12 +20,11 @@ class JobTypeStatistics:
                                                                  'unknown_professions', 'number_of_students'])
 
             self.aggregation_level = data_obj.get('aggregation_level')
-            self.non_professional_or_managerial_jobs = data_obj.get('non_professional_or_managerial_jobs',
-                                                                   0)
-            self.professional_or_managerial_jobs = data_obj.get('professional_or_managerial_jobs', 0)
-            self.unknown_professions = data_obj.get('unknown_professions', 0)
-            self.number_of_students = data_obj.get('number_of_students', 0)
-            self.response_rate = str(data_obj.get('response_rate', 0)) + '%'
+            self.non_professional_or_managerial_jobs = data_obj.get('non_professional_or_managerial_jobs')
+            self.professional_or_managerial_jobs = data_obj.get('professional_or_managerial_jobs')
+            self.unknown_professions = data_obj.get('unknown_professions')
+            self.number_of_students = data_obj.get('number_of_students')
+            self.response_rate = data_obj.get('response_rate')
 
             subject_data = data_obj.get('subject', {})
             self.subject_code = subject_data.get('code', '')

@@ -22,14 +22,14 @@ model_array = 3
 class SatisfactionSection(Section):
 
     def get_sections(self) -> List[Tuple[Any, Any, Any, Any]]:
-        sections = [
+        self.sections = [
             (OVERALL_SATISFACTION, satisfaction_list[0], "%", "satisfaction_stats"),
             (self.DATA_FROM_PEOPLE, satisfaction_list[1], "", "satisfaction_stats"),
-            (PERCENTAGE_THOSE_ASKED, satisfaction_list[2], "", "satisfaction_stats"),
+            (PERCENTAGE_THOSE_ASKED, satisfaction_list[2], "%", "satisfaction_stats"),
             (self.DATA_DISPLAYED, "", "", "satisfaction_stats", True)
         ]
 
-        return sections
+        return self.sections
 
     def generate_dict(self) -> dict:
         for course in self.courses:

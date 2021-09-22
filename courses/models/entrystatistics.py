@@ -27,17 +27,18 @@ class EntryStatistics:
                                                                  'other_qualifications', 'number_of_students'])
 
             self.aggregation_level = data_obj.get('aggregation_level', 0)
-            self.number_of_students = data_obj.get('number_of_students', 0)
+            self.number_of_students = data_obj.get('number_of_students')
 
-            self.a_level = data_obj.get('a-level', 0)
-            self.access = data_obj.get('access', 0)
-            self.another_higher_education_qualifications = data_obj.get('another_higher_education_qualifications', 0)
-            self.baccalaureate = data_obj.get('baccalaureate', 0)
-            self.degree = data_obj.get('degree', 0)
-            self.foundation = data_obj.get('foundation', 0)
-            self.none = data_obj.get('none', 0)
-            self.other_qualifications = data_obj.get('other_qualifications', 0)
-
+            self.a_level = data_obj.get('a-level')
+            self.access = data_obj.get('access')
+            self.another_higher_education_qualifications = data_obj.get('another_higher_education_qualifications')
+            self.baccalaureate = data_obj.get('baccalaureate')
+            self.degree = data_obj.get('degree')
+            self.foundation = data_obj.get('foundation')
+            self.none = data_obj.get('none')
+            print("self.none ", self.none)
+            self.other_qualifications = data_obj.get('other_qualifications')
+            print("self.other_qualifications :: ", self.other_qualifications)
             subject_data = data_obj.get('subject', {})
 
             self.subject_code = subject_data.get('code')
