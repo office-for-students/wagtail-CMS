@@ -21,6 +21,7 @@ class Salary:
             self.unavailable_reason = ""  # salary_data.get('reason', '')
             self.unavailable_reason_english = salary_data.get('unavail_text_english', '')
             self.unavailable_reason_welsh = salary_data.get('unavail_text_welsh', '')
+            self.unavailable_body = self.display_unavailable_info()["reason_body"]
 
             # Values used by the Earnings partial HTML files to default the DDL to the institution's country.
             #   XF - England

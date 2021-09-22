@@ -203,12 +203,14 @@ class SubEarningsSection(Section):
 
     @classmethod
     def set_unavailable(cls, course: Course, model_list_name: str, language: str, extra=False, header=None):
-        body = None
         if extra == "first":
             header = header
-            body = get_unavailable(course=course, model_list_name=model_list_name, language=language)
+            body = get_unavailable(course=course, model_list_name=model_list_name, language=language, first=True)
         else:
+            _object = getattr(course, model_list_name)[0] if "sector" not in model_list_name else None
+            method = getattr(_object, "unavailable_body") if _object else None
             header = translations.term_for_key(key="no_data_available", language=language)
+            body = method
 
         if header is None:
             header = translations.term_for_key(key="no_data_available", language=language)
@@ -216,4 +218,4 @@ class SubEarningsSection(Section):
         if body is not None:
             return ["unavailable", header, body]
         else:
-            pass
+            return header

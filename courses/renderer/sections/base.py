@@ -50,7 +50,6 @@ class Section:
         response = dict(values=[])
 
         for index, subject in enumerate(course.subject_names):
-            subject_name = subject.display_subject_name()
             values = cls.set_unavailable(course=course, model_list=model_list, index=index, language=language)
 
             if unavailable:
@@ -76,8 +75,7 @@ class Section:
             multiple=False,
             suffix="",
             unavailable=False
-    ) -> List[str]:
-
+    ):
         response = cls.set_unavailable(course=course, model_list=model_list, language=language)
         _object = getattr(course, model_list)[0]
         try:
@@ -91,7 +89,7 @@ class Section:
                     unavailable=unavailable
                 )
             else:
-                if not unavailable and not (cls.is_unavailable(_object)):
+                if not unavailable:
                     method = str(getattr(_object, stat))
                     if method:
                         response = f"{method}{suffix}"
@@ -121,6 +119,7 @@ class Section:
 
         return ["unavailable", header, body, index]
 
-    def check_unavailable(self, section):
+    @staticmethod
+    def check_unavailable(section):
         unavailable = True if section[-1] is True else False
         return unavailable
