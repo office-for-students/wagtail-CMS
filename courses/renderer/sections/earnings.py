@@ -208,6 +208,7 @@ class SubEarningsSection(Section):
         if extra == "first":
             header = header
             body = get_unavailable(course=course, model_list_name=model_list_name, language=language, first=True)
+
         else:
             _object = getattr(course, model_list_name)[0] if "sector" not in model_list_name else None
             method = getattr(_object, "unavailable_body") if _object else None
