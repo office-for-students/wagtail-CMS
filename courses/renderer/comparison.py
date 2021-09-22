@@ -100,7 +100,7 @@ def get_multiple_subjects(courses: List[Course], sources: List[str], language, e
         subject_names = course.subject_names
         for index, subject_name in enumerate(subject_names):
             subject_list.append(
-                get_subject_label(course, index, subject_name.display_subject_name, sources, language, earnings))
+                get_subject_label(course, index, sources, language, earnings))
         subjects["subject"].append(subject_list)
     return subjects
 
