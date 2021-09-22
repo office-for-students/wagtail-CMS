@@ -122,8 +122,6 @@ def get_subject_label(course, index, subject_name, sources, language, earnings):
             else:
                 fallback = translations.term_for_key(key="no_data_available", language=language)
             _object = getattr(course, f'{source}')[index]
-            if _object:
-                continue
 
         except IndexError as e:
             continue
@@ -136,7 +134,7 @@ def get_subject_label(course, index, subject_name, sources, language, earnings):
             if getattr(_object, attrib)() is None:
                 return fallback
             else:
-                return getattr(_object, attrib)
+                return getattr(_object, attrib)()
 
     return method
 
@@ -177,7 +175,8 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         dict(
             title=translations.term_for_key(key="entry_information", language=language),
             guidance_information=(translations.term_for_key(key="entry_guidance", language=language),),
-            subjects=get_multiple_subjects(courses, ["entry_stats"], language=language),
+            multi_subject_selectors=[get_multiple_subjects(courses, ["entry_stats"], language=language),
+                                     get_multiple_subjects(courses, ["tariff_stats"], language=language)],
             sub_accordions=get_sub_accordion_dataset(courses, SubEntrySection, get_sub_entry, language),
             source=(
                 translations.term_for_key(key="about_our_data_link", language=language),
@@ -217,7 +216,8 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="employment_guidance_2", language=language),
                 translations.term_for_key(key="employment_guidance_3", language=language)
             ),
-            subjects=get_multiple_subjects(courses, ["employment_stats"], language=language),
+            multi_subject_selectors=[get_multiple_subjects(courses, ["employment_stats"], language=language),
+                                     get_multiple_subjects(courses, ["job_type_stats"], language=language)],
             sub_accordions=get_sub_accordion_dataset(courses, SubEmploymentSection, get_sub_employment, language),
             source=(
                 translations.term_for_key(key="earnings_link", language=language),
