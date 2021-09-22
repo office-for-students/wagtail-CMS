@@ -397,7 +397,23 @@ DICT = {
         "Course is available other than by distance learning": {
             "cy": "Ddim ar gael",
             "en": "Not Available"
-        }
+        },
+
+    },
+
+    "course_is_only_available_through_distance_learning": {
+        "en": "Course is only available through distance learning",
+        "cy": "Course is only available through distance learning",
+    },
+
+    "course_is_optionally_available_through_distance_learning": {
+        "en": "Course is optionally available through distance learning",
+        "cy": "Course is optionally available through distance learning",
+    },
+
+    "course_is_available_other_than_by_distance_learning": {
+        "cy": "Ddim ar gael",
+        "en": "Not Available"
     },
     "doing_further_study": {
         "cy": "Yn astudio ymhellach",
