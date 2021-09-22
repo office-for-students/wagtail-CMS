@@ -7,33 +7,6 @@ from courses.models import Course
 from courses.renderer.sections.unavailable_dict import unavailable_dict
 
 
-def get_multiple_subjects(course: Course):
-    subjects = list()
-    subject_names = course.subject_names
-    for subject in subject_names:
-        subjects.append(subject.display_subject_name())
-
-    return subjects
-
-
-def get_unavailable_rows(courses: List[Course], model_list: List[str], language: str, change_key=0,
-                         present_as_multiple=False) -> Tuple:
-    columns = []
-    title = translations.term_for_key(key="data_displayed", language=language)
-
-    for index, course in enumerate(courses):
-        columns.append(
-            get_unavailable(
-                course=course,
-                model_list=model_list[1] if change_key > index else model_list[0],
-                language=language,
-                present_as_multiple=present_as_multiple
-            )
-        )
-
-    return columns, title
-
-
 def get_unavailable(course: Course, model_list: str, language: str, accordion=None) -> str:
     response = get_data(
         course=course,
