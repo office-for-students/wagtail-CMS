@@ -1390,6 +1390,10 @@ DICT = {
     "youre_interested_in": {
         "cy": "sydd o ddiddordeb iti",
         "en": "you're interested in"
+    },
+    "link_to_website": {
+        "cy": "Dolen i'r gwefan",
+        "en": "Link To Website"
     }
 }
 
