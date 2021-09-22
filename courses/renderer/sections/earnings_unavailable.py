@@ -22,15 +22,13 @@ def get_data(
     aggregation_level = _getattr(_object, "aggregate", "blank")
     kis_level = getattr(course, "course_level")
     is_ni = _getattr(_object, "is_ni", False)
-    if is_ni:
-        return translations.term_for_key(key="unavailable_northern_ireland", language=language)
-    else:
-        return set_message(
-            unavailable_key=unavailable_code,
-            aggregation_level=aggregation_level,
-            kis_level=kis_level,
-            language=language
-        )
+
+    return set_message(
+        unavailable_key=str(unavailable_code),
+        aggregation_level=aggregation_level,
+        kis_level=str(kis_level),
+        language=language
+    )
 
 
 def set_message(
