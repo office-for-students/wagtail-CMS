@@ -7,6 +7,10 @@ DICT = {
         "cy": "Ynghylch",
         "en": "About"
     },
+    'qualification_types': {
+        'en': 'Qualification types',
+        'cy': 'Math o gymhwyster'
+    },
     # TODO: "about our data link" can be removed once the wagtail panels have been
     # changed to only contain the source link
     "about_our_data_link": {
@@ -135,7 +139,7 @@ DICT = {
     },
     "bookmark_course": {
         "cy": "Nodi cwrs",
-        "en": "Bookmark course"
+        "en": "Save course"
     },
     "bookmark_courses_link": {
         "cy": "./cy/rheoli-nodau-tudalen/",
@@ -143,7 +147,7 @@ DICT = {
     },
     "bookmarked_courses": {
         "cy": "cyrsiau a nodwyd",
-        "en": "bookmarked courses"
+        "en": "saved courses"
     },
     "break_from_studies": {
         "cy": "Yn cymryd egwyl o astudio",
@@ -299,7 +303,7 @@ DICT = {
     },
     "course_too_many": {
         "cy": "yw'r nifer uchaf o nodau tudalen y gallwch eu hychwanegu",
-        "en": "is the maximum number of bookmarks."
+        "en": "is the maximum number of saved courses."
     },
     "course_wizard": {
         "cy": "Dewin Cwrs",
@@ -393,7 +397,23 @@ DICT = {
         "Course is available other than by distance learning": {
             "cy": "Ddim ar gael",
             "en": "Not Available"
-        }
+        },
+
+    },
+
+    "course_is_only_available_through_distance_learning": {
+        "en": "Course is only available through distance learning",
+        "cy": "Course is only available through distance learning",
+    },
+
+    "course_is_optionally_available_through_distance_learning": {
+        "en": "Course is optionally available through distance learning",
+        "cy": "Course is optionally available through distance learning",
+    },
+
+    "course_is_available_other_than_by_distance_learning": {
+        "cy": "Ddim ar gael",
+        "en": "Not Available"
     },
     "doing_further_study": {
         "cy": "Yn astudio ymhellach",
@@ -781,7 +801,7 @@ DICT = {
     },
     "n_courses_bookmarked_pt_2": {
         "cy": "o gyrsiau wedi'u nodi",
-        "en": "courses bookmarked"
+        "en": "courses saved"
     },
     "narrow_location": {
         "cy": "Hidlo yn ôl lleoliad",
@@ -1363,11 +1383,6 @@ DICT = {
         "cy": "blynedd",
         "en": "year"
     },
-
-    'course_level_msg': {
-        'en': "Please note: the following information does not contain any data for first degrees (such as BA, BSc, or Integrated Masters). Instead it is displaying information for other undergraduate qualifications – this includes CertHE, DipHE and FD among others",
-        'cy': "Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill"
-    },
     "year_abroad": {
         "cy": "Blwyddyn dramor",
         "en": "Year abroad"
@@ -1391,6 +1406,10 @@ DICT = {
     "youre_interested_in": {
         "cy": "sydd o ddiddordeb iti",
         "en": "you're interested in"
+    },
+    "link_to_website": {
+        "cy": "Dolen i'r gwefan",
+        "en": "Link To Website"
     }
 }
 

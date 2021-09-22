@@ -1,8 +1,14 @@
 import json
+import logging
 from typing import Set
+
 import requests
+
 from CMS import translations
 from CMS.enums import enums
+from courses import request_handler
+from errors.models import ApiError
+from institutions.models import InstitutionOverview
 from .continuationstatistics import ContinuationStatistics
 from .courseaccrediation import CourseAccreditation
 from .courseother import CourseDistanceLearning
@@ -26,11 +32,6 @@ from .salary import Salary
 from .satisfactionstats import SatisfactionStatistics
 from .sectorsalary import SectorSalary
 from .tariffstats import TariffStatistics
-from courses import request_handler
-from errors.models import ApiError
-from institutions.models import InstitutionOverview
-import logging
-
 from .utils import separate_unavail_reason
 
 logger = logging.getLogger(__name__)
@@ -226,10 +227,7 @@ class Course:
                     self.leo5_salaries_sector.append(
                         SectorSalary(leo5_salary_sector, self.display_language, self.country.code))
 
-            if course_details.get('country')['code'] == 'XG':
-                self.is_ni_provider = True
-            else:
-                self.is_ni_provider = False
+            self.is_ni_provider = course_details.get('country')['code'] == 'XG'
 
             self.salary_aggregates = []
             for code in self.get_subject_codes_for_earnings_aggregation():

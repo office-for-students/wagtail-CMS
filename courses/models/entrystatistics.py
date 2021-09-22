@@ -36,9 +36,9 @@ class EntryStatistics:
             self.degree = data_obj.get('degree')
             self.foundation = data_obj.get('foundation')
             self.none = data_obj.get('none')
-            print("self.none ", self.none)
+            # print("self.none ", self.none)
             self.other_qualifications = data_obj.get('other_qualifications')
-            print("self.other_qualifications :: ", self.other_qualifications)
+            # print("self.other_qualifications :: ", self.other_qualifications)
             subject_data = data_obj.get('subject', {})
 
             self.subject_code = subject_data.get('code')
