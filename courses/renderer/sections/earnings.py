@@ -208,12 +208,16 @@ class SubEarningsSection(Section):
         if extra == "first":
             header = header
             body = get_unavailable(course=course, model_list_name=model_list_name, language=language, first=True)
-
+            if course.is_ni_provider and "go" not in model_list_name:
+                body = translations.term_for_key(key="unavailable_northern_ireland", language=language)
         else:
-            _object = getattr(course, model_list_name)[0] if "sector" not in model_list_name else None
-            method = getattr(_object, "unavailable_body") if _object else None
-            header = translations.term_for_key(key="no_data_available", language=language)
-            body = method
+            if course.is_ni_provider and "go" not in model_list_name:
+                body = translations.term_for_key(key="unavailable_northern_ireland", language=language)
+            else:
+                _object = getattr(course, model_list_name)[0] if "sector" not in model_list_name else None
+                method = getattr(_object, "unavailable_body") if _object else None
+                header = translations.term_for_key(key="no_data_available", language=language)
+                body = method
 
         if header is None:
             header = translations.term_for_key(key="no_data_available", language=language)

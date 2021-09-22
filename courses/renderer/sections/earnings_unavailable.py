@@ -21,7 +21,6 @@ def get_data(
     unavailable_code = getattr(_object, "unavail_reason")
     aggregation_level = _getattr(_object, "aggregate", "blank")
     kis_level = getattr(course, "course_level")
-    is_ni = _getattr(_object, "is_ni", False)
 
     return set_message(
         unavailable_key=str(unavailable_code),
