@@ -17,7 +17,7 @@ from .sections.entry import SubEntrySection
 from .sections.graduate_perception import GraduatePerceptionSection
 from .sections.information import InformationSection
 from .sections.satisfaction import SubSatisfactionSection
-from .sections.unavailable import get_unavailable_rows, get_unavailable
+from .sections.unavailable import get_unavailable
 
 logger = logging.getLogger(__name__)
 
@@ -113,30 +113,30 @@ def has_valid_value(attrib, _object):
     return False
 
 
-def get_subject_label(course, index, subject_name, sources, language, earnings):
-    method = subject_name
+def get_subject_label(course, index, sources, language, earnings):
+    fallback = translations.term_for_key(key="no_data_available", language=language)
+    attrib = "display_subject_name"
     for source in sources:
         try:
             if not earnings:
                 fallback = get_unavailable(course, source, language)
-            else:
-                fallback = translations.term_for_key(key="no_data_available", language=language)
             _object = getattr(course, f'{source}')[index]
 
         except IndexError as e:
             continue
 
-        attrib = "display_subject_name"
+        if earnings:
+            attrib = "subject_title_in_local_language"
         if has_valid_value(
                 _object=_object,
                 attrib=attrib
         ):
-            if getattr(_object, attrib)() is None:
+            if not earnings and getattr(_object, attrib)() is None:
                 return fallback
             else:
-                return getattr(_object, attrib)()
+                return getattr(_object, attrib)
 
-    return method
+    return fallback
 
 
 def dataset_for_comparison_view(courses: List[Course], language="en") -> List[dict]:
