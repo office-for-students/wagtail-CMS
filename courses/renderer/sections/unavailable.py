@@ -7,14 +7,11 @@ from courses.models import Course
 from courses.renderer.sections.unavailable_dict import unavailable_dict
 
 
-def get_subject_unavailable(course: Course, model_list_name: str, language: str, index: int) -> List:
-    subject_unavail = []
+def get_subject_unavailable(course: Course, model_list_name: str, language: str, index: int) -> str:
+    subject_unavail = None
     subject_names = course.subject_names
     for test in range(len(subject_names)):
-        subject_unavail.append(
-            get_unavailable(course, model_list_name, language, index=index)
-        )
-        print(subject_unavail)
+        subject_unavail = get_unavailable(course, model_list_name, language, index=index)
     return subject_unavail
 
 

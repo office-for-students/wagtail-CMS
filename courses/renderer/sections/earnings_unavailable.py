@@ -23,7 +23,6 @@ def get_data(
 ) -> str:
     _object = getattr(course, model_list_name)[0]
     unavailable_code = str(getattr(_object, "unavail_reason"))
-    print("Unavailable code: ", unavailable_code)
     aggregation_level = _getattr(_object, "aggregate", "blank")
     kis_level = str(getattr(course, "course_level"))
     is_ni = _getattr(_object, "is_ni", False)

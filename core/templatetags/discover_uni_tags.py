@@ -47,7 +47,6 @@ def data_not_available(**kwargs):
     language = kwargs.get('language')
     subject = kwargs.get('subject')
     no_data = translations.term_for_key(key="no_data_available", language=language)
-    print(f"subject: {subject} \n no_data: {no_data}")
     if subject == no_data:
         return "hidden"
     return ""
