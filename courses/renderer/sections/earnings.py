@@ -14,13 +14,15 @@ INSTITUTION = "institution"
 DATA_FROM_PEOPLE = "data_from_people"
 NATIONAL_AVERAGE = "national_average"
 REGION = "regions"
+PERCENTAGE_THOSE_ASKED = "percent_of_those_asked"
 
 earnings_list = [
     "subject_title_in_local_language",
     "med",
     "pop",
     "salary_default_country_med",
-    "salary_default_country_pop"
+    "salary_default_country_pop",
+    "resp_rate"
 ]
 
 primary_key = 1
@@ -37,36 +39,27 @@ class SubEarningsSection(Section):
         self.end_range = keys[1]
         super().__init__(courses, language)
 
-    def subs(self, prefix):
-        return [
-            (AVERAGE_EARNINGS, earnings_list[0], "", f"{prefix}_salaries_inst"),
-            (INSTITUTION, earnings_list[1], "", f"{prefix}_salaries_inst"),
-            (DATA_FROM_PEOPLE, earnings_list[2], "", f"{prefix}_salaries_inst"),
-            (NATIONAL_AVERAGE, earnings_list[3], "", f"{prefix}_salaries_sector"),
-            # (SHOW_DATA, earnings_list[4], "", f"{prefix}_salaries_sector")
-        ]
-
     def get_sections(self) -> List[Tuple[Any, Any, Any, str]]:
-        prefixes = ["go", "leo3", "leo5"]
         sections = [
             (
                 ("1", AVERAGE_EARNINGS, earnings_list[0], "", "go_salaries_inst", "first"),
                 ("2", INSTITUTION, earnings_list[1], "£", "go_salaries_inst", False),
                 ("3", DATA_FROM_PEOPLE, earnings_list[2], "", "go_salaries_inst", False),
-                ("4", NATIONAL_AVERAGE, earnings_list[3], "£", "go_salaries_sector", False),
+                ("4", PERCENTAGE_THOSE_ASKED, earnings_list[5], "", "go_salaries_inst", False),
+                ("5", NATIONAL_AVERAGE, earnings_list[3], "£", "go_salaries_sector", "national"),
                 ("6", DATA_FROM_PEOPLE, earnings_list[4], "", "go_salaries_sector", "final"),
 
                 ("7", AVERAGE_EARNINGS, earnings_list[0], "", "leo3_salaries_inst", "first"),
                 ("8", INSTITUTION, earnings_list[1], "£", "leo3_salaries_inst", False),
                 ("9", DATA_FROM_PEOPLE, earnings_list[2], "", "leo3_salaries_inst", False),
-                ("10", NATIONAL_AVERAGE, earnings_list[3], "£", "leo3_salaries_sector", False),
-                ("12", DATA_FROM_PEOPLE, earnings_list[4], "", "leo3_salaries_sector", "final"),
+                ("10", NATIONAL_AVERAGE, earnings_list[3], "£", "leo3_salaries_sector", "national"),
+                ("11", DATA_FROM_PEOPLE, earnings_list[4], "", "leo3_salaries_sector", "final"),
 
-                ("13", AVERAGE_EARNINGS, earnings_list[0], "", "leo5_salaries_inst", "first"),
-                ("14", INSTITUTION, earnings_list[1], "£", "leo5_salaries_inst", False),
-                ("15", DATA_FROM_PEOPLE, earnings_list[2], "", "leo5_salaries_inst", False),
-                ("16", NATIONAL_AVERAGE, earnings_list[3], "£", "leo5_salaries_sector", False),
-                ("18", DATA_FROM_PEOPLE, earnings_list[4], "", "leo5_salaries_sector", "final")
+                ("12", AVERAGE_EARNINGS, earnings_list[0], "", "leo5_salaries_inst", "first"),
+                ("13", INSTITUTION, earnings_list[1], "£", "leo5_salaries_inst", False),
+                ("14", DATA_FROM_PEOPLE, earnings_list[2], "", "leo5_salaries_inst", False),
+                ("15", NATIONAL_AVERAGE, earnings_list[3], "£", "leo5_salaries_sector", "national"),
+                ("16", DATA_FROM_PEOPLE, earnings_list[4], "", "leo5_salaries_sector", "final")
             )
         ]
         sub_sections = []
@@ -218,6 +211,9 @@ class SubEarningsSection(Section):
                 method = getattr(_object, "unavailable_body") if _object else None
                 header = translations.term_for_key(key="no_data_available", language=language)
                 body = method
+
+        if extra == "final" or extra == "national":
+            return ["unavailable", header]
 
         if header is None:
             header = translations.term_for_key(key="no_data_available", language=language)

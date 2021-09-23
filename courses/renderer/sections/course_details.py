@@ -40,7 +40,7 @@ def presentable_course_length(course: Course, language: str) -> str:
     else:
         word_year = translations.term_for_key(key="year", language=language)
 
-    label = f"{number_of_years} {word_year}"
+    label = f"{number_of_years} {word_year}" if not number_of_years == 0 else ""
     return label
 
 
