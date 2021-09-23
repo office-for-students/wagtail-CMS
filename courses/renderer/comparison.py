@@ -98,9 +98,17 @@ def get_multiple_subjects(courses: List[Course], sources: List[str], language, e
     for course in courses:
         subject_list = list()
         subject_names = course.subject_names
+
+        no_data_count = 0
         for index, subject_name in enumerate(subject_names):
-            subject_list.append(
-                get_subject_label(course, index, sources, language, earnings, subject_names))
+            subject = get_subject_label(course, index, sources, language, earnings, subject_names)
+            if translations.term_for_key("no_data_available", language=language) == subject:
+                if no_data_count == 0 and len(subject_names) >= 1:
+                    subject_list.append(translations.term_for_key(key="this_course", language=language))
+                no_data_count += 1
+            else:
+                subject_list.append(subject)
+
         subjects["subject"].append(subject_list)
     return subjects
 
