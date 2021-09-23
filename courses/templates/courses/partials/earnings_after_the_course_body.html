@@ -1,18 +1,7 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
 
         {% if course_details.salary_aggregates %}
-            {# if course_details.show_salary_lead #}
-            <div class="earnings-after-course__lead my-3 p-3 mx-1 pt-4 flex-wrap">
-                <div class="row">
-                    <div class="col-lg-4 col-md-12 px-4 earnings-after-course__lead-title align-self-stretch my-auto text-lg-left text-center">
-                        <p>{{block.value.section_heading}}</p>
-                    </div>
-                    <div class="col-lg-8 col-md-12 earnings-after-course__lead-intro align-self-stretch my-auto pt-2 text-left">
-                        <p>{{block.value.intro | richtext}}</p>
-                    </div>
-                </div>
-            </div>
-            {# endif #}
+            {% include "courses/partials/info_box.html" with header="earnings_need_to_know" content="earnings_info_box" url="earnings_read_more_url" read_more="read_more_about_earnings"%}
         {% elif course_details.go_salaries_inst.0 %}
             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.go_salaries_inst.0.display_unavailable_info %}
         {% else %}
