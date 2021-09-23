@@ -563,7 +563,6 @@ class MultipleSubjectsManager {
         let subCount = index[3]
         let toBeShown = document.getElementsByClassName(`column-${column}${title} item-${dataIndex}`);
         let toBeHidden = document.getElementsByClassName(`column-${column}${title}`);
-        console.log(toBeShown)
         if (subCount !== "") {
             toBeShown = document.getElementsByClassName(`column-${column}${title} item-${dataIndex} sub-${subCount}`);
             toBeHidden = document.getElementsByClassName(`column-${column}${title} sub-${subCount}`);
