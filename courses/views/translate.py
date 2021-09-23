@@ -2,7 +2,6 @@ import json
 
 from django.http import HttpResponse
 from django.http import JsonResponse
-from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
 from CMS import translations
@@ -14,7 +13,7 @@ def get_translations(request):
         if request.method == 'POST':
             response = []
             body = json.loads(request.body.decode('utf-8'))
-            print("body as json = ", body)
+            # print("body as json = ", body)
             language = body['language']
             if len(body['terms']) > 25:
                 raise Exception("to big")
