@@ -43,6 +43,16 @@ def queryparams(*_, **kwargs):
 
 
 @register.simple_tag
+def data_not_available(**kwargs):
+    language = kwargs.get('language')
+    subject = kwargs.get('subject')
+    no_data = translations.term_for_key(key="no_data_available", language=language)
+    if subject == no_data:
+        return "hidden"
+    return ""
+
+
+@register.simple_tag
 def get_translation(*_, **kwargs):
     key = kwargs.get('key')
     language = kwargs.get('language')

@@ -10,8 +10,8 @@ class Salary:
         if salary_data:
             subject_data = salary_data.get('subject', {})
             self.subject_code = subject_data.get('code', '')
-            self.subject_english = subject_data.get('english_label', '')
-            self.subject_welsh = subject_data.get('welsh_label', '')
+            self.subject_english = subject_data.get('english_label')
+            self.subject_welsh = subject_data.get('welsh_label')
 
             self.subject_title_in_local_language = self.subject_english
             if self.display_language == enums.languages.WELSH:

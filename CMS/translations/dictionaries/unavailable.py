@@ -44,7 +44,7 @@ UNAVAILABLE = {
         "Mae hwn yn cynnwys data o'r cwrs hwn a chyrsiau cysylltiedig yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl. Nid yw hyn yn adlewyrchu ansawdd y cwrs.",
     ),
     "after_3_years_21_22_4": dict_for_key(
-        "<p>This includes data from this and related courses at the same university or college. There was not enough data to publish more specific information. This does not reflect on the quality of the course.</p<p>Please note: the following information does not contain any data for first degrees (such as BA, BSc, or Integrated Masters). Instead it is displaying information for other undergraduate qualifications – this includes CertHE, DipHE and FD among others.</p>",
+        "<p>This includes data from this and related courses at the same university or college. There was not enough data to publish more specific information. This does not reflect on the quality of the course.</p><p>Please note: the following information does not contain any data for first degrees (such as BA, BSc, or Integrated Masters). Instead it is displaying information for other undergraduate qualifications – this includes CertHE, DipHE and FD among others.</p>",
         "<p>Mae hwn yn cynnwys data o'r cwrs hwn a chyrsiau cysylltiedig yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl. Nid yw hyn yn adlewyrchu ansawdd y cwrs.</p><p>Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill.</p>"
     ),
     "unavailable_northern_ireland": dict_for_key(
@@ -52,48 +52,48 @@ UNAVAILABLE = {
         "Yn anffodus, nid yw'r data hyn ar gael ar gyfer cyrsiau yng Ngogledd Iwerddon."
     ),
     'message_1_header': {
-        'en': "This and other courses.",
-        'cy': "Hwn a chyrsiau eraill."
+        'en': "This and other courses",
+        'cy': "Hwn a chyrsiau eraill"
     },
     'message_2_header': {
-        'en': "This course over 2 years.",
-        'cy': "Daw'r data a ddangosir gan fyfyrwyr yn ystod y ddwy flynedd flaenorol."
+        'en': "This course over 2 years",
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr yn ystod y ddwy flynedd flaenorol"
     },
     'message_3_header': {
-        'en': "This and other courses over 2 years.",
-        'cy': "Cwrs hwn a chyrsiau eraill dros 2 flynedd."
+        'en': "This and other courses over 2 years",
+        'cy': "Cwrs hwn a chyrsiau eraill dros 2 flynedd"
     },
     'message_4_header': {
-        'en': "This and other courses.",
-        'cy': "Hwn a chyrsiau eraill."
+        'en': "This and other courses",
+        'cy': "Hwn a chyrsiau eraill"
     },
     'message_5_header': {
-        'en': "This course over 2 years.",
-        'cy': "Daw'r data a ddangosir gan fyfyrwyr yn ystod y ddwy flynedd flaenorol."
+        'en': "This course over 2 years",
+        'cy': "Daw'r data a ddangosir gan fyfyrwyr yn ystod y ddwy flynedd flaenorol"
     },
     'message_6_header': {
-        'en': "This and other courses over 2 years.",
-        'cy': "Cwrs hwn a chyrsiau eraill dros 2 flynedd."
+        'en': "This and other courses over 2 years",
+        'cy': "Cwrs hwn a chyrsiau eraill dros 2 flynedd"
     },
     'message_7_header': {
-        'en': "No data available.",
-        'cy': "Nid yw'r data ar gael."
+        'en': "No data available",
+        'cy': "Nid yw'r data ar gael"
     },
     'message_8_header': {
-        'en': "This and other courses.",
-        'cy': "Hwn a chyrsiau eraill."
+        'en': "This and other courses",
+        'cy': "Hwn a chyrsiau eraill"
     },
     'message_9_header': {
-        'en': "This and other courses over 2 years.",
-        'cy': "Cwrs hwn a chyrsiau eraill dros 2 flynedd."
+        'en': "This and other courses over 2 years",
+        'cy': "Cwrs hwn a chyrsiau eraill dros 2 flynedd"
     },
     'message_10_header': {
-        'en': "No data available.",
-        'cy': "Nid yw'r data ar gael."
+        'en': "No data available",
+        'cy': "Nid yw'r data ar gael"
     },
     'message_11_header': {
-        'en': "No data available.",
-        'cy': "Nid yw'r data ar gael."
+        'en': "No data available",
+        'cy': "Nid yw'r data ar gael"
     },
     'message_1': {
         'en': "The data displayed is from students on this and other courses in <b>{}</b>. " \
