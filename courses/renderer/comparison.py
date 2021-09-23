@@ -100,7 +100,7 @@ def get_multiple_subjects(courses: List[Course], sources: List[str], language, e
         subject_names = course.subject_names
         for index, subject_name in enumerate(subject_names):
             subject_list.append(
-                get_subject_label(course, index, sources, language, earnings))
+                get_subject_label(course, index, sources, language, earnings, subject_names))
         subjects["subject"].append(subject_list)
     return subjects
 
@@ -113,13 +113,18 @@ def has_valid_value(attrib, _object):
     return False
 
 
-def get_subject_label(course, index, sources, language, earnings):
-    fallback = translations.term_for_key(key="no_data_available", language=language)
+def get_subject_label(course, index, sources, language, earnings, subject_names):
+    no_data_available = translations.term_for_key(key="no_data_available", language=language)
+    fallback = no_data_available
+    if len(subject_names) == 1 and fallback == no_data_available:
+        fallback = translations.term_for_key(key="this_course", language=language)
     attrib = "display_subject_name"
     for source in sources:
         try:
             if not earnings:
                 fallback = get_subject_unavailable(course, source, language, index)
+                if len(subject_names) == 1 and fallback == no_data_available:
+                    fallback = translations.term_for_key(key="this_course", language=language)
             _object = getattr(course, f'{source}')[index]
 
         except IndexError as e:
