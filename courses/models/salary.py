@@ -42,7 +42,7 @@ class Salary:
 
             self.resp_rate = None
             if 'resp_rate' in salary_data:
-                self.resp_rate = salary_data['resp_rate']
+                self.resp_rate = salary_data['resp_rate'] + "%"
 
             if 'agg' in salary_data:
                 self.pop = salary_data['pop']
