@@ -213,6 +213,7 @@ class SubEarningsSection(Section):
                 body = method
 
         if extra == "final" or extra == "national":
+            header = translations.term_for_key(key="no_data_available", language=language)
             return ["unavailable", header]
 
         if header is None:
