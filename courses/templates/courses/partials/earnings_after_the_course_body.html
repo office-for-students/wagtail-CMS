@@ -1,7 +1,7 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
 
         {% if course_details.salary_aggregates %}
-            {% include "courses/partials/info_box.html" with header="earnings_need_to_know" content="earnings_info_box" url="earnings_read_more_url" read_more="read_more_about_earnings"%}
+            {% include "courses/partials/info_box.html" with header="earnings_need_to_know" content="earnings_info_box" url="graduate_link" read_more="read_more_about_earnings"%}
         {% elif course_details.go_salaries_inst.0 %}
             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.go_salaries_inst.0.display_unavailable_info %}
         {% else %}

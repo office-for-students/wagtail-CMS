@@ -126,6 +126,10 @@ STATISTICS = {
         "cy": "Gwybodaeth am fynediad",
         "en": "Entry Information"
     },
+    "find_out_more_link": {
+        "cy": "https://www.discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/",
+        "en": "https://www.discoveruni.gov.uk/about-our-data/"
+    },
     "future": {
         "cy": "Y Dyfodol",
         "en": "Future"
