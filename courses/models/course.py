@@ -1,13 +1,8 @@
 import json
-import logging
 from typing import Set
-
 import requests
-
 from CMS import translations
-from courses import request_handler
-from errors.models import ApiError
-from institutions.models import InstitutionOverview
+from CMS.enums import enums
 from .continuationstatistics import ContinuationStatistics
 from .courseaccrediation import CourseAccreditation
 from .courseother import CourseDistanceLearning
@@ -31,10 +26,14 @@ from .salary import Salary
 from .satisfactionstats import SatisfactionStatistics
 from .sectorsalary import SectorSalary
 from .tariffstats import TariffStatistics
-from .utils import enums, fallback_to, separate_unavail_reason
+from courses import request_handler
+from errors.models import ApiError
+from institutions.models import InstitutionOverview
+import logging
+
+from .utils import separate_unavail_reason
 
 logger = logging.getLogger(__name__)
-
 
 class Course:
     MODES = {
@@ -64,8 +63,8 @@ class Course:
 
             title = course_details.get('title')
             if title:
-                self.english_title = fallback_to(title.get('english'), '')
-                self.welsh_title = fallback_to(title.get('welsh'), '')
+                self.english_title = title.get('english', '')
+                self.welsh_title = title.get('welsh', '')
             self.honours_award_provision = course_details.get('honours_award_provision')
 
             institution = course_details.get('institution')
@@ -147,11 +146,11 @@ class Course:
 
                 if self.display_language == enums.languages.ENGLISH:
                     self.summary_med_sal_time = "15 months"
-                    self.course_title = fallback_to(self.english_title, '')
+                    self.course_title = self.english_title
                     self.summary_med_sal_sbj = course_details.get('go_salary_inst')[0]['subject']['english_label']
                 else:
                     self.summary_med_sal_time = "15 mis"
-                    self.course_title = fallback_to(self.welsh_title, '')
+                    self.course_title = self.welsh_title
                     self.summary_med_sal_sbj = course_details.get('go_salary_inst')[0]['subject']['welsh_label']
             elif 'med' in course_details.get('leo3_inst')[0]:
                 self.summary_med_sal_value = course_details.get('leo3_inst')[0]['med']
@@ -159,11 +158,11 @@ class Course:
 
                 if self.display_language == enums.languages.ENGLISH:
                     self.summary_med_sal_time = "3 years"
-                    self.course_title = fallback_to(self.english_title, '')
+                    self.course_title = self.english_title
                     self.summary_med_sal_sbj = course_details.get('leo3_inst')[0]['subject']['english_label']
                 else:
                     self.summary_med_sal_time = "3 blynedd"
-                    self.course_title = fallback_to(self.welsh_title, '')
+                    self.course_title = self.welsh_title
                     self.summary_med_sal_sbj = course_details.get('leo3_inst')[0]['subject']['welsh_label']
 
             self.default_country_postfix = "_uk"
@@ -264,10 +263,10 @@ class Course:
 
         if self.display_language == enums.languages.ENGLISH:
             unavailable[
-                "reason"] = "No data available\n\nThis is because the course has not yet run or has not been running long enough for this data to be available."
+                "reason"] = "This is because the course has not yet run or has not been running long enough for this data to be available."
         else:
             unavailable[
-                "reason"] = "Nid oes data ar gael\n\nMae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
+                "reason"] = "Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
 
         return unavailable
 
@@ -403,10 +402,6 @@ class Course:
     @property
     def has_multiple_salary_aggregates(self):
         return len(self.salary_aggregates) > 1
-
-    @property
-    def is_in_england(self):
-        return self.country.name == 'England'
 
     def display_title(self):
         honours = ""

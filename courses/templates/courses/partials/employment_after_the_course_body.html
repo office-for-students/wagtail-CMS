@@ -282,7 +282,7 @@
                                                         <p>{{ job.percentage }}%</p>
                                                     </div>
                                                     <div class="col">
-                                                        <p>{% get_translation key=job.job language=page.get_language %}</p>
+                                                        <p>{{ job.job }}</p>
                                                     </div>
                                                 </div>
                                             {% endif %}
@@ -300,7 +300,7 @@
                                                         <p>{{ job.percentage }}%</p>
                                                     </div>
                                                     <div class="col">
-                                                        <p>{% get_translation key=job.job language=page.get_language %}</p>
+                                                        <p>{{job.job}}</p>
                                                     </div>
                                                 </div>
                                             {% endif %}

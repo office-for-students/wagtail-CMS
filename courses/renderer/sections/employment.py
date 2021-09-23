@@ -1,4 +1,6 @@
 from typing import List, Tuple, Any, Dict
+
+from CMS import translations
 from courses.renderer.sections.base import Section
 from courses.renderer.sections.unavailable import get_unavailable
 from courses.models import Course
@@ -99,3 +101,26 @@ class SubEmploymentSection(Section):
         for section in self.sections:
             if section[0] in subtitles:
                 data[section[0]]["subtitle"] = self.term_for_key(subtitles[section[0]], self.language)
+
+    #TODO: Remove below method and use set_unavailable from base class when OFS want to remove the unavailable message override
+    # https://app.clickup.com/t/j337mq
+    @classmethod
+    def set_unavailable(
+            cls,
+            course: Course,
+            model_list: str,
+            language: str,
+            index=0,
+    ):
+        try:
+            accordion = translations.term_for_key(key="employment_15_months", language=language)
+            _object = getattr(course, model_list)[index]
+            body = getattr(_object, "unavailable_reason_body")
+            header = get_unavailable(course, model_list, language, accordion)
+        except Exception as e:
+            header = translations.term_for_key(key="no_data_available", language=language)
+            _object = getattr(course, "display_no_data")()
+            body = _object["reason"]
+
+        return ["unavailable", header, body]
+    # end remove

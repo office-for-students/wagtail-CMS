@@ -3,6 +3,7 @@ from typing import List, Tuple, Any, Dict
 from CMS import translations
 from courses.models import Course
 from courses.renderer.sections.base import Section
+from courses.renderer.sections.unavailable import get_unavailable
 
 PERCENTAGE_THOSE_ASKED = "percent_of_those_asked"
 USEFULNESS = "usefulness"
@@ -21,36 +22,6 @@ primary_key = 1
 action = 2
 suffix_index = 3
 model_array = 4
-
-
-def multiple_subjects(course: Course, stat: str, suffix: Any, language: str) -> dict:
-    response = dict(subject=[], values=[])
-    for index, subject in enumerate(course.subject_names):
-        subject_name = subject.display_subject_name()
-        if index < len(course.graduate_perceptions):
-            _object = course.graduate_perceptions[index]
-            method = str(getattr(_object, stat))
-            response["values"].append(f"{method}{suffix}" if suffix and method.isnumeric() else method)
-            response["subject"].append(subject_name)
-        else:
-            response["values"].append(translations.term_for_key(key="no_data_available", language=language))
-    return response
-
-
-def presentable_graduate(course: Course, stat: str, suffix: Any, language: str) -> str:
-    response = translations.term_for_key(key="no_data_available", language=language)
-    try:
-        if course.has_multiple_subject_names:
-            response = multiple_subjects(course, stat, suffix, language)
-        else:
-            _object = course.graduate_perceptions[0]
-            method = str(getattr(_object, stat))
-            if method:
-                response = f"{method}{suffix}" if suffix and method.isnumeric() else method
-    except Exception as e:
-        print("error: ", e)
-        pass
-    return response
 
 
 class GraduatePerceptionSection(Section):
@@ -98,3 +69,27 @@ class GraduatePerceptionSection(Section):
         for section in self.sections:
             if section[0] in subtitles:
                 data[section[0]]["subtitle"] = self.term_for_key(subtitles[section[0]], self.language)
+
+
+    #TODO: Remove below method and use set_unavailable from base class when OFS want to remove the unavailable message override.
+    # https://app.clickup.com/t/j337mq
+    @classmethod
+    def set_unavailable(
+            cls,
+            course: Course,
+            model_list: str,
+            language: str,
+            index=0
+    ):
+        try:
+            accordion = translations.term_for_key(key="graduate_perceptions", language=language)
+            _object = getattr(course, model_list)[index]
+            body = getattr(_object, "unavailable_reason_body")
+            header = get_unavailable(course, model_list, language, accordion)
+        except Exception as e:
+            header = translations.term_for_key(key="no_data_available", language=language)
+            _object = getattr(course, "display_no_data")()
+            body = _object["reason"]
+
+        return ["unavailable", header, body]
+    # end remove

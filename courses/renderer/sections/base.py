@@ -1,3 +1,4 @@
+import traceback
 from typing import Any
 from typing import Dict
 from typing import List
@@ -46,27 +47,42 @@ class Section:
 
     @classmethod
     def multiple_subjects(cls, course: Course, stat: str, model_list: str, language: str, suffix="", unavailable=False):
-        response = dict(subject=[], values=[])
+        response = dict(values=[])
 
         for index, subject in enumerate(course.subject_names):
             subject_name = subject.display_subject_name()
             values = cls.set_unavailable(course=course, model_list=model_list, index=index, language=language)
 
-            if (index < len(getattr(course, model_list))) and not unavailable:
+            if unavailable:
+                response["values"].append(values)
+                continue
+
+            if index < len(getattr(course, model_list)):
                 _object = getattr(course, model_list)[index]
                 method = str(getattr(_object, stat))
-                values = f"{method}{suffix}" if method else values
+                response["values"].append(f"{method}{suffix}" if method else values)
+            else:
+                response["values"].append(values)
 
-            response["subject"].append(subject_name)
-            response["values"].append(values)
         return response
 
     @classmethod
-    def presentable_data(cls, course: Course, stat: str, model_list: str, language: str, multiple=False, suffix="", unavailable=False) -> str:
+    def presentable_data(
+            cls,
+            course: Course,
+            stat: str,
+            model_list: str,
+            language: str,
+            multiple=False,
+            suffix="",
+            unavailable=False
+    ) -> List[str]:
+
         response = cls.set_unavailable(course=course, model_list=model_list, language=language)
+        _object = getattr(course, model_list)[0]
         try:
             if multiple and course.has_multiple_subject_names:
-                response = cls.multiple_subjects(
+                return cls.multiple_subjects(
                     course=course,
                     stat=stat,
                     model_list=model_list,
@@ -75,8 +91,7 @@ class Section:
                     unavailable=unavailable
                 )
             else:
-                if not unavailable:
-                    _object = getattr(course, model_list)[0]
+                if not unavailable and not (cls.is_unavailable(_object)):
                     method = str(getattr(_object, stat))
                     if method:
                         response = f"{method}{suffix}"
@@ -89,16 +104,24 @@ class Section:
     @classmethod
     def set_unavailable(cls, course: Course, model_list: str, language: str, index=0):
         # noinspection PyBroadException
-        try:
+        print(f"MULTPLERE NAMES  {course.has_multiple_subject_names}, {model_list} {len(getattr(course, model_list))}")
+
+        if index < len(getattr(course, model_list)):
             _object = getattr(course, model_list)[index]
             body = getattr(_object, "unavailable_reason_body")
-            header = get_unavailable(course, model_list, language)["header"][0]
-        except Exception as e:
+            header = get_unavailable(course, model_list, language)
+        else:
             header = translations.term_for_key(key="no_data_available", language=language)
             _object = getattr(course, "display_no_data")()
             body = _object["reason"]
 
-        return ["unavailable", header, body]
+        # except Exception as e:
+        #     traceback.print_exc()
+        #     header = translations.term_for_key(key="no_data_available", language=language)
+        #     _object = getattr(course, "display_no_data")()
+        #     body = _object["reason"]
+
+        return ["unavailable", header, body, index]
 
     def check_unavailable(self, section):
         unavailable = True if section[-1] is True else False
