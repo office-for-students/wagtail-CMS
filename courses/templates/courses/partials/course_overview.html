@@ -22,8 +22,10 @@
                         <img class="data-info__img"
                              src="/static/images/compare-course-graphic.svg" alt="Survey info">
                         <p class="data-info__content mt-2 mb-2">{% get_translation key='survey_info_box' language=page.get_language %}
-                            <a href="#"
-                               class="data-info__link">{% get_translation key='find_out_more' language=page.get_language %}</a>
+                            <a href={% get_translation key="find_out_more_link" language=page.get_language %}
+                                       class="data-info__link"
+                               target="_blank">{% get_translation key='find_out_more' language=page.get_language %}
+                            </a>
                         </p></div>
                 </div>
             </div>
