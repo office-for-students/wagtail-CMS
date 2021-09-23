@@ -191,7 +191,7 @@ class SubEarningsSection(Section):
                     response = f"{prefix}{method}" if method else response
 
         except Exception as e:
-            print("error: ", e)
+            # print("error: ", e)
             pass
 
         return response
