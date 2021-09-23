@@ -27,22 +27,21 @@ class EntryStatistics:
                                                                  'other_qualifications', 'number_of_students'])
 
             self.aggregation_level = data_obj.get('aggregation_level', 0)
-            self.number_of_students = data_obj.get('number_of_students', 0)
+            self.number_of_students = data_obj.get('number_of_students')
 
-            self.a_level = data_obj.get('a-level', 0)
-            self.access = data_obj.get('access', 0)
-            self.another_higher_education_qualifications = data_obj.get('another_higher_education_qualifications', 0)
-            self.baccalaureate = data_obj.get('baccalaureate', 0)
-            self.degree = data_obj.get('degree', 0)
-            self.foundation = data_obj.get('foundation', 0)
-            self.none = data_obj.get('none', 0)
-            self.other_qualifications = data_obj.get('other_qualifications', 0)
+            self.a_level = data_obj.get('a-level')
+            self.access = data_obj.get('access')
+            self.another_higher_education_qualifications = data_obj.get('another_higher_education_qualifications')
+            self.baccalaureate = data_obj.get('baccalaureate')
+            self.degree = data_obj.get('degree')
+            self.foundation = data_obj.get('foundation')
+            self.none = data_obj.get('none')
+            self.other_qualifications = data_obj.get('other_qualifications')
+            subject_data = data_obj.get('subject', {})
 
-            subject_data = data_obj.get('subject')
-            if subject_data:
-                self.subject_code = subject_data.get('code')
-                self.subject_english = subject_data.get('english_label')
-                self.subject_welsh = subject_data.get('welsh_label')
+            self.subject_code = subject_data.get('code')
+            self.subject_english = subject_data.get('english_label')
+            self.subject_welsh = subject_data.get('welsh_label')
 
             unavailable_data = data_obj.get('unavailable', {})
             self.unavailable_code = unavailable_data.get('code')
@@ -66,3 +65,4 @@ class EntryStatistics:
         if self.display_language == enums.languages.ENGLISH:
             return self.subject_english if self.subject_english else self.subject_welsh
         return self.subject_welsh if self.subject_welsh else self.subject_english
+   

@@ -1,9 +1,8 @@
-import traceback
+import logging
 from typing import Any
 from typing import Dict
 from typing import List
 from typing import Tuple
-import logging
 
 from CMS import translations
 from courses.models import Course
@@ -50,19 +49,23 @@ class Section:
         response = dict(values=[])
 
         for index, subject in enumerate(course.subject_names):
-            subject_name = subject.display_subject_name()
-            values = cls.set_unavailable(course=course, model_list=model_list, index=index, language=language)
 
             if unavailable:
-                response["values"].append(values)
+                response["values"].append(
+                    cls.set_unavailable(course=course, model_list=model_list, index=index, language=language))
                 continue
 
             if index < len(getattr(course, model_list)):
                 _object = getattr(course, model_list)[index]
-                method = str(getattr(_object, stat))
-                response["values"].append(f"{method}{suffix}" if method else values)
+                method = getattr(_object, stat)
+                if method is not None:
+                    response["values"].append(f"{method}{suffix}")
+                else:
+                    response["values"].append(
+                        cls.set_unavailable(course=course, model_list=model_list, index=index, language=language))
             else:
-                response["values"].append(values)
+                response["values"].append(
+                    cls.set_unavailable(course=course, model_list=model_list, index=index, language=language))
 
         return response
 
@@ -76,8 +79,7 @@ class Section:
             multiple=False,
             suffix="",
             unavailable=False
-    ) -> List[str]:
-
+    ):
         response = cls.set_unavailable(course=course, model_list=model_list, language=language)
         _object = getattr(course, model_list)[0]
         try:
@@ -91,9 +93,9 @@ class Section:
                     unavailable=unavailable
                 )
             else:
-                if not unavailable and not (cls.is_unavailable(_object)):
-                    method = str(getattr(_object, stat))
-                    if method:
+                if not unavailable:
+                    method = getattr(_object, stat)
+                    if method is not None:
                         response = f"{method}{suffix}"
         except Exception as e:
             logger.warning(e.__cause__)
@@ -104,8 +106,6 @@ class Section:
     @classmethod
     def set_unavailable(cls, course: Course, model_list: str, language: str, index=0):
         # noinspection PyBroadException
-        print(f"MULTPLERE NAMES  {course.has_multiple_subject_names}, {model_list} {len(getattr(course, model_list))}")
-
         if index < len(getattr(course, model_list)):
             _object = getattr(course, model_list)[index]
             body = getattr(_object, "unavailable_reason_body")
@@ -115,14 +115,9 @@ class Section:
             _object = getattr(course, "display_no_data")()
             body = _object["reason"]
 
-        # except Exception as e:
-        #     traceback.print_exc()
-        #     header = translations.term_for_key(key="no_data_available", language=language)
-        #     _object = getattr(course, "display_no_data")()
-        #     body = _object["reason"]
-
         return ["unavailable", header, body, index]
 
-    def check_unavailable(self, section):
+    @staticmethod
+    def check_unavailable(section):
         unavailable = True if section[-1] is True else False
         return unavailable

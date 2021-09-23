@@ -32,3 +32,48 @@ unavailable_dict = {
             "message_11"
         ]}
 }
+
+earnings_dict = {
+    "0": {
+        "23": {
+            "4": "after_3_years_23_4"
+        },
+        "21": {
+            "3": "earnings_15_months_unavailable_22_21_3",
+            "4": "after_3_years_21_22_4"
+        },
+        "22": {
+            "3": "earnings_15_months_unavailable_22_21_3",
+            "4": "after_3_years_21_22_4"
+        },
+        "blank": "unavailable_0_any"
+    },
+    "1": {
+        "23": {
+            "4": "after_3_years_23_4"
+        },
+        "21": {
+            "3": "earnings_15_months_unavailable_22_21_3",
+            "4": "after_3_years_21_22_4"
+        },
+        "22": {
+            "3": "earnings_15_months_unavailable_22_21_3",
+            "4": "after_3_years_21_22_4"
+        },
+        "blank": "unavailable_1_any"
+    },
+    "2": {
+        "23": {
+            "4": "after_3_years_23_4"
+        },
+        "21": {
+            "3": "earnings_15_months_unavailable_22_21_3",
+            "4": "after_3_years_21_22_4"
+        },
+        "22": {
+            "3": "earnings_15_months_unavailable_22_21_3",
+            "4": "after_3_years_21_22_4"
+        },
+        "blank": "unavailable_2_any"
+    },
+}

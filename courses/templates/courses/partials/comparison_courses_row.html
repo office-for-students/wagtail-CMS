@@ -5,27 +5,27 @@
         </div>
         {% if subtitle %}
         <div class="column-first subtitle {{header_font}}">
-            {{subtitle}}
+            {{ subtitle }}
         </div>
         {% endif %}
     </div>
     <div class="small-flex-div">
-    {% for item in values %}
-        <div class="column {{mt}} {{ item_font }} cc-column-{{forloop.counter0}}">
-        {% with index=forloop.counter0 last=forloop.last %}
-            {% if item.values %}
-                {% for value in item.values %}
-                     <div class="column-{{index}}{{accordion.title}} item-{{forloop.counter0}}"
-                         {% if not forloop.first %}hidden{% endif %}>
-                         {% if value.0 == "unavailable" %}
-                             <div class="no_data_container">
-                                {{ value.1 }}
-                                <br>
-                                {% if value.2 %}
-                                    <img class="information-icon" src="/static/images/information.svg" alt>
-                                    <div class="information-text hidden info-box-{{index}} {% if last %}right{% else %}left{% endif %}">{{ value.2|safe }}</div>
-                                {% endif %}
-                             </div>
+        {% for item in values %}
+            <div class="column {{ mt }} {{ item_font }} cc-column-{{ forloop.counter0 }}">
+                {% with index=forloop.counter0 last=forloop.last %}
+                    {% if item.values %}
+                        {% for value in item.values %}
+                            <div class="column-{{ index }}{{ accordion.title }} item-{{ forloop.counter0 }} sub-{{ sub_count }}"
+                                 {% if not forloop.first %}hidden{% endif %}>
+                                {% if value.0 == "unavailable" %}
+                                    <div class="no_data_container {{ earnings }}">
+                                        {{ value.1 }}
+                                        <br>
+                                        {% if value.2 %}
+                                            <img class="information-icon" src="/static/images/information.svg" alt>
+                                            <div class="information-text hidden info-box-{{ index }} {% if last %}right{% else %}left{% endif %}">{{ value.2|safe }}</div>
+                                        {% endif %}
+                                    </div>
                          {% else %}
                             {{value}}
                         {% endif %}
@@ -33,7 +33,7 @@
                 {% endfor %}
             {% else %}
                 {% if item.0 == "unavailable" %}
-                    <div class="no_data_container">
+                    <div class="no_data_container {{ earnings }}">
                         {{ item.1 }}
                         <br>
                         {% if item.2 %}
