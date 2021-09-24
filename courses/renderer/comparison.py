@@ -102,15 +102,24 @@ def get_multiple_subjects(courses: List[Course], sources: List[str], language, e
         for index, subject_name in enumerate(subject_names):
             subject = get_subject_label(course, index, sources, language, earnings, subject_names)
             no_data_available = translations.term_for_key(key="no_data_available", language=language)
-            # TODO: remove when the override is to be disabled + remove override parameter from this function and graduate and employment context
+            # TODO: remove when the override is to be disabled
+            #  + remove override parameter from this function and graduate and employment context
             if override:
-                subject.replace(" over two years", "")
+                subject = override_replace(subject, language)
             # End remove
             if not subject == no_data_available:
                 subject_list.append(subject)
 
         subjects["subject"].append(subject_list)
     return subjects
+
+
+def override_replace(sub, language):
+    if sub == translations.term_for_key(key="message_2_header", language=language):
+        return translations.term_for_key(key="this_course", language=language)
+    if sub == translations.term_for_key(key="message_3_header", language=language):
+        return translations.term_for_key(key="message_4_header", language=language)
+    return sub
 
 
 def has_valid_value(attrib, _object):
