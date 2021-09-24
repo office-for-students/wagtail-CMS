@@ -19,19 +19,18 @@ class ContinuationStatistics:
                                                                  'left', 'lower'])
 
             self.aggregation_level = data_obj.get('aggregation_level')
-            self.number_of_students = data_obj.get('number_of_students', 0)
+            self.number_of_students = data_obj.get('number_of_students')
 
-            self.dormant = data_obj.get('dormant', 0)
-            self.continuing = data_obj.get('continuing_with_provider', 0)
-            self.gained = data_obj.get('gained', 0)
-            self.left = data_obj.get('left', 0)
-            self.lower = data_obj.get('lower', 0)
+            self.dormant = data_obj.get('dormant')
+            self.continuing = data_obj.get('continuing_with_provider')
+            self.gained = data_obj.get('gained')
+            self.left = data_obj.get('left')
+            self.lower = data_obj.get('lower')
 
-            subject_data = data_obj.get('subject')
-            if subject_data:
-                self.subject_code = subject_data.get('code')
-                self.subject_english = subject_data.get('english_label')
-                self.subject_welsh = subject_data.get('welsh_label')
+            subject_data = data_obj.get('subject', {})
+            self.subject_code = subject_data.get('code')
+            self.subject_english = subject_data.get('english_label')
+            self.subject_welsh = subject_data.get('welsh_label')
 
             unavailable_data = data_obj.get('unavailable', {})
             self.unavailable_code = unavailable_data.get('code')

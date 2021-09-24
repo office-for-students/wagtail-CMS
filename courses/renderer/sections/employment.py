@@ -5,6 +5,7 @@ from courses.renderer.sections.base import Section
 from courses.renderer.sections.unavailable import get_unavailable
 from courses.models import Course
 
+PERCENTAGE_THOSE_ASKED = "percent_of_those_asked"
 NOW_WORKING = "now_working"
 DOING_FURTHER_STUDY = "doing_further_study"
 WORKING_AND_STUDYING = "study_and_working"
@@ -16,6 +17,7 @@ UNKNOWN_WORK = "unknown_work"
 
 employment_list = [
     "number_of_students",
+    "response_rate",
     "in_work",
     "doing_further_study",
     "in_work_and_study",
@@ -25,6 +27,7 @@ employment_list = [
 ]
 job_types_list = [
     "number_of_students",
+    "response_rate",
     "professional_or_managerial_jobs",
     "non_professional_or_managerial_jobs",
     "unknown_professions"
@@ -49,18 +52,20 @@ class SubEmploymentSection(Section):
             (
                 ("0", self.DATA_DISPLAYED, "", "", "employment_stats", True),
                 ("1", self.DATA_FROM_PEOPLE, employment_list[0], "", "employment_stats"),
-                ("2", NOW_WORKING, employment_list[1], "%", "employment_stats"),
-                ("3", DOING_FURTHER_STUDY, employment_list[2], "%", "employment_stats"),
-                ("4", WORKING_AND_STUDYING, employment_list[3], "%", "employment_stats"),
-                ("5", UNEMPLOYED, employment_list[4], "%", "employment_stats"),
+                ("2", PERCENTAGE_THOSE_ASKED, employment_list[1], "%", "employment_stats"),
+                ("3", NOW_WORKING, employment_list[2], "%", "employment_stats"),
+                ("4", DOING_FURTHER_STUDY, employment_list[3], "%", "employment_stats"),
+                ("5", WORKING_AND_STUDYING, employment_list[4], "%", "employment_stats"),
                 ("6", UNEMPLOYED, employment_list[5], "%", "employment_stats"),
-                ("7", OTHER, employment_list[6], "%", "employment_stats"),
+                ("7", UNEMPLOYED, employment_list[6], "%", "employment_stats"),
+                ("8", OTHER, employment_list[7], "%", "employment_stats"),
 
-                ("8", self.DATA_DISPLAYED, "", "", "job_type_stats", True),
-                ("9", self.DATA_FROM_PEOPLE, job_types_list[0], "", "job_type_stats"),
-                ("10", HIGHLY_SKILLED, job_types_list[1], "%", "job_type_stats"),
-                ("11", OTHER_WORK, job_types_list[2], "%", "job_type_stats"),
-                ("12", UNKNOWN_WORK, job_types_list[3], "%", "job_type_stats"),
+                ("9", self.DATA_DISPLAYED, "", "", "job_type_stats", True),
+                ("10", self.DATA_FROM_PEOPLE, job_types_list[0], "", "job_type_stats"),
+                ("11", PERCENTAGE_THOSE_ASKED, job_types_list[1], "%", "job_type_stats"),
+                ("12", HIGHLY_SKILLED, job_types_list[2], "%", "job_type_stats"),
+                ("13", OTHER_WORK, job_types_list[3], "%", "job_type_stats"),
+                ("14", UNKNOWN_WORK, job_types_list[4], "%", "job_type_stats"),
             )]
 
         for i in range(self.start_range, self.end_range):
@@ -92,11 +97,11 @@ class SubEmploymentSection(Section):
 
     def update_data_with_subtitles(self, data: Dict[str, Any]):
         subtitles = {
-            "5": "unemp_prev_emp_since_grad",
-            "6": "unemp_not_work_since_grad",
-            "10": "employed_in_professional",
-            "11": "employed_not_in_professional",
-            "12": "employment_type_unknown"
+            "6": "unemp_prev_emp_since_grad",
+            "7": "unemp_not_work_since_grad",
+            "12": "employed_in_professional",
+            "13": "employed_not_in_professional",
+            "14": "employment_type_unknown"
         }
         for section in self.sections:
             if section[0] in subtitles:

@@ -10,8 +10,8 @@ class Salary:
         if salary_data:
             subject_data = salary_data.get('subject', {})
             self.subject_code = subject_data.get('code', '')
-            self.subject_english = subject_data.get('english_label', '')
-            self.subject_welsh = subject_data.get('welsh_label', '')
+            self.subject_english = subject_data.get('english_label')
+            self.subject_welsh = subject_data.get('welsh_label')
 
             self.subject_title_in_local_language = self.subject_english
             if self.display_language == enums.languages.WELSH:
@@ -21,6 +21,7 @@ class Salary:
             self.unavailable_reason = ""  # salary_data.get('reason', '')
             self.unavailable_reason_english = salary_data.get('unavail_text_english', '')
             self.unavailable_reason_welsh = salary_data.get('unavail_text_welsh', '')
+            self.unavailable_body = self.display_unavailable_info()["reason_body"]
 
             # Values used by the Earnings partial HTML files to default the DDL to the institution's country.
             #   XF - England
@@ -33,6 +34,7 @@ class Salary:
                 country_postfix = "_e"
             elif institution_country_code == 'XG':
                 country_postfix = "_ni"
+                self.is_ni = True
             elif institution_country_code == 'XH':
                 country_postfix = "_s"
             elif institution_country_code == 'XI':
@@ -40,7 +42,7 @@ class Salary:
 
             self.resp_rate = None
             if 'resp_rate' in salary_data:
-                self.resp_rate = salary_data['resp_rate']
+                self.resp_rate = salary_data['resp_rate'] + "%"
 
             if 'agg' in salary_data:
                 self.pop = salary_data['pop']

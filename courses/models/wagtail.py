@@ -1,9 +1,11 @@
 import logging
 
 from django.db.models.fields import TextField
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.core import blocks
-from wagtail.core.fields import StreamField, RichTextField
+from wagtail.core.fields import RichTextField
+from wagtail.core.fields import StreamField
 
 from core.models import DiscoverUniBasePage
 

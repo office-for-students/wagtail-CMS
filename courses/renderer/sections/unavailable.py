@@ -7,39 +7,21 @@ from courses.models import Course
 from courses.renderer.sections.unavailable_dict import unavailable_dict
 
 
-def get_multiple_subjects(course: Course):
-    subjects = list()
+def get_subject_unavailable(course: Course, model_list_name: str, language: str, index: int) -> str:
+    subject_unavail = None
     subject_names = course.subject_names
-    for subject in subject_names:
-        subjects.append(subject.display_subject_name())
-
-    return subjects
-
-
-def get_unavailable_rows(courses: List[Course], model_list: List[str], language: str, change_key=0,
-                         present_as_multiple=False) -> Tuple:
-    columns = []
-    title = translations.term_for_key(key="data_displayed", language=language)
-
-    for index, course in enumerate(courses):
-        columns.append(
-            get_unavailable(
-                course=course,
-                model_list=model_list[1] if change_key > index else model_list[0],
-                language=language,
-                present_as_multiple=present_as_multiple
-            )
-        )
-
-    return columns, title
+    for test in range(len(subject_names)):
+        subject_unavail = get_unavailable(course, model_list_name, language, index=index)
+    return subject_unavail
 
 
-def get_unavailable(course: Course, model_list: str, language: str, accordion=None) -> str:
+def get_unavailable(course: Course, model_list: str, language: str, accordion=None, index=0) -> str:
     response = get_data(
         course=course,
         model_list=model_list,
         language=language,
-        accordion=accordion
+        accordion=accordion,
+        index=index
     )
 
     return response
@@ -50,8 +32,9 @@ def get_data(
         model_list: str,
         language: str,
         accordion: str,
+        index=0
 ) -> str:
-    _object = getattr(course, model_list)[0]
+    _object = getattr(course, model_list)[index]
     unavailable_code = str(getattr(_object, "unavailable_code"))
     aggregation_level = str(getattr(_object, "aggregation_level"))
     response_rate = _getattr(_object, "response_rate", None)

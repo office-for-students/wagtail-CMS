@@ -79,7 +79,7 @@ $widthOfNarrowArrow: 27px;
 .no_data_container {
   font-size: 1rem;
   position: relative;
-  padding: 5px;
+  padding: 5px 7px;
 
   .information-text {
     position: absolute;
@@ -169,6 +169,10 @@ $course_comparison_first_column_width: 250px;
       &:nth-child(4), &:nth-child(6), &:nth-child(7) {
         font-size: 1.125rem;
       }
+    }
+
+    &-earnings_first{
+      @extend .comparison_row-earnings;
     }
 
     &-details_background {
@@ -309,7 +313,7 @@ $course_comparison_first_column_width: 250px;
     bottom: -10px;
     border-bottom: 4px solid white;
     width: 100vw;
-    margin-left: -20px;
+    left: -170px;
   }
 
   .population {
@@ -1124,12 +1128,25 @@ $course_comparison_first_column_width: 250px;
         font-size: 1.25rem;
         padding: 8px;
 
-        &:nth-child(3), &:nth-child(5), &:nth-child(6), {
+        &:nth-child(1) {
+          font-size: 1rem;
+          padding: 0px 10px;
+        }
+
+        &:nth-child(2), &:nth-child(4), &:nth-child(5), {
           margin-bottom: 0;
         }
 
-        &:nth-child(4), &:nth-child(6), &:nth-child(7) {
+        &:nth-child(5), &:nth-child(7), &:nth-child(8) {
           font-size: 1.125rem;
+        }
+      }
+      &-earnings_first {
+        &:nth-child(3), &:nth-child(5), &:nth-child(6), {
+          margin-bottom: 0;
+        }
+        &:nth-child(4) {
+          margin-bottom: 8px;
         }
       }
 
@@ -1359,6 +1376,14 @@ $course_comparison_first_column_width: 250px;
 
         &:nth-child(5), &:nth-child(7), &:nth-child(8) {
           font-size: 1.125rem;
+        }
+      }
+      &-earnings_first {
+        &:nth-child(3), &:nth-child(5), &:nth-child(6), {
+          margin-bottom: 0;
+        }
+        &:nth-child(4) {
+          margin-bottom: 8px;
         }
       }
 
