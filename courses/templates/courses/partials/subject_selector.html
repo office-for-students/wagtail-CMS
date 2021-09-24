@@ -11,12 +11,21 @@
                 {% with index=forloop.counter0 %}
                     <div class="subject cc-column-{{ forloop.counter0 }}">
                         <ol class="list">
-                            {% for subject in items %}
-                                <li {% if forloop.first %} class="button selected" {% else %} class="button {% data_not_available subject=subject language=page.get_language %}" {% endif %}
-                                                           data-details="{{ accordion.title }},{{ index }},{{ forloop.counter0 }},{{ sub_count }}">
-                                    {{ subject }}
+                            {% if not items %}
+                                <li class="button selected">
+                                    {% get_translation key='this_course' language=page.get_language %}
                                 </li>
-                            {% endfor %}
+                            {% endif %}
+                                {% for subject in items %}
+                                    <li {% if forloop.first %} class="button selected" {% else %}
+                                         class="button {% data_not_available subject=subject language=page.get_language %}"
+                                        {% endif %}
+                                         data-details="{{ accordion.title }},{{ index }},{{ forloop.counter0 }},{{ sub_count }}">
+                                     {% if subject %} {{ subject }} {% else %}
+                                         {% get_translation key='this_course' language=page.get_language %}
+                                     {% endif %}
+                                    </li>
+                                {% endfor %}
                         </ol>
                     </div>
                 {% endwith %}

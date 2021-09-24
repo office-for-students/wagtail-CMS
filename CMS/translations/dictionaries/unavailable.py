@@ -57,7 +57,7 @@ UNAVAILABLE = {
     },
     'message_2_header': {
         'en': "This course over 2 years",
-        'cy': "Daw'r data a ddangosir gan fyfyrwyr yn ystod y ddwy flynedd flaenorol"
+        'cy': "Y cwrs hwn dros 2 flynedd"
     },
     'message_3_header': {
         'en': "This and other courses over 2 years",
@@ -69,7 +69,7 @@ UNAVAILABLE = {
     },
     'message_5_header': {
         'en': "This course over 2 years",
-        'cy': "Daw'r data a ddangosir gan fyfyrwyr yn ystod y ddwy flynedd flaenorol"
+        'cy': "Y cwrs hwn dros 2 flynedd."
     },
     'message_6_header': {
         'en': "This and other courses over 2 years",

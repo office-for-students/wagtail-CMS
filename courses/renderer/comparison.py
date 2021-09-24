@@ -93,24 +93,33 @@ def get_sub_accordion_dataset(courses, section_model, get_sub_headers, language)
     return response
 
 
-def get_multiple_subjects(courses: List[Course], sources: List[str], language, earnings=False) -> Dict[str, List[str]]:
+def get_multiple_subjects(courses: List[Course], sources: List[str], language, earnings=False, override=False) -> Dict[str, List[str]]:
     subjects = dict(subject=[])
     for course in courses:
         subject_list = list()
         subject_names = course.subject_names
 
-        no_data_count = 0
         for index, subject_name in enumerate(subject_names):
             subject = get_subject_label(course, index, sources, language, earnings, subject_names)
-            if translations.term_for_key("no_data_available", language=language) == subject:
-                if no_data_count == 0 and len(subject_names) >= 1:
-                    subject_list.append(translations.term_for_key(key="this_course", language=language))
-                no_data_count += 1
-            else:
+            no_data_available = translations.term_for_key(key="no_data_available", language=language)
+            # TODO: remove when the override is to be disabled
+            #  + remove override parameter from this function and graduate and employment context
+            if override:
+                subject = override_replace(subject, language)
+            # End remove
+            if not subject == no_data_available:
                 subject_list.append(subject)
 
         subjects["subject"].append(subject_list)
     return subjects
+
+
+def override_replace(sub, language):
+    if sub == translations.term_for_key(key="message_2_header", language=language):
+        return translations.term_for_key(key="this_course", language=language)
+    if sub == translations.term_for_key(key="message_3_header", language=language):
+        return translations.term_for_key(key="message_4_header", language=language)
+    return sub
 
 
 def has_valid_value(attrib, _object):
@@ -124,8 +133,6 @@ def has_valid_value(attrib, _object):
 def get_subject_label(course, index, sources, language, earnings, subject_names):
     no_data_available = translations.term_for_key(key="no_data_available", language=language)
     fallback = no_data_available
-    if len(subject_names) == 1 and fallback == no_data_available:
-        fallback = translations.term_for_key(key="this_course", language=language)
     attrib = "display_subject_name"
     for source in sources:
         try:
@@ -229,8 +236,8 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="employment_guidance_2", language=language),
                 translations.term_for_key(key="employment_guidance_3", language=language)
             ),
-            multi_subject_selectors=[get_multiple_subjects(courses, ["employment_stats"], language=language),
-                                     get_multiple_subjects(courses, ["job_type_stats"], language=language)],
+            multi_subject_selectors=[get_multiple_subjects(courses, ["employment_stats"], language=language, override=True),
+                                     get_multiple_subjects(courses, ["job_type_stats"], language=language, override=True)],
             sub_accordions=get_sub_accordion_dataset(courses, SubEmploymentSection, get_sub_employment, language),
             source=(
                 translations.term_for_key(key="earnings_link", language=language),
@@ -243,7 +250,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="graduate_guidance_1", language=language),
                 translations.term_for_key(key="graduate_guidance_2", language=language),
             ),
-            subjects=get_multiple_subjects(courses, ["graduate_perceptions"], language=language),
+            subjects=get_multiple_subjects(courses, ["graduate_perceptions"], language=language, override=True),
             dataset=get_details(GraduatePerceptionSection, courses, language),
             source=(
                 translations.term_for_key(key="graduate_link", language=language),
