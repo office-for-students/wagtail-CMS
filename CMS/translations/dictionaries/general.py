@@ -1183,6 +1183,10 @@ DICT = {
         "cy": "Canlyniadau’r Arolwg Cenedlaethol o Fyfyrwyr",
         "en": "National Student Survey results"
     },
+    "student_satisfaction": {
+        "cy": "Bodlonrwydd Myfyrwyr",
+        "en": "Student Satisfaction"
+    },
     "student_satisfaction_course_overview_2": {
         "cy": "cyfran y myfyrwyr a ymatebodd a oedd yn cytuno â’r datganiad “Rwy’n fodlon ag ansawdd y cwrs ar y cyfan”",
         "en": "agreed they were satisfied with the quality of the course"
