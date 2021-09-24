@@ -109,7 +109,12 @@ class Section:
         if index < len(getattr(course, model_list)):
             _object = getattr(course, model_list)[index]
             body = getattr(_object, "unavailable_reason_body")
-            header = get_unavailable(course, model_list, language)
+            header = get_unavailable(
+                course=course,
+                model_list=model_list,
+                language=language,
+                index=index
+            )
         else:
             header = translations.term_for_key(key="no_data_available", language=language)
             _object = getattr(course, "display_no_data")()
