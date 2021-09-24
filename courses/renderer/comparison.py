@@ -93,7 +93,7 @@ def get_sub_accordion_dataset(courses, section_model, get_sub_headers, language)
     return response
 
 
-def get_multiple_subjects(courses: List[Course], sources: List[str], language, earnings=False) -> Dict[str, List[str]]:
+def get_multiple_subjects(courses: List[Course], sources: List[str], language, earnings=False, override=False) -> Dict[str, List[str]]:
     subjects = dict(subject=[])
     for course in courses:
         subject_list = list()
@@ -102,6 +102,10 @@ def get_multiple_subjects(courses: List[Course], sources: List[str], language, e
         for index, subject_name in enumerate(subject_names):
             subject = get_subject_label(course, index, sources, language, earnings, subject_names)
             no_data_available = translations.term_for_key(key="no_data_available", language=language)
+            # TODO: remove when the override is to be disabled + remove override parameter from this function and graduate and employment context
+            if override:
+                subject.replace(" over two years", "")
+            # End remove
             if not subject == no_data_available:
                 subject_list.append(subject)
 
@@ -223,8 +227,8 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="employment_guidance_2", language=language),
                 translations.term_for_key(key="employment_guidance_3", language=language)
             ),
-            multi_subject_selectors=[get_multiple_subjects(courses, ["employment_stats"], language=language),
-                                     get_multiple_subjects(courses, ["job_type_stats"], language=language)],
+            multi_subject_selectors=[get_multiple_subjects(courses, ["employment_stats"], language=language, override=True),
+                                     get_multiple_subjects(courses, ["job_type_stats"], language=language, override=True)],
             sub_accordions=get_sub_accordion_dataset(courses, SubEmploymentSection, get_sub_employment, language),
             source=(
                 translations.term_for_key(key="earnings_link", language=language),
@@ -237,7 +241,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
                 translations.term_for_key(key="graduate_guidance_1", language=language),
                 translations.term_for_key(key="graduate_guidance_2", language=language),
             ),
-            subjects=get_multiple_subjects(courses, ["graduate_perceptions"], language=language),
+            subjects=get_multiple_subjects(courses, ["graduate_perceptions"], language=language, override=True),
             dataset=get_details(GraduatePerceptionSection, courses, language),
             source=(
                 translations.term_for_key(key="graduate_link", language=language),
