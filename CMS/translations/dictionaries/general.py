@@ -162,7 +162,7 @@ DICT = {
         "en": "Search by course or location"
     },
     "can_compare_courses": {
-        "cy": "Gymharu cyrsiau",
+        "cy": "Cymharu cyrsiau",
         "en": "Compare courses"
     },
     "chart_label_explained": {
@@ -292,6 +292,10 @@ DICT = {
     "course_removed": {
         "cy": "Cwrs wedi’i ddileu o'r ",
         "en": "Course removed from "
+    },
+    "course_saved": {
+        "cy": "Cwrs wedi’i gadw",
+        "en": "Course saved"
     },
     "course_search": {
         "cy": "Chwilio am Gwrs ",
@@ -1015,6 +1019,10 @@ DICT = {
         "cy": "Cyrsiau wedi’u cadw",
         "en": "Saved courses"
     },
+    "saved_courses_lower": {
+        "cy": "gyrsiau wedi’u cadw",
+        "en": "saved courses"
+    },
     "scotland": {
         "cy": "Yr Alban",
         "en": "Scotland"
@@ -1406,6 +1414,10 @@ DICT = {
     "you_can": {
         "cy": "Gallwch ",
         "en": "You can"
+    },
+    "view_saved_courses": {
+        "cy": "Gweld cyrsiau wedi’u cadw",
+        "en": "View saved courses"
     },
     "youre_interested_in": {
         "cy": "sydd o ddiddordeb iti",

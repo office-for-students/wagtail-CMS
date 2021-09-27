@@ -44,10 +44,18 @@ def display_unavailable_info(self, aggregation_level, replace=False):
 
 
 def separate_unavail_reason(reason_unseparated):
+    WELSH_UNAVAILABLE_UPDATES = [
+        ["yn ystod y ddwy flynedd flaenorol", "dros dwy flynedd"],
+        ["Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Gemau cyfrifiadurol ac animeiddio eraill",
+         "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau eraill mewn"],
+        ["Nid yw hyn yn adlewyrchu ansawdd y cwrs.", "Nid yw hyn yn adlewyrchu ar ansawdd y cwrs."]
+    ]
     index_of_delimiter = reason_unseparated.find('\n\n')
 
     if index_of_delimiter > 4:
         reason_heading = reason_unseparated[:index_of_delimiter]
+        for replacement in WELSH_UNAVAILABLE_UPDATES:
+            reason_heading = reason_heading.replace(replacement[0], replacement[1])
         reason_body = reason_unseparated[index_of_delimiter + 2:]
     else:
         reason_heading = reason_unseparated
