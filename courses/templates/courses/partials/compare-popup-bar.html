@@ -3,15 +3,15 @@
 
 <div class="compare-popup">
     <div class="compare-popup__wrapper">
-        <button class="compare-popup__close">Close x</button>
+        <button class="compare-popup__close">{% get_translation key='close' language=page.get_language %} x</button>
         <div class="compare-popup__add">
             <div class="compare-popup__left_container">
                 <p class="course_added">
                     <i class="fas fa-check-circle checkmark"></i>
-                    Course saved</p>
+                    {% get_translation key='course_saved' language=page.get_language %}</p>
                 <p class="compare-popup__count">
-                    You have saved <strong><span class="count"></span> course(s)</strong>
-                    <a class="compare-popup-saved_courses_link" href="{{manage_link}}">View saved courses</a>
+                    {% get_translation key='n_courses_bookmarked_pt_1' language=page.get_language %} <strong><span class="count"></span>&nbsp;{% get_translation key='saved_courses_lower' language=page.get_language %}</strong>
+                    <a class="compare-popup-saved_courses_link" href="{{manage_link}}">{% get_translation key='view_saved_courses' language=page.get_language %}</a>
                 </p>
             </div>
 
