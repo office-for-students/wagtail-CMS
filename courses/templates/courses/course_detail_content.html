@@ -2,6 +2,7 @@
 {% load staticfiles discover_uni_tags %}
 
 <div class="course-detail comparison-course-area mx-sm-2 px-xs-1 px-md-3"
+     data-courseidentifier="{{course.institution.pub_ukprn}}/{{course.kis_course_id}}/{{course.mode.label}}"
      data-coursename="{{ course.display_title }}" data-courseid="{{ course.kis_course_id }}"
      data-uniname="{{ course.institution.pub_ukprn_name }}" data-uniid="{{ course.institution.pub_ukprn }}"
      data-length="{{ course.length.label | slice:1}}" data-locations="{{ course.locations_list }}"
@@ -113,7 +114,7 @@
 
 
         $(window).scroll(function () { // when the page is scrolled run this
-            if ($(this).scrollTop() >= ($('.course-detail__lead').outerHeight() + $('.discover-uni-nav').outerHeight() + 10 - $('#sticky_nav_course_detail').outerHeight())) {
+            if ($(this).scrollTop() >= ($('.course-detail__lead').outerHeight() + $('.nav').outerHeight() + 10 - $('#sticky_nav_course_detail').outerHeight())) {
                 $('#sticky_nav_course_detail').fadeIn("fast"); // fade in
             } else { // else
                 $('#sticky_nav_course_detail').fadeOut("fast"); // fade out
@@ -122,3 +123,4 @@
 
 
     </script>
+{##TODO: this should have a closing div, check why it doesn't#}

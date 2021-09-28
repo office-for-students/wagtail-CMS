@@ -1,5 +1,4 @@
 from django.db import models
-
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, PageChooserPanel
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField
@@ -7,7 +6,8 @@ from wagtail.core.models import Page
 from wagtail.snippets.models import register_snippet
 
 from CMS.enums import enums
-from core.utils import parse_menu_item, get_page_for_language, get_current_version
+from core import utils
+from core.utils import get_page_for_language
 
 
 class DiscoverUniBasePage(Page):
@@ -24,55 +24,15 @@ class DiscoverUniBasePage(Page):
     ]
 
     def get_language(self):
-        if self.url and '/cy/' in self.url:
-            return 'cy'
-        return 'en'
+        return utils.get_language(self.url)
 
     def is_english(self):
-        return self.get_language() == 'en'
+        return self.get_language() == enums.languages.ENGLISH
 
-    def is_welsh(self):
-        return self.get_language() == 'cy'
-
-    def get_english_url(self):
-        from home.models import HomePage
-        if self.is_english():
-            return self.url
-        return self.translated_page.url if self.translated_page \
-            else get_page_for_language(enums.languages.ENGLISH, HomePage.objects.all()).url
-
-    def get_welsh_url(self):
-        from home.models import HomePage
-        if self.is_english():
-            return self.translated_page.url if self.translated_page \
-                else get_page_for_language(enums.languages.WELSH, HomePage.objects.all()).url
-        return self.url
-
-    @property
-    def menu(self):
-        menu_name = enums.languages_map.get(self.get_language()).capitalize()
-        menu_data = Menu.objects.filter(name=menu_name).first()
-        if not menu_data:
-            menu_name = enums.languages_map.get(enums.languages.ENGLISH).capitalize()
-            menu_data = Menu.objects.filter(name=menu_name).first()
-        menu = []
-        if menu_data:
-            for item in menu_data.menu_items:
-                menu.append(parse_menu_item(item))
-        return menu
-
-    @property
-    def footer(self):
-        footer_name = enums.languages_map.get(self.get_language()).capitalize()
-        footer_data = Footer.objects.filter(name=footer_name).first()
-        if not footer_data:
-            footer_name = enums.languages_map.get(enums.languages.ENGLISH).capitalize()
-            footer_data = Footer.objects.filter(name=footer_name).first()
-        footer = []
-        if footer_data:
-            for item in footer_data.footer_items:
-                footer.append(parse_menu_item(item))
-        return footer
+    def url_for_language(self):
+        language = enums.languages.WELSH if self.is_english() else enums.languages.ENGLISH
+        return self.translated_page.url if self.translated_page else get_page_for_language(language,
+                                                                                           self.__class__.objects.all()).url
 
     class Meta:
         abstract = True
@@ -87,8 +47,7 @@ class DiscoverUniBasePage(Page):
     def get_context(self, request):
         context = super().get_context(request)
         context['page'] = self
-        context['english_url'] = self.get_english_url()
-        context['welsh_url'] = self.get_welsh_url()
+        context['translated_url'] = self.url_for_language()
         context['cookies_accepted'] = request.COOKIES.get('discoverUniCookies')
         context['load_error'] = request.GET.get('load_error', '')
         context['error_type'] = request.GET.get('error_type', '')

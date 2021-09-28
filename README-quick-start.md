@@ -43,27 +43,34 @@ python manage.py test
 unset LOCAL
 
 # Start the application
-docker-compose up 
+    docker-compose up 
 
 # Open new Terminal to run following commands from, then...
-source venv/bin/activate
+    source venv/bin/activate
 
 # Migrate database tables
-docker container exec -it wagtail-cms_web_1 python manage.py migrate
+    docker container exec -it wagtail-cms_web_1 python manage.py migrate
 
 # Load local databases with data from fixtures
 
 # CMS
-docker container exec -it wagtail-cms_web_1 python manage.py populate_cms
+
+    docker container exec -it wagtail-cms_web_1 python manage.py populate_cms
 
 # Courses
-docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
+    
+    docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
 
 # Institutions
-docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions
+    
+    docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions
+
+# Other commands and the ones listed above can be run in the terminal of the container, for example:
+
+    docker exec -it wagtail-cms_web_1 /bin/bash < the command i.e python manage.py migrate or any other>
 
 # Navigate to application
-open http://0.0.0.0:8000/
+    open http://0.0.0.0:8000/
 
 # To point to the pre-prod remote database instead of local, cut'n paste contents of .env.pre-prod into .env and restart the application
 

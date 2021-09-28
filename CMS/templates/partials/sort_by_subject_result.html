@@ -3,23 +3,26 @@
 <script>
     var distance_array = []
 
-    function distanceLearning(){
+    function distanceLearning() {
         var mode = '{{filter_form.mode_query}}'
-        const allEqual = arr => arr.every( v => v === arr[0] )
-        if(mode.includes("Distance") && mode.includes("campus") || !mode.includes("Distance") && !mode.includes("campus")){
-            if(distance_array[0] === "distance" && allEqual(distance_array) == true){
+        const allEqual = arr => arr.every(v => v === arr[0])
+        if (mode.includes("Distance") && mode.includes("campus") || !mode.includes("Distance") && !mode.includes("campus")) {
+            if (distance_array[0] === "distance" && allEqual(distance_array) == true) {
                 document.getElementById('{{ institution.pub_ukprn_name }}-accordionHeader').innerHTML = "{{ institution.pub_ukprn_name }}<small style='font-weight: normal' class='course-finder-results__result-accordion-title'> - {% get_translation key='distance_learning' language=page.get_language %}</small>"
             }
         }
-    }  
+    }
 </script>
-<div  class="course-finder-results__result-accordion">
-    <div tabindex="0" role="button" aria-label="Show content" class="course-finder-results__result-accordion-header">
+<div class="course-finder-results__result-accordion">
+    <div tabindex="0" role="button"
+         aria-label="Show {{ title }} {{ number_of_courses }} {% get_translation key='courses' language=page.get_language %} content"
+         class="course-finder-results__result-accordion-header">
         <div class="course-finder-results__result-accordion-heading">
-            <h2 id='{{ title }}-accordionHeader' style="max-width: 440px;" class="course-finder-results__result-accordion-title">{{ title }}</h2>
+            <h2 id='{{ title }}-accordionHeader' style="max-width: 440px;"
+                class="course-finder-results__result-accordion-title">{{ title }}</h2>
             <p style="margin-top: auto; margin-bottom: auto; " class="course-finder-results__result-accordion-overview">
                 {{ number_of_courses }} {% get_translation key='courses' language=page.get_language %}
-            </p>            
+            </p>
         </div>
 
         <div class="expand">
@@ -33,7 +36,7 @@
     <div class="course-finder-results__result-accordion-body">
         {% for item in courses %}
             {% include 'partials/course_result.html' with course=item institution_id=item.institution.pub_ukprn sort_by_subject_enabled='true' %}
-        {% endfor %}    
+        {% endfor %}
     </div>
     <script>
         distanceLearning()

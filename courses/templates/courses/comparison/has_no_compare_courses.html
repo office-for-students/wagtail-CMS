@@ -1,0 +1,10 @@
+{% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
+<div class="comparison__body pt-1">
+    <h2 class="comparison__heading">
+        {{ page.compare_heading }}
+    </h2>
+    <!-- Guidance box -->
+    {% include 'courses/partials/comparison/guidance_box.html' %}
+    <!-- Guidance box end -->
+    {% include 'courses/partials/comparison/no_courses_selected.html' %}
+</div>

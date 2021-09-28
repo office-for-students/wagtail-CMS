@@ -298,7 +298,7 @@ content = {
             }
         ],
         "title": {
-            "english": "Graphic Design"
+            "english": "Graphic Design Communication"
         },
         "ucas_programme_id": "A09-C13",
         "year_abroad": {

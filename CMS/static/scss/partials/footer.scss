@@ -28,7 +28,7 @@
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
-        line-height: normal;
+        line-height: 1.5;
         letter-spacing: normal;
         color: #1b2537;
         margin-bottom: 30px;
@@ -49,7 +49,7 @@
         font-weight: 600;
         font-stretch: normal;
         font-style: normal;
-        line-height: normal;
+        line-height: 1.5;
         letter-spacing: normal;
         color: #666666;
     }
@@ -82,7 +82,7 @@
         height: 60px;
         margin: auto;
         margin-bottom: 30px;
-        padding: 0px 10px 8px;
+        padding: 0 10px 8px;
     }
 
     &__social-media {
@@ -100,7 +100,7 @@
         display: flex;
         color: #000000;
         justify-content: center;
-        padding: 0px 15% 8px;
+        padding: 0 15% 8px;
         border-bottom: 1px solid black;
         margin: auto;
     }
@@ -110,7 +110,7 @@
         display: flex;
         color: #000000;
         justify-content: center;
-        padding: 0px 15% 8px;
+        padding: 0 15% 8px;
         border-bottom: 1px solid black;
         margin: auto;
     }
@@ -156,7 +156,7 @@
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
-            line-height: normal;
+            line-height: 1.5;
             letter-spacing: normal;
             color: #1b2537;
             margin-bottom:15px;
@@ -168,7 +168,7 @@
             font-weight: 600;
             font-stretch: normal;
             font-style: normal;
-            line-height: normal;
+            line-height: 1.5;
             letter-spacing: normal;
             color: #666666;
         }
@@ -183,7 +183,7 @@
             display: inline-block;
             height: 55px;
             margin-bottom: 25px;
-            padding: 0px 5px 5px 10px;
+            padding: 0 5px 5px 10px;
         }
 
         &__logo {

@@ -6,31 +6,33 @@
             background-color: $ice-blue;
         }
         .accreditation__overview{
-            
-            text-align: center;
-            border: solid 3px $duck-egg-blue;
 
-            .accreditation__overview-lead{
-                font-family: 'Nunito Sans', sans-serif;
-                font-size: 24px;
-                font-weight:normal;
-                color: #000000;
-                text-decoration: none;
-            }
-            .accreditation__overview-sublead{
-                font-family: 'Nunito Sans', sans-serif;
-                font-size: 14px;
-                font-weight:normal;
-                color: $brownish-grey;
-                text-decoration: none;
-            }
-            a{
-                font-family: 'Nunito Sans', sans-serif;
-                font-size:14px;
-                font-weight:normal;
-                text-decoration: underline;
-                color: $dark-green-blue;
-            }
+          text-align: center;
+          border: solid 3px $duck-egg-blue;
+
+          .accreditation__overview-lead {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 24px;
+            font-weight: normal;
+            color: #000000;
+            text-decoration: none;
+          }
+
+          .accreditation__overview-sublead {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.875rem;
+            font-weight: normal;
+            color: $brownish-grey;
+            text-decoration: none;
+          }
+
+          a {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.875rem;
+            font-weight: normal;
+            text-decoration: underline;
+            color: $dark-green-blue;
+          }
         }
 
         .accreditation__heading {
@@ -42,17 +44,17 @@
         }
 
         .accreditation__body {
-            @include mobile-body-font-mixin();
-            font-family: 'Nunito Sans', sans-serif;
-            font-weight:normal;
-            font-size:14px;
-            color: $brownish-grey;
+          @include mobile-body-font-mixin();
+          font-family: 'Nunito Sans', sans-serif;
+          font-weight: normal;
+          font-size: 0.875rem;
+          color: $brownish-grey;
 
-            a{
-                color: $dark-green-blue;
-                font-weight:normal;
-                text-decoration: underline;
-            }
+          a {
+            color: $dark-green-blue;
+            font-weight: normal;
+            text-decoration: underline;
+          }
         }
 
         .accreditation__explanation {
@@ -81,19 +83,19 @@
             }
 
             .accreditation__overview-sublead {
-                font-family: 'Nunito Sans', sans-serif;
-                font-size: 16px;
-                font-weight: normal;
-                color: $brownish-grey;
-                text-decoration: none;
+              font-family: 'Nunito Sans', sans-serif;
+              font-size: 1rem;
+              font-weight: normal;
+              color: $brownish-grey;
+              text-decoration: none;
             }
 
             a {
-                font-family: 'Nunito Sans', sans-serif;
-                font-size: 16px;
-                font-weight: normal;
-                text-decoration: underline;
-                color: $dark-green-blue;
+              font-family: 'Nunito Sans', sans-serif;
+              font-size: 1rem;
+              font-weight: normal;
+              text-decoration: underline;
+              color: $dark-green-blue;
             }
         }
         .accreditation__heading {
@@ -102,17 +104,17 @@
 
 
         .accreditation__body {
-            @include mobile-body-font-mixin();
-            font-family: 'Nunito Sans', sans-serif;
-            font-weight: normal;
-            font-size: 16px;
-            color: $brownish-grey;
+          @include mobile-body-font-mixin();
+          font-family: 'Nunito Sans', sans-serif;
+          font-weight: normal;
+          font-size: 1rem;
+          color: $brownish-grey;
 
-            a {
-                color: $dark-green-blue;
-                font-weight: normal;
-                text-decoration: underline;
-            }
+          a {
+            color: $dark-green-blue;
+            font-weight: normal;
+            text-decoration: underline;
+          }
         }
     }
 }

@@ -13,14 +13,14 @@
     .employment-after-course_explanation-text .rich-text, .rich-text{
         font-family: 'Nunito Sans', sans-serif;
         color: $brownish-grey;
-        font-weight:normal;
-        font-size: 14px;
+        font-weight: normal;
+        font-size: 0.875rem;
         line-height: normal;
 
-        a{
+        a {
             text-decoration: underline;
             color: $dark-green-blue;
-            line-height:normal;
+            line-height: normal;
         }
     }
     .employment-after-course_occupation-statistics{
@@ -30,23 +30,25 @@
             border-style: solid none none none;
             border-color: #42957f;
 
-            h2{
+            h2 {
                 color: #000000;
                 font-family: 'Nunito Sans', sans-serif;
                 color: #000000;
-                font-weight:normal;
+                font-weight: normal;
                 font-size: 24px;
                 line-height: normal;
             }
-            h4{
+
+            h4 {
                 color: #000000;
                 font-family: 'Nunito Sans', sans-serif;
                 color: #000000;
-                font-weight:normal;
-                font-size: 18px;
+                font-weight: normal;
+                font-size: 1.125rem;
                 line-height: normal;
             }
-            .employment-after-course_occ-type-percent p{
+
+            .employment-after-course_occ-type-percent p {
                 text-align: center;
             }
             .employment-after-course_occ-type-title{
@@ -60,8 +62,8 @@
         @include s-heading-mixin();
         font-family: 'Nunito Sans', sans-serif;
         color: $black;
-        font-weight:normal;
-        font-size: 18px;
+        font-weight: normal;
+        font-size: 1.125rem;
     }
 
     .employment-after-course__data-point {
@@ -98,8 +100,8 @@
                     margin-top: 5px;
                     color: #000000;
                     font-family: 'Nunito Sans', sans-serif;
-                    font-weight:normal;
-                    font-size: 14px;
+                    font-weight: normal;
+                    font-size: 0.875rem;
                 }
             }
         }
@@ -107,18 +109,19 @@
 
     p {
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: normal;
         color: $brownish-grey;
-        line-height:normal;
+        line-height: normal;
     }
-    a{
+
+    a {
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: normal;
-        color:#308282;
+        color: #308282;
         text-decoration: underline;
-        line-height:normal;
+        line-height: normal;
     }
 }
 
@@ -144,12 +147,12 @@
 
     }
 
-    .employment-after-course__lead-intro{
+    .employment-after-course__lead-intro {
         font-family: 'Nunito Sans', sans-serif;
         color: #000000;
         letter-spacing: normal;
-        font-weight:normal;
-        font-size:14px;
+        font-weight: normal;
+        font-size: 0.875rem;
     }
 
     h3 {
@@ -176,29 +179,30 @@
     text-align: center;
     border: solid 3px $duck-egg-blue;
 
-    p{
+    p {
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: normal;
         color: #000000;
         text-decoration: none;
 
-        a{
-            line-height:normal;
+        a {
+            line-height: normal;
             text-decoration: underline;
             color: $dark-green-blue;
         }
     }
-    .explanation-text p, .explanation-text{
+
+    .explanation-text p, .explanation-text {
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: normal;
         color: $brownish-grey;
     }
 
-    .explanation-text .rich-text p{
+    .explanation-text .rich-text p {
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: normal;
         color: $brownish-grey;
     }
@@ -217,33 +221,33 @@
         font-size:28px;
     }
     .employment-after-course__block .employment-after-course_explanation-text .rich-text, .employment-after-course__lead-block .employment-after-course_explanation-text .rich-text, .employment-after-course__block .rich-text, .employment-after-course__lead-block .rich-text, .employment-after-course_occupation-block .employment-after-course_explanation-text .rich-text, .employment-after-course_occupation-block .rich-text {
-        font-size: 16px;
-        font-weight:normal;
+        font-size: 1rem;
+        font-weight: normal;
     }
     .employment-after-course__block .employment-after-course_explanation-text .rich-text a, .employment-after-course__lead-block .employment-after-course_explanation-text .rich-text a, .employment-after-course__block .rich-text a, .employment-after-course__lead-block .rich-text a, .employment-after-course_occupation-block .employment-after-course_explanation-text .rich-text a, .employment-after-course_occupation-block .rich-text a {
-        font-size: 16px;
-        font-weight:normal;
+        font-size: 1rem;
+        font-weight: normal;
     }
     .employment-after-course_occupation-block{
         div.not-enough-data-disclaimer h4{
-            font-size:20px!important;
+            font-size: 1.25rem!important;
         }
     }
     .employment-after-course__block {
-        div.not-enough-data-disclaimer h4{
-            font-size:20px!important;
+        div.not-enough-data-disclaimer h4 {
+            font-size: 1.25rem !important;
         }
 
-        .explanation-text p, .explanation-text{
+        .explanation-text p, .explanation-text {
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: normal;
             color: $brownish-grey;
         }
-    
-        .explanation-text .rich-text p{
+
+        .explanation-text .rich-text p {
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: normal;
             color: $brownish-grey;
         }
@@ -275,8 +279,8 @@
                         @include desktop-body-font-mixin();
                         color: #000000;
                         font-family: 'Nunito Sans', sans-serif;
-                        font-weight:normal;
-                        font-size: 18px;
+                        font-weight: normal;
+                        font-size: 1.125rem;
                         // margin-top: 5px;
                     }
                 }
@@ -299,19 +303,20 @@
             font-family: 'Nunito Sans', sans-serif;
             color: #000000;
             letter-spacing: normal;
-            font-weight:normal;
-            font-size:32px;
+            font-weight: normal;
+            font-size: 32px;
 
-            .rich-text{
+            .rich-text {
                 color: #000000;
             }
         }
-        .employment-after-course__lead-intro{
+
+        .employment-after-course__lead-intro {
             font-family: 'Nunito Sans', sans-serif;
             color: #000000;
             letter-spacing: normal;
-            font-weight:normal;
-            font-size:16px;
+            font-weight: normal;
+            font-size: 1rem;
         }
 
         h3 {
@@ -324,24 +329,25 @@
 
     .employment-after-course__data-point-overview {
 
-        
-        p{
+
+        p {
             font-family: 'Nunito Sans', sans-serif;
             font-size: 28px;
             font-weight: normal;
             color: $black;
             text-decoration: none;
 
-            a{
-                font-size:16px;
-                font-weight:normal;
+            a {
+                font-size: 1rem;
+                font-weight: normal;
                 text-decoration: underline;
                 color: $dark-green-blue;
             }
         }
-        .explanation-text p, .explanation-text{
+
+        .explanation-text p, .explanation-text {
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: normal;
             color: $brownish-grey;
         }

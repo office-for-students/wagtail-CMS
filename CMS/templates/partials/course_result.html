@@ -7,48 +7,58 @@
 
 <script>
     function pushToArray(distance, country) {
-        if(distance === "Course is only available through distance learning" ){
+        if (distance === "Course is only available through distance learning") {
             distance_array.push("distance")
-        }
-        else if(distance === "Course is optionally available through distance learning" && "{{postcode_query}}" === "{}" && "{{filter_form.countries_query}}".includes(country) === false){
+        } else if (distance === "Course is optionally available through distance learning" && "{{postcode_query}}" === "{}" && "{{filter_form.countries_query}}".includes(country) === false) {
             distance_array.push("distance")
-        }
-        else{
+        } else {
             distance_array.push("not_distance")
         }
     }
 </script>
 
 <div class="course-finder-results__result-accordion-body-content comparison-course-area mb-4"
-     data-coursename="{{course_name}}" data-courseid="{{course.kis_course_id}}"
-     data-uniname="{{ institution.pub_ukprn_name }}" data-uniid="{{institution_id}}"
-     data-locations="{{locations}}" data-length="{{ course.length_of_course|slice:1 }}"
-     data-mode-en="{% get_translation key=course.mode language='en' %}" data-mode-cy="{% get_translation key=course.mode language='cy' %}"
-     data-sandwich-en="{% get_translation key=course.sandwich_year language='en' %}" data-sandwich-cy="{% get_translation key=course.sandwich_year language='cy' %}"
-     data-distance-en="{% map_distance_learning_values course.distance_learning 'en' %}" data-distance-cy="{% map_distance_learning_values course.distance_learning 'cy' %}"
-     data-abroad-en="{% get_translation key=course.year_abroad language='en' %}" data-abroad-cy="{% get_translation key=course.year_abroad language='cy' %}">
-
-     <div class="mb-3">
+        {% if sort_by_subject_enabled == "true" %}
+     data-courseidentifier="{{ course.institution.pub_ukprn }}/{{ course.kis_course_id }}/{{ course.mode }}"
+     data-uniname="{{ course.institution.pub_ukprn_name }}"
+     data-uniid="{{ course.institution.pub_ukprn }}"
+        {% else %}
+     data-courseidentifier="{{ institution_id }}/{{ course.kis_course_id }}/{{ course.mode }}"
+     data-uniname="{{ institution.pub_ukprn_name }}"
+     data-uniid="{{ institution_id }}"
+        {% endif %}
+     data-coursename="{{ course_name }}"
+     data-courseid="{{ course.kis_course_id }}"
+     data-locations="{{ locations }}" data-length="{{ course.length_of_course|slice:1 }}"
+     data-mode-en="{% get_translation key=course.mode language='en' %}"
+     data-mode-cy="{% get_translation key=course.mode language='cy' %}"
+     data-sandwich-en="{% get_translation key=course.sandwich_year language='en' %}"
+     data-sandwich-cy="{% get_translation key=course.sandwich_year language='cy' %}"
+     data-distance-en="{% map_distance_learning_values course.distance_learning 'en' %}"
+     data-distance-cy="{% map_distance_learning_values course.distance_learning 'cy' %}"
+     data-abroad-en="{% get_translation key=course.year_abroad language='en' %}"
+     data-abroad-cy="{% get_translation key=course.year_abroad language='cy' %}">
+    <div class="mb-3">
         <button class="course-detail__compare-btn">
             <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
             <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
-             {% get_translation key='bookmark_course' language=page.get_language %}
+            {% get_translation key='bookmark_course' language=page.get_language %}
         </button>
-     </div>
+    </div>
 
 
-  
+
     {% if sort_by_subject_enabled == 'true' %}
-        <a href="{% if page.is_welsh %}/cy{% endif %}/course-details/{{institution_id}}/{{item.kis_course_id}}/{{item.mode}}"
-        class="course-finder-results__result-accordion-body-sort-by-subject-course-name">
+        <a href="{% if not page.is_english %}/cy{% endif %}/course-details/{{ institution_id }}/{{ item.kis_course_id }}/{{ item.mode }}"
+           class="course-finder-results__result-accordion-body-sort-by-subject-course-name">
             {{ course_name }}
-        </a>     
+        </a>
         <p class="course-finder-results__result-accordion-body-course-provider">
             {{ course.institution.pub_ukprn_name }}
-        </p>     
+        </p>
     {% else %}
-        <a href="{% if page.is_welsh %}/cy{% endif %}/course-details/{{institution_id}}/{{course.kis_course_id}}/{{course.mode}}"
-        class="course-finder-results__result-accordion-body-course-name">
+        <a href="{% if not page.is_english %}/cy{% endif %}/course-details/{{ institution_id }}/{{ course.kis_course_id }}/{{ course.mode }}"
+           class="course-finder-results__result-accordion-body-course-name">
             {{ course_name }}
         </a>
     {% endif %}
@@ -76,7 +86,7 @@
     </p>
 
     <p class="course-finder-results__result-accordion-body-course-info">
-        {% get_translation key='distance_learning' language=page.get_language %}: {{distance_learning_display}}
+        {% get_translation key='distance_learning' language=page.get_language %}: {{ distance_learning_display }}
     </p>
     <script>
         pushToArray('{{distance_learning_display}}', '{{course.country}}')
@@ -91,7 +101,7 @@
     </p>
     {% if locations %}
         <p class="course-finder-results__result-accordion-body-course-info">
-            {% get_translation key='location' language=page.get_language %}: {{locations}}
+            {% get_translation key='location' language=page.get_language %}: {{ locations }}
         </p>
     {% endif %}
 

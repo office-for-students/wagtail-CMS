@@ -1,0 +1,23 @@
+{% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
+
+<div class="comparison__top-container">
+    <div class="need-help-box">
+        {% autoescape off %}
+            <p class="header">{% get_translation key='guidance_comparing' language=page.get_language %}</p>
+            <img class="image"
+                 src="/static/images/compare-course-graphic.svg"
+                 alt="{% get_translation key='guidance_comparing' language=page.get_language %}">
+            <p class=" text">{% get_translation key='guidance_text' language=page.get_language %}</p>
+        {% endautoescape %}
+    </div>
+    <div class="add-btn">
+        <a id="addCourses" href="/{% get_translation key='bookmark_courses_link' language=page.get_language %}"
+           class="add-courses-button">
+            <span class="plus">+</span>
+            <span>{% get_translation key='add_saved_course' language=page.get_language %}</span>
+        </a>
+        <p class="compare-text">
+            {% get_translation key='compare_7_courses' language=page.get_language %}
+        </p>
+    </div>
+</div>

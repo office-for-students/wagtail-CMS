@@ -1,7 +1,7 @@
 @import '../variables';
 @import '../fonts';
 
-.course-detail__compare-btn {
+.course-detail__compare-btn,  .course-detail__bookmark-compare-btn{
     @include small-font--bold-mixin();
     padding: 5px 10px;
     border: 1.5px solid #266969;
@@ -34,6 +34,19 @@
     }
 }
 
+.course_added{
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+    transform: translate(-25px, 0);
+}
+.checkmark{
+    color: #4da17c;
+}
+.not_enough{
+    position: absolute;
+    right: 50px;
+    bottom: 15px;
+}
 .compare-courses-box{
     display: flex;
     width: 100vw;
@@ -45,30 +58,58 @@
     align-items: center;
 }
 
+
+.compare_courses_btn{
+    color: white;
+    width: 180px;
+    height: 40px;
+    position: relative;
+    margin-top: 14px;
+    padding: 9px 26px;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+
+    &-text {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        padding-top: 5px;
+    }
+}
+
+.disable{
+    pointer-events: none;
+    cursor: default;
+    background: grey !important;
+}
+
 .compare-courses-img{
     height: 90px;
 }
 
-.compare-text{
+.compare-text {
     font-family: "Nunito Sans", sans-serif;
 
-    &-header{
+    &-header {
         width: 180px;
-        font-size: 20px !important;
+        font-size: 1.25rem !important;
         font-weight: bold !important;
-        margin: 10px 0px 20px 0;
+        margin: 10px 0 20px 0;
     }
 
-    &-content{
+    &-content {
         display: flex;
         margin: 20px 0 16px;
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: normal;
         min-width: 211px;
     }
 
-    &-highlight{
-        font-size: 16px;
+    &-highlight {
+        font-size: 1rem;
         font-weight: bold;
         color: $ugly-blue;
     }
@@ -113,17 +154,20 @@
     left: 0;
     width: 100%;
     z-index: 200;
-
-
-
+    border-top: 2px solid $gradient-dark-green;
     background-color: $divider-grey;
+
+    &__left_container{
+        max-width: 100%;
+        text-align: left;
+    }
 
     &__wrapper {
         @include mobile-body-font-mixin();
 
         padding: 29px 31px;
         position: relative;
-        text-align: center;
+        text-align: left;
 
         p {
             margin: 5px;
@@ -134,6 +178,9 @@
         position: absolute;
         top: 7px;
         right: 7px;
+        border: none;
+        box-shadow: none;
+        background-color: transparent;
 
         img {
             width: 9px;
@@ -143,8 +190,13 @@
 
     &__count {
         .count {
-            color: $gradient-light-green;
+            color: black;
         }
+    }
+
+    &-saved_courses_link{
+        display: block;
+        margin-top: 8px;
     }
 
     &__add, &__remove, &__too-many, &__not-enough, &__enough {
@@ -174,9 +226,19 @@
         color: #fdfafa;
         background-color: transparent;
     }
+    .course-detail__bookmark-compare-btn {
+        @include small-font--bold-mixin();
+        padding: 9px 16px 10px 19px;
+
+        border-radius: 16px;
+//         color: $ux-grey-3;
+        color: #fdfafa;
+        background-color: transparent;
+    }
 }
 
 #sticky_nav_course_detail{
+    z-index: 10;
 
     .nav-item.nav-link.scrollto {
         font-size:0.9rem;
@@ -226,8 +288,36 @@
             display: none;
         }
     }
+    .compare-popup__wrapper{
+        margin-left:auto !important;
+        margin-right:auto !important;
+    }
 }
 
+@media (min-width: 426px){
+    .compare_courses_btn{
+        position: absolute;
+        top: 25%;
+        right: 50px;
+        float: left;
+    }
+    .compare-popup{
+        &__wrapper{
+            text-align: center;
+            margin-left:auto !important;
+            margin-right:auto !important;
+        }
+        &-saved_courses_link{
+            display: block;
+            margin-top: 8px;
+        }
+    }
+
+    .compare-popup__left_container{
+        max-width: 50%;
+    }
+
+}
 /* for larger screens */
 @media (min-width: 768px) {
     #sticky_nav_course_detail{
@@ -270,6 +360,11 @@
     .intro-position{
         margin-left: 20px;
     }
+    .compare-popup__wrapper{
+        width: 720px!important;
+        margin-left:auto !important;
+        margin-right:auto !important;
+    }
 }
 
 @media only screen and (min-width: 1280px){
@@ -278,5 +373,10 @@
     }
     .intro-position{
         margin-left: -16px;
+    }
+    .compare-popup__wrapper{
+        width: 1140px !important;
+        margin-left:auto !important;
+        margin-right:auto !important;
     }
 }

@@ -44,3 +44,5 @@ data/
 docker-compose.*.yml
 !docker-compose.non-dev.yml
 !docker-compose.ci.yml
+
+docker-setup-db.sh

@@ -12,7 +12,9 @@
 </script>
 
 <div class="filters-block__filter-accordion">
-    <div tabindex="0" role="button" aria-label="Show content" class="filters-block__filter-accordion-header">
+    <div tabindex="0" role="button"
+         aria-label="Show {% get_translation key='location' language=page.get_language %} content"
+         class="filters-block__filter-accordion-header">
         <div class="filters-block__filter-accordion-heading">
             <div class="filters-block__filter-accordion-title">
                 {% get_translation key='location' language=page.get_language %}
@@ -29,7 +31,7 @@
     </div>
 
     <div class="filters-block__filter-accordion-body default-open-accordion">
-        <div class="filters-block__filter-disabled message hidden" >
+        <div class="filters-block__filter-disabled message hidden">
             {% get_translation key='filter_not_applicable' language=page.get_language %}
         </div>
 
@@ -37,99 +39,140 @@
             {% get_translation key='filter_by' language=page.get_language %}
         </div>
         <div class="filters-block__filter-option-location">
-            <input type="radio" id="region" class="filters-block__filter-radio-region" name="location_radio" value="region"checked>
-            <label class="filters-block__filter-radio-label" for="region">{% get_translation key='regions' language=page.get_language %}</label><br>
-            <input type="radio" id="postcode" class="filters-block__filter-radio-postcode" name="location_radio" value="postcode" {% if filter_form.postcode_query %}checked{% endif %}>
-            <label class="filters-block__filter-radio-label" for="postcode">{% get_translation key='postcode' language=page.get_language %}</label><br>
+            <input type="radio" id="region" class="filters-block__filter-radio-region" name="location_radio"
+                   value="region" checked>
+            <label class="filters-block__filter-radio-label"
+                   for="region">{% get_translation key='regions' language=page.get_language %}</label><br>
+            <input type="radio" id="postcode" class="filters-block__filter-radio-postcode" name="location_radio"
+                   value="postcode" {% if filter_form.postcode_query %}checked{% endif %}>
+            <label class="filters-block__filter-radio-label"
+                   for="postcode">{% get_translation key='postcode' language=page.get_language %}</label><br>
         </div>
 
         <div id="regionDiv" class="filters-block__filter-options region-div">
 
             <div class="filters-block__filter-option-country">
-                <input id="countries-scotland" class="hidden-scotland" type="checkbox" name="countries_query" value="Scotland" hidden
-                    {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}/>
-                <input id="countries-scotland" class="filters-block__filter-checkbox-input scotland" onclick="toggleCheckbox('scotland')" type="checkbox" name="countries_check" value="Scotland"
-                    {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}/>
+                <input id="countries-scotland" class="hidden-scotland" type="checkbox" name="countries_query"
+                       value="Scotland" hidden
+                       {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-scotland-label"/>
+                <input id="countries-scotland" class="filters-block__filter-checkbox-input scotland"
+                       onclick="toggleCheckbox('scotland')" type="checkbox" name="countries_check" value="Scotland"
+                       {% if 'Scotland' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-scotland-label"/>
 
-                <label class="filters-block__filter-checkbox-label-bold" for="countries-scotland">
+                <label class="filters-block__filter-checkbox-label-bold" id="countries-scotland-label"
+                       for="countries-scotland">
                     {% get_translation key='scotland' language=page.get_language %}
                 </label>
             </div>
 
             <div class="filters-block__filter-option-country">
-                <input id="countries-wales" class="hidden-wales" type="checkbox" name="countries_query" value="Wales" hidden
-                    {% if 'Wales' in filter_form.countries_query %}checked{% endif %}/>
-                <input id="countries-wales" class="filters-block__filter-checkbox-input wales" onclick="toggleCheckbox('wales')" type="checkbox" name="countries_check" value="Wales" 
-                    {% if 'Wales' in filter_form.countries_query %}checked{% endif %}/>
+                <input id="countries-wales" class="hidden-wales" type="checkbox" name="countries_query" value="Wales"
+                       hidden
+                       {% if 'Wales' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-wales-label"/>
+                <input id="countries-wales" class="filters-block__filter-checkbox-input wales"
+                       onclick="toggleCheckbox('wales')" type="checkbox" name="countries_check" value="Wales"
+                       {% if 'Wales' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-wales-label"/>
 
-                <label class="filters-block__filter-checkbox-label-bold" for="countries-wales">
+                <label class="filters-block__filter-checkbox-label-bold" id="countries-wales-label">
                     {% get_translation key='wales' language=page.get_language %}
                 </label>
             </div>
 
             <div class="filters-block__filter-option-country">
-                <input id="countries-ireland" class="hidden-ireland" type="checkbox" name="countries_query" value="Northern Ireland" hidden
-                    {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}/>
-                <input id="countries-ireland" class="filters-block__filter-checkbox-input ireland" onclick="toggleCheckbox('ireland')" type="checkbox" name="countries_check" value="Northern Ireland"
-                    {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}/>
+                <input id="countries-ireland" class="hidden-ireland" type="checkbox" name="countries_query"
+                       value="Northern Ireland" hidden
+                       {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-ireland-label"/>
+                <input id="countries-ireland" class="filters-block__filter-checkbox-input ireland"
+                       onclick="toggleCheckbox('ireland')" type="checkbox" name="countries_check"
+                       value="Northern Ireland"
+                       {% if 'Northern Ireland' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-ireland-label"/>
 
-                <label class="filters-block__filter-checkbox-label-bold" for="countries-ireland">
+                <label class="filters-block__filter-checkbox-label-bold" id="countries-ireland-label"
+                       for="countries-ireland">
                     {% get_translation key='northern_ireland' language=page.get_language %}
                 </label>
             </div>
 
             <div class="filters-block__filter-option-country">
-                <input id="countries-england" class="hidden-england" type="checkbox" name="countries_query" value="England" hidden
-                    {% if 'England' in filter_form.countries_query %}checked{% endif %}/>
-                <input id="countries-england" class="filters-block__filter-checkbox-input england" onclick="toggleCheckbox('england')" type="checkbox" name="countries_check" value="England"
-                    {% if 'England' in filter_form.countries_query %}checked{% endif %}/>
+                <input id="countries-england" class="hidden-england" type="checkbox" name="countries_query"
+                       value="England" hidden
+                       {% if 'England' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-england-label"/>
+                <input id="countries-england" class="filters-block__filter-checkbox-input england"
+                       onclick="toggleCheckbox('england')" type="checkbox" name="countries_check" value="England"
+                       {% if 'England' in filter_form.countries_query %}checked{% endif %}
+                       aria-labelledby="countries-england-label"/>
 
-                <label class="filters-block__filter-checkbox-label-bold" for="countries-england">
+                <label class="filters-block__filter-checkbox-label-bold" id="countries-england-label"
+                       for="countries-england">
                     {% get_translation key='england' language=page.get_language %}
                 </label>
             </div>
         </div>
 
         <div class="filters-block__filter-postcode-div">
-            <label for="postcode_field" class="filters-block__filter-checkbox-label-bold">{% get_translation key='postcode' language=page.get_language %}</label>
-            <input style="margin-bottom: 20px;" id="postcode_field" class="filters-block__filter-postcode-div-textfield postcode-fieldset" type="text" name="postcode" {% if filter_form.postcode %} value="{{filter_form.postcode}}" {% endif %} disabled />
+            <label for="postcode_field"
+                   class="filters-block__filter-checkbox-label-bold">{% get_translation key='postcode' language=page.get_language %}</label>
+            <input style="margin-bottom: 20px;" id="postcode_field"
+                   class="filters-block__filter-postcode-div-textfield postcode-fieldset" type="text" name="postcode"
+                    {% if filter_form.postcode %} value="{{ filter_form.postcode }}" {% endif %} disabled/>
 
-            <label for="postcode-distance" class="filters-block__filter-checkbox-label-bold">{% get_translation key='distance' language=page.get_language %}</label>
-            <div onclick="$('.filters-block__filter-postcode-div-dropdown-body').toggle();" class="filters-block__filter-postcode-div-dropdown distance-dropdown postcode-fieldset">
-                <div class="filters-block__filter-postcode-div-dropdown-text">{{filter_form.distance}}</div>
+            <label for="postcode-distance"
+                   class="filters-block__filter-checkbox-label-bold">{% get_translation key='distance' language=page.get_language %}</label>
+            <div onclick="$('.filters-block__filter-postcode-div-dropdown-body').toggle();"
+                 class="filters-block__filter-postcode-div-dropdown distance-dropdown postcode-fieldset">
+                <div class="filters-block__filter-postcode-div-dropdown-text">{{ filter_form.distance }}</div>
                 <div style="display: inline; float: right; padding-right: 5px; font-weight: bold;">&#x2304;</div>
                 <div class="filters-block__filter-postcode-div-dropdown-body distance-content">
-                    <div class="filters-block__filter-postcode-div-dropdown-item" onclick="selectDistance('');" style="height: 23px;"></div>
-                    <div class="filters-block__filter-postcode-div-dropdown-item ten_miles" onclick="selectDistance(10);"></div>
-                    <div class="filters-block__filter-postcode-div-dropdown-item twenty_five_miles" onclick="selectDistance(25);"></div>
-                    <div class="filters-block__filter-postcode-div-dropdown-item fifty_miles" onclick="selectDistance(50);"></div>
+                    <div class="filters-block__filter-postcode-div-dropdown-item" onclick="selectDistance('');"
+                         style="height: 23px;"></div>
+                    <div class="filters-block__filter-postcode-div-dropdown-item ten_miles"
+                         onclick="selectDistance(10);"></div>
+                    <div class="filters-block__filter-postcode-div-dropdown-item twenty_five_miles"
+                         onclick="selectDistance(25);"></div>
+                    <div class="filters-block__filter-postcode-div-dropdown-item fifty_miles"
+                         onclick="selectDistance(50);"></div>
                 </div>
             </div>
 
             <script>
-                for(var i = 0; i < 2; i++){
-                    if(ten_miles[i]){
+                for (var i = 0; i < 2; i++) {
+                    if (ten_miles[i]) {
                         ten_miles[i].innerHTML = translation.replace("{}", 10);
-                        twenty_five_miles[i].innerHTML= translation.replace("{}", 25);
+                        twenty_five_miles[i].innerHTML = translation.replace("{}", 25);
                         fifty_miles[i].innerHTML = translation.replace("{}", 50);
-                        if(form_value){
+                        if (form_value) {
                             distance_value[i].innerHTML = translation.replace("{}", form_value);
-                        };
-                    };
-                };
+                        }
+
+                    }
+
+                }
+
             </script>
-            <select id="postcode-distance" name="distance" class="filters-block__filter-postcode-div-textfield postcode-fieldset distance-value" hidden disabled>
+            <select id="postcode-distance" name="distance"
+                    class="filters-block__filter-postcode-div-textfield postcode-fieldset distance-value" hidden
+                    disabled>
                 <option class="filters-block__filter-postcode-div-question"
-                                        value="">
+                        value="">
                 </option>
                 <option class="filters-block__filter-postcode-div-question"
-                        placeholder="Within 10 miles"  value="10" {% if filter_form.distance == '10' %}selected{% endif %}>10
+                        placeholder="Within 10 miles" value="10"
+                        {% if filter_form.distance == '10' %}selected{% endif %}>10
                 </option>
                 <option class="filters-block__filter-postcode-div-question"
-                        placeholder="Within 25 miles" value="25" {% if filter_form.distance == '25' %}selected{% endif %}>25
+                        placeholder="Within 25 miles" value="25"
+                        {% if filter_form.distance == '25' %}selected{% endif %}>25
                 </option>
                 <option class="filters-block__filter-postcode-div-question"
-                        placeholder="Within 50 miles"  value="50" {% if filter_form.distance == '50' %}selected{% endif %}>50
+                        placeholder="Within 50 miles" value="50"
+                        {% if filter_form.distance == '50' %}selected{% endif %}>50
                 </option>
             </select>
         </div>

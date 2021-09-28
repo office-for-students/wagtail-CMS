@@ -1,0 +1,143 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+
+.search_button {
+  @include yellow-btn;
+}
+
+.course_search {
+  display: contents;
+
+  .search_form {
+    margin-top: 25px;
+
+    &-fields {
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    &-label {
+      @include small-font-mixin();
+
+      margin-bottom: 7px;
+      display: block;
+
+      color: $helper-grey;
+    }
+
+    &-input {
+
+      input {
+        @include desktop-body-font-mixin();
+
+        width: 100%;
+        height: 40px;
+        box-sizing: border-box;
+
+        border: 1px solid $ux-grey-3;
+        border-radius: 5px;
+        background: $background-grey;
+        line-height: 34px;
+
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+
+    &-text {
+      @include mobile-body-font-mixin();
+
+      margin: 10px 0px;
+
+      color: $ux-grey-3;
+      line-height: 22px;
+    }
+  }
+
+}
+
+@media only screen and (min-width: 770px) {
+  .course_search {
+    &__search {
+      margin-top: 35px;
+
+      .search-landing-page__nav-card-button {
+        margin-top: 0px;
+      }
+
+      &-text {
+        @include xs-heading-mixin();
+
+        color: $ux-grey-3;
+        line-height: 27px;
+      }
+    }
+  }
+}
+
+.course_comparison-search {
+  color: $black;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+
+  .row{
+    width: 100%;
+  }
+
+  .col-lg-1 {
+    padding: 0;
+    padding-left: 1rem;
+    flex: 0 0 2.333333%;
+    max-width: 2.333333%;
+  }
+
+
+  h4 {
+    color: $black;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  h5 {
+    font-weight: normal;
+    font-size: 0.9rem;
+
+  }
+
+  .home-page__course-wizard-icon {
+    height: 45px;
+    width: auto;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-dropdown .search-field-dropdown-button {
+    position: absolute;
+    display: inline-block;
+    top: 10%;
+    right: 4px;
+    width: 32px;
+    height: 85%;
+    border: none;
+    background-color: $white;
+    cursor: pointer;
+    outline: none;
+  }
+
+
+  input#institution_query-search.search-field-input {
+    border-width: 1px solid #ced4da !important;
+    width: 100%;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 1rem;
+    color: rgb(73, 80, 87);
+    height: calc(1.5em + .75rem + 2px);
+    background-color: $white !important;
+    padding-left: 0.7rem;
+  }
+
+}

@@ -1,0 +1,37 @@
+{% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
+    <div id="course-info-container">
+        {% with dataset=courses_data.0.student_satisfaction_course_overview_1 %}
+            <div class="course_comparison-table__row-header header">
+                Source: &nbsp; <a class="course_comparison-table__row-link" href="{% get_translation key='about_our_data_link' language=page.get_language %}">
+                 NSS (National Student Survey)</a>
+    <!--            TODO: revise wagtail content so it just contains the source link then get link from wagtail-->
+<!--                {{ page.accordions.0.value.intro_body }}-->
+            </div>
+
+            {% for item, value in dataset.dataset.items %}
+                {% if forloop.counter < change_point %}
+                <div class="course_comparison-table__row-yellow_background">
+                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
+                </div>
+                {% else %}
+                <div class="course_comparison-table__row-grey_background">
+                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
+                </div>
+                {% endif %}
+            {% endfor %}
+
+
+        {% endwith %}
+        {% with dataset=courses_data.0.student_satisfaction_course_overview_1.sub_accordions %}
+            {% for sub_accordion in dataset %}
+            <p style="color: black;">{{sub_accordion.title}}</p>
+                {% for item, value in sub_accordion.dataset.items %}
+                    <p style="color: black;">{{value.title}}</p>
+                        {% for values in value.values %}
+                                <span style="color: black;">{{values}}</span>
+                        {% endfor %}
+                {% endfor %}
+
+            {% endfor %}
+        {% endwith %}
+    </div>
