@@ -1,20 +1,14 @@
-import string
 import json
-
+import string
 from urllib.parse import urlencode
 
 from django import template
 
-from CMS.enums import enums
-from CMS.translations import DICT
+from CMS import translations
 from core.utils import get_current_version, get_code_version
-
-from django.utils.safestring import mark_safe
-from wagtail.core.rich_text import RichText, expand_db_html
-
-
-from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, ACCREDITATION_KEY,\
-    EARNINGS_AFTER_COURSE_KEY, EMPLOYMENT_AFTER_COURSE_KEY, GRADUATE_PERCEPTIONS_KEY, LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
+from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, ACCREDITATION_KEY, \
+    EARNINGS_AFTER_COURSE_KEY, EMPLOYMENT_AFTER_COURSE_KEY, GRADUATE_PERCEPTIONS_KEY, \
+    LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
 
 register = template.Library()
 
@@ -49,17 +43,24 @@ def queryparams(*_, **kwargs):
 
 
 @register.simple_tag
+def data_not_available(**kwargs):
+    language = kwargs.get('language')
+    subject = kwargs.get('subject')
+    no_data = translations.term_for_key(key="no_data_available", language=language)
+    if subject == no_data:
+        return "hidden"
+    return ""
+
+
+@register.simple_tag
 def get_translation(*_, **kwargs):
     key = kwargs.get('key')
     language = kwargs.get('language')
-    string = DICT.get(key).get(language) if key in DICT else key
-
-    if not string:
-        string = DICT.get(key).get(enums.languages.ENGLISH) if key in DICT else ''
+    term = translations.term_for_key(key, language)
 
     if 'substitutions' in kwargs:
-        string = string % kwargs.get('substitutions')
-    return string
+        term = term % kwargs.get('substitutions')
+    return term
 
 
 @register.simple_tag
@@ -79,9 +80,7 @@ def length_of_list(view_list):
 
 @register.simple_tag
 def map_distance_learning_values(key, language):
-    if key in DICT.get('distance_learning_values'):
-        return DICT.get('distance_learning_values').get(key).get(language)
-    return key
+    return translations.term_for_key(key, language)
 
 
 @register.simple_tag
@@ -176,12 +175,14 @@ def get_region_list():
         regions = f.read()
     return json.loads(regions)
 
+
 @register.simple_tag
 def concat(*args, **_):
     concat_string = ""
     for arg in args:
         concat_string += str(arg)
     return concat_string
+
 
 @register.simple_tag
 def insert_values_to_plain_text(*_, **kwargs):

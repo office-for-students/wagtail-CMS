@@ -1,0 +1,40 @@
+{% load staticfiles discover_uni_tags %}
+{% for course in courses %}
+    {% with course_id=course.institution.pub_ukprn|add:"/"|add:course.kis_course_id|add:"/"|add:course.mode.label %}
+    <div id="{{ course_id }}"
+         data-multiple_subjects="{{ course.has_multiple_subject_names }}"
+         class="course-detail__courses-container cc-column-{{ forloop.counter0 }}" data-index="{{ forloop.counter0 }}">
+        <div>
+            {% with stars="123" index=forloop.counter0 %}
+                {% for star in stars %}
+                    <li class="rating js-star-rating"
+                        id="course-{{ index }}-star{{ star }}"
+                        value="{{ star }}">☆
+                    </li>
+                {% endfor %}
+            {% endwith %}
+            <img id="ratings_remove-{{ forloop.counter0 }}" class="course-detail__courses-container-exit-course"
+                 src="{% static 'images/icon-close.svg' %}"
+                 alt="{% get_translation key='close' language=page.get_language %}">
+        </div>
+
+        <a class="course-detail__courses-name" href="{% if page.get_language == "cy" %}/cy{% endif %}/course-details/{{ course_id }}/" target="_blank">
+            {{ course.display_title }}
+        </a>
+
+        {% if page.is_english %}
+            <a class="course-detail__courses-institution-name"
+               href="/institution-details/{{ course.institution.pub_ukprn }}/"
+               target="_blank">
+                {% autoescape off %}{{ course.institution.pub_ukprn_name | safe }}{% endautoescape %}
+            </a>
+        {% else %}
+            <a class="course-detail__courses-institution-name"
+               href="/cy/institution-details/{{ course.institution.pub_ukprn }}/"
+               target="_blank">
+                {% autoescape off %}{{ course.institution.pub_ukprn_name | safe }}{% endautoescape %}
+            </a>
+        {% endif %}
+    </div>
+    {% endwith %}
+{% endfor %}

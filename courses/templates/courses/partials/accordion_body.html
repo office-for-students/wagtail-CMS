@@ -1,0 +1,81 @@
+{% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
+{% with dataset=accordion.dataset sub_accordions=accordion.sub_accordions unavailable=accordion.unavailable change_point=accordion.change_point %}
+    <div class="mb-3">
+        {% if accordion.guidance_information %}
+            <div class="guidance_box">
+                <p class="title">{% get_translation key='guidance_title' language=page.get_language %}</p>
+                {% autoescape off %}
+                    <div>
+                        <ul class="mt-3">
+                            {% for entry in accordion.guidance_information %}
+                                <li class="item">{{entry}}</li>
+                            {% endfor %}
+                        </ul>
+                    <a class="link blue-text" href="{{accordion.source.0}}" target="_blank">{{accordion.source.1}}
+                        <img class="new_tab" src="/static/images/new_tab_icon.png" alt={% get_translation key='open_tab' language=page.get_language %}>
+                    </a>
+                    </div>
+                {% endautoescape %}
+            </div>
+        {% endif %}
+        {% if accordion.subjects %}
+            {% include 'courses/partials/subject_selector.html' with subjects=accordion.subjects %}
+        {% endif %}
+        {% for item, value in dataset.items %}
+            {% if forloop.counter < change_point %}
+                <div class="comparison_row-yellow_background">
+                    {% if forloop.counter == 1 %}
+                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values header_font="header_font" mt="mt-3" %}
+                    {% else %}
+                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values mt="mt-2" %}
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="comparison_row-grey_background">
+                    {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {% for sub_accordion in sub_accordions %}
+        {% with identifier=sub_accordion.title|title|cut:" "|add:"-ac-" sub_count=forloop.counter0 %}
+            <div class="accordion-block">
+                <div id="{{ identifier }}{{ index }}" data-index="{{ index }}" class="comparison_row-header sub_accordion_header">
+                    {{sub_accordion.title}}
+                    <div class="ml-auto">
+                        <div id="{{ identifier }}{{ index }}-expand" class="hidden">
+                            <img class="invert-image" src="{% static 'images/plus_icon_white.svg' %}" alt="expand">
+                        </div>
+
+                        <div id="{{ identifier }}{{ index }}-collapse" class="">
+                            <img class="invert-image" src="{% static 'images/minus_icon.svg' %}" alt="collapse">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-{{ identifier }}{{ index }}">
+                    {% if accordion.multi_subject_selectors %}
+                        {% if forloop.first %}
+                            {% include 'courses/partials/subject_selector.html' with subjects=accordion.multi_subject_selectors.0 %}
+                        {% else %}
+                            {% include 'courses/partials/subject_selector.html' with subjects=accordion.multi_subject_selectors.1 %}
+                        {% endif %}
+                    {% endif %}
+                    {% for item, value in sub_accordion.dataset.items %}
+                        {% if accordion.earnings %}
+                            <div id="{{ sub_accordion.title }}{{ forloop.counter0 }}"
+                                 class="comparison_row-earnings{% if sub_count == 0 %}_first{% endif %}">
+                                {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" earnings="earnings" %}
+                            </div>
+                        {% else %}
+                            <div id="{{ sub_accordion.title }}{{ forloop.counter0 }}"
+                                 class="comparison_row-grey_background">
+                                {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" %}
+                            </div>
+                            {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endwith %}
+    {% endfor %}
+{% endwith %}

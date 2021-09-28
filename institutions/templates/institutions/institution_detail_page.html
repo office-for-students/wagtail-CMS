@@ -2,11 +2,12 @@
 {% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
 
 {% block extra_css %}
-    <link href="{% sass_src 'scss/institution_details.scss' %}?{% code_version %}" rel="stylesheet" type="text/css" >
+    <link href="{% sass_src 'scss/institution_details.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block extra_js %}
-    <script type="text/javascript" src="{% static 'js/institution_explanation_pop_ups.js' %}?{% code_version %}"></script>
+    <script type="text/javascript"
+            src="{% static 'js/institution_explanation_pop_ups.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
 {% endblock %}
 
@@ -17,7 +18,7 @@
                 <img class="institution-details__icon" src="{% static 'images/institution_icon.svg' %}" alt="">
 
                 <h1 class="institution-details__name">
-                    {{institution.pub_ukprn_name}}
+                    {{ institution.pub_ukprn_name }}
                 </h1>
 
                 <div class="institution-details__overview row row-flex">
@@ -25,7 +26,7 @@
                         <div class="institution-details__overview-item">
                             <div class="item my-auto">
                                 <p class="institution-details__overview-item-heading">{% get_translation key='address' language=page.get_language %}</p>
-                                <p class="institution-details__overview-item-value">{{ institution.contact_details.address }}</p>    
+                                <p class="institution-details__overview-item-value">{{ institution.contact_details.address }}</p>
                             </div>
                         </div>
                     </div>
@@ -35,7 +36,8 @@
                             <div class="item my-auto">
                                 <p class="institution-details__overview-item-heading">{% get_translation key='website' language=page.get_language %}</p>
                                 {% if institution.website %}
-                                    <a class="institution-details__overview-item-value" target="_blank" href="https://{{ institution.website }}">{{institution.pub_ukprn_name}}</a>
+                                    <a class="institution-details__overview-item-value" target="_blank"
+                                       href="https://{{ institution.website }}">{{ institution.pub_ukprn_name }}</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -46,7 +48,7 @@
                             <div class="item my-auto">
                                 <p class="institution-details__overview-item-heading">{% get_translation key='telephone' language=page.get_language %}</p>
                                 <p class="institution-details__overview-item-value">{{ institution.contact_details.phone_number }}</p>
-                            </div>  
+                            </div>
                         </div>
                     </div>
 
@@ -57,7 +59,8 @@
                                 {% for union in institution.student_unions %}
                                     {% if union.display_name %}
                                         {% if union.display_url %}
-                                            <a class="institution-details__overview-item-value" target="_blank" href="{{ union.display_url }}">{{ union.display_name }}</a>
+                                            <a class="institution-details__overview-item-value" target="_blank"
+                                               href="{{ union.display_url }}">{{ union.display_name }}</a>
                                         {% else %}
                                             <p class="institution-details__overview-item-value">{{ union.display_name }}</p>
                                         {% endif %}
@@ -68,9 +71,11 @@
                     </div>
                 </div>
 
-                <form class="institution-details__search" {% if page.is_welsh %} action="/cy/course-finder/results/" {% else %} action="/course-finder/results/" {% endif %} method="post" autocomplete="off">
+                <form class="institution-details__search" {% if page.is_welsh %}
+                      action="/cy/course-finder/results/" {% else %} action="/course-finder/results/" {% endif %}
+                      method="post" autocomplete="off">
                     {% csrf_token %}
-                    <input type="hidden" name = "institution_query" value = "{{ institution.pub_ukprn_name }}"/>
+                    <input type="hidden" name="institution_query" value="{{ institution.pub_ukprn_name }}"/>
                     <button class="institution-details__course-button">
                         {% get_translation key='view_all_courses' language=page.get_language %}
                     </button>
@@ -79,24 +84,24 @@
 
             <div class="institution-details__qa">
                 <h2 class="institution-details__qa-heading">
-                    {{page.qa_heading}}
+                    {{ page.qa_heading }}
                 </h2>
 
                 <div class="institution-details__qa-body">
-                    {{page.qa_body | richtext}}
+                    {{ page.qa_body | richtext }}
                 </div>
 
                 {% if institution.show_qa_report_link %}
                     <a class="institution-details__qa-report-link"
-                       href="https://www.qaa.ac.uk/reviewing-higher-education/quality-assurance-reports/provider?UKPRN={{institution.pub_ukprn}}">
-                        {{page.qa_report_link}}
+                       href="https://www.qaa.ac.uk/reviewing-higher-education/quality-assurance-reports/provider?UKPRN={{ institution.pub_ukprn }}">
+                        {{ page.qa_report_link }}
                     </a>
                 {% endif %}
 
                 <div class="explanation">
                     <div class="explanation__link">
                         <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
-                        <button class="information-link">{{page.qa_explanation_link}}</button>
+                        <button class="information-link">{{ page.qa_explanation_link }}</button>
                     </div>
 
                     {% include 'institutions/partials/explanation_pop_up.html' with heading=page.qa_explanation_heading body=page.qa_explanation_body close_color='black' %}
@@ -106,77 +111,77 @@
             {% if institution.is_irish %}
                 <div class="institution-details__apr">
                     <h2 class="institution-details__apr-heading">
-                        {{page.apr_heading}} {{institution.apr_outcome}}
+                        {{ page.apr_heading }} {{ institution.apr_outcome }}
                     </h2>
 
                     <div class="institution-details__apr-body">
                         {% if institution.apr_is_met %}
-                            {{page.apr_met_body | richtext}}
+                            {{ page.apr_met_body | richtext }}
                         {% elif institution.apr_is_action_plan %}
-                            {{page.apr_action_plan_body | richtext}}
+                            {{ page.apr_action_plan_body | richtext }}
                         {% elif institution.apr_is_pending %}
-                            {{page.apr_pending_body | richtext}}
+                            {{ page.apr_pending_body | richtext }}
                         {% elif institution.apr_is_not_met %}
-                            {{page.apr_not_met_body | richtext}}
+                            {{ page.apr_not_met_body | richtext }}
                         {% endif %}
                     </div>
 
                     <div class="explanation">
                         <div class="explanation__link">
                             <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
-                            <button class="information-link">{{page.apr_explanation_link}}</button>
+                            <button class="information-link">{{ page.apr_explanation_link }}</button>
                         </div>
 
                         {% include 'institutions/partials/explanation_pop_up.html' with heading=page.apr_explanation_heading body=page.apr_explanation_body close_color='black' %}
                     </div>
                 </div>
-            {% endif  %}
+            {% endif %}
 
-            <div class="institution-details__tef">
-                <h2 class="institution-details__tef-heading">
-                    {{page.tef_heading}}
-                </h2>
-
-                <div class="institution-details__tef-outcome">
-                    {% if institution.show_tef_logo %}
-                        <img src="{% static 'images/tef_'|add:institution.tef_outcome|lower|add:'_en.jpg' %}" alt="TEF {{institution.tef_outcome}} logo">
-                    {% else %}
-                        <p>{% get_translation key=institution.tef_outcome language=page.get_language %}</p>
-                    {% endif %}
-                </div>
-
-                <div class="institution-details__tef-body">
-                    {% if institution.tef_is_gold %}
-                        {{ page.tef_gold_body | richtext }}
-                    {% elif institution.tef_is_silver %}
-                        {{ page.tef_silver_body | richtext }}
-                    {% elif institution.tef_is_bronze %}
-                        {{ page.tef_bronze_body | richtext }}
-                    {% elif institution.tef_is_not_participate %}
-                        {{ page.tef_not_participate_body | richtext }}
-                    {% elif institution.tef_is_provisional %}
-                        {{ page.tef_provisional_body | richtext }}
-                    {% elif institution.tef_is_withdrawn %}
-                        {{ page.tef_withdrawn_body | richtext }}
-                    {% endif %}
-                </div>
-
-                {% if not institution.tef_is_not_participate %}
-                    <a class="institution-details__tef-report-link"
-                       href="https://www.officeforstudents.org.uk/advice-and-guidance/teaching/tef-outcomes/#/tefoutcomes/provider/{{institution.pub_ukprn}}">
-                        {{page.tef_report_link}}
-                    </a>
-                {% endif %}
-
-                <div class="explanation">
-                    <div class="explanation__link">
-                        <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
-                        <button class="information-link">{{page.tef_explanation_link}}</button>
-                    </div>
-
-                    {% include 'institutions/partials/explanation_pop_up.html' with heading=page.tef_explanation_heading body=page.tef_explanation_body close_color='black' %}
-                </div>
-            </div>
+        {# Uncomment to add TEF info section back in to institution detail#}
+{#            <div class="institution-details__tef">#}
+{#                <h2 class="institution-details__tef-heading">#}
+{#                    {{ page.tef_heading }}#}
+{#                </h2>#}
+                {#                <div class="institution-details__tef-outcome">#}
+                {#                    {% if institution.show_tef_logo %}#}
+                {#                        <img src="{% static 'images/tef_'|add:institution.tef_outcome|lower|add:'_en.jpg' %}" alt="TEF {{institution.tef_outcome}} logo">#}
+                {#                    {% else %}#}
+                {#                        <p>{% get_translation key=institution.tef_outcome language=page.get_language %}</p>#}
+                {#                    {% endif %}#}
+                {#                </div>#}
+                {##}
+                {#                <div class="institution-details__tef-body">#}
+                {#                    {% if institution.tef_is_gold %}#}
+                {#                        {{ page.tef_gold_body | richtext }}#}
+                {#                    {% elif institution.tef_is_silver %}#}
+                {#                        {{ page.tef_silver_body | richtext }}#}
+                {#                    {% elif institution.tef_is_bronze %}#}
+                {#                        {{ page.tef_bronze_body | richtext }}#}
+                {#                    {% elif institution.tef_is_not_participate %}#}
+                {#                        {{ page.tef_not_participate_body | richtext }}#}
+                {#                    {% elif institution.tef_is_provisional %}#}
+                {#                        {{ page.tef_provisional_body | richtext }}#}
+                {#                    {% elif institution.tef_is_withdrawn %}#}
+                {#                        {{ page.tef_withdrawn_body | richtext }}#}
+                {#                    {% endif %}#}
+                {#                </div>#}
+                {##}
+                {#                {% if not institution.tef_is_not_participate %}#}
+                {#                    <a class="institution-details__tef-report-link"#}
+                {#                       href="https://www.officeforstudents.org.uk/advice-and-guidance/teaching/tef-outcomes/#/tefoutcomes/provider/{{institution.pub_ukprn}}">#}
+                {#                        {{page.tef_report_link}}#}
+                {#                    </a>#}
+                {#                {% endif %}#}
+                {##}
+                {#                <div class="explanation">#}
+                {#                    <div class="explanation__link">#}
+                {#                        <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">#}
+                {#                        <button class="information-link">{{page.tef_explanation_link}}</button>#}
+                {#                    </div>#}
+                {##}
+                {#                    {% include 'institutions/partials/explanation_pop_up.html' with heading=page.tef_explanation_heading body=page.tef_explanation_body close_color='black' %}#}
+                {#                </div>#}
+{#            </div>#}
         </div>
     </div>
 {% endblock %}

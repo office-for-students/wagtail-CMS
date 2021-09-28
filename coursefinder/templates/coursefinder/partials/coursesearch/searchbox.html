@@ -1,0 +1,37 @@
+{% load staticfiles discover_uni_tags %}
+<div class="course_search">
+    <div class="col-12 col-lg-6 p-3 pr-4">
+        <p class="mb-3">{% get_translation key='search_by_course_or_institution' language=page.get_language %}</p>
+        <form class="search_form"
+              action="{% if language == 'cy' %}/cy{% endif %}{% url 'course_finder_results' %}" method="post"
+              autocomplete="off">
+            {% csrf_token %}
+            <div class="search_form-fields">
+                <div class="search-landing-page__search-input">
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        </div>
+                        <input class="form-control" name="course_query" type="text" id="course"
+                               aria-label="{% get_translation key='course_name' language=page.get_language %}"
+                               placeholder="{% get_translation key='course_name' language=page.get_language %}"
+                               autocomplete="off">
+
+                    </div>
+                </div>
+                <div class="search-landing-page__search-input">
+                    <div class="form-group">
+                        {% get_translation key='uni_and_college' language=page.get_language as placeholder %}
+                        {% include 'partials/new-search-dropdown.html' with placeholder=placeholder field_name='institution_query' options=institutions_list %}
+                    </div>
+                </div>
+            </div>
+
+            <button class="mt-4 search_button justify-content-center py-2 px-5">
+                {% get_translation key='search' language=page.get_language %}
+            </button>
+        </form>
+
+    </div>
+</div>
