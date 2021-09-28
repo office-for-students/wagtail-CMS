@@ -1,7 +1,7 @@
 from CMS.enums import enums
 
 
-def display_unavailable_info(self, aggregation_level, replace=False):
+def display_unavailable_info(self, aggregation_level, subject_welsh, replace=False):
     unavailable = {}
 
     if self.unavailable_reason:
@@ -23,7 +23,10 @@ def display_unavailable_info(self, aggregation_level, replace=False):
             "find_out_more"] = self.unavailable_find_out_more_welsh if self.unavailable_find_out_more_welsh else self.unavailable_find_out_more_english
 
     if "reason" in unavailable:
-        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
+        unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(
+                                                                        unavailable["reason"],
+                                                                        subject_welsh
+                                                                    )
 
 
         #TODO: Remove once OFS want the override disabled https://app.clickup.com/t/j337mq
@@ -43,12 +46,15 @@ def display_unavailable_info(self, aggregation_level, replace=False):
     return unavailable
 
 
-def separate_unavail_reason(reason_unseparated):
+def separate_unavail_reason(reason_unseparated, subject_welsh=""):
+    subject_welsh = subject_welsh if subject_welsh is not None else ""
     WELSH_UNAVAILABLE_UPDATES = [
         ["yn ystod y ddwy flynedd flaenorol", "dros dwy flynedd"],
         ["Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Gemau cyfrifiadurol ac animeiddio eraill",
-         "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau eraill mewn"],
-        ["Nid yw hyn yn adlewyrchu ansawdd y cwrs.", "Nid yw hyn yn adlewyrchu ar ansawdd y cwrs."]
+         f"Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau eraill mewn {subject_welsh}"],
+        ["Nid yw hyn yn adlewyrchu ansawdd y cwrs.", "Nid yw hyn yn adlewyrchu ar ansawdd y cwrs."],
+        [f"Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Eraill mewn {subject_welsh} eraill yn ystod y ddwy flynedd flaenorol.",
+         f"Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau eraill dros dwy flynedd {subject_welsh}."]
     ]
     index_of_delimiter = reason_unseparated.find('\n\n')
 
@@ -62,3 +68,9 @@ def separate_unavail_reason(reason_unseparated):
         reason_body = ""
 
     return reason_heading, reason_body
+
+
+def display_subject_name(self):
+    if self.display_language == enums.languages.ENGLISH:
+        return self.subject_english if self.subject_english else self.subject_welsh
+    return self.subject_welsh if self.subject_welsh else self.subject_english
