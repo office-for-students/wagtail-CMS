@@ -15,18 +15,12 @@
         <h1 class="course-detail__course-name">
             {{ course.display_title }}
         </h1>
+        <a class="course-detail__institution-name"
+           href={% if page.is_english %}"/institution-details/{{ course.institution.pub_ukprn }}/"{% else %}
+               "/cy/institution-details/{{ course.institution.pub_ukprn }}/" {% endif %}>
+        {% autoescape off %}{{ course.institution_name | safe }}{% endautoescape %}
+        </a>
 
-        {% if page.is_english %}
-            <a class="course-detail__institution-name" href="/institution-details/{{ course.institution.pub_ukprn }}/"
-               target="_blank">
-                {% autoescape off %}{{ course.institution_name | safe }}{% endautoescape %}
-            </a>
-        {% else %}
-            <a class="course-detail__institution-name"
-               href="/cy/institution-details/{{ course.institution.pub_ukprn }}/" target="_blank">
-                {% autoescape off %}{{ course.institution_name | safe }}{% endautoescape %}
-            </a>
-        {% endif %}
 
         <div class="d-flex flex-wrap row mt-2">
             <div class="col-md-8 col-sm-12">
