@@ -1426,9 +1426,7 @@ DICT = {
     "link_to_website": {
         "cy": "Dolen i'r gwefan",
         "en": "Link To Website"
-    }
     },
-
     'data_need_to_know': {
         'en': 'What you need to know about the data',
         'cy': "Beth sydd angen i chi ei wybod ynglŷn â'r data"

@@ -295,6 +295,12 @@ STATISTICS = {
         "cy": "Darllenwch fwy am Arolwg Cenedlaethol o Fyfyrwyr",
         "en": "Read more about the National Student Survey"
     },
+
+    "read_more_about_this_data": {
+        "cy": "Darllenwch ragor am y data hwn",
+        "en": "Read more about this data"
+
+    },
     "satisfaction_guidance_1": {
         "cy": "<strong>Nifer y bobl y mae'r data'n seiliedig arnynt</strong> - \n            bydd mwy o bobl yn golygu ei bod hi'n debygol y ceir darlun cliriach o brofiadau myfyrwyr. \n            Dylech hefyd ystyried canran y myfyrwyr a ymatebodd i'r arolwg.",
         "en": "<strong>Number of people the data is based on</strong> - \n            more people mean it is more likely giving a clearer picture of student experience. \n            Also consider the percentage of students who responded to the survey."
