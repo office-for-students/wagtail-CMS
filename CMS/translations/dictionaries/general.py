@@ -162,7 +162,7 @@ DICT = {
         "en": "Search by course or location"
     },
     "can_compare_courses": {
-        "cy": "Gymharu cyrsiau",
+        "cy": "Cymharu cyrsiau",
         "en": "Compare courses"
     },
     "chart_label_explained": {
@@ -292,6 +292,10 @@ DICT = {
     "course_removed": {
         "cy": "Cwrs wedi’i ddileu o'r ",
         "en": "Course removed from "
+    },
+    "course_saved": {
+        "cy": "Cwrs wedi’i gadw",
+        "en": "Course saved"
     },
     "course_search": {
         "cy": "Chwilio am Gwrs ",
@@ -580,8 +584,8 @@ DICT = {
         "en": "Guidance on comparing courses"
     },
     "guidance_text": {
-        "cy": "Mae'r data hyn ar gyrsiau'n rhoi cipolwg o brofiadau ar adeg benodol. Gallai eich profiad chi fod yn wahanol.  Daw rhywfaint o'r data gan fyfyrwyr a gymerodd ran yn yr arolwg yn ystod y pandemig. <a href='https://www.discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/' target='_blank' class='blue-text'>Mae rhagor o wybodaeth</a> ar gael ynghylch sut i ddefnyddio'r data hyn wrth benderfynu beth i'w astudio ac ymhle.",
-        "en": "This course data presents a snapshot at a point in time, your experience may be different. Some data is from students surveyed during the pandemic. <a href='https://www.discoveruni.gov.uk/about-our-data/' target='_blank' class='blue-text'>Find out more</a> about how to use this data when making decisions about where and what to study."
+        "cy": "Mae'r data hyn ar gyrsiau'n rhoi cipolwg o brofiadau ar adeg benodol. Gallai eich profiad chi fod yn wahanol.  Daw rhywfaint o'r data gan fyfyrwyr a gymerodd ran yn yr arolwg yn ystod y pandemig. <a href='/about-our-data/canllawiau-ar-gyfer-cymharu-cyrsiau/' target='_blank' class='blue-text'>Mae rhagor o wybodaeth</a> ar gael ynghylch sut i ddefnyddio'r data hyn wrth benderfynu beth i'w astudio ac ymhle.",
+        "en": "This course data presents a snapshot at a point in time, your experience may be different. Some data is from students surveyed during the pandemic. <a href='/about-our-data/guidance-comparing-courses/' target='_blank' class='blue-text'>Find out more</a> about how to use this data when making decisions about where and what to study."
     },
     "guidance_title": {
         "cy": "Beth y mae angen ichi ei ystyried wrth gymharu cyrsiau",
@@ -1015,6 +1019,10 @@ DICT = {
         "cy": "Cyrsiau wedi’u cadw",
         "en": "Saved courses"
     },
+    "saved_courses_lower": {
+        "cy": "gyrsiau wedi’u cadw",
+        "en": "saved courses"
+    },
     "scotland": {
         "cy": "Yr Alban",
         "en": "Scotland"
@@ -1182,6 +1190,10 @@ DICT = {
     "student_satisfaction_course_overview_1": {
         "cy": "Canlyniadau’r Arolwg Cenedlaethol o Fyfyrwyr",
         "en": "National Student Survey results"
+    },
+    "student_satisfaction": {
+        "cy": "Bodlonrwydd Myfyrwyr",
+        "en": "Student Satisfaction"
     },
     "student_satisfaction_course_overview_2": {
         "cy": "cyfran y myfyrwyr a ymatebodd a oedd yn cytuno â’r datganiad “Rwy’n fodlon ag ansawdd y cwrs ar y cyfan”",
@@ -1402,6 +1414,10 @@ DICT = {
     "you_can": {
         "cy": "Gallwch ",
         "en": "You can"
+    },
+    "view_saved_courses": {
+        "cy": "Gweld cyrsiau wedi’u cadw",
+        "en": "View saved courses"
     },
     "youre_interested_in": {
         "cy": "sydd o ddiddordeb iti",

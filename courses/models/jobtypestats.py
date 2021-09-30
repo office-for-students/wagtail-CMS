@@ -43,6 +43,7 @@ class JobTypeStatistics:
             self.display_unavailable_info = display_unavailable_info(
                 self,
                 aggregation_level=self.aggregation_level,
+                subject_welsh=self.subject_welsh,
                 replace=True
             )
             self.unavailable_reason_heading = self.display_unavailable_info["reason_heading"]

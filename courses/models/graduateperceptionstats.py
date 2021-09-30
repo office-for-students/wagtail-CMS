@@ -32,6 +32,7 @@ class GraduatePerceptionStatistics:
             self.display_unavailable_info = display_unavailable_info(
                 self,
                 aggregation_level=self.aggregation_level,
+                subject_welsh=self.subject_welsh,
                 replace=True
             )
             self.unavailable_reason_heading = self.display_unavailable_info.get("reason_heading", '')

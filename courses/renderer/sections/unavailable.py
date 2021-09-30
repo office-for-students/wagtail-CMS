@@ -15,7 +15,7 @@ def get_subject_unavailable(course: Course, model_list_name: str, language: str,
     return subject_unavail
 
 
-def get_unavailable(course: Course, model_list: str, language: str, accordion=None, index=0) -> str:
+def get_unavailable(course: Course, model_list: str, language: str, index: int, accordion=None) -> str:
     response = get_data(
         course=course,
         model_list=model_list,
@@ -32,7 +32,7 @@ def get_data(
         model_list: str,
         language: str,
         accordion: str,
-        index=0
+        index: int
 ) -> str:
     _object = getattr(course, model_list)[index]
     unavailable_code = str(getattr(_object, "unavailable_code"))

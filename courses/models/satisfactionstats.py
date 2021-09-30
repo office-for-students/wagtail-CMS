@@ -55,6 +55,7 @@ class SatisfactionStatistics:
         self.display_unavailable_info = display_unavailable_info(
             self,
             aggregation_level=self.aggregation_level,
+            subject_welsh=self.subject_welsh
         )
         self.unavailable_reason_heading = self.display_unavailable_info["reason_heading"]
         self.unavailable_reason_body = self.display_unavailable_info["reason_body"]
