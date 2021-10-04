@@ -211,7 +211,7 @@ class Institution:
                 error = ApiError(response.status_code, 'Loading institution %s failed' % institution_id)
         elif type(response) == dict:
             institution = cls(response, language)
-            if institution == None:
+            if institution is None:
                 error = ApiError(None, 'Institution %s does not exist in MongoDB' % institution_id)
 
         return institution, error
@@ -220,22 +220,8 @@ class Institution:
 class InstitutionContactDetails:
 
     def __init__(self, contact_data):
-        address = contact_data.get('address')
-        if address:
-            self.address_1 = address.get('line_1')
-            self.address_2 = address.get('line_2')
-            self.address_3 = address.get('line_3')
-            self.address_4 = address.get('line_4')
-            self.town = address.get('town')
-            self.county = address.get('county')
-            self.postcode = address.get('post_code')
+        self.address = contact_data.get('address')
         self.phone_number = contact_data.get('telephone')
-
-    @property
-    def address(self):
-        address_arr = filter(None, [self.address_1, self.address_2, self.address_3, self.address_4,
-                             self.town, self.county, self.postcode])
-        return ', '.join(address_arr)
 
 
 class InstitutionStudentUnions:
