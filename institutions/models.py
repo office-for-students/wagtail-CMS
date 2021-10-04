@@ -224,10 +224,6 @@ class InstitutionContactDetails:
         self.address = contact_data.get('address')
         self.phone_number = contact_data.get('telephone')
 
-    @property
-    def address(self):
-        return self.address
-
 
 class InstitutionStudentUnions:
 
