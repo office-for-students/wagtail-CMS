@@ -584,7 +584,7 @@ DICT = {
         "en": "Guidance on comparing courses"
     },
     "guidance_text": {
-        "cy": "Mae'r data hyn ar gyrsiau'n rhoi cipolwg o brofiadau ar adeg benodol. Gallai eich profiad chi fod yn wahanol.  Daw rhywfaint o'r data gan fyfyrwyr a gymerodd ran yn yr arolwg yn ystod y pandemig. <a href='/about-our-data/canllawiau-ar-gyfer-cymharu-cyrsiau/' target='_blank' class='blue-text'>Mae rhagor o wybodaeth</a> ar gael ynghylch sut i ddefnyddio'r data hyn wrth benderfynu beth i'w astudio ac ymhle.",
+        "cy": "Mae'r data hyn ar gyrsiau'n rhoi cipolwg o brofiadau ar adeg benodol. Gallai eich profiad chi fod yn wahanol.  Daw rhywfaint o'r data gan fyfyrwyr a gymerodd ran yn yr arolwg yn ystod y pandemig. <a href='/cy/ynglŷn-ân-data-about-our-data-cy/canllawiau-ar-gyfer-cymharu-cyrsiau/' target='_blank' class='blue-text'>Mae rhagor o wybodaeth</a> ar gael ynghylch sut i ddefnyddio'r data hyn wrth benderfynu beth i'w astudio ac ymhle.",
         "en": "This course data presents a snapshot at a point in time, your experience may be different. Some data is from students surveyed during the pandemic. <a href='/about-our-data/guidance-comparing-courses/' target='_blank' class='blue-text'>Find out more</a> about how to use this data when making decisions about where and what to study."
     },
     "guidance_title": {
