@@ -12,15 +12,6 @@
             </li>
         </ul>
 
-        <h1 class="course-detail__course-name">
-            {{ course.display_title }}
-        </h1>
-        <a class="course-detail__institution-name"
-           href={% if page.is_english %}"/institution-details/{{ course.institution.pub_ukprn }}/"{% else %}
-               "/cy/institution-details/{{ course.institution.pub_ukprn }}/" {% endif %}>
-        {% autoescape off %}{{ course.institution_name | safe }}{% endautoescape %}
-        </a>
-
         <div class="d-flex flex-wrap row">
             <h1 class="course-detail__course-name col-md-7">
                 {{ course.display_title }}
@@ -35,7 +26,7 @@
                             <p class="data-info__content mt-2 mb-2">{% get_translation key='survey_info_box' language=page.get_language %}
                                 <br><a href={% get_translation key="find_out_more_link" language=page.get_language %}
                                            class="data-info__link"
-                                   target="_blank">{% get_translation key='find_out_more' language=page.get_language %}
+                                   >{% get_translation key='find_out_more' language=page.get_language %}
                                 </a>
                             </p></div>
                     </div>
