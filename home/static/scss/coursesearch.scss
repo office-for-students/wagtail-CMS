@@ -37,7 +37,7 @@
         border: 1px solid $ux-grey-3;
         border-radius: 5px;
         background: $background-grey;
-        line-height: 34px;
+        line-height: 1.5;
 
         padding-left: 10px;
         padding-right: 10px;
@@ -46,11 +46,9 @@
 
     &-text {
       @include mobile-body-font-mixin();
-
-      margin: 10px 0px;
-
+      margin: 10px 0;
       color: $ux-grey-3;
-      line-height: 22px;
+      line-height: 1.5;
     }
   }
 
@@ -62,14 +60,13 @@
       margin-top: 35px;
 
       .search-landing-page__nav-card-button {
-        margin-top: 0px;
+        margin-top: 0;
       }
 
       &-text {
         @include xs-heading-mixin();
-
         color: $ux-grey-3;
-        line-height: 27px;
+        line-height: 1.5;
       }
     }
   }

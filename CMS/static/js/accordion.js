@@ -12,7 +12,6 @@
             this.body = this.wrapper.find('[class$=accordion-body]');
             this.expandIcon = this.wrapper.find('.expand');
             this.collapseIcon = this.wrapper.find('.collapse');
-
             this.setInitialView()
             this.startWatchers();
         },
