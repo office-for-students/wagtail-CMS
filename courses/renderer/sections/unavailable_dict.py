@@ -35,42 +35,42 @@ unavailable_dict = {
 
 earnings_dict = {
     "0": {
-        "23": {
+        "13": {
             "4": "after_3_years_23_4"
         },
-        "21": {
+        "11": {
             "3": "earnings_15_months_unavailable_22_21_3",
             "4": "after_3_years_21_22_4"
         },
-        "22": {
+        "12": {
             "3": "earnings_15_months_unavailable_22_21_3",
             "4": "after_3_years_21_22_4"
         },
         "blank": "unavailable_0_any"
     },
     "1": {
-        "23": {
+        "13": {
             "4": "after_3_years_23_4"
         },
-        "21": {
+        "11": {
             "3": "earnings_15_months_unavailable_22_21_3",
             "4": "after_3_years_21_22_4"
         },
-        "22": {
+        "12": {
             "3": "earnings_15_months_unavailable_22_21_3",
             "4": "after_3_years_21_22_4"
         },
         "blank": "unavailable_1_any"
     },
     "2": {
-        "23": {
+        "13": {
             "4": "after_3_years_23_4"
         },
-        "21": {
+        "11": {
             "3": "earnings_15_months_unavailable_22_21_3",
             "4": "after_3_years_21_22_4"
         },
-        "22": {
+        "12": {
             "3": "earnings_15_months_unavailable_22_21_3",
             "4": "after_3_years_21_22_4"
         },

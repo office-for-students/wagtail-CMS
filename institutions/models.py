@@ -128,6 +128,7 @@ class Institution:
             self.ukprn = institution_data.get("ukprn")
 
             if 'contact_details' in institution_data:
+                print(f"institution_data.get('contact_details') {institution_data.get('contact_details')}")
                 self.contact_details = InstitutionContactDetails(institution_data.get('contact_details'))
 
             self.student_unions = []
