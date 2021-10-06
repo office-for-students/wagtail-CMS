@@ -281,11 +281,6 @@
     },
     {
         "alphabet": "b",
-        "name": "Bridgend College",
-        "order_by_name": "bridgend college"
-    },
-    {
-        "alphabet": "b",
         "name": "Bridgwater and Taunton College",
         "order_by_name": "bridgwater and taunton college"
     },
@@ -418,11 +413,6 @@
         "alphabet": "c",
         "name": "Capital City College Group",
         "order_by_name": "capital city college group"
-    },
-    {
-        "alphabet": "c",
-        "name": "Cardiff and Vale College",
-        "order_by_name": "cardiff and vale college"
     },
     {
         "alphabet": "c",
@@ -1753,11 +1743,6 @@
         "alphabet": "s",
         "name": "The University of Salford",
         "order_by_name": "salford"
-    },
-    {
-        "alphabet": "s",
-        "name": "Salford City College",
-        "order_by_name": "salford city college"
     },
     {
         "alphabet": "s",
