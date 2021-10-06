@@ -1461,8 +1461,8 @@ DICT = {
     "earnings_info_box": {
         "cy": "<li>Mae rhywfaint o ddata gan raddedigion a arolygwyd yn ystod y pandemig COVID-19.</li>"
               "<li>Mae marchnadoedd llafur yn newid.</li>"
-              "<li>Mae cyflogau yn amrywio ar draws rhanbarthau yn y DU. Mae cyflogau yn amrywio ar draws rhanbarthau yn y DU.</li>"
-              "<li<Mae yna lawer o ffactorau sy'n effeithio ar enillion graddedigion.</li>",
+              "<li>Mae cyflogau yn amrywio ar draws rhanbarthau yn y DU. </li>"
+              "<li>Mae yna lawer o ffactorau sy'n effeithio ar enillion graddedigion.</li>",
         "en": "<li>Some data is from graduates surveyed during the Covid-19 pandemic.</li>"
               "<li>Labour markets change </li>"
               "<li>Salaries vary across regions in the UK</li>"
@@ -1482,7 +1482,7 @@ DICT = {
               '<li>Mae cyfleoedd cyflogaeth a swyddi yn amrywio ar draws rhanbarthau yn y DU.</li>'
     },
     'survey_info_box': {
-        'en': 'Student satisfation data is from the 2021 NSS survey and many have been affected by the Covid-19 pandemic.',
+        'en': 'Student satisfation data is from the 2021 NSS survey and may have been affected by the Covid-19 pandemic.',
         'cy': "Mae rhywfaint o'r data gan fyfyrwyr a arolygwyd yn ystod y pandemig COVID-19, a allai fod wedi cael effaith ar eu hymatebion."
     },
 }
