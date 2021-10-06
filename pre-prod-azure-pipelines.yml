@@ -15,7 +15,7 @@ variables:
 steps:
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: 3.6.8
+    versionSpec: 3.6.13
 
 - task: PythonScript@0
   displayName: 'Export project path'
@@ -34,7 +34,7 @@ steps:
       print('##vso[task.setvariable variable=projectRoot]{}'.format(project_location))
 
 - script: |
-    virtualenv -p python3.6 venv
+    virtualenv -p python3.6.13 venv
     source venv/bin/activate
     python -m pip install --upgrade pip setuptools wheel django
     pip install -r $(projectRoot)/requirements.txt
