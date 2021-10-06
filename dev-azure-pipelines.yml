@@ -34,6 +34,8 @@ steps:
       print('##vso[task.setvariable variable=projectRoot]{}'.format(project_location))
 
 - script: |
+    virtualenv -p python3.6.13 venv
+    source venv/bin/activate
     python -m pip install --upgrade pip setuptools wheel django
     pip install -r $(projectRoot)/requirements.txt
     pip install unittest-xml-reporting
