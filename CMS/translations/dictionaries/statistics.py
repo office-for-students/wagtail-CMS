@@ -288,7 +288,7 @@ STATISTICS = {
         "en": "Read more about entry data"
     },
     "read_more_about_graduate_perceptions": {
-        "cy": "Darllenwch fwy am Canfyddiadau Graddedigion",
+        "cy": "Darllenwch ragor am ganfyddiadau graddedigion",
         "en": "Read more about Graduate Perceptions"
     },
     "read_more_about_satisfaction": {
