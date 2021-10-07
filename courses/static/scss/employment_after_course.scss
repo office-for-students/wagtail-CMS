@@ -15,12 +15,12 @@
         color: $brownish-grey;
         font-weight: normal;
         font-size: 0.875rem;
-        line-height: normal;
+        line-height: 1.5;
 
         a {
             text-decoration: underline;
             color: $dark-green-blue;
-            line-height: normal;
+            line-height: 1.5;
         }
     }
     .employment-after-course_occupation-statistics{
@@ -35,8 +35,8 @@
                 font-family: 'Nunito Sans', sans-serif;
                 color: #000000;
                 font-weight: normal;
-                font-size: 24px;
-                line-height: normal;
+                font-size: 1.5rem;
+                line-height: 1.5;
             }
 
             h4 {
@@ -45,7 +45,7 @@
                 color: #000000;
                 font-weight: normal;
                 font-size: 1.125rem;
-                line-height: normal;
+                line-height: 1.5;
             }
 
             .employment-after-course_occ-type-percent p {
@@ -71,9 +71,9 @@
         .employment-after-course__figure, .employment-after-course__figure--sector {
             @include m-heading-mixin();
 
-            margin-bottom: 0px;
+            margin-bottom: 0;
 
-            line-height: 44px;
+            line-height: 1.5;
             color: $gradient-light-green;
         }
 
@@ -112,7 +112,7 @@
         font-size: 0.875rem;
         font-weight: normal;
         color: $brownish-grey;
-        line-height: normal;
+        line-height: 1.5;
     }
 
     a {
@@ -121,7 +121,7 @@
         font-weight: normal;
         color: #308282;
         text-decoration: underline;
-        line-height: normal;
+        line-height: 1.5;
     }
 }
 
@@ -133,17 +133,17 @@
     border: solid 3px $duck-egg-blue;
 
     p {
-        margin: 0px;
+        margin: x;
     }
 
     .employment-after-course__lead-title {
-        line-height: 32px;
+        line-height: 1.5;
         margin-bottom: 27px;
         font-family: 'Nunito Sans', sans-serif;
         color: #000000;
         letter-spacing: normal;
         font-weight:normal;
-        font-size:28px;
+        font-size: 1.75rem;
 
     }
 
@@ -166,7 +166,7 @@
 .employment-after-course__lead-block {
     @extend .employment-after-course__block;
 
-    padding-bottom: 0px;
+    padding-bottom: 0;
 
     .employment-after-course__data-point {
         margin-bottom: 0;
@@ -187,7 +187,7 @@
         text-decoration: none;
 
         a {
-            line-height: normal;
+            line-height: 1.5;
             text-decoration: underline;
             color: $dark-green-blue;
         }
@@ -295,7 +295,7 @@
         border: solid 3px $duck-egg-blue;
 
         p {
-            margin: 0px;
+            margin: 0;
         }
 
         .employment-after-course__lead-title {

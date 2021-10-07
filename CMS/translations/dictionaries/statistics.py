@@ -288,12 +288,18 @@ STATISTICS = {
         "en": "Read more about entry data"
     },
     "read_more_about_graduate_perceptions": {
-        "cy": "Darllenwch fwy am Canfyddiadau Graddedigion",
+        "cy": "Darllenwch ragor am ganfyddiadau graddedigion",
         "en": "Read more about Graduate Perceptions"
     },
     "read_more_about_satisfaction": {
         "cy": "Darllenwch fwy am Arolwg Cenedlaethol o Fyfyrwyr",
         "en": "Read more about the National Student Survey"
+    },
+
+    "read_more_about_this_data": {
+        "cy": "Darllenwch ragor am y data hwn",
+        "en": "Read more about this data"
+
     },
     "satisfaction_guidance_1": {
         "cy": "<strong>Nifer y bobl y mae'r data'n seiliedig arnynt</strong> - \n            bydd mwy o bobl yn golygu ei bod hi'n debygol y ceir darlun cliriach o brofiadau myfyrwyr. \n            Dylech hefyd ystyried canran y myfyrwyr a ymatebodd i'r arolwg.",

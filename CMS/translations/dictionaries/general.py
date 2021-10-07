@@ -584,7 +584,7 @@ DICT = {
         "en": "Guidance on comparing courses"
     },
     "guidance_text": {
-        "cy": "Mae'r data hyn ar gyrsiau'n rhoi cipolwg o brofiadau ar adeg benodol. Gallai eich profiad chi fod yn wahanol.  Daw rhywfaint o'r data gan fyfyrwyr a gymerodd ran yn yr arolwg yn ystod y pandemig. <a href='/about-our-data/canllawiau-ar-gyfer-cymharu-cyrsiau/' target='_blank' class='blue-text'>Mae rhagor o wybodaeth</a> ar gael ynghylch sut i ddefnyddio'r data hyn wrth benderfynu beth i'w astudio ac ymhle.",
+        "cy": "Mae'r data hyn ar gyrsiau'n rhoi cipolwg o brofiadau ar adeg benodol. Gallai eich profiad chi fod yn wahanol.  Daw rhywfaint o'r data gan fyfyrwyr a gymerodd ran yn yr arolwg yn ystod y pandemig. <a href='/cy/ynglŷn-ân-data-about-our-data-cy/canllawiau-ar-gyfer-cymharu-cyrsiau/' target='_blank' class='blue-text'>Mae rhagor o wybodaeth</a> ar gael ynghylch sut i ddefnyddio'r data hyn wrth benderfynu beth i'w astudio ac ymhle.",
         "en": "This course data presents a snapshot at a point in time, your experience may be different. Some data is from students surveyed during the pandemic. <a href='/about-our-data/guidance-comparing-courses/' target='_blank' class='blue-text'>Find out more</a> about how to use this data when making decisions about where and what to study."
     },
     "guidance_title": {
@@ -1426,7 +1426,65 @@ DICT = {
     "link_to_website": {
         "cy": "Dolen i'r gwefan",
         "en": "Link To Website"
-    }
+    },
+    'data_need_to_know': {
+        'en': 'What you need to know about the data',
+        'cy': "Beth sydd angen i chi ei wybod ynglŷn â'r data"
+    },
+    "data_need_to_know_2": {
+        "cy": "Beth sydd angen i chi ei wybod ynglŷn â’r data hwn",
+        "en": "What you need to know about this data"
+    },
+    'employment_need_to_know': {
+        'en': 'What you need to know about employment data',
+        'cy': 'Beth sydd angen i chi ei wybod ynglŷn â data cyflogaeth'
+    },
+    'survey_need_to_know': {
+        'en': 'What you need to know about the student survey data',
+        'cy': "Beth sydd angen i chi ei wybod ynglŷn â data'r arolwg o fyfyrwyr"
+    },
+    "earnings_need_to_know": {
+        "cy": "Beth sydd angen i chi ei wybod ynglŷn â data enillion",
+        "en": "What you need to know about earnings data"
+    },
+
+    'student_satisfaction_info_box': {
+        'cy': "<li>Mae'r data gan fyfyrwyr a arolygwyd yn ystod y pandemig COVID-19.  </li>"
+              "<li>Effeithiwyd ar rai cyrsiau a darparwyr yn fwy nag eraill.</li>"
+              "<li>Mae'r data yn dweud wrthych am brofiad myfyrwyr diweddar, ond gallai eich profiad chi fod yn wahanol.</li>",
+        'en': '<li>The data is from students surveyed during the Covid-19 pandemic.</li>'
+              '<li>Some courses and providers have been affected more than others.</li>'
+              '<li>The data tells you about the experience of recent students, but your experience may be different.</li>'
+
+    },
+
+    "earnings_info_box": {
+        "cy": "<li>Mae rhywfaint o ddata gan raddedigion a arolygwyd yn ystod y pandemig COVID-19.</li>"
+              "<li>Mae marchnadoedd llafur yn newid.</li>"
+              "<li>Mae cyflogau yn amrywio ar draws rhanbarthau yn y DU. </li>"
+              "<li>Mae yna lawer o ffactorau sy'n effeithio ar enillion graddedigion.</li>",
+        "en": "<li>Some data is from graduates surveyed during the Covid-19 pandemic.</li>"
+              "<li>Labour markets change </li>"
+              "<li>Salaries vary across regions in the UK</li>"
+              "<li>There are lots of factors that affect graduate earnings.</li>"
+    },
+
+    'graduate_perceptions_info_box': {
+        'en': '<li>Some data is from graduates surveyed during the Covid-19 pandemic</li>',
+        'cy': '<li>Mae rhywfaint o ddata gan raddedigion a arolygwyd yn ystod y pandemig COVID-19.</li>'
+    },
+    'employment_info_box': {
+        'en': '<li>Some data is from graduates surveyed during Covid-19 pandemic</li>'
+              '<li>Labour markets vary and change over time</li>'
+              '<li>Employment and job opportunities vary across regions in the UK</li>',
+        'cy': '<li>Mae rhywfaint o ddata gan raddedigion a arolygwyd yn ystod y pandemig COVID-19.</li>'
+              '<li>Mae marchnadoedd llafur yn amrywio ac yn newid dros amser.</li>'
+              '<li>Mae cyfleoedd cyflogaeth a swyddi yn amrywio ar draws rhanbarthau yn y DU.</li>'
+    },
+    'survey_info_box': {
+        'en': 'Some data is from students surveyed during the Covid-19 pandemic, which may have had an effect on their responses.',
+        'cy': "Mae rhywfaint o'r data gan fyfyrwyr a arolygwyd yn ystod y pandemig COVID-19, a allai fod wedi cael effaith ar eu hymatebion."
+    },
 }
 
 OPTIONALS = {

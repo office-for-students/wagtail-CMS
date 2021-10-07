@@ -74,10 +74,8 @@
 
         .earnings-after-course__figure, .earnings-after-course__figure--sector {
             @include m-heading-mixin();
-
-            margin-bottom: 0px;
-
-            line-height: 44px;
+            margin-bottom: 0;
+            line-height: 1.5;
             color: $gradient-light-green;
         }
 
@@ -155,7 +153,7 @@
 .earnings-after-course__lead-block {
     @extend .earnings-after-course__block;
 
-    padding-bottom: 0px;
+    padding-bottom: 0;
 
     .earnings-after-course__data-point {
         margin-bottom: 0;
@@ -172,14 +170,14 @@
     border-radius: 10px;
 
     p {
-        margin: 0px;
+        margin: 0;
     }
 
     .earnings-after-course__data-point-overview-lead {
         @include l-heading-mixin();
 
         color: $gradient-light-green;
-        line-height: 59px;
+        line-height: 1.5;
     }
 }
 
@@ -265,7 +263,7 @@
         text-align: center;
 
         p {
-            margin: 0px;
+            margin: 0;
         }
 
         .earnings-after-course__data-point-overview-lead {

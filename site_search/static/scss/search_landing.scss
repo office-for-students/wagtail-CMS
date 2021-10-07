@@ -10,10 +10,8 @@
 
     &__heading {
         @include m-heading-mixin();
-
-        margin-top: 0px;
+        margin-top: 0;
         margin-bottom: 40px;
-
         line-height: 45px;
         color: $ux-grey-3;
     }
@@ -35,7 +33,7 @@
             text-decoration: none;
 
             &:last-child {
-                margin-bottom: 0px;
+                margin-bottom: 0;
             }
 
             &-icon {
@@ -47,7 +45,7 @@
             &-label {
                 @include mobile-body-font-mixin();
 
-                margin: 0px;
+                margin: 0;
 
                 color: $ux-grey-3;
                 line-height: 22px;
@@ -108,7 +106,7 @@
         &-text {
             @include mobile-body-font-mixin();
 
-            margin: 10px 0px;
+            margin: 10px 0;
 
             color: $ux-grey-3;
             line-height: 22px;
@@ -130,7 +128,7 @@
 
 @media only screen and (min-width: 770px) {
     .search-landing-page {
-        padding: 80px 0px 97px;
+        padding: 80px 0 97px;
 
         &__heading {
             @include l-heading-mixin();
@@ -154,7 +152,7 @@
                 padding: 35px 65px 40px;
                 margin-left: 25px;
                 margin-right: 25px;
-                margin-bottom: 0px;
+                margin-bottom: 0;
 
                 &-label {
                     @include xs-heading-mixin();
@@ -186,7 +184,7 @@
             margin-top: 35px;
 
             .search-landing-page__nav-card-button {
-                margin-top: 0px;
+                margin-top: 0;
             }
 
             &-text {
