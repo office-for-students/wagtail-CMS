@@ -322,7 +322,7 @@ DICT = {
         "en": "/search-landing-page/course-finder-choose-country/"
     },
     "courses": {
-        "cy": "cwrs/cyrsiau",
+        "cy": "cwrs",
         "en": "course(s)"
     },
     "courses_added": {
