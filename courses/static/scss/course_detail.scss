@@ -12,6 +12,9 @@
 
 @import 'highcharts';
 
+[id^=highcharts-screen-reader-region]{
+  display: none;
+}
 .course_detail__header-bar {
   background-color: #1F283A;
 
