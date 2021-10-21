@@ -6,7 +6,7 @@ trigger:
 pr: none
 
 pool:
-  vmImage: 'Ubuntu 16.04'
+  vmImage: 'Ubuntu-18.04'
 
 variables:
   imageName: 'discover-uni:$(Build.BuildId)'
