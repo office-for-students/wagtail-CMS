@@ -286,6 +286,16 @@
     },
     {
         "alphabet": "b",
+        "name": "Coleg Brenhinol Cerdd a Drama Cymru",
+        "order_by_name": "brenhinol cerdd a drama cymru"
+    },
+    {
+        "alphabet": "b",
+        "name": "Bridgend College",
+        "order_by_name": "bridgend college"
+    },
+    {
+        "alphabet": "b",
         "name": "Bridgwater and Taunton College",
         "order_by_name": "bridgwater and taunton college"
     },
@@ -386,6 +396,11 @@
     },
     {
         "alphabet": "c",
+        "name": "Coleg Caerdydd a'r Fro",
+        "order_by_name": "caerdydd a'r fro"
+    },
+    {
+        "alphabet": "c",
         "name": "Calderdale College",
         "order_by_name": "calderdale college"
     },
@@ -423,11 +438,6 @@
         "alphabet": "c",
         "name": "Capital City College Group",
         "order_by_name": "capital city college group"
-    },
-    {
-        "alphabet": "c",
-        "name": "Cardiff and Vale College",
-        "order_by_name": "cardiff and vale college"
     },
     {
         "alphabet": "c",
@@ -625,16 +635,6 @@
         "order_by_name": "cymru y drindod dewi sant"
     },
     {
-        "alphabet": "c",
-        "name": "Prifysgol Cymru Y Drindod Dewi Sant",
-        "order_by_name": "cymru y drindod dewi sant"
-    },
-    {
-        "alphabet": "c",
-        "name": "Prifysgol Cymru Y Drindod Dewi Sant",
-        "order_by_name": "cymru y drindod dewi sant"
-    },
-    {
         "alphabet": "d",
         "name": "Darlington College",
         "order_by_name": "darlington college"
@@ -643,36 +643,6 @@
         "alphabet": "d",
         "name": "David Game College Ltd",
         "order_by_name": "david game college ltd"
-    },
-    {
-        "alphabet": "d",
-        "name": "Prifysgol De Cymru",
-        "order_by_name": "de cymru"
-    },
-    {
-        "alphabet": "d",
-        "name": "Prifysgol De Cymru",
-        "order_by_name": "de cymru"
-    },
-    {
-        "alphabet": "d",
-        "name": "Prifysgol De Cymru",
-        "order_by_name": "de cymru"
-    },
-    {
-        "alphabet": "d",
-        "name": "Prifysgol De Cymru",
-        "order_by_name": "de cymru"
-    },
-    {
-        "alphabet": "d",
-        "name": "Prifysgol De Cymru",
-        "order_by_name": "de cymru"
-    },
-    {
-        "alphabet": "d",
-        "name": "Prifysgol De Cymru",
-        "order_by_name": "de cymru"
     },
     {
         "alphabet": "d",
@@ -898,6 +868,11 @@
         "alphabet": "g",
         "name": "Guildhall School of Music & Drama",
         "order_by_name": "guildhall school of music & drama"
+    },
+    {
+        "alphabet": "g",
+        "name": "Coleg Gwent",
+        "order_by_name": "gwent"
     },
     {
         "alphabet": "g",
@@ -1326,6 +1301,11 @@
     },
     {
         "alphabet": "m",
+        "name": "Y Coleg Merthyr Tudful",
+        "order_by_name": "merthyr tudful"
+    },
+    {
+        "alphabet": "m",
         "name": "Met Film School Limited",
         "order_by_name": "met film school limited"
     },
@@ -1333,11 +1313,6 @@
         "alphabet": "m",
         "name": "The Metanoia Institute",
         "order_by_name": "metanoia institute"
-    },
-    {
-        "alphabet": "m",
-        "name": "Prifysgol Metropolitan Caerdydd",
-        "order_by_name": "metropolitan caerdydd"
     },
     {
         "alphabet": "m",
@@ -1786,11 +1761,6 @@
     },
     {
         "alphabet": "s",
-        "name": "Salford City College",
-        "order_by_name": "salford city college"
-    },
-    {
-        "alphabet": "s",
         "name": "Sandwell College",
         "order_by_name": "sandwell college"
     },
@@ -1843,6 +1813,16 @@
         "alphabet": "s",
         "name": "Shrewsbury Colleges Group",
         "order_by_name": "shrewsbury colleges group"
+    },
+    {
+        "alphabet": "s",
+        "name": "Coleg Sir Benfro",
+        "order_by_name": "sir benfro"
+    },
+    {
+        "alphabet": "s",
+        "name": "Coleg Sir Gar",
+        "order_by_name": "sir gar"
     },
     {
         "alphabet": "s",
@@ -2258,6 +2238,11 @@
         "alphabet": "x",
         "name": "Xaverian College",
         "order_by_name": "xaverian college"
+    },
+    {
+        "alphabet": "y",
+        "name": "Coleg y Cymoedd",
+        "order_by_name": "y cymoedd"
     },
     {
         "alphabet": "y",
