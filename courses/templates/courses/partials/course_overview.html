@@ -254,11 +254,11 @@
     }
 
     function reformatField() {
-        var earnings = $('#average_earnings_sm').text();
-        earnings = earnings.replace('£', '');
-        earnings = parseFloat(earnings.replace(/,/g, ''));
-        var reformatted = kFormatter(earnings);
-        earnings.text("£" + reformatted);
+        let earnings = $('#average_earnings_sm').text();
+        let arns = earnings.replace('£', '');
+        arns = parseFloat(arns.replace(/,/g, ''));
+        var reformatted = kFormatter(arns);
+        earnings.text = ("£" + reformatted);
     }
 
     $(document).ready(function () {
