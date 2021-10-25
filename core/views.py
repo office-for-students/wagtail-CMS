@@ -2,7 +2,9 @@ import json
 
 from django.http import JsonResponse
 
-from core.request_handler import send_feedback, get_json_file
+from core.request_handler import get_json_file
+from core.request_handler import send_feedback
+from institutions.utils import load_institution_json
 
 
 def submit_feedback(request):
@@ -36,16 +38,16 @@ def get_subjects_json(request):
         response_body = response.json()
     else:
         response_body = {}
-        
+
     return JsonResponse(response_body, status=response.status_code, safe=False)
+
+
+def not_already_in_list(name, existing):
+    if name not in existing:
+        existing.append(name)
+        return True
+    return False
 
 
 def get_institutions_json(request, language):
-    response = get_json_file("institutions_" + language + ".json")
-
-    if response.ok:
-        response_body = response.json()
-    else:
-        response_body = {}
-        
-    return JsonResponse(response_body, status=response.status_code, safe=False)
+    return JsonResponse(load_institution_json()[language], status=200, safe=False)
