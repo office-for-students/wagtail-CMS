@@ -37,7 +37,7 @@
                                 <p class="institution-details__overview-item-heading">{% get_translation key='website' language=page.get_language %}</p>
                                 {% if institution.website %}
                                     <a class="institution-details__overview-item-value" target="_blank"
-                                       href="https://{{ institution.website }}">{{ institution.pub_ukprn_name }}</a>
+                                       href="{{ institution.website }}">{{ institution.pub_ukprn_name }}</a>
                                 {% endif %}
                             </div>
                         </div>
