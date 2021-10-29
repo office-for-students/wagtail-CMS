@@ -41,123 +41,123 @@ class SectorSalary:
 
             self.no_salary_node = "false"
             if 'lq_uk' in salary_data:
-                self.lq_uk = salary_data['lq_uk']
-                self.med_uk = salary_data['med_uk']
-                self.uq_uk = salary_data['uq_uk']
-                self.pop_uk = salary_data['pop_uk']
+                self.lq_uk = salary_data.get('lq_uk')
+                self.med_uk = salary_data.get('med_uk')
+                self.uq_uk = salary_data.get('uq_uk')
+                self.pop_uk = salary_data.get('pop_uk')
 
-                self.lq_e = salary_data['lq_e']
-                self.med_e = salary_data['med_e']
-                self.uq_e = salary_data['uq_e']
-                self.pop_e = salary_data['pop_e']
+                self.lq_e = salary_data.get('lq_e')
+                self.med_e = salary_data.get('med_e')
+                self.uq_e = salary_data.get('uq_e')
+                self.pop_e = salary_data.get('pop_e')
 
-                self.lq_w = salary_data['lq_w']
-                self.med_w = salary_data['med_w']
-                self.uq_w = salary_data['uq_w']
-                self.pop_w = salary_data['pop_w']
+                self.lq_w = salary_data.get('lq_w')
+                self.med_w = salary_data.get('med_w')
+                self.uq_w = salary_data.get('uq_w')
+                self.pop_w = salary_data.get('pop_w')
 
-                self.lq_s = salary_data['lq_s']
-                self.med_s = salary_data['med_s']
-                self.uq_s = salary_data['uq_s']
-                self.pop_s = salary_data['pop_s']
+                self.lq_s = salary_data.get('lq_s')
+                self.med_s = salary_data.get('med_s')
+                self.uq_s = salary_data.get('uq_s')
+                self.pop_s = salary_data.get('pop_s')
 
                 # if 'resp_uk' in salary_data:
-                #     self.resp_uk = salary_data['resp_uk']
-                #     self.resp_e = salary_data['resp_e']
-                #     self.resp_w = salary_data['resp_w']
-                #     self.resp_s = salary_data['resp_s']
+                #     self.resp_uk = salary_data.get('resp_uk')
+                #     self.resp_e = salary_data.get('resp_e')
+                #     self.resp_w = salary_data.get('resp_w')
+                #     self.resp_s = salary_data.get('resp_s')
 
                 if "lq" + country_postfix in salary_data:
-                    self.salary_default_country_med = salary_data["med" + country_postfix]
-                    self.salary_default_country_lq = salary_data["lq" + country_postfix]
-                    self.salary_default_country_uq = salary_data["uq" + country_postfix]
-                    self.salary_default_country_pop = salary_data["pop" + country_postfix]
+                    self.salary_default_country_med = salary_data.get("med" + country_postfix)
+                    self.salary_default_country_lq = salary_data.get("lq" + country_postfix)
+                    self.salary_default_country_uq = salary_data.get("uq" + country_postfix)
+                    self.salary_default_country_pop = salary_data.get("pop" + country_postfix)
 
             if 'lq_ni' in salary_data:
-                self.lq_ni = salary_data['lq_ni']
-                self.med_ni = salary_data['med_ni']
-                self.uq_ni = salary_data['uq_ni']
-                self.pop_ni = salary_data['pop_ni']
-                # self.resp_ni = salary_data['resp_ni']
+                self.lq_ni = salary_data.get('lq_ni')
+                self.med_ni = salary_data.get('med_ni')
+                self.uq_ni = salary_data.get('uq_ni')
+                self.pop_ni = salary_data.get('pop_ni')
+                # self.resp_ni = salary_data.get('resp_ni')
 
             if 'lq_nw' in salary_data:
-                self.lq_nw = salary_data['lq_nw']
-                self.med_nw = salary_data['med_nw']
-                self.uq_nw = salary_data['uq_nw']
-                self.pop_nw = salary_data['pop_nw']
+                self.lq_nw = salary_data.get('lq_nw')
+                self.med_nw = salary_data.get('med_nw')
+                self.uq_nw = salary_data.get('uq_nw')
+                self.pop_nw = salary_data.get('pop_nw')
 
-                self.lq_ne = salary_data['lq_ne']
-                self.med_ne = salary_data['med_ne']
-                self.uq_ne = salary_data['uq_ne']
-                self.pop_ne = salary_data['pop_ne']
+                self.lq_ne = salary_data.get('lq_ne')
+                self.med_ne = salary_data.get('med_ne')
+                self.uq_ne = salary_data.get('uq_ne')
+                self.pop_ne = salary_data.get('pop_ne')
 
-                self.lq_em = salary_data['lq_em']
-                self.med_em = salary_data['med_em']
-                self.uq_em = salary_data['uq_em']
-                self.pop_em = salary_data['pop_em']
+                self.lq_em = salary_data.get('lq_em')
+                self.med_em = salary_data.get('med_em')
+                self.uq_em = salary_data.get('uq_em')
+                self.pop_em = salary_data.get('pop_em')
 
-                self.lq_wm = salary_data['lq_wm']
-                self.med_wm = salary_data['med_wm']
-                self.uq_wm = salary_data['uq_wm']
-                self.pop_wm = salary_data['pop_wm']
+                self.lq_wm = salary_data.get('lq_wm')
+                self.med_wm = salary_data.get('med_wm')
+                self.uq_wm = salary_data.get('uq_wm')
+                self.pop_wm = salary_data.get('pop_wm')
 
-                self.lq_ee = salary_data['lq_ee']
-                self.med_ee = salary_data['med_ee']
-                self.uq_ee = salary_data['uq_ee']
-                self.pop_ee = salary_data['pop_ee']
+                self.lq_ee = salary_data.get('lq_ee')
+                self.med_ee = salary_data.get('med_ee')
+                self.uq_ee = salary_data.get('uq_ee')
+                self.pop_ee = salary_data.get('pop_ee')
 
-                self.lq_se = salary_data['lq_se']
-                self.med_se = salary_data['med_se']
-                self.uq_se = salary_data['uq_se']
-                self.pop_se = salary_data['pop_se']
+                self.lq_se = salary_data.get('lq_se')
+                self.med_se = salary_data.get('med_se')
+                self.uq_se = salary_data.get('uq_se')
+                self.pop_se = salary_data.get('pop_se')
 
-                self.lq_sw = salary_data['lq_sw']
-                self.med_sw = salary_data['med_sw']
-                self.uq_sw = salary_data['uq_sw']
-                self.pop_sw = salary_data['pop_sw']
+                self.lq_sw = salary_data.get('lq_sw')
+                self.med_sw = salary_data.get('med_sw')
+                self.uq_sw = salary_data.get('uq_sw')
+                self.pop_sw = salary_data.get('pop_sw')
 
-                self.lq_yh = salary_data['lq_yh']
-                self.med_yh = salary_data['med_yh']
-                self.uq_yh = salary_data['uq_yh']
-                self.pop_yh = salary_data['pop_yh']
+                self.lq_yh = salary_data.get('lq_yh')
+                self.med_yh = salary_data.get('med_yh')
+                self.uq_yh = salary_data.get('uq_yh')
+                self.pop_yh = salary_data.get('pop_yh')
 
-                self.lq_lo = salary_data['lq_lo']
-                self.med_lo = salary_data['med_lo']
-                self.uq_lo = salary_data['uq_lo']
-                self.pop_lo = salary_data['pop_lo']
+                self.lq_lo = salary_data.get('lq_lo')
+                self.med_lo = salary_data.get('med_lo')
+                self.uq_lo = salary_data.get('uq_lo')
+                self.pop_lo = salary_data.get('pop_lo')
 
-                self.lq_ed = salary_data['lq_ed']
-                self.med_ed = salary_data['med_ed']
-                self.uq_ed = salary_data['uq_ed']
-                self.pop_ed = salary_data['pop_ed']
+                self.lq_ed = salary_data.get('lq_ed')
+                self.med_ed = salary_data.get('med_ed')
+                self.uq_ed = salary_data.get('uq_ed')
+                self.pop_ed = salary_data.get('pop_ed')
 
-                self.lq_gl = salary_data['lq_gl']
-                self.med_gl = salary_data['med_gl']
-                self.uq_gl = salary_data['uq_gl']
-                self.pop_gl = salary_data['pop_gl']
+                self.lq_gl = salary_data.get('lq_gl')
+                self.med_gl = salary_data.get('med_gl')
+                self.uq_gl = salary_data.get('uq_gl')
+                self.pop_gl = salary_data.get('pop_gl')
 
-                self.lq_cf = salary_data['lq_cf']
-                self.med_cf = salary_data['med_cf']
-                self.uq_cf = salary_data['uq_cf']
-                self.pop_cf = salary_data['pop_cf']
+                self.lq_cf = salary_data.get('lq_cf')
+                self.med_cf = salary_data.get('med_cf')
+                self.uq_cf = salary_data.get('uq_cf')
+                self.pop_cf = salary_data.get('pop_cf')
 
             self.unavailable_reason_region_not_exists = ""
             self.unavailable_reason_region_not_nation = ""
             self.unavailable_reason_region_is_ni = ""
 
-            self.unavail_text_region_not_exists_english = salary_data['unavail_text_region_not_exists_english']
-            self.unavail_text_region_not_exists_welsh = salary_data['unavail_text_region_not_exists_welsh']
+            self.unavail_text_region_not_exists_english = salary_data.get('unavail_text_region_not_exists_english')
+            self.unavail_text_region_not_exists_welsh = salary_data.get('unavail_text_region_not_exists_welsh')
 
             if 'unavail_text_region_not_nation_english' in salary_data:
-                self.unavail_text_region_not_nation_english = salary_data['unavail_text_region_not_nation_english']
-                self.unavail_text_region_not_nation_welsh = salary_data['unavail_text_region_not_nation_welsh']
+                self.unavail_text_region_not_nation_english = salary_data.get('unavail_text_region_not_nation_english')
+                self.unavail_text_region_not_nation_welsh = salary_data.get('unavail_text_region_not_nation_welsh')
             else:
                 self.unavail_text_region_not_nation_english = ""
                 self.unavail_text_region_not_nation_welsh = ""
 
             if 'unavail_text_region_is_ni_english' in salary_data:
-                self.unavail_text_region_is_ni_english = salary_data['unavail_text_region_is_ni_english']
-                self.unavail_text_region_is_ni_welsh = salary_data['unavail_text_region_is_ni_welsh']
+                self.unavail_text_region_is_ni_english = salary_data.get('unavail_text_region_is_ni_english')
+                self.unavail_text_region_is_ni_welsh = salary_data.get('unavail_text_region_is_ni_welsh')
             else:
                 self.unavail_text_region_is_ni_english = ""
                 self.unavail_text_region_is_ni_welsh = ""

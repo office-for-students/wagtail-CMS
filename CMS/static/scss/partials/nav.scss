@@ -30,7 +30,7 @@ nav {
   }
 
   .saved-counter {
-    font-size: 11px;
+    font-size: 0.688rem;
     position: absolute;
     background-color: red;
     border-radius: 50%;
@@ -73,14 +73,14 @@ nav {
     &__burger-menu {
       align-self: center;
       padding-right: 12px;
-      font-size: 28px;
+      font-size: 1.75;
     }
 
     &__close-menu {
       align-self: center;
       text-align: right;
       padding-right: 15px;
-      font-size: 28px;
+      font-size: 1.75;
       display: none;
     }
 
@@ -380,7 +380,7 @@ nav {
           display: block;
           padding: 25px 15px;
           min-width: 179px;
-          line-height: 19px;
+          line-height: 1.5;
           color: $white;
           text-decoration: none;
         }

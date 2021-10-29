@@ -38,11 +38,9 @@
 
         &-title {
             @include small-font--bold-mixin();
-
-            margin: 0px;
-
+            margin: 0;
             color: $ux-grey-3;
-            line-height: 19px;
+            line-height: 1.5;
         }
 
         &-body {
@@ -61,9 +59,8 @@
                 }
 
                 p {
-                    margin-top: 0px;
-
-                    line-height: 19px;
+                    margin-top: 0;
+                    line-height: 1.5;
                 }
 
                 ul {
@@ -76,7 +73,7 @@
                     @include mobile-body-font-mixin();
 
                     padding: 40px;
-                    margin: 0px;
+                    margin: 0;
 
                     color: $ux-grey-3;
                     background-color: $white;
@@ -192,7 +189,7 @@
                         margin-top: 2rem;
 
                         &:first-child {
-                            margin-top: 0px;
+                            margin-top: 0;
                         }
                     }
 
@@ -203,12 +200,12 @@
                         margin-top: 2rem;
 
                         &:first-child {
-                            margin-top: 0px;
+                            margin-top: 0;
                         }
                     }
 
                     p {
-                        margin-top: 0px;
+                        margin-top: 0;
 
                         line-height: 29px;
                     }

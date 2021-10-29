@@ -1,5 +1,7 @@
 {% load staticfiles wagtailcore_tags discover_uni_tags %}
 
+{% include "courses/partials/info_box.html" with header="data_need_to_know" content="graduate_perceptions_info_box" url="graduate_link" read_more="read_more_about_graduate_perceptions"%}
+
 {% if course_details.has_multiple_graduate_perceptions_stats %}
 <ul class="nav nav-tabs mt-2" id="grad-perceptions-tab" role="tablist">
     {% for perceptions_stats in course_details.graduate_perceptions %}

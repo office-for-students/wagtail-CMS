@@ -44,6 +44,8 @@ class SatisfactionStatistics:
         self.subject_welsh = subject_data.get('welsh_label')
 
         unavailable_data = data_obj.get('unavailable', {})
+        if unavailable_data == "":
+            unavailable_data = {}
         self.unavailable_code = unavailable_data.get('code')
         self.unavailable_reason = unavailable_data.get('reason', '')
         self.unavailable_reason_english = unavailable_data.get('reason_english', '')

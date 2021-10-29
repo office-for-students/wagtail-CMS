@@ -23,6 +23,9 @@ class GraduatePerceptionStatistics:
             self.aggregation_level = go_voice_work_data.get('go_work_agg')
 
             unavailable_data = go_voice_work_data.get('unavailable', {})
+            if unavailable_data == "":
+                unavailable_data = {}
+
             self.unavailable_code = unavailable_data.get('code')
             self.unavailable_reason = unavailable_data.get('reason', '')
             self.unavailable_reason_english = unavailable_data.get('reason_english', '')

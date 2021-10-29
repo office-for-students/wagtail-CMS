@@ -9,14 +9,13 @@
             display: block;
             padding: 17px 23px 16px;
             margin-top: 20px;
-
             text-decoration: none;
             color: $gradient-light-green;
             background-color: $white;
             box-shadow: 2px 1px 15px rgba(0, 0, 0, 0.1);
             border: 3px solid transparent;
             border-radius: 10px;
-            line-height: 22px;
+            line-height: 1.5;
         }
     }
 }
@@ -33,15 +32,13 @@
 
             a {
                 @include xs-heading--bold-mixin();
-
                 display: block;
                 padding: 26px 37px 25px;
                 margin-top: 30px;
                 color: $gradient-light-green;
                 text-decoration: none;
-
                 border-radius: 10px;
-                line-height: 29px;
+                line-height: 1.5;
 
                 &:hover {
                     border: 3px solid $gradient-light-green;

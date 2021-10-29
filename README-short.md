@@ -15,7 +15,7 @@ _Note that the original `docker-compose.yml.example` is maintained for CI but id
 # Virtual environment setup
 ```bash
 ## Create a virtual environment using Python 3.6.8 using https://virtualenv.pypa.io
-virtualenv venv -p 3.6.8
+virtualenv venv -p 3.6.13
 
 # Activate the virtual environment 
 source venv/bin/activate

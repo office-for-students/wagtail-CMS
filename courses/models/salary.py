@@ -17,7 +17,7 @@ class Salary:
             if self.display_language == enums.languages.WELSH:
                 self.subject_title_in_local_language = self.subject_welsh
 
-            self.unavail_reason = salary_data['unavail_reason']
+            self.unavail_reason = salary_data.get('unavail_reason')
             self.unavailable_reason = ""  # salary_data.get('reason', '')
             self.unavailable_reason_english = salary_data.get('unavail_text_english', '')
             self.unavailable_reason_welsh = salary_data.get('unavail_text_welsh', '')
@@ -42,43 +42,43 @@ class Salary:
 
             self.resp_rate = None
             if 'resp_rate' in salary_data:
-                self.resp_rate = salary_data['resp_rate'] + "%"
+                self.resp_rate = salary_data.get('resp_rate') + "%"
 
             if 'agg' in salary_data:
-                self.pop = salary_data['pop']
-                self.lq = salary_data['lq']
-                self.med = salary_data['med']
-                self.uq = salary_data['uq']
-                self.aggregate = salary_data['agg']
+                self.pop = salary_data.get('pop')
+                self.lq = salary_data.get('lq')
+                self.med = salary_data.get('med')
+                self.uq = salary_data.get('uq')
+                self.aggregate = salary_data.get('agg')
 
-                self.prov_pc_uk = salary_data['inst_prov_pc_uk']
-                self.prov_pc_e = salary_data['inst_prov_pc_e']
-                self.prov_pc_s = salary_data['inst_prov_pc_s']
-                self.prov_pc_w = salary_data['inst_prov_pc_w']
-                self.prov_pc_ni = salary_data['inst_prov_pc_ni']
+                self.prov_pc_uk = salary_data.get('inst_prov_pc_uk')
+                self.prov_pc_e = salary_data.get('inst_prov_pc_e')
+                self.prov_pc_s = salary_data.get('inst_prov_pc_s')
+                self.prov_pc_w = salary_data.get('inst_prov_pc_w')
+                self.prov_pc_ni = salary_data.get('inst_prov_pc_ni')
 
-                self.salary_default_country_prov_pc = salary_data["inst_prov_pc" + country_postfix]
+                self.salary_default_country_prov_pc = salary_data.get("inst_prov_pc" + country_postfix)
 
             if 'inst_prov_pc_nw' in salary_data:
-                self.prov_pc_nw = salary_data['inst_prov_pc_nw']
-                self.prov_pc_ne = salary_data['inst_prov_pc_ne']
-                self.prov_pc_em = salary_data['inst_prov_pc_em']
-                self.prov_pc_wm = salary_data['inst_prov_pc_wm']
-                self.prov_pc_ee = salary_data['inst_prov_pc_ee']
-                self.prov_pc_se = salary_data['inst_prov_pc_se']
-                self.prov_pc_sw = salary_data['inst_prov_pc_sw']
-                self.prov_pc_yh = salary_data['inst_prov_pc_yh']
-                self.prov_pc_lo = salary_data['inst_prov_pc_lo']
-                self.prov_pc_ed = salary_data['inst_prov_pc_ed']
-                self.prov_pc_gl = salary_data['inst_prov_pc_gl']
-                self.prov_pc_cf = salary_data['inst_prov_pc_cf']
+                self.prov_pc_nw = salary_data.get('inst_prov_pc_nw')
+                self.prov_pc_ne = salary_data.get('inst_prov_pc_ne')
+                self.prov_pc_em = salary_data.get('inst_prov_pc_em')
+                self.prov_pc_wm = salary_data.get('inst_prov_pc_wm')
+                self.prov_pc_ee = salary_data.get('inst_prov_pc_ee')
+                self.prov_pc_se = salary_data.get('inst_prov_pc_se')
+                self.prov_pc_sw = salary_data.get('inst_prov_pc_sw')
+                self.prov_pc_yh = salary_data.get('inst_prov_pc_yh')
+                self.prov_pc_lo = salary_data.get('inst_prov_pc_lo')
+                self.prov_pc_ed = salary_data.get('inst_prov_pc_ed')
+                self.prov_pc_gl = salary_data.get('inst_prov_pc_gl')
+                self.prov_pc_cf = salary_data.get('inst_prov_pc_cf')
 
-            if 'earnings_agg_unavail_message' in salary_data and len(salary_data['earnings_agg_unavail_message']) > 0:
+            if 'earnings_agg_unavail_message' in salary_data and len(salary_data.get('earnings_agg_unavail_message')) > 0:
                 self.earnings_aggregation_msg = {}
                 if self.display_language == enums.languages.ENGLISH:
-                    self.earnings_aggregation_str = salary_data['earnings_agg_unavail_message']['english']
+                    self.earnings_aggregation_str = salary_data.get('earnings_agg_unavail_message')['english']
                 else:
-                    self.earnings_aggregation_str = salary_data['earnings_agg_unavail_message']['welsh']
+                    self.earnings_aggregation_str = salary_data.get('earnings_agg_unavail_message')['welsh']
                     self.subject_title_in_local_language = self.subject_welsh
 
                 self.earnings_aggregation_msg["msg_heading"], self.earnings_aggregation_msg[
