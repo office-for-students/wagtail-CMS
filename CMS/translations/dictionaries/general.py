@@ -703,6 +703,10 @@ DICT = {
         "cy": "Sefydliad",
         "en": "Institution"
     },
+    "this_institution": {
+        "cy": "y sefydliad hwn",
+        "en": "This institution"
+    },
     "institution_az": {
         "cy": "Sefydliad A-Z",
         "en": "Institution A-Z"
