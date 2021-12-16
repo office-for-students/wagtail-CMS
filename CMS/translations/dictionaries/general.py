@@ -543,6 +543,10 @@ DICT = {
         "cy": "Hidlau",
         "en": "Filters"
     },
+    "final_year_students": {
+      "cy": "Gofynnir i bob myfyriwr blwyddyn olaf gwblhau'r Arolwg Cenedlaethol o Fyfyrwyr.",
+      "en": "All final year students are asked to complete the National Student Survey."
+    },
     "financial_support_details": {
         "cy": "Cymorth ariannol",
         "en": "Financial support"

@@ -29,14 +29,13 @@
                     </p>
                 </div>
                 <div class="col-lg-9 col-md-12 align-self-stretch my-auto pt-2 text-center text-lg-left">
-                    <p>
-                        {{ block.value.lead_text }}
+                    <p>{{ block.value.lead_text }}</p>
                         <div class="student-satisfaction__intro">
                             {% create_list course_details.data_from_html overall_stats.satisfaction_stats.number_of_students overall_stats.satisfaction_stats.response_rate as substitutions %}
                             {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
+                            <p>{% get_translation key=final_year_students language=page.get_language %}</p>
                         </div>
-                    </p>
                 </div>
         </div>
     {% endif %}
@@ -52,7 +51,6 @@
                     <div class="col-lg-4 col-md-12 mb-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
                             {{block.value.teaching_stats_header }}
-
                             <p>
                                 {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
