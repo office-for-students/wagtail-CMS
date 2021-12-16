@@ -118,8 +118,8 @@ DICT = {
         "en": "Go to Earnings"
     },
     "average_earnings_year_range": {
-        "cy": "fyfyrwyr a raddiodd yn ystod",
-        "en": "students graduating during"
+        "cy": "Fyfyrwyr a raddiodd yn ystod",
+        "en": "Students graduating during"
     },
     "baccalaureate": {
         "cy": "Bagloriaeth",
