@@ -350,8 +350,8 @@ DICT = {
         "en": "Data from"
     },
     "data_from_html": {
-        "cy": "<div class=\"d-inline d-md-none\"><i class=\"fas fa-user-alt \"></i></div><div id=\"sample-size-text\" class=\"d-none d-md-inline text-left\">Data gan</div>",
-        "en": "<div class=\"d-inline d-md-none\" ><i class=\"fas fa-user-alt \"></i></div><div id=\"sample-size-text\" class=\"d-none d-md-inline text-left\">Data from</div>"
+        "cy": "<p class='data-from'>Data gan</p>",
+        "en": "<p class='data-from'>Data from</p>"
     },
     "data_from_html_average_earnings_year_range": {
         "cy": "<div class=\"d-inline d-md-none\"><i class=\"fas fa-user-alt \"></i></div><div id=\"sample-size-text\" class=\"d-none d-md-inline\">Data o</div>",
