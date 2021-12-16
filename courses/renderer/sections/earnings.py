@@ -10,7 +10,7 @@ from courses.renderer.sections.base import Section
 from courses.renderer.sections.earnings_unavailable import get_unavailable
 
 AVERAGE_EARNINGS = "average_earnings_course_overview_1"
-INSTITUTION = "institution"
+INSTITUTION = "this_institution"
 DATA_FROM_PEOPLE = "data_from_people"
 NATIONAL_AVERAGE = "national_average"
 REGION = "regions"
@@ -43,20 +43,20 @@ class SubEarningsSection(Section):
         sections = [
             (
                 ("1", AVERAGE_EARNINGS, earnings_list[0], "", "go_salaries_inst", "first"),
-                ("2", INSTITUTION, earnings_list[1], "£", "go_salaries_inst", False),
+                ("2", INSTITUTION, earnings_list[1], "£", "go_salaries_inst", "institution"),
                 ("3", DATA_FROM_PEOPLE, earnings_list[2], "", "go_salaries_inst", False),
                 ("4", PERCENTAGE_THOSE_ASKED, earnings_list[5], "", "go_salaries_inst", False),
                 ("5", NATIONAL_AVERAGE, earnings_list[3], "£", "go_salaries_sector", "national"),
                 ("6", DATA_FROM_PEOPLE, earnings_list[4], "", "go_salaries_sector", "final"),
 
                 ("7", AVERAGE_EARNINGS, earnings_list[0], "", "leo3_salaries_inst", "first"),
-                ("8", INSTITUTION, earnings_list[1], "£", "leo3_salaries_inst", False),
+                ("8", INSTITUTION, earnings_list[1], "£", "leo3_salaries_inst", "institution"),
                 ("9", DATA_FROM_PEOPLE, earnings_list[2], "", "leo3_salaries_inst", False),
                 ("10", NATIONAL_AVERAGE, earnings_list[3], "£", "leo3_salaries_sector", "national"),
                 ("11", DATA_FROM_PEOPLE, earnings_list[4], "", "leo3_salaries_sector", "final"),
 
                 ("12", AVERAGE_EARNINGS, earnings_list[0], "", "leo5_salaries_inst", "first"),
-                ("13", INSTITUTION, earnings_list[1], "£", "leo5_salaries_inst", False),
+                ("13", INSTITUTION, earnings_list[1], "£", "leo5_salaries_inst", "institution"),
                 ("14", DATA_FROM_PEOPLE, earnings_list[2], "", "leo5_salaries_inst", False),
                 ("15", NATIONAL_AVERAGE, earnings_list[3], "£", "leo5_salaries_sector", "national"),
                 ("16", DATA_FROM_PEOPLE, earnings_list[4], "", "leo5_salaries_sector", "final")
@@ -120,13 +120,22 @@ class SubEarningsSection(Section):
                         extra=extra,
                         header=header
                     )
+                elif extra == "institution":
+                    institution = course.institution_name
+                    values = render_to_string(
+                        "courses/partials/country_population.html",
+                        context=dict(
+                            additional_field=institution,
+                            field=f"{prefix}{method}"
+                        )
+                    ) if method else values
                 elif extra == "final":
                     country = getattr(_object, "country")
                     values = render_to_string(
                         "courses/partials/country_population.html",
                         context=dict(
-                            country=country,
-                            population=method
+                            additional_field=country,
+                            field=method
                         )
                     ) if method else values
                 else:
@@ -178,13 +187,23 @@ class SubEarningsSection(Section):
                         extra=extra,
                         header=header
                     )
+                elif extra == "institution":
+                    institution = course.institution_name
+                    print("INSITTUTION", institution)
+                    response = render_to_string(
+                        "courses/partials/country_population.html",
+                        context=dict(
+                            additional_field=institution,
+                            field=f"{prefix}{method}"
+                        )
+                    ) if method else response
                 elif extra == "final":
                     country = getattr(_object, "country")
                     response = render_to_string(
                         "courses/partials/country_population.html",
                         context=dict(
-                            country=country,
-                            population=method
+                            additional_field=country,
+                            field=method
                         )
                     ) if method else response
                 else:
