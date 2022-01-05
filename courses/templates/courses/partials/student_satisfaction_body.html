@@ -34,7 +34,7 @@
                             {% create_list course_details.data_from_html overall_stats.satisfaction_stats.number_of_students overall_stats.satisfaction_stats.response_rate as substitutions %}
                             {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
-                            <p>{% get_translation key=final_year_students language=page.get_language %}</p>
+                            <p class="rich-text">{% get_translation key="final_year_students" language=page.get_language %}</p>
                         </div>
                 </div>
         </div>
