@@ -103,7 +103,7 @@ DICT = {
     },
     "average_earnings_course_overview_1": {
         "cy": "Enillion cyfartalog",
-        "en": "Average Earnings"
+        "en": "Average Earnings for"
     },
     "average_earnings_course_overview_2a": {
         "cy": "15 mis ar ôl y cwrs",
