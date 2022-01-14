@@ -123,7 +123,7 @@ class SubEarningsSection(Section):
                 elif extra == "institution":
                     institution = course.institution_name
                     values = render_to_string(
-                        "courses/partials/country_population.html",
+                        "courses/partials/institution_snippet.html",
                         context=dict(
                             additional_field=institution,
                             field=f"{prefix}{method}"
@@ -189,9 +189,8 @@ class SubEarningsSection(Section):
                     )
                 elif extra == "institution":
                     institution = course.institution_name
-                    print("INSITTUTION", institution)
                     response = render_to_string(
-                        "courses/partials/country_population.html",
+                        "courses/partials/institution_snippet.html",
                         context=dict(
                             additional_field=institution,
                             field=f"{prefix}{method}"
