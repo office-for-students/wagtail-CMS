@@ -1,6 +1,7 @@
 import json
 
 from django.http import JsonResponse
+from django.shortcuts import render
 
 from core.request_handler import get_json_file
 from core.request_handler import send_feedback
@@ -51,3 +52,7 @@ def not_already_in_list(name, existing):
 
 def get_institutions_json(request, language):
     return JsonResponse(load_institution_json()[language], status=200, safe=False)
+
+
+def robots(request, **kwargs):
+    return render(request, 'robots.txt', content_type='text/plain')
