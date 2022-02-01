@@ -97,8 +97,7 @@
   }
 
   .home-page__bookmark-body {
-    background: linear-gradient(to left, #FFFFFF 10%, #8e3b74 10%);
-
+    background: linear-gradient(to left, #8E3B74DB, #8e3b74);
     .home-page__bookmark-body-inner {
       h4 {
         font-size: 1rem;
@@ -243,8 +242,6 @@
     }
 
     .home-page__bookmark-body {
-      background: linear-gradient(to left, #FFFFFF 10%, #8e3b74 10%);
-
       .home-page__bookmark-body-inner {
         h4 {
           font-size: 1.2rem;

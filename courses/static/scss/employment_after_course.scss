@@ -14,7 +14,7 @@
         font-family: 'Nunito Sans', sans-serif;
         color: $brownish-grey;
         font-weight: normal;
-        font-size: 0.875rem;
+        font-size: 1rem;
         line-height: 1.5;
 
         a {
@@ -63,7 +63,7 @@
         font-family: 'Nunito Sans', sans-serif;
         color: $black;
         font-weight: normal;
-        font-size: 1.125rem;
+        font-size: 32px;
     }
 
     .employment-after-course__data-point {
@@ -109,7 +109,7 @@
 
     p {
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 0.875rem;
+        font-size: 1rem;
         font-weight: normal;
         color: $brownish-grey;
         line-height: 1.5;
@@ -117,7 +117,7 @@
 
     a {
         font-family: 'Nunito Sans', sans-serif;
-        font-size: 0.875rem;
+        font-size: 1rem;
         font-weight: normal;
         color: #308282;
         text-decoration: underline;
@@ -218,7 +218,7 @@
 
 @media only screen and (min-width: 770px) {
     .employment-after-course__block .employment-after-course__stats-heading, .employment-after-course__lead-block .employment-after-course__stats-heading, .employment-after-course_occupation-block .employment-after-course__stats-heading {
-        font-size:28px;
+        font-size:32px;
     }
     .employment-after-course__block .employment-after-course_explanation-text .rich-text, .employment-after-course__lead-block .employment-after-course_explanation-text .rich-text, .employment-after-course__block .rich-text, .employment-after-course__lead-block .rich-text, .employment-after-course_occupation-block .employment-after-course_explanation-text .rich-text, .employment-after-course_occupation-block .rich-text {
         font-size: 1rem;
@@ -257,7 +257,7 @@
             font-family: 'Nunito Sans', sans-serif;
             color: $black;
             font-weight:normal;
-            font-size: 28px;
+            font-size: 32px;
         }
 
         .employment-after-course__data-point {

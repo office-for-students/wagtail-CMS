@@ -27,7 +27,7 @@ ROOT_DOMAIN = os.environ.get('ROOT_DOMAIN', 'http://localhost:3000')
 
 INSTALLED_APPS = [
     'customadmin',
-
+    'django.contrib.sitemaps',
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
