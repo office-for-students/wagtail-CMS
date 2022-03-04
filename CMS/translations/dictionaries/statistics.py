@@ -244,7 +244,7 @@ STATISTICS = {
         "en": "My course has provided me with opportunities to bring information and ideas together from different topics."
     },
     "nss_question_7": {
-        "cy": "Mae fy nghwrs wedi rhoi cyfleoedd i mi i ddefnyddio’r hyn rydw i wedi’i ddysgu.",
+        "cy": "Mae fy nghwrs i wedi rhoi cyfleoedd i mi ddefnyddio'r hyn rydw i wedi'i ddysgu.",
         "en": "My course has provided me with opportunities to apply what I have learnt."
     },
     "nss_question_8": {
