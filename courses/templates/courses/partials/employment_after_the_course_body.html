@@ -49,8 +49,6 @@
 
                             <h2 class="employment-after-course__stats-heading pt-3 mb-4">
                                 {{ block.value.six_month_employment_roles_heading }}
-                                        {% if course_details.has_multiple_employment_stats %}
-                                            {{ employment_stats.display_subject_name }}{% endif %}
                             </h2>
                             {% if employment_stats.aggregation_level != 24 %}
                                 {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
@@ -243,8 +241,6 @@
                     <div class="col-12 align-self-stretch my-auto">
                         <h2 class="employment-after-course__stats-heading text-left pt-3 mb-4">
                             {{ block.value.six_month_employment_roles_label_explanation_heading }}
-                                    {% if course_details.has_multiple_job_type_stats %}
-                                        {{ jobtype_stats.display_subject_name }}{% endif %}
                         </h2>
                         {% if jobtype_stats.number_of_students and joblist_stats.jobs %}
 
