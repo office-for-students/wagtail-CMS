@@ -1,6 +1,6 @@
 {% load staticfiles discover_uni_tags %}
 <div class="course_search">
-    <div class="p-3 pr-5">
+    <div class="p-3 pr-4" style="width:50%">
         <p class="mb-3">{% get_translation key='search_by_course_or_institution' language=page.get_language %}</p>
         <form class="search_form"
               action="{% if language == 'cy' %}/cy{% endif %}{% url 'course_finder_results' %}" method="post"
