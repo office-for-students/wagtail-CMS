@@ -272,7 +272,7 @@ body {
 
 .not-enough-data-disclaimer {
   //border: solid 3px #cee9e7 !important;
-  font-size: 0.875rem;
+  font-size: 1.125rem;
   font-weight: normal;
   color: $brownish-grey;
   font-family: "Nunito Sans", sans-serif;
@@ -292,7 +292,7 @@ body {
 @media only screen and (min-width: 770px) {
   .not-enough-data-disclaimer {
     //border: solid 3px #cee9e7 !important;
-    font-size: 1rem;
+    font-size: 1.125rem;
     font-weight: normal;
     color: $brownish-grey;
     font-family: "Nunito Sans", sans-serif;
@@ -322,11 +322,11 @@ body {
 #go_sector_unavail.not-enough-data-disclaimer {
   padding: 0.5rem;
   h6 {
-    font-size: 0.8rem;
+    font-size: 1.125rem;
     font-weight: normal;
   }
   h4 {
-    font-size: 0.9rem;
+    font-size: 1.125rem;
     font-weight: normal;
     color: $black;
   }
