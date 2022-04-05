@@ -1272,7 +1272,7 @@ DICT = {
         "en": "The course is well organised and running smoothly"
     },
     "the_criteria_used_in_marking_have_been_clear_in_advance": {
-        "cy": "Mae'r meini prawf a ddefnyddir ar gyfer marcio wedi cael eu gwneud yn eglur ymlaen llaw",
+        "cy": "Mae’r meini prawf ar gyfer marcio wedi cael eu hegluro ymlaen llaw.",
         "en": "The criteria used in marking have been clear in advance"
     },
     "the_it_resources_and_facilities_provided_have_supported_my_learning_well": {
