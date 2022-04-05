@@ -1,5 +1,4 @@
 User-agent: *
 Disallow: /
+Sitemap: https://discoveruni.gov.uk/sitemap.xml
 Disallow: /subcontractual-and-collaborative-provision-draft/
-
-Sitemap: https://discoveruni.org.uk/sitemap.xml
