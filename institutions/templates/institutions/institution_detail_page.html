@@ -23,8 +23,9 @@
 
                 {% if institution.pub_ukprn_country_code == "XF" %}
                     <a class="institution-details__overview-item-value"
-                       href="https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/provider/{{ institution.pub_ukprn }}/"
-                       target="_blank" style="color: #308282;">OFS Registration information</a>
+                       href="https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/provider/{{ institution.ukprn }}/"
+                       target="_blank" style="color: #308282;">{% if page.is_english %}OFS Registration
+                        information{% else %}Gwybodaeth cofrestru OFS{% endif %}</a>
                 {% endif %}
 
                 <div class="institution-details__overview row row-flex">
