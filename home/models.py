@@ -34,6 +34,9 @@ class HomePage(DiscoverUniBasePage):
 
     header = TextField(blank=True)
     intro = RichTextField(blank=True)
+    informational_title = TextField(blank=True)
+    informational_text = TextField(blank=True)
+    informational_text_link = TextField(blank=True)
     course_wizard_link = TextField(blank=True)
     box_1_title = TextField(blank=True)
     box_1_content = TextField(blank=True)
@@ -52,6 +55,9 @@ class HomePage(DiscoverUniBasePage):
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
         FieldPanel('intro', classname="full"),
+        FieldPanel('informational_title', classname="full"),
+        FieldPanel('informational_text', classname="full"),
+        FieldPanel('informational_text_link', classname="full"),
         FieldPanel('course_wizard_link', classname="full"),
         FieldPanel('box_1_title', classname="full"),
         FieldPanel('box_1_content', classname="full"),

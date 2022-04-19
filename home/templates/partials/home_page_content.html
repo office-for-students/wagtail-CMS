@@ -21,12 +21,13 @@
 
     <!-- Course Search box -->
     <div id="home-page__intro-panel" class="home-page__intro-panel bg-white pb-5">
-        <div class="row">
+        <div class="row center">
             {% include 'coursefinder/partials/coursesearch/searchbox.html' with home_page="true" %}
             <div class="col-12 d-block d-lg-none mx-auto text-center">
                 <hr class="dash"/>
             </div>
-            {% include 'coursefinder/partials/coursesearch/coursewizard.html' %}
+            {% include 'coursefinder/partials/coursesearch/search_box_right_side.html' %}
+{#            {% include 'coursefinder/partials/coursesearch/coursewizard.html' %}#}
         </div>
     </div>
     <!-- Course Search box end -->

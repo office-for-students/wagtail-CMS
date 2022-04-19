@@ -55,7 +55,7 @@ python manage.py test
 # Fire it up if not already running
 docker-compose --env-file .env.test up 
 
-docker container exec -it wagtail-cms_web_1 python manage.py test   
+docker container exec -it wagtail-cms-web-1 python manage.py test   
 ```
 
 # How to configure the server
@@ -90,16 +90,16 @@ Institutions | MongoDB     | CosmosDB    | `institutions/fixtures/institutions.j
 # If you receive the following error when trying to populate...
 #   ValueError: Table wagtailforms_formsubmission does not exist
 # then run the following command to migrate:
-#   docker container exec -it wagtail-cms_web_1 python manage.py migrate
+#   docker container exec -it wagtail-cms-web-1 python manage.py migrate
 
 # CMS
-docker container exec -it wagtail-cms_web_1 python manage.py populate_cms
+docker container exec -it wagtail-cms-web-1 python manage.py populate_cms
 
 # Courses
-docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
+docker container exec -it wagtail-cms-web-1 python manage.py populate_courses
 
 # Institutions
-docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions
+docker container exec -it wagtail-cms-web-1 python manage.py populate_institutions
 ```
 
 ## Optional - update fixture with data from remote database
@@ -107,7 +107,7 @@ docker container exec -it wagtail-cms_web_1 python manage.py populate_institutio
 # See https://github.com/xni06/ofs-secrets.git for the following environment variables 
 
 # CMS
-docker container exec -it wagtail-cms_web_1 python manage.py update_cms_fixture \
+docker container exec -it wagtail-cms-web-1 python manage.py update_cms_fixture \
       --db_host $REMOTE_DB_HOST \
       --db_name $REMOTE_DB_NAME \
       --db_user $REMOTE_DB_USER \
@@ -115,8 +115,8 @@ docker container exec -it wagtail-cms_web_1 python manage.py update_cms_fixture 
       --db_port $REMOTE_DB_PORT
 
 # Courses
-docker container exec -it wagtail-cms_web_1 python manage.py populate_courses --update
+docker container exec -it wagtail-cms-web-1 python manage.py populate_courses --update
 
 # Institutions
-docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions --update
+docker container exec -it wagtail-cms-web-1 python manage.py populate_institutions --update
 ```

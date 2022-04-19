@@ -43,21 +43,21 @@ class SubEarningsSection(Section):
         sections = [
             (
                 ("1", AVERAGE_EARNINGS, earnings_list[0], "", "go_salaries_inst", "first"),
-                ("2", INSTITUTION, earnings_list[1], "£", "go_salaries_inst", "institution"),
-                ("3", DATA_FROM_PEOPLE, earnings_list[2], "", "go_salaries_inst", False),
+                ("2", INSTITUTION, earnings_list[1], "£", "go_salaries_inst", False),
+                ("3", DATA_FROM_PEOPLE, earnings_list[2], "", "go_salaries_inst", "institution"),
                 ("4", PERCENTAGE_THOSE_ASKED, earnings_list[5], "", "go_salaries_inst", False),
                 ("5", NATIONAL_AVERAGE, earnings_list[3], "£", "go_salaries_sector", "national"),
                 ("6", DATA_FROM_PEOPLE, earnings_list[4], "", "go_salaries_sector", "final"),
 
                 ("7", AVERAGE_EARNINGS, earnings_list[0], "", "leo3_salaries_inst", "first"),
-                ("8", INSTITUTION, earnings_list[1], "£", "leo3_salaries_inst", "institution"),
-                ("9", DATA_FROM_PEOPLE, earnings_list[2], "", "leo3_salaries_inst", False),
+                ("8", INSTITUTION, earnings_list[1], "£", "leo3_salaries_inst", False),
+                ("9", DATA_FROM_PEOPLE, earnings_list[2], "", "leo3_salaries_inst", "institution"),
                 ("10", NATIONAL_AVERAGE, earnings_list[3], "£", "leo3_salaries_sector", "national"),
                 ("11", DATA_FROM_PEOPLE, earnings_list[4], "", "leo3_salaries_sector", "final"),
 
                 ("12", AVERAGE_EARNINGS, earnings_list[0], "", "leo5_salaries_inst", "first"),
-                ("13", INSTITUTION, earnings_list[1], "£", "leo5_salaries_inst", "institution"),
-                ("14", DATA_FROM_PEOPLE, earnings_list[2], "", "leo5_salaries_inst", False),
+                ("13", INSTITUTION, earnings_list[1], "£", "leo5_salaries_inst", False),
+                ("14", DATA_FROM_PEOPLE, earnings_list[2], "", "leo5_salaries_inst", "institution"),
                 ("15", NATIONAL_AVERAGE, earnings_list[3], "£", "leo5_salaries_sector", "national"),
                 ("16", DATA_FROM_PEOPLE, earnings_list[4], "", "leo5_salaries_sector", "final")
             )
@@ -152,6 +152,7 @@ class SubEarningsSection(Section):
             stat: str,
             model_list_name: str,
             language: str,
+            multiple=False,
             prefix="",
             extra=False
     ) -> str:
