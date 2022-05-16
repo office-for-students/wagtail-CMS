@@ -227,6 +227,7 @@ WIDGETAPIKEY = os.environ.get('WIDGETAPIKEY')
 WIDGETAPIHOST = os.environ.get('WIDGETAPIHOST')
 FEEDBACK_API_HOST = os.environ.get('FEEDBACK_API_HOST')
 JSONFILES_STORAGE_CONTAINER = os.environ.get('JSONFILES_STORAGE_CONTAINER', "")
+SITEMAP_STORAGE_BLOB = os.environ.get('SITEMAP_STORAGE_BLOB', "")
 STORAGEKEY = os.environ.get('STORAGEKEY')
 STORAGE_ACCOUNT_NAME = os.environ.get('STORAGE_ACCOUNT_NAME')
 
@@ -289,3 +290,8 @@ WAGTAILEMBEDS_FINDERS = [
         'class': 'wagtail.embeds.finders.oembed',
     }
 ]
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
