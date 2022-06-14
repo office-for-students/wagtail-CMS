@@ -107,6 +107,12 @@
         {% endif %} -->
 <!-- **************** -->
 <main>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</button>
+
+{% include 'partials/pop-up.html' %}
     <div id="main-content" tabindex="-1">
         {% block content %}{% endblock %}
 
