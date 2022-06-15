@@ -1,11 +1,11 @@
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content" style="width: 50%; height: 50%; margin-left: 32%; background-color: #002554; color: white">
+    <div class="modal-content" style="width: 50%; height: 50%; margin-left: 30%; background-color: #002554; color: white">
       <div class="modal-header d-flex pt-2 pl-2 pr-2 pb-1" >
           <div class="justify-content-start d-flex flex-row">
-          <img src="/static/apple-touch-icon.png" style="width:65px" alt="logo">
-        <h5 class="modal-title mt-3 ml-2" id="exampleModalLongTitle" style="font-family: 'Nunito Sans',
-        sans-serif;font-weight: 400; font-size: 1.9rem; text-align: left">Welcome to Discover Uni</h5>
+          <img src="/static/apple-touch-icon.png" class="popup__small_screen__logo" alt="logo">
+        <h5 class="modal-title popup__title" id="exampleModalLongTitle" style="font-family: 'Nunito Sans',
+        sans-serif; text-align: left">Welcome to Discover Uni</h5>
 
           </div>
         <button type="button" class="close mt-0" style="position: relative; top: -25px; right: -8px;" data-dismiss="modal" aria-label="Close">
@@ -14,32 +14,43 @@
       </div>
       <div class="modal-body p-3" style="background-color: #002554; border-radius: 8px;">
         <div class="p-2" style="background-color: white; border-radius: 5px; color: black;">
-            <h4 style="font-weight: 400; font-size: 1.6rem" class="pt-2 pl-2">Discover Uni is an official source of information about higher education.</h4>
-            <div class="d-flex flex-row justify-content-between pt-3">
-            <div class="p-3" style="width: 30%">
-                <img src="/static/images/infoicon.svg" alt="info icon">
-
+            <h4 class="popup__subheading">Discover Uni is an official source of information about higher education.</h4>
+            <div class="container pt-3">
+                <div class="row">
+            <div class="col-lg-4 col-sm-12 p-3 popup__small_screen" >
+                <div class="popup__img_div">
+                <img src="/static/images/infoicon.svg" class="popup__img" alt="info icon">
+                </div>
+                <div class="popup-text">
                 <h5 style="font-weight: 400; font-size: 1.4rem;" class="pt-3">Info & advice</h5>
                 <p style=";">Thinking about going to uni?
                 Find resources to help support your decision.</p>
+                </div>
             </div>
-            <div class="p-3" style="width: 30%">
-                <img src="/static/images/Searchicon.svg" alt="search icon">
-
+            <div class="col-lg-4 col-sm-12 p-3 popup__small_screen">
+                <div class="popup__img_div">
+                <img src="/static/images/Searchicon.svg" class="popup__img" alt="search icon">
+                </div>
+                <div class="popup-text">
                 <h5 style="font-weight: 400; font-size: 1.4rem;" class="pt-3">Course search</h5>
                 <p style="">Search all undergraduate courses.</p>
+                </div>
             </div>
-            <div class="p-3" style="width: 33%">
-                <img src="/static/images/compareicon.svg" alt="compare icon">
-
+            <div class="col-lg-4 col-sm-12 p-3 popup__small_screen">
+                <div class="popup__img_div">
+                <img src="/static/images/compareicon.svg" class="popup__img" alt="compare icon">
+                </div>
+                <div class="popup-text">
                 <h5 style="font-weight: 400; font-size: 1.4rem;" class="pt-3">Save & compare</h5>
                 <p style="">Shortlist courses and compare official data to help you make a decision.</p>
+                </div>
             </div>
+                </div>
             </div>
-          <div class="pt-2 pb-2 d-flex justify-content-between ml-2 mr-2">
-        <button type="button" class="btn btn-light p-2" style="width:49%; font-size: 1.2rem" data-dismiss="modal">Explore homepage</button>
+          <div class="popup__button_div">
+        <button type="button" class="btn btn-light p-3" data-dismiss="modal">Explore homepage</button>
               <!--if from widget-->
-        <button type="button" class="btn btn-warning p-2" style="width: 49%; font-size: 1.2rem">Continue to course data</button>
+        <button type="button" class="btn btn-warning p-3">Continue to course data</button>
               <!--if from external link-->
 {#      <button type="button" class="btn btn-warning p-2" style="width: 49%; font-size: 1.2rem">Continue</button>#}
           </div>
