@@ -228,9 +228,9 @@
     }
     .course-detail__bookmark-compare-btn {
         @include small-font--bold-mixin();
-        padding: 9px 16px 10px 19px;
+        padding: 7px 23px 7px 23px;
 
-        border-radius: 16px;
+        border-radius: 8px;
 //         color: $ux-grey-3;
         color: #fdfafa;
         background-color: transparent;
