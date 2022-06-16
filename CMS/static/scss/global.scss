@@ -64,8 +64,12 @@ a {
     @include green-cta-mixin();
     padding: 0;
 }
+.leo-banner__bold {
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
 
-.covid-19-banner {
+.covid-19-banner, .leo-banner {
   display: block;
   background: #268283;
   border-bottom: 2px solid #268283;

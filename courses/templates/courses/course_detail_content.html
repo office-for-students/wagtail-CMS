@@ -1,6 +1,16 @@
 {% include 'courses/partials/sticky_header.html' %}
 {% load staticfiles discover_uni_tags %}
 
+{% if not course.country.code == "XG" %}
+    <div>
+            <a class="leo-banner" href="{% if page.is_english %}/about-our-data/#longitudinal_education_outcomes_dataset{% else %}
+    /cy/ynglŷn-ân-data-about-our-data-cy/#set_ddata_canlyniadau_addysg_hydredol{% endif %}">
+                <span class="leo-banner__bold">{% get_translation key='please_note' language=page.get_language %}</span>
+                {% get_translation key='leo_banner' language=page.get_language %}
+            </a>
+        </div>
+{% endif %}
+
 <div class="course-detail comparison-course-area mx-sm-2 px-xs-1 px-md-3"
      data-courseidentifier="{{course.institution.pub_ukprn}}/{{course.kis_course_id}}/{{course.mode.label}}"
      data-coursename="{{ course.display_title }}" data-courseid="{{ course.kis_course_id }}"
