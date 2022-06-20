@@ -1494,12 +1494,16 @@ DICT = {
         'cy': "Mae rhywfaint o'r data gan fyfyrwyr a arolygwyd yn ystod y pandemig COVID-19, a allai fod wedi cael effaith ar eu hymatebion."
     },
     'leo_banner': {
-    'en': 'the “Earnings after the course” data has recently been updated.',
-    'cy': "LEO banner in welsh."
+    'en': 'the “Earnings after the course” data for 3 years and 5 years after graduation has recently been updated.',
+    'cy': 'cafodd data "Enillion ar ôl y cwrs" 3 blynedd a 5 mlynedd ar ôl graddio eu diweddaru yn ddiweddar.'
     },
     'please_note': {
     'en': 'Please note: ',
-    'cy': "Please note in welsh: "
+    'cy': "Sylwch: "
+    },
+    'read_more': {
+    'en': 'Read more',
+    'cy': "Darllen mwy"
     },
 }
 
