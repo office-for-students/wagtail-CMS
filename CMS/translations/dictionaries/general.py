@@ -1497,6 +1497,18 @@ DICT = {
         'en': 'Discover Uni',
         'cy': "Darganfod Prifysgol"
     },
+    'leo_banner': {
+        'en': 'the “Earnings after the course” data for 3 years and 5 years after graduation has recently been updated.',
+        'cy': 'cafodd data "Enillion ar ôl y cwrs" 3 blynedd a 5 mlynedd ar ôl graddio eu diweddaru yn ddiweddar.'
+    },
+    'please_note': {
+        'en': 'Please note: ',
+        'cy': "Sylwch: "
+    },
+    'read_more': {
+        'en': 'Read more',
+        'cy': "Darllen mwy"
+    },
 
 }
 
