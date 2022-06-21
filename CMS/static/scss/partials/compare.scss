@@ -4,9 +4,9 @@
 .course-detail__compare-btn,  .course-detail__bookmark-compare-btn{
     @include small-font--bold-mixin();
     padding: 5px 10px;
-    border: 1.5px solid #266969;
-    color: #266969!important;
-    border-radius: 16px;
+    border: 2.5px solid #3ab183;
+    color: black!important;
+    border-radius: 8px;
     cursor: pointer;
     background: white;
 
@@ -219,18 +219,18 @@
         @include small-font--bold-mixin();
 
         float: right;
-        padding: 9px 16px 10px 19px;
+        padding: 7px 23px 7px 23px;
 
-        border-radius: 16px;
+        border-radius: 8px;
 //         color: $ux-grey-3;
         color: #fdfafa;
         background-color: transparent;
     }
     .course-detail__bookmark-compare-btn {
         @include small-font--bold-mixin();
-        padding: 9px 16px 10px 19px;
+        padding: 7px 23px 7px 23px;
 
-        border-radius: 16px;
+        border-radius: 8px;
 //         color: $ux-grey-3;
         color: #fdfafa;
         background-color: transparent;
