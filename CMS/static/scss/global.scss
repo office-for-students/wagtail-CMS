@@ -68,10 +68,7 @@ a {
   font-weight: bolder;
   font-size: 1.2rem;
 }
-.leo-banner__read_more{
-  color: white;
-  text-decoration: underline;
-}
+
 
 .covid-19-banner, .leo-banner {
   display: block;
@@ -88,7 +85,16 @@ a {
   &:hover {
     background: $white;
     color: #268283;
+    a{
+      background: $white;
+    color: #268283;
+    }
   }
+  a{
+  color: white;
+  text-decoration: underline;
+
+}
 }
 
 .explanation {
