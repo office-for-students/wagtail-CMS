@@ -1493,18 +1493,23 @@ DICT = {
         'en': 'Some data is from students surveyed during the Covid-19 pandemic, which may have had an effect on their responses.',
         'cy': "Mae rhywfaint o'r data gan fyfyrwyr a arolygwyd yn ystod y pandemig COVID-19, a allai fod wedi cael effaith ar eu hymatebion."
     },
+    'discover_uni': {
+        'en': 'Discover Uni',
+        'cy': "Darganfod Prifysgol"
+    },
     'leo_banner': {
-    'en': 'the “Earnings after the course” data for 3 years and 5 years after graduation has recently been updated.',
-    'cy': 'cafodd data "Enillion ar ôl y cwrs" 3 blynedd a 5 mlynedd ar ôl graddio eu diweddaru yn ddiweddar.'
+        'en': 'the “Earnings after the course” data for 3 years and 5 years after graduation has recently been updated.',
+        'cy': 'cafodd data "Enillion ar ôl y cwrs" 3 blynedd a 5 mlynedd ar ôl graddio eu diweddaru yn ddiweddar.'
     },
     'please_note': {
-    'en': 'Please note: ',
-    'cy': "Sylwch: "
+        'en': 'Please note: ',
+        'cy': "Sylwch: "
     },
     'read_more': {
-    'en': 'Read more',
-    'cy': "Darllen mwy"
+        'en': 'Read more',
+        'cy': "Darllen mwy"
     },
+
 }
 
 OPTIONALS = {
