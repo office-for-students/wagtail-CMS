@@ -64,8 +64,16 @@ a {
     @include green-cta-mixin();
     padding: 0;
 }
+.leo-banner__bold {
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+.leo-banner__read_more{
+  color: white;
+  text-decoration: underline;
+}
 
-.covid-19-banner {
+.covid-19-banner, .leo-banner {
   display: block;
   background: #268283;
   border-bottom: 2px solid #268283;
@@ -75,7 +83,7 @@ a {
   text-decoration: none;
   font-family: Nunito Sans;
   font-size: 1.125rem;
-  font-weight: bold;
+
 
   &:hover {
     background: $white;
