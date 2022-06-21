@@ -1493,6 +1493,11 @@ DICT = {
         'en': 'Some data is from students surveyed during the Covid-19 pandemic, which may have had an effect on their responses.',
         'cy': "Mae rhywfaint o'r data gan fyfyrwyr a arolygwyd yn ystod y pandemig COVID-19, a allai fod wedi cael effaith ar eu hymatebion."
     },
+    'discover_uni': {
+        'en': 'Discover Uni',
+        'cy': "Darganfod Prifysgol"
+    },
+
 }
 
 OPTIONALS = {
