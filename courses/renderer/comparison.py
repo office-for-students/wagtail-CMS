@@ -58,8 +58,8 @@ def get_sub_employment(language) -> List:
 def get_sub_earnings(language) -> List:
     list_sub_accordions = [
         (translations.term_for_key(key="after_15_months", language=language), [0, 6]),
-        # (translations.term_for_key(key="after_3_years", language=language), [6, 11]),
-        # (translations.term_for_key(key="after_5_years", language=language), [11, 16]),
+        (translations.term_for_key(key="after_3_years", language=language), [6, 11]),
+        (translations.term_for_key(key="after_5_years", language=language), [11, 16]),
     ]
     return list_sub_accordions
 
