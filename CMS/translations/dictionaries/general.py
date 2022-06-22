@@ -1509,7 +1509,58 @@ DICT = {
         'en': 'Read more',
         'cy': "Darllen mwy"
     },
-
+    'popup_heading': {
+        'en': 'Welcome to Discover Uni',
+        'cy': 'Croeso i Darganfod Prifysgol'
+    },
+    'popup_subheading': {
+        'en': 'Discover Uni is an official source of information about higher education.',
+        'cy': 'Ffynhonnell wybodaeth swyddogol am addysg uwch yw Darganfod Prifysgol.'
+    },
+    'popup_info_heading': {
+        'en': 'Info & advice',
+        'cy': 'Gwybodaeth a chyngor'
+    },
+    'popup_info_text1': {
+        'en': 'Thinking about going to uni?',
+        'cy': 'Yn ystyried mynd i brifysgol? '
+    },
+    'popup_info_text2': {
+        'en': 'Find resources to help support your decision.',
+        'cy': 'Chwiliwch am adnoddau i’ch helpu i wneud penderfyniad.'
+    },
+    'popup_search_heading': {
+        'en': 'Course search',
+        'cy': 'Chwilio am gwrs'
+    },
+    'popup_search_text': {
+        'en': 'Search all undergraduate courses.',
+        'cy': 'Chwilio drwy’r holl gyrsiau is-radd.'
+    },
+    'popup_save_heading': {
+        'en': 'Save & compare',
+        'cy': 'Cadw a chymharu'
+    },
+    'popup_save_text': {
+        'en': 'Shortlist courses and compare official data to help you make a decision.',
+        'cy': 'Lluniwch restr fer o gyrsiau a chymharu data swyddogol i’ch helpu i wneud penderfyniad.'
+    },
+    'popup_widget_secondary_button': {
+        'en': 'Explore homepage',
+        'cy': 'Archwilio’r hafan'
+    },
+    'popup_widget_primary_button': {
+        'en': 'Continue to course data',
+        'cy': 'Ymlaen i ddata’r cwrs'
+    },
+    'popup_external_secondary_button': {
+        'en': 'About our data',
+        'cy': 'Ynglŷn â’n data'
+    },
+    'popup_external_primary_button': {
+        'en': 'Search for a course',
+        'cy': 'Chwilio am gwrs'
+    },
 }
 
 OPTIONALS = {
