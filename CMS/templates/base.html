@@ -17,11 +17,7 @@
         {% block title %}
             {% if page.seo_title %}{{ page.seo_title }} | {% get_translation key='discover_uni' language=page.get_language %}{% else %}{{ page.title }} | {% get_translation key='discover_uni' language=page.get_language %}{% endif %}
         {% endblock %}
-        {% block title_suffix %}
-            {% with page.get_site.site_name as site_name %}
-                {% if site_name %}| {% get_translation key='discover_uni' language=page.get_language %}{% endif %}
-            {% endwith %}
-        {% endblock %}
+
     </title>
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
