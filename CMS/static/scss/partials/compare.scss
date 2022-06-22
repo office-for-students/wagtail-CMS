@@ -17,7 +17,7 @@
     &.selected {
         @include green-gradient-background-mixin();
 
-        border: 1.5px solid $gradient-light-green;
+        border: 2.5px solid $gradient-light-green;
         color: white!important;
         .add {
             display: none;
