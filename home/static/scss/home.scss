@@ -199,6 +199,9 @@
   height: 0;
 }
 
+.course-finder__course-wizard__desktop-width{
+  width: 50%;
+}
 
 .overflow-visible {
   overflow: visible !important;
@@ -308,6 +311,9 @@
   .home-page__bookmark-body-inner {
     padding-left: 1rem;
   }
+  .course-finder__course-wizard__mobile-width{
+    width: 85% !important;
+}
 }
 
 @media only screen and (min-width: 576px) and (max-width: 766px) {
@@ -316,6 +322,9 @@
     margin-left: auto !important;
     margin-right: auto !important;
   }
+  .course-finder__course-wizard__mobile-width{
+    width: 85% !important;
+}
 }
 
 @media only screen and (min-width: 767px) and (max-width: 991px) {
@@ -324,6 +333,9 @@
     margin-left: auto !important;
     margin-right: auto !important;
   }
+  .course-finder__course-wizard__mobile-width{
+    width: 85% !important;
+}
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {

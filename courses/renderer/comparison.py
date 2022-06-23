@@ -17,7 +17,7 @@ from .sections.entry import SubEntrySection
 from .sections.graduate_perception import GraduatePerceptionSection
 from .sections.information import InformationSection
 from .sections.satisfaction import SubSatisfactionSection
-from .sections.unavailable import get_unavailable, get_subject_unavailable
+from .sections.unavailable import get_subject_unavailable
 
 logger = logging.getLogger(__name__)
 

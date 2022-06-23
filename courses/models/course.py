@@ -401,6 +401,17 @@ class Course:
     def has_multiple_salary_aggregates(self):
         return len(self.salary_aggregates) > 1
 
+    @property
+    def seo_title(self):
+        english = self.display_language == enums.languages.ENGLISH
+
+        if english:
+            title = self.english_title if self.english_title else self.welsh_title
+        else:
+            title = self.welsh_title if self.welsh_title else self.english_title
+        at = "at" if english else "yn"
+        return f"{title} {at} {self.institution_name}"
+
     def display_title(self):
         honours = ""
         if int(self.honours_award_provision) == 1:
