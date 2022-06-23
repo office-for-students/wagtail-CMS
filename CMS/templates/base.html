@@ -19,11 +19,7 @@
                 {% get_translation key='discover_uni' language=page.get_language %}{% else %}{{ page.title }} |
                 {% get_translation key='discover_uni' language=page.get_language %}{% endif %}
         {% endblock %}
-        {% block title_suffix %}
-            {% with page.get_site.site_name as site_name %}
-                {% if site_name %}| {% get_translation key='discover_uni' language=page.get_language %}{% endif %}
-            {% endwith %}
-        {% endblock %}
+
     </title>
     {% block search_description %}
         <meta name="description" content="{{ page.search_description }}"/>
