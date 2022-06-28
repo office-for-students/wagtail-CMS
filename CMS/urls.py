@@ -8,7 +8,9 @@ from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.core import urls as wagtail_urls
 
 from core import views as core_views
+from core.views import content_sitemap
 from core.views import robots
+from core.views import sitemap_new
 from coursefinder import views as coursefinder_views
 from courses import urls as courses_urls
 from courses import views as course_views
@@ -20,7 +22,9 @@ from . import welsh_urls
 
 urlpatterns = [
     path('robots.txt', robots, name='robots'),
-    path('sitemap.xml', sitemap),
+    path('sitemap.xml', sitemap_new, name='sitemap'),
+    path('sitemaps/content.xml', content_sitemap, name='content_sitemap'),
+    path('sitemaps/general.xml', sitemap, name='cms_sitemap'),
     url(r'^search/$', search_views.search, name='search'),
     url(r'^results/$', coursefinder_views.results, name='results'),
     url(r'^feedback', core_views.submit_feedback, name='submit_feedback'),
