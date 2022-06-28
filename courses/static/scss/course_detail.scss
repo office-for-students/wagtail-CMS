@@ -645,7 +645,48 @@
   }
 }
 
-@media only screen and (min-width: 1100px) {
+
+
+@media only screen and (max-width: 575px) {
+  div.course-detail.comparison-course-area {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 766px) {
+  div.course-detail.comparison-course-area {
+    width: 540px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 991px) {
+  div.course-detail.comparison-course-area {
+    width: 720px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  div.course-detail.comparison-course-area {
+    width: 960px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  div.course-detail.comparison-course-area {
+    width: 1140px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media only screen and (min-device-width: 414px) and (orientation: landscape) {
 
 
   .course-detail .course-detail__lead a.course-detail__institution-name {
@@ -967,44 +1008,5 @@
         }
       }
     }
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  div.course-detail.comparison-course-area {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 766px) {
-  div.course-detail.comparison-course-area {
-    width: 540px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-
-@media only screen and (min-width: 767px) and (max-width: 991px) {
-  div.course-detail.comparison-course-area {
-    width: 720px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  div.course-detail.comparison-course-area {
-    width: 960px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  div.course-detail.comparison-course-area {
-    width: 1140px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
   }
 }

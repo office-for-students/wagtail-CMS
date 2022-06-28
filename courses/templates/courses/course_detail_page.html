@@ -2,6 +2,9 @@
 {% load static %}
 {% load sass_tags %}
 {% load discover_uni_tags %}
+{% block title %}
+            {% if page.seo_title %}{{ course.seo_title | safe }} | {% get_translation key='discover_uni' language=page.get_language %}{% else %}{{ course.seo_title | safe }} | {% get_translation key='discover_uni' language=page.get_language %}{% endif %}
+        {% endblock %}
 
 {% block extra_css %}
     <link href="{% sass_src 'scss/course_detail.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
