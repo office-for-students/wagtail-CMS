@@ -72,24 +72,45 @@ def unregister_document_feature(features):
 def register_underline(features):
     feature_name = "underline"
     type_ = "UNDERLINE"
-    tag = "underline"
+    tag = "span"
+
 
     control = {
         "type": type_,
         "label": "U",
-        "description": "Underline"
+        "description": "Underline",
+        "style": {
+            "text-decoration": "underline"
+        },
     }
 
     features.register_editor_plugin(
-        "draftail", feature_name, draftail_features.InlineStyleFeature(control)
+        "draftail",
+        feature_name,
+        draftail_features.InlineStyleFeature(control)
     )
 
     db_conversion = {
-        "from_database_format": {tag: InlineStyleElementHandler(type_)},
-        "to_database_format": {"style_map": {type_: {"element": tag}}}
+        "from_database_format": {
+            tag: InlineStyleElementHandler(type_)
+        },
+        "to_database_format": {
+            "style_map": {
+                type_: {
+                    'element': tag,
+                    'props': {
+                        "style": "text-decoration: underline;"
+                    }
+                }
+            }
+        }
     }
 
-    features.register_converter_rule("contentstate", feature_name, db_conversion)
+    features.register_converter_rule(
+        "contentstate",
+        feature_name,
+        db_conversion
+    )
 
     features.default_features.append(feature_name)
 
