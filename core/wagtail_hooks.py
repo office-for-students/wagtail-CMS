@@ -1,5 +1,6 @@
 from axes.models import AccessAttempt
-
+import wagtail.admin.rich_text.editors.draftail.features as draftail_features
+from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleElementHandler
 from django.utils.html import escape
 
 from wagtail.contrib.modeladmin.options import (ModelAdmin, modeladmin_register)
@@ -65,6 +66,32 @@ def register_external_link(features):
 @hooks.register('register_rich_text_features')
 def unregister_document_feature(features):
     features.default_features.remove('document-link')
+
+
+@hooks.register('register_rich_text_features')
+def register_underline(features):
+    feature_name = "underline"
+    type_ = "UNDERLINE"
+    tag = "underline"
+
+    control = {
+        "type": type_,
+        "label": "U",
+        "description": "Underline"
+    }
+
+    features.register_editor_plugin(
+        "draftail", feature_name, draftail_features.InlineStyleFeature(control)
+    )
+
+    db_conversion = {
+        "from_database_format": {tag: InlineStyleElementHandler(type_)},
+        "to_database_format": {"style_map": {type_: {"element": tag}}}
+    }
+
+    features.register_converter_rule("contentstate", feature_name, db_conversion)
+
+    features.default_features.append(feature_name)
 
 
 # Removing documents from the menu. Had to specify the index because searching for it breaks the urls
