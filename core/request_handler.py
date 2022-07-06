@@ -45,5 +45,4 @@ def get_sitemap_file():
     else:
         path = settings.JSONFILES_STORAGE_CONTAINER + "/" + "sitemaps.xml"
         response = requests.get(path)
-        print(path)
         return response
