@@ -1,10 +1,17 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+{% load static %}
 {% load sass_tags %}
 {% load discover_uni_tags %}
 {% block title %}
-            {% if page.seo_title %}{{ course.seo_title | safe }} | {% get_translation key='discover_uni' language=page.get_language %}{% else %}{{ course.seo_title | safe }} | {% get_translation key='discover_uni' language=page.get_language %}{% endif %}
-        {% endblock %}
+    {% if page.seo_title %}{{ course.seo_title | safe }} |
+        {% get_translation key='discover_uni' language=page.get_language %}{% else %}{{ course.seo_title | safe }} |
+        {% get_translation key='discover_uni' language=page.get_language %}{% endif %}
+{% endblock %}
+
+{% block search_description %}
+    <meta name="description"
+          content="Discover what students studying {{ course.display_title }} at {{ course.institution.pub_ukprn_name }} went onto do and earn after the course."/>
+{% endblock %}
 
 {% block extra_css %}
     <link href="{% sass_src 'scss/course_detail.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
