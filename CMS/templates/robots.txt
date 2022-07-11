@@ -1,4 +1,10 @@
-User-agent: *
-Disallow: /
 Sitemap: {{ request.scheme }}://{{ request.get_host }}/sitemap.xml
+User-agent: *
 Disallow: /subcontractual-and-collaborative-provision-draft/
+User-agent: Googlebot
+Allow: /
+Disallow: /subcontractual-and-collaborative-provision-draft/
+User-Agent: msnbot
+Allow: /
+Disallow: /subcontractual-and-collaborative-provision-draft/
+Crawl-delay: 1
