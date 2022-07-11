@@ -1,5 +1,5 @@
-// @import "../../../CMS/static/scss/fonts";
-// @import "../../../CMS/static/scss/variables";
+ //@import "../../../CMS/static/scss/fonts";
+ //@import "../../../CMS/static/scss/variables";
 .lg-chart {
   display: none;
 }
@@ -79,6 +79,9 @@
     line-height: 1.5;
     font-weight: normal;
   }
+  //a {
+  //  color: $dark-green-blue;
+  //}
 }
 
 .student-satisfaction__block {
@@ -212,7 +215,7 @@
     margin-top: 0;
     margin-bottom: 0;
   }
-} 
+}
 
 @media only screen and (min-width: 770px) {
   .student-satisfaction__overview #sample-size-text {
@@ -384,7 +387,7 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-  
+
     .student-satisfaction__data-group {
       flex: 0 0 85vw;
       // flex: auto;
