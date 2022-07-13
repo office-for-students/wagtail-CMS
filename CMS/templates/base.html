@@ -111,11 +111,16 @@
 <!-- **************** -->
 <main>
 <!-- To take out when pop-up is active -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  pop-up modal
+<button style="display: none;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#discover-modal">
+    {{ page.title}}
 </button>
 
-{% include 'partials/pop-up.html' %}
+{%  if page.title == "Course Details" %}
+    {% include 'partials/pop-up-course-details.html' %}
+{% elif page.title == "About our data" %}
+    {% include 'partials/pop-up-about-data.html' %}
+{% endif %}
+
     <div id="main-content" tabindex="-1">
         {% block content %}{% endblock %}
 
@@ -140,3 +145,9 @@
 </body>
 
 </html>
+
+<script>
+    if (document.referrer.indexOf(location.protocol + "//" + location.host) !== 0) {
+        $('#discover-modal').modal('show');
+    }
+</script>

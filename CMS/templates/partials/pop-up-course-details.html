@@ -1,5 +1,5 @@
 {% load static discover_uni_tags %}
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="discover-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content" style="width: 55%; height: 50%; margin-left: 25%; background-color: #002554; color: white">
       <div class="modal-header d-flex pt-2 pl-2 pr-2 pb-1" >
@@ -49,14 +49,9 @@
                 </div>
             </div>
           <div class="popup__button_div">
-              <!--if from widget-->
-        <button type="button" class="btn btn-light p-3" data-dismiss="modal">{% get_translation key='popup_widget_secondary_button' language=page.get_language %}</button>
-              <!--if from external link-->
-{#      <button type="button" class="btn btn-warning p-3" data-dismiss="modal">{% get_translation key='popup_external_secondary_button' language=page.get_language %}</button>#}
-              <!--if from widget-->
-        <button type="button" class="btn btn-warning p-3">{% get_translation key='popup_widget_primary_button' language=page.get_language %}</button>
-              <!--if from external link-->
-{#      <button type="button" class="btn btn-warning p-3">{% get_translation key='popup_external_primary_button' language=page.get_language %}</button>#}
+
+        <button type="button" class="btn btn-light p-3" data-dismiss="modal" onclick="window.location='/'">{% get_translation key='popup_widget_secondary_button' language=page.get_language %}</button>
+        <button type="button" class="btn btn-warning p-3" onclick="$('#discover-modal').modal('hide');">{% get_translation key='popup_widget_primary_button' language=page.get_language %}</button>
           </div>
             </div>
       </div>
