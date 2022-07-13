@@ -24,13 +24,13 @@
     {% if overall_stats.satisfaction_stats.question_27.show_data_point %}
         <div class="student-satisfaction__overview mt-3 p-2 d-flex flex-wrap row mx-1">
                 <div class="col-lg-3 col-md-12 align-self-stretch my-lg-3">
-                    <p class="student-satisfaction__overview-lead text-center">
+                    <p class="student-satisfaction__overview-lead text-center" style="padding-top:1.5rem">
                         {{ overall_stats.satisfaction_stats.question_27.agree_or_strongly_agree }}%
                     </p>
                 </div>
                 <div class="col-lg-9 col-md-12 align-self-stretch my-auto pt-2 text-center text-lg-left">
                     <p>{{ block.value.lead_text }}</p>
-                        <div class="student-satisfaction__intro">
+                        <div class="student-satisfaction__intro additional-class">
                             {% create_list course_details.data_from_html overall_stats.satisfaction_stats.number_of_students overall_stats.satisfaction_stats.response_rate as substitutions %}
                             {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
@@ -47,15 +47,15 @@
         <div class="scrolling-wrapper scroll">
         {% if overall_stats.satisfaction_stats.show_satisfaction_stats %}
             {% if overall_stats.satisfaction_stats.show_teaching_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
-                    <div class="col-lg-4 col-md-12 mb-auto pt-3 text-left pt-3" >
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item stubborn-additional-class">
+                    <div class="col-lg-4 col-md-12 mb-auto pt-3 text-left pt-3 additional-class" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
-                            {{block.value.teaching_stats_header }}
+                            {{block.value.teaching_stats_header }}</h2>
                             <p>
                                 {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </p>
-                        </h2>
+
                     </div>
                     <div class="student-satisfaction__charts col-lg-8 col-md-12 mt-3 mb-auto justify-content-start">
                         {%  if overall_stats.satisfaction_stats.question_1.show_data_point %}
@@ -147,16 +147,16 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_learning_opps_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                     <div class="col-lg-4 col-md-12 mb-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
-                            {{block.value.learning_opportunities_stats_header }}
+                            {{block.value.learning_opportunities_stats_header }}</h2>
 
                             <p>
                                 {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </p>
-                        </h2>
+
                     </div>
 
                     <div class="student-satisfaction__charts col-lg-8 col-md-12 mt-3 mb-auto justify-content-start">
@@ -228,15 +228,15 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_assessment_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                 <div class="col-lg-4 col-md-12 mb-auto pt-3 text-left pt-3" >
                     <h2 class="student-satisfaction__data-group-heading text-left">
-                        {{block.value.assessment_stats_header }}
+                        {{block.value.assessment_stats_header }}</h2>
                         <p>
                             {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </p>
-                    </h2>
+
                 </div>
                 <div class="student-satisfaction__charts col-lg-8 col-md-12 mt-3 mb-auto">
                     {%  if overall_stats.satisfaction_stats.question_8.show_data_point %}
@@ -327,15 +327,15 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_support_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                     <div class="col-lg-4 col-md-12 mb-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
-                            {{block.value.support_stats_header }}
+                            {{block.value.support_stats_header }}</h2>
                             <p>
                                 {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </p>
-                        </h2>
+
                     </div>
 
                     <div class="student-satisfaction__charts col-lg-8 col-md-12 mt-3 mb-auto justify-content-start">
@@ -406,15 +406,15 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_organisation_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                     <div class="col-lg-4 col-md-12 mb-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
-                            {{block.value.organisation_stats_header }}
+                            {{block.value.organisation_stats_header }}</h2>
                             <p>
                                 {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </p>
-                        </h2>
+
                     </div>
 
                     <div class="student-satisfaction__charts col-lg-8 col-md-12 mt-3 mb-auto justify-content-start">
@@ -485,15 +485,15 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_learning_resources_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                     <div class="col-lg-4 col-md-12 mb-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
-                            {{block.value.learning_resources_stats_header }}
+                            {{block.value.learning_resources_stats_header }}</h2>
                             <p>
                                 {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </p>
-                        </h2>
+
                     </div>
 
                     <div class="student-satisfaction__charts col-lg-8 col-md-12 mt-3 mb-auto justify-content-start">
@@ -565,15 +565,15 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_learning_community_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                     <div class="col-lg-4 col-md-12 mb-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
-                            {{block.value.learning_community_stats_header }}
+                            {{block.value.learning_community_stats_header }}</h2>
                             <p>
                                 {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </p>
-                        </h2>
+
                     </div>
 
                     <div class="student-satisfaction__charts col-lg-8 col-md-12 mt-3 mb-auto justify-content-start">
@@ -624,15 +624,15 @@
             {% endif %}
 
             {% if overall_stats.satisfaction_stats.show_voice_stats %}
-                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                     <div class="col-lg-4 col-md-12 mb-auto pt-3 text-left pt-3" >
                         <h2 class="student-satisfaction__data-group-heading text-left">
-                            {{block.value.student_voice_stats_header }}
+                            {{block.value.student_voice_stats_header }}</h2>
                             <p>
                                 {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </p>
-                        </h2>
+
                     </div>
 
                     <div class="student-satisfaction__charts col-lg-8 col-md-12 mt-3 mb-auto justify-content-start">
@@ -728,15 +728,15 @@
         {% if overall_stats.nhs_satisfaction_stats %}
             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
 
-            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item">
+            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                 <div class="col-lg-4 col-md-12 my-auto pt-3 text-left" >
                     <h2 class="student-satisfaction__data-group-heading text-left">
-                        {{block.value.nhs_placement_stats_header }}
+                        {{block.value.nhs_placement_stats_header }}</h2>
                         <p>
                             {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </p>
-                    </h2>
+
                 </div>
 
                 {% if overall_stats.nhs_satisfaction_stats.show_nhs_stats %}
