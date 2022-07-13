@@ -22,20 +22,19 @@
 
         {% if perceptions_stats.go_work_mean %}
             <div class="student-satisfaction__overview mt-3 mx-1 p-3 d-flex flex-wrap row">
-                    <div class="col-lg-2 col-md-12 align-self-stretch text-center">
-                        <p class="student-satisfaction__overview-lead ">
+                    <div class="col-lg-3 col-md-12 align-self-stretch text-center">
+                        <p class="student-satisfaction__overview-lead " style="padding-top: 2rem;">
                             {{ perceptions_stats.go_work_mean }}%
                         </p>
                     </div>
-                    <div class=" col-lg-10 col-md-12 align-self-stretch text-center text-lg-left">
-                        <p>
-                            {{ block.value.lead_text }}
-                            <div class="student-satisfaction__intro">
+                    <div class=" col-lg-9 col-md-12 align-self-stretch text-center text-lg-left">
+                        <p style="font-size: 1.75rem;">{{ block.value.lead_text }}</p>
+                            <div class="student-satisfaction__intro additional-class">
                                 {% create_list course_details.data_from_html perceptions_stats.go_work_pop perceptions_stats.go_work_resp_rate as substitutions %}
                                 {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </div>
-                        </p>
+
                     </div>
             </div>
 
@@ -46,17 +45,16 @@
             {% endif %}
 
             <div class="student-satisfaction__block">
-                <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 mx-1">
+                <div class="student-satisfaction__data-group d-flex flex-wrap row py-3 mx-1 additional-class">
                     <div class="col-lg-4 col-md-12 my-auto pb-3" >
                         <h2 class="student-satisfaction__data-group-heading mb-3">
-                            {{ block.value.perception_of_work_heading }}
+                            {{ block.value.perception_of_work_heading }}</h2>
 
                             <p>
                                 {% create_list course_details.data_from_html perceptions_stats.go_work_pop perceptions_stats.go_work_resp_rate as substitutions %}
                                 {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
                                 {{ subbed_text | richtext }}
                             </p>
-                        </h2>
                     </div>
                     <div class="student-satisfaction__charts col-lg-8 col-md-12 my-auto">
                         <div class="student-satisfaction__chart-wrapper mx-md-1">
