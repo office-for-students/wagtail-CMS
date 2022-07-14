@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <sitemap>
+        <loc>{{ request.scheme }}://{{ request.get_host }}{% url 'cms_sitemap' %}</loc>
+    </sitemap>
+    <sitemap>
+        <loc>{{ request.scheme }}://{{ request.get_host }}{% url 'content_sitemap' %}</loc>
+    </sitemap>
+</sitemapindex>

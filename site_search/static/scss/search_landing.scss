@@ -194,17 +194,18 @@
                 line-height: 27px;
             }
         }
-    }
 
-    &__disclaimer {
-        @include small-font-mixin();
 
-        padding: 15px;
-        margin-top: 15px;
-        margin-left: 35px;
-        margin-right: 35px;
-        
-        background-color: $ux-interrupt;
-        color: $ux-grey-2;
+        &__disclaimer {
+            @include small-font-mixin();
+
+            padding: 15px;
+            margin-top: 15px;
+            margin-left: 35px;
+            margin-right: 35px;
+
+            background-color: $ux-interrupt;
+            color: $ux-grey-2;
+        }
     }
 }

@@ -31,21 +31,23 @@ services:
       STORAGE_ACCOUNT_NAME:         "${STORAGE_ACCOUNT_NAME}"
       STORAGEKEY:                   "${STORAGEKEY}"
       # Azure
-      AZURE_ACCOUNT_NAME:           "${AZURE_ACCOUNT_NAME}"
-      AZURE_ACCOUNT_KEY:            "${AZURE_ACCOUNT_KEY}"
-      AZURE_CONTAINER:              "${AZURE_CONTAINER}"
+      AZURE_ACCOUNT_NAME: "${AZURE_ACCOUNT_NAME}"
+      AZURE_ACCOUNT_KEY: "${AZURE_ACCOUNT_KEY}"
+      AZURE_CONTAINER: "${AZURE_CONTAINER}"
       # Send Grid
-      SENDGRID_API_KEY:             "${SENDGRID_API_KEY}"
-      SECRET_KEY:                   "${SECRET_KEY}"
-      SENDGRID_FROM_EMAIL:          "${SENDGRID_FROM_EMAIL}"
+      SENDGRID_API_KEY: "${SENDGRID_API_KEY}"
+      SECRET_KEY: "${SECRET_KEY}"
+      SENDGRID_FROM_EMAIL: "${SENDGRID_FROM_EMAIL}"
       # Other
-      FEEDBACK_API_HOST:            "${FEEDBACK_API_HOST}"
-      JSONFILES_STORAGE_CONTAINER:  "${JSONFILES_STORAGE_CONTAINER}"
+      FEEDBACK_API_HOST: "${FEEDBACK_API_HOST}"
+      JSONFILES_STORAGE_CONTAINER: "${JSONFILES_STORAGE_CONTAINER}"
+      # Sitemap
+      SITEMAP_STORAGE_BLOB: "${SITEMAP_STORAGE_BLOB}"
       # Custom
-      ROOT_DOMAIN:                  "${ROOT_DOMAIN}"
-      READ_ONLY:                    "${READ_ONLY}"
-      SORT_BY_SUBJECT_LIMIT:        "${SORT_BY_SUBJECT_LIMIT}"
-      LOCAL:                        "${LOCAL}"
+      ROOT_DOMAIN: "${ROOT_DOMAIN}"
+      READ_ONLY: "${READ_ONLY}"
+      SORT_BY_SUBJECT_LIMIT: "${SORT_BY_SUBJECT_LIMIT}"
+      LOCAL: "${LOCAL}"
     build: .
     volumes:
       - .:/code

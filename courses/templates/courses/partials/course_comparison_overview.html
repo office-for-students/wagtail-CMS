@@ -1,4 +1,4 @@
-{% load staticfiles discover_uni_tags %}
+{% load static discover_uni_tags %}
 {% for course in courses %}
     {% with course_id=course.institution.pub_ukprn|add:"/"|add:course.kis_course_id|add:"/"|add:course.mode.label %}
     <div id="{{ course_id }}"

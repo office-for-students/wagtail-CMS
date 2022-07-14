@@ -26,7 +26,7 @@ class Section(DiscoverUniBasePage):
     subsections = StreamField([
         ('subsection', blocks.StructBlock([
             ('subsection_title', blocks.TextBlock()),
-            ('subsection_content', blocks.RichTextBlock(features=['h3', 'h4', 'bold', 'italic', 'embed', 'link',
+            ('subsection_content', blocks.RichTextBlock(features=['h3', 'h4', 'bold', 'underline', 'italic', 'embed', 'link',
                                                                   'image', 'ol', 'ul', 'hr', 'blockquote']))
         ]))
     ])

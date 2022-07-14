@@ -71,7 +71,7 @@ WAGTAILFRONTENDCACHE = {
     'cloudflare': {
         'BACKEND': 'wagtail.contrib.frontend_cache.backends.CloudflareBackend',
         'EMAIL': os.environ.get('CLOUDFLARE_EMAIL'),
-        'TOKEN': os.environ.get('CLOUDFLARE_TOKEN'),
+        'API_KEY': os.environ.get('CLOUDFLARE_TOKEN'),
         'ZONEID': os.environ.get('CLOUDFLARE_ZONEID'),
     },
 }

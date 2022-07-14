@@ -1,4 +1,4 @@
-{% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
+{% load static wagtailcore_tags discover_uni_tags humanize %}
 
         {% if course_details.salary_aggregates %}
             {% include "courses/partials/info_box.html" with header="earnings_need_to_know" content="earnings_info_box" url="graduate_link" read_more="read_more_about_earnings"%}

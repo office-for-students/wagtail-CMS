@@ -1,9 +1,11 @@
 import json
 
+from django.http import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import render
 
 from core.request_handler import get_json_file
+from core.request_handler import get_sitemap_file
 from core.request_handler import send_feedback
 from institutions.utils import load_institution_json
 
@@ -56,3 +58,17 @@ def get_institutions_json(request, language):
 
 def robots(request, **kwargs):
     return render(request, 'robots.txt', content_type='text/plain')
+
+
+def sitemap_new(request, **kwargs):
+    return render(request, 'sitemap_primary.xml', content_type='text/xml')
+
+
+def content_sitemap(request, **kwargs):
+    response = get_sitemap_file()
+
+    return HttpResponse(
+        content=response.content,
+        status=response.status_code,
+        content_type='text/xml'
+    )

@@ -1,8 +1,17 @@
 {% extends "base.html" %}
-{% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
+{% load static sass_tags wagtailcore_tags discover_uni_tags %}
 
 {% block extra_css %}
     <link href="{% sass_src 'scss/institution_details.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block title %}
+    {{ institution.pub_ukprn_name }} | {% get_translation key='discover_uni' language=page.get_language %}
+{% endblock %}
+
+{% block search_description %}
+    <meta name="description"
+          content="Search and discover available courses at {{ institution.pub_ukprn_name }} at Discover Uni."/>
 {% endblock %}
 
 {% block extra_js %}
@@ -23,11 +32,11 @@
 
                 {% if institution.pub_ukprn_country_code == "XF" %}
                     {% if institution.pub_ukprn == institution.ukprn %}
-                    <a class="institution-details__overview-item-value"
-                       href="https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/provider/{{ institution.ukprn }}/"
-                       target="_blank" style="color: #308282;">{% if page.is_english %}OfS Registration
-                        information{% else %}Gwybodaeth cofrestru OfS{% endif %}</a>
-                        {% endif %}
+                        <a class="institution-details__overview-item-value"
+                           href="https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/provider/{{ institution.ukprn }}/"
+                           target="_blank" style="color: #308282;">{% if page.is_english %}OfS Registration
+                            information{% else %}Gwybodaeth cofrestru OfS{% endif %}</a>
+                    {% endif %}
                 {% endif %}
 
                 <div class="institution-details__overview row row-flex">
