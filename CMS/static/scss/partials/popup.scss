@@ -66,7 +66,7 @@
   margin-top: 12px;
 }
   .big-padding{
-    padding: 0.2!important;
+    padding: 0.2rem!important;
   }
   .close-btn{
     position: relative;
@@ -81,7 +81,6 @@
   .header-padding{
     padding-top: 0.2rem!important;
     padding-right:1rem;
-    padding-left:1rem;
   }
 }
 /* pop-up mobile screen */
@@ -156,7 +155,6 @@
   .header-padding{
     padding-top: 1rem!important;
     padding-right:1rem;
-    padding-left:1rem;
   }
 }
 
@@ -165,10 +163,10 @@
 /* popup desktop screen */
 @media only screen and (min-width: 992px) {
   .modal-content {
-    width:55% !important;
+    width:48% !important;
     height: 55%;
-    margin-left: 25%;
-    margin-top: -5%;
+    margin-left: 26%;
+    margin-top: 0%;
   }
   .popup__title{
     margin-left: 0.5rem;
@@ -182,7 +180,7 @@
   .popup__subheading{
     padding-top: 0.5rem;
     padding-left: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 500;
   }
   button{
@@ -221,6 +219,6 @@
   .header-padding{
     padding-top: 1rem!important;
     padding-right:1rem;
-    padding-left:1rem;
+
   }
 }
