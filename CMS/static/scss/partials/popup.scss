@@ -1,11 +1,14 @@
 @media only screen and (max-height: 866px) {
-  p{
-    margin-bottom: 0!important;
-    font-size: 0.8rem;
-  }
-  h5{
-    font-size: 1rem!important;
-    font-weight: 500;
+  .modal-content {
+    p {
+      margin-bottom: 0 !important;
+      font-size: 0.8rem;
+    }
+
+    h5 {
+      font-size: 1rem !important;
+      font-weight: 500;
+    }
   }
 }
 
