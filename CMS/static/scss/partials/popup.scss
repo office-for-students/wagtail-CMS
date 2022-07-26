@@ -1,5 +1,10 @@
-@media only screen and (max-height: 866px) {
+@media only screen and (max-height: 667px) {
   .modal-content {
+    .close-btn{
+    position: relative;
+    top: -18px;
+    right: -8px;
+  }
     p {
       margin-bottom: 0 !important;
       font-size: 0.8rem;
@@ -115,9 +120,9 @@
     width: 70%;
   }
   .popup__small_screen__logo{
-    width: 50px;
-    height: 50px;
-    margin-top: 5px;
+    width: 13%;
+    height: 13%;
+    margin-top: 0.75rem;
   }
   .popup__title{
     width: 75%;
@@ -169,7 +174,7 @@
     width:48% !important;
     height: 55%;
     margin-left: 26%;
-    margin-top: 0%;
+    margin-top: -9%;
   }
   .popup__title{
     margin-left: 0.5rem;
@@ -178,7 +183,9 @@
     font-size: 2.1rem;
   }
   .popup__small_screen__logo{
-    width: 67px;
+    width: 13%;
+    height: 13%;
+    margin-top:0.75%;
   }
   .popup__subheading{
     padding-top: 0.5rem;
