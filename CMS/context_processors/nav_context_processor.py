@@ -58,7 +58,7 @@ def get_menu(model, language, attribute):
         # TODO: remove when code goes to develop, as added cause we need to used the data and
         #  don't want to edit the CMS just yet - done for show an tell only. Remove the if wrapping statement
         if "Course search" != item.value.get('label') and ("Chwilio am Gwrs") != item.value.get('label'):
-                menu.append(parse_menu_item(item))
+            menu.append(parse_menu_item(item))
     return menu
 
 
@@ -76,5 +76,8 @@ def parse_menu_item(menu_item):
         item_dict['sub_items'] = sub_items
     else:
         item_dict['sub_items'] = None
-        item_dict['url'] = menu_item.value.get('link_page').url
+        try:
+            item_dict['url'] = menu_item.value.get('link_page').url
+        except Exception as e:
+            item_dict['url'] = None
     return item_dict
