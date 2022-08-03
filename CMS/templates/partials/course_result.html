@@ -1,4 +1,4 @@
-{% load staticfiles discover_uni_tags %}
+{% load static discover_uni_tags %}
 {% load humanize %}
 
 {% get_course_name course page.is_english as course_name %}
@@ -40,7 +40,7 @@
      data-abroad-cy="{% get_translation key=course.year_abroad language='cy' %}">
     <div class="mb-3">
         <button class="course-detail__compare-btn">
-            <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
+            <img class="add" style="width: 6px" src="{% static 'images/black-bookmark.svg' %}" alt="">
             <img class="remove" src="{% static 'images/white-bookmark.svg' %}" alt="">
             {% get_translation key='bookmark_course' language=page.get_language %}
         </button>

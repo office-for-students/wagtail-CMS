@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 {% load wagtailcore_tags %}
 {% load discover_uni_tags %}
 
@@ -23,14 +23,14 @@
 
         {% if continuation_stats.display_stats %}
             <div class="one-year__overview my-3 mx-1 p-3 d-flex flex-wrap row">
-                <div class="col-lg-3 col-sm-12 align-self-stretch my-auto">
-                    <p class="one-year__overview-lead">
+                <div class="col-lg-3 col-sm-12 align-self-stretch" >
+                    <p class="one-year__overview-lead" style="margin-top:0; padding-top:0;">
                         {{ continuation_stats.continuing_or_complete }}%
                     </p>
                 </div>
                 <div class="col-lg-9 col-sm-12 align-self-stretch pt-2">
-                    <p class="one-year__overview-sublead mb-3 text-center text-lg-left">
-                        {{block.value.lead}}
+                    <p class="one-year__overview-sublead mb-3 text-center text-lg-left additional-class">
+                    {{block.value.lead}}
 
                         {% create_list course_details.data_from_html continuation_stats.number_of_students as substitutions %}
                         {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
@@ -44,7 +44,7 @@
                 <div class="one-year__qualification-charts mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
                     <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
 
-                        <div class="one-year__lead-block my-3 mb-4">
+                        <div class="one-year__lead-block my-3 mb-4 additional-class">
                             <h2 class="one-year__heading py-2">
                                 {{block.value.section_heading}}{% if course_details.has_multiple_one_year_stats %}:
                                     {{continuation_stats.display_subject_name}}{% endif %}

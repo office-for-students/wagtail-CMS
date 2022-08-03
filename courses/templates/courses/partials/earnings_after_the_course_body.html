@@ -1,4 +1,4 @@
-{% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
+{% load static wagtailcore_tags discover_uni_tags humanize %}
 
         {% if course_details.salary_aggregates %}
             {% include "courses/partials/info_box.html" with header="earnings_need_to_know" content="earnings_info_box" url="graduate_link" read_more="read_more_about_earnings"%}
@@ -76,29 +76,26 @@
                                      style="display: none">
                             {% endif %}
                         {% elif salary_index == 1 %}
-                            {#                                    {% if salary.aggregate %}#}
-                            {#                                        <div id="leo3_inst_avail_container_{{ salary_aggregate.subject_code }}">#}
-                            {#                                    {% else %}#}
-                            <div id="leo3_inst_avail_container_{{ salary_aggregate.subject_code }}"
-                                 style="display: none">
-                            {#                                    {% endif %}#}
+                            {% if salary.aggregate %}
+                                <div id="leo3_inst_avail_container_{{ salary_aggregate.subject_code }}">
+                            {% else %}
+                                <div id="leo3_inst_avail_container_{{ salary_aggregate.subject_code }}"
+                                     style="display: none">
+                            {% endif %}
                         {% elif salary_index == 2 %}
-                            {#                                    {% if salary.aggregate %}#}
-                            {#                                        <div id="leo5_inst_avail_container_{{ salary_aggregate.subject_code }}">#}
-                            {#                                    {% else %}#}
-                            <div id="leo5_inst_avail_container_{{ salary_aggregate.subject_code }}"
-                                 style="display: none">
-                            {#                                    {% endif %}#}
+                            {% if salary.aggregate %}
+                                <div id="leo5_inst_avail_container_{{ salary_aggregate.subject_code }}">
+                            {% else %}
+                                <div id="leo5_inst_avail_container_{{ salary_aggregate.subject_code }}"
+                                     style="display: none">
+                            {% endif %}
                         {% endif %}
-                    {% if salary_index == 0 %}
-                        <h2 class="earnings-after-course-stat-salary mb-1 ter text-left">£{{ salary.med|intcomma }}</h2>
-                        <h4 class="earnings-after-course-stat-salary-range pt-1 text-left  mb-3">
 
-
+                    <h2 class="earnings-after-course-stat-salary mb-1 ter text-left">£{{ salary.med|intcomma }}</h2>
+                    <h4 class="earnings-after-course-stat-salary-range pt-1 text-left  mb-3">
                         {% create_list salary.lq|intcomma salary.uq|intcomma as substitutions %}
                         {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
                         {{ subbed_text | richtext }}
-                    {% endif %}
                     </h4>
 
 
@@ -107,10 +104,10 @@
                         {% if salary_index == 0 %}
                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_respondents_explanation substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
-                            {#                                        {% else %}#}
-                            {#                                            {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}#}
-                            {#                                            {{ subbed_text | richtext }}#}
-                            {#                                            <br>#}
+                        {% else %}
+                            {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                            <br>
                         {% endif %}
                     </h4>
 
@@ -121,15 +118,15 @@
                             {{ subbed_text | richtext }}
                             {{ block.value.after_fifteen_months_data_source }}
                         {% elif salary_index == 1 %}
-                            {#                                            {% create_list course_details.data_from_html_average_earnings_year_range course_details.leo3_year_range as substitutions %}#}
-                            {#                                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}#}
-                            {#                                            {{ subbed_text | richtext }}#}
-                            {#                                            {{ block.value.after_three_five_years_data_source }}#}
+                            {% create_list course_details.data_from_html_average_earnings_year_range course_details.leo3_year_range as substitutions %}
+                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                            {{ block.value.after_three_five_years_data_source }}
                         {% else %}
-                            {#                                            {% create_list course_details.data_from_html_average_earnings_year_range course_details.leo5_year_range as substitutions %}#}
-                            {#                                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}#}
-                            {#                                            {{ subbed_text | richtext }}#}
-                            {#                                            {{ block.value.after_three_five_years_data_source }}#}
+                            {% create_list course_details.data_from_html_average_earnings_year_range course_details.leo5_year_range as substitutions %}
+                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                            {{ block.value.after_three_five_years_data_source }}
                         {% endif %}
                     </h4>
                     </div>
@@ -145,39 +142,41 @@
                             </div>
                         {% endif %}
                     {% elif salary_index == 1 %}
-                        {#                                    {% if salary.aggregate %}#}
-                        {#                                        <div id="leo3_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer" style="display: none"></div>#}
-                        {#                                    {% else %}#}
-                        <div id="leo3_inst_unavail_{{ salary_aggregate.subject_code }}"
-                             class="not-enough-data-disclaimer">
-                            <h4>{{ salary.display_unavailable_info.reason_heading }}</h4>
-                            <h6>This data is currently being updated.</h6>
-                        </div>
-                        {#                                    {% endif %}#}
+                        {% if salary.aggregate %}
+                            <div id="leo3_inst_unavail_{{ salary_aggregate.subject_code }}"
+                                 class="not-enough-data-disclaimer" style="display: none"></div>
+                        {% else %}
+                            <div id="leo3_inst_unavail_{{ salary_aggregate.subject_code }}"
+                                 class="not-enough-data-disclaimer">
+                                <h4>{{ salary.display_unavailable_info.reason_heading }}</h4>
+                                <h6>{{ salary.display_unavailable_info.reason_body }}</h6>
+                            </div>
+                        {% endif %}
                     {% elif salary_index == 2 %}
-                        {#                                    {% if salary.aggregate %}#}
-                        {#                                        <div id="leo5_inst_unavail_{{ salary_aggregate.subject_code }}" class="not-enough-data-disclaimer" style="display: none"></div>#}
-                        {#                                    {% else %}#}
-                        <div id="leo5_inst_unavail_{{ salary_aggregate.subject_code }}"
-                             class="not-enough-data-disclaimer">
-                            <h4>{{ salary.display_unavailable_info.reason_heading }}</h4>
-                            <h6>This data is currently being updated.</h6>
-                        </div>
-                        {#                                    {% endif %}#}
+                        {% if salary.aggregate %}
+                            <div id="leo5_inst_unavail_{{ salary_aggregate.subject_code }}"
+                                 class="not-enough-data-disclaimer" style="display: none"></div>
+                        {% else %}
+                            <div id="leo5_inst_unavail_{{ salary_aggregate.subject_code }}"
+                                 class="not-enough-data-disclaimer">
+                                <h4>{{ salary.display_unavailable_info.reason_heading }}</h4>
+                                <h6>{{ salary.display_unavailable_info.reason_body }}</h6>
+                            </div>
+                        {% endif %}
                     {% endif %}
                     </div>
                     </div>
 
                     {% endfor %}
-                        </div>
-                        </div>
-                        </div>
+</div>
+</div>
+</div>
 
-                        <div>
-                            <form method='post' id='test' class="">
-                                <div class="d-inline-block">
-                                    <h2 class="earnings-after-course__stats-heading text-left pt-3 mt-3 mb-2">
-                                        {% create_list salary_aggregate.display_subject_name as substitutions %}
+<div>
+    <form method='post' id='test' class="">
+        <div class="d-inline-block">
+            <h2 class="earnings-after-course__stats-heading text-left pt-3 mt-3 mb-2">
+                {% create_list salary_aggregate.display_subject_name as substitutions %}
                             {% insert_values_to_rich_text content=block.value.average_earnings_sector_heading substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </h2>
@@ -230,40 +229,42 @@
                                          style="display: none">
                                 {% endif %}
                             {% elif salary_index == 1 %}
-                                {#                                        {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}#}
-                                <div id="leo3_sector_avail_container_{{ salary_aggregate.subject_code }}">
-                                {#                                        {% else %}#}
-                                {#                                            <div id="leo3_sector_avail_container_{{ salary_aggregate.subject_code }}" style="display: none">#}
-                                {#                                        {% endif %}#}
+                                {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}
+                                    <div id="leo3_sector_avail_container_{{ salary_aggregate.subject_code }}">
+                                {% else %}
+                                    <div id="leo3_sector_avail_container_{{ salary_aggregate.subject_code }}"
+                                         style="display: none">
+                                {% endif %}
                             {% elif salary_index == 2 %}
-                                {#                                        {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}#}
-                                <div id="leo5_sector_avail_container_{{ salary_aggregate.subject_code }}">
-                                {#                                        {% else %}#}
-                                {#                                            <div id="leo5_sector_avail_container_{{ salary_aggregate.subject_code }}" style="display: none">#}
-                                {#                                        {% endif %}#}
+                                {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}
+                                    <div id="leo5_sector_avail_container_{{ salary_aggregate.subject_code }}">
+                                {% else %}
+                                    <div id="leo5_sector_avail_container_{{ salary_aggregate.subject_code }}"
+                                         style="display: none">
+                                {% endif %}
                             {% endif %}
-                        {% if salary_index == 0 %}
-                            <h2 class="earnings-sector-field earnings-after-course-stat-salary mb-1 text-left"
-                                id="{% concat 'sector_salary_med_' salary_index '_' salary_aggregate.subject_code %}">
-                                £{{ salary.salary_default_country_med|intcomma }}</h2>
-                            {% if salary_index > 0 %}
-                                <h4 class="excl-ni-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3"
-                                    id="{% concat 'exclude_ni_msg_' salary_index '_' salary_aggregate.subject_code %}">
-                                    (excludes Northern Ireland)</h4>
-                            {% endif %}
-                            <h4 class="earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-left mb-3"
-                                id="{% concat 'sector_salary_lq_' salary_index '_' salary_aggregate.subject_code %}">
-                                {% create_list salary.salary_default_country_lq|intcomma salary.salary_default_country_uq|intcomma as substitutions %}
-                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
-                                {{ subbed_text | richtext }}
-                            </h4>
-                            <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3"
-                                id="{% concat 'sector_salary_pop_' salary_index '_' salary_aggregate.subject_code %}">
-                                {% create_list course_details.data_from_html salary.salary_default_country_pop as substitutions %}
-                                {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
-                                {{ subbed_text | richtext }}
-                            </h4>
+
+                        <h2 class="earnings-sector-field earnings-after-course-stat-salary mb-1 text-left"
+                            id="{% concat 'sector_salary_med_' salary_index '_' salary_aggregate.subject_code %}">
+                            £{{ salary.salary_default_country_med|intcomma }}</h2>
+                        {% if salary_index > 0 %}
+                            <h4 class="excl-ni-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3"
+                                id="{% concat 'exclude_ni_msg_' salary_index '_' salary_aggregate.subject_code %}">
+                                (excludes Northern Ireland)</h4>
                         {% endif %}
+                        <h4 class="earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-left mb-3"
+                            id="{% concat 'sector_salary_lq_' salary_index '_' salary_aggregate.subject_code %}">
+                            {% create_list salary.salary_default_country_lq|intcomma salary.salary_default_country_uq|intcomma as substitutions %}
+                            {% insert_values_to_rich_text content=block.value.after_fifteen_months_range_explanation substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </h4>
+                        <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3"
+                            id="{% concat 'sector_salary_pop_' salary_index '_' salary_aggregate.subject_code %}">
+                            {% create_list course_details.data_from_html salary.salary_default_country_pop as substitutions %}
+                            {% insert_values_to_rich_text content=block.value.leo_respondents_explanation substitutions=substitutions as subbed_text %}
+                            {{ subbed_text | richtext }}
+                        </h4>
+
                         {% get_translation key='prov_pc_text_template_go' language=page.get_language as prov_pc_text_template_go %}
                         {% get_translation key='prov_pc_text_template_leo' language=page.get_language as prov_pc_text_template_leo %}
                         {% if salary_index == 0 and salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc != None %}
@@ -276,16 +277,16 @@
                         {% elif salary_index == 1 and salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc != None %}
                             <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3"
                                 id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
-                                {#                                                {% create_list salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.1.subject_title_in_local_language course.institution.pub_ukprn_name course.default_region as substitutions %}#}
-                                {#                                                {% insert_values_to_plain_text content=prov_pc_text_template_leo substitutions=substitutions as subbed_text %}#}
-                                {#                                                {{ subbed_text | richtext }}#}
+                                {% create_list salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.1.subject_title_in_local_language course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                {% insert_values_to_plain_text content=prov_pc_text_template_leo substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
                             </h4>
                         {% elif salary_index == 2 and salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc != None %}
                             <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3"
                                 id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
-                                {#                                                {% create_list salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.2.subject_title_in_local_language course.institution.pub_ukprn_name course.default_region as substitutions %}#}
-                                {#                                                {% insert_values_to_plain_text content=prov_pc_text_template_leo substitutions=substitutions as subbed_text %}#}
-                                {#                                                {{ subbed_text | richtext }}#}
+                                {% create_list salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.2.subject_title_in_local_language course.institution.pub_ukprn_name course.default_region as substitutions %}
+                                {% insert_values_to_plain_text content=prov_pc_text_template_leo substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
                             </h4>
                         {% endif %}
 
@@ -296,15 +297,15 @@
                                 {{ subbed_text | richtext }}
                                 {{ block.value.after_fifteen_months_data_source }}
                             {% elif salary_index == 1 %}
-                                {#                                                {% create_list course_details.data_from_html_average_earnings_year_range course_details.leo3_year_range as substitutions %}#}
-                                {#                                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}#}
-                                {#                                                {{ subbed_text | richtext }}#}
-                                {#                                                {{ block.value.after_three_five_years_data_source }}#}
+                                {% create_list course_details.data_from_html_average_earnings_year_range course_details.leo3_year_range as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                                {{ block.value.after_three_five_years_data_source }}
                             {% else %}
-                                {#                                                {% create_list course_details.data_from_html_average_earnings_year_range course_details.leo5_year_range as substitutions %}#}
-                                {#                                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}#}
-                                {#                                                {{ subbed_text | richtext }}#}
-                                {#                                                {{ block.value.after_three_five_years_data_source }}#}
+                                {% create_list course_details.data_from_html_average_earnings_year_range course_details.leo5_year_range as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.after_fifteen_months_no_of_graduates_explanation substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                                {{ block.value.after_three_five_years_data_source }}
                             {% endif %}
                         </h4>
                         </div>
@@ -325,49 +326,48 @@
                                 </div>
                             {% endif %}
                         {% elif salary_index == 1 %}
-                            {#                                        {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}#}
-                            <div id="leo3_sector_unavail_{{ salary_aggregate.subject_code }}"
-                                 class="not-enough-data-disclaimer" style="display: none"></div>
-                            {#                                        {% else %}#}
-                            <div id="leo3_sector_unavail_{{ salary_aggregate.subject_code }}"
-                                 class="not-enough-data-disclaimer">
-                                {% if course_details.is_ni_provider == True %}
-                                    <h4>{{ salary.display_unavailable_info.unavailable_region_is_ni_heading }}</h4>
-                                    <h6>{{ salary.display_unavailable_info.unavailable_region_is_ni_body }}</h6>
-                                {% else %}
-                                    <h4>{{ salary.display_unavailable_info.unavailable_region_not_exists_heading }}</h4>
-                                    <h6>{{ salary.display_unavailable_info.unavailable_region_not_exists_body }}</h6>
-                                {% endif %}
-                            </div>
-                            {#                                        {% endif %}#}
+                            {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}
+                                <div id="leo3_sector_unavail_{{ salary_aggregate.subject_code }}"
+                                     class="not-enough-data-disclaimer" style="display: none"></div>
+                            {% else %}
+                                <div id="leo3_sector_unavail_{{ salary_aggregate.subject_code }}"
+                                     class="not-enough-data-disclaimer">
+                                    {% if course_details.is_ni_provider == True %}
+                                        <h4>{{ salary.display_unavailable_info.unavailable_region_is_ni_heading }}</h4>
+                                        <h6>{{ salary.display_unavailable_info.unavailable_region_is_ni_body }}</h6>
+                                    {% else %}
+                                        <h4>{{ salary.display_unavailable_info.unavailable_region_not_exists_heading }}</h4>
+                                        <h6>{{ salary.display_unavailable_info.unavailable_region_not_exists_body }}</h6>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
                         {% elif salary_index == 2 %}
-                            {#                                        {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}#}
-                            <div id="leo5_sector_unavail_{{ salary_aggregate.subject_code }}"
-                                 class="not-enough-data-disclaimer" style="display: none"></div>
-                            {#                                        {% else %}#}
-                            <div id="leo5_sector_unavail_{{ salary_aggregate.subject_code }}"
-                                 class="not-enough-data-disclaimer">
-                                {% if course_details.is_ni_provider == True %}
-                                    <h4>{{ salary.display_unavailable_info.unavailable_region_is_ni_heading }}</h4>
-                                    <h6>{{ salary.display_unavailable_info.unavailable_region_is_ni_body }}</h6>
-                                {% else %}
-                                    <h4>{{ salary.display_unavailable_info.unavailable_region_not_exists_heading }}</h4>
-                                    <h6>{{ salary.display_unavailable_info.unavailable_region_not_exists_body }}</h6>
-                                {% endif %}
-                            </div>
-                            {#                                        {% endif %}#}
+                            {% if salary.no_salary_node == "false" and salary.salary_default_country_med != None %}
+                                <div id="leo5_sector_unavail_{{ salary_aggregate.subject_code }}"
+                                     class="not-enough-data-disclaimer" style="display: none"></div>
+                            {% else %}
+                                <div id="leo5_sector_unavail_{{ salary_aggregate.subject_code }}"
+                                     class="not-enough-data-disclaimer">
+                                    {% if course_details.is_ni_provider == True %}
+                                        <h4>{{ salary.display_unavailable_info.unavailable_region_is_ni_heading }}</h4>
+                                        <h6>{{ salary.display_unavailable_info.unavailable_region_is_ni_body }}</h6>
+                                    {% else %}
+                                        <h4>{{ salary.display_unavailable_info.unavailable_region_not_exists_heading }}</h4>
+                                        <h6>{{ salary.display_unavailable_info.unavailable_region_not_exists_body }}</h6>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
                         {% endif %}
-
                         </div>
                         </div>
                         {% endfor %}
                             </div>
                             </div>
-                            </form>
-                        </div>
-                    </div>
+    </form>
+</div>
+</div>
 
-                </div>
+</div>
 {% endfor %}
     </div>
 
