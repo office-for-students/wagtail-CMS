@@ -66,7 +66,7 @@ def parse_menu_item(menu_item):
     try:
         label = menu_item.value.get('label') if menu_item.value.get('label') else menu_item.value.get('link_page').title
     except Exception as e:
-        print("exception as ", e)
+        print("Menu item has no itle for link page", e)
         label = ""
     item_dict = {'label': label}
     if 'menu_items' in menu_item.value:
@@ -79,5 +79,6 @@ def parse_menu_item(menu_item):
         try:
             item_dict['url'] = menu_item.value.get('link_page').url
         except Exception as e:
+            print("Menu item has no itle url", e)
             item_dict['url'] = None
     return item_dict
