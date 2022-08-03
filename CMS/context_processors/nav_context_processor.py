@@ -2,9 +2,12 @@ from django.templatetags.static import static
 
 from CMS import translations
 from CMS.enums import enums
-from core.models import Menu, Footer
-from core.utils import get_language, get_page_for_language
-from courses.models import CourseComparisonPage, CourseManagePage
+from core.models import Footer
+from core.models import Menu
+from core.utils import get_language
+from core.utils import get_page_for_language
+from courses.models import CourseComparisonPage
+from courses.models import CourseManagePage
 from home.models import HomePage
 
 
@@ -55,12 +58,13 @@ def get_menu(model, language, attribute):
         # TODO: remove when code goes to develop, as added cause we need to used the data and
         #  don't want to edit the CMS just yet - done for show an tell only. Remove the if wrapping statement
         if "Course search" != item.value.get('label') and ("Chwilio am Gwrs") != item.value.get('label'):
-            menu.append(parse_menu_item(item))
+            if item.value.get('label') and item.value.get('link_page'):
+                menu.append(parse_menu_item(item))
     return menu
 
 
 def parse_menu_item(menu_item):
-    label = menu_item.value.get('label') if menu_item.value.get('label', '') else menu_item.value.get('link_page').title
+    label = menu_item.value.get('label') if menu_item.value.get('label') else menu_item.value.get('link_page').title
     item_dict = {'label': label}
     if 'menu_items' in menu_item.value:
         sub_items = []
