@@ -2,9 +2,12 @@ from django.templatetags.static import static
 
 from CMS import translations
 from CMS.enums import enums
-from core.models import Menu, Footer
-from core.utils import get_language, get_page_for_language
-from courses.models import CourseComparisonPage, CourseManagePage
+from core.models import Footer
+from core.models import Menu
+from core.utils import get_language
+from core.utils import get_page_for_language
+from courses.models import CourseComparisonPage
+from courses.models import CourseManagePage
 from home.models import HomePage
 
 
@@ -60,7 +63,11 @@ def get_menu(model, language, attribute):
 
 
 def parse_menu_item(menu_item):
-    label = menu_item.value.get('label') if menu_item.value.get('label', '') else menu_item.value.get('link_page').title
+    try:
+        label = menu_item.value.get('label') if menu_item.value.get('label') else menu_item.value.get('link_page').title
+    except Exception as e:
+        print("Menu item has no itle for link page", e)
+        label = ""
     item_dict = {'label': label}
     if 'menu_items' in menu_item.value:
         sub_items = []
@@ -69,5 +76,9 @@ def parse_menu_item(menu_item):
         item_dict['sub_items'] = sub_items
     else:
         item_dict['sub_items'] = None
-        item_dict['url'] = menu_item.value.get('link_page').url
+        try:
+            item_dict['url'] = menu_item.value.get('link_page').url
+        except Exception as e:
+            print("Menu item has no itle url", e)
+            item_dict['url'] = None
     return item_dict
