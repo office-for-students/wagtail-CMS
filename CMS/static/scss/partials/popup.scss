@@ -1,9 +1,48 @@
-/* pop-up mobile screen */
-@media only screen and (max-width: 991px) {
+@media only screen and (max-height: 667px) {
+  .modal-content {
+    .close-btn{
+    position: relative;
+    top: -18px;
+    right: -8px;
+  }
+    p {
+      margin-bottom: 0 !important;
+      font-size: 0.8rem;
+    }
+
+    h5 {
+      font-size: 1rem !important;
+      font-weight: 500;
+    }
+  }
+}
+
+/*smaller mobile screen*/
+@media only screen and (max-width: 700px) {
   .popup__small_screen{
     display: flex;
   flex-direction: row;
 }
+  .modal-content {
+    width: 80% !important;
+    margin-left: 10%;
+    margin-top: -35%;
+    height: 50%;
+  }
+  .modal-body{
+    height: 134%;
+  }
+  .side-padding{
+    padding-right: 0.5rem!important;
+    padding-left: 0.5rem!important;
+  }
+  .popup__title {
+    width: 70%!important;
+    font-size: 1.5rem!important;
+    margin-top: 0;
+    font-weight: 400;
+    margin-left: 1rem;
+  }
   .popup__img_div{
     display: flex;
     flex-direction: row;
@@ -18,15 +57,78 @@
     width: 70%;
   }
   .popup__small_screen__logo{
-    width: 90px;
-    height: 90px;
-    margin-top: 22px;
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+  }
+  .popup__subheading{
+    display: none;
+  }
+.popup__button_div{
+  display: flex;
+  flex-direction: column;
+
+}
+.popup__button_div button{
+  width: 100%;
+  margin-top: 12px;
+}
+  .big-padding{
+    padding: 0.2rem!important;
+  }
+  .close-btn{
+    position: relative;
+    top: -30px;
+    right: -8px;
+  }
+  .wider-padding{
+    padding-top: 0!important;
+    padding-right:1rem;
+    padding-left:1rem;
+  }
+  .header-padding{
+    padding-top: 0.2rem!important;
+    padding-right:1rem;
+  }
+}
+/* pop-up mobile screen */
+@media only screen and (max-width: 991px) and (min-width: 701px) {
+  .popup__small_screen{
+    display: flex;
+  flex-direction: row;
+}
+  .modal-content {
+    width:60% !important;
+    margin-left: 20%;
+    margin-top: -35%;
+    height: 50%;
+  }
+  .modal-body{
+    height: 160%;
+  }
+  .popup__img_div{
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+  }
+   .popup__img{
+     width: 85%;
+   }
+  .popup-text{
+     display: flex;
+    flex-direction: column;
+    width: 70%;
+  }
+  .popup__small_screen__logo{
+    width: 13%;
+    height: 13%;
+    margin-top: 0.75rem;
   }
   .popup__title{
-    width: 70%;
+    width: 75%;
     margin-top: 0;
     font-weight: 400;
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-left: 1rem;
   }
   .popup__subheading{
@@ -41,10 +143,39 @@
   width: 100%;
   margin-top: 12px;
 }
+  .side-padding{
+    padding-right: 0.5rem!important;
+    padding-left: 0.5rem!important;
+  }
+  .big-padding{
+    padding: 0.4rem!important;
+  }
+  .close-btn{
+    position: relative;
+    top: -40px;
+    right: -8px;
+  }
+  .wider-padding{
+    padding-top: 1rem;
+    padding-right:1rem;
+    padding-left:1rem;
+  }
+  .header-padding{
+    padding-top: 1rem!important;
+    padding-right:1rem;
+  }
 }
+
+
 
 /* popup desktop screen */
 @media only screen and (min-width: 992px) {
+  .modal-content {
+    width:48% !important;
+    height: 55%;
+    margin-left: 26%;
+    margin-top: -15%;
+  }
   .popup__title{
     margin-left: 0.5rem;
     margin-top: 1rem;
@@ -52,18 +183,20 @@
     font-size: 2.1rem;
   }
   .popup__small_screen__logo{
-    width: 67px;
+    width: 13%;
+    height: 13%;
+    margin-top:0.75%;
   }
   .popup__subheading{
     padding-top: 0.5rem;
     padding-left: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 500;
   }
-button{
+  button{
     font-size: 1.2rem;
   }
-.popup__button_div{
+  .popup__button_div{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   margin-left: 0.5rem;
@@ -73,7 +206,29 @@ button{
   justify-content: space-between;
 
 }
-.popup__button_div button{
+  .popup__button_div button{
   width: 49%
 }
+  .side-padding{
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+  .big-padding{
+    padding: 1rem;
+  }
+  .close-btn{
+    position: relative;
+    top: -25px;
+    right: -8px;
+  }
+  .wider-padding{
+    padding-top: 1rem;
+    padding-right:1rem;
+    padding-left:1rem;
+  }
+  .header-padding{
+    padding-top: 1rem!important;
+    padding-right:1rem;
+
+  }
 }

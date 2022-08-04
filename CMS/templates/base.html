@@ -111,13 +111,13 @@
 <!-- **************** -->
 <main>
 
-<button style="display: none;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#discover-modal">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#discover-modal" style="display:none;" >
     {{ page.title}}
 </button>
 
-{%  if page.title == "Course Details" %}
+{%  if page.title == "Course Details" or page.title == "Ynglŷn â'n data" %}
     {% include 'partials/pop-up-course-details.html' %}
-{% elif page.title == "About our data" %}
+{% elif page.title == "About our data" or page.title == "Manylion y cwrs" %}
     {% include 'partials/pop-up-about-data.html' %}
 {% endif %}
 
@@ -146,8 +146,8 @@
 
 </html>
 
-{#<script>#}
-{#    if (document.referrer.indexOf(location.protocol + "//" + location.host) !== 0) {#}
-{#        $('#discover-modal').modal('show');#}
-{#    }#}
-{#</script>#}
+<script>
+    if (document.referrer.indexOf(location.protocol + "//" + location.host) !== 0) {
+        $('#discover-modal').modal('show');
+    }
+</script>
