@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
-    'wagtail.contrib.frontend_cache',
+    # 'wagtail.contrib.frontend_cache',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -80,9 +80,23 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
-    'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+
+    # AxesMiddleware should be the last middleware in the MIDDLEWARE list.
+    # It only formats user lockout messages and renders Axes lockout responses
+    # on failed user authentication attempts from login views.
+    # If you do not want Axes to override the authentication response
+    # you can skip installing the middleware and use your own views.
+    'axes.middleware.AxesMiddleware',
+]
+
+AUTHENTICATION_BACKENDS = [
+    # AxesBackend should be the first backend in the AUTHENTICATION_BACKENDS list.
+    'axes.backends.AxesBackend',
+
+    # Django ModelBackend is the default authentication backend.
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 ROOT_URLCONF = 'CMS.urls'
@@ -213,6 +227,7 @@ WIDGETAPIKEY = os.environ.get('WIDGETAPIKEY')
 WIDGETAPIHOST = os.environ.get('WIDGETAPIHOST')
 FEEDBACK_API_HOST = os.environ.get('FEEDBACK_API_HOST')
 JSONFILES_STORAGE_CONTAINER = os.environ.get('JSONFILES_STORAGE_CONTAINER', "")
+SITEMAP_STORAGE_BLOB = os.environ.get('SITEMAP_STORAGE_BLOB', "")
 STORAGEKEY = os.environ.get('STORAGEKEY')
 STORAGE_ACCOUNT_NAME = os.environ.get('STORAGE_ACCOUNT_NAME')
 
@@ -275,3 +290,8 @@ WAGTAILEMBEDS_FINDERS = [
         'class': 'wagtail.embeds.finders.oembed',
     }
 ]
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

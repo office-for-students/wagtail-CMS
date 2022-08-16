@@ -28,3 +28,21 @@ def get_json_file(json_file):
             return response
     else:
         return requests.get(os.getenv('JSONFILES_STORAGE_CONTAINER') + "/" + json_file)
+
+
+def get_sitemap_file():
+    if settings.LOCAL == "True" or settings.JSONFILES_STORAGE_CONTAINER == "":
+        response = requests.Response()
+
+        response_state = response.__getstate__()
+        response_state["status_code"] = 200
+        response_state["_content"] = "<xml></xml>"
+        response_state["encoding"] = 'utf-8'
+        response_state["content_type"] = "text/xml"
+        response.__setstate__(response_state)
+
+        return response
+    else:
+        path = settings.JSONFILES_STORAGE_CONTAINER + "/" + "sitemaps.xml"
+        response = requests.get(path)
+        return response

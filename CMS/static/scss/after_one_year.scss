@@ -102,14 +102,14 @@
 
 .one-year__overview {
 
-    text-align: center;
-    border: solid 3px $duck-egg-blue;
-    
-    @include desktop-body-font-mixin();
+  text-align: center;
+  border: solid 3px $duck-egg-blue;
 
-    p {
-        margin: 0;
-    }
+  @include desktop-body-font-mixin();
+
+  p {
+    margin: 0;
+  }
 
   .one-year__overview-lead {
     @include l-heading-mixin();
@@ -121,6 +121,10 @@
   }
 
   .one-year__overview-sublead {
+
+  }
+
+  h2 {
     font-family: 'Nunito Sans', sans-serif;
     font-size: 1.125rem;
     font-weight: normal;
@@ -150,6 +154,30 @@
     font-weight: normal;
     font-size: 0.875rem;
   }
+
+  color: $brownish-grey;
+  font-size: 0.875rem;
+}
+
+.additional-class {
+  color: $brownish-grey;
+  font-size: 1rem;
+
+  p {
+    color: $brownish-grey;
+    font-size: 1rem;
+  }
+
+  a {
+    color: $dark-green-blue;
+    text-decoration: underline;
+    font-weight: 600;
+
+    :hover {
+      color: $dark-green-blue;
+    }
+  }
+
 }
 
 @media only screen and (min-width: 770px) {

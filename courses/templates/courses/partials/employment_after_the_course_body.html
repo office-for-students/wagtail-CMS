@@ -1,4 +1,4 @@
-{% load staticfiles wagtailcore_tags discover_uni_tags humanize %}
+{% load static wagtailcore_tags discover_uni_tags humanize %}
 
 {% include "courses/partials/info_box.html" with header="employment_need_to_know" content="employment_info_box" url="graduate_link" read_more="read_more_about_employment"%}
 
@@ -241,8 +241,6 @@
                     <div class="col-12 align-self-stretch my-auto">
                         <h2 class="employment-after-course__stats-heading text-left pt-3 mb-4">
                             {{ block.value.six_month_employment_roles_label_explanation_heading }}
-                                    {% if course_details.has_multiple_job_type_stats %}
-                                        {{ jobtype_stats.display_subject_name }}{% endif %}
                         </h2>
                         {% if jobtype_stats.number_of_students and joblist_stats.jobs %}
 

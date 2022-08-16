@@ -55,15 +55,15 @@ unset LOCAL
 
 # CMS
 
-    docker container exec -it wagtail-cms_web_1 python manage.py populate_cms
+    docker container exec -it wagtail-cms-web-1 python manage.py populate_cms
 
 # Courses
     
-    docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
+    docker container exec -it wagtail-cms-web-1 python manage.py populate_courses
 
 # Institutions
     
-    docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions
+    docker container exec -it wagtail-cms-web-1 python manage.py populate_institutions
 
 # Other commands and the ones listed above can be run in the terminal of the container, for example:
 

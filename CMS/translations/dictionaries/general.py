@@ -86,7 +86,7 @@ DICT = {
         "en": "Answer 4 questions to find courses relevant to me"
     },
     "any_changes_in_the_course_or_teaching_have_been_communicated_effectively": {
-        "cy": "Cafwyd cyfathrebu effeithiol ynghylch unrhyw newidiadau o ran y cwrs neu'r addysgu",
+        "cy": "Mae unrhyw newidiadau yn y cwrs neu’r dysgu wedi cael eu cyfleu’n effeithiol.",
         "en": "Any changes in the course or teaching have been communicated effectively"
     },
     "apply_filters": {
@@ -516,7 +516,7 @@ DICT = {
         "en": "This site is in beta. We welcome your "
     },
     "feedback_on_my_work_has_been_timely": {
-        "cy": "Mae’r adborth ar fy ngwaith i wedi bod yn amserol",
+        "cy": "Mae'r adborth ar fy ngwaith i wedi bod yn amserol.",
         "en": "Feedback on my work has been timely"
     },
     "feedback_thanks": {
@@ -580,7 +580,7 @@ DICT = {
         "en": "Gold"
     },
     "good_advice_was_available_when_i_needed_to_make_study_choices_on_my_course": {
-        "cy": "Roedd cyngor da ar gael i mi pan oeddwn i eisiau gwneud dewisiadau astudio ar fy nghwrs",
+        "cy": "Roedd cyngor da ar gael pan oedd arnaf i ei angen er mwyn gwneud dewisiadau astudio ar fy nghwrs.",
         "en": "Good advice was available when I needed to make study choices on my course"
     },
     "guidance_comparing": {
@@ -632,31 +632,31 @@ DICT = {
         "en": "How was this page useful to you?"
     },
     "i_feel_part_of_a_community_of_staff_and_students": {
-        "cy": "Rydw i’n teimlo’n rhan o gymuned o staff a myfyrwyr",
+        "cy": "Rydw i'n teimlo'n rhan o gymuned o staff a myfyrwyr.",
         "en": "I feel part of a community of staff and students"
     },
     "i_have_been_able_to_access_course_specific_resources_eg_equipment_facilities_software_collections_when_i_needed_to": {
-        "cy": "Rydw i wedi gallu cael mynediad at adnoddau penodol i gwrs (e.e. offer, cyfleusterau, meddalwedd, casgliadau) pan oedd angen i mi wneud hynny",
+        "cy": "Rydw i wedi gallu cael mynediad i adnoddau penodol i fy nghwrs (e.e. offer, cyfleusterau, meddalwedd, casgliadau) fel sydd angen.",
         "en": "I have been able to access course-specific resources (e.g. equipment, facilities, software, collections) when I needed to"
     },
     "i_have_been_able_to_contact_staff_when_i_needed_to": {
-        "cy": "Rydw i wedi gallu cysylltu â staff pan oeddwn i angen gwneud hynny",
+        "cy": "Rydw i wedi gallu cysylltu â’r staff pan oedd angen.",
         "en": "I have been able to contact staff when I needed to"
     },
     "i_have_had_the_right_opportunities_to_provide_feedback_on_my_course": {
-        "cy": "Rydw i wedi cael cyfleoedd priodol i roi adborth ar fy nghwrs",
+        "cy": "Rydw i wedi cael cyfleoedd priodol i roi adborth ar fy nghwrs.",
         "en": "I have had the right opportunities to provide feedback on my course"
     },
     "i_have_had_the_right_opportunities_to_work_with_other_students_as_part_of_my_course": {
-        "cy": "Rydw i wedi cael cyfleoedd priodol i weithio gyda myfyrwyr eraill fel rhan o'm cwrs",
+        "cy": "Rydw i wedi cael cyfleoedd priodol i weithio gyda myfyrwyr eraill fel rhan o fy nghwrs.",
         "en": "I have had the right opportunities to work with other students as part of my course"
     },
     "i_have_received_helpful_comments_on_my_work": {
-        "cy": "Rydw i wedi cael sylwadau defnyddiol ar fy ngwaith",
+        "cy": "Rydw i wedi derbyn sylwadau defnyddiol ar fy ngwaith.",
         "en": "I have received helpful comments on my work"
     },
     "i_have_received_sufficient_advice_and_guidance_in_relation_to_my_course": {
-        "cy": "Rydw i wedi cael digon o gyngor ac arweiniad mewn perthynas â'm cwrs",
+        "cy": "Rydw i wedi derbyn digon o gyngor ac arweiniad mewn perthynas â fy nghwrs.",
         "en": "I have received sufficient advice and guidance in relation to my course"
     },
     "i_received_appropriate_supervision_on_placements": {
@@ -728,7 +728,7 @@ DICT = {
         "en": "There was an error loading the page"
     },
     "it_is_clear_how_students_feedback_on_the_course_has_been_acted_on": {
-        "cy": "Mae’n glir sut gweithredwyd fel ymateb i adborth y myfyrwyr ar y cwrs",
+        "cy": "Mae'n glir sut mae adborth y myfyrwyr ar y cwrs wedi cael sylw a bod pethau wedi cael eu rhoi ar waith.",
         "en": "It is clear how students' feedback on the course has been acted on"
     },
     "learning": {
@@ -768,7 +768,7 @@ DICT = {
         "en": "Many courses due to start in autumn 2020 are being changed to online delivery in whole or part. Start dates and course content/structures may also be changing."
     },
     "marking_and_assessment_has_been_fair": {
-        "cy": "Mae’r marcio a’r asesu wedi bod yn deg",
+        "cy": "Mae'r marcio a'r asesu wedi bod yn deg.",
         "en": "Marking and assessment has been fair"
     },
     "miles": {
@@ -788,19 +788,19 @@ DICT = {
         "en": "My contribution during placement(s) as part of a clinical team was valued"
     },
     "my_course_has_challenged_me_to_achieve_my_best_work": {
-        "cy": "Mae fy nghwrs wedi fy herio i i wneud fy ngwaith gorau",
+        "cy": "Mae fy nghwrs i wedi fy herio i i wneud fy ngwaith gorau.",
         "en": "My course has challenged me to achieve my best work"
     },
     "my_course_has_provided_me_with_opportunities_to_apply_what_i_have_learnt": {
-        "cy": "Mae fy nghwrs wedi rhoi cyfleoedd i mi i ddefnyddio’r hyn rydw i wedi’i ddysgu",
+        "cy": "Mae fy nghwrs i wedi rhoi cyfleoedd i mi ddefnyddio'r hyn rydw i wedi'i ddysgu.",
         "en": "My course has provided me with opportunities to apply what I have learnt"
     },
     "my_course_has_provided_me_with_opportunities_to_bring_information_and_ideas_together_from_different_topics": {
-        "cy": "Mae fy nghwrs wedi rhoi cyfleoedd i mi i ddod â gwybodaeth a syniadau at ei gilydd o wahanol bynciau",
+        "cy": "Mae fy nghwrs i wedi rhoi cyfleoedd i mi ddod â gwybodaeth a syniadau at ei gilydd o wahanol bynciau.",
         "en": "My course has provided me with opportunities to bring information and ideas together from different topics"
     },
     "my_course_has_provided_me_with_opportunities_to_explore_ideas_or_concepts_in_depth": {
-        "cy": "Mae fy nghwrs wedi rhoi cyfleoedd i mi i archwilio syniadau neu gysyniadau’n fanwl",
+        "cy": "Mae fy nghwrs i wedi rhoi cyfleoedd i mi astudio syniadau neu gysyniadau newydd mewn manylder.",
         "en": "My course has provided me with opportunities to explore ideas or concepts in depth"
     },
     "my_practice_supervisors_understood_how_my_placements_related_to_the_broader_requirements_of_my_course": {
@@ -1176,15 +1176,15 @@ DICT = {
         "en": "to a specific uni"
     },
     "staff_are_good_at_explaining_things": {
-        "cy": "Mae'r staff yn dda am esbonio pethau",
+        "cy": "Mae’r staff yn esbonio pethau’n dda.",
         "en": "Staff are good at explaining things"
     },
     "staff_have_made_the_subject_interesting": {
-        "cy": "Mae'r staff wedi gwneud y pwnc yn ddiddorol",
+        "cy": "Mae’r staff wedi gwneud y pwnc yn ddiddorol.",
         "en": "Staff have made the subject interesting"
     },
     "staff_value_students_views_and_opinions_about_the_course": {
-        "cy": "Mae’r staff yn gwerthfawrogi barn a safbwynt y myfyrwyr am y cwrs",
+        "cy": "Mae'r staff yn gwerthfawrogi safbwyntiau a barn y myfyrwyr am y cwrs.",
         "en": "Staff value students' views and opinions about the course"
     },
     "start": {
@@ -1264,31 +1264,31 @@ DICT = {
         "en": "Telephone"
     },
     "the_course_is_intellectually_stimulating": {
-        "cy": "Mae'r cwrs yn symbylu'r deallusrwydd",
+        "cy": "Mae’r cwrs yn ysgogi’r deal.",
         "en": "The course is intellectually stimulating"
     },
     "the_course_is_well_organised_and_running_smoothly": {
-        "cy": "Mae'r cwrs wedi’i drefnu'n dda ac mae'n rhedeg yn hwylus",
+        "cy": "Mae’r cwrs wedi ei drefnu’n dda ac yn rhedeg yn esmwyth.",
         "en": "The course is well organised and running smoothly"
     },
     "the_criteria_used_in_marking_have_been_clear_in_advance": {
-        "cy": "Mae'r meini prawf a ddefnyddir ar gyfer marcio wedi cael eu gwneud yn eglur ymlaen llaw",
+        "cy": "Mae’r meini prawf ar gyfer marcio wedi cael eu hegluro ymlaen llaw.",
         "en": "The criteria used in marking have been clear in advance"
     },
     "the_it_resources_and_facilities_provided_have_supported_my_learning_well": {
-        "cy": "Mae’r adnoddau a’r cyfleusterau TG sydd wedi’u darparu wedi cefnogi fy nysgu i’n dda",
+        "cy": "Mae'r adnoddau a'r cyfleusterau TG sydd wedi'u darparu wedi cefnogi fy nysgu yn dda.",
         "en": "The IT resources and facilities provided have supported my learning well"
     },
     "the_library_resources_eg_books_online_services_and_learning_spaces_have_supported_my_learning_well": {
-        "cy": "Mae’r adnoddau llyfrgell (e.e. llyfrau, gwasanaethau ar-lein a gofod dysgu) wedi cefnogi fy nysgu i’n dda",
+        "cy": "Mae adnoddau'r llyfrgell (e.e. llyfrau, gwasanaethau ar-lein a gofod dysgu) wedi cefnogi fy nysgu yn dda.",
         "en": "The library resources (e.g. books, online services and learning spaces) have supported my learning well"
     },
     "the_students_union_association_or_guild_effectively_represents_students_academic_interests": {
-        "cy": "Mae undeb y myfyrwyr (cymdeithas neu urdd) yn cynrychioli buddiannau academaidd y myfyrwyr yn effeithiol",
+        "cy": "Mae undeb (cymdeithas neu urdd) y myfyrwyr yn cynrychioli buddiannau academaidd y myfyrwyr.",
         "en": "The students' union (association or guild) effectively represents students' academic interests"
     },
     "the_timetable_works_efficiently_for_me": {
-        "cy": "Mae’r amserlen yn gweithio’n effeithlon i mi",
+        "cy": "Mae'r amserlen yn gweithio'n effeithlon i mi.",
         "en": "The timetable works efficiently for me"
     },
     "try_course_wizard": {
@@ -1492,6 +1492,74 @@ DICT = {
     'survey_info_box': {
         'en': 'Some data is from students surveyed during the Covid-19 pandemic, which may have had an effect on their responses.',
         'cy': "Mae rhywfaint o'r data gan fyfyrwyr a arolygwyd yn ystod y pandemig COVID-19, a allai fod wedi cael effaith ar eu hymatebion."
+    },
+    'discover_uni': {
+        'en': 'Discover Uni',
+        'cy': "Darganfod Prifysgol"
+    },
+    'leo_banner': {
+        'en': 'the “Earnings after the course” data for 3 years and 5 years after graduation has recently been updated.',
+        'cy': 'cafodd data "Enillion ar ôl y cwrs" 3 blynedd a 5 mlynedd ar ôl graddio eu diweddaru yn ddiweddar.'
+    },
+    'please_note': {
+        'en': 'Please note: ',
+        'cy': "Sylwch: "
+    },
+    'read_more': {
+        'en': 'Read more',
+        'cy': "Darllen mwy"
+    },
+    'popup_heading': {
+        'en': 'Welcome to Discover Uni',
+        'cy': 'Croeso i Darganfod Prifysgol'
+    },
+    'popup_subheading': {
+        'en': 'Discover Uni is an official source of information about higher education.',
+        'cy': 'Ffynhonnell wybodaeth swyddogol am addysg uwch yw Darganfod Prifysgol.'
+    },
+    'popup_info_heading': {
+        'en': 'Info & advice',
+        'cy': 'Gwybodaeth a chyngor'
+    },
+    'popup_info_text1': {
+        'en': 'Thinking about going to uni?',
+        'cy': 'Yn ystyried mynd i brifysgol? '
+    },
+    'popup_info_text2': {
+        'en': 'Find resources to help support your decision.',
+        'cy': 'Chwiliwch am adnoddau i’ch helpu i wneud penderfyniad.'
+    },
+    'popup_search_heading': {
+        'en': 'Course search',
+        'cy': 'Chwilio am gwrs'
+    },
+    'popup_search_text': {
+        'en': 'Search all undergraduate courses.',
+        'cy': 'Chwilio drwy’r holl gyrsiau is-radd.'
+    },
+    'popup_save_heading': {
+        'en': 'Save & compare',
+        'cy': 'Cadw a chymharu'
+    },
+    'popup_save_text': {
+        'en': 'Shortlist courses and compare official data to help you make a decision.',
+        'cy': 'Lluniwch restr fer o gyrsiau a chymharu data swyddogol i’ch helpu i wneud penderfyniad.'
+    },
+    'popup_widget_secondary_button': {
+        'en': 'Explore homepage',
+        'cy': 'Archwilio’r hafan'
+    },
+    'popup_widget_primary_button': {
+        'en': 'Continue to course data',
+        'cy': 'Ymlaen i ddata’r cwrs'
+    },
+    'popup_external_secondary_button': {
+        'en': 'About our data',
+        'cy': 'Ynglŷn â’n data'
+    },
+    'popup_external_primary_button': {
+        'en': 'Search for a course',
+        'cy': 'Chwilio am gwrs'
     },
 }
 

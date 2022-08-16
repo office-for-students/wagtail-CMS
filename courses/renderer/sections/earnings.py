@@ -152,6 +152,7 @@ class SubEarningsSection(Section):
             stat: str,
             model_list_name: str,
             language: str,
+            multiple=False,
             prefix="",
             extra=False
     ) -> str:

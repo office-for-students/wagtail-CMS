@@ -1,0 +1,12 @@
+{% load static discover_uni_tags %}
+<div class="course-finder__course-wizard__desktop-width course-finder__course-wizard__mobile-width dash-vertical-left text-center p-3">
+    <div class="flex-row m-auto text-center">
+        <img class="mx-auto home-page__course-wizard-icon" src="{% static 'images/arrows.svg' %}" alt="Course Wizard"/>
+        <h4>{{ page.informational_title }}</h4>
+        <p style="font-weight: 100">{{ page.informational_text }}</p>
+        <a class="search_button justify-content-center py-2 px-3" style="color: black; font-weight: bold;"
+           href="{{ page.informational_text_link }}"
+           aria-label="{{ page.informational_text_link }} {% get_translation key='find_out_more' language=page.get_language %}">
+            {% get_translation key='find_out_more' language=page.get_language %}</a>
+    </div>
+</div>

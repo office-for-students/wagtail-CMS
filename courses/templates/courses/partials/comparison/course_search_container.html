@@ -1,15 +1,13 @@
-{% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
+{% load static sass_tags wagtailcore_tags discover_uni_tags %}
 <div id="courseSearchContainer" class="course-search-container" style="clear: both;">
     <div class="no_courses_saved">
         {% get_translation key='no_courses_saved' language=page.get_language %}
     </div>
     <div class="course_comparison-search bg-white pb-5">
-        <div class="row course_compare_search">
+        <div class="row course_compare_search flex-row justify-content-center text-center">
             {% include 'coursefinder/partials/coursesearch/searchbox.html' %}
-            <div class="col-12 d-block d-lg-none mx-auto text-center">
-                <hr class="dash"/>
-            </div>
-            {% include 'coursefinder/partials/coursesearch/coursewizard.html' %}
+
+{#            {% include 'coursefinder/partials/coursesearch/coursewizard.html' %}#}
         </div>
     </div>
 </div>

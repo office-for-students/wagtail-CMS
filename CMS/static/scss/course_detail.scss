@@ -12,9 +12,10 @@
 
 @import 'highcharts';
 
-[id^=highcharts-screen-reader-region]{
+[id^=highcharts-screen-reader-region] {
   display: none;
 }
+
 .course_detail__header-bar {
   background-color: #1F283A;
 
@@ -30,7 +31,7 @@
 
 }
 
-.data-from{
+.data-from {
   display: inline;
   margin-right: 0 !important;
 }
@@ -970,6 +971,28 @@
   }
 }
 
+
+.additional-class {
+  color: $brownish-grey;
+  font-size: 1rem;
+
+  p {
+    color: $brownish-grey;
+    font-size: 1rem;
+  }
+
+  a {
+    color: $dark-green-blue;
+    text-decoration: underline;
+    font-weight: 600;
+
+    :hover {
+      color: $dark-green-blue;
+    }
+  }
+
+}
+
 @media only screen and (max-width: 575px) {
   div.course-detail.comparison-course-area {
     margin-left: auto !important;
@@ -1008,3 +1031,6 @@
     margin-right: auto !important;
   }
 }
+
+
+

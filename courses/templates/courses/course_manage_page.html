@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles sass_tags wagtailcore_tags discover_uni_tags %}
+{% load static sass_tags wagtailcore_tags discover_uni_tags %}
 
 {% block extra_css %}
     <link href="{% sass_src 'scss/manage_bookmarks.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
@@ -43,7 +43,7 @@
 
             <div class="bookmark__none-selected-example">
                 <button class="course-detail__bookmark-compare-btn" type="submit" style="cursor:default;">
-                    <img class="add" src="{% static 'images/grey-bookmark.svg' %}" alt="">
+                    <img class="add" style="width: 6px;" src="{% static 'images/black-bookmark.svg' %}" alt="">
                     {% get_translation key='bookmark_course' language=page.get_language %}
                 </button>
 
@@ -118,7 +118,7 @@
                     window.performance.navigation.type === 2);
             if (historyTraversal) {
                 window.location.reload();
-            };
+            }
         })
         {# Reload end #}
     </script>

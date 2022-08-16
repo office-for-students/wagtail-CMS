@@ -8,6 +8,7 @@
 @import "./partials/compare";
 @import "./partials/cookie_banner";
 @import "./buttons";
+@import "./partials/popup.scss";
 
 body {
   margin: 0;
@@ -64,8 +65,13 @@ a {
     @include green-cta-mixin();
     padding: 0;
 }
+.leo-banner__bold {
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
 
-.covid-19-banner {
+
+.covid-19-banner, .leo-banner {
   display: block;
   background: #268283;
   border-bottom: 2px solid #268283;
@@ -75,12 +81,21 @@ a {
   text-decoration: none;
   font-family: Nunito Sans;
   font-size: 1.125rem;
-  font-weight: bold;
+
 
   &:hover {
     background: $white;
     color: #268283;
+    a{
+      background: $white;
+    color: #268283;
+    }
   }
+  a{
+  color: white;
+  text-decoration: underline;
+
+}
 }
 
 .explanation {
@@ -272,7 +287,7 @@ body {
 
 .not-enough-data-disclaimer {
   //border: solid 3px #cee9e7 !important;
-  font-size: 0.875rem;
+  font-size: 1.125rem;
   font-weight: normal;
   color: $brownish-grey;
   font-family: "Nunito Sans", sans-serif;
@@ -292,7 +307,7 @@ body {
 @media only screen and (min-width: 770px) {
   .not-enough-data-disclaimer {
     //border: solid 3px #cee9e7 !important;
-    font-size: 1rem;
+    font-size: 1.125rem;
     font-weight: normal;
     color: $brownish-grey;
     font-family: "Nunito Sans", sans-serif;
@@ -322,11 +337,11 @@ body {
 #go_sector_unavail.not-enough-data-disclaimer {
   padding: 0.5rem 0.5rem 0.5rem 0;
   h6 {
-    font-size: 0.8rem;
+    font-size: 1.125rem;
     font-weight: normal;
   }
   h4 {
-    font-size: 0.9rem;
+    font-size: 1.125rem;
     font-weight: normal;
     color: $black;
   }
