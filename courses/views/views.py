@@ -269,7 +269,7 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
     salary_data = course.go_salaries_inst[0]
     salary_agg = salary_data.aggregate if salary_data.aggregate else course.leo3_salaries_inst[0].aggregate
 
-    if salary_agg in ["21", "22"]:
+    if salary_agg in ["1", "2", "11", "12", "21", "22"]:
         new_course_unavail = {"header": UNAVAILABLE["new_course_earnings_unavail_header"], "body": UNAVAILABLE["new_course_earnings_unavail_body"]}
         context.update({"new_course_unavail": new_course_unavail})
 
