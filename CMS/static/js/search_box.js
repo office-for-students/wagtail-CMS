@@ -153,7 +153,7 @@ class SearchBoxManager {
         for (let i = 0; i < institutions.length; i++) {
             label = institutions[i].getElementsByTagName("label")[0];
             if (label) {
-                txtValue = label.textContent || label.innerText;
+                txtValue = label.dataset.names;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
                     institutions[i].style.display = "block";
                 } else {
