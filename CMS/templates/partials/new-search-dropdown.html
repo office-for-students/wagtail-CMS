@@ -53,7 +53,8 @@
                     <label class="dropdown-content-institution-check-institution-label drop-item"
                            id="{{ option.name }}-label"
                            for="{{ option.name }}"
-                           data-names="{{ option.other_names }}">
+                           data-names="[{{ option.first_trading_name }}, {{ option.legal_name }}]"
+                           data-othernames="{{ option.other_names }}">
                         {{ option.name }}
                     </label>
                 </div>
@@ -67,7 +68,8 @@
                         <label class="dropdown-content-institution-check-institution-label drop-item"
                                id="{{ option.name }}-label"
                                for="{{ option.name }}"
-                               data-names="{{ option.other_names }}">
+                               data-names="[{{ option.first_trading_name }}, {{ option.legal_name }}]"
+                               data-othernames="{{ option.other_names }}">
                             {{ option.name }}
                         </label>
                     </div>
@@ -81,7 +83,8 @@
                         <label class="dropdown-content-institution-check-institution-label drop-item"
                                id="{{ option.name }}-label"
                                for="{{ option.name }}"
-                               data-names="{{ option.other_names }}">
+                               data-names="[{{ option.first_trading_name }}, {{ option.legal_name }}]"
+                               data-othernames="{{ option.other_names }}">
                             {{ option.name }}
                         </label>
                     </div>
