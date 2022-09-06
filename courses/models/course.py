@@ -195,8 +195,8 @@ class Course:
 
             prefix = translations.term_for_key('average_earnings_year_range', language)
             self.go_year_range = prefix + " {}-{}".format(2018, 2020)
-            self.leo3_year_range = prefix + " {}-{}".format(2011, 2013)
-            self.leo5_year_range = prefix + " {}-{}".format(2011, 2013)
+            self.leo3_year_range = prefix + " {}-{}".format(2010, 2012)
+            self.leo5_year_range = prefix + " {}-{}".format(2010, 2012)
 
             self.go_salaries_inst = []
             if course_details.get('go_salary_inst'):
