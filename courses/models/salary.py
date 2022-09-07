@@ -12,6 +12,7 @@ class Salary:
             self.subject_code = subject_data.get('code', '')
             self.subject_english = subject_data.get('english_label')
             self.subject_welsh = subject_data.get('welsh_label')
+            self.aggregate = salary_data.get('agg')
 
             self.subject_title_in_local_language = self.subject_english
             if self.display_language == enums.languages.WELSH:
@@ -49,7 +50,6 @@ class Salary:
                 self.lq = salary_data.get('lq')
                 self.med = salary_data.get('med')
                 self.uq = salary_data.get('uq')
-                self.aggregate = salary_data.get('agg')
 
                 self.prov_pc_uk = salary_data.get('inst_prov_pc_uk')
                 self.prov_pc_e = salary_data.get('inst_prov_pc_e')
