@@ -45,7 +45,7 @@ class Salary:
             if 'resp_rate' in salary_data:
                 self.resp_rate = salary_data.get('resp_rate') + "%"
 
-            if 'agg' in salary_data:
+            if salary_data.get("agg"):
                 self.pop = salary_data.get('pop')
                 self.lq = salary_data.get('lq')
                 self.med = salary_data.get('med')

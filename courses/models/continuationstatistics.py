@@ -44,7 +44,7 @@ class ContinuationStatistics:
             self.unavailable_url_english = unavailable_data.get('url_english', '')
             self.unavailable_url_welsh = unavailable_data.get('url_welsh', '')
 
-            if self.unavailable_code == 1 and self.aggregation_level in ["", 11, 12, 13, 21, 22, 23]:
+            if self.unavailable_code == 1 and self.aggregation_level in [None, 11, 12, 13, 21, 22, 23]:
                 self.display_unavailable_info = new_subject_unavail(
                     aggregation_level=self.aggregation_level,
                     subject_title_in_local_language=self.display_subject_name(),
