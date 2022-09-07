@@ -88,7 +88,6 @@ class Salary:
 
             self.new_course_unavail = None
             if self.aggregate in ["1", "2", "11", "12", "21", "22"]:
-                print("I AM HERE")
                 header = UNAVAILABLE["new_course_earnings_unavail_header"][self.display_language].format(
                     self.display_subject_name())
                 self.unavailable_reason_english = {

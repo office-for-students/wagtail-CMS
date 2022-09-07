@@ -58,7 +58,6 @@ class ContinuationStatistics:
                 )
             self.unavailable_reason_heading = self.display_unavailable_info["reason_heading"]
             self.unavailable_reason_body = self.display_unavailable_info["reason_body"]
-            print(self.unavailable_reason_heading, self.unavailable_reason_body)
             if str(self.aggregation_level) in ["11", "12", "13", "21", "22", "23"]:
                 self.unavailable_reason_body = f"{self.unavailable_reason_heading} {self.unavailable_reason_body}"
 
