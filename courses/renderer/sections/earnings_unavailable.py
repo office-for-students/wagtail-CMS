@@ -21,9 +21,9 @@ def get_data(
     unavailable_code = getattr(_object, "unavail_reason")
     aggregation_level = _getattr(_object, "aggregate", None)
     kis_level = getattr(course, "course_level")
-    print("AGGG LEVEL", aggregation_level)
 
     return set_message(
+        course=course,
         unavailable_key=str(unavailable_code),
         aggregation_level=aggregation_level,
         kis_level=str(kis_level),
@@ -32,6 +32,7 @@ def get_data(
 
 
 def set_message(
+        course: Course,
         unavailable_key: str,
         aggregation_level: str,
         kis_level: str,
@@ -41,11 +42,13 @@ def set_message(
     message = translations.term_for_key(key=message, language=language)
 
     if aggregation_level is not None:
-        print("Comp agg", aggregation_level)
         message = earnings_dict[unavailable_key][aggregation_level].get(kis_level)
         message = translations.term_for_key(key=message, language=language)
-
+        subject_name = course.course_title
+        if message:
+            return message.format(subject_name)
     return message
+
 
 
 def _getattr(obj, attr, fallback):

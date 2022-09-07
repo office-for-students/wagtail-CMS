@@ -1,3 +1,4 @@
+from CMS.translations.dictionaries.unavailable import UNAVAILABLE
 from core.utils import enums
 from courses.models.utils import separate_unavail_reason
 
@@ -73,7 +74,8 @@ class Salary:
                 self.prov_pc_gl = salary_data.get('inst_prov_pc_gl')
                 self.prov_pc_cf = salary_data.get('inst_prov_pc_cf')
 
-            if 'earnings_agg_unavail_message' in salary_data and len(salary_data.get('earnings_agg_unavail_message')) > 0:
+            if 'earnings_agg_unavail_message' in salary_data and len(
+                    salary_data.get('earnings_agg_unavail_message')) > 0:
                 self.earnings_aggregation_msg = {}
                 if self.display_language == enums.languages.ENGLISH:
                     self.earnings_aggregation_str = salary_data.get('earnings_agg_unavail_message')['english']
@@ -83,6 +85,21 @@ class Salary:
 
                 self.earnings_aggregation_msg["msg_heading"], self.earnings_aggregation_msg[
                     "msg_body"] = separate_unavail_reason(self.earnings_aggregation_str)
+
+            self.new_course_unavail = None
+            if self.aggregate in ["1", "2", "11", "12", "21", "22"]:
+                print("I AM HERE")
+                header = UNAVAILABLE["new_course_earnings_unavail_header"][self.display_language].format(
+                    self.display_subject_name())
+                self.unavailable_reason_english = {
+                    "header": header,
+                    "body": UNAVAILABLE["new_course_earnings_unavail_body"]["en"]
+                }
+                self.unavailable_reason_welsh = {
+                    "header": header,
+                    "body": UNAVAILABLE["new_course_earnings_unavail_body"]["cy"]
+                }
+
 
     def display_unavailable_info(self):
         unavailable = {}

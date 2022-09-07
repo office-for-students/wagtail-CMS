@@ -37,7 +37,7 @@
                 {% if course_details.course_level == 4 %}
                     <h4 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{% get_translation key='course_level_msg' language=page.get_language %}</h4>
                 {% endif %}
-                {% if new_course_unavail %}
+                {% if salary_aggregate.new_course_unavail %}
                     <h4 style="font-weight: bold;" class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{{ new_course_unavail.header }}</h4>
                     <h6 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{{ new_course_unavail.body }}</h6>
                 {% elif salary_aggregate.aggregated_salaries_inst.0.earnings_aggregation_msg != None %}
