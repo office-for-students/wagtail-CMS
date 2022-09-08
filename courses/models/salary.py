@@ -86,19 +86,15 @@ class Salary:
                 self.earnings_aggregation_msg["msg_heading"], self.earnings_aggregation_msg[
                     "msg_body"] = separate_unavail_reason(self.earnings_aggregation_str)
 
-            self.new_course_unavail = None
-            if self.aggregate in ["1", "2", "11", "12", "21", "22"]:
-                header = UNAVAILABLE["new_course_earnings_unavail_header"][self.display_language].format(
-                    self.display_subject_name())
-                self.unavailable_reason_english = {
-                    "header": header,
-                    "body": UNAVAILABLE["new_course_earnings_unavail_body"]["en"]
-                }
-                self.unavailable_reason_welsh = {
-                    "header": header,
-                    "body": UNAVAILABLE["new_course_earnings_unavail_body"]["cy"]
-                }
-
+                if self.aggregate in ["1", "2", "11", "12", "21", "22"]:
+                    header = UNAVAILABLE["new_course_earnings_unavail_header"][self.display_language].format(
+                        self.display_subject_name())
+                    self.earnings_aggregation_msg["msg_heading"] = header
+                    self.earnings_aggregation_msg["msg_body"] = UNAVAILABLE["new_course_earnings_unavail_body"][self.display_language]
+                    self.unavailable_reason_welsh = {
+                        "header": header,
+                        "body": UNAVAILABLE["new_course_earnings_unavail_body"]["cy"]
+                    }
 
     def display_unavailable_info(self):
         unavailable = {}
