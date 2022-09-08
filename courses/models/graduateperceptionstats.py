@@ -32,7 +32,7 @@ class GraduatePerceptionStatistics:
             self.unavailable_reason_welsh = unavailable_data.get('reason_welsh', '')
             self.unavailable_find_out_more_english = unavailable_data.get('find_out_more_english', '')
             self.unavailable_find_out_more_welsh = unavailable_data.get('find_out_more_welsh', '')
-            if self.unavailable_code == 1 and self.aggregation_level in ["", 11, 12, 13, 21, 22, 23]:
+            if self.unavailable_code == 1 and self.aggregation_level in [None, 11, 12, 13, 21, 22, 23]:
                 self.display_unavailable_info = new_subject_unavail(
                     aggregation_level=self.aggregation_level,
                     subject_title_in_local_language=self.display_subject_name(),

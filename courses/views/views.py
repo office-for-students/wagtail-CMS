@@ -270,7 +270,8 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
     salary_agg = salary_data.aggregate if salary_data.aggregate else course.leo3_salaries_inst[0].aggregate
 
     if salary_agg in ["1", "2", "11", "12", "21", "22"]:
-        new_course_unavail = {"header": UNAVAILABLE["new_course_earnings_unavail_header"], "body": UNAVAILABLE["new_course_earnings_unavail_body"]}
+        header = UNAVAILABLE["new_course_earnings_unavail_header"][language].format(salary_data.display_subject_name())
+        new_course_unavail = {"header": header, "body": UNAVAILABLE["new_course_earnings_unavail_body"][language]}
         context.update({"new_course_unavail": new_course_unavail})
 
     return render(request, 'courses/course_detail_page.html', context)
