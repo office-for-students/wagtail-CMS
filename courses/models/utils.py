@@ -63,7 +63,7 @@ def new_subject_unavail(aggregation_level, subject_title_in_local_language, lang
     elif aggregation_level in [11, 12, 13]:
         reason_heading = UNAVAILABLE['new_course_agg_111213_header'][language].format(subject_title_in_local_language)
         reason_body = UNAVAILABLE['new_course_agg_111213_body'][language]
-    elif aggregation_level in [21, 22, 23]:
+    elif aggregation_level in [11, 12, 13]:
         reason_heading = UNAVAILABLE['new_course_agg_212223_header'][language].format(subject_title_in_local_language)
         reason_body = UNAVAILABLE['new_course_agg_212223_body'][language]
     return {"reason_heading": reason_heading, "reason_body": reason_body}
