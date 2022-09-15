@@ -33,9 +33,11 @@ class GraduatePerceptionStatistics:
             self.unavailable_find_out_more_english = unavailable_data.get('find_out_more_english', '')
             self.unavailable_find_out_more_welsh = unavailable_data.get('find_out_more_welsh', '')
             #For some reason this is the only aggregation level that comes through as a string rather than an int
-            if self.unavailable_code == 1 and int(self.aggregation_level) in [None, 11, 12, 13, 21, 22, 23]:
+            if self.aggregation_level:
+                self.aggregation_level = int(self.aggregation_level)
+            if self.unavailable_code == 1 and self.aggregation_level in [None, 11, 12, 13, 21, 22, 23]:
                 self.display_unavailable_info = new_subject_unavail(
-                    aggregation_level=int(self.aggregation_level) if self.aggregation_level else None,
+                    aggregation_level=self.aggregation_level,
                     subject_title_in_local_language=self.display_subject_name(),
                     language=self.display_language
                 )
