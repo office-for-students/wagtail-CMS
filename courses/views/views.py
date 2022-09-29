@@ -7,6 +7,7 @@ from django.shortcuts import render
 
 from CMS import translations
 from CMS.enums import enums
+from CMS.translations.dictionaries.unavailable import UNAVAILABLE
 from core.utils import get_new_landing_page_for_language
 from core.utils import get_page_for_language
 from courses.models import Course
@@ -264,6 +265,14 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         'translated_url': translated_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies')
     })
+
+    salary_data = course.go_salaries_inst[0]
+    salary_agg = salary_data.aggregate if salary_data.aggregate else course.leo3_salaries_inst[0].aggregate
+
+    if salary_agg in ["1", "2", "11", "12", "21", "22"]:
+        header = UNAVAILABLE["new_course_earnings_unavail_header"][language].format(salary_data.display_subject_name())
+        new_course_unavail = {"header": header, "body": UNAVAILABLE["new_course_earnings_unavail_body"][language]}
+        context.update({"new_course_unavail": new_course_unavail})
 
     return render(request, 'courses/course_detail_page.html', context)
 

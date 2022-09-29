@@ -136,7 +136,7 @@ class SearchBoxManager {
 
     searchList() {
         // Declare variables
-        let input, filter, institutions, label, txtValue;
+        let input, filter, institutions, label, txtValue, names;
         input = document.getElementById("institutionSearchBar");
         filter = input.value.toUpperCase();
         institutions = document.getElementsByClassName("dropdown-content-institution-check");
@@ -153,9 +153,12 @@ class SearchBoxManager {
         for (let i = 0; i < institutions.length; i++) {
             label = institutions[i].getElementsByTagName("label")[0];
             if (label) {
-                txtValue = label.textContent || label.innerText;
+                txtValue = label.dataset.othernames;
+                names = label.dataset.names
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
                     institutions[i].style.display = "block";
+                } else if(names.toUpperCase().indexOf(filter) > -1) {
+                        institutions[i].style.display = "block";
                 } else {
                     institutions[i].style.display = "none";
                 }
