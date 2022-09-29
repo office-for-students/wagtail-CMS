@@ -60,7 +60,6 @@ services:
       - "8000:8000"
     depends_on:
       - db
-      - mongo
 
   db:
     image: postgres:9.6

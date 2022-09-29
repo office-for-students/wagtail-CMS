@@ -16,9 +16,13 @@ UNAVAILABLE = {
         "cy": "Daw'r data a ddangosir gan fyfyrwyr ar gyrsiau {}."
     },
     "new_course_earnings_unavail_body": {
-        "en": "This includes data from all courses in this subject at the same   university or college. There was not enough data to publish more specific information – either because the course is new, or there are too few students. This does not reflect on the quality of the course.",
+        "en": "This includes data from all courses in this subject at the same university or college. There was not enough data to publish more specific information – either because the course is new, or there are too few students. This does not reflect on the quality of the course.",
         "cy": "Mae hwn yn cynnwys data o bob cwrs yn y pwnc hwn yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl - naill ai gan fod y cwrs yn newydd, neu does dim digon o fyfyrwyr. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
     },
+    "new_course_unavail_full": dict_for_key(
+        "The data displayed is from students on courses in {}. This includes data from all courses in this subject at the same university or college. There was not enough data to publish more specific information – either because the course is new, or there are too few students. This does not reflect on the quality of the course.",
+        "Daw'r data a ddangosir gan fyfyrwyr ar gyrsiau {}. Mae hwn yn cynnwys data o bob cwrs yn y pwnc hwn yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl - naill ai gan fod y cwrs yn newydd, neu does dim digon o fyfyrwyr. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+    ),
     "new_course_agg_111213_header": {
         "en": "The data displayed is from students on other courses in {}.",
         "cy": "Mae’r data a ddangosir gan fyfyrwyr eraill ar gyrsiau eraill mewn {}."
