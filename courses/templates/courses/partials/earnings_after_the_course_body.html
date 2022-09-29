@@ -39,8 +39,12 @@
                 {% endif %}
                 {% if salary_aggregate.aggregated_salaries_inst.0.earnings_aggregation_msg != None %}
                     <div class="not-enough-data-disclaimer">
-                        <h4 style="font-weight: bold;" class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{{salary_aggregate.aggregated_salaries_inst.0.earnings_aggregation_msg.msg_heading}}</h4>
-                        <h6 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{{salary_aggregate.aggregated_salaries_inst.0.earnings_aggregation_msg.msg_body}}</h6>
+                        <h4 style="font-weight: bold;" class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">
+                            {{salary_aggregate.aggregated_salaries_inst.0.earnings_aggregation_msg.msg_heading}}
+                        </h4>
+                        <h6 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">
+                            {{salary_aggregate.aggregated_salaries_inst.0.earnings_aggregation_msg.msg_body}}
+                        </h6>
                     </div>
                 {% elif salary_aggregate.aggregated_salaries_inst.1.earnings_aggregation_msg != None %}
                     <div class="not-enough-data-disclaimer">
@@ -137,8 +141,8 @@
                         {% else %}
                             <div id="go_inst_unavail_{{ salary_aggregate.subject_code }}"
                                  class="not-enough-data-disclaimer">
-                                <h4>{{ salary.display_unavailable_info.reason_heading }}</h4>
-                                <h6>{{ salary.display_unavailable_info.reason_body }}</h6>
+                                    <h4>{{ salary.display_unavailable_info.reason_heading }}</h4>
+                                    <h6>{{ salary.display_unavailable_info.reason_body }}</h6>
                             </div>
                         {% endif %}
                     {% elif salary_index == 1 %}

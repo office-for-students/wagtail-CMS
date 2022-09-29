@@ -1498,8 +1498,8 @@ DICT = {
         'cy': "Darganfod Prifysgol"
     },
     'leo_banner': {
-        'en': 'the “Earnings after the course” data for 3 years and 5 years after graduation has recently been updated.',
-        'cy': 'cafodd data "Enillion ar ôl y cwrs" 3 blynedd a 5 mlynedd ar ôl graddio eu diweddaru yn ddiweddar.'
+        'en': 'we anticipate that "Earnings after the course" data for 3 years and 5 years after graduation will be updated during November 2022 as new data is published.',
+        'cy': 'rydym yn disgwyl y bydd data “Enillion ar ôl y cwrs” ar gyfer 3 blynedd a 5 mlynedd ar ôl graddio’n cael ei ddiweddaru yn ystod mis Tachwedd 2022 wrth i ddata newydd gael ei gyhoeddi. Darllenwch fwy.'
     },
     'please_note': {
         'en': 'Please note: ',

@@ -1,8 +1,44 @@
-def dict_for_key(english, welsh):
+def dict_for_key(english, welsh, subject=None):
     return dict(en=english, cy=welsh)
 
 
 UNAVAILABLE = {
+    "new_course_agg_blank_header": {
+        "en": "Sorry, there is no data available for this course.",
+        "cy": "Mae’n ddrwg gennym, nid oes data ar gael ar gyfer y cwrs yma."
+    },
+    "new_course_agg_blank_body": {
+        "en": "This is because the course is new or has not been running long enough for this data to be available. This does not reflect on the quality of the course.",
+        "cy": "Y rheswm dros hyn yw bod y cwrs yn newydd neu nad yw wedi bod yn rhedeg am yn ddigon hir i’r data hwn fod ar gael. Nid yw hyn yn adlewyrchu ar ansawdd y cwrs."
+    },
+    "new_course_earnings_unavail_header": {
+        "en": "The data displayed is from students on courses in {}.",
+        "cy": "Daw'r data a ddangosir gan fyfyrwyr ar gyrsiau {}."
+    },
+    "new_course_earnings_unavail_body": {
+        "en": "This includes data from all courses in this subject at the same university or college. There was not enough data to publish more specific information – either because the course is new, or there are too few students. This does not reflect on the quality of the course.",
+        "cy": "Mae hwn yn cynnwys data o bob cwrs yn y pwnc hwn yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl - naill ai gan fod y cwrs yn newydd, neu does dim digon o fyfyrwyr. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+    },
+    "new_course_unavail_full": dict_for_key(
+        "The data displayed is from students on courses in {}. This includes data from all courses in this subject at the same university or college. There was not enough data to publish more specific information – either because the course is new, or there are too few students. This does not reflect on the quality of the course.",
+        "Daw'r data a ddangosir gan fyfyrwyr ar gyrsiau {}. Mae hwn yn cynnwys data o bob cwrs yn y pwnc hwn yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl - naill ai gan fod y cwrs yn newydd, neu does dim digon o fyfyrwyr. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+    ),
+    "new_course_agg_111213_header": {
+        "en": "The data displayed is from students on other courses in {}.",
+        "cy": "Mae’r data a ddangosir gan fyfyrwyr eraill ar gyrsiau eraill mewn {}."
+    },
+    "new_course_agg_111213_body": {
+        "en": "Because the course is new or has not been running long enough, there was not enough data to publish information specifically for this course. This does not reflect on the quality of the course.",
+        "cy": "Gan bod y cwrs yn newydd neu heb fod yn rhedeg am yn ddigon hir, nid oedd digon o ddata i gyhoeddi gwybodaeth ar gyfer y cwrs yma’n benodol. Nid yw hyn yn adlewyrchu ar ansawdd y cwrs."
+    },
+    "new_course_agg_212223_header": {
+        "en": "The data displayed is from students on other courses in {} over the previous two years.",
+        "cy": "Mae’r data a ddangosir gan fyfyrwyr ar gyrsiau eraill mewn {} dros y ddwy flynedd flaenorol."
+    },
+    "new_course_agg_212223_body": {
+        "en": "Because the course is new or has not been running long enough, there was   not enough data to publish information specifically for this course.",
+        "cy": "Gan bod y cwrs yn newydd neu heb fod yn rhedeg am yn ddigon hir, nid oedd digon o ddata i gyhoeddi gwybodaeth ar gyfer y cwrs yma’n benodol."
+    },
     "after_5_years_21_22_4": dict_for_key(
         "<p>This includes data from this and related courses at the same university or college. There was not enough data to publish more specific information. This does not reflect on the quality of the course.</p><p>Please note: the following information does not contain any data for first degrees (such as BA, BSc, or Integrated Masters). Instead it is displaying information for other undergraduate qualifications – this includes CertHE, DipHE and FD among others.</p>",
         "<p>Mae hwn yn cynnwys data o'r cwrs hwn a chyrsiau cysylltiedig yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl. Nid yw hyn yn adlewyrchu ansawdd y cwrs.</p><p>Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill.</p>"

@@ -1,5 +1,5 @@
 from CMS.enums import enums
-from courses.models.utils import display_unavailable_info
+from courses.models.utils import display_unavailable_info, new_subject_unavail
 
 
 class GraduatePerceptionStatistics:
@@ -32,13 +32,22 @@ class GraduatePerceptionStatistics:
             self.unavailable_reason_welsh = unavailable_data.get('reason_welsh', '')
             self.unavailable_find_out_more_english = unavailable_data.get('find_out_more_english', '')
             self.unavailable_find_out_more_welsh = unavailable_data.get('find_out_more_welsh', '')
-            self.display_unavailable_info = display_unavailable_info(
-                self,
-                aggregation_level=self.aggregation_level,
-                subject_welsh=self.subject_welsh,
-                replace=True
-            )
-            self.unavailable_reason_heading = self.display_unavailable_info.get("reason_heading", '')
+            #For some reason this is the only aggregation level that comes through as a string rather than an int
+            if self.aggregation_level:
+                self.aggregation_level = int(self.aggregation_level)
+            if self.unavailable_code == 1 and self.aggregation_level in [None, 11, 12, 13, 21, 22, 23]:
+                self.display_unavailable_info = new_subject_unavail(
+                    aggregation_level=self.aggregation_level,
+                    subject_title_in_local_language=self.display_subject_name(),
+                    language=self.display_language
+                )
+            else:
+                self.display_unavailable_info = display_unavailable_info(
+                    self,
+                    aggregation_level=self.aggregation_level,
+                    subject_welsh=self.subject_welsh
+                )
+            self.unavailable_reason_heading = self.display_unavailable_info["reason_heading"]
             self.unavailable_reason_body = self.display_unavailable_info["reason_body"]
             if str(self.aggregation_level) in ["11", "12", "13", "21", "22", "23"]:
                 self.unavailable_reason_body = f"{self.unavailable_reason_heading} {self.unavailable_reason_body}"

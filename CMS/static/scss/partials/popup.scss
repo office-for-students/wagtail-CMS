@@ -16,6 +16,28 @@
     }
   }
 }
+/* smallest mobile width*/
+@media only screen and (max-width: 375px) {
+  .modal-content {
+    .close-btn{
+    position: relative;
+    top: -18px;
+    right: -8px;
+  }
+    p {
+      margin-bottom: 0 !important;
+      font-size: 0.9rem;
+    }
+
+    h5 {
+      font-size: 1.1rem !important;
+      font-weight: 500;
+    }
+    .btn {
+      padding: 0.5rem!important;
+    }
+  }
+}
 
 /*smaller mobile screen*/
 @media only screen and (max-width: 700px) {
