@@ -1,4 +1,5 @@
 from CMS.enums import enums
+from CMS.translations.dictionaries.unavailable import UNAVAILABLE
 
 
 def display_unavailable_info(self, aggregation_level, subject_welsh, replace=False):
@@ -28,21 +29,6 @@ def display_unavailable_info(self, aggregation_level, subject_welsh, replace=Fal
                                                                         subject_welsh
                                                                     )
 
-
-        #TODO: Remove once OFS want the override disabled https://app.clickup.com/t/j337mq
-        if replace and str(aggregation_level) in ["21", "22", "23"]:
-
-            if self.display_language == enums.languages.ENGLISH:
-                unavailable["reason_heading"] = unavailable["reason_heading"].replace(" over the previous two years", "")
-            else:
-                unavailable["reason_heading"] = unavailable["reason_heading"].replace("eraill yn ystod y ddwy flynedd flaenorol",
-                                                                           "eraill")
-
-        elif replace and str(aggregation_level) == "24":
-            unavailable["reason_body"] = None
-        # end remove
-
-
     return unavailable
 
 
@@ -68,6 +54,19 @@ def separate_unavail_reason(reason_unseparated, subject_welsh=""):
         reason_body = ""
 
     return reason_heading, reason_body
+
+
+def new_subject_unavail(aggregation_level, subject_title_in_local_language, language):
+    if not aggregation_level:
+        reason_heading = UNAVAILABLE['new_course_agg_blank_header'][language]
+        reason_body = UNAVAILABLE['new_course_agg_blank_body'][language]
+    elif aggregation_level in [11, 12, 13]:
+        reason_heading = UNAVAILABLE['new_course_agg_111213_header'][language].format(subject_title_in_local_language)
+        reason_body = UNAVAILABLE['new_course_agg_111213_body'][language]
+    elif aggregation_level in [21, 22, 23]:
+        reason_heading = UNAVAILABLE['new_course_agg_212223_header'][language].format(subject_title_in_local_language)
+        reason_body = UNAVAILABLE['new_course_agg_212223_body'][language]
+    return {"reason_heading": reason_heading, "reason_body": reason_body}
 
 
 def display_subject_name(self):

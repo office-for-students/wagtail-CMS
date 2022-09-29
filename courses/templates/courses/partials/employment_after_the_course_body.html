@@ -50,7 +50,7 @@
                             <h2 class="employment-after-course__stats-heading pt-3 mb-4">
                                 {{ block.value.six_month_employment_roles_heading }}
                             </h2>
-                            {% if employment_stats.aggregation_level != 24 %}
+                            {% if employment_stats.aggregation_level != 14 %}
                                 {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
                             {% endif %}
 
@@ -244,7 +244,7 @@
                         </h2>
                         {% if jobtype_stats.number_of_students and joblist_stats.jobs %}
 
-                            {% if jobtype_stats.aggregation_level != 24 %}
+                            {% if jobtype_stats.aggregation_level != 14 %}
                                 {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
                             {% endif %}
 
@@ -254,11 +254,11 @@
                                 {{ subbed_text | richtext }}
                             </div>
                         {% elif jobtype_stats and jobtype_stats.display_unavailable_info %}
-                            {% if jobtype_stats.aggregation_level != 24 %}
+                            {% if jobtype_stats.aggregation_level != 14 %}
                                 {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
                             {% endif %}
                         {% else %}
-                            {% if jobtype_stats.aggregation_level != 24 %}
+                            {% if jobtype_stats.aggregation_level != 14 %}
                                 {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
                             {% endif %}
                         {% endif %}

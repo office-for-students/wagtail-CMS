@@ -194,7 +194,7 @@ class Course:
                         break
 
             prefix = translations.term_for_key('average_earnings_year_range', language)
-            self.go_year_range = prefix + " {}-{}".format(2017, 2018)
+            self.go_year_range = prefix + " {}-{}".format(2018, 2020)
             self.leo3_year_range = prefix + " {}-{}".format(2010, 2012)
             self.leo5_year_range = prefix + " {}-{}".format(2010, 2012)
 

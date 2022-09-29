@@ -291,7 +291,7 @@ body {
   font-weight: normal;
   color: $brownish-grey;
   font-family: "Nunito Sans", sans-serif;
-  padding: 6px;
+  padding: 6px 6px 6px 0;
 
   h6 {
     font-size: 0.875rem;
@@ -311,7 +311,7 @@ body {
     font-weight: normal;
     color: $brownish-grey;
     font-family: "Nunito Sans", sans-serif;
-    padding: 10px;
+    padding: 10px 10px 10px 0;
 
     h6 {
       font-size: 1rem;
@@ -335,7 +335,7 @@ body {
 #leo3_sector_unavail.not-enough-data-disclaimer,
 #leo5_sector_unavail.not-enough-data-disclaimer,
 #go_sector_unavail.not-enough-data-disclaimer {
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 0;
   h6 {
     font-size: 1.125rem;
     font-weight: normal;

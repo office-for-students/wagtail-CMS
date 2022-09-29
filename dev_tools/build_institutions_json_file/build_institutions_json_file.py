@@ -52,7 +52,7 @@ def build_institutions_json_file():
     for val in institution_list:
         institution = val["institution"]
         if isinstance(institution["pub_ukprn_name"], str):
-            inst_entry = get_inst_entry(institution["pub_ukprn_name"])
+            inst_entry = get_inst_entry(institution["pub_ukprn_name"], institution["legal_name"], institution.get("other_names"))
             list_of_institutions.append(inst_entry)
             count += 1
 
@@ -67,12 +67,15 @@ def build_institutions_json_file():
         json.dump(institutions, fp, indent=4)
 
 
-def get_inst_entry(name):
+def get_inst_entry(name, legal_name, other_names):
     entry = {}
     order_by_name = get_order_by_name(name)
     alphabet = order_by_name[0]
+    other_names.append(name)
+    other_names.append(legal_name)
     entry["alphabet"] = alphabet
     entry["name"] = name
+    entry["other_names"] = other_names
     entry["order_by_name"] = order_by_name
     return entry
 

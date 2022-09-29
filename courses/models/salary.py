@@ -1,3 +1,4 @@
+from CMS.translations.dictionaries.unavailable import UNAVAILABLE
 from core.utils import enums
 from courses.models.utils import separate_unavail_reason
 
@@ -12,6 +13,7 @@ class Salary:
             self.subject_code = subject_data.get('code', '')
             self.subject_english = subject_data.get('english_label')
             self.subject_welsh = subject_data.get('welsh_label')
+            self.aggregate = salary_data.get('agg')
 
             self.subject_title_in_local_language = self.subject_english
             if self.display_language == enums.languages.WELSH:
@@ -44,12 +46,11 @@ class Salary:
             if 'resp_rate' in salary_data:
                 self.resp_rate = salary_data.get('resp_rate') + "%"
 
-            if 'agg' in salary_data:
+            if salary_data.get("agg"):
                 self.pop = salary_data.get('pop')
                 self.lq = salary_data.get('lq')
                 self.med = salary_data.get('med')
                 self.uq = salary_data.get('uq')
-                self.aggregate = salary_data.get('agg')
 
                 self.prov_pc_uk = salary_data.get('inst_prov_pc_uk')
                 self.prov_pc_e = salary_data.get('inst_prov_pc_e')
@@ -73,7 +74,8 @@ class Salary:
                 self.prov_pc_gl = salary_data.get('inst_prov_pc_gl')
                 self.prov_pc_cf = salary_data.get('inst_prov_pc_cf')
 
-            if 'earnings_agg_unavail_message' in salary_data and len(salary_data.get('earnings_agg_unavail_message')) > 0:
+            if 'earnings_agg_unavail_message' in salary_data and len(
+                    salary_data.get('earnings_agg_unavail_message')) > 0:
                 self.earnings_aggregation_msg = {}
                 if self.display_language == enums.languages.ENGLISH:
                     self.earnings_aggregation_str = salary_data.get('earnings_agg_unavail_message')['english']
@@ -83,6 +85,16 @@ class Salary:
 
                 self.earnings_aggregation_msg["msg_heading"], self.earnings_aggregation_msg[
                     "msg_body"] = separate_unavail_reason(self.earnings_aggregation_str)
+
+                if self.aggregate in ["1", "2", "11", "12", "21", "22"]:
+                    header = UNAVAILABLE["new_course_earnings_unavail_header"][self.display_language].format(
+                        self.display_subject_name())
+                    self.earnings_aggregation_msg["msg_heading"] = header
+                    self.earnings_aggregation_msg["msg_body"] = UNAVAILABLE["new_course_earnings_unavail_body"][self.display_language]
+                    self.unavailable_reason_welsh = {
+                        "header": header,
+                        "body": UNAVAILABLE["new_course_earnings_unavail_body"]["cy"]
+                    }
 
     def display_unavailable_info(self):
         unavailable = {}
