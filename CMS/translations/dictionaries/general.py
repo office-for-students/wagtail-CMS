@@ -1203,9 +1203,17 @@ DICT = {
         "cy": "Bodlonrwydd Myfyrwyr",
         "en": "Student Satisfaction"
     },
-    "student_satisfaction_course_overview_2": {
-        "cy": "cyfran y myfyrwyr a ymatebodd a oedd yn cytuno â’r datganiad “Rwy’n fodlon ag ansawdd y cwrs ar y cyfan”",
-        "en": "agreed they were satisfied with the quality of the course"
+    "of_final_year": {
+        "cy": "o fyfyrwyr",
+        "en": "of final year"
+    },
+    "students_at": {
+        "cy": "blwyddyn olaf",
+        "en": "students at"
+    },
+    "satisfied_with_the_course": {
+        "cy": "yn cytuno eu bod yn fodlon ar ansawdd y cwrs ar y cyfan.",
+        "en": "agreed they were satisfied with the course"
     },
     "student_satisfaction_course_overview_3": {
         "cy": "Ewch i’r adran Bodlonrwydd Myfyrwyr",
@@ -1498,8 +1506,8 @@ DICT = {
         'cy': "Darganfod Prifysgol"
     },
     'leo_banner': {
-        'en': 'we anticipate that "Earnings after the course" data for 3 years and 5 years after graduation will be updated during November 2022 as new data is published.',
-        'cy': 'rydym yn disgwyl y bydd data “Enillion ar ôl y cwrs” ar gyfer 3 blynedd a 5 mlynedd ar ôl graddio’n cael ei ddiweddaru yn ystod mis Tachwedd 2022 wrth i ddata newydd gael ei gyhoeddi.'
+        'en': 'the ‘Earnings after the course’ data for 3 years and 5 years after graduation has been updated in November 2022 as new data has been published.',
+        'cy': 'mae’r data ‘Enillion ar ôl y cwrs’ ar gyfer 3 a 5 mlynedd ar ôl graddio wedi cael ei ddiweddaru ym mis Tachwedd 2022 gan bod data newydd wedi cael ei gyhoeddi.'
     },
     'please_note': {
         'en': 'Please note: ',
