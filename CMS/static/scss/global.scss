@@ -65,22 +65,37 @@ a {
     @include green-cta-mixin();
     padding: 0;
 }
-.leo-banner__bold {
-  font-weight: bolder;
-  font-size: 1.2rem;
-}
 
-
-.covid-19-banner, .leo-banner {
+.leo-banner {
   display: block;
   background: #268283;
   border-bottom: 2px solid #268283;
-  color: $white;
   padding: 20px 0;
-  text-align: center;
-  text-decoration: none;
-  font-family: Nunito Sans;
-  font-size: 1.125rem;
+
+  &__bold {
+    font-weight: bolder;
+    font-size: 1.2rem;
+  }
+  &:hover {
+    p, span, a {
+      color: #268283;
+    }
+  }
+
+  p, span, a {
+    margin-left: auto;
+    margin-right: auto;
+    color: $white;
+    text-align: center;
+    text-decoration: none;
+    font-family: Nunito Sans;
+    font-size: 1.125rem;
+
+    @media only screen and (min-width: 1025px){
+      width: 1140px;
+    }
+  }
+
 
 
   &:hover {

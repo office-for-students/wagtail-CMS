@@ -172,7 +172,13 @@
                     <div class="course-detail__headline_stat px-3 px-xs-2 py-4 mr-sm-2 mr-xs-1 h-100">
                         <h3 class="d-none d-lg-block">{% get_translation key='student_satisfaction' language=page.get_language %}</h3>
                         <h2>{{ course.satisfaction_stats.0.question_27.agree_or_strongly_agree }}%</h2>
-                        <p>{% get_translation key='student_satisfaction_course_overview_2' language=page.get_language %}</p>
+                        <p>
+                            {% get_translation key='of_final_year' language=page.get_language %}
+                            {{ course_title }}
+                            {% get_translation key='students_at' language=page.get_language %}
+                            {{ course.institution_name }}
+                            {% get_translation key='satisfied_with_the_course' language=page.get_language %}
+                        </p>
                         <!--
                         <p>
                             <a class="text-dark"

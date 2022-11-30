@@ -236,6 +236,9 @@ def regional_earnings(request):
 
 def courses_detail(request, institution_id, course_id, kis_mode, language=enums.languages.ENGLISH):
     course, error = Course.find(institution_id, course_id, kis_mode, language)
+    course_title = course.satisfaction_stats[0].display_subject_name
+    if course.satisfaction_stats[0].aggregation_level == 14:
+        course_title = course.display_title()
     if error:
         redirect_page = get_new_landing_page_for_language(language)
         # redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
@@ -263,6 +266,7 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         'comparison_link': comparison_page.url if comparison_page else '#',
         'manage_link': bookmark_page.url if bookmark_page else '#',
         'translated_url': translated_url,
+        "course_title": course_title,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies')
     })
 
