@@ -76,6 +76,11 @@ a {
     font-weight: bolder;
     font-size: 1.2rem;
   }
+  &:hover {
+    p, span, a {
+      color: #268283;
+    }
+  }
 
   p, span, a {
     margin-left: auto;
