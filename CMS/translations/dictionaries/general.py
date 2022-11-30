@@ -1509,10 +1509,6 @@ DICT = {
         'en': 'Please note: the ‘Earnings after the course’ data for 3 years and 5 years after graduation has been updated in November 2022 as new data has been published.',
         'cy': 'mae’r data ‘Enillion ar ôl y cwrs’ ar gyfer 3 a 5 mlynedd ar ôl graddio wedi cael ei ddiweddaru ym mis Tachwedd 2022 gan bod data newydd wedi cael ei gyhoeddi.'
     },
-    'link_to_about_data': {
-        'en': '(linked to About our Data page with ‘Longitudinal Educational Outcomes dataset)',
-        'cy': '(dolen i’r adran Ynglŷn â’n data o’r dudalen)'
-    },
     'please_note': {
         'en': 'Please note: ',
         'cy': "Sylwer: "
