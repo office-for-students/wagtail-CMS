@@ -15,15 +15,7 @@
 
 {% block extra_css %}
     <link href="{% sass_src 'scss/course_detail.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
-{% endblock %}
-
-{% block content %}
-    <div class="course_detail__header-bar px-3 pb-0 mb-0">
-        <div class="course_detail__header-bar-div col-12 p-0 text-right mx-0">
-            <img class="home-page__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
-        </div>
-    </div>
-    {% include 'courses/course_detail_content.html' %}
+    <link href="{% sass_src 'scss/partials/popup.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block extra_js %}
@@ -39,4 +31,16 @@
     <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/compare-selector.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/back-button.js' %}?{% code_version %}"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}js/popup.js?{% code_version %}"></script>
 {% endblock %}
+
+{% block content %}
+    {% include 'partials/pop-up-course-details.html' %}
+    <div class="course_detail__header-bar px-3 pb-0 mb-0">
+        <div class="course_detail__header-bar-div col-12 p-0 text-right mx-0">
+            <img class="home-page__header-bg-icon" src="{% static 'images/bg-arrows.svg' %}" alt="Background Graphics"/>
+        </div>
+    </div>
+    {% include 'courses/course_detail_content.html' %}
+{% endblock %}
+

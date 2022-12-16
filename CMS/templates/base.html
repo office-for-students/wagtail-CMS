@@ -115,12 +115,6 @@
     {{ page.title}}
 </button>
 
-{%  if page.title == "Course Details" or page.title == "Ynglŷn â'n data" %}
-    {% include 'partials/pop-up-course-details.html' %}
-{% elif page.title == "About our data" or page.title == "Manylion y cwrs" %}
-    {% include 'partials/pop-up-about-data.html' %}
-{% endif %}
-
     <div id="main-content" tabindex="-1">
         {% block content %}{% endblock %}
 
@@ -146,8 +140,3 @@
 
 </html>
 
-<script>
-    if (document.referrer.indexOf(location.protocol + "//" + location.host) !== 0) {
-        $('#discover-modal').modal('show');
-    }
-</script>
