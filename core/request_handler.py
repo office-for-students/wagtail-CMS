@@ -1,8 +1,10 @@
 import os
 
 import requests
+from decouple import config
 from django.conf import settings
 
+from CMS.settings import constants as sys_constants
 
 def send_feedback(feedback_data):
     headers = {
@@ -27,7 +29,7 @@ def get_json_file(json_file):
 
             return response
     else:
-        return requests.get(os.getenv('JSONFILES_STORAGE_CONTAINER') + "/" + json_file)
+        return requests.get(sys_constants.OFS_CONF_JSONFILES_STORAGE_CONTAINER + "/" + json_file)
 
 
 def get_sitemap_file():
