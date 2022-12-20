@@ -15,13 +15,26 @@ import os
 
 from corsheaders.defaults import default_headers
 
+from . import constants as sys_constants
+
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-LOCAL = True if os.environ.get('LOCAL', "") == "True" else False
-READ_ONLY = os.environ.get('READ_ONLY', False)
+DEBUG = True  # sys_constants.OFS_CONF_DEBUG
+LOCAL = sys_constants.OFS_CONF_LOCAL
+READ_ONLY = sys_constants.OFS_CONF_READ_ONLY
+ALLOWED_HOSTS = sys_constants.OFS_CONF_ALLOWED_HOSTS
+SECRET_KEY = sys_constants.OFS_CONF_SECRET_KEY
+print(f"\t\t \nallowed hosts\n\t\t {ALLOWED_HOSTS[1]}")
+ROOT_DOMAIN = sys_constants.OFS_CONF_ROOT_DOMAIN
 
-ROOT_DOMAIN = os.environ.get('ROOT_DOMAIN', 'http://localhost:3000')
+SECURE_HSTS_SECONDS = sys_constants.OFS_CONF_SECURE_HSTS_SECONDS
+SECURE_HSTS_INCLUDE_SUBDOMAINS = sys_constants.OFS_CONF_SECURE_HSTS_INCLUDE_SUBDOMAINS
+SECURE_HSTS_PRELOAD = sys_constants.OFS_CONF_SECURE_HSTS_PRELOAD
+SECURE_CONTENT_TYPE_NOSNIFF = sys_constants.OFS_CONF_SECURE_CONTENT_TYPE_NOSNIFF
+SECURE_BROWSER_XSS_FILTER = sys_constants.OFS_CONF_SECURE_BROWSER_XSS_FILTER
+SESSION_COOKIE_SECURE = sys_constants.OFS_CONF_SESSION_COOKIE_SECURE
+CSRF_COOKIE_SECURE = sys_constants.OFS_CONF_CSRF_COOKIE_SECURE
 
 # Application definition
 
@@ -100,7 +113,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 ROOT_URLCONF = 'CMS.urls'
-
+print(PROJECT_DIR)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -136,11 +149,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('DBNAME'),
-            'HOST': os.environ.get('DBHOST'),
-            'USER': os.environ.get('DBUSER'),
-            'PORT': os.environ.get('DBPORT'),
-            'PASSWORD': os.environ.get('DBPASSWORD')
+            'NAME': sys_constants.OFS_CONF_DBNAME,
+            'HOST': sys_constants.OFS_CONF_DBHOST,
+            'USER': sys_constants.OFS_CONF_DBUSER,
+            'PORT': sys_constants.OFS_CONF_DBPORT,
+            'PASSWORD': sys_constants.OFS_CONF_DBPASSWORD
         }
     }
 
@@ -209,32 +222,40 @@ WAGTAIL_SITE_NAME = "CMS"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = os.environ.get('ROOT_DOMAIN', 'http://example.com')
+BASE_URL = sys_constants.OFS_CONF_ROOT_DOMAIN
 
 # Search API settings
 
-SORT_BY_SUBJECT_LIMIT = os.environ.get('SORT_BY_SUBJECT_LIMIT')
-SEARCHAPIHOST = os.environ.get('SEARCHAPIHOST')
-DATASETAPIHOST = os.environ.get('DATASETAPIHOST')
-DATASETAPIKEY = os.environ.get('DATASETAPIKEY')
-AZURECOSMOSDBURI = os.environ.get('AZURECOSMOSDBURI')
-AZURECOSMOSDBKEY = os.environ.get('AZURECOSMOSDBKEY')
-MONGODB_HOST = os.environ.get('MONGODB_HOST')
-MONGODB_USERNAME = os.environ.get('MONGODB_USERNAME')
-MONGODB_PASSWORD = os.environ.get('MONGODB_PASSWORD')
-TEST_COURSES = os.environ.get('TEST_COURSES')
-WIDGETAPIKEY = os.environ.get('WIDGETAPIKEY')
-WIDGETAPIHOST = os.environ.get('WIDGETAPIHOST')
-FEEDBACK_API_HOST = os.environ.get('FEEDBACK_API_HOST')
-JSONFILES_STORAGE_CONTAINER = os.environ.get('JSONFILES_STORAGE_CONTAINER', "")
-SITEMAP_STORAGE_BLOB = os.environ.get('SITEMAP_STORAGE_BLOB', "")
-STORAGEKEY = os.environ.get('STORAGEKEY')
-STORAGE_ACCOUNT_NAME = os.environ.get('STORAGE_ACCOUNT_NAME')
+SORT_BY_SUBJECT_LIMIT = sys_constants.OFS_CONF_SORT_BY_SUBJECT_LIMIT
+SEARCHAPIHOST = sys_constants.OFS_CONF_SEARCHAPIHOST
+DATASETAPIHOST = sys_constants.OFS_CONF_DATASETAPIHOST
+DATASETAPIKEY = sys_constants.OFS_CONF_DATASETAPIKEY
+AZURECOSMOSDBURI = sys_constants.OFS_CONF_AZURECOSMOSDBURI
+AZURECOSMOSDBKEY = sys_constants.OFS_CONF_AZURECOSMOSDBKEY
+# MONGODB_HOST = sys_constants.OFS_CONF_MONGODB_HOST
+# MONGODB_USERNAME = sys_constants.OFS_CONF_MONGODB_USERNAME
+# MONGODB_PASSWORD = sys_constants.OFS_CONF_MONGODB_PASSWORD
+# TEST_COURSES = sys_constants.OFS_CONF_TEST_COURSES
+WIDGETAPIKEY = sys_constants.OFS_CONF_WIDGETAPIKEY
+WIDGETAPIHOST = sys_constants.OFS_CONF_WIDGETAPIHOST
+FEEDBACK_API_HOST = sys_constants.OFS_CONF_FEEDBACK_API_HOST
+JSONFILES_STORAGE_CONTAINER = sys_constants.OFS_CONF_JSONFILES_STORAGE_CONTAINER
+SITEMAP_STORAGE_BLOB = sys_constants.OFS_CONF_SITEMAP_STORAGE_BLOB
+STORAGEKEY = sys_constants.OFS_CONF_STORAGEKEY
+STORAGE_ACCOUNT_NAME = sys_constants.OFS_CONF_STORAGE_ACCOUNT_NAME
 
-DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')  # eg. 'campaignstorage'
-AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')  # eg. '<secret key>'
-AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')  # eg. 'campaign-resource-centre'
+DEFAULT_FILE_STORAGE = sys_constants.OFS_CONF_DEFAULT_FILE_STORAGE
+AZURE_ACCOUNT_NAME = sys_constants.OFS_CONF_AZURE_ACCOUNT_NAME  # eg. 'campaignstorage'
+AZURE_ACCOUNT_KEY = sys_constants.OFS_CONF_AZURE_ACCOUNT_KEY  # eg. '<secret key>'
+AZURE_CONTAINER = sys_constants.OFS_CONF_AZURE_CONTAINER  # eg. 'campaign-resource-centre'
+
+SENDGRID_API_KEY = sys_constants.OFS_CONF_SENDGRID_API_KEY
+EMAIL_BACKEND = sys_constants.OFS_CONF_EMAIL_BACKEND
+EMAIL_HOST = sys_constants.OFS_CONF_EMAIL_HOST
+EMAIL_HOST_USER = sys_constants.OFS_CONF_EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = sys_constants.OFS_CONF_EMAIL_HOST_PASSWORD
+EMAIL_PORT = sys_constants.OFS_CONF_EMAIL_PORT
+EMAIL_USE_TLS = sys_constants.OFS_CONF_EMAIL_USE_TLS
 
 CORS_ORIGIN_ALLOW_ALL = True
 
