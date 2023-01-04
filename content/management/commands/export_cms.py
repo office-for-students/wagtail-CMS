@@ -6,6 +6,21 @@ import json
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
+        content_landing_pages = []
+
+        landing_pages = ContentLandingPage.objects.all()
+        for landing_page in landing_pages:
+            l_page = dict(
+                pk=landing_page.pk,
+                language=landing_page.get_language(),
+                intro=landing_page.intro,
+                title=landing_page.title,
+            )
+            options = []
+            for option in landing_page.options:
+                options.append(option.value.pk)
+            l_page["options"] = options
+            content_landing_pages.append(l_page)
         pages = []
         for i in Section.objects.all():
             sections = []
@@ -17,10 +32,11 @@ class Command(BaseCommand):
                         sect_content=str(sect.value['subsection_content'])
                     )
                 )
-            # print("translated= {}".format(i.translated_page_id))
+
             pages.append(
                 dict(
-                    pk = i.pk,
+                    pk=i.pk,
+                    language=i.get_language(),
                     live=i.live,
                     translation_pk=i.translated_page_id,
                     title=i.title,
@@ -30,4 +46,4 @@ class Command(BaseCommand):
             )
 
         with open("output.json", "w") as output:
-            json.dump(pages, output)
+            json.dump(dict(pages=pages, landing_pages=content_landing_pages), output)
