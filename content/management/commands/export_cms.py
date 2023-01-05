@@ -18,16 +18,17 @@ class Command(BaseCommand):
                     )
                 )
             # print("translated= {}".format(i.translated_page_id))
-            pages.append(
-                dict(
-                    pk = i.pk,
-                    live=i.live,
-                    translation_pk=i.translated_page_id,
-                    title=i.title,
-                    intro=str(i.intro),
-                    sections=sections
+            if i.translated_page_id:
+                pages.append(
+                    dict(
+                        pk = i.pk,
+                        live=i.live,
+                        translation_pk=i.translated_page_id,
+                        title=i.title,
+                        intro=str(i.intro),
+                        sections=sections
+                    )
                 )
-            )
 
         with open("output.json", "w") as output:
             json.dump(pages, output)
