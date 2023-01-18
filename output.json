@@ -2627,11 +2627,28 @@
       "language": "en",
       "intro": "<p data-block-key=\"uu3jb\">In this section we give you information that can help you decide if uni is the right choice for you.</p><p data-block-key=\"5e22s\">You can find out more about what it&#x27;s like and also about different ways to get a higher education qualification.</p>",
       "title": "Is uni for me?",
+      "translation_pk": 51,
       "options": [
-        6,
-        7,
-        8,
-        32
+        [
+          6,
+          13,
+          "content | section"
+        ],
+        [
+          7,
+          13,
+          "content | section"
+        ],
+        [
+          8,
+          13,
+          "content | section"
+        ],
+        [
+          32,
+          13,
+          "content | section"
+        ]
       ]
     },
     {
@@ -2639,19 +2656,68 @@
       "language": "en",
       "intro": "<p>In this section we give you some ideas for what you might want to consider when deciding what and where to study. We also tell you about the information that can help and where to find it.<br/><br/> Not all these things will be important to everyone. It&#x27;s a good idea to start by thinking about what matters most to you .</p>",
       "title": "How to choose a course",
+      "translation_pk": 56,
       "options": [
-        139,
-        13,
-        11,
-        14,
-        15,
-        36,
-        18,
-        91,
-        46,
-        47,
-        90,
-        92
+        [
+          139,
+          54,
+          "content | flat content"
+        ],
+        [
+          13,
+          13,
+          "content | section"
+        ],
+        [
+          11,
+          13,
+          "content | section"
+        ],
+        [
+          14,
+          13,
+          "content | section"
+        ],
+        [
+          15,
+          13,
+          "content | section"
+        ],
+        [
+          36,
+          13,
+          "content | section"
+        ],
+        [
+          18,
+          13,
+          "content | section"
+        ],
+        [
+          91,
+          13,
+          "content | section"
+        ],
+        [
+          46,
+          13,
+          "content | section"
+        ],
+        [
+          47,
+          13,
+          "content | section"
+        ],
+        [
+          90,
+          13,
+          "content | section"
+        ],
+        [
+          92,
+          13,
+          "content | section"
+        ]
       ]
     },
     {
@@ -2659,11 +2725,28 @@
       "language": "en",
       "intro": "<p data-block-key=\"pgoy8\">There are many ways you can get help to pay for the cost of going to uni.</p><p data-block-key=\"7011f\">Some help is through loans that need to be repaid, but only once you are earning over a certain amount. Some is through grants that don\u2019t need to be paid back.</p><p data-block-key=\"txqhk\">Some funding comes from the government and some is from universities and colleges, charities or other sources.</p><p data-block-key=\"n6dcd\">Choose the country you usually live in below to find out more about what is available.</p><p data-block-key=\"y1xg4\">If you are applying from outside of the UK, please check our &#x27;<a id=\"155\" linktype=\"page\">international applicants</a>&#x27; page for information about student finance.</p><p data-block-key=\"4v1vj\">See our latest information on the <a id=\"209\" linktype=\"page\">cost of living while at university.</a></p><p data-block-key=\"4ixx0\"></p><embed embedtype=\"media\" url=\"https://www.youtube.com/watch?v=IKCtg1KX0JQ\"/><p data-block-key=\"vkwoe\"></p>",
       "title": "How will I pay for it?",
+      "translation_pk": 75,
       "options": [
-        9,
-        43,
-        44,
-        45
+        [
+          9,
+          13,
+          "content | section"
+        ],
+        [
+          43,
+          13,
+          "content | section"
+        ],
+        [
+          44,
+          13,
+          "content | section"
+        ],
+        [
+          45,
+          13,
+          "content | section"
+        ]
       ]
     },
     {
@@ -2671,11 +2754,28 @@
       "language": "cy",
       "intro": "<p>Yn yr adran hon byddwn yn rhoi gwybodaeth a all eich helpu i benderfynu ai prifysgol yw&#x27;r dewis iawn i chi.<br/></p><p>Cewch mwy o wybodaeth am am y profiad o fod mewn prifysgol ac am y gwahanol ffyrdd o ennill cymhwyster addysg uwch.</p>",
       "title": "Ai\u2019r brifysgol yw\u2019r dewis iawn i fi?",
+      "translation_pk": 5,
       "options": [
-        50,
-        52,
-        53,
-        54
+        [
+          50,
+          13,
+          "content | section"
+        ],
+        [
+          52,
+          13,
+          "content | section"
+        ],
+        [
+          53,
+          13,
+          "content | section"
+        ],
+        [
+          54,
+          13,
+          "content | section"
+        ]
       ]
     },
     {
@@ -2683,18 +2783,63 @@
       "language": "cy",
       "intro": "<p>Yn yr adran hon byddwn yn rhoi rhai syniadau i chi ynghylch y pethau y gallech fod eisiau eu hystyried wrth benderfynu beth i&#x27;w astudio ac ymhle. Byddwn hefyd yn eich cyfeirio at wybodaeth a all fod o gymorth.<br/></p><p>Ni fydd yr holl bethau hyn yn bwysig i bawb. Mae&#x27;n syniad da dechrau drwy feddwl am yr hyn sydd bwysicaf i chi.</p>",
       "title": "Sut i ddewis cwrs",
+      "translation_pk": 10,
       "options": [
-        144,
-        57,
-        55,
-        59,
-        61,
-        60,
-        107,
-        62,
-        109,
-        63,
-        110
+        [
+          144,
+          54,
+          "content | flat content"
+        ],
+        [
+          57,
+          13,
+          "content | section"
+        ],
+        [
+          55,
+          13,
+          "content | section"
+        ],
+        [
+          59,
+          13,
+          "content | section"
+        ],
+        [
+          61,
+          13,
+          "content | section"
+        ],
+        [
+          60,
+          13,
+          "content | section"
+        ],
+        [
+          107,
+          13,
+          "content | section"
+        ],
+        [
+          62,
+          13,
+          "content | section"
+        ],
+        [
+          109,
+          13,
+          "content | section"
+        ],
+        [
+          63,
+          13,
+          "content | section"
+        ],
+        [
+          110,
+          13,
+          "content | section"
+        ]
       ]
     },
     {
@@ -2702,8 +2847,13 @@
       "language": "cy",
       "intro": "<p data-block-key=\"5ni1m\">Gallwch gael cymorth i dalu&#x27;r gost o fynd i brifysgol mewn sawl ffordd.</p><p data-block-key=\"f6wbk\">Mae peth o&#x27;r cymorth hwnnw ar gael drwy fenthyciadau y mae&#x27;n rhaid eu had-dalu, ond dim ond ar \u00f4l i chi ddechrau ennill mwy na swm penodol. Mae cymorth hefyd ar gael drwy grantiau nad oes rhaid eu talu&#x27;n \u00f4l.</p><p data-block-key=\"2tz0m\">Daw peth o&#x27;r cyllid oddi wrth y llywodraeth a pheth oddi wrth brifysgolion a cholegau, elusennau neu ffynonellau eraill.</p><p data-block-key=\"05ta1\">Os ydych yn gwneud cais o&#x27;r tu allan i&#x27;r DU, edrychwch ar ein tudalen &#x27;ymgeiswyr rhyngwladol&#x27; i gael <a id=\"210\" linktype=\"page\">gwybodaeth am gyllid myfyrwyr.</a></p><p data-block-key=\"24utp\"></p><embed embedtype=\"media\" url=\"https://www.youtube.com/watch?v=zg5Djc8gCF8\"/><p data-block-key=\"2k97v\"></p>",
       "title": "Sut y byddaf yn talu amdano?",
+      "translation_pk": 41,
       "options": [
-        78
+        [
+          78,
+          13,
+          "content | section"
+        ]
       ]
     },
     {
@@ -2711,9 +2861,18 @@
       "language": "cy",
       "intro": "<p></p><p>Pwrpas Darganfod Prifysgol yw eich helpu i chwilio a chanfod cyrsiau sy\u2019n addas i chi. Mae llu o opsiynau, felly mae\u2019n bwysig ichi wneud eich gwaith ymchwil. Defnyddiwch ein chwiliadur cyrsiau i ganfod a chymharu gwybodaeth a data ar gyfer cyrsiau gradd unigol ledled y DU.</p><p>Mae\u2019r fideos hyn yn dangos ichi sut i ddefnyddio\u2019r cyfoeth o wybodaeth\u00a0 swyddogol am gyrsiau sydd ar gael ar Darganfod Prifysgol.</p><p></p><p></p><h4>Sut i chwilio am gyrsiau:</h4><p></p><p></p><p></p><embed embedtype=\"media\" url=\"https://www.youtube.com/watch?v=ZMJqdQhtO3E\"/><p></p><p></p><p></p><h4>Sut i ddefnyddio tudalen manylion y cwrs:</h4><p></p><embed embedtype=\"media\" url=\"https://youtu.be/1y_uEQ0OlAg\"/><p></p><p></p><p>Cofiwch ystyried ystod o ffactorau wrth ddewis. Y peth pwysicaf yw dewis cwrs sydd yn gweddu i chi.</p><p>Pob lwc gyda\u2019r chwilio!</p>",
       "title": "Sut i ddefnyddio Darganfod Prifysgol",
+      "translation_pk": 135,
       "options": [
-        56,
-        48
+        [
+          56,
+          12,
+          "content | content landing page"
+        ],
+        [
+          48,
+          2,
+          "home | home page"
+        ]
       ]
     },
     {
@@ -2721,11 +2880,28 @@
       "language": "cy",
       "intro": "<p>Mae addysg uwch i bawb. Mae&#x27;r bobl sy&#x27;n dechrau addysg uwch dros 21 oed (a elwir weithiau&#x27;n &#x27;fyfyrwyr aeddfed&#x27;) yn gr\u0175p sy&#x27;n tyfu&#x27;n gyflym, ac mae&#x27;r data&#x27;n dangos mai\u2019r gr\u0175p oedran yma bellach sydd <a href=\"https://www.hesa.ac.uk/data-and-analysis/students/whos-in-he\">i gyfrif am dros draean yr holl fyfyrwyr sy&#x27;n dechrau&#x27;r brifysgol yn y DU</a>.</p><p>Edrychwch ar ein tudalen &#x27;<a href=\"https://discoveruni.gov.uk/cy/uni-me-cy/why-go-uni-cy/\">&#x27;pam mynd i brifysgol?&#x27;</a> i ddysgu mwy am fanteision dychwelyd i addysg uwch.</p><p>Os ydych chi dros 21 oed a bod gennych ddiddordeb mewn dechrau ar eich taith addysg uwch, efallai y bydd gennych chi gwestiynau ynghylch pa fath o gyfleoedd dysgu sydd ar gael, effaith ariannol dechrau&#x27;r brifysgol, neu sut i ganfod amser i astudio o amgylch eich sefyllfa a&#x27;ch ymrwymiadau personol.</p><p>Parhewch i ddarllen am wybodaeth ac adnoddau i&#x27;ch helpu i wneud y penderfyniadau cywir ar eich cyfer chi.</p>",
       "title": "Dros 21 ac yn dechrau'r brifysgol",
+      "translation_pk": 149,
       "options": [
-        158,
-        159,
-        160,
-        161
+        [
+          158,
+          13,
+          "content | section"
+        ],
+        [
+          159,
+          13,
+          "content | section"
+        ],
+        [
+          160,
+          13,
+          "content | section"
+        ],
+        [
+          161,
+          13,
+          "content | section"
+        ]
       ]
     },
     {
@@ -2733,11 +2909,28 @@
       "language": "en",
       "intro": "<p data-block-key=\"dv6zq\">THIS IS TO TEST IF PRE PROD IS WORKING FOR EDITING</p><p data-block-key=\"5geqd\">In this section we give you information that can help you decide if uni is the right choice for you.</p><p data-block-key=\"q8ivj\">You can find out more about what it&#x27;s like and also about different ways to get a higher education qualification.</p>",
       "title": "test 1",
+      "translation_pk": 51,
       "options": [
-        6,
-        7,
-        8,
-        32
+        [
+          6,
+          13,
+          "content | section"
+        ],
+        [
+          7,
+          13,
+          "content | section"
+        ],
+        [
+          8,
+          13,
+          "content | section"
+        ],
+        [
+          32,
+          13,
+          "content | section"
+        ]
       ]
     },
     {
@@ -2745,9 +2938,18 @@
       "language": "en",
       "intro": "<p>Discover Uni is here to help you search and find the right courses for you. There are lots to choose from, so it\u2019s important you do your research.</p><p>On Discover Uni, you can:</p><ol><li>Use our course search to find and save some courses.</li><li>You can then compare them using the <a id=\"95\" linktype=\"page\">course comparison tool</a>. The tool allows you to compare the information of up to seven courses at a time.</li></ol><p>These videos show you how to use the wealth of official information on courses available on Discover Uni. When you\u2019re ready, you can <a id=\"3\" linktype=\"page\">search for courses on our home page</a>.</p><p></p><p></p><h4>How to search for courses:</h4><p></p><p></p><embed embedtype=\"media\" url=\"https://www.youtube.com/watch?v=W7jJ03_UjUg\"/><p></p><p></p><p></p><h4>How to use the course details page:</h4><p></p><embed embedtype=\"media\" url=\"https://youtu.be/1gNGzINxdiI\"/><p></p><p></p><p></p><h4>How to compare courses:</h4><p></p><embed embedtype=\"media\" url=\"https://youtu.be/dBFzCQgTp8I\"/><p></p><p>Remember to consider a range of factors when making your choice. The most important thing is to choose a course that is right for you.</p><p>Good luck with your search!</p>",
       "title": "How to use Discover Uni",
+      "translation_pk": 137,
       "options": [
-        3,
-        10
+        [
+          3,
+          2,
+          "home | home page"
+        ],
+        [
+          10,
+          12,
+          "content | content landing page"
+        ]
       ]
     },
     {
@@ -2755,11 +2957,28 @@
       "language": "en",
       "intro": "<p></p><p>Higher education is for everyone. People entering higher education over the age of 21 (sometimes referred to as adult or \u2018mature students\u2019) are a growing group, with data showing that <a href=\"https://www.hesa.ac.uk/data-and-analysis/students\">this age group is increasingly choosing full time higher education</a> as their next step.</p><p>Take a look at our <a href=\"https://discoveruni.gov.uk/is-uni-for-me/why-go-to-uni/\">why go to uni?</a> page to learn more about the benefits you could gain from higher education.</p><p>Looking for some practical tips, or to know more about why students decide to start uni as a mature learner? See our videos from current mature students on <a href=\"https://www.youtube.com/watch?v=SWdMQIlfdBo\">what motivated them to return to study</a>, and their <a href=\"https://www.youtube.com/watch?v=Ye9mFb4Usg4\">top tips</a>.</p><p>If you are over 21 and interested in starting your higher education journey, you may have many questions about what type of learning is available, the financial impact of starting university, or how to fit your studies around your personal circumstances and commitments.</p><p>Read our pages below for information and resources to help you make the right decisions for you.</p>",
       "title": "Over 21 and starting uni?",
+      "translation_pk": 157,
       "options": [
-        150,
-        151,
-        153,
-        154
+        [
+          150,
+          13,
+          "content | section"
+        ],
+        [
+          151,
+          13,
+          "content | section"
+        ],
+        [
+          153,
+          13,
+          "content | section"
+        ],
+        [
+          154,
+          13,
+          "content | section"
+        ]
       ]
     }
   ]

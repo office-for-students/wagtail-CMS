@@ -1,4 +1,6 @@
 from django.core.management.base import BaseCommand
+from wagtail.core.models import Page
+
 from content.models import ContentLandingPage, Section, FlatContent
 import json
 
@@ -15,16 +17,20 @@ class Command(BaseCommand):
                 language=landing_page.get_language(),
                 intro=landing_page.intro,
                 title=landing_page.title,
+                translation_pk=landing_page.translated_page_id,
             )
             options = []
             for option in landing_page.options:
-                options.append(option.value.pk)
+                p = Page.objects.get(pk=option.value.pk)
+                print(f"{p.pk} p.content_type: {p.content_type}")
+                options.append((p.pk, p.content_type_id, str(p.content_type)))
             l_page["options"] = options
             content_landing_pages.append(l_page)
         pages = []
         for i in Section.objects.all():
             sections = []
             for sect in i.subsections:
+                print(f"section id = {i.pk}")
                 sections.append(
                     dict(
                         sect_pk=sect.id,

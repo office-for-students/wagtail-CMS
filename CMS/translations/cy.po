@@ -1,0 +1,1795 @@
+
+
+msgid "a_level_similar"
+msgstr "Safonau Uwch, Cymwysterau Advanced Higher neu debyg"
+
+msgid "about"
+msgstr "Ynghylch"
+
+msgid "qualification_types"
+msgstr "Math o gymhwyster"
+
+msgid "about_our_data_link"
+msgstr "https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#arolwg_cenedlaethol_o_fyfyrwyr"
+
+msgid "access_course"
+msgstr "Wedi cwblhau cwrs mynediad"
+
+msgid "accommodation"
+msgstr "Costau a gwybodaeth am lety"
+
+msgid "accreditation_description"
+msgstr "Cwrs wedi'i achredu'n broffesiynol yw cwrs sydd wedi'i gymeradwyo neu ei ategu gan un neu fwy o gyrff proffesiynol. Mae hyn oherwydd bod dysg a chyflawniad graddedigion yn bodloni'r meincnodau a'r safonau proffesiynol a osodir gan y corff achredu."
+
+msgid "accreditation_link_label"
+msgstr "Darllen mwy am achrediad proffesiynol"
+
+msgid "accreditation_link_url"
+msgstr "https://discoveruni.gov.uk/cy/how-choose-course-cy/rhagolygon-cyflogaeth-employment-prospects/#achrediad_proffesiynol"
+
+msgid "accreditation_need_to_know"
+msgstr "Yr hyn y mae angen i chi ei wybod am achrediad proffesiynol"
+
+msgid "across_uk"
+msgstr "ar draws y DU"
+
+msgid "add_saved_course"
+msgstr "Ychwanegu cwrs wedi’i gadw"
+
+msgid "add_two_courses"
+msgstr "Ychwanegwch 2 gwrs i ddefnyddio’r offeryn cymharu"
+
+msgid "address"
+msgstr "Cyfeiriad"
+
+msgid "after_1_year_overview_2"
+msgstr "myfyrwyr"
+
+msgid "after_1_year_overview_3"
+msgstr "or rhai y gofynnwyd iddynt"
+
+msgid "after_course_graph_desc"
+msgstr " o fyfyrwyr ar ôl y cwrs sydd yn"
+
+msgid "after_course_graph_title"
+msgstr "Graff yn dangos nifer y myfyrwyr ar ôl y cwrs sydd"
+
+msgid "after_one_year_graph_desc"
+msgstr " o fyfyrwyr flwyddyn ar ôl y cwrs sydd"
+
+msgid "after_one_year_graph_title"
+msgstr "Graff yn dangos nifer y myfyrwyr sydd, flwyddyn ar ôl y cwrs, yn"
+
+msgid "answer_4_questions"
+msgstr "Atebwch 4 cwestiwn er mwyn darganfod cyrsiau sy'n berthnasol i mi"
+
+msgid "any_changes_in_the_course_or_teaching_have_been_communicated_effectively"
+msgstr "Mae unrhyw newidiadau yn y cwrs neu’r dysgu wedi cael eu cyfleu’n effeithiol."
+
+msgid "apply_filters"
+msgstr "Gweithredu hidlyddion"
+
+msgid "assessment_method"
+msgstr "Dull asesu'r cwrs"
+
+msgid "at"
+msgstr "yn:"
+
+msgid "average_earnings_course_overview_1"
+msgstr "Enillion cyfartalog"
+
+msgid "average_earnings_course_overview_2a"
+msgstr "15 mis ar ôl y cwrs"
+
+msgid "average_earnings_course_overview_2b"
+msgstr "3 blynedd ar ôl y cwrs"
+
+msgid "average_earnings_course_overview_3"
+msgstr "Ewch i’r adran Enillion"
+
+msgid "average_earnings_year_range"
+msgstr "Fyfyrwyr a raddiodd yn ystod"
+
+msgid "baccalaureate"
+msgstr "Bagloriaeth"
+
+msgid "back"
+msgstr "Yn ôl"
+
+msgid "back_to_results"
+msgstr "Canlyniadau"
+
+msgid "begin"
+msgstr "Dechrau"
+
+msgid "bookmark_course"
+msgstr "Nodi cwrs"
+
+msgid "bookmark_courses_link"
+msgstr "./cy/rheoli-nodau-tudalen/"
+
+msgid "bookmarked_courses"
+msgstr "cyrsiau a nodwyd"
+
+msgid "break_from_studies"
+msgstr "Yn cymryd egwyl o astudio"
+
+msgid "bronze"
+msgstr "Efydd"
+
+msgid "by_course_location"
+msgstr "Chwilio yn ôl cwrs neu leoliad"
+
+msgid "can_compare_courses"
+msgstr "Cymharu cyrsiau"
+
+msgid "chart_label_explained"
+msgstr "Esboniad ynghylch labeli'r siart"
+
+msgid "clear_all"
+msgstr "Clirio popeth"
+
+msgid "clear_filters"
+msgstr "Clirio'r Hidlau"
+
+msgid "close"
+msgstr "Cau"
+
+msgid "compare"
+msgstr "Cymharu"
+
+msgid "compare_7_courses"
+msgstr "Cymharwch hyd at 7 o gyrsiau"
+
+msgid "compare_course"
+msgstr "Cymharu'r cwrs"
+
+msgid "compare_courses"
+msgstr "Cymharu cyrsiau"
+
+msgid "completed_course"
+msgstr "Wedi cwblhau'r cwrs"
+
+msgid "compulsory"
+msgstr "Gorfodol"
+
+msgid "cookie_message"
+msgstr "Mae’r wefan hon yn defnyddio cwcis i storio gwybodaeth ar eich cyfrifiadur."
+
+msgid "cookie_more"
+msgstr "Hoffwn wybod mwy"
+
+msgid "cookie_ok"
+msgstr "Rwy’n fodlon â’r cwcis"
+
+msgid "copyright"
+msgstr "Hawlfraint 2020. Cedwir Pob Hawl"
+
+msgid "costs_and_support"
+msgstr "Costau a chymorth"
+
+msgid "countries"
+msgstr "Gwledydd"
+
+msgid "course"
+msgstr "cyrsiau"
+
+msgid "course_added"
+msgstr "cwrs wedi’i ychwanegu at y "
+
+msgid "course_comparison_link"
+msgstr "./cy/cymharu-cyrsiau/"
+
+msgid "course_cost"
+msgstr "Costau'r cwrs"
+
+msgid "course_details"
+msgstr "Manylion y cwrs"
+
+msgid "course_details_joint_overview_1"
+msgstr "Beth y mae angen i chi ei wybod am y cwrs yma"
+
+msgid "course_details_joint_overview_2"
+msgstr "Mae’r cwrs yma’n cynnwys gwybodaeth a data ar gyfer mwy nag un pwnc. Pwrpas y llabedau isod yw eich helpu i weld pa bwnc y mae’r data yn berthnasol iddo"
+
+msgid "course_details_joint_overview_3"
+msgstr "Darllen mwy am gyrsiau sy’n cynnwys amryw o bynciau"
+
+msgid "course_details_joint_overview_4"
+msgstr "https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#data_a_gasglwyd_gan_brifysgolion_a_cholegau_ar_fyfyrwyr_unigol"
+
+msgid "course_finder"
+msgstr "Cael Hyd i Gwrs"
+
+msgid "course_length_not_available"
+msgstr "Nid yw hyd y cwrs ar gael"
+
+msgid "course_level_msg"
+msgstr "Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill"
+
+msgid "course_name"
+msgstr "Enw'r cwrs"
+
+msgid "course_name_search_box"
+msgstr "Blwch chwilio enw’r cwrs"
+
+msgid "course_page"
+msgstr "Tudalen y cwrs"
+
+msgid "course_removed"
+msgstr "Cwrs wedi’i ddileu o'r "
+
+msgid "course_saved"
+msgstr "Cwrs wedi’i gadw"
+
+msgid "course_search"
+msgstr "Chwilio am Gwrs "
+
+msgid "course_search_form_inputs"
+msgstr "Mewnbynnau ffurflen chwilio am gwrs"
+
+msgid "course_too_many"
+msgstr "yw'r nifer uchaf o nodau tudalen y gallwch eu hychwanegu"
+
+msgid "course_wizard"
+msgstr "Dewin Cwrs"
+
+msgid "course_wizard_start_now"
+msgstr "Dechrau Nawr"
+
+msgid "course_wizard_start_now_url"
+msgstr "/cy/search-landing-cy/course-finder-choose-country-cy/"
+
+msgid "courses"
+msgstr "cwrs/cyrsiau"
+
+msgid "courses_added"
+msgstr "cyrsiau wedi’u hychwanegu at y "
+
+msgid "courses_selected"
+msgstr "cwrs wedi’u dewis"
+
+msgid "courses_to_view"
+msgstr "i weld cyrsiau a gadwyd ochr wrth ochr"
+
+msgid "covid_19_info"
+msgstr "Gwybodaeth diweddaraf Coronafeirws (COVID-19)"
+
+msgid "data_for"
+msgstr "Data ar gyfer"
+
+msgid "data_from"
+msgstr "Data gan"
+
+msgid "data_from_html"
+msgstr "<p class='data-from'>Data gan</p>"
+
+msgid "data_from_html_average_earnings_year_range"
+msgstr "<div class=\"d-inline d-md-none\"><i class=\"fas fa-user-alt \"></i></div><div id=\"sample-size-text\" class=\"d-none d-md-inline\">Data o</div>"
+
+msgid "data_ind_stud_coll_dir"
+msgstr "Data ar gyfer myfyrwyr unigol a gasglwyd yn uniongyrchol o brifysgolion a cholegau"
+
+msgid "default_region"
+msgstr "y DU"
+
+msgid "degree"
+msgstr "Gradd"
+
+msgid "did_not_participate"
+msgstr "Heb gymryd rhan"
+
+msgid "disclaimer"
+msgstr "Mae enwau'r Prifysgolion fel y'u darperir gan Gofrestr y DU o Ddarparwyr Dysgu. Os nad yw'r enw Cymraeg yn bresennol, chwiliwch amdano gan ddefnyddio'i enw Saesneg."
+
+msgid "distance"
+msgstr "Pellter"
+
+msgid "distance_learning"
+msgstr "Dysgu o bell"
+
+msgid "distance_learning_values"
+msgstr "Dysgu o bell"
+
+msgid "course_is_only_available_through_distance_learning"
+msgstr "Course is only available through distance learning"
+
+msgid "course_is_optionally_available_through_distance_learning"
+msgstr "Course is optionally available through distance learning"
+
+msgid "course_is_available_other_than_by_distance_learning"
+msgstr "Ddim ar gael"
+
+msgid "doing_further_study"
+msgstr "Yn astudio ymhellach"
+
+msgid "dont_mind"
+msgstr "Does dim ots gen i"
+
+msgid "dont_narrow"
+msgstr "peidio cyfyngu'r chwiliad"
+
+msgid "employment_course_overview_1"
+msgstr "Cyflogaeth"
+
+msgid "employment_course_overview_2"
+msgstr "yn symud ymlaen i weithio ac/neu astudio o fewn 15 mis ar ôl y cwrs"
+
+msgid "employment_course_overview_3"
+msgstr "Ewch i’r adran Cyflogaeth"
+
+msgid "employment_details"
+msgstr "Gwybodaeth am gyflogaeth"
+
+msgid "employment_type_unknown"
+msgstr "Gyflogir ar ôl gorffen y cwrs ond nad ydym yn gwybod pa fath o swydd sydd ganddynt"
+
+msgid "england"
+msgstr "Lloegr"
+
+msgid "enhanced_degree"
+msgstr "Lloegr"
+
+msgid "enter_3_characters"
+msgstr "Rhowch 3 nod o leiaf er mwyn chwilio"
+
+msgid "enter_postcode"
+msgstr "Nodwch y cod post"
+
+msgid "entrance_data_need_to_know"
+msgstr "Yr hyn y mae angen ichi wybod am ddata mynediad"
+
+msgid "entrance_data_quals_students_had"
+msgstr "Dyma'r cymwysterau a oedd gan fyfyrwyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon"
+
+msgid "entrance_data_read_more"
+msgstr "Darllen mwy am ddata mynediad"
+
+msgid "entrance_data_read_more_url"
+msgstr "https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#data_a_gasglwyd_gan_brifysgolion_a_cholegau_ar_fyfyrwyr_unigol"
+
+msgid "entry_graph_desc"
+msgstr " Nifer y myfyrwyr a ddechreuodd y cwrs gyda"
+
+msgid "entry_graph_title"
+msgstr "Graff yn dangos nifer y myfyrwyr sy’n dechrau’r cwrs gyda "
+
+msgid "entry_overview_2"
+msgstr "myfyrwyr"
+
+msgid "entry_overview_3"
+msgstr "or rhai y gofynnwyd iddynt"
+
+msgid "facebook_link"
+msgstr "Dolen Facebook"
+
+msgid "feedback_button"
+msgstr "adborth"
+
+msgid "feedback_error"
+msgstr "Mae'n ddrwg gennym, aeth rhywbeth o'i le wrth ichi roi adborth. Rhowch gynnig arall ymhen ychydig."
+
+msgid "feedback_form"
+msgstr "Fersiwn beta yw’r wefan hon. Rydym yn croesawu eich "
+
+msgid "feedback_on_my_work_has_been_timely"
+msgstr "Mae'r adborth ar fy ngwaith i wedi bod yn amserol."
+
+msgid "feedback_thanks"
+msgstr "Diolch am eich adborth"
+
+msgid "filter"
+msgstr "Hidlo"
+
+msgid "filter_by"
+msgstr "Hidlo gan"
+
+msgid "filter_not_applicable"
+msgstr "Nid yw'r hidlydd hwn yn berthnasol i gyrsiau dysgu o bell."
+
+msgid "filter_sort_by_subject_add_more_filters"
+msgstr "Defnyddiwch fwy o hidlwyr i'w didoli yn ôl pwnc"
+
+msgid "filters"
+msgstr "Hidlau"
+
+msgid "final_year_students"
+msgstr "Gofynnir i bob myfyriwr blwyddyn olaf gwblhau'r Arolwg Cenedlaethol o Fyfyrwyr."
+
+msgid "financial_support_details"
+msgstr "Cymorth ariannol"
+
+msgid "find_out_more"
+msgstr "Mwy o wybodaeth"
+
+msgid "first_degree"
+msgstr "Gradd Cyntaf (BA, BSc, Gradd Meistr Integredig)"
+
+msgid "foundation_course"
+msgstr "Cwrs sylfaen"
+
+msgid "foundation_degree"
+msgstr "Cwrs sylfaen"
+
+msgid "foundation_year"
+msgstr "Blwyddyn sylfaen"
+
+msgid "full_time"
+msgstr "Llawn-amser"
+
+msgid "gold"
+msgstr "Aur"
+
+msgid "good_advice_was_available_when_i_needed_to_make_study_choices_on_my_course"
+msgstr "Roedd cyngor da ar gael pan oedd arnaf i ei angen er mwyn gwneud dewisiadau astudio ar fy nghwrs."
+
+msgid "guidance_comparing"
+msgstr "Canllawiau ar gymharu cyrsiau"
+
+msgid "guidance_text"
+msgstr "Mae'r data hyn ar gyrsiau'n rhoi cipolwg o brofiadau ar adeg benodol. Gallai eich profiad chi fod yn wahanol.  Daw rhywfaint o'r data gan fyfyrwyr a gymerodd ran yn yr arolwg yn ystod y pandemig. <a href='/cy/ynglŷn-ân-data-about-our-data-cy/canllawiau-ar-gyfer-cymharu-cyrsiau/' target='_blank' class='blue-text'>Mae rhagor o wybodaeth</a> ar gael ynghylch sut i ddefnyddio'r data hyn wrth benderfynu beth i'w astudio ac ymhle."
+
+msgid "guidance_title"
+msgstr "Beth y mae angen ichi ei ystyried wrth gymharu cyrsiau"
+
+msgid "health_and_social_services_managers"
+msgstr "Rheolwyr Iechyd a gwasanaethau cymdeithasol"
+
+msgid "highly_skilled"
+msgstr "Mewn swydd lle mae angen lefel uchel o sgiliau"
+
+msgid "hnc"
+msgstr "Mewn swydd lle mae angen lefel uchel o sgiliau"
+
+msgid "hnd"
+msgstr "Mewn swydd lle mae angen lefel uchel o sgiliau"
+
+msgid "home_page_video"
+msgstr "Fideo hafan"
+
+msgid "home_page_video_link"
+msgstr "https://www.youtube.com/embed/ZMJqdQhtO3E"
+
+msgid "how_improve"
+msgstr "Dywedwch wrthym am eich profiad"
+
+msgid "how_to_search_for_course"
+msgstr "Sut i chwilio am gyrsiau"
+
+msgid "how_useful"
+msgstr "A oedd y dudalen hon yn ddefnyddiol i chi?"
+
+msgid "i_feel_part_of_a_community_of_staff_and_students"
+msgstr "Rydw i'n teimlo'n rhan o gymuned o staff a myfyrwyr."
+
+msgid "i_have_been_able_to_access_course_specific_resources_eg_equipment_facilities_software_collections_when_i_needed_to"
+msgstr "Rydw i wedi gallu cael mynediad i adnoddau penodol i fy nghwrs (e.e. offer, cyfleusterau, meddalwedd, casgliadau) fel sydd angen."
+
+msgid "i_have_been_able_to_contact_staff_when_i_needed_to"
+msgstr "Rydw i wedi gallu cysylltu â’r staff pan oedd angen."
+
+msgid "i_have_had_the_right_opportunities_to_provide_feedback_on_my_course"
+msgstr "Rydw i wedi cael cyfleoedd priodol i roi adborth ar fy nghwrs."
+
+msgid "i_have_had_the_right_opportunities_to_work_with_other_students_as_part_of_my_course"
+msgstr "Rydw i wedi cael cyfleoedd priodol i weithio gyda myfyrwyr eraill fel rhan o fy nghwrs."
+
+msgid "i_have_received_helpful_comments_on_my_work"
+msgstr "Rydw i wedi derbyn sylwadau defnyddiol ar fy ngwaith."
+
+msgid "i_have_received_sufficient_advice_and_guidance_in_relation_to_my_course"
+msgstr "Rydw i wedi derbyn digon o gyngor ac arweiniad mewn perthynas â fy nghwrs."
+
+msgid "i_received_appropriate_supervision_on_placements"
+msgstr "Fe dderbyniais oruchwyliaeth briodol yn ystod fy lleoliad gwaith"
+
+msgid "i_received_sufficient_preparatory_information_prior_to_my_placements"
+msgstr "Fe dderbyniais wybodaeth ddigonol i fy mharatoi ar gyfer lleoliad(au) gwaith"
+
+msgid "i_was_allocated_placements_suitable_for_my_course"
+msgstr "Pennwyd lleoliad(au) gwaith addas ar gyfer fy nghwrs"
+
+msgid "i_was_given_opportunities_to_meet_my_required_practice_learning_outcomescompetences"
+msgstr "Cefais gyfleoedd i ddiwallu fy nghanlyniadau / medrau dysgu tra 'roeddwn ar leoliad gwaith"
+
+msgid "important_you_need_to_check_the_details_of_any_courses_you_are_considering_or_applying_for_on_the_university_or_college_website"
+msgstr "Pwysig: Mae angen i chi wirio manylion unrhyw cwrs yr ydych yn ystyried neu ceisio amdani ar wefan y prifysgol neu coleg. "
+
+msgid "info_advice"
+msgstr "Gwybodaeth a chyngor"
+
+msgid "info_and_advice"
+msgstr "Gwybodaeth a chyngor"
+
+msgid "info_and_advice_url"
+msgstr "/cy/how-choose-course-cy/"
+
+msgid "info_n_advice"
+msgstr "Gwybodaeth a chyngor"
+
+msgid "information_advice"
+msgstr "Ewch i <strong class=\"blue-text\">Gwybodaeth a chyngor</strong>"
+
+msgid "insta_link"
+msgstr "Dolen Instagram"
+
+msgid "institution"
+msgstr "Sefydliad"
+
+msgid "this_institution"
+msgstr "y sefydliad hwn"
+
+msgid "institution_az"
+msgstr "Sefydliad A-Z"
+
+msgid "institution_name"
+msgstr "Enw'r sefydliad"
+
+msgid "institution_search_input"
+msgstr "Mewnbwn chwilio sefydliad"
+
+msgid "internal_error"
+msgstr "Roedd gwall wrth lwytho’r dudalen"
+
+msgid "it_is_clear_how_students_feedback_on_the_course_has_been_acted_on"
+msgstr "Mae'n glir sut mae adborth y myfyrwyr ar y cwrs wedi cael sylw a bod pethau wedi cael eu rhoi ar waith."
+
+msgid "learning"
+msgstr "Dysgu"
+
+msgid "learning_and_teaching_methods"
+msgstr "Dull addysgu'r cwrs"
+
+msgid "left_lower_qualification"
+msgstr "Wedi gadael gyda chymhwyster is"
+
+msgid "left_no_qualification"
+msgstr "Wedi gadael heb gymhwyster"
+
+msgid "length"
+msgstr "Hyd"
+
+msgid "location"
+msgstr "Lleoliad"
+
+msgid "locations"
+msgstr "Lleoliadau"
+
+msgid "managers_and_proprieters_in_agriculture_and_services"
+msgstr "Rheolwyr a pherchnogion mewn amaethyddiaeth a gwasanaethau amaethyddol"
+
+msgid "many_courses_due_to_start_in_autumn_2020_are_being_changed_to_online_delivery_in_whole_or_part_start_dates_and_course_contentstructures_may_also_be_changing"
+msgstr "Mae nifer o gyrsiau sydd fod dechrau yn ystod hydref 2020 yn cael eu newid i gyrsiau ar-lein naill ai’n gyfan gwbl neu’n rhan-amser, gall bod newidiau hefyd i ddiwrnodau cychwyn a cynnwys/strwythyr cyrsiau."
+
+msgid "marking_and_assessment_has_been_fair"
+msgstr "Mae'r marcio a'r asesu wedi bod yn deg."
+
+msgid "miles"
+msgstr "milltiroedd"
+
+msgid "more_pages_after"
+msgstr "Mwy o dudalennau ar gael ar ôl"
+
+msgid "more_pages_before"
+msgstr "Mwy o dudalennau ar gael cyn "
+
+msgid "my_contribution_during_placements_as_part_of_a_clinical_team_was_valued"
+msgstr "Gosodwyd gwerth ar fy nghyfraniad fel rhan o'r tîm clinigol yn ystod fy lleoliad(au) gwaith"
+
+msgid "my_course_has_challenged_me_to_achieve_my_best_work"
+msgstr "Mae fy nghwrs i wedi fy herio i i wneud fy ngwaith gorau."
+
+msgid "my_course_has_provided_me_with_opportunities_to_apply_what_i_have_learnt"
+msgstr "Mae fy nghwrs i wedi rhoi cyfleoedd i mi ddefnyddio'r hyn rydw i wedi'i ddysgu."
+
+msgid "my_course_has_provided_me_with_opportunities_to_bring_information_and_ideas_together_from_different_topics"
+msgstr "Mae fy nghwrs i wedi rhoi cyfleoedd i mi ddod â gwybodaeth a syniadau at ei gilydd o wahanol bynciau."
+
+msgid "my_course_has_provided_me_with_opportunities_to_explore_ideas_or_concepts_in_depth"
+msgstr "Mae fy nghwrs i wedi rhoi cyfleoedd i mi astudio syniadau neu gysyniadau newydd mewn manylder."
+
+msgid "my_practice_supervisors_understood_how_my_placements_related_to_the_broader_requirements_of_my_course"
+msgstr "Roedd fy ngoruchwyliwr yn ystod fy nghyfnod ymarfer yn deall sut 'roedd fy lleoliad(au) gwaith yn perthyn i ofynion ehangach fy nghwrs"
+
+msgid "n_courses_bookmarked_pt_1"
+msgstr "Mae gennych"
+
+msgid "n_courses_bookmarked_pt_2"
+msgstr "o gyrsiau wedi'u nodi"
+
+msgid "narrow_location"
+msgstr "Hidlo yn ôl lleoliad"
+
+msgid "national_student_survey"
+msgstr "ACF (Arolwg Cenedlaethol o Fyfyrwyr)"
+
+msgid "near_your_home"
+msgstr "agos at adref"
+
+msgid "need_help_choosing"
+msgstr "Angen cymorth i ddewis?"
+
+msgid "new_search"
+msgstr "Chwiliad newydd"
+
+msgid "next"
+msgstr "Nesaf"
+
+msgid "next_page"
+msgstr "Y dudalen nesaf"
+
+msgid "no_courses_found"
+msgstr "Ni chafwyd hyd i unrhyw gyrsiau - canslwch neu newidiwch rai hidlyddion"
+
+msgid "no_courses_saved"
+msgstr "Nid oes unrhyw gyrsiau wedi’u cadw. I gymharu cyrsiau, chwiliwch am gyrsiau sydd o ddiddordeb ichi a’u cadw."
+
+msgid "no_courses_selected"
+msgstr "Nid ydych wedi dewis unrhyw gyrsiau"
+
+msgid "no_qualifications"
+msgstr "Dim cymwysterau blaenorol / cymwysterau anhysbys"
+
+msgid "no_results_found"
+msgstr "Ni chafwyd canlyniad."
+
+msgid "none_recorded"
+msgstr "Ni chofnodwyd yr un"
+
+msgid "northern_ireland"
+msgstr "Gogledd Iwerddon"
+
+msgid "not_available"
+msgstr "Ddim ar gael"
+
+msgid "not_enough"
+msgstr "Ychwanegwch un arall er mwyn cymharu cyrsiau"
+
+msgid "not_found_looking"
+msgstr "Heb ddarganfod yr hyn yr oedd ei angen arnoch?"
+
+msgid "not_professional_or_managerial"
+msgstr "Ddim mewn swydd broffesiynol neu reoli"
+
+msgid "now_working"
+msgstr "Yn gweithio bellach"
+
+msgid "number_of_results"
+msgstr "Ceir <strong>%s</strong> cwrs gan <strong>%s</strong> darparydd"
+
+msgid "number_options_selected"
+msgstr "Dewiswyd {} opsiwn"
+
+msgid "number_selected_institutions"
+msgstr "Dewiswyd {} sefydliad"
+
+msgid "of_those_asked"
+msgstr "or rhai y gofynnwyd iddynt"
+
+msgid "on_campus"
+msgstr "Ar y campws"
+
+msgid "optional"
+msgstr "Dewisol"
+
+msgid "other"
+msgstr "Arall "
+
+msgid "other_higher_qualifications"
+msgstr "Cymhwyster addysg uwch gwahanol"
+
+msgid "other_undergraduate"
+msgstr "Isradd arall (e.e. tystysgrif, diploma, gradd sylfaen)"
+
+msgid "other_work"
+msgstr "Mewn math arall o swydd"
+
+msgid "overall_i_am_satisfied_with_the_quality_of_the_course"
+msgstr "Ar y cyfan, rydw i’n fodlon gydag ansawdd y cwrs"
+
+msgid "page_not_found"
+msgstr "Nid yw’r cwrs hwn neu’r dudalen hon ar gael"
+
+msgid "part_time"
+msgstr "Rhan-amser"
+
+msgid "people"
+msgstr "o fyfyrwyr"
+
+msgid "placement_year"
+msgstr "Blwyddyn ar leoliad"
+
+msgid "postcode"
+msgstr "Cod post"
+
+msgid "previous_page"
+msgstr "Y dudalen flaenorol"
+
+msgid "professional_accreditation"
+msgstr "Achrediad professiyno"
+
+msgid "professional_accreditation_no_data"
+msgstr "Nid oes unrhyw achrediadau proffesiynol wedi'u cofnodi"
+
+msgid "professional_or_managerial"
+msgstr "Mewn swydd broffesiynol neu reoli"
+
+msgid "prov_pc_text_template_go"
+msgstr "<div><p>Mae {}% o raddedigion {} yn {} sy’n preswylio yn y DU wedi'u cyflogi yn {}.</p></div>"
+
+msgid "prov_pc_text_template_leo"
+msgstr "<div><p>Mae {}% o raddedigion {} yn {} sy’n preswylio yn y DU wedi'u lleoli yn {}.</p></div>"
+
+msgid "provisional"
+msgstr "Dros dro"
+
+msgid "qualification_type"
+msgstr "Math o gymhwyster"
+
+msgid "regions"
+msgstr "Rhanbarth(au)"
+
+msgid "remove_course"
+msgstr "Dileu cwrs"
+
+msgid "remove_filters"
+msgstr "Dileu yr holl hidlwyr"
+
+msgid "remove_others"
+msgstr "I ddileu cyrsiau, ewch i'r "
+
+msgid "respondents"
+msgstr "o myfyrwyr"
+
+msgid "results"
+msgstr "Canlyniadau"
+
+msgid "sandwich_year"
+msgstr "Blwyddyn ryngosod"
+
+msgid "save_courses"
+msgstr "Cadw cyrsiau"
+
+msgid "saved"
+msgstr "Wedi’u cadw"
+
+msgid "saved_courses"
+msgstr "Cyrsiau wedi’u cadw"
+
+msgid "saved_courses_lower"
+msgstr "gyrsiau wedi’u cadw"
+
+msgid "scotland"
+msgstr "Yr Alban"
+
+msgid "scroll_to_the_right"
+msgstr "Sgroliwch i’r dde"
+
+msgid "search"
+msgstr "Chwilio"
+
+msgid "search_again"
+msgstr "Chwilio eto"
+
+msgid "search_by_course_or_institution"
+msgstr "Chwilio yn ôl enw cwrs ac/neu sefydliad"
+
+msgid "search_guidelines"
+msgstr "Chwiliwch am gymorth yn ein canllawiau i wneud y penderfyniad gorau i chi."
+
+msgid "search_institutions"
+msgstr "Chwilio am sefydliadau"
+
+msgid "search_n_compare"
+msgstr "Chwilio a chymharu"
+
+msgid "search_our_guidance"
+msgstr "Chwiliwch yn ein canllawiau am gymorth i wneud y penderfyniad gorau i chi."
+
+msgid "search_results"
+msgstr "Canlyniadau'r chwiliad"
+
+msgid "search_within"
+msgstr "Chwilio yn "
+
+msgid "see_courses"
+msgstr "Gweld y cyrsiau"
+
+msgid "select_all"
+msgstr "Dewis popeth sy'n berthnasol"
+
+msgid "select_all_institutions"
+msgstr "Dewis pob sefydliad"
+
+msgid "select_all_results"
+msgstr "Dewis pob canlyniad"
+
+msgid "select_at_least_2"
+msgstr "Dewiswch o leiaf 2 gwrs i’w cymharu"
+
+msgid "select_course"
+msgstr "Dewis cwrs"
+
+msgid "select_subject"
+msgstr "Dewis Pwnc"
+
+msgid "select_up_to_7"
+msgstr "Dewiswch hyd at 7 cwrs i’w cymharu"
+
+msgid "selected_1"
+msgstr "Dewiswyd"
+
+msgid "selected_2"
+msgstr "o"
+
+msgid "send_message"
+msgstr "Anfon neges"
+
+msgid "show_all"
+msgstr "Dangos popeth"
+
+msgid "show_data_from"
+msgstr "Dangos data o"
+
+msgid "show_filters"
+msgstr "Dangoswch yr Hidlau"
+
+msgid "show_less"
+msgstr "Dangos llai"
+
+msgid "show_more"
+msgstr "Dangos mwy"
+
+msgid "silver"
+msgstr "Arian"
+
+msgid "similar_courses_elsewhere"
+msgstr "Gweld cyrsiau tebyg mewn prifysgolion  <strong>eraill</strong> "
+
+msgid "similar_courses_here"
+msgstr "Gweld cyrsiau tebyg yn y brifysgol <strong>hon</strong> "
+
+msgid "site_logo"
+msgstr "<strong>Darganfod</strong> y Brifysgol"
+
+msgid "skip"
+msgstr "anwybyddu"
+
+msgid "sort_by"
+msgstr "Didoli yn ôl:"
+
+msgid "source"
+msgstr "Ffynhonnell"
+
+msgid "specific_town_city"
+msgstr "i dref/ddinas benodol"
+
+msgid "specific_uni"
+msgstr "i brifysgol benodol"
+
+msgid "staff_are_good_at_explaining_things"
+msgstr "Mae’r staff yn esbonio pethau’n dda."
+
+msgid "staff_have_made_the_subject_interesting"
+msgstr "Mae’r staff wedi gwneud y pwnc yn ddiddorol."
+
+msgid "staff_value_students_views_and_opinions_about_the_course"
+msgstr "Mae'r staff yn gwerthfawrogi safbwyntiau a barn y myfyrwyr am y cwrs."
+
+msgid "start"
+msgstr "Dechrau"
+
+msgid "still_on_course"
+msgstr "Yn dal i astudio"
+
+msgid "student_satisfaction_course_overview_1"
+msgstr "Canlyniadau’r Arolwg Cenedlaethol o Fyfyrwyr"
+
+msgid "student_satisfaction"
+msgstr "Bodlonrwydd Myfyrwyr"
+
+msgid "of_final_year"
+msgstr "o fyfyrwyr"
+
+msgid "students_at"
+msgstr "blwyddyn olaf"
+
+msgid "satisfied_with_the_course"
+msgstr "yn cytuno eu bod yn fodlon ar ansawdd y cwrs ar y cyfan."
+
+msgid "student_satisfaction_course_overview_3"
+msgstr "Ewch i’r adran Bodlonrwydd Myfyrwyr"
+
+msgid "student_unions"
+msgstr "Undebau Myfyrwyr"
+
+msgid "study_abroad_year"
+msgstr "Blwyddyn dramor"
+
+msgid "study_and_working"
+msgstr "Gweithio a astudio"
+
+msgid "study_mode"
+msgstr "Modd astudio"
+
+msgid "subject"
+msgstr "Pwnc "
+
+msgid "subject_area"
+msgstr "Maes pwnc"
+
+msgid "subject_at_least_two"
+msgstr "Pwnc (dewiswch o ddau neu fwy o'r blychau isod, os gwelwch yn dda)"
+
+msgid "subject_select_text"
+msgstr "Mae gan rai cyrsiau a ddewisir ddata o fwy nag un pwnc. Dewiswch y pwnc rydych am weld data ohono"
+
+msgid "summary_med_sal_text_1"
+msgstr "ar ôl y cwrs i raddedigion"
+
+msgid "summary_med_sal_text_2"
+msgstr "yn"
+
+msgid "tariff_graph_desc"
+msgstr " Nifer y myfyrwyr a ddechreuodd y cwrs gyda phwyntiau tariff yn yr ystod"
+
+msgid "tariff_graph_title"
+msgstr "Graff yn dangos nifer y myfyrwyr yn dechrau’r cwrs gyda phwyntiau tariff yn yr ystod"
+
+msgid "telephone"
+msgstr "Ffôn"
+
+msgid "the_course_is_intellectually_stimulating"
+msgstr "Mae’r cwrs yn ysgogi’r deal."
+
+msgid "the_course_is_well_organised_and_running_smoothly"
+msgstr "Mae’r cwrs wedi ei drefnu’n dda ac yn rhedeg yn esmwyth."
+
+msgid "the_criteria_used_in_marking_have_been_clear_in_advance"
+msgstr "Mae’r meini prawf ar gyfer marcio wedi cael eu hegluro ymlaen llaw."
+
+msgid "the_it_resources_and_facilities_provided_have_supported_my_learning_well"
+msgstr "Mae'r adnoddau a'r cyfleusterau TG sydd wedi'u darparu wedi cefnogi fy nysgu yn dda."
+
+msgid "the_library_resources_eg_books_online_services_and_learning_spaces_have_supported_my_learning_well"
+msgstr "Mae adnoddau'r llyfrgell (e.e. llyfrau, gwasanaethau ar-lein a gofod dysgu) wedi cefnogi fy nysgu yn dda."
+
+msgid "the_students_union_association_or_guild_effectively_represents_students_academic_interests"
+msgstr "Mae undeb (cymdeithas neu urdd) y myfyrwyr yn cynrychioli buddiannau academaidd y myfyrwyr."
+
+msgid "the_timetable_works_efficiently_for_me"
+msgstr "Mae'r amserlen yn gweithio'n effeithlon i mi."
+
+msgid "try_course_wizard"
+msgstr "Rhowch gynnig ar ein dewin cwrs er mwyn culhau eich chwiliad"
+
+msgid "twitter_link"
+msgstr "Dolen Twitter"
+
+msgid "typical_range"
+msgstr "Ystod arfero"
+
+msgid "under_courses_uk"
+msgstr "cyrsiau israddedig yn y DU"
+
+msgid "unemp_not_work_since_grad"
+msgstr "Yn ddi-waith - heb gael gwaith ers graddio"
+
+msgid "unemp_prev_emp_since_grad"
+msgstr "Yn ddi-waith - yn gweithio neun astudio cyn hynny"
+
+msgid "unemployed"
+msgstr "Yn ddi-waith"
+
+msgid "uni_and_college"
+msgstr "Pob prifysgol a choleg"
+
+msgid "uni_college"
+msgstr "Brifysgolion / cholegau"
+
+msgid "unknown"
+msgstr "Anhysbys"
+
+msgid "unknown_job_type"
+msgstr "Mewn swydd anhysbys"
+
+msgid "unknown_work"
+msgstr "Mewn swydd anhysbys"
+
+msgid "video_on_topic_content"
+msgstr "2 funud o hyd"
+
+msgid "video_on_topic_title"
+msgstr "Fideo ar bwnc perthnasol"
+
+msgid "view_all_courses"
+msgstr "Gweld pob cwrs y brifysgol hon"
+
+msgid "view_your_courses"
+msgstr "Gweld eich cyrsiau"
+
+msgid "wales"
+msgstr "Cymru"
+
+msgid "website"
+msgstr "Gwefan"
+
+msgid "with_abroad"
+msgstr "Gyda blwyddyn dramor"
+
+msgid "with_foundation"
+msgstr "Gyda'r flwyddyn sylfaen"
+
+msgid "with_placement"
+msgstr "Gyda blwyddyn leoliad"
+
+msgid "withdrawn"
+msgstr "Wedi galw’n ôl"
+
+msgid "within_miles"
+msgstr "fewn {} milltir"
+
+msgid "without_abroad"
+msgstr "Heb flwyddyn dramor"
+
+msgid "without_foundation"
+msgstr "Heb flwyddyn sylfaen"
+
+msgid "without_placement"
+msgstr "Heb flwyddyn leoliad"
+
+msgid "work_placement_year"
+msgstr "Blwyddyn lleoliad gwaith"
+
+msgid "year"
+msgstr "blynedd"
+
+msgid "year_abroad"
+msgstr "Blwyddyn dramor"
+
+msgid "year_course"
+msgstr "blwyddyn"
+
+msgid "years"
+msgstr "mlynedd"
+
+msgid "yes"
+msgstr "Ydy"
+
+msgid "you_can"
+msgstr "Gallwch "
+
+msgid "view_saved_courses"
+msgstr "Gweld cyrsiau wedi’u cadw"
+
+msgid "youre_interested_in"
+msgstr "sydd o ddiddordeb iti"
+
+msgid "link_to_website"
+msgstr "Dolen i'r gwefan"
+
+msgid "data_need_to_know"
+msgstr "Beth sydd angen i chi ei wybod ynglŷn â'r data"
+
+msgid "data_need_to_know_2"
+msgstr "Beth sydd angen i chi ei wybod ynglŷn â’r data hwn"
+
+msgid "employment_need_to_know"
+msgstr "Beth sydd angen i chi ei wybod ynglŷn â data cyflogaeth"
+
+msgid "survey_need_to_know"
+msgstr "Beth sydd angen i chi ei wybod ynglŷn â data'r arolwg o fyfyrwyr"
+
+msgid "earnings_need_to_know"
+msgstr "Beth sydd angen i chi ei wybod ynglŷn â data enillion"
+
+msgid "student_satisfaction_info_box"
+msgstr "<li>Mae'r data gan fyfyrwyr a arolygwyd yn ystod y pandemig COVID-19.  </li><li>Effeithiwyd ar rai cyrsiau a darparwyr yn fwy nag eraill.</li><li>Mae'r data yn dweud wrthych am brofiad myfyrwyr diweddar, ond gallai eich profiad chi fod yn wahanol.</li>"
+
+msgid "earnings_info_box"
+msgstr "<li>Mae rhywfaint o ddata gan raddedigion a arolygwyd yn ystod y pandemig COVID-19.</li><li>Mae marchnadoedd llafur yn newid.</li><li>Mae cyflogau yn amrywio ar draws rhanbarthau yn y DU. </li><li>Mae yna lawer o ffactorau sy'n effeithio ar enillion graddedigion.</li>"
+
+msgid "graduate_perceptions_info_box"
+msgstr "<li>Mae rhywfaint o ddata gan raddedigion a arolygwyd yn ystod y pandemig COVID-19.</li>"
+
+msgid "employment_info_box"
+msgstr "<li>Mae rhywfaint o ddata gan raddedigion a arolygwyd yn ystod y pandemig COVID-19.</li><li>Mae marchnadoedd llafur yn amrywio ac yn newid dros amser.</li><li>Mae cyfleoedd cyflogaeth a swyddi yn amrywio ar draws rhanbarthau yn y DU.</li>"
+
+msgid "survey_info_box"
+msgstr "Mae rhywfaint o'r data gan fyfyrwyr a arolygwyd yn ystod y pandemig COVID-19, a allai fod wedi cael effaith ar eu hymatebion."
+
+msgid "discover_uni"
+msgstr "Darganfod Prifysgol"
+
+msgid "leo_banner"
+msgstr "mae’r data ‘Enillion ar ôl y cwrs’ ar gyfer 3 a 5 mlynedd ar ôl graddio wedi cael ei ddiweddaru ym mis Tachwedd 2022 gan bod data newydd wedi cael ei gyhoeddi."
+
+msgid "please_note"
+msgstr "Sylwer: "
+
+msgid "read_more"
+msgstr "Darllenwch fwy"
+
+msgid "popup_heading"
+msgstr "Croeso i Darganfod Prifysgol"
+
+msgid "popup_subheading"
+msgstr "Ffynhonnell wybodaeth swyddogol am addysg uwch yw Darganfod Prifysgol."
+
+msgid "popup_info_heading"
+msgstr "Gwybodaeth a chyngor"
+
+msgid "popup_info_text1"
+msgstr "Yn ystyried mynd i brifysgol? "
+
+msgid "popup_info_text2"
+msgstr "Chwiliwch am adnoddau i’ch helpu i wneud penderfyniad."
+
+msgid "popup_search_heading"
+msgstr "Chwilio am gwrs"
+
+msgid "popup_search_text"
+msgstr "Chwilio drwy’r holl gyrsiau is-radd."
+
+msgid "popup_save_heading"
+msgstr "Cadw a chymharu"
+
+msgid "popup_save_text"
+msgstr "Lluniwch restr fer o gyrsiau a chymharu data swyddogol i’ch helpu i wneud penderfyniad."
+
+msgid "popup_widget_secondary_button"
+msgstr "Archwilio’r hafan"
+
+msgid "popup_widget_primary_button"
+msgstr "Ymlaen i ddata’r cwrs"
+
+msgid "popup_external_secondary_button"
+msgstr "Ynglŷn â’n data"
+
+msgid "popup_external_primary_button"
+msgstr "Chwilio am gwrs"
+
+msgid "administrative_occupations"
+msgstr "Galwedigaethau gweinyddol"
+
+msgid "administrative_occupations_communications"
+msgstr "Galwedigaethau gweinyddol: Cyfathrebu"
+
+msgid "administrative_occupations_finance"
+msgstr "Galwedigaethau gweinyddol: Cyllid"
+
+msgid "administrative_occupations_general"
+msgstr "Galwedigaethau gweinyddol: Cyffredinol"
+
+msgid "administrative_occupations_government_and_related_organisations"
+msgstr "Galwedigaethau gweinyddol: Llywodraeth a sefydliadau cysylltiedig"
+
+msgid "administrative_occupations_records"
+msgstr "Galwedigaethau gweinyddol: Cofnodion"
+
+msgid "animal_care_and_control_services"
+msgstr "Gwasanaethau Gofal a Rheoli Anifeiliaid"
+
+msgid "architects_chartered_architectural_technologists_planning_officers_surveyors_and_construction_professionals"
+msgstr "Penseiri, Technolegwyr Pensaernïol Siartredig, Swyddogion Cynllunio, Syrfewyr ac Adeiladwyr Proffesiynol"
+
+msgid "architects_town_planners_and_surveyors"
+msgstr "Penseiri, cynllunwyr tref, syrfewyr"
+
+msgid "artistic_and_literary_occupations"
+msgstr "Galwedigaethau artistig a llenyddol"
+
+msgid "artistic_literary_and_media_occupations"
+msgstr "Galwedigaethau Artistig, Llenyddol a'r Cyfryngau"
+
+msgid "business_and_finance_associate_professionals"
+msgstr "Gweithwyr proffesiynol ym maes busnes a chyllid cysylltiol"
+
+msgid "business_and_financial_project_management_professionals"
+msgstr "Gweithwyr Proffesiynol ym maes Rheoli Prosiectau Busnes ac Ariannol"
+
+msgid "business_and_public_service_associate_professionals"
+msgstr "Gweithwyr Cyswllt Proffesiynol ym maes Busnes a Gwasanaeth Cyhoeddus"
+
+msgid "business_and_statistical_professionals"
+msgstr "Gweithwyr proffesiynol busnes ac ystadegol"
+
+msgid "business_research_and_administrative_professionals"
+msgstr "Gweithwyr Proffesiynol ym maes Busnes, Ymchwil a Gweinyddiaeth"
+
+msgid "caring_personal_service_occupations"
+msgstr "Galwedigaethau gofal a gwasanaeth personol"
+
+msgid "caring_personal_services"
+msgstr "Gwasanaethau Gofalu Personol"
+
+msgid "childcare_and_related_personal_services"
+msgstr "Gwasanaethau Personol Gofal Plant a Gwasanaethau Cysylltiedig"
+
+msgid "community_and_civil_enforcement_occupations"
+msgstr "Galwedigaethau Gorfodi Sifil a Chymunedol"
+
+msgid "conservation_and_environment_professionals"
+msgstr "Gweithwyr Proffesiynol Cadwraeth a'r Amgylchedd"
+
+msgid "conservation_associate_professionals"
+msgstr "Gweithwyr proffesiynol ym maes cadwraeth"
+
+msgid "corporate_managers_and_senior_officials"
+msgstr "Rheolwyr corfforaethol ac uwch swyddogion"
+
+msgid "customer_service_occupations"
+msgstr "Galwedigaethau Gwasanaeth cwsmeriaid"
+
+msgid "design_associate_professionals"
+msgstr "Gweithwyr proffesiynol ym maes Dylunio"
+
+msgid "design_occupations"
+msgstr "Galwedigaethau Dylunio"
+
+msgid "draughtspersons_and_building_inspectors"
+msgstr "Drafftsmyn ac arolygwyr adeiladu"
+
+msgid "elementary_occupations"
+msgstr "Galwedigaethau elfennol"
+
+msgid "engineering_professionals"
+msgstr "Gweithwyr Proffesiynol Peirianneg"
+
+msgid "finance_professionals"
+msgstr "Gweithwyr Cyllid Proffesiynol "
+
+msgid "financial_institution_and_office_managers"
+msgstr "Rheolwyr sefydliad ariannol a swyddfa"
+
+msgid "functional_managers"
+msgstr "Rheolwyr gweithredol"
+
+msgid "health_associate_professionals"
+msgstr "Gweithwyr Proffesiynol Cyswllt ym maes Iechyd"
+
+msgid "health_professionals"
+msgstr "Gweithwyr iechyd proffesiynol"
+
+msgid "information_and_communication_technology_professionals"
+msgstr "Gweithwyr proffesiynol ym maes technoleg gwybodaeth a chyfathrebu"
+
+msgid "information_technology_and_telecommunications_professionals"
+msgstr "Gweithwyr Proffesiynol Technoleg Gwybodaeth a Thelathrebu"
+
+msgid "information_technology_professionals"
+msgstr "Gweithwyr Proffesiynol Technoleg Gwybodaeth"
+
+msgid "it_service_delivery_occupations"
+msgstr "Galwedigaethau darparu gwasanaethau TG"
+
+msgid "legal_associate_professionals"
+msgstr "Gweithwyr proffesiynol cysylltiol Cyfreithiol"
+
+msgid "legal_professionals"
+msgstr "Gweithwyr Cyfreithiol Proffesiynol"
+
+msgid "leisure_and_other_personal_service_occupations"
+msgstr "Galwedigaethau hamdden a gwasanaethau personol eraill"
+
+msgid "leisure_travel_and_related_personal_service_occupations"
+msgstr "Hamdden, teithio a galwedigaethau gwasanaeth personol cysylltiedig"
+
+msgid "librarians_and_related_professionals"
+msgstr "Llyfrgellwyr a Gweithwyr Proffesiynol Cysylltiedig"
+
+msgid "managers_directors_and_senior_officials"
+msgstr "Rheolwyr, Cyfarwyddwyr ac Uwch Swyddogion"
+
+msgid "managers_in_distribution_storage_and_retailing"
+msgstr "Rheolwyr mewn dosbarthu, storio a manwerthu"
+
+msgid "media_associate_professionals"
+msgstr "Gweithwyr proffesiynol ym maes Cyfryngau"
+
+msgid "media_professionals"
+msgstr "Gweithwyr Proffesiynol y Cyfryngau"
+
+msgid "medical_practitioners"
+msgstr "Ymarferwyr Meddygol"
+
+msgid "natural_and_social_science_professionals"
+msgstr "Gweithwyr Proffesiynol Gwyddor naturiol a Chymdeithasol"
+
+msgid "nursing_and_midwifery_professionals"
+msgstr "Gweithwyr Proffesiynol Nyrsio a Bydwreigiaeth"
+
+msgid "nursing_professionals"
+msgstr "Gweithwyr Nyrsio Proffesiynol"
+
+msgid "other_educational_professionals"
+msgstr "Gweithwyr Addysg Proffesiynol Eraill"
+
+msgid "other_health_professionals"
+msgstr "Gweithwyr Iechyd Proffesiynol Eraill"
+
+msgid "process_plant_and_machine_operatives"
+msgstr "Gweithwyr prosesau, offer a pheiriannau"
+
+msgid "production_managers"
+msgstr "Rheolwyr cynhyrchu"
+
+msgid "protective_service_occupations"
+msgstr "Galwedigaethau gwasanaeth amddiffynnol"
+
+msgid "protective_service_officers"
+msgstr "Swyddogion y gwasanaeth amddiffynnol"
+
+msgid "public_service_and_other_associate_professionals"
+msgstr "Gwasanaethau cyhoeddus a gweithwyr proffesiynol cysylltiol eraill"
+
+msgid "public_service_professionals"
+msgstr "Gweithwyr proffesiynol ym maes gwasanaeth cyhoeddus"
+
+msgid "quality_and_customer_care_managers"
+msgstr "Rheolwyr ansawdd a gofal cwsmeriaid"
+
+msgid "quality_and_regulatory_professionals"
+msgstr "Gweithwyr Proffesiynol Ansawdd a Rheoleiddio"
+
+msgid "research_and_development_managers"
+msgstr "Rheolwyr Ymchwil a Datblygu"
+
+msgid "research_and_development_randd_and_other_research_professionals"
+msgstr "Ymchwil a Datblygu (YaD) a Gweithwyr Proffesiynol Ymchwil Eraill"
+
+msgid "research_professionals"
+msgstr "Gweithwyr proffesiynol ym maes Ymchwil"
+
+msgid "sales_and_related_associate_professionals"
+msgstr "Gweithwyr proffesiynol syn gysylltiedig â Gwerthu"
+
+msgid "sales_assistants_and_retail_cashiers"
+msgstr "Cynorthwywyr gwerthu ac arianwyr manwerthu"
+
+msgid "sales_occupations"
+msgstr "Galwedigaethau Gwerthu"
+
+msgid "sales_related_occupations"
+msgstr "Galwedigaethau Gwerthu cysylltiedig"
+
+msgid "science_and_engineering_technicians"
+msgstr "Technegwyr gwyddoniaeth a pheirianneg"
+
+msgid "science_engineering_and_technology_associate_professionals"
+msgstr "Gweithwyr Proffesiynol Cysylltiol Gwyddoniaeth, Peirianneg a Thechnoleg "
+
+msgid "science_professionals"
+msgstr "Gweithwyr proffesiynol gwyddoniaeth"
+
+msgid "secretarial_and_related_occupations"
+msgstr "Galwedigaethau ysgrifenyddol a chysylltiedig"
+
+msgid "skilled_trades_occupations"
+msgstr "Galwedigaethau crefftau medrus"
+
+msgid "social_welfare_associate_professionals"
+msgstr "Gweithwyr proffesiynol ym maes lles cymdeithasol"
+
+msgid "sports_and_fitness_occupations"
+msgstr "Galwedigaethau Chwaraeon a Ffitrwydd"
+
+msgid "teaching_and_childcare_associate_professionals"
+msgstr "Gweithwyr Proffesiynol Cyswllt ym maes Addysgu a Gofal Plant"
+
+msgid "teaching_and_childcare_support_occupation"
+msgstr "Galwedigaethau Cymorth Addysgu a Gofal Plant"
+
+msgid "teaching_and_educational_professionals"
+msgstr "Gweithwyr Proffesiynol Addysgu ac Addysgol "
+
+msgid "teaching_professionals"
+msgstr "Gweithwyr Addysgu Proffesiynol"
+
+msgid "therapists"
+msgstr "Therapyddion"
+
+msgid "therapy_professionals"
+msgstr "Gweithwyr Therapi Proffesiynol"
+
+msgid "transport_associate_professionals"
+msgstr "Gweithwyr proffesiynol  ym maes Cludiant"
+
+msgid "veterinarians"
+msgstr "Milfeddygon"
+
+msgid "veterinary_nurses"
+msgstr "Nyrsys Milfeddygol"
+
+msgid "web_and_multimedia_design_professionals"
+msgstr "Gweithwyr Proffesiynol Dylunio'r We ac Amlgyfrwng"
+
+msgid "welfare_and_housing_associate_professionals"
+msgstr "Gweithwyr Proffesiynol Cyswllt ym maes Lles a Thai"
+
+msgid "welfare_professionals"
+msgstr "Gweithwyr Proffesiynol Llesiant"
+
+msgid "academic_support"
+msgstr "Cymorth academaidd"
+
+msgid "after_15_months"
+msgstr "Ar ôl 15 mis"
+
+msgid "after_3_years"
+msgstr "Ar ôl 3 blynedd"
+
+msgid "after_5_years"
+msgstr "Ar ôl 5 blynedd"
+
+msgid "after_one_year"
+msgstr "Ar ôl blwyddyn o astudio"
+
+msgid "after_one_year_guidance"
+msgstr "Bydd nifer y myfyrwyr yn dynodi maint y cwrs, ac os ceir mwy o bobl mae hynny'n golygu ei fod yn fwy tebygol o gynrychioli canlyniadau myfyrwyr."
+
+msgid "assessment_and_feedback"
+msgstr "Asesu ac adborth"
+
+msgid "data_from_people"
+msgstr "Data gan (# o fyfyrwyr)"
+
+msgid "earnings_after_the_course"
+msgstr "Enillion ar ôl y cwrs"
+
+msgid "earnings_guidance_1"
+msgstr "mae marchnadoedd llaffur yn newid"
+
+msgid "earnings_guidance_2"
+msgstr "mae cyflogau'n amrywio yng ngwahanol rannau o'r DU"
+
+msgid "earnings_guidance_3"
+msgstr "mae llawer o ffactorau'n effeithio ar enillion graddedigion"
+
+msgid "earnings_link"
+msgstr "https://www.discoveruni.gov.uk/cy/how-choose-course-cy/rhagolygon-cyflogaeth-employment-prospects/"
+
+msgid "employed_in_professional"
+msgstr "Canran y rhai a gyflogir sydd mewn swydd broffesiynol neu swydd reoli ar ôl gorffen y cwrs."
+
+msgid "employed_not_in_professional"
+msgstr "Canran y rhai a gyflogir nad ydynt mewn swydd broffesiynol neu swydd reoli ar gorffen y cwrs."
+
+msgid "employment_15_months"
+msgstr "Cyflogaeth 15 mis ar ôl y cwrs"
+
+msgid "employment_after_the_course"
+msgstr "Yr hyn y mae graddedigion yn ei wneud 15 mis ar y cwrs"
+
+msgid "employment_guidance_1"
+msgstr "Daw rhywfaint o ddata gan raddedigion a gymerodd ran yn yr arolwg yn ystod y pandemig."
+
+msgid "employment_guidance_2"
+msgstr "Bydd marchnadoedd llafur yn amrywio ac yn newid dros amser"
+
+msgid "employment_guidance_3"
+msgstr "Bydd cyfleoedd am gyflogaeth a swyddi'n amrywio ar draws rhanbarthau'r DU"
+
+msgid "employment_link"
+msgstr "https://www.discoveruni.gov.uk/cy/how-choose-course-cy/rhagolygon-cyflogaeth-employment-prospects/"
+
+msgid "entry_guidance"
+msgstr "Dyma'r cymwysterau a oedd gan fyfywyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon"
+
+msgid "entry_information"
+msgstr "Gwybodaeth am fynediad"
+
+msgid "find_out_more_link"
+msgstr "https://www.discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/"
+
+msgid "future"
+msgstr "Y Dyfodol"
+
+msgid "future_subtitle"
+msgstr "Mae fy ngwaith presennol yn cyd-fynd â'm cynlluniau ar gyfer y dyfodol."
+
+msgid "graduate_guidance_1"
+msgstr "Nifer y bobl y mae'r data'n seiliedig arnynt - bydd mwy o bobl yn golygu ei bod hi'n debygol y ceir darlun cliriach o brofiadau myfyrwyr. Dylech hefyd ystyried canran y myfyrwyr a ymatebodd i'r arolwg."
+
+msgid "graduate_guidance_2"
+msgstr "Gall rhywfaint o ddata fod ar gyfer cwrs a rhywfaint ar gyfer pwnc - mae data cwrs yn fwy penodol ond bydd data pwnc yn dal i roi syniad o farn myfyrwyr. Byddwch yn ofalus wrth gymharu'r naill a'r llall."
+
+msgid "graduate_link"
+msgstr "https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#arolwg_canlyniadau_graddedigion"
+
+msgid "graduate_perceptions"
+msgstr "Canfyddiadau graddedigion"
+
+msgid "information_on_uni"
+msgstr "Gwybodaeth ar wefan y prifysgol"
+
+msgid "learning_community"
+msgstr "Cymuned ddysgu"
+
+msgid "learning_opportunities"
+msgstr "Cyfleoedd dysgu"
+
+msgid "learning_resources"
+msgstr "Adnoddau dysgu"
+
+msgid "meaningfulness"
+msgstr "Pa mor ystyrlon"
+
+msgid "meaningfulness_subtitle"
+msgstr "Mae fy ngwaith presennol yn ystyrlon."
+
+msgid "national_average"
+msgstr "Cyfartaledd cenedlaethol"
+
+msgid "no_data_available"
+msgstr "Nid yw'r data ar gael"
+
+msgid "nss_question_1"
+msgstr "Mae’r staff yn esbonio pethau’n dda."
+
+msgid "nss_question_10"
+msgstr "Mae'r adborth ar fy ngwaith i wedi bod yn amserol."
+
+msgid "nss_question_11"
+msgstr "Rydw i wedi derbyn sylwadau defnyddiol ar fy ngwaith."
+
+msgid "nss_question_12"
+msgstr "Rydw i wedi gallu cysylltu â’r staff pan oedd angen."
+
+msgid "nss_question_13"
+msgstr "Rydw i wedi derbyn digon o gyngor ac arweiniad mewn perthynas â fy nghwrs."
+
+msgid "nss_question_14"
+msgstr "Roedd cyngor da ar gael pan oedd arnaf i ei angen er mwyn gwneud dewisiadau astudio ar fy nghwrs."
+
+msgid "nss_question_15"
+msgstr "Mae’r cwrs wedi ei drefnu’n dda ac yn rhedeg yn esmwyth."
+
+msgid "nss_question_16"
+msgstr "Mae'r amserlen yn gweithio'n effeithlon i mi."
+
+msgid "nss_question_17"
+msgstr "Mae unrhyw newidiadau yn y cwrs neu’r dysgu wedi cael eu cyfleu’n effeithiol."
+
+msgid "nss_question_18"
+msgstr "Mae'r adnoddau a'r cyfleusterau TG sydd wedi'u darparu wedi cefnogi fy nysgu yn dda."
+
+msgid "nss_question_19"
+msgstr "Mae adnoddau'r llyfrgell (e.e. llyfrau, gwasanaethau ar-lein a gofod dysgu) wedi cefnogi fy nysgu yn dda."
+
+msgid "nss_question_2"
+msgstr "Mae’r staff wedi gwneud y pwnc yn ddiddorol."
+
+msgid "nss_question_20"
+msgstr "Rydw i wedi gallu cael mynediad i adnoddau penodol i fy nghwrs (e.e. offer, cyfleusterau, meddalwedd, casgliadau) fel sydd angen."
+
+msgid "nss_question_21"
+msgstr "Rydw i'n teimlo'n rhan o gymuned o staff a myfyrwyr."
+
+msgid "nss_question_22"
+msgstr "Rydw i wedi cael cyfleoedd priodol i weithio gyda myfyrwyr eraill fel rhan o fy nghwrs."
+
+msgid "nss_question_23"
+msgstr "Rydw i wedi cael cyfleoedd priodol i roi adborth ar fy nghwrs."
+
+msgid "nss_question_24"
+msgstr "Mae'r staff yn gwerthfawrogi safbwyntiau a barn y myfyrwyr am y cwrs."
+
+msgid "nss_question_25"
+msgstr "Mae'n glir sut mae adborth y myfyrwyr ar y cwrs wedi cael sylw a bod pethau wedi cael eu rhoi ar waith."
+
+msgid "nss_question_26"
+msgstr "Mae undeb (cymdeithas neu urdd) y myfyrwyr yn cynrychioli buddiannau academaidd y myfyrwyr."
+
+msgid "nss_question_3"
+msgstr "Mae’r cwrs yn ysgogi’r deal."
+
+msgid "nss_question_4"
+msgstr "Mae fy nghwrs i wedi fy herio i i wneud fy ngwaith gorau."
+
+msgid "nss_question_5"
+msgstr "Mae fy nghwrs i wedi rhoi cyfleoedd i mi astudio syniadau neu gysyniadau newydd mewn manylder."
+
+msgid "nss_question_6"
+msgstr "Mae fy nghwrs i wedi rhoi cyfleoedd i mi ddod â gwybodaeth a syniadau at ei gilydd o wahanol bynciau."
+
+msgid "nss_question_7"
+msgstr "Mae fy nghwrs i wedi rhoi cyfleoedd i mi ddefnyddio'r hyn rydw i wedi'i ddysgu."
+
+msgid "nss_question_8"
+msgstr "Mae’r meini prawf ar gyfer marcio wedi cael eu hegluro ymlaen llaw."
+
+msgid "nss_question_9"
+msgstr "Mae'r marcio a'r asesu wedi bod yn deg."
+
+msgid "occupation_type"
+msgstr "Mathau o swydd 15 mis ar ôl y cwrs"
+
+msgid "organisation_and_management"
+msgstr "Trefniadaeth a rheolaeth"
+
+msgid "overall_satisfied"
+msgstr "Ar y cyfan, rydw i’n fodlon ag ansawdd y cwrs."
+
+msgid "percent_of_those_asked"
+msgstr "% o'r rhai y gofynnwyd iddynt"
+
+msgid "read_more_about_continuation"
+msgstr "Darllenwch fwy am Parhad"
+
+msgid "read_more_about_earnings"
+msgstr "Darllen mwy am enillion"
+
+msgid "read_more_about_employment"
+msgstr "Darllen mwy am gyflogaeth"
+
+msgid "read_more_about_entry"
+msgstr "Darllen mwy am ddata mynediad"
+
+msgid "read_more_about_graduate_perceptions"
+msgstr "Darllenwch ragor am ganfyddiadau graddedigion"
+
+msgid "read_more_about_satisfaction"
+msgstr "Darllenwch fwy am Arolwg Cenedlaethol o Fyfyrwyr"
+
+msgid "read_more_about_this_data"
+msgstr "Darllenwch ragor am y data hwn"
+
+msgid "satisfaction_guidance_1"
+msgstr "<strong>Nifer y bobl y mae'r data'n seiliedig arnynt</strong> - bydd mwy o bobl yn golygu ei bod hi'n debygol y ceir darlun cliriach o brofiadau myfyrwyr. Dylech hefyd ystyried canran y myfyrwyr a ymatebodd i'r arolwg."
+
+msgid "satisfaction_guidance_2"
+msgstr "<strong>Gall rhywfaint o ddata fod ar gyfer cwrs a rhywfaint ar gyfer pwnc</strong> - mae data cwrs yn fwy penodol ond bydd data pwnc yn dal i roi syniad o farn myfyrwyr. Byddwch yn ofalus wrth gymharu'r naill a'r llall. Darllenwch fwy am Arolwg Cenedlaethol o Fyfyrwyr"
+
+msgid "student_voice"
+msgstr "Llais y myfyriwr"
+
+msgid "teaching_on_my_course"
+msgstr "Y dysgu ar fy nghwrs"
+
+msgid "ucas_tariff_points"
+msgstr "Pwyntiau Tariff UCAS"
+
+msgid "unavailable_data_message"
+msgstr "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "usefulness"
+msgstr "Pa mor ddefnyddiol"
+
+msgid "usefulness_subtitle"
+msgstr "Rwy'n defnyddio'r hyn a ddysgais wrth astudio yn fy ngwaith presennol."
+
+msgid "new_course_agg_blank_header"
+msgstr "Mae’n ddrwg gennym, nid oes data ar gael ar gyfer y cwrs yma."
+
+msgid "new_course_agg_blank_body"
+msgstr "Y rheswm dros hyn yw bod y cwrs yn newydd neu nad yw wedi bod yn rhedeg am yn ddigon hir i’r data hwn fod ar gael. Nid yw hyn yn adlewyrchu ar ansawdd y cwrs."
+
+msgid "new_course_earnings_unavail_header"
+msgstr "Daw'r data a ddangosir gan fyfyrwyr ar gyrsiau {}."
+
+msgid "new_course_earnings_unavail_body"
+msgstr "Mae hwn yn cynnwys data o bob cwrs yn y pwnc hwn yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl - naill ai gan fod y cwrs yn newydd, neu does dim digon o fyfyrwyr. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "new_course_unavail_full"
+msgstr "Daw'r data a ddangosir gan fyfyrwyr ar gyrsiau {}. Mae hwn yn cynnwys data o bob cwrs yn y pwnc hwn yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl - naill ai gan fod y cwrs yn newydd, neu does dim digon o fyfyrwyr. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "new_course_agg_111213_header"
+msgstr "Mae’r data a ddangosir gan fyfyrwyr eraill ar gyrsiau eraill mewn {}."
+
+msgid "new_course_agg_111213_body"
+msgstr "Gan bod y cwrs yn newydd neu heb fod yn rhedeg am yn ddigon hir, nid oedd digon o ddata i gyhoeddi gwybodaeth ar gyfer y cwrs yma’n benodol. Nid yw hyn yn adlewyrchu ar ansawdd y cwrs."
+
+msgid "new_course_agg_212223_header"
+msgstr "Mae’r data a ddangosir gan fyfyrwyr ar gyrsiau eraill mewn {} dros y ddwy flynedd flaenorol."
+
+msgid "new_course_agg_212223_body"
+msgstr "Gan bod y cwrs yn newydd neu heb fod yn rhedeg am yn ddigon hir, nid oedd digon o ddata i gyhoeddi gwybodaeth ar gyfer y cwrs yma’n benodol."
+
+msgid "after_5_years_21_22_4"
+msgstr "<p>Mae hwn yn cynnwys data o'r cwrs hwn a chyrsiau cysylltiedig yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl. Nid yw hyn yn adlewyrchu ansawdd y cwrs.</p><p>Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill.</p>"
+
+msgid "after_5_years_21_22_3"
+msgstr "Mae hwn yn cynnwys data o'r cwrs hwn a chyrsiau cysylltiedig yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "after_5_years_23_4"
+msgstr "Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill."
+
+msgid "earnings_15_months_unavailable_22_21_3"
+msgstr "Mae hwn yn cynnwys data o'r cwrs hwn a chyrsiau cysylltiedig yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "earnings_15_months_unavailable_22_21_4"
+msgstr "<p>Mae hwn yn cynnwys data o'r cwrs hwn a chyrsiau cysylltiedig yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl. Nid yw hyn yn adlewyrchu ansawdd y cwrs.</p><p>Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill.</p>"
+
+msgid "unavailable_0_any"
+msgstr "Mae hyn naill ai oherwydd bod y cwrs yn fach neu am nad oedd digon o ymatebion ar gael i gynhyrchu data. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "unavailable_1_any"
+msgstr "Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nad yw wedi cael ei gynnal yn ddigon hir i’r data hyn fod ar gael."
+
+msgid "unavailable_2_any"
+msgstr "Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "after_3_years_23_4"
+msgstr "Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill."
+
+msgid "after_3_years_21_22_3"
+msgstr "Mae hwn yn cynnwys data o'r cwrs hwn a chyrsiau cysylltiedig yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "after_3_years_21_22_4"
+msgstr "<p>Mae hwn yn cynnwys data o'r cwrs hwn a chyrsiau cysylltiedig yn yr un brifysgol neu goleg. Nid oedd digon o ddata ar gael i gyhoeddi gwybodaeth fwy manwl. Nid yw hyn yn adlewyrchu ansawdd y cwrs.</p><p>Sylwch: nid yw'r wybodaeth ganlynol yn cynnwys unrhyw ddata ar gyfer graddau cyntaf (fel BA, BSc neu Gwrs Meistr Integredig). Yn lle hynny, mae'n dangos gwybodaeth ar gyfer cymwysterau israddedig eraill - mae hyn yn cynnwys Tystysgrif Addysg Uwch, Diploma Addysg Uwch a Gradd Sylfaen ymhlith eraill.</p>"
+
+msgid "unavailable_northern_ireland"
+msgstr "Yn anffodus, nid yw'r data hyn ar gael ar gyfer cyrsiau yng Ngogledd Iwerddon."
+
+msgid "message_1_header"
+msgstr "Hwn a chyrsiau eraill"
+
+msgid "message_2_header"
+msgstr "Y cwrs hwn dros 2 flynedd"
+
+msgid "message_3_header"
+msgstr "Cwrs hwn a chyrsiau eraill dros 2 flynedd"
+
+msgid "message_4_header"
+msgstr "Hwn a chyrsiau eraill"
+
+msgid "message_5_header"
+msgstr "Y cwrs hwn dros 2 flynedd"
+
+msgid "message_6_header"
+msgstr "Cwrs hwn a chyrsiau eraill dros 2 flynedd"
+
+msgid "message_7_header"
+msgstr "Nid yw'r data ar gael"
+
+msgid "message_8_header"
+msgstr "Hwn a chyrsiau eraill"
+
+msgid "message_9_header"
+msgstr "Cwrs hwn a chyrsiau eraill dros 2 flynedd"
+
+msgid "message_10_header"
+msgstr "Nid yw'r data ar gael"
+
+msgid "message_11_header"
+msgstr "Nid yw'r data ar gael"
+
+msgid "message_1"
+msgstr "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill. Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "message_2"
+msgstr "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "message_3"
+msgstr "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill yn ystod y ddwy flynedd flaenorol. Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "message_4"
+msgstr "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill. Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Gall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "message_5"
+msgstr "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "message_6"
+msgstr "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill yn ystod y ddwy flynedd flaenorol. Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Gall hyn fod oherwydd bod maint y cwrs yn rhy fach neu nad oedd digon o fyfyrwyr wedi ymateb i'r arolwg. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "message_7"
+msgstr "Gall hyn fod oherwydd bod maint y cwrs yn rhy fach. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "message_8"
+msgstr "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill. Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
+
+msgid "message_9"
+msgstr "Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau <b>{}</b> eraill yn ystod y ddwy flynedd flaenorol. Nid oedd digon o ddata i gyhoeddi gwybodaeth yn benodol ar gyfer y cwrs hwn. Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael."
+
+msgid "message_10"
+msgstr "Mae hyn oherwydd nad yw'r cwrs wedi'i gynnal eto neu nid yw wedi cael ei gynnal yn ddigon hir i’r data hwn fod ar gael. Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "message_11"
+msgstr "Nid yw hyn yn adlewyrchu ansawdd y cwrs."
+
+msgid "this_course"
+msgstr "Y cwrs hwn"
+
+msgid "data_displayed"
+msgstr "Daw’r data a ddangosir gan fyfyrwyr ar y cwrs"
