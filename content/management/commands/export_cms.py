@@ -16,8 +16,10 @@ class Command(BaseCommand):
                 pk=landing_page.pk,
                 language=landing_page.get_language(),
                 intro=landing_page.intro,
-                title=landing_page.title,
+                h1=landing_page.title,
+                title=landing_page.seo_title,
                 translation_pk=landing_page.translated_page_id,
+                slug=landing_page.slug if landing_page.slug else ""
             )
             options = []
             for option in landing_page.options:
@@ -45,9 +47,11 @@ class Command(BaseCommand):
                     language=i.get_language(),
                     live=i.live,
                     translation_pk=i.translated_page_id,
-                    title=i.title,
+                    title=i.seo_title,
+                    h1=i.title,
                     intro=str(i.intro),
-                    sections=sections
+                    sections=sections,
+                    slug=i.slug if i.slug else ""
                 )
             )
 
