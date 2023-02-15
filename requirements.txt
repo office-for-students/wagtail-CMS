@@ -19,7 +19,7 @@ certifi==2021.10.8
 chardet==3.0.4
 charset-normalizer==2.0.12
 coverage==4.5.1
-Django==3.2.14
+Django==3.2.18
 django-appconf==1.0.4
 django-axes==5.30.0
 django-compressor==3.1
