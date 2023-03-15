@@ -1,22 +1,22 @@
 {% include 'courses/partials/sticky_header.html' %}
 {% load static discover_uni_tags %}
 
-{% if not course.country.code == "XG" %}
-    <div class="leo-banner">
-            <p class="px-4">
-                <span class="leo-banner__bold">{% get_translation key='please_note' language=page.get_language %}</span>
-                {% get_translation key='leo_banner' language=page.get_language %}
-                <a href="{% if page.is_english %}
-                    /about-our-data/#longitudinal_education_outcomes_dataset
-                {% else %}
-                    https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#set_ddata_deilliannau_addysg_hydredol
-                {% endif %}"
-                title="read more">
-                    <span class="leo-banner__read_more">{% get_translation key='read_more' language=page.get_language %}</span>
-                </a>
-            </p>
-        </div>
-{% endif %}
+{#{% if not course.country.code == "XG" %}#}
+{#    <div class="leo-banner">#}
+{#            <p class="px-4">#}
+{#                <span class="leo-banner__bold">{% get_translation key='please_note' language=page.get_language %}</span>#}
+{#                {% get_translation key='leo_banner' language=page.get_language %}#}
+{#                <a href="{% if page.is_english %}#}
+{#                    /about-our-data/#longitudinal_education_outcomes_dataset#}
+{#                {% else %}#}
+{#                    https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#set_ddata_deilliannau_addysg_hydredol#}
+{#                {% endif %}"#}
+{#                title="read more">#}
+{#                    <span class="leo-banner__read_more">{% get_translation key='read_more' language=page.get_language %}</span>#}
+{#                </a>#}
+{#            </p>#}
+{#        </div>#}
+{#{% endif %}#}
 
 <div class="course-detail comparison-course-area mx-sm-2 px-xs-1 px-md-3"
      data-courseidentifier="{{course.institution.pub_ukprn}}/{{course.kis_course_id}}/{{course.mode.label}}"
