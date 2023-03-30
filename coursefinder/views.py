@@ -81,6 +81,7 @@ def narrow_search(request, language=enums.languages.ENGLISH):
 
 
 def course_finder_results(request, language=enums.languages.ENGLISH):
+    print("I AM SEARCH")
     query_params = request.POST
     filter_form = FilterForm(query_params)
     filters = build_filters(query_params)
@@ -93,6 +94,11 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     institution_query = '@'.join(
         query_params.getlist('institution_query')) if 'institution_query' in query_params else None
     institution_array = institution_query.split("@") if institution_query else None
+    if request.method == "GET":
+        print("I AM HERE")
+        institution_query = request.GET.get("institution_query")
+        institution_array = [institution_query]
+
 
     postcode = query_params.get('postcode') if 'postcode' in query_params else None
     distance_query = query_params.get('distance') if 'distance' in query_params else None
