@@ -94,8 +94,7 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     institution_query = '@'.join(
         query_params.getlist('institution_query')) if 'institution_query' in query_params else None
     institution_array = institution_query.split("@") if institution_query else None
-    if request.method == "GET":
-        print("I AM HERE")
+    if request.GET.get("institution_query"):
         institution_query = request.GET.get("institution_query")
         institution_array = [institution_query]
 
