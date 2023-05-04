@@ -20,12 +20,11 @@ def institution_detail(request, institution_id, language=enums.languages.ENGLISH
         return render(request, '404.html')
 
     page.tef_report_link = page.tef_report_link.replace('{{institution_name}}', institution.pub_ukprn_name)
-
-    full_path = '%s?%s' % (request.path, request.environ.get('QUERY_STRING'))
+    path = request.path.replace("/en", "")
     if language == enums.languages.ENGLISH:
-        translated_url = '/cy' + request.path if language == enums.languages.ENGLISH else request.path
+        translated_url = '/cy' + path if language == enums.languages.ENGLISH else path
     else:
-        translated_url = request.path.replace('/cy/', '/')
+        translated_url = path.replace('/cy/', '/')
 
     context = page.get_context(request)
     context.update({
