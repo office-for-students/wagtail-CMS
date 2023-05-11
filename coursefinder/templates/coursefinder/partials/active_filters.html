@@ -87,7 +87,6 @@
                 var institutions_list = "{{filter_form.institutions}}".split("@")
                 institutions.innerHTML = translation.replace("{}", institutions_list.length)
             </script>
-            {{ institution_array }}
         {% elif institution_array|length >= 1 %}
             {% for institution in institution_array %}
                 <div class="filters-block__filter-pill">
