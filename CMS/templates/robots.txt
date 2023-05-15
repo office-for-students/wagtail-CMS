@@ -1,5 +1,6 @@
 Sitemap: {{ request.scheme }}://{{ request.get_host }}/sitemap.xml
 User-agent: *
+Allow: /
 Disallow: /subcontractual-and-collaborative-provision-draft/
 User-agent: Googlebot
 Allow: /

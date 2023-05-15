@@ -1,60 +1,60 @@
-{% load static discover_uni_tags %}
-<div class="modal fade" id="discover-modal" tabindex="-1" role="dialog" aria-labelledby="discover-modal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content" style=" background-color: #002554; color: white">
-      <div class="modal-header d-flex pt-2 pl-2 pr-2 pb-1" >
-          <div class="justify-content-start d-flex flex-row">
-          <img src="/static/apple-touch-icon.png" class="popup__small_screen__logo" alt="logo">
-        <h5 class="modal-title popup__title" id="exampleModalLongTitle" style="font-family: 'Nunito Sans',
-        sans-serif; text-align: left">{% get_translation key='popup_heading' language=page.get_language %}</h5>
-
-          </div>
-        <button type="button" class="close close-btn mt-0" data-dismiss="modal" aria-label="Close">
-          <img src="/static/images/Crosswhite.svg" alt="close">
-        </button>
-      </div>
-      <div class="modal-body pt-3 pb-3 side-padding" style="background-color: #002554; border-radius: 8px;">
-        <div class="p-2" style="background-color: white; border-radius: 5px; color: black;">
-            <h4 class="popup__subheading">{% get_translation key='popup_subheading' language=page.get_language %}</h4>
-            <div class="container wider-padding">
-                <div class="row">
-            <div class="col-lg-4 col-sm-12 big-padding popup__small_screen" >
-                <div class="popup__img_div">
-                <img src="/static/images/infoicon.svg" class="popup__img" alt="info icon">
-                </div>
-                <div class="popup-text">
-                <h5 class="header-padding">{% get_translation key='popup_info_heading' language=page.get_language %}</h5>
-                <p class="mb-0">{% get_translation key='popup_info_text1' language=page.get_language %}</p>
-                    <p>{% get_translation key='popup_info_text2' language=page.get_language %}</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-12 big-padding popup__small_screen">
-                <div class="popup__img_div">
-                <img src="/static/images/Searchicon.svg" class="popup__img" alt="search icon">
-                </div>
-                <div class="popup-text">
-                <h5  class="header-padding">{% get_translation key='popup_search_heading' language=page.get_language %}</h5>
-                <p style="">{% get_translation key='popup_search_text' language=page.get_language %}</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-12 big-padding popup__small_screen">
-                <div class="popup__img_div">
-                <img src="/static/images/compareicon.svg" class="popup__img" alt="compare icon">
-                </div>
-                <div class="popup-text">
-                <h5  class="header-padding">{% get_translation key='popup_save_heading' language=page.get_language %}</h5>
-                <p style="">{% get_translation key='popup_save_text' language=page.get_language %}</p>
-                </div>
-            </div>
-                </div>
-            </div>
-          <div class="popup__button_div">
-
-        <button type="button" class="btn btn-light p-3" data-dismiss="modal" onclick="window.location='/'">{% get_translation key='popup_widget_secondary_button' language=page.get_language %}</button>
-        <button type="button" class="btn btn-warning p-3" onclick="$('#discover-modal').modal('hide');">{% get_translation key='popup_widget_primary_button' language=page.get_language %}</button>
-          </div>
-            </div>
-      </div>
-    </div>
-  </div>
-</div>
+{#{% load static discover_uni_tags %}#}
+{#<div class="modal fade" id="discover-modal" tabindex="-1" role="dialog" aria-labelledby="discover-modal" aria-hidden="true">#}
+{#  <div class="modal-dialog modal-dialog-centered" role="document">#}
+{#    <div class="modal-content" style=" background-color: #002554; color: white">#}
+{#      <div class="modal-header d-flex pt-2 pl-2 pr-2 pb-1" >#}
+{#          <div class="justify-content-start d-flex flex-row">#}
+{#          <img src="/static/apple-touch-icon.png" class="popup__small_screen__logo" alt="logo">#}
+{#        <h5 class="modal-title popup__title" id="exampleModalLongTitle" style="font-family: 'Nunito Sans',#}
+{#        sans-serif; text-align: left">{% get_translation key='popup_heading' language=page.get_language %}</h5>#}
+{##}
+{#          </div>#}
+{#        <button type="button" class="close close-btn mt-0" data-dismiss="modal" aria-label="Close">#}
+{#          <img src="/static/images/Crosswhite.svg" alt="close">#}
+{#        </button>#}
+{#      </div>#}
+{#      <div class="modal-body pt-3 pb-3 side-padding" style="background-color: #002554; border-radius: 8px;">#}
+{#        <div class="p-2" style="background-color: white; border-radius: 5px; color: black;">#}
+{#            <h4 class="popup__subheading">{% get_translation key='popup_subheading' language=page.get_language %}</h4>#}
+{#            <div class="container wider-padding">#}
+{#                <div class="row">#}
+{#            <div class="col-lg-4 col-sm-12 big-padding popup__small_screen" >#}
+{#                <div class="popup__img_div">#}
+{#                <img src="/static/images/infoicon.svg" class="popup__img" alt="info icon">#}
+{#                </div>#}
+{#                <div class="popup-text">#}
+{#                <h5 class="header-padding">{% get_translation key='popup_info_heading' language=page.get_language %}</h5>#}
+{#                <p class="mb-0">{% get_translation key='popup_info_text1' language=page.get_language %}</p>#}
+{#                    <p>{% get_translation key='popup_info_text2' language=page.get_language %}</p>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-lg-4 col-sm-12 big-padding popup__small_screen">#}
+{#                <div class="popup__img_div">#}
+{#                <img src="/static/images/Searchicon.svg" class="popup__img" alt="search icon">#}
+{#                </div>#}
+{#                <div class="popup-text">#}
+{#                <h5  class="header-padding">{% get_translation key='popup_search_heading' language=page.get_language %}</h5>#}
+{#                <p style="">{% get_translation key='popup_search_text' language=page.get_language %}</p>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-lg-4 col-sm-12 big-padding popup__small_screen">#}
+{#                <div class="popup__img_div">#}
+{#                <img src="/static/images/compareicon.svg" class="popup__img" alt="compare icon">#}
+{#                </div>#}
+{#                <div class="popup-text">#}
+{#                <h5  class="header-padding">{% get_translation key='popup_save_heading' language=page.get_language %}</h5>#}
+{#                <p style="">{% get_translation key='popup_save_text' language=page.get_language %}</p>#}
+{#                </div>#}
+{#            </div>#}
+{#                </div>#}
+{#            </div>#}
+{#          <div class="popup__button_div">#}
+{##}
+{#        <button type="button" class="btn btn-light p-3" data-dismiss="modal" onclick="window.location='/'">{% get_translation key='popup_widget_secondary_button' language=page.get_language %}</button>#}
+{#        <button type="button" class="btn btn-warning p-3" onclick="$('#discover-modal').modal('hide');">{% get_translation key='popup_widget_primary_button' language=page.get_language %}</button>#}
+{#          </div>#}
+{#            </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}

@@ -413,7 +413,7 @@ class Course:
         return f"{title} {at} {self.institution_name}"
 
     def display_title(self):
-        honours = ""
+        honours = " "
         if int(self.honours_award_provision) == 1:
             honours = " (Hons) "
 

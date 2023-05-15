@@ -91,8 +91,7 @@
 
                 <form class="institution-details__search" {% if page.is_welsh %}
                       action="/cy/course-finder/results/" {% else %} action="/course-finder/results/" {% endif %}
-                      method="post" autocomplete="off">
-                    {% csrf_token %}
+                      method="get" autocomplete="off">
                     <input type="hidden" name="institution_query" value="{{ institution.pub_ukprn_name }}"/>
                     <button class="institution-details__course-button">
                         {% get_translation key='view_all_courses' language=page.get_language %}

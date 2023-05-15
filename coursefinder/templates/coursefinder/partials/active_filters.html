@@ -66,7 +66,7 @@
 
     </script>
 
-{% if filter_form.mode_query or filter_form.countries_query or filter_form.course_query or filter_form.institutions or postcode_query %}
+{% if filter_form.mode_query or filter_form.countries_query or filter_form.course_query or institution_array or postcode_query %}
     <div id="institution_pill" class="filters-block__filter-active-filter">
         {% if filter_form.course_query %}
 
@@ -91,7 +91,7 @@
             {% for institution in institution_array %}
                 <div class="filters-block__filter-pill">
                     <p class="filters-block__filter-text">{{institution}}</p>
-                    <img src="{% static 'images/icon-close.svg'%}" id="{{institution}}" onclick=closeInstitutionQuery(id) class="filters-block__filter-iconclose">
+                    <img alt="remove filter pill" src="{% static 'images/icon-close.svg'%}" id="{{institution}}" onclick=closeInstitutionQuery(id) class="filters-block__filter-iconclose">
                 </div>
             {% endfor %}
         {% endif %}
