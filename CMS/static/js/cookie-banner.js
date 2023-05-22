@@ -32,6 +32,7 @@
     }
 
     function init() {
+        console.log("cookie monster hungry")
         var cookieBanner = $('.cookie-banner');
         for (var i = 0; i < cookieBanner.length; i++) {
             new CookieBanner(cookieBanner[i]);
