@@ -1071,11 +1071,6 @@ const BookmarkEvent = new Event('bookmarkchanged');
                 new NavBookMarkBtn(bookmarkBtns[i]);
             }
 
-            var cookieBanner = $('.cookie-banner');
-            for (var i = 0; i < cookieBanner.length; i++) {
-                new CookieBanner(cookieBanner[i]);
-            }
-
             var dropdowns = $('[class$=selector]');
             new PageDropdowns(dropdowns);
 
@@ -1117,17 +1112,6 @@ const BookmarkEvent = new Event('bookmarkchanged');
                     scrollToTop.removeClass('show');
                 }
             });
-
-            // GOOGLE  ANALYTICS
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-
-            gtag('js', new Date());
-
-            gtag('config', 'UA-147556197-1', {'anonymize_ip': true});
         }
 
         $(document).on('page:load', init);
