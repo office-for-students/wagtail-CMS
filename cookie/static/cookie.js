@@ -58,11 +58,13 @@
         }
 
         declinedCookies() {
-            document.cookie = "discoverUniAnalyticsCookiesDeclined";
+            document.cookie = "discoverUniAnalyticsCookiesDeclined=declined";
+            window.location.reload()
         }
 
         acceptAllCookies() {
             document.cookie = "discoverUniAnalyticsCookies=accepted;";
+            window.location.reload()
         }
 
         isDeclined() {
