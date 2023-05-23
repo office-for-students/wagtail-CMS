@@ -1,28 +1,81 @@
-// COOKIE BANNER
-var CookieBanner = function (wrapper) {
-    this.wrapper = $(wrapper);
-    this.setup();
-}
+(function () {
+    class CookieManagement {
+        constructor(banner, setting) {
+            this.banner = banner;
+            this.settings = setting;
+            if (
+                !document.cookie.includes("discoverUniAnalyticsCookiesDeclined")
+                && !document.cookie.includes("discoverUniAnalyticsCookies")
+            ) {
+                this.showCookieBanner()
+                this.setListeners()
+            } else {
+                this.hideCookieBanners()
+            }
 
-CookieBanner.prototype = {
-    setup: function () {
-        this.acceptBtn = this.wrapper.find('.cookie-banner__ok');
-        this.findOutMoreBtn = this.wrapper.find('.cookie-banner__find-out-more');
-        if (localStorage.discoverUniCookies === 'accepted') {
-            document.cookie = "discoverUniCookies=accepted;";
-            this.wrapper.hide();
+
         }
 
-        this.startWatchers();
-    },
+        setListeners() {
+            let settings_btn = document.getElementById("cookie_settings")
+            let accept_btn = document.getElementById("cookie_accept")
 
-    startWatchers: function () {
-        var that = this;
+            settings_btn.addEventListener("click", (ev) => {
+                this.hideCookieBanners()
+                this.showSettingControls()
+            })
 
-        this.acceptBtn.click(function () {
-            document.cookie = "discoverUniCookies=accepted;";
-            localStorage.discoverUniCookies = 'accepted';
-            that.wrapper.hide();
-        });
+            accept_btn.addEventListener("click", (ev) => {
+                this.acceptAllCookies();
+                this.hideCookieBanners();
+            })
+
+            const settings_form = document.getElementById("settings_form");
+            settings_form.addEventListener("submit", (event) => {
+                event.preventDefault()
+                const declined = this.isDeclined()
+                if (declined) {
+                    this.declinedCookies()
+                    this.hideCookieBanners()
+                } else {
+                    this.acceptAllCookies()
+                    this.hideCookieBanners()
+                }
+            });
+        }
+
+        hideCookieBanners() {
+            this.banner.style.display = "none";
+            this.settings.style.display = "none";
+        }
+
+        showCookieBanner() {
+            this.banner.style.display = "block";
+        }
+
+        showSettingControls() {
+            this.settings.style.display = "block";
+        }
+
+        declinedCookies() {
+            document.cookie = "discoverUniAnalyticsCookiesDeclined";
+        }
+
+        acceptAllCookies() {
+            document.cookie = "discoverUniAnalyticsCookies=accepted;";
+        }
+
+        isDeclined() {
+            const decline = document.getElementById("no_decline")
+            return decline.checked
+        }
     }
-}
+
+    let cookieManager = new CookieManagement(
+        document.getElementById("cookie-banner"),
+        document.getElementById("cookie-settings")
+    )
+
+
+})();
+

@@ -50,7 +50,7 @@
         {# Override this in templates to add extra javascript #}
     {% endblock %}
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147556197-1"></script>
+
 
     <!-- Bootstrap - Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -67,37 +67,6 @@
 
 {% wagtailuserbar %}
 
-<!-- ********* Uncomment for Covid Banner **************** -->
-{#<!-- <div>#}
-{#            <a class="covid-19-banner" href="{% if page.is_english %}/corona-covid-19-information/{% else %}#}
-{#    /cy/cynnwys-corona-covid-19/{% endif %}">#}
-{#                {% get_translation key='covid_19_info' language=page.get_language %}#}
-{#            </a>#}
-{#        </div>#}
-
-
-
-
-        {% if 'covid-19' in page.title|lower or "course details" in page.title|lower or "compare courses" in page.title|lower %}
-            <div class="mx-2">
-                <div class="alert check-courses-details-banner" role="alert">
-                    <div class="check-courses-details-banner__exclamation-sign">
-                        <img src="/static/images/large-exclamation-mark.svg" alt="">
-                    </div>
-    
-                    <div class="check-courses-details-banner__message">
-                        <b>
-
-
-            {% get_translation key='Important You need to check the details of any courses you are considering or applying for on the university or college website' language=page.get_language %}</b></br>
-
-
-                {% get_translation key='Many courses due to start in autumn 2020 are being changed to online delivery in whole or part, start dates and course content/structures may also be changing' language=page.get_language %}
-            </div>
-        </div>
-    </div>
-{% endif %} -->
-<!-- **************** -->
 <main>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#discover-modal"
@@ -127,15 +96,11 @@
 
 {% include 'partials/footer.html' %}
 </body>
-<script type="text/javascript">
-    <!--
-    cookie_collection -->
-
-
-    let analytics_on = false
-
+<script>
+    let analytics_on = document.cookie.includes("discoverUniAnalyticsCookies")
     if (analytics_on) {
-        <!-- Google Analytics -->
+
+        // Google Analytics
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -144,23 +109,16 @@
 
         gtag('js', new Date());
         gtag('config', 'UA-147556197-1');
-        <!-- END Google Analytics -->
-
-        <!-- Siteimprove -->
-        /*<![CDATA[*/
+        // SiteImprove
         (function () {
-            var sz = document.createElement('script');
+            let sz = document.createElement('script');
             sz.type = 'text/javascript';
             sz.async = true;
             sz.src = '//siteimproveanalytics.com/js/siteanalyze_267004.js';
-            var s = document.getElementsByTagName('script')[0];
+            let s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(sz, s);
         })();
-        /*]]>*/
-        <!-- END Siteimprove -->
     }
-
-
 </script>
 </html>
 
