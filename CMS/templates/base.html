@@ -92,18 +92,18 @@
             {% get_translation key='Important You need to check the details of any courses you are considering or applying for on the university or college website' language=page.get_language %}</b></br>
 
 
-
-            {% get_translation key='Many courses due to start in autumn 2020 are being changed to online delivery in whole or part, start dates and course content/structures may also be changing' language=page.get_language %}
-                    </div>
-                </div>
+                {% get_translation key='Many courses due to start in autumn 2020 are being changed to online delivery in whole or part, start dates and course content/structures may also be changing' language=page.get_language %}
             </div>
-        {% endif %} -->
+        </div>
+    </div>
+{% endif %} -->
 <!-- **************** -->
 <main>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#discover-modal" style="display:none;" >
-    {{ page.title}}
-</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#discover-modal"
+            style="display:none;">
+        {{ page.title }}
+    </button>
 
     <div id="main-content" tabindex="-1">
         {% block content %}{% endblock %}
