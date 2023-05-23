@@ -127,6 +127,40 @@
 
 {% include 'partials/footer.html' %}
 </body>
+<script type="text/javascript">
+    <!--
+    cookie_collection -->
 
+
+    let analytics_on = false
+
+    if (analytics_on) {
+        <!-- Google Analytics -->
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'UA-147556197-1');
+        <!-- END Google Analytics -->
+
+        <!-- Siteimprove -->
+        /*<![CDATA[*/
+        (function () {
+            var sz = document.createElement('script');
+            sz.type = 'text/javascript';
+            sz.async = true;
+            sz.src = '//siteimproveanalytics.com/js/siteanalyze_267004.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(sz, s);
+        })();
+        /*]]>*/
+        <!-- END Siteimprove -->
+    }
+
+
+</script>
 </html>
 
