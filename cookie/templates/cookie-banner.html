@@ -1,7 +1,7 @@
 {% load discover_uni_tags %}
 
-<article class="cookie-banner" hidden="hidden" style="display: none">
-    <section class="__message">
+<article class="cookie-banner" aria-labelledby="cookie-intro" tabindex="-1" id="cookie-banner" style="display: none">
+    <section class="__message" id="cookie-intro">
         {#            {% get_translation key='cookie_message' language=page.get_language %}#}
         We use necessary cookies to make our site work. We’d like to use additional cookies to show us how the site
         is used. We DO NOT use this for marketing purposes. Please let us know if you are happy with this?
@@ -9,59 +9,60 @@
 
     <section class="__wrapper">
         {% if page.is_english %}
-            <button type="button" href="/cookies/" class="__find-out-more">
-                {#                {% get_translation key='cookie_more' language=page.get_language %}#}
-                Settings
+            <button id="cookie_settings" type="button" href="/cookies/" class="__find-out-more">
+                Cookie Settings
             </button>
         {% else %}
-            <button type="button" href="/cy/cwcis/" class="__find-out-more">
+            <button id="cookie_settings" type="button" href="/cy/cwcis/" class="__find-out-more">
                 {#                {% get_translation key='cookie_more' language=page.get_language %}#}
-                Settings
+                Cookie Settings
             </button>
         {% endif %}
 
-        <button type="submit" class="__ok">
-            {#            {% get_translation key='cookie_ok' language=page.get_language %}#}
+        <button id="cookie_accept" type="submit" class="__ok" tabindex="-1">
             I’m happy with all cookies
         </button>
     </section>
     <section class="__footer">
         {% if page.is_english %}
-            <a href="">Discover Uni Cookie and Privacy Policy</a>
+            <a href="/cookies/">Discover Uni Cookie and Privacy Policy</a>
         {% else %}
-            <a href="">Discover Uni Cookie and Privacy Policy</a>
+            <a href="/cy/cwcis/">Discover Uni Cookie and Privacy Policy</a>
         {% endif %}
     </section>
 </article>
 
-<article class="cookie-settings"  >
+<article class="cookie-settings" style="display: none;" aria-labelledby="cookie-settings" tabindex="-1"
+         id="cookie-settings">
     <section class="__message">
         <p>
-            <span>Cookie settings</span>
+            <span id="cookie-settings">Cookie settings</span>
             <br/>
             Do you want to accept analytics cookies to help us improve user experience?
         </p>
     </section>
 
     <section class="__wrapper">
-        <form action="http://help">
+        <form id="settings_form">
             <label>
-                <input type="radio" id="yes_accept" name="extra_cookies" value="YES" checked="checked">
+                <input type="radio" id="yes_accept" name="extra_cookies" value="YES" checked="checked"
+                       title="I'm fine with analytic cookies">
                 Yes
             </label>
             <label>
-                <input type="radio" id="no_decline" name="extra_cookies" value="NO">
+                <input type="radio" id="no_decline" name="extra_cookies" value="NO"
+                       title="Do not user analytic cookies">
                 No
             </label>
             <p>We do not use cookies for marketing purposes.</p>
-            <button type="submit">SAVE</button>
+            <button type="submit">Save Cookie Settings</button>
         </form>
     </section>
     <section class="__footer">
         {% if page.is_english %}
-            <a href="">Discover Uni Cookie and Privacy Policy</a>
+            <a href="/cookies/">Discover Uni Cookie and Privacy Policy</a>
         {% else %}
-            <a href="">Discover Uni Cookie and Privacy Policy</a>
+            <a href="/cy/cwcis/">Discover Uni Cookie and Privacy Policy</a>
         {% endif %}
     </section>
 </article>
