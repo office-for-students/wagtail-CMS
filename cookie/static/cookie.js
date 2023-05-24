@@ -58,12 +58,16 @@
         }
 
         declinedCookies() {
-            document.cookie = "discoverUniAnalyticsCookiesDeclined=declined";
+            let CookieDate = new Date;
+            CookieDate.setFullYear(CookieDate.getFullYear() +1);
+            document.cookie = "discoverUniAnalyticsCookiesDeclined=declined; expires=" + CookieDate.toUTCString() + ";";
             window.location.reload()
         }
 
         acceptAllCookies() {
-            document.cookie = "discoverUniAnalyticsCookies=accepted;";
+            let CookieDate = new Date;
+            CookieDate.setFullYear(CookieDate.getFullYear() +1);
+            document.cookie = "discoverUniAnalyticsCookies=accepted; expires=" + CookieDate.toUTCString() + ";";
             window.location.reload()
         }
 
