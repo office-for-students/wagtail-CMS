@@ -254,10 +254,11 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
     if not page:
         return render(request, '404.html')
 
+    path = request.path.replace("/en/", "/")
     if language == enums.languages.ENGLISH:
-        translated_url = '/cy' + request.path if language == enums.languages.ENGLISH else request.path
+        translated_url = '/cy' + path if language == enums.languages.ENGLISH else path
     else:
-        translated_url = request.path.replace('/cy/', '/')
+        translated_url = path.replace('/cy/', '/')
 
     context = page.get_context(request)
     context.update({

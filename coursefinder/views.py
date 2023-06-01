@@ -81,7 +81,6 @@ def narrow_search(request, language=enums.languages.ENGLISH):
 
 
 def course_finder_results(request, language=enums.languages.ENGLISH):
-    print("I AM SEARCH")
     query_params = request.POST
     filter_form = FilterForm(query_params)
     filters = build_filters(query_params)
@@ -131,10 +130,11 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
     comparison_page = get_page_for_language(language, CourseComparisonPage.objects.all())
     bookmark_page = get_page_for_language(language, CourseManagePage.objects.all())
 
+    path = request.path.replace("/en/", "/")
     if language == enums.languages.ENGLISH:
-        translated_url = '/cy' + request.path if language == enums.languages.ENGLISH else request.path
+        translated_url = '/cy' + path if language == enums.languages.ENGLISH else path
     else:
-        translated_url = request.path.replace('/cy/', '/')
+        translated_url = path.replace('/cy/', '/')
 
     if not page:
         return render(request, '404.html')
