@@ -206,16 +206,40 @@ DICT = {
         "en": "Compulsory"
     },
     "cookie_message": {
-        "cy": "Mae’r wefan hon yn defnyddio cwcis i storio gwybodaeth ar eich cyfrifiadur.",
-        "en": "This website uses cookies to store information on your computer."
+        "cy": "Rydym yn defnyddio cwcis angenrheidiol i wneud ein gwefan weithio. Hoffem ddefnyddio cwcis ychwanegol i ddangos sut mae'r wefan yn cael ei defnyddio. NID ydym yn defnyddio hyn ar gyfer bwrpasau marchnata. Rhowch wybod i ni os ydych chi'n hapus a hyn?",
+        "en": """We use necessary cookies to make our site work. We’d like to use additional cookies to show us how the site is used. We DO NOT use this for marketing purposes. Please let us know if you are happy with this?"""
+    },
+    "cookie_settings": {
+        "cy": "Gosodiadau cwci",
+        "en": "Cookie Settings"
     },
     "cookie_more": {
-        "cy": "Hoffwn wybod mwy",
-        "en": "I’d like to find out more"
+        "cy": "Polisi cwci a phreifatrwydd Darganfod Prifysgol",
+        "en": "Discover Uni Cookie and Privacy Policy"
     },
     "cookie_ok": {
-        "cy": "Rwy’n fodlon â’r cwcis",
-        "en": "I’m happy with cookies"
+        "cy": "Rwy'n hapus gyda phob cwcis",
+        "en": "I’m happy with all cookies"
+    },
+    "cookie_settings_intro": {
+        "cy": "Ydych chi am dderbyn cwcis dadansoddol i'n helpu i wella profiad y defnyddiwr?",
+        "en": "Do you want to accept analytics cookies to help us improve user experience?"
+    },
+    "cookie_settings_accept": {
+        "cy": "Ie",
+        "en": "Yes"
+    },
+    "cookie_settings_reject": {
+        "cy": "Na",
+        "en": "No"
+    },
+    "cookie_settings_no_marketing": {
+        "cy": "Nid ydym yn defnyddio cwcis ar gyfer dibenion marchnata",
+        "en": "We do not use cookies for marketing purposes."
+    },
+    "cookie_settings_save": {
+        "cy": "Achub gosodiadau cwci",
+        "en": "Save cookie settings"
     },
     "copyright": {
         "cy": "Hawlfraint 2020. Cedwir Pob Hawl",
@@ -544,8 +568,8 @@ DICT = {
         "en": "Filters"
     },
     "final_year_students": {
-      "cy": "Gofynnir i bob myfyriwr blwyddyn olaf gwblhau'r Arolwg Cenedlaethol o Fyfyrwyr.",
-      "en": "All final year students are asked to complete the National Student Survey."
+        "cy": "Gofynnir i bob myfyriwr blwyddyn olaf gwblhau'r Arolwg Cenedlaethol o Fyfyrwyr.",
+        "en": "All final year students are asked to complete the National Student Survey."
     },
     "financial_support_details": {
         "cy": "Cymorth ariannol",
