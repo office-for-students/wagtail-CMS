@@ -210,7 +210,7 @@ DICT = {
         "en": """We use necessary cookies to make our site work. We’d like to use additional cookies to show us how the site is used. We DO NOT use this for marketing purposes. Please let us know if you are happy with this?"""
     },
     "cookie_settings": {
-        "cy": "Gosodiadau cwci",
+        "cy": "Gosodiad cwci",
         "en": "Cookie Settings"
     },
     "cookie_more": {
@@ -238,7 +238,7 @@ DICT = {
         "en": "We do not use cookies for marketing purposes."
     },
     "cookie_settings_save": {
-        "cy": "Achub gosodiadau cwci",
+        "cy": "Achub gosodiad cwci",
         "en": "Save cookie settings"
     },
     "copyright": {
