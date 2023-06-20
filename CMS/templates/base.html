@@ -36,6 +36,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="{% sass_src 'scss/coursesearch.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
     <link href="{% sass_src 'scss/global.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+    <link href="{% sass_src 'scss/cookie.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147556197-1"></script>
     {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
     {% endblock %}
@@ -44,11 +46,12 @@
     <script type="text/javascript" src="{% get_static_prefix %}js/main.js?{% code_version %}"></script>
     <script type="text/javascript" src="{% get_static_prefix %}js/search_box.js"></script>
     <script type="text/javascript" src="{% get_static_prefix %}js/load-error-popup.js?{% code_version %}"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}cookie.js?{% code_version %}" defer></script>
     {% block extra_js %}
         {# Override this in templates to add extra javascript #}
     {% endblock %}
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147556197-1"></script>
+
 
     <!-- Bootstrap - Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -57,19 +60,7 @@
     <!-- Bootstrap - Latest compiled JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-    <!-- Siteimprove -->
-    <script type="text/javascript">
-        /*<![CDATA[*/
-        (function () {
-            var sz = document.createElement('script');
-            sz.type = 'text/javascript';
-            sz.async = true;
-            sz.src = '//siteimproveanalytics.com/js/siteanalyze_267004.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(sz, s);
-        })();
-        /*]]>*/
-    </script>
+
 </head>
 
 <body class="{% block body_class %}{% endblock %}">
@@ -77,43 +68,12 @@
 
 {% wagtailuserbar %}
 
-<!-- ********* Uncomment for Covid Banner **************** -->
-<!-- <div>
-            <a class="covid-19-banner" href="{% if page.is_english %}/corona-covid-19-information/{% else %}
-    /cy/cynnwys-corona-covid-19/{% endif %}">
-                {% get_translation key='covid_19_info' language=page.get_language %}
-            </a>
-        </div>
-
-
-
-
-        {% if 'covid-19' in page.title|lower or "course details" in page.title|lower or "compare courses" in page.title|lower %}
-            <div class="mx-2">
-                <div class="alert check-courses-details-banner" role="alert">
-                    <div class="check-courses-details-banner__exclamation-sign">
-                        <img src="/static/images/large-exclamation-mark.svg" alt="">
-                    </div>
-    
-                    <div class="check-courses-details-banner__message">
-                        <b>
-
-
-            {% get_translation key='Important You need to check the details of any courses you are considering or applying for on the university or college website' language=page.get_language %}</b></br>
-
-
-
-            {% get_translation key='Many courses due to start in autumn 2020 are being changed to online delivery in whole or part, start dates and course content/structures may also be changing' language=page.get_language %}
-                    </div>
-                </div>
-            </div>
-        {% endif %} -->
-<!-- **************** -->
 <main>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#discover-modal" style="display:none;" >
-    {{ page.title}}
-</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#discover-modal"
+            style="display:none;">
+        {{ page.title }}
+    </button>
 
     <div id="main-content" tabindex="-1">
         {% block content %}{% endblock %}
@@ -127,7 +87,7 @@
     {% include 'partials/feedback-form.html' %}
 
     {% if not cookies_accepted and not load_error %}
-        {% include 'partials/cookie-banner.html' %}
+        {% include 'cookie-banner.html' %}
     {% endif %}
 
     {% if load_error %}
@@ -137,6 +97,21 @@
 
 {% include 'partials/footer.html' %}
 </body>
+<script>
+    let analytics_on = document.cookie.includes("discoverUniAnalyticsCookies")
+    if (analytics_on) {
 
+        // Google Analytics
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'UA-147556197-1');
+
+    }
+</script>
 </html>
 

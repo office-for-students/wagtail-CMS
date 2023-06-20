@@ -1,0 +1,66 @@
+{% load discover_uni_tags %}
+
+<article class="cookie-banner" aria-labelledby="cookie-intro" tabindex="-1" id="cookie-banner" style="display: none">
+    <section class="__message" id="cookie-intro">
+        {% get_translation key='cookie_message' language=page.get_language %}
+    </section>
+
+    <section class="__wrapper">
+        {% if page.is_english %}
+            <button id="cookie_settings" type="button" href="/cookies/" class="__find-out-more">
+                {% get_translation key='cookie_settings' language=page.get_language %}
+
+            </button>
+        {% else %}
+            <button id="cookie_settings" type="button" href="/cy/cwcis/" class="__find-out-more">
+                {% get_translation key='cookie_settings' language=page.get_language %}
+            </button>
+        {% endif %}
+
+        <button id="cookie_accept" type="submit" class="__ok" tabindex="-1">
+            {% get_translation key='cookie_ok' language=page.get_language %}
+        </button>
+    </section>
+    <section class="__footer">
+        {% if page.is_english %}
+            <a href="/cookies/">{% get_translation key="cookie_more" language=page.get_language %}</a>
+        {% else %}
+            <a href="/cy/cwcis/">{% get_translation key="cookie_more" language=page.get_language %}</a>
+        {% endif %}
+    </section>
+</article>
+
+<article class="cookie-settings" style="display: none;" aria-labelledby="cookie-settings" tabindex="-1"
+         id="cookie-settings">
+    <section class="__message">
+        <p>
+            <span id="cookie-settings">{% get_translation key='cookie_settings' language=page.get_language %}</span>
+            <br/>
+            {% get_translation key='cookie_settings_intro' language=page.get_language %}
+        </p>
+    </section>
+
+    <section class="__wrapper">
+        <form id="settings_form">
+            <label>
+                <input type="radio" id="yes_accept" name="extra_cookies" value="YES" checked="checked"
+                       title="I'm fine with analytic cookies">
+                {% get_translation key="cookie_settings_accept" language=page.get_language %}
+            </label>
+            <label>
+                <input type="radio" id="no_decline" name="extra_cookies" value="NO"
+                       title="Do not user analytic cookies">
+                {% get_translation key="cookie_settings_reject" language=page.get_language %}
+            </label>
+            <p>{% get_translation key="cookie_settings_no_marketing" language=page.get_language %}</p>
+            <button type="submit">{% get_translation key="cookie_settings_save" language=page.get_language %}</button>
+        </form>
+    </section>
+    <section class="__footer">
+        {% if page.is_english %}
+            <a href="/cookies/">{% get_translation key="cookie_more" language=page.get_language %}</a>
+        {% else %}
+            <a href="/cy/cwcis/">{% get_translation key="cookie_more" language=page.get_language %}</a>
+        {% endif %}
+    </section>
+</article>
