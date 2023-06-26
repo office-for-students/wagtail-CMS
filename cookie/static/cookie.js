@@ -3,9 +3,16 @@
         constructor(banner, setting) {
             this.banner = banner;
             this.settings = setting;
+            const queryString = window.location.search;
+            console.log(queryString);
+            const urlParams = new URLSearchParams(queryString);
+            if (urlParams.get("cooke_accepted") === true) {
+
+            }
+
             if (window.location.href.indexOf("cookies") > -1) {
                 this.hideCookieBanners()
-            }else if (
+            } else if (
                 !document.cookie.includes("discoverUniAnalyticsCookiesDeclined")
                 && !document.cookie.includes("discoverUniAnalyticsCookies")
             ) {
@@ -61,14 +68,14 @@
         declinedCookies() {
             let CookieDate = new Date;
             CookieDate.setFullYear(CookieDate.getFullYear() +1);
-            document.cookie = "discoverUniAnalyticsCookiesDeclined=declined; expires=" + CookieDate.toUTCString() + ";";
+            document.cookie = "discoverUniAnalyticsCookiesDeclined=declined; expires=" + CookieDate.toUTCString() + ";path=/";
             window.location.reload()
         }
 
         acceptAllCookies() {
             let CookieDate = new Date;
             CookieDate.setFullYear(CookieDate.getFullYear() +1);
-            document.cookie = "discoverUniAnalyticsCookies=accepted; expires=" + CookieDate.toUTCString() + ";";
+            document.cookie = "discoverUniAnalyticsCookies=accepted; expires=" + CookieDate.toUTCString() + ";path=/";
             window.location.reload()
         }
 
