@@ -3,12 +3,6 @@
         constructor(banner, setting) {
             this.banner = banner;
             this.settings = setting;
-            const queryString = window.location.search;
-            console.log(queryString);
-            const urlParams = new URLSearchParams(queryString);
-            if (urlParams.get("cooke_accepted") === true) {
-
-            }
 
             if (window.location.href.indexOf("cookies") > -1) {
                 this.hideCookieBanners()
