@@ -3,7 +3,9 @@
         constructor(banner, setting) {
             this.banner = banner;
             this.settings = setting;
-            if (
+            if (window.location.href.indexOf("cookies") > -1) {
+                this.hideCookieBanners()
+            }else if (
                 !document.cookie.includes("discoverUniAnalyticsCookiesDeclined")
                 && !document.cookie.includes("discoverUniAnalyticsCookies")
             ) {
@@ -12,7 +14,6 @@
             } else {
                 this.hideCookieBanners()
             }
-
 
         }
 
