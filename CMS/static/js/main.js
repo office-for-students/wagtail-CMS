@@ -140,35 +140,6 @@ const BookmarkEvent = new Event('bookmarkchanged');
         }
 
 
-        // COOKIE BANNER
-        var CookieBanner = function (wrapper) {
-            this.wrapper = $(wrapper);
-            this.setup();
-        }
-
-        CookieBanner.prototype = {
-            setup: function () {
-                this.acceptBtn = this.wrapper.find('.cookie-banner__ok');
-                this.findOutMoreBtn = this.wrapper.find('.cookie-banner__find-out-more');
-                if (localStorage.discoverUniCookies === 'accepted') {
-                    document.cookie = "discoverUniCookies=accepted;";
-                    this.wrapper.hide();
-                }
-
-                this.startWatchers();
-            },
-
-            startWatchers: function () {
-                var that = this;
-
-                this.acceptBtn.click(function () {
-                    document.cookie = "discoverUniCookies=accepted;";
-                    localStorage.discoverUniCookies = 'accepted';
-                    that.wrapper.hide();
-                });
-            }
-        }
-
         // SCROLL TO TOP BUTTON
         var ScrollToTop = function (scrollBtn) {
             this.scrollBtn = $(scrollBtn);
@@ -1100,11 +1071,6 @@ const BookmarkEvent = new Event('bookmarkchanged');
                 new NavBookMarkBtn(bookmarkBtns[i]);
             }
 
-            var cookieBanner = $('.cookie-banner');
-            for (var i = 0; i < cookieBanner.length; i++) {
-                new CookieBanner(cookieBanner[i]);
-            }
-
             var dropdowns = $('[class$=selector]');
             new PageDropdowns(dropdowns);
 
@@ -1146,17 +1112,6 @@ const BookmarkEvent = new Event('bookmarkchanged');
                     scrollToTop.removeClass('show');
                 }
             });
-
-            // GOOGLE  ANALYTICS
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-
-            gtag('js', new Date());
-
-            gtag('config', 'UA-147556197-1', {'anonymize_ip': true});
         }
 
         $(document).on('page:load', init);
