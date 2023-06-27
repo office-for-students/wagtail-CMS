@@ -215,7 +215,7 @@ DICT = {
     },
     "cookie_more": {
         "cy": "Polisi cwci a phreifatrwydd Darganfod Prifysgol",
-        "en": "Discover Uni Cookie and Privacy Policy"
+        "en": "Discover Uni Privacy and Cookie Policy"
     },
     "cookie_ok": {
         "cy": "Rwy'n hapus gyda phob cwcis",
