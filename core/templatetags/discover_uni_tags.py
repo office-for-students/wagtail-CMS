@@ -57,7 +57,6 @@ def get_translation(*_, **kwargs):
     key = kwargs.get('key')
     language = kwargs.get('language')
     term = translations.term_for_key(key, language)
-
     if 'substitutions' in kwargs:
         term = term % kwargs.get('substitutions')
     return term
@@ -70,7 +69,11 @@ def create_list(*args):
 
 @register.simple_tag
 def insert_values_to_rich_text(*_, **kwargs):
-    return kwargs.get('content').source.format(*kwargs.get('substitutions'))
+    try:
+        return kwargs.get('content').source.format(*kwargs.get('substitutions'))
+    except AttributeError:
+        kwargs.get('content').format(*kwargs.get('substitutions'))
+
 
 
 @register.simple_tag
