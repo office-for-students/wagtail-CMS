@@ -279,7 +279,7 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         new_course_unavail = {"header": header, "body": UNAVAILABLE["new_course_earnings_unavail_body"][language]}
         context.update({"new_course_unavail": new_course_unavail})
 
-    return render(request, 'courses/course_detail_page.html', context)
+    return render(request, 'courses/new_course_details/course_detail_page.html', context)
 
 
 def compare_courses(request, language=enums.languages.ENGLISH):
