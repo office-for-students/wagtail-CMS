@@ -1,0 +1,11 @@
+{% load i18n %}
+
+{% if amount or backup_amount %}
+<div class="box average-earnings">
+    <p class="box-title">{% trans "average_earnings" %}</p>
+    <p class="box-bold">£{% if amount %}{{ amount }}{% else %}{{ backup_amount }}{% endif %}</p>
+    <p class="box-small">{% if amount %}{% trans description %}{% else %}{% trans leo_3_description %}{% endif %}</p>
+</div>
+{% else %}
+    {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_no_data_box.html' %}
+{% endif %}
