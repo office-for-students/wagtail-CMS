@@ -350,8 +350,8 @@ STATISTICS = {
         "en": "Positive about the chances to explore ideas and concepts in depth."
     },
     "positive_about_the_chances_to_bring_together_information_and_ideas_from_different_topics": {
-        "cy": "Yn gadarnhaol ynghylch y cyfleoedd i archwilio syniadau a chysyniadau'n fanwl.",
-        "en": "Positive about the chances to explore ideas and concepts in depth."
+        "cy": "Yn gadarnhaol am y cyfleoedd i ddod â gwybodaeth a syniadau o wahanol bynciau ynghyd.",
+        "en": "Positive about the chances to bring together information and ideas from different topics."
     },
     "the_course_introduces_subjects_and_skills_well_in_a_way_that_builds_on_what_i_have_already_learned": {
         "cy": "Mae’r cwrs yn cyflwyno pynciau a sgiliau’n dda mewn ffordd sy’n adeiladu ar yr hyn yr wyf eisoes wedi’i ddysgu.",
