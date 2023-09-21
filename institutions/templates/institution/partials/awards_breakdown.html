@@ -1,0 +1,25 @@
+{% load static %}
+{% load discover_uni_tags %}
+
+<div class="tef-block">
+    <div class="tef-images">
+        <div>
+            <img src="{% static image %}" alt="">
+        </div>
+        <p>{% get_translation key=participated_in language=page.get_language %}</p>
+    </div>
+    <div class="tef-links">
+        <div class="tef-breakdown">
+            {% if left_text %}
+                <p>{% get_translation key=left_text language=page.get_language %}</p>
+            {% endif %}
+            <a class="tef-btn">{% get_translation key=left_btn language=page.get_language %}</a>
+        </div>
+        <div>
+            {% if right_text %}
+                <p>{% get_translation key="learn_about_tef" language=page.get_language %}</p>
+            {% endif %}
+            <a class="tef-btn">{% get_translation key="more_about_tef" language=page.get_language %}</a>
+        </div>
+    </div>
+</div>

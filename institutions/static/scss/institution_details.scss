@@ -1,318 +1,240 @@
-@import '../../../CMS/static/scss/fonts';
-@import '../../../CMS/static/scss/variables';
-@import '../../../CMS/static/scss/buttons';
+@import "variables";
+@import "screen_size";
 
+.institution-container {
+  @include container();
 
-.institution-details {
-    font-family: "Nunito Sans", sans-serif;
-    &__qa-report-link, &__tef-report-link{
-        color: #2a8384;
-        text-decoration: underline;
-        font-weight:normal;
-    }
-    .institution-details__lead {
-        text-align: center;
-        margin-top: 28px;
+  .outer-block {
+    padding: 15px;
+    margin: 60px 0;
+    border-radius: 8px;
+    background: var(--url-background-image);
+    background-size: cover;
 
-        border-bottom: 3px solid $ux-grey-1;
-
-        .institution-details__icon {
-            width: 50px;
-            height: auto;
-        }
-
-        .institution-details__name {
-            @include desktop-body-font--bold-mixin();
-            margin-top: 17px;
-            margin-bottom: 27px;
-        }
-
-        .overview-block{
-            padding:10px;
-        }
-
-        .institution-details__overview {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content:space-between;
-            margin: 10px 10px 40px;
-
-            .row-flex {
-                display: flex;
-                flex-wrap: wrap;
-            }
-
-            .institution-details__overview-item {
-
-                padding: 20px 15px;
-                margin-bottom: 14px;
-                height:100%;
-                background-color: $divider-grey;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                div.item{
-                    overflow:auto;
-                }
-
-                .institution-details__overview-item-heading {
-                    
-                    @include xs-heading-mixin();
-                    margin: 0;
-                    margin-bottom: 5px;
-                    text-align: center;
-                }
-
-                .institution-details__overview-item-value {
-                    @include desktop-body-font--bold-mixin();
-                    margin: 0;
-
-                    color: $ux-grey-2;
-                    text-align: center;
-                }
-
-                a.institution-details__overview-item-value {
-                    color: $link-blue;
-                    text-align: center;
-                }
-            }
-        }
+    h1 {
+      font-size: 2.375rem;
+      color: white;
     }
 
-    .institution-details__course-button {
-        @include green-gradient-mixin();
-        @include small-font--bold-mixin();
-
-        font-size: 1.25rem;
-        margin-bottom: 50px;
-        padding: 8px 25px;
-
-        border-radius: 61.5609px;
-        line-height: 19px;
-        max-width: 270px;
-        color: $white;
-        cursor: pointer;
+    a {
+      color: white;
+      margin-left: auto;
+      margin-bottom: 20px;
     }
 
-    .institution-details__qa, .institution-details__tef {
-        padding: 60px 40px 70px;
+    .inner-block {
+      width: 358px;
+      padding: 16px;
+      background-color: rgba(52, 137, 211, 0.4);
+      color: white;
+      margin-top: 20px;
+
+      div {
+        &:nth-child(odd) {
+          border-bottom: 1px solid white;
+          padding-bottom: 15px;
+        }
+
+        h2 {
+          font-size: 2.125rem;
+          font-weight: 600;
+          color: white;
+        }
+
+        a {
+          width: 166px;
+          border-radius: 70px;
+          border: 1px solid white;
+          padding: 5px 18px 6px 18px;
+          color: white;
+        }
+      }
+    }
+
+    .bottom-block {
+      width: 358px;
+      padding: 16px;
+      background-color: rgba(52, 137, 211, 0.4);
+      border-radius: 8px;
+      color: white;
+      margin-top: 12px;
+    }
+
+    .tef-block {
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      padding: 16px;
+      margin-top: 12px;
+      width: 358px;
+
+      .tef-images {
+        .tef-logo {
+          height: 80%;
+          width: 33%;
+          margin-right: 3px;
+        }
+
+        .tef-outcomes {
+          display: flex;
+          flex-direction: column;
+          width: 66%;
+          margin-bottom: 3px;
+        }
 
 
-        .institution-details__qa-heading, .institution-details__tef-heading {
-            @include s-heading-mixin();
+      }
 
+      .tef-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        div {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          a {
+            width: 88%;
+            border-radius: 70px;
+            border: 1px solid black;
+            padding: 12px 20px;
+            color: black;
+            margin-left: 0;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include lg {
+  .institution-container {
+    .outer-block {
+      display: flex;
+      flex-direction: column;
+      border-radius: 8px;
+
+      h1 {
+        margin-left: 16px;
+      }
+
+      .registered-ofs {
+        float: right;
+        margin-bottom: 20px;
+        margin-right: 16px;
+      }
+
+      .inner-block {
+        display: flex;
+        flex-direction: row;
+        width: 95%;
+        margin: 0 auto 0 auto;
+        padding: 20px;
+
+        div {
+          color: white;
+
+          h2 {
             margin-top: 0;
-            margin-bottom: 10px;
+          }
 
-            color: $ux-grey-2;
+          p {
+            opacity: 1;
+          }
+
+          width: 50%;
+          padding: 10px;
+
+          &:nth-child(odd) {
+            border-bottom: none;
+            border-right: 1px solid white;
+          }
         }
+      }
 
-        .institution-details__qa-body, .institution-details__tef-body {
-            p {
-                @include desktop-body-font-mixin();
+      .bottom-block {
+        width: 95%;
+        margin: 10px auto 0 auto;
 
-                margin-top: 0;
-            }
+        div {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          text-decoration: none;
+
+          .view-courses {
+            border-radius: 70px;
+            padding: 14px 20px;
+            align-items: center;
+            color: black;
+            background-color: white;
+            margin-left: 0;
+          }
         }
-    }
+      }
 
-    // UNCOMMENT BELOW WHEN ADDING TEF DETAILS BACK
-    //.institution-details__qa {
-    //    padding-bottom: 0;
-    //}
+      .tef-block {
+        width: 95%;
+        margin: 10px auto 0 auto;
+        flex-direction: column;
 
-    .institution-details__tef {
-        margin-top: 70px;
-        border-top: 3px solid $ux-grey-1;
+        .tef-images {
+          display: flex;
+          flex-direction: row;
+          border-bottom: 1px solid #EBEBEB;
+          padding: 5px;
 
-        .institution-details__tef-outcome {
-            margin-bottom: 10px;
-            @include xs-heading--bold-mixin();
+          div {
+            border-radius: 8px;
+            width: 288px;
 
             img {
-                width: 105px;
-                height: auto;
+              width: 100%;
+              border-radius: 8px;
+              mask-image: radial-gradient(circle, transparent 0%, black 100%);
             }
+          }
+
+          p {
+            margin-left: 16px;
+          }
+
+          p {
+            margin-top: 0;
+          }
         }
+
+        .tef-links {
+          display: flex;
+          flex-direction: row;
+          padding: 10px;
+
+          .tef-breakdown {
+            margin-right: 20px;
+            border-right: 1px solid #EBEBEB
+          }
+
+          div {
+            width: 50%;
+            height: 122px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            a {
+              width: 90%;
+              border-radius: 70px;
+              border: 1px solid black;
+              padding: 12px 20px;
+              color: black;
+              margin-left: 0;
+              text-decoration: none;
+            }
+          }
+        }
+      }
     }
-
-    .institution-details__apr {
-        padding: 20px 40px 0;
-
-        .institution-details__apr-heading {
-            @include xs-heading--bold-mixin();
-        }
-
-        .institution-details__apr-body {
-            p, li {
-                @include desktop-body-font-mixin();
-
-                margin-top: 0;
-            }
-        }
-    }
-
-    .institution-explanation {
-        display: none;
-        position: absolute;
-        left: 0;
-        z-index: 100;
-        margin-top: 10px;
-        width: 100%;
-
-        background-color: $white;
-        -webkit-box-shadow: 5px 5px 10px 0 rgba(0,0,0,0.75);
-        -moz-box-shadow: 5px 5px 10px 0 rgba(0,0,0,0.75);
-        box-shadow: 5px 5px 10px 0 rgba(0,0,0,0.75);
-
-        .institution-explanation__heading {
-            @include s-heading--bold-mixin();
-
-            position: relative;
-            padding: 25px 30px 20px;
-            margin: 0;
-
-        }
-
-        .institution-explanation__close {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            padding: 0;
-
-            img {
-                width: 20px;
-            }
-        }
-
-        .institution-explanation__body {
-            padding: 0 30px 25px;
-
-            p {
-                @include mobile-body-font-mixin();
-
-                margin-top: 0;
-                margin-bottom: 15px;
-            }
-
-            img {
-                width: 20px;
-                height: auto;
-            }
-            img.left {
-                width: 100px;
-                height: auto;
-            }
-        }
-    }
-}
-
-@media only screen and (min-width: 770px) {
-    .institution-details {
-        .institution-details__lead {
-            margin-top: 37px;
-
-            .institution-details__icon {
-                width: 59px;
-                height: auto;
-            }
-
-            .institution-details__name {
-                @include m-heading--bold-mixin();
-                margin-top:25px;
-                margin-bottom: 40px;
-            }
-
-            .institution-details__overview {
-                margin-bottom: 50px;
-
-                .institution-details__overview-item {
-                    padding: 30px 15px;
-                    margin-bottom: 0;
-
-                    .institution-details__overview-item-heading {
-                        @include xs-heading-mixin();
-                        margin-bottom: 10px;
-                    }
-
-                    .institution-details__overview-item-value {
-                        @include desktop-body-font--bold-mixin();
-                        color: $ux-grey-2;
-                    }
-                }
-            }
-        }
-        
-        .institution-details__course-button {
-            font-size: 22px;
-
-            margin-bottom: 50px;
-            padding: 8px 90px;
-
-            border-radius: 61.5609px;
-            line-height: 19px;
-            max-width: 600px;
-        }
-
-        .institution-details__qa, .institution-details__tef {
-            .institution-details__qa-heading, .institution-details__tef-heading {
-                @include m-heading-mixin();
-
-                color: $ux-grey-2;
-            }
-        }
-
-        .institution-details__tef {
-            .institution-details__tef-outcome {
-                margin-bottom: 15px;
-
-                img {
-                    width: 115px;
-                    height: auto;
-                }
-            }
-        }
-
-        .institution-explanation {
-            display: none;
-            width: 75%;
-        }
-    }
-}
-
-
-@media only screen and (max-width: 575px){
-    .institution-details{
-        margin-left:auto!important;
-        margin-right:auto!important;
-    }
-}
-@media only screen and (min-width: 576px) and (max-width: 766px){
-    .institution-details{
-        width: 540px!important;
-        margin-left:auto!important;
-        margin-right:auto!important;
-    }
-}
-@media only screen and (min-width: 767px) and (max-width: 991px){
-    .institution-details{
-        width: 720px!important;
-        margin-left:auto!important;
-        margin-right:auto!important;
-    }
-}
-@media only screen and (min-width: 992px) and (max-width: 1199px){
-    .institution-details{
-        width: 960px!important;
-        margin-left:auto!important;
-        margin-right:auto!important;
-    }
-}
-@media only screen and (min-width: 1200px){
-    .institution-details{
-        width: 1140px!important;
-        margin-left:auto!important;
-        margin-right:auto!important;
-    }
+  }
 }

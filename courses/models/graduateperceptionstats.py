@@ -21,6 +21,7 @@ class GraduatePerceptionStatistics:
             self.response_rate = go_voice_work_data.get('go_work_resp_rate')
             self.go_work_agg = go_voice_work_data.get('go_work_agg')
             self.aggregation_level = go_voice_work_data.get('go_work_agg')
+            self.aggregation_year = go_voice_work_data.get('aggregation_year')
 
             unavailable_data = go_voice_work_data.get('unavailable', {})
             if unavailable_data == "":
