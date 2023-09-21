@@ -1612,4 +1612,8 @@ OPTIONALS = {
         'en': 'Yes',
         'cy': 'Ydy'
     },
+    'course_data_summary': {
+        "en": "Course data summary",
+        "cy": "Crynodeb o ddata'r cwrs"
+    }
 }
