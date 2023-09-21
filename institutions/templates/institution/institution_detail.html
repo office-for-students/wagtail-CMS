@@ -42,11 +42,11 @@
                 {% include 'institution/partials/awards_breakdown.html' with image="images/tef_logo.svg" right_btn="more_about_tef" right_text="jms_explanation" %}
             {% elif institution.tef_outcome %}
                 {% include 'institution/partials/awards_breakdown.html' with participated_in="participated_in_tef" image=tef_image left_text="tef_breakdown" right_text="learn_about_tef" left_btn="click_here" right_btn="more_about_tef" %}
-            {% elif institution.hefcw %}
+            {% elif institution.pub_ukprn_country_code == "XI" %}
                 {% include 'institution/partials/awards_breakdown.html' with participated_in="participated_in_hefcw" image="images/hefcw.svg" left_btn="more_about_hefcw" left_text="hefcw_explanation" right_text="hefcw_and_tef" right_btn="more_about_tef" %}
-            {% elif institution.is_scottish %}
+            {% elif institution.pub_ukprn_country_code == "XH" %}
                 {% include 'institution/partials/awards_breakdown.html' with participated_in="not_tef" image="images/sfc.svg" left_btn="more_about_sfc" left_text="sfc_explanation" right_btn="more_about_tef" %}
-            {% elif institution.is_irish %}
+            {% elif institution.pub_ukprn_country_code == "XI" %}
                 {% include 'institution/partials/awards_breakdown.html' with participated_in="not_tef" image="images/department_of_economy_logo.svg" left_btn="more_about_doe" left_text="doe_explanation" right_btn="more_about_tef" %}
             {% endif %}
         </div>
