@@ -526,5 +526,17 @@ STATISTICS = {
         "cy": "Mae Undeb y Myfyrwyr (cymdeithas neu urdd) yn cynrychioli diddordeb academaidd myfyrwyr yn dda.",
         "en": "The students' union (association or guild) represents students' academic interest well."
     },
+    "question_26": {
+        "cy": "Mae gwybodaeth am wasanaethau cymorth llesiant meddwl wedi’i chyfleu’n dda.",
+        "en": "Information about mental wellbeing support services has been well communicated."
+    },
+    "question_27": {
+        "cy": "Rwyf wedi teimlo’n rhydd i fynegi fy syniadau, fy marn a fy nghredoau.",
+        "en": "I have felt free to express my ideas, opinions and beliefs."
+    },
+    "question_28": {
+        "cy": "Ar y cyfan, rwyf yn fodlon ar safon y cwrs.",
+        "en": "Overall I am satisfied with the quality of the course."
+    },
 
 }
