@@ -20,6 +20,7 @@ class JobTypeStatistics:
                                                                  'unknown_professions', 'number_of_students'])
 
             self.aggregation_level = data_obj.get('aggregation_level')
+            self.aggregation_year = data_obj.get('aggregation_year')
             self.non_professional_or_managerial_jobs = data_obj.get('non_professional_or_managerial_jobs')
             self.professional_or_managerial_jobs = data_obj.get('professional_or_managerial_jobs')
             self.unknown_professions = data_obj.get('unknown_professions')

@@ -27,6 +27,7 @@ class EntryStatistics:
                                                                  'other_qualifications', 'number_of_students'])
 
             self.aggregation_level = data_obj.get('aggregation_level', 0)
+            self.aggregation_year = data_obj.get('aggregation_year')
             self.number_of_students = data_obj.get('number_of_students')
 
             self.a_level = data_obj.get('a-level')
