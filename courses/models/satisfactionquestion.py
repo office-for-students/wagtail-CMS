@@ -2,7 +2,6 @@ class SatisfactionQuestion:
 
     def __init__(self, question_data, question_number):
         self.show_data_point = False
-        print("QUESTION DATA", type(question_data))
         if type(question_data) is int:
             # self.show_data_point = 'agree_or_strongly_agree' in question_data
             # self.description = question_data.get('description', '')
