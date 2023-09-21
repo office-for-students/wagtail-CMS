@@ -32,7 +32,7 @@
                     <p class="one-year__overview-sublead mb-3 text-center text-lg-left additional-class">
                     {{block.value.lead}}
 
-                        {% create_list course_details.data_from_html continuation_stats.number_of_students as substitutions %}
+                        {% create_list continuation_stats.aggregation_year course_details.data_from_html continuation_stats.number_of_students as substitutions %}
                         {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                         {{ subbed_text | richtext }}
                     </p>
@@ -50,7 +50,7 @@
                                 {{block.value.section_heading}}{% if course_details.has_multiple_one_year_stats %}:
                                     {{continuation_stats.display_subject_name}}{% endif %}
                             </h2>
-                            {% create_list course_details.data_from_html continuation_stats.number_of_students as substitutions %}
+                            {% create_list continuation_stats.aggregation_year course_details.data_from_html continuation_stats.number_of_students as substitutions %}
                             {% insert_values_to_rich_text content=block.value.data_source substitutions=substitutions as subbed_text %}
                             {{ subbed_text | richtext }}
                         </div>
