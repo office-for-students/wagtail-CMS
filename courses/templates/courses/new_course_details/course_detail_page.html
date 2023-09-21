@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% load sass_tags %}
+{% load discover_uni_tags %}
+{#{% block title %}#}
+{#    {% if page.seo_title %}#}
+{#        {{ course.seo_title | safe }} | {% trans 'discover_uni' %}#}
+{#    {% else %}#}
+{#        {{ course.seo_title | safe }} | {% trans 'discover_uni' %}#}
+{#    {% endif %}#}
+{#{% endblock %}#}
+
+{% block search_description %}
+    <meta name="description"
+          content="Discover what students studying {{ course.display_title }} at {{ course.institution.pub_ukprn_name }} went onto do and earn after the course."/>
+{% endblock %}
+
+{% block extra_css %}
+    <link href="{% sass_src 'scss/partials/new_course_detail.scss' %}" rel="stylesheet" type="text/css">
+    <link href="{% sass_src 'scss/partials/popup.scss' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/course_detail_accordions.js' %}"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script type="text/javascript" src="{% static 'js/doughnut_chart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bar_chart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/compare-selector.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/back-button.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    {% include 'courses/new_course_details/course_detail_content.html' %}
+{% endblock %}
+
