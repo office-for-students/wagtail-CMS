@@ -35,14 +35,15 @@ def get_accordion_dataset(title: str, dataset, call_to_action=List[Dict[Any, Dic
 def get_sub_satisfaction(language) -> List:
     list_sub_accordions = [
         (translations.term_for_key(key="teaching_on_my_course", language=language), [1, 2, 3, 4]),
-        (translations.term_for_key(key="learning_opportunities", language=language), [5, 6, 7]),
-        (translations.term_for_key(key="assessment_and_feedback", language=language), [8, 9, 10, 11]),
-        (translations.term_for_key(key="academic_support", language=language), [12, 13, 14]),
+        (translations.term_for_key(key="learning_opportunities", language=language), [5, 6, 7, 8, 9]),
+        (translations.term_for_key(key="assessment_and_feedback", language=language), [10, 11, 12, 13]),
+        (translations.term_for_key(key="academic_support", language=language), [14, 15]),
         (translations.term_for_key(key="organisation_and_management",
-                                   language=language), [15, 16, 17]),
-        (translations.term_for_key(key="learning_resources", language=language), [18, 19, 20]),
-        (translations.term_for_key(key="learning_community", language=language), [21, 22]),
-        (translations.term_for_key(key="student_voice", language=language), [23, 24, 25, 26])
+                                   language=language), [16, 17, 18]),
+        (translations.term_for_key(key="learning_resources", language=language), [19, 20, 21]),
+        (translations.term_for_key(key="student_voice", language=language), [22, 23, 24, 25]),
+        (translations.term_for_key(key="mental_wellbeing", language=language), [26]),
+        (translations.term_for_key(key="freedom_of_expression", language=language), [27]),
     ]
     return list_sub_accordions
 

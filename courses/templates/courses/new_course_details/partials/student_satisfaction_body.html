@@ -108,7 +108,7 @@
                             </div>
                         {% endif %}
 
-                        {% if overall_stats.satisfaction_stats.show_voice_stats %}
+                        {% if overall_stats.satisfaction_stats.wellbeing_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                                 <!-- Mental wellbeing services box-->
                                 {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Mental wellbeing services" q1=overall_stats.satisfaction_stats.question_26 %}
@@ -116,14 +116,10 @@
                         {% endif %}
 
                         <!-- england only-->
-                        {% if overall_stats.satisfaction_stats.show_voice_stats %}
+                        {% if course.country.code == "XF" %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                                 <!-- freedom of expression (england) box-->
-                                {% if course.country.code == "XF" %}
-                                    {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Freedom of expression" q1=question_stats.question_28 description="free_to_express" no_data_key="no_data_available" %}
-                                {% else %}
-                                    {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Freedom of expression" no_data_key="not_available_ni_scot_wales" %}
-                                {% endif %}
+                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Freedom of expression" q1=question_stats.question_28 description="free_to_express" no_data_key="no_data_available" %}
                             </div>
                         {% endif %}
                         <!-- wales, scotland and ireland only-->
