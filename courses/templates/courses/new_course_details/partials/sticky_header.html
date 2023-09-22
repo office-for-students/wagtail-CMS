@@ -1,0 +1,29 @@
+{% load static %}
+
+<nav class="navbar sticky-top navbar-expand-md fixed-top navbar-dark bg-dark" style="display: none;"
+     id="sticky_nav_course_detail">
+    <div class="navbar-nav flex-md-row">
+        {% for section in sections %}
+            {% with accordion=section.1.all.0 %}
+                <a class="nav-item nav-link scrollto d-none d-lg-inline {% if forloop.counter == 1 %} active {% endif %}"
+                   href="#{{ section.0 }}-{{ forloop.counter }}"
+                   id="a_{{ section.0 }}-{{ forloop.counter }}">{{ accordion.heading }}</a>
+            {% endwith %}
+        {% endfor %}
+        <div class="dropdown d-xs-inline d-lg-none">
+            <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown"
+               class="nav-link dropdown-toggle text-white" href="#">
+                <span id="selected">Menu</span><span class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-menu-center">
+                {% for section in sections %}
+                    {% with accordion=section.1.all.0 %}
+                        <li>
+                            <a class="nav-item nav-link scrollto" href="#{{ section.0 }}-{{ forloop.counter }}"
+                               id="b_{{ section.0 }}-{{ forloop.counter }}">{{ accordion.heading }}</a>
+                        </li>
+                    {% endwith %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>

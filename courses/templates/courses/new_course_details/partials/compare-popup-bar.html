@@ -1,0 +1,54 @@
+{% load i18n %}
+
+<div class="compare-popup">
+    <div class="compare-popup__wrapper">
+        <button class="compare-popup__close">{% trans 'close' %} x</button>
+        <div class="compare-popup__add">
+            <div class="compare-popup__left_container">
+                <p class="course_added">
+                    <i class="fas fa-check-circle checkmark"></i>
+                    {% trans 'course_saved' %}</p>
+                <p class="compare-popup__count">
+                    {% trans 'n_courses_bookmarked_pt_1' %} <strong><span class="count"></span>&nbsp;{% trans 'saved_courses_lower' %}</strong>
+                    <a class="compare-popup-saved_courses_link" href="/courses">{% trans 'view_saved_courses' %}</a>
+                </p>
+            </div>
+
+            <div class="compare-popup__not-enough">
+
+                <a class="green_button compare_courses_btn disable"
+                   href="/{% trans 'course_comparison_link' %}"
+                   onclick="document.getElementById('compareForm').submit();">
+                    <span class="compare_courses_btn-text">{% trans 'can_compare_courses' %}</span>
+                </a>
+                <p class="not_enough">{% trans 'not_enough' %}</p>
+            </div>
+
+            <div>
+                <p class="compare-popup__enough">
+
+                    <a id="compare-courses-button" class="green_button compare_courses_btn"
+                       href="/{% trans 'course_comparison_link' %}"
+                       onclick="document.getElementById('compareForm').submit();">
+                        <span class="compare_courses_btn-text">{% trans 'can_compare_courses' %}</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="compare-popup__remove">
+            <p>{% trans 'course_removed' %}
+            <a href="{{manage_link}}">{% trans 'bookmarked_courses' %}</a></p>
+        </div>
+
+        <div class="compare-popup__too-many">
+            <p>
+                <span class="compare-popup__max">25</span> {% trans 'course_too_many' %}
+            </p>
+            <p>
+                {% trans 'remove_others' %}
+                <a href="{{manage_link}}">{% trans 'bookmarked_courses' %}</a>
+            </p>
+        </div>
+    </div>
+</div>
