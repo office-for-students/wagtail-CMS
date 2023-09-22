@@ -1,0 +1,43 @@
+{% load static %}
+<div class="comparison_row">
+    <div class="column-title_container header">
+        <div class="column-first">
+            {{ title }}
+        </div>
+    </div>
+
+    <div class="small-flex-div">
+        {% for course in data %}
+            <div class="column cc-column-{{ forloop.counter0 }}">
+                {% with column_id=forloop.counter0 %}
+                    <div class="column-{{ index }}{{ accordion.title }}">
+                        {% for header in course.header %}
+                            <div
+                                 class="unavailable-container
+                                    column-{{ column_id }}{{ accordion.title }} item-{{ forloop.counter0 }}"
+                                    {% if not forloop.first %}hidden{% endif %}>{{ header }}
+                                {% if course.message %}
+                                    <img class="information-icon" src="{% static "images/information 1.svg"%}" alt>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        {% for message in course.message %}
+                            <div style="padding:0" class="no_data_container"
+                                 column-{{ column_id }}{{ accordion.title }} item-{{ forloop.counter0 }}>
+                                <div
+                                    class="information-text hidden info-box-{{column_id}}
+                                        {% if not forloop.first %}hidden{% endif %}">
+                                    <img class="close_button_mobile"
+                                        src="{% static 'images/icon-close.svg' %}">
+                                    {{ message|safe }}
+                                </div>
+                             </div>
+                        {% endfor %}
+                    </div>
+                {% endwith %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
