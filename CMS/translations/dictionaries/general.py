@@ -1615,5 +1615,29 @@ OPTIONALS = {
     'course_data_summary': {
         "en": "Course data summary",
         "cy": "Crynodeb o ddata'r cwrs"
+    },
+    'about_this_university': {
+        "en": "About this university",
+        "cy": "Ynglŷn â'r brifysgol hon"
+    },
+    'student_union_links': {
+        "en": "Student union links",
+        "cy": "Cysylltiadau Undeb y Myfyrwyr"
+    },
+    'explore_courses': {
+        "en": "Explore courses",
+        "cy": "Archwilio cyrsiau"
+    },
+    'courses_at_this_uni': {
+        "en": "[] courses available at this institution",
+        "cy": "Mae [] o gyrsiau ar gael yn y sefydliad hwn"
+    },
+    'view_courses': {
+        "en": "View all courses",
+        "cy": "Gweld pob cwrs"
+    },
+    'average_earnings': {
+        "cy": "Enillion cyfartalog",
+        "en": "Average Earnings"
     }
 }
