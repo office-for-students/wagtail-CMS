@@ -1,0 +1,345 @@
+{% load static discover_uni_tags wagtailcore_tags %}
+{% load i18n %}
+{% load humanize %}
+
+<!-- what you need to know about employment data box -->
+{% include "courses/partials/info_box.html" with header="employment_need_to_know" content="employment_info_box" url="graduate_link" read_more="read_more_about_employment" %}
+
+
+{% if course_details.has_multiple_employment_stats %}
+    <ul class="nav nav-tabs mt-2" id="employment-after-course-tab">
+        {% for employment_stats in course_details.employment_stats %}
+            <li class="nav-item">
+                <a class="nav-link {% if not forloop.counter0 %} active {% endif %}"
+                   id="employment-after-course-{{ forloop.counter }}-tab" data-toggle="tab"
+                   href="#employment-after-course-{{ forloop.counter }}"
+                   aria-controls="employment-after-course-{{ forloop.counter }}">
+                    {{ employment_stats.display_subject_name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <hr class="nav-tabs-hr"/>
+{% endif %}
+
+<div class="tab-content">
+    {% for employment_stats in course_details.employment_stats %}
+        <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}"
+             id="employment-after-course-{{ forloop.counter }}" role="tabpanel"
+             aria-labelledby="employment-after-course-{{ forloop.counter }}-tab">
+            {% if employment_stats.display_stats %}
+                {% if employment_stats.work_and_or_study %}
+
+                    <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
+                        <!-- blue box -->
+
+                        <!-- go on to work or study box -->
+                        <div class="employment-after-course__data-point-overview mt-3 mb-4 p-3 d-flex flex-fill flex-wrap row mx-1">
+                            <div class="col-lg-4 col-md-12 align-self-stretch ">
+                                <p class="employment-info-box">
+                                    {{ employment_stats.work_and_or_study }}% {{ block.value.six_month_employment_lead }}
+                                </p>
+                            </div>
+                            <div class="col-lg-7 col-md-12 align-self-stretch pt-2 text-lg-left">
+                                <ul class="explanation-text">
+                                    {% create_list employment_stats.aggregation_year course_details.data_from_html employment_stats.number_of_students employment_stats.response_rate as substitutions %}
+                                    {% insert_values_to_rich_text content=block.value.six_month_employment_data_source substitutions=substitutions as subbed_text %}
+                                    {{ subbed_text | richtext }}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h2 class="employment-after-course__stats-heading pt-3 mb-4"><!-- title -->
+                            {{ block.value.six_month_employment_roles_heading }}
+                        </h2>
+
+                        <div class=" col-lg-12 col-md-12 align-self-stretch my-auto pt-2 bar-background">
+                            <!-- bar chart -->
+                            <div class="employment-after-course__data-point">
+                                <div class="employment-after-course__chart-block">
+                                    <div class="employment-after-course__chart discover-uni-chart bar my-2"
+                                         data-value="{{ employment_stats.in_work }}"
+                                         data-label="employment-after-course-now_working"
+                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='now_working' language=page.get_language %}"
+                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='now_working' language=page.get_language %}">
+                                        <div class="row d-flex justify-content-between">
+                                            <div class="col-lg-7 order-md-1 order-lg-2 text-lg-right">
+                                                {% include 'courses/new_course_details/partials/bar_chart.html' %}
+                                            </div>
+                                            <div class="col-lg-5 order-md-2 order-lg-1 text-left text-lg-left">
+                                                <label class="employment-after-course__chart-label"
+                                                       aria-hidden="true">{% get_translation key='now_working' language=page.get_language %}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="employment-after-course__chart discover-uni-chart bar my-2"
+                                         data-value="{{ employment_stats.doing_further_study }}"
+                                         data-label="employment-after-course-doing_further_study"
+                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='doing_further_study' language=page.get_language %}"
+                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='doing_further_study' language=page.get_language %}">
+                                        <div class="row d-flex justify-content-between">
+                                            <div class="col-lg-7 order-md-1 order-lg-2 text-lg-right">
+                                                {% include 'courses/new_course_details/partials/bar_chart.html' %}
+                                            </div>
+                                            <div class="col-lg-5 order-md-2 order-lg-1 text-left text-lg-left">
+                                                <label class="employment-after-course__chart-label"
+                                                       aria-hidden="true">{% get_translation key='doing_further_study' language=page.get_language %}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="employment-after-course__chart discover-uni-chart bar my-2"
+                                         data-value="{{ employment_stats.in_work_and_study }}"
+                                         data-label="employment-after-course-study_and_working"
+                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='study_and_working' language=page.get_language %}"
+                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='study_and_working' language=page.get_language %}">
+                                        <div class="row d-flex justify-content-between">
+                                            <div class="col-lg-7 order-md-1 order-lg-2 text-lg-right">
+                                                {% include 'courses/new_course_details/partials/bar_chart.html' %}
+                                            </div>
+                                            <div class="col-lg-5 order-md-2 order-lg-1 text-left text-lg-left">
+                                                <label class="employment-after-course__chart-label"
+                                                       aria-hidden="true">{% get_translation key='study_and_working' language=page.get_language %}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="employment-after-course__chart discover-uni-chart bar my-2"
+                                         data-value="{{ employment_stats.unemp_prev_emp_since_grad }}"
+                                         data-label="employment-after-course-unemployed-prev"
+                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='unemp_prev_emp_since_grad' language=page.get_language %}"
+                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='unemp_prev_emp_since_grad' language=page.get_language %}">
+                                        <div class="row d-flex justify-content-between">
+                                            <div class="col-lg-7 order-md-1 order-lg-2 text-lg-right text-left text-lg-right">
+                                                {% include 'courses/new_course_details/partials/bar_chart.html' %}
+                                            </div>
+                                            <div class="col-lg-5 order-md-2 order-lg-1 text-left text-lg-left">
+                                                <label class="employment-after-course__chart-label"
+                                                       aria-hidden="true">{% get_translation key='unemp_prev_emp_since_grad' language=page.get_language %}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="employment-after-course__chart discover-uni-chart bar my-2"
+                                         data-value="{{ employment_stats.unemp_not_work_since_grad }}"
+                                         data-label="employment-after-course-unemployed-never"
+                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='unemp_not_work_since_grad' language=page.get_language %}"
+                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='unemp_not_work_since_grad' language=page.get_language %}">
+                                        <div class="row d-flex justify-content-between">
+                                            <div class="col-lg-7 order-md-1 order-lg-2 text-lg-right text-left text-lg-right">
+                                                {% include 'courses/new_course_details/partials/bar_chart.html' %}
+                                            </div>
+                                            <div class="col-lg-5 order-md-2 order-lg-1 text-left text-lg-left">
+                                                <label class="employment-after-course__chart-label"
+                                                       aria-hidden="true">{% get_translation key='unemp_not_work_since_grad' language=page.get_language %}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="employment-after-course__chart discover-uni-chart bar my-2"
+                                         data-value="{{ employment_stats.other }}"
+                                         data-label="employment-after-course-other"
+                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='other' language=page.get_language %}"
+                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='other' language=page.get_language %}">
+                                        <div class="row d-flex justify-content-between">
+                                            <div class="col-lg-7 order-md-1 order-lg-2 text-lg-right">
+                                                {% include 'courses/new_course_details/partials/bar_chart.html' %}
+                                            </div>
+                                            <div class="col-lg-5 order-md-2 order-lg-1 text-left text-lg-left">
+                                                <label class="employment-after-course__chart-label text-left text-lg-right"
+                                                       aria-hidden="true">{% get_translation key='other' language=page.get_language %}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- end of bar chart -->
+
+                        <div class="col-lg-12 col-md-12 align-self-stretch my-auto"><!-- source text -->
+
+                            {% if employment_stats.aggregation_level != 14 %}
+                                {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
+                            {% endif %}
+
+                            <div class="explanation-text">
+                                {% create_list employment_stats.aggregation_year course_details.data_from_html employment_stats.number_of_students employment_stats.response_rate as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.six_month_employment_data_source substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </div>
+                        </div>
+                    </div>
+
+                {% elif employment_stats and employment_stats.display_unavailable_info %}
+                    <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
+                        <div class="col-12 align-self-stretch my-auto">
+                            <h2 class="employment-after-course__stats-heading pt-3 mb-4">
+                                {{ block.value.six_month_employment_roles_heading }}
+                                {% if course_details.has_multiple_employment_stats %}
+                                    {{ employment_stats.display_subject_name }}{% endif %}
+                            </h2>
+                            {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
+                        <div class="col-12 align-self-stretch my-auto">
+                            <h2 class="employment-after-course__stats-heading pt-3 mb-4">
+                                {{ block.value.six_month_employment_roles_heading }}
+                                {% if course_details.has_multiple_employment_stats %}
+                                    {{ employment_stats.display_subject_name }}{% endif %}
+                            </h2>
+                            {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_data %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% elif employment_stats and employment_stats.display_unavailable_info %}
+                <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
+                    <div class="col-12 align-self-stretch my-auto">
+                        <h2 class="employment-after-course__stats-heading pt-3 mb-4">
+                            {{ block.value.six_month_employment_roles_heading }}
+                            {% if course_details.has_multiple_employment_stats %}
+                                {{ employment_stats.display_subject_name }}{% endif %}
+                        </h2>
+                        {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=employment_stats.display_unavailable_info %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="employment-after-course__block mt-2 mb-4 p-3 d-flex flex-wrap row mx-1">
+                    <div class="col-12 align-self-stretch my-auto">
+                        <h2 class="employment-after-course__stats-heading pt-3 mb-4">
+                            {{ block.value.six_month_employment_roles_heading }}
+                            {% if course_details.has_multiple_employment_stats %}
+                                {{ employment_stats.display_subject_name }}{% endif %}
+                        </h2>
+                        {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+
+{% if course_details.has_multiple_job_type_stats and course_details.has_multiple_job_lists %}
+    <ul class="nav nav-tabs mt-2" id="occupation-types-tab">
+        {% for jobtype_stats, joblist_stats in course_details.sync_occupation_stats %}
+            <li class="nav-item">
+                <a class="nav-link {% if not forloop.counter0 %} active {% endif %}"
+                   id="occupation-types-{{ forloop.counter }}-tab" data-toggle="tab"
+                   href="#occupation-types-{{ forloop.counter }}"
+                   aria-controls="occupation-types-{{ forloop.counter }}">
+                    {{ jobtype_stats.display_subject_name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <hr class="nav-tabs-hr"/>
+{% endif %}
+
+<div class="tab-content">
+    {% for jobtype_stats, joblist_stats in course_details.sync_occupation_stats %}
+
+        <div class="tab-pane {% if not forloop.counter0 %} show active {% endif %}"
+             id="occupation-types-{{ forloop.counter }}" role="tabpanel"
+             aria-labelledby="occupation-types-{{ forloop.counter }}-tab">
+            <div class="employment-after-course_occupation-block mt-2 mb-4 p-3  mx-1">
+                <div class="d-flex flex-wrap row m-0">
+                    <div class="col-12 align-self-stretch my-auto">
+                        <h2 class="employment-after-course__stats-heading text-left pt-3 mb-4">
+                            {{ block.value.six_month_employment_roles_label_explanation_heading }}
+                        </h2>
+                        {% if jobtype_stats.number_of_students and joblist_stats.jobs %}
+
+                            {% if jobtype_stats.aggregation_level != 14 %}
+                                {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
+                            {% endif %}
+
+                            <div class="employment-after-course_explanation-text">
+                                {% create_list jobtype_stats.aggregation_year course_details.data_from_html jobtype_stats.number_of_students jobtype_stats.response_rate as substitutions %}
+                                {% insert_values_to_rich_text content=block.value.six_month_employment_data_source substitutions=substitutions as subbed_text %}
+                                {{ subbed_text | richtext }}
+                            </div>
+                        {% elif jobtype_stats and jobtype_stats.display_unavailable_info %}
+                            {% if jobtype_stats.aggregation_level != 14 %}
+                                {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=jobtype_stats.display_unavailable_info %}
+                            {% endif %}
+                        {% else %}
+                            {% if jobtype_stats.aggregation_level != 14 %}
+                                {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=course_details.display_no_earnings_info %}
+                            {% endif %}
+                        {% endif %}
+
+                    </div>
+                    {% if jobtype_stats.number_of_students and joblist_stats.jobs %}
+                        <div class="discover-uni-container">
+                            <div class="employment-after-course_occupation-statistics d-flex row align-items-stretch">
+                                <div class="col-md-12 col-lg-4 align-self-stretch my-2">
+                                    <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
+                                        <h3 class="pt-1 text-center text-lg-left  mb-3">{{ jobtype_stats.professional_or_managerial_jobs }}% {% get_translation key='highly_skilled' language=page.get_language %}</h3>
+                                        {% for job in joblist_stats.jobs %}
+                                            {% if job.hs == "1" %}
+                                                <div class="row">
+                                                    <ul>
+                                                        <li>{{ job.percentage }}% {{ job.job }}</li>
+                                                    </ul>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-4 align-self-stretch my-2">
+                                    <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
+                                        <h3 class="pt-1 text-center text-lg-left mb-3">{{ jobtype_stats.non_professional_or_managerial_jobs }}% {% get_translation key='other_work' language=page.get_language %}</h3>
+                                        {% for job in joblist_stats.jobs %}
+                                            {% if job.hs == "0" %}
+                                                <div class="row">
+                                                    <ul>
+                                                        <li>{{ job.percentage }}% {{ job.job }}</li>
+                                                    </ul>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-4 align-self-stretch my-2">
+                                    <div class="employment-after-course_occupation-stat col-lg-12 p-3 h-100">
+                                        <h3 class="pt-1 text-center text-lg-left mb-3">{{ jobtype_stats.unknown_professions }}% {% get_translation key='unknown_work' language=page.get_language %}</h3>
+                                        <div class="row">
+                                        <ul>
+                                            <li>{% get_translation key='employment_type_unknown' language=page.get_language %}</li>
+                                        </ul>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                {% if jobtype_stats.number_of_students and joblist_stats.jobs %}
+                    <div class="explanation">
+                        <div class="explanation__link">
+                            <img class="information-icon" src="{% static 'images/legacy/information 1.svg' %}" alt="">
+                            <button class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</button>
+                        </div>
+
+                        <div tabindex="-1" class="chart-label-explanation" role="dialog">
+                            <h3 class="chart-label-explanation__heading">
+                                {{ block.value.occupation_types_label_explanation_heading | safe }}
+
+                                <button class="chart-label-explanation__close"><img
+                                        src="{% static 'images/legacy/close-grey.svg' %}" alt="Close  pop up"></button>
+                            </h3>
+
+                            <div class="chart-label-explanation__body">
+                                {{ block.value.occupation_types_label_explanation_body |safe }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    {% endfor %}
+</div>

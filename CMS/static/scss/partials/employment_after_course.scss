@@ -1,0 +1,381 @@
+@import './fonts';
+@import './new_variables';
+
+.employment-after-course__block, .employment-after-course_occupation-block {
+  background-color: $box-background;
+  border-radius: 8px;
+  color: #000000;
+
+
+  .employment-after-course__job-percentage p {
+    font-weight: bold;
+  }
+
+  .employment-after-course_explanation-text .rich-text, .rich-text {
+    font-family: 'Nunito Sans', sans-serif;
+    color: $brownish-grey;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.5;
+
+    a {
+      text-decoration: underline;
+      color: $dark-green-blue;
+      line-height: 1.5;
+    }
+  }
+
+  .employment-after-course_occupation-statistics {
+    .employment-after-course_occupation-stat {
+      background-color: #ffffff;
+      border-width: 3px;
+      border-style: solid none none none;
+      border-color: transparent;
+      border-radius: 8px;
+
+      h2 {
+        color: #000000;
+        font-family: 'Nunito Sans', sans-serif;
+        font-weight: normal;
+        font-size: 1.5rem;
+        line-height: 1.5;
+      }
+
+      h3 {
+        color: #000000;
+        font-family: 'Nunito Sans', sans-serif;
+        font-weight: bold;
+        font-size: 1.125rem;
+        line-height: 1.5;
+      }
+
+      .employment-after-course_occ-type-percent p {
+        text-align: center;
+      }
+
+      .employment-after-course_occ-type-title {
+        text-align: left;
+      }
+    }
+
+  }
+
+  .employment-info-box {
+    font-size: 1.875rem;
+    line-height: 1.5;
+    color: #000000;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: normal;
+    text-align: left;
+  }
+  .employment-after-course__stats-heading {
+    @include s-heading-mixin();
+    font-family: 'Nunito Sans', sans-serif;
+    color: $black;
+    font-weight: normal;
+    font-size: 1.875rem;
+  }
+
+  .employment-after-course__data-point {
+
+    .employment-after-course__figure, .employment-after-course__figure--sector {
+      @include m-heading-mixin();
+
+      margin-bottom: 0;
+
+      line-height: 1.5;
+      color: $gradient-light-green;
+    }
+
+    .employment-after-course__figure--sector {
+      margin-top: 20px;
+    }
+
+    .employment-after-course__figure-salary-range {
+      @include mobile-body-font--bold-mixin();
+
+      margin-top: 5px;
+    }
+
+    .employment-after-course__chart-block {
+      .employment-after-course__chart {
+
+        &:last-of-type {
+          margin-bottom: 10px;
+        }
+
+        .employment-after-course__chart-label {
+          @include small-font-mixin();
+
+          margin-top: 5px;
+          color: #000000;
+          font-family: 'Nunito Sans', sans-serif;
+          font-weight: normal;
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+
+  p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    color: $brownish-grey;
+    line-height: 1.5;
+  }
+
+  a {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    color: $blue2;
+    text-decoration: underline;
+    line-height: 1.5;
+  }
+}
+
+.bar-background {
+  background-color: white;
+  border-radius: 8px;
+}
+
+.employment-after-course__lead {
+  @include mobile-body-font-mixin();
+
+  color: #000000;
+  text-align: center;
+  border: solid 3px $duck-egg-blue;
+
+
+  .employment-after-course__lead-title {
+    line-height: 1.5;
+    margin-bottom: 27px;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #000000;
+    letter-spacing: normal;
+    font-weight: normal;
+    font-size: 1.75rem;
+
+  }
+
+  .employment-after-course__lead-intro {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #000000;
+    letter-spacing: normal;
+    font-weight: normal;
+    font-size: 0.875rem;
+  }
+
+  h3 {
+    @include mobile-body-font--bold-mixin();
+
+    margin: 0;
+    margin-top: 20px;
+  }
+}
+
+.employment-after-course__lead-block {
+  @extend .employment-after-course__block;
+
+  padding-bottom: 0;
+
+  .employment-after-course__data-point {
+    margin-bottom: 0;
+  }
+}
+
+.employment-after-course__data-point-overview {
+  @include desktop-body-font-mixin();
+
+  border: solid 1px #0A1D42;
+  border-radius: 8px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: #000000;
+    text-decoration: none;
+
+    a {
+      line-height: 1.5;
+      text-decoration: underline;
+      color: $dark-green-blue;
+    }
+  }
+
+  .explanation-text p, .explanation-text {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: $brownish-grey;
+  }
+
+  .explanation-text .rich-text p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: $brownish-grey;
+  }
+
+  .employment-after-course__data-point-overview-lead {
+    @include l-heading-mixin();
+    font-family: 'Nunito Sans', sans-serif;
+    color: #000000;
+    font-weight: normal;
+    font-size: 32px;
+  }
+}
+
+@media only screen and (min-width: 770px) {
+  .employment-after-course__block .employment-after-course__stats-heading, .employment-after-course__lead-block .employment-after-course__stats-heading, .employment-after-course_occupation-block .employment-after-course__stats-heading {
+    font-size: 1.875rem;
+  }
+  .employment-after-course__block .employment-after-course_explanation-text .rich-text, .employment-after-course__lead-block .employment-after-course_explanation-text .rich-text, .employment-after-course__block .rich-text, .employment-after-course__lead-block .rich-text, .employment-after-course_occupation-block .employment-after-course_explanation-text .rich-text, .employment-after-course_occupation-block .rich-text {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+  .employment-after-course__block .employment-after-course_explanation-text .rich-text a, .employment-after-course__lead-block .employment-after-course_explanation-text .rich-text a, .employment-after-course__block .rich-text a, .employment-after-course__lead-block .rich-text a, .employment-after-course_occupation-block .employment-after-course_explanation-text .rich-text a, .employment-after-course_occupation-block .rich-text a {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+  .employment-after-course_occupation-block {
+    div.not-enough-data-disclaimer h4 {
+      font-size: 1.25rem !important;
+    }
+  }
+  .employment-after-course__block {
+    div.not-enough-data-disclaimer h4 {
+      font-size: 1.25rem !important;
+    }
+
+    .explanation-text p, .explanation-text {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: normal;
+      color: $brownish-grey;
+    }
+
+    .explanation-text .rich-text p {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: normal;
+      color: $brownish-grey;
+    }
+
+    .employment-after-course__stats-heading {
+      @include s-heading-mixin();
+      font-family: 'Nunito Sans', sans-serif;
+      color: $black;
+      font-weight: normal;
+      font-size: 1.875rem;
+    }
+
+    .employment-after-course__data-point {
+      margin-bottom: 38px;
+      @include mobile-body-font-mixin();
+
+      .employment-after-course__figure-salary-range {
+        @include mobile-body-font--bold-mixin();
+      }
+
+      .employment-after-course__chart-block {
+        .employment-after-course__chart {
+
+          &:last-of-type {
+            margin-bottom: 10px;
+          }
+
+          .employment-after-course__chart-label {
+            @include desktop-body-font-mixin();
+            color: #000000;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: normal;
+            font-size: 1.125rem;
+            // margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .employment-after-course__lead {
+    @include desktop-body-font-mixin();
+    color: #000000;
+    text-align: center;
+    border: solid 3px $duck-egg-blue;
+
+    p {
+      margin: 0;
+    }
+
+    .employment-after-course__lead-title {
+      @include m-heading-mixin();
+      font-family: 'Nunito Sans', sans-serif;
+      color: #000000;
+      letter-spacing: normal;
+      font-weight: normal;
+      font-size: 32px;
+
+      .rich-text {
+        color: #000000;
+      }
+    }
+
+    .employment-after-course__lead-intro {
+      font-family: 'Nunito Sans', sans-serif;
+      color: #000000;
+      letter-spacing: normal;
+      font-weight: normal;
+      font-size: 1rem;
+    }
+
+    h3 {
+      @include desktop-body-font--bold-mixin();
+
+      margin: 0;
+      margin-top: 20px;
+    }
+  }
+
+  .employment-after-course__data-point-overview {
+
+
+    p {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: normal;
+      color: $black;
+      text-decoration: none;
+
+      a {
+        font-size: 1rem;
+        font-weight: normal;
+        text-decoration: underline;
+        color: $dark-green-blue;
+      }
+    }
+
+    .explanation-text p, .explanation-text {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: normal;
+      color: $brownish-grey;
+    }
+
+    .employment-after-course__data-point-overview-lead {
+      @include xl-heading-mixin();
+      font-family: 'Nunito Sans', sans-serif;
+      color: #000000;
+      font-weight: normal;
+      font-size: 3rem;
+    }
+  }
+}
+
+#not-enough-data-disclaimer {
+  border: solid 3px #cee9e7 !important;
+  color: $ux-grey-2;
+}
