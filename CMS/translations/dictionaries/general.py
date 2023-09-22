@@ -1636,4 +1636,8 @@ OPTIONALS = {
         "en": "View all courses",
         "cy": "Gweld pob cwrs"
     },
+    'average_earnings': {
+        "cy": "Enillion cyfartalog",
+        "en": "Average Earnings"
+    }
 }
