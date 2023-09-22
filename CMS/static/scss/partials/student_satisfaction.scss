@@ -1,0 +1,497 @@
+@import './fonts';
+@import './new_variables';
+
+
+.sm-chart {
+  display: block;
+}
+
+@media only screen and (min-width: 770px) {
+  .lg-chart {
+    display: block;
+  }
+  .sm-chart {
+    display: none;
+  }
+}
+
+.charts {
+  flex-direction: column;
+}
+
+.satisfaction_subject_name {
+  @include m-heading--bold-mixin();
+
+  margin-top: 70px;
+  margin-bottom: 0;
+
+  color: $brownish-grey;
+
+  & + .student-satisfaction__overview {
+    margin-top: 30px;
+  }
+}
+
+.student-satisfaction__overview {
+  display: flex;
+  flex-direction: row;
+
+  .student-satisfaction_overall-chart {
+    width: 25%;
+    padding: 10px;
+
+  }
+
+  .student-satisfaction__chart-title {
+    width: 70%;
+    text-align: left;
+  }
+
+
+  @include desktop-body-font-mixin();
+
+  #sample-size-text {
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: $brownish-grey;
+  }
+
+  text-align: center;
+  border: solid 1px $royal-blue;
+  border-radius: 8px;
+
+  .student-satisfaction__intro .rich-text p {
+    @include s-heading-mixin();
+    font-size: 0.875rem;
+    color: $brownish-grey;
+    font-weight: normal;
+  }
+
+  .student-satisfaction__intro .rich-text {
+    @include s-heading-mixin();
+    font-size: 0.875rem;
+    color: $brownish-grey;
+    font-weight: normal;
+  }
+
+  .student-satisfaction__intro .rich-text a {
+    color: $blue2;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .student-satisfaction__overview-lead {
+    @include l-heading-mixin();
+    font-family: "Nunito Sans", sans-serif;
+    color: #000000;
+    font-weight: normal;
+    font-size: 32px;
+  }
+
+  p {
+    margin: 10px;
+    font-size: 1.125rem;
+    letter-spacing: normal;
+    line-height: 1.5;
+    font-weight: normal;
+  }
+}
+
+.student-satisfaction__source {
+  padding-top: 30px;
+}
+
+.student-satisfaction__block {
+
+  #sample-size-text {
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: $brownish-grey;
+  }
+
+  .rich-text {
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: $brownish-grey;
+  }
+
+  .student-satisfaction__intro {
+    @include small-font-mixin();
+
+    text-align: left;
+
+    color: $brownish-grey;
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: $blue2;
+      font-weight: normal;
+      text-decoration: underline;
+    }
+
+    .student-satisfaction__nss_logo {
+      margin-top: 5px;
+    }
+  }
+
+  .inside-box {
+    max-width: 1082px;
+
+  }
+
+  .student-satisfaction__data-group {
+    margin-top: 24px;
+    margin-bottom: 5px;
+    background-color: $box-background;
+    padding: 10px;
+    border-radius: 8px;
+
+    .student-satisfaction__title-box {
+      background-color: $royal-blue;
+      color: white;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      margin: 8px;
+      padding: 16px 0;
+      width: 95%;
+
+      h2 {
+        padding: 30px;
+      }
+    }
+
+    .one-box-title {
+      height: 70px;
+      width: 95%;
+      h2 {
+        padding: 10px;
+      }
+    }
+    .fill-if-big {
+      width: 100%;
+    }
+
+    .student-satisfaction__charts {
+      display: flex;
+      flex-wrap: wrap;
+
+      .entry-information__chart-label {
+        @include small-font-mixin();
+        font-family: "Nunito Sans", sans-serif;
+        display: block;
+        margin-top: 7px;
+        color: #666666;
+        font-weight: normal;
+        font-size: 1rem;
+      }
+
+      .student-satisfaction__chart-wrapper {
+        width: 100%;
+        background-color: white;
+        margin: 8px 8px 10px 8px;
+        //padding: 16px;
+        border-radius: 8px;
+
+        .student-satisfaction__chart {
+          .doughnut-chart .highcharts-plot-border {
+            fill: white !important;
+          }
+
+          margin-bottom: 20px;
+
+          .student-satisfaction__chart-title {
+            @include small-font--bold-mixin();
+            font-size: 1rem;
+            text-align: left;
+            margin-bottom: 0;
+            margin-top: 14px;
+            font-weight: normal;
+            color: #505050;
+
+          }
+
+          .student-satisfaction__chart-percentage {
+            font-size: 1.875rem;
+            font-weight: 500;
+            padding-right: 10px;
+          }
+
+          .rich-text p {
+            font-family: "Nunito Sans", sans-serif;
+          }
+        }
+      }
+
+      .top-row, .bottom-row {
+        flex-direction: column;
+        width: 95%;
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: 770px) {
+  .charts {
+    flex-direction: row;
+  }
+  .student-satisfaction__block .student-satisfaction__data-group .one-box-title {
+    height: 70px;
+    width: fit-content;
+  }
+  .student-satisfaction__title-box {
+    padding: 16px;
+  }
+  .student-satisfaction__block .student-satisfaction__data-group .student-satisfaction__charts .top-row, .student-satisfaction__block .student-satisfaction__data-group .student-satisfaction__charts .bottom-row {
+    flex-direction: row;
+    width: 100%;
+  }
+  .student-satisfaction__overview #sample-size-text {
+    font-size: 1rem;
+  }
+  .student-satisfaction__block {
+
+    #sample-size-text {
+      font-size: 1rem;
+      font-weight: normal;
+      color: $brownish-grey;
+      text-align: left;
+    }
+
+    .rich-text {
+      font-size: 1rem;
+      font-weight: normal;
+      color: $brownish-grey;
+    }
+  }
+  .student-satisfaction__overview {
+    // padding: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+
+    .student-satisfaction__intro .rich-text p {
+      font-size: 1rem;
+      color: $brownish-grey;
+      font-weight: normal;
+    }
+
+    .student-satisfaction__intro .rich-text {
+      @include s-heading-mixin();
+      font-size: 1rem;
+      color: $brownish-grey;
+      font-weight: normal;
+    }
+
+    .student-satisfaction__intro .rich-text a {
+      color: $blue2;
+      font-weight: 600;
+      text-decoration: underline;
+      font-size: 1rem;
+    }
+
+    .student-satisfaction__overview-lead {
+      @include xl-heading-mixin();
+      font-family: "Nunito Sans", sans-serif;
+      color: #000000;
+      font-weight: normal;
+      font-size: 1.875rem;
+    }
+
+    p {
+      @include s-heading-mixin();
+      margin-left: 5px;
+      margin-right: 5px;
+      font-size: 1.75rem;
+      font-weight: normal;
+    }
+  }
+
+  .student-satisfaction__block {
+
+    .student-satisfaction__intro {
+      @include small-font-mixin();
+
+      text-align: left;
+      padding-left: 150px;
+      padding-right: 150px;
+
+      color: $brownish-grey;
+
+      p {
+        @include small-font-mixin();
+        color: #0f583e;
+        margin: 0;
+      }
+
+      a {
+        color: $blue2;
+        font-weight: 400;
+        text-decoration: underline;
+      }
+
+      .student-satisfaction__nss_logo {
+        margin-top: 5px;
+      }
+
+    }
+
+    .student-satisfaction__data-group {
+      margin-top: 20px;
+      margin-bottom: 30px;
+      // padding: 1rem;
+
+      .student-satisfaction__data-group-heading {
+        text-align: left;
+        @include s-heading-mixin();
+        margin-top: 0;
+        padding-top: 15px;
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: #000000;
+        margin-bottom: 0;
+
+        p {
+          font-size: 1rem;
+          font-weight: normal;
+        }
+
+        a {
+          font-size: 1rem;
+        }
+      }
+
+      .student-satisfaction__charts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .entry-information__chart-label {
+          @include small-font-mixin();
+          font-family: "Nunito Sans", sans-serif;
+          display: block;
+          margin-top: 7px;
+          color: #666666;
+          font-weight: normal;
+          font-size: 1.125rem;
+        }
+
+        .student-satisfaction__chart-wrapper {
+          //width: 25%;
+          background-color: white;
+          margin: 8px;
+          border-radius: 8px;
+          //padding: 16px;
+
+
+          .student-satisfaction__chart {
+            .student-satisfaction__chart-title {
+              @include small-font--bold-mixin();
+
+              font-size: 1.125rem;
+              font-weight: normal;
+              color: #505050;
+              margin-left: 0.5rem;
+              margin-right: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .charts {
+    .student-satisfaction__chart-wrapper.hero-wrapper {
+      background-color: white;
+      border-radius: 8px;
+      padding: 16px 16px 25px 16px;
+      margin: 8px 0;
+      height: 350px;
+    }
+  }
+
+  .highcharts-container tspan {
+    fill: #358282;
+    font-weight: 600;
+  }
+  .student-satisfaction__chart .discover-uni-chart .doughnut .doughnut-chart {
+    width: 139px;
+    height: 142px;
+    background-image: linear-gradient(
+                    to right,
+                    $core-brand2 0%,
+                    $blue3 36%,
+                    $blue4 100%
+    );
+  }
+  .student-satisfaction__data-group-heading {
+    font-size: 1.25rem;
+  }
+
+  .five-box-outer {
+    margin: 0 16px;
+  }
+  .five-box-wrapper {
+    padding: 5px;
+  }
+  .box-wrapper {
+    padding: 16px;
+  }
+  .five-box-title {
+    min-width: 314px;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+
+
+    .student-satisfaction__data-group:last-child {
+      margin-right: 10px
+    }
+
+    .student-satisfaction__data-group:first-child {
+      margin-left: 10px
+    }
+  }
+  .scrolling-wrapper {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .student-satisfaction__data-group-heading {
+    padding-top: 15px;
+    font-size: 1.25rem;
+  }
+  .student-satisfaction__block .student-satisfaction__data-group .student-satisfaction__charts div {
+    flex-direction: column;
+  }
+  .five-box-wrapper, .box-wrapper {
+    padding: 16px;
+  }
+
+}
+
+
+@media only screen and (min-width: 767px) and (max-width: 991px) {
+  .five-box-outer {
+    margin: 0;
+  }
+  .five-box-title {
+    min-width: 242px;
+  }
+}
