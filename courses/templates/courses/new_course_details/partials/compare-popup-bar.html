@@ -1,53 +1,54 @@
 {% load i18n %}
+{% load discover_uni_tags %}
 
 <div class="compare-popup">
     <div class="compare-popup__wrapper">
-        <button class="compare-popup__close">{% trans 'close' %} x</button>
+        <button class="compare-popup__close">{% get_translation key='close' language=page.get_language %} x</button>
         <div class="compare-popup__add">
             <div class="compare-popup__left_container">
                 <p class="course_added">
                     <i class="fas fa-check-circle checkmark"></i>
-                    {% trans 'course_saved' %}</p>
+                    {% get_translation key='course_saved' language=page.get_language %}</p>
                 <p class="compare-popup__count">
-                    {% trans 'n_courses_bookmarked_pt_1' %} <strong><span class="count"></span>&nbsp;{% trans 'saved_courses_lower' %}</strong>
-                    <a class="compare-popup-saved_courses_link" href="/courses">{% trans 'view_saved_courses' %}</a>
+                    {% get_translation key='n_courses_bookmarked_pt_1' language=page.get_language %} <strong><span class="count"></span>&nbsp;{% get_translation key='saved_courses_lower' language=page.get_language %}</strong>
+                    <a class="compare-popup-saved_courses_link" href="/courses">{% get_translation key='view_saved_courses' language=page.get_language %}</a>
                 </p>
             </div>
 
             <div class="compare-popup__not-enough">
 
                 <a class="green_button compare_courses_btn disable"
-                   href="/{% trans 'course_comparison_link' %}"
+                   href="/{% get_translation key='course_comparison_link' language=page.get_language%}"
                    onclick="document.getElementById('compareForm').submit();">
-                    <span class="compare_courses_btn-text">{% trans 'can_compare_courses' %}</span>
+                    <span class="compare_courses_btn-text">{% get_translation key='can_compare_courses' language=page.get_language %}</span>
                 </a>
-                <p class="not_enough">{% trans 'not_enough' %}</p>
+                <p class="not_enough">{% get_translation key='not_enough' language=page.get_language %}</p>
             </div>
 
             <div>
                 <p class="compare-popup__enough">
 
                     <a id="compare-courses-button" class="green_button compare_courses_btn"
-                       href="/{% trans 'course_comparison_link' %}"
+                       href="/{% get_translation key='course_comparison_link' language=page.get_language %}"
                        onclick="document.getElementById('compareForm').submit();">
-                        <span class="compare_courses_btn-text">{% trans 'can_compare_courses' %}</span>
+                        <span class="compare_courses_btn-text">{% get_translation key='can_compare_courses' language=page.get_language %}</span>
                     </a>
                 </p>
             </div>
         </div>
 
         <div class="compare-popup__remove">
-            <p>{% trans 'course_removed' %}
-            <a href="{{manage_link}}">{% trans 'bookmarked_courses' %}</a></p>
+            <p>{% get_translation key='course_removed' language=page.get_language %}
+            <a href="{{manage_link}}">{% get_translation key='bookmarked_courses' language=page.get_language %}</a></p>
         </div>
 
         <div class="compare-popup__too-many">
             <p>
-                <span class="compare-popup__max">25</span> {% trans 'course_too_many' %}
+                <span class="compare-popup__max">25</span> {% get_translation key='course_too_many' language=page.get_language %}
             </p>
             <p>
-                {% trans 'remove_others' %}
-                <a href="{{manage_link}}">{% trans 'bookmarked_courses' %}</a>
+                {% get_translation key='remove_others' language=page.get_language %}
+                <a href="{{manage_link}}">{% get_translation key='bookmarked_courses' language=page.get_language %}</a>
             </p>
         </div>
     </div>
