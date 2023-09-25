@@ -13,6 +13,7 @@ class SatisfactionStatistics:
         self.response_rate = data_obj.get('response_rate')
         self.nss_country_population = data_obj.get('nss_country_population')
         self.nss_country_aggregation = data_obj.get('nss_country_aggregation')
+        self.nss_country_year = data_obj.get('nss_country_aggregation_year')
         self.nss_country_response_rate = data_obj.get('nss_country_response_rate')
         self.nss_country_subject = data_obj.get('nss_country_subject')
         self.question_1 = SatisfactionQuestion(data_obj.get('question_1'))
