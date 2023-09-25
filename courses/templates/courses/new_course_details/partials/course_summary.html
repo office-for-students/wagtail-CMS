@@ -8,14 +8,14 @@
 
         <div class="box-row">
             {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_average_earnings_box.html' with amount=course.go_salaries_inst.0.med leo3_amount=course.leo3_salaries_inst.0.med unavailable=course.go_salaries_inst.0.display_unavailable_info.reason_heading description="after_15_months" leo3_description="3_years_afer" %}
-            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.employment_stats.0.work_and_or_study description="study_and_working" unavailable=course.employment_stats.0.unavailable_reason_heading %}
+            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.employment_stats.0.in_work_or_study description="study_and_working" unavailable=course.employment_stats.0.unavailable_reason_heading %}
             {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.graduate_perceptions.0.go_work_skills description="usefulness_subtitle" unavailable=course.graduate_perceptions.0.unavailable_reason_heading %}
         </div>
         <div class="box-row">
             {% if course.country.code == "XF" %}
                 {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_9 description="question_9" unavailable=course.satisfaction_stats.0.unavailable_reason_heading %}
             {% else %}
-                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_28 description="question_28" unavailable=course.satisfaction_stats.0.unavailable_reason_heading %}
+                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_28.agree_or_strongly_agree description="question_28" unavailable=course.satisfaction_stats.0.unavailable_reason_heading %}
             {% endif %}
             {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_23 description="question_23" unavailable=course.satisfaction_stats.0.unavailable_reason_heading %}
             {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_16 description="question_16" unavailable=course.satisfaction_stats.0.unavailable_reason_heading %}
