@@ -1,9 +1,9 @@
 {% load static %}
 {% load discover_uni_tags %}
 
-{% if percent.show_data_point %}
+{% if percent != None %}
 <div class="box student-satisfaction">
-    <p class="box-bold">{{ percent.agree_or_strongly_agree }}%</p>
+    <p class="box-bold">{{ percent }}%</p>
     <!--add chart-->
     <p class="box-small">{% get_translation key=description language=page.get_language %}</p>
 </div>
