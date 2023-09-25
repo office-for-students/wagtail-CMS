@@ -1,6 +1,6 @@
 {% load static discover_uni_tags %}
 
-<nav class="navbar sticky-top navbar-expand-md fixed-top navbar-dark bg-dark" style="background-color: pink;" id="sticky_nav_course_detail">
+<nav class="navbar sticky-top navbar-expand-md fixed-top navbar-dark bg-dark" id="sticky_nav_course_detail">
     <div class="navbar-nav flex-md-row">
         {% for accordion in page.accordions %}
             {% should_show_accordion course accordion.value.data_set as show_accordion %}
