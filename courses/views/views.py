@@ -271,6 +271,10 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         'cookies_accepted': request.COOKIES.get('discoverUniCookies')
     })
 
+    if course.institution.pub_ukprn == "10007762":
+        print("GCU")
+        context["gcu_unavailble"] = ""
+
     salary_data = course.go_salaries_inst[0]
     salary_agg = salary_data.aggregate if salary_data.aggregate else course.leo3_salaries_inst[0].aggregate
 
