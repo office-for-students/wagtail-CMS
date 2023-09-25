@@ -425,6 +425,14 @@ STATISTICS = {
         "cy": "Nid yw'r cwestiwn hwn wedi'i gynnwys yn yr Arolwg Cenedlaethol Myfyrwyr yng Nghymru, Gogledd Iwerddon na'r Alban.",
         "en": "This question is not included in the NSS in Wales, Northern Ireland and Scotland."
     },
+    "information_about_mental_wellbeing_support_services_has_been_well_communicated": {
+        "cy": "Mae gwybodaeth am wasanaethau cymorth llesiant meddwl wedi’i chyfleu’n dda.",
+        "en": "Information about mental wellbeing support services has been well communicated."
+    },
+    "i_have_felt_free_to_express_my_ideas_opinions_and_beliefs": {
+        "cy": "Rwyf wedi teimlo’n rhydd i fynegi fy syniadau, fy marn a fy nghredoau.",
+        "en": "I have felt free to express my ideas, opinions and beliefs."
+    },
     # TODO: delete below once ingestion comes back with description
     "question_1": {
         "cy": "Mae'r staff yn dda am esbonio pethau.",
