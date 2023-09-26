@@ -320,7 +320,7 @@
                 {% if jobtype_stats.number_of_students and joblist_stats.jobs %}
                     <div class="explanation">
                         <div class="explanation__link">
-                            <img class="information-icon" src="{% static 'images/legacy/information 1.svg' %}" alt="">
+                            <img class="information-icon" src="{% static 'images/information.svg' %}" alt="">
                             <button class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</button>
                         </div>
 
@@ -329,7 +329,7 @@
                                 {{ block.value.occupation_types_label_explanation_heading | safe }}
 
                                 <button class="chart-label-explanation__close"><img
-                                        src="{% static 'images/legacy/close-grey.svg' %}" alt="Close  pop up"></button>
+                                        src="{% static 'images/close-grey.svg' %}" alt="Close  pop up"></button>
                             </h3>
 
                             <div class="chart-label-explanation__body">
