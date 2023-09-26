@@ -1,10 +1,10 @@
-{% load i18n %}{% load discover_uni_tags %}
+{% load discover_uni_tags %}
 
-{% if amount or backup_amount %}
+{% if amount or leo3_amount %}
 <div class="box average-earnings">
     <p class="box-title">{% get_translation key="average_earnings" language=page.get_language %}</p>
-    <p class="box-bold">£{% if amount %}{{ amount }}{% else %}{{ backup_amount }}{% endif %}</p>
-    <p class="box-small">{% if amount %}{% get_translation key=description language=page.get_language %}{% else %}{% get_translation leo_3_description %}{% endif %}</p>
+    <p class="box-bold">{% if amount %}£{{ amount }}{% else %}£{{ leo3_amount }}{% endif %}</p>
+    <p class="box-small">{% if amount %}{% get_translation key=description language=page.get_language %}{% else %}{% get_translation key=leo3_description language=page.get_language %}{% endif %}</p>
 </div>
 {% else %}
     {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_no_data_box.html' %}
