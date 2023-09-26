@@ -1593,6 +1593,92 @@ DICT = {
         'en': 'Search for a course',
         'cy': 'Chwilio am gwrs'
     },
+    'hefcw_explanation': {
+        'en': "This university/college is regulated by the Higher Education Council for Wales (HEFCW) and is subject to the Quality Assessment Framework for Wales to ensure it meets satisfactory standards of higher education.",
+        'cy': "Rheoleiddir y brifysgol hon / y coleg hwn gan y Swyddfa Fyfyrwyr ac mae wedi'i hasesu o fewn y Fframwaith Rhagoriaeth Addysgu (TEF).  Mae'r fframwaith hwn yn asesu ac yn graddio prifysgolion a cholegau am ragoriaeth uwchlaw casgliad o ofynion sylfaenol.  Mae'r canlyniadau'n adlewyrchu i ba raddau y mae sefydliad yn darparu profiadau a chanlyniadau rhagorol ar gyfer ei amrywiaeth o fyfyrwyr israddedig, ac ar draws ystod ei gyrsiau a phynciau israddedig."
+    },
+    'more_about_hefcw': {
+        'en': "Find out more about HEFCW here",
+        'cy': "Darganfyddwch fwy am HEFCW yma"
+    },
+    'hefcw_url': {
+        'en': "https://www.hefcw.ac.uk/",
+        'cy': "https://www.hefcw.ac.uk/"
+    },
+    'participated_in_hefcw': {
+        'en': " ",
+        'cy': " "
+    },
+    "hefcw_explanation":{
+        "en":"This university/college is regulated by the Higher Education Council for Wales (HEFCW) and is subject to the Quality Assessment Framework for Wales to ensure it meets satisfactory standards of higher education.",
+        "cy":"Rheoleiddir y brifysgol hon / y coleg hwn gan Gyngor Cyllido Addysg Uwch Cymru (CCAUC) ac mae’n ddarostyngedig i Fframwaith Asesu Ansawdd Cymru i sicrhau ei fod yn bodloni safonau addysg uwch boddhaol."
+
+    },
+    "gateway_quality_review_wales":{
+        "en":"This provision is delivered by an institution that is subject to an external quality assurance review",
+        "cy":"Darperir y ddarpariaeth hon gan sefydliad sy'n ddarostyngedig i adolygiad sicrwydd ansawdd allanol"
+    },
+    "quality_enhancement_review":{
+        "en": "This institution is regulated by HEFCW, and is therefore subject to an external quality assurance review",
+        "cy": "Rheoleiddir y sefydliad hwn gan CCAUC, ac felly mae'n ddarostyngedig i adolygiad sicrwydd ansawdd allanol "
+    },
+    "qaa_report_type_blank": {
+        "en": "This provision is awarded by an institution which is regulated by HEFCW, and is therefore subject to an external quality assurance review",
+        "cy": "Dyfernir y ddarpariaeth hon gan sefydliad a reoleiddir gan CCAUC, ac felly mae'n ddarostyngedig i adolygiad sicrwydd ansawdd allanol"
+    },
+
+    "hefcw_and_tef": {
+        "en": "This university/college is regulated by the Higher Education Council for Wales (HEFCW) and is subject to the Quality Assessment Framework for Wales to ensure it meets satisfactory standards of higher education.",
+        "cy": "Rheoleiddir y brifysgol hon / y coleg hwn gan Gyngor Cyllido Addysg Uwch Cymru (CCAUC) ac mae’n ddarostyngedig i Fframwaith Asesu Ansawdd Cymru i sicrhau ei fod yn bodloni safonau addysg uwch boddhaol."
+    },
+    "more_about_hefcw_tef_href":{
+        "en":"See the latest report here",
+        "cy":"Gweler yr adroddiad diweddaraf yma"
+    },
+    "sfc_explanation": {
+        "en": "This university is regulated by the Scottish Funding Council and is subject to Scottish Quality Enhancement Arrangements",
+        "cy": "Rheoleiddir y brifysgol hon gan Gyngor Cyllido'r Alban ac mae'n ddarostyngedig i Drefniadau Gwella Ansawdd yr Alban"
+    },
+    "more_about_sfc": {
+        "en": "Find out about the Scottish Funding Council here",
+        "cy": "Dysgwch am Gyngor Cyllido'r Alban yma"
+    },
+    "sfc_href": {
+        "en": "https://www.sfc.ac.uk/",
+        "cy": "https://www.sfc.ac.uk/"
+    },
+    "more_about_qaa_scotland": {
+        "en": "This university is subject to Quality Enhancement and Standards Review (previously ELIR) by QAA. You can find the latest review report at the link below",
+        "cy": "Mae'r brifysgol hon yn ddarostyngedig i Adolygiad Gwella Ansawdd a Safonau (ELIR gynt) gan yr Asiantaeth Sicrhau Ansawdd ar gyfer Addysg Uwch. Gallwch ddod o hyd i'r adroddiad adolygu diweddaraf drwy ddilyn y ddolen isod"
+    },
+    "more_about_qaa_scotland_btn_href": {
+        "en": "https://www.qaa.ac.uk/scotland/en/reviewing-higher-education-in-scotland/scottish-quality-enhancement-arrangements/review-reports",
+        "cy": "https://www.qaa.ac.uk/scotland/en/reviewing-higher-education-in-scotland/scottish-quality-enhancement-arrangements/review-reports"
+    },
+    "more_about_qaa_scotland_btn": {
+        "en": "See the latest report here",
+        "cy": "Gweler yr adroddiad diweddaraf yma"
+    },
+    "ni_explanation_economy": {
+        "en": "The Department for the Economy is responsible for the regulation of the higher education sector in Northern Ireland and this University /College has been subject to previous review to ensure that it meets satisfactory standards",
+        "cy": "Adran yr Economi sy’n gyfrifol am reoleiddio’r sector addysg uwch yng Ngogledd Iwerddon ac mae’r brifysgol hon / y coleg hwn wedi bod yn ddarostyngedig i adolygiad blaenorol i sicrhau ei fod yn bodloni safonau boddhaol"
+    },
+    "ni_explanation_economy_btn": {
+        "en": "Find out about the Departement for the Economy here",
+        "cy": "Darganfyddwch fwy am Adran yr Economi yma"
+    },
+    "ni_explanation_economy_href": {
+        "en": "https://www.economy-ni.gov.uk/",
+        "cy": "https://www.economy-ni.gov.uk/"
+    },
+    "ni_previous_model": {
+        "en": "The Department for the Economy in Northern Ireland (DFE NI) has an underpinning statutory responsibility to make provision for the assessment of the quality of this institution.  DFENI is currently considering a new model of quality assessment.  Information about the previous model is below",
+        "cy": "Mae gan Adran yr Economi yng Ngogledd Iwerddon (DFE NI) gyfrifoldeb statudol sylfaenol i ddarparu asesiad o ansawdd y sefydliad hwn.  Mae DFE NI yn ystyried model newydd o asesu ansawdd ar hyn o bryd.  Ceir gwybodaeth am y model blaenorol isod"
+    },
+    "ni_previous_model_btn": {
+        "en": "More information about the previous model here",
+        "cy": "Ceir rhagor o wybodaeth am y model blaenorol yma"
+    }
 }
 
 OPTIONALS = {
@@ -1629,8 +1715,8 @@ OPTIONALS = {
         "cy": "Archwilio cyrsiau"
     },
     'courses_at_this_uni': {
-        "en": "[] courses available at this institution",
-        "cy": "Mae [] o gyrsiau ar gael yn y sefydliad hwn"
+        "en": "{} courses available at this institution",
+        "cy": "Mae {} o gyrsiau ar gael yn y sefydliad hwn"
     },
     'view_courses': {
         "en": "View all courses",
