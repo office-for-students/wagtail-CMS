@@ -52,7 +52,7 @@
 
                             <div class="entry-information__qualification-charts p-3 d-flex flex-wrap row mx-1 my-3">
                                 <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
-                                    <h2 class="entry-information__heading py-2">{{block.qualification_heading}}{% if course_details.has_multiple_entry_stats %}:
+                                    <h2 class="entry-information__heading py-2">{{block.value.qualification_heading}}{% if course_details.has_multiple_entry_stats %}:
                                         {{entry_stats.display_subject_name}}{% endif %}
                                     </h2><!--box title-->
 
@@ -195,11 +195,11 @@
                                 </div>
                                 <div tabindex="-1" class="chart-label-explanation" role="dialog">
                                     <h3 class="chart-label-explanation__heading">
-                                       {{block.qualification_label_explanation_heading |safe}}
+                                       {{block.value.qualification_label_explanation_heading |safe}}
                                         <button class="chart-label-explanation__close"><img src="{% static 'images/legacy/close-grey.svg' %}" alt="Close pop up"></button>
                                     </h3>
                                     <div class="chart-label-explanation__body">
-                                        {{block.qualification_label_explanation_body |safe}}
+                                        {{block.value.qualification_label_explanation_body |safe}}
                                      </div>
                                 </div>
                             </div>
@@ -236,7 +236,7 @@
                             <div class="entry-information__ucas-points p-3 d-flex flex-wrap row mx-1">
                                 {% if tariff_stats.tariffs %}
                                 <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
-                                    <h2 class="entry-information__heading py-3">{{block.tariffs_heading}}{% if course_details.has_multiple_tariff_stats %}:
+                                    <h2 class="entry-information__heading py-3">{{block.value.tariffs_heading}}{% if course_details.has_multiple_tariff_stats %}:
                                         {{tariff_stats.display_subject_name}}{% endif %}</h2><!-- box title -->
                                             {% create_list tariff_stats.aggregation_year course_details.data_from_html tariff_stats.number_of_students as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
@@ -244,7 +244,7 @@
                                 </div>
                                 {% else %}
                                 <div class="col-12">
-                                    <h2 class="entry-information__heading py-3">{{block.tariffs_heading}}{% if course_details.has_multiple_tariff_stats %}:
+                                    <h2 class="entry-information__heading py-3">{{block.value.tariffs_heading}}{% if course_details.has_multiple_tariff_stats %}:
                                         {{tariff_stats.display_subject_name}}{% endif %}</h2>
                                     {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
                                 </div>
