@@ -434,19 +434,19 @@ STATISTICS = {
         "en": "I have felt free to express my ideas, opinions and beliefs."
     },
     "course_details_summary_box_source_grad": {
-        "cy": "TO DO",
+        "cy": "{} y cwrs ar gyfer {} graddedigion yn",
         "en": "{} for {} graduates at {}"
     },
     "course_details_summary_box_source_satisfaction": {
-        "cy": "TO DO",
+        "cy": "o fyfyrwyr {} {} blwyddyn olaf {} yn cytuno eu bod yn fodlon ar ansawdd y cwrs ar y cyfan",
         "en": "of final year {} {} students at {} agreed they were satisfied with the course"
     },
     "course_details_summary_box_source_final": {
-        "cy": "TO DO",
+        "cy": "Blwyddyn olaf {} {} myfyrwyr yn {}",
         "en": "Final year {} {} students at {}"
     },
     "go_on_to_work_study": {
-        "cy": "TO DO",
+        "cy": "yn symud ymlaen i weithio ac/neu astudio",
         "en": "go on to work and/or study"
     },
     "are_using_what_they_learnt": {
