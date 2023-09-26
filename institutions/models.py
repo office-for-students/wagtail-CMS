@@ -137,7 +137,10 @@ class Institution:
                     self.qaa_report_type_string = term_for_key("gateway_quality_review_wales", language)
                 elif self.qaa_report_type == "Quality Enhancement Review":
                     self.qaa_report_type_string = term_for_key("quality_enhancement_review", language)
-
+            elif self.pub_ukprn_country_name == "Scotland":
+                self.qaa_report_type_string = term_for_key("more_about_qaa_scotland", language)
+            else:
+                self.qaa_report_type_string = term_for_key("ni_previous_model", language)
             if 'contact_details' in institution_data:
                 print(f"institution_data.get('contact_details') {institution_data.get('contact_details')}")
                 self.contact_details = InstitutionContactDetails(institution_data.get('contact_details'))
