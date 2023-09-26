@@ -142,7 +142,6 @@ class Institution:
             else:
                 self.qaa_report_type_string = term_for_key("ni_previous_model", language)
             if 'contact_details' in institution_data:
-                print(f"institution_data.get('contact_details') {institution_data.get('contact_details')}")
                 self.contact_details = InstitutionContactDetails(institution_data.get('contact_details'))
 
             self.student_unions = []

@@ -8,7 +8,6 @@ from institutions.models import InstitutionDetailPage, Institution
 
 def institution_detail(request, institution_id, language=enums.languages.ENGLISH):
     institution, error = Institution.find(institution_id, language)
-    print("institution", institution.total_number_of_courses)
     if error:
         redirect_page = get_new_landing_page_for_language(language)
         #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
