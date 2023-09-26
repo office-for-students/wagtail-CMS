@@ -13,9 +13,6 @@
         <div class="outer-block">
             <div class="title">
                 <h1>{{ institution.pub_ukprn_name }}</h1>
-                {% if institution.tef_outcome and institution.tef_outcome != "Not available" %}
-                    <a class="registered-ofs">{% get_translation key="registered_with_ofs" language=page.get_language %}</a>
-                {% endif %}
             </div>
             <div class="inner-block">
                 <div>
