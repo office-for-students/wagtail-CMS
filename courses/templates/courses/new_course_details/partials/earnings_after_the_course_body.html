@@ -434,10 +434,10 @@
                 timeout: 3000,
                 data: {
                     'region': selectedRegion,
-                    'institution_id': courseParams[3],
-                    'course_id': courseParams[4],
-                    'kis_mode': courseParams[5].replace("%20", "-"),
-                    'language': "{{ request.LANGUAGE_CODE }}",
+                    'institution_id': courseParams[2],
+                    'course_id': courseParams[3],
+                    'kis_mode': courseParams[4].replace("%20", "-"),
+                    'language': "{{ page.get_language }}",
                     'subject_code': subjectIndex
                 },
                 dataType: 'json',
@@ -560,6 +560,7 @@
                             $("#sector_salary_graduates_2_" + subjectIndex + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo5'] + graduates_text_leo + " " + data['region_full_name']);
                     },
                     error: function (request, status, error) {
+                    console.log(request)
                         //alert(request.responseText);
                         $("#" + ddlId).prop("disabled", false);
                         $("#" + ddlId).val(prev_region);
