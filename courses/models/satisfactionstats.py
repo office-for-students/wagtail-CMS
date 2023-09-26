@@ -6,6 +6,7 @@ from .utils import display_unavailable_info, new_subject_unavail
 class SatisfactionStatistics:
 
     def __init__(self, data_obj, language):
+        print("I AM DATA OBJ", data_obj)
         self.display_language = language
         self.aggregation_level = data_obj.get('aggregation_level')
         self.aggregation_year = data_obj.get('aggregation_year')

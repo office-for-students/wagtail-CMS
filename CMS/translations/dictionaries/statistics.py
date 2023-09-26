@@ -453,6 +453,14 @@ STATISTICS = {
         "cy": "TO DO",
         "en": "are using what they learnt during their studies in their current work"
     },
+    "no_data_england": {
+        "cy": "Nid yw'r sgôr boddhad myfyrwyr ar gael ar gyfer cyrsiau yn Lloegr gan nad yw’r cwestiwn wedi’i gynnwys yn yr arolwg ar gyfer Lloegr.",
+        "en": 'The Student satisfaction score is not available for courses in England because the question is not included in the survey for England.'
+    },
+    "no_data_ni_scot_wales": {
+        "cy": "Nid yw’r sgôr rhyddid mynegiant ar gael ar gyfer cyrsiau yng Nghymru, Gogledd Iwerddon na’r Alban gan nad yw’r cwestiwn wedi’i gynnwys yn yr arolwg ar gyfer y gwledydd hyn.",
+        "en": "The Freedom of expression score is not available for courses in Wales, Northern Ireland and Scotland because the question is not included in the survey for these nations."
+    },
     # TODO: delete below once ingestion comes back with description
     "question_1": {
         "cy": "Mae'r staff yn dda am esbonio pethau.",

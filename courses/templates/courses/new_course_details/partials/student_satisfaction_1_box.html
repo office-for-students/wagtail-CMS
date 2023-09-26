@@ -29,7 +29,7 @@
                 {% elif no_data_key %}
                     <div class="student-satisfaction__chart-wrapper">
                         <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1">
-                            <p class="student-satisfaction__chart-title">{% get_translation key=no_data_key langauge=page.get_language %}</p>
+                            <p class="student-satisfaction__chart-title">{% get_translation key=no_data_key language=page.get_language %}</p>
                         </div>
                     </div>
                 {% endif %}
@@ -37,5 +37,7 @@
             </div>
         </div>
     </div>
-    {% include "courses/new_course_details/partials/source.html" %}
+    {% if q1.show_data_point %}
+        {% include "courses/new_course_details/partials/source.html" %}
+    {% endif %}
 </div>
