@@ -190,13 +190,13 @@
                             </div>
                             <div class="explanation col-12">
                                 <div class="explanation__link">
-                                    <img class="information-icon" src="{% static 'images/legacy/information 1.svg' %}" alt="{% get_translation key='chart_label_explained' language=page.get_language %}">
+                                    <img class="information-icon" src="{% static 'images/information.svg' %}" alt="{% get_translation key='chart_label_explained' language=page.get_language %}">
                                     <button class="information-link">{% get_translation key='chart_label_explained' language=page.get_language %}</button>
                                 </div>
                                 <div tabindex="-1" class="chart-label-explanation" role="dialog">
                                     <h3 class="chart-label-explanation__heading">
                                        {{block.value.qualification_label_explanation_heading |safe}}
-                                        <button class="chart-label-explanation__close"><img src="{% static 'images/legacy/close-grey.svg' %}" alt="Close pop up"></button>
+                                        <button class="chart-label-explanation__close"><img src="{% static 'images/close-grey.svg' %}" alt="Close pop up"></button>
                                     </h3>
                                     <div class="chart-label-explanation__body">
                                         {{block.value.qualification_label_explanation_body |safe}}
