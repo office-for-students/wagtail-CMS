@@ -56,7 +56,7 @@ class SubSatisfactionSection(Section):
         for index, i in enumerate(self.keys):
             if index == 0:
                 sections.append((self.DATA_DISPLAYED, "", "", "satisfaction_stats", True))
-            sections.append((f"nss_question_{i}", f"question_{i}", "%", "satisfaction_stats"))
+            sections.append((f"question_{i}", f"question_{i}", "%", "satisfaction_stats"))
         return sections
 
     def generate_dict(self) -> dict:

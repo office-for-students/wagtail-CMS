@@ -574,5 +574,13 @@ STATISTICS = {
         "cy": "Ar y cyfan, rwyf yn fodlon ar safon y cwrs.",
         "en": "Overall I am satisfied with the quality of the course."
     },
+    "mental_wellbeing":{
+        "cy": "Llesiant meddwl",
+        "en": "Mental wellbeing"
+    },
+    "freedom_of_expression":{
+        "cy": "Rhyddid mynegiant",
+        "en": "Freedom of expression"
+    }
 
 }
