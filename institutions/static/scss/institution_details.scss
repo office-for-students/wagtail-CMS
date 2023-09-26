@@ -42,11 +42,12 @@
         }
 
         a {
-          width: 166px;
           border-radius: 70px;
           border: 1px solid white;
           padding: 5px 18px 6px 18px;
           color: white;
+          display: inline-block;
+          white-space: nowrap;
         }
       }
     }
