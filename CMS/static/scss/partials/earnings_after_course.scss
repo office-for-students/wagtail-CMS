@@ -1,6 +1,11 @@
 @import './fonts';
 @import './new_variables';
 
+.earnings-after-course_section-block {
+    flex: 1 !important;
+    width: 33%;
+}
+
 .earnings-after-course_block {
   background-color: $box-background;
   border-radius: 8px;
