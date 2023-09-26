@@ -433,6 +433,26 @@ STATISTICS = {
         "cy": "Rwyf wedi teimlo’n rhydd i fynegi fy syniadau, fy marn a fy nghredoau.",
         "en": "I have felt free to express my ideas, opinions and beliefs."
     },
+    "course_details_summary_box_source_grad": {
+        "cy": "TO DO",
+        "en": "{} for {} graduates at {}"
+    },
+    "course_details_summary_box_source_satisfaction": {
+        "cy": "TO DO",
+        "en": "of final year {} {} students at {} agreed they were satisfied with the course"
+    },
+    "course_details_summary_box_source_final": {
+        "cy": "TO DO",
+        "en": "Final year {} {} students at {}"
+    },
+    "go_on_to_work_study": {
+        "cy": "TO DO",
+        "en": "go on to work and/or study"
+    },
+    "are_using_what_they_learnt": {
+        "cy": "TO DO",
+        "en": "are using what they learnt during their studies in their current work"
+    },
     # TODO: delete below once ingestion comes back with description
     "question_1": {
         "cy": "Mae'r staff yn dda am esbonio pethau.",
