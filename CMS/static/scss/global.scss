@@ -66,9 +66,11 @@ a {
 
 .leo-banner {
   display: block;
-  background: #268283;
-  border-bottom: 2px solid #268283;
+  background: $blue3;
+  border-bottom: 2px solid $blue3;
   padding: 20px 0;
+  color: whitesmoke;
+  text-align: center;
 
   &__bold {
     font-weight: bolder;
@@ -76,7 +78,7 @@ a {
   }
   &:hover {
     p, span, a {
-      color: #268283;
+      color: $blue3;
     }
   }
 
@@ -98,10 +100,10 @@ a {
 
   &:hover {
     background: $white;
-    color: #268283;
+    color: $blue3;
     a{
       background: $white;
-    color: #268283;
+    color: $blue3;
     }
   }
   a{

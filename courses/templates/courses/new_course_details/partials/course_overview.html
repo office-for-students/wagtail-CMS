@@ -1,6 +1,8 @@
 {% load discover_uni_tags %}
 {% load static humanize %}
 
+
+
 <div class="course-detail__lead course-detail course-details-thin px-md-3" role="main">
     <div class="mx-3">
         <ul class="course-detail__nav">
@@ -16,19 +18,6 @@
             <h1 class="course-detail__course-name col-md-7">
                 {{ course.display_title }}
             </h1>
-            <div class="col-md-5 float-md-right mb-2">
-                <div class="data-info">
-                    <div class="row">
-                        <p class="data-info__heading col-md-4 mt-2 mb-2">{% get_translation key='survey_need_to_know' language=page.get_language %}</p>
-                        <div class="col-md-8 ">
-                            <p class="data-info__content mt-2 mb-2">{% get_translation key='survey_info_box' language=page.get_language %}
-                                <br><a href="{% get_translation key='find_out_more_link' language=page.get_language %}" class="data-info__link"
-                                       target="_blank">{% get_translation key='find_out_more' language=page.get_language %}
-                                </a>
-                            </p></div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         {% if page.is_english %}
