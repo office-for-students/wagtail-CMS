@@ -13,13 +13,15 @@
             {% if left_text %}
                 <p>{% get_translation key=left_text language=page.get_language %}</p>
             {% endif %}
-            <a class="tef-btn">{% get_translation key=left_btn language=page.get_language %}</a>
+            <a class="tef-btn" href="{% get_translation key=left_href language=page.get_language %}">{% get_translation key=left_btn language=page.get_language %}</a>
         </div>
         <div>
             {% if right_text %}
-                <p>{% get_translation key="learn_about_tef" language=page.get_language %}</p>
+                <p>{{ right_text }}</p>
             {% endif %}
-            <a class="tef-btn">{% get_translation key="more_about_tef" language=page.get_language %}</a>
+            <a class="tef-btn" href={{ right_href }}>{% get_translation key=right_btn language=page.get_language %}</a>
         </div>
     </div>
 </div>
+
+learn_about_tef
