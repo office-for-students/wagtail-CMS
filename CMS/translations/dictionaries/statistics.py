@@ -461,6 +461,15 @@ STATISTICS = {
         "cy": "Nid yw’r sgôr rhyddid mynegiant ar gael ar gyfer cyrsiau yng Nghymru, Gogledd Iwerddon na’r Alban gan nad yw’r cwestiwn wedi’i gynnwys yn yr arolwg ar gyfer y gwledydd hyn.",
         "en": "The Freedom of expression score is not available for courses in Wales, Northern Ireland and Scotland because the question is not included in the survey for these nations."
     },
+    "gcu_data_year": {
+        "cy": "Daw'r data hwn o Arolwg Cenedlaethol Myfyrwyr 2022 o fyfyrwyr yn y brifysgol hon.",
+        "en": "This data is from 2022 NSS survey of students at this university."
+    },
+    "gcu_message": {
+        "cy": "Oherwydd gwall gweinyddol yn yr arolwg, ni ofynnwyd y cwestiwn boddhad myfyrwyr i fwyafrif ymatebwyr arolwg 2023 o Brifysgol Glasgow Caledonian.  Rydym felly yn cyhoeddi canlyniadau o arolwg 2022 ar gyfer y cwestiwn hwn.  Nid bai'r darparwr oedd y gwall.  Nid effeithiodd y gwall hwn ar unrhyw gwestiynau neu ddarparwyr eraill.",
+        "en": "Due to a survey administration error, the Student satisfaction question was not asked of the majority of 2023 survey respondents from Glasgow Caledonian University.  We are therefore publishing results from the 2022 survey for this question.  The error was not the fault of the provider.  No other questions or providers were affected by this error."
+    },
+
     # TODO: delete below once ingestion comes back with description
     "question_1": {
         "cy": "Mae'r staff yn dda am esbonio pethau.",
