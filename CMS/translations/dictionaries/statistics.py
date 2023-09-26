@@ -433,6 +433,34 @@ STATISTICS = {
         "cy": "Rwyf wedi teimlo’n rhydd i fynegi fy syniadau, fy marn a fy nghredoau.",
         "en": "I have felt free to express my ideas, opinions and beliefs."
     },
+    "course_details_summary_box_source_grad": {
+        "cy": "{} y cwrs ar gyfer {} graddedigion yn",
+        "en": "{} for {} graduates at {}"
+    },
+    "course_details_summary_box_source_satisfaction": {
+        "cy": "o fyfyrwyr {} {} blwyddyn olaf {} yn cytuno eu bod yn fodlon ar ansawdd y cwrs ar y cyfan",
+        "en": "of final year {} {} students at {} agreed they were satisfied with the course"
+    },
+    "course_details_summary_box_source_final": {
+        "cy": "Blwyddyn olaf {} {} myfyrwyr yn {}",
+        "en": "Final year {} {} students at {}"
+    },
+    "go_on_to_work_study": {
+        "cy": "yn symud ymlaen i weithio ac/neu astudio",
+        "en": "go on to work and/or study"
+    },
+    "are_using_what_they_learnt": {
+        "cy": "TO DO",
+        "en": "are using what they learnt during their studies in their current work"
+    },
+    "no_data_england": {
+        "cy": "Nid yw'r sgôr boddhad myfyrwyr ar gael ar gyfer cyrsiau yn Lloegr gan nad yw’r cwestiwn wedi’i gynnwys yn yr arolwg ar gyfer Lloegr.",
+        "en": 'The Student satisfaction score is not available for courses in England because the question is not included in the survey for England.'
+    },
+    "no_data_ni_scot_wales": {
+        "cy": "Nid yw’r sgôr rhyddid mynegiant ar gael ar gyfer cyrsiau yng Nghymru, Gogledd Iwerddon na’r Alban gan nad yw’r cwestiwn wedi’i gynnwys yn yr arolwg ar gyfer y gwledydd hyn.",
+        "en": "The Freedom of expression score is not available for courses in Wales, Northern Ireland and Scotland because the question is not included in the survey for these nations."
+    },
     # TODO: delete below once ingestion comes back with description
     "question_1": {
         "cy": "Mae'r staff yn dda am esbonio pethau.",

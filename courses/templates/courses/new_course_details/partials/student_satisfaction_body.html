@@ -4,39 +4,6 @@
 <!-- what you need to know about this data box-->
 {% include "courses/partials/info_box.html" with header="data_need_to_know" content="student_satisfaction_info_box" url="about_our_data_link" read_more="read_more_about_this_data" %}
 
-{% if course.country.code != "XF" %}
-    {% with q28_stats=course_details.overall_satisfaction.0.satisfaction_stats %}
-        {% if course_details.overall_satisfaction.0.satisfaction_stats.question_28 %}
-            <div class="student-satisfaction__overview mt-3 p-2 flex-wrap mx-1">
-                <div class="student-satisfaction_overall-chart left">
-                    <div class="student-satisfaction__chart-wrapper hero-wrapper">
-                        <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
-                             data-value="{{ q28_stats.question_28.agree_or_strongly_agree }}"
-                             data-question="satisfaction-28"
-                             data-language="{{ page.get_language }}"
-                             data-field="{{ block.value.lead_text }}">
-                            {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
-                        </div>
-                    </div>
-                </div>
-                <!--end of chart-->
-                <div style="text-align: left;">
-                <p>{% get_translation key="overall_satisfied" language=page.get_language %}</p>
-                <ul style="text-align: left;">
-                    <li>
-                        {% get_translation key="data_from" language=page.language %} {{ q28_stats.nss_country_population }} {% get_translation key="students" language=page.get_language %}
-                        ({{ q28_stats.nss_country_response_rate }}% {% get_translation key="of_those_asked" %}).
-                    </li>
-                    <li>{% get_translation key="all_final_year_students" language=page.get_language %}</li>
-                </ul>
-                <p style="font-size: 1rem;">{% get_translation key="data_for_students" language=page.get_language %} {{ q28.nss_country_year }}</p>
-                <a style="font-size: 1rem;" href="http://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey" role="button" class="TooltipEntity ml-1" data-draftail-trigger="true">Source: NSS (National Student Survey)</a>
-                </div>
-            </div>
-        {% endif %}
-    {% endwith %}
-{% endif %}
-
 {% if course_details.has_multiple_satisfaction_stats %}
     <ul class="nav nav-tabs mt-2" id="student-satisfaction-tab">
         {% for overall_stats in course_details.overall_satisfaction %}
@@ -67,7 +34,36 @@
                     {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.display_unavailable_info %}
                 </div>
                 <div class="scrolling-wrapper scroll">
-                    {% if course.country.code == "XF" %}
+                    {% if course.country.code != "XF" %}
+                        {% if question_stats.question_28 %}
+                            <div class="student-satisfaction__overview mt-3 p-2 flex-wrap mx-1">
+                                <div class="student-satisfaction_overall-chart left">
+                                    <div class="student-satisfaction__chart-wrapper hero-wrapper">
+                                        <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                             data-value="{{ question_stats.question_28.agree_or_strongly_agree }}"
+                                             data-question="satisfaction-28"
+                                             data-language="{{ page.get_language }}"
+                                             data-field="{{ block.value.lead_text }}">
+                                            {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end of chart-->
+                                <div style="text-align: left;">
+                                <p>{% get_translation key="overall_satisfied" language=page.get_language %}</p>
+                                <ul style="text-align: left;">
+                                    <li>
+                                        {% get_translation key="data_from" language=page.language %} {{ question_stats.nss_country_population }} {% get_translation key="students" language=page.get_language %}
+                                        ({{ question_stats.nss_country_response_rate }}% {% get_translation key="of_those_asked" %}).
+                                    </li>
+                                    <li>{% get_translation key="all_final_year_students" language=page.get_language %}</li>
+                                </ul>
+                                <p style="font-size: 1rem;">{% get_translation key="data_for_students" language=page.get_language %} {{ question_stats.nss_country_year }}</p>
+                                <a style="font-size: 1rem;" href="http://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey" role="button" class="TooltipEntity ml-1" data-draftail-trigger="true">Source: NSS (National Student Survey)</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% elif course.country.code == "XF" %}
                         <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                             <!-- freedom of expression (england) box-->
                             {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Student satisfaction" q1=question_stats.question_28 description="" no_data_key="no_data_england" %}
@@ -137,15 +133,18 @@
                                 <!-- freedom of expression (england) box-->
                                 {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Freedom of expression" q1=question_stats.question_27 description="free_to_express" no_data_key="no_data_available" %}
                             </div>
+                        {% else %}
+                            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
+                                <!-- freedom of expression (england) box-->
+                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Freedom of expression" q1=question_stats.question_27 description="" no_data_key="no_data_ni_scot_wales" %}
+                            </div>
                         {% endif %}
-                        <!-- wales, scotland and ireland only-->
                     {% endif %}
 
                     <!-- not sure what this stuff below is yet...-->
 
                     {% if overall_stats.nhs_satisfaction_stats %}
                         {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
-
                         <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                             <div class="col-lg-4 col-md-12 my-auto pt-3 text-left">
                                 <h2 class="student-satisfaction__data-group-heading text-left">

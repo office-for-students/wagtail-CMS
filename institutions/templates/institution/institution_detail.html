@@ -22,11 +22,9 @@
                     <a href="{{ institution.website }}" target="_blank">{% get_translation key="website" language=page.get_language %}: {{ institution.ukprn_name }}</a>
                     <br/>
                     {% if institution.pub_ukprn_country_code == "XF" %}
-{#                        {% if institution.tef_outcome and institution.tef_outcome != "Not available" %}#}
-                        <a style="display: inline-block; border: unset; margin: 0; padding: unset;" target="_blank"
+                        <a style="display: inline-block; border: unset; margin: 0" target="_blank"
                            href="https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/provider/{{ institution.pub_ukprn }}">OfS
                             Registration information</a>
-{#                        {% endif %}#}
                     {% endif %}
                 </div>
                 <div>
