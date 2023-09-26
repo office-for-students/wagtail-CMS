@@ -301,18 +301,18 @@
 
                     <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3">
                         {% if salary_index == 0 %}
-                            gfeghrtegeg
-                            {% create_list salary.aggregation_year as substitutions %}
+                            {% get_salary_from_index objs=course_details.go_salaries_inst index=salary_index as wee %}
+                            {% create_list wee.aggregation_year as substitutions %}
                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_data_source substitutions=substitutions as subbed_text %}
                             {{ subbed_text | safe }}
                         {% elif salary_index == 1 %}
-                            {{ salary.aggregation_year }}
-                            {% create_list salary.aggregation_year as substitutions %}
+                            {% get_salary_from_index objs=course_details.leo3_salaries_inst index=salary_index as wee %}
+                            {% create_list wee.aggregation_year as substitutions %}
                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_data_source substitutions=substitutions as subbed_text %}
                             {{ subbed_text | safe }}
                         {% else %}
-                            grergreg
-                            {% create_list salary.aggregation_year as substitutions %}
+                            {% get_salary_from_index objs=course_details.leo3_salaries_inst index=salary_index as wee %}
+                            {% create_list wee.aggregation_year as substitutions %}
                             {% insert_values_to_rich_text content=block.value.after_fifteen_months_data_source substitutions=substitutions as subbed_text %}
                             {{ subbed_text | safe }}
                         {% endif %}
