@@ -34,7 +34,7 @@
             <div class="bottom-block">
                 <p>{% get_translation key="explore_courses" language=page.get_language %}</p>
                 <div>
-                    <p>{{ institution.number_of_courses }} {% get_translation key="courses_at_this_uni" language=page.get_language %}</p>
+                    <p>{{ totals_string  }}</p>
                     <a class="view-courses" href="{% url 'course_finder_results' %}?institution_query={{ institution.pub_ukprn_name }}">{% get_translation key="view_courses" language=page.get_language %}</a>
                 </div>
             </div>

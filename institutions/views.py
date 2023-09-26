@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 
 from CMS.enums import enums
+from CMS.translations import term_for_key
 from core.utils import get_page_for_language, get_new_landing_page_for_language
 from institutions.models import InstitutionDetailPage, Institution
 
 
 def institution_detail(request, institution_id, language=enums.languages.ENGLISH):
     institution, error = Institution.find(institution_id, language)
-
+    print("institution", institution.total_number_of_courses)
     if error:
         redirect_page = get_new_landing_page_for_language(language)
         #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
@@ -43,6 +44,7 @@ def institution_detail(request, institution_id, language=enums.languages.ENGLISH
             institution.tef_outcome.outcomes_rating
         )
         context["tef_image"] = tef_image
+    context["totals_string"] = term_for_key("courses_at_this_uni", language=language).format(institution.total_number_of_courses)
 
     return render(request, 'institution/institution_detail.html', context)
 

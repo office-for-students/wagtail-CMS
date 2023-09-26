@@ -1629,8 +1629,8 @@ OPTIONALS = {
         "cy": "Archwilio cyrsiau"
     },
     'courses_at_this_uni': {
-        "en": "[] courses available at this institution",
-        "cy": "Mae [] o gyrsiau ar gael yn y sefydliad hwn"
+        "en": "{} courses available at this institution",
+        "cy": "Mae {} o gyrsiau ar gael yn y sefydliad hwn"
     },
     'view_courses': {
         "en": "View all courses",
