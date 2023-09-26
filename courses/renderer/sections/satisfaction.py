@@ -8,7 +8,7 @@ OVERALL_SATISFACTION = "overall_satisfied"
 PERCENTAGE_THOSE_ASKED = "percent_of_those_asked"
 
 satisfaction_list = [
-    "question_27",
+    "question_28",
     "number_of_students",
     "response_rate",
 ]
