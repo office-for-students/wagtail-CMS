@@ -425,6 +425,14 @@ STATISTICS = {
         "cy": "Nid yw'r cwestiwn hwn wedi'i gynnwys yn yr Arolwg Cenedlaethol Myfyrwyr yng Nghymru, Gogledd Iwerddon na'r Alban.",
         "en": "This question is not included in the NSS in Wales, Northern Ireland and Scotland."
     },
+    "question_28_unavailable": {
+        "cy": "Nid yw'r cwestiwn hwn wedi'i gynnwys yn yr Arolwg Cenedlaethol Myfyrwyr yn Lloegr.",
+        "en": "This question is not included in the NSS in England."
+    },
+    "question_27_unavailable": {
+        "cy": "Nid yw'r cwestiwn hwn wedi'i gynnwys yn yr Arolwg Cenedlaethol Myfyrwyr yng Nghymru, Gogledd Iwerddon na'r Alban.",
+        "en": "This question is not included in the NSS in Wales, Northern Ireland and Scotland."
+    },
     "information_about_mental_wellbeing_support_services_has_been_well_communicated": {
         "cy": "Mae gwybodaeth am wasanaethau cymorth llesiant meddwl wedi’i chyfleu’n dda.",
         "en": "Information about mental wellbeing support services has been well communicated."
