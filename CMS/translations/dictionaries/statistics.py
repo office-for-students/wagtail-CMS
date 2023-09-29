@@ -600,7 +600,7 @@ STATISTICS = {
         "en": "Freedom of expression"
     },
     "leo3_banner_anticipate_change": {
-        "cy": "tbc",
+        "cy": "Sylwer: rydym yn rhagweld y bydd y data ‘Enillion ar ôl y cwrs’ ar gyfer 3 blynedd a 5 mlynedd ar ôl graddio yn cael eu diweddaru ym mis Tachwedd 2023 pan fydd data newydd ar gael.",
         "en": "Please note: we anticipate that the ‘Earnings after the course’ data for 3 years and 5 years after graduation will be updated in November 2023 when new data is available."
     }
 }
