@@ -36,10 +36,10 @@ def get_sub_satisfaction(language) -> List:
     list_sub_accordions = [
         (translations.term_for_key(key="teaching_on_my_course", language=language), [1, 2, 3, 4]),
         (translations.term_for_key(key="learning_opportunities", language=language), [5, 6, 7, 8, 9]),
-        (translations.term_for_key(key="assessment_and_feedback", language=language), [10, 11, 12, 13]),
-        (translations.term_for_key(key="academic_support", language=language), [14, 15]),
+        (translations.term_for_key(key="assessment_and_feedback", language=language), [10, 11, 12, 13, 14]),
+        (translations.term_for_key(key="academic_support", language=language), [15, 16]),
         (translations.term_for_key(key="organisation_and_management",
-                                   language=language), [16, 17, 18]),
+                                   language=language), [17, 18]),
         (translations.term_for_key(key="learning_resources", language=language), [19, 20, 21]),
         (translations.term_for_key(key="student_voice", language=language), [22, 23, 24, 25]),
         (translations.term_for_key(key="mental_wellbeing", language=language), [26]),
