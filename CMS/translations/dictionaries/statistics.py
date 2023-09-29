@@ -598,6 +598,9 @@ STATISTICS = {
     "freedom_of_expression":{
         "cy": "Rhyddid mynegiant",
         "en": "Freedom of expression"
+    },
+    "leo3_banner_anticipate_change": {
+        "cy": "tbc",
+        "en": "Please note: we anticipate that the ‘Earnings after the course’ data for 3 years and 5 years after graduation will be updated in November 2023 when new data is available."
     }
-
 }

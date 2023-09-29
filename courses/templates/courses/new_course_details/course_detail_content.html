@@ -5,8 +5,7 @@
 {% if not course.country.code == "XG" %}
     <div>
         <p class="leo-banner px-4">
-            <span class="leo-banner__bold">{% get_translation key='please_note' language=page.get_language %}</span>
-            {% get_translation key='leo_banner' language=page.get_language %} <a
+            {% get_translation key='leo3_banner_anticipate_change' language=page.get_language %} <a
                 href="{% if page.is_english %}/about-our-data/#longitudinal_education_outcomes_dataset{% else %}
     /cy/ynglŷn-ân-data-about-our-data-cy/#set_ddata_canlyniadau_addysg_hydredol{% endif %}" title="read more"><span
                 class="leo-banner__read_more">{% get_translation key='read_more' language=page.get_language %}</span>
