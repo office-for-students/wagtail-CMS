@@ -35,6 +35,7 @@
         <div class="course-detail__accordion-block">
             {% for accordion in page.accordions %}
                 {% with heading=accordion.value.heading %}
+                    {% if not forloop.counter0 == 3 or forloop.counter0 == 3 and course.accreditations.0.should_show_accreditation %}
                     <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
                         <div class="">
                             <button class="course-detail__accordion-heading"
@@ -55,6 +56,7 @@
                             {% include 'courses/new_course_details/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course block=accordion %}
                         </div>
                     </div>
+                    {% endif %}
                 {% endwith %}
             {% endfor %}
         </div>
