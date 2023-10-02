@@ -268,7 +268,8 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         'manage_link': bookmark_page.url if bookmark_page else '#',
         'translated_url': translated_url,
         "course_title": course_title,
-        'cookies_accepted': request.COOKIES.get('discoverUniCookies')
+        'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
+        "has_summary": has_summary_stats(course)
     })
 
     if course.institution.pub_ukprn == "10007762":
@@ -301,3 +302,24 @@ def compare_courses(request, language=enums.languages.ENGLISH):
     )
 
     return render(request, 'courses/course_comparison_page.html', context)
+
+
+def get_summary_stats(course):
+    data_points = [
+        course.go_salaries_inst[0].med,
+        course.employment_stats[0].in_work_or_study,
+        course.graduate_perceptions[0].go_work_skills,
+        course.satisfaction_stats[0].question_23.agree_or_strongly_agree,
+        course.satisfaction_stats[0].question_16.agree_or_strongly_agree,
+    ]
+    if course.country.code == "XF":
+        data_points.append(course.satisfaction_stats[0].question_28.agree_or_strongly_agree)
+    else:
+        data_points.append(course.satisfaction_stats[0].question_9.agree_or_strongly_agree)
+    return data_points
+
+
+def has_summary_stats(course):
+    if any(data is not None and data != '' for data in get_summary_stats(course)):
+        return True
+    return False

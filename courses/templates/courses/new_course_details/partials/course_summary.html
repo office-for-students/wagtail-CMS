@@ -1,10 +1,10 @@
 {% load static discover_uni_tags %}
 {% load humanize %}
 
+{% if has_summary and not course.has_multiple_subject_names %}
 <div class="course-detail__course-summary" style="background-image: url({% static 'images/course-detail-background.png' %});">
 
     <div class="box-container">
-        {% if not course.has_multiple_subject_names %}
         <h3>{% get_translation key="course_data_summary" language=page.get_language %}</h3>
         <div class="box-row">
             {% if course.go_salaries_inst.0.med or course.leo3_salaries_inst.0.med %}
@@ -40,9 +40,9 @@
                 {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_16.agree_or_strongly_agree description="question_16" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
             {% endif %}
         </div>
-        {% endif %}
         <div class="section-scroll course-detail">
             {% include "courses/new_course_details/partials/section_links.html" with page_name="course_detail" %}
         </div>
     </div>
 </div>
+{% endif %}
