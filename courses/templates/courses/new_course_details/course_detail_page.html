@@ -2,13 +2,11 @@
 {% load static %}
 {% load sass_tags %}
 {% load discover_uni_tags %}
-{#{% block title %}#}
-{#    {% if page.seo_title %}#}
-{#        {{ course.seo_title | safe }} | {% trans 'discover_uni' %}#}
-{#    {% else %}#}
-{#        {{ course.seo_title | safe }} | {% trans 'discover_uni' %}#}
-{#    {% endif %}#}
-{#{% endblock %}#}
+{% block title %}
+    {% if page.seo_title %}{{ course.seo_title | safe }} |
+        {% get_translation key='discover_uni' language=page.get_language %}{% else %}{{ course.seo_title | safe }} |
+        {% get_translation key='discover_uni' language=page.get_language %}{% endif %}
+{% endblock %}
 
 {% block search_description %}
     <meta name="description"
