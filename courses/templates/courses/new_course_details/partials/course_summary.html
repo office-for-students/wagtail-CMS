@@ -28,7 +28,7 @@
                 {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
                 {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_9.agree_or_strongly_agree description="question_9" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
             {% elif course.country.code != "XF" and course.satisfaction_stats.0.question_28.agree_or_strongly_agree %}
-                {% get_translation key="course_details_summary_box_source_satisfaction" language=page.get_language as source %}
+                {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
                 {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_28.agree_or_strongly_agree title="student_satisfaction" description="question_28" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
             {% endif %}
             {% if course.satisfaction_stats.0.question_23.agree_or_strongly_agree %}
