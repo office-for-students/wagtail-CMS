@@ -1,9 +1,7 @@
-import os
-import requests
-import urllib.parse
-from django.conf import settings
 import json
-import logging
+
+import requests
+from django.conf import settings
 
 from CMS.test.mocks.search_mocks import SearchMocks
 

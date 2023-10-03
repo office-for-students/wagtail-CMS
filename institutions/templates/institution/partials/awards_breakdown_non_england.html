@@ -21,8 +21,10 @@
             {% if right_text %}
                 <p>{{ right_text }}</p>
             {% endif %}
+        {% if right_href and right_href != "None" %}
             <a class="tef-btn" href="{{ right_href }}"
                target="_blank">{% get_translation key=right_btn language=page.get_language %}</a>
+        {% endif %}
         </div>
     </div>
 </div>
