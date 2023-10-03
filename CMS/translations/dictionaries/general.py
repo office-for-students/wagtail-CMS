@@ -1539,7 +1539,7 @@ DICT = {
     },
     'read_more': {
         'en': 'Read more',
-        'cy': "Darllenwch fwy"
+        'cy': "Darllen mwy"
     },
     'popup_heading': {
         'en': 'Welcome to Discover Uni',
