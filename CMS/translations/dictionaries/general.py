@@ -1588,4 +1588,8 @@ OPTIONALS = {
         'en': 'Yes',
         'cy': 'Ydy'
     },
+    'leo_banner_technical_issues': {
+        'en': "The publication of the latest Discover Uni dataset (formerly Unistats) has been delayed due to technical issues.  We will update the data on the website as soon as possible.",
+        'cy': "Cyhoeddiad o’r set data diweddaraf Darganfod Prifysgol (Unistats yn gynt) wedi’i ohirio oherwydd materion technegol. Byddwn yn diweddaru’r data ar y wefan cyn gynted â phosibl."
+    }
 }

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import os
 import sys
-import yaml
 
 
 if __name__ == "__main__":
