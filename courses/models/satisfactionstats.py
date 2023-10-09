@@ -80,7 +80,7 @@ class SatisfactionStatistics:
             )
 
         #TEMP FIX AS UNAVAIL WAS NOT INGESTED FOR NSS
-        if self.aggregation_level and self.aggregation_level != 14:
+        if self.aggregation_level != 14:
             self.temp_unavail = self.get_unavail_from_code(data_obj, language)
             self.sep_unavail = separate_unavail_reason(self.temp_unavail)
             self.unavail = {"reason_heading": self.sep_unavail[0], "reason_body": self.sep_unavail[1]}
@@ -192,6 +192,8 @@ class SatisfactionStatistics:
         unavail_dict = unavail_en if language == "en" else unavail_cy
         if not has_data:
             return unavail_dict["no-data"][str(unavail_code)]
-        unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)][resp]
-        unavail.replace("[Subject]", subject)
-        return unavail
+        if aggregation_level:
+            unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)][resp]
+            unavail.replace("[Subject]", subject)
+            return unavail
+
