@@ -1,4 +1,4 @@
 {% load discover_uni_tags wagtailcore_tags %}
-{% create_list first_index course.subject_names.0.display_subject_name course.institution.pub_ukprn_name as substitutions %}
+{% create_list first_index course.subject_names.0.display_subject_name institution_name as substitutions %}
 {% insert_values_to_plain_text content=source substitutions=substitutions as source_text %}
 {{ source_text | richtext }}
