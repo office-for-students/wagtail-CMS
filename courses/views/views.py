@@ -236,6 +236,9 @@ def regional_earnings(request):
 
 def courses_detail(request, institution_id, course_id, kis_mode, language=enums.languages.ENGLISH):
     course, error = Course.find(institution_id, course_id, kis_mode, language)
+    institution_name = course.institution.pub_ukprn_name
+    if ", the" in institution_name:
+        institution_name = f"The {institution_name.replace(', the', '')}"
     course_title = course.satisfaction_stats[0].display_subject_name
     if course.satisfaction_stats[0].aggregation_level == 14:
         course_title = course.display_title()
@@ -269,7 +272,8 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         'translated_url': translated_url,
         "course_title": course_title,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
-        "has_summary": has_summary_stats(course)
+        "has_summary": has_summary_stats(course),
+        "institution_name": institution_name
     })
 
     if course.institution.pub_ukprn == "10007762":
