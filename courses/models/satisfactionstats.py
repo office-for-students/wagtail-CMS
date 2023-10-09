@@ -1,6 +1,9 @@
 from core.utils import enums
 from .satisfactionquestion import SatisfactionQuestion
 from .utils import display_unavailable_info, new_subject_unavail
+from .utils import separate_unavail_reason
+from ..unavail_dict_cy import unavail_cy
+from ..unavail_english_dict import unavail_en
 
 
 class SatisfactionStatistics:
@@ -75,6 +78,13 @@ class SatisfactionStatistics:
                 aggregation_level=self.aggregation_level,
                 subject_welsh=self.subject_welsh
             )
+
+        #TEMP FIX AS UNAVAIL WAS NOT INGESTED FOR NSS
+        if self.aggregation_level and self.aggregation_level != 14:
+            self.temp_unavail = self.get_unavail_from_code(data_obj, language)
+            self.sep_unavail = separate_unavail_reason(self.temp_unavail)
+            self.unavail = {"reason_heading": self.sep_unavail[0], "reason_body": self.sep_unavail[1]}
+
         self.unavailable_reason_heading = self.display_unavailable_info["reason_heading"]
         self.unavailable_reason_body = self.display_unavailable_info["reason_body"]
         if str(self.aggregation_level) in [None, "11", "12", "13", "21", "22", "23"]:
@@ -154,7 +164,6 @@ class SatisfactionStatistics:
     def freedom_stats(self):
         return [self.question_27]
 
-
     def all_accordions(self):
         return [
             self.teaching_stats(), self.learning_opps_stats(), self.assessment_stats(),
@@ -162,3 +171,27 @@ class SatisfactionStatistics:
             self.learning_resources_stats(), self.voice_stats(), self.wellbeing_stats(),
             self.freedom_stats()
         ]
+
+    def get_unavail_from_code(self, data, language):
+        unavail_code = data.get("unavailable_code", data.get("nss_country_unavailable_code"))
+        aggregation_level = data.get("aggregation_level", data.get("nss_country_aggregation_level"))
+        resp_rate = self.check_response_rate_present(data.get("response_rate", None))
+        subject = self.display_subject_name()
+        has_data = self.show_satisfaction_stats()
+        return self.get_reason_from_dict(unavail_code, aggregation_level, resp_rate, subject, has_data, language)
+
+    @staticmethod
+    def check_response_rate_present(resp_rate) -> str:
+        if resp_rate is None:
+            return "no_resp_rate"
+        return "yes_resp_rate"
+
+    @staticmethod
+    def get_reason_from_dict(unavail_code: int, aggregation_level: int, resp: str, subject: str, has_data: bool,
+                             language: str) -> str:
+        unavail_dict = unavail_en if language == "en" else unavail_cy
+        if not has_data:
+            return unavail_dict["no-data"][str(unavail_code)]
+        unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)][resp]
+        unavail.replace("[Subject]", subject)
+        return unavail
