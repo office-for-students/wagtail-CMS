@@ -22,12 +22,12 @@
 
         {% if page.is_english %}
             <a class="course-detail__institution-name" href="/institution-details/{{ course.institution.pub_ukprn }}/">
-                {% autoescape off %}{{ course.institution_name | safe }}{% endautoescape %}
+                {% autoescape off %}{{ institution_name | safe }}{% endautoescape %}
             </a>
         {% else %}
             <a class="course-detail__institution-name"
                href="/cy/institution-details/{{ course.institution.pub_ukprn }}/">
-                {% autoescape off %}{{ course.institution_name | safe }}{% endautoescape %}
+                {% autoescape off %}{{ institution_name | safe }}{% endautoescape %}
             </a>
         {% endif %}
 
