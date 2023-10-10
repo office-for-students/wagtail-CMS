@@ -35,7 +35,7 @@
                     {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavail %}
                 </div>
                 <div class="scrolling-wrapper scroll">
-                    {% if course.country.code != "XF" %}
+                    {% if course.country.code != "XF" and overall_stats.show_satisfaction_stats %}
                         {% if question_stats.question_28.agree_or_strongly_agree %}
                             <div class="student-satisfaction__overview mt-3 p-2 flex-wrap mx-1">
                                 <div class="student-satisfaction_overall-chart left">
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                         {% endif %}
-                    {% elif course.country.code == "XF" %}
+                    {% elif course.country.code == "XF" and overall_stats.show_satisfaction_stats %}
                         <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                             <!-- freedom of expression (england) box-->
                             {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Student satisfaction" q1=question_stats.question_28 description="" no_data_key="no_data_england" %}

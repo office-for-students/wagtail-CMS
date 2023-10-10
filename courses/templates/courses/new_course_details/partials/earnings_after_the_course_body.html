@@ -35,10 +35,6 @@
 
         <div class="earnings-after-course_block mx-1 mt-2 px-3 px-md-4 pt-4 pb-2">
         <div>
-        <h2 class="earnings-after-course__stats-heading text-left pt-3 pb-2">
-
-            {{ subbed_text | safe }}
-        </h2>
         {% if course_details.course_level == 4 %}
             <h4 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{% get_translation key='course_level_msg' language=page.get_language %}</h4>
         {% endif %}
@@ -60,7 +56,7 @@
             </div>
         {% endif %}
         <div class="earnings-after-course_explanation-text pb-2">
-            {% create_list course_details.institution.pub_ukprn_name as substitutions %}
+            {% create_list institution_name as substitutions %}
             {% insert_values_to_rich_text content=block.value.institution_graduates_heading substitutions=substitutions as subbed_text %}
             {{ subbed_text | safe }}
         </div>
@@ -279,21 +275,21 @@
                     {% if salary_index == 0 and salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc != None %}
                         <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3"
                             id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
-                            {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.0.subject_title_in_local_language course.institution.pub_ukprn_name course.default_region as substitutions %}
+                            {% create_list salary_aggregate.aggregated_salaries_inst.0.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.0.subject_title_in_local_language institution_name course.default_region as substitutions %}
                             {% insert_values_to_plain_text content=prov_pc_text_template_go substitutions=substitutions as subbed_text %}
                             {{ subbed_text | safe }}
                         </h4>
                     {% elif salary_index == 1 and salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc != None %}
                         <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3"
                             id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
-                            {% create_list salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.1.subject_title_in_local_language course.institution.pub_ukprn_name course.default_region as substitutions %}
+                            {% create_list salary_aggregate.aggregated_salaries_inst.1.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.1.subject_title_in_local_language institution_name course.default_region as substitutions %}
                             {% insert_values_to_plain_text content=prov_pc_text_template_leo substitutions=substitutions as subbed_text %}
                             {{ subbed_text | safe }}
                         </h4>
                     {% elif salary_index == 2 and salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc != None %}
                         <h4 class="prov-pc-field earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3"
                             id="{% concat 'sector_salary_graduates_' salary_index '_' salary_aggregate.subject_code %}">
-                            {% create_list salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.2.subject_title_in_local_language course.institution.pub_ukprn_name course.default_region as substitutions %}
+                            {% create_list salary_aggregate.aggregated_salaries_inst.2.salary_default_country_prov_pc salary_aggregate.aggregated_salaries_inst.2.subject_title_in_local_language institution_name course.default_region as substitutions %}
                             {% insert_values_to_plain_text content=prov_pc_text_template_leo substitutions=substitutions as subbed_text %}
                             {{ subbed_text | safe }}
                         </h4>
