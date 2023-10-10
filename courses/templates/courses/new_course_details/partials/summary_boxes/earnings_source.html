@@ -1,0 +1,4 @@
+{% load discover_uni_tags wagtailcore_tags %}
+{% create_list first_index course.salary_aggregates.0.display_subject_name_earnings_tabs institution_name as substitutions %}
+{% insert_values_to_plain_text content=source substitutions=substitutions as source_text %}
+{{ source_text | richtext }}

@@ -34,6 +34,11 @@
              aria-labelledby="earnings-after-course-{{ forloop.counter }}-tab">
 
         <div class="earnings-after-course_block mx-1 mt-2 px-3 px-md-4 pt-4 pb-2">
+        <h2 class="earnings-after-course__stats-heading text-left pt-3 pb-2">
+            {% create_list salary_aggregate.display_subject_name as substitutions %}
+            {% insert_values_to_rich_text content=block.value.average_earnings_inst_heading substitutions=substitutions as subbed_text %}
+            {{ subbed_text | richtext }}
+        </h2>
         <div>
         {% if course_details.course_level == 4 %}
             <h4 class="kis-level-msg earnings-sector-field earnings-after-course-stat-salary-range pt-1 text-center text-lg-left mb-3">{% get_translation key='course_level_msg' language=page.get_language %}</h4>
@@ -180,7 +185,7 @@
     <div>
         <form method='post' id='nan-{{ forloop.counter }}' class="">
             <div class="">
-                <h2 class="earnings-after-course__stats-heading text-left pt-3 mt-3 mb-2" >
+                <h2 class="earnings-after-course__stats-heading text-left pt-3 mt-3 mb-2">
                     {% create_list salary_aggregate.display_subject_name as substitutions %}
                     {% insert_values_to_rich_text content=block.value.average_earnings_sector_heading substitutions=substitutions as subbed_text %}
                     {{ subbed_text | safe }}
@@ -417,27 +422,27 @@
                 $("#" + ddlId).prop("disabled", true);
                 $("#busy_" + subjectIndex).show();
 
-            var courseDetails = window.location.pathname;
-            var courseParams = courseDetails.split('/');
+                var courseDetails = window.location.pathname;
+                var courseParams = courseDetails.split('/');
 
-            $.ajax({
-                url: "{% url 'regional_earnings' %}",
-                type: "POST",
-                headers: { "X-CSRFToken": "{{ csrf_token }}" }, // Without this, Django will throw a 403 Forbidden response.
-                timeout: 3000,
-                data: {
-                    'region': selectedRegion,
-                    'institution_id': courseParams[2],
-                    'course_id': courseParams[3],
-                    'kis_mode': courseParams[4].replace("%20", "-"),
-                    'language': "{{ page.get_language }}",
-                    'subject_code': subjectIndex
-                },
-                dataType: 'json',
-                success: function (data) {
-                    prev_region = selectedRegion;
-                    $("#" + ddlId).prop("disabled", false);
-                    $("#busy_" + subjectIndex).hide();
+                $.ajax({
+                    url: "{% url 'regional_earnings' %}",
+                    type: "POST",
+                    headers: {"X-CSRFToken": "{{ csrf_token }}"}, // Without this, Django will throw a 403 Forbidden response.
+                    timeout: 3000,
+                    data: {
+                        'region': selectedRegion,
+                        'institution_id': courseParams[2],
+                        'course_id': courseParams[3],
+                        'kis_mode': courseParams[4].replace("%20", "-"),
+                        'language': "{{ page.get_language }}",
+                        'subject_code': subjectIndex
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        prev_region = selectedRegion;
+                        $("#" + ddlId).prop("disabled", false);
+                        $("#busy_" + subjectIndex).hide();
 
                         if (data['salary_sector_15_unavail_text'] == "") {
                             if (data['salary_sector_15_med']) {
@@ -553,7 +558,7 @@
                             $("#sector_salary_graduates_2_" + subjectIndex + " div p").text(String(data['inst_prov_pc_prefix']) + data['inst_prov_pc_leo5'] + graduates_text_leo + " " + data['region_full_name']);
                     },
                     error: function (request, status, error) {
-                    console.log(request)
+                        console.log(request)
                         //alert(request.responseText);
                         $("#" + ddlId).prop("disabled", false);
                         $("#" + ddlId).val(prev_region);
