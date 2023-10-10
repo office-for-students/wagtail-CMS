@@ -147,14 +147,20 @@ def get_course_name(course, is_english):
 @register.simple_tag
 def get_course_locations_list(locations, is_english):
     locations_list = []
-    if is_english:
-        for location in locations:
-            location_name = location.get('english') if location.get('english') else location.get('welsh')
-            locations_list.append(location_name)
+    if locations == [None]:
+        print("location is NONE is shouldn't be")
     else:
-        for location in locations:
-            location_name = location.get('welsh') if location.get('welsh') else location.get('english')
-            locations_list.append(location_name)
+        if is_english:
+            for location in locations:
+                print(f"location: {locations}")
+                location_name = location.get('english') if location.get('english') else location.get('welsh')
+                locations_list.append(location_name)
+        else:
+            for location in locations:
+                print(f"location: {locations}")
+                location_name = location.get('welsh') if location.get('welsh') else location.get('english')
+                locations_list.append(location_name)
+
     return ','.join(locations_list)
 
 
