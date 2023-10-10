@@ -192,8 +192,12 @@ class SatisfactionStatistics:
         unavail_dict = unavail_en if language == "en" else unavail_cy
         if not has_data:
             return unavail_dict["no-data"][str(unavail_code)]
-        if aggregation_level:
+        if unavail_code == 0:
             unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)][resp]
+            unavail.replace("[Subject]", subject)
+            return unavail
+        if unavail_code == 1 or unavail_code == 2:
+            unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)]
             unavail.replace("[Subject]", subject)
             return unavail
 
