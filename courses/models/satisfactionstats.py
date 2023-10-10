@@ -201,10 +201,10 @@ class SatisfactionStatistics:
             return unavail_dict["no-data"][str(unavail_code)]
         if unavail_code == 0:
             unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)][resp]
-            unavail.replace("[Subject]", subject)
-            return unavail
+            new_unavail = unavail.replace("[Subject]", subject)
+            return new_unavail
         if unavail_code == 1 or unavail_code == 2:
             unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)]
-            unavail.replace("[Subject]", subject)
-            return unavail
+            new_unavail = unavail.replace("[Subject]", subject)
+            return new_unavail
 
