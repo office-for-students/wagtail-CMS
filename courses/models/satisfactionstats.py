@@ -119,9 +119,16 @@ class SatisfactionStatistics:
         return self.question_22.show_data_point or self.question_23.show_data_point or \
                self.question_24.show_data_point or self.question_25.show_data_point
 
+    def show_mental_wellbeing_stats(self):
+        return self.question_26.show_data_point
+
+    def show_freedom_expression_stats(self):
+        return self.question_27.show_data_point
+
     def show_satisfaction_stats(self):
         return self.show_teaching_stats() or self.show_learning_opps_stats() or self.show_assessment_stats() or \
-               self.show_organisation_stats() or self.show_learning_resources_stats() or self.show_voice_stats()
+               self.show_organisation_stats() or self.show_learning_resources_stats() or self.show_voice_stats() or \
+               self.show_mental_wellbeing_stats() or self.show_freedom_expression_stats() or self.question_28.show_data_point
 
     def show_nhs_stats(self):
         return self.question_1.show_data_point or self.question_2.show_data_point or \
