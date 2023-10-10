@@ -40,3 +40,6 @@ class CourseAccreditation:
 
     def show_dependency(self):
         return self.dependent_on_code == '1'
+
+    def should_show_accreditation(self):
+        return self.type != ''

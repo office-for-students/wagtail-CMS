@@ -1,0 +1,43 @@
+{% load static discover_uni_tags %}
+{% load humanize %}
+
+<div class="inside-box flex-fill"> <!--inside-box-->
+    <div class="charts d-flex flex-column">
+        <div class="col-lg-12 col-md-12 mt-3 additional-class d-flex flex-fill"><!--top side-->
+            <!--the box-->
+            <div class="student-satisfaction__title-box one-box-title">
+                <h2>{{ title }}</h2>
+            </div>
+            <!-- end of box-->
+        </div>
+        <div class="student-satisfaction__charts col-lg-12 col-md-12 mb-auto justify-content-start">
+            <!--bottom-side-->
+            <div class="top-row d-flex fill-if-big">
+                <!-- question 1 -->
+                {% if q1.show_data_point %}
+                    <div class="student-satisfaction__chart-wrapper">
+                        <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                             data-value="{{ q1.agree_or_strongly_agree }}"
+                             data-question="satisfaction-1"
+                             data-language="{{ page.get_language }}"
+                             data-field="{% get_translation key=q1.description language=page.get_language %}">
+                            <p class="student-satisfaction__chart-title">
+                                <span class="student-satisfaction__chart-percentage">{{ q1.agree_or_strongly_agree }}% </span>{% get_translation key=q1.description language=page.get_language %}
+                            </p>
+                        </div>
+                    </div>
+                {% elif no_data_key %}
+                    <div class="student-satisfaction__chart-wrapper">
+                        <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1">
+                            <p class="student-satisfaction__chart-title">{% get_translation key=no_data_key language=page.get_language %}</p>
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% if q1.show_data_point %}
+        {% include "courses/new_course_details/partials/source.html" %}
+    {% endif %}
+</div>

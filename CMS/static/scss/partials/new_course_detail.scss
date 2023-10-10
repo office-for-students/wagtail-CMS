@@ -1,0 +1,1407 @@
+@import './fonts';
+@import './new_variables';
+@import './grid';
+
+@import './student_satisfaction';
+@import './entry_information';
+@import './after_one_year';
+@import './earnings_after_course';
+@import './employment_after_course';
+@import './accreditation';
+@import './graduate_perceptions';
+
+@import './highcharts';
+
+[id^=highcharts-screen-reader-region] {
+  display: none;
+}
+
+.data-source {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #4f4e4e;
+  font-size: 1rem;
+  margin-bottom: 7px;
+  font-weight: bold;
+  margin-top: 4px;
+  padding-left: 16px;
+
+  a {
+    font-weight: 600;
+    color: #212121;
+    text-decoration: none;
+  }
+}
+
+.course_detail__header-bar {
+  background-color: $core-brand1;
+
+  .course_detail__header-bar-div {
+    overflow: hidden;
+    height: 80px;
+
+    .home-page__header-bg-icon {
+      height: 100px;
+      width: auto;
+    }
+  }
+
+}
+
+.data-from {
+  display: inline;
+  margin-right: 0 !important;
+}
+
+.course-detail {
+  // overflow-x: hidden;
+  &__bookmark-compare-btn {
+
+    @include small-font--bold-mixin();
+    padding: 5px 10px;
+    border: 2.5px solid $blue3;
+    color: black !important;
+    border-radius: 8px;
+    cursor: pointer;
+    background: white;
+
+    &-white {
+      @include small-font--bold-mixin();
+      padding: 5px 10px;
+      border: 1.5px solid $blue2;
+      color: $blue2;
+      border-radius: 16px;
+      cursor: pointer;
+      background-color: $white;
+    }
+
+    .remove {
+      display: none;
+    }
+
+    &.selected {
+      @include green-gradient-background-mixin();
+
+      border: 2.5px solid $gradient-light-green;
+      color: white !important;
+
+      .add {
+        display: none;
+      }
+
+      .remove {
+        display: inline-block;
+      }
+    }
+
+
+    img {
+      margin-right: 6px;
+    }
+  }
+
+  &__compare-btn {
+    //@include small-font--bold-mixin();
+    padding: 12px 20px;
+    border: 2.5px solid black;
+    color: black !important;
+    border-radius: 100px;
+    cursor: pointer;
+    background: white;
+    font-weight: normal;
+    font-size: 1.0625rem;
+
+    .remove {
+      display: none;
+    }
+
+
+    &.selected {
+      @include green-gradient-background-mixin();
+
+      border: 2.5px solid $gradient-light-green;
+      color: white !important;
+
+      .add {
+        display: none;
+      }
+
+      .remove {
+        display: inline-block;
+      }
+    }
+
+    img {
+      margin-left: 6px;
+    }
+  }
+
+  .info-box {
+    border: solid 1px $royal-blue;
+    border-radius: 8px;
+
+    &__heading {
+      font-size: 1.875rem;
+    }
+
+    &__content {
+
+      li:not(:last-child) {
+        margin-bottom: 10px;
+      }
+
+      li:last-child {
+        list-style: none;
+      }
+
+    }
+
+    &__link {
+      font-size: 1rem;
+      font-weight: 600;
+      color: $core-brand1;
+      text-decoration: underline;
+    }
+  }
+
+  .data-info {
+    background: $box-background;
+    //border: solid 2px $blue5;
+    padding: 10px;
+    margin-bottom: 0;
+    margin-top: 0;
+
+    &__heading {
+      font-size: 1rem;
+      padding-right: 5px;
+      color: $royal-blue;
+    }
+
+    &__img {
+      float: right;
+      width: 25px;
+      height: 25px;
+      margin-top: 1px;
+    }
+
+    &__content {
+      font-size: 0.75rem;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    &__link {
+      color: $royal-blue;
+      font-size: 0.875rem;
+
+    }
+  }
+
+
+  .course-detail__joint-overview {
+    border: solid 3px #cee9e7;
+
+    .course-detail__joint-overview-heading h3 {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.5;
+      font-weight: normal;
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: #000000;
+      text-align: center;
+    }
+
+    .course-detail__joint-overview-body {
+      p {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: #212529;
+        font-weight: normal;
+        text-align: center;
+      }
+
+      a {
+        font-family: 'Nunito Sans', sans-serif;
+        line-height: 1.5;
+        font-size: 0.875rem;
+        color: $blue2;
+        font-weight: 600;
+        text-decoration: underline;
+        text-align: center;
+      }
+    }
+  }
+
+  .course-detail__lead {
+    h4 {
+      font-size: 1rem;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: black;
+
+    }
+
+    .course-detail__overview-lead h2 {
+      font-size: 1rem;
+      //font-weight: bold;
+      margin-bottom: 0;
+      color: $black;
+    }
+
+
+    .course-detail__nav {
+      visibility: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
+      height: 100%;
+      list-style: none;
+
+      .course-detail__nav-control {
+        @include mobile-body-font--bold-mixin();
+        padding: 0;
+        color: $gradient-light-green;
+        border: none;
+        background-color: transparent;
+        position: absolute;
+        top: 110px;
+
+        .course-detail__nav-control-icon {
+          height: 12px;
+        }
+
+        #course-detail__nav-control-back {
+          visibility: visible;
+          display: inline;
+          cursor: pointer;
+          margin-left: auto;
+          font-family: 'Nunito Sans', sans-serif;
+          font-size: 1rem;
+          color: white;
+          font-weight: normal;
+        }
+      }
+    }
+
+    .course-detail__icon {
+      height: 48px;
+    }
+
+    .course-detail__course-name {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 2.375rem;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: #000000;
+      margin-bottom: 20px;
+    }
+
+    a.course-detail__institution-name {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.875rem;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: $blue2;
+      text-decoration: underline;
+    }
+
+
+    .course-detail__institution-locations {
+
+      @include small-font-mixin();
+
+    }
+
+    .course-detail__course-overview {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+
+      .course-detail__overview-item {
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        background-color: $white;
+        border-radius: 10px;
+
+        .course-detail__overview-item-heading {
+          font-family: 'Nunito Sans', sans-serif;
+          font-size: 0.875rem;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.5;
+          letter-spacing: normal;
+          color: #000000;
+          margin: 0;
+          margin-bottom: 5px;
+        }
+
+        .course-detail__overview-item-value {
+          @include small-font--bold-mixin();
+          margin: 0;
+
+          color: $black;
+        }
+      }
+    }
+  }
+
+  .course-detail__course-summary {
+    padding-bottom: 1rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .box-container {
+      width: 95%;
+      display: flex;
+      max-width: 1100px;
+      flex-direction: column;
+      margin: auto;
+      align-items: center;
+
+      h3 {
+        padding-left: 10px;
+        color: white;
+        padding-top: 45px;
+        font-size: 1.5rem;
+        width: 350px;
+      }
+
+      .box-row {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        justify-content: space-evenly;
+
+        .box {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          background-color: white;
+          border-radius: 8px;
+          padding: 16px;
+          width: 350px;
+          height: 279px;
+          margin-left: 7px;
+          margin-right: 7px;
+          margin-top: 5px;
+          margin-bottom: 5px;
+
+          .box-title {
+            font-size: 1.5rem;
+            margin: auto;
+          }
+
+          .box-bold {
+            font-size: 3rem;
+            margin: auto;
+          }
+          .box-subtitle {
+            font-size: 1.375rem;
+            margin: auto;
+            text-align: center;
+          }
+
+          .box-small {
+            font-size: 1.0625rem;
+            margin: auto;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .section-links {
+      display: flex;
+      flex-direction: row;
+      overflow: auto;
+      background-color: #F7F7F7;
+      scroll-behavior: smooth;
+
+      a {
+        display: block;
+        height: 23px;
+        min-width: fit-content;
+        padding: 0.5rem 0.9rem;
+        background-color: transparent;
+        border-radius: 70px;
+        margin: auto 2px auto 2px;
+        color: black;
+        text-decoration: none;
+        border: solid 1px $light-grey;
+        scroll-behavior: smooth;
+      }
+
+      .active-link {
+        background-color: $call-to-action;
+      }
+
+      .vl {
+        border-left: 1px solid #{$core-brand4}#{60};
+        margin-top: auto;
+        margin-bottom: auto;
+        height: 25px;
+        scroll-behavior: smooth;
+      }
+
+      .course-detail {
+        height: unset;
+        padding: 0.2rem 0.9rem;
+        width: fit-content;
+        border-radius: 70px;
+        position: relative;
+        scroll-behavior: smooth;
+      }
+    }
+
+    .section-scroll {
+      ::-webkit-scrollbar {
+        height: 3px;
+        background: transparent;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: transparent;
+        height: 2px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: transparent;
+        border-radius: 2px;
+
+
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(239, 239, 240, 1)
+      }
+    }
+  }
+
+  .course-detail__headline_statistics {
+
+    .course-detail__headline_stat {
+      background-color: #fef6d9;
+    }
+
+    h2 {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.375rem;
+      font-weight: normal;
+      color: #000000;
+    }
+
+    h3 {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: normal;
+      color: #000000;
+    }
+
+    p {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: normal;
+      color: #000000;
+      padding: 0 5px;
+    }
+
+    a {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      text-decoration: underline;
+    }
+  }
+
+  .course-detail__accordion-block {
+    margin-bottom: 45px;
+
+    .course-detail__accordion {
+      margin-bottom: 7px;
+
+      .course-detail__accordion-heading {
+        display: block;
+        width: 100%;
+        padding: 0;
+        color: $white;
+        border: 0;
+        background-color: $royal-blue;
+        cursor: pointer;
+
+        &.open {
+          background-color: $royal-blue;
+
+          h2 {
+            color: $white;
+          }
+        }
+
+        h2 {
+          @include xs-heading-mixin();
+
+          display: flex;
+          align-items: center;
+          margin: 0;
+          padding: 17px 30px 17px 30px;
+          position: relative;
+          text-align: left;
+          border: 3px solid transparent;
+          color: $white;
+          justify-content: space-between;
+
+          &:hover {
+            border: 3px solid $blue4;
+          }
+
+          .course-detail__accordion-heading-chevron {
+            display: flex;
+            margin-right: 50px;
+          }
+
+          .course-detail__icon {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .course-detail__uni-site-links {
+    padding: 30px 22px 20px 25px;
+    margin-bottom: 30px;
+    background-color: $box-background;
+    border-radius: 8px;
+    border: none;
+
+    .course-detail__uni-site-links-header, .course-detail__uni-site-links-header .rich-text p {
+      font-size: 1.125rem;
+      font-weight: normal;
+      color: $black;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .course-detail__uni-site-links-blocks {
+      border-radius: 8px;
+      background-color: white;
+    }
+
+    .course-detail__uni-site-links-block {
+      padding: 0 16px 0 16px;
+
+      .course-detail__uni-site-links-heading {
+        font-size: 1rem;
+        font-weight: normal;
+        color: $black;
+        font-family: 'Nunito Sans', sans-serif;
+      }
+
+      .course-detail__uni-site-links-list {
+        padding: 0;
+        margin: 0;
+
+        .course-detail__uni-site-links-list-item {
+          display: block;
+          padding: 4px 0;
+
+
+          .course-detail__uni-site-link {
+            font-size: 1rem;
+            font-weight: normal;
+            color: black;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  .course-detail__further-info-block {
+    margin-bottom: 45px;
+
+    .course-detail__other-courses-link {
+      @include mobile-body-font-mixin();
+      @include green-gradient-background-mixin();
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 27px 35px 27px 35px;
+      margin-bottom: 15px;
+
+      border-radius: 5px;
+      text-decoration: none;
+
+      .course-detail__other-courses-link-icon {
+        margin-right: 9px;
+      }
+    }
+  }
+
+  .highcharts-credits {
+    display: none;
+  }
+
+  .explanation-text {
+    .explanation-text {
+
+      color: $brownish-grey;
+      font-weight: normal;
+      font-size: 0.875rem;
+    }
+  }
+
+  .find-out-more-link {
+    p {
+      @include small-font-mixin();
+
+      margin-top: 23px;
+      margin-bottom: 0;
+    }
+  }
+
+  .chart-label-explanation {
+    display: none;
+    position: absolute;
+    left: 0;
+    z-index: 100;
+    margin-top: 10px;
+    width: 100%;
+
+
+    background-color: $white;
+    border: 1px solid #D7D7D7;
+    border-radius: 10px;
+    box-shadow: 6px 5px 30px rgba(0, 0, 0, 0.28);
+
+    .chart-label-explanation__heading {
+      @include xs-heading--bold-mixin();
+
+      position: relative;
+      padding: 38px 30px 20px;
+      margin: 0;
+
+      color: $gradient-light-green;
+    }
+
+    .chart-label-explanation__close {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      width: 30px;
+    }
+
+    .chart-label-explanation__body {
+      padding: 0 30px 25px;
+
+      p, li, h4 {
+        @include mobile-body-font-mixin();
+
+        margin-top: 0;
+
+        color: $ux-grey-3;
+
+        b {
+          @include mobile-body-font--bold-mixin();
+          margin: 0;
+          margin-bottom: 5px;
+
+          color: $ux-grey-3;
+        }
+      }
+
+      h4 {
+        margin-bottom: 5px;
+      }
+
+      p {
+        margin-bottom: 15px;
+      }
+
+      ul {
+        padding-left: 20px;
+        margin-top: 0;
+
+        li {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+div.course-detail.course-details-thin {
+  width: 95%;
+  padding-top: 16px;
+}
+
+@media only screen and (min-width: 770px) and (max-width: 1100px) {
+
+  .course-detail .course-detail__lead a.course-detail__institution-name {
+    font-size: 28px;
+  }
+  .course-detail .course-detail__lead .course-detail__course-name {
+    font-size: 32px;
+    font-weight: bold;
+  }
+  .course-detail {
+    .course-detail__compare-btn {
+      @include small-font--bold-mixin();
+
+      float: right;
+      padding: 12px 20px 12px 20px;
+      border-radius: 100px;
+      //         color: $ux-grey-3;
+      color: #fdfafa;
+      background-color: transparent;
+    }
+
+    &__bookmark-compare-btn {
+      @include small-font--bold-mixin();
+      padding: 7px 23px 7px 23px;
+
+      border-radius: 8px;
+      //         color: $ux-grey-3;
+      color: #fdfafa;
+      background-color: transparent;
+    }
+
+    .course-detail__joint-overview {
+      border: solid 3px #cee9e7;
+
+      .course-detail__joint-overview-heading h3 {
+        font-family: 'Nunito Sans', sans-serif;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 1.5;
+        color: #000000;
+        margin-top: 0;
+        text-align: left;
+      }
+
+      .course-detail__joint-overview-body {
+        p {
+          font-family: 'Nunito Sans', sans-serif;
+          line-height: 1.5;
+          font-size: 1rem;
+          color: #212529;
+          font-weight: normal;
+          text-align: left;
+        }
+
+        a {
+          font-family: 'Nunito Sans', sans-serif;
+          line-height: 1.5;
+          font-size: 1rem;
+          color: $blue2;
+          font-weight: 600;
+          text-decoration: underline;
+          text-align: left;
+        }
+      }
+    }
+
+    .course-detail__uni-site-links {
+
+      margin-bottom: 70px;
+
+      .course-detail__uni-site-links-header, .course-detail__uni-site-links-header .rich-text p {
+        font-size: 32px;
+        font-weight: normal;
+        color: $black;
+        font-family: 'Nunito Sans', sans-serif;
+        line-height: 1.5;
+      }
+    }
+
+    .course-detail__overview {
+      .course-detail__overview-item {
+        .course-detail__overview-item-heading {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .course-detail__course-name {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 48px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: #000000;
+      margin-bottom: 20px;
+    }
+
+    a.course-detail__institution-name {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 28px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: $blue2;
+      text-decoration: underline;
+    }
+
+    .course-detail__headline_statistics {
+
+      .course-detail__headline_stat {
+        background-color: #fef6d9;
+      }
+
+      h2 {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 24px;
+        font-weight: normal;
+        color: #000000;
+      }
+
+      h3 {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 38px;
+        font-weight: normal;
+        color: #000000;
+      }
+
+      p {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 1.125rem;
+        font-weight: normal;
+        color: #000000;
+        padding: 0 5px;
+      }
+
+      a {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 1.125rem;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        text-decoration: underline;
+      }
+    }
+  }
+  .course-detail__uni-site-links-block {
+    padding: 16px 16px 32px 16px;
+    border-radius: 8px;
+  }
+  .course-detail .course-detail__uni-site-links .course-detail__uni-site-links-blocks {
+    background-color: transparent;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+
+
+  .course-detail .course-detail__lead a.course-detail__institution-name {
+    font-size: 28px;
+  }
+
+  .course-detail .course-detail__joint-overview {
+    border: solid 3px #cee9e7;
+
+    .course-detail__joint-overview-heading h3 {
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 1.5;
+      margin-top: 0;
+      color: #000000;
+      text-align: left;
+    }
+
+    .course-detail__joint-overview-body {
+      p {
+        font-family: 'Nunito Sans', sans-serif;
+        font-weight: normal;
+        line-height: 1.5;
+        font-size: 1rem;
+        color: #212529;
+        text-align: left;
+      }
+
+      a {
+        font-family: 'Nunito Sans', sans-serif;
+        line-height: 1.5;
+        font-size: 1rem;
+        color: $blue2;
+        font-weight: 600;
+        text-decoration: underline;
+        text-align: left;
+      }
+    }
+  }
+
+  .course-detail__headline_statistics {
+
+    .course-detail__headline_stat {
+      background-color: #fef6d9;
+    }
+
+    h2 {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 24px;
+      font-weight: normal;
+      color: #000000;
+    }
+
+    h3 {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 38px;
+      font-weight: normal;
+      color: #000000;
+    }
+
+    p {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.125rem;
+      font-weight: normal;
+      color: #000000;
+      padding: 0 5px;
+    }
+
+    a {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.125rem;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      text-decoration: underline;
+    }
+  }
+
+  .course_detail__header-bar {
+    .course_detail__header-bar-div {
+      overflow: hidden;
+      height: 100px;
+
+      .home-page__header-bg-icon {
+        height: 150px;
+        width: auto;
+      }
+    }
+
+  }
+  .course-detail {
+    margin-top: 35px;
+
+    .course-detail__overview {
+      .course-detail__overview-item {
+        .course-detail__overview-item-heading {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .course-detail__body {
+      padding: 0;
+    }
+
+    .course-detail__lead {
+
+
+      .course-detail__nav {
+        visibility: hidden;
+
+        .course-detail__nav-control {
+          @include xs-heading-mixin();
+          color: $gradient-light-green;
+          top: 135px;
+
+          .course-detail__nav-control-icon {
+            height: 16px;
+          }
+
+          #course-detail__nav-control-back {
+            display: none;
+          }
+        }
+      }
+
+      .course-detail__icon {
+        height: 68px;
+      }
+
+      .course-detail__course-name {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 2.375rem;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        color: #000000;
+        margin-bottom: 20px;
+      }
+
+      .course-detail__institution-name {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 28px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        color: $blue2;
+        text-decoration: underline;
+      }
+
+      .course-detail__course-overview {
+        flex-wrap: nowrap;
+      }
+
+      .course-detail__headline_statistics {
+        .course-detail__headline_stat {
+          background-color: #fef6d9;
+        }
+
+        h2 {
+          font-family: 'Nunito Sans', sans-serif;
+          font-size: 24px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.5;
+          letter-spacing: normal;
+          color: #000000;
+          padding: 0;
+          margin: 0;
+        }
+
+        h3 {
+          font-family: 'Nunito Sans', sans-serif;
+          font-size: 48px;
+          font-weight: normal;
+          color: #000000;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+
+        p {
+          font-family: 'Nunito Sans', sans-serif;
+          font-size: 1.125rem;
+          font-weight: normal;
+          color: #000000;
+          padding: 0;
+        }
+
+        a {
+          font-family: 'Nunito Sans', sans-serif;
+          font-size: 1.125rem;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.5;
+          letter-spacing: normal;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .course-detail__uni-site-links {
+
+      margin-bottom: 70px;
+
+      .course-detail__uni-site-links-header, .course-detail__uni-site-links-header .rich-text p {
+        font-size: 32px;
+        font-weight: normal;
+        color: $black;
+        font-family: 'Nunito Sans', sans-serif;
+        line-height: 1.5;
+      }
+
+      .course-detail__uni-site-links-blocks {
+        display: flex;
+
+        .course-detail__uni-site-links-block {
+          flex: 1 1 0;
+          padding-bottom: 50px;
+          margin: 8px;
+
+          .course-detail__uni-site-links-heading {
+            font-size: 1.125rem;
+            font-weight: normal;
+            color: $black;
+            font-family: 'Nunito Sans', sans-serif;
+          }
+
+          .course-detail__uni-site-links-list {
+            padding: 0;
+            margin: 0;
+
+            .course-detail__uni-site-links-list-item {
+              display: block;
+              padding: 4px 0;
+
+              .course-detail__uni-site-link {
+                font-size: 1rem;
+                line-height: 2rem;
+                font-weight: lighter;
+                color: black;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .course-detail__further-info-block {
+      margin-bottom: 70px;
+      display: flex;
+      justify-content: space-between;
+
+
+      .course-detail__other-courses-link {
+        @include mobile-body-font-mixin();
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 27px 35px 27px 35px;
+        margin-bottom: 15px;
+        width: 35%;
+
+        border-radius: 5px;
+        background-color: $ux-grey-2;
+        color: $white;
+        text-decoration: none;
+
+        .course-detail__other-courses-link-icon {
+          margin-right: 9px;
+        }
+      }
+    }
+
+    .explanation-text {
+
+      color: $brownish-grey;
+      font-weight: normal;
+      font-size: 0.875rem;
+    }
+
+    .find-out-more-link {
+      p {
+        @include mobile-body-font-mixin();
+      }
+    }
+
+    .chart-label-explanation {
+      display: none;
+      width: 50%;
+      left: initial;
+
+      .chart-label-explanation__heading {
+        @include s-heading--bold-mixin();
+
+        color: $gradient-light-green;
+      }
+
+      .chart-label-explanation__body {
+        p, li, h4 {
+          @include desktop-body-font-mixin();
+
+          color: $ux-grey-3;
+
+          b {
+            @include desktop-body-font--bold-mixin();
+
+            color: $ux-grey-3;
+          }
+        }
+      }
+    }
+  }
+  .course-detail .course-detail__uni-site-links .course-detail__uni-site-links-blocks {
+    background-color: transparent;
+  }
+}
+
+
+.additional-class {
+  color: $brownish-grey;
+  font-size: 1rem;
+
+  p {
+    color: $brownish-grey;
+    font-size: 1rem;
+    margin-bottom: 7px;
+    font-weight: bold;
+    margin-top: 4px;
+  }
+
+  a {
+    font-weight: 600;
+
+    :hover {
+      color: $dark-green-blue;
+    }
+  }
+
+}
+
+.section-scroll.course-detail {
+  width: 95%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.section-links.course-detail {
+  border-radius: 70px;
+  height: 40px;
+  scroll-behavior: smooth;
+}
+
+
+@media only screen and (max-width: 575px) {
+  div.course-detail.course-details-thin {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 766px) {
+  div.course-detail.course-details-thin {
+    width: 540px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block;
+  }
+  .course-detail .course-detail__course-summary .box-container {
+    width: 75%;
+  }
+  .course-detail .course-detail__course-summary .box-container h3 {
+    width: 100%;
+    text-align: left;
+  }
+  .course-detail .course-detail__course-summary .box-container .box-row {
+    flex-direction: row;
+    padding: 10px 0;
+  }
+  .course-detail .course-detail__course-summary .box-container .box-row .box {
+    margin-bottom: 0;
+    margin-top: 0;
+    width: 220px;
+  }
+  .section-scroll.course-detail {
+    margin-top: 0;
+  }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 991px) {
+  div.course-detail.course-details-thin {
+    width: 720px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block;
+  }
+  .course-detail .course-detail__course-summary .box-container {
+    width: 75%;
+  }
+  .course-detail .course-detail__course-summary .box-container h3 {
+    width: 100%;
+    text-align: left;
+  }
+  .course-detail .course-detail__course-summary .box-container .box-row {
+    flex-direction: row;
+    padding: 10px 0;
+  }
+  .course-detail .course-detail__course-summary .box-container .box-row .box {
+    margin-bottom: 0;
+    margin-top: 0;
+    width: 220px;
+  }
+  .section-scroll.course-detail {
+    margin-top: 0;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  div.course-detail.course-details-thin {
+    width: 960px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block;
+  }
+  .course-detail .course-detail__course-summary .box-container {
+    width: 75%;
+  }
+  .course-detail .course-detail__course-summary .box-container h3 {
+    width: 100%;
+    text-align: left;
+  }
+  .course-detail .course-detail__course-summary .box-container .box-row {
+    flex-direction: row;
+    padding: 10px 0;
+  }
+  .course-detail .course-detail__course-summary .box-container .box-row .box {
+    margin-bottom: 0;
+    margin-top: 0;
+    width: 325px;
+  }
+  .section-scroll.course-detail {
+    width: fit-content;
+    margin-top: 0;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  div.course-detail.course-details-thin {
+    width: 1140px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block;
+  }
+  .course-detail .course-detail__course-summary .box-container {
+    width: 75%;
+
+  }
+  .course-detail .course-detail__course-summary .box-container h3 {
+    width: 100%;
+    text-align: left;
+  }
+  .course-detail .course-detail__course-summary .box-container .box-row {
+    flex-direction: row;
+    padding: 10px 0;
+  }
+  .course-detail .course-detail__course-summary .box-container .box-row .box {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .section-scroll.course-detail {
+    width: fit-content;
+    margin-top: 0;
+  }
+}
+
+
+

@@ -236,6 +236,9 @@ def regional_earnings(request):
 
 def courses_detail(request, institution_id, course_id, kis_mode, language=enums.languages.ENGLISH):
     course, error = Course.find(institution_id, course_id, kis_mode, language)
+    institution_name = course.institution.pub_ukprn_name
+    if ", the" in institution_name:
+        institution_name = f"The {institution_name.replace(', the', '')}"
     course_title = course.satisfaction_stats[0].display_subject_name
     if course.satisfaction_stats[0].aggregation_level == 14:
         course_title = course.display_title()
@@ -268,8 +271,13 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         'manage_link': bookmark_page.url if bookmark_page else '#',
         'translated_url': translated_url,
         "course_title": course_title,
-        'cookies_accepted': request.COOKIES.get('discoverUniCookies')
+        'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
+        "has_summary": has_summary_stats(course),
+        "institution_name": institution_name
     })
+
+    if course.institution.pub_ukprn == "10007762":
+        context["gcu"] = True
 
     salary_data = course.go_salaries_inst[0]
     salary_agg = salary_data.aggregate if salary_data.aggregate else course.leo3_salaries_inst[0].aggregate
@@ -279,7 +287,7 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         new_course_unavail = {"header": header, "body": UNAVAILABLE["new_course_earnings_unavail_body"][language]}
         context.update({"new_course_unavail": new_course_unavail})
 
-    return render(request, 'courses/course_detail_page.html', context)
+    return render(request, 'courses/new_course_details/course_detail_page.html', context)
 
 
 def compare_courses(request, language=enums.languages.ENGLISH):
@@ -298,3 +306,24 @@ def compare_courses(request, language=enums.languages.ENGLISH):
     )
 
     return render(request, 'courses/course_comparison_page.html', context)
+
+
+def get_summary_stats(course):
+    data_points = [
+        course.go_salaries_inst[0].med,
+        course.employment_stats[0].in_work_or_study,
+        course.graduate_perceptions[0].go_work_skills,
+        course.satisfaction_stats[0].question_23.agree_or_strongly_agree,
+        course.satisfaction_stats[0].question_16.agree_or_strongly_agree,
+    ]
+    if course.country.code == "XF":
+        data_points.append(course.satisfaction_stats[0].question_28.agree_or_strongly_agree)
+    else:
+        data_points.append(course.satisfaction_stats[0].question_9.agree_or_strongly_agree)
+    return data_points
+
+
+def has_summary_stats(course):
+    if any(data is not None and data != '' for data in get_summary_stats(course)):
+        return True
+    return False

@@ -1,0 +1,13 @@
+.base-grid {
+    grid-template-columns: repeat(12, 8.333% [col-start]);
+}
+
+.one-col-span {
+    grid-column-start: auto;
+    grid-column-end: span 1;
+}
+
+.two-col-span {
+    grid-column-start: auto;
+    grid-column-end: span 2;
+}

@@ -244,6 +244,7 @@
         font-size:0.9rem;
         font-weight:200;
         text-align: center;
+        color: white;
         // color:$white!important;
     }
     .nav-item.nav-link.scrollto.active {
@@ -254,7 +255,7 @@
     .navbar-toggler .navbar-dark{
         border:none!important;
     }
-    background-color: #2a8384!important;
+    background-color: #0A1D42 !important;
   
     .navbar .collapse {
         visibility: hidden;
@@ -266,7 +267,7 @@
     }
 
     .dropdown-menu{
-        background-color: #379c9e!important;
+        background-color: #0A1D42 !important;
         width:90vw;
         border:none;
     }

@@ -1,0 +1,16 @@
+{% load static %}
+{% load discover_uni_tags %}
+
+{% if percent != "None" %}
+<div class="box student-satisfaction">
+    <p class="box-title">{% get_translation key=title language=page.get_language %}</p>
+    <p class="box-bold">{{ percent }}%</p>
+    <p class="box-subtitle">{% get_translation key=description language=page.get_language %}</p>
+    <!--add chart-->
+    <p class="box-small">
+        {% include 'courses/new_course_details/partials/summary_boxes/summary_source_grad.html' %}
+    </p>
+</div>
+{% else %}
+    {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_no_data_box.html' %}
+{% endif %}

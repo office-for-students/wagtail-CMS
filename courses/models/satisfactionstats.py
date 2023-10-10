@@ -1,6 +1,9 @@
 from core.utils import enums
 from .satisfactionquestion import SatisfactionQuestion
 from .utils import display_unavailable_info, new_subject_unavail
+from .utils import separate_unavail_reason
+from ..unavail_dict_cy import unavail_cy
+from ..unavail_english_dict import unavail_en
 
 
 class SatisfactionStatistics:
@@ -11,34 +14,41 @@ class SatisfactionStatistics:
         self.aggregation_year = data_obj.get('aggregation_year')
         self.number_of_students = data_obj.get('number_of_students')
         self.response_rate = data_obj.get('response_rate')
-        self.question_1 = SatisfactionQuestion(data_obj.get('question_1'), "question_1")
-        self.question_2 = SatisfactionQuestion(data_obj.get('question_2'), "question_2")
-        self.question_3 = SatisfactionQuestion(data_obj.get('question_3'), "question_3")
-        self.question_4 = SatisfactionQuestion(data_obj.get('question_4'), "question_4")
-        self.question_5 = SatisfactionQuestion(data_obj.get('question_5'), "question_5")
-        self.question_6 = SatisfactionQuestion(data_obj.get('question_6'), "question_6")
-        self.question_7 = SatisfactionQuestion(data_obj.get('question_7'), "question_7")
-        self.question_8 = SatisfactionQuestion(data_obj.get('question_8'), "question_8")
-        self.question_9 = SatisfactionQuestion(data_obj.get('question_9'), "question_9")
-        self.question_10 = SatisfactionQuestion(data_obj.get('question_10'), "question_10")
-        self.question_11 = SatisfactionQuestion(data_obj.get('question_11'), "question_11")
-        self.question_12 = SatisfactionQuestion(data_obj.get('question_12'), "question_12")
-        self.question_13 = SatisfactionQuestion(data_obj.get('question_13'), "question_13")
-        self.question_14 = SatisfactionQuestion(data_obj.get('question_14'), "question_14")
-        self.question_15 = SatisfactionQuestion(data_obj.get('question_15'), "question_15")
-        self.question_16 = SatisfactionQuestion(data_obj.get('question_16'), "question_16")
-        self.question_17 = SatisfactionQuestion(data_obj.get('question_17'), "question_17")
-        self.question_18 = SatisfactionQuestion(data_obj.get('question_18'), "question_18")
-        self.question_19 = SatisfactionQuestion(data_obj.get('question_19'), "question_19")
-        self.question_20 = SatisfactionQuestion(data_obj.get('question_20'), "question_20")
-        self.question_21 = SatisfactionQuestion(data_obj.get('question_21'), "question_21")
-        self.question_22 = SatisfactionQuestion(data_obj.get('question_22'), "question_22")
-        self.question_23 = SatisfactionQuestion(data_obj.get('question_23'), "question_23")
-        self.question_24 = SatisfactionQuestion(data_obj.get('question_24'), "question_24")
-        self.question_25 = SatisfactionQuestion(data_obj.get('question_25'), "question_25")
-        self.question_26 = SatisfactionQuestion(data_obj.get('question_26'), "question_26")
-        self.question_27 = SatisfactionQuestion(data_obj.get('question_27'), "question_27")
-        self.question_28 = SatisfactionQuestion(data_obj.get('question_28'), "question_28")
+        self.nss_country_population = data_obj.get('nss_country_population')
+        self.nss_country_aggregation = data_obj.get('nss_country_aggregation')
+        self.nss_country_year = data_obj.get('nss_country_aggregation_year')
+        self.nss_country_response_rate = data_obj.get('nss_country_response_rate')
+        self.nss_country_subject = data_obj.get('nss_country_subject')
+        self.question_1 = SatisfactionQuestion(data_obj.get('question_1'))
+        self.question_2 = SatisfactionQuestion(data_obj.get('question_2'))
+        self.question_3 = SatisfactionQuestion(data_obj.get('question_3'))
+        self.question_4 = SatisfactionQuestion(data_obj.get('question_4'))
+        self.question_5 = SatisfactionQuestion(data_obj.get('question_5'))
+        self.question_6 = SatisfactionQuestion(data_obj.get('question_6'))
+        self.question_7 = SatisfactionQuestion(data_obj.get('question_7'))
+        self.question_8 = SatisfactionQuestion(data_obj.get('question_8'))
+        self.question_9 = SatisfactionQuestion(data_obj.get('question_9'))
+        self.question_10 = SatisfactionQuestion(data_obj.get('question_10'))
+        self.question_11 = SatisfactionQuestion(data_obj.get('question_11'))
+        self.question_12 = SatisfactionQuestion(data_obj.get('question_12'))
+        self.question_13 = SatisfactionQuestion(data_obj.get('question_13'))
+        self.question_14 = SatisfactionQuestion(data_obj.get('question_14'))
+        self.question_15 = SatisfactionQuestion(data_obj.get('question_15'))
+        self.question_16 = SatisfactionQuestion(data_obj.get('question_16'))
+        self.question_17 = SatisfactionQuestion(data_obj.get('question_17'))
+        self.question_18 = SatisfactionQuestion(data_obj.get('question_18'))
+        self.question_19 = SatisfactionQuestion(data_obj.get('question_19'))
+        self.question_20 = SatisfactionQuestion(data_obj.get('question_20'))
+        self.question_21 = SatisfactionQuestion(data_obj.get('question_21'))
+        self.question_22 = SatisfactionQuestion(data_obj.get('question_22'))
+        self.question_23 = SatisfactionQuestion(data_obj.get('question_23'))
+        self.question_24 = SatisfactionQuestion(data_obj.get('question_24'))
+        self.question_25 = SatisfactionQuestion(data_obj.get('question_25'))
+        self.question_26 = SatisfactionQuestion(data_obj.get('question_26'))
+        self.question_27 = SatisfactionQuestion(data_obj.get('question_27'))
+        self.question_28 = SatisfactionQuestion(data_obj.get('question_28'))
+
+        self.nss_country_unavailable = data_obj.get('nss_country_unavailable_code')
 
         subject_data = data_obj.get('subject', {})
         self.subject_code = subject_data.get('code', '')
@@ -68,6 +78,13 @@ class SatisfactionStatistics:
                 aggregation_level=self.aggregation_level,
                 subject_welsh=self.subject_welsh
             )
+
+        #TEMP FIX AS UNAVAIL WAS NOT INGESTED FOR NSS
+        if self.aggregation_level != 14:
+            self.temp_unavail = self.get_unavail_from_code(data_obj, language)
+            self.sep_unavail = separate_unavail_reason(self.temp_unavail)
+            self.unavail = {"reason_heading": self.sep_unavail[0], "reason_body": self.sep_unavail[1]}
+
         self.unavailable_reason_heading = self.display_unavailable_info["reason_heading"]
         self.unavailable_reason_body = self.display_unavailable_info["reason_body"]
         if str(self.aggregation_level) in [None, "11", "12", "13", "21", "22", "23"]:
@@ -102,9 +119,16 @@ class SatisfactionStatistics:
         return self.question_22.show_data_point or self.question_23.show_data_point or \
                self.question_24.show_data_point or self.question_25.show_data_point
 
+    def show_mental_wellbeing_stats(self):
+        return self.question_26.show_data_point
+
+    def show_freedom_expression_stats(self):
+        return self.question_27.show_data_point
+
     def show_satisfaction_stats(self):
         return self.show_teaching_stats() or self.show_learning_opps_stats() or self.show_assessment_stats() or \
-               self.show_organisation_stats() or self.show_learning_resources_stats() or self.show_voice_stats()
+               self.show_organisation_stats() or self.show_learning_resources_stats() or self.show_voice_stats() or \
+               self.show_mental_wellbeing_stats() or self.show_freedom_expression_stats() or self.question_28.show_data_point
 
     def show_nhs_stats(self):
         return self.question_1.show_data_point or self.question_2.show_data_point or \
@@ -146,3 +170,41 @@ class SatisfactionStatistics:
 
     def freedom_stats(self):
         return [self.question_27]
+
+    def all_accordions(self):
+        return [
+            self.teaching_stats(), self.learning_opps_stats(), self.assessment_stats(),
+            self.support_stats(), self.organisation_stats(), self.organisation_stats(),
+            self.learning_resources_stats(), self.voice_stats(), self.wellbeing_stats(),
+            self.freedom_stats()
+        ]
+
+    def get_unavail_from_code(self, data, language):
+        unavail_code = data.get("unavailable_code", data.get("nss_country_unavailable_code"))
+        aggregation_level = data.get("aggregation_level", data.get("nss_country_aggregation_level"))
+        resp_rate = self.check_response_rate_present(data.get("response_rate", None))
+        subject = self.display_subject_name()
+        has_data = self.show_satisfaction_stats()
+        return self.get_reason_from_dict(unavail_code, aggregation_level, resp_rate, subject, has_data, language)
+
+    @staticmethod
+    def check_response_rate_present(resp_rate) -> str:
+        if resp_rate is None:
+            return "no_resp_rate"
+        return "yes_resp_rate"
+
+    @staticmethod
+    def get_reason_from_dict(unavail_code: int, aggregation_level: int, resp: str, subject: str, has_data: bool,
+                             language: str) -> str:
+        unavail_dict = unavail_en if language == "en" else unavail_cy
+        if not has_data:
+            return unavail_dict["no-data"][str(unavail_code)]
+        if unavail_code == 0:
+            unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)][resp]
+            new_unavail = unavail.replace("[Subject]", subject)
+            return new_unavail
+        if unavail_code == 1 or unavail_code == 2:
+            unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)]
+            new_unavail = unavail.replace("[Subject]", subject)
+            return new_unavail
+

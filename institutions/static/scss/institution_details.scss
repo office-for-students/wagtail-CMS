@@ -42,11 +42,12 @@
         }
 
         a {
-          width: 166px;
           border-radius: 70px;
           border: 1px solid white;
           padding: 5px 18px 6px 18px;
           color: white;
+          display: inline-block;
+          white-space: nowrap;
         }
       }
     }
@@ -192,8 +193,8 @@
 
             img {
               width: 100%;
-              border-radius: 8px;
-              mask-image: radial-gradient(circle, transparent 0%, black 100%);
+              // border-radius: 8px;
+              // mask-image: radial-gradient(circle, transparent 0%, black 100%);
             }
           }
 
@@ -216,9 +217,9 @@
             border-right: 1px solid #EBEBEB
           }
 
-          div {
-            width: 50%;
-            height: 122px;
+        div {
+            width: 70%;
+            //height: 122px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;

@@ -1,0 +1,357 @@
+@import './fonts';
+@import './new_variables';
+
+.earnings-after-course_section-block {
+    flex: 1 !important;
+    width: 33%;
+}
+
+.earnings-after-course_block {
+  background-color: $box-background;
+  border-radius: 8px;
+  color: #000000;
+  font-family: 'Nunito Sans', sans-serif;
+
+  .earnings-after-course__stats-heading, .earnings-after-course__stats-heading .rich-text p {
+    @include s-heading-mixin();
+    color: $black;
+    font-weight: normal;
+    font-size: 1.125rem;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+
+  .earnings-after-course_explanation-text .rich-text p {
+    color: $black;
+    font-weight: normal;
+    font-size: 1.125rem;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+
+  .earnings-after-course_section-block .earnings-after-course-stat {
+    background-color: #ffffff;
+    border-width: 3px;
+    border-style: solid none none none;
+    border-color: transparent;
+    height: 85% !important;
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .earnings-after-course_section-block h3 {
+    color: $black;
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .earnings-after-course-stat-salary {
+    color: $black;
+    font-weight: normal;
+    font-size: 1.875rem;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+
+  .earnings-after-course-stat-salary-range {
+    color: $brownish-grey;
+    font-weight: normal;
+    font-size: 0.875rem;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+
+  .earnings-after-course-stat-small {
+    color: $brownish-grey;
+    font-weight: normal;
+    font-size: 0.875rem;
+    font-family: 'Nunito Sans', sans-serif;
+
+    a {
+      color: $dark-green-blue;
+      font-weight: normal;
+      text-decoration: underline;
+      font-size: 0.875rem;
+    }
+
+    #sample-size-text {
+      font-size: 0.875rem;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+  }
+
+  .earnings-after-course__data-point {
+    margin-bottom: 38px;
+
+    .earnings-after-course__figure, .earnings-after-course__figure--sector {
+      @include m-heading-mixin();
+      margin-bottom: 0;
+      line-height: 1.5;
+      color: $gradient-light-green;
+    }
+
+    .earnings-after-course__figure--sector {
+      margin-top: 20px;
+    }
+
+    .earnings-after-course__figure-salary-range {
+      @include mobile-body-font--bold-mixin();
+
+      margin-top: 5px;
+    }
+
+    .earnings-after-course__chart-block {
+      .earnings-after-course__chart {
+        margin-bottom: 37px;
+
+        &:last-of-type {
+          margin-bottom: 13px;
+        }
+
+        .earnings-after-course__chart-label {
+          @include small-font-mixin();
+
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+.earnings-after-course-statistics {
+  flex-direction: column;
+}
+
+.earnings-after-course__lead {
+  @include mobile-body-font-mixin();
+
+  text-align: center;
+  border: solid 3px $duck-egg-blue;
+
+  p {
+    margin: 0.5rem;
+  }
+
+  .earnings-after-course__lead-title {
+    @include s-heading-mixin();
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    color: #000000;
+    text-decoration: none;
+  }
+
+  .earnings-after-course__lead-intro {
+    color: $brownish-grey;
+    font-size: 0.875rem;
+    font-weight: normal;
+  }
+
+  a {
+    color: $dark-green-blue;
+    font-weight: normal;
+    text-decoration: underline;
+    font-size: 0.875rem;
+
+  }
+
+  ul {
+    padding-inline-start: 0;
+    list-style-position: inside;
+  }
+}
+
+.earnings-after-course__lead-block {
+  @extend .earnings-after-course__block;
+
+  padding-bottom: 0;
+
+  .earnings-after-course__data-point {
+    margin-bottom: 0;
+  }
+}
+
+.earnings-after-course__data-point-overview {
+  @include desktop-body-font-mixin();
+
+  padding: 7px 30px 32px 30px;
+
+  border: 1px solid $ux-grey-3;
+  border-radius: 10px;
+
+  p {
+    margin: 0;
+  }
+
+  .earnings-after-course__data-point-overview-lead {
+    @include l-heading-mixin();
+
+    color: $gradient-light-green;
+    line-height: 1.5;
+  }
+}
+
+.rounded-select {
+  border-radius: 70px;
+  padding: 7px 5px;
+  width: 142px;
+}
+
+
+@media only screen and (min-width: 770px) {
+
+  .earnings-after-course__block {
+
+    .earnings-after-course__stats-heading, .earnings-after-course__stats-heading.rich-text p {
+      color: $black;
+      font-weight: normal;
+      font-size: 24px;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .earnings-after-course_explanation-text .rich-text p {
+      color: $black;
+      font-weight: normal;
+      font-size: 1rem;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .earnings-after-course__data-point {
+      margin-bottom: 38px;
+      @include mobile-body-font-mixin();
+
+      .earnings-after-course__figure-salary-range {
+        @include mobile-body-font--bold-mixin();
+      }
+
+      .earnings-after-course__chart-block {
+        .earnings-after-course__chart {
+          margin-bottom: 37px;
+
+          &:last-of-type {
+            margin-bottom: 13px;
+          }
+
+          .earnings-after-course__chart-label {
+            @include desktop-body-font-mixin();
+
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
+  .earnings-after-course-statistics {
+    flex-direction: row;
+  }
+
+  .earnings-after-course__lead {
+    @include desktop-body-font-mixin();
+
+    .earnings-after-course__lead-title {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 32px;
+      font-weight: normal;
+      color: $black;
+      text-decoration: none;
+    }
+
+    .earnings-after-course__lead-intro {
+      color: $brownish-grey;
+      font-size: 1.125rem;
+      font-weight: normal;
+    }
+
+    a {
+      color: $dark-green-blue;
+      font-weight: normal;
+      text-decoration: underline;
+      font-size: 1rem;
+    }
+
+    ul {
+      list-style-position: inside;
+      font-size: 1rem;
+    }
+
+  }
+
+  .earnings-after-course__data-point-overview {
+
+    padding: 68px 150px 72px;
+
+    p {
+      margin: 0;
+    }
+
+    .earnings-after-course__data-point-overview-lead {
+      @include xl-heading-mixin();
+
+      // color: $gradient-light-green;
+      color: var(--gradient-light-green);
+
+    }
+
+    p {
+      @include s-heading-mixin();
+    }
+  }
+  .earnings-after-course_block {
+    background-color: $box-background;
+    border-radius: 8px;
+    color: #000000;
+    font-family: 'Nunito Sans', sans-serif;
+
+    .earnings-after-course_section-block .earnings-after-course-stat {
+      background-color: #ffffff;
+      border-width: 3px;
+      border-style: solid none none none;
+      border-color: transparent;
+      border-radius: 8px;
+      height: 85% !important;
+    }
+
+    .earnings-after-course_section-block h3 {
+      color: $black;
+      font-weight: normal;
+      font-size: 24px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .earnings-after-course-stat-salary {
+      color: $black;
+      font-weight: normal;
+      font-size: 1.875rem;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .earnings-after-course-stat-salary-range {
+      color: $brownish-grey;
+      font-weight: normal;
+      font-size: 0.875rem;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .earnings-after-course-stat-small {
+      color: $brownish-grey;
+      font-weight: normal;
+      font-size: 0.875rem;
+      font-family: 'Nunito Sans', sans-serif;
+
+      a {
+        color: $dark-green-blue;
+        font-weight: normal;
+        text-decoration: underline;
+        font-size: 0.875rem;
+      }
+
+      #sample-size-text {
+        font-size: 1rem;
+        font-family: 'Nunito Sans', sans-serif;
+      }
+    }
+  }
+}
+

@@ -425,6 +425,59 @@ STATISTICS = {
         "cy": "Nid yw'r cwestiwn hwn wedi'i gynnwys yn yr Arolwg Cenedlaethol Myfyrwyr yng Nghymru, Gogledd Iwerddon na'r Alban.",
         "en": "This question is not included in the NSS in Wales, Northern Ireland and Scotland."
     },
+    "question_28_unavailable": {
+        "cy": "Nid yw'r cwestiwn hwn wedi'i gynnwys yn yr Arolwg Cenedlaethol Myfyrwyr yn Lloegr.",
+        "en": "This question is not included in the NSS in England."
+    },
+    "question_27_unavailable": {
+        "cy": "Nid yw'r cwestiwn hwn wedi'i gynnwys yn yr Arolwg Cenedlaethol Myfyrwyr yng Nghymru, Gogledd Iwerddon na'r Alban.",
+        "en": "This question is not included in the NSS in Wales, Northern Ireland and Scotland."
+    },
+    "information_about_mental_wellbeing_support_services_has_been_well_communicated": {
+        "cy": "Mae gwybodaeth am wasanaethau cymorth llesiant meddwl wedi’i chyfleu’n dda.",
+        "en": "Information about mental wellbeing support services has been well communicated."
+    },
+    "i_have_felt_free_to_express_my_ideas_opinions_and_beliefs": {
+        "cy": "Rwyf wedi teimlo’n rhydd i fynegi fy syniadau, fy marn a fy nghredoau.",
+        "en": "I have felt free to express my ideas, opinions and beliefs."
+    },
+    "course_details_summary_box_source_grad": {
+        "cy": "{} y cwrs ar gyfer {} graddedigion yn",
+        "en": "{} for {} graduates at {}"
+    },
+    "course_details_summary_box_source_satisfaction": {
+        "cy": "o fyfyrwyr {} {} blwyddyn olaf {} yn cytuno eu bod yn fodlon ar ansawdd y cwrs ar y cyfan",
+        "en": "of final year {} {} students at {} agreed they were satisfied with the course"
+    },
+    "course_details_summary_box_source_final": {
+        "cy": "Blwyddyn olaf {} {} myfyrwyr yn {}",
+        "en": "Final year {} {} students at {}"
+    },
+    "go_on_to_work_study": {
+        "cy": "yn symud ymlaen i weithio ac/neu astudio",
+        "en": "go on to work and/or study"
+    },
+    "are_using_what_they_learnt": {
+        "cy": "TO DO",
+        "en": "are using what they learnt during their studies in their current work"
+    },
+    "no_data_england": {
+        "cy": "Nid yw'r sgôr boddhad myfyrwyr ar gael ar gyfer cyrsiau yn Lloegr gan nad yw’r cwestiwn wedi’i gynnwys yn yr arolwg ar gyfer Lloegr.",
+        "en": 'The Student satisfaction score is not available for courses in England because the question is not included in the survey for England.'
+    },
+    "no_data_ni_scot_wales": {
+        "cy": "Nid yw’r sgôr rhyddid mynegiant ar gael ar gyfer cyrsiau yng Nghymru, Gogledd Iwerddon na’r Alban gan nad yw’r cwestiwn wedi’i gynnwys yn yr arolwg ar gyfer y gwledydd hyn.",
+        "en": "The Freedom of expression score is not available for courses in Wales, Northern Ireland and Scotland because the question is not included in the survey for these nations."
+    },
+    "gcu_data_year": {
+        "cy": "Daw'r data hwn o Arolwg Cenedlaethol Myfyrwyr 2022 o fyfyrwyr yn y brifysgol hon.",
+        "en": "This data is from 2022 NSS survey of students at this university."
+    },
+    "gcu_message": {
+        "cy": "Oherwydd gwall gweinyddol yn yr arolwg, ni ofynnwyd y cwestiwn boddhad myfyrwyr i fwyafrif ymatebwyr arolwg 2023 o Brifysgol Glasgow Caledonian.  Rydym felly yn cyhoeddi canlyniadau o arolwg 2022 ar gyfer y cwestiwn hwn.  Nid bai'r darparwr oedd y gwall.  Nid effeithiodd y gwall hwn ar unrhyw gwestiynau neu ddarparwyr eraill.",
+        "en": "Due to a survey administration error, the Student satisfaction question was not asked of the majority of 2023 survey respondents from Glasgow Caledonian University.  We are therefore publishing results from the 2022 survey for this question.  The error was not the fault of the provider.  No other questions or providers were affected by this error."
+    },
+
     # TODO: delete below once ingestion comes back with description
     "question_1": {
         "cy": "Mae'r staff yn dda am esbonio pethau.",
@@ -538,5 +591,20 @@ STATISTICS = {
         "cy": "Ar y cyfan, rwyf yn fodlon ar safon y cwrs.",
         "en": "Overall I am satisfied with the quality of the course."
     },
-
+    "mental_wellbeing":{
+        "cy": "Llesiant meddwl",
+        "en": "Mental wellbeing"
+    },
+    "freedom_of_expression":{
+        "cy": "Rhyddid mynegiant",
+        "en": "Freedom of expression"
+    },
+    "leo3_banner_anticipate_change": {
+        "cy": "Sylwer: rydym yn rhagweld bydd y data ‘Enillion ar ôl y cwrs’ ar gyfer 3 blynedd a 5 mlynedd ar ôl graddio yn cael ei diweddaru ym mis Tachwedd 2023 pan fydd data newydd ar gael. ",
+        "en": "Please note: we anticipate that the ‘Earnings after the course’ data for 3 years and 5 years after graduation will be updated in November 2023 when new data is available."
+    },
+    "data_from_students_graduating": {
+        "cy": "Data gan fyfyrwyr sy'n graddio",
+        "en": "Data from students graduating"
+    }
 }
