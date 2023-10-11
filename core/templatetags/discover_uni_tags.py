@@ -1,5 +1,6 @@
 import json
 import string
+from typing import List
 from urllib.parse import urlencode
 
 from django import template
@@ -57,7 +58,6 @@ def get_translation(*_, **kwargs):
     key = kwargs.get('key')
     language = kwargs.get('language')
     term = translations.term_for_key(key, language)
-
     if 'substitutions' in kwargs:
         term = term % kwargs.get('substitutions')
     return term
@@ -70,7 +70,11 @@ def create_list(*args):
 
 @register.simple_tag
 def insert_values_to_rich_text(*_, **kwargs):
-    return kwargs.get('content').source.format(*kwargs.get('substitutions'))
+    try:
+        return kwargs.get('content').source.format(*kwargs.get('substitutions'))
+    except AttributeError:
+        kwargs.get('content').format(*kwargs.get('substitutions'))
+
 
 
 @register.simple_tag
@@ -143,14 +147,20 @@ def get_course_name(course, is_english):
 @register.simple_tag
 def get_course_locations_list(locations, is_english):
     locations_list = []
-    if is_english:
-        for location in locations:
-            location_name = location.get('english') if location.get('english') else location.get('welsh')
-            locations_list.append(location_name)
+    if locations == [None]:
+        print("location is NONE is shouldn't be")
     else:
-        for location in locations:
-            location_name = location.get('welsh') if location.get('welsh') else location.get('english')
-            locations_list.append(location_name)
+        if is_english:
+            for location in locations:
+                print(f"location: {locations}")
+                location_name = location.get('english') if location.get('english') else location.get('welsh')
+                locations_list.append(location_name)
+        else:
+            for location in locations:
+                print(f"location: {locations}")
+                location_name = location.get('welsh') if location.get('welsh') else location.get('english')
+                locations_list.append(location_name)
+
     return ','.join(locations_list)
 
 
@@ -187,3 +197,11 @@ def concat(*args, **_):
 @register.simple_tag
 def insert_values_to_plain_text(*_, **kwargs):
     return kwargs.get('content').format(*kwargs.get('substitutions'))
+
+
+@register.simple_tag
+def get_salary_from_index(objs: List, index: int):
+    try:
+        return objs[index]
+    except IndexError:
+        return objs[0]

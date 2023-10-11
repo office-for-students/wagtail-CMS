@@ -51,7 +51,6 @@ pyflakes==2.1.1
 pymongo==3.11.3
 python-dateutil==2.8.1
 pytz==2022.1
-PyYAML==5.4
 rcssmin==1.1.0
 requests==2.27.1
 rjsmin==1.2.0

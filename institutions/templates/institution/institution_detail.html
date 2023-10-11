@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static sass_tags wagtailcore_tags discover_uni_tags %}
+{% block extra_css %}
+        <link type="text/css" rel="stylesheet" href="{% sass_src 'scss/institution_details.scss' %}?{% code_version %}">
+{% endblock %}
+{% block content %}
+    <style>
+        :root {
+            --url-background-image: url("{% static 'images/institution_background.svg' %}")
+        }
+    </style>
+    <div class="institution-container">
+        <div class="outer-block">
+            <div class="title">
+                <h1>{{ institution.pub_ukprn_name }}</h1>
+            </div>
+            <div class="inner-block">
+                <div>
+                    <h2>{% get_translation key="about_this_university" language=page.get_language %}</h2>
+                    <p>{% get_translation key="address" language=page.get_language %}: {{ institution.contact_details.address }}</p>
+                    <p>{% get_translation key="telephone" language=page.get_language %}: {{ institution.contact_details.phone_number }}</p>
+                    <a href="{{ institution.website }}" target="_blank">{% get_translation key="website" language=page.get_language %}: {{ institution.ukprn_name }}</a>
+                    <br/>
+                    {% if institution.pub_ukprn_country_code == "XF" %}
+                        <a style="display: inline-block; border: unset; margin: 0" target="_blank"
+                           href="https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/provider/{{ institution.pub_ukprn }}">OfS
+                            Registration information</a>
+                    {% endif %}
+                </div>
+                <div>
+                    <p>{% get_translation key="student_union_links" language=page.get_language %}</p>
+                    {% for union in institution.student_unions %}
+                        <a href="{{ union.display_url }}" target="_blank">{{ union.display_name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="bottom-block">
+                <p>{% get_translation key="explore_courses" language=page.get_language %}</p>
+                <div>
+                    <p>{{ totals_string  }}</p>
+                    <a class="view-courses" href="{% url 'course_finder_results' %}?institution_query={{ institution.pub_ukprn_name }}">{% get_translation key="view_courses" language=page.get_language %}</a>
+                </div>
+            </div>
+            {% if institution.pub_ukprn in jms %}
+                {% include 'institution/partials/awards_breakdown.html' with image="images/tef_logo.svg" right_btn="more_about_tef" right_text="jms_explanation" %}
+            {% elif institution.tef_outcome %}
+                {% include 'institution/partials/awards_breakdown.html' with participated_in="participated_in_tef" image=tef_image left_text="tef_breakdown" right_text="learn_about_tef" left_btn="click_here" right_btn="more_about_tef" %}
+            {% elif institution.pub_ukprn_country_code == "XI" %}
+                {% include 'institution/partials/awards_breakdown_non_england.html' with participated_in="participated_in_hefcw" image="images/hefcw.svg" left_btn="more_about_hefcw" left_href="hefcw_url" left_text="hefcw_explanation" right_text=institution.qaa_report_type_string right_btn="more_about_hefcw_tef_href" right_href=institution.qaa_url wales="true" %}
+            {% elif institution.pub_ukprn_country_code == "XH" %}
+                {% include 'institution/partials/awards_breakdown_non_england.html' with image="images/sfc.svg" left_btn="more_about_sfc" left_text="sfc_explanation" left_href="sfc_href" right_btn="more_about_qaa_scotland_btn" right_text=institution.qaa_report_type_string right_btn="more_about_qaa_scotland_btn" right_href=institution.qaa_url %}
+            {% elif institution.pub_ukprn_country_code == "XG" %}
+                {% include 'institution/partials/awards_breakdown_non_england.html' with image="images/department_of_economy_logo.svg" left_btn="ni_explanation_economy_btn" left_href="ni_explanation_economy_href" left_text="ni_explanation_economy" right_text=institution.qaa_report_type_string right_btn="ni_previous_model_btn" right_href=institution.qaa_url %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

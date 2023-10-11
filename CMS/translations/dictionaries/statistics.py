@@ -332,5 +332,279 @@ STATISTICS = {
     "usefulness_subtitle": {
         "cy": "Rwy'n defnyddio'r hyn a ddysgais wrth astudio yn fy ngwaith presennol.",
         "en": "I am utilising what I learnt during my studies in my current work."
+    },
+    "staff_often_make_the_subject_engaging": {
+        "cy": "Mae staff yn aml yn gwneud y pwnc yn ddeniadol.",
+        "en": "Staff often make the subject engaging."
+    },
+    "the_course_is_often_intellectually_stimulating": {
+        "cy": "Mae'r cwrs yn aml yn eich ysgogi'n feddyliol.",
+        "en": "The course is often intellectually stimulating."
+    },
+    "the_course_often_challenges_me_to_achieve_my_best_work": {
+        "cy": "Mae'r cwrs yn aml yn fy herio i gyflawni fy ngwaith gorau.",
+        "en": "The course often challenges me to achieve my best work."
+    },
+    "positive_about_the_chances_to_explore_ideas_and_concepts_in_depth": {
+        "cy": "Yn gadarnhaol ynghylch y cyfleoedd i archwilio syniadau a chysyniadau'n fanwl.",
+        "en": "Positive about the chances to explore ideas and concepts in depth."
+    },
+    "positive_about_the_chances_to_bring_together_information_and_ideas_from_different_topics": {
+        "cy": "Yn gadarnhaol am y cyfleoedd i ddod â gwybodaeth a syniadau o wahanol bynciau ynghyd.",
+        "en": "Positive about the chances to bring together information and ideas from different topics."
+    },
+    "the_course_introduces_subjects_and_skills_well_in_a_way_that_builds_on_what_i_have_already_learned": {
+        "cy": "Mae’r cwrs yn cyflwyno pynciau a sgiliau’n dda mewn ffordd sy’n adeiladu ar yr hyn yr wyf eisoes wedi’i ddysgu.",
+        "en": "The course introduces subjects and skills well in a way that builds on what I have already learned."
+    },
+    "the_course_has_the_right_balance_of_directed_and_independent_study": {
+        "cy": "Mae gan y cwrs y cydbwysedd cywir o astudio o dan gyfarwyddyd ac astudio annibynnol.",
+        "en": "The course has the right balance of directed and independent study."
+    },
+    "the_course_has_developed_the_knowledge_and_skills_i_think_i_will_need_for_my_future": {
+        "cy": "Mae'r cwrs wedi datblygu'r wybodaeth a'r sgiliau rwy'n meddwl y bydd eu hangen arnaf ar gyfer fy nyfodol.",
+        "en": "The course has developed the knowledge and skills I think I will need for my future."
+    },
+    "the_criteria_used_in_marking_and_assessing_my_work_have_been_clear": {
+        "cy": "Mae'r meini prawf a ddefnyddiwyd wrth farcio ac asesu fy ngwaith wedi bod yn glir.",
+        "en": "The criteria used in marking and assessing my work have been clear."
+    },
+    "the_marking_and_assessment_of_my_course_has_been_fair": {
+        "cy": "Mae’r broses o farcio ac asesu fy nghwrs wedi bod yn deg.",
+        "en": "The marking and assessment of my course has been fair."
+    },
+    "assessments_have_allowed_me_to_demonstrate_what_i_have_learned": {
+        "cy": "Mae asesiadau wedi fy ngalluogi i ddangos yr hyn yr wyf wedi'i ddysgu.",
+        "en": "Assessments have allowed me to demonstrate what I have learned."
+    },
+    "assessment_feedback_has_been_received_on_time": {
+        "cy": "Derbyniwyd adborth asesu ar amser.",
+        "en": "Assessment feedback has been received on time."
+    },
+    "feedback_has_often_helped_me_improve_my_work": {
+        "cy": "Mae adborth yn aml wedi fy helpu i wella fy ngwaith.",
+        "en": "Feedback has often helped me improve my work."
+    },
+    "it_was_easy_to_contact_teaching_staff_when_i_needed_to": {
+        "cy": "Roedd yn hawdd cysylltu â'r staff addysgu pan oedd angen.",
+        "en": "It was easy to contact teaching staff when I needed to."
+    },
+    "teaching_staff_have_supported_my_learning_well": {
+        "cy": "Mae'r staff addysgu wedi cefnogi fy nysgu yn dda.",
+        "en": "Teaching staff have supported my learning well."
+    },
+    "my_course_is_well_organised": {
+        "cy": "Mae fy nghwrs wedi'i drefnu'n dda.",
+        "en": "My course is well organised."
+    },
+    "changes_to_teaching_on_my_course_have_been_well_communicated": {
+        "cy": "Mae newidiadau i'r ffordd y caiff fy nghwrs ei addysgu wedi'u cyfathrebu'n dda.",
+        "en": "Changes to teaching on my course have been well communicated."
+    },
+    "it_has_been_easy_to_access_subject_specific_resources_eg_equipment_facilities_software_collections_when_i_needed_to": {
+        "cy": "Mae wedi bod yn hawdd cael mynediad at adnoddau sy'n benodol i'r pwnc (e.e. cyfarpar, cyfleusterau, meddalwedd, casgliadau) pan oedd angen.",
+        "en": "It has been easy to access subject-specific resources (e.g. equipment, facilities, software, collections) when I needed to."
+    },
+    "staff_value_students’_views_and_opinions_about_the_course": {
+        "cy": "Mae'r staff yn gwerthfawrogi safbwyntiau a barn myfyrwyr am y cwrs.",
+        "en": "Staff value students’ views and opinions about the course."
+    },
+    "the_students_union_association_or_guild_represents_students_academic_interest_well": {
+        "cy": "Mae Undeb y Myfyrwyr (cymdeithas neu urdd) yn cynrychioli diddordeb academaidd myfyrwyr yn dda.",
+        "en": "The students' union (association or guild) represents students' academic interest well."
+    },
+    "it_is_clear_that_students_feedback_on_the_course_is_acted_on": {
+        "cy": "Mae'n glir y gweithredir ar adborth myfyrwyr ar y cwrs.",
+        "en": "It is clear that students' feedback on the course is acted on."
+    },
+    "not_available_england": {
+        "cy": "Nid yw'r cwestiwn hwn wedi'i gynnwys yn yr Arolwg Cenedlaethol Myfyrwyr yn Lloegr.",
+        "en": "This question is not included in the NSS in England."
+    },
+    "not_available_ni_scot_wales": {
+        "cy": "Nid yw'r cwestiwn hwn wedi'i gynnwys yn yr Arolwg Cenedlaethol Myfyrwyr yng Nghymru, Gogledd Iwerddon na'r Alban.",
+        "en": "This question is not included in the NSS in Wales, Northern Ireland and Scotland."
+    },
+    "question_28_unavailable": {
+        "cy": "Nid yw'r cwestiwn hwn wedi'i gynnwys yn yr Arolwg Cenedlaethol Myfyrwyr yn Lloegr.",
+        "en": "This question is not included in the NSS in England."
+    },
+    "question_27_unavailable": {
+        "cy": "Nid yw'r cwestiwn hwn wedi'i gynnwys yn yr Arolwg Cenedlaethol Myfyrwyr yng Nghymru, Gogledd Iwerddon na'r Alban.",
+        "en": "This question is not included in the NSS in Wales, Northern Ireland and Scotland."
+    },
+    "information_about_mental_wellbeing_support_services_has_been_well_communicated": {
+        "cy": "Mae gwybodaeth am wasanaethau cymorth llesiant meddwl wedi’i chyfleu’n dda.",
+        "en": "Information about mental wellbeing support services has been well communicated."
+    },
+    "i_have_felt_free_to_express_my_ideas_opinions_and_beliefs": {
+        "cy": "Rwyf wedi teimlo’n rhydd i fynegi fy syniadau, fy marn a fy nghredoau.",
+        "en": "I have felt free to express my ideas, opinions and beliefs."
+    },
+    "course_details_summary_box_source_grad": {
+        "cy": "{} y cwrs ar gyfer {} graddedigion yn",
+        "en": "{} for {} graduates at {}"
+    },
+    "course_details_summary_box_source_satisfaction": {
+        "cy": "o fyfyrwyr {} {} blwyddyn olaf {} yn cytuno eu bod yn fodlon ar ansawdd y cwrs ar y cyfan",
+        "en": "of final year {} {} students at {} agreed they were satisfied with the course"
+    },
+    "course_details_summary_box_source_final": {
+        "cy": "Blwyddyn olaf {} {} myfyrwyr yn {}",
+        "en": "Final year {} {} students at {}"
+    },
+    "go_on_to_work_study": {
+        "cy": "yn symud ymlaen i weithio ac/neu astudio",
+        "en": "go on to work and/or study"
+    },
+    "are_using_what_they_learnt": {
+        "cy": "TO DO",
+        "en": "are using what they learnt during their studies in their current work"
+    },
+    "no_data_england": {
+        "cy": "Nid yw'r sgôr boddhad myfyrwyr ar gael ar gyfer cyrsiau yn Lloegr gan nad yw’r cwestiwn wedi’i gynnwys yn yr arolwg ar gyfer Lloegr.",
+        "en": 'The Student satisfaction score is not available for courses in England because the question is not included in the survey for England.'
+    },
+    "no_data_ni_scot_wales": {
+        "cy": "Nid yw’r sgôr rhyddid mynegiant ar gael ar gyfer cyrsiau yng Nghymru, Gogledd Iwerddon na’r Alban gan nad yw’r cwestiwn wedi’i gynnwys yn yr arolwg ar gyfer y gwledydd hyn.",
+        "en": "The Freedom of expression score is not available for courses in Wales, Northern Ireland and Scotland because the question is not included in the survey for these nations."
+    },
+    "gcu_data_year": {
+        "cy": "Daw'r data hwn o Arolwg Cenedlaethol Myfyrwyr 2022 o fyfyrwyr yn y brifysgol hon.",
+        "en": "This data is from 2022 NSS survey of students at this university."
+    },
+    "gcu_message": {
+        "cy": "Oherwydd gwall gweinyddol yn yr arolwg, ni ofynnwyd y cwestiwn boddhad myfyrwyr i fwyafrif ymatebwyr arolwg 2023 o Brifysgol Glasgow Caledonian.  Rydym felly yn cyhoeddi canlyniadau o arolwg 2022 ar gyfer y cwestiwn hwn.  Nid bai'r darparwr oedd y gwall.  Nid effeithiodd y gwall hwn ar unrhyw gwestiynau neu ddarparwyr eraill.",
+        "en": "Due to a survey administration error, the Student satisfaction question was not asked of the majority of 2023 survey respondents from Glasgow Caledonian University.  We are therefore publishing results from the 2022 survey for this question.  The error was not the fault of the provider.  No other questions or providers were affected by this error."
+    },
+
+    # TODO: delete below once ingestion comes back with description
+    "question_1": {
+        "cy": "Mae'r staff yn dda am esbonio pethau.",
+        "en": "Staff are good at explaning things."
+    },
+    "question_2": {
+        "cy": "Mae staff yn aml yn gwneud y pwnc yn ddeniadol.",
+        "en": "Staff often make the subject engaging."
+    },
+    "question_3": {
+        "cy": "Mae'r cwrs yn aml yn eich ysgogi'n feddyliol.",
+        "en": "The course is often intellectually stimulating."
+    },
+    "question_4": {
+        "cy": "Mae'r cwrs yn aml yn fy herio i gyflawni fy ngwaith gorau.",
+        "en": "The course often challenges me to achieve my best work."
+    },
+    "question_5": {
+        "cy": "Yn gadarnhaol ynghylch y cyfleoedd i archwilio syniadau a chysyniadau'n fanwl.",
+        "en": "Positive about the chances to explore ideas and concepts in depth."
+    },
+    "question_6": {
+        "cy": "Mae’r cwrs yn cyflwyno pynciau a sgiliau’n dda mewn ffordd sy’n adeiladu ar yr hyn yr wyf eisoes wedi’i ddysgu.",
+        "en": "The course introduces subjects and skills well in a way that builds on what I have already learned."
+    },
+    "question_7": {
+        "cy": "Yn gadarnhaol am y cyfleoedd i ddod â gwybodaeth a syniadau o wahanol bynciau ynghyd.",
+        "en": "Positive about the chances to bring together information and ideas from different topics."
+    },
+    "question_8": {
+        "cy": "Mae gan y cwrs y cydbwysedd cywir o astudio o dan gyfarwyddyd ac astudio annibynnol.",
+        "en": "The course has the right balance of directed and independent study."
+    },
+    "question_9": {
+        "cy": "Mae'r cwrs wedi datblygu'r wybodaeth a'r sgiliau rwy'n meddwl y bydd eu hangen arnaf ar gyfer fy nyfodol.",
+        "en": "The course has developed the knowledge and skills I think I will need for my future."
+    },
+    "question_10": {
+        "cy": "Mae'r meini prawf a ddefnyddiwyd wrth farcio ac asesu fy ngwaith wedi bod yn glir.",
+        "en": "The criteria used in marking and assessing my work have been clear."
+    },
+    "question_11": {
+        "cy": "Mae’r broses o farcio ac asesu fy nghwrs wedi bod yn deg.",
+        "en": "The marking and assessment of my course has been fair."
+    },
+    "question_12": {
+        "cy": "Mae asesiadau wedi fy ngalluogi i ddangos yr hyn yr wyf wedi'i ddysgu.",
+        "en": "Assessments have allowed me to demonstrate what I have learned."
+    },
+    "question_13": {
+        "cy": "Derbyniwyd adborth asesu ar amser.",
+        "en": "Assessment feedback has been received on time."
+    },
+    "question_14": {
+        "cy": "Mae adborth yn aml wedi fy helpu i wella fy ngwaith.",
+        "en": "Feedback has often helped me improve my work."
+    },
+    "question_15": {
+        "cy": "Roedd yn hawdd cysylltu â'r staff addysgu pan oedd angen.",
+        "en": "It was easy to contact teaching staff when I needed to."
+    },
+    "question_16": {
+        "cy": "Mae'r staff addysgu wedi cefnogi fy nysgu yn dda.",
+        "en": "Teaching staff have supported my learning well."
+    },
+    "question_17": {
+        "cy": "Mae fy nghwrs wedi'i drefnu'n dda.",
+        "en": "My course is well organised."
+    },
+    "question_18": {
+        "cy": "Mae newidiadau i'r ffordd y caiff fy nghwrs ei addysgu wedi'u cyfathrebu'n dda.",
+        "en": "Changes to teaching on my course have been well communicated."
+    },
+    "question_19": {
+        "cy": "Mae'r adnoddau a chyfleusterau TG wedi ategu fy mhrofiad dysgu yn dda.",
+        "en": "The IT resources and facilities provided have supported my learning well."
+    },
+    "question_20": {
+        "cy": "Mae adnoddau’r llyfrgell (e.e. llyfrau, gwasanaethau ar-lein a gofodau dysgu) wedi ategu fy mhrofiad dysgu yn dda.",
+        "en": "The library resources (e.g. books, online services and learning spaces) have supported my learning well."
+    },
+    "question_21": {
+        "cy": "Mae wedi bod yn hawdd cael mynediad at adnoddau sy'n benodol i'r pwnc (e.e. cyfarpar, cyfleusterau, meddalwedd, casgliadau) pan oedd angen.",
+        "en": "It has been easy to access subject-specific resources (e.g. equipment, facilities, software, collections) when I needed to."
+    },
+    "question_22": {
+        "cy": "Rydw i wedi cael cyfleoedd addas i roi adborth ar fy nghwrs.",
+        "en": "I have had the right opportunities to provide feedback on my course."
+    },
+    "question_23": {
+        "cy": "Mae'r staff yn gwerthfawrogi safbwyntiau a barn myfyrwyr am y cwrs.",
+        "en": "Staff value students’ views and opinions about the course."
+    },
+    "question_24": {
+        "cy": "Mae'n glir y gweithredir ar adborth myfyrwyr ar y cwrs.",
+        "en": "It is clear that students' feedback on the course is acted on."
+    },
+    "question_25": {
+        "cy": "Mae Undeb y Myfyrwyr (cymdeithas neu urdd) yn cynrychioli diddordeb academaidd myfyrwyr yn dda.",
+        "en": "The students' union (association or guild) represents students' academic interest well."
+    },
+    "question_26": {
+        "cy": "Mae gwybodaeth am wasanaethau cymorth llesiant meddwl wedi’i chyfleu’n dda.",
+        "en": "Information about mental wellbeing support services has been well communicated."
+    },
+    "question_27": {
+        "cy": "Rwyf wedi teimlo’n rhydd i fynegi fy syniadau, fy marn a fy nghredoau.",
+        "en": "I have felt free to express my ideas, opinions and beliefs."
+    },
+    "question_28": {
+        "cy": "Ar y cyfan, rwyf yn fodlon ar safon y cwrs.",
+        "en": "Overall I am satisfied with the quality of the course."
+    },
+    "mental_wellbeing":{
+        "cy": "Llesiant meddwl",
+        "en": "Mental wellbeing"
+    },
+    "freedom_of_expression":{
+        "cy": "Rhyddid mynegiant",
+        "en": "Freedom of expression"
+    },
+    "leo3_banner_anticipate_change": {
+        "cy": "Sylwer: rydym yn rhagweld bydd y data ‘Enillion ar ôl y cwrs’ ar gyfer 3 blynedd a 5 mlynedd ar ôl graddio yn cael ei diweddaru ym mis Tachwedd 2023 pan fydd data newydd ar gael. ",
+        "en": "Please note: we anticipate that the ‘Earnings after the course’ data for 3 years and 5 years after graduation will be updated in November 2023 when new data is available."
+    },
+    "data_from_students_graduating": {
+        "cy": "Data gan fyfyrwyr sy'n graddio",
+        "en": "Data from students graduating"
     }
 }

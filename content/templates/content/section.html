@@ -3,17 +3,8 @@
 
 {% block extra_css %}
     <link href="{% sass_src 'scss/content.scss' %}?{% code_version %}" rel="stylesheet" type="text/css" >
-    <link href="{% sass_src 'scss/partials/popup.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
 {% endblock extra_css %}
-
-{% block extra_js %}
-    <script type="text/javascript" src="{% get_static_prefix %}js/popup.js?{% code_version %}"></script>
-{% endblock %}
-
 {% block content %}
-    {% if page.title == "About our data" or page.title == "Manylion y cwrs" %}
-        {% include 'partials/pop-up-about-data.html' %}
-    {% endif %}
     <div class="content-page section-page">
         <div class="discover-uni-container">
             {% include 'partials/breadcrumbs.html' %}

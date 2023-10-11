@@ -25,6 +25,7 @@ class EmploymentStatistics:
                                             'number_of_students', 'response_rate'])
 
             self.aggregation_level = data_obj.get('aggregation_level')
+            self.aggregation_year = data_obj.get('aggregation_year')
             self.unemp_not_work_since_grad = data_obj.get('unemp_not_work_since_grad')
             self.doing_further_study = data_obj.get('doing_further_study')
             self.in_work = data_obj.get('in_work')

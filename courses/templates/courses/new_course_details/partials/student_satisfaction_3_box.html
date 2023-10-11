@@ -1,0 +1,72 @@
+{% load static discover_uni_tags %}
+{% load i18n %}
+{% load humanize %}
+
+<div class="inside-box"> <!--inside-box-->
+    <div class="charts d-flex">
+        <div class="col-lg-8 col-md-12 mt-3 additional-class d-flex flex-fill"><!--left side-->
+            <!--the box-->
+            <div class="student-satisfaction__title-box">
+                <h2>{{ title }}</h2>
+            </div>
+            <!-- end of box-->
+        </div>
+        <div class="student-satisfaction__charts col-lg-8 col-md-7 mt-3 mb-auto justify-content-start">
+            <!--right-side-->
+            <div class="top-row d-flex">
+                <!-- question 1 -->
+                {% if q1.show_data_point %}
+
+                    <div class="student-satisfaction__chart-wrapper box-wrapper">
+                        <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                             data-value="{{ q1.agree_or_strongly_agree }}"
+                             data-question="satisfaction-1"
+                             data-language="{{ page.get_language }}"
+                             data-field="{% get_translation key=q1.description language=page.get_language %}">
+                            <p class="student-satisfaction__chart-percentage">{{ q1.agree_or_strongly_agree }}%</p>
+                            <p class="student-satisfaction__chart-title"
+                               aria-hidden="true"
+                               aria-hidden="true">{% get_translation key=q1.description language=page.get_language %}</p>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <!-- question 2 -->
+                {% if q2.show_data_point %}
+                    <div class="student-satisfaction__chart-wrapper box-wrapper">
+                        <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                             data-value="{{ q2.agree_or_strongly_agree }}"
+                             data-question="satisfaction-2"
+                             data-language="{{ page.get_language }}"
+                             data-field="{% get_translation key=q2.description language=page.get_language %}">
+                            <p class="student-satisfaction__chart-percentage">{{ q2.agree_or_strongly_agree }}%</p>
+                            <p class="student-satisfaction__chart-title"
+                               aria-hidden="true"
+                               aria-hidden="true">{% get_translation key=q2.description language=page.get_language %}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="bottom-row d-flex fill-if-big">
+
+            <!-- question 3 -->
+                {% if q3.show_data_point %}
+                    <div class="student-satisfaction__chart-wrapper box-wrapper">
+                        <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                             data-value="{{ q3.agree_or_strongly_agree }}"
+                             data-question="satisfaction-3"
+                             data-language="{{ page.get_language }}"
+                             data-field="{% get_translation key=q3.description language=page.get_language %}">
+                            <p class="student-satisfaction__chart-percentage">{{ q3.agree_or_strongly_agree }}%</p>
+                            <p class="student-satisfaction__chart-title"
+                               aria-hidden="true"
+                               aria-hidden="true">{% get_translation key=q3.description language=page.get_language %}</p>
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% include "courses/new_course_details/partials/source.html" %}
+</div>

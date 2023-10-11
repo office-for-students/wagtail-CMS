@@ -1,0 +1,7 @@
+{% load wagtailcore_tags discover_uni_tags %}
+<div class="data-source">
+    {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}
+    {% insert_values_to_rich_text  content=block.value.data_source substitutions=source_subs as source_text %}
+    <div class="flex-row">{{ subbed_text | richtext }}</div>
+    <div class="flex-column m-0">{{ source_text | richtext }}</div>
+</div>
