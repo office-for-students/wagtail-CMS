@@ -11,11 +11,5 @@
 {% endblock %}
 
 {% block content %}
-            <div class="leo-banner">
-            <p class="px-4">
-                <span class="leo-banner__bold">{% get_translation key='please_note' language=page.get_language %}</span>
-                {% get_translation key='leo_banner_technical_issues' language=page.get_language %}
-            </p>
-        </div>
-            {% include 'partials/home_page_content.html' %}
+    {% include 'partials/home_page_content.html' %}
 {% endblock content %}
