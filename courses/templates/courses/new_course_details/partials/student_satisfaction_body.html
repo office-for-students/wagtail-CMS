@@ -35,7 +35,6 @@
                     {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavail %}
                 </div>
                 <div class="scrolling-wrapper scroll">
-                {{ course.country.code }}
                     {% if course.country.code != "XF" and overall_stats.satisfaction_stats.show_satisfaction_stats %}
                         {% if question_stats.question_28.agree_or_strongly_agree %}
                             <div class="student-satisfaction__overview mt-3 p-2 flex-wrap mx-1">
