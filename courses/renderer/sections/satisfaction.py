@@ -98,7 +98,7 @@ class SatisfactionSection(Section):
         for course in self.courses:
             for section in self.sections:
                 custom_unavail = None
-                if section[-1] in ["question_27", "question_28"]:
+                if section[-1] in ["question_27", "question_28"] and course.country.code == "XF":
                     custom_unavail = section[-1]
                 self.data[section[primary_key]]["values"].append(
                     self.presentable_data(
