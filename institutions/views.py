@@ -38,9 +38,9 @@ def institution_detail(request, institution_id, language=enums.languages.ENGLISH
 
     if institution.tef_outcome:
         tef_image = get_tef_image(
-            institution.tef_outcome.overall_rating,
-            institution.tef_outcome.student_experience_rating,
-            institution.tef_outcome.outcomes_rating
+            institution.tef_outcome["overall_rating"],
+            institution.tef_outcome["student_experience_rating"],
+            institution.tef_outcome["student_outcomes_rating"]
         )
         context["tef_image"] = tef_image
     context["totals_string"] = term_for_key("courses_at_this_uni", language=language).format(institution.total_number_of_courses)
