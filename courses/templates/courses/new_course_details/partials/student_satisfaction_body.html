@@ -67,9 +67,8 @@
                                 </div>
                             </div>
                         {% endif %}
-                    {% elif course.country.code == "XF" and overall_stats.show_satisfaction_stats %}
+                    {% elif course.country.code == "XF" and overall_stats.satisfaction_stats.show_satisfaction_stats %}
                         <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                            <!-- freedom of expression (england) box-->
                             {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Student satisfaction" q1=question_stats.question_28 description="" no_data_key="no_data_england" %}
                         </div>
                     {% endif %}
