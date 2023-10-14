@@ -14,6 +14,7 @@ from institutions.models import InstitutionDetailPage
 AFFILIATE_INSTITUTIONS = "affiliated"
 PENDING_INSTITUTIONS = "pending"
 TEF_INSTITUTIONS = "tef"
+TEF_NO_TEF_INSTITUTIONS = "no_tef"
 WALES_INSTITUTIONS = "XI"
 SCOTTISH_INSTITUTIONS = "XH"
 NORTHERN_IRISH_INSTITUTIONS = "XG"
@@ -25,11 +26,14 @@ def get_tef_status(institution):
     if institution.pub_ukprn_country_code == ENGLISH_INSTITUTIONS:
         # England
         if type(institution.tef_outcome) == list:
-            # Affiliate
+            # Affiliates are accredited but institution is not
             return AFFILIATE_INSTITUTIONS
         else:
-            if institution.tef_outcome['overall_rating'] == "Pending":
-                # Pending
+            if not institution.tef_outcome:
+                # No tef data institution not accredited
+                return TEF_NO_TEF_INSTITUTIONS
+            elif institution.tef_outcome['overall_rating'] == "Pending":
+                # Pending accreditation
                 return PENDING_INSTITUTIONS
             else:
                 # Institution has tef data
@@ -136,6 +140,11 @@ def get_tef_body_copy_context(institution, language, status, tef_context, affili
         tef_context["right_copy"] = term_for_key("institution.qaa_report_type_string", language=language)
         tef_context["right_button"] = term_for_key("ni_previous_model_btn", language=language)
         tef_context["right_link"] = institution.qaa_url
+    if status == TEF_NO_TEF_INSTITUTIONS:
+        tef_context["right_copy"] = term_for_key("participated_in_tef_excluded", language=language)
+        tef_context["right_button"] = term_for_key("find_out_more_about_tef", language=language)
+        tef_context["right_link"] = "https://TEF2023.officeforstudents.org.uk/"
+
 
     tef_context["status"] = status
 
@@ -211,7 +220,7 @@ def get_logo_path(institution, status) -> Tuple[str, str]:
             institution.tef_outcome["student_outcomes_rating"]
         )
         return tef_image
-    elif status == PENDING_INSTITUTIONS or status == AFFILIATE_INSTITUTIONS:
+    elif status == PENDING_INSTITUTIONS or status == AFFILIATE_INSTITUTIONS or status == TEF_NO_TEF_INSTITUTIONS:
         return "images/tef_logo.svg", "Teaching Excellence Framework logo"
     elif status == WALES_INSTITUTIONS:
         # Wales

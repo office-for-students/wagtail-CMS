@@ -620,8 +620,8 @@ STATISTICS = {
         "cy": "Mae canlyniadau TEF y sefydliad hwn 'yn yr arfaeth' gan eu bod yn dal i gael eu hystyried. Bydd y canlyniadau yn cael eu cyhoeddi'n fuan wedi iddynt gael eu cadarnhau. Yn y cyfamser, efallai yr hoffech gael rhagor o wybodaeth am y sefydliad hwn ar Gofrestr y Swyddfa Fyfyrwyr"
     },
     "participated_in_tef_excluded": {
-        "en": "This university/college does not hold a current TEF award.  For some institutions in England TEF is optional or does not apply.  All higher education institutions are required to meet the standards of their qualifications and the quality of the academic experience provided to students as required by the relevant higher education funding or regulatory body.",
-        "cy": "Nid oes gan y brifysgol/coleg hon ddyfarniad TEF cyfredol. I rai sefydliadau yn Lloegr mae TEF yn ddewisol neu nid yw'n berthnasol. Mae'n ofynnol i bob sefydliad addysg uwch fodloni safonau eu cymwysterau ac ansawdd y profiad academaidd a ddarperir i fyfyrwyr fel sy'n ofynnol gan y corff cyllido addysg uwch neu reoleiddio perthnasol."
+        "en": "This university/college is regulated by the Office for Students.  This institution does not hold a current TEF award. For some providers in England, TEF is optional or does not apply. You may wish to find out more about this provider on the OfS Register.",
+        "cy": "Rheoleiddir y brifysgol hon / y coleg hwn gan y Swyddfa Fyfyrwyr.  Nid oes gan y sefydliad hwn ddyfarniad TEF cyfredol. I rai darparwyr yn Lloegr, mae TEF yn ddewisol neu nid yw'n berthnasol. Efallai yr hoffech gael rhagor o wybodaeth am y darparwr hwn ar Gofrestr y Swyddfa Fyfyrwyr."
     },
     "participated_in_tef_excluded_left": {
         "en": "You may find more information about this university/college on the OfS",
