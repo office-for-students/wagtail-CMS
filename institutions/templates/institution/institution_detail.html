@@ -41,16 +41,10 @@
                     <a class="view-courses" href="{% url 'course_finder_results' %}?institution_query={{ institution.pub_ukprn_name }}">{% get_translation key="view_courses" language=page.get_language %}</a>
                 </div>
             </div>
-            {% if institution.pub_ukprn in jms %}
-                {% include 'institution/partials/awards_breakdown.html' with image="images/tef_logo.svg" right_btn="more_about_tef" right_text="jms_explanation" %}
-            {% elif institution.tef_outcome %}
-                {% include 'institution/partials/awards_breakdown.html' with participated_in="participated_in_tef" image=tef_image left_text="tef_breakdown" right_text="learn_about_tef" left_btn="click_here" right_btn="more_about_tef" %}
-            {% elif institution.pub_ukprn_country_code == "XI" %}
-                {% include 'institution/partials/awards_breakdown_non_england.html' with participated_in="participated_in_hefcw" image="images/hefcw.svg" left_btn="more_about_hefcw" left_href="hefcw_url" left_text="hefcw_explanation" right_text=institution.qaa_report_type_string right_btn="more_about_hefcw_tef_href" right_href=institution.qaa_url wales="true" %}
-            {% elif institution.pub_ukprn_country_code == "XH" %}
-                {% include 'institution/partials/awards_breakdown_non_england.html' with image="images/sfc.svg" left_btn="more_about_sfc" left_text="sfc_explanation" left_href="sfc_href" right_btn="more_about_qaa_scotland_btn" right_text=institution.qaa_report_type_string right_btn="more_about_qaa_scotland_btn" right_href=institution.qaa_url %}
-            {% elif institution.pub_ukprn_country_code == "XG" %}
-                {% include 'institution/partials/awards_breakdown_non_england.html' with image="images/department_of_economy_logo.svg" left_btn="ni_explanation_economy_btn" left_href="ni_explanation_economy_href" left_text="ni_explanation_economy" right_text=institution.qaa_report_type_string right_btn="ni_previous_model_btn" right_href=institution.qaa_url %}
+            {% if institution.pub_ukprn_country_code == "XF" and tef.status == "tef"%}
+                {% include 'institution/partials/awards_breakdown.html' %}
+            {% else %}
+                {% include 'institution/partials/awards_breakdown_non_england.html' %}
             {% endif %}
         </div>
     </div>
