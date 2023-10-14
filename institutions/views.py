@@ -86,8 +86,6 @@ def get_tef_image(outcome_1, outcome_2, outcome_3) -> Tuple[str, str]:
 
 
 def get_tef_body_copy_context(institution, language, status, tef_context, affiliates=[]):
-    print("institution.tef_outcome[`outcome_url`] ", institution.tef_outcome["outcome_url"])
-
     if status == AFFILIATE_INSTITUTIONS:
         tef_context["left_copy"] = None
         tef_context["left_button"] = None
