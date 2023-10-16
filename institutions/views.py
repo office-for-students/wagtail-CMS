@@ -84,7 +84,7 @@ def institution_detail(request, institution_id, language=enums.languages.ENGLISH
 
 def get_tef_image(outcome_1, outcome_2, outcome_3) -> Tuple[str, str]:
     return (f"images/tef_images/{outcome_1.lower()}_{outcome_2.lower()}_{outcome_3.lower()}.svg",
-            f"TEF awards as follows: \nOverall Rating: {outcome_1}; \nStudent Expreience Rating: {outcome_2}; \nand Student Outcomes Rating: {outcome_3}.")
+            f"TEF awards as follows: \nOverall Rating: {outcome_1}; \nStudent Experience Rating: {outcome_2}; \nand Student Outcomes Rating: {outcome_3}.")
 
     # https://www.officeforstudents.org.uk/advice-and-guidance/the-tef/
 
