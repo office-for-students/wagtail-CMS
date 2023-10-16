@@ -3,24 +3,30 @@
 
 <div class="tef-block">
     <div class="tef-images">
-        <div>
-            <img src="{% static image %}" alt="">
+        <div style="min-width: 35%;">
+            {% with image_copy=tef.tef_image.1 image=tef.tef_image.0 %}
+                <img src="{% static image %}" alt="{{ image_copy }}" title="{{ image_copy }}">
+            {% endwith %}
         </div>
-        <p>{% get_translation key=participated_in language=page.get_language %}</p>
+        <p>{{ tef.head_copy}}</p>
     </div>
     <div class="tef-links">
         <div class="tef-breakdown">
-            {% if not left_text == "not tef" %}
-                <p>{% get_translation key=left_text language=page.get_language %}</p>
+            {% if tef.left_copy %}
+                <p>{{ tef.left_copy }}</p>
             {% endif %}
-            <a class="tef-btn" target="_blank" href="{% get_translation key=left_href language=page.get_language %}">{% get_translation key=left_btn language=page.get_language %}</a>
-          </div>
+            {% if tef.left_link %}
+                <a class="tef-btn" target="_blank"
+                   href="{{ tef.left_link }}">{{ tef.left_button }}</a>
+            {% endif %}
+        </div>
+
         <div>
-            {% if right_text %}
-                <p>{{ right_text }}</p>
+            {% if tef.right_copy %}
+                <p>{{ tef.right_copy | safe}}</p>
             {% endif %}
-            {% if right_href and right_href != "None" %}
-            <a class="tef-btn" href="{{ right_href }}" target="_blank">{% get_translation key=right_btn language=page.get_language %}</a>
+            {% if tef.right_link %}
+            <a class="tef-btn" href="{{ tef.right_link }}" target="_blank">{{ tef.right_button }}</a>
             {% endif %}
         </div>
     </div>
