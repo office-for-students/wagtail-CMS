@@ -143,7 +143,7 @@ def get_tef_body_copy_context(institution, language, status, tef_context, affili
     if status == TEF_NO_TEF_INSTITUTIONS:
         tef_context["right_copy"] = term_for_key("participated_in_tef_excluded", language=language)
         tef_context["right_button"] = term_for_key("find_out_more_about_tef", language=language)
-        tef_context["right_link"] = "https://TEF2023.officeforstudents.org.uk/"
+        tef_context["right_link"] = "https://discoveruni.gov.uk/how-do-i-choose-course/quality-and-standards/#teaching_excellence_and_student_outcomes_framework_(tef)"
 
 
     tef_context["status"] = status
