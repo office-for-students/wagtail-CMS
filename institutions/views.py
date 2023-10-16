@@ -101,7 +101,7 @@ def get_tef_body_copy_context(institution, language, status, tef_context, affili
             institution_name=tef_context["name"]
         )
         tef_context["right_button"] = term_for_key("find_out_more_about_tef", language=language)
-        tef_context["right_link"] = "https://www.officeforstudents.org.uk/advice-and-guidance/the-tef/"
+        tef_context["right_link"] = "https://discoveruni.gov.uk/how-do-i-choose-course/quality-and-standards/#teaching_excellence_and_student_outcomes_framework_(tef)"
     if status == TEF_INSTITUTIONS:
         tef_context["head_copy"] = term_for_key("participated_in_tef_awarded", language=language)
         tef_context["left_copy"] = None
@@ -109,7 +109,7 @@ def get_tef_body_copy_context(institution, language, status, tef_context, affili
         tef_context["left_link"] = institution.tef_outcome["outcome_url"]
         tef_context["right_copy"] = None
         tef_context["right_button"] = term_for_key("find_out_more_about_tef", language=language)
-        tef_context["right_link"] = institution.tef_outcome["outcome_url"]
+        tef_context["right_link"] = "https://discoveruni.gov.uk/how-do-i-choose-course/quality-and-standards/#teaching_excellence_and_student_outcomes_framework_(tef)"
     if status == PENDING_INSTITUTIONS:
         print("pending == true")
         tef_context["left_copy"] = None
@@ -117,7 +117,7 @@ def get_tef_body_copy_context(institution, language, status, tef_context, affili
         tef_context["left_link"] = None
         tef_context["right_copy"] = term_for_key("participated_in_tef_pending", language=language)
         tef_context["right_button"] = term_for_key("find_out_more_about_tef", language=language)
-        tef_context["right_link"] = "https://discoveruni.gov.uk/how-do-i-choose-course/quality-and-standards/"
+        tef_context["right_link"] = "https://discoveruni.gov.uk/how-do-i-choose-course/quality-and-standards/#teaching_excellence_and_student_outcomes_framework_(tef)"
     if status == WALES_INSTITUTIONS:
         tef_context["left_copy"] = term_for_key("hefcw_explanation", language=language)
         tef_context["left_button"] = term_for_key("more_about_hefcw", language=language)
