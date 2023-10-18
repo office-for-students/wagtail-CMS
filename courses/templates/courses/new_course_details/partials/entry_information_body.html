@@ -1,6 +1,7 @@
 {% load static discover_uni_tags%}
 {% load humanize %}
-
+ <p>MEG: {{ course_details.entry_stats.0.number_of_students }}</p>
+    <p>MEG MEG: {{ course_details.entry_stats }}</p>
 {% if course_details.entry_stats and course_details.entry_stats.0.number_of_students %}
     <div class="entry-information__block">
         <div class="entry-information__overview my-3 p-3 mx-1 pt-4 d-flex flex-wrap row"> <!-- data box-->
