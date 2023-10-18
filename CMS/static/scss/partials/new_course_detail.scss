@@ -1316,6 +1316,34 @@ div.course-detail.course-details-thin {
   .section-scroll.course-detail {
     margin-top: 0;
   }
+
+  .course-detail .course-detail__course-summary .box-container h3 {
+    text-align: center;
+  }
+
+  .course-detail .course-detail__course-summary .box-container .box-row {
+    flex-direction: column;
+
+    .box {
+      margin-bottom: 1rem;
+    }
+
+  }
+
+  .course-detail .course-detail__course-summary .box-container .box-row .box {
+    .box-title {
+      font-size: 1.3rem;
+    }
+    .box-bold {
+      font-size: 2rem;
+    }
+    .box-subtitle {
+      font-size: 1.1rem;
+    }
+    .box-small {
+      font-size: 1rem;
+    }
+  }
 }
 
 @media only screen and (min-width: 767px) and (max-width: 991px) {
@@ -1403,6 +1431,5 @@ div.course-detail.course-details-thin {
     margin-top: 0;
   }
 }
-
 
 
