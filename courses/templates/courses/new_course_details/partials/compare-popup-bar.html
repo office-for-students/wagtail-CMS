@@ -11,7 +11,7 @@
                     {% get_translation key='course_saved' language=page.get_language %}</p>
                 <p class="compare-popup__count">
                     {% get_translation key='n_courses_bookmarked_pt_1' language=page.get_language %} <strong><span class="count"></span>&nbsp;{% get_translation key='saved_courses_lower' language=page.get_language %}</strong>
-                    <a class="compare-popup-saved_courses_link" href="/courses">{% get_translation key='view_saved_courses' language=page.get_language %}</a>
+                    <a class="compare-popup-saved_courses_link" href="{{manage_link}}">{% get_translation key='view_saved_courses' language=page.get_language %}</a>
                 </p>
             </div>
 

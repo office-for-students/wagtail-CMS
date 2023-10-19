@@ -272,7 +272,9 @@
         border: none;
         background-color: transparent;
         position: absolute;
-        top: 110px;
+        top: 199px;
+        z-index: 999;
+        left:7%;
 
         .course-detail__nav-control-icon {
           height: 12px;
@@ -285,7 +287,7 @@
           margin-left: auto;
           font-family: 'Nunito Sans', sans-serif;
           font-size: 1rem;
-          color: white;
+          color: black;
           font-weight: normal;
         }
       }
@@ -1261,6 +1263,7 @@ div.course-detail.course-details-thin {
 
   a {
     font-weight: 600;
+    margin-left: 0.5rem;
 
     :hover {
       color: $dark-green-blue;
@@ -1314,6 +1317,34 @@ div.course-detail.course-details-thin {
   }
   .section-scroll.course-detail {
     margin-top: 0;
+  }
+
+  .course-detail .course-detail__course-summary .box-container h3 {
+    text-align: center;
+  }
+
+  .course-detail .course-detail__course-summary .box-container .box-row {
+    flex-direction: column;
+
+    .box {
+      margin-bottom: 1rem;
+    }
+
+  }
+
+  .course-detail .course-detail__course-summary .box-container .box-row .box {
+    .box-title {
+      font-size: 1.3rem;
+    }
+    .box-bold {
+      font-size: 2rem;
+    }
+    .box-subtitle {
+      font-size: 1.1rem;
+    }
+    .box-small {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -1402,6 +1433,5 @@ div.course-detail.course-details-thin {
     margin-top: 0;
   }
 }
-
 
 

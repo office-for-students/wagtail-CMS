@@ -241,8 +241,8 @@
     z-index: 10;
 
     .nav-item.nav-link.scrollto {
-        font-size:0.9rem;
-        font-weight:200;
+        font-size:1rem;
+        font-weight:600;
         text-align: center;
         color: white;
         // color:$white!important;
@@ -250,6 +250,7 @@
     .nav-item.nav-link.scrollto.active {
         // text-decoration: underline!important;
         font-weight: 400;
+        color: #FCD833;
     }
 
     .navbar-toggler .navbar-dark{
