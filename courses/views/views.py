@@ -236,16 +236,17 @@ def regional_earnings(request):
 
 def courses_detail(request, institution_id, course_id, kis_mode, language=enums.languages.ENGLISH):
     course, error = Course.find(institution_id, course_id, kis_mode, language)
+    if error:
+        redirect_page = get_new_landing_page_for_language(language)
+        # redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
+        return redirect(redirect_page + '?load_error=true&error_type=0')
     institution_name = course.institution.pub_ukprn_name
     if ", the" in institution_name:
         institution_name = f"The {institution_name.replace(', the', '')}"
     course_title = course.satisfaction_stats[0].display_subject_name
     if course.satisfaction_stats[0].aggregation_level == 14:
         course_title = course.display_title()
-    if error:
-        redirect_page = get_new_landing_page_for_language(language)
-        # redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
-        return redirect(redirect_page + '?load_error=true&error_type=0')
+
 
     page = get_page_for_language(language, CourseDetailPage.objects.all())
     page.uni_site_links_header = page.uni_site_links_header.replace('{{institution_name}}',
