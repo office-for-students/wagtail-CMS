@@ -60,9 +60,6 @@ def regional_earnings(request):
 
     unavail_msgs_go = salaries_aggregate.aggregated_salaries_sector[0].display_unavailable_info(language)
     unavail_msgs_leo = salaries_aggregate.aggregated_salaries_sector[1].display_unavailable_info(language)
-    salary_sector_15_unavail_text = ""
-    salary_sector_3_unavail_text = ""
-    salary_sector_5_unavail_text = ""
     unavailable_region_not_exists = ""
     unavailable_region_not_nation = ""
     unavailable_region_is_ni = ""
@@ -78,6 +75,10 @@ def regional_earnings(request):
 
     salary_sectors_data: dict[str, any] = {}
     timeframes = ("15", "3", "5")
+
+    salary_sectors_data["salary_sector_15_unavail_text"] = ""
+    salary_sectors_data["salary_sector_3_unavail_text"] = ""
+    salary_sectors_data["salary_sector_5_unavail_text"] = ""
 
     def set_unavail_texts(index_):
         timeframe = timeframes[index_]
@@ -169,19 +170,19 @@ def regional_earnings(request):
         'salary_sector_15_lq': salary_sectors_data["salary_sector_15_lq"],
         'salary_sector_15_uq': salary_sectors_data["salary_sector_15_uq"],
         'salary_sector_15_pop': salary_sectors_data["salary_sector_15_pop"],
-        'salary_sector_15_unavail_text': salary_sector_15_unavail_text,
+        'salary_sector_15_unavail_text': salary_sectors_data["salary_sector_15_unavail_text"],
 
         'salary_sector_3_med': salary_sectors_data["salary_sector_3_med"],
         'salary_sector_3_lq': salary_sectors_data["salary_sector_3_lq"],
         'salary_sector_3_uq': salary_sectors_data["salary_sector_3_uq"],
         'salary_sector_3_pop': salary_sectors_data["salary_sector_3_pop"],
-        'salary_sector_3_unavail_text': salary_sector_3_unavail_text,
+        'salary_sector_3_unavail_text': salary_sectors_data["salary_sector_3_unavail_text"],
 
         'salary_sector_5_med': salary_sectors_data["salary_sector_5_med"],
         'salary_sector_5_lq': salary_sectors_data["salary_sector_5_lq"],
         'salary_sector_5_uq': salary_sectors_data["salary_sector_5_uq"],
         'salary_sector_5_pop': salary_sectors_data["salary_sector_5_pop"],
-        'salary_sector_5_unavail_text': salary_sector_5_unavail_text,
+        'salary_sector_5_unavail_text': salary_sectors_data["salary_sector_5_unavail_text"],
 
         'inst_prov_pc_go': salary_sectors_data["inst_prov_pc_go"],
         'inst_prov_pc_leo3': salary_sectors_data["inst_prov_pc_leo3"],
