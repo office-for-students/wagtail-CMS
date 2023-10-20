@@ -1,6 +1,9 @@
 from core.utils import enums
 from .satisfactionquestion import SatisfactionQuestion
 from .utils import display_unavailable_info, new_subject_unavail
+from .utils import separate_unavail_reason
+from ..unavail_dict_cy import unavail_cy
+from ..unavail_english_dict import unavail_en
 
 
 class SatisfactionStatistics:
@@ -8,8 +11,14 @@ class SatisfactionStatistics:
     def __init__(self, data_obj, language):
         self.display_language = language
         self.aggregation_level = data_obj.get('aggregation_level')
+        self.aggregation_year = data_obj.get('aggregation_year')
         self.number_of_students = data_obj.get('number_of_students')
         self.response_rate = data_obj.get('response_rate')
+        self.nss_country_population = data_obj.get('nss_country_population')
+        self.nss_country_aggregation = data_obj.get('nss_country_aggregation')
+        self.nss_country_year = data_obj.get('nss_country_aggregation_year')
+        self.nss_country_response_rate = data_obj.get('nss_country_response_rate')
+        self.nss_country_subject = data_obj.get('nss_country_subject')
         self.question_1 = SatisfactionQuestion(data_obj.get('question_1'))
         self.question_2 = SatisfactionQuestion(data_obj.get('question_2'))
         self.question_3 = SatisfactionQuestion(data_obj.get('question_3'))
@@ -37,6 +46,9 @@ class SatisfactionStatistics:
         self.question_25 = SatisfactionQuestion(data_obj.get('question_25'))
         self.question_26 = SatisfactionQuestion(data_obj.get('question_26'))
         self.question_27 = SatisfactionQuestion(data_obj.get('question_27'))
+        self.question_28 = SatisfactionQuestion(data_obj.get('question_28'))
+
+        self.nss_country_unavailable = data_obj.get('nss_country_unavailable_code')
 
         subject_data = data_obj.get('subject', {})
         self.subject_code = subject_data.get('code', '')
@@ -66,6 +78,13 @@ class SatisfactionStatistics:
                 aggregation_level=self.aggregation_level,
                 subject_welsh=self.subject_welsh
             )
+
+        #TEMP FIX AS UNAVAIL WAS NOT INGESTED FOR NSS
+        if self.aggregation_level != 14:
+            self.temp_unavail = self.get_unavail_from_code(data_obj, language)
+            self.sep_unavail = separate_unavail_reason(self.temp_unavail)
+            self.unavail = {"reason_heading": self.sep_unavail[0], "reason_body": self.sep_unavail[1]}
+
         self.unavailable_reason_heading = self.display_unavailable_info["reason_heading"]
         self.unavailable_reason_body = self.display_unavailable_info["reason_body"]
         if str(self.aggregation_level) in [None, "11", "12", "13", "21", "22", "23"]:
@@ -78,35 +97,38 @@ class SatisfactionStatistics:
 
     def show_learning_opps_stats(self):
         return self.question_5.show_data_point or self.question_6.show_data_point or \
-               self.question_7.show_data_point
+               self.question_7.show_data_point or self.question_8.show_data_point or \
+               self.question_9.show_data_point
 
     def show_assessment_stats(self):
-        return self.question_8.show_data_point or self.question_9.show_data_point or \
-               self.question_10.show_data_point or self.question_11.show_data_point
-
-    def show_support_stats(self):
-        return self.question_12.show_data_point or self.question_13.show_data_point or \
+        return self.question_10.show_data_point or self.question_11.show_data_point or \
+               self.question_12.show_data_point or self.question_13.show_data_point or \
                self.question_14.show_data_point
 
+    def show_support_stats(self):
+        return self.question_15.show_data_point or self.question_16.show_data_point
+
     def show_organisation_stats(self):
-        return self.question_15.show_data_point or self.question_16.show_data_point or \
-               self.question_17.show_data_point
+        return self.question_17.show_data_point or self.question_18.show_data_point
 
     def show_learning_resources_stats(self):
-        return self.question_18.show_data_point or self.question_19.show_data_point or \
-               self.question_20.show_data_point
-
-    def show_learning_community_stats(self):
-        return self.question_21.show_data_point or self.question_22.show_data_point
+        return self.question_19.show_data_point or self.question_20.show_data_point or \
+               self.question_21.show_data_point
 
     def show_voice_stats(self):
-        return self.question_23.show_data_point or self.question_24.show_data_point or \
-               self.question_25.show_data_point or self.question_26.show_data_point
+        return self.question_22.show_data_point or self.question_23.show_data_point or \
+               self.question_24.show_data_point or self.question_25.show_data_point
+
+    def show_mental_wellbeing_stats(self):
+        return self.question_26.show_data_point
+
+    def show_freedom_expression_stats(self):
+        return self.question_27.show_data_point
 
     def show_satisfaction_stats(self):
         return self.show_teaching_stats() or self.show_learning_opps_stats() or self.show_assessment_stats() or \
-               self.show_organisation_stats() or self.show_learning_resources_stats() or \
-               self.show_learning_community_stats() or self.show_voice_stats()
+               self.show_organisation_stats() or self.show_learning_resources_stats() or self.show_voice_stats() or \
+               self.show_mental_wellbeing_stats() or self.show_freedom_expression_stats() or self.question_28.show_data_point
 
     def show_nhs_stats(self):
         return self.question_1.show_data_point or self.question_2.show_data_point or \
@@ -117,3 +139,72 @@ class SatisfactionStatistics:
         if self.display_language == enums.languages.ENGLISH:
             return self.subject_english if self.subject_english else self.subject_welsh
         return self.subject_welsh if self.subject_welsh else self.subject_english
+
+    def teaching_stats(self):
+        return [self.question_1, self.question_2,
+               self.question_3, self.question_4]
+
+    def learning_opps_stats(self):
+        return [self.question_5, self.question_6,
+                self.question_7, self.question_8, self.question_9]
+
+    def assessment_stats(self):
+        return [self.question_10, self.question_11, self.question_12,
+               self.question_13, self.question_14]
+
+    def support_stats(self):
+        return [self.question_15, self.question_16]
+
+    def organisation_stats(self):
+        return [self.question_17, self.question_18]
+
+    def learning_resources_stats(self):
+        return [self.question_19, self.question_20, self.question_21]
+
+    def voice_stats(self):
+        return [self.question_22, self.question_23,
+               self.question_24, self.question_25]
+
+    def wellbeing_stats(self):
+        return [self.question_26]
+
+    def freedom_stats(self):
+        return [self.question_27]
+
+    def all_accordions(self):
+        return [
+            self.teaching_stats(), self.learning_opps_stats(), self.assessment_stats(),
+            self.support_stats(), self.organisation_stats(), self.organisation_stats(),
+            self.learning_resources_stats(), self.voice_stats(), self.wellbeing_stats(),
+            self.freedom_stats()
+        ]
+
+    def get_unavail_from_code(self, data, language):
+        unavail_code = data.get("unavailable_code", data.get("nss_country_unavailable_code"))
+        aggregation_level = data.get("aggregation_level", data.get("nss_country_aggregation_level"))
+        resp_rate = self.check_response_rate_present(data.get("response_rate", None))
+        subject = self.display_subject_name()
+        has_data = self.show_satisfaction_stats()
+        return self.get_reason_from_dict(unavail_code, aggregation_level, resp_rate, subject, has_data, language)
+
+    @staticmethod
+    def check_response_rate_present(resp_rate) -> str:
+        if resp_rate is None:
+            return "no_resp_rate"
+        return "yes_resp_rate"
+
+    @staticmethod
+    def get_reason_from_dict(unavail_code: int, aggregation_level: int, resp: str, subject: str, has_data: bool,
+                             language: str) -> str:
+        unavail_dict = unavail_en if language == "en" else unavail_cy
+        if not has_data:
+            return unavail_dict["no-data"][str(unavail_code)]
+        if unavail_code == 0:
+            unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)][resp]
+            new_unavail = unavail.replace("[Subject]", subject)
+            return new_unavail
+        if unavail_code == 1 or unavail_code == 2:
+            unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)]
+            new_unavail = unavail.replace("[Subject]", subject)
+            return new_unavail
+

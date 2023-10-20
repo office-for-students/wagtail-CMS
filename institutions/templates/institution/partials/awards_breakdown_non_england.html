@@ -1,0 +1,32 @@
+{% load static %}
+{% load discover_uni_tags %}
+
+<div class="tef-block">
+    <div class="tef-links">
+
+        <div class="tef-breakdown">
+            <div class="tef-images" style="border: unset; margin: auto; {% if wales %} width: 90% {% endif %}">
+                {% with image_copy=tef.tef_image.1 image=tef.tef_image.0 %}
+                    <img src="{% static image %}" alt="{{ image_copy }}" title="{{ image_copy }}">
+                {% endwith %}
+                <p>{{ tef.head_copy }}</p>
+            </div>
+            {% if tef.left_copy %}
+                <p>{{ tef.left_copy | safe }}</p>
+            {% endif %}
+            {% if tef.left_link %}
+            <a class="tef-btn" target="_blank"
+               href="{{ tef.left_link }}">{{ tef.left_button }}</a>
+            {% endif %}
+        </div>
+        <div>
+            {% if tef.right_copy %}
+                <p>{{ tef.right_copy | safe }}</p>
+            {% endif %}
+            {% if tef.right_link %}
+                <a class="tef-btn" href="{{ tef.right_link }}"
+                   target="_blank">{{ tef.right_button }}</a>
+        {% endif %}
+        </div>
+    </div>
+</div>

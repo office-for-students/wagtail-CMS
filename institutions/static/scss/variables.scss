@@ -1,0 +1,68 @@
+$teal: #027C78;  // keep for sidenav
+$grey-hover: #F4F8F8;  // keep for sidenav
+$soft-grey: #F7F7F7; // keep for sidenav + footer carousel
+
+// Teal theme gradients (darkest to lightest)
+$teal1: #034745;
+$teal2: #0C5451;
+$teal3: #005552;
+$teal4: #308582;
+$teal5: #50A5A2;
+
+
+// Blue theme gradients (darkest to lightest)
+$blue1: #002162;
+$blue2: #0B3588;
+$blue3: #276081;
+$blue4: #7EBCDF;
+$blue5: #d9edff;
+
+// Brand colours
+$core-white: #FFFFFF;
+$light-grey: #E6E8EB;
+$call-to-action: #f8d32b;
+$bright-lozenge-button: #40C1BD;
+$dark-green: #005E5A;
+$royal-blue: #0A1D42;
+$checkbox-color: #FCD833;
+$core-brand4: #464D59;
+$core-brand3: #323945;
+$core-brand2: #1F283A;
+$core-brand1: #151E30;
+
+$course-accordion-gradient:linear-gradient(145.9deg, $blue2 13.02%, $blue1 85.42%);
+
+// Small tablets and large smartphones (landscape view)
+$screen-xs: 375px;
+
+// small phone (home page)
+$screen-s: 390px;
+
+// Small tablets (portrait view)
+$screen-sm: 414px;
+
+// Tablets and small desktops
+$screen-med: 834px;
+
+// Large tablets and desktops
+$screen-l: 1280px;
+
+// Large tablets and desktops
+$screen-xl: 1512px;
+
+$container-max: 1280px;
+
+
+@mixin blue-yellow-btn() {
+    background-color: $royal-blue;
+    border-radius: 100px;
+    border: 1px solid $call-to-action;
+    color: $call-to-action;
+    font-size: 1rem;
+}
+@mixin yellow-btn() {
+    background-color: $call-to-action;
+    border-radius: 100px;
+    border: none;
+    color: black;
+}

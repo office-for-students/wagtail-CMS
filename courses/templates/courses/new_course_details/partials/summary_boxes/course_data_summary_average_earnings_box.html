@@ -1,0 +1,12 @@
+{% load discover_uni_tags wagtailcore_tags %}
+
+{% if amount or leo3_amount %}
+    <div class="box average-earnings">
+        <p class="box-title">{% get_translation key="average_earnings" language=page.get_language %}</p>
+        <p class="box-bold">{% if amount != "None" %}£{{ amount }}{% else %}£{{ leo3_amount }}{% endif %}</p>
+        <p class="box-small">
+            {% if amount != "None" %}{% get_translation key=description language=page.get_language as first_index %}{% else %}{% get_translation key=leo3_description language=page.get_language as first_index %}{% endif %}
+            {% include 'courses/new_course_details/partials/summary_boxes/earnings_source.html' with time=time %}
+        </p>
+    </div>
+{% endif %}

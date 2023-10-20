@@ -13,6 +13,7 @@ class TariffStatistics:
 
         if tariff_data:
             self.aggregation_level = tariff_data.get('aggregation_level')
+            self.aggregation_year = tariff_data.get('aggregation_year')
             self.number_of_students = tariff_data.get('number_of_students')
             if tariff_data.get('tariffs'):
                 for tariff in tariff_data.get('tariffs'):

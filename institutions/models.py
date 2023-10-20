@@ -7,6 +7,7 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
 
 from CMS.enums import enums
+from CMS.translations import term_for_key
 from core.models import DiscoverUniBasePage
 from core.request_handler import get_json_file
 from errors.models import ApiError
@@ -126,9 +127,21 @@ class Institution:
             self.ukprn_country = institution_data.get("ukprn_country")
             self.ukprn_name = institution_data.get("ukprn_name") if language == enums.languages.ENGLISH else institution_data.get("ukprn_welsh_name")
             self.ukprn = institution_data.get("ukprn")
-
+            self.qaa_url = institution_data.get("qaa_url")
+            self.qaa_report_type = institution_data.get("qaa_report_type")
+            self.qaa_report_type_string = None
+            if self.pub_ukprn_country_name == "Wales":
+                if not self.qaa_report_type:
+                    self.qaa_report_type_string = term_for_key("qaa_report_type_blank", language)
+                elif self.qaa_report_type == "Gateway Quality Review (Wales)":
+                    self.qaa_report_type_string = term_for_key("gateway_quality_review_wales", language)
+                elif self.qaa_report_type == "Quality Enhancement Review":
+                    self.qaa_report_type_string = term_for_key("quality_enhancement_review", language)
+            elif self.pub_ukprn_country_name == "Scotland":
+                self.qaa_report_type_string = term_for_key("more_about_qaa_scotland", language)
+            else:
+                self.qaa_report_type_string = term_for_key("ni_previous_model", language)
             if 'contact_details' in institution_data:
-                print(f"institution_data.get('contact_details') {institution_data.get('contact_details')}")
                 self.contact_details = InstitutionContactDetails(institution_data.get('contact_details'))
 
             self.student_unions = []

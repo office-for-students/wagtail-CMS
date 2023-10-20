@@ -100,9 +100,9 @@ function processWithTranslationTerms(saved_institutions, callback) {
 
             Object.defineProperty(this, 'mode', {
                     get: function () {
-                        if (this.data.mode.en === 'Full time') {
+                        if (this.data.mode.en === 'Full time' || 'Full-time') {
                             return 'FullTime';
-                        } else if (this.data.mode.en === 'Part time') {
+                        } else if (this.data.mode.en === 'Part time' || 'Part-time') {
                             return 'PartTime';
                         }
                     }
@@ -209,6 +209,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
 
         let CourseView = function courseView(element, course, checked) {
             this.course = course;
+            console.log(this.course)
             this.checked = checked;
             this.container = element;
             this.isEnglish = location.pathname.indexOf('/cy/') === -1;
@@ -377,6 +378,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
                 }
 
                 let courseView = new CourseView(courseTemplate, course, checked);
+                console.log(course)
                 courseView.update();
             })
 

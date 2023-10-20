@@ -55,7 +55,7 @@
                                     {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}
 
                                     <div class="entry-information__qualification_intro mt-2">
-                                        {% create_list course_details.data_from_html entry_stats.number_of_students as substitutions %}
+                                        {% create_list entry_stats.aggregation_year course_details.data_from_html entry_stats.number_of_students as substitutions %}
                                         {% insert_values_to_rich_text content=block.value.qualification_data_source substitutions=substitutions as subbed_text %}
                                         {{ subbed_text | richtext }}
                                     </div>
@@ -227,7 +227,7 @@
                                     <h2 class="entry-information__heading py-3">{{block.value.tariffs_heading}}{% if course_details.has_multiple_tariff_stats %}:
                                         {{tariff_stats.display_subject_name}}{% endif %}</h2>
                                             {% include 'courses/partials/unavailable_disclaimer.html' with unavailable=tariff_stats.display_unavailable_info %}
-                                            {% create_list course_details.data_from_html tariff_stats.number_of_students as substitutions %}
+                                            {% create_list tariff_stats.aggregation_year course_details.data_from_html tariff_stats.number_of_students as substitutions %}
                                             {% insert_values_to_rich_text content=block.value.tariffs_data_source substitutions=substitutions as subbed_text %}
                                             {{ subbed_text | richtext }}
                                 </div>

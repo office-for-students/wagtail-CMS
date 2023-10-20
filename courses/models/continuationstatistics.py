@@ -19,6 +19,7 @@ class ContinuationStatistics:
                                                                  'left', 'lower'])
 
             self.aggregation_level = data_obj.get('aggregation_level')
+            self.aggregation_year = data_obj.get('aggregation_year')
             self.number_of_students = data_obj.get('number_of_students')
 
             self.dormant = data_obj.get('dormant')

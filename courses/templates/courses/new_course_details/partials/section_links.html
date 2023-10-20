@@ -1,0 +1,16 @@
+{% load static %}
+{% block js %}
+    <script src="{% static 'js/section_links.js' %}"></script>
+{% endblock %}
+<div class="section-links course-detail">
+    {% for section in page.accordions %}
+        {% with heading=section.value.heading %}
+            {% if forloop.first %}
+                <a href="#course-detail__accordion-heading-{{ forloop.counter }}" class="course-detail active-link">{{ heading }}</a>
+            {% else %}
+                <a href="#course-detail__accordion-heading-{{ forloop.counter }}" class="course-detail">{{ heading }}</a>
+            {% endif %}
+        {% endwith %}
+    {% endfor %}
+</div>
+

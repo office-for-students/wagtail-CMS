@@ -14,6 +14,7 @@ class JobList:
 
         if jobs_data:
             self.aggregation = jobs_data.get('aggregation')
+            self.aggregation_year = jobs_data.get('aggregation_year')
             self.number_of_students = jobs_data.get('number_of_students', 0)
             self.response_rate = str(jobs_data.get('response_rate', 0)) + '%'
 

@@ -1,0 +1,9 @@
+{% if unavailable.reason_body %}
+    <div class="not-enough-data-disclaimer py-3 pr-3 pl-0 mr-1 mb-3">
+        <h3>{{ unavailable.reason_heading|safe }}</h3>
+        <p>{{ unavailable.reason_body|safe }}</p>
+        {% if unavailable.find_out_more %}
+            <a href="{{ unavailable.url }}">{{ unavailable.find_out_more|safe }}</a>
+        {% endif %}
+    </div>
+{% endif %}

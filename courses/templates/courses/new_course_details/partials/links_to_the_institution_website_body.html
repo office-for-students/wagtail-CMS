@@ -1,0 +1,29 @@
+{% load static discover_uni_tags i18n %}
+
+<div class="course-detail__uni-site-links mt-3">
+
+    <div class="course-detail__uni-site-links-blocks flex-fill">
+        <div class="course-detail__uni-site-links-block white-background">
+            <ul class="course-detail__uni-site-links-list">
+                {% for link in course.course_links.course_details %}
+                    <li class="course-detail__uni-site-links-list-item">
+                        <a class="course-detail__uni-site-link"
+                           href="{{ link.link }}" target="_blank">{{ link.label }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="course-detail__uni-site-links-block white-background">
+            <ul class="course-detail__uni-site-links-list">
+                {% for link in course.course_links.costs_support %}
+                    <li class="course-detail__uni-site-links-list-item">
+                        <a class="course-detail__uni-site-link"
+                           href="{{ link.link }}" target="_blank">{{ link.label }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+

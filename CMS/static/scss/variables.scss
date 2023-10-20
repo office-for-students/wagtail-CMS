@@ -1,3 +1,72 @@
+$teal: #027C78;  // keep for sidenav
+$grey-hover: #F4F8F8;  // keep for sidenav
+$soft-grey: #F7F7F7; // keep for sidenav + footer carousel
+
+// Teal theme gradients (darkest to lightest)
+$teal1: #034745;
+$teal2: #0C5451;
+$teal3: #005552;
+$teal4: #308582;
+$teal5: #50A5A2;
+
+
+// Blue theme gradients (darkest to lightest)
+$blue1: #002162;
+$blue2: #0B3588;
+$blue3: #276081;
+$blue4: #7EBCDF;
+$blue5: #d9edff;
+
+// Brand colours
+$core-white: #FFFFFF;
+$light-grey: #E6E8EB;
+$call-to-action: #f8d32b;
+$bright-lozenge-button: #40C1BD;
+$dark-green: #005E5A;
+$royal-blue: #0A1D42;
+$checkbox-color: #FCD833;
+$core-brand4: #464D59;
+$core-brand3: #323945;
+$core-brand2: #1F283A;
+$core-brand1: #151E30;
+
+$course-accordion-gradient:linear-gradient(145.9deg, $blue2 13.02%, $blue1 85.42%);
+
+// Small tablets and large smartphones (landscape view)
+$screen-xs: 375px;
+
+// small phone (home page)
+$screen-s: 390px;
+
+// Small tablets (portrait view)
+$screen-sm: 414px;
+
+// Tablets and small desktops
+$screen-med: 834px;
+
+// Large tablets and desktops
+$screen-l: 1280px;
+
+// Large tablets and desktops
+$screen-xl: 1512px;
+
+$container-max: 1280px;
+
+
+@mixin blue-yellow-btn() {
+    background-color: $royal-blue;
+    border-radius: 100px;
+    border: 1px solid $call-to-action;
+    color: $call-to-action;
+    font-size: 1rem;
+}
+@mixin yellow-btn() {
+    background-color: $call-to-action;
+    border-radius: 100px;
+    border: none;
+    color: black;
+}
+
 $black: #000000;
 $white: #FFFFFF;
 $header-blue: #1F283A;
@@ -34,6 +103,9 @@ $greyish-brown: #595959;
 $pale: #fef7d7;
 $ice-blue: #f4f8f8;
 $ugly-blue: #308282;
+
+$almost-black: #212121;
+$box-background: #EDF0F7;
 
 $xl-heading-font-size: 4.375rem;
 $xl-heading-line-height: 1.5;
@@ -85,3 +157,16 @@ $small-line-height: 1.5;
 @mixin default-box-shadowing() {
   box-shadow: 6px 5px 30px rgba(0, 0, 0, 0.08);
 }
+
+$teal: #002162;
+$teal2: #276081;
+$grey-hover: #F4F8F8;
+$txt-black: #252E37;
+$btn-yellow: #FCD835;
+$soft-grey: #F7F7F7;
+$text: #151E30;
+$carousel-background: #F4F8F8;
+$teal1 : #002162;
+$breadcrumb: #7EBCDF;
+$soft-blue: #93CAED2E;
+

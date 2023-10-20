@@ -1,0 +1,27 @@
+{% load static discover_uni_tags %}
+
+<nav class="navbar sticky-top navbar-expand-md fixed-top navbar-dark bg-dark" id="sticky_nav_course_detail">
+    <div class="navbar-nav flex-md-row">
+        {% for accordion in page.accordions %}
+            {% should_show_accordion course accordion.value.data_set as show_accordion %}
+            {% if show_accordion %}
+                <a class="nav-item nav-link scrollto d-none d-lg-inline" href="#{{accordion.value.data_set}}" id="a_{{accordion.value.data_set}}">{{ accordion.value.heading }}</a>
+            {%endif%}
+        {%endfor%}
+        <div class="dropdown d-xs-inline d-lg-none">
+            <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown"
+            class="nav-link dropdown-toggle text-white" href="#">
+                <span id="selected">Menu</span><span class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-menu-center">
+            {% for accordion in page.accordions %}
+                {% should_show_accordion course accordion.value.data_set as show_accordion %}
+                {% if show_accordion %}
+                    <li>
+                        <a class="nav-item nav-link scrollto" href="#{{accordion.value.data_set}}" id="a_{{accordion.value.data_set}}">{{ accordion.value.heading }}</a>
+                    </li>
+                {%endif%}
+            {%endfor%}
+            </ul>
+        </div>
+    </div>
+</nav>

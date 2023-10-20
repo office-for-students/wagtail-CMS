@@ -14,6 +14,9 @@ class Salary:
             self.subject_english = subject_data.get('english_label')
             self.subject_welsh = subject_data.get('welsh_label')
             self.aggregate = salary_data.get('agg')
+            self.aggregation_year = salary_data.get('aggregation_year')
+            self.leo3_aggregation_year = salary_data.get('leo3_aggregation_year')
+            self.leo5_aggregation_year = salary_data.get('leo5_aggregation_year')
 
             self.subject_title_in_local_language = self.subject_english
             if self.display_language == enums.languages.WELSH:
@@ -46,19 +49,18 @@ class Salary:
             if 'resp_rate' in salary_data:
                 self.resp_rate = salary_data.get('resp_rate') + "%"
 
-            if salary_data.get("agg"):
-                self.pop = salary_data.get('pop')
-                self.lq = salary_data.get('lq')
-                self.med = salary_data.get('med')
-                self.uq = salary_data.get('uq')
+            self.pop = salary_data.get('pop')
+            self.lq = salary_data.get('lq')
+            self.med = salary_data.get('med')
+            self.uq = salary_data.get('uq')
 
-                self.prov_pc_uk = salary_data.get('inst_prov_pc_uk')
-                self.prov_pc_e = salary_data.get('inst_prov_pc_e')
-                self.prov_pc_s = salary_data.get('inst_prov_pc_s')
-                self.prov_pc_w = salary_data.get('inst_prov_pc_w')
-                self.prov_pc_ni = salary_data.get('inst_prov_pc_ni')
+            self.prov_pc_uk = salary_data.get('inst_prov_pc_uk')
+            self.prov_pc_e = salary_data.get('inst_prov_pc_e')
+            self.prov_pc_s = salary_data.get('inst_prov_pc_s')
+            self.prov_pc_w = salary_data.get('inst_prov_pc_w')
+            self.prov_pc_ni = salary_data.get('inst_prov_pc_ni')
 
-                self.salary_default_country_prov_pc = salary_data.get("inst_prov_pc" + country_postfix)
+            self.salary_default_country_prov_pc = salary_data.get("inst_prov_pc" + country_postfix)
 
             if 'inst_prov_pc_nw' in salary_data:
                 self.prov_pc_nw = salary_data.get('inst_prov_pc_nw')

@@ -55,6 +55,9 @@ class CourseLocation:
         if name:
             self.english_name = name.get('english', '')
             self.welsh_name = name.get('welsh', '')
+        else:
+            self.english_name = ''
+            self.welsh_name = ''
         self.links = data_obj.get('links')
 
     def display_name(self):

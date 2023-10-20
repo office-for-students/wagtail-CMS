@@ -1,0 +1,297 @@
+@import './fonts';
+@import './new_variables';
+
+.rich-text{
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.875rem;
+  color: $brownish-grey;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1.5;
+
+
+}
+
+.one-year__block, .one-year__lead-block {
+
+  p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.875rem;
+    color: $brownish-grey;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 1.5;
+
+  }
+
+  .rich-text {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.875rem;
+    color: $brownish-grey;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 1.5;
+  }
+
+  a {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+  }
+
+  .one-year__lead {
+    @include small-font-mixin();
+    margin-top: 5px;
+  }
+
+  .one-year__qualification-charts {
+    background-color: $box-background;
+    border-radius: 8px;
+
+    .one-year__heading {
+      @include s-heading-mixin();
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: normal;
+      letter-spacing: normal;
+      color: $almost-black;
+      font-size: 1.5rem;
+    }
+
+    .one-year__lead {
+
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: normal;
+      color: #000000;
+      font-size: 0.875rem;
+      letter-spacing: normal;
+
+      a {
+        //text-decoration: underline;
+        color: $almost-black;
+        font-weight: normal;
+      }
+    }
+
+    .one-year__chart {
+      margin-bottom: 5px;
+
+      &:last-of-type {
+        margin-bottom: 5px;
+      }
+
+      .one-year-block__chart-label {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        color: #505050;
+      }
+
+      .one-year__chart-label {
+        @include small-font-mixin();
+
+        margin-top: 5px;
+      }
+    }
+    }
+}
+
+
+.one-year__overview {
+  border: solid 1px $royal-blue;
+  border-radius: 8px;
+
+  @include desktop-body-font-mixin();
+
+  p {
+    margin: 0;
+  }
+
+  .one-year__overview-lead {
+    @include l-heading-mixin();
+    font-family: 'Nunito Sans', sans-serif;
+    color: #000000;
+    font-weight: normal;
+    letter-spacing: normal;
+    font-size: 2rem;
+  }
+
+  .one-year__overview-sublead {
+
+  }
+
+  h2 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.125rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #000000;
+    text-decoration: none;
+  }
+
+  p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: $brownish-grey;
+  }
+
+  a {
+    font-family: 'Nunito Sans', sans-serif;
+    text-decoration: underline;
+    color: $almost-black;
+    font-weight: normal;
+    font-size: 0.875rem;
+  }
+
+  color: $brownish-grey;
+  font-size: 0.875rem;
+}
+
+.additional-class {
+  color: $brownish-grey;
+  font-size: 1rem;
+
+  p {
+    color: $brownish-grey;
+    font-size: 1rem;
+  }
+
+  a {
+    font-weight: 600;
+    color: $almost-black;
+
+    :hover {
+      color: $dark-green-blue;
+    }
+  }
+
+}
+
+@media only screen and (min-width: 770px) {
+  .rich-text {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1rem;
+    color: $brownish-grey;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .one-year__block .one-year__qualification-charts .one-year__chart .one-year-block__chart-label, .one-year__lead-block .one-year__qualification-charts .one-year__chart .one-year-block__chart-label {
+    font-size: 1.125rem;
+  }
+  .one-year__overview {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.75rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #000000;
+    text-decoration: none;
+  }
+  .one-year__overview-sublead p, li {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #000000;
+    font-size: 1rem;
+  }
+  .one-year__block, .one-year__lead-block {
+    p {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1rem;
+      color: $brownish-grey;
+      font-weight: normal;
+      letter-spacing: normal;
+      line-height: 1.5;
+    }
+
+    .rich-text {
+      font-size: 1rem;
+      color: $brownish-grey;
+      font-weight: normal;
+      letter-spacing: normal;
+      line-height: 1.5;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+
+    a {
+      font-weight: normal;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .one-year__heading {
+      @include m-heading-mixin();
+
+      margin: 0;
+
+      color: $ux-grey-2;
+    }
+
+    .one-year__lead {
+      @include desktop-body-font-mixin();
+
+      margin-top: 5px;
+        }
+
+        .one-year__qualification-charts {
+            .one-year__chart {
+                margin-bottom: 5px;
+
+                &:last-of-type {
+                    margin-bottom: 5px;
+                }
+
+                .one-year__chart-label {
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    margin-top: 5px;
+                    text-align: right;
+                    font-size: 1.25rem;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.5;
+                    letter-spacing: normal;
+                    color: #000000;
+                }
+            }
+        }
+    }
+
+    .one-year__overview {
+
+        .one-year__overview-lead {
+            @include xl-heading-mixin();
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.875rem;
+            font-weight: 400;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.5;
+            letter-spacing: normal;
+            color: #000000;
+        }
+    }
+}
+
+@media only screen and (min-width: 990px) {
+    .one-year-block__chart-label{
+        text-align: right;
+    }
+}

@@ -1,0 +1,172 @@
+$teal: #027C78;  // keep for sidenav
+$grey-hover: #F4F8F8;  // keep for sidenav
+$soft-grey: #F7F7F7; // keep for sidenav + footer carousel
+
+// Teal theme gradients (darkest to lightest)
+$teal1: #034745;
+$teal2: #0C5451;
+$teal3: #005552;
+$teal4: #308582;
+$teal5: #50A5A2;
+
+
+// Blue theme gradients (darkest to lightest)
+$blue1: #002162;
+$blue2: #0B3588;
+$blue3: #276081;
+$blue4: #7EBCDF;
+$blue5: #d9edff;
+
+// Brand colours
+$core-white: #FFFFFF;
+$light-grey: #E6E8EB;
+$call-to-action: #f8d32b;
+$bright-lozenge-button: #40C1BD;
+$dark-green: #005E5A;
+$royal-blue: #0A1D42;
+$checkbox-color: #FCD833;
+$core-brand4: #464D59;
+$core-brand3: #323945;
+$core-brand2: #1F283A;
+$core-brand1: #151E30;
+
+$course-accordion-gradient:linear-gradient(145.9deg, $blue2 13.02%, $blue1 85.42%);
+
+// Small tablets and large smartphones (landscape view)
+$screen-xs: 375px;
+
+// small phone (home page)
+$screen-s: 390px;
+
+// Small tablets (portrait view)
+$screen-sm: 414px;
+
+// Tablets and small desktops
+$screen-med: 834px;
+
+// Large tablets and desktops
+$screen-l: 1280px;
+
+// Large tablets and desktops
+$screen-xl: 1512px;
+
+$container-max: 1280px;
+
+
+@mixin blue-yellow-btn() {
+    background-color: $royal-blue;
+    border-radius: 100px;
+    border: 1px solid $call-to-action;
+    color: $call-to-action;
+    font-size: 1rem;
+}
+@mixin yellow-btn() {
+    background-color: $call-to-action;
+    border-radius: 100px;
+    border: none;
+    color: black;
+}
+
+$black: #000000;
+$white: #FFFFFF;
+$header-blue: #1F283A;
+$background-grey: #EDEDED;
+$ux-grey-1: #E2E2E2;
+$ux-grey-2: #676D70;
+$ux-grey-3: #6E6E6E;
+$ux-interrupt: #FEF7BC;
+$form-grey: #EDEDED;
+$slate: #425563;
+$helper-grey: #595959;
+$divider-grey: #F2F2F2;
+$copyright-grey: #939393;
+$pale-grey: #F3F3F3;
+$dark-green-blue: #266969;
+$dark: #1f283a;
+$gradient-light-green: #4EA27D;
+$gradient-dark-green: #308282;
+$link-blue: $gradient-dark-green;
+$link-green: $gradient-dark-green;
+$light-blue-grey: #ced4d9;
+$brownish-grey: #666666;
+$ice-blue: #f4f8f8;
+$error-red: #B10E1E;
+$delete-red: #C24444;
+$duck-egg-blue: #cee9e7;
+$focus-outline: #FAD45F;
+$sea-blue: #2a8384;
+$default-font: Nunito Sans;
+$default-font-color: $black;
+$bruise: #8e3b74;
+$very-light-blue: #e9ecef;
+$greyish-brown: #595959;
+$pale: #fef7d7;
+$ice-blue: #f4f8f8;
+$ugly-blue: #308282;
+
+$almost-black: #212121;
+$box-background: #EDF0F7;
+
+$xl-heading-font-size: 4.375rem;
+$xl-heading-line-height: 1.5;
+$l-heading-font-size: 3.000rem;
+$l-heading-line-height: 1.5;
+$m-heading-font-size: 2.250rem;
+$m-heading-line-height: 1.5;
+$s-heading-font-size: 1.688rem;
+$s-heading-line-height: 1.5;
+$xs-heading-font-size: 1.3125rem;
+$xs-heading-line-height: 1.5;
+
+$desktop-body-font-size: 1.1875rem;
+$desktop-body-line-height: 1.5;
+$mobile-body-font-size: 1rem;
+$mobile-body-line-height: 1.5;
+$small-font-size: 0.8750rem;
+$small-line-height: 1.5;
+
+@mixin yellow-btn {
+  background-color: #fcd835;
+  color: black;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  border: none;
+  font-weight: bold;
+  &:hover {
+    color: black;
+  }
+}
+
+@mixin green-gradient-background-mixin() {
+  background: linear-gradient(145.9deg, $gradient-light-green 13.02%, $gradient-dark-green 85.42%);
+  color: $white;
+}
+
+
+@mixin green-gradient-mixin() {
+  @include green-gradient-background-mixin();
+  border: 2px solid transparent;
+
+  &:hover {
+    background: $white;
+    color: $gradient-light-green;
+    border: 2px solid $gradient-light-green;
+  }
+}
+
+@mixin default-box-shadowing() {
+  box-shadow: 6px 5px 30px rgba(0, 0, 0, 0.08);
+}
+
+$teal: #002162;
+$teal2: #276081;
+$grey-hover: #F4F8F8;
+$txt-black: #252E37;
+$btn-yellow: #FCD835;
+$soft-grey: #F7F7F7;
+$text: #151E30;
+$carousel-background: #F4F8F8;
+$teal1 : #002162;
+$breadcrumb: #7EBCDF;
+$soft-blue: #93CAED2E;
+

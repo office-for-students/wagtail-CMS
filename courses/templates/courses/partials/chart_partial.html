@@ -1,0 +1,19 @@
+{% load discover_uni_tags %}
+<div class="student-satisfaction__chart-wrapper">
+    <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+         data-value="{{ agree_or_strongly_agree }}"
+         data-question="satisfaction-7"
+         data-language="{{ page.get_language }}"
+         data-field="{% get_translation key=description language=page.get_language %}">
+        {% include 'courses/partials/doughnut_chart.html' %}
+        <p class="student-satisfaction__chart-title" aria-hidden="true" aria-hidden="true">{% get_translation key=description language=page.get_language %}</p>
+    </div>
+    <div class="entry-information__chart discover-uni-chart bar sm-chart"
+         data-value="{{ agree_or_strongly_agree }}"
+         data-question="satisfaction-7"
+         data-language="{{ page.get_language }}"
+         data-field="{% get_translation key=description language=page.get_language %}">
+        {% include 'courses/partials/bar_chart.html' %}
+        <label class="entry-information__chart-label" aria-hidden="true">{% get_translation key=description language=page.get_language %}</label>
+    </div>
+</div>

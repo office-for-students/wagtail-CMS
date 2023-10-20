@@ -1,0 +1,142 @@
+{% load static %}
+{% load discover_uni_tags %}
+
+{% include './partials/sticky_header.html' with sections=page.accordions %}
+{% if not course.country.code == "XG" %}
+    <div>
+        <p class="leo-banner px-4">
+            {% get_translation key='leo3_banner_anticipate_change' language=page.get_language %} <a
+                href="{% if page.is_english %}/about-our-data/#longitudinal_education_outcomes_dataset{% else %}
+    /cy/ynglŷn-ân-data-about-our-data-cy/#set_ddata_canlyniadau_addysg_hydredol{% endif %}" title="read more"><span
+                class="leo-banner__read_more">{% get_translation key='read_more' language=page.get_language %}</span>
+        </a>
+        </p>
+    </div>
+{% endif %}
+<div class="course-detail comparison-course-area px-xs-1"
+     data-courseidentifier="{{ course.institution.pub_ukprn }}/{{ course.kis_course_id }}/{{ course.mode.label }}"
+     data-coursename="{{ course.display_title }}" data-courseid="{{ course.kis_course_id }}"
+     data-uniname="{{ course.institution.pub_ukprn_name }}" data-uniid="{{ course.institution.pub_ukprn }}"
+     data-length="{{ course.length.label | slice:1 }}" data-locations="{{ course.locations_list }}"
+     data-mode-en="{{ course.mode.label }}"
+     data-mode-cy="{{ course.mode.label }}"
+     data-distance-en="{{ course.distance_learning.code }}"
+     data-distance-cy="{{ course.distance_learning.code }}"
+     data-sandwich-en="{{ course.sandwich_year.label }}) }}"
+     data-sandwich-cy="{{ course.sandwich_year.label }}"
+     data-abroad-en="{{ course.year_abroad.label }}"
+     data-abroad-cy="{{ course.year_abroad.label }}" role="main">
+
+    {% include 'courses/new_course_details/partials/base_gradient.html' %}
+    {% include 'courses/new_course_details/partials/course_overview.html' %}
+    {% include 'courses/new_course_details/partials/course_summary.html' %}
+
+    <div id="course-detail__body" class="course-detail__body course-detail course-details-thin">
+        <div class="course-detail__accordion-block">
+            {% for accordion in page.accordions %}
+                {% with heading=accordion.value.heading %}
+                    {% if not forloop.counter0 == 3 or forloop.counter0 == 3 and course.accreditations.0.should_show_accreditation %}
+                    <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
+                        <div class="">
+                            <button class="course-detail__accordion-heading"
+                                    onclick="toggle_icon('accordion_icon_{{ forloop.counter }}')">
+                                <h2 id="course-detail__accordion-heading-{{ forloop.counter }}"
+                                    aria-controls="course-detail__accordion-body-{{ forloop.counter }}"
+                                    aria-label="Show {{ heading }} content"
+                                    aria-expanded="false">
+                                    {{ heading }}
+                                    <i id="accordion_icon_{{ forloop.counter }}"
+                                       class="fas fa-plus pr-3 text-white"></i>
+                                </h2>
+                            </button>
+                        </div>
+                        <div id="course-detail__accordion-body-{{ forloop.counter }}"
+                             class="course-detail__accordion-body"
+                             aria-labelledby="course-detail__accordion-heading-{{ forloop.counter }}">
+                            {% include 'courses/new_course_details/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course block=accordion %}
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+
+        <div hidden class="">
+            <div class="course-detail__further-info-block">
+                <a href="/dummy-link" class="course-detail__other-courses-link">
+                    <img class="course-detail__other-courses-link-icon"
+                         src="{% static 'images/location_paddle.svg' %}"
+                         alt="">
+                    <span>{% autoescape off %}{% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
+                </a>
+
+                <a href="/dummy-link" class="course-detail__other-courses-link">
+                    <img class="course-detail__other-courses-link-icon"
+                         src="{% static 'images/curved_arrow_right.svg' %}"
+                         alt="">
+                    <span>{% autoescape off %}{% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
+                </a>
+            </div>
+        </div>
+
+        {% include 'courses/new_course_details/partials/compare-popup-bar.html' %}
+    </div>
+
+
+
+</div>
+<script>
+    function toggle_icon(icon_id) {
+        var icon_name = "#" + icon_id;
+        $(icon_name).toggleClass("fa-plus");
+        $(icon_name).toggleClass("fa-minus");
+    }
+
+    $(document).ready(function () {
+        $('body').scrollspy({
+            target: '#sticky_nav_course_detail',
+            offset: 90
+        });
+
+        $('#myScrollspy').on('activate.bs.scrollspy', function () {
+        });
+        var $items = $('.nav-item');
+
+        $items.on('click', function () {
+            var selectedIndex = $items.index(this);
+            $items.eq(selectedIndex).find('a').trigger('click');
+        });
+
+        $('.scrollto').click(function (event) {
+            var anchor = $(this);
+
+            if (screen.width <= 600) {
+                $('html, body').stop().animate({scrollTop: $(anchor.attr('href')).offset().top - 430}, 1500);
+                event.preventDefault();
+            } else if (screen.width > 600 && screen.width <= 750) {
+                $('html, body').stop().animate({scrollTop: $(anchor.attr('href')).offset().top - 420}, 1500);
+                event.preventDefault();
+            } else {
+                $('html, body').stop().animate({scrollTop: $(anchor.attr('href')).offset().top - 80}, 1500);
+                event.preventDefault();
+            }
+        });
+
+        $('.dropdown-menu a').click(function () {
+            $('#selected').text($(this).text());
+        });
+
+    });
+
+
+    $(window).scroll(function () { // when the page is scrolled run this
+        if ($(this).scrollTop() >= ($('.course-detail__lead').outerHeight())) {
+            $('#sticky_nav_course_detail').fadeIn("fast"); // fade in
+
+        } else { // else
+            $('#sticky_nav_course_detail').fadeOut("fast"); // fade out
+        }
+    });
+
+
+</script>
