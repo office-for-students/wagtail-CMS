@@ -42,7 +42,6 @@ def get_tef_status(institution):
         return institution.pub_ukprn_country_code
 
 
-
 def institution_detail(request, institution_id, language=enums.languages.ENGLISH):
     institution, error = Institution.find(institution_id, language)
     if error:
@@ -145,8 +144,8 @@ def get_tef_body_copy_context(institution, language, status, tef_context, affili
         tef_context["right_button"] = term_for_key("find_out_more_about_tef", language=language)
         tef_context["right_link"] = "https://discoveruni.gov.uk/how-do-i-choose-course/quality-and-standards/#teaching_excellence_and_student_outcomes_framework_(tef)"
 
-
     tef_context["status"] = status
+
 
 def generate_tef_context(institution, language, status):
     print("status", status)
