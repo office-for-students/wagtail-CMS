@@ -458,7 +458,7 @@ STATISTICS = {
         "en": "go on to work and/or study"
     },
     "are_using_what_they_learnt": {
-        "cy": "TO DO",
+        "cy": "yn defnyddio'r hyn a ddysgwyd ganddynt yn ystod eu hastudiaethau yn eu gwaith presennol",
         "en": "are using what they learnt during their studies in their current work"
     },
     "no_data_england": {
