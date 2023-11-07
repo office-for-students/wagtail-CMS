@@ -42,9 +42,9 @@ def separate_unavail_reason(reason_unseparated, subject_welsh=""):
         [f"Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau Eraill mewn {subject_welsh} eraill yn ystod y ddwy flynedd flaenorol.",
          f"Daw'r data a ddangosir gan fyfyrwyr ar y cwrs hwn a chyrsiau eraill dros dwy flynedd {subject_welsh}."]
     ]
-    index_of_delimiter = reason_unseparated.find('\n\n')
 
-    if index_of_delimiter > 4:
+    if reason_unseparated and reason_unseparated.find('\n\n') > 4:
+        index_of_delimiter = reason_unseparated.find('\n\n')
         reason_heading = reason_unseparated[:index_of_delimiter]
         for replacement in WELSH_UNAVAILABLE_UPDATES:
             reason_heading = reason_heading.replace(replacement[0], replacement[1])
