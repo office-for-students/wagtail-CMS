@@ -72,8 +72,7 @@
 
       .tef-images {
         .tef-logo {
-          height: 80%;
-          width: 33%;
+          max-width: 320px;
           margin-right: 3px;
         }
 
@@ -186,13 +185,17 @@
           flex-direction: row;
           border-bottom: 1px solid #EBEBEB;
           padding: 5px;
-
           div {
             border-radius: 8px;
             width: 288px;
 
+            .tef-logo {
+            max-width: 100%;
+          }
+
             img {
               width: 100%;
+
               // border-radius: 8px;
               // mask-image: radial-gradient(circle, transparent 0%, black 100%);
             }
