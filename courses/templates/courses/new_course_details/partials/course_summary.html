@@ -40,9 +40,6 @@
                 {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_16.agree_or_strongly_agree description="question_16" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
             {% endif %}
         </div>
-        <div class="section-scroll course-detail">
-            {% include "courses/new_course_details/partials/section_links.html" with page_name="course_detail" %}
-        </div>
     </div>
 </div>
 {% endif %}

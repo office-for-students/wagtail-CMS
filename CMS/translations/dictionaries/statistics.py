@@ -606,5 +606,42 @@ STATISTICS = {
     "data_from_students_graduating": {
         "cy": "Data gan fyfyrwyr sy'n graddio",
         "en": "Data from students graduating"
+    },
+    "participated_in_tef_awarded": {
+        "en": "This university/college is regulated by the OfS and has been assessed in the Teaching Excellence Framework (TEF).  The TEF assesses and rates universities and colleges for excellence above a set of minimum requirements.  The outcomes reflect the extent an institution delivers an excellent experience and outcomes for its mix of undergraduate students and across the range of its undergraduate courses and subjects.",
+        "cy": "Rheoleiddir y brifysgol hon / y coleg hwn gan y Swyddfa Fyfyrwyr ac mae wedi'i hasesu o fewn y Fframwaith Rhagoriaeth Addysgu (TEF).  Mae'r fframwaith hwn yn asesu ac yn graddio prifysgolion a cholegau am ragoriaeth uwchlaw casgliad o ofynion sylfaenol.  Mae'r canlyniadau'n adlewyrchu i ba raddau y mae sefydliad yn darparu profiadau a chanlyniadau rhagorol ar gyfer ei amrywiaeth o fyfyrwyr israddedig, ac ar draws ystod ei gyrsiau a phynciau israddedig. "
+    },
+    "participated_in_tef_awarded_left": {
+        "en": "View this institution's TEF assessment",
+        "cy": "Gweld asesiad TEF y sefydliad hwn"
+    },
+    "participated_in_tef_pending": {
+        "en": "This institution's TEF outcomes are 'pending' as they are still being considered. The outcomes will be published shortly after they are confirmed. <br><br>In the meantime, you may wish to find out more about this institution on the OfS Register",
+        "cy": "Mae canlyniadau TEF y sefydliad hwn 'yn yr arfaeth' gan eu bod yn dal i gael eu hystyried. Bydd y canlyniadau yn cael eu cyhoeddi'n fuan wedi iddynt gael eu cadarnhau. Yn y cyfamser, efallai yr hoffech gael rhagor o wybodaeth am y sefydliad hwn ar Gofrestr y Swyddfa Fyfyrwyr"
+    },
+    "participated_in_tef_excluded": {
+        "en": "This university/college does not hold a current TEF award.  For some institutions in England TEF is optional or does not apply.  All higher education institutions are required to meet the standards of their qualifications and the quality of the academic experience provided to students as required by the relevant higher education funding or regulatory body.<br><br>You may find more information about this university/college on the <a style='all:unset; text-decoration:underline;' target='_blank' href='https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/' tile='Link to OFS Register'>OfS Register.</a>",
+        "cy": "Nid oes gan y brifysgol/coleg hon ddyfarniad TEF cyfredol. I rai sefydliadau yn Lloegr mae TEF yn ddewisol neu nid yw'n berthnasol. Mae'n ofynnol i bob sefydliad addysg uwch fodloni safonau eu cymwysterau ac ansawdd y profiad academaidd a ddarperir i fyfyrwyr fel sy'n ofynnol gan y corff cyllido addysg uwch neu reoleiddio perthnasol.<br><br>Efallai y byddwch yn dod o hyd i ragor o wybodaeth am y brifysgol/coleg hon ar <a style='all:unset; text-decoration:underline;' target='_blank' href='https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/' tile='Link to OFS Register'>Gofrestr y Swyddfa Myfyrwyr.</a>"
+    },
+    "participated_in_tef_excluded_left": {
+        "en": "You may find more information about this university/college on the OfS",
+        "cy": "Efallai y byddwch yn dod o hyd i ragor o wybodaeth am y brifysgol/coleg hon ar Gofrestr y Swyddfa Myfyrwyr."
+    },
+    "find_out_more_about_tef": {
+        "en": "Find out more about TEF",
+        "cy": "Darganfyddwch fwy am TEF"
+    },
+    "tef_affiliate_left": {
+        "en": "The {} is not assessed through TEF, but its affiliated institutions do have a TEF outcome. <br><br> You can see these outcomes at {}.",
+        "cy": "Nid yw {} yn cael ei asesu trwy TEF, ond mae gan ei sefydliadau cysylltiedig ganlyniad TEF. <br><br> Gallwch weld y canlyniadau hyn ar dudalen sefydliad {}."
+    },
+    "and": {
+        "en": " and ",
+        "cy": " ac ",
+    },
+    "": {
+        "en":"",
+        "cy":""
     }
+
 }

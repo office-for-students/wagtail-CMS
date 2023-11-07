@@ -30,6 +30,7 @@
                     <div class="student-satisfaction__chart-wrapper">
                         <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1">
                             <p class="student-satisfaction__chart-title">{% get_translation key=no_data_key language=page.get_language %}</p>
+                            <a href="{% get_translation key='about_our_data_link' language=page.get_language %}" target="_blank">{% get_translation key="read_more_about_this_data" language=page.get_language %}</a>
                         </div>
                     </div>
                 {% endif %}

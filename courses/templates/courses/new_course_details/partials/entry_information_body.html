@@ -1,6 +1,5 @@
 {% load static discover_uni_tags%}
 {% load humanize %}
-
 {% if course_details.entry_stats and course_details.entry_stats.0.number_of_students %}
     <div class="entry-information__block">
         <div class="entry-information__overview my-3 p-3 mx-1 pt-4 d-flex flex-wrap row"> <!-- data box-->
@@ -29,7 +28,7 @@
 
     <!--not sure what this does yet-->
         {% if course_details.has_multiple_entry_stats %}
-            <ul class="nav nav-tabs mt-2 mx-1" id="qualification-types-tab MEGMEG">
+            <ul class="nav nav-tabs mt-2 mx-1" id="qualification-types-tab">
                 {% for entry_stats in course_details.entry_stats %}
                     <li class="nav-item">
                         <a class="nav-link {% if not forloop.counter0 %} active {% endif %}" id="qualification-types-{{ forloop.counter }}-tab" data-toggle="tab" href="#qualification-types-{{ forloop.counter }}"
