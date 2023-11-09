@@ -76,14 +76,14 @@
   }
 
   .student-satisfaction__intro .rich-text a {
-    color: $blue2;
+    color: $royal-blue;
     font-weight: 600;
     text-decoration: underline;
   }
 
   .student-satisfaction__overview-lead {
     @include l-heading-mixin();
-    font-family: "Nunito Sans", sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     color: #000000;
     font-weight: normal;
     font-size: 32px;
@@ -128,7 +128,7 @@
     }
 
     a {
-      color: $blue2;
+      color: $royal-blue;
       font-weight: normal;
       text-decoration: underline;
     }
@@ -184,7 +184,7 @@
 
       .entry-information__chart-label {
         @include small-font-mixin();
-        font-family: "Nunito Sans", sans-serif;
+        font-family: 'Plus Jakarta Sans', sans-serif;
         display: block;
         margin-top: 7px;
         color: #666666;
@@ -224,7 +224,7 @@
           }
 
           .rich-text p {
-            font-family: "Nunito Sans", sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
           }
         }
       }
@@ -294,7 +294,7 @@
     }
 
     .student-satisfaction__intro .rich-text a {
-      color: $blue2;
+      color: $royal-blue;
       font-weight: 600;
       text-decoration: underline;
       font-size: 1rem;
@@ -302,7 +302,7 @@
 
     .student-satisfaction__overview-lead {
       @include xl-heading-mixin();
-      font-family: "Nunito Sans", sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       color: #000000;
       font-weight: normal;
       font-size: 1.875rem;
@@ -330,12 +330,12 @@
 
       p {
         @include small-font-mixin();
-        color: #0f583e;
+        color: $royal-blue;
         margin: 0;
       }
 
       a {
-        color: $blue2;
+        color: $royal-blue;
         font-weight: 400;
         text-decoration: underline;
       }
@@ -378,7 +378,7 @@
 
         .entry-information__chart-label {
           @include small-font-mixin();
-          font-family: "Nunito Sans", sans-serif;
+          font-family: 'Plus Jakarta Sans', sans-serif;
           display: block;
           margin-top: 7px;
           color: #666666;
