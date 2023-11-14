@@ -19,7 +19,7 @@
     a {
       color: white;
       margin-left: auto;
-      margin-bottom: 20px;
+      //margin-bottom: 20px;
     }
 
     .inner-block {
@@ -45,6 +45,7 @@
           border-radius: 70px;
           border: 1px solid white;
           padding: 5px 18px 6px 18px;
+          margin-bottom: 20px;
           color: white;
           display: inline-block;
           white-space: nowrap;
@@ -170,7 +171,7 @@
             align-items: center;
             color: black;
             background-color: white;
-            margin-left: 0;
+            //margin-left: 0;
           }
         }
       }
