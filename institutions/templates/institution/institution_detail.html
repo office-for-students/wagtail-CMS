@@ -19,10 +19,10 @@
                     <h2>{% get_translation key="about_this_university" language=page.get_language %}</h2>
                     <p>{% get_translation key="address" language=page.get_language %}: {{ institution.contact_details.address }}</p>
                     <p>{% get_translation key="telephone" language=page.get_language %}: {{ institution.contact_details.phone_number }}</p>
-                    <a href="{{ institution.website }}" target="_blank">{% get_translation key="website" language=page.get_language %}: {{ institution.ukprn_name }}</a>
+                    <a href="{{ institution.website }}" target="_blank">{% get_translation key="view_uni_website" language=page.get_language %}</a>
                     <br/>
                     {% if institution.pub_ukprn_country_code == "XF" %}
-                        <a style="display: inline-block; border: unset; margin: 0" target="_blank"
+                        <a style="display: inline-block; border: unset; margin: 0; padding-left:0;" target="_blank"
                            href="https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/provider/{{ institution.pub_ukprn }}">OfS
                             Registration information</a>
                     {% endif %}
@@ -36,7 +36,7 @@
             </div>
             <div class="bottom-block">
                 <div>
-                    <a class="view-courses" href="{% url 'course_finder_results' %}?institution_query={{ institution.pub_ukprn_name }}">{% get_translation key="view_courses" language=page.get_language %}</a>
+                    <a class="view-courses" href="{% url 'course_finder_results' %}?institution_query={{ institution.pub_ukprn_name }}">{% get_translation key="view_courses" language=page.get_language %} {% get_translation key="at" language=page.get_language %} {{ institution.pub_ukprn_name }}</a>
                 </div>
             </div>
             {% if institution.pub_ukprn_country_code == "XF" and tef.status == "tef"%}
