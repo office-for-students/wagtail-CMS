@@ -17,17 +17,40 @@
     }
 
     a {
-      color: white;
+      //color: white;
       margin-left: auto;
-      margin-bottom: 20px;
+      border-radius: 70px;
+      //margin-bottom: 20px;
     }
 
+    .bottom-block {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      min-height: 116px;
+      align-items: center;
+
+      .view-courses {
+        display: flex;
+        text-align: center;
+        padding: 14px 20px;
+        align-items: center;
+        color: black;
+        background-color: white;
+        margin:16px;
+        overflow-wrap:break-word;
+        text-decoration: underline;
+      }
+    }
+
+
     .inner-block {
-      width: 358px;
+      //width: 358px;
       padding: 16px;
       background-color: rgba(52, 137, 211, 0.4);
       color: white;
       margin-top: 20px;
+      border-radius: 8px;
 
       div {
         &:nth-child(odd) {
@@ -45,6 +68,7 @@
           border-radius: 70px;
           border: 1px solid white;
           padding: 5px 18px 6px 18px;
+          margin-bottom: 20px;
           color: white;
           display: inline-block;
           white-space: nowrap;
@@ -53,7 +77,7 @@
     }
 
     .bottom-block {
-      width: 358px;
+      //width: 358px;
       padding: 16px;
       background-color: rgba(52, 137, 211, 0.4);
       border-radius: 8px;
@@ -68,7 +92,7 @@
       background-color: white;
       padding: 16px;
       margin-top: 12px;
-      width: 358px;
+      //width: 358px;
 
       .tef-images {
         .tef-logo {
@@ -90,18 +114,20 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+
         div {
           width: 100%;
           display: flex;
           flex-direction: column;
+
           a {
             width: 88%;
             border-radius: 70px;
             border: 1px solid black;
             padding: 12px 20px;
             color: black;
-            margin-left: 0;
-            text-decoration: none;
+            //margin-left: 0;
+            margin: 5px 0 5px 0;
           }
         }
       }
@@ -170,7 +196,7 @@
             align-items: center;
             color: black;
             background-color: white;
-            margin-left: 0;
+            //margin-left: 0;
           }
         }
       }
@@ -185,13 +211,14 @@
           flex-direction: row;
           border-bottom: 1px solid #EBEBEB;
           padding: 5px;
+
           div {
             border-radius: 8px;
             width: 288px;
 
             .tef-logo {
-            max-width: 100%;
-          }
+              max-width: 100%;
+            }
 
             img {
               width: 100%;
@@ -217,7 +244,7 @@
             border-right: 1px solid #EBEBEB
           }
 
-        div {
+          div {
             width: 70%;
             //height: 122px;
             display: flex;
