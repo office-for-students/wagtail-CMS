@@ -600,8 +600,8 @@ STATISTICS = {
         "en": "Freedom of expression"
     },
     "leo3_banner_anticipate_change": {
-        "cy": "Sylwer: rydym yn rhagweld bydd y data ‘Enillion ar ôl y cwrs’ ar gyfer 3 blynedd a 5 mlynedd ar ôl graddio yn cael ei diweddaru ym mis Tachwedd 2023 pan fydd data newydd ar gael. ",
-        "en": "Please note: we anticipate that the ‘Earnings after the course’ data for 3 years and 5 years after graduation will be updated in November 2023 when new data is available."
+        "cy": "Sylwer: mae’r data ‘Enillion ar ôl y cwrs’ ar gyfer 3 a 5 mlynedd ar ôl graddio wedi cael ei ddiweddaru ym mis Tachwedd 2023 gan bod data newydd wedi cael ei gyhoeddi.",
+        "en": "Please note: Earnings after the course’ data for 3 years and 5 years after graduation has been updated in November 2023 as new data has been published."
     },
     "data_from_students_graduating": {
         "cy": "Data gan fyfyrwyr sy'n graddio",
