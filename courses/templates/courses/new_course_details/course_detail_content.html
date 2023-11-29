@@ -4,7 +4,7 @@
 {% include './partials/sticky_header.html' with sections=page.accordions %}
 {% if not course.country.code == "XG" %}
     <div>
-        <p class="leo-banner px-4">
+        <p class="leo-banner px-4" role="banner">
             {% get_translation key='leo3_banner_anticipate_change' language=page.get_language %} <a
                 href="{% if page.is_english %}/about-our-data/#longitudinal_education_outcomes_dataset{% else %}
     /cy/ynglŷn-ân-data-about-our-data-cy/#set_ddata_canlyniadau_addysg_hydredol{% endif %}" title="read more"><span
