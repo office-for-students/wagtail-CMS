@@ -104,6 +104,14 @@ def should_show_accordion(courses, accordion_type):
 def title_to_id(title):
     return title.replace(' ', '_').lower()
 
+@register.simple_tag
+def brackets_replace_year(my_string, year):
+    return my_string.replace('{}', f'{year}')
+
+@register.simple_tag
+def replace_graduate_intro(year):
+    return year.replace('Students graduating during ', f'')
+
 
 @register.simple_tag
 def get_alphabet():
