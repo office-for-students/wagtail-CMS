@@ -106,11 +106,17 @@ def title_to_id(title):
 
 @register.simple_tag
 def brackets_replace_year(my_string, year):
-    return my_string.replace('{}', f'{year}')
+    if my_string and year:
+        return my_string.replace('{}', f'{year}')
+    else:
+        return ""
 
 @register.simple_tag
 def replace_graduate_intro(year):
-    return year.replace('Students graduating during ', f'')
+    if year:
+        return year.replace('Students graduating during ', f'')
+    else:
+        return ""
 
 
 @register.simple_tag
