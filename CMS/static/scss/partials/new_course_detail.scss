@@ -271,10 +271,12 @@
         color: $gradient-light-green;
         border: none;
         background-color: transparent;
-        position: absolute;
-        top: 199px;
+        //position: absolute; change back to this once leo banner is gone
+        //top: 199px; change back to this once leo banner is gone
         z-index: 999;
-        left:7%;
+        //left:7%; change back to this once leo banner is gone
+        position: relative; //remove when leo banner is gone
+        left: -38px; //remove when leo banner is gone
 
         .course-detail__nav-control-icon {
           height: 12px;
@@ -287,6 +289,7 @@
           margin-left: auto;
           font-family: 'Nunito Sans', sans-serif;
           font-size: 1rem;
+          //color: white; change back to this once leo banner is gone
           color: black;
           font-weight: normal;
         }

@@ -292,11 +292,11 @@
 
       p {
         @include small-font-mixin();
-        color: #0f583e;
+        color: $royal-blue;
         margin: 0;
       }
       a {
-        color: #308282;
+        color: $royal-blue;
         font-weight: 400;
         text-decoration: underline;
       }

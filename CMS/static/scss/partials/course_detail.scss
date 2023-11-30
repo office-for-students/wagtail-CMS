@@ -271,8 +271,10 @@
         color: $gradient-light-green;
         border: none;
         background-color: transparent;
-        position: absolute;
-        top: 110px;
+        //position: absolute; change back to this once leo banner is gone
+        //top: 110px; change back to this once leo banner is gone
+        position: relative; //remove when leo banner is gone
+        left: -38px; //remove when leo banner is gone
 
         .course-detail__nav-control-icon {
           height: 12px;
@@ -285,7 +287,8 @@
           margin-left: auto;
           font-family: 'Nunito Sans', sans-serif;
           font-size: 1rem;
-          color: white;
+          //color: white; change back to this once leo banner is gone
+          color: black;
           font-weight: normal;
         }
       }
@@ -1028,7 +1031,7 @@ div.course-detail.course-details-thin {
         .course-detail__nav-control {
           @include xs-heading-mixin();
           color: $gradient-light-green;
-          top: 135px;
+          //top: 135px;
 
           .course-detail__nav-control-icon {
             height: 16px;

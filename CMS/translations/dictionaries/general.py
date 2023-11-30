@@ -98,8 +98,8 @@ DICT = {
         "en": "How the course is assessed"
     },
     "at": {
-        "cy": "yn:",
-        "en": "at:"
+        "cy": "yn",
+        "en": "at"
     },
     "average_earnings_course_overview_1": {
         "cy": "Enillion cyfartalog",
@@ -1725,5 +1725,10 @@ OPTIONALS = {
     'average_earnings': {
         "cy": "Enillion cyfartalog",
         "en": "Average Earnings"
+    },
+    'view_uni_website': {
+        "cy": "Gweld gwefan y brifysgol",
+        "en": "View uni website"
     }
+
 }

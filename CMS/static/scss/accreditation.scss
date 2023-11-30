@@ -1,120 +1,126 @@
 @import '../../../CMS/static/scss/fonts';
 @import '../../../CMS/static/scss/variables';
 
-    .accreditation__block {
-        .accreditation__info{
-            background-color: $ice-blue;
-        }
-        .accreditation__overview{
+.accreditation__block {
+  .accreditation__info {
+    background-color: $box-background;
+    margin-bottom: 20px;
+  }
 
-          text-align: center;
-          border: solid 3px $duck-egg-blue;
+  .accreditation__overview {
 
-          .accreditation__overview-lead {
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 1.5rem;
-            font-weight: normal;
-            color: #000000;
-            text-decoration: none;
-          }
+    text-align: center;
+    border: solid 1px $royal-blue;
+    border-radius: 8px;
 
-          .accreditation__overview-sublead {
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 0.875rem;
-            font-weight: normal;
-            color: $brownish-grey;
-            text-decoration: none;
-          }
-
-          a {
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 0.875rem;
-            font-weight: normal;
-            text-decoration: underline;
-            color: $dark-green-blue;
-          }
-        }
-
-        .accreditation__heading {
-            @include s-heading-mixin();
-            font-family: 'Nunito Sans', sans-serif;
-            font-weight:normal;
-            color: #000000;
-            font-size: 1.75rem;
-        }
-
-        .accreditation__body {
-          @include mobile-body-font-mixin();
-          font-family: 'Nunito Sans', sans-serif;
-          font-weight: normal;
-          font-size: 0.875rem;
-          color: $brownish-grey;
-
-          a {
-            color: $dark-green-blue;
-            font-weight: normal;
-            text-decoration: underline;
-          }
-        }
-
-        .accreditation__explanation {
-            @include small-font-mixin();
-        }
+    .accreditation__overview-lead {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: normal;
+      color: $royal-blue;
+      text-decoration: none;
     }
+
+    .accreditation__overview-sublead {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: normal;
+      color: $royal-blue;
+      text-decoration: none;
+    }
+
+    a {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: normal;
+      text-decoration: underline;
+      color: $royal-blue;
+    }
+  }
+
+  .accreditation__heading {
+    @include s-heading-mixin();
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: normal;
+    color: $royal-blue;
+    font-size: 1.75rem;
+  }
+
+  .accreditation__body {
+    @include mobile-body-font-mixin();
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: normal;
+    font-size: 0.875rem;
+    color: $royal-blue;
+
+    a {
+      color: $royal-blue;
+      font-weight: normal;
+      text-decoration: underline;
+    }
+  }
+
+  .accreditation__explanation {
+    @include small-font-mixin();
+  }
+}
 
 
 @media only screen and (min-width: 770px) {
-    .accreditation__block {
-        .accreditation__info {
-            background-color: $ice-blue;
-        }
-
-        .accreditation__overview {
-
-            text-align: center;
-            border: solid 3px $duck-egg-blue;
-
-            .accreditation__overview-lead {
-                font-family: 'Nunito Sans', sans-serif;
-                font-size: 1.75rem;
-                font-weight: normal;
-                color: #000000;
-                text-decoration: none;
-            }
-
-            .accreditation__overview-sublead {
-              font-family: 'Nunito Sans', sans-serif;
-              font-size: 1rem;
-              font-weight: normal;
-              color: $brownish-grey;
-              text-decoration: none;
-            }
-
-            a {
-              font-family: 'Nunito Sans', sans-serif;
-              font-size: 1rem;
-              font-weight: normal;
-              text-decoration: underline;
-              color: $dark-green-blue;
-            }
-        }
-        .accreditation__heading {
-            font-size: 2rem;
-        }
-
-
-        .accreditation__body {
-          @include mobile-body-font-mixin();
-          font-family: 'Nunito Sans', sans-serif;
-          font-weight: normal;
-          font-size: 1rem;
-          color: $brownish-grey;
-
-          a {
-            color: $dark-green-blue;
-            font-weight: normal;
-            text-decoration: underline;
-          }
-        }
+  .accreditation__block {
+    .accreditation__info {
+      background-color: $box-background;
+      margin-bottom: 20px;
+      border-radius: 8px;
     }
+
+    .accreditation__overview {
+
+      text-align: center;
+      border: solid 1px $royal-blue;
+
+      .accreditation__overview-lead {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 1.75rem;
+        font-weight: normal;
+        color: $royal-blue;
+        text-decoration: none;
+      }
+
+      .accreditation__overview-sublead {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: $royal-blue;
+        text-decoration: none;
+      }
+
+      a {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        text-decoration: underline;
+        color: $royal-blue;
+      }
+    }
+
+    .accreditation__heading {
+      font-size: 2rem;
+    }
+
+
+    .accreditation__body {
+      @include mobile-body-font-mixin();
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: normal;
+      font-size: 1rem;
+      color: $royal-blue;
+
+      a {
+        color: $royal-blue;
+        font-weight: normal;
+        text-decoration: underline;
+      }
+    }
+  }
 }

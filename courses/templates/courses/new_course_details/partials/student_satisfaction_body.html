@@ -126,7 +126,7 @@
                         {% if overall_stats.satisfaction_stats.wellbeing_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                                 <!-- Mental wellbeing services box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Mental wellbeing services" q1=overall_stats.satisfaction_stats.question_26 %}
+                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="mental_wellbeing" q1=overall_stats.satisfaction_stats.question_26 %}
                             </div>
                         {% endif %}
 
@@ -134,12 +134,12 @@
                         {% if course.country.code == "XF" %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                                 <!-- freedom of expression (england) box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Freedom of expression" q1=question_stats.question_27 description="free_to_express" no_data_key="no_data_available" %}
+                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="freedom_of_expression" q1=question_stats.question_27 description="free_to_express" no_data_key="no_data_available" %}
                             </div>
                         {% else %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                                <!-- freedom of expression (not england) box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Freedom of expression" q1=question_stats.question_27 description="" no_data_key="no_data_ni_scot_wales" %}
+                                <!-- freedom of expression (england) box-->
+                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="freedom_of_expression" q1=question_stats.question_27 description="" no_data_key="no_data_ni_scot_wales" %}
                             </div>
                         {% endif %}
                     {% endif %}

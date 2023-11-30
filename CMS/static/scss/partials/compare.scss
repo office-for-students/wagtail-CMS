@@ -239,6 +239,7 @@
 
 #sticky_nav_course_detail{
     z-index: 10;
+    background-color: #0A1D42 !important;
 
     .nav-item.nav-link.scrollto {
         font-size:1rem;
@@ -256,7 +257,6 @@
     .navbar-toggler .navbar-dark{
         border:none!important;
     }
-    background-color: #0A1D42 !important;
   
     .navbar .collapse {
         visibility: hidden;

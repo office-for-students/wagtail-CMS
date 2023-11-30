@@ -187,7 +187,8 @@
           margin-left: auto;
           font-family: 'Nunito Sans', sans-serif;
           font-size: 1rem;
-          color: white;
+          //color: white; change back to this once leo banner is gone
+          color: black;
           font-weight: normal;
         }
       }
@@ -766,7 +767,7 @@
         .course-detail__nav-control {
           @include xs-heading-mixin();
           color: $gradient-light-green;
-          top: 135px;
+          //top: 135px; change back to this once leo banner is gone
 
           .course-detail__nav-control-icon {
             height: 16px;

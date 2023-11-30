@@ -5,7 +5,7 @@
     <div class="tef-images">
         <div style="min-width: 35%;">
             {% with image_copy=tef.tef_image.1 image=tef.tef_image.0 %}
-                <img src="{% static image %}" alt="{{ image_copy }}" title="{{ image_copy }}">
+                <img class="tef-logo" src="{% static image %}" alt="{{ image_copy }}" title="{{ image_copy }}">
             {% endwith %}
         </div>
         <p>{{ tef.head_copy}}</p>
