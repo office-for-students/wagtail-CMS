@@ -307,7 +307,11 @@
                     <h4 class="earnings-sector-field earnings-after-course-stat-small pt-1 text-left mb-3">
                         {% if salary_index == 0 %}
                             {% get_salary_from_index objs=course_details.go_salaries_inst index=salary_index as wee %}
-                             {% replace_graduate_intro wee.aggregation_year as year%}
+                            {% if wee.aggregation_year == None %}
+                                    {% replace_graduate_intro "2020-21" as year %}
+                            {% else %}
+                                    {% replace_graduate_intro wee.aggregation_year as year %}
+                            {% endif %}
                             {% brackets_replace_year block.value.after_fifteen_months_data_source|safe year  as subbed_text%}
                             {{ subbed_text | safe }}
                         {% elif salary_index == 1 %}
