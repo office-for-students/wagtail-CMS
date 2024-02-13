@@ -1344,8 +1344,8 @@ DICT = {
         "en": "Unemployed - not employed since graduation"
     },
     "unemp_prev_emp_since_grad": {
-        "cy": "Yn ddi-waith - yn gweithio neun astudio cyn hynny",
-        "en": "Unemployed – previously working or studying"
+        "cy": "Yn ddi-waith - yn astudio cyn hynny",
+        "en": "Unemployed – previously studying"
     },
     "unemployed": {
         "cy": "Yn ddi-waith",
