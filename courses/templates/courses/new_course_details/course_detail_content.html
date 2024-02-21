@@ -2,17 +2,17 @@
 {% load discover_uni_tags %}
 
 {% include './partials/sticky_header.html' with sections=page.accordions %}
-{% if not course.country.code == "XG" %}
-    <div>
-        <p class="leo-banner px-4" role="banner">
-            {% get_translation key='leo3_banner_anticipate_change' language=page.get_language %} <a
-                href="{% if page.is_english %}/about-our-data/#longitudinal_education_outcomes_dataset{% else %}
-    /cy/ynglŷn-ân-data-about-our-data-cy/#set_ddata_canlyniadau_addysg_hydredol{% endif %}" title="read more"><span
-                class="leo-banner__read_more">{% get_translation key='read_more' language=page.get_language %}</span>
-        </a>
-        </p>
-    </div>
-{% endif %}
+{#{% if not course.country.code == "XG" %}#}
+{#    <div>#}
+{#        <p class="leo-banner px-4" role="banner">#}
+{#            {% get_translation key='leo3_banner_anticipate_change' language=page.get_language %} <a#}
+{#                href="{% if page.is_english %}/about-our-data/#longitudinal_education_outcomes_dataset{% else %}#}
+{#    /cy/ynglŷn-ân-data-about-our-data-cy/#set_ddata_canlyniadau_addysg_hydredol{% endif %}" title="read more"><span#}
+{#                class="leo-banner__read_more">{% get_translation key='read_more' language=page.get_language %}</span>#}
+{#        </a>#}
+{#        </p>#}
+{#    </div>#}
+{#{% endif %}#}
 <div class="course-detail comparison-course-area px-xs-1"
      data-courseidentifier="{{ course.institution.pub_ukprn }}/{{ course.kis_course_id }}/{{ course.mode.label }}"
      data-coursename="{{ course.display_title }}" data-courseid="{{ course.kis_course_id }}"

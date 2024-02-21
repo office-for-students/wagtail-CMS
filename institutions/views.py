@@ -192,7 +192,7 @@ def generate_tef_context(institution, language, status):
 
 
 def create_linked_institution(name, url) -> str:
-    return f'<a href="{url}" style="all:unset; text-decoration:underline;" target="_blank" alt="Link to institution {name}, opens in new tab">{name}</a>'
+    return f'<a href="{url}" style="all:unset; text-decoration:underline; cursor:pointer; font-weight:700;" target="_blank" alt="Link to institution {name}, opens in new tab">{name}</a>'
 
 
 def create_affiliate_copy(institution, language, affiliates, institution_name) -> str:
