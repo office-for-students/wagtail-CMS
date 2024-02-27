@@ -591,11 +591,11 @@ STATISTICS = {
         "cy": "Ar y cyfan, rwyf yn fodlon ar safon y cwrs.",
         "en": "Overall I am satisfied with the quality of the course."
     },
-    "mental_wellbeing":{
+    "mental_wellbeing": {
         "cy": "Llesiant meddwl",
         "en": "Mental wellbeing"
     },
-    "freedom_of_expression":{
+    "freedom_of_expression": {
         "cy": "Rhyddid mynegiant",
         "en": "Freedom of expression"
     },
@@ -616,12 +616,12 @@ STATISTICS = {
         "cy": "Gweld asesiad TEF y sefydliad hwn"
     },
     "participated_in_tef_pending": {
-        "en": "This institution's TEF outcomes are 'pending' as they are still being considered. The outcomes will be published shortly after they are confirmed. <br><br>In the meantime, you may wish to find out more about this institution on the OfS Register",
-        "cy": "Mae canlyniadau TEF y sefydliad hwn 'yn yr arfaeth' gan eu bod yn dal i gael eu hystyried. Bydd y canlyniadau yn cael eu cyhoeddi'n fuan wedi iddynt gael eu cadarnhau. Yn y cyfamser, efallai yr hoffech gael rhagor o wybodaeth am y sefydliad hwn ar Gofrestr y Swyddfa Fyfyrwyr"
+        "en": "This institution's TEF outcomes are 'pending' as they are still being considered. The outcomes will be published shortly after they are confirmed. <br><br>In the meantime, you may wish to find out more about this institution on the <a style='all:unset; text-decoration:underline; cursor:pointer; font-weight: 700;' target='_blank' href='https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/' title='Link to OFS Register'>OfS Register.</a>",
+        "cy": "Mae canlyniadau TEF y sefydliad hwn 'yn yr arfaeth' gan eu bod yn dal i gael eu hystyried. Bydd y canlyniadau yn cael eu cyhoeddi'n fuan wedi iddynt gael eu cadarnhau. Yn y cyfamser, efallai yr hoffech gael rhagor o wybodaeth am y sefydliad hwn ar <a style='all:unset; text-decoration:underline; cursor:pointer; font-weight: 700;' target='_blank' href='https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/' title='Link to OFS Register'>Gofrestr y Swyddfa Fyfyrwyr</a>"
     },
     "participated_in_tef_excluded": {
-        "en": "This university/college does not hold a current TEF award.  For some institutions in England TEF is optional or does not apply.  All higher education institutions are required to meet the standards of their qualifications and the quality of the academic experience provided to students as required by the relevant higher education funding or regulatory body.<br><br>You may find more information about this university/college on the <a style='all:unset; text-decoration:underline;' target='_blank' href='https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/' tile='Link to OFS Register'>OfS Register.</a>",
-        "cy": "Nid oes gan y brifysgol/coleg hon ddyfarniad TEF cyfredol. I rai sefydliadau yn Lloegr mae TEF yn ddewisol neu nid yw'n berthnasol. Mae'n ofynnol i bob sefydliad addysg uwch fodloni safonau eu cymwysterau ac ansawdd y profiad academaidd a ddarperir i fyfyrwyr fel sy'n ofynnol gan y corff cyllido addysg uwch neu reoleiddio perthnasol.<br><br>Efallai y byddwch yn dod o hyd i ragor o wybodaeth am y brifysgol/coleg hon ar <a style='all:unset; text-decoration:underline;' target='_blank' href='https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/' tile='Link to OFS Register'>Gofrestr y Swyddfa Myfyrwyr.</a>"
+        "en": "This university/college does not hold a current TEF award.  For some institutions in England TEF is optional or does not apply.  All higher education institutions are required to meet the standards of their qualifications and the quality of the academic experience provided to students as required by the relevant higher education funding or regulatory body.<br><br>You may find more information about this university/college on the <a style='all:unset; text-decoration:underline; cursor:pointer; font-weight: 700;' target='_blank' href='https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/' title='Link to OFS Register'>OfS Register.</a>",
+        "cy": "Nid oes gan y brifysgol/coleg hon ddyfarniad TEF cyfredol. I rai sefydliadau yn Lloegr mae TEF yn ddewisol neu nid yw'n berthnasol. Mae'n ofynnol i bob sefydliad addysg uwch fodloni safonau eu cymwysterau ac ansawdd y profiad academaidd a ddarperir i fyfyrwyr fel sy'n ofynnol gan y corff cyllido addysg uwch neu reoleiddio perthnasol.<br><br>Efallai y byddwch yn dod o hyd i ragor o wybodaeth am y brifysgol/coleg hon ar <a style='all:unset; text-decoration:underline; cursor: pointer; font-weight: 700;' target='_blank' href='https://www.officeforstudents.org.uk/advice-and-guidance/the-register/the-ofs-register/#/' title='Link to OFS Register'>Gofrestr y Swyddfa Myfyrwyr.</a>"
     },
     "participated_in_tef_excluded_left": {
         "en": "You may find more information about this university/college on the OfS",
@@ -640,8 +640,15 @@ STATISTICS = {
         "cy": " ac ",
     },
     "": {
-        "en":"",
-        "cy":""
+        "en": "",
+        "cy": ""
+    },
+    "changed_nss": {
+        "en": "Please note: the National Student Survey results for this course were updated on 20th December 2023. They were first published in October 2023. The update was to correct an error in the processing of the data.",
+        "cy": "TODO"
+    },
+    "no_nss": {
+        "en": "Please note: the National Student Survey results for this course have been updated since they were first published in October 2023. The update was to correct an error in the processing of the data. This has resulted in survey data for this course no longer meeting publication thresholds.",
+        "cy": "TODO"
     }
-
 }

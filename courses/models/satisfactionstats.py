@@ -200,11 +200,20 @@ class SatisfactionStatistics:
         if not has_data:
             return unavail_dict["no-data"][str(unavail_code)]
         if unavail_code == 0:
-            unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)][resp]
-            new_unavail = unavail.replace("[Subject]", subject)
-            return new_unavail
+            try:
+                unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)][resp]
+                new_unavail = unavail.replace("[Subject]", subject)
+                return new_unavail
+            except KeyError:
+                unavail = "The data displayed is from students on this and other courses."
+                return unavail
         if unavail_code == 1 or unavail_code == 2:
-            unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)]
-            new_unavail = unavail.replace("[Subject]", subject)
-            return new_unavail
+            try:
+                unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)]
+                new_unavail = unavail.replace("[Subject]", subject)
+                return new_unavail
+            except KeyError:
+                unavail = "The data displayed is from students on this and other courses."
+                return unavail
+
 

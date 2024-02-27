@@ -1,8 +1,8 @@
 import json
 import string
+import csv
 from typing import List
 from urllib.parse import urlencode
-
 from django import template
 
 from CMS import translations
@@ -221,3 +221,12 @@ def get_salary_from_index(objs: List, index: int):
         return objs[index]
     except IndexError:
         return objs[0]
+
+
+@register.simple_tag
+def get_banner_courses_affected(course):
+    with open("./csv_banner_courses.csv") as file:
+        data = csv.reader(file)
+        for row in data:
+            if row[2] == course:
+                return row[0]

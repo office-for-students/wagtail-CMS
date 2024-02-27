@@ -123,10 +123,10 @@
                             </div>
                         {% endif %}
 
-                        {% if overall_stats.satisfaction_stats.wellbeing_stats %}
+                        {% if overall_stats.satisfaction_stats.show_mental_wellbeing_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                                 <!-- Mental wellbeing services box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="mental_wellbeing" q1=overall_stats.satisfaction_stats.question_26 %}
+                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="mental_wellbeing" q1=overall_stats.satisfaction_stats.question_26 no_data_key="no_data_available" %}
                             </div>
                         {% endif %}
 

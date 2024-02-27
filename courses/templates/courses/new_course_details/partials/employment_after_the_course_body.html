@@ -124,15 +124,15 @@
                                     <div class="employment-after-course__chart discover-uni-chart bar my-2"
                                          data-value="{{ employment_stats.unemp_not_work_since_grad }}"
                                          data-label="employment-after-course-unemployed-never"
-                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='unemp_not_work_since_grad' language=page.get_language %}"
-                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='unemp_not_work_since_grad' language=page.get_language %}">
+                                         data-title="{% get_translation key='after_course_graph_title' language=page.get_language %} {% get_translation key='unemployed' language=page.get_language %}"
+                                         data-desc="{% get_translation key='after_course_graph_desc' language=page.get_language %} {% get_translation key='unemployed' language=page.get_language %}">
                                         <div class="row d-flex justify-content-between">
                                             <div class="col-lg-7 order-md-1 order-lg-2 text-lg-right text-left text-lg-right">
                                                 {% include 'courses/new_course_details/partials/bar_chart.html' %}
                                             </div>
                                             <div class="col-lg-5 order-md-2 order-lg-1 text-left text-lg-left">
                                                 <label class="employment-after-course__chart-label"
-                                                       aria-hidden="true">{% get_translation key='unemp_not_work_since_grad' language=page.get_language %}</label>
+                                                       aria-hidden="true">{% get_translation key='unemployed' language=page.get_language %}</label>
                                             </div>
                                         </div>
                                     </div>
