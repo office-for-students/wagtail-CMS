@@ -591,11 +591,11 @@ STATISTICS = {
         "cy": "Ar y cyfan, rwyf yn fodlon ar safon y cwrs.",
         "en": "Overall I am satisfied with the quality of the course."
     },
-    "mental_wellbeing":{
+    "mental_wellbeing": {
         "cy": "Llesiant meddwl",
         "en": "Mental wellbeing"
     },
-    "freedom_of_expression":{
+    "freedom_of_expression": {
         "cy": "Rhyddid mynegiant",
         "en": "Freedom of expression"
     },
@@ -640,8 +640,15 @@ STATISTICS = {
         "cy": " ac ",
     },
     "": {
-        "en":"",
-        "cy":""
+        "en": "",
+        "cy": ""
+    },
+    "changed_nss": {
+        "en": "Please note: the National Student Survey results for this course were updated on 20th December 2023. They were first published in October 2023. The update was to correct an error in the processing of the data.",
+        "cy": "TODO"
+    },
+    "no_nss": {
+        "en": "Please note: the National Student Survey results for this course have been updated since they were first published in October 2023. The update was to correct an error in the processing of the data. This has resulted in survey data for this course no longer meeting publication thresholds.",
+        "cy": "TODO"
     }
-
 }
