@@ -4,7 +4,7 @@
 {% include './partials/sticky_header.html' with sections=page.accordions %}
 
 <!--Informational banner-->
-{#{% include 'courses/new_course_details/partials/course_detail_information_banner.html' %}#}
+{% include 'courses/new_course_details/partials/course_detail_information_banner.html' %}
 
 <div class="course-detail comparison-course-area px-xs-1"
      data-courseidentifier="{{ course.institution.pub_ukprn }}/{{ course.kis_course_id }}/{{ course.mode.label }}"
