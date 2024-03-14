@@ -8,13 +8,15 @@
         <div class="box-container">
             <h3>{% get_translation key="course_data_summary" language=page.get_language %}</h3>
             <div class="box-row">
+            <!--box one-->
                 {% if course.go_salaries_inst.0.med or course.leo3_salaries_inst.0.med %}
                     {% get_translation key="course_details_summary_box_source_grad" language=page.get_language as source %}
                     {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_average_earnings_box.html' with amount=course.go_salaries_inst.0.med|intcomma leo3_amount=course.leo3_salaries_inst.0.med|intcomma description="average_earnings_course_overview_2a" leo3_description="average_earnings_course_overview_2b" %}
                 {% endif %}
+            <!--box two-->
                 {% if course.employment_stats.0.display_stats %}
                     {% if course.employment_stats.0.work_and_or_study %}
-                        {% if course.satisfaction_stats.0.aggregation_level == 14 or course.satisfaction_stats.0.aggregation_level == 24  %}
+                        {% if course.employment_stats.0.aggregation_level == 14 or course.employment_stats.0.aggregation_level == 24 %}
                             {% with course.display_title as subject_label %}
                                 {% get_translation key="course_details_summary_box_source_grad" language=page.get_language as source %}
                                 {% get_translation key="average_earnings_course_overview_2a" language=page.get_language as first_index %}
@@ -29,18 +31,29 @@
                         {% endif %}
                     {% endif %}
                 {% endif %}
+            <!--box three-->
                 {% if course.graduate_perceptions.0.go_work_mean %}
                     {% if course.graduate_perceptions.0.go_work_skills %}
-                        {% with course.graduate_perceptions.0.display_subject_name as subject_label %}
-                            {% get_translation key="course_details_summary_box_source_grad" language=page.get_language as source %}
-                            {% get_translation key="average_earnings_course_overview_2a" language=page.get_language as first_index %}
-                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.graduate_perceptions.0.go_work_skills description="are_using_what_they_learnt" %}
-                        {% endwith %}
+                        {% if course.graduate_perceptions.0.aggregation_level == 14 or course.graduate_perceptions.0.aggregation_level == 24 %}
+                            {% with course.display_title as subject_label %}
+                                {% get_translation key="course_details_summary_box_source_grad" language=page.get_language as source %}
+                                {% get_translation key="average_earnings_course_overview_2a" language=page.get_language as first_index %}
+                                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.graduate_perceptions.0.go_work_skills description="are_using_what_they_learnt" %}
+                            {% endwith %}
+                        {% else %}
+                            {% with course.graduate_perceptions.0.display_subject_name as subject_label %}
+                                {% get_translation key="course_details_summary_box_source_grad" language=page.get_language as source %}
+                                {% get_translation key="average_earnings_course_overview_2a" language=page.get_language as first_index %}
+                                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.graduate_perceptions.0.go_work_skills description="are_using_what_they_learnt" %}
+                            {% endwith %}
+                        {% endif %}
                     {% endif %}
                 {% endif %}
             </div>
 
             <div class="box-row">
+            <!--box four-->
+                <!--england-->
                 {% if course.country.code == "XF" and course.satisfaction_stats.0.question_9.agree_or_strongly_agree %}
                     {% if course.satisfaction_stats.0.aggregation_level == 14 or course.satisfaction_stats.0.aggregation_level == 24 %}
                         {% with course.display_title as subject_label %}
@@ -57,7 +70,7 @@
                             {% endwith %}
                         {% endwith %}
                     {% endif %}
-
+                    <!--not england-->
                 {% elif course.country.code != "XF" and course.satisfaction_stats.0.question_28.agree_or_strongly_agree %}
                     {% if course.satisfaction_stats.0.aggregation_level == 14 or course.satisfaction_stats.0.aggregation_level == 24 %}
                         {% with course.display_title as subject_label %}
@@ -71,6 +84,7 @@
                         {% endwith %}
                     {% endif %}
                 {% endif %}
+             <!--box five-->
                 {% if course.satisfaction_stats.0.question_23.agree_or_strongly_agree %}
                     {% if course.satisfaction_stats.0.aggregation_level == 14 or course.satisfaction_stats.0.aggregation_level == 24 %}
                         {% with course.display_title as subject_label %}
@@ -85,6 +99,7 @@
                     {% endif %}
 
                 {% endif %}
+            <!--box six-->
                 {% if course.satisfaction_stats.0.question_16.agree_or_strongly_agree %}
                     {% if course.satisfaction_stats.0.aggregation_level == 14 or course.satisfaction_stats.0.aggregation_level == 24 %}
                         {% with course.display_title as subject_label %}
@@ -97,7 +112,7 @@
                             {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_16.agree_or_strongly_agree description="question_16" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
                         {% endwith %}
                     {% endif %}
-               {% endif %}
+                {% endif %}
             </div>
         </div>
     </div>
