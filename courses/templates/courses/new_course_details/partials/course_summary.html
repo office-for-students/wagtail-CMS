@@ -2,44 +2,103 @@
 {% load humanize %}
 
 {% if has_summary and not course.has_multiple_subject_names %}
-<div class="course-detail__course-summary" style="background-image: url({% static 'images/course-detail-background.png' %});">
+    <div class="course-detail__course-summary"
+         style="background-image: url({% static 'images/course-detail-background.png' %});">
 
-    <div class="box-container">
-        <h3>{% get_translation key="course_data_summary" language=page.get_language %}</h3>
-        <div class="box-row">
-            {% if course.go_salaries_inst.0.med or course.leo3_salaries_inst.0.med %}
-                {% get_translation key="course_details_summary_box_source_grad" language=page.get_language as source %}
-                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_average_earnings_box.html' with amount=course.go_salaries_inst.0.med|intcomma leo3_amount=course.leo3_salaries_inst.0.med|intcomma description="average_earnings_course_overview_2a" leo3_description="average_earnings_course_overview_2b" %}
-            {% endif %}
-            {% if course.employment_stats.0.in_work_or_study %}
-                {% get_translation key="course_details_summary_box_source_grad" language=page.get_language as source %}
-                {% get_translation key="average_earnings_course_overview_2a" language=page.get_language as first_index %}
-                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.employment_stats.0.in_work_or_study description="go_on_to_work_study" title="employment_course_overview_1" %}
-            {% endif %}
-            {% if course.graduate_perceptions.0.go_work_skills %}
-                {% get_translation key="course_details_summary_box_source_grad" language=page.get_language as source %}
-                {% get_translation key="average_earnings_course_overview_2a" language=page.get_language as first_index %}
-                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.graduate_perceptions.0.go_work_skills description="are_using_what_they_learnt" %}
-            {% endif %}
-        </div>
+        <div class="box-container">
+            <h3>{% get_translation key="course_data_summary" language=page.get_language %}</h3>
+            <div class="box-row">
+                {% if course.go_salaries_inst.0.med or course.leo3_salaries_inst.0.med %}
+                    {% get_translation key="course_details_summary_box_source_grad" language=page.get_language as source %}
+                    {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_average_earnings_box.html' with amount=course.go_salaries_inst.0.med|intcomma leo3_amount=course.leo3_salaries_inst.0.med|intcomma description="average_earnings_course_overview_2a" leo3_description="average_earnings_course_overview_2b" %}
+                {% endif %}
+                {% if course.employment_stats.0.display_stats %}
+                    {% if course.employment_stats.0.work_and_or_study %}
+                        {% if course.satisfaction_stats.0.aggregation_level == 14 or course.satisfaction_stats.0.aggregation_level == 24  %}
+                            {% with course.display_title as subject_label %}
+                                {% get_translation key="course_details_summary_box_source_grad" language=page.get_language as source %}
+                                {% get_translation key="average_earnings_course_overview_2a" language=page.get_language as first_index %}
+                                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.employment_stats.0.in_work_or_study description="go_on_to_work_study" title="employment_course_overview_1" %}
+                            {% endwith %}
+                        {% else %}
+                            {% with course.satisfaction_stats.0.display_subject_name as subject_label %}
+                                {% get_translation key="course_details_summary_box_source_grad" language=page.get_language as source %}
+                                {% get_translation key="average_earnings_course_overview_2a" language=page.get_language as first_index %}
+                                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.employment_stats.0.in_work_or_study description="go_on_to_work_study" title="employment_course_overview_1" %}
+                            {% endwith %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if course.graduate_perceptions.0.go_work_mean %}
+                    {% if course.graduate_perceptions.0.go_work_skills %}
+                        {% with course.graduate_perceptions.0.display_subject_name as subject_label %}
+                            {% get_translation key="course_details_summary_box_source_grad" language=page.get_language as source %}
+                            {% get_translation key="average_earnings_course_overview_2a" language=page.get_language as first_index %}
+                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.graduate_perceptions.0.go_work_skills description="are_using_what_they_learnt" %}
+                        {% endwith %}
+                    {% endif %}
+                {% endif %}
+            </div>
 
-        <div class="box-row">
-            {% if course.country.code == "XF" and course.satisfaction_stats.0.question_9.agree_or_strongly_agree %}
-                {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
-                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_9.agree_or_strongly_agree description="question_9" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
-            {% elif course.country.code != "XF" and course.satisfaction_stats.0.question_28.agree_or_strongly_agree %}
-                {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
-                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_28.agree_or_strongly_agree title="student_satisfaction" description="question_28" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
-            {% endif %}
-            {% if course.satisfaction_stats.0.question_23.agree_or_strongly_agree %}
-                {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
-                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_23.agree_or_strongly_agree description="question_23" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
-            {% endif %}
-            {% if course.satisfaction_stats.0.question_16.agree_or_strongly_agree %}
-                {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
-                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_16.agree_or_strongly_agree description="question_16" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
-            {% endif %}
+            <div class="box-row">
+                {% if course.country.code == "XF" and course.satisfaction_stats.0.question_9.agree_or_strongly_agree %}
+                    {% if course.satisfaction_stats.0.aggregation_level == 14 or course.satisfaction_stats.0.aggregation_level == 24 %}
+                        {% with course.display_title as subject_label %}
+                            {% with course.satisfaction_stats.0.question_9.agree_or_strongly_agree as percent %}
+                                {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
+                                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with description="question_9" unavailable=course.satisfaction_stats.0.unavailable_reason_heading %}
+                            {% endwith %}
+                        {% endwith %}
+                    {% else %}
+                        {% with course.satisfaction_stats.0.display_subject_name as subject_label %}
+                            {% with course.satisfaction_stats.0.question_9.agree_or_strongly_agree as percent %}
+                                {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
+                                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_9.agree_or_strongly_agree description="question_9" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
+                            {% endwith %}
+                        {% endwith %}
+                    {% endif %}
+
+                {% elif course.country.code != "XF" and course.satisfaction_stats.0.question_28.agree_or_strongly_agree %}
+                    {% if course.satisfaction_stats.0.aggregation_level == 14 or course.satisfaction_stats.0.aggregation_level == 24 %}
+                        {% with course.display_title as subject_label %}
+                            {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
+                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_28.agree_or_strongly_agree title="student_satisfaction" description="question_28" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
+                        {% endwith %}
+                    {% else %}
+                        {% with course.satisfaction_stats.0.display_subject_name as subject_label %}
+                            {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
+                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_28.agree_or_strongly_agree title="student_satisfaction" description="question_28" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
+                        {% endwith %}
+                    {% endif %}
+                {% endif %}
+                {% if course.satisfaction_stats.0.question_23.agree_or_strongly_agree %}
+                    {% if course.satisfaction_stats.0.aggregation_level == 14 or course.satisfaction_stats.0.aggregation_level == 24 %}
+                        {% with course.display_title as subject_label %}
+                            {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
+                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_23.agree_or_strongly_agree description="question_23" unavailable=course.satisfaction_stats.0.unavailable_reason_heading %}
+                        {% endwith %}
+                    {% else %}
+                        {% with course.satisfaction_stats.0.display_subject_name as subject_label %}
+                            {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
+                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_23.agree_or_strongly_agree description="question_23" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
+                        {% endwith %}
+                    {% endif %}
+
+                {% endif %}
+                {% if course.satisfaction_stats.0.question_16.agree_or_strongly_agree %}
+                    {% if course.satisfaction_stats.0.aggregation_level == 14 or course.satisfaction_stats.0.aggregation_level == 24 %}
+                        {% with course.display_title as subject_label %}
+                            {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
+                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_16.agree_or_strongly_agree description="question_16" unavailable=course.satisfaction_stats.0.unavailable_reason_heading %}
+                        {% endwith %}
+                    {% else %}
+                        {% with course.satisfaction_stats.0.display_subject_name as subject_label %}
+                            {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
+                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_16.agree_or_strongly_agree description="question_16" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label %}
+                        {% endwith %}
+                    {% endif %}
+               {% endif %}
+            </div>
         </div>
     </div>
-</div>
 {% endif %}
