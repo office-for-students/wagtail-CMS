@@ -1,19 +1,10 @@
 {% load discover_uni_tags %}
 {% get_banner_courses_affected course=course.kis_course_id as course_affected %}
-
-{% if course_affected %}
+{% if course_affected == True %}
     <div>
         <p class="leo-banner px-4" role="banner">
-            {% if course_affected == "2" %}
-                {% get_translation key='changed_nss' language=page.get_language %}
-            {% elif course_affected == "1" %}
-                {% get_translation key='no_nss' language=page.get_language %}
-            {% endif %}
-            <a
-                    href="{% if page.is_english %}/about-our-data/{% else %}
-    /cy/ynglŷn-ân-data-about-our-data-cy/{% endif %}" title="read more"><span
-                    class="leo-banner__read_more">{% get_translation key='read_more' language=page.get_language %}</span>
-            </a>
+            {% get_translation key='changed_nss' language=page.get_language %}
+            <a href="{% if page.is_english %}/about-our-data/#the_national_student_survey{% else %}/cy/ynglŷn-ân-data-about-our-data-cy/#arolwg_cenedlaethol_o_fyfyrwyr{% endif %}" title="read more"><span class="leo-banner__read_more">{% get_translation key='read_more' language=page.get_language %}</span></a>
         </p>
     </div>
 {% endif %}

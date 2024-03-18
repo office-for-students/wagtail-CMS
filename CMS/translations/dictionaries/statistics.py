@@ -644,11 +644,7 @@ STATISTICS = {
         "cy": ""
     },
     "changed_nss": {
-        "en": "Please note: the National Student Survey results for this course were updated on 20th December 2023. They were first published in October 2023. The update was to correct an error in the processing of the data.",
-        "cy": "TODO"
-    },
-    "no_nss": {
-        "en": "Please note: the National Student Survey results for this course have been updated since they were first published in October 2023. The update was to correct an error in the processing of the data. This has resulted in survey data for this course no longer meeting publication thresholds.",
-        "cy": "TODO"
+        "en": "Please note: the National Student Survey results for this course were updated on 20th December 2023. They were first published in October 2023. The update was to correct an error in the processing of the data. This correction resulted in one or more of the NSS question ratings changing for this course.",
+        "cy": "Sylwer: cafodd canlyniadau’r Arolwg Cenedlaethol o Fyfyrwyr ar gyfer y cwrs yma eu diweddaru ar 20 Rhagfyr 2023. Cawsant eu cyhoeddi gyntaf ym mis Hydref 2023. Diben y diweddariad oedd cywiro gwall yn y modd y proseswyd y data. O ganlyniad i’r cywiriad hwn fe newidiodd y sgôr a roddwyd i’r cwrs yma yn un neu fwy o gwestiynau’r NSS."
     }
 }

@@ -8,7 +8,8 @@
     <p class="box-subtitle">{% get_translation key=description language=page.get_language %}</p>
     <!--add chart-->
     <p class="box-small">
-        {% include 'courses/new_course_details/partials/summary_boxes/summary_source_grad.html' %}
+        {% include 'courses/new_course_details/partials/summary_boxes/summary_source_grad.html' with subject=subject_label %}
+
     </p>
 </div>
 {% else %}

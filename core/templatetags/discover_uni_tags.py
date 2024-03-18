@@ -228,5 +228,5 @@ def get_banner_courses_affected(course):
     with open("./csv_banner_courses.csv") as file:
         data = csv.reader(file)
         for row in data:
-            if row[2] == course:
-                return row[0]
+            if row[1] == course:
+                return True
