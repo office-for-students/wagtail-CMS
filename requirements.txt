@@ -48,7 +48,7 @@ psycopg2-binary==2.9.3
 pyClamd==0.4.0
 pycodestyle==2.5.0
 pyflakes==2.1.1
-pymongo==3.11.3
+pymongo==4.6.3
 python-dateutil==2.8.1
 pytz==2022.1
 rcssmin==1.1.0
