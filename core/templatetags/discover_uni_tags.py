@@ -223,10 +223,10 @@ def get_salary_from_index(objs: List, index: int):
         return objs[0]
 
 
-@register.simple_tag
-def get_banner_courses_affected(course):
-    with open("./csv_banner_courses.csv") as file:
-        data = csv.reader(file)
-        for row in data:
-            if row[1] == course:
-                return True
+# @register.simple_tag
+# def get_banner_courses_affected(course):
+#     with open("./csv_banner_courses.csv") as file:
+#         data = csv.reader(file)
+#         for row in data:
+#             if row[1] == course:
+#                 return True
