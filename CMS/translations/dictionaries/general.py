@@ -1594,8 +1594,8 @@ DICT = {
         'cy': 'Chwilio am gwrs'
     },
     'more_about_medr': {
-        'en': "Find out more about medr here",
-        'cy': "Darganfyddwch fwy am medr yma"
+        'en': "Find out more about Medr here",
+        'cy': "Darganfyddwch fwy am Medr yma"
     },
     'medr_url': {
         'en': "https://www.medr.cymru/",
