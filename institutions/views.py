@@ -123,11 +123,11 @@ def get_tef_body_copy_context(institution, language, status, tef_context, affili
         tef_context["right_button"] = term_for_key("find_out_more_about_tef", language=language)
         tef_context["right_link"] = "https://discoveruni.gov.uk/how-do-i-choose-course/quality-and-standards/#teaching_excellence_and_student_outcomes_framework_(tef)"
     if status == WALES_INSTITUTIONS:
-        tef_context["left_copy"] = term_for_key("hefcw_explanation", language=language)
-        tef_context["left_button"] = term_for_key("more_about_hefcw", language=language)
-        tef_context["left_link"] = term_for_key("hefcw_url", language=language)
+        tef_context["left_copy"] = term_for_key("medr_explanation", language=language)
+        tef_context["left_button"] = term_for_key("more_about_medr", language=language)
+        tef_context["left_link"] = term_for_key("medr_url", language=language)
         tef_context["right_copy"] = institution.qaa_report_type_string
-        tef_context["right_button"] = term_for_key("more_about_hefcw_tef_href", language=language)
+        tef_context["right_button"] = term_for_key("more_about_medr_tef_href", language=language)
         tef_context["right_link"] = institution.qaa_url
         tef_context["wales"] = "true"
     if status == SCOTTISH_INSTITUTIONS:
@@ -228,7 +228,7 @@ def get_logo_path(institution, status) -> Tuple[str, str]:
         return "images/tef_logo.svg", "Teaching Excellence Framework logo"
     elif status == WALES_INSTITUTIONS:
         # Wales
-        return "images/hefcw.svg", "Higher Education Funding Council for Wales logo"
+        return "images/medr.svg", "Medr logo"
     elif status == SCOTTISH_INSTITUTIONS:
         # Scotland
         return "images/sfc.svg", "Scottish Funding Council logo"
