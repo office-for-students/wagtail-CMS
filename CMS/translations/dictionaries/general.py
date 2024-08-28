@@ -1615,12 +1615,12 @@ DICT = {
         "cy":"Darperir y ddarpariaeth hon gan sefydliad sy'n ddarostyngedig i adolygiad sicrwydd ansawdd allanol"
     },
     "quality_enhancement_review":{
-        "en": "This institution is regulated by Medr, and is therefore subject to an external quality assurance review",
-        "cy": "Rheoleiddir y sefydliad hwn gan Medr, ac felly mae'n ddarostyngedig i adolygiad sicrwydd ansawdd allanol "
+        "en": "This institution is regulated by Medr, and is therefore subject to an external quality assurance review.",
+        "cy": "Rheoleiddir y sefydliad hwn gan Medr, ac felly mae'n ddarostyngedig i adolygiad sicrwydd ansawdd allanol."
     },
     "qaa_report_type_blank": {
-        "en": "This provision is awarded by an institution which is regulated by Medr, and is therefore subject to an external quality assurance review",
-        "cy": "Dyfernir y ddarpariaeth hon gan sefydliad a reoleiddir gan Medr, ac felly mae'n ddarostyngedig i adolygiad sicrwydd ansawdd allanol"
+        "en": "This provision is awarded by an institution which is regulated by Medr, and is therefore subject to an external quality assurance review.",
+        "cy": "Dyfernir y ddarpariaeth hon gan sefydliad a reoleiddir gan Medr, ac felly mae'n ddarostyngedig i adolygiad sicrwydd ansawdd allanol."
     },
 
     "medr_and_tef": {
