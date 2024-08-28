@@ -5,14 +5,16 @@
     <div class="tef-links">
 
         <div class="tef-breakdown">
-            <div class="tef-images" style="border: unset; margin: auto; {% if wales %} width: 90% {% endif %}">
+            <div class="tef-images" style="border: unset; margin: auto; {% if institution.pub_ukprn_country_code == "XI" %} width: 50% {% endif %}">
                 {% with image_copy=tef.tef_image.1 image=tef.tef_image.0 %}
                     <img src="{% static image %}" alt="{{ image_copy }}" title="{{ image_copy }}">
                 {% endwith %}
+            {% if tef.head_copy %}
                 <p>{{ tef.head_copy }}</p>
+            {% endif %}
             </div>
             {% if tef.left_copy %}
-                <p>{{ tef.left_copy | safe }}</p>
+                <p {% if institution.pub_ukprn_country_code == "XI" %}style="margin-top:0"{% endif %}>{{ tef.left_copy | safe }}</p>
             {% endif %}
             {% if tef.left_link %}
             <a class="tef-btn" target="_blank"
@@ -21,7 +23,11 @@
         </div>
         <div>
             {% if tef.right_copy %}
-                <p>{{ tef.right_copy | safe }}</p>
+                {% if institution.pub_ukprn_country_code == "XI" %}
+                    <p style="margin-top: 65px;">{{ tef.right_copy | safe }}</p>
+                {% else %}
+                    <p>{{ tef.right_copy | safe }}</p>
+                {% endif %}
             {% endif %}
             {% if tef.right_link %}
                 <a class="tef-btn" href="{{ tef.right_link }}"
