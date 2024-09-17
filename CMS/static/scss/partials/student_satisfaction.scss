@@ -151,8 +151,9 @@
     border-radius: 8px;
 
     .student-satisfaction__title-box {
-      background-color: $royal-blue;
-      color: white;
+      background-color: white;
+      color: $royal-blue;
+      flex-direction: column;
       text-align: center;
       display: flex;
       justify-content: center;
@@ -161,19 +162,23 @@
       margin: 8px;
       padding: 16px 0;
       width: 95%;
+      min-width: 242.34px;
 
-      h2 {
-        padding: 30px;
+
+      p {
+        padding: 15px;
       }
     }
 
     .one-box-title {
       height: 70px;
       width: 95%;
+
       h2 {
         padding: 10px;
       }
     }
+
     .fill-if-big {
       width: 100%;
     }
@@ -248,6 +253,7 @@
   }
   .student-satisfaction__title-box {
     padding: 16px;
+    min-width: 314.13px;
   }
   .student-satisfaction__block .student-satisfaction__data-group .student-satisfaction__charts .top-row, .student-satisfaction__block .student-satisfaction__data-group .student-satisfaction__charts .bottom-row {
     flex-direction: row;
@@ -459,7 +465,6 @@
     -webkit-overflow-scrolling: touch;
 
 
-
     .student-satisfaction__data-group:last-child {
       margin-right: 10px
     }
@@ -494,4 +499,23 @@
   .five-box-title {
     min-width: 242px;
   }
+}
+
+
+@media only screen and (min-width: 770px) and (max-width: 1100px) {
+    .student-satisfaction__block .student-satisfaction__data-group .student-satisfaction__title-box {
+      min-width: 264.67px;
+    }
+    .student-satisfaction__block .student-satisfaction__data-group .student-satisfaction__charts .student-satisfaction__chart-wrapper .student-satisfaction__chart .student-satisfaction__chart-title {
+      font-size: 1rem;
+    }
+  .box-wrapper {
+    padding: 7px;
+  }
+}
+
+@media only screen and (min-width: 1101px) {
+    .student-satisfaction__block .student-satisfaction__data-group .student-satisfaction__title-box {
+      min-width: 314.13px;
+    }
 }

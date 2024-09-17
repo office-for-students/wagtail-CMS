@@ -34,7 +34,7 @@ def get_accordion_dataset(title: str, dataset, call_to_action=List[Dict[Any, Dic
 
 def get_sub_satisfaction(language) -> List:
     list_sub_accordions = [
-        (translations.term_for_key(key="teaching_on_my_course", language=language), [1, 2, 3, 4]),
+        (translations.term_for_key(key="teaching", language=language), [1, 2, 3, 4]),
         (translations.term_for_key(key="learning_opportunities", language=language), [5, 6, 7, 8, 9]),
         (translations.term_for_key(key="assessment_and_feedback", language=language), [10, 11, 12, 13, 14]),
         (translations.term_for_key(key="academic_support", language=language), [15, 16]),
@@ -44,6 +44,18 @@ def get_sub_satisfaction(language) -> List:
         (translations.term_for_key(key="student_voice", language=language), [22, 23, 24, 25]),
         (translations.term_for_key(key="mental_wellbeing", language=language), [26]),
         (translations.term_for_key(key="freedom_of_expression", language=language), [27]),
+    ]
+    return list_sub_accordions
+
+def get_sub_overall_satisfaction() -> List:
+    list_sub_accordions = [
+        (gettext("teaching"), gettext('overall_teaching_on_my_course')),
+        (gettext("learning_opportunities"), gettext('overall_learning_opportunities')),
+        (gettext("assessment_and_feedback"), gettext('overall_assessment_and_feedback')),
+        (gettext("academic_support"), gettext('overall_academic_support')),
+        (gettext("organisation_and_management"), gettext('overall_organisation_and_management')),
+        (gettext("learning_resources"), gettext('overall_learning_resources')),
+        (gettext("student_voice"), gettext('overall_student_voice')),
     ]
     return list_sub_accordions
 
@@ -169,8 +181,8 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
         call_to_action=[
             dict(
                 show_more=dict(
-                    affirmative=translations.term_for_key(key="show_more", language=language),
-                    negative=translations.term_for_key(key="show_less", language=language),
+                    affirmative=translations.term_for_key(key="expand", language=language),
+                    negative=translations.term_for_key(key="minimise", language=language),
                 )
             )
         ]
@@ -187,6 +199,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             subjects=get_multiple_subjects(courses, ["satisfaction_stats"], language=language),
             dataset=get_details(SatisfactionSection, courses, language),
             sub_accordions=get_sub_accordion_dataset(courses, SubSatisfactionSection, get_sub_satisfaction, language),
+            overall_sub_accordions=get_sub_overall_satisfaction,
             change_point=4,
             source=(
                 translations.term_for_key(key="about_our_data_link", language=language),
