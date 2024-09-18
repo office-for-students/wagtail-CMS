@@ -1,3 +1,5 @@
+import {setDonuts} from './customDonut.js'
+
 class ScrollListener {
     lastActionPosition = 0
     actionAdjustment = 0
@@ -715,6 +717,7 @@ $(window).on('load', function () {
 
     showComparison(function (response, run_js = false) {
         document.getElementById("comparison-body").innerHTML = response;
+        setDonuts()
         if (run_js) {
             setupView();
             document.dispatchEvent(AccordionsEvent);

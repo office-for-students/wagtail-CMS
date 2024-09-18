@@ -1778,5 +1778,9 @@ OPTIONALS = {
         "en": "{}% were positive about student feedback being heard and acted on.",
         "cy": "Roedd gan {}% farn gadarnhaol ynglŷn â chlywed a gweithredu ar adborth myfyrwyr."
     },
+    'course_details': {
+        "en": "course details",
+        "cy": "Manylion y cwrs"
+    }
 
 }

@@ -394,6 +394,15 @@
         padding: 0;
         justify-content: space-evenly;
 
+          .box-link {
+          color: $royal-blue;
+          scroll-behavior: smooth;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+
         .box {
           display: flex;
           flex-direction: column;
@@ -424,9 +433,10 @@
           }
 
           .box-small {
-            font-size: 1.0625rem;
+            font-size: 1rem;
             margin: auto;
             text-align: center;
+            padding-top: 5px;
           }
         }
       }
@@ -1428,8 +1438,9 @@ div.course-detail.course-details-thin {
     padding: 10px 0;
   }
   .course-detail .course-detail__course-summary .box-container .box-row .box {
-    margin-bottom: 0;
-    margin-top: 0;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: 100%;
   }
   .section-scroll.course-detail {
     width: fit-content;

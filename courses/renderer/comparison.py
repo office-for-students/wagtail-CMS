@@ -47,15 +47,15 @@ def get_sub_satisfaction(language) -> List:
     ]
     return list_sub_accordions
 
-def get_sub_overall_satisfaction() -> List:
+def get_sub_overall_satisfaction(language) -> List:
     list_sub_accordions = [
-        (gettext("teaching"), gettext('overall_teaching_on_my_course')),
-        (gettext("learning_opportunities"), gettext('overall_learning_opportunities')),
-        (gettext("assessment_and_feedback"), gettext('overall_assessment_and_feedback')),
-        (gettext("academic_support"), gettext('overall_academic_support')),
-        (gettext("organisation_and_management"), gettext('overall_organisation_and_management')),
-        (gettext("learning_resources"), gettext('overall_learning_resources')),
-        (gettext("student_voice"), gettext('overall_student_voice')),
+        (translations.term_for_key(key="teaching", language=language), translations.term_for_key(key='overall_teaching_on_my_course', language=language)),
+        (translations.term_for_key(key="learning_opportunities", language=language), translations.term_for_key(key='overall_learning_opportunities', language=language)),
+        (translations.term_for_key(key="assessment_and_feedback", language=language), translations.term_for_key(key='overall_assessment_and_feedback', language=language)),
+        (translations.term_for_key(key="academic_support", language=language), translations.term_for_key(key='overall_academic_support', language=language)),
+        (translations.term_for_key(key="organisation_and_management", language=language), translations.term_for_key(key='overall_organisation_and_management', language=language)),
+        (translations.term_for_key(key="learning_resources", language=language), translations.term_for_key(key='overall_learning_resources', language=language)),
+        (translations.term_for_key(key="student_voice", language=language), translations.term_for_key(key='overall_student_voice', language=language)),
     ]
     return list_sub_accordions
 
@@ -199,7 +199,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
             subjects=get_multiple_subjects(courses, ["satisfaction_stats"], language=language),
             dataset=get_details(SatisfactionSection, courses, language),
             sub_accordions=get_sub_accordion_dataset(courses, SubSatisfactionSection, get_sub_satisfaction, language),
-            overall_sub_accordions=get_sub_overall_satisfaction,
+            overall_sub_accordions=get_sub_overall_satisfaction(language),
             change_point=4,
             source=(
                 translations.term_for_key(key="about_our_data_link", language=language),

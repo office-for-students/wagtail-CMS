@@ -1,0 +1,58 @@
+{% load static %}
+{% load i18n %}
+{% load static sass_tags wagtailcore_tags discover_uni_tags %}
+
+{% with dataset=accordion.dataset sub_accordions=accordion.sub_accordions overall=accordion.overall_sub_accordions unavailable=accordion.unavailable change_point=accordion.change_point %}
+    <div class="mb-3">
+        {% if accordion.guidance_information %}
+            <div class="guidance_box">
+                <p class="title">{% get_translation key='guidance_title' language=page.get_language %}</p>
+                {% autoescape off %}
+                    <div>
+                        <ul class="mt-3">
+                            {% for entry in accordion.guidance_information %}
+                                <li class="item">{{ entry }}</li>
+                            {% endfor %}
+                        </ul>
+                        <a class="link blue-text" href="{{ accordion.source.0 }}"
+                           target="_blank">{{ accordion.source.1 }}
+                            <img class="new_tab" src="/static/images/new_tab_icon.png"
+                                 alt={% get_translation key='open_tab' language=page.get_language %}>
+                        </a>
+                    </div>
+                {% endautoescape %}
+            </div>
+        {% endif %}
+        {% if accordion.subjects %}
+            {% include 'courses/partials/subject_selector.html' with subjects=accordion.subjects index=forloop.counter %}
+        {% endif %}
+        {% for item, value in dataset.items %}
+            {% if forloop.counter < change_point %}
+                <div class="comparison_row-yellow_background">
+                    {% if forloop.counter == 1 %}
+                        {% include 'courses/new_comparison/comparison_courses_row_donut.html' with title=value.title values=value.values header_font="header_font" mt="mt-3" %}
+                    {% else %}
+                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values mt="mt-2" %}
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="comparison_row-grey_background">
+                     {% include 'courses/partials/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% for sub_accordion in sub_accordions|slice:":6" %}
+        {% with identifier=sub_accordion.title|title|cut:" "|add:"-ac-" sub_count=forloop.counter0 %}
+            {% if accordion.title == "National Student Survey results" %}
+                {% with forloop.counter as index %}
+                    {% get_item_at_index lst=overall index=index as title %}
+                    {% get_item_at_index lst=overall index=index as subtitle %}
+                    {% include 'courses/new_comparison/accordion_block_donut.html' with title=title.0 subtitle=subtitle.1 index=index %}
+                {% endwith %}
+            {% else %}
+                {% include 'courses/new_comparison/accordion_block.html' %}
+            {% endif %}
+        {% endwith %}
+    {% endfor %}
+{% endwith %}

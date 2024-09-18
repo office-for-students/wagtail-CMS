@@ -70,7 +70,7 @@ def show_courses_selected_for_comparison(courses_list, request, language):
         courses_data=courses,
     )
 
-    return render_with_language_context(request, 'courses/comparison/comparison_has_courses.html', context, language)
+    return render_with_language_context(request, 'courses/new_comparison/comparison_has_courses.html', context, language)
 
 
 def compare_courses_body(request, language=enums.languages.ENGLISH):

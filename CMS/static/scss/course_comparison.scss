@@ -1,10 +1,11 @@
 @import '../../../CMS/static/scss/fonts';
 @import '../../../CMS/static/scss/variables';
 @import '../../../CMS/static/scss/partials/forms';
+//@import 'forms';
 
-*:focus {
-  outline: none;
-}
+//*:focus {
+//  outline: none;
+//}
 
 
 .comparison__xs-rotate {
@@ -12,7 +13,7 @@
 
   h3 {
     color: #1F283A;
-    font-family: "Nunito Sans", sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
 }
 
@@ -52,28 +53,26 @@ $widthOfNarrowArrow: 27px;
 
 .chevron {
   font-size: 1.25rem;
-  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .blue-text {
-  color: #308282;
+  color: $royal-blue;
   font-weight: bold;
+  text-decoration: underline;
+  font-size: 0.875rem;
 }
 
 #addCourses:hover {
-  color: white;
-  text-decoration: none;
+  color: $text;
 }
 
 .invert-image {
-  -webkit-filter: invert(100%);
-  filter: invert(100%);
   margin-right: 22px;
 }
 
 #addCourses:hover {
-  color: white;
-  text-decoration: none;
+  color: $text;
 }
 
 .no_data_container {
@@ -99,7 +98,7 @@ $widthOfNarrowArrow: 27px;
     margin: 0 0 3px 3px;
   }
 
-  .close_button_mobile{
+  .close_button_mobile {
     float: right;
   }
 
@@ -116,6 +115,8 @@ $course_comparison_line_height: 51px;
 $course_comparison_font_normal: 0.875rem;
 $course_comparison_show_more: 1rem;
 $course_comparison_first_column_width: 250px;
+$grey-background: #F7F7F7;
+$grey-border: #E6E8EB;
 
 .unavailable {
   font-size: 1rem !important;
@@ -131,10 +132,11 @@ $course_comparison_first_column_width: 250px;
 
 .course_comparison-table {
   &__tick-icon {
-    font-size: 28px;
-    background: -webkit-gradient(linear, left top, left bottom, from(#4EA27D), to(#308282));
+    font-size: 22px;
+    color: $royal-blue;
+    //background: -webkit-gradient(linear, left top, left bottom, from(#4EA27D), to($blue2));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    //-webkit-text-fill-color: transparent;
     display: initial;
     vertical-align: middle;
   }
@@ -143,48 +145,130 @@ $course_comparison_first_column_width: 250px;
     display: block;
     text-align: center;
     min-height: 44px;
+    border: 1px solid #E6E8EB;
+
+    &:first-child {
+      border-radius: 8px;
+    }
 
     &-header {
       min-height: $course_comparison_line_height;
-      margin-bottom: 16px;
+      //margin-bottom: 16px;
       display: flex;
       align-items: center;
       background: #f2f2f2;
-      color: black;
-      padding: 8px 0 8px 23px;
-      font-weight: bold;
+      color: $royal-blue;
+      padding: 8px 8px 8px 23px;
+      font-weight: 300;
       font-size: 1.125rem;
       cursor: pointer;
+      border: 1px solid #E6E8EB;
+      border-radius: 8px 8px 0 0;
+
+      .invert-image {
+        -webkit-filter: invert(100%);
+        filter: invert(100%);
+      }
+    }
+
+    &-donut-header {
+      min-height: $course_comparison_line_height;
+      //margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      background: $royal-blue;
+      color: white;
+      padding: 8px 8px 8px 23px;
+      font-weight: 300;
+      font-size: 1.125rem;
+      cursor: pointer;
+      border: 1px solid #E6E8EB;
+      border-radius: 100px;
+      //border-bottom: none;
+      width: fit-content;
+      margin: auto auto 10px auto;
+    }
+
+    &-header {
+      min-height: $course_comparison_line_height;
+      //margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      background: $royal-blue;
+      color: white;
+      padding: 8px 8px 8px 23px;
+      font-weight: 300;
+      font-size: 1.125rem;
+      cursor: pointer;
+      border: 1px solid #E6E8EB;
+      border-radius: 8px 8px 0 0;
+      //border-bottom: none;
+      margin: auto auto 10px auto;
+
     }
 
     &-earnings {
       background: $divider-grey;
-      margin-bottom: 8px;
+      //margin-bottom: 8px;
       font-size: 1.25rem;
+      border: 1px solid $grey-border;
 
       &:nth-child(1) {
         font-size: 1rem;
+        margin-top: 8px;
       }
 
       &:nth-child(4), &:nth-child(6), &:nth-child(7) {
         font-size: 1.125rem;
       }
+
+      .column {
+        border-right: none;
+
+      }
+
+      .comparison_row {
+        border-top: none;
+      }
+
+      .column-title_container {
+        border-left: none;
+      }
     }
 
-    &-earnings_first{
+    &-earnings_first {
       @extend .comparison_row-earnings;
+      border: 1px solid $grey-border;
+
+      .column {
+        border-right: none;
+
+      }
+
+      .comparison_row {
+        border-top: none;
+      }
+
+      .column-title_container {
+        border-left: none;
+      }
     }
 
     &-details_background {
       background: $divider-grey;
-      margin-bottom: 8px;
       font-size: 0.875rem;
+      //border: 1px solid #E6E8EB;
+
+      &:last-child {
+        border-bottom: none;
+      }
     }
 
     &-grey_background {
-      background: $divider-grey;
-      margin-top: 8px;
+      background: $grey-background;
       font-size: 1.25rem;
+      border-radius: 8px 8px 0 0;
+
 
       &:nth-child(2) {
         font-size: 1.125rem;
@@ -193,22 +277,53 @@ $course_comparison_first_column_width: 250px;
       &.source {
         margin-bottom: 16px;
       }
+
+      &:last-child {
+        border-radius: 0 0 8px 8px;
+        border: 1px solid $grey-border;
+
+        .column-title_container {
+          border: none;
+        }
+
+        .column {
+          border-top: none;
+          border-bottom: none;
+        }
+
+        .comparison_row {
+          border-top: none;
+        }
+      }
     }
 
     &-yellow_background {
       width: 100%;
-      background: $pale;
-      border-bottom: 1px solid $pale;
+      background: $grey-background;
+      border-bottom: 1px solid $grey-border;
       margin-bottom: 16px;
       font-size: 1.25rem;
+
+      &:first-child {
+        border-radius: 0 0 8px 8px;
+        border: 1px solid $grey-border;
+      }
 
       &:nth-child(4), &:nth-child(5) {
         font-size: 0.875rem;
       }
 
       .header {
-        background: #eecc4b;
+        background: #F7F7F7;
       }
+    }
+    .custom-donut .container .circular-progress {
+      width: 130px;
+      height: 130px;
+    }
+
+    .custom-donut .container .circular-progress::before {
+      background-color: #F7F7F7;
     }
   }
 
@@ -218,12 +333,16 @@ $course_comparison_first_column_width: 250px;
     justify-content: center;
     flex: 1 1 0;
     font-size: inherit;
-    min-height: $course_comparison_line_height;
+    //min-height: $course_comparison_line_height;
     background: inherit;
-    color: black;
-    margin-bottom: auto;
-    margin-top: auto;
+    color: $royal-blue;
+    //margin-bottom: auto;
+    //margin-top: auto;
     padding: 20px;
+    border: 1px solid #E6E8EB;
+    min-height: 53px;
+    border-bottom: none;
+    border-top: none;
 
     &.item_font {
       font-size: 1.25rem;
@@ -232,11 +351,12 @@ $course_comparison_first_column_width: 250px;
     &-title_container {
       display: flex;
       flex-direction: column;
-      border-bottom: 4px solid white;
-      min-height: 40px;
+      border: 1px solid #E6E8EB;
+      //min-height: 40px;
       background: inherit;
       align-items: center;
       padding: 17px 10px 10px 18px;
+      border-top: none;
     }
 
     &-first {
@@ -245,28 +365,43 @@ $course_comparison_first_column_width: 250px;
       min-width: 100%;
       max-width: 100%;
       padding-bottom: 4px;
-      color: black;
+      color: $royal-blue;
       padding-left: 10px;
       font-size: $course_comparison_font_normal;
       min-height: 20px;
       text-align: left;
-      font-weight: bold;
       background: inherit;
 
       &.subtitle {
-        font-weight: normal;
         margin-top: 0;
         padding-top: 5px;
         padding-bottom: 5px;
+        font-weight: 300 !important;
       }
 
       &.show_more {
-        margin: 0;
         padding: 10px 10px 10px 18px;
+        color: white;
+        max-width: unset;
+        min-width: unset;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background-color: $royal_blue;
+        border-radius: 28px;
+        width: 30%;
+        margin: auto;
+        position: relative;
+        bottom: 25px;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       &.header_font {
         font-size: 1rem !important;
+        font-weight: 600;
       }
     }
   }
@@ -278,24 +413,32 @@ $course_comparison_first_column_width: 250px;
     font-size: 0.875rem;
     height: $course_comparison_line_height;
     background: inherit;
-    color: black;
+    color: $royal-blue;
     margin-left: 24px;
 
     &-link {
-      color: #308282;
+      color: $blue2;
       text-decoration: underline;
     }
   }
 }
 
+.last-row {
+  height: 30px;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #E6E8EB;
+  border-top: none;
+  background-color: #f2f2f2;
+}
+
 .institution-link {
-  color: #308282;
+  color: $blue2;
   text-decoration: underline;
   font-size: 0.875rem !important;
   padding: 10px;
 }
 
-.new_tab{
+.new_tab {
   margin-left: 3px !important;
 }
 
@@ -332,7 +475,8 @@ $course_comparison_first_column_width: 250px;
 .subject_wrapper {
   display: block;
   width: 100%;
-  color: black;
+  color: $royal-blue;
+  margin-top: 10px;
 
   .box {
     background-color: #f2f2f2;
@@ -340,6 +484,8 @@ $course_comparison_first_column_width: 250px;
     display: block;
     padding: 16px 16px 16px 24px;
     margin: 0 0 8px 0;
+    border-radius: 8px;
+    border: 1px solid #E6E8EB;
 
     .header {
       font-weight: bold;
@@ -357,6 +503,7 @@ $course_comparison_first_column_width: 250px;
       background-color: #f2f2f2;
       position: relative;
       padding: 16px 8px 13px 8px;
+      border-radius: 4px;
     }
 
     .subjects {
@@ -381,7 +528,7 @@ $course_comparison_first_column_width: 250px;
         background-color: rgba(239, 204, 75, 0.5);
         margin: 6px 0 6px 0;
         padding: 8px 8px 8px 26px;
-        border-radius: 3px;
+        border-radius: 4px;
         flex: 1;
         cursor: pointer;
 
@@ -392,7 +539,7 @@ $course_comparison_first_column_width: 250px;
 
           &:before {
             content: "";
-            background-image: url(/static/assets/tick.png);
+            //background-image: url(/static/assets/tick.png);
             background-repeat: no-repeat;
             height: 17px;
             width: 12px;
@@ -414,7 +561,7 @@ $course_comparison_first_column_width: 250px;
 .no_courses_saved {
   font-weight: bold;
   font-size: 1.125rem;
-  color: black;
+  color: $royal-blue;
   white-space: nowrap;
   padding-top: 20px;
   padding-left: 20px;
@@ -422,7 +569,7 @@ $course_comparison_first_column_width: 250px;
 
 .comparison {
   padding: 5px 5px 0 5px;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: $white;
 
   .comparison__header-bg-icon {
@@ -439,9 +586,9 @@ $course_comparison_first_column_width: 250px;
     background-color: #f8d441;
 
     h1 {
-      color: black;
+      color: $royal-blue;
       font-size: 1.3rem;
-      font-family: 'Nunito Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: normal;
       font-stretch: normal;
       font-style: normal;
@@ -470,15 +617,15 @@ $course_comparison_first_column_width: 250px;
       .add-courses-button {
         display: flex;
         align-items: center;
-        width: 210px;
-        height: 40px;
+        //width: 210px;
+        max-height: 45px;
+        height: 45px;
         margin: 0 16px 6.5px 0;
         padding: 9px 26px;
-        border: 0;
         border-radius: 20px;
-        background-image: linear-gradient(281deg, #308282, #4ea27d);
-        color: white;
-        font-family: "Nunito Sans", sans-serif;
+        border: 2px solid $text;
+        color: $text;
+        font-family: 'Plus Jakarta Sans', sans-serif;
         font-size: 1rem;
         font-weight: bold;
         line-height: 1.5;
@@ -487,11 +634,20 @@ $course_comparison_first_column_width: 250px;
           font-size: 1.25rem;
           padding-right: 10px;
         }
+
+        &:focus {
+          background-color: $blue5;
+          border-radius: 20px;
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       .compare-text {
         display: inline-block;
-        color: #5d5d5d;
+        color: #595959;
         vertical-align: top;
         margin-top: 16px;
         padding-left: 5px;
@@ -500,17 +656,18 @@ $course_comparison_first_column_width: 250px;
 
     .need-help-box {
       display: inline-block;
-      color: black;
-      background-color: #f4f8f8;
+      color: $royal-blue;
+      background-color: #f2f2f2;
       float: right;
       padding: 20px;
       text-align: center;
       margin-bottom: 31px;
+      border-radius: 8px;
 
       .header {
         font-size: 1rem;
         margin-bottom: 20px;
-        font-weight: bold;
+        font-weight: 400;
         text-align: left;
       }
 
@@ -518,6 +675,11 @@ $course_comparison_first_column_width: 250px;
         font-size: 0.875rem;
         margin-bottom: 0;
         text-align: left;
+
+        .blue-text {
+          color: $royal-blue;
+          font-weight: 500;
+        }
       }
 
       .image {
@@ -573,13 +735,14 @@ $course_comparison_first_column_width: 250px;
   &__heading {
     font-size: 32px !important;
     text-align: left;
-    color: #5d5d5d;
+    color: $text;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.5;
     letter-spacing: normal;
     margin-bottom: 48px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
 
   &__courses {
@@ -660,11 +823,11 @@ $course_comparison_first_column_width: 250px;
       padding: 0;
       color: #fff;
       border: 0;
-      background: linear-gradient(145.9deg, #4EA27D 13.02%, #308282 85.42%);
+      background: $course-accordion-gradient;
       cursor: pointer;
 
       h2 {
-        font-family: Nunito Sans;
+        font-family: 'Plus Jakarta Sans', sans-serif;
         font-weight: 400;
         font-size: 21px;
         line-height: 1.5;
@@ -717,7 +880,7 @@ $course_comparison_first_column_width: 250px;
 
 
       .number_selected {
-        color: black;
+        color: $royal-blue;
         margin-bottom: auto;
         margin-top: 17px;
         margin-right: auto;
@@ -725,6 +888,10 @@ $course_comparison_first_column_width: 250px;
         font-size: 24px;
         font-weight: bold;
         display: none;
+
+        span {
+          font-size: 24px;
+        }
       }
 
       .cards {
@@ -742,7 +909,7 @@ $course_comparison_first_column_width: 250px;
           cursor: pointer;
 
           .arrow {
-            color: black;
+            color: $royal-blue;
             font-size: 1.25rem;
             font-weight: bold;
           }
@@ -769,9 +936,9 @@ $course_comparison_first_column_width: 250px;
     &__courses {
       &-container {
         flex: 1;
+        border: 1px solid #E6E8EB;
+        padding: 20px 10px;
         background-color: #f2f2f2;
-        margin: 0 1px 8px 1px;
-        padding: 12px 10px;
 
         &-exit-course {
           float: right;
@@ -782,19 +949,22 @@ $course_comparison_first_column_width: 250px;
       &-name {
         display: block;
         margin: 6px 0;
-        font-family: "Nunito Sans", sans-serif;
+        font-family: 'Plus Jakarta Sans', sans-serif;
         font-size: 0.8125rem;
         font-weight: 400;
         color: #1e1e1e;
         line-height: 1.5;
+        max-width: 406px;
+        overflow-wrap: break-word;
       }
 
       &-institution-name {
         margin: 0;
-        font-family: "Nunito Sans", sans-serif;
-        font-size: 12px;
-        color: #595959;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px;
+        color: #414141;
         display: block;
+        font-weight: 600;
       }
     }
 
@@ -805,13 +975,15 @@ $course_comparison_first_column_width: 250px;
 }
 
 .guidance_box {
-  border: 1px solid #daf4ef;
+  background-color: $grey-background;
+  border: 1px solid $grey-border;
   padding: 8px;
-  color: black;
+  color: $royal-blue;
   margin: 16px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 8px;
 
   .title {
     font-size: 1.25rem;
@@ -834,6 +1006,12 @@ $course_comparison_first_column_width: 250px;
     font-size: 0.875rem;
     padding-left: 40px;
     display: block;
+
+  }
+
+  .blue-text {
+    color: $royal-blue;
+    font-family: "Plus Jakarta Sans", Sans-Serif;
   }
 }
 
@@ -867,8 +1045,8 @@ $course_comparison_first_column_width: 250px;
     height: 150px;
     width: auto;
   }
-  .no_data_container{
-    .close_button_mobile{
+  .no_data_container {
+    .close_button_mobile {
       display: none;
     }
   }
@@ -890,11 +1068,11 @@ $course_comparison_first_column_width: 250px;
         padding: 0;
         color: #fff;
         border: 0;
-        background: linear-gradient(145.9deg, #4EA27D 13.02%, #308282 85.42%);
+        background: $course-accordion-gradient;
         cursor: pointer;
 
         h2 {
-          font-family: Nunito Sans;
+          font-family: 'Plus Jakarta Sans', sans-serif;
           font-weight: 400;
           font-size: 21px;
           line-height: 1.5;
@@ -968,7 +1146,7 @@ $course_comparison_first_column_width: 250px;
       padding-bottom: 10px;
     }
   }
-  .unavailable-container{
+  .unavailable-container {
     padding: 0;
     margin: 0;
   }
@@ -1026,11 +1204,10 @@ $course_comparison_first_column_width: 250px;
   .course_comparison-table {
     .comparison_row {
       text-align: center;
-      margin-bottom: 8px;
+      //margin-bottom: 8px;
     }
 
     &-grey_background {
-      margin-top: 8px;
     }
 
     &-header {
@@ -1040,7 +1217,7 @@ $course_comparison_first_column_width: 250px;
   .column-first {
     min-width: 100%;
     max-width: 100%;
-    margin-bottom: 4px;
+    //margin-bottom: 4px;
     font-size: 1rem;
   }
 
@@ -1094,7 +1271,7 @@ $course_comparison_first_column_width: 250px;
 
   }
   .comparison .course-detail__courses-name {
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 
   .comparison__top-container {
@@ -1103,7 +1280,7 @@ $course_comparison_first_column_width: 250px;
 
       .compare-text {
         display: inline-block;
-        color: #5d5d5d;
+        color: $royal-blue;
         vertical-align: top;
       }
     }
@@ -1115,16 +1292,15 @@ $course_comparison_first_column_width: 250px;
       min-height: $course_comparison_line_height;
       flex-direction: row;
       color: black;
-      margin-bottom: 6px;
+      //margin-bottom: 6px;
       align-items: center;
 
       &-grey_background {
-        margin-top: 6px;
         padding: 0;
       }
 
       &-earnings {
-        margin-bottom: 8px;
+        //margin-bottom: 8px;
         font-size: 1.25rem;
         padding: 8px;
 
@@ -1141,10 +1317,12 @@ $course_comparison_first_column_width: 250px;
           font-size: 1.125rem;
         }
       }
+
       &-earnings_first {
         &:nth-child(3), &:nth-child(5), &:nth-child(6), {
           margin-bottom: 0;
         }
+
         &:nth-child(4) {
           margin-bottom: 8px;
         }
@@ -1155,20 +1333,18 @@ $course_comparison_first_column_width: 250px;
         height: $course_comparison_line_height;
         align-items: center;
         min-height: $course_comparison_line_height;
-        margin-bottom: 10px;
-
-        background: #f2f2f2;
-        color: black;
+        background: $royal-blue;
+        color: white;
         padding-left: 24px;
       }
 
       &-yellow_background {
-        border-bottom: 5px solid $pale;
+        border-bottom: 1px solid $grey-border;
         margin-bottom: 0;
         padding: 0;
 
         .header {
-          background: #fef7d7;
+          background: #F7F7F7;
         }
       }
     }
@@ -1180,10 +1356,11 @@ $course_comparison_first_column_width: 250px;
       align-items: center;
       background: inherit;
       padding: 0;
+      min-height: 55px;
 
       &-title_container {
-        border: none;
         padding: 0;
+        border-bottom: none;
       }
 
       &-first {
@@ -1203,7 +1380,6 @@ $course_comparison_first_column_width: 250px;
   .small-flex-div {
     display: flex;
     width: 100%;
-    margin-bottom: 4px;
     align-items: center;
     margin-left: auto;
 
@@ -1227,11 +1403,15 @@ $course_comparison_first_column_width: 250px;
         top: 100%;
         transform: translate(0%, -100%);
         margin: 48px 16px 6.5px 0;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       .compare-text {
         display: inline-block;
-        color: #5d5d5d;
+        color: #595959;
         vertical-align: top;
         line-height: 1.5;
       }
@@ -1253,7 +1433,7 @@ $course_comparison_first_column_width: 250px;
       max-width: 186px;
       min-width: 186px;
       margin-right: 4px;
-      max-height: 218px;
+      //max-height: 218px;
     }
 
     &-container {
@@ -1275,7 +1455,7 @@ $course_comparison_first_column_width: 250px;
       padding-top: 10px;
     }
   }
-  .unavailable-container{
+  .unavailable-container {
     padding: 5px 7px 5px 10px;
     margin-left: 10px;
   }
@@ -1297,7 +1477,7 @@ $course_comparison_first_column_width: 250px;
     margin-right: auto !important;
   }
 
-  .unavailable-container{
+  .unavailable-container {
     padding: 5px 7px 5px 10px;
     margin-left: 10px;
   }
@@ -1327,7 +1507,7 @@ $course_comparison_first_column_width: 250px;
 
       .compare-text {
         display: inline-block;
-        color: #5d5d5d;
+        color: #595959;
         vertical-align: top;
         line-height: 1.5;
       }
@@ -1357,17 +1537,17 @@ $course_comparison_first_column_width: 250px;
       align-items: center;
 
       &-grey_background {
-        margin-top: 6px;
         padding: 0;
       }
 
       &-earnings {
-        margin-bottom: 8px;
+        //margin-bottom: 8px;
         font-size: 1.25rem;
         padding: 8px;
 
         &:nth-child(1) {
           font-size: 1rem;
+          border-radius: 8px 8px 0 0;
         }
 
         &:nth-child(2), &:nth-child(4), &:nth-child(5), {
@@ -1378,30 +1558,45 @@ $course_comparison_first_column_width: 250px;
           font-size: 1.125rem;
         }
       }
+
       &-earnings_first {
         &:nth-child(3), &:nth-child(5), &:nth-child(6), {
           margin-bottom: 0;
         }
+
         &:nth-child(4) {
-          margin-bottom: 8px;
+
         }
+
+        &:nth-child(6) {
+          border-radius: 0 0 8px 8px;
+        }
+      }
+
+      &-donut-header {
+        min-height: $course_comparison_line_height;
+        //margin-bottom: 10px;
+        background: $royal-blue;
+        color: white;
+        padding-left: 24px;
+        font-size: 1.25rem;
       }
 
       &-header {
         min-height: $course_comparison_line_height;
-        margin-bottom: 10px;
-        background: #f2f2f2;
-        color: black;
+        //margin-bottom: 10px;
+        background: #F7F7F7;
+        color: $royal-blue;
         padding-left: 24px;
         font-size: 1.25rem;
       }
 
       &-yellow_background {
-        border-bottom: 5px solid $pale;
+        border-bottom: 1px solid $grey-border;
         margin-bottom: 0;
 
         .header {
-          background: #fef7d7 !important;
+          background: $grey-background !important;
         }
       }
     }
@@ -1413,10 +1608,12 @@ $course_comparison_first_column_width: 250px;
       align-items: center;
       background: inherit;
       padding: 0;
+      height: 100%;
+      min-height: 53px;
 
       &-title_container {
-        border: none;
         padding: 0;
+        border-bottom: none;
       }
 
       &-first {
@@ -1426,7 +1623,7 @@ $course_comparison_first_column_width: 250px;
         text-align: left;
         min-height: $course_comparison_line_height;
         flex: 1;
-        padding: 16px 0 16px 24px;
+        padding: 0 0 0 24px;
         background: inherit;
       }
     }
@@ -1435,8 +1632,9 @@ $course_comparison_first_column_width: 250px;
   .small-flex-div {
     display: flex;
     width: 100%;
-    min-height: $course_comparison_line_height;
-    margin-bottom: 4px;
+    //min-height: $course_comparison_line_height;
+    //margin-bottom: 4px;
+    height: 100%;
     align-items: center;
     flex: 1;
   }
@@ -1450,7 +1648,6 @@ $course_comparison_first_column_width: 250px;
       max-width: 250px;
       min-width: 250px;
       margin-right: 8px;
-      max-height: 170px;
     }
 
     &-container {
@@ -1472,7 +1669,7 @@ $course_comparison_first_column_width: 250px;
 }
 
 .orange {
-  color: orange;
+  color: $bruise;
 }
 
 @media only screen and (min-width: 414px) {
@@ -1480,7 +1677,7 @@ $course_comparison_first_column_width: 250px;
     display: inline-block;
   }
   .comparison .course-detail__course-container {
-    padding-top: 20px;
+    padding-top: 40px;
   }
 }
 
