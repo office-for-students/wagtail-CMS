@@ -72,8 +72,8 @@
                            aria-label="{{ action.affirmative }}"></i>
                         <i class="fas fa-chevron-up collapse chevron" alt="collapse"
                            aria-label="{{ action.negative }}"></i>
-                        <span class="expand">{{ action.affirmative }} {% translation key='course_details'|lower language=page.get_language %} {% translation key='data' language=page.get_language %}</span>
-                        <span class="collapse">{{ action.negative }} {% translation key='course_details'|lower language=page.get_language %} {% translation key='data' language=page.get_language %}</span>
+                            <span class="expand">{{ action.affirmative }}</span>
+                            <span class="collapse">{{ action.negative }}</span>
                     {% endwith %}
                 </div>
                 </div>

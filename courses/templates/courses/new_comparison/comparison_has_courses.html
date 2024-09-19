@@ -74,8 +74,8 @@
                              class="accordion-header">
                             <div class="accordion-title">
                                 <div class="accordion-header column-first show_more" tabindex="0">
-                                    <span class="expand">{{ action.affirmative }} {% get_translation key='course_details' language=page.get_language %} {% get_translation key='data' language=page.get_language %}</span>
-                                    <span class="collapse">{{ action.negative }} {% get_translation key='course_details' language=page.get_language %} {% get_translation key='data' language=page.get_language %}</span>
+                                    <span class="expand">{{ action.affirmative }}</span>
+                                    <span class="collapse">{{ action.negative }}</span>
                                     <i class="fas fa-chevron-down expand chevron" alt="expand"
                                        aria-label="{{ action.affirmative }}"></i>
                                     <i class="fas fa-chevron-up collapse chevron" alt="collapse"
@@ -104,11 +104,11 @@
                                 </div>
                             </div>
                             <div class="expand" style="display: block;">
-                              <img class="nav-card__icon" src="/static/images/plus_icon_white.svg"
+                                <img class="nav-card__icon" src="/static/images/plus_icon_white.svg"
                                      alt="expand">
                             </div>
                             <div class="collapse">
-                                      <img class="nav-card__icon" src="{% static 'images/minus_icon.svg' %}" alt="collapse">
+                                <img class="nav-card__icon" src="{% static 'images/minus_icon.svg' %}" alt="collapse">
                             </div>
                         </div>
                         <div class="accordion-body">

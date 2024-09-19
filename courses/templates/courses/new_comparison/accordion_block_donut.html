@@ -1,4 +1,5 @@
 {% load static %}
+{% load discover_uni_tags %}
 {% load i18n %}
 <div class="accordion-block">
     {% include 'courses/new_comparison/comparison_overall_donut_row.html' with title=title subtitle=subtitle values=courses index=index from_one=forloop.counter %}
@@ -26,7 +27,13 @@
     </div>
 
     <div id="{{ identifier }}{{ index }}" data-index="{{ index }}" class="comparison_row-donut-header sub_accordion_header">
-        Expand {{ title|lower }} data
+        {% if page.get_language == "cy" %}
+             <span class=" hidden" id="{{ identifier }}{{ index }}-btn-collapse">{% get_translation key="minimise" language=page.get_language %} {% get_translation key="data" language=page.get_language %} {{ title|lower }}</span>
+            <span class="" id="{{ identifier }}{{ index }}-btn-expand">{% get_translation key="expand" language=page.get_language %} {% get_translation key="data" language=page.get_language %} {{ title|lower }}</span>
+        {% else %}
+            <span class="hidden" id="{{ identifier }}{{ index }}-btn-collapse">{% get_translation key="minimise" language=page.get_language %} {{ title|lower }} {% get_translation key="data" language=page.get_language %} </span>
+            <span class="" id="{{ identifier }}{{ index }}-btn-expand">{% get_translation key="expand" language=page.get_language %} {{ title|lower }} {% get_translation key="data" language=page.get_language %}</span>
+        {% endif %}
         <div class="ml-2">
             <div id="{{ identifier }}{{ index }}-expand" class="">
                 <img class="invert-image" src="{% static 'images/plus_icon.svg' %}" alt="expand">

@@ -1790,6 +1790,13 @@ OPTIONALS = {
         "en": "Student views",
         "cy": "Barn Myfyrwyr"
     },
-
+    'expand_course_details': {
+        "en": "Expand course details data",
+        "cy": "Ehangu data manylion y cwrs"
+    },
+    'minimise_course_details': {
+        "en": "Miminise course details data",
+        "cy": "Llelhau data manylion y cwrs"
+    },
 
 }

@@ -1,8 +1,7 @@
 {% load static %}
 {% load discover_uni_tags %}
 <div class="comparison_row" style="background-color: #F7F7F7;">
-    <!-- TODO: MEG CHANGE THIS-->
-    {% with item.overall_satisfaction.0.satisfaction_stats.question_1.agree_or_strongly_agree as percent %}
+
         <div class="column-title_container header">
             <div class="column-first {{ header_font }}">
                 {% if title %}{{ title }}{% endif %}
@@ -17,7 +16,6 @@
                 <div class="column {{ item_font }} cc-column-{{ forloop.counter0 }}">
                     {% with index=forloop.counter0 last=forloop.last %}
                         {% if item %}
-                            <!--TODO: MEG change this to t1 when we have it-->
                             {% get_t_number value=from_one item=item.overall_satisfaction.0.satisfaction_stats as theme %}
                             {% if theme %}
                                     {% include 'courses/new_course_details/partials/custom_donut.html' with percent=theme %}
@@ -31,5 +29,4 @@
                 </div>
             {% endfor %}
         </div>
-    {% endwith %}
 </div>

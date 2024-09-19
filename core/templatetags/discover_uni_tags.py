@@ -251,7 +251,7 @@ def format_value(content, substitution):
 @register.simple_tag
 def get_t_number(value, item):
     try:
-        #TODO MEG change these back to t1,t2...
+        #TODO: MEG change these back to t1,t2...
         t_values = {1: "question_1", 2: "question_2", 3: "question_3", 4: "question_4", 5: "question_5", 6: "question_6", 7: "question_7"}
         # Get the corresponding t_value (like t1, t2)
         index = t_values.get(value, "Invalid index")
@@ -263,3 +263,10 @@ def get_t_number(value, item):
         return ""
     except Exception as e:
         return ""
+
+ #TODO MEG change this to false when going live without theme then back to true when themes are in...
+@register.simple_tag
+def has_theme_score():
+    return True
+
+
