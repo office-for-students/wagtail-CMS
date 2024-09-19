@@ -248,3 +248,18 @@ def insert_fake_theme():
 def format_value(content, substitution):
    return content.replace("{}", str(substitution))
 
+@register.simple_tag
+def get_t_number(value, item):
+    try:
+        #TODO MEG change these back to t1,t2...
+        t_values = {1: "question_1", 2: "question_2", 3: "question_3", 4: "question_4", 5: "question_5", 6: "question_6", 7: "question_7"}
+        # Get the corresponding t_value (like t1, t2)
+        index = t_values.get(value, "Invalid index")
+        # Check if the item has the corresponding attribute
+        if index != "Invalid index" and hasattr(item, index):
+            t_number = getattr(item, index)
+            return str(t_number) if t_number is not None else ""
+
+        return ""
+    except Exception as e:
+        return ""

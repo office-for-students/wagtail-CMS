@@ -16,7 +16,8 @@
                 {% with index=forloop.counter0 last=forloop.last %}
                     {% if item.values %}
                         {% for value in item.values %}
-                            <div class="column-{{ index }}{{ accordion.title }} item-{{ forloop.counter0 }} sub-{{ sub_count }}"
+                            <div class="column-
+                                    {{ index }}{{ accordion.title }} item-{{ forloop.counter0 }} sub-{{ sub_count }}"
                                  {% if not forloop.first %}hidden{% endif %}>
                                 {% if value.0 == "unavailable" %}
                                     <div class="no_data_container {{ earnings }}">
@@ -28,7 +29,9 @@
                                         {% endif %}
                                     </div>
                                 {% else %}
-                                    {{ value }}
+                                    {% with value|safe|slice:2 as percent %}
+                                        {% include 'courses/new_course_details/partials/custom_donut.html' with percent=percent %}
+                                    {% endwith %}
                                 {% endif %}
                             </div>
                         {% endfor %}
@@ -45,7 +48,7 @@
                             </div>
                         {% else %}
                             {% with item|safe|slice:2 as percent %}
-                                {% include 'course_details/partials/custom_donut.html' with percent=percent %}
+                                {% include 'courses/new_course_details/partials/custom_donut.html' with percent=percent %}
                             {% endwith %}
                         {% endif %}
                     {% endif %}

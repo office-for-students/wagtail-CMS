@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 <div class="accordion-block">
-    {% include 'courses/new_comparison/comparison_overall_donut_row.html' with title=title subtitle=subtitle values=courses %}
+    {% include 'courses/new_comparison/comparison_overall_donut_row.html' with title=title subtitle=subtitle values=courses index=index from_one=forloop.counter %}
     <div id="body-{{ identifier }}{{ index }}" class="hidden">
         {% if accordion.multi_subject_selectors %}
             {% if forloop.first %}

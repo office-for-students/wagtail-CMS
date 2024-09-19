@@ -1,6 +1,7 @@
 {% load static %}
 {% load discover_uni_tags %}
 <div class="comparison_row" style="background-color: #F7F7F7;">
+    <!-- TODO: MEG CHANGE THIS-->
     {% with item.overall_satisfaction.0.satisfaction_stats.question_1.agree_or_strongly_agree as percent %}
         <div class="column-title_container header">
             <div class="column-first {{ header_font }}">
@@ -17,13 +18,14 @@
                     {% with index=forloop.counter0 last=forloop.last %}
                         {% if item %}
                             <!--TODO: MEG change this to t1 when we have it-->
-                            {% with item.overall_satisfaction.0.satisfaction_stats.question_1.agree_or_strongly_agree as percent %}
-                                {% if percent %}
-                                {% include 'courses/new_course_details/partials/custom_donut.html' with percent=percent %}
-                                {% else %}
-                                    {% get_translation key="no_data_available" language=page.get_language %} <i class="fas fa-info-circle information-icon"></i>
-                                {% endif %}
-                            {% endwith %}
+                            {% get_t_number value=from_one item=item.overall_satisfaction.0.satisfaction_stats as theme %}
+                            {% if theme %}
+                                    {% include 'courses/new_course_details/partials/custom_donut.html' with percent=theme %}
+                            {% else %}
+                                <div style="display: flex; flex-direction: column; align-items: center;">
+                                    <p>{% get_translation key="no_data_available" language=page.get_language %}</p>
+                                </div>
+                            {% endif %}
                         {% endif %}
                     {% endwith %}
                 </div>

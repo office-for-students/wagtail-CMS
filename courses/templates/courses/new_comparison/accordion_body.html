@@ -42,10 +42,10 @@
             {% endif %}
         {% endfor %}
     </div>
-    {% for sub_accordion in sub_accordions|slice:":6" %}
+    {% for sub_accordion in sub_accordions|slice:":7" %}
         {% with identifier=sub_accordion.title|title|cut:" "|add:"-ac-" sub_count=forloop.counter0 %}
             {% if accordion.title == "National Student Survey results" %}
-                {% with forloop.counter as index %}
+                {% with forloop.counter0 as index %}
                     {% get_item_at_index lst=overall index=index as title %}
                     {% get_item_at_index lst=overall index=index as subtitle %}
                     {% include 'courses/new_comparison/accordion_block_donut.html' with title=title.0 subtitle=subtitle.1 index=index %}
