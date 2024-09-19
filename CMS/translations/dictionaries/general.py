@@ -1605,16 +1605,16 @@ DICT = {
         'en': " ",
         'cy': " "
     },
-    "medr_explanation":{
-        "en":"This university/college is regulated by Medr and is subject to the Quality Assessment Framework for Wales to ensure it meets satisfactory standards of higher education.",
-        "cy":"Rheoleiddir y brifysgol hon / y coleg hwn gan Medr ac mae’n ddarostyngedig i Fframwaith Asesu Ansawdd Cymru i sicrhau ei fod yn bodloni safonau addysg uwch boddhaol."
+    "medr_explanation": {
+        "en": "This university/college is regulated by Medr and is subject to the Quality Assessment Framework for Wales to ensure it meets satisfactory standards of higher education.",
+        "cy": "Rheoleiddir y brifysgol hon / y coleg hwn gan Medr ac mae’n ddarostyngedig i Fframwaith Asesu Ansawdd Cymru i sicrhau ei fod yn bodloni safonau addysg uwch boddhaol."
 
     },
-    "gateway_quality_review_wales":{
-        "en":"This provision is delivered by an institution that is subject to an external quality assurance review",
-        "cy":"Darperir y ddarpariaeth hon gan sefydliad sy'n ddarostyngedig i adolygiad sicrwydd ansawdd allanol"
+    "gateway_quality_review_wales": {
+        "en": "This provision is delivered by an institution that is subject to an external quality assurance review",
+        "cy": "Darperir y ddarpariaeth hon gan sefydliad sy'n ddarostyngedig i adolygiad sicrwydd ansawdd allanol"
     },
-    "quality_enhancement_review":{
+    "quality_enhancement_review": {
         "en": "This institution is regulated by Medr, and is therefore subject to an external quality assurance review.",
         "cy": "Rheoleiddir y sefydliad hwn gan Medr, ac felly mae'n ddarostyngedig i adolygiad sicrwydd ansawdd allanol."
     },
@@ -1627,9 +1627,9 @@ DICT = {
         "en": "This university/college is regulated by Medr and is subject to the Quality Assessment Framework for Wales to ensure it meets satisfactory standards of higher education.",
         "cy": "Rheoleiddir y brifysgol hon / y coleg hwn gan Medr ac mae’n ddarostyngedig i Fframwaith Asesu Ansawdd Cymru i sicrhau ei fod yn bodloni safonau addysg uwch boddhaol."
     },
-    "more_about_medr_tef_href":{
-        "en":"See the latest report here",
-        "cy":"Gweler yr adroddiad diweddaraf yma"
+    "more_about_medr_tef_href": {
+        "en": "See the latest report here",
+        "cy": "Gweler yr adroddiad diweddaraf yma"
     },
     "sfc_explanation": {
         "en": "This university is regulated by the Scottish Funding Council and is subject to Scottish Quality Enhancement Arrangements",
@@ -1725,6 +1725,78 @@ OPTIONALS = {
     'view_uni_website': {
         "cy": "Gweld gwefan y brifysgol",
         "en": "View uni website"
-    }
+    },
+    'expand': {
+        "en": "Expand",
+        "cy": "Ehangu"
+    },
+    'minimise': {
+        "en": "Minimise",
+        "cy": "Lleihau"
+    },
+    'save': {
+        "en": "save",
+        "cy": "cadw"
+    },
+    'franchise_message': {
+        "en": "The main teaching provider of this course is {} but students are registered at {}",
+        "cy": "Prif ddarparwr addysgu’r cwrs yma yw {} ond mae myfyrwyr yn cael eu cofrestru yn {}"
+    },
+    'franchise_information_message': {
+        "en": "This course is 'franchised' which means it is taught at the provider listed here but students are registered at a different, 'lead' provider.  The lead provider is responsible for the teaching quality and student experience on the course.",
+        "cy": "Mae’r cwrs yma’n un ‘breiniol’ sy’n golygu ei fod yn cael ei addysgu yn y darparwr a restrir yma ond bod myfyrwyr yn cael eu cofrestru mewn darparwr ‘arweiniol’ gwahanol. Y darparwr arweiniol sy’n gyfrifol am ansawdd yr addysgu a phrofiad myfyrwyr ar y cwrs."
+    },
+    '12_18_months': {
+        "en": "12-18 month course",
+        "cy": "Cwrs 12-18 mis"
+    },
+    'overall_teaching_on_my_course': {
+        "en": "{}% were positive about the teaching on the course.",
+        "cy": "Roedd gan {}% farn gadarnhaol ynglŷn â’r addysgu ar y cwrs."
+    },
+    'overall_learning_opportunities': {
+        "en": "{}% were positive about the learning opportunities the course provided.",
+        "cy": "Roedd gan {}% farn gadarnhaol am y cyfleoedd dysgu yr oedd y cwrs yn eu darparu."
+    },
+    'overall_assessment_and_feedback': {
+        "en": "{}% were positive about assessment and feedback on the course.",
+        "cy": "Roedd gan {}% farn gadarnhaol ynglŷn ag asesu ac adborth ar y cwrs."
+    },
+    'overall_academic_support': {
+        "en": "{}% were positive about the support provided by teaching staff.",
+        "cy": "Roedd gan {}% farn gadarnhaol ynglŷn â’r cymorth a oedd yn cael ei roi gan staff addysgu."
+    },
+    'overall_organisation_and_management': {
+        "en": "{}% were positive about the course organisation and communication.",
+        "cy": "Roedd gan {}% farn gadarnhaol ynglŷn â threfnu’r cwrs a chyfathrebu."
+    },
+    'overall_learning_resources': {
+        "en": "{}% were positive about the learning resources and facilities provided.",
+        "cy": "Roedd gan {}% farn gadarnhaol ynglŷn â’r adnoddau dysgu a’r cyfleusterau a ddarparwyd."
+    },
+    'overall_student_voice': {
+        "en": "{}% were positive about student feedback being heard and acted on.",
+        "cy": "Roedd gan {}% farn gadarnhaol ynglŷn â chlywed a gweithredu ar adborth myfyrwyr."
+    },
+    'course_details': {
+        "en": "course details",
+        "cy": "Manylion y cwrs"
+    },
+    'graduate_views': {
+        "en": "Graduate views",
+        "cy": "Barn Graddedigion"
+    },
+    'student_views': {
+        "en": "Student views",
+        "cy": "Barn Myfyrwyr"
+    },
+    'expand_course_details': {
+        "en": "Expand course details data",
+        "cy": "Ehangu data manylion y cwrs"
+    },
+    'minimise_course_details': {
+        "en": "Miminise course details data",
+        "cy": "Llelhau data manylion y cwrs"
+    },
 
 }

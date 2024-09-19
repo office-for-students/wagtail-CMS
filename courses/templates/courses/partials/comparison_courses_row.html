@@ -22,12 +22,12 @@
                                         {{ value.1 }}
                                         <br>
                                         {% if value.2 %}
-                                            <img class="information-icon" src="/static/images/information.svg" alt>
+                                            <i class="fas fa-info-circle information-icon"></i>
                                             <div class="information-text hidden info-box-{{ index }} {% if last %}right{% else %}left{% endif %}">{{ value.2|safe }}</div>
                                         {% endif %}
                                     </div>
                          {% else %}
-                            {{value}}
+                            <p style="font-size: 1.2rem;">{{ value | safe }}</p>
                         {% endif %}
                      </div>
                 {% endfor %}
@@ -37,12 +37,12 @@
                         {{ item.1 }}
                         <br>
                         {% if item.2 %}
-                            <img class="information-icon" src="/static/images/information.svg" alt>
+                            <i class="fas fa-info-circle information-icon"></i>
                             <div class="information-text hidden info-box-{{forloop.counter0}} {% if forloop.last %}right{% else %}left{% endif %}">{{ item.2|safe }}</div>
                         {% endif %}
                     </div>
                 {% else %}
-                    {{ item | safe }}
+                    <p style="font-size: 1.2rem;">{{ item | safe }}</p>
                 {% endif %}
             {% endif %}
         {% endwith %}

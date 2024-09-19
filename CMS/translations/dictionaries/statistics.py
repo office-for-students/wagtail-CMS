@@ -24,8 +24,8 @@ STATISTICS = {
         "en": "The number of students indicates the size of the course, and more people \n            means it is more likely to be representative of outcomes for students."
     },
     "assessment_and_feedback": {
-        "cy": "Asesu ac adborth",
-        "en": "Assessment and feedback"
+        "cy": "Marcio & Asesu",
+        "en": "Marking & Assessment"
     },
     "data_from_people": {
         "cy": "Data gan (# o fyfyrwyr)",
@@ -260,8 +260,8 @@ STATISTICS = {
         "en": "Occupation types 15 months after the course"
     },
     "organisation_and_management": {
-        "cy": "Trefniadaeth a rheolaeth",
-        "en": "Organisation and management"
+        "cy": "Trefniadaeth & rheolaeth",
+        "en": "Organisation & management"
     },
     "overall_satisfied": {
         "cy": "Ar y cyfan, rydw i’n fodlon ag ansawdd y cwrs.",
@@ -313,9 +313,9 @@ STATISTICS = {
         "cy": "Llais y myfyriwr",
         "en": "Student voice"
     },
-    "teaching_on_my_course": {
-        "cy": "Y dysgu ar fy nghwrs",
-        "en": "The teaching on my course"
+    "teaching": {
+        "cy": "Addysgu",
+        "en": "Teaching"
     },
     "ucas_tariff_points": {
         "cy": "Pwyntiau Tariff UCAS",
@@ -470,12 +470,20 @@ STATISTICS = {
         "en": "The Freedom of expression score is not available for courses in Wales, Northern Ireland and Scotland because the question is not included in the survey for these nations."
     },
     "gcu_data_year": {
-        "cy": "Daw'r data hwn o Arolwg Cenedlaethol Myfyrwyr 2022 o fyfyrwyr yn y brifysgol hon.",
-        "en": "This data is from 2022 NSS survey of students at this university."
+        "cy": "Daw’r data hwn o arolwg NSS 2022 a 2024 o fyfyrwyr yn y brifysgol hon",
+        "en": "This data is from 2022 and 2024 NSS survey of students at this university"
     },
     "gcu_message": {
-        "cy": "Oherwydd gwall gweinyddol yn yr arolwg, ni ofynnwyd y cwestiwn boddhad myfyrwyr i fwyafrif ymatebwyr arolwg 2023 o Brifysgol Glasgow Caledonian.  Rydym felly yn cyhoeddi canlyniadau o arolwg 2022 ar gyfer y cwestiwn hwn.  Nid bai'r darparwr oedd y gwall.  Nid effeithiodd y gwall hwn ar unrhyw gwestiynau neu ddarparwyr eraill.",
-        "en": "Due to a survey administration error, the Student satisfaction question was not asked of the majority of 2023 survey respondents from Glasgow Caledonian University.  We are therefore publishing results from the 2022 survey for this question.  The error was not the fault of the provider.  No other questions or providers were affected by this error."
+        "cy": "Nid oes digon o ddata i gyhoeddi canlyniadau ar gyfer y cwestiwn hwn o arolwg 2024, felly rydym wedi cyfuno data o arolwg myfyrwyr 2024 a 2022 ar y cwrs hwn.",
+        "en": "There is not sufficient data to publish results for this question from the 2024 survey, so we have combined data from the 2024 and 2022 survey of students on this course."
+    },
+    "gcu_unavailable_message": {
+        "cy": "There was not enough data to publish information specifically for this question. This does not reflect on the quality of the course.",
+        "en": "There was not enough data to publish information specifically for this question. This does not reflect on the quality of the course."
+    },
+    "gcu_unavailable_pop_out": {
+        "cy": "Usually, we show data taken from the most recent year or combined over two years when there are not enough students in one year of data for us to publish it.  Due to a survey administration error in 2023, the Student satisfaction question was not asked of the majority of survey respondents at Glasgow Caledonian University. We are therefore unable to combine data for this question over two years.  The error was not the fault of the provider.  No other questions or providers were affected by this error.",
+        "en": "Usually, we show data taken from the most recent year or combined over two years when there are not enough students in one year of data for us to publish it.  Due to a survey administration error in 2023, the Student satisfaction question was not asked of the majority of survey respondents at Glasgow Caledonian University. We are therefore unable to combine data for this question over two years.  The error was not the fault of the provider.  No other questions or providers were affected by this error."
     },
 
     # TODO: delete below once ingestion comes back with description

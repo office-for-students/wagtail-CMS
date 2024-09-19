@@ -1,9 +1,12 @@
+{% load static %}
+{% load i18n %}
 {% load static sass_tags wagtailcore_tags discover_uni_tags %}
+{% block title %}Compare university courses{% endblock %}
 <div class="comparison__body pt-1">
 
-    <h2 class="comparison__heading">
+    <h1 class="comparison__heading">
         {{ page.compare_heading }}
-    </h2>
+    </h1>
     <!-- Guidance box -->
     {% include 'courses/partials/comparison/guidance_box.html' %}
     <!-- Guidance box end -->
@@ -13,7 +16,7 @@
         }
 
         @media only screen and (max-width: 991px) {
-            .number_selected-small {
+            .number_selected-small, .number_selected-small span {
                 color: black;
                 margin-bottom: auto;
                 margin-top: 17px;
@@ -59,26 +62,28 @@
                 <div class="comparison_row-details_background">
                     {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values %}
                 </div>
+
                 {% if forloop.last %}
                     </div>
+                    <div class="last-row"></div>
                     <!-- Hidden content end -->
+
                     <!-- Show more start-->
                     {% with action=dataset.call_to_action.0.show_more %}
-                        <div tabindex="0" role="button" aria-label="{{ action.affirmative }}"
+                        <div role="button" aria-label="{{ action.affirmative }}"
                              class="accordion-header">
-                        <div class="accordion-title">
-                        <div class="accordion-header column-first show_more">
-                        <i class="fas fa-chevron-down expand chevron" alt="expand"
-                           aria-label="{{ action.affirmative }}"></i>
-                        <i class="fas fa-chevron-up collapse chevron" alt="collapse"
-                           aria-label="{{ action.negative }}"></i>
-                            <span class="expand">{{ action.affirmative }}</span>
-                            <span class="collapse">{{ action.negative }}</span>
+                            <div class="accordion-title">
+                                <div class="accordion-header column-first show_more" tabindex="0">
+                                    <span class="expand">{{ action.affirmative }}</span>
+                                    <span class="collapse">{{ action.negative }}</span>
+                                    <i class="fas fa-chevron-down expand chevron" alt="expand"
+                                       aria-label="{{ action.affirmative }}"></i>
+                                    <i class="fas fa-chevron-up collapse chevron" alt="collapse"
+                                       aria-label="{{ action.negative }}"></i>
+                                </div>
+                            </div>
+                        </div>
                     {% endwith %}
-                </div>
-                </div>
-
-                </div>
                     <!-- show more end -->
                 {% endif %}
                 {% endfor %}
@@ -87,7 +92,7 @@
             <div class="course-detail__body">
                 {% for accordion in courses_data.0.accordions %}
                     <div class="accordion" id="ac-{{ forloop.counter }}">
-                        <div tabindex="{{ forloop.counter }}" role="button"
+                        <div tabindex="0" role="button"
                              aria-label="Show {{ accordion.title }} content"
                              class="green accordion-padding accordion-header sticky-accordion-header">
                             <div class="">
@@ -103,16 +108,16 @@
                                      alt="expand">
                             </div>
                             <div class="collapse">
-                                <img class="nav-card__icon" src="/static/images/minus_icon.svg" alt="collapse">
+                                <img class="nav-card__icon" src="{% static 'images/minus_icon.svg' %}" alt="collapse">
                             </div>
                         </div>
                         <div class="accordion-body">
-                            {% include 'courses/partials/accordion_body.html' with index=forloop.counter %}
+                            {% include 'courses/new_comparison/accordion_body.html' with index=forloop.counter %}
                         </div>
                     </div>
                 {% endfor %}
             </div>
-            <!-- {% include 'courses/partials/compare-popup-bar.html' %} -->
+            <!-- {% include 'courses/new_course_details/partials/compare-popup-bar.html' %} -->
         {% endif %}
     </div>
 

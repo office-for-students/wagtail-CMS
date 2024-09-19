@@ -5,8 +5,13 @@
     <div class="charts d-flex">
         <div class="col-lg-8 col-md-12 mt-3 additional-class d-flex flex-fill"><!--left side-->
             <!--the box-->
-            <div class="student-satisfaction__title-box">
-                <h2>{{ title }}</h2>
+             <div class="student-satisfaction__title-box" {% if not theme.agree_or_strongly_agree %}style="background-color: #0a1d42; color: white"{% endif %}>
+                {% if theme.agree_or_strongly_agree %}
+                    {% include 'courses/new_course_details/partials/custom_donut.html' with percent=theme.agree_or_strongly_agree %}
+                <p>{{ description }}</p>
+                {% else %}
+                    <h2 style="padding: 30px;">{{ title }}</h2>
+                {% endif %}
             </div>
             <!-- end of box-->
         </div>

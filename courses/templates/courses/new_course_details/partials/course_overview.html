@@ -52,10 +52,44 @@
                 </button>
             </div>
         </div>
+
+
+ {% is_franchise course.institution.pub_ukprn course.institution.ukprn as franchise_course %}
+        {% if franchise_course %}
+            <div class="d-flex flex-wrap row">
+                <div class="col-md-8 col-sm-12">
+                    <p class="course-detail__institution-locations"></p>
+                    {% create_list course.institution_name course.institution.ukprn_name as substitutions %}
+                    {% get_translation key='franchise_message' language=page.get_language as message %}
+                    {% insert_values_to_plain_text content=message substitutions=substitutions as subbed_text %}
+                    {{ subbed_text | safe}}
+
+
+                </div>
+                <div class="explanation">
+                    <div class="explanation__link">
+                        <img class="information-icon" style="margin-top: 30px"
+                             src="{% static 'images/info-icon.png' %}"
+                             alt="{% get_translation key='chart_label_explained' language=page.get_language %}">
+                    </div>
+                    <div tabindex="-1" class="chart-label-explanation" style="width:330px;" role="dialog">
+                        <h3 class="chart-label-explanation__heading">
+                            <button class="chart-label-explanation__close"><img
+                                    src="{% static 'images/legacy/close-grey.svg' %}" alt="Close pop up"></button>
+                        </h3>
+                        <div class="chart-label-explanation__body">
+                            {% get_translation key='franchise_information_message' language=page.get_language %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        {% endif %}
+
     </div>
 
     <div class="">
-        <div class="course-detail__overview-lead mt-1 pb-0 mx-3">
+        <div class="course-detail__overview-lead mt-5 pb-0 mx-3">
             <h2>{% get_translation key='course_details' language=page.get_language %}</h2>
             <hr/>
         </div>
@@ -78,8 +112,15 @@
                         {% if course.mode.label != 'Part-time' %}
                             <div class="course-detail__overview-item overview-block my-2 mx-3 mb-4 align-self-stretch">
                                 <p class="course-detail__overview-item-heading">{% get_translation key='length' language=page.get_language %}</p>
-                                <p class="course-detail__overview-item-value">
-                                    {{ course.length.label | slice:1 }} {% get_translation key='year_course' language=page.get_language %}</p>
+                                     <p class="course-detail__overview-item-value">
+                                    {% with course.length.label|slice:1 as length %}
+                                        {% if length == "1" %}
+                                            {% get_translation key='12_18_months' language=page.get_language %}
+                                        {% else %}
+                                            {{ course.length.label | slice:1 }} {% get_translation key='year_course' language=page.get_language %}</p>
+                                        {% endif %}
+                                    {% endwith %}
+                                </p>
                             </div>
                         {% endif %}
 
@@ -123,8 +164,15 @@
                     {% if course.mode.label != 'Part-time' %}
                         <div class="course-detail__overview-item overview-block my-2 mx-3 mb-4 align-self-stretch">
                             <p class="course-detail__overview-item-heading">{% get_translation key='length' language=page.get_language %}</p>
-                            <p class="course-detail__overview-item-value">
-                                {{ course.length.label | slice:1 }} {% get_translation key='year_course' language=page.get_language %}</p>
+                                     <p class="course-detail__overview-item-value">
+                                    {% with course.length.label|slice:1 as length %}
+                                        {% if length == "1" %}
+                                            {% get_translation key='12_18_months' language=page.get_language %}
+                                        {% else %}
+                                            {{ course.length.label | slice:1 }} {% get_translation key='year_course' language=page.get_language %}</p>
+                                        {% endif %}
+                                    {% endwith %}
+                                </p>
                         </div>
                     {% endif %}
 

@@ -222,11 +222,51 @@ def get_salary_from_index(objs: List, index: int):
     except IndexError:
         return objs[0]
 
+@register.simple_tag
+def get_item_at_index(lst, index):
+    try:
+        return lst[index]
+    except IndexError:
+        return None
 
-# @register.simple_tag
-# def get_banner_courses_affected(course):
-#     with open("./csv_banner_courses.csv") as file:
-#         data = csv.reader(file)
-#         for row in data:
-#             if row[1] == course:
-#                 return True
+@register.simple_tag
+def is_franchise(pubukprn, ukprn):
+    if pubukprn != ukprn:
+        return True
+    return False
+
+#TODO: MEG delete this tag once the nss theme data is in
+@register.simple_tag
+def insert_fake_theme():
+    theme = {
+        "agree_or_strongly_agree" : 100,
+        "description": "Were positive about the teaching on the course overall",
+    }
+    return theme
+
+@register.simple_tag
+def format_value(content, substitution):
+   return content.replace("{}", str(substitution))
+
+@register.simple_tag
+def get_t_number(value, item):
+    try:
+        #TODO: MEG change these back to t1,t2...
+        t_values = {1: "question_1", 2: "question_2", 3: "question_3", 4: "question_4", 5: "question_5", 6: "question_6", 7: "question_7"}
+        # Get the corresponding t_value (like t1, t2)
+        index = t_values.get(value, "Invalid index")
+        # Check if the item has the corresponding attribute
+        if index != "Invalid index" and hasattr(item, index):
+            t_number = getattr(item, index)
+            return str(t_number) if t_number is not None else ""
+
+        return ""
+    except Exception as e:
+        return ""
+
+ #TODO MEG change this to false when going live without theme then back to true when themes are in...
+@register.simple_tag
+def has_theme_score():
+    return True
+
+

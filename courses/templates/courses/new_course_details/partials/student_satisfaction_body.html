@@ -24,289 +24,366 @@
 
     {% for overall_stats in course_details.overall_satisfaction %}
         {% with question_stats=overall_stats.satisfaction_stats %}
-        {% create_list course_details.data_from_html question_stats.number_of_students question_stats.response_rate as substitutions %}
-        {% create_list question_stats.aggregation_year course_details.data_from_html question_stats.number_of_students question_stats.response_rate as source_subs %}
+            {% create_list course_details.data_from_html question_stats.number_of_students question_stats.response_rate as substitutions %}
+            {% create_list question_stats.aggregation_year course_details.data_from_html question_stats.number_of_students question_stats.response_rate as source_subs %}
 
-        <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}"
-             id="student-satisfaction-{{ forloop.counter }}"><!-- Chart container -->
+            <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}"
+                 id="student-satisfaction-{{ forloop.counter }}"><!-- Chart container -->
 
-            <div class="student-satisfaction__block"> <!-- student satisfaction question boxes -->
-                <div class="mt-3 pl-3 ml-1">
-                    {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavail %}
-                </div>
-                <div class="scrolling-wrapper scroll">
-                    {% if course.country.code != "XF" and overall_stats.satisfaction_stats.show_satisfaction_stats %}
-                        {% if question_stats.question_28.agree_or_strongly_agree %}
-                            <div class="student-satisfaction__overview mt-3 p-2 flex-wrap mx-1">
-                                <div class="student-satisfaction_overall-chart left">
-                                    <div class="student-satisfaction__chart-wrapper hero-wrapper">
-                                        <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
-                                             data-value="{{ question_stats.question_28.agree_or_strongly_agree }}"
-                                             data-question="satisfaction-28"
-                                             data-language="{{ page.get_language }}"
-                                             data-field="{{ block.value.lead_text }}">
-                                            <p style="font-size: 3rem; margin-top: auto; margin-bottom: auto;">{{ question_stats.question_28.agree_or_strongly_agree }}%</p>
+                <div class="student-satisfaction__block"> <!-- student satisfaction question boxes -->
+                    <div class="mt-3 pl-3 ml-1">
+                        {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavail %}
+                    </div>
+                    <div class="scrolling-wrapper scroll">
+                        {% if course.country.code != "XF" and overall_stats.satisfaction_stats.show_satisfaction_stats %}
+                            {% if question_stats.question_28.agree_or_strongly_agree %}
+                                <div class="student-satisfaction__overview mt-3 p-2 flex-wrap mx-1">
+                                    <div class="student-satisfaction_overall-chart left">
+                                        <div class="student-satisfaction__chart-wrapper hero-wrapper">
+                                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                                 data-value="{{ question_stats.question_28.agree_or_strongly_agree }}"
+                                                 data-question="satisfaction-28"
+                                                 data-language="{{ page.get_language }}"
+                                                 data-field="{{ block.value.lead_text }}">
+                                                <p style="font-size: 3rem; margin-top: auto; margin-bottom: auto;">{{ question_stats.question_28.agree_or_strongly_agree }}%</p>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!--end of chart-->
+                                    <div style="text-align: left;">
+                                        <p>{% get_translation key="overall_satisfied" language=page.get_language %}</p>
+                                        {% if course.kis_course_id == "11BGLSCI" %}
+                                            {% include 'courses/new_course_details/partials/GCU_partial.html' %}
+                                        {% endif %}
+                                        <ul style="text-align: left;">
+                                            <li>
+                                                {% get_translation key="data_from" language=page.get_language %} {{ question_stats.nss_country_population }} {% get_translation key="students" language=page.get_language %}
+                                                ({{ question_stats.nss_country_response_rate }}% {% get_translation key="of_those_asked" language=page.get_language %}).
+                                            </li>
+                                            <li>{% get_translation key="final_year_students" language=page.get_language %}</li>
+                                        </ul>
+                                        <p style="font-size: 1rem;">{% get_translation key="data_from_students_graduating" language=page.get_language %} {{ question_stats.nss_country_year }}</p>
+                                        <a style="font-size: 1rem;"
+                                           href="http://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey"
+                                           role="button" class="TooltipEntity ml-1" data-draftail-trigger="true">Source:
+                                            NSS (National Student Survey)</a>
+                                    </div>
                                 </div>
-                                <!--end of chart-->
-                                <div style="text-align: left;">
-                                <p>{% get_translation key="overall_satisfied" language=page.get_language %}</p>
-                                    {% if gcu %}
-                                        {% include 'courses/new_course_details/partials/GCU_partial.html' %}
-                                    {% endif %}
-                                <ul style="text-align: left;">
-                                    <li>
-                                        {% get_translation key="data_from" language=page.get_language %} {{ question_stats.nss_country_population }} {% get_translation key="students" language=page.get_language %}
-                                        ({{ question_stats.nss_country_response_rate }}% {% get_translation key="of_those_asked" language=page.get_language %}).
-                                    </li>
-                                    <li>{% get_translation key="final_year_students" language=page.get_language %}</li>
-                                </ul>
-                                <p style="font-size: 1rem;">{% get_translation key="data_from_students_graduating" language=page.get_language %} {{ question_stats.nss_country_year }}</p>
-                                <a style="font-size: 1rem;" href="http://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey" role="button" class="TooltipEntity ml-1" data-draftail-trigger="true">Source: NSS (National Student Survey)</a>
+                            {% endif %}
+                        {% elif course.country.code == "XF" and overall_stats.satisfaction_stats.show_satisfaction_stats %}
+                            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
+                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Student satisfaction" q1=question_stats.question_28 description="" no_data_key="no_data_england" %}
+                            </div>
+                        {% endif %}
+                        {% if overall_stats.satisfaction_stats.show_satisfaction_stats %}
+                            {% if overall_stats.satisfaction_stats.show_teaching_stats %}
+                                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item stubborn-additional-class">
+                                    <!-- the teaching on my course box-->
+                                    {% with overall_stats.satisfaction_stats.t1 as theme %}
+                                        <!--TODO: MEG remove when we have themes-->
+                                        {% insert_fake_theme as theme %}
+
+                                        {% create_list theme.agree_or_strongly_agree '' as substitutions %}
+                                        {% get_translation key='overall_teaching_on_my_course' language=page.get_language as description %}
+                                        {% format_value content=description substitution=theme.agree_or_strongly_agree as subbed_text %}
+                                        {% with subbed_text|safe as description %}
+                                            {% include 'courses/new_course_details/partials/student_satisfaction_4_box.html' with title=block.value.teaching_stats_header q1=overall_stats.satisfaction_stats.question_1 q2=overall_stats.satisfaction_stats.question_2 q3=overall_stats.satisfaction_stats.question_3 q4=overall_stats.satisfaction_stats.question_4 %}
+                                        {% endwith %}
+
+                                    {% endwith %}
+
                                 </div>
-                            </div>
-                        {% endif %}
-                    {% elif course.country.code == "XF" and overall_stats.satisfaction_stats.show_satisfaction_stats %}
-                        <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                            {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Student satisfaction" q1=question_stats.question_28 description="" no_data_key="no_data_england" %}
-                        </div>
-                    {% endif %}
-                    {% if overall_stats.satisfaction_stats.show_satisfaction_stats %}
-                        {% if overall_stats.satisfaction_stats.show_teaching_stats %}
-                            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item stubborn-additional-class">
-                                <!-- the teaching on my course box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_4_box.html' with title=block.value.teaching_stats_header q1=overall_stats.satisfaction_stats.question_1 q2=overall_stats.satisfaction_stats.question_2 q3=overall_stats.satisfaction_stats.question_3 q4=overall_stats.satisfaction_stats.question_4 %}
-                            </div>
+                            {% endif %}
+
+                            {% if overall_stats.satisfaction_stats.show_learning_opps_stats %}
+                                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
+                                    <!-- learning opportunities box-->
+                                    {% with overall_stats.satisfaction_stats.t2 as theme %}
+                                        <!--TODO: MEG remove when we have themes-->
+                                        {% insert_fake_theme as theme %}
+
+                                        {% create_list theme.agree_or_strongly_agree '' as substitutions %}
+                                        {% get_translation key='overall_learning_opportunities' language=page.get_language as description %}
+                                        {% format_value content=description substitution=theme.agree_or_strongly_agree as subbed_text %}
+                                        {% with subbed_text|safe as description %}
+                                            {% include 'courses/new_course_details/partials/student_satisfaction_5_box.html' with title=block.value.learning_opportunities_stats_header q1=overall_stats.satisfaction_stats.question_5 q2=overall_stats.satisfaction_stats.question_6 q3=overall_stats.satisfaction_stats.question_7 q4=overall_stats.satisfaction_stats.question_8 q5=overall_stats.satisfaction_stats.question_9 %}
+                                        {% endwith %}
+                                    {% endwith %}
+
+                                </div>
+                            {% endif %}
+
+                            {% if overall_stats.satisfaction_stats.show_assessment_stats %}
+                                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
+                                    <!-- Assessment and feedback box-->
+                                    {% with overall_stats.satisfaction_stats.t3 as theme %}
+                                        <!--TODO: MEG remove when we have themes-->
+                                        {% insert_fake_theme as theme %}
+
+                                        {% create_list theme.agree_or_strongly_agree '' as substitutions %}
+                                        {% get_translation key='overall_assessment_and_feedback' language=page.get_language as description %}
+                                        {% format_value content=description substitution=theme.agree_or_strongly_agree as subbed_text %}
+                                        {% with subbed_text|safe as description %}
+                                    {% include 'courses/new_course_details/partials/student_satisfaction_5_box.html' with title=block.value.assessment_stats_header q1=overall_stats.satisfaction_stats.question_10 q2=overall_stats.satisfaction_stats.question_11 q3=overall_stats.satisfaction_stats.question_12 q4=overall_stats.satisfaction_stats.question_13 q5=overall_stats.satisfaction_stats.question_14 %}
+                                    {% endwith %}
+                                {% endwith %}
+                                </div>
+                            {% endif %}
+
+
+                            {% if overall_stats.satisfaction_stats.show_support_stats %}
+                                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
+                                    <!-- Academic support box-->
+                                    {% with overall_stats.satisfaction_stats.t4 as theme %}
+                                        <!--TODO: MEG remove when we have themes-->
+                                        {% insert_fake_theme as theme %}
+
+                                        {% create_list theme.agree_or_strongly_agree '' as substitutions %}
+                                        {% get_translation key='overall_academic_support' language=page.get_language as description %}
+                                        {% format_value content=description substitution=theme.agree_or_strongly_agree as subbed_text %}
+                                        {% with subbed_text|safe as description %}
+                                    {% include 'courses/new_course_details/partials/student_satisfaction_2_box.html' with title=block.value.support_stats_header q1=overall_stats.satisfaction_stats.question_15 q2=overall_stats.satisfaction_stats.question_16 %}
+                                    {% endwith %}
+                                {% endwith %}
+
+                                </div>
+                            {% endif %}
+
+                            {% if overall_stats.satisfaction_stats.show_organisation_stats %}
+                                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
+                                    <!-- Organisation and management box-->
+                                    {% with overall_stats.satisfaction_stats.t5 as theme %}
+                                        <!--TODO: MEG remove when we have themes-->
+                                        {% insert_fake_theme as theme %}
+
+                                        {% create_list theme.agree_or_strongly_agree '' as substitutions %}
+                                        {% get_translation key='overall_organisation_and_management' language=page.get_language as description %}
+                                        {% format_value content=description substitution=theme.agree_or_strongly_agree as subbed_text %}
+                                        {% with subbed_text|safe as description %}
+                                    {% include 'courses/new_course_details/partials/student_satisfaction_2_box.html' with title=block.value.organisation_stats_header q1=overall_stats.satisfaction_stats.question_17 q2=overall_stats.satisfaction_stats.question_18 %}
+                                 {% endwith %}
+                                {% endwith %}
+                                </div>
+                            {% endif %}
+
+                            {% if overall_stats.satisfaction_stats.show_learning_resources_stats %}
+                                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
+                                    <!-- Learning resources box-->
+                                    {% with overall_stats.satisfaction_stats.t6 as theme %}
+                                        <!--TODO: MEG remove when we have themes-->
+                                        {% insert_fake_theme as theme %}
+
+                                        {% create_list theme.agree_or_strongly_agree '' as substitutions %}
+                                        {% get_translation key='overall_learning_resources' language=page.get_language as description %}
+                                        {% format_value content=description substitution=theme.agree_or_strongly_agree as subbed_text %}
+                                        {% with subbed_text|safe as description %}
+                                    {% include 'courses/new_course_details/partials/student_satisfaction_3_box.html' with title=block.value.learning_resources_stats_header q1=overall_stats.satisfaction_stats.question_19 q2=overall_stats.satisfaction_stats.question_20 q3=overall_stats.satisfaction_stats.question_21 %}
+                                 {% endwith %}
+                                {% endwith %}
+                                </div>
+                            {% endif %}
+
+                            {% if overall_stats.satisfaction_stats.show_voice_stats %}
+                                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
+                                    <!-- Student voice box-->
+                                    {% with overall_stats.satisfaction_stats.t7 as theme %}
+                                        <!--TODO: MEG remove when we have themes-->
+                                        {% insert_fake_theme as theme %}
+
+                                        {% create_list theme.agree_or_strongly_agree '' as substitutions %}
+                                        {% get_translation key='overall_student_voice' language=page.get_language as description %}
+                                        {% format_value content=description substitution=theme.agree_or_strongly_agree as subbed_text %}
+                                        {% with subbed_text|safe as description %}
+                                    {% include 'courses/new_course_details/partials/student_satisfaction_4_box.html' with title=block.value.student_voice_stats_header q1=overall_stats.satisfaction_stats.question_22 q2=overall_stats.satisfaction_stats.question_23 q3=overall_stats.satisfaction_stats.question_24 q4=overall_stats.satisfaction_stats.question_25 %}
+                                {% endwith %}
+                                {% endwith %}
+                                </div>
+                            {% endif %}
+
+                            {% if overall_stats.satisfaction_stats.show_mental_wellbeing_stats %}
+                                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
+                                    <!-- Mental wellbeing services box-->
+                                    {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="mental_wellbeing" q1=overall_stats.satisfaction_stats.question_26 no_data_key="no_data_available" %}
+                                </div>
+                            {% endif %}
+
+                            <!-- england only-->
+                            {% if course.country.code == "XF" %}
+                                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
+                                    <!-- freedom of expression (england) box-->
+                                    {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="freedom_of_expression" q1=question_stats.question_27 description="free_to_express" no_data_key="no_data_available" %}
+                                </div>
+                            {% else %}
+                                <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
+                                    <!-- freedom of expression (england) box-->
+                                    {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="freedom_of_expression" q1=question_stats.question_27 description="" no_data_key="no_data_ni_scot_wales" %}
+                                </div>
+                            {% endif %}
                         {% endif %}
 
-                        {% if overall_stats.satisfaction_stats.show_learning_opps_stats %}
+                        <!-- not sure what this stuff below is yet...-->
+
+                        {% if overall_stats.nhs_satisfaction_stats %}
+                            {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                                <!-- learning opportunities box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_5_box.html' with title=block.value.learning_opportunities_stats_header q1=overall_stats.satisfaction_stats.question_5 q2=overall_stats.satisfaction_stats.question_6 q3=overall_stats.satisfaction_stats.question_7 q4=overall_stats.satisfaction_stats.question_8 q5=overall_stats.satisfaction_stats.question_9 %}
-                            </div>
-                        {% endif %}
+                                <div class="col-lg-4 col-md-12 my-auto pt-3 text-left">
+                                    <h2 class="student-satisfaction__data-group-heading text-left">
+                                        {{ block.value.nhs_placement_stats_header }}</h2>
+                                </div>
 
-                        {% if overall_stats.satisfaction_stats.show_assessment_stats %}
-                            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                                <!-- Assessment and feedback box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_5_box.html' with title=block.value.assessment_stats_header q1=overall_stats.satisfaction_stats.question_10 q2=overall_stats.satisfaction_stats.question_11 q3=overall_stats.satisfaction_stats.question_12 q4=overall_stats.satisfaction_stats.question_13 q5=overall_stats.satisfaction_stats.question_14 %}
-                            </div>
-                        {% endif %}
+                                {% if overall_stats.nhs_satisfaction_stats.show_nhs_stats %}
+                                    <div class="student-satisfaction__charts col-lg-8 col-md-12 mt-3 mb-auto justify-content-start">
+                                        {% if overall_stats.nhs_satisfaction_stats.question_1.show_data_point %}
+                                            <div class="student-satisfaction__chart-wrapper">
+                                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                                     data-value="{{ overall_stats.nhs_satisfaction_stats.question_1.agree_or_strongly_agree }}"
+                                                     data-question="nhs-1"
+                                                     data-language="{{ page.get_language }}"
+                                                     data-field="{% trans overall_stats.nhs_satisfaction_stats.question_1.description %}">
+                                                    {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
+                                                    <p class="student-satisfaction__chart-title" aria-hidden="true"
+                                                       aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_1.description %}</p>
+                                                </div>
+                                                <div class="entry-information__chart discover-uni-chart bar sm-chart"
+                                                     data-value="{{ overall_stats.nhs_satisfaction_stats.question_1.agree_or_strongly_agree }}"
+                                                     data-question="nhs-1"
+                                                     data-language="{{ page.get_language }}"
+                                                     data-field="{% trans overall_stats.nhs_satisfaction_stats.question_1.description %}">
+                                                    {% include 'courses/new_course_details/partials/bar_chart.html' %}
+                                                    <label class="entry-information__chart-label"
+                                                           aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_1.description %}</label>
+                                                </div>
+                                            </div>
+                                        {% endif %}
 
+                                        {% if overall_stats.nhs_satisfaction_stats.question_2.show_data_point %}
+                                            <div class="student-satisfaction__chart-wrapper">
+                                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                                     data-value="{{ overall_stats.nhs_satisfaction_stats.question_2.agree_or_strongly_agree }}"
+                                                     data-question="nhs-2"
+                                                     data-language="{{ page.get_language }}"
+                                                     data-field="{% trans overall_stats.nhs_satisfaction_stats.question_2.description %}">
+                                                    {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
+                                                    <p class="student-satisfaction__chart-title" aria-hidden="true"
+                                                       aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_2.description %}</p>
+                                                </div>
+                                                <div class="entry-information__chart discover-uni-chart bar sm-chart"
+                                                     data-value="{{ overall_stats.nhs_satisfaction_stats.question_2.agree_or_strongly_agree }}"
+                                                     data-question="nhs-2"
+                                                     data-language="{{ page.get_language }}"
+                                                     data-field="{% trans overall_stats.nhs_satisfaction_stats.question_2.description %}">
+                                                    {% include 'courses/new_course_details/partials/bar_chart.html' %}
+                                                    <label class="entry-information__chart-label"
+                                                           aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_2.description %}</label>
+                                                </div>
+                                            </div>
+                                        {% endif %}
 
-                        {% if overall_stats.satisfaction_stats.show_support_stats %}
-                            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                                <!-- Academic support box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_2_box.html' with title=block.value.support_stats_header q1=overall_stats.satisfaction_stats.question_15 q2=overall_stats.satisfaction_stats.question_16 %}
-                            </div>
-                        {% endif %}
+                                        {% if overall_stats.nhs_satisfaction_stats.question_3.show_data_point %}
+                                            <div class="student-satisfaction__chart-wrapper">
+                                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                                     data-value="{{ overall_stats.nhs_satisfaction_stats.question_3.agree_or_strongly_agree }}"
+                                                     data-question="nhs-3"
+                                                     data-language="{{ page.get_language }}"
+                                                     data-field="{% trans overall_stats.nhs_satisfaction_stats.question_3.description %}">
+                                                    {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
+                                                    <p class="student-satisfaction__chart-title" aria-hidden="true"
+                                                       aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_3.description %}</p>
+                                                </div>
+                                                <div class="entry-information__chart discover-uni-chart bar sm-chart"
+                                                     data-value="{{ overall_stats.nhs_satisfaction_stats.question_3.agree_or_strongly_agree }}"
+                                                     data-question="nhs-3"
+                                                     data-language="{{ page.get_language }}"
+                                                     data-field="{% trans overall_stats.nhs_satisfaction_stats.question_3.description %}">
+                                                    {% include 'courses/new_course_details/partials/bar_chart.html' %}
+                                                    <label class="entry-information__chart-label"
+                                                           aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_3.description %}</label>
+                                                </div>
+                                            </div>
+                                        {% endif %}
 
-                        {% if overall_stats.satisfaction_stats.show_organisation_stats %}
-                            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                                <!-- Organisation and management box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_2_box.html' with title=block.value.organisation_stats_header q1=overall_stats.satisfaction_stats.question_17 q2=overall_stats.satisfaction_stats.question_18 %}
-                            </div>
-                        {% endif %}
+                                        {% if overall_stats.nhs_satisfaction_stats.question_4.show_data_point %}
+                                            <div class="student-satisfaction__chart-wrapper">
+                                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                                     data-value="{{ overall_stats.nhs_satisfaction_stats.question_4.agree_or_strongly_agree }}"
+                                                     data-question="nhs-4"
+                                                     data-language="{{ page.get_language }}"
+                                                     data-field="{% trans overall_stats.nhs_satisfaction_stats.question_4.description %}">
+                                                    {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
+                                                    <p class="student-satisfaction__chart-title" aria-hidden="true"
+                                                       aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_4.description %}</p>
+                                                </div>
+                                                <div class="entry-information__chart discover-uni-chart bar sm-chart"
+                                                     data-value="{{ overall_stats.nhs_satisfaction_stats.question_4.agree_or_strongly_agree }}"
+                                                     data-question="nhs-4"
+                                                     data-language="{{ page.get_language }}"
+                                                     data-field="{% trans overall_stats.nhs_satisfaction_stats.question_4.description %}">
+                                                    {% include 'courses/new_course_details/partials/bar_chart.html' %}
+                                                    <label class="entry-information__chart-label"
+                                                           aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_4.description %}</label>
+                                                </div>
+                                            </div>
+                                        {% endif %}
 
-                        {% if overall_stats.satisfaction_stats.show_learning_resources_stats %}
-                            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                                <!-- Learning resources box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_3_box.html' with title=block.value.learning_resources_stats_header q1=overall_stats.satisfaction_stats.question_19 q2=overall_stats.satisfaction_stats.question_20 q3=overall_stats.satisfaction_stats.question_21 %}
-                            </div>
-                        {% endif %}
+                                        {% if overall_stats.nhs_satisfaction_stats.question_5.show_data_point %}
+                                            <div class="student-satisfaction__chart-wrapper">
+                                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                                     data-value="{{ overall_stats.nhs_satisfaction_stats.question_5.agree_or_strongly_agree }}"
+                                                     data-question="nhs-5"
+                                                     data-language="{{ page.get_language }}"
+                                                     data-field="{% trans overall_stats.nhs_satisfaction_stats.question_5.description %}">
+                                                    {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
+                                                    <p class="student-satisfaction__chart-title" aria-hidden="true"
+                                                       aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_5.description %}</p>
+                                                </div>
+                                                <div class="entry-information__chart discover-uni-chart bar sm-chart"
+                                                     data-value="{{ overall_stats.nhs_satisfaction_stats.question_5.agree_or_strongly_agree }}"
+                                                     data-question="nhs-5"
+                                                     data-language="{{ page.get_language }}"
+                                                     data-field="{% trans overall_stats.nhs_satisfaction_stats.question_5.description %}">
+                                                    {% include 'courses/new_course_details/partials/bar_chart.html' %}
+                                                    <label class="entry-information__chart-label"
+                                                           aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_5.description %}</label>
+                                                </div>
+                                            </div>
+                                        {% endif %}
 
-                        {% if overall_stats.satisfaction_stats.show_voice_stats %}
-                            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                                <!-- Student voice box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_4_box.html' with title=block.value.student_voice_stats_header q1=overall_stats.satisfaction_stats.question_22 q2=overall_stats.satisfaction_stats.question_23 q3=overall_stats.satisfaction_stats.question_24 q4=overall_stats.satisfaction_stats.question_25 %}
-                            </div>
-                        {% endif %}
-
-                        {% if overall_stats.satisfaction_stats.show_mental_wellbeing_stats %}
-                            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                                <!-- Mental wellbeing services box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="mental_wellbeing" q1=overall_stats.satisfaction_stats.question_26 no_data_key="no_data_available" %}
-                            </div>
-                        {% endif %}
-
-                        <!-- england only-->
-                        {% if course.country.code == "XF" %}
-                            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                                <!-- freedom of expression (england) box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="freedom_of_expression" q1=question_stats.question_27 description="free_to_express" no_data_key="no_data_available" %}
-                            </div>
-                        {% else %}
-                            <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                                <!-- freedom of expression (england) box-->
-                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="freedom_of_expression" q1=question_stats.question_27 description="" no_data_key="no_data_ni_scot_wales" %}
-                            </div>
-                        {% endif %}
-                    {% endif %}
-
-                    <!-- not sure what this stuff below is yet...-->
-
-                    {% if overall_stats.nhs_satisfaction_stats %}
-                        {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.nhs_satisfaction_stats.display_unavailable_info %}
-                        <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                            <div class="col-lg-4 col-md-12 my-auto pt-3 text-left">
-                                <h2 class="student-satisfaction__data-group-heading text-left">
-                                    {{ block.value.nhs_placement_stats_header }}</h2>
+                                        {% if overall_stats.nhs_satisfaction_stats.question_6.show_data_point %}
+                                            <div class="student-satisfaction__chart-wrapper">
+                                                <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
+                                                     data-value="{{ overall_stats.nhs_satisfaction_stats.question_6.agree_or_strongly_agree }}"
+                                                     data-question="nhs-6"
+                                                     data-language="{{ page.get_language }}"
+                                                     data-field="{% trans overall_stats.nhs_satisfaction_stats.question_6.description %}">
+                                                    {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
+                                                    <p class="student-satisfaction__chart-title" aria-hidden="true"
+                                                       aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_6.description %}</p>
+                                                </div>
+                                                <div class="entry-information__chart discover-uni-chart bar sm-chart"
+                                                     data-value="{{ overall_stats.nhs_satisfaction_stats.question_6.agree_or_strongly_agree }}"
+                                                     data-question="nhs-6"
+                                                     data-language="{{ page.get_language }}"
+                                                     data-field="{% trans overall_stats.nhs_satisfaction_stats.question_6.description %}">
+                                                    {% include 'courses/new_course_details/partials/bar_chart.html' %}
+                                                    <label class="entry-information__chart-label"
+                                                           aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_6.description %}</label>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
                             </div>
 
                             {% if overall_stats.nhs_satisfaction_stats.show_nhs_stats %}
-                                <div class="student-satisfaction__charts col-lg-8 col-md-12 mt-3 mb-auto justify-content-start">
-                                    {% if overall_stats.nhs_satisfaction_stats.question_1.show_data_point %}
-                                        <div class="student-satisfaction__chart-wrapper">
-                                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
-                                                 data-value="{{ overall_stats.nhs_satisfaction_stats.question_1.agree_or_strongly_agree }}"
-                                                 data-question="nhs-1"
-                                                 data-language="{{ page.get_language }}"
-                                                 data-field="{% trans overall_stats.nhs_satisfaction_stats.question_1.description %}">
-                                                {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
-                                                <p class="student-satisfaction__chart-title" aria-hidden="true"
-                                                   aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_1.description %}</p>
-                                            </div>
-                                            <div class="entry-information__chart discover-uni-chart bar sm-chart"
-                                                 data-value="{{ overall_stats.nhs_satisfaction_stats.question_1.agree_or_strongly_agree }}"
-                                                 data-question="nhs-1"
-                                                 data-language="{{ page.get_language }}"
-                                                 data-field="{% trans overall_stats.nhs_satisfaction_stats.question_1.description %}">
-                                                {% include 'courses/new_course_details/partials/bar_chart.html' %}
-                                                <label class="entry-information__chart-label"
-                                                       aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_1.description %}</label>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-
-                                    {% if overall_stats.nhs_satisfaction_stats.question_2.show_data_point %}
-                                        <div class="student-satisfaction__chart-wrapper">
-                                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
-                                                 data-value="{{ overall_stats.nhs_satisfaction_stats.question_2.agree_or_strongly_agree }}"
-                                                 data-question="nhs-2"
-                                                 data-language="{{ page.get_language }}"
-                                                 data-field="{% trans overall_stats.nhs_satisfaction_stats.question_2.description %}">
-                                                {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
-                                                <p class="student-satisfaction__chart-title" aria-hidden="true"
-                                                   aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_2.description %}</p>
-                                            </div>
-                                            <div class="entry-information__chart discover-uni-chart bar sm-chart"
-                                                 data-value="{{ overall_stats.nhs_satisfaction_stats.question_2.agree_or_strongly_agree }}"
-                                                 data-question="nhs-2"
-                                                 data-language="{{ page.get_language }}"
-                                                 data-field="{% trans overall_stats.nhs_satisfaction_stats.question_2.description %}">
-                                                {% include 'courses/new_course_details/partials/bar_chart.html' %}
-                                                <label class="entry-information__chart-label"
-                                                       aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_2.description %}</label>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-
-                                    {% if overall_stats.nhs_satisfaction_stats.question_3.show_data_point %}
-                                        <div class="student-satisfaction__chart-wrapper">
-                                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
-                                                 data-value="{{ overall_stats.nhs_satisfaction_stats.question_3.agree_or_strongly_agree }}"
-                                                 data-question="nhs-3"
-                                                 data-language="{{ page.get_language }}"
-                                                 data-field="{% trans overall_stats.nhs_satisfaction_stats.question_3.description %}">
-                                                {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
-                                                <p class="student-satisfaction__chart-title" aria-hidden="true"
-                                                   aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_3.description %}</p>
-                                            </div>
-                                            <div class="entry-information__chart discover-uni-chart bar sm-chart"
-                                                 data-value="{{ overall_stats.nhs_satisfaction_stats.question_3.agree_or_strongly_agree }}"
-                                                 data-question="nhs-3"
-                                                 data-language="{{ page.get_language }}"
-                                                 data-field="{% trans overall_stats.nhs_satisfaction_stats.question_3.description %}">
-                                                {% include 'courses/new_course_details/partials/bar_chart.html' %}
-                                                <label class="entry-information__chart-label"
-                                                       aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_3.description %}</label>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-
-                                    {% if overall_stats.nhs_satisfaction_stats.question_4.show_data_point %}
-                                        <div class="student-satisfaction__chart-wrapper">
-                                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
-                                                 data-value="{{ overall_stats.nhs_satisfaction_stats.question_4.agree_or_strongly_agree }}"
-                                                 data-question="nhs-4"
-                                                 data-language="{{ page.get_language }}"
-                                                 data-field="{% trans overall_stats.nhs_satisfaction_stats.question_4.description %}">
-                                                {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
-                                                <p class="student-satisfaction__chart-title" aria-hidden="true"
-                                                   aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_4.description %}</p>
-                                            </div>
-                                            <div class="entry-information__chart discover-uni-chart bar sm-chart"
-                                                 data-value="{{ overall_stats.nhs_satisfaction_stats.question_4.agree_or_strongly_agree }}"
-                                                 data-question="nhs-4"
-                                                 data-language="{{ page.get_language }}"
-                                                 data-field="{% trans overall_stats.nhs_satisfaction_stats.question_4.description %}">
-                                                {% include 'courses/new_course_details/partials/bar_chart.html' %}
-                                                <label class="entry-information__chart-label"
-                                                       aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_4.description %}</label>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-
-                                    {% if overall_stats.nhs_satisfaction_stats.question_5.show_data_point %}
-                                        <div class="student-satisfaction__chart-wrapper">
-                                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
-                                                 data-value="{{ overall_stats.nhs_satisfaction_stats.question_5.agree_or_strongly_agree }}"
-                                                 data-question="nhs-5"
-                                                 data-language="{{ page.get_language }}"
-                                                 data-field="{% trans overall_stats.nhs_satisfaction_stats.question_5.description %}">
-                                                {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
-                                                <p class="student-satisfaction__chart-title" aria-hidden="true"
-                                                   aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_5.description %}</p>
-                                            </div>
-                                            <div class="entry-information__chart discover-uni-chart bar sm-chart"
-                                                 data-value="{{ overall_stats.nhs_satisfaction_stats.question_5.agree_or_strongly_agree }}"
-                                                 data-question="nhs-5"
-                                                 data-language="{{ page.get_language }}"
-                                                 data-field="{% trans overall_stats.nhs_satisfaction_stats.question_5.description %}">
-                                                {% include 'courses/new_course_details/partials/bar_chart.html' %}
-                                                <label class="entry-information__chart-label"
-                                                       aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_5.description %}</label>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-
-                                    {% if overall_stats.nhs_satisfaction_stats.question_6.show_data_point %}
-                                        <div class="student-satisfaction__chart-wrapper">
-                                            <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
-                                                 data-value="{{ overall_stats.nhs_satisfaction_stats.question_6.agree_or_strongly_agree }}"
-                                                 data-question="nhs-6"
-                                                 data-language="{{ page.get_language }}"
-                                                 data-field="{% trans overall_stats.nhs_satisfaction_stats.question_6.description %}">
-                                                {% include 'courses/new_course_details/partials/doughnut_chart.html' %}
-                                                <p class="student-satisfaction__chart-title" aria-hidden="true"
-                                                   aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_6.description %}</p>
-                                            </div>
-                                            <div class="entry-information__chart discover-uni-chart bar sm-chart"
-                                                 data-value="{{ overall_stats.nhs_satisfaction_stats.question_6.agree_or_strongly_agree }}"
-                                                 data-question="nhs-6"
-                                                 data-language="{{ page.get_language }}"
-                                                 data-field="{% trans overall_stats.nhs_satisfaction_stats.question_6.description %}">
-                                                {% include 'courses/new_course_details/partials/bar_chart.html' %}
-                                                <label class="entry-information__chart-label"
-                                                       aria-hidden="true">{% trans overall_stats.nhs_satisfaction_stats.question_6.description %}</label>
-                                            </div>
-                                        </div>
-                                    {% endif %}
+                                <div class="explanation-text">
+                                    {{ subbed_text | safe }}
                                 </div>
                             {% endif %}
-                        </div>
 
-                        {% if overall_stats.nhs_satisfaction_stats.show_nhs_stats %}
-                            <div class="explanation-text">
-                                {{ subbed_text | safe }}
-                            </div>
                         {% endif %}
-
-                    {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
         {% endwith %}
     {% endfor %}
 </div>
