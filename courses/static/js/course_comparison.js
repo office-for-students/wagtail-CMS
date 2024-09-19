@@ -1,4 +1,4 @@
-import {setDonuts} from './customDonut.js'
+import {setDonuts} from '/static/js/customDonut.js'
 
 class ScrollListener {
     lastActionPosition = 0
