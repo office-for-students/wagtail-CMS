@@ -51,7 +51,7 @@
                     {% include 'courses/new_comparison/accordion_block_donut.html' with title=title.0 subtitle=subtitle.1 index=index %}
                 {% endwith %}
             {% else %}
-                {% include 'courses/new_comparison/accordion_block.html' %}
+                {% include 'courses/new_comparison/accordion_block_not_donut.html' %}
             {% endif %}
         {% endwith %}
     {% endfor %}
