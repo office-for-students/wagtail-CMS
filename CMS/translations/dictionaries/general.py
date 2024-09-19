@@ -1781,6 +1781,15 @@ OPTIONALS = {
     'course_details': {
         "en": "course details",
         "cy": "Manylion y cwrs"
-    }
+    },
+    'graduate_views': {
+        "en": "Graduate views",
+        "cy": "Barn Graddedigion"
+    },
+    'student_views': {
+        "en": "Student views",
+        "cy": "Barn Myfyrwyr"
+    },
+
 
 }
