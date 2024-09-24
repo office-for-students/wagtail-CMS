@@ -209,7 +209,11 @@ class SatisfactionStatistics:
         if unavail_code == 0:
             try:
                 unavail = unavail_dict["data"][str(unavail_code)][str(aggregation_level)][resp]
-                new_unavail = unavail.replace("[Subject]", subject)
+                if subject:
+                    new_unavail = unavail.replace("[Subject]", subject)
+                else:
+                    subject = "MEGAN JONES"
+                    new_unavail = unavail.replace("[Subject]", subject)
                 return new_unavail
             except KeyError:
                 unavail = "The data displayed is from students on this and other courses."

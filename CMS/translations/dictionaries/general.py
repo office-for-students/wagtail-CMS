@@ -1798,5 +1798,13 @@ OPTIONALS = {
         "en": "Miminise course details data",
         "cy": "Llelhau data manylion y cwrs"
     },
+    'data_for_students_graduating': {
+        "en": "Data for students graduating",
+        "cy": "Data o fyfyrwyr a raddiodd yn ystod"
+    },
+    'data_from_students' : {
+        "en": "Data from {} students ({}% of those who were asked)",
+        "cy": "Data gan {}} fyfyrwyr ({}} o'r rhai y gofynnwyd iddynt)"
+    }
 
 }

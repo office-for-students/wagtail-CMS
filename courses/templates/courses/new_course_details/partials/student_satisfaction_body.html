@@ -194,7 +194,7 @@
                                         {% get_translation key='overall_student_voice' language=page.get_language as description %}
                                         {% format_value content=description substitution=theme.agree_or_strongly_agree as subbed_text %}
                                         {% with subbed_text|safe as description %}
-                                    {% include 'courses/new_course_details/partials/student_satisfaction_4_box.html' with title=block.value.student_voice_stats_header q1=overall_stats.satisfaction_stats.question_22 q2=overall_stats.satisfaction_stats.question_23 q3=overall_stats.satisfaction_stats.question_24 q4=overall_stats.satisfaction_stats.question_25 %}
+                                    {% include 'courses/new_course_details/partials/student_satisfaction_student_voice_box.html' with title=block.value.student_voice_stats_header q1=overall_stats.satisfaction_stats.question_22 q2=overall_stats.satisfaction_stats.question_23 q3=overall_stats.satisfaction_stats.question_24 q4=overall_stats.satisfaction_stats.question_25 %}
                                 {% endwith %}
                                 {% endwith %}
                                 </div>

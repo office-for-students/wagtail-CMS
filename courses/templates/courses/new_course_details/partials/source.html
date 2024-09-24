@@ -1,8 +1,14 @@
 {% load wagtailcore_tags discover_uni_tags %}
 
 <div class="data-source">
-{#    {% insert_values_to_rich_text content=block.value.intro_body substitutions=substitutions as subbed_text %}#}
-    {% insert_values_to_rich_text  content=block.value.data_source substitutions=source_subs as source_text %}
-    <div class="flex-row">{{ subbed_text | richtext }}</div>
-    <div class="flex-column m-0">{{ source_text | richtext }}</div>
+    {% create_list question_stats.number_of_students question_stats.response_rate as data %}
+    {% get_translation key='data_from_students' language=page.get_language as source %}
+    {% insert_values_to_plain_text content=source substitutions=data as source_text %}
+    <p>{{ source_text }}</p>
+
+    <div class="d-flex flex-column">
+        <p>{% get_translation key='data_for_students_graduating' language=page.get_language %} {{ question_stats.aggregation_year }}</p>
+        <p><a target="_blank" href=\"http://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey\">Source: NSS (National
+            Student Survey)</a></p>
+    </div>
 </div>

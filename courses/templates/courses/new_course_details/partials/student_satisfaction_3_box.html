@@ -3,6 +3,9 @@
 {% load humanize %}
 
 <div class="inside-box"> <!--inside-box-->
+{% if theme.agree_or_strongly_agree %}
+    <h2 style="padding: 10px 0 0 20px; margin-bottom: 0;">{{ title }}</h2>
+{% endif %}
     <div class="charts d-flex">
         <div class="col-lg-8 col-md-12 mt-3 additional-class d-flex flex-fill"><!--left side-->
             <!--the box-->

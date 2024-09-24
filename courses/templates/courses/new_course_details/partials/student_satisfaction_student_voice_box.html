@@ -3,25 +3,26 @@
 {% load humanize %}
 
 <div class="inside-box"> <!--inside-box-->
-{% if theme.agree_or_strongly_agree %}
-    <h2 style="padding: 10px 0 0 20px; margin-bottom: 0;">{{ title }}</h2>
-{% endif %}
+    {% if theme.agree_or_strongly_agree %}
+        <h2 style="padding: 10px 0 0 20px; margin-bottom: 0;">{{ title }}</h2>
+    {% endif %}
     <div class="charts d-flex">
-        <div class=" mt-3 additional-class d-flex flex-fill five-box-outer"><!--left side-->
+        <div class="col-lg-8 col-md-12 mt-3 additional-class d-flex flex-fill" style="max-height:350px;"><!--left side-->
             <!--the box-->
-             <div class="student-satisfaction__title-box" {% if not theme.agree_or_strongly_agree %}style="background-color: #0a1d42; color: white"{% endif %}>
+            <div class="student-satisfaction__title-box"
+                 {% if not theme.agree_or_strongly_agree %}style="background-color: #0a1d42; color: white"{% endif %}>
                 {% if theme.agree_or_strongly_agree %}
-                   {% include 'courses/new_course_details/partials/custom_donut.html' with percent=theme.agree_or_strongly_agree %}
-                <p>{{ description }}</p>
+                    {% include 'courses/new_course_details/partials/custom_donut.html' with percent=theme.agree_or_strongly_agree  %}
+                    <p>{{ description }}</p>
                 {% else %}
                     <h2 style="padding: 30px;">{{ title }}</h2>
                 {% endif %}
             </div>
             <!-- end of box-->
         </div>
-        <div class="student-satisfaction__charts mt-3 mb-auto justify-content-start">
+        <div class="student-satisfaction__charts col-lg-8 col-md-7 mt-3 mb-auto justify-content-start">
             <!--right-side-->
-            <div class="top-row top-row-5 d-flex">
+            <div class="top-row d-flex">
                 <!-- question 1 -->
                 {% if q1.show_data_point %}
 
@@ -55,9 +56,9 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="bottom-row bottom-row-5 d-flex">
+            <div class="bottom-row d-flex">
 
-            <!-- question 3 -->
+                <!-- question 3 -->
                 {% if q3.show_data_point %}
                     <div class="student-satisfaction__chart-wrapper box-wrapper">
                         <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
@@ -72,8 +73,9 @@
                         </div>
                     </div>
                 {% endif %}
-
-            <!-- question 4 -->
+            </div>
+            <div class="bottom-row d-flex">
+                <!-- question 4 -->
                 {% if q4.show_data_point %}
                     <div class="student-satisfaction__chart-wrapper box-wrapper">
                         <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
@@ -85,22 +87,6 @@
                             <p class="student-satisfaction__chart-title"
                                aria-hidden="true"
                                aria-hidden="true">{% get_translation key=q4.description language=page.get_language %}</p>
-                        </div>
-                    </div>
-                {% endif %}
-
-            <!-- question 5-->
-            {% if q5.show_data_point %}
-                    <div class="student-satisfaction__chart-wrapper box-wrapper">
-                        <div class="student-satisfaction__chart discover-uni-chart doughnut lg-chart mx-1"
-                             data-value="{{ q5.agree_or_strongly_agree }}"
-                             data-question="satisfaction-5"
-                             data-language="{{ page.get_language }}"
-                             data-field="{% get_translation key=q5.description language=page.get_language %}">
-                            <p class="student-satisfaction__chart-percentage">{{ q5.agree_or_strongly_agree }}%</p>
-                            <p class="student-satisfaction__chart-title"
-                               aria-hidden="true"
-                               aria-hidden="true">{% get_translation key=q5.description language=page.get_language %}</p>
                         </div>
                     </div>
                 {% endif %}

@@ -235,7 +235,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
                     if(this.course.data.distance.en === 0) {
                         this.courseDistanceSpan.innerHTML = "Not Available"
                     }
-                    this.courseSandwichSpan.innerHTML = this.course.data.sandwich.en;
+                    this.courseSandwichSpan.innerHTML = this.course.data.sandwich.en.replace(") }}", "");
                     this.courseAbroadSpan.innerHTML = this.course.data.abroad.en;
                 } else {
                     this.courseModeSpan.innerHTML = this.course.data.mode.cy;
