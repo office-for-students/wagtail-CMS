@@ -80,8 +80,6 @@
                                 <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item stubborn-additional-class">
                                     <!-- the teaching on my course box-->
                                     {% with overall_stats.satisfaction_stats.t1 as theme %}
-                                        <!--TODO: MEG remove when we have themes-->
-                                        {% insert_fake_theme as theme %}
 
                                         {% create_list theme.agree_or_strongly_agree '' as substitutions %}
                                         {% get_translation key='overall_teaching_on_my_course' language=page.get_language as description %}
@@ -99,8 +97,6 @@
                                 <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                                     <!-- learning opportunities box-->
                                     {% with overall_stats.satisfaction_stats.t2 as theme %}
-                                        <!--TODO: MEG remove when we have themes-->
-                                        {% insert_fake_theme as theme %}
 
                                         {% create_list theme.agree_or_strongly_agree '' as substitutions %}
                                         {% get_translation key='overall_learning_opportunities' language=page.get_language as description %}
@@ -117,8 +113,6 @@
                                 <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                                     <!-- Assessment and feedback box-->
                                     {% with overall_stats.satisfaction_stats.t3 as theme %}
-                                        <!--TODO: MEG remove when we have themes-->
-                                        {% insert_fake_theme as theme %}
 
                                         {% create_list theme.agree_or_strongly_agree '' as substitutions %}
                                         {% get_translation key='overall_assessment_and_feedback' language=page.get_language as description %}
@@ -135,8 +129,6 @@
                                 <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                                     <!-- Academic support box-->
                                     {% with overall_stats.satisfaction_stats.t4 as theme %}
-                                        <!--TODO: MEG remove when we have themes-->
-                                        {% insert_fake_theme as theme %}
 
                                         {% create_list theme.agree_or_strongly_agree '' as substitutions %}
                                         {% get_translation key='overall_academic_support' language=page.get_language as description %}
@@ -153,8 +145,6 @@
                                 <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                                     <!-- Organisation and management box-->
                                     {% with overall_stats.satisfaction_stats.t5 as theme %}
-                                        <!--TODO: MEG remove when we have themes-->
-                                        {% insert_fake_theme as theme %}
 
                                         {% create_list theme.agree_or_strongly_agree '' as substitutions %}
                                         {% get_translation key='overall_organisation_and_management' language=page.get_language as description %}
@@ -170,8 +160,6 @@
                                 <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                                     <!-- Learning resources box-->
                                     {% with overall_stats.satisfaction_stats.t6 as theme %}
-                                        <!--TODO: MEG remove when we have themes-->
-                                        {% insert_fake_theme as theme %}
 
                                         {% create_list theme.agree_or_strongly_agree '' as substitutions %}
                                         {% get_translation key='overall_learning_resources' language=page.get_language as description %}
@@ -187,14 +175,12 @@
                                 <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
                                     <!-- Student voice box-->
                                     {% with overall_stats.satisfaction_stats.t7 as theme %}
-                                        <!--TODO: MEG remove when we have themes-->
-                                        {% insert_fake_theme as theme %}
 
                                         {% create_list theme.agree_or_strongly_agree '' as substitutions %}
                                         {% get_translation key='overall_student_voice' language=page.get_language as description %}
                                         {% format_value content=description substitution=theme.agree_or_strongly_agree as subbed_text %}
                                         {% with subbed_text|safe as description %}
-                                    {% include 'courses/new_course_details/partials/student_satisfaction_4_box.html' with title=block.value.student_voice_stats_header q1=overall_stats.satisfaction_stats.question_22 q2=overall_stats.satisfaction_stats.question_23 q3=overall_stats.satisfaction_stats.question_24 q4=overall_stats.satisfaction_stats.question_25 %}
+                                    {% include 'courses/new_course_details/partials/student_satisfaction_student_voice_box.html' with title=block.value.student_voice_stats_header q1=overall_stats.satisfaction_stats.question_22 q2=overall_stats.satisfaction_stats.question_23 q3=overall_stats.satisfaction_stats.question_24 q4=overall_stats.satisfaction_stats.question_25 %}
                                 {% endwith %}
                                 {% endwith %}
                                 </div>
