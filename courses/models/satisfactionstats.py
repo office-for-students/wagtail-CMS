@@ -212,7 +212,7 @@ class SatisfactionStatistics:
                 if subject:
                     new_unavail = unavail.replace("[Subject]", subject)
                 else:
-                    subject = "MEGAN JONES"
+                    subject = ""
                     new_unavail = unavail.replace("[Subject]", subject)
                 return new_unavail
             except KeyError:
