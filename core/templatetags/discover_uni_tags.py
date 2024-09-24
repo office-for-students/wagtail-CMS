@@ -235,14 +235,6 @@ def is_franchise(pubukprn, ukprn):
         return True
     return False
 
-#TODO: MEG delete this tag once the nss theme data is in
-@register.simple_tag
-def insert_fake_theme():
-    theme = {
-        "agree_or_strongly_agree" : 100,
-        "description": "Were positive about the teaching on the course overall",
-    }
-    return theme
 
 @register.simple_tag
 def format_value(content, substitution):
@@ -251,8 +243,7 @@ def format_value(content, substitution):
 @register.simple_tag
 def get_t_number(value, item):
     try:
-        #TODO: MEG change these back to t1,t2...
-        t_values = {1: "question_1", 2: "question_2", 3: "question_3", 4: "question_4", 5: "question_5", 6: "question_6", 7: "question_7"}
+        t_values = {1: "t1", 2: "t2", 3: "t3", 4: "t4", 5: "t5", 6: "t6", 7: "t7"}
         # Get the corresponding t_value (like t1, t2)
         index = t_values.get(value, "Invalid index")
         # Check if the item has the corresponding attribute
@@ -264,9 +255,9 @@ def get_t_number(value, item):
     except Exception as e:
         return ""
 
- #TODO MEG change this to false when going live without theme then back to true when themes are in...
+ #TODO: MEG change this to false when going live without theme then back to true when themes are in...
 @register.simple_tag
 def has_theme_score():
-    return True
+    return False
 
 
