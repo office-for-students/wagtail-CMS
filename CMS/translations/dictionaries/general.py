@@ -1804,7 +1804,7 @@ OPTIONALS = {
     },
     'data_from_students' : {
         "en": "Data from {} students ({}% of those who were asked)",
-        "cy": "Data gan {}} fyfyrwyr ({}} o'r rhai y gofynnwyd iddynt)"
+        "cy": "Data gan {} fyfyrwyr ({}% o'r rhai y gofynnwyd iddynt)"
     }
 
 }
