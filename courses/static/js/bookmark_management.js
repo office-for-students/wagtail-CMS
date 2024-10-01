@@ -228,6 +228,17 @@ function processWithTranslationTerms(saved_institutions, callback) {
                 this.checkbox.checked = this.checked;
                 this.courseNameSpan.text = this.course.name;
                 this.courseLengthSpan.innerHTML = this.course.length;
+                if (this.course.length) {
+                    if (this.course.length === "1 year course" && this.isEnglish) {
+                        this.courseLengthSpan.innerHTML = "12-18 month course"
+                    }
+                    else if (this.course.length === "1 blwyddyn" && !this.isEnglish) {
+                        this.courseLengthSpan.innerHTML = "Cwrs 12-18 mis"
+                    }
+                    else {
+                        this.courseLengthSpan.innerHTML = this.course.length;
+                    }
+                }
                 this.courseLocationSpan.innerHTML = this.course.data.locations;
                 if (this.isEnglish) {
                     this.courseModeSpan.innerHTML = this.course.data.mode.en;

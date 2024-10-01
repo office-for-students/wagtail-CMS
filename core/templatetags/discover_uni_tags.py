@@ -255,6 +255,16 @@ def get_t_number(value, item):
     except Exception as e:
         return ""
 
+
+@register.simple_tag
+def gcu_course(loop: int, courses: List) -> bool:
+    affected_course_id = "11BGLSCI"
+    course = courses[loop]
+    if course.kis_course_id == affected_course_id:
+        return True
+
+
+
  #TODO: MEG change this to false when going live without theme then back to true when themes are in...
 @register.simple_tag
 def has_theme_score():

@@ -1805,6 +1805,10 @@ OPTIONALS = {
     'data_from_students' : {
         "en": "Data from {} students ({}% of those who were asked)",
         "cy": "Data gan {} fyfyrwyr ({}% o'r rhai y gofynnwyd iddynt)"
-    }
+    },
+'course_comparison_gcu_message' : {
+        "en": "The data displayed for this question is from students on this and other courses in Biosciences surveyed in 2022 and 2024.",
+        "cy": "Nid oes digon o ddata i gyhoeddi canlyniadau ar gyfer y cwestiwn hwn o arolwg 2024, felly rydym wedi cyfuno data o arolwg myfyrwyr 2024 a 2022 ar y cwrs hwn."
+    },
 
 }
