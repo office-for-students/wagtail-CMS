@@ -52,7 +52,7 @@
                             </div>
                         {% else %}
 
-                            {% if item == "1 year" %}
+                            {% if item == "1 year" or item == "1 blynedd"%}
                                 {% get_translation key='12_18_months' language=page.get_language %}
                             {% else %}
                                 <p>{{ item | safe }}</p>
