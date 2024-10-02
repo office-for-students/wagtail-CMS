@@ -1,4 +1,4 @@
-{% load discover_uni_tags %}
+{% load static %}
 {% load i18n %}
 {% load humanize %}
 <div class="comparison_row">
@@ -14,12 +14,11 @@
     </div>
     <div class="small-flex-div">
         {% for item in values %}
-            <div class="column {{ mt }} {{ item_font }} cc-column-{{ forloop.counter0 }}">
+            <div class="column {{ item_font }} cc-column-{{ forloop.counter0 }}">
                 {% with index=forloop.counter0 last=forloop.last %}
                     {% if item.values %}
                         {% for value in item.values %}
-                            <div class="column-
-                                    {{ index }}{{ accordion.title }} item-{{ forloop.counter0 }} sub-{{ sub_count }}"
+                            <div class="column-{{ index }}{{ accordion.title }} item-{{ forloop.counter0 }} sub-{{ sub_count }}"
                                  {% if not forloop.first %}hidden{% endif %}>
                                 {% if value.0 == "unavailable" %}
                                     <div class="no_data_container {{ earnings }}">
@@ -31,32 +30,22 @@
                                         {% endif %}
                                     </div>
                                 {% else %}
-                                    <p style="font-size: 1.2rem;">
-                                        {{ value | safe }}</p>
+                                    {{ value }}
                                 {% endif %}
                             </div>
                         {% endfor %}
                     {% else %}
                         {% if item.0 == "unavailable" %}
                             <div class="no_data_container {{ earnings }}">
-                                {% gcu_course loop=forloop.counter0 courses=courses as gcu %}
                                 {{ item.1 }}
                                 <br>
-                                {% if item.2 and gcu %}
-                                    <i class="fas fa-info-circle information-icon"></i>
-                                    <div class="information-text hidden info-box-{{ forloop.counter0 }} {% if forloop.last %}right{% else %}left{% endif %}">{% get_translation key='course_comparison_gcu_message' language=page.get_language %}</div>
-                                {% else %}
+                                {% if item.2 %}
                                     <i class="fas fa-info-circle information-icon"></i>
                                     <div class="information-text hidden info-box-{{ forloop.counter0 }} {% if forloop.last %}right{% else %}left{% endif %}">{{ item.2|safe }}</div>
                                 {% endif %}
                             </div>
                         {% else %}
-
-                            {% if item == "1 year" or item == "1 blynedd"%}
-                                {% get_translation key='12_18_months' language=page.get_language %}
-                            {% else %}
-                                <p>{{ item | safe }}</p>
-                            {% endif %}
+                            {{ item | safe }}
                         {% endif %}
                     {% endif %}
                 {% endwith %}

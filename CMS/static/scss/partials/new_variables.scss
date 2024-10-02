@@ -138,7 +138,7 @@ $small-line-height: 1.5;
 }
 
 @mixin green-gradient-background-mixin() {
-  background: linear-gradient(145.9deg, $gradient-light-green 13.02%, $gradient-dark-green 85.42%);
+  background: linear-gradient(145.9deg, $blue1 13.02%, $blue2 85.42%);
   color: $white;
 }
 

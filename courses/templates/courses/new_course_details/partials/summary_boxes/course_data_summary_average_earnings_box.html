@@ -1,6 +1,7 @@
 {% load discover_uni_tags wagtailcore_tags %}
 
 {% if amount or leo3_amount %}
+    <a href="#{{ link }}" class="box-link cd-link">
     <div class="box average-earnings">
         <p class="box-title">{% get_translation key="average_earnings" language=page.get_language %}</p>
         <p class="box-bold">{% if amount != "None" %}£{{ amount }}{% else %}£{{ leo3_amount }}{% endif %}</p>
@@ -9,4 +10,5 @@
             {% include 'courses/new_course_details/partials/summary_boxes/earnings_source.html' with time=time %}
         </p>
     </div>
+    </a>
 {% endif %}

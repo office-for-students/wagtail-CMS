@@ -1,0 +1,32 @@
+{% load static %}
+{% load discover_uni_tags %}
+<div class="comparison_row" style="background-color: #F7F7F7;">
+
+        <div class="column-title_container header">
+            <div class="column-first {{ header_font }}">
+                {% if title %}{{ title }}{% endif %}
+            </div>
+            <div class="column-first subtitle {{ header_font }}">
+                {{ subtitle|slice:"2:" }}
+            </div>
+        </div>
+
+        <div class="small-flex-div">
+            {% for item in values %}
+                <div class="column {{ item_font }} cc-column-{{ forloop.counter0 }}">
+                    {% with index=forloop.counter0 last=forloop.last %}
+                        {% if item %}
+                            {% get_t_number value=from_one item=item.overall_satisfaction.0.satisfaction_stats as theme %}
+                            {% if theme %}
+                                    {% include 'courses/new_course_details/partials/custom_donut.html' with percent=theme %}
+                            {% else %}
+                                <div style="display: flex; flex-direction: column; align-items: center;">
+                                    <p>{% get_translation key="no_data_available" language=page.get_language %}</p>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            {% endfor %}
+        </div>
+</div>

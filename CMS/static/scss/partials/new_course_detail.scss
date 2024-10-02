@@ -117,20 +117,20 @@
     }
 
 
-    &.selected {
-      @include green-gradient-background-mixin();
+      &.selected {
+        @include green-gradient-background-mixin();
 
-      border: 2.5px solid $gradient-light-green;
-      color: white !important;
+        border: 1.5px solid $blue2;
 
-      .add {
-        display: none;
+        .add {
+          display: none;
+        }
+
+        .remove {
+          margin-right: 12px;
+          display: inline-block;
+        }
       }
-
-      .remove {
-        display: inline-block;
-      }
-    }
 
     img {
       margin-left: 6px;
@@ -394,6 +394,15 @@
         padding: 0;
         justify-content: space-evenly;
 
+        .box-link {
+          color: $royal-blue;
+          scroll-behavior: smooth;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+
         .box {
           display: flex;
           flex-direction: column;
@@ -407,6 +416,7 @@
           margin-right: 7px;
           margin-top: 5px;
           margin-bottom: 5px;
+          min-height: 361px;
 
           .box-title {
             font-size: 1.5rem;
@@ -417,6 +427,7 @@
             font-size: 3rem;
             margin: auto;
           }
+
           .box-subtitle {
             font-size: 1.375rem;
             margin: auto;
@@ -424,9 +435,10 @@
           }
 
           .box-small {
-            font-size: 1.0625rem;
+            font-size: 1rem;
             margin: auto;
             text-align: center;
+            padding-top: 5px;
           }
         }
       }
@@ -780,6 +792,21 @@ div.course-detail.course-details-thin {
       //         color: $ux-grey-3;
       color: #fdfafa;
       background-color: transparent;
+
+      &.selected {
+        @include green-gradient-background-mixin();
+
+        border: 1.5px solid $gradient-light-green;
+
+        .add {
+          display: none;
+        }
+
+        .remove {
+          margin-right: 12px;
+          display: inline-block;
+        }
+      }
     }
 
     &__bookmark-compare-btn {
@@ -1310,6 +1337,7 @@ div.course-detail.course-details-thin {
     text-align: left;
   }
   .course-detail .course-detail__course-summary .box-container .box-row {
+    display: flex;
     flex-direction: row;
     padding: 10px 0;
   }
@@ -1339,12 +1367,15 @@ div.course-detail.course-details-thin {
     .box-title {
       font-size: 1.3rem;
     }
+
     .box-bold {
       font-size: 2rem;
     }
+
     .box-subtitle {
       font-size: 1.1rem;
     }
+
     .box-small {
       font-size: 1rem;
     }
@@ -1424,12 +1455,14 @@ div.course-detail.course-details-thin {
     text-align: left;
   }
   .course-detail .course-detail__course-summary .box-container .box-row {
+    display: flex;
     flex-direction: row;
     padding: 10px 0;
   }
   .course-detail .course-detail__course-summary .box-container .box-row .box {
-    margin-bottom: 0;
-    margin-top: 0;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: 100%;
   }
   .section-scroll.course-detail {
     width: fit-content;

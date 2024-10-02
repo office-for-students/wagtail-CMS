@@ -222,11 +222,52 @@ def get_salary_from_index(objs: List, index: int):
     except IndexError:
         return objs[0]
 
+@register.simple_tag
+def get_item_at_index(lst, index):
+    try:
+        return lst[index]
+    except IndexError:
+        return None
 
-# @register.simple_tag
-# def get_banner_courses_affected(course):
-#     with open("./csv_banner_courses.csv") as file:
-#         data = csv.reader(file)
-#         for row in data:
-#             if row[1] == course:
-#                 return True
+@register.simple_tag
+def is_franchise(pubukprn, ukprn):
+    if pubukprn != ukprn:
+        return True
+    return False
+
+
+@register.simple_tag
+def format_value(content, substitution):
+   return content.replace("{}", str(substitution))
+
+@register.simple_tag
+def get_t_number(value, item):
+    try:
+        t_values = {1: "t1", 2: "t2", 3: "t3", 4: "t4", 5: "t5", 6: "t6", 7: "t7"}
+        # Get the corresponding t_value (like t1, t2)
+        index = t_values.get(value, "Invalid index")
+        # Check if the item has the corresponding attribute
+        if index != "Invalid index" and hasattr(item, index):
+            t_number = getattr(item, index)
+            return str(t_number) if t_number is not None else ""
+
+        return ""
+    except Exception as e:
+        return ""
+
+
+@register.simple_tag
+def gcu_course(loop: int, courses: List) -> bool:
+    affected_course_id = "11BGLSCI"
+    course = courses[loop]
+    if course.kis_course_id == affected_course_id:
+        return True
+
+
+
+ #TODO: MEG change this to false when going live without theme then back to true when themes are in...
+@register.simple_tag
+def has_theme_score():
+    return False
+
+

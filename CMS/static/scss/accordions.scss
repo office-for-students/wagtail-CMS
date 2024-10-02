@@ -1,21 +1,26 @@
+@import '../../../CMS/static/scss/fonts';
+@import '../../../CMS/static/scss/variables';
+@import '../../../CMS/static/scss/partials/forms';
+
 //Accordion CSS
 .accordion-header {
-  background: #f2f2f2;
+  //background: #f2f2f2;
   cursor: pointer;
   margin-bottom: 8px;
 
-  &:focus, &:active {
-    outline: none;
-  }
+  //&:focus, &:active {
+  //  outline: none;
+  //}
 }
 
 .green {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(145.9deg, #4EA27D 13.02%, #308282 85.42%);
+  background:$royal-blue;
   color: #FFFFFF;
   border: 3px solid transparent;
+  border-radius: 4px;
 
   .title {
     color: white;
