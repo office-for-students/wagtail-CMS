@@ -133,12 +133,12 @@
             {% elif salary_index == 1 %}
                 {% replace_graduate_intro course_details.leo3_year_range as year %}
                 {% brackets_replace_year block.value.after_three_five_years_data_source|safe year  as subbed_text%}
-                {{ subbed_text | safe }}B
+                {{ subbed_text | safe }}
 
             {% else %}
                 {% replace_graduate_intro course_details.leo5_year_range as year%}
                 {% brackets_replace_year block.value.after_three_five_years_data_source|safe year  as subbed_text%}
-                {{ subbed_text | safe }}C
+                {{ subbed_text | safe }}
 
 
             {% endif %}
