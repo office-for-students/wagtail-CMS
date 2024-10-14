@@ -264,10 +264,3 @@ def gcu_course(loop: int, courses: List) -> bool:
         return True
 
 
-
- #TODO: MEG change this to false when going live without theme then back to true when themes are in...
-@register.simple_tag
-def has_theme_score():
-    return False
-
-
