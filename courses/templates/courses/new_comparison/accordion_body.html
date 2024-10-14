@@ -45,8 +45,7 @@
     {% for sub_accordion in sub_accordions|slice:":7" %}
         {% with identifier=sub_accordion.title|title|cut:" "|add:"-ac-" sub_count=forloop.counter0 %}
 
-            {% has_theme_score as has_theme %}
-            {% if accordion.title == "National Student Survey results" and has_theme or accordion.title == "Canlyniadau’r Arolwg Cenedlaethol o Fyfyrwyr" and has_theme %}
+            {% if accordion.title == "National Student Survey results" or accordion.title == "Canlyniadau’r Arolwg Cenedlaethol o Fyfyrwyr" %}
                 {% with forloop.counter0 as index %}
                     {% get_item_at_index lst=overall index=index as title %}
                     {% get_item_at_index lst=overall index=index as subtitle %}
