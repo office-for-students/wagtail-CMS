@@ -18,7 +18,7 @@
                         {% if item %}
                             {% get_t_number value=from_one item=item.overall_satisfaction.0.satisfaction_stats as theme %}
                             {% if theme %}
-                                    {% include 'courses/new_course_details/partials/custom_donut.html' with percent=theme %}
+                                    {% include 'courses/new_course_details/partials/custom_donut.html' with percent=theme compare="True" %}
                             {% else %}
                                 <div style="display: flex; flex-direction: column; align-items: center;">
                                     <p>{% get_translation key="no_data_available" language=page.get_language %}</p>
@@ -29,4 +29,5 @@
                 </div>
             {% endfor %}
         </div>
+        {% for item in values %}
 </div>
