@@ -2,14 +2,15 @@
 {% load discover_uni_tags %}
 <div class="comparison_row" style="background-color: #F7F7F7;">
 
-        <div class="column-title_container header">
-            <div class="column-first {{ header_font }}">
-                {% if title %}{{ title }}{% endif %}
-            </div>
-            <div class="column-first subtitle {{ header_font }}">
-                {{ subtitle|slice:"2:" }}
-            </div>
+    <div class="column-title_container header">
+        <div class="column-first {{ header_font }}">
+            {% if extra_title %}{{ extra_title }}
+            {% elif title %}{{ title }}{% endif %}
         </div>
+        <div class="column-first subtitle {{ header_font }}">
+            {{ subtitle|slice:"2:" }}
+        </div>
+    </div>
 
     <div class="small-flex-div">
         {% for item in values %}
