@@ -1,4 +1,4 @@
-<div class="custom-donut" >
+<div class="custom-donut" {% if compare == "True" %}style="width:100px;"{% endif %}>
     <div class="container">
         <div class="circular-progress">
             <span class="progress-value" data-percent="{{ percent }}">{{ percent }}%</span>
