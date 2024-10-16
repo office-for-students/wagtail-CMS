@@ -2,31 +2,51 @@
 {% load discover_uni_tags %}
 <div class="comparison_row" style="background-color: #F7F7F7;">
 
-        <div class="column-title_container header">
-            <div class="column-first {{ header_font }}">
-                {% if title %}{{ title }}{% endif %}
-            </div>
-            <div class="column-first subtitle {{ header_font }}">
-                {{ subtitle|slice:"2:" }}
-            </div>
+    <div class="column-title_container header">
+        <div class="column-first {{ header_font }}">
+            {% if extra_title %}{{ extra_title }}
+            {% elif title %}{{ title }}{% endif %}
         </div>
+        <div class="column-first subtitle {{ header_font }}">
+            {{ subtitle|slice:"2:" }}
+        </div>
+    </div>
 
-        <div class="small-flex-div">
-            {% for item in values %}
-                <div class="column {{ item_font }} cc-column-{{ forloop.counter0 }}">
-                    {% with index=forloop.counter0 last=forloop.last %}
-                        {% if item %}
-                            {% get_t_number value=from_one item=item.overall_satisfaction.0.satisfaction_stats as theme %}
-                            {% if theme %}
-                                    {% include 'courses/new_course_details/partials/custom_donut.html' with percent=theme %}
-                            {% else %}
-                                <div style="display: flex; flex-direction: column; align-items: center;">
-                                    <p>{% get_translation key="no_data_available" language=page.get_language %}</p>
-                                </div>
-                            {% endif %}
+    <div class="small-flex-div">
+        {% for item in values %}
+            <div class="column {{ item_font }} cc-column-{{ forloop.counter0 }}">
+                {% with index=forloop.counter0 last=forloop.last %}
+                    {% if item %}
+                        {% for val in item.overall_satisfaction %}
+                        <div class="column-{{ index }}{{ accordion.title }} item-{{ forloop.counter0 }} sub-{{ sub_count }}" {% if not forloop.first %}hidden{% endif %}>
+                        {% get_t_number value=from_one item=val.satisfaction_stats as theme %}
+                        {% if theme %}
+                            {% include 'courses/new_course_details/partials/custom_donut.html' with percent=theme compare="True" %}
+                        {% else %}
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <p>{% get_translation key="no_data_available" language=page.get_language %}</p>
+                            </div>
                         {% endif %}
-                    {% endwith %}
-                </div>
-            {% endfor %}
-        </div>
+                        </div>
+                        {% endfor %}
+                     {% else %}
+                        {% if item.0 == "unavailable" %}
+                            <div class="no_data_container {{ earnings }}">
+                                {{ item.1 }}
+                                <br>
+                                {% if item.2 %}
+                                    <i class="fas fa-info-circle information-icon"></i>
+                                    <div class="information-text hidden info-box-{{ forloop.counter0 }} {% if forloop.last %}right{% else %}left{% endif %}">{{ item.2|safe }}</div>
+                                {% endif %}
+                            </div>
+                        {% else %}
+                            {% with item|safe|slice:2 as percent %}
+                                {% include 'courses/new_course_details/partials/custom_donut.html' with percent=percent %}
+                            {% endwith %}
+                        {% endif %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        {% endfor %}
+    </div>
 </div>

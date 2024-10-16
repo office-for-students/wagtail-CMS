@@ -209,7 +209,6 @@ function processWithTranslationTerms(saved_institutions, callback) {
 
         let CourseView = function courseView(element, course, checked) {
             this.course = course;
-            console.log(this.course)
             this.checked = checked;
             this.container = element;
             this.isEnglish = location.pathname.indexOf('/cy/') === -1;

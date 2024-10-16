@@ -24,8 +24,8 @@ STATISTICS = {
         "en": "The number of students indicates the size of the course, and more people \n            means it is more likely to be representative of outcomes for students."
     },
     "assessment_and_feedback": {
-        "cy": "Marcio & Asesu",
-        "en": "Marking & Assessment"
+        "cy": "Asesu ac Adborth",
+        "en": "Assessment & feedback"
     },
     "data_from_people": {
         "cy": "Data gan (# o fyfyrwyr)",
