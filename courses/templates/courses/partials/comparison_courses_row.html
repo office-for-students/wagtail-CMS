@@ -18,8 +18,7 @@
                 {% with index=forloop.counter0 last=forloop.last %}
                     {% if item.values %}
                         {% for value in item.values %}
-                            <div class="column-
-                                    {{ index }}{{ accordion.title }} item-{{ forloop.counter0 }} sub-{{ sub_count }}"
+                            <div class="column-{{ index }}{{ accordion.title }} item-{{ forloop.counter0 }} sub-{{ sub_count }}"
                                  {% if not forloop.first %}hidden{% endif %}>
                                 {% if value.0 == "unavailable" %}
                                     <div class="no_data_container {{ earnings }}">

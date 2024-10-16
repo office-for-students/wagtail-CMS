@@ -13,8 +13,7 @@
                     <div class="column-{{ index }}{{ accordion.title }}">
                         {% for header in course.header %}
                             <div
-                                 class="unavailable-container
-                                    column-{{ column_id }}{{ accordion.title }} item-{{ forloop.counter0 }}"
+                                 class="unavailable-container column-{{ column_id }}{{ accordion.title }} item-{{ forloop.counter0 }}"
                                     {% if not forloop.first %}hidden{% endif %}>{{ header }}
                                 {% if course.message %}
                                     <img class="information-icon" src="/static/images/information.svg" alt>
