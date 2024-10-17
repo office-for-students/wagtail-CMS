@@ -4,7 +4,7 @@
     <div class="col-lg-3 col-md-12 align-self-stretch my-lg-3">
         <p class="info-box__heading">{% get_translation key=header language=page.get_language %}</p>
     </div>
-    <div class="col-lg-9 col-md-12 align-self-stretch my-auto text-center text-lg-left">
+    <div class="col-lg-9 col-md-12 align-self-stretch my-auto text-lg-left">
         {% get_translation key=content language=page.get_language as content_text %}
         <ul class="info-box__content"> {{ content_text | safe }}
             <li><a class="info-box__link"

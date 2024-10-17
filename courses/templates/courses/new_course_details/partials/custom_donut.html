@@ -1,6 +1,6 @@
 <div class="custom-donut" {% if compare == "True" %}style="width:100px;"{% endif %}>
     <div class="container">
-        <div class="circular-progress">
+        <div class="circular-progress" {% if compare == "True" %}style="width:100px; height: 100px;"{% endif %}>
             <span class="progress-value" data-percent="{{ percent }}">{{ percent }}%</span>
         </div>
     </div>
