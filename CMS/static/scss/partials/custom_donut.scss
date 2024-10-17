@@ -12,8 +12,8 @@
 
     .circular-progress {
       position: relative;
-      height: 150px;
-      width: 150px;
+      height: 130px;
+      width: 130px;
       border-radius: 50%;
       background: conic-gradient(#FCD833 3.6deg, #ededed 0deg);
       display: flex;
@@ -40,4 +40,31 @@
 
   }
 
+}
+//
+//@media only screen and (min-width: 770px) {
+//  .custom-donut {
+//    .container {
+//      .circular-progress {
+//        height: 130px;
+//        width: 130px;
+//      }
+//    }
+//  }
+//}
+
+@media only screen and (min-width: 770px) {
+  .custom-donut {
+    .container {
+      .circular-progress {
+        height: 100px;
+        width: 100px;
+
+        &::before {
+          height: 80px;
+        width: 80px;
+        }
+      }
+    }
+  }
 }
