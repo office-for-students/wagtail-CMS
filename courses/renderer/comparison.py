@@ -109,21 +109,26 @@ def get_sub_accordion_dataset(courses, section_model, get_sub_headers, language)
 def get_multiple_subjects(courses: List[Course], sources: List[str], language, earnings=False, override=False) -> Dict[str, List[str]]:
     subjects = dict(subject=[])
     for course in courses:
-        subject_list = list()
-        subject_names = course.subject_names
+        if course:
+            subject_list = list()
+            subject_names = course.subject_names
 
-        for index, subject_name in enumerate(subject_names):
-            subject = get_subject_label(course, index, sources, language, earnings, subject_names)
-            no_data_available = translations.term_for_key(key="no_data_available", language=language)
-            # TODO: remove when the override is to be disabled
-            #  + remove override parameter from this function and graduate and employment context
-            if override:
-                subject = override_replace(subject, language)
-            # End remove
-            if not subject == no_data_available:
-                subject_list.append(subject)
+            for index, subject_name in enumerate(subject_names):
+                subject = get_subject_label(course, index, sources, language, earnings, subject_names)
+                no_data_available = translations.term_for_key(key="no_data_available", language=language)
+                # TODO: remove when the override is to be disabled
+                #  + remove override parameter from this function and graduate and employment context
+                if override:
+                    subject = override_replace(subject, language)
+                # End remove
+                if not subject == no_data_available:
+                    subject_list.append(subject)
 
-        subjects["subject"].append(subject_list)
+            subjects["subject"].append(subject_list)
+        else:
+            courses.remove(course)
+    if len(courses) < 2:
+        return None
     return subjects
 
 
@@ -171,10 +176,23 @@ def get_subject_label(course, index, sources, language, earnings, subject_names)
 
     return fallback
 
+def check_courses(courses: List) -> List[Course]:
+    """
+    Checks if course is valid, removes those that aren't
+    """
+    for course in courses:
+        if not course:
+            courses.remove(course)
+    return courses
+
 
 def dataset_for_comparison_view(courses: List[Course], language="en") -> List[dict]:
     response = []
     context = dict()
+    courses = check_courses(courses)
+    if len(courses) < 2:
+        return None
+
     context["course_details"] = get_accordion_dataset(
         title=translations.term_for_key(key="course_details", language=language),
         dataset=get_details(CourseDetailSection, courses, language),
