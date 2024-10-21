@@ -54,9 +54,12 @@ def show_courses_selected_for_comparison(courses_list, request, language):
                 course = course.split('/')
                 course, error = Course.find(institution_id=course[0], course_id=course[1], mode=course[2],
                                             language=language)
-
                 if error:
                     logger.warning(f"Failed to fetch course, Error fetching course: {error} for {course}")
+                    for course_model in courses_list:
+                        if course_model == course:
+                            courses_list.remove(course)
+
                     redirect_page = get_new_landing_page_for_language(language)
                     # TODO: Update how errors ar handled as simply redirecting to the home page in this content is not the right answer at all
                     # return redirect(redirect_page + '?load_error=true&error_type=0')
@@ -64,6 +67,8 @@ def show_courses_selected_for_comparison(courses_list, request, language):
                 courses_array.append(course)
 
     courses = renderer.dataset_for_comparison_view(courses_array, language)
+    if not courses:
+        return show_not_enough_saved(request, language)
 
     context = dict(
         courses=courses_array,
