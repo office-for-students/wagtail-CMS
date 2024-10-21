@@ -9,7 +9,6 @@ from core.utils import get_new_landing_page_for_language
 from courses import renderer
 from courses.models import Course
 from institutions.models import InstitutionList
-import pprint
 
 logger = logging.getLogger(__name__)
 
