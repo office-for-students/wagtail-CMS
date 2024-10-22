@@ -100,11 +100,9 @@ function processWithTranslationTerms(saved_institutions, callback) {
 
             Object.defineProperty(this, 'mode', {
                     get: function () {
-                        if (this.data.mode.en === 'Full time' || 'Full-time') {
-                            return 'FullTime';
-                        } else if (this.data.mode.en === 'Part time' || 'Part-time') {
-                            return 'PartTime';
-                        }
+                        return `${this.data.mode.en.replace(" t", "t")
+                            .replace("-t", "t")
+                            .replace("time", "Time")}`
                     }
                 }
             )
@@ -230,11 +228,9 @@ function processWithTranslationTerms(saved_institutions, callback) {
                 if (this.course.length) {
                     if (this.course.length === "1 year course" && this.isEnglish) {
                         this.courseLengthSpan.innerHTML = "12-18 month course"
-                    }
-                    else if (this.course.length === "1 blwyddyn" && !this.isEnglish) {
+                    } else if (this.course.length === "1 blwyddyn" && !this.isEnglish) {
                         this.courseLengthSpan.innerHTML = "Cwrs 12-18 mis"
-                    }
-                    else {
+                    } else {
                         this.courseLengthSpan.innerHTML = this.course.length;
                     }
                 }
@@ -242,7 +238,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
                 if (this.isEnglish) {
                     this.courseModeSpan.innerHTML = this.course.data.mode.en;
                     this.courseDistanceSpan.innerHTML = this.course.data.distance.en;
-                    if(this.course.data.distance.en === 0) {
+                    if (this.course.data.distance.en === 0) {
                         this.courseDistanceSpan.innerHTML = "Not Available"
                     }
                     this.courseSandwichSpan.innerHTML = this.course.data.sandwich.en.replace(") }}", "");
@@ -250,13 +246,14 @@ function processWithTranslationTerms(saved_institutions, callback) {
                 } else {
                     this.courseModeSpan.innerHTML = this.course.data.mode.cy;
                     this.courseDistanceSpan.innerHTML = this.course.data.distance.cy;
-                    if(this.course.data.distance.cy === 0) {
+                    if (this.course.data.distance.cy === 0) {
                         this.courseDistanceSpan.innerHTML = "Ddim ar gael"
                     }
                     this.courseSandwichSpan.innerHTML = this.course.data.sandwich.cy;
                     this.courseAbroadSpan.innerHTML = this.course.data.abroad.cy;
                 }
                 this.courseNameSpan.href = this.course.url;
+                console.log("MEG", this.courseNameSpan.href)
             }
         }
 
@@ -388,13 +385,12 @@ function processWithTranslationTerms(saved_institutions, callback) {
                 }
 
                 let courseView = new CourseView(courseTemplate, course, checked);
-                console.log(course)
                 courseView.update();
             })
 
             const empty = document.getElementById("placeholder");
             container.removeChild(empty);
-            document.getElementById('spinner-loading').hidden=true;
+            document.getElementById('spinner-loading').hidden = true;
         }
     }
     (jQuery)
