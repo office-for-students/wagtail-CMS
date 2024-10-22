@@ -253,7 +253,6 @@ function processWithTranslationTerms(saved_institutions, callback) {
                     this.courseAbroadSpan.innerHTML = this.course.data.abroad.cy;
                 }
                 this.courseNameSpan.href = this.course.url;
-                console.log("MEG", this.courseNameSpan.href)
             }
         }
 
@@ -361,33 +360,66 @@ function processWithTranslationTerms(saved_institutions, callback) {
             document.getElementById(element_id).classList.add("hidden");
         }
 
+        function checkCourseUrl(url, callback) {
+            fetch(url, {method: 'GET', redirect: 'manual'})  // Prevent automatic redirection
+                .then(response => {
+                    // Check if the course is redirected to an error page
+                    if (response.status === 0 || response.ok === false) {
+                        callback(false);  // Invalid course detected
+                    } else {
+                        callback(true);  // Course is valid
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching URL:", error);
+                    callback(false);  // URL is not valid
+                });
+        }
+
         function addCourseViews(courses, template) {
             const container = document.getElementById("institution-bookmark");
             container.hidden = false;
+
+            let bookmarkedCourses = JSON.parse(localStorage.getItem("bookmarkedCourses")) || [];
+
             courses.forEach(function (course) {
-                const query = course.query;
-                const courseTemplate = template.cloneNode(true);
-                courseTemplate.id = course.elementID;
-                container.appendChild(courseTemplate);
-                const el = document.getElementById(course.elementID);
-                let checkbox = el.querySelector('.bookmark-check');
-                let label = el.querySelector('.bookmark_label');
-                checkbox.value = query;
-                checkbox.id = query
-                label.htmlFor = query
-                checkbox.addEventListener("change", comparisonHandler);
-                let removeButton = el.querySelector('.bookmark__course-remove');
-                removeButton.addEventListener('click', removeCourseHandler);
+                checkCourseUrl(course.url, function (isValid) {
+                    if (isValid) {
+                        const query = course.query;
+                        const courseTemplate = template.cloneNode(true);
+                        courseTemplate.id = course.elementID;
+                        container.appendChild(courseTemplate);
+                        const el = document.getElementById(course.elementID);
+                        let checkbox = el.querySelector('.bookmark-check');
+                        let label = el.querySelector('.bookmark_label');
+                        checkbox.value = query;
+                        checkbox.id = query
+                        label.htmlFor = query
+                        checkbox.addEventListener("change", comparisonHandler);
+                        let removeButton = el.querySelector('.bookmark__course-remove');
+                        removeButton.addEventListener('click', removeCourseHandler);
 
-                let checked = false;
-                if (courses_selected_for_comparison.items.some(e => e.id === course.id)) {
-                    checked = true;
-                }
+                        let checked = false;
+                        if (courses_selected_for_comparison.items.some(e => e.id === course.id)) {
+                            checked = true;
+                        }
 
-                let courseView = new CourseView(courseTemplate, course, checked);
-                courseView.update();
+                        let courseView = new CourseView(courseTemplate, course, checked);
+                        courseView.update();
+                    } else {
+                        const courseIndex = bookmarkedCourses.findIndex(item => item.uniqueId === course.data.uniqueId);
+                        if (courseIndex !== -1) {
+                            // Remove the course from the array
+                            bookmarkedCourses.splice(courseIndex, 1);
+
+                            // Update the localStorage with the modified array
+                            localStorage.setItem("bookmarkedCourses", JSON.stringify(bookmarkedCourses));
+
+                            console.log("Invalid course removed from local storage:", course.data.uniqueId);
+                        }
+                    }
+                })
             })
-
             const empty = document.getElementById("placeholder");
             container.removeChild(empty);
             document.getElementById('spinner-loading').hidden = true;
