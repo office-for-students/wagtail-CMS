@@ -254,9 +254,9 @@ function processWithTranslationTerms(saved_institutions, callback) {
                         span.innerHTML = "12-18 month course"
                     } else if (length === "1 blwyddyn") {
                         span.innerHTML = "Cwrs 12-18 mis"
-                    } else if (length === 0 || length === "Length of course is not available") {
+                    } else if (length === "0 blwyddyn" || length === "Length of course is not available") {
                         span.innerHTML = "Length of course is not available"
-                    } else if (length === "Nid yw hyd y cwrs ar gael") {
+                    } else if (length === "0 year course" || length === "Nid yw hyd y cwrs ar gael") {
                         span.innerHTML = "Nid yw hyd y cwrs ar gael"
                     } else {
                         span.innerHTML = length;
