@@ -1,0 +1,38 @@
+{% load static %}
+{% load i18n %}
+<div class="accordion-block">
+                <div id="{{ identifier }}{{ index }}" data-index="{{ index }}" class="comparison_row-header sub_accordion_header">
+                    {{sub_accordion.title}}
+                    <div class="ml-auto">
+                        <div id="{{ identifier }}{{ index }}-expand" class="hidden">
+                            <img class="invert-image" src="{% static 'images/plus_icon_white.svg' %}" alt="expand">
+                        </div>
+
+                        <div id="{{ identifier }}{{ index }}-collapse" class="">
+                            <img class="invert-image" src="{% static 'images/minus_icon.svg' %}" alt="collapse">
+                        </div>
+                    </div>
+                </div>
+                <div id="body-{{ identifier }}{{ index }}">
+                    {% if accordion.multi_subject_selectors %}
+                        {% if forloop.first %}
+                            {% include 'courses/partials/subject_selector.html' with subjects=accordion.multi_subject_selectors.0 index=identifier %}
+                        {% else %}
+                            {% include 'courses/partials/subject_selector.html' with subjects=accordion.multi_subject_selectors.1 index=identifier %}
+                        {% endif %}
+                    {% endif %}
+                    {% for item, value in sub_accordion.dataset.items %}
+                        {% if accordion.earnings %}
+                            <div id="{{ sub_accordion.title }}{{ forloop.counter0 }}"
+                                 class="comparison_row-earnings{% if sub_count == 0 %}_first{% endif %}">
+                                {% include 'courses/new_comparison/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" earnings="earnings" %}
+                            </div>
+                        {% else %}
+                            <div id="{{ sub_accordion.title }}{{ forloop.counter0 }}"
+                                 class="comparison_row-grey_background">
+                                {% include 'courses/new_comparison/comparison_courses_row.html' with title=value.title subtitle=value.subtitle values=value.values header_font="header_font" %}
+                            </div>
+                            {% endif %}
+                    {% endfor %}
+                </div>
+            </div>

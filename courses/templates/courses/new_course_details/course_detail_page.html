@@ -16,6 +16,7 @@
 {% block extra_css %}
     <link href="{% sass_src 'scss/partials/new_course_detail.scss' %}" rel="stylesheet" type="text/css">
     <link href="{% sass_src 'scss/partials/popup.scss' %}" rel="stylesheet" type="text/css">
+    <link href="{% sass_src 'scss/partials/custom_donut.scss' %}" rel="stylesheet" type="text/css">
     <style>
     body {
         font-family: "Nunito Sans", sans-serif !important;
@@ -35,6 +36,7 @@
     <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/compare-selector.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/back-button.js' %}"></script>
+    <script type="module" src="{% static 'js/courseDetails.js' %}"></script>
 {% endblock %}
 
 {% block content %}

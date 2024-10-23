@@ -1,3 +1,5 @@
+import {setDonuts} from '/static/js/customDonut.js'
+
 class ScrollListener {
     lastActionPosition = 0
     actionAdjustment = 0
@@ -609,13 +611,15 @@ class SubAccordionManager{
     toggleAccordion(title, index){
         let expand = document.getElementById(`${title}-expand`);
         let collapse = document.getElementById(`${title}-collapse`);
+         let expandBtn = document.getElementById(`${title}-btn-expand`);
+        let collapseBtn = document.getElementById(`${title}-btn-collapse`);
         let accordionBody = document.getElementById(`body-${title}`);
-
         expand.classList.toggle("hidden");
         collapse.classList.toggle("hidden");
+        expandBtn.classList.toggle("hidden");
+        collapseBtn.classList.toggle("hidden");
         accordionBody.classList.toggle("hidden");
     }
-
     setEventListeners() {
         let subAccordions = document.getElementsByClassName("sub_accordion_header");
         for (let i = 0; i < subAccordions.length; i++) {
@@ -715,6 +719,7 @@ $(window).on('load', function () {
 
     showComparison(function (response, run_js = false) {
         document.getElementById("comparison-body").innerHTML = response;
+        setDonuts()
         if (run_js) {
             setupView();
             document.dispatchEvent(AccordionsEvent);

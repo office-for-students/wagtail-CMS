@@ -2,7 +2,7 @@
 <div class="explanation__link">
     <p style="font-size: 1rem; font-weight: bold" id="gcuButton" class="information-link">
         {% get_translation key="gcu_data_year" language=page.get_language %}
-        <img class="information-icon" src="{% static 'images/information.svg' %}" alt="Chart labels explained">
+        <img class="information-icon" id="gcuButtonImg" src="{% static 'images/info-icon.png' %}" alt="Chart labels explained">
     </p>
     <div id="gcuMessage" tabindex="-1" class="chart-label-explanation" role="dialog" style="display: none;">
         {% get_translation key="gcu_message" language=page.get_language %}
@@ -23,10 +23,10 @@
     }
 </style>
 <script>
-    document.getElementById("gcuButton").addEventListener("mouseenter", () => {
+    document.getElementById("gcuButtonImg").addEventListener("mouseenter", () => {
         document.getElementById("gcuMessage").style.display = "block"
     })
-    document.getElementById("gcuButton").addEventListener("mouseout", () => {
+    document.getElementById("gcuButtonImg").addEventListener("mouseout", () => {
         document.getElementById("gcuMessage").style.display = "none"
     })
 </script>

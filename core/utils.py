@@ -63,7 +63,6 @@ def get_page_for_language(language, pages):
         InternalError(HTTPStatus.INTERNAL_SERVER_ERROR,
                       'Bad configuration - Found multiple copies of this page type for this language')
 
-    print(page_for_language)
     return page_for_language[0]
 
 
