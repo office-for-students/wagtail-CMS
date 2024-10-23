@@ -100,11 +100,9 @@ function processWithTranslationTerms(saved_institutions, callback) {
 
             Object.defineProperty(this, 'mode', {
                     get: function () {
-                        if (this.data.mode.en === 'Full time' || 'Full-time') {
-                            return 'FullTime';
-                        } else if (this.data.mode.en === 'Part time' || 'Part-time') {
-                            return 'PartTime';
-                        }
+                        return `${this.data.mode.en.replace(" t", "t")
+                            .replace("-t", "t")
+                            .replace("time", "Time")}`
                     }
                 }
             )
@@ -227,22 +225,12 @@ function processWithTranslationTerms(saved_institutions, callback) {
                 this.checkbox.checked = this.checked;
                 this.courseNameSpan.text = this.course.name;
                 this.courseLengthSpan.innerHTML = this.course.length;
-                if (this.course.length) {
-                    if (this.course.length === "1 year course" && this.isEnglish) {
-                        this.courseLengthSpan.innerHTML = "12-18 month course"
-                    }
-                    else if (this.course.length === "1 blwyddyn" && !this.isEnglish) {
-                        this.courseLengthSpan.innerHTML = "Cwrs 12-18 mis"
-                    }
-                    else {
-                        this.courseLengthSpan.innerHTML = this.course.length;
-                    }
-                }
+                set_course_length(this.course.length, this.courseLengthSpan)
                 this.courseLocationSpan.innerHTML = this.course.data.locations;
                 if (this.isEnglish) {
                     this.courseModeSpan.innerHTML = this.course.data.mode.en;
                     this.courseDistanceSpan.innerHTML = this.course.data.distance.en;
-                    if(this.course.data.distance.en === 0) {
+                    if (this.course.data.distance.en === 0) {
                         this.courseDistanceSpan.innerHTML = "Not Available"
                     }
                     this.courseSandwichSpan.innerHTML = this.course.data.sandwich.en.replace(") }}", "");
@@ -250,7 +238,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
                 } else {
                     this.courseModeSpan.innerHTML = this.course.data.mode.cy;
                     this.courseDistanceSpan.innerHTML = this.course.data.distance.cy;
-                    if(this.course.data.distance.cy === 0) {
+                    if (this.course.data.distance.cy === 0) {
                         this.courseDistanceSpan.innerHTML = "Ddim ar gael"
                     }
                     this.courseSandwichSpan.innerHTML = this.course.data.sandwich.cy;
@@ -258,6 +246,22 @@ function processWithTranslationTerms(saved_institutions, callback) {
                 }
                 this.courseNameSpan.href = this.course.url;
             }
+        }
+
+        function set_course_length(length, span) {
+            if (length) {
+                    if (length === "1 year course") {
+                        span.innerHTML = "12-18 month course"
+                    } else if (length === "1 blwyddyn") {
+                        span.innerHTML = "Cwrs 12-18 mis"
+                    } else if (length === "0 year course" || length === "Length of course is not available") {
+                        span.innerHTML = "Length of course is not available"
+                    } else if (length === "0 blwyddyn" || length === "Nid yw hyd y cwrs ar gael") {
+                        span.innerHTML = "Nid yw hyd y cwrs ar gael"
+                    } else {
+                        span.innerHTML = length;
+                    }
+                }
         }
 
         function should_enable_how_to(items) {
@@ -364,37 +368,69 @@ function processWithTranslationTerms(saved_institutions, callback) {
             document.getElementById(element_id).classList.add("hidden");
         }
 
+        function checkCourseUrl(url, callback) {
+            fetch(url, {method: 'GET', redirect: 'manual'})  // Prevent automatic redirection
+                .then(response => {
+                    // Check if the course is redirected to an error page
+                    if (response.status === 0 || response.ok === false) {
+                        callback(false);  // Invalid course detected
+                    } else {
+                        callback(true);  // Course is valid
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching URL:", error);
+                    callback(false);  // URL is not valid
+                });
+        }
+
         function addCourseViews(courses, template) {
             const container = document.getElementById("institution-bookmark");
             container.hidden = false;
+
+            let bookmarkedCourses = JSON.parse(localStorage.getItem("bookmarkedCourses")) || [];
+
             courses.forEach(function (course) {
-                const query = course.query;
-                const courseTemplate = template.cloneNode(true);
-                courseTemplate.id = course.elementID;
-                container.appendChild(courseTemplate);
-                const el = document.getElementById(course.elementID);
-                let checkbox = el.querySelector('.bookmark-check');
-                let label = el.querySelector('.bookmark_label');
-                checkbox.value = query;
-                checkbox.id = query
-                label.htmlFor = query
-                checkbox.addEventListener("change", comparisonHandler);
-                let removeButton = el.querySelector('.bookmark__course-remove');
-                removeButton.addEventListener('click', removeCourseHandler);
+                checkCourseUrl(course.url, function (isValid) {
+                    if (isValid) {
+                        const query = course.query;
+                        const courseTemplate = template.cloneNode(true);
+                        courseTemplate.id = course.elementID;
+                        container.appendChild(courseTemplate);
+                        const el = document.getElementById(course.elementID);
+                        let checkbox = el.querySelector('.bookmark-check');
+                        let label = el.querySelector('.bookmark_label');
+                        checkbox.value = query;
+                        checkbox.id = query
+                        label.htmlFor = query
+                        checkbox.addEventListener("change", comparisonHandler);
+                        let removeButton = el.querySelector('.bookmark__course-remove');
+                        removeButton.addEventListener('click', removeCourseHandler);
 
-                let checked = false;
-                if (courses_selected_for_comparison.items.some(e => e.id === course.id)) {
-                    checked = true;
-                }
+                        let checked = false;
+                        if (courses_selected_for_comparison.items.some(e => e.id === course.id)) {
+                            checked = true;
+                        }
 
-                let courseView = new CourseView(courseTemplate, course, checked);
-                console.log(course)
-                courseView.update();
+                        let courseView = new CourseView(courseTemplate, course, checked);
+                        courseView.update();
+                    } else {
+                        const courseIndex = bookmarkedCourses.findIndex(item => item.uniqueId === course.data.uniqueId);
+                        if (courseIndex !== -1) {
+                            // Remove the course from the array
+                            bookmarkedCourses.splice(courseIndex, 1);
+
+                            // Update the localStorage with the modified array
+                            localStorage.setItem("bookmarkedCourses", JSON.stringify(bookmarkedCourses));
+
+                            console.log("Invalid course removed from local storage:", course.data.uniqueId);
+                        }
+                    }
+                })
             })
-
             const empty = document.getElementById("placeholder");
             container.removeChild(empty);
-            document.getElementById('spinner-loading').hidden=true;
+            document.getElementById('spinner-loading').hidden = true;
         }
     }
     (jQuery)
