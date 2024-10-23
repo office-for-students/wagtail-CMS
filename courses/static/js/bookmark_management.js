@@ -225,15 +225,7 @@ function processWithTranslationTerms(saved_institutions, callback) {
                 this.checkbox.checked = this.checked;
                 this.courseNameSpan.text = this.course.name;
                 this.courseLengthSpan.innerHTML = this.course.length;
-                if (this.course.length) {
-                    if (this.course.length === "1 year course" && this.isEnglish) {
-                        this.courseLengthSpan.innerHTML = "12-18 month course"
-                    } else if (this.course.length === "1 blwyddyn" && !this.isEnglish) {
-                        this.courseLengthSpan.innerHTML = "Cwrs 12-18 mis"
-                    } else {
-                        this.courseLengthSpan.innerHTML = this.course.length;
-                    }
-                }
+                set_course_length(this.course.length, this.courseLengthSpan)
                 this.courseLocationSpan.innerHTML = this.course.data.locations;
                 if (this.isEnglish) {
                     this.courseModeSpan.innerHTML = this.course.data.mode.en;
@@ -254,6 +246,22 @@ function processWithTranslationTerms(saved_institutions, callback) {
                 }
                 this.courseNameSpan.href = this.course.url;
             }
+        }
+
+        function set_course_length(length, span) {
+            if (length) {
+                    if (length === "1 year course") {
+                        span.innerHTML = "12-18 month course"
+                    } else if (length === "1 blwyddyn") {
+                        span.innerHTML = "Cwrs 12-18 mis"
+                    } else if (length === 0 || length === "Length of course is not available") {
+                        span.innerHTML = "Length of course is not available"
+                    } else if (length === "Nid yw hyd y cwrs ar gael") {
+                        span.innerHTML = "Nid yw hyd y cwrs ar gael"
+                    } else {
+                        span.innerHTML = length;
+                    }
+                }
         }
 
         function should_enable_how_to(items) {
