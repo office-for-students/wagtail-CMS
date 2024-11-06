@@ -1814,5 +1814,8 @@ OPTIONALS = {
         "en": "Teaching on my course",
         "cy": "Y dysgu ar fy nghwrs"
     },
-
+    'institutionqaa_report_type_string':{
+        "en": "",
+        "cy": ""
+    },
 }
