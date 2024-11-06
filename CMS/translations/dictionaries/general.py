@@ -1656,16 +1656,16 @@ DICT = {
         "cy": "Gweler yr adroddiad diweddaraf yma"
     },
     "ni_explanation_economy": {
-        "en": "The Department for the Economy is responsible for the regulation of the higher education sector in Northern Ireland and this University /College has been subject to previous review to ensure that it meets satisfactory standards",
-        "cy": "Adran yr Economi sy’n gyfrifol am reoleiddio’r sector addysg uwch yng Ngogledd Iwerddon ac mae’r brifysgol hon / y coleg hwn wedi bod yn ddarostyngedig i adolygiad blaenorol i sicrhau ei fod yn bodloni safonau boddhaol"
+        "en": "The Department for the Economy is responsible for the regulation of the higher education sector in Northern Ireland and this University / College has been subject to previous review to ensure that it meets satisfactory standards.",
+        "cy": "Adran yr Economi sy’n gyfrifol am reoleiddio’r sector addysg uwch yng Ngogledd Iwerddon ac mae’r brifysgol hon / y coleg hwn wedi bod yn ddarostyngedig i adolygiad blaenorol i sicrhau ei fod yn bodloni safonau boddhaol."
     },
     "ni_explanation_economy_btn": {
-        "en": "Find out about the Departement for the Economy here",
+        "en": "Find out about the Department for the Economy here",
         "cy": "Darganfyddwch fwy am Adran yr Economi yma"
     },
     "ni_explanation_economy_href": {
-        "en": "https://www.economy-ni.gov.uk/",
-        "cy": "https://www.economy-ni.gov.uk/"
+        "en": "https://www.economy-ni.gov.uk/articles/higher-education-quality-assurance",
+        "cy": "https://www.economy-ni.gov.uk/articles/higher-education-quality-assurance"
     },
     "ni_previous_model": {
         "en": "The Department for the Economy in Northern Ireland (DFE NI) has an underpinning statutory responsibility to make provision for the assessment of the quality of this institution.  DFENI is currently considering a new model of quality assessment.  Information about the previous model is below",
