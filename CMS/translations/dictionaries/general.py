@@ -1644,16 +1644,16 @@ DICT = {
         "cy": "https://www.sfc.ac.uk/"
     },
     "more_about_qaa_scotland": {
-        "en": "This university is subject to Quality Enhancement and Standards Review (previously ELIR) by QAA. You can find the latest review report at the link below",
+        "en": "This university is subject to Quality Enhancement and Standards Review (previously ELIR) by QAA.\nYou can find the latest review report at the link below",
         "cy": "Mae'r brifysgol hon yn ddarostyngedig i Adolygiad Gwella Ansawdd a Safonau (ELIR gynt) gan yr Asiantaeth Sicrhau Ansawdd ar gyfer Addysg Uwch. Gallwch ddod o hyd i'r adroddiad adolygu diweddaraf drwy ddilyn y ddolen isod"
-    },
-    "more_about_qaa_scotland_btn_href": {
-        "en": "https://www.qaa.ac.uk/scotland/en/reviewing-higher-education-in-scotland/scottish-quality-enhancement-arrangements/review-reports",
-        "cy": "https://www.qaa.ac.uk/scotland/en/reviewing-higher-education-in-scotland/scottish-quality-enhancement-arrangements/review-reports"
     },
     "more_about_qaa_scotland_btn": {
         "en": "See the latest report here",
         "cy": "Gweler yr adroddiad diweddaraf yma"
+    },
+    "more_about_qaa_scotland_btn_href": {
+        "en": "https://www.qaa.ac.uk/scotland/en/reviewing-higher-education-in-scotland/scottish-quality-enhancement-arrangements/review-reports",
+        "cy": "https://www.qaa.ac.uk/scotland/en/reviewing-higher-education-in-scotland/scottish-quality-enhancement-arrangements/review-reports"
     },
     "ni_explanation_economy": {
         "en": "The Department for the Economy is responsible for the regulation of the higher education sector in Northern Ireland and this University / College has been subject to previous review to ensure that it meets satisfactory standards.",
@@ -1815,7 +1815,7 @@ OPTIONALS = {
         "cy": "Y dysgu ar fy nghwrs"
     },
     'institutionqaa_report_type_string':{
-        "en": "",
-        "cy": ""
+        "en": "  ",
+        "cy": "  "
     },
 }
