@@ -136,14 +136,14 @@ def get_tef_body_copy_context(institution, language, status, tef_context, affili
         tef_context["left_link"] = term_for_key("sfc_href", language=language)
         tef_context["right_copy"] = institution.qaa_report_type_string
         tef_context["right_button"] = term_for_key("more_about_qaa_scotland_btn", language=language)
-        tef_context["right_link"] = institution.qaa_url
+        tef_context["right_link"] = term_for_key("more_about_qaa_scotland_btn_href", language=language)
     if status == NORTHERN_IRISH_INSTITUTIONS:
         tef_context["left_copy"] = term_for_key("ni_explanation_economy", language=language)
         tef_context["left_button"] = term_for_key("ni_explanation_economy_btn", language=language)
         tef_context["left_link"] = term_for_key("ni_explanation_economy_href", language=language)
-        tef_context["right_copy"] = term_for_key("institution.qaa_report_type_string", language=language)
+        tef_context["right_copy"] = institution.qaa_report_type_string
         tef_context["right_button"] = term_for_key("ni_previous_model_btn", language=language)
-        tef_context["right_link"] = institution.qaa_url
+        tef_context["right_link"] = "https://www.economy-ni.gov.uk/articles/higher-education-quality-assurance"
     if status == TEF_NO_TEF_INSTITUTIONS:
         tef_context["right_copy"] = term_for_key("participated_in_tef_excluded", language=language)
         tef_context["right_button"] = term_for_key("find_out_more_about_tef", language=language)
