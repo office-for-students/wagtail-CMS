@@ -1644,28 +1644,28 @@ DICT = {
         "cy": "https://www.sfc.ac.uk/"
     },
     "more_about_qaa_scotland": {
-        "en": "This university is subject to Quality Enhancement and Standards Review (previously ELIR) by QAA. You can find the latest review report at the link below",
+        "en": "This university is subject to Quality Enhancement and Standards Review (previously ELIR) by QAA.\nYou can find the latest review report at the link below",
         "cy": "Mae'r brifysgol hon yn ddarostyngedig i Adolygiad Gwella Ansawdd a Safonau (ELIR gynt) gan yr Asiantaeth Sicrhau Ansawdd ar gyfer Addysg Uwch. Gallwch ddod o hyd i'r adroddiad adolygu diweddaraf drwy ddilyn y ddolen isod"
-    },
-    "more_about_qaa_scotland_btn_href": {
-        "en": "https://www.qaa.ac.uk/scotland/en/reviewing-higher-education-in-scotland/scottish-quality-enhancement-arrangements/review-reports",
-        "cy": "https://www.qaa.ac.uk/scotland/en/reviewing-higher-education-in-scotland/scottish-quality-enhancement-arrangements/review-reports"
     },
     "more_about_qaa_scotland_btn": {
         "en": "See the latest report here",
         "cy": "Gweler yr adroddiad diweddaraf yma"
     },
+    "more_about_qaa_scotland_btn_href": {
+        "en": "https://www.qaa.ac.uk/scotland/en/reviewing-higher-education-in-scotland/scottish-quality-enhancement-arrangements/review-reports",
+        "cy": "https://www.qaa.ac.uk/scotland/en/reviewing-higher-education-in-scotland/scottish-quality-enhancement-arrangements/review-reports"
+    },
     "ni_explanation_economy": {
-        "en": "The Department for the Economy is responsible for the regulation of the higher education sector in Northern Ireland and this University /College has been subject to previous review to ensure that it meets satisfactory standards",
-        "cy": "Adran yr Economi sy’n gyfrifol am reoleiddio’r sector addysg uwch yng Ngogledd Iwerddon ac mae’r brifysgol hon / y coleg hwn wedi bod yn ddarostyngedig i adolygiad blaenorol i sicrhau ei fod yn bodloni safonau boddhaol"
+        "en": "The Department for the Economy is responsible for the regulation of the higher education sector in Northern Ireland and this University / College has been subject to previous review to ensure that it meets satisfactory standards.",
+        "cy": "Adran yr Economi sy’n gyfrifol am reoleiddio’r sector addysg uwch yng Ngogledd Iwerddon ac mae’r brifysgol hon / y coleg hwn wedi bod yn ddarostyngedig i adolygiad blaenorol i sicrhau ei fod yn bodloni safonau boddhaol."
     },
     "ni_explanation_economy_btn": {
-        "en": "Find out about the Departement for the Economy here",
+        "en": "Find out about the Department for the Economy here",
         "cy": "Darganfyddwch fwy am Adran yr Economi yma"
     },
     "ni_explanation_economy_href": {
-        "en": "https://www.economy-ni.gov.uk/",
-        "cy": "https://www.economy-ni.gov.uk/"
+        "en": "https://www.economy-ni.gov.uk/articles/higher-education-quality-assurance",
+        "cy": "https://www.economy-ni.gov.uk/articles/higher-education-quality-assurance"
     },
     "ni_previous_model": {
         "en": "The Department for the Economy in Northern Ireland (DFE NI) has an underpinning statutory responsibility to make provision for the assessment of the quality of this institution.  DFENI is currently considering a new model of quality assessment.  Information about the previous model is below",
@@ -1814,5 +1814,8 @@ OPTIONALS = {
         "en": "Teaching on my course",
         "cy": "Y dysgu ar fy nghwrs"
     },
-
+    'institutionqaa_report_type_string':{
+        "en": "  ",
+        "cy": "  "
+    },
 }
