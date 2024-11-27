@@ -769,7 +769,7 @@ DICT = {
     },
     "left_no_qualification": {
         "cy": "Wedi gadael heb gymhwyster",
-        "en": "Have left without a qualification"
+        "en": "Are taking a break from their studies or have left without a qualification"
     },
     "length": {
         "cy": "Hyd",
