@@ -768,7 +768,7 @@ DICT = {
         "en": "Have left with a lower qualification"
     },
     "left_no_qualification": {
-        "cy": "Wedi gadael heb gymhwyster",
+        "cy": "Yn cymryd egwyl o astudio neu wedi gadael heb gymhwyster",
         "en": "Are taking a break from their studies or have left without a qualification"
     },
     "length": {
