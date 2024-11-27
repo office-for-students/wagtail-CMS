@@ -15,7 +15,7 @@ class ContinuationStatistics:
         self.number_of_students = 0
 
         if data_obj:
-            self.display_stats = all(key in data_obj for key in ['dormant', 'continuing_with_provider', 'gained',
+            self.display_stats = all(key in data_obj for key in ['continuing_with_provider', 'gained',
                                                                  'left', 'lower'])
 
             self.aggregation_level = data_obj.get('aggregation_level')
