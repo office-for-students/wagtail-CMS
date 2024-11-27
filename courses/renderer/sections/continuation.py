@@ -1,17 +1,17 @@
-from typing import List, Tuple, Any
-from courses.models import Course
+from typing import Any
+from typing import List
+from typing import Tuple
+
 from courses.renderer.sections.base import Section
 
 CONTINUATION_DATA_FROM_PEOPLE = "data_from_people"
 STILL_STUDYING = "still_on_course"
-TAKING_BREAK = "break_from_studies"
 LEFT_WITH_LOWER = "left_lower_qualification"
 LEFT_WITHOUT_QUALIFICATION = "left_no_qualification"
 
 continuation_list = [
     "number_of_students",
     "continuing",
-    "dormant",
     "lower",
     "left",
 ]
@@ -30,9 +30,8 @@ class ContinuationSection(Section):
             (self.DATA_DISPLAYED, "", "", "continuation_stats", True),
             (CONTINUATION_DATA_FROM_PEOPLE, continuation_list[0], "", "continuation_stats"),
             (STILL_STUDYING, continuation_list[1], "%", "continuation_stats"),
-            (TAKING_BREAK, continuation_list[2], "%", "continuation_stats"),
-            (LEFT_WITH_LOWER, continuation_list[3], "%", "continuation_stats"),
-            (LEFT_WITHOUT_QUALIFICATION, continuation_list[4], "%", "continuation_stats")
+            (LEFT_WITH_LOWER, continuation_list[2], "%", "continuation_stats"),
+            (LEFT_WITHOUT_QUALIFICATION, continuation_list[3], "%", "continuation_stats")
         ]
         
         return sections
