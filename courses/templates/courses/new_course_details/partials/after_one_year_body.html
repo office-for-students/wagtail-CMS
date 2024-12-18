@@ -97,22 +97,6 @@
                                 </div>
 
                                 <div class="one-year__chart discover-uni-chart bar"
-                                     data-value="{{ continuation_stats.dormant }}"
-                                     data-label="after-one-year-break_from_studies"
-                                     data-title="{% get_translation key='after_one_year_graph_title' %} {% get_translation key='break_from_studies' language=page.get_language %}"
-                                     data-desc="{% get_translation key='after_one_year_graph_desc' %} {% get_translation key='break_from_studies' language=page.get_language %}">
-                                    <div class="row d-flex">
-                                        <div class="col-lg-6 order-md-1 order-lg-2 text-lg-right">
-                                            {% include 'courses/new_course_details/partials/bar_chart.html' %}
-                                        </div>
-                                        <div class="col-lg-6 order-md-2 order-lg-1">
-                                            <label class="one-year-block__chart-label float-lg-right"
-                                                   aria-hidden="true">{% get_translation key='break_from_studies' language=page.get_language %}</label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="one-year__chart discover-uni-chart bar"
                                      data-value="{{ continuation_stats.lower }}"
                                      data-label="after-one-year-left_lower_qualification"
                                      data-title="{% get_translation key='after_one_year_graph_title' %} {% get_translation key='left_lower_qualification' language=page.get_language %}"

@@ -84,8 +84,8 @@ STATISTICS = {
         "en": "https://www.discoveruni.gov.uk/how-do-i-choose-course/employment-prospects/"
     },
     "entry_guidance": {
-        "cy": "Dyma'r cymwysterau a oedd gan fyfywyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon",
-        "en": "These are the qualifications students had when they were accepted onto this course. This is not a list of qualifications a person needs to have to be accepted onto this course"
+        "cy": "Dyma'r cymwysterau a oedd gan fyfywyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon.",
+        "en": "These are the qualifications students had when they were accepted onto this course. This is not a list of qualifications a person needs to have to be accepted onto this course."
     },
     "entry_information": {
         "cy": "Gwybodaeth am fynediad",

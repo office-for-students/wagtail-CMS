@@ -151,8 +151,8 @@ function processWithTranslationTerms(saved_institutions, callback) {
             this.loadFromStorage = function () {
                 let response = [];
                 try {
-                    let storage = JSON.parse(localStorage.getItem(this.storageKey));
-                    if (!storage) {
+                    let storage = getLocalStorageObjectFromKey(this.storageKey);
+                    if (storage.length === 0) {
                         return response;
                     } else {
                         return storage;
@@ -250,18 +250,18 @@ function processWithTranslationTerms(saved_institutions, callback) {
 
         function set_course_length(length, span) {
             if (length) {
-                    if (length === "1 year course") {
-                        span.innerHTML = "12-18 month course"
-                    } else if (length === "1 blwyddyn") {
-                        span.innerHTML = "Cwrs 12-18 mis"
-                    } else if (length === "0 year course" || length === "Length of course is not available") {
-                        span.innerHTML = "Length of course is not available"
-                    } else if (length === "0 blwyddyn" || length === "Nid yw hyd y cwrs ar gael") {
-                        span.innerHTML = "Nid yw hyd y cwrs ar gael"
-                    } else {
-                        span.innerHTML = length;
-                    }
+                if (length === "1 year course") {
+                    span.innerHTML = "12-18 month course"
+                } else if (length === "1 blwyddyn") {
+                    span.innerHTML = "Cwrs 12-18 mis"
+                } else if (length === "0 year course" || length === "Length of course is not available") {
+                    span.innerHTML = "Length of course is not available"
+                } else if (length === "0 blwyddyn" || length === "Nid yw hyd y cwrs ar gael") {
+                    span.innerHTML = "Nid yw hyd y cwrs ar gael"
+                } else {
+                    span.innerHTML = length;
                 }
+            }
         }
 
         function should_enable_how_to(items) {
@@ -280,34 +280,38 @@ function processWithTranslationTerms(saved_institutions, callback) {
 
         should_enable_how_to(saved_courses.items);
 
+
+        function updateSelectedCourseDisplay(items) {
+            let compare_button = document.getElementById('compare-courses-button')
+            let compare_text = document.getElementById('bookmark-text')
+            let courses_selected = document.getElementById('courses-selected')
+            const number_selected = items.length;
+            if (number_selected >= 1) {
+                courses_selected.innerHTML = "<strong>" + number_selected + " " + _translationTerms["courses_selected"] + "</strong>";
+            } else {
+                courses_selected.innerHTML = "";
+            }
+
+            if (2 <= number_selected && number_selected <= 7) {
+                compare_button.disabled = false;
+                compare_button.classList.add("enabled");
+                compare_text.innerHTML = _translationTerms["select_up_to_7"];
+                courses_selected.classList.remove("red");
+            } else if (7 < number_selected) {
+                courses_selected.classList.add("red");
+                compare_button.classList.remove("enabled");
+                compare_button.disabled = true;
+            } else {
+                compare_button.disabled = true;
+                compare_button.classList.remove("enabled");
+                compare_text.innerHTML = _translationTerms["select_at_least_2"];
+            }
+        }
+
         let courses_selected_for_comparison = new ComparisonStorage(
             "CoursesForComparison",
-            function (items) {
-                let compare_button = document.getElementById('compare-courses-button')
-                let compare_text = document.getElementById('bookmark-text')
-                let courses_selected = document.getElementById('courses-selected')
-                const number_selected = items.length;
-                if (number_selected >= 1) {
-                    courses_selected.innerHTML = "<strong>" + number_selected + " " + _translationTerms["courses_selected"] + "</strong>";
-                } else {
-                    courses_selected.innerHTML = "";
-                }
-
-                if (2 <= number_selected && number_selected <= 7) {
-                    compare_button.disabled = false;
-                    compare_button.classList.add("enabled");
-                    compare_text.innerHTML = _translationTerms["select_up_to_7"];
-                    courses_selected.classList.remove("red");
-                } else if (7 < number_selected) {
-                    courses_selected.classList.add("red");
-                    compare_button.classList.remove("enabled");
-                    compare_button.disabled = true;
-                } else {
-                    compare_button.disabled = true;
-                    compare_button.classList.remove("enabled");
-                    compare_text.innerHTML = _translationTerms["select_at_least_2"];
-                }
-            });
+            updateSelectedCourseDisplay
+        );
 
 
         processWithTranslationTerms(saved_courses.items, function () {
@@ -388,8 +392,6 @@ function processWithTranslationTerms(saved_institutions, callback) {
             const container = document.getElementById("institution-bookmark");
             container.hidden = false;
 
-            let bookmarkedCourses = JSON.parse(localStorage.getItem("bookmarkedCourses")) || [];
-
             courses.forEach(function (course) {
                 checkCourseUrl(course.url, function (isValid) {
                     if (isValid) {
@@ -415,16 +417,8 @@ function processWithTranslationTerms(saved_institutions, callback) {
                         let courseView = new CourseView(courseTemplate, course, checked);
                         courseView.update();
                     } else {
-                        const courseIndex = bookmarkedCourses.findIndex(item => item.uniqueId === course.data.uniqueId);
-                        if (courseIndex !== -1) {
-                            // Remove the course from the array
-                            bookmarkedCourses.splice(courseIndex, 1);
-
-                            // Update the localStorage with the modified array
-                            localStorage.setItem("bookmarkedCourses", JSON.stringify(bookmarkedCourses));
-
-                            console.log("Invalid course removed from local storage:", course.data.uniqueId);
-                        }
+                        removeCourseFromLocalStorageWithKey(course, "bookmarkedCourses", course.data.uniqueId, "uniqueId")
+                        removeCourseFromLocalStorageWithKey(course, "CoursesForComparison", course.id, "id")
                     }
                 })
             })
@@ -435,3 +429,21 @@ function processWithTranslationTerms(saved_institutions, callback) {
     }
     (jQuery)
 )
+
+function getLocalStorageObjectFromKey(key) {
+    return JSON.parse(localStorage.getItem(key)) || [];
+}
+
+function removeCourseFromLocalStorageWithKey(course, storageKey, courseId, valueKey) {
+    const courseArray = getLocalStorageObjectFromKey(storageKey);
+    const courseIndex = courseArray.findIndex(item => item[valueKey] === courseId);
+    if (courseIndex !== -1) {
+        // Remove the course from the array
+        courseArray.splice(courseIndex, 1);
+
+        // Update the localStorage with the modified array
+        localStorage.setItem(storageKey, JSON.stringify(courseArray));
+
+        console.log(`Invalid course removed from local storage ${storageKey}:`, courseId);
+    }
+}
