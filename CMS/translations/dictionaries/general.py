@@ -496,8 +496,8 @@ DICT = {
         "en": "What you need to know about entry data"
     },
     "entrance_data_quals_students_had": {
-        "cy": "Dyma'r cymwysterau a oedd gan fyfyrwyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon",
-        "en": "These are the qualifications students had when they were accepted onto this course. This is not a list of qualifications a person needs to have to be accepted onto this course"
+        "cy": "Dyma'r cymwysterau a oedd gan fyfyrwyr wrth gael eu derbyn ar y cwrs yma. Nid rhestr o gymwysterau sydd eu hangen ar rywun er mwyn cael eu derbyn ar y cwrs yw hon.",
+        "en": "These are the qualifications students had when they were accepted onto this course. This is not a list of qualifications a person needs to have to be accepted onto this course."
     },
     "entrance_data_read_more": {
         "cy": "Darllen mwy am ddata mynediad",
@@ -1489,12 +1489,12 @@ DICT = {
     },
 
     'student_satisfaction_info_box': {
-        'cy': "<li>Mae'r data gan fyfyrwyr a arolygwyd yn ystod y pandemig COVID-19.  </li>"
-              "<li>Effeithiwyd ar rai cyrsiau a darparwyr yn fwy nag eraill.</li>"
-              "<li>Mae'r data yn dweud wrthych am brofiad myfyrwyr diweddar, ond gallai eich profiad chi fod yn wahanol.</li>",
-        'en': '<li>The data is from students surveyed during the Covid-19 pandemic.</li>'
-              '<li>Some courses and providers have been affected more than others.</li>'
-              '<li>The data tells you about the experience of recent students, but your experience may be different.</li>'
+        'cy': "<li>Mae'r data yn dweud wrthych am brofiad myfyrwyr diweddar, ond gallai eich profiad chi fod yn wahanol.</li>"
+              "<li>Gall y wybodaeth eich helpu i ymchwilio i'ch opsiynau ac ystyried eich dewisiadau cwrs.</li>"
+              "<li>Gweler <a style='all:unset; text-decoration:underline; cursor:pointer; font-weight: 700;' target='_blank' href='https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#arolwg_cenedlaethol_o_fyfyrwyr' title='Link to About our data'>Ynglŷn â'n data</a> am ragor o wybodaeth.</li>",
+        'en': "<li>The data tells you about the experiences of recent students, but your experience may be different.</li>"
+              "<li>The information can help you to research your options and consider your course choices.</li>"
+              "<li>Find out more in <a style='all:unset; text-decoration:underline; cursor:pointer; font-weight: 700;' target='_blank' href='https://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey' title='Link to About our data'>About our data.</a></li>"
 
     },
 
