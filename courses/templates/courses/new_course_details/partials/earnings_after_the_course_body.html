@@ -457,9 +457,9 @@
                                 $("#go_sector_avail_container_" + subjectIndex).show();
                                 $("#go_sector_unavail_" + subjectIndex).hide();
                                 $("#sector_salary_med_0_" + subjectIndex).text("£" + data['salary_sector_15_med']);
-                                $("#sector_salary_lq_0_" + subjectIndex + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_15_lq'] + " - £" + data['salary_sector_15_uq']);
+                                $("#sector_salary_lq_0_" + subjectIndex + " p").text(data['typical_range_text'] + ": £" + data['salary_sector_15_lq'] + " - £" + data['salary_sector_15_uq']);
                                 $("#sector_salary_pop_0_" + subjectIndex + " div").replaceWith("<div class='rich-text h2'></div>");
-                                $("#sector_salary_pop_0_" + subjectIndex + " div p").text(data['data_from_text'] + " " + data['salary_sector_15_pop'] + " " + data['respondents_text']);
+                                $("#sector_salary_pop_0_" + subjectIndex).text(data['data_from_text'] + " " + data['salary_sector_15_pop'] + " " + data['respondents_text'] + ".");
                                 //$("#sector_salary_pop_0_" + subjectIndex + " div").append("<p>(" + data['salary_sector_15_resp'] + "% " + data['of_those_asked_text'] + ")</p>");
 
                                 if (selectedRegion == "_uk")
@@ -479,8 +479,8 @@
                                 $("#leo3_sector_unavail_" + subjectIndex).hide();
 
                                 $("#sector_salary_med_1_" + subjectIndex).text("£" + data['salary_sector_3_med']);
-                                $("#sector_salary_lq_1_" + subjectIndex + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_3_lq'] + " - £" + data['salary_sector_3_uq']);
-                                $("#sector_salary_pop_1_" + subjectIndex + " div").text(data['data_from_text'] + " " + data['salary_sector_3_pop'] + " " + data['people_text']);
+                                $("#sector_salary_lq_1_" + subjectIndex + " p").text(data['typical_range_text'] + ": £" + data['salary_sector_3_lq'] + " - £" + data['salary_sector_3_uq']);
+                                $("#sector_salary_pop_1_" + subjectIndex).text(data['data_from_text'] + " " + data['salary_sector_3_pop'] + " " + data['people_text'] + ".");
 
                                 if (selectedRegion == "_uk") {
                                     $("#sector_salary_graduates_1_" + subjectIndex).hide();
@@ -512,8 +512,8 @@
                                 $("#leo5_sector_unavail_" + subjectIndex).hide();
 
                                 $("#sector_salary_med_2_" + subjectIndex).text("£" + data['salary_sector_5_med']);
-                                $("#sector_salary_lq_2_" + subjectIndex + " div p").text(data['typical_range_text'] + ": £" + data['salary_sector_5_lq'] + " - £" + data['salary_sector_5_uq']);
-                                $("#sector_salary_pop_2_" + subjectIndex + " div").text(data['data_from_text'] + " " + data['salary_sector_5_pop'] + " " + data['people_text']);
+                                $("#sector_salary_lq_2_" + subjectIndex + " p").text(data['typical_range_text'] + ": £" + data['salary_sector_5_lq'] + " - £" + data['salary_sector_5_uq']);
+                                $("#sector_salary_pop_2_" + subjectIndex).text(data['data_from_text'] + " " + data['salary_sector_5_pop'] + " " + data['people_text'] + ".");
 
                                 if (selectedRegion == "_uk") {
                                     $("#sector_salary_graduates_1_" + subjectIndex).hide();
