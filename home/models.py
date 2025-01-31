@@ -44,6 +44,8 @@ class HomePage(DiscoverUniBasePage):
     box_2_title = TextField(blank=True)
     box_2_content = TextField(blank=True)
     box_2_link = TextField(blank=True)
+    box_3_title = TextField(blank=True)
+    box_3_content = TextField(blank=True)
     box_3_link = TextField(blank=True)
     page_links = StreamField([
         ('link', blocks.StructBlock([
