@@ -44,6 +44,8 @@ class HomePage(DiscoverUniBasePage):
     box_2_title = TextField(blank=True)
     box_2_content = TextField(blank=True)
     box_2_link = TextField(blank=True)
+    box_3_title = TextField(blank=True)
+    box_3_content = TextField(blank=True)
     box_3_link = TextField(blank=True)
     page_links = StreamField([
         ('link', blocks.StructBlock([
@@ -65,6 +67,8 @@ class HomePage(DiscoverUniBasePage):
         FieldPanel('box_2_title', classname="full"),
         FieldPanel('box_2_content', classname="full"),
         FieldPanel('box_2_link', classname="full"),
+        FieldPanel('box_3_title', classname="full"),
+        FieldPanel('box_3_content', classname="full"),
         FieldPanel('box_3_link', classname="full"),
         StreamFieldPanel('page_links', classname="full"),
     ]
