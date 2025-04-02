@@ -1,21 +1,18 @@
-from django.core import management
-from django.test import TestCase, Client, tag
-from django.core.management.base import CommandError
-from django.contrib.contenttypes.models import ContentType
+import logging
 
-from wagtail.core.models import Page
+from django.conf import settings
+from django.core import management
+from django.test import Client
+from django.test import TestCase
+from django.test import tag
 
 from CMS.enums import enums
-from core.mongo import Mongo
 from CMS.test.factories import PageFactory
 from CMS.test.utils import UniSimpleTestCase
 from core.utils import get_page_for_language
 from coursefinder.models import CourseFinderChooseCountry
 from site_search.models import SearchLandingPage
 
-from django.conf import settings
-
-import logging
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=9999) # suppress logs during unit tests
 
@@ -109,24 +106,8 @@ class CoreModelsTests(UniSimpleTestCase):
 
 @tag('azure')
 class BaseTestCase(TestCase):
-    mongo_host      = 'mongo'
-    mongo_username  = 'mongodb'
-    mongo_password  = 'mongodb'
-    client          = None
     institution_id  = 10005343
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.client = Client()
-
-    def populate_mongodb(self):
-        if settings.MONGODB_HOST == self.mongo_host and \
-           settings.MONGODB_USERNAME == self.mongo_username and \
-           settings.MONGODB_PASSWORD == self.mongo_password:
-            mongo = Mongo('institutions')
-            result = mongo.get_one(
-                {'institution_id': str(self.institution_id)}
-            )
-            if result is None:
-                management.call_command('populate_institutions')
-                management.call_command('populate_courses')
