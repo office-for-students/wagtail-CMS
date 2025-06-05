@@ -67,6 +67,8 @@ class HomePage(DiscoverUniBasePage):
         FieldPanel('box_2_title', classname="full"),
         FieldPanel('box_2_content', classname="full"),
         FieldPanel('box_2_link', classname="full"),
+        FieldPanel('box_3_title', classname="full"),
+        FieldPanel('box_3_content', classname="full"),
         FieldPanel('box_3_link', classname="full"),
         StreamFieldPanel('page_links', classname="full"),
     ]
