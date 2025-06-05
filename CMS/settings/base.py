@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-
 from corsheaders.defaults import default_headers
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -141,7 +140,8 @@ else:
             'HOST': os.environ.get('DBHOST', 'db'),
             'USER': os.environ.get('DBUSER'),
             'PORT': os.environ.get('DBPORT'),
-            'PASSWORD': os.environ.get('DBPASSWORD')
+            'PASSWORD': os.environ.get('DBPASSWORD'),
+            'SSL':True
         }
     }
 
@@ -226,6 +226,7 @@ MONGODB_PASSWORD = os.environ.get('MONGODB_PASSWORD')
 TEST_COURSES = os.environ.get('TEST_COURSES')
 WIDGETAPIKEY = os.environ.get('WIDGETAPIKEY')
 WIDGETAPIHOST = os.environ.get('WIDGETAPIHOST')
+V2_WIDGET_HOST = os.environ.get('V2_WIDGET_HOST')
 FEEDBACK_API_HOST = os.environ.get('FEEDBACK_API_HOST')
 JSONFILES_STORAGE_CONTAINER = os.environ.get('JSONFILES_STORAGE_CONTAINER', "")
 SITEMAP_STORAGE_BLOB = os.environ.get('SITEMAP_STORAGE_BLOB', "")
