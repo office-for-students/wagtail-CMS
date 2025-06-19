@@ -67,7 +67,8 @@ INSTALLED_APPS = [
 
     'sass_processor',
     'storages',
-    'cookie'
+    'cookie',
+    'v2_widget',
 ]
 
 MIDDLEWARE = [
@@ -137,10 +138,10 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': config('DBNAME'),
-            # 'HOST': config('DBHOST', 'db'),
+            'HOST': config('DBHOST', 'db'),
             'USER': config('DBUSER'),
             'PORT': config('DBPORT'),
-            'PASSWORD': config('DBPASSWORD')
+            'PASSWORD': config('DBPASSWORD'),
             # 'SSL':True
         }
     }
