@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from corsheaders.defaults import default_headers
-
+from decouple import config
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -136,12 +136,12 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('DBNAME'),
-            'HOST': os.environ.get('DBHOST', 'db'),
-            'USER': os.environ.get('DBUSER'),
-            'PORT': os.environ.get('DBPORT'),
-            'PASSWORD': os.environ.get('DBPASSWORD'),
-            'SSL':True
+            'NAME': config('DBNAME'),
+            # 'HOST': config('DBHOST', 'db'),
+            'USER': config('DBUSER'),
+            'PORT': config('DBPORT'),
+            'PASSWORD': config('DBPASSWORD')
+            # 'SSL':True
         }
     }
 
