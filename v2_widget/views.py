@@ -38,7 +38,7 @@ def v2_widget_placeholder_embed(request, placeholder: str, lang: str):
         return HttpResponse(f"Error: {str(e)}", status=502)
 
 
-def proxy_content(request, target_url: str):
+def proxy_content(request, target_url: str, content_type="text/html"):
     print("method = ", request.method)
 
     headers = {
@@ -54,5 +54,25 @@ def proxy_content(request, target_url: str):
     return HttpResponse(
         content=response.content,
         status=response.status_code,
-        content_type=response.headers.get("Content-Type", "text/html")
+        content_type=response.headers.get("Content-Type", content_type)
     )
+
+
+def v2_api(
+        request,
+        uni_id: str,
+        course_id: str,
+        mode: str,
+        first_stat: str,
+        second_stat: str,
+        third_stat: str
+):
+    try:
+        return proxy_content(
+            target_url=f"{WIDGET_HOST}widget/v2/api/{uni_id}/{course_id}/{mode}/{first_stat}/{second_stat}/{third_stat}",
+            request=request,
+            content_type="application/json"
+        )
+
+    except requests.exceptions.RequestException as e:
+        return HttpResponse(f"Error: {str(e)}", status=502)
