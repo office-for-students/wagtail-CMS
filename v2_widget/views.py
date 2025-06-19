@@ -16,6 +16,7 @@ def configurator_view(request):
     return render(request=request, template_name='v2_widget/configurator.html', context={})
 
 
+
 @xframe_options_exempt
 @csrf_exempt
 def v2_widget_embed(request, institution: str, course: str, mode: str, lang: str):

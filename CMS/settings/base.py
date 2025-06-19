@@ -68,7 +68,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'storages',
     'cookie',
-    'v2_widget',
+    'v2_widget'
 ]
 
 MIDDLEWARE = [
