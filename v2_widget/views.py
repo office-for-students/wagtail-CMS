@@ -13,7 +13,7 @@ WIDGET_HOST = settings.V2_WIDGET_HOST
 
 
 def configurator_view(request):
-    return render(request=request, template_name='v2_widget/configurator.html', context={'WIDGET_HOST': WIDGET_HOST})
+    return render(request=request, template_name='v2_widget/placeholder.html', context={'WIDGET_HOST': WIDGET_HOST})
 
 
 @xframe_options_exempt
