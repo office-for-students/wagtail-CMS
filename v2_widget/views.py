@@ -58,21 +58,40 @@ def proxy_content(request, target_url: str, content_type="text/html"):
     )
 
 
-def v2_api(
+def v2_api_institutions(
         request,
-        uni_id: str,
-        course_id: str,
-        mode: str,
-        first_stat: str,
-        second_stat: str,
-        third_stat: str
 ):
     try:
         return proxy_content(
-            target_url=f"{WIDGET_HOST}widget/v2/api/{uni_id}/{course_id}/{mode}/{first_stat}/{second_stat}/{third_stat}",
+            target_url=f"{WIDGET_HOST}widget/v2/api/all_institutions/",
             request=request,
             content_type="application/json"
         )
 
+    except requests.exceptions.RequestException as e:
+        return HttpResponse(f"Error: {str(e)}", status=502)
+
+
+def v2_api_institutions(
+        request,
+):
+    try:
+        return proxy_content(
+            target_url=f"{WIDGET_HOST}api/all_institutions/",
+            request=request,
+            content_type="application/json"
+        )
+
+    except requests.exceptions.RequestException as e:
+        return HttpResponse(f"Error: {str(e)}", status=502)
+
+
+def v2_api_institution_courses(request, institution: str):
+    try:
+        return proxy_content(
+            target_url=f"{WIDGET_HOST}api/institution/{institution}/courses",
+            request=request,
+            content_type="application/json"
+        )
     except requests.exceptions.RequestException as e:
         return HttpResponse(f"Error: {str(e)}", status=502)
