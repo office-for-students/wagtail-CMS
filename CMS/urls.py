@@ -37,8 +37,8 @@ urlpatterns = [
 
     url(r'^widget/', include('widget.urls')),
     url(r'^Widget/', include('widget.urls')),
-    url(r'^v2/widget/', include('widget.v2_urls')),
-    url(r'^v2/Widget/', include('widget.v2_urls')),
+    url(r'^v2/widget/', include('v2_widget.urls')),
+    url(r'^v2/Widget/', include('v2_widget.urls')),
     url(r'^course-details/', include(courses_urls)),
     url(r'^institution-details/', include(institution_urls)),
     url(r'^course-comparison/', course_views.compare_courses, name="course_comparison"),
