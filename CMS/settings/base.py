@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from corsheaders.defaults import default_headers
+from decouple import config
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -136,12 +137,12 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('DBNAME'),
-            'HOST': os.environ.get('DBHOST', 'db'),
-            'USER': os.environ.get('DBUSER'),
-            'PORT': os.environ.get('DBPORT'),
-            'PASSWORD': os.environ.get('DBPASSWORD'),
-            'SSL':True
+            'NAME': config('DBNAME'),
+            'HOST': config('DBHOST', 'db'),
+            'USER': config('DBUSER'),
+            'PORT': config('DBPORT'),
+            'PASSWORD': config('DBPASSWORD'),
+            'SSL': True
         }
     }
 
@@ -214,29 +215,26 @@ BASE_URL = os.environ.get('ROOT_DOMAIN', 'http://example.com')
 
 # Search API settings
 
-SORT_BY_SUBJECT_LIMIT = os.environ.get('SORT_BY_SUBJECT_LIMIT')
-SEARCHAPIHOST = os.environ.get('SEARCHAPIHOST')
-DATASETAPIHOST = os.environ.get('DATASETAPIHOST')
-DATASETAPIKEY = os.environ.get('DATASETAPIKEY')
-AZURECOSMOSDBURI = os.environ.get('AZURECOSMOSDBURI')
-AZURECOSMOSDBKEY = os.environ.get('AZURECOSMOSDBKEY')
-MONGODB_HOST = os.environ.get('MONGODB_HOST')
-MONGODB_USERNAME = os.environ.get('MONGODB_USERNAME')
-MONGODB_PASSWORD = os.environ.get('MONGODB_PASSWORD')
-TEST_COURSES = os.environ.get('TEST_COURSES')
-WIDGETAPIKEY = os.environ.get('WIDGETAPIKEY')
-WIDGETAPIHOST = os.environ.get('WIDGETAPIHOST')
-V2_WIDGET_HOST = os.environ.get('V2_WIDGET_HOST')
-FEEDBACK_API_HOST = os.environ.get('FEEDBACK_API_HOST')
-JSONFILES_STORAGE_CONTAINER = os.environ.get('JSONFILES_STORAGE_CONTAINER', "")
-SITEMAP_STORAGE_BLOB = os.environ.get('SITEMAP_STORAGE_BLOB', "")
-STORAGEKEY = os.environ.get('STORAGEKEY')
-STORAGE_ACCOUNT_NAME = os.environ.get('STORAGE_ACCOUNT_NAME')
+SORT_BY_SUBJECT_LIMIT = config('SORT_BY_SUBJECT_LIMIT', default=5000)
+SEARCHAPIHOST = config('SEARCHAPIHOST')
+DATASETAPIHOST = config('DATASETAPIHOST')
+DATASETAPIKEY = config('DATASETAPIKEY')
+AZURECOSMOSDBURI = config('AZURECOSMOSDBURI')
+AZURECOSMOSDBKEY = config('AZURECOSMOSDBKEY')
+TEST_COURSES = config('TEST_COURSES')
+WIDGETAPIKEY = config('WIDGETAPIKEY')
+WIDGETAPIHOST = config('WIDGETAPIHOST')
+V2_WIDGET_HOST = config('V2_WIDGET_HOST')
+FEEDBACK_API_HOST = config('FEEDBACK_API_HOST')
+JSONFILES_STORAGE_CONTAINER = config('JSONFILES_STORAGE_CONTAINER', "")
+SITEMAP_STORAGE_BLOB = config('SITEMAP_STORAGE_BLOB', "")
+STORAGEKEY = config('STORAGEKEY')
+STORAGE_ACCOUNT_NAME = config('STORAGE_ACCOUNT_NAME')
 
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')  # eg. 'campaignstorage'
-AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')  # eg. '<secret key>'
-AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')  # eg. 'campaign-resource-centre'
+# AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')  # eg. 'campaignstorage'
+# AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')  # eg. '<secret key>'
+# AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')  # eg. 'campaign-resource-centre'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
