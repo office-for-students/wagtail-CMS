@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-
 from corsheaders.defaults import default_headers
 from decouple import config
 
@@ -225,6 +224,7 @@ AZURECOSMOSDBKEY = config('AZURECOSMOSDBKEY')
 TEST_COURSES = config('TEST_COURSES')
 WIDGETAPIKEY = config('WIDGETAPIKEY')
 WIDGETAPIHOST = config('WIDGETAPIHOST')
+V2_WIDGET_HOST = config('V2_WIDGET_HOST')
 FEEDBACK_API_HOST = config('FEEDBACK_API_HOST')
 JSONFILES_STORAGE_CONTAINER = config('JSONFILES_STORAGE_CONTAINER', "")
 SITEMAP_STORAGE_BLOB = config('SITEMAP_STORAGE_BLOB', "")
