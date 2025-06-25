@@ -1,0 +1,43 @@
+.custom-donut {
+    font-family: "Plus Jakarta Sans", Sans-Serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circular-progress {
+    position: relative;
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    background: conic-gradient(#FCD833 3.6deg, #ededed 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circular-progress::before {
+    content: "";
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.progress-value {
+    position: relative;
+    font-size: 1.375em;
+    font-weight: 400;
+    color: black;
+}
+
+
+

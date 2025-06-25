@@ -46,3 +46,6 @@ docker-compose.*.yml
 !docker-compose.ci.yml
 
 docker-setup-db.sh
+
+!v2_widget/static/v2_widget/widget/**/*.css
+!v2_widget/static/v2_widget/assets/*.css

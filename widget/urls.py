@@ -1,6 +1,8 @@
-from django.conf.urls import include, url
+from django.conf.urls import include
+from django.conf.urls import url
 
-from widget.views import widget_iframe, widget_embed
+from widget.views import widget_embed
+from widget.views import widget_iframe
 
 urlpatterns = [
     url(r'(?P<uk_prn>[\w\-]+?)/(?P<kis_course_id>[\w\-\~]+?)/', include([
@@ -15,5 +17,5 @@ urlpatterns = [
     url(r'^embed-script$(?i)', widget_embed, name='widget_embed'),
     url(r'^embed-script/$(?i)', widget_embed, name='widget_embed'),
     url(r'^embed-script.js$(?i)', widget_embed, name='widget_embed'),
-    url(r'^embed-script.js/$(?i)', widget_embed, name='widget_embed'),
+    url(r'^embed-script.js/$(?i)', widget_embed, name='widget_embed')
 ]
