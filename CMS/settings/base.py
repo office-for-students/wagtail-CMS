@@ -28,9 +28,9 @@ ROOT_DOMAIN = config('ROOT_DOMAIN', 'http://localhost:3000')
 INSTALLED_APPS = [
     'customadmin',
     'django.contrib.sitemaps',
-    'wagtail',
-    # 'wagtail.contrib.modeladmin',
-    # 'wagtail.contrib.redirects',
+    'wagtail.contrib.forms',
+    'wagtail.contrib.modeladmin',
+    'wagtail.contrib.redirects',
     # 'wagtail.contrib.frontend_cache',
     'wagtail.embeds',
     'wagtail.sites',
