@@ -138,11 +138,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('DBNAME'),
+            'NAME': config('DBNAME', "discoveruni"),
             'HOST': config('DBHOST', 'db'),
-            'USER': config('DBUSER'),
-            'PORT': config('DBPORT'),
-            'PASSWORD': config('DBPASSWORD'),
+            'USER': config('DBUSER', "discoveruni"),
+            'PORT': config('DBPORT', '5432'),
+            'PASSWORD': config('DBPASSWORD', ""),
             'SSL':True
         }
     }
@@ -216,20 +216,20 @@ BASE_URL = config('ROOT_DOMAIN', 'http://example.com')
 
 # Search API settings
 
-SORT_BY_SUBJECT_LIMIT = config('SORT_BY_SUBJECT_LIMIT')
-SEARCHAPIHOST = config('SEARCHAPIHOST')
-DATASETAPIHOST = config('DATASETAPIHOST')
-DATASETAPIKEY = config('DATASETAPIKEY')
-AZURECOSMOSDBURI = config('AZURECOSMOSDBURI')
-AZURECOSMOSDBKEY = config('AZURECOSMOSDBKEY')
-TEST_COURSES = config('TEST_COURSES')
-WIDGETAPIKEY = config('WIDGETAPIKEY')
-WIDGETAPIHOST = config('WIDGETAPIHOST')
-V2_WIDGET_HOST = config('V2_WIDGET_HOST')
+SORT_BY_SUBJECT_LIMIT = config('SORT_BY_SUBJECT_LIMIT', 5000)
+SEARCHAPIHOST = config('SEARCHAPIHOST', "")
+DATASETAPIHOST = config('DATASETAPIHOST', "")
+DATASETAPIKEY = config('DATASETAPIKEY', "")
+AZURECOSMOSDBURI = config('AZURECOSMOSDBURI', "")
+AZURECOSMOSDBKEY = config('AZURECOSMOSDBKEY', "")
+TEST_COURSES = config('TEST_COURSES', "")
+WIDGETAPIKEY = config('WIDGETAPIKEY', "")
+WIDGETAPIHOST = config('WIDGETAPIHOST', "")
+V2_WIDGET_HOST = config('V2_WIDGET_HOST', "")
 JSONFILES_STORAGE_CONTAINER = config('JSONFILES_STORAGE_CONTAINER', "")
 SITEMAP_STORAGE_BLOB = config('SITEMAP_STORAGE_BLOB', "")
-STORAGEKEY = config('STORAGEKEY')
-STORAGE_ACCOUNT_NAME = config('STORAGE_ACCOUNT_NAME')
+STORAGEKEY = config('STORAGEKEY', "")
+STORAGE_ACCOUNT_NAME = config('STORAGE_ACCOUNT_NAME', "")
 
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
