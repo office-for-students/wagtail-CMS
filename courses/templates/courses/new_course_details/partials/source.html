@@ -8,7 +8,7 @@
 
     <div class="d-flex flex-column">
         <p>{% get_translation key='data_for_students_graduating' language=page.get_language %} {{ question_stats.aggregation_year }}</p>
-        <p><a target="_blank" href="https://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey">Source:
-            NSS (National Student Survey)</a></p>
+        <p><a target="_blank" href="https://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey">
+            {% get_translation key='source_nss' language=page.get_language %}</a></p>
     </div>
 </div>

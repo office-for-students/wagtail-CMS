@@ -50,6 +50,7 @@ pycodestyle==2.5.0
 pyflakes==2.1.1
 pymongo==3.11.3
 python-dateutil==2.8.1
+python-decouple==3.8
 pytz==2022.1
 rcssmin==1.1.0
 requests==2.27.1

@@ -847,6 +847,10 @@ DICT = {
         "cy": "ACF (Arolwg Cenedlaethol o Fyfyrwyr)",
         "en": "NSS (National Student Survey)"
     },
+    "source_nss":{
+        "cy": "Ffynhonnell: ACF (Arolwg Cenedlaethol o Fyfyrwyr)",
+        "en": "Source: NSS (National Student Survey)"
+    },
     "near_your_home": {
         "cy": "agos at adref",
         "en": "to near your home"

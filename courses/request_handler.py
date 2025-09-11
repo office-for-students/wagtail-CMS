@@ -9,23 +9,10 @@ from django.conf import settings
 
 
 def load_course_data(institution_id, course_id, mode):
-    if settings.LOCAL:
-        if course_id == "GN12":
-            return JointCourseFormatMocks.get_successful_course_load_response()
-        return CourseFormatMocks.get_successful_course_load_response()
-    if settings.MONGODB_HOST:
-        mongo = Mongo('courses')
-        return mongo.get_one(
-            {
-                'institution_id': str(institution_id),
-                'course_id': str(course_id),
-            }
-        )
-    else:
-        headers = {
-            'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
-        }
-        base_url = "%s/institutions/%s/courses/%s/modes/%s"
+    headers = {
+        'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
+    }
+    base_url = "%s/institutions/%s/courses/%s/modes/%s"
 
-        response = requests.get(url=base_url % (settings.DATASETAPIHOST, institution_id, course_id, mode), headers=headers)
-        return response
+    response = requests.get(url=base_url % (settings.DATASETAPIHOST, institution_id, course_id, mode), headers=headers)
+    return response
