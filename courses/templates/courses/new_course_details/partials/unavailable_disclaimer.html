@@ -1,3 +1,4 @@
+{% load static wagtailcore_tags discover_uni_tags %}
 {% if unavailable.reason_body %}
     <div class="not-enough-data-disclaimer py-3 pr-3 pl-0 mr-1 mb-3">
         <h3>{{ unavailable.reason_heading|safe }}</h3>
@@ -5,5 +6,11 @@
         {% if unavailable.find_out_more %}
             <a href="{{ unavailable.url }}">{{ unavailable.find_out_more|safe }}</a>
         {% endif %}
+    </div>
+{% elif unavailable|is_string %}
+    <div class="not-enough-data-disclaimer py-3 pr-3 pl-0 mr-1 mb-3">
+        <h3>{% split_by_line_break text=unavailable index=0 %}</h3>
+        <br>
+        <p>{% split_by_line_break text=unavailable index=1 %}</p>
     </div>
 {% endif %}
