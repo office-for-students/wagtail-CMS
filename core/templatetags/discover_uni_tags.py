@@ -4,6 +4,7 @@ import csv
 from typing import List
 from urllib.parse import urlencode
 from django import template
+from django.utils.safestring import mark_safe
 
 from CMS import translations
 from core.utils import get_current_version, get_code_version
@@ -61,6 +62,13 @@ def get_translation(*_, **kwargs):
     if 'substitutions' in kwargs:
         term = term % kwargs.get('substitutions')
     return term
+
+@register.simple_tag
+def add_line_breaks(*_, **kwargs):
+    text = kwargs.get('text', '')
+    text = text.replace('\n\n', '<br /><br />')
+    return mark_safe(text)
+
 
 
 @register.simple_tag
