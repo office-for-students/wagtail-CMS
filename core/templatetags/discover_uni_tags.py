@@ -240,8 +240,8 @@ def concat(*args, **_):
 
 @register.simple_tag
 def insert_values_to_plain_text(*_, **kwargs):
-    return kwargs.get('content').format(*kwargs.get('substitutions'))
-
+    response=kwargs.get('content').format(*kwargs.get('substitutions'))
+    return response
 
 @register.simple_tag
 def get_salary_from_index(objs: List, index: int):
