@@ -82,7 +82,11 @@ def split_by_line_break(*_, **kwargs):
     text = kwargs.get('text', '')
     index = kwargs.get('index')
     content = text.split('\n\n')
-    return content[index]
+    try:
+        content = content[index]
+    except IndexError:
+        content = ''
+    return content
 
 
 @register.filter
