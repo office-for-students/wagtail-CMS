@@ -11,7 +11,6 @@ from .models import Menu, Footer
 
 
 class MenuAdmin(ModelAdmin):
-
     model = Menu
     menu_label = 'Menu'  # ditch this to use verbose_name_plural from model
     menu_icon = 'form'  # change as required
@@ -24,7 +23,6 @@ class MenuAdmin(ModelAdmin):
 
 
 class FooterAdmin(ModelAdmin):
-
     model = Footer
     menu_label = 'Footer'  # ditch this to use verbose_name_plural from model
     menu_icon = 'form'  # change as required
@@ -74,7 +72,6 @@ def register_underline(features):
     type_ = "UNDERLINE"
     tag = "span"
 
-
     control = {
         "type": type_,
         "label": "U",
@@ -115,6 +112,7 @@ def register_underline(features):
     features.default_features.append(feature_name)
 
 
-# Removing documents from the menu. Had to specify the index because searching for it breaks the urls
-# TODO improve the way the  documents are removed
-hooks._hooks['register_admin_menu_item'].pop(2)
+@hooks.register("construct_main_menu")
+def hide_documents_menu_item(request, menu_items):
+    # Remove the Documents menu item by its name
+    menu_items[:] = [item for item in menu_items if item.name != "documents"]
