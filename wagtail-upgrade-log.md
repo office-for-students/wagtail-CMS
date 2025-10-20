@@ -19,3 +19,7 @@ No additional commands required
 
 `python manage.py update_index` - re-indexes search and enables search functionality
 
+### 3.0 to 3.0.3
+
+No additional commands required
+
