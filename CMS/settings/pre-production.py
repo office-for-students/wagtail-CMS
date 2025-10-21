@@ -20,6 +20,7 @@ AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')
 MEDIA_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
 
 
+
 # Email settings
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
