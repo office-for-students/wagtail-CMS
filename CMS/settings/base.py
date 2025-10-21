@@ -202,13 +202,13 @@ STATICFILES_DIRS = [
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "CMS"
+WAGTAILADMIN_BASE_URL="/admin"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = config('ROOT_DOMAIN', 'http://example.com')
 
 # Search API settings
-
 SORT_BY_SUBJECT_LIMIT = config('SORT_BY_SUBJECT_LIMIT', 5000)
 SEARCHAPIHOST = config('SEARCHAPIHOST', "")
 DATASETAPIHOST = config('DATASETAPIHOST', "")
@@ -227,6 +227,7 @@ STORAGE_ACCOUNT_NAME = config('STORAGE_ACCOUNT_NAME', "")
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
 CORS_ORIGIN_ALLOW_ALL = True
+
 
 # CORS_ALLOW_HEADERS = list(default_headers) + [
 #     'ocp-apim-subscription-key',
@@ -248,7 +249,6 @@ AXES_CACHE = 'axes_cache'
 AXES_LOGIN_FAILURE_LIMIT = 5
 AXES_LOCK_OUT_AT_FAILURE = True
 AXES_COOLOFF_TIME = 1  # Locks user out for 1 hour
-AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP = True
 # If True, prevent login from IP under a particular username if the attempt limit has been exceeded,
 # otherwise lock out based on IP.
 
