@@ -1,10 +1,12 @@
 from django.conf import settings
 from django.conf.urls import include
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import path
+from django.urls import re_path
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.core import urls as wagtail_urls
+from wagtail.documents import urls as wagtaildocs_urls
 
 from core import views as core_views
 from core.views import content_sitemap
@@ -20,6 +22,7 @@ from search import views as search_views
 from . import welsh_urls
 
 urlpatterns = [
+    path('documents/', include(wagtaildocs_urls)),
     path('robots.txt', robots, name='robots'),
     path('sitemap.xml', sitemap_new, name='sitemap'),
     path('sitemaps/content.xml', content_sitemap, name='content_sitemap'),
@@ -29,7 +32,7 @@ urlpatterns = [
     re_path(r'^feedback', core_views.submit_feedback, name='submit_feedback'),
     re_path(r'^jsonfiles/subjects', core_views.get_subjects_json, name='jsonfiles_subjects'),
     re_path(r'^jsonfiles/institutions/(?P<language>[\w\-]+?)/', core_views.get_institutions_json,
-        name='jsonfiles_institutions'),
+            name='jsonfiles_institutions'),
 
     re_path(r'^narrow-search/$', coursefinder_views.narrow_search, name='narrow_search'),
     re_path(r'^course-finder/results/$', coursefinder_views.course_finder_results, name='course_finder_results'),
