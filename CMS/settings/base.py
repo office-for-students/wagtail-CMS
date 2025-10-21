@@ -27,10 +27,16 @@ ROOT_DOMAIN = config('ROOT_DOMAIN', 'http://localhost:3000')
 INSTALLED_APPS = [
     'customadmin',
     'django.contrib.sitemaps',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
-    # 'wagtail.contrib.frontend_cache',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -40,20 +46,10 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
-
     'modelcluster',
     'taggit',
     'corsheaders',
     'axes',
-
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.humanize',
-
     'core.apps.CoreConfig',
     'content.apps.ContentConfig',
     'coursefinder.apps.CoursefinderConfig',
@@ -64,7 +60,6 @@ INSTALLED_APPS = [
     'search.apps.SearchConfig',
     'site_search.apps.SiteSearchConfig',
     'widget.apps.WidgetConfig',
-
     'sass_processor',
     'storages',
     'cookie',
@@ -80,7 +75,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
