@@ -17,8 +17,7 @@ ALLOWED_HOSTS = [
 AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
 AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')
 AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')
-MEDIA_URL = f"https://preproddiscoveruniimages.blob.core.windows.net/uploadedimages/"
-
+MEDIA_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
 
 
 # Email settings
