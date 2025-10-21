@@ -48,7 +48,7 @@ tablib==3.9.0
 telepath==0.3.1
 typing_extensions==4.15.0
 urllib3==2.5.0
-wagtail==3.0.3
+wagtail==4.0.4
 webencodings==0.5.1
 whitenoise==6.7.0
 Willow==1.4.1
