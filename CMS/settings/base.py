@@ -205,7 +205,7 @@ WAGTAIL_SITE_NAME = "CMS"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = config('ROOT_DOMAIN', 'http://example.com')
+WAGTAILADMIN_BASE_URL = config('ROOT_DOMAIN', 'http://example.com')
 
 # Search API settings
 
