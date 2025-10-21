@@ -248,7 +248,7 @@ AXES_CACHE = 'axes_cache'
 AXES_LOGIN_FAILURE_LIMIT = 5
 AXES_LOCK_OUT_AT_FAILURE = True
 AXES_COOLOFF_TIME = 1  # Locks user out for 1 hour
-AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP = True
+AXES_LOCKOUT_PARAMETERS = ["ip_address", "username"]
 # If True, prevent login from IP under a particular username if the attempt limit has been exceeded,
 # otherwise lock out based on IP.
 
