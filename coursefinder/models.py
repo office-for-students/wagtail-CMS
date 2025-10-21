@@ -1,21 +1,23 @@
 import math
 
-from django.db.models.fields import TextField
-
-from wagtail.core.models import Page
-from wagtail.core.fields import StreamField, RichTextField
-from wagtail.core import blocks
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-
 from CMS.enums import enums
 from core.models import DiscoverUniBasePage
 from core.utils import get_page_for_language
 from coursefinder import request_handler
-from coursefinder.utils import choose_country_sibling_finder, mode_of_study_sibling_finder, \
-    choose_subject_sibling_finder, narrow_search_sibling_finder, summary_sibling_finder, \
-    results_sibling_finder
+from coursefinder.utils import choose_country_sibling_finder
+from coursefinder.utils import choose_subject_sibling_finder
+from coursefinder.utils import mode_of_study_sibling_finder
+from coursefinder.utils import narrow_search_sibling_finder
+from coursefinder.utils import results_sibling_finder
+from coursefinder.utils import summary_sibling_finder
+from django.db.models.fields import TextField
 from errors.models import ApiError
 from institutions.models import InstitutionList
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.core import blocks
+from wagtail.core.fields import RichTextField
+from wagtail.core.fields import StreamField
+from wagtail.core.models import Page
 
 
 class CourseFinderChooseCountry(DiscoverUniBasePage):
@@ -160,14 +162,14 @@ class CourseFinderResults(DiscoverUniBasePage):
     related_links_title = TextField(blank=True)
     related_links = StreamField([
         ('links', blocks.PageChooserBlock()),
-    ])
+    ], use_json_field=True)
 
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
         FieldPanel('related_links_title'),
-        StreamFieldPanel('related_links', classname="full"),
+        FieldPanel('related_links', classname="full"),
     ]
-    
+
     def get_context(self, request):
         context = super(CourseFinderResults, self).get_context(request)
         context['search_url'] = self.get_search_url()
@@ -250,7 +252,8 @@ class CourseSearch(BaseSearch):
         self.language = language
 
     def execute(self):
-        response = request_handler.query_course_and_institution(self.subject, self.institution, self.count, self.offset, self.language)
+        response = request_handler.query_course_and_institution(self.subject, self.institution, self.count, self.offset,
+                                                                self.language)
         error = None
 
         if response.ok:
@@ -267,7 +270,8 @@ class CourseSearch(BaseSearch):
 
 class CourseFinderSearch(BaseSearch):
 
-    def __init__(self, subject, institution, countries, postcode, filters, sortBySubject, sortBySubjectLimit, course, page, count, language=enums.languages.ENGLISH):
+    def __init__(self, subject, institution, countries, postcode, filters, sortBySubject, sortBySubjectLimit, course,
+                 page, count, language=enums.languages.ENGLISH):
         super().__init__(page, count)
         self.subject = subject
         self.institution = institution
@@ -280,16 +284,16 @@ class CourseFinderSearch(BaseSearch):
         self.language = language
 
     def execute(self):
-        response = request_handler.course_finder_query(self.subject, 
-                                                       self.institution, 
-                                                       self.countries, 
+        response = request_handler.course_finder_query(self.subject,
+                                                       self.institution,
+                                                       self.countries,
                                                        self.postcode,
-                                                       self.filters, 
-                                                       self.sortBySubject, 
-                                                       self.sortBySubjectLimit, 
-                                                       self.course, 
-                                                       self.count, 
-                                                       self.offset, 
+                                                       self.filters,
+                                                       self.sortBySubject,
+                                                       self.sortBySubjectLimit,
+                                                       self.course,
+                                                       self.count,
+                                                       self.offset,
                                                        self.language)
         error = None
 

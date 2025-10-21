@@ -1,13 +1,11 @@
 import logging
 
+from core.models import DiscoverUniBasePage
 from django.db.models.fields import TextField
 from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField
 from wagtail.core.fields import StreamField
-
-from core.models import DiscoverUniBasePage
 
 logger = logging.getLogger(__name__)
 
@@ -214,11 +212,11 @@ class CourseDetailPage(DiscoverUniBasePage):
         ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down')),
         ('links_to_the_institution_website_panel',
          LinksToTheInstitutionWebsiteBlock(required=True, icon='collapse-down'))
-    ])
+    ], use_json_field=True)
     uni_site_links_header = TextField(blank=True)
 
     content_panels = DiscoverUniBasePage.content_panels + [
-        StreamFieldPanel('accordions'),
+        FieldPanel('accordions'),
         FieldPanel('uni_site_links_header'),
     ]
 
@@ -239,7 +237,7 @@ class CourseComparisonPage(DiscoverUniBasePage):
         ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down')),
         ('links_to_the_institution_website_panel',
          LinksToTheInstitutionWebsiteBlock(required=True, icon='collapse-down'))
-    ])
+    ], use_json_field=True)
 
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('heading'),
@@ -247,7 +245,7 @@ class CourseComparisonPage(DiscoverUniBasePage):
         FieldPanel('remove_text'),
         FieldPanel('save_text'),
         FieldPanel('compare_heading'),
-        StreamFieldPanel('accordions'),
+        FieldPanel('accordions'),
     ]
 
 
