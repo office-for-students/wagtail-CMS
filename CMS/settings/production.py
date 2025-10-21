@@ -20,6 +20,12 @@ ALLOWED_HOSTS = [
     'prod-discover-uni-write.azurewebsites.net',
 ]
 
+# Storage settings
+
+AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
+AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')
+MEDIA_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
+
 
 # Email settings
 
