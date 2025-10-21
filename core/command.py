@@ -1,12 +1,8 @@
-import json
-import requests
-from math import ceil
-
-from django.core.management.base import BaseCommand, CommandError
 import azure.cosmos.cosmos_client as cosmos_client
 
 from django.conf import settings
-from core.mongo import Mongo
+from django.core.management.base import BaseCommand
+from django.core.management.base import CommandError
 
 
 class SimpleCommand(BaseCommand):

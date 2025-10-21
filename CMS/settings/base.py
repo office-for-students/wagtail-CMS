@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from corsheaders.defaults import default_headers
 from decouple import config
 # from decouple import config
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -235,9 +234,9 @@ DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ALLOW_HEADERS = list(default_headers) + [
-    'ocp-apim-subscription-key',
-]
+# CORS_ALLOW_HEADERS = list(default_headers) + [
+#     'ocp-apim-subscription-key',
+# ]
 
 X_FRAME_OPTIONS = 'DENY'
 

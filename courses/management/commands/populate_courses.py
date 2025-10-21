@@ -1,14 +1,9 @@
 import json
-import requests
 from pathlib import Path
 
-from django.core.management.base import CommandError
-import azure.cosmos.cosmos_client as cosmos_client
-
 from core.command import CosmosCommand
-from core.mongo import Mongo
-
 from django.conf import settings
+from django.core.management.base import CommandError
 
 
 class Command(CosmosCommand):

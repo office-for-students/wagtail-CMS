@@ -1,25 +1,11 @@
-import re
 import os
-import json
-import requests
-import subprocess
-from math import ceil
 from pathlib import Path
 
-from django.core import management
-import azure.cosmos.cosmos_client as cosmos_client
-from django.contrib.auth.hashers import make_password
-from django.contrib.contenttypes.models import ContentType
-from django.core.management.base import BaseCommand, CommandError
-from django.core.validators import URLValidator
-from django.core.exceptions import ValidationError
-
-
-from wagtail.core.models import Page
 from core.command import SimpleCommand
-from core.mongo import Mongo
-
-from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
+from django.core import management
+from django.core.management.base import CommandError
+from wagtail.core.models import Page
 
 
 class Command(SimpleCommand):
