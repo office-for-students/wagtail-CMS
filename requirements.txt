@@ -21,6 +21,7 @@ et_xmlfile==2.0.0
 html5lib==1.1
 idna==3.11
 l18n==2021.3
+libsass==0.23.0
 openpyxl==3.1.5
 Pillow==9.5.0
 psycopg2-binary==2.9.11
