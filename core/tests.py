@@ -24,7 +24,7 @@ class CoreUtilsTests(UniSimpleTestCase):
 
         found_page = get_page_for_language(enums.languages.ENGLISH, SearchLandingPage.objects.all())
         self.assertIsNotNone(found_page)
-        self.assertEquals(created_page.id, found_page.id)
+        self.assertEqual(created_page.id, found_page.id)
 
     def test_get_page_for_language_returns_english_page_if_multiple_english_pages_exist(self):
         created_page = PageFactory.create_search_landing_page('English course finder')
@@ -34,11 +34,11 @@ class CoreUtilsTests(UniSimpleTestCase):
 
         found_page = get_page_for_language(enums.languages.ENGLISH, SearchLandingPage.objects.all())
         self.assertIsNotNone(found_page)
-        self.assertEquals(created_page.id, found_page.id)
+        self.assertEqual(created_page.id, found_page.id)
 
     def test_get_page_for_language_returns_no_page_for_english_if_no_english_exists(self):
         pages = SearchLandingPage.objects.all()
-        self.assertEquals(len(pages), 0)
+        self.assertEqual(len(pages), 0)
 
         found_page = get_page_for_language(enums.languages.ENGLISH, SearchLandingPage.objects.all())
         self.assertIsNone(found_page)
@@ -51,7 +51,7 @@ class CoreUtilsTests(UniSimpleTestCase):
 
         found_page = get_page_for_language(enums.languages.WELSH, CourseFinderChooseCountry.objects.all())
         self.assertIsNotNone(found_page)
-        self.assertEquals(created_page.id, found_page.id)
+        self.assertEqual(created_page.id, found_page.id)
 
     def test_get_page_for_language_returns_welsh_page_if_multiple_welsh_pages_exist(self):
         welsh_root = PageFactory.create_search_landing_page('cy')
@@ -63,22 +63,22 @@ class CoreUtilsTests(UniSimpleTestCase):
 
         found_page = get_page_for_language(enums.languages.WELSH, CourseFinderChooseCountry.objects.all())
         self.assertIsNotNone(found_page)
-        self.assertEquals(created_page.id, found_page.id)
+        self.assertEqual(created_page.id, found_page.id)
 
     def test_get_page_for_language_returns_english_page_for_welsh_if_no_welsh_page_exists(self):
         created_page = PageFactory.create_country_finder_page('English course finder')
         self.assertIsNotNone(created_page)
         self.assertIsTrue('cy' not in created_page.url)
         pages = CourseFinderChooseCountry.objects.all()
-        self.assertEquals(len(pages), 1)
+        self.assertEqual(len(pages), 1)
 
         found_page = get_page_for_language(enums.languages.WELSH, CourseFinderChooseCountry.objects.all())
         self.assertIsNotNone(found_page)
-        self.assertEquals(created_page.id, found_page.id)
+        self.assertEqual(created_page.id, found_page.id)
 
     def test_get_page_for_language_returns_no_page_for_welsh_if_no_english_exists(self):
         pages = CourseFinderChooseCountry.objects.all()
-        self.assertEquals(len(pages), 0)
+        self.assertEqual(len(pages), 0)
 
         found_page = get_page_for_language(enums.languages.WELSH, CourseFinderChooseCountry.objects.all())
         self.assertIsNone(found_page)
@@ -92,7 +92,7 @@ class CoreModelsTests(UniSimpleTestCase):
         created_page = PageFactory.create_country_finder_page('English course finder', parent_page=english_root)
         self.assertIsNotNone(created_page)
 
-        self.assertEquals(created_page.get_language(), enums.languages.ENGLISH)
+        self.assertEqual(created_page.get_language(), enums.languages.ENGLISH)
 
     def test_get_page_for_language_returns_welsh_page_if_it_exists(self):
         welsh_root = PageFactory.create_search_landing_page('cy')
@@ -100,4 +100,4 @@ class CoreModelsTests(UniSimpleTestCase):
         self.assertIsNotNone(created_page)
         self.assertIsTrue('cy' in created_page.url)
 
-        self.assertEquals(created_page.get_language(), enums.languages.WELSH)
+        self.assertEqual(created_page.get_language(), enums.languages.WELSH)
