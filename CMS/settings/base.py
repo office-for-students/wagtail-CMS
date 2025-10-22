@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from corsheaders.defaults import default_headers
 from decouple import config
 # from decouple import config
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,10 +27,16 @@ ROOT_DOMAIN = config('ROOT_DOMAIN', 'http://localhost:3000')
 INSTALLED_APPS = [
     'customadmin',
     'django.contrib.sitemaps',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
-    # 'wagtail.contrib.frontend_cache',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -41,20 +46,10 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
-
     'modelcluster',
     'taggit',
     'corsheaders',
     'axes',
-
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.humanize',
-
     'core.apps.CoreConfig',
     'content.apps.ContentConfig',
     'coursefinder.apps.CoursefinderConfig',
@@ -65,7 +60,6 @@ INSTALLED_APPS = [
     'search.apps.SearchConfig',
     'site_search.apps.SiteSearchConfig',
     'widget.apps.WidgetConfig',
-
     'sass_processor',
     'storages',
     'cookie',
@@ -81,7 +75,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
@@ -209,13 +202,13 @@ STATICFILES_DIRS = [
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "CMS"
+WAGTAILADMIN_BASE_URL="/admin"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = config('ROOT_DOMAIN', 'http://example.com')
 
 # Search API settings
-
 SORT_BY_SUBJECT_LIMIT = config('SORT_BY_SUBJECT_LIMIT', 5000)
 SEARCHAPIHOST = config('SEARCHAPIHOST', "")
 DATASETAPIHOST = config('DATASETAPIHOST', "")
@@ -237,9 +230,10 @@ DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ALLOW_HEADERS = list(default_headers) + [
-    'ocp-apim-subscription-key',
-]
+
+# CORS_ALLOW_HEADERS = list(default_headers) + [
+#     'ocp-apim-subscription-key',
+# ]
 
 X_FRAME_OPTIONS = 'DENY'
 
@@ -257,7 +251,7 @@ AXES_CACHE = 'axes_cache'
 AXES_LOGIN_FAILURE_LIMIT = 5
 AXES_LOCK_OUT_AT_FAILURE = True
 AXES_COOLOFF_TIME = 1  # Locks user out for 1 hour
-AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP = True
+AXES_LOCKOUT_PARAMETERS = ["ip_address", "username"]
 # If True, prevent login from IP under a particular username if the attempt limit has been exceeded,
 # otherwise lock out based on IP.
 

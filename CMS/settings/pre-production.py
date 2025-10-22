@@ -7,23 +7,24 @@ DEBUG = False
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = [
-    'dev-discover-uni2.azurewebsites.net',
-    'devdiscoveruni.com',
-    'www.devdiscoveruni.com',
+    '169.254.129.3',
     'pre-prod-discover-uni.azurewebsites.net',
     'pre-prod-discover-uni-write.azurewebsites.net',
-    'discoveruni.org.uk',
-    'www.discoveruni.org.uk',
-    'production-discover-uni.azurewebsites.net',
-    'discoveruni.gov.uk',
-    'www.discoveruni.gov.uk',
-    'widget.discoveruni.gov.uk',
-    'prod-discover-uni.azurewebsites.net',
-    'prod-widget-discover-uni.azurewebsites.net',
-    'prod-discover-uni-write.azurewebsites.net',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://169.254.129.3',
+    'https://pre-prod-discover-uni.azurewebsites.net',
+    'https://pre-prod-discover-uni-write.azurewebsites.net',
 ]
 
 
+# Storage settings
+
+AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
+AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')
+AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')
+MEDIA_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
 
 # Email settings
 
@@ -36,7 +37,7 @@ EMAIL_USE_TLS = True
 WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = os.environ.get('SENDGRID_FROM_EMAIL')
 WAGTAILADMIN_NOTIFICATION_USE_HTML = True
 WAGTAILADMIN_NOTIFICATION_INCLUDE_SUPERUSERS = False
-
+WAGTAILSDOCS_ENABLED = True
 
 # Logging settings
 
@@ -64,7 +65,6 @@ LOGGING = {
     },
 }
 
-
 # Cloudflare
 
 WAGTAILFRONTENDCACHE = {
@@ -75,7 +75,6 @@ WAGTAILFRONTENDCACHE = {
         'ZONEID': os.environ.get('CLOUDFLARE_ZONEID'),
     },
 }
-
 
 # Security settings
 
