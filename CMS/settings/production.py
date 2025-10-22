@@ -20,6 +20,22 @@ ALLOWED_HOSTS = [
     'prod-discover-uni-write.azurewebsites.net',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'devdiscoveruni.com',
+    'www.devdiscoveruni.com',
+    'pre-prod-discover-uni.azurewebsites.net',
+    'pre-prod-discover-uni-write.azurewebsites.net',
+    'discoveruni.org.uk',
+    'www.discoveruni.org.uk',
+    'production-discover-uni.azurewebsites.net',
+    'discoveruni.gov.uk',
+    'www.discoveruni.gov.uk',
+    'widget.discoveruni.gov.uk',
+    'prod-discover-uni.azurewebsites.net',
+    'prod-widget-discover-uni.azurewebsites.net',
+    'prod-discover-uni-write.azurewebsites.net',
+]
+
 # Storage settings
 
 AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
