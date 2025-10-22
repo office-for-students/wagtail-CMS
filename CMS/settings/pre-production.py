@@ -13,9 +13,9 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    '169.254.129.3',
-    'pre-prod-discover-uni.azurewebsites.net',
-    'pre-prod-discover-uni-write.azurewebsites.net',
+    'https://169.254.129.3',
+    'https://pre-prod-discover-uni.azurewebsites.net',
+    'https://pre-prod-discover-uni-write.azurewebsites.net',
 ]
 
 
