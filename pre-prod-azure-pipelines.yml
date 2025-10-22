@@ -15,7 +15,7 @@ variables:
 steps:
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: 3.12
+    versionSpec: 3.10
 
 - task: PythonScript@0
   displayName: 'Export project path'
@@ -41,7 +41,7 @@ steps:
 
 - script: |
     pushd '$(projectRoot)'
-#    python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --tag=azure --no-input
+    python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --tag=azure --no-input
   condition: succeededOrFailed()
   displayName: 'Run tests'
 
