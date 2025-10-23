@@ -110,9 +110,3 @@ def register_underline(features):
     )
 
     features.default_features.append(feature_name)
-
-
-@hooks.register("construct_main_menu")
-def hide_documents_menu_item(request, menu_items):
-    # Remove the Documents menu item by its name
-    menu_items[:] = [item for item in menu_items if item.name != "documents"]

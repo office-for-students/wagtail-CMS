@@ -223,7 +223,9 @@ JSONFILES_STORAGE_CONTAINER = config('JSONFILES_STORAGE_CONTAINER', "")
 SITEMAP_STORAGE_BLOB = config('SITEMAP_STORAGE_BLOB', "")
 STORAGEKEY = config('STORAGEKEY', "")
 STORAGE_ACCOUNT_NAME = config('STORAGE_ACCOUNT_NAME', "")
-
+AZURE_ACCOUNT_NAME = config('AZURE_ACCOUNT_NAME', "")
+AZURE_ACCOUNT_KEY = config('AZURE_ACCOUNT_KEY', "")
+AZURE_CONTAINER = config('AZURE_CONTAINER', "")
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -249,6 +251,7 @@ AXES_CACHE = 'axes_cache'
 AXES_LOGIN_FAILURE_LIMIT = 5
 AXES_LOCK_OUT_AT_FAILURE = True
 AXES_COOLOFF_TIME = 1  # Locks user out for 1 hour
+AXES_LOCKOUT_PARAMETERS = ["ip_address", "username"]
 # If True, prevent login from IP under a particular username if the attempt limit has been exceeded,
 # otherwise lock out based on IP.
 

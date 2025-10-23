@@ -1,14 +1,11 @@
-from wagtail.core.fields import StreamField, RichTextField
-from wagtail.core import blocks
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-from django.db.models.fields import TextField
-
 from CMS import translations
-from institutions.models import InstitutionList
-
 from core.models import DiscoverUniBasePage
-import json
-
+from django.db.models.fields import TextField
+from institutions.models import InstitutionList
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.core import blocks
+from wagtail.core.fields import RichTextField
+from wagtail.core.fields import StreamField
 
 NAV_ICON_OPTIONS = (
     ('magnify_glass', 'Magnify glass'),
@@ -31,7 +28,6 @@ class NavPanel(blocks.StructBlock):
 
 
 class HomePage(DiscoverUniBasePage):
-
     header = TextField(blank=True)
     intro = RichTextField(blank=True)
     informational_title = TextField(blank=True)
@@ -52,7 +48,7 @@ class HomePage(DiscoverUniBasePage):
             ('page', blocks.PageChooserBlock()),
             ('title', blocks.CharBlock())
         ]))
-    ])
+    ], use_json_field=True)
 
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
@@ -70,7 +66,7 @@ class HomePage(DiscoverUniBasePage):
         FieldPanel('box_3_title', classname="full"),
         FieldPanel('box_3_content', classname="full"),
         FieldPanel('box_3_link', classname="full"),
-        StreamFieldPanel('page_links', classname="full"),
+        FieldPanel('page_links', classname="full"),
     ]
 
     def get_context(self, request):
@@ -89,13 +85,12 @@ class HomePage(DiscoverUniBasePage):
 
 
 class UserNavPage(DiscoverUniBasePage):
-
     header = TextField()
     nav_panels = StreamField([
         ('nav_panel', NavPanel(required=True, icon='link')),
-    ])
+    ], use_json_field=True)
 
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
-        StreamFieldPanel('nav_panels', classname="full"),
+        FieldPanel('nav_panels', classname="full"),
     ]

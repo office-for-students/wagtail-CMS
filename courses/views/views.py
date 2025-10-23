@@ -8,6 +8,7 @@ from django.shortcuts import render
 from CMS import translations
 from CMS.enums import enums
 from CMS.translations.dictionaries.unavailable import UNAVAILABLE
+from core.request_handler import is_ajax
 from core.utils import get_new_landing_page_for_language
 from core.utils import get_page_for_language
 from courses.models import Course
@@ -19,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 
 def regional_earnings(request):
-    if 'region' in request.POST and request.is_ajax():
+    if 'region' in request.POST and is_ajax(request):
         region = request.POST['region']
         institution_id = request.POST['institution_id']
         course_id = request.POST['course_id']
