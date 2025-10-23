@@ -1,4 +1,5 @@
 from CMS import translations
+from CMS.settings.base import APPLICATION_VERSION
 from core.models import DiscoverUniBasePage
 from django.db.models.fields import TextField
 from institutions.models import InstitutionList
@@ -81,6 +82,7 @@ class HomePage(DiscoverUniBasePage):
             'select_all_results': translations.term_for_key('select_all_results', language),
             'select_all_institutions': translations.term_for_key('select_all_institutions', language)
         }
+        context['version'] = APPLICATION_VERSION
         return context
 
 

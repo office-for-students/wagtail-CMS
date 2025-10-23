@@ -13,9 +13,18 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from decouple import config
+
 # from decouple import config
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
+
+VERSION_FILE = os.path.join(BASE_DIR, 'version.txt')
+
+try:
+    with open(VERSION_FILE) as f:
+        APPLICATION_VERSION = f.read().strip()
+except FileNotFoundError:
+    APPLICATION_VERSION = '0.0.0'  # default fallback
 
 LOCAL = True if config('LOCAL', "") == "True" else False
 READ_ONLY = config('READ_ONLY', False)
@@ -136,7 +145,7 @@ else:
             'USER': config('DBUSER', "discoveruni"),
             'PORT': config('DBPORT', '5432'),
             'PASSWORD': config('DBPASSWORD', ""),
-            'SSL':True
+            'SSL': True
         }
     }
 
@@ -202,7 +211,7 @@ STATICFILES_DIRS = [
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "CMS"
-WAGTAILADMIN_BASE_URL="/admin"
+WAGTAILADMIN_BASE_URL = "/admin"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
@@ -229,7 +238,6 @@ AZURE_CONTAINER = config('AZURE_CONTAINER', "")
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
 CORS_ORIGIN_ALLOW_ALL = True
-
 
 # CORS_ALLOW_HEADERS = list(default_headers) + [
 #     'ocp-apim-subscription-key',
