@@ -1,13 +1,13 @@
+from CMS.enums import enums
+from core import utils
+from core.utils import get_page_for_language
 from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, PageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import PageChooserPanel
 from wagtail.core import blocks
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.snippets.models import register_snippet
-
-from CMS.enums import enums
-from core import utils
-from core.utils import get_page_for_language
 
 
 class DiscoverUniBasePage(Page):
@@ -75,11 +75,11 @@ class Menu(models.Model):
     menu_items = StreamField([
         ('simple_menu_item', SimpleMenuItem()),
         ('multi_menu_item', MultiMenuItem())
-    ])
+    ], use_json_field=True)
 
     panels = [
         FieldPanel('name'),
-        StreamFieldPanel('menu_items')
+        FieldPanel('menu_items')
     ]
 
     def __str__(self):
@@ -91,11 +91,11 @@ class Footer(models.Model):
     name = models.CharField(max_length=255)
     footer_items = StreamField([
         ('footer_item', SimpleMenuItem()),
-    ])
+    ], use_json_field=True)
 
     panels = [
         FieldPanel('name'),
-        StreamFieldPanel('footer_items')
+        FieldPanel('footer_items')
     ]
 
     def __str__(self):

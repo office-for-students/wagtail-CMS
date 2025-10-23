@@ -1,20 +1,20 @@
-from django.db.models.fields import TextField
-from wagtail.core.fields import StreamField, RichTextField
-from wagtail.core import blocks
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-
 from core.models import DiscoverUniBasePage
+from django.db.models.fields import TextField
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.core import blocks
+from wagtail.core.fields import RichTextField
+from wagtail.core.fields import StreamField
 
 
 class ContentLandingPage(DiscoverUniBasePage):
     intro = RichTextField(blank=True)
     options = StreamField([
         ('sections', blocks.PageChooserBlock())
-    ])
+    ], use_json_field=True)
 
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('intro'),
-        StreamFieldPanel('options', classname="full")
+        FieldPanel('options', classname="full")
     ]
 
     def get_breadcrumbs(self):
@@ -26,26 +26,27 @@ class Section(DiscoverUniBasePage):
     subsections = StreamField([
         ('subsection', blocks.StructBlock([
             ('subsection_title', blocks.TextBlock()),
-            ('subsection_content', blocks.RichTextBlock(features=['h3', 'h4', 'bold', 'underline', 'italic', 'embed', 'link',
-                                                                  'image', 'ol', 'ul', 'hr', 'blockquote']))
+            ('subsection_content',
+             blocks.RichTextBlock(features=['h3', 'h4', 'bold', 'underline', 'italic', 'embed', 'link',
+                                            'image', 'ol', 'ul', 'hr', 'blockquote']))
         ]))
-    ])
+    ], use_json_field=True)
     related_links_title = TextField(blank=True)
     related_links = StreamField([
         ('links', blocks.PageChooserBlock(required=False)),
-    ], blank=True)
+    ], use_json_field=True, blank=True)
     lateral_link_title = TextField(blank=True)
     lateral_links = StreamField([
         ('links', blocks.PageChooserBlock(required=False)),
-    ], blank=True)
+    ], use_json_field=True, blank=True)
 
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('intro'),
-        StreamFieldPanel('subsections'),
+        FieldPanel('subsections'),
         FieldPanel('related_links_title'),
-        StreamFieldPanel('related_links'),
+        FieldPanel('related_links'),
         FieldPanel('lateral_link_title'),
-        StreamFieldPanel('lateral_links')
+        FieldPanel('lateral_links')
     ]
 
     @property
