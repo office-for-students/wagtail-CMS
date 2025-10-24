@@ -5,7 +5,7 @@ from core.command import SimpleCommand
 from django.contrib.contenttypes.models import ContentType
 from django.core import management
 from django.core.management.base import CommandError
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 
 class Command(SimpleCommand):
