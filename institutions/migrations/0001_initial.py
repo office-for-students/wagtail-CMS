@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -19,21 +19,21 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('qa_heading', models.TextField(blank=True)),
-                ('qa_body', wagtail.core.fields.RichTextField(blank=True)),
+                ('qa_body', wagtail.fields.RichTextField(blank=True)),
                 ('qa_report_link', models.TextField(blank=True)),
                 ('qa_explanation_link', models.TextField(blank=True)),
                 ('qa_explanation_heading', models.TextField(blank=True)),
-                ('qa_explanation_body', wagtail.core.fields.RichTextField(blank=True)),
+                ('qa_explanation_body', wagtail.fields.RichTextField(blank=True)),
                 ('tef_heading', models.TextField(blank=True)),
                 ('tef_report_link', models.TextField(blank=True)),
                 ('tef_explanation_link', models.TextField(blank=True)),
                 ('tef_explanation_heading', models.TextField(blank=True)),
-                ('tef_explanation_body', wagtail.core.fields.RichTextField(blank=True)),
+                ('tef_explanation_body', wagtail.fields.RichTextField(blank=True)),
                 ('apr_heading', models.TextField(blank=True)),
-                ('apr_body', wagtail.core.fields.RichTextField(blank=True)),
+                ('apr_body', wagtail.fields.RichTextField(blank=True)),
                 ('apr_explanation_link', models.TextField(blank=True)),
                 ('apr_explanation_heading', models.TextField(blank=True)),
-                ('apr_explanation_body', wagtail.core.fields.RichTextField(blank=True)),
+                ('apr_explanation_body', wagtail.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,
