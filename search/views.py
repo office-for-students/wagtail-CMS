@@ -3,7 +3,7 @@ from django.core.paginator import PageNotAnInteger
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from wagtail.core.models import Page
+from wagtail.models import Page
 from wagtail.search.models import Query
 
 

@@ -1,15 +1,19 @@
-from core.models import DiscoverUniBasePage
 from django.db.models.fields import TextField
-from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.core import blocks
-from wagtail.core.fields import RichTextField
-from wagtail.core.fields import StreamField
+from wagtail.admin.panels import FieldPanel
+from wagtail.blocks import PageChooserBlock
+from wagtail.blocks import RichTextBlock
+from wagtail.blocks import StructBlock
+from wagtail.blocks import TextBlock
+from wagtail.fields import RichTextField
+from wagtail.fields import StreamField
+
+from core.models import DiscoverUniBasePage
 
 
 class ContentLandingPage(DiscoverUniBasePage):
     intro = RichTextField(blank=True)
     options = StreamField([
-        ('sections', blocks.PageChooserBlock())
+        ('sections', PageChooserBlock())
     ], use_json_field=True)
 
     content_panels = DiscoverUniBasePage.content_panels + [
@@ -24,20 +28,20 @@ class ContentLandingPage(DiscoverUniBasePage):
 class Section(DiscoverUniBasePage):
     intro = RichTextField(blank=True)
     subsections = StreamField([
-        ('subsection', blocks.StructBlock([
-            ('subsection_title', blocks.TextBlock()),
+        ('subsection', StructBlock([
+            ('subsection_title', TextBlock()),
             ('subsection_content',
-             blocks.RichTextBlock(features=['h3', 'h4', 'bold', 'underline', 'italic', 'embed', 'link',
-                                            'image', 'ol', 'ul', 'hr', 'blockquote']))
+             RichTextBlock(features=['h3', 'h4', 'bold', 'underline', 'italic', 'embed', 'link',
+                                     'image', 'ol', 'ul', 'hr', 'blockquote']))
         ]))
     ], use_json_field=True)
     related_links_title = TextField(blank=True)
     related_links = StreamField([
-        ('links', blocks.PageChooserBlock(required=False)),
+        ('links', PageChooserBlock(required=False)),
     ], use_json_field=True, blank=True)
     lateral_link_title = TextField(blank=True)
     lateral_links = StreamField([
-        ('links', blocks.PageChooserBlock(required=False)),
+        ('links', PageChooserBlock(required=False)),
     ], use_json_field=True, blank=True)
 
     content_panels = DiscoverUniBasePage.content_panels + [

@@ -1,13 +1,14 @@
-from axes.models import AccessAttempt
 import wagtail.admin.rich_text.editors.draftail.features as draftail_features
-from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleElementHandler
+from axes.models import AccessAttempt
 from django.utils.html import escape
+from wagtail import hooks
+from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleElementHandler
+from wagtail.contrib.modeladmin.options import ModelAdmin
+from wagtail.contrib.modeladmin.options import modeladmin_register
+from wagtail.rich_text import LinkHandler
 
-from wagtail.contrib.modeladmin.options import (ModelAdmin, modeladmin_register)
-from wagtail.core import hooks
-from wagtail.core.rich_text import LinkHandler
-
-from .models import Menu, Footer
+from .models import Footer
+from .models import Menu
 
 
 class MenuAdmin(ModelAdmin):

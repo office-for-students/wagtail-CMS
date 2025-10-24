@@ -1,14 +1,14 @@
+from django.db.models.fields import TextField
+from wagtail.admin.panels import FieldPanel
+
 from CMS.enums import enums
 from core.models import DiscoverUniBasePage
 from core.utils import get_page_for_language
 from coursefinder.models import CourseFinderChooseCountry
-from django.db.models.fields import TextField
 from institutions.models import InstitutionList
-from wagtail.admin.edit_handlers import FieldPanel
 
 
 class SearchLandingPage(DiscoverUniBasePage):
-
     heading = TextField(blank=False)
     search_heading = TextField(blank=False)
     search_button_description = TextField(blank=False)
