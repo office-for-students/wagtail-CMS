@@ -14,7 +14,6 @@ from institutions.utils import load_institution_json
 
 class InstitutionList:
 
-    @staticmethod
     def get_latest_version():
         response = get_json_file("version.json")
 
