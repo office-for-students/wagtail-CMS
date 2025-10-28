@@ -5,7 +5,7 @@ azure-core==1.36.0
 azure-mgmt-core==1.6.0
 azure-mgmt-storage==23.1.0
 azure-storage-blob==12.27.0
-beautifulsoup4==4.11.2
+beautifulsoup4==4.12.3
 certifi==2025.10.5
 cffi==2.0.0
 charset-normalizer==3.4.4
@@ -21,10 +21,10 @@ django-modelcluster==6.4
 django-permissionedforms==0.1
 django-sass-processor==1.4.2
 django-storages==1.14.6
-django-taggit==4.0.0
+django-taggit==5.0.1
 django-treebeard==4.7.1
 djangorestframework==3.16.1
-draftjs-exporter==2.1.7
+draftjs_exporter==5.1.0
 et_xmlfile==2.0.0
 filetype==1.2.0
 gunicorn==23.0.0
@@ -32,6 +32,7 @@ html5lib==1.1
 idna==3.11
 isodate==0.7.2
 l18n==2021.3
+laces==0.1.2
 libsass==0.23.0
 openpyxl==3.1.5
 packaging==25.0
@@ -51,7 +52,7 @@ sqlparse==0.5.3
 telepath==0.3.1
 typing_extensions==4.15.0
 urllib3==2.5.0
-wagtail==5.2.8
+wagtail==6.0.6
 webencodings==0.5.1
 whitenoise==6.11.0
-Willow==1.6.3
+Willow==1.11.0
