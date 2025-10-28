@@ -54,7 +54,7 @@ class HomePage(DiscoverUniBasePage):
             ('page', PageChooserBlock()),
             ('title', CharBlock())
         ]))
-    ], use_json_field=True)
+    ])
 
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
@@ -95,7 +95,7 @@ class UserNavPage(DiscoverUniBasePage):
     header = TextField()
     nav_panels = StreamField([
         ('nav_panel', NavPanel(required=True, icon='link')),
-    ], use_json_field=True)
+    ])
 
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),
