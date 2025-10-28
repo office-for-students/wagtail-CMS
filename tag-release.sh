@@ -13,6 +13,11 @@ if [[ "$version" != v* ]]; then
   version="v$version"
 fi
 
+# Update version.txt and commit it ---
+echo "$version" > version.txt
+git add version.txt
+git commit -m "Update version.txt"
+
 # Get commits since last tag in reverse order (oldest first)
 release_notes=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- %s (%an)" --reverse)
 
@@ -33,7 +38,8 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
   # Create annotated tag
   git tag -a "$version" -m "$tag_message"
 
-  # Push the tag
+  # Push both the new commit and tag
+  git push origin HEAD
   git push origin "$version"
   echo "Tag $version pushed successfully."
 else
