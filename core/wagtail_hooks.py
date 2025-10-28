@@ -3,49 +3,52 @@ from axes.models import AccessAttempt
 from django.utils.html import escape
 from wagtail import hooks
 from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleElementHandler
-from wagtail.contrib.modeladmin.options import ModelAdmin
-from wagtail.contrib.modeladmin.options import modeladmin_register
+from wagtail.snippets.views.snippets import SnippetViewSet
+from wagtail.snippets.models import register_snippet
 from wagtail.rich_text import LinkHandler
 
 from .models import Footer
 from .models import Menu
 
 
-class MenuAdmin(ModelAdmin):
+class MenuAdmin(SnippetViewSet):
     model = Menu
     menu_label = 'Menu'  # ditch this to use verbose_name_plural from model
-    menu_icon = 'form'  # change as required
+    icon = 'form'  # change as required
     menu_order = 200  # will put in 3rd place (000 being 1st, 100 2nd)
     add_to_settings_menu = True  # or True to add your model to the Settings sub-menu
     exclude_from_explorer = False  # or True to exclude pages of this type from Wagtail's explorer view
     list_display = ('name',)
     list_filter = ('name',)
     search_fields = ('name',)
+    template_prefix = "modeladmin/"
 
 
-class FooterAdmin(ModelAdmin):
+class FooterAdmin(SnippetViewSet):
     model = Footer
     menu_label = 'Footer'  # ditch this to use verbose_name_plural from model
-    menu_icon = 'form'  # change as required
+    icon = 'form'  # change as required
     menu_order = 300  # will put in 3rd place (000 being 1st, 100 2nd)
     add_to_settings_menu = True  # or True to add your model to the Settings sub-menu
     exclude_from_explorer = False  # or True to exclude pages of this type from Wagtail's explorer view
     list_display = ('name',)
     list_filter = ('name',)
     search_fields = ('name',)
+    template_prefix = "modeladmin/"
 
 
-class AccessAttemptAdmin(ModelAdmin):
+class AccessAttemptAdmin(SnippetViewSet):
     model = AccessAttempt
     menu_label = 'Access'
-    menu_icon = 'code'
+    icon = 'code'
     menu_order = 5
     add_to_settings_menu = True
+    template_prefix = "modeladmin/"
 
 
-modeladmin_register(MenuAdmin)
-modeladmin_register(FooterAdmin)
-modeladmin_register(AccessAttemptAdmin)
+register_snippet(MenuAdmin)
+register_snippet(FooterAdmin)
+register_snippet(AccessAttemptAdmin)
 
 
 class NewWindowExternalLinkHandler(LinkHandler):
