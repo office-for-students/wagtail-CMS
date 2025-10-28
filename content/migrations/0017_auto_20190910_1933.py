@@ -2,8 +2,8 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -32,6 +32,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='section',
             name='subsections',
-            field=wagtail.core.fields.StreamField([('subsection', wagtail.core.blocks.StructBlock([('subsection_title', wagtail.core.blocks.TextBlock()), ('subsection_content', wagtail.core.blocks.RichTextBlock(features=['h3', 'h4', 'bold', 'italic', 'embed', 'link', 'document-link', 'image', 'ol', 'ul', 'hr', 'blockquote']))]))]),
+            field=wagtail.fields.StreamField([('subsection', wagtail.blocks.StructBlock([('subsection_title', wagtail.blocks.TextBlock()), ('subsection_content', wagtail.blocks.RichTextBlock(features=['h3', 'h4', 'bold', 'italic', 'embed', 'link', 'document-link', 'image', 'ol', 'ul', 'hr', 'blockquote']))]))]),
         ),
     ]

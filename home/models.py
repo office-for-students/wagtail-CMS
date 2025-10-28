@@ -1,11 +1,17 @@
-from CMS import translations
-from core.models import DiscoverUniBasePage
 from django.db.models.fields import TextField
+from wagtail.admin.panels import FieldPanel
+from wagtail.blocks import CharBlock
+from wagtail.blocks import ChoiceBlock
+from wagtail.blocks import PageChooserBlock
+from wagtail.blocks import RichTextBlock
+from wagtail.blocks import StructBlock
+from wagtail.fields import RichTextField
+from wagtail.fields import StreamField
+
+from CMS import translations
+from CMS.settings.base import APPLICATION_VERSION
+from core.models import DiscoverUniBasePage
 from institutions.models import InstitutionList
-from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.core import blocks
-from wagtail.core.fields import RichTextField
-from wagtail.core.fields import StreamField
 
 NAV_ICON_OPTIONS = (
     ('magnify_glass', 'Magnify glass'),
@@ -16,15 +22,15 @@ NAV_ICON_OPTIONS = (
 )
 
 
-class NavPanel(blocks.StructBlock):
-    link = blocks.PageChooserBlock()
-    icon = blocks.ChoiceBlock(choices=NAV_ICON_OPTIONS,
-                              default='standard',
-                              label="Variant",
-                              classname='dct-meta-field')
-    label = blocks.RichTextBlock()
-    button_text = blocks.CharBlock(required=False)
-    button_description = blocks.CharBlock(required=False)
+class NavPanel(StructBlock):
+    link = PageChooserBlock()
+    icon = ChoiceBlock(choices=NAV_ICON_OPTIONS,
+                       default='standard',
+                       label="Variant",
+                       classname='dct-meta-field')
+    label = RichTextBlock()
+    button_text = CharBlock(required=False)
+    button_description = CharBlock(required=False)
 
 
 class HomePage(DiscoverUniBasePage):
@@ -44,9 +50,9 @@ class HomePage(DiscoverUniBasePage):
     box_3_content = TextField(blank=True)
     box_3_link = TextField(blank=True)
     page_links = StreamField([
-        ('link', blocks.StructBlock([
-            ('page', blocks.PageChooserBlock()),
-            ('title', blocks.CharBlock())
+        ('link', StructBlock([
+            ('page', PageChooserBlock()),
+            ('title', CharBlock())
         ]))
     ], use_json_field=True)
 
@@ -81,6 +87,7 @@ class HomePage(DiscoverUniBasePage):
             'select_all_results': translations.term_for_key('select_all_results', language),
             'select_all_institutions': translations.term_for_key('select_all_institutions', language)
         }
+        context['version'] = APPLICATION_VERSION
         return context
 
 

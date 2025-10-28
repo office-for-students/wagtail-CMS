@@ -1,5 +1,11 @@
 import math
 
+from django.db.models.fields import TextField
+from wagtail.admin.panels import FieldPanel
+from wagtail.blocks import PageChooserBlock
+from wagtail.fields import RichTextField
+from wagtail.fields import StreamField
+
 from CMS.enums import enums
 from core.models import DiscoverUniBasePage
 from core.utils import get_page_for_language
@@ -10,14 +16,8 @@ from coursefinder.utils import mode_of_study_sibling_finder
 from coursefinder.utils import narrow_search_sibling_finder
 from coursefinder.utils import results_sibling_finder
 from coursefinder.utils import summary_sibling_finder
-from django.db.models.fields import TextField
 from errors.models import ApiError
 from institutions.models import InstitutionList
-from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.core import blocks
-from wagtail.core.fields import RichTextField
-from wagtail.core.fields import StreamField
-from wagtail.core.models import Page
 
 
 class CourseFinderChooseCountry(DiscoverUniBasePage):
@@ -161,7 +161,7 @@ class CourseFinderResults(DiscoverUniBasePage):
     header = TextField(blank=True)
     related_links_title = TextField(blank=True)
     related_links = StreamField([
-        ('links', blocks.PageChooserBlock()),
+        ('links', PageChooserBlock()),
     ], use_json_field=True)
 
     content_panels = DiscoverUniBasePage.content_panels + [
