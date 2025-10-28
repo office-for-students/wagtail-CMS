@@ -3,8 +3,8 @@ from django.core.paginator import PageNotAnInteger
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from wagtail.contrib.search_promotions.models import Query
 from wagtail.models import Page
-from wagtail.search.models import Query
 
 
 @csrf_exempt
