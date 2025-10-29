@@ -73,7 +73,6 @@ class MultiMenuItem(StructBlock):
     ], icon='arrow-left', label='Items')
 
 
-@register_snippet
 class Menu(models.Model):
     name = models.CharField(max_length=255)
     menu_items = StreamField([
@@ -90,7 +89,6 @@ class Menu(models.Model):
         return self.name
 
 
-@register_snippet
 class Footer(models.Model):
     name = models.CharField(max_length=255)
     footer_items = StreamField([
