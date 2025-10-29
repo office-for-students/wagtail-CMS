@@ -1,5 +1,5 @@
 # How to install CMS locally from scratch
-This document cherry picks some commands that can already be found in [README-short.md](https://github.com/office-for-students/wagtail-CMS/blob/develop/README-short.md)
+This document cherry-picks some commands that can already be found in [README.md](https://github.com/office-for-students/wagtail-CMS/blob/develop/README.md)
 
 Notes:
 1. Python 3.6.8 is referenced in [Confluence](https://mobilisecloud.atlassian.net/wiki/spaces/OFS/pages/236912643/Managing+multiple+Python+versions) and [Docker](https://github.com/office-for-students/wagtail-CMS/blob/master/Dockerfile). If you don't already have 3.6 installed, a later version should work too.
@@ -49,21 +49,19 @@ unset LOCAL
     source venv/bin/activate
 
 # Migrate database tables
-    docker container exec -it wagtail-cms_web_1 python manage.py migrate
+    docker container exec -it wagtail-cms-web-1 python manage.py migrate
 
 # Load local databases with data from fixtures
 
 # CMS
+    docker container exec -it wagtail-cms-web-1 python manage.py update_cms_fixture \
+      --db_host $REMOTE_DB_HOST \
+      --db_name $REMOTE_DB_NAME \
+      --db_user $REMOTE_DB_USER \
+      --db_password $REMOTE_DB_PASSWORD \
+      --db_port $REMOTE_DB_PORT
 
     docker container exec -it wagtail-cms-web-1 python manage.py populate_cms
-
-# Courses
-    
-    docker container exec -it wagtail-cms-web-1 python manage.py populate_courses
-
-# Institutions
-    
-    docker container exec -it wagtail-cms-web-1 python manage.py populate_institutions
 
 # Other commands and the ones listed above can be run in the terminal of the container, for example:
 

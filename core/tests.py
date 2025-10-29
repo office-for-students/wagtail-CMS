@@ -101,3 +101,12 @@ class CoreModelsTests(UniSimpleTestCase):
         self.assertIsTrue('cy' in created_page.url)
 
         self.assertEqual(created_page.get_language(), enums.languages.WELSH)
+
+
+@tag('azure')
+class BaseTestCase(TestCase):
+    institution_id  = 10005343
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.client = Client()
