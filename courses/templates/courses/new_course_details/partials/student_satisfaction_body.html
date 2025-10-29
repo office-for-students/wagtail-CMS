@@ -21,7 +21,6 @@
 {% endif %}
 
 <div class="tab-content mb-4">
-
     {% for overall_stats in course_details.overall_satisfaction %}
         {% with question_stats=overall_stats.satisfaction_stats %}
             {% create_list course_details.data_from_html question_stats.number_of_students question_stats.response_rate as substitutions %}
@@ -32,7 +31,13 @@
 
                 <div class="student-satisfaction__block"> <!-- student satisfaction question boxes -->
                     <div class="mt-3 pl-3 ml-1">
-                        {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavail %}
+                        {% if page.get_language == "en" %}
+                            {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavailable_reason_english %}
+                        {% elif page.get_language == "cy" %}
+                            {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavailable_reason_welsh %}
+                        {% else %}
+                            {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavail %}
+                        {% endif %}
                     </div>
                     <div class="scrolling-wrapper scroll">
                         {% if course.country.code != "XF" and overall_stats.satisfaction_stats.show_satisfaction_stats %}
@@ -57,16 +62,16 @@
                                         {% endif %}
                                         <ul style="text-align: left;">
                                             <li>
-                                                {% get_translation key="data_from" language=page.get_language %} {{ question_stats.nss_country_population }} {% get_translation key="students" language=page.get_language %}
-                                                ({{ question_stats.nss_country_response_rate }}% {% get_translation key="of_those_asked" language=page.get_language %}).
+                                                {% get_translation key="data_from" language=page.get_language %} {{ question_stats.number_of_students }} {% get_translation key="students" language=page.get_language %}
+                                                ({{ question_stats.response_rate }}% {% get_translation key="of_those_asked" language=page.get_language %}).
                                             </li>
                                             <li>{% get_translation key="final_year_students" language=page.get_language %}</li>
                                         </ul>
-                                        <p style="font-size: 1rem;">{% get_translation key="data_from_students_graduating" language=page.get_language %} {{ question_stats.nss_country_year }}</p>
+                                        <p style="font-size: 1rem;">{% get_translation key="data_from_students_graduating" language=page.get_language %} {{ question_stats.aggregation_year }}</p>
                                         <a style="font-size: 1rem;"
-                                           href="http://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey"
-                                           role="button" class="TooltipEntity ml-1" data-draftail-trigger="true">Source:
-                                            NSS (National Student Survey)</a>
+                                           href="https://www.discoveruni.gov.uk/about-our-data/#the_national_student_survey"
+                                           role="button" class="TooltipEntity ml-1"
+                                           data-draftail-trigger="true">{% get_translation key='source_nss' language=page.get_language %}</a>
                                     </div>
                                 </div>
                             {% endif %}
@@ -80,7 +85,6 @@
                                 <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item stubborn-additional-class">
                                     <!-- the teaching on my course box-->
                                     {% with overall_stats.satisfaction_stats.t1 as theme %}
-
                                         {% create_list theme '' as substitutions %}
                                         {% get_translation key='overall_teaching_on_my_course' language=page.get_language as description %}
                                         {% format_value content=description substitution=theme as subbed_text %}
@@ -118,9 +122,9 @@
                                         {% get_translation key='overall_assessment_and_feedback' language=page.get_language as description %}
                                         {% format_value content=description substitution=theme as subbed_text %}
                                         {% with subbed_text|safe as description %}
-                                    {% include 'courses/new_course_details/partials/student_satisfaction_5_box.html' with title=block.value.assessment_stats_header q1=overall_stats.satisfaction_stats.question_10 q2=overall_stats.satisfaction_stats.question_11 q3=overall_stats.satisfaction_stats.question_12 q4=overall_stats.satisfaction_stats.question_13 q5=overall_stats.satisfaction_stats.question_14 %}
+                                            {% include 'courses/new_course_details/partials/student_satisfaction_5_box.html' with title=block.value.assessment_stats_header q1=overall_stats.satisfaction_stats.question_10 q2=overall_stats.satisfaction_stats.question_11 q3=overall_stats.satisfaction_stats.question_12 q4=overall_stats.satisfaction_stats.question_13 q5=overall_stats.satisfaction_stats.question_14 %}
+                                        {% endwith %}
                                     {% endwith %}
-                                {% endwith %}
                                 </div>
                             {% endif %}
 
@@ -134,9 +138,9 @@
                                         {% get_translation key='overall_academic_support' language=page.get_language as description %}
                                         {% format_value content=description substitution=theme as subbed_text %}
                                         {% with subbed_text|safe as description %}
-                                    {% include 'courses/new_course_details/partials/student_satisfaction_2_box.html' with title=block.value.support_stats_header q1=overall_stats.satisfaction_stats.question_15 q2=overall_stats.satisfaction_stats.question_16 %}
+                                            {% include 'courses/new_course_details/partials/student_satisfaction_2_box.html' with title=block.value.support_stats_header q1=overall_stats.satisfaction_stats.question_15 q2=overall_stats.satisfaction_stats.question_16 %}
+                                        {% endwith %}
                                     {% endwith %}
-                                {% endwith %}
 
                                 </div>
                             {% endif %}
@@ -150,9 +154,9 @@
                                         {% get_translation key='overall_organisation_and_management' language=page.get_language as description %}
                                         {% format_value content=description substitution=theme as subbed_text %}
                                         {% with subbed_text|safe as description %}
-                                    {% include 'courses/new_course_details/partials/student_satisfaction_2_box.html' with title=block.value.organisation_stats_header q1=overall_stats.satisfaction_stats.question_17 q2=overall_stats.satisfaction_stats.question_18 %}
-                                 {% endwith %}
-                                {% endwith %}
+                                            {% include 'courses/new_course_details/partials/student_satisfaction_2_box.html' with title=block.value.organisation_stats_header q1=overall_stats.satisfaction_stats.question_17 q2=overall_stats.satisfaction_stats.question_18 %}
+                                        {% endwith %}
+                                    {% endwith %}
                                 </div>
                             {% endif %}
 
@@ -165,9 +169,9 @@
                                         {% get_translation key='overall_learning_resources' language=page.get_language as description %}
                                         {% format_value content=description substitution=theme as subbed_text %}
                                         {% with subbed_text|safe as description %}
-                                    {% include 'courses/new_course_details/partials/student_satisfaction_3_box.html' with title=block.value.learning_resources_stats_header q1=overall_stats.satisfaction_stats.question_19 q2=overall_stats.satisfaction_stats.question_20 q3=overall_stats.satisfaction_stats.question_21 %}
-                                 {% endwith %}
-                                {% endwith %}
+                                            {% include 'courses/new_course_details/partials/student_satisfaction_3_box.html' with title=block.value.learning_resources_stats_header q1=overall_stats.satisfaction_stats.question_19 q2=overall_stats.satisfaction_stats.question_20 q3=overall_stats.satisfaction_stats.question_21 %}
+                                        {% endwith %}
+                                    {% endwith %}
                                 </div>
                             {% endif %}
 
@@ -180,9 +184,9 @@
                                         {% get_translation key='overall_student_voice' language=page.get_language as description %}
                                         {% format_value content=description substitution=theme as subbed_text %}
                                         {% with subbed_text|safe as description %}
-                                    {% include 'courses/new_course_details/partials/student_satisfaction_student_voice_box.html' with title=block.value.student_voice_stats_header q1=overall_stats.satisfaction_stats.question_22 q2=overall_stats.satisfaction_stats.question_23 q3=overall_stats.satisfaction_stats.question_24 q4=overall_stats.satisfaction_stats.question_25 %}
-                                {% endwith %}
-                                {% endwith %}
+                                            {% include 'courses/new_course_details/partials/student_satisfaction_student_voice_box.html' with title=block.value.student_voice_stats_header q1=overall_stats.satisfaction_stats.question_22 q2=overall_stats.satisfaction_stats.question_23 q3=overall_stats.satisfaction_stats.question_24 q4=overall_stats.satisfaction_stats.question_25 %}
+                                        {% endwith %}
+                                    {% endwith %}
                                 </div>
                             {% endif %}
 

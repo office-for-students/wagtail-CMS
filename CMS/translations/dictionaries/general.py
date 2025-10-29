@@ -847,6 +847,10 @@ DICT = {
         "cy": "ACF (Arolwg Cenedlaethol o Fyfyrwyr)",
         "en": "NSS (National Student Survey)"
     },
+    "source_nss":{
+        "cy": "Ffynhonnell: ACF (Arolwg Cenedlaethol o Fyfyrwyr)",
+        "en": "Source: NSS (National Student Survey)"
+    },
     "near_your_home": {
         "cy": "agos at adref",
         "en": "to near your home"
@@ -1499,23 +1503,20 @@ DICT = {
     },
 
     "earnings_info_box": {
-        "cy": "<li>Mae rhywfaint o ddata gan raddedigion a arolygwyd yn ystod y pandemig COVID-19.</li>"
-              "<li>Mae marchnadoedd llafur yn newid.</li>"
+        "cy": "<li>Mae marchnadoedd llafur yn newid.</li>"
               "<li>Mae cyflogau yn amrywio ar draws rhanbarthau yn y DU. </li>"
               "<li>Mae yna lawer o ffactorau sy'n effeithio ar enillion graddedigion.</li>",
-        "en": "<li>Some data is from graduates surveyed during the Covid-19 pandemic.</li>"
-              "<li>Labour markets change </li>"
+        "en": "<li>Labour markets change </li>"
               "<li>Salaries vary across regions in the UK</li>"
               "<li>There are lots of factors that affect graduate earnings.</li>"
     },
 
     'graduate_perceptions_info_box': {
-        'en': '<li>Some data is from graduates surveyed during the Covid-19 pandemic</li>',
-        'cy': '<li>Mae rhywfaint o ddata gan raddedigion a arolygwyd yn ystod y pandemig COVID-19.</li>'
+        'en': '<li>Here you will find the percentages of graduates who, at 15 months after graduation, agreed that what they learned on their course was useful for what they were currently doing, that they found their work meaningful, and that their work fits with their future plans.</li>',
+        'cy': "<li>Yma fe welwch y canrannau o raddedigion a oedd, 15 mis ar ôl graddio, yn cytuno bod yr hyn a ddysgon nhw ar eu cwrs yn ddefnyddiol ar gyfer yr hyn yr oeddent yn ei wneud ar y pryd, eu bod yn cael eu gwaith yn ystyrlon, a bod eu gwaith yn cyd-fynd â'u cynlluniau ar gyfer y dyfodol.</li>"
     },
     'employment_info_box': {
-        'en': '<li>Some data is from graduates surveyed during Covid-19 pandemic</li>'
-              '<li>Labour markets vary and change over time</li>'
+        'en': '<li>Labour markets vary and change over time</li>'
               '<li>Employment and job opportunities vary across regions in the UK</li>',
         'cy': '<li>Mae rhywfaint o ddata gan raddedigion a arolygwyd yn ystod y pandemig COVID-19.</li>'
               '<li>Mae marchnadoedd llafur yn amrywio ac yn newid dros amser.</li>'

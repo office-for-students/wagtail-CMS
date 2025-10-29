@@ -1,5 +1,5 @@
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from django.db.models.fields import TextField
+from wagtail.admin.panels import FieldPanel
 
 from CMS.enums import enums
 from core.models import DiscoverUniBasePage
@@ -9,7 +9,6 @@ from institutions.models import InstitutionList
 
 
 class SearchLandingPage(DiscoverUniBasePage):
-
     heading = TextField(blank=False)
     search_heading = TextField(blank=False)
     search_button_description = TextField(blank=False)

@@ -1,11 +1,10 @@
-from django.test import tag
+from django.test.testcases import TestCase
 
-from core.tests import BaseTestCase
-from courses.models import CourseManagePage
+from django.test import tag
 
 
 @tag('github')
-class CoursesTestCase(BaseTestCase):
+class CoursesTestCase(TestCase):
 
     def test_front_page(self):
 

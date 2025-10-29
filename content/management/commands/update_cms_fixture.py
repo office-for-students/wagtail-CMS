@@ -3,12 +3,11 @@ import os
 import re
 from pathlib import Path
 
+from core.command import SimpleCommand
 from django.conf import settings
 from django.contrib.auth.hashers import make_password
 from django.core import management
 from django.core.management.base import CommandError
-
-from core.command import SimpleCommand
 
 
 class Command(SimpleCommand):

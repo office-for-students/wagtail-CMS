@@ -2,10 +2,12 @@ from django.core.paginator import EmptyPage
 from django.core.paginator import PageNotAnInteger
 from django.core.paginator import Paginator
 from django.shortcuts import render
-from wagtail.core.models import Page
+from django.views.decorators.csrf import csrf_exempt
+from wagtail.models import Page
 from wagtail.search.models import Query
 
 
+@csrf_exempt
 def search(request):
     search_query = request.GET.get('query', None)
     page = request.GET.get('page', 1)

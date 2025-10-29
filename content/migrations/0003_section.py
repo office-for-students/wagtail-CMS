@@ -2,8 +2,8 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             name='Section',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('subsections', wagtail.core.fields.StreamField([('subsection', wagtail.core.blocks.TextBlock())])),
+                ('subsections', wagtail.fields.StreamField([('subsection', wagtail.blocks.TextBlock())])),
             ],
             options={
                 'abstract': False,
