@@ -21,7 +21,6 @@ class MenuAdmin(SnippetViewSet):
     list_display = ('name',)
     list_filter = ('name',)
     search_fields = ('name',)
-    template_prefix = "modeladmin/"
 
 
 class FooterAdmin(SnippetViewSet):
@@ -34,7 +33,6 @@ class FooterAdmin(SnippetViewSet):
     list_display = ('name',)
     list_filter = ('name',)
     search_fields = ('name',)
-    template_prefix = "modeladmin/"
 
 
 class AccessAttemptAdmin(SnippetViewSet):
@@ -43,7 +41,6 @@ class AccessAttemptAdmin(SnippetViewSet):
     icon = 'code'
     menu_order = 5
     add_to_settings_menu = True
-    template_prefix = "modeladmin/"
 
 
 register_snippet(MenuAdmin)
