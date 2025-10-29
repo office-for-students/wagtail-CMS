@@ -2,8 +2,8 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('header', models.TextField()),
-                ('nav_panels', wagtail.core.fields.StreamField([('satisfaction_panel', wagtail.core.blocks.StructBlock([('heading', wagtail.core.blocks.CharBlock()), ('icon', wagtail.core.blocks.ChoiceBlock(choices=[('magnify_glass', 'Magnify glass'), ('info', "Info 'i'"), ('institution', 'Institution'), ('payment', 'Payment'), ('clipboard', 'Clipboard')], classname='dct-meta-field', label='Variant')), ('label', wagtail.core.blocks.RichTextBlock()), ('button_text', wagtail.core.blocks.CharBlock())], icon='link', required=True))])),
+                ('nav_panels', wagtail.fields.StreamField([('satisfaction_panel', wagtail.blocks.StructBlock([('heading', wagtail.blocks.CharBlock()), ('icon', wagtail.blocks.ChoiceBlock(choices=[('magnify_glass', 'Magnify glass'), ('info', "Info 'i'"), ('institution', 'Institution'), ('payment', 'Payment'), ('clipboard', 'Clipboard')], classname='dct-meta-field', label='Variant')), ('label', wagtail.blocks.RichTextBlock()), ('button_text', wagtail.blocks.CharBlock())], icon='link', required=True))])),
             ],
             options={
                 'abstract': False,

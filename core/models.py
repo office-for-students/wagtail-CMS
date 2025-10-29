@@ -1,13 +1,17 @@
+from django.db import models
+from wagtail.admin.panels import FieldPanel
+from wagtail.admin.panels import PageChooserPanel
+from wagtail.blocks import CharBlock
+from wagtail.blocks import PageChooserBlock
+from wagtail.blocks import StreamBlock
+from wagtail.blocks import StructBlock
+from wagtail.fields import StreamField
+from wagtail.models import Page
+from wagtail.snippets.models import register_snippet
+
 from CMS.enums import enums
 from core import utils
 from core.utils import get_page_for_language
-from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.admin.edit_handlers import PageChooserPanel
-from wagtail.core import blocks
-from wagtail.core.fields import StreamField
-from wagtail.core.models import Page
-from wagtail.snippets.models import register_snippet
 
 
 class DiscoverUniBasePage(Page):
@@ -54,22 +58,21 @@ class DiscoverUniBasePage(Page):
         return context
 
 
-class SimpleMenuItem(blocks.StructBlock):
-    label = blocks.CharBlock(required=False, help_text='Leave blank to use the page name')
-    link_page = blocks.PageChooserBlock(required=False)
+class SimpleMenuItem(StructBlock):
+    label = CharBlock(required=False, help_text='Leave blank to use the page name')
+    link_page = PageChooserBlock(required=False)
 
     class Meta:
         icon = 'link'
 
 
-class MultiMenuItem(blocks.StructBlock):
-    label = blocks.CharBlock(required=True)
-    menu_items = blocks.StreamBlock([
+class MultiMenuItem(StructBlock):
+    label = CharBlock(required=True)
+    menu_items = StreamBlock([
         ('simple_menu_item', SimpleMenuItem())
     ], icon='arrow-left', label='Items')
 
 
-@register_snippet
 class Menu(models.Model):
     name = models.CharField(max_length=255)
     menu_items = StreamField([
@@ -86,7 +89,6 @@ class Menu(models.Model):
         return self.name
 
 
-@register_snippet
 class Footer(models.Model):
     name = models.CharField(max_length=255)
     footer_items = StreamField([
