@@ -46,3 +46,11 @@ def get_sitemap_file():
         path = settings.JSONFILES_STORAGE_CONTAINER + "/" + "sitemaps.xml"
         response = requests.get(path)
         return response
+
+
+def is_ajax(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return True
+    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+        return True
+    return False

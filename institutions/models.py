@@ -1,10 +1,7 @@
-import json
 import requests
-
 from django.db.models.fields import TextField
-
-from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.core.fields import RichTextField
+from wagtail.admin.panels import FieldPanel
+from wagtail.fields import RichTextField
 
 from CMS.enums import enums
 from CMS.translations import term_for_key

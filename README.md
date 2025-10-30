@@ -61,7 +61,7 @@ The docker image for this branch is created differently from the other branches 
 ```
 $ docker ps --all
 CONTAINER ID     IMAGE               COMMAND                  CREATED        STATUS                  PORTS       NAMES
-<container_id>   wagtail-cms_web     "python manage.py ru…"   3 days ago     Exited (0) 3 days ago               wagtail-cms_web_1
+<container_id>   wagtail-cms_web     "python manage.py ru…"   3 days ago     Exited (0) 3 days ago               wagtail-cms-web-1
 ............     .....               "...................."   ..........     .............           27017/tcp   .................
 $ docker rmi -f <container_id>
 $ docker images
@@ -79,7 +79,7 @@ This now means when you run `docker-compose up` docker will rebuild the image us
 ## Tests
 
 ```
-$ docker container exec -it wagtail-cms_web_1 python manage.py test
+$ docker container exec -it wagtail-cms-web-1 python manage.py test
 ```
 
 > *IMPORTANT:* When fixing an issue write a test first to prove it's broken. Then, and only then, fix the problem
@@ -114,10 +114,6 @@ DBPASSWORD:           "docker"
 ...
 
 ...
-MONGODB_HOST:         "mongo"
-MONGODB_USERNAME:     "mongodb"
-MONGODB_PASSWORD:     "mongodb"
-...
 SEARCHAPIHOST:        "..."
 ...
 $ docker-compose up
@@ -125,7 +121,7 @@ $ docker-compose up
 
 > If docker fails to start up because the `SECRET_KEY`, re-create the secret key and try again. Sometime it fails because of the use of irregular or un-escapped characters.
 
-> If this is the first time working on the code base remember to populate [PostgreSQL](#database) and [MongoDB](#mongodb)
+> If this is the first time working on the code base remember to populate [PostgreSQL](#database)
 
 > If you are going to be importing new data to the fixtures remember to set DATASETAPIHOST, DATASETAPIKEY, AZURECOSMOSDBURI and AZURECOSMOSDBKEY
 
@@ -146,7 +142,7 @@ $ docker-compose up
 ## Populating
 
 ```
-$ docker container exec -it wagtail-cms_web_1 python manage.py populate_cms
+$ docker container exec -it wagtail-cms-web-1 python manage.py populate_cms
 ```
 
 This will run the command `content/management/commands/populate_cms.py`. This command loads the data found at `CMS/fixtures/postgres.json` into the database.
@@ -156,7 +152,7 @@ You might ask why you can't use Django and to run `... python manage.py loaddata
 ### Updating Postgres Data *(CMS/fixtures/postgres.json)*
 
 ```
-$ docker container exec -it wagtail-cms_web_1 python manage.py update_cms_fixture --db_host ... --db_name ... --db_user ... --db_password ... --db_port ...
+$ docker container exec -it wagtail-cms-web-1 python manage.py update_cms_fixture --db_host ... --db_name ... --db_user ... --db_password ... --db_port ...
 ```
 
 > Use the creds for the remote PostgreSQL in the above statement
@@ -165,7 +161,7 @@ Want to make sure the command above is not in your command history for people to
 
 ```
 $ set +o history
-$ docker container exec -it wagtail-cms_web_1 python manage.py populate_cms ...
+$ docker container exec -it wagtail-cms-web-1 python manage.py populate_cms ...
 $ set -o history
 ```
 
@@ -197,8 +193,8 @@ $ docker-compose up
 ### Populating
 
 ```
-$ docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions
-$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
+$ docker container exec -it wagtail-cms-web-1 python manage.py populate_institutions
+$ docker container exec -it wagtail-cms-web-1 python manage.py populate_courses
 ```
 
 > `populate_courses` will get the courses in `settings.TEST_COURSES` from CosmosDB and put them in MongoDB **(as well as populate the file found in `courses/fixtures/courses.json`)**
@@ -208,9 +204,9 @@ $ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
 If the course data has changed remotely and you want to update it locally then do the following:
 
 ```
-$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses --update
+$ docker container exec -it wagtail-cms-web-1 python manage.py populate_courses --update
 ...
-$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
+$ docker container exec -it wagtail-cms-web-1 python manage.py populate_courses
 ...
 ```
 
@@ -234,9 +230,9 @@ $ vim docker-compose.yml.example
 ...
 TEST_COURSES = 'U18-LAWLLB,AB35,...'
 ...
-$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses --update
+$ docker container exec -it wagtail-cms-web-1 python manage.py populate_courses --update
 ...
-$ docker container exec -it wagtail-cms_web_1 python manage.py populate_courses
+$ docker container exec -it wagtail-cms-web-1 python manage.py populate_courses
 ...
 $ git add docker-compose.yml.example
 $ git add courses/fixtures/courses.json
@@ -249,9 +245,9 @@ $ git commit -m '...'
 If the course data has changed remotely and you want to update it locally then do the following:
 
 ```
-$ docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions --update
+$ docker container exec -it wagtail-cms-web-1 python manage.py populate_institutions --update
 ...
-$ docker container exec -it wagtail-cms_web_1 python manage.py populate_institutions
+$ docker container exec -it wagtail-cms-web-1 python manage.py populate_institutions
 ...
 ```
 
@@ -325,22 +321,68 @@ $ docker rmi -f <CONTAINER_ID>
 ### Get into a Container
 
 ```
-$ docker container exec -it wagtail-cms_web_1 bash
+$ docker container exec -it wagtail-cms-web-1 bash
 $ docker container exec -it wagtail-cms_db_1 bash
 ```
 
 ### Using the Django Shell
 
 ```
-$ docker container exec -it wagtail-cms_web_1 python manage.py shell
+$ docker container exec -it wagtail-cms-web-1 python manage.py shell
 ```
 
 ##### Adding new dependencies
 
 ```
-$ docker container exec -it wagtail-cms_web_1 pip install ...
-$ docker container exec -it wagtail-cms_web_1 pip freeze > requirements.txt
+$ docker container exec -it wagtail-cms-web-1 pip install ...
+$ docker container exec -it wagtail-cms-web-1 pip freeze > requirements.txt
 ```
+
+# Running outside docker
+The below instructions are for running the database in a postgres container in docker, and running the web application
+in a virtual environment. This part of the readme assumes you have obtained a copy of the database as an .sql file.
+Instructions may differ if you are not running postgres in a docker container.
+
+## Connect to the postgres container
+```
+$ psql -U postgres -h 0.0.0.0
+```
+
+## Create the database and Azure role
+```
+# CREATE DATABASE ofs_wagtail;
+# CREATE ROLE azure_pg_admin;
+# ALTER USER azure_pg_admin WITH SUPERUSER;
+```
+
+## Populate the database with the .sql file
+```
+$ psql -U postgres -h 0.0.0.0 ofs_wagtail < {{ PATH_TO_DATABASE_BACKUP }}
+```
+
+## Modify DB Environent Variables
+```
+DBHOST="0.0.0.0"
+DBNAME="ofs_wagtail"
+DBUSER="postgres"
+DBPASSWORD="{{ YOUR_POSTGRES_PASSWORD }}"
+DBPORT="5432"
+```
+
+## Create and set up virtual environment (python 3.10)
+
+```
+$ python3.10 -m venv .venv
+$ source .venv/bin/activate
+$ pip install -r requirements.txt
+```
+
+## Run the server
+```
+$ python manage.py runserver
+```
+
+Any further required django commands can be run this way inside the virtual environment.
 
 # Other Stuff
 

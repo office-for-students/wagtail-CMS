@@ -16,12 +16,12 @@ class InstitutionsModelsTests(UniSimpleTestCase):
         # institution, error = Institution.find(1, 'en')
         # self.assertIsNone(institution)
         # self.assertIsNotNone(error)
-        # self.assertEquals(type(error), ApiError)
+        # self.assertEqual(type(error), ApiError)
         pass
 
     def test_institution_find_returns_a_institution_object_if_institution_found(self):
         # institution, error = Institution.find(1, 1)
         # self.assertIsNone(error)
         # self.assertIsNotNone(institution)
-        # self.assertEquals(type(institution), Institution)
+        # self.assertEqual(type(institution), Institution)
         pass

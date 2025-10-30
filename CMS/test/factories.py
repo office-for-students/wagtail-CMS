@@ -1,4 +1,4 @@
-from wagtail.core.models import Site
+from wagtail.models import Site
 
 from coursefinder.models import CourseFinderResults, CourseFinderChooseCountry, \
     CourseFinderModeOfStudy, CourseFinderChooseSubject, CourseFinderNarrowSearch, CourseFinderPostcode, \

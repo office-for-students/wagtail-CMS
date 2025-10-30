@@ -1,10 +1,5 @@
 import requests
 
-from CMS.test.mocks.course_format_mocks import CourseFormatMocks
-from CMS.test.mocks.course_mocks import CourseMocks
-from CMS.test.mocks.joint_course_format_mocks import JointCourseFormatMocks
-
-from core.mongo import Mongo
 from django.conf import settings
 
 

@@ -1,20 +1,20 @@
-from axes.models import AccessAttempt
 import wagtail.admin.rich_text.editors.draftail.features as draftail_features
-from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleElementHandler
+from axes.models import AccessAttempt
 from django.utils.html import escape
+from wagtail import hooks
+from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleElementHandler
+from wagtail.snippets.views.snippets import SnippetViewSet
+from wagtail.snippets.models import register_snippet
+from wagtail.rich_text import LinkHandler
 
-from wagtail.contrib.modeladmin.options import (ModelAdmin, modeladmin_register)
-from wagtail.core import hooks
-from wagtail.core.rich_text import LinkHandler
-
-from .models import Menu, Footer
+from .models import Footer
+from .models import Menu
 
 
-class MenuAdmin(ModelAdmin):
-
+class MenuAdmin(SnippetViewSet):
     model = Menu
     menu_label = 'Menu'  # ditch this to use verbose_name_plural from model
-    menu_icon = 'form'  # change as required
+    icon = 'form'  # change as required
     menu_order = 200  # will put in 3rd place (000 being 1st, 100 2nd)
     add_to_settings_menu = True  # or True to add your model to the Settings sub-menu
     exclude_from_explorer = False  # or True to exclude pages of this type from Wagtail's explorer view
@@ -23,11 +23,10 @@ class MenuAdmin(ModelAdmin):
     search_fields = ('name',)
 
 
-class FooterAdmin(ModelAdmin):
-
+class FooterAdmin(SnippetViewSet):
     model = Footer
     menu_label = 'Footer'  # ditch this to use verbose_name_plural from model
-    menu_icon = 'form'  # change as required
+    icon = 'form'  # change as required
     menu_order = 300  # will put in 3rd place (000 being 1st, 100 2nd)
     add_to_settings_menu = True  # or True to add your model to the Settings sub-menu
     exclude_from_explorer = False  # or True to exclude pages of this type from Wagtail's explorer view
@@ -36,17 +35,17 @@ class FooterAdmin(ModelAdmin):
     search_fields = ('name',)
 
 
-class AccessAttemptAdmin(ModelAdmin):
+class AccessAttemptAdmin(SnippetViewSet):
     model = AccessAttempt
     menu_label = 'Access'
-    menu_icon = 'code'
+    icon = 'code'
     menu_order = 5
     add_to_settings_menu = True
 
 
-modeladmin_register(MenuAdmin)
-modeladmin_register(FooterAdmin)
-modeladmin_register(AccessAttemptAdmin)
+register_snippet(MenuAdmin)
+register_snippet(FooterAdmin)
+register_snippet(AccessAttemptAdmin)
 
 
 class NewWindowExternalLinkHandler(LinkHandler):
@@ -73,7 +72,6 @@ def register_underline(features):
     feature_name = "underline"
     type_ = "UNDERLINE"
     tag = "span"
-
 
     control = {
         "type": type_,
@@ -113,8 +111,3 @@ def register_underline(features):
     )
 
     features.default_features.append(feature_name)
-
-
-# Removing documents from the menu. Had to specify the index because searching for it breaks the urls
-# TODO improve the way the  documents are removed
-hooks._hooks['register_admin_menu_item'].pop(2)

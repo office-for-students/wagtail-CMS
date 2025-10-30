@@ -5,11 +5,12 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from CMS import translations
+from core.request_handler import is_ajax
 
 
 @csrf_exempt
 def get_translations(request):
-    if request.is_ajax():
+    if is_ajax(request):
         if request.method == 'POST':
             response = []
             body = json.loads(request.body.decode('utf-8'))

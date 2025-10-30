@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from django.urls import re_path
 
 from institutions.views import institution_detail
 
 urlpatterns = [
-    url(r'(?P<institution_id>[\w\-]+?)/', institution_detail, name='institution_detail'),
+    re_path(r'(?P<institution_id>[\w\-]+?)/', institution_detail, name='institution_detail'),
 ]

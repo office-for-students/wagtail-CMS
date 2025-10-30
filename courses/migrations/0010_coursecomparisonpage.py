@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -19,8 +19,8 @@ class Migration(migrations.Migration):
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('heading', models.TextField(blank=True)),
                 ('lead', models.TextField(blank=True)),
-                ('remove_text', wagtail.core.fields.RichTextField(blank=True)),
-                ('save_text', wagtail.core.fields.RichTextField(blank=True)),
+                ('remove_text', wagtail.fields.RichTextField(blank=True)),
+                ('save_text', wagtail.fields.RichTextField(blank=True)),
                 ('compare_heading', models.TextField(blank=True)),
             ],
             options={

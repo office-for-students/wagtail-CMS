@@ -1,15 +1,22 @@
 import json
 import string
-import csv
 from typing import List
 from urllib.parse import urlencode
+
 from django import template
+from django.utils.safestring import mark_safe
 
 from CMS import translations
-from core.utils import get_current_version, get_code_version
-from courses.models import STUDENT_SATISFACTION_KEY, ENTRY_INFO_KEY, AFTER_ONE_YEAR_KEY, ACCREDITATION_KEY, \
-    EARNINGS_AFTER_COURSE_KEY, EMPLOYMENT_AFTER_COURSE_KEY, GRADUATE_PERCEPTIONS_KEY, \
-    LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
+from core.utils import get_code_version
+from core.utils import get_current_version
+from courses.models import ACCREDITATION_KEY
+from courses.models import AFTER_ONE_YEAR_KEY
+from courses.models import EARNINGS_AFTER_COURSE_KEY
+from courses.models import EMPLOYMENT_AFTER_COURSE_KEY
+from courses.models import ENTRY_INFO_KEY
+from courses.models import GRADUATE_PERCEPTIONS_KEY
+from courses.models import LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
+from courses.models import STUDENT_SATISFACTION_KEY
 
 register = template.Library()
 
@@ -64,6 +71,30 @@ def get_translation(*_, **kwargs):
 
 
 @register.simple_tag
+def add_line_breaks(*_, **kwargs):
+    text = kwargs.get('text', '')
+    text = text.replace('\n\n', '<br /><br />')
+    return mark_safe(text)
+
+
+@register.simple_tag
+def split_by_line_break(*_, **kwargs):
+    text = kwargs.get('text', '')
+    index = kwargs.get('index')
+    content = text.split('\n\n')
+    try:
+        content = content[index]
+    except IndexError:
+        content = ''
+    return content
+
+
+@register.filter
+def is_string(value):
+    return isinstance(value, str)
+
+
+@register.simple_tag
 def create_list(*args):
     return args
 
@@ -74,7 +105,6 @@ def insert_values_to_rich_text(*_, **kwargs):
         return kwargs.get('content').source.format(*kwargs.get('substitutions'))
     except AttributeError:
         kwargs.get('content').format(*kwargs.get('substitutions'))
-
 
 
 @register.simple_tag
@@ -104,12 +134,14 @@ def should_show_accordion(courses, accordion_type):
 def title_to_id(title):
     return title.replace(' ', '_').lower()
 
+
 @register.simple_tag
 def brackets_replace_year(my_string, year):
     if my_string and year:
         return my_string.replace('{}', f'{year}')
     else:
         return ""
+
 
 @register.simple_tag
 def replace_graduate_intro(year):
@@ -212,8 +244,8 @@ def concat(*args, **_):
 
 @register.simple_tag
 def insert_values_to_plain_text(*_, **kwargs):
-    return kwargs.get('content').format(*kwargs.get('substitutions'))
-
+    response=kwargs.get('content').format(*kwargs.get('substitutions'))
+    return response
 
 @register.simple_tag
 def get_salary_from_index(objs: List, index: int):
@@ -222,12 +254,14 @@ def get_salary_from_index(objs: List, index: int):
     except IndexError:
         return objs[0]
 
+
 @register.simple_tag
 def get_item_at_index(lst, index):
     try:
         return lst[index]
     except IndexError:
         return None
+
 
 @register.simple_tag
 def is_franchise(pubukprn, ukprn):
@@ -238,7 +272,8 @@ def is_franchise(pubukprn, ukprn):
 
 @register.simple_tag
 def format_value(content, substitution):
-   return content.replace("{}", str(substitution))
+    return content.replace("{}", str(substitution))
+
 
 @register.simple_tag
 def get_t_number(value, item):

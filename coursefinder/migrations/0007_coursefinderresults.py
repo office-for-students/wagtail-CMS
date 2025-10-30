@@ -2,8 +2,8 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('header', models.TextField(blank=True)),
                 ('related_links_title', models.TextField(blank=True)),
-                ('related_links', wagtail.core.fields.StreamField([('links', wagtail.core.blocks.PageChooserBlock())])),
+                ('related_links', wagtail.fields.StreamField([('links', wagtail.blocks.PageChooserBlock())])),
             ],
             options={
                 'abstract': False,
