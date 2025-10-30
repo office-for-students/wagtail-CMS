@@ -4,7 +4,6 @@ from django.conf import settings
 
 
 def load_institution_data(institution_id):
-
     headers = {
         'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
     }

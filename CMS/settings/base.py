@@ -217,7 +217,8 @@ WAGTAILADMIN_BASE_URL = "/admin"
 BASE_URL = config('ROOT_DOMAIN', 'http://example.com')
 
 # Search API settings
-SORT_BY_SUBJECT_LIMIT = config('SORT_BY_SUBJECT_LIMIT', 5000)
+
+SORT_BY_SUBJECT_LIMIT = config('SORT_BY_SUBJECT_LIMIT', default=5000)
 SEARCHAPIHOST = config('SEARCHAPIHOST', "")
 DATASETAPIHOST = config('DATASETAPIHOST', "")
 DATASETAPIKEY = config('DATASETAPIKEY', "")
@@ -231,9 +232,9 @@ JSONFILES_STORAGE_CONTAINER = config('JSONFILES_STORAGE_CONTAINER', "")
 SITEMAP_STORAGE_BLOB = config('SITEMAP_STORAGE_BLOB', "")
 STORAGEKEY = config('STORAGEKEY', "")
 STORAGE_ACCOUNT_NAME = config('STORAGE_ACCOUNT_NAME', "")
-AZURE_ACCOUNT_NAME = config('AZURE_ACCOUNT_NAME', "")
-AZURE_ACCOUNT_KEY = config('AZURE_ACCOUNT_KEY', "")
-AZURE_CONTAINER = config('AZURE_CONTAINER', "")
+AZURE_ACCOUNT_NAME = config('AZURE_ACCOUNT_NAME', "")  # eg. 'campaignstorage'
+AZURE_ACCOUNT_KEY = config('AZURE_ACCOUNT_KEY', "")  # eg. '<secret key>'
+AZURE_CONTAINER = config('AZURE_CONTAINER', "")  # eg. 'campaign-resource-centre'
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
 CORS_ORIGIN_ALLOW_ALL = True
