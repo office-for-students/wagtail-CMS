@@ -13,9 +13,7 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-from decouple import Csv
 from decouple import config
-
 
 ALLOWED_HOSTS = json.loads(config('ALLOWED_HOSTS', default="[]"))
 CSRF_TRUSTED_ORIGINS = json.loads(config('CSRF_TRUSTED_ORIGINS', default="[]"))
