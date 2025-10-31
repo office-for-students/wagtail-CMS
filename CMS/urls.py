@@ -8,6 +8,7 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.documents import urls as wagtaildocs_urls
 
+from api.api import api
 from core import views as core_views
 from core.views import content_sitemap
 from core.views import robots
@@ -52,6 +53,7 @@ urlpatterns = [
 
     # apw added.
     re_path(r'^regional_earnings$', regional_earnings, name='regional_earnings'),
+    path('api/', api.urls)
 ]
 
 # TODO: remove the True clause below when going live.
