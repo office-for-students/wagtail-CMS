@@ -223,7 +223,7 @@ WAGTAILADMIN_BASE_URL = "/admin"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = config('ROOT_DOMAIN', 'http://example.com')
+BASE_URL = config('ROOT_DOMAIN', 'http://mydomain.com')
 
 # Search API settings
 
