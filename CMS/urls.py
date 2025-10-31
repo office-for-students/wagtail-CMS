@@ -2,7 +2,6 @@ from django.conf import settings
 from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
-from django.urls import re_path
 from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.contrib.sitemaps.views import sitemap
@@ -28,38 +27,37 @@ urlpatterns = [
     path('sitemap.xml', sitemap_new, name='sitemap'),
     path('sitemaps/content.xml', content_sitemap, name='content_sitemap'),
     path('sitemaps/general.xml', sitemap, name='cms_sitemap'),
-    re_path(r'^search/$', search_views.search, name='search'),
-    re_path(r'^results/$', coursefinder_views.results, name='results'),
-    re_path(r'^feedback', core_views.submit_feedback, name='submit_feedback'),
-    re_path(r'^jsonfiles/subjects', core_views.get_subjects_json, name='jsonfiles_subjects'),
-    re_path(r'^jsonfiles/institutions/(?P<language>[\w\-]+?)/', core_views.get_institutions_json,
-            name='jsonfiles_institutions'),
+    path('search/', search_views.search, name='search'),
+    path('results/', coursefinder_views.results, name='results'),
+    path('feedback', core_views.submit_feedback, name='submit_feedback'),
+    path('jsonfiles/subjects', core_views.get_subjects_json, name='jsonfiles_subjects'),
+    path('jsonfiles/institutions/<str:language>/', core_views.get_institutions_json, name='jsonfiles_institutions'),
 
-    re_path(r'^narrow-search/$', coursefinder_views.narrow_search, name='narrow_search'),
-    re_path(r'^course-finder/results/$', coursefinder_views.course_finder_results, name='course_finder_results'),
+    path('narrow-search/', coursefinder_views.narrow_search, name='narrow_search'),
+    path('course-finder/results/', coursefinder_views.course_finder_results, name='course_finder_results'),
 
-    re_path(r'^widget/', include('widget.urls')),
-    re_path(r'^Widget/', include('widget.urls')),
-    re_path(r'^v2/widget/', include('v2_widget.urls')),
-    re_path(r'^v2/Widget/', include('v2_widget.urls')),
-    re_path(r'^course-details/', include(courses_urls)),
-    re_path(r'^institution-details/', include(institution_urls)),
-    re_path(r'^course-comparison/', course_views.compare_courses, name="course_comparison"),
-    re_path(r'^ajax/course-comparison/', course_views.compare_courses_body),
+    path('widget/', include('widget.urls')),
+    path('Widget/', include('widget.urls')),
+    path('v2/widget/', include('v2_widget.urls')),
+    path('v2/Widget/', include('v2_widget.urls')),
+    path('course-details/', include(courses_urls)),
+    path('institution-details/', include(institution_urls)),
+    path('course-comparison/', course_views.compare_courses, name="course_comparison"),
+    path('ajax/course-comparison/', course_views.compare_courses_body),
 
-    re_path(r'(?P<language>[\w\-]+?)/', include(welsh_urls)),
+    path('<str:language>/', include(welsh_urls)),
 
-    re_path(r'', include(wagtail_urls)),
+    path(r'', include(wagtail_urls)),
 
     # apw added.
-    re_path(r'^regional_earnings$', regional_earnings, name='regional_earnings'),
+    path('regional_earnings', regional_earnings, name='regional_earnings'),
     path('api/', api.urls)
 ]
 
 # TODO: remove the True clause below when going live.
 if True or not settings.READ_ONLY:
-    urlpatterns.insert(0, re_path(r'^admin/', include(wagtailadmin_urls)))
-    urlpatterns.insert(0, re_path(r'^django-admin/', admin.site.urls))
+    urlpatterns.insert(0, path('admin/', include(wagtailadmin_urls)))
+    urlpatterns.insert(0, path('django-admin/', admin.site.urls))
 
 if settings.DEBUG:
     from django.conf.urls.static import static
