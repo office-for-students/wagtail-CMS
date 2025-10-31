@@ -34,7 +34,7 @@ ROOT_DOMAIN = config('ROOT_DOMAIN', 'http://localhost:3000')
 # Application definition
 
 INSTALLED_APPS = [
-    'customadmin',
+    # Django
     'django.contrib.sitemaps',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+
+    # Wagtail
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -54,10 +56,16 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail',
+
+    # Django Add-ons
+    'axes',
+    'corsheaders',
     'modelcluster',
     'taggit',
-    'corsheaders',
-    'axes',
+    'sass_processor',
+    'storages',
+
+    # Custom Apps
     'core.apps.CoreConfig',
     'content.apps.ContentConfig',
     'coursefinder.apps.CoursefinderConfig',
@@ -68,11 +76,10 @@ INSTALLED_APPS = [
     'search.apps.SearchConfig',
     'site_search.apps.SiteSearchConfig',
     'widget.apps.WidgetConfig',
-    'sass_processor',
-    'storages',
+
     'cookie',
-    'api',
     'v2_widget',
+    'api'
 ]
 
 MIDDLEWARE = [
