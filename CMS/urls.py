@@ -51,7 +51,7 @@ urlpatterns = [
 
     # apw added.
     path('regional_earnings', regional_earnings, name='regional_earnings'),
-    path('api/', api.urls)
+    # path('api/', api.urls)
 ]
 
 # TODO: remove the True clause below when going live.
