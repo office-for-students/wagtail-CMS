@@ -30,6 +30,22 @@ LOCAL = True if config('LOCAL', "") == "True" else False
 READ_ONLY = config('READ_ONLY', False)
 
 ROOT_DOMAIN = config('ROOT_DOMAIN', 'http://localhost:3000')
+DEBUG = False
+# Application definition
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',  # Change to DEBUG, INFO, WARNING, ERROR
+    },
+}
 
 # Application definition
 
