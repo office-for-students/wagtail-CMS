@@ -11,7 +11,7 @@ from .dictionaries import unavailable
 def cleanup_key(key):
     exclude = set(string.punctuation) - {'_', '-'}
     new = ''.join(ch for ch in key if ch not in exclude)
-    new = re.sub('\s|[-]', '_', new)
+    new = re.sub(r'\s|[-]', '_', new)
 
     return new.lower()
 
