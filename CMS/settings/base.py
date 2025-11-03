@@ -78,7 +78,6 @@ INSTALLED_APPS = [
     'widget.apps.WidgetConfig',
 
     'cookie',
-    'customadmin',
     'v2_widget',
     'api',
 ]
