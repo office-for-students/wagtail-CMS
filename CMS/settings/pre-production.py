@@ -18,7 +18,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://pre-prod-discover-uni-write.azurewebsites.net',
 ]
 
-
 # Storage settings
 
 AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
@@ -49,6 +48,11 @@ LOGGING = {
         }
     },
     'loggers': {
+        'django.template': {
+            'handlers': ['console'],
+            'level': 'INFO',  # ignore debug-level template noise
+            'propagate': False,
+        },
         'django': {
             'handlers': ['file', 'console'],
             'level': 'DEBUG',
