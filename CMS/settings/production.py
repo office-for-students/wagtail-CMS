@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = [
     'devdiscoveruni.com',
@@ -38,8 +38,8 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Storage settings
 
-AZURE_ACCOUNT_NAME = config('AZURE_ACCOUNT_NAME')
-AZURE_CONTAINER = config('AZURE_CONTAINER')
+AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
+AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')
 MEDIA_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
 
 
@@ -53,16 +53,16 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 WAGTAILFRONTENDCACHE = {
     'cloudflare': {
         'BACKEND': 'wagtail.contrib.frontend_cache.backends.CloudflareBackend',
-        'EMAIL': config('CLOUDFLARE_EMAIL'),
-        'API_KEY': config('CLOUDFLARE_TOKEN'),
-        'ZONEID': config('CLOUDFLARE_ZONEID'),
+        'EMAIL': os.environ.get('CLOUDFLARE_EMAIL'),
+        'API_KEY': os.environ.get('CLOUDFLARE_TOKEN'),
+        'ZONEID': os.environ.get('CLOUDFLARE_ZONEID'),
     },
 }
 
 
 # Security settings
 
-SECURE_HSTS_SECONDS = config('SECURE_HSTS_SECONDS', 0)
+SECURE_HSTS_SECONDS = os.environ.get('SECURE_HSTS_SECONDS', 0)
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
