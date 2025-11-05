@@ -26,7 +26,7 @@ django-sass-processor==1.4.2
 django-storages==1.14.6
 django-stubs-ext==5.2.7
 django-taggit==6.1.0
-django-tasks==0.6.1
+django-tasks==0.7.0
 django-treebeard==4.7.1
 djangorestframework==3.16.1
 draftjs_exporter==5.1.0
@@ -56,6 +56,6 @@ telepath==0.3.1
 typing-inspection==0.4.2
 typing_extensions==4.15.0
 urllib3==2.5.0
-wagtail==6.4.2
+wagtail==7.0.3
 whitenoise==6.11.0
 Willow==1.12.0
