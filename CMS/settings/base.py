@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
+import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from decouple import config
@@ -30,7 +30,7 @@ LOCAL = True if config('LOCAL', "") == "True" else False
 READ_ONLY = config('READ_ONLY', False)
 
 ROOT_DOMAIN = config('ROOT_DOMAIN', 'http://localhost:3000')
-DEBUG = False
+DEBUG = config('DEBUG', False, cast=bool)
 # Application definition
 
 LOGGING = {
@@ -101,6 +101,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -320,3 +321,22 @@ WAGTAILEMBEDS_FINDERS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email message configurations
+
+AZURE_EMAIL_SERVICE_CONNECTION_STRING = config('AZURE_EMAIL_SERVICE_CONNECTION_STRING')
+AZURE_EMAIL_SERVICE_ENVIRONMENT = config('AZURE_EMAIL_SERVICE_ENVIRONMENT')
+AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS = config('AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS')
+# Also ensure your email backend is configured correctly to send mail
+EMAIL_BACKEND = config("EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend")
+
+MANAGERS = json.loads(config('MANAGERS', default='[]'))
+ADMINS = json.loads(config('ADMINS', default='[]'))
+
+DEFAULT_FROM_EMAIL = AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS
+SERVER_EMAIL = AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS
+EMAIL_SUBJECT_PREFIX = f""
+
+WAGTAILADMIN_NOTIFICATION_USE_HTML = True
+
+WAGTAILADMIN_BASE_URL = 'http://127.0.0.1:8000'
