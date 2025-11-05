@@ -38,10 +38,9 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
   # Create annotated tag
   git tag -a "$version" -m "$tag_message"
 
-  # Push both the new commit and tag
-  git push origin HEAD
-  git push origin "$version"
-  echo "Tag $version pushed successfully."
+  echo "Don't forget to push the commits and tag:"
+  echo "git push origin HEAD"
+  echo "git push origin $version"
 else
   echo "Tagging cancelled."
 fi
