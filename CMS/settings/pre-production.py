@@ -2,8 +2,6 @@ import sys
 
 from .base import *
 
-DEBUG = False
-
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = [
@@ -27,7 +25,6 @@ MEDIA_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINE
 
 # Email settings
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 WAGTAILSDOCS_ENABLED = True
 
 # Logging settings
