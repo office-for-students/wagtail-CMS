@@ -16,7 +16,7 @@ fi
 # Update version.txt and commit it ---
 echo "$version" > version.txt
 git add version.txt
-git commit -m "Update version.txt"
+git commit -m "- Update version.txt"
 
 # Get commits since last tag in reverse order (oldest first)
 release_notes=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s (%h)" --reverse)
@@ -32,7 +32,7 @@ echo "$tag_message"
 echo "==================================="
 
 # Ask for confirmation
-read -p "Do you want to push this tag? (y/N): " confirm
+read -p "Do you want to create this tag? (y/N): " confirm
 
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
   # Create annotated tag
