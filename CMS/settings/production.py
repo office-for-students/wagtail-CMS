@@ -1,7 +1,5 @@
 from .base import *
 
-DEBUG = False
-
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = [
@@ -41,12 +39,6 @@ CSRF_TRUSTED_ORIGINS = [
 AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
 AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')
 MEDIA_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
-
-
-# Email settings
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 
 # Cloudflare
 
