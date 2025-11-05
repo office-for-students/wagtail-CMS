@@ -13,6 +13,7 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from decouple import config
+from wagtail.admin.views.home import default
 
 # from decouple import config
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -339,4 +340,4 @@ EMAIL_SUBJECT_PREFIX = f""
 
 WAGTAILADMIN_NOTIFICATION_USE_HTML = True
 
-WAGTAILADMIN_BASE_URL = 'http://127.0.0.1:8000'
+WAGTAILADMIN_BASE_URL = config('WAGTAILADMIN_BASE_URL', default='')
