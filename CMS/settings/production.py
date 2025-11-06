@@ -3,10 +3,6 @@ from .base import *
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = [
-    'devdiscoveruni.com',
-    'www.devdiscoveruni.com',
-    'pre-prod-discover-uni.azurewebsites.net',
-    'pre-prod-discover-uni-write.azurewebsites.net',
     'discoveruni.org.uk',
     'www.discoveruni.org.uk',
     'production-discover-uni.azurewebsites.net',
@@ -19,10 +15,6 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://devdiscoveruni.com',
-    'https://www.devdiscoveruni.com',
-    'https://pre-prod-discover-uni.azurewebsites.net',
-    'https://pre-prod-discover-uni-write.azurewebsites.net',
     'https://discoveruni.org.uk',
     'https://www.discoveruni.org.uk',
     'https://production-discover-uni.azurewebsites.net',
