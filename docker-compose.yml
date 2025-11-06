@@ -23,10 +23,6 @@ services:
       # (these can be found on the CosmosDB instance under "Keys")
       AZURECOSMOSDBURI:             "${AZURECOSMOSDBURI}"
       AZURECOSMOSDBKEY:             "${AZURECOSMOSDBKEY}"
-      # MongoDB (used for local development and testing)
-      MONGODB_HOST:                 "${MONGODB_HOST}"
-      MONGODB_USERNAME:             "${MONGODB_USERNAME}"
-      MONGODB_PASSWORD:             "${MONGODB_PASSWORD}"
       # A number of courses to load into the fixtures folder for mongodb and tests
       TEST_COURSES:                 "GN12,U18-LAWLLB,AB35,PBSFND-D_FT,U09FUECW,UMDAHFY"
       # Azure storage (institutions.xx.json, subjects.json, versions,json, etc...)
@@ -36,13 +32,13 @@ services:
       AZURE_ACCOUNT_NAME: "${AZURE_ACCOUNT_NAME}"
       AZURE_ACCOUNT_KEY: "${AZURE_ACCOUNT_KEY}"
       AZURE_CONTAINER: "${AZURE_CONTAINER}"
-      AZURE_EMAIL_SERVICE_CONNECTION_STRING: "${AZURE_EMAIL_SERVICE_CONNECTION_STRING}"
-      AZURE_EMAIL_SERVICE_ENVIRONMENT: "${AZURE_EMAIL_SERVICE_ENVIRONMENT}"
-      AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS: "${AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS}"
+      AZURE_EMAIL_SERVICE_CONNECTION_STRING: ""
+      AZURE_EMAIL_SERVICE_ENVIRONMENT: ""
+      AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS: ""
       # Email Backend
-      EMAIL_BACKEND: "${EMAIL_BACKEND}"
-      MANAGERS: "${MANAGERS}"
-      ADMINS: "${ADMINS}"
+      EMAIL_BACKEND: ""
+      MANAGERS: ""
+      ADMINS: ""
       # Other
       FEEDBACK_API_HOST: "${FEEDBACK_API_HOST}"
       JSONFILES_STORAGE_CONTAINER: "${JSONFILES_STORAGE_CONTAINER}"
