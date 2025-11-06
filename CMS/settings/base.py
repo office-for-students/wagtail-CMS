@@ -235,7 +235,7 @@ STATICFILES_DIRS = [
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "CMS"
-WAGTAILADMIN_BASE_URL = "/admin"
+WAGTAILADMIN_BASE_URL = config('WAGTAILADMIN_BASE_URL', default='')
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
@@ -339,4 +339,4 @@ EMAIL_SUBJECT_PREFIX = f""
 
 WAGTAILADMIN_NOTIFICATION_USE_HTML = True
 
-WAGTAILADMIN_BASE_URL = config('WAGTAILADMIN_BASE_URL', default='')
+
