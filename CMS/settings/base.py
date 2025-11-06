@@ -13,7 +13,6 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from decouple import config
-from wagtail.admin.views.home import default
 
 # from decouple import config
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
