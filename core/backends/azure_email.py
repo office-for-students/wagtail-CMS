@@ -7,6 +7,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.core.mail import EmailMessage
 from django.core.mail.backends.base import BaseEmailBackend
 
+import threading
 
 class OFSEmailBackend(BaseEmailBackend):
     """
@@ -56,31 +57,31 @@ class OFSEmailBackend(BaseEmailBackend):
         Send one or more EmailMessage objects and return the number of email
         messages sent.
         """
-
-        for message in email_messages:
-            try:
-                if message.alternatives and message.alternatives[0].content:
-                    html_message = message.alternatives[0].content
-                else:
+        def send():
+            for message in email_messages:
+                try:
+                    if message.alternatives and message.alternatives[0].content:
+                        html_message = message.alternatives[0].content
+                    else:
+                        html_message = message.body
+                except (IndexError, AttributeError):
                     html_message = message.body
-            except (IndexError, AttributeError):
-                html_message = message.body
 
-            email_content = {
-                "senderAddress": "DoNotReply@0733f806-c2b3-411c-9e73-eaef5c3155bb.azurecomm.net",
-                "recipients": {
-                    "to": [{"address": x} for x in message.to]
-                },
-                "content": {
-                    "subject": f"[{settings.AZURE_EMAIL_SERVICE_ENVIRONMENT} - DU]  {message.subject}",
-                    "plainText": message.body,
-                    "html": html_message,
-                },
-            }
+                email_content = {
+                    "senderAddress": "DoNotReply@0733f806-c2b3-411c-9e73-eaef5c3155bb.azurecomm.net",
+                    "recipients": {
+                        "to": [{"address": x} for x in message.to]
+                    },
+                    "content": {
+                        "subject": f"[{settings.AZURE_EMAIL_SERVICE_ENVIRONMENT} - DU]  {message.subject}",
+                        "plainText": message.body,
+                        "html": html_message,
+                    },
+                }
 
-            from pprint import pprint
-            pprint(email_content)
-            poller = self.email_client.begin_send(email_content)
-            result = poller.result()
-            logging.info(result)
+                poller = self.email_client.begin_send(email_content)
+                result = poller.result()
 
+        thread = threading.Thread(target=send)
+        thread.daemon = True
+        thread.start()
