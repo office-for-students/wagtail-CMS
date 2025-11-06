@@ -2,11 +2,11 @@ annotated-types==0.7.0
 anyascii==0.3.3
 asgiref==3.10.0
 azure-common==1.1.28
+azure-communication-email==1.1.0
 azure-core==1.36.0
 azure-mgmt-core==1.6.0
 azure-mgmt-storage==23.1.0
-azure-storage-blob==12.27.1
-azure-communication-email==1.1.0
+azure-storage-blob==12.27.0
 beautifulsoup4==4.14.2
 certifi==2025.10.5
 cffi==2.0.0
