@@ -31,7 +31,7 @@ class Section(DiscoverUniBasePage):
         ('subsection', StructBlock([
             ('subsection_title', TextBlock()),
             ('subsection_content',
-             RichTextBlock(features=['h3', 'h4', 'bold', 'underline', 'italic', 'embed', 'link',
+             RichTextBlock(features=['h3', 'h4', 'bold', 'underline', 'italic', 'embed', 'link', 'document-link',
                                      'image', 'ol', 'ul', 'hr', 'blockquote']))
         ]))
     ])
