@@ -25,7 +25,7 @@ django-sass-processor==1.4.2
 django-storages==1.14.6
 django-stubs-ext==5.2.7
 django-taggit==6.1.0
-django-tasks==0.8.1
+django-tasks==0.9.0
 django-treebeard==4.7.1
 django_compressor==4.6.0
 djangorestframework==3.16.1
@@ -37,9 +37,10 @@ idna==3.11
 isodate==0.7.2
 laces==0.1.2
 libsass==0.23.0
+modelsearch==1.1.1
 openpyxl==3.1.5
 packaging==25.0
-pillow==11.3.0
+pillow==12.0.0
 pillow_heif==1.1.1
 psycopg2-binary==2.9.11
 pyClamd==0.4.0
@@ -56,6 +57,6 @@ telepath==0.3.1
 typing-inspection==0.4.2
 typing_extensions==4.15.0
 urllib3==2.5.0
-wagtail==7.1.2
+wagtail==7.2
 whitenoise==6.11.0
 Willow==1.12.0
