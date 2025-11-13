@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
+import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from decouple import config
@@ -30,11 +30,27 @@ LOCAL = True if config('LOCAL', "") == "True" else False
 READ_ONLY = config('READ_ONLY', False)
 
 ROOT_DOMAIN = config('ROOT_DOMAIN', 'http://localhost:3000')
+DEBUG = config('DEBUG', False, cast=bool)
+# Application definition
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',  # Change to DEBUG, INFO, WARNING, ERROR
+    },
+}
 
 # Application definition
 
 INSTALLED_APPS = [
-    'customadmin',
+    # Django
     'django.contrib.sitemaps',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +59,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+
+    # Wagtail
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -54,10 +72,16 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail',
+
+    # Django Add-ons
+    'axes',
+    'corsheaders',
     'modelcluster',
     'taggit',
-    'corsheaders',
-    'axes',
+    'sass_processor',
+    'storages',
+
+    # Custom Apps
     'core.apps.CoreConfig',
     'content.apps.ContentConfig',
     'coursefinder.apps.CoursefinderConfig',
@@ -68,15 +92,16 @@ INSTALLED_APPS = [
     'search.apps.SearchConfig',
     'site_search.apps.SiteSearchConfig',
     'widget.apps.WidgetConfig',
-    'sass_processor',
-    'storages',
+
     'cookie',
-    'v2_widget'
+    'v2_widget',
+    'api',
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -210,11 +235,11 @@ STATICFILES_DIRS = [
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "CMS"
-WAGTAILADMIN_BASE_URL = "/admin"
+WAGTAILADMIN_BASE_URL = config('WAGTAILADMIN_BASE_URL', default='')
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = config('ROOT_DOMAIN', 'http://example.com')
+BASE_URL = config('ROOT_DOMAIN', 'http://mydomain.com')
 
 # Search API settings
 
@@ -296,3 +321,22 @@ WAGTAILEMBEDS_FINDERS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email message configurations
+
+AZURE_EMAIL_SERVICE_CONNECTION_STRING = config('AZURE_EMAIL_SERVICE_CONNECTION_STRING', default="")
+AZURE_EMAIL_SERVICE_ENVIRONMENT = config('AZURE_EMAIL_SERVICE_ENVIRONMENT', default="")
+AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS = config('AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS', default="")
+# Also ensure your email backend is configured correctly to send mail
+EMAIL_BACKEND = config("EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend")
+
+MANAGERS = json.loads(config('MANAGERS', default='[]'))
+ADMINS = json.loads(config('ADMINS', default='[]'))
+
+DEFAULT_FROM_EMAIL = AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS
+SERVER_EMAIL = AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS
+EMAIL_SUBJECT_PREFIX = f""
+
+WAGTAILADMIN_NOTIFICATION_USE_HTML = True
+
+

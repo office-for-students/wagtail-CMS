@@ -1,10 +1,9 @@
-from django.urls import path, re_path
+from django.urls import path
 
 from courses.views import courses_detail
 from courses.views.translate import get_translations
 
 urlpatterns = [
-    re_path(r'(?P<institution_id>[\w\-]+?)/(?P<course_id>[\w\-\~\$()]+?)/(?P<kis_mode>[\w\-]+?)/', courses_detail,
-        name='courses_detail'),
+    path('<institution_id>/<course_id>/<kis_mode>/', courses_detail, name='courses_detail'),
     path('translations/', get_translations, name='course_translation')
 ]

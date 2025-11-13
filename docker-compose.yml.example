@@ -1,6 +1,6 @@
 # Legacy file used for CI
 #
-# It should be replaced with docker-compose.non-dev.yml as this one 
+# It should be replaced with docker-compose.non-dev.yml as this one
 # includes Mongo which is not required in non-dev environments.
 #
 
@@ -44,10 +44,6 @@ services:
       AZURE_ACCOUNT_NAME:           "${AZURE_ACCOUNT_NAME}"
       AZURE_ACCOUNT_KEY:            "${AZURE_ACCOUNT_KEY}"
       AZURE_CONTAINER:              "${AZURE_CONTAINER}"
-      # Send Grid
-      SENDGRID_API_KEY:             "${SENDGRID_API_KEY}"
-      SECRET_KEY:                   "${SECRET_KEY}"
-      SENDGRID_FROM_EMAIL:          "${SENDGRID_FROM_EMAIL}"
       # Other
       FEEDBACK_API_HOST:            "${FEEDBACK_API_HOST}"
       JSONFILES_STORAGE_CONTAINER:  "${JSONFILES_STORAGE_CONTAINER}"

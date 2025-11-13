@@ -14,7 +14,7 @@ class ContentLandingPage(DiscoverUniBasePage):
     intro = RichTextField(blank=True)
     options = StreamField([
         ('sections', PageChooserBlock())
-    ], use_json_field=True)
+    ])
 
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('intro'),
@@ -34,15 +34,15 @@ class Section(DiscoverUniBasePage):
              RichTextBlock(features=['h3', 'h4', 'bold', 'underline', 'italic', 'embed', 'link',
                                      'image', 'ol', 'ul', 'hr', 'blockquote']))
         ]))
-    ], use_json_field=True)
+    ])
     related_links_title = TextField(blank=True)
     related_links = StreamField([
         ('links', PageChooserBlock(required=False)),
-    ], use_json_field=True, blank=True)
+    ], blank=True)
     lateral_link_title = TextField(blank=True)
     lateral_links = StreamField([
         ('links', PageChooserBlock(required=False)),
-    ], use_json_field=True, blank=True)
+    ], blank=True)
 
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('intro'),

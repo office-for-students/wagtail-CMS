@@ -2,8 +2,6 @@ import sys
 
 from .base import *
 
-DEBUG = False
-
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = [
@@ -18,7 +16,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://pre-prod-discover-uni-write.azurewebsites.net',
 ]
 
-
 # Storage settings
 
 AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
@@ -28,15 +25,6 @@ MEDIA_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINE
 
 # Email settings
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = os.environ.get('SENDGRID_FROM_EMAIL')
-WAGTAILADMIN_NOTIFICATION_USE_HTML = True
-WAGTAILADMIN_NOTIFICATION_INCLUDE_SUPERUSERS = False
 WAGTAILSDOCS_ENABLED = True
 
 # Logging settings
@@ -57,6 +45,11 @@ LOGGING = {
         }
     },
     'loggers': {
+        'django.template': {
+            'handlers': ['console'],
+            'level': 'INFO',  # ignore debug-level template noise
+            'propagate': False,
+        },
         'django': {
             'handlers': ['file', 'console'],
             'level': 'DEBUG',

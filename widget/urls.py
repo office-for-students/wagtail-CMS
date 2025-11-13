@@ -7,7 +7,7 @@ from widget.views import widget_iframe
 
 
 class CaseInsensitiveConverter:
-    regex = '[\w\-]+'
+    regex = r'[\w\-]+'
 
     def to_python(self, value):
         return value.lower()  # Normalize to lowercase
