@@ -1,8 +1,5 @@
 from .base import *
 
-# SECURITY WARNING: define the correct hosts in production!
-ALLOWED_HOSTS = ['*']
-
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 # NOTE: this SECRET_KEY is ONLY used in testing, NOT used in production

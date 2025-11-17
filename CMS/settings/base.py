@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 from decouple import config
+
+ALLOWED_HOSTS = json.loads(config('ALLOWED_HOSTS', default="[]"))
+CSRF_TRUSTED_ORIGINS = json.loads(config('CSRF_TRUSTED_ORIGINS', default="[]"))
 
 # from decouple import config
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
