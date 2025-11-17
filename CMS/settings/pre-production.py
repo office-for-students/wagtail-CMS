@@ -4,20 +4,7 @@ from .base import *
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-ALLOWED_HOSTS = [
-    '169.254.129.3',
-    'pre-prod-discover-uni.azurewebsites.net',
-    'pre-prod-discover-uni-write.azurewebsites.net',
-]
-
-CSRF_TRUSTED_ORIGINS = [
-    'https://169.254.129.3',
-    'https://pre-prod-discover-uni.azurewebsites.net',
-    'https://pre-prod-discover-uni-write.azurewebsites.net',
-]
-
 # Storage settings
-
 AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
 AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')
 AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')
