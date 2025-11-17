@@ -2,30 +2,6 @@ from .base import *
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-ALLOWED_HOSTS = [
-    'discoveruni.org.uk',
-    'www.discoveruni.org.uk',
-    'production-discover-uni.azurewebsites.net',
-    'discoveruni.gov.uk',
-    'www.discoveruni.gov.uk',
-    'widget.discoveruni.gov.uk',
-    'prod-discover-uni.azurewebsites.net',
-    'prod-widget-discover-uni.azurewebsites.net',
-    'prod-discover-uni-write.azurewebsites.net',
-    '169.254.130.3'
-]
-
-CSRF_TRUSTED_ORIGINS = [
-    'https://discoveruni.org.uk',
-    'https://www.discoveruni.org.uk',
-    'https://production-discover-uni.azurewebsites.net',
-    'https://discoveruni.gov.uk',
-    'https://www.discoveruni.gov.uk',
-    'https://widget.discoveruni.gov.uk',
-    'https://prod-discover-uni.azurewebsites.net',
-    'https://prod-widget-discover-uni.azurewebsites.net',
-    'https://prod-discover-uni-write.azurewebsites.net',
-]
 
 # Storage settings
 AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
