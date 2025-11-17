@@ -12,6 +12,7 @@ ALLOWED_HOSTS = [
     'prod-discover-uni.azurewebsites.net',
     'prod-widget-discover-uni.azurewebsites.net',
     'prod-discover-uni-write.azurewebsites.net',
+    '169.254.130.3'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
