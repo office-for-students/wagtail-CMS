@@ -2,40 +2,43 @@ version: '3'
 
 services:
   web:
-    container_name:                 "wagtail"
+    container_name:                          "wagtail"
     environment:
       # Postgres
-      DBHOST:                       "db"
-      DBNAME:                       "django"
-      DBUSER:                       "docker"
-      DBPASSWORD:                   "docker"
-      DBPORT:                       "5432"
-      SEARCHAPIHOST:                "${SEARCHAPIHOST}"
-      WIDGETAPIHOST:                "${WIDGETAPIHOST}"
-      WIDGETAPIKEY:                 "${WIDGETAPIKEY}"
-      DATASETAPIHOST:               "${DATASETAPIHOST}"
-      DATASETAPIKEY:                "${DATASETAPIKEY}"
-      AZURECOSMOSDBURI:             ""
-      AZURECOSMOSDBKEY:             ""
-      MONGODB_HOST:                 "mongo"
-      MONGODB_USERNAME:             "mongodb"
-      MONGODB_PASSWORD:             "mongodb"
-      TEST_COURSES:                 ""
-      STORAGE_ACCOUNT_NAME:         "${STORAGE_ACCOUNT_NAME}"
-      STORAGEKEY:                   "${STORAGEKEY}"
-      AZURE_ACCOUNT_NAME:           "${AZURE_ACCOUNT_NAME}"
-      AZURE_ACCOUNT_KEY:            "${AZURE_ACCOUNT_KEY}"
-      AZURE_CONTAINER:              "${AZURE_CONTAINER}"
-      SENDGRID_API_KEY:             "${SENDGRID_API_KEY}"
-      SECRET_KEY:                   "${SECRET_KEY}"
-      SENDGRID_FROM_EMAIL:          "${SENDGRID_FROM_EMAIL}"
-      FEEDBACK_API_HOST:            "${FEEDBACK_API_HOST}"
-      JSONFILES_STORAGE_CONTAINER:  "${JSONFILES_STORAGE_CONTAINER}"
+      DBHOST: "db"
+      DBNAME: "django"
+      DBUSER: "docker"
+      DBPASSWORD: "docker"
+      DBPORT: "5432"
+      SEARCHAPIHOST: "${SEARCHAPIHOST}"
+      WIDGETAPIHOST: "${WIDGETAPIHOST}"
+      WIDGETAPIKEY: "${WIDGETAPIKEY}"
+      DATASETAPIHOST: "${DATASETAPIHOST}"
+      DATASETAPIKEY: "${DATASETAPIKEY}"
+      AZURECOSMOSDBURI: ""
+      AZURECOSMOSDBKEY: ""
+      MONGODB_HOST: "mongo"
+      MONGODB_USERNAME: "mongodb"
+      MONGODB_PASSWORD: "mongodb"
+      TEST_COURSES: ""
+      STORAGE_ACCOUNT_NAME: "${STORAGE_ACCOUNT_NAME}"
+      STORAGEKEY: "${STORAGEKEY}"
+      AZURE_ACCOUNT_NAME: "${AZURE_ACCOUNT_NAME}"
+      AZURE_ACCOUNT_KEY: "${AZURE_ACCOUNT_KEY}"
+      AZURE_CONTAINER: "${AZURE_CONTAINER}"
+      AZURE_EMAIL_SERVICE_CONNECTION_STRING: ""
+      AZURE_EMAIL_SERVICE_ENVIRONMENT: ""
+      AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS: ""
+      EMAIL_BACKEND: ""
+      MANAGERS: ""
+      ADMINS: ""
+      FEEDBACK_API_HOST: "${FEEDBACK_API_HOST}"
+      JSONFILES_STORAGE_CONTAINER: "${JSONFILES_STORAGE_CONTAINER}"
       SITEMAP_STORAGE_BLOB: "${SITEMAP_STORAGE_BLOB}"
-      ROOT_DOMAIN:                  "${ROOT_DOMAIN}"
-      READ_ONLY:                    "${READ_ONLY}"
-      SORT_BY_SUBJECT_LIMIT:        "${SORT_BY_SUBJECT_LIMIT}"
-      LOCAL:                        "${LOCAL}"
+      ROOT_DOMAIN: "${ROOT_DOMAIN}"
+      READ_ONLY: "${READ_ONLY}"
+      SORT_BY_SUBJECT_LIMIT: "${SORT_BY_SUBJECT_LIMIT}"
+      LOCAL: "${LOCAL}"
     build: .
     volumes:
       - .:/code
@@ -43,7 +46,6 @@ services:
       - "8000:8000"
     depends_on:
       - db
-      - mongo
 
   db:
     image: postgres:9.6
@@ -52,10 +54,3 @@ services:
       POSTGRES_USER: docker
       POSTGRES_PASSWORD: docker
       POSTGRES_DB: django
-
-  mongo:
-    image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: "mongodb"
-      MONGO_INITDB_ROOT_PASSWORD: "mongodb"

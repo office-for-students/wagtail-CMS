@@ -162,7 +162,7 @@ class CourseFinderResults(DiscoverUniBasePage):
     related_links_title = TextField(blank=True)
     related_links = StreamField([
         ('links', PageChooserBlock()),
-    ], use_json_field=True)
+    ])
 
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('header', classname="full"),

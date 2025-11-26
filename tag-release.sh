@@ -19,7 +19,7 @@ git add version.txt
 git commit -m "Update version.txt"
 
 # Get commits since last tag in reverse order (oldest first)
-release_notes=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- %s (%an)" --reverse)
+release_notes=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s (%h)" --reverse)
 
 # Build the tag message
 tag_message="Release $version

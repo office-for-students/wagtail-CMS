@@ -78,7 +78,7 @@ class Menu(models.Model):
     menu_items = StreamField([
         ('simple_menu_item', SimpleMenuItem()),
         ('multi_menu_item', MultiMenuItem())
-    ], use_json_field=True)
+    ])
 
     panels = [
         FieldPanel('name'),
@@ -93,7 +93,7 @@ class Footer(models.Model):
     name = models.CharField(max_length=255)
     footer_items = StreamField([
         ('footer_item', SimpleMenuItem()),
-    ], use_json_field=True)
+    ])
 
     panels = [
         FieldPanel('name'),

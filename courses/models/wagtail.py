@@ -216,7 +216,7 @@ class CourseDetailPage(DiscoverUniBasePage):
         ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down')),
         ('links_to_the_institution_website_panel',
          LinksToTheInstitutionWebsiteBlock(required=True, icon='collapse-down'))
-    ], use_json_field=True)
+    ])
     uni_site_links_header = TextField(blank=True)
 
     content_panels = DiscoverUniBasePage.content_panels + [
@@ -241,7 +241,7 @@ class CourseComparisonPage(DiscoverUniBasePage):
         ('graduate_perceptions_panel', GraduatePerceptionsBlock(required=True, icon='collapse-down')),
         ('links_to_the_institution_website_panel',
          LinksToTheInstitutionWebsiteBlock(required=True, icon='collapse-down'))
-    ], use_json_field=True)
+    ])
 
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('heading'),
