@@ -1,6 +1,6 @@
 annotated-types==0.7.0
 anyascii==0.3.3
-asgiref==3.10.0
+asgiref==3.11.0
 azure-common==1.1.28
 azure-communication-email==1.1.0
 azure-core==1.36.0
@@ -8,7 +8,7 @@ azure-mgmt-core==1.6.0
 azure-mgmt-storage==23.1.0
 azure-storage-blob==12.27.1
 beautifulsoup4==4.14.2
-certifi==2025.10.5
+certifi==2025.11.12
 cffi==2.0.0
 charset-normalizer==3.4.4
 cryptography==46.0.3
@@ -19,7 +19,7 @@ django-axes==8.0.0
 django-cors-headers==4.9.0
 django-filter==25.2
 django-modelcluster==6.4
-django-ninja==1.4.5
+django-ninja==1.5.0
 django-permissionedforms==0.1
 django-sass-processor==1.4.2
 django-storages==1.14.6
@@ -45,7 +45,7 @@ pillow_heif==1.1.1
 psycopg2-binary==2.9.11
 pyClamd==0.4.0
 pycparser==2.23
-pydantic==2.12.4
+pydantic==2.12.5
 pydantic_core==2.41.5
 python-decouple==3.8
 rcssmin==1.2.2
@@ -57,6 +57,6 @@ telepath==0.3.1
 typing-inspection==0.4.2
 typing_extensions==4.15.0
 urllib3==2.5.0
-wagtail==7.2
+wagtail==7.2.1
 whitenoise==6.11.0
 Willow==1.12.0
