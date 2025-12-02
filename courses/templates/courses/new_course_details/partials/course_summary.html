@@ -62,6 +62,13 @@
                                 {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with description="question_9" unavailable=course.satisfaction_stats.0.unavailable_reason_heading title="student_views" link=available_sections.0.0|add:"-1" %}
                             {% endwith %}
                         {% endwith %}
+                    {% elif course.satisfaction_stats.0.aggregation_level == 13 or course.satisfaction_stats.0.aggregation_level == 23 %}
+                        {% with course.display_title as subject_label %}
+                            {% with course.satisfaction_stats.0.question_9.agree_or_strongly_agree as percent %}
+                                {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
+                                {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_9.agree_or_strongly_agree description="question_9" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index="" title="student_views" link=available_sections.0.0|add:"-1" %}
+                            {% endwith %}
+                        {% endwith %}
                     {% else %}
                         {% with course.satisfaction_stats.0.display_subject_name as subject_label %}
                             {% with course.satisfaction_stats.0.question_9.agree_or_strongly_agree as percent %}
@@ -77,6 +84,11 @@
                             {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
                             {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_28.agree_or_strongly_agree title="student_satisfaction" description="question_28" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label title="student_views" link=available_sections.0.0|add:"-1" %}
                         {% endwith %}
+                    {% elif course.satisfaction_stats.0.aggregation_level == 13 or course.satisfaction_stats.0.aggregation_level == 23 %}
+                        {% with course.satisfaction_stats.0.display_subject_name as subject_label %}
+                            {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
+                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_28.agree_or_strongly_agree title="student_satisfaction" description="question_28" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index="" title="student_views" link=available_sections.0.0|add:"-1" %}
+                        {% endwith %}
                     {% else %}
                         {% with course.satisfaction_stats.0.display_subject_name as subject_label %}
                             {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
@@ -91,6 +103,11 @@
                             {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
                             {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_23.agree_or_strongly_agree description="question_23" unavailable=course.satisfaction_stats.0.unavailable_reason_heading title="student_views" link=available_sections.0.0|add:"-1" %}
                         {% endwith %}
+                    {% elif course.satisfaction_stats.0.aggregation_level == 13 or course.satisfaction_stats.0.aggregation_level == 23 %}
+                        {% with course.satisfaction_stats.0.display_subject_name as subject_label %}
+                            {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
+                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_23.agree_or_strongly_agree description="question_23" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index="" title="student_views" link=available_sections.0.0|add:"-1" %}
+                        {% endwith %}
                     {% else %}
                         {% with course.satisfaction_stats.0.display_subject_name as subject_label %}
                             {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
@@ -104,12 +121,17 @@
                     {% if course.satisfaction_stats.0.aggregation_level == 14 or course.satisfaction_stats.0.aggregation_level == 24 %}
                         {% with course.display_title as subject_label %}
                             {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
-                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_16.agree_or_strongly_agree description="question_16" unavailable=course.satisfaction_stats.0.unavailable_reason_heading title="student_views" link=available_sections.0.0|add:"-1"  %}
+                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_16.agree_or_strongly_agree description="question_16" unavailable=course.satisfaction_stats.0.unavailable_reason_heading title="student_views" link=available_sections.0.0|add:"-1" %}
+                        {% endwith %}
+                    {% elif course.satisfaction_stats.0.aggregation_level == 13 or course.satisfaction_stats.0.aggregation_level == 23 %}
+                        {% with course.satisfaction_stats.0.display_subject_name as subject_label %}
+                            {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
+                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_16.agree_or_strongly_agree description="question_16" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index="" title="student_views" link=available_sections.0.0|add:"-1" %}
                         {% endwith %}
                     {% else %}
                         {% with course.satisfaction_stats.0.display_subject_name as subject_label %}
                             {% get_translation key="course_details_summary_box_source_final" language=page.get_language as source %}
-                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_16.agree_or_strongly_agree description="question_16" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label title="student_views" link=available_sections.0.0|add:"-1"  %}
+                            {% include 'courses/new_course_details/partials/summary_boxes/course_data_summary_chart_box.html' with percent=course.satisfaction_stats.0.question_16.agree_or_strongly_agree description="question_16" unavailable=course.satisfaction_stats.0.unavailable_reason_heading first_index=course.qualification.label title="student_views" link=available_sections.0.0|add:"-1" %}
                         {% endwith %}
                     {% endif %}
                 {% endif %}
