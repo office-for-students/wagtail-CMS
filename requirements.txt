@@ -58,7 +58,7 @@ sqlparse==0.5.4
 telepath==0.3.1
 typing-inspection==0.4.2
 typing_extensions==4.15.0
-urllib3==2.5.0
+urllib3==2.6.0
 wagtail==7.2.1
 whitenoise==6.11.0
 Willow==1.12.0
