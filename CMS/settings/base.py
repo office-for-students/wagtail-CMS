@@ -37,19 +37,20 @@ ROOT_DOMAIN = config('ROOT_DOMAIN', 'http://localhost:3000')
 DEBUG = config('DEBUG', False, cast=bool)
 # Application definition
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
+if DEBUG:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'console': {
+                'class': 'logging.StreamHandler',
+            },
         },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'DEBUG',  # Change to DEBUG, INFO, WARNING, ERROR
-    },
-}
+        'root': {
+            'handlers': ['console'],
+            'level': 'DEBUG',  # Change to DEBUG, INFO, WARNING, ERROR
+        },
+    }
 
 # Application definition
 
@@ -342,5 +343,3 @@ SERVER_EMAIL = AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS
 EMAIL_SUBJECT_PREFIX = f""
 
 WAGTAILADMIN_NOTIFICATION_USE_HTML = True
-
-
