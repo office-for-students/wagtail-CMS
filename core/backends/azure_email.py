@@ -9,6 +9,7 @@ from django.core.mail.backends.base import BaseEmailBackend
 
 import threading
 
+
 class OFSEmailBackend(BaseEmailBackend):
     """
     A wrapper that manages the SMTP network connection.
@@ -31,31 +32,12 @@ class OFSEmailBackend(BaseEmailBackend):
                 raise ImproperlyConfigured(
                     "Email backend requires: AZURE_EMAIL_SERVICE_CONNECTION_STRING in settings.py")
 
-    # def open(self):
-    #     print("open wide")
-    #
-    #     pass
-    #
-    # def close(self):
-    #     print("close now")
-    #     pass
-    #
-    # def __enter__(self):
-    #     try:
-    #         self.open()
-    #     except Exception:
-    #         self.close()
-    #         raise
-    #     return self
-    #
-    # def __exit__(self, exc_type, exc_value, traceback):
-    #     self.close()
-
     def send_messages(self, email_messages: EmailMessage, **kwargs):
         """
         Send one or more EmailMessage objects and return the number of email
         messages sent.
         """
+
         def send():
             if not settings.DEBUG:
                 for message in email_messages:
@@ -82,7 +64,8 @@ class OFSEmailBackend(BaseEmailBackend):
                     poller = self.email_client.begin_send(email_content)
                     result = poller.result()
                 else:
-                    logging.info(f"No Email message sent in DEBUG: {settings.DEBUG}. Message not sent: {email_content}.")
+                    logging.info(
+                        f"No Email message sent in DEBUG.")
 
         thread = threading.Thread(target=send)
         thread.daemon = True
