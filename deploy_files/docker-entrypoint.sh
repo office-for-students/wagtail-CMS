@@ -30,10 +30,10 @@ set -e
 
 exec gunicorn CMS.wsgi:application \
   --name discover-uni-cms \
-  --bind 0.0.0.0:8000 \
+  --bind 0.0.0.0:80 \
   --worker-class gthread \
   --workers 4 \
-  --threads 4 \
+  --threads 2 \
   --preload \
   --keep-alive 10 \
   --log-level=warning \
@@ -42,7 +42,7 @@ exec gunicorn CMS.wsgi:application \
   --timeout 60 \
   --graceful-timeout 30 \
   --max-requests 5000 \
-  --max-requests-jitter 200
+  --max-requests-jitter 50
 
 
 # EXECUTE DOCKER COMMAND NOW
