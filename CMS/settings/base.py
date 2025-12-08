@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'wagtail.contrib.search_promotions',
 
     # Wagtail
     'wagtail.contrib.forms',
