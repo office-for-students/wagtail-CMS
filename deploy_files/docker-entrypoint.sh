@@ -36,7 +36,6 @@ exec gunicorn CMS.wsgi:application \
   --threads 2 \
   --preload \
   --keep-alive 10 \
-  --log-level=warning \
   --access-logfile=- \
   --error-logfile=- \
   --timeout 60 \
