@@ -15,10 +15,18 @@ set -e
 
 #Run Gunicorn
 exec gunicorn CMS.wsgi:application \
-  --bind 0.0.0.0:80 \
-  --workers 8 \
-  --threads 1 \
-  --timeout 120
+    --name discover-uni-cms \
+    --bind 0.0.0.0:80 \
+    --worker-class gevent \
+    --workers 8 \
+    --worker-connections 300 \
+    --timeout 120 \
+    --graceful-timeout 30 \
+    --max-requests 1000 \
+    --max-requests-jitter 100 \
+    --log-level warnning
+
+
 
 
 # EXECUTE DOCKER COMMAND NOW
