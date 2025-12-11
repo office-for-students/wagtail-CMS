@@ -50,7 +50,6 @@ class Course:
         self.id = data_obj.get('id')
         self.display_language = language
         course_details = data_obj.get('course')
-
         if course_details:
             self.country = CourseCountry(course_details.get('country'))
             self.kis_course_id = course_details.get('kis_course_id')

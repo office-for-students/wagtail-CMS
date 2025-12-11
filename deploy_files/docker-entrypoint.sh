@@ -1,11 +1,17 @@
 #!/bin/bash
 set -e
 
-#until python3 manage.py migrate
+#until python3 manage.py makemigrations
 #do
-#  echo "Waiting for database to be migrated"
+#  echo "Waiting for migrations to be created"
 #  sleep 5
 #done
+
+until python3 manage.py migrate
+do
+  echo "Waiting for database to be migrated"
+  sleep 5
+done
 
 #until python3 manage.py update_index
 #do
