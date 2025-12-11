@@ -59,3 +59,5 @@ urllib3==2.5.0
 wagtail==6.4.2
 whitenoise==6.11.0
 Willow==1.12.0
+gevent==25.9.1
+greenlet==3.3.0
