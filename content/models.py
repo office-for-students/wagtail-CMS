@@ -31,7 +31,7 @@ class Section(DiscoverUniBasePage):
         ('subsection', StructBlock([
             ('subsection_title', TextBlock()),
             ('subsection_content',
-             RichTextBlock(features=['h3', 'h4', 'bold', 'underline', 'italic', 'embed', 'link',
+             RichTextBlock(features=['h3', 'h4', 'bold', 'underline', 'italic', 'embed', 'link', 'document-link',
                                      'image', 'ol', 'ul', 'hr', 'blockquote']))
         ]))
     ])
@@ -62,7 +62,7 @@ class Section(DiscoverUniBasePage):
 
 
 class FlatContent(DiscoverUniBasePage):
-    content_body = RichTextField(blank=True, features=['h1', 'h2', 'h3', 'bold', 'italic', 'embed', 'link',
+    content_body = RichTextField(blank=True, features=['h1', 'h2', 'h3', 'bold', 'italic', 'underline', 'embed', 'link',
                                                        'document-link', 'image', 'ol', 'ul', 'hr'])
     content_panels = DiscoverUniBasePage.content_panels + [
         FieldPanel('content_body'),

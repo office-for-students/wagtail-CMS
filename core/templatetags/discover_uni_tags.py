@@ -197,15 +197,12 @@ def get_course_locations_list(locations, is_english):
         print("location is NONE is shouldn't be")
     else:
         if is_english:
-            print(f"get_course_locations_list(location: \n{locations})")
             for location in locations:
-                print(f"location: {locations}")
                 if location:
                     location_name = location.get('english') if location.get('english') else location.get('welsh')
                     locations_list.append(location_name)
         else:
             for location in locations:
-                print(f"location: {locations}")
                 location_name = location.get('welsh') if location.get('welsh') else location.get('english')
                 locations_list.append(location_name)
 

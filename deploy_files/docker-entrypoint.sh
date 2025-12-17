@@ -1,6 +1,12 @@
 #!/bin/bash
 set -e
 
+#until python3 manage.py makemigrations
+#do
+#  echo "Waiting for migrations to be created"
+#  sleep 5
+#done
+
 until python3 manage.py migrate
 do
   echo "Waiting for database to be migrated"
@@ -15,15 +21,18 @@ done
 
 #Run Gunicorn
 exec gunicorn CMS.wsgi:application \
-  --name discover-uni-cms \
-  --bind 0.0.0.0:80 \
-  --workers 3 \
-  --log-level=info \
-  --log-file=- \
-  --access-logfile=- \
-  --error-logfile=- \
-  --timeout 60 \
-  --max-requests 1000
+    --name discover-uni-cms \
+    --bind 0.0.0.0:80 \
+    --worker-class gevent \
+    --workers 8 \
+    --worker-connections 300 \
+    --timeout 120 \
+    --graceful-timeout 30 \
+    --max-requests 1000 \
+    --max-requests-jitter 100 \
+    --log-level warnning
+
+
 
 
 # EXECUTE DOCKER COMMAND NOW

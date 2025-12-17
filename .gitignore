@@ -53,3 +53,4 @@ docker-setup-db.sh
 prod-discoveruni.sql
 
 .local
+*.sql

@@ -40,8 +40,6 @@ def v2_widget_placeholder_embed(request, placeholder: str, lang: str):
 
 
 def proxy_content(request, target_url: str, content_type="text/html"):
-    print("method = ", request.method)
-
     headers = {
         "User-Agent": request.META.get("HTTP_USER_AGENT", "")
     }

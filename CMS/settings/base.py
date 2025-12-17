@@ -37,19 +37,20 @@ ROOT_DOMAIN = config('ROOT_DOMAIN', 'http://localhost:3000')
 DEBUG = config('DEBUG', False, cast=bool)
 # Application definition
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
+if DEBUG:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'console': {
+                'class': 'logging.StreamHandler',
+            },
         },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'DEBUG',  # Change to DEBUG, INFO, WARNING, ERROR
-    },
-}
+        'root': {
+            'handlers': ['console'],
+            'level': 'DEBUG',  # Change to DEBUG, INFO, WARNING, ERROR
+        },
+    }
 
 # Application definition
 
@@ -63,6 +64,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'wagtail.contrib.search_promotions',
 
     # Wagtail
     'wagtail.contrib.forms',
@@ -105,7 +107,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.BrokenLinkEmailsMiddleware',
+    # 'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -342,5 +344,3 @@ SERVER_EMAIL = AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS
 EMAIL_SUBJECT_PREFIX = f""
 
 WAGTAILADMIN_NOTIFICATION_USE_HTML = True
-
-
