@@ -1,4 +1,5 @@
 import os
+from urllib.parse import urlencode
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
@@ -6,6 +7,7 @@ from django.shortcuts import render
 
 from CMS import translations
 from CMS.enums import enums
+from CMS.settings.base import SEARCH_APPLICATION_URL
 from core.utils import get_new_landing_page_for_language
 from core.utils import get_page_for_language
 from coursefinder.forms import FilterForm
@@ -97,7 +99,6 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         institution_query = request.GET.get("institution_query")
         institution_array = [institution_query]
 
-
     postcode = query_params.get('postcode') if 'postcode' in query_params else None
     distance_query = query_params.get('distance') if 'distance' in query_params else None
     postcode_query = (postcode + ',' + distance_query) if postcode and distance_query else {}
@@ -163,6 +164,36 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
             'select_all_institutions': translations.term_for_key('select_all_institutions', language)
         }
     })
+
+    return render(request, 'coursefinder/course_finder_results.html', context)
+
+
+def course_finder_results_new(request, language=enums.languages.ENGLISH):
+    query_params = request.POST
+    filters = build_filters(query_params)
+
+    course_query = query_params['course_query'] if 'course_query' in query_params else None
+    postcode = query_params['postcode'] if 'postcode' in query_params else None
+    distance_query = query_params['distance'] if 'distance' in query_params else None
+
+    base_search_app_url = SEARCH_APPLICATION_URL
+    query_params_string = urlencode({
+        "limit": 20,
+        "offset": 0,
+        "language": language,
+        "course_query": course_query,
+    })
+    search_url = f"{base_search_app_url}?{query_params_string}"
+    print(search_url)
+
+    page = get_page_for_language(language, CourseFinderResults.objects.all())
+
+    context = {
+        'page': page,
+        'search_app_url': search_url,
+        'lang': language,
+        'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
+    }
 
     return render(request, 'coursefinder/course_finder_results.html', context)
 
