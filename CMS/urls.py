@@ -35,7 +35,7 @@ urlpatterns = [
     path('jsonfiles/institutions/<str:language>/', core_views.get_institutions_json, name='jsonfiles_institutions'),
 
     path('narrow-search/', coursefinder_views.narrow_search, name='narrow_search'),
-    path('course-finder/results/', coursefinder_views.course_finder_results, name='course_finder_results'),
+    path('course-finder/results/', coursefinder_views.course_finder_results_new, name='course_finder_results'),
 
     path('widget/', include('widget.urls')),
     path('Widget/', include('widget.urls')),
