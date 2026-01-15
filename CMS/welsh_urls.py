@@ -12,7 +12,7 @@ urlpatterns = [
     path('results/', coursefinder_views.results, name='results'),
 
     path('narrow-search/', coursefinder_views.narrow_search, name='narrow_search'),
-    path('course-finder/results/', coursefinder_views.course_finder_results, name='course_finder_results'),
+    path('course-finder/results/', coursefinder_views.course_finder_results_new, name='course_finder_results'),
 
     path('course-details/', include(courses_urls)),
     path('institution-details/', include(institution_urls)),
