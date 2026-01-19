@@ -51,6 +51,9 @@ if DEBUG:
             'level': 'DEBUG',  # Change to DEBUG, INFO, WARNING, ERROR
         },
     }
+    INTERNAL_IPS = [
+        '127.0.0.1',
+    ]
 
 # Application definition
 
@@ -82,6 +85,7 @@ INSTALLED_APPS = [
     # Django Add-ons
     'axes',
     'corsheaders',
+    'debug_toolbar',
     'modelcluster',
     'taggit',
     'sass_processor',
@@ -106,6 +110,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     # 'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.middleware.common.CommonMiddleware',
