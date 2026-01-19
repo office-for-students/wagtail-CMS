@@ -74,10 +74,11 @@ read -p "Do you want to create this tag and create a release branch? (y/N): " co
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
   # Create annotated tag
   git tag -a "$version" -m "$tag_message"
+  git push
   git checkout -b release/$version
 
   echo "Don't forget to push the branch and tag:"
-  echo "git push"
+  echo "git push --set-upstream origin release/$version"
   echo "git push origin $version"
 else
   echo "Tagging cancelled."
