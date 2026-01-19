@@ -25,11 +25,6 @@
                 </p>
             </div>
         </div><!-- end of data box-->
-
-    <div class="mt-3 pl-3 ml-1">
-        {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=course.entry_stats.0.display_unavailable_info %}
-    </div>
-
     <!--not sure what this does yet-->
         {% if course_details.has_multiple_entry_stats %}
             <ul class="nav nav-tabs mt-2 mx-1" id="qualification-types-tab">
@@ -53,13 +48,14 @@
                     {% if entry_stats.display_stats %}
                         <div class="tab-pane {% if not forloop.counter0 %} show active  {% endif %}" id="qualification-types-{{ forloop.counter }}" role="tabpanel" aria-labelledby="qualification-types-{{ forloop.counter }}-tab">
 
+                            <div class="mt-3 pl-3 ml-1">
+                                {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}
+                            </div>
                             <div class="entry-information__qualification-charts p-3 d-flex flex-wrap row mx-1 my-3">
                                 <div class="col-lg-4 col-md-12 align-self-stretch my-auto">
                                     <h2 class="entry-information__heading py-2">{{block.value.qualification_heading}}{% if course_details.has_multiple_entry_stats %}:
                                         {{entry_stats.display_subject_name}}{% endif %}
                                     </h2><!--box title-->
-
-{#                                    {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=entry_stats.display_unavailable_info %}#}
 
                                     <div class="entry-information__qualification_intro mt-2">
                                         {% create_list entry_stats.aggregation_year course_details.data_from_html entry_stats.number_of_students as substitutions %}
