@@ -616,7 +616,7 @@ STATISTICS = {
         "en": "Data from students graduating"
     },
     "participated_in_tef_awarded": {
-        "en": "This university/college is regulated by the OfS and has been assessed in the Teaching Excellence Framework (TEF).  The TEF assesses and rates universities and colleges for excellence above a set of minimum requirements.  The outcomes reflect the extent an institution delivers an excellent experience and outcomes for its mix of undergraduate students and across the range of its undergraduate courses and subjects.",
+        "en": "This university/college is regulated by the OfS and has been assessed in the Teaching Excellence Framework (TEF).  The TEF assesses and rates universities and colleges for excellence above a set of minimum requirements.  The outcomes reflect the extent to which an institution delivers an excellent experience and outcomes for its mix of undergraduate students and across the range of its undergraduate courses and subjects.",
         "cy": "Rheoleiddir y brifysgol hon / y coleg hwn gan y Swyddfa Fyfyrwyr ac mae wedi'i hasesu o fewn y Fframwaith Rhagoriaeth Addysgu (TEF).  Mae'r fframwaith hwn yn asesu ac yn graddio prifysgolion a cholegau am ragoriaeth uwchlaw casgliad o ofynion sylfaenol.  Mae'r canlyniadau'n adlewyrchu i ba raddau y mae sefydliad yn darparu profiadau a chanlyniadau rhagorol ar gyfer ei amrywiaeth o fyfyrwyr israddedig, ac ar draws ystod ei gyrsiau a phynciau israddedig. "
     },
     "participated_in_tef_awarded_left": {
