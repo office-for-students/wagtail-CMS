@@ -77,7 +77,7 @@
                             {% endif %}
                         {% elif course.country.code == "XF" and overall_stats.satisfaction_stats.show_satisfaction_stats %}
                             <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Student satisfaction" q1=question_stats.question_27 description="" no_data_key="no_data_england" %}
+                                {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="Student satisfaction" q1=question_stats.question_28 description="" no_data_key="no_data_england" %}
                             </div>
                         {% endif %}
                         {% if overall_stats.satisfaction_stats.show_satisfaction_stats %}
@@ -205,8 +205,8 @@
                                 </div>
                             {% else %}
                                 <div class="student-satisfaction__data-group d-flex flex-wrap row mx-1 scroll_item additional-class">
-                                    <!-- freedom of expression (non-england) box-->
-                                    {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="freedom_of_expression" q1=question_stats.question_28 description="" no_data_key="no_data_ni_scot_wales" %}
+                                    <!-- freedom of expression (england) box-->
+                                    {% include 'courses/new_course_details/partials/student_satisfaction_1_box.html' with title="freedom_of_expression" q1=question_stats.question_27 description="" no_data_key="no_data_ni_scot_wales" %}
                                 </div>
                             {% endif %}
                         {% endif %}
