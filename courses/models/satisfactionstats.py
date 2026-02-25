@@ -187,7 +187,7 @@ class SatisfactionStatistics:
         ]
 
     def get_unavail_from_code(self, data, language):
-        unavail_code = data.get("unavailable_code", data.get("nss_country_unavailable_code", data.get('unavailable').get("code")))
+        unavail_code = data.get("unavailable_code", data.get("nss_country_unavailable_code", data.get('unavailable', {}).get("code")))
         aggregation_level = data.get("aggregation_level", data.get("nss_country_aggregation_level", 0))
         resp_rate = self.check_response_rate_present(data.get("response_rate", None))
         subject = self.display_subject_name()
