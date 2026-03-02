@@ -289,7 +289,7 @@ body {
     }
 
     .ofs_widget__background {
-        height: 320px;
+        height: 450px;
     }
 
     .widget__container {
@@ -297,7 +297,7 @@ body {
     }
 
     .info-box {
-        height: 320px;
+        height: 450px;
         justify-content: flex-end;
         margin: 0;
         max-width: 346px;
@@ -307,11 +307,18 @@ body {
         height: 68%;
         align-items: flex-start;
         flex-direction: column;
+        justify-content: space-between;
+        padding-left: 2em;
+        padding-bottom: 2em;
     }
 
     .info__text {
         max-width: 261px;
-        font-size: 0.875em;
+        font-size: 1em;
+    }
+
+    .info__img {
+        height: 68px;
     }
 }
 
