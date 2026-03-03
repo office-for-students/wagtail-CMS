@@ -13,10 +13,7 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/highcharts-more.js"></script>
-    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/charts.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/label_explanation_popups.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/overview_blocks.js' %}?{% code_version %}"></script>
     <script type="text/javascript" src="{% static 'js/accordion.js' %}"></script>
