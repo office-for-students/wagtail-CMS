@@ -37,7 +37,7 @@ $(function () {
                     // Remove everything that isn’t the bar itself
                     plugins: {
                         legend: {display: false},          // hide legend
-                        tooltip: {enabled: true}           // keep a tooltip if you want it
+                        tooltip: {enabled: false},           // keep a tooltip if you want it
                     },
 
                     scales: {
