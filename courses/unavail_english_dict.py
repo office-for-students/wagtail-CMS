@@ -1,7 +1,7 @@
 unavail_en = {
     "no-data": {
         "0": "Sorry, there is no data available for this course.\n\nThis may be because the course size is too small. This does not reflect on the quality of the course.",
-        "1": "Sorry, there is no data available for this course.\n\nThis is because the course has not yet run or has not been running long enough for this data to be available. This does not reflect on the quality of the course.",
+        "1": "Sorry, there is no data available for this course.\n\nThis is because the course is new or has not been running long enough for this data to be available. This does not reflect on the quality of the course.",
         "2": "There is no data available for this course.\n\nThis does not reflect on the quality of the course."
     },
     "data": {
