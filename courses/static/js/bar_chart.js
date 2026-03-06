@@ -81,25 +81,6 @@ $(function () {
                     }
                 }]
             });
-
-            // var chart = this.target.find('svg');
-            // chart.attr('role', 'img');
-            //
-            // var titleNode = document.createElement('title');
-            // var titleId = this.label + '-title';
-            // titleNode.setAttribute('id', titleId);
-            // var title = document.createTextNode(this.title);
-            // titleNode.appendChild(title);
-            //
-            // var descNode = document.createElement('desc');
-            // var descId = this.label + '-desc';
-            // descNode.setAttribute('id', descId);
-            // var desc = document.createTextNode(this.value + '%' + this.desc);
-            // descNode.appendChild(desc);
-            //
-            // chart.prepend(descNode);
-            // chart.prepend(titleNode);
-            // chart.attr('aria-labelledby', titleId + ' ' + descId);
         }
     }
 
