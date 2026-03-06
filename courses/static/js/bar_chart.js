@@ -37,7 +37,7 @@ $(function () {
                     // Remove everything that isn’t the bar itself
                     plugins: {
                         legend: {display: false},          // hide legend
-                        tooltip: {enabled: true}           // keep a tooltip if you want it
+                        tooltip: {enabled: false},           // keep a tooltip if you want it
                     },
 
                     scales: {
@@ -55,32 +55,32 @@ $(function () {
 
                     // Optional: remove the default padding around the chart area
                     layout: {
-                        padding: 0
+                        padding: {
+                            right: 60
+                        }
                     },
+                },
+                plugins: [{
+                    id: 'barLabels',
+                    afterDatasetsDraw: function(chart, args, options) {
+                        const ctx = chart.ctx;
+                        ctx.save();
+                        ctx.font = 'bold 16px "Nunito Sans", sans-serif';
+                        ctx.fillStyle = '#1F283A';
+                        ctx.textAlign = 'left';
+                        ctx.textBaseline = 'middle';
 
-                    // Ensure the background stays plain (transparent)
-                    // backgroundColor: 'transparent'
-                }
+                        chart.data.datasets.forEach((dataset, i) => {
+                            const meta = chart.getDatasetMeta(i);
+                            meta.data.forEach((bar, index) => {
+                                const data = dataset.data[index];
+                                ctx.fillText(data + '%', bar.x + 5, bar.y);
+                            });
+                        });
+                        ctx.restore();
+                    }
+                }]
             });
-
-            // var chart = this.target.find('svg');
-            // chart.attr('role', 'img');
-            //
-            // var titleNode = document.createElement('title');
-            // var titleId = this.label + '-title';
-            // titleNode.setAttribute('id', titleId);
-            // var title = document.createTextNode(this.title);
-            // titleNode.appendChild(title);
-            //
-            // var descNode = document.createElement('desc');
-            // var descId = this.label + '-desc';
-            // descNode.setAttribute('id', descId);
-            // var desc = document.createTextNode(this.value + '%' + this.desc);
-            // descNode.appendChild(desc);
-            //
-            // chart.prepend(descNode);
-            // chart.prepend(titleNode);
-            // chart.attr('aria-labelledby', titleId + ' ' + descId);
         }
     }
 
