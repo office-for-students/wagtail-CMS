@@ -4,7 +4,9 @@
 {% include './partials/sticky_header.html' with sections=page.accordions %}
 
 <!--Informational banner-->
-{#{% include 'courses/new_course_details/partials/course_detail_information_banner.html' %}#}
+{% if display_informational_banner %}
+    {% include 'courses/new_course_details/partials/course_detail_information_banner.html' %}
+{% endif %}
 
 <div class="course-detail comparison-course-area px-xs-1"
      data-courseidentifier="{{ course.institution.pub_ukprn }}/{{ course.kis_course_id }}/{{ course.mode.label }}"
@@ -29,26 +31,26 @@
             {% for accordion in page.accordions %}
                 {% with heading=accordion.value.heading %}
                     {% if not forloop.counter0 == 3 or forloop.counter0 == 3 and course.accreditations.0.should_show_accreditation %}
-                    <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
-                        <div class="">
-                            <button class="course-detail__accordion-heading"
-                                    onclick="toggle_icon('accordion_icon_{{ forloop.counter }}')">
-                                <h2 id="course-detail__accordion-heading-{{ forloop.counter }}"
-                                    aria-controls="course-detail__accordion-body-{{ forloop.counter }}"
-                                    aria-label="Show {{ heading }} content"
-                                    aria-expanded="false">
-                                    {{ heading }}
-                                    <i id="accordion_icon_{{ forloop.counter }}"
-                                       class="fas fa-plus pr-3 text-white"></i>
-                                </h2>
-                            </button>
+                        <div id="{{ accordion.value.data_set }}" class="course-detail__accordion">
+                            <div class="">
+                                <button class="course-detail__accordion-heading"
+                                        onclick="toggle_icon('accordion_icon_{{ forloop.counter }}')">
+                                    <h2 id="course-detail__accordion-heading-{{ forloop.counter }}"
+                                        aria-controls="course-detail__accordion-body-{{ forloop.counter }}"
+                                        aria-label="Show {{ heading }} content"
+                                        aria-expanded="false">
+                                        {{ heading }}
+                                        <i id="accordion_icon_{{ forloop.counter }}"
+                                           class="fas fa-plus pr-3 text-white"></i>
+                                    </h2>
+                                </button>
+                            </div>
+                            <div id="course-detail__accordion-body-{{ forloop.counter }}"
+                                 class="course-detail__accordion-body"
+                                 aria-labelledby="course-detail__accordion-heading-{{ forloop.counter }}">
+                                {% include 'courses/new_course_details/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course block=accordion %}
+                            </div>
                         </div>
-                        <div id="course-detail__accordion-body-{{ forloop.counter }}"
-                             class="course-detail__accordion-body"
-                             aria-labelledby="course-detail__accordion-heading-{{ forloop.counter }}">
-                            {% include 'courses/new_course_details/partials/'|add:accordion.value.data_set|add:'_body.html' with course_details=course block=accordion %}
-                        </div>
-                    </div>
                     {% endif %}
                 {% endwith %}
             {% endfor %}
@@ -60,21 +62,22 @@
                     <img class="course-detail__other-courses-link-icon"
                          src="{% static 'images/location_paddle.svg' %}"
                          alt="">
-                    <span>{% autoescape off %}{% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
+                    <span>{% autoescape off %}
+                        {% get_translation key='similar_courses_here' language=page.get_language %}{% endautoescape %}</span>
                 </a>
 
                 <a href="/dummy-link" class="course-detail__other-courses-link">
                     <img class="course-detail__other-courses-link-icon"
                          src="{% static 'images/curved_arrow_right.svg' %}"
                          alt="">
-                    <span>{% autoescape off %}{% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
+                    <span>{% autoescape off %}
+                        {% get_translation key='similar_courses_elsewhere' language=page.get_language %}{% endautoescape %}</span>
                 </a>
             </div>
         </div>
 
         {% include 'courses/new_course_details/partials/compare-popup-bar.html' %}
     </div>
-
 
 
 </div>
