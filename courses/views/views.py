@@ -15,6 +15,7 @@ from courses.models import Course
 from courses.models import CourseComparisonPage
 from courses.models import CourseDetailPage
 from courses.models import CourseManagePage
+from courses.views.tariff_affected_courses import TARIFF_AFFECTED_COURSES
 
 logger = logging.getLogger(__name__)
 
@@ -248,7 +249,6 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
     if course.satisfaction_stats[0].aggregation_level == 14:
         course_title = course.display_title()
 
-
     page = get_page_for_language(language, CourseDetailPage.objects.all())
     page.uni_site_links_header = page.uni_site_links_header.replace('{{institution_name}}',
                                                                     course.institution.pub_ukprn_name)
@@ -288,6 +288,10 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         header = UNAVAILABLE["new_course_earnings_unavail_header"][language].format(salary_data.display_subject_name())
         new_course_unavail = {"header": header, "body": UNAVAILABLE["new_course_earnings_unavail_body"][language]}
         context.update({"new_course_unavail": new_course_unavail})
+
+    # Temporary - display banner for courses affected by tariff data error
+    if course.kis_course_id in TARIFF_AFFECTED_COURSES:
+        context["display_informational_banner"] = True
 
     return render(request, 'courses/new_course_details/course_detail_page.html', context)
 
