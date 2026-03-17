@@ -293,6 +293,11 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
     if course.kis_course_id in TARIFF_AFFECTED_COURSES:
         context["display_informational_banner"] = True
 
+    context["part_time_tariff_unavail"] = {
+        "reason_heading": UNAVAILABLE["new_course_agg_blank_header"][language],
+        "reason_body": UNAVAILABLE["part_time_tariff_message"][language],
+    }
+
     return render(request, 'courses/new_course_details/course_detail_page.html', context)
 
 
