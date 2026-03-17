@@ -208,5 +208,9 @@ UNAVAILABLE = {
     "data_displayed": {
         'en': "The data displayed is from students on",
         'cy': "Daw’r data a ddangosir gan fyfyrwyr ar y cwrs"
+    },
+    "part_time_tariff_message": {
+        'en': "Message body",
+        'cy': "Message body",
     }
 }
