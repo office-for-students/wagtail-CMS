@@ -655,8 +655,16 @@ STATISTICS = {
         "en": "Please note: the National Student Survey results for this course were updated on 20th December 2023. They were first published in October 2023. The update was to correct an error in the processing of the data. This correction resulted in one or more of the NSS question ratings changing for this course.",
         "cy": "Sylwer: cafodd canlyniadau’r Arolwg Cenedlaethol o Fyfyrwyr ar gyfer y cwrs yma eu diweddaru ar 20 Rhagfyr 2023. Cawsant eu cyhoeddi gyntaf ym mis Hydref 2023. Diben y diweddariad oedd cywiro gwall yn y modd y proseswyd y data. O ganlyniad i’r cywiriad hwn fe newidiodd y sgôr a roddwyd i’r cwrs yma yn un neu fwy o gwestiynau’r NSS."
     },
-    "tariff_data_notice": {
-        "en": "The tariff data may have changed.",
-        "cy": "The tariff data may have changed.",
+    "tariff_data_notice_before_link": {
+        "en": "Information on UCAS tariff points for this course was shown in error between 2 October 2025 and 25 March 2026. This has now been removed. Please see ",
+        "cy": "Information on UCAS tariff points for this course was shown in error between 2 October 2025 and 25 March 2026. This has now been removed. Please see ",
+    },
+    "tariff_data_notice_link": {
+        "en": "'About our data'",
+        "cy": "'About our data'"
+    },
+    "tariff_data_notice_after_link": {
+        "en": " for details.",
+        "cy": " for details."
     }
 }
