@@ -1,11 +1,9 @@
 {% load discover_uni_tags %}
 <div>
-    <p class="leo-banner px-4" role="banner">
-        {% get_translation key='tariff_data_notice' language=page.get_language %}
-        <a
-                href="{% if page.is_english %}/about-our-data/#the_national_student_survey{% else %}/cy/ynglŷn-ân-data-about-our-data-cy/#arolwg_cenedlaethol_o_fyfyrwyr{% endif %}"
-                title="Read more"
-                target="_blank"
-        >{% get_translation key='read_more' language=page.get_language %}</a>
+    <p class="leo-banner px-4" role="banner">{% get_translation key='tariff_data_notice_before_link' language=page.get_language %}<a
+            href="{% if page.is_english %}/about-our-data/#data_collected_from_universities_and_colleges_on_individual_students{% else %}/cy/ynglŷn-ân-data-about-our-data-cy/#arolwg_cenedlaethol_o_fyfyrwyr{% endif %}"
+            title="{% if page.is_english %}About our data{% else %}About our data{% endif %}"
+            target="_blank"
+    >{% get_translation key='tariff_data_notice_link' language=page.get_language %}</a>{% get_translation key='tariff_data_notice_after_link' language=page.get_language %}
     </p>
 </div>
