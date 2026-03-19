@@ -210,7 +210,7 @@ UNAVAILABLE = {
         'cy': "Daw’r data a ddangosir gan fyfyrwyr ar y cwrs"
     },
     "part_time_tariff_message": {
-        'en': "Message body",
-        'cy': "Message body",
+        'en': "This data is not published for part time courses. This does not reflect on the quality of the course.",
+        'cy': "This data is not published for part time courses. This does not reflect on the quality of the course.",
     }
 }
