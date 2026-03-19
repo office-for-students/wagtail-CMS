@@ -50,11 +50,6 @@ esac
 # Rebuild version and prepend v
 version="v$major.$minor.$patch"
 
-# Update version.txt and commit it ---
-echo "$version" > version.txt
-git add version.txt
-git commit -m "- Update version.txt"
-
 # Get commits since last tag in reverse order (oldest first)
 release_notes=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s (%h)" --reverse)
 
@@ -72,14 +67,19 @@ echo "==================================="
 read -p "Do you want to create this tag and create a release branch? (y/N): " confirm
 
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
+  # Update version.txt and commit it ---
+  echo "$version" > version.txt
+  git add version.txt
+  git commit -m "- Update version.txt"
+
   # Create annotated tag
   git tag -a "$version" -m "$tag_message"
   git push
-  git checkout -b release/$version
 
-  echo "Don't forget to push the branch and tag:"
-  echo "git push --set-upstream origin release/$version"
-  echo "git push origin $version"
+  # Create and push release branch
+  git checkout -b release/$version
+  git push --set-upstream origin release/$version
+  git push origin $version
 else
   echo "Tagging cancelled."
 fi
