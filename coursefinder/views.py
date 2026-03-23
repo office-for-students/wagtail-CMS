@@ -7,7 +7,6 @@ from django.shortcuts import render
 
 from CMS import translations
 from CMS.enums import enums
-from CMS.settings.base import SEARCH_APPLICATION_URL
 from core.utils import get_new_landing_page_for_language
 from core.utils import get_page_for_language
 from coursefinder.forms import FilterForm
@@ -169,28 +168,10 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
 
 
 def course_finder_results_new(request, language=enums.languages.ENGLISH):
-    query_params = request.POST
-    filters = build_filters(query_params)
-
-    course_query = query_params['course_query'] if 'course_query' in query_params else None
-    postcode = query_params['postcode'] if 'postcode' in query_params else None
-    distance_query = query_params['distance'] if 'distance' in query_params else None
-
-    base_search_app_url = SEARCH_APPLICATION_URL
-    query_params_string = urlencode({
-        "limit": 20,
-        "offset": 0,
-        "language": language,
-        "course_query": course_query,
-    })
-    search_url = f"{base_search_app_url}?{query_params_string}"
-    print(search_url)
-
     page = get_page_for_language(language, CourseFinderResults.objects.all())
 
     context = {
         'page': page,
-        'search_app_url': search_url,
         'lang': language,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
     }
