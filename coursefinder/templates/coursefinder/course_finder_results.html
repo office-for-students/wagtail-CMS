@@ -9,8 +9,6 @@
 
 {% block content %}
 
-    <div class="d-flex flex-row justify-content-center" style="margin: 0 18% 0 18%;">
-        <iframe id="search-app-mount" src="{{ search_app_url }}" style="border: none; width: 100%; height: 1000px;"></iframe>
-    </div>
+    {% include "coursefinder/search_app/search_app.html" %}
 
 {% endblock content %}
