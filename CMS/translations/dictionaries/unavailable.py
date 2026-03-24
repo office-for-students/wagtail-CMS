@@ -211,6 +211,6 @@ UNAVAILABLE = {
     },
     "part_time_tariff_message": {
         'en': "This data is not published for part time courses. This does not reflect on the quality of the course.",
-        'cy': "This data is not published for part time courses. This does not reflect on the quality of the course.",
+        'cy': "Ni chaiff y data hyn eu cyhoeddi ar gyfer cyrsiau rhan-amser. Nid yw hyn yn adlewyrchiad o ansawdd y cwrs.",
     }
 }
