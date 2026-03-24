@@ -657,14 +657,14 @@ STATISTICS = {
     },
     "tariff_data_notice_before_link": {
         "en": "Information on UCAS tariff points for this course was shown in error between 2 October 2025 and 25 March 2026. This has now been removed. Please see ",
-        "cy": "Information on UCAS tariff points for this course was shown in error between 2 October 2025 and 25 March 2026. This has now been removed. Please see ",
+        "cy": "Cafodd gwybodaeth am bwyntiau tariff UCAS ar gyfer y cwrs hwn eu dangos drwy gamgymeriad rhwng 2 Hydref 2025 a 25 Mawrth 2026. Mae bellach wedi cael ei dileu. Gweler ",
     },
     "tariff_data_notice_link": {
         "en": "'About our data'",
-        "cy": "'About our data'"
+        "cy": "'Ynglŷn â'n data'"
     },
     "tariff_data_notice_after_link": {
         "en": " for details.",
-        "cy": " for details."
+        "cy": " am fanylion."
     }
 }
