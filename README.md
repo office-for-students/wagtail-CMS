@@ -466,6 +466,17 @@ Once a release has been signed off and deployed to production, you need to:
 - tag master with the release number at the point it was merged in.
 - delete the release branch
 
+## Performance and Reliability
+
+### Widget Proxy Timeout
+
+The `proxy_content` endpoint, used by the v2 widget and related API endpoints, includes a **10-second timeout** for external requests to the widget host (`WIDGET_HOST`). 
+
+This change ensures that:
+- **Server Resources:** Prevents application threads from hanging indefinitely if the external service is slow or unresponsive.
+- **User Experience:** Provides a deterministic failure state (502 Bad Gateway) after 10 seconds, rather than an infinite loading state.
+- **System Stability:** Protects the CMS from cascading failures during periods of external service degradation.
+
 ## Contributing
 
 See [CONTRIBUTING](CONTRIBUTING.md) for details.

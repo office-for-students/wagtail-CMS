@@ -46,7 +46,7 @@ def proxy_content(request, target_url: str, content_type="text/html"):
 
     if request.method == "GET":
         params = request.GET.dict()
-        response = requests.get(target_url, params=params, headers=headers)
+        response = requests.get(target_url, params=params, headers=headers, timeout=10)
     else:
         return HttpResponse("Method not allowed", status=405)
 

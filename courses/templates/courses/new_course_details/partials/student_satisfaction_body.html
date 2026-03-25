@@ -32,11 +32,17 @@
                 <div class="student-satisfaction__block"> <!-- student satisfaction question boxes -->
                     <div class="mt-3 pl-3 ml-1">
                         {% if page.get_language == "en" %}
-                            {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavailable_reason_english %}
+                            {% if overall_stats.satisfaction_stats.unavailable_reason_english %}
+                                {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavailable_reason_english %}
+                            {% else %}
+                                {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavail %}
+                            {% endif %}
                         {% elif page.get_language == "cy" %}
-                            {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavailable_reason_welsh %}
-                        {% else %}
-                            {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavail %}
+                            {% if overall_stats.satisfaction_stats.unavailable_reason_welsh %}
+                                {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavailable_reason_welsh %}
+                            {% else %}
+                                {% include 'courses/new_course_details/partials/unavailable_disclaimer.html' with unavailable=overall_stats.satisfaction_stats.unavail %}
+                            {% endif %}
                         {% endif %}
                     </div>
                     <div class="scrolling-wrapper scroll">
