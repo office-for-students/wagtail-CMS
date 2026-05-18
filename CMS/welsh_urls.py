@@ -13,7 +13,8 @@ urlpatterns = [
 
     path('narrow-search/', coursefinder_views.narrow_search, name='narrow_search'),
     path('course-finder/results/', coursefinder_views.course_finder_results_new, name='course_finder_results'),
-
+    path('course-finder/results/institution', coursefinder_views.course_finder_results_new, name='course_finder_results'),
+    path('course-finder/results/subject', coursefinder_views.course_finder_results_new, name='course_finder_results'),
     path('course-details/', include(courses_urls)),
     path('institution-details/', include(institution_urls)),
     path('cymharu-cyrsiau/', course_views.compare_courses),
