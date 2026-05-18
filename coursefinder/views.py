@@ -169,10 +169,15 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
 
 def course_finder_results_new(request, language=enums.languages.ENGLISH):
     page = get_page_for_language(language, CourseFinderResults.objects.all())
-
+    path = request.path.replace("/en/", "/")
+    if language == enums.languages.ENGLISH:
+        translated_url = '/cy' + path if language == enums.languages.ENGLISH else path
+    else:
+        translated_url = path.replace('/cy/', '/')
     context = {
         'page': page,
         'lang': language,
+        'translated_url': translated_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
     }
 
