@@ -102,8 +102,8 @@ DICT = {
         "en": "at"
     },
     "average_earnings_course_overview_1": {
-        "cy": "Enillion cyfartalog",
-        "en": "Average Earnings for"
+        "cy": "Enillion canolrifol ar gyfer",
+        "en": "Median earnings for"
     },
     "average_earnings_course_overview_2a": {
         "cy": "15 mis ar ôl y cwrs",
@@ -346,7 +346,7 @@ DICT = {
         "en": "/search-landing-page/course-finder-choose-country/"
     },
     "courses": {
-        "cy": "cwrs/cyrsiau",
+        "cy": "cwrs/cyrsiau", #TODO: Check translation
         "en": "course(s)"
     },
     "courses_added": {
@@ -1505,10 +1505,12 @@ DICT = {
     "earnings_info_box": {
         "cy": "<li>Mae marchnadoedd llafur yn newid.</li>"
               "<li>Mae cyflogau yn amrywio ar draws rhanbarthau yn y DU. </li>"
-              "<li>Mae yna lawer o ffactorau sy'n effeithio ar enillion graddedigion.</li>",
+              "<li>Mae yna lawer o ffactorau sy'n effeithio ar enillion graddedigion.</li>"
+              "<li>Sylwch mai gwerth enwol sydd i’r ffigurau enillion a roddir — maent yn dangos faint o arian parod a dalwyd i rywun yn y ffrâm amser dan sylw, heb roi cyfrif am chwyddiant.</li>",
         "en": "<li>Labour markets change </li>"
               "<li>Salaries vary across regions in the UK</li>"
               "<li>There are lots of factors that affect graduate earnings.</li>"
+              "<li>Please note that the earnings figures given are nominal — they show the amount of cash someone got paid in the stated timeframe, without accounting for inflation.</li>"
     },
 
     'graduate_perceptions_info_box': {
