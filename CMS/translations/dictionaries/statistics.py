@@ -112,8 +112,8 @@ STATISTICS = {
         "en": "Some data may be for a course and some for a subject - course data is more specific but subject data will still give an indication of students’ views. Use caution when comparing the two."
     },
     "graduate_link": {
-        "cy": "https://discoveruni.gov.uk/cy/yngl%C5%B7n-%C3%A2n-data-about-our-data-cy/#arolwg_canlyniadau_graddedigion",
-        "en": "https://www.discoveruni.gov.uk/about-our-data/#graduate_outcomes_survey"
+        "cy": "https://discoveruni.gov.uk/cy/how-choose-course-cy/rhagolygon-cyflogaeth-employment-prospects/",
+        "en": "https://discoveruni.gov.uk/how-do-i-choose-course/employment-prospects/"
     },
     "graduate_perceptions": {
         "cy": "Canfyddiadau graddedigion",
