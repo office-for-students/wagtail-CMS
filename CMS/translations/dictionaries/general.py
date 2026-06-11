@@ -1722,8 +1722,8 @@ OPTIONALS = {
         "cy": "Gweld pob cwrs"
     },
     'average_earnings': {
-        "cy": "Enillion cyfartalog",
-        "en": "Average Earnings"
+        "cy": "Enillion canolrif",
+        "en": "Median Earnings"
     },
     'view_uni_website': {
         "cy": "Gweld gwefan y brifysgol",
