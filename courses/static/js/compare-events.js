@@ -7,7 +7,7 @@
         const saved = getSavedCourses();
 
         document.querySelectorAll(".saved-counter").forEach(counter => {
-            counter.textContent = saved.length || "";
+            // counter.textContent = saved.length || "";
             counter.classList.toggle("active", saved.length > 0);
         });
     }
