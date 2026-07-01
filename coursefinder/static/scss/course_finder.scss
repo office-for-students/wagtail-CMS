@@ -12,7 +12,7 @@
 }
 @media only screen and (min-width: 577px) {
     .course-finder-wrapper {
-        flex: 1 0 50vw; 
+        flex: 1 0 50vw;
         margin-left: 30px;
     }
 }
@@ -20,7 +20,7 @@
 .course-finder-results__overview-filter-open{
     text-align:center;
 }
-.course-finder__header{   
+.course-finder__header{
     font-family: "Nunito Sans", sans-serif;
     font-size: 32px;
     background-color: white;
@@ -42,7 +42,7 @@
         h1{
             font-size:2rem;
         }
-        
+
     }
 
     .course-finder__intro-panel{
@@ -51,7 +51,7 @@
         font-weight:bold;
         font-size:1.2rem;
         padding: 32px 0;
-        
+
 
         input#institution_query-search.search-field-input {
             border: 1px solid #ced4da !important;
@@ -218,7 +218,7 @@
 
                 &-icon {
                     height: 12px;
-                 
+
 
                     &.white {
                         display: none;
@@ -316,7 +316,7 @@
             &-button {
                 @include green-gradient-mixin();
                 @include mobile-body-font-mixin();
-                
+
                 cursor: pointer;
 
                 display: inline-block;
@@ -326,7 +326,7 @@
                 border-radius: 70.6272px;
                 line-height: 25px;
                 color: $white;
-                
+
                 @media (hover) {
                   &:hover {
                       .green {
@@ -343,7 +343,7 @@
             &-icon {
                 height: 14px;
                 margin-left: 6px;
-             
+
                 &.green {
                     display: none;
                 }
@@ -411,7 +411,7 @@
     }
 
     &-results {
-       
+
         &__heading {
             padding-left: 15px;
             margin-bottom: 20px;
@@ -442,7 +442,7 @@
                     }
                 }
             }
-            
+
             &_sort_by_subject {
                 padding-left: 31px;
                 margin-bottom: 20px;
@@ -505,7 +505,7 @@
 
                 &-icon {
                     height: 15px;
-                   
+
                 }
             }
         }
@@ -528,7 +528,7 @@
                     position:absolute;
                     right:10px;
                 }
-        
+
 
                 &-header {
                     display: flex;
