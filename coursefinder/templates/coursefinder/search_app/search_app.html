@@ -6,9 +6,16 @@
       rel="stylesheet">
 <script src="https://kit.fontawesome.com/12c4da3821.js" crossorigin="anonymous"></script>
 
-<div id="search-app-mount" style="margin: 4em 16em"></div>
+<div
+        id="search-app-mount"
+        style="
+        width:90vw;
+        max-width:1200px;
+        margin:4rem auto;
+    ">
+</div>
 {% if lang == "en" %}
-    <script type="module" crossorigin src="{% static 'search_app/en/app-search-en.js'%}"></script>
+    <script type="module" crossorigin src="{% static 'search_app/en/app-search-en.js' %}"></script>
 {% else %}
     <script type="module" crossorigin src="{% static 'search_app/cy/app-search-cy.js' %}"></script>
 {% endif %}
