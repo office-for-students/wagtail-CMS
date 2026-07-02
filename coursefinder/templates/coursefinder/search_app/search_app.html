@@ -1,0 +1,15 @@
+{% load static %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet">
+<script src="https://kit.fontawesome.com/12c4da3821.js" crossorigin="anonymous"></script>
+
+<div id="search-app-mount" style="margin: 4em 16em"></div>
+{% if lang == "en" %}
+    <script type="module" crossorigin src="{% static 'search_app/en/app-search-en.js'%}"></script>
+{% else %}
+    <script type="module" crossorigin src="{% static 'search_app/cy/app-search-cy.js' %}"></script>
+{% endif %}
+<link rel="stylesheet" crossorigin href="{% static 'search_app/en/app-search-styles.css' %}"/>
