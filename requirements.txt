@@ -13,15 +13,14 @@ cfgv==3.5.0
 charset-normalizer==3.4.7
 cryptography==49.0.0
 defusedxml==0.7.1
-distlib==0.4.3
-Django==6.0.6
+Django==5.2.12
 django-appconf==1.2.0
 django-axes==8.3.1
 django-cors-headers==4.9.0
 django-debug-toolbar==7.0.0
 django-filter==25.2
 django-modelcluster==6.5
-django-ninja==1.6.2
+django-ninja==1.5.0
 django-permissionedforms==0.1
 django-sass-processor==1.4.2
 django-storages==1.14.6
@@ -66,7 +65,6 @@ telepath==0.3.1
 typing-inspection==0.4.2
 typing_extensions==4.16.0
 urllib3==2.7.0
-virtualenv==21.5.1
 wagtail==7.4.2
 whitenoise==6.12.0
 Willow==1.12.0
