@@ -12,8 +12,11 @@
 
 This application is based on the Wagtail CMS.
 It utilises:
-- Wagtail CMS
-- Python/Django framework
+- Wagtail CMS (v7.3.2)
+- Python (v3.13) / Django framework (v5.2.12)
+- PostgreSQL
+- Azure Blob Storage (for media and JSON files)
+- Azure Communication Services (for email)
 - jQuery
 - SASS
 
@@ -29,28 +32,36 @@ $ cp docker-compose.yml.example docker-compose.yml
 
 ## Environment variables
 
-| Variable                    | Default              | Description                                       |
-|-----------------------------|----------------------|---------------------------------------------------|
-| DBHOST                      | host.docker.internal | DB host url/string                                |
-| DBPORT                      | 5432                 | DB connection port                                |
-| DBNAME                      | discoveruni          | DB name to use                                    |
-| DBUSER                      | <username>           | DB user                                           |
-| DBPASSWORD                  | <password>           | DB password                                       |
-| SEARCHAPIHOST               | <searchapihost>      | The url endpoint for the search api               |
-| DATASETAPIHOST              | <datasetapihost>     | The url endpoint for the dataset api              |
-| WIDGETAPIKEY                | <widgetaccesskey>    | The access key for the api for the widget         |
-| DATASETAPIKEY               | <datasetaccesskey>   | The access key for the api for the site           |
-| FEEDBACK_API_HOST           | <feedbackapihost>    | The url endpoint for the feedback api             |
-| AZURE_ACCOUNT_NAME          | <azureaccountname>   | The name of the account for image storage         |
-| AZURE_ACCOUNT_KEY           | <azureaccountkey>    | The access key to account for image storage       |
-| AZURE_ACCOUNT               | <azureaccount>       | The account for image storage                     |
-| JSONFILES_STORAGE_CONTAINER | <azurecontainer>     | The container URI for the json files              |
-| SENDGRID_API_KEY            | <sendgridapikey>     | The API key for the e-mail notifications          |
-| SENDGRID_FROM_EMAIL         | <sendgridfromemail>  | The e-mail address used for notifications         |
-| SORT_BY_SUBJECT_LIMIT       | 5000                 | Used to determine how to display subjects         |
-| LOCAL                       | False                | Tells the site to use external API or mocks       |
-| SITEMAP_STORAGE_BLOB        | <sitemap file name>  | Tells the app where the dynamic sitemap is stored |
-|                             |                      |                                                   |
+| Variable                              | Default              | Description                                                      |
+|---------------------------------------|----------------------|------------------------------------------------------------------|
+| DEBUG                                 | False                | Enable/disable debug mode                                        |
+| LOCAL                                 | False                | Tells the site to use external API or mocks/sqlite               |
+| ROOT_DOMAIN                           | http://localhost:3000| The root domain of the application                               |
+| ALLOWED_HOSTS                         | []                   | JSON list of allowed hosts                                       |
+| CSRF_TRUSTED_ORIGINS                  | []                   | JSON list of trusted origins for CSRF                            |
+| DBHOST                                | host.docker.internal | DB host url/string                                               |
+| DBPORT                                | 5432                 | DB connection port                                               |
+| DBNAME                                | discoveruni          | DB name to use                                                   |
+| DBUSER                                | <username>           | DB user                                                          |
+| DBPASSWORD                            | <password>           | DB password                                                      |
+| SEARCHAPIHOST                         | <searchapihost>      | The url endpoint for the search api                              |
+| DATASETAPIHOST                        | <datasetapihost>     | The url endpoint for the dataset api                             |
+| WIDGETAPIHOST                         | <widgetapihost>      | The url endpoint for the widget api                              |
+| V2_WIDGET_HOST                        | <v2widgethost>       | The url endpoint for the V2 widget host                          |
+| WIDGETAPIKEY                          | <widgetaccesskey>    | The access key for the api for the widget                        |
+| DATASETAPIKEY                         | <datasetaccesskey>   | The access key for the api for the site                          |
+| AZURECOSMOSDBURI                      | <cosmosdburi>        | The URI for Azure Cosmos DB                                      |
+| AZURECOSMOSDBKEY                      | <cosmosdbkey>        | The access key for Azure Cosmos DB                               |
+| AZURE_ACCOUNT_NAME                    | <azureaccountname>   | The name of the account for image storage                        |
+| AZURE_ACCOUNT_KEY                     | <azureaccountkey>    | The access key to account for image storage                      |
+| AZURE_ACCOUNT                         | <azureaccount>       | The account for image storage                                    |
+| AZURE_CONTAINER                       | <azurecontainer>     | The container name for image storage                             |
+| JSONFILES_STORAGE_CONTAINER           | <azurecontainer>     | The container URI for the json files                             |
+| SITEMAP_STORAGE_BLOB                  | <sitemap file name>  | Tells the app where the dynamic sitemap is stored                |
+| AZURE_EMAIL_SERVICE_CONNECTION_STRING | <connectionstring>   | Connection string for Azure Email Service                        |
+| AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS    | <emailaddress>       | The e-mail address used for notifications                        |
+| EMAIL_BACKEND                         | <emailbackend>       | Django email backend to use                                      |
+| SORT_BY_SUBJECT_LIMIT                 | 5000                 | Used to determine how to display subjects                        |
 
 # Getting Started
 
@@ -95,17 +106,12 @@ The continuous integration and deployment pipeline for this project is implement
 
 The continuous integration pipeline for the project is defined in yml files in the root of the project, all starting with 'azure-pipelines'.
 
-There are 4 pipelines defined in the project.
+There are 3 pipelines defined in the project.
 
 #### CI test
 _Defined in 'azure-pipelines.yml'_
 
 This pipeline should run on every push to Github from feature, bug and refactor branches. All this pipeline does is run the tests to regression check the new code.
-
-#### Development build
-_Defined in 'dev-azure-pipelines.yml'_
-
-This pipeline should run on every push to Github on the develop branch. This pipeline runs the tests and, if they pass, builds a docker container and pushes it to the dev container registry.
 
 #### Pre prod build
 _Defined in 'pre-prod-azure-pipelines.yml'_
@@ -122,7 +128,7 @@ This pipeline should run on every push to Github on the master branch. This pipe
 
 The continuous deployment pipeline is defined through the Azure DevOps pipeline UI.
 
-There are 3 pipelines setup for the project.
+There are 2 pipelines setup for the project.
 
 #### Development deploy
 
@@ -139,16 +145,6 @@ The pipeline runs when the a new container is pushed to the prod container regis
 ### Releases
 
 Releases of the code are following the major/minor/patch pattern for release numbering.
-
-#### Creating a release
-
-New releases can be generated manually or by using the 'release' command in the bin directory.
-
-##### Manual release process
-
-- update the version number with in the version.txt file
-- create a new branch named in the pattern 'release/v`version number`' (e.g. release/v0.0.1)
-- push the branch to Github
 
 ##### Automated release process
 
