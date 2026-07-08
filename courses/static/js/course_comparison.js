@@ -137,7 +137,6 @@ class RatingsManager {
             el.addEventListener("mouseover", function (event) {
                 let [index, value, elementID] = manager.valueAndIndexFor(event)
                 manager.hoverStars(value, index, elementID);
-
             })
 
             el.addEventListener("mouseleave", function (event) {
@@ -148,6 +147,15 @@ class RatingsManager {
             el.addEventListener('click', function (event) {
                 let [index, value, elementId] = manager.valueAndIndexFor(event)
                 manager.addStarRating(value, index, elementId);
+            })
+
+            el.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    let [index, value, elementID] = manager.valueAndIndexFor(event)
+                    manager.hoverStars(value, index, elementID);
+                    manager.addStarRating(value, index, elementID);
+                }
             })
         })
     }
@@ -308,6 +316,13 @@ class ComparisonDisplayManager {
 
         const removeCourseButtons = document.querySelectorAll('*[id^="ratings_remove"]');
         Array.from(removeCourseButtons).forEach(function (value) {
+            value.addEventListener("keydown", function (el) {
+                if (el.key === "Enter" || el.key === " ") {
+                    el.preventDefault();
+                    that.removeCourseCompare(el.target)
+                }
+            })
+
             value.addEventListener("click", function (el) {
                 that.removeCourseCompare(el.target)
             })
@@ -489,20 +504,20 @@ class ComparisonDisplayManager {
         accordion_header.css("z-index", "8");
     }
 
-    resetInfoPosition(){
+    resetInfoPosition() {
         let informationText = document.getElementsByClassName("information-text")
-        Array.from(informationText).forEach(function(el){
+        Array.from(informationText).forEach(function (el) {
             el.classList.remove("right")
             el.classList.add("left")
         })
     }
 
-    addRightInfo(currentIndexes){
+    addRightInfo(currentIndexes) {
         this.resetInfoPosition();
-        let lastIndex = currentIndexes.length-1
+        let lastIndex = currentIndexes.length - 1
         let rightIndex = currentIndexes[lastIndex]
         let rightItem = document.getElementsByClassName(`info-box-${rightIndex}`)
-        Array.from(rightItem).forEach(function(el) {
+        Array.from(rightItem).forEach(function (el) {
             el.classList.remove("left")
             el.classList.add("right")
         })
@@ -530,6 +545,12 @@ class InfoBoxManager {
                 that.toggleHidden(text);
             })
             icon.addEventListener("mouseout", function () {
+                that.toggleHidden(text);
+            })
+            icon.addEventListener("focus", function () {
+                that.toggleHidden(text);
+            })
+            icon.addEventListener("blur", function () {
                 that.toggleHidden(text);
             })
         }
@@ -602,13 +623,13 @@ class MultipleSubjectsManager {
     }
 }
 
-class SubAccordionManager{
+class SubAccordionManager {
 
-    constructor(){
+    constructor() {
         this.setEventListeners();
     }
 
-    toggleAccordion(title, index){
+    toggleAccordion(title, index) {
         let expand = document.getElementById(`${title}-expand`);
         let collapse = document.getElementById(`${title}-collapse`);
         let expandBtn = document.getElementById(`${title}-btn-expand`);
@@ -620,14 +641,21 @@ class SubAccordionManager{
         collapseBtn && collapseBtn.classList.toggle("hidden");
         accordionBody.classList.toggle("hidden");
     }
+
     setEventListeners() {
         let subAccordions = document.getElementsByClassName("sub_accordion_header");
         for (let i = 0; i < subAccordions.length; i++) {
             const that = this;
             let title = subAccordions[i].id;
             let index = subAccordions[i].dataset.index;
-            subAccordions[i].addEventListener("click", function(){
+            subAccordions[i].addEventListener("click", function () {
                 that.toggleAccordion(title, index);
+            })
+            subAccordions[i].addEventListener("keydown", function(event) {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    that.toggleAccordion(title, index);
+                }
             })
         }
     }
@@ -637,7 +665,7 @@ class SubAccordionManager{
 function setupView() {
     let scrollManager = new ScrollManager();
 
-    function areCardsOnDisplay(cards){
+    function areCardsOnDisplay(cards) {
         let style = getComputedStyle(cards).display;
         return true ? style == "block" : false
     }
@@ -672,7 +700,6 @@ function setupView() {
         cardsRect.height,
         tabletop
     );
-
     scrollManager.add(scrollListener, "header");
 }
 

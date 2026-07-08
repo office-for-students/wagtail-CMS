@@ -16,7 +16,7 @@
                                  class="unavailable-container column-{{ column_id }}{{ accordion.title }} item-{{ forloop.counter0 }}"
                                     {% if not forloop.first %}hidden{% endif %}>{{ header }}
                                 {% if course.message %}
-                                    <img class="information-icon" src="{% static "images/information.svg"%}" alt>
+                                    <img class="information-icon" tabindex="0" src="{% static "images/information.svg"%}" alt>
                                 {% endif %}
                             </div>
                         {% endfor %}

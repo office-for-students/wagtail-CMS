@@ -7,15 +7,22 @@
         <div>
             {% with stars="123" index=forloop.counter0 %}
                 {% for star in stars %}
-                    <li class="rating js-star-rating"
+                    <li class="rating js-star-rating keyboard-accessible"
                         id="course-{{ index }}-star{{ star }}"
-                        value="{{ star }}">☆
+                        value="{{ star }}"
+                        tabindex="0"
+                        role="button"
+                        aria-label="Rate {{ star }} star{%  if star != '1' %}s{% endif %}"
+                    >☆
                     </li>
                 {% endfor %}
             {% endwith %}
-            <img id="ratings_remove-{{ forloop.counter0 }}" class="course-detail__courses-container-exit-course"
+            <img id="ratings_remove-{{ forloop.counter0 }}" class="course-detail__courses-container-exit-course keyboard-accessible"
                  src="{% static 'images/icon-close.svg' %}"
-                 alt="{% get_translation key='close' language=page.get_language %}">
+                 alt="{% get_translation key='close' language=page.get_language %}"
+                 tabindex="0"
+                 role="button"
+            >
         </div>
 
         <a class="course-detail__courses-name" href="{% if page.get_language == "cy" %}/cy{% endif %}/course-details/{{ course_id }}/" target="_blank">

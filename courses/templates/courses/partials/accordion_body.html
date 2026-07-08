@@ -41,7 +41,8 @@
     {% for sub_accordion in sub_accordions %}
         {% with identifier=sub_accordion.title|title|cut:" "|add:"-ac-" sub_count=forloop.counter0 %}
             <div class="accordion-block">
-                <div id="{{ identifier }}{{ index }}" data-index="{{ index }}" class="comparison_row-header sub_accordion_header">
+                <div id="{{ identifier }}{{ index }}" data-index="{{ index }}"
+                     class="comparison_row-header sub_accordion_header" tabindex="0">
                     {{sub_accordion.title}}
                     <div class="ml-auto">
                         <div id="{{ identifier }}{{ index }}-expand" class="hidden">

@@ -205,13 +205,17 @@ input[type=checkbox] {
   display:none;
 }
 
+input[type=checkbox] + label:focus-visible {
+  outline-offset: 1px;
+}
+
 input[type=checkbox] + label {
   display:inline-block;
   padding: 0 0 0 0;
   background:url("/static/assets/empty_check.png") no-repeat;
-  height: 64px;
-  width: 64px;;
-  background-size: 50%;
+  height: 30px;
+  width: 30px;;
+  background-size: 100%;
   margin-bottom: auto;
   margin-top: 35px;
   margin-right: 63px;
@@ -219,10 +223,11 @@ input[type=checkbox] + label {
 
 input[type=checkbox]:checked + label {
   background:url("/static/assets/checked.png") no-repeat;
-  height: 64px;
-  width: 64px;
+  padding: 0 0 0 0;
+  height: 30px;
+  width: 30px;
   display:inline-block;
-  background-size: 50%;
+  background-size: 100%;
   margin-bottom: auto;
   margin-top: 35px;
   margin-right: 63px;
