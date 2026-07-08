@@ -21,10 +21,14 @@
   color: #FFFFFF;
   border: 3px solid transparent;
   border-radius: 4px;
-
   .title {
     color: white;
   }
+}
+
+.green:focus {
+  outline: 3px solid #0F1D40;
+  outline-offset: 2px;
 }
 
 .accordion-title {

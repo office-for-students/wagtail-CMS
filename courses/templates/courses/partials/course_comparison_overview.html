@@ -7,7 +7,7 @@
         <div>
             {% with stars="123" index=forloop.counter0 %}
                 {% for star in stars %}
-                    <li class="rating js-star-rating"
+                    <li class="rating js-star-rating keyboard-accessible"
                         id="course-{{ index }}-star{{ star }}"
                         value="{{ star }}"
                         tabindex="0"
@@ -17,7 +17,7 @@
                     </li>
                 {% endfor %}
             {% endwith %}
-            <img id="ratings_remove-{{ forloop.counter0 }}" class="course-detail__courses-container-exit-course"
+            <img id="ratings_remove-{{ forloop.counter0 }}" class="course-detail__courses-container-exit-course keyboard-accessible"
                  src="{% static 'images/icon-close.svg' %}"
                  alt="{% get_translation key='close' language=page.get_language %}"
                  tabindex="0"
