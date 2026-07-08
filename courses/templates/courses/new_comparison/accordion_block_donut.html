@@ -32,7 +32,9 @@
     </div>
 
     <div id="{{ identifier }}{{ index }}" data-index="{{ index }}"
-         class="comparison_row-donut-header sub_accordion_header">
+         class="comparison_row-donut-header sub_accordion_header"
+         tabindex="0"
+    >
         {% if page.get_language == "cy" %}
             <span class=" hidden" id="{{ identifier }}{{ index }}-btn-collapse">{% get_translation key="minimise" language=page.get_language %} {% get_translation key="data" language=page.get_language %} {{ title|lower }}</span>
             <span class="" id="{{ identifier }}{{ index }}-btn-expand">{% get_translation key="expand" language=page.get_language %} {% get_translation key="data" language=page.get_language %} {{ title|lower }}</span>

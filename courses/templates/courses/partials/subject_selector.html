@@ -12,7 +12,7 @@
                     <div class="subject cc-column-{{ forloop.counter0 }}">
                         <ol class="list">
                             {% if not items %}
-                                <li class="button selected">
+                                <li class="button selected" tabindex="0">
                                     {% get_translation key='this_course' language=page.get_language %}
                                 </li>
                             {% endif %}
