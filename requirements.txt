@@ -35,8 +35,6 @@ draftjs_exporter==5.2.0
 et_xmlfile==2.0.0
 filelock==3.29.5
 filetype==1.2.0
-gevent==26.5.0
-greenlet==3.5.3
 gunicorn==26.0.0
 identify==2.6.19
 idna==3.18
@@ -72,5 +70,4 @@ virtualenv==21.5.1
 wagtail==7.4.2
 whitenoise==6.12.0
 Willow==1.12.0
-zope.event==6.2
-zope.interface==8.5
+
