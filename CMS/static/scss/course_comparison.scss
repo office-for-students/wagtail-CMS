@@ -521,6 +521,9 @@ $grey-border: #E6E8EB;
       }
 
       .button {
+        appearance: none;
+        border: none;
+        font: inherit;
         display: flex;
         background-color: rgba(239, 204, 75, 0.5);
         margin: 6px 0 6px 0;
@@ -528,6 +531,9 @@ $grey-border: #E6E8EB;
         border-radius: 4px;
         flex: 1;
         cursor: pointer;
+        width: 100%;
+        align-self: stretch;
+        text-align: left;
 
         &.selected {
           background-color: #efcc4b;
@@ -1663,6 +1669,16 @@ $grey-border: #E6E8EB;
   color: black;
   cursor: pointer;
   display: none;
+}
+
+.keyboard-accessible:focus-visible {
+  outline: 3px solid #09205E;
+  outline-offset: 2px;
+}
+
+.keyboard-accessible-yellow:focus-visible {
+  outline: 3px solid #F2D452;
+  outline-offset: 2px;
 }
 
 .orange {
