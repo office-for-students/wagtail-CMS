@@ -645,6 +645,12 @@ class SubAccordionManager {
             subAccordions[i].addEventListener("click", function () {
                 that.toggleAccordion(title, index);
             })
+            subAccordions[i].addEventListener("keydown", function(event) {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    that.toggleAccordion(title, index);
+                }
+            })
         }
     }
 }
@@ -688,7 +694,6 @@ function setupView() {
         cardsRect.height,
         tabletop
     );
-
     scrollManager.add(scrollListener, "header");
 }
 
