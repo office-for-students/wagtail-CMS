@@ -1,7 +1,10 @@
 {% load static %}
 {% load i18n %}
 <div class="accordion-block">
-                <div id="{{ identifier }}{{ index }}" data-index="{{ index }}" class="comparison_row-header sub_accordion_header">
+                <div id="{{ identifier }}{{ index }}" data-index="{{ index }}"
+                     class="comparison_row-header sub_accordion_header"
+                     tabindex="0"
+                >
                     {{sub_accordion.title}}
                     <div class="ml-auto">
                         <div id="{{ identifier }}{{ index }}-expand" class="hidden">
