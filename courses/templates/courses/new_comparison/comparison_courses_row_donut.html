@@ -28,7 +28,7 @@
                                         {% endif %}
                                     </div>
                                 {% else %}
-                                    {% with value|safe|slice:2 as percent %}
+                                    {% with value|safe as percent %}
                                         {% include 'courses/new_course_details/partials/custom_donut.html' with percent=percent %}
                                     {% endwith %}
                                 {% endif %}
@@ -45,7 +45,7 @@
                                 {% endif %}
                             </div>
                         {% else %}
-                            {% with item|safe|slice:2 as percent %}
+                            {% with item|safe as percent %}
                                 {% include 'courses/new_course_details/partials/custom_donut.html' with percent=percent %}
                             {% endwith %}
                         {% endif %}
