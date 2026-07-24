@@ -13,8 +13,8 @@ PERCENTAGE_THOSE_ASKED = "percent_of_those_asked"
 
 satisfaction_list = [
     "question_28",
-    "nss_country_population",
-    "nss_country_response_rate",
+    "number_of_students",
+    "response_rate",
 ]
 
 primary_key = 0
