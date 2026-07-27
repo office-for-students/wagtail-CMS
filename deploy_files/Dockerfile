@@ -1,9 +1,12 @@
-FROM python:3.12
+FROM python:3.13
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 WORKDIR /code
 COPY requirements.txt /code/
+COPY requirements-deploy.txt /code/
 RUN pip install -r requirements.txt
+RUN pip install -r requirements-deploy.txt
+
 COPY . /code/
 RUN cp /code/docker-compose.yml.example /code/docker-compose.yml
 

@@ -1,8 +1,15 @@
 from wagtail.models import Site
 
-from coursefinder.models import CourseFinderResults, CourseFinderChooseCountry, \
-    CourseFinderModeOfStudy, CourseFinderChooseSubject, CourseFinderNarrowSearch, CourseFinderPostcode, \
-    CourseFinderSummary, CourseFinderUni
+from coursefinder.models import (
+    CourseFinderResults,
+    CourseFinderChooseCountry,
+    CourseFinderModeOfStudy,
+    CourseFinderChooseSubject,
+    CourseFinderNarrowSearch,
+    CourseFinderPostcode,
+    CourseFinderSummary,
+    CourseFinderUni
+)
 from home.models import HomePage
 from site_search.models import SearchLandingPage
 

@@ -405,6 +405,17 @@ function processWithTranslationTerms(saved_institutions, callback) {
                         checkbox.value = query;
                         checkbox.id = query
                         label.htmlFor = query
+                        label.addEventListener("keydown", function (e) {
+                            if (e.key === " " || e.key === "Enter") {
+                                e.preventDefault();
+
+                                checkbox.checked = !checkbox.checked;
+
+                                checkbox.dispatchEvent(new Event("change", {
+                                    bubbles: true
+                                }));
+                            }
+                        });
                         checkbox.addEventListener("change", comparisonHandler);
                         let removeButton = el.querySelector('.bookmark__course-remove');
                         removeButton.addEventListener('click', removeCourseHandler);

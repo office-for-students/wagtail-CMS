@@ -37,8 +37,8 @@ services:
       AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS: ""
       # Email Backend
       EMAIL_BACKEND: ""
-      MANAGERS: ""
-      ADMINS: ""
+      MANAGERS: "[]"
+      ADMINS: "[]"
       # Other
       FEEDBACK_API_HOST: "${FEEDBACK_API_HOST}"
       JSONFILES_STORAGE_CONTAINER: "${JSONFILES_STORAGE_CONTAINER}"
@@ -59,7 +59,7 @@ services:
       - db
 
   db:
-    image: postgres:9.6
+    image: postgres:16
     restart: always
     environment:
       POSTGRES_USER: docker

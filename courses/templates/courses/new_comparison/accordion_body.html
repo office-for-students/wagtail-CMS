@@ -32,7 +32,7 @@
                     {% if forloop.counter == 1 %}
                         {% include 'courses/new_comparison/comparison_courses_row_donut.html' with title=value.title values=value.values header_font="header_font" mt="mt-3" %}
                     {% else %}
-                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values mt="mt-2" %}
+                        {% include 'courses/partials/comparison_courses_row.html' with title=value.title values=value.values mt="mt-2" large_text=True %}
                     {% endif %}
                 </div>
             {% else %}

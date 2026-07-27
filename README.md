@@ -12,8 +12,11 @@
 
 This application is based on the Wagtail CMS.
 It utilises:
-- Wagtail CMS
-- Python/Django framework
+- Wagtail CMS (v7.3.2)
+- Python (v3.13) / Django framework (v5.2.12)
+- PostgreSQL
+- Azure Blob Storage (for media and JSON files)
+- Azure Communication Services (for email)
 - jQuery
 - SASS
 
@@ -29,360 +32,65 @@ $ cp docker-compose.yml.example docker-compose.yml
 
 ## Environment variables
 
-| Variable                    | Default              | Description                                       |
-|-----------------------------|----------------------|---------------------------------------------------|
-| DBHOST                      | host.docker.internal | DB host url/string                                |
-| DBPORT                      | 5432                 | DB connection port                                |
-| DBNAME                      | discoveruni          | DB name to use                                    |
-| DBUSER                      | <username>           | DB user                                           |
-| DBPASSWORD                  | <password>           | DB password                                       |
-| SEARCHAPIHOST               | <searchapihost>      | The url endpoint for the search api               |
-| DATASETAPIHOST              | <datasetapihost>     | The url endpoint for the dataset api              |
-| WIDGETAPIKEY                | <widgetaccesskey>    | The access key for the api for the widget         |
-| DATASETAPIKEY               | <datasetaccesskey>   | The access key for the api for the site           |
-| FEEDBACK_API_HOST           | <feedbackapihost>    | The url endpoint for the feedback api             |
-| AZURE_ACCOUNT_NAME          | <azureaccountname>   | The name of the account for image storage         |
-| AZURE_ACCOUNT_KEY           | <azureaccountkey>    | The access key to account for image storage       |
-| AZURE_ACCOUNT               | <azureaccount>       | The account for image storage                     |
-| JSONFILES_STORAGE_CONTAINER | <azurecontainer>     | The container URI for the json files              |
-| SENDGRID_API_KEY            | <sendgridapikey>     | The API key for the e-mail notifications          |
-| SENDGRID_FROM_EMAIL         | <sendgridfromemail>  | The e-mail address used for notifications         |
-| SORT_BY_SUBJECT_LIMIT       | 5000                 | Used to determine how to display subjects         |
-| LOCAL                       | False                | Tells the site to use external API or mocks       |
-| SITEMAP_STORAGE_BLOB        | <sitemap file name>  | Tells the app where the dynamic sitemap is stored |
-|                             |                      |                                                   |
+| Variable                              | Default              | Description                                                      |
+|---------------------------------------|----------------------|------------------------------------------------------------------|
+| DEBUG                                 | False                | Enable/disable debug mode                                        |
+| LOCAL                                 | False                | Tells the site to use external API or mocks/sqlite               |
+| ROOT_DOMAIN                           | http://localhost:3000| The root domain of the application                               |
+| ALLOWED_HOSTS                         | []                   | JSON list of allowed hosts                                       |
+| CSRF_TRUSTED_ORIGINS                  | []                   | JSON list of trusted origins for CSRF                            |
+| DBHOST                                | host.docker.internal | DB host url/string                                               |
+| DBPORT                                | 5432                 | DB connection port                                               |
+| DBNAME                                | discoveruni          | DB name to use                                                   |
+| DBUSER                                | <username>           | DB user                                                          |
+| DBPASSWORD                            | <password>           | DB password                                                      |
+| SEARCHAPIHOST                         | <searchapihost>      | The url endpoint for the search api                              |
+| DATASETAPIHOST                        | <datasetapihost>     | The url endpoint for the dataset api                             |
+| WIDGETAPIHOST                         | <widgetapihost>      | The url endpoint for the widget api                              |
+| V2_WIDGET_HOST                        | <v2widgethost>       | The url endpoint for the V2 widget host                          |
+| WIDGETAPIKEY                          | <widgetaccesskey>    | The access key for the api for the widget                        |
+| DATASETAPIKEY                         | <datasetaccesskey>   | The access key for the api for the site                          |
+| AZURECOSMOSDBURI                      | <cosmosdburi>        | The URI for Azure Cosmos DB                                      |
+| AZURECOSMOSDBKEY                      | <cosmosdbkey>        | The access key for Azure Cosmos DB                               |
+| AZURE_ACCOUNT_NAME                    | <azureaccountname>   | The name of the account for image storage                        |
+| AZURE_ACCOUNT_KEY                     | <azureaccountkey>    | The access key to account for image storage                      |
+| AZURE_ACCOUNT                         | <azureaccount>       | The account for image storage                                    |
+| AZURE_CONTAINER                       | <azurecontainer>     | The container name for image storage                             |
+| JSONFILES_STORAGE_CONTAINER           | <azurecontainer>     | The container URI for the json files                             |
+| SITEMAP_STORAGE_BLOB                  | <sitemap file name>  | Tells the app where the dynamic sitemap is stored                |
+| AZURE_EMAIL_SERVICE_CONNECTION_STRING | <connectionstring>   | Connection string for Azure Email Service                        |
+| AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS    | <emailaddress>       | The e-mail address used for notifications                        |
+| EMAIL_BACKEND                         | <emailbackend>       | Django email backend to use                                      |
+| SORT_BY_SUBJECT_LIMIT                 | 5000                 | Used to determine how to display subjects                        |
 
 # Getting Started
 
-## First time here?
-
-The docker image for this branch is created differently from the other branches (`python manage.py runserver 0.0.0.0` is now run inside the image, not as a command on the image in the `docker-compose.yml`). This means that the old containers and images for other branches need to be deleted so the new one can be built.
+## Create and set up virtual environment (python 3.13)
 
 ```
-$ docker ps --all
-CONTAINER ID     IMAGE               COMMAND                  CREATED        STATUS                  PORTS       NAMES
-<container_id>   wagtail-cms_web     "python manage.py ru…"   3 days ago     Exited (0) 3 days ago               wagtail-cms-web-1
-............     .....               "...................."   ..........     .............           27017/tcp   .................
-$ docker rmi -f <container_id>
-$ docker images
-REPOSITORY                            TAG          IMAGE ID       CREATED         SIZE
-wagtail-cms_web                       latest       <image_id>     11 days ago     1.07GB
-...............                       latest       ............   3 weeks ago     ......
-$ docker rm <image_id>
-...
-```
-
-This now means when you run `docker-compose up` docker will rebuild the image using the new commands in the `Dockerfile`, and then build a new container from that
-
-> *REMEMBER:* To run the commands above when switching back to the other branches on the project
-
-## Tests
-
-```
-$ docker container exec -it wagtail-cms-web-1 python manage.py test
-```
-
-> *IMPORTANT:* When fixing an issue write a test first to prove it's broken. Then, and only then, fix the problem
-
-## Configure
-
-### Secret Key
-
-```
-$ python3
->>> import secrets
->>> chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
->>> ''.join(secrets.choice(chars) for i in range(50))
-<secret_key>
->>> exit()
-$ vim docker-compose.yml
-...
-SECRET_KEY: "<secret_key>"
-...
-```
-
-### Defaults
-
-```
-$ cp docker-compose.yml.example docker-compose.yml
-$ vim docker-compose.yml
-...
-DBHOST:               "db"
-DBNAME:               "django"
-DBUSER:               "docker"
-DBPASSWORD:           "docker"
-...
-
-...
-SEARCHAPIHOST:        "..."
-...
-$ docker-compose up
-```
-
-> If docker fails to start up because the `SECRET_KEY`, re-create the secret key and try again. Sometime it fails because of the use of irregular or un-escapped characters.
-
-> If this is the first time working on the code base remember to populate [PostgreSQL](#database)
-
-> If you are going to be importing new data to the fixtures remember to set DATASETAPIHOST, DATASETAPIKEY, AZURECOSMOSDBURI and AZURECOSMOSDBKEY
-
-## Docker
-
-You need to have [Docker](https://docs.docker.com/install/) installed to be able to see changes in the code, run tests and update local data.
-
-```
-$ docker-compose up
-```
-
-> Make sure to run this command in a separate window so you have somewhere to run other commands from
-
-> This command will download all the required images (Python, PostgreSQL, CosmosDB) and start them for you all preconfigured
-
-# Database
-
-## Populating
-
-```
-$ docker container exec -it wagtail-cms-web-1 python manage.py populate_cms
-```
-
-This will run the command `content/management/commands/populate_cms.py`. This command loads the data found at `CMS/fixtures/postgres.json` into the database.
-
-You might ask why you can't use Django and to run `... python manage.py loaddata CMS/fixtures/postgres.json`. The foreign key constraints in Wagtail prevent this. When trying to run `loaddata` Django will fail in deleting (truncating) the old data. The `populate_cms` command gets round this by calling a custom flush command (`content/management/commands/flush_db.py`) that exposes the `--allow-cascade` flag on Django's own flush command. In additional it deletes a number of default posts and content types that are created when migrations are run and prevent the `postgres.json` file from being inserted into the database.
-
-### Updating Postgres Data *(CMS/fixtures/postgres.json)*
-
-```
-$ docker container exec -it wagtail-cms-web-1 python manage.py update_cms_fixture --db_host ... --db_name ... --db_user ... --db_password ... --db_port ...
-```
-
-> Use the creds for the remote PostgreSQL in the above statement
-
-Want to make sure the command above is not in your command history for people to find on your machine? Then do the following.
-
-```
-$ set +o history
-$ docker container exec -it wagtail-cms-web-1 python manage.py populate_cms ...
-$ set -o history
-```
-
-Already in your command history but want to delete it?
-
-```
-$ history | tail -n 5
-100 ...
-101 ...
-102 ...  # <- You want to delete this one
-103 ...
-104 ...
-$ history -d 103
-```
-
-### Deleting Data
-
-Stop docker before running the following command
-
-> You can stop docker by pressing `Ctrl+C` in the window in which it is running.
-
-```
-$ sudo rm -rf data/postgres
-$ docker-compose up
-```
-
-# MongoDB
-
-### Populating
-
-```
-$ docker container exec -it wagtail-cms-web-1 python manage.py populate_institutions
-$ docker container exec -it wagtail-cms-web-1 python manage.py populate_courses
-```
-
-> `populate_courses` will get the courses in `settings.TEST_COURSES` from CosmosDB and put them in MongoDB **(as well as populate the file found in `courses/fixtures/courses.json`)**
-
-### Updating local course data
-
-If the course data has changed remotely and you want to update it locally then do the following:
-
-```
-$ docker container exec -it wagtail-cms-web-1 python manage.py populate_courses --update
-...
-$ docker container exec -it wagtail-cms-web-1 python manage.py populate_courses
-...
-```
-
-> The first command goes to the CosmosDB *(as defined by `AZURECOSMOSDBURI` in `docker-compose.yml`)* and copies the courses specified in `TEST_COURSES` in `docker-comnpose.yml` to to `courses/fixtures/courses.json`. The second command gets the contents of `courses/fixtures/courses.json` and puts them in the local MongoDB instance.
-
-Don't forget to commit the changes to the course data to the repo
-
-```
-$ git add courses/fixtures/courses.json
-$ git commit -m '...'
-```
-
-### Adding More courses
-
-```
-$ vim docker-compose.yml
-...
-TEST_COURSES = 'U18-LAWLLB,AB35,...'
-...
-$ vim docker-compose.yml.example
-...
-TEST_COURSES = 'U18-LAWLLB,AB35,...'
-...
-$ docker container exec -it wagtail-cms-web-1 python manage.py populate_courses --update
-...
-$ docker container exec -it wagtail-cms-web-1 python manage.py populate_courses
-...
-$ git add docker-compose.yml.example
-$ git add courses/fixtures/courses.json
-$ git commit -m '...'
-...
-```
-
-### Updating local institutions data
-
-If the course data has changed remotely and you want to update it locally then do the following:
-
-```
-$ docker container exec -it wagtail-cms-web-1 python manage.py populate_institutions --update
-...
-$ docker container exec -it wagtail-cms-web-1 python manage.py populate_institutions
-...
-```
-
-Don't forget to commit the changes to the institutions data to the repo
-
-```
-$ git add institutions/fixtures/institutions.json
-$ git commit -m '...'
-```
-
-
-### Deleting Data
-
-Stop docker before running the following command
-
-> You can stop docker by pressing `Ctrl+C` in the window in which it is running.
-
-```
-$ sudo rm -rf data/mongodb
-$ docker-compose up
-```
-
-# URLs
-
-The following URLs work in development
-
-```
-$ wget http://localhost:8000/institution-details/<any_institution>/
-$ wget http://localhost:8000/admin/  # <- All wagtail pages
-$ wget http://localhost:8000/course-details/10007804/U18-LAWLLB/Full-time/
-$ wget http://localhost:8000/course-details/10000055/AB35/Full-time/
-$ wget http://localhost:8000/course-details/10001850/PBSFND-D_FT/Full-time/
-$ wget http://localhost:8000/course-details/10007165/U09FUECW/Full-time/
-$ wget http://localhost:8000/course-details/10007767/UMDAHFY/Full-time/
-```
-
-# Useful Commands
-
-## Docker
-
-### List images
-
-```
-$ docker images
-```
-
-From this list you can find the docker images you no longer need. Copy their `IMAGE ID`
-
-### Deleting Images
-
-```
-$ docker rm <IMAGE_ID>
-```
-
-### Listing Containers
-
-Container are based of images. This is what runs your code
-
-```
-$ docker ps --all
-```
-
-The `NAME`s you can see in the commands above. The `STATUS` tells you whether ac container is being used. If you no longer need a container copy the `CONTAINER ID`
-
-### Deleting Containers
-
-```
-$ docker rmi -f <CONTAINER_ID>
-```
-
-### Get into a Container
-
-```
-$ docker container exec -it wagtail-cms-web-1 bash
-$ docker container exec -it wagtail-cms_db_1 bash
-```
-
-### Using the Django Shell
-
-```
-$ docker container exec -it wagtail-cms-web-1 python manage.py shell
-```
-
-##### Adding new dependencies
-
-```
-$ docker container exec -it wagtail-cms-web-1 pip install ...
-$ docker container exec -it wagtail-cms-web-1 pip freeze > requirements.txt
-```
-
-# Running outside docker
-The below instructions are for running the database in a postgres container in docker, and running the web application
-in a virtual environment. This part of the readme assumes you have obtained a copy of the database as an .sql file.
-Instructions may differ if you are not running postgres in a docker container.
-
-## Connect to the postgres container
-```
-$ psql -U postgres -h 0.0.0.0
-```
-
-## Create the database and Azure role
-```
-# CREATE DATABASE ofs_wagtail;
-# CREATE ROLE azure_pg_admin;
-# ALTER USER azure_pg_admin WITH SUPERUSER;
-```
-
-## Populate the database with the .sql file
-```
-$ psql -U postgres -h 0.0.0.0 ofs_wagtail < {{ PATH_TO_DATABASE_BACKUP }}
-```
-
-## Modify DB Environent Variables
-```
-DBHOST="0.0.0.0"
-DBNAME="ofs_wagtail"
-DBUSER="postgres"
-DBPASSWORD="{{ YOUR_POSTGRES_PASSWORD }}"
-DBPORT="5432"
-```
-
-## Create and set up virtual environment (python 3.10)
-
-```
-$ python3.10 -m venv .venv
+$ python3.13 -m venv .venv
 $ source .venv/bin/activate
+$ python -m pip install --upgrade pip
 $ pip install -r requirements.txt
 ```
 
-## Run the server
+## Run Docker
+
 ```
-$ python manage.py runserver
+$ docker-compose up
 ```
 
-Any further required django commands can be run this way inside the virtual environment.
+## Import database
+
+Add a seed sql file to the root of the project and then run the following command:
+
+```
+cat <your-sql-file>.sql | docker exec -i wagtail-cms-db-1 psql -U docker -d django
+```
+
+## Open browser
+
+Open a browser and navigate to http://localhost:8000/
 
 # Other Stuff
 
@@ -398,17 +106,12 @@ The continuous integration and deployment pipeline for this project is implement
 
 The continuous integration pipeline for the project is defined in yml files in the root of the project, all starting with 'azure-pipelines'.
 
-There are 4 pipelines defined in the project.
+There are 3 pipelines defined in the project.
 
 #### CI test
 _Defined in 'azure-pipelines.yml'_
 
 This pipeline should run on every push to Github from feature, bug and refactor branches. All this pipeline does is run the tests to regression check the new code.
-
-#### Development build
-_Defined in 'dev-azure-pipelines.yml'_
-
-This pipeline should run on every push to Github on the develop branch. This pipeline runs the tests and, if they pass, builds a docker container and pushes it to the dev container registry.
 
 #### Pre prod build
 _Defined in 'pre-prod-azure-pipelines.yml'_
@@ -425,11 +128,7 @@ This pipeline should run on every push to Github on the master branch. This pipe
 
 The continuous deployment pipeline is defined through the Azure DevOps pipeline UI.
 
-There are 3 pipelines setup for the project.
-
-#### Development deploy
-
-The pipeline runs when the Development CI pipeline passes, it pulls the container generated by the CI build on to the WebApp server and starts the container.
+There are 2 pipelines setup for the project.
 
 #### Pre prod deploy
 
@@ -439,19 +138,32 @@ The pipeline runs when the a new container is pushed to the pre-prod container r
 
 The pipeline runs when the a new container is pushed to the prod container registry, it pulls the container on to the WebApp server and starts the container.
 
+## Deployment Details
+
+### Deployment Files
+
+The `deploy_files` folder contains files specifically used for deploying the application to production and pre-production environments.
+
+- `Dockerfile`: This Dockerfile is used by the Azure DevOps pipelines to build the production-ready container image. It differs from the root `Dockerfile` by including production-specific configurations and dependencies.
+- `docker-entrypoint.sh`: This script is the entry point for the deployed container. It handles running database migrations and starting the Gunicorn server with gevent workers.
+- `docker-entrypoint-readonly.sh`: A variant of the entry point script for read-only environments.
+
+### Requirements Files
+
+The application uses two requirements files for Python packages:
+
+1. `requirements.txt`: Contains the core dependencies required to run the Wagtail CMS application in all environments (development, test, and production).
+2. `requirements-deploy.txt`: Contains additional dependencies required specifically for the deployed production environment, such as `gevent` for the Gunicorn worker class.
+
+Both of these files are needed to build the production container image.
+
+### Deployed Environment Requirements
+
+In the deployed environment, the `deploy_files/docker-entrypoint.sh` file is critical as it ensures the database is migrated and the application server (Gunicorn) is correctly configured and started.
+
 ### Releases
 
 Releases of the code are following the major/minor/patch pattern for release numbering.
-
-#### Creating a release
-
-New releases can be generated manually or by using the 'release' command in the bin directory.
-
-##### Manual release process
-
-- update the version number with in the version.txt file
-- create a new branch named in the pattern 'release/v`version number`' (e.g. release/v0.0.1)
-- push the branch to Github
 
 ##### Automated release process
 

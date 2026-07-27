@@ -1,15 +1,14 @@
 import logging
 
+from django.test import Client
+from django.test import TestCase
+from django.test import tag
+
 from CMS.enums import enums
 from CMS.test.factories import PageFactory
 from CMS.test.utils import UniSimpleTestCase
 from core.utils import get_page_for_language
 from coursefinder.models import CourseFinderChooseCountry
-from django.conf import settings
-from django.core import management
-from django.test import Client
-from django.test import TestCase
-from django.test import tag
 from site_search.models import SearchLandingPage
 
 logger = logging.getLogger(__name__)

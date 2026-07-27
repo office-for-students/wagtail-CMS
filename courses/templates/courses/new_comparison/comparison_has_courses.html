@@ -1,7 +1,6 @@
 {% load static %}
 {% load i18n %}
 {% load static sass_tags wagtailcore_tags discover_uni_tags %}
-{% block title %}Compare university courses{% endblock %}
 <div class="comparison__body pt-1">
 
     <h1 class="comparison__heading">
@@ -73,7 +72,7 @@
                         <div role="button" aria-label="{{ action.affirmative }}"
                              class="accordion-header">
                             <div class="accordion-title">
-                                <div class="accordion-header column-first show_more" tabindex="0">
+                                <div class="accordion-header column-first show_more keyboard-accessible" tabindex="0">
                                     <span class="expand">{{ action.affirmative }}</span>
                                     <span class="collapse">{{ action.negative }}</span>
                                     <i class="fas fa-chevron-down expand chevron" alt="expand"

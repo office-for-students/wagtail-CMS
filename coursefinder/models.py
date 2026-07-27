@@ -252,8 +252,13 @@ class CourseSearch(BaseSearch):
         self.language = language
 
     def execute(self):
-        response = request_handler.query_course_and_institution(self.subject, self.institution, self.count, self.offset,
-                                                                self.language)
+        response = request_handler.query_course_and_institution(
+            self.subject,
+            self.institution,
+            self.count,
+            self.offset,
+            self.language
+        )
         error = None
 
         if response.ok:
@@ -270,8 +275,20 @@ class CourseSearch(BaseSearch):
 
 class CourseFinderSearch(BaseSearch):
 
-    def __init__(self, subject, institution, countries, postcode, filters, sortBySubject, sortBySubjectLimit, course,
-                 page, count, language=enums.languages.ENGLISH):
+    def __init__(
+            self,
+            subject,
+            institution,
+            countries,
+            postcode,
+            filters,
+            sortBySubject,
+            sortBySubjectLimit,
+            course,
+            page,
+            count,
+            language=enums.languages.ENGLISH
+    ):
         super().__init__(page, count)
         self.subject = subject
         self.institution = institution
@@ -284,17 +301,19 @@ class CourseFinderSearch(BaseSearch):
         self.language = language
 
     def execute(self):
-        response = request_handler.course_finder_query(self.subject,
-                                                       self.institution,
-                                                       self.countries,
-                                                       self.postcode,
-                                                       self.filters,
-                                                       self.sortBySubject,
-                                                       self.sortBySubjectLimit,
-                                                       self.course,
-                                                       self.count,
-                                                       self.offset,
-                                                       self.language)
+        response = request_handler.course_finder_query(
+            self.subject,
+            self.institution,
+            self.countries,
+            self.postcode,
+            self.filters,
+            self.sortBySubject,
+            self.sortBySubjectLimit,
+            self.course,
+            self.count,
+            self.offset,
+            self.language
+        )
         error = None
 
         if response.ok:

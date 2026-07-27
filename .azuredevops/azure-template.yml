@@ -1,0 +1,77 @@
+parameters:
+- name: dockerId
+  type: string
+- name: pythonVersion
+  type: string
+  default: '3.12'
+
+steps:
+- checkout: self
+  persistCredentials: true
+
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: ${{ parameters.pythonVersion }}
+
+- task: PythonScript@0
+  displayName: 'Export project path'
+  inputs:
+    scriptSource: 'inline'
+    script: |
+      """Search all subdirectories for `CMS` module."""
+      from glob import iglob
+      from os import path
+      # Python >= 3.5
+      cms = next(iglob(path.join('**', 'CMS'), recursive=True), None)
+      if not cms:
+          raise SystemExit('Could not find the Django project')
+      project_location = path.dirname(path.abspath(cms))
+      print('Found Django project in', project_location)
+      print('##vso[task.setvariable variable=projectRoot]{}'.format(project_location))
+
+- script: |
+    python -m pip install --upgrade pip setuptools wheel django
+    pip install -r $(projectRoot)/requirements.txt
+    pip install unittest-xml-reporting
+  displayName: 'Install prerequisites'
+
+- script: |
+    pushd '$(projectRoot)'
+    python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --tag=azure --no-input
+  condition: succeededOrFailed()
+  displayName: 'Run tests'
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testResultsFiles: "**/TEST-*.xml"
+    testRunTitle: 'Python $(PYTHON_VERSION)'
+
+- script: |
+    pushd '$(projectRoot)'
+
+    CURRENT_VERSION=$(cat version.txt)
+    IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+    NEW_VERSION="$MAJOR.$MINOR.$((PATCH + 1))"
+    echo "$NEW_VERSION" > version.txt
+    echo "Bumped version: $CURRENT_VERSION -> $NEW_VERSION"
+    echo "##vso[task.setvariable variable=appVersion]$NEW_VERSION"
+
+    git config user.name "azure-pipelines"
+    git config user.email "azure-pipelines@dev.azure.com"
+    git add version.txt
+    git commit -m "Bump version to $NEW_VERSION [skip ci]"
+    git tag -a "v$NEW_VERSION" -m "Release v$NEW_VERSION"
+    git push origin HEAD:$(Build.SourceBranchName)
+    git push origin "v$NEW_VERSION"
+  displayName: 'Bump version.txt and tag'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+- script: |
+    pushd '$(projectRoot)'
+    docker build -f ./deploy_files/Dockerfile -t ${{ parameters.dockerId }}.azurecr.io/$(imageName) .
+    docker login -u ${{ parameters.dockerId }} -p $pswd ${{ parameters.dockerId }}.azurecr.io
+    docker push ${{ parameters.dockerId }}.azurecr.io/$(imageName)
+  env:
+    pswd: $(dockerPassword)
+  displayName: 'Build and push Docker image'

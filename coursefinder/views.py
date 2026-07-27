@@ -1,4 +1,5 @@
 import os
+from urllib.parse import urlencode
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
@@ -97,7 +98,6 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
         institution_query = request.GET.get("institution_query")
         institution_array = [institution_query]
 
-
     postcode = query_params.get('postcode') if 'postcode' in query_params else None
     distance_query = query_params.get('distance') if 'distance' in query_params else None
     postcode_query = (postcode + ',' + distance_query) if postcode and distance_query else {}
@@ -163,6 +163,23 @@ def course_finder_results(request, language=enums.languages.ENGLISH):
             'select_all_institutions': translations.term_for_key('select_all_institutions', language)
         }
     })
+
+    return render(request, 'coursefinder/course_finder_results.html', context)
+
+
+def course_finder_results_new(request, language=enums.languages.ENGLISH):
+    page = get_page_for_language(language, CourseFinderResults.objects.all())
+    path = request.path.replace("/en/", "/")
+    if language == enums.languages.ENGLISH:
+        translated_url = '/cy' + path if language == enums.languages.ENGLISH else path
+    else:
+        translated_url = path.replace('/cy/', '/')
+    context = {
+        'page': page,
+        'lang': language,
+        'translated_url': translated_url,
+        'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
+    }
 
     return render(request, 'coursefinder/course_finder_results.html', context)
 

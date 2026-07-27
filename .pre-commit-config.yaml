@@ -1,0 +1,14 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 25.1.0
+    hooks:
+      - id: black
+
+  - repo: local
+    hooks:
+      - id: django-tests
+        name: Django tests
+        entry: python manage.py test
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
