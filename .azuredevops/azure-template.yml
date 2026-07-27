@@ -65,7 +65,7 @@ steps:
     git push origin HEAD:$(Build.SourceBranchName)
     git push origin "v$NEW_VERSION"
   displayName: 'Bump version.txt and tag'
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - script: |
     pushd '$(projectRoot)'
