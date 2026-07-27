@@ -6,6 +6,9 @@ parameters:
   default: '3.12'
 
 steps:
+- checkout: self
+  persistCredentials: true
+
 - task: UsePythonVersion@0
   inputs:
     versionSpec: ${{ parameters.pythonVersion }}
@@ -43,6 +46,26 @@ steps:
   inputs:
     testResultsFiles: "**/TEST-*.xml"
     testRunTitle: 'Python $(PYTHON_VERSION)'
+
+- script: |
+    pushd '$(projectRoot)'
+
+    CURRENT_VERSION=$(cat version.txt)
+    IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+    NEW_VERSION="$MAJOR.$MINOR.$((PATCH + 1))"
+    echo "$NEW_VERSION" > version.txt
+    echo "Bumped version: $CURRENT_VERSION -> $NEW_VERSION"
+    echo "##vso[task.setvariable variable=appVersion]$NEW_VERSION"
+
+    git config user.name "azure-pipelines"
+    git config user.email "azure-pipelines@dev.azure.com"
+    git add version.txt
+    git commit -m "Bump version to $NEW_VERSION [skip ci]"
+    git tag -a "v$NEW_VERSION" -m "Release v$NEW_VERSION"
+    git push origin HEAD:$(Build.SourceBranchName)
+    git push origin "v$NEW_VERSION"
+  displayName: 'Bump version.txt and tag'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
 
 - script: |
     pushd '$(projectRoot)'
