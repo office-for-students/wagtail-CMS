@@ -40,7 +40,7 @@
         ul {
             @include mobile-body-font-mixin();
 
-            color: $gradient-light-green;
+            color: $black;
 
             li {
                 margin-top: 0px;
@@ -87,7 +87,7 @@
             ul {
                 @include desktop-body-font-mixin();
 
-                color: $gradient-light-green;
+                color: $black;
             }
         }
     }
