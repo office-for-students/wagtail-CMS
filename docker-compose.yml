@@ -9,9 +9,6 @@ services:
       DBPORT:                       "5432"
       # Search
       SEARCHAPIHOST:                "${SEARCHAPIHOST}"
-      # Widget
-      WIDGETAPIHOST:                "${WIDGETAPIHOST}"
-      WIDGETAPIKEY:                 "${WIDGETAPIKEY}"
       # CosmosDB (via requests library)
       # (used by the application to get courses and institutions)
       # (these can be found on the App Service under "Configuration")
