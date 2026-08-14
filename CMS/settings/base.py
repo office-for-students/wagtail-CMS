@@ -30,7 +30,7 @@ try:
 except FileNotFoundError:
     APPLICATION_VERSION = '0.0.0'  # default fallback
 
-LOCAL = config('LOCAL', default="True") == "True"
+LOCAL = config('LOCAL', default=False, cast=bool)
 READ_ONLY = config('READ_ONLY', False)
 
 ROOT_DOMAIN = config('ROOT_DOMAIN', 'http://localhost:3000')
@@ -176,11 +176,12 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('DBNAME', default="discoveruni"),
-            'HOST': config('DBHOST', default='0.0.0.0'),
-            'USER': config('DBUSER', default="postgres"),
-            'PORT': config('DBPORT', default='5432'),
-            'PASSWORD': config('DBPASSWORD', default="postgres"),
+            'NAME': config('DBNAME', "discoveruni"),
+            'HOST': config('DBHOST', 'db'),
+            'USER': config('DBUSER', "discoveruni"),
+            'PORT': config('DBPORT', '5432'),
+            'PASSWORD': config('DBPASSWORD', ""),
+            'SSL': True
         }
     }
 
