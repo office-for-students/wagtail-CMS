@@ -17,7 +17,7 @@ from decouple import config
 
 ALLOWED_HOSTS = json.loads(config('ALLOWED_HOSTS', default="[]"))
 CSRF_TRUSTED_ORIGINS = json.loads(config('CSRF_TRUSTED_ORIGINS', default="[]"))
-
+SEARCH_V2_API= config('SEARCH_V2_API')
 # from decouple import config
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
