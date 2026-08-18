@@ -1,6 +1,7 @@
 import os
 from urllib.parse import urlencode
 
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -179,6 +180,7 @@ def course_finder_results_new(request, language=enums.languages.ENGLISH):
         'lang': language,
         'translated_url': translated_url,
         'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
+        'search_api_url': settings.SEARCH_V2_API,
     }
 
     return render(request, 'coursefinder/course_finder_results.html', context)
