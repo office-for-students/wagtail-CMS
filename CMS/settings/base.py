@@ -9,179 +9,175 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
+
 import json
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
 from decouple import config
 
-ALLOWED_HOSTS = json.loads(config('ALLOWED_HOSTS', default="[]"))
-CSRF_TRUSTED_ORIGINS = json.loads(config('CSRF_TRUSTED_ORIGINS', default="[]"))
-SEARCH_V2_API= config('SEARCH_V2_API')
+ALLOWED_HOSTS = json.loads(config("ALLOWED_HOSTS", default="[]"))
+CSRF_TRUSTED_ORIGINS = json.loads(config("CSRF_TRUSTED_ORIGINS", default="[]"))
+SEARCH_V2_API = config("SEARCH_V2_API", default=None)
 # from decouple import config
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-VERSION_FILE = os.path.join(BASE_DIR, 'version.txt')
+VERSION_FILE = os.path.join(BASE_DIR, "version.txt")
 
 try:
     with open(VERSION_FILE) as f:
         APPLICATION_VERSION = f.read().strip()
 except FileNotFoundError:
-    APPLICATION_VERSION = '0.0.0'  # default fallback
+    APPLICATION_VERSION = "0.0.0"  # default fallback
 
-LOCAL = config('LOCAL', default=False, cast=bool)
-READ_ONLY = config('READ_ONLY', False)
+LOCAL = config("LOCAL", default=False, cast=bool)
+READ_ONLY = config("READ_ONLY", False)
 
-ROOT_DOMAIN = config('ROOT_DOMAIN', 'http://localhost:3000')
-DEBUG = config('DEBUG', False, cast=bool)
+ROOT_DOMAIN = config("ROOT_DOMAIN", "http://localhost:3000")
+DEBUG = config("DEBUG", False, cast=bool)
 # Application definition
 
 if DEBUG:
     LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'handlers': {
-            'console': {
-                'class': 'logging.StreamHandler',
+        "version": 1,
+        "disable_existing_loggers": False,
+        "handlers": {
+            "console": {
+                "class": "logging.StreamHandler",
             },
         },
-        'root': {
-            'handlers': ['console'],
-            'level': 'DEBUG',  # Change to DEBUG, INFO, WARNING, ERROR
+        "root": {
+            "handlers": ["console"],
+            "level": "DEBUG",  # Change to DEBUG, INFO, WARNING, ERROR
         },
     }
     INTERNAL_IPS = [
-        '127.0.0.1',
+        "127.0.0.1",
     ]
 
 # Application definition
 
 INSTALLED_APPS = [
     # Django
-    'django.contrib.sitemaps',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.humanize',
-    'django.contrib.postgres',
-    'wagtail.contrib.search_promotions',
-
+    "django.contrib.sitemaps",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django.contrib.humanize",
+    "django.contrib.postgres",
+    "wagtail.contrib.search_promotions",
     # Wagtail
-    'wagtail.contrib.forms',
-    'wagtail.contrib.redirects',
-    'wagtail.embeds',
-    'wagtail.sites',
-    'wagtail.users',
-    'wagtail.snippets',
-    'wagtail.documents',
-    'wagtail.images',
-    'wagtail.search',
-    'wagtail.admin',
-    'wagtail',
-
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail",
     # Django Add-ons
-    'axes',
-    'corsheaders',
-    'debug_toolbar',
-    'modelcluster',
-    'taggit',
-    'sass_processor',
-    'storages',
-
+    "axes",
+    "corsheaders",
+    "debug_toolbar",
+    "modelcluster",
+    "taggit",
+    "sass_processor",
+    "storages",
     # Custom Apps
-    'core.apps.CoreConfig',
-    'content.apps.ContentConfig',
-    'coursefinder.apps.CoursefinderConfig',
-    'courses.apps.CoursesConfig',
-    'errors.apps.ErrorsConfig',
-    'home.apps.HomeConfig',
-    'institutions.apps.InstitutionsConfig',
-    'search.apps.SearchConfig',
-    'site_search.apps.SiteSearchConfig',
-    'widget.apps.WidgetConfig',
-
-    'cookie',
-    'v2_widget',
-    'api'
+    "core.apps.CoreConfig",
+    "content.apps.ContentConfig",
+    "coursefinder.apps.CoursefinderConfig",
+    "courses.apps.CoursesConfig",
+    "errors.apps.ErrorsConfig",
+    "home.apps.HomeConfig",
+    "institutions.apps.InstitutionsConfig",
+    "search.apps.SearchConfig",
+    "site_search.apps.SiteSearchConfig",
+    "widget.apps.WidgetConfig",
+    "cookie",
+    "v2_widget",
+    "api",
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
     # 'django.middleware.common.BrokenLinkEmailsMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     # AxesMiddleware should be the last middleware in the MIDDLEWARE list.
     # It only formats user lockout messages and renders Axes lockout responses
     # on failed user authentication attempts from login views.
     # If you do not want Axes to override the authentication response
     # you can skip installing the middleware and use your own views.
-    'axes.middleware.AxesMiddleware',
+    "axes.middleware.AxesMiddleware",
 ]
 
 AUTHENTICATION_BACKENDS = [
     # AxesBackend should be the first backend in the AUTHENTICATION_BACKENDS list.
-    'axes.backends.AxesBackend',
-
+    "axes.backends.AxesBackend",
     # Django ModelBackend is the default authentication backend.
-    'django.contrib.auth.backends.ModelBackend',
+    "django.contrib.auth.backends.ModelBackend",
 ]
 
-ROOT_URLCONF = 'CMS.urls'
+ROOT_URLCONF = "CMS.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(PROJECT_DIR, 'templates'),
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [
+            os.path.join(PROJECT_DIR, "templates"),
         ],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'CMS.context_processors.nav_menu_render'
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+                "CMS.context_processors.nav_menu_render",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'CMS.wsgi.application'
+WSGI_APPLICATION = "CMS.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 if LOCAL:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
         }
     }
 else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('DBNAME', "discoveruni"),
-            'HOST': config('DBHOST', 'db'),
-            'USER': config('DBUSER', "discoveruni"),
-            'PORT': config('DBPORT', '5432'),
-            'PASSWORD': config('DBPASSWORD', ""),
-            'SSL': True
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": config("DBNAME", "discoveruni"),
+            "HOST": config("DBHOST", "db"),
+            "USER": config("DBUSER", "discoveruni"),
+            "PORT": config("DBPORT", "5432"),
+            "PASSWORD": config("DBPASSWORD", ""),
+            "SSL": True,
         }
     }
 
@@ -190,25 +186,25 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -221,58 +217,58 @@ USE_TZ = True
 # See https://docs.djangoproject.com/en/2.1/ref/contrib/staticfiles/#manifeststaticfilesstorage
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = "/static/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-SASS_PROCESSOR_ROOT = os.path.join(PROJECT_DIR, 'static/css')
+SASS_PROCESSOR_ROOT = os.path.join(PROJECT_DIR, "static/css")
 
-SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.scss$'
+SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r"^.+\.scss$"
 
 STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'sass_processor.finders.CssFinder',
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "sass_processor.finders.CssFinder",
 ]
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, 'static'),
+    os.path.join(PROJECT_DIR, "static"),
 ]
 
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "CMS"
-WAGTAILADMIN_BASE_URL = config('WAGTAILADMIN_BASE_URL', default='')
+WAGTAILADMIN_BASE_URL = config("WAGTAILADMIN_BASE_URL", default="")
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = config('ROOT_DOMAIN', 'http://mydomain.com')
+BASE_URL = config("ROOT_DOMAIN", "http://mydomain.com")
 
 # Search API settings
 
-SORT_BY_SUBJECT_LIMIT = config('SORT_BY_SUBJECT_LIMIT', default=5000)
-SEARCHAPIHOST = config('SEARCHAPIHOST', "")
-DATASETAPIHOST = config('DATASETAPIHOST', "")
-DATASETAPIKEY = config('DATASETAPIKEY', "")
-AZURECOSMOSDBURI = config('AZURECOSMOSDBURI', "")
-AZURECOSMOSDBKEY = config('AZURECOSMOSDBKEY', "")
-TEST_COURSES = config('TEST_COURSES', "")
-WIDGETAPIKEY = config('WIDGETAPIKEY', "")
-WIDGETAPIHOST = config('WIDGETAPIHOST', "")
-V2_WIDGET_HOST = config('V2_WIDGET_HOST', "")
-JSONFILES_STORAGE_CONTAINER = config('JSONFILES_STORAGE_CONTAINER', "")
-SITEMAP_STORAGE_BLOB = config('SITEMAP_STORAGE_BLOB', "")
-STORAGEKEY = config('STORAGEKEY', "")
-STORAGE_ACCOUNT_NAME = config('STORAGE_ACCOUNT_NAME', "")
-AZURE_ACCOUNT_NAME = config('AZURE_ACCOUNT_NAME', "")  # eg. 'campaignstorage'
-AZURE_ACCOUNT_KEY = config('AZURE_ACCOUNT_KEY', "")  # eg. '<secret key>'
-AZURE_CONTAINER = config('AZURE_CONTAINER', "")  # eg. 'campaign-resource-centre'
-DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+SORT_BY_SUBJECT_LIMIT = config("SORT_BY_SUBJECT_LIMIT", default=5000)
+SEARCHAPIHOST = config("SEARCHAPIHOST", "")
+DATASETAPIHOST = config("DATASETAPIHOST", "")
+DATASETAPIKEY = config("DATASETAPIKEY", "")
+AZURECOSMOSDBURI = config("AZURECOSMOSDBURI", "")
+AZURECOSMOSDBKEY = config("AZURECOSMOSDBKEY", "")
+TEST_COURSES = config("TEST_COURSES", "")
+WIDGETAPIKEY = config("WIDGETAPIKEY", "")
+WIDGETAPIHOST = config("WIDGETAPIHOST", "")
+V2_WIDGET_HOST = config("V2_WIDGET_HOST", "")
+JSONFILES_STORAGE_CONTAINER = config("JSONFILES_STORAGE_CONTAINER", "")
+SITEMAP_STORAGE_BLOB = config("SITEMAP_STORAGE_BLOB", "")
+STORAGEKEY = config("STORAGEKEY", "")
+STORAGE_ACCOUNT_NAME = config("STORAGE_ACCOUNT_NAME", "")
+AZURE_ACCOUNT_NAME = config("AZURE_ACCOUNT_NAME", "")  # eg. 'campaignstorage'
+AZURE_ACCOUNT_KEY = config("AZURE_ACCOUNT_KEY", "")  # eg. '<secret key>'
+AZURE_CONTAINER = config("AZURE_CONTAINER", "")  # eg. 'campaign-resource-centre'
+DEFAULT_FILE_STORAGE = "storages.backends.azure_storage.AzureStorage"
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -280,19 +276,19 @@ CORS_ORIGIN_ALLOW_ALL = True
 #     'ocp-apim-subscription-key',
 # ]
 
-X_FRAME_OPTIONS = 'DENY'
+X_FRAME_OPTIONS = "DENY"
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
     },
-    'axes_cache': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-    }
+    "axes_cache": {
+        "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+    },
 }
 
 # Django Axes settings
-AXES_CACHE = 'axes_cache'
+AXES_CACHE = "axes_cache"
 AXES_LOGIN_FAILURE_LIMIT = 5
 AXES_LOCK_OUT_AT_FAILURE = True
 AXES_COOLOFF_TIME = 1  # Locks user out for 1 hour
@@ -305,45 +301,51 @@ CLAMAV_ACTIVE = True
 
 WAGTAILEMBEDS_FINDERS = [
     {
-        'class': 'wagtail.embeds.finders.oembed',
-        'providers': [
+        "class": "wagtail.embeds.finders.oembed",
+        "providers": [
             {
                 "endpoint": "https://www.youtube.com/oembed",
                 "urls": [
-                    r'^https?://(?:[-\w]+\.)?youtube\.com/watch.+$',
-                    r'^https?://(?:[-\w]+\.)?youtube\.com/v/.+$',
-                    r'^https?://youtu\.be/.+$',
-                    r'^https?://(?:[-\w]+\.)?youtube\.com/user/.+$',
-                    r'^https?://(?:[-\w]+\.)?youtube\.com/[^#?/]+#[^#?/]+/.+$',
-                    r'^https?://m\.youtube\.com/index.+$',
-                    r'^https?://(?:[-\w]+\.)?youtube\.com/profile.+$',
-                    r'^https?://(?:[-\w]+\.)?youtube\.com/view_play_list.+$',
-                    r'^https?://(?:[-\w]+\.)?youtube\.com/playlist.+$',
+                    r"^https?://(?:[-\w]+\.)?youtube\.com/watch.+$",
+                    r"^https?://(?:[-\w]+\.)?youtube\.com/v/.+$",
+                    r"^https?://youtu\.be/.+$",
+                    r"^https?://(?:[-\w]+\.)?youtube\.com/user/.+$",
+                    r"^https?://(?:[-\w]+\.)?youtube\.com/[^#?/]+#[^#?/]+/.+$",
+                    r"^https?://m\.youtube\.com/index.+$",
+                    r"^https?://(?:[-\w]+\.)?youtube\.com/profile.+$",
+                    r"^https?://(?:[-\w]+\.)?youtube\.com/view_play_list.+$",
+                    r"^https?://(?:[-\w]+\.)?youtube\.com/playlist.+$",
                 ],
             }
         ],
-        'options': {'scheme': 'https'}
+        "options": {"scheme": "https"},
     },
     {
-        'class': 'wagtail.embeds.finders.oembed',
-    }
+        "class": "wagtail.embeds.finders.oembed",
+    },
 ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Email message configurations
 
-AZURE_EMAIL_SERVICE_CONNECTION_STRING = config('AZURE_EMAIL_SERVICE_CONNECTION_STRING', default="")
-AZURE_EMAIL_SERVICE_ENVIRONMENT = config('AZURE_EMAIL_SERVICE_ENVIRONMENT', default="")
-AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS = config('AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS', default="")
+AZURE_EMAIL_SERVICE_CONNECTION_STRING = config(
+    "AZURE_EMAIL_SERVICE_CONNECTION_STRING", default=""
+)
+AZURE_EMAIL_SERVICE_ENVIRONMENT = config("AZURE_EMAIL_SERVICE_ENVIRONMENT", default="")
+AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS = config(
+    "AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS", default=""
+)
 # Also ensure your email backend is configured correctly to send mail
-EMAIL_BACKEND = config("EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend")
+EMAIL_BACKEND = config(
+    "EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend"
+)
 
-MANAGERS = json.loads(config('MANAGERS', default='[]'))
-ADMINS = json.loads(config('ADMINS', default='[]'))
+MANAGERS = json.loads(config("MANAGERS", default="[]"))
+ADMINS = json.loads(config("ADMINS", default="[]"))
 
 DEFAULT_FROM_EMAIL = AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS
 SERVER_EMAIL = AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS
