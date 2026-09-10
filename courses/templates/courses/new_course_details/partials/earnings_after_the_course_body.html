@@ -308,7 +308,7 @@
                         {% if salary_index == 0 %}
                             {% get_salary_from_index objs=course_details.go_salaries_inst index=salary_index as wee %}
                             {% if wee.aggregation_year == None %}
-                                    {% replace_graduate_intro "2021-22" as year %}
+                                    {% replace_graduate_intro "2023-24" as year %}
                             {% else %}
                                     {% replace_graduate_intro wee.aggregation_year as year %}
                             {% endif %}
