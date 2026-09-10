@@ -32,36 +32,37 @@ $ cp docker-compose.yml.example docker-compose.yml
 
 ## Environment variables
 
-| Variable                              | Default              | Description                                                      |
-|---------------------------------------|----------------------|------------------------------------------------------------------|
-| DEBUG                                 | False                | Enable/disable debug mode                                        |
-| LOCAL                                 | False                | Tells the site to use external API or mocks/sqlite               |
-| ROOT_DOMAIN                           | http://localhost:3000| The root domain of the application                               |
-| ALLOWED_HOSTS                         | []                   | JSON list of allowed hosts                                       |
-| CSRF_TRUSTED_ORIGINS                  | []                   | JSON list of trusted origins for CSRF                            |
-| DBHOST                                | host.docker.internal | DB host url/string                                               |
-| DBPORT                                | 5432                 | DB connection port                                               |
-| DBNAME                                | discoveruni          | DB name to use                                                   |
-| DBUSER                                | <username>           | DB user                                                          |
-| DBPASSWORD                            | <password>           | DB password                                                      |
-| SEARCHAPIHOST                         | <searchapihost>      | The url endpoint for the search api                              |
-| DATASETAPIHOST                        | <datasetapihost>     | The url endpoint for the dataset api                             |
-| WIDGETAPIHOST                         | <widgetapihost>      | The url endpoint for the widget api                              |
-| V2_WIDGET_HOST                        | <v2widgethost>       | The url endpoint for the V2 widget host                          |
-| WIDGETAPIKEY                          | <widgetaccesskey>    | The access key for the api for the widget                        |
-| DATASETAPIKEY                         | <datasetaccesskey>   | The access key for the api for the site                          |
-| AZURECOSMOSDBURI                      | <cosmosdburi>        | The URI for Azure Cosmos DB                                      |
-| AZURECOSMOSDBKEY                      | <cosmosdbkey>        | The access key for Azure Cosmos DB                               |
-| AZURE_ACCOUNT_NAME                    | <azureaccountname>   | The name of the account for image storage                        |
-| AZURE_ACCOUNT_KEY                     | <azureaccountkey>    | The access key to account for image storage                      |
-| AZURE_ACCOUNT                         | <azureaccount>       | The account for image storage                                    |
-| AZURE_CONTAINER                       | <azurecontainer>     | The container name for image storage                             |
-| JSONFILES_STORAGE_CONTAINER           | <azurecontainer>     | The container URI for the json files                             |
-| SITEMAP_STORAGE_BLOB                  | <sitemap file name>  | Tells the app where the dynamic sitemap is stored                |
-| AZURE_EMAIL_SERVICE_CONNECTION_STRING | <connectionstring>   | Connection string for Azure Email Service                        |
-| AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS    | <emailaddress>       | The e-mail address used for notifications                        |
-| EMAIL_BACKEND                         | <emailbackend>       | Django email backend to use                                      |
-| SORT_BY_SUBJECT_LIMIT                 | 5000                 | Used to determine how to display subjects                        |
+| Variable                              | Default               | Description                                        |
+|---------------------------------------|-----------------------|----------------------------------------------------|
+| DEBUG                                 | False                 | Enable/disable debug mode                          |
+| LOCAL                                 | False                 | Tells the site to use external API or mocks/sqlite |
+| ROOT_DOMAIN                           | http://localhost:3000 | The root domain of the application                 |
+| ALLOWED_HOSTS                         | []                    | JSON list of allowed hosts                         |
+| CSRF_TRUSTED_ORIGINS                  | []                    | JSON list of trusted origins for CSRF              |
+| DBHOST                                | host.docker.internal  | DB host url/string                                 |
+| DBPORT                                | 5432                  | DB connection port                                 |
+| DBNAME                                | discoveruni           | DB name to use                                     |
+| DBUSER                                | <username>            | DB user                                            |
+| DBPASSWORD                            | <password>            | DB password                                        |
+| SEARCHAPIHOST                         | <searchapihost>       | The url endpoint for the search api                |
+| SEARCH_V2_API                         | <searchv2api>         | The url endpoint for the V2 search api             |
+| DATASETAPIHOST                        | <datasetapihost>      | The url endpoint for the dataset api               |
+| WIDGETAPIHOST                         | <widgetapihost>       | The url endpoint for the widget api                |
+| V2_WIDGET_HOST                        | <v2widgethost>        | The url endpoint for the V2 widget host            |
+| WIDGETAPIKEY                          | <widgetaccesskey>     | The access key for the api for the widget          |
+| DATASETAPIKEY                         | <datasetaccesskey>    | The access key for the api for the site            |
+| AZURECOSMOSDBURI                      | <cosmosdburi>         | The URI for Azure Cosmos DB                        |
+| AZURECOSMOSDBKEY                      | <cosmosdbkey>         | The access key for Azure Cosmos DB                 |
+| AZURE_ACCOUNT_NAME                    | <azureaccountname>    | The name of the account for image storage          |
+| AZURE_ACCOUNT_KEY                     | <azureaccountkey>     | The access key to account for image storage        |
+| AZURE_ACCOUNT                         | <azureaccount>        | The account for image storage                      |
+| AZURE_CONTAINER                       | <azurecontainer>      | The container name for image storage               |
+| JSONFILES_STORAGE_CONTAINER           | <azurecontainer>      | The container URI for the json files               |
+| SITEMAP_STORAGE_BLOB                  | <sitemap file name>   | Tells the app where the dynamic sitemap is stored  |
+| AZURE_EMAIL_SERVICE_CONNECTION_STRING | <connectionstring>    | Connection string for Azure Email Service          |
+| AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS    | <emailaddress>        | The e-mail address used for notifications          |
+| EMAIL_BACKEND                         | <emailbackend>        | Django email backend to use                        |
+| SORT_BY_SUBJECT_LIMIT                 | 5000                  | Used to determine how to display subjects          |
 
 # Getting Started
 
