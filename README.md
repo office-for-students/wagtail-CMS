@@ -12,8 +12,8 @@
 
 This application is based on the Wagtail CMS.
 It utilises:
-- Wagtail CMS (v7.3.2)
-- Python (v3.13) / Django framework (v5.2.12)
+- Wagtail CMS (v8.0)
+- Python (v3.14) / Django framework (v6.1.1)
 - PostgreSQL
 - Azure Blob Storage (for media and JSON files)
 - Azure Communication Services (for email)
@@ -66,10 +66,10 @@ $ cp docker-compose.yml.example docker-compose.yml
 
 # Getting Started
 
-## Create and set up virtual environment (python 3.13)
+## Create and set up virtual environment (python 3.14)
 
 ```
-$ python3.13 -m venv .venv
+$ python3.14 -m venv .venv
 $ source .venv/bin/activate
 $ python -m pip install --upgrade pip
 $ pip install -r requirements.txt
