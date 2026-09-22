@@ -4,15 +4,22 @@ from .base import *
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# Storage settings
-AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME')
-AZURE_CONTAINER = os.environ.get('AZURE_CONTAINER')
-AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY')
-MEDIA_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
-
-# Email settings
-
 WAGTAILSDOCS_ENABLED = True
+
+STORAGES = {
+    "default": {
+        "BACKEND": "CMS.storages.azure_storage.AzureMediaStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "CMS.storages.azure_storage.AzureStaticStorage",
+    },
+}
+
+AZURE_ACCOUNT_NAME = os.environ["AZURE_ACCOUNT_NAME"]
+AZURE_ACCOUNT_KEY = os.environ["AZURE_ACCOUNT_KEY"]
+
+STATIC_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{os.environ["AZURE_CONTAINER"]}/static/"
+MEDIA_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{os.environ["AZURE_CONTAINER"]}/"
 
 # Logging settings
 
@@ -44,7 +51,7 @@ LOGGING = {
         },
     },
 }
-
+# "uploaded/images"
 # Cloudflare
 
 WAGTAILFRONTENDCACHE = {
