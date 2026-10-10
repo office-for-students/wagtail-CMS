@@ -65,7 +65,7 @@ swapper==1.5.0
 telepath==0.3.1
 typing-inspection==0.4.4
 typing_extensions==4.16.0
-urllib3==2.7.0
+urllib3==2.8.0
 virtualenv==21.7.8
 wagtail==8.0
 whitenoise==6.12.0
