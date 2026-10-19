@@ -36,7 +36,11 @@
             </div>
             <div class="bottom-block">
                 <div>
-                    <a class="view-courses" href="{% url 'course_finder_results' %}?institution_query={{ institution.pub_ukprn_name }}">{% get_translation key="view_courses" language=page.get_language %} {% get_translation key="at" language=page.get_language %} {{ institution.pub_ukprn_name }}</a>
+                    {% if page.get_language == 'cy' %}
+                        <a class="view-courses" href="{% url 'course_finder_results' language=page.get_language %}?query=&selectedInstitutions={{ institution.pub_ukprn_name }}">{% get_translation key="view_courses" language=page.get_language %} {% get_translation key="at" language=page.get_language %} {{ institution.pub_ukprn_name }}</a>
+                    {% else %}
+                        <a class="view-courses" href="{% url 'course_finder_results' %}?query=&selectedInstitutions={{ institution.pub_ukprn_name }}">{% get_translation key="view_courses" language=page.get_language %} {% get_translation key="at" language=page.get_language %} {{ institution.pub_ukprn_name }}</a>
+                    {% endif %}
                 </div>
             </div>
             {% if institution.pub_ukprn_country_code == "XF" and tef.status == "tef"%}
