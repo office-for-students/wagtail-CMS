@@ -73,6 +73,7 @@ $ python3.14 -m venv .venv
 $ source .venv/bin/activate
 $ python -m pip install --upgrade pip
 $ pip install -r requirements.txt
+$ pip install -r dev.requirements.txt
 ```
 
 ## Run Docker
@@ -149,14 +150,47 @@ The `deploy_files` folder contains files specifically used for deploying the app
 - `docker-entrypoint.sh`: This script is the entry point for the deployed container. It handles running database migrations and starting the Gunicorn server with gevent workers.
 - `docker-entrypoint-readonly.sh`: A variant of the entry point script for read-only environments.
 
-### Requirements Files
+### Requirements Files and Managing Requirements
 
-The application uses two requirements files for Python packages:
+#### Requirements Files
+The application uses the following requirements files for Python packages:
 
-1. `requirements.txt`: Contains the core dependencies required to run the Wagtail CMS application in all environments (development, test, and production).
+1. `requirements.txt`: Contains the core top-level dependencies required to run the Wagtail CMS application in all environments (development, test, and production). We maintain top-level dependencies directly in the `requirements.txt` file.
 2. `requirements-deploy.txt`: Contains additional dependencies required specifically for the deployed production environment, such as `gevent` for the Gunicorn worker class.
+3. `dev.requirements.txt`: Contains development and auditing tools such as `pip_audit`.
+4. `full_requirements.txt`: Contains a full frozen snapshot of all installed packages and sub-dependencies generated during the audit process.
 
-Both of these files are needed to build the production container image.
+Both `requirements.txt` and `requirements-deploy.txt` are needed to build the production container image.
+
+#### Managing Requirements & Vulnerability Auditing
+
+We maintain the top-level `requirements.txt` directly in the `requirements.txt` file.
+
+** Pre-Push / Pre-Release Vulnerability Checks:**
+We run a script before pushing or releasing that flags vulnerable pip packages using `pip_audit`.
+- The audit script performs a `pip freeze` of all installed packages in the environment and freezes them into `full_requirements.txt`.
+- It then audits `full_requirements.txt` using `pip_audit` for any known security vulnerabilities.
+- If vulnerable packages are found, the script highlights them and prompts the user to confirm whether they cannot be remediated at this time before proceeding with the push.
+- If no vulnerabilities are detected, the check passes and the push proceeds automatically.
+
+##### Setting up the Pre-Push Hook
+
+1. Install the development dependencies:
+   ```bash
+   pip install -r dev.requirements.txt
+   ```
+
+2. Enable the pre-push hook in your local Git repository:
+   ```bash
+   ln -s ../../bin/pre-push .git/hooks/pre-push
+   # or
+   cp bin/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push
+   ```
+
+3. You can also run the vulnerability audit manually at any time:
+   ```bash
+   ./bin/check_vulnerabilities
+   ```
 
 ### Deployed Environment Requirements
 
