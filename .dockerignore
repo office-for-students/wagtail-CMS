@@ -1,0 +1,68 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+local_settings.py
+local.py
+db.sqlite3
+
+# Virtual Environment
+.venv
+venv/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jetbrains stuff
+.idea
+
+# Compiled SASS files
+**/*.css*
+
+# Media files
+static/**
+
+# Custom
+.DS_Store
+*.vscode
+.vscode/
+.env*
+!.env.example
+data/
+docker-compose.*.yml
+!docker-compose.non-dev.yml
+!docker-compose.ci.yml
+
+docker-setup-db.sh
+
+!v2_widget/static/v2_widget/widget/**/*.css
+!v2_widget/static/v2_widget/assets/*.css
+
+prod-discoveruni.sql
+.junie
+.local
+*.sql
+
+pre-prod-azure-pipelines.yml
+prod-azure-pipelines.yml
+.azuredevops
+.github
+data
+discoveruni_prod.sql
+csv_banner_courses.csv
+CONTRIBUTING.md
+LICENSE.md
+update-search-app.sh
+bin
