@@ -1,0 +1,64 @@
+[tool.mypy]
+python_version = "3.14"
+exclude = ["^\\.venv/", "^venv/", "^build/", "^dist/", "frontend/"]
+strict = true  # optional; drop this if it's too noisy for an existing codebase
+
+[tool.ruff]
+extend-exclude = [
+    "build",
+    "dist",
+    "*/migrations/*",
+    "*/settings/*",
+    "*/mocks.py",
+]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "S", "UP", "SIM"]  # "S" enables Ruff's security (bandit-style) rules
+ignore = ["E501", "W605"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]  # allow to assert in tests
+"**/tests.py" = ["E501", "S101"]
+
+[tool.coverage.run]
+omit = [
+    "*/migrations/*.py",
+    "*/settings/*.py",
+    "*/templatetags/*.py",
+    "*/apps.py",
+    "*/wsgi.py",
+    "*/tests.py",
+    "*/__init__.py",
+    "*/urls.py",
+    "*/manage.py",
+    "*/request_handler.py",
+    "*/mocks.py",
+    "*/factories.py",
+]
+
+[tool.coverage.report]
+omit = [
+    "*/migrations/*.py",
+    "*/settings/*.py",
+    "*/templatetags/*.py",
+    "*/apps.py",
+    "*/wsgi.py",
+    "*/tests.py",
+    "*/__init__.py",
+    "*/urls.py",
+    "*/manage.py",
+    "*/request_handler.py",
+    "*/mocks.py",
+    "*/factories.py",
+]
+exclude_lines = [
+    "pragma: no cover",
+    "def __init__",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.bandit]
+exclude_dirs = [".venv", "venv", "tests"]
