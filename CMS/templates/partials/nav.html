@@ -1,4 +1,7 @@
 {% load static discover_uni_tags %}
+{% block js %}
+    <script src="{% static 'js/nav.js' %}"></script>
+{% endblock %}
 <nav style="display: flex">
     <a href="#main-content" class="screen-reader">skip to main content</a>
     <div class="nav">
@@ -94,7 +97,7 @@
                 {#                TODO: Remove course search from CMS         #}
 
                 <a class="nav__primary-link language-select" id="language_select"
-                   href="{{ translated_url }}">
+                   href="{{ translated_url }}?{{ request.GET.urlencode }}">
                     {% if page.is_english %} Cymraeg {% else %} English {% endif %}
                 </a>
 
