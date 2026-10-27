@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Find repo root
+REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+cd "$REPO_ROOT"
+
+# Ensure python/pip is available, checking virtual environment if active or present
+if command -v pip-audit >/dev/null 2>&1; then
+    PIP_AUDIT_CMD="pip-audit"
+elif [ -f ".venv/bin/pip-audit" ]; then
+    PIP_AUDIT_CMD=".venv/bin/pip-audit"
+elif command -v python >/dev/null 2>&1 && python -m pip_audit --version >/dev/null 2>&1; then
+    PIP_AUDIT_CMD="python -m pip_audit"
+elif [ -f ".venv/bin/python" ] && .venv/bin/python -m pip_audit --version >/dev/null 2>&1; then
+    PIP_AUDIT_CMD=".venv/bin/python -m pip_audit"
+else
+    echo "Error: pip_audit is not installed or not in PATH."
+    echo "Please install development dependencies: pip install -r dev.requirements.txt"
+    exit 1
+fi
+
+if command -v pip >/dev/null 2>&1; then
+    PIP_CMD="pip"
+elif [ -f ".venv/bin/pip" ]; then
+    PIP_CMD=".venv/bin/pip"
+elif command -v python >/dev/null 2>&1; then
+    PIP_CMD="python -m pip"
+elif [ -f ".venv/bin/python" ]; then
+    PIP_CMD=".venv/bin/python -m pip"
+else
+    echo "Error: pip is not available."
+    exit 1
+fi
+
+echo "Freezing installed packages to full_requirements.txt..."
+$PIP_CMD freeze > full_requirements.txt
+
+echo "Auditing full_requirements.txt for known vulnerabilities using pip_audit..."
+set +e
+AUDIT_OUTPUT=$($PIP_AUDIT_CMD -r full_requirements.txt 2>&1)
+AUDIT_EXIT_CODE=$?
+set -e
+
+if [ $AUDIT_EXIT_CODE -eq 0 ]; then
+    echo "$AUDIT_OUTPUT"
+    echo "No vulnerable packages found."
+    exit 0
+else
+    echo ""
+    echo "================================================================================"
+    echo "WARNING: Vulnerable packages detected in full_requirements.txt!"
+    echo "================================================================================"
+    echo "$AUDIT_OUTPUT"
+    echo "================================================================================"
+    echo ""
+
+    # Prompt user for confirmation.
+    # In git hooks (e.g. pre-push), stdin may be redirected, so read from /dev/tty if available.
+    PROMPT_MSG="Please confirm that these vulnerabilities cannot be remediated at this time to proceed [y/N]: "
+    CONFIRMATION=""
+
+    if [ -t 0 ]; then
+        read -r -p "$PROMPT_MSG" CONFIRMATION
+    elif [ -e /dev/tty ]; then
+        read -r -p "$PROMPT_MSG" CONFIRMATION < /dev/tty 2>/dev/null || read -r CONFIRMATION 2>/dev/null || CONFIRMATION=""
+    else
+        read -r CONFIRMATION 2>/dev/null || CONFIRMATION=""
+    fi
+
+    case "$CONFIRMATION" in
+        [yY]|[yY][eE][sS])
+            echo "Proceeding despite reported vulnerabilities."
+            exit 0
+            ;;
+        *)
+            echo "Push aborted. Please remediate vulnerable packages before pushing."
+            exit 1
+            ;;
+    esac
+fi
