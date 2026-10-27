@@ -64,7 +64,7 @@ The target coverage level for the project is:
 - &gt;80% coverage for unit testing
 - Feature tests for each user feature, covering all probable scenarios.
 
-We are also developing to the PyFlakes and pycodestyle coding standards which are been checked using the Python flake8 package.
+We are also developing to the PyFlakes and pycodestyle coding standards which are checked using Ruff.
 
 ### Testing Commands
 _These commands can be used when you are running the code using the docker container_ 

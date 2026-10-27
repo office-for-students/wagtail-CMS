@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Git pre-push hook script to audit installed dependencies before pushing
+
+REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+exec "$REPO_ROOT/bin/check_vulnerabilities" "$@"

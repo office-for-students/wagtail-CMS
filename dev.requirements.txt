@@ -1,0 +1,6 @@
+pip_audit==2.10.1
+ruff
+mypy
+pytest
+pip-audit
+bandit
