@@ -157,7 +157,7 @@ The application uses the following requirements files for Python packages:
 
 1. `requirements.txt`: Contains the core top-level dependencies required to run the Wagtail CMS application in all environments (development, test, and production). We maintain top-level dependencies directly in the `requirements.txt` file.
 2. `requirements-deploy.txt`: Contains additional dependencies required specifically for the deployed production environment, such as `gevent` for the Gunicorn worker class.
-3. `dev.requirements.txt`: Contains development and auditing tools such as `pip_audit`.
+3. `requirements.dev.txt`: Contains development and auditing tools such as `pip_audit`.
 4. `full_requirements.txt`: Contains a full frozen snapshot of all installed packages and sub-dependencies generated during the audit process.
 
 Both `requirements.txt` and `requirements-deploy.txt` are needed to build the production container image.
@@ -177,7 +177,7 @@ We run a script before pushing or releasing that flags vulnerable pip packages u
 
 1. Install the development dependencies:
    ```bash
-   pip install -r dev.requirements.txt
+   pip install -r requirements.dev.txt
    ```
 
 2. Enable the pre-push hook in your local Git repository:
