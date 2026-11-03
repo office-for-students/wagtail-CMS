@@ -35,6 +35,10 @@ omit = [
     "*/request_handler.py",
     "*/mocks.py",
     "*/factories.py",
+    "*/bin/**/*",
+    "*/data/**/*",
+    "*/deploy_files/**/*",
+    "*/dev_tools/**/*"
 ]
 
 [tool.coverage.report]
@@ -51,6 +55,10 @@ omit = [
     "*/request_handler.py",
     "*/mocks.py",
     "*/factories.py",
+    "*/bin/**/*",
+    "*/data/**/*",
+    "*/deploy_files/**/*",
+    "*/dev_tools/**/*"
 ]
 exclude_lines = [
     "pragma: no cover",
