@@ -142,7 +142,7 @@ DICT = {
         "en": "Save course"
     },
     "bookmark_courses_link": {
-        "cy": "./cy/rheoli-nodau-tudalen/",
+        "cy": "./rheoli-nodau-tudalen/",
         "en": "./bookmarks-manage/"
     },
     "bookmarked_courses": {
