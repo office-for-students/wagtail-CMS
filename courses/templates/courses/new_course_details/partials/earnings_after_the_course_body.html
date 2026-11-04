@@ -131,12 +131,12 @@
                 {{ subbed_text | safe }}
 
             {% elif salary_index == 1 %}
-                {% replace_graduate_intro course_details.leo3_year_range as year %}
+                {% replace_graduate_intro "2015-17" as year %}
                 {% brackets_replace_year block.value.after_three_five_years_data_source|safe year  as subbed_text%}
                 {{ subbed_text | safe }}
 
             {% else %}
-                {% replace_graduate_intro course_details.leo5_year_range as year%}
+                {% replace_graduate_intro "2015-17" as year%}
                 {% brackets_replace_year block.value.after_three_five_years_data_source|safe year  as subbed_text%}
                 {{ subbed_text | safe }}
 
@@ -316,12 +316,12 @@
                             {{ subbed_text | safe }}
                         {% elif salary_index == 1 %}
                             {% get_salary_from_index objs=course_details.leo3_salaries_inst index=salary_index as wee %}
-                            {% replace_graduate_intro wee.aggregation_year as year%}
+                            {% replace_graduate_intro "2015-17" as year%}
                             {% brackets_replace_year block.value.after_three_five_years_data_source|safe year  as subbed_text%}
                             {{ subbed_text | safe }}
                         {% else %}
                             {% get_salary_from_index objs=course_details.leo3_salaries_inst index=salary_index as wee %}
-                            {% replace_graduate_intro wee.aggregation_year as year%}
+                            {% replace_graduate_intro "2015-17" as year%}
                             {% brackets_replace_year block.value.after_three_five_years_data_source|safe year  as subbed_text%}
                             {{ subbed_text | safe }}
                         {% endif %}
