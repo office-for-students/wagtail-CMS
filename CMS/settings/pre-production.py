@@ -6,20 +6,21 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 WAGTAILSDOCS_ENABLED = True
 
+AZURE_ACCOUNT_NAME = os.environ.get("AZURE_ACCOUNT_NAME")
+AZURE_ACCOUNT_KEY = os.environ.get("AZURE_ACCOUNT_KEY")
+AZURE_CONTAINER = os.environ.get("AZURE_CONTAINER")
+
+if AZURE_ACCOUNT_NAME and AZURE_CONTAINER:
+    MEDIA_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
+
 STORAGES = {
     "default": {
         "BACKEND": "CMS.storages.azure_storage.AzureMediaStorage",
     },
     "staticfiles": {
-        "BACKEND": "CMS.storages.azure_storage.AzureStaticStorage",
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
-
-AZURE_ACCOUNT_NAME = os.environ["AZURE_ACCOUNT_NAME"]
-AZURE_ACCOUNT_KEY = os.environ["AZURE_ACCOUNT_KEY"]
-
-STATIC_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{os.environ["AZURE_CONTAINER"]}/static/"
-MEDIA_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{os.environ["AZURE_CONTAINER"]}/"
 
 # Logging settings
 
