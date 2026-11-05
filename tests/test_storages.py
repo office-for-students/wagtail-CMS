@@ -69,19 +69,16 @@ class StoragesConfigurationTests(TestCase):  # type: ignore[misc]
         )
         self.assertEqual(
             base.STORAGES["staticfiles"]["BACKEND"],
-            "whitenoise.storage.CompressedManifestStaticFilesStorage",
+            "whitenoise.storage.CompressedStaticFilesStorage",
         )
         self.assertEqual(base.STATIC_URL, "/static/")
-        self.assertFalse(base.WHITENOISE_MANIFEST_STRICT)
 
-    def test_whitenoise_storage_fallback_on_missing_manifest_entry(self) -> None:
-        from whitenoise.storage import CompressedManifestStaticFilesStorage
+    def test_whitenoise_compressed_static_files_storage_url(self) -> None:
+        from whitenoise.storage import CompressedStaticFilesStorage
 
-        with patch.object(settings, "WHITENOISE_MANIFEST_STRICT", False, create=True):
-            storage = CompressedManifestStaticFilesStorage()
-            self.assertFalse(storage.manifest_strict)
-            url = storage.url("search_app/homepage_search/app-search-only-styles.css")
-            self.assertEqual(url, "/static/search_app/homepage_search/app-search-only-styles.css")
+        storage = CompressedStaticFilesStorage()
+        url = storage.url("search_app/homepage_search/app-search-only-styles.css")
+        self.assertEqual(url, "/static/search_app/homepage_search/app-search-only-styles.css")
 
     def test_pre_production_settings_storages(self) -> None:
         with patch.dict(os.environ, {
@@ -99,7 +96,7 @@ class StoragesConfigurationTests(TestCase):  # type: ignore[misc]
             )
             self.assertEqual(
                 pre_prod_mod.STORAGES["staticfiles"]["BACKEND"],
-                "whitenoise.storage.CompressedManifestStaticFilesStorage",
+                "whitenoise.storage.CompressedStaticFilesStorage",
             )
             self.assertEqual(pre_prod_mod.STATIC_URL, "/static/")
             self.assertEqual(
@@ -123,7 +120,7 @@ class StoragesConfigurationTests(TestCase):  # type: ignore[misc]
             )
             self.assertEqual(
                 prod_mod.STORAGES["staticfiles"]["BACKEND"],
-                "whitenoise.storage.CompressedManifestStaticFilesStorage",
+                "whitenoise.storage.CompressedStaticFilesStorage",
             )
             self.assertEqual(prod_mod.STATIC_URL, "/static/")
             self.assertEqual(
