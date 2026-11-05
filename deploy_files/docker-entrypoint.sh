@@ -19,6 +19,13 @@ done
 #  sleep 5
 #done
 
+until python3 manage.py collectstatic --noinput --ignore=*.scss
+
+do
+  echo "Updating static manifest"
+  sleep 5
+done
+
 #Run Gunicorn
 exec gunicorn CMS.wsgi:application \
     --name discover-uni-cms \
@@ -31,9 +38,6 @@ exec gunicorn CMS.wsgi:application \
     --max-requests 1000 \
     --max-requests-jitter 100 \
     --log-level warnning
-
-
-
 
 # EXECUTE DOCKER COMMAND NOW
 exec "$@"
