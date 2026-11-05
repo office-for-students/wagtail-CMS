@@ -72,6 +72,16 @@ class StoragesConfigurationTests(TestCase):  # type: ignore[misc]
             "whitenoise.storage.CompressedManifestStaticFilesStorage",
         )
         self.assertEqual(base.STATIC_URL, "/static/")
+        self.assertFalse(base.WHITENOISE_MANIFEST_STRICT)
+
+    def test_whitenoise_storage_fallback_on_missing_manifest_entry(self) -> None:
+        from whitenoise.storage import CompressedManifestStaticFilesStorage
+
+        with patch.object(settings, "WHITENOISE_MANIFEST_STRICT", False, create=True):
+            storage = CompressedManifestStaticFilesStorage()
+            self.assertFalse(storage.manifest_strict)
+            url = storage.url("search_app/homepage_search/app-search-only-styles.css")
+            self.assertEqual(url, "/static/search_app/homepage_search/app-search-only-styles.css")
 
     def test_pre_production_settings_storages(self) -> None:
         with patch.dict(os.environ, {
