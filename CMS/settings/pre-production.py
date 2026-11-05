@@ -18,7 +18,7 @@ STORAGES = {
         "BACKEND": "CMS.storages.azure_storage.AzureMediaStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
 
