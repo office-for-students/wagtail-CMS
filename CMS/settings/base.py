@@ -218,6 +218,17 @@ USE_TZ = True
 # See https://docs.djangoproject.com/en/2.1/ref/contrib/staticfiles/#manifeststaticfilesstorage
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
+
+WHITENOISE_MANIFEST_STRICT = config("WHITENOISE_MANIFEST_STRICT", default=False, cast=bool)
+
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "/static/"
 
@@ -269,7 +280,6 @@ STORAGE_ACCOUNT_NAME = config("STORAGE_ACCOUNT_NAME", "")
 AZURE_ACCOUNT_NAME = config("AZURE_ACCOUNT_NAME", "")  # eg. 'campaignstorage'
 AZURE_ACCOUNT_KEY = config("AZURE_ACCOUNT_KEY", "")  # eg. '<secret key>'
 AZURE_CONTAINER = config("AZURE_CONTAINER", "")  # eg. 'campaign-resource-centre'
-DEFAULT_FILE_STORAGE = "storages.backends.azure_storage.AzureStorage"
 
 CORS_ORIGIN_ALLOW_ALL = True
 
