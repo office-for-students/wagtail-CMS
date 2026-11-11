@@ -301,7 +301,7 @@ as a non-absolute element so the div retains its size
     }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 767px) {
     .ofs_widget {
         /*max-width: 770px;*/
     }
