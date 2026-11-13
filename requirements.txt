@@ -1,4 +1,4 @@
-wagtail==8.0.1
+wagtail==8.1
 azure-mgmt-storage==25.3.0
 azure-storage-blob==12.31.0
 azure-communication-email==1.1.0
