@@ -273,7 +273,6 @@ def courses_detail(request, institution_id, course_id, kis_mode, language=enums.
         'manage_link': bookmark_page.url if bookmark_page else '#',
         'translated_url': translated_url,
         "course_title": course_title,
-        'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
         "has_summary": has_summary_stats(course),
         "institution_name": institution_name
     })
@@ -311,9 +310,7 @@ def compare_courses(request, language=enums.languages.ENGLISH):
 
     context.update(
         dict(
-            page=page,
-            cookies_accepted=request.COOKIES.get('discoverUniCookies'),
-        )
+            page=page        )
     )
 
     return render(request, 'courses/course_comparison_page.html', context)

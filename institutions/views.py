@@ -72,7 +72,6 @@ def institution_detail(request, institution_id, language=enums.languages.ENGLISH
         'institution': institution,
         'jms': jms,
         'translated_url': translated_url,
-        'cookies_accepted': request.COOKIES.get('discoverUniCookies'),
         "tef": tef_context
     })
 

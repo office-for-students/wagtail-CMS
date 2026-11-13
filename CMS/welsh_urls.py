@@ -1,22 +1,20 @@
 from django.conf.urls import include
 from django.urls import path
 
-from coursefinder import views as coursefinder_views
 from courses import urls as courses_urls
-from courses import views as course_views
+from courses.views import (
+    compare_courses,
+    compare_courses_body,
+)
+from coursesearch.views import course_finder_results_new
 from institutions import urls as institution_urls
-from search import views as search_views
 
 urlpatterns = [
-    path('search/', search_views.search, name='search'),
-    path('results/', coursefinder_views.results, name='results'),
-
-    path('narrow-search/', coursefinder_views.narrow_search, name='narrow_search'),
-    path('course-finder/results/', coursefinder_views.course_finder_results_new, name='course_finder_results'),
-    path('course-finder/results/institution', coursefinder_views.course_finder_results_new),
-    path('course-finder/results/subject', coursefinder_views.course_finder_results_new),
+    path('course-finder/results/', course_finder_results_new, name='course_finder_results'),
+    path('course-finder/results/institution', course_finder_results_new),
+    path('course-finder/results/subject', course_finder_results_new),
     path('course-details/', include(courses_urls)),
     path('institution-details/', include(institution_urls)),
-    path('cymharu-cyrsiau/', course_views.compare_courses),
-    path('ajax/course-comparison/', course_views.compare_courses_body),
+    path('cymharu-cyrsiau/', compare_courses),
+    path('ajax/course-comparison/', compare_courses_body),
 ]

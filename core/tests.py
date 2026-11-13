@@ -8,7 +8,7 @@ from CMS.enums import enums
 from CMS.test.factories import PageFactory
 from CMS.test.utils import UniSimpleTestCase
 from core.utils import get_page_for_language
-from coursefinder.models import CourseFinderChooseCountry
+from coursesearch.models import CourseFinderChooseCountry
 from site_search.models import SearchLandingPage
 
 logger = logging.getLogger(__name__)

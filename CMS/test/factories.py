@@ -1,6 +1,6 @@
 from wagtail.models import Site
 
-from coursefinder.models import (
+from coursesearch.models import (
     CourseFinderResults,
     CourseFinderChooseCountry,
     CourseFinderModeOfStudy,
