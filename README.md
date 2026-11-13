@@ -231,3 +231,6 @@ See [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## License
 
 See [LICENSE](LICENSE.md) for details.
+
+
+`pip install pipdeptree`
