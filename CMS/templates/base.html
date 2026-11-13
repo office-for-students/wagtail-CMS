@@ -43,7 +43,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="{% get_static_prefix %}js/main.js?{% code_version %}"></script>
-{#    <script type="text/javascript" src="{% get_static_prefix %}js/search_box.js"></script>#}
     <script type="text/javascript" src="{% get_static_prefix %}js/load-error-popup.js?{% code_version %}"></script>
     <script type="text/javascript" src="{% get_static_prefix %}cookie.js?{% code_version %}" defer></script>
     <script>
@@ -61,9 +60,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap - Latest compiled JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
     <script type="text/javascript" src="{% static 'js/compare-events.js' %}"></script>
-{#    <script type="text/javascript" src="{% static 'js/compare-selector.js' %}"></script>#}
 
 
 </head>
@@ -99,32 +96,22 @@
         {% include 'partials/load-error-popup-bar.html' with error_type=error_type %}
     {% endif %}
 </main>
-
-{% include 'partials/footer.html' %}
-</body>
-<script>
-    let analytics_on = document.cookie.includes("discoverUniAnalyticsCookies")
-    if (analytics_on) {
-
-        // Google Analytics
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-        gtag('config', 'UA-147556197-1');
-
-    }
-</script>
+{% block footer %}
+    {% include 'partials/footer.html' %}
+{% endblock %}
 
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () {
+            (c[a].q = c[a].q || []).push(arguments)
+        };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
     })(window, document, "clarity", "script", "zciglpqm8d");
 </script>
+</body>
 </html>
 
