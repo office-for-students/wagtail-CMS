@@ -40,13 +40,12 @@ urlpatterns = [
     path('institution-details/', include(institution_urls)),
     path('course-comparison/', course_views.compare_courses, name="course_comparison"),
     path('ajax/course-comparison/', course_views.compare_courses_body),
+    # apw added.
+    path('regional_earnings', regional_earnings, name='regional_earnings'),
 
     path('<str:language>/', include(welsh_urls)),
 
     path(r'', include(wagtail_urls)),
-
-    # apw added.
-    path('regional_earnings', regional_earnings, name='regional_earnings'),
     # path('api/', api.urls)
 ]
 
