@@ -2,7 +2,7 @@ import json
 from requests.models import Response
 from http import HTTPStatus
 
-from CMS.test.mocks.course_mocks_content import content
+from courses.test_files.course_mocks_content import content
 
 class CourseMocks:
 

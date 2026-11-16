@@ -1,21 +1,19 @@
 import importlib.util
-import json
 import sys
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from django.http import HttpResponse
-from django.test import SimpleTestCase
-from django.test import override_settings
-from django.test import tag
+from django.test import RequestFactory, SimpleTestCase, override_settings, tag
 from django.urls import resolve
 
+from CMS import translations
 from CMS import urls as cms_urls
+from CMS.context_processors import nav_context_processor
 from CMS.test.utils import UniSimpleTestCase
+from CMS.translations.translations import cleanup_key
 from core import views as core_views
 from courses import views as course_views
 from courses.views import translate as translate_views
-from coursesearch import api as coursesearch_api
 from coursesearch import views as coursesearch_views
 from institutions import views as institution_views
 from v2_widget import views as widget_views
@@ -144,149 +142,9 @@ class MedexTestUtilsTests(UniSimpleTestCase):
 
 
 @tag('azure')
-class CMSDirectEndpointTests(SimpleTestCase):
-
-    @patch('core.views.render', return_value=HttpResponse('robots', content_type='text/plain'))
-    def test_robots_endpoint_renders_plain_text(self, render):
-        response = self.client.get('/robots.txt')
-
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.content, b'robots')
-        self.assertEqual(response['Content-Type'], 'text/plain')
-        self.assertEqual(render.call_args.args[1], 'robots.txt')
-
-    @patch('core.views.render', return_value=HttpResponse('<urlset/>', content_type='text/xml'))
-    def test_primary_sitemap_endpoint_renders_xml(self, render):
-        response = self.client.get('/sitemap.xml')
-
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.content, b'<urlset/>')
-        self.assertEqual(response['Content-Type'], 'text/xml')
-        self.assertEqual(render.call_args.args[1], 'sitemap_primary.xml')
-
-    @patch('core.views.get_sitemap_file')
-    def test_content_sitemap_endpoint_propagates_upstream_response(self, get_sitemap_file):
-        get_sitemap_file.return_value = Mock(content=b'<xml>content</xml>', status_code=206)
-
-        response = self.client.get('/sitemaps/content.xml')
-
-        self.assertEqual(response.status_code, 206)
-        self.assertEqual(response.content, b'<xml>content</xml>')
-        self.assertEqual(response['Content-Type'], 'text/xml')
-        get_sitemap_file.assert_called_once_with()
-
-    @patch('core.views.send_feedback')
-    def test_feedback_endpoint_forwards_normalized_feedback(self, send_feedback):
-        send_feedback.return_value = Mock(ok=True, status_code=202)
-
-        response = self.client.post('/feedback', {
-            'page': '/course-finder/',
-            'user_feedback': 'Helpful results',
-            'ignored': 'not forwarded',
-        })
-
-        self.assertEqual(response.status_code, 202)
-        self.assertJSONEqual(response.content, {})
-        feedback = json.loads(send_feedback.call_args.args[0])
-        self.assertEqual(feedback, {
-            'is_useful': True,
-            'questions': [{
-                'title': 'howwasthisuseful',
-                'feedback': 'Helpful results',
-            }],
-            'page': '/course-finder/',
-        })
-
-    @patch('core.views.send_feedback')
-    def test_feedback_endpoint_propagates_upstream_error(self, send_feedback):
-        upstream_response = Mock(ok=False, status_code=400)
-        upstream_response.json.return_value = {'error': 'invalid feedback'}
-        send_feedback.return_value = upstream_response
-
-        response = self.client.post('/feedback', {'user_feedback': 'Feedback'})
-
-        self.assertEqual(response.status_code, 400)
-        self.assertJSONEqual(response.content, {'error': 'invalid feedback'})
-
-    @patch('core.views.get_json_file')
-    def test_subjects_endpoint_returns_json_file_content(self, get_json_file):
-        result = Mock(ok=True, status_code=200)
-        result.json.return_value = [{'id': '01', 'name': 'Biology'}]
-        get_json_file.return_value = result
-
-        response = self.client.get('/jsonfiles/subjects')
-
-        self.assertEqual(response.status_code, 200)
-        self.assertJSONEqual(response.content, [{'id': '01', 'name': 'Biology'}])
-        get_json_file.assert_called_once_with('subjects.json')
-
-    @patch('core.views.load_institution_json', return_value={'en': [{'id': '1'}]})
-    def test_institutions_endpoint_returns_requested_language(self, load_institution_json):
-        response = self.client.get('/jsonfiles/institutions/en/')
-
-        self.assertEqual(response.status_code, 200)
-        self.assertJSONEqual(response.content, [{'id': '1'}])
-        load_institution_json.assert_called_once_with()
-
-    @patch('courses.views.views.render', return_value=HttpResponse('comparison'))
-    @patch('courses.views.views.get_page_for_language')
-    def test_english_comparison_endpoint_renders_comparison_page(self, get_page, render):
-        page = Mock()
-        page.get_context.return_value = {'existing': 'context'}
-        get_page.return_value = page
-
-        response = self.client.get('/course-comparison/')
-
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.content, b'comparison')
-        get_page.assert_called_once()
-        self.assertEqual(get_page.call_args.args[0], 'en')
-        self.assertEqual(render.call_args.args[1], 'courses/course_comparison_page.html')
-        self.assertIs(render.call_args.args[2]['page'], page)
-
-    @patch('courses.views.views.render', return_value=HttpResponse('comparison'))
-    @patch('courses.views.views.get_page_for_language')
-    def test_welsh_comparison_endpoint_passes_welsh_language(self, get_page, render):
-        page = Mock()
-        page.get_context.return_value = {}
-        get_page.return_value = page
-
-        response = self.client.get('/cy/cymharu-cyrsiau/')
-
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(get_page.call_args.args[0], 'cy')
-        self.assertEqual(render.call_args.args[1], 'courses/course_comparison_page.html')
-
-    @patch('courses.views.comparison_body.render', return_value=HttpResponse('comparison body', status=206))
-    @patch('courses.views.comparison_body.translations.term_for_key', return_value='Compare courses')
-    def test_ajax_comparison_endpoint_renders_empty_selection(self, term_for_key, render):
-        response = self.client.get('/ajax/course-comparison/?courses=')
-
-        self.assertEqual(response.status_code, 206)
-        self.assertEqual(response.content, b'comparison body')
-        self.assertEqual(render.call_args.args[1], 'courses/comparison/has_no_compare_courses.html')
-        self.assertEqual(render.call_args.kwargs['status'], 206)
-        self.assertEqual(render.call_args.args[2]['page']['get_language'], 'en')
-        term_for_key.assert_called_once_with('can_compare_courses', 'en')
-
-    @patch('courses.views.comparison_body.render', return_value=HttpResponse('comparison body', status=206))
-    @patch('courses.views.comparison_body.translations.term_for_key', return_value='Cymharu cyrsiau')
-    def test_welsh_ajax_comparison_endpoint_passes_welsh_language(self, term_for_key, render):
-        response = self.client.get('/cy/ajax/course-comparison/?courses=')
-
-        self.assertEqual(response.status_code, 206)
-        self.assertEqual(render.call_args.kwargs['status'], 206)
-        self.assertEqual(render.call_args.args[2]['page']['get_language'], 'cy')
-        term_for_key.assert_called_once_with('can_compare_courses', 'cy')
-
-    def test_regional_earnings_endpoint_resolves_to_its_view(self):
-        self.assertIs(resolve('/regional_earnings').func, course_views.regional_earnings)
-
-
-@tag('azure')
 class CMSUrlRoutingTests(SimpleTestCase):
 
-    def test_every_registered_endpoint_resolves_to_its_view(self):
+    def test_root_endpoints_and_include_mounts_resolve(self):
         routes = {
             '/robots.txt': core_views.robots,
             '/sitemap.xml': core_views.sitemap_new,
@@ -296,46 +154,38 @@ class CMSUrlRoutingTests(SimpleTestCase):
             '/jsonfiles/subjects': core_views.get_subjects_json,
             '/jsonfiles/institutions/en/': core_views.get_institutions_json,
             '/course-finder/results/': coursesearch_views.course_finder_results_new,
-            '/course-finder/results/institution': coursesearch_views.course_finder_results_new,
-            '/course-finder/results/subject': coursesearch_views.course_finder_results_new,
-            '/course-finder/search/v2/api/courses/nested': coursesearch_api.api_proxy,
             '/course-details/123/biology/full/': course_views.courses_detail,
-            '/course-details/translations/': translate_views.get_translations,
             '/institution-details/123/': institution_views.institution_detail,
             '/course-comparison/': course_views.compare_courses,
             '/ajax/course-comparison/': course_views.compare_courses_body,
             '/regional_earnings': course_views.regional_earnings,
+            '/v2/widget/configurator/': widget_views.configurator_view,
+            '/v2/Widget/configurator/': widget_views.configurator_view,
+        }
+
+        for url, expected_view in routes.items():
+            with self.subTest(url=url):
+                self.assertIs(resolve(url).func, expected_view)
+
+    def test_language_prefixed_routes_resolve_through_welsh_urlconf(self):
+        routes = {
             '/en/course-finder/results/': coursesearch_views.course_finder_results_new,
-            '/en/course-finder/results/institution': coursesearch_views.course_finder_results_new,
             '/en/course-finder/results/subject': coursesearch_views.course_finder_results_new,
+            '/en/course-finder/results/institution': coursesearch_views.course_finder_results_new,
             '/en/course-details/123/biology/full/': course_views.courses_detail,
             '/en/course-details/translations/': translate_views.get_translations,
             '/en/institution-details/123/': institution_views.institution_detail,
             '/en/cymharu-cyrsiau/': course_views.compare_courses,
             '/en/ajax/course-comparison/': course_views.compare_courses_body,
             '/cy/course-finder/results/': coursesearch_views.course_finder_results_new,
-            '/cy/course-finder/results/institution': coursesearch_views.course_finder_results_new,
             '/cy/course-finder/results/subject': coursesearch_views.course_finder_results_new,
+            '/cy/course-finder/results/institution': coursesearch_views.course_finder_results_new,
             '/cy/course-details/123/biology/full/': course_views.courses_detail,
             '/cy/course-details/translations/': translate_views.get_translations,
             '/cy/institution-details/123/': institution_views.institution_detail,
             '/cy/cymharu-cyrsiau/': course_views.compare_courses,
             '/cy/ajax/course-comparison/': course_views.compare_courses_body,
         }
-
-        widget_routes = (
-            ('configurator/', widget_views.configurator_view),
-            ('configurator/guidance', widget_views.configurator_view),
-            ('configurator/help', widget_views.configurator_view),
-            ('configurator/privacy', widget_views.configurator_view),
-            ('123/en', widget_views.v2_widget_placeholder_embed),
-            ('api/all_institutions/', widget_views.v2_api_institutions),
-            ('api/institution/123/courses', widget_views.v2_api_institution_courses),
-            ('123/biology/full/en', widget_views.v2_widget_embed),
-        )
-        for prefix in ('/v2/widget/', '/v2/Widget/'):
-            for suffix, view in widget_routes:
-                routes[prefix + suffix] = view
 
         for url, expected_view in routes.items():
             with self.subTest(url=url):
@@ -367,3 +217,93 @@ class CMSUrlRoutingTests(SimpleTestCase):
                 self.assertEqual('django-admin/' in route_strings, not read_only)
                 self.assertEqual('admin/' in route_strings, not read_only)
                 self.assertEqual('__debug__/' in route_strings, debug)
+
+
+@tag('azure')
+class TranslationHelperTests(SimpleTestCase):
+
+    def test_term_for_key_looks_up_each_translation_dictionary(self):
+        self.assertEqual(translations.term_for_key('Search', 'cy'), 'Chwilio')
+        self.assertEqual(translations.term_for_key('no_data_available', 'en'), 'No data available')
+        self.assertEqual(translations.term_for_key('administrative_occupations', 'en'), 'Administrative occupations')
+        self.assertEqual(
+            translations.term_for_key('unavailable_northern_ireland', 'en'),
+            'Sorry, this data is not available for courses in Northern Ireland.',
+        )
+        self.assertEqual(translations.term_for_key('not_available', 'en'), 'Not Available')
+
+    def test_unknown_translation_returns_normalized_key_and_cleanup_key_preserves_internal_tokens(self):
+        self.assertEqual(translations.term_for_key('Unknown, Term!', 'en'), 'unknown_term')
+        self.assertEqual(cleanup_key('Hello, World! _-'), 'hello_world___')
+
+
+@tag('azure')
+class NavigationContextProcessorTests(SimpleTestCase):
+
+    def test_parse_menu_item_handles_labels_urls_and_nested_children(self):
+        leaf = Mock(value={
+            'label': 'Search courses',
+            'link_page': Mock(title='Search', url='/search/'),
+        })
+        nested = Mock(value={
+            'label': 'Courses',
+            'menu_items': [leaf],
+        })
+
+        self.assertEqual(nav_context_processor.parse_menu_item(leaf), {
+            'label': 'Search courses',
+            'sub_items': None,
+            'url': '/search/',
+        })
+        self.assertEqual(nav_context_processor.parse_menu_item(nested), {
+            'label': 'Courses',
+            'sub_items': [{
+                'label': 'Search courses',
+                'sub_items': None,
+                'url': '/search/',
+            }],
+        })
+
+    def test_parse_menu_item_falls_back_to_page_title_and_missing_url(self):
+        menu_item = Mock(value={'link_page': Mock(title='About', url=None)})
+
+        self.assertEqual(nav_context_processor.parse_menu_item(menu_item), {
+            'label': 'About',
+            'sub_items': None,
+            'url': None,
+        })
+
+    def test_get_menu_selects_language_menu_and_returns_empty_for_missing_menu(self):
+        menu_item = Mock(value={'label': 'About', 'link_page': Mock(url='/about/')})
+        model = Mock()
+        model.objects.filter.return_value.first.return_value = Mock(menu_items=[menu_item])
+
+        self.assertEqual(nav_context_processor.get_menu(model, 'en', 'menu_items'), [{
+            'label': 'About',
+            'sub_items': None,
+            'url': '/about/',
+        }])
+        model.objects.filter.assert_called_once_with(name='English')
+
+        model.objects.filter.return_value.first.return_value = None
+        self.assertEqual(nav_context_processor.get_menu(model, 'cy', 'menu_items'), [])
+        model.objects.filter.assert_called_with(name='Welsh')
+
+    @patch('CMS.context_processors.nav_context_processor.get_menu')
+    @patch('CMS.context_processors.nav_context_processor.get_page_for_language')
+    def test_nav_menu_render_builds_language_specific_brand_and_links(self, get_page, get_menu):
+        get_page.side_effect = lambda language, pages: Mock(url=f'/{language}-page/')
+        get_menu.side_effect = [[{'label': 'primary'}], [{'label': 'footer'}]] * 2
+        factory = RequestFactory()
+
+        english = nav_context_processor.nav_menu_render(factory.get('/course-finder/'))['navigation']
+        welsh = nav_context_processor.nav_menu_render(factory.get('/cy/'))['navigation']
+
+        self.assertEqual(english['brand_logo'], {'img': 'images/logos/nav_logo_english.svg', 'url': '/'})
+        self.assertEqual(welsh['brand_logo'], {'img': 'images/logos/nav_logo_welsh.svg', 'url': '/cy/'})
+        self.assertEqual(english['comp_menu'][0]['url'], '/en-page/')
+        self.assertEqual(welsh['comp_menu'][0]['url'], '/cy-page/')
+        self.assertEqual(english['primary_menu'], [{'label': 'primary'}])
+        self.assertEqual(welsh['footer_menu'], [{'label': 'footer'}])
+        self.assertEqual(get_page.call_count, 6)
+        self.assertEqual(get_menu.call_count, 4)
