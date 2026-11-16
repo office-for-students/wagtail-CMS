@@ -56,21 +56,6 @@ def proxy_content(request, target_url: str, content_type="text/html"):
         content_type=response.headers.get("Content-Type", content_type)
     )
 
-
-def v2_api_institutions(
-        request,
-):
-    try:
-        return proxy_content(
-            target_url=f"{WIDGET_HOST}widget/v2/api/all_institutions/",
-            request=request,
-            content_type="application/json"
-        )
-
-    except requests.exceptions.RequestException as e:
-        return HttpResponse(f"Error: {str(e)}", status=502)
-
-
 def v2_api_institutions(
         request,
 ):

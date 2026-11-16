@@ -23,7 +23,7 @@ SEARCH_V2_API = config("SEARCH_V2_API", default=None)
 # from decouple import config
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
-
+SEARCH_API_BASE_URL=config("SEARCH_API_BASE_URL", default=None)
 VERSION_FILE = os.path.join(BASE_DIR, "version.txt")
 
 try:
@@ -94,14 +94,11 @@ INSTALLED_APPS = [
     # Custom Apps
     "core.apps.CoreConfig",
     "content.apps.ContentConfig",
-    "coursefinder.apps.CoursefinderConfig",
+    "coursesearch.apps.CourseSearchConfig",
     "courses.apps.CoursesConfig",
     "errors.apps.ErrorsConfig",
     "home.apps.HomeConfig",
     "institutions.apps.InstitutionsConfig",
-    "search.apps.SearchConfig",
-    "site_search.apps.SiteSearchConfig",
-    "widget.apps.WidgetConfig",
     "cookie",
     "v2_widget",
     "api",
@@ -151,7 +148,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "CMS.context_processors.nav_menu_render",
-                "coursefinder.context_processors.search",
+                "coursesearch.context_processors.search",
             ],
         },
     },
