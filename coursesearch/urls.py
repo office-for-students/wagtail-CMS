@@ -1,7 +1,6 @@
 import debug_toolbar
 from django.conf import settings
 from django.conf.urls import include
-from .api import api_proxy
 from coursesearch import views
 from django.urls import path
 

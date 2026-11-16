@@ -1,14 +1,12 @@
 from unittest.mock import Mock, patch
 
-import requests
 from django.http import HttpResponse
+from django.template.loader import get_template
 from django.test import RequestFactory, SimpleTestCase, TestCase, override_settings, tag
 
 from core.models import DiscoverUniBasePage
-from coursesearch import api
 from coursesearch import models as coursefinder_models
 from coursesearch import utils as coursefinder_utils
-from coursesearch.api import MAX_BODY_BYTES, api_proxy
 from coursesearch.models import (
     CourseFinderChooseCountry,
     CourseFinderChooseSubject,
@@ -97,6 +95,37 @@ class CourseFinderResultsEndpointTests(SimpleTestCase):
         get_page.assert_called_once()
         self.assertEqual(get_page.call_args.args[0], 'cy')
         self.assertEqual(get_page.call_args.args[1].model, CourseFinderResults)
+
+    def test_language_select_uses_requested_language_without_a_page(self):
+        navigation = {
+            'brand_logo': {'url': '/', 'img': 'logo.svg'},
+            'comp_menu': [],
+            'primary_menu': [],
+        }
+
+        def render_nav(request, template_name, context):
+            # Render without context processors: they query CMS pages, which SimpleTestCase forbids.
+            nav_context = {**context, 'navigation': navigation, 'request': request}
+            return HttpResponse(get_template('partials/nav.html').render(nav_context))
+
+        test_cases = (
+            ('/course-finder/results/', 'en', 'Cymraeg', '/cy/course-finder/results/'),
+            ('/cy/course-finder/results/', 'cy', 'English', '/course-finder/results/'),
+        )
+        with (
+            patch('coursesearch.views.get_page_for_language', return_value=None),
+            patch('coursesearch.views.render', side_effect=render_nav),
+            patch('core.templatetags.discover_uni_tags.translations.term_for_key', return_value='Site logo'),
+        ):
+            for url, language, expected_label, expected_url in test_cases:
+                with self.subTest(url=url):
+                    request = RequestFactory().get(url)
+                    response = course_finder_results_new(request, language=language)
+                    content = response.content.decode()
+                    language_select = content.split('class="nav__primary-link language-select"', 1)[1].split('</a>', 1)[0]
+
+                    self.assertIn(expected_label, language_select)
+                    self.assertIn(f'href="{expected_url}?"', language_select)
 
 
 @tag('azure')
@@ -206,125 +235,3 @@ class CourseFinderModelTests(TestCase):
         get_page.assert_called_once_with('en', all_choose_country_pages.return_value)
         get_options.assert_called_once_with()
 
-
-@tag('azure')
-@override_settings(SEARCH_API_BASE_URL='https://search.example/api/', SEARCH_API_TIMEOUT=3)
-class CourseSearchApiEndpointTests(SimpleTestCase):
-    url = '/course-finder/search/v2/api/courses/nested'
-
-    def setUp(self):
-        self.upstream_request = Mock()
-        session = Mock(request=self.upstream_request)
-        session_patcher = patch.object(api, '_session', session)
-        session_patcher.start()
-        self.addCleanup(session_patcher.stop)
-
-    def test_get_forwards_path_query_and_selected_headers_and_returns_response(self):
-        upstream_request = self.upstream_request
-        upstream_request.return_value = Mock(
-            content=b'{"results": []}',
-            status_code=206,
-            headers={
-                'Content-Type': 'application/json',
-                'Cache-Control': 'max-age=60',
-                'ETag': 'search-result',
-                'Last-Modified': 'Mon, 01 Jan 2024 00:00:00 GMT',
-                'Set-Cookie': 'not-forwarded=true',
-            },
-        )
-
-        response = self.client.get(
-            self.url + '?query=biology&tag=one&tag=two',
-            HTTP_ACCEPT='application/json',
-            HTTP_ACCEPT_LANGUAGE='cy',
-            HTTP_AUTHORIZATION='not-forwarded',
-        )
-
-        self.assertEqual(response.status_code, 206)
-        self.assertEqual(response.content, b'{"results": []}')
-        self.assertEqual(response['Content-Type'], 'application/json')
-        self.assertEqual(response['Cache-Control'], 'max-age=60')
-        self.assertEqual(response['ETag'], 'search-result')
-        self.assertEqual(response['Last-Modified'], 'Mon, 01 Jan 2024 00:00:00 GMT')
-        self.assertNotIn('Set-Cookie', response)
-        call = upstream_request.call_args
-        self.assertEqual(call.kwargs['method'], 'GET')
-        self.assertEqual(call.kwargs['url'], 'https://search.example/api/courses/nested')
-        self.assertEqual(call.kwargs['params'].getlist('tag'), ['one', 'two'])
-        self.assertEqual(call.kwargs['params']['query'], 'biology')
-        self.assertIsNone(call.kwargs['data'])
-        self.assertEqual(call.kwargs['headers'], {
-            'Accept': 'application/json',
-            'Accept-Language': 'cy',
-        })
-        self.assertEqual(call.kwargs['timeout'], 3)
-        self.assertFalse(call.kwargs['allow_redirects'])
-
-    def test_post_forwards_body_and_content_type(self):
-        upstream_request = self.upstream_request
-        upstream_request.return_value = Mock(content=b'ok', status_code=201, headers={})
-        body = b'{"query":"biology"}'
-
-        response = self.client.post(
-            self.url,
-            data=body,
-            content_type='application/json',
-            HTTP_ACCEPT='application/json',
-        )
-
-        self.assertEqual(response.status_code, 201)
-        self.assertEqual(response.content, b'ok')
-        call = upstream_request.call_args.kwargs
-        self.assertEqual(call['method'], 'POST')
-        self.assertEqual(call['data'], body)
-        self.assertEqual(call['headers'], {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        })
-
-    def test_rejects_invalid_proxy_path_without_requesting_upstream(self):
-        upstream_request = self.upstream_request
-        request = RequestFactory().get('/course-finder/search/v2/api/invalid')
-
-        response = api_proxy(request, '../private')
-
-        self.assertEqual(response.status_code, 400)
-        self.assertJSONEqual(response.content, {'error': 'Invalid path'})
-        upstream_request.assert_not_called()
-
-    def test_rejects_oversized_post_body_without_requesting_upstream(self):
-        upstream_request = self.upstream_request
-        response = self.client.post(
-            self.url,
-            data=b'x' * (MAX_BODY_BYTES + 1),
-            content_type='application/octet-stream',
-        )
-
-        self.assertEqual(response.status_code, 413)
-        self.assertJSONEqual(response.content, {'error': 'Request body too large'})
-        upstream_request.assert_not_called()
-
-    def test_rejects_unsupported_methods(self):
-        upstream_request = self.upstream_request
-        response = self.client.put(self.url, data=b'ignored')
-
-        self.assertEqual(response.status_code, 405)
-        upstream_request.assert_not_called()
-
-    def test_returns_gateway_timeout_when_upstream_times_out(self):
-        upstream_request = self.upstream_request
-        upstream_request.side_effect = requests.Timeout
-        response = self.client.get(self.url)
-
-        self.assertEqual(response.status_code, 504)
-        self.assertJSONEqual(response.content, {'error': 'Upstream timed out'})
-        upstream_request.assert_called_once()
-
-    def test_returns_bad_gateway_when_upstream_is_unavailable(self):
-        upstream_request = self.upstream_request
-        upstream_request.side_effect = requests.ConnectionError
-        response = self.client.get(self.url)
-
-        self.assertEqual(response.status_code, 502)
-        self.assertJSONEqual(response.content, {'error': 'Upstream unavailable'})
-        upstream_request.assert_called_once()

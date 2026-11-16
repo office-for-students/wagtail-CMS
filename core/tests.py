@@ -209,6 +209,28 @@ class DiscoverUniTemplateTagTests(SimpleTestCase):
         self.assertEqual(discover_uni_tags.brackets_replace_year('Year {}', '2025'), 'Year 2025')
         self.assertEqual(discover_uni_tags.brackets_replace_year('', '2025'), '')
 
+    def test_nav_is_english_prefers_explicit_language_over_page(self):
+        english_page = Mock(is_english=Mock(return_value=False))
+        welsh_page = Mock(is_english=Mock(return_value=True))
+
+        self.assertTrue(discover_uni_tags.nav_is_english({'lang': 'en', 'page': english_page}))
+        self.assertFalse(discover_uni_tags.nav_is_english({'lang': 'cy', 'page': welsh_page}))
+
+    def test_nav_is_english_falls_back_to_page_language(self):
+        english_page = Mock(is_english=Mock(return_value=True))
+        welsh_page = Mock(is_english=Mock(return_value=False))
+
+        self.assertTrue(discover_uni_tags.nav_is_english({'page': english_page}))
+        self.assertFalse(discover_uni_tags.nav_is_english({'page': welsh_page}))
+
+    def test_nav_is_english_uses_request_path_when_page_and_language_are_missing(self):
+        request = RequestFactory().get('/cy/course-finder/results/')
+
+        self.assertFalse(discover_uni_tags.nav_is_english({'page': None, 'request': request}))
+
+        request = RequestFactory().get('/course-finder/results/')
+        self.assertTrue(discover_uni_tags.nav_is_english({'page': None, 'request': request}))
+
     @patch('core.templatetags.discover_uni_tags.translations.term_for_key')
     def test_translation_and_availability_tags_apply_language_and_substitutions(self, term_for_key):
         term_for_key.side_effect = ['No data available', 'Only %s places', 'No data available']
