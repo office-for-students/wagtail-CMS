@@ -20,7 +20,7 @@ from courses import (
 )
 # apw added.
 from courses.views import regional_earnings
-from coursesearch import views as coursefinder_views
+from coursesearch import views as coursesearch_views
 from institutions import urls as institution_urls
 from . import welsh_urls
 
@@ -33,11 +33,9 @@ urlpatterns = [
     path('feedback', core_views.submit_feedback, name='submit_feedback'),
     path('jsonfiles/subjects', core_views.get_subjects_json, name='jsonfiles_subjects'),
     path('jsonfiles/institutions/<str:language>/', core_views.get_institutions_json, name='jsonfiles_institutions'),
-    path('course-finder/results/', coursefinder_views.course_finder_results_new, name='course_finder_results'),
-    path('course-finder/results/institution', coursefinder_views.course_finder_results_new),
-    path('course-finder/results/subject', coursefinder_views.course_finder_results_new),
     path('v2/widget/', include('v2_widget.urls')),
     path('v2/Widget/', include('v2_widget.urls')),
+    path('course-finder/', include('coursesearch.urls')),
     path('course-details/', include(courses_urls)),
     path('institution-details/', include(institution_urls)),
     path('course-comparison/', course_views.compare_courses, name="course_comparison"),

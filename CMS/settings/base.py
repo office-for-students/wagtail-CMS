@@ -23,7 +23,7 @@ SEARCH_V2_API = config("SEARCH_V2_API", default=None)
 # from decouple import config
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
-
+SEARCH_API_BASE_URL=config("SEARCH_API_BASE_URL", default=None)
 VERSION_FILE = os.path.join(BASE_DIR, "version.txt")
 
 try:

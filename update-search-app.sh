@@ -18,7 +18,7 @@ cd $SEARCH_APPLICATION_BUILD_ROOT
 npm run build-prod
 
 cd -
-cd coursefinder/static/search_app/
+cd coursesearch/static/search_app/
 
 old_js_file=$(ls *.js | head -n 1)
 old_css_file=$(ls *.css | head -n 1)
