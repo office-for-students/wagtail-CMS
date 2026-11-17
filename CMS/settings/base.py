@@ -34,6 +34,7 @@ except FileNotFoundError:
 
 LOCAL = config("LOCAL", default=False, cast=bool)
 READ_ONLY = config("READ_ONLY", False)
+IS_PRODUCTION = False
 
 ROOT_DOMAIN = config("ROOT_DOMAIN", "http://localhost:3000")
 DEBUG = config("DEBUG", False, cast=bool)
@@ -148,6 +149,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "CMS.context_processors.nav_menu_render",
+                "CMS.context_processors.environment",
                 "coursesearch.context_processors.search",
             ],
         },
