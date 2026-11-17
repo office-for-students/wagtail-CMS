@@ -106,7 +106,7 @@
 
         isCookiePage() {
             // The old indexOf("cookies") check matched any URL containing the word.
-            return /^\/cookies\/?$/.test(location.pathname);
+            return /^\/(?:cookies|cy\/cwcis)\/?$/.test(location.pathname);
         }
 
         setListeners() {
@@ -176,17 +176,12 @@
             }
             this.syncForm(accepted ? "accepted" : "declined");
 
-            if (this.isCookiePage()) {
-                // Leave the settings visible on the cookies page; just confirm.
-                this.hide(this.banner);
-            } else {
-                this.hideAll();
-            }
+            // Saving a choice always dismisses the banner/settings panel, including on the cookies page.
+            this.hideAll();
 
             this.announce(accepted
                 ? "You've accepted analytics cookies. You can change this at any time on the cookies page."
                 : "You've rejected analytics cookies. You can change this at any time on the cookies page.");
-            // No window.location.reload()
         }
 
         openSettings() {

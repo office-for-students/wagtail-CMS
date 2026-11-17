@@ -97,6 +97,11 @@
     display: block;
 }
 
+.cookie-settings .__status {
+    color: var(--white);
+    margin: 15px 0 0;
+}
+
 @media only screen and (min-width: 770px) {
     .cookie-banner section,
     .cookie-settings section {
