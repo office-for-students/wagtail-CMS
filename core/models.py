@@ -52,7 +52,6 @@ class DiscoverUniBasePage(Page):
         context = super().get_context(request)
         context['page'] = self
         context['translated_url'] = self.url_for_language()
-        context['cookies_accepted'] = request.COOKIES.get('discoverUniCookies')
         context['load_error'] = request.GET.get('load_error', '')
         context['error_type'] = request.GET.get('error_type', '')
         return context

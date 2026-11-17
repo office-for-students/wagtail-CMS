@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static discover_uni_tags sass_tags %}
+
+{% block body_class %}template-course-finder-results{% endblock %}
+        {% block title %}
+            {% get_translation key='course_search' language=lang %} | {% get_translation key='discover_uni' language=lang %}
+        {% endblock %}
+{% block extra_css %}
+    <link href="{% sass_src 'scss/course_finder.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
+{% endblock extra_css %}
+
+{% block content %}
+
+    {% include "coursefinder/search_app/search_app.html" %}
+
+{% endblock content %}

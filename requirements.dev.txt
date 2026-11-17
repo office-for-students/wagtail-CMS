@@ -5,3 +5,4 @@ pytest
 pip-audit
 bandit
 pipdeptree
+coverage

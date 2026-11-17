@@ -1,14 +1,17 @@
 import json
 import string
-from typing import List
+from collections.abc import Mapping
+from typing import Any, List
 from urllib.parse import urlencode
 
 from django import template
 from django.utils.safestring import mark_safe
 
 from CMS import translations
+from CMS.enums import enums
 from core.utils import get_code_version
 from core.utils import get_current_version
+from core.utils import get_language
 from courses.models import ACCREDITATION_KEY
 from courses.models import AFTER_ONE_YEAR_KEY
 from courses.models import EARNINGS_AFTER_COURSE_KEY
@@ -40,6 +43,22 @@ def current_version():
 @register.simple_tag
 def code_version():
     return get_code_version()
+
+
+@register.simple_tag(takes_context=True)
+def nav_is_english(context: Mapping[str, Any]) -> bool:
+    """Resolve the nav language even when a view has no CMS page for it."""
+    language = context.get('lang')
+    if language:
+        return bool(language == enums.languages.ENGLISH)
+
+    page = context.get('page')
+    if page is not None:
+        is_english = page.is_english
+        return bool(is_english() if callable(is_english) else is_english)
+
+    request = context.get('request')
+    return bool(get_language(getattr(request, 'path', None)) == enums.languages.ENGLISH)
 
 
 @register.simple_tag

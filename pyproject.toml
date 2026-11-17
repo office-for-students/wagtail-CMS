@@ -18,7 +18,7 @@ select = ["E", "F", "I", "B", "S", "UP", "SIM"]  # "S" enables Ruff's security (
 ignore = ["E501", "W605"]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**" = ["S101"]  # allow to assert in tests
+"**/test_*.py" = ["S101"]  # allow to assert in tests
 "**/tests.py" = ["E501", "S101"]
 
 [tool.coverage.run]
@@ -66,7 +66,7 @@ exclude_lines = [
 ]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["CMS"]
 
 [tool.bandit]
 exclude_dirs = [".venv", "venv", "tests"]
