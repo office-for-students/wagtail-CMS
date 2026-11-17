@@ -12,7 +12,6 @@ def course_finder_results_new(request, language=enums.languages.ENGLISH):
     else:
         translated_url = path.replace("/cy/", "/")
     context = {
-        "page": page,
         "lang": language,
         "translated_url": translated_url
     }
