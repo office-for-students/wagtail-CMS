@@ -83,7 +83,7 @@ def compare_courses_body(request, language=enums.languages.ENGLISH):
     if url_params.get('hasStorage', 0) == "0":
         return show_has_no_bookmarked_courses(request, language)
 
-    stored = url_params.getlist('courses') if 'courses' in url_params else None
+    stored = url_params.getlist('courses')
     if len(stored) <= 1:
         return show_not_enough_saved(request, language)
 

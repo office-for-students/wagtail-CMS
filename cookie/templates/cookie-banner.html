@@ -30,11 +30,11 @@
     </section>
 </article>
 
-<article class="cookie-settings" style="display: none;" aria-labelledby="cookie-settings" tabindex="-1"
+<article class="cookie-settings" style="display: none;" aria-labelledby="cookie-settings-title" tabindex="-1"
          id="cookie-settings">
     <section class="__message">
         <p>
-            <span id="cookie-settings">{% get_translation key='cookie_settings' language=page.get_language %}</span>
+            <span id="cookie-settings-title">{% get_translation key='cookie_settings' language=page.get_language %}</span>
             <br/>
             {% get_translation key='cookie_settings_intro' language=page.get_language %}
         </p>
@@ -54,6 +54,7 @@
             </label>
             <p>{% get_translation key="cookie_settings_no_marketing" language=page.get_language %}</p>
             <button type="submit">{% get_translation key="cookie_settings_save" language=page.get_language %}</button>
+            <p id="cookie-status" class="__status" role="status" aria-live="polite"></p>
         </form>
     </section>
     <section class="__footer">

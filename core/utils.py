@@ -3,6 +3,7 @@ from http import HTTPStatus
 
 import pyclamd
 from django.conf import settings
+from django.utils.translation import gettext as _
 
 from CMS.enums import enums
 from core.exceptions import VirusException
