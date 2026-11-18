@@ -1,8 +1,10 @@
 import os
 from http import HTTPStatus
+from typing import cast
 
 import pyclamd
 from django.conf import settings
+from django.core.cache import cache
 from django.utils.translation import gettext as _
 
 from CMS.enums import enums
@@ -105,10 +107,20 @@ def get_clam():
             raise ValueError('could not connect to clamd server either by unix or network socket') from err
 
 
-def get_current_version():
+def get_current_version() -> str:
+    """Cache the blob version briefly to avoid an HTTPS request on every page."""
+    cache_seconds = getattr(settings, 'CURRENT_VERSION_CACHE_SECONDS', 60)
+    cache_key = 'core:current_version'
+    if cache_seconds > 0:
+        cached_version = cache.get(cache_key)
+        if cached_version is not None:
+            return cast(str, cached_version)
+
     response = get_json_file("version.json")
 
-    version_number = response.json()["version"] if response.ok else ""
+    version_number = cast(str, response.json()["version"]) if response.ok else ""
+    if response.ok and cache_seconds > 0:
+        cache.set(cache_key, version_number, cache_seconds)
 
     return version_number
 

@@ -125,6 +125,7 @@ class InstitutionRequestHandlerTests(SimpleTestCase):
         get.assert_called_once_with(
             url='https://dataset.example/institutions/10002718',
             headers={'Ocp-Apim-Subscription-Key': 'test-api-key-not-real'},
+            timeout=(3.05, 10),
         )
 
 
