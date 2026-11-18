@@ -1,11 +1,12 @@
 import os
 from pathlib import Path
 
-from core.command import SimpleCommand
 from django.contrib.contenttypes.models import ContentType
 from django.core import management
 from django.core.management.base import CommandError
 from wagtail.models import Page
+
+from core.command import SimpleCommand
 
 
 class Command(SimpleCommand):
@@ -14,7 +15,7 @@ class Command(SimpleCommand):
     db_host                 = 'db'
     db_name                 = 'django'
     db_user                 = 'docker'
-    db_password             = 'docker'
+    db_password             = 'docker'  # noqa: S105 - local development default, not a credential
     json_file               = 'CMS/fixtures/postgres.json'
     message_count           = None
     total_success_messages  = 6

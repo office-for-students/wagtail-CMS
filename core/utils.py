@@ -1,8 +1,10 @@
 import os
 from http import HTTPStatus
+from typing import cast
 
 import pyclamd
 from django.conf import settings
+from django.core.cache import cache
 from django.utils.translation import gettext as _
 
 from CMS.enums import enums
@@ -25,17 +27,6 @@ def get_collection_link(db_id, collection_id):
 
     # Return a link to the relevant CosmosDB Container/Document Collection
     return "dbs/" + cosmosdb_database_id + "/colls/" + cosmosdb_collection_id
-
-
-def get_cosmos_client():
-    cosmosdb_uri = os.environ["AzureCosmosDbUri"]
-    cosmosdb_key = os.environ["AzureCosmosDbKey"]
-
-    master_key = "masterKey"
-
-    return cosmos_client.CosmosClient(
-        url_connection=cosmosdb_uri, auth={master_key: cosmosdb_key}
-    )
 
 
 def get_page_for_language(language, pages):
@@ -112,23 +103,30 @@ def get_clam():
             cd = pyclamd.ClamdNetworkSocket()
             cd.ping()
             return cd
-        except pyclamd.ConnectionError:
-            raise ValueError('could not connect to clamd server either by unix or network socket')
+        except pyclamd.ConnectionError as err:
+            raise ValueError('could not connect to clamd server either by unix or network socket') from err
 
 
-def get_current_version():
+def get_current_version() -> str:
+    """Cache the blob version briefly to avoid an HTTPS request on every page."""
+    cache_seconds = getattr(settings, 'CURRENT_VERSION_CACHE_SECONDS', 60)
+    cache_key = 'core:current_version'
+    if cache_seconds > 0:
+        cached_version = cache.get(cache_key)
+        if cached_version is not None:
+            return cast(str, cached_version)
+
     response = get_json_file("version.json")
 
-    if response.ok:
-        version_number = response.json()["version"]
-    else:
-        version_number = ""
+    version_number = cast(str, response.json()["version"]) if response.ok else ""
+    if response.ok and cache_seconds > 0:
+        cache.set(cache_key, version_number, cache_seconds)
 
     return version_number
 
 
 def get_code_version():
-    with open(os.path.join(settings.BASE_DIR, 'version.txt'), 'r') as file:
+    with open(os.path.join(settings.BASE_DIR, 'version.txt')) as file:
         return file.read().replace('\n', '')
 
 

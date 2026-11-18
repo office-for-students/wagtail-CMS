@@ -1,9 +1,9 @@
-from typing import List, Tuple, Any
+import logging
+from typing import Any
 
 from CMS import translations
 from courses.models import Course
 from courses.renderer.sections.base import Section
-import logging
 
 STUDY_MODE = "study_mode"
 COURSE_LENGTH = "length"
@@ -36,14 +36,14 @@ def presentable_course_length(course: Course, language: str) -> str:
     if course:
         label = course.length.label
         # when switching databases some times this was a string some times it was an int. Remove if data normalised
-        number_of_years = label if type(label) == int else int(label.split()[0])
+        number_of_years = label if type(label) is int else int(label.split()[0])
 
         if number_of_years > 1:
             word_year = translations.term_for_key(key="years", language=language)
         else:
             word_year = translations.term_for_key(key="year", language=language)
 
-        label = f"{number_of_years} {word_year}" if not number_of_years == 0 else ""
+        label = f"{number_of_years} {word_year}" if number_of_years != 0 else ""
         return label
     return None
 
@@ -95,7 +95,7 @@ def presentable_foundation_year(course: Course, language: str) -> str:
 
 def presentable_accreditation(course: Course, language: str) -> str:
     if course:
-        value = True if len(course.accreditations) > 0 else False
+        value = len(course.accreditations) > 0
         none_text = translations.term_for_key(key='none_recorded', language=language)
 
         if value:
@@ -122,7 +122,7 @@ def string_for_code(code: int, language: str, error: str) -> str:
 
 class CourseDetailSection(Section):
 
-    def get_sections(self) -> List[Tuple[Any, Any]]:
+    def get_sections(self) -> list[tuple[Any, Any]]:
         sections = [
             (STUDY_MODE, presentable_course_mode),
             (COURSE_LENGTH, presentable_course_length),

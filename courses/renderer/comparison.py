@@ -1,14 +1,11 @@
 import logging
+from collections.abc import Callable
 from typing import Any
-from typing import Callable
-from typing import Dict
-from typing import List
-from typing import Type
 
 from CMS import translations
 from courses.models import Course
-from .sections import CourseDetailSection
-from .sections import SatisfactionSection
+
+from .sections import CourseDetailSection, SatisfactionSection
 from .sections.base import Section
 from .sections.continuation import ContinuationSection
 from .sections.earnings import SubEarningsSection
@@ -22,7 +19,7 @@ from .sections.unavailable import get_subject_unavailable
 logger = logging.getLogger(__name__)
 
 
-def get_accordion_dataset(title: str, dataset, call_to_action=List[Dict[Any, Dict[Any, str]]]):
+def get_accordion_dataset(title: str, dataset, call_to_action=list[dict[Any, dict[Any, str]]]):
     response = dict(
         title=title,
         dataset=dataset,
@@ -32,7 +29,7 @@ def get_accordion_dataset(title: str, dataset, call_to_action=List[Dict[Any, Dic
     return response
 
 
-def get_sub_satisfaction(language) -> List:
+def get_sub_satisfaction(language) -> list:
     list_sub_accordions = [
         (translations.term_for_key(key="teaching", language=language), [1, 2, 3, 4]),
         (translations.term_for_key(key="learning_opportunities", language=language), [5, 6, 7, 8, 9]),
@@ -47,7 +44,7 @@ def get_sub_satisfaction(language) -> List:
     ]
     return list_sub_accordions
 
-def get_sub_overall_satisfaction(language) -> List:
+def get_sub_overall_satisfaction(language) -> list:
     list_sub_accordions = [
         (translations.term_for_key(key="teaching", language=language), translations.term_for_key(key='overall_teaching_on_my_course', language=language)),
         (translations.term_for_key(key="learning_opportunities", language=language), translations.term_for_key(key='overall_learning_opportunities', language=language)),
@@ -60,7 +57,7 @@ def get_sub_overall_satisfaction(language) -> List:
     return list_sub_accordions
 
 
-def get_sub_employment(language) -> List:
+def get_sub_employment(language) -> list:
     list_sub_accordions = [
         (translations.term_for_key(key="employment_after_the_course", language=language), [0, 9]),
         (translations.term_for_key(key="occupation_type", language=language), [9, 15]),
@@ -68,7 +65,7 @@ def get_sub_employment(language) -> List:
     return list_sub_accordions
 
 
-def get_sub_earnings(language) -> List:
+def get_sub_earnings(language) -> list:
     list_sub_accordions = [
         (translations.term_for_key(key="after_15_months", language=language), [0, 6]),
         (translations.term_for_key(key="after_3_years", language=language), [6, 11]),
@@ -77,7 +74,7 @@ def get_sub_earnings(language) -> List:
     return list_sub_accordions
 
 
-def get_sub_entry(language) -> List:
+def get_sub_entry(language) -> list:
     list_sub_accordions = [
         (translations.term_for_key(key="qualification_types", language=language), [0, 10]),
         (translations.term_for_key(key="ucas_tariff_points", language=language), [10, 13]),
@@ -85,7 +82,7 @@ def get_sub_entry(language) -> List:
     return list_sub_accordions
 
 
-def get_sub_accordion_dataset(courses, section_model, get_sub_headers, language) -> List:
+def get_sub_accordion_dataset(courses, section_model, get_sub_headers, language) -> list:
     response = []
 
     for accordion in get_sub_headers(language):
@@ -106,14 +103,14 @@ def get_sub_accordion_dataset(courses, section_model, get_sub_headers, language)
     return response
 
 
-def get_multiple_subjects(courses: List[Course], sources: List[str], language, earnings=False, override=False) -> Dict[str, List[str]]:
+def get_multiple_subjects(courses: list[Course], sources: list[str], language, earnings=False, override=False) -> dict[str, list[str]]:
     subjects = dict(subject=[])
     for course in courses:
         if course:
             subject_list = list()
             subject_names = course.subject_names
 
-            for index, subject_name in enumerate(subject_names):
+            for index, _subject_name in enumerate(subject_names):
                 subject = get_subject_label(course, index, sources, language, earnings, subject_names)
                 no_data_available = translations.term_for_key(key="no_data_available", language=language)
                 # TODO: remove when the override is to be disabled
@@ -121,7 +118,7 @@ def get_multiple_subjects(courses: List[Course], sources: List[str], language, e
                 if override:
                     subject = override_replace(subject, language)
                 # End remove
-                if not subject == no_data_available:
+                if subject != no_data_available:
                     subject_list.append(subject)
 
             subjects["subject"].append(subject_list)
@@ -142,10 +139,7 @@ def override_replace(sub, language):
 
 def has_valid_value(attrib, _object):
     method = getattr(_object, attrib)
-    if method is not None:
-        return True
-
-    return False
+    return method is not None
 
 
 def get_subject_label(course, index, sources, language, earnings, subject_names):
@@ -160,7 +154,7 @@ def get_subject_label(course, index, sources, language, earnings, subject_names)
                     fallback = translations.term_for_key(key="this_course", language=language)
             _object = getattr(course, f'{source}')[index]
 
-        except IndexError as e:
+        except IndexError:
             continue
 
         if earnings:
@@ -176,7 +170,7 @@ def get_subject_label(course, index, sources, language, earnings, subject_names)
 
     return fallback
 
-def check_courses(courses: List) -> List[Course]:
+def check_courses(courses: list) -> list[Course]:
     """
     Checks if course is valid, removes those that aren't
     """
@@ -186,7 +180,7 @@ def check_courses(courses: List) -> List[Course]:
     return courses
 
 
-def dataset_for_comparison_view(courses: List[Course], language="en") -> List[dict]:
+def dataset_for_comparison_view(courses: list[Course], language="en") -> list[dict]:
     response = []
     context = dict()
     courses = check_courses(courses)
@@ -299,7 +293,7 @@ def dataset_for_comparison_view(courses: List[Course], language="en") -> List[di
     return response
 
 
-def get_details(section_model: Type[Section], courses: List[Course], language: str, keys=None) -> Dict[str, str]:
+def get_details(section_model: type[Section], courses: list[Course], language: str, keys=None) -> dict[str, str]:
     if keys:
         section = section_model(courses=courses, language=language, keys=keys)
     else:

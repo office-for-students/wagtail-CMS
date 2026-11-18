@@ -2,19 +2,14 @@ import json
 import logging
 
 from django.http import JsonResponse
-from django.shortcuts import redirect
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from CMS import translations
 from CMS.enums import enums
 from CMS.translations.dictionaries.unavailable import UNAVAILABLE
 from core.request_handler import is_ajax
-from core.utils import get_new_landing_page_for_language
-from core.utils import get_page_for_language
-from courses.models import Course
-from courses.models import CourseComparisonPage
-from courses.models import CourseDetailPage
-from courses.models import CourseManagePage
+from core.utils import get_new_landing_page_for_language, get_page_for_language
+from courses.models import Course, CourseComparisonPage, CourseDetailPage, CourseManagePage
 from courses.views.tariff_affected_courses import TARIFF_AFFECTED_COURSES
 
 logger = logging.getLogger(__name__)
@@ -30,17 +25,14 @@ def regional_earnings(request):
         language = request.POST['language']
         course, error = Course.find(institution_id, course_id, kis_mode, language)
 
-        with open("./CMS/static/jsonfiles/regions.json", "r") as f:
+        with open("./CMS/static/jsonfiles/regions.json") as f:
             regions = f.read()
         region_full_name = "region unknown"
         region_dict = json.loads(regions)
         for region_elem in region_dict:
             elem_id = region_elem['id']
             if elem_id == region:
-                if language == 'cy':
-                    region_full_name = region_elem['name_cy']
-                else:
-                    region_full_name = region_elem['name_en']
+                region_full_name = region_elem['name_cy'] if language == 'cy' else region_elem['name_en']
 
                 if region_full_name[:2] == "- ":
                     region_full_name = region_full_name[2:]
@@ -332,6 +324,4 @@ def get_summary_stats(course):
 
 
 def has_summary_stats(course):
-    if any(data is not None and data != '' for data in get_summary_stats(course)):
-        return True
-    return False
+    return bool(any(data is not None and data != '' for data in get_summary_stats(course)))

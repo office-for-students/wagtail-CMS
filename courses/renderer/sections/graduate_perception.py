@@ -1,4 +1,4 @@
-from typing import List, Tuple, Any, Dict
+from typing import Any
 
 from CMS import translations
 from courses.models import Course
@@ -26,7 +26,7 @@ model_array = 4
 
 class GraduatePerceptionSection(Section):
 
-    def get_sections(self) -> List[Tuple[Any, Any, Any, str, str]]:
+    def get_sections(self) -> list[tuple[Any, Any, Any, str, str]]:
         sections = [
                 ("0", self.DATA_DISPLAYED, "", "", "graduate_perceptions", True),
                 ("1", self.DATA_FROM_PEOPLE, graduate_list[0], "", "graduate_perceptions"),
@@ -60,7 +60,7 @@ class GraduatePerceptionSection(Section):
         self.update_data_with_subtitles(self.data)
         return self.data
 
-    def update_data_with_subtitles(self, data: Dict[str, Any]):
+    def update_data_with_subtitles(self, data: dict[str, Any]):
         subtitles = {
             "3": "usefulness_subtitle",
             "4": "meaningfulness_subtitle",
@@ -84,7 +84,7 @@ class GraduatePerceptionSection(Section):
         try:
             accordion = translations.term_for_key(key="graduate_perceptions", language=language)
             _object = getattr(course, model_list)[index]
-            body = getattr(_object, "unavailable_reason_body")
+            body = _object.unavailable_reason_body
             header = get_unavailable(
                 course=course,
                 model_list=model_list,
@@ -92,9 +92,9 @@ class GraduatePerceptionSection(Section):
                 index=index,
                 accordion=accordion
             )
-        except Exception as e:
+        except Exception:
             header = translations.term_for_key(key="no_data_available", language=language)
-            _object = getattr(course, "display_no_data")()
+            _object = course.display_no_data()
             body = _object["reason"]
 
         return ["unavailable", header, body]

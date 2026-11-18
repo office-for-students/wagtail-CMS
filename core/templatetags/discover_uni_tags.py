@@ -1,25 +1,26 @@
 import json
 import string
 from collections.abc import Mapping
-from typing import Any, List
+from typing import Any
 from urllib.parse import urlencode
 
 from django import template
+from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
 from CMS import translations
 from CMS.enums import enums
-from core.utils import get_code_version
-from core.utils import get_current_version
-from core.utils import get_language
-from courses.models import ACCREDITATION_KEY
-from courses.models import AFTER_ONE_YEAR_KEY
-from courses.models import EARNINGS_AFTER_COURSE_KEY
-from courses.models import EMPLOYMENT_AFTER_COURSE_KEY
-from courses.models import ENTRY_INFO_KEY
-from courses.models import GRADUATE_PERCEPTIONS_KEY
-from courses.models import LINKS_TO_THE_INSTITUTION_WEBSITE_KEY
-from courses.models import STUDENT_SATISFACTION_KEY
+from core.utils import get_code_version, get_current_version, get_language
+from courses.models import (
+    ACCREDITATION_KEY,
+    AFTER_ONE_YEAR_KEY,
+    EARNINGS_AFTER_COURSE_KEY,
+    EMPLOYMENT_AFTER_COURSE_KEY,
+    ENTRY_INFO_KEY,
+    GRADUATE_PERCEPTIONS_KEY,
+    LINKS_TO_THE_INSTITUTION_WEBSITE_KEY,
+    STUDENT_SATISFACTION_KEY,
+)
 
 register = template.Library()
 
@@ -65,7 +66,7 @@ def nav_is_english(context: Mapping[str, Any]) -> bool:
 def queryparams(*_, **kwargs):
     safe_args = {key: value for key, value in kwargs.items() if value is not None}
     if safe_args:
-        return '?{}'.format(urlencode(safe_args))
+        return f'?{urlencode(safe_args)}'
     return ''
 
 
@@ -91,9 +92,9 @@ def get_translation(*_, **kwargs):
 
 @register.simple_tag
 def add_line_breaks(*_, **kwargs):
-    text = kwargs.get('text', '')
+    text = escape(kwargs.get('text', ''))
     text = text.replace('\n\n', '<br /><br />')
-    return mark_safe(text)
+    return mark_safe(text)  # noqa: S308 - user text is escaped above; only our <br /> tags are trusted
 
 
 @register.simple_tag
@@ -139,7 +140,7 @@ def map_distance_learning_values(key, language):
 @register.simple_tag
 def should_show_accordion(courses, accordion_type):
     if accordion_type == ACCREDITATION_KEY:
-        if type(courses) == tuple:
+        if type(courses) is tuple:
             show = False
             for course in courses:
                 if course and course.accreditations:
@@ -165,7 +166,7 @@ def brackets_replace_year(my_string, year):
 @register.simple_tag
 def replace_graduate_intro(year):
     if year:
-        return year.replace('Students graduating during ', f'')
+        return year.replace('Students graduating during ', '')
     else:
         return ""
 
@@ -245,7 +246,7 @@ def get_index_of_item(item, view_list):
 
 @register.simple_tag
 def get_region_list():
-    with open("./CMS/static/jsonfiles/regions.json", "r") as f:
+    with open("./CMS/static/jsonfiles/regions.json") as f:
         regions = f.read()
     return json.loads(regions)
 
@@ -264,7 +265,7 @@ def insert_values_to_plain_text(*_, **kwargs):
     return response
 
 @register.simple_tag
-def get_salary_from_index(objs: List, index: int):
+def get_salary_from_index(objs: list, index: int):
     try:
         return objs[index]
     except IndexError:
@@ -281,9 +282,7 @@ def get_item_at_index(lst, index):
 
 @register.simple_tag
 def is_franchise(pubukprn, ukprn):
-    if pubukprn != ukprn:
-        return True
-    return False
+    return pubukprn != ukprn
 
 
 @register.simple_tag
@@ -303,12 +302,12 @@ def get_t_number(value, item):
             return str(t_number) if t_number is not None else ""
 
         return ""
-    except Exception as e:
+    except Exception:
         return ""
 
 
 @register.simple_tag
-def gcu_course(loop: int, courses: List) -> bool:
+def gcu_course(loop: int, courses: list) -> bool:
     affected_course_id = "11BGLSCI"
     course = courses[loop]
     if course.kis_course_id == affected_course_id:
@@ -316,8 +315,5 @@ def gcu_course(loop: int, courses: List) -> bool:
 
 
 @register.simple_tag
-def has_theme(courses: List) -> bool:
-    for course in courses:
-        if course.satisfaction_stats[0].t1:
-            return True
-    return False
+def has_theme(courses: list) -> bool:
+    return any(course.satisfaction_stats[0].t1 for course in courses)

@@ -4,7 +4,6 @@ from django.shortcuts import render
 
 from CMS import translations
 from CMS.enums import enums
-from core import utils
 from core.utils import get_new_landing_page_for_language
 from courses import renderer
 from courses.models import Course
@@ -60,7 +59,7 @@ def show_courses_selected_for_comparison(courses_list, request, language):
                         if course_model == course:
                             courses_list.remove(course)
 
-                    redirect_page = get_new_landing_page_for_language(language)
+                    get_new_landing_page_for_language(language)
                     # TODO: Update how errors ar handled as simply redirecting to the home page in this content is not the right answer at all
                     # return redirect(redirect_page + '?load_error=true&error_type=0')
 

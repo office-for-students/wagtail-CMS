@@ -1,11 +1,15 @@
 import json
+from threading import local
 from unittest.mock import Mock, patch
 
+from django.core.cache import cache
 from django.http import HttpResponse
-from django.test import RequestFactory, SimpleTestCase, tag
+from django.test import RequestFactory, SimpleTestCase, override_settings, tag
 from django.urls import resolve
+from requests.models import Response
 
 from CMS.test.utils import UniSimpleTestCase
+from core.request_handler import REQUEST_TIMEOUT
 from courses import request_handler
 from courses.models import (
     AccreditationBlock,
@@ -82,16 +86,117 @@ class CoursesModelsTests(UniSimpleTestCase):
 @tag('azure')
 class CourseRequestHandlerTests(SimpleTestCase):
 
-    @patch('courses.request_handler.requests.get')
-    def test_load_course_data_formats_url_and_subscription_header(self, get):
+    def setUp(self) -> None:
+        cache.clear()
+
+    @staticmethod
+    def successful_response(payload: dict[str, str]) -> Response:
+        response = Response()
+        response.status_code = 200
+        response._content = json.dumps(payload).encode('utf-8')
+        return response
+
+    @patch('courses.request_handler._get_session')
+    def test_load_course_data_formats_url_header_and_timeout(self, get_session: Mock) -> None:
+        session = Mock()
+        session.get.return_value = self.successful_response({'id': 'course-record'})
+        get_session.return_value = session
         with patch('courses.request_handler.settings.DATASETAPIHOST', 'https://dataset.example'), \
                 patch('courses.request_handler.settings.DATASETAPIKEY', 'test-api-key-not-real'):
-            request_handler.load_course_data('10000055', 'AB20', 1)
+            result = request_handler.load_course_data('10000055', 'AB20', 1)
 
-        get.assert_called_once_with(
+        self.assertEqual(result, {'id': 'course-record'})
+        session.get.assert_called_once_with(
             url='https://dataset.example/institutions/10000055/courses/AB20/modes/1',
             headers={'Ocp-Apim-Subscription-Key': 'test-api-key-not-real'},
+            timeout=REQUEST_TIMEOUT,
         )
+
+    @patch('courses.request_handler._get_session')
+    def test_load_course_data_caches_successful_payload(self, get_session: Mock) -> None:
+        session = Mock()
+        session.get.return_value = self.successful_response({'id': 'course-record'})
+        get_session.return_value = session
+
+        first = request_handler.load_course_data('10000055', 'AB20', 1)
+        second = request_handler.load_course_data('10000055', 'AB20', 1)
+
+        self.assertEqual(first, {'id': 'course-record'})
+        self.assertEqual(second, first)
+        session.get.assert_called_once()
+
+    @patch('courses.request_handler._get_session')
+    def test_load_course_data_does_not_cache_unsuccessful_responses(self, get_session: Mock) -> None:
+        session = Mock()
+        response = Response()
+        response.status_code = 404
+        session.get.return_value = response
+        get_session.return_value = session
+
+        first = request_handler.load_course_data('10000055', 'AB20', 1)
+        second = request_handler.load_course_data('10000055', 'AB20', 1)
+
+        self.assertIs(first, response)
+        self.assertIs(second, response)
+        self.assertEqual(session.get.call_count, 2)
+
+    @patch('courses.request_handler._get_session')
+    def test_load_course_data_separates_cache_entries_by_course_and_mode(self, get_session: Mock) -> None:
+        session = Mock()
+        session.get.side_effect = [
+            self.successful_response({'id': 'first'}),
+            self.successful_response({'id': 'second-mode'}),
+            self.successful_response({'id': 'second-course'}),
+        ]
+        get_session.return_value = session
+
+        first = request_handler.load_course_data('10000055', 'AB20', 1)
+        second_mode = request_handler.load_course_data('10000055', 'AB20', 2)
+        second_course = request_handler.load_course_data('10000055', 'XY10', 1)
+
+        self.assertEqual(first, {'id': 'first'})
+        self.assertEqual(second_mode, {'id': 'second-mode'})
+        self.assertEqual(second_course, {'id': 'second-course'})
+        self.assertEqual(session.get.call_count, 3)
+
+    def test_get_session_reuses_session_in_same_thread(self) -> None:
+        with patch.object(request_handler, '_SESSION_LOCAL', local()), \
+                patch('courses.request_handler.requests.Session') as session_factory:
+            first = request_handler._get_session()
+            second = request_handler._get_session()
+
+        self.assertIs(first, second)
+        session_factory.assert_called_once_with()
+
+    @patch('courses.request_handler._get_session')
+    def test_non_object_success_response_remains_a_response(self, get_session: Mock) -> None:
+        session = Mock()
+        response = Response()
+        response.status_code = 200
+        response._content = b'[]'
+        session.get.return_value = response
+        get_session.return_value = session
+
+        result = request_handler.load_course_data('10000055', 'AB20', 1)
+
+        self.assertIs(result, response)
+        session.get.assert_called_once()
+
+    @override_settings(COURSE_DATA_CACHE_SECONDS=0)
+    @patch('courses.request_handler._get_session')
+    def test_zero_cache_ttl_disables_course_data_cache(self, get_session: Mock) -> None:
+        session = Mock()
+        session.get.side_effect = [
+            self.successful_response({'id': 'first'}),
+            self.successful_response({'id': 'second'}),
+        ]
+        get_session.return_value = session
+
+        request_handler.load_course_data('10000055', 'AB20', 1)
+        second = request_handler.load_course_data('10000055', 'AB20', 1)
+
+        self.assertEqual(second, {'id': 'second'})
+        self.assertEqual(session.get.call_count, 2)
 
 
 @tag('azure')

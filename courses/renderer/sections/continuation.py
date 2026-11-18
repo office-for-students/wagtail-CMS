@@ -1,6 +1,4 @@
 from typing import Any
-from typing import List
-from typing import Tuple
 
 from courses.renderer.sections.base import Section
 
@@ -25,7 +23,7 @@ unavailable = 4
 
 class ContinuationSection(Section):
 
-    def get_sections(self) -> List[Tuple[Any, Any, str, str]]:
+    def get_sections(self) -> list[tuple[Any, Any, str, str]]:
         sections = [
             (self.DATA_DISPLAYED, "", "", "continuation_stats", True),
             (CONTINUATION_DATA_FROM_PEOPLE, continuation_list[0], "", "continuation_stats"),

@@ -1,5 +1,6 @@
 from CMS.enums import enums
 from CMS.translations.dictionaries.general import DICT
+
 from .salary import Salary
 from .sectorsalary import SectorSalary
 from .utils import separate_unavail_reason
@@ -182,7 +183,7 @@ class SalariesAggregate:
         return subject_name
 
     def display_subject_name_earnings_tabs(self):
-        mode = self.mode.lower()
+        self.mode.lower()
 
         if self.display_language == enums.languages.ENGLISH:
             subject_name = self.subject_english if self.subject_english else self.subject_welsh

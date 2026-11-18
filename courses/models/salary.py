@@ -33,7 +33,6 @@ class Salary:
             #   XG - Northern Ireland
             #   XH - Scotland
             #   XI - Wales
-            salary_default_country_prov_pc = None
 
             if institution_country_code == 'XF':
                 country_postfix = "_e"
