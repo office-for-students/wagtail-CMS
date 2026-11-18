@@ -1,12 +1,9 @@
 import json
 
-from django.http import HttpResponse
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
-from core.request_handler import get_json_file
-from core.request_handler import get_sitemap_file
-from core.request_handler import send_feedback
+from core.request_handler import get_json_file, get_sitemap_file, send_feedback
 from institutions.utils import load_institution_json
 
 
@@ -27,20 +24,14 @@ def submit_feedback(request):
 
     response = send_feedback(json.dumps(feedback_obj))
 
-    if response.ok:
-        response_body = {}
-    else:
-        response_body = response.json()
+    response_body = {} if response.ok else response.json()
     return JsonResponse(response_body, status=response.status_code)
 
 
 def get_subjects_json(request):
     response = get_json_file("subjects.json")
 
-    if response.ok:
-        response_body = response.json()
-    else:
-        response_body = {}
+    response_body = response.json() if response.ok else {}
 
     return JsonResponse(response_body, status=response.status_code, safe=False)
 

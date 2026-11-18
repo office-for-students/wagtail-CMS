@@ -1,7 +1,9 @@
 import json
 import subprocess
-from django.core.management.base import BaseCommand
+import sys
+
 from django.apps import apps
+from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
@@ -49,8 +51,9 @@ class Command(BaseCommand):
             self.stdout.flush()
 
             try:
-                result = subprocess.run(
-                    ["python", "manage.py", "dumpdata", label],
+                # Arguments come from installed model labels, not user input.
+                result = subprocess.run(  # noqa: S603
+                    [sys.executable, "manage.py", "dumpdata", label],
                     capture_output=True,
                     text=True,
                     check=True,

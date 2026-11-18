@@ -1,4 +1,3 @@
-from typing import List
 
 from CMS.enums import enums
 
@@ -55,7 +54,7 @@ class Tariff:
         return ''
 
 
-def tariff_range(tariff_list: List, language: str) -> str:
+def tariff_range(tariff_list: list, language: str) -> str:
     min_code = tariff_list[0]["code"]
     max_code = tariff_list[-1]["code"]
 

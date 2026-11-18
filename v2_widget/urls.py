@@ -1,10 +1,12 @@
 from django.urls import path
 
-from v2_widget.views import configurator_view
-from v2_widget.views import v2_api_institution_courses
-from v2_widget.views import v2_api_institutions
-from v2_widget.views import v2_widget_embed
-from v2_widget.views import v2_widget_placeholder_embed
+from v2_widget.views import (
+    configurator_view,
+    v2_api_institution_courses,
+    v2_api_institutions,
+    v2_widget_embed,
+    v2_widget_placeholder_embed,
+)
 
 urlpatterns = [
     path('configurator/', configurator_view, name='v2_widget_configurator'),

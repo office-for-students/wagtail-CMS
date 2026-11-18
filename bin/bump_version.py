@@ -2,7 +2,7 @@ import sys
 
 
 def bump_version(level):
-    with open('../version.txt', 'r') as file:
+    with open('../version.txt') as file:
         version = file.read().replace('\n', '')
 
     version_parts = version.split('.')

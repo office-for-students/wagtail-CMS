@@ -2,12 +2,8 @@ import logging
 
 from django.db.models.fields import TextField
 from wagtail.admin.panels import FieldPanel
-from wagtail.blocks import CharBlock
-from wagtail.blocks import RichTextBlock
-from wagtail.blocks import StructBlock
-from wagtail.blocks import StructValue
-from wagtail.fields import RichTextField
-from wagtail.fields import StreamField
+from wagtail.blocks import CharBlock, RichTextBlock, StructBlock, StructValue
+from wagtail.fields import RichTextField, StreamField
 
 from core.models import DiscoverUniBasePage
 

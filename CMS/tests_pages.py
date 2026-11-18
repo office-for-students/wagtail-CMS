@@ -1,5 +1,4 @@
-from django.test import TestCase, Client
-
+from django.test import Client, TestCase
 from wagtail.models import Page
 
 
@@ -17,7 +16,7 @@ class PagesTest(TestCase):
                 response = self.client.get(page.url)
                 try:
                     self.assertEqual(200, response.status_code)
-                except AssertionError:
+                except AssertionError as err:
                     raise AssertionError(
                         str(page.title)+'('+str(page.url)+') does not exist'
-                    )
+                    ) from err

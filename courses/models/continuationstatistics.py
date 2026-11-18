@@ -1,5 +1,4 @@
-from courses.models.utils import display_unavailable_info, new_subject_unavail
-from courses.models.utils import enums
+from courses.models.utils import display_unavailable_info, enums, new_subject_unavail
 
 
 class ContinuationStatistics:

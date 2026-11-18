@@ -1,4 +1,3 @@
-from core.utils import fallback_to
 
 
 class CourseCodeGeneric:

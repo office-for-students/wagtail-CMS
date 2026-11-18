@@ -3,13 +3,18 @@ import os
 import requests
 from django.conf import settings
 
+# (connect, read) seconds; stops a slow upstream from hanging a request worker indefinitely.
+REQUEST_TIMEOUT = (3.05, 10)
+
 
 def send_feedback(feedback_data):
     headers = {
         'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
     }
 
-    return requests.post(url=settings.FEEDBACK_API_HOST, headers=headers, data=feedback_data)
+    return requests.post(
+        url=settings.FEEDBACK_API_HOST, headers=headers, data=feedback_data, timeout=REQUEST_TIMEOUT
+    )
 
 
 def get_json_file(json_file):
@@ -27,7 +32,7 @@ def get_json_file(json_file):
 
             return response
     else:
-        return requests.get(os.getenv('JSONFILES_STORAGE_CONTAINER') + "/" + json_file)
+        return requests.get(os.getenv('JSONFILES_STORAGE_CONTAINER') + "/" + json_file, timeout=REQUEST_TIMEOUT)
 
 
 def get_sitemap_file():
@@ -44,13 +49,11 @@ def get_sitemap_file():
         return response
     else:
         path = settings.JSONFILES_STORAGE_CONTAINER + "/" + "sitemaps.xml"
-        response = requests.get(path)
+        response = requests.get(path, timeout=REQUEST_TIMEOUT)
         return response
 
 
 def is_ajax(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         return True
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        return True
-    return False
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'

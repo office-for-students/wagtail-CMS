@@ -1,6 +1,5 @@
+import logging
 from typing import Any
-from typing import List
-from typing import Tuple
 
 from django.template.loader import render_to_string
 
@@ -8,6 +7,8 @@ from CMS import translations
 from courses.models import Course
 from courses.renderer.sections.base import Section
 from courses.renderer.sections.earnings_unavailable import get_unavailable
+
+logger = logging.getLogger(__name__)
 
 AVERAGE_EARNINGS = "average_earnings_course_overview_1"
 INSTITUTION = "this_institution"
@@ -34,12 +35,12 @@ extras = 5
 
 class SubEarningsSection(Section):
 
-    def __init__(self, keys: List, courses, language='en'):
+    def __init__(self, keys: list, courses, language='en'):
         self.start_range = keys[0]
         self.end_range = keys[1]
         super().__init__(courses, language)
 
-    def get_sections(self) -> List[Tuple[Any, Any, Any, str]]:
+    def get_sections(self) -> list[tuple[Any, Any, Any, str]]:
         sections = [
             (
                 ("1", AVERAGE_EARNINGS, earnings_list[0], "", "go_salaries_inst", "first"),
@@ -65,7 +66,7 @@ class SubEarningsSection(Section):
         sub_sections = []
 
         for i in range(self.start_range, self.end_range):
-            sub_sections.append((sections[0][i]))
+            sub_sections.append(sections[0][i])
 
         return sub_sections
 
@@ -77,7 +78,7 @@ class SubEarningsSection(Section):
 
     def generate_dict(self) -> dict:
         for course in self.courses:
-            for index, section in enumerate(self.sections):
+            for _index, section in enumerate(self.sections):
                 self.data[section[0]]["values"].append(
                     self.presentable_data(
                         course=course,
@@ -93,7 +94,7 @@ class SubEarningsSection(Section):
     @classmethod
     def multiple_subjects(cls, course: Course, stat: str, model_list_name: str, language: str, prefix="", extra=False):
         response = dict(subject=[], values=[])
-        no_data = translations.term_for_key(key="no_data_available", language=language)
+        translations.term_for_key(key="no_data_available", language=language)
 
         for index, subject in enumerate(course.subject_names):
             subject_name = subject.display_subject_name()
@@ -130,7 +131,7 @@ class SubEarningsSection(Section):
                         )
                     ) if method else values
                 elif extra == "final":
-                    country = getattr(_object, "country")
+                    country = _object.country
                     values = render_to_string(
                         "courses/partials/country_population.html",
                         context=dict(
@@ -198,7 +199,7 @@ class SubEarningsSection(Section):
                         )
                     ) if method else response
                 elif extra == "final":
-                    country = getattr(_object, "country")
+                    country = _object.country
                     response = render_to_string(
                         "courses/partials/country_population.html",
                         context=dict(
@@ -209,9 +210,9 @@ class SubEarningsSection(Section):
                 else:
                     response = f"{prefix}{method}" if method else response
 
-        except Exception as e:
-            # print("error: ", e)
-            pass
+        except Exception:
+            # Missing earnings fields are expected for some courses; fall back to the default response.
+            logger.debug("Could not resolve earnings population text", exc_info=True)
 
         return response
 
@@ -227,7 +228,7 @@ class SubEarningsSection(Section):
                 body = translations.term_for_key(key="unavailable_northern_ireland", language=language)
             else:
                 _object = getattr(course, model_list_name)[0] if "sector" not in model_list_name else None
-                method = getattr(_object, "unavailable_body") if _object else None
+                method = _object.unavailable_body if _object else None
                 header = translations.term_for_key(key="no_data_available", language=language)
                 body = method
 

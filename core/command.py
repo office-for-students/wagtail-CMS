@@ -1,7 +1,6 @@
 import azure.cosmos.cosmos_client as cosmos_client
 from django.conf import settings
-from django.core.management.base import BaseCommand
-from django.core.management.base import CommandError
+from django.core.management.base import BaseCommand, CommandError
 
 
 class SimpleCommand(BaseCommand):
@@ -48,9 +47,9 @@ class CosmosCommand(SimpleCommand):
         version = self.base_query('datasets', 'SELECT VALUE MAX(c.version) from c')
         try:
             version_int = int(version[0])
-        except Exception:
+        except Exception as err:
             raise CommandError('version returned is not an integer in a list (' + \
-                               str(version) + ')')
+                               str(version) + ')') from err
         self.success('Got latest version number from CosmosDB (' + \
                      str(version_int) + ')')
         return version_int

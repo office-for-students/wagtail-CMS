@@ -1,2 +1,2 @@
-from .satisfaction import SatisfactionSection
-from .course_details import CourseDetailSection
+from .course_details import CourseDetailSection as CourseDetailSection
+from .satisfaction import SatisfactionSection as SatisfactionSection

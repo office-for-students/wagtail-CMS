@@ -1,11 +1,7 @@
 from django.db.models.fields import TextField
 from wagtail.admin.panels import FieldPanel
-from wagtail.blocks import PageChooserBlock
-from wagtail.blocks import RichTextBlock
-from wagtail.blocks import StructBlock
-from wagtail.blocks import TextBlock
-from wagtail.fields import RichTextField
-from wagtail.fields import StreamField
+from wagtail.blocks import PageChooserBlock, RichTextBlock, StructBlock, TextBlock
+from wagtail.fields import RichTextField, StreamField
 
 from core.models import DiscoverUniBasePage
 

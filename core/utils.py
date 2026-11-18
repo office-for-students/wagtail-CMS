@@ -27,17 +27,6 @@ def get_collection_link(db_id, collection_id):
     return "dbs/" + cosmosdb_database_id + "/colls/" + cosmosdb_collection_id
 
 
-def get_cosmos_client():
-    cosmosdb_uri = os.environ["AzureCosmosDbUri"]
-    cosmosdb_key = os.environ["AzureCosmosDbKey"]
-
-    master_key = "masterKey"
-
-    return cosmos_client.CosmosClient(
-        url_connection=cosmosdb_uri, auth={master_key: cosmosdb_key}
-    )
-
-
 def get_page_for_language(language, pages):
     def is_correct_language(page):
         return page.get_language() == language
@@ -112,23 +101,20 @@ def get_clam():
             cd = pyclamd.ClamdNetworkSocket()
             cd.ping()
             return cd
-        except pyclamd.ConnectionError:
-            raise ValueError('could not connect to clamd server either by unix or network socket')
+        except pyclamd.ConnectionError as err:
+            raise ValueError('could not connect to clamd server either by unix or network socket') from err
 
 
 def get_current_version():
     response = get_json_file("version.json")
 
-    if response.ok:
-        version_number = response.json()["version"]
-    else:
-        version_number = ""
+    version_number = response.json()["version"] if response.ok else ""
 
     return version_number
 
 
 def get_code_version():
-    with open(os.path.join(settings.BASE_DIR, 'version.txt'), 'r') as file:
+    with open(os.path.join(settings.BASE_DIR, 'version.txt')) as file:
         return file.read().replace('\n', '')
 
 

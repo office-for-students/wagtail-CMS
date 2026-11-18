@@ -2,10 +2,7 @@
 import re
 import string
 
-from .dictionaries import general
-from .dictionaries import jobs
-from .dictionaries import statistics
-from .dictionaries import unavailable
+from .dictionaries import general, jobs, statistics, unavailable
 
 
 def cleanup_key(key):

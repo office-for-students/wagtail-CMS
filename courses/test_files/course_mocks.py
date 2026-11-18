@@ -1,8 +1,10 @@
 import json
-from requests.models import Response
 from http import HTTPStatus
 
+from requests.models import Response
+
 from courses.test_files.course_mocks_content import content
+
 
 class CourseMocks:
 

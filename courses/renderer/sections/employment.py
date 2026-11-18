@@ -1,9 +1,9 @@
-from typing import List, Tuple, Any, Dict
+from typing import Any
 
 from CMS import translations
+from courses.models import Course
 from courses.renderer.sections.base import Section
 from courses.renderer.sections.unavailable import get_unavailable
-from courses.models import Course
 
 PERCENTAGE_THOSE_ASKED = "percent_of_those_asked"
 NOW_WORKING = "now_working"
@@ -41,12 +41,12 @@ model_index = 4
 
 class SubEmploymentSection(Section):
 
-    def __init__(self, keys: List, courses, language='en'):
+    def __init__(self, keys: list, courses, language='en'):
         self.start_range = keys[0]
         self.end_range = keys[1]
         super().__init__(courses, language)
 
-    def get_sections(self) -> List[Tuple[Any, Any, Any, str]]:
+    def get_sections(self) -> list[tuple[Any, Any, Any, str]]:
         sub_sections = []
         sections = [
             (
@@ -69,7 +69,7 @@ class SubEmploymentSection(Section):
             )]
 
         for i in range(self.start_range, self.end_range):
-            sub_sections.append((sections[0][i]))
+            sub_sections.append(sections[0][i])
         return sub_sections
 
     def prep_data(self):
@@ -95,7 +95,7 @@ class SubEmploymentSection(Section):
         self.update_data_with_subtitles(self.data)
         return self.data
 
-    def update_data_with_subtitles(self, data: Dict[str, Any]):
+    def update_data_with_subtitles(self, data: dict[str, Any]):
         subtitles = {
             "6": "unemp_prev_emp_since_grad",
             "7": "unemp_not_work_since_grad",
@@ -120,7 +120,7 @@ class SubEmploymentSection(Section):
         try:
             accordion = translations.term_for_key(key="employment_15_months", language=language)
             _object = getattr(course, model_list)[index]
-            body = getattr(_object, "unavailable_reason_body")
+            body = _object.unavailable_reason_body
             header = get_unavailable(
                 course=course,
                 model_list=model_list,
@@ -128,9 +128,9 @@ class SubEmploymentSection(Section):
                 index=index,
                 accordion=accordion
             )
-        except Exception as e:
+        except Exception:
             header = translations.term_for_key(key="no_data_available", language=language)
-            _object = getattr(course, "display_no_data")()
+            _object = course.display_no_data()
             body = _object["reason"]
 
         return ["unavailable", header, body]

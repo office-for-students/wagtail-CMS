@@ -1,13 +1,8 @@
 from django.db import models
-from wagtail.admin.panels import FieldPanel
-from wagtail.admin.panels import PageChooserPanel
-from wagtail.blocks import CharBlock
-from wagtail.blocks import PageChooserBlock
-from wagtail.blocks import StreamBlock
-from wagtail.blocks import StructBlock
+from wagtail.admin.panels import FieldPanel, PageChooserPanel
+from wagtail.blocks import CharBlock, PageChooserBlock, StreamBlock, StructBlock
 from wagtail.fields import StreamField
 from wagtail.models import Page
-from wagtail.snippets.models import register_snippet
 
 from CMS.enums import enums
 from core import utils

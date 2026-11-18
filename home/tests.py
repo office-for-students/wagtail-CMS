@@ -1,5 +1,5 @@
-from django.test.testcases import TestCase
 from django.test import tag
+from django.test.testcases import TestCase
 
 
 @tag('github')

@@ -1,8 +1,10 @@
 import json
-from requests.models import Response
 from http import HTTPStatus
 
+from requests.models import Response
+
 from institutions.test_files.institution_mocks_content import content
+
 
 class InstitutionMocks:
     @classmethod

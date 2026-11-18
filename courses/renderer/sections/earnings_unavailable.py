@@ -18,9 +18,9 @@ def get_data(
         language: str
 ) -> str:
     _object = getattr(course, model_list_name)[0]
-    unavailable_code = getattr(_object, "unavail_reason")
+    unavailable_code = _object.unavail_reason
     aggregation_level = _getattr(_object, "aggregate", None)
-    kis_level = getattr(course, "course_level")
+    kis_level = course.course_level
 
     return set_message(
         course=course,

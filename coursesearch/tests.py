@@ -2,7 +2,7 @@ from unittest.mock import Mock, patch
 
 from django.http import HttpResponse
 from django.template.loader import get_template
-from django.test import RequestFactory, SimpleTestCase, TestCase, override_settings, tag
+from django.test import RequestFactory, SimpleTestCase, TestCase, tag
 
 from core.models import DiscoverUniBasePage
 from coursesearch import models as coursefinder_models

@@ -10,7 +10,7 @@ class ApiError:
         self.status_code = status_code
         self.action = action
 
-        logger.error('An error occurred on the API during the execution of %s' % action)
+        logger.error(f'An error occurred on the API during the execution of {action}')
 
     def get_error_message(self):
         return self.base_message % self.action

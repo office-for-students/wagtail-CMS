@@ -1,15 +1,11 @@
-from typing import Tuple
 
-from django.shortcuts import redirect
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse
 
 from CMS.enums import enums
 from CMS.translations import term_for_key
-from core.utils import get_new_landing_page_for_language
-from core.utils import get_page_for_language
-from institutions.models import Institution
-from institutions.models import InstitutionDetailPage
+from core.utils import get_new_landing_page_for_language, get_page_for_language
+from institutions.models import Institution, InstitutionDetailPage
 
 AFFILIATE_INSTITUTIONS = "affiliated"
 PENDING_INSTITUTIONS = "pending"
@@ -25,7 +21,7 @@ ENGLISH_INSTITUTIONS = "XF"
 def get_tef_status(institution):
     if institution.pub_ukprn_country_code == ENGLISH_INSTITUTIONS:
         # England
-        if type(institution.tef_outcome) == list:
+        if type(institution.tef_outcome) is list:
             # Affiliates are accredited but institution is not
             return AFFILIATE_INSTITUTIONS
         else:
@@ -81,7 +77,7 @@ def institution_detail(request, institution_id, language=enums.languages.ENGLISH
     return render(request, 'institution/institution_detail.html', context)
 
 
-def get_tef_image(outcome_1, outcome_2, outcome_3) -> Tuple[str, str]:
+def get_tef_image(outcome_1, outcome_2, outcome_3) -> tuple[str, str]:
     if outcome_1 == 'Bronze' and outcome_2 == 'Silver' and outcome_3 == 'Bronze':
         return (f"images/tef_images/{outcome_1.lower()}_{outcome_2.lower()}_{outcome_3.lower()}.png",
                 f"TEF awards as follows: \nOverall Rating: {outcome_1}; \nStudent Experience Rating: {outcome_2}; \nand Student Outcomes Rating: {outcome_3}.")
@@ -92,7 +88,9 @@ def get_tef_image(outcome_1, outcome_2, outcome_3) -> Tuple[str, str]:
     # https://www.officeforstudents.org.uk/advice-and-guidance/the-tef/
 
 
-def get_tef_body_copy_context(institution, language, status, tef_context, affiliates=[]):
+def get_tef_body_copy_context(institution, language, status, tef_context, affiliates=None):
+    if affiliates is None:
+        affiliates = []
     if status == AFFILIATE_INSTITUTIONS:
         tef_context["left_copy"] = None
         tef_context["left_button"] = None
@@ -209,7 +207,7 @@ def create_affiliate_copy(institution, language, affiliates, institution_name) -
     return base_str.format(institution_name, end_str)
 
 
-def get_logo_path(institution, status) -> Tuple[str, str]:
+def get_logo_path(institution, status) -> tuple[str, str]:
     """
     Returns a tuple of the path to the logo to the correct logo for the tef data for that institution
     and the appropriate alt text for the logo.
@@ -223,7 +221,7 @@ def get_logo_path(institution, status) -> Tuple[str, str]:
             institution.tef_outcome["student_outcomes_rating"]
         )
         return tef_image
-    elif status == PENDING_INSTITUTIONS or status == AFFILIATE_INSTITUTIONS or status == TEF_NO_TEF_INSTITUTIONS:
+    elif status in (PENDING_INSTITUTIONS, AFFILIATE_INSTITUTIONS, TEF_NO_TEF_INSTITUTIONS):
         return "images/tef_logo.svg", "Teaching Excellence Framework logo"
     elif status == WALES_INSTITUTIONS:
         # Wales
