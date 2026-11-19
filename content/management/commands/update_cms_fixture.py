@@ -3,11 +3,12 @@ import os
 import re
 from pathlib import Path
 
-from core.command import SimpleCommand
 from django.conf import settings
 from django.contrib.auth.hashers import make_password
 from django.core import management
 from django.core.management.base import CommandError
+
+from core.command import SimpleCommand
 
 
 class Command(SimpleCommand):
@@ -16,10 +17,10 @@ class Command(SimpleCommand):
     db_host                 = 'db'
     db_name                 = 'django'
     db_user                 = 'docker'
-    db_password             = 'docker'
+    db_password             = 'docker'  # noqa: S105 - local development default, not a credential
     json_file               = 'CMS/fixtures/postgres.json'
     full_file_name          = None
-    default_password        = 'password'
+    default_password        = 'password'  # noqa: S105 - local development default, not a credential
     password                = None
     message_count           = None
     total_success_messages  = 2
@@ -66,7 +67,7 @@ class Command(SimpleCommand):
 
         self.info('Copying database (<2mins) (remote)')
 
-        json_data = management.call_command(
+        management.call_command(
             'dumpdata',
             '--database',
             'remote',
@@ -91,7 +92,7 @@ class Command(SimpleCommand):
         new_usernames = {}
         with open(self.full_file_name, '+r') as file:
             data = json.load(file)
-            for index, item in enumerate(data):
+            for index, _item in enumerate(data):
                 # (source: https://www.accordbox.com/blog/how-export-restore-wagtail-site/)
                 if data[index]['model'] == 'wagtailcore.page':
                     data[index]['fields']['latest_revision_created_at'] = None
@@ -110,7 +111,7 @@ class Command(SimpleCommand):
 
             # where users are used else where in the json they need to be replaced
             # by the new users as well
-            for index, item in enumerate(data):
+            for index, _item in enumerate(data):
                 if data[index]['model'] == 'wagtailcore.page' and \
                    data[index]['fields']['owner']:
                     old_username = data[index]['fields']['owner'][0]

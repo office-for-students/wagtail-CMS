@@ -1,12 +1,9 @@
 import logging
 from typing import Any
-from typing import List
-from typing import Tuple
 
 from CMS.translations import translations
 from courses.models import Course
 from courses.renderer.sections.base import Section
-from courses.renderer.sections.unavailable import get_unavailable
 
 OVERALL_SATISFACTION = "overall_satisfied"
 PERCENTAGE_THOSE_ASKED = "percent_of_those_asked"
@@ -27,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 class SatisfactionSection(Section):
 
-    def get_sections(self) -> List[Tuple[Any, Any, Any, Any]]:
+    def get_sections(self) -> list[tuple[Any, Any, Any, Any]]:
         self.sections = [
             (OVERALL_SATISFACTION, satisfaction_list[0], "%", "satisfaction_stats", "question_28"),
             (self.DATA_FROM_PEOPLE, satisfaction_list[1], "", "satisfaction_stats", "question_28"),
@@ -117,16 +114,16 @@ class SatisfactionSection(Section):
 
 class SubSatisfactionSection(Section):
 
-    def get_sections(self) -> List[Tuple[Any, Any, str, str]]:
+    def get_sections(self) -> list[tuple[Any, Any, str, str]]:
         sections = []
 
         for index, i in enumerate(self.keys):
             if index == 0:
-                if not i == 27:
+                if i != 27:
                     sections.append((self.DATA_DISPLAYED, "", "", "satisfaction_stats", True))
                 else:
                     sections.append((self.DATA_DISPLAYED, "", "", "satisfaction_stats", True, "question_27"))
-            if not i == 27:
+            if i != 27:
                 sections.append((f"question_{i}", f"question_{i}", "%", "satisfaction_stats"))
             else:
 

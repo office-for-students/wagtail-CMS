@@ -16,12 +16,15 @@ from core.views import (
 )
 from courses import (
     urls as courses_urls,
+)
+from courses import (
     views as course_views,
 )
+
 # apw added.
 from courses.views import regional_earnings
-from coursesearch import views as coursesearch_views
 from institutions import urls as institution_urls
+
 from . import welsh_urls
 
 urlpatterns = [

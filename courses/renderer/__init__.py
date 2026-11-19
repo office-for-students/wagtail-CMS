@@ -1,1 +1,1 @@
-from .comparison import dataset_for_comparison_view
+from .comparison import dataset_for_comparison_view as dataset_for_comparison_view

@@ -1,4 +1,5 @@
-from typing import List, Tuple, Any, Dict
+from typing import Any
+
 from courses.renderer.sections.base import Section
 
 A_LEVEL = "a_level_similar"
@@ -35,12 +36,12 @@ model_index = 4
 
 class SubEntrySection(Section):
 
-    def __init__(self, keys: List, courses, language='en'):
+    def __init__(self, keys: list, courses, language='en'):
         self.start_range = keys[0]
         self.end_range = keys[1]
         super().__init__(courses, language)
 
-    def get_sections(self) -> List[Tuple[Any, Any, Any, str]]:
+    def get_sections(self) -> list[tuple[Any, Any, Any, str]]:
         sub_sections = []
         sections = [
             (
@@ -62,7 +63,7 @@ class SubEntrySection(Section):
             )]
 
         for i in range(self.start_range, self.end_range):
-            sub_sections.append((sections[0][i]))
+            sub_sections.append(sections[0][i])
         return sub_sections
 
     def prep_data(self):

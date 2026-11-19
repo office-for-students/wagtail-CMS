@@ -1,9 +1,9 @@
 from core.utils import enums
-from .satisfactionquestion import SatisfactionQuestion
-from .utils import display_unavailable_info, new_subject_unavail
-from .utils import separate_unavail_reason
+
 from ..unavail_dict_cy import unavail_cy
 from ..unavail_english_dict import unavail_en
+from .satisfactionquestion import SatisfactionQuestion
+from .utils import display_unavailable_info, new_subject_unavail, separate_unavail_reason
 
 
 class SatisfactionStatistics:

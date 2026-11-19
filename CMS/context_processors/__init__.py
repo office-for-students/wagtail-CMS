@@ -1,1 +1,2 @@
-from .nav_context_processor import nav_menu_render
+from .environment_context_processor import environment as environment
+from .nav_context_processor import nav_menu_render as nav_menu_render

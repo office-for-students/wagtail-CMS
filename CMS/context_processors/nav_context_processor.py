@@ -2,12 +2,9 @@ from django.templatetags.static import static
 
 from CMS import translations
 from CMS.enums import enums
-from core.models import Footer
-from core.models import Menu
-from core.utils import get_language
-from core.utils import get_page_for_language
-from courses.models import CourseComparisonPage
-from courses.models import CourseManagePage
+from core.models import Footer, Menu
+from core.utils import get_language, get_page_for_language
+from courses.models import CourseComparisonPage, CourseManagePage
 from home.models import HomePage
 
 

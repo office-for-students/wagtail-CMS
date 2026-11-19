@@ -32,12 +32,11 @@ steps:
 - script: |
     python -m pip install --upgrade pip setuptools wheel django
     pip install -r $(projectRoot)/requirements.txt
-    pip install unittest-xml-reporting
   displayName: 'Install prerequisites'
 
 - script: |
     pushd '$(projectRoot)'
-    python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --tag=azure --no-input
+    python manage.py test
   condition: succeededOrFailed()
   displayName: 'Run tests'
 

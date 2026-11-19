@@ -1,9 +1,7 @@
 from CMS import translations
+
 from .job import Job
-
-
-from .utils import enums
-from .utils import separate_unavail_reason
+from .utils import enums, separate_unavail_reason
 
 
 class JobList:
@@ -51,9 +49,8 @@ class JobList:
 
     def _unavailable(self):
         unavailable = self.unavailable_reason_english
-        if self.display_language == enums.languages.WELSH:
-            if self.unavailable_reason_welsh:
-                unavailable = self.unavailable_reason_welsh
+        if self.display_language == enums.languages.WELSH and self.unavailable_reason_welsh:
+            unavailable = self.unavailable_reason_welsh
         return unavailable
 
     def display_unavailable_info(self):
@@ -75,13 +72,12 @@ class JobList:
             unavailable[
                 "url"] = self.unavailable_url_welsh if self.unavailable_url_welsh else self.unavailable_url_english
 
-        if "reason" in unavailable:
-            if self.aggregation in ["21", "22", "23"]:
-                if self.display_language == enums.languages.ENGLISH:
-                    unavailable["reason"] = unavailable["reason"].replace(" over the previous two years", "")
-                else:
-                    unavailable["reason"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol",
-                                                                          "eraill")
+        if "reason" in unavailable and self.aggregation in ["21", "22", "23"]:
+            if self.display_language == enums.languages.ENGLISH:
+                unavailable["reason"] = unavailable["reason"].replace(" over the previous two years", "")
+            else:
+                unavailable["reason"] = unavailable["reason"].replace("eraill yn ystod y ddwy flynedd flaenorol",
+                                                                      "eraill")
 
         unavailable["reason_heading"], unavailable["reason_body"] = separate_unavail_reason(unavailable["reason"])
 

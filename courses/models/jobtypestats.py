@@ -1,5 +1,4 @@
-from .utils import display_unavailable_info, new_subject_unavail
-from .utils import enums
+from .utils import display_unavailable_info, enums, new_subject_unavail
 
 
 class JobTypeStatistics:

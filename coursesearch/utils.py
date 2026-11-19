@@ -1,4 +1,5 @@
 from http import HTTPStatus
+
 from errors.models import InternalError
 
 
@@ -6,10 +7,7 @@ def choose_country_sibling_finder(pages_list):
     def is_choose_country(sibling):
         from coursesearch.models import CourseFinderChooseCountry
 
-        if type(sibling) == CourseFinderChooseCountry:
-            return True
-        else:
-            return False
+        return type(sibling) is CourseFinderChooseCountry
 
     choose_country_page = list(filter(is_choose_country, pages_list))
 
@@ -26,10 +24,7 @@ def mode_of_study_sibling_finder(page):
     def is_mode_of_study(sibling):
         from coursesearch.models import CourseFinderModeOfStudy
 
-        if type(sibling) == CourseFinderModeOfStudy:
-            return True
-        else:
-            return False
+        return type(sibling) is CourseFinderModeOfStudy
 
     mode_of_study_page = list(filter(is_mode_of_study, page.get_siblings().specific()))
 
@@ -46,10 +41,7 @@ def choose_subject_sibling_finder(page):
     def is_choose_subject(sibling):
         from coursesearch.models import CourseFinderChooseSubject
 
-        if type(sibling) == CourseFinderChooseSubject:
-            return True
-        else:
-            return False
+        return type(sibling) is CourseFinderChooseSubject
 
     choose_subject_page = list(filter(is_choose_subject, page.get_siblings().specific()))
 
@@ -66,10 +58,7 @@ def narrow_search_sibling_finder(page):
     def is_narrow_search(sibling):
         from coursesearch.models import CourseFinderNarrowSearch
 
-        if type(sibling) == CourseFinderNarrowSearch:
-            return True
-        else:
-            return False
+        return type(sibling) is CourseFinderNarrowSearch
 
     narrow_search_page = list(filter(is_narrow_search, page.get_siblings().specific()))
 
@@ -86,10 +75,7 @@ def postcode_sibling_finder(page):
     def is_postcode(sibling):
         from coursesearch.models import CourseFinderPostcode
 
-        if type(sibling) == CourseFinderPostcode:
-            return True
-        else:
-            return False
+        return type(sibling) is CourseFinderPostcode
 
     postcode_page = list(filter(is_postcode, page.get_siblings().specific()))
 
@@ -106,10 +92,7 @@ def summary_sibling_finder(page):
     def is_summary(sibling):
         from coursesearch.models import CourseFinderSummary
 
-        if type(sibling) == CourseFinderSummary:
-            return True
-        else:
-            return False
+        return type(sibling) is CourseFinderSummary
 
     summary_page = list(filter(is_summary, page.get_siblings().specific()))
 
@@ -126,10 +109,7 @@ def results_sibling_finder(page):
     def is_results(sibling):
         from coursesearch.models import CourseFinderResults
 
-        if type(sibling) == CourseFinderResults:
-            return True
-        else:
-            return False
+        return type(sibling) is CourseFinderResults
 
     results_page = list(filter(is_results, page.get_siblings().specific()))
 

@@ -4,6 +4,8 @@ from .base import *
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
+IS_PRODUCTION = True
+
 
 # Storage settings
 WAGTAILSDOCS_ENABLED = True

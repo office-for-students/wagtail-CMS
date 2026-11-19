@@ -26,10 +26,7 @@ class InstitutionList:
     def get_options():
         response = get_json_file("version.json")
 
-        if response.ok:
-            version = response.json()["version"]
-        else:
-            version = ""
+        version = response.json()["version"] if response.ok else ""
 
         if version != InstitutionList.version:
             InstitutionList.options = load_institution_json()
@@ -215,15 +212,15 @@ class Institution:
 
         response = request_handler.load_institution_data(institution_id)
 
-        if type(response) == requests.models.Response:
+        if type(response) is requests.models.Response:
             if response.ok:
                 institution = cls(response.json(), language)
             else:
-                error = ApiError(response.status_code, 'Loading institution %s failed' % institution_id)
-        elif type(response) == dict:
+                error = ApiError(response.status_code, f'Loading institution {institution_id} failed')
+        elif type(response) is dict:
             institution = cls(response, language)
             if institution is None:
-                error = ApiError(None, 'Institution %s does not exist in MongoDB' % institution_id)
+                error = ApiError(None, f'Institution {institution_id} does not exist in MongoDB')
 
         return institution, error
 

@@ -1,6 +1,3 @@
-from typing import Any, Tuple
-from typing import Dict
-from typing import List
 
 from CMS import translations
 from courses.models import Course
@@ -10,7 +7,7 @@ from courses.renderer.sections.unavailable_dict import unavailable_dict
 def get_subject_unavailable(course: Course, model_list_name: str, language: str, index: int) -> str:
     subject_unavail = None
     subject_names = course.subject_names
-    for test in range(len(subject_names)):
+    for _test in range(len(subject_names)):
         subject_unavail = get_unavailable(course, model_list_name, language, index=index)
     return subject_unavail
 
@@ -35,8 +32,8 @@ def get_data(
         index: int
 ) -> str:
     _object = getattr(course, model_list)[index]
-    unavailable_code = str(getattr(_object, "unavailable_code"))
-    aggregation_level = str(getattr(_object, "aggregation_level"))
+    unavailable_code = str(_object.unavailable_code)
+    aggregation_level = str(_object.aggregation_level)
     response_rate = _getattr(_object, "response_rate", None)
     agg = aggregation_level if str(aggregation_level) not in ("None", "") else "blank"
     # Sometimes None was entered into the DB as a string, and sometimes not, sometimes empty string. ^^^
