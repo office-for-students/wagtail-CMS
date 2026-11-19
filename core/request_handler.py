@@ -1,5 +1,4 @@
 import os
-from typing import cast
 
 import requests
 from django.conf import settings
@@ -18,10 +17,10 @@ def send_feedback(feedback_data):
     )
 
 
-def get_json_file(json_file: str) -> requests.Response:
+def get_json_file(json_file):
     if settings.LOCAL == "True" or settings.JSONFILES_STORAGE_CONTAINER == "" or json_file == "subjects.json":
-        with open(os.path.join(settings.BASE_DIR, 'CMS/static/jsonfiles/' + json_file)) as file:
-            data = file.read()
+        with open(os.path.join(settings.BASE_DIR, 'CMS/static/jsonfiles/' + json_file)) as json_file:
+            data = json_file.read()
             response = requests.Response()
 
             response_state = response.__getstate__()
@@ -33,8 +32,7 @@ def get_json_file(json_file: str) -> requests.Response:
 
             return response
     else:
-        container_url = cast(str, os.getenv('JSONFILES_STORAGE_CONTAINER'))
-        return requests.get(container_url + "/" + json_file, timeout=REQUEST_TIMEOUT)
+        return requests.get(os.getenv('JSONFILES_STORAGE_CONTAINER') + "/" + json_file, timeout=REQUEST_TIMEOUT)
 
 
 def get_sitemap_file():
