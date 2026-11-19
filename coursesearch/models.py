@@ -1,21 +1,20 @@
-import math
 
 from django.db.models.fields import TextField
 from wagtail.admin.panels import FieldPanel
 from wagtail.blocks import PageChooserBlock
-from wagtail.fields import RichTextField
-from wagtail.fields import StreamField
+from wagtail.fields import RichTextField, StreamField
 
 from CMS.enums import enums
 from core.models import DiscoverUniBasePage
 from core.utils import get_page_for_language
-
-from coursesearch.utils import choose_country_sibling_finder
-from coursesearch.utils import choose_subject_sibling_finder
-from coursesearch.utils import mode_of_study_sibling_finder
-from coursesearch.utils import narrow_search_sibling_finder
-from coursesearch.utils import results_sibling_finder
-from coursesearch.utils import summary_sibling_finder
+from coursesearch.utils import (
+    choose_country_sibling_finder,
+    choose_subject_sibling_finder,
+    mode_of_study_sibling_finder,
+    narrow_search_sibling_finder,
+    results_sibling_finder,
+    summary_sibling_finder,
+)
 from institutions.models import InstitutionList
 
 
@@ -170,7 +169,7 @@ class CourseFinderResults(DiscoverUniBasePage):
     ]
 
     def get_context(self, request):
-        context = super(CourseFinderResults, self).get_context(request)
+        context = super().get_context(request)
         context['search_url'] = self.get_search_url()
         context['course_finder_url'] = get_page_for_language(self.get_language(),
                                                              CourseFinderChooseCountry.objects.all()).url
@@ -180,6 +179,6 @@ class CourseFinderResults(DiscoverUniBasePage):
 
     def get_search_url(self):
         if self.get_language() == enums.languages.WELSH:
-            return "/%s/course-finder/results/" % self.get_language()
+            return f"/{self.get_language()}/course-finder/results/"
         return '/course-finder/results/'
 

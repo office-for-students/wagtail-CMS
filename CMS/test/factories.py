@@ -2,15 +2,9 @@ from wagtail.models import Site
 
 from coursesearch.models import (
     CourseFinderResults,
-    CourseFinderChooseCountry,
-    CourseFinderModeOfStudy,
-    CourseFinderChooseSubject,
-    CourseFinderNarrowSearch,
-    CourseFinderPostcode,
-    CourseFinderSummary,
-    CourseFinderUni
 )
 from home.models import HomePage
+
 
 class PageFactory:
 

@@ -1,7 +1,11 @@
 import os
+from typing import cast
 
 import requests
 from django.conf import settings
+
+# (connect, read) seconds; stops a slow upstream from hanging a request worker indefinitely.
+REQUEST_TIMEOUT = (3.05, 10)
 
 
 def send_feedback(feedback_data):
@@ -9,13 +13,15 @@ def send_feedback(feedback_data):
         'Ocp-Apim-Subscription-Key': settings.DATASETAPIKEY
     }
 
-    return requests.post(url=settings.FEEDBACK_API_HOST, headers=headers, data=feedback_data)
+    return requests.post(
+        url=settings.FEEDBACK_API_HOST, headers=headers, data=feedback_data, timeout=REQUEST_TIMEOUT
+    )
 
 
-def get_json_file(json_file):
+def get_json_file(json_file: str) -> requests.Response:
     if settings.LOCAL == "True" or settings.JSONFILES_STORAGE_CONTAINER == "" or json_file == "subjects.json":
-        with open(os.path.join(settings.BASE_DIR, 'CMS/static/jsonfiles/' + json_file)) as json_file:
-            data = json_file.read()
+        with open(os.path.join(settings.BASE_DIR, 'CMS/static/jsonfiles/' + json_file)) as file:
+            data = file.read()
             response = requests.Response()
 
             response_state = response.__getstate__()
@@ -27,7 +33,8 @@ def get_json_file(json_file):
 
             return response
     else:
-        return requests.get(os.getenv('JSONFILES_STORAGE_CONTAINER') + "/" + json_file)
+        container_url = cast(str, os.getenv('JSONFILES_STORAGE_CONTAINER'))
+        return requests.get(container_url + "/" + json_file, timeout=REQUEST_TIMEOUT)
 
 
 def get_sitemap_file():
@@ -44,13 +51,11 @@ def get_sitemap_file():
         return response
     else:
         path = settings.JSONFILES_STORAGE_CONTAINER + "/" + "sitemaps.xml"
-        response = requests.get(path)
+        response = requests.get(path, timeout=REQUEST_TIMEOUT)
         return response
 
 
 def is_ajax(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         return True
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        return True
-    return False
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'

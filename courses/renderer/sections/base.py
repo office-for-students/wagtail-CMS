@@ -1,8 +1,5 @@
 import logging
 from typing import Any
-from typing import Dict
-from typing import List
-from typing import Tuple
 
 from CMS import translations
 from courses.models import Course
@@ -18,7 +15,7 @@ class Section:
     DATA_DISPLAYED = "data_displayed"
     DATA_FROM_PEOPLE = "data_from_people"
 
-    def __init__(self, courses: List[Course], language: str, keys=None):
+    def __init__(self, courses: list[Course], language: str, keys=None):
         self.keys = keys
         self.data = {}
         self.courses = courses
@@ -29,10 +26,10 @@ class Section:
     def term_for_key(self, key, language):
         return translations.term_for_key(key=key, language=language)
 
-    def empty_data_structure(self, key: str, language: str) -> Dict[str, Any]:
+    def empty_data_structure(self, key: str, language: str) -> dict[str, Any]:
         return dict(title=self.term_for_key(key, language), subtitle="", values=[])
 
-    def get_sections(self) -> List[Tuple[Any, Any]]:
+    def get_sections(self) -> list[tuple[Any, Any]]:
         raise NotImplementedError
 
     def prep_data(self):
@@ -48,7 +45,7 @@ class Section:
     def multiple_subjects(cls, course: Course, stat: str, model_list: str, language: str, suffix="", unavailable=False):
         response = dict(values=[])
 
-        for index, subject in enumerate(course.subject_names):
+        for index, _subject in enumerate(course.subject_names):
 
             if unavailable:
                 response["values"].append(
@@ -108,7 +105,7 @@ class Section:
         # noinspection PyBroadException
         if index < len(getattr(course, model_list)):
             _object = getattr(course, model_list)[index]
-            body = getattr(_object, "unavailable_reason_body")
+            body = _object.unavailable_reason_body
             header = get_unavailable(
                 course=course,
                 model_list=model_list,
@@ -117,12 +114,12 @@ class Section:
             )
         else:
             header = translations.term_for_key(key="no_data_available", language=language)
-            _object = getattr(course, "display_no_data")()
+            _object = course.display_no_data()
             body = _object["reason"]
 
         return ["unavailable", header, body, index]
 
     @staticmethod
     def check_unavailable(section):
-        unavailable = True if section[-1] is True else False
+        unavailable = section[-1] is True
         return unavailable

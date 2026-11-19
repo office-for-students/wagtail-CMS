@@ -25,7 +25,8 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 SEARCH_API_BASE_URL=config("SEARCH_API_BASE_URL", default=None)
 VERSION_FILE = os.path.join(BASE_DIR, "version.txt")
-
+# Excludes performance tests/ WIP -
+TEST_RUNNER = "CMS.test_runner.DefaultExcludeRunner"
 try:
     with open(VERSION_FILE) as f:
         APPLICATION_VERSION = f.read().strip()
@@ -266,6 +267,8 @@ SORT_BY_SUBJECT_LIMIT = config("SORT_BY_SUBJECT_LIMIT", default=5000)
 SEARCHAPIHOST = config("SEARCHAPIHOST", "")
 DATASETAPIHOST = config("DATASETAPIHOST", "")
 DATASETAPIKEY = config("DATASETAPIKEY", "")
+COURSE_DATA_CACHE_SECONDS = config("COURSE_DATA_CACHE_SECONDS", default=600, cast=int)
+CURRENT_VERSION_CACHE_SECONDS = config("CURRENT_VERSION_CACHE_SECONDS", default=60, cast=int)
 AZURECOSMOSDBURI = config("AZURECOSMOSDBURI", "")
 AZURECOSMOSDBKEY = config("AZURECOSMOSDBKEY", "")
 TEST_COURSES = config("TEST_COURSES", "")

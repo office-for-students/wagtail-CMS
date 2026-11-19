@@ -1,6 +1,5 @@
 import json
 import logging
-from typing import Set
 
 import requests
 
@@ -9,21 +8,14 @@ from CMS.enums import enums
 from courses import request_handler
 from errors.models import ApiError
 from institutions.models import InstitutionOverview
+
 from .continuationstatistics import ContinuationStatistics
 from .courseaccrediation import CourseAccreditation
-from .courseother import CourseDistanceLearning
-from .courseother import CourseFoundationYear
-from .courseother import CourseLength
-from .courseother import CourseLink
-from .courseother import CourseLocation
+from .courseother import CourseDistanceLearning, CourseFoundationYear, CourseLength, CourseLink, CourseLocation
 from .coursesubject import CourseSubject
 from .employmentstatistics import EmploymentStatistics
 from .entrystatistics import EntryStatistics
-from .generics import CourseCountry
-from .generics import CourseMode
-from .generics import CourseQualification
-from .generics import CourseSandwichYear
-from .generics import CourseYearAbroad
+from .generics import CourseCountry, CourseMode, CourseQualification, CourseSandwichYear, CourseYearAbroad
 from .graduateperceptionstats import GraduatePerceptionStatistics
 from .joblist import JobList
 from .jobtypestats import JobTypeStatistics
@@ -182,7 +174,7 @@ class Course:
                 self.default_region = "Wales"
 
             if language == enums.languages.WELSH:
-                with open("./CMS/static/jsonfiles/regions.json", "r") as f:
+                with open("./CMS/static/jsonfiles/regions.json") as f:
                     regions = f.read()
 
                 region_dict = json.loads(regions)
@@ -330,7 +322,7 @@ class Course:
         return ', '.join(location_names)
 
     @property
-    def all_location_names(self) -> Set[str]:
+    def all_location_names(self) -> set[str]:
         """ returns a list of unique locations"""
         location_names = []
         for location in self.locations:
@@ -435,13 +427,12 @@ class Course:
 
         response = request_handler.load_course_data(institution_id, course_id, cls.get_mode_code(mode))
 
-        if type(response) == requests.models.Response:
+        if type(response) is requests.models.Response:
             if response.ok:
                 course = cls(response.json(), language)
             else:
-                error = ApiError(response.status_code, 'Loading details for course %s %s at %s' %
-                                 (course_id, mode, institution_id))
-        elif type(response) == dict:
+                error = ApiError(response.status_code, f'Loading details for course {course_id} {mode} at {institution_id}')
+        elif type(response) is dict:
             course = cls(response, language)
 
         return course, error

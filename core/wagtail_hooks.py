@@ -3,12 +3,11 @@ from axes.models import AccessAttempt
 from django.utils.html import escape
 from wagtail import hooks
 from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleElementHandler
-from wagtail.snippets.views.snippets import SnippetViewSet
-from wagtail.snippets.models import register_snippet
 from wagtail.rich_text import LinkHandler
+from wagtail.snippets.models import register_snippet
+from wagtail.snippets.views.snippets import SnippetViewSet
 
-from .models import Footer
-from .models import Menu
+from .models import Footer, Menu
 
 
 class MenuAdmin(SnippetViewSet):
@@ -54,7 +53,7 @@ class NewWindowExternalLinkHandler(LinkHandler):
     @classmethod
     def expand_db_attributes(cls, attrs):
         href = attrs["href"]
-        return '<a href="%s" target="_blank" rel="noopener noreferrer">' % escape(href)
+        return f'<a href="{escape(href)}" target="_blank" rel="noopener noreferrer">'
 
 
 @hooks.register('register_rich_text_features')

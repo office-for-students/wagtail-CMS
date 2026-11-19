@@ -1,20 +1,35 @@
 import json
 import logging
-from unittest.mock import Mock, mock_open, patch
+from unittest.mock import (
+    Mock,
+    mock_open,
+    patch,
+)
 
+from django.core.cache import cache
 from django.http import HttpResponse
-from django.test import Client, RequestFactory, SimpleTestCase, TestCase, override_settings, tag
+from django.test import (
+    Client,
+    RequestFactory,
+    SimpleTestCase,
+    TestCase,
+    override_settings,
+    tag,
+)
 from wagtail.models import Page
 
 from CMS.enums import enums
 from CMS.test.utils import UniSimpleTestCase
-from core import request_handler, utils
+from core import (
+    request_handler,
+    utils,
+)
 from core.exceptions import VirusException
 from core.templatetags import discover_uni_tags
 from core.utils import get_page_for_language
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=9999) # suppress logs during unit tests
+logging.basicConfig(level=9999)  # suppress logs during unit tests
 
 
 @tag('azure')
@@ -117,14 +132,48 @@ class CoreUtilsTests(UniSimpleTestCase):
             utils.check_for_virus(instance)
 
     @patch('core.utils.get_json_file')
-    def test_get_current_version_returns_remote_version_or_empty_string(self, get_json_file):
+    def test_get_current_version_returns_remote_version(self, get_json_file):
+        cache.clear()
         response = Mock(ok=True)
         response.json.return_value = {'version': '2.1'}
         get_json_file.return_value = response
         self.assertEqual(utils.get_current_version(), '2.1')
 
-        get_json_file.return_value = Mock(ok=False)
+    @patch('core.utils.get_json_file')
+    def test_get_current_version_uses_cached_version(self, get_json_file):
+        cache.clear()
+        response = Mock(ok=True)
+        response.json.return_value = {'version': '2.1'}
+        get_json_file.return_value = response
+
+        self.assertEqual(utils.get_current_version(), '2.1')
+        self.assertEqual(utils.get_current_version(), '2.1')
+        get_json_file.assert_called_once_with('version.json')
+
+    @patch('core.utils.get_json_file')
+    def test_get_current_version_does_not_cache_failed_response(self, get_json_file):
+        cache.clear()
+        response = Mock(ok=True)
+        response.json.return_value = {'version': '2.2'}
+        get_json_file.side_effect = [Mock(ok=False), response]
+
         self.assertEqual(utils.get_current_version(), '')
+        self.assertEqual(utils.get_current_version(), '2.2')
+        self.assertEqual(get_json_file.call_count, 2)
+
+    @override_settings(CURRENT_VERSION_CACHE_SECONDS=0)
+    @patch('core.utils.get_json_file')
+    def test_get_current_version_zero_ttl_disables_cache(self, get_json_file):
+        cache.clear()
+        first_response = Mock(ok=True)
+        first_response.json.return_value = {'version': '2.1'}
+        second_response = Mock(ok=True)
+        second_response.json.return_value = {'version': '2.2'}
+        get_json_file.side_effect = [first_response, second_response]
+
+        self.assertEqual(utils.get_current_version(), '2.1')
+        self.assertEqual(utils.get_current_version(), '2.2')
+        self.assertEqual(get_json_file.call_count, 2)
 
     def test_get_code_version_reads_version_file(self):
         self.assertTrue(utils.get_code_version())
@@ -146,6 +195,7 @@ class CoreRequestHandlerTests(SimpleTestCase):
             url='https://feedback.example',
             headers={'Ocp-Apim-Subscription-Key': 'test-api-key-not-real'},
             data='payload',
+            timeout=(3.05, 10),
         )
 
     @override_settings(LOCAL='True')
@@ -162,7 +212,10 @@ class CoreRequestHandlerTests(SimpleTestCase):
     def test_get_json_file_fetches_remote_json(self, get):
         request_handler.get_json_file('institutions_en.json')
 
-        get.assert_called_once_with('https://files.example/institutions_en.json')
+        get.assert_called_once_with(
+            'https://files.example/institutions_en.json',
+            timeout=(3.05, 10),
+        )
 
     @override_settings(LOCAL='True', JSONFILES_STORAGE_CONTAINER='')
     def test_get_sitemap_file_returns_local_xml(self):
@@ -176,7 +229,11 @@ class CoreRequestHandlerTests(SimpleTestCase):
     def test_get_sitemap_file_fetches_remote_xml(self, get):
         request_handler.get_sitemap_file()
 
-        get.assert_called_once_with('https://files.example/sitemaps.xml')
+        (
+            get.assert_called_once_with(
+                'https://files.example/sitemaps.xml',
+                timeout=(3.05, 10))
+        )
 
     def test_is_ajax_accepts_both_header_representations(self):
         factory = RequestFactory()
@@ -236,7 +293,8 @@ class DiscoverUniTemplateTagTests(SimpleTestCase):
         term_for_key.side_effect = ['No data available', 'Only %s places', 'No data available']
 
         self.assertEqual(discover_uni_tags.data_not_available(language='en', subject='No data available'), 'hidden')
-        self.assertEqual(discover_uni_tags.get_translation(key='places', language='en', substitutions=('5',)), 'Only 5 places')
+        self.assertEqual(discover_uni_tags.get_translation(key='places', language='en', substitutions=('5',)),
+                         'Only 5 places')
         self.assertEqual(discover_uni_tags.map_distance_learning_values('no_data_available', 'cy'), 'No data available')
         self.assertEqual(term_for_key.call_args_list[0].kwargs, {'key': 'no_data_available', 'language': 'en'})
 
@@ -255,11 +313,14 @@ class DiscoverUniTemplateTagTests(SimpleTestCase):
             ], True),
             'Campus A,Campws B',
         )
-        self.assertEqual(discover_uni_tags.get_course_locations_list([{'english': 'Campus A', 'welsh': 'Campws A'}], False), 'Campws A')
+        self.assertEqual(
+            discover_uni_tags.get_course_locations_list([{'english': 'Campus A', 'welsh': 'Campws A'}], False),
+            'Campws A')
         self.assertEqual(discover_uni_tags.get_max_length([1, 2], [3]), 2)
         self.assertEqual(discover_uni_tags.get_salary_from_index([10], 4), 10)
         self.assertIsNone(discover_uni_tags.get_item_at_index(['a'], 4))
-        self.assertEqual(discover_uni_tags.insert_values_to_plain_text(content='Hello {}', substitutions=('world',)), 'Hello world')
+        self.assertEqual(discover_uni_tags.insert_values_to_plain_text(content='Hello {}', substitutions=('world',)),
+                         'Hello world')
         self.assertEqual(discover_uni_tags.concat('a', 2, 'c'), 'a2c')
         self.assertTrue(discover_uni_tags.is_multiple_of(9, 3))
         self.assertFalse(discover_uni_tags.is_franchise('123', '123'))
@@ -267,7 +328,7 @@ class DiscoverUniTemplateTagTests(SimpleTestCase):
 
 @tag('azure')
 class BaseTestCase(TestCase):
-    institution_id  = 10005343
+    institution_id = 10005343
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

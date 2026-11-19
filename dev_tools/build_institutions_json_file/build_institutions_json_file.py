@@ -18,8 +18,9 @@ def get_collection_link(db_id, collection_id):
 
 
 def get_cosmos_client():
-    cosmosdb_uri = os.environ["AzureCosmosDbUri"]
-    cosmosdb_key = os.environ["AzureCosmosDbKey"]
+    # Mixed-case names are the documented interface for this tool (see README.md).
+    cosmosdb_uri = os.environ["AzureCosmosDbUri"]  # noqa: SIM112
+    cosmosdb_key = os.environ["AzureCosmosDbKey"]  # noqa: SIM112
 
     master_key = "masterKey"
 
@@ -29,8 +30,8 @@ def get_cosmos_client():
 
 
 def build_institutions_json_file():
-    version = os.environ["Version"]
-    institution_version = os.environ["InstitutionVersion"]
+    version = os.environ["Version"]  # noqa: SIM112
+    institution_version = os.environ["InstitutionVersion"]  # noqa: SIM112
 
     if version == "":
         print("set environment variable: version")
@@ -41,7 +42,10 @@ def build_institutions_json_file():
         "AzureCosmosDbDatabaseId", "AzureCosmosDbInstitutionCollectionId"
     )
 
-    query = f"SELECT * from c where c.version = {institution_version}"
+    query = {
+        "query": "SELECT * from c where c.version = @version",
+        "parameters": [{"name": "@version", "value": int(institution_version)}],
+    }
 
     options = {"enableCrossPartitionQuery": True}
 

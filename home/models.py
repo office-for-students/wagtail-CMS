@@ -1,12 +1,7 @@
 from django.db.models.fields import TextField
 from wagtail.admin.panels import FieldPanel
-from wagtail.blocks import CharBlock
-from wagtail.blocks import ChoiceBlock
-from wagtail.blocks import PageChooserBlock
-from wagtail.blocks import RichTextBlock
-from wagtail.blocks import StructBlock
-from wagtail.fields import RichTextField
-from wagtail.fields import StreamField
+from wagtail.blocks import CharBlock, ChoiceBlock, PageChooserBlock, RichTextBlock, StructBlock
+from wagtail.fields import RichTextField, StreamField
 
 from CMS import translations
 from CMS.settings.base import APPLICATION_VERSION
