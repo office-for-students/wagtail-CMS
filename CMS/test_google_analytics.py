@@ -7,7 +7,7 @@ no longer processes. These tests pin the GA4 ID plumbing and run cookie.js's beh
 import json
 import os
 import shutil
-import subprocess  # nosec B404 - runs the local Node test runner with fixed arguments only
+import subprocess  # nosec B404
 from pathlib import Path
 from typing import Any
 from unittest import SkipTest
