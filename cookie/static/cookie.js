@@ -1,10 +1,13 @@
 (function () {
     "use strict";
 
-    const GA_ID = "UA-147556197-1";
+    // Universal Analytics (UA-*) stopped processing data in July 2023, so only GA4 (G-*) IDs will record anything.
+    const DEFAULT_GA_ID = "G-9XTF7DN7MG";
+    const GA_ID_PATTERN = /^G-[A-Z0-9]+$/;
     const ACCEPTED = "discoverUniAnalyticsCookies";
     const DECLINED = "discoverUniAnalyticsCookiesDeclined";
     const ONE_YEAR = 60 * 60 * 24 * 365;
+    let analyticsConfigured = false;
 
     /* ---------- cookies ---------- */
 
@@ -34,31 +37,52 @@
 
     /* ---------- Google Analytics ---------- */
 
+    function resolveGaId() {
+        // base.html passes the measurement ID from Django settings; an empty/invalid value disables analytics.
+        const el = document.querySelector("script[data-ga-id]");
+        if (!el) return DEFAULT_GA_ID;
+        const id = (el.getAttribute("data-ga-id") || "").trim().toUpperCase();
+        return GA_ID_PATTERN.test(id) ? id : null;
+    }
+
+    const GA_ID = resolveGaId();
+
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    // Nothing may be stored until the user opts in.
+    window.gtag("consent", "default", {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+    });
 
     function gaAlreadyOnPage() {
-        return !!document.querySelector('script[src*="googletagmanager.com/gtag/js"]');
+        return Array.from(document.querySelectorAll('script[src*="googletagmanager.com/gtag/js"]'))
+            .some((s) => s.src.includes("id=" + GA_ID));
     }
 
     function startAnalytics() {
+        if (!GA_ID) return;
         window["ga-disable-" + GA_ID] = false;
         window.gtag("consent", "update", { analytics_storage: "granted" });
 
-        // On later page loads the server may already render the tag – don't add a second copy.
-        if (gaAlreadyOnPage()) return;
+        if (analyticsConfigured) return;
 
-        const s = document.createElement("script");
-        s.async = true;
-        s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
-        document.head.appendChild(s);
+        if (!gaAlreadyOnPage()) {
+            const s = document.createElement("script");
+            s.async = true;
+            s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+            document.head.appendChild(s);
+        }
 
         window.gtag("js", new Date());
         window.gtag("config", GA_ID); // records this page view, so no reload is needed
+        analyticsConfigured = true;
     }
 
     function stopAnalytics() {
-        window["ga-disable-" + GA_ID] = true;
+        if (GA_ID) window["ga-disable-" + GA_ID] = true;
         window.gtag("consent", "update", { analytics_storage: "denied" });
         document.cookie.split("; ").forEach((c) => {
             const name = c.split("=")[0];
@@ -78,12 +102,13 @@
             this.noRadio = document.getElementById("no_decline");
             this.status = document.getElementById("cookie-status");
 
+            const state = this.currentState();
+            if (state === "accepted") startAnalytics();
+
             if (!this.banner || !this.settings) return;
 
             this.setListeners(); // always wire up, so people can change their mind later
 
-            const state = this.currentState();
-            if (state === "accepted") startAnalytics();
             this.syncForm(state);
 
             if (this.isCookiePage()) {

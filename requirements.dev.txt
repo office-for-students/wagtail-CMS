@@ -1,4 +1,4 @@
-pip_audit==2.10.1
+pip_audit
 ruff
 mypy
 pytest
