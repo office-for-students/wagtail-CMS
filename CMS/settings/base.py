@@ -35,6 +35,8 @@ except FileNotFoundError:
 LOCAL = config("LOCAL", default=False, cast=bool)
 READ_ONLY = config("READ_ONLY", False)
 IS_PRODUCTION = False
+# GA4 measurement ID (public, not a secret). Set to an empty string to disable analytics.
+GOOGLE_ANALYTICS_ID = config("GOOGLE_ANALYTICS_ID", default="G-9XTF7DN7MG")
 
 ROOT_DOMAIN = config("ROOT_DOMAIN", "http://localhost:3000")
 DEBUG = config("DEBUG", False, cast=bool)

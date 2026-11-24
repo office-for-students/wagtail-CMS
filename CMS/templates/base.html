@@ -36,7 +36,6 @@
     <link href="{% sass_src 'scss/coursesearch.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
     <link href="{% sass_src 'scss/global.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
     <link href="{% sass_src 'scss/cookie.scss' %}?{% code_version %}" rel="stylesheet" type="text/css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147556197-1"></script>
     {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
     {% endblock %}
@@ -44,7 +43,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="{% get_static_prefix %}js/main.js?{% code_version %}"></script>
     <script type="text/javascript" src="{% get_static_prefix %}js/load-error-popup.js?{% code_version %}"></script>
-    <script type="text/javascript" src="{% get_static_prefix %}cookie.js?{% code_version %}" defer></script>
+    {# Google Analytics is only loaded by cookie.js after the user accepts analytics cookies. #}
+    <script type="text/javascript" src="{% get_static_prefix %}cookie.js?{% code_version %}"
+            data-ga-id="{{ google_analytics_id }}" defer></script>
     <script>
         const API_V2_SEARCH = "{{ search.api_url }}"
     </script>

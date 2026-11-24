@@ -43,7 +43,6 @@ def institution_detail(request, institution_id, language=enums.languages.ENGLISH
     institution, error = Institution.find(institution_id, language)
     if error:
         redirect_page = get_new_landing_page_for_language(language)
-        #redirect_page = get_page_for_language(language, SearchLandingPage.objects.all()).url
         return redirect(redirect_page + '?load_error=true&error_type=0')
 
     page = get_page_for_language(language, InstitutionDetailPage.objects.all())
