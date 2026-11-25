@@ -159,7 +159,7 @@ class CMSUrlRoutingTests(SimpleTestCase):
             '/robots.txt': core_views.robots,
             '/sitemap.xml': core_views.sitemap_primary,
             '/sitemaps/content.xml': core_views.content_sitemap,
-            '/sitemaps/general.xml': cms_urls.sitemap,
+            '/sitemaps/cms_pages.xml': cms_urls.sitemap,
             '/feedback': core_views.submit_feedback,
             '/jsonfiles/subjects': core_views.get_subjects_json,
             '/jsonfiles/institutions/en/': core_views.get_institutions_json,
@@ -333,11 +333,12 @@ class NavigationContextProcessorTests(SimpleTestCase):
                                        {
                                            'label': 'primary',
                                        },
-                                   ], [
+                                   ],
+                                   [
                                        {
                                            'label': 'footer',
                                        },
-            ],
+                                   ],
                                ] * 2
         factory = RequestFactory()
 
