@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import json
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
@@ -23,7 +22,7 @@ SEARCH_V2_API = config("SEARCH_V2_API", default=None)
 # from decouple import config
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
-SEARCH_API_BASE_URL=config("SEARCH_API_BASE_URL", default=None)
+SEARCH_API_BASE_URL = config("SEARCH_API_BASE_URL", default=None)
 VERSION_FILE = os.path.join(BASE_DIR, "version.txt")
 
 try:
@@ -33,7 +32,7 @@ except FileNotFoundError:
     APPLICATION_VERSION = "0.0.0"  # default fallback
 
 LOCAL = config("LOCAL", default=False, cast=bool)
-READ_ONLY = config("READ_ONLY", False)
+READ_ONLY = config("READ_ONLY", default=True, cast=bool)
 IS_PRODUCTION = False
 
 ROOT_DOMAIN = config("ROOT_DOMAIN", "http://localhost:3000")
@@ -166,7 +165,7 @@ if LOCAL:
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
+        },
     }
 else:
     DATABASES = {
@@ -178,7 +177,7 @@ else:
             "PORT": config("DBPORT", "5432"),
             "PASSWORD": config("DBPASSWORD", ""),
             "SSL": True,
-        }
+        },
     }
 
 # Password validation
@@ -326,9 +325,11 @@ WAGTAILEMBEDS_FINDERS = [
                     r"^https?://(?:[-\w]+\.)?youtube\.com/view_play_list.+$",
                     r"^https?://(?:[-\w]+\.)?youtube\.com/playlist.+$",
                 ],
-            }
+            },
         ],
-        "options": {"scheme": "https"},
+        "options": {
+            "scheme": "https",
+        },
     },
     {
         "class": "wagtail.embeds.finders.oembed",
@@ -343,15 +344,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Email message configurations
 
 AZURE_EMAIL_SERVICE_CONNECTION_STRING = config(
-    "AZURE_EMAIL_SERVICE_CONNECTION_STRING", default=""
+    "AZURE_EMAIL_SERVICE_CONNECTION_STRING", default="",
 )
 AZURE_EMAIL_SERVICE_ENVIRONMENT = config("AZURE_EMAIL_SERVICE_ENVIRONMENT", default="")
 AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS = config(
-    "AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS", default=""
+    "AZURE_EMAIL_OUTGOING_EMAIL_ADDRESS", default="",
 )
 # Also ensure your email backend is configured correctly to send mail
 EMAIL_BACKEND = config(
-    "EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend"
+    "EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend",
 )
 
 MANAGERS = json.loads(config("MANAGERS", default="[]"))
