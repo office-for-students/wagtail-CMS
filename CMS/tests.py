@@ -1,13 +1,23 @@
 import importlib.util
 import sys
 from pathlib import Path
-from unittest.mock import Mock, patch
+from unittest.mock import (
+    Mock,
+    patch,
+)
 
-from django.test import RequestFactory, SimpleTestCase, override_settings, tag
+from django.test import (
+    override_settings,
+    RequestFactory,
+    SimpleTestCase,
+    tag,
+)
 from django.urls import resolve
 
-from CMS import translations
-from CMS import urls as cms_urls
+from CMS import (
+    translations,
+    urls as cms_urls,
+)
 from CMS.context_processors import nav_context_processor
 from CMS.test.utils import UniSimpleTestCase
 from CMS.translations.translations import cleanup_key
@@ -147,7 +157,7 @@ class CMSUrlRoutingTests(SimpleTestCase):
     def test_root_endpoints_and_include_mounts_resolve(self):
         routes = {
             '/robots.txt': core_views.robots,
-            '/sitemap.xml': core_views.sitemap_new,
+            '/sitemap.xml': core_views.sitemap_primary,
             '/sitemaps/content.xml': core_views.content_sitemap,
             '/sitemaps/general.xml': cms_urls.sitemap,
             '/feedback': core_views.submit_feedback,
@@ -241,48 +251,73 @@ class TranslationHelperTests(SimpleTestCase):
 class NavigationContextProcessorTests(SimpleTestCase):
 
     def test_parse_menu_item_handles_labels_urls_and_nested_children(self):
-        leaf = Mock(value={
-            'label': 'Search courses',
-            'link_page': Mock(title='Search', url='/search/'),
-        })
-        nested = Mock(value={
-            'label': 'Courses',
-            'menu_items': [leaf],
-        })
+        leaf = Mock(
+            value={
+                'label': 'Search courses',
+                'link_page': Mock(title='Search', url='/search/'),
+            },
+        )
+        nested = Mock(
+            value={
+                'label': 'Courses',
+                'menu_items': [leaf],
+            },
+        )
 
-        self.assertEqual(nav_context_processor.parse_menu_item(leaf), {
-            'label': 'Search courses',
-            'sub_items': None,
-            'url': '/search/',
-        })
-        self.assertEqual(nav_context_processor.parse_menu_item(nested), {
-            'label': 'Courses',
-            'sub_items': [{
+        self.assertEqual(
+            nav_context_processor.parse_menu_item(leaf), {
                 'label': 'Search courses',
                 'sub_items': None,
                 'url': '/search/',
-            }],
-        })
+            },
+        )
+        self.assertEqual(
+            nav_context_processor.parse_menu_item(nested), {
+                'label': 'Courses',
+                'sub_items': [
+                    {
+                        'label': 'Search courses',
+                        'sub_items': None,
+                        'url': '/search/',
+                    },
+                ],
+            },
+        )
 
     def test_parse_menu_item_falls_back_to_page_title_and_missing_url(self):
-        menu_item = Mock(value={'link_page': Mock(title='About', url=None)})
+        menu_item = Mock(
+            value={
+                'link_page': Mock(title='About', url=None),
+            },
+        )
 
-        self.assertEqual(nav_context_processor.parse_menu_item(menu_item), {
-            'label': 'About',
-            'sub_items': None,
-            'url': None,
-        })
+        self.assertEqual(
+            nav_context_processor.parse_menu_item(menu_item), {
+                'label': 'About',
+                'sub_items': None,
+                'url': None,
+            },
+        )
 
     def test_get_menu_selects_language_menu_and_returns_empty_for_missing_menu(self):
-        menu_item = Mock(value={'label': 'About', 'link_page': Mock(url='/about/')})
+        menu_item = Mock(
+            value={
+                'label': 'About',
+                'link_page': Mock(url='/about/'),
+            },
+        )
         model = Mock()
         model.objects.filter.return_value.first.return_value = Mock(menu_items=[menu_item])
 
-        self.assertEqual(nav_context_processor.get_menu(model, 'en', 'menu_items'), [{
-            'label': 'About',
-            'sub_items': None,
-            'url': '/about/',
-        }])
+        self.assertEqual(
+            nav_context_processor.get_menu(model, 'en', 'menu_items'), [
+                {
+                    'label': 'About',
+                    'sub_items': None,
+                    'url': '/about/',
+                },
+            ],
+        )
         model.objects.filter.assert_called_once_with(name='English')
 
         model.objects.filter.return_value.first.return_value = None
@@ -293,17 +328,49 @@ class NavigationContextProcessorTests(SimpleTestCase):
     @patch('CMS.context_processors.nav_context_processor.get_page_for_language')
     def test_nav_menu_render_builds_language_specific_brand_and_links(self, get_page, get_menu):
         get_page.side_effect = lambda language, pages: Mock(url=f'/{language}-page/')
-        get_menu.side_effect = [[{'label': 'primary'}], [{'label': 'footer'}]] * 2
+        get_menu.side_effect = [
+                                   [
+                                       {
+                                           'label': 'primary',
+                                       },
+                                   ], [
+                                       {
+                                           'label': 'footer',
+                                       },
+            ],
+                               ] * 2
         factory = RequestFactory()
 
         english = nav_context_processor.nav_menu_render(factory.get('/course-finder/'))['navigation']
         welsh = nav_context_processor.nav_menu_render(factory.get('/cy/'))['navigation']
 
-        self.assertEqual(english['brand_logo'], {'img': 'images/logos/nav_logo_english.svg', 'url': '/'})
-        self.assertEqual(welsh['brand_logo'], {'img': 'images/logos/nav_logo_welsh.svg', 'url': '/cy/'})
+        self.assertEqual(
+            english['brand_logo'], {
+                'img': 'images/logos/nav_logo_english.svg',
+                'url': '/',
+            },
+        )
+        self.assertEqual(
+            welsh['brand_logo'], {
+                'img': 'images/logos/nav_logo_welsh.svg',
+                'url': '/cy/',
+            },
+        )
         self.assertEqual(english['comp_menu'][0]['url'], '/en-page/')
         self.assertEqual(welsh['comp_menu'][0]['url'], '/cy-page/')
-        self.assertEqual(english['primary_menu'], [{'label': 'primary'}])
-        self.assertEqual(welsh['footer_menu'], [{'label': 'footer'}])
+        self.assertEqual(
+            english['primary_menu'], [
+                {
+                    'label': 'primary',
+                },
+            ],
+        )
+        self.assertEqual(
+            welsh['footer_menu'], [
+                {
+                    'label': 'footer',
+                },
+            ],
+        )
         self.assertEqual(get_page.call_count, 6)
         self.assertEqual(get_menu.call_count, 4)

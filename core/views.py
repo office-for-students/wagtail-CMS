@@ -64,7 +64,7 @@ def robots(request, **kwargs):
     return render(request, 'robots.txt', content_type='text/plain')
 
 
-def sitemap_new(request, **kwargs):
+def sitemap_primary(request, **kwargs):
     context = {
         "root_domain": ROOT_DOMAIN,
     }

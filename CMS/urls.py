@@ -12,25 +12,21 @@ from core import views as core_views
 from core.views import (
     content_sitemap,
     robots,
-    sitemap_new,
+    sitemap_primary,
 )
 from courses import (
     urls as courses_urls,
-)
-from courses import (
     views as course_views,
 )
-
 # apw added.
 from courses.views import regional_earnings
 from institutions import urls as institution_urls
-
 from . import welsh_urls
 
 urlpatterns = [
     path('documents/', include(wagtaildocs_urls)),
     path('robots.txt', robots, name='robots'),
-    path('sitemap.xml', sitemap_new, name='sitemap'),
+    path('sitemap.xml', sitemap_primary, name='sitemap'),
     path('sitemaps/content.xml', content_sitemap, name='content_sitemap'),
     path('sitemaps/general.xml', sitemap, name='cms_sitemap'),
     path('feedback', core_views.submit_feedback, name='submit_feedback'),
